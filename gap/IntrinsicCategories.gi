@@ -245,6 +245,8 @@ InstallMethod( IntrinsicCategory,
     
     IC!.UnderlyingCategory := C;
     
+    SetCachingOfCategoryCrisp( IC );
+    
     for name in ListKnownCategoricalProperties( C ) do
         name := ValueGlobal( name );
         Setter( name )( IC, true );
