@@ -76,6 +76,12 @@ DeclareOperation( "PositionOfActiveCell",
         [ IsCapCategoryIntrinsicCell ] );
 
 #! @Description
+#!  Return the position of the last stored cell underlying the intrinsic cell <A>c</A>.
+#! @Arguments c
+DeclareOperation( "PositionOfLastStoredCell",
+        [ IsCapCategoryIntrinsicObject ] );
+
+#! @Description
 #!  Return the  <A>i</A>-th object underlying the intrinsic object <A>o</A>.
 #! @Arguments o, i
 DeclareOperation( "CertainCell",

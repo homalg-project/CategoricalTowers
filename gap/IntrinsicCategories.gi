@@ -57,6 +57,7 @@ InstallMethod( Intrinsify,
   function( obj )
     
     obj := rec(
+               PositionOfLastStoredCell := 1,
                PositionOfActiveCell := 1,
                1 := obj
                );
@@ -226,6 +227,13 @@ InstallMethod( ActiveCell,
         [ IsObject ],
         
   IdFunc );
+
+##
+InstallMethod( PositionOfLastStoredCell,
+        "for an intrinsic object",
+        [ IsCapCategoryIntrinsicObjectRep ],
+        
+  obj ->  obj!.PositionOfLastStoredCell );
 
 ##
 InstallMethod( IntrinsicCategory,
