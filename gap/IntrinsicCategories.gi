@@ -51,6 +51,89 @@ BindGlobal( "TheTypeIntrinsicMorphism",
 ####################################
 
 ##
+InstallMethod( PositionOfLastStoredCell,
+        "for an intrinsic object",
+        [ IsCapCategoryIntrinsicObjectRep ],
+        
+  obj ->  obj!.PositionOfLastStoredCell );
+
+##
+InstallMethod( CertainCell,
+        "for an intrinsic object and an integer",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt ],
+        
+  function( obj, pos )
+    
+    return obj!.(pos);
+    
+end );
+
+##
+InstallMethod( CertainCell,
+        "for an intrinsic morphism and two integers",
+        [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt ],
+        
+  function( mor, pos_s, pos_t )
+    local pos;
+    
+    pos := [ pos_s, pos_t ];
+    
+    return mor!.(String( pos ) );
+    
+end );
+
+##
+InstallMethod( PositionOfActiveCell,
+        "for an intrinsic object",
+        [ IsCapCategoryIntrinsicObjectRep ],
+        
+  obj ->  obj!.PositionOfActiveCell );
+
+##
+InstallMethod( ActiveCell,
+        "for an intrinsic object",
+        [ IsCapCategoryIntrinsicObjectRep ],
+        
+  obj -> CertainCell( obj, PositionOfActiveCell( obj ) ) );
+
+##
+InstallMethod( ActiveCell,
+        "for an intrinsic morphism",
+        [ IsCapCategoryIntrinsicMorphismRep ],
+        
+  function( mor )
+    
+    return CertainCell( mor,
+                   PositionOfActiveCell( Source( mor ) ),
+                   PositionOfActiveCell( Range( mor ) ) );
+    
+end );
+
+##
+InstallMethod( ActiveCell,
+        "for a list",
+        [ IsList ],
+        
+  function( L )
+    
+    return List( L, ActiveCell );
+    
+end );
+
+##
+InstallMethod( ActiveCell,
+        "fallback method",
+        [ IsObject ],
+        
+  IdFunc );
+
+####################################
+#
+# methods for constructors:
+#
+####################################
+
+##
 InstallMethod( Intrinsify,
         [ IsCapCategoryObject ],
         
@@ -158,83 +241,6 @@ InstallMethod( Intrinsify,
     
 end );
     
-##
-InstallMethod( PositionOfActiveCell,
-        "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
-        
-  obj ->  obj!.PositionOfActiveCell );
-
-##
-InstallMethod( CertainCell,
-        "for an intrinsic object and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt ],
-        
-  function( obj, pos )
-    
-    return obj!.(pos);
-    
-end );
-
-##
-InstallMethod( CertainCell,
-        "for an intrinsic morphism and two integers",
-        [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt ],
-        
-  function( mor, pos_s, pos_t )
-    local pos;
-    
-    pos := [ pos_s, pos_t ];
-    
-    return mor!.(String( pos ) );
-    
-end );
-
-##
-InstallMethod( ActiveCell,
-        "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
-        
-  obj -> CertainCell( obj, PositionOfActiveCell( obj ) ) );
-
-##
-InstallMethod( ActiveCell,
-        "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicMorphismRep ],
-        
-  function( mor )
-    
-    return CertainCell( mor,
-                   PositionOfActiveCell( Source( mor ) ),
-                   PositionOfActiveCell( Range( mor ) ) );
-    
-end );
-
-##
-InstallMethod( ActiveCell,
-        "for a list",
-        [ IsList ],
-        
-  function( L )
-    
-    return List( L, ActiveCell );
-    
-end );
-
-##
-InstallMethod( ActiveCell,
-        "fallback method",
-        [ IsObject ],
-        
-  IdFunc );
-
-##
-InstallMethod( PositionOfLastStoredCell,
-        "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
-        
-  obj ->  obj!.PositionOfLastStoredCell );
-
 ##
 InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],
