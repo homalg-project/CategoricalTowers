@@ -22,6 +22,18 @@ DeclareCategory( "IsCapCategoryIntrinsicCell",
         IsCapCategoryCell and
         IsAttributeStoringRep );
 
+#! @Description
+#!  The &GAP; category of intrinsic objects in an intrinsic &CAP; category.
+DeclareCategory( "IsCapCategoryIntrinsicObject",
+        IsCapCategoryIntrinsicCell and
+        IsCapCategoryObject );
+
+#! @Description
+#!  The &GAP; category of intrinsic morphisms in an intrinsic &CAP; category.
+DeclareCategory( "IsCapCategoryIntrinsicMorphism",
+        IsCapCategoryIntrinsicCell and
+        IsCapCategoryMorphism );
+
 ####################################
 #
 #! @Section Operations
@@ -48,14 +60,14 @@ DeclareOperation( "Intrinsify",
 #! @Arguments m, s, i, t, j
 #! @Group Intrinsify
 DeclareOperation( "Intrinsify",
-        [ IsCapCategoryMorphism, IsCapCategoryObject, IsInt, IsCapCategoryObject, IsInt ] );
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
 #!  In the six argument version the intrinsified morphism <A>m</A> is subsequently added to the category <A>C</A>.
 #! @Arguments C, m, s, i, t, j
 #! @Group Intrinsify
 DeclareOperation( "Intrinsify",
-        [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryObject, IsInt, IsCapCategoryObject, IsInt ] );
+        [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
 #!  Return the position of the active cell underlying the intrinsic cell <A>c</A>.
@@ -64,8 +76,8 @@ DeclareOperation( "PositionOfActiveCell",
         [ IsCapCategoryIntrinsicCell ] );
 
 #! @Description
-#!  Return the  <A>i</A>-th cell underlying the intrinsic cell <A>c</A>.
-#! @Arguments c, i
+#!  Return the  <A>i</A>-th object underlying the intrinsic object <A>o</A>.
+#! @Arguments o, i
 DeclareOperation( "CertainCell",
         [ IsCapCategoryIntrinsicCell, IsInt ] );
 
@@ -76,8 +88,8 @@ DeclareOperation( "ActiveCell",
         [ IsObject ] );
 
 #! @Description
-#!  Return the  <A>i</A>-th cell underlying the intrinsic cell <A>c</A>.
-#! @Arguments c, i
+#!  Return the  <A>(i,j)</A>-th morphism underlying the intrinsic cell <A>m</A>.
+#! @Arguments m, i, j
 DeclareOperation( "CertainCell",
         [ IsCapCategoryIntrinsicCell, IsInt, IsInt ] );
 

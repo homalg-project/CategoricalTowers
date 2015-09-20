@@ -14,12 +14,12 @@
 #
 ####################################
 
-DeclareRepresentation( "IsIntrinsicObjectRep",
-        IsCapCategoryObject and IsCapCategoryIntrinsicCell,
+DeclareRepresentation( "IsCapCategoryIntrinsicObjectRep",
+        IsCapCategoryIntrinsicObject,
         [ ] );
 
-DeclareRepresentation( "IsIntrinsicMorphismRep",
-        IsCapCategoryMorphism and IsCapCategoryIntrinsicCell,
+DeclareRepresentation( "IsCapCategoryIntrinsicMorphismRep",
+        IsCapCategoryIntrinsicMorphism,
         [ ] );
 
 ####################################
@@ -38,11 +38,11 @@ BindGlobal( "TheFamilyOfIntrinsicMorphisms",
 # new types:
 BindGlobal( "TheTypeIntrinsicObject",
         NewType( TheFamilyOfIntrinsicObjects,
-                IsIntrinsicObjectRep ) );
+                IsCapCategoryIntrinsicObjectRep ) );
 
 BindGlobal( "TheTypeIntrinsicMorphism",
         NewType( TheFamilyOfIntrinsicMorphisms,
-                IsIntrinsicMorphismRep ) );
+                IsCapCategoryIntrinsicMorphismRep ) );
 
 ####################################
 #
@@ -119,7 +119,7 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategoryMorphism, IsCapCategoryObject, IsInt, IsCapCategoryObject, IsInt ],
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
         
   function( mor, S, posS, T, posT )
     
@@ -145,7 +145,7 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryObject, IsInt, IsCapCategoryObject, IsInt ],
+        [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
         
   function( C, mor, S, posS, T, posT )
     
@@ -160,14 +160,14 @@ end );
 ##
 InstallMethod( PositionOfActiveCell,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicCell and IsCapCategoryObject ],
+        [ IsCapCategoryIntrinsicObjectRep ],
         
   obj ->  obj!.PositionOfActiveCell );
 
 ##
 InstallMethod( CertainCell,
         "for an intrinsic object and an integer",
-        [ IsCapCategoryIntrinsicCell and IsCapCategoryObject, IsInt ],
+        [ IsCapCategoryIntrinsicObjectRep, IsInt ],
         
   function( obj, pos )
     
@@ -178,7 +178,7 @@ end );
 ##
 InstallMethod( CertainCell,
         "for an intrinsic morphism and two integers",
-        [ IsCapCategoryIntrinsicCell and IsCapCategoryMorphism, IsInt, IsInt ],
+        [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt ],
         
   function( mor, pos_s, pos_t )
     local pos;
@@ -192,14 +192,14 @@ end );
 ##
 InstallMethod( ActiveCell,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicCell and IsCapCategoryObject ],
+        [ IsCapCategoryIntrinsicObjectRep ],
         
   obj -> CertainCell( obj, PositionOfActiveCell( obj ) ) );
 
 ##
 InstallMethod( ActiveCell,
         "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicCell and IsCapCategoryMorphism ],
+        [ IsCapCategoryIntrinsicMorphismRep ],
         
   function( mor )
     
@@ -397,7 +397,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an intrinsic object",
-        [ IsIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObjectRep ],
         
   function( obj )
     
@@ -410,7 +410,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an intrinsic morphism",
-        [ IsIntrinsicMorphismRep ],
+        [ IsCapCategoryIntrinsicMorphismRep ],
         
   function( mor )
     
@@ -423,7 +423,7 @@ end );
 ##
 InstallMethod( Display,
         "for an intrinsic object",
-        [ IsIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObjectRep ],
         
   function( obj )
     
@@ -434,7 +434,7 @@ end );
 ##
 InstallMethod( Display,
         "for an intrinsic morphism",
-        [ IsIntrinsicMorphismRep ],
+        [ IsCapCategoryIntrinsicMorphismRep ],
         
   function( mor )
     
