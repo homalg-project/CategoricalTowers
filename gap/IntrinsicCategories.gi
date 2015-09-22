@@ -626,9 +626,12 @@ InstallMethod( IntrinsicCategory,
             func := create_func_object( name );
         elif info.return_type = "morphism" then
             if not IsBound( info.io_type ) then
+                ## if there is no io_type we cannot do anything
                 continue;
             elif IsList( info.with_given_without_given_name_pair ) and
               name = info.with_given_without_given_name_pair[1] then
+                ## do not install universal morphisms but their
+                ## with-given-universal-object counterpart
                 continue;
             elif IsBound( info.universal_object ) and
               Position( recnames, info.universal_object ) = fail then
