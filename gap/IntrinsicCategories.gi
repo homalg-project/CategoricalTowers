@@ -292,13 +292,16 @@ InstallMethod( IntrinsicCategory,
     
     create_func_bool :=
       function( name )
+        
+        name := ValueGlobal( name );
+        
         return
           function( arg )
             local eval_arg, result;
             
             eval_arg := ActiveCell( arg );
             
-            result := CallFuncList( ValueGlobal( name ), eval_arg );
+            result := CallFuncList( name, eval_arg );
             
             return result;
             
@@ -308,11 +311,14 @@ InstallMethod( IntrinsicCategory,
     
     create_func_object0 :=
       function( name )
+        
+        name := ValueGlobal( name );
+        
         return
           function( )
             local result;
             
-            result := ValueGlobal( name )( C );
+            result := name( C );
             
             return Intrinsify( result );
             
@@ -322,13 +328,16 @@ InstallMethod( IntrinsicCategory,
     
     create_func_object :=
       function( name )
+        
+        name := ValueGlobal( name );
+        
         return
           function( arg )
             local eval_arg, result;
             
             eval_arg := List( arg, ActiveCell );
             
-            result := CallFuncList( ValueGlobal( name ), eval_arg );
+            result := CallFuncList( name, eval_arg );
             
             return Intrinsify( result );
             
@@ -342,13 +351,15 @@ InstallMethod( IntrinsicCategory,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
+        name := ValueGlobal( name );
+        
         return
           function( arg )
             local eval_arg, result, src_trg, S, T;
             
             eval_arg := List( arg, ActiveCell );
             
-            result := CallFuncList( ValueGlobal( name ), eval_arg );
+            result := CallFuncList( name, eval_arg );
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( info.io_type, arg );
             S := src_trg[1];
