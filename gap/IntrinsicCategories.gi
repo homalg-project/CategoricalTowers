@@ -176,7 +176,7 @@ InstallMethod( ActiveCell,
 
 ##
 InstallMethod( ActiveCell,
-        "fallback method",
+        "fallback method for an arbitrary GAP object",
         [ IsObject ],
         
   IdFunc );
