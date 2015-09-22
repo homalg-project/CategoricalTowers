@@ -95,13 +95,13 @@ DeclareOperation( "PositionOfLastStoredCell",
 #!  Return the  <A>i</A>-th object underlying the intrinsic object <A>o</A>.
 #! @Arguments o, i
 DeclareOperation( "CertainCell",
-        [ IsCapCategoryIntrinsicCell, IsInt ] );
+        [ IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
 #!  Return the  <A>(i,j)</A>-th morphism underlying the intrinsic cell <A>m</A>.
 #! @Arguments m, i, j
 DeclareOperation( "CertainCell",
-        [ IsCapCategoryIntrinsicCell, IsInt, IsInt ] );
+        [ IsCapCategoryIntrinsicMorphism, IsInt, IsInt ] );
 
 #! @Description
 #!  Return the position of the active cell underlying the intrinsic cell <A>c</A>.
