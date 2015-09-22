@@ -10,6 +10,10 @@
 
 #! @Chapter Intrinsic Categories
 
+# our info class:
+DeclareInfoClass( "InfoIntrinsicCategories" );
+SetInfoLevel( InfoIntrinsicCategories, 1 );
+
 ####################################
 #
 #! @Section Categories
