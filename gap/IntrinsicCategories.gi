@@ -172,11 +172,7 @@ InstallMethod( ActiveCell,
         "for a list",
         [ IsList ],
         
-  function( L )
-    
-    return List( L, ActiveCell );
-    
-end );
+  L -> List( L, ActiveCell ) );
 
 ##
 InstallMethod( ActiveCell,
