@@ -98,6 +98,12 @@ DeclareOperation( "CertainCell",
         [ IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
+#!  Return the  <A>(i,j,k)</A>-th morphism underlying the intrinsic cell <A>m</A>.
+#! @Arguments m, i, j, k
+DeclareOperation( "CertainCell",
+        [ IsCapCategoryIntrinsicMorphism, IsInt, IsInt, IsInt ] );
+
+#! @Description
 #!  Return the  <A>(i,j)</A>-th morphism underlying the intrinsic cell <A>m</A>.
 #! @Arguments m, i, j
 DeclareOperation( "CertainCell",

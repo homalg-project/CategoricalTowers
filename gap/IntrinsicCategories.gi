@@ -70,15 +70,73 @@ end );
 
 ##
 InstallMethod( CertainCell,
+        "for an intrinsic morphism and three integers",
+        [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt, IsInt ],
+        
+  function( mor, pos_s, pos_t, k )
+    local index_pair, st, l, morphisms, dist, min, pos, morphism;
+    
+    index_pair := [ pos_s, pos_t, k ];
+    
+    st := String( index_pair{[ 1 .. 2 ]} );
+    
+    l := mor!.index_pairs_of_presentations;
+    
+    if not index_pair in l then
+        
+        if not IsBound( mor!.morphisms.(st) ) then
+            mor!.morphisms.(st) := [ ];
+        fi;
+        
+        morphisms := mor!.morphisms.(st);
+        
+        if not Length( morphisms ) + 1 = k then
+            Error( "the new triple position does not exist and the last entry ", k,
+                   " is not equal one plus the length of the caching list\n" );
+        fi;
+        
+        dist := List( l, a -> AbsInt( index_pair[1] - a[1] ) + AbsInt( index_pair[2] - a[2] ) );
+        
+        min := Minimum( dist );
+        
+        pos := PositionProperty( dist, a -> a = min );
+        
+        morphism :=
+          PreCompose(
+                  [ TransitionIsomorphism( Source( mor ), pos_s, l[pos][1] ),
+                    mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[l[pos][3]],
+                    TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
+                  );
+        
+
+        Add( morphisms, morphism );
+        
+        Add( l, index_pair );
+        
+    fi;
+    
+    return mor!.morphisms.(st)[k];
+    
+end );
+
+##
+InstallMethod( CertainCell,
         "for an intrinsic morphism and two integers",
         [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt ],
         
   function( mor, pos_s, pos_t )
-    local pos;
+    local st, k;
     
-    pos := [ pos_s, pos_t ];
+    st := String( [ pos_s, pos_t ] );
     
-    return mor!.(String( pos ) );
+    if not IsBound( mor!.morphisms.(st) ) then
+        mor!.morphisms.(st) := [ ];
+        k := 1;
+    else
+        k := Length( mor!.morphisms.(st) );
+    fi;
+    
+    return CertainCell( mor, pos_s, pos_t, k );
     
 end );
 
@@ -385,6 +443,7 @@ InstallMethod( Intrinsify,
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
         
   function( mor, S, posS, T, posT )
+    local s, t;
     
     if not IsEqualForObjects( Source( mor ), CertainCell( S, posS ) ) then
         Error( "the source of the morphism is not equal to the specified cell in the given intrinsic source\n" );
@@ -392,9 +451,12 @@ InstallMethod( Intrinsify,
         Error( "the target of the morphism is not equal to the specified cell in the given intrinsic target\n" );
     fi;
     
+    s := PositionOfActiveCell( S );
+    t := PositionOfActiveCell( T );
+    
     mor := rec(
-               index_pairs_of_presentations := [ 1, 1 ],
-               ("[ 1, 1 ]") := mor
+               index_pairs_of_presentations := [ [ s, t, 1 ] ],
+               morphisms := rec( (String( [ s, t ] )) := [ mor ] )
                );
     
     Objectify( TheTypeIntrinsicMorphism, mor );
