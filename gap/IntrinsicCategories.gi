@@ -127,6 +127,184 @@ InstallMethod( ActiveCell,
         
   IdFunc );
 
+##
+InstallMethod( AddTransitionIsomorphism,
+        "for an intrinsic object, an integer and a morphism",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism ],
+        
+  function( obj, s, eta )
+    
+    if not HasIsIsomorphism( eta ) then
+        Error( "the morphism does not yet know whether it is an isomorphism or not\n" );
+    elif not IsIsomorphism( eta ) then
+        Error( "the morphism is not an isomorphism\n" );
+    fi;
+    
+    Error( "we should never reach this line\n" );
+    
+end );
+    
+##
+InstallMethod( AddTransitionIsomorphism,
+        "for an intrinsic object, an integer and an isomorphism",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism and IsIsomorphism ],
+        
+  function( obj, s, eta )
+    local S, n, st;
+    
+    S := Source( eta );
+    
+    if not IsEqualForObjects( ActiveCell( S ), CertainCell( obj, s ) ) then
+        Error( "the source of the isomorphism and the cell at position ", s, " are not equal\n" );
+    fi;
+    
+    n := PositionOfLastStoredCell( obj ) + 1;
+    
+    st := String( [ s, n ] );
+    
+    if IsBound( obj!.TransitionIsomorphisms.(st) ) then
+        Error( "there is already a transition isomorphism at ", st );
+    fi;
+    
+    obj!.TransitionIsomorphisms.(st) := eta;
+    obj!.(n) := Range( eta );
+    obj!.PositionOfLastStoredCell := n;
+    obj!.PositionOfActiveCell := n;
+    
+end );
+
+##
+InstallMethod( AddTransitionIsomorphism,
+        "for an intrinsic object, a morphism, and an integer",
+        [ IsCapCategoryIntrinsicObjectRep, IsCapCategoryMorphism, IsInt ],
+        
+  function( obj, eta, t )
+    
+    if not HasIsIsomorphism( eta ) then
+        Error( "the morphism does not yet know whether it is an isomorphism or not\n" );
+    elif not IsIsomorphism( eta ) then
+        Error( "the morphism is not an isomorphism\n" );
+    fi;
+    
+    Error( "we should never reach this line\n" );
+    
+end );
+
+##
+InstallMethod( AddTransitionIsomorphism,
+        "for an intrinsic object, an isomorphism, and an integer",
+        [ IsCapCategoryIntrinsicObjectRep, IsCapCategoryMorphism and IsIsomorphism, IsInt ],
+        
+  function( obj, eta, t )
+    local T, n, st;
+    
+    T := Range( eta );
+    
+    if not IsEqualForObjects( ActiveCell( T ), CertainCell( obj, t ) ) then
+        Error( "the target of the isomorphism and the cell at position ", t, " are not equal\n" );
+    fi;
+    
+    n := PositionOfLastStoredCell( obj ) + 1;
+    
+    st := String( [ n, t ] );
+    
+    if IsBound( obj!.TransitionIsomorphisms.(st) ) then
+        Error( "there is already a transition isomorphism at ", st );
+    fi;
+    
+    obj!.TransitionIsomorphisms.(st) := eta;
+    obj!.(n) := Source( eta );
+    obj!.PositionOfLastStoredCell := n;
+    obj!.PositionOfActiveCell := n;
+    
+end );
+
+##
+InstallMethod( AddTransitionIsomorphism,
+        "for an intrinsic object, an integer, a morphism, and an integer",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism, IsInt ],
+        
+  function( obj, s, eta, t )
+    
+    if not HasIsIsomorphism( eta ) then
+        Error( "the morphism does not yet know whether it is an isomorphism or not\n" );
+    elif not IsIsomorphism( eta ) then
+        Error( "the morphism is not an isomorphism\n" );
+    fi;
+    
+    Error( "we should never reach this line\n" );
+    
+end );
+    
+##
+InstallMethod( AddTransitionIsomorphism,
+        "for an intrinsic object, an integer, an isomorphism, and an integer",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism and IsIsomorphism, IsInt ],
+        
+  function( obj, s, eta, t )
+    local S, T, st;
+    
+    S := Source( eta );
+    T := Range( eta );
+    
+    if not IsEqualForObjects( ActiveCell( S ), CertainCell( obj, s ) ) then
+        Error( "the source of the isomorphism and the cell at position ", s, " are not equal\n" );
+    elif not IsEqualForObjects( ActiveCell( T ), CertainCell( obj, t ) ) then
+        Error( "the target of the isomorphism and the cell at position ", t, " are not equal\n" );
+    fi;
+    
+    st := String( [ s, t ] );
+    
+    if IsBound( obj!.TransitionIsomorphisms.(st) ) then
+        Error( "there is already a transition isomorphism at ", st );
+    fi;
+    
+    obj!.TransitionIsomorphisms.(st) := eta;
+    
+end );
+
+##
+InstallMethod( TransitionIsomorphism,
+        "for an intrinsic object and two integers",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsInt ],
+        
+  function( obj, s, t )
+    local tr, st, eta;
+    
+    tr := obj!.TransitionIsomorphisms;
+    
+    st := String( [ s, t ] );
+    
+    if IsBound( tr.(st) ) then
+        return tr.(st);
+    fi;
+    
+    st := String( [ t, s ] );
+    
+    if IsBound( tr.(st) ) then
+        
+        eta := Inverse( tr.(st) );
+        
+        AddTransitionIsomorphism( obj, t, eta, s );
+        
+        return eta;
+        
+    fi;
+    
+    if s = t then
+        
+        eta := IdentityMorphism( CertainCell( obj, s ) );
+        
+        AddTransitionIsomorphism( obj, s, eta, s );
+        
+        return eta;
+        
+    fi;
+    
+    Error( "non of the transition isomorphisms at positions ", [ s, t ], " or ", [ t, s ], " exist\n" );
+    
+end );
+
 ####################################
 #
 # methods for constructors:
@@ -142,6 +320,7 @@ InstallMethod( Intrinsify,
     obj := rec(
                PositionOfLastStoredCell := 1,
                PositionOfActiveCell := 1,
+               TransitionIsomorphisms := rec( ),
                1 := obj
                );
     

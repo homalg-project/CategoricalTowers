@@ -114,3 +114,33 @@ DeclareOperation( "PositionOfActiveCell",
 #! @Arguments c
 DeclareOperation( "ActiveCell",
         [ IsObject ] );
+
+#! @Description
+#!  Add the isomorphism <A>eta</A> to the record of transition isomorphisms.
+#!  <C>Source</C>( <A>eta</A> ) must be equal to <C>CertainCell</C>( <A>o</A>, <A>s</A> ).
+#! @Arguments o, s, eta
+DeclareOperation( "AddTransitionIsomorphism",
+        [ IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  In the second version the
+#!  <C>Range</C>( <A>eta</A> ) must be equal to <C>CertainCell</C>( <A>o</A>, <A>t</A> ).
+#! @Arguments o, eta, t
+#! @Group AddTransitionIsomorphism
+DeclareOperation( "AddTransitionIsomorphism",
+        [ IsCapCategoryIntrinsicObject, IsCapCategoryMorphism, IsInt ] );
+
+#! @Description
+#!  In the third version the <C>Range</C>( <A>eta</A> ) must be equal to <C>CertainCell</C>( <A>o</A>, <A>t</A> )
+#!  and the <C>Source</C>( <A>eta</A> ) must be equal to <C>CertainCell</C>( <A>o</A>, <A>s</A> ).
+#! @Arguments o, s, eta, t
+#! @Group AddTransitionIsomorphism
+DeclareOperation( "AddTransitionIsomorphism",
+        [ IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism, IsInt ] );
+
+#! @Description
+#!  Return the transition isomorphism of the intrinsic object <A>o</A>
+#!  at position (<A>s</A>,<A>t</A>).
+#! @Arguments o, s, t
+DeclareOperation( "TransitionIsomorphism",
+        [ IsCapCategoryIntrinsicObject, IsInt, IsInt ] );
