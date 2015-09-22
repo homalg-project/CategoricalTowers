@@ -634,7 +634,10 @@ InstallMethod( IntrinsicCategory,
             elif IsList( info.with_given_without_given_name_pair ) and
               name = info.with_given_without_given_name_pair[1] then
                 continue;
-            elif IsBound( info.universal_object ) then
+            elif IsBound( info.universal_object ) and
+              Position( recnames, info.universal_object ) = fail then
+                ## add the corresponding universal object
+                ## at the end of the list for its method to be installed
                 Add( recnames, info.universal_object );
             fi;
             func := create_func_morphism( name );
