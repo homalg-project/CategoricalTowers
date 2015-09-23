@@ -586,6 +586,7 @@ InstallMethod( IntrinsicCategory,
     IC!.UnderlyingCategory := C;
     
     SetCachingOfCategoryCrisp( IC );
+    #DeactivateCachingOfCategory( IC );
     
     for name in ListKnownCategoricalProperties( C ) do
         name := ValueGlobal( name );
