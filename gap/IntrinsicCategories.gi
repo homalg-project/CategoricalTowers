@@ -574,7 +574,7 @@ InstallMethod( IntrinsicCategory,
   function( C )
     local name, IC, recnames, func, pos, create_func_bool,
           create_func_object0, create_func_object, create_func_morphism,
-          info, add;
+          create_func_universal_morphism, info, add;
     
     if HasName( C ) then
         name := Concatenation( "intrinsic_", Name( C ) );
@@ -712,6 +712,76 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
+    create_func_universal_morphism :=
+      function( name )
+        local info, oper, type, name_object_constructor;
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        if not info.with_given_without_given_name_pair[2] = name then
+            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        fi;
+        
+        oper := ValueGlobal( name );
+        
+        type := info.io_type;
+        
+        name_object_constructor := info.universal_object;
+        
+        return
+          function( arg )
+            local l, universal_objct, active_pos, context_of_constructor,
+                  active_positions, eval_arg, result, src_trg, S, T;
+            
+            l := Length( arg );
+            
+            universal_objct := arg[l];
+            
+            active_pos := PositionOfActiveCell( universal_objct );
+            
+            if not active_pos = 1 then
+                SetPositionOfActiveCell( universal_objct, 1 );
+            fi;
+            
+            context_of_constructor := universal_objct!.(name_object_constructor);
+            
+            active_positions := List( context_of_constructor[1], PositionOfActiveCell );
+            
+            if not active_positions = context_of_constructor[2] then
+                CallFuncList( SetPositionOfActiveCell, context_of_constructor );
+            fi;
+            
+            eval_arg := List( arg, ActiveCell );
+            
+            result := CallFuncList( oper, eval_arg );
+            
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            S := src_trg[1];
+            T := src_trg[2];
+            
+            result := Intrinsify(
+                              result,
+                              S,
+                              PositionOfActiveCell( S ),
+                              T,
+                              PositionOfActiveCell( T )
+                              );
+            
+            ## the order of the following two SetPositionOfActiveCell is important
+            if not active_positions = context_of_constructor[2] then
+                SetPositionOfActiveCell( context_of_constructor[1], active_positions );
+            fi;
+            
+            if not active_pos = 1 then
+                SetPositionOfActiveCell( universal_objct, active_pos );
+            fi;
+            
+            return result;
+            
+          end;
+          
+      end;
+    
     for name in recnames do
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
@@ -737,7 +807,12 @@ InstallMethod( IntrinsicCategory,
                 ## at the end of the list for its method to be installed
                 Add( recnames, info.universal_object );
             fi;
-            func := create_func_morphism( name );
+            
+            if IsList( info.with_given_without_given_name_pair ) then
+                func := create_func_universal_morphism( name );
+            else
+                func := create_func_morphism( name );
+            fi;
         else
             Error( "unkown return type of the operation ", name );
         fi;
