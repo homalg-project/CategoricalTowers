@@ -656,18 +656,25 @@ InstallMethod( IntrinsicCategory,
     
     create_func_object :=
       function( name )
+        local oper;
         
-        name := ValueGlobal( name );
+        oper := ValueGlobal( name );
         
-        return
+        return ## a constructor for universal objects
           function( arg )
-            local eval_arg, result;
+            local active_pos, eval_arg, result;
+            
+            active_pos := List( arg, PositionOfActiveCell );
             
             eval_arg := List( arg, ActiveCell );
             
-            result := CallFuncList( name, eval_arg );
+            result := CallFuncList( oper, eval_arg );
             
-            return Intrinsify( result );
+            result := Intrinsify( result );
+            
+            result!.(name) := [ arg, active_pos ];
+            
+            return result;
             
           end;
           
