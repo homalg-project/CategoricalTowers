@@ -595,7 +595,8 @@ InstallMethod( IntrinsicCategory,
     
     ## this can be seen as a characterization of the intrinsic categories
     AddIsEqualForObjects( IC, IsIdenticalObj );
-    AddIsEqualForMorphisms( IC,
+    AddIsEqualForMorphisms( IC, IsIdenticalObj );
+    AddIsCongruentForMorphisms( IC,
             function( m, n )
               return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
             end
