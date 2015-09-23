@@ -81,6 +81,17 @@ DeclareOperation( "IntrinsicCategory",
 
 ####################################
 #
+#! @Section Attributes
+#
+####################################
+
+#! @Description
+#!  The &GAP; category of intrinsic cells in an intrinsic &CAP; category.
+DeclareAttribute( "ZeroObjectCellWithPosition",
+        IsCapCategoryIntrinsicObject );
+
+####################################
+#
 #! @Section Operations
 #
 ####################################

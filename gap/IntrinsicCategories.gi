@@ -46,6 +46,40 @@ BindGlobal( "TheTypeIntrinsicMorphism",
 
 ####################################
 #
+# immediate methods:
+#
+####################################
+
+InstallImmediateMethod( ZeroObjectCellWithPosition,
+        IsCapCategoryIntrinsicObjectRep and IsZero, 0,
+        
+  function( o )
+    local p, a, m, n;
+    
+    p := PositionOfActiveCell( o );
+    
+    a := ActiveCell( o );
+    
+    m := MorphismFromZeroObject( a );
+    n := MorphismIntoZeroObject( a );
+    
+    ## TODO: this should be automatically implied (CAP issue #58)
+    IsIsomorphism( m );
+    IsIsomorphism( n );
+    
+    if IsEqualForObjects( Source( m ), a ) then
+        return [ p, IdentityMorphism( a ) ];
+    fi;
+    
+    AddTransitionIsomorphism( o, m, p );
+    AddTransitionIsomorphism( o, p, n, PositionOfActiveCell( o ) );
+    
+    return [ PositionOfLastStoredCell( o ), ActiveCell( o ) ];
+    
+end );
+
+####################################
+#
 # methods for operations:
 #
 ####################################
