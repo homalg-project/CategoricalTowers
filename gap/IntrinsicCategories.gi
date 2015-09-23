@@ -85,10 +85,10 @@ InstallMethod( CertainCell,
     if not index_pair in l then
         
         if not IsBound( mor!.morphisms.(st) ) then
-            mor!.morphisms.(st) := [ ];
+            mor!.morphisms.(st) := [ 1, [ ] ];
         fi;
         
-        morphisms := mor!.morphisms.(st);
+        morphisms := mor!.morphisms.(st)[2];
         
         if not Length( morphisms ) + 1 = k then
             Error( "the new triple position does not exist and the last entry ", k,
@@ -104,18 +104,17 @@ InstallMethod( CertainCell,
         morphism :=
           PreCompose(
                   [ TransitionIsomorphism( Source( mor ), pos_s, l[pos][1] ),
-                    mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[l[pos][3]],
+                    mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]],
                     TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
                   );
         
-
         Add( morphisms, morphism );
         
         Add( l, index_pair );
         
     fi;
     
-    return mor!.morphisms.(st)[k];
+    return mor!.morphisms.(st)[2][k];
     
 end );
 
@@ -130,10 +129,10 @@ InstallMethod( CertainCell,
     st := String( [ pos_s, pos_t ] );
     
     if not IsBound( mor!.morphisms.(st) ) then
-        mor!.morphisms.(st) := [ ];
         k := 1;
+        mor!.morphisms.(st) := [ k, [ ] ];
     else
-        k := Length( mor!.morphisms.(st) );
+        k := mor!.morphisms.(st)[1];
     fi;
     
     return CertainCell( mor, pos_s, pos_t, k );
@@ -452,7 +451,7 @@ InstallMethod( Intrinsify,
     
     mor := rec(
                index_pairs_of_presentations := [ [ s, t, 1 ] ],
-               morphisms := rec( (String( [ s, t ] )) := [ mor ] )
+               morphisms := rec( (String( [ s, t ] )) := [ 1, [ mor ] ] )
                );
     
     Objectify( TheTypeIntrinsicMorphism, mor );
