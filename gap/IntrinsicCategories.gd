@@ -116,6 +116,12 @@ DeclareOperation( "PositionOfActiveCell",
         [ IsObject ] );
 
 #! @Description
+#!  Set the position of the active cell underlying the intrinsic cell <A>c</A> using <A>p</A>.
+#! @Arguments c, p
+DeclareOperation( "SetPositionOfActiveCell",
+        [ IsObject, IsObject ] );
+
+#! @Description
 #!  Return the active cell underlying the intrinsic cell <A>c</A>.
 #! @Arguments c
 DeclareOperation( "ActiveCell",

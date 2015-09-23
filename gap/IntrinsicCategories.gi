@@ -186,6 +186,57 @@ InstallMethod( PositionOfActiveCell,
   ReturnFail );
 
 ##
+InstallMethod( SetPositionOfActiveCell,
+        "for an intrinsic object and an integer",
+        [ IsCapCategoryIntrinsicObjectRep, IsInt ],
+        
+  function( obj, p )
+    
+    obj!.PositionOfActiveCell := p;
+    
+end );
+
+##
+InstallMethod( SetPositionOfActiveCell,
+        "for an intrinsic morphism and a list of two integers",
+        [ IsCapCategoryIntrinsicMorphismRep, IsList ],
+        
+  function( mor, p )
+    local s, t;
+    
+    s := p[1];
+    t := p[2];
+    
+    SetPositionOfActiveCell( Source( mor ), s );
+    SetPositionOfActiveCell( Range( mor ), t );
+    
+    mor!.morphisms.(String( [ s, t ] ))[1] := p[3];
+    
+end );
+
+##
+InstallMethod( SetPositionOfActiveCell,
+        "for a list and a list of integers",
+        [ IsList, IsList ],
+        
+  function( L, p )
+    
+    Perform( [ 1 .. Length( L ) ], function( i ) SetPositionOfActiveCell( L[i], p[i] ); end );
+    
+end );
+
+##
+InstallMethod( SetPositionOfActiveCell,
+        "fallback method for two arbitrary GAP objects",
+        [ IsObject, IsObject ],
+        
+  function( a, b )
+    
+    ## do nothing
+    
+end );
+
+##
 InstallMethod( ActiveCell,
         "for an intrinsic object",
         [ IsCapCategoryIntrinsicObjectRep ],
@@ -261,7 +312,7 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.TransitionIsomorphisms.(st) := eta;
     obj!.(n) := Range( eta );
     obj!.PositionOfLastStoredCell := n;
-    obj!.PositionOfActiveCell := n;
+    SetPositionOfActiveCell( obj, n );
     
 end );
 
@@ -307,7 +358,7 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.TransitionIsomorphisms.(st) := eta;
     obj!.(n) := Source( eta );
     obj!.PositionOfLastStoredCell := n;
-    obj!.PositionOfActiveCell := n;
+    SetPositionOfActiveCell( obj, n );
     
 end );
 
