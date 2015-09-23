@@ -147,6 +147,45 @@ InstallMethod( PositionOfActiveCell,
   obj ->  obj!.PositionOfActiveCell );
 
 ##
+InstallMethod( PositionOfActiveCell,
+        "for an intrinsic morphism",
+        [ IsCapCategoryIntrinsicMorphismRep ],
+        
+  function( mor )
+    local s, t, st, morphisms, k;
+    
+    s := PositionOfActiveCell( Source( mor ) );
+    t := PositionOfActiveCell( Range( mor ) );
+    
+    st := String( [ s, t ] );
+    
+    morphisms := mor!.morphisms;
+    
+    if IsBound( morphisms.(st) ) then
+        k := morphisms.(st);
+    else
+        k := 1;
+    fi;
+    
+    return [ s, t, k ];
+    
+end );
+
+##
+InstallMethod( PositionOfActiveCell,
+        "for a list",
+        [ IsList ],
+        
+  L -> List( L, PositionOfActiveCell ) );
+
+##
+InstallMethod( PositionOfActiveCell,
+        "fallback method for an arbitrary GAP object",
+        [ IsObject ],
+        
+  ReturnFail );
+
+##
 InstallMethod( ActiveCell,
         "for an intrinsic object",
         [ IsCapCategoryIntrinsicObjectRep ],
