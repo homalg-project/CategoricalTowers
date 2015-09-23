@@ -113,7 +113,7 @@ DeclareOperation( "CertainCell",
 #!  Return the position of the active cell underlying the intrinsic cell <A>c</A>.
 #! @Arguments c
 DeclareOperation( "PositionOfActiveCell",
-        [ IsCapCategoryIntrinsicCell ] );
+        [ IsObject ] );
 
 #! @Description
 #!  Return the active cell underlying the intrinsic cell <A>c</A>.
