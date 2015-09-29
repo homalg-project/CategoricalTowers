@@ -5,7 +5,7 @@ PackageName := "IntrinsicCategories",
 Subtitle := "Intrinsic Categories for CAP",
 
 Version := Maximum( [
-                   "2015.09.23", ## Mohamed's version
+                   "2015.09.24", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
