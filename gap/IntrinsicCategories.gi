@@ -643,6 +643,8 @@ InstallMethod( IntrinsicCategory,
             "IsEqualForObjects",
             "IsEqualForMorphisms",
             "IsCongruentForMorphisms",
+            "IsEqualForCacheForObjects",
+            "IsEqualForCacheForMorphisms"
             ] do
         
         pos := Position( recnames, func );

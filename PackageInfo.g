@@ -7,6 +7,8 @@ Subtitle := "Intrinsic Categories for CAP",
 Version := Maximum( [
                    "2015.09.24", ## Mohamed's version
                    ## this line prevents merge conflicts
+                   "2015.10.06", ## Sebas' version
+                   ## this line prevents merge conflicts
                    ] ),
 
 # this avoids git-merge conflicts
