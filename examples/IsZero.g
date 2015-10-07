@@ -13,6 +13,7 @@ R := QQ * "x,y";
 #! Q[x,y]
 category := IntrinsicCategory( LeftPresentations( R ) );
 #! Category of left presentations of Q[x,y]
+#! @EndExample
 M := AsLeftOrRightPresentation( HomalgMatrix( [ [ 1, 1 ], [ 2, 1 ] ], 2, 2, R ), true );
 M := Intrinsify( category, M );
 
