@@ -768,20 +768,20 @@ InstallMethod( IntrinsicCategory,
         
         return
           function( arg )
-            local l, universal_objct, active_pos, context_of_constructor,
+            local l, universal_object, active_pos, context_of_constructor,
                   active_positions, eval_arg, result, src_trg, S, T;
             
             l := Length( arg );
             
-            universal_objct := arg[l];
+            universal_object := arg[l];
             
-            active_pos := PositionOfActiveCell( universal_objct );
+            active_pos := PositionOfActiveCell( universal_object );
             
             if not active_pos = 1 then
-                SetPositionOfActiveCell( universal_objct, 1 );
+                SetPositionOfActiveCell( universal_object, 1 );
             fi;
             
-            context_of_constructor := universal_objct!.(name_object_constructor);
+            context_of_constructor := universal_object!.(name_object_constructor);
             
             active_positions := List( context_of_constructor[1], PositionOfActiveCell );
             
@@ -811,7 +811,7 @@ InstallMethod( IntrinsicCategory,
             fi;
             
             if not active_pos = 1 then
-                SetPositionOfActiveCell( universal_objct, active_pos );
+                SetPositionOfActiveCell( universal_object, active_pos );
             fi;
             
             return result;
