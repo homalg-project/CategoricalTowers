@@ -694,9 +694,11 @@ InstallMethod( IntrinsicCategory,
     
     create_func_object :=
       function( name )
-        local oper;
+        local oper, context;
         
         oper := ValueGlobal( name );
+        
+        context := Concatenation( name, "_Context" );
         
         return ## a constructor for universal objects
           function( arg )
@@ -710,7 +712,7 @@ InstallMethod( IntrinsicCategory,
             
             result := Intrinsify( result );
             
-            result!.(name) := [ arg, active_pos ];
+            result!.(context) := [ arg, active_pos ];
             
             return result;
             
@@ -752,7 +754,7 @@ InstallMethod( IntrinsicCategory,
     
     create_func_universal_morphism :=
       function( name )
-        local info, oper, type, name_object_constructor;
+        local info, oper, type, context;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -764,7 +766,7 @@ InstallMethod( IntrinsicCategory,
         
         type := info.io_type;
         
-        name_object_constructor := info.universal_object;
+        context := Concatenation( info.universal_object, "_Context" );
         
         return
           function( arg )
@@ -781,7 +783,7 @@ InstallMethod( IntrinsicCategory,
                 SetPositionOfActiveCell( universal_object, 1 );
             fi;
             
-            context_of_constructor := universal_object!.(name_object_constructor);
+            context_of_constructor := universal_object!.(context);
             
             active_positions := List( context_of_constructor[1], PositionOfActiveCell );
             
