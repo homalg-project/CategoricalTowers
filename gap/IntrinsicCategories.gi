@@ -676,9 +676,11 @@ InstallMethod( IntrinsicCategory,
     
     create_func_object0 :=
       function( name )
-        local oper;
+        local oper, context;
         
         oper := ValueGlobal( name );
+        
+        context := Concatenation( name, "_Context" );
         
         return
           function( )
@@ -686,7 +688,11 @@ InstallMethod( IntrinsicCategory,
             
             result := oper( C );
             
-            return Intrinsify( result );
+            result := Intrinsify( result );
+            
+            result!.(context) := [ [ ], [ ] ];
+            
+            return result;
             
           end;
           
