@@ -14,7 +14,6 @@ AutoDoc( "IntrinsicCategories" :
                            "HOMALG_IO.show_banners := false;",
                            "HOMALG_IO.suppress_PID := true;",
                            "HOMALG_IO.use_common_stream := true;",
-                           "HOMALG.SuppressParityInViewObjForCommutativeStructureObjects := true;",
                            ],
                          ),
         
