@@ -838,7 +838,7 @@ InstallMethod( IntrinsicCategory,
             func := create_func_object0( name );
         elif info.return_type = "object" then
             func := create_func_object( name );
-        elif info.return_type = "morphism" then
+        elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
                 continue;
