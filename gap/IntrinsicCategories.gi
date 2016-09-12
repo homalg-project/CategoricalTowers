@@ -580,6 +580,123 @@ InstallMethod( Intrinsify,
 end );
 
 ##
+InstallMethod( Intrinsify,
+        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ],
+        
+  function( F, name, A, B )
+    local intF;
+    
+    if not IsIdenticalObj( AsCapCategory( Source( F ) ), A!.UnderlyingCategory ) then
+        Error( "the source of the functor and the category underlying the intrinsic source do not coincide\n" );
+    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), B!.UnderlyingCategory ) then
+        Error( "the target of the functor and the category underlying the intrinsic target do not coincide\n" );
+    fi;
+    
+    intF := CapFunctor( name, A, B );
+    
+    AddObjectFunction( intF,
+            function( obj )
+              return Intrinsify( B, ApplyFunctor( F, ActiveCell( obj ) ) );
+            end
+            );
+    
+    AddMorphismFunction( intF,
+            function( new_source, mor, new_range )
+              return Intrinsify( B, ApplyFunctor( F, ActiveCell( mor ) ) );
+            end
+            );
+    
+    intF!.UnderlyingFunctor := F;
+    
+    return intF;
+    
+end );
+    
+##
+InstallMethod( Intrinsify,
+        [ IsCapFunctor, IsCapCategory, IsCapCategory ],
+        
+  function( F, A, B )
+    local name;
+    
+    name := "Intrinsic version of ";
+    name := Concatenation( name, Name( F ) );
+    
+    return Intrinsify( F, name, A, B );
+    
+end );
+
+##
+InstallMethod( Intrinsify,
+        [ IsCapFunctor, IsString, IsCapCategory ],
+        
+  function( F, name, A )
+    
+    if not IsIdenticalObj( Source( F ), Range( F ) ) then
+        Error( "the functor is not an endofunctor\n" );
+    fi;
+    
+    return Intrinsify( F, name, A, A );
+    
+end );
+
+##
+InstallMethod( Intrinsify,
+        [ IsCapFunctor, IsCapCategory ],
+        
+  function( F, A )
+    local name;
+    
+    name := "Intrinsic version of ";
+    name := Concatenation( name, Name( F ) );
+    
+    return Intrinsify( F, name, A );
+    
+end );
+
+##
+InstallMethod( Intrinsify,
+        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ],
+        
+  function( eta, name, F, G )
+    local inteta;
+    
+    if not IsIdenticalObj( Source( eta ), F!.UnderlyingFunctor ) then
+        Error( "the source of the natural transformation and the functor underlying the intrinsic source do not coincide\n" );
+    elif not IsIdenticalObj( Range( eta ), G!.UnderlyingFunctor ) then
+        Error( "the target of the natural transformation and the functor underlying the intrinsic target do not coincide\n" );
+    fi;
+    
+    inteta := NaturalTransformation( name, F, G );
+    
+    AddNaturalTransformationFunction(
+            inteta,
+            function( source, obj, range )
+              
+              return Intrinsify( AsCapCategory( Range( F ) ), ApplyNaturalTransformation( eta, ActiveCell( obj ) ) );
+              
+            end  );
+    
+    inteta!.UnderlyingNaturalTransformation := eta;
+    
+    return inteta;
+    
+end );
+
+##
+InstallMethod( Intrinsify,
+        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ],
+        
+  function( eta, F, G )
+    local name;
+    
+    name := "Intrinsic version of ";
+    name := Concatenation( name, Name( eta ) );
+    
+    return Intrinsify( eta, name, F, G );
+    
+end );
+
 InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],
         
@@ -848,6 +965,8 @@ InstallMethod( IntrinsicCategory,
     od;
     
     Finalize( IC );
+    
+    IdentityFunctor( IC )!.UnderlyingFunctor := IdentityFunctor( C );
     
     return IC;
     

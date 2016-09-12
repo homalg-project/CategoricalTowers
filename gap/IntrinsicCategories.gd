@@ -68,6 +68,48 @@ DeclareOperation( "Intrinsify",
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
+#!  Intrinsify a functor ...
+#! @Arguments F, name, A, B
+#! @Group Intrinsify
+DeclareOperation( "Intrinsify",
+        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
+
+#! @Description
+#!  Intrinsify a functor ...
+#! @Arguments F, A, B
+#! @Group Intrinsify
+DeclareOperation( "Intrinsify",
+        [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
+
+#! @Description
+#!  Intrinsify an endofunctor ...
+#! @Arguments F, name, A
+#! @Group Intrinsify
+DeclareOperation( "Intrinsify",
+        [ IsCapFunctor, IsString, IsCapCategory ] );
+
+#! @Description
+#!  Intrinsify an endofunctor ...
+#! @Arguments F, A
+#! @Group Intrinsify
+DeclareOperation( "Intrinsify",
+        [ IsCapFunctor, IsCapCategory ] );
+
+#! @Description
+#!  Intrinsify a natural transformation
+#! @Arguments eta, name, A, B
+#! @Group Intrinsify
+DeclareOperation( "Intrinsify",
+        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ] );
+
+#! @Description
+#!  Intrinsify a natural transformation
+#! @Arguments eta, A, B
+#! @Group Intrinsify
+DeclareOperation( "Intrinsify",
+        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );
+
+#! @Description
 #!  Create an intrinsic category out of <A>C</A>.
 #! @Arguments C
 DeclareOperation( "IntrinsicCategory",
