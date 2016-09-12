@@ -523,20 +523,20 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategoryMorphism ],
+        [ IsCapCategory, IsCapCategoryMorphism ],
         
-  function( mor )
+  function( C, mor )
     local S, T;
     
     S := Source( mor );
     T := Range( mor );
     
     if IsEqualForObjects( S, T ) then
-        S := Intrinsify( S );
+        S := Intrinsify( C, S );
         T := S;
     else        
-        S := Intrinsify( S );
-        T := Intrinsify( T );
+        S := Intrinsify( C, S );
+        T := Intrinsify( C, T );
     fi;
     
     return Intrinsify( mor, S, 1, T, 1 );
@@ -545,26 +545,16 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategory, IsCapCategoryMorphism ],
-        
-  function( C, mor )
-    
-    mor := Intrinsify( mor );
-    
-    AddMorphism( C, mor );
-    
-    return mor;
-    
-end );
-
-##
-InstallMethod( Intrinsify,
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
         
   function( mor, S, posS, T, posT )
-    local s, t;
+    local C, s, t;
     
-    if not IsEqualForObjects( Source( mor ), CertainCell( S, posS ) ) then
+    C := CapCategory( S );
+    
+    if not IsIdenticalObj( C, CapCategory( T ) ) then
+        Error( "source and target lie in different categories\n" );
+    elif not IsEqualForObjects( Source( mor ), CertainCell( S, posS ) ) then
         Error( "the source of the morphism is not equal to the specified cell in the given intrinsic source\n" );
     elif not IsEqualForObjects( Range( mor ), CertainCell( T, posT ) ) then
         Error( "the target of the morphism is not equal to the specified cell in the given intrinsic target\n" );
@@ -583,24 +573,12 @@ InstallMethod( Intrinsify,
     SetSource( mor, S );
     SetRange( mor, T );
     
-    return mor;
-    
-end );
-
-##
-InstallMethod( Intrinsify,
-        [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
-        
-  function( C, mor, S, posS, T, posT )
-    
-    mor := Intrinsify( mor, S, posS, T, posT );
-    
     AddMorphism( C, mor );
     
     return mor;
     
 end );
-    
+
 ##
 InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],

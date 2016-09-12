@@ -68,13 +68,6 @@ DeclareOperation( "Intrinsify",
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
-#!  In the six argument version the intrinsified morphism <A>m</A> is subsequently added to the category <A>C</A>.
-#! @Arguments C, m, s, i, t, j
-#! @Group Intrinsify
-DeclareOperation( "Intrinsify",
-        [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
-
-#! @Description
 #!  Create an intrinsic category out of <A>C</A>.
 #! @Arguments C
 DeclareOperation( "IntrinsicCategory",

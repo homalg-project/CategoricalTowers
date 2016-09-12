@@ -41,12 +41,12 @@ C2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );
 #!  of left presentations of Q[x,y]>
 delta_1_3 := PresentationMorphism( ActiveCell( C1[3] ), HomalgMatrix( [ [ "x^2" ], [ "xy" ], [ "y^3"] ], 3, 1, R ), ActiveCell( C0[3] ) );
 #! <A morphism in Category of left presentations of Q[x,y]>
-delta_1_3 := Intrinsify( category, delta_1_3, C1[3], 1, C0[3], 1 );
+delta_1_3 := Intrinsify( delta_1_3, C1[3], 1, C0[3], 1 );
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
 delta_1_2 := PresentationMorphism( ActiveCell( C1[2] ), HomalgMatrix( [ [ "x^2" ], [ "xy" ] ], 2, 1, R ), ActiveCell( C0[2] ) );
 #! <A morphism in Category of left presentations of Q[x,y]>
-delta_1_2 := Intrinsify( category, delta_1_2, C1[2], 1, C0[2], 1 );
+delta_1_2 := Intrinsify( delta_1_2, C1[2], 1, C0[2], 1 );
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
 delta1 := ZFunctorMorphism( C1, [ UniversalMorphismFromInitialObject( C0[1] ), UniversalMorphismFromInitialObject( C0[1] ), delta_1_2, delta_1_3 ], 0, C0 );
@@ -60,12 +60,12 @@ delta1 := AsAscendingFilteredMorphism( delta1 );
 #!  of left presentations of Q[x,y]>
 delta_2_3 := PresentationMorphism( ActiveCell( C2[3] ), HomalgMatrix( [ [ "y", "-x", "0" ] ], 1, 3, R ), ActiveCell( C1[3] ) );
 #! <A morphism in Category of left presentations of Q[x,y]>
-delta_2_3 := Intrinsify( category, delta_2_3, C2[3], 1, C1[3], 1 );
+delta_2_3 := Intrinsify( delta_2_3, C2[3], 1, C1[3], 1 );
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
 delta_2_4 := PresentationMorphism( ActiveCell( C2[4] ), HomalgMatrix( [ [ "y", "-x", "0" ], [ "0", "y^2", "-x" ] ], 2, 3, R ), ActiveCell( C1[4] ) );
 #! <A morphism in Category of left presentations of Q[x,y]>
-delta_2_4 := Intrinsify( category, delta_2_4, C2[4], 1, C1[4], 1 );
+delta_2_4 := Intrinsify( delta_2_4, C2[4], 1, C1[4], 1 );
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
 delta2 := ZFunctorMorphism( C2, [  UniversalMorphismFromInitialObject( C1[2] ), delta_2_3, delta_2_4 ], 2, C1 );
