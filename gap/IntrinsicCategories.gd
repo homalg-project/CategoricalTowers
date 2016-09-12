@@ -47,6 +47,7 @@ DeclareCategory( "IsCapCategoryIntrinsicMorphism",
 #! @Description
 #!  In the one argument version create an intrinsic cell out of the cell <A>c</A>.
 #!  If <A>c</A> is a morphism then its source and object are intrinsified.
+#! @Group Intrinsify
 #! @Arguments c
 DeclareOperation( "Intrinsify",
         [ IsCapCategoryCell ] );
