@@ -196,7 +196,7 @@ InstallMethod( PositionOfActiveCell,
     morphisms := mor!.morphisms;
     
     if IsBound( morphisms.(st) ) then
-        k := morphisms.(st);
+        k := morphisms.(st)[1];
     else
         k := 1;
     fi;
