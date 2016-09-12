@@ -733,6 +733,80 @@ InstallMethod( Intrinsify,
     
 end );
 
+InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
+        [ IsCapNaturalTransformation ],
+        
+  function( eta )
+    local Id, C, intF, e, name, F, IdF;
+    
+    Id := Source( eta );
+    C := AsCapCategory( Source( Id ) );
+    
+    if not HasIsIsomorphism( eta ) then
+        Info( InfoWarning, 1, "the natural transformation is not known to be a natural isomorphism\n" );
+    elif not IsIsomorphism( eta ) then
+        Error( "the natural transformation is not a natural isomorphism\n" );
+    elif not IsIdenticalObj( Id, IdentityFunctor( C ) ) then
+        Error( "the source of the natural isomorphism is not the identity functor of the intrinsic category\n" );
+    fi;
+    
+    intF := Range( eta );
+    
+    e := eta!.UnderlyingNaturalTransformation;
+    
+    name := Name( intF );
+    name := Concatenation( name, " as identity functor with side effects" );
+    
+    F := intF!.UnderlyingFunctor;
+    
+    IdF := CapFunctor( name, C, C );
+    
+    AddObjectFunction( IdF,
+            function( obj )
+              local a, eta_a;
+              
+              a := ActiveCell( obj );
+              eta_a := ApplyNaturalTransformation( e, a );
+              
+              Assert( 4, IsIsomorphism( eta_a ) );
+              SetIsIsomorphism( eta_a, true );
+              
+              if IsEqualForObjects( Range( eta_a ), a ) and
+                 IsCongruentForMorphisms( eta_a, IdentityMorphism( a ) ) then
+                  return obj;
+              fi;
+              
+              AddTransitionIsomorphism( obj, PositionOfActiveCell( obj ), eta_a );
+              
+              return obj;
+            end
+            );
+    
+    AddMorphismFunction( IdF,
+            function( new_source, mor, new_range )
+              local a, b;
+              
+              a := ActiveCell( mor );
+              
+              b := ApplyFunctor( F, a );
+              
+              AddToIntrinsicMorphism( mor, b,
+                      PositionOfActiveCell( new_source ),
+                      PositionOfActiveCell( new_range ) );
+              
+              return mor;
+              
+            end
+            );
+    
+    DeactivateCachingObject( ObjectCache( IdF ) );
+    DeactivateCachingObject( MorphismCache( IdF ) );
+    
+    return IdF;
+    
+end );
+    
+##
 InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],
         

@@ -110,6 +110,13 @@ DeclareOperation( "Intrinsify",
         [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );
 
 #! @Description
+#!  Turn the range of the natural isomorphism <A>eta</A> into the identity functor
+#!  and turn <A>eta</A> into the identity natural transformation.
+#! @Arguments eta
+DeclareOperation( "TurnAutoequivalenceIntoIdentityFunctor",
+        [ IsCapNaturalTransformation ] );
+
+#! @Description
 #!  Create an intrinsic category out of <A>C</A>.
 #! @Arguments C
 DeclareOperation( "IntrinsicCategory",
