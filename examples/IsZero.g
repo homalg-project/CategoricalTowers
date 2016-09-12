@@ -1,6 +1,6 @@
 #! @Chapter Examples and Tests
 
-#! @Section Spectral Sequences
+#! @Section IsZero
 
 LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "IntrinsicCategories" );
