@@ -482,6 +482,42 @@ InstallMethod( TransitionIsomorphism,
     
 end );
 
+##
+InstallMethod( AddToIntrinsicMorphism,
+        [ IsCapCategoryIntrinsicMorphism, IsCapCategoryMorphism, IsInt, IsInt ],
+        
+  function( mor, m, s, t )
+    local C, S, T, lm, a;
+    
+    C := CapCategory( mor );
+    
+    S := Source( mor );
+    T := Range( mor );
+    
+    if not IsIdenticalObj( C!.UnderlyingCategory, CapCategory( m ) ) then
+        Error( "the category of the second morphism is not the category underlying the intrinsic category of the first\n" );
+    elif not IsEqualForObjects( Source( m ), CertainCell( S, s ) ) then
+        Error( "the source of the second morphism is not equal to the specified cell in the given intrinsic source\n" );
+    elif not IsEqualForObjects( Range( m ), CertainCell( T, t ) ) then
+        Error( "the target of the second morphism is not equal to the specified cell in the given intrinsic target\n" );
+    fi;
+    
+    if [ s, t, 1 ] in mor!.index_pairs_of_presentations then
+        lm := mor!.morphisms.(String( [ s, t ] ));
+        a := lm[2][lm[1]];
+        ## space for improvement?: the comparison only happens with the "active" morphism
+        if not IsEqualForMorphisms( m, a ) then
+            Add( lm[2], m );
+            lm[1] := Length( lm[2] ) + 1;
+            Add( mor!.index_pairs_of_presentations, [ s, t, lm[1] ] );
+        fi;
+    else
+        Add( mor!.index_pairs_of_presentations, [ s, t, 1 ] );
+        mor!.morphisms.(String( [ s, t ] )) := [ 1, [ m ] ];
+    fi;
+    
+end );
+
 ####################################
 #
 # methods for constructors:

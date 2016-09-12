@@ -203,3 +203,9 @@ DeclareOperation( "AddTransitionIsomorphism",
 #! @Arguments o, s, t
 DeclareOperation( "TransitionIsomorphism",
         [ IsCapCategoryIntrinsicObject, IsInt, IsInt ] );
+
+#! @Description
+#!  Add the morphism <A>m</A> to the intrinsic morphism <A>mor</A> at position [ <A>s</A>, <A>t</A>, ? ].
+#! @Arguments mor, m, s, t
+DeclareOperation( "AddToIntrinsicMorphism",
+        [ IsCapCategoryIntrinsicMorphism, IsCapCategoryMorphism, IsInt, IsInt ] );
