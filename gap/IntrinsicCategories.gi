@@ -356,7 +356,7 @@ InstallMethod( AddTransitionIsomorphism,
     
     S := Source( eta );
     
-    if not IsEqualForObjects( ActiveCell( S ), CertainCell( obj, s ) ) then
+    if not IsEqualForObjects( S, CertainCell( obj, s ) ) then
         Error( "the source of the isomorphism and the cell at position ", s, " are not equal\n" );
     fi;
     
@@ -406,7 +406,7 @@ InstallMethod( AddTransitionIsomorphism,
     
     T := Range( eta );
     
-    if not IsEqualForObjects( ActiveCell( T ), CertainCell( obj, t ) ) then
+    if not IsEqualForObjects( T, CertainCell( obj, t ) ) then
         Error( "the target of the isomorphism and the cell at position ", t, " are not equal\n" );
     fi;
     
@@ -457,9 +457,9 @@ InstallMethod( AddTransitionIsomorphism,
     S := Source( eta );
     T := Range( eta );
     
-    if not IsEqualForObjects( ActiveCell( S ), CertainCell( obj, s ) ) then
+    if not IsEqualForObjects( S, CertainCell( obj, s ) ) then
         Error( "the source of the isomorphism and the cell at position ", s, " are not equal\n" );
-    elif not IsEqualForObjects( ActiveCell( T ), CertainCell( obj, t ) ) then
+    elif not IsEqualForObjects( T, CertainCell( obj, t ) ) then
         Error( "the target of the isomorphism and the cell at position ", t, " are not equal\n" );
     fi;
     
