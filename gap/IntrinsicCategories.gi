@@ -135,12 +135,33 @@ InstallMethod( CertainCell,
         
         pos := PositionProperty( dist, a -> a = min );
         
-        morphism :=
-          PreCompose(
-                  [ TransitionIsomorphism( Source( mor ), pos_s, l[pos][1] ),
-                    mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]],
-                    TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
-                  );
+        
+        if pos_s = l[pos][1] then
+            if l[pos][2] = pos_t then
+                morphism := mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]];
+            else
+                morphism :=
+                  PreCompose(
+                          [ mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]],
+                            TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
+                          );
+            fi;
+        else
+            if l[pos][2] = pos_t then
+                morphism :=
+                  PreCompose(
+                          [ TransitionIsomorphism( Source( mor ), pos_s, l[pos][1] ),
+                            mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]] ]
+                          );
+            else
+                morphism :=
+                  PreCompose(
+                          [ TransitionIsomorphism( Source( mor ), pos_s, l[pos][1] ),
+                            mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]],
+                            TransitionIsomorphism( Range( mor ), l[pos][2], pos_t ) ]
+                          );
+            fi;
+        fi;
         
         Add( morphisms, morphism );
         
@@ -329,6 +350,10 @@ InstallMethod( AddTransitionIsomorphism,
   function( obj, s, eta )
     local S, n, st;
     
+    if IsEndomorphism( eta ) then
+        Error( "we do not add automorphisms\n" );
+    fi;
+    
     S := Source( eta );
     
     if not IsEqualForObjects( ActiveCell( S ), CertainCell( obj, s ) ) then
@@ -375,6 +400,10 @@ InstallMethod( AddTransitionIsomorphism,
   function( obj, eta, t )
     local T, n, st;
     
+    if IsEndomorphism( eta ) then
+        Error( "we do not add automorphisms\n" );
+    fi;
+    
     T := Range( eta );
     
     if not IsEqualForObjects( ActiveCell( T ), CertainCell( obj, t ) ) then
@@ -420,6 +449,10 @@ InstallMethod( AddTransitionIsomorphism,
         
   function( obj, s, eta, t )
     local S, T, st;
+    
+    if IsEndomorphism( eta ) or s = t then
+        Error( "we do not add automorphisms\n" );
+    fi;
     
     S := Source( eta );
     T := Range( eta );
