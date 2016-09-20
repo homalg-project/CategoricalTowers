@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##  Categories.gd                                IntrinsicCategories package
+##  IntrinsicCategories.gd                       IntrinsicCategories package
 ##
 ##  Copyright 2015,      Mohamed Barakat, RWTH Aachen University
 ##
