@@ -896,6 +896,11 @@ InstallMethod( IntrinsicCategory,
         IC := CreateCapCategory( );
     fi;
     
+    ## TODO: should be replaced later by a sync process
+    if HasIsAbelianCategory( C ) then
+        SetIsAbelianCategory( IC, IsAbelianCategory( C ) );
+    fi;
+    
     IC!.UnderlyingCategory := C;
     
     SetCachingOfCategoryWeak( IC );
