@@ -2,7 +2,7 @@
 
 #! @Section TurnAutoequivalenceIntoIdentityFunctor
 
-LoadPackage( "ModulePresentationsForCAP" );
+LoadPackage( "ModulePresentationsForCAP", ">=2016.09.22" );
 LoadPackage( "IntrinsicCategories" );
 LoadPackage( "HomologicalAlgebraForCAP" );
 LoadPackage( "RingsForHomalg" );

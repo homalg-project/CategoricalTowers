@@ -845,9 +845,6 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               a := ActiveCell( obj );
               eta_a := ApplyNaturalTransformation( e, a );
               
-              Assert( 4, IsIsomorphism( eta_a ) );
-              SetIsIsomorphism( eta_a, true );
-              
               if IsEqualForObjects( Range( eta_a ), a ) and
                  IsCongruentForMorphisms( eta_a, IdentityMorphism( a ) ) then
                   return obj;
