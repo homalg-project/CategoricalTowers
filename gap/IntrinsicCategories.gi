@@ -908,12 +908,14 @@ InstallMethod( IntrinsicCategory,
     
     ## this can be seen as a characterization of the intrinsic categories
     AddIsEqualForObjects( IC, IsIdenticalObj );
-    AddIsEqualForMorphisms( IC, IsIdenticalObj );
-    AddIsCongruentForMorphisms( IC,
+    AddIsEqualForMorphisms( IC,
             function( m, n )
-              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+              return IsIdenticalObj( Source( m ), Source( n ) ) and
+                     IsIdenticalObj( Range( m ), Range( n ) ) and
+                     IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
             end
         );
+    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
     
     ## TODO: remove `Primitively' for performance?
     recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
@@ -1015,23 +1017,19 @@ InstallMethod( IntrinsicCategory,
         
         return
           function( arg )
-            local eval_arg, result, src_trg, S, T;
+            local eval_arg, src_trg, S, s, T, t, result;
+            
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            S := src_trg[1];
+            s := PositionOfActiveCell( S );
+            T := src_trg[2];
+            t := PositionOfActiveCell( T );
             
             eval_arg := List( arg, ActiveCell );
             
             result := CallFuncList( oper, eval_arg );
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return Intrinsify(
-                           result,
-                           S,
-                           PositionOfActiveCell( S ),
-                           T,
-                           PositionOfActiveCell( T )
-                           );
+            return Intrinsify( result, S, s, T, t );
             
           end;
           
@@ -1056,7 +1054,7 @@ InstallMethod( IntrinsicCategory,
         return
           function( arg )
             local l, universal_object, active_pos, context_of_constructor,
-                  active_positions, eval_arg, result, src_trg, S, T;
+                  active_positions, src_trg, S, s, T, t, eval_arg, result;
             
             l := Length( arg );
             
@@ -1076,21 +1074,17 @@ InstallMethod( IntrinsicCategory,
                 CallFuncList( SetPositionOfActiveCell, context_of_constructor );
             fi;
             
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            S := src_trg[1];
+            s := PositionOfActiveCell( S );
+            T := src_trg[2];
+            t := PositionOfActiveCell( T );
+            
             eval_arg := List( arg, ActiveCell );
             
             result := CallFuncList( oper, eval_arg );
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            result := Intrinsify(
-                              result,
-                              S,
-                              PositionOfActiveCell( S ),
-                              T,
-                              PositionOfActiveCell( T )
-                              );
+            result := Intrinsify( result, S, s, T, t );
             
             ## the order of the following two SetPositionOfActiveCell is important
             if not active_positions = context_of_constructor[2] then
