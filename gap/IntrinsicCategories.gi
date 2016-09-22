@@ -373,6 +373,8 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.PositionOfLastStoredCell := n;
     SetPositionOfActiveCell( obj, n );
     
+    INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Range( eta ), obj );
+    
 end );
 
 ##
@@ -422,6 +424,8 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.(n) := Source( eta );
     obj!.PositionOfLastStoredCell := n;
     SetPositionOfActiveCell( obj, n );
+    
+    INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Source( eta ), obj );
     
 end );
 
@@ -561,16 +565,19 @@ end );
 InstallMethod( Intrinsify,
         [ IsCapCategoryObject ],
         
-  function( obj )
+  function( o )
+    local obj;
     
     obj := rec(
                PositionOfLastStoredCell := 1,
                PositionOfActiveCell := 1,
                TransitionIsomorphisms := rec( ),
-               1 := obj
+               1 := o
                );
     
     Objectify( TheTypeIntrinsicObject, obj );
+    
+    INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( o, obj );
     
     return obj;
     
