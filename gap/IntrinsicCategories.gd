@@ -40,6 +40,16 @@ DeclareCategory( "IsCapCategoryIntrinsicMorphism",
 
 ####################################
 #
+#! @Section Technical stuff
+#
+####################################
+
+DeclareGlobalVariable( "PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS" );
+
+DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS" );
+
+####################################
+#
 #! @Section Constructors
 #
 ####################################

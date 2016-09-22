@@ -46,6 +46,37 @@ BindGlobal( "TheTypeIntrinsicMorphism",
 
 ####################################
 #
+# global variables:
+#
+####################################
+
+InstallValue( PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS,
+        [
+         "IsMonomorphism",
+         "IsEpimorphism",
+         "IsIsomorphism",
+         "IsSplitMonomorphism",
+         "IsSplitEpimorphism",
+         "IsZero",
+         # ..
+         ]
+        );
+
+##
+InstallGlobalFunction( INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS,
+  function( mor, hull )
+    local i;
+    
+    for i in PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( mor, i, hull, i ) );
+        
+    od;
+    
+end );
+
+####################################
+#
 # immediate methods:
 #
 ####################################
@@ -166,6 +197,8 @@ InstallMethod( CertainCell,
         Add( morphisms, morphism );
         
         Add( l, index_pair );
+        
+        INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( morphism, mor );
         
     fi;
     
@@ -623,16 +656,16 @@ end );
 InstallMethod( Intrinsify,
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
         
-  function( mor, S, posS, T, posT )
-    local C, s, t;
+  function( m, S, posS, T, posT )
+    local C, s, t, mor;
     
     C := CapCategory( S );
     
     if not IsIdenticalObj( C, CapCategory( T ) ) then
         Error( "source and target lie in different categories\n" );
-    elif not IsEqualForObjects( Source( mor ), CertainCell( S, posS ) ) then
+    elif not IsEqualForObjects( Source( m ), CertainCell( S, posS ) ) then
         Error( "the source of the morphism is not equal to the specified cell in the given intrinsic source\n" );
-    elif not IsEqualForObjects( Range( mor ), CertainCell( T, posT ) ) then
+    elif not IsEqualForObjects( Range( m ), CertainCell( T, posT ) ) then
         Error( "the target of the morphism is not equal to the specified cell in the given intrinsic target\n" );
     fi;
     
@@ -641,7 +674,7 @@ InstallMethod( Intrinsify,
     
     mor := rec(
                index_pairs_of_presentations := [ [ s, t, 1 ] ],
-               morphisms := rec( (String( [ s, t ] )) := [ 1, [ mor ] ] )
+               morphisms := rec( (String( [ s, t ] )) := [ 1, [ m ] ] )
                );
     
     Objectify( TheTypeIntrinsicMorphism, mor );
@@ -650,6 +683,8 @@ InstallMethod( Intrinsify,
     SetRange( mor, T );
     
     AddMorphism( C, mor );
+    
+    INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( m, mor );
     
     return mor;
     
@@ -754,6 +789,8 @@ InstallMethod( Intrinsify,
             end  );
     
     inteta!.UnderlyingNaturalTransformation := eta;
+    
+    INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( eta, inteta );
     
     return inteta;
     
