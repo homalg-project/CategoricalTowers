@@ -2,6 +2,7 @@
 
 #! @Section IsZero
 
+LoadPackage( "CAP", ">=2016.09.22" );
 LoadPackage( "ModulePresentationsForCAP" );
 LoadPackage( "IntrinsicCategories" );
 LoadPackage( "HomologicalAlgebraForCAP" );
@@ -33,19 +34,19 @@ Display( phi );
 #! 
 #! A morphism in Category of left presentations of Q[x,y]
 m1 := MorphismFromZeroObject( M );
-#! <an intrinsic morphism on active cell: <A split mono morphism
-#!  in Category of left presentations of Q[x,y]>>
+#! <an intrinsic morphism on active cell:
+#!  <A zero, split monomorphism in Category of left presentations of Q[x,y]>>
 m2 := MorphismIntoZeroObject( M );
-#! <an intrinsic morphism on active cell: <A split epi morphism
-#!  in Category of left presentations of Q[x,y]>>
+#! <an intrinsic morphism on active cell:
+#!  <A zero, split epimorphism in Category of left presentations of Q[x,y]>>
 IsZero( M );
 #! true
 ActiveCell( m1 );
-#! <An iso morphism in Category of left presentations of Q[x,y]>
+#! <A zero, isomorphism in Category of left presentations of Q[x,y]>
 ActiveCell( m2 );
-#! <An iso morphism in Category of left presentations of Q[x,y]>
+#! <A zero, isomorphism in Category of left presentations of Q[x,y]>
 Display( phi );
 #! (an empty 2 x 0 matrix)
 #! 
-#! A split epimorphism in Category of left presentations of Q[x,y]
+#! A zero, split epimorphism in Category of left presentations of Q[x,y]
 #! @EndExample
