@@ -14,8 +14,7 @@ R := QQ * "x,y";
 #! Q[x,y]
 category := IntrinsicCategory( LeftPresentations( R ) );
 #! intrinsic_Category of left presentations of Q[x,y]
-M := AsLeftOrRightPresentation(
-  HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ), true );
+M := AsLeftPresentation( HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );
 #! <An object in Category of left presentations of Q[x,y]>
 phi := CoverByFreeModule( M );
 #! <A morphism in Category of left presentations of Q[x,y]>
