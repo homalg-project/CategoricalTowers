@@ -915,9 +915,8 @@ InstallMethod( IntrinsicCategory,
     AddIsEqualForObjects( IC, IsIdenticalObj );
     AddIsEqualForMorphisms( IC,
             function( m, n )
-              return IsIdenticalObj( Source( m ), Source( n ) ) and
-                     IsIdenticalObj( Range( m ), Range( n ) ) and
-                     IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+              ## CAP checks IsEqualForObjects for Source and Range automatically
+              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
             end
         );
     AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
