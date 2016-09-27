@@ -59,7 +59,7 @@ Dependencies := rec(
   GAP := ">=4.4",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2013.12.04" ],
-                   [ "CAP", ">= 2015.09.20" ],
+                   [ "CAP", ">= 2015.09.27" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "GAPDoc", ">= 1.1" ]
                    ],

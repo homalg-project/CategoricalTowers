@@ -128,6 +128,22 @@ DeclareOperation( "TurnAutoequivalenceIntoIdentityFunctor",
         [ IsCapNaturalTransformation ] );
 
 #! @Description
+#!  Turn <C>FunctorCanonicalizeZeroObjects</C>(<A>category</A>) into
+#!  the identity functor.
+#! @Arguments category
+#! @Returns a functor
+DeclareAttribute( "TurnCanonicalizeZeroObjectsIntoIdentityFunctor",
+        IsCapCategory );
+
+#! @Description
+#!  Turn <C>FunctorCanonicalizeZeroMorphisms</C>(<A>category</A>) into
+#!  the identity functor.
+#! @Arguments category
+#! @Returns a functor
+DeclareAttribute( "TurnCanonicalizeZeroMorphismsIntoIdentityFunctor",
+        IsCapCategory );
+
+#! @Description
 #!  Create an intrinsic category out of <A>C</A>.
 #! @Arguments C
 DeclareOperation( "IntrinsicCategory",

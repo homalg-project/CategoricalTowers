@@ -875,6 +875,56 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
     return IdF;
     
 end );
+
+##
+InstallMethod( TurnCanonicalizeZeroObjectsIntoIdentityFunctor,
+        [ IsCapCategory ],
+        
+  function( IC )
+    local C, Id, iso, F;
+    
+    if not IsBound( IC!.IntrinsifiedCategory ) then
+        Error( "this argument is not an intrinsic category\n" );
+    fi;
+    
+    C :=  IC!.IntrinsifiedCategory;
+    
+    Id := IdentityFunctor( IC );
+    
+    iso := NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects( C );
+    
+    F := Intrinsify( Range( iso ), IC );
+    
+    iso := Intrinsify( iso, Id, F );
+    
+    return TurnAutoequivalenceIntoIdentityFunctor( iso );
+    
+end );
+    
+##
+InstallMethod( TurnCanonicalizeZeroMorphismsIntoIdentityFunctor,
+        [ IsCapCategory ],
+        
+  function( IC )
+    local C, Id, iso, F;
+    
+    if not IsBound( IC!.IntrinsifiedCategory ) then
+        Error( "this argument is not an intrinsic category\n" );
+    fi;
+    
+    C :=  IC!.IntrinsifiedCategory;
+    
+    Id := IdentityFunctor( IC );
+    
+    iso := NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms( C );
+    
+    F := Intrinsify( Range( iso ), IC );
+    
+    iso := Intrinsify( iso, Id, F );
+    
+    return TurnAutoequivalenceIntoIdentityFunctor( iso );
+    
+end );
     
 ##
 InstallMethod( IntrinsicCategory,
