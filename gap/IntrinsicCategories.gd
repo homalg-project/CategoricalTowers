@@ -51,6 +51,15 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS" );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS" );
 
+#! @Description
+#!  
+DeclareFilter( "CanonicalizeIfZero" );
+
+#! @Description
+#!  
+DeclareProperty( "CanonicalizedToZero",
+        IsCapCategoryIntrinsicCell );
+
 ####################################
 #
 #! @Section Constructors
@@ -162,17 +171,6 @@ DeclareOperation( "IntrinsicCategory",
 #! @Returns a &CAP; category
 DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory ] );
-
-####################################
-#
-#! @Section Attributes
-#
-####################################
-
-#! @Description
-#!  
-DeclareAttribute( "ZeroObjectCellWithPosition",
-        IsCapCategoryIntrinsicObject );
 
 ####################################
 #

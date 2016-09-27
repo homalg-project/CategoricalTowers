@@ -87,31 +87,33 @@ end );
 #
 ####################################
 
-InstallImmediateMethod( ZeroObjectCellWithPosition,
-        IsCapCategoryIntrinsicObjectRep and IsZero, 0,
+##
+InstallImmediateMethod( CanonicalizedToZero,
+        IsCapCategoryIntrinsicObjectRep and CanonicalizeIfZero and IsZero, 0,
         
-  function( o )
-    local p, a, m, n;
+  function( obj )
+    local F;
     
-    p := PositionOfActiveCell( o );
+    F := TurnCanonicalizeZeroObjectsIntoIdentityFunctor( CapCategory( obj ) );
     
-    a := ActiveCell( o );
+    ApplyFunctor( F, obj );
     
-    m := MorphismFromZeroObject( a );
-    n := MorphismIntoZeroObject( a );
+    return true;
     
-    ## TODO: this should be automatically implied (CAP issue #58)
-    IsIsomorphism( m );
-    IsIsomorphism( n );
+end );
+
+##
+InstallImmediateMethod( CanonicalizedToZero,
+        IsCapCategoryIntrinsicMorphismRep and CanonicalizeIfZero and IsZero, 0,
+        
+  function( mor )
+    local F;
     
-    if IsEqualForObjects( Source( m ), a ) then
-        return [ p, IdentityMorphism( a ) ];
-    fi;
+    F := TurnCanonicalizeZeroMorphismsIntoIdentityFunctor( CapCategory( mor ) );
     
-    AddTransitionIsomorphism( o, m, p );
-    AddTransitionIsomorphism( o, p, n, PositionOfActiveCell( o ) );
+    ApplyFunctor( F, mor );
     
-    return [ PositionOfLastStoredCell( o ), ActiveCell( o ) ];
+    return true;
     
 end );
 
@@ -631,6 +633,13 @@ InstallMethod( Intrinsify,
     
     AddObject( C, obj );
     
+    if IsBound( C!.CanonicalizeObjectsIfZero ) and
+       C!.CanonicalizeObjectsIfZero = true then
+        
+        SetFilterObj( obj, CanonicalizeIfZero );
+        
+    fi;
+    
     return obj;
     
 end );
@@ -688,6 +697,13 @@ InstallMethod( Intrinsify,
     SetRange( mor, T );
     
     AddMorphism( C, mor );
+    
+    if IsBound( C!.CanonicalizeMorphismsIfZero ) and
+       C!.CanonicalizeMorphismsIfZero = true then
+        
+        SetFilterObj( mor, CanonicalizeIfZero );
+        
+    fi;
     
     INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( m, mor );
     
@@ -1209,6 +1225,9 @@ InstallMethod( IntrinsicCategory,
     Finalize( IC );
     
     IdentityFunctor( IC )!.UnderlyingFunctor := IdentityFunctor( C );
+    
+    IC!.CanonicalizeObjectsIfZero := true;
+    IC!.CanonicalizeMorphismsIfZero := true;
     
     return IC;
     
