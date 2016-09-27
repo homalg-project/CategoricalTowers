@@ -142,7 +142,7 @@ DeclareAttribute( "TurnCanonicalizeZeroObjectsIntoIdentityFunctor",
 #!  Turn <C>FunctorCanonicalizeZeroMorphisms</C>(<A>category</A>) into
 #!  the identity functor.
 #! @Arguments category
-#! @Returns a functor
+#! @Returns a &CAP; functor
 DeclareAttribute( "TurnCanonicalizeZeroMorphismsIntoIdentityFunctor",
         IsCapCategory );
 
@@ -159,6 +159,7 @@ DeclareOperation( "IntrinsicCategory",
 #! @Description
 #!  Create an intrinsic category out of <A>C</A>.
 #! @Arguments C
+#! @Returns a &CAP; category
 DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory ] );
 
