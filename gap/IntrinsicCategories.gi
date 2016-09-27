@@ -949,7 +949,7 @@ InstallMethod( IntrinsicCategory,
     
     IC!.IntrinsifiedCategory := C;
     
-    SetCachingOfCategoryWeak( IC );
+    SetCachingOfCategoryCrisp( IC );
     #DeactivateCachingOfCategory( IC );
     
     for name in ListKnownCategoricalProperties( C ) do
