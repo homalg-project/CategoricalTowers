@@ -123,6 +123,7 @@ DeclareOperation( "Intrinsify",
 #!  Turn the range of the natural isomorphism <A>eta</A> into the identity functor
 #!  and turn <A>eta</A> into the identity natural transformation.
 #! @Arguments eta
+#! @Returns a functor
 DeclareOperation( "TurnAutoequivalenceIntoIdentityFunctor",
         [ IsCapNaturalTransformation ] );
 
