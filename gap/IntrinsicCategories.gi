@@ -563,7 +563,7 @@ InstallMethod( AddToIntrinsicMorphism,
     S := Source( mor );
     T := Range( mor );
     
-    if not IsIdenticalObj( C!.UnderlyingCategory, CapCategory( m ) ) then
+    if not IsIdenticalObj( C!.IntrinsifiedCategory, CapCategory( m ) ) then
         Error( "the category of the second morphism is not the category underlying the intrinsic category of the first\n" );
     elif not IsEqualForObjects( Source( m ), CertainCell( S, s ) ) then
         Error( "the source of the second morphism is not equal to the specified cell in the given intrinsic source\n" );
@@ -696,9 +696,9 @@ InstallMethod( Intrinsify,
   function( F, name, A, B )
     local intF;
     
-    if not IsIdenticalObj( AsCapCategory( Source( F ) ), A!.UnderlyingCategory ) then
+    if not IsIdenticalObj( AsCapCategory( Source( F ) ), A!.IntrinsifiedCategory ) then
         Error( "the source of the functor and the category underlying the intrinsic source do not coincide\n" );
-    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), B!.UnderlyingCategory ) then
+    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), B!.IntrinsifiedCategory ) then
         Error( "the target of the functor and the category underlying the intrinsic target do not coincide\n" );
     fi;
     
@@ -896,7 +896,7 @@ InstallMethod( IntrinsicCategory,
         SetIsAbelianCategory( IC, IsAbelianCategory( C ) );
     fi;
     
-    IC!.UnderlyingCategory := C;
+    IC!.IntrinsifiedCategory := C;
     
     SetCachingOfCategoryWeak( IC );
     #DeactivateCachingOfCategory( IC );
