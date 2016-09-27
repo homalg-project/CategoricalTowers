@@ -577,7 +577,7 @@ InstallMethod( AddToIntrinsicMorphism,
         ## space for improvement?: the comparison only happens with the "active" morphism
         if not IsEqualForMorphisms( m, a ) then
             Add( lm[2], m );
-            lm[1] := Length( lm[2] ) + 1;
+            lm[1] := Length( lm[2] );
             Add( mor!.index_pairs_of_presentations, [ s, t, lm[1] ] );
         fi;
     else
