@@ -50,6 +50,12 @@ BindGlobal( "TheTypeIntrinsicMorphism",
 #
 ####################################
 
+InstallValue( INTRINSIC_CATEGORIES,
+        rec(
+            strict := true,
+            )
+        );
+
 InstallValue( PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS,
         [
          "IsMonomorphism",
@@ -928,9 +934,9 @@ end );
     
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory ],
+        [ IsCapCategory, IsBool ],
         
-  function( C )
+  function( C, strict )
     local name, IC, recnames, func, pos, create_func_bool,
           create_func_object0, create_func_object, create_func_morphism,
           create_func_universal_morphism, info, add;
@@ -949,22 +955,31 @@ InstallMethod( IntrinsicCategory,
     
     IC!.IntrinsifiedCategory := C;
     
-    SetCachingOfCategoryCrisp( IC );
-    #DeactivateCachingOfCategory( IC );
-    
     for name in ListKnownCategoricalProperties( C ) do
         name := ValueGlobal( name );
         Setter( name )( IC, true );
     od;
     
-    ## this can be seen as a characterization of the intrinsic categories
-    AddIsEqualForObjects( IC, IsIdenticalObj );
-    AddIsEqualForMorphisms( IC,
-            function( m, n )
-              ## CAP checks IsEqualForObjects for Source and Range automatically
-              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
-            end );
-    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
+    if strict = true then
+        ## strict intrinsic categories
+        AddIsEqualForObjects( IC, IsIdenticalObj );
+        AddIsEqualForMorphisms( IC,
+                function( m, n )
+                  ## CAP checks IsEqualForObjects for Source and Range automatically
+                  return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+                end );
+        AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
+        SetCachingOfCategoryCrisp( IC );
+    else
+        AddIsEqualForObjects( IC, IsIdenticalObj );
+        AddIsEqualForMorphisms( IC, IsIdenticalObj );
+        AddIsCongruentForMorphisms( IC,
+                function( m, n )
+                  return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+              end );
+        ## TODO: understand why Weak leads to errors
+        SetCachingOfCategoryCrisp( IC );
+    fi;
     
     ## TODO: remove `Primitively' for performance?
     recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
@@ -1196,6 +1211,23 @@ InstallMethod( IntrinsicCategory,
     IdentityFunctor( IC )!.UnderlyingFunctor := IdentityFunctor( C );
     
     return IC;
+    
+end );
+
+##
+InstallMethod( IntrinsicCategory,
+        [ IsCapCategory ],
+        
+  function( C )
+    
+    if IsBound( INTRINSIC_CATEGORIES.strict ) and
+       INTRINSIC_CATEGORIES.strict = true then
+        
+        return IntrinsicCategory( C, true );
+        
+    fi;
+    
+    return IntrinsicCategory( C, false );
     
 end );
 

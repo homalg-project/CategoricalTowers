@@ -44,6 +44,9 @@ DeclareCategory( "IsCapCategoryIntrinsicMorphism",
 #
 ####################################
 
+# a central place for configurations:
+DeclareGlobalVariable( "INTRINSIC_CATEGORIES" );
+
 DeclareGlobalVariable( "PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS" );
 
 DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS" );
@@ -142,6 +145,16 @@ DeclareAttribute( "TurnCanonicalizeZeroObjectsIntoIdentityFunctor",
 #! @Returns a functor
 DeclareAttribute( "TurnCanonicalizeZeroMorphismsIntoIdentityFunctor",
         IsCapCategory );
+
+#! @Description
+#!  Create an intrinsic category out of <A>C</A>.
+#!  If <A>strict</A>=<C>true</C> then a potential congruence relation
+#!  on the <M>Hom</M>-sets is divided out, else <A>strict</A>=<C>false</C>
+#!  and the <M>Hom</M>-sets are in fact setoids.
+#! @Arguments C, strict
+#! @Returns a &CAP; category
+DeclareOperation( "IntrinsicCategory",
+        [ IsCapCategory, IsBool ] );
 
 #! @Description
 #!  Create an intrinsic category out of <A>C</A>.
