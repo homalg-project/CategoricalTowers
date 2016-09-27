@@ -2,7 +2,7 @@ SetPackageInfo( rec(
 
 PackageName := "IntrinsicCategories",
 
-Subtitle := "Intrinsic Categories for CAP",
+Subtitle := "Intrinsic categories for CAP",
 
 Version := Maximum( [
                    "2016.09.22", ## Mohamed's version
