@@ -531,7 +531,7 @@ InstallMethod( TransitionIsomorphism,
         
         eta := Inverse( tr.(st) );
         
-        AddTransitionIsomorphism( obj, t, eta, s );
+        AddTransitionIsomorphism( obj, s, eta, t );
         
         return eta;
         
