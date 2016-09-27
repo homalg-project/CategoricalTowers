@@ -574,7 +574,7 @@ InstallMethod( AddToIntrinsicMorphism,
     if [ s, t, 1 ] in mor!.index_pairs_of_presentations then
         lm := mor!.morphisms.(String( [ s, t ] ));
         a := lm[2][lm[1]];
-        ## space for improvement?: the comparison only happens with the "active" morphism
+        ## TODO: space for improvement?: the comparison only happens with the "active" morphism
         if not IsEqualForMorphisms( m, a ) then
             Add( lm[2], m );
             lm[1] := Length( lm[2] );
