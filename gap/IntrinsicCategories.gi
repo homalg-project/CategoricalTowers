@@ -708,14 +708,12 @@ InstallMethod( Intrinsify,
     AddObjectFunction( intF,
             function( obj )
               return Intrinsify( B, ApplyFunctor( F, ActiveCell( obj ) ) );
-            end
-            );
+            end );
     
     AddMorphismFunction( intF,
             function( new_source, mor, new_range )
               return Intrinsify( B, ApplyFunctor( F, ActiveCell( mor ) ) );
-            end
-            );
+            end );
     
     intF!.UnderlyingFunctor := F;
     
@@ -786,7 +784,7 @@ InstallMethod( Intrinsify,
               
               return Intrinsify( AsCapCategory( Range( F ) ), ApplyNaturalTransformation( eta, ActiveCell( obj ) ) );
               
-            end  );
+            end );
     
     inteta!.UnderlyingNaturalTransformation := eta;
     
@@ -853,8 +851,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               AddTransitionIsomorphism( obj, PositionOfActiveCell( obj ), eta_a );
               
               return obj;
-            end
-            );
+            end );
     
     AddMorphismFunction( IdF,
             function( new_source, mor, new_range )
@@ -870,8 +867,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               
               return mor;
               
-            end
-            );
+            end );
     
     DeactivateCachingObject( ObjectCache( IdF ) );
     DeactivateCachingObject( MorphismCache( IdF ) );
@@ -917,8 +913,7 @@ InstallMethod( IntrinsicCategory,
             function( m, n )
               ## CAP checks IsEqualForObjects for Source and Range automatically
               return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
-            end
-        );
+            end );
     AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
     
     ## TODO: remove `Primitively' for performance?
