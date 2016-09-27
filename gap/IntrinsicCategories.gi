@@ -807,6 +807,7 @@ InstallMethod( Intrinsify,
     
 end );
 
+##
 InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
         [ IsCapNaturalTransformation ],
         
