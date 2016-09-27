@@ -166,7 +166,6 @@ InstallMethod( CertainCell,
         
         pos := PositionProperty( dist, a -> a = min );
         
-        
         if pos_s = l[pos][1] then
             if l[pos][2] = pos_t then
                 morphism := mor!.morphisms.(String( l[pos]{[ 1 .. 2 ]}) )[2][l[pos][3]];
