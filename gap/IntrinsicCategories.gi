@@ -864,6 +864,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               AddToIntrinsicMorphism( mor, b,
                       PositionOfActiveCell( new_source ),
                       PositionOfActiveCell( new_range ) );
+              
               return mor;
               
             end );
