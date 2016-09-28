@@ -860,32 +860,51 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
     
     AddObjectFunction( IdF,
             function( obj )
-              local a, eta_a;
+              local pos, a, eta_a;
+              
+              pos := PositionOfActiveCell( obj );
               
               a := ActiveCell( obj );
               eta_a := ApplyNaturalTransformation( e, a );
               
               if IsEqualForObjects( Range( eta_a ), a ) and
                  IsCongruentForMorphisms( eta_a, IdentityMorphism( a ) ) then
+                  
+                  if not ( IsBound( obj!.(name) ) and IsList( obj!.(name) ) ) then
+                      obj!.(name) := [ ];
+                  fi;
+                  
+                  Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
+                  
                   return obj;
               fi;
               
               AddTransitionIsomorphism( obj, PositionOfActiveCell( obj ), eta_a );
+              
+              if not ( IsBound( obj!.(name) ) and IsList( obj!.(name) ) ) then
+                  obj!.(name) := [ ];
+              fi;
+              
+              Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
               
               return obj;
             end );
     
     AddMorphismFunction( IdF,
             function( new_source, mor, new_range )
-              local a, b;
+              local pos_s, pos_t, a, b;
               
-              a := ActiveCell( mor );
+              pos_s := new_source!.(name);
+              pos_s := pos_s[Length( pos_s )];
+              
+              pos_t := new_range!.(name);
+              pos_t := pos_t[Length( pos_t )];
+              
+              a := CertainCell( mor, pos_s[1], pos_t[1] );
               
               b := ApplyFunctor( F, a );
               
-              AddToIntrinsicMorphism( mor, b,
-                      PositionOfActiveCell( new_source ),
-                      PositionOfActiveCell( new_range ) );
+              AddToIntrinsicMorphism( mor, b, pos_s[2], pos_t[2] );
               
               return mor;
               
