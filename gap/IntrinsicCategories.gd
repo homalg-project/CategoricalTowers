@@ -144,7 +144,7 @@ DeclareOperation( "TurnAutoequivalenceIntoIdentityFunctor",
 #!  the identity functor.
 #! @Arguments category
 #! @Returns a functor
-DeclareAttribute( "TurnCanonicalizeZeroObjectsIntoIdentityFunctor",
+DeclareAttribute( "CanonicalizeZeroObjectsAsIdentityFunctor",
         IsCapCategory );
 
 #! @Description
@@ -152,7 +152,7 @@ DeclareAttribute( "TurnCanonicalizeZeroObjectsIntoIdentityFunctor",
 #!  the identity functor.
 #! @Arguments category
 #! @Returns a &CAP; functor
-DeclareAttribute( "TurnCanonicalizeZeroMorphismsIntoIdentityFunctor",
+DeclareAttribute( "CanonicalizeZeroMorphismsAsIdentityFunctor",
         IsCapCategory );
 
 #! @Description

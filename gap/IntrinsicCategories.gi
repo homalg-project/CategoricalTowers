@@ -94,7 +94,7 @@ InstallImmediateMethod( CanonicalizedToZero,
   function( obj )
     local F;
     
-    F := TurnCanonicalizeZeroObjectsIntoIdentityFunctor( CapCategory( obj ) );
+    F := CanonicalizeZeroObjectsAsIdentityFunctor( CapCategory( obj ) );
     
     ApplyFunctor( F, obj );
     
@@ -109,7 +109,7 @@ InstallImmediateMethod( CanonicalizedToZero,
   function( mor )
     local F;
     
-    F := TurnCanonicalizeZeroMorphismsIntoIdentityFunctor( CapCategory( mor ) );
+    F := CanonicalizeZeroMorphismsAsIdentityFunctor( CapCategory( mor ) );
     
     ApplyFunctor( F, mor );
     
@@ -899,7 +899,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
 end );
 
 ##
-InstallMethod( TurnCanonicalizeZeroObjectsIntoIdentityFunctor,
+InstallMethod( CanonicalizeZeroObjectsAsIdentityFunctor,
         [ IsCapCategory ],
         
   function( IC )
@@ -924,7 +924,7 @@ InstallMethod( TurnCanonicalizeZeroObjectsIntoIdentityFunctor,
 end );
     
 ##
-InstallMethod( TurnCanonicalizeZeroMorphismsIntoIdentityFunctor,
+InstallMethod( CanonicalizeZeroMorphismsAsIdentityFunctor,
         [ IsCapCategory ],
         
   function( IC )
