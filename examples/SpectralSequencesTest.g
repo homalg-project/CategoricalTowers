@@ -85,46 +85,58 @@ complex := AsComplex( complex );
 #!  of intrinsic_Category of left presentations of Q[x,y]>
 LessGenFunctor := FunctorLessGeneratorsLeft( R );
 #! Less generators for Category of left presentations of Q[x,y]
+Id := IdentityFunctor( category );
+#! Identity functor of intrinsic_Category of left presentations of Q[x,y]
+LessGenFunctor := Intrinsify( LessGenFunctor, category );
+#! Intrinsic version of Less generators
+#! for Category of left presentations of Q[x,y]
+etaLG := Intrinsify(
+  NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R ), Id, LessGenFunctor );
+#! Intrinsic version of Natural isomorphism
+#! from Id to Less generators for Category of left presentations of Q[x,y]
+IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
+#! Intrinsic version of Less generators for
+#! Category of left presentations of Q[x,y] as identity functor with side effects
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### (an empty 0 x 1 matrix)
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! (an empty 0 x 1 matrix)
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### (an empty 0 x 1 matrix)
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! (an empty 0 x 1 matrix)
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### (an empty 0 x 1 matrix)
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! (an empty 0 x 1 matrix)
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### x*y,
-### x^2
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! x^2,
+#! x*y
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### x*y,
-### x^2,
-### y^3
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! -x^2,
+#! -x*y,
+#! -y^3
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### x*y,
-### x^2,
-### y^3
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! -x^2,
+#! -x*y,
+#! -y^3
 s := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );
-### y^3
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, s ) ) ) );
+#! y^3
 AscToDescFunctor := AscendingToDescendingFilteredObjectFunctor( category );
 #! Ascending to descending filtered object functor of intrinsic_Category
 #! of left presentations of Q[x,y]
@@ -138,27 +150,27 @@ cocomplex := AsCocomplex( cocomplex );
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 0, -2, 1 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### (an empty 0 x 2 matrix)
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! (an empty 0 x 2 matrix)
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 1, -2, 1 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### (an empty 0 x 2 matrix)
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! (an empty 0 x 2 matrix)
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### -y,x
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! -y,x
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );
 #! <A morphism in Generalized morphism category of intrinsic_Category
 #!  of left presentations of Q[x,y]>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );
-### (an empty 0 x 0 matrix)
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
+#! (an empty 0 x 0 matrix)
 s := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
-#Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );
-### x^2,
-### x*y
+Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, s ) ) ) );
+#! x^2,
+#! x*y
 #! @EndExample
