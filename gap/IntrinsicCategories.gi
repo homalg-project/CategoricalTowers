@@ -993,7 +993,6 @@ InstallMethod( IntrinsicCategory,
                 function( m, n )
                   return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
               end );
-        ## TODO: understand why Weak leads to errors
         SetCachingOfCategoryCrisp( IC );
     fi;
     
