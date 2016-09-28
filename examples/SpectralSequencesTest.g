@@ -11,7 +11,6 @@ LoadPackage( "RingsForHomalg" );
 QQ := HomalgFieldOfRationalsInSingular( );;
 R := QQ * "x,y";
 #! Q[x,y]
-#SetRecursionTrapInterval( 20000 );
 category := IntrinsicCategory( LeftPresentations( R ) );
 #! intrinsic_Category of left presentations of Q[x,y]
 S := Intrinsify( category, FreeLeftPresentation( 1, R ) );
