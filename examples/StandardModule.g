@@ -39,7 +39,6 @@ etaSM := Intrinsify(
   NaturalIsomorphismFromIdentityToStandardModuleLeft( R ), Id, SM );
 #! Intrinsic version of Natural isomorphism
 #! from Id to Standard module for Category of left presentations of Q[x,y]
-SetIsIsomorphism( etaSM, true );
 IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
 #! Intrinsic version of Standard module for
 #! Category of left presentations of Q[x,y] as identity functor with side effects

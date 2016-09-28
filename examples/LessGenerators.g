@@ -39,7 +39,6 @@ etaLG := Intrinsify(
   NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R ), Id, LG );
 #! Intrinsic version of Natural isomorphism
 #! from Id to Less generators for Category of left presentations of Q[x,y]
-SetIsIsomorphism( etaLG, true );
 IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
 #! Intrinsic version of Less generators for
 #! Category of left presentations of Q[x,y] as identity functor with side effects
