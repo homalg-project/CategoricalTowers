@@ -240,6 +240,8 @@ InstallMethod( CategoryWithAmbientObject,
      
     Finalize( category_with_ambient_objects );
     
+    IdentityFunctor( category_with_ambient_objects )!.UnderlyingFunctor := IdentityFunctor( abelian_category );
+    
     return category_with_ambient_objects;
     
 end );
