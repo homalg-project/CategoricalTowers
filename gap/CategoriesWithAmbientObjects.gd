@@ -70,7 +70,7 @@ DeclareOperation( "ObjectWithAmbientObject",
 
 #! @Description
 #!  
-#! @Arguments iota, A
+#! @Arguments phi, A
 DeclareOperation( "MorphismWithAmbientObject",
         [ IsCapCategoryObjectWithAmbientObject, IsCapCategoryMorphism, IsCapCategoryObjectWithAmbientObject ] );
 
