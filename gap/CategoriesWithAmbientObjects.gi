@@ -77,36 +77,32 @@ end );
 InstallMethod( CategoryWithAmbientObject,
                [ IsCapCategory ],
                
-  function( underlying_monoidal_category )
+  function( abelian_category )
     local preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
           category_with_ambient_objects, zero_object;
     
-    if not IsFinalized( underlying_monoidal_category ) then
+    if not IsFinalized( abelian_category ) then
         
         Error( "the underlying category must be finalized" );
         
-    elif not IsMonoidalCategory( underlying_monoidal_category ) then
-        
-        Error( "the underlying category has to be a monoidal category" );
-        
-    elif not IsAdditiveCategory( underlying_monoidal_category ) then
+    elif not IsAdditiveCategory( abelian_category ) then
         
         ## TODO: support the general case
         Error( "only additive categories are supported yet" );
         
     fi;
     
-    category_with_ambient_objects := CreateCapCategory( Concatenation( Name( underlying_monoidal_category ), " with ambient objects" ) );
+    category_with_ambient_objects := CreateCapCategory( Concatenation( Name( abelian_category ), " with ambient objects" ) );
     
     structure_record := rec(
-      underlying_category := underlying_monoidal_category,
+      underlying_category := abelian_category,
       category_with_attributes := category_with_ambient_objects
     );
     
     ## Constructors
     object_constructor := CreateObjectConstructorForCategoryWithAttributes(
-              underlying_monoidal_category, category_with_ambient_objects, TheTypeObjectWithAmbientObject );
+              abelian_category, category_with_ambient_objects, TheTypeObjectWithAmbientObject );
     
     structure_record.ObjectConstructor := function( object, attributes )
         local return_object;
@@ -123,10 +119,10 @@ InstallMethod( CategoryWithAmbientObject,
     
     structure_record.MorphismConstructor :=
       CreateMorphismConstructorForCategoryWithAttributes(
-              underlying_monoidal_category, category_with_ambient_objects, TheTypeMorphismWithAmbientObject );
+              abelian_category, category_with_ambient_objects, TheTypeMorphismWithAmbientObject );
     
     ##
-    category_weight_list := underlying_monoidal_category!.derivations_weight_list;
+    category_weight_list := abelian_category!.derivations_weight_list;
     
     ## ZeroObject with ambient object
     #preconditions := [ "UniversalMorphismIntoZeroObject",
@@ -135,7 +131,7 @@ InstallMethod( CategoryWithAmbientObject,
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
-        zero_object := ZeroObject( underlying_monoidal_category );
+        zero_object := ZeroObject( abelian_category );
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
@@ -227,7 +223,7 @@ InstallMethod( CategoryWithAmbientObject,
     ##
     InstallMethod( MorphismWithAmbientObject,
                    [ IsCapCategoryObjectWithAmbientObject and ObjectFilter( category_with_ambient_objects ),
-                     IsCapCategoryMorphism and MorphismFilter( underlying_monoidal_category ),
+                     IsCapCategoryMorphism and MorphismFilter( abelian_category ),
                      IsCapCategoryObjectWithAmbientObject and ObjectFilter( category_with_ambient_objects ) ],
                    
       function( source, underlying_morphism, range )
