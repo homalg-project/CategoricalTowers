@@ -49,6 +49,37 @@ BindGlobal( "TheTypeMorphismWithAmbientObject",
 
 ####################################
 #
+# global variables:
+#
+####################################
+
+InstallValue( PROPAGATION_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT,
+        [
+         "IsMonomorphism",
+         "IsEpimorphism",
+         "IsIsomorphism",
+         "IsSplitMonomorphism",
+         "IsSplitEpimorphism",
+         "IsZero",
+         # ..
+         ]
+        );
+
+##
+InstallGlobalFunction( INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT,
+  function( mor, hull )
+    local i;
+    
+    for i in PROPAGATION_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT do
+        
+        AddToToDoList( ToDoListEntryForEqualAttributes( mor, i, hull, i ) );
+        
+    od;
+    
+end );
+
+####################################
+#
 # methods for attributes:
 #
 ####################################

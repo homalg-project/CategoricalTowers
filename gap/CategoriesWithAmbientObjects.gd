@@ -33,6 +33,17 @@ DeclareCategory( "IsCapCategoryMorphismWithAmbientObject",
 
 ####################################
 #
+#! @Section Technical stuff
+#
+####################################
+
+# a central place for configurations:
+DeclareGlobalVariable( "PROPAGATION_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT" );
+
+DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT" );
+
+####################################
+#
 #! @Section Attributes
 #
 ####################################
