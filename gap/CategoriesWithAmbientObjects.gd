@@ -98,3 +98,44 @@ DeclareOperation( "DisplayEmbeddingInAmbientObject",
         [ IsCapCategoryObjectWithAmbientObject ] );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS" );
+
+#! @Description
+#!  WithAmbientObject a functor ...
+#! @Arguments F, name, A, B
+DeclareOperation( "WithAmbientObject",
+        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
+
+#! @Description
+#!  WithAmbientObject a functor ...
+#! @Arguments F, A, B
+#! @Group WithAmbientObject
+DeclareOperation( "WithAmbientObject",
+        [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
+
+#! @Description
+#!  WithAmbientObject an endofunctor ...
+#! @Arguments F, name, A
+#! @Group WithAmbientObject
+DeclareOperation( "WithAmbientObject",
+        [ IsCapFunctor, IsString, IsCapCategory ] );
+
+#! @Description
+#!  WithAmbientObject an endofunctor ...
+#! @Arguments F, A
+#! @Group WithAmbientObject
+DeclareOperation( "WithAmbientObject",
+        [ IsCapFunctor, IsCapCategory ] );
+
+#! @Description
+#!  WithAmbientObject a natural transformation
+#! @Arguments eta, name, A, B
+#! @Group WithAmbientObject
+DeclareOperation( "WithAmbientObject",
+        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ] );
+
+#! @Description
+#!  WithAmbientObject a natural transformation
+#! @Arguments eta, A, B
+#! @Group WithAmbientObject
+DeclareOperation( "WithAmbientObject",
+        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );

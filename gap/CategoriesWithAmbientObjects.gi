@@ -285,7 +285,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
     AddIsEqualForObjects( category,
       function( object_with_ambient_object_1, object_with_ambient_object_2 )
         
-        return IsCongruentForMorphisms( GeneralizedEmbeddingInAmbientObject( object_with_ambient_object_1 ), GeneralizedEmbeddingInAmbientObject( object_with_ambient_object_2 ) );
+        return IsEqualForMorphismsOnMor(
+                       GeneralizedEmbeddingInAmbientObject( object_with_ambient_object_1 ),
+                       GeneralizedEmbeddingInAmbientObject( object_with_ambient_object_2 ) );
         
     end );
     
@@ -304,6 +306,124 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
         return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
     end );
+    
+end );
+
+##
+InstallMethod( WithAmbientObject,
+        [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ],
+        
+  function( F, name, A, B )
+    local waoF;
+    
+    if not IsIdenticalObj( AsCapCategory( Source( F ) ), UnderlyingCategory( A ) ) then
+        Error( "the source of the functor and the category underlying the source category with ambient object do not coincide\n" );
+    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), UnderlyingCategory( B ) ) then
+        Error( "the target of the functor and the category underlying the target category with ambient object do not coincide\n" );
+    fi;
+    
+    waoF := CapFunctor( name, A, B );
+    
+    AddObjectFunction( waoF,
+            function( obj )
+              return ObjectWithAmbientObject( ApplyFunctor( F, EmbeddingInAmbientObject( obj ) ), B );
+            end );
+    
+    AddMorphismFunction( waoF,
+            function( new_source, mor, new_range )
+              return MorphismWithAmbientObject( new_source, ApplyFunctor( F, UnderlyingCell( mor ) ), new_range );
+            end );
+    
+    waoF!.UnderlyingFunctor := F;
+    
+    return waoF;
+    
+end );
+    
+##
+InstallMethod( WithAmbientObject,
+        [ IsCapFunctor, IsCapCategory, IsCapCategory ],
+        
+  function( F, A, B )
+    local name;
+    
+    name := "With-ambient-object version of ";
+    name := Concatenation( name, Name( F ) );
+    
+    return WithAmbientObject( F, name, A, B );
+    
+end );
+
+##
+InstallMethod( WithAmbientObject,
+        [ IsCapFunctor, IsString, IsCapCategory ],
+        
+  function( F, name, A )
+    
+    if not IsIdenticalObj( Source( F ), Range( F ) ) then
+        Error( "the functor is not an endofunctor\n" );
+    fi;
+    
+    return WithAmbientObject( F, name, A, A );
+    
+end );
+
+##
+InstallMethod( WithAmbientObject,
+        [ IsCapFunctor, IsCapCategory ],
+        
+  function( F, A )
+    local name;
+    
+    name := "With-ambient-object version of ";
+    name := Concatenation( name, Name( F ) );
+    
+    return WithAmbientObject( F, name, A );
+    
+end );
+
+##
+InstallMethod( WithAmbientObject,
+        [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ],
+        
+  function( eta, name, F, G )
+    local waoeta;
+    
+    if not IsIdenticalObj( Source( eta ), F!.UnderlyingFunctor ) then
+        Error( "the source of the natural transformation and the functor underlying the source functor with ambient object do not coincide\n" );
+    elif not IsIdenticalObj( Range( eta ), G!.UnderlyingFunctor ) then
+        Error( "the target of the natural transformation and the functor underlying the target functor with ambient object do not coincide\n" );
+    fi;
+    
+    waoeta := NaturalTransformation( name, F, G );
+    
+    AddNaturalTransformationFunction(
+            waoeta,
+            function( source, obj, range )
+              
+              return MorphismWithAmbientObject( source, ApplyNaturalTransformation( eta, UnderlyingCell( obj ) ), range );
+              
+            end );
+    
+    waoeta!.UnderlyingNaturalTransformation := eta;
+    
+    INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT( eta, waoeta );
+    
+    return waoeta;
+    
+end );
+
+##
+InstallMethod( WithAmbientObject,
+        [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ],
+        
+  function( eta, F, G )
+    local name;
+    
+    name := "With-ambient-object version of ";
+    name := Concatenation( name, Name( eta ) );
+    
+    return WithAmbientObject( eta, name, F, G );
     
 end );
 
