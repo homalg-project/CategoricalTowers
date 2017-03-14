@@ -1,0 +1,7 @@
+#
+# M2: Intrinsic modules with elements for the CAP based homalg
+#
+# Reading the declaration part of the package.
+#
+
+ReadPackage( "M2", "gap/M2.gd");
