@@ -44,7 +44,8 @@ DeclareAttribute( "GeneralizedEmbeddingInAmbientObject",
         IsCapCategoryObjectWithAmbientObject );
 
 #! @Description
-#!  The embedding of the object <A>M</A> into its ambient object modulo the aid.
+#!  The embedding of the object <A>M</A> into its ambient object modulo the aid, i.e.,
+#!  the output is the associated (mono)morphism of the normalized 3-arrow formalism with domain = identity.
 #! @Arguments M
 DeclareAttribute( "EmbeddingInAmbientObject",
         IsCapCategoryObjectWithAmbientObject );
