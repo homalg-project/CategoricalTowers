@@ -1,6 +1,6 @@
 LoadPackage( "AutoDoc" );
 
-AutoDoc( "IntrinsicCategories" :
+AutoDoc( rec(
         
         scaffold := rec( entities := [ "homalg", "GAP", "CAP" ],
                          ),
@@ -21,10 +21,7 @@ AutoDoc( "IntrinsicCategories" :
                          ),
         
         Bibliography := "IntrinsicCategories.bib"
-        
+        )
 );
-
-# Create VERSION file for "make towww"
-PrintTo( "VERSION", PackageInfo( "IntrinsicCategories" )[1].Version );
 
 QUIT;
