@@ -35,8 +35,8 @@ DeclareRepresentation( "IsCapCategoryMorphismWithAmbientObjectRep",
 BindGlobal( "TheFamilyOfCategoriesWithAmbientObjects",
         NewFamily( "TheFamilyOfCategoriesWithAmbientObjects" ) );
 
-BindGlobal( "TheFamilyOfMorphismsWithAmbientObject",
-        NewFamily( "TheFamilyOfMorphismsWithAmbientObject" ) );
+BindGlobal( "TheFamilyOfMorphismsWithAmbientObjects",
+        NewFamily( "TheFamilyOfMorphismsWithAmbientObjects" ) );
 
 # new types:
 BindGlobal( "TheTypeObjectWithAmbientObject",
@@ -44,8 +44,8 @@ BindGlobal( "TheTypeObjectWithAmbientObject",
                 IsCapCategoryObjectWithAmbientObjectRep ) );
 
 BindGlobal( "TheTypeMorphismWithAmbientObject",
-        NewType( TheFamilyOfMorphismsWithAmbientObject,
-                IsCapCategoryMorphismWithAmbientObject ) );
+        NewType( TheFamilyOfMorphismsWithAmbientObjects,
+                IsCapCategoryMorphismWithAmbientObjectRep ) );
 
 ####################################
 #
