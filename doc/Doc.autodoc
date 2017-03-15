@@ -1,1 +1,8 @@
 @Chapter Modules
+
+@Chapter Examples
+
+@InsertSystem HomalgFreeLeftModule
+@InsertSystem HomalgFreeRightModule
+@InsertSystem HomalgZeroLeftModule
+@InsertSystem HomalgZeroRightModule
