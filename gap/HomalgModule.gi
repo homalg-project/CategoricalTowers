@@ -198,11 +198,13 @@ InstallMethod( HomalgModule,
         A := CategoryOfHomalgLeftModules( R );
         M := Intrinsify( A, M );
         M!.ring := R;
+        ## this seems to be expensive
         SetFilterObj( M, IsFinitelyPresentedModuleRep and IsHomalgLeftObjectOrMorphismOfLeftObjects );
     else
         A := CategoryOfHomalgRightModules( R );
         M := Intrinsify( A, M );
         M!.ring := R;
+        ## this seems to be expensive
         SetFilterObj( M, IsFinitelyPresentedModuleRep and IsHomalgRightObjectOrMorphismOfRightObjects );
     fi;
     
