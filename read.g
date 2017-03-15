@@ -3,4 +3,4 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "M2", "gap/M2.gi");
+ReadPackage( "M2", "gap/HomalgModule.gi");
