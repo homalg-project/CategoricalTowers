@@ -14,26 +14,26 @@ R := QQ * "x,y";
 #! Q[x,y]
 M := AsLeftOrRightPresentation(
   HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ), true );
-#! <An object in the category of f.p. modules over Q[x,y]>
+#! <An object in Category of left presentations of Q[x,y]>
 Ag := CategoryWithAmbientObject( CapCategory( M ) );
-#! The category of f.p. modules over Q[x,y] with ambient objects
+#! Category of left presentations of Q[x,y] with ambient objects
 pi := AsGeneralizedMorphismByCospan( CoverByFreeModule( M ) );
-#! <A morphism in the category of generalized morphisms
-#!  by cospans of the category of f.p. modules over Q[x,y]>
+#! <A morphism in Generalized morphism category of
+#!  Category of left presentations of Q[x,y] by cospan>
 iota := PseudoInverse( pi );
-#! <A morphism in the category of generalized morphisms
-#!  by cospans of the category of f.p. modules over Q[x,y]>
+#! <A morphism in Generalized morphism category of
+#!  Category of left presentations of Q[x,y] by cospan>
 Mg := ObjectWithAmbientObject( iota, Ag );
-#! <An object in the category of f.p. modules over Q[x,y]>
+#! <An object in Category of left presentations of Q[x,y]>
 #!  with an ambient object
 Display( Mg );
 #! 1,x,
 #! 0,1
 #! 
-#! An object in the category of f.p. modules over Q[x,y]
+#! An object in Category of left presentations of Q[x,y]
 DisplayEmbeddingInAmbientObject( Mg );
 #! 0,0,
 #! 0,0
 #! 
-#! A morphism in the category of f.p. modules over Q[x,y]
+#! A morphism in Category of left presentations of Q[x,y]
 #! @EndExample
