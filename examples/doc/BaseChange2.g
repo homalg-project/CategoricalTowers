@@ -27,7 +27,4 @@ Display( M4 );
 #! Z/( 4 )^(1x2) --> Z/( 4 )^(1x3),
 #! 
 #! currently represented by the above matrix
-d := Resolution( 2, M4 );
-#! <A right acyclic complex containing 2 morphisms of left modules at degrees
-#!  [ 0 .. 2 ]>
 #! @EndExample

@@ -8,3 +8,5 @@
 @InsertSystem HomalgZeroRightModule
 @InsertSystem BaseChange
 @InsertSystem BaseChange2
+@InsertSystem Resolution
+@InsertSystem Resolution2
