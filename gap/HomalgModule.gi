@@ -1,5 +1,5 @@
 #
-# M2: Intrinsic modules with elements for the CAP based homalg
+# M2: Intrinsic modules with relations and generators for the CAP based homalg
 #
 # Implementations
 
@@ -29,42 +29,6 @@ InstallMethod( PositionOfTheDefaultSetOfGenerators,
   PositionOfActiveCell );
 
 ##
-InstallMethod( HasNrGenerators,
-        "for a set of generators of homalg/CAP modules",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
-
-  function( gen )
-    local mat;
-    
-    mat := UnderlyingMatrix( gen );
-    
-    if IsLeftPresentationMorphism( gen ) then
-        return HasNrColumns( mat );
-    else
-        return HasNrRows( mat );
-    fi;
-    
-end );
-
-##
-InstallMethod( NrGenerators,
-        "for a set of generators of homalg/CAP modules",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
-
-  function( gen )
-    local mat;
-    
-    mat := UnderlyingMatrix( gen );
-    
-    if IsLeftPresentationMorphism( gen ) then
-        return NrColumns( mat );
-    else
-        return NrRows( mat );
-    fi;
-    
-end );
-
-##
 InstallMethod( GeneratorsOfModule,
         "for a homalg/CAP module",
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
@@ -91,89 +55,6 @@ InstallMethod( GeneratorsOfModule,
 end );
 
 ##
-InstallMethod( MatrixOfGenerators,
-        "for a set of generators of a homalg/CAP module",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
-        
-  function( M )
-    
-    return UnderlyingMatrix( M );
-    
-end );
-
-##
-InstallMethod( HasNrGenerators,
-        "for a set of relations of homalg/CAP modules",
-        [ IsHomalgRelations ],
-
-  function( rel )
-    local mat;
-    
-    mat := UnderlyingMatrix( rel );
-    
-    if IsLeftPresentation( rel ) then
-        return HasNrColumns( mat );
-    else
-        return HasNrRows( mat );
-    fi;
-    
-end );
-
-##
-InstallMethod( NrGenerators,
-        "for a set of relations of homalg/CAP modules",
-        [ IsHomalgRelations ],
-
-  function( rel )
-    local mat;
-    
-    mat := UnderlyingMatrix( rel );
-    
-    if IsLeftPresentationMorphism( rel ) then
-        return NrColumns( mat );
-    else
-        return NrRows( mat );
-    fi;
-    
-end );
-
-##
-InstallMethod( HasNrRelations,
-        "for a set of relations of homalg/CAP modules",
-        [ IsHomalgRelations and IsLeftOrRightPresentation ],
-
-  function( rel )
-    local mat;
-    
-    mat := UnderlyingMatrix( rel );
-    
-    if IsLeftPresentation( rel ) then
-        return HasNrRows( mat );
-    else
-        return HasNrColumns( mat );
-    fi;
-    
-end );
-
-##
-InstallMethod( NrRelations,
-        "for a set of relations of a homalg/CAP module",
-        [ IsHomalgRelations ],
-
-  function( rel )
-    local mat;
-    
-    mat := UnderlyingMatrix( rel );
-    
-    if IsLeftPresentationMorphism( rel ) then
-        return NrRows( mat );
-    else
-        return NrColumns( mat );
-    fi;
-    
-end );
-
-##
 InstallMethod( RelationsOfModule,
         "for a homalg/CAP module and a positive integer",
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
@@ -188,17 +69,6 @@ InstallMethod( RelationsOfModule,
     gen := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
     
     return gen;
-    
-end );
-
-##
-InstallMethod( MatrixOfRelations,
-        "for a set of relations of a homalg/CAP module",
-        [ IsHomalgRelations and IsLeftOrRightPresentation ],
-        
-  function( M )
-    
-    return UnderlyingMatrix( M );
     
 end );
 
