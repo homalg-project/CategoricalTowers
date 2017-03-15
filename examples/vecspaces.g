@@ -12,20 +12,21 @@ alpha := VectorSpaceMorphism( V, alpha, W );
 
 LoadPackage( "IntrinsicCategories" );
 
-inta := Intrinsify( alpha );
+C := CapCategory( V );
+intC := IntrinsicCategory( C );
+
+inta := Intrinsify( intC, alpha );
 intV := Source( inta );
 intW := Range( inta );
 
 inta2 := Intrinsify( alpha, intV, 1, intW, 1 );
 
-inta3 := Intrinsify( alpha );
+Assert( 0, inta = inta2 );
+
+inta3 := Intrinsify( intC, alpha );
+
+Assert( 0, not inta = inta3 );
 
 intb := Intrinsify( beta, intV, 1, intV, 1 );
 
-C := CapCategory( V );
-intC := IntrinsicCategory( C );
-
-AddMorphism( intC, inta );
-AddMorphism( intC, inta2 );
-AddMorphism( intC, inta3 );
-AddMorphism( intC, intb );
+Assert( 0, not inta = intb );
