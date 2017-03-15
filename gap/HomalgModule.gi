@@ -242,6 +242,29 @@ InstallMethod( CategoryOfHomalgRightModules,
 end );
 
 ##
+InstallMethod( Intrinsify,
+        "for a CAP intrinsic category and an object with ambient object",
+        [ IsCapCategory, IsCapCategoryObjectWithAmbientObject ],
+
+  function( A, cell )
+    local left, rel;
+    
+    rel := ObjectWithoutAmbientObject( cell );
+    
+    left :=  IsLeftPresentation( rel );
+    
+    ## TODO: legacy
+    if left then
+        SetFilterObj( rel, IsHomalgRelationsOfLeftModule );
+    else
+        SetFilterObj( rel, IsHomalgRelationsOfRightModule );
+    fi;
+    
+    return Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
+    
+end );
+
+##
 InstallMethod( HomalgModule,
         "for a left or right CAP presentation",
         [ IsLeftOrRightPresentation ],
@@ -252,13 +275,6 @@ InstallMethod( HomalgModule,
     A := CapCategory( M );
     
     left :=  IsLeftPresentation( M );
-    
-    ## TODO: legacy
-    if left then
-        SetFilterObj( M, IsHomalgRelationsOfLeftModule );
-    else
-        SetFilterObj( M, IsHomalgRelationsOfRightModule );
-    fi;
     
     R := UnderlyingHomalgRing( M );
     
