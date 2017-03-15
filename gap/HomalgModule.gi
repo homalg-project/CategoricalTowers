@@ -29,6 +29,39 @@ InstallMethod( PositionOfTheDefaultSetOfGenerators,
   PositionOfActiveCell );
 
 ##
+InstallMethod( HasNrGenerators,
+        "for a homalg/CAP module",
+        [ IsHomalgModule and IsCapCategoryIntrinsicObject ],
+
+  function( M )
+    
+    return HasNrGenerators( RelationsOfModule( M ) );
+    
+end );
+
+##
+InstallMethod( NrGenerators,
+        "for a homalg/CAP module",
+        [ IsHomalgModule and IsCapCategoryIntrinsicObject ],
+
+  function( M )
+    local g;
+    
+    g := NrGenerators( RelationsOfModule( M ) );
+    
+    ## TODO: cleanup legacy code
+    if g = 0 then
+        SetIsZero( M, true );
+    elif IsFinitelyPresentedModuleOrSubmoduleRep( M ) and
+      HasRankOfObject( M ) and RankOfObject( M ) = g then
+        SetIsFree( M, true );
+    fi;
+    
+    return g;
+    
+end );
+
+##
 InstallMethod( GeneratorsOfModule,
         "for a homalg/CAP module",
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
