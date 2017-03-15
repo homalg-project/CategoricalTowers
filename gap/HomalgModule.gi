@@ -98,7 +98,6 @@ InstallMethod( GeneratorsOfModule,
     gen := EmbeddingInAmbientObject( CertainCell( M, pos ) );
     
     ## TODO: legacy
-
     if IsHomalgLeftObjectOrMorphismOfLeftObjects( M ) then
         SetFilterObj( gen, IsHomalgGeneratorsOfLeftModule );
     else
@@ -262,7 +261,7 @@ InstallMethod( Intrinsify,
         [ IsCapCategory, IsCapCategoryObjectWithAmbientObject ],
 
   function( A, cell )
-    local left, rel;
+    local left, rel, M;
     
     rel := ObjectWithoutAmbientObject( cell );
     
@@ -270,12 +269,23 @@ InstallMethod( Intrinsify,
     
     ## TODO: legacy
     if left then
-        SetFilterObj( rel, IsHomalgRelationsOfLeftModule );
+        SetFilterObj( rel,
+                IsHomalgRelationsOfLeftModule and
+                IsRelationsOfFinitelyPresentedModuleRep );
     else
-        SetFilterObj( rel, IsHomalgRelationsOfRightModule );
+        SetFilterObj( rel,
+                IsHomalgRelationsOfRightModule and
+                IsRelationsOfFinitelyPresentedModuleRep );
     fi;
     
-    return Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
+    M := Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
+    
+    M!.string := "module";
+    M!.string_plural := "modules";
+    M!.PresentationMorphisms := rec( );
+    M!.Resolutions := rec( );
+    
+    return M;
     
 end );
 
