@@ -88,8 +88,8 @@ DeclareOperation( "MorphismWithAmbientObject",
 #! @Description
 #!  
 #! @Arguments A
-DeclareOperation( "CategoryWithAmbientObject",
-        [ IsCapCategory ] );
+DeclareAttribute( "CategoryWithAmbientObject",
+        IsCapCategory );
 
 #! @Description
 #!  Display the embedding of the object <A>M</A> into its ambient object.
