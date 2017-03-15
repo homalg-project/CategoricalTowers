@@ -67,15 +67,15 @@ DeclareProperty( "CanonicalizedToZero",
 ####################################
 
 #! @Description
-#!  In the one argument version create an intrinsic cell out of the cell <A>c</A>.
+#!  In the first two argument version create an intrinsic cell of type <A>t</A> out of the cell <A>c</A>.
 #!  If <A>c</A> is a morphism then its source and object are intrinsified.
 #! @Group Intrinsify
 #! @Arguments c
 DeclareOperation( "Intrinsify",
-        [ IsCapCategoryCell ] );
+        [ IsCapCategoryCell, IsType ] );
 
 #! @Description
-#!  In the two argument version the intrinsified cell <A>c</A> is subsequently added to the category <A>C</A>.
+#!  In the two argument version the intrinsified cell <A>c</A> of type <C>TheTypeIntrinsicObject</C> is subsequently added to the category <A>C</A>.
 #! @Arguments C, c
 #! @Group Intrinsify
 DeclareOperation( "Intrinsify",
@@ -160,15 +160,32 @@ DeclareAttribute( "CanonicalizeZeroMorphismsAsIdentityFunctor",
 #!  If <A>strict</A>=<C>true</C> then a potential congruence relation
 #!  on the <M>Hom</M>-sets is divided out, else <A>strict</A>=<C>false</C>
 #!  and the <M>Hom</M>-sets are in fact setoids.
-#! @Arguments C, strict
+#!  The user has to guarantee that
+#!  the specified type <A>type_obj</A> is a subtype of <C>TheTypeIntrinsicObject</C> and
+#!  the specified type <A>type_mor</A> is a subtype of <C>TheTypeIntrinsicMorphism</C>.
+#! @Arguments C, strict, type_obj, type_mor
 #! @Returns a &CAP; category
+#! @Group IntrinsicCategory
+DeclareOperation( "IntrinsicCategory",
+        [ IsCapCategory, IsBool, IsType, IsType ] );
+
+#! @Description
+#!  If <A>type_obj</A> is not specified it defaults to <C>TheTypeIntrinsicObject</C>.
+#!  If <A>type_mor</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
+#! @Arguments C, strict
+#! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory, IsBool ] );
 
 #! @Description
-#!  Create an intrinsic category out of <A>C</A>.
+#!  If <A>strict</A> is not specified it defaults to <C>true</C>.
+#! @Arguments C, type_obj, type_mor
+#! @Group IntrinsicCategory
+DeclareOperation( "IntrinsicCategory",
+        [ IsCapCategory, IsType, IsType ] );
+
 #! @Arguments C
-#! @Returns a &CAP; category
+#! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory ] );
 
