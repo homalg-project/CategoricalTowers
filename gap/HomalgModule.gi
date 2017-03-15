@@ -11,6 +11,13 @@
 ####################################
 
 ##
+InstallMethod( HomalgCategory,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+
+  CapCategory );
+
+##
 InstallMethod( HomalgRing,
         "for a homalg/CAP module",
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
@@ -175,6 +182,10 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     A := IntrinsicCategory( A, type_obj, type_mor );
     
+    ## TODO: legacy
+    SetFilterObj( A, IsHomalgCategory );
+    A!.containers := rec( );
+    
     Id := IdentityFunctor( A );
     
     LG := Intrinsify( LG, A );
@@ -226,6 +237,10 @@ InstallMethod( CategoryOfHomalgRightModules,
               );
     
     A := IntrinsicCategory( A, type_obj, type_mor );
+    
+    ## TODO: legacy
+    SetFilterObj( A, IsHomalgCategory );
+    A!.containers := rec( );
     
     Id := IdentityFunctor( A );
     
