@@ -12,7 +12,7 @@ AutoDoc(
             scaffold := rec( entities := [ "homalg", "GAP4" ],
                              ),
             
-            autodoc := rec( files := [ "doc/Intros.autodoc" ] ),
+            autodoc := rec( files := [ "doc/Doc.autodoc" ] ),
 
             maketest := rec( folder := ".",
                              commands :=
