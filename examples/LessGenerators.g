@@ -12,7 +12,7 @@ QQ := HomalgFieldOfRationalsInSingular( );;
 R := QQ * "x,y";
 #! Q[x,y]
 category := IntrinsicCategory( LeftPresentations( R ) );
-#! intrinsic_Category of left presentations of Q[x,y]
+#! intrinsic Category of left presentations of Q[x,y]
 M := AsLeftPresentation( HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );
 #! <An object in Category of left presentations of Q[x,y]>
 phi := CoverByFreeModule( M );
@@ -29,7 +29,7 @@ phi := Intrinsify( phi, F, 1, M, 1 );
 PositionOfActiveCell( phi );
 #! [ 1, 1, 1 ]
 Id := IdentityFunctor( category );
-#! Identity functor of intrinsic_Category of left presentations of Q[x,y]
+#! Identity functor of intrinsic Category of left presentations of Q[x,y]
 lg := FunctorLessGeneratorsLeft( R );
 #! Less generators for Category of left presentations of Q[x,y]
 LG := Intrinsify( lg, category );

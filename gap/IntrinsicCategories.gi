@@ -977,7 +977,7 @@ InstallMethod( IntrinsicCategory,
           create_func_universal_morphism, info, add;
     
     if HasName( C ) then
-        name := Concatenation( "intrinsic_", Name( C ) );
+        name := Concatenation( "intrinsic ", Name( C ) );
         IC := CreateCapCategory( name );
     else
         IC := CreateCapCategory( );
