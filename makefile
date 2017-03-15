@@ -5,7 +5,6 @@ doc: doc/manual.six
 doc/manual.six: makedoc.g \
 		PackageInfo.g \
 		doc/Doc.autodoc \
-		doc/IntrinsicCategories.bib \
 		gap/*.gd gap/*.gi examples/*.g examples/doc/*.g
 	        gap makedoc.g
 
