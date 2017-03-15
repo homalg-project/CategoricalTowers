@@ -21,4 +21,16 @@ Display( M );
 #! Z^(1x2) --> Z^(1x3),
 #! 
 #! currently represented by the above matrix
+rels := RelationsOfModule( M );
+#! <A set of 2 relations for 3 generators of a homalg left module>
+MatrixOfRelations( M );
+#! <A non-zero 2 x 3 matrix over an internal ring>
+MatrixOfRelations( rels );
+#! <A non-zero 2 x 3 matrix over an internal ring>
+gens := GeneratorsOfModule( M );
+#! <A set of 3 generators of a homalg left module>
+MatrixOfGenerators( M );
+#! <An unevaluated 3 x 3 matrix over an internal ring>
+MatrixOfGenerators( gens );
+#! <An unevaluated 3 x 3 matrix over an internal ring>
 #! @EndExample

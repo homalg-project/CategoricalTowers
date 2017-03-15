@@ -194,9 +194,6 @@ InstallMethod( HomalgModule,
     
     M := ObjectWithAmbientObject( iota, A );
     
-    ## TODO: this should somehow be known
-    IsOne( UnderlyingMatrix( EmbeddingInAmbientObject( M ) ) );
-    
     if left then
         A := CategoryOfHomalgLeftModules( R );
         M := Intrinsify( A, M );
