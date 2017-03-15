@@ -62,4 +62,4 @@ DeclareOperation( "LeftPresentation",
 #! @Returns a &homalg; right module
 DeclareOperation( "RightPresentation",
         [ IsHomalgMatrix ] );
-
+#! @InsertSystem RightPresentation
