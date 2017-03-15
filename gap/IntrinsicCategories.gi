@@ -1067,7 +1067,7 @@ InstallMethod( IntrinsicCategory,
             
             result := oper( C );
             
-            result := Intrinsify( result );
+            result := Intrinsify( IC, result );
             
             result!.(context) := [ [ ], [ ] ];
             
@@ -1095,7 +1095,7 @@ InstallMethod( IntrinsicCategory,
             
             result := CallFuncList( oper, eval_arg );
             
-            result := Intrinsify( result );
+            result := Intrinsify( IC, result );
             
             result!.(context) := [ arg, active_pos ];
             
