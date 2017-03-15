@@ -11,6 +11,21 @@
 ####################################
 
 ##
+InstallMethod( HomalgRing,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+
+  function( M )
+    
+    if not IsBound( M!.ring ) then
+        M!.ring := UnderlyingHomalgRing( RelationsOfModule( M ) );
+    fi;
+    
+    return M!.ring;
+    
+end );
+
+##
 InstallMethod( ListOfPositionsOfKnownSetsOfRelations,
         "for a homalg/CAP module",
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
@@ -128,7 +143,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, LG, etaLG, Id, IdLG;
+    local A, LG, etaLG, Id, type_obj, type_mor, IdLG;
     
     A := LeftPresentations( R );
     
@@ -144,7 +159,21 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     etaLG := WithAmbientObject( etaLG, Id, LG );
     
-    A := IntrinsicCategory( A );
+    type_obj :=
+      NewType( TheFamilyOfIntrinsicObjects,
+              IsCapCategoryIntrinsicObjectRep and
+              IsFinitelyPresentedModuleRep and
+              IsHomalgLeftObjectOrMorphismOfLeftObjects
+              );
+    
+    type_mor :=
+      NewType( TheFamilyOfIntrinsicObjects,
+              IsCapCategoryIntrinsicObjectRep and
+              IsMapOfFinitelyGeneratedModulesRep and
+              IsHomalgLeftObjectOrMorphismOfLeftObjects
+              );
+    
+    A := IntrinsicCategory( A, type_obj, type_mor );
     
     Id := IdentityFunctor( A );
     
@@ -166,7 +195,7 @@ InstallMethod( CategoryOfHomalgRightModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, LG, etaLG, Id, IdLG;
+    local A, LG, etaLG, Id, type_obj, type_mor, IdLG;
     
     A := RightPresentations( R );
     
@@ -182,7 +211,21 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     etaLG := WithAmbientObject( etaLG, Id, LG );
     
-    A := IntrinsicCategory( A );
+    type_obj :=
+      NewType( TheFamilyOfIntrinsicObjects,
+              IsCapCategoryIntrinsicObjectRep and
+              IsFinitelyPresentedModuleRep and
+              IsHomalgRightObjectOrMorphismOfRightObjects
+              );
+    
+    type_mor :=
+      NewType( TheFamilyOfIntrinsicObjects,
+              IsCapCategoryIntrinsicObjectRep and
+              IsMapOfFinitelyGeneratedModulesRep and
+              IsHomalgRightObjectOrMorphismOfRightObjects
+              );
+    
+    A := IntrinsicCategory( A, type_obj, type_mor );
     
     Id := IdentityFunctor( A );
     
@@ -229,17 +272,11 @@ InstallMethod( HomalgModule,
     
     if left then
         A := CategoryOfHomalgLeftModules( R );
-        M := Intrinsify( A, M );
-        M!.ring := R;
-        ## this seems to be expensive
-        SetFilterObj( M, IsFinitelyPresentedModuleRep and IsHomalgLeftObjectOrMorphismOfLeftObjects );
     else
         A := CategoryOfHomalgRightModules( R );
-        M := Intrinsify( A, M );
-        M!.ring := R;
-        ## this seems to be expensive
-        SetFilterObj( M, IsFinitelyPresentedModuleRep and IsHomalgRightObjectOrMorphismOfRightObjects );
     fi;
+    
+    M := Intrinsify( A, M );
     
     return M;
     

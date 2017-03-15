@@ -84,7 +84,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                    [ "ModulePresentationsForCAP", ">= 2016.10.04" ],
-                   [ "IntrinsicCategories", ">= 2016.09.28" ],
+                   [ "IntrinsicCategories", ">= 2017.03.13" ],
                    [ "CategoriesWithAmbientObjects", ">= 2016.09.02" ],
                    ],
   SuggestedOtherPackages := [ ],
