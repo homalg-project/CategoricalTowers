@@ -86,3 +86,39 @@ InstallMethod( MatrixOfRelations,
     return UnderlyingMatrix( rel );
     
 end );
+
+####################################
+#
+# methods for constructors:
+#
+####################################
+
+##
+InstallMethod( HomalgRelationsForModule,
+        "for a set of relations of a homalg/CAP module",
+        [ IsLeftPresentation ],
+        
+  function( rel )
+    
+    SetFilterObj( rel,
+            IsHomalgRelationsOfLeftModule and
+            IsRelationsOfFinitelyPresentedModuleRep );
+    
+    return rel;
+    
+end );
+
+##
+InstallMethod( HomalgRelationsForModule,
+        "for a set of relations of a homalg/CAP module",
+        [ IsRightPresentation ],
+        
+  function( rel )
+    
+    SetFilterObj( rel,
+            IsHomalgRelationsOfRightModule and
+            IsRelationsOfFinitelyPresentedModuleRep );
+    
+    return rel;
+    
+end );

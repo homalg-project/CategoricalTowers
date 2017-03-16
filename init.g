@@ -4,4 +4,5 @@
 # Reading the declaration part of the package.
 #
 
+ReadPackage( "M2", "gap/HomalgRelations.gd");
 ReadPackage( "M2", "gap/HomalgModule.gd");

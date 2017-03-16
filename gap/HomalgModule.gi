@@ -265,18 +265,7 @@ InstallMethod( Intrinsify,
     
     rel := ObjectWithoutAmbientObject( cell );
     
-    left :=  IsLeftPresentation( rel );
-    
-    ## TODO: legacy
-    if left then
-        SetFilterObj( rel,
-                IsHomalgRelationsOfLeftModule and
-                IsRelationsOfFinitelyPresentedModuleRep );
-    else
-        SetFilterObj( rel,
-                IsHomalgRelationsOfRightModule and
-                IsRelationsOfFinitelyPresentedModuleRep );
-    fi;
+    HomalgRelationsForModule( rel );
     
     M := Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
     
