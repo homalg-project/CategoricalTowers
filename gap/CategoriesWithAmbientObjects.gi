@@ -140,6 +140,9 @@ InstallMethod( CategoryWithAmbientObject,
         
         return_object := object_constructor( object, attributes );
         
+        Assert( 4, IsMonomorphism( attributes[1] ) );
+        SetIsSplitMonomorphism( attributes[1], true );
+        
         SetGeneralizedEmbeddingInAmbientObject( return_object, attributes[1] );
         
         SetObjectWithoutAmbientObject( return_object, object );
