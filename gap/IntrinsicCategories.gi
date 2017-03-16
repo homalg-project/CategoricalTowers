@@ -1319,7 +1319,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObject ],
         
   function( obj )
     
@@ -1332,7 +1332,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicMorphismRep ],
+        [ IsCapCategoryIntrinsicMorphism ],
         
   function( mor )
     
@@ -1345,7 +1345,7 @@ end );
 ##
 InstallMethod( Display,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObject ],
         
   function( obj )
     
@@ -1356,7 +1356,7 @@ end );
 ##
 InstallMethod( Display,
         "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicMorphismRep ],
+        [ IsCapCategoryIntrinsicMorphism ],
         
   function( mor )
     
