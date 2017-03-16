@@ -114,15 +114,15 @@ InstallMethod( RelationsOfModule,
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
         
   function( M, pos )
-    local gen;
+    local rel;
     
     if pos > PositionOfLastStoredCell( M ) then
         return fail;
     fi;
     
-    gen := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
+    rel := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
     
-    return gen;
+    return HomalgRelationsForModule( rel );
     
 end );
 
