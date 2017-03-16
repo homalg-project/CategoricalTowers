@@ -345,7 +345,7 @@ InstallMethod( HomalgModule,
     
     A := CapCategory( M );
     
-    left :=  IsLeftPresentation( M );
+    left := IsLeftPresentation( M );
     
     R := UnderlyingHomalgRing( M );
     
