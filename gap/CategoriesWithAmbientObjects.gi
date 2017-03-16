@@ -261,8 +261,13 @@ InstallMethod( CategoryWithAmbientObject,
                      IsCapCategoryObjectWithAmbientObject and ObjectFilter( category_with_ambient_objects ) ],
                    
       function( source, underlying_morphism, range )
+        local morphism;
         
-        return structure_record.MorphismConstructor( source, underlying_morphism, range );
+        morphism := structure_record.MorphismConstructor( source, underlying_morphism, range );
+        
+        INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT( underlying_morphism, morphism );
+        
+        return morphism;
         
     end );
     
