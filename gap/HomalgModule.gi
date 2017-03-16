@@ -157,6 +157,8 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
     
+    ## CategoryWithAmbientObject
+    
     A := CategoryWithAmbientObject( A );
     
     Id := IdentityFunctor( A );
@@ -178,6 +180,8 @@ InstallMethod( CategoryOfHomalgLeftModules,
               IsMapOfFinitelyGeneratedModulesRep and
               IsHomalgLeftObjectOrMorphismOfLeftObjects
               );
+    
+    ## IntrinsicCategory
     
     A := IntrinsicCategory( A, type_obj, type_mor );
     
@@ -213,6 +217,8 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
     
+    ## CategoryWithAmbientObject
+    
     A := CategoryWithAmbientObject( A );
     
     Id := IdentityFunctor( A );
@@ -234,6 +240,8 @@ InstallMethod( CategoryOfHomalgRightModules,
               IsMapOfFinitelyGeneratedModulesRep and
               IsHomalgRightObjectOrMorphismOfRightObjects
               );
+    
+    ## IntrinsicCategory
     
     A := IntrinsicCategory( A, type_obj, type_mor );
     
