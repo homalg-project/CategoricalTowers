@@ -197,7 +197,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
     
-    A!.LessGenerators := IdLG;
+    A!.IdLG := IdLG;
     
     return A;
     
@@ -257,7 +257,7 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
     
-    A!.LessGenerators := IdLG;
+    A!.IdLG := IdLG;
     
     return A;
     
