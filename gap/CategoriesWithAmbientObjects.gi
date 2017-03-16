@@ -456,6 +456,7 @@ InstallMethod( ViewObj,
   function( mor )
     
     ViewObj( UnderlyingCell( mor ) );
+    Print( " with an ambient object" );
     
 end );
 
