@@ -149,9 +149,13 @@ InstallMethod( CategoryOfHomalgLeftModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, LG, etaLG, Id, type_obj, type_mor, IdLG;
+    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
     
     A := LeftPresentations( R );
+    
+    SM := FunctorStandardModuleLeft( R );
+    
+    etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
     
     LG := FunctorLessGeneratorsLeft( R );
     
@@ -162,6 +166,10 @@ InstallMethod( CategoryOfHomalgLeftModules,
     A := CategoryWithAmbientObject( A );
     
     Id := IdentityFunctor( A );
+    
+    SM := WithAmbientObject( SM, A );
+    
+    etaSM := WithAmbientObject( etaSM, Id, SM );
     
     LG := WithAmbientObject( LG, A );
     
@@ -191,9 +199,19 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     Id := IdentityFunctor( A );
     
+    SM := Intrinsify( SM, A );
+    
+    etaSM := Intrinsify( etaSM, Id, SM );
+    
     LG := Intrinsify( LG, A );
     
     etaLG := Intrinsify( etaLG, Id, LG );
+    
+    ## TurnAutoequivalenceIntoIdentityFunctor
+    
+    IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
+    
+    A!.IdSM := IdSM;
     
     IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
     
@@ -209,9 +227,13 @@ InstallMethod( CategoryOfHomalgRightModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, LG, etaLG, Id, type_obj, type_mor, IdLG;
+    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
     
     A := RightPresentations( R );
+    
+    SM := FunctorStandardModuleRight( R );
+    
+    etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
     
     LG := FunctorLessGeneratorsRight( R );
     
@@ -222,6 +244,10 @@ InstallMethod( CategoryOfHomalgRightModules,
     A := CategoryWithAmbientObject( A );
     
     Id := IdentityFunctor( A );
+    
+    SM := WithAmbientObject( SM, A );
+    
+    etaSM := WithAmbientObject( etaSM, Id, SM );
     
     LG := WithAmbientObject( LG, A );
     
@@ -251,9 +277,19 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     Id := IdentityFunctor( A );
     
+    SM := Intrinsify( SM, A );
+    
+    etaSM := Intrinsify( etaSM, Id, SM );
+    
     LG := Intrinsify( LG, A );
     
     etaLG := Intrinsify( etaLG, Id, LG );
+    
+    ## TurnAutoequivalenceIntoIdentityFunctor
+    
+    IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
+    
+    A!.IdSM := IdSM;
     
     IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
     
