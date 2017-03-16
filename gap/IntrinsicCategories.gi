@@ -689,10 +689,11 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ s, t ] )) := [ 1, [ m ] ] )
                );
     
-    Objectify( type, mor );
-    
-    SetSource( mor, S );
-    SetRange( mor, T );
+    ObjectifyWithAttributes(
+            mor, type,
+            Source, S,
+            Range, T
+            );
     
     AddMorphism( C, mor );
     
