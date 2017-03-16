@@ -6,6 +6,8 @@
 @InsertSystem HomalgFreeRightModule
 @InsertSystem HomalgZeroLeftModule
 @InsertSystem HomalgZeroRightModule
+@InsertSystem BasisOfModule_Left
+@InsertSystem BasisOfModule_Right
 @InsertSystem BaseChange
 @InsertSystem BaseChange2
 @InsertSystem Resolution

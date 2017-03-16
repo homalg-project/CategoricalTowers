@@ -83,9 +83,10 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                   [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
                    [ "ModulePresentationsForCAP", ">= 2016.10.04" ],
                    [ "IntrinsicCategories", ">= 2017.03.14" ],
-                   [ "CategoriesWithAmbientObjects", ">= 2017.03.14" ],
+                   [ "CategoriesWithAmbientObjects", ">= 2017.03.15" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

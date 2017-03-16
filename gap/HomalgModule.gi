@@ -137,6 +137,19 @@ InstallMethod( MatrixOfRelations,
     
 end );
 
+##
+InstallMethod( BasisOfModule,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    
+    ApplyFunctor( CapCategory( M )!.IdSM, M );
+    
+    return RelationsOfModule( M );
+    
+end );
+
 ####################################
 #
 # methods for constructors:
