@@ -603,9 +603,9 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategoryObject, IsType ],
+        [ IsCapCategory, IsCapCategoryObject, IsType ],
         
-  function( o, t )
+  function( C, o, type )
     local obj;
     
     obj := rec(
@@ -615,21 +615,9 @@ InstallMethod( Intrinsify,
                1 := o
                );
     
-    Objectify( t, obj );
+    Objectify( type, obj );
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( o, obj );
-    
-    return obj;
-    
-end );
-
-##
-InstallMethod( Intrinsify,
-        [ IsCapCategory, IsCapCategoryObject ],
-        
-  function( C, obj )
-    
-    obj := Intrinsify( obj, C!.TheTypeIntrinsicObject );
     
     AddObject( C, obj );
     
@@ -641,6 +629,16 @@ InstallMethod( Intrinsify,
     fi;
     
     return obj;
+    
+end );
+
+## this is the method to overload
+InstallMethod( Intrinsify,
+        [ IsCapCategory, IsCapCategoryObject ],
+        
+  function( C, obj )
+    
+    return Intrinsify( C, obj, C!.TheTypeIntrinsicObject );
     
 end );
 
@@ -668,9 +666,9 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt, IsType ],
         
-  function( m, S, posS, T, posT )
+  function( m, S, posS, T, posT, type )
     local C, s, t, mor;
     
     C := CapCategory( S );
@@ -691,7 +689,7 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ s, t ] )) := [ 1, [ m ] ] )
                );
     
-    Objectify( C!.TheTypeIntrinsicMorphism, mor );
+    Objectify( type, mor );
     
     SetSource( mor, S );
     SetRange( mor, T );
@@ -708,6 +706,19 @@ InstallMethod( Intrinsify,
     INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( m, mor );
     
     return mor;
+    
+end );
+
+## this is the method to overload
+InstallMethod( Intrinsify,
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
+        
+  function( m, S, posS, T, posT )
+    local C;
+    
+    C := CapCategory( S );
+    
+    return Intrinsify( m, S, posS, T, posT, C!.TheTypeIntrinsicMorphism );
     
 end );
 

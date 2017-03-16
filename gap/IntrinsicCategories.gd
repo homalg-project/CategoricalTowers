@@ -67,67 +67,81 @@ DeclareProperty( "CanonicalizedToZero",
 ####################################
 
 #! @Description
-#!  In the first two argument version create an intrinsic cell of type <A>t</A> out of the cell <A>c</A>.
-#!  If <A>c</A> is a morphism then its source and object are intrinsified.
-#! @Group Intrinsify
-#! @Arguments c
+#!  In the three argument version create an intrinsic object of type <A>T</A> out of the object <A>o</A>.
+#! @Arguments C, o, T
+#! @Group Intrinsify_obj
 DeclareOperation( "Intrinsify",
-        [ IsCapCategoryCell, IsType ] );
+        [ IsCapCategory, IsCapCategoryObject, IsType ] );
 
 #! @Description
-#!  In the two argument version the intrinsified cell <A>c</A> of type <C>TheTypeIntrinsicObject</C> is subsequently added to the category <A>C</A>.
-#! @Arguments C, c
-#! @Group Intrinsify
+#!  If the object type <A>T</A> is not specified it defaults to <C>TheTypeIntrinsicObject</C>.
+#! @Arguments C, o
+#! @Group Intrinsify_obj
 DeclareOperation( "Intrinsify",
-        [ IsCapCategory, IsCapCategoryCell ] );
+        [ IsCapCategory, IsCapCategoryObject ] );
 
 #! @Description
-#!  In the five argument version create an intrinsic morphism out of the morphism <A>m</A>,
+#!  In the six argument version create an intrinsic morphism of type <A>T</A> out of the morphism <A>m</A>,
 #!  with source <C>CertainCell</C>(<A>s</A>,<A>i</A>) and target <C>CertainCell</C>(<A>t</A>,<A>j</A>).
+#! @Arguments m, s, i, t, j, T
+#! @Group Intrinsify_mor
+DeclareOperation( "Intrinsify",
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt, IsType ] );
+
+#! @Description
+#!  If the morphism type <A>T</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
 #! @Arguments m, s, i, t, j
-#! @Group Intrinsify
+#! @Group Intrinsify_mor
 DeclareOperation( "Intrinsify",
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ] );
 
 #! @Description
+#!  In the two argument version create an intrinsic morphism out of the morphism <A>m</A>
+#!  after intrinsifying its source and target.
+#! @Arguments C, m
+#! @Group Intrinsify_mor
+DeclareOperation( "Intrinsify",
+        [ IsCapCategory, IsCapCategoryMorphism ] );
+
+#! @Description
 #!  Intrinsify a functor ...
 #! @Arguments F, name, A, B
-#! @Group Intrinsify
+#! @Group Intrinsify_fun
 DeclareOperation( "Intrinsify",
         [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
 
 #! @Description
 #!  Intrinsify a functor ...
 #! @Arguments F, A, B
-#! @Group Intrinsify
+#! @Group Intrinsify_fun
 DeclareOperation( "Intrinsify",
         [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
 
 #! @Description
 #!  Intrinsify an endofunctor ...
 #! @Arguments F, name, A
-#! @Group Intrinsify
+#! @Group Intrinsify_fun
 DeclareOperation( "Intrinsify",
         [ IsCapFunctor, IsString, IsCapCategory ] );
 
 #! @Description
 #!  Intrinsify an endofunctor ...
 #! @Arguments F, A
-#! @Group Intrinsify
+#! @Group Intrinsify_fun
 DeclareOperation( "Intrinsify",
         [ IsCapFunctor, IsCapCategory ] );
 
 #! @Description
 #!  Intrinsify a natural transformation
 #! @Arguments eta, name, A, B
-#! @Group Intrinsify
+#! @Group Intrinsify_ntr
 DeclareOperation( "Intrinsify",
         [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ] );
 
 #! @Description
 #!  Intrinsify a natural transformation
 #! @Arguments eta, A, B
-#! @Group Intrinsify
+#! @Group Intrinsify_ntr
 DeclareOperation( "Intrinsify",
         [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );
 
