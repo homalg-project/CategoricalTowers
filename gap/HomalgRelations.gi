@@ -81,8 +81,8 @@ InstallMethod( MatrixOfRelations,
         "for a set of relations of a homalg/CAP module",
         [ IsHomalgRelations and IsLeftOrRightPresentation ],
         
-  function( M )
+  function( rel )
     
-    return UnderlyingMatrix( M );
+    return UnderlyingMatrix( rel );
     
 end );
