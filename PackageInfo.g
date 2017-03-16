@@ -5,7 +5,7 @@ PackageName := "CategoriesWithAmbientObjects",
 Subtitle := "Categories with ambient objects for CAP",
 
 Version := Maximum( [
-                   "2017.03.14", ## Mohamed's version
+                   "2017.03.15", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Kamal's version
                    ## this line prevents merge conflicts
@@ -73,7 +73,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2013.12.04" ],
                    [ "ActionsForCAP", ">= 2013.09.20" ],
-                   [ "GeneralizedMorphismsForCAP", ">= 2013.09.20" ],
+                   [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "GAPDoc", ">= 1.1" ]
                    ],

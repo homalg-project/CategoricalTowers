@@ -334,7 +334,11 @@ InstallMethod( WithAmbientObject,
     
     AddObjectFunction( waoF,
             function( obj )
-              return ObjectWithAmbientObject( ApplyFunctor( F, EmbeddingInAmbientObject( obj ) ), B );
+              local gmcF;
+              
+              gmcF := AsGeneralizedMorphismByCospan( F, CapCategory( GeneralizedEmbeddingInAmbientObject( obj ) ) );
+              
+              return ObjectWithAmbientObject( ApplyFunctor( gmcF, GeneralizedEmbeddingInAmbientObject( obj ) ), B );
             end );
     
     AddMorphismFunction( waoF,
