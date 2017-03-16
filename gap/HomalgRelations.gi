@@ -95,7 +95,7 @@ end );
 
 ##
 InstallMethod( HomalgRelationsForModule,
-        "for a set of relations of a homalg/CAP module",
+        "for a CAP left presentation",
         [ IsLeftPresentation ],
         
   function( rel )
@@ -110,7 +110,7 @@ end );
 
 ##
 InstallMethod( HomalgRelationsForModule,
-        "for a set of relations of a homalg/CAP module",
+        "for a CAP right presentation",
         [ IsRightPresentation ],
         
   function( rel )
