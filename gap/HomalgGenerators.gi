@@ -9,12 +9,12 @@ InstallMethod( HasNrGenerators,
         "for a set of generators of homalg/CAP modules",
         [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
 
-  function( gen )
+  function( gens )
     local mat;
     
-    mat := UnderlyingMatrix( gen );
+    mat := UnderlyingMatrix( gens );
     
-    if IsLeftPresentationMorphism( gen ) then
+    if IsLeftPresentationMorphism( gens ) then
         return HasNrColumns( mat );
     else
         return HasNrRows( mat );
@@ -27,12 +27,12 @@ InstallMethod( NrGenerators,
         "for a set of generators of homalg/CAP modules",
         [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
 
-  function( gen )
+  function( gens )
     local mat;
     
-    mat := UnderlyingMatrix( gen );
+    mat := UnderlyingMatrix( gens );
     
-    if IsLeftPresentationMorphism( gen ) then
+    if IsLeftPresentationMorphism( gens ) then
         return NrColumns( mat );
     else
         return NrRows( mat );

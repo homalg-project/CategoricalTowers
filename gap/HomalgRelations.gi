@@ -9,12 +9,12 @@ InstallMethod( HasNrGenerators,
         "for a set of relations of homalg/CAP modules",
         [ IsHomalgRelations ],
 
-  function( rel )
+  function( rels )
     local mat;
     
-    mat := UnderlyingMatrix( rel );
+    mat := UnderlyingMatrix( rels );
     
-    if IsLeftPresentation( rel ) then
+    if IsLeftPresentation( rels ) then
         return HasNrColumns( mat );
     else
         return HasNrRows( mat );
@@ -27,12 +27,12 @@ InstallMethod( NrGenerators,
         "for a set of relations of homalg/CAP modules",
         [ IsHomalgRelations ],
 
-  function( rel )
+  function( rels )
     local mat;
     
-    mat := UnderlyingMatrix( rel );
+    mat := UnderlyingMatrix( rels );
     
-    if IsLeftPresentation( rel ) then
+    if IsLeftPresentation( rels ) then
         return NrColumns( mat );
     else
         return NrRows( mat );
@@ -45,12 +45,12 @@ InstallMethod( HasNrRelations,
         "for a set of relations of homalg/CAP modules",
         [ IsHomalgRelations and IsLeftOrRightPresentation ],
 
-  function( rel )
+  function( rels )
     local mat;
     
-    mat := UnderlyingMatrix( rel );
+    mat := UnderlyingMatrix( rels );
     
-    if IsLeftPresentation( rel ) then
+    if IsLeftPresentation( rels ) then
         return HasNrRows( mat );
     else
         return HasNrColumns( mat );
@@ -63,12 +63,12 @@ InstallMethod( NrRelations,
         "for a set of relations of a homalg/CAP module",
         [ IsHomalgRelations ],
 
-  function( rel )
+  function( rels )
     local mat;
     
-    mat := UnderlyingMatrix( rel );
+    mat := UnderlyingMatrix( rels );
     
-    if IsLeftPresentation( rel ) then
+    if IsLeftPresentation( rels ) then
         return NrRows( mat );
     else
         return NrColumns( mat );
@@ -81,9 +81,9 @@ InstallMethod( MatrixOfRelations,
         "for a set of relations of a homalg/CAP module",
         [ IsHomalgRelations and IsLeftOrRightPresentation ],
         
-  function( rel )
+  function( rels )
     
-    return UnderlyingMatrix( rel );
+    return UnderlyingMatrix( rels );
     
 end );
 
@@ -98,13 +98,13 @@ InstallMethod( HomalgRelationsForModule,
         "for a CAP left presentation",
         [ IsLeftPresentation ],
         
-  function( rel )
+  function( rels )
     
-    SetFilterObj( rel,
+    SetFilterObj( rels,
             IsHomalgRelationsOfLeftModule and
             IsRelationsOfFinitelyPresentedModuleRep );
     
-    return rel;
+    return rels;
     
 end );
 
@@ -113,12 +113,12 @@ InstallMethod( HomalgRelationsForModule,
         "for a CAP right presentation",
         [ IsRightPresentation ],
         
-  function( rel )
+  function( rels )
     
-    SetFilterObj( rel,
+    SetFilterObj( rels,
             IsHomalgRelationsOfRightModule and
             IsRelationsOfFinitelyPresentedModuleRep );
     
-    return rel;
+    return rels;
     
 end );

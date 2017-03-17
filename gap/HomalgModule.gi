@@ -89,22 +89,22 @@ InstallMethod( GeneratorsOfModule,
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
         
   function( M, pos )
-    local gen;
+    local gens;
     
     if pos > PositionOfLastStoredCell( M ) then
         return fail;
     fi;
     
-    gen := EmbeddingInAmbientObject( CertainCell( M, pos ) );
+    gens := EmbeddingInAmbientObject( CertainCell( M, pos ) );
     
     ## TODO: legacy
     if IsHomalgLeftObjectOrMorphismOfLeftObjects( M ) then
-        SetFilterObj( gen, IsHomalgGeneratorsOfLeftModule );
+        SetFilterObj( gens, IsHomalgGeneratorsOfLeftModule );
     else
-        SetFilterObj( gen, IsHomalgGeneratorsOfRightModule );
+        SetFilterObj( gens, IsHomalgGeneratorsOfRightModule );
     fi;
     
-    return gen;
+    return gens;
     
 end );
 
@@ -114,15 +114,15 @@ InstallMethod( RelationsOfModule,
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
         
   function( M, pos )
-    local rel;
+    local rels;
     
     if pos > PositionOfLastStoredCell( M ) then
         return fail;
     fi;
     
-    rel := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
+    rels := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
     
-    return HomalgRelationsForModule( rel );
+    return HomalgRelationsForModule( rels );
     
 end );
 
@@ -318,11 +318,11 @@ InstallMethod( Intrinsify,
         [ IsCapCategory, IsCapCategoryObjectWithAmbientObject ],
 
   function( A, cell )
-    local left, rel, M;
+    local left, rels, M;
     
-    rel := ObjectWithoutAmbientObject( cell );
+    rels := ObjectWithoutAmbientObject( cell );
     
-    HomalgRelationsForModule( rel );
+    HomalgRelationsForModule( rels );
     
     M := Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
     
