@@ -51,6 +51,13 @@ InstallMethod( PositionOfTheDefaultSetOfGenerators,
   PositionOfActiveCell );
 
 ##
+InstallMethod( SetPositionOfTheDefaultPresentation,
+        "for a homalg/CAP module and an integer",
+        [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
+
+  SetPositionOfActiveCell );
+
+##
 InstallMethod( HasNrGenerators,
         "for a homalg/CAP module",
         [ IsHomalgModule and IsCapCategoryIntrinsicObject ],
