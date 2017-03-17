@@ -214,7 +214,7 @@ InstallMethod( CategoryWithAmbientObject,
             
             embedding_of_range := ObjectAttributesAsList( range )[1];
             
-            return [ PreCompose( mono, embedding_of_range ) ];
+            return [ PreCompose( AsGeneralizedMorphismByCospan( mono ), embedding_of_range ) ];
             
           end;
         
