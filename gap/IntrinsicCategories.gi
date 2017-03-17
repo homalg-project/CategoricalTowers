@@ -94,6 +94,11 @@ InstallImmediateMethod( CanonicalizedToZero,
   function( obj )
     local F;
     
+    ## causes error, recursion depth trap (5000):
+    #if IsEqualForObjects( obj, ZeroObject( obj ) ) then
+    #    return true;
+    #fi;
+    
     F := CanonicalizeZeroObjectsAsIdentityFunctor( CapCategory( obj ) );
     
     ApplyFunctor( F, obj );
