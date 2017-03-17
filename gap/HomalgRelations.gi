@@ -122,3 +122,25 @@ InstallMethod( HomalgRelationsForModule,
     return rels;
     
 end );
+
+##
+InstallMethod( HomalgRelationsForLeftModule,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+        
+  function( mat )
+    
+    return HomalgRelationsForModule( AsLeftPresentation( mat ) );
+    
+end );
+
+##
+InstallMethod( HomalgRelationsForRightModule,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+        
+  function( mat )
+    
+    return HomalgRelationsForModule( AsRightPresentation( mat ) );
+    
+end );
