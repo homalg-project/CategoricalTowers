@@ -140,6 +140,22 @@ InstallMethod( MatrixOfRelations,
 end );
 
 ##
+InstallMethod( DecideZero,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    local gens;
+    
+    gens := GeneratorsOfModule( M );
+    
+    IsZero( gens );
+    
+    return gens;
+    
+end );
+
+##
 InstallMethod( BasisOfModule,
         "for a homalg/CAP module",
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],

@@ -10,5 +10,6 @@
 @InsertSystem BasisOfModule_Right
 @InsertSystem BaseChange
 @InsertSystem BaseChange2
+@InsertSystem ByASmallerPresentation
 @InsertSystem Resolution
 @InsertSystem Resolution2

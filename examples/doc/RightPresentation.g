@@ -33,4 +33,8 @@ MatrixOfGenerators( M );
 #! <An unevaluated 2 x 2 matrix over an internal ring>
 MatrixOfGenerators( gens );
 #! <An unevaluated 2 x 2 matrix over an internal ring>
+ByASmallerPresentation( M );
+#! <A cyclic right module on a cyclic generator satisfying 1 relation>
+Display( M );
+#! Z/< 3 >
 #! @EndExample

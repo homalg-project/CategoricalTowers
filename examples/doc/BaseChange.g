@@ -21,4 +21,10 @@ M;
 #! <A torsion left module presented by 3 relations for 3 generators>
 N := Z4 * M; ## or N := M * Z4;
 #! <A non-torsion left module presented by 2 relations for 3 generators>
+ByASmallerPresentation( N );
+#! <A non-torsion left module presented by 1 relation for 2 generators>
+Display( N );
+#! Z/( 4 )/< |[ 2 ]| > + Z/( 4 )^(1 x 1)
+N;
+#! <A non-torsion left module presented by 1 relation for 2 generators>
 #! @EndExample
