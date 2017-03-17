@@ -10,8 +10,15 @@ SetPackageInfo( rec(
 
 PackageName := "M2",
 Subtitle := "Intrinsic modules with elements for the CAP based homalg",
-Version := "0.1",
-Date := "14/03/2017", # dd/mm/yyyy format
+
+Version := Maximum( [
+                   "2017.03.14", ## Mohamed's version
+                   ## this line prevents merge conflicts
+                   "2017.03.14", ## Kamals's version
+                   ] ),
+
+Date := ~.Version{[ 1 .. 10 ]},
+Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
 
 Persons := [
   rec(
