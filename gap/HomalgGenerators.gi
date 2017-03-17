@@ -50,3 +50,39 @@ InstallMethod( MatrixOfGenerators,
     return UnderlyingMatrix( M );
     
 end );
+
+####################################
+#
+# methods for constructors:
+#
+####################################
+
+##
+InstallMethod( HomalgGeneratorsForModule,
+        "for a CAP left presentation morphism",
+        [ IsLeftPresentationMorphism ],
+        
+  function( gens )
+    
+    SetFilterObj( gens,
+            IsHomalgGeneratorsOfLeftModule and
+            IsGeneratorsOfFinitelyGeneratedModuleRep );
+    
+    return gens;
+    
+end );
+
+##
+InstallMethod( HomalgGeneratorsForModule,
+        "for a CAP right presentation morphism",
+        [ IsRightPresentationMorphism ],
+        
+  function( gens )
+    
+    SetFilterObj( gens,
+            IsHomalgGeneratorsOfRightModule and
+            IsGeneratorsOfFinitelyGeneratedModuleRep );
+    
+    return gens;
+    
+end );

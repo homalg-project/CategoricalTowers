@@ -97,12 +97,7 @@ InstallMethod( GeneratorsOfModule,
     
     gens := EmbeddingInAmbientObject( CertainCell( M, pos ) );
     
-    ## TODO: legacy
-    if IsHomalgLeftObjectOrMorphismOfLeftObjects( M ) then
-        SetFilterObj( gens, IsHomalgGeneratorsOfLeftModule );
-    else
-        SetFilterObj( gens, IsHomalgGeneratorsOfRightModule );
-    fi;
+    HomalgGeneratorsForModule( gens );
     
     return gens;
     

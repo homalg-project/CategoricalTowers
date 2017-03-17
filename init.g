@@ -5,4 +5,5 @@
 #
 
 ReadPackage( "M2", "gap/HomalgRelations.gd");
+ReadPackage( "M2", "gap/HomalgGenerators.gd");
 ReadPackage( "M2", "gap/HomalgModule.gd");
