@@ -145,6 +145,17 @@ InstallMethod( BasisOfModule,
     
 end );
 
+##
+InstallMethod( OnLessGenerators,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    
+    return ApplyFunctor( CapCategory( M )!.IdLG, M );
+    
+end );
+
 ####################################
 #
 # methods for constructors:
