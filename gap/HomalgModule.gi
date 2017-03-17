@@ -196,8 +196,8 @@ InstallMethod( CategoryOfHomalgLeftModules,
               );
     
     type_mor :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
+      NewType( TheFamilyOfIntrinsicMorphisms,
+              IsCapCategoryIntrinsicMorphismRep and
               IsMapOfFinitelyGeneratedModulesRep and
               IsHomalgLeftObjectOrMorphismOfLeftObjects
               );
@@ -274,8 +274,8 @@ InstallMethod( CategoryOfHomalgRightModules,
               );
     
     type_mor :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
+      NewType( TheFamilyOfIntrinsicMorphisms,
+              IsCapCategoryIntrinsicMorphismRep and
               IsMapOfFinitelyGeneratedModulesRep and
               IsHomalgRightObjectOrMorphismOfRightObjects
               );
