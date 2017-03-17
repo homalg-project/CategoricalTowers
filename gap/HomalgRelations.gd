@@ -4,7 +4,7 @@
 
 #! @Description
 #!  Add the filters <C>IsHomalgRelationsOfLeftModule</C> resp. <C>IsHomalgRelationsOfRightModule</C>
-#!  to the <C>IsLeftOrRightPresentation</C> <A>rel</A> and return <A>rel</A>.
+#!  to <A>rel</A> of (type <C>IsLeftOrRightPresentation</C>) and return it.
 #! @Arguments rel
 #! @Returns rel with side effect
 DeclareOperation( "HomalgRelationsForModule",
