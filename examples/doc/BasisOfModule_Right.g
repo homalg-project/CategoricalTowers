@@ -24,7 +24,7 @@ Display( M );
 BasisOfModule( M );
 #! <A set of 2 relations for 2 generators of a homalg right module>
 M;
-#! <A right module on 2 generators satisfying 2 relations>
+#! <A torsion right module on 2 generators satisfying 2 relations>
 Display( M );
 #! [ [  1,  0 ],
 #!   [  1,  3 ] ]

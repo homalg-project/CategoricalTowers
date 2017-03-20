@@ -24,7 +24,7 @@ Display( M );
 BasisOfModule( M );
 #! <A set of 2 relations for 3 generators of a homalg left module>
 M;
-#! <A non-torsion left module presented by 2 relations for 3 generators>
+#! <A rank 1 left module presented by 2 relations for 3 generators>
 Display( M );
 #! [ [   1,   0,  -1 ],
 #!   [   0,   3,   6 ] ]

@@ -124,7 +124,11 @@ InstallMethod( RelationsOfModule,
     
     rels := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
     
-    return HomalgRelationsForModule( rels );
+    rels := HomalgRelationsForModule( rels );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES( rels, M );
+    
+    return rels;
     
 end );
 
@@ -161,10 +165,15 @@ InstallMethod( BasisOfModule,
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
+    local rels;
     
     ApplyFunctor( CapCategory( M )!.IdSM, M );
     
-    return RelationsOfModule( M );
+    rels := RelationsOfModule( M );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+    
+    return rels;
     
 end );
 

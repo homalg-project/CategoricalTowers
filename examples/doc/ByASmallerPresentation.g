@@ -22,7 +22,7 @@ Display( M );
 #! 
 #! currently represented by the above matrix
 ByASmallerPresentation( M );
-#! <A non-torsion left module presented by 1 relation for 2 generators>
+#! <A rank 1 left module presented by 1 relation for 2 generators>
 Display( M );
 #! Z/< 3 > + Z^(1 x 1)
 M;

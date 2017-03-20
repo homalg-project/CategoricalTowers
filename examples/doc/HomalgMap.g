@@ -35,7 +35,7 @@ Display( phi );
 #! 
 #! the map is currently represented by the above 3 x 4 matrix
 ByASmallerPresentation( M );
-#! <A non-torsion left module presented by 1 relation for 2 generators>
+#! <A rank 1 left module presented by 1 relation for 2 generators>
 Display( M );
 #! Z/< 3 > + Z^(1 x 1)
 Display( phi );
@@ -44,7 +44,7 @@ Display( phi );
 #! 
 #! the map is currently represented by the above 2 x 4 matrix
 ByASmallerPresentation( N );
-#! <A non-torsion left module presented by 1 relation for 3 generators>
+#! <A rank 2 left module presented by 1 relation for 3 generators>
 Display( N );
 #! Z/< 4 > + Z^(1 x 2)
 Display( phi );
