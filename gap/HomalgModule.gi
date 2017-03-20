@@ -369,6 +369,8 @@ InstallMethod( Intrinsify,
     M!.PresentationMorphisms := rec( );
     M!.Resolutions := rec( );
     
+    INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES( rels, M );
+    
     return M;
     
 end );

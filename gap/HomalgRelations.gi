@@ -129,8 +129,13 @@ InstallMethod( HomalgRelationsForLeftModule,
         [ IsHomalgMatrix ],
         
   function( mat )
+    local rels;
     
-    return HomalgRelationsForModule( AsLeftPresentation( mat ) );
+    rels := HomalgRelationsForModule( AsLeftPresentation( mat ) );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( mat, rels );
+    
+    return rels;
     
 end );
 
@@ -140,7 +145,12 @@ InstallMethod( HomalgRelationsForRightModule,
         [ IsHomalgMatrix ],
         
   function( mat )
+    local rels;
     
-    return HomalgRelationsForModule( AsRightPresentation( mat ) );
+    rels := HomalgRelationsForModule( AsRightPresentation( mat ) );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( mat, rels );
+    
+    return rels;
     
 end );
