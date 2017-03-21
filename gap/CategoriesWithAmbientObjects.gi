@@ -293,6 +293,23 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS,
   
   function( category )
+    
+    ##
+    AddIsWellDefinedForObjects( category,
+      function( object )
+        
+        return IsWellDefinedForMorphisms( GeneralizedEmbeddingInAmbientObject( object ) );
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( category,
+      function( morphism )
+        
+        return IsWellDefinedForMorphisms( UnderlyingCell( morphism ) );
+        
+    end );
+    
     ##
     AddIsEqualForObjects( category,
       function( object_with_ambient_object_1, object_with_ambient_object_2 )
