@@ -66,6 +66,20 @@ InstallMethod( DecideZero,
     
 end );
 
+##
+InstallMethod( Cokernel,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  CokernelObject );
+
+##
+InstallMethod( CokernelEpi,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  CokernelProjection );
+
 ####################################
 #
 # methods for constructors:
