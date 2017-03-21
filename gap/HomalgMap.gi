@@ -67,6 +67,13 @@ InstallMethod( DecideZero,
 end );
 
 ##
+InstallMethod( ImageObjectEmb,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  ImageEmbedding );
+
+##
 InstallMethod( Cokernel,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
