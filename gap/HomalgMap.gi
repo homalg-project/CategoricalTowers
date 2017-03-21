@@ -73,23 +73,39 @@ end );
 
 ##
 InstallMethod( HomalgMap,
-        "for a homalg matrix and two homalg/CAP modules",
-        [ IsHomalgMatrix, IsHomalgModule and IsCapCategoryIntrinsicObject, IsHomalgModule and IsCapCategoryIntrinsicObject ],
+        "for a homalg matrix and two lists",
+        [ IsHomalgMatrix, IsList, IsList ],
 
   function( m, M, N )
     
+    if not ( Length( M ) = 2 and IsHomalgModule( M[1] ) and IsCapCategoryIntrinsicObject( M[1] ) and IsInt( M[2] ) and
+             Length( N ) = 2 and IsHomalgModule( N[1] ) and IsCapCategoryIntrinsicObject( N[1] ) and IsInt( N[2] ) ) then
+        TryNextMethod( );
+    fi;
+    
     ResetFilterObj( m, IsMutable );
     
-    m := PresentationMorphism( RelationsOfModule( M ), m, RelationsOfModule( N ) );
+    m := PresentationMorphism( RelationsOfModule( M[1], M[2] ), m, RelationsOfModule( N[1], N[2] ) );
     
-    m := MorphismWithAmbientObject( ActiveCell( M ), m, ActiveCell( N ) );
+    m := MorphismWithAmbientObject( CertainCell( M[1], M[2] ), m, CertainCell( N[1], N[2] ) );
     
-    m := Intrinsify( m, M, PositionOfActiveCell( M ), N, PositionOfActiveCell( N ) );
+    m := Intrinsify( m, M[1], M[2], N[1], N[2] );
     
     ## TODO: legacy
     m!.reduced_matrices := rec( );
     
     return m;
+    
+end );
+
+##
+InstallMethod( HomalgMap,
+        "for a homalg matrix and two homalg/CAP modules",
+        [ IsHomalgMatrix, IsHomalgModule and IsCapCategoryIntrinsicObject, IsHomalgModule and IsCapCategoryIntrinsicObject ],
+
+  function( m, M, N )
+    
+    return HomalgMap( m, [ M, PositionOfActiveCell( M ) ], [ N, PositionOfActiveCell( N ) ] );
     
 end );
 
