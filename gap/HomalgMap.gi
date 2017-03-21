@@ -1,5 +1,17 @@
 ####################################
 #
+# logical implications methods:
+#
+####################################
+
+InstallLogicalImplicationsForHomalgObjects(
+        [ [ IsWellDefined, "implies", IsMorphism ],
+          [ IsMorphism, "implies", IsWellDefined ],
+          ],
+        IsHomalgMap and IsCapCategoryIntrinsicMorphism );
+
+####################################
+#
 # methods for operations:
 #
 ####################################
