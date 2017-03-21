@@ -273,6 +273,10 @@ InstallMethod( CategoryWithAmbientObject,
     
     ## TODO: Set properties of category_with_ambient_objects
     
+    if HasIsAbelianCategory( abelian_category ) then
+        SetIsAbelianCategory( category_with_ambient_objects, IsAbelianCategory( abelian_category ) );
+    fi;
+    
     ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS( category_with_ambient_objects );
     
     ## TODO: Logic for category_with_ambient_objects
