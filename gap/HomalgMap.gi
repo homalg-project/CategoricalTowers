@@ -115,6 +115,30 @@ end );
 ##
 InstallMethod( HomalgMap,
         "for a homalg matrix, a string, and a homalg/CAP module",
+        [ IsHomalgMatrix, IsHomalgModule and IsCapCategoryIntrinsicObject, IsString ],
+
+  function( m, M, N )
+    local R;
+    
+    if not N = "free" then
+        TryNextMethod( );
+    fi;
+    
+    R := HomalgRing( M );
+    
+    if IsHomalgLeftObjectOrMorphismOfLeftObjects( M ) then
+        N := HomalgFreeLeftModule( NrColumns( m ), R );
+    else
+        N := HomalgFreeRightModule( NrRows( m ), R );
+    fi;
+    
+    return HomalgMap( m, M, N );
+    
+end );
+
+##
+InstallMethod( HomalgMap,
+        "for a homalg matrix, a string, and a homalg/CAP module",
         [ IsHomalgMatrix, IsString, IsHomalgModule and IsCapCategoryIntrinsicObject ],
 
   function( m, M, N )
