@@ -111,6 +111,17 @@ InstallMethod( GeneratorsOfModule,
 end );
 
 ##
+InstallMethod( GeneratorsOfModule,
+        "for a homalg submodule",
+        [ IsFinitelyPresentedSubmoduleRep and HasEmbeddingInSuperObject, IsPosInt ],
+        
+  function( M, pos )
+    
+    return GeneratorsOfModule( UnderlyingObject( M ), pos );
+    
+end );
+
+##
 InstallMethod( RelationsOfModule,
         "for a homalg/CAP module and a positive integer",
         [ IsHomalgModule and IsCapCategoryIntrinsicObject, IsPosInt ],
