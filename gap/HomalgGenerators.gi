@@ -15,9 +15,9 @@ InstallMethod( HasNrGenerators,
     mat := UnderlyingMatrix( gens );
     
     if IsLeftPresentationMorphism( gens ) then
-        return HasNrColumns( mat );
-    else
         return HasNrRows( mat );
+    else
+        return HasNrColumns( mat );
     fi;
     
 end );
@@ -33,9 +33,9 @@ InstallMethod( NrGenerators,
     mat := UnderlyingMatrix( gens );
     
     if IsLeftPresentationMorphism( gens ) then
-        return NrColumns( mat );
-    else
         return NrRows( mat );
+    else
+        return NrColumns( mat );
     fi;
     
 end );
