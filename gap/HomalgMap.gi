@@ -87,6 +87,20 @@ InstallMethod( CokernelEpi,
         
   CokernelProjection );
 
+##
+InstallMethod( Kernel,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  KernelObject );
+
+##
+InstallMethod( KernelEmb,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  KernelEmbedding );
+
 ####################################
 #
 # methods for constructors:
