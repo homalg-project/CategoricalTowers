@@ -119,7 +119,11 @@ InstallMethod( HomalgMap,
     if m = [ "identity" ] then
         m := HomalgIdentityMatrix( NrGenerators( M ), HomalgRing( M ) );
     elif m = [ "zero" ] then
-        m := HomalgZeroMatrix( NrGenerators( M ), NrGenerators( N ), HomalgRing( M ) );
+        if IsHomalgLeftObjectOrMorphismOfLeftObjects( M ) then
+            m := HomalgZeroMatrix( NrGenerators( M ), NrGenerators( N ), HomalgRing( M ) );
+        else
+            m := HomalgZeroMatrix( NrGenerators( N ), NrGenerators( M ), HomalgRing( M ) );
+        fi;
     else
         TryNextMethod( );
     fi;
