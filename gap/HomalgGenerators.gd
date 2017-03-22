@@ -9,3 +9,14 @@
 #! @Returns gens with side effect
 DeclareOperation( "HomalgGeneratorsForModule",
         [ IsLeftOrRightPresentationMorphism ] );
+
+#! @Section Operations
+
+#! @Description
+#!  If <C>HasProcedureToReadjustGenerators</C>( <A>gens</A> ) then
+#!  set them for <A>gens_new</A>.
+#!  Likewise for <C>ProcedureToNormalizeGenerators</C>.
+#! @Arguments gens, gens_new
+#! @Returns non
+DeclareOperation( "UpdateHomalgGenerators",
+        [ IsHomalgGenerators, IsHomalgGenerators ] );

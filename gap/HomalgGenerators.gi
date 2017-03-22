@@ -5,6 +5,24 @@
 ####################################
 
 ##
+InstallMethod( UpdateHomalgGenerators,
+        "for a set of generators of homalg/CAP modules",
+        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism,
+          IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
+        
+  function( gens, gens_new )
+    
+    if HasProcedureToReadjustGenerators( gens ) then
+        SetProcedureToReadjustGenerators( gens_new, ProcedureToReadjustGenerators( gens ) );
+    fi;
+    
+    if HasProcedureToNormalizeGenerators( gens ) then
+        SetProcedureToNormalizeGenerators( gens_new, ProcedureToNormalizeGenerators( gens ) );
+    fi;
+    
+end );
+
+##
 InstallMethod( HasNrGenerators,
         "for a set of generators of homalg/CAP modules",
         [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],

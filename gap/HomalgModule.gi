@@ -176,9 +176,15 @@ InstallMethod( BasisOfModule,
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
-    local rels;
+    local pos, rels;
+    
+    ## TODO: write a wrapper for the IdentityFunctors with side-effect to
+    ## update generators and more
+    pos := PositionOfActiveCell( M );
     
     ApplyFunctor( CapCategory( M )!.IdSM, M );
+    
+    UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
     
     rels := RelationsOfModule( M );
     
@@ -194,8 +200,15 @@ InstallMethod( OnLessGenerators,
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
+    local pos;
     
-    return ApplyFunctor( CapCategory( M )!.IdLG, M );
+    pos := PositionOfActiveCell( M );
+    
+    ApplyFunctor( CapCategory( M )!.IdLG, M );
+    
+    UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
+    
+    return M;
     
 end );
 
