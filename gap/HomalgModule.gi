@@ -213,7 +213,48 @@ InstallMethod( CategoryOfHomalgLeftModules,
   function( R )
     local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
     
-    A := LeftPresentations( R );
+    A := LeftPresentations( R : FinalizeCategory := false );
+    
+    AddImageEmbedding( A,
+            function( morphism )
+              local mat, T, B, N, S, img, emb;
+              
+              mat := UnderlyingMatrix( morphism );
+              
+              T := Range( morphism );
+              
+              B := UnderlyingMatrix( T );
+              
+              # basis of the set of relations of T:
+              B := BasisOfRows( B );
+              
+              # TODO: RelativeReducedRows( mat, B );
+              # normal form of mat with respect to B:
+              N := DecideZeroRows( mat, B );
+              # get a better basis for N (by default, it only throws away the zero generators):
+              N := CertainRows( N, NonZeroRows( N ) );
+              
+              # this matrix of generators is often enough the identity matrix
+              # and knowing this will avoid computations:
+              IsOne( N );
+              
+              # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
+              S := SyzygiesGeneratorsOfRows( N, B );        ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
+              
+              # the image object
+              img := AsLeftPresentation( S );
+              
+              # the image embedding
+              emb := PresentationMorphism( img, N, T );
+              
+              ## check assertion
+              Assert( 5, IsMonomorphism( emb ) );
+              
+              return emb;
+              
+            end );
+    
+    Finalize( A );
     
     SM := FunctorStandardModuleLeft( R );
     
@@ -291,7 +332,48 @@ InstallMethod( CategoryOfHomalgRightModules,
   function( R )
     local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
     
-    A := RightPresentations( R );
+    A := RightPresentations( R : FinalizeCategory := false );
+    
+    AddImageEmbedding( A,
+            function( morphism )
+              local mat, T, B, N, S, img, emb;
+              
+              mat := UnderlyingMatrix( morphism );
+              
+              T := Range( morphism );
+              
+              B := UnderlyingMatrix( T );
+              
+              # basis of the set of relations of T:
+              B := BasisOfColumns( B );
+              
+              # TODO: RelativeReducedColumns( mat, B );
+              # normal form of mat with respect to B:
+              N := DecideZeroColumns( mat, B );
+              # get a better basis for N (by default, it only throws away the zero generators):
+              N := CertainColumns( N, NonZeroColumns( N ) );
+              
+              # this matrix of generators is often enough the identity matrix
+              # and knowing this will avoid computations:
+              IsOne( N );
+              
+              # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
+              S := SyzygiesGeneratorsOfColumns( N, B );    ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
+              
+              # the image object
+              img := AsRightPresentation( S );
+              
+              # the image embedding
+              emb := PresentationMorphism( img, N, T );
+              
+              ## check assertion
+              Assert( 5, IsMonomorphism( emb ) );
+              
+              return emb;
+              
+            end );
+    
+    Finalize( A );
     
     SM := FunctorStandardModuleRight( R );
     
@@ -427,6 +509,8 @@ InstallMethod( LeftPresentation,
 
   function( M )
     
+    CategoryOfHomalgLeftModules( HomalgRing( M ) );
+    
     M := AsLeftPresentation( M );
     
     return HomalgModule( M );
@@ -439,6 +523,8 @@ InstallMethod( RightPresentation,
         [ IsHomalgMatrix ],
 
   function( M )
+    
+    CategoryOfHomalgRightModules( HomalgRing( M ) );
     
     M := AsRightPresentation( M );
     
