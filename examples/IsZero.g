@@ -35,5 +35,5 @@ DisplayEmbeddingInAmbientObject( Mg );
 #! 0,0,
 #! 0,0
 #! 
-#! A morphism in Category of left presentations of Q[x,y]
+#! A monomorphism in Category of left presentations of Q[x,y]
 #! @EndExample

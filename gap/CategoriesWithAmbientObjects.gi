@@ -89,12 +89,17 @@ InstallMethod( EmbeddingInAmbientObject,
                [ IsCapCategoryObjectWithAmbientObjectRep ],
 
   function( obj )
-    local gens, rels;
+    local gens, rels, emb;
     
     gens := NormalizedCospan( GeneralizedEmbeddingInAmbientObject( obj ) );
     rels := ReversedArrow( gens );
     
-    return PreCompose( Arrow( gens ), ColiftAlongEpimorphism( rels, CokernelProjection( KernelEmbedding( rels ) ) ) );
+    emb := PreCompose( Arrow( gens ), ColiftAlongEpimorphism( rels, CokernelProjection( KernelEmbedding( rels ) ) ) );
+    
+    Assert( 5, IsMonomorphism( emb ) );
+    SetIsMonomorphism( emb, true );
+    
+    return emb;
     
 end );
 
