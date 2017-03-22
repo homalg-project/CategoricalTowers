@@ -138,6 +138,10 @@ InstallMethod( HomalgMap,
     
     m := Intrinsify( m, M[1], M[2], N[1], N[2] );
     
+    if IsEqualForObjects( M[1], N[1] ) then
+        SetFilterObj( m, IsHomalgSelfMap );
+    fi;
+    
     ## TODO: legacy
     m!.reduced_matrices := rec( );
     
