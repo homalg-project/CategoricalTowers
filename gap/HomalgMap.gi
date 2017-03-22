@@ -342,6 +342,6 @@ InstallMethod( HomalgMap,
     
     return HomalgMap( MatrixOfRelations( rels ),
                    "free",
-                   HomalgFreeRightModule( NrRelations( rels ), R ) );
+                   HomalgFreeRightModule( NrGenerators( rels ), R ) );
     
 end );
