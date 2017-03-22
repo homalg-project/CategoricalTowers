@@ -151,9 +151,21 @@ InstallMethod( CategoryWithAmbientObject,
         
     end;
     
-    structure_record.MorphismConstructor :=
+    structure_record.MorphismPreConstructor :=
       CreateMorphismConstructorForCategoryWithAttributes(
               abelian_category, category_with_ambient_objects, TheTypeMorphismWithAmbientObject );
+    
+    structure_record.MorphismConstructor :=
+      function( source, underlying_morphism, range )
+        local morphism;
+        
+        morphism := structure_record.MorphismPreConstructor( source, underlying_morphism, range );
+        
+        INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT( underlying_morphism, morphism );
+        
+        return morphism;
+        
+    end;
     
     ##
     category_weight_list := abelian_category!.derivations_weight_list;
@@ -260,16 +272,7 @@ InstallMethod( CategoryWithAmbientObject,
                      IsCapCategoryMorphism and MorphismFilter( abelian_category ),
                      IsCapCategoryObjectWithAmbientObject and ObjectFilter( category_with_ambient_objects ) ],
                    
-      function( source, underlying_morphism, range )
-        local morphism;
-        
-        morphism := structure_record.MorphismConstructor( source, underlying_morphism, range );
-        
-        INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMBIENT_OBJECT( underlying_morphism, morphism );
-        
-        return morphism;
-        
-    end );
+      structure_record.MorphismConstructor );
     
     ## TODO: Set properties of category_with_ambient_objects
     
