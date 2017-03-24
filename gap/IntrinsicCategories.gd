@@ -177,22 +177,27 @@ DeclareAttribute( "CanonicalizeZeroMorphismsAsIdentityFunctor",
 #!  The user has to guarantee that
 #!  the specified type <A>type_obj</A> is a subtype of <C>TheTypeIntrinsicObject</C> and
 #!  the specified type <A>type_mor</A> is a subtype of <C>TheTypeIntrinsicMorphism</C>.
-#! @Arguments C, strict, type_obj, type_mor
+#!  The argument <C>todo</C> is a function which will be applied in all
+#!  &CAP; constructions <C>CAP_oper</C> producing a morphism
+#!  to the argument list of <C>CAP_oper</C> (as first argument) and
+#!  the output of <C>CAP_oper</C> (as second argument).
+#! @Arguments C, strict, type_obj, type_mor, todo
 #! @Returns a &CAP; category
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsBool, IsType, IsType ] );
+        [ IsCapCategory, IsBool, IsType, IsType, IsFunction ] );
 
 #! @Description
 #!  If <A>strict</A> is not specified it defaults to <C>true</C>.
-#! @Arguments C, type_obj, type_mor
+#! @Arguments C, type_obj, type_mor, todo
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsType, IsType ] );
+        [ IsCapCategory, IsType, IsType, IsFunction ] );
 
 #! @Description
 #!  If <A>type_obj</A> is not specified it defaults to <C>TheTypeIntrinsicObject</C>.
 #!  If <A>type_mor</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
+#!  If <A>todo</A> is not specified it defaults to <C>ReturnNothing</C>.
 #! @Arguments C, strict
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",

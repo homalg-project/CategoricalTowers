@@ -986,9 +986,9 @@ end );
     
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsBool, IsType, IsType ],
+        [ IsCapCategory, IsBool, IsType, IsType, IsFunction ],
         
-  function( C, strict, type_obj, type_mor )
+  function( C, strict, type_obj, type_mor, todo )
     local name, IC, recnames, func, pos, create_func_bool,
           create_func_object0, create_func_object, create_func_morphism,
           create_func_universal_morphism, info, add;
@@ -1214,6 +1214,8 @@ InstallMethod( IntrinsicCategory,
                 SetPositionOfActiveCell( universal_object, active_pos );
             fi;
             
+            todo( arg, result );
+            
             return result;
             
           end;
@@ -1278,18 +1280,18 @@ end );
 
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsType, IsType ],
+        [ IsCapCategory, IsType, IsType, IsFunction ],
         
-  function( C, type_obj, type_mor )
+  function( C, type_obj, type_mor, todo )
     
     if IsBound( INTRINSIC_CATEGORIES.strict ) and
        INTRINSIC_CATEGORIES.strict = false then
         
-        return IntrinsicCategory( C, false, type_obj, type_mor );
+        return IntrinsicCategory( C, false, type_obj, type_mor, todo );
         
     fi;
     
-    return IntrinsicCategory( C, true, type_obj, type_mor );
+    return IntrinsicCategory( C, true, type_obj, type_mor, todo );
     
 end );
 
@@ -1299,7 +1301,7 @@ InstallMethod( IntrinsicCategory,
         
   function( C, strict )
     
-    return IntrinsicCategory( C, strict, TheTypeIntrinsicObject, TheTypeIntrinsicMorphism );
+    return IntrinsicCategory( C, strict, TheTypeIntrinsicObject, TheTypeIntrinsicMorphism, ReturnNothing );
     
 end );
 
