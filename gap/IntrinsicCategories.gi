@@ -1070,6 +1070,7 @@ InstallMethod( IntrinsicCategory,
           
         end;
     
+    ## e.g., ZeroObject
     create_func_object0 :=
       function( name )
         local oper, context;
@@ -1094,6 +1095,7 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
+    ## e.g., DirectSum
     create_func_object :=
       function( name )
         local oper, context;
@@ -1122,6 +1124,7 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
+    ## e.g., AdditionForMorphisms
     create_func_morphism :=
       function( name )
         local oper, type;
@@ -1150,6 +1153,7 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
+    ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
       function( name )
         local info, oper, type, context;
