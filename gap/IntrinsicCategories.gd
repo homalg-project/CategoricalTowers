@@ -184,19 +184,19 @@ DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory, IsBool, IsType, IsType ] );
 
 #! @Description
+#!  If <A>strict</A> is not specified it defaults to <C>true</C>.
+#! @Arguments C, type_obj, type_mor
+#! @Group IntrinsicCategory
+DeclareOperation( "IntrinsicCategory",
+        [ IsCapCategory, IsType, IsType ] );
+
+#! @Description
 #!  If <A>type_obj</A> is not specified it defaults to <C>TheTypeIntrinsicObject</C>.
 #!  If <A>type_mor</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
 #! @Arguments C, strict
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory, IsBool ] );
-
-#! @Description
-#!  If <A>strict</A> is not specified it defaults to <C>true</C>.
-#! @Arguments C, type_obj, type_mor
-#! @Group IntrinsicCategory
-DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsType, IsType ] );
 
 #! @Arguments C
 #! @Group IntrinsicCategory
