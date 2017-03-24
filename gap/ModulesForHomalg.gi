@@ -3,6 +3,29 @@
 #
 # Implementations
 
+InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
+  function( input, output )
+    local conds;
+    
+    input := Flat( input );
+    
+    input := Filtered( input, IsCapCategoryMorphism );
+    
+    if input = [ ] then
+        SetIsMorphism( output, true );
+    fi;
+    
+    conds := List( input, a -> [ a, "IsMorphism", true ] );
+    
+    AddToToDoList( ToDoListEntry( conds,
+            [ [ "if IsMorphism = true for all morphisms in input then SetIsMorphism( output, true )",
+                [ output, "IsMorphism", true ],
+                ],
+             ]
+            ) );
+    
+end );
+
 ##
 InstallMethod( CategoryOfHomalgLeftModules,
         "for a homalg ring",
@@ -55,7 +78,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     ## IntrinsicCategory
     
-    A := IntrinsicCategory( A, type_obj, type_mor );
+    A := IntrinsicCategory( A, type_obj, type_mor, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
@@ -137,7 +160,7 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     ## IntrinsicCategory
     
-    A := IntrinsicCategory( A, type_obj, type_mor );
+    A := IntrinsicCategory( A, type_obj, type_mor, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );

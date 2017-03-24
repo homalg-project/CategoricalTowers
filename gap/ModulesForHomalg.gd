@@ -8,6 +8,8 @@
 
 #! @Section Constructors
 
+DeclareGlobalFunction( "INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS" );
+
 #! @Description
 #!  Construct the category of finitely presented left &homalg; modules
 #!  over the computable &homalg; ring <A>R</A>.
