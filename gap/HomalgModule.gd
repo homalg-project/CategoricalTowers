@@ -1,9 +1,3 @@
-#
-# M2: Intrinsic modules with elements for the CAP based &homalg;
-#
-# Declarations
-#
-
 #! @Chapter Modules
 
 #! A &homalg; module is a data structure for a finitely presented module. A presentation is given by
@@ -28,20 +22,6 @@
 
 #! @Description
 #!  
-#! @Arguments R
-#! @Returns an intrinsic cateogry of left modules
-DeclareAttribute( "CategoryOfHomalgLeftModules",
-        IsHomalgRing );
-
-#! @Description
-#!  
-#! @Arguments R
-#! @Returns an intrinsic cateogry of right modules
-DeclareAttribute( "CategoryOfHomalgRightModules",
-        IsHomalgRing );
-
-#! @Description
-#!  
 #! @Arguments M
 #! @Returns a &homalg; module, i.e., an intrinsic module with generators for each cell
 DeclareOperation( "HomalgModule",
@@ -63,3 +43,17 @@ DeclareOperation( "LeftPresentation",
 DeclareOperation( "RightPresentation",
         [ IsHomalgMatrix ] );
 #! @InsertSystem RightPresentation
+
+#! @Section Operations and global functions
+
+#! @Description
+#!  The image-embedding method used for &homalg; left modules.
+#! @Arguments morphism
+#! @Returns a left &homalg; module map
+DeclareGlobalFunction( "ImageEmbeddingForLeftModules" );
+
+#! @Description
+#!  The image-embedding method used for &homalg; right modules.
+#! @Arguments morphism
+#! @Returns a right &homalg; module map
+DeclareGlobalFunction( "ImageEmbeddingForRightModules" );

@@ -1,15 +1,89 @@
-#
-# M2: Intrinsic modules with relations and generators for the CAP based homalg
-#
-# Implementations
-
-
 ####################################
 #
 # methods for operations:
 #
 ####################################
 
+##
+InstallGlobalFunction( ImageEmbeddingForLeftModules,
+  function( morphism )
+    local mat, T, B, N, S, img, emb;
+    
+    mat := UnderlyingMatrix( morphism );
+    
+    T := Range( morphism );
+    
+    B := UnderlyingMatrix( T );
+    
+    # basis of the set of relations of T:
+    B := BasisOfRows( B );
+    
+    # TODO: RelativeReducedRows( mat, B );
+    # normal form of mat with respect to B:
+    N := DecideZeroRows( mat, B );
+    # get a better basis for N (by default, it only throws away the zero generators):
+    N := CertainRows( N, NonZeroRows( N ) );
+    
+    # this matrix of generators is often enough the identity matrix
+    # and knowing this will avoid computations:
+    IsOne( N );
+    
+    # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
+    S := SyzygiesGeneratorsOfRows( N, B );        ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
+    
+    # the image object
+    img := AsLeftPresentation( S );
+    
+    # the image embedding
+    emb := PresentationMorphism( img, N, T );
+    
+    ## check assertion
+    Assert( 5, IsMonomorphism( emb ) );
+    
+    return emb;
+    
+end );
+
+##    
+InstallGlobalFunction( ImageEmbeddingForRightModules,
+  function( morphism )
+    local mat, T, B, N, S, img, emb;
+    
+    mat := UnderlyingMatrix( morphism );
+    
+    T := Range( morphism );
+    
+    B := UnderlyingMatrix( T );
+    
+    # basis of the set of relations of T:
+    B := BasisOfColumns( B );
+    
+    # TODO: RelativeReducedColumns( mat, B );
+    # normal form of mat with respect to B:
+    N := DecideZeroColumns( mat, B );
+    # get a better basis for N (by default, it only throws away the zero generators):
+    N := CertainColumns( N, NonZeroColumns( N ) );
+    
+    # this matrix of generators is often enough the identity matrix
+    # and knowing this will avoid computations:
+    IsOne( N );
+    
+    # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
+    S := SyzygiesGeneratorsOfColumns( N, B );    ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
+    
+    # the image object
+    img := AsRightPresentation( S );
+    
+    # the image embedding
+    emb := PresentationMorphism( img, N, T );
+    
+    ## check assertion
+    Assert( 5, IsMonomorphism( emb ) );
+    
+    return emb;
+    
+end );
+    
 ##
 InstallMethod( HomalgCategory,
         "for a homalg/CAP module",
@@ -217,244 +291,6 @@ end );
 # methods for constructors:
 #
 ####################################
-
-##
-InstallMethod( CategoryOfHomalgLeftModules,
-        "for a homalg ring",
-        [ IsHomalgRing ],
-
-  function( R )
-    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
-    
-    A := LeftPresentations( R : FinalizeCategory := false );
-    
-    AddImageEmbedding( A,
-            function( morphism )
-              local mat, T, B, N, S, img, emb;
-              
-              mat := UnderlyingMatrix( morphism );
-              
-              T := Range( morphism );
-              
-              B := UnderlyingMatrix( T );
-              
-              # basis of the set of relations of T:
-              B := BasisOfRows( B );
-              
-              # TODO: RelativeReducedRows( mat, B );
-              # normal form of mat with respect to B:
-              N := DecideZeroRows( mat, B );
-              # get a better basis for N (by default, it only throws away the zero generators):
-              N := CertainRows( N, NonZeroRows( N ) );
-              
-              # this matrix of generators is often enough the identity matrix
-              # and knowing this will avoid computations:
-              IsOne( N );
-              
-              # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
-              S := SyzygiesGeneratorsOfRows( N, B );        ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
-              
-              # the image object
-              img := AsLeftPresentation( S );
-              
-              # the image embedding
-              emb := PresentationMorphism( img, N, T );
-              
-              ## check assertion
-              Assert( 5, IsMonomorphism( emb ) );
-              
-              return emb;
-              
-            end );
-    
-    Finalize( A );
-    
-    SM := FunctorStandardModuleLeft( R );
-    
-    etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
-    
-    LG := FunctorLessGeneratorsLeft( R );
-    
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
-    
-    ## CategoryWithAmbientObject
-    
-    A := CategoryWithAmbientObject( A );
-    
-    Id := IdentityFunctor( A );
-    
-    SM := WithAmbientObject( SM, A );
-    
-    etaSM := WithAmbientObject( etaSM, Id, SM );
-    
-    LG := WithAmbientObject( LG, A );
-    
-    etaLG := WithAmbientObject( etaLG, Id, LG );
-    
-    type_obj :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
-              IsFinitelyPresentedModuleRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
-    
-    type_mor :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
-    
-    ## IntrinsicCategory
-    
-    A := IntrinsicCategory( A, type_obj, type_mor );
-    
-    ## TODO: legacy
-    SetFilterObj( A, IsHomalgCategory );
-    A!.containers := rec( );
-    
-    Id := IdentityFunctor( A );
-    
-    SM := Intrinsify( SM, A );
-    
-    etaSM := Intrinsify( etaSM, Id, SM );
-    
-    LG := Intrinsify( LG, A );
-    
-    etaLG := Intrinsify( etaLG, Id, LG );
-    
-    ## TurnAutoequivalenceIntoIdentityFunctor
-    
-    IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
-    
-    A!.IdSM := IdSM;
-    
-    IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
-    
-    A!.IdLG := IdLG;
-    
-    return A;
-    
-end );
-
-##
-InstallMethod( CategoryOfHomalgRightModules,
-        "for homalg ring",
-        [ IsHomalgRing ],
-
-  function( R )
-    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
-    
-    A := RightPresentations( R : FinalizeCategory := false );
-    
-    AddImageEmbedding( A,
-            function( morphism )
-              local mat, T, B, N, S, img, emb;
-              
-              mat := UnderlyingMatrix( morphism );
-              
-              T := Range( morphism );
-              
-              B := UnderlyingMatrix( T );
-              
-              # basis of the set of relations of T:
-              B := BasisOfColumns( B );
-              
-              # TODO: RelativeReducedColumns( mat, B );
-              # normal form of mat with respect to B:
-              N := DecideZeroColumns( mat, B );
-              # get a better basis for N (by default, it only throws away the zero generators):
-              N := CertainColumns( N, NonZeroColumns( N ) );
-              
-              # this matrix of generators is often enough the identity matrix
-              # and knowing this will avoid computations:
-              IsOne( N );
-              
-              # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
-              S := SyzygiesGeneratorsOfColumns( N, B );    ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
-              
-              # the image object
-              img := AsRightPresentation( S );
-              
-              # the image embedding
-              emb := PresentationMorphism( img, N, T );
-              
-              ## check assertion
-              Assert( 5, IsMonomorphism( emb ) );
-              
-              return emb;
-              
-            end );
-    
-    Finalize( A );
-    
-    SM := FunctorStandardModuleRight( R );
-    
-    etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
-    
-    LG := FunctorLessGeneratorsRight( R );
-    
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
-    
-    ## CategoryWithAmbientObject
-    
-    A := CategoryWithAmbientObject( A );
-    
-    Id := IdentityFunctor( A );
-    
-    SM := WithAmbientObject( SM, A );
-    
-    etaSM := WithAmbientObject( etaSM, Id, SM );
-    
-    LG := WithAmbientObject( LG, A );
-    
-    etaLG := WithAmbientObject( etaLG, Id, LG );
-    
-    type_obj :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
-              IsFinitelyPresentedModuleRep and
-              IsHomalgRightObjectOrMorphismOfRightObjects
-              );
-    
-    type_mor :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgRightObjectOrMorphismOfRightObjects
-              );
-    
-    ## IntrinsicCategory
-    
-    A := IntrinsicCategory( A, type_obj, type_mor );
-    
-    ## TODO: legacy
-    SetFilterObj( A, IsHomalgCategory );
-    A!.containers := rec( );
-    
-    Id := IdentityFunctor( A );
-    
-    SM := Intrinsify( SM, A );
-    
-    etaSM := Intrinsify( etaSM, Id, SM );
-    
-    LG := Intrinsify( LG, A );
-    
-    etaLG := Intrinsify( etaLG, Id, LG );
-    
-    ## TurnAutoequivalenceIntoIdentityFunctor
-    
-    IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
-    
-    A!.IdSM := IdSM;
-    
-    IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
-    
-    A!.IdLG := IdLG;
-    
-    return A;
-    
-end );
 
 ##
 InstallMethod( Intrinsify,
