@@ -1146,8 +1146,12 @@ InstallMethod( IntrinsicCategory,
             eval_arg := List( arg, ActiveCell );
             
             result := CallFuncList( oper, eval_arg );
+           
+            result := Intrinsify( result, S, s, T, t );
             
-            return Intrinsify( result, S, s, T, t );
+            todo( arg, result );
+            
+            return result;
             
           end;
           
