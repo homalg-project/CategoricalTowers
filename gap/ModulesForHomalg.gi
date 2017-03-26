@@ -24,6 +24,12 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
              ]
             ) );
     
+    AddToToDoList( ToDoListEntry( [ [ output, "CokernelProjection" ] ],
+                   function( )
+                   
+                      SetIsMorphism( CokernelProjection( output ), true );
+                   
+                   end ) );
 end );
 
 ##

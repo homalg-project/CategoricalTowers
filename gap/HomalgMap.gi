@@ -145,6 +145,8 @@ InstallMethod( HomalgMap,
     ## TODO: legacy
     m!.reduced_matrices := rec( );
     
+    INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS( [ m ], m );
+    
     return m;
     
 end );
