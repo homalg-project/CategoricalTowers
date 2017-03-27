@@ -61,12 +61,6 @@ DeclareAttribute( "GeneralizedEmbeddingInAmbientObject",
 DeclareAttribute( "EmbeddingInAmbientObject",
         IsCapCategoryObjectWithAmbientObject );
 
-#! @Description
-#!  The object underlying the object <A>M</A> with an ambient object.
-#! @Arguments M
-DeclareAttribute( "ObjectWithoutAmbientObject",
-        IsCapCategoryObjectWithAmbientObject );
-
 ####################################
 #
 #! @Section Constructors

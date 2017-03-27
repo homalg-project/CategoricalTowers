@@ -150,8 +150,6 @@ InstallMethod( CategoryWithAmbientObject,
         
         SetGeneralizedEmbeddingInAmbientObject( return_object, attributes[1] );
         
-        SetObjectWithoutAmbientObject( return_object, object );
-        
         return return_object;
         
     end;
@@ -481,7 +479,7 @@ InstallMethod( ViewObj,
         
   function( obj )
     
-    ViewObj( ObjectWithoutAmbientObject( obj ) );
+    ViewObj( UnderlyingCell( obj ) );
     Print( " with an ambient object" );
     
 end );
@@ -505,7 +503,7 @@ InstallMethod( Display,
         
   function( obj )
     
-    Display( ObjectWithoutAmbientObject( obj ) );
+    Display( UnderlyingCell( obj ) );
     
 end );
 
