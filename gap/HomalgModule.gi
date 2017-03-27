@@ -207,7 +207,7 @@ InstallMethod( RelationsOfModule,
         return fail;
     fi;
     
-    rels := ObjectWithoutAmbientObject( CertainCell( M, pos ) );
+    rels := UnderlyingCell( CertainCell( M, pos ) );
     
     rels := HomalgRelationsForModule( rels );
     
@@ -300,7 +300,7 @@ InstallMethod( Intrinsify,
   function( A, cell )
     local left, rels, M;
     
-    rels := ObjectWithoutAmbientObject( cell );
+    rels := UnderlyingCell( cell );
     
     HomalgRelationsForModule( rels );
     
