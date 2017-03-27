@@ -81,12 +81,14 @@ DeclareOperation( "Intrinsify",
         [ IsCapCategory, IsCapCategoryObject ] );
 
 #! @Description
-#!  In the six argument version create an intrinsic morphism of type <A>T</A> out of the morphism <A>m</A>,
-#!  with source <C>CertainCell</C>(<A>s</A>,<A>i</A>) and target <C>CertainCell</C>(<A>t</A>,<A>j</A>).
+#!  In the six argument version create out of the morphism <A>m</A>
+#!  an intrinsic morphism of type <A>T[2]</A> if <C>IsEqualForObjects</C>(<A>s</A>, <A>t</A>) = <C>true</C>
+#!  otherwise of type <A>T[1]</A>, with source <C>CertainCell</C>(<A>s</A>,<A>i</A>) and
+#!  target <C>CertainCell</C>(<A>t</A>,<A>j</A>).
 #! @Arguments m, s, i, t, j, T
 #! @Group Intrinsify_mor
 DeclareOperation( "Intrinsify",
-        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt, IsType ] );
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt, IsList ] );
 
 #! @Description
 #!  If the morphism type <A>T</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
@@ -175,28 +177,31 @@ DeclareAttribute( "CanonicalizeZeroMorphismsAsIdentityFunctor",
 #!  on the <M>Hom</M>-sets is divided out, else <A>strict</A>=<C>false</C>
 #!  and the <M>Hom</M>-sets are in fact setoids.
 #!  The user has to guarantee that
-#!  the specified type <A>type_obj</A> is a subtype of <C>TheTypeIntrinsicObject</C> and
-#!  the specified type <A>type_mor</A> is a subtype of <C>TheTypeIntrinsicMorphism</C>.
+#!  the specified type <A>type_obj</A> is a subtype of <C>TheTypeIntrinsicObject</C>,
+#!  the specified type <A>type_mor</A> is a subtype of <C>TheTypeIntrinsicMorphism</C>, and
+#!  the specified type <A>type_end</A> is a subtype of <C>TheTypeIntrinsicMorphism</C>.
+#!  The latter could be a specific type for endomorphisms.
 #!  The argument <C>todo</C> is a function which will be applied in all
 #!  &CAP; constructions <C>CAP_oper</C> producing a morphism
 #!  to the argument list of <C>CAP_oper</C> (as first argument) and
 #!  the output of <C>CAP_oper</C> (as second argument).
-#! @Arguments C, strict, type_obj, type_mor, todo
+#! @Arguments C, strict, type_obj, type_mor, type_end, todo
 #! @Returns a &CAP; category
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsBool, IsType, IsType, IsFunction ] );
+        [ IsCapCategory, IsBool, IsType, IsType, IsType, IsFunction ] );
 
 #! @Description
 #!  If <A>strict</A> is not specified it defaults to <C>true</C>.
-#! @Arguments C, type_obj, type_mor, todo
+#! @Arguments C, type_obj, type_mor, type_end, todo
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsType, IsType, IsFunction ] );
+        [ IsCapCategory, IsType, IsType, IsType, IsFunction ] );
 
 #! @Description
 #!  If <A>type_obj</A> is not specified it defaults to <C>TheTypeIntrinsicObject</C>.
 #!  If <A>type_mor</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
+#!  If <A>type_end</A> is not specified it defaults to <C>TheTypeIntrinsicMorphism</C>.
 #!  If <A>todo</A> is not specified it defaults to <C>ReturnNothing</C>.
 #! @Arguments C, strict
 #! @Group IntrinsicCategory

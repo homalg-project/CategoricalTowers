@@ -671,7 +671,7 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt, IsType ],
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt, IsList ],
         
   function( m, S, posS, T, posT, type )
     local C, s, t, mor;
@@ -694,11 +694,19 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ s, t ] )) := [ 1, [ m ] ] )
                );
     
-    ObjectifyWithAttributes(
-            mor, type,
-            Source, S,
-            Range, T
-            );
+    if IsEqualForObjects( S, T ) then
+        ObjectifyWithAttributes(
+                mor, type[2],
+                Source, S,
+                Range, T
+                );
+    else
+        ObjectifyWithAttributes(
+                mor, type[1],
+                Source, S,
+                Range, T
+                );
+    fi;
     
     AddMorphism( C, mor );
     
@@ -724,7 +732,7 @@ InstallMethod( Intrinsify,
     
     C := CapCategory( S );
     
-    return Intrinsify( m, S, posS, T, posT, C!.TheTypeIntrinsicMorphism );
+    return Intrinsify( m, S, posS, T, posT, [ C!.TheTypeIntrinsicMorphism, C!.TheTypeIntrinsicEndomorphism ] );
     
 end );
 
@@ -986,9 +994,9 @@ end );
     
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsBool, IsType, IsType, IsFunction ],
+        [ IsCapCategory, IsBool, IsType, IsType, IsType, IsFunction ],
         
-  function( C, strict, type_obj, type_mor, todo )
+  function( C, strict, type_obj, type_mor, type_end, todo )
     local name, IC, recnames, func, pos, create_func_bool,
           create_func_object0, create_func_object, create_func_morphism,
           create_func_universal_morphism, info, add;
@@ -1270,6 +1278,7 @@ InstallMethod( IntrinsicCategory,
     
     IC!.TheTypeIntrinsicObject := type_obj;
     IC!.TheTypeIntrinsicMorphism := type_mor;
+    IC!.TheTypeIntrinsicEndomorphism := type_end;
     
     Finalize( IC );
     
@@ -1284,18 +1293,18 @@ end );
 
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsType, IsType, IsFunction ],
+        [ IsCapCategory, IsType, IsType, IsType, IsFunction ],
         
-  function( C, type_obj, type_mor, todo )
+  function( C, type_obj, type_mor, type_end, todo )
     
     if IsBound( INTRINSIC_CATEGORIES.strict ) and
        INTRINSIC_CATEGORIES.strict = false then
         
-        return IntrinsicCategory( C, false, type_obj, type_mor, todo );
+        return IntrinsicCategory( C, false, type_obj, type_mor, type_end, todo );
         
     fi;
     
-    return IntrinsicCategory( C, true, type_obj, type_mor, todo );
+    return IntrinsicCategory( C, true, type_obj, type_mor, type_end, todo );
     
 end );
 
@@ -1305,7 +1314,7 @@ InstallMethod( IntrinsicCategory,
         
   function( C, strict )
     
-    return IntrinsicCategory( C, strict, TheTypeIntrinsicObject, TheTypeIntrinsicMorphism, ReturnNothing );
+    return IntrinsicCategory( C, strict, TheTypeIntrinsicObject, TheTypeIntrinsicMorphism, TheTypeIntrinsicMorphism, ReturnNothing );
     
 end );
 
