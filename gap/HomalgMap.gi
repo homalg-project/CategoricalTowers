@@ -67,6 +67,13 @@ InstallMethod( DecideZero,
 end );
 
 ##
+InstallMethod( AdditiveInverseMutable,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  AdditiveInverseForMorphisms );
+
+##
 InstallMethod( ImageObjectEmb,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
