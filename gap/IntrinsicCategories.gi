@@ -674,7 +674,7 @@ InstallMethod( Intrinsify,
         [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt, IsList ],
         
   function( m, S, posS, T, posT, type )
-    local C, s, t, mor;
+    local C, mor;
     
     C := CapCategory( S );
     
@@ -686,12 +686,9 @@ InstallMethod( Intrinsify,
         Error( "the target of the morphism is not equal to the specified cell in the given intrinsic target\n" );
     fi;
     
-    s := PositionOfActiveCell( S );
-    t := PositionOfActiveCell( T );
-    
     mor := rec(
-               index_pairs_of_presentations := [ [ s, t, 1 ] ],
-               morphisms := rec( (String( [ s, t ] )) := [ 1, [ m ] ] )
+               index_pairs_of_presentations := [ [ posS, posT, 1 ] ],
+               morphisms := rec( (String( [ posS, posT ] )) := [ 1, [ m ] ] )
                );
     
     if IsEqualForObjects( S, T ) then
