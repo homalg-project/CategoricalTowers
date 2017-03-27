@@ -40,7 +40,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
+    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, type_end, IdSM, IdLG;
     
     A := LeftPresentations( R : FinalizeCategory := false );
     
@@ -84,9 +84,17 @@ InstallMethod( CategoryOfHomalgLeftModules,
               IsHomalgLeftObjectOrMorphismOfLeftObjects
               );
     
+    type_end :=
+      NewType( TheFamilyOfIntrinsicMorphisms,
+              IsCapCategoryIntrinsicMorphismRep and
+              IsHomalgSelfMap and
+              IsMapOfFinitelyGeneratedModulesRep and
+              IsHomalgLeftObjectOrMorphismOfLeftObjects
+              );
+    
     ## IntrinsicCategory
     
-    A := IntrinsicCategory( A, type_obj, type_mor, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+    A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
@@ -122,7 +130,7 @@ InstallMethod( CategoryOfHomalgRightModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, IdSM, IdLG;
+    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, type_end, IdSM, IdLG;
     
     A := RightPresentations( R : FinalizeCategory := false );
     
@@ -166,9 +174,17 @@ InstallMethod( CategoryOfHomalgRightModules,
               IsHomalgRightObjectOrMorphismOfRightObjects
               );
     
+    type_end :=
+      NewType( TheFamilyOfIntrinsicMorphisms,
+              IsCapCategoryIntrinsicMorphismRep and
+              IsHomalgSelfMap and
+              IsMapOfFinitelyGeneratedModulesRep and
+              IsHomalgRightObjectOrMorphismOfRightObjects
+              );
+    
     ## IntrinsicCategory
     
-    A := IntrinsicCategory( A, type_obj, type_mor, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+    A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
