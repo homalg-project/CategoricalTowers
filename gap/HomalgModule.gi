@@ -186,7 +186,7 @@ end );
 
 ##
 InstallMethod( GeneratorsOfModule,
-        "for a homalg submodule",
+        "for a homalg submodule and a positive integer",
         [ IsFinitelyPresentedSubmoduleRep and HasEmbeddingInSuperObject, IsPosInt ],
         
   function( M, pos )
