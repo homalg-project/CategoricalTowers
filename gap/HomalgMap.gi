@@ -67,6 +67,14 @@ InstallMethod( DecideZero,
 end );
 
 ##
+InstallMethod( TheZeroMorphism,
+        "for a homalg/CAP module map",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject,
+          IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  ZeroMorphism );
+
+##
 InstallMethod( AdditiveInverseMutable,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
