@@ -9,7 +9,7 @@ fi;
 
 AutoDoc( 
         rec(
-            scaffold := rec( entities := [ "homalg", "GAP4" ],
+            scaffold := rec( entities := [ "GAP4", "homalg", "CAP" ],
                              ),
             
             autodoc := rec( files := [ "doc/Doc.autodoc" ] ),
