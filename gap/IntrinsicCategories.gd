@@ -215,6 +215,18 @@ DeclareOperation( "IntrinsicCategory",
 
 ####################################
 #
+#! @Section Attributes
+#
+####################################
+
+#! @Description
+#!  The category underlying the intrinsic category <A>C</A>.
+#! @Arguments C
+DeclareAttribute( "IntrinsifiedCategory",
+        IsCapCategory );
+
+####################################
+#
 #! @Section Operations
 #
 ####################################
