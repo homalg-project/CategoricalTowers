@@ -3,6 +3,45 @@
 #
 # Implementations
 
+##
+InstallMethod( TurnAutoequivalenceIntoIdentityFunctorForHomalg,
+        "for a CAP natural isomorphism and a CAP category",
+        [ IsCapNaturalTransformation, IsCapCategory ],
+
+  function( natiso, cat_intrinsic )
+    local F, cat_with_amb_objects, Id;
+    
+    F := Range( natiso );
+    
+    ## CategoryWithAmbientObject
+    
+    if not HasIntrinsifiedCategory( cat_intrinsic ) then
+        Error( "the second argument is not an intrinsic category\n" );
+    fi;
+    
+    cat_with_amb_objects := IntrinsifiedCategory( cat_intrinsic );
+    
+    Id := IdentityFunctor( cat_with_amb_objects );
+    
+    F := WithAmbientObject( F, cat_with_amb_objects );
+    
+    natiso := WithAmbientObject( natiso, Id, F );
+    
+    ## IntrinsicCategory
+    
+    Id := IdentityFunctor( cat_intrinsic );
+    
+    F := Intrinsify( F, cat_intrinsic );
+    
+    natiso := Intrinsify( natiso, Id, F );
+    
+    ## TurnAutoequivalenceIntoIdentityFunctor
+    
+    return TurnAutoequivalenceIntoIdentityFunctor( natiso );
+    
+end );
+
+##
 InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
   function( input, output )
     local conds;
@@ -40,7 +79,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, type_end, IdSM, IdLG;
+    local A, type_obj, type_mor, type_end, etaSM, etaLG;
     
     A := LeftPresentations( R : FinalizeCategory := false );
     
@@ -48,27 +87,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     Finalize( A );
     
-    SM := FunctorStandardModuleLeft( R );
-    
-    etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
-    
-    LG := FunctorLessGeneratorsLeft( R );
-    
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
-    
-    ## CategoryWithAmbientObject
-    
     A := CategoryWithAmbientObject( A );
-    
-    Id := IdentityFunctor( A );
-    
-    SM := WithAmbientObject( SM, A );
-    
-    etaSM := WithAmbientObject( etaSM, Id, SM );
-    
-    LG := WithAmbientObject( LG, A );
-    
-    etaLG := WithAmbientObject( etaLG, Id, LG );
     
     type_obj :=
       NewType( TheFamilyOfIntrinsicObjects,
@@ -92,33 +111,19 @@ InstallMethod( CategoryOfHomalgLeftModules,
               IsHomalgLeftObjectOrMorphismOfLeftObjects
               );
     
-    ## IntrinsicCategory
-    
     A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
     A!.containers := rec( );
     
-    Id := IdentityFunctor( A );
+    etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
     
-    SM := Intrinsify( SM, A );
+    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
     
-    etaSM := Intrinsify( etaSM, Id, SM );
+    A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
     
-    LG := Intrinsify( LG, A );
-    
-    etaLG := Intrinsify( etaLG, Id, LG );
-    
-    ## TurnAutoequivalenceIntoIdentityFunctor
-    
-    IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
-    
-    A!.IdSM := IdSM;
-    
-    IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
-    
-    A!.IdLG := IdLG;
+    A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
     return A;
     
@@ -130,7 +135,7 @@ InstallMethod( CategoryOfHomalgRightModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, SM, etaSM, LG, etaLG, Id, type_obj, type_mor, type_end, IdSM, IdLG;
+    local A, type_obj, type_mor, type_end, etaSM, etaLG;
     
     A := RightPresentations( R : FinalizeCategory := false );
     
@@ -138,27 +143,7 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     Finalize( A );
     
-    SM := FunctorStandardModuleRight( R );
-    
-    etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
-    
-    LG := FunctorLessGeneratorsRight( R );
-    
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
-    
-    ## CategoryWithAmbientObject
-    
     A := CategoryWithAmbientObject( A );
-    
-    Id := IdentityFunctor( A );
-    
-    SM := WithAmbientObject( SM, A );
-    
-    etaSM := WithAmbientObject( etaSM, Id, SM );
-    
-    LG := WithAmbientObject( LG, A );
-    
-    etaLG := WithAmbientObject( etaLG, Id, LG );
     
     type_obj :=
       NewType( TheFamilyOfIntrinsicObjects,
@@ -182,33 +167,19 @@ InstallMethod( CategoryOfHomalgRightModules,
               IsHomalgRightObjectOrMorphismOfRightObjects
               );
     
-    ## IntrinsicCategory
-    
     A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
     A!.containers := rec( );
     
-    Id := IdentityFunctor( A );
+    etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
     
-    SM := Intrinsify( SM, A );
+    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
     
-    etaSM := Intrinsify( etaSM, Id, SM );
+    A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
     
-    LG := Intrinsify( LG, A );
-    
-    etaLG := Intrinsify( etaLG, Id, LG );
-    
-    ## TurnAutoequivalenceIntoIdentityFunctor
-    
-    IdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );
-    
-    A!.IdSM := IdSM;
-    
-    IdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );
-    
-    A!.IdLG := IdLG;
+    A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
     return A;
     
