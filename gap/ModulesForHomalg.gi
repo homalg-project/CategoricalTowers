@@ -119,9 +119,9 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
     
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
-    
     A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
+    
+    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
@@ -175,9 +175,9 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
     
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
-    
     A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
+    
+    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
