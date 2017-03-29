@@ -79,7 +79,7 @@ InstallMethod( CategoryOfHomalgLeftModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, type_obj, type_mor, type_end, etaSM, etaLG;
+    local A, type_obj, type_mor, type_end, etaSM, etaZG, etaLG;
     
     A := LeftPresentations( R : FinalizeCategory := false );
     
@@ -121,6 +121,10 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
     
+    etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft( R );
+    
+    A!.IdZG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaZG, A );
+
     etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
@@ -135,7 +139,7 @@ InstallMethod( CategoryOfHomalgRightModules,
         [ IsHomalgRing ],
 
   function( R )
-    local A, type_obj, type_mor, type_end, etaSM, etaLG;
+    local A, type_obj, type_mor, type_end, etaSM, etaZG, etaLG;
     
     A := RightPresentations( R : FinalizeCategory := false );
     
@@ -177,6 +181,10 @@ InstallMethod( CategoryOfHomalgRightModules,
     
     A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
     
+    etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight( R );
+    
+    A!.IdZG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaZG, A );
+
     etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );

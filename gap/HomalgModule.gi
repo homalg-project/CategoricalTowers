@@ -269,12 +269,34 @@ InstallMethod( BasisOfModule,
 end );
 
 ##
+InstallMethod( GetRidOfZeroGenerators,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    local pos, rels;
+    
+    pos := PositionOfActiveCell( M );
+    
+    ApplyFunctor( CapCategory( M )!.IdZG, M );
+    
+    UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
+    
+    rels := RelationsOfModule( M );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+    
+    return M;
+    
+end );
+
+##
 InstallMethod( OnLessGenerators,
         "for a homalg/CAP module",
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
-    local pos;
+    local pos, rels;
     
     pos := PositionOfActiveCell( M );
     

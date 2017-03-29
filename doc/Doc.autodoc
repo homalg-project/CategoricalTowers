@@ -21,4 +21,5 @@
 @InsertSystem ByASmallerPresentation
 @InsertSystem Resolution
 @InsertSystem Resolution2
+@InsertSystem GetRidOfZeroGenerators
 @InsertSystem AdditionForMorphisms
