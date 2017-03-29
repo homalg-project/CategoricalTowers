@@ -199,16 +199,11 @@ InstallMethod( CategoryWithAmbientObject,
         
         structure_record.DirectSum :=
           function( obj_list, underlying_direct_sum )
-            local embeddings_list, underlying_obj_list, structure_morphism;
+            local embeddings_list;
             
             embeddings_list := List( obj_list, obj -> ObjectAttributesAsList( obj )[1] );
             
-            underlying_obj_list := List( obj_list, UnderlyingCell );
-            
-            structure_morphism := 
-              ConcatenationProduct( embeddings_list );
-            
-            return [ structure_morphism ];
+            return [ ConcatenationProduct( embeddings_list ) ];
             
           end;
         
