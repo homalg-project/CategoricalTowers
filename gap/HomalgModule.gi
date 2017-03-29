@@ -282,6 +282,10 @@ InstallMethod( OnLessGenerators,
     
     UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
     
+    rels := RelationsOfModule( M );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+    
     return M;
     
 end );
