@@ -6,73 +6,89 @@
 
 ##
 InstallMethod( HasNrGenerators,
-        "for a set of relations of homalg/CAP modules",
-        [ IsHomalgRelations ],
-
+        "for a set of relations of homalg/CAP right modules",
+        [ IsHomalgRelationsOfRightModule ],
+        
   function( rels )
-    local mat;
     
-    mat := UnderlyingMatrix( rels );
+    return HasNrRows( UnderlyingMatrix( rels ) );
     
-    if IsLeftPresentation( rels ) then
-        return HasNrColumns( mat );
-    else
-        return HasNrRows( mat );
-    fi;
+end );
+
+##
+InstallMethod( HasNrGenerators,
+        "for a set of relations of homalg/CAP left modules",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
+        
+  function( rels )
+    
+    return HasNrColumns( UnderlyingMatrix( rels ) );
     
 end );
 
 ##
 InstallMethod( NrGenerators,
-        "for a set of relations of homalg/CAP modules",
-        [ IsHomalgRelations ],
-
+        "for a set of relations of homalg/CAP right modules",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        
   function( rels )
-    local mat;
     
-    mat := UnderlyingMatrix( rels );
+    return NrRows( UnderlyingMatrix( rels ) );
     
-    if IsLeftPresentation( rels ) then
-        return NrColumns( mat );
-    else
-        return NrRows( mat );
-    fi;
+end );
+
+##
+InstallMethod( NrGenerators,
+        "for a set of relations of homalg/CAP left modules",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
+        
+  function( rels )
+    
+    return NrColumns( UnderlyingMatrix( rels ) );
     
 end );
 
 ##
 InstallMethod( HasNrRelations,
-        "for a set of relations of homalg/CAP modules",
-        [ IsHomalgRelations and IsLeftOrRightPresentation ],
-
+        "for a set of relations of homalg/CAP right modules",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        
   function( rels )
-    local mat;
     
-    mat := UnderlyingMatrix( rels );
+    return HasNrColumns( UnderlyingMatrix( rels ) );
     
-    if IsLeftPresentation( rels ) then
-        return HasNrRows( mat );
-    else
-        return HasNrColumns( mat );
-    fi;
+end );
+
+##
+InstallMethod( HasNrRelations,
+        "for a set of relations of homalg/CAP left modules",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
+        
+  function( rels )
+    
+    return HasNrRows( UnderlyingMatrix( rels ) );
     
 end );
 
 ##
 InstallMethod( NrRelations,
-        "for a set of relations of a homalg/CAP module",
-        [ IsHomalgRelations ],
-
+        "for a set of relations of a homalg/CAP right module",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        
   function( rels )
-    local mat;
     
-    mat := UnderlyingMatrix( rels );
+    return NrColumns( UnderlyingMatrix( rels ) );
     
-    if IsLeftPresentation( rels ) then
-        return NrRows( mat );
-    else
-        return NrColumns( mat );
-    fi;
+end );
+
+##
+InstallMethod( NrRelations,
+        "for a set of relations of a homalg/CAP left module",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
+        
+  function( rels )
+    
+    return NrRows( UnderlyingMatrix( rels ) );
     
 end );
 
