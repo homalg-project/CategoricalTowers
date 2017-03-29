@@ -111,21 +111,6 @@ end );
 
 ##
 InstallMethod( HomalgRelationsForModule,
-        "for a CAP left presentation",
-        [ IsLeftPresentation ],
-        
-  function( rels )
-    
-    SetFilterObj( rels,
-            IsHomalgRelationsOfLeftModule and
-            IsRelationsOfFinitelyPresentedModuleRep );
-    
-    return rels;
-    
-end );
-
-##
-InstallMethod( HomalgRelationsForModule,
         "for a CAP right presentation",
         [ IsRightPresentation ],
         
@@ -140,16 +125,15 @@ InstallMethod( HomalgRelationsForModule,
 end );
 
 ##
-InstallMethod( HomalgRelationsForLeftModule,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
+InstallMethod( HomalgRelationsForModule,
+        "for a CAP left presentation",
+        [ IsLeftPresentation ],
         
-  function( mat )
-    local rels;
+  function( rels )
     
-    rels := HomalgRelationsForModule( AsLeftPresentation( mat ) );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( mat, rels );
+    SetFilterObj( rels,
+            IsHomalgRelationsOfLeftModule and
+            IsRelationsOfFinitelyPresentedModuleRep );
     
     return rels;
     
@@ -164,6 +148,22 @@ InstallMethod( HomalgRelationsForRightModule,
     local rels;
     
     rels := HomalgRelationsForModule( AsRightPresentation( mat ) );
+    
+    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( mat, rels );
+    
+    return rels;
+    
+end );
+
+##
+InstallMethod( HomalgRelationsForLeftModule,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+        
+  function( mat )
+    local rels;
+    
+    rels := HomalgRelationsForModule( AsLeftPresentation( mat ) );
     
     INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( mat, rels );
     
