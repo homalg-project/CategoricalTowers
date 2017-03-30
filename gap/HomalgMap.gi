@@ -82,6 +82,14 @@ InstallMethod( AdditiveInverseMutable,
   AdditiveInverseForMorphisms );
 
 ##
+InstallMethod( CoproductMorphism,
+        "for two homalg/CAP module maps",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism,
+          IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  UniversalMorphismFromDirectSum );
+
+##
 InstallMethod( ImageObjectEmb,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
