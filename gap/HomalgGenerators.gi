@@ -6,18 +6,18 @@
 
 ##
 InstallMethod( UpdateHomalgGenerators,
-        "for a set of generators of homalg/CAP modules",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism,
-          IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
+        "for an object and a set of generators of homalg/CAP modules",
+        [ IsObject,
+          IsHomalgGenerators and IsLazyGeneralizedEmbeddingInAmbientObject ],
         
-  function( gens, gens_new )
+  function( o, gens )
     
-    if HasProcedureToReadjustGenerators( gens ) then
-        SetProcedureToReadjustGenerators( gens_new, ProcedureToReadjustGenerators( gens ) );
+    if HasProcedureToReadjustGenerators( o ) then
+        SetProcedureToReadjustGenerators( gens, ProcedureToReadjustGenerators( o ) );
     fi;
     
-    if HasProcedureToNormalizeGenerators( gens ) then
-        SetProcedureToNormalizeGenerators( gens_new, ProcedureToNormalizeGenerators( gens ) );
+    if HasProcedureToNormalizeGenerators( o ) then
+        SetProcedureToNormalizeGenerators( gens, ProcedureToNormalizeGenerators( o ) );
     fi;
     
 end );

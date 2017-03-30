@@ -13,10 +13,10 @@ DeclareOperation( "HomalgGeneratorsForModule",
 #! @Section Operations
 
 #! @Description
-#!  If <C>HasProcedureToReadjustGenerators</C>( <A>gens</A> ) then
-#!  set them for <A>gens_new</A>.
-#!  Likewise for <C>ProcedureToNormalizeGenerators</C>.
-#! @Arguments gens, gens_new
+#!  If <C>HasProcedureToReadjustGenerators</C>( <A>o</A> ) then
+#!  set them for <A>gens</A>.
+#!  Likewise for the attribute <C>ProcedureToNormalizeGenerators</C>.
+#! @Arguments o, gens
 #! @Returns non
 DeclareOperation( "UpdateHomalgGenerators",
-        [ IsHomalgGenerators, IsHomalgGenerators ] );
+        [ IsObject, IsHomalgGenerators ] );
