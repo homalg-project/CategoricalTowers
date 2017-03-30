@@ -111,8 +111,9 @@ end );
 
 ##
 InstallMethod( CategoryWithAmbientObject,
-               [ IsCapCategory ],
-               
+        "for a CAP category",
+        [ IsCapCategory ],
+        
   function( abelian_category )
     local preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
