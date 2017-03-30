@@ -176,11 +176,9 @@ InstallMethod( GeneratorsOfModule,
         return fail;
     fi;
     
-    gens := EmbeddingInAmbientObject( CertainCell( M, pos ) );
+    gens := LazyGeneralizedEmbeddingInAmbientObject( CertainCell( M, pos ) );
     
-    HomalgGeneratorsForModule( gens );
-    
-    return gens;
+    return HomalgGeneratorsForModule( gens, M );
     
 end );
 

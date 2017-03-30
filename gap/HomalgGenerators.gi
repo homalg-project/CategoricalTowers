@@ -1,5 +1,22 @@
 ####################################
 #
+# methods for properties:
+#
+####################################
+
+##
+InstallOtherMethod( IsZero,
+        "for a set of generators of homalg/CAP modules",
+        [ IsHomalgGenerators and IsLazyGeneralizedEmbeddingInAmbientObject ],
+        
+  function( gens )
+    
+    return IsZero( UnderlyingCell( gens ) );
+    
+end );
+
+####################################
+#
 # methods for operations:
 #
 ####################################
@@ -25,47 +42,33 @@ end );
 ##
 InstallMethod( HasNrGenerators,
         "for a set of generators of homalg/CAP modules",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
+        [ IsHomalgGenerators and IsLazyGeneralizedEmbeddingInAmbientObject ],
 
   function( gens )
-    local mat;
     
-    mat := UnderlyingMatrix( gens );
-    
-    if IsLeftPresentationMorphism( gens ) then
-        return HasNrRows( mat );
-    else
-        return HasNrColumns( mat );
-    fi;
+    return HasNrGenerators( UnderlyingCell( gens ) );
     
 end );
 
 ##
 InstallMethod( NrGenerators,
         "for a set of generators of homalg/CAP modules",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
+        [ IsHomalgGenerators and IsLazyGeneralizedEmbeddingInAmbientObject ],
 
   function( gens )
-    local mat;
     
-    mat := UnderlyingMatrix( gens );
-    
-    if IsLeftPresentationMorphism( gens ) then
-        return NrRows( mat );
-    else
-        return NrColumns( mat );
-    fi;
+    return NrGenerators( UnderlyingCell( gens ) );
     
 end );
 
 ##
 InstallMethod( MatrixOfGenerators,
         "for a set of generators of a homalg/CAP module",
-        [ IsHomalgGenerators and IsLeftOrRightPresentationMorphism ],
+        [ IsHomalgGenerators and IsLazyGeneralizedEmbeddingInAmbientObject ],
         
-  function( M )
+  function( gens )
     
-    return UnderlyingMatrix( M );
+    return UnderlyingMatrix( EmbeddingInAmbientObject( gens ) );
     
 end );
 
@@ -77,14 +80,17 @@ end );
 
 ##
 InstallMethod( HomalgGeneratorsForModule,
-        "for a CAP left presentation morphism",
-        [ IsLeftPresentationMorphism ],
+        "for a lazy evaluated generalized embedding in ambient object and a left homalg/CAP module",
+        [ IsLazyGeneralizedEmbeddingInAmbientObject,
+          IsHomalgModule and IsHomalgLeftObjectOrMorphismOfLeftObjects ],
         
-  function( gens )
+  function( gens, M )
     
     SetFilterObj( gens,
             IsHomalgGeneratorsOfLeftModule and
             IsGeneratorsOfFinitelyGeneratedModuleRep );
+    
+    UpdateHomalgGenerators( M, gens );
     
     return gens;
     
@@ -92,14 +98,17 @@ end );
 
 ##
 InstallMethod( HomalgGeneratorsForModule,
-        "for a CAP right presentation morphism",
-        [ IsRightPresentationMorphism ],
+        "for a lazy evaluated generalized embedding in ambient object and a right homalg/CAP module",
+        [ IsLazyGeneralizedEmbeddingInAmbientObject,
+          IsHomalgModule and IsHomalgRightObjectOrMorphismOfRightObjects ],
         
-  function( gens )
+  function( gens, M )
     
     SetFilterObj( gens,
             IsHomalgGeneratorsOfRightModule and
             IsGeneratorsOfFinitelyGeneratedModuleRep );
+    
+    UpdateHomalgGenerators( M, gens );
     
     return gens;
     

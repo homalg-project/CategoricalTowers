@@ -4,11 +4,11 @@
 
 #! @Description
 #!  Add the filters <C>IsHomalgGeneratorsOfLeftModule</C> resp. <C>IsHomalgGeneratorsOfRightModule</C>
-#!  to the <C>IsLeftOrRightPresentation</C> <A>gens</A> and return <A>gens</A>.
+#!  (depending on the parity of <A>M</A>) to <A>gens</A> and return it.
 #! @Arguments gens
 #! @Returns gens with side effect
 DeclareOperation( "HomalgGeneratorsForModule",
-        [ IsLeftOrRightPresentationMorphism ] );
+        [ IsLazyGeneralizedEmbeddingInAmbientObject, IsHomalgModule ] );
 
 #! @Section Operations
 
