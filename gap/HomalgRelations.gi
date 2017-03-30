@@ -7,7 +7,7 @@
 ##
 InstallMethod( HasNrGenerators,
         "for a set of relations of homalg/CAP right modules",
-        [ IsHomalgRelationsOfRightModule ],
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
         
   function( rels )
     
