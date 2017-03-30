@@ -51,6 +51,7 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMB
 #! @Description
 #!  The generalized embedding of the object <A>M</A> into its ambient object.
 #! @Arguments M
+#! @Returns a &CAP; generalized monomorphism
 DeclareAttribute( "GeneralizedEmbeddingInAmbientObject",
         IsCapCategoryObjectWithAmbientObject );
 
@@ -58,6 +59,7 @@ DeclareAttribute( "GeneralizedEmbeddingInAmbientObject",
 #!  The embedding of the object <A>M</A> into its ambient object modulo the aid, i.e.,
 #!  the output is the associated (mono)morphism of the normalized 3-arrow formalism with domain = identity.
 #! @Arguments M
+#! @Returns a &CAP; monomorphism
 DeclareAttribute( "EmbeddingInAmbientObject",
         IsCapCategoryObjectWithAmbientObject );
 
@@ -70,66 +72,67 @@ DeclareAttribute( "EmbeddingInAmbientObject",
 #! @Description
 #!  
 #! @Arguments iota, A
+#! @Returns an object in the category <A>A</A> with ambient objects
 DeclareOperation( "ObjectWithAmbientObject",
         [ IsGeneralizedMorphismByCospan, IsCapCategory ] );
 
 #! @Description
 #!  
 #! @Arguments phi, A
+#! @Returns a morphism in the category <A>A</A> with ambient objects
 DeclareOperation( "MorphismWithAmbientObject",
         [ IsCapCategoryObjectWithAmbientObject, IsCapCategoryMorphism, IsCapCategoryObjectWithAmbientObject ] );
 
 #! @Description
 #!  
 #! @Arguments A
+#! @Returns a &CAP; category
 DeclareAttribute( "CategoryWithAmbientObject",
         IsCapCategory );
 
 #! @Description
 #!  Display the embedding of the object <A>M</A> into its ambient object.
 #! @Arguments M
+#! @Returns nothing
 DeclareOperation( "DisplayEmbeddingInAmbientObject",
         [ IsCapCategoryObjectWithAmbientObject ] );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS" );
 
 #! @Description
-#!  WithAmbientObject a functor ...
+#!  Wrap the &CAP; functor <A>F</A>:<C>UnderlyingCategory</C>(<A>A</A>)<M>\to</M><C>UnderlyingCategory</C>(<A>B</A>),
+#!  where <A>A</A> and <A>B</A> are categories with ambient objects.
 #! @Arguments F, name, A, B
+#! @Group WithAmbientObject_functor
+#! @Returns a &CAP; functor
 DeclareOperation( "WithAmbientObject",
         [ IsCapFunctor, IsString, IsCapCategory, IsCapCategory ] );
 
-#! @Description
-#!  WithAmbientObject a functor ...
 #! @Arguments F, A, B
-#! @Group WithAmbientObject
+#! @Group WithAmbientObject_functor
 DeclareOperation( "WithAmbientObject",
         [ IsCapFunctor, IsCapCategory, IsCapCategory ] );
 
-#! @Description
-#!  WithAmbientObject an endofunctor ...
 #! @Arguments F, name, A
-#! @Group WithAmbientObject
+#! @Group WithAmbientObject_functor
 DeclareOperation( "WithAmbientObject",
         [ IsCapFunctor, IsString, IsCapCategory ] );
 
-#! @Description
-#!  WithAmbientObject an endofunctor ...
 #! @Arguments F, A
-#! @Group WithAmbientObject
+#! @Group WithAmbientObject_functor
 DeclareOperation( "WithAmbientObject",
         [ IsCapFunctor, IsCapCategory ] );
 
 #! @Description
-#!  WithAmbientObject a natural transformation
-#! @Arguments eta, name, A, B
-#! @Group WithAmbientObject
+#!  Wrap the &CAP; natural transformation <A>eta</A>:<A>F</A><C>!.UnderlyingFunctor</C><M>\to</M><A>G</A><C>!.UnderlyingFunctor</C>,
+#!  where <A>F</A> and <A>G</A> are functors between categories with ambient objects.
+#! @Arguments eta, name, F, G
+#! @Group WithAmbientObject_nattr
+#! @Returns a &CAP; natural transformation
 DeclareOperation( "WithAmbientObject",
         [ IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor ] );
 
-#! @Description
-#!  WithAmbientObject a natural transformation
-#! @Arguments eta, A, B
-#! @Group WithAmbientObject
+#! @Arguments eta, F, G
+#! @Group WithAmbientObject_nattr
 DeclareOperation( "WithAmbientObject",
         [ IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor ] );
