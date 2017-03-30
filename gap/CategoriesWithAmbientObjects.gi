@@ -32,6 +32,9 @@ DeclareRepresentation( "IsCapCategoryMorphismWithAmbientObjectRep",
 ####################################
 
 # new families:
+BindGlobal( "TheFamilyOfLazyGeneralizedEmbeddingsInAmbientObject",
+        NewFamily( "TheFamilyOfLazyGeneralizedEmbeddingsInAmbientObject" ) );
+
 BindGlobal( "TheFamilyOfCategoriesWithAmbientObjects",
         NewFamily( "TheFamilyOfCategoriesWithAmbientObjects" ) );
 
@@ -39,6 +42,10 @@ BindGlobal( "TheFamilyOfMorphismsWithAmbientObjects",
         NewFamily( "TheFamilyOfMorphismsWithAmbientObjects" ) );
 
 # new types:
+BindGlobal( "TheTypeLazyGeneralizedEmbeddingsInAmbientObject",
+        NewType( TheFamilyOfLazyGeneralizedEmbeddingsInAmbientObject,
+                IsLazyGeneralizedEmbeddingInAmbientObject ) );
+
 BindGlobal( "TheTypeObjectWithAmbientObject",
         NewType( TheFamilyOfCategoriesWithAmbientObjects,
                 IsCapCategoryObjectWithAmbientObjectRep ) );
@@ -85,21 +92,73 @@ end );
 ####################################
 
 ##
-InstallMethod( EmbeddingInAmbientObject,
-               [ IsCapCategoryObjectWithAmbientObjectRep ],
+InstallMethod( EvaluatedGeneralizedEmbeddingInAmbientObject,
+        "for a lazy evaluated generalized embedding in ambient object",
+        [ IsLazyGeneralizedEmbeddingInAmbientObject ],
+        
+  function( gen )
+    
+    gen := CallFuncList( gen!.EvaluationFunction, List( gen!.Arguments, a -> a[1]( a[2] ) ) );
+    
+    Assert( 4, IsMonomorphism( gen ) );
+    SetIsSplitMonomorphism( gen, true );
+    
+    return gen;
+    
+end );
 
+##
+InstallMethod( LazyGeneralizedEmbeddingInAmbientObject,
+        "for an object with an ambient object",
+        [ IsCapCategoryObjectWithAmbientObjectRep ],
+        
   function( obj )
-    local gens, rels, emb;
     
-    gens := NormalizedCospan( GeneralizedEmbeddingInAmbientObject( obj ) );
-    rels := ReversedArrow( gens );
+    return ObjectAttributesAsList( obj )[1];
     
-    emb := PreCompose( Arrow( gens ), ColiftAlongEpimorphism( rels, CokernelProjection( KernelEmbedding( rels ) ) ) );
+end );
+
+##
+InstallMethod( GeneralizedEmbeddingInAmbientObject,
+        "for an object with an ambient object",
+        [ IsCapCategoryObjectWithAmbientObjectRep ],
+        
+  function( obj )
     
-    Assert( 5, IsMonomorphism( emb ) );
-    SetIsMonomorphism( emb, true );
+    return EvaluatedGeneralizedEmbeddingInAmbientObject(
+                   LazyGeneralizedEmbeddingInAmbientObject( obj ) );
     
-    return emb;
+end );
+
+##
+InstallMethod( EmbeddingInAmbientObject,
+        "for a lazy evaluated generalized embedding in ambient object",
+        [ IsLazyGeneralizedEmbeddingInAmbientObject ],
+        
+  function( gen )
+    local rel;
+    
+    gen := NormalizedCospan( EvaluatedGeneralizedEmbeddingInAmbientObject( gen ) );
+    rel := ReversedArrow( gen );
+    
+    gen := PreCompose( Arrow( gen ), ColiftAlongEpimorphism( rel, CokernelProjection( KernelEmbedding( rel ) ) ) );
+    
+    Assert( 5, IsMonomorphism( gen ) );
+    SetIsMonomorphism( gen, true );
+    
+    return gen;
+    
+end );
+
+##
+InstallMethod( EmbeddingInAmbientObject,
+        "for an object with an ambient object",
+        [ IsCapCategoryObjectWithAmbientObjectRep ],
+        
+  function( obj )
+    
+    return EmbeddingInAmbientObject(
+                   LazyGeneralizedEmbeddingInAmbientObject( obj ) );
     
 end );
 
@@ -108,6 +167,24 @@ end );
 # methods for operations:
 #
 ####################################
+
+##
+InstallMethod( CreateLazyGeneralizedEmbeddingInAmbientObject,
+        "for a CAP category object, a function, and a list",
+        [ IsCapCategoryObject, IsFunction, IsList ],
+        
+  function( o, f, L )
+    local gen;
+    
+    gen := rec( EvaluationFunction := f, Arguments := L );
+    
+    ObjectifyWithAttributes(
+            gen, TheTypeLazyGeneralizedEmbeddingsInAmbientObject,
+            UnderlyingCell, o );
+    
+    return gen;
+    
+end );
 
 ##
 InstallMethod( CategoryWithAmbientObject,
@@ -146,11 +223,6 @@ InstallMethod( CategoryWithAmbientObject,
         
         return_object := object_constructor( object, attributes );
         
-        Assert( 4, IsMonomorphism( attributes[1] ) );
-        SetIsSplitMonomorphism( attributes[1], true );
-        
-        SetGeneralizedEmbeddingInAmbientObject( return_object, attributes[1] );
-        
         return return_object;
         
     end;
@@ -185,9 +257,22 @@ InstallMethod( CategoryWithAmbientObject,
         
         structure_record.ZeroObject :=
           function( underlying_zero_object )
-              
-              return [ AsGeneralizedMorphismByCospan( ZeroMorphism( underlying_zero_object, zero_object ) ) ];
-              
+            local gen, lazy;
+            
+            gen := AsGeneralizedMorphismByCospan( ZeroMorphism( underlying_zero_object, zero_object ) );
+            
+            Assert( 4, IsMonomorphism( gen ) );
+            SetIsSplitMonomorphism( gen, true );
+            
+            lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                            underlying_zero_object,
+                            IdFunc,
+                            [ [ IdFunc, gen ] ] );
+            
+            SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
+            
+            return [ lazy ];
+            
           end;
     fi;
     
@@ -202,9 +287,12 @@ InstallMethod( CategoryWithAmbientObject,
           function( obj_list, underlying_direct_sum )
             local embeddings_list;
             
-            embeddings_list := List( obj_list, obj -> ObjectAttributesAsList( obj )[1] );
+            embeddings_list := List( obj_list, LazyGeneralizedEmbeddingInAmbientObject );
             
-            return [ ConcatenationProduct( embeddings_list ) ];
+            return [ CreateLazyGeneralizedEmbeddingInAmbientObject(
+                           DirectSum( List( embeddings_list, UnderlyingCell ) ),
+                           ConcatenationProduct,
+                           [ [ a -> List( a, EvaluatedGeneralizedEmbeddingInAmbientObject ), embeddings_list ] ] ) ];
             
           end;
         
@@ -223,9 +311,13 @@ InstallMethod( CategoryWithAmbientObject,
           function( mono, range )
             local embedding_of_range;
             
-            embedding_of_range := ObjectAttributesAsList( range )[1];
+            embedding_of_range := LazyGeneralizedEmbeddingInAmbientObject( range );
             
-            return [ PreCompose( AsGeneralizedMorphismByCospan( mono ), embedding_of_range ) ];
+            return [ CreateLazyGeneralizedEmbeddingInAmbientObject(
+                           Source( mono ),
+                           PreCompose,
+                           [ [ AsGeneralizedMorphismByCospan, mono ],
+                             [ EvaluatedGeneralizedEmbeddingInAmbientObject, embedding_of_range ] ] ) ];
             
           end;
         
@@ -244,9 +336,13 @@ InstallMethod( CategoryWithAmbientObject,
           function( epi, source )
             local embedding_of_source;
             
-            embedding_of_source := ObjectAttributesAsList( source )[1];
+            embedding_of_source := LazyGeneralizedEmbeddingInAmbientObject( source );
             
-            return [ PreCompose( PseudoInverse( AsGeneralizedMorphismByCospan( epi ) ), embedding_of_source ) ];
+            return [ CreateLazyGeneralizedEmbeddingInAmbientObject(
+                           Range( epi ),
+                           PreCompose,
+                           [ [ a -> PseudoInverse( AsGeneralizedMorphismByCospan( a ) ), epi ],
+                             [ EvaluatedGeneralizedEmbeddingInAmbientObject, embedding_of_source ] ] ) ];
             
           end;
         
@@ -259,9 +355,20 @@ InstallMethod( CategoryWithAmbientObject,
                    [ IsGeneralizedMorphismByCospan,
                      IsCapCategory and CategoryFilter( category_with_ambient_objects ) ],
                    
-      function( object, attribute_category )
+      function( gen, attribute_category )
+        local lazy;
         
-        return structure_record.ObjectConstructor( UnderlyingHonestObject( Source( object ) ), [ object ] );
+        Assert( 4, IsMonomorphism( gen ) );
+        SetIsSplitMonomorphism( gen, true );
+        
+        lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                        UnderlyingHonestObject( Source( gen ) ),
+                        IdFunc,
+                        [ [ IdFunc, gen ] ] );
+        
+        SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
+        
+        return structure_record.ObjectConstructor( UnderlyingHonestObject( Source( gen ) ), [ lazy ] );
         
     end );
     
@@ -467,6 +574,23 @@ end );
 # View, Print, and Display methods:
 #
 ####################################
+
+##
+InstallMethod( ViewObj,
+        "for a lazy evaluated generalized embedding in ambient object",
+        [ IsLazyGeneralizedEmbeddingInAmbientObject ],
+        
+  function( obj )
+    
+    Print( "<An " );
+    
+    if not HasEvaluatedGeneralizedEmbeddingInAmbientObject( obj ) then
+        Print( "un" );
+    fi;
+    
+    Print( "evaluated generalized embedding in ambient object>" );
+    
+end );
 
 ##
 InstallMethod( ViewObj,

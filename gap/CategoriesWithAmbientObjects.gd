@@ -22,6 +22,11 @@ SetInfoLevel( InfoCategoriesWithAmbientObjects, 1 );
 ####################################
 
 #! @Description
+#!  The &GAP; category of lazy evaluated generalized embeddings in ambient objects.
+DeclareCategory( "IsLazyGeneralizedEmbeddingInAmbientObject",
+        IsAttributeStoringRep );
+
+#! @Description
 #!  The &GAP; category of objects with ambient objects in a &CAP; category.
 DeclareCategory( "IsCapCategoryObjectWithAmbientObject",
         IsCapCategoryObject );
@@ -49,6 +54,12 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_MORPHISMS_BETWEEN_OBJECTS_WITH_AMB
 ####################################
 
 #! @Description
+#!  The evaluation of the lazy generalized embedding <A>gen</A>.
+#! @Arguments gen
+DeclareAttribute( "EvaluatedGeneralizedEmbeddingInAmbientObject",
+        IsLazyGeneralizedEmbeddingInAmbientObject );
+
+#! @Description
 #!  The generalized embedding of the object <A>M</A> into its ambient object.
 #! @Arguments M
 #! @Returns a &CAP; generalized monomorphism
@@ -57,9 +68,15 @@ DeclareAttribute( "GeneralizedEmbeddingInAmbientObject",
 
 #! @Description
 #!  The embedding of the object <A>M</A> into its ambient object modulo the aid, i.e.,
-#!  the output is the associated (mono)morphism of the normalized 3-arrow formalism with domain = identity.
-#! @Arguments M
+#!  the output is the associated monomorphism of the lazy generalized monomorphism <A>gen</A>
+#!  with domain = identity.
+#! @Arguments gen
 #! @Returns a &CAP; monomorphism
+DeclareAttribute( "EmbeddingInAmbientObject",
+        IsLazyGeneralizedEmbeddingInAmbientObject );
+
+#! @Arguments M
+#! @Group EmbeddingInAmbientObject
 DeclareAttribute( "EmbeddingInAmbientObject",
         IsCapCategoryObjectWithAmbientObject );
 
@@ -70,7 +87,27 @@ DeclareAttribute( "EmbeddingInAmbientObject",
 ####################################
 
 #! @Description
-#!  
+#!  Construct a lazy evaluated generalized embedding with source <A>M</A>
+#!  using the procedure <A>f</A> and the list of <Q>pre-arguments</Q> <A>L</A>,
+#!  which itself consists of pairs with first entry being a procedure
+#!  and second its single argument. Use:
+#!  <C>CallFuncList</C>( <A>f</A>, <C>List</C>( <A>L</A>, <C>a -> a[1]( a[2] )</C> ) ).
+#!  The input <A>M</A> is recovered by applying <C>UnderlyingCell</C> to the output.
+#!  The list <A>L</A> should not include procedures which depend on their code-context,
+#!  since otherwise &GAP; is forced to attach the code-context to the output.
+#! @Arguments M, f, L
+DeclareOperation( "CreateLazyGeneralizedEmbeddingInAmbientObject",
+        [ IsCapCategoryObject, IsFunction, IsList ] );
+
+#! @Description
+#!  The generalized embedding of the object <A>M</A> into its ambient object.
+#! @Arguments M
+DeclareOperation( "LazyGeneralizedEmbeddingInAmbientObject",
+        [ IsCapCategoryObjectWithAmbientObject ] );
+
+#! @Description
+#!  Construct an object in the category <A>A</A> with ambient objects
+#!  out of the generalized embedding <A>iota</A>.
 #! @Arguments iota, A
 #! @Returns an object in the category <A>A</A> with ambient objects
 DeclareOperation( "ObjectWithAmbientObject",
