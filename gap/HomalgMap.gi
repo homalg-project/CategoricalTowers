@@ -115,7 +115,19 @@ InstallMethod( Kernel,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
         
-  KernelObject );
+  function( phi )
+    local emb, ker;
+    
+    emb := KernelEmbedding( phi );
+    
+    ker := Source( emb );
+    
+    SetKernelEmb( ker, emb );
+    ker!.NaturalGeneralizedEmbedding := emb;
+    
+    return ker;
+    
+end );
 
 ##
 InstallMethod( KernelEmb,
