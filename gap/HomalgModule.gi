@@ -312,6 +312,50 @@ InstallMethod( OnLessGenerators,
     
 end );
 
+##
+InstallMethod( EpiOnLeftFactor,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    
+    return ProjectionInFactorOfDirectSum( M!.DirectSum_Context[1][1], 1 );
+    
+end );
+
+##
+InstallMethod( EpiOnRightFactor,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    
+    return ProjectionInFactorOfDirectSum( M!.DirectSum_Context[1][1], 2 );
+    
+end );
+
+##
+InstallMethod( MonoOfLeftSummand,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    
+    return InjectionOfCofactorOfDirectSum( M!.DirectSum_Context[1][1], 1 );
+    
+end );
+
+##
+InstallMethod( MonoOfRightSummand,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    
+    return InjectionOfCofactorOfDirectSum( M!.DirectSum_Context[1][1], 2 );
+    
+end );
+
 ####################################
 #
 # methods for constructors:
