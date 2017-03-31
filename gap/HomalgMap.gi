@@ -283,6 +283,21 @@ end );
 ##
 InstallMethod( HomalgMap,
         "for a homalg matrix and a string",
+        [ IsList, IsHomalgModule and IsCapCategoryIntrinsicObject ],
+        
+  function( m, M )
+    
+    if not m = [ "identity" ] and not m = [ "zero" ] then
+        TryNextMethod( );
+    fi;
+    
+    return HomalgMap( m, M, M );
+    
+end );
+
+##
+InstallMethod( HomalgMap,
+        "for a homalg matrix and a string",
         [ IsHomalgMatrix, IsString ],
         
   function( mat, parity )
