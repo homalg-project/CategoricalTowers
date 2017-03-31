@@ -397,3 +397,30 @@ InstallMethod( HomalgMap,
                    HomalgFreeRightModule( NrGenerators( rels ), R ) );
     
 end );
+
+##
+InstallMethod( AnIsomorphism,
+        "for a homalg/CAP module",
+        [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( M )
+    local N, iso;
+    
+    ## in the new package Modules the presentations do not know their parent module
+    N := ActiveCell( M );
+    
+    N := Intrinsify( CapCategory( M ), N );
+    
+    ## define the obvious isomorphism between N an M
+    iso := HomalgIdentityMatrix( NrGenerators( M ), HomalgRing( M ) );
+    
+    iso := HomalgMap( iso, N, M );
+    
+    SetIsIsomorphism( iso, true );
+    
+    ## copy the known properties and attributes of im to def
+    UpdateObjectsByMorphism( iso );
+    
+    return iso;
+    
+end );
