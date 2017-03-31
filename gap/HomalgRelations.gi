@@ -11,6 +11,19 @@ InstallMethod( HasNrGenerators,
         
   function( rels )
     
+    rels := rels!.LazyUnderlyingMatrix;
+    
+    return HasNrColumns( EvalSyzygiesOfColumns( rels )[1] );
+    
+end );
+
+##
+InstallMethod( HasNrGenerators,
+        "for a set of relations of homalg/CAP right modules",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
+        
+  function( rels )
+    
     return HasNrRows( UnderlyingMatrix( rels ) );
     
 end );
@@ -22,6 +35,19 @@ InstallMethod( HasNrGenerators,
         
   function( rels )
     
+    rels := rels!.LazyUnderlyingMatrix;
+    
+    return HasNrRows( EvalSyzygiesOfRows( rels )[1] );
+    
+end );
+
+##
+InstallMethod( HasNrGenerators,
+        "for a set of relations of homalg/CAP left modules",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
+        
+  function( rels )
+    
     return HasNrColumns( UnderlyingMatrix( rels ) );
     
 end );
@@ -30,6 +56,19 @@ end );
 InstallMethod( NrGenerators,
         "for a set of relations of homalg/CAP right modules",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        
+  function( rels )
+    
+    rels := rels!.LazyUnderlyingMatrix;
+    
+    return NrColumns( EvalSyzygiesOfColumns( rels )[1] );
+    
+end );
+
+##
+InstallMethod( NrGenerators,
+        "for a set of relations of homalg/CAP right modules",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
         
   function( rels )
     
@@ -44,6 +83,19 @@ InstallMethod( NrGenerators,
         
   function( rels )
     
+    rels := rels!.LazyUnderlyingMatrix;
+    
+    return NrRows( EvalSyzygiesOfRows( rels )[1] );
+    
+end );
+
+##
+InstallMethod( NrGenerators,
+        "for a set of relations of homalg/CAP left modules",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
+        
+  function( rels )
+    
     return NrColumns( UnderlyingMatrix( rels ) );
     
 end );
@@ -55,7 +107,7 @@ InstallMethod( HasNrRelations,
         
   function( rels )
     
-    return HasNrColumns( UnderlyingMatrix( rels ) );
+    return HasUnderlyingMatrix( rels ) and HasNrColumns( UnderlyingMatrix( rels ) );
     
 end );
 
@@ -66,7 +118,7 @@ InstallMethod( HasNrRelations,
         
   function( rels )
     
-    return HasNrRows( UnderlyingMatrix( rels ) );
+    return HasUnderlyingMatrix( rels ) and HasNrRows( UnderlyingMatrix( rels ) );
     
 end );
 
