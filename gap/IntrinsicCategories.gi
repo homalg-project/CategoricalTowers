@@ -99,6 +99,10 @@ InstallImmediateMethod( CanonicalizedToZero,
     #    return true;
     #fi;
     
+    if IsBound( obj!.("locked by") ) then
+        TryNextMethod( );
+    fi;
+    
     F := CanonicalizeZeroObjectsAsIdentityFunctor( CapCategory( obj ) );
     
     ApplyFunctor( F, obj );
@@ -113,6 +117,10 @@ InstallImmediateMethod( CanonicalizedToZero,
         
   function( mor )
     local F;
+    
+    if IsBound( mor!.("locked by") ) then
+        TryNextMethod( );
+    fi;
     
     F := CanonicalizeZeroMorphismsAsIdentityFunctor( CapCategory( mor ) );
     
@@ -884,6 +892,12 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
             function( obj )
               local pos, a, eta_a;
               
+              if IsBound( obj!.("locked by") ) then
+                  Error( "the object is locked by:", obj!.("locked by") );
+              fi;
+              
+              obj!.("locked by") := name;
+              
               pos := PositionOfActiveCell( obj );
               
               a := ActiveCell( obj );
@@ -898,6 +912,8 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   
                   Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
                   
+                  Unbind( obj!.("locked by") );
+                  
                   return obj;
               fi;
               
@@ -909,12 +925,18 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               
               Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
               
+              Unbind( obj!.("locked by") );
+              
               return obj;
             end );
     
     AddMorphismFunction( IdF,
             function( new_source, mor, new_range )
               local pos_s, pos_t, a, b;
+              
+              if IsBound( mor!.("locked by") ) then
+                  Error( "the object is locked by:", mor!.("locked by") );
+              fi;
               
               pos_s := new_source!.(name);
               pos_s := pos_s[Length( pos_s )];
@@ -927,6 +949,8 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               b := ApplyFunctor( F, a );
               
               AddToIntrinsicMorphism( mor, b, pos_s[2], pos_t[2] );
+              
+              Unbind( mor!.("locked by") );
               
               return mor;
               
@@ -954,6 +978,7 @@ InstallMethod( CanonicalizeZeroObjectsAsIdentityFunctor,
     
     Id := IdentityFunctor( IC );
     
+    ## using IC instead of C causes error, recursion depth trap (5000)
     iso := NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects( C );
     
     F := Intrinsify( Range( iso ), IC );
