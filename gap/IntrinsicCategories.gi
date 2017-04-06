@@ -893,7 +893,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               local pos, a, eta_a;
               
               if IsBound( obj!.("locked by") ) then
-                  Error( "the object is locked by:", obj!.("locked by") );
+                  Error( "the object is locked by the \"", obj!.("locked by"), "\"\n while in \"", name, "\"\n" );
               fi;
               
               obj!.("locked by") := name;
@@ -935,7 +935,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               local pos_s, pos_t, a, b;
               
               if IsBound( mor!.("locked by") ) then
-                  Error( "the object is locked by:", mor!.("locked by") );
+                  Error( "the morphism is locked by the \"", mor!.("locked by"), "\"\n while in \"", name, "\"\n" );
               fi;
               
               pos_s := new_source!.(name);
