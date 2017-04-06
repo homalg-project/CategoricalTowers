@@ -55,6 +55,9 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS" );
 #!  
 DeclareFilter( "CanonicalizeIfZero" );
 
+DeclareGlobalFunction( "CanonicalizedToZero_for_objects" );
+DeclareGlobalFunction( "CanonicalizedToZero_for_morphisms" );
+
 #! @Description
 #!  
 DeclareProperty( "CanonicalizedToZero",

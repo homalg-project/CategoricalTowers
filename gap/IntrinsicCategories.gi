@@ -81,6 +81,32 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS,
     
 end );
 
+##
+InstallGlobalFunction( CanonicalizedToZero_for_objects,
+  function( obj )
+    local F;
+    
+    F := CanonicalizeZeroObjectsAsIdentityFunctor( CapCategory( obj ) );
+    
+    ApplyFunctor( F, obj );
+    
+    return true;
+    
+end );
+
+##
+InstallGlobalFunction( CanonicalizedToZero_for_morphisms,
+  function( mor )
+    local F;
+    
+    F := CanonicalizeZeroMorphismsAsIdentityFunctor( CapCategory( mor ) );
+    
+    ApplyFunctor( F, mor );
+    
+    return true;
+    
+end );
+
 ####################################
 #
 # immediate methods:
@@ -92,7 +118,6 @@ InstallImmediateMethod( CanonicalizedToZero,
         IsCapCategoryIntrinsicObjectRep and CanonicalizeIfZero and IsZero, 0,
         
   function( obj )
-    local F;
     
     ## causes error, recursion depth trap (5000):
     #if IsEqualForObjects( obj, ZeroObject( obj ) ) then
@@ -103,11 +128,7 @@ InstallImmediateMethod( CanonicalizedToZero,
         TryNextMethod( );
     fi;
     
-    F := CanonicalizeZeroObjectsAsIdentityFunctor( CapCategory( obj ) );
-    
-    ApplyFunctor( F, obj );
-    
-    return true;
+    return CanonicalizedToZero_for_objects( obj );
     
 end );
 
@@ -116,17 +137,12 @@ InstallImmediateMethod( CanonicalizedToZero,
         IsCapCategoryIntrinsicMorphismRep and CanonicalizeIfZero and IsZero, 0,
         
   function( mor )
-    local F;
     
     if IsBound( mor!.("locked by") ) then
         TryNextMethod( );
     fi;
     
-    F := CanonicalizeZeroMorphismsAsIdentityFunctor( CapCategory( mor ) );
-    
-    ApplyFunctor( F, mor );
-    
-    return true;
+    return CanonicalizedToZero_for_morphisms( mor );
     
 end );
 
