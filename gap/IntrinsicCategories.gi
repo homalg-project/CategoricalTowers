@@ -118,11 +118,13 @@ InstallImmediateMethod( CanonicalizedToZero,
         IsCapCategoryIntrinsicObjectRep and CanonicalizeIfZero and IsZero, 0,
         
   function( obj )
+    local o;
     
-    ## causes error, recursion depth trap (5000):
-    #if IsEqualForObjects( obj, ZeroObject( obj ) ) then
-    #    return true;
-    #fi;
+    o := ActiveCell( obj );
+    
+    if IsEqualForObjects( o, ZeroObject( o ) ) then
+        return true;
+    fi;
     
     if not IsSafeForSideEffects( obj ) then
         AddToToDoList( ToDoListEntry( [ [ obj, "IsSafeForSideEffects", true ] ],
