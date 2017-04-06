@@ -124,7 +124,13 @@ InstallImmediateMethod( CanonicalizedToZero,
     #    return true;
     #fi;
     
-    if IsBound( obj!.("locked by") ) then
+    if not IsSafeForSideEffects( obj ) then
+        AddToToDoList( ToDoListEntry( [ [ obj, "IsSafeForSideEffects", true ] ],
+                [ [ "CanonicalizeIfZero once IsSafeForSideEffects( obj )",
+                    [ obj, "CanonicalizedToZero", [ CanonicalizedToZero_for_objects, obj ] ],
+                    ]
+                  ]
+                ) );
         TryNextMethod( );
     fi;
     
@@ -138,7 +144,13 @@ InstallImmediateMethod( CanonicalizedToZero,
         
   function( mor )
     
-    if IsBound( mor!.("locked by") ) then
+    if not IsSafeForSideEffects( mor ) then
+        AddToToDoList( ToDoListEntry( [ [ mor, "IsSafeForSideEffects", true ] ],
+                [ [ "CanonicalizeIfZero once IsSafeForSideEffects( mor )",
+                    [ mor, "CanonicalizedToZero", [ CanonicalizedToZero_for_morphisms, mor ] ],
+                    ]
+                  ]
+                ) );
         TryNextMethod( );
     fi;
     
@@ -650,6 +662,8 @@ InstallMethod( Intrinsify,
     
     AddObject( C, obj );
     
+    SetFilterObj( obj, IsSafeForSideEffects );
+    
     if IsBound( C!.CanonicalizeObjectsIfZero ) and
        C!.CanonicalizeObjectsIfZero = true then
         
@@ -730,6 +744,8 @@ InstallMethod( Intrinsify,
     fi;
     
     AddMorphism( C, mor );
+    
+    SetFilterObj( mor, IsSafeForSideEffects );
     
     if IsBound( C!.CanonicalizeMorphismsIfZero ) and
        C!.CanonicalizeMorphismsIfZero = true then
@@ -908,6 +924,8 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
             function( obj )
               local pos, a, eta_a;
               
+              ResetFilterObj( obj, IsSafeForSideEffects );
+              
               if IsBound( obj!.("locked by") ) then
                   Error( "the object is locked by the \"", obj!.("locked by"), "\"\n while in \"", name, "\"\n" );
               fi;
@@ -930,6 +948,8 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   
                   Unbind( obj!.("locked by") );
                   
+                  SetFilterObj( obj, IsSafeForSideEffects );
+                  
                   return obj;
               fi;
               
@@ -943,12 +963,16 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               
               Unbind( obj!.("locked by") );
               
+              SetFilterObj( obj, IsSafeForSideEffects );
+              
               return obj;
             end );
     
     AddMorphismFunction( IdF,
             function( new_source, mor, new_range )
               local pos_s, pos_t, a, b;
+              
+              ResetFilterObj( mor, IsSafeForSideEffects );
               
               if IsBound( mor!.("locked by") ) then
                   Error( "the morphism is locked by the \"", mor!.("locked by"), "\"\n while in \"", name, "\"\n" );
@@ -967,6 +991,8 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               AddToIntrinsicMorphism( mor, b, pos_s[2], pos_t[2] );
               
               Unbind( mor!.("locked by") );
+              
+              SetFilterObj( mor, IsSafeForSideEffects );
               
               return mor;
               

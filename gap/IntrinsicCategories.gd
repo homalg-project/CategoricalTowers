@@ -55,6 +55,10 @@ DeclareGlobalFunction( "INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS" );
 #!  
 DeclareFilter( "CanonicalizeIfZero" );
 
+#! @Description
+#!  
+DeclareFilter( "IsSafeForSideEffects" );
+
 DeclareGlobalFunction( "CanonicalizedToZero_for_objects" );
 DeclareGlobalFunction( "CanonicalizedToZero_for_morphisms" );
 
