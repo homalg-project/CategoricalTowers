@@ -73,7 +73,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2013.12.04" ],
                    [ "ActionsForCAP", ">= 2013.09.20" ],
-                   [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
+                   [ "GeneralizedMorphismsForCAP", ">= 2017.04.01" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "GAPDoc", ">= 1.1" ]
                    ],

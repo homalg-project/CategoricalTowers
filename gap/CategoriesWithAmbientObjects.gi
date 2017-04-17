@@ -466,7 +466,7 @@ InstallMethod( WithAmbientObject,
             function( obj )
               local gmcF;
               
-              gmcF := AsGeneralizedMorphismByCospan( F, CapCategory( GeneralizedEmbeddingInAmbientObject( obj ) ) );
+              gmcF := AsGeneralizedMorphismByCospan( F );
               
               return ObjectWithAmbientObject( ApplyFunctor( gmcF, GeneralizedEmbeddingInAmbientObject( obj ) ), B );
             end );
