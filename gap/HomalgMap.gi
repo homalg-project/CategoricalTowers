@@ -12,6 +12,32 @@ InstallLogicalImplicationsForHomalgObjects(
 
 ####################################
 #
+# immediate methods:
+#
+####################################
+
+InstallImmediateMethod( CokernelEpi,
+        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasCokernelProjection, 0,
+
+  CokernelProjection );
+
+InstallImmediateMethod( ImageObjectEmb,
+        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasImageEmbedding, 0,
+
+  ImageEmbedding );
+
+InstallImmediateMethod( ImageObjectEpi,
+        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasCoastrictionToImage, 0,
+
+  CoastrictionToImage );
+
+InstallImmediateMethod( KernelEmb,
+        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasKernelEmbedding, 0,
+
+  KernelEmbedding );
+
+####################################
+#
 # methods for operations:
 #
 ####################################
