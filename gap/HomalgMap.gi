@@ -200,7 +200,62 @@ InstallMethod( ImageObjectEmb,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
         
-  ImageEmbedding );
+  function( phi )
+    local emb;
+    
+    emb := ImageEmbedding( phi );
+    
+    AddToToDoList( ToDoListEntry( [ [ phi, "CokernelProjection" ] ],
+            [ [ "the cokernel projection of a morphism is the cokernel projection of its image embedding",
+                [ emb, "CokernelProjection", [ CokernelProjection, phi ] ], ## abelian category: [HS, Prop. II.9.6]
+                ],
+              [ "the image embedding is the kernel embedding of the cokernel projection",
+                [ CokernelProjection( phi ), "KernelEmbedding", emb ],
+                ],
+              ]
+            ) );
+    
+    AddToToDoList( ToDoListEntry( [ [ emb, "CokernelProjection" ] ],
+            [ [ "the cokernel projection of a morphism is the cokernel projection of its image embedding",
+                [ phi, "CokernelProjection", [ CokernelProjection, emb ] ], ## abelian category: [HS, Prop. II.9.6]
+                ],
+              ]
+            ) );
+    
+    return emb;
+    
+end );
+
+##
+InstallMethod( ImageObjectEpi,
+        "for a homalg/CAP module map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  function( phi )
+    local epi;
+    
+    epi := CoastrictionToImage( phi );
+    
+    AddToToDoList( ToDoListEntry( [ [ phi, "KernelEmbedding" ] ],
+            [ [ "the kernel embedding of a morphism is the kernel embedding of the coastriction to its image",
+                [ epi, "KernelEmbedding", [ KernelEmbedding, phi ] ], ## abelian category: [HS, Prop. II.9.6]
+                ],
+              [ "the coastriction to the image is the cokernel projection of the kernel embedding",
+                [ KernelEmbedding( phi ), "CokernelProjection", epi ],
+                ],
+              ]
+            ) );
+    
+    AddToToDoList( ToDoListEntry( [ [ epi, "KernelEmbedding" ] ],
+            [ [ "the kernel embedding of a morphism is the kernel embedding of the coastriction to its image",
+                [ phi, "KernelEmbedding", [ KernelEmbedding, epi ] ], ## abelian category: [HS, Prop. II.9.6]
+                ],
+              ]
+            ) );
+    
+    return epi;
+    
+end );
 
 ##
 InstallMethod( Cokernel,
@@ -214,7 +269,31 @@ InstallMethod( CokernelEpi,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
         
-  CokernelProjection );
+  function( phi )
+    local epi;
+    
+    epi := CokernelProjection( phi );
+    
+    AddToToDoList( ToDoListEntry( [ [ phi, "ImageEmbedding" ] ],
+            [ [ "the image embedding is the kernel embedding of the cokernel projection",
+                [ epi, "KernelEmbedding", ImageEmbedding( phi ) ],
+                ],
+              [ "the cokernel projection of a morphism is the cokernel projection of its image embedding",
+                [ ImageEmbedding( phi ), "CokernelProjection", epi ], ## abelian category: [HS, Prop. II.9.6]
+                ],
+              ]
+            ) );
+    
+    AddToToDoList( ToDoListEntry( [ [ phi, "IsMonomorphism", true ] ],
+            [ [ "any monomorphims is the kernel embedding of its cokernel projection",
+                [ epi, "KernelEmbedding", phi ],
+                ],
+              ]
+            ) );
+    
+    return epi;
+    
+end );
 
 ##
 InstallMethod( Kernel,
@@ -240,7 +319,31 @@ InstallMethod( KernelEmb,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
         
-  KernelEmbedding );
+  function( phi )
+    local emb;
+    
+    emb := KernelEmbedding( phi );
+    
+    AddToToDoList( ToDoListEntry( [ [ phi, "CoastrictionToImage" ] ],
+            [ [ "the coastriction to the image is the cokernel projection of the kernel embedding",
+                [ emb, "CokernelProjection", CoastrictionToImage( phi ) ],
+                ],
+              [ "the kernel embedding of a morphism is the kernel embedding of the coastriction to its image",
+                [ CoastrictionToImage( phi ), "KernelEmbedding", emb ], ## abelian category: [HS, Prop. II.9.6]
+                ],
+              ]
+            ) );
+    
+    AddToToDoList( ToDoListEntry( [ [ phi, "IsEpimorphism", true ] ],
+            [ [ "any epimorphims is the cokernel projection of its kernel embedding",
+                [ emb, "CokernelProjection", phi ],
+                ],
+              ]
+            ) );
+    
+    return emb;
+    
+end );
 
 ####################################
 #
