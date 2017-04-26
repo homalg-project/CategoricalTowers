@@ -145,6 +145,7 @@ InstallImmediateMethod( CanonicalizedToZero,
         IsCapCategoryIntrinsicMorphismRep and CanonicalizeIfZero and IsZero, 0,
         
   function( mor )
+    local S, T;
     
     if not IsSafeForSideEffects( mor ) then
         AddToToDoList( ToDoListEntry( [ [ mor, "IsSafeForSideEffects", true ] ],
@@ -154,6 +155,16 @@ InstallImmediateMethod( CanonicalizedToZero,
                   ]
                 ) );
         TryNextMethod( );
+    fi;
+    
+    S := Source( mor );
+    T := Range( mor );
+    
+    ## this will be taken care of by the CanonicalizedToZero for objects;
+    ## this is crucial for performance
+    if ( HasIsZero( S ) and IsZero( S ) ) or
+       ( HasIsZero( T ) and IsZero( T ) ) then
+        return true;
     fi;
     
     return CanonicalizedToZero_for_morphisms( mor );
