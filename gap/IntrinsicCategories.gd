@@ -239,6 +239,12 @@ DeclareAttribute( "IntrinsifiedCategory",
 ####################################
 
 #! @Description
+#!  Check whether the intrinsic object <A>c</A> is locked or not.
+#! @Arguments c
+DeclareOperation( "IsLockedObject",
+        [ IsCapCategoryIntrinsicObject ] );
+
+#! @Description
 #!  Return the position of the last stored cell underlying the intrinsic cell <A>c</A>.
 #! @Arguments c
 DeclareOperation( "PositionOfLastStoredCell",

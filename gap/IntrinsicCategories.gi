@@ -167,6 +167,13 @@ end );
 ####################################
 
 ##
+InstallMethod( IsLockedObject,
+        "for an intrinsic object",
+        [ IsCapCategoryIntrinsicObjectRep ],
+        
+  obj ->  IsBound( obj!.Locked ) );
+
+##
 InstallMethod( PositionOfLastStoredCell,
         "for an intrinsic object",
         [ IsCapCategoryIntrinsicObjectRep ],
@@ -454,7 +461,10 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.TransitionIsomorphisms.(st) := eta;
     obj!.(n) := Range( eta );
     obj!.PositionOfLastStoredCell := n;
-    SetPositionOfActiveCell( obj, n );
+    
+    if not IsLockedObject( obj ) then
+        SetPositionOfActiveCell( obj, n );
+    fi;
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Range( eta ), obj );
     
@@ -506,7 +516,10 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.TransitionIsomorphisms.(st) := eta;
     obj!.(n) := Source( eta );
     obj!.PositionOfLastStoredCell := n;
-    SetPositionOfActiveCell( obj, n );
+    
+    if not IsLockedObject( obj ) then
+        SetPositionOfActiveCell( obj, n );
+    fi;
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Source( eta ), obj );
     
