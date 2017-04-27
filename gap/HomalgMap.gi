@@ -116,6 +116,14 @@ InstallMethod( CoproductMorphism,
   UniversalMorphismFromDirectSum );
 
 ##
+InstallMethod( ProductMorphism,
+        "for two homalg/CAP module maps",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism,
+          IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  UniversalMorphismIntoDirectSum );
+
+##
 InstallGlobalFunction( ImageEmbeddingForLeftModules,
   function( morphism )
     local mat, T, B, N, S, img, emb;
