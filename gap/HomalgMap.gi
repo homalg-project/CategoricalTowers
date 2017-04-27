@@ -262,7 +262,18 @@ InstallMethod( Cokernel,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
         
-  CokernelObject );
+  function( phi )
+    local epi, coker;
+    
+    epi := CokernelEpi( phi );
+    
+    coker := Range( epi );
+    
+    coker!.NaturalGeneralizedEmbedding := InverseOfGeneralizedMorphismWithFullDomain( epi );
+    
+    return coker;
+    
+end );
 
 ##
 InstallMethod( CokernelEpi,
