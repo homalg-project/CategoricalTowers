@@ -499,6 +499,17 @@ end );
 
 ##
 InstallMethod( HomalgMap,
+        "for a set of relation, a string, and a homalg/CAP module",
+        [ IsHomalgRelations and IsLeftOrRightPresentation, IsString, IsHomalgModule and IsCapCategoryIntrinsicObject ],
+
+  function( m, s, N )
+    
+    return HomalgMap( MatrixOfRelations( m ), s, N );
+    
+end );
+
+##
+InstallMethod( HomalgMap,
         "",
         [ IsObject, IsObject ],
 
