@@ -235,6 +235,20 @@ InstallMethod( ImageObjectEmb,
 end );
 
 ##
+InstallMethod( ImageObjectEmb,
+        "for a homalg/CAP zero map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        
+  function( phi )
+    local T;
+    
+    T := Range( phi );
+    
+    return ZeroMorphism( ZeroObject( T ), T );
+    
+end );
+
+##
 InstallMethod( ImageObjectEpi,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
@@ -262,6 +276,20 @@ InstallMethod( ImageObjectEpi,
             ) );
     
     return epi;
+    
+end );
+
+##
+InstallMethod( ImageObjectEpi,
+        "for a homalg/CAP zero map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        
+  function( phi )
+    local S;
+    
+    S := Source( phi );
+    
+    return ZeroMorphism( S, ZeroObject( S ) );
     
 end );
 
@@ -315,6 +343,17 @@ InstallMethod( CokernelEpi,
 end );
 
 ##
+InstallMethod( CokernelEpi,
+        "for a homalg/CAP zero map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        
+  function( phi )
+    
+    return IdentityMorphism( Range( phi ) );
+    
+end );
+
+##
 InstallMethod( Kernel,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
@@ -361,6 +400,17 @@ InstallMethod( KernelEmb,
             ) );
     
     return emb;
+    
+end );
+
+##
+InstallMethod( KernelEmb,
+        "for a homalg/CAP zero map",
+        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        
+  function( phi )
+    
+    return IdentityMorphism( Source( phi ) );
     
 end );
 
