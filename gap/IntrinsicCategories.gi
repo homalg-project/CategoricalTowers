@@ -590,9 +590,17 @@ InstallMethod( TransitionIsomorphism,
         [ IsCapCategoryIntrinsicObjectRep, IsInt, IsInt ],
         
   function( obj, s, t )
-    local tr, st, eta;
+    local tr, st, eta, sign, i, j, ts;
     
     tr := obj!.TransitionIsomorphisms;
+    
+    if s < 1 then
+        s := PositionOfActiveCell( obj );
+    fi;
+    
+    if t < 1 then
+        t := PositionOfActiveCell( obj );
+    fi;
     
     st := String( [ s, t ] );
     
@@ -612,17 +620,42 @@ InstallMethod( TransitionIsomorphism,
         
     fi;
     
+    eta := IdentityMorphism( CertainCell( obj, t ) );
+        
     if s = t then
         
-        eta := IdentityMorphism( CertainCell( obj, s ) );
-        
-        AddTransitionIsomorphism( obj, s, eta, s );
+        AddTransitionIsomorphism( obj, s, eta, t );
         
         return eta;
         
     fi;
     
-    Error( "non of the transition isomorphisms at positions ", [ s, t ], " or ", [ t, s ], " exist\n" );
+    sign := SignInt( s - t );
+    
+    i := t;
+    
+    ## TODO: optimize
+    while AbsInt( s - i ) > 0 do
+        for j in s - sign * [ 0 .. AbsInt( s - i ) - 1 ] do
+            st := String( [ j, i ] );
+            if IsBound( tr.(st) ) then
+                eta := PreCompose( tr.(st), eta );
+                i := j;
+                break;
+            fi;
+            ts := String( [ i, j ] );
+            if IsBound( tr.(ts) ) then
+                AddTransitionIsomorphism( obj, j, Inverse( tr.(ts) ), i );
+                eta := PreCompose( tr.(st), eta );
+                i := j;
+                break;
+            fi;
+        od;
+    od;
+    
+    AddTransitionIsomorphism( obj, s, eta, t );
+    
+    return eta;
     
 end );
 
