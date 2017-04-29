@@ -430,7 +430,7 @@ InstallMethod( ActiveCell,
 
 ##
 InstallMethod( AddTransitionIsomorphism,
-        "for an intrinsic object, an integer and a morphism",
+        "for an intrinsic object, an integer, and a morphism",
         [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism ],
         
   function( obj, s, eta )
@@ -447,7 +447,7 @@ end );
     
 ##
 InstallMethod( AddTransitionIsomorphism,
-        "for an intrinsic object, an integer and an isomorphism",
+        "for an intrinsic object, an integer, and an isomorphism",
         [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism and IsIsomorphism ],
         
   function( obj, s, eta )
