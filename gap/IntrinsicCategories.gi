@@ -348,7 +348,9 @@ InstallMethod( SetPositionOfActiveCell,
         
   function( obj, p )
     
-    obj!.PositionOfActiveCell := p;
+    if not IsLockedObject( obj ) then
+        obj!.PositionOfActiveCell := p;
+    fi;
     
 end );
 
@@ -473,9 +475,7 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.(n) := Range( eta );
     obj!.PositionOfLastStoredCell := n;
     
-    if not IsLockedObject( obj ) then
-        SetPositionOfActiveCell( obj, n );
-    fi;
+    SetPositionOfActiveCell( obj, n );
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Range( eta ), obj );
     
@@ -528,9 +528,7 @@ InstallMethod( AddTransitionIsomorphism,
     obj!.(n) := Source( eta );
     obj!.PositionOfLastStoredCell := n;
     
-    if not IsLockedObject( obj ) then
-        SetPositionOfActiveCell( obj, n );
-    fi;
+    SetPositionOfActiveCell( obj, n );
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( Source( eta ), obj );
     
