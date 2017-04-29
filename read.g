@@ -10,3 +10,4 @@ ReadPackage( "M2", "gap/HomalgGenerators.gi");
 ReadPackage( "M2", "gap/HomalgModule.gi");
 ReadPackage( "M2", "gap/HomalgMap.gi");
 ReadPackage( "M2", "gap/HomalgFunctor.gi");
+ReadPackage( "M2", "gap/Modules.gi" );
