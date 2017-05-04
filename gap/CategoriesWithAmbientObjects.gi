@@ -232,6 +232,8 @@ InstallMethod( CategoryWithAmbientObject,
         
         return_object := object_constructor( object, attributes );
         
+        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object, return_object );
+        
         return return_object;
         
     end;
