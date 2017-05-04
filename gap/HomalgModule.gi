@@ -129,7 +129,14 @@ InstallMethod( RelationsOfModule,
     
     rels := HomalgRelationsForModule( rels );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES( rels, M );
+    if not IsBound( M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES ) then
+        M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES := [ ];
+    fi;
+    
+    if not IsBound( M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES[pos] ) then
+        INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES( rels, M );
+        M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES[pos] := pos;
+    fi;
     
     return rels;
     
@@ -299,7 +306,14 @@ InstallMethod( Intrinsify,
     M!.PresentationMorphisms := rec( );
     M!.Resolutions := rec( );
     
-    INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES( rels, M );
+    if not IsBound( M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES ) then
+        M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES := [ ];
+    fi;
+    
+    if not IsBound( M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES[1] ) then
+        INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES( rels, M );
+        M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES := [ 1 ];
+    fi;
     
     return M;
     
