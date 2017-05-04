@@ -412,6 +412,8 @@ InstallMethod( CategoryWithAmbientObject,
     
     ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS( category_with_ambient_objects );
     
+    AddIsEqualForObjects( category_with_ambient_objects, IsIdenticalObj );
+    
     ## TODO: Logic for category_with_ambient_objects
     
     Finalize( category_with_ambient_objects );
