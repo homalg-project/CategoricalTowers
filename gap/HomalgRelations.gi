@@ -168,9 +168,13 @@ InstallMethod( HomalgRelationsForModule,
         
   function( rels )
     
-    SetFilterObj( rels,
-            IsHomalgRelationsOfRightModule and
-            IsRelationsOfFinitelyPresentedModuleRep );
+    if not IsHomalgRelationsOfRightModule( rels ) then
+        
+        SetFilterObj( rels,
+                IsHomalgRelationsOfRightModule and
+                IsRelationsOfFinitelyPresentedModuleRep );
+        
+    fi;
     
     return rels;
     
@@ -183,9 +187,13 @@ InstallMethod( HomalgRelationsForModule,
         
   function( rels )
     
-    SetFilterObj( rels,
-            IsHomalgRelationsOfLeftModule and
-            IsRelationsOfFinitelyPresentedModuleRep );
+    if not IsHomalgRelationsOfLeftModule( rels ) then
+        
+        SetFilterObj( rels,
+                IsHomalgRelationsOfLeftModule and
+                IsRelationsOfFinitelyPresentedModuleRep );
+        
+    fi;
     
     return rels;
     
