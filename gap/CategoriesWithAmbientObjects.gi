@@ -386,6 +386,17 @@ InstallMethod( CategoryWithAmbientObject,
     end );
     
     ##
+    InstallMethod( ObjectWithAmbientObjectFromLazyGeneralizedEmbedding,
+                   [ IsLazyGeneralizedEmbeddingInAmbientObject,
+                     IsCapCategory and CategoryFilter( category_with_ambient_objects ) ],
+                   
+      function( lazy, attribute_category )
+        
+        return structure_record.ObjectConstructor( UnderlyingCell( lazy ), [ lazy ] );
+        
+    end );
+    
+    ##
     InstallMethod( MorphismWithAmbientObject,
                    [ IsCapCategoryObjectWithAmbientObject and ObjectFilter( category_with_ambient_objects ),
                      IsCapCategoryMorphism and MorphismFilter( abelian_category ),

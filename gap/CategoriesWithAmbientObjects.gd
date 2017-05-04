@@ -114,6 +114,14 @@ DeclareOperation( "ObjectWithAmbientObject",
         [ IsGeneralizedMorphismByCospan, IsCapCategory ] );
 
 #! @Description
+#!  Construct an object in the category <A>A</A> with ambient objects
+#!  out of the lazy generalized embedding <A>iota</A>.
+#! @Arguments iota, A
+#! @Returns an object in the category <A>A</A> with ambient objects
+DeclareOperation( "ObjectWithAmbientObjectFromLazyGeneralizedEmbedding",
+        [ IsLazyGeneralizedEmbeddingInAmbientObject, IsCapCategory ] );
+
+#! @Description
 #!  
 #! @Arguments phi, A
 #! @Returns a morphism in the category <A>A</A> with ambient objects
