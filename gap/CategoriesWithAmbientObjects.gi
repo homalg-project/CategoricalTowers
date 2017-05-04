@@ -488,11 +488,17 @@ InstallMethod( WithAmbientObject,
     
     AddObjectFunction( waoF,
             function( obj )
-              local gmcF;
+              local gmcF, lazy;
               
               gmcF := AsGeneralizedMorphismByCospan( F );
               
-              return ObjectWithAmbientObject( ApplyFunctor( gmcF, GeneralizedEmbeddingInAmbientObject( obj ) ), B );
+              lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                              ApplyFunctor( F, UnderlyingCell( obj ) ),
+                              a -> ApplyFunctor( gmcF, a ),
+                              [ [ GeneralizedEmbeddingInAmbientObject, obj ] ] );
+              
+              return ObjectWithAmbientObjectFromLazyGeneralizedEmbedding( lazy, B );
+              
             end );
     
     AddMorphismFunction( waoF,
