@@ -365,7 +365,7 @@ InstallMethod( CategoryWithAmbientObject,
                      IsCapCategory and CategoryFilter( category_with_ambient_objects ) ],
                    
       function( gen, attribute_category )
-        local o, lazy, obj;
+        local o, lazy;
         
         Assert( 4, IsMonomorphism( gen ) );
         SetIsSplitMonomorphism( gen, true );
@@ -379,11 +379,7 @@ InstallMethod( CategoryWithAmbientObject,
         
         SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
         
-        obj := structure_record.ObjectConstructor( o, [ lazy ] );
-        
-        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( o, obj );
-        
-        return obj;
+        return structure_record.ObjectConstructor( o, [ lazy ] );
         
     end );
     
