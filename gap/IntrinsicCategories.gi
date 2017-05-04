@@ -1150,24 +1150,20 @@ InstallMethod( IntrinsicCategory,
         Setter( name )( IC, true );
     od;
     
+    AddIsEqualForObjects( IC, IsIdenticalObj );
+    AddIsEqualForMorphisms( IC,
+            function( m, n )
+              ## CAP checks IsEqualForObjects for Source and Range automatically
+              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+            end );
+    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
+    
     if strict = true then
         ## strict intrinsic categories
-        AddIsEqualForObjects( IC, IsIdenticalObj );
-        AddIsEqualForMorphisms( IC,
-                function( m, n )
-                  ## CAP checks IsEqualForObjects for Source and Range automatically
-                  return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
-                end );
-        AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
         SetCachingOfCategoryCrisp( IC );
     else
-        AddIsEqualForObjects( IC, IsIdenticalObj );
-        AddIsEqualForMorphisms( IC, IsIdenticalObj );
-        AddIsCongruentForMorphisms( IC,
-                function( m, n )
-                  return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
-              end );
-        SetCachingOfCategoryCrisp( IC );
+        AddIsEqualForCacheForMorphisms( IC, IsIdenticalObj );
+        SetCachingOfCategoryWeak( IC );
     fi;
     
     ## TODO: remove `Primitively' for performance?
