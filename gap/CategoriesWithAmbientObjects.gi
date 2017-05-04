@@ -365,19 +365,25 @@ InstallMethod( CategoryWithAmbientObject,
                      IsCapCategory and CategoryFilter( category_with_ambient_objects ) ],
                    
       function( gen, attribute_category )
-        local lazy;
+        local o, lazy, obj;
         
         Assert( 4, IsMonomorphism( gen ) );
         SetIsSplitMonomorphism( gen, true );
         
+        o := UnderlyingHonestObject( Source( gen ) );
+        
         lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
-                        UnderlyingHonestObject( Source( gen ) ),
+                        o,
                         IdFunc,
                         [ [ IdFunc, gen ] ] );
         
         SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
         
-        return structure_record.ObjectConstructor( UnderlyingHonestObject( Source( gen ) ), [ lazy ] );
+        obj := structure_record.ObjectConstructor( o, [ lazy ] );
+        
+        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( o, obj );
+        
+        return obj;
         
     end );
     
