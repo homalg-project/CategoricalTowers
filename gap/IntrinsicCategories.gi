@@ -73,11 +73,20 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS,
   function( mor, hull )
     local i;
     
-    for i in PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS do
+    if HasIsIsomorphism( mor ) and IsIsomorphism( mor ) then
         
-        AddToToDoList( ToDoListEntryForEqualAttributes( mor, i, hull, i ) );
+        SetIsIsomorphism( hull, true );
+        AddToToDoList( ToDoListEntryForEqualAttributes( mor, "IsZero", hull, "IsZero" ) );
         
-    od;
+    else
+        
+        for i in PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS do
+            
+            AddToToDoList( ToDoListEntryForEqualAttributes( mor, i, hull, i ) );
+            
+        od;
+        
+    fi;
     
 end );
 
