@@ -96,7 +96,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2017.03.16" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],
                    [ "IntrinsicCategories", ">= 2017.03.23" ],
-                   [ "CategoriesWithAmbientObjects", ">= 2017.03.25" ],
+                   [ "CategoriesWithAmbientObjects", ">= 2017.05.01" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
