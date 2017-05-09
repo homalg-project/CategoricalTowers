@@ -57,7 +57,7 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
             [ [ "if IsMorphism = true for all morphisms in input then SetIsMorphism( output, true )",
                 [ output, "IsMorphism", true ],
                 ],
-             ]
+              ]
             ) );
     
     AddToToDoList( ToDoListEntry( [ [ output, "CokernelProjection" ] ],
