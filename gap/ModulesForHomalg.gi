@@ -60,6 +60,20 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
               ]
             ) );
     
+    AddToToDoList( ToDoListEntry( [ [ output, "IsMonomorphism" ], [ Range( output ), "RankOfObject", 0 ] ],
+            [ [ "if the rank of a module is zero the rank of any of its submodules is zero",
+                [ Source( output ), "RankOfObject", 0 ]
+                ],
+              ]
+            ) );
+    
+    AddToToDoList( ToDoListEntry( [ [ output, "IsEpimorphism" ], [ Source( output ), "RankOfObject", 0 ] ],
+            [ [ "if the rank of a module is zero the rank of any of its factor modules is zero",
+                [ Range( output ), "RankOfObject", 0 ]
+                ],
+              ]
+            ) );
+    
     AddToToDoList( ToDoListEntry( [ [ output, "CokernelProjection" ] ],
             [ [ "in the category of finite presentations the CokernelProjection( phi ) is always well-defined regardless of the consistency of phi",
                 function( )
