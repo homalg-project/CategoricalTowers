@@ -44,7 +44,6 @@ end );
 ##
 InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
   function( input, output )
-    local conds;
     
     input := Flat( input );
     
@@ -54,9 +53,7 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
         SetIsMorphism( output, true );
     fi;
     
-    conds := List( input, a -> [ a, "IsMorphism", true ] );
-    
-    AddToToDoList( ToDoListEntry( conds,
+    AddToToDoList( ToDoListEntry( List( input, a -> [ a, "IsMorphism", true ] ),
             [ [ "if IsMorphism = true for all morphisms in input then SetIsMorphism( output, true )",
                 [ output, "IsMorphism", true ],
                 ],
