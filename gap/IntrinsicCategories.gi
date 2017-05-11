@@ -1016,7 +1016,6 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
                   
                   Unbind( obj!.("locked by") );
-                  
                   SetFilterObj( obj, IsSafeForSideEffects );
                   
                   return obj;
@@ -1031,7 +1030,6 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
               
               Unbind( obj!.("locked by") );
-              
               SetFilterObj( obj, IsSafeForSideEffects );
               
               return obj;
@@ -1060,7 +1058,6 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               AddToIntrinsicMorphism( mor, b, pos_s[2], pos_t[2] );
               
               Unbind( mor!.("locked by") );
-              
               SetFilterObj( mor, IsSafeForSideEffects );
               
               return mor;
