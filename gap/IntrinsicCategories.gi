@@ -1001,6 +1001,9 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               pos := PositionOfActiveCell( obj );
               
               a := ActiveCell( obj );
+              
+              ## this next call may have a side effect on obj
+              ## which might lead to a change of its active cell
               eta_a := ApplyNaturalTransformation( e, a );
               
               if IsEqualForObjects( Range( eta_a ), a ) and
