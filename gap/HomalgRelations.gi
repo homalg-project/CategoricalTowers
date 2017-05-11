@@ -53,7 +53,7 @@ InstallMethod( HasNrGenerators,
 end );
 
 ##
-InstallMethod( NrGenerators,
+InstallMethod( NrGeneratorsForRelations,
         "for a set of relations of homalg/CAP right modules",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
         
@@ -66,7 +66,7 @@ InstallMethod( NrGenerators,
 end );
 
 ##
-InstallMethod( NrGenerators,
+InstallMethod( NrGeneratorsForRelations,
         "for a set of relations of homalg/CAP right modules",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
         
@@ -77,7 +77,7 @@ InstallMethod( NrGenerators,
 end );
 
 ##
-InstallMethod( NrGenerators,
+InstallMethod( NrGeneratorsForRelations,
         "for a set of relations of homalg/CAP left modules",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
         
@@ -90,7 +90,7 @@ InstallMethod( NrGenerators,
 end );
 
 ##
-InstallMethod( NrGenerators,
+InstallMethod( NrGeneratorsForRelations,
         "for a set of relations of homalg/CAP left modules",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
         

@@ -12,7 +12,7 @@ PackageName := "M2",
 Subtitle := "Intrinsic modules with elements for the CAP based homalg",
 
 Version := Maximum( [
-                   "2017.03.27", ## Mohamed's version
+                   "2017.05.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03.14", ## Kamals's version
                    ] ),
@@ -91,7 +91,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2017.03.15" ],
-                   [ "Modules", ">= 2017.03.23" ],
+                   [ "Modules", ">= 2017.05.01" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
                    [ "CAP", ">= 2017.03.16" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],
