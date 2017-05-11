@@ -1002,6 +1002,14 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   obj!.(name) := [ ];
               fi;
               
+              for a in obj!.(name) do
+                  if a[1] = pos then
+                      SetPositionOfActiveCell( obj, a[2] );
+                      SetFilterObj( obj, IsSafeForSideEffects );
+                      return obj;
+                  fi;
+              od;
+              
               obj!.("locked by") := name;
               
               a := ActiveCell( obj );
