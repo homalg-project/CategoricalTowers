@@ -996,9 +996,13 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   Error( "the object is locked by the \"", obj!.("locked by"), "\"\n while in \"", name, "\"\n" );
               fi;
               
-              obj!.("locked by") := name;
-              
               pos := PositionOfActiveCell( obj );
+              
+              if not ( IsBound( obj!.(name) ) and IsList( obj!.(name) ) ) then
+                  obj!.(name) := [ ];
+              fi;
+              
+              obj!.("locked by") := name;
               
               a := ActiveCell( obj );
               
@@ -1009,10 +1013,6 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               if IsEqualForObjects( Range( eta_a ), a ) and
                  IsCongruentForMorphisms( eta_a, IdentityMorphism( a ) ) then
                   
-                  if not ( IsBound( obj!.(name) ) and IsList( obj!.(name) ) ) then
-                      obj!.(name) := [ ];
-                  fi;
-                  
                   Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
                   
                   Unbind( obj!.("locked by") );
@@ -1022,10 +1022,6 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               fi;
               
               AddTransitionIsomorphism( obj, PositionOfActiveCell( obj ), eta_a );
-              
-              if not ( IsBound( obj!.(name) ) and IsList( obj!.(name) ) ) then
-                  obj!.(name) := [ ];
-              fi;
               
               Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
               
