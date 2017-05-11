@@ -5,6 +5,61 @@
 ####################################
 
 ##
+InstallMethod( UnderlyingHomalgRing,
+        "for a set of relations of a homalg/CAP right module",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        
+  function( rels )
+    
+    rels := rels!.LazyUnderlyingMatrix;
+    
+    return HomalgRing( EvalSyzygiesOfColumns( rels )[1] );
+    
+end );
+
+##
+InstallMethod( UnderlyingHomalgRing,
+        "for a set of relations of a homalg/CAP right module",
+        [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
+        
+  function( rels )
+    
+    return HomalgRing( UnderlyingMatrix( rels ) );
+    
+end );
+
+##
+InstallMethod( UnderlyingHomalgRing,
+        "for a set of relations of a homalg/CAP left module",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
+        
+  function( rels )
+    
+    rels := rels!.LazyUnderlyingMatrix;
+    
+    return HomalgRing( EvalSyzygiesOfRows( rels )[1] );
+    
+end );
+
+##
+InstallMethod( UnderlyingHomalgRing,
+        "for a set of relations of a homalg/CAP left module",
+        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
+        
+  function( rels )
+    
+    return HomalgRing( UnderlyingMatrix( rels ) );
+    
+end );
+
+##
+InstallMethod( HomalgRing,
+        "for a set of relations of a homalg/CAP module",
+        [ IsHomalgRelations and IsLeftOrRightPresentation ],
+        
+  UnderlyingHomalgRing );
+
+##
 InstallMethod( HasNrGenerators,
         "for a set of relations of homalg/CAP right modules",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
