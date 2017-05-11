@@ -1045,6 +1045,8 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   Error( "the morphism is locked by the \"", mor!.("locked by"), "\"\n while in \"", name, "\"\n" );
               fi;
               
+              mor!.("locked by") := name;
+              
               pos_s := new_source!.(name);
               pos_s := pos_s[Length( pos_s )];
               
