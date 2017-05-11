@@ -61,7 +61,7 @@ InstallMethod( HomalgRing,
 
 ##
 InstallMethod( HasNrGenerators,
-        "for a set of relations of homalg/CAP right modules",
+        "for a set of relations of a homalg/CAP right module",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
         
   function( rels )
@@ -74,7 +74,7 @@ end );
 
 ##
 InstallMethod( HasNrGenerators,
-        "for a set of relations of homalg/CAP right modules",
+        "for a set of relations of a homalg/CAP right module",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
         
   function( rels )
@@ -85,7 +85,7 @@ end );
 
 ##
 InstallMethod( HasNrGenerators,
-        "for a set of relations of homalg/CAP left modules",
+        "for a set of relations of a homalg/CAP left module",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
         
   function( rels )
@@ -98,7 +98,7 @@ end );
 
 ##
 InstallMethod( HasNrGenerators,
-        "for a set of relations of homalg/CAP left modules",
+        "for a set of relations of a homalg/CAP left module",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
         
   function( rels )
@@ -109,7 +109,7 @@ end );
 
 ##
 InstallMethod( NrGeneratorsForRelations,
-        "for a set of relations of homalg/CAP right modules",
+        "for a set of relations of a homalg/CAP right module",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
         
   function( rels )
@@ -122,7 +122,7 @@ end );
 
 ##
 InstallMethod( NrGeneratorsForRelations,
-        "for a set of relations of homalg/CAP right modules",
+        "for a set of relations of a homalg/CAP right module",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
         
   function( rels )
@@ -133,7 +133,7 @@ end );
 
 ##
 InstallMethod( NrGeneratorsForRelations,
-        "for a set of relations of homalg/CAP left modules",
+        "for a set of relations of a homalg/CAP left module",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
         
   function( rels )
@@ -146,7 +146,7 @@ end );
 
 ##
 InstallMethod( NrGeneratorsForRelations,
-        "for a set of relations of homalg/CAP left modules",
+        "for a set of relations of a homalg/CAP left module",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
         
   function( rels )
@@ -157,7 +157,7 @@ end );
 
 ##
 InstallMethod( HasNrRelations,
-        "for a set of relations of homalg/CAP right modules",
+        "for a set of relations of a homalg/CAP right module",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
         
   function( rels )
@@ -168,7 +168,7 @@ end );
 
 ##
 InstallMethod( HasNrRelations,
-        "for a set of relations of homalg/CAP left modules",
+        "for a set of relations of a homalg/CAP left module",
         [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
         
   function( rels )
