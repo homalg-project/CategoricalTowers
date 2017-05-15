@@ -5,6 +5,12 @@
 ####################################
 
 ##
+InstallImmediateMethod( EvaluatedMatrixOfRelations,
+        IsHomalgRelations and IsLeftOrRightPresentation and HasUnderlyingMatrix, 0,
+
+  UnderlyingMatrix );
+
+##
 InstallMethod( UnderlyingHomalgRing,
         "for a set of relations of a homalg/CAP right module",
         [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
