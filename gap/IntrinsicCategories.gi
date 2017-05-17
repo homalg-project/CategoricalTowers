@@ -1198,13 +1198,11 @@ InstallMethod( IntrinsicCategory,
         
         return
           function( arg )
-            local eval_arg, result;
+            local eval_arg;
             
             eval_arg := ActiveCell( arg );
             
-            result := CallFuncList( oper, eval_arg );
-            
-            return result;
+            return CallFuncList( oper, eval_arg );
             
           end;
           
