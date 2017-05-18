@@ -130,6 +130,7 @@ InstallMethod( RelationsOfModule,
     rels := HomalgRelationsForModule( rels );
     
     if not IsBound( M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES ) then
+        M!.ring := UnderlyingHomalgRing( rels );
         M!.INSTALL_TODO_LIST_ENTRIES_FOR_RELATIONS_OF_MODULES := [ ];
     fi;
     
