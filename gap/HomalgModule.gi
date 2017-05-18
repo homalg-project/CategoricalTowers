@@ -333,13 +333,13 @@ InstallMethod( HomalgModule,
         [ IsLeftOrRightPresentation ],
 
   function( M )
-    local A, left, R, pi, iota;
+    local R, A, left, pi, iota;
+    
+    R := UnderlyingHomalgRing( M );
     
     A := CapCategory( M );
     
     left := IsLeftPresentation( M );
-    
-    R := UnderlyingHomalgRing( M );
     
     A := CategoryWithAmbientObject( A );
     
