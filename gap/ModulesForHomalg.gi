@@ -121,6 +121,18 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
+    A!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS :=
+      [
+       "IsProjectiveOfConstantRank",
+       "IsReflexive",
+       "IsTorsionFree",
+       "IsTorsion",
+       "IsInjectiveCogenerator",
+       "IsArtinian",
+       "IsPure",
+       "IsCyclic",
+       ];
+    
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
     A!.containers := rec( );
