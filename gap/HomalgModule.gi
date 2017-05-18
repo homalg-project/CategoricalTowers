@@ -293,7 +293,7 @@ InstallMethod( Intrinsify,
         [ IsCapCategory, IsCapCategoryObjectWithAmbientObject ],
 
   function( A, cell )
-    local left, rels, M;
+    local left, rels, M, R;
     
     rels := UnderlyingCell( cell );
     
@@ -301,8 +301,16 @@ InstallMethod( Intrinsify,
     
     M := Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
     
-    M!.string := "module";
-    M!.string_plural := "modules";
+    R := HomalgRing( M );
+    
+    if HasIsDivisionRingForHomalg( R ) and IsDivisionRingForHomalg( R ) then
+        M!.string := "vector space";
+        M!.string_plural := "vector spaces";
+    else
+        M!.string := "module";
+        M!.string_plural := "modules";
+    fi;
+    
     M!.PresentationMorphisms := rec( );
     M!.Resolutions := rec( );
     
