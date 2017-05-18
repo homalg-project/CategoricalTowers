@@ -14,7 +14,7 @@ Display( Z4 );
 M := HomalgDiagonalMatrix( [ 2 .. 4 ], ZZ );
 #! <An unevaluated diagonal 3 x 3 matrix over an internal ring>
 M := LeftPresentation( M );
-#! <A left module presented by 3 relations for 3 generators>
+#! <A torsion left module presented by 3 relations for 3 generators>
 Display( M );
 #! Z/< 2 > + Z/< 3 > + Z/< 4 >
 M;

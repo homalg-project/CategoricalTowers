@@ -24,7 +24,8 @@ Display( M );
 #! 
 #! currently represented by the above matrix
 GetRidOfZeroGenerators( M );
-#! <A cyclic left module presented by 2 relations for a cyclic generator>
+#! <A cyclic torsion left module presented by 2 relations
+#!  for a cyclic generator>
 Display( M );
 #! Z/< 7, 7 >
 N := RightPresentation( Involution( mat ) );
@@ -40,7 +41,8 @@ Display( N );
 #! 
 #! currently represented by the above matrix
 GetRidOfZeroGenerators( N );
-#! <A cyclic right module on a cyclic generator satisfying 2 relations>
+#! <A cyclic torsion right module on a cyclic generator
+#!  satisfying 2 relations>
 Display( N );
 #! Z/< 7, 7 >
 #! @EndExample

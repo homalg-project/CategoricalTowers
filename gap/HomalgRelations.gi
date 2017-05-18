@@ -6,7 +6,7 @@
 
 ##
 InstallImmediateMethod( EvaluatedMatrixOfRelations,
-        IsHomalgRelations and IsLeftOrRightPresentation and HasUnderlyingMatrix, 0,
+        _IsHomalgRelations and IsLeftOrRightPresentation and HasUnderlyingMatrix, 0,
 
   UnderlyingMatrix );
 
@@ -235,6 +235,8 @@ InstallMethod( HomalgRelationsForModule,
                 IsHomalgRelationsOfRightModule and
                 IsRelationsOfFinitelyPresentedModuleRep );
         
+        Set_IsHomalgRelations( rels, true );
+        
     fi;
     
     return rels;
@@ -253,6 +255,8 @@ InstallMethod( HomalgRelationsForModule,
         SetFilterObj( rels,
                 IsHomalgRelationsOfLeftModule and
                 IsRelationsOfFinitelyPresentedModuleRep );
+        
+        Set_IsHomalgRelations( rels, true );
         
     fi;
     

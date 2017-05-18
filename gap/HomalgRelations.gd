@@ -1,5 +1,8 @@
 #! @Chapter Relations
 
+DeclareProperty( "_IsHomalgRelations",
+        IsLeftOrRightPresentation );
+
 #! @Section Constructors
 
 #! @Description
