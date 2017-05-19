@@ -57,7 +57,8 @@ DeclareFilter( "CanonicalizeIfZero" );
 
 #! @Description
 #!  
-DeclareFilter( "IsSafeForSideEffects" );
+DeclareProperty( "IsSafeForSideEffects",
+        IsCapCategoryCell );
 
 DeclareGlobalFunction( "CanonicalizedToZero_for_objects" );
 DeclareGlobalFunction( "CanonicalizedToZero_for_morphisms" );

@@ -135,7 +135,7 @@ InstallImmediateMethod( CanonicalizedToZero,
         return true;
     fi;
     
-    if not IsSafeForSideEffects( obj ) then
+    if not ( HasIsSafeForSideEffects( obj ) and IsSafeForSideEffects( obj ) ) then
         AddToToDoList( ToDoListEntry( [ [ obj, "IsSafeForSideEffects", true ] ],
                 [ [ "CanonicalizeIfZero once IsSafeForSideEffects( obj )",
                     [ obj, "CanonicalizedToZero", [ CanonicalizedToZero_for_objects, obj ] ],
@@ -156,7 +156,7 @@ InstallImmediateMethod( CanonicalizedToZero,
   function( mor )
     local S, T;
     
-    if not IsSafeForSideEffects( mor ) then
+    if not ( HasIsSafeForSideEffects( mor ) and IsSafeForSideEffects( mor ) ) then
         AddToToDoList( ToDoListEntry( [ [ mor, "IsSafeForSideEffects", true ] ],
                 [ [ "CanonicalizeIfZero once IsSafeForSideEffects( mor )",
                     [ mor, "CanonicalizedToZero", [ CanonicalizedToZero_for_morphisms, mor ] ],
@@ -728,7 +728,7 @@ InstallMethod( Intrinsify,
     
     AddObject( C, obj );
     
-    SetFilterObj( obj, IsSafeForSideEffects );
+    SetIsSafeForSideEffects( obj, true );
     
     if IsBound( C!.CanonicalizeObjectsIfZero ) and
        C!.CanonicalizeObjectsIfZero = true then
@@ -811,7 +811,7 @@ InstallMethod( Intrinsify,
     
     AddMorphism( C, mor );
     
-    SetFilterObj( mor, IsSafeForSideEffects );
+    SetIsSafeForSideEffects( mor, true );
     
     if IsBound( C!.CanonicalizeMorphismsIfZero ) and
        C!.CanonicalizeMorphismsIfZero = true then
@@ -1005,7 +1005,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               for a in obj!.(name) do
                   if a[1] = pos then
                       SetPositionOfActiveCell( obj, a[2] );
-                      SetFilterObj( obj, IsSafeForSideEffects );
+                      SetIsSafeForSideEffects( obj, true );
                       return obj;
                   fi;
               od;
@@ -1024,7 +1024,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
                   Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
                   
                   Unbind( obj!.("locked by") );
-                  SetFilterObj( obj, IsSafeForSideEffects );
+                  SetIsSafeForSideEffects( obj, true );
                   
                   return obj;
               fi;
@@ -1034,7 +1034,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               Add( obj!.(name), [ pos, PositionOfActiveCell( obj ) ] );
               
               Unbind( obj!.("locked by") );
-              SetFilterObj( obj, IsSafeForSideEffects );
+              SetIsSafeForSideEffects( obj, true );
               
               return obj;
             end );
@@ -1064,7 +1064,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctor,
               AddToIntrinsicMorphism( mor, b, pos_s[2], pos_t[2] );
               
               Unbind( mor!.("locked by") );
-              SetFilterObj( mor, IsSafeForSideEffects );
+              SetIsSafeForSideEffects( mor, true );
               
               return mor;
               
