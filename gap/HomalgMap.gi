@@ -560,7 +560,7 @@ end );
 
 ##
 InstallMethod( HomalgMap,
-        "for a homalg matrix and a string",
+        "for a list and a homalg/CAP module",
         [ IsList, IsHomalgModule and IsCapCategoryIntrinsicObject ],
         
   function( m, M )
