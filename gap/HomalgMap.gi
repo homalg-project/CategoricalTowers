@@ -575,6 +575,17 @@ end );
 
 ##
 InstallMethod( HomalgMap,
+        "for a homalg matrix and a homalg/CAP module",
+        [ IsHomalgMatrix, IsHomalgModule and IsCapCategoryIntrinsicObject ],
+
+  function( m, M )
+    
+    return HomalgMap( m, M, M );
+    
+end );
+
+##
+InstallMethod( HomalgMap,
         "for a homalg matrix and a string",
         [ IsHomalgMatrix, IsString ],
         
