@@ -40,7 +40,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "kamal.saleh@uni-siegen.de",
-    WWWHome       := "",
+    WWWHome       := "https://github.com/kamalsaleh",
     PostalAddress := Concatenation( [
                        "Walter-Flex-Str. 3\n",
                        "57068 Siegen\n",
