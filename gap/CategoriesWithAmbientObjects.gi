@@ -258,9 +258,7 @@ InstallMethod( CategoryWithAmbientObject,
     category_weight_list := abelian_category!.derivations_weight_list;
     
     ## ZeroObject with ambient object
-    #preconditions := [ "UniversalMorphismIntoZeroObject",
-    #                   "TensorProductOnObjects" ];
-    preconditions := [  ];
+    preconditions := [ "ZeroObject" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
@@ -288,8 +286,7 @@ InstallMethod( CategoryWithAmbientObject,
     fi;
     
     ## DirectSum with ambient object
-    preconditions := [ "LeftDistributivityExpandingWithGivenObjects",
-                       "DirectSum", #belongs to LeftDistributivityExpandingWithGivenObjects
+    preconditions := [ "DirectSum",
                        "PreCompose" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
@@ -312,8 +309,6 @@ InstallMethod( CategoryWithAmbientObject,
     ## Lift along monomorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
-                       "TensorProductOnMorphismsWithGivenTensorProducts",
-                       "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "LiftAlongMonomorphism" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
@@ -337,8 +332,6 @@ InstallMethod( CategoryWithAmbientObject,
     ## Colift along epimorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
-                       "TensorProductOnMorphismsWithGivenTensorProducts",
-                       "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
                        "ColiftAlongEpimorphism" ];
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
