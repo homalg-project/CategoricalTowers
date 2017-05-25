@@ -287,7 +287,7 @@ InstallMethod( CategoryWithAmbientObject,
           end;
     fi;
     
-    ## Left action for DirectSum
+    ## DirectSum with ambient object
     preconditions := [ "LeftDistributivityExpandingWithGivenObjects",
                        "DirectSum", #belongs to LeftDistributivityExpandingWithGivenObjects
                        "PreCompose" ];
@@ -309,7 +309,7 @@ InstallMethod( CategoryWithAmbientObject,
         
     fi;
     
-    ## Lift embeddings in ambient objects along monomorphism
+    ## Lift along monomorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
                        "TensorProductOnMorphismsWithGivenTensorProducts",
@@ -334,7 +334,7 @@ InstallMethod( CategoryWithAmbientObject,
         
     fi;
     
-    ## Colift left action along epimorphism
+    ## Colift along epimorphism
     preconditions := [ "IdentityMorphism",
                        "PreCompose",
                        "TensorProductOnMorphismsWithGivenTensorProducts",
