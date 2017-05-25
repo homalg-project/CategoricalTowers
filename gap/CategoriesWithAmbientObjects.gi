@@ -201,9 +201,9 @@ InstallMethod( CategoryWithAmbientObject,
         [ IsCapCategory ],
         
   function( abelian_category )
-    local preconditions, category_weight_list, i,
-          structure_record, object_constructor, morphism_constructor, 
-          category_with_ambient_objects, zero_object;
+    local category_with_ambient_objects, structure_record,
+          preconditions, category_weight_list,
+          zero_object;
     
     if not IsFinalized( abelian_category ) then
         
