@@ -224,13 +224,14 @@ InstallMethod( CategoryWithAmbientObject,
     );
     
     ## Constructors
-    object_constructor := CreateObjectConstructorForCategoryWithAttributes(
+    structure_record.ObjectPreConstructor :=
+      CreateObjectConstructorForCategoryWithAttributes(
               abelian_category, category_with_ambient_objects, TheTypeObjectWithAmbientObject );
     
     structure_record.ObjectConstructor := function( object, attributes )
         local return_object;
         
-        return_object := object_constructor( object, attributes );
+        return_object := structure_record.ObjectPreConstructor( object, attributes );
         
         INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object, return_object );
         
