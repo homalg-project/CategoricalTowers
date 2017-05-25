@@ -9,7 +9,7 @@
 ##
 #############################################################################
 
-#! @Chapter Intrinsic Categories
+#! @Chapter Categories with ambient objects
 
 # our info class:
 DeclareInfoClass( "InfoCategoriesWithAmbientObjects" );
