@@ -248,7 +248,7 @@ InstallMethod( MorphismInAlgebroid,
         [ IsCapCategoryObjectInAlgebroidRep, IsPathAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
         
   function( S, path, T )
-    local l, mor, B;
+    local l, mor, A;
     
     if not IsZero( path ) then
         
@@ -267,7 +267,7 @@ InstallMethod( MorphismInAlgebroid,
     
     mor := rec( );
     
-    B := CapCategory( S );
+    A := CapCategory( S );
     
     ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
             Source, S,
