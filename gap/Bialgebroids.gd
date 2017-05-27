@@ -17,13 +17,13 @@ SetInfoLevel( InfoBialgebroids, 1 );
 ####################################
 
 #! @Description
-#!  The &GAP; category of objects in a bialgebroid.
-DeclareCategory( "IsCapCategoryObjectInBialgebroid",
+#!  The &GAP; category of objects in an algebroid.
+DeclareCategory( "IsCapCategoryObjectInAlgebroid",
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in a bialgebroid.
-DeclareCategory( "IsCapCategoryMorphismInBialgebroid",
+#!  The &GAP; category of morphisms in an algebroid.
+DeclareCategory( "IsCapCategoryMorphismInAlgebroid",
         IsCapCategoryMorphism );
 
 ####################################
@@ -53,18 +53,18 @@ DeclareAttribute( "UnderlyingPathAlgebra",
         IsCapCategory );
 
 #! @Description
-#!  The vertex of the quiver underlying the object <A>obj</A> in a bialgebroid.
+#!  The vertex of the quiver underlying the object <A>obj</A> in an algebroid.
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
-        IsCapCategoryObjectInBialgebroid );
+        IsCapCategoryObjectInAlgebroid );
 
 #! @Description
-#!  The path algebra element underlying the morphism <A>mor</A> in a bialgebroid.
+#!  The path algebra element underlying the morphism <A>mor</A> in an algebroid.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingPathAlgebraElement",
-        IsCapCategoryMorphismInBialgebroid );
+        IsCapCategoryMorphismInAlgebroid );
 
 ####################################
 #
@@ -94,9 +94,9 @@ DeclareOperation( "Bialgebroid",
         [ IsHomalgRing, IsQuiver ] );
 
 #! @Description
-#!  The constructor of morphisms in a bialgebroid given the source <A>S</A>, the target <A>T</A>,
+#!  The constructor of morphisms in an algebroid given the source <A>S</A>, the target <A>T</A>,
 #!  and the underlying path algebra element <A>path</A>.
 #! @Arguments S, path, T
 #! @Returns a morphism in a &CAP; category
-DeclareOperation( "MorphismInBialgebroid",
-        [ IsCapCategoryObjectInBialgebroid, IsPathAlgebraElement, IsCapCategoryObjectInBialgebroid ] );
+DeclareOperation( "MorphismInAlgebroid",
+        [ IsCapCategoryObjectInAlgebroid, IsPathAlgebraElement, IsCapCategoryObjectInAlgebroid ] );

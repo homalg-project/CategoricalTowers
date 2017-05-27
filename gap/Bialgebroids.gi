@@ -10,13 +10,13 @@
 #
 ####################################
 
-DeclareRepresentation( "IsCapCategoryObjectInBialgebroidRep",
-        IsCapCategoryObjectInBialgebroid and
+DeclareRepresentation( "IsCapCategoryObjectInAlgebroidRep",
+        IsCapCategoryObjectInAlgebroid and
         IsAttributeStoringRep,
         [ ] );
 
-DeclareRepresentation( "IsCapCategoryMorphismInBialgebroidRep",
-        IsCapCategoryMorphismInBialgebroid and
+DeclareRepresentation( "IsCapCategoryMorphismInAlgebroidRep",
+        IsCapCategoryMorphismInAlgebroid and
         IsAttributeStoringRep,
         [ ] );
 
@@ -27,20 +27,20 @@ DeclareRepresentation( "IsCapCategoryMorphismInBialgebroidRep",
 ####################################
 
 # new families:
-BindGlobal( "TheFamilyOfObjectsInBialgebroids",
-        NewFamily( "TheFamilyOfObjectsInBialgebroids" ) );
+BindGlobal( "TheFamilyOfObjectsInAlgebroids",
+        NewFamily( "TheFamilyOfObjectsInAlgebroids" ) );
 
-BindGlobal( "TheFamilyOfMorphismsInBialgebroids",
-        NewFamily( "TheFamilyOfMorphismsInBialgebroids" ) );
+BindGlobal( "TheFamilyOfMorphismsInAlgebroids",
+        NewFamily( "TheFamilyOfMorphismsInAlgebroids" ) );
 
 # new types:
-BindGlobal( "TheTypeObjectInBialgebroid",
-        NewType( TheFamilyOfObjectsInBialgebroids,
-                IsCapCategoryObjectInBialgebroidRep ) );
+BindGlobal( "TheTypeObjectInAlgebroid",
+        NewType( TheFamilyOfObjectsInAlgebroids,
+                IsCapCategoryObjectInAlgebroidRep ) );
 
-BindGlobal( "TheTypeMorphismInBialgebroid",
-        NewType( TheFamilyOfMorphismsInBialgebroids,
-                IsCapCategoryMorphismInBialgebroidRep ) );
+BindGlobal( "TheTypeMorphismInAlgebroid",
+        NewType( TheFamilyOfMorphismsInAlgebroids,
+                IsCapCategoryMorphismInAlgebroidRep ) );
 
 ####################################
 #
@@ -104,7 +104,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         id := rec( );
         
-        ObjectifyWithAttributes( id, TheTypeMorphismInBialgebroid,
+        ObjectifyWithAttributes( id, TheTypeMorphismInAlgebroid,
                 Source, object,
                 Range, object,
                 UnderlyingPathAlgebraElement, A.(String( UnderlyingVertex( object ) ) )
@@ -124,12 +124,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         quiver := UnderlyingQuiver( B );
         
         if IsRightQuiver( quiver ) then
-            return MorphismInBialgebroid(
+            return MorphismInAlgebroid(
                            Source( morphism_1 ),
                            UnderlyingPathAlgebraElement( morphism_1 ) * UnderlyingPathAlgebraElement( morphism_2 ),
                            Range( morphism_2 ) );
         else
-            return MorphismInBialgebroid(
+            return MorphismInAlgebroid(
                            Source( morphism_1 ),
                            UnderlyingPathAlgebraElement( morphism_2 ) * UnderlyingPathAlgebraElement( morphism_1 ),
                            Range( morphism_2 ) );
@@ -141,7 +141,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddAdditionForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return MorphismInBialgebroid(
+        return MorphismInAlgebroid(
                        Source( morphism_1 ),
                        UnderlyingPathAlgebraElement( morphism_1 ) + UnderlyingPathAlgebraElement( morphism_2 ),
                        Range( morphism_1 ) );
@@ -152,7 +152,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddAdditiveInverseForMorphisms( category,
       function( morphism )
         
-        return MorphismInBialgebroid(
+        return MorphismInAlgebroid(
                        Source( morphism ),
                        -UnderlyingPathAlgebraElement( morphism ),
                        Range( morphism ) );
@@ -163,7 +163,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddZeroMorphism( category,
       function( S, T )
         
-        return MorphismInBialgebroid(
+        return MorphismInAlgebroid(
                        S,
                        Zero( UnderlyingPathAlgebra( CapCategory( S ) ) ),
                        T );
@@ -243,9 +243,9 @@ InstallMethod( Bialgebroid,
 end );
 
 ##
-InstallMethod( MorphismInBialgebroid,
-        "for two objects in a bialgebroid and an element of the path algebra",
-        [ IsCapCategoryObjectInBialgebroidRep, IsPathAlgebraElement, IsCapCategoryObjectInBialgebroidRep ],
+InstallMethod( MorphismInAlgebroid,
+        "for two objects in an algebroid and an element of the path algebra",
+        [ IsCapCategoryObjectInAlgebroidRep, IsPathAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
         
   function( S, path, T )
     local l, mor, B;
@@ -269,7 +269,7 @@ InstallMethod( MorphismInBialgebroid,
     
     B := CapCategory( S );
     
-    ObjectifyWithAttributes( mor, TheTypeMorphismInBialgebroid,
+    ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
             Source, S,
             Range, T,
             UnderlyingPathAlgebraElement, path
@@ -281,7 +281,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a bialgebroid and a positive integer",
+        "for an algebroid and a positive integer",
         [ IsCapCategory, IsPosInt ],
         
   function( B, string_as_int )
@@ -296,12 +296,12 @@ InstallMethod( \.,
     b := rec( );
     
     if IsVertex( a ) then
-        ObjectifyWithAttributes( b, TheTypeObjectInBialgebroid,
+        ObjectifyWithAttributes( b, TheTypeObjectInAlgebroid,
                 UnderlyingVertex, a
                 );
     elif IsArrow( a ) then
         A := UnderlyingPathAlgebra( B );
-        ObjectifyWithAttributes( b, TheTypeMorphismInBialgebroid,
+        ObjectifyWithAttributes( b, TheTypeMorphismInAlgebroid,
                 Source, B.(String( Source( a ) ) ),
                 Range, B.(String( Target( a ) ) ),
                 UnderlyingPathAlgebraElement, PathAsAlgebraElement( A, a )
@@ -324,8 +324,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for an object in a bialgebroid",
-        [ IsCapCategoryObjectInBialgebroidRep ],
+        "for an object in an algebroid",
+        [ IsCapCategoryObjectInAlgebroidRep ],
 
   function( o )
     
@@ -335,8 +335,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for a morphism in a bialgebroid",
-        [ IsCapCategoryMorphismInBialgebroidRep ],
+        "for a morphism in an algebroid",
+        [ IsCapCategoryMorphismInAlgebroidRep ],
 
   function( o )
     
