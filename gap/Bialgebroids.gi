@@ -204,6 +204,9 @@ InstallMethod( Algebroid_NonFinalized,
     SetUnderlyingQuiver( A, quiver );
     SetUnderlyingPathAlgebra( A, PathAlgebra( R, quiver ) );
     
+    A!.Vertices := rec( );
+    A!.Arrows := rec( );
+    
     return ADD_FUNCTIONS_FOR_ALGEBROID( A );
     
 end );
@@ -296,16 +299,24 @@ InstallMethod( \.,
     b := rec( );
     
     if IsVertex( a ) then
+        if IsBound( B!.Vertices.(name) ) then
+            return B!.Vertices.(name);
+        fi;
         ObjectifyWithAttributes( b, TheTypeObjectInAlgebroid,
                 UnderlyingVertex, a
                 );
+        B!.Vertices.(name) := b;
     elif IsArrow( a ) then
+        if IsBound( B!.Arrows.(name) ) then
+            return B!.Arrows.(name);
+        fi;
         A := UnderlyingPathAlgebra( B );
         ObjectifyWithAttributes( b, TheTypeMorphismInAlgebroid,
                 Source, B.(String( Source( a ) ) ),
                 Range, B.(String( Target( a ) ) ),
                 UnderlyingPathAlgebraElement, PathAsAlgebraElement( A, a )
                 );
+        B!.Arrows.(name) := b;
     else
         Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
     fi;
