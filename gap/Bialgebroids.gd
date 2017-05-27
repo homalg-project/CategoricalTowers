@@ -39,15 +39,15 @@ DeclareCategory( "IsCapCategoryMorphismInBialgebroid",
 ####################################
 
 #! @Description
-#!  
-#! @Arguments bialgebra
+#!  The quiver underlying the algebroid <A>A</A>.
+#! @Arguments A
 #! @Returns a &QPA; quiver
 DeclareAttribute( "UnderlyingQuiver",
         IsCapCategory );
 
 #! @Description
-#!  
-#! @Arguments bialgebra
+#!  The path algebra underlying the algebroid <A>A</A>.
+#! @Arguments A
 #! @Returns a &QPA; path algebra
 DeclareAttribute( "UnderlyingPathAlgebra",
         IsCapCategory );
