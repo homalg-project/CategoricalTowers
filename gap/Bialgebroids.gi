@@ -100,7 +100,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
       function( object )
         local A, id;
         
-        A := UnderlyingPathAlgebra( CapCategory( object ) );
+        A := UnderlyingQuiverAlgebra( CapCategory( object ) );
         
         id := rec( );
         
@@ -165,7 +165,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         return MorphismInAlgebroid(
                        S,
-                       Zero( UnderlyingPathAlgebra( CapCategory( S ) ) ),
+                       Zero( UnderlyingQuiverAlgebra( CapCategory( S ) ) ),
                        T );
         
     end );
@@ -202,7 +202,7 @@ InstallMethod( Algebroid_NonFinalized,
     A := CreateCapCategory( A );
     
     SetUnderlyingQuiver( A, quiver );
-    SetUnderlyingPathAlgebra( A, PathAlgebra( R, quiver ) );
+    SetUnderlyingQuiverAlgebra( A, PathAlgebra( R, quiver ) );
     
     A!.Vertices := rec( );
     A!.Arrows := rec( );
@@ -310,7 +310,7 @@ InstallMethod( \.,
         if IsBound( B!.Arrows.(name) ) then
             return B!.Arrows.(name);
         fi;
-        A := UnderlyingPathAlgebra( B );
+        A := UnderlyingQuiverAlgebra( B );
         ObjectifyWithAttributes( b, TheTypeMorphismInAlgebroid,
                 Source, B.(String( Source( a ) ) ),
                 Range, B.(String( Target( a ) ) ),
@@ -351,7 +351,7 @@ InstallMethod( ViewObj,
 
   function( o )
     
-    if IsRightQuiverAlgebra( UnderlyingPathAlgebra( CapCategory( o ) ) ) then
+    if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
         ViewObj( Source( o ) );
         Print( "-[" );
         ViewObj( UnderlyingQuiverAlgebraElement( o ) );

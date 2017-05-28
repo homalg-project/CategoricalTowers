@@ -46,10 +46,10 @@ DeclareAttribute( "UnderlyingQuiver",
         IsCapCategory );
 
 #! @Description
-#!  The path algebra underlying the algebroid <A>A</A>.
+#!  The quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a &QPA; path algebra
-DeclareAttribute( "UnderlyingPathAlgebra",
+DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsCapCategory );
 
 #! @Description
