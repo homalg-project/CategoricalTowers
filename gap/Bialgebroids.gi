@@ -306,15 +306,94 @@ end );
 
 ##
 InstallMethod( Bialgebroid,
-        "for a homalg ring and a QPA quiver",
-        [ IsHomalgRing, IsQuiver ],
+        "for a QPA quiver algebra and two records",
+        [ IsQuiverAlgebra, IsRecord, IsRecord ],
         
-  function( R, quiver )
-    local B;
+  function( Rq, comult, counit )
+    local B, trivial_quiver, R, B0, names_counit, counit_functor,
+          names_comult, Rqq, B2, comult_functor;
     
-    B := Algebroid( R, quiver );
+    B := Algebroid( Rq );
+    
+    B!.Name := Concatenation( "Bia", B!.Name{[ 2 .. Length( B!.Name ) ]} );
+    
+    if IsRightQuiverAlgebra( Rq ) then
+        trivial_quiver := RightQuiver( "*(1)[]" );
+    else
+        trivial_quiver := LeftQuiver( "*(1)[]" );
+    fi;
+    
+    R := LeftActingDomain( Rq );
+    
+    B0 := Algebroid( PathAlgebra( R, trivial_quiver ) );
+    
+    names_counit := NamesOfComponents( counit );
+    
+    if names_counit = [ ] then
+        Error( "the counit record is empty\n" );
+    fi;
+    
+    counit_functor := Concatenation( "counit functor for the ", Name( B ) );
+    counit_functor := CapFunctor( counit_functor, B, B0 );
+    
+    AddObjectFunction( counit_functor,
+            function( obj )
+              return B0.("1");
+            end );
+    
+    AddMorphismFunction( counit_functor,
+            function( new_source, mor, new_range )
+              local one;
+              one := One( UnderlyingQuiverAlgebra( CapCategory( new_source ) ) );
+              mor := UnderlyingQuiverAlgebraElement( mor );
+              mor := Paths( mor )[1];
+              return MorphismInAlgebroid( new_source, counit.(String( mor )) * one, new_range );
+            end );
+    
+    SetCounit( B, counit_functor );
+    
+    names_comult := NamesOfComponents( comult );
+    
+    if names_comult = [ ] then
+        Error( "the comultiplication record is empty\n" );
+    fi;
+    
+    Rqq := AlgebraOfElement( comult.(names_comult[1]) );
+    
+    B2 := Algebroid( Rqq );
+    
+    comult_functor := Concatenation( "comultiplication functor for the ", Name( B ) );
+    comult_functor := CapFunctor( comult_functor, B, B2 );
+    
+    AddObjectFunction( comult_functor,
+            function( obj )
+              local name;
+              
+              name := String( UnderlyingVertex( obj ) );
+              return B2.(Concatenation( name, name ));
+            end );
+    
+    AddMorphismFunction( comult_functor,
+            function( new_source, mor, new_range )
+              mor := UnderlyingQuiverAlgebraElement( mor );
+              mor := Paths( mor )[1];
+              return MorphismInAlgebroid( new_source, comult.(String( mor )), new_range );
+            end );
+    
+    SetComultiplication( B, comult_functor );
     
     return B;
+    
+end );
+
+##
+InstallMethod( Bialgebroid,
+        "for a homalg ring, a QPA quiver, and two records",
+        [ IsHomalgRing, IsQuiver, IsRecord, IsRecord ],
+        
+  function( R, quiver, comult, counit )
+    
+    return Bialgebroid( PathAlgebra( R, quiver ) );
     
 end );
 
