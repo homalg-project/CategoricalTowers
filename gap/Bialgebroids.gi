@@ -288,11 +288,16 @@ InstallMethod( MorphismInAlgebroid,
             Error( "the path ", path, " is neither zero nor uniform\n" );
         fi;
         
-        l := LeadingPath( path );
-        
-        if not ( Source( l ) = UnderlyingVertex( S ) and
-                 Target( l ) = UnderlyingVertex( T ) ) then
-            Error( "the path ", path, " is neither zero nor does it match the given source S or target T\n" );
+        ## TODO: we are avoiding for the moment the sanity test for
+        ## elements of path algebras with relations, this should be
+        ## reintroduced in the future
+        if IsPathAlgebraElement( path ) then
+            l := LeadingPath( path );
+            
+            if not ( Source( l ) = UnderlyingVertex( S ) and
+                     Target( l ) = UnderlyingVertex( T ) ) then
+                Error( "the path ", path, " is neither zero nor does it match the given source S or target T\n" );
+            fi;
         fi;
         
     fi;
