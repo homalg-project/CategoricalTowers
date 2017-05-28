@@ -257,24 +257,6 @@ InstallMethod( Algebroid,
 end );
 
 ##
-InstallMethod( Bialgebroid,
-        "for a homalg ring and a QPA quiver",
-        [ IsHomalgRing, IsQuiver ],
-        
-  function( R, quiver )
-    local B;
-    
-    B := Algebroid_NonFinalized( R, quiver );
-    
-    ADD_FUNCTIONS_FOR_BIALGEBROID( B );
-    
-    Finalize( B );
-    
-    return B;
-    
-end );
-
-##
 InstallMethod( MorphismInAlgebroid,
         "for two objects in an algebroid and an element of the quiver algebra",
         [ IsCapCategoryObjectInAlgebroidRep, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
@@ -358,6 +340,24 @@ InstallMethod( \.,
     Add( B, b );
     
     return b;
+    
+end );
+
+##
+InstallMethod( Bialgebroid,
+        "for a homalg ring and a QPA quiver",
+        [ IsHomalgRing, IsQuiver ],
+        
+  function( R, quiver )
+    local B;
+    
+    B := Algebroid_NonFinalized( R, quiver );
+    
+    ADD_FUNCTIONS_FOR_BIALGEBROID( B );
+    
+    Finalize( B );
+    
+    return B;
     
 end );
 
