@@ -73,7 +73,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddIsWellDefinedForMorphisms( category,
       function( m )
         
-        m := UnderlyingPathAlgebraElement( m );
+        m := UnderlyingQuiverAlgebraElement( m );
         
         return IsPath( m ) and IsIdenticalObj( QuiverOfPath( m ), UnderlyingQuiver( category ) );
         
@@ -91,7 +91,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        return UnderlyingPathAlgebraElement( morphism_1 ) = UnderlyingPathAlgebraElement( morphism_2 );
+        return UnderlyingQuiverAlgebraElement( morphism_1 ) = UnderlyingQuiverAlgebraElement( morphism_2 );
         
     end );
     
@@ -107,7 +107,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         ObjectifyWithAttributes( id, TheTypeMorphismInAlgebroid,
                 Source, object,
                 Range, object,
-                UnderlyingPathAlgebraElement, A.(String( UnderlyingVertex( object ) ) )
+                UnderlyingQuiverAlgebraElement, A.(String( UnderlyingVertex( object ) ) )
                 );
         
         return id;
@@ -126,12 +126,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         if IsRightQuiver( quiver ) then
             return MorphismInAlgebroid(
                            Source( morphism_1 ),
-                           UnderlyingPathAlgebraElement( morphism_1 ) * UnderlyingPathAlgebraElement( morphism_2 ),
+                           UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
                            Range( morphism_2 ) );
         else
             return MorphismInAlgebroid(
                            Source( morphism_1 ),
-                           UnderlyingPathAlgebraElement( morphism_2 ) * UnderlyingPathAlgebraElement( morphism_1 ),
+                           UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
                            Range( morphism_2 ) );
         fi;
         
@@ -143,7 +143,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         return MorphismInAlgebroid(
                        Source( morphism_1 ),
-                       UnderlyingPathAlgebraElement( morphism_1 ) + UnderlyingPathAlgebraElement( morphism_2 ),
+                       UnderlyingQuiverAlgebraElement( morphism_1 ) + UnderlyingQuiverAlgebraElement( morphism_2 ),
                        Range( morphism_1 ) );
         
     end );
@@ -154,7 +154,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         return MorphismInAlgebroid(
                        Source( morphism ),
-                       -UnderlyingPathAlgebraElement( morphism ),
+                       -UnderlyingQuiverAlgebraElement( morphism ),
                        Range( morphism ) );
         
     end );
@@ -247,8 +247,8 @@ end );
 
 ##
 InstallMethod( MorphismInAlgebroid,
-        "for two objects in an algebroid and an element of the path algebra",
-        [ IsCapCategoryObjectInAlgebroidRep, IsPathAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
+        "for two objects in an algebroid and an element of the quiver algebra",
+        [ IsCapCategoryObjectInAlgebroidRep, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
         
   function( S, path, T )
     local l, mor, A;
@@ -275,7 +275,7 @@ InstallMethod( MorphismInAlgebroid,
     ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
             Source, S,
             Range, T,
-            UnderlyingPathAlgebraElement, path
+            UnderlyingQuiverAlgebraElement, path
             );
     
     return mor;
@@ -314,7 +314,7 @@ InstallMethod( \.,
         ObjectifyWithAttributes( b, TheTypeMorphismInAlgebroid,
                 Source, B.(String( Source( a ) ) ),
                 Range, B.(String( Target( a ) ) ),
-                UnderlyingPathAlgebraElement, PathAsAlgebraElement( A, a )
+                UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( A, a )
                 );
         B!.Arrows.(name) := b;
     else
@@ -354,13 +354,13 @@ InstallMethod( ViewObj,
     if IsRightQuiverAlgebra( UnderlyingPathAlgebra( CapCategory( o ) ) ) then
         ViewObj( Source( o ) );
         Print( "-[" );
-        ViewObj( UnderlyingPathAlgebraElement( o ) );
+        ViewObj( UnderlyingQuiverAlgebraElement( o ) );
         Print( "]->" );
         ViewObj( Range( o ) );
     else
         ViewObj( Range( o ) );
         Print( "<-[" );
-        ViewObj( UnderlyingPathAlgebraElement( o ) );
+        ViewObj( UnderlyingQuiverAlgebraElement( o ) );
         Print( "]-" );
         ViewObj( Source( o ) );
     fi;

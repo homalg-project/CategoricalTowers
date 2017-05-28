@@ -60,10 +60,10 @@ DeclareAttribute( "UnderlyingVertex",
         IsCapCategoryObjectInAlgebroid );
 
 #! @Description
-#!  The path algebra element underlying the morphism <A>mor</A> in an algebroid.
+#!  The quiver algebra element underlying the morphism <A>mor</A> in an algebroid.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
-DeclareAttribute( "UnderlyingPathAlgebraElement",
+DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsCapCategoryMorphismInAlgebroid );
 
 ####################################
@@ -95,8 +95,8 @@ DeclareOperation( "Bialgebroid",
 
 #! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>, the target <A>T</A>,
-#!  and the underlying path algebra element <A>path</A>.
+#!  and the underlying quiver algebra element <A>path</A>.
 #! @Arguments S, path, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "MorphismInAlgebroid",
-        [ IsCapCategoryObjectInAlgebroid, IsPathAlgebraElement, IsCapCategoryObjectInAlgebroid ] );
+        [ IsCapCategoryObjectInAlgebroid, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroid ] );
