@@ -170,23 +170,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
     end );
     
-    return category;
-    
-end );
-
-##
-InstallGlobalFunction( ADD_FUNCTIONS_FOR_BIALGEBROID,
-  
-  function( category )
-    
-    ADD_FUNCTIONS_FOR_ALGEBROID( category );
+    Finalize( category );
     
     return category;
     
 end );
 
 ##
-InstallMethod( Algebroid_NonFinalized,
+InstallMethod( Algebroid,
         "for a QPA quiver algebra",
         [ IsQuiverAlgebra ],
         
@@ -216,45 +207,13 @@ InstallMethod( Algebroid_NonFinalized,
 end );
 
 ##
-InstallMethod( Algebroid_NonFinalized,
-        "for a homalg ring and a QPA quiver",
-        [ IsHomalgRing, IsQuiver ],
-        
-  function( R, quiver )
-    
-    return Algebroid_NonFinalized( PathAlgebra( R, quiver ) );
-    
-end );
-
-##
 InstallMethod( Algebroid,
         "for a homalg ring and a QPA quiver",
         [ IsHomalgRing, IsQuiver ],
         
   function( R, quiver )
-    local A;
     
-    A := Algebroid_NonFinalized( R, quiver );
-    
-    Finalize( A );
-    
-    return A;
-    
-end );
-
-##
-InstallMethod( Algebroid,
-        "for a QPA quiver algebra",
-        [ IsQuiverAlgebra ],
-        
-  function( Rq )
-    local A;
-    
-    A := Algebroid_NonFinalized( Rq );
-    
-    Finalize( A );
-    
-    return A;
+    return Algebroid( PathAlgebra( R, quiver ) );
     
 end );
 
@@ -353,11 +312,7 @@ InstallMethod( Bialgebroid,
   function( R, quiver )
     local B;
     
-    B := Algebroid_NonFinalized( R, quiver );
-    
-    ADD_FUNCTIONS_FOR_BIALGEBROID( B );
-    
-    Finalize( B );
+    B := Algebroid( R, quiver );
     
     return B;
     
