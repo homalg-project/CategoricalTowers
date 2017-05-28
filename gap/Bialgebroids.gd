@@ -88,8 +88,8 @@ DeclareOperation( "Algebroid_NonFinalized",
 #! @Arguments Rq
 #! @Returns a &CAP; category
 #! @Group Algebroid
-DeclareOperation( "Algebroid",
-        [ IsQuiverAlgebra ] );
+DeclareAttribute( "Algebroid",
+        IsQuiverAlgebra );
 
 #! @Arguments R, q
 #! @Group Algebroid
