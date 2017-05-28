@@ -179,6 +179,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_BIALGEBROID,
   
   function( category )
     
+    ADD_FUNCTIONS_FOR_ALGEBROID( category );
+    
     return category;
     
 end );
