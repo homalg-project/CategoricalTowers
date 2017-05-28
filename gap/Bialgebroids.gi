@@ -257,48 +257,6 @@ InstallMethod( Algebroid,
 end );
 
 ##
-InstallMethod( MorphismInAlgebroid,
-        "for two objects in an algebroid and an element of the quiver algebra",
-        [ IsCapCategoryObjectInAlgebroidRep, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
-        
-  function( S, path, T )
-    local l, mor, A;
-    
-    if not IsZero( path ) then
-        
-        if not IsUniform( path ) then
-            Error( "the path ", path, " is neither zero nor uniform\n" );
-        fi;
-        
-        ## TODO: we are avoiding for the moment the sanity test for
-        ## elements of path algebras with relations, this should be
-        ## reintroduced in the future
-        if IsPathAlgebraElement( path ) then
-            l := LeadingPath( path );
-            
-            if not ( Source( l ) = UnderlyingVertex( S ) and
-                     Target( l ) = UnderlyingVertex( T ) ) then
-                Error( "the path ", path, " is neither zero nor does it match the given source S or target T\n" );
-            fi;
-        fi;
-        
-    fi;
-    
-    mor := rec( );
-    
-    A := CapCategory( S );
-    
-    ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
-            Source, S,
-            Range, T,
-            UnderlyingQuiverAlgebraElement, path
-            );
-    
-    return mor;
-    
-end );
-
-##
 InstallMethod( \.,
         "for an algebroid and a positive integer",
         [ IsCapCategory, IsPosInt ],
@@ -340,6 +298,48 @@ InstallMethod( \.,
     Add( B, b );
     
     return b;
+    
+end );
+
+##
+InstallMethod( MorphismInAlgebroid,
+        "for two objects in an algebroid and an element of the quiver algebra",
+        [ IsCapCategoryObjectInAlgebroidRep, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
+        
+  function( S, path, T )
+    local l, mor, A;
+    
+    if not IsZero( path ) then
+        
+        if not IsUniform( path ) then
+            Error( "the path ", path, " is neither zero nor uniform\n" );
+        fi;
+        
+        ## TODO: we are avoiding for the moment the sanity test for
+        ## elements of path algebras with relations, this should be
+        ## reintroduced in the future
+        if IsPathAlgebraElement( path ) then
+            l := LeadingPath( path );
+            
+            if not ( Source( l ) = UnderlyingVertex( S ) and
+                     Target( l ) = UnderlyingVertex( T ) ) then
+                Error( "the path ", path, " is neither zero nor does it match the given source S or target T\n" );
+            fi;
+        fi;
+        
+    fi;
+    
+    mor := rec( );
+    
+    A := CapCategory( S );
+    
+    ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
+            Source, S,
+            Range, T,
+            UnderlyingQuiverAlgebraElement, path
+            );
+    
+    return mor;
     
 end );
 
