@@ -1262,7 +1262,7 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
-    ## e.g., AdditionForMorphisms
+    ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
       function( name )
         local oper, type;
