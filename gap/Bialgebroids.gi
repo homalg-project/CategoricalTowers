@@ -98,19 +98,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     ##
     AddIdentityMorphism( category,
       function( object )
-        local A, id;
+        local A;
         
         A := UnderlyingQuiverAlgebra( CapCategory( object ) );
         
-        id := rec( );
-        
-        ObjectifyWithAttributes( id, TheTypeMorphismInAlgebroid,
-                Source, object,
-                Range, object,
-                UnderlyingQuiverAlgebraElement, A.(String( UnderlyingVertex( object ) ) )
-                );
-        
-        return id;
+        return MorphismInAlgebroid(
+                       object,
+                       A.(String( UnderlyingVertex( object ) ) ),
+                       object );
         
     end );
     
