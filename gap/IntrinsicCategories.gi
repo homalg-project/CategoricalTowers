@@ -1273,7 +1273,7 @@ InstallMethod( IntrinsicCategory,
         
         return
           function( arg )
-            local eval_arg, src_trg, S, s, T, t, result;
+            local src_trg, S, s, T, t, eval_arg, result;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             S := src_trg[1];
