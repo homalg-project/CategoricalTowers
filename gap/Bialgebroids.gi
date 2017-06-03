@@ -218,7 +218,7 @@ InstallMethod( \.,
         [ IsCapCategory, IsPosInt ],
         
   function( B, string_as_int )
-    local q, name, a, b, A;
+    local q, name, a, b;
     
     q := UnderlyingQuiver( B );
     
@@ -240,12 +240,10 @@ InstallMethod( \.,
         if IsBound( B!.Arrows.(name) ) then
             return B!.Arrows.(name);
         fi;
-        A := UnderlyingQuiverAlgebra( B );
-        ObjectifyWithAttributes( b, TheTypeMorphismInAlgebroid,
-                Source, B.(String( Source( a ) ) ),
-                Range, B.(String( Target( a ) ) ),
-                UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( A, a )
-                );
+        b := MorphismInAlgebroid(
+                     B.(String( Source( a ) ) ),
+                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( B ), a ),
+                     B.(String( Target( a ) ) ) );
         B!.Arrows.(name) := b;
     else
         Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
