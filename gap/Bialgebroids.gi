@@ -363,7 +363,15 @@ InstallMethod( Bialgebroid,
               local name;
               
               name := String( UnderlyingVertex( obj ) );
-              return B2.(Concatenation( name, name ));
+              
+              if Int( name ) = fail then
+                  name := Concatenation( name, name );
+              else
+                  name := Concatenation( name, "x", name );
+              fi;
+              
+              return B2.(name);
+              
             end );
     
     AddMorphismFunction( comult_functor,
