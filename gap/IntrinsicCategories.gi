@@ -1133,9 +1133,9 @@ InstallMethod( IntrinsicCategory,
         [ IsCapCategory, IsBool, IsType, IsType, IsType, IsFunction ],
         
   function( C, strict, type_obj, type_mor, type_end, todo )
-    local name, IC, recnames, func, pos, create_func_bool,
-          create_func_object0, create_func_object, create_func_morphism,
-          create_func_universal_morphism, info, add;
+    local name, IC, create_func_bool, create_func_object0, create_func_object,
+          create_func_morphism, create_func_universal_morphism,
+          recnames, func, pos, info, add;
     
     if HasName( C ) then
         name := Concatenation( "intrinsic ", Name( C ) );
@@ -1171,24 +1171,6 @@ InstallMethod( IntrinsicCategory,
         AddIsEqualForCacheForMorphisms( IC, IsIdenticalObj );
         SetCachingOfCategoryWeak( IC );
     fi;
-    
-    ## TODO: remove `Primitively' for performance?
-    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
-    
-    for func in [
-            "IsEqualForObjects",
-            "IsEqualForMorphisms",
-            "IsCongruentForMorphisms",
-            "IsEqualForCacheForObjects",
-            "IsEqualForCacheForMorphisms"
-            ] do
-        
-        pos := Position( recnames, func );
-        if not pos = fail then
-            Remove( recnames, pos );
-        fi;
-        
-    od;
     
     create_func_bool :=
       function( name )
@@ -1363,6 +1345,24 @@ InstallMethod( IntrinsicCategory,
           end;
           
       end;
+    
+    ## TODO: remove `Primitively' for performance?
+    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
+    
+    for func in [
+            "IsEqualForObjects",
+            "IsEqualForMorphisms",
+            "IsCongruentForMorphisms",
+            "IsEqualForCacheForObjects",
+            "IsEqualForCacheForMorphisms"
+            ] do
+        
+        pos := Position( recnames, func );
+        if not pos = fail then
+            Remove( recnames, pos );
+        fi;
+        
+    od;
     
     for name in recnames do
         
