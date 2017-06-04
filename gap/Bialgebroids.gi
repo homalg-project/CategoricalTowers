@@ -362,10 +362,10 @@ InstallMethod( Bialgebroid,
               
               name := String( UnderlyingVertex( obj ) );
               
-              if Int( name ) = fail then
-                  name := Concatenation( name, name );
-              else
+              if IsInt( Int( name ) ) then
                   name := Concatenation( name, "x", name );
+              else
+                  name := Concatenation( name, name );
               fi;
               
               return B2.(name);
