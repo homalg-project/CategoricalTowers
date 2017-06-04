@@ -330,9 +330,7 @@ InstallMethod( Bialgebroid,
     counit_functor := CapFunctor( counit_functor, B, B0 );
     
     AddObjectFunction( counit_functor,
-            function( obj )
-              return B0.("1");
-            end );
+            obj -> B0.1 );
     
     AddMorphismFunction( counit_functor,
             function( new_source, mor, new_range )
