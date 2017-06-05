@@ -425,91 +425,63 @@ InstallMethod( CapFunctorFromFinitelyPresentedAlgebroid,
 end );
 
 ##
-InstallMethod( Bialgebroid,
-        "for a QPA quiver algebra and two records",
-        [ IsQuiverAlgebra, IsRecord, IsRecord ],
+InstallMethod( AddBialgebroidStructure,
+        "for a CAP category and two records",
+        [ IsCapCategory, IsRecord, IsRecord ],
         
-  function( Rq, comult, counit )
-    local B, B0, names_counit, counit_functor,
-          names_comult, B2, comult_functor;
-    
-    B := Algebroid( Rq );
+  function( B, counit, comult )
+    local vertices, B0, a, names, counit_functor, B2, o, comult_functor;
     
     B!.Name := Concatenation( "Bia", B!.Name{[ 2 .. Length( B!.Name ) ]} );
     
+    vertices := List( Vertices( UnderlyingQuiver( B ) ), String );
+    
     B0 := B^0;
     
-    names_counit := NamesOfComponents( counit );
+    counit := ShallowCopy( counit );
     
-    if names_counit = [ ] then
-        Error( "the counit record is empty\n" );
+    for a in NamesOfComponents( counit ) do
+        if not IsCapCategoryMorphism( counit.(a) ) then
+            counit.(a) := counit.(a) * IdentityMorphism( B0.1 );
+        fi;
+    od;
+    
+    ## we know how to map the objects
+    for a in vertices do
+        counit.(a) := B0.1;
+    od;
+    
+    counit_functor := CapFunctorFromFinitelyPresentedAlgebroid( B, counit );
+    
+    if not IsIdenticalObj( B0, AsCapCategory( Range( counit_functor ) ) ) then
+        Error( "counit_functor has a the wrong target category\n" );
     fi;
-    
-    counit_functor := Concatenation( "counit functor for the ", Name( B ) );
-    counit_functor := CapFunctor( counit_functor, B, B0 );
-    
-    AddObjectFunction( counit_functor,
-            obj -> B0.1 );
-    
-    AddMorphismFunction( counit_functor,
-            function( new_source, mor, new_range )
-              local one;
-              one := One( UnderlyingQuiverAlgebra( CapCategory( new_source ) ) );
-              mor := UnderlyingQuiverAlgebraElement( mor );
-              mor := Paths( mor )[1];
-              return MorphismInAlgebroid( new_source, counit.(String( mor )) * one, new_range );
-            end );
     
     SetCounit( B, counit_functor );
     
-    names_comult := NamesOfComponents( comult );
-    
-    if names_comult = [ ] then
-        Error( "the comultiplication record is empty\n" );
-    fi;
-    
     B2 := B^2;
     
-    comult_functor := Concatenation( "comultiplication functor for the ", Name( B ) );
-    comult_functor := CapFunctor( comult_functor, B, B2 );
+    comult := ShallowCopy( comult );
     
-    AddObjectFunction( comult_functor,
-            function( obj )
-              local o;
-              
-              o := String( UnderlyingVertex( obj ) );
-              
-              if IsInt( Int( o ) ) then
-                  o := Concatenation( o, "x", o );
-              else
-                  o := Concatenation( o, o );
-              fi;
-              
-              return B2.(o);
-              
-            end );
+    ## we know how to map the objects
+    for a in vertices do
+        if IsInt( Int( a ) ) then
+            o := Concatenation( a, "x", a );
+        else
+            o := Concatenation( a, a );
+        fi;
+        comult.(a) := B2.(o);
+    od;
     
-    AddMorphismFunction( comult_functor,
-            function( new_source, mor, new_range )
-              mor := UnderlyingQuiverAlgebraElement( mor );
-              mor := Paths( mor )[1];
-              return MorphismInAlgebroid( new_source, comult.(String( mor )), new_range );
-            end );
+    comult_functor := CapFunctorFromFinitelyPresentedAlgebroid( B, comult );
+    
+    if not IsIdenticalObj( B2, AsCapCategory( Range( comult_functor ) ) ) then
+        Error( "comult_functor has a the wrong target category\n" );
+    fi;
     
     SetComultiplication( B, comult_functor );
     
     return B;
-    
-end );
-
-##
-InstallMethod( Bialgebroid,
-        "for a homalg ring, a QPA quiver, and two records",
-        [ IsHomalgRing, IsQuiver, IsRecord, IsRecord ],
-        
-  function( R, quiver, comult, counit )
-    
-    return Bialgebroid( PathAlgebra( R, quiver ) );
     
 end );
 

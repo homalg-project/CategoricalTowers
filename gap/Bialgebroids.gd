@@ -119,19 +119,12 @@ DeclareOperation( "CapFunctorFromFinitelyPresentedAlgebroid",
         [ IsCapCategory, IsRecord ] );
 
 #! @Description
-#!  Construct the algebroid associated to the path $R$-algebra <A>Rq</A>
-#!  of the quiver $q$, and enhance it with a counit and a comultiplication
+#!  Add to the algebroid <A>A</A> a counit and a comultiplication
 #!  using the defining records <A>counit</A> and <A>comult</A>, respectively.
-#! @Arguments Rq, comult, counit
+#! @Arguments A, counit, comult
 #! @Returns a &CAP; category
-#! @Group Bialgebroid
-DeclareOperation( "Bialgebroid",
-        [ IsQuiverAlgebra, IsRecord, IsRecord ] );
-
-#! @Arguments R, q, comult, counit
-#! @Group Bialgebroid
-DeclareOperation( "Bialgebroid",
-        [ IsHomalgRing, IsQuiver, IsRecord, IsRecord ] );
+DeclareOperation( "AddBialgebroidStructure",
+        [ IsCapCategory, IsRecord, IsRecord ] );
 
 #! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,
