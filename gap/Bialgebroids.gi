@@ -369,17 +369,17 @@ InstallMethod( Bialgebroid,
     
     AddObjectFunction( comult_functor,
             function( obj )
-              local name;
+              local o;
               
-              name := String( UnderlyingVertex( obj ) );
+              o := String( UnderlyingVertex( obj ) );
               
-              if IsInt( Int( name ) ) then
-                  name := Concatenation( name, "x", name );
+              if IsInt( Int( o ) ) then
+                  o := Concatenation( o, "x", o );
               else
-                  name := Concatenation( name, name );
+                  o := Concatenation( o, o );
               fi;
               
-              return B2.(name);
+              return B2.(o);
               
             end );
     
