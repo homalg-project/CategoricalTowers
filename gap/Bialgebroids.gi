@@ -309,27 +309,71 @@ InstallMethod( MorphismInAlgebroid,
 end );
 
 ##
+InstallMethod( POW,
+        "for a CAP category and an integer",
+        [ IsCapCategory and HasUnderlyingQuiverAlgebra, IsInt ],
+        
+  function( A, n )
+    local Rq, R, trivial_quiver, Rqq;
+    
+    if n < 0 or n > 2 then
+        Error( "the only admissible values for n are 0,1,2\n" );
+    elif n = 1 then
+        return A;
+    elif not IsBound( A!.powers ) then
+        A!.powers := rec( );
+    fi;
+    
+    Rq := UnderlyingQuiverAlgebra( A );
+    
+    R := LeftActingDomain( Rq );
+    
+    if n = 0 then
+        
+        if not IsBound( A!.powers.0 ) then
+            
+            if IsRightQuiverAlgebra( Rq ) then
+                trivial_quiver := RightQuiver( "*(1)[]" );
+            else
+                trivial_quiver := LeftQuiver( "*(1)[]" );
+            fi;
+            
+            A!.powers.0 := Algebroid( PathAlgebra( R, trivial_quiver ) );
+            
+        fi;
+        
+        return A!.powers.0;
+        
+    fi;
+    
+    # n = 2
+    
+    if not IsBound( A!.powers.2 ) then
+        
+        Rqq := TensorProductOfAlgebras( Rq, Rq );
+        
+        A!.powers.2 := Algebroid( Rqq );
+        
+    fi;
+    
+    return A!.powers.2;
+    
+end );
+
+##
 InstallMethod( Bialgebroid,
         "for a QPA quiver algebra and two records",
         [ IsQuiverAlgebra, IsRecord, IsRecord ],
         
   function( Rq, comult, counit )
-    local B, trivial_quiver, R, B0, names_counit, counit_functor,
-          names_comult, Rqq, B2, comult_functor;
+    local B, B0, names_counit, counit_functor,
+          names_comult, B2, comult_functor;
     
     B := Algebroid( Rq );
     
     B!.Name := Concatenation( "Bia", B!.Name{[ 2 .. Length( B!.Name ) ]} );
     
-    if IsRightQuiverAlgebra( Rq ) then
-        trivial_quiver := RightQuiver( "*(1)[]" );
-    else
-        trivial_quiver := LeftQuiver( "*(1)[]" );
-    fi;
-    
-    R := LeftActingDomain( Rq );
-    
-    B0 := Algebroid( PathAlgebra( R, trivial_quiver ) );
+    B0 := B^0;
     
     names_counit := NamesOfComponents( counit );
     
@@ -360,9 +404,7 @@ InstallMethod( Bialgebroid,
         Error( "the comultiplication record is empty\n" );
     fi;
     
-    Rqq := AlgebraOfElement( comult.(names_comult[1]) );
-    
-    B2 := Algebroid( Rqq );
+    B2 := B^2;
     
     comult_functor := Concatenation( "comultiplication functor for the ", Name( B ) );
     comult_functor := CapFunctor( comult_functor, B, B2 );

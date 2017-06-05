@@ -80,6 +80,14 @@ DeclareAttribute( "UnderlyingVertex",
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsCapCategoryMorphismInAlgebroid );
 
+#! @Description
+#!  The <A>n</A>-th power of the algebroid <A>A</A>.
+#!  Admissible values for <A>n</A> are $0,1,2$.
+#! @Arguments A, n
+#! @Returns a &CAP; category
+DeclareOperation( "POW",
+        [ IsCapCategory, IsInt ] );
+
 ####################################
 #
 #! @Section Constructors
