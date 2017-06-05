@@ -155,6 +155,17 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     end );
     
     ##
+    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+      function( r, morphism )
+        
+        return MorphismInAlgebroid(
+                       Source( morphism ),
+                       r * UnderlyingQuiverAlgebraElement( morphism ),
+                       Range( morphism ) );
+        
+    end );
+    
+    ##
     AddZeroMorphism( category,
       function( S, T )
         
