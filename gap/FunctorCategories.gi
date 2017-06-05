@@ -200,7 +200,7 @@ InstallMethodWithCache( Hom,
     local name, Hom,
           name_of_object, create_func_bool, create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
-          recnames, func, pos, info, add;
+          recnames, skip, func, pos, info, add;
     
     if HasName( C ) and HasName( D ) then
         name := Concatenation( "The category of functors from ", Name( C ), " -> ", Name( D ) );
@@ -395,13 +395,17 @@ InstallMethodWithCache( Hom,
     ## TODO: remove `Primitively' for performance?
     recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( D ) );
     
-    for func in [
-            "IsEqualForObjects",
-            "IsEqualForMorphisms",
-            "IsCongruentForMorphisms",
-            "IsEqualForCacheForObjects",
-            "IsEqualForCacheForMorphisms"
-            ] do
+    skip := [
+             "IsEqualForObjects",
+             "IsEqualForMorphisms",
+             "IsCongruentForMorphisms",
+             "IsEqualForCacheForObjects",
+             "IsEqualForCacheForMorphisms"
+             ];
+    
+    Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+    
+    for func in skip do
         
         pos := Position( recnames, func );
         if not pos = fail then
