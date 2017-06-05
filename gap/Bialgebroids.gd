@@ -111,6 +111,14 @@ DeclareOperation( "Algebroid",
         [ IsHomalgRing, IsQuiver ] );
 
 #! @Description
+#!  Construct, using the record of images <A>F</A>,
+#!  a functor with source the finitely presented algebroid <A>A</A>.
+#! @Arguments A, F
+#! @Returns a &CAP; functor
+DeclareOperation( "CapFunctorFromFinitelyPresentedAlgebroid",
+        [ IsCapCategory, IsRecord ] );
+
+#! @Description
 #!  Construct the algebroid associated to the path $R$-algebra <A>Rq</A>
 #!  of the quiver $q$, and enhance it with a counit and a comultiplication
 #!  using the defining records <A>counit</A> and <A>comult</A>, respectively.

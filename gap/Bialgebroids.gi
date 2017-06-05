@@ -361,6 +361,70 @@ InstallMethod( POW,
 end );
 
 ##
+InstallMethod( CapFunctorFromFinitelyPresentedAlgebroid,
+        "for a CAP category and a record",
+        [ IsCapCategory, IsRecord ],
+        
+  function( A, F )
+    local names, b, Rq, B, functor;
+    
+    names := NamesOfComponents( F );
+    
+    if names = [ ] then
+        Error( "the record of images is empty\n" );
+    fi;
+    
+    for b in names do
+        if IsQuiverAlgebraElement( F.(b) ) then
+            Rq := AlgebraOfElement( F.(b) );
+            B := Algebroid( Rq );
+            break;
+        elif IsCapCategory( F.(b) ) then
+            B := F.(b);
+            break;
+        elif IsCapCategoryCell( F.(b) ) then
+            B := CapCategory( F.(b) );
+            break;
+        fi;
+    od;
+    
+    if not IsBound( B ) then
+        Error( "unable to extract target category from record of images\n" );
+    fi;
+    
+    if IsBound( F.name ) then
+        functor := F.name;
+    else
+        functor := Concatenation( "Functor from finitely presented ", Name( A ), " -> ", Name( B ) );
+    fi;
+    
+    functor := CapFunctor( functor, A, B );
+    
+    functor!.defining_record := F;
+    
+    AddObjectFunction( functor,
+            obj -> F.(String( UnderlyingVertex( obj ) )) );
+    
+    AddMorphismFunction( functor,
+            function( new_source, mor, new_range )
+              local coefs, paths;
+              
+              mor := UnderlyingQuiverAlgebraElement( mor );
+              
+              coefs := Coefficients( mor );
+              
+              paths := List( Paths( mor ), ArrowList );
+              paths := List( paths, a -> PreCompose( List( a, b -> F.(String( b )) ) ) );
+              
+              return Sum( ListN( coefs, paths, function( r, p ) return r * p; end ) );
+              
+            end );
+    
+    return functor;
+    
+end );
+
+##
 InstallMethod( Bialgebroid,
         "for a QPA quiver algebra and two records",
         [ IsQuiverAlgebra, IsRecord, IsRecord ],
