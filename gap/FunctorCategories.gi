@@ -259,12 +259,13 @@ InstallMethodWithCache( Hom,
         
         return
           function( )
-            local result, functorial;
+            local result, objD, functorial;
             
             result := CapFunctor( name_of_object, C, D );
             
-            AddObjectFunction( result,
-              objC -> oper( D ) );
+            objD := oper( D );
+            
+            AddObjectFunction( result, objC -> objD );
             
             functorial := ValueGlobal( info.functorial );
             
