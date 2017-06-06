@@ -495,6 +495,8 @@ InstallMethod( POW,
         
         A!.powers.2 := Algebroid( Rqq );
         
+        A!.powers.2!.PowerOf := A;
+        
     fi;
     
     return A!.powers.2;
