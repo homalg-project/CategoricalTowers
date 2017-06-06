@@ -1144,12 +1144,12 @@ InstallMethod( IntrinsicCategory,
         IC := CreateCapCategory( );
     fi;
     
-    SetIntrinsifiedCategory( IC, C );
-    
     for name in ListKnownCategoricalProperties( C ) do
         name := ValueGlobal( name );
         Setter( name )( IC, true );
     od;
+    
+    SetIntrinsifiedCategory( IC, C );
     
     AddIsEqualForObjects( IC, IsIdenticalObj );
     AddIsEqualForMorphisms( IC,
