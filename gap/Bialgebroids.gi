@@ -208,6 +208,7 @@ InstallMethod( Algebroid,
     
     A := CreateCapCategory( A );
     
+    SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
     SetUnderlyingQuiverAlgebra( A, Rq );
     
