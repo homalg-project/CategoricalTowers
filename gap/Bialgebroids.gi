@@ -78,6 +78,37 @@ InstallMethod( RelationsOfAlgebroid,
     
 end );
 
+##
+InstallMethod( BijectionBetweenPairsAndElementaryTensors,
+        "for a QPA quiver algebra",
+        [ IsQuiverAlgebra ],
+        
+  function( Qq )
+    local Qqq, gens, prod;
+    
+    if HasPathAlgebra( Qq ) then
+        Qq := PathAlgebra( Qq );
+    fi;
+    
+    Qqq := TensorProductOfAlgebras( Qq, Qq );
+    
+    gens := GeneratorsOfAlgebra( Qq );
+    
+    gens := Cartesian( gens, gens );
+    
+    prod := List( gens,
+                  p -> ElementaryTensor(
+                          PathAsAlgebraElement( Qq, p[1] ),
+                          PathAsAlgebraElement( Qq, p[2] ),
+                          Qqq ) );
+    
+    
+    prod := List( prod, a -> Paths( Representative( a ) )[1] );
+    
+    return [ prod, gens ];
+    
+end );
+
 ####################################
 #
 # methods for operation:

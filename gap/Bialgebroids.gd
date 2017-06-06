@@ -120,6 +120,9 @@ DeclareAttribute( "UnderlyingQuiverAlgebraElement",
 DeclareOperation( "POW",
         [ IsCapCategory, IsInt ] );
 
+DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
+        IsQuiverAlgebra );
+
 ####################################
 #
 #! @Section Operations
