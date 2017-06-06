@@ -219,21 +219,24 @@ InstallMethodWithCache( Hom,
     
     name_of_object := Concatenation( "An object in the functor category Hom( ", Name( C ), ", ", Name( D ), " )" );
     
-    ## only used if IsFinitelyPresentedCategory( C ) = true
-    create_func_bool :=
-      function( name )
-        local oper;
+    if HasIsFinitelyPresentedCategory( C ) and IsFinitelyPresentedCategory( C ) then
         
-        oper := ValueGlobal( name );
-        
-        return
-          function( F_or_eta )
+        create_func_bool :=
+          function( name )
+            local oper;
             
-            return ForAll( SetOfObjects( C ), o -> oper( F_or_eta( o ) ) );
+            oper := ValueGlobal( name );
             
-          end;
-          
+            return
+              function( F_or_eta )
+                
+                return ForAll( SetOfObjects( C ), o -> oper( F_or_eta( o ) ) );
+                
+            end;
+            
         end;
+        
+    fi;
     
     ## e.g., ZeroObject
     create_func_object0 :=
