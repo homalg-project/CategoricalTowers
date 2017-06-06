@@ -1144,11 +1144,6 @@ InstallMethod( IntrinsicCategory,
         IC := CreateCapCategory( );
     fi;
     
-    ## TODO: should be replaced later by a sync process
-    if HasIsAbelianCategory( C ) then
-        SetIsAbelianCategory( IC, IsAbelianCategory( C ) );
-    fi;
-    
     SetIntrinsifiedCategory( IC, C );
     
     for name in ListKnownCategoricalProperties( C ) do
