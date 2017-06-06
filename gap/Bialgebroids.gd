@@ -69,6 +69,20 @@ DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsCapCategory );
 
 #! @Description
+#!  The finite set of objects of the finitely presented algebroid <A>A</A>.
+#! @Arguments A
+#! @Returns a list
+DeclareAttribute( "SetOfObjects",
+        IsCapCategory );
+
+#! @Description
+#!  The finite set of morphisms generating the finitely presented algebroid <A>A</A>.
+#! @Arguments A
+#! @Returns a list
+DeclareAttribute( "SetOfGeneratingMorphisms",
+        IsCapCategory );
+
+#! @Description
 #!  The counit of the bialgebroid <A>B</A>.
 #! @Arguments B
 #! @Returns a &CAP; functor

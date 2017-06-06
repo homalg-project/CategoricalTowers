@@ -48,6 +48,20 @@ BindGlobal( "TheTypeMorphismInAlgebroid",
 #
 ####################################
 
+##
+InstallMethod( SetOfObjects,
+        "for an algebroid",
+        [ IsCapCategory and HasUnderlyingQuiver ],
+        
+  A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
+
+##
+InstallMethod( SetOfGeneratingMorphisms,
+        "for an algebroid",
+        [ IsCapCategory and HasUnderlyingQuiver ],
+        
+  A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
+
 ####################################
 #
 # methods for operations:

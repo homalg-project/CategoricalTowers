@@ -24,6 +24,14 @@ Al.a;
 #! (v)<-[1*(a)]-(u)
 Ar.a;
 #! (u)-[1*(a)]->(v)
+SetOfObjects( Al );
+#! [ (u), (v), (w) ]
+SetOfGeneratingMorphisms( Al );
+#! [ (v)<-[1*(a)]-(u), (u)<-[1*(b)]-(v), (u)<-[1*(c)]-(v), (w)<-[1*(d)]-(v) ]
+SetOfObjects( Ar );
+#! [ (u), (v), (w) ]
+SetOfGeneratingMorphisms( Ar );
+#! [ (u)-[1*(a)]->(v), (v)-[1*(b)]->(u), (v)-[1*(c)]->(u), (v)-[1*(d)]->(w) ]
 PreCompose( Al.a, Al.d );
 #! (w)<-[1*(d*a)]-(u)
 PreCompose( Ar.a, Ar.d );
