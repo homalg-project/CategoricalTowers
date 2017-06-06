@@ -1146,7 +1146,7 @@ InstallMethod( IntrinsicCategory,
     
     for name in ListKnownCategoricalProperties( C ) do
         name := ValueGlobal( name );
-        Setter( name )( IC, true );
+        Setter( name )( IC, name( C ) );
     od;
     
     SetIntrinsifiedCategory( IC, C );
