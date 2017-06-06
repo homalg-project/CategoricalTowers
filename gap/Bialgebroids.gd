@@ -164,7 +164,14 @@ DeclareOperation( "AddBialgebroidStructure",
 #! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,
 #!  the target <A>T</A>, and the underlying quiver algebra element <A>path</A>.
+#!  If neither <A>S</A> nor <A>T</A> are provided they are read off from <A>path</A>.
 #! @Arguments S, path, T
 #! @Returns a morphism in a &CAP; category
+#! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
         [ IsCapCategoryObjectInAlgebroid, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroid ] );
+
+#! @Arguments path
+#! @Group MorphismInAlgebroid
+DeclareOperation( "MorphismInAlgebroid",
+        [ IsQuiverAlgebraElement ] );

@@ -352,6 +352,31 @@ InstallMethod( MorphismInAlgebroid,
 end );
 
 ##
+InstallMethod( MorphismInAlgebroid,
+        "an element of a path algebra",
+        [ IsPathAlgebraElement ],
+        
+  function( path )
+    local A, l, S, T;
+    
+    if IsZero( path ) then
+        Error( "source and target of the zero path is ambiguous\n" );
+    elif not IsUniform( path ) then
+        Error( "the path ", path, " is not uniform\n" );
+    fi;
+    
+    A := Algebroid( AlgebraOfElement( path ) );
+    
+    l := LeadingPath( path );
+    
+    S := String( Source( l ) );
+    T := String( Target( l ) );
+    
+    return MorphismInAlgebroid( A.(S), path, A.(T) );
+    
+end );
+
+##
 InstallMethod( POW,
         "for a CAP category and an integer",
         [ IsCapCategory and HasUnderlyingQuiverAlgebra, IsInt ],
