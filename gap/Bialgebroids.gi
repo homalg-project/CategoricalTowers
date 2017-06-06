@@ -432,6 +432,10 @@ InstallMethod( CapFunctorFromFinitelyPresentedAlgebroid,
               
               mor := UnderlyingQuiverAlgebraElement( mor );
               
+              if IsQuotientOfPathAlgebraElement( mor ) then
+                  mor := Representative( mor );
+              fi;
+              
               coefs := Coefficients( mor );
               
               paths := List( Paths( mor ), ArrowList );
