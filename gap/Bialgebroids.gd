@@ -83,6 +83,14 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
         IsCapCategory );
 
 #! @Description
+#!  The relations of the algebroid <A>A</A> corresponding to
+#!  <C>RelationsOfAlgebra( UnderlyingQuiverAlgebra( <A>A</A> ) )</C>.
+#! @Arguments A
+#! @Returns a &QPA; path algebra
+DeclareAttribute( "RelationsOfAlgebroid",
+        IsCapCategory );
+
+#! @Description
 #!  The counit of the bialgebroid <A>B</A>.
 #! @Arguments B
 #! @Returns a &CAP; functor

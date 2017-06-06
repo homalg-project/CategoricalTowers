@@ -62,6 +62,22 @@ InstallMethod( SetOfGeneratingMorphisms,
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
+##
+InstallMethod( RelationsOfAlgebroid,
+        "for an algebroid",
+        [ IsCapCategory and HasUnderlyingQuiverAlgebra ],
+        
+  function( A )
+    local relations;
+    
+    relations := RelationsOfAlgebra( UnderlyingQuiverAlgebra( A ) );
+    
+    relations := Filtered( relations, r -> not IsZero( r ) );
+    
+    return List( relations, MorphismInAlgebroid );
+    
+end );
+
 ####################################
 #
 # methods for operations:
