@@ -219,6 +219,7 @@ InstallMethodWithCache( Hom,
     
     name_of_object := Concatenation( "An object in the functor category Hom( ", Name( C ), ", ", Name( D ), " )" );
     
+    ## only used if IsFinitelyPresentedCategory( C ) = true
     create_func_bool :=
       function( name )
         local oper;
@@ -226,14 +227,9 @@ InstallMethodWithCache( Hom,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
-            local eval_arg;
+          function( F_or_eta )
             
-            eval_arg := UnderlyingCapTwoCategoryCell( arg );
-            
-            Error( "implement me\n" );
-            
-            return CallFuncList( oper, eval_arg );
+            return ForAll( SetOfObjects( C ), o -> oper( F_or_eta( o ) ) );
             
           end;
           
@@ -415,6 +411,9 @@ InstallMethodWithCache( Hom,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         if info.return_type = "bool" then
+            if not ( HasIsFinitelyPresentedCategory( C ) and IsFinitelyPresentedCategory( C ) ) then
+                continue;
+            fi;
             func := create_func_bool( name );
         elif info.return_type = "object" and info.filter_list = [ "category" ] then
             func := create_func_object0( name );
