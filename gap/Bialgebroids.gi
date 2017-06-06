@@ -86,7 +86,7 @@ end );
 
 ##
 InstallMethod( ApplyToQuiverAlgebraElement,
-        "an object and a quiver algebra element",
+        "for an object and a quiver algebra element",
         [ IsObject, IsQuiverAlgebraElement ],
         
   function( F, p )
