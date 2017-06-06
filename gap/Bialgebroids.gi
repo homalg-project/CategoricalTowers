@@ -80,7 +80,64 @@ end );
 
 ####################################
 #
-# methods for operations:
+# methods for operation:
+#
+####################################
+
+##
+InstallMethod( ApplyToQuiverAlgebraElement,
+        "an object and a quiver algebra element",
+        [ IsObject, IsQuiverAlgebraElement ],
+        
+  function( F, p )
+    local A, func, coefs, paths, applyF;
+    
+    if IsCapFunctor( F ) then
+        A := AsCapCategory( Source( F ) );
+        func := b -> ApplyFunctor( F, A.(String( b )) );
+    elif IsRecord( F ) then
+        func := b -> F.(String( b ));
+    else
+        Error( "the first argument is neither a CAP functor nor a (functor defining) record\n" );
+    fi;
+    
+    if IsQuotientOfPathAlgebraElement( p ) then
+        p := Representative( p );
+    fi;
+    
+    coefs := Coefficients( p );
+    
+    paths := List( Paths( p ),
+                   function( a )
+                     if Length( a ) = 0 then
+                         return [ a ];
+                     fi;
+                     return ArrowList( a );
+                   end );
+    
+    applyF :=
+      function( b )
+        local m;
+        
+        m := func( b );
+        
+        if IsVertex( b ) then
+            return IdentityMorphism( m );
+        fi;
+        
+        return m;
+        
+      end;
+    
+    paths := List( paths, a -> PreCompose( List( a, applyF ) ) );
+    
+    return Sum( ListN( coefs, paths, function( r, p ) return r * p; end ) );
+    
+end );
+
+####################################
+#
+# methods for constructors:
 #
 ####################################
 
@@ -491,20 +548,10 @@ InstallMethod( CapFunctorFromFinitelyPresentedAlgebroid,
     
     AddMorphismFunction( functor,
             function( new_source, mor, new_range )
-              local coefs, paths;
               
               mor := UnderlyingQuiverAlgebraElement( mor );
               
-              if IsQuotientOfPathAlgebraElement( mor ) then
-                  mor := Representative( mor );
-              fi;
-              
-              coefs := Coefficients( mor );
-              
-              paths := List( Paths( mor ), ArrowList );
-              paths := List( paths, a -> PreCompose( List( a, b -> F.(String( b )) ) ) );
-              
-              return Sum( ListN( coefs, paths, function( r, p ) return r * p; end ) );
+              return ApplyToQuiverAlgebraElement( F, mor );
               
             end );
     

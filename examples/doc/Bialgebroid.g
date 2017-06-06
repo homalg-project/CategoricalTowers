@@ -30,6 +30,10 @@ ApplyFunctor( counit, B.u );
 #! (1)
 ApplyFunctor( counit, B.v );
 #! (1)
+ApplyFunctor( counit, IdentityMorphism( B.u ) );
+#! (1)-[1*(1)]->(1)
+ApplyFunctor( counit, IdentityMorphism( B.v ) );
+#! (1)-[1*(1)]->(1)
 ApplyFunctor( counit, B.a );
 #! (1)-[1*(1)]->(1)
 ApplyFunctor( counit, B.b );
@@ -43,6 +47,10 @@ ApplyFunctor( comult, B.u );
 #! (uu)
 ApplyFunctor( comult, B.v );
 #! (vv)
+ApplyFunctor( comult, IdentityMorphism( B.u ) );
+#! (uu)-[{ 1*(uu) }]->(uu)
+ApplyFunctor( comult, IdentityMorphism( B.v ) );
+#! (vv)-[{ 1*(vv) }]->(vv)
 ApplyFunctor( comult, B.a );
 #! (uu)-[{ 1*(ua*av) }]->(vv)
 ApplyFunctor( comult, B.b );

@@ -28,12 +28,6 @@ DeclareCategory( "IsCapCategoryMorphismInAlgebroid",
 
 ####################################
 #
-#! @Section Technical stuff
-#
-####################################
-
-####################################
-#
 #! @Section Properties
 #
 ####################################
@@ -183,3 +177,16 @@ DeclareOperation( "MorphismInAlgebroid",
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
         [ IsQuiverAlgebraElement ] );
+
+####################################
+#
+#! @Section Operations
+#
+####################################
+
+#! @Description
+#!  Apply the functor (or a defining record) <A>F</A> to the quiver algebra element <A>p</A>.
+#! @Arguments F, path
+#! @Returns a morphism in a &CAP; category
+DeclareOperation( "ApplyToQuiverAlgebraElement",
+        [ IsObject, IsQuiverAlgebraElement ] );
