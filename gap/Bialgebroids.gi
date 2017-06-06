@@ -235,6 +235,26 @@ end );
 
 ##
 InstallMethod( Algebroid,
+        "for a QPA path algebra and a list",
+        [ IsPathAlgebra, IsList ],
+        
+  function( Rq, L )
+    local path;
+    
+    for path in L do
+        if not IsUniform( path ) then
+            Error( "only uniform relations are admissible, while the path ", path, " is not uniform\n" );
+        fi;
+    od;
+    
+    L := Filtered( L, r -> not IsZero( r ) );
+    
+    return Algebroid( Rq / Ideal( Rq, L ) );
+    
+end );
+
+##
+InstallMethod( Algebroid,
         "for a homalg ring and a QPA quiver",
         [ IsHomalgRing, IsQuiver ],
         
