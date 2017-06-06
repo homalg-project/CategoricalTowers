@@ -325,6 +325,8 @@ InstallMethod( MorphismInAlgebroid,
             UnderlyingQuiverAlgebraElement, path
             );
     
+    Add( A, mor );
+    
     return mor;
     
 end );
