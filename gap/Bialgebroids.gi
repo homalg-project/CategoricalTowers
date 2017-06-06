@@ -109,6 +109,47 @@ InstallMethod( BijectionBetweenPairsAndElementaryTensors,
     
 end );
 
+##
+InstallMethod( DecompositionOfASecondOrderTensor,
+        "for a morphism in an algebroid",
+        [ IsCapCategoryMorphismInAlgebroidRep ],
+        
+  function( mor )
+    local B, Rq, gens, prod, func;
+    
+    B := CapCategory( mor )!.PowerOf;
+    
+    Rq := UnderlyingQuiverAlgebra( B );
+    
+    mor := UnderlyingQuiverAlgebraElement( mor );
+    
+    mor := DecomposeQuiverAlgebraElement( mor );
+    
+    gens := BijectionBetweenPairsAndElementaryTensors( Rq );
+    prod := gens[2];
+    gens := gens[1];
+    
+    mor[2] := List( mor[2], p -> List( p, a -> prod[Position( gens, a )] ) );
+    
+    func :=
+      function( a )
+        return List( a,
+                     function( f )
+                       f := B.(String( f ));
+                       if IsCapCategoryObject( f ) then
+                           return IdentityMorphism( f );
+                       fi;
+                       return f;
+                     end );
+        
+      end;
+    
+    mor[2] := List( mor[2], p -> List( p, func ) );
+    
+    return ListN( mor[1], mor[2], function( r, s ) return [ r, s ]; end );
+    
+end );
+
 ####################################
 #
 # methods for operation:

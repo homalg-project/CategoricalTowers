@@ -123,6 +123,9 @@ DeclareOperation( "POW",
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 
+DeclareAttribute( "DecompositionOfASecondOrderTensor",
+        IsCapCategoryMorphismInAlgebroid );
+
 ####################################
 #
 #! @Section Operations
