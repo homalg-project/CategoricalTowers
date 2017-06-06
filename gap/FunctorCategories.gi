@@ -197,8 +197,8 @@ InstallMethodWithCache( Hom,
         [ IsCapCategory, IsCapCategory ],
         
   function( C, D )
-    local name, Hom,
-          name_of_object, create_func_bool, create_func_object0, create_func_object,
+    local name, Hom, name_of_object, vertices, create_func_bool, arrows, relations,
+          create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
           recnames, skip, func, pos, info, add;
     
@@ -221,20 +221,54 @@ InstallMethodWithCache( Hom,
     
     if HasIsFinitelyPresentedCategory( C ) and IsFinitelyPresentedCategory( C ) then
         
+        vertices := SetOfObjects( C );
+        
         create_func_bool :=
           function( name )
             local oper;
             
             oper := ValueGlobal( name );
             
-            return
-              function( F_or_eta )
-                
-                return ForAll( SetOfObjects( C ), o -> oper( F_or_eta( o ) ) );
-                
-            end;
+            return F_or_eta -> ForAll( vertices, o -> oper( F_or_eta( o ) ) );
             
         end;
+        
+        arrows := SetOfGeneratingMorphisms( C );
+        
+        AddIsWellDefinedForMorphisms( Hom,
+          function( eta )
+            local S, T;
+            
+            S := Source( eta );
+            T := Range( eta );
+            
+            return ForAll( arrows,
+                           function( m )
+                             return
+                               IsEqualForMorphisms(
+                                       PreCompose( S( m ), eta( Range( m ) ) ),
+                                       PreCompose( eta( Source( m ) ), T( m ) ) );
+                           end );
+            
+          end );
+        
+        relations := RelationsOfAlgebroid( C );
+        relations := List( relations, UnderlyingQuiverAlgebraElement );
+        
+        AddIsWellDefinedForObjects( Hom,
+          function( F )
+            
+            if not ForAll( arrows, m -> IsEqualForObjects( F( Source( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( arrows, m -> IsEqualForObjects( F( Source( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            fi;
+            
+            F := UnderlyingCapTwoCategoryCell( F );
+            
+            return ForAll( relations, m -> IsZero( ApplyToQuiverAlgebraElement( F, m ) ) );
+            
+          end );
         
     fi;
     
@@ -391,6 +425,8 @@ InstallMethodWithCache( Hom,
     recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( D ) );
     
     skip := [
+             "IsWellDefinedForObjects",
+             "IsWellDefinedForMorphisms",
              "IsEqualForObjects",
              "IsEqualForMorphisms",
              "IsCongruentForMorphisms",
