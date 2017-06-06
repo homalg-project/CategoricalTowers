@@ -85,12 +85,34 @@ end );
 ####################################
 
 ##
+InstallMethod( DecomposeQuiverAlgebraElement,
+        "for a quiver algebra element",
+        [ IsQuiverAlgebraElement ],
+        
+  function( p )
+    
+    if IsQuotientOfPathAlgebraElement( p ) then
+        p := Representative( p );
+    fi;
+    
+    return [ Coefficients( p ),
+             List( Paths( p ),
+                   function( a )
+                     if Length( a ) = 0 then
+                         return [ a ];
+                     fi;
+                     return ArrowList( a );
+                   end ) ];
+    
+end );
+
+##
 InstallMethod( ApplyToQuiverAlgebraElement,
         "for an object and a quiver algebra element",
         [ IsObject, IsQuiverAlgebraElement ],
         
   function( F, p )
-    local A, func, coefs, paths, applyF;
+    local A, func, applyF, coefs, paths;
     
     if IsCapFunctor( F ) then
         A := AsCapCategory( Source( F ) );
@@ -100,20 +122,6 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     else
         Error( "the first argument is neither a CAP functor nor a (functor defining) record\n" );
     fi;
-    
-    if IsQuotientOfPathAlgebraElement( p ) then
-        p := Representative( p );
-    fi;
-    
-    coefs := Coefficients( p );
-    
-    paths := List( Paths( p ),
-                   function( a )
-                     if Length( a ) = 0 then
-                         return [ a ];
-                     fi;
-                     return ArrowList( a );
-                   end );
     
     applyF :=
       function( b )
@@ -128,6 +136,11 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         return m;
         
       end;
+    
+    paths := DecomposeQuiverAlgebraElement( p );
+    
+    coefs := paths[1];
+    paths := paths[2];
     
     paths := List( paths, a -> PreCompose( List( a, applyF ) ) );
     

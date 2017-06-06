@@ -126,6 +126,9 @@ DeclareOperation( "POW",
 #
 ####################################
 
+DeclareOperation( "DecomposeQuiverAlgebraElement",
+        [ IsQuiverAlgebraElement ] );
+
 #! @Description
 #!  Apply the functor (or a defining record) <A>F</A> to the quiver algebra element <A>p</A>.
 #! @Arguments F, path
