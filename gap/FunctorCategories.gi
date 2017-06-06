@@ -209,17 +209,12 @@ InstallMethodWithCache( Hom,
         Hom := CreateCapCategory( );
     fi;
     
-    ## TODO: should be replaced later by a sync process
-    if HasIsAbelianCategory( D ) then
-        SetIsAbelianCategory( Hom, IsAbelianCategory( D ) );
-    fi;
-    
     SetSource( Hom, C );
     SetRange( Hom, D );
     
-    for name in ListKnownCategoricalProperties( C ) do
+    for name in ListKnownCategoricalProperties( D ) do
         name := ValueGlobal( name );
-        Setter( name )( Hom, true );
+        Setter( name )( Hom, name( D ) );
     od;
     
     name_of_object := Concatenation( "An object in the functor category Hom( ", Name( C ), ", ", Name( D ), " )" );
