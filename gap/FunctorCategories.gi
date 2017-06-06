@@ -419,9 +419,7 @@ InstallMethodWithCache( Hom,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        if IsBound( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD.(name) ) then
-            ## skip
-        elif info.return_type = "bool" then
+        if info.return_type = "bool" then
             func := create_func_bool( name );
         elif info.return_type = "object" and info.filter_list = [ "category" ] then
             func := create_func_object0( name );
