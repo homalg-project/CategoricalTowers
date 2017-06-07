@@ -589,7 +589,7 @@ InstallMethod( POW,
 end );
 
 ##
-InstallMethod( CapFunctorFromFinitelyPresentedAlgebroid,
+InstallMethod( CapFunctor,
         "for a CAP category and a record",
         [ IsCapCategory, IsRecord ],
         
@@ -673,7 +673,7 @@ InstallMethod( AddBialgebroidStructure,
         counit.(a) := B0.1;
     od;
     
-    counit_functor := CapFunctorFromFinitelyPresentedAlgebroid( B, counit );
+    counit_functor := CapFunctor( B, counit );
     
     if not IsIdenticalObj( B0, AsCapCategory( Range( counit_functor ) ) ) then
         Error( "counit_functor has a the wrong target category\n" );
@@ -695,7 +695,7 @@ InstallMethod( AddBialgebroidStructure,
         comult.(a) := B2.(o);
     od;
     
-    comult_functor := CapFunctorFromFinitelyPresentedAlgebroid( B, comult );
+    comult_functor := CapFunctor( B, comult );
     
     if not IsIdenticalObj( B2, AsCapCategory( Range( comult_functor ) ) ) then
         Error( "comult_functor has a the wrong target category\n" );

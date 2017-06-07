@@ -174,7 +174,7 @@ DeclareOperation( "Algebroid",
 #!  a functor with source the finitely presented algebroid <A>A</A>.
 #! @Arguments A, F
 #! @Returns a &CAP; functor
-DeclareOperation( "CapFunctorFromFinitelyPresentedAlgebroid",
+DeclareOperation( "CapFunctor",
         [ IsCapCategory, IsRecord ] );
 
 #! @Description
