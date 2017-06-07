@@ -178,6 +178,14 @@ DeclareOperation( "CapFunctor",
         [ IsCapCategory, IsRecord ] );
 
 #! @Description
+#!  Construct, using the record of images <A>eta</A>, a natural transformation
+#!  from the functor <A>F</A> to the parallel functor <A>G</A>.
+#! @Arguments eta, F, G
+#! @Returns a &CAP; natural transformation
+DeclareOperation( "NaturalTransformation",
+        [ IsRecord, IsCapFunctor, IsCapFunctor ] );
+
+#! @Description
 #!  Add to the algebroid <A>A</A> a counit and a comultiplication
 #!  using the defining records <A>counit</A> and <A>comult</A>, respectively.
 #! @Arguments A, counit, comult

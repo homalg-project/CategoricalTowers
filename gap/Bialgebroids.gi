@@ -707,6 +707,37 @@ InstallMethod( AddBialgebroidStructure,
     
 end );
 
+##
+InstallMethod( NaturalTransformation,
+        "for a record and two CAP functors",
+        [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],
+        
+  function( eta, F, G )
+    local nat_tr;
+    
+    if NamesOfComponents( F ) = [ ] then
+        Error( "the record of images is empty\n" );
+    fi;
+    
+    if IsBound( eta.name ) then
+        nat_tr := eta.name;
+    else
+        nat_tr := Concatenation( "Natural transformation from ", Name( F ), " -> ", Name( G ) );
+    fi;
+    
+    nat_tr := NaturalTransformation( nat_tr, F, G );
+    
+    nat_tr!.defining_record := eta;
+    
+    AddNaturalTransformationFunction( nat_tr,
+      function( source, obj, range )
+        return eta.(String( UnderlyingVertex( obj ) ));
+      end );
+    
+    return nat_tr;
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:
