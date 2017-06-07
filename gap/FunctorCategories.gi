@@ -344,45 +344,82 @@ InstallMethodWithCache( Hom,
           
       end;
     
-    ## e.g., DirectSum
+    ## e.g., DirectSum, KernelObject
     create_func_object :=
       function( name )
-        local info, oper;
+        local info, oper, functorial, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        oper := ValueGlobal( name );
         
         if not IsBound( info.functorial ) then
             Error( "the method record entry ", name, ".functorial is not bound\n" );
         fi;
         
-        oper := ValueGlobal( name );
+        functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
-        return ## a constructor for universal objects
-          function( arg )
-            local eval_arg, result, functorial;
+        if IsBound( functorial.input_type ) then
+            type := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial).input_type;
+            type := List( type[2], a -> Position( type[1], a ) );
+        fi;
+        
+        functorial := ValueGlobal( info.functorial );
+        
+        if IsBound( type ) then
             
-            eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+            return ## a constructor for universal objects: KernelObject
+              function( arg )
+                local eval_arg, result;
+                
+                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                
+                result := CapFunctor( name_of_object, B, C );
+                
+                AddObjectFunction( result,
+                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                
+                AddMorphismFunction( result,
+                  function( new_source, morB, new_range )
+                    return CallFuncList( functorial,
+                                   Concatenation(
+                                           [ new_source ],
+                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ){type} ) ),
+                                           [ new_range ] ) );
+                    end );
+                
+                return AsObjectInHomCategory( Hom, result );
+                
+            end;
             
-            result := CapFunctor( name_of_object, B, C );
+        else
             
-            AddObjectFunction( result,
-                    objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+            return ## a constructor for universal objects: DirectSum
+              function( arg )
+                local eval_arg, result;
+                
+                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                
+                result := CapFunctor( name_of_object, B, C );
+                
+                AddObjectFunction( result,
+                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                
+                AddMorphismFunction( result,
+                  function( new_source, morB, new_range )
+                    return CallFuncList( functorial,
+                                   Concatenation(
+                                           [ new_source ],
+                                           List( eval_arg, F -> ApplyCell( F, morB ) ),
+                                           [ new_range ] ) );
+                    end );
+                
+                return AsObjectInHomCategory( Hom, result );
+                
+            end;
             
-            functorial := ValueGlobal( info.functorial );
-            
-            AddMorphismFunction( result,
-              function( new_source, morB, new_range )
-                return CallFuncList( functorial,
-                               Concatenation(
-                                       [ new_source ],
-                                       List( eval_arg, F -> ApplyCell( F, morB ) ),
-                                       [ new_range ] ) );
-              end );
-            
-            return AsObjectInHomCategory( Hom, result );
-            
-          end;
-          
+        fi;
+        
       end;
     
     name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
