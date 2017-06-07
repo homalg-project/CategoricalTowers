@@ -311,27 +311,27 @@ InstallMethodWithCache( Hom,
     ## e.g., ZeroObject
     create_func_object0 :=
       function( name )
-        local info, oper;
+        local info, oper, functorial;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        oper := ValueGlobal( name );
         
         if not IsBound( info.functorial ) then
             Error( "the method record entry ", name, ".functorial is not bound\n" );
         fi;
         
-        oper := ValueGlobal( name );
+        functorial := ValueGlobal( info.functorial );
         
         return
           function( )
-            local result, objC, functorial;
+            local result, objC;
             
             result := CapFunctor( name_of_object, B, C );
             
             objC := oper( C );
             
             AddObjectFunction( result, objB -> objC );
-            
-            functorial := ValueGlobal( info.functorial );
             
             AddMorphismFunction( result,
               function( new_source, morB, new_range )
