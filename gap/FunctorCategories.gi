@@ -412,9 +412,12 @@ InstallMethodWithCache( Hom,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
+        ## Code from IntrinsicCategories enforcing the installation of
+        ## UniversalObject and UniversalMorphismWithGivenUniversalObject
+        ## instead of the installation of UniversalMorphism
+        #if not info.with_given_without_given_name_pair[2] = name then
+        #    Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        #fi;
         
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
@@ -492,17 +495,20 @@ InstallMethodWithCache( Hom,
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
                 continue;
-            elif IsList( info.with_given_without_given_name_pair ) and
-              name = info.with_given_without_given_name_pair[1] then
-                ## do not install universal morphisms but their
-                ## with-given-universal-object counterpart
-                Add( recnames, info.with_given_without_given_name_pair[2] );
-                continue;
-            elif IsBound( info.universal_object ) and
-              Position( recnames, info.universal_object ) = fail then
-                ## add the corresponding universal object
-                ## at the end of the list for its method to be installed
-                Add( recnames, info.universal_object );
+            ## Code from IntrinsicCategories enforcing the installation of
+            ## UniversalObject and UniversalMorphismWithGivenUniversalObject
+            ## instead of the installation of UniversalMorphism
+            #elif IsList( info.with_given_without_given_name_pair ) and
+            #  name = info.with_given_without_given_name_pair[1] then
+            #    ## do not install universal morphisms but their
+            #    ## with-given-universal-object counterpart
+            #    Add( recnames, info.with_given_without_given_name_pair[2] );
+            #    continue;
+            #elif IsBound( info.universal_object ) and
+            #  Position( recnames, info.universal_object ) = fail then
+            #    ## add the corresponding universal object
+            #    ## at the end of the list for its method to be installed
+            #    Add( recnames, info.universal_object );
             fi;
             
             if IsList( info.with_given_without_given_name_pair ) then
