@@ -90,6 +90,9 @@ DeclareOperation( "ApplyCell",
         [ IsCapNaturalTransformation, IsCapCategoryObject ] );
 
 DeclareOperation( "ApplyCell",
+        [ IsCapNaturalTransformation, IsCapCategoryMorphism ] );
+
+DeclareOperation( "ApplyCell",
         [ IsList, IsCapCategoryCell ] );
 
 DeclareOperation( "ApplyCell",

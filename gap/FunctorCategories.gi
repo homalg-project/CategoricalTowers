@@ -82,6 +82,20 @@ InstallMethod( ApplyCell,
 
 ##
 InstallMethod( ApplyCell,
+        "for a CAP natural transformation and a CAP morphism",
+        [ IsCapNaturalTransformation, IsCapCategoryMorphism ],
+        
+  function( eta, mor )
+    
+    return [ ApplyNaturalTransformation( eta, Source( mor ) ),
+             ApplyFunctor( Source( eta ), mor ),
+             ApplyFunctor( Range( eta ), mor ),
+             ApplyNaturalTransformation( eta, Range( mor ) ) ];
+    
+end );
+
+##
+InstallMethod( ApplyCell,
         "for a list and a CAP cell",
         [ IsList, IsCapCategoryCell ],
         
