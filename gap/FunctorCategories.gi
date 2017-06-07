@@ -492,7 +492,7 @@ InstallMethodWithCache( Hom,
     
     Finalize( Hom );
     
-    IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C );
+    IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( D );
     
     return Hom;
     
