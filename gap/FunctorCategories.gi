@@ -270,6 +270,28 @@ InstallMethodWithCache( Hom,
             
           end );
         
+        AddIsEqualForObjects( Hom,
+          function( F, G )
+            
+            return ForAll( vertices, o -> IsEqualForObjects( F( o ), G( o ) ) ) and
+                   ForAll( arrows, m -> IsEqualForMorphisms( F( m ), G( m ) ) );
+            
+          end );
+        
+        AddIsEqualForMorphisms( Hom,
+          function( eta, epsilon )
+            
+            return ForAll( vertices, o -> IsEqualForMorphisms( eta( o ), epsilon( o ) ) );
+            
+          end );
+        
+        AddIsCongruentForMorphisms( Hom,
+          function( eta, epsilon )
+            
+            return ForAll( vertices, o -> IsCongruentForMorphisms( eta( o ), epsilon( o ) ) );
+            
+          end );
+        
     fi;
     
     ## e.g., ZeroObject
@@ -434,7 +456,15 @@ InstallMethodWithCache( Hom,
              "IsEqualForCacheForMorphisms"
              ];
     
-    Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+       HasCounit( B ) and HasComultiplication( B ) then
+        Append( skip,
+                [ "TensorUnit",
+                  "TensorProductOnObjects",
+                  ] );
+    else
+        Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+    fi;
     
     for func in skip do
         
@@ -489,6 +519,63 @@ InstallMethodWithCache( Hom,
         add( Hom, func );
         
     od;
+    
+    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+       HasCounit( B ) and HasComultiplication( B ) then
+        
+        AddTensorUnit( Hom,
+          function( )
+            local I, I_C, counit, id;
+            
+            I := CapFunctor( name_of_object, B, C );
+            
+            I_C := TensorUnit( C );
+            
+            AddObjectFunction( I, objB -> I_C );
+            
+            counit := Counit( B );
+            
+            id := IdentityMorphism( I_C );
+            
+            AddMorphismFunction( I,
+              function( new_source, morB, new_range )
+                return Coefficients( UnderlyingQuiverAlgebraElement( ApplyFunctor( counit, morB ) ) )[1] * id;
+              end );
+            
+            return AsObjectInHomCategory( Hom, I );
+            
+          end );
+          
+        AddTensorProductOnObjects( Hom,
+          function( F, G )
+            local FG, comult;
+            
+            FG := CapFunctor( name_of_object, B, C );
+            
+            AddObjectFunction( FG,
+                    objB -> TensorProductOnObjects( F( objB ), G( objB ) ) );
+            
+            comult := Comultiplication( B );
+            
+            AddMorphismFunction( FG,
+              function( new_source, morB, new_range )
+                local Delta;
+                
+                Delta := ApplyFunctor( comult, morB );
+                
+                Delta := DecompositionOfASecondOrderTensor( Delta );
+                
+                return Sum( List( Delta,
+                               s -> s[1] * PreCompose( List( s[2],
+                                       t -> TensorProductOnMorphisms( F( t[1] ), G( t[2] ) ) ) ) ) );
+                
+              end );
+            
+            return AsObjectInHomCategory( Hom, FG );
+            
+          end );
+          
+    fi;
     
     Finalize( Hom );
     
