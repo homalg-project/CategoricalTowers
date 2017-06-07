@@ -196,32 +196,32 @@ InstallMethodWithCache( Hom,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
-  function( C, D )
+  function( B, C )
     local name, Hom, name_of_object, vertices, create_func_bool, arrows, relations,
           create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
           recnames, skip, func, pos, info, add;
     
-    if HasName( C ) and HasName( D ) then
-        name := Concatenation( "The category of functors from ", Name( C ), " -> ", Name( D ) );
+    if HasName( B ) and HasName( C ) then
+        name := Concatenation( "The category of functors from ", Name( B ), " -> ", Name( C ) );
         Hom := CreateCapCategory( name );
     else
         Hom := CreateCapCategory( );
     fi;
     
-    SetSource( Hom, C );
-    SetRange( Hom, D );
+    SetSource( Hom, B );
+    SetRange( Hom, C );
     
-    for name in ListKnownCategoricalProperties( D ) do
+    for name in ListKnownCategoricalProperties( C ) do
         name := ValueGlobal( name );
-        Setter( name )( Hom, name( D ) );
+        Setter( name )( Hom, name( C ) );
     od;
     
-    name_of_object := Concatenation( "An object in the functor category Hom( ", Name( C ), ", ", Name( D ), " )" );
+    name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
-    if HasIsFinitelyPresentedCategory( C ) and IsFinitelyPresentedCategory( C ) then
+    if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         
-        vertices := SetOfObjects( C );
+        vertices := SetOfObjects( B );
         
         create_func_bool :=
           function( name )
@@ -233,7 +233,7 @@ InstallMethodWithCache( Hom,
             
         end;
         
-        arrows := SetOfGeneratingMorphisms( C );
+        arrows := SetOfGeneratingMorphisms( B );
         
         AddIsWellDefinedForMorphisms( Hom,
           function( eta )
@@ -252,7 +252,7 @@ InstallMethodWithCache( Hom,
             
           end );
         
-        relations := RelationsOfAlgebroid( C );
+        relations := RelationsOfAlgebroid( B );
         relations := List( relations, UnderlyingQuiverAlgebraElement );
         
         AddIsWellDefinedForObjects( Hom,
@@ -287,18 +287,18 @@ InstallMethodWithCache( Hom,
         
         return
           function( )
-            local result, objD, functorial;
+            local result, objC, functorial;
             
-            result := CapFunctor( name_of_object, C, D );
+            result := CapFunctor( name_of_object, B, C );
             
-            objD := oper( D );
+            objC := oper( C );
             
-            AddObjectFunction( result, objC -> objD );
+            AddObjectFunction( result, objB -> objC );
             
             functorial := ValueGlobal( info.functorial );
             
             AddMorphismFunction( result,
-              function( new_source, morC, new_range )
+              function( new_source, morB, new_range )
                 return functorial( new_source, new_range );
               end );
             
@@ -327,19 +327,19 @@ InstallMethodWithCache( Hom,
             
             eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
             
-            result := CapFunctor( name_of_object, C, D );
+            result := CapFunctor( name_of_object, B, C );
             
             AddObjectFunction( result,
-                    objC -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objC ) ) ) );
+                    objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
             
             functorial := ValueGlobal( info.functorial );
             
             AddMorphismFunction( result,
-              function( new_source, morC, new_range )
+              function( new_source, morB, new_range )
                 return CallFuncList( functorial,
                                Concatenation(
                                        [ new_source ],
-                                       List( eval_arg, F -> ApplyCell( F, morC ) ),
+                                       List( eval_arg, F -> ApplyCell( F, morB ) ),
                                        [ new_range ] ) );
               end );
             
@@ -349,7 +349,7 @@ InstallMethodWithCache( Hom,
           
       end;
     
-    name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( C ), ", ", Name( D ), " )" );
+    name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
@@ -373,8 +373,8 @@ InstallMethodWithCache( Hom,
             result := NaturalTransformation( name_of_morphism, S, T );
             
             AddNaturalTransformationFunction( result,
-              function( source, objC, range )
-                return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objC ) ) );
+              function( source, objB, range )
+                return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
             
             return AsMorphismInHomCategory( Hom, result );
@@ -411,8 +411,8 @@ InstallMethodWithCache( Hom,
             result := NaturalTransformation( name_of_morphism, S, T );
             
             AddNaturalTransformationFunction( result,
-              function( source, objC, range )
-                return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objC ) ) );
+              function( source, objB, range )
+                return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
             
             return AsMorphismInHomCategory( Hom, result );
@@ -422,7 +422,7 @@ InstallMethodWithCache( Hom,
       end;
     
     ## TODO: remove `Primitively' for performance?
-    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( D ) );
+    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
     
     skip := [
              "IsWellDefinedForObjects",
@@ -450,7 +450,7 @@ InstallMethodWithCache( Hom,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         if info.return_type = "bool" then
-            if not ( HasIsFinitelyPresentedCategory( C ) and IsFinitelyPresentedCategory( C ) ) then
+            if not ( HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) then
                 continue;
             fi;
             func := create_func_bool( name );
@@ -492,7 +492,7 @@ InstallMethodWithCache( Hom,
     
     Finalize( Hom );
     
-    IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( D );
+    IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C );
     
     return Hom;
     

@@ -18,18 +18,21 @@ SetInfoLevel( InfoFunctorCategories, 1 );
 
 #! @Description
 #!  The &GAP; category of cells in a Hom-category of functors between two fixed categories.
+#! @Arguments cell
 DeclareCategory( "IsCapCategoryCellInHomCategory",
         IsCapCategoryCell and
         IsAttributeStoringRep );
 
 #! @Description
 #!  The &GAP; category of objects in a Hom-category of functors between two fixed categories.
+#! @Arguments obj
 DeclareCategory( "IsCapCategoryObjectInHomCategory",
         IsCapCategoryCellInHomCategory and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Hom-category of functors between two fixed categories.
+#! @Arguments mor
 DeclareCategory( "IsCapCategoryMorphismInHomCategory",
         IsCapCategoryCellInHomCategory and
         IsCapCategoryMorphism );
@@ -99,16 +102,16 @@ DeclareOperation( "ApplyCell",
 ####################################
 
 #! @Description
-#!  Construct the category <C>Hom( <A>C</A>, <A>D</A> )</C> of
-#!  functors from the small category <A>C</A> to the category <A>D</A> as objects
+#!  Construct the category <C>Hom( <A>B</A>, <A>C</A> )</C> of
+#!  functors from the small category <A>B</A> to the category <A>C</A> as objects
 #!  and their natural transformations as morphisms.
-#! @Arguments C, D
+#! @Arguments B, C
 #! @Returns a &CAP; category
 DeclareOperationWithCache( "Hom",
         [ IsCapCategory, IsCapCategory ] );
 
 #! @Description
-#!  Turn the functor <A>F</A>:$C \to D$ into an object in the category of functors <C><A>H</A> := Hom( C, D )</C>.
+#!  Turn the functor <A>F</A>:$B \to C$ into an object in the category of functors <C><A>H</A> := Hom( B, C )</C>.
 #! @Arguments H, F
 #! @Returns an object in a &CAP; category
 #! @Group AsObjectInHomCategory
@@ -122,8 +125,8 @@ DeclareOperation( "AsObjectInHomCategory",
 
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$
-#!  into a morphism in the category of functors <C><A>H</A> := Hom( C, D )</C>,
-#!  where <C>C := Source( F ) = Source( G )</C> and <C>D := Range( F ) = Range( G )</C>.
+#!  into a morphism in the category of functors <C><A>H</A> := Hom( B, C )</C>,
+#!  where <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
 #! @Arguments H, eta
 #! @Returns a morphism in a &CAP; category
 #! @Group AsMorphismInHomCategory
