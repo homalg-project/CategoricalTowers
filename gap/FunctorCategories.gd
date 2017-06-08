@@ -134,9 +134,10 @@ DeclareOperation( "AsObjectInHomCategory",
         [ IsCapCategory, IsRecord ] );
 
 #! @Description
-#!  Turn the natrual transformation <A>eta</A>:$F \to G$
-#!  into a morphism in the category of functors <C><A>H</A> := Hom( B, C )</C>,
-#!  where <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
+#!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
+#!  <C><A>U</A> := AsObjectInHomCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInHomCategory( G )</C>
+#!  in the category of functors <C><A>H</A> := Hom( B, C )</C>, where
+#!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
 #! @Arguments H, eta
 #! @Returns a morphism in a &CAP; category
 #! @Group AsMorphismInHomCategory
@@ -147,3 +148,10 @@ DeclareOperation( "AsMorphismInHomCategory",
 #! @Group AsMorphismInHomCategory
 DeclareAttribute( "AsMorphismInHomCategory",
         IsCapNaturalTransformation );
+
+#! @Arguments U, e, V
+#!  An alternative input is the triple a defining record (<A>U</A>, <A>e</A>, <A>V</A>),
+#!  where <A>e</A> is a defining record of <A>eta</A>.
+#! @Group AsMorphismInHomCategory
+DeclareOperation( "AsMorphismInHomCategory",
+        [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ] );

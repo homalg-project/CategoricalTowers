@@ -217,6 +217,23 @@ InstallMethod( AsMorphismInHomCategory,
 end );
 
 ##
+InstallMethod( AsMorphismInHomCategory,
+        "for a record and two objects in Hom-category",
+        [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ],
+        
+  function( U, e, V )
+    local eta;
+    
+    eta := NaturalTransformation(
+                   e,
+                   UnderlyingCapTwoCategoryCell( U ),
+                   UnderlyingCapTwoCategoryCell( V ) );
+    
+    return AsMorphismInHomCategory( eta );
+    
+end );
+
+##
 InstallMethodWithCache( Hom,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
