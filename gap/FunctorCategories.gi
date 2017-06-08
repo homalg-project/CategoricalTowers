@@ -168,6 +168,17 @@ InstallMethod( AsObjectInHomCategory,
 end );
 
 ##
+InstallMethod( AsObjectInHomCategory,
+        "for a CAP category and a record",
+        [ IsCapCategory, IsRecord ],
+        
+  function( B, f )
+    
+    return AsObjectInHomCategory( CapFunctor( B,f ) );
+    
+end );
+
+##
 InstallMethod( AsMorphismInHomCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],

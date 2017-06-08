@@ -114,7 +114,7 @@ DeclareOperationWithCache( "Hom",
         [ IsCapCategory, IsCapCategory ] );
 
 #! @Description
-#!  Turn the functor <A>F</A>:$B \to C$ into an object in the category of functors <C><A>H</A> := Hom( B, C )</C>.
+#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>H</A> := Hom( <A>B</A>, C )</C>.
 #! @Arguments H, F
 #! @Returns an object in a &CAP; category
 #! @Group AsObjectInHomCategory
@@ -123,8 +123,15 @@ DeclareOperation( "AsObjectInHomCategory",
 
 #! @Arguments F
 #! @Group AsObjectInHomCategory
+DeclareAttribute( "AsObjectInHomCategory",
+        IsCapFunctor );
+
+#! @Description
+#! @Arguments B, f
+#!  An alternative input is the source category <A>B</A> and defining record <A>f</A> of <A>F</A>.
+#! @Group AsObjectInHomCategory
 DeclareOperation( "AsObjectInHomCategory",
-        [ IsCapFunctor ] );
+        [ IsCapCategory, IsRecord ] );
 
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$
@@ -138,5 +145,5 @@ DeclareOperation( "AsMorphismInHomCategory",
 
 #! @Arguments eta
 #! @Group AsMorphismInHomCategory
-DeclareOperation( "AsMorphismInHomCategory",
-        [ IsCapNaturalTransformation ] );
+DeclareAttribute( "AsMorphismInHomCategory",
+        IsCapNaturalTransformation );
