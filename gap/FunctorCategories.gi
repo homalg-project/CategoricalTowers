@@ -624,7 +624,19 @@ InstallMethodWithCache( Hom,
             
             AddMorphismFunction( I,
               function( new_source, morB, new_range )
-                return Coefficients( UnderlyingQuiverAlgebraElement( ApplyFunctor( counit, morB ) ) )[1] * id;
+                local coef;
+                
+                coef := Coefficients( UnderlyingQuiverAlgebraElement( ApplyFunctor( counit, morB ) ) );
+                
+                if Length( coef ) = 1 then
+                    coef := coef[1];
+                elif coef = [ ] then
+                    coef := 0;
+                else
+                    Error( "the list coef has more than one entry\n" );
+                fi;
+                
+                return coef * id;
               end );
             
             return AsObjectInHomCategory( Hom, I );
