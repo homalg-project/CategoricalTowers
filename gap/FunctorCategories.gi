@@ -245,7 +245,7 @@ InstallMethodWithCache( Hom,
           recnames, skip, func, pos, info, add;
     
     if HasName( B ) and HasName( C ) then
-        name := Concatenation( "The category of functors from ", Name( B ), " -> ", Name( C ) );
+        name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
         Hom := CreateCapCategory( name );
     else
         Hom := CreateCapCategory( );
