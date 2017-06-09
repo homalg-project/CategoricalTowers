@@ -121,13 +121,13 @@ InstallMethod( DecompositionOfMorphismInSquareOfAlgebroid,
     
     Rq := UnderlyingQuiverAlgebra( B );
     
-    mor := UnderlyingQuiverAlgebraElement( mor );
-    
-    mor := DecomposeQuiverAlgebraElement( mor );
-    
     gens := BijectionBetweenPairsAndElementaryTensors( Rq );
     prod := gens[2];
     gens := gens[1];
+    
+    mor := UnderlyingQuiverAlgebraElement( mor );
+    
+    mor := DecomposeQuiverAlgebraElement( mor );
     
     mor[2] := List( mor[2], p -> List( p, a -> prod[Position( gens, a )] ) );
     
