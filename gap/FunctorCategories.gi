@@ -660,7 +660,7 @@ InstallMethodWithCache( Hom,
                 
                 Delta := ApplyFunctor( comult, morB );
                 
-                Delta := DecompositionOfASecondOrderTensor( Delta );
+                Delta := DecompositionOfMorphismInSquareOfAlgebroid( Delta );
                 
                 return Sum( List( Delta,
                                s -> s[1] * PreCompose( List( s[2],
