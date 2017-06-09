@@ -543,6 +543,7 @@ InstallMethodWithCache( Hom,
         Append( skip,
                 [ "TensorUnit",
                   "TensorProductOnObjects",
+                  "DualOnObjects",
                   ] );
     else
         Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
@@ -669,6 +670,35 @@ InstallMethodWithCache( Hom,
               end );
             
             return AsObjectInHomCategory( Hom, FG );
+            
+          end );
+          
+        AddDualOnObjects( Hom,
+          function( F )
+            local Fd, antipode;
+            
+            Fd := CapFunctor( name_of_object, B, C );
+            
+            AddObjectFunction( Fd,
+                    objB -> DualOnObjects( F( objB ) ) );
+            
+            antipode := Antipode( B );
+            
+            AddMorphismFunction( Fd,
+              function( new_source, morB, new_range )
+                local S;
+                
+                S := ApplyFunctor( antipode, morB );
+                
+                S := DecompositionOfMorphismInAlgebroid( S );
+                
+                return Sum( List( S,
+                               s -> s[1] * PreCompose( List( s[2],
+                                       t -> DualOnMorphisms( F( t ) ) ) ) ) );
+                
+              end );
+            
+            return AsObjectInHomCategory( Hom, Fd );
             
           end );
           
