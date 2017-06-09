@@ -247,7 +247,11 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     coefs := paths[1];
     paths := paths[2];
     
-    paths := List( paths, a -> PreCompose( List( a, applyF ) ) );
+    if not ( IsBound( F!.IsContravariant ) and F!.IsContravariant = true ) then
+        paths := List( paths, a -> PreCompose( List( a, applyF ) ) );
+    else
+        paths := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
+    fi;
     
     return Sum( ListN( coefs, paths, function( r, p ) return r * p; end ) );
     
