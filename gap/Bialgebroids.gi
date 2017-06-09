@@ -110,6 +110,39 @@ InstallMethod( BijectionBetweenPairsAndElementaryTensors,
 end );
 
 ##
+InstallMethod( DecompositionOfMorphismInAlgebroid,
+        "for a morphism in an algebroid",
+        [ IsCapCategoryMorphismInAlgebroidRep ],
+        
+  function( mor )
+    local B, func;
+    
+    B := CapCategory( mor );
+    
+    mor := UnderlyingQuiverAlgebraElement( mor );
+    
+    mor := DecomposeQuiverAlgebraElement( mor );
+    
+    func :=
+      function( a )
+        return List( a,
+                     function( f )
+                       f := B.(String( f ));
+                       if IsCapCategoryObject( f ) then
+                           return IdentityMorphism( f );
+                       fi;
+                       return f;
+                     end );
+        
+      end;
+    
+    mor[2] := List( mor[2], func );
+    
+    return ListN( mor[1], mor[2], function( r, s ) return [ r, s ]; end );
+    
+end );
+
+##
 InstallMethod( DecompositionOfMorphismInSquareOfAlgebroid,
         "for a morphism in an algebroid",
         [ IsCapCategoryMorphismInAlgebroidRep ],

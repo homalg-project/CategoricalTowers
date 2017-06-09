@@ -123,6 +123,9 @@ DeclareOperation( "POW",
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 
+DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
+        IsCapCategoryMorphismInAlgebroid );
+
 DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
         IsCapCategoryMorphismInAlgebroid );
 
