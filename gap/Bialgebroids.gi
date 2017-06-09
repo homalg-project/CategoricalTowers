@@ -708,6 +708,26 @@ InstallMethod( AddBialgebroidStructure,
 end );
 
 ##
+InstallMethod( Opposite,
+        "for a CAP category",
+        [ IsCapCategory and HasUnderlyingQuiver ],
+        
+  function( A )
+    local q_op, R, A_op;
+    
+    q_op := OppositeQuiver( UnderlyingQuiver( A ) );
+    
+    R := LeftActingDomain( UnderlyingQuiverAlgebra( A ) );
+    
+    A_op := Algebroid( R, q_op );
+    
+    SetOpposite( A_op, A );
+    
+    return A_op;
+    
+end );
+
+##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
         [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],
