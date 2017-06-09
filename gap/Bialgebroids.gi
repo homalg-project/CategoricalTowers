@@ -765,6 +765,34 @@ InstallMethod( Opposite,
 end );
 
 ##
+InstallMethod( AddAntipode,
+        "for a CAP category and a record",
+        [ IsCapCategory, IsRecord ],
+        
+  function( B, S )
+    local vertices, a, S_functor;
+    
+    B!.Name := Concatenation( "Hopf ", B!.Name{[ 3 .. Length( B!.Name ) ]} );
+    
+    vertices := List( Vertices( UnderlyingQuiver( B ) ), String );
+    
+    S := ShallowCopy( S );
+    S!.IsContravariant := true;
+    
+    S_functor := CapFunctor( B, S );
+    S_functor!.IsContravariant := true;
+    
+    S_functor!.Name := Concatenation( "Cof", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );
+    
+    if not IsIdenticalObj( B, AsCapCategory( Range( S_functor ) ) ) then
+        Error( "S_functor has a the wrong target category\n" );
+    fi;
+    
+    SetAntipode( B, S_functor );
+    
+end );
+
+##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
         [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],

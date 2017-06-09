@@ -99,6 +99,13 @@ DeclareAttribute( "Comultiplication",
         IsCapCategory );
 
 #! @Description
+#!  The antipode of the Hopf algebroid <A>B</A>.
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "Antipode",
+        IsCapCategory );
+
+#! @Description
 #!  The vertex of the quiver underlying the object <A>obj</A> in an algebroid.
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
@@ -195,6 +202,13 @@ DeclareOperation( "NaturalTransformation",
 #! @Returns a &CAP; category
 DeclareOperation( "AddBialgebroidStructure",
         [ IsCapCategory, IsRecord, IsRecord ] );
+
+#! @Description
+#!  Add to the bialgebroid <A>B</A> an antipode <A>S</A>.
+#! @Arguments B, S
+#! @Returns a &CAP; category
+DeclareOperation( "AddAntipode",
+        [ IsCapCategory, IsRecord ] );
 
 #! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,
