@@ -123,7 +123,7 @@ DeclareOperation( "POW",
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 
-DeclareAttribute( "DecompositionOfASecondOrderTensor",
+DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
         IsCapCategoryMorphismInAlgebroid );
 
 ####################################

@@ -110,7 +110,7 @@ InstallMethod( BijectionBetweenPairsAndElementaryTensors,
 end );
 
 ##
-InstallMethod( DecompositionOfASecondOrderTensor,
+InstallMethod( DecompositionOfMorphismInSquareOfAlgebroid,
         "for a morphism in an algebroid",
         [ IsCapCategoryMorphismInAlgebroidRep ],
         
