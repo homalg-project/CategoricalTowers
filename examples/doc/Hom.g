@@ -29,7 +29,7 @@ RelationsOfAlgebroid( B );
 #! [ (1)-[1*(t*t*t) - 1*(1)]->(1) ]
 #! @EndExample
 
-#! Construct the a $\mathbb{Q}$-linear morphism $\epsilon \colon B \to \QQ$ defined by $\epsilon(t)=1$.
+#! Construct the a $\mathbb{Q}$-linear morphism $\epsilon \colon B \to \mathbb{Q}$ defined by $\epsilon(t)=1$.
 
 #! @Example
 counit := rec( t := 1 );
