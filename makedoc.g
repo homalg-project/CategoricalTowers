@@ -10,7 +10,7 @@ fi;
 AutoDoc( 
         rec(
             scaffold := rec( gapdoc_latex_options := rec( 
-                             LateExtraPreamble := "\\usepackage{amsmath}\\usepackage[T1]{fontenc}\n\\usepackage{tikz}\n\\usetikzlibrary{shapes,arrows,matrix}\n\\usepackage{faktor}" 
+                             LateExtraPreamble := "\\usepackage{amsmath}\\usepackage[T1]{fontenc}\n\\usepackage{tikz}\n\\usetikzlibrary{shapes,arrows,matrix}\n\\usepackage{faktor}\n\\usepackage{mathtools}\n\\setcounter{tocdepth}{2}" 
                                                         ),
                              entities := [ "GAP4", "homalg", "CAP", "QPA" ],
                              ),
