@@ -375,7 +375,7 @@ Source( epsilon ) = V;
 #! true
 #! @EndExample
 
-#! But also its range is isomorphic to $V$.
+#! But its range is also isomorphic to $V$.
 
 #! @Example
 Range( epsilon ) = V;
@@ -406,7 +406,7 @@ VVs := TensorProductOnObjects( V, Vs );
 #!  the right quiver q(1)[t:1->1] -> Category of matrices over Q>
 #! @EndExample
 
-#! We have $\operatorname{Hom}(V,V) = V^{\ast} \otimes V$, but not $\operatorname{Hom}(V,V) = V \otimes V^{\ast}$..
+#! We have $\operatorname{Hom}(V,V) = V^{\ast} \otimes V$, but not $\operatorname{Hom}(V,V) = V \otimes V^{\ast}$.
 
 #! @Example
 EndV = VsV;
