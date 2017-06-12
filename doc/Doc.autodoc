@@ -1,4 +1,11 @@
 @Chapter Categories of functors
 
+@Section Introduction
+
+@Subsection Representations of the cyclic groups of order 3 as a category of functors
+
 @InsertSystem Hom
+
+@Subsection Differential modules as a category of functors
+
 @InsertSystem DifferentialModules
