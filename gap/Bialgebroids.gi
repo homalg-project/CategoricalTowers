@@ -782,7 +782,7 @@ InstallMethod( AddAntipode,
     S_functor := CapFunctor( B, S );
     S_functor!.IsContravariant := true;
     
-    S_functor!.Name := Concatenation( "Cof", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );
+    S_functor!.Name := Concatenation( "Contravariant f", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );
     
     if not IsIdenticalObj( B, AsCapCategory( Range( S_functor ) ) ) then
         Error( "S_functor has a the wrong target category\n" );
