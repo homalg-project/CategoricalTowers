@@ -67,6 +67,16 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 ####################################
 
 ##
+InstallOtherMethod( ZeroObjectFunctorial,
+        [ IsCapCategoryObject, IsCapCategoryObject ],
+        
+  function( M, N )
+    
+    return ZeroMorphism( M, N );
+    
+end );
+
+##
 InstallMethod( ApplyCell,
         "for a CAP functor and a CAP cell",
         [ IsCapFunctor, IsCapCategoryCell ],
