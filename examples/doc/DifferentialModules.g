@@ -3,7 +3,7 @@
 LoadPackage( "FunctorCategories" );
 
 #! We illustrate how the category of functors can be used to model differential modules.
-#! First, create a quiver $q$ with one edge 1 and one vertex $t$.
+#! First, create a quiver $q$ with one vertex 1 and one edge $t$.
 
 #! @Example
 q := RightQuiver( "q(1)[t:1->1]" );

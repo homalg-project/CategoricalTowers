@@ -89,12 +89,23 @@ DeclareOperation( "ApplyCell",
 DeclareOperation( "ApplyCell",
         [ IsCapNaturalTransformation, IsCapCategoryObject ] );
 
+#! @Description
+#! @Returns Four morphisms that form a commutative square that appears in the definition of natural transformations (the compatibility of a natural transformation <A>eta</A> with morphisms <A>mor</A>)
+#! @Arguments eta, mor
 DeclareOperation( "ApplyCell",
         [ IsCapNaturalTransformation, IsCapCategoryMorphism ] );
 
+#! @Description
+#!  Apply every element of the List <A>L</A> to the cell <A>c</A> and return the obtained list.
+#! @Arguments L, c
+#! @Returns a list of &CAP; cells
 DeclareOperation( "ApplyCell",
         [ IsList, IsCapCategoryCell ] );
 
+#! @Description
+#!  Given a natural number <A>n</A> and a cell <A>c</A> return <A>n</A>.
+#! @Arguments n, c
+#! @Returns a natural number
 DeclareOperation( "ApplyCell",
         [ IsInt, IsCapCategoryCell ] );
 
