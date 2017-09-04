@@ -3,21 +3,21 @@
 LoadPackage( "Bialgebroid" );
 LoadPackage( "MatricesForHomalg" );
 
-#! Create a left quiver $ql$ with 3 vertices u,v,w and 4 edges a,b,c,d
+#! Create a left quiver $ql$ with 3 vertices u,v,w and 4 edges a,b,c,d.
 
 #! @Example
 ql := LeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );
 #! ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]
 #! @EndExample
 
-#! Create a right quiver $qr$ with 3 vertices u,v,w and 4 edges a,b,c,d
+#! Create a right quiver $qr$ with 3 vertices u,v,w and 4 edges a,b,c,d.
 
 #! @Example
 qr := RightQuiver( "qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );
 #! qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]
 #! @EndExample
 
-#! Create algebroids over these quivers
+#! Create algebroids from these quivers over $\mathbb{Q}$.
 
 #! @Example
 LoadPackage( "MatricesForHomalg" );
@@ -56,7 +56,7 @@ PreCompose( Ar.a, Ar.d );
 #! (u)-[1*(a*d)]->(w)
 #! @EndExample
 
-#! We also have addition and subtraction of morphisms and scalar multiplication with elements from the ground ring.
+#! We also have addition and subtraction of morphisms and scalar multiplication with elements from the ground ring $\mathbb{Q}$.
 
 #! @Example
 Al.b+Al.c;
