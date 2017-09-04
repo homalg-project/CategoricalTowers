@@ -9,7 +9,7 @@ q := RightQuiver( "q(u,v)[a:u->v,b:v->u]" );
 #! q(u,v)[a:u->v,b:v->u]
 #! @EndExample
 
-#! Create the path algebra $\mathbb{Q}_q$ of $q$ over $\mathbb{Q}$.
+#! Create the path algebra $\mathbb{Q}q$ of $q$ over $\mathbb{Q}$.
 
 #! @Example
 q := RightQuiver( "q(u,v)[a:u->v,b:v->u]" );
@@ -20,7 +20,7 @@ Qq := PathAlgebra( Q, q );
 #! Q * q
 #! @EndExample
 
-#! Form a quotient of $\mathbb{Q}_q$ by the relations $ab - u$ and $ba - v$.
+#! Form a quotient of $\mathbb{Q}q$ by the relations $ab - u$ and $ba - v$.
 
 #! @Example
 B := Algebroid( Qq, [ Qq.a * Qq.b - Qq.u, Qq.b * Qq.a - Qq.v ] );
