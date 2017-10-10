@@ -391,3 +391,31 @@ InstallMethod( RightPresentation,
     return HomalgModule( M );
     
 end );
+
+##
+InstallMethod( HomalgZeroLeftModule,
+        "for a homalg ring",
+        [ IsHomalgRing ],
+
+  function( R )
+    local A;
+    
+    A := CategoryOfHomalgLeftModules( R );
+    
+    return ZeroObject( A );
+    
+end );
+
+##
+InstallMethod( HomalgZeroRightModule,
+        "for a homalg ring",
+        [ IsHomalgRing ],
+
+  function( R )
+    local A;
+    
+    A := CategoryOfHomalgRightModules( R );
+    
+    return ZeroObject( A );
+    
+end );
