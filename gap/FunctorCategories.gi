@@ -408,33 +408,7 @@ InstallMethodWithCache( Hom,
         
         ## no unified input syntax for *FunctorialWithGiven* (yet),
         ## https://github.com/homalg-project/CAP_project/pull/116
-        if not diagram then
-            
-            return ## a constructor for universal objects: KernelObject
-              function( arg )
-                local eval_arg, result;
-                
-                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
-                
-                result := CapFunctor( name_of_object, B, C );
-                
-                AddObjectFunction( result,
-                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
-                
-                AddMorphismFunction( result,
-                  function( new_source, morB, new_range )
-                    return CallFuncList( functorial,
-                                   Concatenation(
-                                           [ new_source ],
-                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
-                                           [ new_range ] ) );
-                    end );
-                
-                return AsObjectInHomCategory( Hom, result );
-                
-              end;
-            
-        else
+        if diagram then
             
             return ## a constructor for universal objects: DirectSum
               function( arg )
@@ -453,6 +427,32 @@ InstallMethodWithCache( Hom,
                                    Concatenation(
                                            [ new_source ],
                                            List( eval_arg, F -> ApplyCell( F, morB ) ),
+                                           [ new_range ] ) );
+                    end );
+                
+                return AsObjectInHomCategory( Hom, result );
+                
+              end;
+            
+        else
+            
+            return ## a constructor for universal objects: KernelObject
+              function( arg )
+                local eval_arg, result;
+                
+                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                
+                result := CapFunctor( name_of_object, B, C );
+                
+                AddObjectFunction( result,
+                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                
+                AddMorphismFunction( result,
+                  function( new_source, morB, new_range )
+                    return CallFuncList( functorial,
+                                   Concatenation(
+                                           [ new_source ],
+                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
                                            [ new_range ] ) );
                     end );
                 
