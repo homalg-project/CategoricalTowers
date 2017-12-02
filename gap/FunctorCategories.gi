@@ -385,7 +385,7 @@ InstallMethodWithCache( Hom,
     ## e.g., DirectSum, KernelObject
     create_func_object :=
       function( name )
-        local info, oper, functorial, type;
+        local info, oper, functorial, diagram;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -397,14 +397,18 @@ InstallMethodWithCache( Hom,
         
         functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
-        if IsBound( functorial.input_type ) then
-            type := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial).input_type;
-            type := List( type[2], a -> Position( type[1], a ) );
+        if IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[2] ) and
+           IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList then
+            diagram := true;
+        else
+            diagram := false;
         fi;
         
         functorial := ValueGlobal( info.functorial );
         
-        if IsBound( type ) then
+        ## no unified input syntax for *FunctorialWithGiven* (yet),
+        ## https://github.com/homalg-project/CAP_project/pull/116
+        if not diagram then
             
             return ## a constructor for universal objects: KernelObject
               function( arg )
@@ -422,13 +426,13 @@ InstallMethodWithCache( Hom,
                     return CallFuncList( functorial,
                                    Concatenation(
                                            [ new_source ],
-                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ){type} ) ),
+                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
                                            [ new_range ] ) );
                     end );
                 
                 return AsObjectInHomCategory( Hom, result );
                 
-            end;
+              end;
             
         else
             
@@ -454,7 +458,7 @@ InstallMethodWithCache( Hom,
                 
                 return AsObjectInHomCategory( Hom, result );
                 
-            end;
+              end;
             
         fi;
         

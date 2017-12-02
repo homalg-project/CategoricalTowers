@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2017.07.19", ## Mohamed's version
+                   "2017.12.02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -75,7 +75,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2017.06.05" ],
+                   [ "CAP", ">= 2017.12.02" ],
                    [ "Bialgebroids", ">= 2017.06.13-4" ],
                    ],
   SuggestedOtherPackages := [ ],
