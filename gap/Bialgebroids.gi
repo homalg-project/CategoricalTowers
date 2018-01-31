@@ -51,21 +51,21 @@ BindGlobal( "TheTypeMorphismInAlgebroid",
 ##
 InstallMethod( SetOfObjects,
         "for an algebroid",
-        [ IsCapCategory and HasUnderlyingQuiver ],
+        [ IsAlgebroid and HasUnderlyingQuiver ],
         
   A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
         "for an algebroid",
-        [ IsCapCategory and HasUnderlyingQuiver ],
+        [ IsAlgebroid and HasUnderlyingQuiver ],
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
 ##
 InstallMethod( RelationsOfAlgebroid,
         "for an algebroid",
-        [ IsCapCategory and HasUnderlyingQuiverAlgebra ],
+        [ IsAlgebroid and HasUnderlyingQuiverAlgebra ],
         
   function( A )
     local relations;
@@ -363,7 +363,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
     end );
     
-    ##
+    #
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
       function( r, morphism )
         
@@ -420,6 +420,7 @@ InstallMethod( Algebroid,
     SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
     SetUnderlyingQuiverAlgebra( A, Rq );
+    SetFilterObj( A, IsAlgebroid );
     
     A!.Vertices := rec( );
     A!.Arrows := rec( );
@@ -462,7 +463,7 @@ end );
 ##
 InstallMethod( \.,
         "for an algebroid and a positive integer",
-        [ IsCapCategory, IsPosInt ],
+        [ IsAlgebroid, IsPosInt ],
         
   function( B, string_as_int )
     local q, name, a, b;
@@ -573,8 +574,8 @@ end );
 
 ##
 InstallMethod( POW,
-        "for a CAP category and an integer",
-        [ IsCapCategory and HasUnderlyingQuiverAlgebra, IsInt ],
+        "for an algebroid and an integer",
+        [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( A, n )
     local Rq, R, trivial_quiver, Rqq;
@@ -627,8 +628,8 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for a CAP category and a record",
-        [ IsCapCategory, IsRecord ],
+        "for an algebroid and a record",
+        [ IsAlgebroid, IsRecord ],
         
   function( A, F )
     local names, b, Rq, B, functor;
@@ -685,8 +686,8 @@ end );
 
 ##
 InstallMethod( AddBialgebroidStructure,
-        "for a CAP category and two records",
-        [ IsCapCategory, IsRecord, IsRecord ],
+        "for an algebroid and two records",
+        [ IsAlgebroid, IsRecord, IsRecord ],
         
   function( B, counit, comult )
     local vertices, B0, a, names, counit_functor, B2, o, comult_functor;
@@ -746,8 +747,8 @@ end );
 
 ##
 InstallMethod( Opposite,
-        "for a CAP category",
-        [ IsCapCategory and HasUnderlyingQuiver ],
+        "for an algebroid",
+        [ IsAlgebroid and HasUnderlyingQuiver ],
         
   function( A )
     local q_op, R, A_op;
@@ -767,7 +768,7 @@ end );
 ##
 InstallMethod( AddAntipode,
         "for a CAP category and a record",
-        [ IsCapCategory, IsRecord ],
+        [ IsAlgebroid, IsRecord ],
         
   function( B, S )
     local vertices, a, S_functor;

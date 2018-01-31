@@ -26,6 +26,11 @@ DeclareCategory( "IsCapCategoryObjectInAlgebroid",
 DeclareCategory( "IsCapCategoryMorphismInAlgebroid",
         IsCapCategoryMorphism );
 
+#! @Description
+#!  The &GAP; category of algebroids.
+DeclareCategory( "IsAlgebroid",
+        IsCapCategory );
+
 ####################################
 #
 #! @Section Properties
@@ -53,28 +58,28 @@ Add( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST!.MathematicalPropertiesOfCategories,
 #! @Arguments A
 #! @Returns a &QPA; quiver
 DeclareAttribute( "UnderlyingQuiver",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebra",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The finite set of objects of the finitely presented algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a list
 DeclareAttribute( "SetOfObjects",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The finite set of morphisms generating the finitely presented algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The relations of the algebroid <A>A</A> corresponding to
@@ -82,28 +87,28 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 #! @Arguments A
 #! @Returns a &QPA; path algebra
 DeclareAttribute( "RelationsOfAlgebroid",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The counit of the bialgebroid <A>B</A>.
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Counit",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The comultiplication of the bialgebroid <A>B</A>.
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Comultiplication",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The antipode of the Hopf algebroid <A>B</A>.
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Antipode",
-        IsCapCategory );
+        IsAlgebroid );
 
 #! @Description
 #!  The vertex of the quiver underlying the object <A>obj</A> in an algebroid.
@@ -125,7 +130,7 @@ DeclareAttribute( "UnderlyingQuiverAlgebraElement",
 #! @Arguments A, n
 #! @Returns a &CAP; category
 DeclareOperation( "POW",
-        [ IsCapCategory, IsInt ] );
+        [ IsAlgebroid, IsInt ] );
 
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
@@ -185,7 +190,7 @@ DeclareOperation( "Algebroid",
 #! @Arguments A, F
 #! @Returns a &CAP; functor
 DeclareOperation( "CapFunctor",
-        [ IsCapCategory, IsRecord ] );
+        [ IsAlgebroid, IsRecord ] );
 
 #! @Description
 #!  Construct, using the record of images <A>eta</A>, a natural transformation
@@ -201,14 +206,14 @@ DeclareOperation( "NaturalTransformation",
 #! @Arguments A, counit, comult
 #! @Returns a &CAP; category
 DeclareOperation( "AddBialgebroidStructure",
-        [ IsCapCategory, IsRecord, IsRecord ] );
+        [ IsAlgebroid, IsRecord, IsRecord ] );
 
 #! @Description
 #!  Add to the bialgebroid <A>B</A> an antipode <A>S</A>.
 #! @Arguments B, S
 #! @Returns a &CAP; category
 DeclareOperation( "AddAntipode",
-        [ IsCapCategory, IsRecord ] );
+        [ IsAlgebroid, IsRecord ] );
 
 #! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,
