@@ -63,7 +63,7 @@ InstallValue( PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS,
          "IsIsomorphism",
          "IsSplitMonomorphism",
          "IsSplitEpimorphism",
-         "IsZero",
+         "IsZeroForMorphisms",
          # ..
          ]
         );
@@ -76,7 +76,7 @@ InstallGlobalFunction( INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS,
     if HasIsIsomorphism( mor ) and IsIsomorphism( mor ) then
         
         SetIsIsomorphism( hull, true );
-        AddToToDoList( ToDoListEntryForEqualAttributes( mor, "IsZero", hull, "IsZero" ) );
+        AddToToDoList( ToDoListEntryForEqualAttributes( mor, "IsZeroForMorphisms", hull, "IsZeroForMorphisms" ) );
         
     else
         
@@ -124,7 +124,7 @@ end );
 
 ##
 InstallImmediateMethod( CanonicalizedToZero,
-        IsCapCategoryIntrinsicObjectRep and CanonicalizeIfZero and IsZero, 0,
+        IsCapCategoryIntrinsicObjectRep and CanonicalizeIfZero and IsZeroForObjects, 0,
         
   function( obj )
     local o;
@@ -151,7 +151,7 @@ end );
 
 ##
 InstallImmediateMethod( CanonicalizedToZero,
-        IsCapCategoryIntrinsicMorphismRep and CanonicalizeIfZero and IsZero, 0,
+        IsCapCategoryIntrinsicMorphismRep and CanonicalizeIfZero and IsZeroForMorphisms, 0,
         
   function( mor )
     local S, T;
@@ -171,8 +171,8 @@ InstallImmediateMethod( CanonicalizedToZero,
     
     ## this will be taken care of by the CanonicalizedToZero for objects;
     ## this is crucial for performance
-    if ( HasIsZero( S ) and IsZero( S ) ) or
-       ( HasIsZero( T ) and IsZero( T ) ) then
+    if ( HasIsZeroForObjects( S ) and IsZeroForObjects( S ) ) or
+       ( HasIsZeroForObjects( T ) and IsZeroForObjects( T ) ) then
         return true;
     fi;
     
