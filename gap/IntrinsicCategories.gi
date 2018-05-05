@@ -68,6 +68,9 @@ InstallValue( PROPAGATION_LIST_FOR_INTRINSIFIED_MORPHISMS,
          ]
         );
 
+LogicalImplicationsForOneHomalgObject( [ IsZero, "implies", IsZeroForMorphisms ], IsCapCategoryIntrinsicMorphism );
+LogicalImplicationsForOneHomalgObject( [ IsZeroForMorphisms, "implies", IsZero ], IsCapCategoryIntrinsicMorphism );
+
 ##
 InstallGlobalFunction( INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS,
   function( mor, hull )
