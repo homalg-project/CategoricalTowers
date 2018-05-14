@@ -94,7 +94,7 @@ end );
 
 ##
 InstallMethod( TheZeroMorphism,
-        "for a homalg/CAP module map",
+        "for two homalg/CAP modules",
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject,
           IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
