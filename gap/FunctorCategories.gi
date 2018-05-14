@@ -67,16 +67,6 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 ####################################
 
 ##
-InstallOtherMethod( ZeroObjectFunctorial,
-        [ IsCapCategoryObject, IsCapCategoryObject ],
-        
-  function( M, N )
-    
-    return ZeroMorphism( M, N );
-    
-end );
-
-##
 InstallMethod( ApplyCell,
         "for a CAP functor and a CAP cell",
         [ IsCapFunctor, IsCapCategoryCell ],
@@ -373,7 +363,7 @@ InstallMethodWithCache( Hom,
             
             AddMorphismFunction( result,
               function( new_source, morB, new_range )
-                return functorial( new_source, new_range );
+                return functorial( C );
               end );
             
             return AsObjectInHomCategory( Hom, result );

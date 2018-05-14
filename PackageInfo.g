@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2017.12.02", ## Mohamed's version
+                   "2018.01.18", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
