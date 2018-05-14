@@ -92,7 +92,7 @@ InstallMethod( BijectionBetweenPairsAndElementaryTensors,
     
     Qqq := TensorProductOfAlgebras( Qq, Qq );
     
-    gens := GeneratorsOfAlgebra( Qq );
+    gens := PrimitivePaths( QuiverOfAlgebra( Qq ) );
     
     gens := Cartesian( gens, gens );
     
