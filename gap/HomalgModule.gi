@@ -164,7 +164,7 @@ InstallMethod( DecideZero,
     
     gens := GeneratorsOfModule( M );
     
-    IsZero( gens );
+    SetIsZero( M, IsZero( gens ) );
     
     return gens;
     
