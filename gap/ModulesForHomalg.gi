@@ -121,6 +121,9 @@ InstallMethod( CategoryOfHomalgLeftModules,
     
     A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
+    A!.MorphismConstructor := HomalgMap;
+    A!.TypeOfElements := TheTypeHomalgModuleElement;
+    
     A!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS :=
       [
        "IsProjectiveOfConstantRank",
@@ -192,6 +195,9 @@ InstallMethod( CategoryOfHomalgRightModules,
               );
     
     A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+    
+    A!.MorphismConstructor := HomalgMap;
+    A!.TypeOfElements := TheTypeHomalgModuleElement;
     
     A!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS :=
       [
