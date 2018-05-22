@@ -101,6 +101,24 @@ InstallMethod( TheZeroMorphism,
   ZeroMorphism );
 
 ##
+InstallOtherMethod( TheZeroMorphism,
+        "for a homalg ring and a homalg/CAP module",
+        [ IsStructureObject,
+          IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
+        
+  function( R, M )
+    
+    if IsHomalgLeftObjectOrMorphismOfLeftObjects( M ) then
+        R := AsLeftObject( R );
+    else
+        R := AsRightObject( R );
+    fi;
+    
+    return TheZeroMorphism( R, M );
+    
+end );
+
+##
 InstallMethod( AdditiveInverseMutable,
         "for a homalg/CAP module map",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],

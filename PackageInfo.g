@@ -12,7 +12,7 @@ PackageName := "M2",
 Subtitle := "Intrinsic modules with elements for the CAP based homalg",
 
 Version := Maximum( [
-                   "2017.05.17", ## Mohamed's version
+                   "2017.05.18", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03.14", ## Kamals's version
                    ] ),
