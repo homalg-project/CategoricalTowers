@@ -344,7 +344,7 @@ InstallMethod( HomalgModule,
     
     A := CategoryWithAmbientObject( A );
     
-    pi := AsGeneralizedMorphismByCospan( CoverByFreeModule( M ) );
+    pi := AsGeneralizedMorphismByCospan( EpimorphismFromSomeProjectiveObject( M ) );
     
     iota := PseudoInverse( pi );
     
