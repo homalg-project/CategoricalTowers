@@ -24,7 +24,7 @@ DeclareOperation( "TurnAutoequivalenceIntoIdentityFunctorForHomalg",
 #!  over the computable &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns an intrinsic cateogry of left modules
-DeclareAttribute( "CategoryOfHomalgLeftModules",
+DeclareAttribute( "CategoryOfHomalgFinitelyPresentedLeftModules",
         IsHomalgRing );
 
 #! @Description
@@ -32,5 +32,5 @@ DeclareAttribute( "CategoryOfHomalgLeftModules",
 #!  over the computable &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns an intrinsic cateogry of right modules
-DeclareAttribute( "CategoryOfHomalgRightModules",
+DeclareAttribute( "CategoryOfHomalgFinitelyPresentedRightModules",
         IsHomalgRing );

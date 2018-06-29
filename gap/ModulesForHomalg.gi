@@ -82,7 +82,7 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
 end );
 
 ##
-InstallMethod( CategoryOfHomalgLeftModules,
+InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
         "for a homalg ring",
         [ IsHomalgRing ],
 
@@ -157,8 +157,8 @@ InstallMethod( CategoryOfHomalgLeftModules,
 end );
 
 ##
-InstallMethod( CategoryOfHomalgRightModules,
-        "for homalg ring",
+InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
+        "for a homalg ring",
         [ IsHomalgRing ],
 
   function( R )

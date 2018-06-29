@@ -351,9 +351,9 @@ InstallMethod( HomalgModule,
     M := ObjectWithAmbientObject( iota, A );
     
     if left then
-        A := CategoryOfHomalgLeftModules( R );
+        A := CategoryOfHomalgFinitelyPresentedLeftModules( R );
     else
-        A := CategoryOfHomalgRightModules( R );
+        A := CategoryOfHomalgFinitelyPresentedRightModules( R );
     fi;
     
     M := Intrinsify( A, M );
@@ -369,7 +369,7 @@ InstallMethod( LeftPresentation,
 
   function( M )
     
-    CategoryOfHomalgLeftModules( HomalgRing( M ) );
+    CategoryOfHomalgFinitelyPresentedLeftModules( HomalgRing( M ) );
     
     M := AsLeftPresentation( M );
     
@@ -384,7 +384,7 @@ InstallMethod( RightPresentation,
 
   function( M )
     
-    CategoryOfHomalgRightModules( HomalgRing( M ) );
+    CategoryOfHomalgFinitelyPresentedRightModules( HomalgRing( M ) );
     
     M := AsRightPresentation( M );
     
@@ -400,7 +400,7 @@ InstallMethod( HomalgZeroLeftModule,
   function( R )
     local A;
     
-    A := CategoryOfHomalgLeftModules( R );
+    A := CategoryOfHomalgFinitelyPresentedLeftModules( R );
     
     return ZeroObject( A );
     
@@ -414,7 +414,7 @@ InstallMethod( HomalgZeroRightModule,
   function( R )
     local A;
     
-    A := CategoryOfHomalgRightModules( R );
+    A := CategoryOfHomalgFinitelyPresentedRightModules( R );
     
     return ZeroObject( A );
     
