@@ -82,42 +82,21 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
 end );
 
 ##
-InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
-        "for a homalg ring",
-        [ IsHomalgRing ],
-
-  function( R )
-    local A, type_obj, type_mor, type_end, etaSM, etaZG, etaLG;
+BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
+  function( R, left, type_obj, type_mor, type_end  )
+    local A, etaSM, etaZG, etaLG;
     
-    A := LeftPresentations( R : FinalizeCategory := false );
-    
-    AddImageEmbedding( A, ImageEmbeddingForLeftModules );
+    if left then
+        A := LeftPresentations( R : FinalizeCategory := false );
+        AddImageEmbedding( A, ImageEmbeddingForLeftModules );
+    else
+        A := RightPresentations( R : FinalizeCategory := false );
+        AddImageEmbedding( A, ImageEmbeddingForRightModules );
+    fi;
     
     Finalize( A );
     
     A := CategoryWithAmbientObject( A );
-    
-    type_obj :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
-              IsFinitelyPresentedModuleRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
-    
-    type_mor :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
-    
-    type_end :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsHomalgSelfMap and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
     
     A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
@@ -138,17 +117,30 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
     
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
+    
     A!.containers := rec( );
     
-    etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
+    if left then
+        
+        etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
+        
+        etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft( R );
+        
+        etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
+        
+    else
+        
+        etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
+        
+        etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight( R );
+        
+        etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
+        
+    fi;
     
     A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
     
-    etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft( R );
-    
     A!.IdZG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaZG, A );
-
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
@@ -157,20 +149,46 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
 end );
 
 ##
+InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
+        "for a homalg ring",
+        [ IsHomalgRing ],
+        
+  function( R )
+    local type_obj, type_mor, type_end;
+    
+    type_obj :=
+      NewType( TheFamilyOfIntrinsicObjects,
+              IsCapCategoryIntrinsicObjectRep and
+              IsFinitelyPresentedModuleRep and
+              IsHomalgLeftObjectOrMorphismOfLeftObjects
+              );
+    
+    type_mor :=
+      NewType( TheFamilyOfIntrinsicMorphisms,
+              IsCapCategoryIntrinsicMorphismRep and
+              IsMapOfFinitelyGeneratedModulesRep and
+              IsHomalgLeftObjectOrMorphismOfLeftObjects
+              );
+    
+    type_end :=
+      NewType( TheFamilyOfIntrinsicMorphisms,
+              IsCapCategoryIntrinsicMorphismRep and
+              IsHomalgSelfMap and
+              IsMapOfFinitelyGeneratedModulesRep and
+              IsHomalgLeftObjectOrMorphismOfLeftObjects
+              );
+    
+    return CATEGORY_OF_HOMALG_MODULES( R, true, type_obj, type_mor, type_end );
+    
+end );
+
+##
 InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
         "for a homalg ring",
         [ IsHomalgRing ],
-
+        
   function( R )
-    local A, type_obj, type_mor, type_end, etaSM, etaZG, etaLG;
-    
-    A := RightPresentations( R : FinalizeCategory := false );
-    
-    AddImageEmbedding( A, ImageEmbeddingForRightModules );
-    
-    Finalize( A );
-    
-    A := CategoryWithAmbientObject( A );
+    local A, type_obj, type_mor, type_end;
     
     type_obj :=
       NewType( TheFamilyOfIntrinsicObjects,
@@ -194,39 +212,6 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
               IsHomalgRightObjectOrMorphismOfRightObjects
               );
     
-    A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
-    
-    A!.MorphismConstructor := HomalgMap;
-    A!.TypeOfElements := TheTypeHomalgModuleElement;
-    
-    A!.PROPAGATION_LIST_FOR_EQUAL_OBJECTS :=
-      [
-       "IsProjectiveOfConstantRank",
-       "IsReflexive",
-       "IsTorsionFree",
-       "IsTorsion",
-       "IsInjectiveCogenerator",
-       "IsArtinian",
-       "IsPure",
-       "IsCyclic",
-       ];
-    
-    ## TODO: legacy
-    SetFilterObj( A, IsHomalgCategory );
-    A!.containers := rec( );
-    
-    etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
-    
-    A!.IdSM := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaSM, A );
-    
-    etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight( R );
-    
-    A!.IdZG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaZG, A );
-
-    etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
-    
-    A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
-    
-    return A;
+    return CATEGORY_OF_HOMALG_MODULES( R, false, type_obj, type_mor, type_end );
     
 end );
