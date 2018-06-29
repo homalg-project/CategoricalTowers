@@ -54,7 +54,7 @@ InstallMethod( SetPositionOfTheDefaultPresentation,
 ##
 InstallMethod( HasNrGenerators,
         "for a homalg/CAP module",
-        [ IsHomalgModule and IsCapCategoryIntrinsicObject ],
+        [ IsFinitelyPresentedModuleOrSubmoduleRep and IsCapCategoryIntrinsicObject ],
 
   function( M )
     
