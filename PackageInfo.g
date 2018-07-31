@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: Frames/Locales of Zariski open subsets
+# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,7 +9,7 @@
 SetPackageInfo( rec(
 
 PackageName := "ZariskiFrames",
-Subtitle := "Frames/Locales of Zariski open subsets",
+Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
 Version := Maximum( [
                    "2018.07.01", ## Mohamed's version
                    ## this line prevents merge conflicts
@@ -39,7 +39,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Tom",
     LastName := "Kuhmichel",
-    WWWHome := "",
+    WWWHome := "https://github.com/TKuh",
     Email := "tom.kuhmichel@student.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -83,7 +83,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Frames/Locales of Zariski open subsets of affine, projective, or toric varieties",
+  LongTitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
 ),
 
 Dependencies := rec(
@@ -91,6 +91,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2018.07.10" ],
+                   [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
@@ -102,6 +103,6 @@ AvailabilityTest := function()
 
 TestFile := "tst/testall.g",
 
-Keywords := [ "Zariski frame, affine variety, projective variety, toric variety" ],
+Keywords := [ "Zariski coframe, Zariski fame, locale, affine spectrum, projective spectrum, toric spectrum" ],
 
 ));

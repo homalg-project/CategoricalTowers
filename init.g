@@ -5,3 +5,4 @@
 #
 
 ReadPackage( "ZariskiFrames", "gap/ZariskiFrame.gd");
+ReadPackage( "ZariskiFrames", "gap/Affine.gd");
