@@ -26,6 +26,7 @@ InstallMethod( MorphismOfZariskiClosedSubsets,
             Source, A,
             Range, B,
             IsMonomorphism, true,
+            IsEpimorphism, true,
             UnderlyingRing, R
             );
     
@@ -66,7 +67,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ZARISKI_COFRAMES,
     end );
     
     ##
-    AddIsEpimorphism( ZariskiCoframe,
+    AddIsIsomorphism( ZariskiCoframe,
       function( emb )
         local inv;
         
@@ -75,9 +76,5 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ZARISKI_COFRAMES,
         return IsWellDefined( inv );
         
     end );
-    
-    ##
-    AddIsIsomorphism( ZariskiCoframe,
-      IsEpimorphism );
     
 end );
