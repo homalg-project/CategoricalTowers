@@ -55,4 +55,18 @@ Display( I );
 #! [ [  1 ] ]
 #! 
 #! A morphism in Rows( Z )
+AvC := Coproduct( A, C );
+#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+Display( AvC );
+#! [ [  -6 ] ]
+#! 
+#! A morphism in Rows( Z )
+AC := DirectProduct( A, C );
+#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+Display( AC );
+#! [ [  2 ],
+#!   [  3 ] ]
+#! A morphism in Rows( Z )
+DirectProduct( A, C ) = I;
+#! true
 #! @EndExample

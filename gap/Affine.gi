@@ -119,6 +119,44 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
     end );
     
+    ##
+    AddCoproduct( ZariskiCoframe,
+      function( L )
+        local biased_weak_fiber_product, C;
+        
+        if Length( L ) = 1 then
+            return L[1];
+        fi;
+        
+        L := List( L, MorphismOfUnderlyingCategory );
+        
+        biased_weak_fiber_product := function( I, J )
+            return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+        end;
+        
+        C := Iterated( L, biased_weak_fiber_product );
+        
+        return ZariskiClosedSubsetOfAffineSpectrum( C );
+            
+    end );
+    
+    ##
+    AddDirectProduct( ZariskiCoframe,
+      function( L )
+        local P;
+        
+        if Length( L ) = 1 then
+            return L[1];
+        fi;
+        
+        L := List( L, MorphismOfUnderlyingCategory );
+        
+        P := UniversalMorphismFromDirectSum( L );
+        
+        return ZariskiClosedSubsetOfAffineSpectrum( P );
+            
+    end );
+    
     Finalize( ZariskiCoframe );
     
     return ZariskiCoframe;
