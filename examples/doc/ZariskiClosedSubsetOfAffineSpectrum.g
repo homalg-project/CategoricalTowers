@@ -17,6 +17,13 @@ A = B;
 #! true
 A = C;
 #! false
+embAB := MorphismOfZariskiClosedSubsets( A, B );
+#! <A monomorphism in The coframe of Zariski closed subsets of the
+#!  affine spectrum of Z>
+IsWellDefined( embAB );
+#! true
+IsIsomorphism( embAB );
+#! true
 embAC := MorphismOfZariskiClosedSubsets( A, C );
 #! <A monomorphism in The coframe of Zariski closed subsets of the
 #!  affine spectrum of Z>
