@@ -103,6 +103,22 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ADD_COMMON_METHODS_FOR_ZARISKI_COFRAMES( ZariskiCoframe );
     
+    ##
+    AddTerminalObject( ZariskiCoframe,
+      function( arg )
+        
+        return ZariskiClosedSubsetOfAffineSpectrum( HomalgZeroMatrix( 0, 1, R ) );
+        
+    end );
+    
+    ##
+    AddInitialObject( ZariskiCoframe,
+      function( arg )
+        
+        return ZariskiClosedSubsetOfAffineSpectrum( HomalgIdentityMatrix( 1, R ) );
+        
+    end );
+    
     Finalize( ZariskiCoframe );
     
     return ZariskiCoframe;

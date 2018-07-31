@@ -5,6 +5,8 @@ LoadPackage( "ZariskiFrames" );
 #! @Example
 ZZ := HomalgRingOfIntegers( );
 #! Z
+ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( ZZ );
+#! The coframe of Zariski closed subsets of the affine spectrum of Z
 A := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix( [ 2 ], 1, 1, ZZ ) );
 #! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
 B := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix( [4,6], 2, 1, ZZ ) );
@@ -41,4 +43,16 @@ embDA := MorphismOfZariskiClosedSubsets( D, A );
 #!  affine spectrum of Z>
 IsWellDefined( embDA );
 #! false
+T := TerminalObject( ZC );
+#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+Display( T );
+#! (an empty 0 x 1 matrix)
+#! 
+#! A morphism in Rows( Z )
+I := InitialObject( ZC );
+#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+Display( I );
+#! [ [  1 ] ]
+#! 
+#! A morphism in Rows( Z )
 #! @EndExample
