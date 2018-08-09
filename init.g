@@ -4,5 +4,5 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "ZariskiFrames", "gap/ZariskiFrame.gd");
+ReadPackage( "ZariskiFrames", "gap/ZariskiCoframe.gd");
 ReadPackage( "ZariskiFrames", "gap/Affine.gd");
