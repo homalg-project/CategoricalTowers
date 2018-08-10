@@ -9,13 +9,13 @@
 #! @Section GAP Categories
 
 #! @Description
-#! The GAP category of objects in a Zariski frame
+#! The GAP category of objects in a Zariski coframe
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiCoframe",
                  IsCapCategoryObject );
 
 #! @Description
-#! The GAP category of morphisms in a Zariski frame
+#! The GAP category of morphisms in a Zariski coframe
 #! @Arguments object
 DeclareCategory( "IsMorphismInZariskiCoframe",
                  IsCapCategoryMorphism );
