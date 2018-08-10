@@ -16,7 +16,10 @@ DeclareAttribute( "ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows",
         IsHomalgRing );
 
 #! @Description
-#!  Construct a Zariski closed subset
+#!  Construct a Zariski closed subset (as an object in the Zariski coframe
+#!  of closed subsets) from a morphism <A>I</A>=<C>AsCategoryOfRowsMorphism</C>( <A>mat</A> )
+#!  in the category of rows with <C>RankOfObject</C>( <C>Range</C>( <A>I</A> ) ) = 1.
+#!  The morphism <A>I</A> stands for its module-theoretic image which is an ideal.
 #! @Arguments I
 #! @Returns a &CAP; object
 #! @Group ZariskiClosedSubsetOfAffineSpectrum
