@@ -11,10 +11,9 @@
 #! @Description
 #!  Construct the spectrum of a &homalg; ring <A>R</A>
 #! @Arguments R
-#! @Returns a &CAP; object
+#! @Returns a &CAP; category
 DeclareAttribute( "ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows",
         IsHomalgRing );
-# @InsertSystem ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows
 
 #! @Description
 #!  Construct a Zariski closed subset
