@@ -22,6 +22,9 @@ DeclareCategory( "IsMorphismInZariskiCoframe",
 
 #! @Section Attributes
 
+DeclareAttribute( "PreMorphismOfUnderlyingCategory",
+        IsObjectInZariskiCoframe );
+
 #! @Description
 #!  The morphism in the category of rows the module-theoretic image
 #!  of which is the vanishing ideal of <A>A</A>.

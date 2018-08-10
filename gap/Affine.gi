@@ -19,6 +19,31 @@ InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
+            PreMorphismOfUnderlyingCategory, I,
+            UnderlyingRing, R
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ZariskiReducedClosedSubsetOfAffineSpectrum,
+        "for a CAP category morphism",
+        [ IsCapCategoryMorphism ],
+
+  function( I )
+    local R, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( I ) );
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
             MorphismOfUnderlyingCategory, I,
             UnderlyingRing, R
             );
@@ -30,6 +55,26 @@ InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
 end );
 
 ##
+InstallMethod( MorphismOfUnderlyingCategory,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    local mat, L, biased_weak_fiber_product;
+    
+    mat := UnderlyingMatrix( PreMorphismOfUnderlyingCategory( A ) );
+    
+    L := List( PrimaryDecompositionOp( mat ), a -> AsCategoryOfRowsMorphism( a[2] ) );
+    
+    biased_weak_fiber_product := function( I, J )
+        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+    end;
+    
+    return Iterated( L, biased_weak_fiber_product );
+    
+end );
+
+##
 InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
@@ -37,6 +82,17 @@ InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
   function( mat )
     
     return ZariskiClosedSubsetOfAffineSpectrum( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
+InstallMethod( ZariskiReducedClosedSubsetOfAffineSpectrum,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ZariskiReducedClosedSubsetOfAffineSpectrum( AsCategoryOfRowsMorphism( mat ) );
     
 end );
 
@@ -107,7 +163,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddTerminalObject( ZariskiCoframe,
       function( arg )
         
-        return ZariskiClosedSubsetOfAffineSpectrum( HomalgZeroMatrix( 0, 1, R ) );
+        return ZariskiReducedClosedSubsetOfAffineSpectrum( HomalgZeroMatrix( 0, 1, R ) );
         
     end );
     
@@ -115,7 +171,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddInitialObject( ZariskiCoframe,
       function( arg )
         
-        return ZariskiClosedSubsetOfAffineSpectrum( HomalgIdentityMatrix( 1, R ) );
+        return ZariskiReducedClosedSubsetOfAffineSpectrum( HomalgIdentityMatrix( 1, R ) );
         
     end );
     
@@ -136,7 +192,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         C := Iterated( L, biased_weak_fiber_product );
         
-        return ZariskiClosedSubsetOfAffineSpectrum( C );
+        return ZariskiReducedClosedSubsetOfAffineSpectrum( C );
             
     end );
     
@@ -153,7 +209,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         P := UniversalMorphismFromDirectSum( L );
         
-        return ZariskiClosedSubsetOfAffineSpectrum( P );
+        return ZariskiReducedClosedSubsetOfAffineSpectrum( P );
             
     end );
     

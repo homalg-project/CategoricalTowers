@@ -32,3 +32,14 @@ DeclareOperation( "ZariskiClosedSubsetOfAffineSpectrum",
         [ IsHomalgMatrix ] );
 #! @InsertSystem ZariskiClosedSubsetOfAffineSpectrum
 
+#! @Description
+#!  The last two constructors assumes that the image is a radical ideal.
+#! @Arguments I
+#! @Group ZariskiClosedSubsetOfAffineSpectrum
+DeclareOperation( "ZariskiReducedClosedSubsetOfAffineSpectrum",
+        [ IsCapCategoryMorphism ] );
+
+#! @Arguments mat
+#! @Group ZariskiClosedSubsetOfAffineSpectrum
+DeclareOperation( "ZariskiReducedClosedSubsetOfAffineSpectrum",
+        [ IsHomalgMatrix ] );

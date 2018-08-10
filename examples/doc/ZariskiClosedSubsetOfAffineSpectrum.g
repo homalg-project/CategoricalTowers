@@ -7,13 +7,13 @@ ZZ := HomalgRingOfIntegers( );
 #! Z
 ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( ZZ );
 #! The coframe of Zariski closed subsets of the affine spectrum of Z
-A := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix( [ 2 ], 1, 1, ZZ ) );
+A := ZariskiReducedClosedSubsetOfAffineSpectrum( HomalgMatrix([2],1,1,ZZ) );
 #! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
-B := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix( [4,6], 2, 1, ZZ ) );
+B := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix([12,20],2,1,ZZ));
 #! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
-C := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix( [ 3 ], 1, 1, ZZ ) );
+C := ZariskiReducedClosedSubsetOfAffineSpectrum( HomalgMatrix([3],1,1,ZZ) );
 #! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
-D := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix( [ 6 ], 1, 1, ZZ ) );
+D := ZariskiClosedSubsetOfAffineSpectrum( HomalgMatrix([12],1,1,ZZ) );
 #! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
 A = B;
 #! true
