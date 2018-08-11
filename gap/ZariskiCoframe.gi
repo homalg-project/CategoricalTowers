@@ -77,4 +77,52 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ZARISKI_COFRAMES,
         
     end );
     
+    ##
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( ZariskiCoframe,
+      function( D, k, P )
+        
+        return MorphismOfZariskiClosedSubsets( P, D[k] );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( ZariskiCoframe,
+      function( D, tau, P )
+        
+        return MorphismOfZariskiClosedSubsets( Source( tau[1] ), P );
+        
+    end );
+    
+    ##
+    AddDirectProductFunctorialWithGivenDirectProducts( ZariskiCoframe,
+      function( s, L, r )
+        
+        return MorphismOfZariskiClosedSubsets( s, r );
+        
+    end );
+    
+    ##
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( ZariskiCoframe,
+      function( D, k, I )
+        
+        return MorphismOfZariskiClosedSubsets( D[k], I );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( ZariskiCoframe,
+      function( D, tau, I )
+        
+        return MorphismOfZariskiClosedSubsets( I, Range( tau[1] ) );
+        
+    end );
+    
+    ##
+    AddCoproductFunctorialWithGivenCoproducts( ZariskiCoframe,
+      function( s, L, r )
+        
+        return MorphismOfZariskiClosedSubsets( s, r );
+        
+    end );
+    
 end );
