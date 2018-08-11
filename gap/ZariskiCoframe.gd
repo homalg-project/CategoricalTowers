@@ -12,13 +12,13 @@
 #!  The &GAP; category of objects in a Zariski coframe.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiCoframe",
-                 IsCapCategoryObject );
+                 IsObjectInThinCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Zariski coframe.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiCoframe",
-                 IsCapCategoryMorphism );
+                 IsMorphismInThinCategory );
 
 #! @Section Attributes
 
@@ -41,7 +41,3 @@ DeclareAttribute( "MorphismOfUnderlyingCategory",
 #! @Returns a &CAP; morphism
 DeclareOperation( "MorphismOfZariskiClosedSubsets",
         [ IsObjectInZariskiCoframe, IsObjectInZariskiCoframe ] );
-
-#! @Section Tools
-
-DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_ZARISKI_COFRAMES" );
