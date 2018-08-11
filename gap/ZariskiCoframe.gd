@@ -9,14 +9,14 @@
 #! @Section GAP Categories
 
 #! @Description
-#! The GAP category of objects in a Zariski coframe
+#!  The &GAP; category of objects in a Zariski coframe.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiCoframe",
                  IsCapCategoryObject );
 
 #! @Description
-#! The GAP category of morphisms in a Zariski coframe
-#! @Arguments object
+#!  The &GAP; category of morphisms in a Zariski coframe.
+#! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiCoframe",
                  IsCapCategoryMorphism );
 
@@ -29,7 +29,7 @@ DeclareAttribute( "PreMorphismOfUnderlyingCategory",
 #!  The morphism in the category of rows the module-theoretic image
 #!  of which is the vanishing ideal of <A>A</A>.
 #! @Arguments A
-#! @Returns A &CAP; morphism
+#! @Returns a &CAP; morphism
 DeclareAttribute( "MorphismOfUnderlyingCategory",
         IsObjectInZariskiCoframe );
 
