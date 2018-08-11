@@ -125,4 +125,68 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_ZARISKI_COFRAMES,
         
     end );
     
+    ##
+    AddEqualizer( ZariskiCoframe,
+      function( D )
+        
+        return Source( D[1] );
+        
+    end );
+    
+    ##
+    AddEmbeddingOfEqualizerWithGivenEqualizer( ZariskiCoframe,
+      function( D, E )
+        
+        return IdentityMorphism( E );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoEqualizerWithGivenEqualizer( ZariskiCoframe,
+      function( D, tau, E )
+        
+        return MorphismOfZariskiClosedSubsets( Source( tau ), E );
+        
+    end );
+    
+    ##
+    AddEqualizerFunctorialWithGivenEqualizers( ZariskiCoframe,
+      function( s, L, r )
+        
+        return MorphismOfZariskiClosedSubsets( s, r );
+        
+    end );
+    
+    ##
+    AddCoequalizer( ZariskiCoframe,
+      function( D )
+        
+        return Range( D[1] );
+        
+    end );
+    
+    ##
+    AddProjectionOntoCoequalizerWithGivenCoequalizer( ZariskiCoframe,
+      function( D, C )
+        
+        return IdentityMorphism( C );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( ZariskiCoframe,
+      function( D, tau, C )
+        
+        return MorphismOfZariskiClosedSubsets( C, Range( tau ) );
+        
+    end );
+    
+    ##
+    AddCoequalizerFunctorialWithGivenCoequalizers( ZariskiCoframe,
+      function( s, L, r )
+        
+        return MorphismOfZariskiClosedSubsets( s, r );
+        
+    end );
+    
 end );
