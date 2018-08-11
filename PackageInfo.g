@@ -56,7 +56,7 @@ SourceRepository := rec(
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
-PackageWWWHome  := "https://mohamed-barakat.github.io/ZariskiFrames/",
+PackageWWWHome  := Concatenation( "https://homalg-project.github.io/CAP_project/", ~.PackageName ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
