@@ -22,24 +22,24 @@ DeclareAttribute( "ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows",
 #!  The morphism <A>I</A> stands for its module-theoretic image which is an ideal.
 #! @Arguments I
 #! @Returns a &CAP; object
-#! @Group ZariskiClosedSubsetOfAffineSpectrum
-DeclareOperation( "ZariskiClosedSubsetOfAffineSpectrum",
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpec",
         [ IsCapCategoryMorphism ] );
 
 #! @Arguments mat
-#! @Group ZariskiClosedSubsetOfAffineSpectrum
-DeclareOperation( "ZariskiClosedSubsetOfAffineSpectrum",
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpec",
         [ IsHomalgMatrix ] );
-#! @InsertSystem ZariskiClosedSubsetOfAffineSpectrum
+#! @InsertSystem ClosedSubsetOfSpec
 
 #! @Description
-#!  The last two constructors assumes that the image is a radical ideal.
+#!  <C>ClosedSubsetOfSpecByReducedMorphism</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group ZariskiClosedSubsetOfAffineSpectrum
-DeclareOperation( "ZariskiReducedClosedSubsetOfAffineSpectrum",
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
         [ IsCapCategoryMorphism ] );
 
 #! @Arguments mat
-#! @Group ZariskiClosedSubsetOfAffineSpectrum
-DeclareOperation( "ZariskiReducedClosedSubsetOfAffineSpectrum",
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
         [ IsHomalgMatrix ] );

@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
+InstallMethod( ClosedSubsetOfSpec,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
 
@@ -30,7 +30,7 @@ InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
 end );
 
 ##
-InstallMethod( ZariskiReducedClosedSubsetOfAffineSpectrum,
+InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
 
@@ -75,24 +75,24 @@ InstallMethod( MorphismOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( ZariskiClosedSubsetOfAffineSpectrum,
+InstallMethod( ClosedSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
 
   function( mat )
     
-    return ZariskiClosedSubsetOfAffineSpectrum( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfSpec( AsCategoryOfRowsMorphism( mat ) );
     
 end );
 
 ##
-InstallMethod( ZariskiReducedClosedSubsetOfAffineSpectrum,
+InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
 
   function( mat )
     
-    return ZariskiReducedClosedSubsetOfAffineSpectrum( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfSpecByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
     
 end );
 
@@ -163,7 +163,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddTerminalObject( ZariskiCoframe,
       function( arg )
         
-        return ZariskiReducedClosedSubsetOfAffineSpectrum( HomalgZeroMatrix( 0, 1, R ) );
+        return ClosedSubsetOfSpecByReducedMorphism( HomalgZeroMatrix( 0, 1, R ) );
         
     end );
     
@@ -171,7 +171,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddInitialObject( ZariskiCoframe,
       function( arg )
         
-        return ZariskiReducedClosedSubsetOfAffineSpectrum( HomalgIdentityMatrix( 1, R ) );
+        return ClosedSubsetOfSpecByReducedMorphism( HomalgIdentityMatrix( 1, R ) );
         
     end );
     
@@ -192,7 +192,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         C := Iterated( L, biased_weak_fiber_product );
         
-        return ZariskiReducedClosedSubsetOfAffineSpectrum( C );
+        return ClosedSubsetOfSpecByReducedMorphism( C );
             
     end );
     
@@ -209,8 +209,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         P := UniversalMorphismFromDirectSum( L );
         
-        return ZariskiReducedClosedSubsetOfAffineSpectrum( P );
-            
+        return ClosedSubsetOfSpecByReducedMorphism( P );
+        
     end );
     
     Finalize( ZariskiCoframe );
