@@ -61,6 +61,12 @@ Display( AvC );
 #! [ [  -6 ] ]
 #! 
 #! A morphism in Rows( Z )
+StandardMorphismOfUnderlyingCategory( AvC );
+#! <A morphism in Rows( Z )>
+Display( AvC );
+#! [ [  6 ] ]
+#! 
+#! A morphism in Rows( Z )
 AC := DirectProduct( A, C );
 #! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
 Display( AC );

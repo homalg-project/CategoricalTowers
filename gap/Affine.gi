@@ -30,6 +30,17 @@ InstallMethod( ClosedSubsetOfSpec,
 end );
 
 ##
+InstallMethod( ClosedSubsetOfSpec,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ClosedSubsetOfSpec( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
 InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
@@ -44,7 +55,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            MorphismOfUnderlyingCategory, I,
+            ReducedMorphismOfUnderlyingCategory, I,
             UnderlyingRing, R
             );
     
@@ -55,7 +66,54 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
 end );
 
 ##
-InstallMethod( MorphismOfUnderlyingCategory,
+InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ClosedSubsetOfSpecByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
+        "for a CAP category morphism",
+        [ IsCapCategoryMorphism ],
+
+  function( I )
+    local R, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( I ) );
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            StandardMorphismOfUnderlyingCategory, I,
+            UnderlyingRing, R
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ClosedSubsetOfSpecByStandardMorphism( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
+InstallMethod( ReducedMorphismOfUnderlyingCategory,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
 
@@ -75,26 +133,39 @@ InstallMethod( MorphismOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpec,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
+InstallMethod( ReducedMorphismOfUnderlyingCategory,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and HasStandardMorphismOfUnderlyingCategory ],
 
-  function( mat )
+  StandardMorphismOfUnderlyingCategory );
+
+##
+InstallMethod( StandardMorphismOfUnderlyingCategory,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    local mat;
     
-    return ClosedSubsetOfSpec( AsCategoryOfRowsMorphism( mat ) );
+    mat := UnderlyingMatrix( ReducedMorphismOfUnderlyingCategory( A ) );
+    
+    return AsCategoryOfRowsMorphism( BasisOfRows( mat ) );
     
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
+InstallMethod( MorphismOfUnderlyingCategory,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
 
-  function( mat )
-    
-    return ClosedSubsetOfSpecByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
-    
-end );
+  ReducedMorphismOfUnderlyingCategory );
+
+##
+InstallMethod( MorphismOfUnderlyingCategory,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and HasStandardMorphismOfUnderlyingCategory ],
+
+  StandardMorphismOfUnderlyingCategory );
 
 ##
 InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
@@ -163,7 +234,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddTerminalObject( ZariskiCoframe,
       function( arg )
         
-        return ClosedSubsetOfSpecByReducedMorphism( HomalgZeroMatrix( 0, 1, R ) );
+        return ClosedSubsetOfSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
         
     end );
     
@@ -171,7 +242,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddInitialObject( ZariskiCoframe,
       function( arg )
         
-        return ClosedSubsetOfSpecByReducedMorphism( HomalgIdentityMatrix( 1, R ) );
+        return ClosedSubsetOfSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
         
     end );
     
