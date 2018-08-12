@@ -19,26 +19,26 @@ A = B;
 #! true
 A = C;
 #! false
-embAB := MorphismOfZariskiClosedSubsets( A, B );
+embAB := UniqueMorphism( A, B );
 #! <An epi-, monomorphism in The coframe of Zariski closed subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( embAB );
 #! true
 IsIsomorphism( embAB );
 #! true
-embAC := MorphismOfZariskiClosedSubsets( A, C );
+embAC := UniqueMorphism( A, C );
 #! <An epi-, monomorphism in The coframe of Zariski closed subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( embAC );
 #! false
-embAD := MorphismOfZariskiClosedSubsets( A, D );
+embAD := UniqueMorphism( A, D );
 #! <An epi-, monomorphism in The coframe of Zariski closed subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( embAD );
 #! true
 IsIsomorphism( embAD );
 #! false
-embDA := MorphismOfZariskiClosedSubsets( D, A );
+embDA := UniqueMorphism( D, A );
 #! <An epi-, monomorphism in The coframe of Zariski closed subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( embDA );

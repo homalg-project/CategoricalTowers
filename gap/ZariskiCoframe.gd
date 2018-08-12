@@ -40,12 +40,3 @@ DeclareAttribute( "StandardMorphismOfUnderlyingCategory",
 #! @Returns a &CAP; morphism
 DeclareOperation( "MorphismOfUnderlyingCategory",
         [ IsObjectInZariskiCoframe ] );
-
-#! @Section Constructors
-
-#! @Description
-#!  Construct the morphism between Zariski closed subsets
-#! @Arguments A, B
-#! @Returns a &CAP; morphism
-DeclareOperation( "MorphismOfZariskiClosedSubsets",
-        [ IsObjectInZariskiCoframe, IsObjectInZariskiCoframe ] );
