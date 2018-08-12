@@ -1,7 +1,5 @@
 @Chapter (Co)frames/Locales of Zariski closed/open subsets
 
-@Section GAP Categories
-@Section Attributes
-@Section Constructors
-@Section Tools
-@Section Examples
+@Chapter Coframes of Zariski closed subsets
+
+@Chapter The coframe of Zariski closed subsets of an affine scheme

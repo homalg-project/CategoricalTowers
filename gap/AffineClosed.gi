@@ -113,61 +113,6 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
 end );
 
 ##
-InstallMethod( ReducedMorphismOfUnderlyingCategory,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
-
-  function( A )
-    local mat, L, biased_weak_fiber_product;
-    
-    mat := UnderlyingMatrix( PreMorphismOfUnderlyingCategory( A ) );
-    
-    L := List( PrimaryDecompositionOp( mat ), a -> AsCategoryOfRowsMorphism( a[2] ) );
-    
-    biased_weak_fiber_product := function( I, J )
-        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
-    end;
-    
-    return Iterated( L, biased_weak_fiber_product );
-    
-end );
-
-##
-InstallMethod( ReducedMorphismOfUnderlyingCategory,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe and HasStandardMorphismOfUnderlyingCategory ],
-
-  StandardMorphismOfUnderlyingCategory );
-
-##
-InstallMethod( StandardMorphismOfUnderlyingCategory,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
-
-  function( A )
-    local mat;
-    
-    mat := UnderlyingMatrix( ReducedMorphismOfUnderlyingCategory( A ) );
-    
-    return AsCategoryOfRowsMorphism( BasisOfRows( mat ) );
-    
-end );
-
-##
-InstallMethod( MorphismOfUnderlyingCategory,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
-
-  ReducedMorphismOfUnderlyingCategory );
-
-##
-InstallMethod( MorphismOfUnderlyingCategory,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe and HasStandardMorphismOfUnderlyingCategory ],
-
-  StandardMorphismOfUnderlyingCategory );
-
-##
 InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         "for a homalg ring",
         [ IsHomalgRing ],

@@ -4,4 +4,5 @@
 # Reading the implementation part of the package.
 #
 
+ReadPackage( "ZariskiFrames", "gap/Affine.gi");
 ReadPackage( "ZariskiFrames", "gap/AffineClosed.gi");
