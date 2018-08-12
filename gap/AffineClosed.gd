@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter The (co)frame of Zariski closed/open subsets of an affine scheme
+#! @Chapter The coframe of Zariski closed subsets of an affine scheme
 
 #! @Section Constructors
 
