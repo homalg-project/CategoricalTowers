@@ -75,4 +75,26 @@ Display( AC );
 #! [ [  6 ] ]
 #! 
 #! A morphism in Rows( Z )
+InternalHomOnObjects( I, T ) = T;
+#! true
+InternalHomOnObjects( A, T ) = T;
+#! true
+InternalHomOnObjects( T, T ) = T;
+#! true
+InternalHomOnObjects( T, A ) = A;
+#! true
+InternalHomOnObjects( T, I ) = I;
+#! true
+InternalHomOnObjects( A, I ) = I;
+#! true
+InternalHomOnObjects( I, I ) = T;
+#! true
+InternalHomOnObjects( D, B ) = T;
+#! true
+InternalHomOnObjects( B, D ) = C;
+#! true
+InternalHomOnObjects( D, C ) = T;
+#! true
+InternalHomOnObjects( C, D ) = B;
+#! true
 #! @EndExample

@@ -146,7 +146,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
     
-    ADD_COMMON_METHODS_FOR_LATTICES( ZariskiFrame );
+    ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
     
     ##
     AddTerminalObject( ZariskiFrame,
@@ -195,6 +195,30 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         P := INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
         
         return OpenSubsetOfSpecByReducedMorphism( P );
+        
+    end );
+    
+    ##
+    AddInternalHomOnObjects( ZariskiFrame,
+      function( A, B )
+        local L;
+        
+        A := MorphismOfUnderlyingCategory( A );
+        
+        if IsZero( A ) then
+            return TerminalObject( CapCategory( B ) );
+        fi;
+        
+        B := MorphismOfUnderlyingCategory( B );
+        
+        A := UnderlyingMatrix( A );
+        B := UnderlyingMatrix( B );
+        
+        L := List( [ 1 .. NrRows( A ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( A, [ r ] ), B ) );
+        
+        L := List( L, OpenSubsetOfSpec );
+        
+        return DirectProduct( L );
         
     end );
     
