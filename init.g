@@ -7,3 +7,4 @@
 ReadPackage( "Locales", "gap/Proset.gd");
 ReadPackage( "Locales", "gap/Poset.gd");
 ReadPackage( "Locales", "gap/Lattice.gd");
+ReadPackage( "Locales", "gap/HeytingAlgebra.gd");
