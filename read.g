@@ -5,4 +5,5 @@
 #
 
 ReadPackage( "ZariskiFrames", "gap/Affine.gi");
+ReadPackage( "ZariskiFrames", "gap/AffineOpen.gi");
 ReadPackage( "ZariskiFrames", "gap/AffineClosed.gi");
