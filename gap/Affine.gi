@@ -93,3 +93,16 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
     end );
     
 end );
+
+##
+InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
+  function( L )
+    local biased_weak_fiber_product;
+    
+    biased_weak_fiber_product := function( I, J )
+        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+    end;
+    
+    return Iterated( L, biased_weak_fiber_product );
+    
+end );
