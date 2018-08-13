@@ -133,45 +133,18 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframe );
     
     ##
-    AddIsWellDefinedForObjects( ZariskiCoframe,
-      function( A )
-        
-        A := MorphismOfUnderlyingCategory( A );
-        
-        if not RankOfObject( Range( A ) ) = 1 then
-            return false;
-        fi;
-        
-        return IsWellDefined( A );
-        
-    end );
-    
-    ##
     AddIsWellDefinedForMorphisms( ZariskiCoframe,
-      function( emb )
+      function( u )
         local S, T;
         
-        S := MorphismOfUnderlyingCategory( Source( emb ) );
-        T := MorphismOfUnderlyingCategory( Range( emb ) );
+        S := MorphismOfUnderlyingCategory( Source( u ) );
+        T := MorphismOfUnderlyingCategory( Range( u ) );
         
         return not Lift( T, S ) = fail;
         
     end );
     
-    ##
-    AddIsEqualForObjects( ZariskiCoframe,
-      function( A, B )
-        
-        A := MorphismOfUnderlyingCategory( A );
-        B := MorphismOfUnderlyingCategory( B );
-        
-        if Lift( A, B ) = fail then
-            return false;
-        fi;
-        
-        return not Lift( B, A ) = fail;
-        
-    end );
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
     
     ADD_COMMON_METHODS_FOR_LATTICES( ZariskiCoframe );
     

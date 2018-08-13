@@ -58,3 +58,38 @@ InstallMethod( MorphismOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
 
   StandardMorphismOfUnderlyingCategory );
+
+##
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows,
+  function( zariski_frame_or_coframe )
+    
+    ##
+    AddIsWellDefinedForObjects( zariski_frame_or_coframe,
+      function( A )
+        
+        A := MorphismOfUnderlyingCategory( A );
+        
+        if not RankOfObject( Range( A ) ) = 1 then
+            return false;
+        fi;
+        
+        return IsWellDefined( A );
+        
+    end );
+    
+    ##
+    AddIsEqualForObjects( zariski_frame_or_coframe,
+      function( A, B )
+        
+        A := MorphismOfUnderlyingCategory( A );
+        B := MorphismOfUnderlyingCategory( B );
+        
+        if Lift( A, B ) = fail then
+            return false;
+        fi;
+        
+        return not Lift( B, A ) = fail;
+        
+    end );
+    
+end );
