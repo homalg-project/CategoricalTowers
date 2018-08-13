@@ -75,4 +75,26 @@ Display( AC );
 #! A morphism in Rows( Z )
 DirectProduct( A, C ) = I;
 #! true
+InternalHomOnObjects( I, T ) = I;
+#! true
+InternalHomOnObjects( I, A ) = I;
+#! true
+InternalHomOnObjects( I, I ) = I;
+#! true
+InternalHomOnObjects( A, I ) = A;
+#! true
+InternalHomOnObjects( T, I ) = T;
+#! true
+InternalHomOnObjects( T, A ) = T;
+#! true
+InternalHomOnObjects( T, T ) = I;
+#! true
+InternalHomOnObjects( B, D ) = I;
+#! true
+InternalHomOnObjects( D, B ) = C;
+#! true
+InternalHomOnObjects( C, D ) = I;
+#! true
+InternalHomOnObjects( D, C ) = B;
+#! true
 #! @EndExample

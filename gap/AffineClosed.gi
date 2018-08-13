@@ -198,6 +198,32 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
     end );
     
+    ## this defines a co-closed structure (!)
+    ## which is not supported by CAP and not even documented on nLab
+    ## it is added as it corresponds to the set theortic difference
+    AddInternalHomOnObjects( ZariskiCoframe,
+      function( A, B )
+        local L;
+        
+        B := MorphismOfUnderlyingCategory( B );
+        
+        if IsZero( B ) then
+            return InitialObject( CapCategory( A ) );
+        fi;
+        
+        A := MorphismOfUnderlyingCategory( A );
+        
+        A := UnderlyingMatrix( A );
+        B := UnderlyingMatrix( B );
+        
+        L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
+        
+        L := List( L, ClosedSubsetOfSpec );
+        
+        return Coproduct( L );
+        
+    end );
+    
     Finalize( ZariskiCoframe );
     
     return ZariskiCoframe;
