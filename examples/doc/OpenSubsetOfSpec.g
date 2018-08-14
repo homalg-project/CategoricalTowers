@@ -97,4 +97,48 @@ InternalHomOnObjects( D, C ) = T;
 #! true
 InternalHomOnObjects( C, D ) = B;
 #! true
+IsWellDefined( EvaluationMorphism( A, C ) );
+#! true
+IsIsomorphism( EvaluationMorphism( A, C ) );
+#! false
+IsWellDefined( EvaluationMorphism( C, A ) );
+#! true
+IsIsomorphism( EvaluationMorphism( C, A ) );
+#! false
+IsWellDefined( CoevaluationMorphism( A, D ) );
+#! true
+IsIsomorphism( CoevaluationMorphism( A, D ) );
+#! false
+IsWellDefined( CoevaluationMorphism( D, A ) );
+#! true
+IsIsomorphism( CoevaluationMorphism( D, A ) );
+#! false
+th := UniqueMorphism( TensorProduct( A, C ), C );
+#! <An epi-, monomorphism in The frame of Zariski open subsets of the\
+#!  affine spectrum of Z>
+IsWellDefined( th );
+#! true
+th := TensorProductToInternalHomAdjunctionMap( A, C, th );
+#! <An epi-, monomorphism in The frame of Zariski open subsets of the\
+#!  affine spectrum of Z>
+IsWellDefined( th );
+#! true
+IsIsomorphism( th );
+#! false
+ht := UniqueMorphism( A, InternalHomOnObjects( D, B ) );
+#! <An epi-, monomorphism in The frame of Zariski open subsets of the\
+#!  affine spectrum of Z>
+IsWellDefined( ht );
+#! true
+ht := InternalHomToTensorProductAdjunctionMap( D, B, ht );
+#! <An epi-, monomorphism in The frame of Zariski open subsets of the\
+#!  affine spectrum of Z>
+IsWellDefined( ht );
+#! true
+IsIsomorphism( ht );
+#! false
+IsWellDefined( MonoidalPreComposeMorphism( A, C, D ) );
+#! true
+IsIsomorphism( MonoidalPreComposeMorphism( A, C, D ) );
+#! false
 #! @EndExample
