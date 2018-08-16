@@ -421,6 +421,7 @@ InstallMethod( Algebroid,
     
     SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
+    SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
     SetUnderlyingQuiverAlgebra( A, Rq );
     SetFilterObj( A, IsAlgebroid );
     
