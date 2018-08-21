@@ -10,12 +10,12 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( poset );
     
-    ##
-    AddIsIsomorphism( poset,
-      function( u )
-        
-        return Source( u ) = Range( u );
-        
-    end );
+    ## use the one for prosets
+    #AddIsIsomorphism( poset,
+    #  function( u )
+    #    
+    #    return Source( u ) = Range( u );
+    #    
+    #end );
     
 end );
