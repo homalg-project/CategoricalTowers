@@ -144,9 +144,9 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
     end );
     
-    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
-    
     ADD_COMMON_METHODS_FOR_LATTICES( ZariskiCoframe );
+    
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
     
     ##
     AddTerminalObject( ZariskiCoframe,

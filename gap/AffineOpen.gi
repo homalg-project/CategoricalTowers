@@ -144,9 +144,9 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
     end );
     
-    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
-    
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
+    
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
     
     ##
     AddTerminalObject( ZariskiFrame,
