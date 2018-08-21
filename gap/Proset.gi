@@ -36,6 +36,19 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
   function( preordered_set )
     
     ##
+    AddIsEqualForCacheForObjects( preordered_set,
+      IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( preordered_set,
+      function( u1, u2 )
+        
+        return IsEqualForCacheForObjects( Source( u1 ), Source( u2 ) ) and
+               IsEqualForCacheForObjects( Range( u1 ), Range( u2 ) );
+        
+    end );
+    
+    ##
     AddIsEqualForMorphisms( preordered_set,
       function( u1, u2 )
         
