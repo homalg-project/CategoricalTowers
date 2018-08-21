@@ -37,9 +37,9 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddIsEqualForMorphisms( preordered_set,
-      function( emb1, emb2 )
+      function( u1, u2 )
         
-        return Source( emb1 ) = Source( emb2 ) and Range( emb1 ) = Range( emb2 );
+        return Source( u1 ) = Source( u2 ) and Range( u1 ) = Range( u2 );
         
     end );
     
@@ -53,22 +53,22 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddPreCompose( preordered_set,
-      function( emb1, emb2 )
+      function( u1, u2 )
         
-        if not Range( emb1 ) = Source( emb2 ) then
+        if not Range( u1 ) = Source( u2 ) then
             Error( "the target of the pre-morphism is not equal to the source of the post-morphism\n" );
         fi;
         
-        return UniqueMorphism( Source( emb1 ), Range( emb2 ) );
+        return UniqueMorphism( Source( u1 ), Range( u2 ) );
         
     end );
     
     ##
     AddIsIsomorphism( preordered_set,
-      function( emb )
+      function( u )
         local inv;
         
-        inv := UniqueMorphism( Range( emb ), Source( emb ) );
+        inv := UniqueMorphism( Range( u ), Source( u ) );
         
         return IsWellDefined( inv );
         
