@@ -77,21 +77,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
         
     end );
     
-    ##
-    AddIsEqualForObjects( zariski_frame_or_coframe,
-      function( A, B )
-        
-        A := MorphismOfUnderlyingCategory( A );
-        B := MorphismOfUnderlyingCategory( B );
-        
-        if Lift( A, B ) = fail then
-            return false;
-        fi;
-        
-        return not Lift( B, A ) = fail;
-        
-    end );
-    
 end );
 
 ##
