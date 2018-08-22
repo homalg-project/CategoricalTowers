@@ -91,7 +91,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2018.07.10" ],
-                   [ "Locales", ">= 2018.08.09" ],
+                   [ "Locales", ">= 2018.08.10" ],
                    [ "MatricesForHomalg", ">= 2018.08.02" ],
                    [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],

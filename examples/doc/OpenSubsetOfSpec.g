@@ -36,12 +36,16 @@ embDA := UniqueMorphism( D, A );
 #!  affine spectrum of Z>
 IsWellDefined( embDA );
 #! true
+IsSubset( A, D );
+#! true
 IsIsomorphism( embDA );
 #! false
 embAD := UniqueMorphism( A, D );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( embAD );
+#! false
+IsSubset( D, A );
 #! false
 T := TerminalObject( ZF );
 #! <An object in The frame of Zariski open subsets of the affine spectrum of Z>
