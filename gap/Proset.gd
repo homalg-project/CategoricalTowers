@@ -34,6 +34,15 @@ DeclareProperty( "IsThinCategory",
 DeclareProperty( "IsSkeletalCategory",
                  IsCapCategory );
 
+#! @Section Operations
+
+#! @Description
+#!  Check if <A>A</A> is bigger than <A>B</A> w.r.t. the preorder.
+#! @Arguments A, B
+#! @Returns <C>true</C> or <C>false</C>
+DeclareOperation( "IsSubset",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ] );
+
 #! @Section Constructors
 
 #! @Description

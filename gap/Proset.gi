@@ -154,3 +154,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     SetIsThinCategory( preordered_set, true );
     
 end );
+
+##
+InstallMethod( IsSubset,
+        "for two objects in a proset",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+        
+  function( T, S )
+    
+    return IsWellDefinedForMorphisms( UniqueMorphism( S, T ) );
+    
+end );
