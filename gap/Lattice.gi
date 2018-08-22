@@ -92,7 +92,13 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     
 end );
 
-    
+##
+InstallMethod( \*,
+        "for two objects in join-semilattice",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  DirectProduct );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
   function( lattice )
@@ -144,3 +150,10 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
     end );
     
 end );
+
+##
+InstallMethod( \+,
+        "for two objects in meet-semilattice",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  Coproduct );
