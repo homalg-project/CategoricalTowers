@@ -11,6 +11,18 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     ADD_COMMON_METHODS_FOR_POSETS( meet_semilattice );
     
     ##
+    AddIsWellDefinedForMorphisms( meet_semilattice,
+      function( u )
+        local S, T;
+        
+        S := Source( u );
+        T := Range( u );
+        
+        return IsEqualForObjects( DirectProduct( S, T ), S );
+        
+    end );
+    
+    ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( meet_semilattice,
       function( D, k, P )
         
@@ -41,6 +53,18 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
   function( join_semilattice )
     
     ADD_COMMON_METHODS_FOR_POSETS( join_semilattice );
+    
+    ##
+    AddIsWellDefinedForMorphisms( join_semilattice,
+      function( u )
+        local S, T;
+        
+        S := Source( u );
+        T := Range( u );
+        
+        return IsEqualForObjects( Coproduct( S, T ), T );
+        
+    end );
     
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( join_semilattice,
