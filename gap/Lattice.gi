@@ -5,13 +5,13 @@
 #
 
 ##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
-  function( lattice )
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
+  function( meet_semilattice )
     
-    ADD_COMMON_METHODS_FOR_POSETS( lattice );
+    ADD_COMMON_METHODS_FOR_POSETS( meet_semilattice );
     
     ##
-    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( lattice,
+    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( meet_semilattice,
       function( D, k, P )
         
         return UniqueMorphism( P, D[k] );
@@ -19,7 +19,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
     end );
     
     ##
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( lattice,
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( meet_semilattice,
       function( D, tau, P )
         
         return UniqueMorphism( Source( tau[1] ), P );
@@ -27,15 +27,23 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
     end );
     
     ##
-    AddDirectProductFunctorialWithGivenDirectProducts( lattice,
+    AddDirectProductFunctorialWithGivenDirectProducts( meet_semilattice,
       function( s, L, r )
         
         return UniqueMorphism( s, r );
         
     end );
     
+end );
+
+##
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
+  function( join_semilattice )
+    
+    ADD_COMMON_METHODS_FOR_POSETS( join_semilattice );
+    
     ##
-    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( lattice,
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( join_semilattice,
       function( D, k, I )
         
         return UniqueMorphism( D[k], I );
@@ -43,7 +51,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
     end );
     
     ##
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( lattice,
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( join_semilattice,
       function( D, tau, I )
         
         return UniqueMorphism( I, Range( tau[1] ) );
@@ -51,12 +59,23 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
     end );
     
     ##
-    AddCoproductFunctorialWithGivenCoproducts( lattice,
+    AddCoproductFunctorialWithGivenCoproducts( join_semilattice,
       function( s, L, r )
         
         return UniqueMorphism( s, r );
         
     end );
+    
+end );
+
+    
+##
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
+  function( lattice )
+    
+    ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( lattice );
+    
+    ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES( lattice );
     
     ## a cartesian or cocartesian monoidal structure
     
