@@ -151,4 +151,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
         
     end );
     
+    SetIsThinCategory( preordered_set, true );
+    
 end );

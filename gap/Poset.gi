@@ -29,4 +29,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
         
     end );
     
+    SetIsSkeletalCategory( poset, true );
+    
 end );

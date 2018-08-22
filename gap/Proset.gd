@@ -20,6 +20,20 @@ DeclareCategory( "IsObjectInThinCategory",
 DeclareCategory( "IsMorphismInThinCategory",
                  IsCapCategoryMorphism );
 
+#! @Section GAP Properties
+
+#! @Description
+#!  The property of <A>C</A> being a thin &CAP; category.
+#! @Arguments C
+DeclareProperty( "IsThinCategory",
+                 IsCapCategory );
+
+#! @Description
+#!  The property of <A>C</A> being a skeletal &CAP; category.
+#! @Arguments C
+DeclareProperty( "IsSkeletalCategory",
+                 IsCapCategory );
+
 #! @Section Constructors
 
 #! @Description
