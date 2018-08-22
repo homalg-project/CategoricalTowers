@@ -132,6 +132,10 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframe );
     
+    ADD_COMMON_METHODS_FOR_LATTICES( ZariskiCoframe );
+    
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
+    
     ##
     AddIsWellDefinedForMorphisms( ZariskiCoframe,
       function( u )
@@ -143,10 +147,6 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         return not Lift( T, S ) = fail;
         
     end );
-    
-    ADD_COMMON_METHODS_FOR_LATTICES( ZariskiCoframe );
-    
-    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
     
     ##
     AddTerminalObject( ZariskiCoframe,

@@ -132,6 +132,10 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrame );
     
+    ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
+    
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
+    
     ##
     AddIsWellDefinedForMorphisms( ZariskiFrame,
       function( u )
@@ -143,10 +147,6 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         return not Lift( S, T ) = fail;
         
     end );
-    
-    ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
-    
-    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
     
     ##
     AddTerminalObject( ZariskiFrame,
