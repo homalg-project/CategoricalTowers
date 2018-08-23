@@ -12,10 +12,10 @@
 #!  The &GAP; category of objects in a Zariski coframe.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiCoframe",
-                 IsObjectInZariskiFrameOrCoframe );
+        IsObjectInZariskiFrameOrCoframe );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Zariski coframe.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiCoframe",
-                 IsMorphismInZariskiFrameOrCoframe );
+        IsMorphismInZariskiFrameOrCoframe );
