@@ -224,6 +224,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
     end );
     
+    SetIsCocartesianCoclosedCategory( ZariskiCoframe, true );
+    
     Finalize( ZariskiCoframe );
     
     return ZariskiCoframe;

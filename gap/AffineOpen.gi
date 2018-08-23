@@ -222,6 +222,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
     end );
     
+    SetIsCartesianClosedCategory( ZariskiFrame, true );
+    
     Finalize( ZariskiFrame );
     
     return ZariskiFrame;
