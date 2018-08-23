@@ -227,3 +227,16 @@ InstallMethod( \=,
     return A = ( B - 0 );
     
 end );
+
+##
+InstallMethod( Display,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+
+  function( A )
+    
+    Display( MorphismOfUnderlyingCategory( A ) );
+    
+    Print( "\nA formal difference given by the above morphism" );
+    
+end );

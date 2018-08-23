@@ -165,3 +165,16 @@ InstallMethod( IsSubset,
     return IsWellDefinedForMorphisms( UniqueMorphism( S, T ) );
     
 end );
+
+##
+InstallMethod( Display,
+        "for an object in a proset",
+        [ IsMorphismInThinCategory ],
+
+  function( u )
+    
+    Display( Range( u ) );
+    Print( " ^\n |\n |\n" );
+    Display( Source( u ) );
+    
+end );
