@@ -25,6 +25,12 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
 DeclareAttribute( "PreMorphismOfUnderlyingLattice",
         IsObjectInMeetSemilatticeOfDifferences );
 
+DeclareAttribute( "NormalizedMorphismOfUnderlyingHeytingAlgebra",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+DeclareAttribute( "StandardMorphismOfUnderlyingHeytingAlgebra",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Section Operations
 
 #! @Description
@@ -65,3 +71,10 @@ DeclareOperation( "\-",
 
 DeclareOperation( "AdditiveInverseMutable",
         [ IsObjectInThinCategory ] );
+
+#! @Description
+#!  <C>AsFormalDifferenceOfNormalizedMorphism</C> assumes that <A>u</A> is normalized.
+#! @Arguments u
+#! @Group AsFormalDifference
+DeclareOperation( "AsFormalDifferenceOfNormalizedMorphism",
+        [ IsMorphismInThinCategory ] );

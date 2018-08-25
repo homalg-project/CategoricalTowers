@@ -162,11 +162,78 @@ InstallMethod( AdditiveInverseMutable,
 end );
 
 ##
+InstallMethod( AsFormalDifferenceOfNormalizedMorphism,
+        "for a morphism in a thin category",
+        [ IsMorphismInThinCategory ],
+        
+  function( u )
+    local A, D;
+    
+    A := rec( );
+
+    D := MeetSemilatticeOfDifferences( CapCategory( u ) );
+    
+    ObjectifyObjectForCAPWithAttributes( A, D,
+            NormalizedMorphismOfUnderlyingHeytingAlgebra, u
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( NormalizedMorphismOfUnderlyingHeytingAlgebra,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    local u, S, T, L, H;
+    
+    u := MorphismOfUnderlyingLattice( A );
+    
+    S := Source( u );
+    T := Range( u );
+    
+    L := CapCategory( u );
+    
+    H := InternalHomOnObjects( T, S );
+    
+    if HasIsCartesianClosedCategory( L ) and IsCartesianClosedCategory( L ) then
+        
+        return UniqueMorphism( H, Coproduct( H, T ) );
+        
+    elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
+        
+        return UniqueMorphism( DirectProduct( S, H ), H );
+        
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
 InstallMethod( MorphismOfUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
   PreMorphismOfUnderlyingLattice );
+
+##
+InstallMethod( MorphismOfUnderlyingLattice,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedMorphismOfUnderlyingHeytingAlgebra ],
+        
+  NormalizedMorphismOfUnderlyingHeytingAlgebra );
+
+##
+InstallMethod( MorphismOfUnderlyingLattice,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardMorphismOfUnderlyingHeytingAlgebra ],
+        
+  StandardMorphismOfUnderlyingHeytingAlgebra );
 
 ##
 InstallMethod( \*,
