@@ -22,7 +22,7 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
 
 #! @Section Attributes
 
-DeclareAttribute( "PreMorphismOfUnderlyingCategory",
+DeclareAttribute( "PreMorphismOfUnderlyingLattice",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Section Operations
@@ -31,7 +31,7 @@ DeclareAttribute( "PreMorphismOfUnderlyingCategory",
 #!  A morphism in the underlying lattice representing the formal difference <A>A</A>.
 #! @Arguments A
 #! @Returns a &CAP; morphism
-DeclareOperation( "MorphismOfUnderlyingCategory",
+DeclareOperation( "MorphismOfUnderlyingLattice",
         [ IsObjectInMeetSemilatticeOfDifferences ] );
 
 #! @Section Constructors

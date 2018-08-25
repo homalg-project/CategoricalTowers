@@ -31,7 +31,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( A )
         local u;
         
-        u := MorphismOfUnderlyingCategory( A );
+        u := MorphismOfUnderlyingLattice( A );
         
         return IsWellDefinedForObjects( Source( u ) ) and IsWellDefinedForObjects( Range( u ) );
         
@@ -42,8 +42,8 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( u )
         local uS, uT, A, Ap, B, Bp;
         
-        uS := MorphismOfUnderlyingCategory( Source( u ) );
-        uT := MorphismOfUnderlyingCategory( Range( u ) );
+        uS := MorphismOfUnderlyingLattice( Source( u ) );
+        uT := MorphismOfUnderlyingLattice( Range( u ) );
         
         A := Range( uS );
         Ap := Source( uS );
@@ -91,7 +91,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( L )
         local T, S;
         
-        L := List( L, MorphismOfUnderlyingCategory );
+        L := List( L, MorphismOfUnderlyingLattice );
         
         T := DirectProduct( List( L, Range ) );
         S := Coproduct( List( L, Source ) );
@@ -119,7 +119,7 @@ InstallMethod( AsFormalDifference,
     D := MeetSemilatticeOfDifferences( CapCategory( u ) );
     
     ObjectifyObjectForCAPWithAttributes( A, D,
-            PreMorphismOfUnderlyingCategory, u
+            PreMorphismOfUnderlyingLattice, u
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -162,11 +162,11 @@ InstallMethod( AdditiveInverseMutable,
 end );
 
 ##
-InstallMethod( MorphismOfUnderlyingCategory,
+InstallMethod( MorphismOfUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
-  PreMorphismOfUnderlyingCategory );
+  PreMorphismOfUnderlyingLattice );
 
 ##
 InstallMethod( \*,
@@ -235,7 +235,7 @@ InstallMethod( Display,
 
   function( A )
     
-    Display( MorphismOfUnderlyingCategory( A ) );
+    Display( MorphismOfUnderlyingLattice( A ) );
     
     Print( "\nA formal difference given by the above morphism" );
     
