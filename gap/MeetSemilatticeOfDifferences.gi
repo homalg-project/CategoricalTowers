@@ -304,6 +304,6 @@ InstallMethod( Display,
     
     Display( MorphismOfUnderlyingLattice( A ) );
     
-    Print( "\nA formal difference given by the above morphism" );
+    Print( "\nA formal difference given by the above morphism\n" );
     
 end );
