@@ -9,7 +9,8 @@
 #! @Section Constructors
 
 #! @Description
-#!  Construct the spectrum of a &homalg; ring <A>R</A>
+#!  Construct the Zariski frame of open sets defined as the complements of
+#!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns a &CAP; category
 DeclareAttribute( "ZariskiFrameOfAffineSpectrumUsingCategoryOfRows",

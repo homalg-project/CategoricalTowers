@@ -9,7 +9,8 @@
 #! @Section Constructors
 
 #! @Description
-#!  Construct the spectrum of a &homalg; ring <A>R</A>
+#!  Construct the Zariski coframe of closed sets defined as the
+#!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns a &CAP; category
 DeclareAttribute( "ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows",
