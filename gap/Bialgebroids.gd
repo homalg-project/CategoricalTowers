@@ -132,6 +132,9 @@ DeclareAttribute( "UnderlyingQuiverAlgebraElement",
 DeclareOperation( "POW",
         [ IsAlgebroid, IsInt ] );
 
+DeclareOperation( "\*",
+        [ IsAlgebroid, IsAlgebroid] );
+
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 

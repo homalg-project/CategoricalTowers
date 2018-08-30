@@ -583,8 +583,8 @@ InstallMethod( POW,
   function( A, n )
     local Rq, R, trivial_quiver, Rqq;
     
-    if n < 0 or n > 2 then
-        Error( "the only admissible values for n are 0,1,2\n" );
+    if n < 0 then
+        Error( "the only admissible values for n are non-negative integers\n" );
     elif n = 1 then
         return A;
     elif not IsBound( A!.powers ) then
@@ -613,20 +613,30 @@ InstallMethod( POW,
         
     fi;
     
-    # n = 2
+    A!.powers.1 := A;
     
-    if not IsBound( A!.powers.2 ) then
+    if not IsBound( A!.powers.(n) ) then
+        if not IsBound( A!.powers.(n-1) ) then
+            A!.powers.(n-1) := A^(n-1);
+        fi;
         
-        Rqq := TensorProductOfAlgebras( Rq, Rq );
+        A!.powers.(n) := A!.powers.(n-1) * A;
         
-        A!.powers.2 := Algebroid( Rqq );
-        
-        A!.powers.2!.PowerOf := A;
+        A!.powers.(n)!.PowerOf := A;
         
     fi;
     
-    return A!.powers.2;
+    return A!.powers.(n);
     
+end );
+
+##
+InstallMethod( \*,
+        "for two algebroids",
+        [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsAlgebroid and HasUnderlyingQuiverAlgebra ],
+        
+  function( A, B )
+    return Algebroid( TensorProductOfAlgebras( UnderlyingQuiverAlgebra( A ), UnderlyingQuiverAlgebra( B ) ) );
 end );
 
 ##
