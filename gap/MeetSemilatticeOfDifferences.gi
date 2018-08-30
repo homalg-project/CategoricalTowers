@@ -239,7 +239,7 @@ InstallMethod( MorphismOfUnderlyingLattice,
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
-
+        
   function( A, B )
     
     if IsObjectInMeetSemilatticeOfDifferences( A ) then
@@ -254,7 +254,7 @@ end );
 InstallMethod( \*,
         "for an object in a meet-semilattice of formal differences and an object in a thin category",
         [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
-
+        
   function( A, B )
     
     if IsObjectInMeetSemilatticeOfDifferences( B ) then
@@ -269,7 +269,7 @@ end );
 InstallMethod( \=,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
-
+        
   function( A, B )
     
     if IsObjectInMeetSemilatticeOfDifferences( A ) then
@@ -284,7 +284,7 @@ end );
 InstallMethod( \=,
         "for an object in a meet-semilattice of formal differences and an object in a thin category",
         [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
-
+        
   function( A, B )
     
     if IsObjectInMeetSemilatticeOfDifferences( B ) then
@@ -299,7 +299,7 @@ end );
 InstallMethod( Display,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
-
+        
   function( A )
     
     Display( MorphismOfUnderlyingLattice( A ) );
