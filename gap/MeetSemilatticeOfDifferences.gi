@@ -227,6 +227,13 @@ InstallMethod( PairInUnderlyingLattice,
   StandardPairInUnderlyingHeytingAlgebra );
 
 ##
+InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingAlgebra ],
+        
+  StandardPairInUnderlyingHeytingAlgebra );
+
+##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
