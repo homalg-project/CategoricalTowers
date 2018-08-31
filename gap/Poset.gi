@@ -21,11 +21,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     ##
     AddIsEqualForObjects( poset,
       function( A, B )
-        local u;
         
-        u := UniqueMorphism( A, B );
-        
-        return IsWellDefined( u ) and IsIsomorphism( u );
+        return IsHomSetInhabited( A, B ) and IsHomSetInhabited( B, A );
         
     end );
     

@@ -37,11 +37,37 @@ DeclareProperty( "IsSkeletalCategory",
 #! @Section Operations
 
 #! @Description
+#!  Check if <A>B</A> is bigger than <A>A</A> w.r.t. the preorder.
+#! @Arguments A, B
+#! @Returns <C>true</C> or <C>false</C>
+DeclareOperation( "IsHomSetInhabited",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
 #!  Check if <A>A</A> is bigger than <A>B</A> w.r.t. the preorder.
 #! @Arguments A, B
 #! @Returns <C>true</C> or <C>false</C>
 DeclareOperation( "IsSubset",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsHomSetInhabited</C>.
+#! $F: A, B \mapsto \mathrm{IsHomSetInhabited}(A, B)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsList ] );
 
 #! @Section Constructors
 
@@ -53,5 +79,7 @@ DeclareOperation( "UniqueMorphism",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
 # @Section Tools
+
+DeclareGlobalVariable( "PROSET_METHOD_NAME_RECORD" );
 
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_PREORDERED_SETS" );

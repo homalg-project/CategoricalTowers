@@ -11,12 +11,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     ADD_COMMON_METHODS_FOR_POSETS( meet_semilattice );
     
     ##
-    AddIsWellDefinedForMorphisms( meet_semilattice,
-      function( u )
-        local S, T;
-        
-        S := Source( u );
-        T := Range( u );
+    AddIsHomSetInhabited( meet_semilattice,
+      function( S, T )
         
         return IsEqualForObjects( DirectProduct( S, T ), S );
         
@@ -55,12 +51,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     ADD_COMMON_METHODS_FOR_POSETS( join_semilattice );
     
     ##
-    AddIsWellDefinedForMorphisms( join_semilattice,
-      function( u )
-        local S, T;
-        
-        S := Source( u );
-        T := Range( u );
+    AddIsHomSetInhabited( join_semilattice,
+      function( S, T )
         
         return IsEqualForObjects( Coproduct( S, T ), T );
         

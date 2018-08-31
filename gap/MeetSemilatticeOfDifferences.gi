@@ -38,18 +38,18 @@ InstallMethod( MeetSemilatticeOfDifferences,
     end );
     
     ##
-    AddIsWellDefinedForMorphisms( D,
-      function( u )
-        local uS, uT, A, Ap, B, Bp;
+    AddIsHomSetInhabited( D,
+      function( A, B )
+        local Ap, Bp;
         
-        uS := MorphismOfUnderlyingLattice( Source( u ) );
-        uT := MorphismOfUnderlyingLattice( Range( u ) );
+        A := MorphismOfUnderlyingLattice( A );
+        B := MorphismOfUnderlyingLattice( B );
         
-        A := Range( uS );
-        Ap := Source( uS );
+        Ap := Source( A );
+        A := Range( A );
         
-        B := Range( uT );
-        Bp := Source( uT );
+        Bp := Source( B );
+        B := Range( B );
         
         return IsSubset( Coproduct( Ap, B ), A ) and IsSubset( Ap, DirectProduct( A, Bp ) );
         

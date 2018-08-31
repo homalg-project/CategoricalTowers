@@ -4,6 +4,19 @@
 # Implementations
 #
 
+InstallValue( PROSET_METHOD_NAME_RECORD,
+        rec(
+            IsHomSetInhabited := rec(
+                                     installation_name := "IsHomSetInhabited",
+                                     filter_list := [ "object", "object" ],
+                                     return_type := "bool",
+                                     is_merely_set_theoretic := true
+                                    )
+            )
+        );
+
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( PROSET_METHOD_NAME_RECORD );
+
 ##
 InstallMethod( UniqueMorphism,
         "for two objects in a thin category",
@@ -34,6 +47,14 @@ end );
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
   function( preordered_set )
+    
+    ##
+    AddIsWellDefinedForMorphisms( preordered_set,
+      function( u )
+        
+        return IsHomSetInhabited( Source( u ), Range( u ) );
+        
+    end );
     
     ##
     AddIsEqualForCacheForObjects( preordered_set,
