@@ -22,13 +22,13 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
 
 #! @Section Attributes
 
-DeclareAttribute( "PreMorphismOfUnderlyingLattice",
+DeclareAttribute( "PrePairInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfDifferences );
 
-DeclareAttribute( "NormalizedMorphismOfUnderlyingHeytingAlgebra",
+DeclareAttribute( "NormalizedPairInUnderlyingHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences );
 
-DeclareAttribute( "StandardMorphismOfUnderlyingHeytingAlgebra",
+DeclareAttribute( "StandardPairInUnderlyingHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Section Operations
@@ -36,8 +36,8 @@ DeclareAttribute( "StandardMorphismOfUnderlyingHeytingAlgebra",
 #! @Description
 #!  A morphism in the underlying lattice representing the formal difference <A>A</A>.
 #! @Arguments A
-#! @Returns a &CAP; morphism
-DeclareOperation( "MorphismOfUnderlyingLattice",
+#! @Returns a pair of &CAP; objects
+DeclareOperation( "PairInUnderlyingLattice",
         [ IsObjectInMeetSemilatticeOfDifferences ] );
 
 #! @Section Constructors
@@ -50,19 +50,11 @@ DeclareAttribute( "MeetSemilatticeOfDifferences",
         IsCapCategory );
 
 #! @Description
-#!  View the morhpism <A>u</A>:=<C>UniqueMorphism</C>( <A>A</A>, <A>B</A> )
-#!  (an arrow in a lattice) as a formal difference object <Q><A>A</A> - <A>B</A></Q>.
-#! @Arguments u
-#! @Returns an object in a &CAP; category
-#! @Group AsFormalDifference
-DeclareOperation( "AsFormalDifference",
-        [ IsMorphismInThinCategory ] );
-
-#! @Description
+#!  Form the formal difference object <A>A</A> - <A>B</A>.
 #!  The expression <A>A</A> - 0 := <A>A</A> - <C>InitialObject</C>( <C>CapCategory</C>( <A>A</A> ) ).
 #!  The expression - <A>A</A> := <C>TerminalObject</C>( <C>CapCategory</C>( <A>A</A> ) ) - <A>A</A>.
+#! @Group FormalDifference
 #! @Arguments A, B
-#! @Group AsFormalDifference
 DeclareOperation( "\-",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
@@ -73,8 +65,9 @@ DeclareOperation( "AdditiveInverseMutable",
         [ IsObjectInThinCategory ] );
 
 #! @Description
-#!  <C>AsFormalDifferenceOfNormalizedMorphism</C> assumes that <A>u</A> is normalized.
+#!  <C>FormalDifferenceOfNormalizedObjects</C> assumes that <A>A</A> and <A>B</A>
+#!  are <Q>normalized</Q>
 #! @Arguments u
-#! @Group AsFormalDifference
-DeclareOperation( "AsFormalDifferenceOfNormalizedMorphism",
-        [ IsMorphismInThinCategory ] );
+#! @Group FormalDifference
+DeclareOperation( "FormalDifferenceOfNormalizedObjects",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ] );

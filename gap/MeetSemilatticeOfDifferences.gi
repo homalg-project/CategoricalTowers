@@ -29,11 +29,13 @@ InstallMethod( MeetSemilatticeOfDifferences,
     ##
     AddIsWellDefinedForObjects( D,
       function( A )
-        local u;
+        local L;
         
-        u := MorphismOfUnderlyingLattice( A );
+        A := PairInUnderlyingLattice( A );
         
-        return IsWellDefinedForObjects( Source( u ) ) and IsWellDefinedForObjects( Range( u ) );
+        L := CapCategory( A[1] );
+        
+        return IsIdenticalObj( L, CapCategory( A[2] ) ) and ForAll( A, IsWellDefinedForObjects );
         
     end );
     
@@ -42,14 +44,14 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( A, B )
         local Ap, Bp;
         
-        A := MorphismOfUnderlyingLattice( A );
-        B := MorphismOfUnderlyingLattice( B );
+        A := PairInUnderlyingLattice( A );
+        B := PairInUnderlyingLattice( B );
         
-        Ap := Source( A );
-        A := Range( A );
+        Ap := A[2];
+        A := A[1];
         
-        Bp := Source( B );
-        B := Range( B );
+        Bp := B[2];
+        B := B[1];
         
         return IsSubset( Coproduct( Ap, B ), A ) and IsSubset( Ap, DirectProduct( A, Bp ) );
         
@@ -71,7 +73,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         T := TerminalObject( D!.UnderlyingCategory );
         I := InitialObject( D!.UnderlyingCategory );
         
-        return AsFormalDifference( T, I );
+        return T - I;
         
     end );
     
@@ -82,7 +84,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         
         I := InitialObject( D!.UnderlyingCategory );
         
-        return AsFormalDifference( IdentityMorphism( I ) );
+        return I - I;
         
     end );
     
@@ -91,10 +93,10 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( L )
         local T, S;
         
-        L := List( L, MorphismOfUnderlyingLattice );
+        L := List( L, PairInUnderlyingLattice );
         
-        T := DirectProduct( List( L, Range ) );
-        S := Coproduct( List( L, Source ) );
+        T := DirectProduct( List( L, a -> a[1] ) );
+        S := Coproduct( List( L, a -> a[2] ) );
         
         return T - S;
         
@@ -107,35 +109,24 @@ InstallMethod( MeetSemilatticeOfDifferences,
 end );
 
 ##
-InstallMethod( AsFormalDifference,
-        "for a morphism in a thin category",
-        [ IsMorphismInThinCategory ],
-        
-  function( u )
-    local A, D;
-    
-    A := rec( );
-
-    D := MeetSemilatticeOfDifferences( CapCategory( u ) );
-    
-    ObjectifyObjectForCAPWithAttributes( A, D,
-            PreMorphismOfUnderlyingLattice, u
-            );
-    
-    Assert( 4, IsWellDefined( A ) );
-    
-    return A;
-    
-end );
-
-##
 InstallMethod( \-,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
   function( A, B )
+    local C, D;
     
-    return AsFormalDifference( UniqueMorphism( B, A ) );
+    C := rec( );
+    
+    D := MeetSemilatticeOfDifferences( CapCategory( A ) );
+    
+    ObjectifyObjectForCAPWithAttributes( C, D,
+            PrePairInUnderlyingLattice, [ A, B ]
+            );
+    
+    Assert( 4, IsWellDefinedForObjects( C ) );
+    
+    return C;
     
 end );
 
@@ -162,51 +153,51 @@ InstallMethod( AdditiveInverseMutable,
 end );
 
 ##
-InstallMethod( AsFormalDifferenceOfNormalizedMorphism,
-        "for a morphism in a thin category",
-        [ IsMorphismInThinCategory ],
+InstallMethod( FormalDifferenceOfNormalizedObjects,
+        "for two objects in a thin category",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
-  function( u )
-    local A, D;
+  function( A, B )
+    local C, D;
     
-    A := rec( );
+    C := rec( );
 
-    D := MeetSemilatticeOfDifferences( CapCategory( u ) );
+    D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
-    ObjectifyObjectForCAPWithAttributes( A, D,
-            NormalizedMorphismOfUnderlyingHeytingAlgebra, u
+    ObjectifyObjectForCAPWithAttributes( C, D,
+            NormalizedPairInUnderlyingHeytingAlgebra, [ A, B ]
             );
     
-    Assert( 4, IsWellDefined( A ) );
+    Assert( 4, IsWellDefined( C ) );
     
-    return A;
+    return C;
     
 end );
 
 ##
-InstallMethod( NormalizedMorphismOfUnderlyingHeytingAlgebra,
+InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
   function( A )
-    local u, S, T, L, H;
+    local S, T, L, H;
     
-    u := MorphismOfUnderlyingLattice( A );
+    A := PairInUnderlyingLattice( A );
     
-    S := Source( u );
-    T := Range( u );
+    S := A[2];
+    T := A[1];
     
-    L := CapCategory( u );
+    L := CapCategory( S );
     
     H := InternalHomOnObjects( T, S );
     
     if HasIsCartesianClosedCategory( L ) and IsCartesianClosedCategory( L ) then
         
-        return UniqueMorphism( H, Coproduct( H, T ) );
+        return [ Coproduct( H, T ), H ];
         
     elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
         
-        return UniqueMorphism( DirectProduct( S, H ), H );
+        return [ H, DirectProduct( S, H ) ];
         
     fi;
     
@@ -215,25 +206,25 @@ InstallMethod( NormalizedMorphismOfUnderlyingHeytingAlgebra,
 end );
 
 ##
-InstallMethod( MorphismOfUnderlyingLattice,
+InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
-  PreMorphismOfUnderlyingLattice );
+  PrePairInUnderlyingLattice );
 
 ##
-InstallMethod( MorphismOfUnderlyingLattice,
+InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedMorphismOfUnderlyingHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedPairInUnderlyingHeytingAlgebra ],
         
-  NormalizedMorphismOfUnderlyingHeytingAlgebra );
+  NormalizedPairInUnderlyingHeytingAlgebra );
 
 ##
-InstallMethod( MorphismOfUnderlyingLattice,
+InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardMorphismOfUnderlyingHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingAlgebra ],
         
-  StandardMorphismOfUnderlyingHeytingAlgebra );
+  StandardPairInUnderlyingHeytingAlgebra );
 
 ##
 InstallMethod( \*,
@@ -302,7 +293,13 @@ InstallMethod( Display,
         
   function( A )
     
-    Display( MorphismOfUnderlyingLattice( A ) );
+    A := PairInUnderlyingLattice( A );
+    
+    Display( A[1] );
+    
+    Print( "\n\\\n\n" );
+    
+    Display( A[2] );
     
     Print( "\nA formal difference given by the above morphism\n" );
     
