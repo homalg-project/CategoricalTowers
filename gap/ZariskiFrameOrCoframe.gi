@@ -5,21 +5,16 @@
 #
 
 ##
-InstallMethod( StandardMorphismOfUnderlyingHeytingAlgebra,
+InstallMethod( StandardPairInUnderlyingHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
   function( A )
-    local u, S, T;
     
-    u := NormalizedMorphismOfUnderlyingHeytingAlgebra( A );
+    A := NormalizedPairInUnderlyingHeytingAlgebra( A );
     
-    S := Source( u );
-    T := Range( u );
+    List( A, StandardMorphismOfUnderlyingCategory );
     
-    StandardMorphismOfUnderlyingCategory( S );
-    StandardMorphismOfUnderlyingCategory( T );
-    
-    return UniqueMorphism( S, T );
+    return A;
     
 end );
