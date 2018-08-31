@@ -137,12 +137,11 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
     
     ##
-    AddIsWellDefinedForMorphisms( ZariskiFrame,
-      function( u )
-        local S, T;
+    AddIsHomSetInhabited( ZariskiFrame,
+      function( S, T )
         
-        S := MorphismOfUnderlyingCategory( Source( u ) );
-        T := MorphismOfUnderlyingCategory( Range( u ) );
+        S := MorphismOfUnderlyingCategory( S );
+        T := MorphismOfUnderlyingCategory( T );
         
         return not Lift( S, T ) = fail;
         
