@@ -100,11 +100,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     ##
     AddIsIsomorphism( preordered_set,
       function( u )
-        local inv;
         
-        inv := UniqueMorphism( Range( u ), Source( u ) );
-        
-        return IsWellDefined( inv );
+        return IsHomSetInhabited( Range( u ), Source( u ) );
         
     end );
     
