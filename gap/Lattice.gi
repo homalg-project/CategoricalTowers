@@ -92,6 +92,13 @@ InstallMethod( \*,
   DirectProduct );
 
 ##
+InstallMethod( \+,
+        "for two objects in meet-semilattice",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  Coproduct );
+
+##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
   function( lattice )
     
@@ -142,10 +149,3 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
     end );
     
 end );
-
-##
-InstallMethod( \+,
-        "for two objects in meet-semilattice",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ],
-
-  Coproduct );
