@@ -180,7 +180,7 @@ InstallMethod( IsSubset,
         
   function( T, S )
     
-    return IsWellDefinedForMorphisms( UniqueMorphism( S, T ) );
+    return IsHomSetInhabited( S, T );
     
 end );
 
