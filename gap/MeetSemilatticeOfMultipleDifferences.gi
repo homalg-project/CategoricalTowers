@@ -161,6 +161,22 @@ InstallMethod( \-,
 end );
 
 ##
+InstallMethod( AdditiveInverseMutable,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local P, F;
+    
+    P := CapCategory( A )!.UnderlyingCategory;
+    
+    F := EquivalenceToMeetSemilatticeOfDifferences( P );
+    
+    return AsFormalMultipleDifference( - ApplyFunctor( F, A ) );
+    
+end );
+
+##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],

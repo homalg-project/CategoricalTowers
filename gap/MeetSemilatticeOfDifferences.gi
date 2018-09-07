@@ -234,6 +234,32 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
   StandardPairInUnderlyingHeytingAlgebra );
 
 ##
+InstallMethod( AdditiveInverseMutable,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    A := PairInUnderlyingLattice( A );
+    
+    return A[2] - A[1];
+    
+end );
+
+##
+InstallMethod( AdditiveInverseMutable,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedPairInUnderlyingHeytingAlgebra ],
+        
+  function( A )
+    
+    A := NormalizedPairInUnderlyingHeytingAlgebra( A );
+    
+    return NormalizedPairInUnderlyingHeytingAlgebra( A[2], A[1] );
+    
+end );
+
+##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
