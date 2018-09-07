@@ -6,9 +6,9 @@
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
-  function( heyting )
+  function( heyting_algebra )
     
-    ADD_COMMON_METHODS_FOR_LATTICES( heyting );
+    ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
     
     ## The cartesian monoidal structure
     
@@ -17,7 +17,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ## as it will violate the symmetry between products and coproducts
     
     ##
-    AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( heyting,
+    AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( heyting_algebra,
       function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
@@ -25,7 +25,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( heyting,
+    AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( heyting_algebra,
       function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
@@ -33,11 +33,11 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddTensorProductOnObjects( heyting,
+    AddTensorProductOnObjects( heyting_algebra,
       DirectProduct );
 
     ##
-    AddTensorProductOnMorphismsWithGivenTensorProducts( heyting,
+    AddTensorProductOnMorphismsWithGivenTensorProducts( heyting_algebra,
       function( s, alpha, beta, r )
         
         return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
@@ -45,15 +45,15 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddAssociatorLeftToRightWithGivenTensorProducts( heyting,
+    AddAssociatorLeftToRightWithGivenTensorProducts( heyting_algebra,
       AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts );
     
     ##
-    AddAssociatorRightToLeftWithGivenTensorProducts( heyting,
+    AddAssociatorRightToLeftWithGivenTensorProducts( heyting_algebra,
       AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts );
     
     ##
-    AddTensorUnit( heyting,
+    AddTensorUnit( heyting_algebra,
       TerminalObject );
     
     ## The closedness of the cartesian monoidal structure
@@ -64,7 +64,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ## but a co-closed cocartesian category!
     
     ##
-    AddInternalHomOnMorphismsWithGivenInternalHoms( heyting,
+    AddInternalHomOnMorphismsWithGivenInternalHoms( heyting_algebra,
       function( S, alpha, beta, T )
         
         return UniqueMorphism( S, T );
@@ -72,7 +72,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddEvaluationMorphismWithGivenSource( heyting,
+    AddEvaluationMorphismWithGivenSource( heyting_algebra,
       function( M, N, HM_NxM )
         
         return UniqueMorphism( HM_NxM, N );
@@ -80,7 +80,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddCoevaluationMorphismWithGivenRange( heyting,
+    AddCoevaluationMorphismWithGivenRange( heyting_algebra,
       function( M, N, HN_MxN )
         
         return UniqueMorphism( M, HN_MxN );
@@ -88,7 +88,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddTensorProductToInternalHomAdjunctionMap( heyting,
+    AddTensorProductToInternalHomAdjunctionMap( heyting_algebra,
       function( M, N, f )
         local L;
         
@@ -99,7 +99,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddInternalHomToTensorProductAdjunctionMap( heyting,
+    AddInternalHomToTensorProductAdjunctionMap( heyting_algebra,
       function( N, L, g )
         local M, MN;
         
@@ -112,7 +112,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddMonoidalPreComposeMorphismWithGivenObjects( heyting,
+    AddMonoidalPreComposeMorphismWithGivenObjects( heyting_algebra,
       function( HM_NxH_N_L, M, N, L, HM_L );
         
         return UniqueMorphism( HM_NxH_N_L, HM_L );
@@ -120,7 +120,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddMonoidalPostComposeMorphismWithGivenObjects( heyting,
+    AddMonoidalPostComposeMorphismWithGivenObjects( heyting_algebra,
       function( HM_NxH_N_L, M, N, L, HM_L );
         
         return UniqueMorphism( HM_NxH_N_L, HM_L );
@@ -128,7 +128,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects( heyting,
+    AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects( heyting_algebra,
       function( S1, T1, S2, T2, L )
         
         return UniqueMorphism( L[1], L[2] );
