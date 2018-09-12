@@ -39,7 +39,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ##
     AddTensorProductOnObjects( heyting_algebra,
       DirectProduct );
-
+    
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( heyting_algebra,
       function( s, alpha, beta, r )
