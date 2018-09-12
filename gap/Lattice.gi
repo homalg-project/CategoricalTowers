@@ -148,4 +148,12 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
         
     end );
     
+    ##
+    AddBraidingInverseWithGivenTensorProducts( lattice,
+      function( NM, M, N, MN )
+        
+        return UniqueMorphism( NM, MN );
+        
+    end );
+    
 end );
