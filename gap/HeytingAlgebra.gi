@@ -8,6 +8,10 @@
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
   function( heyting_algebra )
     
+    SetIsStrictMonoidalCategory( heyting_algebra, true );
+    
+    SetIsSymmetricClosedMonoidalCategory( heyting_algebra, true );
+    
     ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
     
     ## The cartesian monoidal structure
