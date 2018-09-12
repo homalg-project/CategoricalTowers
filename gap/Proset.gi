@@ -98,10 +98,82 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
+    AddIsDominating( preordered_set,
+      function( u1, u2 )
+        
+        return IsHomSetInhabited( Source( u1 ), Source( u2 ) );
+        
+    end );
+    
+    ##
+    AddIsCodominating( preordered_set,
+      function( u1, u2 )
+        
+        return IsHomSetInhabited( Range( u2 ), Range( u1 ) );
+        
+    end );
+    
+    ##
+    AddLiftAlongMonomorphism( preordered_set,
+      function( u1, u2 )
+        
+        if not IsDominating( u1, u2 ) then
+            return fail;
+        fi;
+        
+        return UniqueMorphism( Source( u1 ), Source( u2 ) );
+        
+    end );
+    
+    ##
+    AddColiftAlongEpimorphism( preordered_set,
+      function( u1, u2 )
+        
+        if not IsCodominating( u2, u1 ) then
+            return fail;
+        fi;
+        
+        return UniqueMorphism( Range( u1 ), Range( u2 ) );
+        
+    end );
+    
+    ##
+    AddLift( preordered_set,
+      LiftAlongMonomorphism );
+    
+    ##
+    AddColift( preordered_set,
+      ColiftAlongEpimorphism );
+    
+    ##
     AddIsIsomorphism( preordered_set,
       function( u )
         
         return IsHomSetInhabited( Range( u ), Source( u ) );
+        
+    end );
+    
+    ##
+    AddInverse( preordered_set,
+      function( u )
+        
+        return UniqueMorphism( Range( u ), Source( u ) );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( preordered_set,
+      function( A, T )
+        
+        return UniqueMorphism( A, T );
+        
+    end );
+    
+    ##
+    AddUniversalMorphismFromInitialObjectWithGivenInitialObject( preordered_set,
+      function( A, I )
+        
+        return UniqueMorphism( I, A );
         
     end );
     
