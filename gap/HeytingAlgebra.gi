@@ -139,4 +139,30 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
         
     end );
     
+    ## The duals
+    
+    ##
+    AddDualOnObjects( heyting_algebra,
+      function( A )
+        
+        return InternalHomOnObjects( A, InitialObject( heyting_algebra ) );
+        
+    end );
+    
+    ##
+    AddDualOnMorphismsWithGivenDuals( heyting_algebra,
+      function( B_, u, A_ )
+        
+        return InternalHomOnMorphismsWithGivenInternalHoms( B_, u, IdentityMorphism( InitialObject( heyting_algebra ) ), A_ );
+        
+    end );
+    
+    ##
+    AddMorphismToBidualWithGivenBidual( heyting_algebra,
+      function( A, B )
+        
+        return UniqueMorphism( A, B );
+        
+    end );
+    
 end );
