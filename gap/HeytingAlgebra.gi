@@ -58,7 +58,11 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddTensorUnit( heyting_algebra,
-      TerminalObject );
+      function()
+        
+        return TerminalObject( heyting_algebra );
+        
+    end );
     
     ## The closedness of the cartesian monoidal structure
     
