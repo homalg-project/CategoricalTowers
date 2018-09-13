@@ -132,7 +132,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframe );
     
-    ADD_COMMON_METHODS_FOR_LATTICES( ZariskiCoframe );
+    ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
     ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
     
@@ -198,7 +198,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     end );
     
     ## this defines a co-closed structure (!)
-    ## which is not supported by CAP and not even documented on nLab
+    ## which is not supported by CAP yet and not even documented on nLab
     ## it is added as it corresponds to the set theortic difference
     AddInternalHomOnObjects( ZariskiCoframe,
       function( A, B )
@@ -222,8 +222,6 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         return Coproduct( L );
         
     end );
-    
-    SetIsCocartesianCoclosedCategory( ZariskiCoframe, true );
     
     Finalize( ZariskiCoframe );
     
