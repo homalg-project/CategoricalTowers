@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Locales",
 Subtitle := "",
 Version := Maximum( [
-                   "2018.09.02", ## Mohamed's version
+                   "2018.09.03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
                    ] ),
@@ -90,7 +90,7 @@ Dependencies := rec(
   GAP := ">= 4.9.2",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2018.09.02" ],
+                   [ "CAP", ">= 2018.09.03" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
