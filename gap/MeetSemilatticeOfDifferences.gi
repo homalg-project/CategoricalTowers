@@ -199,7 +199,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
         
         return [ Coproduct( H, T ), H ];
         
-    elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
+    elif HasIsCoCartesianCoclosedCategory( L ) and IsCoCartesianCoclosedCategory( L ) then
         
         return [ H, DirectProduct( S, H ) ];
         

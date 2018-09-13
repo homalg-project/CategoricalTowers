@@ -8,9 +8,9 @@
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
   function( heyting_algebra )
     
-    SetIsStrictMonoidalCategory( heyting_algebra, true );
+    SetIsCartesianClosedCategory( heyting_algebra, true );
     
-    SetIsSymmetricClosedMonoidalCategory( heyting_algebra, true );
+    SetIsStrictMonoidalCategory( heyting_algebra, true );
     
     ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
     
@@ -36,40 +36,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
         
     end );
     
-    ##
-    AddTensorProductOnObjects( heyting_algebra,
-      DirectProduct );
-    
-    ##
-    AddTensorProductOnMorphismsWithGivenTensorProducts( heyting_algebra,
-      function( s, alpha, beta, r )
-        
-        return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
-        
-    end );
-    
-    ##
-    AddAssociatorLeftToRightWithGivenTensorProducts( heyting_algebra,
-      AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts );
-    
-    ##
-    AddAssociatorRightToLeftWithGivenTensorProducts( heyting_algebra,
-      AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts );
-    
-    ##
-    AddTensorUnit( heyting_algebra,
-      function()
-        
-        return TerminalObject( heyting_algebra );
-        
-    end );
-    
     ## The closedness of the cartesian monoidal structure
-    
-    ## Note:
-    ## The dual of a closed cartesian category is
-    ## NOT a closed cocartesian category (such is equivalent to a terminal category)
-    ## but a co-closed cocartesian category!
     
     ##
     AddInternalHomOnMorphismsWithGivenInternalHoms( heyting_algebra,
