@@ -57,7 +57,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         Bp := B[2];
         B := B[1];
         
-        return IsSubset( Coproduct( Ap, B ), A ) and IsSubset( Ap, DirectProduct( A, Bp ) );
+        return IsHomSetInhabited( A, Coproduct( Ap, B ) ) and IsHomSetInhabited( DirectProduct( A, Bp ), Ap );
         
     end );
     
