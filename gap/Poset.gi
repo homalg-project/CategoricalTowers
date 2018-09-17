@@ -8,6 +8,8 @@
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
   function( poset )
     
+    SetIsSkeletalCategory( poset, true );
+    
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( poset );
     
     ##
@@ -17,7 +19,5 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
         return IsHomSetInhabited( A, B ) and IsHomSetInhabited( B, A );
         
     end );
-    
-    SetIsSkeletalCategory( poset, true );
     
 end );
