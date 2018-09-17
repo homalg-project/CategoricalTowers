@@ -89,10 +89,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddPreCompose( preordered_set,
       function( u1, u2 )
         
-        if not Range( u1 ) = Source( u2 ) then
-            Error( "the target of the pre-morphism is not equal to the source of the post-morphism\n" );
-        fi;
-        
         return UniqueMorphism( Source( u1 ), Range( u2 ) );
         
     end );
