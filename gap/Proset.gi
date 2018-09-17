@@ -48,6 +48,8 @@ end );
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
   function( preordered_set )
     
+    SetIsThinCategory( preordered_set, true );
+    
     ##
     AddIsWellDefinedForMorphisms( preordered_set,
       function( u )
@@ -236,8 +238,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
         return UniqueMorphism( s, r );
         
     end );
-    
-    SetIsThinCategory( preordered_set, true );
     
 end );
 
