@@ -42,6 +42,22 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
         
     end );
     
+    ##
+    AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( meet_semilattice,
+      function( s, a, b, c, r )
+        
+        return UniqueMorphism( s, r );
+        
+    end );
+    
+    ##
+    AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( meet_semilattice,
+      function( s, a, b, c, r )
+        
+        return UniqueMorphism( s, r );
+        
+    end );
+    
 end );
 
 ##
@@ -77,6 +93,22 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     ##
     AddCoproductFunctorialWithGivenCoproducts( join_semilattice,
       function( s, L, r )
+        
+        return UniqueMorphism( s, r );
+        
+    end );
+    
+    ##
+    AddAssociatorRightToLeftOfCoproductsWithGivenCoproducts( join_semilattice,
+      function( s, a, b, c, r )
+        
+        return UniqueMorphism( s, r );
+        
+    end );
+    
+    ##
+    AddAssociatorLeftToRightOfCoproductsWithGivenCoproducts( join_semilattice,
+      function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
         

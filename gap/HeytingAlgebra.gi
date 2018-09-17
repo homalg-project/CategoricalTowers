@@ -16,26 +16,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ## The cartesian monoidal structure
     
-    ## Warning:
-    ## Do not add it to ADD_COMMON_METHODS_FOR_LATTICES
-    ## as it will violate the symmetry between products and coproducts
-    
-    ##
-    AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( heyting_algebra,
-      function( s, a, b, c, r )
-        
-        return UniqueMorphism( s, r );
-        
-    end );
-    
-    ##
-    AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( heyting_algebra,
-      function( s, a, b, c, r )
-        
-        return UniqueMorphism( s, r );
-        
-    end );
-    
     ## The closedness of the cartesian monoidal structure
     
     ##

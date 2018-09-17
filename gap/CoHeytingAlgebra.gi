@@ -18,26 +18,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ## The coclosedness of the cocartesian monoidal structure
     
-    ## Warning:
-    ## Do not add it to ADD_COMMON_METHODS_FOR_LATTICES
-    ## as it will violate the symmetry between products and coproducts
-    
-    ##
-    AddAssociatorRightToLeftOfCoproductsWithGivenCoproducts( coheyting_algebra,
-      function( s, a, b, c, r )
-        
-        return UniqueMorphism( s, r );
-        
-    end );
-    
-    ##
-    AddAssociatorLeftToRightOfCoproductsWithGivenCoproducts( coheyting_algebra,
-      function( s, a, b, c, r )
-        
-        return UniqueMorphism( s, r );
-        
-    end );
-    
     ## Note:
     ## The dual of a closed cartesian category is
     ## NOT a closed cocartesian category (such is equivalent to a terminal category)
