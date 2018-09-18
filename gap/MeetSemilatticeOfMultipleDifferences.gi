@@ -10,7 +10,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
-    local name, D, L;
+    local name, D;
     
     name := "The meet-semilattice of multiple differences of ";
     
@@ -54,14 +54,6 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         return IsHomSetInhabited( ApplyFunctor( F, A ), ApplyFunctor( F, B ) );
         
     end );
-    
-    L := ListInstalledOperationsOfCategory( P );
-    
-    if not ( HasIsSkeletalCategory( P ) and IsSkeletalCategory( P ) ) then
-        Error( "the category is not known to be skeletal\n" );
-    elif not ( "DirectProduct" in L and "Coproduct" in L ) then
-        Error( "the category does not seem to be a lattice\n" );
-    fi;
     
     ##
     AddTerminalObject( D,
