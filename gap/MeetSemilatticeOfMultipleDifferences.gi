@@ -121,8 +121,6 @@ InstallGlobalFunction( AsFormalMultipleDifferenceOfNormalizedObjects,
 
     D := MeetSemilatticeOfMultipleDifferences( CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
     
-    A := rec( );
-
     ObjectifyObjectForCAPWithAttributes( A, D,
             ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg
             );
