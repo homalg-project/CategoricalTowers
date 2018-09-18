@@ -193,13 +193,17 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
     
     L := CapCategory( S );
     
-    H := InternalHomOnObjects( T, S );
-    
     if HasIsCartesianClosedCategory( L ) and IsCartesianClosedCategory( L ) then
+        
+        H := InternalHomOnObjects( T, S );
         
         return [ Coproduct( H, T ), H ];
         
     elif HasIsCoCartesianCoclosedCategory( L ) and IsCoCartesianCoclosedCategory( L ) then
+        
+        ## TODO: this is in fact a coHom
+        ## will be adapted once co-closed structures are supported by CAP
+        H := InternalHomOnObjects( T, S );
         
         return [ H, DirectProduct( S, H ) ];
         
