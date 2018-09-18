@@ -12,3 +12,4 @@ ReadPackage( "Locales", "gap/CoHeytingAlgebra.gi");
 ReadPackage( "Locales", "gap/BooleanAlgebra.gi");
 ReadPackage( "Locales", "gap/MeetSemilatticeOfDifferences.gi");
 ReadPackage( "Locales", "gap/MeetSemilatticeOfMultipleDifferences.gi");
+ReadPackage( "Locales", "gap/BooleanAlgebraOfConstructibleObjects.gi");
