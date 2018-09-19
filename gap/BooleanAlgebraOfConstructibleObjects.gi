@@ -160,16 +160,20 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     
     arg := List( arg,
                  function( A )
-                   if IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
+                   if IsConstructibleObject( A ) then
+                       return ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
+                   elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
                        return A;
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
                        return AsFormalMultipleDifference( A );
                    elif IsObjectInThinCategory( A ) then
                        return AsFormalMultipleDifference( A - 0 );
                    else
-                       Error( "this entry is neither a multiple formal difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
+                       Error( "this entry is neither a formal multiple difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
                    fi;
                end );
+    
+    arg := Flat( arg );
     
     C := BooleanAlgebraOfConstructibleObjects(
                  CapCategory( PairInUnderlyingLattice( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
@@ -183,6 +187,41 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     return A;
     
 end );
+
+##
+InstallMethod( \+,
+        "for an object in a meet-semilattice of formal differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+        
+  UnionOfMultipleDifferences );
+
+##
+InstallMethod( \+,
+        "for an object in a thin category and an object in a meet-semilattice of formal differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+        
+  UnionOfMultipleDifferences );
+
+##
+InstallMethod( \+,
+        "for an object in a meet-semilattice of formal multiple differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInThinCategory ],
+        
+  UnionOfMultipleDifferences );
+
+##
+InstallMethod( \+,
+        "for an object in a thin category and an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  UnionOfMultipleDifferences );
+
+##
+InstallMethod( \+,
+        "for two constructible objects",
+        [ IsConstructibleObject, IsObjectInThinCategory ],
+        
+  UnionOfMultipleDifferences );
 
 ##
 InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
