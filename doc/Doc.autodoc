@@ -7,3 +7,8 @@
 @Chapter Coframes of Zariski closed subsets
 
 @Chapter The coframe of Zariski closed subsets of an affine scheme
+
+@Chapter Further examples
+
+@InsertSystem OpenKxy
+@InsertSystem ClosedKxy
