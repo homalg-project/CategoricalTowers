@@ -10,15 +10,15 @@ InstallMethod( OpenSubsetOfSpec,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZC;
+    local R, A, ZF;
     
     R := UnderlyingRing( CapCategory( I ) );
     
     A := rec( );
     
-    ZC := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
+    ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
+    ObjectifyObjectForCAPWithAttributes( A, ZF,
             PreMorphismOfUnderlyingCategory, I,
             UnderlyingRing, R
             );
