@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
 Version := Maximum( [
-                   "2018.09.03", ## Mohamed's version
+                   "2018.09.04", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
                    ] ),

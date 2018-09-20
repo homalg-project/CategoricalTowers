@@ -15,7 +15,7 @@ DeclareCategory( "IsObjectInZariskiFrameOrCoframe",
         IsObjectInThinCategory );
 
 #! @Description
-#!  The &GAP; category of morphisms in a Zariski frame.
+#!  The &GAP; category of morphisms in a Zariski frame or coframe.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiFrameOrCoframe",
         IsMorphismInThinCategory );
