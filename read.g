@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: Frames/Locales of Zariski open subsets
+# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets
 #
 # Reading the implementation part of the package.
 #
