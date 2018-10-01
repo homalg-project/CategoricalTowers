@@ -661,7 +661,7 @@ InstallMethod( MorphismInAlgebroid,
             
             if not ( Source( l ) = UnderlyingVertex( S ) and
                      Target( l ) = UnderlyingVertex( T ) ) then
-                Error( "the path ", path, " is neither zero nor does it match the given source S or target T\n" );
+                Error( "the path ", path, " is neither zero nor does it match the given source S and target T\n" );
             fi;
         fi;
         
