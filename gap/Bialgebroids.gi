@@ -386,6 +386,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     end );
     
     Finalize( category );
+    SetFilterObj(IdentityFunctor(category), IsAlgebroidMorphism);
     
     return category;
     
