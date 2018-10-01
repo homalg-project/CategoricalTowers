@@ -425,6 +425,9 @@ InstallMethod( Algebroid,
     SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
     SetUnderlyingQuiverAlgebra( A, Rq );
     SetFilterObj( A, IsAlgebroid );
+    if Length( Vertices( quiver ) ) = 1 then
+        SetFilterObj( A, IsAlgebraAsCategory );
+    fi;
     
     A!.Vertices := rec( );
     A!.Arrows := rec( );
