@@ -1,4 +1,4 @@
-#! @System Bialgebroid
+#! @BeginChunk Bialgebroid
 
 LoadPackage( "Bialgebroid" );
 
@@ -101,3 +101,4 @@ ApplyFunctor( comult, B.a );
 ApplyFunctor( comult, B.b );
 #! (vv)-[{ 1*(vb*bu) }]->(uu)
 #! @EndExample
+#! @EndChunk
