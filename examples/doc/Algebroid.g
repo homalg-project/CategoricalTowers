@@ -1,4 +1,4 @@
-#! @System Algebroid
+#! @BeginChunk Algebroid
 
 LoadPackage( "Bialgebroid" );
 LoadPackage( "MatricesForHomalg" );
@@ -76,3 +76,4 @@ Ar.d - Ar.d;
 1/2 * Ar.d;
 #! (v)-[1/2*(d)]->(w)
 #! @EndExample
+#! @EndChunk
