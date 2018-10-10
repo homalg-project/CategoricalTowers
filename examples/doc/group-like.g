@@ -1,4 +1,4 @@
-#! @System Bialgebroid
+#! @BeginChunk group-like
 
 LoadPackage( "Bialgebroid" );
 
@@ -39,3 +39,4 @@ ApplyFunctor( counit, B.g );
 #! (1)-[1*(1)]->(1)
 
 #! @EndExample
+#! @EndChunk

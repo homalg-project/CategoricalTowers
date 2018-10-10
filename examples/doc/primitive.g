@@ -1,4 +1,4 @@
-#! @System Bialgebroid
+#! @BeginChunk primitive
 
 LoadPackage( "Bialgebroid" );
 
@@ -44,3 +44,4 @@ ApplyFunctor( counit, B.t );
 #! (1)-[0]->(1)
 
 #! @EndExample
+#! @EndChunk
