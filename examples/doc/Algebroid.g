@@ -46,6 +46,10 @@ SetOfGeneratingMorphisms( Ar );
 #! [ (u)-[1*(a)]->(v), (v)-[1*(b)]->(u), (v)-[1*(c)]->(u), (v)-[1*(d)]->(w) ]
 BaseRing(Al) = Q;
 #! true
+ObjectInAlgebroid(Al, ql.u) = Al.u;
+#! true
+MorphismInAlgebroid( UnderlyingQuiverAlgebra(Al).a ) = Al.a;
+#! true
 #! @EndExample
 
 #! We can compute in the algebroids.
