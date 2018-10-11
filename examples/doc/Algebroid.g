@@ -44,6 +44,8 @@ SetOfObjects( Ar );
 #! [ (u), (v), (w) ]
 SetOfGeneratingMorphisms( Ar );
 #! [ (u)-[1*(a)]->(v), (v)-[1*(b)]->(u), (v)-[1*(c)]->(u), (v)-[1*(d)]->(w) ]
+BaseRing(Al) = Q;
+#! true
 #! @EndExample
 
 #! We can compute in the algebroids.
