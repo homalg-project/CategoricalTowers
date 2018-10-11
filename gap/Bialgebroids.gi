@@ -514,8 +514,24 @@ InstallMethod( \.,
     Add( B, b );
     
     return b;
-    
+     
 end );
+
+InstallMethod( ObjectInAlgebroid,
+         "for an algebroid and a vertex of a quiver",
+        [ IsAlgebroid, IsVertex ],
+  function( A, v )
+    local o;
+    o := rec();
+    ObjectifyWithAttributes( o, TheTypeObjectInAlgebroid,
+            UnderlyingVertex, v
+            );
+    
+    A!.Vertices.(String(v)) := o;
+    Add( A, o );
+    return o;
+end );
+
 
 ##
 InstallMethod( MorphismInAlgebroid,

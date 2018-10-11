@@ -226,6 +226,15 @@ DeclareOperation( "AddAntipode",
         [ IsAlgebroid, IsRecord ] );
 
 #! @Description
+#!  The constructor of objects in an algebroid <A>A</A> given a vertex <A>V</A>
+#!  in the underlying quiver.
+#! @Arguments A, V
+#! @Returns an object in a &CAP; category
+#! @Group ObjectInAlgebroid
+DeclareOperation( "ObjectInAlgebroid",
+        [ IsAlgebroid, IsVertex ] );
+
+#! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,
 #!  the target <A>T</A>, and the underlying quiver algebra element <A>path</A>.
 #!  If neither <A>S</A> nor <A>T</A> are provided they are read off from <A>path</A>.
