@@ -469,7 +469,7 @@ InstallMethod( BaseRing,
 
   function( A )
 
-    return LeftActingDomain( UnderlyingQuiverAlgebra( B ) );
+    return LeftActingDomain( UnderlyingQuiverAlgebra( A ) );
 
 end );
 
