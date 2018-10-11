@@ -219,6 +219,13 @@ DeclareOperation( "AddBialgebroidStructure",
         [ IsAlgebroid, IsRecord, IsRecord ] );
 
 #! @Description
+#!  Check whether the algebroid <A>A</A> is commutative.
+#! @Arguments A
+#! @Returns true or false
+DeclareProperty( "IsCommutative",
+        IsAlgebroid );
+
+#! @Description
 #!  Add to the bialgebroid <A>B</A> an antipode <A>S</A>.
 #! @Arguments B, S
 #! @Returns a &CAP; category

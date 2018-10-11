@@ -29,6 +29,11 @@ RelationsOfAlgebroid( B );
 #! [ (u)-[1*(a*b) - 1*(u)]->(u), (v)-[1*(b*a) - 1*(v)]->(v) ]
 #! @EndExample
 
+#! @Example
+IsCommutative(B);
+#! false
+#! @EndExample
+
 #! Next we want to define a counit and a comultiplication on $B$ to make it a bialgebroid.
 #! The following record will be used to define the counit of $B$.
 

@@ -834,6 +834,27 @@ InstallMethod( AddAntipode,
 end );
 
 ##
+InstallMethod( IsCommutative,
+        "for an Algebroid",
+        [ IsAlgebroid ],
+     
+  function( A )
+    local arrows, i, j;
+    
+    arrows := Arrows( UnderlyingQuiverAlgebra( A ) );
+    
+    for i in [ 1 .. Length(arrows) ] do
+      for j in [ (i+1) .. Length(arrows) ] do
+        if not arrows[i]*arrows[j] = arrows[j]*arrows[i] then
+          return false;
+        fi;
+      od;
+    od;
+    
+    return true;
+end );
+
+##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
         [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],
