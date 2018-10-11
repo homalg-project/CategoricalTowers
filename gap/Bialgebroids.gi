@@ -463,6 +463,17 @@ InstallMethod( Algebroid,
     
 end );
 
+InstallMethod( BaseRing,
+        "for an algebroid",
+        [ IsAlgebroid ],
+
+  function( A )
+
+    return LeftActingDomain( UnderlyingQuiverAlgebra( B ) );
+
+end );
+
+
 ##
 InstallMethod( \.,
         "for an algebroid and a positive integer",
