@@ -34,6 +34,20 @@ Persons := [
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := false,
+    FirstNames := "Florian",
+    LastName := "Heiderich",
+    WWWHome := "https://www.heiderich.org/math/",
+    Email := "heiderich@mathematik.uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
 ],
 
 SourceRepository := rec(
