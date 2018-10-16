@@ -386,6 +386,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     end );
     
     Finalize( category );
+    SetFilterObj(IdentityFunctor(category), IsAlgebroidMorphism);
     
     return category;
     
@@ -424,6 +425,9 @@ InstallMethod( Algebroid,
     SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
     SetUnderlyingQuiverAlgebra( A, Rq );
     SetFilterObj( A, IsAlgebroid );
+    if Length( Vertices( quiver ) ) = 1 then
+        SetFilterObj( A, IsAlgebraAsCategory );
+    fi;
     
     A!.Vertices := rec( );
     A!.Arrows := rec( );
@@ -813,7 +817,11 @@ InstallMethod( AddAntipode,
   function( B, S )
     local vertices, a, S_functor;
     
-    B!.Name := Concatenation( "Hopf algebroid", B!.Name{[ 10 .. Length( B!.Name ) ]} );
+    if IsAlgebraAsCategory(B) then
+        B!.Name := Concatenation( "Hopf algebra", B!.Name{[ 10 .. Length( B!.Name ) ]} );
+    else
+        B!.Name := Concatenation( "Hopf algebroid", B!.Name{[ 10 .. Length( B!.Name ) ]} );
+    fi;
     
     vertices := List( Vertices( UnderlyingQuiver( B ) ), String );
     
