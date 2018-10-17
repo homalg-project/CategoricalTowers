@@ -150,7 +150,7 @@ DeclareOperation( "POW",
         [ IsAlgebroid, IsInt ] );
 
 DeclareOperation( "\*",
-        [ IsAlgebroid, IsAlgebroid] );
+        [ IsAlgebroid, IsAlgebroid ] );
 
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );

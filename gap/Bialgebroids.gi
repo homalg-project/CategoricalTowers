@@ -536,7 +536,6 @@ InstallMethod( ObjectInAlgebroid,
     return o;
 end );
 
-
 ##
 InstallMethod( MorphismInAlgebroid,
         "for two objects in an algebroid and an element of the quiver algebra",
