@@ -576,6 +576,10 @@ InstallMethod( MorphismInAlgebroid,
     
     mor := rec( );
     
+    if not IsIdenticalObj( CapCategory(S), CapCategory(T) ) then
+        Error( "source and target do not belong to the same category");
+    fi;
+
     A := CapCategory( S );
     
     ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
