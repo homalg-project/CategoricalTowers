@@ -661,6 +661,16 @@ InstallMethod( POW,
 end );
 
 ##
+InstallMethod(TensorProductOnObjects,
+        "for algebroids",
+        [ IsAlgebroid, IsAlgebroid ],
+  function( X, Y )
+
+    return X * Y;
+
+end );
+
+##
 InstallMethod( \*,
         "for two algebroids",
         [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsAlgebroid and HasUnderlyingQuiverAlgebra ],

@@ -159,6 +159,9 @@ DeclareOperation( "POW",
 DeclareOperation( "\*",
         [ IsAlgebroid, IsAlgebroid ] );
 
+DeclareOperation("TensorProductOnObjects",
+        [ IsAlgebroid, IsAlgebroid ] );
+
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 
