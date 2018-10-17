@@ -1232,6 +1232,52 @@ InstallMethod( IsCommutative,
 end );
 
 ##
+InstallMethod( IsCounitary,
+        "for a commutative bialgebra",
+        [ IsAlgebraAsCategory and IsCommutative ],
+        
+  function( B )
+    local comult, counit, mult, unit, idB, comp1, comp2, objects, morphisms, o, m;
+
+    comult := Comultiplication( B );
+    counit := Counit( B );
+    
+    mult := Multiplication( B );
+    unit := Unit( B );
+    
+    idB := IdentityFunctor( B );
+
+    comp1 := PreCompose( [ comult, TensorProductOnMorphisms( counit, idB ), TensorProductOnMorphisms( unit, idB ), mult ] );
+    comp2 := PreCompose( [ comult, TensorProductOnMorphisms( idB, counit ), TensorProductOnMorphisms( idB, unit ), mult ] );
+    
+    objects := SetOfObjects( B );
+    morphisms := SetOfGeneratingMorphisms( B );
+    
+    for o in SetOfObjects( B ) do
+
+        if not ( ( IsEqualForObjects( ApplyFunctor(comp1, o), o ) ) and ( IsEqualForObjects( ApplyFunctor(comp2, o), o ) ) ) then
+
+            return false;
+
+        fi;
+
+    od;
+
+    for m in SetOfGeneratingMorphisms( B ) do
+
+        if not ( ( IsEqualForMorphisms( ApplyFunctor(comp1, m), m ) ) and ( IsEqualForMorphisms( ApplyFunctor(comp2, m), m ) ) ) then
+
+            return false;
+
+        fi;
+
+    od;
+    
+    return true;
+    
+end );
+    
+##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
         [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],

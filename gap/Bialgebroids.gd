@@ -64,6 +64,13 @@ Add( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST!.MathematicalPropertiesOfCategories,
 DeclareProperty( "IsCommutative",
         IsAlgebroid );
 
+#! @Description
+#!  Check whether <A>B</A> is counitary.
+#! @Arguments B
+#! @Returns true or false
+DeclareProperty( "IsCounitary",
+        IsAlgebroid );
+
 ####################################
 #
 #! @Section Attributes
