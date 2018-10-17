@@ -536,6 +536,28 @@ InstallMethod( Multiplication,
     return mult_functor;
 
 end );
+
+##
+InstallMethod( Unit,
+        "for algebra as category",
+        [ IsAlgebraAsCategory ],
+  function( A )
+    local unique_object_in_A, unique_object_in_A_string, unique_object_in_A0, unique_object_in_A0_string, unit_functor_images_of_objects, unit_functor_images_of_morphisms, A0;
+    
+    unique_object_in_A := SetOfObjects( A )[1];
+    unique_object_in_A_string := String( UnderlyingVertex( unique_object_in_A ) );
+    
+    A0 := A^0;
+    
+    unique_object_in_A0 := SetOfObjects( A0 )[1];
+    unique_object_in_A0_string := String( UnderlyingVertex( unique_object_in_A0 ) );
+    
+    unit_functor_images_of_objects := rec( );
+    unit_functor_images_of_objects.(unique_object_in_A0_string) := unique_object_in_A;
+    unit_functor_images_of_morphisms := rec( );
+    
+    return CapFunctor(A0, unit_functor_images_of_objects, unit_functor_images_of_morphisms );
+end );
 ##
 InstallMethod( \.,
         "for an algebroid and a positive integer",
