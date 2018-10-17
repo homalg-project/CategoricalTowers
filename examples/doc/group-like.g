@@ -45,5 +45,14 @@ Antipode(B);
 ApplyFunctor( counit, B.g );
 #! (1)-[1*(1)]->(1)
 
+IsCommutative(B);
+#! true
+
+IsCounitary(B);
+#! true
+
+IsHopfAlgebroid(B);
+#! true
+
 #! @EndExample
 #! @EndChunk
