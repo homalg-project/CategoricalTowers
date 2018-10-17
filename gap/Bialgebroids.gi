@@ -213,47 +213,57 @@ end );
 
 ##
 InstallMethod( ApplyToQuiverAlgebraElement,
-        "for an object and a quiver algebra element",
-        [ IsObject, IsQuiverAlgebraElement ],
-        
-  function( F, p )
-    local A, func, applyF, coefs, paths;
+        "for a record (of images of objects), a record (of images of morphisms) and a quiver algebra element",
+        [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ],
+  function( F_objects, F_morphisms, p, contravariant )
+    local func_obj, func_mor, applyF, paths, coefs, paths_final, mult_func, s, eval_F_objects, some_object_in_image, all_objects_in_image;
     
-    if IsCapFunctor( F ) then
-        A := AsCapCategory( Source( F ) );
-        func := b -> ApplyFunctor( F, A.(String( b )) );
-    elif IsRecord( F ) then
-        func := b -> F.(String( b ));
-    else
-        Error( "the first argument is neither a CAP functor nor a (functor defining) record\n" );
-    fi;
+    func_obj := b -> F_objects.(String( b ));
+    func_mor := b -> F_morphisms.(String( b ));
     
+    # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
     applyF :=
       function( b )
         local m;
         
-        m := func( b );
-        
         if IsVertex( b ) then
+            m := func_obj( b );
             return IdentityMorphism( m );
         fi;
+        m := func_mor( b );
         
         return m;
         
       end;
     
     paths := DecomposeQuiverAlgebraElement( p );
-    
+
     coefs := paths[1];
     paths := paths[2];
+
     
-    if not ( IsBound( F!.IsContravariant ) and F!.IsContravariant = true ) then
-        paths := List( paths, a -> PreCompose( List( a, applyF ) ) );
+    if contravariant = false then
+        paths_final := List( paths, a -> PreCompose( List( a, applyF ) ) );
     else
-        paths := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
+        paths_final := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
+    fi;
+
+
+    if Length( coefs ) > 0 then
+      s := Sum( ListN( coefs, paths_final, function( r, p ) return r * p; end ) );
+    else
+      # construct the zero morphism 
+      # FIXME
+      eval_F_objects := function(a) return F_objects!.(a); end;
+      
+      some_object_in_image := List( RecNames(F_objects), eval_F_objects)[1];
+      
+      all_objects_in_image := SetOfObjects( CapCategory( some_object_in_image ) );
+
+      s := Sum( List( all_objects_in_image, o -> ZeroMorphism(o,o)) );
     fi;
     
-    return Sum( ListN( coefs, paths, function( r, p ) return r * p; end ) );
+    return s;
     
 end );
 
@@ -825,57 +835,60 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for an algebroid and a record",
-        [ IsAlgebroid, IsRecord ],
+        "for an algebroid and two records",
+        [ IsAlgebroid, IsRecord, IsRecord ],
         
-  function( A, F )
-    local names, b, Rq, B, functor;
+  function( A, ImagesOfObjects, ImagesOfMorphisms )
+    local b, Rq, B, functor, names_morphisms, names_objects;
     
-    names := NamesOfComponents( F );
+    names_morphisms := NamesOfComponents( ImagesOfMorphisms );
+    names_objects := NamesOfComponents( ImagesOfObjects );
     
-    if names = [ ] then
-        Error( "the record of images is empty\n" );
+    if names_objects = [ ] then
+        Error( "the record of images of objects is empty\n" );
     fi;
-    
-    for b in names do
-        if IsQuiverAlgebraElement( F.(b) ) then
-            Rq := AlgebraOfElement( F.(b) );
-            B := Algebroid( Rq );
-            break;
-        elif IsCapCategory( F.(b) ) then
-            B := F.(b);
-            break;
-        elif IsCapCategoryCell( F.(b) ) then
-            B := CapCategory( F.(b) );
-            break;
-        fi;
-    od;
-    
-    if not IsBound( B ) then
-        Error( "unable to extract target category from record of images\n" );
-    fi;
-    
-    if IsBound( F.name ) then
-        functor := F.name;
+
+    # Construct the target category B
+    if Length(names_morphisms) > 0 then
+        for b in names_morphisms do
+            if IsQuiverAlgebraElement( ImagesOfMorphisms.(b) ) then
+                Rq := AlgebraOfElement( ImagesOfMorphisms.(b) );
+                B := Algebroid( Rq );
+                break;
+            elif IsCapCategoryCell( ImagesOfMorphisms.(b) ) then
+                if not IsCapCategoryMorphism( ImagesOfMorphisms.(b) ) then
+                    Error( Concatenation( "image of ", String(b), " is not a morphism"));
+                fi;
+
+                B := CapCategory( ImagesOfMorphisms.(b) );
+                break;
+            fi;
+        od;
     else
-        functor := Concatenation( "Functor from finitely presented ", Name( A ), " -> ", Name( B ) );
+        B := CapCategory( ImagesOfObjects.(names_objects[1]) );
+    fi;
+
+    if not IsBound( B ) then
+        Error( "unable to extract target category from the records of images\n" );
     fi;
     
+    functor := Concatenation( "Functor from finitely presented ", Name( A ), " -> ", Name( B ) );
+   
     functor := CapFunctor( functor, A, B );
     
-    functor!.defining_record := F;
-    
     AddObjectFunction( functor,
-            obj -> F.(String( UnderlyingVertex( obj ) )) );
+            obj -> ImagesOfObjects.(String( UnderlyingVertex( obj ) )) );
     
     AddMorphismFunction( functor,
             function( new_source, mor, new_range )
-              
-              mor := UnderlyingQuiverAlgebraElement( mor );
-              
-              return ApplyToQuiverAlgebraElement( F, mor );
-              
+              if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
+                  return ApplyToQuiverAlgebraElement( ImagesOfObjects, ImagesOfMorphisms, UnderlyingQuiverAlgebraElement( mor ), true);
+              else
+                  return ApplyToQuiverAlgebraElement( ImagesOfObjects, ImagesOfMorphisms, UnderlyingQuiverAlgebraElement( mor ), false );
+              fi;
             end );
+    
+    SetFilterObj( functor, IsAlgebroidMorphism );
     
     return functor;
     
@@ -886,8 +899,8 @@ InstallMethod( AddBialgebroidStructure,
         "for an algebroid and two records",
         [ IsAlgebroid, IsRecord, IsRecord ],
         
-  function( B, counit, comult )
-    local vertices, B0, a, names, counit_functor, B2, o, comult_functor;
+  function( B, counit_images, comult_images )
+    local vertices, B0, counit_record_morphisms, counit_record_objects, counit_functor, B2, comult_record_morphisms, comult_record_objects, comult_functor, a;
     
     B!.Name := Concatenation( "Bia", B!.Name{[ 2 .. Length( B!.Name ) ]} );
     
@@ -895,20 +908,23 @@ InstallMethod( AddBialgebroidStructure,
     
     B0 := B^0;
     
-    counit := ShallowCopy( counit );
+    # Construct the counit as a CapFunctor from B to B^0
     
-    for a in NamesOfComponents( counit ) do
-        if not IsCapCategoryMorphism( counit.(a) ) then
-            counit.(a) := counit.(a) * IdentityMorphism( B0.1 );
+    counit_record_morphisms := ShallowCopy( counit_images );
+    counit_record_objects := rec();
+  
+    for a in NamesOfComponents( counit_images ) do
+        if not IsCapCategoryMorphism( counit_images.(a) ) then
+            counit_record_morphisms.(a) := counit_images.(a) * IdentityMorphism( B0.1 );
         fi;
     od;
     
     ## we know how to map the objects
     for a in vertices do
-        counit.(a) := B0.1;
+        counit_record_objects.(a) := B0.1;
     od;
-    
-    counit_functor := CapFunctor( B, counit );
+   
+    counit_functor := CapFunctor( B, counit_record_objects, counit_record_morphisms );
     
     if not IsIdenticalObj( B0, AsCapCategory( Range( counit_functor ) ) ) then
         Error( "counit_functor has a the wrong target category\n" );
@@ -918,19 +934,17 @@ InstallMethod( AddBialgebroidStructure,
     
     B2 := B^2;
     
-    comult := ShallowCopy( comult );
+    # Construct the comultiplication as a CapFunctor from B to B^2
+   
+    comult_record_morphisms := ShallowCopy( comult_images );
+    comult_record_objects := rec();
     
     ## we know how to map the objects
     for a in vertices do
-        if IsInt( Int( a ) ) then
-            o := Concatenation( a, "x", a );
-        else
-            o := Concatenation( a, a );
-        fi;
-        comult.(a) := B2.(o);
+        comult_record_objects.(a) := ElementaryTensor( B.(a), B.(a), B2 );
     od;
     
-    comult_functor := CapFunctor( B, comult );
+    comult_functor := CapFunctor( B, comult_record_objects, comult_record_morphisms );
     
     if not IsIdenticalObj( B2, AsCapCategory( Range( comult_functor ) ) ) then
         Error( "comult_functor has a the wrong target category\n" );
@@ -967,8 +981,8 @@ InstallMethod( AddAntipode,
         "for a CAP category and a record",
         [ IsAlgebroid, IsRecord ],
         
-  function( B, S )
-    local vertices, a, S_functor;
+  function( B, S_images_of_morphisms )
+    local vertices, S_images_of_objects, S_functor, a;
     
     if IsAlgebraAsCategory(B) then
         B!.Name := Concatenation( "Hopf algebra", B!.Name{[ 10 .. Length( B!.Name ) ]} );
@@ -978,10 +992,12 @@ InstallMethod( AddAntipode,
     
     vertices := List( Vertices( UnderlyingQuiver( B ) ), String );
     
-    S := ShallowCopy( S );
-    S!.IsContravariant := true;
-    
-    S_functor := CapFunctor( B, S );
+    S_images_of_objects := rec();
+    for a in vertices do
+        S_images_of_objects.(a) := B.(a);
+    od;
+
+    S_functor := CapFunctor( B, S_images_of_objects, S_images_of_morphisms );
     S_functor!.IsContravariant := true;
     
     S_functor!.Name := Concatenation( "Contravariant f", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );

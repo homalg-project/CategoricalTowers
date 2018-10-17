@@ -202,11 +202,11 @@ DeclareOperation( "DecomposeQuiverAlgebraElement",
         [ IsQuiverAlgebraElement ] );
 
 #! @Description
-#!  Apply the functor (or a defining record) <A>F</A> to the quiver algebra element <A>p</A>.
-#! @Arguments F, path
+#!  Apply the functor defined by the records <A>images_of_objects</A> and <A>images_of_morphisms</A> to the quiver algebra element <A>p</A>.
+#! @Arguments images_of_objects, images_of_morphisms, path, contravariant
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ApplyToQuiverAlgebraElement",
-        [ IsObject, IsQuiverAlgebraElement ] );
+        [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ] );
 
 ####################################
 #
@@ -236,12 +236,14 @@ DeclareOperation( "Algebroid",
         [ IsHomalgRing, IsQuiver ] );
 
 #! @Description
-#!  Construct, using the record of images <A>F</A>,
+#!  Construct, using the record of images <A>ImagesOfObject</A> and <A>ImagesOfMorphisms</A>,
 #!  a functor with source the finitely presented algebroid <A>A</A>.
-#! @Arguments A, F
+#!  The record <A>ImagesOfObject</A> is supposed to contain the images of the objects of <A>A</A>.
+#!  The record <A>ImagesOfMorphisms</A> is supposed to contain the images of the set of generating morphisms of <A>A</A>.
+#! @Arguments A, ImagesOfObject, ImagesOfMorphisms
 #! @Returns a &CAP; functor
 DeclareOperation( "CapFunctor",
-        [ IsAlgebroid, IsRecord ] );
+        [ IsAlgebroid, IsRecord, IsRecord ] );
 
 #! @Description
 #!  Construct, using the record of images <A>eta</A>, a natural transformation
