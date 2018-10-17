@@ -1321,7 +1321,53 @@ InstallMethod( IsCounitary,
     return true;
     
 end );
+InstallMethod( IsHopfAlgebroid,
+        "for commutative bialgebra",
+        [ IsAlgebraAsCategory and IsCommutative ],
+  function( B )
+    local comult, counit, antipode, mult, unit, idB, composition1, composition2, unit_after_counit, objects, morphisms, o, m;
     
+    comult := Comultiplication( B );
+    counit := Counit( B );
+    
+    mult := Multiplication( B );
+    unit := Unit( B );
+
+    antipode := Antipode( B );
+    
+    idB := IdentityFunctor( B );
+
+    composition1 := PreCompose( [ comult, TensorProductOnMorphisms( antipode, idB ), mult ] );
+    composition2 := PreCompose( [ comult, TensorProductOnMorphisms( idB, antipode ), mult ] );
+    
+    unit_after_counit := PreCompose( counit, unit);
+
+    objects := SetOfObjects( B );
+    morphisms := SetOfGeneratingMorphisms( B );
+    
+    for o in SetOfObjects( B ) do
+
+        if not ( IsEqualForObjects( ApplyFunctor(composition1, o), ApplyFunctor(unit_after_counit, o) ) and IsEqualForObjects( ApplyFunctor(composition2, o), ApplyFunctor(unit_after_counit, o) ) ) then
+
+            return false;
+
+        fi;
+
+    od;
+
+    for m in SetOfGeneratingMorphisms( B ) do
+
+        if not ( IsEqualForMorphisms( ApplyFunctor(composition1, m), ApplyFunctor(unit_after_counit, m ) ) and IsEqualForMorphisms( ApplyFunctor(composition2, m), ApplyFunctor(unit_after_counit, m) ) ) then
+
+            return false;
+
+        fi;
+
+    od;
+    
+    return true;
+end );
+
 ##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
