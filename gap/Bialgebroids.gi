@@ -853,6 +853,108 @@ InstallMethod(TensorProductOnObjects,
 end );
 
 ##
+InstallMethod(TensorProductOnMorphisms,
+        "for morphisms between algebroids",
+        [ IsAlgebroidMorphism, IsAlgebroidMorphism ],
+  function( F, G )
+    local SF, SG, TF, TG, SF_objects, SG_objects, SFxSG, SFxSG_quiver_algebra, images_of_SF_objects_under_F, images_of_SG_objects_under_G, TFxTG, record_with_images_of_objects, a, b, axb, Gb, Fa, SF_mor, SG_mor, SF_mor_underlying_quiver_algebra_elements, SG_mor_underlying_quiver_algebra_elements, SF_mor_underlying_paths, SG_mor_underlying_paths, record_with_images_of_morphisms, g, axg, f, TF_objects, TG_objects, l, fxb, Ts, product_of_sources, product_of_targets, objects_of_product_of_targets, objects_of_product_of_sources, s, t, p, rp, lp, products_of_quiver_algebra_elements_of_generating_morphisms_of_sources, x;
+
+    SF := AsCapCategory( Source( F ) );
+    SG := AsCapCategory( Source( G ) );
+
+    TF := AsCapCategory( Range( F ) );
+    TG := AsCapCategory( Range( G ) );
+
+    SF_objects := SetOfObjects( SF );
+    SG_objects := SetOfObjects( SG );
+
+    images_of_SF_objects_under_F := List( SF_objects, obj -> ApplyFunctor( F, obj ) );
+    images_of_SG_objects_under_G := List( SG_objects, obj -> ApplyFunctor( G, obj ) );
+    
+    SFxSG := SF * SG;
+    TFxTG := TF * TG;
+    
+    SFxSG_quiver_algebra := UnderlyingQuiverAlgebra( SFxSG );
+    
+    record_with_images_of_objects := rec();
+    for a in SF_objects do
+      for b in SG_objects do
+
+        axb := ElementaryTensor( a, b, SFxSG );
+
+        Fa := ApplyFunctor( F, a );
+        Gb := ApplyFunctor( G, b );
+
+        record_with_images_of_objects.( String( UnderlyingVertex( axb ) ) ) := ElementaryTensor( Fa, Gb, TFxTG );
+
+      od;
+    od;
+
+    SF_mor := SetOfGeneratingMorphisms( SF );
+    SG_mor := SetOfGeneratingMorphisms( SG );
+
+    SF_mor_underlying_quiver_algebra_elements := List( SF_mor, UnderlyingQuiverAlgebraElement );
+    SG_mor_underlying_quiver_algebra_elements := List( SG_mor, UnderlyingQuiverAlgebraElement );
+    
+    record_with_images_of_morphisms := rec();
+
+    for a in SF_objects do
+      for g in SG_mor do
+
+        axg := ElementaryTensor( a, g, SFxSG );
+        axg := UnderlyingQuiverAlgebraElement( axg );
+        
+        if not IsPathAlgebraElement( axg ) then
+        
+          axg := Representative( axg );
+
+        fi;
+        
+        axg := String( LeadingPath( axg ) );
+
+        record_with_images_of_morphisms.(axg) := ElementaryTensor( ApplyFunctor( F, a ), ApplyFunctor( G, g ), TFxTG );
+
+      od;
+    od;
+
+    for f in SF_mor do
+      for b in SG_objects do
+
+        fxb := ElementaryTensor( f, b, SFxSG );
+        fxb := UnderlyingQuiverAlgebraElement( fxb );
+
+        if not IsPathAlgebraElement( fxb ) then
+
+          fxb := Representative( fxb );
+
+        fi;
+
+        fxb := String( LeadingPath( fxb ) );
+
+        record_with_images_of_morphisms.(fxb) := ElementaryTensor( ApplyFunctor( F, f ), ApplyFunctor( G, b ), TFxTG );
+
+      od;
+    od;
+
+    TF_objects := SetOfObjects( TF );
+    TG_objects := SetOfObjects( TG );
+
+    l := Length( SF_mor );
+    Ts := List( [1..l], x -> SFxSG_quiver_algebra );
+    
+    product_of_sources := SF*SG;
+    product_of_targets := TF*TG;
+
+    objects_of_product_of_sources := SetOfObjects( product_of_sources );
+    objects_of_product_of_targets := SetOfObjects( product_of_targets );
+
+    products_of_quiver_algebra_elements_of_generating_morphisms_of_sources := ListX( SF_mor_underlying_quiver_algebra_elements, SG_mor_underlying_quiver_algebra_elements, Ts, ElementaryTensor );
+
+    return CapFunctor( SFxSG, record_with_images_of_objects, record_with_images_of_morphisms );
+
+end );
+
+##
 InstallMethod( \*,
         "for two algebroids",
         [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsAlgebroid and HasUnderlyingQuiverAlgebra ],
