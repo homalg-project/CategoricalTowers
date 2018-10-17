@@ -162,6 +162,27 @@ DeclareOperation( "\*",
 DeclareOperation("TensorProductOnObjects",
         [ IsAlgebroid, IsAlgebroid ] );
 
+#! @Description
+#!  Given an object <A>a</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and b in T.
+#! @Arguments a, b, T
+#! @Returns a morphism in a &CAP; category
+DeclareOperation("ElementaryTensor",
+        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
+
+#! @Description
+#!  Given an object <A>a</A> in an algebroid A and a morphism <A>g</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and g in T.
+#! @Arguments a, g, T
+#! @Returns a morphism in a &CAP; category
+DeclareOperation("ElementaryTensor",
+        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryMorphismInAlgebroid, IsAlgebroid ] );
+
+#! @Description
+#!  Given a morphism <A>f</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of f and b in T.
+#! @Arguments f, b, T
+#! @Returns a morphism in a &CAP; category
+DeclareOperation("ElementaryTensor",
+        [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
+
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 

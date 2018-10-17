@@ -661,6 +661,150 @@ InstallMethod( POW,
 end );
 
 ##
+InstallMethod(ElementaryTensor,
+        "for objects in algebroids",
+        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
+  function( a, b, T )
+      
+    local product_string, a_string, b_string, product_vertex;
+  
+    product_vertex := PathInProductQuiver( QuiverOfAlgebra( UnderlyingQuiverAlgebra( T ) ), [ UnderlyingVertex( a ), UnderlyingVertex( b ) ] );
+    product_string := String(product_vertex);
+  
+    return T.(product_string);
+end);
+
+##
+InstallMethod(ElementaryTensor,
+        "for object and morphism in algebroids",
+        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryMorphismInAlgebroid, IsAlgebroid ],
+  function( object, morphism, T )
+    local product_string, coeffs, paths, object_string, sum, i, source, range, morphism_as_quiver_algebra_element, object_underlying_vertex, mors, algebroid_of_morphism, o, product_of_arrows_as_morphism, b, arrows_of_path;
+
+    source := ElementaryTensor( object, Source(morphism), T );
+    range := ElementaryTensor( object, Range(morphism), T );
+
+    morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
+    
+    if IsQuotientOfPathAlgebraElement( morphism_as_quiver_algebra_element ) then
+    
+        morphism_as_quiver_algebra_element := Representative( morphism_as_quiver_algebra_element );
+    
+    fi;
+    
+    if IsZero(morphism_as_quiver_algebra_element) then
+      
+        return ZeroMorphism( source, range );
+
+    else
+
+        paths := Paths( morphism_as_quiver_algebra_element );
+        coeffs := Coefficients( morphism_as_quiver_algebra_element );
+
+        object_underlying_vertex := UnderlyingVertex( object );
+        object_string := String( object_underlying_vertex );
+       
+        sum := ZeroMorphism( source, range );
+        
+        for i in [1..Length(paths)] do
+          
+            arrows_of_path := ArrowList( paths[i] ) ;
+            
+            mors := List( List( arrows_of_path, b -> PathInProductQuiver( QuiverOfAlgebra( UnderlyingQuiverAlgebra( T ) ), [ object_underlying_vertex, b ] ) ), b -> MorphismInAlgebroid( ObjectInAlgebroid( T, Source( b ) ), QuiverAlgebraElement( UnderlyingQuiverAlgebra( T ), [ 1 ], [ b ] ), ObjectInAlgebroid( T, Target( b ) ) ) );
+            
+            if Length( mors ) > 0 then
+              
+                product_of_arrows_as_morphism := PreCompose( mors );
+              
+            else
+              
+                Assert( 3, IsVertex( paths[i] ) );
+                
+                algebroid_of_morphism := CapCategory( morphism );
+                
+                o := ObjectInAlgebroid( algebroid_of_morphism, paths[i] );
+                
+                Assert( 3, o = Source( morphism ) and o = Range( morphism ) );
+                
+                product_of_arrows_as_morphism := IdentityMorphism( ElementaryTensor( object, o, T ) );
+              
+            fi;
+            
+            sum := sum + coeffs[i] * product_of_arrows_as_morphism;
+          
+        od;
+        
+        return sum;
+      
+    fi;
+end );
+
+##
+InstallMethod(ElementaryTensor,
+        "for morphism and object in algebroids",
+        [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
+  function( morphism, object, T )
+    local product_string, morphism_as_quiver_algebra_element, coeffs, paths, object_string, sum, i, source, range, object_underlying_vertex, mors, o, algebroid_of_morphism, product_of_arrows_as_morphism, arrows_of_path;
+
+    source := ElementaryTensor( Source( morphism ), object, T );
+    range := ElementaryTensor( Range( morphism ), object, T );
+    
+    morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
+
+    if IsQuotientOfPathAlgebraElement( morphism_as_quiver_algebra_element ) then
+
+        morphism_as_quiver_algebra_element := Representative( morphism_as_quiver_algebra_element );
+
+    fi;
+
+    if IsZero( morphism_as_quiver_algebra_element ) then
+
+        return ZeroMorphism( source, range );
+
+    else
+
+        paths := Paths( morphism_as_quiver_algebra_element );
+        coeffs := Coefficients( morphism_as_quiver_algebra_element );
+
+        object_underlying_vertex := UnderlyingVertex( object );
+        object_string := String( object_underlying_vertex );
+       
+        sum := ZeroMorphism( source, range );
+
+        for i in [1..Length( paths )] do
+
+            arrows_of_path := ArrowList( paths[ i ] );
+                    
+            mors := List( List( arrows_of_path, a -> PathInProductQuiver( QuiverOfAlgebra( UnderlyingQuiverAlgebra( T ) ), [ a, object_underlying_vertex ] ) ), a -> MorphismInAlgebroid( ObjectInAlgebroid( T, Source(a) ), QuiverAlgebraElement(UnderlyingQuiverAlgebra(T), [1], [a]), ObjectInAlgebroid(T, Target(a)) ) );
+
+            if Length(mors) > 0 then
+
+                product_of_arrows_as_morphism := PreCompose( mors );
+
+            else
+
+                Assert( 3, IsVertex( paths[i] ) );
+
+                algebroid_of_morphism := CapCategory( morphism );
+
+                o := ObjectInAlgebroid( algebroid_of_morphism, paths[i] );
+
+                Assert( 3, o = Source( morphism ) and o = Range( morphism ) );
+
+                product_of_arrows_as_morphism := IdentityMorphism( ElementaryTensor( o, object, T ) );
+       
+            fi;
+
+            sum := sum + coeffs[i] * product_of_arrows_as_morphism;
+            
+        od;
+        
+        return sum;
+
+    fi;
+end );
+
+##
 InstallMethod(TensorProductOnObjects,
         "for algebroids",
         [ IsAlgebroid, IsAlgebroid ],
