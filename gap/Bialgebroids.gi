@@ -1232,6 +1232,51 @@ InstallMethod( IsCommutative,
 end );
 
 ##
+InstallMethod( IsCoassociative,
+        "for an Algebroid",
+        [ IsAlgebroid ],
+    
+  function( B )
+    local vertices, comult, comult_times_id, id_times_comult, comult_times_id_after_comult, id_times_comult_after_comult, objects, morphisms, comult_times_id_after_comult_of_m, id_times_comult_after_comult_of_m, underlying_quiver_algebra_element_of_comult_times_id_after_comult_of_m, underlying_quiver_algebra_element_of_id_times_comult_after_comult_of_m, algebra_1, algebra_2, iso1, iso2, m;
+    
+    vertices := Vertices( UnderlyingQuiver( B ) );
+
+    comult := Comultiplication(B);
+
+    comult_times_id := TensorProductOnMorphisms( comult, IdentityFunctor(B) );
+    id_times_comult := TensorProductOnMorphisms( IdentityFunctor(B), comult );
+    
+    comult_times_id_after_comult := PostCompose( comult_times_id, comult );
+    id_times_comult_after_comult := PostCompose( id_times_comult, comult );
+
+    objects := SetOfObjects(B);
+    morphisms := SetOfGeneratingMorphisms(B);
+
+    for m in morphisms do
+
+        comult_times_id_after_comult_of_m := ApplyFunctor(comult_times_id_after_comult, m);
+        id_times_comult_after_comult_of_m := ApplyFunctor(id_times_comult_after_comult, m);
+
+        underlying_quiver_algebra_element_of_comult_times_id_after_comult_of_m := UnderlyingQuiverAlgebraElement(comult_times_id_after_comult_of_m);
+        underlying_quiver_algebra_element_of_id_times_comult_after_comult_of_m := UnderlyingQuiverAlgebraElement(id_times_comult_after_comult_of_m);
+
+        algebra_1 := AlgebraOfElement(underlying_quiver_algebra_element_of_comult_times_id_after_comult_of_m);
+        algebra_2 := AlgebraOfElement(underlying_quiver_algebra_element_of_id_times_comult_after_comult_of_m);
+
+        iso1 := IsomorphismToFlatTensorProduct(algebra_1);
+        iso2 := IsomorphismToFlatTensorProduct(algebra_2);
+
+        if not ImageElm( iso1, underlying_quiver_algebra_element_of_comult_times_id_after_comult_of_m) = ImageElm( iso2, underlying_quiver_algebra_element_of_id_times_comult_after_comult_of_m) then
+
+            return false;
+
+        fi;
+
+    od;
+    return true;
+end );
+
+##
 InstallMethod( IsCounitary,
         "for a commutative bialgebra",
         [ IsAlgebraAsCategory and IsCommutative ],

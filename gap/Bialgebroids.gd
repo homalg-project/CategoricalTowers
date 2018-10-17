@@ -71,6 +71,13 @@ DeclareProperty( "IsCommutative",
 DeclareProperty( "IsCounitary",
         IsAlgebroid );
 
+#! @Description
+#!  Check whether <A>B</A> is coassociative.
+#! @Arguments B
+#! @Returns true or false
+DeclareProperty( "IsCoassociative",
+        IsAlgebroid );
+
 ####################################
 #
 #! @Section Attributes
