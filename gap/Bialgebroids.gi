@@ -488,6 +488,54 @@ InstallMethod( BaseRing,
 end );
 
 
+
+##
+InstallMethod( Multiplication,
+        "for a commutative algebra as cateogry",
+        [ IsAlgebraAsCategory and IsCommutative ],
+  function (A)
+    local unique_object_in_A, unique_object_in_A_string, morphisms_in_A, A2, unique_object_in_A2, unique_object_in_A2_string, mult_functor_images_of_objects, mult_functor_images_of_morphisms, a, b, axg, axg_string, fxb, fxb_string, mult_functor, g, f;
+
+    unique_object_in_A := SetOfObjects( A )[1];
+    unique_object_in_A_string := String( UnderlyingVertex( unique_object_in_A ) );
+    morphisms_in_A := SetOfGeneratingMorphisms(A);
+
+    A2 := A*A;
+    
+    unique_object_in_A2 := SetOfObjects( A2 )[1];
+    unique_object_in_A2_string := String( UnderlyingVertex( unique_object_in_A2 ) );
+    
+    mult_functor_images_of_objects := rec( );
+    mult_functor_images_of_objects.(unique_object_in_A2_string) := unique_object_in_A;
+
+    mult_functor_images_of_morphisms := rec(); # FIXME
+
+    a := unique_object_in_A;
+    b := unique_object_in_A;
+
+    for g in morphisms_in_A do
+
+        axg := ElementaryTensor( a, g, A2 );
+        axg_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( axg ) ) ) );
+
+        mult_functor_images_of_morphisms.(axg_string) := g;
+
+    od;
+
+    for f in morphisms_in_A do
+
+        fxb := ElementaryTensor( f, b, A2 );
+        fxb_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( fxb ) ) ) );
+
+        mult_functor_images_of_morphisms.(fxb_string) := f;
+
+    od;
+    
+    mult_functor := CapFunctor( A2, mult_functor_images_of_objects, mult_functor_images_of_morphisms );
+    
+    return mult_functor;
+
+end );
 ##
 InstallMethod( \.,
         "for an algebroid and a positive integer",

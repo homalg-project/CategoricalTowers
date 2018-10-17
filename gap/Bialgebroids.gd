@@ -127,6 +127,9 @@ DeclareAttribute( "Counit",
 DeclareAttribute( "Comultiplication",
         IsAlgebroid );
 
+DeclareAttribute( "Multiplication",
+        IsAlgebraAsCategory );
+
 #! @Description
 #!  The antipode of the Hopf algebroid <A>B</A>.
 #! @Arguments B
