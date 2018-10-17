@@ -57,6 +57,13 @@ DeclareProperty( "IsFinitelyPresentedCategory",
 Add( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST!.MathematicalPropertiesOfCategories,
      "IsFinitelyPresentedCategory" );
 
+#! @Description
+#!  Check whether the algebroid <A>A</A> is commutative.
+#! @Arguments A
+#! @Returns true or false
+DeclareProperty( "IsCommutative",
+        IsAlgebroid );
+
 ####################################
 #
 #! @Section Attributes
@@ -227,13 +234,6 @@ DeclareOperation( "NaturalTransformation",
 #! @Returns a &CAP; category
 DeclareOperation( "AddBialgebroidStructure",
         [ IsAlgebroid, IsRecord, IsRecord ] );
-
-#! @Description
-#!  Check whether the algebroid <A>A</A> is commutative.
-#! @Arguments A
-#! @Returns true or false
-DeclareProperty( "IsCommutative",
-        IsAlgebroid );
 
 #! @Description
 #!  Add to the bialgebroid <A>B</A> an antipode <A>S</A>.
