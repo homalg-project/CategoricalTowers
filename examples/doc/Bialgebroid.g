@@ -105,5 +105,9 @@ ApplyFunctor( comult, B.a );
 #! (uu)-[{ 1*(ua*av) }]->(vv)
 ApplyFunctor( comult, B.b );
 #! (vv)-[{ 1*(vb*bu) }]->(uu)
+
+IsCoassociative(B);
+#! true
+
 #! @EndExample
 #! @EndChunk
