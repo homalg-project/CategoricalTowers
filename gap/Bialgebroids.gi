@@ -1152,6 +1152,8 @@ InstallMethod( AddBialgebroidStructure,
     
     SetComultiplication( B, comult_functor );
     
+    SetFilterObj( B, IsBialgebroid );
+    
     return B;
     
 end );

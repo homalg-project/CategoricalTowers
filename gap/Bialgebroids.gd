@@ -41,6 +41,11 @@ DeclareCategory( "IsAlgebroidMorphism",
 DeclareCategory( "IsAlgebraAsCategory",
         IsAlgebroid );
 
+#! @Description
+#!  The &GAP; category of bialgebroids.
+DeclareCategory( "IsBialgebroid",
+        IsAlgebroid );
+
 ####################################
 #
 #! @Section Properties
