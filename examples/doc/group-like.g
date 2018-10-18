@@ -51,6 +51,9 @@ IsCommutative(B);
 IsCounitary(B);
 #! true
 
+IsCocommutative(B);
+#! true
+
 IsHopfAlgebroid(B);
 #! true
 

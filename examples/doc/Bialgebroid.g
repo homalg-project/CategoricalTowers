@@ -109,5 +109,8 @@ ApplyFunctor( comult, B.b );
 IsCoassociative(B);
 #! true
 
+IsCocommutative(B);
+#! true
+
 #! @EndExample
 #! @EndChunk

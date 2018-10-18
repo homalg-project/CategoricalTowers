@@ -43,10 +43,14 @@ ApplyFunctor( comult, B.t );
 
 ApplyFunctor( counit, B.t );
 #! (1)-[0]->(1)
+
 IsCommutative(B);
 #! true
 
 IsCounitary(B);
+#! true
+
+IsCocommutative(B);
 #! true
 
 IsHopfAlgebroid(B);
