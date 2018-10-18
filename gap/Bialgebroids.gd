@@ -189,6 +189,13 @@ DeclareOperation("TensorProductOnObjects",
         [ IsAlgebroid, IsAlgebroid ] );
 
 #! @Description
+#!  Construct the canonical twist from <A>A</A> $\otimes$ <A>B</A> to <A>B</A> $\otimes$ <A>A</A>
+#! @Arguments A, B
+#! @Returns a &CAP; functor
+DeclareOperation( "Twist",
+        [ IsAlgebroid, IsAlgebroid ] );
+
+#! @Description
 #!  Given an object <A>a</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and b in T.
 #! @Arguments a, b, T
 #! @Returns a morphism in a &CAP; category
