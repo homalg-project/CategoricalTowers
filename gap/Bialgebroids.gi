@@ -1236,7 +1236,7 @@ end );
 ##
 InstallMethod( IsCoassociative,
         "for an Algebroid",
-        [ IsAlgebroid ],
+        [ IsBialgebroid ],
     
   function( B )
     local vertices, comult, comult_times_id, id_times_comult, comult_times_id_after_comult, id_times_comult_after_comult, objects, morphisms, comult_times_id_after_comult_of_m, id_times_comult_after_comult_of_m, underlying_quiver_algebra_element_of_comult_times_id_after_comult_of_m, underlying_quiver_algebra_element_of_id_times_comult_after_comult_of_m, algebra_1, algebra_2, iso1, iso2, m;
@@ -1281,7 +1281,7 @@ end );
 ##
 InstallMethod( IsCounitary,
         "for a commutative bialgebra",
-        [ IsAlgebraAsCategory and IsCommutative ],
+        [ IsAlgebraAsCategory and IsCommutative and IsBialgebroid ],
         
   function( B )
     local comult, counit, mult, unit, idB, comp1, comp2, objects, morphisms, o, m;
@@ -1323,9 +1323,10 @@ InstallMethod( IsCounitary,
     return true;
     
 end );
+
 InstallMethod( IsHopfAlgebroid,
         "for commutative bialgebra",
-        [ IsAlgebraAsCategory and IsCommutative ],
+        [ IsAlgebraAsCategory and IsCommutative and IsBialgebroid ],
   function( B )
     local comult, counit, antipode, mult, unit, idB, composition1, composition2, unit_after_counit, objects, morphisms, o, m;
     
