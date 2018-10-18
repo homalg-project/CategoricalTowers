@@ -236,7 +236,7 @@ end );
 ##
 InstallMethodWithCache( Hom,
         "for two CAP categories",
-        [ IsCapCategory, IsCapCategory ],
+        [ IsAlgebroid, IsCapCategory ],
         
   function( B, C )
     local name, Hom, name_of_object, vertices, create_func_bool, arrows, relations,
