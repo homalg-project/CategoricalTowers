@@ -253,6 +253,12 @@ DeclareOperation( "DecomposeQuiverAlgebraElement",
 DeclareOperation( "ApplyToQuiverAlgebraElement",
         [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ] );
 
+DeclareOperation( "ApplyToQuiverAlgebraElement",
+        [ IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool ] );
+
+DeclareOperation( "ApplyToQuiverAlgebraElement",
+        [ IsCapFunctor, IsQuiverAlgebraElement ] );
+
 ####################################
 #
 #! @Section Constructors

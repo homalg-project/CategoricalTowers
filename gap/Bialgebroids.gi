@@ -213,13 +213,11 @@ end );
 
 ##
 InstallMethod( ApplyToQuiverAlgebraElement,
-        "for a record (of images of objects), a record (of images of morphisms) and a quiver algebra element",
-        [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ],
-  function( F_objects, F_morphisms, p, contravariant )
-    local func_obj, func_mor, applyF, paths, coefs, paths_final, mult_func, s, eval_F_objects, some_object_in_image, all_objects_in_image;
-    
-    func_obj := b -> F_objects.(String( b ));
-    func_mor := b -> F_morphisms.(String( b ));
+        "for an object function, a morphism function, a category, a quiver algebra element and a boolean",
+        [ IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool ],
+
+    function( object_function, morphism_function, range_category, p, contravariant )
+      local applyF, paths, coefs, paths_final, s, all_objects_in_image;
     
     # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
     applyF :=
@@ -227,10 +225,10 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         local m;
         
         if IsVertex( b ) then
-            m := func_obj( b );
+            m := object_function( b );
             return IdentityMorphism( m );
         fi;
-        m := func_mor( b );
+        m := morphism_function( b );
         
         return m;
         
@@ -240,7 +238,6 @@ InstallMethod( ApplyToQuiverAlgebraElement,
 
     coefs := paths[1];
     paths := paths[2];
-
     
     if contravariant = false then
         paths_final := List( paths, a -> PreCompose( List( a, applyF ) ) );
@@ -248,23 +245,49 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         paths_final := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
     fi;
 
-
     if Length( coefs ) > 0 then
       s := Sum( ListN( coefs, paths_final, function( r, p ) return r * p; end ) );
     else
-      # construct the zero morphism 
-      # FIXME
-      eval_F_objects := function(a) return F_objects!.(a); end;
-      
-      some_object_in_image := List( RecNames(F_objects), eval_F_objects)[1];
-      
-      all_objects_in_image := SetOfObjects( CapCategory( some_object_in_image ) );
-
+      all_objects_in_image := SetOfObjects( range_category );
       s := Sum( List( all_objects_in_image, o -> ZeroMorphism(o,o)) );
     fi;
     
     return s;
+
+end );
+
+##
+InstallMethod( ApplyToQuiverAlgebraElement,
+        "for a record (of images of objects), a record (of images of morphisms) and a quiver algebra element",
+        [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ],
+  
+  function( F_objects, F_morphisms, p, contravariant )
+    local func_obj, func_mor, eval_F_objects, some_object_in_image;
     
+    func_obj := b -> F_objects.(String( b ));
+    func_mor := b -> F_morphisms.(String( b ));
+      
+    some_object_in_image := List( RecNames(F_objects), func_obj )[1];
+
+    return ApplyToQuiverAlgebraElement( func_obj, func_mor, CapCategory(some_object_in_image), p, contravariant );
+    
+end );
+
+##
+InstallMethod( ApplyToQuiverAlgebraElement,
+        "for a functor and a quiver algebra element",
+        [ IsCapFunctor, IsQuiverAlgebraElement ],
+
+  function( functor, p )
+    local func, b;
+    
+    func := b -> ApplyFunctor( functor, AsCapCategory(Source(functor)).(String(b)) );
+    
+    if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
+        return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, true );
+    else
+        return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, false );
+    fi;
 end );
 
 ####################################
