@@ -76,7 +76,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2017.12.02" ],
-                   [ "Bialgebroids", ">= 2018.05.11" ],
+                   [ "Bialgebroids", ">= 2018.10.18" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
