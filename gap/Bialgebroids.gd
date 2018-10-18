@@ -84,6 +84,13 @@ DeclareProperty( "IsCoassociative",
         IsAlgebroid );
 
 #! @Description
+#!  Check whether the bialgebroid <A>B</A> is cocommutative.
+#! @Arguments B
+#! @Returns true or false
+DeclareProperty( "IsCocommutative",
+        IsBialgebroid );
+
+#! @Description
 #!  Check whether the antipode of <A>B</A> is actually an antipode.
 #! @Arguments B
 #! @Returns true or false

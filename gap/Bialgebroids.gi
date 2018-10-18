@@ -1324,6 +1324,43 @@ InstallMethod( IsCounitary,
     
 end );
 
+##
+InstallMethod( IsCocommutative,
+         "for a bialgebra",
+        [ IsBialgebroid ],
+  function( B )
+    local comult, twist_after_comult, objects, morphisms, o, m;
+    
+    comult := Comultiplication( B );
+    
+    twist_after_comult := PreCompose( [ comult, Twist( B, B ) ] );
+    
+    objects := SetOfObjects( B );
+    morphisms := SetOfGeneratingMorphisms( B );
+    
+    for o in SetOfObjects( B ) do
+
+        if not IsEqualForObjects( ApplyFunctor(twist_after_comult, o), ApplyFunctor(comult, o) ) then
+
+            return false;
+
+        fi;
+ 
+    od;
+
+    for m in SetOfGeneratingMorphisms( B ) do
+
+        if not IsEqualForMorphisms( ApplyFunctor(twist_after_comult, m), ApplyFunctor(comult, m ) ) then
+
+            return false;
+
+        fi;
+
+    od;
+    
+    return true;
+end );
+
 InstallMethod( IsHopfAlgebroid,
         "for commutative bialgebra",
         [ IsAlgebraAsCategory and IsCommutative and IsBialgebroid ],
