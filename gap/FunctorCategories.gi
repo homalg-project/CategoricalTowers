@@ -169,12 +169,12 @@ end );
 
 ##
 InstallMethod( AsObjectInHomCategory,
-        "for a CAP category and a record",
-        [ IsCapCategory, IsRecord ],
+        "for a CAP category, a record (of images of objects) and a record (of images of morphisms)",
+        [ IsCapCategory, IsRecord, IsRecord ],
         
-  function( B, f )
+  function( B, rec_images_of_objects, rec_images_of_morphisms )
     
-    return AsObjectInHomCategory( CapFunctor( B,f ) );
+    return AsObjectInHomCategory( CapFunctor( B, rec_images_of_objects, rec_images_of_morphisms ) );
     
 end );
 

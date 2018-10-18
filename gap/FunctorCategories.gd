@@ -127,11 +127,11 @@ DeclareAttribute( "AsObjectInHomCategory",
         IsCapFunctor );
 
 #! @Description
-#! @Arguments B, f
-#!  An alternative input is the source category <A>B</A> and defining record <A>f</A> of <A>F</A>.
+#! @Arguments B, rec_images_of_objects, rec_images_of_morphisms
+#!  An alternative input is the source category <A>B</A> and two defining records <A>rec_images_of_objects</A> and <A>rec_images_of_morphisms</A> of <A>F</A>.
 #! @Group AsObjectInHomCategory
 DeclareOperation( "AsObjectInHomCategory",
-        [ IsCapCategory, IsRecord ] );
+        [ IsCapCategory, IsRecord, IsRecord ] );
 
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
