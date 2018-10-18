@@ -13,6 +13,7 @@ Subtitle := "Categories of functors",
 Version := Maximum( [
                    "2018.05.11", ## Mohamed's version
                    ## this line prevents merge conflicts
+                   "2018.10.18", ## Florians version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
