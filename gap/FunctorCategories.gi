@@ -708,11 +708,14 @@ InstallMethodWithCache( Hom,
           
     fi;
     
-    Finalize( Hom );
+    AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function() IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
     
-    IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C );
-    
-    return Hom;
+    if ValueOption( "FinalizeCategory" ) = false then
+        return Hom;
+    else
+        Finalize( Hom );
+        return Hom;
+    fi;
     
 end );
 
