@@ -712,10 +712,11 @@ InstallMethodWithCache( Hom,
     
     if ValueOption( "FinalizeCategory" ) = false then
         return Hom;
-    else
-        Finalize( Hom );
-        return Hom;
     fi;
+    
+    Finalize( Hom );
+
+    return Hom;
     
 end );
 
