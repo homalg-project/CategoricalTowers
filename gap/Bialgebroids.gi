@@ -658,10 +658,13 @@ InstallMethod( MorphismInAlgebroid,
         ## reintroduced in the future
         if IsPathAlgebraElement( path ) then
             l := LeadingPath( path );
-            
-            if not ( Source( l ) = UnderlyingVertex( S ) and
-                     Target( l ) = UnderlyingVertex( T ) ) then
-                Error( "the path ", path, " is neither zero nor does it match the given source S and target T\n" );
+        
+            if not ( Source( l ) = UnderlyingVertex( S ) ) and not ( Target( l ) = UnderlyingVertex( T ) ) then
+                Error( "the path ", path, " is not zero, it does not match the given source S and it does not match the given target T\n" );
+            elif not ( Source( l ) = UnderlyingVertex( S ) ) then
+                Error( "the path ", path, " is not zero and it does not match the given source S\n" );
+            elif not ( Target( l ) = UnderlyingVertex( T ) ) then
+                Error( "the path ", path, " is not zero and it does not match the given target T\n" );
             fi;
         fi;
         
