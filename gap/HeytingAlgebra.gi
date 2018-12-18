@@ -19,7 +19,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ## The closedness of the cartesian monoidal structure
     
     ##
-    AddInternalHomOnMorphismsWithGivenInternalHoms( heyting_algebra,
+    AddExponentialOnMorphismsWithGivenExponentials( heyting_algebra,
       function( S, alpha, beta, T )
         
         return UniqueMorphism( S, T );
@@ -43,31 +43,31 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddTensorProductToInternalHomAdjunctionMap( heyting_algebra,
+    AddDirectProductToExponentialAdjunctionMap( heyting_algebra,
       function( M, N, f )
         local L;
         
         L := Range( f );
         
-        return UniqueMorphism( M, InternalHomOnObjects( N, L ) );
+        return UniqueMorphism( M, ExponentialOnObjects( N, L ) );
         
     end );
     
     ##
-    AddInternalHomToTensorProductAdjunctionMap( heyting_algebra,
+    AddExponentialToDirectProductAdjunctionMap( heyting_algebra,
       function( N, L, g )
         local M, MN;
         
         M := Source( g );
         
-        MN := TensorProduct( M, N );
+        MN := DirectProduct( M, N );
         
         return UniqueMorphism( MN, L );
         
     end );
     
     ##
-    AddMonoidalPreComposeMorphismWithGivenObjects( heyting_algebra,
+    AddCartesianPreComposeMorphismWithGivenObjects( heyting_algebra,
       function( HM_NxH_N_L, M, N, L, HM_L );
         
         return UniqueMorphism( HM_NxH_N_L, HM_L );
@@ -75,7 +75,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddMonoidalPostComposeMorphismWithGivenObjects( heyting_algebra,
+    AddCartesianPostComposeMorphismWithGivenObjects( heyting_algebra,
       function( HM_NxH_N_L, M, N, L, HM_L );
         
         return UniqueMorphism( HM_NxH_N_L, HM_L );
@@ -83,7 +83,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects( heyting_algebra,
+    AddDirectProductExponentialCompatibilityMorphismWithGivenObjects( heyting_algebra,
       function( S1, T1, S2, T2, L )
         
         return UniqueMorphism( L[1], L[2] );
@@ -93,23 +93,23 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ## The duals
     
     ##
-    AddDualOnObjects( heyting_algebra,
+    AddCartesianDualOnObjects( heyting_algebra,
       function( A )
         
-        return InternalHomOnObjects( A, InitialObject( heyting_algebra ) );
+        return ExponentialOnObjects( A, InitialObject( heyting_algebra ) );
         
     end );
     
     ##
-    AddDualOnMorphismsWithGivenDuals( heyting_algebra,
+    AddCartesianDualOnMorphismsWithGivenCartesianDuals( heyting_algebra,
       function( B_, u, A_ )
         
-        return InternalHomOnMorphismsWithGivenInternalHoms( B_, u, IdentityMorphism( InitialObject( heyting_algebra ) ), A_ );
+        return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( heyting_algebra ) ), A_ );
         
     end );
     
     ##
-    AddMorphismToBidualWithGivenBidual( heyting_algebra,
+    AddMorphismToCartesianBidualWithGivenCartesianBidual( heyting_algebra,
       function( A, B )
         
         return UniqueMorphism( A, B );

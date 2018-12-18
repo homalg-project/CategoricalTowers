@@ -195,7 +195,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
     
     if HasIsCartesianClosedCategory( L ) and IsCartesianClosedCategory( L ) then
         
-        H := InternalHomOnObjects( T, S );
+        H := ExponentialOnObjects( T, S );
         
         return [ Coproduct( H, T ), H ];
         
@@ -203,7 +203,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
         
         ## TODO: this is in fact a coHom
         ## will be adapted once co-closed structures are supported by CAP
-        H := InternalHomOnObjects( T, S );
+        H := ExponentialOnObjects( T, S );
         
         return [ H, DirectProduct( S, H ) ];
         

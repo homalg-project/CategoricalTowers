@@ -43,7 +43,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     end );
     
     ##
-    AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts( meet_semilattice,
+    AddCartesianAssociatorRightToLeftWithGivenDirectProducts( meet_semilattice,
       function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
@@ -51,10 +51,58 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     end );
     
     ##
-    AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts( meet_semilattice,
+    AddCartesianAssociatorLeftToRightWithGivenDirectProducts( meet_semilattice,
       function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
+        
+    end );
+    
+    ##
+    AddCartesianLeftUnitorWithGivenDirectProduct( meet_semilattice,
+      function( M, TM )
+        
+        return UniqueMorphism( TM, M );
+        
+    end );
+    
+    ##
+    AddCartesianLeftUnitorInverseWithGivenDirectProduct( meet_semilattice,
+      function( M, TM )
+        
+        return UniqueMorphism( M, TM );
+        
+    end );
+    
+    ##
+    AddCartesianRightUnitorWithGivenDirectProduct( meet_semilattice,
+      function( M, MT )
+        
+        return UniqueMorphism( MT, M );
+        
+    end );
+    
+    ##
+    AddCartesianRightUnitorInverseWithGivenDirectProduct( meet_semilattice,
+      function( M, MT )
+        
+        return UniqueMorphism( M, MT );
+        
+    end );
+    
+    ##
+    AddCartesianBraidingWithGivenDirectProducts( meet_semilattice,
+      function( MN, M, N, NM )
+        
+        return UniqueMorphism( MN, NM );
+        
+    end );
+    
+    ##
+    AddCartesianBraidingInverseWithGivenDirectProducts( meet_semilattice,
+      function( NM, M, N, MN )
+        
+        return UniqueMorphism( NM, MN );
         
     end );
     
@@ -99,7 +147,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     end );
     
     ##
-    AddAssociatorRightToLeftOfCoproductsWithGivenCoproducts( join_semilattice,
+    AddCoCartesianAssociatorRightToLeftWithGivenCoproducts( join_semilattice,
       function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
@@ -107,10 +155,58 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     end );
     
     ##
-    AddAssociatorLeftToRightOfCoproductsWithGivenCoproducts( join_semilattice,
+    AddCoCartesianAssociatorLeftToRightWithGivenCoproducts( join_semilattice,
       function( s, a, b, c, r )
         
         return UniqueMorphism( s, r );
+        
+    end );
+    
+    ##
+    AddCoCartesianLeftUnitorWithGivenCoproduct( join_semilattice,
+      function( M, TM )
+        
+        return UniqueMorphism( TM, M );
+        
+    end );
+    
+    ##
+    AddCoCartesianLeftUnitorInverseWithGivenCoproduct( join_semilattice,
+      function( M, TM )
+        
+        return UniqueMorphism( M, TM );
+        
+    end );
+    
+    ##
+    AddCoCartesianRightUnitorWithGivenCoproduct( join_semilattice,
+      function( M, MT )
+        
+        return UniqueMorphism( MT, M );
+        
+    end );
+    
+    ##
+    AddCoCartesianRightUnitorInverseWithGivenCoproduct( join_semilattice,
+      function( M, MT )
+        
+        return UniqueMorphism( M, MT );
+        
+    end );
+    
+    ##
+    AddCoCartesianBraidingWithGivenCoproducts( join_semilattice,
+      function( MN, M, N, NM )
+        
+        return UniqueMorphism( MN, NM );
+        
+    end );
+    
+    ##
+    AddCoCartesianBraidingInverseWithGivenCoproducts( join_semilattice,
+      function( NM, M, N, MN )
+        
+        return UniqueMorphism( NM, MN );
         
     end );
     
