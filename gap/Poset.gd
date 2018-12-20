@@ -1,8 +1,12 @@
 #
-# Locales: Partially ordered sets (posets)
+# Locales: Posets (partially ordered sets)
 #
 # Declarations
 #
+
+#! @Chapter Posets (partially ordered sets)
+
+#! Posets are skeletal, thin categories.
 
 # @Section Tools
 

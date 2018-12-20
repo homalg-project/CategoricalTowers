@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Meet-semilattice of multiple differences
+#! @Chapter Boolean algebra of constructible objects
 
 #! @Section GAP Categories
 

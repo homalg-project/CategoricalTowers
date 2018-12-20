@@ -1,4 +1,15 @@
-@Chapter Thin categories, a.k.a. prosets (preordered sets)
+@Chapter Prosets (preordered sets)
 
-@Section GAP Categories
-@Section Constructors
+@Chapter Posets (partially ordered sets)
+
+@Chapter Lattices
+
+@Chapter Heyting algebras
+
+@Chapter Boolean algebras
+
+@Chapter Meet-semilattice of differences
+
+@Chapter Meet-semilattice of multiple differences
+
+@Chapter Boolean algebra of constructible objects

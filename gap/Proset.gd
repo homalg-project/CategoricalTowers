@@ -1,10 +1,12 @@
 #
-# Locales: Preordered sets (prosets)
+# Locales: Prosets (preordered sets)
 #
 # Declarations
 #
 
-#! @Chapter Thin categories, a.k.a. prosets (preordered sets)
+#! @Chapter Prosets (preordered sets)
+
+#! Prosets are thin categories, i.e., each Hom-set is either a singleton or empty.
 
 #! @Section GAP Categories
 
