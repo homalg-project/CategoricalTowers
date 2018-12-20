@@ -6,12 +6,11 @@
 
 # @Section Operations
 
-DeclareOperation( "+",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ] );
-
 DeclareOperation( "*",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
+DeclareOperation( "+",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
 # @Section Tools
 
