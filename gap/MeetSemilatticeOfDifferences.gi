@@ -199,7 +199,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
         
         return [ Coproduct( H, T ), H ];
         
-    elif HasIsCoCartesianCoclosedCategory( L ) and IsCoCartesianCoclosedCategory( L ) then
+    elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
         
         ## TODO: this is in fact a coHom
         ## will be adapted once co-closed structures are supported by CAP

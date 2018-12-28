@@ -8,7 +8,7 @@
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
   function( coheyting_algebra )
     
-    SetIsCoCartesianCoclosedCategory( coheyting_algebra, true );
+    SetIsCocartesianCoclosedCategory( coheyting_algebra, true );
     
     SetIsStrictMonoidalCategory( coheyting_algebra, true );
     
