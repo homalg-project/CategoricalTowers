@@ -198,7 +198,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     end );
     
     ##
-    AddInternalHomOnObjects( ZariskiFrame,
+    AddExponentialOnObjects( ZariskiFrame,
       function( A, B )
         local L;
         

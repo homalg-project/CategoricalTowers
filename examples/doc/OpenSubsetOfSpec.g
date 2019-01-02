@@ -79,70 +79,70 @@ Display( AC );
 #! [ [  6 ] ]
 #! 
 #! A morphism in Rows( Z )
-InternalHomOnObjects( I, T ) = T;
+ExponentialOnObjects( I, T ) = T;
 #! true
-InternalHomOnObjects( A, T ) = T;
+ExponentialOnObjects( A, T ) = T;
 #! true
-InternalHomOnObjects( T, T ) = T;
+ExponentialOnObjects( T, T ) = T;
 #! true
-InternalHomOnObjects( T, A ) = A;
+ExponentialOnObjects( T, A ) = A;
 #! true
-InternalHomOnObjects( T, I ) = I;
+ExponentialOnObjects( T, I ) = I;
 #! true
-InternalHomOnObjects( A, I ) = I;
+ExponentialOnObjects( A, I ) = I;
 #! true
-InternalHomOnObjects( I, I ) = T;
+ExponentialOnObjects( I, I ) = T;
 #! true
-InternalHomOnObjects( D, B ) = T;
+ExponentialOnObjects( D, B ) = T;
 #! true
-InternalHomOnObjects( B, D ) = C;
+ExponentialOnObjects( B, D ) = C;
 #! true
-InternalHomOnObjects( D, C ) = T;
+ExponentialOnObjects( D, C ) = T;
 #! true
-InternalHomOnObjects( C, D ) = B;
+ExponentialOnObjects( C, D ) = B;
 #! true
-IsWellDefined( EvaluationMorphism( A, C ) );
+IsWellDefined( CartesianEvaluationMorphism( A, C ) );
 #! true
-IsIsomorphism( EvaluationMorphism( A, C ) );
+IsIsomorphism( CartesianEvaluationMorphism( A, C ) );
 #! false
-IsWellDefined( EvaluationMorphism( C, A ) );
+IsWellDefined( CartesianEvaluationMorphism( C, A ) );
 #! true
-IsIsomorphism( EvaluationMorphism( C, A ) );
+IsIsomorphism( CartesianEvaluationMorphism( C, A ) );
 #! false
-IsWellDefined( CoevaluationMorphism( A, D ) );
+IsWellDefined( CartesianCoevaluationMorphism( A, D ) );
 #! true
-IsIsomorphism( CoevaluationMorphism( A, D ) );
+IsIsomorphism( CartesianCoevaluationMorphism( A, D ) );
 #! false
-IsWellDefined( CoevaluationMorphism( D, A ) );
+IsWellDefined( CartesianCoevaluationMorphism( D, A ) );
 #! true
-IsIsomorphism( CoevaluationMorphism( D, A ) );
+IsIsomorphism( CartesianCoevaluationMorphism( D, A ) );
 #! false
-th := UniqueMorphism( TensorProduct( A, C ), C );
+th := UniqueMorphism( DirectProduct( A, C ), C );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( th );
 #! true
-th := TensorProductToInternalHomAdjunctionMap( A, C, th );
+th := DirectProductToExponentialAdjunctionMap( A, C, th );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( th );
 #! true
 IsIsomorphism( th );
 #! false
-ht := UniqueMorphism( A, InternalHomOnObjects( D, B ) );
+ht := UniqueMorphism( A, ExponentialOnObjects( D, B ) );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( ht );
 #! true
-ht := InternalHomToTensorProductAdjunctionMap( D, B, ht );
+ht := ExponentialToDirectProductAdjunctionMap( D, B, ht );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
 IsWellDefined( ht );
 #! true
 IsIsomorphism( ht );
 #! false
-IsWellDefined( MonoidalPreComposeMorphism( A, C, D ) );
+IsWellDefined( CartesianPreComposeMorphism( A, C, D ) );
 #! true
-IsIsomorphism( MonoidalPreComposeMorphism( A, C, D ) );
+IsIsomorphism( CartesianPreComposeMorphism( A, C, D ) );
 #! false
 #! @EndExample
