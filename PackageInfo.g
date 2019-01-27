@@ -90,7 +90,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2018.08.03" ],
+                   [ "CAP", ">= 2019.01.15" ],
                    [ "QPA", ">= 2.0" ],
                    [ "MatricesForHomalg", ">= 2017.05.25" ],
                    ],

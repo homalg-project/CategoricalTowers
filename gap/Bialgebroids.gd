@@ -59,8 +59,9 @@ DeclareCategory( "IsBialgebroid",
 DeclareProperty( "IsFinitelyPresentedCategory",
         IsCapCategory );
 
-Add( CAP_INTERNAL_CAN_COMPUTE_FILTER_LIST!.MathematicalPropertiesOfCategories,
-     "IsFinitelyPresentedCategory" );
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory :=  Concatenation( [
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
+
 
 #! @Description
 #!  Check whether the algebroid <A>A</A> is commutative.
