@@ -97,6 +97,7 @@ DeclareProperty( "IsCocommutative",
 #! @Returns true or false
 DeclareProperty( "IsHopfAlgebroid",
         IsAlgebroid );
+
 ####################################
 #
 #! @Section Attributes
