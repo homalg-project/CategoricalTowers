@@ -14,6 +14,8 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/homalg_project
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/FunctorCategories
+          git clone --depth 1 https://github.com/oysteins/InfiniteLists.git
+          git clone --depth 1 https://github.com/kamalsaleh/ComplexesForCAP.git
           git clone --depth 1 https://github.com/oysteins/QPA2.git
           cd Bialgebroids
           echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
