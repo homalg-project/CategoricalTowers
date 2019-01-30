@@ -264,7 +264,7 @@ eta := HomalgMatrix( [ 1, 0,  0, 1,  -1, -1 ], 3, 2, Q );
 #! @EndExample
 
 #! Then we define a record that will be used to define the natural transformation $\eta$.
-#! Here `1' is the string representation of the only object of $B$ and the vector space morphism
+#! Here `1` is the string representation of the only object of $B$ and the vector space morphism
 #! induced by the above matrix is the component of $\eta$ at this object.
 
 #! @Example
