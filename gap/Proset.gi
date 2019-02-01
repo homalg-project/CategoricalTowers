@@ -203,7 +203,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddEqualizerFunctorialWithGivenEqualizers( preordered_set,
-      function( s, L, r )
+      function( s, L1, m, L3, r )
         
         return UniqueMorphism( s, r );
         
@@ -235,7 +235,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddCoequalizerFunctorialWithGivenCoequalizers( preordered_set,
-      function( s, L, r )
+      function( s, L1, m, L3, r )
         
         return UniqueMorphism( s, r );
         
