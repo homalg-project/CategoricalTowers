@@ -23,7 +23,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     ## NOT a closed cocartesian category (such is equivalent to a terminal category)
     ## but a co-closed cocartesian category!
     
-    ## The duals
+    ## The co-negation
     
     ##
     AddDualOnObjects( coheyting_algebra,

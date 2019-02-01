@@ -4,6 +4,35 @@
 # Implementations
 #
 
+InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
+        rec(
+NegationOnObjects := rec(
+  installation_name := "NegationOnObjects",
+  filter_list := [ "object" ],
+  io_type := [ [ "a" ], [ "an" ] ],
+  cache_name := "NegationOnObjects",
+  return_type := "object" ),
+
+NegationOnMorphismsWithGivenNegations := rec(
+  installation_name := "NegationOnMorphismsWithGivenNegations",
+  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
+  filter_list := [ "object", "morphism", "object" ],
+  cache_name := "NegationOnMorphismsWithGivenNegations",
+  return_type := "morphism" ),
+
+MorphismToDoubleNegationWithGivenDoubleNegation := rec(
+  installation_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "r" ], [ "a", "r" ] ],
+  cache_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
+  return_type := "morphism" )
+
+            ) );
+
+CAP_INTERNAL_ENHANCE_NAME_RECORD( HEYTING_ALGEBRA_METHOD_NAME_RECORD );
+
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( HEYTING_ALGEBRA_METHOD_NAME_RECORD );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
   function( heyting_algebra )
@@ -90,10 +119,10 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
         
     end );
     
-    ## The duals
+    ## The negation
     
     ##
-    AddCartesianDualOnObjects( heyting_algebra,
+    AddNegationOnObjects( heyting_algebra,
       function( A )
         
         return ExponentialOnObjects( A, InitialObject( heyting_algebra ) );
@@ -101,7 +130,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddCartesianDualOnMorphismsWithGivenCartesianDuals( heyting_algebra,
+    AddNegationOnMorphismsWithGivenNegations( heyting_algebra,
       function( B_, u, A_ )
         
         return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( heyting_algebra ) ), A_ );
@@ -109,7 +138,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddMorphismToCartesianBidualWithGivenCartesianBidual( heyting_algebra,
+    AddMorphismToDoubleNegationWithGivenDoubleNegation( heyting_algebra,
       function( A, B )
         
         return UniqueMorphism( A, B );
