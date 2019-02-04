@@ -199,7 +199,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ## this defines a co-closed structure (!)
     ## which is not supported by CAP yet and not even documented on nLab
-    ## it is added as it corresponds to the set theortic difference
+    ## it is added as it corresponds to the closure of the set theortic difference
     AddInternalHomOnObjects( ZariskiCoframe,
       function( A, B )
         local L;
