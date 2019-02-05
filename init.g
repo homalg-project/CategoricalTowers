@@ -12,4 +12,5 @@ ReadPackage( "Locales", "gap/CoHeytingAlgebra.gd");
 ReadPackage( "Locales", "gap/BooleanAlgebra.gd");
 ReadPackage( "Locales", "gap/Differences.gd");
 ReadPackage( "Locales", "gap/MultipleDifferences.gd");
+ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfDifferences.gd");
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfMultipleDifferences.gd");

@@ -189,18 +189,18 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
 end );
 
 ##
-InstallMethod( \+,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
-        
-  UnionOfMultipleDifferences );
+#InstallMethod( \+,
+#        "for an object in a meet-semilattice of formal differences and an object in a thin category",
+#        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+#        
+#  UnionOfMultipleDifferences );
 
 ##
-InstallMethod( \+,
-        "for an object in a thin category and an object in a meet-semilattice of formal differences",
-        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
-        
-  UnionOfMultipleDifferences );
+#InstallMethod( \+,
+#        "for an object in a thin category and an object in a meet-semilattice of formal differences",
+#        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+#        
+#  UnionOfMultipleDifferences );
 
 ##
 InstallMethod( \+,
