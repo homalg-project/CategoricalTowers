@@ -328,6 +328,28 @@ InstallMethod( \=,
 end );
 
 ##
+InstallMethod( ViewObj,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    local n;
+    
+    A := PairInUnderlyingLattice( A );
+    
+    n := ValueOption( "Locales_number" );
+    
+    if n = fail then
+        n := "";
+    fi;
+    
+    ViewObj( A[1] : Locales_name := "I", Locales_number := n );
+    Print( " \\\ " );
+    ViewObj( A[2] : Locales_name := "J", Locales_number := n );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
