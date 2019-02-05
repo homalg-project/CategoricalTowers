@@ -328,6 +328,28 @@ InstallMethod( \=,
 end );
 
 ##
+InstallMethod( \.,
+        "for an object in a meet-semilattice of formal differences and a positive integer",
+        [ IsObjectInMeetSemilatticeOfDifferences, IsPosInt ],
+
+  function( A, string_as_int )
+    local name;
+    
+    A := PairInUnderlyingLattice( A );
+    
+    name := NameRNam( string_as_int );
+    
+    if name[1] = 'I' then
+        return A[1];
+    elif name[1] = 'J' then
+        return A[2];
+    fi;
+    
+    Error( "no component with this name available\n" );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
