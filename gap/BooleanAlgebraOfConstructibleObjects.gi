@@ -169,7 +169,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                    elif IsObjectInThinCategory( A ) then
                        return AsFormalMultipleDifference( A - 0 );
                    else
-                       Error( "this entry is neither a formal multiple difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
+                       Error( "this entry is neither a constructible set as a union of formal multiple differences, nor a formal multiple difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
                    fi;
                end );
     
