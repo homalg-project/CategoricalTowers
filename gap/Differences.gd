@@ -1,5 +1,5 @@
 #
-# Locales: MeetSemilatticeOfDifferences
+# Locales: Differences
 #
 # Declarations
 #

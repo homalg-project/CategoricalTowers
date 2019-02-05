@@ -1,5 +1,5 @@
 #
-# Locales: MeetSemilatticeOfMultipleDifferences
+# Locales: MultipleDifferences
 #
 # Implementations
 #

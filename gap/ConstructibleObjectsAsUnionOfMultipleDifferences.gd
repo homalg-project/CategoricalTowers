@@ -1,5 +1,5 @@
 #
-# Locales: BooleanAlgebraOfConstructibleObjects
+# Locales: ConstructibleObjectsAsUnionOfMultipleDifferences
 #
 # Declarations
 #
@@ -11,25 +11,25 @@
 #! @Description
 #!  The &GAP; category of objects in ...
 #! @Arguments object
-DeclareCategory( "IsConstructibleObject",
+DeclareCategory( "IsConstructibleObjectAsUnionOfMultipleDifferences",
         IsObjectInThinCategory );
 
 #! @Description
 #!  The &GAP; category of morphisms in ...
 #! @Arguments morphism
-DeclareCategory( "IsMorphismBetweenConstructibleObjects",
+DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences",
         IsMorphismInThinCategory );
 
 #! @Section Attributes
 
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences",
-        IsConstructibleObject );
+        IsConstructibleObjectAsUnionOfMultipleDifferences );
 
 DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences",
-        IsConstructibleObject );
+        IsConstructibleObjectAsUnionOfMultipleDifferences );
 
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
-        IsConstructibleObject );
+        IsConstructibleObjectAsUnionOfMultipleDifferences );
 
 #! @Section Operations
 
@@ -38,10 +38,10 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences",
-        [ IsConstructibleObject ] );
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObject ] );
+        [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ] );
 
 #! @Section Constructors
 
@@ -49,7 +49,7 @@ DeclareOperation( "IsHomSetInhabitedWithTypeCast",
 #!  Construct the meet-semilattice of multiple differences from the lattice <A>L</A>.
 #! @Arguments L
 #! @Returns a &CAP; category
-DeclareAttribute( "BooleanAlgebraOfConstructibleObjects",
+DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences",
         IsCapCategory );
 
 #! @Description
