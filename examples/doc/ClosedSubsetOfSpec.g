@@ -8,13 +8,13 @@ ZZ := HomalgRingOfIntegers( );
 ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( ZZ );
 #! The coframe of Zariski closed subsets of the affine spectrum of Z
 A := ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 2 ], 1, 1, ZZ ) );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 B := ClosedSubsetOfSpec( HomalgMatrix( [ 12, 20 ], 2, 1, ZZ ) );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 C := ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 3 ], 1, 1, ZZ ) );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 D := ClosedSubsetOfSpec( HomalgMatrix( [ 12 ], 1, 1, ZZ ) );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 A = B;
 #! true
 A = C;
@@ -48,19 +48,19 @@ IsWellDefined( embDA );
 IsSubset( A, D );
 #! false
 T := TerminalObject( ZC );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 Display( T );
 #! (an empty 0 x 1 matrix)
 #! 
 #! A morphism in Rows( Z )
 I := InitialObject( ZC );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 Display( I );
 #! [ [  1 ] ]
 #! 
 #! A morphism in Rows( Z )
 AvC := Coproduct( A, C );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 Display( AvC );
 #! [ [  -6 ] ]
 #! 
@@ -72,7 +72,7 @@ Display( AvC );
 #! 
 #! A morphism in Rows( Z )
 AC := DirectProduct( A, C );
-#! <An object in The coframe of Zariski closed subsets of the affine spectrum of Z>
+#! V_{Z}( <...> )
 Display( AC );
 #! [ [  2 ],
 #!   [  3 ] ]

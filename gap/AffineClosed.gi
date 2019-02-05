@@ -230,6 +230,30 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
 end );
 
 ##
+InstallMethod( ViewObj,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    local I, n;
+    
+    I := ValueOption( "Locales_name" );
+    
+    if I = fail then
+        I := "<...>";
+    fi;
+    
+    n := ValueOption( "Locales_number" );
+    
+    if n = fail then
+        n := "";
+    fi;
+    
+    Print( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, " )" );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],

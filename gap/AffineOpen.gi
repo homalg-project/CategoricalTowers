@@ -228,6 +228,30 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
 end );
 
 ##
+InstallMethod( ViewObj,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+
+  function( A )
+    local I, n;
+    
+    I := ValueOption( "Locales_name" );
+    
+    if I = fail then
+        I := "<...>";
+    fi;
+    
+    n := ValueOption( "Locales_number" );
+    
+    if n = fail then
+        n := "";
+    fi;
+    
+    Print( "D_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, " )" );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
