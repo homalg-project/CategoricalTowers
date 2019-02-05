@@ -50,33 +50,23 @@ IsSubset( A, D );
 T := TerminalObject( ZC );
 #! V_{Z}( <...> )
 Display( T );
-#! (an empty 0 x 1 matrix)
-#! 
-#! A morphism in Rows( Z )
+#! V( <> )
 I := InitialObject( ZC );
 #! V_{Z}( <...> )
 Display( I );
-#! [ [  1 ] ]
-#! 
-#! A morphism in Rows( Z )
+#! V( <1> )
 AvC := Coproduct( A, C );
 #! V_{Z}( <...> )
 Display( AvC );
-#! [ [  -6 ] ]
-#! 
-#! A morphism in Rows( Z )
+#! V( <-6> )
 StandardMorphismOfUnderlyingCategory( AvC );
 #! <A morphism in Rows( Z )>
 Display( AvC );
-#! [ [  6 ] ]
-#! 
-#! A morphism in Rows( Z )
+#! V( <6> )
 AC := DirectProduct( A, C );
 #! V_{Z}( <...> )
 Display( AC );
-#! [ [  2 ],
-#!   [  3 ] ]
-#! A morphism in Rows( Z )
+#! V( <2,3> )
 DirectProduct( A, C ) = I;
 #! true
 InternalHomOnObjects( I, T ) = I;

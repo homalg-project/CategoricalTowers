@@ -258,6 +258,8 @@ InstallMethod( Display,
 
   function( A )
     
-    Display( MorphismOfUnderlyingCategory( A ) );
+    Print( "D( <" );
+    Print( JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ) );
+    Print( "> )\n" );
     
 end );

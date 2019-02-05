@@ -50,35 +50,25 @@ IsSubset( D, A );
 T := TerminalObject( ZF );
 #! D_{Z}( <...> )
 Display( T );
-#! [ [  1 ] ]
-#! 
-#! A morphism in Rows( Z )
+#! D( <1> )
 I := InitialObject( ZF );
 #! D_{Z}( <...> )
 Display( I );
-#! (an empty 0 x 1 matrix)
-#! 
-#! A morphism in Rows( Z )
+#! D( <> )
 AvC := Coproduct( A, C );
 #! D_{Z}( <...> )
 Display( AvC );
-#! [ [  2 ],
-#!   [  3 ] ]
-#! A morphism in Rows( Z )
+#! D( <2,3> )
 Coproduct( A, C ) = T;
 #! true
 AC := DirectProduct( A, C );
 #! D_{Z}( <...> )
 Display( AC );
-#! [ [  -6 ] ]
-#! 
-#! A morphism in Rows( Z )
+#! D( <-6> )
 StandardMorphismOfUnderlyingCategory( AC );
 #! <A morphism in Rows( Z )>
 Display( AC );
-#! [ [  6 ] ]
-#! 
-#! A morphism in Rows( Z )
+#! D( <6> )
 ExponentialOnObjects( I, T ) = T;
 #! true
 ExponentialOnObjects( A, T ) = T;
