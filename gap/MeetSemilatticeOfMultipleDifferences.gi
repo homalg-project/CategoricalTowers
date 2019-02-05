@@ -271,7 +271,7 @@ InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
 ##
 InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and ListOfStandardObjectsInMeetSemilatticeOfDifferences ],
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
