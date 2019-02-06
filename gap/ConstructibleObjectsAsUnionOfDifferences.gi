@@ -303,14 +303,35 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( DisplayString,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+
+  function( A )
+    local n, display, i;
+    
+    A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    
+    n := Length( A );
+    
+    display := DisplayString( A[1] );
+    
+    for i in [ 2 .. n ] do
+        Append( display, "\n\n+\n\n" );
+        Append( display, DisplayString( A[i] ) );
+    od;
+    
+    return display;
+    
+end );
+
+##
 InstallMethod( Display,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
 
   function( A )
     
-    Perform( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), Display );
-    
-    Print( "\nA constructible object given by the union of the above formal differences\n" );
+    Display( DisplayString( A ) );
     
 end );

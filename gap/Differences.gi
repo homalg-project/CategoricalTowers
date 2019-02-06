@@ -372,7 +372,7 @@ InstallMethod( ViewObj,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
@@ -380,12 +380,22 @@ InstallMethod( Display,
     
     A := PairInUnderlyingLattice( A );
     
-    Display( A[1] );
+    return Concatenation(
+                   "( ",
+                   DisplayString( A[1] ),
+                   " \\ ",
+                   DisplayString( A[2] ),
+                   " )" );
     
-    Print( "\n\\\n\n" );
+end );
+
+##
+InstallMethod( Display,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
     
-    Display( A[2] );
-    
-    Print( "\nA formal difference given by the above objects\n" );
+    Display( DisplayString( A ) );
     
 end );
