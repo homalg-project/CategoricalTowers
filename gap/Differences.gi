@@ -386,6 +386,6 @@ InstallMethod( Display,
     
     Display( A[2] );
     
-    Print( "\nA formal difference given by the above morphism\n" );
+    Print( "\nA formal difference given by the above objects\n" );
     
 end );

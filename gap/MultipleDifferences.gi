@@ -443,6 +443,6 @@ InstallMethod( Display,
     
     Perform( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), Display );
     
-    Print( "\nA formal multiple difference given by the above morphisms\n" );
+    Print( "\nA formal multiple difference given by the above objects\n" );
     
 end );
