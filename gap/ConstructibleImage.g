@@ -3,17 +3,6 @@ LoadPackage( "GradedModules" );
 
 Read( "Tensor.g" );
 
-Q := HomalgFieldOfRationalsInSingular( );
-
-R1 := Q * "b" * "x";
-gamma_hyp := HomalgMatrix( "b*x-1", 1, 1, R1 );
-
-R2 := Q * "b" * "x,y";
-gamma_cyl_hyp := HomalgMatrix( "b*x-1", 1, 1, R2 );
-
-R3 := Q * "a,b" * "x,y";
-gamma_graph := HomalgMatrix( "a-x,b-x*y", 2, 1, R3 );
-
 ##
 DeclareInfoClass( "InfoImage" );
 SetInfoLevel( InfoImage, 2 );
