@@ -252,14 +252,26 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( DisplayString,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+
+  function( A )
+    
+    return Concatenation(
+                   "D( <",
+                   JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ),
+                   "> )" );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
 
   function( A )
     
-    Print( "D( <" );
-    Print( JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ) );
-    Print( "> )\n" );
+    Display( DisplayString( A ) );
     
 end );

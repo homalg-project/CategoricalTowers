@@ -254,14 +254,26 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( DisplayString,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    
+    return Concatenation(
+                   "V( <",
+                   JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ),
+                   "> )" );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
 
   function( A )
     
-    Print( "V( <" );
-    Print( JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ) );
-    Print( "> )\n" );
+    Display( DisplayString( A ) );
     
 end );
