@@ -242,23 +242,45 @@ end;
 Read( "Complement.g" );
 
 ##
-ConstructibleProjection := function( gamma )
-    local image, x, b, has_0_dim_fibers, counter, d, gamma_hat, gamma_H, image_closure,
+LocallyClosedProjectionOfIrreducible := function( gamma )
+    local x, b, counter, step, d, gamma_hat, gamma_H, image_closure,
           point, complement_at_x_b, gamma_infinity, frame;
-    
-    image := [ ];
     
     x := ValueOption( "x" );
     b := ValueOption( "b" );
-    has_0_dim_fibers := ValueOption( "has_0_dim_fibers" );
     
-    counter := 0;
+    counter := ValueOption( "counter" );
     
-    repeat
+    if counter = fail then
+        step := "";
+        counter := "";
+    else
+        step := "Step ";
+    fi;
+    
+    d := AffineDimension( gamma );
+    
+    gamma_hat := FiberwiseProjectiveClosure( gamma );
+    
+    gamma_H := IntersectionWithHyperplaneAtInfinity( gamma_hat );
+    
+    image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
+    
+    if d > AffineDimension( image_closure ) then
         
-        counter := counter + 1;
+        if x = fail or b = fail then
+            point := FindPointOnComponent( gamma );
+            x := point[2];
+            b := point[3];
+        fi;
         
-        d := AffineDimension( gamma );
+        Info( InfoImage, 2, step, counter, " before:	", DimensionsOfFibrationAtPoint( gamma, x, b ) );
+        
+        complement_at_x_b := EmbeddedComplementOfTangentSpaceOfFiberAtPoint( gamma, x, b );
+        
+        gamma := BasisOfRows( UnionOfRows( gamma, complement_at_x_b ) );
+        
+        Info( InfoImage, 2, step, counter, " after:	", DimensionsOfFibrationAtPoint( gamma, x, b ) );
         
         gamma_hat := FiberwiseProjectiveClosure( gamma );
         
@@ -266,47 +288,56 @@ ConstructibleProjection := function( gamma )
         
         image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
         
-        if d > AffineDimension( image_closure ) and not ( has_0_dim_fibers = true ) then
+        x := fail;
+        b := fail;
+        
+    fi;
+    
+    gamma_infinity := RemoveIrrelevantLocus( gamma_H );
+    
+    frame := AffineSupportOfRelativeProjectiveScheme( gamma_infinity );
+    
+    if ForAll( EntriesOfHomalgMatrix( frame ), a -> IsZero( DecideZero( a, image_closure ) ) ) then
+        Error( "no open neighborhood with 0-dimensional fibers\n" );
+    fi;
+    
+    return [ image_closure, frame ];
+    
+end;
+
+##
+ConstructibleProjection := function( gamma )
+    local image, counter, gammas, frame;
+    
+    image := [ ];
+    
+    counter := 0;
+    
+    gammas := [ ];
+    
+    if not IsOne( gamma ) then
+        Append( gammas, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
+    fi;
+    
+    for gamma in gammas do
+        
+        counter := counter + 1;
+        
+        frame := LocallyClosedProjectionOfIrreducible( gamma : counter := counter );
+        
+        if not IsOne( frame[2] ) then
             
-            if x = fail or b = fail then
-                point := FindPointOnComponent( gamma );
-                x := point[2];
-                b := point[3];
+            gamma := IntersectWithPreimage( gamma, frame[2] );
+            
+            if not IsOne( gamma ) then
+                Append( gammas, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
             fi;
             
-            Info( InfoImage, 2, "Step ", counter, " before:	", DimensionsOfFibrationAtPoint( gamma, x, b ) );
-            
-            complement_at_x_b := EmbeddedComplementOfTangentSpaceOfFiberAtPoint( gamma, x, b );
-            
-            gamma := BasisOfRows( UnionOfRows( gamma, complement_at_x_b ) );
-            
-            Info( InfoImage, 2, "Step ", counter, " after:	", DimensionsOfFibrationAtPoint( gamma, x, b ) );
-            
-            gamma_hat := FiberwiseProjectiveClosure( gamma );
-            
-            gamma_H := IntersectionWithHyperplaneAtInfinity( gamma_hat );
-            
-            image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
-            
-            x := fail;
-            b := fail;
-            has_0_dim_fibers := fail;
-            
         fi;
         
-        gamma_infinity := RemoveIrrelevantLocus( gamma_H );
+        Add( image, frame );
         
-        frame := AffineSupportOfRelativeProjectiveScheme( gamma_infinity );
-        
-        if ForAll( EntriesOfHomalgMatrix( frame ), a -> IsZero( DecideZero( a, image_closure ) ) ) then
-            Error( "no open neighborhood with 0-dimensional fibers\n" );
-        fi;
-        
-        Add( image, [ image_closure, frame ] );
-        
-        gamma := IntersectWithPreimage( gamma, frame );
-        
-    until IsOne( gamma );
+    od;
     
     return CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
     
