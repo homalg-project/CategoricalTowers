@@ -307,7 +307,7 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local image, counter, gamma_decomp, image_closure_and_frame, frame;
+    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
     
     image := [ ];
     
@@ -329,11 +329,17 @@ ConstructibleProjection := function( gamma )
         
         if not IsOne( frame ) then
             
-            gamma := IntersectWithPreimage( gamma, frame );
+            frame_decomp := List( PrimaryDecompositionOp( frame ), a -> a[1] );
             
-            if not IsOne( gamma ) then
-                Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
-            fi;
+            for f in frame_decomp do
+                
+                g := IntersectWithPreimage( gamma, f );
+                
+                if not IsOne( g ) then
+                    Append( gamma_decomp, List( PrimaryDecompositionOp( g ), a -> a[1] ) );
+                fi;
+                
+            od;
             
         fi;
         
