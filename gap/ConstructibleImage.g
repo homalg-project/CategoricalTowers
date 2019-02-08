@@ -307,35 +307,37 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local image, counter, gammas, frame;
+    local image, counter, gamma_decomp, image_closure_and_frame, frame;
     
     image := [ ];
     
     counter := 0;
     
-    gammas := [ ];
+    gamma_decomp := [ ];
     
     if not IsOne( gamma ) then
-        Append( gammas, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
+        Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
     fi;
     
-    for gamma in gammas do
+    for gamma in gamma_decomp do
         
         counter := counter + 1;
         
-        frame := LocallyClosedProjectionOfIrreducible( gamma : counter := counter );
+        image_closure_and_frame := LocallyClosedProjectionOfIrreducible( gamma : counter := counter );
         
-        if not IsOne( frame[2] ) then
+        frame := image_closure_and_frame[2];
+        
+        if not IsOne( frame ) then
             
-            gamma := IntersectWithPreimage( gamma, frame[2] );
+            gamma := IntersectWithPreimage( gamma, frame );
             
             if not IsOne( gamma ) then
-                Append( gammas, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
+                Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
             fi;
             
         fi;
         
-        Add( image, frame );
+        Add( image, image_closure_and_frame );
         
     od;
     
