@@ -60,6 +60,12 @@ DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences",
 #! @Group AsFormalDifference_group
 DeclareGlobalFunction( "UnionOfDifferences" );
 
+DeclareOperation( "\+",
+        [ IsObjectInThinCategory, IsInt ] );
+
+DeclareOperation( "\+",
+        [ IsInt, IsObjectInThinCategory ] );
+
 #! @Description
 #!  <C>AsFormalDifferenceOfNormalizedMorphisms</C> assumes that the input is normalized.
 #! @Arguments D1, D2, ...

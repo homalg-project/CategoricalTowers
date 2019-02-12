@@ -213,6 +213,50 @@ InstallMethod( \+,
   UnionOfDifferences );
 
 ##
+InstallMethod( \+,
+        "for an object in a meet-semilattice of formal differences and the zero integer",
+        [ IsObjectInMeetSemilatticeOfDifferences, IsInt and IsZero ],
+        
+  function( A, B )
+    
+    return A + InitialObject( CapCategory( A ) );
+    
+end );
+
+##
+InstallMethod( \+,
+        "for the zero integer and an object in a meet-semilattice of formal differences",
+        [ IsInt and IsZero, IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A, B )
+    
+    return B + InitialObject( CapCategory( B ) );
+    
+end );
+
+##
+InstallMethod( \+,
+        "for an object in a thin category and the zero integer",
+        [ IsObjectInThinCategory, IsInt and IsZero ],
+        
+  function( A, B )
+    
+    return ( A - 0 ) + 0;
+    
+end );
+
+##
+InstallMethod( \+,
+        "for the zero integer and an object in a thin category",
+        [ IsInt and IsZero, IsObjectInThinCategory ],
+        
+  function( A, B )
+    
+    return ( B - 0 ) + 0;
+    
+end );
+
+##
 InstallGlobalFunction( UnionOfDifferencesOfNormalizedObjects,
   function( arg )
     local A, C;
