@@ -207,7 +207,7 @@ InstallMethod( \+,
 
 ##
 InstallMethod( \+,
-        "for two constructible objects as unions of formal differences",
+        "for a constructible object as a union of formal differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
         
   UnionOfDifferences );
