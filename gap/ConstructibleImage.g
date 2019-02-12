@@ -61,6 +61,24 @@ BasisWRTRelativeProductOrder := function( gamma )
 end;
 
 ##
+DecideZeroRadical := function( A, B )
+local I, p;
+
+    I := LeftSubmodule( B );
+
+    for p in EntriesOfHomalgMatrix( A ) do
+
+        if not RadicalIdealMembership( p, I ) then
+            return false;
+        fi;
+
+    od;
+
+    return true;
+
+end;
+
+##
 PolynomialsWithoutRelativeIndeterminates := function( gamma )
 local R, B, base, var, S, weights, gamma_sub;
     
@@ -387,6 +405,10 @@ Read( "Complement.g" );
 PseudoRandomHyperplaneInRelativeIndeterminates := function( R, codim, seed )
 local var, n, b, value;
 
+    if codim <= 0 then
+        return HomalgZeroMatrix( 1, 1, R );
+    fi;
+
     ## [x1,x2]
     var := RelativeIndeterminatesOfPolynomialRing( R );
 
@@ -414,7 +436,7 @@ end;
 
 ##
 LocallyClosedProjection := function( gamma )
-local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, gamma_maxdeg, frame;
+local counter, step, R, d, gamma_elim, image_closure, image_closure_check, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, quick_check, check, gamma_maxdeg, frame;
     
     counter := ValueOption( "counter" );
     
@@ -435,7 +457,9 @@ local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0
     gamma_elim := BasisWRTRelativeProductOrder( gamma );
     Info( InfoImage, 2, step, counter, " ...done" );
 
-    image_closure := PolynomialsWithoutRelativeIndeterminates( gamma_elim );
+    image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
+
+    image_closure_check := image_closure;
 
     d0 := AffineDimension( B * image_closure );
     
@@ -451,6 +475,8 @@ local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0
 
             L := PseudoRandomHyperplaneInRelativeIndeterminates( R, codim, seed );
 
+            # if seed>2 then Error();  fi;
+
             gamma0 := UnionOfRows( gamma_elim, L );  # intentionally stick to the basis w.r.t. elimination order
 
             Info( InfoImage, 2, step, counter, " elimination..." );
@@ -459,9 +485,19 @@ local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0
 
             seed := seed + 1;
 
-            gamma0_B := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 ) );
+            gamma0_B := PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 );
 
-        until IsZero( DecideZero( gamma0_B, gamma ) );
+            check := false;
+            quick_check := IsZero( DecideZero( gamma0_B, image_closure_check ) );
+            if not quick_check and seed>=2 and seed <=3 then
+                check := DecideZeroRadical( gamma0_B, gamma_elim );
+            fi;
+            if not quick_check and seed=4 then
+                image_closure_check := MatrixOfGenerators( RadicalSubobject( LeftSubmodule( image_closure ) ) );
+                check := IsZero( DecideZero( gamma0_B, image_closure_check ) );
+            fi;
+
+        until check or quick_check;
 
         Info( InfoImage, 2, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ) );
 
@@ -471,8 +507,8 @@ local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0
     
     gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
 
-    frame := SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) );
-    
+    frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
+   
     return [ image_closure, frame ];
     
 end;
@@ -595,6 +631,54 @@ ConstructibleProjection := function( gamma )
     
     counter := 0;
     
+    gamma_decomp := [ ];
+    
+    if not IsOne( gamma ) then
+        Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
+    fi;
+    
+    for gamma in gamma_decomp do
+        
+        counter := counter + 1;
+
+        image_closure_and_frame := LocallyClosedProjection( gamma : counter := counter );
+        
+        frame := image_closure_and_frame[2];
+        
+        if not IsOne( frame ) then
+            
+            frame_decomp := List( PrimaryDecompositionOp( frame ), a -> a[1] );
+            
+            for f in frame_decomp do
+                
+                g := IntersectWithPreimage( gamma, f );
+                
+                if not IsOne( g ) then
+                    Append( gamma_decomp, List( PrimaryDecompositionOp( g ), a -> a[1] ) );
+                fi;
+                
+            od;
+            
+        fi;
+       
+        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( frame ), " frame: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ) );
+        
+        Add( image, image_closure_and_frame );
+        
+    od;
+    
+    return CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
+    
+end;
+
+##
+ConstructibleProjection_old := function( gamma )
+    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
+    
+    image := [ ];
+    
+    counter := 0;
+    
     gamma_decomp := [ gamma ];
     
     for gamma in gamma_decomp do
@@ -604,6 +688,7 @@ ConstructibleProjection := function( gamma )
         image_closure_and_frame := LocallyClosedProjection( gamma : counter := counter );
         
         frame := image_closure_and_frame[2];
+        frame := MatrixOfGenerators( RadicalSubobject( LeftSubmodule( frame ) ) );
        
         if not IsOne( frame ) then
             
@@ -614,6 +699,8 @@ ConstructibleProjection := function( gamma )
             fi;
             
         fi;
+        
+        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( frame ), " frame: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ) );
         
         Add( image, image_closure_and_frame );
         
