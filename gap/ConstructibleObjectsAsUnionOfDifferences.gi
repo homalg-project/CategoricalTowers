@@ -298,6 +298,36 @@ InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
+InstallMethod( \=,
+        "for an object in a thin category and a constructible object as a union of formal differences",
+        [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A, B )
+    
+    if IsConstructibleObjectAsUnionOfDifferences( A ) then
+        TryNextMethod( );
+    fi;
+    
+    return ( A + 0 ) = B;
+    
+end );
+
+##
+InstallMethod( \=,
+        "for a constructible object as a union of formal differences and an object in a thin category",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
+        
+  function( A, B )
+    
+    if IsConstructibleObjectAsUnionOfDifferences( B ) then
+        TryNextMethod( );
+    fi;
+    
+    return A = ( B + 0 );
+    
+end );
+
+##
 InstallMethod( \.,
         "for a constructible object as a union of formal differences and a positive integer",
         [ IsConstructibleObjectAsUnionOfDifferences, IsPosInt ],
