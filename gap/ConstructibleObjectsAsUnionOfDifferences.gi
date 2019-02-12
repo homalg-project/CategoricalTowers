@@ -265,12 +265,14 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    n := EvalString( name{[ 2 .. Length( name ) ]} );
-    
     if name[1] = 'I' then
+        n := EvalString( name{[ 2 .. Length( name ) ]} );
         return A[n].I;
     elif name[1] = 'J' then
+        n := EvalString( name{[ 2 .. Length( name ) ]} );
         return A[n].J;
+    elif IsInt( EvalString( name ) ) then
+        return A[EvalString( name )];
     fi;
     
     Error( "no component with this name available\n" );
