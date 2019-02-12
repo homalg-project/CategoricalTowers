@@ -28,6 +28,116 @@ BasisWRTProductOrder := function( gamma )
 end;
 
 ##
+BasisWRTRelativeProductOrder := function( gamma )
+    local R, B, base, var, R_elim, weights, bas;
+    
+    if IsBound( gamma!.BasisWRTRelativeProductOrder ) then
+        return gamma!.BasisWRTRelativeProductOrder;
+    fi;
+    
+    ## k[b][x1,x2]
+    R := HomalgRing( gamma );
+    
+    ## k[b]
+    B := BaseRing( R );
+   
+    ## [b]
+    base := Indeterminates( B );
+    
+    ## [x1,x2]
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+ 
+    ## k[b][x1,x2], a version of R with different order
+    R_elim := PolynomialRingWithProductOrdering( R );
+
+    gamma := R_elim * gamma;
+    
+    bas := R * BasisOfRows( gamma );
+    
+    gamma!.BasisWRTRelativeProductOrder := bas;
+    
+    return bas;
+    
+end;
+
+##
+PolynomialsWithoutRelativeIndeterminates := function( gamma )
+local R, B, base, var, S, weights, gamma_sub;
+    
+    ## k[b][x1,x2]
+    R := HomalgRing( gamma );
+    
+    ## k[b]
+    B := BaseRing( R );
+    
+    ## [b]
+    base := Indeterminates( B );
+    
+    ## [x1,x2]
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    ## k[b][x1,x2]
+    S := GradedRing( R );
+
+    ## [ 0, 1, 1 ]
+    weights := Concatenation( ListWithIdenticalEntries( Length( base ), 0 ), ListWithIdenticalEntries( Length( var ), 1 ) );
+    SetWeightsOfIndeterminates( S, weights );
+   
+    gamma := S * gamma;
+
+    ## only the rows with degree 0
+    gamma_sub := CertainRows( gamma, Positions( DegreesOfEntries( gamma ), [ 0 ] ) );
+
+    return R * gamma_sub;
+
+end;
+
+##
+MaximumDegreeInRelativeIndeterminates := function( gamma )
+local R, B, base, var, h, Var, S, gamma_hat, map;
+    
+    ## k[b][x1,x2]
+    R := HomalgRing( gamma );
+    
+    ## k[b]
+    B := BaseRing( R );
+    
+    ## [b]
+    base := Indeterminates( B );
+    
+    ## [x1,x2]
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    h := ValueOption( "h" );
+    if h = fail then
+        h := "h";
+    fi;
+    
+    ## [x1,x2,x0]
+    Var := Concatenation( List( var, String ), [ h ] );
+    
+    ## k[b][x1,x2,x0]
+    S := GradedRing( B * Var );
+   
+    ## homogenize 
+    gamma_hat := List( EntriesOfHomalgMatrix( BasisWRTRelativeProductOrder( gamma ) ), a -> Homogenization( a, S ) );
+    S := UnderlyingNonGradedRing( S );
+    gamma_hat := HomalgMatrix( gamma_hat, Length( gamma_hat ), 1, S );
+
+    ## S -> R; b |-> b, x1 |-> x1, x2 |-> x2, x0 |-> 0
+    map := UnionOfRows(
+                   HomalgMatrix( base, Length( base ), 1, R ),
+                   HomalgMatrix( var, Length( var ), 1, R ),
+                   HomalgZeroMatrix( 1, 1, R ) );
+    
+    map := RingMap( map, S, R );
+
+    ## set homogenizing variable to zero    
+    return Pullback( map, gamma_hat );
+    
+end;
+
+##
 FiberwiseProjectiveClosure := function( gamma )
     local R, B, base, var, h, Var, S, weights, gamma_hat;
     
@@ -105,6 +215,38 @@ IntersectionWithHyperplaneAtInfinity := function( gamma_hat )
     map := RingMap( map, S, S0 );
     
     return BasisOfRows( Pullback( map, gamma_hat ) );
+    
+end;
+
+##
+SetRelativeVariablesToZero := function( gamma )
+local R, var, B, base, m, n, map, support;
+    
+    ## k[b][x1,x2]
+    R := HomalgRing( gamma );
+    
+    ## [x1,x2]
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    ## k[b]
+    B := BaseRing( R );
+    
+    ## [b]
+    base := Indeterminates( B );
+    
+    m := Length( base );
+    n := Length( var );
+    
+    ## S0 -> B; b |-> b, x1 |-> 0, x2 |-> 0
+    map := UnionOfRows(
+                   HomalgMatrix( base, m, 1, B ),
+                   HomalgZeroMatrix( n, 1, B ) );
+    
+    map := RingMap( map, R, B );
+    
+    support := Pullback( map, gamma );
+    
+    return BasisOfRows( support );
     
 end;
 
@@ -242,6 +384,100 @@ end;
 Read( "Complement.g" );
 
 ##
+PseudoRandomHyperplaneInRelativeIndeterminates := function( R, codim, seed )
+local var, n, b, value;
+
+    ## [x1,x2]
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+
+    n := Length( var );
+
+    ## The number of subsets of var of the right size
+    b := Binomial( Length( var ), codim ); 
+
+    if seed < 0 then
+        seed := -seed;
+    fi;
+    if seed = 0 then
+        seed := 1;
+    fi;
+
+    ## select a subset of variables
+    var := Combinations( var, codim )[ RemInt( seed, b ) + 1 ];
+
+    ## the first selected variable will be set to this value. Often, this will be zero 
+    var[1] := var[1] - QuoInt( seed, b );
+
+    return HomalgMatrix( var, Length( var ), 1, R );
+
+end;
+
+##
+LocallyClosedProjection := function( gamma )
+local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, gamma_maxdeg, frame;
+    
+    counter := ValueOption( "counter" );
+    
+    if counter = fail then
+        step := "";
+        counter := "";
+    else
+        step := "Step ";
+    fi;
+    
+    R := HomalgRing( gamma );
+
+    B := BaseRing( R );
+
+    d := AffineDimension( gamma );
+
+    Info( InfoImage, 2, step, counter, " elimination..." );
+    gamma_elim := BasisWRTRelativeProductOrder( gamma );
+    Info( InfoImage, 2, step, counter, " ...done" );
+
+    image_closure := PolynomialsWithoutRelativeIndeterminates( gamma_elim );
+
+    d0 := AffineDimension( B * image_closure );
+    
+    codim := d - d0;
+
+    Info( InfoImage, 1, step, counter, " ", d0, "+", codim );
+
+    if codim > 0 then
+      
+        seed := 1;
+
+        repeat
+
+            L := PseudoRandomHyperplaneInRelativeIndeterminates( R, codim, seed );
+
+            gamma0 := UnionOfRows( gamma_elim, L );  # intentionally stick to the basis w.r.t. elimination order
+
+            Info( InfoImage, 2, step, counter, " elimination..." );
+            gamma_elim_0 := BasisWRTRelativeProductOrder( gamma0 );
+            Info( InfoImage, 2, step, counter, " ...done" );
+
+            seed := seed + 1;
+
+            gamma0_B := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 ) );
+
+        until IsZero( DecideZero( gamma0_B, gamma ) );
+
+        Info( InfoImage, 2, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ) );
+
+        gamma_elim := gamma_elim_0;
+
+    fi;
+    
+    gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
+
+    frame := SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) );
+    
+    return [ image_closure, frame ];
+    
+end;
+
+##
 LocallyClosedProjectionOfIrreducible := function( gamma )
     local x, b, counter, step, d, gamma_hat, gamma_H, image_closure,
           point, complement_at_x_b, gamma_infinity, frame;
@@ -306,7 +542,7 @@ LocallyClosedProjectionOfIrreducible := function( gamma )
 end;
 
 ##
-ConstructibleProjection := function( gamma )
+ConstructibleProjectionIrreducible := function( gamma )
     local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
     
     image := [ ];
@@ -318,7 +554,7 @@ ConstructibleProjection := function( gamma )
     if not IsOne( gamma ) then
         Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
     fi;
-    
+
     for gamma in gamma_decomp do
         
         counter := counter + 1;
@@ -340,6 +576,42 @@ ConstructibleProjection := function( gamma )
                 fi;
                 
             od;
+            
+        fi;
+        
+        Add( image, image_closure_and_frame );
+        
+    od;
+    
+    return CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
+    
+end;
+
+##
+ConstructibleProjection := function( gamma )
+    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
+    
+    image := [ ];
+    
+    counter := 0;
+    
+    gamma_decomp := [ gamma ];
+    
+    for gamma in gamma_decomp do
+        
+        counter := counter + 1;
+
+        image_closure_and_frame := LocallyClosedProjection( gamma : counter := counter );
+        
+        frame := image_closure_and_frame[2];
+       
+        if not IsOne( frame ) then
+            
+            g := IntersectWithPreimage( gamma, frame );
+                
+            if not IsOne( g ) then
+                Add( gamma_decomp, g );
+            fi;
             
         fi;
         
