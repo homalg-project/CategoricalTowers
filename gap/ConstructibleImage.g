@@ -455,7 +455,7 @@ end;
 
 ##
 LocallyClosedProjection := function( gamma )
-local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, gamma_maxdeg, frame;
+    local counter, step, R, B, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, gamma_maxdeg, frame;
 
     counter := ValueOption( "counter" );
     
