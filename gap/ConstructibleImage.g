@@ -597,7 +597,7 @@ LocallyClosedProjectionOfIrreducible := function( gamma )
 end;
 
 ##
-ConstructibleProjectionViaDecomposition := function( gamma )
+ConstructibleProjectionUsingDecomposition := function( gamma )
     local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
     
     image := [ ];
