@@ -613,7 +613,7 @@ ConstructibleProjectionUsingDecomposition := function( gamma )
     if not IsOne( gamma ) then
         Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
     fi;
-
+    
     while Length( gamma_decomp ) > 0 do
         
         gamma := Remove( gamma_decomp );
