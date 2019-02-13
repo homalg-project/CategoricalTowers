@@ -534,7 +534,7 @@ end;
 
 ##
 LocallyClosedProjectionOfIrreducible := function( gamma )
-    local x, b, counter, step, d, gamma_hat, gamma_H, image_closure, image_closure_check,
+    local x, b, counter, step, d, gamma_hat, gamma_H, image_closure, image_closure_orig,
           point, complement_at_x_b, gamma_infinity, frame;
     
     x := ValueOption( "x" );
@@ -557,7 +557,7 @@ LocallyClosedProjectionOfIrreducible := function( gamma )
     
     image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
     
-    image_closure_check := Eliminate( gamma );
+    image_closure_orig := image_closure;
     
     if d > AffineDimension( image_closure ) then
         
@@ -581,7 +581,9 @@ LocallyClosedProjectionOfIrreducible := function( gamma )
         
         image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
         
-        Assert( 0, image_closure = image_closure_check );
+        if not image_closure = image_closure_orig then
+            Error( "the intersection with the constant linear subspace altered the closure of the projection\n" );
+        fi;
         
         x := fail;
         b := fail;
