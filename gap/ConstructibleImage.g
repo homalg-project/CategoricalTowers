@@ -610,7 +610,9 @@ ConstructibleProjectionUsingDecomposition := function( gamma )
         Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
     fi;
 
-    for gamma in gamma_decomp do
+    while Length( gamma_decomp ) > 0 do
+        
+        gamma := Remove( gamma_decomp );
         
         counter := counter + 1;
         
@@ -629,6 +631,9 @@ ConstructibleProjectionUsingDecomposition := function( gamma )
                 if not IsOne( g ) then
                     Append( gamma_decomp, List( PrimaryDecompositionOp( g ), a -> a[1] ) );
                 fi;
+                
+                ## this is an operation on matrices
+                gamma_decomp := DuplicateFreeList( gamma_decomp );
                 
             od;
             
