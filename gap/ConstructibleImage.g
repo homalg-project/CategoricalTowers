@@ -436,8 +436,8 @@ end;
 
 ##
 LocallyClosedProjection := function( gamma )
-local counter, step, R, d, gamma_elim, image_closure, image_closure_check, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, quick_check, check, gamma_maxdeg, frame;
-    
+local counter, step, R, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, gamma_maxdeg, frame;
+
     counter := ValueOption( "counter" );
     
     if counter = fail then
@@ -447,6 +447,8 @@ local counter, step, R, d, gamma_elim, image_closure, image_closure_check, d0, c
         step := "Step ";
     fi;
     
+    Info( InfoImage, 2, step, counter, " gamma: ", EntriesOfHomalgMatrix( gamma ) );
+
     R := HomalgRing( gamma );
 
     B := BaseRing( R );
@@ -459,9 +461,9 @@ local counter, step, R, d, gamma_elim, image_closure, image_closure_check, d0, c
 
     image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
 
-    image_closure_check := image_closure;
+    image_closure := MatrixOfGenerators( RadicalSubobject( LeftSubmodule( B * image_closure ) ) );
 
-    d0 := AffineDimension( B * image_closure );
+    d0 := AffineDimension( image_closure );
     
     codim := d - d0;
 
@@ -486,29 +488,27 @@ local counter, step, R, d, gamma_elim, image_closure, image_closure_check, d0, c
             seed := seed + 1;
 
             gamma0_B := PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 );
+            gamma0_B := MatrixOfGenerators( RadicalSubobject( LeftSubmodule( B * gamma0_B ) ) );
+            Info( InfoImage, 2, step, counter, " gamma0_B: ", EntriesOfHomalgMatrix( gamma0_B ) );
 
-            check := false;
-            quick_check := IsZero( DecideZero( gamma0_B, image_closure_check ) );
-            if not quick_check and seed>=2 and seed <=3 then
-                check := DecideZeroRadical( gamma0_B, gamma_elim );
-            fi;
-            if not quick_check and seed=4 then
-                image_closure_check := MatrixOfGenerators( RadicalSubobject( LeftSubmodule( image_closure ) ) );
-                check := IsZero( DecideZero( gamma0_B, image_closure_check ) );
-            fi;
-
-        until check or quick_check;
+        until IsZero( DecideZero( gamma0_B, image_closure ) );
 
         Info( InfoImage, 2, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ) );
 
         gamma_elim := gamma_elim_0;
+        Info( InfoImage, 2, step, counter, " gamma_elim: ", EntriesOfHomalgMatrix( gamma_elim ) );
 
     fi;
     
     gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
+    Info( InfoImage, 2, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
 
     frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
-   
+  
+    if frame = image_closure then
+        frame := HomalgIdentityMatrix( 1, 1, B );
+    fi;
+ 
     return [ image_closure, frame ];
     
 end;
@@ -623,6 +623,13 @@ ConstructibleProjectionViaDecomposition := function( gamma )
     
 end;
 
+## Replace with suitable method in ring table
+MyRadicalDecompositionOp := function( A )
+
+     return List( PrimaryDecompositionOp( A ), a -> a[2] );
+
+end;
+
 ##
 ConstructibleProjection := function( gamma )
     local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
@@ -634,7 +641,7 @@ ConstructibleProjection := function( gamma )
     gamma_decomp := [ ];
     
     if not IsOne( gamma ) then
-        Append( gamma_decomp, List( PrimaryDecompositionOp( gamma ), a -> a[1] ) );
+        Append( gamma_decomp, MyRadicalDecompositionOp( gamma ) );
     fi;
     
     for gamma in gamma_decomp do
@@ -647,21 +654,21 @@ ConstructibleProjection := function( gamma )
         
         if not IsOne( frame ) then
             
-            frame_decomp := List( PrimaryDecompositionOp( frame ), a -> a[1] );
+            frame_decomp := MyRadicalDecompositionOp( frame );
             
             for f in frame_decomp do
                 
                 g := IntersectWithPreimage( gamma, f );
                 
                 if not IsOne( g ) then
-                    Append( gamma_decomp, List( PrimaryDecompositionOp( g ), a -> a[1] ) );
+                    Append( gamma_decomp, MyRadicalDecompositionOp( g ) );
                 fi;
                 
             od;
             
         fi;
        
-        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( frame ), " frame: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ) );
+        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ), " frame: ", EntriesOfHomalgMatrix( frame ) );
         
         Add( image, image_closure_and_frame );
         
