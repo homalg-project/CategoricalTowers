@@ -37,10 +37,10 @@ DeclareAttribute( "EquivalenceToMeetSemilatticeOfDifferences",
 #! @Section Operations
 
 #! @Description
-#!  A list of morphisms in the underlying lattice representing the formal multiple difference <A>A</A>.
+#!  A list of formal differences in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
-DeclareOperation( "ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences",
+DeclareOperation( "ListOfObjectsOfDifferences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 
 #! @Section Constructors

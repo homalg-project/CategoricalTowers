@@ -36,7 +36,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
       function( A )
         local U;
         
-        U := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+        U := ListOfObjectsOfDifferences( A );
         
         return ForAll( U, IsWellDefinedForObjects );
         
@@ -81,7 +81,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddDirectProduct( D,
       function( L )
         
-        L := List( L, ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences );
+        L := List( L, ListOfObjectsOfDifferences );
         
         ## an advantage of this this specific data structure for formal multiple differences
         return CallFuncList( AsFormalMultipleDifference, Concatenation( L ) );
@@ -145,7 +145,7 @@ InstallMethod( \-,
         TryNextMethod( );
     fi;
     
-    U := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    U := ListOfObjectsOfDifferences( A );
     
     U := ShallowCopy( U );
     
@@ -196,7 +196,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
   function( A )
     local U, u, T_new, T;
     
-    U := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    U := ListOfObjectsOfDifferences( A );
     
     u := List( U, PairInUnderlyingLattice );
     
@@ -255,21 +255,21 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
 end );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
+InstallMethod( ListOfObjectsOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
+InstallMethod( ListOfObjectsOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
+InstallMethod( ListOfObjectsOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
@@ -292,7 +292,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
       function( obj )
         local U, T, S;
         
-        U := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( obj );
+        U := ListOfObjectsOfDifferences( obj );
         
         U := List( U, PairInUnderlyingLattice );
         
@@ -441,7 +441,7 @@ InstallMethod( Display,
 
   function( A )
     
-    Perform( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), Display );
+    Perform( ListOfObjectsOfDifferences( A ), Display );
     
     Print( "\nA formal multiple difference given by the above objects\n" );
     
