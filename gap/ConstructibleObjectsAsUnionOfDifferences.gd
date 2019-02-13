@@ -66,6 +66,9 @@ DeclareOperation( "\+",
 DeclareOperation( "\+",
         [ IsInt, IsObjectInThinCategory ] );
 
+DeclareOperation( "\[\]",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsInt ] );
+
 #! @Description
 #!  <C>AsFormalDifferenceOfNormalizedMorphisms</C> assumes that the input is normalized.
 #! @Arguments D1, D2, ...
