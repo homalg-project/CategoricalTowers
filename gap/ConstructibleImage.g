@@ -534,7 +534,7 @@ end;
 
 ##
 LocallyClosedProjectionOfIrreducible := function( gamma )
-    local x, b, counter, step, d, gamma_hat, gamma_H, image_closure,
+    local x, b, counter, step, d, gamma_hat, gamma_H, image_closure, image_closure_check,
           point, complement_at_x_b, gamma_infinity, frame;
     
     x := ValueOption( "x" );
@@ -557,6 +557,8 @@ LocallyClosedProjectionOfIrreducible := function( gamma )
     
     image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
     
+    image_closure_check := Eliminate( gamma );
+    
     if d > AffineDimension( image_closure ) then
         
         if x = fail or b = fail then
@@ -578,6 +580,8 @@ LocallyClosedProjectionOfIrreducible := function( gamma )
         gamma_H := IntersectionWithHyperplaneAtInfinity( gamma_hat );
         
         image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
+        
+        Assert( 0, image_closure = image_closure_check );
         
         x := fail;
         b := fail;
