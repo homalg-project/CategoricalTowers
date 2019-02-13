@@ -598,7 +598,7 @@ end;
 
 ##
 ConstructibleProjectionUsingDecomposition := function( gamma )
-    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
+    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
     
     image := [ ];
     
@@ -638,13 +638,17 @@ ConstructibleProjectionUsingDecomposition := function( gamma )
         
     od;
     
-    return CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
+    im := CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
+    
+    SetClosure( im, im.I1 );
+    
+    return im;
     
 end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g;
+    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
     
     image := [ ];
     
@@ -686,7 +690,11 @@ ConstructibleProjection := function( gamma )
         
     od;
     
-    return CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
+    im := CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
+    
+    SetClosure( im, im.I1 );
+    
+    return im;
     
 end;
 
