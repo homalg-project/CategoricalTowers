@@ -31,6 +31,13 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsConstructibleObjectAsUnionOfDifferences );
 
+#! @Description
+#!  The closure of the constructible object <A>A</A>.
+#! @Arguments A
+#! @Returns a &CAP; category
+DeclareAttribute( "Closure",
+        IsConstructibleObjectAsUnionOfDifferences );
+
 #! @Section Operations
 
 #! @Description
