@@ -516,6 +516,10 @@ LocallyClosedProjection := function( gamma )
 
                 finished := IsContained( gamma0_B, image_closure );
 
+                if not finished then
+                    Info( InfoImage, 3, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ), " such that ", EntriesOfHomalgMatrix( gamma0_B ), " is not contained in ", EntriesOfHomalgMatrix( image_closure ) );
+                fi;
+
             else
 
                 Info( InfoImage, 3, step, counter, " Bad hyperplane: ", EntriesOfHomalgMatrix( L ) );
