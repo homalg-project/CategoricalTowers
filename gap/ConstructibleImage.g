@@ -733,7 +733,13 @@ ConstructibleProjection := function( gamma )
                 Info( InfoImage, 3, "Step ", counter, " ...done " );
                 
                 if not IsOne( g ) then
-                    Append( gamma_decomp, IdealDecompositionOp( g ) );
+                    Info( InfoImage, 3, "Step ", counter, " frame preimage decomposition", EntriesOfHomalgMatrix( g ), "... " );
+                    if isPrimary then
+                        Append( gamma_decomp, [ g ] );
+                    else
+                        Append( gamma_decomp, IdealDecompositionOp( g ) );
+                    fi;
+                    Info( InfoImage, 3, "Step ", counter, " ...done " );
                 fi;
                 
             od;
