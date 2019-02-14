@@ -444,7 +444,7 @@ local var, n, b, value;
     fi;
 
     ## select a subset of variables
-    var := Combinations( var, codim )[ RemInt( seed, b ) + 1 ];
+    var := Combinations( var, codim )[ RemInt( seed - 1, b ) + 1 ];
 
     ## the first selected variable will be set to this value. Often, this will be zero 
     var[1] := var[1] - QuoInt( seed, b );
