@@ -455,7 +455,7 @@ end;
 
 ##
 LocallyClosedProjection := function( gamma )
-    local counter, step, R, B, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, gamma0_B, gamma_maxdeg, frame;
+    local counter, step, R, B, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, finished, gamma0_B, gamma_maxdeg, frame;
 
     counter := ValueOption( "counter" );
     
@@ -504,13 +504,25 @@ LocallyClosedProjection := function( gamma )
             gamma_elim_0 := BasisWRTRelativeProductOrder( gamma0 );
             Info( InfoImage, 2, step, counter, " ...done" );
 
+            finished := false;
+
             seed := seed + 1;
 
-            gamma0_B := PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 );
-            gamma0_B := IdealSubobjectOp( B * gamma0_B );
-            Info( InfoImage, 3, step, counter, " gamma0_B: ", EntriesOfHomalgMatrix( gamma0_B ) );
+            if AffineDimension( gamma_elim_0 ) = d0 then
 
-        until IsContained( gamma0_B, image_closure );
+                gamma0_B := PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 );
+                gamma0_B := IdealSubobjectOp( B * gamma0_B );
+                Info( InfoImage, 3, step, counter, " gamma0_B: ", EntriesOfHomalgMatrix( gamma0_B ) );
+
+                finished := IsContained( gamma0_B, image_closure );
+
+            else
+
+                Info( InfoImage, 3, step, counter, " Bad hyperplane: ", EntriesOfHomalgMatrix( L ) );
+
+            fi;
+
+        until finished;
 
         Info( InfoImage, 3, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ) );
 
@@ -524,9 +536,9 @@ LocallyClosedProjection := function( gamma )
 
     frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
   
-    if frame = image_closure then
-        frame := HomalgIdentityMatrix( 1, 1, B );
-    fi;
+    #if frame = image_closure then
+    #    frame := HomalgIdentityMatrix( 1, 1, B );
+    #fi;
  
     return [ image_closure, frame ];
     
