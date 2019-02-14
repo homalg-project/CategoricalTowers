@@ -673,8 +673,13 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    local isPrimary, image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
     
+    isPrimary := ValueOption( "isPrimary" );
+    if isPrimary = fail then
+        isPrimary := false;
+    fi;
+
     image := [ ];
     
     counter := 0;
@@ -682,7 +687,19 @@ ConstructibleProjection := function( gamma )
     gamma_decomp := [ ];
     
     if not IsOne( gamma ) then
-        Append( gamma_decomp, IdealDecompositionOp( gamma ) );
+
+        if isPrimary then
+
+            Append( gamma_decomp, [ gamma ] );
+
+        else
+           
+            Info( InfoImage, 1, "Step ", counter, " initial decomposition... " );
+            Append( gamma_decomp, IdealDecompositionOp( gamma ) );
+            Info( InfoImage, 1, "Step ", counter, " ...done " );
+
+        fi;
+
     fi;
     
     for gamma in gamma_decomp do
