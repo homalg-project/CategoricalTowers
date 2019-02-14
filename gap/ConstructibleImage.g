@@ -534,8 +534,10 @@ end;
 
 ##
 LocallyClosedProjectionOfIrreducible := function( gamma )
-    local x, b, counter, step, d, gamma_hat, gamma_H, image_closure, image_closure_orig,
+    local gamma_orig, x, b, counter, step, d, gamma_hat, gamma_H, image_closure, image_closure_orig,
           point, complement_at_x_b, gamma_infinity, frame;
+    
+    gamma_orig := gamma;
     
     x := ValueOption( "x" );
     b := ValueOption( "b" );
