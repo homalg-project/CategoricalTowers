@@ -718,13 +718,19 @@ ConstructibleProjection := function( gamma )
         
         frame := image_closure_and_frame[2];
         
+        Info( InfoImage, 3, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
+
         if not IsOne( frame ) then
             
+            Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
             frame_decomp := IdealDecompositionOp( frame );
-            
+            Info( InfoImage, 3, "Step ", counter, " ...done " );
+
             for f in frame_decomp do
-                
+    
+                Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
                 g := IntersectWithPreimage( gamma, f );
+                Info( InfoImage, 3, "Step ", counter, " ...done " );
                 
                 if not IsOne( g ) then
                     Append( gamma_decomp, IdealDecompositionOp( g ) );
