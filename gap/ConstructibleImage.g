@@ -536,10 +536,6 @@ LocallyClosedProjection := function( gamma )
 
     frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
   
-    #if frame = image_closure then
-    #    frame := HomalgIdentityMatrix( 1, 1, B );
-    #fi;
- 
     return [ image_closure, frame ];
     
 end;
