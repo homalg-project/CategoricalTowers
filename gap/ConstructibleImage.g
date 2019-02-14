@@ -422,7 +422,7 @@ Read( "Complement.g" );
 
 ##
 PseudoRandomHyperplaneInRelativeIndeterminates := function( R, codim, seed )
-local var, n, b, value;
+local var, n, b, q, value;
 
     if codim <= 0 then
         return HomalgZeroMatrix( 1, 1, R );
@@ -445,9 +445,17 @@ local var, n, b, value;
 
     ## select a subset of variables
     var := Combinations( var, codim )[ RemInt( seed - 1, b ) + 1 ];
-
+    
+    q := b; # prevent adding constants as long as possible
+    # q := Minimum( 4*codim, b, 2*n ); # be more aggressive with adding constants
+    value := QuoInt( seed, q ); # prevent adding constants as long as possible
+    
     ## the first selected variable will be set to this value. Often, this will be zero 
-    var := List( var, a-> a - QuoInt( seed, b ) );
+    if seed-q < 2 then
+        var[1] := var[1] - value;
+    else
+        var := List( var, a -> a - value );
+    fi;
 
     return HomalgMatrix( var, Length( var ), 1, R );
 
