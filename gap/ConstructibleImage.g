@@ -447,7 +447,7 @@ local var, n, b, value;
     var := Combinations( var, codim )[ RemInt( seed - 1, b ) + 1 ];
 
     ## the first selected variable will be set to this value. Often, this will be zero 
-    var[1] := var[1] - QuoInt( seed, b );
+    var := List( var, a-> a - QuoInt( seed, b ) );
 
     return HomalgMatrix( var, Length( var ), 1, R );
 
