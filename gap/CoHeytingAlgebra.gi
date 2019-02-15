@@ -18,10 +18,13 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ## The coclosedness of the cocartesian monoidal structure
     
-    ## Note:
-    ## The dual of a closed cartesian category is
-    ## NOT a closed cocartesian category (such is equivalent to a terminal category)
-    ## but a co-closed cocartesian category!
+    ##
+    AddCoexponentialOnMorphismsWithGivenCoexponentials( coheyting_algebra,
+      function( S, alpha, beta, T )
+        
+        return UniqueMorphism( S, T );
+        
+    end );
     
     ## The co-negation
     

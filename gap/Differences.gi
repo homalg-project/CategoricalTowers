@@ -201,9 +201,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
         
     elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
         
-        ## TODO: this is in fact a coHom
-        ## will be adapted once co-closed structures are supported by CAP
-        H := ExponentialOnObjects( T, S );
+        H := CoexponentialOnObjects( T, S );
         
         return [ H, DirectProduct( S, H ) ];
         
