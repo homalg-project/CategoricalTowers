@@ -63,8 +63,8 @@ end;
 ## Replace with suitable method in ring table
 IdealDecompositionOp := function( A )
 
-     return List( PrimaryDecompositionOp( A ), a -> a[1] ); # associated primes
-     return List( PrimaryDecompositionOp( A ), a -> a[2] ); # primary components
+     return List( PrimaryDecompositionOp( A ), a -> a[2] ); # associated primes
+     return List( PrimaryDecompositionOp( A ), a -> a[1] ); # primary components
 
 end;
 
