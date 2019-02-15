@@ -461,9 +461,74 @@ local var, n, b, q, value;
 
 end;
 
+DecreaseCodimensionByFixingVariables := function( gamma, codim, d0, image_closure, tryhard )
+local R, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_image;
+
+    R := HomalgRing( gamma );
+
+    var := ShallowCopy( RelativeIndeterminatesOfPolynomialRing( R ) );
+
+    n := Length( var );
+
+    if tryhard then
+        values := [ 0, 1, -1, 2, -2, 3, -3, 5, -5, 7, -7, 11, -11, 13, -13, 17, -17, 19, -19 ];
+    else
+        values := [ 0, 1, -1, 2, -2 ];
+    fi;
+
+    gamma0 := gamma;
+
+    for a in values do
+
+        i := 1;
+        while i <= n do
+
+            H := var[i] - a;
+            
+            gamma0_test := UnionOfRows( gamma0, HomalgMatrix( [ H ], 1, 1, R ) );
+            gamma0_elim := BasisWRTRelativeProductOrder( gamma0_test );
+            
+            if AffineDimension( gamma0_elim ) = d0 + codim -1 then
+
+                gamma0_image := B * PolynomialsWithoutRelativeIndeterminates( gamma0_elim );
+
+                if IsContained( gamma0_image, image_closure ) then
+
+                    gamma0 := gamma0_test;
+                    Remove( var, i );
+                    n := n - 1;
+                    codim := codim - 1;
+                    Info( InfoImage, 3, "hyperplane ", H, " works. codim: ", codim );
+
+                else
+
+                    Info( InfoImage, 3, "hyperplane ", H, " decreases image" );
+                    i := i + 1;
+
+                fi;
+
+            else
+
+                Info( InfoImage, 3, "hyperplane ", H, " does not decrease dimension" );
+                i := i + 1;
+
+            fi;
+
+            if codim = 0 then
+                return [ gamma0, 0 ];
+            fi;
+
+        od;
+
+    od;
+
+    return [ gamma0, codim ];
+
+end;
+
 ##
 LocallyClosedProjection := function( gamma )
-    local counter, step, R, B, d, gamma_elim, image_closure, d0, codim, seed, L, gamma0, gamma_elim_0, finished, gamma0_B, gamma_maxdeg, frame;
+    local counter, step, R, B, d, gamma_elim, image_closure, d0, codim, decomposition, gamma_maxdeg, frame;
 
     counter := ValueOption( "counter" );
     
@@ -502,49 +567,34 @@ LocallyClosedProjection := function( gamma )
 
     if codim > 0 then
       
-        seed := 1;
+        gamma_elim := DecreaseCodimensionByFixingVariables( gamma_elim, codim, d0, image_closure, false );
+        codim := gamma_elim[2];
+        gamma_elim := gamma_elim[1];
 
-        repeat
+        Info( InfoImage, 1, step, counter, " ", d0, "+", codim );
 
-            L := PseudoRandomHyperplaneInRelativeIndeterminates( R, codim, seed );
+    fi;
 
-            # if seed>2 then Error();  fi;
+    if codim > 0 then
 
-            gamma0 := UnionOfRows( gamma_elim, L );  # intentionally stick to the basis w.r.t. elimination order
+        decomposition := IdealDecompositionOp( gamma_elim ); # !!!!!!!!!!!!!!!
 
-            Info( InfoImage, 2, step, counter, " elimination..." );
-            gamma_elim_0 := BasisWRTRelativeProductOrder( gamma0 );
-            Info( InfoImage, 2, step, counter, " ...done" );
+        if Length( decomposition ) = 1 then
 
-            finished := false;
+            gamma_elim := DecreaseCodimensionByFixingVariables( gamma_elim, codim, d0, image_closure, true );
+            codim := gamma_elim[2];
+            gamma_elim := gamma_elim[1];
 
-            seed := seed + 1;
+        else
 
-            if AffineDimension( gamma_elim_0 ) = d0 then
+            return [ decomposition ];
 
-                gamma0_B := PolynomialsWithoutRelativeIndeterminates( gamma_elim_0 );
-                gamma0_B := IdealSubobjectOp( B * gamma0_B );
-                Info( InfoImage, 3, step, counter, " gamma0_B: ", EntriesOfHomalgMatrix( gamma0_B ) );
+        fi;
 
-                finished := IsContained( gamma0_B, image_closure );
-
-                if not finished then
-                    Info( InfoImage, 3, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ), " such that ", EntriesOfHomalgMatrix( gamma0_B ), " is not contained in ", EntriesOfHomalgMatrix( image_closure ) );
-                fi;
-
-            else
-
-                Info( InfoImage, 3, step, counter, " Bad hyperplane: ", EntriesOfHomalgMatrix( L ) );
-
-            fi;
-
-        until finished;
-
-        Info( InfoImage, 3, step, counter, " Hyperplane: ", EntriesOfHomalgMatrix( L ) );
-
-        gamma_elim := gamma_elim_0;
-        Info( InfoImage, 3, step, counter, " gamma_elim: ", EntriesOfHomalgMatrix( gamma_elim ) );
-
+    fi;
+    
+    if codim > 0 then
+        Error( "give up in trying to bring the fiber dimension down to 0" );
     fi;
     
     gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
@@ -720,39 +770,42 @@ ConstructibleProjection := function( gamma )
 
         image_closure_and_frame := LocallyClosedProjection( gamma : counter := counter );
         
-        frame := image_closure_and_frame[2];
+        if Length( image_closure_and_frame ) = 1 then
+
+            Info( InfoImage, 1, "Step ", counter, " did not find a hyperplane. Indeed: ", Length( image_closure_and_frame ), " many prime components were found." );
+            Append( gamma_decomp, image_closure_and_frame[1] );
+
+        else
+
+            frame := image_closure_and_frame[2];
         
-        Info( InfoImage, 3, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
+            Info( InfoImage, 3, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
 
-        if not IsOne( frame ) then
+            if not IsOne( frame ) then
             
-            Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
-            frame_decomp := IdealDecompositionOp( frame );
-            Info( InfoImage, 3, "Step ", counter, " ...done " );
-
-            for f in frame_decomp do
-    
-                Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
-                g := IntersectWithPreimage( gamma, f );
+                Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
+                frame_decomp := IdealDecompositionOp( frame );
                 Info( InfoImage, 3, "Step ", counter, " ...done " );
-                
-                if not IsOne( g ) then
-                    Info( InfoImage, 3, "Step ", counter, " frame preimage decomposition", EntriesOfHomalgMatrix( g ), "... " );
-                    if isPrimary then
-                        Append( gamma_decomp, [ g ] );
-                    else
-                        Append( gamma_decomp, IdealDecompositionOp( g ) );
-                    fi;
+
+                for f in frame_decomp do
+    
+                    Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
+                    g := IntersectWithPreimage( gamma, f );
                     Info( InfoImage, 3, "Step ", counter, " ...done " );
-                fi;
+               
+                    if not IsZero( DecideZero( HomalgIdentityMatrix( 1, R ), g ) ) then
+                        Append( gamma_decomp, [ g ] );
+                    fi;
                 
-            od;
+                od;
             
-        fi;
+            fi;
        
-        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ), " frame: ", EntriesOfHomalgMatrix( frame ) );
+            Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ), " frame: ", EntriesOfHomalgMatrix( frame ) );
         
-        Add( image, image_closure_and_frame );
+            Add( image, image_closure_and_frame );
+
+        fi;
         
     od;
     
