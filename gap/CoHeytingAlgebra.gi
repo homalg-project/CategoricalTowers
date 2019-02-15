@@ -4,6 +4,35 @@
 # Implementations
 #
 
+InstallValue( COHEYTING_ALGEBRA_METHOD_NAME_RECORD,
+        rec(
+ConegationOnObjects := rec(
+  installation_name := "ConegationOnObjects",
+  filter_list := [ "object" ],
+  io_type := [ [ "a" ], [ "an" ] ],
+  cache_name := "ConegationOnObjects",
+  return_type := "object" ),
+
+ConegationOnMorphismsWithGivenConegations := rec(
+  installation_name := "ConegationOnMorphismsWithGivenConegations",
+  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
+  filter_list := [ "object", "morphism", "object" ],
+  cache_name := "ConegationOnMorphismsWithGivenConegations",
+  return_type := "morphism" ),
+
+MorphismFromDoubleConegationWithGivenDoubleConegation := rec(
+  installation_name := "MorphismFromDoubleConegationWithGivenDoubleConegation",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "r" ], [ "a", "r" ] ],
+  cache_name := "MorphismFromDoubleConegationWithGivenDoubleConegation",
+  return_type := "morphism" )
+
+            ) );
+
+CAP_INTERNAL_ENHANCE_NAME_RECORD( COHEYTING_ALGEBRA_METHOD_NAME_RECORD );
+
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( COHEYTING_ALGEBRA_METHOD_NAME_RECORD );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
   function( coheyting_algebra )
@@ -29,23 +58,23 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     ## The co-negation
     
     ##
-    AddDualOnObjects( coheyting_algebra,
+    AddConegationOnObjects( coheyting_algebra,
       function( A )
         
-        return InternalHomOnObjects( A, TerminalObject( coheyting_algebra ) );
+        return CoexponentialOnObjects( TerminalObject( coheyting_algebra ), A );
         
     end );
     
     ##
-    AddDualOnMorphismsWithGivenDuals( coheyting_algebra,
+    AddConegationOnMorphismsWithGivenConegations( coheyting_algebra,
       function( B_, u, A_ )
         
-        return InternalHomOnMorphismsWithGivenInternalHoms( B_, u, IdentityMorphism( TerminalObject( coheyting_algebra ) ), A_ );
+        return CoexponentialOnMorphismsWithGivenCoexponentials( B_, IdentityMorphism( TerminalObject( coheyting_algebra ) ), u, A_ );
         
     end );
     
     ##
-    AddMorphismToBidualWithGivenBidual( coheyting_algebra,
+    AddMorphismFromDoubleConegationWithGivenDoubleConegation( coheyting_algebra,
       function( A, B )
         
         return UniqueMorphism( A, B );
