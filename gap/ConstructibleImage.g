@@ -480,7 +480,9 @@ LocallyClosedProjection := function( gamma )
 
     B := BaseRing( R );
 
+    Info( InfoImage, 2, step, counter, " dimension..." );
     d := AffineDimension( gamma );
+    Info( InfoImage, 2, step, counter, " ...done" );
 
     Info( InfoImage, 2, step, counter, " elimination..." );
     gamma_elim := BasisWRTRelativeProductOrder( gamma );
@@ -490,7 +492,9 @@ LocallyClosedProjection := function( gamma )
 
     image_closure := IdealSubobjectOp( B * image_closure );
 
+    Info( InfoImage, 2, step, counter, " dimension..." );
     d0 := AffineDimension( image_closure );
+    Info( InfoImage, 2, step, counter, " ...done" );
     
     codim := d - d0;
 
