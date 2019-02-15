@@ -71,7 +71,7 @@ end;
 ## Replace with suitable method in ring table
 IdealSubobjectOp := function( A )
 
-    return A; # identity
+    # return A; # identity
     return MatrixOfGenerators( RadicalSubobject( LeftSubmodule( A ) ) ); # radical subobject
 
 end;
@@ -80,7 +80,7 @@ end;
 IsContained := function( A, B )
 local I, p;
 
-    # return IsZero( DecideZero( A, B ) ); # is it zero?
+    return IsZero( DecideZero( A, B ) ); # is it zero?
 
     # Is it zero w.r.t. the radical of B:
     I := LeftSubmodule( B );
