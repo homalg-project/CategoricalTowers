@@ -69,26 +69,26 @@ Display( AC );
 #! V( <2,3> )
 DirectProduct( A, C ) = I;
 #! true
-InternalHomOnObjects( I, T ) = I;
+CoexponentialOnObjects( I, T ) = I;
 #! true
-InternalHomOnObjects( I, A ) = I;
+CoexponentialOnObjects( I, A ) = I;
 #! true
-InternalHomOnObjects( I, I ) = I;
+CoexponentialOnObjects( I, I ) = I;
 #! true
-InternalHomOnObjects( A, I ) = A;
+CoexponentialOnObjects( A, I ) = A;
 #! true
-InternalHomOnObjects( T, I ) = T;
+CoexponentialOnObjects( T, I ) = T;
 #! true
-InternalHomOnObjects( T, A ) = T;
+CoexponentialOnObjects( T, A ) = T;
 #! true
-InternalHomOnObjects( T, T ) = I;
+CoexponentialOnObjects( T, T ) = I;
 #! true
-InternalHomOnObjects( B, D ) = I;
+CoexponentialOnObjects( B, D ) = I;
 #! true
-InternalHomOnObjects( D, B ) = C;
+CoexponentialOnObjects( D, B ) = C;
 #! true
-InternalHomOnObjects( C, D ) = I;
+CoexponentialOnObjects( C, D ) = I;
 #! true
-InternalHomOnObjects( D, C ) = B;
+CoexponentialOnObjects( D, C ) = B;
 #! true
 #! @EndExample

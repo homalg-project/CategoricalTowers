@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
 Version := Maximum( [
-                   "2019.01.28", ## Mohamed's version
+                   "2019.01.31", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
                    ] ),
@@ -91,8 +91,8 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.01.16" ],
-                   [ "Toposes", ">= 2019.01.18" ],
-                   [ "Locales", ">= 2019.01.28" ],
+                   [ "Toposes", ">= 2019.01.20" ],
+                   [ "Locales", ">= 2019.01.31" ],
                    [ "MatricesForHomalg", ">= 2018.08.02" ],
                    [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],
