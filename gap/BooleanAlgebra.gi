@@ -27,6 +27,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( boolean_algebra );
     
+    ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( boolean_algebra );
+    
     ##
     AddMorphismFromDoubleNegationWithGivenDoubleNegation( boolean_algebra,
       function( A, B )
