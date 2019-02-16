@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Locales",
 Subtitle := "",
 Version := Maximum( [
-                   "2019.02.02", ## Mohamed's version
+                   "2019.02.03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
                    ] ),

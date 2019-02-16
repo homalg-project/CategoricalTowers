@@ -33,6 +33,28 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( COHEYTING_ALGEBRA_METHOD_NAME_RECORD );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( COHEYTING_ALGEBRA_METHOD_NAME_RECORD );
 
+InstallValue( CAP_INTERNAL_COHEYTING_ALGEBRAS_BASIC_OPERATIONS, rec( ) );
+
+##
+CAP_INTERNAL_COHEYTING_ALGEBRAS_BASIC_OPERATIONS.ConegationOnMorphisms :=
+  [ [ "ConegationOnMorphismsWithGivenConegations", 1 ],
+    [ "ConegationOnObjects", 2 ] ];
+
+##
+InstallMethod( ConegationOnMorphisms,
+               [ IsCapCategoryMorphism ],
+        
+  function( morphism )
+    
+    return ConegationOnMorphismsWithGivenConegations(
+                   ConegationOnObjects( Range( morphism ) ),
+                   morphism,
+                   ConegationOnObjects( Source( morphism ) ) );
+    
+end );
+
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_COHEYTING_ALGEBRAS_BASIC_OPERATIONS );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
   function( coheyting_algebra )

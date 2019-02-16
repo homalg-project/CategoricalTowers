@@ -115,4 +115,6 @@ DeclareOperation( "AddMorphismFromDoubleConegationWithGivenDoubleConegation",
 
 DeclareGlobalVariable( "COHEYTING_ALGEBRA_METHOD_NAME_RECORD" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_COHEYTING_ALGEBRAS_BASIC_OPERATIONS" );
+
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS" );

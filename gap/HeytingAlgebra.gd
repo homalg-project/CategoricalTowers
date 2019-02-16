@@ -115,4 +115,6 @@ DeclareOperation( "AddMorphismToDoubleNegationWithGivenDoubleNegation",
 
 DeclareGlobalVariable( "HEYTING_ALGEBRA_METHOD_NAME_RECORD" );
 
+DeclareGlobalVariable( "CAP_INTERNAL_HEYTING_ALGEBRAS_BASIC_OPERATIONS" );
+
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS" );
