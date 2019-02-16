@@ -13,6 +13,11 @@
 #! @Arguments C
 AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegations" ] );
 
+#! @Description
+#!  The property of <A>C</A> being a cocartesian coclosed &CAP; category with isomorphic double conegations.
+#! @Arguments C
+AddCategoricalProperty( [ "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations" ] );
+
 #! @Section Operations
 
 ##
@@ -50,6 +55,43 @@ DeclareOperation( "AddMorphismFromDoubleNegationWithGivenDoubleNegation",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddMorphismFromDoubleNegationWithGivenDoubleNegation",
+                  [ IsCapCategory, IsList ] );
+
+##
+#! @Description
+#! The argument is an object $a$.
+#! The output is the inverse $a \rightarrow \ulcorner\ulcorner a$ of the morphism from the double conegation.
+#! @Returns a morphism in $\mathrm{Hom}(a, \ulcorner\ulcorner a)$.
+#! @Arguments a
+DeclareAttribute( "MorphismToDoubleConegation",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $a$,
+#! and an object $r = \ulcorner\ulcorner a$.
+#! The output is the inverse $a \rightarrow \ulcorner\ulcorner a$ of the morphism from the double conegation.
+#! @Returns a morphism in $\mathrm{Hom}(a, \ulcorner\ulcorner a)$.
+#! @Arguments a, s
+DeclareOperation( "MorphismToDoubleConegationWithGivenDoubleConegation",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>MorphismToDoubleConegationWithGivenDoubleConegation</C>.
+#! $F: (a, \ulcorner\ulcorner a) \mapsto (a \rightarrow \ulcorner\ulcorner a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismToDoubleConegationWithGivenDoubleConegation",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismToDoubleConegationWithGivenDoubleConegation",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismToDoubleConegationWithGivenDoubleConegation",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismToDoubleConegationWithGivenDoubleConegation",
                   [ IsCapCategory, IsList ] );
 
 # @Section Tools

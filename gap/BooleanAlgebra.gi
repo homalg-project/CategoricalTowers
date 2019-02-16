@@ -11,7 +11,14 @@ MorphismFromDoubleNegationWithGivenDoubleNegation := rec(
   filter_list := [ "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   cache_name := "MorphismFromDoubleNegationWithGivenDoubleNegation",
-  return_type := "morphism" )
+  return_type := "morphism" ),
+            
+MorphismToDoubleConegationWithGivenDoubleConegation := rec(
+  installation_name := "MorphismToDoubleConegationWithGivenDoubleConegation",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "s" ], [ "s", "a" ] ],
+  cache_name := "MorphismToDoubleConegationWithGivenDoubleConegation",
+  return_type := "morphism" ),
             
             ) );
 
@@ -25,6 +32,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
     
     SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( boolean_algebra, true );
     
+    SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( boolean_algebra, true );
+    
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( boolean_algebra );
     
     ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( boolean_algebra );
@@ -34,6 +43,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
       function( A, B )
         
         return UniqueMorphism( B, A );
+        
+    end );
+    
+    ##
+    AddMorphismToDoubleConegationWithGivenDoubleConegation( boolean_algebra,
+      function( A, B )
+        
+        return UniqueMorphism( A, B );
         
     end );
     
