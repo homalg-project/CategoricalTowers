@@ -19,7 +19,7 @@ AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegation
 #! @Description
 #! The argument is an object $a$.
 #! The output is the inverse $\neg\neg a \rightarrow a$ of the morphism to the double negation.
-#! @Returns a morphism in $\mathrm{Hom}(\neg\neg a,a)$.
+#! @Returns a morphism in $\mathrm{Hom}(\neg\neg a, a)$.
 #! @Arguments a
 DeclareAttribute( "MorphismFromDoubleNegation",
                   IsCapCategoryObject );
@@ -28,7 +28,7 @@ DeclareAttribute( "MorphismFromDoubleNegation",
 #! The argument is an object $a$,
 #! and an object $s = \neg\neg a$.
 #! The output is the inverse $\neg\neg a \rightarrow a$ of the morphism to the double negation.
-#! @Returns a morphism in $\mathrm{Hom}(\neg\neg a,a)$.
+#! @Returns a morphism in $\mathrm{Hom}(\neg\neg a, a)$.
 #! @Arguments a, s
 DeclareOperation( "MorphismFromDoubleNegationWithGivenDoubleNegation",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
