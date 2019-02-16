@@ -381,11 +381,9 @@ InstallMethod( DisplayString,
     A := PairInUnderlyingLattice( A );
     
     return Concatenation(
-                   "( ",
                    DisplayString( A[1] ),
                    " \\ ",
-                   DisplayString( A[2] ),
-                   " )" );
+                   DisplayString( A[2] ) );
     
 end );
 
