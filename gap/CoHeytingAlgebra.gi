@@ -59,9 +59,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_COHEYTING_ALGEBRAS
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
   function( coheyting_algebra )
     
-    SetIsCocartesianCoclosedCategory( coheyting_algebra, true );
+    SetIsStrictCartesianCategory( coheyting_algebra, true );
     
-    SetIsStrictMonoidalCategory( coheyting_algebra, true );
+    SetIsStrictCocartesianCategory( coheyting_algebra, true );
+    
+    SetIsCocartesianCoclosedCategory( coheyting_algebra, true );
     
     ADD_COMMON_METHODS_FOR_LATTICES( coheyting_algebra );
     

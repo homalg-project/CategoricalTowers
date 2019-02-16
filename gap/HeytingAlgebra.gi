@@ -59,9 +59,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_HEYTING_ALGEBRAS_B
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
   function( heyting_algebra )
     
-    SetIsCartesianClosedCategory( heyting_algebra, true );
+    SetIsStrictCartesianCategory( heyting_algebra, true );
     
-    SetIsStrictMonoidalCategory( heyting_algebra, true );
+    SetIsStrictCocartesianCategory( heyting_algebra, true );
+    
+    SetIsCartesianClosedCategory( heyting_algebra, true );
     
     ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
     

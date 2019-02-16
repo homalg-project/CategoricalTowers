@@ -24,9 +24,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfDifferences );
     
-    SetIsStrictMonoidalCategory( D, true );
-    
-    SetIsSymmetricClosedMonoidalCategory( D, true );
+    SetIsStrictCartesianCategory( D, true );
     
     ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( D );
     
