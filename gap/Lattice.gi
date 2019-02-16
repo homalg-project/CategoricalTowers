@@ -21,6 +21,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     end );
     
     ##
+    AddIsTerminal( meet_semilattice,
+      function( A )
+        
+        return IsHomSetInhabited( TerminalObject( A ), A );
+        
+    end );
+    
+    ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( meet_semilattice,
       function( D, k, P )
         
@@ -127,6 +135,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     end );
     
     ##
+    AddIsInitial( join_semilattice,
+      function( A )
+        
+        return IsHomSetInhabited( A, InitialObject( A ) );
+        
+    end );
+    
+    ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( join_semilattice,
       function( D, k, I )
         
@@ -229,6 +245,54 @@ InstallMethod( \+,
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
 
   Coproduct );
+
+##
+InstallMethod( \=,
+        "for an object in a thin category and the integer one",
+        [ IsObjectInThinCategory, IsPosInt ],
+        
+  function( A, T )
+    
+    if not T = 1 then
+        TryNextMethod( );
+    fi;
+    
+    return IsTerminal( A );
+    
+end );
+
+##
+InstallMethod( \=,
+        "for the integer one and an object in a thin category",
+        [ IsPosInt, IsObjectInThinCategory ],
+        
+  function( T, A )
+    
+    return A = T;
+    
+end );
+
+##
+InstallMethod( \=,
+        "for an object in a thin category and the zero integer",
+        [ IsObjectInThinCategory, IsInt and IsZero ],
+        
+  function( A, I )
+    
+    return IsInitial( A );
+    
+end );
+
+##
+InstallMethod( \=,
+        "for the zero integer and an object in a thin category",
+        [ IsInt and IsZero, IsObjectInThinCategory ],
+        
+  function( I, A )
+    
+    return A = I;
+    
+end );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
