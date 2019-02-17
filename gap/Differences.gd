@@ -20,6 +20,16 @@ DeclareCategory( "IsObjectInMeetSemilatticeOfDifferences",
 DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
         IsMorphismInThinCategory );
 
+#! @Section Properties
+
+#! @Description
+#!  The embedding of the meet-semilattice of formal differences into the underlying lattice has a right adjoint,
+#!  at least in case the underying lattice is a co-Heyting algebra.
+#!  A formal difference is closed if its component of the unit of the above adjunction is an isomorphism.
+#! @Arguments A
+DeclareProperty( "IsClosed",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Section Attributes
 
 DeclareAttribute( "PrePairInUnderlyingLattice",
@@ -29,6 +39,13 @@ DeclareAttribute( "NormalizedPairInUnderlyingHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences );
 
 DeclareAttribute( "StandardPairInUnderlyingHeytingAlgebra",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Description
+#!  The closure of the formal difference <A>A</A> in the underlying co-Heyting algebra.
+#! @Arguments A
+#! @Returns an object in a co-Heyting algebra.
+DeclareAttribute( "Closure",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Section Operations

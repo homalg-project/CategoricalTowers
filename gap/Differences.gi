@@ -238,6 +238,42 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
   StandardPairInUnderlyingHeytingAlgebra );
 
 ##
+InstallMethod( IsClosed,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return IsInitial( NormalizedPairInUnderlyingHeytingAlgebra( A )[2] );
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( Closure,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return NormalizedPairInUnderlyingHeytingAlgebra( A )[1];
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
