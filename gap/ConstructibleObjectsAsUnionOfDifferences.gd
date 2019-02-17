@@ -32,9 +32,9 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Description
-#!  The closure of the constructible object <A>A</A>.
+#!  The closure of the constructible object <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A
-#! @Returns a &CAP; category
+#! @Returns an object in a co-Heyting algebra.
 DeclareAttribute( "Closure",
         IsConstructibleObjectAsUnionOfDifferences );
 
