@@ -20,6 +20,16 @@ DeclareCategory( "IsConstructibleObjectAsUnionOfDifferences",
 DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences",
         IsMorphismInThinCategory );
 
+#! @Section Properties
+
+#!
+DeclareProperty( "IsOpen",
+        IsConstructibleObjectAsUnionOfDifferences );
+
+#!
+DeclareProperty( "IsClosed",
+        IsConstructibleObjectAsUnionOfDifferences );
+
 #! @Section Attributes
 
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
@@ -36,6 +46,13 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
 #! @Arguments A
 #! @Returns an object in a co-Heyting algebra.
 DeclareAttribute( "Closure",
+        IsConstructibleObjectAsUnionOfDifferences );
+
+#! @Description
+#!  The closure of the constructible object <A>A</A> as a constructible object formed as a union of formal differences.
+#! @Arguments A
+#! @Returns a constructible object formed as a union of formal differences
+DeclareAttribute( "ClosureAsConstructibleObject",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Section Operations

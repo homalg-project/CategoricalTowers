@@ -298,6 +298,46 @@ InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
+InstallMethod( Closure,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return Coproduct( List( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), Closure ) );
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( ClosureAsConstructibleObject,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    
+    return ( Closure( A ) - 0 ) + 0;
+    
+end );
+
+##
+InstallMethod( IsClosed,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    
+    return IsHomSetInhabited( ClosureAsConstructibleObject( A ), A );
+    
+end );
+
+##
 InstallMethod( \=,
         "for an object in a thin category and a constructible object as a union of formal differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
