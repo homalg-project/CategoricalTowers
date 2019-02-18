@@ -208,7 +208,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         B := MorphismOfUnderlyingCategory( B );
         
         if IsZero( B ) then
-            return InitialObject( CapCategory( A ) );
+            return InitialObject( A );
         fi;
         
         A := MorphismOfUnderlyingCategory( A );

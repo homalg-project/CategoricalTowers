@@ -208,7 +208,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         A := MorphismOfUnderlyingCategory( A );
         
         if IsZero( A ) then
-            return TerminalObject( CapCategory( B ) );
+            return TerminalObject( B );
         fi;
         
         B := MorphismOfUnderlyingCategory( B );
