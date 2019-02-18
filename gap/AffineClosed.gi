@@ -20,7 +20,8 @@ InstallMethod( ClosedSubsetOfSpec,
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             PreMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R
+            UnderlyingRing, R,
+            IsClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -56,7 +57,8 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             ReducedMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R
+            UnderlyingRing, R,
+            IsClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -92,7 +94,8 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             StandardMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R
+            UnderlyingRing, R,
+            IsClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );

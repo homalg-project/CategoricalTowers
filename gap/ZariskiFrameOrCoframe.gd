@@ -20,6 +20,16 @@ DeclareCategory( "IsObjectInZariskiFrameOrCoframe",
 DeclareCategory( "IsMorphismInZariskiFrameOrCoframe",
         IsMorphismInThinCategory );
 
+#! @Section Properties
+
+#!
+DeclareProperty( "IsOpen",
+        IsObjectInZariskiFrameOrCoframe );
+
+#!
+DeclareProperty( "IsClosed",
+        IsObjectInZariskiFrameOrCoframe );
+
 #! @Section Attributes
 
 DeclareAttribute( "PreMorphismOfUnderlyingCategory",
