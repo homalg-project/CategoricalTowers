@@ -140,7 +140,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    return A - InitialObject( CapCategory( A ) );
+    return A - InitialObject( A );
     
 end );
 
@@ -151,7 +151,7 @@ InstallMethod( AdditiveInverseMutable,
         
   function( A )
     
-    return TerminalObject( CapCategory( A ) ) - A;
+    return TerminalObject( A ) - A;
     
 end );
 
