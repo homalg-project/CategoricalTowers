@@ -102,7 +102,8 @@ InstallGlobalFunction( AsFormalMultipleDifference,
     D := MeetSemilatticeOfMultipleDifferences( CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, D,
-            ListOfPreObjectsInMeetSemilatticeOfDifferences, arg
+            ListOfPreObjectsInMeetSemilatticeOfDifferences, arg,
+            SetIsLocallyClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -121,7 +122,8 @@ InstallGlobalFunction( AsFormalMultipleDifferenceOfNormalizedObjects,
     D := MeetSemilatticeOfMultipleDifferences( CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, D,
-            ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg
+            ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg,
+            SetIsLocallyClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );

@@ -123,7 +123,8 @@ InstallMethod( \-,
     D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
     ObjectifyObjectForCAPWithAttributes( C, D,
-            PrePairInUnderlyingLattice, [ A, B ]
+            PrePairInUnderlyingLattice, [ A, B ],
+            IsLocallyClosed, true
             );
     
     Assert( 4, IsWellDefinedForObjects( C ) );
@@ -167,7 +168,8 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
     D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
     ObjectifyObjectForCAPWithAttributes( C, D,
-            NormalizedPairInUnderlyingHeytingAlgebra, [ A, B ]
+            NormalizedPairInUnderlyingHeytingAlgebra, [ A, B ],
+            IsLocallyClosed, true
             );
     
     Assert( 4, IsWellDefined( C ) );

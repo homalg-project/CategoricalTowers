@@ -30,6 +30,10 @@ DeclareProperty( "IsOpen",
 DeclareProperty( "IsClosed",
         IsConstructibleObjectAsUnionOfDifferences );
 
+#!
+DeclareProperty( "IsLocallyClosed",
+        IsConstructibleObjectAsUnionOfDifferences );
+
 #! @Section Attributes
 
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",

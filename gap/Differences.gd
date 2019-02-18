@@ -30,6 +30,9 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
 DeclareProperty( "IsClosed",
         IsObjectInMeetSemilatticeOfDifferences );
 
+DeclareProperty( "IsLocallyClosed",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Section Attributes
 
 DeclareAttribute( "PrePairInUnderlyingLattice",
