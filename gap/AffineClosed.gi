@@ -153,16 +153,26 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     ##
     AddTerminalObject( ZariskiCoframe,
       function( arg )
+        local T;
         
-        return ClosedSubsetOfSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
+        T := ClosedSubsetOfSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
+        
+        SetIsTerminal( T, true );
+        
+        return T;
         
     end );
     
     ##
     AddInitialObject( ZariskiCoframe,
       function( arg )
+        local I;
         
-        return ClosedSubsetOfSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
+        I := ClosedSubsetOfSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
+        
+        SetIsInitial( I, true );
+        
+        return I;
         
     end );
     
@@ -265,6 +275,17 @@ InstallMethod( DisplayString,
                    "V( <",
                    JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ),
                    "> )" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and IsInitial ],
+
+  function( A )
+    
+    return "0";
     
 end );
 
