@@ -23,6 +23,10 @@ d := ClosedSubsetOfSpec( K );
 #! V_{Q[x,y]}( <...> )
 xuy := x + y;
 #! V_{Q[x,y]}( <...> )
+e := -d;
+#! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+Display( e );
+#! V( <> ) \ V( <x+y-1> )
 lc := xuy - d;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 c := lc + d * xuy;
