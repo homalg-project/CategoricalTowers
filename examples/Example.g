@@ -27,6 +27,12 @@ xuy := x + y;
 #! V_{Q[x,y]}( <...> )
 IsClosed( xuy );
 #! true
+mxuy := -xuy;
+#! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+IsClosed( mxuy );
+#! false
+IsOpen( mxuy );
+#! true
 e := -d;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( e );

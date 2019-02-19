@@ -241,6 +241,17 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
 end );
 
 ##
+InstallMethod( IsClosed,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+
+  function( A )
+    
+    return IsOpen( -A );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
