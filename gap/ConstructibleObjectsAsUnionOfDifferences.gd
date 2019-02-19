@@ -45,6 +45,14 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsConstructibleObjectAsUnionOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "NormalizedObject",
+        IsConstructibleObjectAsUnionOfDifferences );
+
+#! @Arguments A
+DeclareAttribute( "StandardObject",
+        IsConstructibleObjectAsUnionOfDifferences );
+
 #! @Description
 #!  The closure of the constructible object <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A

@@ -277,6 +277,28 @@ InstallGlobalFunction( UnionOfDifferencesOfNormalizedObjects,
 end );
 
 ##
+InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    
+    return List( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), NormalizedObject );
+    
+end );
+
+##
+InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    
+    return List( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), StandardObject );
+    
+end );
+
+##
 InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
@@ -296,6 +318,42 @@ InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
         [ IsConstructibleObjectAsUnionOfDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
+
+##
+InstallMethod( NormalizedObject,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    local L;
+    
+    L := Filtered( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), m -> not IsInitial( m ) );
+    
+    if L = [ ] then
+        return InitialObject( A );
+    fi;
+    
+    return CallFuncList( UnionOfDifferences, L );
+    
+end );
+
+##
+InstallMethod( StandardObject,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    local L;
+    
+    L := Filtered( ListOfStandardObjectsInMeetSemilatticeOfDifferences( A ), m -> not IsInitial( m ) );
+    
+    if L = [ ] then
+        return InitialObject( A );
+    fi;
+    
+    return CallFuncList( UnionOfDifferences, L );
+    
+end );
 
 ##
 InstallMethod( \-,

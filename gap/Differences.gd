@@ -44,6 +44,14 @@ DeclareAttribute( "NormalizedPairInUnderlyingHeytingAlgebra",
 DeclareAttribute( "StandardPairInUnderlyingHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "NormalizedObject",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Arguments A
+DeclareAttribute( "StandardObject",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Description
 #!  The closure of the formal difference <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A

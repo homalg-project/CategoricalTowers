@@ -236,6 +236,40 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
 end );
 
 ##
+InstallMethod( NormalizedObject,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    List( NormalizedPairInUnderlyingHeytingAlgebra( A ), IsInitial );
+    
+    if IsInitial( A ) then
+        return InitialObject( A );
+    fi;
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( StandardObject,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    List( StandardPairInUnderlyingHeytingAlgebra( A ), IsInitial );
+    
+    if IsInitial( A ) then
+        return InitialObject( A );
+    fi;
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
