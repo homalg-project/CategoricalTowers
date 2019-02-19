@@ -176,7 +176,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     arg := Flat( arg );
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, C,
             ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, arg
@@ -231,7 +231,7 @@ InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, C,
             ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, arg

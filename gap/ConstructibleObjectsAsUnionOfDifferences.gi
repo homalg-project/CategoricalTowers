@@ -19,7 +19,7 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
     
     P := CapCategory( A );
     
-    B := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( B );
+    B := ListOfObjectsInMeetSemilatticeOfDifferences( B );
     
     B := List( B, PairInUnderlyingLattice );
     
@@ -65,7 +65,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( A )
         local U;
         
-        U := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+        U := ListOfObjectsInMeetSemilatticeOfDifferences( A );
         
         return ForAll( U, IsWellDefinedForObjects );
         
@@ -78,7 +78,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         P := CapCategory( A )!.UnderlyingCategory;
         
-        A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+        A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
         
         return ForAll( A, M -> IsHomSetInhabitedWithTypeCast( M, B ) );
         
@@ -111,7 +111,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( L )
         local l, I, U;
         
-        L := List( L, ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences );
+        L := List( L, ListOfObjectsInMeetSemilatticeOfDifferences );
         
         l := [ 1 .. Length( L ) ];
         
@@ -129,7 +129,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     AddCoproduct( C,
       function( L )
         
-        L := List( L, ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences );
+        L := List( L, ListOfObjectsInMeetSemilatticeOfDifferences );
         
         ## an advantage of this this specific data structure for constructible objects
         return CallFuncList( UnionOfDifferences, Concatenation( L ) );
@@ -152,7 +152,7 @@ InstallGlobalFunction( UnionOfDifferences,
     arg := List( arg,
                  function( A )
                    if IsConstructibleObjectAsUnionOfDifferences( A ) then
-                       return ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+                       return ListOfObjectsInMeetSemilatticeOfDifferences( A );
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
                        return A;
                    elif IsObjectInThinCategory( A ) then
@@ -264,7 +264,7 @@ InstallGlobalFunction( UnionOfDifferencesOfNormalizedObjects,
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, C,
             ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg
@@ -283,7 +283,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
   function( A )
     
-    return List( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), NormalizedObject );
+    return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), NormalizedObject );
     
 end );
 
@@ -294,26 +294,26 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
         
   function( A )
     
-    return List( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), StandardObject );
+    return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), StandardObject );
     
 end );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
@@ -389,7 +389,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    B := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( B );
+    B := ListOfObjectsInMeetSemilatticeOfDifferences( B );
     
     return DirectProduct( List( B, b -> A - b ) );
     
@@ -402,7 +402,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
     
     return CallFuncList( UnionOfDifferences, List( A, a -> a - B ) );
     
@@ -452,7 +452,7 @@ InstallMethod( Closure,
     H := CapCategory( A )!.UnderlyingCategory;
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return Coproduct( List( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A ), Closure ) );
+        return Coproduct( List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), Closure ) );
     fi;
     
     TryNextMethod( );
@@ -587,7 +587,7 @@ InstallMethod( \.,
   function( A, string_as_int )
     local name, n;
     
-    A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
     
     name := NameRNam( string_as_int );
     
@@ -610,7 +610,7 @@ InstallMethod( \[\],
         
   function( A, pos )
     
-    return ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A )[pos];
+    return ListOfObjectsInMeetSemilatticeOfDifferences( A )[pos];
     
 end );
 
@@ -622,7 +622,7 @@ InstallMethod( ViewObj,
   function( A )
     local n, i;
     
-    A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
     
     n := Length( A );
     
@@ -646,7 +646,7 @@ InstallMethod( DisplayString,
   function( A )
     local n, display, i;
     
-    A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
     
     n := Length( A );
     

@@ -81,7 +81,7 @@ DeclareAttribute( "ClosureAsConstructibleObject",
 #!  A list of morphisms in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
-DeclareOperation( "ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences",
+DeclareOperation( "ListOfObjectsInMeetSemilatticeOfDifferences",
         [ IsConstructibleObjectAsUnionOfDifferences ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
