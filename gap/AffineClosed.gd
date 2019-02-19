@@ -31,6 +31,11 @@ DeclareOperation( "ClosedSubsetOfSpec",
 #! @Group ClosedSubsetOfSpec
 DeclareOperation( "ClosedSubsetOfSpec",
         [ IsHomalgMatrix ] );
+
+#! @Arguments str, R
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpec",
+        [ IsString, IsHomalgRing ] );
 #! @InsertSystem ClosedSubsetOfSpec
 
 #! @Description
@@ -45,6 +50,11 @@ DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
 DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
         [ IsHomalgMatrix ] );
 
+#! @Arguments str, R
+#! @Group ClosedSubsetOfSpecByReducedMorphism
+DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
+        [ IsString, IsHomalgRing ] );
+
 #! @Description
 #!  <C>ClosedSubsetOfSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
@@ -56,3 +66,8 @@ DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
 #! @Group ClosedSubsetOfSpecByStandardMorphism
 DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
         [ IsHomalgMatrix ] );
+
+#! @Arguments str, R
+#! @Group ClosedSubsetOfSpecByStandardMorphism
+DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
+        [ IsString, IsHomalgRing ] );

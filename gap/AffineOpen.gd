@@ -31,6 +31,11 @@ DeclareOperation( "OpenSubsetOfSpec",
 #! @Group OpenSubsetOfSpec
 DeclareOperation( "OpenSubsetOfSpec",
         [ IsHomalgMatrix ] );
+
+#! @Arguments str, R
+#! @Group OpenSubsetOfSpec
+DeclareOperation( "OpenSubsetOfSpec",
+        [ IsString, IsHomalgRing ] );
 #! @InsertSystem OpenSubsetOfSpec
 
 #! @Description
@@ -45,6 +50,11 @@ DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
 DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
         [ IsHomalgMatrix ] );
 
+#! @Arguments str, R
+#! @Group OpenSubsetOfSpecByReducedMorphism
+DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
+        [ IsString, IsHomalgRing ] );
+
 #! @Description
 #!  <C>OpenSubsetOfSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
@@ -56,3 +66,8 @@ DeclareOperation( "OpenSubsetOfSpecByStandardMorphism",
 #! @Group OpenSubsetOfSpecByStandardMorphism
 DeclareOperation( "OpenSubsetOfSpecByStandardMorphism",
         [ IsHomalgMatrix ] );
+
+#! @Arguments str, R
+#! @Group OpenSubsetOfSpecByStandardMorphism
+DeclareOperation( "OpenSubsetOfSpecByStandardMorphism",
+        [ IsString, IsHomalgRing ] );

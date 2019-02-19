@@ -15,13 +15,9 @@ x := ClosedSubsetOfSpec( I );
 #! V_{Q[x,y]}( <...> )
 IsClosed( x );
 #! true
-J := HomalgMatrix( "x", 1, 1, R );
-#! <A 1 x 1 matrix over an external ring>
-y := ClosedSubsetOfSpec( J );
+y := ClosedSubsetOfSpec( "x", R );
 #! V_{Q[x,y]}( <...> )
-K := HomalgMatrix( "x+y-1", 1, 1, R );
-#! <A 1 x 1 matrix over an external ring>
-d := ClosedSubsetOfSpec( K );
+d := ClosedSubsetOfSpec( "x+y-1", R );
 #! V_{Q[x,y]}( <...> )
 xuy := x + y;
 #! V_{Q[x,y]}( <...> )

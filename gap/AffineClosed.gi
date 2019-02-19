@@ -116,6 +116,39 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
 end );
 
 ##
+InstallMethod( ClosedSubsetOfSpec,
+        "for a string and a homalg ring",
+        [ IsString, IsHomalgRing ],
+
+  function( str, R )
+    
+    return ClosedSubsetOfSpec( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
+        "for a string and a homalg ring",
+        [ IsString, IsHomalgRing ],
+
+  function( str, R )
+    
+    return ClosedSubsetOfSpecByReducedMorphism( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
+        "for a string and a homalg ring",
+        [ IsString, IsHomalgRing ],
+
+  function( str, R )
+    
+    return ClosedSubsetOfSpecByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
 InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         "for a homalg ring",
         [ IsHomalgRing ],
