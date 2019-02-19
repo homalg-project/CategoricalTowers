@@ -424,6 +424,17 @@ InstallMethod( IsClosed,
 end );
 
 ##
+InstallMethod( IsLocallyClosed,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    
+    return IsClosed( Closure( A ) - A );
+    
+end );
+
+##
 InstallMethod( \=,
         "for an object in a thin category and a constructible object as a union of formal differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
