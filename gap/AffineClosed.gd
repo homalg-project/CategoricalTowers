@@ -36,23 +36,23 @@ DeclareOperation( "ClosedSubsetOfSpec",
 #! @Description
 #!  <C>ClosedSubsetOfSpecByReducedMorphism</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group ClosedSubsetOfSpec
+#! @Group ClosedSubsetOfSpecByReducedMorphism
 DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
         [ IsCapCategoryMorphism ] );
 
 #! @Arguments mat
-#! @Group ClosedSubsetOfSpec
+#! @Group ClosedSubsetOfSpecByReducedMorphism
 DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
         [ IsHomalgMatrix ] );
 
 #! @Description
 #!  <C>ClosedSubsetOfSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
-#! @Group ClosedSubsetOfSpec
+#! @Group ClosedSubsetOfSpecByStandardMorphism
 DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
         [ IsCapCategoryMorphism ] );
 
 #! @Arguments mat
-#! @Group ClosedSubsetOfSpec
+#! @Group ClosedSubsetOfSpecByStandardMorphism
 DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
         [ IsHomalgMatrix ] );
