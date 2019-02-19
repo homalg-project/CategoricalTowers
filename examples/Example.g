@@ -60,4 +60,22 @@ c[2];
 IsClosed( xuy );
 #! true
 Assert( 0, c = xuy );
+t := c - lc;
+#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) + ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) ) +
+#! ( V_{Q[x,y]}( I3 ) \ V_{Q[x,y]}( J3 ) ) + ( V_{Q[x,y]}( I4 ) \ V_{Q[x,y]}( J4 ) )
+IsClosed( t );
+#! true
+t := StandardObject( t );
+#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
+Display( t );
+#! V( <x+y-1,y^2-y> ) \ 0
+z := c - c;
+#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) + ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) ) +
+#! ( V_{Q[x,y]}( I3 ) \ V_{Q[x,y]}( J3 ) ) + ( V_{Q[x,y]}( I4 ) \ V_{Q[x,y]}( J4 ) ) +
+#! ( V_{Q[x,y]}( I5 ) \ V_{Q[x,y]}( J5 ) ) + ( V_{Q[x,y]}( I6 ) \ V_{Q[x,y]}( J6 ) ) +
+#! ( V_{Q[x,y]}( I7 ) \ V_{Q[x,y]}( J7 ) ) + ( V_{Q[x,y]}( I8 ) \ V_{Q[x,y]}( J8 ) )
+z := StandardObject( z );
+#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
+Display( z );
+#! 0 \ 0
 #! @EndExample
