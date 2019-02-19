@@ -298,6 +298,92 @@ InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences,
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
+InstallMethod( \-,
+        "for an object in a thin category and an object in a meet-semilattice of formal differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A, B )
+    
+    B := PairInUnderlyingLattice( B );
+    
+    return ( A - B[1] ) + A * B[2];
+    
+end );
+
+##
+InstallMethod( \-,
+        "for two objects in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A, B )
+    
+    A := PairInUnderlyingLattice( A );
+    B := PairInUnderlyingLattice( B );
+    
+    return ( A[1] - ( A[2] + B[1] ) ) + ( ( A[1] * B[2] ) - A[2] );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for an object in a thin category and a constructible object as a union of formal differences",
+        [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A, B )
+    
+    B := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( B );
+    
+    return DirectProduct( List( B, b -> A - b ) );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for a constructible object as a union of formal differences and an object in a thin category",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
+        
+  function( A, B )
+    
+    A := ListOfObjectsOfUnderlyingMeetSemilatticeOfDifferences( A );
+    
+    return CallFuncList( UnionOfDifferences, List( A, a -> a - B ) );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for a constructible object as a union of formal differences and the zero integer",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsInt and IsZero ],
+        
+  function( A, B )
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( AdditiveInverseMutable,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    
+    return TerminalObject( A ) - A;
+    
+end );
+
+##
+InstallMethod( AdditiveInverseMutable,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    return -( A + 0 );
+    
+end );
+
+##
 InstallMethod( Closure,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],

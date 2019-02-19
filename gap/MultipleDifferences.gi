@@ -156,37 +156,37 @@ InstallMethod( \-,
 end );
 
 ##
-InstallMethod( \-,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
-        
-  function( A, B )
-    local U;
-    
-    if IsObjectInMeetSemilatticeOfDifferences( B ) or
-       IsObjectInMeetSemilatticeOfMultipleDifferences( B ) then
-        TryNextMethod( );
-    fi;
-    
-    return AsFormalMultipleDifference( A ) - B;
-    
-end );
+#InstallMethod( \-,
+#        "for an object in a meet-semilattice of formal differences and an object in a thin category",
+#        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+#        
+#  function( A, B )
+#    local U;
+#    
+#    if IsObjectInMeetSemilatticeOfDifferences( B ) or
+#       IsObjectInMeetSemilatticeOfMultipleDifferences( B ) then
+#        TryNextMethod( );
+#    fi;
+#    
+#    return AsFormalMultipleDifference( A ) - B;
+#    
+#end );
 
 ##
-InstallMethod( AdditiveInverseMutable,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    local P, F;
-    
-    P := CapCategory( A )!.UnderlyingCategory;
-    
-    F := EquivalenceToMeetSemilatticeOfDifferences( P );
-    
-    return AsFormalMultipleDifference( - ApplyFunctor( F, A ) );
-    
-end );
+#InstallMethod( AdditiveInverseMutable,
+#        "for an object in a meet-semilattice of formal multiple differences",
+#        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+#        
+#  function( A )
+#    local P, F;
+#    
+#    P := CapCategory( A )!.UnderlyingCategory;
+#    
+#    F := EquivalenceToMeetSemilatticeOfDifferences( P );
+#    
+#    return AsFormalMultipleDifference( - ApplyFunctor( F, A ) );
+#    
+#end );
 
 ##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,

@@ -135,12 +135,36 @@ end );
 
 ##
 InstallMethod( \-,
+        "for an object in a meet-semilattice of formal differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+        
+  function( A, B )
+    
+    A := PairInUnderlyingLattice( A );
+    
+    return A[1] - ( A[2] + B );
+    
+end );
+
+##
+InstallMethod( \-,
         "for an object in a thin category and the zero integer",
         [ IsObjectInThinCategory, IsInt and IsZero ],
         
   function( A, B )
     
     return A - InitialObject( A );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for an object in a meet-semilattice of formal differences and the zero integer",
+        [ IsObjectInMeetSemilatticeOfDifferences, IsInt and IsZero ],
+        
+  function( A, B )
+    
+    return A;
     
 end );
 
