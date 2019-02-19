@@ -25,8 +25,12 @@ d := ClosedSubsetOfSpec( K );
 #! V_{Q[x,y]}( <...> )
 xuy := x + y;
 #! V_{Q[x,y]}( <...> )
+IsClosed( xuy );
+#! true
 e := -d;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+Display( e );
+#! V( <> ) \ V( <x+y-1> )
 xmy := x - y;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( xmy );
@@ -35,8 +39,6 @@ xmy2 := xmy - y;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( xmy2 );
 #! V( <y> ) \ V( <x> )
-Display( e );
-#! V( <> ) \ V( <x+y-1> )
 lc := xuy - d;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 lc0 := lc - 0;
@@ -57,9 +59,8 @@ c[1];
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 c[2];
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
-IsClosed( xuy );
+c = xuy;
 #! true
-Assert( 0, c = xuy );
 t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) + ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) ) +
 #! ( V_{Q[x,y]}( I3 ) \ V_{Q[x,y]}( J3 ) ) + ( V_{Q[x,y]}( I4 ) \ V_{Q[x,y]}( J4 ) )
