@@ -41,6 +41,14 @@ DeclareAttribute( "ReducedMorphismOfUnderlyingCategory",
 DeclareAttribute( "StandardMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 
+#! @Arguments A
+DeclareAttribute( "LocallyClosedApproximation",
+        IsObjectInZariskiFrameOrCoframe );
+
+#! @Arguments A
+DeclareAttribute( "CanonicalObject",
+        IsObjectInZariskiFrameOrCoframe );
+
 #! @Section Operations
 
 #! @Description

@@ -5,6 +5,26 @@
 #
 
 ##
+InstallMethod( LocallyClosedApproximation,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    StandardMorphismOfUnderlyingCategory( A );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( CanonicalObject,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  LocallyClosedApproximation );
+
+##
 InstallMethod( StandardPairInUnderlyingHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],

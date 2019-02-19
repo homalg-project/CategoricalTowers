@@ -67,6 +67,10 @@ c[2];
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 c = xuy;
 #! true
+cc := CanonicalObject( c );
+#! V_{Q[x,y]}( <...> )
+cc = xuy;
+#! true
 t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) + ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) ) +
 #! ( V_{Q[x,y]}( I3 ) \ V_{Q[x,y]}( J3 ) ) + ( V_{Q[x,y]}( I4 ) \ V_{Q[x,y]}( J4 ) )
