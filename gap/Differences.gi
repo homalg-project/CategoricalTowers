@@ -345,6 +345,28 @@ InstallMethod( Closure,
 end );
 
 ##
+InstallMethod( LocallyClosedApproximation,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    if IsClosed( A ) then
+        return Closure( A );
+    fi;
+    
+    return StandardObject( A );
+    
+end );
+
+##
+InstallMethod( CanonicalObject,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  LocallyClosedApproximation );
+
+##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],

@@ -504,6 +504,52 @@ InstallMethod( IsLocallyClosed,
 end );
 
 ##
+InstallMethod( LocallyClosedApproximation,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    local C;
+    
+    C := Closure( A );
+    
+    if IsClosed( A ) then
+        return C;
+    fi;
+    
+    return C - Closure( C - A );
+    
+end );
+
+##
+InstallMethod( CanonicalObject,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( A )
+    local C;
+    
+    if IsInitial( A ) then
+        return InitialObject( A );
+    fi;
+    
+    C := LocallyClosedApproximation( A );
+    
+    A := A - C;
+    
+    while not IsInitial( A ) do
+        
+        C := C + LocallyClosedApproximation( A );
+        
+        A := A - C;
+        
+    od;
+    
+    return C;
+    
+end );
+
+##
 InstallMethod( \=,
         "for an object in a thin category and a constructible object as a union of formal differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],

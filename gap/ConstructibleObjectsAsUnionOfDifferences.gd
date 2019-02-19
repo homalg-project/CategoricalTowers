@@ -53,6 +53,14 @@ DeclareAttribute( "NormalizedObject",
 DeclareAttribute( "StandardObject",
         IsConstructibleObjectAsUnionOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "LocallyClosedApproximation",
+        IsConstructibleObjectAsUnionOfDifferences );
+
+#! @Arguments A
+DeclareAttribute( "CanonicalObject",
+        IsConstructibleObjectAsUnionOfDifferences );
+
 #! @Description
 #!  The closure of the constructible object <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A

@@ -59,6 +59,14 @@ DeclareAttribute( "NormalizedObject",
 DeclareAttribute( "StandardObject",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "LocallyClosedApproximation",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Arguments A
+DeclareAttribute( "CanonicalObject",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Description
 #!  The closure of the formal difference <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A
