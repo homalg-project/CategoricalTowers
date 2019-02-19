@@ -30,6 +30,13 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
 DeclareProperty( "IsClosed",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#! @Description
+#!  Check if the complement (a constructible object as union of formal differences) of <A>A</A> is closed.
+#! @Arguments A
+DeclareProperty( "IsOpen",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Arguments A
 DeclareProperty( "IsLocallyClosed",
         IsObjectInMeetSemilatticeOfDifferences );
 

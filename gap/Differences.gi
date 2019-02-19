@@ -316,6 +316,17 @@ InstallMethod( IsClosed,
 end );
 
 ##
+InstallMethod( IsOpen,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    return IsClosed( -A );
+    
+end );
+
+##
 InstallMethod( Closure,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
