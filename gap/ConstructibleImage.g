@@ -462,10 +462,12 @@ local var, n, b, q, value;
 end;
 
 DecreaseCodimensionByFixingVariables := function( gamma, codim, d0, image_closure, tryhard )
-local R, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_image;
+local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_image;
 
     R := HomalgRing( gamma );
 
+    B := BaseRing( R );
+    
     var := ShallowCopy( RelativeIndeterminatesOfPolynomialRing( R ) );
 
     n := Length( var );
@@ -735,7 +737,9 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local isPrimary, image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    local R, isPrimary, image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    
+    R := HomalgRing( gamma );
     
     isPrimary := ValueOption( "isPrimary" );
     if isPrimary = fail then
