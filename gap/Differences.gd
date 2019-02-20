@@ -74,6 +74,10 @@ DeclareAttribute( "CanonicalObject",
 DeclareAttribute( "Closure",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "AffineDimension",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Section Operations
 
 #! @Description

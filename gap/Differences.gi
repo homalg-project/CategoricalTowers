@@ -367,6 +367,17 @@ InstallMethod( CanonicalObject,
   LocallyClosedApproximation );
 
 ##
+InstallMethod( AffineDimension,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    return AffineDimension( Closure( A ) );
+    
+end );
+
+##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
