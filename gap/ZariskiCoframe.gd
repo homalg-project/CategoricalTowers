@@ -19,3 +19,9 @@ DeclareCategory( "IsObjectInZariskiCoframe",
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiCoframe",
         IsMorphismInZariskiFrameOrCoframe );
+
+#! @Section Attributes
+
+#!
+DeclareAttribute( "AffineDimension",
+        IsObjectInZariskiCoframe );

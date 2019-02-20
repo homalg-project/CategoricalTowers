@@ -285,6 +285,17 @@ InstallMethod( IsOpen,
 end );
 
 ##
+InstallMethod( AffineDimension,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    
+    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
