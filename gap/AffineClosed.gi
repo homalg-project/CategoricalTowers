@@ -285,7 +285,7 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( AffineDimension,
+InstallMethod( Dimension,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
 

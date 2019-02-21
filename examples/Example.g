@@ -15,6 +15,8 @@ x := ClosedSubsetOfSpec( I );
 #! V_{Q[x,y]}( <...> )
 IsClosed( x );
 #! true
+Dimension( x );
+#! 1
 y := ClosedSubsetOfSpec( "x", R );
 #! V_{Q[x,y]}( <...> )
 d := ClosedSubsetOfSpec( "x+y-1", R );
@@ -51,7 +53,13 @@ IsLocallyClosed( lc );
 #! true
 IsClosed( lc );
 #! false
-c := lc + d * xuy;
+Dimension( lc );
+#! 1
+tp := d * xuy;
+#! V_{Q[x,y]}( <...> )
+Dimension( tp );
+#! 0
+c := lc + tp;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) + ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )
 c0 := c - 0;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) ) + ( V_{Q[x,y]}( I2 ) \ V_{Q[x,y]}( J2 ) )
@@ -61,6 +69,8 @@ c[1];
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 c[2];
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+Dimension( c );
+#! 1
 c = xuy;
 #! true
 cc := CanonicalObject( c );
