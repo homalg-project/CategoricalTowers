@@ -367,13 +367,13 @@ InstallMethod( CanonicalObject,
   LocallyClosedApproximation );
 
 ##
-InstallMethod( AffineDimension,
+InstallMethod( Dimension,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
   function( A )
     
-    return AffineDimension( Closure( A ) );
+    return Dimension( Closure( A ) );
     
 end );
 

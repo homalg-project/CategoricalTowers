@@ -76,7 +76,7 @@ DeclareAttribute( "ClosureAsConstructibleObject",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "AffineDimension",
+DeclareAttribute( "Dimension",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Section Operations

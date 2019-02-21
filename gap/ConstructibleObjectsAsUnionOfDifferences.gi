@@ -550,13 +550,13 @@ InstallMethod( CanonicalObject,
 end );
 
 ##
-InstallMethod( AffineDimension,
+InstallMethod( Dimension,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
     
-    return AffineDimension( Closure( A ) );
+    return Dimension( Closure( A ) );
     
 end );
 

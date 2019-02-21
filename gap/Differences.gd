@@ -75,7 +75,7 @@ DeclareAttribute( "Closure",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "AffineDimension",
+DeclareAttribute( "Dimension",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Section Operations
