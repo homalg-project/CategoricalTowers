@@ -88,6 +88,12 @@ DeclareAttribute( "Dimension",
 DeclareOperation( "ListOfObjectsInMeetSemilatticeOfDifferences",
         [ IsConstructibleObjectAsUnionOfDifferences ] );
 
+DeclareOperation( "ListOp",
+        [ IsConstructibleObjectAsUnionOfDifferences ] );
+
+DeclareOperation( "ListOp",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ] );
+
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
         [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfDifferences ] );
 
