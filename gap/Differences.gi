@@ -298,7 +298,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
   StandardPairInUnderlyingHeytingAlgebra );
 
 ##
-InstallMethod( IsClosed,
+InstallMethod( IsClosedSubobject,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
@@ -314,6 +314,13 @@ InstallMethod( IsClosed,
     TryNextMethod( );
     
 end );
+
+##
+InstallMethod( IsClosed,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  IsClosedSubobject );
 
 ##
 InstallMethod( IsOpen,

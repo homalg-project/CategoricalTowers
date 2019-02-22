@@ -22,13 +22,17 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfDifferences",
 
 #! @Section Properties
 
+## IsClosed is hijacked as an operation by orb v4.8.1
+DeclareProperty( "IsClosedSubobject",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Description
 #!  The embedding of the meet-semilattice of formal differences into the underlying lattice has a right adjoint,
 #!  at least in case the underying lattice is a co-Heyting algebra.
 #!  A formal difference is closed if its component of the unit of the above adjunction is an isomorphism.
 #! @Arguments A
-DeclareProperty( "IsClosed",
-        IsObjectInMeetSemilatticeOfDifferences );
+DeclareOperation( "IsClosed",
+        [ IsObjectInMeetSemilatticeOfDifferences ] );
 
 #! @Description
 #!  Check if the complement (a constructible object as union of formal differences) of <A>A</A> is closed.

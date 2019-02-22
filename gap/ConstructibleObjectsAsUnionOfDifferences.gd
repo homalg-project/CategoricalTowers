@@ -26,9 +26,13 @@ DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences",
 DeclareProperty( "IsOpen",
         IsConstructibleObjectAsUnionOfDifferences );
 
-#!
-DeclareProperty( "IsClosed",
+## IsClosed is hijacked as an operation by orb v4.8.1
+DeclareProperty( "IsClosedSubobject",
         IsConstructibleObjectAsUnionOfDifferences );
+
+#!
+DeclareOperation( "IsClosed",
+        [ IsConstructibleObjectAsUnionOfDifferences ] );
 
 #!
 DeclareProperty( "IsLocallyClosed",

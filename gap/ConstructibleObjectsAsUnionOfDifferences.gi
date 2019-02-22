@@ -489,7 +489,7 @@ InstallMethod( ClosureAsConstructibleObject,
 end );
 
 ##
-InstallMethod( IsClosed,
+InstallMethod( IsClosedSubobject,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
@@ -498,6 +498,13 @@ InstallMethod( IsClosed,
     return IsHomSetInhabited( ClosureAsConstructibleObject( A ), A );
     
 end );
+
+##
+InstallMethod( IsClosed,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  IsClosedSubobject );
 
 ##
 InstallMethod( IsOpen,
