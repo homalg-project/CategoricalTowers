@@ -26,9 +26,13 @@ DeclareCategory( "IsMorphismInZariskiFrameOrCoframe",
 DeclareProperty( "IsOpen",
         IsObjectInZariskiFrameOrCoframe );
 
-#!
-DeclareProperty( "IsClosed",
+## IsClosed is hijacked as an operation by orb v4.8.1
+DeclareProperty( "IsClosedSubobject",
         IsObjectInZariskiFrameOrCoframe );
+
+#!
+DeclareOperation( "IsClosed",
+        [ IsObjectInZariskiFrameOrCoframe ] );
 
 #! @Section Attributes
 

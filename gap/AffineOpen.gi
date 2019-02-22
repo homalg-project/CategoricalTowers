@@ -274,7 +274,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
 end );
 
 ##
-InstallMethod( IsClosed,
+InstallMethod( IsClosedSubobject,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
 

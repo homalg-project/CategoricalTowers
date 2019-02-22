@@ -5,6 +5,13 @@
 #
 
 ##
+InstallMethod( IsClosed,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  IsClosedSubobject );
+
+##
 InstallMethod( LocallyClosedApproximation,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
