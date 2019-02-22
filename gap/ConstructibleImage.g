@@ -737,13 +737,13 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, isPrimary, image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    local R, initialDecomposition, image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
     
     R := HomalgRing( gamma );
     
-    isPrimary := ValueOption( "isPrimary" );
-    if isPrimary = fail then
-        isPrimary := false;
+    initialDecomposition := ValueOption( "initialDecomposition" );
+    if initialDecomposition = fail then
+        initialDecomposition := false;
     fi;
 
     image := [ ];
@@ -754,7 +754,7 @@ ConstructibleProjection := function( gamma )
     
     if not IsOne( gamma ) then
 
-        if isPrimary then
+        if not initialDecomposition then
 
             Append( gamma_decomp, [ gamma ] );
 
