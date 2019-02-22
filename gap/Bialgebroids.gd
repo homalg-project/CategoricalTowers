@@ -330,7 +330,7 @@ DeclareOperation( "AddAntipode",
 #! @Returns an object in a &CAP; category
 #! @Group ObjectInAlgebroid
 DeclareOperation( "ObjectInAlgebroid",
-        [ IsAlgebroid, IsVertex ] );
+        [ IsAlgebroid, IsQuiverVertex ] );
 
 #! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,

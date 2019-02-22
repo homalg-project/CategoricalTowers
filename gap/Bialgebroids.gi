@@ -224,7 +224,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
       function( b )
         local m;
         
-        if IsVertex( b ) then
+        if IsQuiverVertex( b ) then
             m := object_function( b );
             return IdentityMorphism( m );
         fi;
@@ -307,7 +307,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         o := UnderlyingVertex( o );
         
-        return IsVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
+        return IsQuiverVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
         
       end );
     
@@ -784,7 +784,7 @@ InstallMethod( \.,
     
     b := rec( );
     
-    if IsVertex( a ) then
+    if IsQuiverVertex( a ) then
         if IsBound( B!.Vertices.(name) ) then
             return B!.Vertices.(name);
         fi;
@@ -813,7 +813,7 @@ end );
 
 InstallMethod( ObjectInAlgebroid,
          "for an algebroid and a vertex of a quiver",
-        [ IsAlgebroid, IsVertex ],
+        [ IsAlgebroid, IsQuiverVertex ],
   function( A, v )
     local o;
     o := rec();
@@ -1039,7 +1039,7 @@ InstallMethod(ElementaryTensor,
               
             else
               
-                Assert( 3, IsVertex( paths[i] ) );
+                Assert( 3, IsQuiverVertex( paths[i] ) );
                 
                 algebroid_of_morphism := CapCategory( morphism );
                 
@@ -1104,7 +1104,7 @@ InstallMethod(ElementaryTensor,
 
             else
 
-                Assert( 3, IsVertex( paths[i] ) );
+                Assert( 3, IsQuiverVertex( paths[i] ) );
 
                 algebroid_of_morphism := CapCategory( morphism );
 
