@@ -737,7 +737,7 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, initialDecomposition, image, counter, gamma_decomp, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    local R, initialDecomposition, image, counter, gamma_decomp, one, image_closure_and_frame, frame, frame_decomp, f, g, im;
     
     R := HomalgRing( gamma );
     
@@ -768,6 +768,8 @@ ConstructibleProjection := function( gamma )
 
     fi;
     
+    one := HomalgIdentityMatrix( 1, R );
+    
     for gamma in gamma_decomp do
         
         counter := counter + 1;
@@ -797,7 +799,7 @@ ConstructibleProjection := function( gamma )
                     g := IntersectWithPreimage( gamma, f );
                     Info( InfoImage, 3, "Step ", counter, " ...done " );
                
-                    if not IsZero( DecideZero( HomalgIdentityMatrix( 1, R ), g ) ) then
+                    if not IsZero( DecideZero( one, g ) ) then
                         Append( gamma_decomp, [ g ] );
                     fi;
                 
