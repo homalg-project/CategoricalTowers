@@ -14,14 +14,14 @@
 #!  The meet <C>DirectProduct</C>(<A>A</A>, <A>B</A>) of <A>A</A> and <A>B</A>.
 #! @Arguments A, B
 #! @Returns an object in a meet semilattice
-DeclareOperation( "*",
+DeclareOperation( "\*",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
 #! @Description
 #!  The join <C>Coproduct</C>(<A>A</A>, <A>B</A>) of <A>A</A> and <A>B</A>.
 #! @Arguments A, B
 #! @Returns an object in a join semilattice
-DeclareOperation( "+",
+DeclareOperation( "\+",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
 # @Section Tools
