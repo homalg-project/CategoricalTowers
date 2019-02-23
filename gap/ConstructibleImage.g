@@ -772,7 +772,7 @@ ConstructibleProjection := function( gamma )
         
         if Length( image_closure_and_frame ) = 1 then
 
-            Info( InfoImage, 1, "Step ", counter, " did not find a hyperplane. Indeed: ", Length( image_closure_and_frame ), " many prime components were found." );
+            Info( InfoImage, 1, "Step ", counter, " did not find a hyperplane. Indeed: ", Length( image_closure_and_frame[1] ), " many prime components were found." );
             Append( gamma_decomp, image_closure_and_frame[1] );
 
         else
