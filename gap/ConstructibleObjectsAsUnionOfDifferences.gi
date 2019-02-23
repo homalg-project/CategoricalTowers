@@ -427,28 +427,6 @@ InstallMethod( \-,
 end );
 
 ##
-InstallMethod( \-,
-        "for a constructible object as a union of formal differences and the zero integer",
-        [ IsConstructibleObjectAsUnionOfDifferences, IsInt and IsZero ],
-        
-  function( A, B )
-    
-    return A;
-    
-end );
-
-##
-InstallMethod( AdditiveInverseMutable,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    
-    return TerminalObject( A ) - A;
-    
-end );
-
-##
 InstallMethod( AdditiveInverseMutable,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
@@ -485,103 +463,6 @@ InstallMethod( ClosureAsConstructibleObject,
   function( A )
     
     return ( Closure( A ) - 0 ) + 0;
-    
-end );
-
-##
-InstallMethod( IsClosedSubobject,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    
-    return IsHomSetInhabited( ClosureAsConstructibleObject( A ), A );
-    
-end );
-
-##
-InstallMethod( IsClosed,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  IsClosedSubobject );
-
-##
-InstallMethod( IsOpen,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    
-    return IsClosed( -A );
-    
-end );
-
-##
-InstallMethod( IsLocallyClosed,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    
-    return IsClosed( Closure( A ) - A );
-    
-end );
-
-##
-InstallMethod( LocallyClosedApproximation,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    local C;
-    
-    C := Closure( A );
-    
-    if IsClosed( A ) then
-        return C;
-    fi;
-    
-    return C - Closure( C - A );
-    
-end );
-
-##
-InstallMethod( CanonicalObject,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    local C;
-    
-    if IsInitial( A ) then
-        return InitialObject( A );
-    fi;
-    
-    C := LocallyClosedApproximation( A );
-    
-    A := A - C;
-    
-    while not IsInitial( A ) do
-        
-        C := C + LocallyClosedApproximation( A );
-        
-        A := A - C;
-        
-    od;
-    
-    return C;
-    
-end );
-
-##
-InstallMethod( Dimension,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    
-    return Dimension( Closure( A ) );
     
 end );
 
@@ -694,16 +575,5 @@ InstallMethod( DisplayString,
     od;
     
     return display;
-    
-end );
-
-##
-InstallMethod( Display,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-
-  function( A )
-    
-    Display( DisplayString( A ) );
     
 end );

@@ -9,34 +9,18 @@
 #! @Section GAP Categories
 
 #! @Description
-#!  The &GAP; category of objects in ...
+#!  The &GAP; category of objects in a Boolean algebra of constructible objects,
+#!  the latter as unions of formal differences.
 #! @Arguments object
 DeclareCategory( "IsConstructibleObjectAsUnionOfDifferences",
-        IsObjectInThinCategory );
+        IsConstructibleObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in ...
+#!  The &GAP; category of morphisms in a Boolean algebra of constructible objects,
+#!  the latter as unions of formal differences.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences",
-        IsMorphismInThinCategory );
-
-#! @Section Properties
-
-#!
-DeclareProperty( "IsOpen",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-## IsClosed is hijacked as an operation by orb v4.8.1
-DeclareProperty( "IsClosedSubobject",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-#!
-DeclareOperation( "IsClosed",
-        [ IsConstructibleObjectAsUnionOfDifferences ] );
-
-#!
-DeclareProperty( "IsLocallyClosed",
-        IsConstructibleObjectAsUnionOfDifferences );
+        IsMorphismBetweenConstructibleObjects );
 
 #! @Section Attributes
 
@@ -55,32 +39,6 @@ DeclareAttribute( "NormalizedObject",
 
 #! @Arguments A
 DeclareAttribute( "StandardObject",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-#! @Arguments A
-DeclareAttribute( "LocallyClosedApproximation",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-#! @Arguments A
-DeclareAttribute( "CanonicalObject",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-#! @Description
-#!  The closure of the constructible object <A>A</A> in the underlying co-Heyting algebra.
-#! @Arguments A
-#! @Returns an object in a co-Heyting algebra.
-DeclareAttribute( "Closure",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-#! @Description
-#!  The closure of the constructible object <A>A</A> as a constructible object formed as a union of formal differences.
-#! @Arguments A
-#! @Returns a constructible object formed as a union of formal differences
-DeclareAttribute( "ClosureAsConstructibleObject",
-        IsConstructibleObjectAsUnionOfDifferences );
-
-#! @Arguments A
-DeclareAttribute( "Dimension",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Section Operations
