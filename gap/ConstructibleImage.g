@@ -29,7 +29,7 @@ end;
 
 ##
 BasisWRTRelativeProductOrder := function( gamma )
-    local R, B, base, var, R_elim, weights, bas;
+    local R, var, R_elim, weights, bas;
     
     if IsBound( gamma!.BasisWRTRelativeProductOrder ) then
         return gamma!.BasisWRTRelativeProductOrder;
@@ -37,12 +37,6 @@ BasisWRTRelativeProductOrder := function( gamma )
     
     ## k[b][x1,x2]
     R := HomalgRing( gamma );
-    
-    ## k[b]
-    B := BaseRing( R );
-   
-    ## [b]
-    base := Indeterminates( B );
     
     ## [x1,x2]
     var := RelativeIndeterminatesOfPolynomialRing( R );
