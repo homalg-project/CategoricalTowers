@@ -124,48 +124,39 @@ local R, B, base, var, S, weights, gamma_sub;
 end;
 
 ##
-MaximumDegreeInRelativeIndeterminates := function( gamma )
-local R, B, base, var, h, Var, S, gamma_hat, map;
-    
+HomogeneousPart := function( r )
+local R, d, coeffs, monoms, result; 
+
     ## k[b][x1,x2]
+    R := HomalgRing( r );
+    
+    d := Degree( r );
+
+    coeffs := Coefficients( r );
+    monoms := coeffs!.monomials;
+    
+    monoms := List( monoms, function( m ) if Degree(m) = d then return m; else return Zero( R ); fi; end );
+    
+    result := Sum( ListN( EntriesOfHomalgMatrix( coeffs ), monoms, \* ) );
+
+    Assert( 2, Degree( r-result ) < d );
+
+    return result;
+
+end;
+
+##
+MaximumDegreeInRelativeIndeterminates := function( gamma )
+local R, gamma_max;
+    
     R := HomalgRing( gamma );
-    
-    ## k[b]
-    B := BaseRing( R );
-    
-    ## [b]
-    base := Indeterminates( B );
-    
-    ## [x1,x2]
-    var := RelativeIndeterminatesOfPolynomialRing( R );
-    
-    h := ValueOption( "h" );
-    if h = fail then
-        h := "h";
-    fi;
-    
-    ## [x1,x2,x0]
-    Var := Concatenation( List( var, String ), [ h ] );
-    
-    ## k[b][x1,x2,x0]
-    S := GradedRing( B * Var );
-   
-    ## homogenize 
-    gamma_hat := List( EntriesOfHomalgMatrix( BasisWRTRelativeProductOrder( gamma ) ), a -> Homogenization( a, S ) );
-    S := UnderlyingNonGradedRing( S );
-    gamma_hat := HomalgMatrix( gamma_hat, Length( gamma_hat ), 1, S );
 
-    ## S -> R; b |-> b, x1 |-> x1, x2 |-> x2, x0 |-> 0
-    map := UnionOfRows(
-                   HomalgMatrix( base, Length( base ), 1, R ),
-                   HomalgMatrix( var, Length( var ), 1, R ),
-                   HomalgZeroMatrix( 1, 1, R ) );
-    
-    map := RingMap( map, S, R );
+    gamma_max := EntriesOfHomalgMatrix( gamma );
 
-    ## set homogenizing variable to zero    
-    return Pullback( map, gamma_hat );
-    
+    gamma_max := List( gamma_max, p-> HomogeneousPart( p ) );
+
+    return HomalgMatrix( gamma_max, Length( gamma_max ), 1, R );
+
 end;
 
 ##
@@ -592,11 +583,13 @@ LocallyClosedProjection := function( gamma )
     if codim > 0 then
         Error( "give up in trying to bring the fiber dimension down to 0" );
     fi;
-    
-    gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
+
+    gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( BasisWRTRelativeProductOrder( gamma_elim ) );
     Info( InfoImage, 3, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
 
     frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
+
+    Assert( 2, not IsContained( frame, image_closure ) );
   
     return [ image_closure, frame ];
     
