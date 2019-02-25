@@ -481,7 +481,7 @@ local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_im
 
                 if IsContained( gamma0_image, image_closure ) then
 
-                    gamma0 := gamma0_test;
+                    gamma0 := gamma0_elim;
                     Remove( var, i );
                     n := n - 1;
                     codim := codim - 1;
@@ -584,7 +584,7 @@ LocallyClosedProjection := function( gamma )
         Error( "give up in trying to bring the fiber dimension down to 0" );
     fi;
 
-    gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( BasisWRTRelativeProductOrder( gamma_elim ) );
+    gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
     Info( InfoImage, 3, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
 
     frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
