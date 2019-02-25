@@ -57,16 +57,23 @@ end;
 ## Replace with suitable method in ring table
 IdealDecompositionOp := function( A )
 
-     return List( PrimaryDecompositionOp( A ), a -> a[2] ); # associated primes
+     # return EquiDimensionalDecompositionOp( A ); # equidimensional decomposition
+     return RadicalDecompositionOp( A ); # associated primes
      return List( PrimaryDecompositionOp( A ), a -> a[1] ); # primary components
 
 end;
 
 ## Replace with suitable method in ring table
 IdealSubobjectOp := function( A )
+local result;
 
+    #result := MatrixOfGenerators( RadicalSubobject( LeftSubmodule( A ) ) ); # radical subobject
+    #Assert( 0, result = RadicalSubobjectOp( A ) );
+    #return result;
+
+    # return MatrixOfGenerators( RadicalSubobject( LeftSubmodule( A ) ) ); # radical subobject
     # return A; # identity
-    return MatrixOfGenerators( RadicalSubobject( LeftSubmodule( A ) ) ); # radical subobject
+    return RadicalSubobjectOp( A ); # radical subobject
 
 end;
 
