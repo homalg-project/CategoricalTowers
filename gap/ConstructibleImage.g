@@ -598,7 +598,9 @@ LocallyClosedProjection := function( gamma )
         Error( "give up in trying to bring the fiber dimension down to 0" );
     fi;
 
+    Info( InfoImage, 2, step, counter, " max_deg..." );
     gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
+    Info( InfoImage, 2, step, counter, " ...done" );
     Info( InfoImage, 4, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
 
     Info( InfoImage, 2, step, counter, " frame..." );
