@@ -418,10 +418,197 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
     end );
     
+    ## only create the Hom-structure for finite dimensional quiver algebras
+    if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
+        
+        ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID( category );
+        
+    fi;
+    
     Finalize( category );
     SetFilterObj(IdentityFunctor(category), IsAlgebroidMorphism);
     
     return category;
+    
+end );
+
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
+    function( bialgebroid )
+    local quiver_algebra, quiver, vertices, basis, data, path,
+          object_constructor, morphism_constructor, distinguished_object, ring, range_category;
+    
+    quiver_algebra := UnderlyingQuiverAlgebra( bialgebroid );
+    
+    ## Prepare quick access to basis elements
+    quiver := QuiverOfAlgebra( quiver_algebra );
+    
+    vertices := Vertices( quiver );
+    
+    basis := BasisPaths( CanonicalBasis( quiver_algebra ) );
+    
+    data := List( vertices, i -> List( vertices, i -> [ ] ) );
+    
+    for path in basis do
+        
+        Add( data[ VertexNumber( Source( path ) ) ][ VertexNumber( Target( path ) ) ], path );
+        
+    od;
+    
+    ring := LeftActingDomain( quiver_algebra );
+    
+    object_constructor := function( size )
+      return VectorSpaceObject( size, ring );
+    end;
+    
+    morphism_constructor := function( mat )
+      return VectorSpaceMorphism(
+               VectorSpaceObject( NrRows( mat ), ring ),
+               mat,
+               VectorSpaceObject( NrColumns( mat ), ring )
+            );
+    end;
+    
+    range_category := MatrixCategory( ring );
+    
+    distinguished_object := function()
+      return TensorUnit( range_category );
+    end;
+    
+    SetRangeCategoryOfHomomorphismStructure( bialgebroid, range_category );
+    
+    ##
+    AddHomomorphismStructureOnObjects( bialgebroid,
+      function( object_1, object_2 )
+        local nr_source, nr_range, basis_elements;
+        
+        nr_source := VertexNumber( UnderlyingVertex( object_1 ) );
+        
+        nr_range := VertexNumber( UnderlyingVertex( object_2 ) );
+        
+        basis_elements := data[nr_source][nr_range];
+        
+        return object_constructor( Size( basis_elements ) );
+        
+    end );
+    
+    ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( bialgebroid,
+      function( source, alpha, beta, range )
+        local elem_alpha, elem_beta, a, b, ap, bp, basis_elements_source, basis_elements_range, size_source, size_range, images, path;
+        
+        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
+        
+        elem_beta := UnderlyingQuiverAlgebraElement( beta );
+        
+        a := VertexNumber( UnderlyingVertex( Range( alpha ) ) );
+        
+        b := VertexNumber( UnderlyingVertex( Source( beta ) ) );
+        
+        ap := VertexNumber( UnderlyingVertex( Source( alpha ) ) );
+        
+        bp := VertexNumber( UnderlyingVertex( Range( beta ) ) );
+        
+        basis_elements_source := data[a][b];
+        
+        basis_elements_range := data[ap][bp];
+        
+        size_source := Size( basis_elements_source );
+        
+        size_range := Size( basis_elements_range );
+        
+        if size_source = 0 or size_range = 0 then
+            
+            return morphism_constructor( HomalgZeroMatrix( size_source, size_range, ring ) );
+            
+        fi;
+        
+        images := [ ];
+        
+        if IsQuotientOfPathAlgebraElement( elem_alpha ) then
+            
+            for path in basis_elements_source do
+                
+                Add( images,
+                  CoefficientsOfPaths( basis_elements_range, Representative( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
+                );
+                
+            od;
+            
+        else
+        
+            for path in basis_elements_source do
+                
+                Add( images,
+                  CoefficientsOfPaths( basis_elements_range, ( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
+                );
+                
+            od;
+            
+        fi;
+        
+        return morphism_constructor( HomalgMatrix( images, size_source, size_range, ring ) );
+        
+    end );
+    
+    ##
+    AddDistinguishedObjectOfHomomorphismStructure( bialgebroid,
+      function( cat )
+        
+        return distinguished_object();
+        
+    end );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( bialgebroid,
+      function( alpha )
+        local a, b, basis_elements, size_basis, element;
+        
+        a := VertexNumber( UnderlyingVertex( Source( alpha ) ) );
+        
+        b := VertexNumber( UnderlyingVertex( Range( alpha ) ) );
+        
+        basis_elements := data[a][b];
+        
+        size_basis := Size( basis_elements );
+        
+        if size_basis = 0 then
+            
+            return morphism_constructor( HomalgZeroMatrix( 1, 0, ring ) );
+            
+        fi;
+        
+        element := UnderlyingQuiverAlgebraElement( alpha );
+        
+        if IsQuotientOfPathAlgebraElement( element ) then
+            
+            return morphism_constructor(
+                    HomalgMatrix( CoefficientsOfPaths( basis_elements, Representative( element ) ), 1, size_basis, ring )
+                  );
+            
+        else
+            
+            return morphism_constructor(
+                    HomalgMatrix( CoefficientsOfPaths( basis_elements, element ), 1, size_basis, ring )
+                  );
+            
+        fi;
+        
+    end );
+    
+    ##
+    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( bialgebroid,
+      function( a, b, morphism )
+        local coefficients, basis, element;
+        
+        coefficients := EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+        
+        basis := data[VertexNumber( UnderlyingVertex( a ) )][VertexNumber( UnderlyingVertex( b ) )];
+        
+        element := QuiverAlgebraElement( quiver_algebra, coefficients, basis );
+        
+        return MorphismInAlgebroid( a, element, b );
+        
+    end );
     
 end );
 

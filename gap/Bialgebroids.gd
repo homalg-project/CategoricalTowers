@@ -269,6 +269,8 @@ DeclareOperation( "ApplyToQuiverAlgebraElement",
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_ALGEBROID" );
 
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID" );
+
 #! @Description
 #!  Construct the algebroid associated to the path $R$-algebra <A>Rq</A>
 #!  of the quiver $q$ modulo the relations <A>L</A> as an $R$-linear category.

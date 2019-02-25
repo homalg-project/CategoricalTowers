@@ -19,3 +19,6 @@
 
 @Subsection Sweedlers 4-dimensional Hopf algebra
 @InsertChunk Sweedler_H4
+
+@Subsection Homomorphism structure
+@InsertChunk HomStructure
