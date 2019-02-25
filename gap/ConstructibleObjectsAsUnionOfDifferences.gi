@@ -338,6 +338,13 @@ InstallMethod( ListOp,
 end );
 
 ##
+InstallMethod( Length,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  C -> Length( ListOfObjectsInMeetSemilatticeOfDifferences( C ) ) );
+
+##
 InstallMethod( NormalizedObject,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],

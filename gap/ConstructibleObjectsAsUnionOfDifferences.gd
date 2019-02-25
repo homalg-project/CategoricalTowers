@@ -41,6 +41,10 @@ DeclareAttribute( "NormalizedObject",
 DeclareAttribute( "StandardObject",
         IsConstructibleObjectAsUnionOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "Length",
+        IsConstructibleObjectAsUnionOfDifferences );
+
 #! @Section Operations
 
 #! @Description
