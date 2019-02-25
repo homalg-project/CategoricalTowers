@@ -526,7 +526,7 @@ LocallyClosedProjection := function( gamma )
         step := "Step ";
     fi;
     
-    Info( InfoImage, 3, step, counter, " gamma: ", EntriesOfHomalgMatrix( gamma ) );
+    Info( InfoImage, 4, step, counter, " gamma: ", EntriesOfHomalgMatrix( gamma ) );
 
     R := HomalgRing( gamma );
 
@@ -542,7 +542,9 @@ LocallyClosedProjection := function( gamma )
 
     image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
 
+    Info( InfoImage, 2, step, counter, " subobject..." );
     image_closure := IdealSubobjectOp( B * image_closure );
+    Info( InfoImage, 2, step, counter, " ...done" );
 
     Info( InfoImage, 2, step, counter, " dimension..." );
     d0 := AffineDimension( image_closure );
@@ -564,7 +566,9 @@ LocallyClosedProjection := function( gamma )
 
     if codim > 0 then
 
+        Info( InfoImage, 2, step, counter, " unlucky decomposition..." );
         decomposition := IdealDecompositionOp( gamma_elim ); # !!!!!!!!!!!!!!!
+        Info( InfoImage, 2, step, counter, " ...done" );
 
         if Length( decomposition ) = 1 then
 
@@ -585,9 +589,11 @@ LocallyClosedProjection := function( gamma )
     fi;
 
     gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
-    Info( InfoImage, 3, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
+    Info( InfoImage, 4, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
 
+    Info( InfoImage, 2, step, counter, " frame..." );
     frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
+    Info( InfoImage, 2, step, counter, " ...done" );
 
     Assert( 2, not IsContained( frame, image_closure ) );
   
@@ -645,7 +651,7 @@ ConstructibleProjection := function( gamma )
 
             frame := image_closure_and_frame[2];
         
-            Info( InfoImage, 3, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
+            Info( InfoImage, 4, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
 
             if not IsOne( frame ) then
             
