@@ -8,28 +8,8 @@ DeclareInfoClass( "InfoImage" );
 SetInfoLevel( InfoImage, 2 );
 
 ##
-BasisWRTProductOrder := function( gamma )
-    local R, bas;
-    
-    if IsBound( gamma!.BasisWRTProductOrder ) then
-        return gamma!.BasisWRTProductOrder;
-    fi;
-    
-    R := HomalgRing( gamma );
-    
-    gamma := PolynomialRingWithProductOrdering( R ) * gamma;
-    
-    bas := BasisOfRows( gamma );
-    
-    gamma!.BasisWRTProductOrder := bas;
-    
-    return bas;
-    
-end;
-
-##
 BasisWRTRelativeProductOrder := function( gamma )
-    local R, var, R_elim, weights, bas;
+    local R, R_elim, weights, bas;
     
     if IsBound( gamma!.BasisWRTRelativeProductOrder ) then
         return gamma!.BasisWRTRelativeProductOrder;
@@ -38,9 +18,6 @@ BasisWRTRelativeProductOrder := function( gamma )
     ## k[b][x1,x2]
     R := HomalgRing( gamma );
     
-    ## [x1,x2]
-    var := RelativeIndeterminatesOfPolynomialRing( R );
- 
     ## k[b][x1,x2], a version of R with different order
     R_elim := PolynomialRingWithProductOrdering( R );
 
@@ -167,87 +144,6 @@ local R, gamma_max;
 end;
 
 ##
-FiberwiseProjectiveClosure := function( gamma )
-    local R, B, base, var, h, Var, S, weights, gamma_hat;
-    
-    ## k[b][x1,x2]
-    R := HomalgRing( gamma );
-    
-    ## k[b]
-    B := BaseRing( R );
-    
-    ## [b]
-    base := Indeterminates( B );
-    
-    ## [x1,x2]
-    var := RelativeIndeterminatesOfPolynomialRing( R );
-    
-    h := ValueOption( "h" );
-    
-    if h = fail then
-        h := "h";
-    fi;
-    
-    ## [x1,x2,x0]
-    Var := Concatenation( List( var, String ), [ h ] );
-    
-    ## k[b][x1,x2,x0]
-    S := GradedRing( B * Var );
-    
-    ## [0,1,1,1]
-    weights := Concatenation(
-                       ListWithIdenticalEntries( Length( base ), 0 ),
-                       ListWithIdenticalEntries( Length( var ) + 1, 1 )
-                       );
-    
-    SetWeightsOfIndeterminates( S, weights );
-    
-    gamma := BasisWRTProductOrder( gamma );
-    
-    gamma_hat := List( EntriesOfHomalgMatrix( gamma ), a -> Homogenization( a, S ) );
-    
-    return HomalgMatrix( gamma_hat, NrRows( gamma ), 1, S );
-    
-end;
-
-##
-IntersectionWithHyperplaneAtInfinity := function( gamma_hat )
-    local S, B, base, Var, m, n, var, S0, map;
-    
-    ## k[b][x1,x2,x0]
-    S := HomalgRing( gamma_hat );
-    
-    ## k[b]
-    B := BaseRing( S );
-    
-    ## [b]
-    base := Indeterminates( B );
-    
-    ## [x1,x2,x0]
-    Var := RelativeIndeterminatesOfPolynomialRing( S );
-    
-    m := Length( base );
-    n := Length( Var ) - 1;
-    
-    ## [x1,x2]
-    var := Var{[ 1 .. n ]};
-    
-    ## k[b][x1,x2] (again with degrevlex!)
-    S0 := GradedRing( B * List( var, String ) );
-    
-    ## S -> S0; b |-> b, x1 |-> x1, x2 |-> x2, x0 |-> 0
-    map := UnionOfRows(
-                   HomalgMatrix( base, m, 1, S0 ),
-                   HomalgMatrix( var, n, 1, S0 ),
-                   HomalgZeroMatrix( 1, 1, S0 ) );
-    
-    map := RingMap( map, S, S0 );
-    
-    return BasisOfRows( Pullback( map, gamma_hat ) );
-    
-end;
-
-##
 SetRelativeVariablesToZero := function( gamma )
 local R, var, B, base, m, n, map, support;
     
@@ -274,38 +170,6 @@ local R, var, B, base, m, n, map, support;
     map := RingMap( map, R, B );
     
     support := Pullback( map, gamma );
-    
-    return BasisOfRows( support );
-    
-end;
-
-##
-AffineSupportOfRelativeProjectiveScheme := function( gamma_H )
-    local S0, var, B, base, m, n, map, support;
-    
-    ## k[b][x1,x2]
-    S0 := HomalgRing( gamma_H );
-    
-    ## [x1,x2]
-    var := RelativeIndeterminatesOfPolynomialRing( S0 );
-    
-    ## k[b]
-    B := BaseRing( S0 );
-    
-    ## [b]
-    base := Indeterminates( B );
-    
-    m := Length( base );
-    n := Length( var );
-    
-    ## S0 -> B; b |-> b, x1 |-> 0, x2 |-> 0
-    map := UnionOfRows(
-                   HomalgMatrix( base, m, 1, B ),
-                   HomalgZeroMatrix( n, 1, B ) );
-    
-    map := RingMap( map, S0, B );
-    
-    support := UnderlyingNonGradedRing( B ) * Pullback( map, gamma_H );
     
     return BasisOfRows( support );
     
@@ -350,28 +214,6 @@ RemoveIrrelevantLocus := function( gamma_H )
 end;
 
 ##
-ClosedProjectionAndFrameForZeroDimensionalFiber := function( gamma )
-    local gamma_hat, gamma_H, image_closure, gamma_infinity, frame;
-    
-    gamma_hat := FiberwiseProjectiveClosure( gamma );
-    
-    gamma_H := IntersectionWithHyperplaneAtInfinity( gamma_hat );
-    
-    image_closure := AffineSupportOfRelativeProjectiveScheme( gamma_H );
-    
-    gamma_infinity := RemoveIrrelevantLocus( gamma_H );
-    
-    frame := AffineSupportOfRelativeProjectiveScheme( gamma_infinity );
-    
-    if ForAll( EntriesOfHomalgMatrix( frame ), a -> IsZero( DecideZero( a, image_closure ) ) ) then
-        Error( "no open neighborhood with 0-dimensional fibers\n" );
-    fi;
-    
-    return [ image_closure, frame ];
-    
-end;
-
-##
 IntersectWithPreimage := function( gamma, frame )
     
     frame := HomalgRing( gamma ) * frame;
@@ -384,78 +226,6 @@ IntersectWithPreimage := function( gamma, frame )
 end;
 
 ##
-FindPointOnComponent := function( gamma )
-    local R, B, base, m, var, point;
-    
-    R := HomalgRing( gamma );
-    B := BaseRing( R );
-    
-    base := IndeterminatesOfPolynomialRing( B );
-    
-    m := Length( base );
-    
-    base := HomalgMatrix( base, Length( base ), 1, R );
-    
-    var := RelativeIndeterminatesOfPolynomialRing( R );
-    
-    var := HomalgMatrix( var, Length( var ), 1, R );
-    
-    point := AMaximalIdealContaining( LeftSubmodule( gamma ) );
-    
-    if AffineDegree( point ) > 1 then
-        Error( "unable to find a point with residue class field of degree 1\n" );
-    fi;
-    
-    point := MatrixOfSubobjectGenerators( point );
-    
-    return [ gamma, EntriesOfHomalgMatrix( DecideZeroRows( var, point ) ), DecideZeroRows( base, point ) ];
-    
-end;
-
-##
-Read( "Complement.g" );
-
-##
-PseudoRandomHyperplaneInRelativeIndeterminates := function( R, codim, seed )
-local var, n, b, q, value;
-
-    if codim <= 0 then
-        return HomalgZeroMatrix( 1, 1, R );
-    fi;
-
-    ## [x1,x2]
-    var := RelativeIndeterminatesOfPolynomialRing( R );
-
-    n := Length( var );
-
-    ## The number of subsets of var of the right size
-    b := Binomial( Length( var ), codim ); 
-
-    if seed < 0 then
-        seed := -seed;
-    fi;
-    if seed = 0 then
-        seed := 1;
-    fi;
-
-    ## select a subset of variables
-    var := Combinations( var, codim )[ RemInt( seed - 1, b ) + 1 ];
-    
-    q := b; # prevent adding constants as long as possible
-    # q := Minimum( 4*codim, b, 2*n ); # be more aggressive with adding constants
-    value := QuoInt( seed, q ); # prevent adding constants as long as possible
-    
-    ## the first selected variable will be set to this value. Often, this will be zero 
-    if seed-q < 2 then
-        var[1] := var[1] - value;
-    else
-        var := List( var, a -> a - value );
-    fi;
-
-    return HomalgMatrix( var, Length( var ), 1, R );
-
-end;
-
 DecreaseCodimensionByFixingVariables := function( gamma, codim, d0, image_closure, tryhard )
 local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_image;
 
