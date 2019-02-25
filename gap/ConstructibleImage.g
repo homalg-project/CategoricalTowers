@@ -376,7 +376,10 @@ IntersectWithPreimage := function( gamma, frame )
     
     frame := HomalgRing( gamma ) * frame;
     
-    return BasisOfRows( UnionOfRows( gamma, frame ) );
+    # the first two possibilities are virtually equivalent, the thrid one is slower
+    return UnionOfRows( gamma, frame );
+    # return BasisOfRows( UnionOfRows( gamma, frame ) );
+    # return BasisWRTRelativeProductOrder( UnionOfRows( gamma, frame ) );
     
 end;
 
