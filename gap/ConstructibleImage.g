@@ -446,10 +446,12 @@ ConstructibleProjection := function( gamma )
                     Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
                     g := IntersectWithPreimage( gamma, f );
                     Info( InfoImage, 3, "Step ", counter, " ...done " );
-               
+              
+                    Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
                     if not IsZero( DecideZero( one, g ) ) then
                         Append( gamma_decomp, [ g ] );
                     fi;
+                    Info( InfoImage, 3, "Step ", counter, " ...done " );
                 
                 od;
             
