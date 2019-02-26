@@ -552,7 +552,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( bialgebroid,
-      function( cat )
+      function( )
         
         return distinguished_object();
         
