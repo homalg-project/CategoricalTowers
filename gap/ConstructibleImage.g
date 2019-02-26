@@ -369,6 +369,7 @@ LocallyClosedProjection := function( gamma )
     fi;
 
     Info( InfoImage, 2, step, counter, " max_deg..." );
+    # gamma_elim needs to be in elimination order, this should be ensured automatically
     gamma_maxdeg := MaximumDegreeInRelativeIndeterminates( gamma_elim );
     Info( InfoImage, 2, step, counter, " ...done" );
     Info( InfoImage, 4, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
