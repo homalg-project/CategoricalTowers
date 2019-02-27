@@ -5,7 +5,7 @@ Read( "Tensor.g" );
 
 ##
 DeclareInfoClass( "InfoImage" );
-SetInfoLevel( InfoImage, 2 );
+SetInfoLevel( InfoImage, 3 );
 
 ##
 BasisWRTRelativeProductOrder := function( gamma )
