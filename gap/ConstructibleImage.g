@@ -424,10 +424,10 @@ ConstructibleProjection := function( gamma )
         counter := counter + 1;
 
         image_closure_and_frame := LocallyClosedProjection( gamma : counter := counter );
-        
+
         if Length( image_closure_and_frame ) = 1 then
 
-            Info( InfoImage, 1, "Step ", counter, " did not find a hyperplane. Indeed: ", Length( image_closure_and_frame[1] ), " many prime components were found." );
+            Info( InfoImage, 1, "Step ", counter, " did not find a hyperplane. Indeed: ", Length( image_closure_and_frame[1] ), " prime components of dimensions ", List( List( image_closure_and_frame[1], LeftPresentation ), AffineDimension ), " were found." );
             Append( gamma_decomp, image_closure_and_frame[1] );
 
         else
