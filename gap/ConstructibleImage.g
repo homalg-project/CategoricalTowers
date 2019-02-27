@@ -103,7 +103,7 @@ local R, B, base, var, S, weights, gamma_sub;
     ## only the rows with degree 0
     gamma_sub := CertainRows( gamma, Positions( DegreesOfEntries( gamma ), [ 0 ] ) );
 
-    return R * gamma_sub;
+    return B * gamma_sub;
 
 end;
 
@@ -257,7 +257,7 @@ local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_im
             
             if AffineDimension( gamma0_elim ) = d0 + codim -1 then
 
-                gamma0_image := B * PolynomialsWithoutRelativeIndeterminates( gamma0_elim );
+                gamma0_image := PolynomialsWithoutRelativeIndeterminates( gamma0_elim );
 
                 if IsContained( gamma0_image, image_closure ) then
 
@@ -323,7 +323,7 @@ LocallyClosedProjection := function( gamma )
     image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
 
     Info( InfoImage, 2, step, counter, " subobject..." );
-    image_closure := IdealSubobjectOp( B * image_closure );
+    image_closure := IdealSubobjectOp( image_closure );
     Info( InfoImage, 2, step, counter, " ...done" );
 
     Info( InfoImage, 2, step, counter, " dimension..." );
