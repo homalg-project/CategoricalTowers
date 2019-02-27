@@ -105,6 +105,6 @@ AvailabilityTest := function()
 
 TestFile := "tst/testall.g",
 
-Keywords := [ "finitely presented linear categories, ring, ringoid, algebra, algebroid, bialgebra, bialgebroid, Hopf algebra, Hop algebroid" ],
+Keywords := [ "finitely presented linear categories, ring, ringoid, algebra, algebroid, bialgebra, bialgebroid, Hopf algebra, Hopf algebroid" ],
 
 ));
