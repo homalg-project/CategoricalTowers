@@ -7,30 +7,6 @@ Read( "Tensor.g" );
 DeclareInfoClass( "InfoImage" );
 SetInfoLevel( InfoImage, 3 );
 
-##
-BasisWRTRelativeProductOrder := function( gamma )
-    local R, R_elim, weights, bas;
-    
-    if IsBound( gamma!.BasisWRTRelativeProductOrder ) then
-        return gamma!.BasisWRTRelativeProductOrder;
-    fi;
-    
-    ## k[b][x1,x2]
-    R := HomalgRing( gamma );
-    
-    ## k[b][x1,x2], a version of R with different order
-    R_elim := PolynomialRingWithProductOrdering( R );
-
-    gamma := R_elim * gamma;
-    
-    bas := R * BasisOfRows( gamma );
-    
-    gamma!.BasisWRTRelativeProductOrder := bas;
-    
-    return bas;
-    
-end;
-
 ## Replace with suitable method in ring table
 IdealDecompositionOp := function( A )
 
@@ -253,7 +229,7 @@ local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_im
             H := var[i] - a;
             
             gamma0_test := UnionOfRows( gamma0, HomalgMatrix( [ H ], 1, 1, R ) );
-            gamma0_elim := BasisWRTRelativeProductOrder( gamma0_test );
+            gamma0_elim := BasisOfRows( gamma0_test );
             
             if AffineDimension( gamma0_elim ) = d0 + codim -1 then
 
@@ -295,7 +271,7 @@ end;
 
 ##
 LocallyClosedProjection := function( gamma )
-    local counter, step, R, B, d, gamma_elim, image_closure, d0, codim, decomposition, gamma_maxdeg, frame;
+    local counter, step, R_elim, B, R, d, gamma_elim, image_closure, d0, codim, decomposition, gamma_maxdeg, frame;
 
     counter := ValueOption( "counter" );
     
@@ -308,16 +284,18 @@ LocallyClosedProjection := function( gamma )
     
     Info( InfoImage, 4, step, counter, " gamma: ", EntriesOfHomalgMatrix( gamma ) );
 
-    R := HomalgRing( gamma );
+    R_elim := HomalgRing( gamma );
 
-    B := BaseRing( R );
+    B := BaseRing( R_elim );
 
+    R := B * RelativeIndeterminatesOfPolynomialRing( R_elim );
+   
     Info( InfoImage, 2, step, counter, " dimension..." );
     d := AffineDimension( gamma );
     Info( InfoImage, 2, step, counter, " ...done" );
 
     Info( InfoImage, 2, step, counter, " elimination..." );
-    gamma_elim := BasisWRTRelativeProductOrder( gamma );
+    gamma_elim := BasisOfRows( gamma );
     Info( InfoImage, 2, step, counter, " ...done" );
 
     image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
@@ -375,7 +353,7 @@ LocallyClosedProjection := function( gamma )
     Info( InfoImage, 4, step, counter, " gamma_maxdeg: ", EntriesOfHomalgMatrix( gamma_maxdeg ) );
 
     Info( InfoImage, 2, step, counter, " frame..." );
-    frame := BasisOfRows( SetRelativeVariablesToZero( RemoveIrrelevantLocus( gamma_maxdeg ) ) );
+    frame := BasisOfRows( SetRelativeVariablesToZero( R_elim * RemoveIrrelevantLocus( R * gamma_maxdeg ) ) );
     Info( InfoImage, 2, step, counter, " ...done" );
 
     Assert( 2, not IsContained( frame, image_closure ) );
@@ -386,9 +364,11 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, initialDecomposition, image, counter, gamma_decomp, one, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    local R, R_elim, initialDecomposition, image, counter, gamma_decomp, one, image_closure_and_frame, frame, frame_decomp, f, g, im;
     
     R := HomalgRing( gamma );
+
+    R_elim := PolynomialRingWithProductOrdering( R );
     
     initialDecomposition := ValueOption( "initialDecomposition" );
     if initialDecomposition = fail then
@@ -400,6 +380,8 @@ ConstructibleProjection := function( gamma )
     counter := 0;
     
     gamma_decomp := [ ];
+
+    gamma := R_elim * gamma;
     
     if not IsOne( gamma ) then
 
@@ -417,7 +399,7 @@ ConstructibleProjection := function( gamma )
 
     fi;
     
-    one := HomalgIdentityMatrix( 1, R );
+    one := HomalgIdentityMatrix( 1, R_elim );
     
     for gamma in gamma_decomp do
         
