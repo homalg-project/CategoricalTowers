@@ -32,7 +32,7 @@ InstallMethod( CanonicalObject,
   LocallyClosedApproximation );
 
 ##
-InstallMethod( StandardPairInUnderlyingHeytingAlgebra,
+InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
