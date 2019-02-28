@@ -364,10 +364,13 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, R_elim, initialDecomposition, image, counter, gamma_decomp, one, image_closure_and_frame, frame, frame_decomp, f, g, im;
+    local R, B, R_elim, initialDecomposition, image, counter, gamma_decomp, one, C, new_nodes, node,
+          image_closure_and_frame, image_closure, frame, frame_decomp, g, triv, multi_difference, im;
     
     R := HomalgRing( gamma );
-
+    
+    B := BaseRing( R );
+    
     R_elim := PolynomialRingWithProductOrdering( R );
     
     initialDecomposition := ValueOption( "initialDecomposition" );
@@ -401,47 +404,62 @@ ConstructibleProjection := function( gamma )
     
     one := HomalgIdentityMatrix( 1, R_elim );
     
-    for gamma in gamma_decomp do
+    C := DatastructureForConstructibleObject( );
+    
+    C!.init_node := NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
+    
+    while not IsDone( C ) do
+        
+        node := Pop( C );
+        
+        Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
+        g := IntersectWithPreimage( gamma, UnderlyingMatrix( MorphismOfUnderlyingCategory( node!.object ) ) );
+        Info( InfoImage, 3, "Step ", counter, " ...done " );
+        
+        Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
+        triv := IsOne( BasisOfRows( g ) );
+        Info( InfoImage, 3, "Step ", counter, " ...done " );
+        
+        if triv then
+            continue;
+        fi;
         
         counter := counter + 1;
-
-        image_closure_and_frame := LocallyClosedProjection( gamma : counter := counter );
-
+        
+        image_closure_and_frame := LocallyClosedProjection( g : counter := counter );
+        
         if Length( image_closure_and_frame ) = 1 then
 
             Info( InfoImage, 1, "Step ", counter, " did not find a suitable hyperplane. Indeed: ", Length( image_closure_and_frame[1] ), " prime components of dimensions ", List( List( image_closure_and_frame[1], LeftPresentation ), AffineDimension ), " were found." );
             Append( gamma_decomp, image_closure_and_frame[1] );
 
         else
-
-            frame := image_closure_and_frame[2];
-        
-            Info( InfoImage, 4, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
-
-            if not IsOne( frame ) then
             
+            image_closure := ClosedSubsetOfSpec( image_closure_and_frame[1] );
+            
+            frame := image_closure_and_frame[2];
+            
+            Info( InfoImage, 4, "Step ", counter, " Frame: ", EntriesOfHomalgMatrix( frame ) );
+            
+            if not IsOne( frame ) then
+                
                 Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
                 frame_decomp := IdealDecompositionOp( frame );
                 Info( InfoImage, 3, "Step ", counter, " ...done " );
-
-                for f in frame_decomp do
-    
-                    Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
-                    g := IntersectWithPreimage( gamma, f );
-                    Info( InfoImage, 3, "Step ", counter, " ...done " );
-              
-                    Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
-                    if not IsZero( DecideZero( one, g ) ) then
-                        Append( gamma_decomp, [ g ] );
-                    fi;
-                    Info( InfoImage, 3, "Step ", counter, " ...done " );
                 
-                od;
-            
+                multi_difference := List( frame_decomp, a -> image_closure - ClosedSubsetOfSpec( a ) );
+                multi_difference := CallFuncList( AsFormalMultipleDifference, multi_difference );
+                
+            else
+                
+                multi_difference := AsFormalMultipleDifference( image_closure - 0 );
+                
             fi;
-       
+            
+            Attach( node, multi_difference );
+                
             Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( image_closure_and_frame[1] ), " frame: ", EntriesOfHomalgMatrix( frame ) );
-        
+            
             Add( image, image_closure_and_frame );
 
         fi;
@@ -450,9 +468,10 @@ ConstructibleProjection := function( gamma )
     
     im := CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
     
+    im!.C := C;
+    
     SetClosure( im, im.I1 );
     
     return im;
     
 end;
-
