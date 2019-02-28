@@ -10,17 +10,11 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframe ],
 
   function( A )
-    local mat, L, biased_weak_fiber_product;
+    local mat;
     
     mat := UnderlyingMatrix( PreMorphismOfUnderlyingCategory( A ) );
     
-    L := List( PrimaryDecompositionOp( mat ), a -> AsCategoryOfRowsMorphism( a[2] ) );
-    
-    biased_weak_fiber_product := function( I, J )
-        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
-    end;
-    
-    return Iterated( L, biased_weak_fiber_product );
+    return AsCategoryOfRowsMorphism( RadicalSubobjectOp( mat ) );
     
 end );
 

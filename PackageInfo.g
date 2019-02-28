@@ -94,7 +94,7 @@ Dependencies := rec(
                    [ "Toposes", ">= 2019.01.20" ],
                    [ "Locales", ">= 2019.02.19" ],
                    [ "Modules", ">= 2018.08.25" ],
-                   [ "MatricesForHomalg", ">= 2018.11.24" ],
+                   [ "MatricesForHomalg", ">= 2018.12.03" ],
                    [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],
   SuggestedOtherPackages := [ ],
