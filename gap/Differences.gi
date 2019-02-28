@@ -259,7 +259,7 @@ InstallMethod( StandardObject,
         
   function( A )
     
-    List( StandardPairInUnderlyingHeytingAlgebra( A ), IsInitial );
+    List( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
     
     if IsInitial( A ) then
         return InitialObject( A );
@@ -286,16 +286,16 @@ InstallMethod( PairInUnderlyingLattice,
 ##
 InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
-  StandardPairInUnderlyingHeytingAlgebra );
+  StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
-  StandardPairInUnderlyingHeytingAlgebra );
+  StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( IsClosedSubobject,

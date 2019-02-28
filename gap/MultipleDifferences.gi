@@ -240,7 +240,7 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
         
         U := List( List( u, a -> a[2] ), S -> T - S );
         
-        List( U, StandardPairInUnderlyingHeytingAlgebra );
+        List( U, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
         
         U := DuplicateFreeList( U );
         

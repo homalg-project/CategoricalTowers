@@ -52,7 +52,7 @@ DeclareAttribute( "PrePairInUnderlyingLattice",
 DeclareAttribute( "NormalizedPairInUnderlyingHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences );
 
-DeclareAttribute( "StandardPairInUnderlyingHeytingAlgebra",
+DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Arguments A
