@@ -1,5 +1,5 @@
 LoadPackage( "ZariskiFrames" );
-LoadPackage( "GradedModules" );
+LoadPackage( "GradedRingForHomalg" );
 
 Read( "Tensor.g" );
 
