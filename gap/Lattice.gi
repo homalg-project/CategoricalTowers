@@ -130,7 +130,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     AddIsHomSetInhabited( join_semilattice,
       function( S, T )
         
-        return IsEqualForObjects( Coproduct( S, T ), T );
+        return IsEqualForObjects( T, Coproduct( S, T ) );
         
     end );
     
