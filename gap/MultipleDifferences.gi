@@ -212,7 +212,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
         T_new := DirectProduct( List( u, a -> a[1] ) );
         
-    until IsSubset( T_new, T );
+    until IsHomSetInhabited( T, T_new );
     
     return U;
     
@@ -246,7 +246,7 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
         
         T_new := DirectProduct( List( u, a -> a[1] ) );
         
-    until IsSubset( T_new, T );
+    until IsHomSetInhabited( T, T_new );
     
     return U;
     

@@ -246,17 +246,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
 end );
 
 ##
-InstallMethod( IsSubset,
-        "for two objects in a proset",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ],
-        
-  function( T, S )
-    
-    return IsHomSetInhabited( S, T );
-    
-end );
-
-##
 InstallMethod( Display,
         "for an object in a proset",
         [ IsMorphismInThinCategory ],

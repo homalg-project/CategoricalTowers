@@ -47,13 +47,6 @@ DeclareOperation( "IsHomSetInhabited",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  Check if <A>A</A> is bigger than <A>B</A> w.r.t. the preorder.
-#! @Arguments A, B
-#! @Returns <C>true</C> or <C>false</C>
-DeclareOperation( "IsSubset",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
 #! to the category for the basic operation <C>IsHomSetInhabited</C>.
