@@ -10,20 +10,16 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
         [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
 
   function( A, B )
-    local Ap, P, F, Bp, b;
+    local Ap, Bp, b;
     
     A := PairInUnderlyingLattice( A );
     
     Ap := A[2];
     A := A[1];
     
-    P := CapCategory( A );
-    
-    F := EquivalenceToMeetSemilatticeOfDifferences( P );
-    
     B := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( B );
     
-    B := List( B, M -> ApplyFunctor( F, M ) );
+    B := List( B, AsDifference );
     
     B := List( B, PairInUnderlyingLattice );
     
@@ -79,15 +75,10 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     ##
     AddIsHomSetInhabited( C,
       function( A, B )
-        local P, F;
-        
-        P := CapCategory( A )!.UnderlyingCategory;
-        
-        F := EquivalenceToMeetSemilatticeOfDifferences( P );
         
         A := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
         
-        A := List( A, M -> ApplyFunctor( F, M ) );
+        A := List( A, AsDifference );
         
         return ForAll( A, M -> IsHomSetInhabitedWithTypeCast( M, B ) );
         

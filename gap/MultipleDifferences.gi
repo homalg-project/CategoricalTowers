@@ -43,13 +43,8 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     ##
     AddIsHomSetInhabited( D,
       function( A, B )
-        local P, F;
         
-        P := CapCategory( A )!.UnderlyingCategory;
-        
-        F := EquivalenceToMeetSemilatticeOfDifferences( P );
-        
-        return IsHomSetInhabited( ApplyFunctor( F, A ), ApplyFunctor( F, B ) );
+        return IsHomSetInhabited( AsDifference( A ), AsDifference( B ) );
         
     end );
     
@@ -178,13 +173,8 @@ end );
 #        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
 #        
 #  function( A )
-#    local P, F;
 #    
-#    P := CapCategory( A )!.UnderlyingCategory;
-#    
-#    F := EquivalenceToMeetSemilatticeOfDifferences( P );
-#    
-#    return AsFormalMultipleDifference( - ApplyFunctor( F, A ) );
+#    return AsFormalMultipleDifference( - AsDifference( A ) );
 #    
 #end );
 
@@ -311,6 +301,22 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
     end );
     
     return squash;
+    
+end );
+
+##
+InstallMethod( AsDifference,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local P, F;
+    
+    P := CapCategory( A )!.UnderlyingCategory;
+    
+    F := EquivalenceToMeetSemilatticeOfDifferences( P );
+    
+    return ApplyFunctor( F, A );
     
 end );
 
