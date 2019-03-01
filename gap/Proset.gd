@@ -65,6 +65,32 @@ DeclareOperation( "AddIsHomSetInhabited",
 DeclareOperation( "AddIsHomSetInhabited",
         [ IsCapCategory, IsList ] );
 
+#! @Description
+#!  Check if <A>B</A> is bigger than <A>A</A> w.r.t. the preorder.
+#! @Arguments A, B
+#! @Returns <C>true</C> or <C>false</C>
+DeclareOperation( "IsEqualForObjectsIfIsHomSetInhabited",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>IsEqualForObjectsIfIsHomSetInhabited</C>.
+#! $F: A, B \mapsto \mathrm{IsEqualForObjectsIfIsHomSetInhabited}(A, B)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+        [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+        [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+        [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+        [ IsCapCategory, IsList ] );
+
 #! @Section Constructors
 
 #! @Description

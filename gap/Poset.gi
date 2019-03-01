@@ -20,4 +20,12 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
         
     end );
     
+    ##
+    AddIsEqualForObjectsIfIsHomSetInhabited( poset,
+      function( A, B )
+        
+        return IsHomSetInhabited( B, A );
+        
+    end );
+    
 end );

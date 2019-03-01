@@ -13,7 +13,13 @@ InstallValue( PROSET_METHOD_NAME_RECORD,
                                      filter_list := [ "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true
-                                    )
+                                    ),
+            IsEqualForObjectsIfIsHomSetInhabited := rec(
+                                     installation_name := "IsEqualForObjectsIfIsHomSetInhabited",
+                                     filter_list := [ "object", "object" ],
+                                     return_type := "bool",
+                                     is_merely_set_theoretic := true
+                                    ),
             )
         );
 

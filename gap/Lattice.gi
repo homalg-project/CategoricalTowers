@@ -16,7 +16,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     AddIsHomSetInhabited( meet_semilattice,
       function( S, T )
         
-        return IsEqualForObjects( DirectProduct( S, T ), S );
+        return IsEqualForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
         
     end );
     
@@ -24,7 +24,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     AddIsTerminal( meet_semilattice,
       function( A )
         
-        return IsHomSetInhabited( TerminalObject( A ), A );
+        return IsEqualForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
         
     end );
     
@@ -130,7 +130,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     AddIsHomSetInhabited( join_semilattice,
       function( S, T )
         
-        return IsEqualForObjects( T, Coproduct( S, T ) );
+        return IsEqualForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
         
     end );
     
@@ -138,7 +138,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     AddIsInitial( join_semilattice,
       function( A )
         
-        return IsHomSetInhabited( A, InitialObject( A ) );
+        return IsEqualForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
         
     end );
     
