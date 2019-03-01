@@ -91,6 +91,16 @@ InstallMethod( MeetSemilatticeOfDifferences,
     end );
     
     ##
+    AddIsInitial( D,
+      function( A )
+        
+        A := PairInUnderlyingLattice( A );
+        
+        return IsHomSetInhabited( A[1], A[2] );
+        
+    end );
+    
+    ##
     AddDirectProduct( D,
       function( L )
         local T, S;

@@ -106,6 +106,16 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     end );
     
     ##
+    AddIsInitial( C,
+      function( A )
+        
+        A := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
+        
+        return ForAll( A, IsInitial );
+        
+    end );
+    
+    ##
     AddDirectProduct( C,
       function( L )
         local l, I, U;

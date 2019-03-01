@@ -71,6 +71,14 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     end );
     
     ##
+    AddIsInitial( D,
+      function( A )
+        
+        return IsInitial( AsDifference( A ) );
+        
+    end );
+    
+    ##
     AddDirectProduct( D,
       function( L )
         
