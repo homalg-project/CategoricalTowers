@@ -47,13 +47,13 @@ DeclareProperty( "IsLocallyClosed",
 #! @Section Attributes
 
 DeclareAttribute( "PrePairInUnderlyingLattice",
-        IsObjectInMeetSemilatticeOfDifferences );
+        IsObjectInMeetSemilatticeOfDifferences, "mutable" );
 
 DeclareAttribute( "NormalizedPairInUnderlyingHeytingAlgebra",
-        IsObjectInMeetSemilatticeOfDifferences );
+        IsObjectInMeetSemilatticeOfDifferences, "mutable" );
 
 DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
-        IsObjectInMeetSemilatticeOfDifferences );
+        IsObjectInMeetSemilatticeOfDifferences, "mutable" );
 
 #! @Arguments A
 DeclareAttribute( "NormalizedObject",
