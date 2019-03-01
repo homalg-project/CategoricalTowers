@@ -74,9 +74,6 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     ##
     AddIsHomSetInhabited( C,
       function( A, B )
-        local P;
-        
-        P := CapCategory( A )!.UnderlyingCategory;
         
         A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
         
