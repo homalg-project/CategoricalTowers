@@ -4,6 +4,8 @@
 # Implementations
 #
 
+SetInfoLevel( InfoLocales, 1 );
+
 InstallValue( PROSET_METHOD_NAME_RECORD,
         rec(
             IsHomSetInhabited := rec(

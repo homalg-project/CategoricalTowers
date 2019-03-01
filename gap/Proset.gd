@@ -8,6 +8,9 @@
 
 #! Prosets are thin categories, i.e., each Hom-set is either a singleton or empty.
 
+#! @Section Info Class
+DeclareInfoClass( "InfoLocales" );
+
 #! @Section GAP Categories
 
 #! @Description
