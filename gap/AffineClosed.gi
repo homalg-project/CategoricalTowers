@@ -179,7 +179,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         S := MorphismOfUnderlyingCategory( S );
         T := MorphismOfUnderlyingCategory( T );
         
-        return not Lift( T, S ) = fail;
+        return IsLiftable( T, S );
         
     end );
     
