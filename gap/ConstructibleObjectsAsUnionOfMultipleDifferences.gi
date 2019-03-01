@@ -37,7 +37,6 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
     
 end );
 
-
 ##
 InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         "for a CAP category",

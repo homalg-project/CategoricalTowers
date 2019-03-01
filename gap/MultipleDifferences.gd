@@ -32,7 +32,7 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 DeclareAttribute( "EquivalenceToMeetSemilatticeOfDifferences",
-        IsCapCategory);
+        IsCapCategory );
 
 DeclareAttribute( "AsDifference",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
