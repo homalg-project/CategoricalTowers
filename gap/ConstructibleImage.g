@@ -202,33 +202,40 @@ IntersectWithPreimage := function( gamma, frame )
 end;
 
 ##
-DecreaseCodimensionByFixingVariables := function( gamma, codim, d0, image_closure, tryhard )
-local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_image;
+DecreaseCodimensionByFixingVariables := function( gamma, codim, d0, image_closure )
+local R_elim, B, R, var, n, values, gamma0, nrFails, a, i, H, j, gamma0_test, gamma0_elim, gamma0_image;
 
-    R := HomalgRing( gamma );
+    R_elim := HomalgRing( gamma );
 
-    B := BaseRing( R );
+    B := BaseRing( R_elim );
     
-    var := ShallowCopy( RelativeIndeterminatesOfPolynomialRing( R ) );
+    var := ShallowCopy( RelativeIndeterminatesOfPolynomialRing( R_elim ) );
+
+    R := B * var;
 
     n := Length( var );
 
-    if tryhard then
-        values := [ 0, 1, -1, 2, -2, 3, -3, 5, -5, 7, -7, 11, -11, 13, -13, 17, -17, 19, -19 ];
-    else
-        values := [ 0, 1, -1, 2, -2 ];
-    fi;
+    values := [ 0, 1, -1, 2, -2, 3, -3, 5, -5, 7, -7, 11, -11, 13, -13, 17, -17, 19, -19, "random", "random" ];
 
     gamma0 := gamma;
+
+    nrFails := 0;
 
     for a in values do
 
         i := 1;
         while i <= n do
 
-            H := var[i] - a;
+            if IsInt( a ) then
+                H := var[i] - a;
+            else
+                H := Zero( R );
+                for j in [ 1 .. n ] do
+                    H := H + (i*i-j*j+1+Random([-100..100])) * var[j];
+                od;
+            fi;
             
-            gamma0_test := UnionOfRows( gamma0, HomalgMatrix( [ H ], 1, 1, R ) );
+            gamma0_test := UnionOfRows( gamma0, HomalgMatrix( [ H ], 1, 1, R_elim ) );
             gamma0_elim := BasisOfRows( gamma0_test );
             
             if AffineDimension( gamma0_elim ) = d0 + codim -1 then
@@ -241,12 +248,26 @@ local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_im
                     Remove( var, i );
                     n := n - 1;
                     codim := codim - 1;
+                    nrFails := 0;
                     Info( InfoImage, 3, "hyperplane ", H, " works. codim: ", codim );
 
                 else
 
                     Info( InfoImage, 3, "hyperplane ", H, " decreases image" );
+
+                    # This case is intended to split of cases with components of high fiber dimension, but low image dimension
+                    # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
+                    if nrFails > 6 then
+                        gamma0_test := BasisOfRows( MatrixOfGenerators( Saturate( LeftSubmodule( R * gamma0 ), LeftSubmodule( R * gamma0_image ) ) ) );
+                        if not IsZero( DecideZero( R_elim * gamma0_test, gamma0 ) ) then
+                            Info( InfoImage, 3, "split of embedded componentes in the image" );
+                            gamma0 := BasisOfRows( R_elim * MatrixOfGenerators( Saturate( LeftSubmodule( R * gamma0 ), LeftSubmodule( gamma0_test ) ) ) );
+                            return [ [ gamma0, R_elim * gamma0_test ] ];
+                        fi;
+                    fi;
+
                     i := i + 1;
+                    nrFails := nrFails + 1;
 
                 fi;
 
@@ -254,6 +275,7 @@ local R, B, var, n, values, gamma0, a, i, H, gamma0_test, gamma0_elim, gamma0_im
 
                 Info( InfoImage, 3, "hyperplane ", H, " does not decrease dimension" );
                 i := i + 1;
+                nrFails := nrFails + 1;
 
             fi;
 
@@ -314,7 +336,13 @@ LocallyClosedProjection := function( gamma )
 
     if codim > 0 then
       
-        gamma_elim := DecreaseCodimensionByFixingVariables( gamma_elim, codim, d0, image_closure, false );
+        gamma_elim := DecreaseCodimensionByFixingVariables( gamma_elim, codim, d0, image_closure );
+        
+        # if this method induces a decomposition, the return it and let the main routine handle it
+        if IsList( gamma_elim[1] ) then
+            return gamma_elim;
+        fi;
+
         codim := gamma_elim[2];
         gamma_elim := gamma_elim[1];
 
@@ -330,9 +358,9 @@ LocallyClosedProjection := function( gamma )
 
         if Length( decomposition ) = 1 then
 
-            gamma_elim := DecreaseCodimensionByFixingVariables( gamma_elim, codim, d0, image_closure, true );
-            codim := gamma_elim[2];
-            gamma_elim := gamma_elim[1];
+            if codim > 0 then
+                Error( "give up in trying to bring the fiber dimension down to 0" );
+            fi;
 
         else
 
@@ -342,9 +370,6 @@ LocallyClosedProjection := function( gamma )
 
     fi;
     
-    if codim > 0 then
-        Error( "give up in trying to bring the fiber dimension down to 0" );
-    fi;
 
     Info( InfoImage, 2, step, counter, " max_deg..." );
     # gamma_elim needs to be in elimination order, this should be ensured automatically
