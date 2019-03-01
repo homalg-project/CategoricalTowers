@@ -12,6 +12,7 @@ ReadPackage( "Locales", "gap/CoHeytingAlgebra.gi");
 ReadPackage( "Locales", "gap/BooleanAlgebra.gi");
 ReadPackage( "Locales", "gap/Differences.gi");
 ReadPackage( "Locales", "gap/MultipleDifferences.gi");
+ReadPackage( "Locales", "gap/Tools.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjects.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfDifferences.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfMultipleDifferences.gi");
