@@ -184,6 +184,22 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     end );
     
     ##
+    if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
+        
+        ##
+        AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiCoframe,
+          function( S, T )
+            
+            S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
+            T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+            
+            return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
+            
+        end );
+        
+    fi;
+    
+    ##
     AddTerminalObject( ZariskiCoframe,
       function( arg )
         local T;
