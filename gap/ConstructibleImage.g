@@ -475,3 +475,5 @@ ConstructibleProjection := function( gamma )
     return im;
     
 end;
+
+Read( "OldConstructibleImage.g" );
