@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter The coframe of Zariski closed subsets of an affine scheme
+#! @Chapter The coframe of Zariski open subsets in an affine variety
 
 #! @Section Constructors
 

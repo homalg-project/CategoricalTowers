@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter The frame of Zariski open subsets of an affine scheme
+#! @Chapter The frame of Zariski open subsets in an affine variety
 
 #! @Section Constructors
 
