@@ -25,7 +25,7 @@ DeclareCategory( "IsMorphismInZariskiFrameOfAnAffineVariety",
 #! @Section Constructors
 
 #! @Description
-#!  Construct the Zariski frame of open sets defined as the complements of
+#!  Construct the Zariski frame of open sets in an affine variety defined as the complements of
 #!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns a &CAP; category
@@ -34,7 +34,7 @@ DeclareAttribute( "ZariskiFrameOfAffineSpectrumUsingCategoryOfRows",
 
 #! @Description
 #!  Construct a Zariski open subset (as an object in the Zariski frame
-#!  of open subsets) from a morphism <A>I</A>=<C>AsCategoryOfRowsMorphism</C>( <A>mat</A> )
+#!  of open subsets in an affine variety) from a morphism <A>I</A>=<C>AsCategoryOfRowsMorphism</C>( <A>mat</A> )
 #!  in the category of rows with <C>RankOfObject</C>( <C>Range</C>( <A>I</A> ) ) = 1.
 #!  The morphism <A>I</A> stands for its module-theoretic image which is an ideal.
 #! @Arguments I
