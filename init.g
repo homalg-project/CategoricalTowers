@@ -11,3 +11,4 @@ ReadPackage( "ZariskiFrames", "gap/Varieties.gd");
 ReadPackage( "ZariskiFrames", "gap/Affine.gd");
 ReadPackage( "ZariskiFrames", "gap/AffineOpen.gd");
 ReadPackage( "ZariskiFrames", "gap/AffineClosed.gd");
+ReadPackage( "ZariskiFrames", "gap/RelativeAffineVarieties.gd");
