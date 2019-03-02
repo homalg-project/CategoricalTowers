@@ -4,7 +4,23 @@
 # Declarations
 #
 
-#! @Chapter The coframe of Zariski open subsets in an affine variety
+#! @Chapter The coframe of Zariski closed subsets in an affine variety
+
+#! @Section GAP Categories
+
+#! @Description
+#!  The &GAP; category of objects in a Zariski coframe of an affine variety.
+#! @Arguments object
+DeclareCategory( "IsObjectInZariskiCoframeOfAnAffineVariety",
+        IsObjectInZariskiCoframe and
+        IsObjectInZariskiFrameOrCoframeOfAnAffineVariety );
+
+#! @Description
+#!  The &GAP; category of morphisms in a Zariski coframe of an affine variety.
+#! @Arguments morphism
+DeclareCategory( "IsMorphismInZariskiCoframeOfAnAffineVariety",
+        IsMorphismInZariskiCoframe and
+        IsMorphismInZariskiFrameOrCoframeOfAnAffineVariety );
 
 #! @Section Constructors
 

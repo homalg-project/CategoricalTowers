@@ -166,9 +166,9 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
     
-    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrame );
+    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAnAffineVariety );
     
-    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrame );
+    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAnAffineVariety );
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
     
@@ -293,8 +293,8 @@ end );
 
 ##
 InstallMethod( IsClosedSubobject,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame ],
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety ],
 
   function( A )
     
@@ -304,8 +304,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame ],
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety ],
 
   function( A )
     local I, n;
@@ -328,8 +328,8 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame ],
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety ],
 
   function( A )
     
@@ -342,8 +342,8 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame and IsInitial ],
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety and IsInitial ],
 
   function( A )
     
@@ -353,8 +353,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame ],
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety ],
 
   function( A )
     

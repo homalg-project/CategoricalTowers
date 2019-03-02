@@ -6,8 +6,8 @@
 
 ##
 InstallMethod( ReducedMorphismOfUnderlyingCategory,
-        "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe ],
+        "for an object in a Zariski frame or coframe of an affine variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
 
   function( A )
     local mat;

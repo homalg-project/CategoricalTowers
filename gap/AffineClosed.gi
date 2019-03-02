@@ -166,9 +166,9 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
     
-    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframe );
+    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
     
-    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframe );
+    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
     
     ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
@@ -293,8 +293,8 @@ end );
 
 ##
 InstallMethod( IsOpen,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
 
   function( A )
     
@@ -304,8 +304,8 @@ end );
 
 ##
 InstallMethod( Dimension,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
 
   function( A )
     
@@ -315,8 +315,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
 
   function( A )
     local I, n;
@@ -339,8 +339,8 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
 
   function( A )
     
@@ -353,8 +353,8 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe and IsInitial ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety and IsInitial ],
 
   function( A )
     
@@ -364,8 +364,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
 
   function( A )
     
