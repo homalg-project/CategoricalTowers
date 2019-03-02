@@ -323,6 +323,7 @@ LocallyClosedProjection := function( gamma )
     gamma_elim := BasisOfRows( gamma );
     Info( InfoImage, 2, step, counter, " ...done" );
 
+    # ToDo: BasisOfRows weg
     image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
 
     Info( InfoImage, 2, step, counter, " subobject..." );
@@ -332,7 +333,8 @@ LocallyClosedProjection := function( gamma )
     Info( InfoImage, 2, step, counter, " dimension..." );
     d0 := AffineDimension( image_closure );
     Info( InfoImage, 2, step, counter, " ...done" );
-    
+   
+    # ToDo: fiber dim 
     codim := d - d0;
 
     Info( InfoImage, 1, step, counter, " ", d0, "+", codim );
