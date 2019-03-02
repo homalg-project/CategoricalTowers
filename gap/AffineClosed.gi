@@ -162,6 +162,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiCoframe := CreateCapCategory( name );
     
+    SetUnderlyingRing( ZariskiCoframe, R );
+    
     ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
     
     AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframe );
