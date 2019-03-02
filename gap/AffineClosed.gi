@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets
+# ZariskiFrames: The coframe of Zariski closed subsets in an affine variety
 #
 # Implementations
 #
