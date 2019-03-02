@@ -52,7 +52,7 @@ local I, p;
 end;
 
 ##
-PolynomialsWithoutRelativeIndeterminates := function( gamma )
+PolynomialsWithoutRelativeIndeterminatesTmp := function( gamma )
 local R, B, base, var, S, weights, gamma_sub;
     
     ## k[b][x1,x2]
@@ -240,7 +240,7 @@ local R_elim, B, R, var, n, values, gamma0, nrFails, a, i, H, j, gamma0_test, ga
             
             if AffineDimension( gamma0_elim ) = d0 + codim -1 then
 
-                gamma0_image := PolynomialsWithoutRelativeIndeterminates( gamma0_elim );
+                gamma0_image := PolynomialsWithoutRelativeIndeterminatesTmp( gamma0_elim );
 
                 if IsContained( gamma0_image, image_closure ) then
 
@@ -324,7 +324,7 @@ LocallyClosedProjection := function( gamma )
     Info( InfoImage, 2, step, counter, " ...done" );
 
     # ToDo: BasisOfRows weg
-    image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminates( gamma_elim ) );
+    image_closure := BasisOfRows( PolynomialsWithoutRelativeIndeterminatesTmp( gamma_elim ) );
 
     Info( InfoImage, 2, step, counter, " subobject..." );
     image_closure := IdealSubobjectOp( image_closure );
