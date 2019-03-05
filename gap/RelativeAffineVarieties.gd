@@ -9,13 +9,13 @@
 #! @Section Attributes
 
 #!
-DeclareAttribute( "FunctorClosureOfProjectionBetweenZariskiCoframes",
+DeclareAttribute( "FunctorImageClosureOfProjectionBetweenZariskiCoframes",
         IsCapCategory );
 #!
-DeclareAttribute( "ClosureOfProjection",
+DeclareAttribute( "ImageClosureOfProjection",
         IsObjectInZariskiCoframeOfAnAffineVariety );
 
 #! @Section Operations
 
 #!
-DeclareGlobalFunction( "DecreaseFiberDimensionWithoutAlteringClosureOfProjection" );
+DeclareGlobalFunction( "DecreaseFiberDimensionWithoutAlteringImageClosureOfProjection" );

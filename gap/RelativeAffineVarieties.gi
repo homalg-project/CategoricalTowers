@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
+InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
         "for a CAP category",
         [ IsCapCategory and IsThinCategory ],
         
@@ -54,21 +54,21 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
 end );
 
 ##
-InstallMethod( ClosureOfProjection,
+InstallMethod( ImageClosureOfProjection,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( gamma )
     local F;
     
-    F := FunctorClosureOfProjectionBetweenZariskiCoframes( CapCategory( gamma ) );
+    F := FunctorImageClosureOfProjectionBetweenZariskiCoframes( CapCategory( gamma ) );
     
     return ApplyFunctor( F, gamma );
     
 end );
 
 ##
-InstallGlobalFunction( DecreaseFiberDimensionWithoutAlteringClosureOfProjection,
+InstallGlobalFunction( DecreaseFiberDimensionWithoutAlteringImageClosureOfProjection,
   function( gamma )
     
     ## TODO: gamma -> [ gamma_{1,0}, [ gamma_2, ..., gamma_n ] ]
