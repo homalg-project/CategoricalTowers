@@ -16,7 +16,7 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
     
     T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) );
     
-    pi := CapFunctor( "Functor describing the closure of the projection between a Zariski coframe and its base coframe", S, T );
+    pi := CapFunctor( "Functor describing the closure of the projection between an relative affine Zariski coframe and its base coframe", S, T );
     
     AddObjectFunction( pi,
       function( obj )
@@ -55,8 +55,8 @@ end );
 
 ##
 InstallMethod( ClosureOfProjection,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( gamma )
     local F;

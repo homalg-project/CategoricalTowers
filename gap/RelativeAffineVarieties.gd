@@ -13,7 +13,7 @@ DeclareAttribute( "FunctorClosureOfProjectionBetweenZariskiCoframes",
         IsCapCategory );
 #!
 DeclareAttribute( "ClosureOfProjection",
-        IsObjectInZariskiCoframe );
+        IsObjectInZariskiCoframeOfAnAffineVariety );
 
 #! @Section Operations
 
