@@ -62,3 +62,10 @@ DeclareAttribute( "CanonicalObject",
 #! @Returns a &CAP; morphism
 DeclareOperation( "MorphismOfUnderlyingCategory",
         [ IsObjectInZariskiFrameOrCoframe ] );
+
+#! @Description
+#!  Check if <A>A</A> is bigger than <A>B</A> w.r.t. inclusion.
+#! @Arguments A, B
+#! @Returns <C>true</C> or <C>false</C>
+DeclareOperation( "IsSubset",
+        [ IsObjectInZariskiFrameOrCoframe, IsObjectInZariskiFrameOrCoframe ] );
