@@ -314,13 +314,13 @@ LocallyClosedProjection := function( gamma )
     B := BaseRing( R_elim );
 
     R := B * RelativeIndeterminatesOfPolynomialRing( R_elim );
-   
-    Info( InfoImage, 2, step, counter, " dimension..." );
-    d := AffineDimension( gamma );
-    Info( InfoImage, 2, step, counter, " ...done" );
 
     Info( InfoImage, 2, step, counter, " elimination..." );
     gamma_elim := BasisOfRows( gamma );
+    Info( InfoImage, 2, step, counter, " ...done" );
+
+    Info( InfoImage, 2, step, counter, " dimension..." );
+    d := AffineDimension( gamma_elim );
     Info( InfoImage, 2, step, counter, " ...done" );
 
     # ToDo: BasisOfRows weg
