@@ -152,7 +152,7 @@ end );
 ##
 InstallGlobalFunction( UnionOfDifferences,
   function( arg )
-    local A, C;
+    local A, arg1, C;
     
     A := rec( );
     
@@ -171,8 +171,16 @@ InstallGlobalFunction( UnionOfDifferences,
     
     arg := Flat( arg );
     
+    arg1 := arg[1];
+    
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences(
-                 CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( arg1 )[1] ) );
+    
+    arg := Filtered( arg, D -> not IsInitial( D ) );
+    
+    if arg = [ ] then
+        arg := [ arg1 ];
+    fi;
     
     ObjectifyObjectForCAPWithAttributes( A, C,
             ListOfPreObjectsInMeetSemilatticeOfDifferences, arg
