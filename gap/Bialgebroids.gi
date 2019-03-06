@@ -313,11 +313,53 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( m )
+      function( alpha )
+        local m, v, w;
         
-        m := UnderlyingQuiverAlgebraElement( m );
+        m := UnderlyingQuiverAlgebraElement( alpha );
         
-        return IsPath( m ) and IsIdenticalObj( QuiverOfPath( m ), UnderlyingQuiver( category ) );
+        if not IsIdenticalObj( AlgebraOfElement( m ), UnderlyingQuiverAlgebra( category ) ) then
+            
+            return false;
+            
+        fi;
+        
+        if IsZero( m ) then
+            
+            return true;
+            
+        fi;
+        
+        if not IsUniform( m ) then
+            
+            return false;
+            
+        fi;
+        
+        if IsQuotientOfPathAlgebraElement( m ) then
+            
+            m := Representative( m );
+            
+        fi;
+        
+        v := Source( LeadingPath( m ) ); 
+        
+        if not ( UnderlyingVertex( Source( alpha ) ) = v ) then
+            
+            return false;
+            
+        fi;
+        
+        w := Target( LeadingPath( m ) );
+        
+        if not ( UnderlyingVertex( Range( alpha ) ) = w ) then
+            
+            return false;
+            
+        fi;
+        
+        # all tests passed, so it is well-defined
+        return true;
         
       end );
     
