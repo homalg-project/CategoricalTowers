@@ -14,9 +14,13 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
     
     gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
     
-    gamma := MaximalDegreePartOfColumnMatrix( gamma );
-    
     R := HomalgRing( gamma );
+    
+    R := PolynomialRingWithProductOrdering( R );
+    
+    gamma := BasisOfRows( R * gamma );
+    
+    gamma := MaximalDegreePartOfColumnMatrix( gamma );
     
     var := RelativeIndeterminatesOfPolynomialRing( R );
     
