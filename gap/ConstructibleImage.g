@@ -257,7 +257,7 @@ local R_elim, B, R, var, n, values, gamma0, nrFails, a, i, H, j, gamma0_test, ga
 
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
-                    if nrFails > 6 then
+                    if nrFails > n then
                         Info( InfoImage, 3, "try splitting fiber..." );
                         gamma0_test := BasisOfRows( MatrixOfGenerators( Saturate( LeftSubmodule( R * gamma0 ), LeftSubmodule( R * gamma0_image ) ) ) );
                         Info( InfoImage, 3, "...done" );
