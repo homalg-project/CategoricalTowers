@@ -15,7 +15,15 @@ DeclareAttribute( "FunctorImageClosureOfProjectionBetweenZariskiCoframes",
 DeclareAttribute( "ImageClosureOfProjection",
         IsObjectInZariskiCoframeOfAnAffineVariety );
 
+#!
+DeclareAttribute( "FunctorPreimageOfProjectionBetweenZariskiCoframes",
+        IsCapCategory );
+
 #! @Section Operations
+
+#!
+DeclareOperation( "PreimageOfProjection",
+        [ IsHomalgRing, IsObjectInZariskiCoframeOfAnAffineVariety ] );
 
 #!
 DeclareGlobalFunction( "DecreaseFiberDimensionWithoutAlteringImageClosureOfProjection" );

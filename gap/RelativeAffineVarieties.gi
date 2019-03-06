@@ -68,6 +68,58 @@ InstallMethod( ImageClosureOfProjection,
 end );
 
 ##
+InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
+        "for a CAP category",
+        [ IsCapCategory and IsThinCategory ],
+        
+  function( T )
+    local R, S, pi_;
+    
+    R := UnderlyingRing( T );
+    
+    S := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) );
+    
+    pi_ := CapFunctor( "Functor describing the preimage of the projection between an relative affine Zariski coframe and its base coframe", S, T );
+    
+    AddObjectFunction( pi_,
+      function( obj )
+        
+        obj := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
+        
+        obj := R * obj;
+        
+        return ClosedSubsetOfSpec( obj );
+        
+    end );
+    
+    AddMorphismFunction( pi_,
+      function( new_source, mor, new_range )
+        
+        return UniqueMorphism( new_source, new_range );
+        
+    end );
+    
+    return pi_;
+    
+end );
+
+##
+InstallMethod( PreimageOfProjection,
+        "for a homalg ring and an object in a Zariski coframe of an affine variety",
+        [ IsHomalgRing, IsObjectInZariskiCoframeOfAnAffineVariety ],
+        
+  function( R, beta )
+    local T, pi_;
+    
+    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
+    pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
+    
+    return ApplyFunctor( pi_, beta );
+    
+end );
+
+##
 InstallGlobalFunction( DecreaseFiberDimensionWithoutAlteringImageClosureOfProjection,
   function( gamma )
     
