@@ -314,6 +314,19 @@ InstallMethod( Dimension,
 end );
 
 ##
+InstallMethod( IrreducibleComponents,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+
+  function( A )
+    
+    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    
+    return List( RadicalDecompositionOp( A ), ClosedSubsetOfSpec );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],

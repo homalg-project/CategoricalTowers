@@ -46,6 +46,10 @@ DeclareAttribute( "StandardMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Arguments A
+DeclareAttribute( "IrreducibleComponents",
+        IsObjectInZariskiFrameOrCoframe );
+
+#! @Arguments A
 DeclareAttribute( "LocallyClosedApproximation",
         IsObjectInZariskiFrameOrCoframe );
 
