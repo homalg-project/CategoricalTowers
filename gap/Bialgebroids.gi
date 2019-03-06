@@ -382,13 +382,15 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     ##
     AddIdentityMorphism( category,
       function( object )
-        local A;
+        local quiver_algebra, id;
         
-        A := UnderlyingQuiverAlgebra( CapCategory( object ) );
+        quiver_algebra := UnderlyingQuiverAlgebra( CapCategory( object ) );
+        
+        id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
         
         return MorphismInAlgebroid(
                        object,
-                       A.(String( UnderlyingVertex( object ) ) ),
+                       id,
                        object );
         
     end );
