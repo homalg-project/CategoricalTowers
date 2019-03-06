@@ -59,11 +59,11 @@ InstallMethod( ImageClosureOfProjection,
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( gamma )
-    local F;
+    local pi;
     
-    F := FunctorImageClosureOfProjectionBetweenZariskiCoframes( CapCategory( gamma ) );
+    pi := FunctorImageClosureOfProjectionBetweenZariskiCoframes( CapCategory( gamma ) );
     
-    return ApplyFunctor( F, gamma );
+    return ApplyFunctor( pi, gamma );
     
 end );
 
