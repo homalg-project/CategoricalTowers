@@ -17,7 +17,7 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
     Ap := A[2];
     A := A[1];
     
-    B := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( B );
+    B := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( B );
     
     B := List( B, AsDifference );
     
@@ -65,7 +65,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
       function( A )
         local U;
         
-        U := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
+        U := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
         
         return ForAll( U, IsWellDefinedForObjects );
         
@@ -75,7 +75,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddIsHomSetInhabited( C,
       function( A, B )
         
-        A := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
+        A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
         
         A := List( A, AsDifference );
         
@@ -109,7 +109,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddIsInitial( C,
       function( A )
         
-        A := ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
+        A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
         
         return ForAll( A, IsInitial );
         
@@ -120,7 +120,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
       function( L )
         local l, I, U;
         
-        L := List( L, ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences );
+        L := List( L, ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
         
         l := [ 1 .. Length( L ) ];
         
@@ -138,7 +138,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddCoproduct( C,
       function( L )
         
-        L := List( L, ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences );
+        L := List( L, ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
         
         ## an advantage of this this specific data structure for constructible objects
         return CallFuncList( UnionOfMultipleDifferences, Concatenation( L ) );
@@ -161,7 +161,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     arg := List( arg,
                  function( A )
                    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
-                       return ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A );
+                       return ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
                    elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
                        return A;
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
@@ -244,21 +244,21 @@ InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
 end );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences ],
         
@@ -271,7 +271,7 @@ InstallMethod( Display,
 
   function( A )
     
-    Perform( ListOfObjectsOfUnderlyingMeetSemilatticeOfMultipleDifferences( A ), Display );
+    Perform( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ), Display );
     
     Print( "\nA constructible object given by the union of the above formal multiple differences\n" );
     
