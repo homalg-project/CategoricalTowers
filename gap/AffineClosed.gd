@@ -48,6 +48,11 @@ DeclareOperation( "ClosedSubsetOfSpec",
 DeclareOperation( "ClosedSubsetOfSpec",
         [ IsHomalgMatrix ] );
 
+#! @Arguments mat
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpec",
+        [ IsHomalgRingElement ] );
+
 #! @Arguments str, R
 #! @Group ClosedSubsetOfSpec
 DeclareOperation( "ClosedSubsetOfSpec",

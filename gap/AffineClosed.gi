@@ -42,6 +42,17 @@ InstallMethod( ClosedSubsetOfSpec,
 end );
 
 ##
+InstallMethod( ClosedSubsetOfSpec,
+        "for a homalg matrix",
+        [ IsHomalgRingElement ],
+
+  function( r )
+    
+    return ClosedSubsetOfSpec( HomalgMatrix( r, 1, 1, HomalgRing( r ) ) );
+
+end );
+    
+##
 InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
