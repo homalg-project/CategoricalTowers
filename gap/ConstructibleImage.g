@@ -1,5 +1,6 @@
 LoadPackage( "ZariskiFrames" );
 LoadPackage( "GradedRingForHomalg" );
+LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
 
@@ -499,6 +500,8 @@ ConstructibleProjection := function( gamma )
     im := CallFuncList( UnionOfDifferences, List( image, a -> ClosedSubsetOfSpec( a[1] ) - ClosedSubsetOfSpec( a[2] ) ) );
     
     im!.C := C;
+    
+    im!.Digraph := Digraph( Concatenation( C!.pos_nodes, C!.neg_nodes ), function( a, b ) return IsIdenticalObj( a!.parent, b ); end );
     
     SetClosure( im, im.I1 );
     
