@@ -328,13 +328,17 @@ end );
 InstallMethod( IrreducibleComponents,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+  function ( A )
+  local components;
 
-  function( A )
-    
-    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
-    
-    return List( RadicalDecompositionOp( A ), ClosedSubsetOfSpec );
-    
+    components := RadicalDecompositionOp( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+
+    if Length( components ) = 1 then
+        return [ A ];
+    else
+        return List( components, ClosedSubsetOfSpec );
+    fi;
+
 end );
 
 ##
