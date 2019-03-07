@@ -12,13 +12,13 @@
 #!  The &GAP; category of objects in ...
 #! @Arguments object
 DeclareCategory( "IsConstructibleObjectAsUnionOfMultipleDifferences",
-        IsObjectInThinCategory );
+        IsConstructibleObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in ...
 #! @Arguments morphism
 DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences",
-        IsMorphismInThinCategory );
+        IsMorphismBetweenConstructibleObjects );
 
 #! @Section Attributes
 
