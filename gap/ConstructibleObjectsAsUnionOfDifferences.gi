@@ -43,7 +43,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
-    local name, C;
+    local name, C, BinaryDirectProduct;
     
     name := "The Boolean algebra of constructible objects of ";
     
@@ -113,14 +113,13 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
     end );
     
-    ##
-    AddDirectProduct( C,
-      function( L )
-        local l, I, U;
+    BinaryDirectProduct := function( A, B )
+        local L, l, I, U;
         
-        L := List( L, ListOfObjectsInMeetSemilatticeOfDifferences );
+        L := [ ListOfObjectsInMeetSemilatticeOfDifferences( A ),
+               ListOfObjectsInMeetSemilatticeOfDifferences( B ) ];
         
-        l := [ 1 .. Length( L ) ];
+        l := [ 1, 2 ];
         
         ## TODO: replace Cartesian -> IteratorOfCartesianProduct once GAP supports List with an iterator as 1st argument
         I := Cartesian( List( L, a -> [ 1 .. Length( a ) ] ) );
@@ -129,6 +128,14 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         U := List( I, i -> DirectProduct( List( l, j -> L[j][i[j]] ) ) );
         
         return CallFuncList( UnionOfDifferences, U );
+        
+    end;
+    
+    ##
+    AddDirectProduct( C,
+      function( L )
+        
+        return Iterated( L, BinaryDirectProduct );
         
     end );
     
