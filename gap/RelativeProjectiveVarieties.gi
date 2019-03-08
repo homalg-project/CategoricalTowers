@@ -10,21 +10,21 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( gamma )
-    local R, var, B, base, S, weights;
+    local R, R_elim, var, B, base, S, weights;
     
     gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
     
     R := HomalgRing( gamma );
+   
+    R_elim := PolynomialRingWithProductOrdering( R );
     
-    R := PolynomialRingWithProductOrdering( R );
-    
-    gamma := BasisOfRows( R * gamma );
+    gamma := BasisOfRows( R_elim * gamma );
     
     gamma := MaximalDegreePartOfColumnMatrix( gamma );
     
-    var := RelativeIndeterminatesOfPolynomialRing( R );
+    var := RelativeIndeterminatesOfPolynomialRing( R_elim );
     
-    B := BaseRing( R );
+    B := BaseRing( R_elim );
     
     base := IndeterminatesOfPolynomialRing( B );
     
