@@ -72,7 +72,6 @@ local R, B, var, n, values, Gamma0, nrFails, image_closure, d0, fiber_dim, addit
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
                     if nrFails > 2*n then
-                    # if nrFails > 8 then
                         Info( InfoImage, 3, "try splitting fiber..." );
                         Gamma0_test := CoexponentialOnObjects( Gamma0, PreimageOfProjection( R, Gamma0_image ) );
                         Info( InfoImage, 3, "...done" );
@@ -81,6 +80,7 @@ local R, B, var, n, values, Gamma0, nrFails, image_closure, d0, fiber_dim, addit
                             Info( InfoImage, 3, "...done (yes)" );
                             Info( InfoImage, 3, "split of componentes in the fiber..." );
                             Gamma0 := CoexponentialOnObjects( Gamma0, Gamma0_test );
+                            # We continue with one of the components, but might need to recompute values
                             image_closure := ImageClosureOfProjection( Gamma0 );
                             d0 := Dimension( image_closure );
                             fiber_dim := Dimension( Gamma0 ) - d0;
@@ -150,15 +150,20 @@ LocallyClosedProjection := function( Gamma )
     Gamma0 := Gamma;
 
     if fiber_dim > 0 then
-      
-        l := DecreaseCodimensionByFixingVariables( Gamma0 );
  
+        # Gamma0 satisfies two conditions
+        # (i) It has the same image closure as Gamma
+        # (ii) We have reason to believe that the fibers have dimension zero (on at least a component of the image closure)
+        l := DecreaseCodimensionByFixingVariables( Gamma0 );
         Gamma0 := l[1];
        
+        # This Gamma0 cannot be constructed in all cases
+        # The restrictions lie on additional components, which could not be treated, and are instead collected here
         if Length( l[2] ) > 0 then
 
             Append( additional_components, l[2] );
 
+            # if additional components are present, then the image needs to be recomputed
             Info( InfoImage, 2, step, counter, " image closure..." );
             image_closure := ImageClosureOfProjection( Gamma0 );
             Info( InfoImage, 2, step, counter, " ...done" );
@@ -179,6 +184,9 @@ LocallyClosedProjection := function( Gamma )
 
     fi;
 
+    # Sometimes (rarely!), we fail to reduce the dimension in the fibers to zero
+    # This should not happen, if Gamma0 is irreducible
+    # Hence, we compute its associated primes here, and treat them all indepedently
     if fiber_dim > 0 then
 
         Info( InfoImage, 2, step, counter, " unlucky decomposition in total space..." );
