@@ -22,28 +22,6 @@ DeclareRepresentation( "IsCapCategoryMorphismInAlgebroidRep",
 
 ####################################
 #
-# families and types:
-#
-####################################
-
-# new families:
-BindGlobal( "TheFamilyOfObjectsInAlgebroids",
-        NewFamily( "TheFamilyOfObjectsInAlgebroids" ) );
-
-BindGlobal( "TheFamilyOfMorphismsInAlgebroids",
-        NewFamily( "TheFamilyOfMorphismsInAlgebroids" ) );
-
-# new types:
-BindGlobal( "TheTypeObjectInAlgebroid",
-        NewType( TheFamilyOfObjectsInAlgebroids,
-                IsCapCategoryObjectInAlgebroidRep ) );
-
-BindGlobal( "TheTypeMorphismInAlgebroid",
-        NewType( TheFamilyOfMorphismsInAlgebroids,
-                IsCapCategoryMorphismInAlgebroidRep ) );
-
-####################################
-#
 # methods for attributes:
 #
 ####################################
@@ -693,6 +671,9 @@ InstallMethod( Algebroid,
         SetFilterObj( A, IsAlgebraAsCategory );
     fi;
     
+    AddObjectRepresentation( A, IsCapCategoryObjectInAlgebroidRep );
+    AddMorphismRepresentation( A, IsCapCategoryMorphismInAlgebroidRep );
+    
     A!.Vertices := rec( );
     A!.Arrows := rec( );
     
@@ -832,9 +813,10 @@ InstallMethod( \.,
         if IsBound( B!.Vertices.(name) ) then
             return B!.Vertices.(name);
         fi;
-        ObjectifyWithAttributes( b, TheTypeObjectInAlgebroid,
-                UnderlyingVertex, a
-                );
+        ObjectifyObjectForCAPWithAttributes(
+            b, B,
+            UnderlyingVertex, a
+        );
         B!.Vertices.(name) := b;
     elif IsArrow( a ) then
         if IsBound( B!.Arrows.(name) ) then
@@ -849,8 +831,6 @@ InstallMethod( \.,
         Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
     fi;
     
-    Add( B, b );
-    
     return b;
      
 end );
@@ -861,12 +841,11 @@ InstallMethod( ObjectInAlgebroid,
   function( A, v )
     local o;
     o := rec();
-    ObjectifyWithAttributes( o, TheTypeObjectInAlgebroid,
-            UnderlyingVertex, v
-            );
-    
+    ObjectifyObjectForCAPWithAttributes(
+        o, A,
+        UnderlyingVertex, v
+    );
     A!.Vertices.(String(v)) := o;
-    Add( A, o );
     return o;
 end );
 
@@ -909,13 +888,12 @@ InstallMethod( MorphismInAlgebroid,
 
     A := CapCategory( S );
     
-    ObjectifyWithAttributes( mor, TheTypeMorphismInAlgebroid,
+    ObjectifyMorphismForCAPWithAttributes(
+            mor, A,
             Source, S,
             Range, T,
             UnderlyingQuiverAlgebraElement, path
             );
-    
-    Add( A, mor );
     
     return mor;
     
