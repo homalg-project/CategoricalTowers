@@ -119,13 +119,6 @@ DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsAlgebroid );
 
 #! @Description
-#!  The base ring of the algebroid <A>A</A>.
-#! @Arguments A
-#! @Returns a ring
-DeclareAttribute( "BaseRing",
-        IsAlgebroid );
-
-#! @Description
 #!  The finite set of objects of the finitely presented algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a list

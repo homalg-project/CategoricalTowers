@@ -712,17 +712,6 @@ InstallMethod( Algebroid,
     
 end );
 
-InstallMethod( BaseRing,
-        "for an algebroid",
-        [ IsAlgebroid ],
-
-  function( A )
-
-    return LeftActingDomain( UnderlyingQuiverAlgebra( A ) );
-
-end );
-
-
 
 ##
 InstallMethod( Multiplication,
