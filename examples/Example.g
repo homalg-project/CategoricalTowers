@@ -84,11 +84,11 @@ IsClosed( t );
 t := StandardObject( t );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( t );
-#! V( <x+y-1,y^2-y> ) \ 0
+#! V( <x+y-1,y^2-y> ) \ ∅
 z := c - c;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 z := StandardObject( z );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
-#! 0 \ 0
+#! ∅ \ ∅
 #! @EndExample
