@@ -22,3 +22,7 @@
 
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
+
+@Subsection Algebroids over the integers
+@InsertChunk over_Z
+

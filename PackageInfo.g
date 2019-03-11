@@ -96,6 +96,8 @@ Dependencies := rec(
                    [ "QPA", ">= 2.0" ],
                    [ "MatricesForHomalg", ">= 2017.05.25" ],
                    [ "LinearAlgebraForCAP", ">= 2018.10.11" ],
+                   [ "FreydCategoriesForCAP", ">= 2019.02.27" ],
+                   [ "RingsForHomalg", ">= 2018.12.02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

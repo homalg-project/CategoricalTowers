@@ -277,7 +277,7 @@ end );
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
   
-  function( category )
+  function( category, over_Z )
     
     ##
     AddIsWellDefinedForObjects( category,
@@ -443,7 +443,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     ## only create the Hom-structure for finite dimensional quiver algebras
     if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
         
-        ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID( category );
+        ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID( category, over_Z );
         
     fi;
     
@@ -455,7 +455,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
 end );
 
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
-    function( bialgebroid )
+    function( bialgebroid, over_Z )
     local quiver_algebra, quiver, vertices, basis, data, path,
           object_constructor, morphism_constructor, distinguished_object, ring, range_category;
     
@@ -476,25 +476,43 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
     od;
     
-    ring := LeftActingDomain( quiver_algebra );
+    ring := CommutativeRingOfLinearCategory( bialgebroid );
     
-    object_constructor := function( size )
-      return VectorSpaceObject( size, ring );
-    end;
+    if over_Z then
+        
+        range_category := CategoryOfRows( ring );
+        
+        object_constructor := function( size )
+        return CategoryOfRowsObject( size, range_category );
+        end;
+        
+        morphism_constructor := AsCategoryOfRowsMorphism;
+        
+        distinguished_object := function()
+        return CategoryOfRowsObject( 1, range_category );
+        end;
     
-    morphism_constructor := function( mat )
-      return VectorSpaceMorphism(
-               VectorSpaceObject( NrRows( mat ), ring ),
-               mat,
-               VectorSpaceObject( NrColumns( mat ), ring )
-            );
-    end;
-    
-    range_category := MatrixCategory( ring );
-    
-    distinguished_object := function()
-      return TensorUnit( range_category );
-    end;
+    else
+        
+        object_constructor := function( size )
+        return VectorSpaceObject( size, ring );
+        end;
+        
+        morphism_constructor := function( mat )
+        return VectorSpaceMorphism(
+                VectorSpaceObject( NrRows( mat ), ring ),
+                mat,
+                VectorSpaceObject( NrColumns( mat ), ring )
+                );
+        end;
+        
+        range_category := MatrixCategory( ring );
+        
+        distinguished_object := function()
+        return TensorUnit( range_category );
+        end;
+        
+    fi;
     
     SetRangeCategoryOfHomomorphismStructure( bialgebroid, range_category );
     
@@ -638,9 +656,61 @@ end );
 InstallMethod( Algebroid,
         "for a QPA quiver algebra",
         [ IsQuiverAlgebra ],
+    function( A )
+        return Algebroid( A, false );
+end );
+
+##
+InstallMethod( AlgebroidOverZ,
+        "for a QPA quiver algebra",
+        [ IsQuiverAlgebra ],
+    function( A )
+        return Algebroid( A, true );
+end );
+
+##
+InstallMethod( Algebroid,
+        "for a QPA quiver algebra and a boolean",
+        [ IsQuiverAlgebra, IsBool ],
         
-  function( Rq )
-    local parity, quiver, A;
+  function( Rq, over_Z )
+    local domain, is_int_test, homalg_rationals, paths, p, q, parity, quiver, A;
+    
+    domain := LeftActingDomain( Rq );
+    
+    if over_Z then
+        
+        if IsIdenticalObj( domain, Rationals )
+           or
+           ( HasIsRationalsForHomalg( domain ) and IsRationalsForHomalg( domain )
+             and not IsHomalgExternalRingRep( domain ) )
+        then
+            
+            ## Test if the multiplication table which is induced by the basis of the quiver algebra
+            ## (computed by the Groebner basis) only has integral coefficients.
+            paths := BasisPaths( CanonicalBasis( Rq ) );
+            
+            for p in paths do
+                
+                for q in paths do
+                    
+                    if not ForAll( Coefficients( PathAsAlgebraElement( Rq, p ) * PathAsAlgebraElement( Rq, q ) ), IsInt ) then
+                        
+                        Error( "the basis of the given quiver algebra does give rise to a well-defined algebroid over Z\n");
+                        
+                    fi;
+                    
+                od;
+                
+            od;
+            
+        else
+            
+            Error( "the left acting domain of the given quiver algebra is not supported for constructing an algebroid of the integers\n");
+            
+        fi;
+        
+    fi;
     
     if IsRightQuiverAlgebra( Rq ) then
         parity := "right";
@@ -656,6 +726,12 @@ InstallMethod( Algebroid,
         A := "Algebra";
     fi;
     
+    if over_Z then
+        
+        A := Concatenation( A, " over Z");
+        
+    fi;
+    
     A := Concatenation( A, " generated by the ", parity, " quiver ", String( quiver ) );
     
     A := CreateCapCategory( A );
@@ -664,7 +740,13 @@ InstallMethod( Algebroid,
     
     SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
-    SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
+    
+    if over_Z then
+        SetCommutativeRingOfLinearCategory( A, HomalgRingOfIntegers() );
+    else
+        SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
+    fi;
+    
     SetUnderlyingQuiverAlgebra( A, Rq );
     SetFilterObj( A, IsAlgebroid );
     if Length( Vertices( quiver ) ) = 1 then
@@ -677,7 +759,7 @@ InstallMethod( Algebroid,
     A!.Vertices := rec( );
     A!.Arrows := rec( );
     
-    return ADD_FUNCTIONS_FOR_ALGEBROID( A );
+    return ADD_FUNCTIONS_FOR_ALGEBROID( A, over_Z );
     
 end );
 

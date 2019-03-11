@@ -273,6 +273,23 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID" );
 DeclareAttribute( "Algebroid",
         IsQuiverAlgebra );
 
+#! @Description
+#! The argument is a quiver algebra $A$ with left acting domain given by the field of rationals $\mathbb{Q}$,
+#! either realized by <C>Rationals</C> or by <C>HomalgFieldOfRationals</C> (in no external CAS).
+#! Moreover, the multiplication table $T$ of $A$
+#! expressed with respect to the $\mathbb{Q}$-basis <C>BasisPaths( CanonicalBasis( A ) )</C>
+#! is expected to only consist of integral linear combinations of paths.
+#! Then, the output is an algebroid defined over $\mathbb{Z}$, realized as <C>HomalgRingOfIntegers</C>,
+#! with the same basis paths as $A$ and with multiplication table also given by $T$.
+#! @Arguments A
+#! @Returns a &CAP; category
+DeclareAttribute( "AlgebroidOverZ",
+        IsQuiverAlgebra );
+
+#!
+DeclareOperation( "Algebroid",
+        [ IsQuiverAlgebra, IsBool ] );
+
 #! @Arguments Rq, L
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
