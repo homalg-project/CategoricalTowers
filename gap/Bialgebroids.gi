@@ -661,11 +661,11 @@ InstallMethod( Algebroid,
 end );
 
 ##
-InstallMethod( AlgebroidOverZ,
-        "for a QPA quiver algebra",
-        [ IsQuiverAlgebra ],
+InstallMethod( DescentToZDefinedByBasisPaths,
+        "for an algebroid",
+        [ IsAlgebroid ],
     function( A )
-        return Algebroid( A, true );
+        return Algebroid( UnderlyingQuiverAlgebra( A ), true );
 end );
 
 ##

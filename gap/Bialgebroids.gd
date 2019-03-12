@@ -274,17 +274,23 @@ DeclareAttribute( "Algebroid",
         IsQuiverAlgebra );
 
 #! @Description
-#! The argument is a quiver algebra $A$ with left acting domain given by the field of rationals $\mathbb{Q}$,
+#! The argument is an algebroid $A$ with left acting domain given by the field of rationals $\mathbb{Q}$,
 #! either realized by <C>Rationals</C> or by <C>HomalgFieldOfRationals</C> (in no external CAS).
-#! Moreover, the multiplication table $T$ of $A$
-#! expressed with respect to the $\mathbb{Q}$-basis <C>BasisPaths( CanonicalBasis( A ) )</C>
-#! is expected to only consist of integral linear combinations of paths.
-#! Then, the output is an algebroid defined over $\mathbb{Z}$, realized as <C>HomalgRingOfIntegers</C>,
-#! with the same basis paths as $A$ and with multiplication table also given by $T$.
+#! Futhermore, $A$ has to satisfy another technical condition that is described below.
+#! The output is an algebroid $A'$ defined over $\mathbb{Z}$ such that
+#! $A' \otimes_{\mathbb{Z}} \mathbb{Q} \simeq A$.
+#! For the construction of $A'$, let $T$ be the multiplication table of the underlying quiver algebra of $A$
+#! expressed with respect to the $\mathbb{Q}$-basis <C>BasisPaths( CanonicalBasis( A' ) )</C>, denoted by $B$.
+#! Now, we expect the following technical condition to hold: $T$ should only consist of 
+#! integral linear combinations of paths in $B$.
+#! Then $A'$ is constructed as the algebroid over $\mathbb{Z}$, realized as <C>HomalgRingOfIntegers</C>, 
+#! with the same vertices as $A$,
+#! a $\mathbb{Z}$-basis of paths given by $B$,
+#! and composition is carried out using the rules defined by $T$.
 #! @Arguments A
 #! @Returns a &CAP; category
-DeclareAttribute( "AlgebroidOverZ",
-        IsQuiverAlgebra );
+DeclareAttribute( "DescentToZDefinedByBasisPaths",
+        IsAlgebroid );
 
 #!
 DeclareOperation( "Algebroid",
