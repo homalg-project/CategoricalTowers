@@ -674,7 +674,7 @@ InstallMethod( Algebroid,
         [ IsQuiverAlgebra, IsBool ],
         
   function( Rq, over_Z )
-    local domain, is_int_test, homalg_rationals, paths, p, q, parity, quiver, A;
+    local domain, paths, p, q, parity, quiver, A;
     
     domain := LeftActingDomain( Rq );
     
