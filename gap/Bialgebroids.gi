@@ -472,7 +472,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     for path in basis do
         
-        Add( data[ VertexNumber( Source( path ) ) ][ VertexNumber( Target( path ) ) ], path );
+        Add( data[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
         
     od;
     
@@ -521,9 +521,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
       function( object_1, object_2 )
         local nr_source, nr_range, basis_elements;
         
-        nr_source := VertexNumber( UnderlyingVertex( object_1 ) );
+        nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
         
-        nr_range := VertexNumber( UnderlyingVertex( object_2 ) );
+        nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
         
         basis_elements := data[nr_source][nr_range];
         
@@ -540,13 +540,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
-        a := VertexNumber( UnderlyingVertex( Range( alpha ) ) );
+        a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
-        b := VertexNumber( UnderlyingVertex( Source( beta ) ) );
+        b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
         
-        ap := VertexNumber( UnderlyingVertex( Source( alpha ) ) );
+        ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
-        bp := VertexNumber( UnderlyingVertex( Range( beta ) ) );
+        bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
         
         basis_elements_source := data[a][b];
         
@@ -603,9 +603,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
       function( alpha )
         local a, b, basis_elements, size_basis, element;
         
-        a := VertexNumber( UnderlyingVertex( Source( alpha ) ) );
+        a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
-        b := VertexNumber( UnderlyingVertex( Range( alpha ) ) );
+        b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
         basis_elements := data[a][b];
         
@@ -642,7 +642,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         coefficients := EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
         
-        basis := data[VertexNumber( UnderlyingVertex( a ) )][VertexNumber( UnderlyingVertex( b ) )];
+        basis := data[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
         element := QuiverAlgebraElement( quiver_algebra, coefficients, basis );
         
