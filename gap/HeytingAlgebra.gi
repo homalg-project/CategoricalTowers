@@ -73,71 +73,71 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddExponentialOnMorphismsWithGivenExponentials( heyting_algebra,
-      function( S, alpha, beta, T )
+      function( S, alpha, beta, R )
         
-        return UniqueMorphism( S, T );
-        
-    end );
-    
-    ##
-    AddEvaluationMorphismWithGivenSource( heyting_algebra,
-      function( M, N, HM_NxM )
-        
-        return UniqueMorphism( HM_NxM, N );
+        return UniqueMorphism( S, R );
         
     end );
     
     ##
-    AddCoevaluationMorphismWithGivenRange( heyting_algebra,
-      function( M, N, HN_MxN )
+    AddCartesianEvaluationMorphismWithGivenSource( heyting_algebra,
+      function( A, B, Exp_A_BxA )
         
-        return UniqueMorphism( M, HN_MxN );
+        return UniqueMorphism( Exp_A_BxA, B);
+        
+    end );
+    
+    ##
+    AddCartesianCoevaluationMorphismWithGivenRange( heyting_algebra,
+      function( A, B, Exp_B_AxB )
+        
+        return UniqueMorphism( A, Exp_B_AxB );
         
     end );
     
     ##
     AddDirectProductToExponentialAdjunctionMap( heyting_algebra,
-      function( M, N, f )
+      function( A, B, f )
         local L;
         
         L := Range( f );
         
-        return UniqueMorphism( M, ExponentialOnObjects( N, L ) );
+        return UniqueMorphism( A, ExponentialOnObjects( B, L ) );
         
     end );
     
     ##
     AddExponentialToDirectProductAdjunctionMap( heyting_algebra,
-      function( N, L, g )
-        local M, MN;
+      function( B, C, g )
+        local A, AB;
         
-        M := Source( g );
+        A := Source( g );
         
-        MN := DirectProduct( M, N );
+        AB := DirectProduct( A, B );
         
-        return UniqueMorphism( MN, L );
+        return UniqueMorphism( AB, C );
         
     end );
     
     ##
     AddCartesianPreComposeMorphismWithGivenObjects( heyting_algebra,
-      function( HM_NxH_N_L, M, N, L, HM_L );
+      function( Exp_A_BxExp_B_C, A, B, C, Exp_A_C );
         
-        return UniqueMorphism( HM_NxH_N_L, HM_L );
+        return UniqueMorphism( Exp_A_BxExp_B_C, Exp_A_C );
         
     end );
     
     ##
     AddCartesianPostComposeMorphismWithGivenObjects( heyting_algebra,
-      function( HM_NxH_N_L, M, N, L, HM_L );
+      function( Exp_B_CxExp_A_B, A, B, C, Exp_A_C );
         
-        return UniqueMorphism( HM_NxH_N_L, HM_L );
+        return UniqueMorphism( Exp_B_CxExp_A_B, Exp_A_C );
         
     end );
     
     ##
     AddDirectProductExponentialCompatibilityMorphismWithGivenObjects( heyting_algebra,
-      function( S1, T1, S2, T2, L )
+      function( A1, A2, B1, B2, L )
         
         return UniqueMorphism( L[1], L[2] );
         
