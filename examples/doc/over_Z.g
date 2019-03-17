@@ -7,7 +7,7 @@ LoadPackage( "Bialgebroid" );
 q := RightQuiver( "q(4)[a:1->2,b:1->3,c:3->4,d:2->4]" );;
 Q := HomalgFieldOfRationals( );;
 Qq := PathAlgebra( Q, q );;
-Qq := Qq / [ Qq.a * Qq. d - Qq.b * Qq.c];;
+Qq := Qq / [ Qq.a * Qq.d - Qq.b * Qq.c];;
 A_Q := Algebroid( Qq );;
 A_Z := DescentToZDefinedByBasisPaths( A_Q );;
 #! @EndExample
