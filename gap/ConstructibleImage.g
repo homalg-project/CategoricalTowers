@@ -1,4 +1,5 @@
-LoadPackage( "ZariskiFrames" );
+LoadPackage( "Locales", ">=2019.03.09" );
+LoadPackage( "ZariskiFrames", ">=2019.03.08" );
 LoadPackage( "GradedRingForHomalg" );
 LoadPackage( "Digraph" );
 
@@ -224,81 +225,88 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, B, image, counter, components_in_total_space, Gamma, C, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, g, multi_difference, im;
+    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, g, multi_difference, im;
     
     R := HomalgRing( gamma );
     
     B := BaseRing( R );
-
+    
     image := [ ];
     
     counter := 0;
-   
-    components_in_total_space := [ ClosedSubsetOfSpec( gamma ) ];
-
-    while Length( components_in_total_space ) > 0 do
-
-        Gamma := Remove( components_in_total_space );
-
-        Info( InfoImage, 1, "Step ", counter, " ======================== new component from queue, ", Length( components_in_total_space ), " remaining ========================================" );
-
-        C := DatastructureForConstructibleObject( );
-
-        C!.init_node := NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
     
-        while not IsDone( C ) do
-       
-            node := Pop( C );
+    C := DatastructureForConstructibleObject( );
+    
+    NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( gamma ), fail );
+    
+    while not IsDone( C ) do
         
-            Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
-            g := PreimageOfProjection( R, node!.object ) * Gamma;
-            Info( InfoImage, 3, "Step ", counter, " ...done " );
-
-            Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
-            if IsInitial( g ) then
-                continue;
-                Info( InfoImage, 3, "Step ", counter, " ...done (yes)" );
-            fi;
-            Info( InfoImage, 3, "Step ", counter, " ...done (no)" );
+        node := Pop( C );
         
-            counter := counter + 1;
-        
-            image_closure_and_frame := LocallyClosedProjection( g : counter := counter );
-        
-            additional_components := image_closure_and_frame[2];
-
-            if Length( additional_components ) > 0 then
-                Info( InfoImage, 1, "Step ", counter, " found ", Length( additional_components ), " additional components of dimensions ", List( additional_components, Dimension ), "." );
-                Append( components_in_total_space, additional_components );
-            fi;
+        if node!.parity = fail then
+            Info( InfoImage, 1, "Step ", counter, " ======================== new component from queue, ", Length( C!.pre_nodes ), " remaining ========================================" );
             
-            image_closure := image_closure_and_frame[1][1];
+            Gamma := node;
             
-            frame := image_closure_and_frame[1][2];
-   
-            if not IsInitial( frame ) then
-                
-                Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
-                frame_decomp := IrreducibleComponents( frame );
-                Info( InfoImage, 3, "Step ", counter, " ...done " );
-                
-                multi_difference := List( frame_decomp, a -> image_closure - a );
-                multi_difference := CallFuncList( AsFormalMultipleDifference, multi_difference );
-                
+            if IsBound( Gamma!.parent ) then
+                node := Gamma!.parent;
             else
-                
-                multi_difference := AsFormalMultipleDifference( image_closure - 0 );
-                frame_decomp := [ ];
-               
+                ## the initial step
+                NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
+                node := Pop( C );
             fi;
             
-            Attach( node, multi_difference );
-
-            Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
-       
-            Add( image, image_closure - frame );
-
-        od;
+            Gamma := Gamma!.object;
+            
+        fi;
+        
+        Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
+        g := PreimageOfProjection( R, node!.object ) * Gamma;
+        Info( InfoImage, 3, "Step ", counter, " ...done " );
+        
+        Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
+        if IsInitial( g ) then
+            continue;
+            Info( InfoImage, 3, "Step ", counter, " ...done (yes)" );
+        fi;
+        Info( InfoImage, 3, "Step ", counter, " ...done (no)" );
+        
+        counter := counter + 1;
+        
+        image_closure_and_frame := LocallyClosedProjection( g : counter := counter );
+        
+        additional_components := image_closure_and_frame[2];
+        
+        if Length( additional_components ) > 0 then
+            Info( InfoImage, 1, "Step ", counter, " found ", Length( additional_components ), " additional components of dimensions ", List( additional_components, Dimension ), "." );
+            Attach( C, List( additional_components, ClosedSubsetOfSpec ) );
+        fi;
+        
+        image_closure := image_closure_and_frame[1][1];
+        
+        frame := image_closure_and_frame[1][2];
+   
+        if not IsInitial( frame ) then
+            
+            Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
+            frame_decomp := IrreducibleComponents( frame );
+            Info( InfoImage, 3, "Step ", counter, " ...done " );
+            
+            multi_difference := List( frame_decomp, a -> image_closure - a );
+            multi_difference := CallFuncList( AsFormalMultipleDifference, multi_difference );
+                
+        else
+            
+            multi_difference := AsFormalMultipleDifference( image_closure - 0 );
+            frame_decomp := [ ];
+            
+        fi;
+        
+        Attach( node, multi_difference );
+        
+        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
+        
+        Add( image, image_closure - frame );
 
     od;
     
