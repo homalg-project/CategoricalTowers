@@ -52,6 +52,14 @@ DeclareOperation( "NodeInDatastructureOfConstructibleObject",
 DeclareOperation( "Attach",
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 
+#! @Description
+#!  Append a list <A>L</A> of objects in a thin category as a list of pre-nodes
+#!  to the datastructure <C>C</C> of a constructible object given a node <A>N</A> in <C>C</C>.
+#! @Arguments N, L
+#! @Returns a list of datastructures of nodes in a constructible object
+DeclareOperation( "Attach",
+        [ IsNodeInDatastructureOfConstructibleObjects, IsList ] );
+
 #! @Section Operations
 
 #! @Description

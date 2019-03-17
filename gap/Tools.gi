@@ -33,6 +33,7 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
     local C;
     
     C := rec( 
+              pre_nodes := [ ],
               pos_nodes := [ ],
               neg_nodes := [ ],
               new_nodes := [ ],
@@ -72,6 +73,8 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     elif b = false then
         nodes := C!.neg_nodes;
     else
+        nodes := C!.pre_nodes;
+        Add( nodes, N );
         return N;
     fi;
     
@@ -172,17 +175,27 @@ InstallMethod( Attach,
 end );
 
 ##
+InstallMethod( Attach,
+        "for a node in a datastructure of a constructible object and a list",
+        [ IsNodeInDatastructureOfConstructibleObjects, IsList ],
+        
+  function( N, L )
+    local C;
+    
+    C := N!.constructible_object;
+    
+    return List( L, node -> NodeInDatastructureOfConstructibleObject( C, node, fail : parent := N ) );
+    
+end );
+
+##
 InstallMethod( IsDone,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
     
-    if IsBound( C!.init_node ) then
-        return false;
-    fi;
-    
-    return IsEmpty( C!.new_nodes );
+    return IsEmpty( C!.pre_nodes ) and IsEmpty( C!.new_nodes );
     
 end );
 
@@ -192,17 +205,11 @@ InstallMethod( Pop,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local init_node;
-    
-    if IsBound( C!.init_node ) then
-        init_node := C!.init_node;
-        Unbind( C!.init_node );
-    fi;
     
     if not IsEmpty( C!.new_nodes ) then
         return Remove( C!.new_nodes );
-    elif IsBound( init_node ) then
-        return init_node;
+    elif not IsEmpty( C!.pre_nodes ) then
+        return Remove( C!.pre_nodes );
     fi;
     
     return fail;
