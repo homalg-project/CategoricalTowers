@@ -19,6 +19,10 @@ D := ClosedSubsetOfSpec( HomalgMatrix( "[ x^2*y^3*(x-y) ]", 1, 1, R ) );
 #! V_{Q[x,y]}( <...> )
 T := TerminalObject( ZC );
 #! V_{Q[x,y]}( <...> )
+Dimension( T );
+#! 2
 I := InitialObject( ZC );
 #! V_{Q[x,y]}( <...> )
+Dimension( I );
+#! -1
 #! @EndExample
