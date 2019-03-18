@@ -25,7 +25,7 @@ InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
         obj := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
         
         if not IsBound( obj!.BasisOfRowsOverPolynomialRingWithProductOrdering ) then
-        
+            
             R := HomalgRing( obj );
             
             R := PolynomialRingWithProductOrdering( R );
