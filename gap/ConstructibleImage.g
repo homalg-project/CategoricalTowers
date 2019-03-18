@@ -1,6 +1,7 @@
+LoadPackage( "RingsForHomalg", ">=2018.12.07" );
+LoadPackage( "GradedRingForHomalg" );
 LoadPackage( "Locales", ">=2019.03.09" );
 LoadPackage( "ZariskiFrames", ">=2019.03.08" );
-LoadPackage( "GradedRingForHomalg" );
 LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
@@ -239,7 +240,9 @@ ConstructibleProjection := function( gamma )
     
     node := NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
     
-    node!.Gamma := ClosedSubsetOfSpec( gamma );
+    R := PolynomialRingWithProductOrdering( R );
+    
+    node!.Gamma := ClosedSubsetOfSpec( R * gamma );
     
     while not IsDone( C ) do
         
