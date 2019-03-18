@@ -28,6 +28,8 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
     
     base := IndeterminatesOfPolynomialRing( B );
     
+    R := PolynomialRingWithDegRevLexOrdering( R );
+    
     S := GradedRing( R );
     
     weights := Concatenation( ListWithIdenticalEntries( Length( base ), 0 ), ListWithIdenticalEntries( Length( var ), 1 ) );

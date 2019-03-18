@@ -13,7 +13,7 @@ Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
 Version := Maximum( [
                    "2019.03.10", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.03.08", ## Markus's version
+                   "2019.03.11", ## Markus's version
                    ## this line prevents merge conflicts
                    "2018.07.01", ## Tom's version
                    ] ),
@@ -96,7 +96,8 @@ Dependencies := rec(
                    [ "Toposes", ">= 2019.01.20" ],
                    [ "Locales", ">= 2019.03.10" ],
                    [ "Modules", ">= 2018.08.25" ],
-                   [ "MatricesForHomalg", ">= 2018.12.03" ],
+                   [ "MatricesForHomalg", ">= 2018.12.07" ],
+                   [ "RingsForHomalg", ">= 2018.12.07" ],
                    [ "GradedRingForHomalg", ">= 2018.12.04" ],
                    [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],
