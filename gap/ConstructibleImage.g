@@ -225,7 +225,7 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, g, multi_difference, im;
+    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, multi_difference, D, im;
     
     R := HomalgRing( gamma );
     
@@ -237,35 +237,24 @@ ConstructibleProjection := function( gamma )
     
     C := DatastructureForConstructibleObject( );
     
-    NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( gamma ), fail );
+    node := NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
+    
+    node!.Gamma := ClosedSubsetOfSpec( gamma );
     
     while not IsDone( C ) do
         
         node := Pop( C );
         
-        if node!.parity = fail then
-            Info( InfoImage, 1, "Step ", counter, " ======================== new component from queue, ", Length( C!.pre_nodes ), " remaining ========================================" );
-            
-            Gamma := node;
-            
-            if IsBound( Gamma!.parent ) then
-                node := Gamma!.parent;
-            else
-                ## the initial step
-                NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
-                node := Pop( C );
-            fi;
-            
-            Gamma := Gamma!.object;
-            
-        fi;
+        Info( InfoImage, 1, "Step ", counter, " ======================== new component from queue, ", Length( C!.pre_nodes ), " remaining ========================================" );
+        
+        Gamma := node!.Gamma;
         
         Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
-        g := PreimageOfProjection( R, node!.object ) * Gamma;
+        Gamma := PreimageOfProjection( R, node!.object ) * Gamma;
         Info( InfoImage, 3, "Step ", counter, " ...done " );
         
         Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
-        if IsInitial( g ) then
+        if IsInitial( Gamma ) then
             continue;
             Info( InfoImage, 3, "Step ", counter, " ...done (yes)" );
         fi;
@@ -273,7 +262,7 @@ ConstructibleProjection := function( gamma )
         
         counter := counter + 1;
         
-        image_closure_and_frame := LocallyClosedProjection( g : counter := counter );
+        image_closure_and_frame := LocallyClosedProjection( Gamma : counter := counter );
         
         additional_components := image_closure_and_frame[2];
         
@@ -285,7 +274,7 @@ ConstructibleProjection := function( gamma )
         image_closure := image_closure_and_frame[1][1];
         
         frame := image_closure_and_frame[1][2];
-   
+        
         if not IsInitial( frame ) then
             
             Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
@@ -294,7 +283,7 @@ ConstructibleProjection := function( gamma )
             
             multi_difference := List( frame_decomp, a -> image_closure - a );
             multi_difference := CallFuncList( AsFormalMultipleDifference, multi_difference );
-                
+            
         else
             
             multi_difference := AsFormalMultipleDifference( image_closure - 0 );
@@ -302,12 +291,14 @@ ConstructibleProjection := function( gamma )
             
         fi;
         
-        Attach( node, multi_difference );
+        D := Attach( node, multi_difference );
+        
+        Perform( D!.subtract, function( node ) node!.Gamma := Gamma; end );
         
         Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
         Add( image, image_closure - frame );
-
+        
     od;
     
     im := CallFuncList( UnionOfDifferences, image );
