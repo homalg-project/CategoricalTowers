@@ -15,7 +15,7 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
     gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
     
     R := HomalgRing( gamma );
-   
+    
     R_elim := PolynomialRingWithProductOrdering( R );
     
     gamma := BasisOfRows( R_elim * gamma );
