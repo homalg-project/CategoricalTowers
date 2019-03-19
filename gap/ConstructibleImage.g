@@ -306,7 +306,7 @@ ConstructibleProjection := function( gamma )
     
     im!.C := C;
     
-    im!.Digraph := Digraph( Concatenation( C!.pos_nodes, C!.neg_nodes ), function( a, b ) return IsIdenticalObj( a!.parent, b ); end );
+    im!.Digraph := Digraph( Concatenation( C!.pos_nodes, C!.neg_nodes ), function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
     
     # in general, this is wrong
     SetClosure( im, im.I1 );
