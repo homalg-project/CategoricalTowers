@@ -248,8 +248,6 @@ ConstructibleProjection := function( gamma )
         
         node := Pop( C );
         
-        Info( InfoImage, 1, "Step ", counter, " ======================== new component from queue, ", Length( C!.pre_nodes ), " remaining ========================================" );
-        
         Gamma := node!.Gamma;
         
         Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
