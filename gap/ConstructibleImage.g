@@ -1,6 +1,6 @@
 LoadPackage( "RingsForHomalg", ">=2018.12.07" );
 LoadPackage( "GradedRingForHomalg" );
-LoadPackage( "Locales", ">=2019.03.11" );
+LoadPackage( "Locales", ">=2019.03.13" );
 LoadPackage( "ZariskiFrames", ">=2019.03.10" );
 LoadPackage( "Digraph" );
 
@@ -329,6 +329,22 @@ ConstructibleProjection := function( gamma )
           end );
     
     im!.Digraph := D;
+    
+    D := Digraph( all_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
+    
+    Perform( [ 1 .. Length( all_nodes ) ],
+            function( i )
+              local l;
+              if all_nodes[i]!.parity = true then
+                  l := "+";
+              else
+                  l := "-";
+              fi;
+              l := Concatenation( String( i ), l );
+              SetDigraphVertexLabel( D, i, l );
+          end );
+    
+    im!.Digraph2 := D;
     
     # in general, this is wrong
     SetClosure( im, im.I1 );
