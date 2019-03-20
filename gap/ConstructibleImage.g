@@ -256,8 +256,8 @@ ConstructibleProjection := function( gamma )
         
         Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
         if IsInitial( Gamma ) then
-            continue;
             Info( InfoImage, 3, "Step ", counter, " ...done (yes)" );
+            continue;
         fi;
         Info( InfoImage, 3, "Step ", counter, " ...done (no)" );
         
