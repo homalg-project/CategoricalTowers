@@ -182,6 +182,132 @@ InstallMethod( Pop,
 end );
 
 ##
+InstallMethod( Remove,
+        "for a node in a datastructure of a constructible object",
+        [ IsNodeInDatastructureOfConstructibleObjects ],
+        
+  function( pos_node )
+    local C, pos_nodes, p, all_nodes, neg_nodes, children, neg_node,
+          grandparents, child, spouses, grandparent, aunts;
+    
+    if not pos_node!.parity = true then
+        Error( "the given argument pos_node is not a positive node\n" );
+    fi;
+    
+    C := pos_node!.constructible_object;
+    
+    pos_nodes := C!.pos_nodes;
+    
+    p := PositionProperty( pos_nodes, node -> IsIdenticalObj( node, pos_node ) );
+    
+    if p = fail then
+        Error( "pos_node not among pos_nodes\n" );
+    fi;
+    
+    Remove( pos_nodes, p );
+    
+    all_nodes := C!.all_nodes;
+    
+    p := PositionProperty( all_nodes, node -> IsIdenticalObj( node, pos_node ) );
+    
+    if p = fail then
+        Error( "pos_node not among all_nodes\n" );
+    fi;
+    
+    Remove( all_nodes, p );
+    
+    neg_node := pos_node!.parents[1];
+    
+    neg_nodes := C!.neg_nodes;
+    
+    p := PositionProperty( neg_nodes, node -> IsIdenticalObj( node, neg_node ) );
+    
+    if p = fail then
+        Error( "neg_node not among neg_nodes\n" );
+    fi;
+    
+    Remove( neg_nodes, p );
+    
+    p := PositionProperty( all_nodes, node -> IsIdenticalObj( node, neg_node ) );
+    
+    if p = fail then
+        Error( "neg_node not among all_nodes\n" );
+    fi;
+    
+    Remove( all_nodes, p );
+    
+    children := pos_node!.children;
+    
+    grandparents := neg_node!.parents;
+    
+    for child in children do
+        spouses := child!.parents;
+        p := PositionProperty( spouses, node -> IsIdenticalObj( node, pos_node ) );
+        if p = fail then
+            Error( "pos_node is not among the spouses\n" );
+        fi;
+        Remove( spouses, p );
+        Append( spouses, grandparents );
+    od;
+    
+    for grandparent in grandparents do
+        aunts := grandparent!.children;
+        p := PositionProperty( aunts, node -> IsIdenticalObj( node, neg_node ) );
+        if p = fail then
+            Error( "neg_node is not among the aunts\n" );
+        fi;
+        Remove( aunts, p );
+        Append( aunts, children );
+    od;
+    
+end );
+    
+##
+InstallMethod( SquashOnce,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    local pos_node, parents;
+    
+    for pos_node in C!.pos_nodes do
+        
+        parents := pos_node!.parents;
+        
+        if Length( parents ) = 1 and Length( parents[1]!.children ) = 1 and
+           IsHomSetInhabited( parents[1]!.object, pos_node!.object ) then
+            
+            Remove( pos_node );
+            
+        fi;
+        
+    od;
+    
+    return C;
+    
+end );
+    
+##
+InstallMethod( Squash,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    local l;
+    
+    repeat
+        
+        l := Length( C!.all_nodes );
+        
+        SquashOnce( C );
+        
+    until Length( C!.all_nodes ) = l;
+    
+    return C;
+    
+end );
+
+##
 InstallMethod( DigraphOfParents,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],

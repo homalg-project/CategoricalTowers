@@ -63,6 +63,27 @@ DeclareOperation( "Pop",
 
 #! @Description
 #!  
+#! @Arguments pos_node
+#! @Returns nothing
+DeclareOperation( "Remove",
+        [ IsNodeInDatastructureOfConstructibleObjects ] );
+
+#! @Description
+#!  
+#! @Arguments C
+#! @Returns a datastructure of a node in a constructible object
+DeclareOperation( "SquashOnce",
+        [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  
+#! @Arguments C
+#! @Returns a datastructure of a node in a constructible object
+DeclareOperation( "Squash",
+        [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  
 #! @Arguments C
 #! @Returns a datastructure of a node in a constructible object
 DeclareOperation( "DigraphOfParents",
