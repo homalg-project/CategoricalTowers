@@ -20,13 +20,6 @@ DeclareCategory( "IsDatastructureForConstructibleObjects",
 DeclareCategory( "IsNodeInDatastructureOfConstructibleObjects",
                  IsAttributeStoringRep );
 
-#! @Section GAP Categories
-#! @Description
-#!  The &GAP; category of datastructures for formal multiple differences in constructible objects.
-#! @Arguments object
-DeclareCategory( "IsMultiDifferenceInDatastructureOfConstructibleObjects",
-                 IsAttributeStoringRep );
-
 #! @Section Constructors
 
 #! @Description

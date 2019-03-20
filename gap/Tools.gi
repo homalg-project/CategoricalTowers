@@ -4,17 +4,14 @@
 # Implementations
 #
 
-# three new families:
+# two new families:
 BindGlobal( "TheFamilyOfDatastructuresForConstructibleObjects",
         NewFamily( "TheFamilyOfDatastructuresForConstructibleObjects" ) );
 
 BindGlobal( "TheFamilyOfNodesInDatastructureForConstructibleObjects",
         NewFamily( "TheFamilyOfNodesInDatastructureForConstructibleObjects" ) );
 
-BindGlobal( "TheFamilyOfMultiDifferencesInDatastructureOfConstructibleObjects",
-        NewFamily( "TheFamilyOfMultiDifferencesInDatastructureOfConstructibleObjects" ) );
-
-# three new types:
+# two new types:
 BindGlobal( "TheTypeDatastructureForConstructibleObjects",
         NewType(  TheFamilyOfDatastructuresForConstructibleObjects,
                 IsDatastructureForConstructibleObjects ) );
@@ -22,10 +19,6 @@ BindGlobal( "TheTypeDatastructureForConstructibleObjects",
 BindGlobal( "TheTypeNodeInDatastructureForConstructibleObjects",
         NewType(  TheFamilyOfNodesInDatastructureForConstructibleObjects,
                 IsNodeInDatastructureOfConstructibleObjects ) );
-
-BindGlobal( "TheTypeMultiDifferenceInDatastructureOfConstructibleObjects",
-        NewType(  TheFamilyOfMultiDifferencesInDatastructureOfConstructibleObjects,
-                IsMultiDifferenceInDatastructureOfConstructibleObjects ) );
 
 ##
 InstallGlobalFunction( DatastructureForConstructibleObject,
@@ -37,7 +30,6 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
               pos_nodes := [ ],
               neg_nodes := [ ],
               all_nodes := [ ],
-              multiple_differences := [ ]
               );
     
     Objectify( TheTypeDatastructureForConstructibleObjects, C );
@@ -124,7 +116,7 @@ InstallMethod( Attach,
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( N, D )
-    local C, L, pos_nodes, pos_node, p, neg_nodes, pre_nodes, q, subtract, i, neg_node;
+    local C, L, pos_nodes, pos_node, p, neg_nodes, pre_nodes, q, i, neg_node;
     
     if not N!.parity = fail then
         Error( "the first argument N is not a pre-node\n" );
@@ -160,8 +152,6 @@ InstallMethod( Attach,
     
     pre_nodes := [ ];
     
-    subtract := [ ];
-    
     for i in [ 1 .. Length( L ) ] do
         neg_node := L[i][2];
         if IsInitial( neg_node ) then
@@ -171,32 +161,15 @@ InstallMethod( Attach,
         if q = fail then
             neg_node := NodeInDatastructureOfConstructibleObject( C, neg_node, false : parents := [ pos_node ] );
             Add( pre_nodes, neg_node );
-            Add( subtract, neg_node );
         else
             L[i][2] := C!.neg_nodes[q]!.object;
             if p = fail then
                 Add( C!.neg_nodes[q]!.parents, pos_node );
             fi;
-            Add( subtract, C!.neg_nodes[q] );
         fi;
     od;
     
-    pre_nodes := List( pre_nodes, neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ] ) );
-    
-    D := rec( 
-              constructible_object := N!.constructible_object,
-              node := pos_node,
-              subtract := subtract,
-              pre_nodes := pre_nodes,
-              parents := N!.parents,
-              multiple_difference := D,
-              );
-    
-    Objectify( TheTypeMultiDifferenceInDatastructureOfConstructibleObjects, D );
-    
-    Add( C!.multiple_differences, D );
-    
-    return pre_nodes;
+    return List( pre_nodes, neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ] ) );
     
 end );
 
@@ -260,17 +233,5 @@ InstallMethod( ViewObj,
     
     Print( "Node in a datastructure of a constructible object containing:\n" );
     ViewObj( N!.object );
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for a multiple difference in a datastructure of a constructible object",
-        [ IsMultiDifferenceInDatastructureOfConstructibleObjects ],
-        
-  function( D )
-    
-    Print( "Multiple difference in a datastructure of a constructible object containing:\n" );
-    ViewObj( D!.multiple_difference );
     
 end );
