@@ -182,6 +182,62 @@ InstallMethod( Pop,
 end );
 
 ##
+InstallMethod( DigraphOfParents,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    local all_nodes, D;
+    
+    all_nodes := C!.all_nodes;
+    
+    D := Digraph( all_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
+    
+    Perform( [ 1 .. Length( all_nodes ) ],
+            function( i )
+              local l;
+              if all_nodes[i]!.parity = true then
+                  l := "+";
+              else
+                  l := "-";
+              fi;
+              l := Concatenation( String( i ), " (", l, String( Dimension( all_nodes[i]!.object ) ), ")" );
+              SetDigraphVertexLabel( D, i, l );
+          end );
+    
+    return D;
+    
+end );
+    
+##
+InstallMethod( DigraphOfChildren,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    local all_nodes, D;
+    
+    all_nodes := C!.all_nodes;
+    
+    D := Digraph( all_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
+    
+    Perform( [ 1 .. Length( all_nodes ) ],
+            function( i )
+              local l;
+              if all_nodes[i]!.parity = true then
+                  l := "+";
+              else
+                  l := "-";
+              fi;
+              l := Concatenation( String( i ), " (", l, String( Dimension( all_nodes[i]!.object ) ), ")" );
+              SetDigraphVertexLabel( D, i, l );
+          end );
+    
+    return D;
+    
+end );
+    
+##
 InstallMethod( ViewObj,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],

@@ -61,3 +61,16 @@ DeclareOperation( "IsDone",
 DeclareOperation( "Pop",
         [ IsDatastructureForConstructibleObjects ] );
 
+#! @Description
+#!  
+#! @Arguments C
+#! @Returns a datastructure of a node in a constructible object
+DeclareOperation( "DigraphOfParents",
+        [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  
+#! @Arguments C
+#! @Returns a datastructure of a node in a constructible object
+DeclareOperation( "DigraphOfChildren",
+        [ IsDatastructureForConstructibleObjects ] );
