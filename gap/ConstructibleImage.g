@@ -226,7 +226,8 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, multi_difference, im, all_nodes, D;
+    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, pre_nodes,
+          image_closure, frame, frame_decomp, multi_difference, im, all_nodes, D;
     
     R := HomalgRing( gamma );
     
@@ -292,7 +293,9 @@ ConstructibleProjection := function( gamma )
             
         fi;
         
-        Perform( Attach( node, multi_difference ), function( pre_node ) pre_node!.Gamma := Gamma; end );
+        pre_nodes := Attach( node, multi_difference );
+        
+        Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
         
         Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
