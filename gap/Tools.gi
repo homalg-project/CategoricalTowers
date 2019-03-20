@@ -188,7 +188,7 @@ InstallMethod( ViewObj,
         
   function( C )
     
-    Print( "<data structure for a constructible object>" );
+    Print( "<data structure for a constructible object: #pos=", Length( C!.pos_nodes ), ", #neg=", Length( C!.neg_nodes ), ">" );
     
 end );
 
