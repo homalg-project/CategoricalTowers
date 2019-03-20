@@ -50,7 +50,8 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
               constructible_object := C,
               object := A,
               parity := b,
-              parents := [ ]
+              parents := [ ],
+              children := [ ],
               );
     
     Objectify( TheTypeNodeInDatastructureForConstructibleObjects, N );
@@ -75,6 +76,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         Add( nodes, N );
         Add( C!.all_nodes, N );
         N!.index := Length( C!.all_nodes );
+        Perform( parents, function( node ) Add( node!.children, N ); end );
     fi;
     
     return N;
@@ -140,6 +142,7 @@ InstallMethod( Attach,
         for i in [ 1 .. Length( L ) ] do
             L[i][1] := pos_node!.object;
         od;
+        Perform( N!.parents, function( node ) Add( node!.children, pos_node ); end );
     else
         pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
     fi;
@@ -166,6 +169,7 @@ InstallMethod( Attach,
             L[i][2] := neg_node!.object;
             if p = fail then
                 Add( neg_node!.parents, pos_node );
+                Add( pos_node!.children, neg_node );
             fi;
         fi;
     od;
