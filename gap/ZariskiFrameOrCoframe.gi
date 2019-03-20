@@ -38,7 +38,7 @@ InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
         
   function( A )
     
-    A := NormalizedPairInUnderlyingHeytingAlgebra( A );
+    A := NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A );
     
     List( A, StandardMorphismOfUnderlyingCategory );
     
