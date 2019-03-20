@@ -185,7 +185,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     arg1 := arg[1];
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( arg1 )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( arg1 )[1] )[1] ) );
     
     arg := Filtered( arg, D -> not IsInitial( D ) );
     
@@ -246,7 +246,7 @@ InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( arg[1] )[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, C,
             ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, arg
@@ -270,7 +270,7 @@ InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences ],
         
-  ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
+  ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences );
 
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
@@ -282,11 +282,11 @@ InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
 ##
 InstallMethod( CanonicalObject,
         "for a constructible object as a union of formal multiple differences",
-        [ ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences ],
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
   function( A )
     
-    A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
+    A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
     
     return Iterated( A, function( C, D ) return CanonicalObjectOp( C + D ); end );
     
