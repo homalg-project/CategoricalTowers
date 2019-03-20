@@ -1,7 +1,7 @@
 LoadPackage( "RingsForHomalg", ">=2018.12.07" );
 LoadPackage( "GradedRingForHomalg" );
-LoadPackage( "Locales", ">=2019.03.09" );
-LoadPackage( "ZariskiFrames", ">=2019.03.08" );
+LoadPackage( "Locales", ">=2019.03.11" );
+LoadPackage( "ZariskiFrames", ">=2019.03.10" );
 LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
@@ -226,7 +226,7 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, multi_difference, D, im;
+    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, component, image_closure, frame, frame_decomp, multi_difference, im, all_nodes, D;
     
     R := HomalgRing( gamma );
     
@@ -292,9 +292,7 @@ ConstructibleProjection := function( gamma )
             
         fi;
         
-        D := Attach( node, multi_difference );
-        
-        Perform( D!.subtract, function( node ) node!.Gamma := Gamma; end );
+        Perform( Attach( node, multi_difference ), function( pre_node ) pre_node!.Gamma := Gamma; end );
         
         Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
@@ -306,7 +304,23 @@ ConstructibleProjection := function( gamma )
     
     im!.C := C;
     
-    im!.Digraph := Digraph( Concatenation( C!.pos_nodes, C!.neg_nodes ), function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
+    all_nodes := C!.all_nodes;
+    
+    D := Digraph( all_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
+    
+    Perform( [ 1 .. Length( all_nodes ) ],
+            function( i )
+              local l;
+              if all_nodes[i]!.parity = true then
+                  l := "+";
+              else
+                  l := "-";
+              fi;
+              l := Concatenation( String( i ), l );
+              SetDigraphVertexLabel( D, i, l );
+          end );
+    
+    im!.Digraph := D;
     
     # in general, this is wrong
     SetClosure( im, im.I1 );
