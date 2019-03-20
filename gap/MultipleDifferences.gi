@@ -206,7 +206,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
         U := List( List( u, a -> a[2] ), S -> T - S );
         
-        List( U, NormalizedPairInUnderlyingHeytingAlgebra );
+        List( U, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
         
         u := List( U, PairInUnderlyingLattice );
         

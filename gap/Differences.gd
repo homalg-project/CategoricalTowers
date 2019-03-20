@@ -49,7 +49,7 @@ DeclareProperty( "IsLocallyClosed",
 DeclareAttribute( "PrePairInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfDifferences, "mutable" );
 
-DeclareAttribute( "NormalizedPairInUnderlyingHeytingAlgebra",
+DeclareAttribute( "NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences, "mutable" );
 
 DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",

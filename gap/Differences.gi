@@ -202,7 +202,7 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
     D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
     ObjectifyObjectForCAPWithAttributes( C, D,
-            NormalizedPairInUnderlyingHeytingAlgebra, [ A, B ],
+            NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra, [ A, B ],
             IsLocallyClosed, true
             );
     
@@ -213,7 +213,7 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
 end );
 
 ##
-InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
+InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
@@ -252,7 +252,7 @@ InstallMethod( NormalizedObject,
         
   function( A )
     
-    List( NormalizedPairInUnderlyingHeytingAlgebra( A ), IsInitial );
+    List( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
     
     if IsInitial( A ) then
         return InitialObject( A );
@@ -289,9 +289,9 @@ InstallMethod( PairInUnderlyingLattice,
 ##
 InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedPairInUnderlyingHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
-  NormalizedPairInUnderlyingHeytingAlgebra );
+  NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( PairInUnderlyingLattice,
@@ -301,7 +301,7 @@ InstallMethod( PairInUnderlyingLattice,
   StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
-InstallMethod( NormalizedPairInUnderlyingHeytingAlgebra,
+InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
@@ -318,7 +318,7 @@ InstallMethod( IsClosedSubobject,
     H := CapCategory( A )!.UnderlyingCategory;
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return IsInitial( NormalizedPairInUnderlyingHeytingAlgebra( A )[2] );
+        return IsInitial( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
     fi;
     
     TryNextMethod( );
@@ -354,7 +354,7 @@ InstallMethod( Closure,
     H := CapCategory( A )!.UnderlyingCategory;
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return NormalizedPairInUnderlyingHeytingAlgebra( A )[1];
+        return NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[1];
     fi;
     
     TryNextMethod( );
