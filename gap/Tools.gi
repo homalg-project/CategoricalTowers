@@ -308,6 +308,31 @@ InstallMethod( Squash,
 end );
 
 ##
+InstallMethod( AsUnionOfMultipleDifferences,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    local A, pos_node, D, children;
+    
+    A := [ ];
+    
+    for pos_node in C!.pos_nodes do
+        children := pos_node!.children;
+        if children = [ ] then
+            D := [ pos_node!.object - 0 ];
+        else
+            D := List( children, neg_node -> pos_node!.object - neg_node!.object );
+        fi;
+        D := CallFuncList( AsFormalMultipleDifference, D );
+        Add( A, D );
+    od;
+    
+    return CallFuncList( UnionOfMultipleDifferences, A );
+    
+end );
+
+##
 InstallMethod( DigraphOfParents,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
