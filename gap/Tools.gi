@@ -174,20 +174,6 @@ InstallMethod( Attach,
 end );
 
 ##
-InstallMethod( Attach,
-        "for a node in a datastructure of a constructible object and a list",
-        [ IsNodeInDatastructureOfConstructibleObjects, IsList ],
-        
-  function( N, L )
-    local C;
-    
-    C := N!.constructible_object;
-    
-    return List( L, node -> NodeInDatastructureOfConstructibleObject( C, node, fail : parents := [ N ] ) );
-    
-end );
-
-##
 InstallMethod( IsDone,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
