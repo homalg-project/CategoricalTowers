@@ -94,24 +94,6 @@ InstallMethod( \=,
 end );
 
 ##
-InstallMethod( Merge,
-        "for a node in a datastructure of a constructible object and an object in a meet-semilattice of formal multiple differences",
-        [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( N, D )
-    local L, C, node;
-    
-    L := ListOfStandardObjectsInMeetSemilatticeOfDifferences( D );
-    
-    C := N!.constructible_object;
-    
-    node := NodeInDatastructureOfConstructibleObject( C, L[1].I, true );
-    
-    Error( "Merge!\n" );
-    
-end );
-
-##
 InstallMethod( Attach,
         "for a node in a datastructure of a constructible object and an object in a meet-semilattice of formal multiple differences",
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ],
@@ -145,10 +127,6 @@ InstallMethod( Attach,
     else
         pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
     fi;
-    
-    #if IsHomSetInhabited( N!.object, pos_node ) then
-    #    return Merge( N, D );
-    #fi;
     
     neg_nodes := List( C!.neg_nodes, n -> n!.object );
     

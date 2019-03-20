@@ -61,10 +61,3 @@ DeclareOperation( "IsDone",
 DeclareOperation( "Pop",
         [ IsDatastructureForConstructibleObjects ] );
 
-#! @Description
-#!  Return the existing multiple difference in the datastructure <A>C</A> of a constructible object
-#!  which results by replacing its negative summands with the those of <A>D</A>.
-#! @Arguments C, D
-#! @Returns a multiple difference in a datastructure of a constructible object
-DeclareOperation( "Merge",
-        [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ] );
