@@ -135,8 +135,8 @@ InstallMethod( Attach,
     p := Position( pos_nodes, pos_node );
     
     if not p = fail then
-        Append( C!.pos_nodes[p]!.parents, N!.parents );
         pos_node := C!.pos_nodes[p];
+        Append( pos_node!.parents, N!.parents );
         for i in [ 1 .. Length( L ) ] do
             L[i][1] := pos_node!.object;
         od;
@@ -162,9 +162,10 @@ InstallMethod( Attach,
             neg_node := NodeInDatastructureOfConstructibleObject( C, neg_node, false : parents := [ pos_node ] );
             Add( pre_nodes, neg_node );
         else
-            L[i][2] := C!.neg_nodes[q]!.object;
+            neg_node := C!.neg_nodes[q];
+            L[i][2] := neg_node!.object;
             if p = fail then
-                Add( C!.neg_nodes[q]!.parents, pos_node );
+                Add( neg_node!.parents, pos_node );
             fi;
         fi;
     od;
