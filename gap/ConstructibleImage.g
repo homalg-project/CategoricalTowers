@@ -269,8 +269,13 @@ ConstructibleProjection := function( gamma )
         additional_components := image_closure_and_frame[2];
         
         if Length( additional_components ) > 0 then
+            
             Info( InfoImage, 1, "Step ", counter, " found ", Length( additional_components ), " additional components of dimensions ", List( additional_components, Dimension ), "." );
-            Attach( node, List( additional_components, ClosedSubsetOfSpec ) );
+            
+            pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail ) );
+            
+            Perform( [ 1 .. Length( additional_components ) ], function( i ) pre_nodes[i]!.Gamma := additional_components[i]; end );
+            
         fi;
         
         image_closure := image_closure_and_frame[1][1];
