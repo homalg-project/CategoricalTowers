@@ -31,6 +31,18 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
         IsConstructibleObjectAsUnionOfMultipleDifferences );
 
+#! @Arguments A
+DeclareAttribute( "NormalizedObject",
+        IsConstructibleObjectAsUnionOfMultipleDifferences );
+
+#! @Arguments A
+DeclareAttribute( "StandardObject",
+        IsConstructibleObjectAsUnionOfMultipleDifferences );
+
+#! @Arguments A
+DeclareAttribute( "Length",
+        IsConstructibleObjectAsUnionOfMultipleDifferences );
+
 #! @Section Operations
 
 #! @Description
@@ -39,6 +51,12 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsInMeetSemilatticeOfMultipleDifferences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+
+DeclareOperation( "ListOp",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+
+DeclareOperation( "ListOp",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
         [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ] );

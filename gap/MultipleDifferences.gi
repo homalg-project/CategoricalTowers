@@ -329,6 +329,127 @@ InstallMethod( AsDifference,
 end );
 
 ##
+InstallMethod( NormalizedObject,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    List( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), IsInitial );
+    
+    if IsInitial( A ) then
+        return InitialObject( A );
+    fi;
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( StandardObject,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    List( ListOfStandardObjectsInMeetSemilatticeOfDifferences( A ), IsInitial );
+    
+    if IsInitial( A ) then
+        return InitialObject( A );
+    fi;
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( IsClosedSubobject,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return ForAll( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), IsClosed );
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( IsClosed,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  IsClosedSubobject );
+
+##
+InstallMethod( IsOpen,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    return IsClosed( -A );
+    
+end );
+
+##
+InstallMethod( Closure,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A )[1].I;
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( LocallyClosedApproximation,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    if IsClosed( A ) then
+        return Closure( A );
+    fi;
+    
+    return StandardObject( A );
+    
+end );
+
+##
+InstallMethod( CanonicalObject,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  LocallyClosedApproximation );
+
+##
+InstallMethod( Dimension,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    return Dimension( Closure( A ) );
+    
+end );
+
+##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],

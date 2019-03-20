@@ -280,6 +280,96 @@ InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
   ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences );
 
 ##
+InstallMethod( ListOp,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
+
+##
+InstallMethod( ListOp,
+        "for a constructible object as a union of formal multiple differences and a function",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return List( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ), f );
+    
+end );
+
+##
+InstallMethod( Length,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  C -> Length( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( C ) ) );
+
+##
+InstallMethod( NormalizedObject,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A )
+    local L;
+    
+    L := Filtered( ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences( A ), m -> not IsInitial( m ) );
+    
+    if L = [ ] then
+        return InitialObject( A );
+    fi;
+    
+    return CallFuncList( UnionOfMultipleDifferences, L );
+    
+end );
+
+##
+InstallMethod( StandardObject,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A )
+    local L;
+    
+    L := Filtered( ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences( A ), m -> not IsInitial( m ) );
+    
+    if L = [ ] then
+        return InitialObject( A );
+    fi;
+    
+    return CallFuncList( UnionOfMultipleDifferences, L );
+    
+end );
+
+##
+InstallMethod( Closure,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return Coproduct( List( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ), Closure ) );
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( ClosureAsConstructibleObject,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A )
+    
+    return UnionOfMultipleDifferences( Closure( A ) - 0 );
+    
+end );
+
+##
 InstallMethod( CanonicalObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
