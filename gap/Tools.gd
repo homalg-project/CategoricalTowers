@@ -45,10 +45,11 @@ DeclareOperation( "NodeInDatastructureOfConstructibleObject",
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ] );
 
 #! @Description
-#!  Construct a multiple difference in the datastructure <C>C</C> of a constructible object
-#!  given a node <A>N</A> in <C>C</C> and an object <A>D</A> in a meet-semilattice of formal multiple differences.
+#!  Attach the components of the object <A>D</A> in a meet-semilattice of formal multiple differences
+#!  as new nodes to the datastructure <C>C</C> of a constructible object at the node <A>N</A>,
+#!  and return a list of pre-nodes corresponding to list of negative nodes.
 #! @Arguments N, D
-#! @Returns a multiple difference in a datastructure of a constructible object
+#! @Returns a list of pre-nodes
 DeclareOperation( "Attach",
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 

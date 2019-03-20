@@ -124,7 +124,7 @@ InstallMethod( Attach,
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( N, D )
-    local C, posN, L, i, pos_node, neg_nodes, pre_nodes, subtract, neg_node, p;
+    local C, L, pos_nodes, pos_node, p, neg_nodes, pre_nodes, q, subtract, i, neg_node;
     
     if not N!.parity = fail then
         Error( "the first argument N is not a pre-node\n" );
@@ -134,15 +134,27 @@ InstallMethod( Attach,
     
     L := ListOfStandardObjectsInMeetSemilatticeOfDifferences( D );
     
+    pos_nodes := List( C!.pos_nodes, n -> n!.object );
+    
     pos_node := L[1].I;
+    
+    L := List( L, a -> NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( a ) );
+    
+    p := Position( pos_nodes, pos_node );
+    
+    if not p = fail then
+        Append( C!.pos_nodes[p]!.parents, N!.parents );
+        pos_node := C!.pos_nodes[p];
+        for i in [ 1 .. Length( L ) ] do
+            L[i][1] := pos_node!.object;
+        od;
+    else
+        pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
+    fi;
     
     #if IsHomSetInhabited( N!.object, pos_node ) then
     #    return Merge( N, D );
     #fi;
-    
-    pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
-    
-    L := List( L, a -> NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( a ) );
     
     neg_nodes := List( C!.neg_nodes, n -> n!.object );
     
@@ -155,15 +167,17 @@ InstallMethod( Attach,
         if IsInitial( neg_node ) then
             continue;
         fi;
-        p := Position( neg_nodes, neg_node );
-        if p = fail then
+        q := Position( neg_nodes, neg_node );
+        if q = fail then
             neg_node := NodeInDatastructureOfConstructibleObject( C, neg_node, false : parents := [ pos_node ] );
             Add( pre_nodes, neg_node );
             Add( subtract, neg_node );
         else
-            L[i][2] := C!.neg_nodes[p]!.object;
-            Add( C!.neg_nodes[p]!.parents, pos_node );
-            Add( subtract, C!.neg_nodes[p] );
+            L[i][2] := C!.neg_nodes[q]!.object;
+            if p = fail then
+                Add( C!.neg_nodes[q]!.parents, pos_node );
+            fi;
+            Add( subtract, C!.neg_nodes[q] );
         fi;
     od;
     
@@ -182,7 +196,7 @@ InstallMethod( Attach,
     
     Add( C!.multiple_differences, D );
     
-    return D;
+    return pre_nodes;
     
 end );
 
