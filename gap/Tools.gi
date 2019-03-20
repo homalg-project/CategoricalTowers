@@ -75,7 +75,6 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     if b = true or not ForAny( nodes, a -> a = N ) then
         Add( nodes, N );
         Add( C!.all_nodes, N );
-        N!.index := Length( C!.all_nodes );
         Perform( parents, function( node ) Add( node!.children, N ); end );
     fi;
     
