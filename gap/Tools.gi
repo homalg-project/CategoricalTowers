@@ -36,7 +36,7 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
               pre_nodes := [ ],
               pos_nodes := [ ],
               neg_nodes := [ ],
-              new_nodes := [ ],
+              all_nodes := [ ],
               multiple_differences := [ ]
               );
     
@@ -52,20 +52,21 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local N, parent, nodes;
+    local N, parents, nodes;
     
     N := rec( 
               constructible_object := C,
               object := A,
-              parity := b
+              parity := b,
+              parents := [ ]
               );
     
     Objectify( TheTypeNodeInDatastructureForConstructibleObjects, N );
     
-    parent := ValueOption( "parent" );
+    parents := ValueOption( "parents" );
     
-    if not parent = fail then
-        N!.parent := parent;
+    if not parents = fail then
+        N!.parents := parents;
     fi;
     
     if b = true then
@@ -78,8 +79,10 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         return N;
     fi;
     
-    if not ForAny( nodes, a -> a = N ) then
+    if b = true or not ForAny( nodes, a -> a = N ) then
         Add( nodes, N );
+        Add( C!.all_nodes, N );
+        N!.index := Length( C!.all_nodes );
     fi;
     
     return N;
@@ -121,48 +124,57 @@ InstallMethod( Attach,
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( N, D )
-    local C, posN, L, new_nodes, i, node, neg_nodes, subtract, S, p;
+    local C, posN, L, i, pos_node, neg_nodes, pre_nodes, subtract, neg_node, p;
+    
+    if not N!.parity = fail then
+        Error( "the first argument N is not a pre-node\n" );
+    fi;
     
     C := N!.constructible_object;
     
     L := ListOfStandardObjectsInMeetSemilatticeOfDifferences( D );
     
-    node := L[1].I;
+    pos_node := L[1].I;
     
-    #if IsHomSetInhabited( N!.object, node ) then
+    #if IsHomSetInhabited( N!.object, pos_node ) then
     #    return Merge( N, D );
     #fi;
     
-    new_nodes := C!.new_nodes;
+    pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
     
-    node := NodeInDatastructureOfConstructibleObject( C, node, true : parent := N );
-    
-    L := List( L, a -> PairInUnderlyingLattice( a ) );
+    L := List( L, a -> NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( a ) );
     
     neg_nodes := List( C!.neg_nodes, n -> n!.object );
+    
+    pre_nodes := [ ];
     
     subtract := [ ];
     
     for i in [ 1 .. Length( L ) ] do
-        S := L[i][2];
-        p := Position( neg_nodes, S );
+        neg_node := L[i][2];
+        if IsInitial( neg_node ) then
+            continue;
+        fi;
+        p := Position( neg_nodes, neg_node );
         if p = fail then
-            S := NodeInDatastructureOfConstructibleObject( C, S, false : parent := node );
-            if not IsInitial( S!.object) then
-                Add( new_nodes, S );
-            fi;
-            Add( subtract, S );
+            neg_node := NodeInDatastructureOfConstructibleObject( C, neg_node, false : parents := [ pos_node ] );
+            Add( pre_nodes, neg_node );
+            Add( subtract, neg_node );
         else
             L[i][2] := C!.neg_nodes[p]!.object;
+            Add( C!.neg_nodes[p]!.parents, pos_node );
             Add( subtract, C!.neg_nodes[p] );
         fi;
     od;
     
+    pre_nodes := List( pre_nodes, neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ] ) );
+    
     D := rec( 
               constructible_object := N!.constructible_object,
-              node := node,
+              node := pos_node,
               subtract := subtract,
-              parents := [ N ],
+              pre_nodes := pre_nodes,
+              parents := N!.parents,
               multiple_difference := D,
               );
     
@@ -184,7 +196,7 @@ InstallMethod( Attach,
     
     C := N!.constructible_object;
     
-    return List( L, node -> NodeInDatastructureOfConstructibleObject( C, node, fail : parent := N ) );
+    return List( L, node -> NodeInDatastructureOfConstructibleObject( C, node, fail : parents := [ N ] ) );
     
 end );
 
@@ -195,7 +207,7 @@ InstallMethod( IsDone,
         
   function( C )
     
-    return IsEmpty( C!.pre_nodes ) and IsEmpty( C!.new_nodes );
+    return IsEmpty( C!.pre_nodes );
     
 end );
 
@@ -206,9 +218,7 @@ InstallMethod( Pop,
         
   function( C )
     
-    if not IsEmpty( C!.new_nodes ) then
-        return Remove( C!.new_nodes );
-    elif not IsEmpty( C!.pre_nodes ) then
+    if not IsEmpty( C!.pre_nodes ) then
         return Remove( C!.pre_nodes );
     fi;
     
