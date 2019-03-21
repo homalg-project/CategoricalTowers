@@ -66,7 +66,7 @@ Display( AvC );
 AC := DirectProduct( A, C );
 #! V_{Z}( <...> )
 Display( AC );
-#! V( <2,3> )
+#! V( <1> )
 DirectProduct( A, C ) = I;
 #! true
 CoexponentialOnObjects( I, T ) = I;

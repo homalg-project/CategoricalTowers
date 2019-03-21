@@ -240,7 +240,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         C := UniversalMorphismFromDirectSum( L );
         
-        return OpenSubsetOfProjByReducedMorphism( C );
+        return OpenSubsetOfProj( C );
             
     end );
     

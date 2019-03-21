@@ -290,7 +290,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         P := UniversalMorphismFromDirectSum( L );
         
-        return ClosedSubsetOfSpecByReducedMorphism( P );
+        return ClosedSubsetOfSpec( P );
         
     end );
     

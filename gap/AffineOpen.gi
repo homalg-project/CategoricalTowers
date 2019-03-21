@@ -240,7 +240,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
         C := UniversalMorphismFromDirectSum( L );
         
-        return OpenSubsetOfSpecByReducedMorphism( C );
+        return OpenSubsetOfSpec( C );
             
     end );
     

@@ -58,7 +58,7 @@ Display( I );
 AvC := Coproduct( A, C );
 #! D_{Z}( <...> )
 Display( AvC );
-#! D( <2,3> )
+#! D( <1> )
 Coproduct( A, C ) = T;
 #! true
 AC := DirectProduct( A, C );

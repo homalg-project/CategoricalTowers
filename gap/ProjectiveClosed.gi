@@ -257,7 +257,7 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
         
         P := UniversalMorphismFromDirectSum( L );
         
-        return ClosedSubsetOfProjByReducedMorphism( P );
+        return ClosedSubsetOfProj( P );
         
     end );
     
