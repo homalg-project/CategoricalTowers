@@ -38,13 +38,14 @@ DeclareOperation( "NodeInDatastructureOfConstructibleObject",
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ] );
 
 #! @Description
-#!  Attach the components of the object <A>D</A> in a meet-semilattice of formal multiple differences
-#!  as new nodes to the datastructure <C>C</C> of a constructible object at the node <A>N</A>,
-#!  and return a list of pre-nodes corresponding to list of negative nodes.
-#! @Arguments N, D
+#!  Attach to the datastructure <C>C</C> of a constructible object at the node <A>N</A>
+#!  * <A>pos_node</A> as a new positive node;
+#!  * the entries of <A>L</A> as new negative node,
+#!  and return a list of pre-nodes corresponding to list <A>L</A> of negative nodes.
+#! @Arguments N, pos_node, L
 #! @Returns a list of pre-nodes
 DeclareOperation( "Attach",
-        [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+        [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInThinCategory, IsList ] );
 
 #! @Section Operations
 

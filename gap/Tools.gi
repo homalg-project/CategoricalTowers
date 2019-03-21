@@ -95,11 +95,11 @@ end );
 
 ##
 InstallMethod( Attach,
-        "for a node in a datastructure of a constructible object and an object in a meet-semilattice of formal multiple differences",
-        [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        "for a node in a datastructure of a constructible object and an object in a thin category, and a list of objects in a thin category",
+        [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInThinCategory, IsList ],
         
-  function( N, D )
-    local C, L, pos_nodes, pos_node, p, neg_nodes, pre_nodes, q, i, neg_node;
+  function( N, pos_node, L )
+    local C, pos_nodes, p, neg_nodes, pre_nodes, q, i, neg_node;
     
     if not N!.parity = fail then
         Error( "the first argument N is not a pre-node\n" );
@@ -107,22 +107,13 @@ InstallMethod( Attach,
     
     C := N!.constructible_object;
     
-    L := ListOfStandardObjectsInMeetSemilatticeOfDifferences( D );
-    
     pos_nodes := List( C!.pos_nodes, n -> n!.object );
-    
-    pos_node := L[1].I;
-    
-    L := List( L, a -> NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( a ) );
     
     p := Position( pos_nodes, pos_node );
     
     if not p = fail then
         pos_node := C!.pos_nodes[p];
         Append( pos_node!.parents, N!.parents );
-        for i in [ 1 .. Length( L ) ] do
-            L[i][1] := pos_node!.object;
-        od;
         Perform( N!.parents, function( node ) Add( node!.children, pos_node ); end );
     else
         pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
@@ -133,7 +124,7 @@ InstallMethod( Attach,
     pre_nodes := [ ];
     
     for i in [ 1 .. Length( L ) ] do
-        neg_node := L[i][2];
+        neg_node := L[i];
         if IsInitial( neg_node ) then
             continue;
         fi;
@@ -143,7 +134,6 @@ InstallMethod( Attach,
             Add( pre_nodes, neg_node );
         else
             neg_node := C!.neg_nodes[q];
-            L[i][2] := neg_node!.object;
             if p = fail then
                 Add( neg_node!.parents, pos_node );
                 Add( pos_node!.children, neg_node );
