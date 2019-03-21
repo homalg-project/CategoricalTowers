@@ -259,7 +259,7 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, pre_nodes,
+    local R, B, image, counter, C, Gamma, new_nodes, node, additional_components, decomposition, components, image_closure_and_frame, pre_nodes,
           image_closure, frame, frame_decomp, im;
     
     R := HomalgRing( gamma );
@@ -283,6 +283,17 @@ ConstructibleProjection := function( gamma )
         node := Pop( C );
         
         Gamma := node!.Gamma;
+
+        additional_components := [];
+
+        decomposition := ValueOption( "decomposition" );
+        if decomposition = true then
+            Info( InfoImage, 3, "Step ", counter, " decompotition... " );
+            components := IrreducibleComponents( Gamma );
+            Info( InfoImage, 3, "Step ", counter, " ...done (#", Length( components ), ")" );
+            Gamma := components[1];
+            additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
+        fi;
         
         Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
         Gamma := PreimageOfProjection( R, node!.object ) * Gamma;
@@ -299,7 +310,7 @@ ConstructibleProjection := function( gamma )
         
         image_closure_and_frame := LocallyClosedProjection( Gamma : counter := counter );
         
-        additional_components := image_closure_and_frame[2];
+        additional_components := Concatenation( additional_components, image_closure_and_frame[2] );
         
         if Length( additional_components ) > 0 then
             
@@ -315,7 +326,7 @@ ConstructibleProjection := function( gamma )
         
         frame := image_closure_and_frame[1][2];
         
-        frame_decomp := [] 
+        frame_decomp := [];
 
         if not ValueOption( "frame_decomposition" ) = false then
 
