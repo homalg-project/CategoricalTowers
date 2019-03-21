@@ -1,7 +1,8 @@
-LoadPackage( "RingsForHomalg", ">=2018.12.07" );
-LoadPackage( "GradedRingForHomalg" );
-LoadPackage( "Locales", ">=2019.03.18" );
-LoadPackage( "ZariskiFrames", ">=2019.03.10" );
+LoadPackage( "MatricesForHomalg", ">=2018.12.09" );
+LoadPackage( "RingsForHomalg", ">=2018.12.09" );
+LoadPackage( "GradedRingForHomalg", ">=2018.12.08" );
+LoadPackage( "Locales", ">=2019.03.20" );
+LoadPackage( "ZariskiFrames", ">=2019.03.12" );
 LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
@@ -227,7 +228,7 @@ end;
 ##
 ConstructibleProjection := function( gamma )
     local R, B, image, counter, C, Gamma, new_nodes, node, image_closure_and_frame, additional_components, pre_nodes,
-          image_closure, frame, frame_decomp, multi_difference, im;
+          image_closure, frame, frame_decomp, im;
     
     R := HomalgRing( gamma );
     
@@ -288,17 +289,13 @@ ConstructibleProjection := function( gamma )
             frame_decomp := IrreducibleComponents( frame );
             Info( InfoImage, 3, "Step ", counter, " ...done " );
             
-            multi_difference := List( frame_decomp, a -> image_closure - a );
-            multi_difference := CallFuncList( AsFormalMultipleDifference, multi_difference );
-            
         else
             
-            multi_difference := AsFormalMultipleDifference( image_closure - 0 );
             frame_decomp := [ ];
             
         fi;
         
-        pre_nodes := Attach( node, multi_difference );
+        pre_nodes := Attach( node, image_closure, frame_decomp );
         
         Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
         
