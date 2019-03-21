@@ -38,7 +38,7 @@ InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
         
         obj := PolynomialsWithoutRelativeIndeterminates( obj );
         
-        return ClosedSubsetOfSpec( obj );
+        return ClosedSubsetOfSpecByReducedMorphism( obj );
         
     end );
     

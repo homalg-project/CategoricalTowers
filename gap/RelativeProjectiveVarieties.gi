@@ -65,7 +65,7 @@ InstallMethod( FunctorClosedProjectionBetweenZariskiCoframes,
         
         obj := PolynomialsWithoutRelativeIndeterminates( obj );
         
-        return ClosedSubsetOfSpec( obj );
+        return ClosedSubsetOfSpecByReducedMorphism( obj );
         
     end );
     
