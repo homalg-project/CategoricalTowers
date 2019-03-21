@@ -279,7 +279,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
         L := List( [ 1 .. NrRows( A ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( A, [ r ] ), B ) );
         
-        L := List( L, OpenSubsetOfSpec );
+        L := List( L, OpenSubsetOfSpecByReducedMorphism );
         
         return DirectProduct( L );
         

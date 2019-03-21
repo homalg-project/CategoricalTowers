@@ -279,7 +279,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         L := List( [ 1 .. NrRows( A ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( A, [ r ] ), B ) );
         
-        L := List( L, OpenSubsetOfProj );
+        L := List( L, OpenSubsetOfProjByReducedMorphism );
         
         return DirectProduct( L );
         

@@ -312,7 +312,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
         
-        L := List( L, ClosedSubsetOfSpec );
+        L := List( L, ClosedSubsetOfSpecByReducedMorphism );
         
         return Coproduct( L );
         

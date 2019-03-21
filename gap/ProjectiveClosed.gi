@@ -279,7 +279,7 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
         
         L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
         
-        L := List( L, ClosedSubsetOfProj );
+        L := List( L, ClosedSubsetOfProjByReducedMorphism );
         
         return Coproduct( L );
         
