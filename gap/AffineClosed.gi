@@ -43,7 +43,7 @@ end );
 
 ##
 InstallMethod( ClosedSubsetOfSpec,
-        "for a homalg matrix",
+        "for a homalg ring element",
         [ IsHomalgRingElement ],
 
   function( r )
