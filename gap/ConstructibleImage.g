@@ -13,7 +13,7 @@ SetInfoLevel( InfoImage, 3 );
 
 ##
 DecreaseCodimensionByFixingVariables := function( Gamma )
-local R, B, var, n, values, Gamma0, nrFails, image_closure, d0, fiber_dim, additional_components, a, i, H, j, Gamma0_test, Gamma0_image;
+local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure, d0, fiber_dim, additional_components, a, H, j, Gamma0_test, Gamma0_image;
 
     R := UnderlyingRing( Gamma );
 
@@ -23,7 +23,18 @@ local R, B, var, n, values, Gamma0, nrFails, image_closure, d0, fiber_dim, addit
 
     n := Length( var );
 
-    values := [ 0, 1, -1, 2, -2, 3, -3, 5, -5, 7, -7, 11, -11, 13, -13, 17, -17, 19, -19, "random", "random", 42, -42, "random", "random" ];
+    values := [ 0, 1, -1, 2, -2, 3, -3, 5, -5, 7, -7, 11, -11, 13, -13, 17, -17, 19, -19, 42, -42 ];
+
+    modify_hyperplanes := ValueOption( "modify_hyperplanes" );
+    if IsInt( modify_hyperplanes ) then
+        values := Concatenation( values, [ 43 .. 44 + modify_hyperplanes ] );
+        for i in [ 1 .. modify_hyperplanes ] do
+            var := Permuted( var, PermList( Concatenation( [ n ], [ 1 .. n-1 ] ) ) );
+            Remove( values, 1 );
+        od;
+    fi;
+
+    values := Concatenation( values, ListWithIdenticalEntries( 10, "random" ) );
 
     Gamma0 := Gamma;
 
@@ -121,7 +132,7 @@ end;
 
 ##
 LocallyClosedProjection := function( Gamma )
-    local counter, step, d, image_closure, d0, fiber_dim, Gamma0, additional_components, l, decomposition, frame;
+    local counter, step, d, image_closure, d0, fiber_dim, Gamma0, additional_components, l, decomposition, frame, smaller_frame, i;
 
     counter := ValueOption( "counter" );
     
@@ -210,7 +221,7 @@ LocallyClosedProjection := function( Gamma )
         fi;
 
     fi;
-
+ 
     Info( InfoImage, 2, step, counter, " points at infinity..." );
     frame := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
     Info( InfoImage, 2, step, counter, " ...done" );
@@ -218,6 +229,27 @@ LocallyClosedProjection := function( Gamma )
     Info( InfoImage, 2, step, counter, " frame..." );
     frame := ImageOfProjection( frame );
     Info( InfoImage, 2, step, counter, " ...done" );
+
+    smaller_frame := ValueOption( "smaller_frame" );
+    Info( InfoImage, 1, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+    if IsInt( smaller_frame ) and IsEmpty( additional_components ) then
+        for i in [ 1 .. smaller_frame ] do
+            l := DecreaseCodimensionByFixingVariables( Gamma : modify_hyperplanes := i );
+            if IsEmpty( l[2] ) then
+                l := PointsAtInfinityOfFiberwiseProjectiveClosure( l[1] );
+                l := ImageOfProjection( l );
+                frame := frame * l;
+                StandardMorphismOfUnderlyingCategory( frame );
+                if not HasStandardMorphismOfUnderlyingCategory( frame ) then
+                    Error();
+                fi;
+                Info( InfoImage, 1, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+            else
+                Info( InfoImage, 1, "Step ", counter, " break" );
+                break;
+            fi;
+        od;
+    fi;
 
     Assert( 2, not IsSubset( image_closure, frame ) );
   
@@ -283,16 +315,22 @@ ConstructibleProjection := function( gamma )
         
         frame := image_closure_and_frame[1][2];
         
-        if not IsInitial( frame ) then
+        frame_decomp := [] 
+
+        if not ValueOption( "frame_decomposition" ) = false then
+
+            if not IsInitial( frame ) then
             
-            Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
-            frame_decomp := IrreducibleComponents( frame );
-            Info( InfoImage, 3, "Step ", counter, " ...done " );
+                Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
+                frame_decomp := IrreducibleComponents( frame );
+                Info( InfoImage, 3, "Step ", counter, " ...done " );
             
+            fi;
+
         else
-            
-            frame_decomp := [ ];
-            
+  
+            frame_decomp := [ frame ];
+
         fi;
         
         pre_nodes := Attach( node, image_closure, frame_decomp );
