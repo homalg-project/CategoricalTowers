@@ -48,7 +48,7 @@ InstallMethod( ClosedSubsetOfSpec,
 
   function( r )
     
-    return ClosedSubsetOfSpec( HomalgMatrix( r, 1, 1, HomalgRing( r ) ) );
+    return ClosedSubsetOfSpec( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
 
 end );
     
