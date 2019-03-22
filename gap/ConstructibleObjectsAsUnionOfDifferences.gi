@@ -305,7 +305,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
   function( A )
     
-    return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), NormalizedObject );
+    return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), NormalizeObject );
     
 end );
 
@@ -316,7 +316,7 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
         
   function( A )
     
-    return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), StandardObject );
+    return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), StandardizeObject );
     
 end );
 
@@ -367,7 +367,7 @@ InstallMethod( Length,
   C -> Length( ListOfObjectsInMeetSemilatticeOfDifferences( C ) ) );
 
 ##
-InstallMethod( NormalizedObject,
+InstallMethod( NormalizeObject,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
@@ -385,7 +385,7 @@ InstallMethod( NormalizedObject,
 end );
 
 ##
-InstallMethod( StandardObject,
+InstallMethod( StandardizeObject,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         

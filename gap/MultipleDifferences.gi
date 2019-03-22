@@ -329,7 +329,7 @@ InstallMethod( AsDifference,
 end );
 
 ##
-InstallMethod( NormalizedObject,
+InstallMethod( NormalizeObject,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
@@ -346,7 +346,7 @@ InstallMethod( NormalizedObject,
 end );
 
 ##
-InstallMethod( StandardObject,
+InstallMethod( StandardizeObject,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
@@ -427,7 +427,7 @@ InstallMethod( LocallyClosedApproximation,
         return Closure( A );
     fi;
     
-    return StandardObject( A );
+    return StandardizeObject( A );
     
 end );
 

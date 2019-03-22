@@ -56,11 +56,11 @@ DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfDifferences, "mutable" );
 
 #! @Arguments A
-DeclareAttribute( "NormalizedObject",
+DeclareAttribute( "NormalizeObject",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "StandardObject",
+DeclareAttribute( "StandardizeObject",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Arguments A

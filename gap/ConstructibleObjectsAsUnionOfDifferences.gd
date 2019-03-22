@@ -34,11 +34,11 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "NormalizedObject",
+DeclareAttribute( "NormalizeObject",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "StandardObject",
+DeclareAttribute( "StandardizeObject",
         IsConstructibleObjectAsUnionOfDifferences );
 
 #! @Arguments A

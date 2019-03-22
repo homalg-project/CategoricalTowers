@@ -62,11 +62,11 @@ DeclareAttribute( "AsDifference",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 #! @Arguments A
-DeclareAttribute( "NormalizedObject",
+DeclareAttribute( "NormalizeObject",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 #! @Arguments A
-DeclareAttribute( "StandardObject",
+DeclareAttribute( "StandardizeObject",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 #! @Arguments A

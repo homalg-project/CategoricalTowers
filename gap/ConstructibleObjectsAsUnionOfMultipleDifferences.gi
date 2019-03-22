@@ -305,7 +305,7 @@ InstallMethod( Length,
   C -> Length( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( C ) ) );
 
 ##
-InstallMethod( NormalizedObject,
+InstallMethod( NormalizeObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
@@ -323,7 +323,7 @@ InstallMethod( NormalizedObject,
 end );
 
 ##
-InstallMethod( StandardObject,
+InstallMethod( StandardizeObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         

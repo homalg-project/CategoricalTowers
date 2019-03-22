@@ -246,7 +246,7 @@ InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
 end );
 
 ##
-InstallMethod( NormalizedObject,
+InstallMethod( NormalizeObject,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
@@ -263,7 +263,7 @@ InstallMethod( NormalizedObject,
 end );
 
 ##
-InstallMethod( StandardObject,
+InstallMethod( StandardizeObject,
         "for an object in a meet-semilattice of formal differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
@@ -372,7 +372,7 @@ InstallMethod( LocallyClosedApproximation,
         return Closure( A );
     fi;
     
-    return StandardObject( A );
+    return StandardizeObject( A );
     
 end );
 
