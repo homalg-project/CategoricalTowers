@@ -13,7 +13,7 @@ Subtitle := "",
 Version := Maximum( [
                    "2019.03.21", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2018.07.01", ## Tom's version
+                   "2019.03.17", ## Tom's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -91,7 +91,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2018.09.19" ],
-                   [ "Toposes", ">= 2019.01.20" ],
+                   [ "Toposes", ">= 2019.03.16" ],
                    [ "Digraphs", ">= 0.12.1" ],
                    ],
   SuggestedOtherPackages := [ ],

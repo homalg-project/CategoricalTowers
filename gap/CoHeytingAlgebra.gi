@@ -73,9 +73,73 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCoexponentialOnMorphismsWithGivenCoexponentials( coheyting_algebra,
-      function( S, alpha, beta, T )
+      function( S, alpha, beta, R )
         
-        return UniqueMorphism( S, T );
+        return UniqueMorphism( S, R );
+        
+    end );
+    
+    ##
+    AddCocartesianEvaluationMorphismWithGivenRange( coheyting_algebra,
+      function( A, B, BxCoex_A_B )
+        
+        return UniqueMorphism( A, BxCoex_A_B );
+        
+    end );
+    
+    ##
+    AddCocartesianCoevaluationMorphismWithGivenSource( coheyting_algebra,
+      function( A, B, Coex_AxB_A)
+        
+        return UniqueMorphism( Coex_AxB_A, B );
+        
+    end );
+    
+    ##
+    AddCoproductToCoexponentialAdjunctionMap( coheyting_algebra,
+      function( B, C, g )
+        local A;
+        
+        A := Source( g );
+        
+        return UniqueMorphism( CoexponentialOnObjects( A, B ), C );
+        
+    end );
+    
+    ##
+    AddCoexponentialToCoproductAdjunctionMap( coheyting_algebra,
+      function( A, B, f )
+        local C, BC;
+        
+        C := Range( f );
+        
+        BC := Coproduct( B, C );
+        
+        return UniqueMorphism( A, BC);
+        
+    end );
+    
+    ##
+    AddCocartesianPreCoComposeMorphismWithGivenObjects( coheyting_algebra,
+      function( Coex_A_C, A, B, C, Coex_A_BxCoex_B_C);
+        
+        return UniqueMorphism( Coex_A_C, Coex_A_BxCoex_B_C );
+        
+    end );
+    
+    ##
+    AddCocartesianPostCoComposeMorphismWithGivenObjects( coheyting_algebra,
+      function( Coex_A_C, A, B, C, Coex_B_CxCoex_A_B );
+        
+        return UniqueMorphism( Coex_A_C, Coex_B_CxCoex_A_B );
+        
+    end );
+    
+    ##
+    AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects( coheyting_algebra,
+      function( A1, A2, B1, B2, L )
+        
+        return UniqueMorphism( L[1], L[2] );
         
     end );
     
