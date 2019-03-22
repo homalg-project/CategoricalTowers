@@ -237,7 +237,7 @@ InstallMethod( Remove,
             Error( "pos_node is not among the spouses\n" );
         fi;
         Remove( spouses, p );
-        Append( spouses, grandparents );
+        AppendNew( spouses, grandparents );
     od;
     
     for grandparent in grandparents do
@@ -247,7 +247,7 @@ InstallMethod( Remove,
             Error( "neg_node is not among the aunts\n" );
         fi;
         Remove( aunts, p );
-        Append( aunts, children );
+        AppendNew( aunts, children );
     od;
     
 end );
