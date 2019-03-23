@@ -213,20 +213,6 @@ InstallMethod( \+,
 
 ##
 InstallMethod( \+,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
-        
-  UnionOfDifferences );
-
-##
-InstallMethod( \+,
-        "for an object in a thin category and an object in a meet-semilattice of formal differences",
-        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
-        
-  UnionOfDifferences );
-
-##
-InstallMethod( \+,
         "for a constructible object as a union of formal differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
         
