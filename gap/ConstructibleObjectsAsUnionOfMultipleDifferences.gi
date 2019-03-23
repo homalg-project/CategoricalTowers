@@ -170,6 +170,8 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                    local D;
                    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
                        return ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
+                   elif IsConstructibleObjectAsUnionOfDifferences( A ) then
+                       return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), AsFormalMultipleDifference );
                    elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
                        return A;
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
