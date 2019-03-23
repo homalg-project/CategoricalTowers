@@ -43,7 +43,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
   function( P )
     local name, C, BinaryDirectProduct;
     
-    name := "The Boolean algebra of constructible objects of ";
+    name := "The Boolean algebra of constructible objects as unions of formal differences of ";
     
     name := Concatenation( name, Name( P ) );
     
