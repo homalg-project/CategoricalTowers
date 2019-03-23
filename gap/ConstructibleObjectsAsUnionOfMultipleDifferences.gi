@@ -167,6 +167,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     
     arg := List( arg,
                  function( A )
+                   local D;
                    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
                        return ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
                    elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
@@ -174,7 +175,11 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
                        return AsFormalMultipleDifference( A );
                    elif IsObjectInThinCategory( A ) then
-                       return AsFormalMultipleDifference( A - 0 );
+                       D := A - 0;
+                       if not IsObjectInMeetSemilatticeOfDifferences( D ) then
+                           Error( "the difference `D := A - 0' is not an object in a meet-semilattice of formal differences\n" );
+                       fi;
+                       return AsFormalMultipleDifference( D );
                    else
                        Error( "this entry is neither a constructible set as a union of formal multiple differences, nor a formal multiple difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
                    fi;

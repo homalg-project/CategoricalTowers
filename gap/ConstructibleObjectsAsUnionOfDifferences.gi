@@ -163,12 +163,17 @@ InstallGlobalFunction( UnionOfDifferences,
     
     arg := List( arg,
                  function( A )
+                   local D;
                    if IsConstructibleObjectAsUnionOfDifferences( A ) then
                        return ListOfObjectsInMeetSemilatticeOfDifferences( A );
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
                        return A;
                    elif IsObjectInThinCategory( A ) then
-                       return A - 0;
+                       D := A - 0;
+                       if not IsObjectInMeetSemilatticeOfDifferences( D ) then
+                           Error( "the difference `D := A - 0' is not an object in a meet-semilattice of formal differences\n" );
+                       fi;
+                       return D;
                    else
                        Error( "this entry is neither a constructible set as a union of formal differences, nor a formal difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
                    fi;
