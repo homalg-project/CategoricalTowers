@@ -417,20 +417,6 @@ end );
 
 ##
 InstallMethod( \-,
-        "for two objects in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInMeetSemilatticeOfDifferences ],
-        
-  function( A, B )
-    
-    A := PairInUnderlyingLattice( A );
-    B := PairInUnderlyingLattice( B );
-    
-    return ( A[1] - ( A[2] + B[1] ) ) + ( ( A[1] * B[2] ) - A[2] );
-    
-end );
-
-##
-InstallMethod( \-,
         "for an object in a thin category and a constructible object as a union of formal differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
         
