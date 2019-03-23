@@ -570,6 +570,35 @@ InstallMethod( \=,
 end );
 
 ##
+InstallMethod( ListOp,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+   ListOfObjectsOfDifferences );
+
+##
+InstallMethod( ListOp,
+        "for an object in a meet-semilattice of formal multiple differences and a function",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return List( ListOfObjectsOfDifferences( A ), f );
+    
+end );
+
+##
+InstallMethod( \[\],
+        "for an object in a meet-semilattice of formal multiple differences and a positive integer",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],
+        
+  function( A, pos )
+    
+    return ListOfObjectsOfDifferences( A )[pos];
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],

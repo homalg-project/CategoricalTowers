@@ -97,6 +97,16 @@ DeclareAttribute( "Dimension",
 DeclareOperation( "ListOfObjectsOfDifferences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 
+DeclareOperation( "ListOp",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+
+DeclareOperation( "ListOp",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ] );
+
+#!
+DeclareOperation( "\[\]",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt ] );
+
 #! @Section Constructors
 
 #! @Description
