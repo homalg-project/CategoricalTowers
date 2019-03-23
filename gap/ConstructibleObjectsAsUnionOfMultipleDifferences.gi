@@ -232,6 +232,35 @@ InstallMethod( \+,
   UnionOfMultipleDifferences );
 
 ##
+InstallMethod( \+,
+        "for a constructible object as a union of formal differences and an object in a meet-semilattice of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  UnionOfMultipleDifferences );
+
+##
+InstallMethod( \+,
+        "for an object in a meet-semilattice of formal multiple differences and the zero integer",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt and IsZero ],
+        
+  function( A, B )
+    
+    return A + InitialObject( CapCategory( A ) );
+    
+end );
+
+##
+InstallMethod( \+,
+        "for the zero integer and an object in a meet-semilattice of formal multiple differences",
+        [ IsInt and IsZero, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A, B )
+    
+    return B + InitialObject( CapCategory( B ) );
+    
+end );
+
+##
 InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
   function( arg )
     local A, C;
@@ -330,6 +359,59 @@ InstallMethod( StandardizeObject,
     fi;
     
     return CallFuncList( UnionOfMultipleDifferences, L );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for an object in a thin category and an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A, B )
+    local L;
+    
+    B := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( B );
+    
+    L := Concatenation( [ A - B[1].I ], List( List( B, D -> D.J ), Bi -> A * Bi ) );
+    
+    return CallFuncList( UnionOfMultipleDifferences, L );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for an object in a thin category and a constructible object as a union of formal multiple differences",
+        [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A, B )
+    
+    B := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( B );
+    
+    return DirectProduct( List( B, b -> A - b ) );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for a constructible object as a union of formal multiple differences and an object in a thin category",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsObjectInThinCategory ],
+        
+  function( A, B )
+    
+    A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
+    
+    return CallFuncList( UnionOfMultipleDifferences, List( A, a -> a - B ) );
+    
+end );
+
+##
+InstallMethod( AdditiveInverseMutable,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    return -UnionOfMultipleDifferences( A );
     
 end );
 
