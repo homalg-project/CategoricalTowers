@@ -86,6 +86,7 @@ DeclareOperation( "\+",
 DeclareOperation( "\+",
         [ IsInt, IsObjectInThinCategory ] );
 
+#!
 DeclareOperation( "\[\]",
         [ IsConstructibleObjectAsUnionOfDifferences, IsInt ] );
 
