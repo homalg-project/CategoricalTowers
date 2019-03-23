@@ -101,7 +101,7 @@ InstallGlobalFunction( AsFormalMultipleDifference,
     local A, D;
     
     A := rec( );
-
+    
     D := MeetSemilatticeOfMultipleDifferences( CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, D,
