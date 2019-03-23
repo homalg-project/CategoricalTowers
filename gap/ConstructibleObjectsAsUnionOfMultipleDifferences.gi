@@ -363,19 +363,6 @@ InstallMethod( ClosureAsConstructibleObject,
 end );
 
 ##
-InstallMethod( CanonicalObject,
-        "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
-        
-  function( A )
-    
-    A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
-    
-    return Iterated( A, function( C, D ) return CanonicalObjectOp( C + D ); end );
-    
-end );
-
-##
 InstallMethod( Display,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],

@@ -124,6 +124,17 @@ InstallMethod( CanonicalObjectOp,
 end );
 
 ##
+InstallMethod( CanonicalObject,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    return Iterated( List( A ), function( C, D ) return CanonicalObjectOp( C + D ); end );
+    
+end );
+
+##
 InstallMethod( Dimension,
         "for a constructible object",
         [ IsConstructibleObject ],

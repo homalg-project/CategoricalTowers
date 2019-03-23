@@ -501,19 +501,6 @@ InstallMethod( \=,
 end );
 
 ##
-InstallMethod( CanonicalObject,
-        "for a constructible object as a union of formal differences",
-        [ IsConstructibleObjectAsUnionOfDifferences ],
-        
-  function( A )
-    
-    A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
-    
-    return Iterated( A, function( C, D ) return CanonicalObjectOp( C + D ); end );
-    
-end );
-
-##
 InstallMethod( \.,
         "for a constructible object as a union of formal differences and a positive integer",
         [ IsConstructibleObjectAsUnionOfDifferences, IsPosInt ],
