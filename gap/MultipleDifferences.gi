@@ -36,7 +36,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         U := ListOfObjectsOfDifferences( A );
         
-        return ForAll( U, IsWellDefinedForObjects );
+        return ForAll( U, IsObjectInMeetSemilatticeOfDifferences ) and ForAll( U, IsWellDefinedForObjects );
         
     end );
     
