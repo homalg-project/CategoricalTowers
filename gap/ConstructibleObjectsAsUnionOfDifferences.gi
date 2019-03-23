@@ -10,14 +10,12 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
         [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfDifferences ],
 
   function( A, B )
-    local Ap, P, Bp, b;
+    local Ap, Bp, b;
     
     A := PairInUnderlyingLattice( A );
     
     Ap := A[2];
     A := A[1];
-    
-    P := CapCategory( A );
     
     B := ListOfObjectsInMeetSemilatticeOfDifferences( B );
     
