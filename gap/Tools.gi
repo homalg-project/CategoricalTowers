@@ -291,7 +291,7 @@ InstallMethod( Squash,
         
         SquashOnce( C );
         
-    until Length( C!.all_nodes ) = l;
+    until l = Length( C!.all_nodes );
     
     return C;
     
