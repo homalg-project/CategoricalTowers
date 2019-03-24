@@ -318,7 +318,11 @@ InstallMethod( AsUnionOfMultipleDifferences,
         Add( A, D );
     od;
     
-    return CallFuncList( UnionOfMultipleDifferences, A );
+    A := CallFuncList( UnionOfMultipleDifferences, A );
+    
+    A!.C := C;
+    
+    return A;
     
 end );
 
