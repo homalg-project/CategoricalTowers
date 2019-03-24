@@ -258,7 +258,11 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local pos_node, parents;
+    local f, pos_node, parents;
+    
+    f := function( N1, N2 )
+           return IsHomSetInhabited( N1!.object, N2!.object );
+         end;
     
     for pos_node in C!.pos_nodes do
         
@@ -270,6 +274,8 @@ InstallMethod( SquashOnce,
             Remove( pos_node );
             
         fi;
+        
+        pos_node!.children := MaximalObjects( pos_node!.children, f );
         
     od;
     

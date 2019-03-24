@@ -214,6 +214,10 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
     until IsEqualForObjectsIfIsHomSetInhabited( T_new, T );
     
+    u := MaximalObjects( List( u, a -> a[2] ), IsHomSetInhabited );
+    
+    U := List( u, S -> T - S );
+    
     return U;
     
 end );
