@@ -228,25 +228,7 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
     
     U := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A );
     
-    u := List( U, PairInUnderlyingLattice );
-    
-    T_new := DirectProduct( List( u, a -> a[1] ) );
-    
-    repeat
-        
-        T := T_new;
-        
-        U := List( List( u, a -> a[2] ), S -> T - S );
-        
-        List( U, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
-        
-        U := DuplicateFreeList( U );
-        
-        u := List( U, PairInUnderlyingLattice );
-        
-        T_new := DirectProduct( List( u, a -> a[1] ) );
-        
-    until IsEqualForObjectsIfIsHomSetInhabited( T_new, T );
+    List( U, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
     
     return U;
     
