@@ -178,6 +178,11 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
     AddIsHomSetInhabited( ZariskiCoframe,
       function( S, T )
         
+        if HasDimension( S ) and HasDimension( T ) and
+           Dimension( S ) > Dimension( T ) then
+            return false;
+        fi;
+        
         S := MorphismOfUnderlyingCategory( S );
         T := MorphismOfUnderlyingCategory( T );
         
