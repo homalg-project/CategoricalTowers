@@ -601,6 +601,27 @@ InstallMethod( \[\],
 end );
 
 ##
+InstallMethod( \.,
+        "for an object in a meet-semilattice of formal mutliple differences and a positive integer",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],
+
+  function( A, string_as_int )
+    local name;
+    
+    name := NameRNam( string_as_int );
+    
+    if name[1] = 'I' then
+        List( A );
+        return A[1].I;
+    elif name[1] = 'J' then
+        return A[EvalString( name{[ 2 .. Length( name ) ]} )].J;
+    fi;
+    
+    Error( "no component with this name available\n" );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
