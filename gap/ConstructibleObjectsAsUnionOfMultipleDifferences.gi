@@ -500,14 +500,48 @@ InstallMethod( \[\],
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( ViewObj,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
 
   function( A )
+    local n, i;
     
-    Perform( A, Display );
+    A := List( A );
     
-    Print( "\nA constructible object given by the union of the above formal multiple differences\n" );
+    n := Length( A );
+    
+    Print( "( " );
+    ViewObj( A[1] : Locales_number := "1" );
+    
+    for i in [ 2 .. n ] do
+        Print( " ) + ( " );
+        ViewObj( A[i] : Locales_number := String( i ) );
+    od;
+    
+    Print( " )" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+
+  function( A )
+    local n, display, i;
+    
+    A := List( A );
+    
+    n := Length( A );
+    
+    display := DisplayString( A[1] );
+    
+    for i in [ 2 .. n ] do
+        Append( display, "\n\n+\n\n" );
+        Append( display, DisplayString( A[i] ) );
+    od;
+    
+    return display;
     
 end );

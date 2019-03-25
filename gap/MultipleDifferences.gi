@@ -622,14 +622,57 @@ InstallMethod( \.,
 end );
 
 ##
+InstallMethod( ViewObj,
+        "for an object in a meet-semilattice of formal mutliple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local n, i;
+    
+    A := List( A );
+    
+    n := ValueOption( "Locales_number" );
+    
+    if n = fail then
+        n := "";
+    fi;
+    
+    ViewObj( A[1].I : Locales_name := "I", Locales_number := n );
+    
+    for i in [ 1 .. Length( A ) ] do
+        Print( " \\\ " );
+        ViewObj( A[i].J : Locales_name := "J", Locales_number := n, Locales_counter := i );
+    od;
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local str, i;
+    
+    A := List( A );
+
+    str := DisplayString( A[1].I );
+    
+    for i in [ 1 .. Length( A ) ] do
+        Append( str, Concatenation( " \\ ", DisplayString( A[i].J ) ) );
+    od;
+    
+    return str;
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-
+        
   function( A )
     
-    Perform( A, Display );
-    
-    Print( "\nA formal multiple difference given by the above objects\n" );
+    Display( DisplayString( A ) );
     
 end );
