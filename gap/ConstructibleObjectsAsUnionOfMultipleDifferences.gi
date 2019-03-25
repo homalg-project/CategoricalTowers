@@ -445,6 +445,17 @@ InstallMethod( ClosureAsConstructibleObject,
 end );
 
 ##
+InstallMethod( \[\],
+        "for a constructible object as a union of formal multiple differences and a positive integer",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsPosInt ],
+        
+  function( A, pos )
+    
+    return List( A )[pos];
+    
+end );
+
+##
 InstallMethod( Display,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],

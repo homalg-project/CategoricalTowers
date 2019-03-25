@@ -83,3 +83,7 @@ DeclareGlobalFunction( "UnionOfMultipleDifferences" );
 #! @Arguments D1, D2, ...
 #! @Group AsFormalMultipleDifference_group
 DeclareGlobalFunction( "UnionOfMultipleDifferencesOfNormalizedObjects" );
+
+#!
+DeclareOperation( "\[\]",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsInt ] );
