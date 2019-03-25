@@ -1,7 +1,7 @@
 LoadPackage( "MatricesForHomalg", ">=2018.12.09" );
 LoadPackage( "RingsForHomalg", ">=2018.12.09" );
 LoadPackage( "GradedRingForHomalg", ">=2018.12.08" );
-LoadPackage( "Locales", ">=2019.03.20" );
+LoadPackage( "Locales", ">=2019.03.24-7" );
 LoadPackage( "ZariskiFrames", ">=2019.03.12" );
 LoadPackage( "Digraph" );
 
