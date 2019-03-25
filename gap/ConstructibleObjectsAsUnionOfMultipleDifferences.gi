@@ -459,6 +459,36 @@ InstallMethod( ClosureAsConstructibleObject,
 end );
 
 ##
+InstallMethod( \=,
+        "for an object in a thin category and a constructible object as a union of formal multiple differences",
+        [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A, B )
+    
+    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
+        TryNextMethod( );
+    fi;
+    
+    return UnionOfMultipleDifferences( A ) = B;
+    
+end );
+
+##
+InstallMethod( \=,
+        "for a constructible object as a union of formal multiple differences and an object in a thin category",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsObjectInThinCategory ],
+        
+  function( A, B )
+    
+    if IsConstructibleObjectAsUnionOfMultipleDifferences( B ) then
+        TryNextMethod( );
+    fi;
+    
+    return A = UnionOfMultipleDifferences( B );
+    
+end );
+
+##
 InstallMethod( \[\],
         "for a constructible object as a union of formal multiple differences and a positive integer",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsPosInt ],
