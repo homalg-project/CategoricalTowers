@@ -374,7 +374,7 @@ InstallMethod( ViewObj,
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
 
   function( A )
-    local I, n;
+    local I, n, j;
     
     I := ValueOption( "Locales_name" );
     
@@ -388,7 +388,15 @@ InstallMethod( ViewObj,
         n := "";
     fi;
     
-    Print( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, " )" );
+    j := ValueOption( "Locales_counter" );
+    
+    if j = fail then
+        j := "";
+    else
+        j := Concatenation( "_", String( j ) );
+    fi;
+    
+    Print( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, j, " )" );
     
 end );
 
