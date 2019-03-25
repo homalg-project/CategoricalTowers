@@ -574,6 +574,13 @@ InstallMethod( ListOp,
 end );
 
 ##
+InstallMethod( Iterator,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  A -> Iterator( List( A ) ) );
+
+##
 InstallMethod( \[\],
         "for an object in a meet-semilattice of formal multiple differences and a positive integer",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],

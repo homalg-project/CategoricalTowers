@@ -349,6 +349,13 @@ InstallMethod( ListOp,
 end );
 
 ##
+InstallMethod( Iterator,
+        "for a constructible object as a union of formal differences",
+        [ IsConstructibleObjectAsUnionOfDifferences ],
+        
+  A -> Iterator( List( A ) ) );
+
+##
 InstallMethod( Length,
         "for a constructible object as a union of formal differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],

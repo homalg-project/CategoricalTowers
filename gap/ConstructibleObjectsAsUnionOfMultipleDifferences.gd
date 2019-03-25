@@ -84,6 +84,9 @@ DeclareGlobalFunction( "UnionOfMultipleDifferences" );
 #! @Group AsFormalMultipleDifference_group
 DeclareGlobalFunction( "UnionOfMultipleDifferencesOfNormalizedObjects" );
 
+DeclareOperation( "Iterator",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+
 #!
 DeclareOperation( "\[\]",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsInt ] );

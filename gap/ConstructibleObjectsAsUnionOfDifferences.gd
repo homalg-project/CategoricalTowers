@@ -86,6 +86,9 @@ DeclareOperation( "\+",
 DeclareOperation( "\+",
         [ IsInt, IsObjectInThinCategory ] );
 
+DeclareOperation( "Iterator",
+        [ IsConstructibleObjectAsUnionOfDifferences ] );
+
 #!
 DeclareOperation( "\[\]",
         [ IsConstructibleObjectAsUnionOfDifferences, IsInt ] );

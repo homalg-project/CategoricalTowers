@@ -103,6 +103,9 @@ DeclareOperation( "ListOp",
 DeclareOperation( "ListOp",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ] );
 
+DeclareOperation( "Iterator",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+
 #!
 DeclareOperation( "\[\]",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsInt ] );
