@@ -87,6 +87,12 @@ DeclareGlobalFunction( "UnionOfMultipleDifferencesOfNormalizedObjects" );
 DeclareOperation( "Iterator",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
 
+DeclareOperation( "ForAllOp",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
+
+DeclareOperation( "ForAnyOp",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
+
 #!
 DeclareOperation( "\[\]",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsInt ] );

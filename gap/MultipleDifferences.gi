@@ -581,6 +581,28 @@ InstallMethod( Iterator,
   A -> Iterator( List( A ) ) );
 
 ##
+InstallMethod( ForAllOp,
+        "for an object in a meet-semilattice of formal multiple differences and a function",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return ForAll( List( A ), f );
+    
+end );
+
+##
+InstallMethod( ForAnyOp,
+        "for an object in a meet-semilattice of formal multiple differences and a function",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return ForAny( List( A ), f );
+    
+end );
+
+##
 InstallMethod( \[\],
         "for an object in a meet-semilattice of formal multiple differences and a positive integer",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],

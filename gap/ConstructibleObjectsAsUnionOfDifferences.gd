@@ -89,6 +89,12 @@ DeclareOperation( "\+",
 DeclareOperation( "Iterator",
         [ IsConstructibleObjectAsUnionOfDifferences ] );
 
+DeclareOperation( "ForAllOp",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ] );
+
+DeclareOperation( "ForAnyOp",
+        [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ] );
+
 #!
 DeclareOperation( "\[\]",
         [ IsConstructibleObjectAsUnionOfDifferences, IsInt ] );

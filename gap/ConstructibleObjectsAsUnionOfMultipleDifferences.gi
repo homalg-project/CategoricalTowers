@@ -327,6 +327,28 @@ InstallMethod( Iterator,
   A -> Iterator( List( A ) ) );
 
 ##
+InstallMethod( ForAllOp,
+        "for a constructible object as a union of formal multiple differences and a function",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return ForAll( List( A ), f );
+    
+end );
+
+##
+InstallMethod( ForAnyOp,
+        "for a constructible object as a union of formal multiple differences and a function",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return ForAny( List( A ), f );
+    
+end );
+
+##
 InstallMethod( Length,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
