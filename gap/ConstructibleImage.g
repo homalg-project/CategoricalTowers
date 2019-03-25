@@ -1,8 +1,8 @@
 LoadPackage( "MatricesForHomalg", ">=2018.12.09" );
 LoadPackage( "RingsForHomalg", ">=2018.12.09" );
 LoadPackage( "GradedRingForHomalg", ">=2018.12.08" );
-LoadPackage( "Locales", ">=2019.03.24-7" );
-LoadPackage( "ZariskiFrames", ">=2019.03.12" );
+LoadPackage( "Locales", ">=2019.03.25" );
+LoadPackage( "ZariskiFrames", ">=2019.03.23" );
 LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
@@ -259,14 +259,12 @@ end;
 
 ##
 ConstructibleProjection := function( gamma )
-    local R, B, image, counter, C, Gamma, new_nodes, node, additional_components, decomposition, components, image_closure_and_frame, pre_nodes,
+    local R, B, counter, C, Gamma, new_nodes, node, additional_components, decomposition, components, image_closure_and_frame, pre_nodes,
           image_closure, frame, frame_decomp, im;
     
     R := HomalgRing( gamma );
     
     B := BaseRing( R );
-    
-    image := [ ];
     
     counter := 0;
     
@@ -350,18 +348,11 @@ ConstructibleProjection := function( gamma )
         
         Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
-        Add( image, image_closure - frame );
-        
     od;
     
-    im := CallFuncList( UnionOfDifferences, image );
+    Squash( C );
     
-    im!.C := C;
-    
-    # in general, this is wrong
-    SetClosure( im, im.I1 );
-    
-    return im;
+    return AsUnionOfMultipleDifferences( C );
     
 end;
 
