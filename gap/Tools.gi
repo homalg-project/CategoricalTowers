@@ -113,7 +113,7 @@ InstallMethod( Attach,
     
     if not p = fail then
         pos_node := C!.pos_nodes[p];
-        Append( pos_node!.parents, N!.parents );
+        AppendNew( pos_node!.parents, N!.parents );
         Perform( N!.parents, function( node ) Add( node!.children, pos_node ); end );
     else
         pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
