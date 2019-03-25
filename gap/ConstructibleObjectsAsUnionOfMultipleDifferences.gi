@@ -6,12 +6,13 @@
 
 ##
 InstallMethod( IsHomSetInhabitedWithTypeCast,
-        "for an object in a meet-semilattice of formal differences and a constructible object as a union of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        "for an object in a meet-semilattice of formal multiple differences and a constructible object as a union of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
   function( A, B )
     local Ap, Bp, b;
     
+    A := AsDifference( A );
     A := PairInUnderlyingLattice( A );
     
     Ap := A[2];

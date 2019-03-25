@@ -59,7 +59,7 @@ DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ] );
 
 #! @Section Constructors
 
