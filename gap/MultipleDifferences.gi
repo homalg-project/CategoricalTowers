@@ -32,11 +32,8 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     ##
     AddIsWellDefinedForObjects( D,
       function( A )
-        local U;
         
-        U := ListOfObjectsOfDifferences( A );
-        
-        return ForAll( U, IsObjectInMeetSemilatticeOfDifferences ) and ForAll( U, IsWellDefinedForObjects );
+        return ForAll( A, IsObjectInMeetSemilatticeOfDifferences ) and ForAll( A, IsWellDefinedForObjects );
         
     end );
     
@@ -82,7 +79,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddDirectProduct( D,
       function( L )
         
-        L := List( L, ListOfObjectsOfDifferences );
+        L := List( L, List );
         
         ## an advantage of this this specific data structure for formal multiple differences
         return CallFuncList( AsFormalMultipleDifference, Concatenation( L ) );
@@ -141,20 +138,19 @@ InstallMethod( \-,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInThinCategory ],
         
   function( A, B )
-    local U;
     
     if IsObjectInMeetSemilatticeOfDifferences( B ) or
        IsObjectInMeetSemilatticeOfMultipleDifferences( B ) then
         TryNextMethod( );
     fi;
     
-    U := ListOfObjectsOfDifferences( A );
+    A := List( A );
     
-    U := ShallowCopy( U );
+    A := ShallowCopy( A );
     
-    Add( U, -B );
+    Add( A, -B );
     
-    return CallFuncList( AsFormalMultipleDifference, U );
+    return CallFuncList( AsFormalMultipleDifference, A );
     
 end );
 
@@ -192,11 +188,9 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A )
-    local U, u, T_new, T;
+    local u, T_new, T;
     
-    U := ListOfObjectsOfDifferences( A );
-    
-    u := List( U, PairInUnderlyingLattice );
+    u := List( A, PairInUnderlyingLattice );
     
     T_new := DirectProduct( List( u, a -> a[1] ) );
     
@@ -204,11 +198,11 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
         T := T_new;
         
-        U := List( List( u, a -> a[2] ), S -> T - S );
+        A := List( List( u, a -> a[2] ), S -> T - S );
         
-        List( U, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
+        List( A, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
         
-        u := List( U, PairInUnderlyingLattice );
+        u := List( A, PairInUnderlyingLattice );
         
         T_new := DirectProduct( List( u, a -> a[1] ) );
         
@@ -216,9 +210,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
     
     u := MaximalObjects( List( u, a -> a[2] ), IsHomSetInhabited );
     
-    U := List( u, S -> T - S );
-    
-    return U;
+    return List( u, S -> T - S );
     
 end );
 
@@ -228,13 +220,10 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A )
-    local U, u, T_new, T;
     
-    U := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A );
+    A := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A );
     
-    List( U, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
-    
-    return U;
+    return List( A, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
     
 end );
 
@@ -276,9 +265,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
       function( obj )
         local U, T, S;
         
-        U := ListOfObjectsOfDifferences( obj );
-        
-        U := List( U, PairInUnderlyingLattice );
+        U := List( obj, PairInUnderlyingLattice );
         
         T := DirectProduct( List( U, a -> a[1] ) );
         S := Coproduct( List( U, a -> a[2] ) );
@@ -569,7 +556,7 @@ InstallMethod( ListOp,
         
   function( A, f )
     
-    return List( ListOfObjectsOfDifferences( A ), f );
+    return List( List( A ), f );
     
 end );
 
@@ -609,7 +596,7 @@ InstallMethod( \[\],
         
   function( A, pos )
     
-    return ListOfObjectsOfDifferences( A )[pos];
+    return List( A )[pos];
     
 end );
 
@@ -620,7 +607,7 @@ InstallMethod( Display,
 
   function( A )
     
-    Perform( ListOfObjectsOfDifferences( A ), Display );
+    Perform( A, Display );
     
     Print( "\nA formal multiple difference given by the above objects\n" );
     

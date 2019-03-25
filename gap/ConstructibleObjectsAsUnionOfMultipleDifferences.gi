@@ -17,8 +17,6 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
     Ap := A[2];
     A := A[1];
     
-    B := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( B );
-    
     B := List( B, AsDifference );
     
     B := List( B, PairInUnderlyingLattice );
@@ -63,21 +61,14 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     ##
     AddIsWellDefinedForObjects( C,
       function( A )
-        local U;
         
-        U := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
-        
-        return ForAll( U, IsWellDefinedForObjects );
+        return ForAll( A, IsWellDefinedForObjects );
         
     end );
     
     ##
     AddIsHomSetInhabited( C,
       function( A, B )
-        
-        A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
-        
-        A := List( A, AsDifference );
         
         return ForAll( A, M -> IsHomSetInhabitedWithTypeCast( M, B ) );
         
@@ -109,8 +100,6 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddIsInitial( C,
       function( A )
         
-        A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
-        
         return ForAll( A, IsInitial );
         
     end );
@@ -118,8 +107,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     BinaryDirectProduct := function( A, B )
         local L, l, I, U;
         
-        L := [ ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ),
-               ListOfObjectsInMeetSemilatticeOfMultipleDifferences( B ) ];
+        L := [ List( A ), List( B ) ];
         
         l := [ 1, 2 ];
         
@@ -145,7 +133,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddCoproduct( C,
       function( L )
         
-        L := List( L, ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
+        L := List( L, List );
         
         ## an advantage of this this specific data structure for constructible objects
         return CallFuncList( UnionOfMultipleDifferences, Concatenation( L ) );
@@ -169,9 +157,9 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                  function( A )
                    local D;
                    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
-                       return ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
+                       return List( A );
                    elif IsConstructibleObjectAsUnionOfDifferences( A ) then
-                       return List( ListOfObjectsInMeetSemilatticeOfDifferences( A ), AsFormalMultipleDifference );
+                       return List( A, AsFormalMultipleDifference );
                    elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
                        return A;
                    elif IsObjectInMeetSemilatticeOfDifferences( A ) then
@@ -192,7 +180,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     arg1 := arg[1];
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( arg1 )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( List( arg1 )[1] )[1] ) );
     
     arg := Filtered( arg, D -> not IsInitial( D ) );
     
@@ -315,7 +303,7 @@ InstallMethod( ListOp,
         
   function( A, f )
     
-    return List( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ), f );
+    return List( List( A ), f );
     
 end );
 
@@ -353,7 +341,7 @@ InstallMethod( Length,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
-  C -> Length( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( C ) ) );
+  C -> Length( List( C ) ) );
 
 ##
 InstallMethod( NormalizeObject,
@@ -414,8 +402,6 @@ InstallMethod( \-,
         
   function( A, B )
     
-    B := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( B );
-    
     return DirectProduct( List( B, b -> A - b ) );
     
 end );
@@ -426,8 +412,6 @@ InstallMethod( \-,
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsObjectInThinCategory ],
         
   function( A, B )
-    
-    A := ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A );
     
     return CallFuncList( UnionOfMultipleDifferences, List( A, a -> a - B ) );
     
@@ -455,7 +439,7 @@ InstallMethod( Closure,
     H := CapCategory( A )!.UnderlyingCategory;
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return Coproduct( List( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ), Closure ) );
+        return Coproduct( List( A, Closure ) );
     fi;
     
     TryNextMethod( );
@@ -491,7 +475,7 @@ InstallMethod( Display,
 
   function( A )
     
-    Perform( ListOfObjectsInMeetSemilatticeOfMultipleDifferences( A ), Display );
+    Perform( A, Display );
     
     Print( "\nA constructible object given by the union of the above formal multiple differences\n" );
     
