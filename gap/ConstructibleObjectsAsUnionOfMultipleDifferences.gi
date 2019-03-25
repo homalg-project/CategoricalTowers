@@ -8,7 +8,7 @@
 InstallMethod( IsHomSetInhabitedWithTypeCast,
         "for an object in a meet-semilattice of formal differences and a constructible object as a union of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
-
+        
   function( A, B )
     local Ap, Bp, b;
     
