@@ -54,7 +54,7 @@ Display( T );
 I := InitialObject( ZF );
 #! D_{Z}( <...> )
 Display( I );
-#! 0
+#! ∅
 AvC := Coproduct( A, C );
 #! D_{Z}( <...> )
 Display( AvC );

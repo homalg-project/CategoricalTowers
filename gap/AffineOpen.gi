@@ -355,7 +355,7 @@ InstallMethod( DisplayString,
 
   function( A )
     
-    return "0";
+    return "∅";
     
 end );
 
