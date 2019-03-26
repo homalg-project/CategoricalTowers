@@ -602,7 +602,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for an object in a meet-semilattice of formal mutliple differences and a positive integer",
+        "for an object in a meet-semilattice of formal multiple differences and a positive integer",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsPosInt ],
 
   function( A, string_as_int )
