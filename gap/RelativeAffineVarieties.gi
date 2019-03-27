@@ -5,6 +5,204 @@
 #
 
 ##
+InstallMethod( ClosedSubsetOfFiberedSpec,
+        "for a CAP category morphism",
+        [ IsCapCategoryMorphism ],
+
+  function( I )
+    local R, R_elim, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+    fi;
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            PreMorphismOfUnderlyingCategory, I,
+            UnderlyingRing, R_elim,
+            BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R_elim ) ) ),
+            IsClosedSubobject, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpec,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ClosedSubsetOfFiberedSpec( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpec,
+        "for a homalg ring element",
+        [ IsHomalgRingElement ],
+
+  function( r )
+    
+    return ClosedSubsetOfFiberedSpec( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+
+end );
+    
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
+        "for a CAP category morphism",
+        [ IsCapCategoryMorphism ],
+
+  function( I )
+    local R, R_elim, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+    fi;
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            ReducedMorphismOfUnderlyingCategory, I,
+            UnderlyingRing, R_elim,
+            BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R_elim ) ) ),
+            IsClosedSubobject, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ClosedSubsetOfFiberedSpecByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
+        "for a homalg ring element",
+        [ IsHomalgRingElement ],
+
+  function( r )
+    
+    return ClosedSubsetOfFiberedSpecByReducedMorphism( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+
+end );
+    
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
+        "for a CAP category morphism",
+        [ IsCapCategoryMorphism ],
+
+  function( I )
+    local R, R_elim, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+    fi;
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            StandardMorphismOfUnderlyingCategory, I,
+            UnderlyingRing, R_elim,
+            BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R_elim ) ) ),
+            IsClosedSubobject, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    
+    return ClosedSubsetOfFiberedSpecByStandardMorphism( AsCategoryOfRowsMorphism( mat ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
+        "for a homalg ring element",
+        [ IsHomalgRingElement ],
+
+  function( r )
+    
+    return ClosedSubsetOfFiberedSpecByStandardMorphism( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+
+end );
+    
+##
+InstallMethod( ClosedSubsetOfFiberedSpec,
+        "for a string and a homalg ring",
+        [ IsString, IsHomalgRing ],
+
+  function( str, R )
+    
+    return ClosedSubsetOfFiberedSpec( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
+        "for a string and a homalg ring",
+        [ IsString, IsHomalgRing ],
+
+  function( str, R )
+    
+    return ClosedSubsetOfFiberedSpecByReducedMorphism( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
+        "for a string and a homalg ring",
+        [ IsString, IsHomalgRing ],
+
+  function( str, R )
+    
+    return ClosedSubsetOfFiberedSpecByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
 InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
         "for a CAP category",
         [ IsCapCategory and IsThinCategory ],
@@ -121,6 +319,24 @@ InstallMethod( PreimageOfProjection,
     pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
     
     return ApplyFunctor( pi_, beta );
+    
+end );
+
+##
+InstallMethod( PreimageOfProjection,
+        "for two objects in Zariski coframes of two affine varieties",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsObjectInZariskiCoframeOfAnAffineVariety ],
+        
+  function( gamma, beta )
+    local T, pi_, preimage;
+    
+    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( UnderlyingRing( gamma ) );
+    
+    pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
+    
+    preimage := ApplyFunctor( pi_, beta );
+    
+    return preimage * gamma;
     
 end );
 
