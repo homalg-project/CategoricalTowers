@@ -73,6 +73,9 @@ DeclareAttribute( "StandardizeObject",
 DeclareAttribute( "LocallyClosedApproximation",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
+DeclareOperation( "CanonicalObjectOp",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+
 #! @Arguments A
 DeclareAttribute( "CanonicalObject",
         IsObjectInMeetSemilatticeOfMultipleDifferences );

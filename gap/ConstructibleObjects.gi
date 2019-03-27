@@ -130,7 +130,11 @@ InstallMethod( CanonicalObject,
         
   function( A )
     
-    return Iterated( List( A ), function( C, D ) return CanonicalObjectOp( C + D ); end );
+    A := ShallowCopy( List( A ) );
+    
+    A[1] := CanonicalObjectOp( A[1] );
+    
+    return Iterated( A, function( C, D ) return CanonicalObjectOp( C + D ); end );
     
 end );
 

@@ -377,6 +377,13 @@ InstallMethod( LocallyClosedApproximation,
 end );
 
 ##
+InstallMethod( CanonicalObjectOp,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  LocallyClosedApproximation );
+
+##
 InstallMethod( CanonicalObject,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
