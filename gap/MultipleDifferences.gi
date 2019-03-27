@@ -356,24 +356,6 @@ InstallMethod( IsClosedSubobject,
 end );
 
 ##
-InstallMethod( IsClosed,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  IsClosedSubobject );
-
-##
-InstallMethod( IsOpen,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    return IsClosed( -A );
-    
-end );
-
-##
 InstallMethod( Closure,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
@@ -388,46 +370,6 @@ InstallMethod( Closure,
     fi;
     
     TryNextMethod( );
-    
-end );
-
-##
-InstallMethod( LocallyClosedApproximation,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    if IsClosed( A ) then
-        return Closure( A );
-    fi;
-    
-    return StandardizeObject( A );
-    
-end );
-
-##
-InstallMethod( CanonicalObjectOp,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  LocallyClosedApproximation );
-
-##
-InstallMethod( CanonicalObject,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  LocallyClosedApproximation );
-
-##
-InstallMethod( Dimension,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    
-    return Dimension( Closure( A ) );
     
 end );
 

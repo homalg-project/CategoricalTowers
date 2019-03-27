@@ -10,6 +10,7 @@ ReadPackage( "Locales", "gap/Lattice.gd");
 ReadPackage( "Locales", "gap/HeytingAlgebra.gd");
 ReadPackage( "Locales", "gap/CoHeytingAlgebra.gd");
 ReadPackage( "Locales", "gap/BooleanAlgebra.gd");
+ReadPackage( "Locales", "gap/Differences.gd");
 ReadPackage( "Locales", "gap/SingleDifferences.gd");
 ReadPackage( "Locales", "gap/MultipleDifferences.gd");
 ReadPackage( "Locales", "gap/Tools.gd");

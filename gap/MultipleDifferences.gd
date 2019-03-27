@@ -12,37 +12,13 @@
 #!  The &GAP; category of objects in a meet-semilattice of multiple differences.
 #! @Arguments object
 DeclareCategory( "IsObjectInMeetSemilatticeOfMultipleDifferences",
-        IsObjectInThinCategory );
+        IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Description
 #!  The &GAP; category of morphisms in a meet-semilattice of multiple differences.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInMeetSemilatticeOfMultipleDifferences",
-        IsMorphismInThinCategory );
-
-#! @Section Properties
-
-## IsClosed is hijacked as an operation by orb v4.8.1
-DeclareProperty( "IsClosedSubobject",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Description
-#!  The embedding of the meet-semilattice of formal multiple differences into the underlying lattice has a right adjoint,
-#!  at least in case the underying lattice is a co-Heyting algebra.
-#!  A formal single difference is closed if its component of the unit of the above adjunction is an isomorphism.
-#! @Arguments A
-DeclareOperation( "IsClosed",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
-
-#! @Description
-#!  Check if the complement (a constructible object as union of formal single differences) of <A>A</A> is closed.
-#! @Arguments A
-DeclareProperty( "IsOpen",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Arguments A
-DeclareProperty( "IsLocallyClosed",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
+        IsMorphismInMeetSemilatticeOfDifferences );
 
 #! @Section Attributes
 
@@ -59,36 +35,6 @@ DeclareAttribute( "EquivalenceToMeetSemilatticeOfDifferences",
         IsCapCategory );
 
 DeclareAttribute( "AsDifference",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Arguments A
-DeclareAttribute( "NormalizeObject",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Arguments A
-DeclareAttribute( "StandardizeObject",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Arguments A
-DeclareAttribute( "LocallyClosedApproximation",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-DeclareOperation( "CanonicalObjectOp",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
-
-#! @Arguments A
-DeclareAttribute( "CanonicalObject",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Description
-#!  The closure of the formal single difference <A>A</A> in the underlying co-Heyting algebra.
-#! @Arguments A
-#! @Returns an object in a co-Heyting algebra.
-DeclareAttribute( "Closure",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
-#! @Arguments A
-DeclareAttribute( "Dimension",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 #! @Section Operations
