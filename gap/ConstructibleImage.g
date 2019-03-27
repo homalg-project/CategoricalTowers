@@ -1,8 +1,8 @@
 LoadPackage( "MatricesForHomalg", ">=2018.12.10" );
 LoadPackage( "RingsForHomalg", ">=2018.12.09" );
 LoadPackage( "GradedRingForHomalg", ">=2018.12.08" );
-LoadPackage( "Locales", ">=2019.03.25" );
-LoadPackage( "ZariskiFrames", ">=2019.03.23" );
+LoadPackage( "Locales", ">=2019.03.27" );
+LoadPackage( "ZariskiFrames", ">=2019.03.27" );
 LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
@@ -258,23 +258,17 @@ LocallyClosedProjection := function( Gamma )
 end;
 
 ##
-ConstructibleProjection := function( gamma )
-    local R, B, counter, C, Gamma, new_nodes, node, additional_components, decomposition, components, image_closure_and_frame, pre_nodes,
+ConstructibleProjection := function( Gamma )
+    local B, counter, C, new_nodes, node, additional_components, decomposition, components, image_closure_and_frame, pre_nodes,
           image_closure, frame, frame_decomp, im;
-    
-    R := HomalgRing( gamma );
-    
-    B := BaseRing( R );
     
     counter := 0;
     
     C := DatastructureForConstructibleObject( );
     
-    node := NodeInDatastructureOfConstructibleObject( C, ClosedSubsetOfSpec( HomalgZeroMatrix( 0, 1, B ) ), fail );
+    node := NodeInDatastructureOfConstructibleObject( C, BaseOfFibration( Gamma ), fail );
     
-    R := PolynomialRingWithProductOrdering( R );
-    
-    node!.Gamma := ClosedSubsetOfSpec( R * gamma );
+    node!.Gamma := Gamma;
     
     while not IsDone( C ) do
         
@@ -294,7 +288,7 @@ ConstructibleProjection := function( gamma )
         fi;
         
         Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
-        Gamma := PreimageOfProjection( R, node!.object ) * Gamma;
+        Gamma := PreimageOfProjection( Gamma, node!.object );
         Info( InfoImage, 3, "Step ", counter, " ...done " );
         
         Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
