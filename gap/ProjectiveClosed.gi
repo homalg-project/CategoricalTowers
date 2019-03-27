@@ -162,6 +162,10 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
     
     ZariskiCoframe := CreateCapCategory( name );
     
+    ZariskiCoframe!.Constructor := ClosedSubsetOfProj;
+    ZariskiCoframe!.ConstructorReducedMorphism := ClosedSubsetOfProjByReducedMorphism;
+    ZariskiCoframe!.ConstructorByStandardMorphism := ClosedSubsetOfProjByStandardMorphism;
+    
     SetUnderlyingRing( ZariskiCoframe, R );
     
     ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
