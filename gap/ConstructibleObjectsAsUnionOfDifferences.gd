@@ -10,14 +10,14 @@
 
 #! @Description
 #!  The &GAP; category of objects in a Boolean algebra of constructible objects,
-#!  the latter as unions of formal differences.
+#!  the latter as unions of formal single differences.
 #! @Arguments object
 DeclareCategory( "IsConstructibleObjectAsUnionOfDifferences",
         IsConstructibleObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Boolean algebra of constructible objects,
-#!  the latter as unions of formal differences.
+#!  the latter as unions of formal single differences.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences",
         IsMorphismBetweenConstructibleObjects );
@@ -61,7 +61,7 @@ DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfDifferences ] );
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfDifferences ] );
 
 #! @Section Constructors
 

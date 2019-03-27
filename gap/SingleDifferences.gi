@@ -20,9 +20,9 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     D!.UnderlyingCategory := P;
     
-    AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfDifferences );
+    AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfSingleDifferences );
     
-    AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfDifferences );
+    AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfSingleDifferences );
     
     SetIsStrictCartesianCategory( D, true );
     
@@ -145,8 +145,8 @@ end );
 
 ##
 InstallMethod( \-,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+        "for an object in a meet-semilattice of formal single differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInThinCategory ],
         
   function( A, B )
     
@@ -169,8 +169,8 @@ end );
 
 ##
 InstallMethod( \-,
-        "for an object in a meet-semilattice of formal differences and the zero integer",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsInt and IsZero ],
+        "for an object in a meet-semilattice of formal single differences and the zero integer",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsInt and IsZero ],
         
   function( A, B )
     
@@ -214,8 +214,8 @@ end );
 
 ##
 InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     local S, T, L, H;
@@ -247,8 +247,8 @@ end );
 
 ##
 InstallMethod( NormalizeObject,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -264,8 +264,8 @@ end );
 
 ##
 InstallMethod( StandardizeObject,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -281,36 +281,36 @@ end );
 
 ##
 InstallMethod( PairInUnderlyingLattice,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   PrePairInUnderlyingLattice );
 
 ##
 InstallMethod( PairInUnderlyingLattice,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasNormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasNormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
   NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( PairInUnderlyingLattice,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
   StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
         
   StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( IsClosedSubobject,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     local H;
@@ -327,15 +327,15 @@ end );
 
 ##
 InstallMethod( IsClosed,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   IsClosedSubobject );
 
 ##
 InstallMethod( IsOpen,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -345,8 +345,8 @@ end );
 
 ##
 InstallMethod( Closure,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     local H;
@@ -363,8 +363,8 @@ end );
 
 ##
 InstallMethod( LocallyClosedApproximation,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -378,15 +378,15 @@ end );
 
 ##
 InstallMethod( CanonicalObject,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   LocallyClosedApproximation );
 
 ##
 InstallMethod( Dimension,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -396,12 +396,12 @@ end );
 
 ##
 InstallMethod( \*,
-        "for an object in a thin category and an object in a meet-semilattice of formal differences",
-        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a thin category and an object in a meet-semilattice of formal single differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A, B )
     
-    if IsObjectInMeetSemilatticeOfDifferences( A ) then
+    if IsObjectInMeetSemilatticeOfSingleDifferences( A ) then
         TryNextMethod( );
     fi;
     
@@ -411,12 +411,12 @@ end );
 
 ##
 InstallMethod( \*,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+        "for an object in a meet-semilattice of formal single differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInThinCategory ],
         
   function( A, B )
     
-    if IsObjectInMeetSemilatticeOfDifferences( B ) then
+    if IsObjectInMeetSemilatticeOfSingleDifferences( B ) then
         TryNextMethod( );
     fi;
     
@@ -426,12 +426,12 @@ end );
 
 ##
 InstallMethod( \=,
-        "for an object in a thin category and an object in a meet-semilattice of formal differences",
-        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a thin category and an object in a meet-semilattice of formal single differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A, B )
     
-    if IsObjectInMeetSemilatticeOfDifferences( A ) then
+    if IsObjectInMeetSemilatticeOfSingleDifferences( A ) then
         TryNextMethod( );
     fi;
     
@@ -441,12 +441,12 @@ end );
 
 ##
 InstallMethod( \=,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+        "for an object in a meet-semilattice of formal single differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInThinCategory ],
         
   function( A, B )
     
-    if IsObjectInMeetSemilatticeOfDifferences( B ) then
+    if IsObjectInMeetSemilatticeOfSingleDifferences( B ) then
         TryNextMethod( );
     fi;
     
@@ -456,8 +456,8 @@ end );
 
 ##
 InstallMethod( \.,
-        "for an object in a meet-semilattice of formal differences and a positive integer",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsPosInt ],
+        "for an object in a meet-semilattice of formal single differences and a positive integer",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsPosInt ],
 
   function( A, string_as_int )
     local name;
@@ -478,8 +478,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     local n;
@@ -500,8 +500,8 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -516,8 +516,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     

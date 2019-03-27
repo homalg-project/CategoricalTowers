@@ -29,13 +29,13 @@ DeclareProperty( "IsClosedSubobject",
 #! @Description
 #!  The embedding of the meet-semilattice of formal multiple differences into the underlying lattice has a right adjoint,
 #!  at least in case the underying lattice is a co-Heyting algebra.
-#!  A formal difference is closed if its component of the unit of the above adjunction is an isomorphism.
+#!  A formal single difference is closed if its component of the unit of the above adjunction is an isomorphism.
 #! @Arguments A
 DeclareOperation( "IsClosed",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 
 #! @Description
-#!  Check if the complement (a constructible object as union of formal differences) of <A>A</A> is closed.
+#!  Check if the complement (a constructible object as union of formal single differences) of <A>A</A> is closed.
 #! @Arguments A
 DeclareProperty( "IsOpen",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
@@ -78,7 +78,7 @@ DeclareAttribute( "CanonicalObject",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 #! @Description
-#!  The closure of the formal difference <A>A</A> in the underlying co-Heyting algebra.
+#!  The closure of the formal single difference <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A
 #! @Returns an object in a co-Heyting algebra.
 DeclareAttribute( "Closure",
@@ -91,7 +91,7 @@ DeclareAttribute( "Dimension",
 #! @Section Operations
 
 #! @Description
-#!  A list of formal differences in the underlying lattice representing the formal multiple difference <A>A</A>.
+#!  A list of formal single differences in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsOfDifferences",

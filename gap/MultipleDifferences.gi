@@ -33,7 +33,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddIsWellDefinedForObjects( D,
       function( A )
         
-        return ForAll( A, IsObjectInMeetSemilatticeOfDifferences ) and ForAll( A, IsWellDefinedForObjects );
+        return ForAll( A, IsObjectInMeetSemilatticeOfSingleDifferences ) and ForAll( A, IsWellDefinedForObjects );
         
     end );
     
@@ -139,7 +139,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    if IsObjectInMeetSemilatticeOfDifferences( B ) or
+    if IsObjectInMeetSemilatticeOfSingleDifferences( B ) or
        IsObjectInMeetSemilatticeOfMultipleDifferences( B ) then
         TryNextMethod( );
     fi;
@@ -156,13 +156,13 @@ end );
 
 ##
 #InstallMethod( \-,
-#        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-#        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+#        "for an object in a meet-semilattice of formal single differences and an object in a thin category",
+#        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInThinCategory ],
 #        
 #  function( A, B )
 #    local U;
 #    
-#    if IsObjectInMeetSemilatticeOfDifferences( B ) or
+#    if IsObjectInMeetSemilatticeOfSingleDifferences( B ) or
 #       IsObjectInMeetSemilatticeOfMultipleDifferences( B ) then
 #        TryNextMethod( );
 #    fi;
@@ -259,7 +259,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
     S := MeetSemilatticeOfMultipleDifferences( P );
     T := MeetSemilatticeOfDifferences( P );
     
-    squash := CapFunctor( "Equivalence from the meet-semilattice of formal multiple differences to the meet-semilattice of formal differences", S, T );
+    squash := CapFunctor( "Equivalence from the meet-semilattice of formal multiple differences to the meet-semilattice of formal single differences", S, T );
     
     AddObjectFunction( squash,
       function( obj )
@@ -425,7 +425,7 @@ end );
 ##
 InstallMethod( \*,
         "for an object in a thin category and an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
 
   function( A, B )
     
@@ -440,7 +440,7 @@ end );
 ##
 InstallMethod( \*,
         "for an object in a meet-semilattice of formal multiple differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfDifferences ],
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences ],
 
   function( A, B )
     
@@ -455,7 +455,7 @@ end );
 ##
 InstallMethod( \=,
         "for an object in a thin category and an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
 
   function( A, B )
     
@@ -470,7 +470,7 @@ end );
 ##
 InstallMethod( \=,
         "for an object in a meet-semilattice of formal multiple differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfDifferences ],
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences ],
 
   function( A, B )
     

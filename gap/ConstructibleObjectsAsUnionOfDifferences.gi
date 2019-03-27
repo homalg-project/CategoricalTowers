@@ -6,8 +6,8 @@
 
 ##
 InstallMethod( IsHomSetInhabitedWithTypeCast,
-        "for an object in a meet-semilattice of formal differences and a constructible object as a union of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsConstructibleObjectAsUnionOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences and a constructible object as a union of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A, B )
     local Ap, Bp, b;
@@ -41,7 +41,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
   function( P )
     local name, C, BinaryDirectProduct;
     
-    name := "The Boolean algebra of constructible objects as unions of formal differences of ";
+    name := "The Boolean algebra of constructible objects as unions of formal single differences of ";
     
     name := Concatenation( name, Name( P ) );
     
@@ -156,16 +156,16 @@ InstallGlobalFunction( UnionOfDifferences,
                    local D;
                    if IsConstructibleObjectAsUnionOfDifferences( A ) then
                        return List( A );
-                   elif IsObjectInMeetSemilatticeOfDifferences( A ) then
+                   elif IsObjectInMeetSemilatticeOfSingleDifferences( A ) then
                        return A;
                    elif IsObjectInThinCategory( A ) then
                        D := A - 0;
-                       if not IsObjectInMeetSemilatticeOfDifferences( D ) then
-                           Error( "the difference `D := A - 0' is not an object in a meet-semilattice of formal differences\n" );
+                       if not IsObjectInMeetSemilatticeOfSingleDifferences( D ) then
+                           Error( "the difference `D := A - 0' is not an object in a meet-semilattice of formal single differences\n" );
                        fi;
                        return D;
                    else
-                       Error( "this entry is neither a constructible set as a union of formal differences, nor a formal difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
+                       Error( "this entry is neither a constructible set as a union of formal single differences, nor a formal single difference, nor a formal single difference, not even an object in a thin category: ", A, "\n" );
                    fi;
                end );
     
@@ -194,29 +194,29 @@ end );
 
 ##
 InstallMethod( \+,
-        "for an object in a meet-semilattice of formal differences and an object in a thin category",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsObjectInThinCategory ],
+        "for an object in a meet-semilattice of formal single differences and an object in a thin category",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInThinCategory ],
         
   UnionOfDifferences );
 
 ##
 InstallMethod( \+,
-        "for an object in a thin category and an object in a meet-semilattice of formal differences",
-        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a thin category and an object in a meet-semilattice of formal single differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   UnionOfDifferences );
 
 ##
 InstallMethod( \+,
-        "for a constructible object as a union of formal differences and an object in a thin category",
+        "for a constructible object as a union of formal single differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
         
   UnionOfDifferences );
 
 ##
 InstallMethod( \+,
-        "for an object in a meet-semilattice of formal differences and the zero integer",
-        [ IsObjectInMeetSemilatticeOfDifferences, IsInt and IsZero ],
+        "for an object in a meet-semilattice of formal single differences and the zero integer",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsInt and IsZero ],
         
   function( A, B )
     
@@ -226,8 +226,8 @@ end );
 
 ##
 InstallMethod( \+,
-        "for the zero integer and an object in a meet-semilattice of formal differences",
-        [ IsInt and IsZero, IsObjectInMeetSemilatticeOfDifferences ],
+        "for the zero integer and an object in a meet-semilattice of formal single differences",
+        [ IsInt and IsZero, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A, B )
     
@@ -279,7 +279,7 @@ end );
 
 ##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
@@ -290,7 +290,7 @@ end );
 
 ##
 InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
@@ -301,35 +301,35 @@ end );
 
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOp,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   ListOfObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOp,
-        "for a constructible object as a union of formal differences and a function",
+        "for a constructible object as a union of formal single differences and a function",
         [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ],
         
   function( A, f )
@@ -340,14 +340,14 @@ end );
 
 ##
 InstallMethod( Iterator,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   A -> Iterator( List( A ) ) );
 
 ##
 InstallMethod( ForAllOp,
-        "for a constructible object as a union of formal differences and a function",
+        "for a constructible object as a union of formal single differences and a function",
         [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ],
         
   function( A, f )
@@ -358,7 +358,7 @@ end );
 
 ##
 InstallMethod( ForAnyOp,
-        "for a constructible object as a union of formal differences and a function",
+        "for a constructible object as a union of formal single differences and a function",
         [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ],
         
   function( A, f )
@@ -369,14 +369,14 @@ end );
 
 ##
 InstallMethod( Length,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   C -> Length( List( C ) ) );
 
 ##
 InstallMethod( NormalizeObject,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
@@ -394,7 +394,7 @@ end );
 
 ##
 InstallMethod( StandardizeObject,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
@@ -412,8 +412,8 @@ end );
 
 ##
 InstallMethod( \-,
-        "for an object in a thin category and an object in a meet-semilattice of formal differences",
-        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a thin category and an object in a meet-semilattice of formal single differences",
+        [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A, B )
     
@@ -425,7 +425,7 @@ end );
 
 ##
 InstallMethod( \-,
-        "for an object in a thin category and a constructible object as a union of formal differences",
+        "for an object in a thin category and a constructible object as a union of formal single differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A, B )
@@ -438,7 +438,7 @@ end );
 
 ##
 InstallMethod( \-,
-        "for a constructible object as a union of formal differences and an object in a thin category",
+        "for a constructible object as a union of formal single differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
         
   function( A, B )
@@ -451,8 +451,8 @@ end );
 
 ##
 InstallMethod( AdditiveInverseMutable,
-        "for an object in a meet-semilattice of formal differences",
-        [ IsObjectInMeetSemilatticeOfDifferences ],
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
@@ -462,7 +462,7 @@ end );
 
 ##
 InstallMethod( Closure,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
@@ -480,7 +480,7 @@ end );
 
 ##
 InstallMethod( ClosureAsConstructibleObject,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A )
@@ -491,7 +491,7 @@ end );
 
 ##
 InstallMethod( \=,
-        "for an object in a thin category and a constructible object as a union of formal differences",
+        "for an object in a thin category and a constructible object as a union of formal single differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfDifferences ],
         
   function( A, B )
@@ -506,7 +506,7 @@ end );
 
 ##
 InstallMethod( \=,
-        "for a constructible object as a union of formal differences and an object in a thin category",
+        "for a constructible object as a union of formal single differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInThinCategory ],
         
   function( A, B )
@@ -521,7 +521,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a constructible object as a union of formal differences and a positive integer",
+        "for a constructible object as a union of formal single differences and a positive integer",
         [ IsConstructibleObjectAsUnionOfDifferences, IsPosInt ],
         
   function( A, string_as_int )
@@ -545,7 +545,7 @@ end );
 
 ##
 InstallMethod( \[\],
-        "for a constructible object as a union of formal differences and a positive integer",
+        "for a constructible object as a union of formal single differences and a positive integer",
         [ IsConstructibleObjectAsUnionOfDifferences, IsPosInt ],
         
   function( A, pos )
@@ -556,7 +556,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
 
   function( A )
@@ -580,7 +580,7 @@ end );
 
 ##
 InstallMethod( DisplayString,
-        "for a constructible object as a union of formal differences",
+        "for a constructible object as a union of formal single differences",
         [ IsConstructibleObjectAsUnionOfDifferences ],
 
   function( A )

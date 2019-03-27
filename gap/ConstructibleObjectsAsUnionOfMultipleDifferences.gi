@@ -163,16 +163,16 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                        return List( A, AsFormalMultipleDifference );
                    elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
                        return A;
-                   elif IsObjectInMeetSemilatticeOfDifferences( A ) then
+                   elif IsObjectInMeetSemilatticeOfSingleDifferences( A ) then
                        return AsFormalMultipleDifference( A );
                    elif IsObjectInThinCategory( A ) then
                        D := A - 0;
-                       if not IsObjectInMeetSemilatticeOfDifferences( D ) then
-                           Error( "the difference `D := A - 0' is not an object in a meet-semilattice of formal differences\n" );
+                       if not IsObjectInMeetSemilatticeOfSingleDifferences( D ) then
+                           Error( "the difference `D := A - 0' is not an object in a meet-semilattice of formal single differences\n" );
                        fi;
                        return AsFormalMultipleDifference( D );
                    else
-                       Error( "this entry is neither a constructible set as a union of formal multiple differences, nor a formal multiple difference, nor a formal difference, not even an object in a thin category: ", A, "\n" );
+                       Error( "this entry is neither a constructible set as a union of formal multiple differences, nor a formal multiple difference, nor a formal single difference, not even an object in a thin category: ", A, "\n" );
                    fi;
                end );
     
@@ -222,7 +222,7 @@ InstallMethod( \+,
 
 ##
 InstallMethod( \+,
-        "for a constructible object as a union of formal differences and an object in a meet-semilattice of formal multiple differences",
+        "for a constructible object as a union of formal single differences and an object in a meet-semilattice of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   UnionOfMultipleDifferences );
