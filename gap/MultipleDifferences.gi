@@ -103,7 +103,7 @@ InstallGlobalFunction( AsFormalMultipleDifference,
     
     ObjectifyObjectForCAPWithAttributes( A, D,
             ListOfPreObjectsInMeetSemilatticeOfDifferences, arg,
-            SetIsLocallyClosed, true
+            IsLocallyClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -123,7 +123,7 @@ InstallGlobalFunction( AsFormalMultipleDifferenceOfNormalizedObjects,
     
     ObjectifyObjectForCAPWithAttributes( A, D,
             ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg,
-            SetIsLocallyClosed, true
+            IsLocallyClosed, true
             );
     
     Assert( 4, IsWellDefined( A ) );
