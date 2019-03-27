@@ -4,6 +4,8 @@
 # Implementations
 #
 
+SetInfoLevel( InfoZariskiFrames, 1 );
+
 ##
 InstallMethod( IsClosed,
         "for an object in a Zariski frame or coframe",

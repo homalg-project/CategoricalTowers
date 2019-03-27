@@ -6,6 +6,9 @@
 
 #! @Chapter (Co)frames/Locales of Zariski closed/open subsets
 
+#! @Section Info Class
+DeclareInfoClass( "InfoZariskiFrames" );
+
 #! @Section GAP Categories
 
 #! @Description
