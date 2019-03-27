@@ -223,7 +223,9 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
     
     A := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A );
     
-    return List( A, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
+    List( A, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
+    
+    return A;
     
 end );
 
