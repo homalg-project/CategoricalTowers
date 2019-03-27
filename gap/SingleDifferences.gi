@@ -1,5 +1,5 @@
 #
-# Locales: Differences
+# Locales: Single differences
 #
 # Implementations
 #

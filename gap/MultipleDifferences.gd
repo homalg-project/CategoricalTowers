@@ -1,5 +1,5 @@
 #
-# Locales: MultipleDifferences
+# Locales: Multiple differences
 #
 # Declarations
 #
