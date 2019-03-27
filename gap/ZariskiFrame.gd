@@ -19,3 +19,9 @@ DeclareCategory( "IsObjectInZariskiFrame",
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiFrame",
         IsMorphismInZariskiFrameOrCoframe );
+
+#! @Section Attributes
+
+#!
+DeclareAttribute( "DimensionOfComplement",
+        IsObjectInZariskiFrame );

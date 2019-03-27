@@ -303,6 +303,17 @@ InstallMethod( IsClosedSubobject,
 end );
 
 ##
+InstallMethod( DimensionOfComplement,
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety ],
+
+  function( A )
+    
+    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame of an affine variety",
         [ IsObjectInZariskiFrameOfAnAffineVariety ],
