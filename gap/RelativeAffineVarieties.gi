@@ -19,26 +19,31 @@ InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
     pi := CapFunctor( "Functor describing the closure of the projection between an relative affine Zariski coframe and its base coframe", S, T );
     
     AddObjectFunction( pi,
-      function( obj )
-        local R;
+      function( A )
+        local R, R_elim, I;
         
-        obj := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
+        R := UnderlyingRing( A );
         
-        if not IsBound( obj!.BasisOfRowsOverPolynomialRingWithProductOrdering ) then
+        R_elim := PolynomialRingWithProductOrdering( R );
+        
+        I := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+        
+        if not IsIdenticalObj( R, R_elim ) then
+            Info( InfoZariskiFrames, 1, "!! The Zariski closed subsets obj was not created using ClosedSubsetOfFiberedSpec* !!\n" );
+            I := R_elim * I;
+        fi;
+        
+        if not IsBound( A!.BasisOfRowsOverPolynomialRingWithProductOrdering ) then
             
-            R := HomalgRing( obj );
-            
-            R := PolynomialRingWithProductOrdering( R );
-            
-            obj!.BasisOfRowsOverPolynomialRingWithProductOrdering := BasisOfRows( R * obj );
+            A!.BasisOfRowsOverPolynomialRingWithProductOrdering := BasisOfRows( I );
             
         fi;
         
-        obj := obj!.BasisOfRowsOverPolynomialRingWithProductOrdering;
+        I := A!.BasisOfRowsOverPolynomialRingWithProductOrdering;
         
-        obj := PolynomialsWithoutRelativeIndeterminates( obj );
+        I := PolynomialsWithoutRelativeIndeterminates( I );
         
-        return ClosedSubsetOfSpecByReducedMorphism( obj );
+        return ClosedSubsetOfSpecByReducedMorphism( I );
         
     end );
     
