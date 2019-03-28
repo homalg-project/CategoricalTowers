@@ -15,5 +15,5 @@ ReadPackage( "Locales", "gap/SingleDifferences.gi");
 ReadPackage( "Locales", "gap/MultipleDifferences.gi");
 ReadPackage( "Locales", "gap/Tools.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjects.gi");
-ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfDifferences.gi");
+ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfSingleDifferences.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfMultipleDifferences.gi");
