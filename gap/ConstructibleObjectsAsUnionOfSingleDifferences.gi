@@ -47,6 +47,9 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     C := CreateCapCategory( name );
     
+    SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( C, true );
+    SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
+    
     C!.UnderlyingCategory := P;
     C!.MeetSemilatticeOfDifferences := MeetSemilatticeOfDifferences( P );
     
