@@ -111,6 +111,6 @@ AvailabilityTest := function()
 
 TestFile := "tst/testall.g",
 
-Keywords := [ "Zariski coframe, Zariski frame, locale, affine spectrum, projective spectrum, toric spectrum" ],
+Keywords := [ "Zariski coframe", "Zariski frame", "locale", "affine spectrum", "projective spectrum", "toric spectrum" ],
 
 ));
