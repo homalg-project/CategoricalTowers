@@ -54,11 +54,11 @@ Persons := [
 
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/mohamed-barakat/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://homalg-project.github.io/CAP_project/", ~.PackageName ),
+PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
