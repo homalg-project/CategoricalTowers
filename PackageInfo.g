@@ -12,7 +12,7 @@ PackageName := "M2",
 Subtitle := "Intrinsic modules with elements for the CAP based homalg",
 
 Version := Maximum( [
-                   "2017.05.19", ## Mohamed's version
+                   "2019.03.02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03.14", ## Kamals's version
                    ] ),
@@ -93,9 +93,9 @@ Dependencies := rec(
                    [ "MatricesForHomalg", ">= 2017.03.15" ],
                    [ "Modules", ">= 2017.05.01" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
-                   [ "CAP", ">= 2017.03.16" ],
+                   [ "CAP", ">= 2019.03.02" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],
-                   [ "IntrinsicCategories", ">= 2017.03.23" ],
+                   [ "IntrinsicCategories", ">= 2019.03.02" ],
                    [ "CategoriesWithAmbientObjects", ">= 2017.05.01" ],
                    ],
   SuggestedOtherPackages := [ ],

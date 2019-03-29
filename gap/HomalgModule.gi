@@ -300,7 +300,7 @@ InstallMethod( Intrinsify,
     
     HomalgRelationsForModule( rels );
     
-    M := Intrinsify( A, cell, A!.TheTypeIntrinsicObject );
+    M := IntrinsifyObject( A, cell );
     
     R := HomalgRing( M );
     

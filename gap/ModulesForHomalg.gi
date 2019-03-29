@@ -83,7 +83,7 @@ end );
 
 ##
 BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
-  function( R, left, type_obj, type_mor, type_end  )
+  function( R, left, filter_obj, filter_mor, filter_end )
     local A, etaSM, etaZG, etaLG;
     
     if left then
@@ -98,7 +98,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     A := CategoryWithAmbientObject( A );
     
-    A := IntrinsicCategory( A, type_obj, type_mor, type_end, INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+    A := IntrinsicCategory( A, [ filter_obj, filter_mor, filter_end ], INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     A!.MorphismConstructor := HomalgMap;
     A!.TypeOfElements := TheTypeHomalgModuleElement;
@@ -154,31 +154,19 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
         [ IsHomalgRing ],
         
   function( R )
-    local type_obj, type_mor, type_end;
+    local filter_obj, filter_mor, filter_end;
     
-    type_obj :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
-              IsFinitelyPresentedModuleRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
+    filter_obj := IsFinitelyPresentedModuleRep and
+                  IsHomalgLeftObjectOrMorphismOfLeftObjects;
     
-    type_mor :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
+    filter_mor := IsMapOfFinitelyGeneratedModulesRep and
+                  IsHomalgLeftObjectOrMorphismOfLeftObjects;
     
-    type_end :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsHomalgSelfMap and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgLeftObjectOrMorphismOfLeftObjects
-              );
+    filter_end := IsHomalgSelfMap and
+                  IsMapOfFinitelyGeneratedModulesRep and
+                  IsHomalgLeftObjectOrMorphismOfLeftObjects;
     
-    return CATEGORY_OF_HOMALG_MODULES( R, true, type_obj, type_mor, type_end );
+    return CATEGORY_OF_HOMALG_MODULES( R, true, filter_obj, filter_mor, filter_end );
     
 end );
 
@@ -188,30 +176,18 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
         [ IsHomalgRing ],
         
   function( R )
-    local A, type_obj, type_mor, type_end;
+    local A, filter_obj, filter_mor, filter_end;
     
-    type_obj :=
-      NewType( TheFamilyOfIntrinsicObjects,
-              IsCapCategoryIntrinsicObjectRep and
-              IsFinitelyPresentedModuleRep and
-              IsHomalgRightObjectOrMorphismOfRightObjects
-              );
+    filter_obj := IsFinitelyPresentedModuleRep and
+                  IsHomalgRightObjectOrMorphismOfRightObjects;
     
-    type_mor :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgRightObjectOrMorphismOfRightObjects
-              );
+    filter_mor := IsMapOfFinitelyGeneratedModulesRep and
+                  IsHomalgRightObjectOrMorphismOfRightObjects;
     
-    type_end :=
-      NewType( TheFamilyOfIntrinsicMorphisms,
-              IsCapCategoryIntrinsicMorphismRep and
-              IsHomalgSelfMap and
-              IsMapOfFinitelyGeneratedModulesRep and
-              IsHomalgRightObjectOrMorphismOfRightObjects
-              );
+    filter_end := IsHomalgSelfMap and
+                  IsMapOfFinitelyGeneratedModulesRep and
+                  IsHomalgRightObjectOrMorphismOfRightObjects;
     
-    return CATEGORY_OF_HOMALG_MODULES( R, false, type_obj, type_mor, type_end );
+    return CATEGORY_OF_HOMALG_MODULES( R, false, filter_obj, filter_mor, filter_end );
     
 end );
