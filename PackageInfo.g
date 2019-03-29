@@ -1,49 +1,68 @@
+#
+# IntrinsicCategories
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
 PackageName := "IntrinsicCategories",
-
 Subtitle := "Intrinsic categories for CAP",
-
 Version := Maximum( [
-                   "2019.03.02", ## Mohamed's version
+                   "2019.03.03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Sebas' version
                    ## this line prevents merge conflicts
                    ] ),
 
-# this avoids git-merge conflicts
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
 
-ArchiveURL := Concatenation( "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/IntrinsicCategories-", ~.Version ),
+Persons := [
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Mohamed",
+    LastName := "Barakat",
+    WWWHome := "https://mohamed-barakat.github.io",
+    Email := "mohamed.barakat@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+],
+
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+#SupportEmail   := "TODO",
+PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
 
 ArchiveFormats := ".tar.gz",
 
-Persons := [
-  rec( 
-    LastName      := "Barakat",
-    FirstNames    := "Mohamed",
-    IsAuthor      := true,
-    IsMaintainer  := true,
-    Email         := "mohamed.barakat@rwth-aachen.de",
-    WWWHome       := "http://www.mathematik.uni-kl.de/~barakat/",
-    PostalAddress := Concatenation( [
-                       "Lehrstuhl fuer Mathematik (Algebra), RWTH Aachen\n",
-                       "Pontdriesch 10-16\n",
-                       "52062 Aachen\n",
-                       "Germany" ] ),
-    Place         := "Aachen",
-    Institution   := "RWTH Aachen University"
-  ),
-  
-],
-
+##  Status information. Currently the following cases are recognized:
+##    "accepted"      for successfully refereed packages
+##    "submitted"     for packages submitted for the refereeing
+##    "deposited"     for packages for which the GAP developers agreed
+##                    to distribute them with the core GAP system
+##    "dev"           for development versions of packages
+##    "other"         for all other packages
+##
 Status := "dev",
 
-README_URL := 
-  "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/IntrinsicCategories/README.IntrinsicCategories",
-PackageInfoURL := 
-  "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/IntrinsicCategories/PackageInfo.g",
+AbstractHTML   :=  "",
 
 PackageDoc := rec(
   BookName  := "IntrinsicCategories",
@@ -52,11 +71,10 @@ PackageDoc := rec(
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
   LongTitle := "Intrinsic categories for CAP",
-  Autoload  := false
 ),
 
 Dependencies := rec(
-  GAP := ">=4.4",
+  GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2016.02.16" ],
                    [ "CAP", ">= 2019.03.02" ],
@@ -64,15 +82,15 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.1" ]
                    ],
   SuggestedOtherPackages := [ ],
-  ExternalConditions := [ ]
+  ExternalConditions := [ ],
 ),
 
-AvailabilityTest := function( )
-    return true;
-  end,
+AvailabilityTest := function()
+        return true;
+    end,
 
-Autoload := false,
+TestFile := "tst/testall.g",
 
-Keywords := [ "categories", "intrinsic" ]
+Keywords := [ "categories", "intrinsic categories" ],
 
 ));
