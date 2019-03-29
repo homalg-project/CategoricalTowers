@@ -5,7 +5,7 @@ PackageName := "IntrinsicCategories",
 Subtitle := "Intrinsic categories for CAP",
 
 Version := Maximum( [
-                   "2018.05.02", ## Mohamed's version
+                   "2019.03.02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Sebas' version
                    ## this line prevents merge conflicts
@@ -59,7 +59,7 @@ Dependencies := rec(
   GAP := ">=4.4",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2016.02.16" ],
-                   [ "CAP", ">= 2018.02.27" ],
+                   [ "CAP", ">= 2019.03.02" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "GAPDoc", ">= 1.1" ]
                    ],

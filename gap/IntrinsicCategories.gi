@@ -2,47 +2,11 @@
 ##
 ##  IntrinsicCategories.gd                       IntrinsicCategories package
 ##
-##  Copyright 2015,      Mohamed Barakat, RWTH Aachen University
+##  Copyright 2015-2019,               Mohamed Barakat, University of Siegen
 ##
 ##  Implementation stuff for intrinsic categories.
 ##
 #############################################################################
-
-####################################
-#
-# representations:
-#
-####################################
-
-DeclareRepresentation( "IsCapCategoryIntrinsicObjectRep",
-        IsCapCategoryIntrinsicObject,
-        [ ] );
-
-DeclareRepresentation( "IsCapCategoryIntrinsicMorphismRep",
-        IsCapCategoryIntrinsicMorphism,
-        [ ] );
-
-####################################
-#
-# families and types:
-#
-####################################
-
-# new families:
-BindGlobal( "TheFamilyOfIntrinsicObjects",
-        NewFamily( "TheFamilyOfIntrinsicObjects" ) );
-
-BindGlobal( "TheFamilyOfIntrinsicMorphisms",
-        NewFamily( "TheFamilyOfIntrinsicMorphisms" ) );
-
-# new types:
-BindGlobal( "TheTypeIntrinsicObject",
-        NewType( TheFamilyOfIntrinsicObjects,
-                IsCapCategoryIntrinsicObjectRep ) );
-
-BindGlobal( "TheTypeIntrinsicMorphism",
-        NewType( TheFamilyOfIntrinsicMorphisms,
-                IsCapCategoryIntrinsicMorphismRep ) );
 
 ####################################
 #
@@ -127,7 +91,7 @@ end );
 
 ##
 InstallImmediateMethod( CanonicalizedToZero,
-        IsCapCategoryIntrinsicObjectRep and CanonicalizeIfZero and IsZeroForObjects, 0,
+        IsCapCategoryIntrinsicObject and CanonicalizeIfZero and IsZeroForObjects, 0,
         
   function( obj )
     local o;
@@ -154,7 +118,7 @@ end );
 
 ##
 InstallImmediateMethod( CanonicalizedToZero,
-        IsCapCategoryIntrinsicMorphismRep and CanonicalizeIfZero and IsZeroForMorphisms, 0,
+        IsCapCategoryIntrinsicMorphism and CanonicalizeIfZero and IsZeroForMorphisms, 0,
         
   function( mor )
     local S, T;
@@ -192,21 +156,21 @@ end );
 ##
 InstallMethod( IsLockedObject,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObject ],
         
   obj ->  IsBound( obj!.Locked ) );
 
 ##
 InstallMethod( PositionOfLastStoredCell,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObject ],
         
   obj ->  obj!.PositionOfLastStoredCell );
 
 ##
 InstallMethod( CertainCell,
         "for an intrinsic object and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsInt ],
         
   function( obj, pos )
     
@@ -217,7 +181,7 @@ end );
 ##
 InstallMethod( CertainCell,
         "for an intrinsic morphism and three integers",
-        [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt, IsInt ],
+        [ IsCapCategoryIntrinsicMorphism, IsInt, IsInt, IsInt ],
         
   function( mor, pos_s, pos_t, k )
     local index_pair, st, l, morphisms, dist, min, pos, morphism;
@@ -289,7 +253,7 @@ end );
 ##
 InstallMethod( CertainCell,
         "for an intrinsic morphism and two integers",
-        [ IsCapCategoryIntrinsicMorphismRep, IsInt, IsInt ],
+        [ IsCapCategoryIntrinsicMorphism, IsInt, IsInt ],
         
   function( mor, pos_s, pos_t )
     local st, k;
@@ -310,14 +274,14 @@ end );
 ##
 InstallMethod( PositionOfActiveCell,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObject ],
         
   obj ->  obj!.PositionOfActiveCell );
 
 ##
 InstallMethod( PositionOfActiveCell,
         "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicMorphismRep ],
+        [ IsCapCategoryIntrinsicMorphism ],
         
   function( mor )
     local s, t, st, morphisms, k;
@@ -356,7 +320,7 @@ InstallMethod( PositionOfActiveCell,
 ##
 InstallMethod( SetPositionOfActiveCell,
         "for an intrinsic object and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsInt ],
         
   function( obj, p )
     
@@ -369,7 +333,7 @@ end );
 ##
 InstallMethod( SetPositionOfActiveCell,
         "for an intrinsic morphism and a list of two integers",
-        [ IsCapCategoryIntrinsicMorphismRep, IsList ],
+        [ IsCapCategoryIntrinsicMorphism, IsList ],
         
   function( mor, p )
     local s, t;
@@ -409,14 +373,14 @@ end );
 ##
 InstallMethod( ActiveCell,
         "for an intrinsic object",
-        [ IsCapCategoryIntrinsicObjectRep ],
+        [ IsCapCategoryIntrinsicObject ],
         
   obj -> CertainCell( obj, PositionOfActiveCell( obj ) ) );
 
 ##
 InstallMethod( ActiveCell,
         "for an intrinsic morphism",
-        [ IsCapCategoryIntrinsicMorphismRep ],
+        [ IsCapCategoryIntrinsicMorphism ],
         
   function( mor )
     
@@ -443,7 +407,7 @@ InstallMethod( ActiveCell,
 ##
 InstallMethod( AddTransitionIsomorphism,
         "for an intrinsic object, an integer, and a morphism",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism ],
+        [ IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism ],
         
   function( obj, s, eta )
     
@@ -460,7 +424,7 @@ end );
 ##
 InstallMethod( AddTransitionIsomorphism,
         "for an intrinsic object, an integer, and an isomorphism",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism and IsIsomorphism ],
+        [ IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism and IsIsomorphism ],
         
   function( obj, s, eta )
     local S, n, st;
@@ -496,7 +460,7 @@ end );
 ##
 InstallMethod( AddTransitionIsomorphism,
         "for an intrinsic object, a morphism, and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsCapCategoryMorphism, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsCapCategoryMorphism, IsInt ],
         
   function( obj, eta, t )
     
@@ -513,7 +477,7 @@ end );
 ##
 InstallMethod( AddTransitionIsomorphism,
         "for an intrinsic object, an isomorphism, and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsCapCategoryMorphism and IsIsomorphism, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsCapCategoryMorphism and IsIsomorphism, IsInt ],
         
   function( obj, eta, t )
     local T, n, st;
@@ -549,7 +513,7 @@ end );
 ##
 InstallMethod( AddTransitionIsomorphism,
         "for an intrinsic object, an integer, a morphism, and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism, IsInt ],
         
   function( obj, s, eta, t )
     
@@ -566,7 +530,7 @@ end );
 ##
 InstallMethod( AddTransitionIsomorphism,
         "for an intrinsic object, an integer, an isomorphism, and an integer",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryMorphism and IsIsomorphism, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism and IsIsomorphism, IsInt ],
         
   function( obj, s, eta, t )
     local S, T, st;
@@ -597,7 +561,7 @@ end );
 ##
 InstallMethod( TransitionIsomorphism,
         "for an intrinsic object and two integers",
-        [ IsCapCategoryIntrinsicObjectRep, IsInt, IsInt ],
+        [ IsCapCategoryIntrinsicObject, IsInt, IsInt ],
         
   function( obj, s, t )
     local tr, st, eta, sign, i, j, ts;
@@ -712,10 +676,10 @@ end );
 ####################################
 
 ##
-InstallMethod( Intrinsify,
-        [ IsCapCategory, IsCapCategoryObject, IsType ],
+InstallMethod( IntrinsifyObject,
+        [ IsCapCategory, IsCapCategoryObject ],
         
-  function( C, o, type )
+  function( C, o )
     local obj;
     
     obj := rec(
@@ -725,11 +689,9 @@ InstallMethod( Intrinsify,
                1 := o
                );
     
-    Objectify( type, obj );
+    ObjectifyObjectForCAPWithAttributes( obj, C );
     
     INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( o, obj );
-    
-    AddObject( C, obj );
     
     SetIsSafeForSideEffects( obj, true );
     
@@ -744,15 +706,11 @@ InstallMethod( Intrinsify,
     
 end );
 
-## this is the method to overload
+##
 InstallMethod( Intrinsify,
         [ IsCapCategory, IsCapCategoryObject ],
         
-  function( C, obj )
-    
-    return Intrinsify( C, obj, C!.TheTypeIntrinsicObject );
-    
-end );
+  IntrinsifyObject );
 
 ##
 InstallMethod( Intrinsify,
@@ -778,9 +736,9 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt, IsList ],
+        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt ],
         
-  function( m, S, posS, T, posT, type )
+  function( m, S, posS, T, posT )
     local C, mor;
     
     C := CapCategory( S );
@@ -798,21 +756,14 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ posS, posT ] )) := [ 1, [ m ] ] )
                );
     
-    if IsEqualForObjects( S, T ) then
-        ObjectifyWithAttributes(
-                mor, type[2],
-                Source, S,
-                Range, T
-                );
-    else
-        ObjectifyWithAttributes(
-                mor, type[1],
-                Source, S,
-                Range, T
-                );
-    fi;
+    ObjectifyMorphismForCAPWithAttributes( mor, C,
+            Source, S,
+            Range, T
+            );
     
-    AddMorphism( C, mor );
+    if IsEqualForObjects( S, T ) then
+        SetFilterObj( mor, C!.IsCapCategoryIntrinsicEndomorphism );
+    fi;
     
     SetIsSafeForSideEffects( mor, true );
     
@@ -826,19 +777,6 @@ InstallMethod( Intrinsify,
     INSTALL_TODO_LIST_FOR_INTRINSIFIED_MORPHISMS( m, mor );
     
     return mor;
-    
-end );
-
-## this is the method to overload
-InstallMethod( Intrinsify,
-        [ IsCapCategoryMorphism, IsCapCategoryIntrinsicObjectRep, IsInt, IsCapCategoryIntrinsicObjectRep, IsInt ],
-        
-  function( m, S, posS, T, posT )
-    local C;
-    
-    C := CapCategory( S );
-    
-    return Intrinsify( m, S, posS, T, posT, [ C!.TheTypeIntrinsicMorphism, C!.TheTypeIntrinsicEndomorphism ] );
     
 end );
 
@@ -1133,9 +1071,9 @@ end );
     
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsBool, IsType, IsType, IsType, IsFunction ],
+        [ IsCapCategory, IsBool, IsList, IsFunction ],
         
-  function( C, strict, type_obj, type_mor, type_end, todo )
+  function( C, strict, list_filter_obj_mor, todo )
     local name, IC, create_func_bool, create_func_object0, create_func_object,
           create_func_morphism, create_func_universal_morphism,
           recnames, func, pos, info, add;
@@ -1145,6 +1083,15 @@ InstallMethod( IntrinsicCategory,
         IC := CreateCapCategory( name );
     else
         IC := CreateCapCategory( );
+    fi;
+    
+    AddObjectRepresentation( IC, IsCapCategoryIntrinsicObject and list_filter_obj_mor[1] );
+    AddMorphismRepresentation( IC, IsCapCategoryIntrinsicMorphism and list_filter_obj_mor[2] );
+    
+    IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism;
+    
+    if Length( list_filter_obj_mor ) > 2 and IsFilter( list_filter_obj_mor[3] ) then
+        IC!.IsCapCategoryIntrinsicEndomorphism := IC!.IsCapCategoryIntrinsicEndomorphism and list_filter_obj_mor[3];
     fi;
     
     for name in ListKnownCategoricalProperties( C ) do
@@ -1404,10 +1351,6 @@ InstallMethod( IntrinsicCategory,
         
     od;
     
-    IC!.TheTypeIntrinsicObject := type_obj;
-    IC!.TheTypeIntrinsicMorphism := type_mor;
-    IC!.TheTypeIntrinsicEndomorphism := type_end;
-    
     Finalize( IC );
     
     IdentityFunctor( IC )!.UnderlyingFunctor := IdentityFunctor( C );
@@ -1421,18 +1364,18 @@ end );
 
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsType, IsType, IsType, IsFunction ],
+        [ IsCapCategory, IsList, IsFunction ],
         
-  function( C, type_obj, type_mor, type_end, todo )
+  function( C, list_filter_obj_mor, todo )
     
     if IsBound( INTRINSIC_CATEGORIES.strict ) and
        INTRINSIC_CATEGORIES.strict = false then
         
-        return IntrinsicCategory( C, false, type_obj, type_mor, type_end, todo );
+        return IntrinsicCategory( C, false, list_filter_obj_mor, todo );
         
     fi;
     
-    return IntrinsicCategory( C, true, type_obj, type_mor, type_end, todo );
+    return IntrinsicCategory( C, true, list_filter_obj_mor, todo );
     
 end );
 
@@ -1442,7 +1385,7 @@ InstallMethod( IntrinsicCategory,
         
   function( C, strict )
     
-    return IntrinsicCategory( C, strict, TheTypeIntrinsicObject, TheTypeIntrinsicMorphism, TheTypeIntrinsicMorphism, ReturnNothing );
+    return IntrinsicCategory( C, strict, [ IsCapCategoryIntrinsicObject, IsCapCategoryIntrinsicMorphism ], ReturnNothing );
     
 end );
 
