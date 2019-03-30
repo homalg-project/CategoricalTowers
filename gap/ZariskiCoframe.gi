@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: Zariski coframes of open subsets
+# ZariskiFrames: Coframes of Zariski closed subsets
 #
 # Implementations
 #

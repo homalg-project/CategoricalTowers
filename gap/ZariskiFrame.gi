@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: Zariski frames of closed subsets
+# ZariskiFrames: Frames of Zariski open subsets
 #
 # Implementations
 #
