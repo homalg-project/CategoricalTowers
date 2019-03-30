@@ -345,17 +345,6 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( Dimension,
-        "for an object in a Zariski coframe of an affine variety",
-        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-
-  function( A )
-    
-    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
-    
-end );
-
-##
 InstallMethod( IrreducibleComponents,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
@@ -370,5 +359,16 @@ InstallMethod( IrreducibleComponents,
     fi;
     
     return List( components, ClosedSubsetOfSpec );
+    
+end );
+
+##
+InstallMethod( Dimension,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+
+  function( A )
+    
+    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
     
 end );
