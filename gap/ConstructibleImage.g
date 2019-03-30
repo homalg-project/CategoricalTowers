@@ -1,8 +1,8 @@
-LoadPackage( "MatricesForHomalg", ">=2018.12.10" );
-LoadPackage( "RingsForHomalg", ">=2018.12.09" );
+LoadPackage( "MatricesForHomalg", ">=2018.12.18" );
+LoadPackage( "RingsForHomalg", ">=2018.12.15" );
 LoadPackage( "GradedRingForHomalg", ">=2018.12.08" );
 LoadPackage( "Locales", ">=2019.03.27" );
-LoadPackage( "ZariskiFrames", ">=2019.03.27" );
+LoadPackage( "ZariskiFrames", ">=2019.03.28-3" );
 LoadPackage( "Digraph" );
 
 Read( "Tensor.g" );
