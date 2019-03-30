@@ -27,6 +27,24 @@ InstallMethod( \[\],
 end );
 
 ##
+InstallMethod( Dimension,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
+
+  function( A )
+    local irr;
+    
+    irr := IrreducibleComponents( A );
+    
+    if Length( irr ) <= 1 then
+        TryNextMethod( );
+    fi;
+    
+    return Maximum( List( irr, Dimension ) );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
