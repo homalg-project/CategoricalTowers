@@ -21,7 +21,7 @@ InstallMethod( ViewObj,
         [ IsObjectInZariskiCoframe ],
 
   function( A )
-    local I, n, j;
+    local I, n, j, i;
     
     I := ValueOption( "Locales_name" );
     
@@ -43,7 +43,45 @@ InstallMethod( ViewObj,
         j := Concatenation( "_", String( j ) );
     fi;
     
-    Print( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, j, " )" );
+    i := ValueOption( "component_counter" );
+    
+    if i = fail then
+        i := "";
+    else
+        if I = "<...>" then
+            I := "K";
+        fi;
+        i := Concatenation( "_", String( i ) );
+    fi;
+    
+    Print( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, j, i, " )" );
+    
+end );
+
+##
+InstallMethod( ViewObj,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
+        
+  function( A )
+    local irr, i;
+    
+    irr := IrreducibleComponents( A );
+    
+    if Length( irr ) <= 1 then
+        TryNextMethod( );
+    fi;
+    
+    Print( "[ " );
+    
+    ViewObj( irr[1] : component_counter := 1 );
+    
+    for i in [ 2 .. Length( irr ) ] do
+        Print( " ⋃ " );
+        ViewObj( irr[i] : component_counter := i );
+    od;
+    
+    Print( " ]" );
     
 end );
 
@@ -58,6 +96,30 @@ InstallMethod( DisplayString,
                    "V( <",
                    JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ),
                    "> )" );
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
+        
+  function( A )
+    local irr, C, str;
+    
+    irr := IrreducibleComponents( A );
+    
+    if Length( irr ) <= 1 then
+        TryNextMethod( );
+    fi;
+    
+    str := Concatenation( "[ ", DisplayString( irr[1] ) );
+    
+    for C in irr{[ 2 .. Length( irr ) ]} do
+        str := Concatenation( str, " ⋃ ", DisplayString( C ) );
+    od;
+    
+    return Concatenation( str, " ]" );
     
 end );
 
