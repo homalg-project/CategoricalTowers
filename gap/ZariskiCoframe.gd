@@ -28,3 +28,12 @@ DeclareCategory( "IsMorphismInZariskiCoframe",
 #! @Returns an integer
 DeclareAttribute( "Dimension",
         IsObjectInZariskiCoframe );
+
+#! @Section Operations
+
+#! @Description
+#!  The <A>i</A>-th irreducible component of <A>A</A>.
+#! @Arguments A, i
+#! @Returns an object in a Zariski coframe
+DeclareOperation( "\[\]",
+        [ IsObjectInZariskiCoframe, IsInt ] );
