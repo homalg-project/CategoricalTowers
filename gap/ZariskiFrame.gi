@@ -5,6 +5,33 @@
 #
 
 ##
+InstallGlobalFunction( IsHomSetInhabitedForFramesUsingCategoryOfRows,
+  function( S, T )
+    
+    if HasDimensionOfComplement( S ) and HasDimensionOfComplement( T ) and
+       DimensionOfComplement( S ) < DimensionOfComplement( T ) then
+        return false;
+    fi;
+    
+    S := MorphismOfUnderlyingCategory( S );
+    T := MorphismOfUnderlyingCategory( T );
+    
+    return IsLiftable( S, T );
+    
+end );
+
+##
+InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForFramesUsingCategoryOfRows,
+  function( S, T )
+    
+    S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
+    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    
+    return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
+    
+end );
+
+##
 InstallMethod( IsSubset,
         "for two objects in a Zariski frame",
         [ IsObjectInZariskiFrame, IsObjectInZariskiFrame ],

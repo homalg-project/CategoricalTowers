@@ -47,3 +47,8 @@ DeclareAttribute( "Dimension",
 #! @Returns an object in a Zariski coframe
 DeclareOperation( "\[\]",
         [ IsObjectInZariskiCoframe, IsInt ] );
+
+# Tools
+DeclareGlobalFunction( "IsHomSetInhabitedForCoframesUsingCategoryOfRows" );
+
+DeclareGlobalFunction( "IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows" );

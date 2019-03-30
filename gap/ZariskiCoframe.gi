@@ -5,6 +5,49 @@
 #
 
 ##
+InstallGlobalFunction( IsHomSetInhabitedForCoframesUsingCategoryOfRows,
+  function( S, T )
+    local irrS, irrT;
+    
+    if HasDimension( S ) and HasDimension( T ) and
+       Dimension( S ) > Dimension( T ) then
+        return false;
+    fi;
+    
+    if HasIrreducibleComponents( S ) then
+        irrS := IrreducibleComponents( S );
+        if Length( irrS ) > 1 then
+            return ForAll( irrS, C -> IsHomSetInhabited( C, T ) );
+        fi;
+    fi;
+    
+    if HasIrreducibleComponents( T ) and
+       HasIsIrreducibleObjectInZariskiCoframe( S ) and IsIrreducibleObjectInZariskiCoframe( S ) then
+        irrT := IrreducibleComponents( T );
+        if Length( irrT ) > 1 then
+            return ForAny( irrT, C -> IsHomSetInhabited( S, C ) );
+        fi;
+    fi;
+    
+    S := MorphismOfUnderlyingCategory( S );
+    T := MorphismOfUnderlyingCategory( T );
+    
+    return IsLiftable( T, S );
+    
+end );
+
+##
+InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows,
+  function( S, T )
+    
+    S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
+    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    
+    return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
+    
+end );
+
+##
 InstallMethod( IsSubset,
         "for two objects in a Zariski coframe",
         [ IsObjectInZariskiCoframe, IsObjectInZariskiCoframe ],
