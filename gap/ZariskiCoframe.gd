@@ -22,6 +22,9 @@ DeclareCategory( "IsMorphismInZariskiCoframe",
 
 #! @Section Attributes
 
-#!
+#! @Description
+#!  The dimension of <A>A</A>.
+#! @Arguments A
+#! @Returns an integer
 DeclareAttribute( "Dimension",
         IsObjectInZariskiCoframe );
