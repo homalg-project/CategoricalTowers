@@ -20,6 +20,16 @@ DeclareCategory( "IsObjectInZariskiCoframe",
 DeclareCategory( "IsMorphismInZariskiCoframe",
         IsMorphismInZariskiFrameOrCoframe );
 
+#! @Section Properties
+
+#! @Description
+#!  Check if <A>A</A> is irreducible or not.
+#!  A shorthand ist <C>IsIrreducible</C>(  <A>A</A> ).
+#! @Arguments A
+#! @Returns true or false
+DeclareProperty( "IsIrreducibleObjectInZariskiCoframe",
+        IsObjectInZariskiCoframe );
+
 #! @Section Attributes
 
 #! @Description

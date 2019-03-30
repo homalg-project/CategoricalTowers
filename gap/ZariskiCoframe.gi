@@ -16,6 +16,24 @@ InstallMethod( IsSubset,
 end );
 
 ##
+InstallMethod( IsIrreducibleObjectInZariskiCoframe,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    
+    return Length( IrreducibleComponents( A ) ) <= 1;
+    
+end );
+
+##
+InstallMethod( IsIrreducible,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  IsIrreducibleObjectInZariskiCoframe );
+
+##
 InstallMethod( \[\],
         "for an object in a Zariski coframe and an integer",
         [ IsObjectInZariskiCoframe, IsInt ],
