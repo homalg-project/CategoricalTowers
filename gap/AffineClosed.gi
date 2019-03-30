@@ -345,24 +345,6 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( IrreducibleComponents,
-        "for an object in a Zariski coframe of an affine variety",
-        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-        
-  function ( A )
-    local components;
-    
-    components := RadicalDecompositionOp( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
-
-    if Length( components ) = 1 then
-        return [ A ];
-    fi;
-    
-    return List( components, ClosedSubsetOfSpec );
-    
-end );
-
-##
 InstallMethod( Dimension,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],

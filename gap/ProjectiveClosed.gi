@@ -321,16 +321,3 @@ InstallMethod( Dimension,
     return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ) - 1;
     
 end );
-
-##
-InstallMethod( IrreducibleComponents,
-        "for an object in a Zariski coframe of a projective variety",
-        [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
-
-  function( A )
-    
-    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
-    
-    return List( RadicalDecompositionOp( A ), ClosedSubsetOfProj );
-    
-end );

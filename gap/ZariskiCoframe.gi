@@ -16,6 +16,35 @@ InstallMethod( IsSubset,
 end );
 
 ##
+InstallMethod( IrreducibleComponents,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function ( A )
+    local components, ZC;
+    
+    components := RadicalDecompositionOp( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+    SetIsIrreducibleObjectInZariskiCoframe( A, Length( components ) <= 1 );
+    
+    ZC := CapCategory( A );
+    
+    components := List( components, ZC!.ConstructorReducedMorphism );
+    
+    Perform( components, function( C ) SetIsIrreducibleObjectInZariskiCoframe( C, true ); end );
+    
+    if Length( components ) = 1 then
+        if not HasReducedMorphismOfUnderlyingCategory( A ) then
+            SetReducedMorphismOfUnderlyingCategory( A, ReducedMorphismOfUnderlyingCategory( components[1] ) );
+        fi;
+        return [ A ];
+    fi;
+    
+    return components;
+    
+end );
+
+##
 InstallMethod( IsIrreducibleObjectInZariskiCoframe,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
