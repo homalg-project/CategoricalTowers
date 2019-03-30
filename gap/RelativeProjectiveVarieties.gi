@@ -26,7 +26,7 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
     
     B := BaseRing( R_elim );
     
-    base := IndeterminatesOfPolynomialRing( B );
+    base := Indeterminates( B );
     
     R := PolynomialRingWithDegRevLexOrdering( R );
     
