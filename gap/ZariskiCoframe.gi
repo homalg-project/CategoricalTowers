@@ -117,6 +117,26 @@ InstallMethod( \[\],
 end );
 
 ##
+InstallMethod( Factors,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  IrreducibleComponents );
+
+##
+InstallMethod( FactorizedObject,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+
+  function( A )
+    
+    IrreducibleComponents( A );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( Dimension,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],

@@ -39,6 +39,20 @@ DeclareProperty( "IsIrreducibleObjectInZariskiCoframe",
 DeclareAttribute( "Dimension",
         IsObjectInZariskiCoframe );
 
+#! @Description
+#!  The factored object of <A>A</A>.
+#! @Arguments A
+#! @Returns an object in a Zariski coframe.
+DeclareAttribute( "FactorizedObject",
+        IsObjectInZariskiCoframe );
+
+#! @Description
+#!  The list of irreducible components of <A>A</A>.
+#! @Arguments A
+#! @Returns a list
+DeclareAttribute( "IrreducibleComponents",
+        IsObjectInZariskiCoframe );
+
 #! @Section Operations
 
 #! @Description
