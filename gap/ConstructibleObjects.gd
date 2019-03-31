@@ -49,6 +49,10 @@ DeclareOperation( "CanonicalObjectOp",
 DeclareAttribute( "CanonicalObject",
         IsConstructibleObject );
 
+#! @Arguments A
+DeclareAttribute( "FactorizedObject",
+        IsConstructibleObject );
+
 #! @Section Attributes
 
 #! @Description

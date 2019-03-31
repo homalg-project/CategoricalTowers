@@ -284,6 +284,30 @@ InstallMethod( StandardizeObject,
 end );
 
 ##
+InstallMethod( FactorizedObject,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( A )
+    local irr, T;
+    
+    Factors( A.I );
+    
+    irr := Factors( A.J );
+    
+    T := A.I;
+    
+    A := List( irr, S -> T - S );
+    
+    A := CallFuncList( AsFormalMultipleDifference, A );
+    
+    SetFactorizedObject( A, A );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( PairInUnderlyingLattice,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],

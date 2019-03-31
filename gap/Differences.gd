@@ -65,6 +65,10 @@ DeclareOperation( "CanonicalObjectOp",
 DeclareAttribute( "CanonicalObject",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#! @Arguments A
+DeclareAttribute( "FactorizedObject",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Description
 #!  The closure of the formal single difference <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A
