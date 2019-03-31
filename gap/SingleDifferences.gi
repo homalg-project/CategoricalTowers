@@ -229,13 +229,17 @@ InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
     
     if HasIsCartesianClosedCategory( L ) and IsCartesianClosedCategory( L ) then
         
-        H := ExponentialOnObjects( T, S );
+        # H := ExponentialOnObjects( T, S );
+        # following line performed better than the previous one
+        H := ExponentialOnObjects( Coproduct( T, S ), S );
         
         return [ Coproduct( H, T ), H ];
         
     elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
         
-        H := CoexponentialOnObjects( T, S );
+        # H := CoexponentialOnObjects( T, S );
+        # following line performed better than the previous line
+        H := CoexponentialOnObjects( T, DirectProduct( S, T ) );
         
         return [ H, DirectProduct( S, H ) ];
         
