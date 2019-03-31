@@ -272,6 +272,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
       function( L )
         local P;
         
+        L := MaximalObjects( L, IsSubset );
+        
         if Length( L ) = 1 then
             return L[1];
         fi;

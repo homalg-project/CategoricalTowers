@@ -222,6 +222,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
       function( L )
         local biased_weak_fiber_product, C;
         
+        L := MaximalObjects( L, IsHomSetInhabited );
+        
         if Length( L ) = 1 then
             return L[1];
         fi;
