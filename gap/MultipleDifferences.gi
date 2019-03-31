@@ -198,7 +198,15 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
         T := T_new;
         
-        A := List( List( u, a -> a[2] ), S -> T - S );
+        u := List( u, a -> a[2] );
+        
+        # u := MaximalObjects( u, IsHomSetInhabited );
+        # avoid searching for maximal objects too early:
+        
+        # u := Filtered( u, a -> not IsInitial( a ) );
+        # avoid excluding exmpty sets too early:
+        
+        A := List( u, S -> T - S );
         
         List( A, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
         
@@ -208,7 +216,9 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
     until IsEqualForObjectsIfIsHomSetInhabited( T_new, T );
     
-    u := MaximalObjects( List( u, a -> a[2] ), IsHomSetInhabited );
+    u := List( u, a -> a[2] );
+    
+    u := MaximalObjects( u, IsHomSetInhabited );
     
     return List( u, S -> T - S );
     
