@@ -612,7 +612,7 @@ InstallMethod( ViewObj,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A )
-    local n, i;
+    local n, i, j;
     
     A := List( A );
     
@@ -624,10 +624,23 @@ InstallMethod( ViewObj,
     
     ViewObj( A[1].I : Locales_name := "I", Locales_number := n );
     
-    for i in [ 1 .. Length( A ) ] do
+    Print( " \\\ " );
+    
+    ViewObj( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 );
+    
+    j := Length( A );
+    
+    if j > 1 then
+        
         Print( " \\\ " );
-        ViewObj( A[i].J : Locales_name := "J", Locales_number := n, Locales_counter := i );
-    od;
+        
+        if j > 2 then
+            Print( ".. \\\ " );
+        fi;
+        
+        ViewObj( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j );
+        
+    fi;
     
 end );
 
