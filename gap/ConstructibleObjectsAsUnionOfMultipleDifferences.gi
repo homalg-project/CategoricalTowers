@@ -348,7 +348,7 @@ InstallMethod( Length,
   C -> Length( List( C ) ) );
 
 ##
-InstallMethod( NormalizeObject,
+InstallMethod( NormalizedObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
@@ -366,7 +366,7 @@ InstallMethod( NormalizeObject,
 end );
 
 ##
-InstallMethod( StandardizeObject,
+InstallMethod( StandardizedObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         

@@ -258,10 +258,6 @@ InstallMethod( NormalizeObject,
     
     List( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
     
-    if IsInitial( A ) then
-        return InitialObject( A );
-    fi;
-    
     return A;
     
 end );
@@ -274,10 +270,6 @@ InstallMethod( StandardizeObject,
   function( A )
     
     List( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
-    
-    if IsInitial( A ) then
-        return InitialObject( A );
-    fi;
     
     return A;
     

@@ -47,14 +47,6 @@ DeclareProperty( "IsLocallyClosed",
 #! @Section Attributes
 
 #! @Arguments A
-DeclareAttribute( "NormalizeObject",
-        IsObjectInMeetSemilatticeOfDifferences );
-
-#! @Arguments A
-DeclareAttribute( "StandardizeObject",
-        IsObjectInMeetSemilatticeOfDifferences );
-
-#! @Arguments A
 DeclareAttribute( "LocallyClosedApproximation",
         IsObjectInMeetSemilatticeOfDifferences );
 
@@ -79,3 +71,13 @@ DeclareAttribute( "Closure",
 #! @Arguments A
 DeclareAttribute( "Dimension",
         IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Section Operations
+
+#! @Arguments A
+DeclareOperation( "NormalizeObject",
+        [ IsObjectInMeetSemilatticeOfDifferences ] );
+
+#! @Arguments A
+DeclareOperation( "StandardizeObject",
+        [ IsObjectInMeetSemilatticeOfDifferences ] );

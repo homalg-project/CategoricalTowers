@@ -322,10 +322,6 @@ InstallMethod( NormalizeObject,
     
     List( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), IsInitial );
     
-    if IsInitial( A ) then
-        return InitialObject( A );
-    fi;
-    
     return A;
     
 end );
@@ -338,10 +334,6 @@ InstallMethod( StandardizeObject,
   function( A )
     
     List( ListOfStandardObjectsInMeetSemilatticeOfDifferences( A ), IsInitial );
-    
-    if IsInitial( A ) then
-        return InitialObject( A );
-    fi;
     
     return A;
     

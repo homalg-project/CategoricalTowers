@@ -55,6 +55,14 @@ DeclareAttribute( "FactorizedObject",
 
 #! @Section Attributes
 
+#! @Arguments A
+DeclareAttribute( "NormalizedObject",
+        IsConstructibleObject );
+
+#! @Arguments A
+DeclareAttribute( "StandardizedObject",
+        IsConstructibleObject );
+
 #! @Description
 #!  The closure of the constructible object <A>A</A> in the underlying co-Heyting algebra.
 #! @Arguments A
