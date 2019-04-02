@@ -81,13 +81,13 @@ t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 IsClosed( t );
 #! true
-t := StandardizeObject( t );
+t := StandardizedObject( t );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( t );
 #! V( <x+y-1,y^2-y> ) \ ∅
 z := c - c;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
-z := StandardizeObject( z );
+z := StandardizedObject( z );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
 #! ∅ \ ∅
