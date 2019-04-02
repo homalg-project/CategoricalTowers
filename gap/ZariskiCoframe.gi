@@ -142,8 +142,15 @@ InstallMethod( Dimension,
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
 
   function( A )
+    local irr;
     
-    return Maximum( List( IrreducibleComponents( A ), Dimension ) );
+    irr := IrreducibleComponents( A );
+    
+    if Length( irr ) <= 1 then
+        TryNextMethod( );
+    fi;
+    
+    return Maximum( List( irr, Dimension ) );
     
 end );
 
