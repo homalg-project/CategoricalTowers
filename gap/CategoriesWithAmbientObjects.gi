@@ -35,8 +35,8 @@ DeclareRepresentation( "IsCapCategoryMorphismWithAmbientObjectRep",
 BindGlobal( "TheFamilyOfLazyGeneralizedEmbeddingsInAmbientObject",
         NewFamily( "TheFamilyOfLazyGeneralizedEmbeddingsInAmbientObject" ) );
 
-BindGlobal( "TheFamilyOfCategoriesWithAmbientObjects",
-        NewFamily( "TheFamilyOfCategoriesWithAmbientObjects" ) );
+BindGlobal( "TheFamilyOfObjectsWithAmbientObjects",
+        NewFamily( "TheFamilyOfObjectsWithAmbientObjects" ) );
 
 BindGlobal( "TheFamilyOfMorphismsWithAmbientObjects",
         NewFamily( "TheFamilyOfMorphismsWithAmbientObjects" ) );
@@ -47,7 +47,7 @@ BindGlobal( "TheTypeLazyGeneralizedEmbeddingsInAmbientObject",
                 IsLazyGeneralizedEmbeddingInAmbientObject ) );
 
 BindGlobal( "TheTypeObjectWithAmbientObject",
-        NewType( TheFamilyOfCategoriesWithAmbientObjects,
+        NewType( TheFamilyOfObjectsWithAmbientObjects,
                 IsCapCategoryObjectWithAmbientObjectRep ) );
 
 BindGlobal( "TheTypeMorphismWithAmbientObject",
