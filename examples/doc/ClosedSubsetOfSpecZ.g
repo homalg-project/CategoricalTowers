@@ -19,6 +19,12 @@ A = B;
 #! true
 A = C;
 #! false
+LCA := LocallyClosedApproximation( A );
+#! V_{Z}( <...> )
+Display( LCA );
+#! V( <2> )
+A = LCA;
+#! true
 embAB := UniqueMorphism( A, B );
 #! <An epi-, monomorphism in The coframe of Zariski closed subsets of the\
 #!  affine spectrum of Z>

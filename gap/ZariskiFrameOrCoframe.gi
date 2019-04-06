@@ -46,13 +46,6 @@ InstallMethod( StandardizeObject,
 end );
 
 ##
-InstallMethod( LocallyClosedApproximation,
-        "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe ],
-        
-  StandardizeObject );
-
-##
 InstallMethod( CanonicalObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],

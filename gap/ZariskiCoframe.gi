@@ -59,6 +59,13 @@ InstallMethod( IsSubset,
 end );
 
 ##
+InstallMethod( LocallyClosedApproximation,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  StandardizeObject );
+
+##
 InstallMethod( IrreducibleComponents,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],

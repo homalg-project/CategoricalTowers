@@ -19,6 +19,10 @@ A = B;
 #! true
 A = C;
 #! false
+LCA := LocallyClosedApproximation( A );
+#! V_{Z}( I ) \ V_{Z}( J )
+Display( LCA );
+#! V( <> ) \ V( <2> )
 embAB := UniqueMorphism( A, B );
 #! <An epi-, monomorphism in The frame of Zariski open subsets of the\
 #!  affine spectrum of Z>
