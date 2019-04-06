@@ -97,6 +97,23 @@ InstallMethod( LocallyClosedApproximation,
 end );
 
 ##
+InstallMethod( DistinguishedLocallyClosedApproximation,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+        
+  function( A )
+    
+    A := LocallyClosedApproximation( A );
+    
+    if IsObjectInZariskiCoframe( A ) then
+        return A;
+    fi;
+    
+    return DistinguishedLocallyClosedApproximation( A );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],

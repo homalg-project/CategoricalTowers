@@ -55,6 +55,94 @@ InstallMethod( LocallyClosedApproximation,
   StandardizeObject );
 
 ##
+InstallMethod( DistinguishedLocallyClosedApproximation,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  LocallyClosedApproximation );
+
+##
+InstallMethod( DistinguishedLocallyClosedApproximation,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function ( A )
+    local Ap, C, a, nonzero_rows;
+    
+    if not IsObjectInZariskiCoframe( A.I ) then
+        TryNextMethod( );
+    fi;
+    
+    NormalizeObject( A );
+    
+    Ap := A.J;
+    A := A.I;
+    
+    C := CapCategory( A );
+    
+    a := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
+    
+    Ap := DecideZeroRows( Ap, a );
+    
+    nonzero_rows := NonZeroRows( Ap );
+    
+    if nonzero_rows = [ ] then
+        Error( "no nonzero rows after reducing Ap with A\n" );
+    fi;
+    
+    nonzero_rows := nonzero_rows{[1]};
+    
+    Ap := CertainRows( Ap, nonzero_rows );
+    
+    return A - C!.ConstructorByReducedMorphism( Ap );
+    
+end );
+
+##
+InstallMethod( DistinguishedLocallyClosedApproximation,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function ( A )
+    local Ap, C, a, nonzero_rows;
+    
+    if not IsObjectInZariskiCoframe( A[1].I ) then
+        TryNextMethod( );
+    fi;
+    
+    NormalizeObject( A );
+    
+    Ap := List( A, a -> a.J );
+    
+    A := A.I;
+    
+    C := CapCategory( A );
+    
+    a := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    Ap := List( Ap, ap -> UnderlyingMatrix( MorphismOfUnderlyingCategory( ap ) ) );
+    
+    Ap := List( Ap, ap -> DecideZeroRows( ap, a ) );
+    
+    nonzero_rows := List( Ap, NonZeroRows );
+    
+    if [ ] in nonzero_rows then
+        Error( "no nonzero rows after reducing Ap with A\n" );
+    fi;
+    
+    nonzero_rows := List( nonzero_rows, a -> a{[1]} );
+    
+    Ap := ListN( Ap, nonzero_rows, function( ap, nz ) return CertainRows( ap, nz ); end );
+    
+    Ap := List( Ap, C!.ConstructorByReducedMorphism );
+    
+    A := List( Ap, ap -> A - ap );
+    
+    return CallFuncList( AsFormalMultipleDifference, A );
+    
+end );
+
+##
 InstallMethod( IrreducibleComponents,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],

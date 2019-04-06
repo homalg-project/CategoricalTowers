@@ -53,6 +53,21 @@ DeclareAttribute( "LocallyClosedApproximation",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Arguments A
+#! @Group DistinguishedLocallyClosedApproximation
+DeclareAttribute( "DistinguishedLocallyClosedApproximation",
+        IsObjectInZariskiFrameOrCoframe );
+
+#! @Arguments A
+#! @Group DistinguishedLocallyClosedApproximation
+DeclareAttribute( "DistinguishedLocallyClosedApproximation",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Arguments A
+#! @Group DistinguishedLocallyClosedApproximation
+DeclareAttribute( "DistinguishedLocallyClosedApproximation",
+        IsConstructibleObject );
+
+#! @Arguments A
 DeclareAttribute( "CanonicalObject",
         IsObjectInZariskiFrameOrCoframe );
 
