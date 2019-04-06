@@ -9,11 +9,11 @@ ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( ZZ );
 #! The coframe of Zariski closed subsets of the affine spectrum of Z
 A := ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 2 ], 1, 1, ZZ ) );
 #! V_{Z}( <...> )
-B := ClosedSubsetOfSpec( HomalgMatrix( [ 12, 20 ], 2, 1, ZZ ) );
+B := ClosedSubsetOfSpec( "[ 12, 20 ]", ZZ );
 #! V_{Z}( <...> )
-C := ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 3 ], 1, 1, ZZ ) );
+C := ClosedSubsetOfSpecByReducedMorphism( "[ 3 ]", ZZ );
 #! V_{Z}( <...> )
-D := ClosedSubsetOfSpec( HomalgMatrix( [ 12 ], 1, 1, ZZ ) );
+D := ClosedSubsetOfSpec( "[ 12 ]", ZZ );
 #! V_{Z}( <...> )
 A = B;
 #! true

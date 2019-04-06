@@ -9,11 +9,11 @@ ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( ZZ );
 #! The frame of Zariski open subsets of the affine spectrum of Z
 A := OpenSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 2 ], 1, 1, ZZ ) );
 #! D_{Z}( <...> )
-B := OpenSubsetOfSpec( HomalgMatrix( [ 12,20 ], 2, 1, ZZ ) );
+B := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );
 #! D_{Z}( <...> )
-C := OpenSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 3 ], 1, 1, ZZ ) );
+C := OpenSubsetOfSpecByReducedMorphism( "[ 3 ]", ZZ );
 #! D_{Z}( <...> )
-D := OpenSubsetOfSpec( HomalgMatrix( [ 12 ], 1, 1, ZZ ) );
+D := OpenSubsetOfSpec( "[ 12 ]", ZZ );
 #! D_{Z}( <...> )
 A = B;
 #! true
