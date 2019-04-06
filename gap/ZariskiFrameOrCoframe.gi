@@ -7,6 +7,17 @@
 SetInfoLevel( InfoZariskiFrames, 1 );
 
 ##
+InstallMethod( IsSubset,
+        "for two objects in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe, IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A, B )
+    
+    return IsHomSetInhabited( B, A );
+    
+end );
+
+##
 InstallMethod( IsClosed,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],

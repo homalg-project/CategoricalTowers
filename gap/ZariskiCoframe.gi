@@ -48,17 +48,6 @@ InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCateg
 end );
 
 ##
-InstallMethod( IsSubset,
-        "for two objects in a Zariski coframe",
-        [ IsObjectInZariskiCoframe, IsObjectInZariskiCoframe ],
-
-  function( A, B )
-    
-    return IsHomSetInhabited( B, A );
-    
-end );
-
-##
 InstallMethod( LocallyClosedApproximation,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],

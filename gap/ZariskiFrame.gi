@@ -32,17 +32,6 @@ InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForFramesUsingCategor
 end );
 
 ##
-InstallMethod( IsSubset,
-        "for two objects in a Zariski frame",
-        [ IsObjectInZariskiFrame, IsObjectInZariskiFrame ],
-
-  function( A, B )
-    
-    return IsHomSetInhabited( B, A );
-    
-end );
-
-##
 InstallMethod( ComplementAsClosedSubset,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
