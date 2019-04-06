@@ -61,7 +61,7 @@ InstallMethod( CanonicalObject,
 
 ##
 InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
-        "for an object in a meet-semilattice of formal differences",
+        "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
