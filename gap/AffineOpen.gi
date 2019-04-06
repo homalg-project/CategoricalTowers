@@ -167,7 +167,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
     
     ZariskiFrame!.Constructor := OpenSubsetOfSpec;
-    ZariskiFrame!.ConstructorReducedMorphism := OpenSubsetOfSpecByReducedMorphism;
+    ZariskiFrame!.ConstructorByReducedMorphism := OpenSubsetOfSpecByReducedMorphism;
     ZariskiFrame!.ConstructorByStandardMorphism := OpenSubsetOfSpecByStandardMorphism;
     
     AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAnAffineVariety );

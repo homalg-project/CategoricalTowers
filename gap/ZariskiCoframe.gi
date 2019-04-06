@@ -72,7 +72,7 @@ InstallMethod( IrreducibleComponents,
     
     ZC := CapCategory( A );
     
-    components := List( components, ZC!.ConstructorReducedMorphism );
+    components := List( components, ZC!.ConstructorByReducedMorphism );
     
     Perform( components, function( C ) SetIsIrreducibleObjectInZariskiCoframe( C, true ); end );
     

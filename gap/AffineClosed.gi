@@ -200,7 +200,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
-    ZariskiCoframe!.ConstructorReducedMorphism := ClosedSubsetOfSpecByReducedMorphism;
+    ZariskiCoframe!.ConstructorByReducedMorphism := ClosedSubsetOfSpecByReducedMorphism;
     ZariskiCoframe!.ConstructorByStandardMorphism := ClosedSubsetOfSpecByStandardMorphism;
     
     AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );

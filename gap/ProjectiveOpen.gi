@@ -167,7 +167,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
     
     ZariskiFrame!.Constructor := OpenSubsetOfProj;
-    ZariskiFrame!.ConstructorReducedMorphism := OpenSubsetOfProjByReducedMorphism;
+    ZariskiFrame!.ConstructorByReducedMorphism := OpenSubsetOfProjByReducedMorphism;
     ZariskiFrame!.ConstructorByStandardMorphism := OpenSubsetOfProjByStandardMorphism;
     
     AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAProjectiveVariety );
