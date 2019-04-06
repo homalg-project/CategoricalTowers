@@ -14,7 +14,23 @@ InstallMethod( IsClosed,
   IsClosedSubobject );
 
 ##
-InstallMethod( LocallyClosedApproximation,
+InstallMethod( NormalizeObject,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    ReducedMorphismOfUnderlyingCategory( A );
+    
+    IsInitial( A );
+    IsTerminal( A );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( StandardizeObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
@@ -22,9 +38,19 @@ InstallMethod( LocallyClosedApproximation,
     
     StandardMorphismOfUnderlyingCategory( A );
     
+    IsInitial( A );
+    IsTerminal( A );
+    
     return A;
     
 end );
+
+##
+InstallMethod( LocallyClosedApproximation,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  StandardizeObject );
 
 ##
 InstallMethod( CanonicalObject,
@@ -42,7 +68,7 @@ InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
     
     A := NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A );
     
-    List( A, StandardMorphismOfUnderlyingCategory );
+    List( A, StandardizeObject );
     
     return A;
     

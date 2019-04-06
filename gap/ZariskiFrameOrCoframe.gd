@@ -66,6 +66,16 @@ DeclareAttribute( "CanonicalObject",
 DeclareOperation( "MorphismOfUnderlyingCategory",
         [ IsObjectInZariskiFrameOrCoframe ] );
 
+#! @Arguments A
+#! @Returns the object in the Zariski frame or coframe <A>A</A>
+DeclareOperation( "NormalizeObject",
+        [ IsObjectInZariskiFrameOrCoframe ] );
+
+#! @Arguments A
+#! @Returns the object in the Zariski frame or coframe <A>A</A>
+DeclareOperation( "StandardizeObject",
+        [ IsObjectInZariskiFrameOrCoframe ] );
+
 #! @Description
 #!  Check if <A>A</A> is bigger than <A>B</A> w.r.t. inclusion.
 #! @Arguments A, B
