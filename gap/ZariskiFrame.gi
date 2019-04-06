@@ -43,6 +43,29 @@ InstallMethod( IsSubset,
 end );
 
 ##
+InstallMethod( ComplementAsClosedSubset,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+        
+  function( A )
+    local C;
+    
+    C := CapCategory( A )!.ZariskiCoframe;
+    
+    if HasStandardMorphismOfUnderlyingCategory( A ) then
+        A := StandardMorphismOfUnderlyingCategory( A );
+        return C!.ConstructorByStandardMorphism( A );
+    elif HasReducedMorphismOfUnderlyingCategory( A ) then
+        A := ReducedMorphismOfUnderlyingCategory( A );
+        return C!.ConstructorByReducedMorphism( A );
+    fi;
+    
+    A := PreMorphismOfUnderlyingCategory( A );
+    return C!.Constructor( A );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],

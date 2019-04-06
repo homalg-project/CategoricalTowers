@@ -279,6 +279,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     Finalize( ZariskiFrame );
     
+    ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
     return ZariskiFrame;
     
 end );

@@ -26,6 +26,10 @@ DeclareCategory( "IsMorphismInZariskiFrame",
 DeclareAttribute( "DimensionOfComplement",
         IsObjectInZariskiFrame );
 
+#!
+DeclareAttribute( "ComplementAsClosedSubset",
+        IsObjectInZariskiFrame );
+
 # Tools
 DeclareGlobalFunction( "IsHomSetInhabitedForFramesUsingCategoryOfRows" );
 

@@ -293,6 +293,8 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     Finalize( ZariskiFrame );
     
+    ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfProjUsingCategoryOfRows( R );
+    
     return ZariskiFrame;
     
 end );
