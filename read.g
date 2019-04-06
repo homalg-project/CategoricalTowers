@@ -7,7 +7,6 @@
 ReadPackage( "ZariskiFrames", "gap/ZariskiFrameOrCoframe.gi");
 ReadPackage( "ZariskiFrames", "gap/ZariskiFrame.gi");
 ReadPackage( "ZariskiFrames", "gap/ZariskiCoframe.gi");
-ReadPackage( "ZariskiFrames", "gap/Varieties.gi");
 ReadPackage( "ZariskiFrames", "gap/Affine.gi");
 ReadPackage( "ZariskiFrames", "gap/AffineOpen.gi");
 ReadPackage( "ZariskiFrames", "gap/AffineClosed.gi");
