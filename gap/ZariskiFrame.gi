@@ -66,6 +66,24 @@ InstallMethod( ComplementAsClosedSubset,
 end );
 
 ##
+InstallMethod( Closure,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( A )
+    local H;
+    
+    H := CapCategory( A )!.UnderlyingCategory;
+    
+    if HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) then
+        return ComplementAsClosedSubset( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
