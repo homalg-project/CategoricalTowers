@@ -19,3 +19,19 @@ DeclareCategory( "IsObjectInZariskiFrameOrCoframeOfAnAffineVariety",
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiFrameOrCoframeOfAnAffineVariety",
         IsMorphismInZariskiFrameOrCoframe );
+
+#! @Section Operatoins
+
+#! @Description
+#!  Construct a quasi-affine set defined set <A>eqs</A> of equations
+#!  and the set <A>ineqs</A> of inequations.
+#! @Arguments eqs, ineqs
+#! @Returns an object in a meet-semilattice of formal multiple differences
+#! @Group QuasiAffineSet
+DeclareOperation( "QuasiAffineSet",
+        [ IsList, IsList ] );
+
+#! @Arguments eqs_ineqs
+#! @Group QuasiAffineSet
+DeclareOperation( "QuasiAffineSet",
+        [ IsList ] );
