@@ -30,6 +30,10 @@ DeclareAttribute( "DimensionOfComplement",
 DeclareAttribute( "ComplementAsClosedSubset",
         IsObjectInZariskiFrame );
 
+#!
+DeclareAttribute( "AsDifferenceOfClosed",
+        IsObjectInZariskiFrame );
+
 # Tools
 DeclareGlobalFunction( "IsHomSetInhabitedForFramesUsingCategoryOfRows" );
 

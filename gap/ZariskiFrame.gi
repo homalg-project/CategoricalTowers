@@ -84,6 +84,17 @@ InstallMethod( Closure,
 end );
 
 ##
+InstallMethod( AsDifferenceOfClosed,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+        
+  function( A )
+    
+    return -ComplementAsClosedSubset( A );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
