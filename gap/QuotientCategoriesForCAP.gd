@@ -40,7 +40,7 @@ DeclareAttribute( "UnderlyingCapCategory", IsQuotientCategory );
 #! The input is a quotient category $Q := C/F$. The output is the congruence test function $F$.
 #! @Arguments Q
 #! @Returns a function
-DeclareAttribute( "TestMembershipFunctionForQuotientCategory", IsQuotientCategory );
+DeclareAttribute( "CongruencyTestFunctionForQuotientCategory", IsQuotientCategory );
 
 #! @Description
 #! The input is a quotient category $Q := C/F$. The output is the canonical projection functor

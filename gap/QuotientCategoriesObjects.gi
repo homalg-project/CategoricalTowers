@@ -34,7 +34,7 @@ InstallMethod( Display,
   function( a )
     local test_function;
     
-    test_function := TestMembershipFunctionForQuotientCategory( CapCategory( a ) );
+    test_function := CongruencyTestFunctionForQuotientCategory( CapCategory( a ) );
     
     Print( "Quotient object defined by:\n\n" );
     

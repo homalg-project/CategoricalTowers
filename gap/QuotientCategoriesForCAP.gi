@@ -37,8 +37,8 @@ InstallMethod( QuotientCategory,
     
     # Setting the attributes
     SetUnderlyingCapCategory( quotient_category, category );
-    
-    SetTestMembershipFunctionForQuotientCategory( quotient_category, membership_function );
+     
+    SetCongruencyTestFunctionForQuotientCategory( quotient_category, membership_function );
     
     # Setting the properties
     if HasIsAbCategory( category ) and IsAbCategory( category ) then
@@ -108,7 +108,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
     category := UnderlyingCapCategory( quotient_category );
     
     # test_func( alpha_1, alpha_2 ) = true if alpha_1 is congruent to alpha_2
-    test_func := TestMembershipFunctionForQuotientCategory( quotient_category );
+    test_func := CongruencyTestFunctionForQuotientCategory( quotient_category );
     
     if CanCompute( category, "IsEqualForObjects" ) then
     

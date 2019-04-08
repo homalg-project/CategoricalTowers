@@ -40,7 +40,7 @@ InstallMethod( Display,
   function( alpha )
     local test_function;
     
-    test_function := TestMembershipFunctionForQuotientCategory( CapCategory( alpha ) );
+    test_function := CongruencyTestFunctionForQuotientCategory( CapCategory( alpha ) );
     
     Print( "Quotient morphism defined by:\n\n" );
     
