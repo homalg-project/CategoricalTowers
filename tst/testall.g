@@ -4,9 +4,10 @@
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
 #
-LoadPackage( "QuotientCategoriesForCAP" );
+LoadPackage( "ModulePresentations" );;
+LoadPackage( "QuotientCategoriesForCAP" );;
 
 TestDirectory(DirectoriesPackageLibrary( "QuotientCategoriesForCAP", "tst" ),
-  rec(exitGAP := true));
+  rec(exitGAP := true, testOptions := rec(compareFunction := "uptowhitespace") ) );
 
 FORCE_QUIT_GAP(1); # if we ever get here, there was an error
