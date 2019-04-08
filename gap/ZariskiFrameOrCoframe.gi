@@ -136,6 +136,67 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
 end );
 
 ##
+InstallMethod( AffineApproximation,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local Ap, R, indets, t, R_f, C;
+    
+    if IsInitial( A ) then
+        Error( "the input A is empty\n" );
+    elif IsClosed( A ) then
+        A := Closure( A );
+        if IsObjectInZariskiFrameOrCoframeOfAnAffineVariety( A ) then
+            return A;
+        fi;
+        TryNextMethod( );
+    fi;
+    
+    A := DistinguishedLocallyClosedApproximation( A );
+    
+    if IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
+        A := AsDifference( A );
+    fi;
+    
+    Ap := A.J;
+    
+    R := UnderlyingRing( Ap );
+    
+    Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
+    
+    Ap := MatElm( Ap, 1, 1 );
+    
+    indets := Indeterminates( R );
+    
+    indets := List( indets, String );
+    
+    t := "inv_";
+    
+    R_f := R * [ t ];
+    
+    t := t / R_f;
+    Ap := Ap / R_f;
+    
+    A := A.I;
+    
+    C := CapCategory( A );
+    
+    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    
+    A := R_f * A;
+    
+    A := UnionOfRows( A, HomalgMatrix( [ Ap * t - 1 ], 1, 1, R_f ) );
+    
+    A := ClosedSubsetOfFiberedSpecByReducedMorphism( A );
+    
+    A!.auxiliary_indeterminate := t;
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( CanonicalObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],

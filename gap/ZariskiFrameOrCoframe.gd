@@ -68,6 +68,10 @@ DeclareAttribute( "DistinguishedLocallyClosedApproximation",
         IsConstructibleObject );
 
 #! @Arguments A
+DeclareAttribute( "AffineApproximation",
+        IsObjectInThinCategory );
+
+#! @Arguments A
 DeclareAttribute( "CanonicalObject",
         IsObjectInZariskiFrameOrCoframe );
 
