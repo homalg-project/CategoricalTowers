@@ -136,7 +136,7 @@ end );
 InstallMethod( Dimension,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
-
+        
   function( A )
     local irr;
     
@@ -154,7 +154,7 @@ end );
 InstallMethod( ViewObj,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
-
+        
   function( A )
     local I, n, j, i;
     
