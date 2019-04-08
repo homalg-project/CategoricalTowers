@@ -197,6 +197,34 @@ InstallMethod( AffineApproximation,
 end );
 
 ##
+InstallMethod( AClosedPoint,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local Ac, C, R, indets, R_f, emb;
+    
+    if IsInitial( A ) then
+        Error( "the input A is empty\n" );
+    elif IsObjectInZariskiCoframe( A ) then
+        TryNextMethod( );
+    fi;
+    
+    Ac := Closure( A );
+    
+    C := CapCategory( Ac );
+    
+    R := UnderlyingRing( Ac );
+    
+    A := AffineApproximation( A );
+    
+    A := AClosedPoint( A );
+    
+    return ImageClosureOfProjection( A );
+    
+end );
+
+##
 InstallMethod( CanonicalObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],

@@ -221,6 +221,26 @@ InstallMethod( FactorizedObject,
 end );
 
 ##
+InstallMethod( AClosedPoint,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
+        
+  function( A )
+    local C;
+    
+    C := CapCategory( A );
+    
+    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    
+    A := AMaximalIdealContaining( A );
+    
+    A := C!.ConstructorByReducedMorphism( A );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( Dimension,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
