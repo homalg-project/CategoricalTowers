@@ -22,9 +22,15 @@ InstallMethod( QuotientCategory,
   function( category, membership_function )
     local name, quotient_category, to_be_finalized;
     
-    name := Name( category );
+    name := ValueOption( "Name" );
     
-    name := Concatenation( "The Quotient category of ", name, " by ", NameFunction( membership_function ) );
+    if name = fail then
+      
+      name := Name( category );
+      
+      name := Concatenation( "The quotient category of ", name, " by ", NameFunction( membership_function ) );
+      
+    fi;
     
     quotient_category := CreateCapCategory( name );
     
