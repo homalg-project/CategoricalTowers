@@ -23,6 +23,7 @@ AutoDoc(
                                "LoadPackage( \"GaussForHomalg\" );",
                              ],
                            ),
+            extract_examples := true,
             )
 );
 
