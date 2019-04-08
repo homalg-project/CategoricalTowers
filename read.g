@@ -4,3 +4,5 @@
 # Reading the implementation part of the package.
 #
 ReadPackage( "QuotientCategoriesForCAP", "gap/QuotientCategoriesForCAP.gi");
+ReadPackage( "QuotientCategoriesForCAP", "gap/QuotientCategoriesObjects.gi");
+ReadPackage( "QuotientCategoriesForCAP", "gap/QuotientCategoriesMorphisms.gi");
