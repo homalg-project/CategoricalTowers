@@ -12,13 +12,14 @@ clean:
 	(cd doc ; ./clean)
 
 test:	doc
-	gap maketest.g
+	gap tst/testall.g
 
 test-tabs:
 	! grep -RP "\t" examples/ gap/
 
 test-with-coverage: doc
-	gap --cover stats maketest.g | perl -pe 'END { exit $$status } $$status=1 if /Expected output/;'
+	#gap --cover stats maketest.g | perl -pe 'END { exit $$status } $$status=1 if /Expected output/;'
+	gap --cover stats tst/testall.g
 	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap
 
 test-spacing:
