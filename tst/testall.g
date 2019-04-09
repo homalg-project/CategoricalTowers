@@ -6,6 +6,7 @@
 #
 LoadPackage( "Bialgebroids" );
 
+LoadPackage( "GaussForHomalg" );
 TestDirectory(DirectoriesPackageLibrary( "Bialgebroids", "tst" ),
   rec(exitGAP := true));
 
