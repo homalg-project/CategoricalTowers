@@ -7,6 +7,7 @@
 LoadPackage( "Bialgebroids" );
 
 LoadPackage( "GaussForHomalg" );
+HOMALG_IO.show_banners := false;
 TestDirectory(DirectoriesPackageLibrary( "Bialgebroids", "tst" ),
   rec(exitGAP := true));
 
