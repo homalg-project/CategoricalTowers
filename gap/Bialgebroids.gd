@@ -182,6 +182,13 @@ DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsCapCategoryMorphismInAlgebroid );
 
 #! @Description
+#!  The underlying algebra of an algebroid.
+#! @Arguments A
+#! @Returns a ring
+DeclareAttribute( "UnderlyingAlgebra",
+        IsAlgebroid );
+
+#! @Description
 #!  The <A>n</A>-th power of the algebroid <A>A</A>.
 #!  Admissible values for <A>n</A> are $0,1,2$.
 #! @Arguments A, n

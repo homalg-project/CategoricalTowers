@@ -740,6 +740,7 @@ InstallMethod( Algebroid,
     
     SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
+    SetUnderlyingAlgebra( A, domain );
     
     if over_Z then
         SetCommutativeRingOfLinearCategory( A, HomalgRingOfIntegers() );
