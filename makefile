@@ -15,7 +15,7 @@ test:	doc
 	gap tst/testall.g
 
 test-tabs:
-	! grep -RP "\t" examples/ gap/
+	! grep -RP "\t" examples/*.g gap/*.gi gap/*.gd
 
 test-with-coverage: doc
 	#gap --cover stats maketest.g | perl -pe 'END { exit $$status } $$status=1 if /Expected output/;'
