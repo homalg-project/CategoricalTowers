@@ -216,7 +216,7 @@ InstallMethod( ViewObj,
     ViewObj( irr[1] : component_counter := 1 );
     
     for i in [ 2 .. Length( irr ) ] do
-        Print( " ⋃ " );
+        Print( " ∪ " );
         ViewObj( irr[i] : component_counter := i );
     od;
     
@@ -255,7 +255,7 @@ InstallMethod( DisplayString,
     str := Concatenation( "[ ", DisplayString( irr[1] ) );
     
     for C in irr{[ 2 .. Length( irr ) ]} do
-        str := Concatenation( str, " ⋃ ", DisplayString( C ) );
+        str := Concatenation( str, " ∪ ", DisplayString( C ) );
     od;
     
     return Concatenation( str, " ]" );
