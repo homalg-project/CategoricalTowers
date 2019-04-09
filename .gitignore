@@ -22,6 +22,8 @@
 /doc/*.toc
 /doc/manual.pdf
 
+/tst/*01.tst
+
 .deps/
 .dirstamp
 .libs/
