@@ -15,6 +15,9 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/Locales.git
+          git clone --depth 1 https://github.com/oysteins/InfiniteLists.git
+          git clone --depth 1 https://github.com/homalg-project/ComplexesForCAP.git
+          git clone --depth 1 https://github.com/oysteins/QPA2.git
           cd ZariskiFrames
           echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
           echo "SetInfoLevel(InfoPackageLoading, 3);" > ~/.gap/gaprc
