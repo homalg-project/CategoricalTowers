@@ -373,8 +373,9 @@ InstallMethod( IsClosedSubobject,
     
     H := CapCategory( A )!.UnderlyingCategory;
     
-    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return ForAll( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), IsClosed );
+    if ( HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) ) or
+       ( HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) ) then
+        return ForAll( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), IsClosedSubobject );
     fi;
     
     TryNextMethod( );

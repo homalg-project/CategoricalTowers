@@ -339,6 +339,8 @@ InstallMethod( IsClosedSubobject,
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
         return IsInitial( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
+    elif HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) then
+        return IsTerminal( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[1] );
     fi;
     
     TryNextMethod( );
