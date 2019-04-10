@@ -76,6 +76,28 @@ end );
 
 ##
 InstallMethod( IsSubset,
+        "for an object in a Zariski frame and an object in a Zariski coframe",
+        [ IsObjectInZariskiFrame, IsObjectInZariskiCoframe ],
+        
+  function( A, B )
+    
+    return IsHomSetInhabited( B, AsDifferenceOfClosed( A ) );
+    
+end );
+
+##
+InstallMethod( IsSubset,
+        "for an object in a Zariski coframe and an object in a Zariski frame",
+        [ IsObjectInZariskiCoframe, IsObjectInZariskiFrame ],
+        
+  function( A, B )
+    
+    return IsHomSetInhabited( AsDifferenceOfClosed( B ), A );
+    
+end );
+
+##
+InstallMethod( IsSubset,
         "for two objects in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe, IsObjectInZariskiFrameOrCoframe ],
         
