@@ -202,6 +202,24 @@ DeclareOperation( "\*",
 DeclareOperation("TensorProductOnObjects",
         [ IsAlgebroid, IsAlgebroid ] );
 
+DeclareOperation( "LeftUnitorInverseAsFunctor",
+        [ IsAlgebroid ] );
+
+DeclareOperation( "LeftUnitorAsFunctor",
+        [ IsAlgebroid ] );
+
+DeclareOperation( "RightUnitorInverseAsFunctor",
+        [ IsAlgebroid ] );
+
+DeclareOperation( "RightUnitorAsFunctor",
+        [ IsAlgebroid ] );
+
+DeclareOperation( "AssociatorLeftToRightWithGivenTensorProductsAsFunctor",
+        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ] );
+
+DeclareOperation( "AssociatorRightToLeftWithGivenTensorProductsAsFunctor",
+        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ] );
+
 #! @Description
 #!  Construct the canonical twist from <A>A</A> $\otimes$ <A>B</A> to <A>B</A> $\otimes$ <A>A</A>
 #! @Arguments A, B
