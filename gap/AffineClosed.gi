@@ -348,3 +348,23 @@ InstallMethod( DegreeAttr,
     return AffineDegree( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
     
 end );
+
+##
+InstallMethod( AClosedSingleton,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
+        
+  function( A )
+    local C;
+    
+    C := CapCategory( A );
+    
+    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    
+    A := AMaximalIdealContaining( A );
+    
+    A := C!.ConstructorByReducedMorphism( A );
+    
+    return A;
+    
+end );
