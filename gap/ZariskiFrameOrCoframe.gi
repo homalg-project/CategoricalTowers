@@ -219,7 +219,7 @@ InstallMethod( AffineApproximation,
 end );
 
 ##
-InstallMethod( AClosedPoint,
+InstallMethod( AClosedSingleton,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
@@ -240,7 +240,7 @@ InstallMethod( AClosedPoint,
     
     A := AffineApproximation( A );
     
-    A := AClosedPoint( A );
+    A := AClosedSingleton( A );
     
     return ImageClosureOfProjection( A );
     

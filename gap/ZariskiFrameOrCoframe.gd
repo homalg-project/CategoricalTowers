@@ -106,8 +106,8 @@ DeclareOperation( "IsSubset",
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
 #!  Otherwise a subset consisting of single closed point of <A>A</A> is returned.
 #! @Arguments A
-#! @Returns a GAP object
-DeclareOperation( "AClosedPoint",
+#! @Returns an object in a Zariski coframe
+DeclareOperation( "AClosedSingleton",
         [ IsObjectInThinCategory ] );
 
 # Tools

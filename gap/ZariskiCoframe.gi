@@ -221,7 +221,7 @@ InstallMethod( FactorizedObject,
 end );
 
 ##
-InstallMethod( AClosedPoint,
+InstallMethod( AClosedSingleton,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
         
