@@ -320,3 +320,14 @@ InstallMethod( DimensionOfComplement,
     return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ) - 1;
     
 end );
+
+##
+InstallMethod( DegreeOfComplement,
+        "for an object in a Zariski frame of a projective variety",
+        [ IsObjectInZariskiFrameOfAProjectiveVariety ],
+        
+  function( A )
+    
+    return ProjectiveDegree( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+end );

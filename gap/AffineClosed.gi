@@ -337,3 +337,14 @@ InstallMethod( Dimension,
     return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
     
 end );
+
+##
+InstallMethod( DegreeAttr,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+
+  function( A )
+    
+    return AffineDegree( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+end );

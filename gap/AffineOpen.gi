@@ -306,3 +306,14 @@ InstallMethod( DimensionOfComplement,
     return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
     
 end );
+
+##
+InstallMethod( DegreeOfComplement,
+        "for an object in a Zariski frame of an affine variety",
+        [ IsObjectInZariskiFrameOfAnAffineVariety ],
+
+  function( A )
+    
+    return AffineDegree( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+end );

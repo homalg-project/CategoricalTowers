@@ -40,6 +40,18 @@ DeclareAttribute( "Dimension",
         IsObjectInZariskiCoframe );
 
 #! @Description
+#!  The degree of <A>A</A>.
+#! @Arguments A
+#! @Returns an integer
+if false then
+DeclareOperation( "Degree",
+        [ IsObjectInZariskiCoframe ] );
+fi;
+
+DeclareAttribute( "DegreeAttr",
+        IsObjectInZariskiCoframe );
+
+#! @Description
 #!  The factored object of <A>A</A>.
 #! @Arguments A
 #! @Returns an object in a Zariski coframe.

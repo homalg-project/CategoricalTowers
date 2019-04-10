@@ -29,6 +29,14 @@ DeclareCategory( "IsMorphismInZariskiFrame",
 DeclareAttribute( "DimensionOfComplement",
         IsObjectInZariskiFrame );
 
+
+#! @Description
+#!  The degree of the closed complement of <A>A</A>.
+#! @Arguments A
+#! @Returns an integer
+DeclareAttribute( "DegreeOfComplement",
+        IsObjectInZariskiFrame );
+
 #!
 DeclareAttribute( "ComplementAsClosedSubset",
         IsObjectInZariskiFrame );

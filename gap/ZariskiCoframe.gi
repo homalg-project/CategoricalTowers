@@ -48,6 +48,13 @@ InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCateg
 end );
 
 ##
+InstallMethod( Degree,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  DegreeAttr );
+
+##
 InstallMethod( LocallyClosedApproximation,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
