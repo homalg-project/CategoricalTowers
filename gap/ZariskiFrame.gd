@@ -22,7 +22,10 @@ DeclareCategory( "IsMorphismInZariskiFrame",
 
 #! @Section Attributes
 
-#!
+#! @Description
+#!  The dimension of the closed complement of <A>A</A>.
+#! @Arguments A
+#! @Returns an integer
 DeclareAttribute( "DimensionOfComplement",
         IsObjectInZariskiFrame );
 
