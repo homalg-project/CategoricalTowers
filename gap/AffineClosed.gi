@@ -368,3 +368,41 @@ InstallMethod( AClosedSingleton,
     return A;
     
 end );
+
+##
+InstallMethod( AClosedPoint,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
+        
+  function( A )
+    local R, indets, matrix, point, zero_rows, new_indets, S, map, rel;
+    
+    R := UnderlyingRing( A );
+    
+    A := AClosedSingleton( A );
+    
+    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    
+    indets := Indeterminates( R );
+    
+    matrix := HomalgMatrix( indets, Length( indets ), 1, R );
+    
+    point := DecideZero( matrix, A );
+    
+    zero_rows := ZeroRows( matrix - point );
+    
+    new_indets := indets{zero_rows};
+    
+    S := CoefficientsRing( R ) * List( new_indets, String );
+    
+    if not zero_rows = [ ] then
+        map := RingMap( new_indets, S, R / A );
+        rel := GeneratorsOfKernelOfRingMap( map );
+        S := S / rel;
+    fi;
+    
+    point := S * point;
+    
+    return point;
+    
+end );

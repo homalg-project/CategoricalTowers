@@ -110,6 +110,14 @@ DeclareOperation( "IsSubset",
 DeclareOperation( "AClosedSingleton",
         [ IsObjectInThinCategory ] );
 
+#! @Description
+#!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
+#!  Otherwise a single closed point of <A>A</A> is returned.
+#! @Arguments A
+#! @Returns a homalg matrix
+DeclareOperation( "AClosedPoint",
+        [ IsObjectInThinCategory ] );
+
 # Tools
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows" );
 

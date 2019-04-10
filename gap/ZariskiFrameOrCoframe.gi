@@ -247,6 +247,17 @@ InstallMethod( AClosedSingleton,
 end );
 
 ##
+InstallMethod( AClosedPoint,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    
+    return AClosedPoint( AClosedSingleton( A ) );
+    
+end );
+
+##
 InstallMethod( CanonicalObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
