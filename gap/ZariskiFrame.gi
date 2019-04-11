@@ -84,6 +84,28 @@ InstallMethod( AsDifferenceOfClosed,
 end );
 
 ##
+InstallMethod( \-,
+        "for two objects in a Zariski frame",
+        [ IsObjectInZariskiFrame, IsObjectInZariskiFrame ],
+        
+  function( A, B )
+    
+    return ComplementAsClosedSubset( B ) - ComplementAsClosedSubset( A );
+    
+end );
+
+##
+InstallMethod( \-,
+        "for an object in a Zariski frame and an object in a Zariski coframe",
+        [ IsObjectInZariskiFrame, IsObjectInZariskiCoframe ],
+        
+  function( A, B )
+    
+    return AsDifferenceOfClosed( A ) - B;
+    
+end );
+
+##
 InstallMethod( Closure,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
