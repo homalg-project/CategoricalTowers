@@ -84,7 +84,7 @@ IsEqualForMorphisms( ApplyFunctor(
     PreCompose( [ antipode, antipode, antipode, antipode ] ), H.x ), H.x );
 #! true
 
-IsCocommutative(B);
+IsCocommutative(H);
 #! false
 
 
