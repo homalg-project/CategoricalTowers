@@ -116,6 +116,8 @@ DeclareOperation( "IsSubset",
 #! @Returns an object in a Zariski coframe
 DeclareOperation( "AClosedSingleton",
         [ IsObjectInThinCategory ] );
+#! @InsertSystem ClosedSubsetOfSpecQ
+#! @InsertSystem OpenSubsetOfSpecQ
 
 #! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.

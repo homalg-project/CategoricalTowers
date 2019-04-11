@@ -3,7 +3,7 @@
 LoadPackage( "ZariskiFrames" );
 
 #! @Example
-ZZ := HomalgRingOfIntegers( );
+ZZ := HomalgRingOfIntegersInSingular( );
 #! Z
 ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( ZZ );
 #! The frame of Zariski open subsets of the affine spectrum of Z
@@ -68,7 +68,7 @@ Coproduct( A, C ) = T;
 AC := DirectProduct( A, C );
 #! D_{Z}( <...> )
 Display( AC );
-#! D( <-6> )
+#! D( <6> )
 StandardMorphismOfUnderlyingCategory( AC );
 #! <A morphism in Rows( Z )>
 Display( AC );
@@ -138,5 +138,15 @@ IsIsomorphism( ht );
 IsWellDefined( CartesianPreComposeMorphism( A, C, D ) );
 #! true
 IsIsomorphism( CartesianPreComposeMorphism( A, C, D ) );
+#! false
+p := AClosedSingleton( D );
+#! V_{Z}( <...> )
+Display( p );
+#! V( <5> )
+q := AClosedSingleton( D - p );
+#! V_{Z}( <...> )
+Display( q );
+#! V( <7> )
+p + q = D;
 #! false
 #! @EndExample

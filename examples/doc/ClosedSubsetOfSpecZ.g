@@ -97,4 +97,14 @@ CoexponentialOnObjects( C, D ) = I;
 #! true
 CoexponentialOnObjects( D, C ) = B;
 #! true
+p := AClosedSingleton( D );
+#! V_{Z}( <...> )
+Display( p );
+#! V( <2> )
+q := AClosedSingleton( D - p );
+#! V_{Z}( <...> )
+Display( q );
+#! V( <3> )
+p + q = D;
+#! true
 #! @EndExample
