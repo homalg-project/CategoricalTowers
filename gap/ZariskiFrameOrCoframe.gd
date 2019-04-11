@@ -48,6 +48,13 @@ DeclareAttribute( "ReducedMorphismOfUnderlyingCategory",
 DeclareAttribute( "StandardMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 
+#! @Description
+#!  The closure of <A>A</A>.
+#! @Arguments A
+#! @Returns an object in the Zariski coframe
+DeclareAttribute( "Closure",
+        IsObjectInZariskiFrameOrCoframe );
+
 #! @Arguments A
 DeclareAttribute( "LocallyClosedApproximation",
         IsObjectInZariskiFrameOrCoframe );

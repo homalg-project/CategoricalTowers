@@ -84,6 +84,17 @@ InstallMethod( AsDifferenceOfClosed,
 end );
 
 ##
+InstallMethod( Closure,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+        
+  function( A )
+    
+    return Closure( AsDifferenceOfClosed( A ) );
+    
+end );
+
+##
 InstallMethod( LocallyClosedApproximation,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],

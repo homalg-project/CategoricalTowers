@@ -55,6 +55,13 @@ InstallMethod( Degree,
   DegreeAttr );
 
 ##
+InstallMethod( Closure,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  IdFunc );
+
+##
 InstallMethod( LocallyClosedApproximation,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
