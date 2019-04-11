@@ -1,4 +1,4 @@
-#! @System OpenSubsetOfSpec
+#! @System OpenSubsetOfSpecZ
 
 LoadPackage( "ZariskiFrames" );
 

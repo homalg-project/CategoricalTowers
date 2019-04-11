@@ -57,7 +57,7 @@ DeclareOperation( "ClosedSubsetOfSpec",
 #! @Group ClosedSubsetOfSpec
 DeclareOperation( "ClosedSubsetOfSpec",
         [ IsHomalgRingElement ] );
-#! @InsertSystem ClosedSubsetOfSpec
+#! @InsertSystem ClosedSubsetOfSpecZ
 
 #! @Description
 #!  <C>ClosedSubsetOfSpecByReducedMorphism</C> assumes that the image is a radical ideal.
