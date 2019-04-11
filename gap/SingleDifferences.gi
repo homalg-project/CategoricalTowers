@@ -126,11 +126,17 @@ InstallMethod( \-,
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
   function( A, B )
-    local C, D;
+    local H, D, C;
+    
+    H := CapCategory( A );
+    
+    if not IsIdenticalObj( H, CapCategory( B ) ) then
+        Error( "the arguments A and B are in differenct categories\n" );
+    fi;
+    
+    D := MeetSemilatticeOfDifferences( H );
     
     C := rec( );
-    
-    D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
     ObjectifyObjectForCAPWithAttributes( C, D,
             PrePairInUnderlyingLattice, [ A, B ],

@@ -95,11 +95,22 @@ end );
 ##
 InstallGlobalFunction( AsFormalMultipleDifference,
   function( arg )
-    local A, D;
+    local H, D, A;
+    
+    H := CapCategory( arg[1] );
+    
+    if not ForAll( arg, IsObjectInMeetSemilatticeOfSingleDifferences ) then
+        Error( "not all arguments are formal single differences\n" );
+    elif not ForAll( arg{[ 2.. Length( arg ) ]},
+            d -> IsIdenticalObj( CapCategory( d ), H ) ) then
+        Error( "not all arguments lie in the same category\n" );
+    fi;
+    
+    H := CapCategory( PairInUnderlyingLattice( arg[1] )[1] );
+    
+    D := MeetSemilatticeOfMultipleDifferences( H );
     
     A := rec( );
-    
-    D := MeetSemilatticeOfMultipleDifferences( CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, D,
             ListOfPreObjectsInMeetSemilatticeOfDifferences, arg,
