@@ -108,6 +108,28 @@ InstallMethod( IsSubset,
 end );
 
 ##
+InstallMethod( \=,
+        "for an object in a Zariski frame and an object in a Zariski coframe",
+        [ IsObjectInZariskiFrame, IsObjectInZariskiCoframe ],
+        
+  function( A, B )
+    
+    return AsDifferenceOfClosed( A ) = B;
+    
+end );
+
+##
+InstallMethod( \=,
+        "for an object in a Zariski coframe and an object in a Zariski frame",
+        [ IsObjectInZariskiCoframe, IsObjectInZariskiFrame ],
+        
+  function( A, B )
+    
+    return A = AsDifferenceOfClosed( B );
+    
+end );
+
+##
 InstallMethod( IsClosed,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
