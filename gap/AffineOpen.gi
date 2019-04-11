@@ -292,7 +292,7 @@ InstallMethod( IsClosedSubobject,
 
   function( A )
     
-    return IsOpen( -A );
+    return IsClosed( AsDifferenceOfClosed( A ) );
     
 end );
 
