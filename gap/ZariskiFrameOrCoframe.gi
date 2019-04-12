@@ -323,6 +323,17 @@ InstallMethod( IteratorOfClosedSingletons,
 end );
 
 ##
+InstallMethod( RingMorphismOfAClosedPoint,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    
+    return RingMorphismOfAClosedPoint( AClosedSingleton( A ) );
+    
+end );
+
+##
 InstallMethod( AClosedPoint,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],

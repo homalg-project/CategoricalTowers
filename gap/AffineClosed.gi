@@ -370,7 +370,7 @@ InstallMethod( AClosedSingleton,
 end );
 
 ##
-InstallMethod( AClosedPoint,
+InstallMethod( RingMorphismOfAClosedPoint,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
         
@@ -396,13 +396,16 @@ InstallMethod( AClosedPoint,
     S := CoefficientsRing( R ) * List( new_indets, String );
     
     if not zero_rows = [ ] then
-        map := RingMap( new_indets, S, R / A );
+        R := R / A;
+        map := RingMap( new_indets, S, R );
         rel := GeneratorsOfKernelOfRingMap( map );
         S := S / rel;
     fi;
     
     point := S * point;
     
-    return point;
+    map := RingMap( point, R, S );
+    
+    return map;
     
 end );

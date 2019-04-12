@@ -253,6 +253,17 @@ InstallMethod( Dimension,
 end );
 
 ##
+InstallMethod( AClosedPoint,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( A )
+    
+    return ImagesOfRingMapAsColumnMatrix( RingMorphismOfAClosedPoint( A ) );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],

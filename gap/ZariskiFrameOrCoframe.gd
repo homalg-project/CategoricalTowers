@@ -126,6 +126,14 @@ DeclareOperation( "IteratorOfClosedSingletons",
 
 #! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
+#!  Otherwise a .
+#! @Arguments A
+#! @Returns a homalg matrix
+DeclareOperation( "RingMorphismOfAClosedPoint",
+        [ IsObjectInThinCategory ] );
+
+#! @Description
+#!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
 #!  Otherwise a single closed point of <A>A</A> is returned.
 #! @Arguments A
 #! @Returns a homalg matrix
