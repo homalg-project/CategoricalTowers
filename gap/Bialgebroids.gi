@@ -2029,6 +2029,11 @@ InstallMethod( IsCoassociative,
     local B_as_category, comult_as_functor, comult, comult_times_id, id_times_comult, comult_times_id_after_comult, id_times_comult_after_comult;
 
     B_as_category := AsCapCategory( B );
+
+    if not HasComultiplication( B_as_category ) then
+      Error( "algebroid does not have a comultiplication" );
+    fi;
+
     comult_as_functor := Comultiplication(B_as_category);
     comult := CategoryOfAlgebroidsMorphism( comult_as_functor );
 
