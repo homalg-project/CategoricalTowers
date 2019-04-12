@@ -375,7 +375,7 @@ InstallMethod( RingMorphismOfAClosedPoint,
         [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
         
   function( A )
-    local R, indets, matrix, point, zero_rows, new_indets, S, map, rel;
+    local R, indets, matrix, point, zero_rows, new_indets, k, S, map, rel, char;
     
     R := UnderlyingRing( A );
     
@@ -393,12 +393,29 @@ InstallMethod( RingMorphismOfAClosedPoint,
     
     new_indets := indets{zero_rows};
     
-    S := CoefficientsRing( R ) * List( new_indets, String );
+    k := CoefficientsRing( R );
+    
+    S := k * List( new_indets, String );
     
     if not zero_rows = [ ] then
         R := R / A;
         map := RingMap( new_indets, S, R );
         rel := GeneratorsOfKernelOfRingMap( map );
+        if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
+            char := Eliminate( rel );
+            if not IsZero( char ) then
+                char := EntriesOfHomalgMatrix( char );
+                char := List( char, a -> EvalString( String( a ) ) );
+                char := Gcd( char );
+                if not IsPrime( char ) then
+                    Error( "a closed point cannot be defined over a mixed characteristic, here ", char, "\n" );
+                fi;
+                k := HomalgRingOfIntegersInUnderlyingCAS( char, k );
+                S := k * List( new_indets, String );
+                rel := S * rel;
+                rel := BasisOfRows( rel );
+            fi;
+        fi;
         S := S / rel;
     fi;
     
