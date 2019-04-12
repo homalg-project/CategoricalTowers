@@ -44,8 +44,6 @@ InstallMethodWithCache( CategoryOfAlgebroids,
     
     AddMorphismRepresentation( category, IsCategoryOfAlgebroidsMorphism );
 
-    DisableAddForCategoricalOperations( category );
-    
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS( category );
     
     Finalize( category );
