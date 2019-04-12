@@ -2106,8 +2106,20 @@ InstallMethod( IsCounitary,
     local B2, I, comult, counit, id, comp1, comp2;
     B2 := TensorProductOnObjects( B, B );
     I := TensorUnit( CapCategory( B ) );
-    comult := CategoryOfAlgebroidsMorphism( B, Comultiplication( AsCapCategory( B ) ), B2 );
-    counit := CategoryOfAlgebroidsMorphism( B, Counit( AsCapCategory( B ) ), I);
+    
+    B_as_category := AsCapCategory( B );
+    
+    if not HasComultiplication( B_as_category ) then
+      Error( "algebroid does not have a comultiplication" );
+    fi;
+    
+    comult := CategoryOfAlgebroidsMorphism( B, Comultiplication( B_as_category ), B2 );
+    
+    if not HasCounit( B_as_category ) then
+      Error( "algebroid does not have a counit" );
+    fi;
+    
+    counit := CategoryOfAlgebroidsMorphism( B, Counit( B_as_category ), I);
     
     id := IdentityMorphism( B );
     comp1 := PreCompose( [ comult, TensorProductOnMorphisms( counit, id ), LeftUnitor( B ) ] );
