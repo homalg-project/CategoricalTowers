@@ -345,6 +345,17 @@ InstallMethod( AClosedPoint,
 end );
 
 ##
+InstallMethod( AClosedPoint,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory and HasParametrizedObject ],
+        
+  function( A )
+    
+    return Pullback( RingMorphismOfAClosedPoint( A ), ParametrizedObject( A ) );
+    
+end );
+
+##
 InstallMethod( CanonicalObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
