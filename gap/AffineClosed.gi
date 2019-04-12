@@ -375,19 +375,20 @@ InstallMethod( RingMorphismOfAClosedPoint,
         [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
         
   function( A )
-    local R, indets, matrix, point, zero_rows, new_indets, k, S, map, rel, char;
+    local R, singleton, s, indets, matrix, point, zero_rows, new_indets,
+          k, S, map, rel, char;
     
     R := UnderlyingRing( A );
     
-    A := AClosedSingleton( A );
+    singleton := AClosedSingleton( A );
     
-    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    s := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( singleton ) );
     
     indets := Indeterminates( R );
     
     matrix := HomalgMatrix( indets, Length( indets ), 1, R );
     
-    point := DecideZero( matrix, A );
+    point := DecideZero( matrix, s );
     
     zero_rows := ZeroRows( matrix - point );
     
@@ -398,8 +399,7 @@ InstallMethod( RingMorphismOfAClosedPoint,
     S := k * List( new_indets, String );
     
     if not zero_rows = [ ] then
-        R := R / A;
-        map := RingMap( new_indets, S, R );
+        map := RingMap( new_indets, S, R / s );
         rel := GeneratorsOfKernelOfRingMap( map );
         if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
             char := Eliminate( rel );
@@ -421,7 +421,13 @@ InstallMethod( RingMorphismOfAClosedPoint,
     
     point := S * point;
     
-    map := RingMap( point, R, S );
+    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    
+    map := RingMap( point, R / A, S );
+    
+    SetIsMorphism( map, true );
+    
+    map!.singleton := singleton;
     
     return map;
     
