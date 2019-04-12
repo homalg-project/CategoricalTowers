@@ -23,15 +23,17 @@ DeclareCategory( "IsMorphismInZariskiFrameOrCoframeOfAnAffineVariety",
 #! @Section Operatoins
 
 #! @Description
-#!  Construct a quasi-affine set defined set <A>eqs</A> of equations
+#!  Construct a distinguished quasi-affine set defined set <A>eqs</A> of equations
 #!  and the set <A>ineqs</A> of inequations.
+#!  A quasi-affine set is called distinguished if it is a difference of an affine set
+#!  and a hypersurface (or, equivalently, hypersurfaces).
 #! @Arguments eqs, ineqs
 #! @Returns an object in a meet-semilattice of formal multiple differences
-#! @Group QuasiAffineSet
-DeclareOperation( "QuasiAffineSet",
+#! @Group DistinguishedQuasiAffineSet
+DeclareOperation( "DistinguishedQuasiAffineSet",
         [ IsList, IsList ] );
 
 #! @Arguments eqs_ineqs
-#! @Group QuasiAffineSet
-DeclareOperation( "QuasiAffineSet",
+#! @Group DistinguishedQuasiAffineSet
+DeclareOperation( "DistinguishedQuasiAffineSet",
         [ IsList ] );

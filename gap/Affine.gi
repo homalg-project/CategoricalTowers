@@ -19,7 +19,7 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( QuasiAffineSet,
+InstallMethod( DistinguishedQuasiAffineSet,
         "for two lists",
         [ IsList, IsList ],
 
@@ -45,12 +45,12 @@ InstallMethod( QuasiAffineSet,
 end );
 
 ##
-InstallMethod( QuasiAffineSet,
+InstallMethod( DistinguishedQuasiAffineSet,
         "for a list",
         [ IsList ],
 
   function( eqs_ineqs )
     
-    return CallFuncList( QuasiAffineSet, eqs_ineqs );
+    return CallFuncList( DistinguishedQuasiAffineSet, eqs_ineqs );
     
 end );
