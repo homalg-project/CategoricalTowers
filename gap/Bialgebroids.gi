@@ -857,9 +857,9 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
     local category, source, range, category_of_algebroids_morphism;
     
 
-    Assert( 0, CapCategory( s ) = CapCategory( r ) );
-    Assert( 0, CapCategory( r ) = CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Range( morphism ) ) ) ) );
-    Assert( 0, CapCategory( s ) = CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Source( morphism ) ) ) ) );
+    Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( r ) ) );
+    Assert( 0, IsIdenticalObj( CapCategory( r ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Range( morphism ) ) ) ) ) );
+    Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Source( morphism ) ) ) ) ) );
 
     category := CapCategory(s);
 
