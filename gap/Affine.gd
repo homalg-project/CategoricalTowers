@@ -33,6 +33,11 @@ DeclareCategory( "IsMorphismInZariskiFrameOrCoframeOfAnAffineVariety",
 DeclareOperation( "DistinguishedQuasiAffineSet",
         [ IsList, IsList ] );
 
+#! @Arguments eqs, ineqs
+#! @Group DistinguishedQuasiAffineSet
+DeclareOperation( "DistinguishedQuasiAffineSet",
+        [ IsList, IsList, IsObject ] );
+
 #! @Arguments eqs_ineqs
 #! @Group DistinguishedQuasiAffineSet
 DeclareOperation( "DistinguishedQuasiAffineSet",

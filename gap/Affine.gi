@@ -46,6 +46,22 @@ end );
 
 ##
 InstallMethod( DistinguishedQuasiAffineSet,
+        "for two lists and an object",
+        [ IsList, IsList, IsObject ],
+
+  function( eqs, ineqs, obj )
+    local V;
+    
+    V := DistinguishedQuasiAffineSet( eqs, ineqs );
+    
+    SetParametrizedObject( V, obj );
+    
+    return V;
+    
+end );
+
+##
+InstallMethod( DistinguishedQuasiAffineSet,
         "for a list",
         [ IsList ],
 
