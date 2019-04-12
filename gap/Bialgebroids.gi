@@ -2103,7 +2103,7 @@ InstallMethod( IsCounitary,
         "for a commutative bialgebra",
         [ IsCategoryOfAlgebroidsObject ],
   function( B )
-    local B2, I, comult, counit, id, comp1, comp2;
+    local B2, I, B_as_category, comult, counit, id, comp1, comp2;
     B2 := TensorProductOnObjects( B, B );
     I := TensorUnit( CapCategory( B ) );
     
