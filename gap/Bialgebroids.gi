@@ -241,7 +241,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
         morphisms_in_source1 := SetOfGeneratingMorphisms( source1 );
         
         for m in morphisms_in_source1 do
-            if not IsEqualForMorphisms( ApplyFunctor( morphism_1_underlying_functor, m ),
+            if not IsCongruentForMorphisms( ApplyFunctor( morphism_1_underlying_functor, m ),
                                         ApplyFunctor( morphism_2_underlying_functor, m ) ) then
                 return false;
             fi;
