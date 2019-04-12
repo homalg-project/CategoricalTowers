@@ -152,6 +152,14 @@ DeclareOperation( "RingMorphismOfAClosedPoint",
 DeclareOperation( "AClosedPoint",
         [ IsObjectInThinCategory ] );
 
+#! @Description
+#!  Returns a pseudo-iterator (without repetition) of closed points of <A>A</A>.
+#! @Arguments A
+#! @Returns an iterator
+DeclareOperation( "PseudoIteratorOfClosedPoints",
+        [ IsObjectInThinCategory ] );
+#! @InsertSystem PseudoIteratorOfClosedPoints
+
 # Tools
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows" );
 

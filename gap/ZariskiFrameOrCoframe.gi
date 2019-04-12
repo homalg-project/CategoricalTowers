@@ -340,7 +340,7 @@ InstallMethod( RingMorphismOfAClosedPoint,
     k := CoefficientsRing( R );
     
     if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
-        char := Eliminate( rel );
+        char := Eliminate( s );
         if IsZero( char ) then
             Error( "a closed point in a variety over Z cannot be defined over Q\n" );
         else
@@ -408,6 +408,73 @@ InstallMethod( AClosedPoint,
   function( A )
     
     return Pullback( RingMorphismOfAClosedPoint( A ), ParametrizedObject( A ) );
+    
+end );
+
+##
+InstallMethod( PseudoIteratorOfClosedPoints,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local iter;
+    
+    iter := rec( variety := A );
+    
+    iter.NextIterator :=
+      function( iter )
+        local A, phi, s, p, A_s;
+        
+        A := iter!.variety;
+        
+        phi := RingMorphismOfAClosedPoint( A );
+        s := phi!.singleton;
+        
+        if HasParametrizedObject( A ) then
+            p := Pullback( phi, ParametrizedObject( A ) );
+        else
+            p := ImagesOfRingMapAsColumnMatrix( phi );
+        fi;
+        
+        A_s := A - s;
+        
+        if HasParametrizedObject( A ) then
+            SetParametrizedObject( A_s, ParametrizedObject( A ) );
+        fi;
+        
+        iter!.variety := A_s;
+        
+        return p;
+        
+    end;
+    
+    iter.IsDoneIterator :=
+      iter -> IsInitial( iter!.variety );
+    
+    iter.ViewObj :=
+      function( iter )
+        Print( "<iterator of closed singletons of " );
+        ViewObj( iter!.variety );
+        Print( ">" );
+    end;
+    
+    iter.ShallowCopy :=
+      function( iter )
+        local iter_copy;
+        
+        iter_copy := rec( );
+        
+        iter_copy!.variety := iter!.variety;
+        iter_copy!.NextIterator := iter!.NextIterator;
+        iter_copy!.IsDoneIterator := iter!.IsDoneIterator;
+        iter_copy!.ViewObj := iter!.ViewObj;
+        iter_copy!.ShallowCopy := iter!.ShallowCopy;
+        
+        return iter_copy;
+        
+    end;
+    
+    return IteratorByFunctions( iter );
     
 end );
 
