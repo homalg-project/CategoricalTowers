@@ -328,8 +328,63 @@ InstallMethod( RingMorphismOfAClosedPoint,
         [ IsObjectInThinCategory ],
         
   function( A )
+    local singleton, s, R, indets, matrix, point, zero_rows, new_indets,
+          k, S, map, rel, char;
     
-    return RingMorphismOfAClosedPoint( AClosedSingleton( A ) );
+    singleton := AClosedSingleton( A );
+    
+    s := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( singleton ) );
+    
+    R := UnderlyingRing( singleton );
+    
+    indets := Indeterminates( R );
+    
+    matrix := HomalgMatrix( indets, Length( indets ), 1, R );
+    
+    point := DecideZero( matrix, s );
+    
+    zero_rows := ZeroRows( matrix - point );
+    
+    new_indets := indets{zero_rows};
+    
+    k := CoefficientsRing( R );
+    
+    S := k * List( new_indets, String );
+    
+    if not zero_rows = [ ] then
+        map := RingMap( new_indets, S, R / s );
+        rel := GeneratorsOfKernelOfRingMap( map );
+        if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
+            char := Eliminate( rel );
+            if not IsZero( char ) then
+                char := EntriesOfHomalgMatrix( char );
+                char := List( char, a -> EvalString( String( a ) ) );
+                char := Gcd( char );
+                if not IsPrime( char ) then
+                    Error( "a closed point cannot be defined over a mixed characteristic, here ", char, "\n" );
+                fi;
+                k := HomalgRingOfIntegersInUnderlyingCAS( char, k );
+                S := k * List( new_indets, String );
+                rel := S * rel;
+                rel := BasisOfRows( rel );
+            fi;
+        fi;
+        S := S / rel;
+    fi;
+    
+    point := S * point;
+    
+    A := Closure( A );
+    
+    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    
+    map := RingMap( point, R / A, S );
+    
+    SetIsMorphism( map, true );
+    
+    map!.singleton := singleton;
+    
+    return map;
     
 end );
 
@@ -340,7 +395,7 @@ InstallMethod( AClosedPoint,
         
   function( A )
     
-    return AClosedPoint( AClosedSingleton( A ) );
+    return ImagesOfRingMapAsColumnMatrix( RingMorphismOfAClosedPoint( A ) );
     
 end );
 
