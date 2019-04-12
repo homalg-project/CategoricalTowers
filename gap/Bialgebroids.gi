@@ -288,7 +288,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
     
     AddTensorUnit( category,
         function()
-            return CategoryOfAlgebroidsObject( TrivialAlgebroid( UnderlyingRing( category ), parity ) );
+            return CategoryOfAlgebroidsObject( TrivialAlgebroid( ring, parity ) );
         end
     );
 
