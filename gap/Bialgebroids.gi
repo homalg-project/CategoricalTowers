@@ -845,8 +845,6 @@ InstallMethod( CategoryOfAlgebroidsObject,
                                          AsCapCategory, A
     );
 
-    Add( category, category_of_algebroids_object );
-    
     return category_of_algebroids_object;
     
 end );
@@ -873,8 +871,6 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
                                            AsCapFunctor, morphism
     );
 
-    Add( category, category_of_algebroids_morphism );
-    
     return category_of_algebroids_morphism;
     
 end );
