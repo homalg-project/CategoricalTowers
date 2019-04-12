@@ -269,6 +269,60 @@ InstallMethod( AClosedSingleton,
 end );
 
 ##
+InstallMethod( IteratorOfClosedSingletons,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local iter;
+    
+    iter := rec( variety := A );
+    
+    iter.NextIterator :=
+      function( iter )
+        local A, p;
+        
+        A := iter!.variety;
+        
+        p := AClosedSingleton( A );
+        
+        iter!.variety := A - p;
+        
+        return p;
+        
+    end;
+    
+    iter.IsDoneIterator :=
+      iter -> IsInitial( iter!.variety );
+    
+    iter.ViewObj :=
+      function( iter )
+        Print( "<iterator of closed singletons of " );
+        ViewObj( iter!.variety );
+        Print( ">" );
+    end;
+    
+    iter.ShallowCopy :=
+      function( iter )
+        local iter_copy;
+        
+        iter_copy := rec( );
+        
+        iter_copy!.variety := iter!.variety;
+        iter_copy!.NextIterator := iter!.NextIterator;
+        iter_copy!.IsDoneIterator := iter!.IsDoneIterator;
+        iter_copy!.ViewObj := iter!.ViewObj;
+        iter_copy!.ShallowCopy := iter!.ShallowCopy;
+        
+        return iter_copy;
+        
+    end;
+    
+    return IteratorByFunctions( iter );
+    
+end );
+
+##
 InstallMethod( AClosedPoint,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],

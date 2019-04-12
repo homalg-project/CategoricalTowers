@@ -117,6 +117,14 @@ DeclareOperation( "AClosedSingleton",
 #! @InsertSystem OpenSubsetOfSpecQ
 
 #! @Description
+#!  Returns an iterator (without repetition) of closed singletons of <A>A</A>.
+#! @Arguments A
+#! @Returns an iterator
+DeclareOperation( "IteratorOfClosedSingletons",
+        [ IsObjectInThinCategory ] );
+#! @InsertSystem ClosedSubsetOfSpecF2t
+
+#! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
 #!  Otherwise a single closed point of <A>A</A> is returned.
 #! @Arguments A
