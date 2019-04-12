@@ -61,3 +61,21 @@ InstallMethod( Dimension,
     return Dimension( Closure( A ) );
     
 end );
+
+##
+InstallMethod( DegreeAttr,
+        "for an object in a meet-semilattice of formal single/multiple differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    return DegreeAttr( Closure( A ) );
+    
+end );
+
+##
+InstallMethod( Degree,
+        "for an object in a meet-semilattice of formal single/multiple differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  DegreeAttr );

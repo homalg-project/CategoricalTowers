@@ -72,6 +72,15 @@ DeclareAttribute( "Closure",
 DeclareAttribute( "Dimension",
         IsObjectInMeetSemilatticeOfDifferences );
 
+#! @Arguments A
+if false then
+DeclareOperation( "Degree",
+        [ IsObjectInMeetSemilatticeOfDifferences ] );
+fi;
+
+DeclareAttribute( "DegreeAttr",
+        IsObjectInMeetSemilatticeOfDifferences );
+
 #! @Section Operations
 
 #! @Arguments A

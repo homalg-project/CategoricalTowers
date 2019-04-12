@@ -80,3 +80,12 @@ DeclareAttribute( "ClosureAsConstructibleObject",
 #! @Arguments A
 DeclareAttribute( "Dimension",
         IsConstructibleObject );
+
+#! @Arguments A
+if false then
+DeclareOperation( "DegreeAttr",
+        [ IsConstructibleObject ] );
+fi;
+
+DeclareAttribute( "DegreeAttr",
+        IsConstructibleObject );

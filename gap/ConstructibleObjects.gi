@@ -167,6 +167,24 @@ InstallMethod( Dimension,
 end );
 
 ##
+InstallMethod( DegreeAttr,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    return DegreeAttr( Closure( A ) );
+    
+end );
+
+##
+InstallMethod( Degree,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  DegreeAttr );
+
+##
 InstallMethod( Display,
         "for a constructible object",
         [ IsConstructibleObject ],
