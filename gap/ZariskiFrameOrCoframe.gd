@@ -56,6 +56,18 @@ DeclareAttribute( "Closure",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Arguments A
+DeclareAttribute( "ParametrizedObject",
+        IsObjectInZariskiFrameOrCoframe );
+
+#! @Arguments A
+DeclareAttribute( "ParametrizedObject",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+#! @Arguments A
+DeclareAttribute( "ParametrizedObject",
+        IsConstructibleObject );
+
+#! @Arguments A
 DeclareAttribute( "LocallyClosedApproximation",
         IsObjectInZariskiFrameOrCoframe );
 
