@@ -129,10 +129,10 @@ DeclareOperation( "AClosedSingleton",
 #! @InsertSystem OpenSubsetOfSpecQ
 
 #! @Description
-#!  Returns an iterator (without repetition) of closed singletons of <A>A</A>.
+#!  Returns a pseudo-iterator (without repetition) of closed singletons of <A>A</A>.
 #! @Arguments A
 #! @Returns an iterator
-DeclareOperation( "IteratorOfClosedSingletons",
+DeclareOperation( "PseudoIteratorOfClosedSingletons",
         [ IsObjectInThinCategory ] );
 #! @InsertSystem ClosedSubsetOfSpecF2t
 

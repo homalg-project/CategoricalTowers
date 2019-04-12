@@ -269,7 +269,7 @@ InstallMethod( AClosedSingleton,
 end );
 
 ##
-InstallMethod( IteratorOfClosedSingletons,
+InstallMethod( PseudoIteratorOfClosedSingletons,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
