@@ -832,7 +832,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
 end );
 
-InstallMethodWithCache( CategoryOfAlgebroidsObject,
+InstallMethod( CategoryOfAlgebroidsObject,
                         [ IsAlgebroid ],
                
   function( A )
