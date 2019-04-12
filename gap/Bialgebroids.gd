@@ -46,6 +46,25 @@ DeclareCategory( "IsAlgebraAsCategory",
 DeclareCategory( "IsBialgebroid",
         IsAlgebroid );
 
+#! @Description
+#! The GAP category of objects in the category
+#! of algebroids over a ring $R$.
+#! @Arguments object
+DeclareCategory( "IsCategoryOfAlgebroidsObject",
+                 IsCapCategoryObject );
+
+#! @Description
+#! The GAP category of morphisms in the category
+#! of algebroids over a ring $R$.
+#! @Arguments object
+DeclareCategory( "IsCategoryOfAlgebroidsMorphism",
+                 IsCapCategoryMorphism );
+
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS" );
+
+DeclareCategory( "IsCategoryOfAlgebroids",
+                 IsCapCategory );
+
 ####################################
 #
 #! @Section Properties
@@ -69,6 +88,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory :=  Conc
 #! @Returns true or false
 DeclareProperty( "IsCommutative",
         IsAlgebroid );
+DeclareProperty( "IsCommutative",
+        IsCategoryOfAlgebroidsObject );
 
 #! @Description
 #!  Check whether <A>B</A> is counitary.
@@ -76,6 +97,8 @@ DeclareProperty( "IsCommutative",
 #! @Returns true or false
 DeclareProperty( "IsCounitary",
         IsAlgebroid );
+DeclareProperty( "IsCounitary",
+        IsCategoryOfAlgebroidsObject );
 
 #! @Description
 #!  Check whether <A>B</A> is coassociative.
@@ -83,6 +106,8 @@ DeclareProperty( "IsCounitary",
 #! @Returns true or false
 DeclareProperty( "IsCoassociative",
         IsAlgebroid );
+DeclareProperty( "IsCoassociative",
+        IsCategoryOfAlgebroidsObject );
 
 #! @Description
 #!  Check whether the bialgebroid <A>B</A> is cocommutative.
@@ -189,6 +214,13 @@ DeclareAttribute( "UnderlyingAlgebra",
         IsAlgebroid );
 
 #! @Description
+#!  The parity of an algebroid.
+#! @Arguments A
+#! @Returns a string ("left" or "right")
+DeclareAttribute( "Parity",
+        IsAlgebroid );
+
+#! @Description
 #!  The <A>n</A>-th power of the algebroid <A>A</A>.
 #!  Admissible values for <A>n</A> are $0,1,2$.
 #! @Arguments A, n
@@ -198,6 +230,9 @@ DeclareOperation( "POW",
 
 DeclareOperation( "\*",
         [ IsAlgebroid, IsAlgebroid ] );
+
+DeclareOperation( "TrivialAlgebroid",
+        [ IsHomalgRing, IsString ] );
 
 DeclareOperation("TensorProductOnObjects",
         [ IsAlgebroid, IsAlgebroid ] );
@@ -288,6 +323,18 @@ DeclareOperation( "ApplyToQuiverAlgebraElement",
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_ALGEBROID" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID" );
+
+DeclareOperation( "CategoryOfAlgebroids",
+                  [ IsHomalgRing, IsString ] );
+
+DeclareAttribute( "CategoryOfAlgebroidsObject",
+                  IsAlgebroid );
+
+DeclareOperation( "CategoryOfAlgebroidsMorphism",
+                  [ IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject ] );
+
+DeclareOperation( "CategoryOfAlgebroidsMorphism",
+                  [ IsAlgebroidMorphism ] );
 
 #! @Description
 #!  Construct the algebroid associated to the path $R$-algebra <A>Rq</A>
@@ -387,3 +434,9 @@ DeclareOperation( "MorphismInAlgebroid",
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
         [ IsQuiverAlgebraElement ] );
+
+DeclareAttribute( "AsCapCategory",
+        IsCategoryOfAlgebroidsObject );
+
+DeclareAttribute( "AsCapFunctor",
+        IsCategoryOfAlgebroidsMorphism );

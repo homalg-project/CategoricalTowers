@@ -26,6 +26,32 @@ DeclareRepresentation( "IsCapCategoryMorphismInAlgebroidRep",
 #
 ####################################
 
+InstallMethodWithCache( CategoryOfAlgebroids,
+               [ IsHomalgRing, IsString ],
+               
+  function( homalg_ring, parity )
+    local category;
+    
+    category := CreateCapCategory( Concatenation( "(", parity, ") Algebroids( ", RingName( homalg_ring )," )"  ) );
+    
+    SetFilterObj( category, IsCategoryOfAlgebroids );
+    
+    SetUnderlyingRing( category, homalg_ring );
+    
+    SetParity( category, parity );
+    
+    AddObjectRepresentation( category, IsCategoryOfAlgebroidsObject );
+    
+    AddMorphismRepresentation( category, IsCategoryOfAlgebroidsMorphism );
+
+    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS( category );
+    
+    Finalize( category );
+    
+    return category;
+    
+end );
+
 ##
 InstallMethod( SetOfObjects,
         "for an algebroid",
@@ -167,6 +193,158 @@ end );
 #
 ####################################
 
+InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
+  
+  function( category )
+    local ring, parity;
+    
+    ring := UnderlyingRing( category );
+    parity := Parity( category );
+
+    ##
+    AddIsEqualForCacheForObjects( category,
+      IsIdenticalObj );
+    
+    ##
+    AddIsEqualForCacheForMorphisms( category,
+      IsIdenticalObj );
+    
+    ## Equality Basic Operations for Objects and Morphisms
+    ##
+    AddIsEqualForObjects( category,
+      function( object_1, object_2 )
+      
+        return UnderlyingQuiverAlgebra( AsCapCategory ( object_1 ) )
+               = UnderlyingQuiverAlgebra( AsCapCategory ( object_2 ) );
+       
+    end );
+    
+    ##
+    AddIsCongruentForMorphisms( category,
+      function( morphism_1, morphism_2 )
+        local source1, morphism_1_underlying_functor, morphism_2_underlying_functor, objects_in_source1, morphisms_in_source1, o, m;
+        
+        source1 := AsCapCategory( Source( morphism_1 ) );
+
+        morphism_1_underlying_functor := AsCapFunctor( morphism_1 );
+        morphism_2_underlying_functor := AsCapFunctor( morphism_2 );
+        
+        objects_in_source1 := SetOfObjects( source1 );
+
+        for o in objects_in_source1 do
+            if not IsEqualForObjects( ApplyFunctor( morphism_1_underlying_functor, o ),
+                                      ApplyFunctor( morphism_2_underlying_functor, o ) ) then
+                return false;
+            fi;
+        od;
+        
+        morphisms_in_source1 := SetOfGeneratingMorphisms( source1 );
+        
+        for m in morphisms_in_source1 do
+            if not IsCongruentForMorphisms( ApplyFunctor( morphism_1_underlying_functor, m ),
+                                        ApplyFunctor( morphism_2_underlying_functor, m ) ) then
+                return false;
+            fi;
+        od;
+
+        return true;
+        
+    end );
+    
+    ## Basic Operations for a Category
+    ##
+    AddIdentityMorphism( category,
+      
+      function( object )
+        
+        return CategoryOfAlgebroidsMorphism( object, IdentityFunctor( AsCapCategory( object ) ), object );
+        
+    end );
+    
+    AddPreCompose( category,
+        function( morphism_1, morphism_2 )
+            local composition;
+            
+            composition := PreCompose( AsCapFunctor(morphism_1), AsCapFunctor(morphism_2) );
+
+            SetFilterObj( composition, IsAlgebroidMorphism );
+            
+            return CategoryOfAlgebroidsMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+            
+           end
+    );
+    
+    AddTensorProductOnObjects( category,
+        function( object_1, object_2 )
+            return CategoryOfAlgebroidsObject( TensorProductOnObjects( AsCapCategory(object_1), AsCapCategory(object_2) ) );
+        end
+    );
+
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+        function( source_1_x_source_2, morphism_1, morphism_2, range_1_x_range_2 )
+            return CategoryOfAlgebroidsMorphism( source_1_x_source_2, TensorProductOnMorphisms(AsCapFunctor( morphism_1), AsCapFunctor(morphism_2) ), range_1_x_range_2 );
+        end
+    );
+    
+    AddTensorUnit( category,
+        function()
+            return CategoryOfAlgebroidsObject( TrivialAlgebroid( ring, parity ) );
+        end
+    );
+
+    AddLeftUnitorWithGivenTensorProduct( category,
+        function(a, 1_otimes_a)
+            return CategoryOfAlgebroidsMorphism( LeftUnitorAsFunctor( AsCapCategory( a ) ) );
+        end
+    );
+
+    AddLeftUnitorInverseWithGivenTensorProduct( category,
+        function(a, 1_otimes_a)
+            return CategoryOfAlgebroidsMorphism( LeftUnitorInverseAsFunctor( AsCapCategory( a ) ) );
+        end
+    );
+    
+    AddRightUnitorWithGivenTensorProduct( category,
+        function(a, a_otimes_1)
+            return CategoryOfAlgebroidsMorphism( RightUnitorAsFunctor( AsCapCategory( a ) ) );
+        end
+    );
+    
+    AddRightUnitorInverseWithGivenTensorProduct( category,
+        function(a, a_otimes_1)
+            return CategoryOfAlgebroidsMorphism( RightUnitorInverseAsFunctor( AsCapCategory( a ) ) );
+        end
+    );
+
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+        function( AxB_C, A, B, C, A_BxC )
+            local AxB_C_as_category, A_as_category, B_as_category, C_as_category, A_BxC_as_category;
+            
+            AxB_C_as_category := AsCapCategory( AxB_C );
+            A_as_category := AsCapCategory( A );
+            B_as_category := AsCapCategory( B );
+            C_as_category := AsCapCategory( C );
+            A_BxC_as_category := AsCapCategory( A_BxC );
+
+            return CategoryOfAlgebroidsMorphism( AssociatorLeftToRightWithGivenTensorProductsAsFunctor( AxB_C_as_category, A_as_category, B_as_category, C_as_category, A_BxC_as_category ) );
+        end
+    );
+
+    AddAssociatorRightToLeftWithGivenTensorProducts( category, 
+        function( A_BxC, A, B, C, AxB_C )
+            local AxB_C_as_category, A_as_category, B_as_category, C_as_category, A_BxC_as_category;
+            A_BxC_as_category := AsCapCategory( A_BxC );
+            A_as_category := AsCapCategory( A );
+            B_as_category := AsCapCategory( B );
+            C_as_category := AsCapCategory( C );
+            AxB_C_as_category := AsCapCategory( AxB_C );
+
+            return CategoryOfAlgebroidsMorphism( AssociatorRightToLeftWithGivenTensorProductsAsFunctor( A_BxC_as_category, A_as_category, B_as_category, C_as_category, AxB_C_as_category ) );
+        end
+    );
+
+    
+end );
 ##
 InstallMethod( DecomposeQuiverAlgebraElement,
         "for a quiver algebra element",
@@ -652,6 +830,64 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
 end );
 
+InstallMethod( CategoryOfAlgebroidsObject,
+                        [ IsAlgebroid ],
+               
+  function( A )
+    local category, category_of_algebroids_object;
+
+    category := CategoryOfAlgebroids( CommutativeRingOfLinearCategory( A ), Parity( A ) );
+    
+    category_of_algebroids_object := rec( );
+    
+    ObjectifyObjectForCAPWithAttributes( category_of_algebroids_object, 
+                                         category,
+                                         AsCapCategory, A
+    );
+
+    return category_of_algebroids_object;
+    
+end );
+
+##
+InstallMethod( CategoryOfAlgebroidsMorphism,
+               [ IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject ],
+               
+  function( s , morphism, r )
+    local category, source, range, category_of_algebroids_morphism;
+    
+
+    Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( r ) ) );
+    Assert( 0, IsIdenticalObj( CapCategory( r ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Range( morphism ) ) ) ) ) );
+    Assert( 0, IsIdenticalObj( CapCategory( s ), CapCategory( CategoryOfAlgebroidsObject( AsCapCategory( Source( morphism ) ) ) ) ) );
+
+    category := CapCategory(s);
+
+    category_of_algebroids_morphism := rec( );
+    
+    ObjectifyMorphismForCAPWithAttributes( category_of_algebroids_morphism, category,
+                                           Source, s,
+                                           Range, r,
+                                           AsCapFunctor, morphism
+    );
+
+    return category_of_algebroids_morphism;
+    
+end );
+
+InstallMethod( CategoryOfAlgebroidsMorphism,
+               [ IsAlgebroidMorphism ],
+               
+  function( morphism )
+    local category, source, range;
+    
+    return CategoryOfAlgebroidsMorphism( CategoryOfAlgebroidsObject(AsCapCategory(Source(morphism))),
+                                         morphism,
+                                         CategoryOfAlgebroidsObject(AsCapCategory(Range(morphism)))
+                                         );
+    
+end );
+
 ##
 InstallMethod( Algebroid,
         "for a QPA quiver algebra",
@@ -741,6 +977,7 @@ InstallMethod( Algebroid,
     SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
     SetUnderlyingAlgebra( A, domain );
+    SetParity( A, parity );
     
     if over_Z then
         SetCommutativeRingOfLinearCategory( A, HomalgRingOfIntegers() );
@@ -865,6 +1102,7 @@ InstallMethod( Unit,
     
     return CapFunctor(A0, unit_functor_images_of_objects, unit_functor_images_of_morphisms );
 end );
+
 InstallMethod( LeftUnitorAsFunctor,
         "for algebroid as category",
         [ IsAlgebroid ],
@@ -1207,7 +1445,7 @@ InstallMethod( POW,
         [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( A, n )
-    local Rq, R, trivial_quiver, Rqq;
+    local Rq, R, trivial_quiver;
     
     if n < 0 then
         Error( "the only admissible values for n are non-negative integers\n" );
@@ -1254,6 +1492,24 @@ InstallMethod( POW,
     
     return A!.powers.(n);
     
+end );
+
+##
+InstallMethod( TrivialAlgebroid,
+        "for a homalg ring",
+        [ IsHomalgRing, IsString ],
+  function( R, parity )
+    local trivial_quiver;
+   
+    if parity = "right" then
+        trivial_quiver := RightQuiver( "*(1)[]" );
+    elif parity = "left" then
+        trivial_quiver := LeftQuiver( "*(1)[]" );
+    else
+        Error( "parity must be either \"left\" or \"right\"" );
+    fi;
+    
+    return Algebroid( PathAlgebra( R, trivial_quiver ) );
 end );
 
 ##
@@ -1766,6 +2022,30 @@ InstallMethod( IsCoassociative,
     return true;
 end );
 
+InstallMethod( IsCoassociative,
+        "for an algebroid",
+        [ IsCategoryOfAlgebroidsObject ],
+  function( B )
+    local B_as_category, comult_as_functor, comult, comult_times_id, id_times_comult, comult_times_id_after_comult, id_times_comult_after_comult;
+
+    B_as_category := AsCapCategory( B );
+
+    if not HasComultiplication( B_as_category ) then
+      Error( "algebroid does not have a comultiplication" );
+    fi;
+
+    comult_as_functor := Comultiplication(B_as_category);
+    comult := CategoryOfAlgebroidsMorphism( comult_as_functor );
+
+    comult_times_id := TensorProductOnMorphisms( comult, IdentityMorphism(B) );
+    id_times_comult := TensorProductOnMorphisms( IdentityMorphism(B), comult );
+    
+    comult_times_id_after_comult := PostCompose( [ AssociatorLeftToRight(B,B,B), comult_times_id, comult ] );
+    id_times_comult_after_comult := PostCompose( id_times_comult, comult );
+
+    return IsCongruentForMorphisms( comult_times_id_after_comult, id_times_comult_after_comult );
+end );
+
 ##
 InstallMethod( IsCounitary,
         "for a commutative bialgebra",
@@ -1812,6 +2092,42 @@ InstallMethod( IsCounitary,
     
 end );
 
+InstallMethod( IsCommutative,
+        "for a commutative algebra",
+        [ IsCategoryOfAlgebroidsObject ],
+  function(B)
+    return IsCommutative( AsCapCategory( B ) );
+end);
+
+InstallMethod( IsCounitary,
+        "for a commutative bialgebra",
+        [ IsCategoryOfAlgebroidsObject ],
+  function( B )
+    local B2, I, comult, counit, id, comp1, comp2;
+    B2 := TensorProductOnObjects( B, B );
+    I := TensorUnit( CapCategory( B ) );
+    
+    B_as_category := AsCapCategory( B );
+    
+    if not HasComultiplication( B_as_category ) then
+      Error( "algebroid does not have a comultiplication" );
+    fi;
+    
+    comult := CategoryOfAlgebroidsMorphism( B, Comultiplication( B_as_category ), B2 );
+    
+    if not HasCounit( B_as_category ) then
+      Error( "algebroid does not have a counit" );
+    fi;
+    
+    counit := CategoryOfAlgebroidsMorphism( B, Counit( B_as_category ), I);
+    
+    id := IdentityMorphism( B );
+    comp1 := PreCompose( [ comult, TensorProductOnMorphisms( counit, id ), LeftUnitor( B ) ] );
+    comp2 := PreCompose( [ comult, TensorProductOnMorphisms( id, counit ), RightUnitor( B ) ] );
+    
+    return IsCongruentForMorphisms(comp1, id) and IsCongruentForMorphisms(comp2,id);
+end );
+
 ##
 InstallMethod( IsCocommutative,
          "for a bialgebra",
@@ -1827,23 +2143,22 @@ InstallMethod( IsCocommutative,
     morphisms := SetOfGeneratingMorphisms( B );
     
     for o in SetOfObjects( B ) do
-
+        
         if not IsEqualForObjects( ApplyFunctor(twist_after_comult, o), ApplyFunctor(comult, o) ) then
-
+            
             return false;
-
+            
         fi;
- 
+        
     od;
-
+    
     for m in SetOfGeneratingMorphisms( B ) do
-
+        
         if not IsEqualForMorphisms( ApplyFunctor(twist_after_comult, m), ApplyFunctor(comult, m ) ) then
-
+            
             return false;
-
+            
         fi;
-
     od;
     
     return true;
@@ -1992,6 +2307,30 @@ InstallMethod( ViewObj,
     
 end );
 
+###
+InstallMethod( ViewObj,
+        "for an algebroid",
+        [ IsCategoryOfAlgebroidsObject ],
+
+  function( o )
+    
+    ViewObj( AsCapCategory( o ) );
+    Print( " as an object in the category ");
+    ViewObj( CapCategory(o) );
+    
+end );
+
+InstallMethod( Display,
+        "for an algebroid",
+        [ IsCategoryOfAlgebroidsObject ],
+
+  function( o )
+    
+    ViewObj( AsCapCategory( o ) );
+    Print( " as an object in the category ");
+    ViewObj( CapCategory(o) );
+    
+end );
 ##
 InstallMethod( ViewObj,
         "for a morphism in an algebroid",

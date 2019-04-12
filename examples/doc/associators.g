@@ -21,5 +21,18 @@ Source(ass_ltr) = Range(ass_rtl);
 Range(ass_ltr) = Source(ass_rtl);
 #! true
 
+# Consider B as an object in the category of algebroids over Q
+BB := CategoryOfAlgebroidsObject(B);;
+BB2 := TensorProductOnObjects(BB, BB);;
+BB0 := TensorUnit( CapCategory( BB ) );;
+
+ass_ltr_as_morphism := AssociatorLeftToRight(BB,BB,BB);;
+ass_rtl_as_morphism := AssociatorRightToLeft(BB,BB,BB);;
+
+IsCongruentForMorphisms( PreCompose( ass_ltr_as_morphism, ass_rtl_as_morphism ), IdentityMorphism( Source( ass_ltr_as_morphism ) ) );
+#! true
+IsCongruentForMorphisms( PreCompose( ass_rtl_as_morphism, ass_ltr_as_morphism ), IdentityMorphism( Source( ass_rtl_as_morphism ) ) );
+#! true
+
 #! @EndExample
 #! @EndChunk

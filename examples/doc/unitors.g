@@ -38,5 +38,24 @@ and_function := function(x,y) return x and y; end;;
 Iterated( l, and_function );
 #! true
 
+# Consider B as an object in the category of algebroids over Q
+BB := CategoryOfAlgebroidsObject(B);;
+BB2 := TensorProductOnObjects(BB, BB);;
+BB0 := TensorUnit( CapCategory( BB ) );;
+
+ru_as_functor := RightUnitor( BB );;
+lu_as_functor := LeftUnitor( BB );;
+rui_as_functor := RightUnitorInverse( BB );;
+lui_as_functor := LeftUnitorInverse( BB );;
+
+IsCongruentForMorphisms( PreCompose( ru_as_functor, rui_as_functor ), IdentityMorphism( TensorProductOnObjects( BB,  BB0) ) );
+#! true
+IsCongruentForMorphisms( PreCompose( lu_as_functor, lui_as_functor ), IdentityMorphism( TensorProductOnObjects( BB0,  BB) ) );
+#! true
+IsCongruentForMorphisms( PreCompose( rui_as_functor, ru_as_functor ), IdentityMorphism( BB ) );
+#! true
+IsCongruentForMorphisms( PreCompose( lui_as_functor, lu_as_functor ), IdentityMorphism( BB ) );
+#! true
+
 #! @EndExample
 #! @EndChunk
