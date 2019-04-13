@@ -357,9 +357,13 @@ InstallMethod( AClosedSingleton,
   function( A )
     local C;
     
+    if IsInitial( A ) then
+        Error( "the input A is empty\n" );
+    fi;
+    
     C := CapCategory( A );
     
-    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
     
     A := AMaximalIdealContaining( A );
     
