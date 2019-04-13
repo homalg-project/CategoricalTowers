@@ -246,7 +246,7 @@ InstallMethod( AClosedSingleton,
         [ IsObjectInThinCategory ],
         
   function( A )
-    local Ac, C, R, indets, R_f, emb;
+    local Aa;
     
     if IsInitial( A ) then
         Error( "the input A is empty\n" );
@@ -254,15 +254,13 @@ InstallMethod( AClosedSingleton,
         TryNextMethod( );
     fi;
     
-    Ac := Closure( A );
+    Aa := AffineApproximation( A );
     
-    C := CapCategory( Ac );
+    A := AClosedSingleton( Aa );
     
-    R := UnderlyingRing( Ac );
-    
-    A := AffineApproximation( A );
-    
-    A := AClosedSingleton( A );
+    if not IsBound( Aa!.auxiliary_indeterminate ) then
+        return A;
+    fi;
     
     return ImageClosureOfProjection( A );
     
