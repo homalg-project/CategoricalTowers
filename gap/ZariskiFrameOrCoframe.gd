@@ -135,6 +135,13 @@ DeclareOperation( "Pullback",
         [ IsHomalgRingMap, IsObjectInThinCategory ] );
 
 #! @Description
+#!  Embed <A>A</A> in a smaller ambient space.
+#! @Arguments A
+#! @Returns an object in a thin category
+DeclareOperation( "EmbedInSmallerAmbientSpace",
+        [ IsObjectInThinCategory ] );
+
+#! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
 #!  Otherwise a subset consisting of single closed point of <A>A</A> is returned.
 #! @Arguments A

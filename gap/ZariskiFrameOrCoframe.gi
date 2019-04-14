@@ -366,6 +366,29 @@ InstallMethod( Pullback,
 end );
 
 ##
+InstallMethod( EmbedInSmallerAmbientSpace,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local phi, T;
+    
+    StandardizeObject( A );
+    
+    phi := RingMorphismOfClosure( A );
+    
+    T := Range( phi );
+    
+    if HasAmbientRing( T ) then
+        T := AmbientRing( T );
+        phi := RingMap( T * ImagesOfRingMapAsColumnMatrix( phi ), Source( phi ), T );
+    fi;
+    
+    return Pullback( phi, A );
+    
+end );
+
+##
 InstallMethod( AClosedSingleton,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
