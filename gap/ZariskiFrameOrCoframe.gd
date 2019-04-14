@@ -137,10 +137,11 @@ DeclareOperation( "PseudoIteratorOfClosedSingletons",
 #! @InsertSystem ClosedSubsetOfSpecF2t
 
 #! @Description
-#!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
-#!  Otherwise a .
+#!  Return the ring epimorphism from the coordinate ring of
+#!  the closure of <A>A</A> in its ambient space onto
+#!  the residue field of a closed point of <A>A</A>.
 #! @Arguments A
-#! @Returns a homalg matrix
+#! @Returns a homalg ring map
 DeclareOperation( "RingMorphismOfAClosedPoint",
         [ IsObjectInThinCategory ] );
 
