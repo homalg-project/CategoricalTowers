@@ -23,4 +23,28 @@ iter;
 #! <iterator of closed singletons of V_{Z}( I ) \ V_{Z}( J )>
 List( [ 1 .. 10 ], i -> HomalgRing( NextIterator( iter2 ) ) );
 #! [ GF(2), GF(3), GF(5), GF(7), GF(11), GF(13), GF(17), GF(19), GF(23), GF(29) ]
+Q := HomalgFieldOfRationalsInSingular( );
+#! Q
+R := Q * "t";
+#! Q[t]
+V := ClosedSubsetOfSpec( "t^2-t", R );
+#! V_{Q[t]}( <...> )
+itr := PseudoIteratorOfClosedPoints( V );
+#! <iterator of closed singletons of V_{Q[t]}( <...> )>
+IsDoneIterator( itr );
+#! false
+a := NextIterator( itr );
+#! <A 1 x 1 matrix over an external ring>
+Display( a );
+#! 1
+HomalgRing( a );
+#! Q
+b := NextIterator( itr );
+#! <An unevaluated 1 x 1 zero matrix over an external ring>
+Display( b );
+#! 0
+HomalgRing( b );
+#! Q
+IsDoneIterator( itr );
+#! true
 #! @EndExample

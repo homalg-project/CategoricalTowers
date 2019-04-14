@@ -246,7 +246,7 @@ InstallMethod( AClosedSingleton,
         [ IsObjectInThinCategory ],
         
   function( A )
-    local Aa;
+    local Aa, p;
     
     if IsInitial( A ) then
         Error( "the input A is empty\n" );
@@ -256,13 +256,13 @@ InstallMethod( AClosedSingleton,
     
     Aa := AffineApproximation( A );
     
-    A := AClosedSingleton( Aa );
+    p := AClosedSingleton( Aa );
     
-    if not IsBound( Aa!.auxiliary_indeterminate ) then
-        return A;
+    if IsIdenticalObj( CapCategory( p ), CapCategory( Closure( A ) ) ) then
+        return p;
     fi;
     
-    return ImageClosureOfProjection( A );
+    return ImageClosureOfProjection( p );
     
 end );
 
