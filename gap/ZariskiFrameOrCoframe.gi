@@ -241,6 +241,21 @@ InstallMethod( AffineApproximation,
 end );
 
 ##
+InstallMethod( RingMorphismOfClosure,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    
+    A := Closure( A );
+    
+    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    
+    return RingMapOntoRewrittenResidueClassRing( A );
+    
+end );
+
+##
 InstallMethod( AClosedSingleton,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],

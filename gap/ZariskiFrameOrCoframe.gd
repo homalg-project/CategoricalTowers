@@ -119,6 +119,15 @@ DeclareOperation( "IsSubset",
         [ IsObjectInZariskiFrameOrCoframe, IsObjectInZariskiFrameOrCoframe ] );
 
 #! @Description
+#!  Return the ring epimorphism from the coordinate ring
+#!  of the ambient space of <A>A</A> onto the coordinate ring
+#!  of the closure of <A>A</A> in its ambient space.
+#! @Arguments A
+#! @Returns a homalg ring map
+DeclareOperation( "RingMorphismOfClosure",
+        [ IsObjectInThinCategory ] );
+
+#! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
 #!  Otherwise a subset consisting of single closed point of <A>A</A> is returned.
 #! @Arguments A
