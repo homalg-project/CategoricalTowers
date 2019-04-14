@@ -262,7 +262,13 @@ InstallMethod( AClosedSingleton,
         return p;
     fi;
     
-    return ImageClosureOfProjection( p );
+    p := ImageClosureOfProjection( p );
+    
+    Assert( 4, IsClosed( p ) );
+    SetIsClosedSubobject( p, true );
+    SetClosure( p, p );
+    
+    return p;
     
 end );
 
