@@ -128,6 +128,13 @@ DeclareOperation( "RingMorphismOfClosure",
         [ IsObjectInThinCategory ] );
 
 #! @Description
+#!  Pullback <A>A</A> along the morphism defined by the ring homomorphism <A>phi</A>.
+#! @Arguments phi, A
+#! @Returns an object in a thin category
+DeclareOperation( "Pullback",
+        [ IsHomalgRingMap, IsObjectInThinCategory ] );
+
+#! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
 #!  Otherwise a subset consisting of single closed point of <A>A</A> is returned.
 #! @Arguments A

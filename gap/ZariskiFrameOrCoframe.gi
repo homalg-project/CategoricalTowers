@@ -256,6 +256,116 @@ InstallMethod( RingMorphismOfClosure,
 end );
 
 ##
+InstallMethod( Pullback,
+        "for a homalg ring map and an object in a Zariski frame or coframe",
+        [ IsHomalgRingMap, IsObjectInZariskiFrameOrCoframe ],
+        
+  function( phi, A )
+    local C, B;
+    
+    C := CapCategory( A );
+    
+    B := Pullback( phi, UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    
+    if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
+        if HasStandardMorphismOfUnderlyingCategory( A ) then
+            return C!.ConstructorByStandardMorphism( B );
+        elif HasReducedMorphismOfUnderlyingCategory( A ) then
+            return C!.ConstructorReducedMorphism( B );
+        fi;
+    fi;
+    
+    B := C!.Constructor( B );
+    
+    if HasParametrizedObject( A ) then
+        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+    fi;
+    
+    return B;
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a homalg ring map and an object in a meet-semilattice of formal single differences",
+        [ IsHomalgRingMap, IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( phi, A )
+    local B;
+    
+    B := List( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), a -> Pullback( phi, a ) );
+    
+    return B[1] - B[2];
+    
+    if HasParametrizedObject( A ) then
+        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+    fi;
+    
+    return B;
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a homalg ring map and an object in a meet-semilattice of formal multiple differences",
+        [ IsHomalgRingMap, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( phi, A )
+    local B;
+    
+    B := List( A, a -> Pullback( phi, a ) );
+    
+    B := CallFuncList( AsFormalMultipleDifference, B );
+    
+    if HasParametrizedObject( A ) then
+        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+    fi;
+    
+    return B;
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a homalg ring map and a constructible object as a union of formal single differences",
+        [ IsHomalgRingMap, IsConstructibleObjectAsUnionOfDifferences ],
+        
+  function( phi, A )
+    local B;
+    
+    A := List( A, a -> Pullback( phi, a ) );
+    
+    B := CallFuncList( UnionOfDifferences, A );
+    
+    if HasParametrizedObject( A ) then
+        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+    fi;
+    
+    return B;
+    
+end );
+
+##
+InstallMethod( Pullback,
+        "for a homalg ring map and a constructible object as a union of formal multiple differences",
+        [ IsHomalgRingMap, IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( phi, A )
+    local B;
+    
+    A := List( A, a -> Pullback( phi, a ) );
+    
+    B := CallFuncList( UnionOfMultipleDifferences, A );
+    
+    if HasParametrizedObject( A ) then
+        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+    fi;
+    
+    return B;
+    
+end );
+
+##
 InstallMethod( AClosedSingleton,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
