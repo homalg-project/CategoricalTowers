@@ -140,6 +140,7 @@ DeclareOperation( "Pullback",
 #! @Returns an object in a thin category
 DeclareOperation( "EmbedInSmallerAmbientSpace",
         [ IsObjectInThinCategory ] );
+#! @InsertSystem EmbedInSmallerAmbientSpace
 
 #! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
