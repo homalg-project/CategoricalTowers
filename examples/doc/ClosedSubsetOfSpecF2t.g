@@ -7,7 +7,7 @@ F2 := HomalgRingOfIntegersInSingular( 2 );
 #! GF(2)
 F2t := F2 * "t";
 #! GF(2)[t]
-A := ClosedSubsetOfSpec( "0", F2t );
+A := ClosedSubsetOfSpec( "[ 0 ]", F2t );
 #! V_{GF(2)[t]}( <...> )
 iter := PseudoIteratorOfClosedSingletons( A );
 #! <iterator of closed singletons of V_{GF(2)[t]}( <...> )>
