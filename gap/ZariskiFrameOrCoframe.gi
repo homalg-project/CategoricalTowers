@@ -254,7 +254,7 @@ InstallMethod( RingMorphismOfClosure,
     
     A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
     
-    return RingMapOntoRewrittenResidueClassRing( R / A );
+    return RingMapOntoSimplifiedResidueClassRing( R / A );
     
 end );
 
