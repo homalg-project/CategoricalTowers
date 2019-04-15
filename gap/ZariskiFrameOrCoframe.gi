@@ -246,12 +246,15 @@ InstallMethod( RingMorphismOfClosure,
         [ IsObjectInThinCategory ],
         
   function( A )
+    local R;
     
     A := Closure( A );
     
+    R := UnderlyingRing( A );
+    
     A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
     
-    return RingMapOntoRewrittenResidueClassRing( A );
+    return RingMapOntoRewrittenResidueClassRing( R / A );
     
 end );
 
@@ -371,17 +374,23 @@ InstallMethod( EmbedInSmallerAmbientSpace,
         [ IsObjectInThinCategory ],
         
   function( A )
-    local phi, T;
+    local phi, S, T;
     
     StandardizeObject( A );
     
     phi := RingMorphismOfClosure( A );
     
+    S := Source( phi );
+    
+    if HasAmbientRing( S ) then
+        S := AmbientRing( S );
+    fi;
+    
     T := Range( phi );
     
     if HasAmbientRing( T ) then
         T := AmbientRing( T );
-        phi := RingMap( T * ImagesOfRingMapAsColumnMatrix( phi ), Source( phi ), T );
+        phi := RingMap( T * ImagesOfRingMapAsColumnMatrix( phi ), S, T );
     fi;
     
     return Pullback( phi, A );
