@@ -146,13 +146,24 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     nonzero_rows := List( nonzero_rows, a -> a{[1]} );
     
-    Ap := ListN( Ap, nonzero_rows, function( ap, nz ) return CertainRows( ap, nz ); end );
+    Ap := ListN( Ap, nonzero_rows, function( ap, nz ) return MatElm( ap, nz[1], 1 ); end );
+    
+    Ap := Filtered( Ap, a -> not IsUnit( a ) );
+    
+    Ap := Concatenation( List( Ap, Factors ) );
+    
+    Ap := Set( Ap );
     
     Ap := List( Ap, C!.ConstructorByReducedMorphism );
     
-    A := List( Ap, ap -> A - ap );
+    Ap := DuplicateFreeList( Ap );
     
-    return CallFuncList( AsFormalMultipleDifference, A );
+    if not Ap = [ ] then
+        A := List( Ap, ap -> A - ap );
+        A := CallFuncList( AsFormalMultipleDifference, A );
+    fi;
+    
+    return A;
     
 end );
 
