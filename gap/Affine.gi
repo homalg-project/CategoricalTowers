@@ -24,7 +24,7 @@ InstallMethod( DistinguishedQuasiAffineSet,
         [ IsList, IsList ],
 
   function( eqs, ineqs )
-    local R, A;
+    local R;
     
     if not eqs = [ ] then
         R := HomalgRing( eqs[1] );
