@@ -48,6 +48,34 @@ InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCateg
 end );
 
 ##
+InstallMethod( NormalizedDistinguishedSubtrahend,
+        "for a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasPreDistinguishedSubtrahend ],
+        
+  function( A )
+    local T, C, S;
+    
+    T := A.I;
+    
+    if not IsObjectInZariskiCoframe( T ) then
+        TryNextMethod( );
+    fi;
+    
+    C := CapCategory( T );
+    
+    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    
+    S := PreDistinguishedSubtrahend( A );
+    
+    S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
+    
+    S := DecideZeroRows( S, T );
+    
+    return C!.Constructor( S );
+    
+end );
+
+##
 InstallMethod( Degree,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
