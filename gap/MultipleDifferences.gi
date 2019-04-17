@@ -199,37 +199,42 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A )
-    local u, T_new, T;
+    local T_new, T, pos;
     
-    u := List( A, PairInUnderlyingLattice );
-    
-    T_new := DirectProduct( List( u, a -> a[1] ) );
+    T_new := DirectProduct( List( A, a -> a.I ) );
     
     repeat
         
         T := T_new;
         
-        u := List( u, a -> a[2] );
+        # avoid searching for maximal objects too early
+        # avoid excluding exmpty sets too early
         
-        # u := MaximalObjects( u, IsHomSetInhabited );
-        # avoid searching for maximal objects too early:
+        A := List( A,
+          function( d )
+            local D;
+            
+            D := T - d.J;
+            
+            NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( D );
+            
+            if HasNormalizedDistinguishedSubtrahend( d ) then
+                SetNormalizedDistinguishedSubtrahend( D, NormalizedDistinguishedSubtrahend( d ) );
+            elif HasPreDistinguishedSubtrahend( d ) then
+                SetPreDistinguishedSubtrahend( D, PreDistinguishedSubtrahend( d ) );
+            fi;
+            
+            return D;
+            
+        end );
         
-        # u := Filtered( u, a -> not IsInitial( a ) );
-        # avoid excluding exmpty sets too early:
-        
-        A := List( u, S -> T - S );
-        
-        u := List( A, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
-        
-        T_new := DirectProduct( List( u, a -> a[1] ) );
+        T_new := DirectProduct( List( A, a -> a.I ) );
         
     until IsEqualForObjectsIfIsHomSetInhabited( T_new, T );
     
-    u := List( u, a -> a[2] );
+    pos := PositionsOfMaximalObjects( List( A, d -> d.J ), IsHomSetInhabited );
     
-    u := MaximalObjects( u, IsHomSetInhabited );
-    
-    return List( u, S -> T - S );
+    return A{pos};
     
 end );
 
