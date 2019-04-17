@@ -38,7 +38,15 @@ InstallMethod( DistinguishedQuasiAffineSet,
     
     eqs := ClosedSubsetOfSpec( eqs );
     
-    ineqs := List( ineqs, a -> eqs - ClosedSubsetOfSpec( a ) );
+    ineqs := List( ineqs, ClosedSubsetOfSpec );
+    
+    ineqs := List( ineqs,
+      function( s )
+        local d;
+        d := eqs - s;
+        SetPreDistinguishedSubtrahend( d, s );
+        return d;
+    end );
     
     return CallFuncList( AsFormalMultipleDifference, ineqs );
     
