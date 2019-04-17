@@ -125,7 +125,7 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
         TryNextMethod( );
     fi;
     
-    NormalizeObject( A );
+    StandardizeObject( A );
     
     Ap := List( A, a -> a.J );
     
