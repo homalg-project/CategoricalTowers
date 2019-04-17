@@ -31,7 +31,7 @@ InstallMethod( DistinguishedQuasiAffineSet,
     elif not ineqs = [ ] then
         R := HomalgRing( ineqs[1] );
     else
-        Error( "both input lists are empty and I cannot figure out the ring\n" );
+        Error( "unable to figure out the ring since both input lists are empty\n" );
     fi;
     
     eqs := HomalgMatrix( eqs, Length( eqs ), 1, R );
