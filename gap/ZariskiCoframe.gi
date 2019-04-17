@@ -165,7 +165,11 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     for D in A do
         
-        D := D.J;
+        if HasPreDistinguishedSubtrahend( D ) or HasNormalizedDistinguishedSubtrahend( D ) then
+            D := DistinguishedSubtrahend( D );
+        else
+            D := D.J;
+        fi;
         
         D := UnderlyingMatrix( MorphismOfUnderlyingCategory( D ) );
         
