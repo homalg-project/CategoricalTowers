@@ -147,7 +147,7 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function ( A )
-    local Ap, C, a, nonzero_rows;
+    local Ac, C, d, D, nonzero_rows;
     
     if not IsObjectInZariskiCoframe( A[1].I ) then
         TryNextMethod( );
@@ -155,40 +155,50 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     StandardizeObject( A );
     
-    Ap := List( A, a -> a.J );
+    Ac := Closure( A );
     
-    A := A.I;
+    C := CapCategory( Ac );
     
-    C := CapCategory( A );
+    Ac := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( Ac ) );
     
-    a := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    d := [ ];
     
-    Ap := List( Ap, ap -> UnderlyingMatrix( MorphismOfUnderlyingCategory( ap ) ) );
+    for D in A do
+        
+        D := D.J;
+        
+        D := UnderlyingMatrix( MorphismOfUnderlyingCategory( D ) );
+        
+        D := DecideZeroRows( D, Ac );
+        
+        nonzero_rows := NonZeroRows( D );
+        
+        if nonzero_rows = [ ] then
+            Error( "no nonzero rows after reducing D with Ac\n" );
+        fi;
+        
+        D := MatElm( D, nonzero_rows[1], 1 );
+        
+        if IsUnit( D ) then
+            continue;
+        fi;
+        
+        D := IrreducibleFactors( D );
+        
+        Append( d, D );
+        
+    od;
     
-    Ap := List( Ap, ap -> DecideZeroRows( ap, a ) );
+    d := Set( d );
     
-    nonzero_rows := List( Ap, NonZeroRows );
+    d := List( d, C!.ConstructorByReducedMorphism );
     
-    if [ ] in nonzero_rows then
-        Error( "no nonzero rows after reducing Ap with A\n" );
-    fi;
+    d := DuplicateFreeList( d );
     
-    nonzero_rows := List( nonzero_rows, a -> a{[1]} );
+    A := Closure( A );
     
-    Ap := ListN( Ap, nonzero_rows, function( ap, nz ) return MatElm( ap, nz[1], 1 ); end );
-    
-    Ap := Filtered( Ap, a -> not IsUnit( a ) );
-    
-    Ap := Concatenation( List( Ap, IrreducibleFactors ) );
-    
-    Ap := Set( Ap );
-    
-    Ap := List( Ap, C!.ConstructorByReducedMorphism );
-    
-    Ap := DuplicateFreeList( Ap );
-    
-    if not Ap = [ ] then
-        A := List( Ap, ap -> A - ap );
+    if not d = [ ] then
+        A := List( d, s -> A - s );
         A := CallFuncList( AsFormalMultipleDifference, A );
     fi;
     
