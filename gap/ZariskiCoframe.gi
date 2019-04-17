@@ -151,7 +151,7 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     Ap := Filtered( Ap, a -> not IsUnit( a ) );
     
-    Ap := Concatenation( List( Ap, Factors ) );
+    Ap := Concatenation( List( Ap, IrreducibleFactors ) );
     
     Ap := Set( Ap );
     
