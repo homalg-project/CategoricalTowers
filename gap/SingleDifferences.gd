@@ -36,7 +36,7 @@ DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
 #! @Description
 #!  A morphism in the underlying lattice representing the formal single difference <A>A</A>.
 #! @Arguments A
-#! @Returns a pair of &CAP; objects
+#! @Returns a pair of objects in a thin category
 DeclareOperation( "PairInUnderlyingLattice",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
 
