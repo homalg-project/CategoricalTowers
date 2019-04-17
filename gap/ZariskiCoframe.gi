@@ -134,6 +134,7 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     C := CapCategory( A );
     
     a := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    
     Ap := List( Ap, ap -> UnderlyingMatrix( MorphismOfUnderlyingCategory( ap ) ) );
     
     Ap := List( Ap, ap -> DecideZeroRows( ap, a ) );
