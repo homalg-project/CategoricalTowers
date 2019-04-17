@@ -304,6 +304,12 @@ InstallMethod( Pullback,
         SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
     fi;
     
+    if HasNormalizedDistinguishedSubtrahend( A ) then
+        SetPreDistinguishedSubtrahend( B, Pullback( phi, NormalizedDistinguishedSubtrahend( A ) ) );
+    elif HasPreDistinguishedSubtrahend( A ) then
+        SetPreDistinguishedSubtrahend( B, Pullback( phi, PreDistinguishedSubtrahend( A ) ) );
+    fi;
+    
     return B;
     
 end );
