@@ -334,6 +334,20 @@ InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
   StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
+InstallMethod( DistinguishedSubtrahend,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  PreDistinguishedSubtrahend );
+
+##
+InstallMethod( DistinguishedSubtrahend,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasNormalizedDistinguishedSubtrahend ],
+        
+  NormalizedDistinguishedSubtrahend );
+
+##
 InstallMethod( IsClosedSubobject,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],

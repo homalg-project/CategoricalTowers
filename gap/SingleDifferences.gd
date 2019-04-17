@@ -22,6 +22,12 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfSingleDifferences",
 
 #! @Section Attributes
 
+DeclareAttribute( "PreDistinguishedSubtrahend",
+        IsObjectInMeetSemilatticeOfSingleDifferences );
+
+DeclareAttribute( "NormalizedDistinguishedSubtrahend",
+        IsObjectInMeetSemilatticeOfSingleDifferences );
+
 DeclareAttribute( "PrePairInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
@@ -38,6 +44,18 @@ DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
 #! @Arguments A
 #! @Returns a pair of objects in a thin category
 DeclareOperation( "PairInUnderlyingLattice",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
+
+#! @Description
+#!  The output <C>S</C> should satisfy <A>A</A>.I - <C>S</C> = <A>A</A>.
+#!  The standard method returns <C>NormalizedDistinguishedSubtrahend</C>( <A>A</A> )
+#!  if <C>HasNormalizedDistinguishedSubtrahend</C>( <A>A</A> ) = <C>true</C> or
+#!  <C>PreDistinguishedSubtrahend</C>( <A>A</A> )
+#!  if <C>HasPreDistinguishedSubtrahend</C>( <A>A</A> ) = <C>true</C>.
+#!  The remaining behavior is unspecified.
+#! @Arguments A
+#! @Returns an object in a thin category
+DeclareOperation( "DistinguishedSubtrahend",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
 
 #! @Section Constructors
