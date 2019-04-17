@@ -298,7 +298,7 @@ InstallMethod( Pullback,
     
     B := List( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), a -> Pullback( phi, a ) );
     
-    return B[1] - B[2];
+    B := B[1] - B[2];
     
     if HasParametrizedObject( A ) then
         SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
