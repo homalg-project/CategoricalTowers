@@ -215,7 +215,7 @@ InstallMethod( AffineApproximation,
     
     indets := List( indets, String );
     
-    t := "inv_";
+    t := UnusedVariableName( R, "inv" );
     
     R_f := R * [ t ];
     
