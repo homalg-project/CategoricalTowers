@@ -7,6 +7,19 @@
 SetInfoLevel( InfoZariskiFrames, 1 );
 
 ##
+InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
+  function( L )
+    local biased_weak_fiber_product;
+    
+    biased_weak_fiber_product := function( I, J )
+        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+    end;
+    
+    return Iterated( L, biased_weak_fiber_product );
+    
+end );
+
+##
 InstallMethod( ReducedMorphismOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
@@ -58,19 +71,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
         return IsWellDefined( A );
         
     end );
-    
-end );
-
-##
-InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
-  function( L )
-    local biased_weak_fiber_product;
-    
-    biased_weak_fiber_product := function( I, J )
-        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
-    end;
-    
-    return Iterated( L, biased_weak_fiber_product );
     
 end );
 
