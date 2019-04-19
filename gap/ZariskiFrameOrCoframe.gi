@@ -45,6 +45,34 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
 end );
 
 ##
+InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+
+  function( A )
+    local g, R, C, D;
+    
+    A := PreMorphismOfUnderlyingCategory( A );
+    
+    g := RankOfObject( Range( A ) );
+    
+    R := CategoryOfRowsObject( 1, CapCategory( A ) );
+    
+    if g = 0 then
+        return IdentityMorphism( R );
+    elif g = 1 then
+        return A;
+    fi;
+    
+    D := ListWithIdenticalEntries( g, R );
+    
+    A := List( [ 1 .. g ], i -> PreCompose( A, ProjectionInFactorOfDirectSum( D, i ) ) );
+    
+    return INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
+    
+end );
+
+##
 InstallMethod( ReducedMorphismOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
@@ -88,10 +116,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
       function( A )
         
         A := MorphismOfUnderlyingCategory( A );
-        
-        if not RankOfObject( Range( A ) ) = 1 then
-            return false;
-        fi;
         
         return IsWellDefined( A );
         

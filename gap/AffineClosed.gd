@@ -34,9 +34,11 @@ DeclareAttribute( "ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows",
 
 #! @Description
 #!  Construct a Zariski closed subset (as an object in the Zariski coframe
-#!  of closed subsets in an affine variety) from a morphism <A>I</A>=<C>AsCategoryOfRowsMorphism</C>( <A>mat</A> )
-#!  in the category of rows with <C>RankOfObject</C>( <C>Range</C>( <A>I</A> ) ) = 1.
-#!  The morphism <A>I</A> stands for its module-theoretic image which is an ideal.
+#!  of closed subsets in an affine variety) from a morphism
+#!  <A>I</A>=<C>AsCategoryOfRowsMorphism</C>( <A>mat</A> ) in the category of rows.
+#!  The result is the support of the module-theoretic cokernel <M>M</M>
+#!  of the morphism <A>I</A> in the associated Freyd category,
+#!  i.e., the result is the vanishing locus of the annihilator of <M>M</M>.
 #! @Arguments I
 #! @Returns a &CAP; object
 #! @Group ClosedSubsetOfSpec

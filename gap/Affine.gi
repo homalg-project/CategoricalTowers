@@ -12,7 +12,7 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
   function( A )
     local mat;
     
-    mat := UnderlyingMatrix( PreMorphismOfUnderlyingCategory( A ) );
+    mat := UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
     
     return AsCategoryOfRowsMorphism( RadicalSubobjectOp( mat ) );
     

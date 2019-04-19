@@ -42,6 +42,9 @@ DeclareOperation( "IsClosed",
 DeclareAttribute( "PreMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 
+DeclareAttribute( "MorphismOfRank1RangeOfUnderlyingCategory",
+        IsObjectInZariskiFrameOrCoframe );
+
 DeclareAttribute( "ReducedMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 

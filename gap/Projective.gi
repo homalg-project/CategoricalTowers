@@ -12,7 +12,7 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
   function( A )
     local mat, S, B, L;
     
-    mat := UnderlyingMatrix( PreMorphismOfUnderlyingCategory( A ) );
+    mat := UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
     
     S := HomalgRing( mat );
     
