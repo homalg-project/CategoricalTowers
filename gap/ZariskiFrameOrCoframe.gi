@@ -7,7 +7,7 @@
 SetInfoLevel( InfoZariskiFrames, 1 );
 
 ##
-InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
+InstallGlobalFunction( ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
   function( L )
     local biased_weak_fiber_product;
     
@@ -20,6 +20,27 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
     end;
     
     return Iterated( L, biased_weak_fiber_product );
+    
+end );
+
+##
+InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
+  function( L )
+    local id;
+    
+    if Length( L ) = 1 then
+        return L[1];
+    fi;
+    
+    id := IdentityMorphism( Range( L[1] ) );
+    
+    id := ListWithIdenticalEntries( Length( L ), id );
+    
+    id := UniversalMorphismIntoDirectSum( id );
+    
+    L := DirectSumFunctorial( L );
+    
+    return ProjectionOfBiasedWeakFiberProduct( id, L );
     
 end );
 
