@@ -45,9 +45,9 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
 end );
 
 ##
-InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe ],
+        [ IsObjectInZariskiFrameOrCoframe and HasPreMorphismOfUnderlyingCategory ],
 
   function( A )
     local g, R, C, D;
@@ -59,14 +59,51 @@ InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
     R := CategoryOfRowsObject( 1, CapCategory( A ) );
     
     if g = 0 then
-        return IdentityMorphism( R );
+        return [ IdentityMorphism( R ) ];
     elif g = 1 then
-        return A;
+        return [ A ];
     fi;
     
     D := ListWithIdenticalEntries( g, R );
     
     A := List( [ 1 .. g ], i -> PreCompose( A, ProjectionInFactorOfDirectSum( D, i ) ) );
+    
+    A := DuplicateFreeList( A );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe and HasReducedMorphismOfUnderlyingCategory ],
+
+  function( A )
+    
+    return [ ReducedMorphismOfUnderlyingCategory( A ) ];
+    
+end );
+
+##
+InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
+
+  function( A )
+    
+    return [ StandardMorphismOfUnderlyingCategory( A ) ];
+    
+end );
+
+##
+InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+
+  function( A )
+    
+    A := ListOfReducedMorphismsOfUnderlyingCategory( A );
     
     return INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
     

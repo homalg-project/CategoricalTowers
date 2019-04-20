@@ -79,6 +79,32 @@ InstallMethod( ClosedSubsetOfProjByReducedMorphism,
 end );
 
 ##
+InstallMethod( ClosedSubsetOfProjByListOfReducedMorphisms,
+        "for a list",
+        [ IsList ],
+
+  function( L )
+    local R, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( L[1] ) );
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfProjUsingCategoryOfRows( R );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            UnderlyingRing, R,
+            IsClosedSubobject, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( ClosedSubsetOfProjByStandardMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
@@ -227,17 +253,16 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
     ##
     AddCoproduct( ZariskiCoframe,
       function( L )
-        local C;
         
         if Length( L ) = 1 then
             return L[1];
         fi;
         
-        L := List( L, MorphismOfUnderlyingCategory );
+        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
         
-        C := INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
+        L := Concatenation( L );
         
-        return ClosedSubsetOfProjByReducedMorphism( C );
+        return ClosedSubsetOfProjByListOfReducedMorphisms( L );
             
     end );
     

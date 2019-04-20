@@ -88,6 +88,10 @@ DeclareOperation( "ClosedSubsetOfFiberedSpecByReducedMorphism",
 DeclareOperation( "ClosedSubsetOfFiberedSpecByReducedMorphism",
         [ IsHomalgRingElement ] );
 
+#! @Arguments L
+DeclareOperation( "ClosedSubsetOfFiberedSpecByListOfReducedMorphisms",
+        [ IsList ] );
+
 #! @Description
 #!  <C>ClosedSubsetOfFiberedSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I

@@ -64,7 +64,7 @@ Display( I );
 AvC := Coproduct( A, C );
 #! V_{Z}( <...> )
 Display( AvC );
-#! V( <-6> )
+#! V( <6> )
 StandardMorphismOfUnderlyingCategory( AvC );
 #! <A morphism in Rows( Z )>
 Display( AvC );

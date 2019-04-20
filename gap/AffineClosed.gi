@@ -101,6 +101,32 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
 end );
     
 ##
+InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
+        "for a list",
+        [ IsList ],
+
+  function( L )
+    local R, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( L[1] ) );
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            UnderlyingRing, R,
+            IsClosedSubobject, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
@@ -253,17 +279,16 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     ##
     AddCoproduct( ZariskiCoframe,
       function( L )
-        local C;
         
         if Length( L ) = 1 then
             return L[1];
         fi;
         
-        L := List( L, MorphismOfUnderlyingCategory );
+        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
         
-        C := INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
+        L := Concatenation( L );
         
-        return ClosedSubsetOfSpecByReducedMorphism( C );
+        return ClosedSubsetOfSpecByListOfReducedMorphisms( L );
             
     end );
     

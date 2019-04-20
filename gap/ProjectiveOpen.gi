@@ -79,6 +79,32 @@ InstallMethod( OpenSubsetOfProjByReducedMorphism,
 end );
 
 ##
+InstallMethod( OpenSubsetOfProjByListOfReducedMorphisms,
+        "for a list",
+        [ IsList ],
+
+  function( L )
+    local R, A, ZF;
+    
+    R := UnderlyingRing( CapCategory( L[1] ) );
+    
+    A := rec( );
+    
+    ZF := ZariskiFrameOfProjUsingCategoryOfRows( R );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZF,
+            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            UnderlyingRing, R,
+            IsOpen, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( OpenSubsetOfProjByStandardMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
@@ -253,17 +279,16 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ##
     AddDirectProduct( ZariskiFrame,
       function( L )
-        local P;
         
         if Length( L ) = 1 then
             return L[1];
         fi;
         
-        L := List( L, MorphismOfUnderlyingCategory );
+        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
         
-        P := INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
+        L := Concatenation( L );
         
-        return OpenSubsetOfProjByReducedMorphism( P );
+        return OpenSubsetOfProjByListOfReducedMorphisms( L );
         
     end );
     

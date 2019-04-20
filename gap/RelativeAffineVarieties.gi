@@ -115,6 +115,39 @@ InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
 end );
     
 ##
+InstallMethod( ClosedSubsetOfFiberedSpecByListOfReducedMorphisms,
+        "for a list",
+        [ IsList ],
+
+  function( L )
+    local R, R_elim, A, ZC;
+    
+    R := UnderlyingRing( CapCategory( L[1] ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        L := List( L, m -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( m ) ) );
+    fi;
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    
+    ObjectifyObjectForCAPWithAttributes( A, ZC,
+            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            UnderlyingRing, R_elim,
+            BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R_elim ) ) ),
+            IsClosedSubobject, true
+            );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],

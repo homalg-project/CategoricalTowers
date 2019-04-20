@@ -80,6 +80,10 @@ DeclareOperation( "ClosedSubsetOfProjByReducedMorphism",
 DeclareOperation( "ClosedSubsetOfProjByReducedMorphism",
         [ IsString, IsHomalgRing ] );
 
+#! @Arguments L
+DeclareOperation( "ClosedSubsetOfProjByListOfReducedMorphisms",
+        [ IsList ] );
+
 #! @Description
 #!  <C>ClosedSubsetOfProjByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
