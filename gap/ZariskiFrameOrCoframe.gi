@@ -11,6 +11,10 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
   function( L )
     local biased_weak_fiber_product;
     
+    if Length( L ) = 1 then
+        return L[1];
+    fi;
+    
     biased_weak_fiber_product := function( I, J )
         return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
     end;
