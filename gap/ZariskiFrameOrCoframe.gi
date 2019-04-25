@@ -112,7 +112,7 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
     
     A := ListOfReducedMorphismsOfUnderlyingCategory( A );
     
-    return INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
+    return ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
     
 end );
 

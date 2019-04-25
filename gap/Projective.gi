@@ -30,6 +30,6 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     A := List( A, L -> List( L, AsCategoryOfRowsMorphism ) );
     
-    return List( A, INTERSECTION_OF_IDEALS_USING_CategoryOfRows );
+    return List( A, ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows );
     
 end );
