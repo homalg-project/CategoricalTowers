@@ -47,6 +47,8 @@ InstallMethod( ComplementAsClosedSubset,
     elif HasReducedMorphismOfUnderlyingCategory( A ) then
         A := ReducedMorphismOfUnderlyingCategory( A );
         return C!.ConstructorByReducedMorphism( A );
+    elif HasListOfMorphismsOfRank1RangeOfUnderlyingCategory( A ) then
+        A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     elif HasMorphismOfRank1RangeOfUnderlyingCategory( A ) then
         A := MorphismOfRank1RangeOfUnderlyingCategory( A );
     else
