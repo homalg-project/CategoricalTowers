@@ -77,13 +77,9 @@ end );
 ##
 InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasMorphismOfRank1RangeOfUnderlyingCategory ],
+        [ IsObjectInZariskiFrameOrCoframe and HasListOfReducedMorphismsOfUnderlyingCategory ],
 
-  function( A )
-    
-    return [ MorphismOfRank1RangeOfUnderlyingCategory( A ) ];
-    
-end );
+  ListOfReducedMorphismsOfUnderlyingCategory );
 
 ##
 InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
@@ -108,13 +104,13 @@ InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ReducedMorphismOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
 
   function( A )
     
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    A := ListOfReducedMorphismsOfUnderlyingCategory( A );
     
     return INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
     

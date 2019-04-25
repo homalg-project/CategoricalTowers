@@ -5,25 +5,31 @@
 #
 
 ##
-InstallMethod( ReducedMorphismOfUnderlyingCategory,
+InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
-    local mat, S, B, L;
+    local S, B;
     
-    mat := UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+    S := UnderlyingRing( A );
     
-    S := HomalgRing( mat );
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
-    mat := S * RadicalSubobjectOp( UnderlyingNonGradedRing( S ) * mat );
+    A := List( A, UnderlyingMatrix );
+    
+    A := List( A, UnderlyingMatrixOverNonGradedRing );
+    
+    A := List( A, RadicalSubobjectOp );
+    
+    A := List( A, mat -> S * mat );
     
     B := IrrelevantIdealColumnMatrix( S );
     
-    L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), mat ) );
+    A := List( A, mat -> List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), mat ) ) );
     
-    L := List( L, AsCategoryOfRowsMorphism );
+    A := List( A, L -> List( L, AsCategoryOfRowsMorphism ) );
     
-    return INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
+    return List( A, INTERSECTION_OF_IDEALS_USING_CategoryOfRows );
     
 end );

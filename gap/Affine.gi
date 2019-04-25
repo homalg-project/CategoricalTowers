@@ -5,16 +5,19 @@
 #
 
 ##
-InstallMethod( ReducedMorphismOfUnderlyingCategory,
+InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe of an affine variety",
         [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
 
   function( A )
-    local mat;
     
-    mat := UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
-    return AsCategoryOfRowsMorphism( RadicalSubobjectOp( mat ) );
+    A := List( A, UnderlyingMatrix );
+    
+    A := List( A, RadicalSubobjectOp );
+    
+    return List( A, AsCategoryOfRowsMorphism );
     
 end );
 
