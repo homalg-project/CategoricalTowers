@@ -75,7 +75,7 @@ DeclareOperation( "OpenSubsetOfProjByReducedMorphism",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments L
-DeclareOperation( "OpenSubsetOfProjByListOfReducedMorphisms",
+DeclareOperation( "OpenSubsetOfProjByListOfMorphismsOfRank1Range",
         [ IsList ] );
 
 #! @Description

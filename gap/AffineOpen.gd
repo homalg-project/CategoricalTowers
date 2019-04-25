@@ -74,7 +74,7 @@ DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments L
-DeclareOperation( "OpenSubsetOfSpecByListOfReducedMorphisms",
+DeclareOperation( "OpenSubsetOfSpecByListOfMorphismsOfRank1Range",
         [ IsList ] );
 
 #! @Description

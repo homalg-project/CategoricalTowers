@@ -101,7 +101,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
 end );
     
 ##
-InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
+InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
         "for a list",
         [ IsList ],
 
@@ -115,7 +115,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
             UnderlyingRing, R,
             IsClosedSubobject, true
             );
@@ -284,11 +284,11 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
+        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
         
         L := Concatenation( L );
         
-        return ClosedSubsetOfSpecByListOfReducedMorphisms( L );
+        return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( L );
             
     end );
     

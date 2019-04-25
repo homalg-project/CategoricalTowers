@@ -89,7 +89,7 @@ DeclareOperation( "ClosedSubsetOfFiberedSpecByReducedMorphism",
         [ IsHomalgRingElement ] );
 
 #! @Arguments L
-DeclareOperation( "ClosedSubsetOfFiberedSpecByListOfReducedMorphisms",
+DeclareOperation( "ClosedSubsetOfFiberedSpecByListOfMorphismsOfRank1Range",
         [ IsList ] );
 
 #! @Description

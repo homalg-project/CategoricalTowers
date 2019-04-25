@@ -45,7 +45,7 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
 end );
 
 ##
-InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasPreMorphismOfUnderlyingCategory ],
 
@@ -75,7 +75,7 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasReducedMorphismOfUnderlyingCategory ],
 
@@ -86,7 +86,7 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
 
@@ -103,7 +103,7 @@ InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
 
   function( A )
     
-    A := ListOfReducedMorphismsOfUnderlyingCategory( A );
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
     return INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
     

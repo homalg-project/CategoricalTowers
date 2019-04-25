@@ -79,7 +79,7 @@ InstallMethod( OpenSubsetOfSpecByReducedMorphism,
 end );
 
 ##
-InstallMethod( OpenSubsetOfSpecByListOfReducedMorphisms,
+InstallMethod( OpenSubsetOfSpecByListOfMorphismsOfRank1Range,
         "for a list",
         [ IsList ],
 
@@ -93,7 +93,7 @@ InstallMethod( OpenSubsetOfSpecByListOfReducedMorphisms,
     ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZF,
-            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -270,11 +270,11 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
+        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
         
         L := Concatenation( L );
         
-        return OpenSubsetOfSpecByListOfReducedMorphisms( L );
+        return OpenSubsetOfSpecByListOfMorphismsOfRank1Range( L );
         
     end );
     

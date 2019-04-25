@@ -84,7 +84,7 @@ DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
         [ IsHomalgRingElement ] );
 
 #! @Arguments L
-DeclareOperation( "ClosedSubsetOfSpecByListOfReducedMorphisms",
+DeclareOperation( "ClosedSubsetOfSpecByListOfMorphismsOfRank1Range",
         [ IsList ] );
 
 #! @Description

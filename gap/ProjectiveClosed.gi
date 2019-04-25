@@ -79,7 +79,7 @@ InstallMethod( ClosedSubsetOfProjByReducedMorphism,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfProjByListOfReducedMorphisms,
+InstallMethod( ClosedSubsetOfProjByListOfMorphismsOfRank1Range,
         "for a list",
         [ IsList ],
 
@@ -93,7 +93,7 @@ InstallMethod( ClosedSubsetOfProjByListOfReducedMorphisms,
     ZC := ZariskiCoframeOfProjUsingCategoryOfRows( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
             UnderlyingRing, R,
             IsClosedSubobject, true
             );
@@ -258,11 +258,11 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
+        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
         
         L := Concatenation( L );
         
-        return ClosedSubsetOfProjByListOfReducedMorphisms( L );
+        return ClosedSubsetOfProjByListOfMorphismsOfRank1Range( L );
             
     end );
     

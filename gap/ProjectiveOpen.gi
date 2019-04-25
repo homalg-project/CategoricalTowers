@@ -79,7 +79,7 @@ InstallMethod( OpenSubsetOfProjByReducedMorphism,
 end );
 
 ##
-InstallMethod( OpenSubsetOfProjByListOfReducedMorphisms,
+InstallMethod( OpenSubsetOfProjByListOfMorphismsOfRank1Range,
         "for a list",
         [ IsList ],
 
@@ -93,7 +93,7 @@ InstallMethod( OpenSubsetOfProjByListOfReducedMorphisms,
     ZF := ZariskiFrameOfProjUsingCategoryOfRows( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZF,
-            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -284,11 +284,11 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, ListOfReducedMorphismsOfUnderlyingCategory );
+        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
         
         L := Concatenation( L );
         
-        return OpenSubsetOfProjByListOfReducedMorphisms( L );
+        return OpenSubsetOfProjByListOfMorphismsOfRank1Range( L );
         
     end );
     

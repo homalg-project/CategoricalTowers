@@ -115,7 +115,7 @@ InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
 end );
     
 ##
-InstallMethod( ClosedSubsetOfFiberedSpecByListOfReducedMorphisms,
+InstallMethod( ClosedSubsetOfFiberedSpecByListOfMorphismsOfRank1Range,
         "for a list",
         [ IsList ],
 
@@ -135,7 +135,7 @@ InstallMethod( ClosedSubsetOfFiberedSpecByListOfReducedMorphisms,
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ListOfReducedMorphismsOfUnderlyingCategory, L,
+            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
             UnderlyingRing, R_elim,
             BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R_elim ) ) ),
             IsClosedSubobject, true
