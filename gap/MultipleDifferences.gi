@@ -41,7 +41,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddIsHomSetInhabited( D,
       function( A, B )
         
-        return IsHomSetInhabited( AsDifference( A ), AsDifference( B ) );
+        return IsInitial( A - B.I ) and ForAll( B, d -> IsInitial( A * d.J ) );
         
     end );
     
