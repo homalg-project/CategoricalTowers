@@ -183,17 +183,6 @@ end );
 #end );
 
 ##
-#InstallMethod( AdditiveInverseMutable,
-#        "for an object in a meet-semilattice of formal multiple differences",
-#        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-#        
-#  function( A )
-#    
-#    return AsFormalMultipleDifference( - AsDifference( A ) );
-#    
-#end );
-
-##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
