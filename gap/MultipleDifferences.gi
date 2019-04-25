@@ -183,6 +183,50 @@ end );
 #end );
 
 ##
+InstallMethod( ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local T, pos;
+    
+    T := DirectProduct( List( A, a -> a.I ) );
+    
+    A := List( A,
+      function( d )
+        local D;
+        
+        D := T - d.J;
+        
+        if HasNormalizedDistinguishedSubtrahend( d ) then
+            SetNormalizedDistinguishedSubtrahend( D, NormalizedDistinguishedSubtrahend( d ) );
+        elif HasPreDistinguishedSubtrahend( d ) then
+            SetPreDistinguishedSubtrahend( D, PreDistinguishedSubtrahend( d ) );
+        fi;
+        
+        return D;
+        
+    end );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
+        
+  ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
+
+##
+InstallMethod( ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
+        
+  ListOfStandardObjectsInMeetSemilatticeOfDifferences );
+
+##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
@@ -248,6 +292,13 @@ InstallMethod( ListOfObjectsOfDifferences,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfDifferences );
+
+##
+InstallMethod( ListOfObjectsOfDifferences,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences ],
+        
+  ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfObjectsOfDifferences,
@@ -592,6 +643,7 @@ InstallMethod( \.,
     name := NameRNam( string_as_int );
     
     if name[1] = 'I' then
+        ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences( A );
         List( A );
         return A[1].I;
     elif name[1] = 'J' then
