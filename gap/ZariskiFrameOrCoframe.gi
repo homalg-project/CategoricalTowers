@@ -515,16 +515,14 @@ InstallMethod( Pullback,
 end );
 
 ##
-InstallMethod( EmbedInSmallerAmbientSpace,
+InstallMethod( EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
   function( A )
     local phi, S, T;
     
-    StandardizeObject( A );
-    
-    phi := RingMorphismOfClosure( A );
+    phi := RingMorphismOfClosedSuperset( A );
     
     S := Source( phi );
     
@@ -540,6 +538,27 @@ InstallMethod( EmbedInSmallerAmbientSpace,
     fi;
     
     return Pullback( phi, A );
+    
+end );
+
+##
+InstallMethod( EmbedInSmallerAmbientSpace,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local b;
+    
+    b := HasClosure( A );
+    
+    A := EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset( A );
+    
+    if not b then
+        StandardizeObject( A );
+        A := EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset( A );
+    fi;
+    
+    return A;
     
 end );
 

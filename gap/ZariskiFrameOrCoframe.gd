@@ -160,7 +160,14 @@ DeclareOperation( "Pullback",
         [ IsHomalgRingMap, IsObjectInThinCategory ] );
 
 #! @Description
-#!  Embed <A>A</A> in a smaller ambient space.
+#!  Embed <A>A</A> by embedding a closed superset of it in a smaller ambient space.
+#! @Arguments A
+#! @Returns an object in a thin category
+DeclareOperation( "EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset",
+        [ IsObjectInThinCategory ] );
+
+#! @Description
+#!  Embed <A>A</A> by embdeding its closure in a smaller ambient space.
 #! @Arguments A
 #! @Returns an object in a thin category
 DeclareOperation( "EmbedInSmallerAmbientSpace",
