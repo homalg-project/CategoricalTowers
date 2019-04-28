@@ -251,7 +251,7 @@ LocallyClosedProjection := function( Gamma )
         od;
     fi;
 
-    Assert( 2, not IsSubset( image_closure, frame ) );
+    Assert( 2, not IsSubset( frame, image_closure ) );
   
     return [ [image_closure, frame ], additional_components ];
     
