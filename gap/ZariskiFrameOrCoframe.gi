@@ -367,6 +367,24 @@ InstallMethod( AClosedSuperset,
   Closure );
 
 ##
+InstallMethod( RingMorphismOfClosedSuperset,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local R;
+    
+    A := AClosedSuperset( A );
+    
+    R := UnderlyingRing( A );
+    
+    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    
+    return RingMapOntoSimplifiedResidueClassRing( R / A );
+    
+end );
+
+##
 InstallMethod( RingMorphismOfClosure,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
@@ -374,13 +392,9 @@ InstallMethod( RingMorphismOfClosure,
   function( A )
     local R;
     
-    A := Closure( A );
+    Closure( A );
     
-    R := UnderlyingRing( A );
-    
-    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
-    
-    return RingMapOntoSimplifiedResidueClassRing( R / A );
+    return RingMorphismOfClosedSuperset( A );
     
 end );
 
