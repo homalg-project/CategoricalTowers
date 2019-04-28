@@ -100,6 +100,16 @@ DeclareAttribute( "CanonicalObject",
 #! @Section Operations
 
 #! @Description
+#!  Return a closed superset of <A>A</A>, i.e.,
+#!  a set which includes <C>Closure</C>( <A>A</A> ).
+#!  If <C>HasClosure</C>( <A>A</A> ) = <C>true</C> then
+#!  <C>Closure</C>( <A>A</A> ) is returned.
+#! @Arguments A
+#! @Returns an object in the Zariski coframe
+DeclareOperation( "AClosedSuperset",
+        [ IsObjectInThinCategory ] );
+
+#! @Description
 #!  The morphism in the category of rows the module-theoretic image
 #!  of which is the vanishing ideal of <A>A</A>.
 #! @Arguments A

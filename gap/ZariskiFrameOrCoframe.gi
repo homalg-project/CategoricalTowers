@@ -333,6 +333,39 @@ InstallMethod( AffineApproximation,
     
 end );
 
+## the fallback method
+InstallMethod( AClosedSuperset,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  Closure );
+
+##
+InstallMethod( AClosedSuperset,
+        "for an object in a meet-semilattice of differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    ## faster than A.I:
+    return A[1].I;
+    
+end );
+
+##
+InstallMethod( AClosedSuperset,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+        
+  Closure );
+
+##
+InstallMethod( AClosedSuperset,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory and HasClosure ], 1001,
+        
+  Closure );
+
 ##
 InstallMethod( RingMorphismOfClosure,
         "for an object in a thin category",
