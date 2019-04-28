@@ -700,9 +700,9 @@ InstallMethod( DisplayString,
   function( A )
     local str, i;
     
+    str := DisplayString( A.I );
+    
     A := List( A );
-
-    str := DisplayString( A[1].I );
     
     for i in [ 1 .. Length( A ) ] do
         Append( str, Concatenation( " \\ ", DisplayString( A[i].J ) ) );
