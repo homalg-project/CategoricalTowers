@@ -34,3 +34,4 @@ DeclareOperation( "LocallyClosedProjection",
 DeclareOperation( "ConstructibleProjection",
         [ IsObjectInZariskiCoframe ] );
 #! @InsertSystem ConstructibleProjection
+#! @InsertSystem CharSet
