@@ -422,7 +422,7 @@ InstallMethod( Pullback,
   function( phi, A )
     local B;
     
-    B := List( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), a -> Pullback( phi, a ) );
+    B := List( PairInUnderlyingLattice( A ), a -> Pullback( phi, a ) );
     
     B := B[1] - B[2];
     
