@@ -15,3 +15,4 @@ ReadPackage( "ZariskiFrames", "gap/Projective.gi");
 ReadPackage( "ZariskiFrames", "gap/ProjectiveOpen.gi");
 ReadPackage( "ZariskiFrames", "gap/ProjectiveClosed.gi");
 ReadPackage( "ZariskiFrames", "gap/RelativeProjectiveVarieties.gi");
+ReadPackage( "ZariskiFrames", "gap/ConstructibleImage.gi");

@@ -1,19 +1,19 @@
-LoadPackage( "MatricesForHomalg", ">=2018.12.18" );
-LoadPackage( "RingsForHomalg", ">=2018.12.15" );
-LoadPackage( "GradedRingForHomalg", ">=2018.12.08" );
-LoadPackage( "Locales", ">=2019.03.27" );
-LoadPackage( "ZariskiFrames", ">=2019.03.28-3" );
-LoadPackage( "Digraph" );
+#
+# ZariskiFrames: Constructible image
+#
+# Implementations
+#
 
-Read( "Tensor.g" );
-
-##
-DeclareInfoClass( "InfoImage" );
-SetInfoLevel( InfoImage, 3 );
+SetInfoLevel( InfoConstructibleImage, 1 );
 
 ##
-DecreaseCodimensionByFixingVariables := function( Gamma )
-local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure, d0, fiber_dim, additional_components, a, H, j, Gamma0_test, Gamma0_image;
+InstallMethod( DecreaseCodimensionByFixingVariables,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( Gamma )
+    local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure,
+          d0, fiber_dim, additional_components, a, H, j, Gamma0_test, Gamma0_image;
 
     R := UnderlyingRing( Gamma );
 
@@ -77,31 +77,31 @@ local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closur
                     n := n - 1;
                     fiber_dim := fiber_dim - 1;
                     nrFails := 0;
-                    Info( InfoImage, 3, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " works. Fiber dim: ", fiber_dim );
+                    Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " works. Fiber dim: ", fiber_dim );
 
                 else
 
-                    Info( InfoImage, 3, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " decreases image" );
+                    Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " decreases image" );
 
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
                     if nrFails > 2*n then
-                        Info( InfoImage, 3, "try splitting fiber..." );
+                        Info( InfoConstructibleImage, 4, "try splitting fiber..." );
                         Gamma0_test := CoexponentialOnObjects( Gamma0, PreimageOfProjection( R, Gamma0_image ) );
-                        Info( InfoImage, 3, "...done" );
-                        Info( InfoImage, 3, "check split..." );
+                        Info( InfoConstructibleImage, 4, "...done" );
+                        Info( InfoConstructibleImage, 4, "check split..." );
                         if not IsSubset( Gamma0_test, Gamma0 ) and not IsInitial( Gamma0_test ) then
-                            Info( InfoImage, 3, "...done (yes)" );
-                            Info( InfoImage, 3, "split of componentes in the fiber..." );
+                            Info( InfoConstructibleImage, 4, "...done (yes)" );
+                            Info( InfoConstructibleImage, 4, "split of componentes in the fiber..." );
                             Gamma0 := CoexponentialOnObjects( Gamma0, Gamma0_test );
                             # We continue with one of the components, but might need to recompute values
                             image_closure := ImageClosureOfProjection( Gamma0 );
                             d0 := Dimension( image_closure );
                             fiber_dim := Dimension( Gamma0 ) - d0;
-                            Info( InfoImage, 3, "...done" );
+                            Info( InfoConstructibleImage, 4, "...done" );
                             Append( additional_components, [ Gamma0_test ] );
                         else
-                            Info( InfoImage, 3, "...done (no)" );
+                            Info( InfoConstructibleImage, 4, "...done (no)" );
                         fi;
                     fi;
 
@@ -112,7 +112,7 @@ local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closur
 
             else
 
-                Info( InfoImage, 3, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " does not decrease dimension" );
+                Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " does not decrease dimension" );
                 i := i + 1;
                 nrFails := nrFails + 1;
 
@@ -128,11 +128,16 @@ local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closur
 
     return [ Gamma0, additional_components ];
 
-end;
+end );
 
 ##
-LocallyClosedProjection := function( Gamma )
-    local counter, step, d, image_closure, d0, fiber_dim, Gamma0, additional_components, l, decomposition, frame, smaller_frame, i;
+InstallMethod( LocallyClosedProjection,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( Gamma )
+    local counter, step, d, image_closure, d0, fiber_dim, Gamma0, additional_components,
+          l, decomposition, frame, smaller_frame, i;
 
     counter := ValueOption( "counter" );
     
@@ -143,23 +148,23 @@ LocallyClosedProjection := function( Gamma )
         step := "Step ";
     fi;
     
-    Info( InfoImage, 2, step, counter, " dimension..." );
+    Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
     d := Dimension( Gamma );
-    Info( InfoImage, 2, step, counter, " ...done" );
+    Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-    Info( InfoImage, 2, step, counter, " image closure..." );
+    Info( InfoConstructibleImage, 3, step, counter, " image closure..." );
     image_closure := ImageClosureOfProjection( Gamma );
-    Info( InfoImage, 2, step, counter, " ...done" );
+    Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-    Info( InfoImage, 2, step, counter, " dimension..." );
+    Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
     d0 := Dimension( image_closure );
-    Info( InfoImage, 2, step, counter, " ...done" );
+    Info( InfoConstructibleImage, 3, step, counter, " ...done" );
    
     fiber_dim := d - d0;
 
     additional_components := [];
 
-    Info( InfoImage, 1, step, counter, " ", d0, "+", fiber_dim );
+    Info( InfoConstructibleImage, 2, step, counter, " ", d0, "+", fiber_dim );
 
     Gamma0 := Gamma;
 
@@ -178,23 +183,23 @@ LocallyClosedProjection := function( Gamma )
             Append( additional_components, l[2] );
 
             # if additional components are present, then the image needs to be recomputed
-            Info( InfoImage, 2, step, counter, " image closure..." );
+            Info( InfoConstructibleImage, 3, step, counter, " image closure..." );
             image_closure := ImageClosureOfProjection( Gamma0 );
-            Info( InfoImage, 2, step, counter, " ...done" );
+            Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-            Info( InfoImage, 2, step, counter, " dimension..." );
+            Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
             d0 := Dimension( image_closure );
-            Info( InfoImage, 2, step, counter, " ...done" );
+            Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
         fi;
 
-        Info( InfoImage, 2, step, counter, " dimension..." );
+        Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
         d := Dimension( Gamma0 );
-        Info( InfoImage, 2, step, counter, " ...done" );
+        Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
         fiber_dim := d - d0;
 
-        Info( InfoImage, 1, step, counter, " ", d0, "+", fiber_dim );
+        Info( InfoConstructibleImage, 2, step, counter, " ", d0, "+", fiber_dim );
 
     fi;
 
@@ -203,9 +208,9 @@ LocallyClosedProjection := function( Gamma )
     # Hence, we compute its associated primes here, and treat them all indepedently
     if fiber_dim > 0 then
 
-        Info( InfoImage, 2, step, counter, " unlucky decomposition in total space..." );
+        Info( InfoConstructibleImage, 3, step, counter, " unlucky decomposition in total space..." );
         decomposition := IrreducibleComponents( Gamma0 ); 
-        Info( InfoImage, 2, step, counter, " ...done" );
+        Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
         if Length( decomposition ) = 1 then
 
@@ -222,16 +227,16 @@ LocallyClosedProjection := function( Gamma )
 
     fi;
  
-    Info( InfoImage, 2, step, counter, " points at infinity..." );
+    Info( InfoConstructibleImage, 3, step, counter, " points at infinity..." );
     frame := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
-    Info( InfoImage, 2, step, counter, " ...done" );
+    Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-    Info( InfoImage, 2, step, counter, " frame..." );
+    Info( InfoConstructibleImage, 3, step, counter, " frame..." );
     frame := ImageOfProjection( frame );
-    Info( InfoImage, 2, step, counter, " ...done" );
+    Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
     smaller_frame := ValueOption( "smaller_frame" );
-    Info( InfoImage, 1, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+    Info( InfoConstructibleImage, 2, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
     if IsInt( smaller_frame ) and IsEmpty( additional_components ) then
         for i in [ 1 .. smaller_frame ] do
             l := DecreaseCodimensionByFixingVariables( Gamma : modify_hyperplanes := i );
@@ -243,9 +248,9 @@ LocallyClosedProjection := function( Gamma )
                 if not HasStandardMorphismOfUnderlyingCategory( frame ) then
                     Error();
                 fi;
-                Info( InfoImage, 1, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+                Info( InfoConstructibleImage, 2, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
             else
-                Info( InfoImage, 1, "Step ", counter, " break" );
+                Info( InfoConstructibleImage, 2, "Step ", counter, " break" );
                 break;
             fi;
         od;
@@ -253,14 +258,18 @@ LocallyClosedProjection := function( Gamma )
 
     Assert( 2, not IsSubset( frame, image_closure ) );
   
-    return [ [image_closure, frame ], additional_components ];
+    return [ [ image_closure, frame ], additional_components ];
     
-end;
+end );
 
 ##
-ConstructibleProjection := function( Gamma )
-    local B, counter, C, new_nodes, node, additional_components, decomposition, components, image_closure_and_frame, pre_nodes,
-          image_closure, frame, frame_decomp, im;
+InstallMethod( ConstructibleProjection,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( Gamma )
+    local B, counter, C, new_nodes, node, additional_components, decomposition, components,
+          image_closure_and_frame, pre_nodes, image_closure, frame, frame_decomp, im;
     
     counter := 0;
     
@@ -280,23 +289,23 @@ ConstructibleProjection := function( Gamma )
 
         decomposition := ValueOption( "decomposition" );
         if decomposition = true then
-            Info( InfoImage, 3, "Step ", counter, " decompotition... " );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " decompotition... " );
             components := IrreducibleComponents( Gamma );
-            Info( InfoImage, 3, "Step ", counter, " ...done (#", Length( components ), ")" );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (#", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         fi;
         
-        Info( InfoImage, 3, "Step ", counter, " intersect with preimage... " );
+        Info( InfoConstructibleImage, 4, "Step ", counter, " intersect with preimage... " );
         Gamma := PreimageOfProjection( Gamma, node!.object );
-        Info( InfoImage, 3, "Step ", counter, " ...done " );
+        Info( InfoConstructibleImage, 4, "Step ", counter, " ...done " );
         
-        Info( InfoImage, 3, "Step ", counter, " decide triviality... " );
+        Info( InfoConstructibleImage, 4, "Step ", counter, " decide triviality... " );
         if IsInitial( Gamma ) then
-            Info( InfoImage, 3, "Step ", counter, " ...done (yes)" );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (yes)" );
             continue;
         fi;
-        Info( InfoImage, 3, "Step ", counter, " ...done (no)" );
+        Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (no)" );
         
         counter := counter + 1;
         
@@ -306,7 +315,7 @@ ConstructibleProjection := function( Gamma )
         
         if Length( additional_components ) > 0 then
             
-            Info( InfoImage, 1, "Step ", counter, " found ", Length( additional_components ), " additional components of dimensions ", List( additional_components, Dimension ), "." );
+            Info( InfoConstructibleImage, 2, "Step ", counter, " found ", Length( additional_components ), " additional components of dimensions ", List( additional_components, Dimension ), "." );
             
             pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail ) );
             
@@ -324,9 +333,9 @@ ConstructibleProjection := function( Gamma )
 
             if not IsInitial( frame ) then
             
-                Info( InfoImage, 3, "Step ", counter, " frame decomposition... " );
+                Info( InfoConstructibleImage, 4, "Step ", counter, " frame decomposition... " );
                 frame_decomp := IrreducibleComponents( frame );
-                Info( InfoImage, 3, "Step ", counter, " ...done " );
+                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done " );
             
             fi;
 
@@ -340,7 +349,7 @@ ConstructibleProjection := function( Gamma )
         
         Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
         
-        Info( InfoImage, 1, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
+        Info( InfoConstructibleImage, 2, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
     od;
     
@@ -348,6 +357,4 @@ ConstructibleProjection := function( Gamma )
     
     return AsUnionOfMultipleDifferences( C );
     
-end;
-
-Read( "OldConstructibleImage.g" );
+end );

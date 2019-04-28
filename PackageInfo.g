@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
 Version := Maximum( [
-                   "2019.04.22", ## Mohamed's version
+                   "2019.04.23", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.11", ## Markus's version
                    ## this line prevents merge conflicts
@@ -49,6 +49,22 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
+  ),
+  rec(
+    LastName      := "Lange-Hegermann",
+    FirstNames    := "Markus",
+    IsAuthor      := true,
+    IsMaintainer  := false,
+    Email         := "markus.lange-hegermann@hs-owl.de",
+    WWWHome       := "https://www.hs-owl.de/fb5/fachbereich/fachgebiete/md/team/prof-dr-markus-lange-hegermann.html",
+    PostalAddress := Concatenation( [
+                       "Markus Lange-Hegermann\n",
+                       "Hochschule Ostwestfalen-Lippe\n",
+                       "Liebigstraße 87\n",
+                       "32657 Lemgo\n",
+                       "Germany" ] ),
+    Place         := "Aachen",
+    Institution   := "Hochschule Ostwestfalen-Lippe"
   ),
 ],
 
