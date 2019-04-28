@@ -21,8 +21,6 @@ AutoDoc(
             maketest := rec( folder := ".",
                              commands :=
                              [ "LoadPackage( \"ZariskiFrames\" );",
-                               "LoadPackage( \"GaussForHomalg\" );",
-                               "LoadPackage( \"RingsForHomalg\" );",
                                "LoadPackage( \"IO_ForHomalg\" );",
                                "HOMALG_IO.show_banners := false;",
                                "HOMALG_IO.suppress_PID := true;",

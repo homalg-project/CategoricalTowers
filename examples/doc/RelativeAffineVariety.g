@@ -3,8 +3,6 @@
 LoadPackage( "ZariskiFrames" );
 
 #! @Example
-LoadPackage( "RingsForHomalg" );
-#! true
 R := HomalgFieldOfRationalsInSingular( ) * "x";
 #! Q[x]
 S := R * "y";
