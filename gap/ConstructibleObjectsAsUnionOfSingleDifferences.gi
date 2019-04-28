@@ -459,7 +459,7 @@ InstallMethod( AdditiveInverseMutable,
         
   function( A )
     
-    return -( A + 0 );
+    return -UnionOfDifferences( A );
     
 end );
 
