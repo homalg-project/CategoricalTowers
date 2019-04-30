@@ -554,6 +554,7 @@ InstallMethod( EmbedInSmallerAmbientSpace,
     A := EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset( A );
     
     if not b then
+        # this should only be slightly more expensive than Closure( A ):
         StandardizeObject( A );
         A := EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset( A );
     fi;
