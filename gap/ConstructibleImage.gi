@@ -268,16 +268,24 @@ InstallMethod( ConstructibleProjection,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local B, counter, C, new_nodes, node, additional_components, decomposition, components,
+    local B, C, initial, counter, new_nodes, node, additional_components, decomposition, components,
           image_closure_and_frame, pre_nodes, image_closure, frame, frame_decomp, im;
     
-    counter := 0;
+    B := BaseOfFibration( Gamma );
+    
+    initial := InitialObject( B );
+    
+    initial := UnionOfMultipleDifferences( initial - initial );
     
     C := DatastructureForConstructibleObject( );
     
-    node := NodeInDatastructureOfConstructibleObject( C, BaseOfFibration( Gamma ), fail );
+    C!.InitialObject := initial;
+    
+    node := NodeInDatastructureOfConstructibleObject( C, B, fail );
     
     node!.Gamma := Gamma;
+    
+    counter := 0;
     
     while not IsDone( C ) do
         
