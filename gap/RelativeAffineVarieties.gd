@@ -24,6 +24,16 @@ DeclareAttribute( "ImageClosureOfProjection",
 DeclareAttribute( "FunctorPreimageOfProjectionBetweenZariskiCoframes",
         IsCapCategory );
 
+#! @Section Constructors
+
+#! @Description
+#!  Construct the Zariski coframe of closed sets in a fibered affine variety defined as the
+#!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
+#! @Arguments R
+#! @Returns a &CAP; category
+DeclareAttribute( "ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows",
+        IsHomalgRing );
+
 #! @Section Operations
 
 #!

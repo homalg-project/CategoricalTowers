@@ -62,7 +62,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                 od;
                 H := H + Random([-100..100]);
             fi;
-            H := ClosedSubsetOfSpec( H );
+            H := ClosedSubsetOfFiberedSpec( H );
 
             Gamma0_test := Gamma0 * H;
             

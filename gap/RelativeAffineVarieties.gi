@@ -22,7 +22,7 @@ InstallMethod( ClosedSubsetOfFiberedSpec,
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    ZC := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( R_elim );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             PreMorphismOfUnderlyingCategory, I,
@@ -77,7 +77,7 @@ InstallMethod( ClosedSubsetOfFiberedSpecByReducedMorphism,
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    ZC := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( R_elim );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             ReducedMorphismOfUnderlyingCategory, I,
@@ -132,7 +132,7 @@ InstallMethod( ClosedSubsetOfFiberedSpecByListOfMorphismsOfRank1Range,
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    ZC := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( R_elim );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
@@ -165,7 +165,7 @@ InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R_elim );
+    ZC := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( R_elim );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
             StandardMorphismOfUnderlyingCategory, I,
@@ -232,6 +232,140 @@ InstallMethod( ClosedSubsetOfFiberedSpecByStandardMorphism,
   function( str, R )
     
     return ClosedSubsetOfFiberedSpecByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
+    
+end );
+
+##
+InstallMethod( ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows,
+        "for a homalg ring",
+        [ IsHomalgRing ],
+        
+  function( R )
+    local name, ZariskiCoframe;
+    
+    name := "The coframe of Zariski closed subsets of the fibered affine spectrum of ";
+    
+    name := Concatenation( name, RingName( R ) );
+    
+    ZariskiCoframe := CreateCapCategory( name );
+    
+    SetUnderlyingRing( ZariskiCoframe, R );
+    
+    ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
+    
+    ZariskiCoframe!.Constructor := ClosedSubsetOfFiberedSpec;
+    ZariskiCoframe!.ConstructorByReducedMorphism := ClosedSubsetOfFiberedSpecByReducedMorphism;
+    ZariskiCoframe!.ConstructorByStandardMorphism := ClosedSubsetOfFiberedSpecByStandardMorphism;
+    
+    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
+    
+    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
+    
+    ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
+    
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
+    
+    ##
+    AddIsHomSetInhabited( ZariskiCoframe,
+      IsHomSetInhabitedForCoframesUsingCategoryOfRows );
+    
+    ##
+    if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
+        
+        ##
+        AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiCoframe,
+          IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows );
+        
+    fi;
+    
+    ##
+    AddTerminalObject( ZariskiCoframe,
+      function( arg )
+        local T;
+        
+        T := ClosedSubsetOfFiberedSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
+        
+        SetIsTerminal( T, true );
+        
+        return T;
+        
+    end );
+    
+    ##
+    AddInitialObject( ZariskiCoframe,
+      function( arg )
+        local I;
+        
+        I := ClosedSubsetOfFiberedSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
+        
+        SetIsInitial( I, true );
+        
+        return I;
+        
+    end );
+    
+    ##
+    AddCoproduct( ZariskiCoframe,
+      function( L )
+        
+        if Length( L ) = 1 then
+            return L[1];
+        fi;
+        
+        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
+        
+        L := Concatenation( L );
+        
+        return ClosedSubsetOfFiberedSpecByListOfMorphismsOfRank1Range( L );
+            
+    end );
+    
+    ##
+    AddDirectProduct( ZariskiCoframe,
+      function( L )
+        local P;
+        
+        L := MaximalObjects( L, IsSubset );
+        
+        if Length( L ) = 1 then
+            return L[1];
+        fi;
+        
+        L := List( L, MorphismOfUnderlyingCategory );
+        
+        P := UniversalMorphismFromDirectSum( L );
+        
+        return ClosedSubsetOfFiberedSpec( P );
+        
+    end );
+    
+    ## the closure of the set theortic difference
+    AddCoexponentialOnObjects( ZariskiCoframe,
+      function( A, B )
+        local L;
+        
+        B := MorphismOfUnderlyingCategory( B );
+        
+        if IsZero( B ) then
+            return InitialObject( A );
+        fi;
+        
+        A := MorphismOfUnderlyingCategory( A );
+        
+        A := UnderlyingMatrix( A );
+        B := UnderlyingMatrix( B );
+        
+        L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
+        
+        L := List( L, ClosedSubsetOfFiberedSpecByReducedMorphism );
+        
+        return Coproduct( L );
+        
+    end );
+    
+    Finalize( ZariskiCoframe );
+    
+    return ZariskiCoframe;
     
 end );
 
@@ -324,7 +458,7 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
         
         obj := R * obj;
         
-        return ClosedSubsetOfSpec( obj );
+        return ClosedSubsetOfFiberedSpec( obj );
         
     end );
     
@@ -347,7 +481,7 @@ InstallMethod( PreimageOfProjection,
   function( R, beta )
     local T, pi_;
     
-    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    T := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( R );
     
     pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
     
@@ -363,7 +497,7 @@ InstallMethod( PreimageOfProjection,
   function( gamma, beta )
     local T, pi_, preimage;
     
-    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( UnderlyingRing( gamma ) );
+    T := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( UnderlyingRing( gamma ) );
     
     pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
     
