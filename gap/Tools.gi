@@ -324,7 +324,15 @@ InstallMethod( AsUnionOfMultipleDifferences,
         Add( A, D );
     od;
     
-    A := CallFuncList( UnionOfMultipleDifferences, A );
+    if A = [ ] then
+        if IsBound( C!.InitialObject ) then
+            A := C!.InitialObject;
+        else
+            Error( "the list A constructed out of the datastructure of a constructible object C is empty and C!.InitialObject is not bound\n" );
+        fi;
+    else
+        A := CallFuncList( UnionOfMultipleDifferences, A );
+    fi;
     
     A!.C := C;
     
