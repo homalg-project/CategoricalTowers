@@ -67,13 +67,13 @@ DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferen
 #!  the output is <C>DirectProduct</C><M>(A1,A2,...)</M> - <C>Coproduct</C><M>(B1,B2,...)</M>.
 #! @Arguments D1, D2, ...
 #! @Returns an object in a &CAP; category
-#! @Group AsFormalMultipleDifference_group
+#! @Group UnionOfMultipleDifferences_group
 DeclareGlobalFunction( "UnionOfMultipleDifferences" );
 
 #! @Description
 #!  <C>AsFormalMultipleDifferenceOfNormalizedMorphisms</C> assumes that the input is normalized.
 #! @Arguments D1, D2, ...
-#! @Group AsFormalMultipleDifference_group
+#! @Group UnionOfMultipleDifferences_group
 DeclareGlobalFunction( "UnionOfMultipleDifferencesOfNormalizedObjects" );
 
 DeclareOperation( "Iterator",
