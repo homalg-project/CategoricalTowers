@@ -380,6 +380,79 @@ InstallMethod( ConstructibleProjection,
 end );
 
 ##
+InstallMethod( ConstructibleProjection,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( A )
+    
+    A := AsMultipleDifference( A );
+    
+    return ConstructibleProjection( A );
+    
+end );
+
+##
+InstallMethod( ConstructibleProjection,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    local Ac, im, imc, Ap, a;
+    
+    A := StandardizeObject( A );
+    
+    A := Factors( A );
+    
+    if Length( A ) > 1 then
+        A := List( A, ConstructibleProjection );
+        A := CallFuncList( UnionOfMultipleDifferences, A );
+        A := CanonicalObject( A );
+        A := FactorizedObject( A );
+        return A;
+    fi;
+    
+    A := A[1];
+    
+    Ac := A.I;
+    
+    im := ConstructibleProjection( Ac );
+    
+    imc := Closure( im );
+    
+    Ap := List( A, a -> a.J );
+    
+    Ap := List( Ap, ImageClosureOfProjection );
+    
+    Ap := Filtered( Ap, a -> not IsHomSetInhabited( imc, a ) );
+    
+    if Ap = [ ] then
+        return im;
+    fi;
+    
+    for a in Ap do
+        im := im - a;
+    od;
+    
+    Ap := List( Ap, a -> PreimageOfProjection( Ac, a ) );
+    
+    A := A * Coproduct( Ap );
+    
+    A := CanonicalObject( A );
+    
+    A := FactorizedObject( A );
+    
+    A := im + ConstructibleProjection( A );
+    
+    A := CanonicalObject( A );
+    
+    A := FactorizedObject( A );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( Visualize,
         "for a constructible object",
         [ IsConstructibleObject ],
