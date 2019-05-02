@@ -39,6 +39,10 @@ DeclareOperation( "IsClosed",
 
 #! @Section Attributes
 
+#!
+DeclareAttribute( "BaseOfFibration",
+        IsObjectInZariskiFrameOrCoframe );
+
 DeclareAttribute( "PreMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 

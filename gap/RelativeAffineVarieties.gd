@@ -13,10 +13,6 @@ DeclareAttribute( "FunctorImageClosureOfProjectionBetweenZariskiCoframes",
         IsCapCategory );
 
 #!
-DeclareAttribute( "BaseOfFibration",
-        IsObjectInZariskiCoframeOfAnAffineVariety );
-
-#!
 DeclareAttribute( "ImageClosureOfProjection",
         IsObjectInZariskiCoframeOfAnAffineVariety );
 
