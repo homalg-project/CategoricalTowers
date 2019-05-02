@@ -499,7 +499,7 @@ InstallMethod( PreimageOfProjection,
   function( gamma, beta )
     local T, pi_, preimage;
     
-    T := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( UnderlyingRing( gamma ) );
+    T := CapCategory( gamma );
     
     pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
     
