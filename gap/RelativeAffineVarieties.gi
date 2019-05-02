@@ -443,13 +443,15 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
         [ IsCapCategory and IsThinCategory ],
         
   function( T )
-    local R, S, pi_;
+    local R, S, pi_, Constructor;
     
     R := UnderlyingRing( T );
     
     S := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) );
     
     pi_ := CapFunctor( "Functor describing the preimage of the projection between an relative affine Zariski coframe and its base coframe", S, T );
+    
+    Constructor := T!.Constructor;
     
     AddObjectFunction( pi_,
       function( obj )
@@ -458,7 +460,7 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
         
         obj := R * obj;
         
-        return ClosedSubsetOfFiberedSpec( obj );
+        return Constructor( obj );
         
     end );
     
