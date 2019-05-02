@@ -10,19 +10,37 @@ InstallMethod( OpenSubsetOfSpec,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZF;
+    local R, R_elim, A, ZF, B;
     
     R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        R := R_elim;
+    fi;
     
     A := rec( );
     
     ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZF,
-            PreMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                PreMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsOpen, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                PreMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                IsOpen, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -47,19 +65,37 @@ InstallMethod( OpenSubsetOfSpecByReducedMorphism,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZC;
+    local R, R_elim, A, ZF, B;
     
     R := UnderlyingRing( CapCategory( I ) );
     
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        R := R_elim;
+    fi;
+    
     A := rec( );
     
-    ZC := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
+    ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ReducedMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                ReducedMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsOpen, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                ReducedMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                IsOpen, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -84,19 +120,37 @@ InstallMethod( OpenSubsetOfSpecByListOfMorphismsOfRank1Range,
         [ IsList ],
 
   function( L )
-    local R, A, ZF;
+    local R, R_elim, A, ZF, B;
     
     R := UnderlyingRing( CapCategory( L[1] ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        L := List( L, I -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) ) );
+        R := R_elim;
+    fi;
     
     A := rec( );
     
     ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZF,
-            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsOpen, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+                UnderlyingRing, R,
+                IsOpen, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -110,19 +164,37 @@ InstallMethod( OpenSubsetOfSpecByStandardMorphism,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZC;
+    local R, R_elim, A, ZF, B;
     
     R := UnderlyingRing( CapCategory( I ) );
     
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        R := R_elim;
+    fi;
+    
     A := rec( );
     
-    ZC := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
+    ZF := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            StandardMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                StandardMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsOpen, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZF,
+                StandardMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                IsOpen, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -181,6 +253,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
   function( R )
     local name, ZariskiFrame;
+    
+    R := PolynomialRingWithProductOrdering( R );
     
     name := "The frame of Zariski open subsets of the affine spectrum of ";
     
@@ -305,6 +379,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     Finalize( ZariskiFrame );
     
     ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
+    SetZariskiFrameOfAffineSpectrumUsingCategoryOfRows( R, ZariskiFrame );
     
     return ZariskiFrame;
     

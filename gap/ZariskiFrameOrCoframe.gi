@@ -325,7 +325,7 @@ InstallMethod( AffineApproximation,
     
     A := UnionOfRows( A, HomalgMatrix( [ Ap * t - 1 ], 1, 1, R_f ) );
     
-    A := ClosedSubsetOfFiberedSpecByReducedMorphism( A );
+    A := ClosedSubsetOfSpecByReducedMorphism( A );
     
     A!.auxiliary_indeterminate := t;
     
@@ -404,21 +404,15 @@ InstallMethod( Pullback,
         [ IsHomalgRingMap, IsObjectInZariskiFrameOrCoframe ],
         
   function( phi, A )
-    local T, fibered, C, B;
+    local T, C, B;
     
     T := Range( phi );
-    
-    fibered := not IsIdenticalObj( CoefficientsRing( T ), BaseRing( T ) );
     
     if IsObjectInZariskiCoframe( A ) then
         if IsObjectInZariskiCoframeOfAProjectiveVariety( A ) and IsHomalgGradedRing( T ) then
             C := ZariskiCoframeOfProjUsingCategoryOfRows( T );
         elif HasZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( Source( phi ) ) then
-            if fibered then
-                C := ZariskiCoframeOfFiberedAffineSpectrumUsingCategoryOfRows( T );
-            else
-                C := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( T );
-            fi;
+            C := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( T );
         else
             C := CapCategory( A );
         fi;
@@ -426,11 +420,7 @@ InstallMethod( Pullback,
         if IsObjectInZariskiFrameOfAProjectiveVariety( A ) and IsHomalgGradedRing( T ) then
             C := ZariskiFrameOfProjUsingCategoryOfRows( T );
         elif HasZariskiFrameOfAffineSpectrumUsingCategoryOfRows( Source( phi ) ) then
-            #if fibered then
-            #    C := ZariskiFrameOfFiberedAffineSpectrumUsingCategoryOfRows( T );
-            #else
-                C := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( T );
-            #fi;
+            C := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( T );
         else
             C := CapCategory( A );
         fi;

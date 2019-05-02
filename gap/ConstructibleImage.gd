@@ -26,9 +26,8 @@ DeclareOperation( "LocallyClosedProjection",
         [ IsObjectInZariskiCoframe ] );
 
 #! @Description
-#!  Compute the constructible projection of the fibered object <A>A</A>
-#!  in a Zariski coframe of an affine variety created using
-#!  one of the constructors <C>ClosedSubsetOfFiberedSpec*</C>.
+#!  Compute the projection of <A>A</A>
+#!  as a constructible subset of <C>BaseOfFibration</C>( <A>A</A> ).
 #! @Arguments A
 #! @Returns a constructible object as a union of formal multiple differences
 DeclareOperation( "ConstructibleProjection",

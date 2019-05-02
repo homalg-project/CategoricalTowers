@@ -10,19 +10,37 @@ InstallMethod( ClosedSubsetOfSpec,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZC;
+    local R, R_elim, A, ZC, B;
     
     R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        R := R_elim;
+    fi;
     
     A := rec( );
     
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            PreMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                PreMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsClosedSubobject, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                PreMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                IsClosedSubobject, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -58,19 +76,37 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZC;
+    local R, R_elim, A, ZC, B;
     
     R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        R := R_elim;
+    fi;
     
     A := rec( );
     
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ReducedMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                ReducedMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsClosedSubobject, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                ReducedMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                IsClosedSubobject, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -106,19 +142,37 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
         [ IsList ],
 
   function( L )
-    local R, A, ZC;
+    local R, R_elim, A, ZC, B;
     
     R := UnderlyingRing( CapCategory( L[1] ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        L := List( L, I -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) ) );
+        R := R_elim;
+    fi;
     
     A := rec( );
     
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsClosedSubobject, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+                UnderlyingRing, R,
+                IsClosedSubobject, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -132,19 +186,37 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
         [ IsCapCategoryMorphism ],
 
   function( I )
-    local R, A, ZC;
+    local R, R_elim, A, ZC, B;
     
     R := UnderlyingRing( CapCategory( I ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        R := R_elim;
+    fi;
     
     A := rec( );
     
     ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            StandardMorphismOfUnderlyingCategory, I,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                StandardMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsClosedSubobject, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                StandardMorphismOfUnderlyingCategory, I,
+                UnderlyingRing, R,
+                IsClosedSubobject, true
+                );
+    fi;
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -214,6 +286,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
   function( R )
     local name, ZariskiCoframe;
+    
+    R := PolynomialRingWithProductOrdering( R );
     
     name := "The coframe of Zariski closed subsets of the affine spectrum of ";
     
@@ -336,6 +410,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     end );
     
     Finalize( ZariskiCoframe );
+    
+    SetZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R, ZariskiCoframe );
     
     return ZariskiCoframe;
     
