@@ -261,7 +261,7 @@ InstallMethod( LocallyClosedProjection,
 
     Assert( 2, not IsSubset( frame, image_closure ) );
   
-    return [ [ image_closure, frame ], additional_components ];
+    return [ image_closure - frame, additional_components ];
     
 end );
 
@@ -334,9 +334,9 @@ InstallMethod( ConstructibleProjection,
             
         fi;
         
-        image_closure := image_closure_and_frame[1][1];
+        image_closure := image_closure_and_frame[1].I;
         
-        frame := image_closure_and_frame[1][2];
+        frame := image_closure_and_frame[1].J;
         
         frame_decomp := [];
 
