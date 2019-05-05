@@ -4,6 +4,7 @@
 # Implementations
 #
 
+##
 SetInfoLevel( InfoConstructibleImage, 1 );
 
 ##
