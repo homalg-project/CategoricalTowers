@@ -236,8 +236,10 @@ InstallMethod( LocallyClosedProjection,
     frame := ImageOfProjection( frame );
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
+    Info( InfoConstructibleImage, 5, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+    
     smaller_frame := ValueOption( "smaller_frame" );
-    Info( InfoConstructibleImage, 2, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+    
     if IsInt( smaller_frame ) and IsEmpty( additional_components ) then
         for i in [ 1 .. smaller_frame ] do
             l := DecreaseCodimensionByFixingVariables( Gamma : modify_hyperplanes := i );
@@ -249,7 +251,7 @@ InstallMethod( LocallyClosedProjection,
                 if not HasStandardMorphismOfUnderlyingCategory( frame ) then
                     Error();
                 fi;
-                Info( InfoConstructibleImage, 2, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+                Info( InfoConstructibleImage, 5, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
             else
                 Info( InfoConstructibleImage, 2, "Step ", counter, " break" );
                 break;
@@ -358,7 +360,7 @@ InstallMethod( ConstructibleProjection,
         
         Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
         
-        Info( InfoConstructibleImage, 2, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
+        Info( InfoConstructibleImage, 5, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
     od;
     
