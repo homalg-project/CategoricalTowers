@@ -432,7 +432,7 @@ InstallMethod( Pullback,
         if HasStandardMorphismOfUnderlyingCategory( A ) then
             return C!.ConstructorByStandardMorphism( B );
         elif HasReducedMorphismOfUnderlyingCategory( A ) then
-            return C!.ConstructorReducedMorphism( B );
+            return C!.ConstructorByReducedMorphism( B );
         fi;
     fi;
     
