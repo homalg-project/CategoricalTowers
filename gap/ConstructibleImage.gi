@@ -376,3 +376,18 @@ InstallMethod( ConstructibleProjection,
     return AsUnionOfMultipleDifferences( C );
     
 end );
+
+##
+InstallMethod( Visualize,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    if not IsBound( A!.C ) then
+        Print( "no datastructure of a constructible object found\n" );
+    fi;
+    
+    Splash( DotVertexLabelledDigraph( DigraphOfParents( A!.C ) ) );
+    
+end );

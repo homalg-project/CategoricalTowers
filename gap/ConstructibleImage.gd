@@ -34,3 +34,11 @@ DeclareOperation( "ConstructibleProjection",
         [ IsObjectInZariskiCoframe ] );
 #! @InsertSystem ConstructibleProjection
 #! @InsertSystem CharSet
+
+#! @Description
+#!  Opens a PDF with the graph of datastructure underlying the constructible set <A>A</A>,
+#!  provided it was created using <C>AsUnionOfMultipleDifferences</C>.
+#! @Arguments A
+#! @Returns nothing
+DeclareOperation( "Visualize",
+        [ IsConstructibleObject ] );
