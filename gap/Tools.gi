@@ -30,6 +30,7 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
               pos_nodes := [ ],
               neg_nodes := [ ],
               all_nodes := [ ],
+              old_nodes := [ ],
               );
     
     Objectify( TheTypeDatastructureForConstructibleObjects, C );
@@ -260,7 +261,11 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local f, pos_node, parents;
+    local all_nodes, old_nodes, f, pos_node, parents, keep_node_history;
+    
+    all_nodes := C!.all_nodes;
+    
+    old_nodes := ShallowCopy( all_nodes );
     
     f := function( N1, N2 )
            return IsHomSetInhabited( N1!.object, N2!.object );
@@ -280,6 +285,12 @@ InstallMethod( SquashOnce,
         pos_node!.children := MaximalObjects( pos_node!.children, f );
         
     od;
+    
+    keep_node_history := ValueOption( "keep_node_history" );
+    
+    if keep_node_history = true and Length( old_nodes ) > Length( all_nodes ) then
+        Add( C!.old_nodes, old_nodes );
+    fi;
     
     return C;
     
