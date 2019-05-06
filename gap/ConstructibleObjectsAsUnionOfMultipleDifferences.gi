@@ -225,8 +225,8 @@ InstallMethod( \+,
 
 ##
 InstallMethod( \+,
-        "for a constructible object as a union of formal single differences and an object in a meet-semilattice of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        "for an object in a thin category and a constructible object as a union of formal multiple differences",
+        [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
   UnionOfMultipleDifferences );
 
