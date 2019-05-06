@@ -36,7 +36,7 @@ DeclareOperation( "ConstructibleProjection",
 #! @InsertSystem CharSet
 
 #! @Description
-#!  Opens a PDF with the graph of datastructure underlying the constructible set <A>A</A>,
+#!  Opens a PDF with the graph of datastructure underlying the constructible object <A>A</A>,
 #!  provided it was created using <C>AsUnionOfMultipleDifferences</C>.
 #! @Arguments A
 #! @Returns nothing
