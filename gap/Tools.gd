@@ -86,20 +86,20 @@ DeclareOperation( "Squash",
 #! @Description
 #!  
 #! @Arguments C
-#! @Returns a datastructure of a node in a constructible object
+#! @Returns a constructible object
 DeclareOperation( "AsUnionOfMultipleDifferences",
         [ IsDatastructureForConstructibleObjects ] );
 
 #! @Description
 #!  
 #! @Arguments C
-#! @Returns a datastructure of a node in a constructible object
+#! @Returns a digraph
 DeclareOperation( "DigraphOfParents",
         [ IsDatastructureForConstructibleObjects ] );
 
 #! @Description
 #!  
 #! @Arguments C
-#! @Returns a datastructure of a node in a constructible object
+#! @Returns a digraph
 DeclareOperation( "DigraphOfChildren",
         [ IsDatastructureForConstructibleObjects ] );
