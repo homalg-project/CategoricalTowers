@@ -14,7 +14,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
         
   function( Gamma )
     local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure,
-          d0, fiber_dim, additional_components, a, H, j, Gamma0_test, Gamma0_image;
+          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image;
 
     R := UnderlyingRing( Gamma );
 
@@ -49,6 +49,8 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
     additional_components := [];
 
+    L := TerminalObject( Gamma );
+
     for a in values do
 
         i := 1;
@@ -64,6 +66,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                 H := H + Random([-100..100]);
             fi;
             H := ClosedSubsetOfSpecByReducedMorphism( H );
+            L := L * H;
 
             Gamma0_test := Gamma0 * H;
             
@@ -127,7 +130,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
     od;
 
-    return [ Gamma0, additional_components ];
+    return [ Gamma0, additional_components, L ];
 
 end );
 
