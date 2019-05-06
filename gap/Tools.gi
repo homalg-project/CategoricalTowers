@@ -44,7 +44,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local N, parents, nodes;
+    local N, parents, nodes, all_nodes;
     
     N := rec( 
               constructible_object := C,
@@ -73,8 +73,10 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     fi;
     
     if b = true or not ForAny( nodes, a -> a = N ) then
+        all_nodes := C!.all_nodes;
+        N!.number := Length( all_nodes ) + 1;
         Add( nodes, N );
-        Add( C!.all_nodes, N );
+        Add( all_nodes, N );
         Perform( parents, function( node ) Add( node!.children, N ); end );
     fi;
     
@@ -354,14 +356,20 @@ InstallMethod( DigraphOfParents,
     
     Perform( [ 1 .. Length( all_nodes ) ],
             function( i )
-              local l;
-              if all_nodes[i]!.parity = true then
+              local node, l;
+              
+              node := all_nodes[i];
+              
+              if node!.parity = true then
                   l := "+";
               else
                   l := "-";
               fi;
-              l := Concatenation( String( i ), " (", l, String( Dimension( all_nodes[i]!.object ) ), ")" );
+              
+              l := Concatenation( String( node!.number ), " (", l, String( Dimension( node!.object ) ), ")" );
+              
               SetDigraphVertexLabel( D, i, l );
+              
           end );
     
     return D;
@@ -382,14 +390,20 @@ InstallMethod( DigraphOfChildren,
     
     Perform( [ 1 .. Length( all_nodes ) ],
             function( i )
-              local l;
-              if all_nodes[i]!.parity = true then
+              local node, l;
+              
+              node := all_nodes[i];
+              
+              if node!.parity = true then
                   l := "+";
               else
                   l := "-";
               fi;
-              l := Concatenation( String( i ), " (", l, String( Dimension( all_nodes[i]!.object ) ), ")" );
+              
+              l := Concatenation( String( node!.number ), " (", l, String( Dimension( node!.object ) ), ")" );
+              
               SetDigraphVertexLabel( D, i, l );
+              
           end );
     
     return D;
