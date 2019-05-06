@@ -264,7 +264,7 @@ InstallMethod( SquashOnce,
            return IsHomSetInhabited( N1!.object, N2!.object );
          end;
     
-    for pos_node in C!.pos_nodes do
+    for pos_node in ShallowCopy( C!.pos_nodes ) do
         
         parents := pos_node!.parents;
         
