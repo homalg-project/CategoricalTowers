@@ -20,7 +20,7 @@ Display( I );
 Ie := EmbedInSmallerAmbientSpace( I );
 #! V_{Z}( <...> )
 Display( Ie );
-#! V( <1> )
+#! ∅
 Q := HomalgFieldOfRationals( );
 #! Q
 L := ClosedSubsetOfSpec( "[ 1 ]", Q );
@@ -30,7 +30,7 @@ Display( L );
 Le := EmbedInSmallerAmbientSpace( L );
 #! V_{Q}( <...> )
 Display( Le );
-#! V( <1> )
+#! ∅
 R := HomalgRingOfIntegersInSingular( ) * "x";
 #! Z[x]
 B := ClosedSubsetOfSpec( "[ 2, x^2+1 ]", R );

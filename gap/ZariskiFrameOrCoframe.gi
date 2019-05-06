@@ -577,6 +577,8 @@ InstallMethod( EmbedInSmallerAmbientSpace,
         A := EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset( A );
     fi;
     
+    StandardizeObject( A );
+    
     return A;
     
 end );
