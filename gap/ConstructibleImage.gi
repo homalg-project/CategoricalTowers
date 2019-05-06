@@ -275,7 +275,7 @@ InstallMethod( ConstructibleProjection,
         
   function( Gamma )
     local B, C, initial, counter, new_nodes, node, additional_components, decomposition, components,
-          image_closure_and_frame, pre_nodes, image_closure, frame, frame_decomp, im;
+          image_closure_and_frame, pre_nodes, image_closure, frame, frame_decomp, squash;
     
     B := BaseOfFibration( Gamma );
     
@@ -367,7 +367,11 @@ InstallMethod( ConstructibleProjection,
         
     od;
     
-    Squash( C );
+    squash := ValueOption( "squash" );
+    
+    if not squash = false then
+        Squash( C );
+    fi;
     
     return AsUnionOfMultipleDifferences( C );
     
