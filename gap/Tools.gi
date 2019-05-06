@@ -361,7 +361,13 @@ InstallMethod( DigraphOfParents,
   function( C )
     local all_nodes, D;
     
-    all_nodes := C!.all_nodes;
+    all_nodes := ValueOption( "all_nodes" );
+    
+    if IsInt( all_nodes ) then
+        all_nodes := C!.old_nodes[all_nodes];
+    else
+        all_nodes := C!.all_nodes;
+    fi;
     
     D := Digraph( all_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
     
@@ -395,7 +401,13 @@ InstallMethod( DigraphOfChildren,
   function( C )
     local all_nodes, D;
     
-    all_nodes := C!.all_nodes;
+    all_nodes := ValueOption( "all_nodes" );
+    
+    if IsInt( all_nodes ) then
+        all_nodes := C!.old_nodes[all_nodes];
+    else
+        all_nodes := C!.all_nodes;
+    fi;
     
     D := Digraph( all_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
     
