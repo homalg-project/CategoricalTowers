@@ -388,6 +388,6 @@ InstallMethod( Visualize,
         Print( "no datastructure of a constructible object found\n" );
     fi;
     
-    Splash( DotVertexLabelledDigraph( DigraphOfParents( A!.C ) ) );
+    Visualize( A!.C );
     
 end );
