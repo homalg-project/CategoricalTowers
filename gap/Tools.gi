@@ -261,15 +261,13 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local all_nodes, old_nodes, f, pos_node, parents, keep_node_history;
+    local all_nodes, old_nodes, pos_node, parents, f, children, keep_node_history;
     
     all_nodes := C!.all_nodes;
     
     old_nodes := ShallowCopy( all_nodes );
     
-    f := function( N1, N2 )
-           return IsHomSetInhabited( N1!.object, N2!.object );
-         end;
+    all_nodes := [ ];
     
     for pos_node in ShallowCopy( C!.pos_nodes ) do
         
@@ -282,9 +280,24 @@ InstallMethod( SquashOnce,
             
         fi;
         
-        pos_node!.children := MaximalObjects( pos_node!.children, f );
+    od;
+    
+    f := function( N1, N2 )
+           return IsHomSetInhabited( N1!.object, N2!.object );
+         end;
+    
+    for pos_node in C!.pos_nodes do
+        
+        children := MaximalObjects( pos_node!.children, f );
+        
+        pos_node!.children := children;
+        
+        Add( all_nodes, pos_node );
+        AppendNew( all_nodes, children );
         
     od;
+    
+    C!.all_nodes := all_nodes;
     
     keep_node_history := ValueOption( "keep_node_history" );
     
