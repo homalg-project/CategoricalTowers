@@ -103,3 +103,10 @@ DeclareOperation( "DigraphOfParents",
 #! @Returns a digraph
 DeclareOperation( "DigraphOfChildren",
         [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  Opens a PDF with the graph of the datastructure of a constructible object <A>A</A>.
+#! @Arguments A
+#! @Returns nothing
+DeclareOperation( "Visualize",
+        [ IsDatastructureForConstructibleObjects ] );
