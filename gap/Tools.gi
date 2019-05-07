@@ -29,7 +29,7 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
               pre_nodes := [ ],
               pos_nodes := [ ],
               neg_nodes := [ ],
-              all_nodes := [ ],
+              act_nodes := [ ], ## active nodes
               old_nodes := [ ],
               );
     
@@ -45,7 +45,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local N, parents, nodes, all_nodes;
+    local N, parents, nodes, act_nodes;
     
     N := rec( 
               constructible_object := C,
@@ -74,10 +74,10 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     fi;
     
     if b = true or not ForAny( nodes, a -> a = N ) then
-        all_nodes := C!.all_nodes;
-        N!.number := Length( all_nodes ) + 1;
+        act_nodes := C!.act_nodes;
+        N!.number := Length( act_nodes ) + 1;
         Add( nodes, N );
-        Add( all_nodes, N );
+        Add( act_nodes, N );
         Perform( parents, function( node ) Add( node!.children, N ); end );
     fi;
     
@@ -180,7 +180,7 @@ InstallMethod( Remove,
         [ IsNodeInDatastructureOfConstructibleObjects ],
         
   function( pos_node )
-    local C, pos_nodes, p, all_nodes, neg_nodes, children, neg_node,
+    local C, pos_nodes, p, act_nodes, neg_nodes, children, neg_node,
           grandparents, child, spouses, grandparent, aunts;
     
     if not pos_node!.parity = true then
@@ -199,15 +199,15 @@ InstallMethod( Remove,
     
     Remove( pos_nodes, p );
     
-    all_nodes := C!.all_nodes;
+    act_nodes := C!.act_nodes;
     
-    p := PositionProperty( all_nodes, node -> IsIdenticalObj( node, pos_node ) );
+    p := PositionProperty( act_nodes, node -> IsIdenticalObj( node, pos_node ) );
     
     if p = fail then
-        Error( "pos_node not among all_nodes\n" );
+        Error( "pos_node not among act_nodes\n" );
     fi;
     
-    Remove( all_nodes, p );
+    Remove( act_nodes, p );
     
     neg_node := pos_node!.parents[1];
     
@@ -221,13 +221,13 @@ InstallMethod( Remove,
     
     Remove( neg_nodes, p );
     
-    p := PositionProperty( all_nodes, node -> IsIdenticalObj( node, neg_node ) );
+    p := PositionProperty( act_nodes, node -> IsIdenticalObj( node, neg_node ) );
     
     if p = fail then
-        Error( "neg_node not among all_nodes\n" );
+        Error( "neg_node not among act_nodes\n" );
     fi;
     
-    Remove( all_nodes, p );
+    Remove( act_nodes, p );
     
     children := pos_node!.children;
     
@@ -261,13 +261,13 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local all_nodes, old_nodes, pos_node, parents, f, children, keep_node_history;
+    local act_nodes, old_nodes, pos_node, parents, f, children, keep_node_history;
     
-    all_nodes := C!.all_nodes;
+    act_nodes := C!.act_nodes;
     
-    old_nodes := ShallowCopy( all_nodes );
+    old_nodes := ShallowCopy( act_nodes );
     
-    all_nodes := [ ];
+    act_nodes := [ ];
     
     for pos_node in ShallowCopy( C!.pos_nodes ) do
         
@@ -292,16 +292,16 @@ InstallMethod( SquashOnce,
         
         pos_node!.children := children;
         
-        Add( all_nodes, pos_node );
-        AppendNew( all_nodes, children );
+        Add( act_nodes, pos_node );
+        AppendNew( act_nodes, children );
         
     od;
     
-    C!.all_nodes := all_nodes;
+    C!.act_nodes := act_nodes;
     
     keep_node_history := ValueOption( "keep_node_history" );
     
-    if keep_node_history = true and Length( old_nodes ) > Length( all_nodes ) then
+    if keep_node_history = true and Length( old_nodes ) > Length( act_nodes ) then
         Add( C!.old_nodes, old_nodes );
     fi;
     
@@ -319,11 +319,11 @@ InstallMethod( Squash,
     
     repeat
         
-        l := Length( C!.all_nodes );
+        l := Length( C!.act_nodes );
         
         SquashOnce( C );
         
-    until l = Length( C!.all_nodes );
+    until l = Length( C!.act_nodes );
     
     return C;
     
@@ -372,23 +372,23 @@ InstallMethod( DigraphOfParents,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local all_nodes, D;
+    local act_nodes, D;
     
-    all_nodes := ValueOption( "all_nodes" );
+    act_nodes := ValueOption( "act_nodes" );
     
-    if IsInt( all_nodes ) then
-        all_nodes := C!.old_nodes[all_nodes];
+    if IsInt( act_nodes ) then
+        act_nodes := C!.old_nodes[act_nodes];
     else
-        all_nodes := C!.all_nodes;
+        act_nodes := C!.act_nodes;
     fi;
     
-    D := Digraph( all_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
+    D := Digraph( act_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
     
-    Perform( [ 1 .. Length( all_nodes ) ],
+    Perform( [ 1 .. Length( act_nodes ) ],
             function( i )
               local node, l;
               
-              node := all_nodes[i];
+              node := act_nodes[i];
               
               if node!.parity = true then
                   l := "+";
@@ -412,23 +412,23 @@ InstallMethod( DigraphOfChildren,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local all_nodes, D;
+    local act_nodes, D;
     
-    all_nodes := ValueOption( "all_nodes" );
+    act_nodes := ValueOption( "act_nodes" );
     
-    if IsInt( all_nodes ) then
-        all_nodes := C!.old_nodes[all_nodes];
+    if IsInt( act_nodes ) then
+        act_nodes := C!.old_nodes[act_nodes];
     else
-        all_nodes := C!.all_nodes;
+        act_nodes := C!.act_nodes;
     fi;
     
-    D := Digraph( all_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
+    D := Digraph( act_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
     
-    Perform( [ 1 .. Length( all_nodes ) ],
+    Perform( [ 1 .. Length( act_nodes ) ],
             function( i )
               local node, l;
               
-              node := all_nodes[i];
+              node := act_nodes[i];
               
               if node!.parity = true then
                   l := "+";
