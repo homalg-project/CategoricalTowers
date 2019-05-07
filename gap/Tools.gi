@@ -30,7 +30,6 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
               pos_nodes := [ ],
               neg_nodes := [ ],
               act_nodes := [ ], ## active nodes
-              old_nodes := [ ],
               );
     
     Objectify( TheTypeDatastructureForConstructibleObjects, C );
@@ -261,11 +260,7 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local act_nodes, old_nodes, pos_node, parents, f, children, keep_node_history;
-    
-    act_nodes := C!.act_nodes;
-    
-    old_nodes := ShallowCopy( act_nodes );
+    local act_nodes, pos_node, parents, f, children;
     
     act_nodes := [ ];
     
@@ -298,12 +293,6 @@ InstallMethod( SquashOnce,
     od;
     
     C!.act_nodes := act_nodes;
-    
-    keep_node_history := ValueOption( "keep_node_history" );
-    
-    if keep_node_history = true and Length( old_nodes ) > Length( act_nodes ) then
-        Add( C!.old_nodes, old_nodes );
-    fi;
     
     return C;
     
@@ -374,13 +363,7 @@ InstallMethod( DigraphOfParents,
   function( C )
     local act_nodes, D;
     
-    act_nodes := ValueOption( "act_nodes" );
-    
-    if IsInt( act_nodes ) then
-        act_nodes := C!.old_nodes[act_nodes];
-    else
-        act_nodes := C!.act_nodes;
-    fi;
+    act_nodes := C!.act_nodes;
     
     D := Digraph( act_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
     
@@ -414,13 +397,7 @@ InstallMethod( DigraphOfChildren,
   function( C )
     local act_nodes, D;
     
-    act_nodes := ValueOption( "act_nodes" );
-    
-    if IsInt( act_nodes ) then
-        act_nodes := C!.old_nodes[act_nodes];
-    else
-        act_nodes := C!.act_nodes;
-    fi;
+    act_nodes := C!.act_nodes;
     
     D := Digraph( act_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
     
