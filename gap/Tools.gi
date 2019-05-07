@@ -98,7 +98,7 @@ end );
 
 ##
 InstallMethod( Attach,
-        "for a node in a datastructure of a constructible object and an object in a thin category, and a list of objects in a thin category",
+        "for a node in a datastructure of a constructible object, an object in a thin category, and a list of objects in a thin category",
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInThinCategory, IsList ],
         
   function( N, pos_node, L )
