@@ -44,23 +44,23 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local N, parents, nodes, act_nodes;
+    local parents, N, nodes, act_nodes;
+    
+    parents := ValueOption( "parents" );
+    
+    if parents = fail then
+        parents := [ ];
+    fi;
     
     N := rec( 
               constructible_object := C,
               object := A,
               parity := b,
-              parents := [ ],
+              parents := parents,
               children := [ ],
               );
     
     Objectify( TheTypeNodeInDatastructureForConstructibleObjects, N );
-    
-    parents := ValueOption( "parents" );
-    
-    if not parents = fail then
-        N!.parents := parents;
-    fi;
     
     if b = true then
         ## positive node
