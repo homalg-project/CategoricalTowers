@@ -194,7 +194,7 @@ InstallMethod( Remove,
         [ IsNodeInDatastructureOfConstructibleObjects ],
         
   function( pos_node )
-    local C, pos_nodes, p, act_nodes, neg_nodes, children, neg_node,
+    local C, pos_nodes, p, act_nodes, neg_node, neg_nodes, children,
           grandparents, child, spouses, grandparent, aunts;
     
     if not pos_node!.parity = true then
