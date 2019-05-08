@@ -45,7 +45,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local parents, N, nodes, act_nodes, counter;
+    local parents, N, nodes, all_nodes, counter, p, n;
     
     parents := ValueOption( "parents" );
     
@@ -76,14 +76,22 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         return N;
     fi;
     
-    if b = true or not ForAny( nodes, a -> a = N ) then
-        act_nodes := C!.act_nodes;
+    if b = false then
+        p := PositionProperty( nodes, a -> a = N );
+    fi;
+    
+    if b = true or p = fail then
         counter := C!.counter + 1;
         C!.counter := counter;
         N!.number := counter;
         Add( nodes, N );
-        Add( act_nodes, N );
+        Add( C!.act_nodes, N );
         Perform( parents, function( node ) Add( node!.children, N ); end );
+    else ## b = false and not p = fail
+        ## an equal negative node already exists
+        n := nodes[p];
+        AppendNew( n!.parents, N!.parents );
+        N := n;
     fi;
     
     return N;
