@@ -290,7 +290,13 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local act_nodes, neg_nodes, pos_node, parents, f, children;
+    local visualize, act_nodes, neg_nodes, pos_node, parents, f, children;
+    
+    visualize := ValueOption( "visualize" );
+    
+    if visualize = true then
+        Visualize( C );
+    fi;
     
     act_nodes := [ ];
     neg_nodes := [ ];
