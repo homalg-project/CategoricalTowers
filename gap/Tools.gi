@@ -188,6 +188,8 @@ InstallMethod( Remove,
     
     if not pos_node!.parity = true then
         Error( "the given argument pos_node is not a positive node\n" );
+    elif not Length( pos_node!.parents ) = 1 then
+        Error( "expected exactly one parent but found ", Length( pos_node!.parents ), "\n" );
     fi;
     
     C := pos_node!.constructible_object;
@@ -213,6 +215,12 @@ InstallMethod( Remove,
     Remove( act_nodes, p );
     
     neg_node := pos_node!.parents[1];
+    
+    if not neg_node!.parity = false then
+        Error( "neg_node is not a negative node\n" );
+    elif not Length( neg_node!.children ) = 1 then
+        Error( "expected exactly one child but found ", Length( neg_node!.children ), "\n" );
+    fi;
     
     neg_nodes := C!.neg_nodes;
     
