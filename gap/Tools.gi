@@ -26,6 +26,7 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
     local C;
     
     C := rec( 
+              counter := 0,
               pre_nodes := [ ],
               pos_nodes := [ ],
               neg_nodes := [ ],
@@ -44,7 +45,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local parents, N, nodes, act_nodes;
+    local parents, N, nodes, act_nodes, counter;
     
     parents := ValueOption( "parents" );
     
@@ -77,7 +78,9 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     
     if b = true or not ForAny( nodes, a -> a = N ) then
         act_nodes := C!.act_nodes;
-        N!.number := Length( act_nodes ) + 1;
+        counter := C!.counter + 1;
+        C!.counter := counter;
+        N!.number := counter;
         Add( nodes, N );
         Add( act_nodes, N );
         Perform( parents, function( node ) Add( node!.children, N ); end );
