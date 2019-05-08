@@ -272,9 +272,10 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local act_nodes, pos_node, parents, f, children;
+    local act_nodes, neg_nodes, pos_node, parents, f, children;
     
     act_nodes := [ ];
+    neg_nodes := [ ];
     
     for pos_node in ShallowCopy( C!.pos_nodes ) do
         
@@ -301,10 +302,12 @@ InstallMethod( SquashOnce,
         
         Add( act_nodes, pos_node );
         AppendNew( act_nodes, children );
+        AppendNew( neg_nodes, children );
         
     od;
     
     C!.act_nodes := act_nodes;
+    C!.neg_nodes := neg_nodes;
     
     return C;
     
