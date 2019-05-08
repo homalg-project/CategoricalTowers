@@ -110,6 +110,7 @@ InstallMethod( Attach,
         Error( "the first argument N is not a pre-node\n" );
     fi;
     
+    ## the underlying datastructure of a constructible object
     C := N!.constructible_object;
     
     pos_nodes := List( C!.pos_nodes, n -> n!.object );
