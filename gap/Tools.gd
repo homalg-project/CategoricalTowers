@@ -38,10 +38,12 @@ DeclareOperation( "NodeInDatastructureOfConstructibleObject",
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ] );
 
 #! @Description
-#!  Attach to the datastructure <C>C</C> of a constructible object at the node <A>N</A>
-#!  * <A>pos_node</A> as a new positive node;
-#!  * the entries of <A>L</A> as new negative node,
-#!  and return a list of pre-nodes corresponding to list <A>L</A> of negative nodes.
+#!  Use <C>NodeInDatastructureOfConstructibleObject</C> to attach
+#!  to the datastructure <C>C</C> of a constructible object
+#!  * at the parents of the pre-node <A>N</A> the object <A>pos_node</A> as a new positive node,
+#!  * at the resulting positive node the entries of <A>L</A> as new negative nodes,
+#!  * at the resulting positive node the entries of <A>L</A> as new pre-nodes,
+#!  and return a the list of these pre-nodes.
 #! @Arguments N, pos_node, L
 #! @Returns a list of pre-nodes
 DeclareOperation( "Attach",
