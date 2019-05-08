@@ -367,6 +367,8 @@ InstallMethod( ConstructibleProjection,
         
     od;
     
+    C!.finalized := true;
+    
     squash := ValueOption( "squash" );
     
     if not squash = false then
