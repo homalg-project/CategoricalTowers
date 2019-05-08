@@ -63,10 +63,13 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     fi;
     
     if b = true then
+        ## positive node
         nodes := C!.pos_nodes;
     elif b = false then
+        ## negative node
         nodes := C!.neg_nodes;
     else
+        ## pre-node, these are the ones returned when calling Pop( C )
         nodes := C!.pre_nodes;
         Add( nodes, N );
         return N;
