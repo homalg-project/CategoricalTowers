@@ -31,6 +31,9 @@ InstallGlobalFunction( DatastructureForConstructibleObject,
               pos_nodes := [ ],
               neg_nodes := [ ],
               act_nodes := [ ], ## active nodes
+              all_nodes := [ ],
+              all_pos_nodes := [ ],
+              all_neg_nodes := [ ],
               );
     
     Objectify( TheTypeDatastructureForConstructibleObjects, C );
@@ -66,9 +69,11 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     if b = true then
         ## positive node
         nodes := C!.pos_nodes;
+        all_nodes := C!.all_pos_nodes;
     elif b = false then
         ## negative node
         nodes := C!.neg_nodes;
+        all_nodes := C!.all_neg_nodes;
     else
         ## pre-node, these are the ones returned when calling Pop( C )
         nodes := C!.pre_nodes;
@@ -85,6 +90,8 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         C!.counter := counter;
         N!.number := counter;
         Add( nodes, N );
+        Add( all_nodes, N );
+        Add( C!.all_nodes, N );
         Add( C!.act_nodes, N );
         Perform( parents, function( node ) Add( node!.children, N ); end );
     else ## b = false and not p = fail
