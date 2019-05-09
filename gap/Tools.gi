@@ -62,6 +62,8 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
               parity := b,
               act_parents := parents, ## active parents
               act_children := [ ],    ## active children
+              all_parents := ShallowCopy( parents ),
+              all_children := [ ],
               );
     
     Objectify( TheTypeNodeInDatastructureForConstructibleObjects, N );
@@ -94,10 +96,12 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         Add( C!.all_nodes, N );
         Add( C!.act_nodes, N );
         Perform( parents, function( node ) Add( node!.act_children, N ); end );
+        Perform( parents, function( node ) Add( node!.all_children, N ); end );
     else ## b = false and not p = fail
         ## an equal negative node already exists
         n := nodes[p];
         AppendNew( n!.act_parents, N!.act_parents );
+        AppendNew( n!.all_parents, N!.all_parents );
         N := n;
     fi;
     
@@ -138,7 +142,9 @@ InstallMethod( Attach,
     if not p = fail then
         pos_node := C!.pos_nodes[p];
         AppendNew( pos_node!.act_parents, N!.act_parents );
+        AppendNew( pos_node!.all_parents, N!.all_parents );
         Perform( N!.act_parents, function( node ) Add( node!.act_children, pos_node ); end );
+        Perform( N!.all_parents, function( node ) Add( node!.all_children, pos_node ); end );
     else
         pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.act_parents );
     fi;
@@ -160,7 +166,9 @@ InstallMethod( Attach,
             neg_node := C!.neg_nodes[q];
             if p = fail then
                 Add( neg_node!.act_parents, pos_node );
+                Add( neg_node!.all_parents, pos_node );
                 Add( pos_node!.act_children, neg_node );
+                Add( pos_node!.all_children, neg_node );
             fi;
         fi;
     od;
@@ -404,17 +412,25 @@ InstallMethod( DigraphOfParents,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local act_nodes, D;
+    local all, nodes, parents, D;
     
-    act_nodes := C!.act_nodes;
+    all := ValueOption( "all" );
     
-    D := Digraph( act_nodes, function( a, b ) return ForAny( a!.act_parents, p -> IsIdenticalObj( b, p ) ); end );
+    if all = true then
+        nodes := C!.all_nodes;
+        parents := "all_parents";
+    else
+        nodes := C!.act_nodes;
+        parents := "act_parents";
+    fi;
     
-    Perform( [ 1 .. Length( act_nodes ) ],
+    D := Digraph( nodes, function( a, b ) return ForAny( a!.(parents), p -> IsIdenticalObj( b, p ) ); end );
+    
+    Perform( [ 1 .. Length( nodes ) ],
             function( i )
               local node, l;
               
-              node := act_nodes[i];
+              node := nodes[i];
               
               if node!.parity = true then
                   l := "+";
@@ -438,17 +454,25 @@ InstallMethod( DigraphOfChildren,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local act_nodes, D;
+    local all, nodes, children, D;
     
-    act_nodes := C!.act_nodes;
+    all := ValueOption( "all" );
     
-    D := Digraph( act_nodes, function( b, a ) return ForAny( a!.act_children, p -> IsIdenticalObj( b, p ) ); end );
+    if all = true then
+        nodes := C!.all_nodes;
+        children := "all_children";
+    else
+        nodes := C!.act_nodes;
+        children := "act_children";
+    fi;
     
-    Perform( [ 1 .. Length( act_nodes ) ],
+    D := Digraph( nodes, function( b, a ) return ForAny( a!.(children), p -> IsIdenticalObj( b, p ) ); end );
+    
+    Perform( [ 1 .. Length( nodes ) ],
             function( i )
               local node, l;
               
-              node := act_nodes[i];
+              node := nodes[i];
               
               if node!.parity = true then
                   l := "+";
