@@ -60,8 +60,8 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
               constructible_object := C,
               object := A,
               parity := b,
-              parents := parents,
-              children := [ ],
+              act_parents := parents, ## active parents
+              act_children := [ ],    ## active children
               );
     
     Objectify( TheTypeNodeInDatastructureForConstructibleObjects, N );
@@ -93,11 +93,11 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         Add( all_nodes, N );
         Add( C!.all_nodes, N );
         Add( C!.act_nodes, N );
-        Perform( parents, function( node ) Add( node!.children, N ); end );
+        Perform( parents, function( node ) Add( node!.act_children, N ); end );
     else ## b = false and not p = fail
         ## an equal negative node already exists
         n := nodes[p];
-        AppendNew( n!.parents, N!.parents );
+        AppendNew( n!.act_parents, N!.act_parents );
         N := n;
     fi;
     
@@ -137,10 +137,10 @@ InstallMethod( Attach,
     
     if not p = fail then
         pos_node := C!.pos_nodes[p];
-        AppendNew( pos_node!.parents, N!.parents );
-        Perform( N!.parents, function( node ) Add( node!.children, pos_node ); end );
+        AppendNew( pos_node!.act_parents, N!.act_parents );
+        Perform( N!.act_parents, function( node ) Add( node!.act_children, pos_node ); end );
     else
-        pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.parents );
+        pos_node := NodeInDatastructureOfConstructibleObject( C, pos_node, true : parents := N!.act_parents );
     fi;
     
     neg_nodes := List( C!.neg_nodes, n -> n!.object );
@@ -159,8 +159,8 @@ InstallMethod( Attach,
         else
             neg_node := C!.neg_nodes[q];
             if p = fail then
-                Add( neg_node!.parents, pos_node );
-                Add( pos_node!.children, neg_node );
+                Add( neg_node!.act_parents, pos_node );
+                Add( pos_node!.act_children, neg_node );
             fi;
         fi;
     od;
@@ -206,8 +206,8 @@ InstallMethod( Remove,
     
     if not pos_node!.parity = true then
         Error( "the given argument pos_node is not a positive node\n" );
-    elif not Length( pos_node!.parents ) = 1 then
-        Error( "expected exactly one parent but found ", Length( pos_node!.parents ), "\n" );
+    elif not Length( pos_node!.act_parents ) = 1 then
+        Error( "expected exactly one parent but found ", Length( pos_node!.act_parents ), "\n" );
     fi;
     
     C := pos_node!.constructible_object;
@@ -232,12 +232,12 @@ InstallMethod( Remove,
     
     Remove( act_nodes, p );
     
-    neg_node := pos_node!.parents[1];
+    neg_node := pos_node!.act_parents[1];
     
     if not neg_node!.parity = false then
         Error( "neg_node is not a negative node\n" );
-    elif not Length( neg_node!.children ) = 1 then
-        Error( "expected exactly one child but found ", Length( neg_node!.children ), "\n" );
+    elif not Length( neg_node!.act_children ) = 1 then
+        Error( "expected exactly one child but found ", Length( neg_node!.act_children ), "\n" );
     fi;
     
     neg_nodes := C!.neg_nodes;
@@ -258,12 +258,12 @@ InstallMethod( Remove,
     
     Remove( act_nodes, p );
     
-    children := pos_node!.children;
+    children := pos_node!.act_children;
     
-    grandparents := neg_node!.parents;
+    grandparents := neg_node!.act_parents;
     
     for child in children do
-        spouses := child!.parents;
+        spouses := child!.act_parents;
         p := PositionProperty( spouses, node -> IsIdenticalObj( node, pos_node ) );
         if p = fail then
             Error( "pos_node is not among the spouses\n" );
@@ -273,7 +273,7 @@ InstallMethod( Remove,
     od;
     
     for grandparent in grandparents do
-        aunts := grandparent!.children;
+        aunts := grandparent!.act_children;
         p := PositionProperty( aunts, node -> IsIdenticalObj( node, neg_node ) );
         if p = fail then
             Error( "neg_node is not among the aunts\n" );
@@ -307,9 +307,9 @@ InstallMethod( SquashOnce,
     
     for pos_node in ShallowCopy( C!.pos_nodes ) do
         
-        parents := pos_node!.parents;
+        parents := pos_node!.act_parents;
         
-        if Length( parents ) = 1 and Length( parents[1]!.children ) = 1 and
+        if Length( parents ) = 1 and Length( parents[1]!.act_children ) = 1 and
            IsHomSetInhabited( parents[1]!.object, pos_node!.object ) then
             
             Remove( pos_node );
@@ -324,9 +324,9 @@ InstallMethod( SquashOnce,
     
     for pos_node in C!.pos_nodes do
         
-        children := MaximalObjects( pos_node!.children, f );
+        children := MaximalObjects( pos_node!.act_children, f );
         
-        pos_node!.children := children;
+        pos_node!.act_children := children;
         
         Add( act_nodes, pos_node );
         AppendNew( act_nodes, children );
@@ -372,7 +372,7 @@ InstallMethod( AsUnionOfMultipleDifferences,
     A := [ ];
     
     for pos_node in C!.pos_nodes do
-        children := pos_node!.children;
+        children := pos_node!.act_children;
         if children = [ ] then
             D := [ pos_node!.object - 0 ];
         else
@@ -408,7 +408,7 @@ InstallMethod( DigraphOfParents,
     
     act_nodes := C!.act_nodes;
     
-    D := Digraph( act_nodes, function( a, b ) return ForAny( a!.parents, p -> IsIdenticalObj( b, p ) ); end );
+    D := Digraph( act_nodes, function( a, b ) return ForAny( a!.act_parents, p -> IsIdenticalObj( b, p ) ); end );
     
     Perform( [ 1 .. Length( act_nodes ) ],
             function( i )
@@ -442,7 +442,7 @@ InstallMethod( DigraphOfChildren,
     
     act_nodes := C!.act_nodes;
     
-    D := Digraph( act_nodes, function( b, a ) return ForAny( a!.children, p -> IsIdenticalObj( b, p ) ); end );
+    D := Digraph( act_nodes, function( b, a ) return ForAny( a!.act_children, p -> IsIdenticalObj( b, p ) ); end );
     
     Perform( [ 1 .. Length( act_nodes ) ],
             function( i )
