@@ -109,10 +109,14 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function ( A )
-    local Ap, C, a, nonzero_rows;
+    local param, Ap, C, a, nonzero_rows;
     
     if not IsObjectInZariskiCoframe( A.I ) then
         TryNextMethod( );
+    fi;
+    
+    if HasParametrizedObject( A ) then
+        param := ParametrizedObject( A );
     fi;
     
     NormalizeObject( A );
@@ -137,7 +141,13 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     Ap := CertainRows( Ap, nonzero_rows );
     
-    return A - C!.ConstructorByReducedMorphism( Ap );
+    A := A - C!.ConstructorByReducedMorphism( Ap );
+    
+    if IsBound( param ) then
+        SetParametrizedObject( A, param );
+    fi;
+    
+    return A;
     
 end );
 
@@ -147,13 +157,17 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function ( A )
-    local Ac, C, d, D, nonzero_rows;
+    local param, Ac, C, d, D, nonzero_rows;
     
     if not IsObjectInZariskiCoframe( A[1].I ) then
         TryNextMethod( );
     fi;
     
     StandardizeObject( A );
+    
+    if HasParametrizedObject( A ) then
+        param := ParametrizedObject( A );
+    fi;
     
     Ac := Closure( A );
     
@@ -204,6 +218,10 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     if not d = [ ] then
         A := List( d, s -> A - s );
         A := CallFuncList( AsFormalMultipleDifference, A );
+    fi;
+    
+    if IsBound( param ) then
+        SetParametrizedObject( A, param );
     fi;
     
     return A;
