@@ -121,7 +121,12 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     NormalizeObject( A );
     
-    Ap := A.J;
+    if HasPreDistinguishedSubtrahend( A ) or HasNormalizedDistinguishedSubtrahend( A ) then
+        Ap := DistinguishedSubtrahend( A );
+    else
+        Ap := A.J;
+    fi;
+    
     A := A.I;
     
     C := CapCategory( A );
