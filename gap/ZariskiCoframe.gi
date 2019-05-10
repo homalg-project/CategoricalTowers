@@ -220,10 +220,12 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     A := Closure( A );
     
-    if not d = [ ] then
-        A := List( d, s -> A - s );
-        A := CallFuncList( AsFormalMultipleDifference, A );
+    if d = [ ] then
+        d := [ InitialObject( A ) ];
     fi;
+    
+    A := List( d, s -> A - s );
+    A := CallFuncList( AsFormalMultipleDifference, A );
     
     if IsBound( param ) then
         SetParametrizedObject( A, param );
