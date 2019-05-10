@@ -12,11 +12,17 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
   function( gamma )
     local R, R_elim, var, B, base, S, weights;
     
-    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
+    R := UnderlyingRing( gamma );
     
-    R := HomalgRing( gamma );
+    if HasIsFieldForHomalg( R ) and IsFieldForHomalg( R ) then
+        return InitialObject( ZariskiCoframeOfProjUsingCategoryOfRows( GradedRing( R ) ) );
+    elif HasIsIntegersForHomalg( R ) and IsIntegersForHomalg( R ) then
+        return InitialObject( ZariskiCoframeOfProjUsingCategoryOfRows( GradedRing( R ) ) );
+    fi;
     
     R_elim := PolynomialRingWithProductOrdering( R );
+    
+    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
     
     gamma := BasisOfRows( R_elim * gamma );
     
