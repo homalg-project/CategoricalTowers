@@ -263,7 +263,7 @@ InstallMethod( LocallyClosedProjection,
     fi;
 
     Assert( 2, not IsSubset( frame, image_closure ) );
-  
+    
     return [ image_closure - frame, additional_components ];
     
 end );
