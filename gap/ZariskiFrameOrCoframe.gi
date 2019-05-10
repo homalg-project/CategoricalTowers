@@ -439,7 +439,7 @@ InstallMethod( Pullback,
     B := C!.Constructor( B );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -459,7 +459,7 @@ InstallMethod( Pullback,
     B := B[1] - B[2];
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     if HasNormalizedDistinguishedSubtrahend( A ) then
@@ -485,7 +485,7 @@ InstallMethod( Pullback,
     B := CallFuncList( AsFormalMultipleDifference, B );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -505,7 +505,7 @@ InstallMethod( Pullback,
     B := CallFuncList( UnionOfDifferences, A );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -525,7 +525,7 @@ InstallMethod( Pullback,
     B := CallFuncList( UnionOfMultipleDifferences, A );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( phi, ParametrizedObject( A ) ) );
+        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
