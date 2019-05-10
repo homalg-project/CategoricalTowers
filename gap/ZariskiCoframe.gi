@@ -121,10 +121,12 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     NormalizeObject( A );
     
-    if HasPreDistinguishedSubtrahend( A ) or HasNormalizedDistinguishedSubtrahend( A ) then
+    Ap := A.J;
+    
+    if IsInitial( Ap ) then
+        Ap := InitialObject( Ap );
+    elif HasPreDistinguishedSubtrahend( A ) or HasNormalizedDistinguishedSubtrahend( A ) then
         Ap := DistinguishedSubtrahend( A );
-    else
-        Ap := A.J;
     fi;
     
     A := A.I;
@@ -184,7 +186,9 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
     
     for D in A do
         
-        if HasPreDistinguishedSubtrahend( D ) or HasNormalizedDistinguishedSubtrahend( D ) then
+        if IsInitial( D.J ) then
+            D := InitialObject( D.J );
+        elif HasPreDistinguishedSubtrahend( D ) or HasNormalizedDistinguishedSubtrahend( D ) then
             D := DistinguishedSubtrahend( D );
         else
             D := D.J;
