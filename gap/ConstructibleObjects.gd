@@ -38,6 +38,8 @@ DeclareOperation( "IsClosed",
 DeclareProperty( "IsLocallyClosed",
         IsConstructibleObject );
 
+#! @Section Attributes
+
 #! @Arguments A
 DeclareAttribute( "LocallyClosedApproximation",
         IsConstructibleObject );
@@ -52,8 +54,6 @@ DeclareAttribute( "CanonicalObject",
 #! @Arguments A
 DeclareAttribute( "FactorizedObject",
         IsConstructibleObject );
-
-#! @Section Attributes
 
 #! @Arguments A
 DeclareAttribute( "NormalizedObject",
