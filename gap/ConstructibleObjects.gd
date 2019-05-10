@@ -89,3 +89,13 @@ fi;
 
 DeclareAttribute( "DegreeAttr",
         IsConstructibleObject );
+
+#! @Section Operations
+
+#! @Arguments A
+DeclareOperation( "NormalizeObject",
+        [ IsConstructibleObject ] );
+
+#! @Arguments A
+DeclareOperation( "StandardizeObject",
+        [ IsConstructibleObject ] );

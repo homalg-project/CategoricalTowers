@@ -27,6 +27,32 @@ InstallMethod( AdditiveInverseMutable,
 end );
 
 ##
+InstallMethod( NormalizeObject,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    List( A, NormalizeObject );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( StandardizeObject,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    List( A, StandardizeObject );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( IsClosedSubobject,
         "for a constructible object",
         [ IsConstructibleObject ],
