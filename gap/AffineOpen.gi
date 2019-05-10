@@ -4,6 +4,17 @@
 # Implementations
 #
 
+## fallback method
+InstallMethod( BaseOfFibration,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
+        
+  function( A )
+    
+    return TerminalObject( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( UnderlyingRing( A ) ) );
+    
+end );
+
 ##
 InstallMethod( OpenSubsetOfSpec,
         "for a CAP category morphism",
