@@ -273,6 +273,28 @@ InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
 end );
 
 ##
+InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A )
+    
+    return List( A, NormalizeObject );
+    
+end );
+
+##
+InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences,
+        "for a constructible object as a union of formal multiple differences",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
+        
+  function( A )
+    
+    return List( A, StandardizeObject );
+    
+end );
+
+##
 InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
