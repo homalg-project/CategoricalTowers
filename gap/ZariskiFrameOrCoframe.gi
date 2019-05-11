@@ -367,12 +367,12 @@ InstallMethod( AClosedSuperset,
   Closure );
 
 ##
-InstallMethod( RingEpimorphismOfClosedSuperset,
+InstallMethod( RingEpimorphismOntoResidueClassRingOfClosedSuperset,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
   function( A )
-    local R;
+    local R, T;
     
     A := AClosedSuperset( A );
     
@@ -380,7 +380,23 @@ InstallMethod( RingEpimorphismOfClosedSuperset,
     
     A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
     
-    return RingMapOntoSimplifiedResidueClassRing( R / A );
+    T := R / A;
+    
+    return RingMap( Indeterminates( T ), R, T );
+    
+end );
+
+##
+InstallMethod( RingEpimorphismOfClosedSuperset,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( A )
+    local pi;
+    
+    pi := RingEpimorphismOntoResidueClassRingOfClosedSuperset( A );
+    
+    return RingMapOntoSimplifiedResidueClassRing( Range( pi ) );
     
 end );
 
@@ -439,7 +455,7 @@ InstallMethod( Pullback,
     B := C!.Constructor( B );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -459,7 +475,7 @@ InstallMethod( Pullback,
     B := B[1] - B[2];
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     if HasNormalizedDistinguishedSubtrahend( A ) then
@@ -485,7 +501,7 @@ InstallMethod( Pullback,
     B := CallFuncList( AsFormalMultipleDifference, B );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -505,7 +521,7 @@ InstallMethod( Pullback,
     B := CallFuncList( UnionOfDifferences, A );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -525,7 +541,7 @@ InstallMethod( Pullback,
     B := CallFuncList( UnionOfMultipleDifferences, A );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;

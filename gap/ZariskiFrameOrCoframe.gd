@@ -138,6 +138,9 @@ DeclareOperation( "StandardizeObject",
 DeclareOperation( "IsSubset",
         [ IsObjectInZariskiFrameOrCoframe, IsObjectInZariskiFrameOrCoframe ] );
 
+DeclareOperation( "RingEpimorphismOntoResidueClassRingOfClosedSuperset",
+        [ IsObjectInThinCategory ] );
+
 #! @Description
 #!  Return the ring epimorphism from the coordinate ring
 #!  of the ambient space of <A>A</A> onto the coordinate ring
