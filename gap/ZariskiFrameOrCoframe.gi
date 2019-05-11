@@ -367,7 +367,7 @@ InstallMethod( AClosedSuperset,
   Closure );
 
 ##
-InstallMethod( RingMorphismOfClosedSuperset,
+InstallMethod( RingEpimorphismOfClosedSuperset,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
@@ -385,7 +385,7 @@ InstallMethod( RingMorphismOfClosedSuperset,
 end );
 
 ##
-InstallMethod( RingMorphismOfClosure,
+InstallMethod( RingEpimorphismOfClosure,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
@@ -394,7 +394,7 @@ InstallMethod( RingMorphismOfClosure,
     
     Closure( A );
     
-    return RingMorphismOfClosedSuperset( A );
+    return RingEpimorphismOfClosedSuperset( A );
     
 end );
 
@@ -439,7 +439,7 @@ InstallMethod( Pullback,
     B := C!.Constructor( B );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -459,7 +459,7 @@ InstallMethod( Pullback,
     B := B[1] - B[2];
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     if HasNormalizedDistinguishedSubtrahend( A ) then
@@ -485,7 +485,7 @@ InstallMethod( Pullback,
     B := CallFuncList( AsFormalMultipleDifference, B );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -505,7 +505,7 @@ InstallMethod( Pullback,
     B := CallFuncList( UnionOfDifferences, A );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -525,7 +525,7 @@ InstallMethod( Pullback,
     B := CallFuncList( UnionOfMultipleDifferences, A );
     
     if HasParametrizedObject( A ) then
-        SetParametrizedObject( B, Pullback( RingMorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
+        SetParametrizedObject( B, Pullback( RingEpimorphismOfClosure( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
     fi;
     
     return B;
@@ -540,7 +540,7 @@ InstallMethod( EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset,
   function( A )
     local phi, S, T;
     
-    phi := RingMorphismOfClosedSuperset( A );
+    phi := RingEpimorphismOfClosedSuperset( A );
     
     S := Source( phi );
     
@@ -670,7 +670,7 @@ InstallMethod( PseudoIteratorOfClosedSingletons,
 end );
 
 ##
-InstallMethod( RingMorphismOfAClosedPoint,
+InstallMethod( RingEpimorphismOfAClosedPoint,
         "for an object in a thin category",
         [ IsObjectInThinCategory ],
         
@@ -679,7 +679,7 @@ InstallMethod( RingMorphismOfAClosedPoint,
     
     singleton := AClosedSingleton( A );
     
-    map := RingMorphismOfClosure( singleton );
+    map := RingEpimorphismOfClosure( singleton );
     
     A := Closure( A );
     
@@ -708,7 +708,7 @@ InstallMethod( AClosedPoint,
         
   function( A )
     
-    return ImagesOfRingMapAsColumnMatrix( RingMorphismOfAClosedPoint( A ) );
+    return ImagesOfRingMapAsColumnMatrix( RingEpimorphismOfAClosedPoint( A ) );
     
 end );
 
@@ -719,7 +719,7 @@ InstallMethod( AClosedPoint,
         
   function( A )
     
-    return Pullback( RingMorphismOfAClosedPoint( A ), ParametrizedObject( A ) );
+    return Pullback( RingEpimorphismOfAClosedPoint( A ), ParametrizedObject( A ) );
     
 end );
 
@@ -739,7 +739,7 @@ InstallMethod( PseudoIteratorOfClosedPoints,
         
         A := iter!.variety;
         
-        phi := RingMorphismOfAClosedPoint( A );
+        phi := RingEpimorphismOfAClosedPoint( A );
         s := phi!.singleton;
         
         if HasParametrizedObject( A ) then

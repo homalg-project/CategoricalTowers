@@ -144,7 +144,7 @@ DeclareOperation( "IsSubset",
 #!  of the closure of <A>A</A> in its ambient space.
 #! @Arguments A
 #! @Returns a homalg ring map
-DeclareOperation( "RingMorphismOfClosedSuperset",
+DeclareOperation( "RingEpimorphismOfClosedSuperset",
         [ IsObjectInThinCategory ] );
 
 #! @Description
@@ -153,7 +153,7 @@ DeclareOperation( "RingMorphismOfClosedSuperset",
 #!  of the closure of <A>A</A> in its ambient space.
 #! @Arguments A
 #! @Returns a homalg ring map
-DeclareOperation( "RingMorphismOfClosure",
+DeclareOperation( "RingEpimorphismOfClosure",
         [ IsObjectInThinCategory ] );
 
 #! @Description
@@ -202,7 +202,7 @@ DeclareOperation( "PseudoIteratorOfClosedSingletons",
 #!  the residue field of a closed point of <A>A</A>.
 #! @Arguments A
 #! @Returns a homalg ring map
-DeclareOperation( "RingMorphismOfAClosedPoint",
+DeclareOperation( "RingEpimorphismOfAClosedPoint",
         [ IsObjectInThinCategory ] );
 
 #! @Description
