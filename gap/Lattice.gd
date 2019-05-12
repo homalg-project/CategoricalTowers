@@ -8,6 +8,21 @@
 
 #! Lattices are finite complete, finite cocomplete, skeletal, thin categories.
 
+#! @Section Attributes
+
+#! @Description
+#!  Compute the <Q>factors</Q> of <A>A</A>.
+#!  This is a list <A>C</A> with the minimum specification
+#!  that <C>DirectProduct</C>(<C>L</C>)=<A>A</A>.
+#! @Arguments A
+#! @Returns a list
+DeclareOperation( "Factors",
+        [ IsObjectInThinCategory ] );
+
+#!
+DeclareAttribute( "FactorsAttr",
+        IsObjectInThinCategory );
+
 #! @Section Operations
 
 #! @Description
@@ -23,15 +38,6 @@ DeclareOperation( "\*",
 #! @Returns an object in a join semilattice
 DeclareOperation( "\+",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
-
-#! @Description
-#!  Compute the <Q>factors</Q> of <A>A</A>.
-#!  This is a list <A>C</A> with the minimum specification
-#!  that <C>DirectProduct</C>(<C>L</C>)=<A>A</A>.
-#! @Arguments A
-#! @Returns a list
-DeclareOperation( "Factors",
-        [ IsObjectInThinCategory ] );
 
 # @Section Tools
 
