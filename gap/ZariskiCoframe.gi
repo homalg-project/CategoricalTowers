@@ -392,7 +392,7 @@ InstallMethod( ViewObj,
         TryNextMethod( );
     fi;
     
-    Print( "[ " );
+    Print( "{ " );
     
     ViewObj( irr[1] : component_counter := 1 );
     
@@ -401,7 +401,7 @@ InstallMethod( ViewObj,
         ViewObj( irr[i] : component_counter := i );
     od;
     
-    Print( " ]" );
+    Print( " }" );
     
 end );
 
@@ -433,13 +433,13 @@ InstallMethod( DisplayString,
         TryNextMethod( );
     fi;
     
-    str := Concatenation( "[ ", DisplayString( irr[1] ) );
+    str := Concatenation( "{ ", DisplayString( irr[1] ) );
     
     for C in irr{[ 2 .. Length( irr ) ]} do
         str := Concatenation( str, " ∪ ", DisplayString( C ) );
     od;
     
-    return Concatenation( str, " ]" );
+    return Concatenation( str, " }" );
     
 end );
 
