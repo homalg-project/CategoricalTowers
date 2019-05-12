@@ -12,7 +12,7 @@ R := B * "x,y";
 gamma := ClosedSubsetOfSpecByReducedMorphism( "[x-a,x*y-b]", R );
 #! V_{Q[a,b][x,y]}( <...> )
 im := ConstructibleProjection( gamma );
-#! ( V_{Q[a,b]}( I1 ) \ V_{Q[a,b]}( J1_1 ) ) + ( V_{Q[a,b]}( I2 ) \ V_{Q[a,b]}( J2_1 ) )
+#! ( V_{Q[a,b]}( I1 ) \ V_{Q[a,b]}( J1_1 ) ) ∪ ( V_{Q[a,b]}( I2 ) \ V_{Q[a,b]}( J2_1 ) )
 cim := CanonicalObject( im );
 #! ( V_{Q[a,b]}( I1 ) \ V_{Q[a,b]}( J1 ) ) ∪ ( V_{Q[a,b]}( I2 ) \ V_{Q[a,b]}( J2 ) )
 IsLocallyClosed( cim );
