@@ -38,6 +38,23 @@ InstallMethod( LocallyClosedApproximation,
 end );
 
 ##
+InstallMethod( FactorizedObject,
+        "for an object in a meet-semilattice of formal differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    A := Factors( A );
+    
+    if Length( A ) = 1 then
+        return A[1];
+    fi;
+    
+    return UnionOfMultipleDifferences( A );
+    
+end );
+
+##
 InstallMethod( CanonicalObjectOp,
         "for an object in a meet-semilattice of formal single/multiple differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],

@@ -282,24 +282,26 @@ InstallMethod( StandardizeObject,
 end );
 
 ##
-InstallMethod( FactorizedObject,
+InstallMethod( FactorsAttr,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
-    local irr, T;
+    local Ac, facAc, facAp;
     
-    Factors( A.I );
+    StandardizeObject( A );
     
-    irr := Factors( A.J );
+    Ac := Closure( A );
     
-    T := A.I;
+    facAc := Factors( Ac );
     
-    A := List( irr, S -> T - S );
+    facAp := Factors( A.J );
     
-    A := CallFuncList( AsMultipleDifference, A );
+    A := List( facAc, T -> CallFuncList( AsMultipleDifference, List( facAp, S -> T - S ) ) );
     
-    SetFactorizedObject( A, A );
+    List( A, StandardizeObject );
+    
+    Perform( A, function( a ) SetFactorsAttr( a, [ a ] ); end );
     
     return A;
     

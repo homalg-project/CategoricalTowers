@@ -394,24 +394,26 @@ InstallMethod( StandardizeObject,
 end );
 
 ##
-InstallMethod( FactorizedObject,
+InstallMethod( FactorsAttr,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A )
-    local irr;
+    local Ac, facAc, facAp;
     
-    A := List( A );
+    StandardizeObject( A );
     
-    irr := List( A, D -> Factors( D.J ) );
+    Ac := Closure( A );
     
-    A := ListN( List( A, D -> D.I ), irr, {T,S} -> List( S, s -> T - s ) );
+    facAc := Factors( Ac );
     
-    A := Concatenation( A );
+    facAp := Concatenation( List( A, D -> Factors( D.J ) ) );
     
-    A := CallFuncList( AsMultipleDifference, A );
+    A := List( facAc, T -> CallFuncList( AsMultipleDifference, List( facAp, S -> T - S ) ) );
     
-    SetFactorizedObject( A, A );
+    List( A, StandardizeObject );
+    
+    Perform( A, function( a ) SetFactorsAttr( a, [ a ] ); end );
     
     return A;
     

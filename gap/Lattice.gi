@@ -5,6 +5,13 @@
 #
 
 ##
+InstallMethod( Factors,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  FactorsAttr );
+
+##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
   function( meet_semilattice )
     
