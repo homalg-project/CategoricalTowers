@@ -540,7 +540,7 @@ InstallMethod( ViewObj,
     ViewObj( A[1] : Locales_number := "1" );
     
     for i in [ 2 .. n ] do
-        Print( " ) + ( " );
+        Print( " ) ∪ ( " );
         ViewObj( A[i] : Locales_number := String( i ) );
     od;
     
@@ -563,7 +563,7 @@ InstallMethod( DisplayString,
     display := DisplayString( A[1] );
     
     for i in [ 2 .. n ] do
-        Append( display, "\n\n+\n\n" );
+        Append( display, "\n\n∪\n\n" );
         Append( display, DisplayString( A[i] ) );
     od;
     
