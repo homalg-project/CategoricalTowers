@@ -4,7 +4,7 @@ ZZ := HomalgRingOfIntegersInSingular( );
 
 R := ZZ * "a2,a4,a5,a8,a10";
 
-A := AsFormalMultipleDifference( ClosedSubsetOfSpec( "a8*a10-a8+a10,a2*a10-a10+1,a2*a8+1,a4*a5+a4*a10-a5*a10-a4+a5", R ) -
+A := AsMultipleDifference( ClosedSubsetOfSpec( "a8*a10-a8+a10,a2*a10-a10+1,a2*a8+1,a4*a5+a4*a10-a5*a10-a4+a5", R ) -
 ClosedSubsetOfSpec( "a10+1", R ) );
 A := A - ClosedSubsetOfSpec( "a4", R );
 A := A - ClosedSubsetOfSpec( "a4*a10-a5*a10+a4", R );
@@ -15,7 +15,7 @@ A := A - ClosedSubsetOfSpec( "a4*a8^2-1", R );
 A := A - ClosedSubsetOfSpec( "a4-1", R );
 A := A - ClosedSubsetOfSpec( "a8", R );
 
-B := AsFormalMultipleDifference( ClosedSubsetOfSpec( "a8*a10-a8+a10,a2*a10-a10+1,a2*a8+1,a4*a5+a4*a10-a5*a10-a4+a5", R ) -
+B := AsMultipleDifference( ClosedSubsetOfSpec( "a8*a10-a8+a10,a2*a10-a10+1,a2*a8+1,a4*a5+a4*a10-a5*a10-a4+a5", R ) -
 ClosedSubsetOfSpec( "2*a5+a10-1", R ) );
 B := B - ClosedSubsetOfSpec( "a10+1", R );
 B := B - ClosedSubsetOfSpec( "a2-a4-a10+1", R );

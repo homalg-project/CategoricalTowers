@@ -46,7 +46,7 @@ InstallMethod( DistinguishedQuasiAffineSet,
         return eqs;
     fi;
     
-    return CallFuncList( AsFormalMultipleDifference, ineqs );
+    return CallFuncList( AsMultipleDifference, ineqs );
     
 end );
 

@@ -498,7 +498,7 @@ InstallMethod( Pullback,
     
     B := List( A, a -> Pullback( phi, a ) );
     
-    B := CallFuncList( AsFormalMultipleDifference, B );
+    B := CallFuncList( AsMultipleDifference, B );
     
     if HasParametrizedObject( A ) then
         SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
