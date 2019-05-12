@@ -386,7 +386,7 @@ InstallMethod( AsUnionOfMultipleDifferences,
         else
             D := List( children, neg_node -> pos_node!.object - neg_node!.object );
         fi;
-        D := CallFuncList( AsFormalMultipleDifference, D );
+        D := CallFuncList( AsMultipleDifference, D );
         Add( A, D );
     od;
     

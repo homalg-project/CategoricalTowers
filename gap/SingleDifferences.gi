@@ -297,7 +297,7 @@ InstallMethod( FactorizedObject,
     
     A := List( irr, S -> T - S );
     
-    A := CallFuncList( AsFormalMultipleDifference, A );
+    A := CallFuncList( AsMultipleDifference, A );
     
     SetFactorizedObject( A, A );
     

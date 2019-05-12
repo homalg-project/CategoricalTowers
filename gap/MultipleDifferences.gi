@@ -52,7 +52,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         T := TerminalObject( D!.MeetSemilatticeOfDifferences );
         
-        return AsFormalMultipleDifference( T );
+        return AsMultipleDifference( T );
         
     end );
     
@@ -63,7 +63,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         I := InitialObject( D!.MeetSemilatticeOfDifferences );
         
-        return AsFormalMultipleDifference( I );
+        return AsMultipleDifference( I );
         
     end );
     
@@ -82,7 +82,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         L := List( L, List );
         
         ## an advantage of this this specific data structure for formal multiple differences
-        return CallFuncList( AsFormalMultipleDifference, Concatenation( L ) );
+        return CallFuncList( AsMultipleDifference, Concatenation( L ) );
         
     end );
     
@@ -93,7 +93,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
 end );
 
 ##
-InstallGlobalFunction( AsFormalMultipleDifference,
+InstallGlobalFunction( AsMultipleDifference,
   function( arg )
     local H, D, A;
     
@@ -124,7 +124,7 @@ InstallGlobalFunction( AsFormalMultipleDifference,
 end );
 
 ##
-InstallGlobalFunction( AsFormalMultipleDifferenceOfNormalizedObjects,
+InstallGlobalFunction( AsMultipleDifferenceOfNormalizedObjects,
   function( arg )
     local A, D;
     
@@ -161,7 +161,7 @@ InstallMethod( \-,
     
     Add( A, -B );
     
-    return CallFuncList( AsFormalMultipleDifference, A );
+    return CallFuncList( AsMultipleDifference, A );
     
 end );
 
@@ -178,7 +178,7 @@ end );
 #        TryNextMethod( );
 #    fi;
 #    
-#    return AsFormalMultipleDifference( A ) - B;
+#    return AsMultipleDifference( A ) - B;
 #    
 #end );
 
@@ -409,7 +409,7 @@ InstallMethod( FactorizedObject,
     
     A := Concatenation( A );
     
-    A := CallFuncList( AsFormalMultipleDifference, A );
+    A := CallFuncList( AsMultipleDifference, A );
     
     SetFactorizedObject( A, A );
     
@@ -465,7 +465,7 @@ InstallMethod( \*,
         TryNextMethod( );
     fi;
     
-    return AsFormalMultipleDifference( A ) * B;
+    return AsMultipleDifference( A ) * B;
     
 end );
 
@@ -480,7 +480,7 @@ InstallMethod( \*,
         TryNextMethod( );
     fi;
     
-    return A * AsFormalMultipleDifference( B );
+    return A * AsMultipleDifference( B );
     
 end );
 
@@ -495,7 +495,7 @@ InstallMethod( \=,
         TryNextMethod( );
     fi;
     
-    return AsFormalMultipleDifference( A ) = B;
+    return AsMultipleDifference( A ) = B;
     
 end );
 
@@ -510,7 +510,7 @@ InstallMethod( \=,
         TryNextMethod( );
     fi;
     
-    return A = AsFormalMultipleDifference( B );
+    return A = AsMultipleDifference( B );
     
 end );
 
