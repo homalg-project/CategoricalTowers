@@ -61,7 +61,7 @@ DeclareOperation( "ClosedSubsetOfProj",
 #! @Group ClosedSubsetOfProj
 DeclareOperation( "ClosedSubsetOfProj",
         [ IsString, IsHomalgRing ] );
-#! @InsertSystem ClosedSubsetOfProj
+#! @InsertChunk ClosedSubsetOfProj
 
 #! @Description
 #!  <C>ClosedSubsetOfProjByReducedMorphism</C> assumes that the image is a radical ideal.

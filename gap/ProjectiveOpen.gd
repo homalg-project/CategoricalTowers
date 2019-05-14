@@ -55,7 +55,7 @@ DeclareOperation( "OpenSubsetOfProj",
 #! @Group OpenSubsetOfProj
 DeclareOperation( "OpenSubsetOfProj",
         [ IsString, IsHomalgRing ] );
-#! @InsertSystem OpenSubsetOfProj
+#! @InsertChunk OpenSubsetOfProj
 
 #! @Description
 #!  <C>OpenSubsetOfProjByReducedMorphism</C> assumes that the image is a radical ideal.

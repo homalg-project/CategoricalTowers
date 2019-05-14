@@ -32,8 +32,8 @@ DeclareOperation( "LocallyClosedProjection",
 #! @Returns a constructible object as a union of formal multiple differences
 DeclareOperation( "ConstructibleProjection",
         [ IsObjectInZariskiCoframe ] );
-#! @InsertSystem ConstructibleProjection
-#! @InsertSystem CharSet
+#! @InsertChunk ConstructibleProjection
+#! @InsertChunk CharSet
 
 #! @Description
 #!  Opens a PDF with the graph of datastructure underlying the constructible object <A>A</A>,

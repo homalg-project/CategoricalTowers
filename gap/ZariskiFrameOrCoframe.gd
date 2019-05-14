@@ -179,7 +179,7 @@ DeclareOperation( "EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset",
 #! @Returns an object in a thin category
 DeclareOperation( "EmbedInSmallerAmbientSpace",
         [ IsObjectInThinCategory ] );
-#! @InsertSystem EmbedInSmallerAmbientSpace
+#! @InsertChunk EmbedInSmallerAmbientSpace
 
 #! @Description
 #!  If <C>IsInitial</C>( <A>A</A> ) = <C>true</C> an error is raised.
@@ -188,8 +188,8 @@ DeclareOperation( "EmbedInSmallerAmbientSpace",
 #! @Returns an object in a Zariski coframe
 DeclareOperation( "AClosedSingleton",
         [ IsObjectInThinCategory ] );
-#! @InsertSystem ClosedSubsetOfSpecQ
-#! @InsertSystem OpenSubsetOfSpecQ
+#! @InsertChunk ClosedSubsetOfSpecQ
+#! @InsertChunk OpenSubsetOfSpecQ
 
 #! @Description
 #!  Returns a pseudo-iterator (without repetition) of closed singletons of <A>A</A>.
@@ -197,7 +197,7 @@ DeclareOperation( "AClosedSingleton",
 #! @Returns an iterator
 DeclareOperation( "PseudoIteratorOfClosedSingletons",
         [ IsObjectInThinCategory ] );
-#! @InsertSystem ClosedSubsetOfSpecF2t
+#! @InsertChunk ClosedSubsetOfSpecF2t
 
 #! @Description
 #!  Return the ring epimorphism from the coordinate ring of
@@ -222,7 +222,7 @@ DeclareOperation( "AClosedPoint",
 #! @Returns an iterator
 DeclareOperation( "PseudoIteratorOfClosedPoints",
         [ IsObjectInThinCategory ] );
-#! @InsertSystem PseudoIteratorOfClosedPoints
+#! @InsertChunk PseudoIteratorOfClosedPoints
 
 # Tools
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows" );

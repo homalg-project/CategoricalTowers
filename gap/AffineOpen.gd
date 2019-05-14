@@ -54,7 +54,7 @@ DeclareOperation( "OpenSubsetOfSpec",
 #! @Group OpenSubsetOfSpec
 DeclareOperation( "OpenSubsetOfSpec",
         [ IsString, IsHomalgRing ] );
-#! @InsertSystem OpenSubsetOfSpecZ
+#! @InsertChunk OpenSubsetOfSpecZ
 
 #! @Description
 #!  <C>OpenSubsetOfSpecByReducedMorphism</C> assumes that the image is a radical ideal.

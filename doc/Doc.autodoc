@@ -22,6 +22,6 @@
 
 @Chapter Further examples
 
-@InsertSystem OpenKxy
-@InsertSystem ClosedKxy
-@InsertSystem ConstructibleSets
+@InsertChunk OpenKxy
+@InsertChunk ClosedKxy
+@InsertChunk ConstructibleSets
