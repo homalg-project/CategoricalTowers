@@ -4,8 +4,8 @@
 
 @Subsection Representations of the cyclic groups of order 3 as a category of functors
 
-@InsertSystem Hom
+@InsertChunk Hom
 
 @Subsection Differential modules as a category of functors
 
-@InsertSystem DifferentialModules
+@InsertChunk DifferentialModules
