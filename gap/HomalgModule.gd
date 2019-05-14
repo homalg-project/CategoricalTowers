@@ -34,7 +34,7 @@ DeclareOperation( "HomalgModule",
 #! @Returns a &homalg; left module
 DeclareOperation( "LeftPresentation",
         [ IsHomalgMatrix ] );
-#! @InsertSystem LeftPresentation
+#! @InsertChunk LeftPresentation
 
 #! @Description
 #!  
@@ -42,6 +42,6 @@ DeclareOperation( "LeftPresentation",
 #! @Returns a &homalg; right module
 DeclareOperation( "RightPresentation",
         [ IsHomalgMatrix ] );
-#! @InsertSystem RightPresentation
+#! @InsertChunk RightPresentation
 
 #! @Section Operations and global functions

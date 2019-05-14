@@ -18,7 +18,7 @@
 #! @Returns a &homalg; map
 DeclareOperation( "HomalgMap",
         [ IsHomalgMatrix, IsHomalgModule, IsHomalgModule ] );
-#! @InsertSystem HomalgMap
+#! @InsertChunk HomalgMap
 
 #! @Section Operations and global functions
 
