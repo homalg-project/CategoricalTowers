@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
 Version := Maximum( [
-                   "2019.05.12", ## Mohamed's version
+                   "2019.05.13", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.11", ## Markus's version
                    ## this line prevents merge conflicts
@@ -117,7 +117,9 @@ Dependencies := rec(
                    [ "GradedRingForHomalg", ">= 2018.12.04" ],
                    [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+                   [ "JuliaInterface", ">= 0.2" ],
+                   ],
   ExternalConditions := [ ],
 ),
 
