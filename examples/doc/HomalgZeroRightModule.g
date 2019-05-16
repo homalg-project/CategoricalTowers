@@ -1,4 +1,4 @@
-#! @System HomalgZeroRightModule
+#! @Chunk HomalgZeroRightModule
 
 LoadPackage( "M2" );
 

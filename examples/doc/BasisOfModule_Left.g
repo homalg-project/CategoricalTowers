@@ -1,4 +1,4 @@
-#! @System BasisOfModule_Left
+#! @Chunk BasisOfModule_Left
 
 LoadPackage( "M2" );
 

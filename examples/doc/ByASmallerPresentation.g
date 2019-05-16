@@ -1,4 +1,4 @@
-#! @System ByASmallerPresentation
+#! @Chunk ByASmallerPresentation
 
 LoadPackage( "M2" );
 

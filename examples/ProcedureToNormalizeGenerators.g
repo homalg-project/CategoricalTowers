@@ -1,4 +1,4 @@
-#! @System ProcedureToNormalizeGenerators
+#! @Chunk ProcedureToNormalizeGenerators
 
 LoadPackage( "M2" );
 LoadPackage( "RingsForHomalg" );

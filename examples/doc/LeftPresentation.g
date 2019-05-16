@@ -1,4 +1,4 @@
-#! @System LeftPresentation
+#! @Chunk LeftPresentation
 
 LoadPackage( "M2" );
 

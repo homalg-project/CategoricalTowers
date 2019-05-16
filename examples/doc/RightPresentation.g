@@ -1,4 +1,4 @@
-#! @System RightPresentation
+#! @Chunk RightPresentation
 
 LoadPackage( "M2" );
 

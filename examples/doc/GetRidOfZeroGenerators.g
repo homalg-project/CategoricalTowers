@@ -1,4 +1,4 @@
-#! @System GetRidOfZeroGenerators
+#! @Chunk GetRidOfZeroGenerators
 
 LoadPackage( "M2" );
 

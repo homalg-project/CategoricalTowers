@@ -1,4 +1,4 @@
-#! @System Resolution
+#! @Chunk Resolution
 
 LoadPackage( "M2" );
 

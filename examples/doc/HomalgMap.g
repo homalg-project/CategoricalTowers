@@ -1,4 +1,4 @@
-#! @System HomalgMap
+#! @Chunk HomalgMap
 
 LoadPackage( "M2" );
 

@@ -1,4 +1,4 @@
-#! @System HomalgFreeLeftModule
+#! @Chunk HomalgFreeLeftModule
 
 LoadPackage( "M2" );
 

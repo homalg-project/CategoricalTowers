@@ -1,4 +1,4 @@
-#! @System BaseChange
+#! @Chunk BaseChange
 
 LoadPackage( "M2" );
 

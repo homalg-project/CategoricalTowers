@@ -1,4 +1,4 @@
-#! @System AdditionForMorphisms
+#! @Chunk AdditionForMorphisms
 
 LoadPackage( "M2" );
 
