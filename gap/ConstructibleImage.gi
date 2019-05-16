@@ -481,3 +481,18 @@ InstallMethod( Visualize,
     Visualize( A!.C );
     
 end );
+
+##
+InstallMethod( VisualizeInJulia,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    if not IsBound( A!.C ) then
+        Print( "no datastructure of a constructible object found\n" );
+    fi;
+    
+    VisualizeInJulia( A!.C );
+    
+end );
