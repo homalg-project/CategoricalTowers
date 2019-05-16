@@ -111,7 +111,7 @@ InstallMethod( LocallyClosedApproximation,
 end );
 
 ##
-InstallMethod( CanonicalObjectOp,
+InstallOtherMethod( CanonicalObjectOp,
         "for a constructible object",
         [ IsConstructibleObject and IsLocallyClosed ],
         
