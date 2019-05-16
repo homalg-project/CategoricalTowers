@@ -1,4 +1,4 @@
-#! @System Hom
+#! @Chunk Hom
 
 LoadPackage( "FunctorCategories" );
 

@@ -1,4 +1,4 @@
-#! @System DifferentialModules
+#! @Chunk DifferentialModules
 
 LoadPackage( "FunctorCategories" );
 
