@@ -470,12 +470,12 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
-    local n;
+    local n, str;
     
     A := PairInUnderlyingLattice( A );
     
@@ -485,12 +485,32 @@ InstallMethod( ViewObj,
         n := "";
     fi;
     
-    ViewObj( A[1] : Locales_name := "I", Locales_number := n );
-    Print( " \\\ " );
-    ViewObj( A[2] : Locales_name := "J", Locales_number := n );
+    str := ViewString( A[1] : Locales_name := "I", Locales_number := n );
+    Append( str, " \\\ " );
+    Append( str, ViewString( A[2] : Locales_name := "J", Locales_number := n ) );
+    
+    return str;
     
 end );
 
+##
+InstallMethod( ViewObj,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( A )
+    
+    Print( ViewString( A ) );
+    
+end );
+
+##
+InstallMethod( String,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  ViewString );
+    
 ##
 InstallMethod( DisplayString,
         "for an object in a meet-semilattice of formal single differences",

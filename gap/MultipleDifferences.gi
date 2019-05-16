@@ -657,12 +657,12 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a meet-semilattice of formal mutliple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   function( A )
-    local n, i, j;
+    local n, str, i, j;
     
     A := List( A );
     
@@ -672,27 +672,47 @@ InstallMethod( ViewObj,
         n := "";
     fi;
     
-    ViewObj( A[1].I : Locales_name := "I", Locales_number := n );
+    str := ViewString( A[1].I : Locales_name := "I", Locales_number := n );
     
-    Print( " \\\ " );
+    Append( str, " \\\ " );
     
-    ViewObj( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 );
+    Append( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := 1 ) );
     
     j := Length( A );
     
     if j > 1 then
         
-        Print( " \\\ " );
+        Append( str, " \\\ " );
         
         if j > 2 then
-            Print( ".. \\\ " );
+            Append( str, ".. \\\ " );
         fi;
         
-        ViewObj( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j );
+        Append( str, ViewString( A[1].J : Locales_name := "J", Locales_number := n, Locales_counter := j ) );
         
     fi;
     
+    return str;
+    
 end );
+
+##
+InstallMethod( ViewObj,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    Print( ViewString( A ) );
+    
+end );
+
+##
+InstallMethod( String,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  ViewString );
 
 ##
 InstallMethod( DisplayString,
