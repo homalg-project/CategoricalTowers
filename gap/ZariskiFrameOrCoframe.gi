@@ -829,6 +829,24 @@ InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
 end );
 
 ##
+InstallMethod( ViewObj,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    Print( ViewString( A ) );
+    
+end );
+
+##
+InstallMethod( String,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  ViewString );
+
+##
 InstallMethod( DisplayString,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and IsInitial ],

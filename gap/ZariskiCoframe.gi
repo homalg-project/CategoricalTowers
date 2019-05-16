@@ -336,7 +336,7 @@ InstallOtherMethod( Dimension,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
@@ -374,17 +374,17 @@ InstallMethod( ViewObj,
         i := Concatenation( "_", String( i ) );
     fi;
     
-    Print( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, j, i, " )" );
+    return Concatenation( "V_{", RingName( UnderlyingRing( A ) ), "}( ", I, String( n ), j, i, " )" );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
         
   function( A )
-    local irr, i;
+    local irr, i, str;
     
     irr := IrreducibleComponents( A );
     
@@ -392,18 +392,38 @@ InstallMethod( ViewObj,
         TryNextMethod( );
     fi;
     
-    Print( "{ " );
+    str := "{ ";
     
-    ViewObj( irr[1] : component_counter := 1 );
+    Append( str, ViewString( irr[1] : component_counter := 1 ) );
     
     for i in [ 2 .. Length( irr ) ] do
-        Print( " ∪ " );
-        ViewObj( irr[i] : component_counter := i );
+        Append( str, " ∪ " );
+        Append( str, ViewString( irr[i] : component_counter := i ) );
     od;
     
-    Print( " }" );
+    Append( str, " }" );
+    
+    return str;
     
 end );
+
+##
+InstallMethod( ViewObj,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( A )
+    
+    Print( ViewString( A ) );
+    
+end );
+
+##
+InstallMethod( String,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  ViewString );
 
 ##
 InstallMethod( DisplayString,

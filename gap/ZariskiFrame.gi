@@ -152,12 +152,12 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
 
   function( A )
-    local I, n, j;
+    local I, n, j, i;
     
     I := ValueOption( "Locales_name" );
     
@@ -179,7 +179,18 @@ InstallMethod( ViewObj,
         j := Concatenation( "_", String( j ) );
     fi;
     
-    Print( "D_{", RingName( UnderlyingRing( A ) ), "}( ", I, n, j, " )" );
+    i := ValueOption( "component_counter" );
+    
+    if i = fail then
+        i := "";
+    else
+        if I = "<...>" then
+            I := "K";
+        fi;
+        i := Concatenation( "_", String( i ) );
+    fi;
+    
+    return Concatenation( "D_{", RingName( UnderlyingRing( A ) ), "}( ", I, String( n ), j, i, " )" );
     
 end );
 
