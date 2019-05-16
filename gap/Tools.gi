@@ -514,12 +514,23 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallOtherMethod( DotVertexLabelledDigraph,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    
+    return DotVertexLabelledDigraph( DigraphOfParents( C ) );
+    
+end );
+
+##
 InstallMethod( Visualize,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
     
-    Splash( DotVertexLabelledDigraph( DigraphOfParents( C ) ) );
+    Splash( DotVertexLabelledDigraph( C ) );
     
 end );
