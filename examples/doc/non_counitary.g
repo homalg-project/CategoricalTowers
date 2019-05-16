@@ -1,4 +1,4 @@
-#! @System non_counitary
+#! @Chunk non_counitary
 
 LoadPackage( "Bialgebroid" );
 
