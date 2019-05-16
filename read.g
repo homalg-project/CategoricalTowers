@@ -17,3 +17,7 @@ ReadPackage( "Locales", "gap/Tools.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjects.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfSingleDifferences.gi");
 ReadPackage( "Locales", "gap/ConstructibleObjectsAsUnionOfMultipleDifferences.gi");
+
+if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+    ReadPackage( "Locales", "gap/Julia.gi");
+fi;
