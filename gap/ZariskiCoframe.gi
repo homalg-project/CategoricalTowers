@@ -318,7 +318,7 @@ InstallMethod( FactorizedObject,
 end );
 
 ##
-InstallMethod( Dimension,
+InstallOtherMethod( Dimension,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
         
