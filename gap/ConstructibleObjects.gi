@@ -210,6 +210,133 @@ InstallMethod( Degree,
         
   DegreeAttr );
 
+
+##
+InstallMethod( Length,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  C -> Length( List( C ) ) );
+
+##
+InstallMethod( \[\],
+        "for a constructible object and a positive integer",
+        [ IsConstructibleObject, IsPosInt ],
+        
+  function( A, pos )
+    
+    return List( A )[pos];
+    
+end );
+
+##
+InstallMethod( ListOp,
+        "for a constructible object as a union of formal multiple differences and a function",
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
+        
+  function( A, f )
+    
+    return List( List( A ), f );
+    
+end );
+
+##
+InstallMethod( Iterator,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  A -> Iterator( List( A ) ) );
+
+##
+InstallMethod( ForAllOp,
+        "for a constructible object and a function",
+        [ IsConstructibleObject, IsFunction ],
+        
+  function( A, f )
+    
+    return ForAll( List( A ), f );
+    
+end );
+
+##
+InstallMethod( ForAnyOp,
+        "for a constructible object and a function",
+        [ IsConstructibleObject, IsFunction ],
+        
+  function( A, f )
+    
+    return ForAny( List( A ), f );
+    
+end );
+
+##
+InstallMethod( ViewString,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+
+  function( A )
+    local n, str, i;
+    
+    A := List( A );
+    
+    n := Length( A );
+    
+    str := "( ";
+    
+    Append( str, ViewString( A[1] : Locales_number := "1" ) );
+    
+    for i in [ 2 .. n ] do
+        Append( str, " ) ∪ ( " );
+        Append( str, ViewString( A[i] : Locales_number := String( i ) ) );
+    od;
+    
+    Append( str, " )" );
+    
+    return str;
+    
+end );
+
+##
+InstallMethod( ViewObj,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    Print( ViewString( A ) );
+    
+end );
+
+##
+InstallMethod( String,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  ViewString );
+
+##
+InstallMethod( DisplayString,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+
+  function( A )
+    local n, display, i;
+    
+    A := List( A );
+    
+    n := Length( A );
+    
+    display := DisplayString( A[1] );
+    
+    for i in [ 2 .. n ] do
+        Append( display, "\n\n∪\n\n" );
+        Append( display, DisplayString( A[i] ) );
+    od;
+    
+    return display;
+    
+end );
+
 ##
 InstallMethod( Display,
         "for a constructible object",

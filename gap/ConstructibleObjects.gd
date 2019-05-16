@@ -99,3 +99,24 @@ DeclareOperation( "NormalizeObject",
 #! @Arguments A
 DeclareOperation( "StandardizeObject",
         [ IsConstructibleObject ] );
+
+
+#! @Arguments A
+DeclareAttribute( "Length",
+        IsConstructibleObject );
+
+#! @Arguments A, i
+DeclareOperation( "\[\]",
+        [ IsConstructibleObject, IsInt ] );
+
+#! @Arguments A
+DeclareOperation( "Iterator",
+        [ IsConstructibleObject ] );
+
+#! @Arguments A, f
+DeclareOperation( "ForAllOp",
+        [ IsConstructibleObject, IsFunction ] );
+
+#! @Arguments A, f
+DeclareOperation( "ForAnyOp",
+        [ IsConstructibleObject, IsFunction ] );

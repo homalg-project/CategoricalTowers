@@ -31,10 +31,6 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
         IsConstructibleObjectAsUnionOfMultipleDifferences );
 
-#! @Arguments A
-DeclareAttribute( "Length",
-        IsConstructibleObjectAsUnionOfMultipleDifferences );
-
 #! @Section Operations
 
 #! @Description
@@ -75,16 +71,3 @@ DeclareGlobalFunction( "UnionOfMultipleDifferences" );
 #! @Arguments D1, D2, ...
 #! @Group UnionOfMultipleDifferences_group
 DeclareGlobalFunction( "UnionOfMultipleDifferencesOfNormalizedObjects" );
-
-DeclareOperation( "Iterator",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ] );
-
-DeclareOperation( "ForAllOp",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
-
-DeclareOperation( "ForAnyOp",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
-
-#!
-DeclareOperation( "\[\]",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsInt ] );

@@ -323,53 +323,6 @@ InstallMethod( ListOp,
   ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
 
 ##
-InstallMethod( ListOp,
-        "for a constructible object as a union of formal multiple differences and a function",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
-        
-  function( A, f )
-    
-    return List( List( A ), f );
-    
-end );
-
-##
-InstallMethod( Iterator,
-        "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
-        
-  A -> Iterator( List( A ) ) );
-
-##
-InstallMethod( ForAllOp,
-        "for a constructible object as a union of formal multiple differences and a function",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
-        
-  function( A, f )
-    
-    return ForAll( List( A ), f );
-    
-end );
-
-##
-InstallMethod( ForAnyOp,
-        "for a constructible object as a union of formal multiple differences and a function",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ],
-        
-  function( A, f )
-    
-    return ForAny( List( A ), f );
-    
-end );
-
-##
-InstallMethod( Length,
-        "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
-        
-  C -> Length( List( C ) ) );
-
-##
 InstallMethod( NormalizedObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
@@ -510,63 +463,5 @@ InstallMethod( \=,
     fi;
     
     return A = UnionOfMultipleDifferences( B );
-    
-end );
-
-##
-InstallMethod( \[\],
-        "for a constructible object as a union of formal multiple differences and a positive integer",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsPosInt ],
-        
-  function( A, pos )
-    
-    return List( A )[pos];
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
-
-  function( A )
-    local n, i;
-    
-    A := List( A );
-    
-    n := Length( A );
-    
-    Print( "( " );
-    ViewObj( A[1] : Locales_number := "1" );
-    
-    for i in [ 2 .. n ] do
-        Print( " ) ∪ ( " );
-        ViewObj( A[i] : Locales_number := String( i ) );
-    od;
-    
-    Print( " )" );
-    
-end );
-
-##
-InstallMethod( DisplayString,
-        "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
-
-  function( A )
-    local n, display, i;
-    
-    A := List( A );
-    
-    n := Length( A );
-    
-    display := DisplayString( A[1] );
-    
-    for i in [ 2 .. n ] do
-        Append( display, "\n\n∪\n\n" );
-        Append( display, DisplayString( A[i] ) );
-    od;
-    
-    return display;
     
 end );
