@@ -1,4 +1,4 @@
-#! @System ClosedSubsetOfSpecF2t
+#! @Chunk ClosedSubsetOfSpecF2t
 
 LoadPackage( "ZariskiFrames" );
 

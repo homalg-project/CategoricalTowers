@@ -1,4 +1,4 @@
-#! @System RelativeAffineVariety
+#! @Chunk RelativeAffineVariety
 
 LoadPackage( "ZariskiFrames" );
 

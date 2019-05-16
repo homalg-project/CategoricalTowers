@@ -1,4 +1,4 @@
-#! @System PseudoIteratorOfClosedPoints
+#! @Chunk PseudoIteratorOfClosedPoints
 
 LoadPackage( "ZariskiFrames" );
 

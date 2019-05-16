@@ -1,4 +1,4 @@
-#! @System ClosedKxy
+#! @Chunk ClosedKxy
 
 LoadPackage( "ZariskiFrames" );
 

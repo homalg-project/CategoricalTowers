@@ -1,4 +1,4 @@
-#! @System EmbedInSmallerAmbientSpace
+#! @Chunk EmbedInSmallerAmbientSpace
 
 LoadPackage( "ZariskiFrames" );
 

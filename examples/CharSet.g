@@ -1,4 +1,4 @@
-#! @System CharSet
+#! @Chunk CharSet
 
 LoadPackage( "ZariskiFrames" );
 

@@ -1,4 +1,4 @@
-#! @System ConstructibleProjection
+#! @Chunk ConstructibleProjection
 
 LoadPackage( "ZariskiFrames" );
 
