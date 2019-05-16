@@ -442,25 +442,3 @@ InstallMethod( DisplayString,
     return Concatenation( str, " }" );
     
 end );
-
-##
-InstallMethod( DisplayString,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe and IsInitial ],
-
-  function( A )
-    
-    return "∅";
-    
-end );
-
-##
-InstallMethod( Display,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
-
-  function( A )
-    
-    Display( DisplayString( A ) );
-    
-end );

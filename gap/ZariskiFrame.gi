@@ -196,25 +196,3 @@ InstallMethod( DisplayString,
                    "> )" );
     
 end );
-
-##
-InstallMethod( DisplayString,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame and IsInitial ],
-
-  function( A )
-    
-    return "∅";
-    
-end );
-
-##
-InstallMethod( Display,
-        "for an object in a Zariski frame",
-        [ IsObjectInZariskiFrame ],
-
-  function( A )
-    
-    Display( DisplayString( A ) );
-    
-end );
