@@ -118,6 +118,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2018.01.08" ],
                    ],
   SuggestedOtherPackages := [
+                   [ "IO_ForHomalg", ">= 2019.01.01" ],
                    [ "JuliaInterface", ">= 0.2" ],
                    ],
   ExternalConditions := [ ],
