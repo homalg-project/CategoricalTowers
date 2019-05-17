@@ -11,6 +11,8 @@ I := HomalgMatrix( "y", 1, 1, R );
 #! <A 1 x 1 matrix over an external ring>
 x := ClosedSubsetOfSpec( I );
 #! V_{Q[x,y]}( <...> )
+Display( x );
+#! V( <y> )
 IsClosed( x );
 #! true
 Dimension( x );
@@ -21,18 +23,18 @@ d := ClosedSubsetOfSpec( "x+y-1", R );
 #! V_{Q[x,y]}( <...> )
 xuy := x + y;
 #! V_{Q[x,y]}( <...> )
+Display( xuy );
+#! V( <x*y> )
 IsClosed( xuy );
 #! true
 mxuy := -xuy;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
+Display( mxuy );
+#! V( <> ) \ V( <x*y> )
 IsClosed( mxuy );
 #! false
 IsOpen( mxuy );
 #! true
-e := -d;
-#! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
-Display( e );
-#! V( <> ) \ V( <x+y-1> )
 xmy := x - y;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( xmy );
@@ -77,14 +79,14 @@ cc = xuy;
 #! true
 t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
-IsClosed( t );
-#! true
-t := StandardizedObject( t );
-#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( t );
 #! V( <x+y-1,y^2-y> ) \ ∅
+IsClosed( t );
+#! true
 z := c - c;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
+Display( z );
+#! V( <x*y> ) \ V( <x*y,x*y^2-x*y> )
 z := StandardizedObject( z );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
