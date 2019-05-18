@@ -781,7 +781,7 @@ InstallMethod( PseudoIteratorOfClosedPoints,
     
     iter.ViewObj :=
       function( iter )
-        Print( "<iterator of closed singletons of " );
+        Print( "<iterator of closed points of " );
         ViewObj( iter!.variety );
         Print( ">" );
     end;
