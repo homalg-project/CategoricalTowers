@@ -363,6 +363,30 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     end );
     
     ##
+    AddIsTerminal( ZariskiCoframe,
+      function( A )
+        
+        return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+        
+    end );
+    
+    ##
+    AddIsInitial( ZariskiCoframe,
+      function( A )
+        local mor;
+        
+        mor := MorphismOfRank1RangeOfUnderlyingCategory( A );
+        
+        ## avoid the warning "an empty matrix is about to get evaluated!"
+        IsZero( mor );
+        
+        return IsLiftable(
+                       StandardMorphismOfUnderlyingCategory( InitialObject( A ) ),
+                       mor );
+        
+    end );
+    
+    ##
     AddCoproduct( ZariskiCoframe,
       function( L )
         
