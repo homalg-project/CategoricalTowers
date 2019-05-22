@@ -108,3 +108,27 @@ DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
 #! @Group ClosedSubsetOfSpecByStandardMorphism
 DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
         [ IsHomalgRingElement ] );
+
+#! @Description
+#!  Compute the tangent space of <A>V</A> at the closed point <A>p</A>
+#!  as an affine subspace of the ambient space of <A>V</A> intersecting <A>p</A>.
+#! @Arguments V, p
+#! @Returns an object in a Zariski coframe
+DeclareOperation( "TangentSpaceAtPoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ] );
+
+#! @Arguments V, p
+DeclareOperation( "TangentSpaceAtPoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList ] );
+
+#! @Description
+#!  Compute a compolement of the tangent space of <A>V</A> at the closed point <A>p</A>
+#!  as an affine subspace of the ambient space of <A>V</A> intersecting <A>p</A>.
+#! @Arguments V, p
+#! @Returns an object in a Zariski coframe
+DeclareOperation( "ComplementOfTangentSpaceAtPoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ] );
+
+#! @Arguments V, p
+DeclareOperation( "ComplementOfTangentSpaceAtPoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList ] );

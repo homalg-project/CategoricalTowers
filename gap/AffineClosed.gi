@@ -484,3 +484,85 @@ InstallMethod( AClosedSingleton,
     return A;
     
 end );
+
+##
+InstallMethod( TangentSpaceAtPoint,
+        "for an object in a Zariski coframe of an affine variety and a homalg matrix",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ],
+        
+  function( gamma, point )
+    local R, T, var;
+    
+    R := UnderlyingRing( gamma );
+    
+    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
+    
+    T := TangentSpaceByEquationsAtPoint( gamma, point );
+    
+    var := Indeterminates( R );
+    
+    T := ( R * T ) * HomalgMatrix( var, Length( var ), 1, R );
+    
+    return ClosedSubsetOfSpecByReducedMorphism( T );
+    
+end );
+
+##
+InstallMethod( TangentSpaceAtPoint,
+        "for an object in a Zariski coframe of an affine variety and a list",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList ],
+        
+  function( gamma, point )
+    local R, k;
+    
+    R := UnderlyingRing( gamma );
+    
+    k := CoefficientsRing( R );
+    
+    point := HomalgMatrix( point, Length( point ), 1, k );
+    
+    return TangentSpaceAtPoint( gamma, point );
+    
+end );
+
+##
+InstallMethod( ComplementOfTangentSpaceAtPoint,
+        "for an object in a Zariski coframe of an affine variety and a homalg matrix",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ],
+        
+  function( gamma, point )
+    local R, T, C, var;
+    
+    R := UnderlyingRing( gamma );
+    
+    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
+    
+    T := TangentSpaceByEquationsAtPoint( gamma, point );
+    
+    C := MatrixOfGenerators( ByASmallerPresentation( LeftPresentation( T ) ) );
+    
+    var := Indeterminates( R );
+    
+    C := ( R * C ) * HomalgMatrix( var, Length( var ), 1, R );
+    
+    return ClosedSubsetOfSpecByReducedMorphism( C );
+    
+end );
+
+##
+InstallMethod( ComplementOfTangentSpaceAtPoint,
+        "for an object in a Zariski coframe of an affine variety and a list",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList ],
+        
+  function( gamma, point )
+    local R, k;
+    
+    R := UnderlyingRing( gamma );
+    
+    k := CoefficientsRing( R );
+    
+    point := HomalgMatrix( point, Length( point ), 1, k );
+    
+    return ComplementOfTangentSpaceAtPoint( gamma, point );
+    
+end );
