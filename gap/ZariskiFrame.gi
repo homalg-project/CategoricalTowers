@@ -49,8 +49,10 @@ InstallMethod( ComplementAsClosedSubset,
         return C!.ConstructorByReducedMorphism( A );
     elif HasListOfMorphismsOfRank1RangeOfUnderlyingCategory( A ) then
         A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+        return C!.ConstructorByListOfMorphismsOfRank1Range( A );
     elif HasListOfReducedMorphismsOfUnderlyingCategory( A ) then
         A := ListOfReducedMorphismsOfUnderlyingCategory( A );
+        return C!.ConstructorByListOfMorphismsOfRank1Range( A );
     else
         A := PreMorphismOfUnderlyingCategory( A );
     fi;
