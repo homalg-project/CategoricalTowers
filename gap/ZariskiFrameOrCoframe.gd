@@ -52,6 +52,9 @@ DeclareAttribute( "ListOfMorphismsOfRank1RangeOfUnderlyingCategory",
 DeclareAttribute( "ListOfReducedMorphismsOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 
+DeclareAttribute( "MorphismOfRank1RangeOfUnderlyingCategory",
+        IsObjectInZariskiFrameOrCoframe );
+
 DeclareAttribute( "ReducedMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 
