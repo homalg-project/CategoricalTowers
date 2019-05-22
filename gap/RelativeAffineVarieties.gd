@@ -29,3 +29,11 @@ DeclareOperation( "PreimageOfProjection",
 #!
 DeclareOperation( "PreimageOfProjection",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsObjectInZariskiCoframeOfAnAffineVariety ] );
+
+#!
+DeclareOperation( "FiberOfProjectionOverBasePoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ] );
+
+#!
+DeclareOperation( "FiberOfProjectionOverBasePoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList ] );

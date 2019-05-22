@@ -143,3 +143,47 @@ InstallMethod( PreimageOfProjection,
     return preimage * gamma;
     
 end );
+
+##
+InstallMethod( FiberOfProjectionOverBasePoint,
+        "for an object in a Zariski coframe of an affine variety and a homalg matrix",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ],
+        
+  function( gamma, base_point )
+    local R, var, k, S, map;
+    
+    R := UnderlyingRing( gamma );
+    
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    k := CoefficientsRing( R );
+    
+    S := k * List( var, String );
+    
+    var := HomalgMatrix( var, Length( var ), 1, S );
+    
+    map := UnionOfRows( S * base_point, var );
+    
+    map := RingMap( map, R, S );
+    
+    return Pullback( map, gamma );
+    
+end );
+
+##
+InstallMethod( FiberOfProjectionOverBasePoint,
+        "for an object in a Zariski coframe of an affine variety and a list",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList ],
+        
+  function( gamma, base_point )
+    local R, B;
+    
+    R := UnderlyingRing( gamma );
+    
+    B := BaseRing( R );
+    
+    base_point := HomalgMatrix( base_point, Length( base_point ), 1, B );
+    
+    return FiberOfProjectionOverBasePoint( gamma, base_point );
+    
+end );
