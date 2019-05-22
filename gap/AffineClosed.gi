@@ -413,7 +413,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, MorphismOfUnderlyingCategory );
+        L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
         
         P := UniversalMorphismFromDirectSum( L );
         
