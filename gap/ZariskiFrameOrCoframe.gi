@@ -469,7 +469,7 @@ InstallMethod( Pullback,
         fi;
     fi;
     
-    B := Pullback( phi, UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    B := Pullback( phi, UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) ) );
     
     if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
         if HasStandardMorphismOfUnderlyingCategory( A ) then
