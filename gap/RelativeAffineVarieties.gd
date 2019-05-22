@@ -29,6 +29,3 @@ DeclareOperation( "PreimageOfProjection",
 #!
 DeclareOperation( "PreimageOfProjection",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsObjectInZariskiCoframeOfAnAffineVariety ] );
-
-#!
-DeclareGlobalFunction( "DecreaseFiberDimensionWithoutAlteringImageClosureOfProjection" );

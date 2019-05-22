@@ -143,11 +143,3 @@ InstallMethod( PreimageOfProjection,
     return preimage * gamma;
     
 end );
-
-##
-InstallGlobalFunction( DecreaseFiberDimensionWithoutAlteringImageClosureOfProjection,
-  function( gamma )
-    
-    ## TODO: gamma -> [ gamma_{1,0}, [ gamma_2, ..., gamma_n ] ]
-    
-end );
