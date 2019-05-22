@@ -193,6 +193,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
     
     ZariskiFrame!.Constructor := OpenSubsetOfProj;
+    ZariskiFrame!.ConstructorByListOfMorphismsOfRank1Range := OpenSubsetOfProjByListOfMorphismsOfRank1Range;
     ZariskiFrame!.ConstructorByReducedMorphism := OpenSubsetOfProjByReducedMorphism;
     ZariskiFrame!.ConstructorByStandardMorphism := OpenSubsetOfProjByStandardMorphism;
     

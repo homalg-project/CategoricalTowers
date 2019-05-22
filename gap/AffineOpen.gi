@@ -278,6 +278,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
     
     ZariskiFrame!.Constructor := OpenSubsetOfSpec;
+    ZariskiFrame!.ConstructorByListOfMorphismsOfRank1Range := OpenSubsetOfSpecByListOfMorphismsOfRank1Range;
     ZariskiFrame!.ConstructorByReducedMorphism := OpenSubsetOfSpecByReducedMorphism;
     ZariskiFrame!.ConstructorByStandardMorphism := OpenSubsetOfSpecByStandardMorphism;
     

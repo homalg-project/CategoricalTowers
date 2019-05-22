@@ -311,6 +311,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
+    ZariskiCoframe!.ConstructorByListOfMorphismsOfRank1Range := ClosedSubsetOfSpecByListOfMorphismsOfRank1Range;
     ZariskiCoframe!.ConstructorByReducedMorphism := ClosedSubsetOfSpecByReducedMorphism;
     ZariskiCoframe!.ConstructorByStandardMorphism := ClosedSubsetOfSpecByStandardMorphism;
     
