@@ -187,3 +187,81 @@ InstallMethod( FiberOfProjectionOverBasePoint,
     return FiberOfProjectionOverBasePoint( gamma, base_point );
     
 end );
+
+##
+InstallMethod( TangentSpaceOfFiberAtPoint,
+        "for an object in a Zariski coframe of an affine variety and two homalg matrices",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
+        
+  function( gamma, p_base, p_fiber )
+    local fiber, T, R;
+    
+    fiber := FiberOfProjectionOverBasePoint( gamma, p_base );
+    
+    T := TangentSpaceAtPoint( fiber, p_fiber );
+    
+    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    
+    R := UnderlyingRing( gamma );
+    
+    return ClosedSubsetOfSpecByReducedMorphism( R * T );
+    
+end );
+
+##
+InstallMethod( TangentSpaceOfFiberAtPoint,
+        "for an object in a Zariski coframe of an affine variety and two lists",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ],
+        
+  function( gamma, p_base, p_fiber )
+    local R, k;
+    
+    R := UnderlyingRing( gamma );
+    
+    k := CoefficientsRing( R );
+    
+    p_base := HomalgMatrix( p_base, Length( p_base ), 1, k );
+    p_fiber := HomalgMatrix( p_fiber, Length( p_fiber ), 1, k );
+    
+    return TangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
+    
+end );
+
+##
+InstallMethod( ComplementOfTangentSpaceOfFiberAtPoint,
+        "for an object in a Zariski coframe of an affine variety and two homalg matrices",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
+        
+  function( gamma, p_base, p_fiber )
+    local fiber, T, R;
+    
+    fiber := FiberOfProjectionOverBasePoint( gamma, p_base );
+    
+    T := ComplementOfTangentSpaceAtPoint( fiber, p_fiber );
+    
+    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    
+    R := UnderlyingRing( gamma );
+    
+    return ClosedSubsetOfSpecByReducedMorphism( R * T );
+    
+end );
+
+##
+InstallMethod( ComplementOfTangentSpaceOfFiberAtPoint,
+        "for an object in a Zariski coframe of an affine variety and two lists",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ],
+        
+  function( gamma, p_base, p_fiber )
+    local R, k;
+    
+    R := UnderlyingRing( gamma );
+    
+    k := CoefficientsRing( R );
+    
+    p_base := HomalgMatrix( p_base, Length( p_base ), 1, k );
+    p_fiber := HomalgMatrix( p_fiber, Length( p_fiber ), 1, k );
+    
+    return ComplementOfTangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
+    
+end );
