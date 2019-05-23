@@ -247,7 +247,7 @@ InstallMethod( IrreducibleComponents,
   function ( A )
     local components, ZC;
     
-    components := RadicalDecompositionOp( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    components := RadicalDecompositionOp( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) ) );
     
     SetIsIrreducibleObjectInZariskiCoframe( A, Length( components ) <= 1 );
     
