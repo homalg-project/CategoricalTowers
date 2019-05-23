@@ -67,11 +67,15 @@ InstallMethod( FunctorClosedProjectionBetweenZariskiCoframes,
     AddObjectFunction( pi,
       function( obj )
         
-        obj := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
+        obj := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( obj );
         
-        obj := PolynomialsWithoutRelativeIndeterminates( obj );
+        obj := List( obj, UnderlyingMatrix );
         
-        return ClosedSubsetOfSpecByReducedMorphism( obj );
+        obj := List( obj, PolynomialsWithoutRelativeIndeterminates );
+        
+        obj := List( obj, AsCategoryOfRowsMorphism );
+        
+        return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( obj );
         
     end );
     
