@@ -90,12 +90,29 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
     
     AddObjectFunction( pi_,
       function( obj )
+        local fib;
         
-        obj := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
+        fib := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
         
-        obj := R * obj;
+        fib := R * fib;
         
-        return Constructor( obj );
+        fib := AsCategoryOfRowsMorphism( fib );
+        
+        fib := Constructor( fib );
+        
+        AddToToDoList( ToDoListEntry( [ [ obj, "HasIsInitial" ] ],
+                [ [ "the preimage of a set under a projection is empty iff the set is empty",
+                    [ fib, "IsInitial", [ IsInitial, obj ] ] ],
+                  ]
+                ) );
+        
+        AddToToDoList( ToDoListEntry( [ [ obj, "HasIsTerminal" ] ],
+                [ [ "the preimage of a set under a projection is everything iff the set is everything",
+                    [ fib, "IsTerminal", [ IsTerminal, obj ] ] ],
+                  ]
+                ) );
+        
+        return fib;
         
     end );
     
