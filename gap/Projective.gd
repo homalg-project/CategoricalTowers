@@ -23,3 +23,7 @@ DeclareCategory( "IsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety",
 #!
 DeclareAttribute( "ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
+
+#!
+DeclareAttribute( "SaturatedMorphismOfRank1RangeOfUnderlyingCategory",
+        IsObjectInZariskiFrameOrCoframe );

@@ -56,6 +56,33 @@ InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
 end );
 
 ##
+InstallMethod( SaturatedMorphismOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
+
+  function( A )
+    
+    A := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    return ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
+    
+end );
+
+##
+InstallMethod( SaturatedMorphismOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedMorphismOfUnderlyingCategory ],
+
+  ReducedMorphismOfUnderlyingCategory );
+
+##
+InstallMethod( SaturatedMorphismOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardMorphismOfUnderlyingCategory ],
+
+  StandardMorphismOfUnderlyingCategory );
+
+##
 InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
