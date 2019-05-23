@@ -332,16 +332,16 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     ##
     AddIsTerminal( ZariskiFrame,
       function( A )
-        local mor;
+        local mor, one;
         
-        mor := MorphismOfRank1RangeOfUnderlyingCategory( A );
+        mor := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
         
         ## avoid the warning "an empty matrix is about to get evaluated!"
-        IsZero( mor );
+        List( mor, IsZero );
         
-        return IsLiftable(
-                       StandardMorphismOfUnderlyingCategory( TerminalObject( A ) ),
-                       mor );
+        one := StandardMorphismOfUnderlyingCategory( TerminalObject( A ) );
+        
+        return ForAll( mor, m -> IsLiftable( one, m ) );
         
     end );
     
