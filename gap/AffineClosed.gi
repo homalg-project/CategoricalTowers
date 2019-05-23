@@ -153,9 +153,21 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
         [ IsList ],
 
   function( L )
-    local R, R_elim, A, ZC, B;
+    local l, R, R_elim, A, ZC, B;
     
-    R := UnderlyingRing( CapCategory( L[1] ) );
+    List( L, IsZero );
+    
+    l := L[1];
+    
+    L := Filtered( L, l -> not ( IsEndomorphism( l ) and IsOne( l ) ) );
+    
+    if L = [ ] then
+        L := [ l ];
+    fi;
+    
+    L := DuplicateFreeList( L );
+    
+    R := UnderlyingRing( CapCategory( l ) );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
