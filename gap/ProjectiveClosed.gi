@@ -252,6 +252,30 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
     end );
     
     ##
+    AddIsTerminal( ZariskiCoframe,
+      function( A )
+        
+        return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+        
+    end );
+    
+    ##
+    AddIsInitial( ZariskiCoframe,
+      function( A )
+        local mor, one;
+        
+        mor := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+        
+        ## avoid the warning "an empty matrix is about to get evaluated!"
+        List( mor, IsZero );
+        
+        one := StandardMorphismOfUnderlyingCategory( InitialObject( A ) );
+        
+        return ForAll( mor, m -> IsLiftable( one, m ) );
+        
+    end );
+    
+    ##
     AddCoproduct( ZariskiCoframe,
       function( L )
         

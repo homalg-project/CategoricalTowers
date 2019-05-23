@@ -259,6 +259,30 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     end );
     
     ##
+    AddIsTerminal( ZariskiFrame,
+      function( A )
+        local mor, one;
+        
+        mor := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+        
+        ## avoid the warning "an empty matrix is about to get evaluated!"
+        List( mor, IsZero );
+        
+        one := StandardMorphismOfUnderlyingCategory( TerminalObject( A ) );
+        
+        return ForAll( mor, m -> IsLiftable( one, m ) );
+        
+    end );
+    
+    ##
+    AddIsInitial( ZariskiFrame,
+      function( A )
+        
+        return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+        
+    end );
+    
+    ##
     AddCoproduct( ZariskiFrame,
       function( L )
         local biased_weak_fiber_product, C;
