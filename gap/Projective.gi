@@ -92,7 +92,7 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     S := UnderlyingRing( A );
     
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    A := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
     A := List( A, UnderlyingMatrix );
     
@@ -102,12 +102,6 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     A := List( A, mat -> S * mat );
     
-    B := IrrelevantIdealColumnMatrix( S );
-    
-    A := List( A, mat -> List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), mat ) ) );
-    
-    A := List( A, L -> List( L, AsCategoryOfRowsMorphism ) );
-    
-    return List( A, ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows );
+    return List( A, AsCategoryOfRowsMorphism );
     
 end );
