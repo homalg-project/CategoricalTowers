@@ -285,11 +285,23 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ##
     AddCoproduct( ZariskiFrame,
       function( L )
-        local biased_weak_fiber_product, C;
+        local l, C;
         
-        L := MaximalObjects( L, IsHomSetInhabited );
+        ## triggers radical computations which we want to avoid by all means
+        #L := MaximalObjects( L, IsHomSetInhabited );
+        ## instead:
         
-        if Length( L ) = 1 then
+        l := L[1];
+        
+        if ForAny( L, IsTerminal ) then
+            return TerminalObject( l );
+        fi;
+        
+        L := Filtered( L, A -> not IsInitial( A ) );
+        
+        if L = [ ] then
+            return InitialObject( l );
+        elif Length( L ) = 1 then
             return L[1];
         fi;
         
@@ -304,8 +316,19 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ##
     AddDirectProduct( ZariskiFrame,
       function( L )
+        local l;
         
-        if Length( L ) = 1 then
+        l := L[1];
+        
+        if ForAny( L, IsInitial ) then
+            return InitialObject( l );
+        fi;
+        
+        L := Filtered( L, A -> not IsTerminal( A ) );
+        
+        if L = [ ] then
+            return TerminalObject( l );
+        elif Length( L ) = 1 then
             return L[1];
         fi;
         
