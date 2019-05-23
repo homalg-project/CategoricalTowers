@@ -192,6 +192,28 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
         
     end );
     
+    ##
+    AddIsTerminal( zariski_frame_or_coframe,
+      function( A )
+        
+        ## IsEqualForObjectsIfIsHomSetInhabited would trigger
+        ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
+        ## which is for this context unnecessary and expensive
+        return IsHomSetInhabited( TerminalObject( A ), A );
+        
+    end );
+    
+    ##
+    AddIsInitial( zariski_frame_or_coframe,
+      function( A )
+        
+        ## IsEqualForObjectsIfIsHomSetInhabited would trigger
+        ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
+        ## which is for this context unnecessary and expensive
+        return IsHomSetInhabited( A, InitialObject( A ) );
+        
+    end );
+    
 end );
 
 ##
