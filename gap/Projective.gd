@@ -19,3 +19,7 @@ DeclareCategory( "IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety",
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety",
         IsMorphismInZariskiFrameOrCoframe );
+
+#!
+DeclareAttribute( "ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory",
+        IsObjectInZariskiFrameOrCoframe );

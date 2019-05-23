@@ -5,6 +5,57 @@
 #
 
 ##
+InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
+
+  function( A )
+    local S, B;
+    
+    S := UnderlyingRing( A );
+    
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    A := List( A, UnderlyingMatrix );
+    
+    B := IrrelevantIdealColumnMatrix( S );
+    
+    B := List( [ 1 .. NrRows( B ) ], r -> CertainRows( B, [ r ] ) );
+    
+    A := List( A, mat -> List( B, r -> Saturate( mat, r ) ) );
+    
+    A := Concatenation( A );
+    
+    return List( A, AsCategoryOfRowsMorphism );
+    
+end );
+
+##
+InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasListOfReducedMorphismsOfUnderlyingCategory ],
+
+  ListOfReducedMorphismsOfUnderlyingCategory );
+
+##
+InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedMorphismOfUnderlyingCategory ],
+
+  ListOfReducedMorphismsOfUnderlyingCategory );
+
+##
+InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe of a projective variety",
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardMorphismOfUnderlyingCategory ],
+
+  function( A )
+    
+    return [ StandardMorphismOfUnderlyingCategory( A ) ];
+    
+end );
+
+##
 InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
