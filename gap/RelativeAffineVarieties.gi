@@ -26,24 +26,28 @@ InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
         
         R_elim := PolynomialRingWithProductOrdering( R );
         
-        I := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+        I := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+        
+        I := List( I, UnderlyingMatrix );
         
         if not IsIdenticalObj( R, R_elim ) then
             Info( InfoZariskiFrames, 1, "!! The underlying ring of A and the associated ring equipped with the elimination order do not coincide !!\n" );
-            I := R_elim * I;
+            I := List( I, mat -> R_elim * mat );
         fi;
         
         if not IsBound( A!.BasisOfRowsOverPolynomialRingWithProductOrdering ) then
             
-            A!.BasisOfRowsOverPolynomialRingWithProductOrdering := BasisOfRows( I );
+            A!.BasisOfRowsOverPolynomialRingWithProductOrdering := List( I, BasisOfRows );
             
         fi;
         
         I := A!.BasisOfRowsOverPolynomialRingWithProductOrdering;
         
-        I := PolynomialsWithoutRelativeIndeterminates( I );
+        I := List( I, PolynomialsWithoutRelativeIndeterminates );
         
-        return ClosedSubsetOfSpecByReducedMorphism( I );
+        I := List( I, AsCategoryOfRowsMorphism );
+        
+        return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( I );
         
     end );
     
