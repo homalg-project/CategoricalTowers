@@ -32,7 +32,7 @@ Display( V3 );
 W3 := ConstructibleProjection( V3 );
 #! { V_{Q[a]}( K_1 ) ∪ V_{Q[a]}( K_2 ) }
 Display( W3 );
-#! { V( <a-1> ) ∪ V( <a+1> ) }
+#! { V( <a+1> ) ∪ V( <a-1> ) }
 V4 := ClosedSubsetOfSpec( "b-a^2+1", R ) - ClosedSubsetOfSpec( "a*b", R );
 #! V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
 Display( V4 );

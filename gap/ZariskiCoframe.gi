@@ -246,13 +246,23 @@ InstallMethod( IrreducibleComponents,
   function ( A )
     local components, ZC;
     
-    components := RadicalDecompositionOp( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) ) );
+    components := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
-    SetIsIrreducibleObjectInZariskiCoframe( A, Length( components ) <= 1 );
+    components := List( components, UnderlyingMatrix );
+    
+    components := List( components, RadicalDecompositionOp );
+    
+    components := Concatenation( components );
+    
+    components := DuplicateFreeList( components );
     
     ZC := CapCategory( A );
     
     components := List( components, ZC!.ConstructorByReducedMorphism );
+    
+    components := MaximalObjects( components, IsHomSetInhabited );
+    
+    SetIsIrreducibleObjectInZariskiCoframe( A, Length( components ) <= 1 );
     
     Perform( components, function( C ) SetIsIrreducibleObjectInZariskiCoframe( C, true ); end );
     
