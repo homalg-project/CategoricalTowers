@@ -421,14 +421,18 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         L := Concatenation( L );
         
-        return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( L );
-            
+        l := ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( L );
+        
+        SetIsInitial( l, false );
+        
+        return l;
+        
     end );
     
     ##
     AddDirectProduct( ZariskiCoframe,
       function( L )
-        local l, P;
+        local l;
         
         ## triggers radical computations which we want to avoid by all means
         #L := MaximalObjects( L, IsSubset );
@@ -450,9 +454,13 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
         
-        P := UniversalMorphismFromDirectSum( L );
+        l := UniversalMorphismFromDirectSum( L );
         
-        return ClosedSubsetOfSpec( P );
+        l := ClosedSubsetOfSpec( l );
+        
+        SetIsTerminal( l, false );
+        
+        return l;
         
     end );
     

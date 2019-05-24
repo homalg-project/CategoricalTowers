@@ -298,14 +298,18 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
         
         L := Concatenation( L );
         
-        return ClosedSubsetOfProjByListOfMorphismsOfRank1Range( L );
-            
+        l := ClosedSubsetOfProjByListOfMorphismsOfRank1Range( L );
+        
+        SetIsInitial( l, false );
+        
+        return l;
+        
     end );
     
     ##
     AddDirectProduct( ZariskiCoframe,
       function( L )
-        local l, P;
+        local l;
         
         ## triggers radical computations which we want to avoid by all means
         #L := MaximalObjects( L, IsSubset );
@@ -327,9 +331,13 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
         
         L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
         
-        P := UniversalMorphismFromDirectSum( L );
+        l := UniversalMorphismFromDirectSum( L );
         
-        return ClosedSubsetOfProj( P );
+        l := ClosedSubsetOfProj( l );
+        
+        SetIsTerminal( l, false );
+        
+        return l;
         
     end );
     

@@ -285,7 +285,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ##
     AddCoproduct( ZariskiFrame,
       function( L )
-        local l, C;
+        local l;
         
         ## triggers radical computations which we want to avoid by all means
         #L := MaximalObjects( L, IsHomSetInhabited );
@@ -307,10 +307,14 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
         
-        C := UniversalMorphismFromDirectSum( L );
+        l := UniversalMorphismFromDirectSum( L );
         
-        return OpenSubsetOfProj( C );
-            
+        l := OpenSubsetOfProj( l );
+        
+        SetIsInitial( l, false );
+        
+        return l;
+        
     end );
     
     ##
@@ -336,7 +340,11 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         L := Concatenation( L );
         
-        return OpenSubsetOfProjByListOfMorphismsOfRank1Range( L );
+        l := OpenSubsetOfProjByListOfMorphismsOfRank1Range( L );
+        
+        SetIsTerminal( l, false );
+        
+        return l;
         
     end );
     

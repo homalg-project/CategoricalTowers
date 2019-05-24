@@ -368,7 +368,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     ##
     AddCoproduct( ZariskiFrame,
       function( L )
-        local l, C;
+        local l;
         
         ## triggers radical computations which we want to avoid by all means
         #L := MaximalObjects( L, IsHomSetInhabited );
@@ -390,10 +390,14 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
         L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
         
-        C := UniversalMorphismFromDirectSum( L );
+        l := UniversalMorphismFromDirectSum( L );
         
-        return OpenSubsetOfSpec( C );
-            
+        l := OpenSubsetOfSpec( l );
+        
+        SetIsInitial( l, false );
+        
+        return l;
+        
     end );
     
     ##
@@ -419,7 +423,11 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
         
         L := Concatenation( L );
         
-        return OpenSubsetOfSpecByListOfMorphismsOfRank1Range( L );
+        l := OpenSubsetOfSpecByListOfMorphismsOfRank1Range( L );
+        
+        SetIsTerminal( l, false );
+        
+        return l;
         
     end );
     
