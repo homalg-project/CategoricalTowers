@@ -90,17 +90,19 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
     
     pi_ := CapFunctor( "Functor describing the preimage of the projection between an relative affine Zariski coframe and its base coframe", S, T );
     
-    Constructor := T!.Constructor;
+    Constructor := T!.ConstructorByListOfMorphismsOfRank1Range;
     
     AddObjectFunction( pi_,
       function( obj )
         local fib;
         
-        fib := UnderlyingMatrix( MorphismOfUnderlyingCategory( obj ) );
+        fib := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( obj );
         
-        fib := R * fib;
+        fib := List( fib, UnderlyingMatrix );
         
-        fib := AsCategoryOfRowsMorphism( fib );
+        fib := List( fib, mat -> R * mat );
+        
+        fib := List( fib, AsCategoryOfRowsMorphism );
         
         fib := Constructor( fib );
         
