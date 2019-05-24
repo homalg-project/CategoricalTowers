@@ -74,6 +74,13 @@ DeclareAttribute( "IrreducibleComponents",
 DeclareOperation( "\[\]",
         [ IsObjectInZariskiCoframe, IsInt ] );
 
+#! @Description
+#!  The list of currently known factors of <A>A</A>.
+#! @Arguments A
+#! @Returns a list
+DeclareOperation( "KnownFactors",
+        [ IsObjectInZariskiCoframe ] );
+
 # Tools
 DeclareGlobalFunction( "IsHomSetInhabitedForCoframesUsingCategoryOfRows" );
 

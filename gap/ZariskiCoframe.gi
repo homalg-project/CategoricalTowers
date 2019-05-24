@@ -345,6 +345,34 @@ InstallOtherMethod( Dimension,
 end );
 
 ##
+InstallMethod( KnownFactors,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function ( A )
+    local components, ZC;
+    
+    components := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    ZC := CapCategory( A );
+    
+    if HasListOfStandardMorphismsOfUnderlyingCategory( A ) then
+        components := List( components, ZC!.ConstructorByStandardMorphism );
+    elif HasListOfReducedMorphismsOfUnderlyingCategory( A ) then
+        components := List( components, ZC!.ConstructorByReducedMorphism );
+    else
+        components := List( components, ZC!.Constructor );
+    fi;
+    
+    if HasIsInitial( A ) and Length( components ) = 1 then
+        SetIsInitial( components[1], IsInitial( A ) );
+    fi;
+    
+    return components;
+    
+end );
+
+##
 InstallMethod( ViewString,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
