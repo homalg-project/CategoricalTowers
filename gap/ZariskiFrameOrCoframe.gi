@@ -359,7 +359,7 @@ InstallMethod( StandardizeObject,
         
   function( A )
     
-    StandardMorphismOfUnderlyingCategory( A );
+    ListOfStandardMorphismsOfUnderlyingCategory( A );
     
     IsInitial( A );
     IsTerminal( A );
