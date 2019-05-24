@@ -344,15 +344,11 @@ InstallMethod( ConstructibleProjection,
         frame_decomp := [];
 
         if not ValueOption( "frame_decomposition" ) = false then
-
             if not IsInitial( frame ) then
-            
                 Info( InfoConstructibleImage, 4, "Step ", counter, " frame decomposition... " );
                 frame_decomp := Factors( frame );
                 Info( InfoConstructibleImage, 4, "Step ", counter, " ...done " );
-            
             fi;
-
         else
   
             frame_decomp := [ frame ];
