@@ -136,10 +136,19 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframe ],
 
   function( A )
+    local L;
     
-    A := ListOfReducedMorphismsOfUnderlyingCategory( A );
+    L := ListOfReducedMorphismsOfUnderlyingCategory( A );
     
-    return ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
+    L := ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
+    
+    if HasMorphismOfRank1RangeOfUnderlyingCategory( A ) then
+        A!.MorphismOfRank1RangeOfUnderlyingCategory := L;
+    else
+        SetMorphismOfRank1RangeOfUnderlyingCategory( A, L );
+    fi;
+    
+    return L;
     
 end );
 
@@ -163,11 +172,25 @@ InstallMethod( StandardMorphismOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframe ],
 
   function( A )
-    local mat;
+    local mor;
     
-    mat := UnderlyingMatrix( ReducedMorphismOfUnderlyingCategory( A ) );
+    mor := ReducedMorphismOfUnderlyingCategory( A );
     
-    return AsCategoryOfRowsMorphism( BasisOfRows( mat ) );
+    mor := UnderlyingMatrix( mor );
+    
+    mor := BasisOfRows( mor );
+    
+    mor := AsCategoryOfRowsMorphism( mor );
+    
+    if HasMorphismOfRank1RangeOfUnderlyingCategory( A ) then
+        A!.MorphismOfRank1RangeOfUnderlyingCategory := mor;
+    else
+        SetMorphismOfRank1RangeOfUnderlyingCategory( A, mor );
+    fi;
+    
+    A!.ReducedMorphismOfUnderlyingCategory := mor;
+    
+    return mor;
     
 end );
 
