@@ -131,6 +131,41 @@ InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
   ListOfReducedMorphismsOfUnderlyingCategory );
 
 ##
+InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe and HasListOfStandardMorphismsOfUnderlyingCategory ],
+
+  ListOfStandardMorphismsOfUnderlyingCategory );
+
+##
+InstallMethod( ListOfStandardMorphismsOfUnderlyingCategory,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    local L;
+    
+    L := ListOfReducedMorphismsOfUnderlyingCategory( A );
+    
+    L := List( L, UnderlyingMatrix );
+    
+    L := List( L, BasisOfRows );
+    
+    L := List( L, AsCategoryOfRowsMorphism );
+    
+    if HasListOfMorphismsOfRank1RangeOfUnderlyingCategory( A ) then
+        A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    else
+        SetListOfMorphismsOfRank1RangeOfUnderlyingCategory( A, L );
+    fi;
+    
+    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    
+    return L;
+    
+end );
+
+##
 InstallMethod( ReducedMorphismOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
