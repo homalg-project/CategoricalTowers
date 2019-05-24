@@ -9,10 +9,10 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
-  function( gamma )
-    local R, R_elim, var, B, base, S, weights;
+  function( Gamma )
+    local R, R_elim, gamma, var, B, base, S, weights;
     
-    R := UnderlyingRing( gamma );
+    R := UnderlyingRing( Gamma );
     
     if HasIsFieldForHomalg( R ) and IsFieldForHomalg( R ) then
         return InitialObject( ZariskiCoframeOfProjUsingCategoryOfRows( GradedRing( R ) ) );
@@ -22,9 +22,13 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
-    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
+    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( Gamma ) );
     
-    gamma := BasisOfRows( R_elim * gamma );
+    if not IsIdenticalObj( R, R_elim ) then
+        gamma := R_elim * gamma;
+    fi;
+    
+    gamma := BasisOfRows( gamma );
     
     gamma := MaximalDegreePartOfColumnMatrix( gamma );
     
