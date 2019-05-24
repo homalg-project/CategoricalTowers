@@ -454,20 +454,27 @@ InstallMethod( DisplayString,
         [ IsObjectInZariskiCoframe and HasIrreducibleComponents ],
         
   function( A )
-    local irr, C, str;
+    local irr, l, C, str;
     
     irr := IrreducibleComponents( A );
     
-    if Length( irr ) <= 1 then
+    l := Length( irr );
+    
+    if l <= 1 then
         TryNextMethod( );
     fi;
     
-    str := Concatenation( "{ ", DisplayString( irr[1] ) );
+    str := "{ ";
     
-    for C in irr{[ 2 .. Length( irr ) ]} do
-        str := Concatenation( str, " ∪ ", DisplayString( C ) );
+    Append( str, DisplayString( irr[1] ) );
+    
+    for C in irr{[ 2 .. l ]} do
+        Append( str, " ∪ " );
+        Append( str, DisplayString( C ) );
     od;
     
-    return Concatenation( str, " }" );
+    Append( str, " }" );
+    
+    return str;
     
 end );
