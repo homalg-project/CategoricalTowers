@@ -305,7 +305,7 @@ InstallMethod( ConstructibleProjection,
         if decomposition = true then
             Info( InfoConstructibleImage, 4, "Step ", counter, " decompotition... " );
             components := Factors( Gamma );
-            Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (#", Length( components ), ")" );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         fi;
