@@ -213,7 +213,7 @@ InstallMethod( LocallyClosedProjection,
     if fiber_dim > 0 then
 
         Info( InfoConstructibleImage, 3, step, counter, " unlucky decomposition in total space..." );
-        decomposition := IrreducibleComponents( Gamma0 ); 
+        decomposition := Factors( Gamma0 );
         Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
         if Length( decomposition ) = 1 then
@@ -304,7 +304,7 @@ InstallMethod( ConstructibleProjection,
         decomposition := ValueOption( "decomposition" );
         if decomposition = true then
             Info( InfoConstructibleImage, 4, "Step ", counter, " decompotition... " );
-            components := IrreducibleComponents( Gamma );
+            components := Factors( Gamma );
             Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (#", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
@@ -348,7 +348,7 @@ InstallMethod( ConstructibleProjection,
             if not IsInitial( frame ) then
             
                 Info( InfoConstructibleImage, 4, "Step ", counter, " frame decomposition... " );
-                frame_decomp := IrreducibleComponents( frame );
+                frame_decomp := Factors( frame );
                 Info( InfoConstructibleImage, 4, "Step ", counter, " ...done " );
             
             fi;
