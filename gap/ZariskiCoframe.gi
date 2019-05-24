@@ -9,8 +9,7 @@ InstallGlobalFunction( IsHomSetInhabitedForCoframesUsingCategoryOfRows,
   function( S, T )
     local irrS, irrT;
     
-    if HasDimension( S ) and HasDimension( T ) and
-       Dimension( S ) > Dimension( T ) then
+    if Dimension( S ) > Dimension( T ) then
         return false;
     fi;
     
