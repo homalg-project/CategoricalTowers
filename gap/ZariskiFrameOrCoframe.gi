@@ -308,7 +308,7 @@ InstallMethod( NormalizeObject,
         
   function( A )
     
-    ReducedMorphismOfUnderlyingCategory( A );
+    ListOfReducedMorphismsOfUnderlyingCategory( A );
     
     IsInitial( A );
     IsTerminal( A );
