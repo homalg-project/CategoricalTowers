@@ -503,10 +503,14 @@ end );
 InstallMethod( Dimension,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-
+        
   function( A )
     
-    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    A := List( A, UnderlyingMatrix );
+    
+    return Maximum( List( A, AffineDimension ) );
     
 end );
 

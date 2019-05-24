@@ -472,10 +472,14 @@ end );
 InstallMethod( DimensionOfComplement,
         "for an object in a Zariski frame of an affine variety",
         [ IsObjectInZariskiFrameOfAnAffineVariety ],
-
+        
   function( A )
     
-    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    A := List( A, UnderlyingMatrix );
+    
+    return Maximum( List( A, AffineDimension ) );
     
 end );
 

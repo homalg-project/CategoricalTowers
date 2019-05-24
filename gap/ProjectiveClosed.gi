@@ -378,10 +378,21 @@ end );
 InstallMethod( Dimension,
         "for an object in a Zariski coframe of a projective variety",
         [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
-
+        
   function( A )
+    local dim;
     
-    return AffineDimension( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ) - 1;
+    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    A := List( A, UnderlyingMatrix );
+    
+    dim := Maximum( List( A, AffineDimension ) );
+    
+    if dim < 0 then
+        return dim;
+    fi;
+    
+    return dim - 1;
     
 end );
 
