@@ -24,13 +24,13 @@ d := ClosedSubsetOfSpec( "x+y-1", R );
 xuy := x + y;
 #! V_{Q[x,y]}( <...> )
 Display( xuy );
-#! V( <x*y> )
+#! { V( <y> ) ∪ V( <x> ) }
 IsClosed( xuy );
 #! true
 mxuy := -xuy;
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( mxuy );
-#! V( <> ) \ V( <x*y> )
+#! V( <> ) \ { V( <y> ) ∪ V( <x> ) }
 IsClosed( mxuy );
 #! false
 IsOpen( mxuy );
@@ -80,13 +80,17 @@ cc = xuy;
 t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( t );
+#! V( <x+y-1,y^2-y,x+y-1,y^2-y> ) \ ∅
+StandardizeObject( t );
+#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
+Display( t );
 #! V( <x+y-1,y^2-y> ) \ ∅
 IsClosed( t );
 #! true
 z := c - c;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
-#! V( <x*y> ) \ V( <x*y,x*y^2-x*y> )
+#! V( <x*y> ) \ { V( <x+y-1,y^2-y> ) ∪ V( <x*y> ) ∪ V( <x> ) }
 z := StandardizedObject( z );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );

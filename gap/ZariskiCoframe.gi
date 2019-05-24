@@ -440,11 +440,34 @@ InstallMethod( DisplayString,
         [ IsObjectInZariskiCoframe ],
 
   function( A )
+    local L, str, l, C;
     
-    return Concatenation(
-                   "V( <",
-                   JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) ), String ) ),
-                   "> )" );
+    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    str := "";
+    
+    l := Length( L );
+    
+    if l > 1 then
+        Append( str, "{ " );
+    fi;
+    
+    Append( str, "V( <" );
+    Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( L[1] ) ), String ) ) );
+    Append( str, "> )" );
+    
+    for C in L{[ 2 .. l ]} do
+        Append( str, " ∪ " );
+        Append( str, "V( <" );
+        Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( C ) ), String ) ) );
+        Append( str, "> )" );
+    od;
+    
+    if l > 1 then
+        Append( str, " }" );
+    fi;
+    
+    return str;
     
 end );
 

@@ -8,6 +8,10 @@ ZZ := HomalgRingOfIntegers( );
 A := ClosedSubsetOfSpec( "[ 10, 15 ]", ZZ );
 #! V_{Z}( <...> )
 Display( A );
+#! V( <10,15> )
+StandardizeObject( A );
+#! V_{Z}( <...> )
+Display( A );
 #! V( <5> )
 Ae := EmbedInSmallerAmbientSpace( A );
 #! V_{GF(5)}( <...> )
@@ -36,7 +40,7 @@ R := HomalgRingOfIntegersInSingular( ) * "x";
 B := ClosedSubsetOfSpec( "[ 2, x^2+1 ]", R );
 #! V_{Z[x]}( <...> )
 Display( B );
-#! V( <2,x+1> )
+#! V( <2,x^2+1> )
 Be := EmbedInSmallerAmbientSpace( B );
 #! V_{GF(2)}( <...> )
 Display( Be );

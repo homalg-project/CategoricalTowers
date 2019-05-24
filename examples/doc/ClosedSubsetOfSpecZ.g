@@ -64,15 +64,15 @@ Display( I );
 AvC := Coproduct( A, C );
 #! V_{Z}( <...> )
 Display( AvC );
-#! V( <-6> )
-StandardMorphismOfUnderlyingCategory( AvC );
-#! <A morphism in Rows( Z )>
-Display( AvC );
-#! V( <6> )
+#! { V( <2> ) ∪ V( <3> ) }
 AC := DirectProduct( A, C );
 #! V_{Z}( <...> )
 Display( AC );
-#! V( <1> )
+#! V( <2,3> )
+StandardizeObject( AC );
+#! V_{Z}( <...> )
+Display( AC );
+#! ∅
 DirectProduct( A, C ) = I;
 #! true
 CoexponentialOnObjects( I, T ) = I;
