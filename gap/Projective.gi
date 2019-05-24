@@ -10,23 +10,27 @@ InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
-    local S, B;
+    local L, S, B;
+    
+    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    L := List( L, UnderlyingMatrix );
     
     S := UnderlyingRing( A );
-    
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    A := List( A, UnderlyingMatrix );
     
     B := IrrelevantIdealColumnMatrix( S );
     
     B := List( [ 1 .. NrRows( B ) ], r -> CertainRows( B, [ r ] ) );
     
-    A := List( A, mat -> List( B, r -> Saturate( mat, r ) ) );
+    L := List( L, mat -> List( B, r -> Saturate( mat, r ) ) );
     
-    A := Concatenation( A );
+    L := Concatenation( L );
     
-    return List( A, AsCategoryOfRowsMorphism );
+    L := List( L, AsCategoryOfRowsMorphism );
+    
+    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    
+    return L;
     
 end );
 
@@ -88,20 +92,24 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
-    local S, B;
+    local L, S, B;
+    
+    L := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    
+    L := List( L, UnderlyingMatrix );
+    
+    L := List( L, UnderlyingMatrixOverNonGradedRing );
+    
+    L := List( L, RadicalSubobjectOp );
     
     S := UnderlyingRing( A );
     
-    A := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    L := List( L, mat -> S * mat );
     
-    A := List( A, UnderlyingMatrix );
+    L := List( L, AsCategoryOfRowsMorphism );
     
-    A := List( A, UnderlyingMatrixOverNonGradedRing );
+    A!.ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory := L;
     
-    A := List( A, RadicalSubobjectOp );
-    
-    A := List( A, mat -> S * mat );
-    
-    return List( A, AsCategoryOfRowsMorphism );
+    return L;
     
 end );

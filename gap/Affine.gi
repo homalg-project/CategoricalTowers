@@ -10,14 +10,19 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
         [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
 
   function( A )
+    local L;
     
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
-    A := List( A, UnderlyingMatrix );
+    L := List( L, UnderlyingMatrix );
     
-    A := List( A, RadicalSubobjectOp );
+    L := List( L, RadicalSubobjectOp );
     
-    return List( A, AsCategoryOfRowsMorphism );
+    L := List( L, AsCategoryOfRowsMorphism );
+    
+    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    
+    return L;
     
 end );
 
