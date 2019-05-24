@@ -94,17 +94,25 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
     
     AddObjectFunction( pi_,
       function( obj )
-        local fib;
+        local L, fib;
         
-        fib := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( obj );
+        L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( obj );
         
-        fib := List( fib, UnderlyingMatrix );
+        L := List( L, UnderlyingMatrix );
         
-        fib := List( fib, mat -> R * mat );
+        L := List( L, mat -> R * mat );
         
-        fib := List( fib, AsCategoryOfRowsMorphism );
+        L := List( L, AsCategoryOfRowsMorphism );
         
-        fib := Constructor( fib );
+        fib := Constructor( L );
+        
+        if HasListOfReducedMorphismsOfUnderlyingCategory( obj ) then
+            SetListOfReducedMorphismsOfUnderlyingCategory( fib, L );
+        fi;
+        
+        if HasListOfStandardMorphismsOfUnderlyingCategory( obj ) then
+            SetListOfStandardMorphismsOfUnderlyingCategory( fib, L );
+        fi;
         
         AddToToDoList( ToDoListEntry( [ [ obj, "HasIsInitial" ] ],
                 [ [ "the preimage of a set under a projection is empty iff the set is empty",
