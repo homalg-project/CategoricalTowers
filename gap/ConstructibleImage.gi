@@ -308,6 +308,12 @@ InstallMethod( ConstructibleProjection,
             Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
+        else
+            Info( InfoConstructibleImage, 4, "Step ", counter, " existing parital decompotition... " );
+            components := KnownFactors( Gamma );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( components ), ")" );
+            Gamma := components[1];
+            additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         fi;
         
         Info( InfoConstructibleImage, 4, "Step ", counter, " intersect with preimage... " );
@@ -347,12 +353,14 @@ InstallMethod( ConstructibleProjection,
             if not IsInitial( frame ) then
                 Info( InfoConstructibleImage, 4, "Step ", counter, " frame decomposition... " );
                 frame_decomp := Factors( frame );
-                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done " );
+                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( frame_decomp ), ")" );
             fi;
         else
-  
-            frame_decomp := [ frame ];
-
+            if not IsInitial( frame ) then
+                Info( InfoConstructibleImage, 4, "Step ", counter, " existing frame partial decomposition... " );
+                frame_decomp := KnownFactors( frame );
+                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( frame_decomp ), ")" );
+            fi;
         fi;
         
         pre_nodes := Attach( node, image_closure, frame_decomp );
