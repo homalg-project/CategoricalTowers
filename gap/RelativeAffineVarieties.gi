@@ -259,6 +259,43 @@ InstallMethod( TangentSpaceOfFiberAtPoint,
 end );
 
 ##
+InstallMethod( DimensionsOfFibrationAtClosedPoint,
+        "for an object in a Zariski coframe of an affine variety and two homalg matrices",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
+        
+  function( gamma, p_base, p_fiber )
+    local TE, TF, dimE, dimF;
+    
+    TE := TangentSpaceAtPoint( gamma, UnionOfRows( p_base, p_fiber ) );
+    TF := TangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
+    
+    dimE := Dimension( TE );
+    dimF := Dimension( TF );
+    
+    return [ dimF, dimE, dimE - dimF, Dimension( BaseOfFibration( gamma ) ) ];
+    
+end );
+
+##
+InstallMethod( DimensionsOfFibrationAtClosedPoint,
+        "for an object in a Zariski coframe of an affine variety and two homalg matrices",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ],
+        
+  function( gamma, p_base, p_fiber )
+    local R, k;
+    
+    R := UnderlyingRing( gamma );
+    
+    k := CoefficientsRing( R );
+    
+    p_base := HomalgMatrix( p_base, Length( p_base ), 1, k );
+    p_fiber := HomalgMatrix( p_fiber, Length( p_fiber ), 1, k );
+    
+    return DimensionsOfFibrationAtClosedPoint( gamma, p_base, p_fiber );
+    
+end );
+
+##
 InstallMethod( ComplementOfTangentSpaceOfFiberAtPoint,
         "for an object in a Zariski coframe of an affine variety and two homalg matrices",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
