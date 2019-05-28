@@ -93,6 +93,13 @@ DeclareOperation( "SquashOnce",
 #!  
 #! @Arguments C
 #! @Returns a datastructure of a node in a constructible object
+DeclareOperation( "RemoveObsoleteSubtrahends",
+        [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  
+#! @Arguments C
+#! @Returns a datastructure of a node in a constructible object
 DeclareOperation( "Squash",
         [ IsDatastructureForConstructibleObjects ] );
 

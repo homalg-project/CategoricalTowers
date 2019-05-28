@@ -231,6 +231,8 @@ InstallMethod( Remove,
         Error( "expected exactly one parent but found ", Length( pos_node!.act_parents ), "\n" );
     fi;
     
+    Info( InfoSquashDatastructureForConstructibleObjects, 2, "removed ", pos_node!.number, " -> ", pos_node!.act_parents[1]!.number );
+    
     C := pos_node!.constructible_object;
     
     pos_nodes := C!.pos_nodes;
@@ -311,7 +313,7 @@ InstallMethod( SquashOnce,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local visualize, act_nodes, neg_nodes, pos_node, parents, f, children;
+    local visualize, pos_node, parents, act_nodes, neg_nodes, children;
     
     if not ( IsBound( C!.finalized ) and C!.finalized = true ) then
         Error( "C is not marked as finalized, so I won't squash it\n" );
@@ -322,9 +324,6 @@ InstallMethod( SquashOnce,
     if visualize = true then
         Visualize( C );
     fi;
-    
-    act_nodes := [ ];
-    neg_nodes := [ ];
     
     for pos_node in ShallowCopy( C!.pos_nodes ) do
         
@@ -339,17 +338,13 @@ InstallMethod( SquashOnce,
         
     od;
     
-    f := function( N1, N2 )
-           return IsHomSetInhabited( N1!.object, N2!.object );
-         end;
+    act_nodes := ShallowCopy( C!.pos_nodes );
+    neg_nodes := [ ];
     
     for pos_node in C!.pos_nodes do
         
-        children := MaximalObjects( pos_node!.act_children, f );
+        children := pos_node!.act_children;
         
-        pos_node!.act_children := children;
-        
-        Add( act_nodes, pos_node );
         AppendNew( act_nodes, children );
         AppendNew( neg_nodes, children );
         
@@ -363,6 +358,54 @@ InstallMethod( SquashOnce,
 end );
     
 ##
+InstallMethod( RemoveObsoleteSubtrahends,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    local visualize, act_nodes, neg_nodes, pos_node, act_children, children;
+    
+    if not ( IsBound( C!.finalized ) and C!.finalized = true ) then
+        Error( "C is not marked as finalized, so I won't squash it\n" );
+    fi;
+    
+    visualize := ValueOption( "visualize" );
+    
+    if visualize = true then
+        Visualize( C );
+    fi;
+    
+    act_nodes := ShallowCopy( C!.pos_nodes );
+    neg_nodes := [ ];
+    
+    for pos_node in C!.pos_nodes do
+        
+        act_children := pos_node!.act_children;
+        
+        children := MaximalObjects( act_children, IsHomSetInhabited );
+        
+        if Length( children ) < Length( act_children ) then
+            Info( InfoSquashDatastructureForConstructibleObjects, 2,
+                  "removing from node ", pos_node!.number, " the obsolete subtrahends ",
+                  Difference( List( act_children, node -> node!.number ), List( children, node -> node!.number ) ),
+                  ", remaining: ", List( children, node -> node!.number ) );
+        fi;
+        
+        pos_node!.act_children := children;
+        
+        AppendNew( act_nodes, children );
+        AppendNew( neg_nodes, children );
+        
+    od;
+    
+    C!.act_nodes := act_nodes;
+    C!.neg_nodes := neg_nodes;
+    
+    return C;
+    
+end );
+
+##
 InstallMethod( Squash,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
@@ -375,6 +418,8 @@ InstallMethod( Squash,
         l := Length( C!.act_nodes );
         
         SquashOnce( C );
+        
+        RemoveObsoleteSubtrahends( C );
         
     until l = Length( C!.act_nodes );
     
