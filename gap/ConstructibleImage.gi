@@ -288,11 +288,13 @@ InstallMethod( ConstructibleProjection,
     
     node!.Gamma := Gamma;
     
-    counter := 0;
+    counter := -1;
     
     while not IsDone( C ) do
         
         node := Pop( C );
+        
+        counter := counter + 1;
         
         Gamma := node!.Gamma;
 
@@ -323,8 +325,6 @@ InstallMethod( ConstructibleProjection,
             continue;
         fi;
         Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (no)" );
-        
-        counter := counter + 1;
         
         image_closure_and_frame := LocallyClosedProjection( Gamma : counter := counter );
         
