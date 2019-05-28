@@ -454,6 +454,14 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         
         L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
         
+        L := DuplicateFreeList( L );
+        
+        ## examples show that the GB computations of the entries of L
+        ## (needed to check IsLiftable) might be immensely more expensive
+        ## than the GB of the resulting UniversalMorphismFromDirectSum( L ),
+        ## so never execute the next line:
+        #L := MaximalObjects( L, IsLiftable );
+        
         l := UniversalMorphismFromDirectSum( L );
         
         l := ClosedSubsetOfSpec( l );

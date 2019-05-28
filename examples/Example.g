@@ -80,10 +80,6 @@ cc = xuy;
 t := c - lc;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( t );
-#! V( <x+y-1,y^2-y,x+y-1,y^2-y> ) \ ∅
-StandardizeObject( t );
-#! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
-Display( t );
 #! V( <x+y-1,y^2-y> ) \ ∅
 IsClosed( t );
 #! true
