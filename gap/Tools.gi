@@ -207,7 +207,7 @@ InstallMethod( Pop,
   function( C )
     
     if not IsEmpty( C!.pre_nodes ) then
-        return Remove( C!.pre_nodes );
+        return Remove( C!.pre_nodes, 1 );
     fi;
     
     return fail;
