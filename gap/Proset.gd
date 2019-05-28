@@ -66,7 +66,8 @@ DeclareOperation( "AddIsHomSetInhabited",
         [ IsCapCategory, IsList ] );
 
 #! @Description
-#!  Check if <A>B</A> is bigger than <A>A</A> w.r.t. the preorder.
+#!  Check if <A>A</A> is equal to <A>B</A> under the assumption that
+#!  <A>A</A> is known to be less or equal to <A>B</A> w.r.t. the preorder.
 #! @Arguments A, B
 #! @Returns <C>true</C> or <C>false</C>
 DeclareOperation( "IsEqualForObjectsIfIsHomSetInhabited",
