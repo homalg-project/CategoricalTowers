@@ -251,9 +251,6 @@ InstallMethod( LocallyClosedProjection,
                 l := ImageOfProjection( l );
                 frame := frame * l;
                 StandardMorphismOfUnderlyingCategory( frame );
-                if not HasStandardMorphismOfUnderlyingCategory( frame ) then
-                    Error();
-                fi;
                 Info( InfoConstructibleImage, 5, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
             else
                 Info( InfoConstructibleImage, 2, "Step ", counter, " break" );
