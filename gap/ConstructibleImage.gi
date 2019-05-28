@@ -296,6 +296,8 @@ InstallMethod( ConstructibleProjection,
         
         counter := counter + 1;
         
+        Info( InfoConstructibleImage, 2, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" );
+        
         Gamma := node!.Gamma;
 
         additional_components := [];
