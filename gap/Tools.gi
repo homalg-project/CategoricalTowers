@@ -20,6 +20,8 @@ BindGlobal( "TheTypeNodeInDatastructureForConstructibleObjects",
         NewType(  TheFamilyOfNodesInDatastructureForConstructibleObjects,
                 IsNodeInDatastructureOfConstructibleObjects ) );
 
+SetInfoLevel( InfoSquashDatastructureForConstructibleObjects, 1 );
+
 ##
 InstallGlobalFunction( DatastructureForConstructibleObject,
   function( )

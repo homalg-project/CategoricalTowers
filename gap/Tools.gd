@@ -6,6 +6,9 @@
 
 #! @Chapter Tools
 
+#! @Section Info Class
+DeclareInfoClass( "InfoSquashDatastructureForConstructibleObjects" );
+
 #! @Section GAP Categories
 #! @Description
 #!  The &GAP; category of datastructures for constructible objects.
