@@ -65,6 +65,14 @@ DeclareOperation( "Pop",
         [ IsDatastructureForConstructibleObjects ] );
 
 #! @Description
+#!  Check if the object underlying <A>node1</A>
+#!  is contained in the object underlying <A>node2</A>.
+#! @Arguments node1, node2
+#! @Returns <C>true</C> or <C>false</C>
+DeclareOperation( "IsHomSetInhabited",
+        [ IsNodeInDatastructureOfConstructibleObjects, IsNodeInDatastructureOfConstructibleObjects ] );
+
+#! @Description
 #!  
 #! @Arguments pos_node
 #! @Returns nothing

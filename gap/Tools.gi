@@ -110,6 +110,17 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
 end );
 
 ##
+InstallMethod( IsHomSetInhabited,
+        "for two nodes in a datastructure of a constructible object",
+        [ IsNodeInDatastructureOfConstructibleObjects, IsNodeInDatastructureOfConstructibleObjects ],
+        
+  function( N1, N2 )
+    
+    return IsHomSetInhabited( N1!.object, N2!.object );
+    
+end );
+
+##
 InstallMethod( \=,
         "for two nodes in a datastructure of a constructible object",
         [ IsNodeInDatastructureOfConstructibleObjects, IsNodeInDatastructureOfConstructibleObjects ],
