@@ -62,17 +62,17 @@ Display( I );
 AvC := Coproduct( A, C );
 #! D_{Z}( <...> )
 Display( AvC );
-#! D( <1> )
+#! D( <2,3> )
 Coproduct( A, C ) = T;
 #! true
 AC := DirectProduct( A, C );
 #! D_{Z}( <...> )
 Display( AC );
-#! D( <6> )
-StandardMorphismOfUnderlyingCategory( AC );
-#! <A morphism in Rows( Z )>
+#! { D( <2> ) ∩ D( <3> ) }
+StandardizeObject( AC );
+#! D_{Z}( <...> )
 Display( AC );
-#! D( <6> )
+#! { D( <2> ) ∩ D( <3> ) }
 ExponentialOnObjects( I, T ) = T;
 #! true
 ExponentialOnObjects( A, T ) = T;
