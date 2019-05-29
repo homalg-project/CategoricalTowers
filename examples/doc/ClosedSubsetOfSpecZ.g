@@ -65,6 +65,10 @@ AvC := Coproduct( A, C );
 #! V_{Z}( <...> )
 Display( AvC );
 #! { V( <2> ) ∪ V( <3> ) }
+StandardizeObject( AvC );
+#! V_{Z}( <...> )
+Display( AvC );
+#! { V( <2> ) ∪ V( <3> ) }
 AC := DirectProduct( A, C );
 #! V_{Z}( <...> )
 Display( AC );
