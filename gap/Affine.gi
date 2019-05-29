@@ -20,6 +20,10 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     L := List( L, AsCategoryOfRowsMorphism );
     
+    L := DuplicateFreeList( L );
+    
+    L := MaximalObjects( L, {a,b} -> IsLiftable( b, a ) );
+    
     A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
     
     return L;

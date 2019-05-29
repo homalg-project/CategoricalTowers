@@ -86,7 +86,7 @@ IsClosed( t );
 z := c - c;
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
-#! V( <x*y> ) \ { V( <x+y-1,y^2-y> ) ∪ V( <x*y> ) ∪ V( <x> ) }
+#! V( <x*y> ) \ V( <x*y> )
 z := StandardizedObject( z );
 #! ( V_{Q[x,y]}( I1 ) \ V_{Q[x,y]}( J1 ) )
 Display( z );
