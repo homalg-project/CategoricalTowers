@@ -7,8 +7,10 @@ ZZ := HomalgRingOfIntegers( );
 #! Z
 ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( ZZ );
 #! The coframe of Zariski closed subsets of the affine spectrum of Z
-A := ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( [ 2 ], 1, 1, ZZ ) );
+A := ClosedSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );
 #! V_{Z}( <...> )
+Display( A );
+#! V( <4> )
 B := ClosedSubsetOfSpec( "[ 12, 20 ]", ZZ );
 #! V_{Z}( <...> )
 C := ClosedSubsetOfSpecByReducedMorphism( "[ 3 ]", ZZ );
@@ -17,6 +19,8 @@ D := ClosedSubsetOfSpec( "[ 12 ]", ZZ );
 #! V_{Z}( <...> )
 A = B;
 #! true
+Display( A );
+#! V( <2> )
 A = C;
 #! false
 LCA := LocallyClosedApproximation( A );
@@ -61,10 +65,14 @@ I := InitialObject( ZC );
 #! V_{Z}( <...> )
 Display( I );
 #! ∅
+A := ClosedSubsetOfSpec( "[ 4 ]", ZZ );
+#! V_{Z}( <...> )
+Display( A );
+#! V( <4> )
 AvC := Coproduct( A, C );
 #! V_{Z}( <...> )
 Display( AvC );
-#! { V( <2> ) ∪ V( <3> ) }
+#! { V( <4> ) ∪ V( <3> ) }
 StandardizeObject( AvC );
 #! V_{Z}( <...> )
 Display( AvC );
@@ -72,7 +80,7 @@ Display( AvC );
 AC := DirectProduct( A, C );
 #! V_{Z}( <...> )
 Display( AC );
-#! V( <2,3> )
+#! V( <4,3> )
 StandardizeObject( AC );
 #! V_{Z}( <...> )
 Display( AC );
