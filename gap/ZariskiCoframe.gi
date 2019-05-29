@@ -445,17 +445,6 @@ InstallMethod( ViewString,
 end );
 
 ##
-InstallMethod( ViewObj,
-        "for an object in a Zariski coframe",
-        [ IsObjectInZariskiCoframe ],
-        
-  function( A )
-    
-    Print( ViewString( A ) );
-    
-end );
-
-##
 InstallMethod( String,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
