@@ -197,6 +197,13 @@ InstallMethod( ViewString,
 end );
 
 ##
+InstallMethod( String,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame ],
+        
+  ViewString );
+
+##
 InstallMethod( DisplayString,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
