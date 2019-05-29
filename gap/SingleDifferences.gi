@@ -145,6 +145,10 @@ InstallMethod( \-,
     
     Assert( 4, IsWellDefinedForObjects( C ) );
     
+    if HasIsInitial( A ) and IsInitial( A ) then
+        SetIsInitial( C, true );
+    fi;
+    
     return C;
     
 end );
