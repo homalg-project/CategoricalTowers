@@ -273,7 +273,7 @@ InstallMethod( ConstructibleProjection,
   function( Gamma )
     local B, initial, C, node, counter, decomposition, frame_decomposition,
           additional_components, components, image_closure_and_frame, neg_node,
-          pre_nodes, image_closure, frame, frame_decomp, squash;
+          pre_nodes, image_closure, frame, frame_decomp, pos_node, squash;
     
     B := BaseOfFibration( Gamma );
     
@@ -377,7 +377,13 @@ InstallMethod( ConstructibleProjection,
         
         pre_nodes := Attach( node, image_closure, frame_decomp );
         
+        pos_node := pre_nodes[2];
+        pre_nodes := pre_nodes[1];
+        
         Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
+        
+        Info( InfoConstructibleImage, 4, "Step ", counter, " produced negative nodes ",
+              List( pre_nodes, a -> a!.number ), " -> ", pos_node!.number, " -> ", node!.number );
         
         Info( InfoConstructibleImage, 5, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
