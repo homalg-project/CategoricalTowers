@@ -196,8 +196,10 @@ InstallMethod( Attach,
         fi;
     od;
     
-    return List( pre_nodes,
-                 neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ], number := neg_node!.number ) );
+    pre_nodes := List( pre_nodes,
+                       neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ], number := neg_node!.number ) );
+    
+    return [ pre_nodes, pos_node ];
     
 end );
 

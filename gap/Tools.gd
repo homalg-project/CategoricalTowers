@@ -46,9 +46,10 @@ DeclareOperation( "NodeInDatastructureOfConstructibleObject",
 #!  * at the parents of the pre-node <A>N</A> the object <A>pos_node</A> as a new positive node,
 #!  * at the resulting positive node the entries of <A>L</A> as new negative nodes,
 #!  * at the resulting positive node the entries of <A>L</A> as new pre-nodes,
-#!  and return a the list of these pre-nodes.
+#!  and return a list containing the list of these pre-nodes as the first entry
+#!  and the resulting positive node as the second.
 #! @Arguments N, pos_node, L
-#! @Returns a list of pre-nodes
+#! @Returns a list
 DeclareOperation( "Attach",
         [ IsNodeInDatastructureOfConstructibleObjects, IsObjectInThinCategory, IsList ] );
 
