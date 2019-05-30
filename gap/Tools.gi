@@ -83,7 +83,11 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     else
         ## pre-node, these are the ones returned when calling Pop( C )
         nodes := C!.pre_nodes;
-        Add( nodes, N );
+        if ValueOption( "first" ) = true then
+            C!.pre_nodes := Concatenation( [ N ], nodes );
+        else
+            Add( nodes, N );
+        fi;
         return N;
     fi;
     
