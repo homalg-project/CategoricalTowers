@@ -272,7 +272,7 @@ InstallMethod( ConstructibleProjection,
         
   function( Gamma )
     local B, initial, C, node, counter, decomposition, frame_decomposition,
-          additional_components, components, image_closure_and_frame,
+          additional_components, components, image_closure_and_frame, neg_node,
           pre_nodes, image_closure, frame, frame_decomp, squash;
     
     B := BaseOfFibration( Gamma );
@@ -285,7 +285,7 @@ InstallMethod( ConstructibleProjection,
     
     C!.InitialObject := initial;
     
-    node := NodeInDatastructureOfConstructibleObject( C, B, fail );
+    node := NodeInDatastructureOfConstructibleObject( C, B, fail : number := 0 );
     
     node!.Gamma := Gamma;
     
@@ -302,6 +302,7 @@ InstallMethod( ConstructibleProjection,
         counter := counter + 1;
         
         Info( InfoConstructibleImage, 2, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" );
+        Info( InfoConstructibleImage, 2, "Step ", counter, " processing pre/negative node number ", node!.number );
         
         Gamma := node!.Gamma;
 
@@ -340,7 +341,15 @@ InstallMethod( ConstructibleProjection,
             
             Info( InfoConstructibleImage, 2, "Step ", counter, " found ", Length( additional_components ), " additional component(s) of dimension(s) ", List( additional_components, Dimension ) );
             
-            pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail ) );
+            neg_node := node!.act_parents;
+            
+            if not Length( neg_node ) = 1 then
+                Error( "the list node!.act_parents must contain exactly one (negative) node\n" );
+            fi;
+            
+            neg_node := neg_node[1];
+            
+            pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : parents := [ neg_node ], number := Concatenation( String( neg_node!.number ), "_", String( i ) ) ) );
             
             Perform( [ 1 .. Length( additional_components ) ], function( i ) pre_nodes[i]!.Gamma := additional_components[i]; end );
             
