@@ -50,9 +50,10 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local parents, N, nodes, all_nodes, counter, p, n;
+    local parents, number, N, nodes, all_nodes, counter, p, n;
     
     parents := ValueOption( "parents" );
+    number := ValueOption( "number" );
     
     if parents = fail then
         parents := [ ];
@@ -62,6 +63,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
               constructible_object := C,
               object := A,
               parity := b,
+              number := number,
               act_parents := parents, ## active parents
               act_children := [ ],    ## active children
               all_parents := ShallowCopy( parents ),
@@ -186,7 +188,8 @@ InstallMethod( Attach,
         fi;
     od;
     
-    return List( pre_nodes, neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ] ) );
+    return List( pre_nodes,
+                 neg_node -> NodeInDatastructureOfConstructibleObject( C, neg_node!.object, fail : parents := [ neg_node ], number := neg_node!.number ) );
     
 end );
 
