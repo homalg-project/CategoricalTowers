@@ -271,8 +271,9 @@ InstallMethod( ConstructibleProjection,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local B, C, initial, counter, new_nodes, node, additional_components, decomposition, components,
-          image_closure_and_frame, pre_nodes, image_closure, frame, frame_decomp, squash;
+    local B, initial, C, node, counter, decomposition, frame_decomposition,
+          additional_components, components, image_closure_and_frame,
+          pre_nodes, image_closure, frame, frame_decomp, squash;
     
     B := BaseOfFibration( Gamma );
     
@@ -290,6 +291,10 @@ InstallMethod( ConstructibleProjection,
     
     counter := -1;
     
+    decomposition := ValueOption( "decomposition" );
+    
+    frame_decomposition := ValueOption( "frame_decomposition" );
+    
     while not IsDone( C ) do
         
         node := Pop( C );
@@ -302,7 +307,6 @@ InstallMethod( ConstructibleProjection,
 
         additional_components := [];
 
-        decomposition := ValueOption( "decomposition" );
         if decomposition = true then
             Info( InfoConstructibleImage, 4, "Step ", counter, " decompotition... " );
             components := Factors( Gamma );
@@ -348,7 +352,7 @@ InstallMethod( ConstructibleProjection,
         
         frame_decomp := [];
 
-        if not ValueOption( "frame_decomposition" ) = false then
+        if not frame_decomposition = false then
             if not IsInitial( frame ) then
                 Info( InfoConstructibleImage, 4, "Step ", counter, " frame decomposition... " );
                 frame_decomp := Factors( frame );
