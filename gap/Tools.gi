@@ -147,6 +147,10 @@ InstallMethod( Attach,
         Error( "the first argument N is not a pre-node\n" );
     fi;
     
+    if N!.number = fail then
+        Error( "the pre-node has no number\n" );
+    fi;
+    
     ## the underlying datastructure of a constructible object
     C := N!.constructible_object;
     
