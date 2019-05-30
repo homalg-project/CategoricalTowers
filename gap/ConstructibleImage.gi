@@ -338,7 +338,7 @@ InstallMethod( ConstructibleProjection,
         
         if Length( additional_components ) > 0 then
             
-            Info( InfoConstructibleImage, 2, "Step ", counter, " found ", Length( additional_components ), " additional components of dimensions ", List( additional_components, Dimension ), "." );
+            Info( InfoConstructibleImage, 2, "Step ", counter, " found ", Length( additional_components ), " additional component(s) of dimension(s) ", List( additional_components, Dimension ) );
             
             pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail ) );
             
