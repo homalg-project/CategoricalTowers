@@ -343,7 +343,7 @@ InstallMethod( ConstructibleProjection,
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         else
-            Info( InfoConstructibleImage, 4, "Step ", counter, " existing parital decompotition... " );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " existing partial decompotition... " );
             components := KnownFactors( Gamma );
             Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
