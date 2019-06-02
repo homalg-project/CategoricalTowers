@@ -245,6 +245,15 @@ InstallMethod( LocallyClosedProjection,
             Gamma0 := decomposition[1];
             Append( additional_components, decomposition{[2..Length(decomposition)]} );
 
+            # if additional components are present, then the image needs to be recomputed
+            Info( InfoConstructibleImage, 3, step, counter, " image closure..." );
+            image_closure := ImageClosureOfProjection( Gamma0 );
+            Info( InfoConstructibleImage, 3, step, counter, " ...done" );
+
+            Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
+            d0 := Dimension( image_closure );
+            Info( InfoConstructibleImage, 3, step, counter, " ...done" );
+
         fi;
 
     fi;
