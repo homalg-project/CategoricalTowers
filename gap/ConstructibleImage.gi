@@ -14,7 +14,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
         
   function( Gamma )
     local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure,
-          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image;
+          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image, Gamma0_image_test;
 
     R := UnderlyingRing( Gamma );
 
@@ -99,19 +99,27 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
                     if nrFails > 2*n then
                         Info( InfoConstructibleImage, 4, "try splitting fiber..." );
-                        Gamma0_test := CoexponentialOnObjects( Gamma0, PreimageOfProjection( R, Gamma0_image ) );
+                        Gamma0_image_test := CoexponentialOnObjects( image_closure, Gamma0_image );
                         Info( InfoConstructibleImage, 4, "...done" );
                         Info( InfoConstructibleImage, 4, "check split..." );
-                        if not IsSubset( Gamma0_test, Gamma0 ) and not IsInitial( Gamma0_test ) then
+                        if not IsSubset( Gamma0_image_test, image_closure ) and not IsInitial( Gamma0_image_test ) then
                             Info( InfoConstructibleImage, 4, "...done (yes)" );
-                            Info( InfoConstructibleImage, 4, "split of componentes in the fiber..." );
-                            Gamma0 := CoexponentialOnObjects( Gamma0, Gamma0_test );
+                            Info( InfoConstructibleImage, 4, "split of components in the fiber..." );
+                            Assert( 4, image_closure = Gamma0_image + Gamma0_image_test );
                             # We continue with one of the components, but might need to recompute values
-                            image_closure := ImageClosureOfProjection( Gamma0 );
+                            Gamma0 := PreimageOfProjection( Gamma, Gamma0_image );
+                            image_closure := Gamma0_image;
+                            Assert( 4, image_closure = ImageClosureOfProjection( Gamma0 ) );
                             d0 := Dimension( image_closure );
                             fiber_dim := Dimension( Gamma0 ) - d0;
-                            Info( InfoConstructibleImage, 4, "...done" );
-                            Append( additional_components, [ Gamma0_test ] );
+                            # Write the second component into additional components
+                            Append( additional_components, [ PreimageOfProjection( Gamma, Gamma0_image_test ) ] );
+                            Assert( 4, Gamma = PreimageOfProjection( Gamma, Gamma0_image_test ) + Gamma0 );
+                            Assert( 4, not Gamma = Gamma0 );
+                            Assert( 4, not Gamma = PreimageOfProjection( Gamma, Gamma0_image_test ) );
+                            nrFails := 0;
+                            Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
+
                         else
                             Info( InfoConstructibleImage, 4, "...done (no)" );
                         fi;
