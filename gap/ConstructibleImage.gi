@@ -37,6 +37,8 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
     values := Concatenation( values, ListWithIdenticalEntries( 10, "random" ) );
 
+    # We intersect Gamma with hyperplanes until the codimension in the fiber is zero without changing the closure of the image
+    # The result is stored in Gamma 0, which we successively build by intersecting with hyperplanes of codimension 1
     Gamma0 := Gamma;
 
     nrFails := 0;
@@ -59,23 +61,29 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
             if IsInt( a ) then
                 H := var[i] - a;
             else
+                # This catches the string "random"
+                # Generate a random linear equation
                 H := Zero( R );
                 for j in [ 1 .. n ] do
                     H := H + Random([-100..100]) * var[j];
                 od;
                 H := H + Random([-100..100]);
             fi;
+            # A Hyperplane of codimension 1
             H := ClosedSubsetOfSpecByReducedMorphism( H );
             L := L * H;
 
+            # This is only a candidate at this point
             Gamma0_test := Gamma0 * H;
             
-            if Dimension( Gamma0_test ) = d0 + fiber_dim - 1 then
+            if Dimension( Gamma0_test ) = d0 + fiber_dim - 1 then # Check, whether the intersection with H really reduces the codimension
 
                 Gamma0_image := ImageClosureOfProjection( Gamma0_test );
 
-                if IsSubset( Gamma0_image, image_closure ) then
+                if IsSubset( Gamma0_image, image_closure ) then # Check, whether the closure of the image remains the same
 
+                    # We are in the good case, where intersecting with H reduced the codimension in the fiber and does not change the closure of the image.
+                    # Hence we permanently incorporate H in Gamma0
                     Gamma0 := Gamma0_test;
                     Remove( var, i );
                     n := n - 1;
