@@ -349,6 +349,18 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     fi;
     
     ##
+    AddIsEqualForObjects( ZariskiCoframe,
+      function( A, B )
+        
+        if not Dimension( A ) = Dimension( B ) then
+            return false;
+        fi;
+        
+        return IsHomSetInhabited( A, B ) and IsEqualForObjectsIfIsHomSetInhabited( A, B );
+        
+    end );
+    
+    ##
     AddTerminalObject( ZariskiCoframe,
       function( arg )
         local T;

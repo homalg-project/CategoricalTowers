@@ -233,6 +233,18 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     fi;
     
     ##
+    AddIsEqualForObjects( ZariskiFrame,
+      function( A, B )
+        
+        if not DimensionOfComplement( A ) = DimensionOfComplement( B ) then
+            return false;
+        fi;
+        
+        return IsHomSetInhabited( A, B ) and IsEqualForObjectsIfIsHomSetInhabited( A, B );
+        
+    end );
+    
+    ##
     AddTerminalObject( ZariskiFrame,
       function( arg )
         local T;
