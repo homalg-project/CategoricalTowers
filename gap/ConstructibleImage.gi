@@ -90,6 +90,8 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                     fiber_dim := fiber_dim - 1;
                     nrFails := 0;
                     Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " works. Fiber dim: ", fiber_dim );
+                    Assert( 4, fiber_dim=0 or ImageOfProjection( PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 ) ) = image_closure );
+
 
                 else
 
@@ -275,7 +277,8 @@ InstallMethod( LocallyClosedProjection,
         od;
     fi;
 
-    Assert( 2, not IsSubset( frame, image_closure ) );
+    Assert( 4, not IsSubset( frame, image_closure ) );
+    Assert( 4, IsSubset( image_closure, frame ) );
     
     return [ image_closure - frame, additional_components ];
     
@@ -390,13 +393,14 @@ InstallMethod( ConstructibleProjection,
                 Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( frame_decomp ), ")" );
             fi;
         fi;
-        
+       
         pre_nodes := Attach( node, image_closure, frame_decomp );
         
         pos_node := pre_nodes[2];
         pre_nodes := pre_nodes[1];
         
         Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
+        Info( InfoConstructibleImage, 2, "Step ", counter, " need to treat ", Length( pre_nodes ), " additional components." );
         
         Info( InfoConstructibleImage, 4, "Step ", counter, " produced negative nodes ",
               List( pre_nodes, a -> a!.number ), " -> ", pos_node!.number, " -> ", node!.number );
