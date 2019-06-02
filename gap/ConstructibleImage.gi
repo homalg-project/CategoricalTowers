@@ -60,6 +60,13 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
             if IsInt( a ) then
                 H := var[i] - a;
+                if nrFails > n then
+                    j := i + 1;
+                    if j>n then
+                        j := 1;
+                    fi;
+                    H := H + var[j];
+                fi;
             else
                 # This catches the string "random"
                 # Generate a random linear equation
