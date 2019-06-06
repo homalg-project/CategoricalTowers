@@ -488,9 +488,10 @@ InstallMethod( DigraphOfParents,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local all, nodes, parents, D;
+    local all, show_equal, nodes, parents, parents_with_multiplicity, D;
     
     all := ValueOption( "all" );
+    show_equal := ValueOption( "show_equal" );
     
     if all = true then
         nodes := C!.all_nodes;
@@ -500,7 +501,38 @@ InstallMethod( DigraphOfParents,
         parents := "act_parents";
     fi;
     
-    D := Digraph( nodes, function( a, b ) return ForAny( a!.(parents), p -> IsIdenticalObj( b, p ) ); end );
+    parents_with_multiplicity :=
+      function( a )
+        local p, mult;
+        
+        p := a!.(parents);
+        
+        ## we do not expect multiplicity > 1 for inclusion arrows starting at negative nodes
+        if a!.parity = false then
+            return List( p, x -> IdenticalPosition( nodes, x ) );
+        fi;
+        
+        if show_equal = false then
+            mult := b -> [ IdenticalPosition( nodes, b ) ];
+        else
+            mult :=
+              function( b )
+                local n;
+                n := IdenticalPosition( nodes, b );
+                if IsHomSetInhabited( b, a ) then
+                    return [ n, n ];
+                fi;
+                return [ n ];
+            end;
+        fi;
+        
+        return Concatenation( List( p, mult ) );
+        
+    end;
+    
+    D := List( nodes, parents_with_multiplicity );
+    
+    D := Digraph( D );
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
@@ -530,9 +562,10 @@ InstallMethod( DigraphOfChildren,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local all, nodes, children, D;
+    local all, show_equal, nodes, children, children_with_multiplicity, D;
     
     all := ValueOption( "all" );
+    show_equal := ValueOption( "show_equal" );
     
     if all = true then
         nodes := C!.all_nodes;
@@ -542,7 +575,38 @@ InstallMethod( DigraphOfChildren,
         children := "act_children";
     fi;
     
-    D := Digraph( nodes, function( b, a ) return ForAny( a!.(children), p -> IsIdenticalObj( b, p ) ); end );
+    children_with_multiplicity :=
+      function( a )
+        local p, mult;
+        
+        p := a!.(children);
+        
+        ## we do not expect multiplicity > 1 for reversed-inclusion arrows starting at positive nodes
+        if a!.parity = true then
+            return List( p, x -> IdenticalPosition( nodes, x ) );
+        fi;
+        
+        if show_equal = false then
+            mult := b -> [ IdenticalPosition( nodes, b ) ];
+        else
+            mult :=
+              function( b )
+                local n;
+                n := IdenticalPosition( nodes, b );
+                if IsHomSetInhabited( a, b ) then
+                    return [ n, n ];
+                fi;
+                return [ n ];
+            end;
+        fi;
+        
+        return Concatenation( List( p, mult ) );
+        
+    end;
+    
+    D := List( nodes, children_with_multiplicity );
+    
+    D := Digraph( D );
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
