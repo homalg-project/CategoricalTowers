@@ -376,7 +376,7 @@ InstallMethod( RemoveObsoleteSubtrahends,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local visualize, act_nodes, neg_nodes, pos_node, act_children, children;
+    local visualize, act_nodes, neg_nodes, pos_node, act_children, children, node;
     
     if not ( IsBound( C!.finalized ) and C!.finalized = true ) then
         Error( "C is not marked as finalized, so I won't squash it\n" );
@@ -413,6 +413,11 @@ InstallMethod( RemoveObsoleteSubtrahends,
     
     C!.act_nodes := act_nodes;
     C!.neg_nodes := neg_nodes;
+    
+    ##  update active parents of all active nodes
+    for node in act_nodes do
+        node!.act_parents := Filtered( node!.act_parents, x -> not PositionProperty( act_nodes, y -> IsIdenticalObj( y, x ) ) = fail );
+    od;
     
     return C;
     
