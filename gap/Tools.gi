@@ -536,9 +536,15 @@ InstallMethod( DigraphOfParents,
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
-              local node, l;
+              local node, act, l;
               
               node := nodes[i];
+              
+              act := "";
+              
+              if all = true and not IdenticalPosition( C!.act_nodes, node ) = fail then
+                  act := "@";
+              fi;
               
               if node!.parity = true then
                   l := "+";
@@ -546,7 +552,7 @@ InstallMethod( DigraphOfParents,
                   l := "-";
               fi;
               
-              l := Concatenation( String( node!.number ), " (", l, String( Dimension( node!.object ) ), ")" );
+              l := Concatenation( act, String( node!.number ), " (", l, String( Dimension( node!.object ) ), ")" );
               
               SetDigraphVertexLabel( D, i, l );
               
@@ -610,9 +616,15 @@ InstallMethod( DigraphOfChildren,
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
-              local node, l;
+              local node, act, l;
               
               node := nodes[i];
+              
+              act := "";
+              
+              if all = true and not IdenticalPosition( C!.act_nodes, node ) = fail then
+                  act := "@";
+              fi;
               
               if node!.parity = true then
                   l := "+";
@@ -620,7 +632,7 @@ InstallMethod( DigraphOfChildren,
                   l := "-";
               fi;
               
-              l := Concatenation( String( node!.number ), " (", l, String( Dimension( node!.object ) ), ")" );
+              l := Concatenation( act, String( node!.number ), " (", l, String( Dimension( node!.object ) ), ")" );
               
               SetDigraphVertexLabel( D, i, l );
               
