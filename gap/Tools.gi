@@ -250,7 +250,7 @@ InstallMethod( Remove,
     
     pos_nodes := C!.pos_nodes;
     
-    p := PositionProperty( pos_nodes, node -> IsIdenticalObj( node, pos_node ) );
+    p := IdenticalPosition( pos_nodes, pos_node );
     
     if p = fail then
         Error( "pos_node not among pos_nodes\n" );
@@ -260,7 +260,7 @@ InstallMethod( Remove,
     
     act_nodes := C!.act_nodes;
     
-    p := PositionProperty( act_nodes, node -> IsIdenticalObj( node, pos_node ) );
+    p := IdenticalPosition( act_nodes, pos_node );
     
     if p = fail then
         Error( "pos_node not among act_nodes\n" );
@@ -278,7 +278,7 @@ InstallMethod( Remove,
     
     neg_nodes := C!.neg_nodes;
     
-    p := PositionProperty( neg_nodes, node -> IsIdenticalObj( node, neg_node ) );
+    p := IdenticalPosition( neg_nodes, neg_node );
     
     if p = fail then
         Error( "neg_node not among neg_nodes\n" );
@@ -286,7 +286,7 @@ InstallMethod( Remove,
     
     Remove( neg_nodes, p );
     
-    p := PositionProperty( act_nodes, node -> IsIdenticalObj( node, neg_node ) );
+    p := IdenticalPosition( act_nodes, neg_node );
     
     if p = fail then
         Error( "neg_node not among act_nodes\n" );
@@ -300,7 +300,7 @@ InstallMethod( Remove,
     
     for child in children do
         spouses := child!.act_parents;
-        p := PositionProperty( spouses, node -> IsIdenticalObj( node, pos_node ) );
+        p := IdenticalPosition( spouses, pos_node );
         if p = fail then
             Error( "pos_node is not among the spouses\n" );
         fi;
@@ -310,7 +310,7 @@ InstallMethod( Remove,
     
     for grandparent in grandparents do
         aunts := grandparent!.act_children;
-        p := PositionProperty( aunts, node -> IsIdenticalObj( node, neg_node ) );
+        p := IdenticalPosition( aunts, neg_node );
         if p = fail then
             Error( "neg_node is not among the aunts\n" );
         fi;
@@ -416,7 +416,7 @@ InstallMethod( RemoveObsoleteSubtrahends,
     
     ##  update active parents of all active nodes
     for node in act_nodes do
-        node!.act_parents := Filtered( node!.act_parents, x -> not PositionProperty( act_nodes, y -> IsIdenticalObj( y, x ) ) = fail );
+        node!.act_parents := Filtered( node!.act_parents, x -> not IdenticalPosition( act_nodes, x ) = fail );
     od;
     
     return C;
