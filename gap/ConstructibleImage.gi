@@ -166,7 +166,7 @@ InstallMethod( LocallyClosedProjection,
         
   function( Gamma )
     local counter, step, d, image_closure, d0, fiber_dim, Gamma0, additional_components,
-          l, decomposition, frame, smaller_frame, i;
+          l, decomposition, relative_boundary_hull, smaller_relative_boundary_hull, i;
 
     counter := ValueOption( "counter" );
     
@@ -266,26 +266,26 @@ InstallMethod( LocallyClosedProjection,
     fi;
  
     Info( InfoConstructibleImage, 3, step, counter, " points at infinity..." );
-    frame := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
+    relative_boundary_hull := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-    Info( InfoConstructibleImage, 3, step, counter, " frame..." );
-    frame := ImageOfProjection( frame );
+    Info( InfoConstructibleImage, 3, step, counter, " relative boundary hull..." );
+    relative_boundary_hull := ImageOfProjection( relative_boundary_hull );
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-    Info( InfoConstructibleImage, 5, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+    Info( InfoConstructibleImage, 5, "Step ", counter, " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( relative_boundary_hull ) ) ) );
     
-    smaller_frame := ValueOption( "smaller_frame" );
+    smaller_relative_boundary_hull := ValueOption( "smaller_rbhull" );
     
-    if IsInt( smaller_frame ) and IsEmpty( additional_components ) then
-        for i in [ 1 .. smaller_frame ] do
+    if IsInt( smaller_relative_boundary_hull ) and IsEmpty( additional_components ) then
+        for i in [ 1 .. smaller_relative_boundary_hull ] do
             l := DecreaseCodimensionByFixingVariables( Gamma : modify_hyperplanes := i );
             if IsEmpty( l[2] ) then
                 l := PointsAtInfinityOfFiberwiseProjectiveClosure( l[1] );
                 l := ImageOfProjection( l );
-                frame := frame * l;
-                StandardMorphismOfUnderlyingCategory( frame );
-                Info( InfoConstructibleImage, 5, "Step ", counter, " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ) );
+                relative_boundary_hull := relative_boundary_hull * l;
+                StandardMorphismOfUnderlyingCategory( relative_boundary_hull );
+                Info( InfoConstructibleImage, 5, "Step ", counter, " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( relative_boundary_hull ) ) ) );
             else
                 Info( InfoConstructibleImage, 2, "Step ", counter, " break" );
                 break;
@@ -293,10 +293,10 @@ InstallMethod( LocallyClosedProjection,
         od;
     fi;
 
-    Assert( 4, not IsSubset( frame, image_closure ) );
-    Assert( 4, IsSubset( image_closure, frame ) );
+    Assert( 4, not IsSubset( relative_boundary_hull, image_closure ) );
+    Assert( 4, IsSubset( image_closure, relative_boundary_hull ) );
     
-    return [ image_closure - frame, additional_components ];
+    return [ image_closure - relative_boundary_hull, additional_components ];
     
 end );
 
@@ -306,9 +306,9 @@ InstallMethod( ConstructibleProjection,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local B, initial, C, node, counter, decomposition, frame_decomposition,
-          additional_components, components, image_closure_and_frame, neg_node,
-          pre_nodes, image_closure, frame, frame_decomp, pos_node, squash;
+    local B, initial, C, node, counter, decomposition, relative_boundary_hull_decomposition,
+          additional_components, components, image_closure_and_relative_boundary_hull, neg_node,
+          pre_nodes, image_closure, relative_boundary_hull, relative_boundary_hull_decomp, pos_node, squash;
     
     B := BaseOfFibration( Gamma );
     
@@ -328,7 +328,7 @@ InstallMethod( ConstructibleProjection,
     
     decomposition := ValueOption( "decomposition" );
     
-    frame_decomposition := ValueOption( "frame_decomposition" );
+    relative_boundary_hull_decomposition := ValueOption( "rbhull_decomposition" );
     
     while not IsDone( C ) do
         
@@ -368,9 +368,9 @@ InstallMethod( ConstructibleProjection,
         fi;
         Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (no)" );
         
-        image_closure_and_frame := LocallyClosedProjection( Gamma : counter := counter );
+        image_closure_and_relative_boundary_hull := LocallyClosedProjection( Gamma : counter := counter );
         
-        additional_components := Concatenation( additional_components, image_closure_and_frame[2] );
+        additional_components := Concatenation( additional_components, image_closure_and_relative_boundary_hull[2] );
         
         if Length( additional_components ) > 0 then
             
@@ -390,27 +390,27 @@ InstallMethod( ConstructibleProjection,
             
         fi;
         
-        image_closure := image_closure_and_frame[1].I;
+        image_closure := image_closure_and_relative_boundary_hull[1].I;
         
-        frame := image_closure_and_frame[1].J;
+        relative_boundary_hull := image_closure_and_relative_boundary_hull[1].J;
         
-        frame_decomp := [];
+        relative_boundary_hull_decomp := [];
 
-        if not frame_decomposition = false then
-            if not IsInitial( frame ) then
-                Info( InfoConstructibleImage, 4, "Step ", counter, " frame decomposition... " );
-                frame_decomp := Factors( frame );
-                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( frame_decomp ), ")" );
+        if not relative_boundary_hull_decomposition = false then
+            if not IsInitial( relative_boundary_hull ) then
+                Info( InfoConstructibleImage, 4, "Step ", counter, " relative boundary hull decomposition... " );
+                relative_boundary_hull_decomp := Factors( relative_boundary_hull );
+                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( relative_boundary_hull_decomp ), ")" );
             fi;
         else
-            if not IsInitial( frame ) then
-                Info( InfoConstructibleImage, 4, "Step ", counter, " existing frame partial decomposition... " );
-                frame_decomp := KnownFactors( frame );
-                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( frame_decomp ), ")" );
+            if not IsInitial( relative_boundary_hull ) then
+                Info( InfoConstructibleImage, 4, "Step ", counter, " existing relative boundary hull partial decomposition... " );
+                relative_boundary_hull_decomp := KnownFactors( relative_boundary_hull );
+                Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( relative_boundary_hull_decomp ), ")" );
             fi;
         fi;
        
-        pre_nodes := Attach( node, image_closure, frame_decomp );
+        pre_nodes := Attach( node, image_closure, relative_boundary_hull_decomp );
         
         pos_node := pre_nodes[2];
         pre_nodes := pre_nodes[1];
@@ -421,7 +421,7 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 4, "Step ", counter, " produced negative nodes ",
               List( pre_nodes, a -> a!.number ), " -> ", pos_node!.number, " -> ", node!.number );
         
-        Info( InfoConstructibleImage, 5, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " frame: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( frame ) ) ), " (", List( frame_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
+        Info( InfoConstructibleImage, 5, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
         
     od;
     
