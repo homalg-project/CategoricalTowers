@@ -1,6 +1,6 @@
 #! @Chunk ProcedureToNormalizeGenerators
 
-LoadPackage( "M2" );
+LoadPackage( "ModulesForHomalg" );
 LoadPackage( "RingsForHomalg" );
 
 #! @Example

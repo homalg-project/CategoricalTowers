@@ -1,5 +1,5 @@
 #
-# M2: Intrinsic modules with relations and generators for the CAP based homalg
+# ModulesForHomalg: Intrinsic modules with relations and generators for the CAP based homalg
 #
 # Implementations
 

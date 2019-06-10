@@ -1,5 +1,5 @@
 #
-# M2: Intrinsic modules with elements for the CAP based homalg
+# ModulesForHomalg: Intrinsic modules with elements for the CAP based homalg
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,11 +8,11 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "M2",
+PackageName := "ModulesForHomalg",
 Subtitle := "Intrinsic modules with elements for the CAP based homalg",
 
 Version := Maximum( [
-                   "2019.03.02", ## Mohamed's version
+                   "2019.03.03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03.14", ## Kamals's version
                    ] ),
@@ -26,7 +26,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "http://www.mathematik.uni-kl.de/~barakat/",
+    WWWHome := "https://mohamed-barakat.github.io",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -53,11 +53,11 @@ Persons := [
 
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/mohamed-barakat/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
-PackageWWWHome  := "https://mohamed-barakat.github.io/M2/",
+PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
@@ -79,7 +79,7 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "M2",
+  BookName  := "ModulesForHomalg",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
@@ -91,7 +91,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2017.03.15" ],
-                   [ "Modules", ">= 2017.05.01" ],
+                   [ "Modules", ">= 2019.02.02" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
                    [ "CAP", ">= 2019.03.02" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],

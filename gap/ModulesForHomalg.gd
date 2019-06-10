@@ -1,5 +1,5 @@
 #
-# M2: Intrinsic modules with elements for the CAP based &homalg;
+# ModulesForHomalg: Intrinsic modules with elements for the CAP based &homalg;
 #
 # Declarations
 #

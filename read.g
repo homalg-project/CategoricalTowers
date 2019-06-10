@@ -1,13 +1,13 @@
 #
-# M2: Intrinsic modules with elements for the CAP based homalg
+# ModulesForHomalg: Intrinsic modules with elements for the CAP based homalg
 #
 # Reading the implementation part of the package.
 #
 
-ReadPackage( "M2", "gap/ModulesForHomalg.gi");
-ReadPackage( "M2", "gap/HomalgRelations.gi");
-ReadPackage( "M2", "gap/HomalgGenerators.gi");
-ReadPackage( "M2", "gap/HomalgModule.gi");
-ReadPackage( "M2", "gap/HomalgMap.gi");
-ReadPackage( "M2", "gap/HomalgFunctor.gi");
-ReadPackage( "M2", "gap/Modules.gi" );
+ReadPackage( "ModulesForHomalg", "gap/ModulesForHomalg.gi");
+ReadPackage( "ModulesForHomalg", "gap/HomalgRelations.gi");
+ReadPackage( "ModulesForHomalg", "gap/HomalgGenerators.gi");
+ReadPackage( "ModulesForHomalg", "gap/HomalgModule.gi");
+ReadPackage( "ModulesForHomalg", "gap/HomalgMap.gi");
+ReadPackage( "ModulesForHomalg", "gap/HomalgFunctor.gi");
+ReadPackage( "ModulesForHomalg", "gap/Modules.gi" );

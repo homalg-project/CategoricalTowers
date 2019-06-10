@@ -1,5 +1,5 @@
 #
-# M2: Intrinsic modules with elements for the CAP based homalg
+# ModulesForHomalg: Intrinsic modules with elements for the CAP based homalg
 #
 # This file is a script which compiles the package manual.
 #
@@ -16,7 +16,7 @@ AutoDoc(
 
             maketest := rec( folder := ".",
                              commands :=
-                             [ "LoadPackage( \"M2\" );",
+                             [ "LoadPackage( \"ModulesForHomalg\" );",
                                "LoadPackage( \"RingsForHomalg\" );",
                                "LoadPackage( \"IO_ForHomalg\" );",
                                "HOMALG_IO.show_banners := false;",
