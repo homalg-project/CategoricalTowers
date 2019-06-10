@@ -96,13 +96,13 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                     n := n - 1;
                     fiber_dim := fiber_dim - 1;
                     nrFails := 0;
-                    Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " works. Fiber dim: ", fiber_dim );
+                    Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " works. Fiber dim: ", fiber_dim );
                     Assert( 4, fiber_dim=0 or ImageOfProjection( PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 ) ) = image_closure );
 
 
                 else
 
-                    Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " decreases image" );
+                    Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " decreases image" );
 
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
@@ -141,7 +141,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
             else
 
-                Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( H ) ) ), " does not decrease dimension" );
+                Info( InfoConstructibleImage, 4, "hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not decrease dimension" );
                 i := i + 1;
                 nrFails := nrFails + 1;
 
@@ -273,7 +273,8 @@ InstallMethod( LocallyClosedProjection,
     relative_boundary_hull := ImageOfProjection( relative_boundary_hull );
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
-    Info( InfoConstructibleImage, 5, "Step ", counter, " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+    ## the followin line will trigger ideal intersection
+    Info( InfoConstructibleImage, 10, "Step ", counter, " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
     
     smaller_relative_boundary_hull := ValueOption( "smaller_rbhull" );
     
@@ -284,8 +285,9 @@ InstallMethod( LocallyClosedProjection,
                 l := PointsAtInfinityOfFiberwiseProjectiveClosure( l[1] );
                 l := ImageOfProjection( l );
                 relative_boundary_hull := relative_boundary_hull * l;
-                StandardMorphismOfUnderlyingCategory( relative_boundary_hull );
-                Info( InfoConstructibleImage, 5, "Step ", counter, " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+                MorphismOfUnderlyingCategory( relative_boundary_hull );
+                ## the followin line will trigger ideal intersection
+                Info( InfoConstructibleImage, 10, "Step ", counter, " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
             else
                 Info( InfoConstructibleImage, 2, "Step ", counter, " break" );
                 break;
@@ -421,7 +423,8 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 4, "Step ", counter, " produced negative nodes ",
               List( pre_nodes, a -> a!.number ), " -> ", pos_node!.number, " -> ", node!.number );
         
-        Info( InfoConstructibleImage, 5, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( image_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfUnderlyingCategory( f ) ) ) ), ")" );
+        ## the followin line will trigger ideal intersection
+        Info( InfoConstructibleImage, 10, "Step ", counter, " image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( image_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( f ) ) ) ), ")" );
         
     od;
     
