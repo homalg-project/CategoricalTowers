@@ -23,7 +23,7 @@ DeclareCategory( "IsQuotientCategoryObject",
 #! The output is $\underline{a} \in Q$.
 #! @Arguments Q, a
 #! @Returns an object
-DeclareOperation( "AsQuotientCategoryObject", [ IsQuotientCategory, IsCapCategoryObject ] );
+DeclareOperation( "QuotientCategoryObject", [ IsQuotientCategory, IsCapCategoryObject ] );
 
 #! @Section Attributes and properties
 

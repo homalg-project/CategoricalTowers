@@ -7,7 +7,7 @@
 #############################################################################
 
 ##
-InstallMethod( AsQuotientCategoryObject,
+InstallMethod( QuotientCategoryObject,
                [ IsQuotientCategory, IsCapCategoryObject ],
   
   function( quotient_category, a )
@@ -32,15 +32,23 @@ end );
 InstallMethod( Display,
             [ IsQuotientCategoryObject ],
   function( a )
-    local test_function;
+    local test_function, name;
     
     test_function := CongruencyTestFunctionForQuotientCategory( CapCategory( a ) );
+    
+    name := NameFunction( test_function );
+    
+    if name = "unknown" then
+      
+      name := "a congruency test function";
+    
+    fi;
     
     Print( "Quotient object defined by:\n\n" );
     
     Display( UnderlyingCapCategoryObject( a ) );
     
-    Print( "\nmodulo ", NameFunction( test_function ) );
+    Print( "\nmodulo ", name );
     
 end );
 

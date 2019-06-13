@@ -7,7 +7,7 @@
 #############################################################################
 
 ##
-InstallMethod( AsQuotientCategoryMorphism,
+InstallMethod( QuotientCategoryMorphism,
                [ IsQuotientCategory, IsCapCategoryMorphism ],
   
   function( quotient_category, alpha )
@@ -21,9 +21,9 @@ InstallMethod( AsQuotientCategoryMorphism,
     
     quotient_alpha := rec( );
     
-    source := AsQuotientCategoryObject( quotient_category, Source( alpha ) );
+    source := QuotientCategoryObject( quotient_category, Source( alpha ) );
     
-    range := AsQuotientCategoryObject( quotient_category, Range( alpha ) );
+    range := QuotientCategoryObject( quotient_category, Range( alpha ) );
     
     ObjectifyMorphismForCAPWithAttributes( quotient_alpha, quotient_category,
                                            Source, source,
@@ -38,15 +38,23 @@ end );
 InstallMethod( Display,
             [ IsQuotientCategoryMorphism ],
   function( alpha )
-    local test_function;
+    local name, test_function;
     
     test_function := CongruencyTestFunctionForQuotientCategory( CapCategory( alpha ) );
+    
+    name := NameFunction( test_function );
+    
+    if name = "unknown" then
+      
+      name := "a congruency test function";
+      
+    fi;
     
     Print( "Quotient morphism defined by:\n\n" );
     
     Display( UnderlyingCapCategoryMorphism( alpha ) );
     
-    Print( "\nmodulo ", NameFunction( test_function ) );
+    Print( "\nmodulo ", name );
     
 end );
 

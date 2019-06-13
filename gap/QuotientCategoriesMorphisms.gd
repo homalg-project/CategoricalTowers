@@ -24,7 +24,7 @@ DeclareCategory( "IsQuotientCategoryMorphism",
 #! The output is $\underline{\alpha}: \underline{a} \rightarrow \underline{b}$ in $Q$.
 #! @Arguments Q, alpha
 #! @Returns a morphism
-DeclareOperation( "AsQuotientCategoryMorphism", [ IsQuotientCategory, IsCapCategoryMorphism ] );
+DeclareOperation( "QuotientCategoryMorphism", [ IsQuotientCategory, IsCapCategoryMorphism ] );
 
 #! @Section Attributes and properties
 
