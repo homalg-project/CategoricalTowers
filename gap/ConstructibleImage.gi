@@ -346,13 +346,13 @@ InstallMethod( ConstructibleProjection,
         additional_components := [];
 
         if decomposition = true then
-            Info( InfoConstructibleImage, 4, "Step ", counter, " decompotition... " );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " decomposition... " );
             components := Factors( Gamma );
             Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         else
-            Info( InfoConstructibleImage, 4, "Step ", counter, " existing partial decompotition... " );
+            Info( InfoConstructibleImage, 4, "Step ", counter, " existing partial decomposition... " );
             components := KnownFactors( Gamma );
             Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
