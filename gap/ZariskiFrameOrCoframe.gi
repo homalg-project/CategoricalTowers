@@ -409,7 +409,7 @@ InstallMethod( AffineApproximation,
     
     Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
     
-    Ap := MatElm( Ap, 1, 1 );
+    Ap := Ap[ 1, 1 ];
     
     indets := Indeterminates( R );
     

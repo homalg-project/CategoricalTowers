@@ -203,7 +203,7 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
             Error( "no nonzero rows after reducing D with Ac\n" );
         fi;
         
-        D := MatElm( D, nonzero_rows[1], 1 );
+        D := D[ nonzero_rows[1], 1 ];
         
         if IsUnit( D ) then
             continue;
