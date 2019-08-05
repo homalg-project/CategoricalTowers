@@ -14,7 +14,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
         
   function( Gamma )
     local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure,
-          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image, Gamma0_image_test;
+          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image, Gamma0_image_test, Gamma1, Gamma2;
 
     R := UnderlyingRing( Gamma );
 
@@ -60,7 +60,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
             if IsInt( a ) then
                 H := var[i] - a;
-                if nrFails > 3*n then
+                if nrFails > 5*n then
                     j := i + 1;
                     if j>n then
                         j := 1;
@@ -106,14 +106,15 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
-                    if nrFails > 2*n then
+                    if nrFails > n then
+
                         Info( InfoConstructibleImage, 4, "try splitting base..." );
                         Gamma0_image_test := CoexponentialOnObjects( image_closure, Gamma0_image );
                         Info( InfoConstructibleImage, 4, "...done" );
                         Info( InfoConstructibleImage, 4, "check split base..." );
                         if not IsSubset( Gamma0_image_test, image_closure ) and not IsInitial( Gamma0_image_test ) then
                             Info( InfoConstructibleImage, 4, "...done (yes)" );
-                            Info( InfoConstructibleImage, 4, "split of components in the fiber..." );
+                            Info( InfoConstructibleImage, 4, "use split in base to induce split of components in the fiber..." );
                             Assert( 4, image_closure = Gamma0_image + Gamma0_image_test );
                             # We continue with one of the components, but might need to recompute values
                             Gamma0 := PreimageOfProjection( Gamma, Gamma0_image );
@@ -130,7 +131,34 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                             Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
 
                         else
-                            Info( InfoConstructibleImage, 4, "...done (no)" );
+
+                            Info( InfoConstructibleImage, 4, "...done base (no)" );
+                            if nrFails > 2*n then
+                                Info( InfoConstructibleImage, 4, "try splitting fiber..." );
+                                Gamma1 := PreimageOfProjection( Gamma, Gamma0_image );
+                                Info( InfoConstructibleImage, 4, "...done" );
+                                Info( InfoConstructibleImage, 4, "check split fiber..." );
+                                if not IsSubset( Gamma1, Gamma ) then
+                                    Gamma2 := CoexponentialOnObjects( Gamma, Gamma1 );
+                                    if not IsSubset( Gamma2, Gamma ) then
+                                        Info( InfoConstructibleImage, 4, "...done (yes)" );
+                                        Assert( 4, Gamma = Gamma1 + Gamma2 );
+                                        Gamma0 := Gamma1;
+                                        image_closure := Gamma0_image;
+                                        d0 := Dimension( image_closure );
+                                        fiber_dim := Dimension( Gamma0 ) - d0;
+                                        Append( additional_components, [ Gamma2 ] );
+                                        Assert( 4, not Gamma = Gamma0 );
+                                        Assert( 4, not Gamma = Gamma2 );
+                                        nrFails := 0;
+                                        Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
+                                    else
+                                        Info( InfoConstructibleImage, 4, "...done (no)" );
+                                    fi;
+                                else
+                                    Info( InfoConstructibleImage, 4, "...done (no)" );
+                                fi;
+                            fi;
                         fi;
                     fi;
 
