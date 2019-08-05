@@ -107,10 +107,10 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
                     if nrFails > 2*n then
-                        Info( InfoConstructibleImage, 4, "try splitting fiber..." );
+                        Info( InfoConstructibleImage, 4, "try splitting base..." );
                         Gamma0_image_test := CoexponentialOnObjects( image_closure, Gamma0_image );
                         Info( InfoConstructibleImage, 4, "...done" );
-                        Info( InfoConstructibleImage, 4, "check split..." );
+                        Info( InfoConstructibleImage, 4, "check split base..." );
                         if not IsSubset( Gamma0_image_test, image_closure ) and not IsInitial( Gamma0_image_test ) then
                             Info( InfoConstructibleImage, 4, "...done (yes)" );
                             Info( InfoConstructibleImage, 4, "split of components in the fiber..." );
