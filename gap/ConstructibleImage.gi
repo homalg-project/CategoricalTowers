@@ -60,7 +60,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
             if IsInt( a ) then
                 H := var[i] - a;
-                if nrFails > n then
+                if nrFails > 3*n then
                     j := i + 1;
                     if j>n then
                         j := 1;
