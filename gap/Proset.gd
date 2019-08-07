@@ -48,7 +48,7 @@ DeclareOperation( "IsHomSetInhabited",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsHomSetInhabited</C>.
 #! $F: A, B \mapsto \mathrm{IsHomSetInhabited}(A, B)$.
 #! @Returns nothing
@@ -75,7 +75,7 @@ DeclareOperation( "IsEqualForObjectsIfIsHomSetInhabited",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForObjectsIfIsHomSetInhabited</C>.
 #! $F: A, B \mapsto \mathrm{IsEqualForObjectsIfIsHomSetInhabited}(A, B)$.
 #! @Returns nothing

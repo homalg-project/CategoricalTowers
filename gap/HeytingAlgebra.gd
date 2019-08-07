@@ -19,7 +19,7 @@ DeclareAttribute( "NegationOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>NegationOnObjects</C>.
 #! $F: a \mapsto \neg a$.
 #! @Returns nothing
@@ -57,7 +57,7 @@ DeclareOperation( "NegationOnMorphismsWithGivenNegations",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>NegationOnMorphismsWithGivenNegations</C>.
 #! $F: (\neg b,\alpha,\neg a) \mapsto \neg \alpha$.
 #! @Returns nothing
@@ -94,7 +94,7 @@ DeclareOperation( "MorphismToDoubleNegationWithGivenDoubleNegation",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismToDoubleNegationWithGivenDoubleNegation</C>.
 #! $F: (a, \neg\neg a) \mapsto (a \rightarrow \neg\neg a)$.
 #! @Returns nothing

@@ -19,7 +19,7 @@ DeclareAttribute( "ConegationOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ConegationOnObjects</C>.
 #! $F: a \mapsto \ulcorner a$.
 #! @Returns nothing
@@ -57,7 +57,7 @@ DeclareOperation( "ConegationOnMorphismsWithGivenConegations",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ConegationOnMorphismsWithGivenConegations</C>.
 #! $F: (\ulcorner b,\alpha,\ulcorner a) \mapsto \ulcorner \alpha$.
 #! @Returns nothing
@@ -94,7 +94,7 @@ DeclareOperation( "MorphismFromDoubleConegationWithGivenDoubleConegation",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromDoubleConegationWithGivenDoubleConegation</C>.
 #! $F: (a, \ulcorner\ulcorner a) \mapsto (\ulcorner\ulcorner a \rightarrow a)$.
 #! @Returns nothing
