@@ -13,8 +13,14 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure,
-          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image, Gamma0_image_test, Gamma1, Gamma2;
+    local no_inner_decomposition, tried_decomposition, R, B, var, n, values, modify_hyperplanes, i, Gamma0, nrFails, image_closure,
+          d0, fiber_dim, additional_components, L, a, H, j, Gamma0_test, Gamma0_image, Gamma0_image_test, Gamma1, Gamma2, decomposition;
+
+    no_inner_decomposition := ValueOption( "no_inner_decomposition" );
+    if no_inner_decomposition = fail then
+        no_inner_decomposition := false;
+    fi;
+    tried_decomposition := false;
 
     R := UnderlyingRing( Gamma );
 
@@ -111,9 +117,11 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                         Info( InfoConstructibleImage, 4, "try splitting base..." );
                         Gamma0_image_test := CoexponentialOnObjects( image_closure, Gamma0_image );
                         Info( InfoConstructibleImage, 4, "...done" );
+
                         Info( InfoConstructibleImage, 4, "check split base..." );
                         if not IsSubset( Gamma0_image_test, image_closure ) and not IsInitial( Gamma0_image_test ) then
                             Info( InfoConstructibleImage, 4, "...done (yes)" );
+
                             Info( InfoConstructibleImage, 4, "use split in base to induce split of components in the fiber..." );
                             Assert( 4, image_closure = Gamma0_image + Gamma0_image_test );
                             # We continue with one of the components, but might need to recompute values
@@ -133,31 +141,60 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                         else
 
                             Info( InfoConstructibleImage, 4, "...done base (no)" );
+
                             if nrFails > 2*n then
-                                Info( InfoConstructibleImage, 4, "try splitting fiber..." );
-                                Gamma1 := PreimageOfProjection( Gamma, Gamma0_image );
-                                Info( InfoConstructibleImage, 4, "...done" );
-                                Info( InfoConstructibleImage, 4, "check split fiber..." );
-                                if not IsSubset( Gamma1, Gamma ) then
-                                    Gamma2 := CoexponentialOnObjects( Gamma, Gamma1 );
-                                    if not IsSubset( Gamma2, Gamma ) then
-                                        Info( InfoConstructibleImage, 4, "...done (yes)" );
-                                        Assert( 4, Gamma = Gamma1 + Gamma2 );
-                                        Gamma0 := Gamma1;
-                                        image_closure := Gamma0_image;
-                                        d0 := Dimension( image_closure );
-                                        fiber_dim := Dimension( Gamma0 ) - d0;
-                                        Append( additional_components, [ Gamma2 ] );
-                                        Assert( 4, not Gamma = Gamma0 );
-                                        Assert( 4, not Gamma = Gamma2 );
-                                        nrFails := 0;
-                                        Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
+
+                                if no_inner_decomposition then
+
+                                    Info( InfoConstructibleImage, 4, "try splitting fiber..." );
+                                    Gamma1 := PreimageOfProjection( Gamma, Gamma0_image );
+                                    Info( InfoConstructibleImage, 4, "...done" );
+
+                                    Info( InfoConstructibleImage, 4, "check split fiber..." );
+                                    if not IsSubset( Gamma1, Gamma ) then
+                                        Gamma2 := CoexponentialOnObjects( Gamma, Gamma1 );
+                                        if not IsSubset( Gamma2, Gamma ) then
+                                            Info( InfoConstructibleImage, 4, "...done (yes)" );
+                                            Assert( 4, Gamma = Gamma1 + Gamma2 );
+                                            Gamma0 := Gamma1;
+                                            image_closure := Gamma0_image;
+                                            d0 := Dimension( image_closure );
+                                            fiber_dim := Dimension( Gamma0 ) - d0;
+                                            Append( additional_components, [ Gamma2 ] );
+                                            Assert( 4, not Gamma = Gamma0 );
+                                            Assert( 4, not Gamma = Gamma2 );
+                                            nrFails := 0;
+                                            Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
+                                        else
+                                            Info( InfoConstructibleImage, 4, "...done (no)" );
+                                        fi;
                                     else
                                         Info( InfoConstructibleImage, 4, "...done (no)" );
                                     fi;
-                                else
-                                    Info( InfoConstructibleImage, 4, "...done (no)" );
+
+                                else 
+                                    
+                                    if not tried_decomposition then
+
+                                        Info( InfoConstructibleImage, 4, "try decomposition..." );
+                                        decomposition := Factors( Gamma0 );
+                                        Info( InfoConstructibleImage, 4, " ...done ( ", String( Length( decomposition ) ), " components)" );
+                                        tried_decomposition := true;
+            
+                                        Gamma0 := decomposition[1];
+                                        Append( additional_components, decomposition{[2..Length(decomposition)]} );
+
+                                        Gamma0_image := ImageClosureOfProjection( Gamma0_test );
+                                        image_closure := Gamma0_image;
+                                        d0 := Dimension( image_closure );
+                                        fiber_dim := Dimension( Gamma0 ) - d0;
+                                        nrFails := 0;
+                                        Info( InfoConstructibleImage, 4, Concatenation( "back to fiber dimension ", String( fiber_dim ) ) );
+
+                                    fi;
+
                                 fi;
+
                             fi;
                         fi;
                     fi;
@@ -260,39 +297,6 @@ InstallMethod( LocallyClosedProjection,
 
     fi;
 
-    # Sometimes (rarely!), we fail to reduce the dimension in the fibers to zero
-    # This should not happen, if Gamma0 is irreducible
-    # Hence, we compute its associated primes here, and treat them all indepedently
-    if fiber_dim > 0 then
-
-        Info( InfoConstructibleImage, 3, step, counter, " unlucky decomposition in total space..." );
-        decomposition := Factors( Gamma0 );
-        Info( InfoConstructibleImage, 3, step, counter, " ...done" );
-
-        if Length( decomposition ) = 1 then
-
-            if fiber_dim > 0 then
-                Error( "give up in trying to bring the fiber dimension down to 0" );
-            fi;
-
-        else
-
-            Gamma0 := decomposition[1];
-            Append( additional_components, decomposition{[2..Length(decomposition)]} );
-
-            # if additional components are present, then the image needs to be recomputed
-            Info( InfoConstructibleImage, 3, step, counter, " image closure..." );
-            image_closure := ImageClosureOfProjection( Gamma0 );
-            Info( InfoConstructibleImage, 3, step, counter, " ...done" );
-
-            Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
-            d0 := Dimension( image_closure );
-            Info( InfoConstructibleImage, 3, step, counter, " ...done" );
-
-        fi;
-
-    fi;
- 
     Info( InfoConstructibleImage, 3, step, counter, " points at infinity..." );
     relative_boundary_hull := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
