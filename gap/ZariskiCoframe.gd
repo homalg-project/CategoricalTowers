@@ -55,7 +55,7 @@ DeclareAttribute( "DegreeAttr",
 #!  The factored object of <A>A</A>.
 #! @Arguments A
 #! @Returns an object in a Zariski coframe.
-DeclareAttribute( "FactorizedObject",
+DeclareAttribute( "FactorizeObject",
         IsObjectInZariskiCoframe );
 
 #! @Description

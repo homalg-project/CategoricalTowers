@@ -314,7 +314,7 @@ InstallMethod( Factors,
   IrreducibleComponents );
 
 ##
-InstallMethod( FactorizedObject,
+InstallMethod( FactorizeObject,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
 

@@ -501,7 +501,7 @@ InstallMethod( ConstructibleProjection,
         A := List( A, ConstructibleProjection );
         A := CallFuncList( UnionOfMultipleDifferences, A );
         A := CanonicalObject( A );
-        A := FactorizedObject( A );
+        A := FactorizeObject( A );
         return A;
     fi;
     
@@ -533,13 +533,13 @@ InstallMethod( ConstructibleProjection,
     
     A := CanonicalObject( A );
     
-    A := FactorizedObject( A );
+    A := FactorizeObject( A );
     
     A := im + ConstructibleProjection( A );
     
     A := CanonicalObject( A );
     
-    A := FactorizedObject( A );
+    A := FactorizeObject( A );
     
     return A;
     
