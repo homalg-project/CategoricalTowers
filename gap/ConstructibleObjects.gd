@@ -52,7 +52,7 @@ DeclareAttribute( "CanonicalObject",
         IsConstructibleObject );
 
 #! @Arguments A
-DeclareAttribute( "FactorizedObject",
+DeclareAttribute( "FactorizeObject",
         IsConstructibleObject );
 
 #! @Arguments A

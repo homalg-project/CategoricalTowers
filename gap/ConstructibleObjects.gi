@@ -165,17 +165,17 @@ InstallMethod( CanonicalObject,
 end );
 
 ##
-InstallMethod( FactorizedObject,
+InstallMethod( FactorizeObject,
         "for a constructible object",
         [ IsConstructibleObject ],
         
   function( A )
     
-    A := List( A, FactorizedObject );
+    A := List( A, FactorizeObject );
     
     A := CallFuncList( UnionOfMultipleDifferences, A );
     
-    SetFactorizedObject( A, A );
+    SetFactorizeObject( A, A );
     
     return A;
     

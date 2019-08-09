@@ -58,7 +58,7 @@ DeclareAttribute( "CanonicalObject",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "FactorizedObject",
+DeclareAttribute( "FactorizeObject",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Description
