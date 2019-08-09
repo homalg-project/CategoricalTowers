@@ -50,7 +50,7 @@ InstallMethod( FactorizedObject,
         return A[1];
     fi;
     
-    return UnionOfMultipleDifferences( A );
+    return CallFuncList( UnionOfMultipleDifferences, A );
     
 end );
 
