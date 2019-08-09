@@ -16,3 +16,4 @@ ReadPackage( "ZariskiFrames", "gap/ProjectiveOpen.gd");
 ReadPackage( "ZariskiFrames", "gap/ProjectiveClosed.gd");
 ReadPackage( "ZariskiFrames", "gap/RelativeProjectiveVarieties.gd");
 ReadPackage( "ZariskiFrames", "gap/ConstructibleImage.gd");
+ReadPackage( "ZariskiFrames", "gap/MapleTools.gd");

@@ -16,6 +16,7 @@ ReadPackage( "ZariskiFrames", "gap/ProjectiveOpen.gi");
 ReadPackage( "ZariskiFrames", "gap/ProjectiveClosed.gi");
 ReadPackage( "ZariskiFrames", "gap/RelativeProjectiveVarieties.gi");
 ReadPackage( "ZariskiFrames", "gap/ConstructibleImage.gi");
+ReadPackage( "ZariskiFrames", "gap/MapleTools.gi");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "ZariskiFrames", "gap/Julia.gi");
