@@ -546,6 +546,22 @@ InstallMethod( ConstructibleProjection,
 end );
 
 ##
+InstallMethod( ConstructibleImage,
+        "for a homalg ring map",
+        [ IsHomalgRingMap ],
+        
+  function( phi )
+    local gamma;
+    
+    gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
+    
+    gamma := ClosedSubsetOfSpecByReducedMorphism( gamma );
+    
+    return ConstructibleProjection( gamma );
+    
+end );
+
+##
 InstallOtherMethod( DotVertexLabelledDigraph,
         "for a constructible object",
         [ IsConstructibleObject ],

@@ -37,6 +37,14 @@ DeclareOperation( "ConstructibleProjection",
 #! @InsertChunk ConstructibleProjectionOfDifferences
 
 #! @Description
+#!  Compute the image of the morphism defined by the morphism <A>phi</A> of affine rings
+#!  as a constructible subset.
+#! @Arguments phi
+#! @Returns a constructible object as a union of formal multiple differences
+DeclareOperation( "ConstructibleImage",
+        [ IsHomalgRingMap ] );
+
+#! @Description
 #!  Opens a PDF with the graph of datastructure underlying the constructible object <A>A</A>,
 #!  provided it was created using <C>AsUnionOfMultipleDifferences</C>.
 #! @Arguments A
