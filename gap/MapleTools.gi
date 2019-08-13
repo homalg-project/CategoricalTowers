@@ -57,6 +57,7 @@ InstallValue( ZariskiFramesTableForMapleTools,
                    
                    if not F = [ ] then
                        PM := List( PM, a -> a / R );
+                       PM := List( PM, String );
                    fi;
                    
                    varR := Indeterminates( R );
