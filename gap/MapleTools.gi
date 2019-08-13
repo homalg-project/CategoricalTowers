@@ -22,10 +22,9 @@ InstallValue( ZariskiFramesMacrosForMaple,
 
     _Identifier := "ZariskiFrames",
 
-    ("$ZariskiFrames_init") := "\n\
-            with(RegularChains):\n\
-            with(ConstructibleSetTools):\n\
-\n\n",
+    ("$ZariskiFrames_init") := "\
+with(RegularChains):\n\
+with(ConstructibleSetTools):\n\n",
             )
 );
 
