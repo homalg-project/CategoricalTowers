@@ -23,7 +23,7 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( LocallyClosedApproximation,
+InstallMethod( LocallyClosedPart,
         "for an object in a meet-semilattice of formal single/multiple differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
@@ -59,14 +59,14 @@ InstallMethod( CanonicalObjectOp,
         "for an object in a meet-semilattice of formal single/multiple differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
-  LocallyClosedApproximation );
+  LocallyClosedPart );
 
 ##
 InstallMethod( CanonicalObject,
         "for an object in a meet-semilattice of formal single/multiple differences",
         [ IsObjectInMeetSemilatticeOfDifferences ],
         
-  LocallyClosedApproximation );
+  LocallyClosedPart );
 
 ##
 InstallMethod( Dimension,

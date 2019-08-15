@@ -47,7 +47,7 @@ DeclareProperty( "IsLocallyClosed",
 #! @Section Attributes
 
 #! @Arguments A
-DeclareAttribute( "LocallyClosedApproximation",
+DeclareAttribute( "LocallyClosedPart",
         IsObjectInMeetSemilatticeOfDifferences );
 
 DeclareOperation( "CanonicalObjectOp",

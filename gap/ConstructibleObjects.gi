@@ -93,7 +93,7 @@ InstallMethod( IsLocallyClosed,
 end );
 
 ##
-InstallMethod( LocallyClosedApproximation,
+InstallMethod( LocallyClosedPart,
         "for a constructible object",
         [ IsConstructibleObject ],
         
@@ -115,7 +115,7 @@ InstallOtherMethod( CanonicalObjectOp,
         "for a constructible object",
         [ IsConstructibleObject and IsLocallyClosed ],
         
-  LocallyClosedApproximation );
+  LocallyClosedPart );
 
 ##
 InstallMethod( CanonicalObjectOp,
@@ -129,7 +129,7 @@ InstallMethod( CanonicalObjectOp,
         return InitialObject( A );
     fi;
     
-    C := LocallyClosedApproximation( A );
+    C := LocallyClosedPart( A );
     
     if HasIsLocallyClosed( A ) and IsLocallyClosed( A ) then
         return C;
@@ -139,7 +139,7 @@ InstallMethod( CanonicalObjectOp,
     
     while not IsInitial( A ) do
         
-        C := C + LocallyClosedApproximation( A );
+        C := C + LocallyClosedPart( A );
         
         A := A - C;
         

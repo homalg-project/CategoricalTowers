@@ -41,7 +41,7 @@ DeclareProperty( "IsLocallyClosed",
 #! @Section Attributes
 
 #! @Arguments A
-DeclareAttribute( "LocallyClosedApproximation",
+DeclareAttribute( "LocallyClosedPart",
         IsConstructibleObject );
 
 DeclareOperation( "CanonicalObjectOp",
