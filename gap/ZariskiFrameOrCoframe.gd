@@ -84,19 +84,19 @@ DeclareAttribute( "ParametrizedObject",
         IsConstructibleObject );
 
 #! @Arguments A
-DeclareAttribute( "LocallyClosedApproximation",
+DeclareAttribute( "LocallyClosedPart",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Arguments A
-DeclareAttribute( "DistinguishedLocallyClosedApproximation",
+DeclareAttribute( "DistinguishedLocallyClosedPart",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Arguments A
-DeclareAttribute( "DistinguishedLocallyClosedApproximation",
+DeclareAttribute( "DistinguishedLocallyClosedPart",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Arguments A
-DeclareAttribute( "DistinguishedLocallyClosedApproximation",
+DeclareAttribute( "DistinguishedLocallyClosedPart",
         IsConstructibleObject );
 
 #! @Arguments A

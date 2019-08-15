@@ -369,13 +369,13 @@ InstallMethod( StandardizeObject,
 end );
 
 ##
-InstallMethod( DistinguishedLocallyClosedApproximation,
+InstallMethod( DistinguishedLocallyClosedPart,
         "for a constructible object",
         [ IsConstructibleObject ],
         
   function( A )
     
-    return DistinguishedLocallyClosedApproximation( LocallyClosedApproximation( A ) );
+    return DistinguishedLocallyClosedPart( LocallyClosedPart( A ) );
     
 end );
 
@@ -397,7 +397,7 @@ InstallMethod( AffineApproximation,
         TryNextMethod( );
     fi;
     
-    A := DistinguishedLocallyClosedApproximation( A );
+    A := DistinguishedLocallyClosedPart( A );
     
     if IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
         A := AsDifference( A );
@@ -918,7 +918,7 @@ InstallMethod( CanonicalObject,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
-  LocallyClosedApproximation );
+  LocallyClosedPart );
 
 ##
 InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,

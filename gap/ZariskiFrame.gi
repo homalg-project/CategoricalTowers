@@ -124,7 +124,7 @@ InstallMethod( Closure,
 end );
 
 ##
-InstallMethod( LocallyClosedApproximation,
+InstallMethod( LocallyClosedPart,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
@@ -132,24 +132,24 @@ InstallMethod( LocallyClosedApproximation,
     
     A := AsDifferenceOfClosed( A );
     
-    return LocallyClosedApproximation( A );
+    return LocallyClosedPart( A );
     
 end );
 
 ##
-InstallMethod( DistinguishedLocallyClosedApproximation,
+InstallMethod( DistinguishedLocallyClosedPart,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
   function( A )
     
-    A := LocallyClosedApproximation( A );
+    A := LocallyClosedPart( A );
     
     if IsObjectInZariskiCoframe( A ) then
         return A;
     fi;
     
-    return DistinguishedLocallyClosedApproximation( A );
+    return DistinguishedLocallyClosedPart( A );
     
 end );
 

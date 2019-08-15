@@ -89,21 +89,21 @@ InstallMethod( Closure,
   IdFunc );
 
 ##
-InstallMethod( LocallyClosedApproximation,
+InstallMethod( LocallyClosedPart,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
   StandardizeObject );
 
 ##
-InstallMethod( DistinguishedLocallyClosedApproximation,
+InstallMethod( DistinguishedLocallyClosedPart,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
-  LocallyClosedApproximation );
+  LocallyClosedPart );
 
 ##
-InstallMethod( DistinguishedLocallyClosedApproximation,
+InstallMethod( DistinguishedLocallyClosedPart,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
@@ -158,7 +158,7 @@ InstallMethod( DistinguishedLocallyClosedApproximation,
 end );
 
 ##
-InstallMethod( DistinguishedLocallyClosedApproximation,
+InstallMethod( DistinguishedLocallyClosedPart,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         

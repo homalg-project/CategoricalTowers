@@ -23,7 +23,7 @@ Display( A );
 #! V( <2> )
 A = C;
 #! false
-LCA := LocallyClosedApproximation( A );
+LCA := LocallyClosedPart( A );
 #! V_{Z}( <...> )
 Display( LCA );
 #! V( <2> )

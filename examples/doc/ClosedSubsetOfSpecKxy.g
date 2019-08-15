@@ -27,7 +27,7 @@ I := InitialObject( ZC );
 #! V_{Q[x,y]}( <...> )
 Dimension( I );
 #! -1
-F := DistinguishedLocallyClosedApproximation( -( A * C ) );
+F := DistinguishedLocallyClosedPart( -( A * C ) );
 #! V_{Q[x,y]}( I ) \ V_{Q[x,y]}( J )
 Display( F );
 #! V( <> ) \ V( <y> )
