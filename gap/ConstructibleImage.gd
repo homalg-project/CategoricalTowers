@@ -22,7 +22,7 @@ DeclareOperation( "DecreaseCodimensionByFixingVariables",
 #!  
 #! @Arguments A
 #! @Returns a list
-DeclareOperation( "LocallyClosedProjection",
+DeclareOperation( "LocallyClosedApproximationOfProjection",
         [ IsObjectInZariskiCoframe ] );
 
 #! @Description

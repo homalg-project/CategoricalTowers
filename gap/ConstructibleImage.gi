@@ -225,7 +225,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 end );
 
 ##
-InstallMethod( LocallyClosedProjection,
+InstallMethod( LocallyClosedApproximationOfProjection,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
@@ -402,7 +402,7 @@ InstallMethod( ConstructibleProjection,
         fi;
         Info( InfoConstructibleImage, 4, "Step ", counter, " ...done (no)" );
         
-        image_closure_and_relative_boundary_hull := LocallyClosedProjection( Gamma : counter := counter );
+        image_closure_and_relative_boundary_hull := LocallyClosedApproximationOfProjection( Gamma : counter := counter );
         
         additional_components := Concatenation( additional_components, image_closure_and_relative_boundary_hull[2] );
         
