@@ -388,7 +388,8 @@ InstallMethodWithCache( Hom,
         functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
         if IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[2] ) and
-           IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList then
+           ( ( IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList ) or
+             functorial.filter_list[2] = "list_of_morphisms" ) then
             diagram := true;
         else
             diagram := false;
