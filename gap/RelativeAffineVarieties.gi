@@ -20,11 +20,18 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
     
     AddObjectFunction( pi,
       function( A )
-        local R, R_elim, I;
+        local R, R_elim, known_to_be_reduced, I;
         
         R := UnderlyingRing( A );
         
         R_elim := PolynomialRingWithProductOrdering( R );
+        
+        if HasListOfReducedMorphismsOfUnderlyingCategory( A ) or
+           HasReducedMorphismOfUnderlyingCategory( A ) then
+            known_to_be_reduced := true;
+        else
+            known_to_be_reduced := false;
+        fi;
         
         I := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
         
@@ -46,6 +53,11 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         I := List( I, PolynomialsWithoutRelativeIndeterminates );
         
         I := List( I, AsCategoryOfRowsMorphism );
+        
+        ## scheme-theoretic images of reduced schemes are reduced
+        if known_to_be_reduced then
+            return ClosedSubsetOfSpecByListOfReducedMorphisms( I );
+        fi;
         
         return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( I );
         
