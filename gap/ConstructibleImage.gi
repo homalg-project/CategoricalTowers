@@ -49,7 +49,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
     nrFails := 0;
 
-    image_closure := ImageClosureOfProjection( Gamma );
+    image_closure := ClosureOfProjection( Gamma );
 
     d0 := Dimension( image_closure );
 
@@ -91,7 +91,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
             
             if Dimension( Gamma0_test ) = d0 + fiber_dim - 1 then # Check, whether the intersection with H really reduces the codimension
 
-                Gamma0_image := ImageClosureOfProjection( Gamma0_test );
+                Gamma0_image := ClosureOfProjection( Gamma0_test );
 
                 if IsSubset( Gamma0_image, image_closure ) then # Check, whether the closure of the image remains the same
 
@@ -127,7 +127,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                             # We continue with one of the components, but might need to recompute values
                             Gamma0 := PreimageOfProjection( Gamma, Gamma0_image );
                             image_closure := Gamma0_image;
-                            Assert( 4, image_closure = ImageClosureOfProjection( Gamma0 ) );
+                            Assert( 4, image_closure = ClosureOfProjection( Gamma0 ) );
                             d0 := Dimension( image_closure );
                             fiber_dim := Dimension( Gamma0 ) - d0;
                             # Write the second component into additional components
@@ -184,7 +184,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                                         Gamma0 := decomposition[1];
                                         Append( additional_components, decomposition{[2..Length(decomposition)]} );
 
-                                        Gamma0_image := ImageClosureOfProjection( Gamma0_test );
+                                        Gamma0_image := ClosureOfProjection( Gamma0_test );
                                         image_closure := Gamma0_image;
                                         d0 := Dimension( image_closure );
                                         fiber_dim := Dimension( Gamma0 ) - d0;
@@ -247,7 +247,7 @@ InstallMethod( LocallyClosedApproximationOfProjection,
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
     Info( InfoConstructibleImage, 3, step, counter, " image closure..." );
-    image_closure := ImageClosureOfProjection( Gamma );
+    image_closure := ClosureOfProjection( Gamma );
     Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
     Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
@@ -278,7 +278,7 @@ InstallMethod( LocallyClosedApproximationOfProjection,
 
             # if additional components are present, then the image needs to be recomputed
             Info( InfoConstructibleImage, 3, step, counter, " image closure..." );
-            image_closure := ImageClosureOfProjection( Gamma0 );
+            image_closure := ClosureOfProjection( Gamma0 );
             Info( InfoConstructibleImage, 3, step, counter, " ...done" );
 
             Info( InfoConstructibleImage, 3, step, counter, " dimension..." );
@@ -515,7 +515,7 @@ InstallMethod( ConstructibleProjection,
     
     Ap := List( A, a -> a.J );
     
-    Ap := List( Ap, ImageClosureOfProjection );
+    Ap := List( Ap, ClosureOfProjection );
     
     Ap := Filtered( Ap, a -> not IsHomSetInhabited( imc, a ) );
     

@@ -9,11 +9,11 @@
 #! @Section Attributes
 
 #!
-DeclareAttribute( "FunctorImageClosureOfProjectionBetweenZariskiCoframes",
+DeclareAttribute( "FunctorClosureOfProjectionBetweenZariskiCoframes",
         IsCapCategory );
 
 #!
-DeclareAttribute( "ImageClosureOfProjection",
+DeclareAttribute( "ClosureOfProjection",
         IsObjectInZariskiCoframeOfAnAffineVariety );
 
 #!

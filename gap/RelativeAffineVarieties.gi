@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
+InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         "for a CAP category",
         [ IsCapCategory and IsThinCategory ],
         
@@ -63,14 +63,14 @@ InstallMethod( FunctorImageClosureOfProjectionBetweenZariskiCoframes,
 end );
 
 ##
-InstallMethod( ImageClosureOfProjection,
+InstallMethod( ClosureOfProjection,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( gamma )
     local pi;
     
-    pi := FunctorImageClosureOfProjectionBetweenZariskiCoframes( CapCategory( gamma ) );
+    pi := FunctorClosureOfProjectionBetweenZariskiCoframes( CapCategory( gamma ) );
     
     return ApplyFunctor( pi, gamma );
     
