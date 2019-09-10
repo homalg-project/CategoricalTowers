@@ -87,6 +87,10 @@ DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
 DeclareOperation( "ClosedSubsetOfSpecByListOfMorphismsOfRank1Range",
         [ IsList ] );
 
+#! @Arguments L
+DeclareOperation( "ClosedSubsetOfSpecByListOfReducedMorphisms",
+        [ IsList ] );
+
 #! @Description
 #!  <C>ClosedSubsetOfSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I

@@ -204,6 +204,62 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
 end );
 
 ##
+InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
+        "for a list",
+        [ IsList ],
+
+  function( L )
+    local l, R, R_elim, A, ZC, B;
+    
+    List( L, IsZero );
+    
+    l := L[1];
+    
+    L := Filtered( L, l -> not ( IsEndomorphism( l ) and IsOne( l ) ) );
+    
+    if L = [ ] then
+        L := [ l ];
+    fi;
+    
+    L := DuplicateFreeList( L );
+    
+    R := UnderlyingRing( CapCategory( l ) );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        L := List( L, I -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) ) );
+        R := R_elim;
+    fi;
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                ListOfReducedMorphismsOfUnderlyingCategory, L,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                IsClosedSubobject, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                ListOfReducedMorphismsOfUnderlyingCategory, L,
+                UnderlyingRing, R,
+                IsClosedSubobject, true
+                );
+    fi;
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
         "for a CAP category morphism",
         [ IsCapCategoryMorphism ],
