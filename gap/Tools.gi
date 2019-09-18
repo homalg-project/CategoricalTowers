@@ -53,11 +53,12 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     local parents, number, N, nodes, all_nodes, counter, p, n;
     
     parents := ValueOption( "parents" );
-    number := ValueOption( "number" );
     
     if parents = fail then
         parents := [ ];
     fi;
+    
+    number := ValueOption( "number" );
     
     N := rec( 
               constructible_object := C,
