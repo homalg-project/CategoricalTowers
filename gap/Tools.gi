@@ -235,7 +235,7 @@ InstallMethod( Remove,
         [ IsNodeInDatastructureOfConstructibleObjects ],
         
   function( pos_node )
-    local C, pos_nodes, p, act_nodes, neg_node, neg_nodes, children,
+    local counter, step, C, pos_nodes, p, act_nodes, neg_node, neg_nodes, children,
           grandparents, child, spouses, grandparent, aunts;
     
     if not pos_node!.parity = true then
@@ -244,7 +244,17 @@ InstallMethod( Remove,
         Error( "expected exactly one parent but found ", Length( pos_node!.act_parents ), "\n" );
     fi;
     
-    Info( InfoSquashDatastructureForConstructibleObjects, 2, "removed ", pos_node!.number, " -> ", pos_node!.act_parents[1]!.number );
+    counter := ValueOption( "counter" );
+    
+    if counter = fail then
+        step := "";
+        counter := "";
+    else
+        step := "Step ";
+    fi;
+    
+    Info( InfoSquashDatastructureForConstructibleObjects, 2, step, counter,
+          " in RMV: removed ", pos_node!.number, " -> ", pos_node!.act_parents[1]!.number );
     
     C := pos_node!.constructible_object;
     
@@ -372,8 +382,16 @@ InstallMethod( RemoveObsoleteSubtrahends,
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
-    local visualize, act_nodes, neg_nodes, pos_node, act_children, children, node;
+    local counter, step, visualize, act_nodes, neg_nodes, pos_node, act_children, children, node;
     
+    counter := ValueOption( "counter" );
+    
+    if counter = fail then
+        step := "";
+        counter := "";
+    else
+        step := "Step ";
+    fi;
     
     visualize := ValueOption( "visualize" );
     
@@ -391,8 +409,8 @@ InstallMethod( RemoveObsoleteSubtrahends,
         children := MaximalObjects( act_children, IsHomSetInhabited );
         
         if Length( children ) < Length( act_children ) then
-            Info( InfoSquashDatastructureForConstructibleObjects, 2,
-                  "removing from node ", pos_node!.number, " the obsolete subtrahends ",
+            Info( InfoSquashDatastructureForConstructibleObjects, 2, step, counter,
+                  " in RMV: removing from node ", pos_node!.number, " the obsolete subtrahends ",
                   Difference( List( act_children, node -> node!.number ), List( children, node -> node!.number ) ),
                   ", remaining: ", List( children, node -> node!.number ) );
         fi;
