@@ -328,10 +328,6 @@ InstallMethod( SquashOnce,
   function( C )
     local visualize, pos_node, parents, act_nodes, neg_nodes, children;
     
-    if not ( IsBound( C!.finalized ) and C!.finalized = true ) then
-        Error( "C is not marked as finalized, so I won't squash it\n" );
-    fi;
-    
     visualize := ValueOption( "visualize" );
     
     if visualize = true then
@@ -378,9 +374,6 @@ InstallMethod( RemoveObsoleteSubtrahends,
   function( C )
     local visualize, act_nodes, neg_nodes, pos_node, act_children, children, node;
     
-    if not ( IsBound( C!.finalized ) and C!.finalized = true ) then
-        Error( "C is not marked as finalized, so I won't squash it\n" );
-    fi;
     
     visualize := ValueOption( "visualize" );
     
