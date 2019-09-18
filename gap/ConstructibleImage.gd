@@ -29,6 +29,16 @@ DeclareOperation( "LocallyClosedApproximationOfProjection",
         [ IsObjectInZariskiCoframe ] );
 
 #! @Description
+#!  A list consisting of two entries.
+#!  The first entry is a locally closed approximation of the image of <A>phi</A>.
+#!  The second entry is a list of closed subsets of the domain of <A>phi</A>
+#!  the images of which yield the remaining parts of the constructible image of <A>phi</A>.
+#! @Arguments phi
+#! @Returns a list
+DeclareOperation( "LocallyClosedApproximationOfImage",
+        [ IsHomalgRingMap ] );
+
+#! @Description
 #!  Compute the projection of <A>A</A>
 #!  as a constructible subset of <C>BaseOfFibration</C>( <A>A</A> ).
 #! @Arguments A

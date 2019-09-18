@@ -335,6 +335,22 @@ InstallMethod( LocallyClosedApproximationOfProjection,
 end );
 
 ##
+InstallMethod( LocallyClosedApproximationOfImage,
+        "for a homalg ring map",
+        [ IsHomalgRingMap ],
+        
+  function( phi )
+    local gamma;
+    
+    gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
+    
+    gamma := ClosedSubsetOfSpecByReducedMorphism( gamma );
+    
+    return LocallyClosedApproximationOfProjection( gamma );
+    
+end );
+
+##
 InstallMethod( ConstructibleProjection,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
