@@ -63,6 +63,13 @@ DeclareOperation( "IsDone",
 
 #! @Description
 #!  
+#! @Arguments pos_node
+#! @Returns nothing
+DeclareOperation( "MinimalLevelOfPreNodes",
+        [ IsDatastructureForConstructibleObjects ] );
+
+#! @Description
+#!  
 #! @Arguments C
 #! @Returns a datastructure of a node in a constructible object
 DeclareOperation( "Pop",

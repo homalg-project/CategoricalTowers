@@ -231,6 +231,21 @@ InstallMethod( IsDone,
 end );
 
 ##
+InstallMethod( MinimalLevelOfPreNodes,
+        "for a datastructure of a constructible object",
+        [ IsDatastructureForConstructibleObjects ],
+        
+  function( C )
+    
+    if C!.pre_nodes = [ ] then
+        return infinity;
+    fi;
+    
+    return Minimum( List( C!.pre_nodes, N -> N!.level ) );
+    
+end );
+
+##
 InstallMethod( Pop,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
