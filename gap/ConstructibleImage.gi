@@ -380,6 +380,8 @@ InstallMethod( ConstructibleProjection,
     
     relative_boundary_hull_decomposition := ValueOption( "rbhull_decomposition" );
     
+    squash := ValueOption( "squash" );
+    
     while not IsDone( C ) do
         
         node := Pop( C );
@@ -476,12 +478,8 @@ InstallMethod( ConstructibleProjection,
         
     od;
     
-    C!.finalized := true;
-    
-    squash := ValueOption( "squash" );
-    
     if not squash = false then
-        Squash( C );
+        Squash( C : counter := counter );
     fi;
     
     return AsUnionOfMultipleDifferences( C );
