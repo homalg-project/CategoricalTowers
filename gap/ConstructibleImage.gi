@@ -362,7 +362,7 @@ InstallMethod( ConstructibleProjection,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local step, B, initial, C, node, counter, decomposition, relative_boundary_hull_decomposition, squash,
+    local step, B, initial, C, node, level, counter, decomposition, relative_boundary_hull_decomposition, squash,
           additional_components, components, projection_closure_and_relative_boundary_hull, neg_node,
           pre_nodes, projection_closure, relative_boundary_hull, relative_boundary_hull_decomp, pos_node;
     
@@ -394,10 +394,12 @@ InstallMethod( ConstructibleProjection,
         
         node := Pop( C );
         
+        level := node!.level;
+        
         counter := counter + 1;
         
         Info( InfoConstructibleImage, 2, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" );
-        Info( InfoConstructibleImage, 2, step, counter, " in CPR: processing pre/negative node number ", node!.number );
+        Info( InfoConstructibleImage, 2, step, counter, " in CPR: processing for level ", node!.level + 1, " the pre/negative node number ", node!.number );
         
         Gamma := node!.Gamma;
 
@@ -424,6 +426,11 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 4, step, counter, " in CPR: decide triviality of preimage in Gamma... " );
         if IsInitial( Gamma ) then
             Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (yes)" );
+            
+            if not squash = false and MinimalLevelOfPreNodes( C ) > level then
+                Squash( C : counter := counter );
+            fi;
+            
             continue;
         fi;
         Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (no)" );
@@ -485,9 +492,13 @@ InstallMethod( ConstructibleProjection,
         ## the followin line will trigger ideal intersection
         Info( InfoConstructibleImage, 10, step, counter, " in CPR: image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( projection_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( f ) ) ) ), ")" );
         
+        if not squash = false and MinimalLevelOfPreNodes( C ) > level then
+            Squash( C : counter := counter );
+        fi;
+        
     od;
     
-    if not squash = false then
+    if not ValueOption( "squash_final" ) = false then
         Squash( C : counter := counter );
     fi;
     
