@@ -19,7 +19,10 @@ DeclareOperation( "DecreaseCodimensionByFixingVariables",
         [ IsObjectInZariskiCoframe ] );
 
 #! @Description
-#!  
+#!  A list consisting of two entries.
+#!  The first entry is a locally closed approximation of the projection of <A>A</A>.
+#!  The second entry is a list of closed subsets of <A>A</A> which upon projection yield
+#!  the remaining parts of the constructible projection of <A>A</A>.
 #! @Arguments A
 #! @Returns a list
 DeclareOperation( "LocallyClosedApproximationOfProjection",
