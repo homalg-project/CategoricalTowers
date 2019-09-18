@@ -373,6 +373,10 @@ InstallMethod( SquashOnce,
     C!.act_nodes := act_nodes;
     C!.neg_nodes := neg_nodes;
     
+    ## update pre_nodes
+    neg_nodes := List( neg_nodes, N -> N!.number );
+    C!.pre_nodes := Filtered( C!.pre_nodes, N -> N!.number in neg_nodes );
+    
     return C;
     
 end );
@@ -430,6 +434,10 @@ InstallMethod( RemoveObsoleteSubtrahends,
     for node in act_nodes do
         node!.act_parents := Filtered( node!.act_parents, x -> not IdenticalPosition( act_nodes, x ) = fail );
     od;
+    
+    ## update pre_nodes
+    neg_nodes := List( neg_nodes, N -> N!.number );
+    C!.pre_nodes := Filtered( C!.pre_nodes, N -> N!.number in neg_nodes );
     
     return C;
     
