@@ -501,7 +501,7 @@ InstallMethod( ConstructibleProjection,
     
 end );
 
-##
+## FIXME
 InstallMethod( ConstructibleProjection,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
