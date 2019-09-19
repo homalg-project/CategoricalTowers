@@ -378,9 +378,7 @@ InstallMethod( ConstructibleProjection,
     
     C!.InitialObject := initial;
     
-    node := NodeInDatastructureOfConstructibleObject( C, B, fail : number := 0 );
-    
-    node!.Gamma := Gamma;
+    node := NodeInDatastructureOfConstructibleObject( C, B, fail : number := 0, context := Gamma );
     
     counter := 0;
     
@@ -401,7 +399,7 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 2, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" );
         Info( InfoConstructibleImage, 2, step, counter, " in CPR: processing for level ", node!.level + 1, " the pre/negative node number ", node!.number );
         
-        Gamma := node!.Gamma;
+        Gamma := node!.context;
 
         additional_components := [];
 
@@ -451,9 +449,7 @@ InstallMethod( ConstructibleProjection,
             
             neg_node := neg_node[1];
             
-            pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : parents := [ neg_node ], number := Concatenation( String( neg_node!.number ), "_", String( i ) ), first := true ) );
-            
-            Perform( [ 1 .. Length( additional_components ) ], function( i ) pre_nodes[i]!.Gamma := additional_components[i]; end );
+            pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : parents := [ neg_node ], number := Concatenation( String( neg_node!.number ), "_", String( i ) ), first := true, context := additional_components[i] ) );
             
         fi;
         
@@ -477,12 +473,10 @@ InstallMethod( ConstructibleProjection,
             fi;
         fi;
        
-        pre_nodes := Attach( node, projection_closure, relative_boundary_hull_decomp );
+        pre_nodes := Attach( node, projection_closure, relative_boundary_hull_decomp : context := Gamma );
         
         pos_node := pre_nodes[2];
         pre_nodes := pre_nodes[1];
-        
-        Perform( pre_nodes, function( pre_node ) pre_node!.Gamma := Gamma; end );
         
         Info( InfoConstructibleImage, 4, step, counter, " in CPR: produced negative nodes ",
               List( pre_nodes, a -> a!.number ), " -> ", pos_node!.number, " -> ", node!.number );
