@@ -50,7 +50,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         [ IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool ],
         
   function( C, A, b )
-    local parents, number, level, N, nodes, all_nodes, counter, p, n;
+    local parents, number, level, N, nodes, all_nodes, context, counter, p, n;
     
     parents := ValueOption( "parents" );
     
@@ -93,17 +93,27 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         all_nodes := C!.all_neg_nodes;
     else
         ## pre-node, these are the ones returned when calling Pop( C )
+        
         if number = 0 then
             N!.level := 0;
         else
             N!.level := parents[1]!.level;
         fi;
+        
         nodes := C!.pre_nodes;
+        
         if ValueOption( "first" ) = true then
             C!.pre_nodes := Concatenation( [ N ], nodes );
         else
             Add( nodes, N );
         fi;
+        
+        context := ValueOption( "context" );
+        
+        if not context = fail then
+            N!.context := context;
+        fi;
+        
         return N;
     fi;
     
