@@ -709,8 +709,22 @@ InstallMethod( ViewObj,
         [ IsNodeInDatastructureOfConstructibleObjects ],
         
   function( N )
+    local parity;
     
-    Print( "Node in a datastructure of a constructible object containing:\n" );
+    parity := N!.parity;
+    
+    if parity = true then
+        Print( "Positive " );
+    elif parity = false then
+        Print( "Negative " );
+    else
+        Print( "Pre-" );
+    fi;
+    
+    Print( "node number ",
+           N!.number,
+           " in a datastructure of a constructible object containing: " );
+    
     ViewObj( N!.object );
     
 end );
