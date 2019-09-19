@@ -382,7 +382,7 @@ InstallMethod( ConstructibleProjection,
     
     node!.Gamma := Gamma;
     
-    counter := -1;
+    counter := 0;
     
     decomposition := ValueOption( "decomposition" );
     
