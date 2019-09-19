@@ -730,6 +730,17 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( Display,
+        "for a node in a datastructure of a constructible object",
+        [ IsNodeInDatastructureOfConstructibleObjects ],
+        
+  function( N )
+    
+    Display( N!.object );
+    
+end );
+
+##
 InstallOtherMethod( DotVertexLabelledDigraph,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
