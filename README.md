@@ -1,0 +1,2 @@
+# The GAP package GradedCategories
+
