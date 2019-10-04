@@ -528,7 +528,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     end );
     
     ##
-    AddIsEqualForMorphisms( category,
+    AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
         return UnderlyingQuiverAlgebraElement( morphism_1 ) = UnderlyingQuiverAlgebraElement( morphism_2 );
