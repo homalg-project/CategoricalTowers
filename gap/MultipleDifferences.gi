@@ -409,6 +409,10 @@ InstallMethod( FactorsAttr,
     
     facAp := Concatenation( List( A, D -> Factors( D.J ) ) );
     
+    if facAp = [ ] then
+        facAp := [ InitialObject( Ac ) ];
+    fi;
+    
     A := List( facAc, T -> CallFuncList( AsMultipleDifference, List( facAp, S -> T - S ) ) );
     
     List( A, StandardizeObject );
