@@ -114,27 +114,27 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                     n := n - 1;
                     fiber_dim := fiber_dim - 1;
                     nrFails := 0;
-                    Info( InfoConstructibleImage, 4, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " works <= dim(fiber) = ", fiber_dim );
+                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " works <= dim(fiber) = ", fiber_dim );
                     Assert( 4, fiber_dim=0 or ImageOfProjection( PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 ) ) = projection_closure );
 
 
                 else
 
-                    Info( InfoConstructibleImage, 4, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not retain projection" );
+                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not retain projection" );
 
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
                     if nrFails > n then
 
-                        Info( InfoConstructibleImage, 4, step, counter, " in ZDF: try splitting base..." );
+                        Info( InfoConstructibleImage, 8, step, counter, " in ZDF: try splitting base..." );
                         Gamma0_projection_test := CoexponentialOnObjects( projection_closure, Gamma0_projection );
-                        Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done" );
+                        Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done" );
 
-                        Info( InfoConstructibleImage, 4, step, counter, " in ZDF: check split base..." );
+                        Info( InfoConstructibleImage, 8, step, counter, " in ZDF: check split base..." );
                         if not IsSubset( Gamma0_projection_test, projection_closure ) and not IsInitial( Gamma0_projection_test ) then
-                            Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done (yes)" );
+                            Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done (yes)" );
 
-                            Info( InfoConstructibleImage, 4, step, counter, " in ZDF: use split in base to induce split of components in the fiber..." );
+                            Info( InfoConstructibleImage, 8, step, counter, " in ZDF: use split in base to induce split of components in the fiber..." );
                             Assert( 4, projection_closure = Gamma0_projection + Gamma0_projection_test );
                             # We continue with one of the components, but might need to recompute values
                             Gamma0 := PreimageOfProjection( Gamma, Gamma0_projection );
@@ -148,25 +148,25 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                             Assert( 4, not Gamma = Gamma0 );
                             Assert( 4, not Gamma = PreimageOfProjection( Gamma, Gamma0_projection_test ) );
                             nrFails := 0;
-                            Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
+                            Info( InfoConstructibleImage, 8, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
 
                         else
 
-                            Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done base (no)" );
+                            Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done base (no)" );
 
                             if nrFails > 2*n then
 
                                 if no_inner_decomposition then
 
-                                    Info( InfoConstructibleImage, 4, step, counter, " in ZDF: try splitting fiber..." );
+                                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: try splitting fiber..." );
                                     Gamma1 := PreimageOfProjection( Gamma, Gamma0_projection );
-                                    Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done" );
+                                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done" );
 
-                                    Info( InfoConstructibleImage, 4, step, counter, " in ZDF: check split fiber..." );
+                                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: check split fiber..." );
                                     if not IsSubset( Gamma1, Gamma ) then
                                         Gamma2 := CoexponentialOnObjects( Gamma, Gamma1 );
                                         if not IsSubset( Gamma2, Gamma ) then
-                                            Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done (yes)" );
+                                            Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done (yes)" );
                                             Assert( 4, Gamma = Gamma1 + Gamma2 );
                                             Gamma0 := Gamma1;
                                             projection_closure := Gamma0_projection;
@@ -176,21 +176,21 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                                             Assert( 4, not Gamma = Gamma0 );
                                             Assert( 4, not Gamma = Gamma2 );
                                             nrFails := 0;
-                                            Info( InfoConstructibleImage, 4, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
+                                            Info( InfoConstructibleImage, 8, Concatenation( "...done (back to fiber dimension ", String( fiber_dim ), ")" ) );
                                         else
-                                            Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done (no)" );
+                                            Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done (no)" );
                                         fi;
                                     else
-                                        Info( InfoConstructibleImage, 4, step, counter, " in ZDF: ...done (no)" );
+                                        Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done (no)" );
                                     fi;
 
                                 else 
                                     
                                     if not tried_decomposition then
 
-                                        Info( InfoConstructibleImage, 4, step, counter, " in ZDF: try decomposition..." );
+                                        Info( InfoConstructibleImage, 8, step, counter, " in ZDF: try decomposition..." );
                                         decomposition := Factors( Gamma0 );
-                                        Info( InfoConstructibleImage, 4, step, counter, " in ZDF:  ...done ( ", String( Length( decomposition ) ), " components)" );
+                                        Info( InfoConstructibleImage, 8, step, counter, " in ZDF:  ...done ( ", String( Length( decomposition ) ), " components)" );
                                         tried_decomposition := true;
             
                                         Gamma0 := decomposition[1];
@@ -201,7 +201,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                                         d0 := Dimension( projection_closure );
                                         fiber_dim := Dimension( Gamma0 ) - d0;
                                         nrFails := 0;
-                                        Info( InfoConstructibleImage, 4, Concatenation( "back to fiber dimension ", String( fiber_dim ) ) );
+                                        Info( InfoConstructibleImage, 8, Concatenation( "back to fiber dimension ", String( fiber_dim ) ) );
 
                                     fi;
 
@@ -218,7 +218,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
             else
 
-                Info( InfoConstructibleImage, 4, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not decrease dimension of fiber" );
+                Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not decrease dimension of fiber" );
                 i := i + 1;
                 nrFails := nrFails + 1;
 
@@ -254,18 +254,18 @@ InstallMethod( LocallyClosedApproximationOfProjection,
         step := "Step ";
     fi;
     
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: dimension of Gamma..." );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: dimension of Gamma..." );
     d := Dimension( Gamma );
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done => dim(Gamma) = ", d );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done => dim(Gamma) = ", d );
 
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: closure of projection of Gamma..." );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: closure of projection of Gamma..." );
     projection_closure := ClosureOfProjection( Gamma );
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done" );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: dimension of projection of Gamma..." );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: dimension of projection of Gamma..." );
     d0 := Dimension( projection_closure );
     fiber_dim := d - d0;
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done => dim(pi(Gamma)) = ", d0, ", dim(fiber) = ", fiber_dim );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done => dim(pi(Gamma)) = ", d0, ", dim(fiber) = ", fiber_dim );
    
     additional_components := [];
 
@@ -286,30 +286,30 @@ InstallMethod( LocallyClosedApproximationOfProjection,
             Append( additional_components, l[2] );
 
             # if additional components are present, then the image needs to be recomputed
-            Info( InfoConstructibleImage, 3, step, counter, " in LCA: closure of projection of Gamma0..." );
+            Info( InfoConstructibleImage, 6, step, counter, " in LCA: closure of projection of Gamma0..." );
             projection_closure := ClosureOfProjection( Gamma0 );
-            Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done" );
+            Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
-            Info( InfoConstructibleImage, 3, step, counter, " in LCA: dimension of projection of Gamma0..." );
+            Info( InfoConstructibleImage, 6, step, counter, " in LCA: dimension of projection of Gamma0..." );
             d0 := Dimension( projection_closure );
-            Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done" );
+            Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
         fi;
 
-        Info( InfoConstructibleImage, 3, step, counter, " in LCA: dimension of Gamma0..." );
+        Info( InfoConstructibleImage, 6, step, counter, " in LCA: dimension of Gamma0..." );
         d := Dimension( Gamma0 );
         fiber_dim := d - d0;
-        Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done => dim(Gamma0) = ", d0, ", dim(fiber) = ", fiber_dim );
+        Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done => dim(Gamma0) = ", d0, ", dim(fiber) = ", fiber_dim );
 
     fi;
 
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: points at infinity..." );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: points at infinity..." );
     relative_boundary_hull := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done" );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: relative boundary hull..." );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: relative boundary hull..." );
     relative_boundary_hull := ImageOfProjection( relative_boundary_hull );
-    Info( InfoConstructibleImage, 3, step, counter, " in LCA: ...done" );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
     ## the followin line will trigger ideal intersection
     Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
@@ -327,7 +327,7 @@ InstallMethod( LocallyClosedApproximationOfProjection,
                 ## the followin line will trigger ideal intersection
                 Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
             else
-                Info( InfoConstructibleImage, 2, step, counter, " in LCA: break" );
+                Info( InfoConstructibleImage, 4, step, counter, " in LCA: break" );
                 break;
             fi;
         od;
@@ -404,26 +404,26 @@ InstallMethod( ConstructibleProjection,
         additional_components := [];
 
         if decomposition = true then
-            Info( InfoConstructibleImage, 4, step, counter, " in CPR: decomposition of Gamma... " );
+            Info( InfoConstructibleImage, 8, step, counter, " in CPR: decomposition of Gamma... " );
             components := Factors( Gamma );
-            Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (# = ", Length( components ), ")" );
+            Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         else
-            Info( InfoConstructibleImage, 4, step, counter, " in CPR: existing partial decomposition of Gamma... " );
+            Info( InfoConstructibleImage, 8, step, counter, " in CPR: existing partial decomposition of Gamma... " );
             components := KnownFactors( Gamma );
-            Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (# = ", Length( components ), ")" );
+            Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (# = ", Length( components ), ")" );
             Gamma := components[1];
             additional_components := Concatenation( additional_components, components{[ 2 .. Length( components ) ]} );
         fi;
         
-        Info( InfoConstructibleImage, 4, step, counter, " in CPR: preimage of projection in Gamma... " );
+        Info( InfoConstructibleImage, 8, step, counter, " in CPR: preimage of projection in Gamma... " );
         Gamma := PreimageOfProjection( Gamma, node!.object );
-        Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done " );
+        Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done " );
         
-        Info( InfoConstructibleImage, 4, step, counter, " in CPR: decide triviality of preimage in Gamma... " );
+        Info( InfoConstructibleImage, 8, step, counter, " in CPR: decide triviality of preimage in Gamma... " );
         if IsInitial( Gamma ) then
-            Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (yes)" );
+            Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (yes)" );
             
             if not squash = false and MinimalLevelOfPreNodes( C ) > level then
                 Squash( C : counter := counter );
@@ -431,7 +431,7 @@ InstallMethod( ConstructibleProjection,
             
             continue;
         fi;
-        Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (no)" );
+        Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (no)" );
         
         projection_closure_and_relative_boundary_hull := LocallyClosedApproximationOfProjection( Gamma : counter := counter );
         
@@ -439,7 +439,7 @@ InstallMethod( ConstructibleProjection,
         
         if Length( additional_components ) > 0 then
             
-            Info( InfoConstructibleImage, 2, step, counter, " in CPR: found ", Length( additional_components ), " additional component(s) of dimension(s) ", List( additional_components, Dimension ) );
+            Info( InfoConstructibleImage, 4, step, counter, " in CPR: found ", Length( additional_components ), " additional component(s) of dimension(s) ", List( additional_components, Dimension ) );
             
             neg_node := node!.act_parents;
             
@@ -461,15 +461,15 @@ InstallMethod( ConstructibleProjection,
 
         if not relative_boundary_hull_decomposition = false then
             if not IsInitial( relative_boundary_hull ) then
-                Info( InfoConstructibleImage, 4, step, counter, " in CPR: relative boundary hull decomposition... " );
+                Info( InfoConstructibleImage, 8, step, counter, " in CPR: relative boundary hull decomposition... " );
                 relative_boundary_hull_decomp := Factors( relative_boundary_hull );
-                Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (# = ", Length( relative_boundary_hull_decomp ), ")" );
+                Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (# = ", Length( relative_boundary_hull_decomp ), ")" );
             fi;
         else
             if not IsInitial( relative_boundary_hull ) then
-                Info( InfoConstructibleImage, 4, step, counter, " in CPR: existing relative boundary hull partial decomposition... " );
+                Info( InfoConstructibleImage, 8, step, counter, " in CPR: existing relative boundary hull partial decomposition... " );
                 relative_boundary_hull_decomp := KnownFactors( relative_boundary_hull );
-                Info( InfoConstructibleImage, 4, step, counter, " in CPR: ...done (# = ", Length( relative_boundary_hull_decomp ), ")" );
+                Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (# = ", Length( relative_boundary_hull_decomp ), ")" );
             fi;
         fi;
        
@@ -478,7 +478,7 @@ InstallMethod( ConstructibleProjection,
         pos_node := pre_nodes[2];
         pre_nodes := pre_nodes[1];
         
-        Info( InfoConstructibleImage, 4, step, counter, " in CPR: produced negative nodes ",
+        Info( InfoConstructibleImage, 2, step, counter, " in CPR: produced negative nodes ",
               List( pre_nodes, a -> a!.number ), " -> ", pos_node!.number, " -> ", node!.number );
         
         Info( InfoConstructibleImage, 2, step, counter, " in CPR: need to treat ", Length( C!.pre_nodes ), " remaining component(s)" );
