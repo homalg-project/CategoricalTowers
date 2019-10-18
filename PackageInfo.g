@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Locales",
 Subtitle := "",
 Version := Maximum( [
-                   "2019.08.13", ## Mohamed's version
+                   "2019.08.14", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.17", ## Tom's version
                    ] ),
@@ -33,6 +33,22 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
+  ),
+  rec(
+    LastName      := "Lange-Hegermann",
+    FirstNames    := "Markus",
+    IsAuthor      := true,
+    IsMaintainer  := false,
+    Email         := "markus.lange-hegermann@hs-owl.de",
+    WWWHome       := "https://www.hs-owl.de/fb5/fachbereich/fachgebiete/md/team/prof-dr-markus-lange-hegermann.html",
+    PostalAddress := Concatenation( [
+                       "Markus Lange-Hegermann\n",
+                       "Hochschule Ostwestfalen-Lippe\n",
+                       "Liebigstraße 87\n",
+                       "32657 Lemgo\n",
+                       "Germany" ] ),
+    Place         := "Aachen",
+    Institution   := "Hochschule Ostwestfalen-Lippe"
   ),
   rec(
     IsAuthor := true,
