@@ -59,6 +59,13 @@ DeclareAttribute( "SetOfKnownObjects",
 DeclareAttribute( "AmbientCapCategory",
         IsCapFullSubcategory );
 
+#! @Description
+#!  The natural embedding functor from <A>A</A> to <A>AmbientCapCategory(A)</A>.
+#! @Arguments A
+#! @Returns CapFunctor
+DeclareAttribute( "NaturalEmbeddingFunctor",
+        IsCapFullSubcategory );
+
 ####################################
 #
 #! @Section Constructors

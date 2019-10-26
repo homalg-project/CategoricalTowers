@@ -50,6 +50,36 @@ InstallMethod( AmbientCapCategory,
 end );
 
 ##
+InstallMethod( NaturalEmbeddingFunctor,
+        [ IsCapFullSubcategory ],
+  function( A )
+    local C, name, F;
+    
+    C := AmbientCapCategory( A );
+    
+    name := Concatenation( "The natural embedding functor from ", Name( A ), " in ", Name( C ) );
+    
+    F := CapFunctor( name, A, C );
+    
+    AddObjectFunction( F,
+      function( a )
+        
+        return UnderlyingCell( a );
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function( s, alpha, r )
+        
+        return UnderlyingCell( alpha );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
 InstallMethod( FullSubcategory,
         "for a CAP category and a string",
         [ IsCapCategory, IsString ],
