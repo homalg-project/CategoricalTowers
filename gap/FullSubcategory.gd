@@ -13,6 +13,11 @@
 ####################################
 
 #! @Description
+#!  The &GAP; category of a full subcategory.
+DeclareCategory( "IsCapFullSubcategory",
+        IsCapCategory );
+
+#! @Description
 #!  The &GAP; category of cells in a full subcategory.
 DeclareCategory( "IsCapCategoryCellInAFullSubcategory",
         IsCapCategoryCell );

@@ -54,6 +54,8 @@ InstallMethod( FullSubcategory,
     
     D := CreateCapCategory( name );
     
+    SetFilterObj( D, IsCapFullSubcategory );
+    
     D!.AmbientCategory := C;
     
     AddObjectRepresentation( D, IsCapCategoryObjectInAFullSubcategory );
