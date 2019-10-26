@@ -41,6 +41,15 @@ InstallMethod( AsFullSubcategoryCell,
 end );
 
 ##
+InstallMethod( AmbientCapCategory,
+        [ IsCapFullSubcategory ],
+  function( A )
+    
+    return A!.AmbientCategory;
+    
+end );
+
+##
 InstallMethod( FullSubcategory,
         "for a CAP category and a string",
         [ IsCapCategory, IsString ],

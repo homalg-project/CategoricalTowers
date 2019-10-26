@@ -52,6 +52,13 @@ DeclareAttribute( "UnderlyingCell",
 DeclareAttribute( "SetOfKnownObjects",
         IsCapCategory, "mutable" );
 
+#! @Description
+#!  The ambient category of the full subcategory <A>A</A>.
+#! @Arguments A
+#! @Returns a list
+DeclareAttribute( "AmbientCapCategory",
+        IsCapFullSubcategory );
+
 ####################################
 #
 #! @Section Constructors
