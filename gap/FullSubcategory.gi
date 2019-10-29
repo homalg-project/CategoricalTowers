@@ -5,6 +5,35 @@
 #
 
 ##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY,
+  [
+   "AdditionForMorphisms",
+   "AdditiveInverseForMorphisms",
+   "Colift",
+   "IdentityMorphism",
+   "InverseImmutable",
+   "IsAutomorphism",
+   "IsColiftable",
+   "IsCongruentForMorphisms",
+   "IsEndomorphism",
+   "IsIdempotent",
+   "IsIdenticalToIdentityMorphism",
+   "IsIdenticalToZeroMorphism",
+   "IsIsomorphism",
+   "IsLiftable",
+   "IsOne",
+   "IsSplitEpimorphism",
+   "IsSplitMonomorphism",
+   "IsZeroForMorphisms",
+   "Lift",
+   "MultiplyWithElementOfCommutativeRingForMorphisms",
+   "PostCompose",
+   "PreCompose",
+   "SubtractionForMorphisms",
+   "ZeroMorphism"
+   ] );
+
+##
 InstallMethod( AsFullSubcategoryCell,
         "for a CAP category and a CAP object",
         [ IsCapCategory, IsCapCategoryObject ],
@@ -210,7 +239,7 @@ InstallMethod( FullSubcategory,
     ## ListPrimitivelyInstalledOperationsOfCategory is not enough!
     recnames := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
     
-    recnames := Intersection( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD_BASIC ) );
+    recnames := Intersection( recnames, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
               "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet

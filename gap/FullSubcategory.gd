@@ -34,6 +34,15 @@ DeclareCategory( "IsCapCategoryMorphismInAFullSubcategory",
 
 ####################################
 #
+#! @Section Global variables
+#
+####################################
+
+#!
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY" );
+
+####################################
+#
 #! @Section Attributes
 #
 ####################################
