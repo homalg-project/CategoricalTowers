@@ -56,11 +56,11 @@ DeclareAttribute( "SetOfKnownObjects",
 #!  The ambient category of the full subcategory <A>A</A>.
 #! @Arguments A
 #! @Returns a list
-DeclareAttribute( "AmbientCapCategory",
+DeclareAttribute( "AmbientCategory",
         IsCapFullSubcategory );
 
 #! @Description
-#!  The natural embedding functor from <A>A</A> to <A>AmbientCapCategory(A)</A>.
+#!  The natural embedding functor from <A>A</A> to <A>AmbientCategory(A)</A>.
 #! @Arguments A
 #! @Returns CapFunctor
 DeclareAttribute( "NaturalEmbeddingFunctor",

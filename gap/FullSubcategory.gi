@@ -41,7 +41,7 @@ InstallMethod( AsFullSubcategoryCell,
 end );
 
 ##
-InstallMethod( AmbientCapCategory,
+InstallMethod( AmbientCategory,
         [ IsCapFullSubcategory ],
   function( A )
     
@@ -55,7 +55,7 @@ InstallMethod( NaturalEmbeddingFunctor,
   function( A )
     local C, name, F;
     
-    C := AmbientCapCategory( A );
+    C := AmbientCategory( A );
     
     name := Concatenation( "The natural embedding functor from ", Name( A ), " in ", Name( C ) );
     
