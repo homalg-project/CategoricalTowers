@@ -50,14 +50,14 @@ InstallMethod( AmbientCategory,
 end );
 
 ##
-InstallMethod( NaturalEmbeddingFunctor,
+InstallMethod( InclusionFunctor,
         [ IsCapFullSubcategory ],
   function( A )
     local C, name, F;
     
     C := AmbientCategory( A );
     
-    name := Concatenation( "The natural embedding functor from ", Name( A ), " in ", Name( C ) );
+    name := Concatenation( "The inclusion functor from ", Name( A ), " in ", Name( C ) );
     
     F := CapFunctor( name, A, C );
     

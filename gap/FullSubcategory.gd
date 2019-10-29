@@ -63,7 +63,7 @@ DeclareAttribute( "AmbientCategory",
 #!  The natural embedding functor from <A>A</A> to <A>AmbientCategory(A)</A>.
 #! @Arguments A
 #! @Returns CapFunctor
-DeclareAttribute( "NaturalEmbeddingFunctor",
+DeclareAttribute( "InclusionFunctor",
         IsCapFullSubcategory );
 
 ####################################
