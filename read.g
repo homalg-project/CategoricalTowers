@@ -3,4 +3,4 @@
 #
 # Reading the implementation part of the package.
 #
-ReadPackage( "Bialgebroids", "gap/Bialgebroids.gi");
+ReadPackage( "Bialgebroids", "gap/Algebroids.gi");
