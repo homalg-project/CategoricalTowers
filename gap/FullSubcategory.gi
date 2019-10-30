@@ -60,9 +60,9 @@ InstallMethod( AsFullSubcategoryCell,
     
     m := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( m, D,
-            Source, AsFullSubcategoryCell( D, Source( morphism ) ),
-            Range, AsFullSubcategoryCell( D, Range( morphism ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
+            AsFullSubcategoryCell( D, Source( morphism ) ),
+            AsFullSubcategoryCell( D, Range( morphism ) ),
             UnderlyingCell, morphism );
     
     return m;

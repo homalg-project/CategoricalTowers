@@ -865,9 +865,9 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
 
     category_of_algebroids_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( category_of_algebroids_morphism, category,
-                                           Source, s,
-                                           Range, r,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_algebroids_morphism, category,
+                                           s,
+                                           r,
                                            AsCapFunctor, morphism
     );
 
@@ -1379,10 +1379,10 @@ InstallMethod( MorphismInAlgebroid,
 
     A := CapCategory( S );
     
-    ObjectifyMorphismForCAPWithAttributes(
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
             mor, A,
-            Source, S,
-            Range, T,
+            S,
+            T,
             UnderlyingQuiverAlgebraElement, path
             );
     
