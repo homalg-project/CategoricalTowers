@@ -357,7 +357,7 @@ InstallMethod( FullSubcategory,
             AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( D,
               function( a, b, iota )
                 
-                return AsFullSubcategoryCell( D, InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
+                return AsFullSubcategoryCell( CapCategory( a ), InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
                 
             end );
         fi;
