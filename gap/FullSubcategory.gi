@@ -307,7 +307,7 @@ InstallMethod( FullSubcategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( r, phi )
             
-            return AsFullSubcategoryCell( MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( phi ) ) );
+            return AsFullSubcategoryCell( CapCategory( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( phi ) ) );
             
         end );
         
