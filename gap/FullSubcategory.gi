@@ -380,8 +380,14 @@ end );
 
 ##
 InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
-  function( cat, L )
-    local full, finalize;
+  function( L )
+    local cat, full, finalize;
+    
+    if L = [ ] then
+        Error( "the input list is empty\n" );
+    fi;
+    
+    cat := CapCategory( L[1] );
     
     L := ShallowCopy( L );
     
