@@ -423,3 +423,54 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
 end );
 
+
+##################################
+##
+## View & Display
+##
+##################################
+
+##
+InstallMethod( ViewObj,
+    [ IsCapCategoryObjectInAFullSubcategory ],
+  function( a )
+    
+    Print( "An object in full subcategory given by: " );
+    
+    ViewObj( UnderlyingCell( a ) );
+    
+end );
+
+##
+InstallMethod( ViewObj,
+    [ IsCapCategoryMorphismInAFullSubcategory ],
+  function( phi )
+    
+    Print( "A morphism in full subcategory given by: " );
+    
+    ViewObj( UnderlyingCell( phi ) );
+    
+end );
+
+##
+InstallMethod( Display,
+    [ IsCapCategoryObjectInAFullSubcategory ],
+  function( a )
+    
+    Print( "An object in full subcategory given by: " );
+    
+    Display( UnderlyingCell( a ) );
+    
+end );
+
+##
+InstallMethod( Display,
+    [ IsCapCategoryMorphismInAFullSubcategory ],
+  function( phi )
+    
+    Print( "A morphism in full subcategory given by: " );
+    
+    Display( UnderlyingCell( phi ) );
+    
+end );
+
