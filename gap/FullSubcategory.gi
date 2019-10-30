@@ -116,7 +116,7 @@ InstallMethod( FullSubcategory,
   function( C, name )
     local D, properties, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
-          recnames, skip, func, pos, info, add;
+          recnames, skip, func, pos, info, add, finalize;
     
     name := Concatenation( name, Name( C ) );
     
@@ -362,6 +362,14 @@ InstallMethod( FullSubcategory,
             end );
         fi;
         
+    fi;
+    
+    finalize := ValueOption( "FinalizeCategory" );
+    
+    if finalize = false then
+      
+      return D;
+      
     fi;
     
     Finalize( D );
