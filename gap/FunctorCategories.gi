@@ -17,23 +17,12 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "AdditiveInverseForMorphisms",
           "AssociatorLeftToRightWithGivenTensorProducts",
           "AssociatorRightToLeftWithGivenTensorProducts",
-          "AstrictionToCoimage",
-          "AstrictionToCoimageWithGivenCoimage",
-          "BiasedWeakFiberProduct",
-          "BiasedWeakPushout",
           "BraidingInverseWithGivenTensorProducts",
           "BraidingWithGivenTensorProducts",
-          "CanonicalIdentificationFromCoimageToImageObject",
-          "CanonicalIdentificationFromImageObjectToCoimage",
-          "CoastrictionToImage",
-          "CoastrictionToImageWithGivenImageObject",
           "Coequalizer",
           "CoequalizerFunctorialWithGivenCoequalizers",
           "CoevaluationForDualWithGivenTensorProduct",
-          "CoevaluationMorphismWithGivenRange",
-          "Coimage",
-          "CoimageProjection",
-          "CoimageProjectionWithGivenCoimage",
+          #"CoevaluationMorphismWithGivenRange",
           "CokernelColift",
           "CokernelColiftWithGivenCokernelObject",
           "CokernelObject",
@@ -51,16 +40,14 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "DirectSumCodiagonalDifference",
           "DirectSumDiagonalDifference",
           "DirectSumFunctorialWithGivenDirectSums",
-          "DirectSumMorphismToWeakBiPushout",
           "DirectSumProjectionInPushout",
           "DualOnMorphismsWithGivenDuals",
-          "DualOnObjects",
           "EmbeddingOfEqualizer",
           "EmbeddingOfEqualizerWithGivenEqualizer",
           "Equalizer",
           "EqualizerFunctorialWithGivenEqualizers",
           "EvaluationForDualWithGivenTensorProduct",
-          "EvaluationMorphismWithGivenSource",
+          #"EvaluationMorphismWithGivenSource",
           "FiberProduct",
           "FiberProductEmbeddingInDirectSum",
           "FiberProductFunctorialWithGivenFiberProducts",
@@ -68,75 +55,36 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "HorizontalPreCompose",
           "IdentityMorphism",
           "IdentityTwoCell",
-          "ImageEmbedding",
-          "ImageEmbeddingWithGivenImageObject",
-          "ImageObject",
           "InitialObject",
           "InitialObjectFunctorial",
-          "InjectionOfBiasedWeakPushout",
-          "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
           "InjectionOfCofactorOfCoproduct",
           "InjectionOfCofactorOfCoproductWithGivenCoproduct",
           "InjectionOfCofactorOfDirectSum",
           "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
           "InjectionOfCofactorOfPushout",
           "InjectionOfCofactorOfPushoutWithGivenPushout",
-          "InjectionOfFirstCofactorOfWeakBiPushout",
-          "InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
-          "InjectionOfSecondCofactorOfWeakBiPushout",
-          "InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
-          "InternalHomOnMorphismsWithGivenInternalHoms",
-          "InternalHomOnObjects",
-          "InternalHomToTensorProductAdjunctionMap",
           "InverseImmutable",
-          "InverseMorphismFromCoimageToImageWithGivenObjects",
-          "IsAutomorphism",
-          "IsCodominating",
-          "IsColiftableAlongEpimorphism",
-          "IsDominating",
-          "IsEndomorphism",
-          "IsEpimorphism",
-          "IsEqualAsFactorobjects",
-          "IsEqualAsSubobjects",
-          "IsIdempotent",
-          "IsIdenticalToIdentityMorphism",
-          "IsIdenticalToZeroMorphism",
-          "IsInitial",
-          "IsIsomorphism",
-          "IsLiftableAlongMonomorphism",
-          "IsMonomorphism",
-          "IsOne",
-          "IsTerminal",
-          "IsZeroForMorphisms",
-          "IsZeroForObjects",
           "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-          "IsomorphismFromCoimageToCokernelOfKernel",
           "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-          "IsomorphismFromCokernelOfKernelToCoimage",
           "IsomorphismFromCoproductToDirectSum",
           "IsomorphismFromDirectProductToDirectSum",
           "IsomorphismFromDirectSumToCoproduct",
           "IsomorphismFromDirectSumToDirectProduct",
-          "IsomorphismFromDualToInternalHom",
           "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
           "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
           "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
-          "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
-          "IsomorphismFromImageObjectToKernelOfCokernel",
           "IsomorphismFromInitialObjectToZeroObject",
-          "IsomorphismFromInternalHomToDual",
-          "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
-          "IsomorphismFromInternalHomToTensorProduct",
-          "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
-          "IsomorphismFromKernelOfCokernelToImageObject",
           "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
           "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-          "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
           "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
-          "IsomorphismFromTensorProductToInternalHom",
           "IsomorphismFromTerminalObjectToZeroObject",
           "IsomorphismFromZeroObjectToInitialObject",
           "IsomorphismFromZeroObjectToTerminalObject",
+          "IsEpimorphism",
+          "IsIsomorphism",
+          "IsMonomorphism",
+          "IsZeroForMorphisms",
+          "IsZeroForObjects",
           "KernelEmbedding",
           "KernelEmbeddingWithGivenKernelObject",
           "KernelLift",
@@ -150,17 +98,14 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "LeftUnitorInverseWithGivenTensorProduct",
           "LeftUnitorWithGivenTensorProduct",
           "LiftAlongMonomorphism",
-          "MonoidalPostComposeMorphismWithGivenObjects",
-          "MonoidalPreComposeMorphismWithGivenObjects",
+          #"MonoidalPostComposeMorphismWithGivenObjects",
+          #"MonoidalPreComposeMorphismWithGivenObjects",
           "MorphismBetweenDirectSums",
           "MorphismFromBidualWithGivenBidual",
-          "MorphismFromCoimageToImageWithGivenObjects",
           "MorphismFromFiberProductToSink",
           "MorphismFromFiberProductToSinkWithGivenFiberProduct",
-          "MorphismFromInternalHomToTensorProductWithGivenObjects",
           "MorphismFromSourceToPushout",
           "MorphismFromSourceToPushoutWithGivenPushout",
-          "MorphismFromTensorProductToInternalHomWithGivenObjects",
           "MorphismToBidualWithGivenBidual",
           "MultiplyWithElementOfCommutativeRingForMorphisms",
           "PostCompose",
@@ -171,12 +116,6 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "ProjectionInFactorOfDirectSumWithGivenDirectSum",
           "ProjectionInFactorOfFiberProduct",
           "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
-          "ProjectionInFirstFactorOfWeakBiFiberProduct",
-          "ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
-          "ProjectionInSecondFactorOfWeakBiFiberProduct",
-          "ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
-          "ProjectionOfBiasedWeakFiberProduct",
-          "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
           "ProjectionOntoCoequalizer",
           "ProjectionOntoCoequalizerWithGivenCoequalizer",
           "Pushout",
@@ -187,38 +126,23 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "RightUnitorInverseWithGivenTensorProduct",
           "RightUnitorWithGivenTensorProduct",
           "SubtractionForMorphisms",
-          "TensorProductDualityCompatibilityMorphismWithGivenObjects",
-          "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
-          "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
+          #"TensorProductDualityCompatibilityMorphismWithGivenObjects",
           "TensorProductOnMorphismsWithGivenTensorProducts",
-          "TensorProductOnObjects",
-          "TensorProductToInternalHomAdjunctionMap",
-          "TensorUnit",
           "TerminalObject",
           "TerminalObjectFunctorial",
           "TraceMap",
           "UniversalMorphismFromCoequalizer",
           "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
-          "UniversalMorphismFromBiasedWeakPushout",
-          "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
           "UniversalMorphismFromCoproduct",
           "UniversalMorphismFromCoproductWithGivenCoproduct",
           "UniversalMorphismFromDirectSum",
           "UniversalMorphismFromDirectSumWithGivenDirectSum",
-          "UniversalMorphismFromImage",
-          "UniversalMorphismFromImageWithGivenImageObject",
           "UniversalMorphismFromInitialObject",
           "UniversalMorphismFromInitialObjectWithGivenInitialObject",
           "UniversalMorphismFromPushout",
           "UniversalMorphismFromPushoutWithGivenPushout",
-          "UniversalMorphismFromWeakBiPushout",
-          "UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
           "UniversalMorphismFromZeroObject",
           "UniversalMorphismFromZeroObjectWithGivenZeroObject",
-          "UniversalMorphismIntoBiasedWeakFiberProduct",
-          "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
-          "UniversalMorphismIntoCoimage",
-          "UniversalMorphismIntoCoimageWithGivenCoimage",
           "UniversalMorphismIntoDirectProduct",
           "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
           "UniversalMorphismIntoDirectSum",
@@ -229,26 +153,11 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
           "UniversalMorphismIntoTerminalObject",
           "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-          "UniversalMorphismIntoWeakBiFiberProduct",
-          "UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
           "UniversalMorphismIntoZeroObject",
           "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
           "UniversalPropertyOfDual",
           "VerticalPostCompose",
           "VerticalPreCompose",
-          "WeakBiFiberProduct",
-          "WeakBiFiberProductMorphismToDirectSum",
-          "WeakBiPushout",
-          "WeakCokernelColift",
-          "WeakCokernelColiftWithGivenWeakCokernelObject",
-          "WeakCokernelObject",
-          "WeakCokernelProjection",
-          "WeakCokernelProjectionWithGivenWeakCokernelObject",
-          "WeakKernelEmbedding",
-          "WeakKernelEmbeddingWithGivenWeakKernelObject",
-          "WeakKernelLift",
-          "WeakKernelLiftWithGivenWeakKernelObject",
-          "WeakKernelObject",
           "ZeroMorphism",
           "ZeroObject",
           "ZeroObjectFunctorial" ] );
@@ -712,12 +621,9 @@ InstallMethodWithCache( Hom,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        ## Code from IntrinsicCategories enforcing the installation of
-        ## UniversalObject and UniversalMorphismWithGivenUniversalObject
-        ## instead of the installation of UniversalMorphism
-        #if not info.with_given_without_given_name_pair[2] = name then
-        #    Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        #fi;
+        if not info.with_given_without_given_name_pair[2] = name then
+            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        fi;
         
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
@@ -728,6 +634,7 @@ InstallMethodWithCache( Hom,
             local src_trg, S, T, eval_arg, result;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
             S := UnderlyingCapTwoCategoryCell( src_trg[1] );
             T := UnderlyingCapTwoCategoryCell( src_trg[2] );
             
@@ -746,8 +653,8 @@ InstallMethodWithCache( Hom,
           
       end;
     
-    ## TODO: remove `Primitively' for performance?
-    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
+    ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
+    recnames := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
     recnames := Intersection( recnames, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
     
     skip := [
@@ -790,20 +697,17 @@ InstallMethodWithCache( Hom,
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
                 continue;
-            ## Code from IntrinsicCategories enforcing the installation of
-            ## UniversalObject and UniversalMorphismWithGivenUniversalObject
-            ## instead of the installation of UniversalMorphism
-            #elif IsList( info.with_given_without_given_name_pair ) and
-            #  name = info.with_given_without_given_name_pair[1] then
-            #    ## do not install universal morphisms but their
-            #    ## with-given-universal-object counterpart
-            #    Add( recnames, info.with_given_without_given_name_pair[2] );
-            #    continue;
-            #elif IsBound( info.universal_object ) and
-            #  Position( recnames, info.universal_object ) = fail then
-            #    ## add the corresponding universal object
-            #    ## at the end of the list for its method to be installed
-            #    Add( recnames, info.universal_object );
+            elif IsList( info.with_given_without_given_name_pair ) and
+              name = info.with_given_without_given_name_pair[1] then
+                ## do not install universal morphisms but their
+                ## with-given-universal-object counterpart
+                Add( recnames, info.with_given_without_given_name_pair[2] );
+                continue;
+            elif IsBound( info.universal_object ) and
+              Position( recnames, info.universal_object ) = fail then
+                ## add the corresponding universal object
+                ## at the end of the list for its method to be installed
+                Add( recnames, info.universal_object );
             fi;
             
             if IsList( info.with_given_without_given_name_pair ) then
