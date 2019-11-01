@@ -43,9 +43,9 @@ InstallMethod( UniqueMorphism,
     
     u := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( u, C,
-            Source, A,
-            Range, B,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( u, C,
+            A,
+            B,
             IsMonomorphism, true,
             IsEpimorphism, true
             );
