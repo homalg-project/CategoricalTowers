@@ -1,5 +1,5 @@
 #
-# ModulesForHomalg: Intrinsic modules with relations and generators for the CAP based homalg
+# IntrinsicModules: Intrinsic finitely presented modules with generators and elements
 #
 # Implementations
 

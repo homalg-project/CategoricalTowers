@@ -1,6 +1,6 @@
 #! @Chunk HomalgMap
 
-LoadPackage( "ModulesForHomalg" );
+LoadPackage( "IntrinsicModules" );
 
 #! @Example
 ZZ := HomalgRingOfIntegers( );

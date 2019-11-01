@@ -1,5 +1,5 @@
 #
-# ModulesForHomalg: Intrinsic modules with elements for the CAP based homalg
+# IntrinsicModules: Intrinsic finitely presented modules with generators and elements
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,8 +8,8 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "ModulesForHomalg",
-Subtitle := "Intrinsic modules with elements for the CAP based homalg",
+PackageName := "IntrinsicModules",
+Subtitle := "Intrinsic finitely presented modules with generators and elements",
 
 Version := Maximum( [
                    "2019.03.03", ## Mohamed's version
@@ -79,12 +79,12 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "ModulesForHomalg",
+  BookName  := "IntrinsicModules",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Intrinsic modules with elements for the CAP based homalg",
+  LongTitle := "Intrinsic finitely presented modules with generators and elements",
 ),
 
 Dependencies := rec(
