@@ -6,42 +6,6 @@
 
 ####################################
 #
-# representations:
-#
-####################################
-
-DeclareRepresentation( "IsCapCategoryObjectInHomCategoryRep",
-        IsCapCategoryObjectInHomCategory,
-        [ ] );
-
-DeclareRepresentation( "IsCapCategoryMorphismInHomCategoryRep",
-        IsCapCategoryMorphismInHomCategory,
-        [ ] );
-
-####################################
-#
-# families and types:
-#
-####################################
-
-# new families:
-BindGlobal( "TheFamilyOfObjectsInHomCategorys",
-        NewFamily( "TheFamilyOfObjectsInHomCategorys" ) );
-
-BindGlobal( "TheFamilyOfMorphismsInHomCategorys",
-        NewFamily( "TheFamilyOfMorphismsInHomCategorys" ) );
-
-# new types:
-BindGlobal( "TheTypeObjectInHomCategory",
-        NewType( TheFamilyOfObjectsInHomCategorys,
-                IsCapCategoryObjectInHomCategoryRep ) );
-
-BindGlobal( "TheTypeMorphismInHomCategory",
-        NewType( TheFamilyOfMorphismsInHomCategorys,
-                IsCapCategoryMorphismInHomCategoryRep ) );
-
-####################################
-#
 # methods for attributes:
 #
 ####################################
@@ -143,7 +107,7 @@ InstallMethod( AsObjectInHomCategory,
     
     obj := rec( );
     
-    ObjectifyWithAttributes( obj, TheTypeObjectInHomCategory,
+    ObjectifyObjectForCAPWithAttributes( obj, H,
             UnderlyingCapTwoCategoryCell, F
             );
     
@@ -188,9 +152,9 @@ InstallMethod( AsMorphismInHomCategory,
     
     mor := rec( );
     
-    ObjectifyWithAttributes( mor, TheTypeMorphismInHomCategory,
-            Source, AsObjectInHomCategory( H, Source( eta ) ),
-            Range, AsObjectInHomCategory( H, Range( eta ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, H,
+            AsObjectInHomCategory( H, Source( eta ) ),
+            AsObjectInHomCategory( H, Range( eta ) ),
             UnderlyingCapTwoCategoryCell, eta
             );
     
@@ -250,6 +214,9 @@ InstallMethodWithCache( Hom,
     else
         Hom := CreateCapCategory( );
     fi;
+    
+    AddObjectRepresentation( Hom, IsCapCategoryObjectInHomCategory );
+    AddMorphismRepresentation( Hom, IsCapCategoryMorphismInHomCategory );
     
     SetSource( Hom, B );
     SetRange( Hom, C );
