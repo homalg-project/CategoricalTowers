@@ -373,6 +373,8 @@ InstallMethodWithCache( Hom,
         Hom := CreateCapCategory( );
     fi;
     
+    SetFilterObj( Hom, IsCapHomCategory );
+    
     AddObjectRepresentation( Hom, IsCapCategoryObjectInHomCategory );
     AddMorphismRepresentation( Hom, IsCapCategoryMorphismInHomCategory );
     
