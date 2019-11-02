@@ -384,6 +384,12 @@ InstallMethodWithCache( Hom,
         Setter( name )( Hom, name( C ) );
     od;
     
+    if HasCommutativeRingOfLinearCategory( C ) then
+      
+      SetCommutativeRingOfLinearCategory( Hom, CommutativeRingOfLinearCategory( C ) );
+      
+    fi;
+    
     name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
