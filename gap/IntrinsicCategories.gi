@@ -1071,10 +1071,11 @@ end );
     
 ##
 InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsBool, IsList, IsFunction ],
+        [ IsCapCategory ],
         
-  function( C, strict, list_filter_obj_mor, todo )
-    local name, IC, create_func_bool, create_func_object0, create_func_object,
+  function( C )
+    local name, IC, strict, filter_obj, filter_mor, filter_end, todo_func,
+          create_func_bool, create_func_object0, create_func_object,
           create_func_morphism, create_func_universal_morphism,
           recnames, func, pos, info, add;
     
@@ -1085,13 +1086,27 @@ InstallMethod( IntrinsicCategory,
         IC := CreateCapCategory( );
     fi;
     
-    AddObjectRepresentation( IC, IsCapCategoryIntrinsicObject and list_filter_obj_mor[1] );
-    AddMorphismRepresentation( IC, IsCapCategoryIntrinsicMorphism and list_filter_obj_mor[2] );
+    filter_obj := ValueOption( "filter_obj" );
     
-    IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism;
+    if filter_obj = fail or not IsFilter( filter_obj ) then
+        filter_obj := IsCapCategoryIntrinsicObject;
+    fi;
     
-    if Length( list_filter_obj_mor ) > 2 and IsFilter( list_filter_obj_mor[3] ) then
-        IC!.IsCapCategoryIntrinsicEndomorphism := IC!.IsCapCategoryIntrinsicEndomorphism and list_filter_obj_mor[3];
+    filter_mor := ValueOption( "filter_mor" );
+    
+    if filter_mor = fail or not IsFilter( filter_mor ) then
+        filter_mor := IsCapCategoryIntrinsicMorphism;
+    fi;
+    
+    AddObjectRepresentation( IC, IsCapCategoryIntrinsicObject and filter_obj );
+    AddMorphismRepresentation( IC, IsCapCategoryIntrinsicMorphism and filter_mor );
+    
+    filter_end := ValueOption( "filter_end" );
+    
+    if filter_end = fail or not IsFilter( filter_end ) then
+        IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism;
+    else
+        IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism and filter_end;
     fi;
     
     for name in ListKnownCategoricalProperties( C ) do
@@ -1108,6 +1123,16 @@ InstallMethod( IntrinsicCategory,
               return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
             end );
     AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
+    
+    strict := ValueOption( "strict" );
+    
+    if strict = fail or not IsBool( strict ) then
+        if IsBound( INTRINSIC_CATEGORIES.strict ) and INTRINSIC_CATEGORIES.strict = true then
+            strict := true;
+        else
+            strict := false;
+        fi;
+    fi;
     
     if strict = true then
         ## strict intrinsic categories
@@ -1189,6 +1214,12 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
+    todo_func := ValueOption( "todo_func" );
+    
+    if todo_func = fail or not IsFunction( todo_func ) then
+        todo_func := ReturnNothing;
+    fi;
+    
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
       function( name )
@@ -1214,7 +1245,7 @@ InstallMethod( IntrinsicCategory,
            
             result := Intrinsify( result, S, s, T, t );
             
-            todo( arg, result );
+            todo_func( arg, result );
             
             return result;
             
@@ -1283,7 +1314,7 @@ InstallMethod( IntrinsicCategory,
                 SetPositionOfActiveCell( universal_object, active_pos );
             fi;
             
-            todo( arg, result );
+            todo_func( arg, result );
             
             return result;
             
@@ -1359,50 +1390,6 @@ InstallMethod( IntrinsicCategory,
     IC!.CanonicalizeMorphismsIfZero := true;
     
     return IC;
-    
-end );
-
-##
-InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsList, IsFunction ],
-        
-  function( C, list_filter_obj_mor, todo )
-    
-    if IsBound( INTRINSIC_CATEGORIES.strict ) and
-       INTRINSIC_CATEGORIES.strict = false then
-        
-        return IntrinsicCategory( C, false, list_filter_obj_mor, todo );
-        
-    fi;
-    
-    return IntrinsicCategory( C, true, list_filter_obj_mor, todo );
-    
-end );
-
-##
-InstallMethod( IntrinsicCategory,
-        [ IsCapCategory, IsBool ],
-        
-  function( C, strict )
-    
-    return IntrinsicCategory( C, strict, [ IsCapCategoryIntrinsicObject, IsCapCategoryIntrinsicMorphism ], ReturnNothing );
-    
-end );
-
-##
-InstallMethod( IntrinsicCategory,
-        [ IsCapCategory ],
-        
-  function( C )
-    
-    if IsBound( INTRINSIC_CATEGORIES.strict ) and
-       INTRINSIC_CATEGORIES.strict = true then
-        
-        return IntrinsicCategory( C, true );
-        
-    fi;
-    
-    return IntrinsicCategory( C, false );
     
 end );
 

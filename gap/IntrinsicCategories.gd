@@ -173,38 +173,27 @@ DeclareAttribute( "CanonicalizeZeroMorphismsAsIdentityFunctor",
         IsCapCategory );
 
 #! @Description
-#!  Create an intrinsic category out of <A>C</A>.
-#!  If <A>strict</A>=<C>true</C> then a potential congruence relation
-#!  on the <M>Hom</M>-sets is divided out, else <A>strict</A>=<C>false</C>
-#!  and the <M>Hom</M>-sets are in fact setoids.
-#!  The latter could be a specific type for endomorphisms.
-#!  The argument <C>todo</C> is a function which will be applied in all
+#!  Create in the sense explained below an <Q>intrinsic</Q> category out of the category <A>C</A>.
+#!  The procedure understands five options:
+#!  * <C>strict</C> (<C>true</C> or <C>false</C>);
+#!  * <C>filter_obj</C> (a filter used to define the type of intrinsified objects);
+#!  * <C>filter_mor</C> (a filter used to define the type of intrinsified morphisms);
+#!  * <C>filter_end</C> (a filter used to define the type of intrinsified endomorphisms);
+#!  * <C>todo_func</C> (a function which does not need to return anything).
+#!  
+#!  If <C>strict</C>=<C>true</C> then the &CAP;'s congruence relation
+#!  on the <M>Hom</M>-setoids is divided out.
+#!  The argument <C>todo_func</C> is a function which will be applied in all
 #!  &CAP; constructions <C>CAP_oper</C> producing a morphism
 #!  to the argument list of <C>CAP_oper</C> (as first argument) and
 #!  the output of <C>CAP_oper</C> (as second argument).
-#! @Arguments C, strict, list_filter_obj_mor, todo
-#! @Returns a &CAP; category
-#! @Group IntrinsicCategory
-DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsBool, IsList, IsFunction ] );
-
-#! @Description
-#!  If <A>strict</A> is not specified it defaults to <C>true</C>.
-#! @Arguments C, list_filter_obj_mor, todo
-#! @Group IntrinsicCategory
-DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsList, IsFunction ] );
-
-#! @Description
+#!  If the option <C>strict</C> is not specified it defaults to <C>true</C>.
 #!  If <A>filter_obj</A> is not specified it defaults to <C>IsCapCategoryIntrinsicObject</C>.
 #!  If <A>filter_mor</A> is not specified it defaults to <C>IsCapCategoryIntrinsicMorphism</C>.
+#!  If <A>filter_end</A> is not specified it defaults to <C>IsCapCategoryIntrinsicMorphism</C>.
 #!  If <A>todo</A> is not specified it defaults to <C>ReturnNothing</C>.
-#! @Arguments C, strict
-#! @Group IntrinsicCategory
-DeclareOperation( "IntrinsicCategory",
-        [ IsCapCategory, IsBool ] );
-
 #! @Arguments C
+#! @Returns a &CAP; category
 #! @Group IntrinsicCategory
 DeclareOperation( "IntrinsicCategory",
         [ IsCapCategory ] );
