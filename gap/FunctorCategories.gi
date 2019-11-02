@@ -734,6 +734,16 @@ InstallMethodWithCache( Hom,
         
     od;
     
+    if IsBound( C!.field_for_matrix_category ) then
+      
+      AddBasisOfExternalHom( Hom,
+        BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CATEGORY );
+        
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
+        COEFFICIENTS_OF_MORPHISM_OF_FUNCTORS_INTO_MATRIX_CATEGORY );
+        
+    fi;
+    
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasCounit( B ) and HasComultiplication( B ) then
         
