@@ -756,9 +756,9 @@ InstallMethod( Intrinsify,
                morphisms := rec( (String( [ posS, posT ] )) := [ 1, [ m ] ] )
                );
     
-    ObjectifyMorphismForCAPWithAttributes( mor, C,
-            Source, S,
-            Range, T
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, C,
+            S,
+            T
             );
     
     if IsEqualForObjects( S, T ) then
