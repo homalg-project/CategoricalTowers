@@ -98,7 +98,11 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     A := CategoryWithAmbientObject( A );
     
-    A := IntrinsicCategory( A, [ filter_obj, filter_mor, filter_end ], INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+    A := IntrinsicCategory( A :
+                 filter_obj := filter_obj,
+                 filter_mor := filter_mor,
+                 filter_end := filter_end,
+                 todo_func := INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     A!.MorphismConstructor := HomalgMap;
     A!.TypeOfElements := TheTypeHomalgModuleElement;

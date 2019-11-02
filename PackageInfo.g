@@ -12,7 +12,7 @@ PackageName := "IntrinsicModules",
 Subtitle := "Intrinsic finitely presented modules with generators and elements",
 
 Version := Maximum( [
-                   "2019.03.03", ## Mohamed's version
+                   "2019.03.05", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03.14", ## Kamals's version
                    ] ),
@@ -95,7 +95,7 @@ Dependencies := rec(
                    [ "GeneralizedMorphismsForCAP", ">= 2017.03.15" ],
                    [ "CAP", ">= 2019.03.02" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],
-                   [ "IntrinsicCategories", ">= 2019.03.02" ],
+                   [ "IntrinsicCategories", ">= 2019.03.05" ],
                    [ "CategoriesWithAmbientObjects", ">= 2017.05.01" ],
                    ],
   SuggestedOtherPackages := [ ],
