@@ -715,11 +715,11 @@ InstallMethodWithCache( Hom,
             else
                 func := create_func_morphism( name );
             fi;
-        elif info.return_type in [ "other_object", "other_morphism" ] then
+        elif info.return_type in [ "other_object", "other_morphism", IsList ] then
             Info( InfoFunctorCategories, 2, "cannot yet handle ", info.return_type, " required for ", name );
             continue;
         else
-            Error( "unkown return type of the operation ", name );
+            Error( "unknown return type of the operation ", name );
         fi;
         
         add := ValueGlobal( Concatenation( "Add", name ) );
