@@ -1074,16 +1074,16 @@ InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, IC, strict, filter_obj, filter_mor, filter_end, todo_func,
-          create_func_bool, create_func_object0, create_func_object,
+    local name, filter_obj, filter_mor, properties,
+          create_func_bool, create_func_object0, create_func_object, todo_func,
           create_func_morphism, create_func_universal_morphism,
-          recnames, func, pos, info, add;
+          list_of_operations_to_install, func, pos, skip, commutative_ring,
+          IC, strict, filter_end;
     
     if HasName( C ) then
         name := Concatenation( "intrinsic ", Name( C ) );
-        IC := CreateCapCategory( name );
     else
-        IC := CreateCapCategory( );
+        name := "intrinsic category";
     fi;
     
     filter_obj := ValueOption( "filter_obj" );
@@ -1098,49 +1098,7 @@ InstallMethod( IntrinsicCategory,
         filter_mor := IsCapCategoryIntrinsicMorphism;
     fi;
     
-    AddObjectRepresentation( IC, IsCapCategoryIntrinsicObject and filter_obj );
-    AddMorphismRepresentation( IC, IsCapCategoryIntrinsicMorphism and filter_mor );
-    
-    filter_end := ValueOption( "filter_end" );
-    
-    if filter_end = fail or not IsFilter( filter_end ) then
-        IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism;
-    else
-        IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism and filter_end;
-    fi;
-    
-    for name in ListKnownCategoricalProperties( C ) do
-        name := ValueGlobal( name );
-        Setter( name )( IC, name( C ) );
-    od;
-    
-    SetIntrinsifiedCategory( IC, C );
-    
-    AddIsEqualForObjects( IC, IsIdenticalObj );
-    AddIsEqualForMorphisms( IC,
-            function( m, n )
-              ## CAP checks IsEqualForObjects for Source and Range automatically
-              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
-            end );
-    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
-    
-    strict := ValueOption( "strict" );
-    
-    if strict = fail or not IsBool( strict ) then
-        if IsBound( INTRINSIC_CATEGORIES.strict ) and INTRINSIC_CATEGORIES.strict = true then
-            strict := true;
-        else
-            strict := false;
-        fi;
-    fi;
-    
-    if strict = true then
-        ## strict intrinsic categories
-        SetCachingOfCategoryCrisp( IC );
-    else
-        AddIsEqualForCacheForMorphisms( IC, IsIdenticalObj );
-        SetCachingOfCategoryWeak( IC );
-    fi;
+    properties := ListKnownCategoricalProperties( C );
     
     create_func_bool :=
       function( name )
@@ -1323,7 +1281,7 @@ InstallMethod( IntrinsicCategory,
       end;
     
     ## TODO: remove `Primitively' for performance?
-    recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) );
+    list_of_operations_to_install := SortedList( ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( C ) ) );
     
     for func in [
             "IsEqualForObjects",
@@ -1333,56 +1291,87 @@ InstallMethod( IntrinsicCategory,
             "IsEqualForCacheForMorphisms"
             ] do
         
-        pos := Position( recnames, func );
+        pos := Position( list_of_operations_to_install, func );
         if not pos = fail then
-            Remove( recnames, pos );
+            Remove( list_of_operations_to_install, pos );
         fi;
         
     od;
     
-    for name in recnames do
+    if HasCommutativeRingOfLinearCategory( C ) then
+        commutative_ring := CommutativeRingOfLinearCategory( C );
+    else
+        commutative_ring := fail;
+    fi;
+    
+    IC := CategoryConstructor( :
+                  name := name,
+                  category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
+                  category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
+                  commutative_ring := commutative_ring,
+                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
+                  list_of_operations_to_install := list_of_operations_to_install,
+                  create_func_bool := create_func_bool,
+                  create_func_object0 := create_func_object0,
+                  create_func_object := create_func_object,
+                  create_func_morphism := create_func_morphism,
+                  create_func_universal_morphism := create_func_universal_morphism
+                  );
+    
+    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsAdditiveCategory",
+                    "IsPreAbelianCategory",
+                    "IsAbelianCategory",
+                    "IsMonoidalCategory",
+                    "IsBraidedMonoidalCategory",
+                    "IsSymmetricMonoidalCategory",
+                    ];
+    
+    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    
+    for name in properties do
+        name := ValueGlobal( name );
         
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if info.return_type = "bool" then
-            func := create_func_bool( name );
-        elif info.return_type = "object" and info.filter_list = [ "category" ] then
-            func := create_func_object0( name );
-        elif info.return_type = "object" then
-            func := create_func_object( name );
-        elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
-            if not IsBound( info.io_type ) then
-                ## if there is no io_type we cannot do anything
-                continue;
-            elif IsList( info.with_given_without_given_name_pair ) and
-              name = info.with_given_without_given_name_pair[1] then
-                ## do not install universal morphisms but their
-                ## with-given-universal-object counterpart
-                if not info.with_given_without_given_name_pair[2] in recnames then
-                    Add( recnames, info.with_given_without_given_name_pair[2] );
-                fi;
-                continue;
-            elif IsBound( info.universal_object ) and
-              Position( recnames, info.universal_object ) = fail then
-                ## add the corresponding universal object
-                ## at the end of the list for its method to be installed
-                Add( recnames, info.universal_object );
-            fi;
-            
-            if IsList( info.with_given_without_given_name_pair ) then
-                func := create_func_universal_morphism( name );
-            else
-                func := create_func_morphism( name );
-            fi;
-        else
-            Error( "unkown return type of the operation ", name );
-        fi;
-        
-        add := ValueGlobal( Concatenation( "Add", name ) );
-        
-        add( IC, func );
+        Setter( name )( IC, name( C ) );
         
     od;
+    
+    SetIntrinsifiedCategory( IC, C );
+    
+    AddIsEqualForObjects( IC, IsIdenticalObj );
+    AddIsEqualForMorphisms( IC,
+            function( m, n )
+              ## CAP checks IsEqualForObjects for Source and Range automatically
+              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+            end );
+    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
+    
+    strict := ValueOption( "strict" );
+    
+    if strict = fail or not IsBool( strict ) then
+        if IsBound( INTRINSIC_CATEGORIES.strict ) and INTRINSIC_CATEGORIES.strict = true then
+            strict := true;
+        else
+            strict := false;
+        fi;
+    fi;
+    
+    if strict = true then
+        ## strict intrinsic categories
+        SetCachingOfCategoryCrisp( IC );
+    else
+        AddIsEqualForCacheForMorphisms( IC, IsIdenticalObj );
+        SetCachingOfCategoryWeak( IC );
+    fi;
+    
+    filter_end := ValueOption( "filter_end" );
+    
+    if filter_end = fail or not IsFilter( filter_end ) then
+        IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism;
+    else
+        IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism and filter_end;
+    fi;
     
     Finalize( IC );
     
