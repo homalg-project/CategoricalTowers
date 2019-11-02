@@ -1358,7 +1358,9 @@ InstallMethod( IntrinsicCategory,
               name = info.with_given_without_given_name_pair[1] then
                 ## do not install universal morphisms but their
                 ## with-given-universal-object counterpart
-                Add( recnames, info.with_given_without_given_name_pair[2] );
+                if not info.with_given_without_given_name_pair[2] in recnames then
+                    Add( recnames, info.with_given_without_given_name_pair[2] );
+                fi;
                 continue;
             elif IsBound( info.universal_object ) and
               Position( recnames, info.universal_object ) = fail then
