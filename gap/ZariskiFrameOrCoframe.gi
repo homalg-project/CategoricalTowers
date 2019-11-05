@@ -55,7 +55,7 @@ InstallMethod( AsMorphismInCategoryOfRows,
     R := HomalgRing( mat );
     
     if not IsBound( R!.CategoryOfRows ) then
-        R!.CategoryOfRows := CategoryOfRows( R );
+        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
     fi;
     
     return AsCategoryOfRowsMorphism( mat, R!.CategoryOfRows );
