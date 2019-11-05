@@ -26,7 +26,7 @@ InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
     
     L := Concatenation( L );
     
-    L := List( L, AsCategoryOfRowsMorphism );
+    L := List( L, AsMorphismInCategoryOfRows );
     
     A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
     
@@ -106,7 +106,7 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     L := List( L, mat -> S * mat );
     
-    L := List( L, AsCategoryOfRowsMorphism );
+    L := List( L, AsMorphismInCategoryOfRows );
     
     A!.ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory := L;
     

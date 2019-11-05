@@ -41,7 +41,7 @@ DeclareAttribute( "ZariskiCoframeOfProjUsingCategoryOfRows",
 #! @Description
 #!  Construct a Zariski closed subset (as an object in the Zariski coframe
 #!  of closed subsets a projective variety) from a morphism
-#!  <A>I</A>=<C>AsCategoryOfRowsMorphism</C>( <A>mat</A> ) in the category of (graded) rows.
+#!  <A>I</A>=<C>AsMorphismInCategoryOfRows</C>( <A>mat</A> ) in the category of (graded) rows.
 #!  The result is the projective support of the module-theoretic cokernel <M>M</M>
 #!  of the morphism <A>I</A> in the associated Freyd category,
 #!  i.e., the result is the projective vanishing locus

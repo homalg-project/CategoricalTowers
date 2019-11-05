@@ -28,7 +28,7 @@ InstallMethod( OpenSubsetOfSpec,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
         R := R_elim;
     fi;
     
@@ -66,7 +66,7 @@ InstallMethod( OpenSubsetOfSpec,
 
   function( mat )
     
-    return OpenSubsetOfSpec( AsCategoryOfRowsMorphism( mat ) );
+    return OpenSubsetOfSpec( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -83,7 +83,7 @@ InstallMethod( OpenSubsetOfSpecByReducedMorphism,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
         R := R_elim;
     fi;
     
@@ -121,7 +121,7 @@ InstallMethod( OpenSubsetOfSpecByReducedMorphism,
 
   function( mat )
     
-    return OpenSubsetOfSpecByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
+    return OpenSubsetOfSpecByReducedMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -150,7 +150,7 @@ InstallMethod( OpenSubsetOfSpecByListOfMorphismsOfRank1Range,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        L := List( L, I -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) ) );
+        L := List( L, I -> AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) ) );
         R := R_elim;
     fi;
     
@@ -194,7 +194,7 @@ InstallMethod( OpenSubsetOfSpecByStandardMorphism,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
         R := R_elim;
     fi;
     
@@ -232,7 +232,7 @@ InstallMethod( OpenSubsetOfSpecByStandardMorphism,
 
   function( mat )
     
-    return OpenSubsetOfSpecByStandardMorphism( AsCategoryOfRowsMorphism( mat ) );
+    return OpenSubsetOfSpecByStandardMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
