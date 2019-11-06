@@ -672,7 +672,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         return CategoryOfRowsObject( size, range_category );
         end;
         
-        morphism_constructor := AsCategoryOfRowsMorphism;
+        morphism_constructor := mat -> AsCategoryOfRowsMorphism( mat, range_category );
         
         distinguished_object := function()
         return CategoryOfRowsObject( 1, range_category );
