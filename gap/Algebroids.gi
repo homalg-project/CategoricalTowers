@@ -981,6 +981,7 @@ InstallMethod( Algebroid,
     A := CreateCapCategory( A );
     
     SetIsAbCategory( A, true );
+    SetIsLinearCategoryOverCommutativeRing( A, true );
     
     SetIsFinitelyPresentedCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
