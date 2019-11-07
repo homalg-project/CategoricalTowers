@@ -52,7 +52,7 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         
         I := List( I, PolynomialsWithoutRelativeIndeterminates );
         
-        I := List( I, AsCategoryOfRowsMorphism );
+        I := List( I, AsMorphismInCategoryOfRows );
         
         ## scheme-theoretic images of reduced schemes are reduced
         if known_to_be_reduced then
@@ -114,7 +114,7 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
         
         L := List( L, mat -> R * mat );
         
-        L := List( L, AsCategoryOfRowsMorphism );
+        L := List( L, AsMorphismInCategoryOfRows );
         
         fib := Constructor( L );
         

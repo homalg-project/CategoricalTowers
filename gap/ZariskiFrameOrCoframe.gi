@@ -45,6 +45,24 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
 end );
 
 ##
+InstallMethod( AsMorphismInCategoryOfRows,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+
+  function( mat )
+    local R;
+    
+    R := HomalgRing( mat );
+    
+    if not IsBound( R!.CategoryOfRows ) then
+        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
+    fi;
+    
+    return AsCategoryOfRowsMorphism( mat, R!.CategoryOfRows );
+    
+end );
+
+##
 InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasPreMorphismOfUnderlyingCategory ],
@@ -151,7 +169,7 @@ InstallMethod( ListOfStandardMorphismsOfUnderlyingCategory,
     
     L := List( L, BasisOfRows );
     
-    L := List( L, AsCategoryOfRowsMorphism );
+    L := List( L, AsMorphismInCategoryOfRows );
     
     if HasListOfMorphismsOfRank1RangeOfUnderlyingCategory( A ) then
         A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
@@ -215,7 +233,7 @@ InstallMethod( StandardMorphismOfUnderlyingCategory,
     
     mor := BasisOfRows( mor );
     
-    mor := AsCategoryOfRowsMorphism( mor );
+    mor := AsMorphismInCategoryOfRows( mor );
     
     if HasMorphismOfRank1RangeOfUnderlyingCategory( A ) then
         A!.MorphismOfRank1RangeOfUnderlyingCategory := mor;

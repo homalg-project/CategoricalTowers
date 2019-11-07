@@ -28,7 +28,7 @@ InstallMethod( ClosedSubsetOfSpec,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
         R := R_elim;
     fi;
     
@@ -66,7 +66,7 @@ InstallMethod( ClosedSubsetOfSpec,
 
   function( mat )
     
-    return ClosedSubsetOfSpec( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfSpec( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -94,7 +94,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
         R := R_elim;
     fi;
     
@@ -132,7 +132,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
 
   function( mat )
     
-    return ClosedSubsetOfSpecByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfSpecByReducedMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -172,7 +172,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        L := List( L, I -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) ) );
+        L := List( L, I -> AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) ) );
         R := R_elim;
     fi;
     
@@ -228,7 +228,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        L := List( L, I -> AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) ) );
+        L := List( L, I -> AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) ) );
         R := R_elim;
     fi;
     
@@ -272,7 +272,7 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsCategoryOfRowsMorphism( R_elim * UnderlyingMatrix( I ) );
+        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
         R := R_elim;
     fi;
     
@@ -310,7 +310,7 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
 
   function( mat )
     
-    return ClosedSubsetOfSpecByStandardMorphism( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfSpecByStandardMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 

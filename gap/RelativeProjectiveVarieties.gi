@@ -77,7 +77,7 @@ InstallMethod( FunctorClosedProjectionBetweenZariskiCoframes,
         
         obj := List( obj, PolynomialsWithoutRelativeIndeterminates );
         
-        obj := List( obj, AsCategoryOfRowsMorphism );
+        obj := List( obj, AsMorphismInCategoryOfRows );
         
         return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( obj );
         

@@ -18,7 +18,7 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     L := List( L, RadicalSubobjectOp );
     
-    L := List( L, AsCategoryOfRowsMorphism );
+    L := List( L, AsMorphismInCategoryOfRows );
     
     L := DuplicateFreeList( L );
     

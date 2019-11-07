@@ -37,7 +37,7 @@ InstallMethod( ClosedSubsetOfProj,
 
   function( mat )
     
-    return ClosedSubsetOfProj( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfProj( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -74,7 +74,7 @@ InstallMethod( ClosedSubsetOfProjByReducedMorphism,
 
   function( mat )
     
-    return ClosedSubsetOfProjByReducedMorphism( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfProjByReducedMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -137,7 +137,7 @@ InstallMethod( ClosedSubsetOfProjByStandardMorphism,
 
   function( mat )
     
-    return ClosedSubsetOfProjByStandardMorphism( AsCategoryOfRowsMorphism( mat ) );
+    return ClosedSubsetOfProjByStandardMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 

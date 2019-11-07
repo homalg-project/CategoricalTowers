@@ -43,6 +43,10 @@ DeclareOperation( "IsClosed",
 DeclareAttribute( "BaseOfFibration",
         IsObjectInZariskiFrameOrCoframe );
 
+#!
+DeclareAttribute( "AsMorphismInCategoryOfRows",
+        IsHomalgMatrix );
+
 DeclareAttribute( "PreMorphismOfUnderlyingCategory",
         IsObjectInZariskiFrameOrCoframe );
 

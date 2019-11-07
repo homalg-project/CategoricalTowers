@@ -354,6 +354,11 @@ InstallMethod( KnownFactors,
     
     components := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
     
+    ## FIXME: this is a hack which has to be replaced by the proper inclusion
+    components := MaximalObjects( components, {a,b} -> IsLiftable( b, a ) );
+    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := components;
+    ## FIXME
+    
     ZC := CapCategory( A );
     
     if HasListOfStandardMorphismsOfUnderlyingCategory( A ) then
