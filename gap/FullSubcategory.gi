@@ -247,6 +247,7 @@ InstallMethod( FullSubcategory,
     
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                     "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing"
                     ];
     
     is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
