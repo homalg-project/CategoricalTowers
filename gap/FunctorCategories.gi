@@ -373,6 +373,8 @@ InstallMethodWithCache( Hom,
         Hom := CreateCapCategory( );
     fi;
     
+    SetFilterObj( Hom, IsCapHomCategory );
+    
     AddObjectRepresentation( Hom, IsCapCategoryObjectInHomCategory );
     AddMorphismRepresentation( Hom, IsCapCategoryMorphismInHomCategory );
     
@@ -383,6 +385,12 @@ InstallMethodWithCache( Hom,
         name := ValueGlobal( name );
         Setter( name )( Hom, name( C ) );
     od;
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+      
+      SetCommutativeRingOfLinearCategory( Hom, CommutativeRingOfLinearCategory( C ) );
+      
+    fi;
     
     name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
@@ -715,11 +723,11 @@ InstallMethodWithCache( Hom,
             else
                 func := create_func_morphism( name );
             fi;
-        elif info.return_type in [ "other_object", "other_morphism" ] then
+        elif info.return_type in [ "other_object", "other_morphism", IsList ] then
             Info( InfoFunctorCategories, 2, "cannot yet handle ", info.return_type, " required for ", name );
             continue;
         else
-            Error( "unkown return type of the operation ", name );
+            Error( "unknown return type of the operation ", name );
         fi;
         
         add := ValueGlobal( Concatenation( "Add", name ) );
@@ -727,6 +735,16 @@ InstallMethodWithCache( Hom,
         add( Hom, func );
         
     od;
+    
+    if IsBound( C!.field_for_matrix_category ) then
+      
+      AddBasisOfExternalHom( Hom,
+        BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CATEGORY );
+        
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
+        COEFFICIENTS_OF_MORPHISM_OF_FUNCTORS_INTO_MATRIX_CATEGORY );
+        
+    fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasCounit( B ) and HasComultiplication( B ) then

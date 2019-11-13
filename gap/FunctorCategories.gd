@@ -17,6 +17,13 @@ SetInfoLevel( InfoFunctorCategories, 1 );
 ####################################
 
 #! @Description
+#!  The &GAP; category of Hom-categories of functors between two fixed categories.
+#! @Arguments category
+DeclareCategory( "IsCapHomCategory",
+        IsCapCategory and
+        IsAttributeStoringRep );
+
+#! @Description
 #!  The &GAP; category of cells in a Hom-category of functors between two fixed categories.
 #! @Arguments cell
 DeclareCategory( "IsCapCategoryCellInHomCategory",
