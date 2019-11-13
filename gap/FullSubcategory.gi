@@ -41,6 +41,12 @@ InstallMethod( AsFullSubcategoryCell,
   function( D, object )
     local o;
     
+    if not IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) then
+        
+        Error( "the given object should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
+        
+    fi;
+    
     o := rec( );
     
     ObjectifyObjectForCAPWithAttributes( o, D,
@@ -57,6 +63,12 @@ InstallMethod( AsFullSubcategoryCell,
         
   function( D, morphism )
     local m;
+    
+    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( D ) ) then
+        
+        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
+        
+    fi;
     
     m := rec( );
     
