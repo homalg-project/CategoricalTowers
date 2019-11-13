@@ -66,7 +66,7 @@ InstallMethod( AsFullSubcategoryCell,
     
     if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( D ) ) then
         
-        Error( "The given morphism should belong to the ambient category: ", Name( AmbientCategory( D ) ) );
+        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
         
     fi;
     
