@@ -196,7 +196,8 @@ InstallMethod( FullSubcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local D, properties, create_func_object0, create_func_morphism0,
+    local D, properties, is_additive, list_of_operations_to_install,
+          create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           recnames, skip, func, pos, info, add, finalize;
     
@@ -239,11 +240,21 @@ InstallMethod( FullSubcategory,
     
     if HasCommutativeRingOfLinearCategory( C ) then
         SetCommutativeRingOfLinearCategory( D, CommutativeRingOfLinearCategory( C ) );
+        SetIsLinearCategoryOverCommutativeRing( D, IsLinearCategoryOverCommutativeRing( C ) );
     fi;
+    
+    list_of_operations_to_install := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
     
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                     "IsAbCategory",
                     ];
+    
+    is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
+    
+    if IsIdenticalObj( is_additive, true ) then
+        Add( properties, "IsAdditiveCategory" );
+        Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
+    fi;
     
     for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
         name := ValueGlobal( name );
@@ -252,37 +263,48 @@ InstallMethod( FullSubcategory,
         
     od;
     
+    ## e.g., IsSplitEpimorphism
+    create_func_bool :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return cell -> oper( UnderlyingCell( cell ) );
+        
+    end;
+    
     ## e.g., ZeroObject
-    #create_func_object0 :=
-    #  function( name )
-    #    local oper;
-    #    
-    #    oper := ValueGlobal( name );
-    #    
-    #    return
-    #      function( )
-    #        
-    #        return AsFullSubcategoryCell( D, oper( C ) );
-    #        
-    #      end;
-    #      
-    #  end;
+    create_func_object0 :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( )
+            
+            return AsFullSubcategoryCell( D, oper( C ) );
+            
+          end;
+          
+      end;
     
     ## e.g., ZeroObjectFunctorial
-    #create_func_morphism0 :=
-    #  function( name )
-    #    local oper;
-    #    
-    #    oper := ValueGlobal( name );
-    #    
-    #    return
-    #      function( D )
-    #        
-    #        return AsFullSubcategoryCell( D, oper( D!.AmbientCategory ) );
-    #        
-    #      end;
-    #      
-    #  end;
+    create_func_morphism0 :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( D )
+            
+            return AsFullSubcategoryCell( D, oper( D!.AmbientCategory ) );
+            
+          end;
+          
+      end;
     
     ## e.g., DirectSum
     create_func_object :=
@@ -318,10 +340,40 @@ InstallMethod( FullSubcategory,
           
       end;
     
+    ## e.g., CokernelColiftWithGivenCokernelObject
+    create_func_universal_morphism :=
+      function( name )
+        local info, oper, type;
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        if not info.with_given_without_given_name_pair[2] = name then
+            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        fi;
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( arg )
+            local src_trg, S, T;
+            
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            S := src_trg[1];
+            T := src_trg[2];
+            
+            return AsFullSubcategoryCell( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
+            
+        end;
+        
+    end;
+    
     ## ListPrimitivelyInstalledOperationsOfCategory is not enough!
     recnames := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
     
-    recnames := Intersection( recnames, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
+    recnames := Intersection( recnames, list_of_operations_to_install );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
               "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
