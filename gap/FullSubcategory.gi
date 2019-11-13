@@ -69,6 +69,24 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY,
    ] );
 
 ##
+InstallOtherMethod( UnderlyingCell,
+        "for a list",
+        [ IsList ],
+        
+  function( L )
+    
+    return List( L, UnderlyingCell );
+    
+end );
+
+##
+InstallOtherMethod( UnderlyingCell,
+        "for an integer",
+        [ IsInt ],
+        
+  IdFunc );
+
+##
 InstallMethod( AsFullSubcategoryCell,
         "for a CAP category and a CAP object",
         [ IsCapCategory, IsCapCategoryObject ],
