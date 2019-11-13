@@ -43,7 +43,7 @@ InstallMethod( AsFullSubcategoryCell,
     
     if not IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) then
         
-        Error( "The given object should belong to the ambient category: ", Name( AmbientCategory( D ) ) );
+        Error( "the given object should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
         
     fi;
     
