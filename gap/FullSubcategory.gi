@@ -58,11 +58,13 @@ end );
 
 ##
 InstallMethod( AsFullSubcategoryCell,
-        "for a CAP category and a CAP morphism",
-        [ IsCapCategory, IsCapCategoryMorphism ],
+        "for two CAP objects in a full subcategory and a CAP morphism",
+        [ IsCapCategoryObjectInAFullSubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInAFullSubcategory ],
         
-  function( D, morphism )
-    local m;
+  function( source, morphism, range )
+    local D, m;
+    
+    D := CapCategory( source );
     
     if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( D ) ) then
         
@@ -73,11 +75,26 @@ InstallMethod( AsFullSubcategoryCell,
     m := rec( );
     
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
-            AsFullSubcategoryCell( D, Source( morphism ) ),
-            AsFullSubcategoryCell( D, Range( morphism ) ),
+            source,
+            range,
             UnderlyingCell, morphism );
     
     return m;
+    
+end );
+
+##
+InstallMethod( AsFullSubcategoryCell,
+        "for a CAP category and a CAP morphism",
+        [ IsCapCategory, IsCapCategoryMorphism ],
+        
+  function( D, morphism )
+    
+    return AsFullSubcategoryCell(
+                   AsFullSubcategoryCell( D, Source( morphism ) ),
+                   morphism,
+                   AsFullSubcategoryCell( D, Range( morphism ) )
+                   );
     
 end );
 
