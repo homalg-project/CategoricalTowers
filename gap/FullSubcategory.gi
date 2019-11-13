@@ -224,7 +224,7 @@ InstallMethod( FullSubcategory,
         return ## a constructor for universal objects
           function( arg )
             
-            return AsFullSubcategoryCell( D, oper( List( arg, UnderlyingCell ) ) );
+            return AsFullSubcategoryCell( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
             
           end;
           
