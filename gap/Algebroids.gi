@@ -422,7 +422,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     
     func_obj := b -> F_objects.(String( b ));
     func_mor := b -> F_morphisms.(String( b ));
-      
+    
     some_object_in_image := List( RecNames(F_objects), func_obj )[1];
 
     return ApplyToQuiverAlgebraElement( func_obj, func_mor, CapCategory(some_object_in_image), p, contravariant );
