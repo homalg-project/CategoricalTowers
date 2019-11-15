@@ -28,7 +28,7 @@ InstallMethod( QuotientCategoryMorphism,
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( quotient_alpha, quotient_category,
                                            source,
                                            range,
-                                           UnderlyingCapCategoryMorphism, alpha );
+                                           UnderlyingCell, alpha );
     
     return quotient_alpha;
     
@@ -58,7 +58,7 @@ InstallMethod( Display,
     
     Print( "Quotient morphism defined by:\n\n" );
     
-    Display( UnderlyingCapCategoryMorphism( alpha ) );
+    Display( UnderlyingCell( alpha ) );
     
     Print( "\nmodulo ", name );
     

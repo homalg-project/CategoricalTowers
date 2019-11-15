@@ -22,7 +22,7 @@ InstallMethod( QuotientCategoryObject,
     quotient_a := rec( );
     
     ObjectifyObjectForCAPWithAttributes( quotient_a, quotient_category,
-                                         UnderlyingCapCategoryObject, a );
+                                         UnderlyingCell, a );
     
     return quotient_a;
     
@@ -52,7 +52,7 @@ InstallMethod( Display,
     
     Print( "Quotient object defined by:\n\n" );
     
-    Display( UnderlyingCapCategoryObject( a ) );
+    Display( UnderlyingCell( a ) );
     
     Print( "\nmodulo ", name );
     

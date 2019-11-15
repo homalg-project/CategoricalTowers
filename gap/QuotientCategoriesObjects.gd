@@ -40,7 +40,7 @@ DeclareOperation( "\/", [ IsCapCategoryObject, IsQuotientCategory ] );
 #! in some quotient category $Q=C/F$ and the output is $a$ in $C$.
 #! @Arguments _a_
 #! @Returns an object
-DeclareAttribute( "UnderlyingCapCategoryObject", IsQuotientCategoryObject );
+DeclareAttribute( "UnderlyingCell", IsQuotientCategoryObject );
 
 
 #! @Chapter Examples

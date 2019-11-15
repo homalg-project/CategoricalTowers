@@ -40,5 +40,5 @@ DeclareOperation( "\/", [ IsCapCategoryMorphism, IsQuotientCategory ] );
 #! in some quotient category $Q=C/F$ and the output is $\alpha: a \rightarrow b$ in $C$.
 #! @Arguments _alpha_
 #! @Returns a morphism
-DeclareAttribute( "UnderlyingCapCategoryMorphism", IsQuotientCategoryMorphism );
+DeclareAttribute( "UnderlyingCell", IsQuotientCategoryMorphism );
 

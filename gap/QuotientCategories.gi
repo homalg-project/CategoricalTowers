@@ -156,7 +156,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         
         function( a, b )
         
-          return IsEqualForObjects( UnderlyingCapCategoryObject( a ), UnderlyingCapCategoryObject( b ) );
+          return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
       
       end );
     
@@ -167,7 +167,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
       AddIsWellDefinedForObjects( quotient_category,
         function( a )
         
-          return IsWellDefinedForObjects( UnderlyingCapCategoryObject( a ) );
+          return IsWellDefinedForObjects( UnderlyingCell( a ) );
       
       end );
     
@@ -178,7 +178,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
       AddIsEqualForMorphisms( quotient_category,
         function( alpha_1, alpha_2 )
             
-          return IsEqualForMorphisms( UnderlyingCapCategoryMorphism( alpha_1 ), UnderlyingCapCategoryMorphism( alpha_2  ) );
+          return IsEqualForMorphisms( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2  ) );
       
       end );
     
@@ -187,7 +187,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
     AddIsCongruentForMorphisms( quotient_category,
       function( alpha_1, alpha_2 )
       
-        return test_func( UnderlyingCapCategoryMorphism( alpha_1 ), UnderlyingCapCategoryMorphism( alpha_2 ) );
+        return test_func( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
         
     end );
     
@@ -196,7 +196,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
       AddIsWellDefinedForMorphisms( quotient_category,
         function( alpha )
           
-          return IsWellDefinedForMorphisms( UnderlyingCapCategoryMorphism( alpha ) );
+          return IsWellDefinedForMorphisms( UnderlyingCell( alpha ) );
       
       end );
     
@@ -209,7 +209,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( alpha_1, alpha_2 )
           local composition;
           
-          composition := PreCompose( UnderlyingCapCategoryMorphism( alpha_1 ), UnderlyingCapCategoryMorphism( alpha_2 ) );
+          composition := PreCompose( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
           
           return QuotientCategoryMorphism( quotient_category, composition );
       
@@ -223,7 +223,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
       AddIdentityMorphism( quotient_category,
         function( a )
           
-          return QuotientCategoryMorphism( quotient_category, IdentityMorphism( UnderlyingCapCategoryObject( a ) ) );
+          return QuotientCategoryMorphism( quotient_category, IdentityMorphism( UnderlyingCell( a ) ) );
           
       end );
     
@@ -236,7 +236,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( alpha_1, alpha_2 )
           local sum;
           
-          sum := AdditionForMorphisms( UnderlyingCapCategoryMorphism( alpha_1 ), UnderlyingCapCategoryMorphism( alpha_2 ) );
+          sum := AdditionForMorphisms( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
           
           return QuotientCategoryMorphism( quotient_category, sum );
       
@@ -249,7 +249,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
       AddAdditiveInverseForMorphisms( quotient_category,
         function( alpha )
           
-          return QuotientCategoryMorphism( quotient_category, AdditiveInverseForMorphisms( UnderlyingCapCategoryMorphism( alpha ) ) );
+          return QuotientCategoryMorphism( quotient_category, AdditiveInverseForMorphisms( UnderlyingCell( alpha ) ) );
         
       end );
     
@@ -261,7 +261,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( alpha_1, alpha_2 )
           local sub;
           
-          sub := SubtractionForMorphisms( UnderlyingCapCategoryMorphism( alpha_1 ), UnderlyingCapCategoryMorphism( alpha_2 ) );
+          sub := SubtractionForMorphisms( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
           
           return QuotientCategoryMorphism( quotient_category, sub );
       
@@ -278,7 +278,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         
         return QuotientCategoryMorphism(
                  quotient_category,
-                   ZeroMorphism( UnderlyingCapCategoryObject( a ), UnderlyingCapCategoryObject( b ) )
+                   ZeroMorphism( UnderlyingCell( a ), UnderlyingCell( b ) )
                      );
       
       end );
@@ -293,7 +293,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( alpha )
           local underlying_mor;
           
-          underlying_mor := UnderlyingCapCategoryMorphism( alpha );
+          underlying_mor := UnderlyingCell( alpha );
           
           if HasIsZero( underlying_mor ) and IsZero( underlying_mor ) then
             
@@ -327,7 +327,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( a )
           
           return QuotientCategoryMorphism( quotient_category,
-                   UniversalMorphismIntoZeroObject( UnderlyingCapCategoryObject( a ) )
+                   UniversalMorphismIntoZeroObject( UnderlyingCell( a ) )
                      );
       end );
     
@@ -339,7 +339,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( a )
           
           return QuotientCategoryMorphism( quotient_category,
-                   UniversalMorphismFromZeroObject( UnderlyingCapCategoryObject( a ) )
+                   UniversalMorphismFromZeroObject( UnderlyingCell( a ) )
                      );
       
       end );
@@ -354,7 +354,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         function( obj_list )
           
           return QuotientCategoryObject( quotient_category,
-                   DirectSum( List( obj_list, UnderlyingCapCategoryObject ) )
+                   DirectSum( List( obj_list, UnderlyingCell ) )
                      );
       
       end );
@@ -368,7 +368,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
         
           return QuotientCategoryMorphism( quotient_category,
                    InjectionOfCofactorOfDirectSumWithGivenDirectSum(
-                     List( list, UnderlyingCapCategoryObject ), n, UnderlyingCapCategoryObject( direct_sum ) )
+                     List( list, UnderlyingCell ), n, UnderlyingCell( direct_sum ) )
                        );
       
       end );
@@ -382,7 +382,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
           
           return QuotientCategoryMorphism( quotient_category,
                    ProjectionInFactorOfDirectSumWithGivenDirectSum(
-                     List( D, UnderlyingCapCategoryObject ), n, UnderlyingCapCategoryObject( direct_sum ) )
+                     List( D, UnderlyingCell ), n, UnderlyingCell( direct_sum ) )
                        );
       
       end );
@@ -395,9 +395,9 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
           function( D, tau, direct_sum )
             return QuotientCategoryMorphism( quotient_category,
                      UniversalMorphismIntoDirectSumWithGivenDirectSum(
-                       List( D, UnderlyingCapCategoryObject ),
-                         List( tau, UnderlyingCapCategoryMorphism ),
-                           UnderlyingCapCategoryObject( direct_sum ) )
+                       List( D, UnderlyingCell ),
+                         List( tau, UnderlyingCell ),
+                           UnderlyingCell( direct_sum ) )
                              );
       
       end );
@@ -410,9 +410,9 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
           function( D, tau, direct_sum )
             return QuotientCategoryMorphism( quotient_category,
                      UniversalMorphismFromDirectSumWithGivenDirectSum(
-                       List( D, UnderlyingCapCategoryObject ),
-                         List( tau, UnderlyingCapCategoryMorphism ),
-                           UnderlyingCapCategoryObject( direct_sum ) )
+                       List( D, UnderlyingCell ),
+                         List( tau, UnderlyingCell ),
+                           UnderlyingCell( direct_sum ) )
                              );
       
       end );
@@ -424,7 +424,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
       AddMultiplyWithElementOfCommutativeRingForMorphisms( quotient_category,
         function( r, phi )
         
-          phi := UnderlyingCapCategoryMorphism( phi );
+          phi := UnderlyingCell( phi );
         
           return
           QuotientCategoryMorphism( quotient_category,
