@@ -25,9 +25,9 @@ InstallMethod( QuotientCategoryMorphism,
     
     range := QuotientCategoryObject( quotient_category, Range( alpha ) );
     
-    ObjectifyMorphismForCAPWithAttributes( quotient_alpha, quotient_category,
-                                           Source, source,
-                                           Range, range,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( quotient_alpha, quotient_category,
+                                           source,
+                                           range,
                                            UnderlyingCapCategoryMorphism, alpha );
     
     return quotient_alpha;
