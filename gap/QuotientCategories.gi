@@ -111,7 +111,7 @@ InstallMethod( QuotientCategory,
 end );
 
 ##
-InstallMethod( CanonicalProjectionFunctor,
+InstallMethod( ProjectionFunctor,
             [ IsQuotientCategory ],
   function( quotient_category )
     local category, name, projection;

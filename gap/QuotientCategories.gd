@@ -47,7 +47,7 @@ DeclareAttribute( "CongruencyTestFunctionForQuotientCategory", IsQuotientCategor
 #! $\pi:C \rightarrow C/F$.
 #! @Arguments Q
 #! @Returns a functor
-DeclareAttribute( "CanonicalProjectionFunctor", IsQuotientCategory );
+DeclareAttribute( "ProjectionFunctor", IsQuotientCategory );
 
 
 DeclareGlobalFunction( "ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY" );

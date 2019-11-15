@@ -21,7 +21,7 @@ is_equivalent_morphisms :=
 quotient_cat := QuotientCategory( cat, is_equivalent_morphisms );
 #! The Quotient category of Category of left presentations of Z by 
 #! is_equivalent_morphisms
-F := CanonicalProjectionFunctor( quotient_cat );
+F := ProjectionFunctor( quotient_cat );
 #! Canonical projection functor from Category of left presentations of Z in 
 #! The Quotient category of Category of left presentations of Z by 
 #! is_equivalent_morphisms
@@ -58,7 +58,7 @@ IsZero( quotient_a );
 #! gap> quotient_cat := QuotientCategory( cat, is_equivalent_morphisms );
 #! The Quotient category of Category of left presentations of Z by 
 #! is_equivalent_morphisms
-#! gap> F := CanonicalProjection( quotient_cat );
+#! gap> F := Projection( quotient_cat );
 #! Canonical projection functor from Category of left presentations of Z in 
 #! The Quotient category of Category of left presentations of Z by 
 #! is_equivalent_morphisms
