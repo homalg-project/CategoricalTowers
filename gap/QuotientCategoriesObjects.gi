@@ -29,6 +29,12 @@ InstallMethod( QuotientCategoryObject,
 end );
 
 ##
+InstallMethod( \/,
+          [ IsCapCategoryObject, IsQuotientCategory ],
+  {a,Q} -> QuotientCategoryObject( Q, a )
+);
+
+##
 InstallMethod( Display,
             [ IsQuotientCategoryObject ],
   function( a )

@@ -26,6 +26,13 @@ DeclareCategory( "IsQuotientCategoryMorphism",
 #! @Returns a morphism
 DeclareOperation( "QuotientCategoryMorphism", [ IsQuotientCategory, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The input is a quotient category $Q=C/F$ and a morphism $\alpha:a \rightarrow b$ in $C$.
+#! The output is $\underline{\alpha}: \underline{a} \rightarrow \underline{b}$ in $Q$.
+#! @Arguments Q, alpha
+#! @Returns a morphism
+DeclareOperation( "\/", [ IsCapCategoryMorphism, IsQuotientCategory ] );
+
 #! @Section Attributes and properties
 
 #! @Description

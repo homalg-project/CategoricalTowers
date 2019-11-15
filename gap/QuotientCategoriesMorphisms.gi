@@ -35,6 +35,12 @@ InstallMethod( QuotientCategoryMorphism,
 end );
 
 ##
+InstallMethod( \/,
+          [ IsCapCategoryMorphism, IsQuotientCategory ],
+  {a,Q} -> QuotientCategoryMorphism( Q, a )
+);
+
+##
 InstallMethod( Display,
             [ IsQuotientCategoryMorphism ],
   function( alpha )

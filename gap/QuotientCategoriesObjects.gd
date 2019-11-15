@@ -25,6 +25,14 @@ DeclareCategory( "IsQuotientCategoryObject",
 #! @Returns an object
 DeclareOperation( "QuotientCategoryObject", [ IsQuotientCategory, IsCapCategoryObject ] );
 
+#! @Description
+#! The input is a quotient category $Q=C/F$ and an object $a \in C$.
+#! The output is $\underline{a} \in Q$.
+#! @Arguments a, Q
+#! @Returns an object
+DeclareOperation( "\/", [ IsCapCategoryObject, IsQuotientCategory ] );
+
+
 #! @Section Attributes and properties
 
 #! @Description

@@ -81,7 +81,18 @@ InstallMethod( QuotientCategory,
       SetIsAdditiveCategory( quotient_category, true );
 
     fi;
-
+    
+    if HasIsLinearCategoryOverCommutativeRing( category ) and
+        HasCommutativeRingOfLinearCategory( category ) then
+        
+        SetIsLinearCategoryOverCommutativeRing( quotient_category,
+          IsLinearCategoryOverCommutativeRing( category ) );
+        
+        SetCommutativeRingOfLinearCategory( quotient_category,
+          CommutativeRingOfLinearCategory( category ) );
+    
+    fi;
+    
     # Adding the basic categorical operations
     ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY( quotient_category );
     
@@ -404,6 +415,21 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
                            UnderlyingCapCategoryObject( direct_sum ) )
                              );
       
+      end );
+    
+    fi;
+    
+    if CanCompute( category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+    
+      AddMultiplyWithElementOfCommutativeRingForMorphisms( quotient_category,
+        function( r, phi )
+        
+          phi := UnderlyingCapCategoryMorphism( phi );
+        
+          return
+          QuotientCategoryMorphism( quotient_category,
+            MultiplyWithElementOfCommutativeRingForMorphisms( r, phi ) );
+        
       end );
     
     fi;
