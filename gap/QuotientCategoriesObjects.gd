@@ -1,6 +1,6 @@
 ##############################################################################
 ##
-##  QuotientCategoriesForCAP: Quotient categories for CAP categories
+##  QuotientCategories: Quotient categories for CAP categories
 ##
 ##  Copyright 2019, Kamal Saleh, University of Siegen
 ##

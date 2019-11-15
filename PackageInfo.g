@@ -1,5 +1,5 @@
 #
-# QuotientCategoriesForCAP: A gap package to create quotient categories of CAP categories
+# QuotientCategories: A gap package to create quotient categories of CAP categories
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,7 +8,7 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "QuotientCategoriesForCAP",
+PackageName := "QuotientCategories",
 Subtitle := "A gap package to create quotient categories of CAP categories",
 Version := "0.1",
 Date := "07/04/2019", # dd/mm/yyyy format
@@ -55,7 +55,7 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "QuotientCategoriesForCAP",
+  BookName  := "QuotientCategories",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

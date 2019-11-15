@@ -5,9 +5,9 @@
 # metadata in PackageInfo.g.
 #
 LoadPackage( "ModulePresentations" );;
-LoadPackage( "QuotientCategoriesForCAP" );;
+LoadPackage( "QuotientCategories" );;
 
-TestDirectory(DirectoriesPackageLibrary( "QuotientCategoriesForCAP", "tst" ),
+TestDirectory(DirectoriesPackageLibrary( "QuotientCategories", "tst" ),
   rec(exitGAP := true, testOptions := rec(compareFunction := "uptowhitespace") ) );
 
 FORCE_QUIT_GAP(1); # if we ever get here, there was an error

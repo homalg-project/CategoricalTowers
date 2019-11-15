@@ -1,5 +1,5 @@
 LoadPackage( "ModulePresentations" );
-LoadPackage( "QuotientCategoriesForCAP" );
+LoadPackage( "QuotientCategories" );
 ZZ := HomalgRingOfIntegers( );
 #! Z
 cat := LeftPresentations( ZZ );
@@ -36,7 +36,7 @@ IsZero( quotient_a );
 #! @Chunk abelian_groups
 #! @BeginExampleSession
 #! gap> LoadPackage( "ModulePresentations" );
-#! gap> LoadPackage( "QuotientCategoriesForCAP" );
+#! gap> LoadPackage( "QuotientCategories" );
 #! gap> ZZ := HomalgRingOfIntegers( );
 #! Z
 #! gap> cat := LeftPresentations( ZZ );
