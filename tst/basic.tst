@@ -13,3 +13,7 @@ gap> quotient_a := ApplyFunctor( F, a );
 <An object in The quotient category of Category of left presentations of Z by is_equivalent_morphisms>
 gap> IsZero( quotient_a );
 true
+gap> IsEqualForObjects( quotient_a, a/quotient_cat );
+true
+gap> IsEqualForMorphisms( ApplyFunctor( F, IdentityMorphism( a ) ), IdentityMorphism( a ) / quotient_cat );
+true
