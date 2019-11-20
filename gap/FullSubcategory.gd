@@ -103,3 +103,12 @@ DeclareOperation( "AsFullSubcategoryCell",
 #! @Arguments C, L
 #! @Returns CapFullSubcategory
 DeclareGlobalFunction( "FullSubcategoryGeneratedByListOfObjects" );
+
+#! @Description
+#! The arguments are a functor <A>F</A> and a full subcategory <A>full</A> of <C>Source</C>(<A>F</A>).
+#! The output is the restriction functor $F_{full}$:<A>full</A>$\to$<C>Range</C>(<A>F</A>).
+#! @Arguments F, full
+#! @Returns CapFunctor
+DeclareOperation( "RestrictFunctorToFullSubcategoryOfSource",
+                  [ IsCapFunctor, IsCapFullSubcategory ] );
+
