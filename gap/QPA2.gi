@@ -49,3 +49,13 @@ InstallOtherMethod( MatrixByCols,
     
 end );
 
+##
+InstallOtherMethod( EmptyVector,
+        [ IsFieldForHomalg ],
+  
+  function( F )
+    
+    return EmptyVector( F!.ring );
+    
+end );
+
