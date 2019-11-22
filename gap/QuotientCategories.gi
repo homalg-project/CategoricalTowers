@@ -438,3 +438,51 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
     
 end );
 
+##
+InstallMethod( IsIsomorphism,
+          [ IsQuotientCategoryMorphism ],
+          5000,
+  function( quotient_alpha )
+    local cat;
+    
+    cat := UnderlyingCapCategory( quotient_alpha );
+    
+    if CanCompute( cat, "IsIsomorphism" ) then
+      
+      if IsIsomorphism( UnderlyingCell( quotient_alpha ) ) then
+        
+        return true;
+      
+      fi;
+    
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( InverseOp,
+          [ IsCapCategoryMorphism and IsQuotientCategoryMorphism ],
+          5000,
+  function( quotient_alpha )
+    local cat, alpha;
+    
+    cat := UnderlyingCapCategory( quotient_alpha );
+    
+    if CanCompute( cat, "IsIsomorphism" ) then
+    
+      alpha := UnderlyingCell( quotient_alpha );
+    
+      if IsIsomorphism( alpha ) then
+      
+        return InverseImmutable( alpha ) / CapCategory( quotient_alpha );
+      
+      fi;
+    
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
