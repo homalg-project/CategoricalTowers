@@ -445,7 +445,11 @@ InstallMethod( IsIsomorphism,
   function( quotient_alpha )
     local cat;
     
-    cat := UnderlyingCapCategory( quotient_alpha );
+    cat := UnderlyingCapCategory( CapCategory( quotient_alpha ) );
+    
+    if IsIdenticalToIdentityMorphism( quotient_alpha ) then
+      return true;
+    fi;
     
     if CanCompute( cat, "IsIsomorphism" ) then
       
@@ -468,7 +472,11 @@ InstallMethod( InverseOp,
   function( quotient_alpha )
     local cat, alpha;
     
-    cat := UnderlyingCapCategory( quotient_alpha );
+    cat := UnderlyingCapCategory( CapCategory( quotient_alpha ) );
+    
+    if IsIdenticalToIdentityMorphism( quotient_alpha ) then
+      return quotient_alpha;
+    fi;
     
     if CanCompute( cat, "IsIsomorphism" ) then
     
