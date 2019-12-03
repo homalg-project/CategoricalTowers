@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
 Version := Maximum( [
-  "2019.01.01", ## Mohamed's version
+  "2019.01.30", ## Mohamed's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -75,8 +75,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "GradedCategories", ">= 2019.08.03" ],
-                           [ "ActionsForCAP", ">=2017.01.11" ],
+                           [ "GradedCategories", ">= 2019.10.30" ],
+                           [ "ActionsForCAP", ">= 2019.09.16" ],
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
