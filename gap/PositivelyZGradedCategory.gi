@@ -847,10 +847,10 @@ InstallMethod( PositivelyZGradedCategory,
     AddObjectRepresentation( ZC, IsObjectInPositivelyZGradedCategory );
     AddMorphismRepresentation( ZC, IsMorphismInPositivelyZGradedCategory );
     
+    SetCachingOfCategoryCrisp( ZC );
+    
     AddIsEqualForObjects( ZC, IsIdenticalObj );
     AddIsEqualForMorphisms( ZC, IsIdenticalObj );
-    
-    SetCachingOfCategoryCrisp( ZC );
     
     if HasCommutativeRingOfLinearCategory( C ) then
         SetCommutativeRingOfLinearCategory( ZC, CommutativeRingOfLinearCategory( C ) );
