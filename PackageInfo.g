@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "GradedCategories",
 Subtitle := "Graded categories",
 Version := Maximum( [
-                   "2019.10.29", ## Mohamed's version
+                   "2019.10.30", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -77,7 +77,6 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.10.29" ],
                    [ "InfiniteLists", ">= 2017.08.01" ],
-                   [ "ActionsForCAP", ">= 2019.09.16" ],
                    [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
                    ],
   SuggestedOtherPackages := [
