@@ -31,17 +31,20 @@ A := QuotientOfPathAlgebra(
   ]
 );;
 
-SetIsAdmissibleQuiverAlgebra( A, true );
-
 algebroid := Algebroid( A );
 
 quivers_cat := CategoryOfQuiverRepresentations( A );
 
-matrix_cat := MatrixCategory( field );
+#external_field := HomalgFieldOfRationalsInMAGMA( );
+external_field := HomalgFieldOfRationalsInSingular( );
+
+matrix_cat := MatrixCategory( external_field );
 
 functors_cat := Hom( algebroid, matrix_cat );
 
 F := IsomorphismFromCategoryOfQuiverRepresentations( functors_cat );
+
+G := IsomorphismIntoCategoryOfQuiverRepresentations( functors_cat );
 
 projs := List( IndecProjRepresentations( A ), p -> ApplyFunctor( F, p ) );
 
