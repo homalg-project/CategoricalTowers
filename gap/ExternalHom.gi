@@ -2,12 +2,10 @@
 
 ## Computing basis of external hom for functors category whose range is matrix category of some homalg field
 ##
+
 InstallGlobalFunction( BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CATEGORY,
   function( a, b )
-    local cat, algebroid, matrix_cat, field, A, quiver, a_as_functor, b_as_functor, a_dimensions,
-      b_dimensions, nr_of_vertices, mat, nr_of_arrows, source_of_arrow, range_of_arrow, a_i, b_i,
-        id_1, id_2, nr_rows_of_block, u, v, nr_cols_in_block1, block_1, block_2, nr_cols_in_block3,
-          block_3, block_4, nr_cols_in_block5, block_5, block, cols_of_mat, hom, morphism, L, i;
+    local cat, algebroid, matrix_cat, field, A, quiver, a_as_functor, b_as_functor, a_dimensions, b_dimensions, nr_of_vertices, mat, nr_of_arrows, source_of_arrow, range_of_arrow, a_i, b_i, id_1, id_2, nr_rows_of_block, u, v, nr_cols_in_block1, block_1, block_2, nr_cols_in_block3, block_3, block_4, nr_cols_in_block5, block_5, block, matrices, nr_cols, i;
     
     cat := CapCategory( a );
     
@@ -144,51 +142,62 @@ InstallGlobalFunction( BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CA
       
     fi;
     
-    cols_of_mat := TransposedMat( EntriesOfHomalgMatrixAsListList( mat ) );
-    
-    hom := [ ];
-    
-    for L in cols_of_mat do
-    
-    morphism:= rec( );
+    matrices := [ ];
       
-      for i in [ 1 .. nr_of_vertices ] do
-        
-        if a_dimensions[ i ] * b_dimensions[ i ] = 0 then
-          
-          morphism!.( String( Vertex( quiver, i ) ) ) :=
-            ZeroMorphism(
-                          VectorSpaceObject( a_dimensions[ i ], field ),
-                          VectorSpaceObject( b_dimensions[ i ], field )
-                        );
-                        
-        else
-          
-          mat := L{ [ 1 .. a_dimensions[ i ] * b_dimensions[ i ] ] };
-          
-          mat := TransposedMat( List( [ 1 .. b_dimensions[ i ] ],
-              u -> mat{ [ ( u - 1 ) * a_dimensions[ i ] + 1 .. u * a_dimensions[ i ] ] } ) );
-              
-          mat := HomalgMatrix( mat, a_dimensions[ i ], b_dimensions[ i ], field );
-          
-          morphism!.( String( Vertex( quiver, i ) ) ) :=
-            VectorSpaceMorphism(
-                              VectorSpaceObject( a_dimensions[ i ], field ),
-                              mat,
-                              VectorSpaceObject( b_dimensions[ i ], field )
-                             );
-                              
-        fi;
-        
-        L := L{ [ a_dimensions[ i ] * b_dimensions[ i ] + 1 .. Length( L ) ] };
-        
-      od;
+    for i in [ 1 .. nr_of_vertices ] do
       
-      Add( hom, AsMorphismInHomCategory( a, morphism, b ) );
+      Add( matrices, CertainRows( mat, [ 1 .. a_dimensions[ i ] * b_dimensions[ i ] ] ) );
+      
+      mat := CertainRows( mat, [ a_dimensions[ i ] * b_dimensions[ i ] + 1 .. NrRows( mat ) ] );
       
     od;
+     
+    nr_cols := NrCols( mat );
+     
+    matrices := List( [ 1 .. nr_cols ], i -> List( matrices, m -> CertainColumns( m, [ i ] )  ) );
     
-    return hom;
+    matrices := List( matrices,
+      mats -> List( [ 1 .. nr_of_vertices ],
+        function( i )
+          
+          if b_dimensions[ i ] <> 0 then
+            
+            return UnionOfColumns( List( [ 1 .. b_dimensions[ i ] ],
+                      r -> CertainRows( mats[ i ], [ ( r - 1 ) * a_dimensions[ i ] + 1 .. r * a_dimensions[ i ] ] ) )
+                    );
+          else
+            
+            return HomalgZeroMatrix( a_dimensions[ i ], 0, field );
+            
+          fi;
+          
+        end ) );
+    
+    return List( [ 1 .. Size( matrices ) ],
+            function( j )
+              local morphism, i;
+              
+              morphism := rec( );
+              
+              for i in [ 1 .. nr_of_vertices ] do
+                
+                morphism!.( String( Vertex( quiver, i ) ) ) :=
+                
+                  VectorSpaceMorphism(
+                  
+                      VectorSpaceObject( a_dimensions[ i ], field ),
+                      
+                      matrices[ j ][ i ],
+                      
+                      VectorSpaceObject( b_dimensions[ i ], field )
+                      
+                  );
+              
+              od;
+              
+              return AsMorphismInHomCategory( a, morphism, b );
+              
+          end );
     
 end );
 
@@ -244,9 +253,10 @@ InstallGlobalFunction( COEFFICIENTS_OF_MORPHISM_OF_FUNCTORS_INTO_MATRIX_CATEGORY
     
     L := List( L,
       l -> List( l,
-        m -> HomalgMatrix(
-          EntriesOfHomalgMatrix( TransposedMatrix( m ) ),
-            NrRows( m ) * NrCols( m ), 1, field ) ) );
+        m -> UnionOfRows( List( [ 1 .. NrCols(m) ],
+          c -> CertainColumns( m, [c] ) ) )
+              )
+          );
     
     L := UnionOfColumns( List( TransposedMat( L ), UnionOfRows ) );
     
@@ -260,7 +270,11 @@ InstallGlobalFunction( COEFFICIENTS_OF_MORPHISM_OF_FUNCTORS_INTO_MATRIX_CATEGORY
     
     sol := EntriesOfHomalgMatrix( sol );
     
-    return AdditiveInverse( Inverse( sol[ 1 ] ) ) * sol{ [ 2 .. Size( hom_basis ) + 1 ] };
+    sol := AdditiveInverse( Inverse( sol[ 1 ] ) ) * sol{ [ 2 .. Size( hom_basis ) + 1 ] };
+    
+    Assert( 5, sol * hom_basis = alpha );
+    
+    return sol;
     
 end );
 
