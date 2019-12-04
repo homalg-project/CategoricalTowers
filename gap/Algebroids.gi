@@ -785,7 +785,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( algebroid,
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( algebroid,
       function( alpha )
         local a, b, basis_elements, size_basis, element;
         
@@ -822,7 +822,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     end );
     
     ##
-    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( algebroid,
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( algebroid,
       function( a, b, morphism )
         local coefficients, basis, element;
         

@@ -479,20 +479,20 @@ InstallMethod( FullSubcategory,
             end );
         fi;
         
-        if CanCompute( C, "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure" ) then
-            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( D,
+        if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
               function( alpha )
                 
-                return InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( UnderlyingCell( alpha ) );
+                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( alpha ) );
                 
             end );
         fi;
         
-        if CanCompute( C, "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism" ) then
-            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( D,
+        if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
               function( a, b, iota )
                 
-                return AsFullSubcategoryCell( CapCategory( a ), InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
+                return AsFullSubcategoryCell( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
                 
             end );
         fi;
