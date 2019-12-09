@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
 Version := Maximum( [
-  "2019.01.30", ## Mohamed's version
+  "2019.02.01", ## Mohamed's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},

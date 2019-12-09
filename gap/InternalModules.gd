@@ -63,8 +63,7 @@ DeclareCategory( "IsInternalRightModuleMorphism", IsInternalModuleMorphism and I
 
 #! @Arguments alpha, AMod
 #! @Returns a &CAP; category object in filter <C>IsInternalModule</C>
-#! @Group FreeInternalModule
-DeclareOperation( "FreeInternalModule",
+DeclareOperation( "InternalModule",
         [ IsMorphismInPositivelyZGradedCategory, IsCategoryOfInternalModules ] );
 
 #! @Arguments U, degree, AMod
@@ -81,7 +80,7 @@ DeclareOperationWithCache( "FreeInternalModule",
 
 #! @Arguments M, phi, N
 #! @Returns a &CAP; category morphism in filter <C>IsInternalModuleMorphism</C>
-DeclareOperation( "FreeInternalModuleMorphism",
+DeclareOperation( "InternalModuleMorphism",
         [ IsInternalModule, IsMorphismInPositivelyZGradedCategory, IsInternalModule ] );
 
 #! @Arguments phi, M

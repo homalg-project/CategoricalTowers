@@ -139,7 +139,7 @@ InstallMethod( SymmetricAlgebraAsLeftModule,
         
   function( V )
     
-    return FreeInternalModule( SymmetricAlgebraMultiplicationMorphism( V ),
+    return InternalModule( SymmetricAlgebraMultiplicationMorphism( V ),
                    CategoryOfLeftSModules( V ) );
     
 end );
@@ -151,7 +151,7 @@ InstallMethod( SymmetricAlgebraAsRightModule,
         
   function( V )
     
-    return FreeInternalModule( SymmetricAlgebraMultiplicationMorphism( V ),
+    return InternalModule( SymmetricAlgebraMultiplicationMorphism( V ),
                    CategoryOfRightSModules( V ) );
     
 end );

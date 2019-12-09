@@ -36,7 +36,7 @@ InstallMethod( CategoryOfLeftSModules,
     SetCommutativeRingOfLinearCategory( SVMod, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
     
     ## the reason for manually adding this method is that
-    ## our constructor FreeInternalModule does more than what
+    ## our constructor InternalModule does more than what
     ## the underlying constructor LeftActionObject does.
     AddKernelObject( SVMod,
       function( phi )
@@ -58,7 +58,7 @@ InstallMethod( CategoryOfLeftSModules,
         
         kappa := KernelLiftWithGivenKernelObject( phi_, tau, Source( emb ) );
         
-        return FreeInternalModule( kappa, SVMod );
+        return InternalModule( kappa, SVMod );
         
     end );
     
@@ -82,7 +82,7 @@ InstallMethod( CategoryOfLeftSModules,
         
         lambda := ColiftAlongEpimorphism( SVepi, tau );
         
-        return FreeInternalModule( lambda, SVMod );
+        return InternalModule( lambda, SVMod );
         
     end );
     
@@ -122,7 +122,7 @@ InstallMethod( CategoryOfRightSModules,
     SetCommutativeRingOfLinearCategory( ModSV, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
     
     ## the reason for manually adding this method is that
-    ## our constructor FreeInternalModule does more than what
+    ## our constructor InternalModule does more than what
     ## the underlying constructor RightActionObject does.
     AddKernelObject( ModSV,
       function( phi )
@@ -144,7 +144,7 @@ InstallMethod( CategoryOfRightSModules,
         
         kappa := KernelLiftWithGivenKernelObject( phi_, tau, Source( emb ) );
         
-        return FreeInternalModule( kappa, ModSV );
+        return InternalModule( kappa, ModSV );
         
     end );
     
@@ -168,7 +168,7 @@ InstallMethod( CategoryOfRightSModules,
         
         lambda := ColiftAlongEpimorphism( epiSV, tau );
         
-        return FreeInternalModule( lambda, ModSV );
+        return InternalModule( lambda, ModSV );
         
     end );
     

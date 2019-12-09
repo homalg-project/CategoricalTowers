@@ -15,7 +15,7 @@
 ## object constructors
 
 ##
-InstallMethod( FreeInternalModule,
+InstallMethod( InternalModule,
         "for a positively Z-graded category morphism and a category of internal modules",
         [ IsMorphismInPositivelyZGradedCategory, IsCategoryOfSModules ],
         
@@ -56,7 +56,7 @@ InstallMethodWithCache( FreeInternalModule,
     
     structure_morphism := FreeInternalModuleActionMorphism( V, degree, category );
     
-    return FreeInternalModule( structure_morphism, category );
+    return InternalModule( structure_morphism, category );
     
 end );
 
@@ -70,14 +70,14 @@ InstallMethodWithCache( FreeInternalModule,
     
     structure_morphism := FreeInternalModuleActionMorphism( V, category );
     
-    return FreeInternalModule( FreeInternalModuleActionMorphism( V, category ), category );
+    return InternalModule( FreeInternalModuleActionMorphism( V, category ), category );
     
 end );
 
 ## morphism constructors
 
 ##
-InstallMethod( FreeInternalModuleMorphism,
+InstallMethod( InternalModuleMorphism,
         "for a free left S-modue, a positively Z-graded category morphism, and a free left S-modue",
         [ IsLeftSModule,
           IsMorphismInPositivelyZGradedCategory,
@@ -86,7 +86,7 @@ InstallMethod( FreeInternalModuleMorphism,
   LeftActionMorphism );
 
 ##
-InstallMethod( FreeInternalModuleMorphism,
+InstallMethod( InternalModuleMorphism,
         "for a free right S-modue, a positively Z-graded category morphism, and a free right S-modue",
         [ IsRightSModule,
           IsMorphismInPositivelyZGradedCategory,
@@ -140,7 +140,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
     
     morphism := PreCompose( Aiota, structure_morphism );
     
-    return FreeInternalModuleMorphism( Fchi, morphism, M );
+    return InternalModuleMorphism( Fchi, morphism, M );
     
 end );
 
