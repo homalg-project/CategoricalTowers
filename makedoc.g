@@ -5,23 +5,23 @@
 #
 LoadPackage( "AutoDoc" );
 
-AutoDoc( "InternalModules" : scaffold := true, autodoc :=
-         rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples", "doc" ] ),
+AutoDoc( "InternalModules" :
+         scaffold := rec( entities := [ "homalg", "CAP" ], ),
+          autodoc := rec( files := [ "doc/Intros.autodoc" ],
+                          scan_dirs := [ "gap", "examples", "doc" ] ),
          maketest := rec( folder := ".",
                           commands :=
-                            [ "LoadPackage( \"CAP\" );",
-                              "LoadPackage( \"IO_ForHomalg\" );",
-                              "LoadPackage( \"ActionsForCAP\" );",
-                              "LoadPackage( \"GroupRepresentationsForCAP\" );",
-                              "LoadPackage( \"InternalModules\" );",
-                              "HOMALG_IO.show_banners := false;",
-                              "HOMALG_IO.suppress_PID := true;",
-                              "HOMALG_IO.use_common_stream := true;",
-                             ]
-                           )
+                          [ "LoadPackage( \"CAP\" );",
+                            "LoadPackage( \"IO_ForHomalg\" );",
+                            "LoadPackage( \"ActionsForCAP\" );",
+                            "LoadPackage( \"GroupRepresentationsForCAP\" );",
+                            "LoadPackage( \"InternalModules\" );",
+                            "HOMALG_IO.show_banners := false;",
+                            "HOMALG_IO.suppress_PID := true;",
+                            "HOMALG_IO.use_common_stream := true;",
+                            ]
+                          )
 );
-
 
 QUIT;
 
