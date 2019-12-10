@@ -428,7 +428,7 @@ InstallMethod( ConstructibleProjection,
             Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (yes)" );
             
             if not ( squash_layers = false or squash = false ) and MinimalLevelOfPreNodes( C ) > level then
-                Squash( C : counter := counter );
+                Squash( C : level := level + 1 );
             fi;
             
             continue;
@@ -489,13 +489,13 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 10, step, counter, " in CPR: image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( projection_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( f ) ) ) ), ")" );
         
         if not ( squash_layers = false or squash = false ) and MinimalLevelOfPreNodes( C ) > level then
-            Squash( C : counter := counter );
+            Squash( C : level := level + 1 );
         fi;
         
     od;
     
     if not squash = false then
-        Squash( C : counter := counter );
+        Squash( C : level := level + 1 );
     fi;
     
     return AsUnionOfMultipleDifferences( C );
