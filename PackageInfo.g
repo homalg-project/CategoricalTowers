@@ -10,8 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
 Subtitle := "A gap package to create quotient categories of CAP categories",
-Version := "0.1",
-Date := "07/04/2019", # dd/mm/yyyy format
+Version := "2019.12.06",
+Date := ~.Version{[ 1 .. 10 ]},
+Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
