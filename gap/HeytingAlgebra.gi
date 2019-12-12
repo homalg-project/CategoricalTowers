@@ -67,6 +67,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
     
+    ##
+    AddIsHomSetInhabited( heyting_algebra,
+      function( S, T )
+        
+        return IsTerminal( ExponentialOnObjects( S, T ) );
+        
+    end );
+    
     ## The cartesian monoidal structure
     
     ## The closedness of the cartesian monoidal structure

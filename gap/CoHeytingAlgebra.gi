@@ -67,6 +67,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ADD_COMMON_METHODS_FOR_LATTICES( coheyting_algebra );
     
+    ##
+    AddIsHomSetInhabited( coheyting_algebra,
+      function( S, T )
+        
+        return IsInitial( CoexponentialOnObjects( S, T ) );
+        
+    end );
+    
     ## The cocartesian monoidal structure
     
     ## The coclosedness of the cocartesian monoidal structure
