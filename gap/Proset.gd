@@ -40,32 +40,6 @@ AddCategoricalProperty( [ "IsSkeletalCategory" ] );
 #! @Section Operations
 
 #! @Description
-#!  Check if <A>B</A> is bigger than <A>A</A> w.r.t. the preorder.
-#! @Arguments A, B
-#! @Returns <C>true</C> or <C>false</C>
-DeclareOperation( "IsHomSetInhabited",
-        [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsHomSetInhabited</C>.
-#! $F: A, B \mapsto \mathrm{IsHomSetInhabited}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsList ] );
-
-#! @Description
 #!  Check if <A>A</A> is equal to <A>B</A> under the assumption that
 #!  <A>A</A> is known to be less or equal to <A>B</A> w.r.t. the preorder.
 #! @Arguments A, B
