@@ -182,6 +182,48 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
         
   IdFunc );
 
+##
+InstallMethod( ValuesOnAllObjects,
+        "for a CAP object in a Hom-category",
+        [ IsCapCategoryObjectInHomCategory ],
+        
+  function( F )
+    local vertices;
+    
+    vertices := SetOfObjects( AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) ) );
+    
+    return List( vertices, F );
+    
+end );
+
+##
+InstallMethod( ValuesOnAllObjects,
+        "for a CAP morphism in a Hom-category",
+        [ IsCapCategoryMorphismInHomCategory ],
+        
+  function( eta )
+    local vertices;
+    
+    vertices := SetOfObjects( AsCapCategory( Source( Source( UnderlyingCapTwoCategoryCell( eta ) ) ) ) );
+    
+    return List( vertices, eta );
+    
+end );
+
+##
+InstallMethod( ValuesOnAllGeneratingMorphisms,
+        "for a CAP object in a Hom-category",
+        [ IsCapCategoryObjectInHomCategory ],
+        
+  function( F )
+    local arrows;
+    
+    arrows := SetOfGeneratingMorphisms( AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) ) );
+    
+    return List( arrows, F );
+    
+end );
+
 ####################################
 #
 # methods for operations:

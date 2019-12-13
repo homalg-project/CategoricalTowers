@@ -175,3 +175,19 @@ DeclareAttribute( "AsMorphismInHomCategory",
 #! @Group AsMorphismInHomCategory
 DeclareOperation( "AsMorphismInHomCategory",
         [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ] );
+
+#! @Description
+#!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)
+#!  on all objects of the source category.
+#! @Arguments c
+#! @Returns a list
+DeclareAttribute( "ValuesOnAllObjects",
+        IsCapCategoryCellInHomCategory );
+
+#! @Description
+#!  Returns the values of the functor <A>F</A>
+#!  on all morphisms of the source category.
+#! @Arguments F
+#! @Returns a list
+DeclareAttribute( "ValuesOnAllGeneratingMorphisms",
+        IsCapCategoryObjectInHomCategory );
