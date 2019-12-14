@@ -171,6 +171,10 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     StandardizeObject( A );
     
+    if IsInitial( A ) then
+        return A;
+    fi;
+    
     if HasParametrizedObject( A ) then
         param := ParametrizedObject( A );
     fi;
