@@ -94,7 +94,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     else
         ## pre-node, these are the ones returned when calling Pop( C )
         
-        if number = 0 then
+        if number = 0 or ( IsString( number ) and number[1] = '0' ) then
             N!.level := 0;
         else
             N!.level := parents[1]!.level;
