@@ -443,15 +443,23 @@ InstallMethod( ConstructibleProjection,
             
             Info( InfoConstructibleImage, 4, step, counter, " in CPR: found ", Length( additional_components ), " additional component(s) of dimension(s) ", List( additional_components, Dimension ) );
             
-            neg_node := node!.act_parents;
-            
-            if not Length( neg_node ) = 1 then
-                Error( "the list node!.act_parents must contain exactly one (negative) node\n" );
+            if node!.number = 0 then
+                
+                pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : number := Concatenation( String( node!.number ), "_", String( i ) ), first := true, context := additional_components[i] ) );
+                
+            else
+                
+                neg_node := node!.act_parents;
+                
+                if not Length( neg_node ) = 1 then
+                    Error( "the list node!.act_parents must contain exactly one (negative) node\n" );
+                fi;
+                
+                neg_node := neg_node[1];
+                
+                pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : parents := [ neg_node ], number := Concatenation( String( neg_node!.number ), "_", String( i ) ), first := true, context := additional_components[i] ) );
+                
             fi;
-            
-            neg_node := neg_node[1];
-            
-            pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : parents := [ neg_node ], number := Concatenation( String( neg_node!.number ), "_", String( i ) ), first := true, context := additional_components[i] ) );
             
         fi;
         
