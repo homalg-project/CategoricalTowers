@@ -411,7 +411,7 @@ InstallMethod( ConstructibleProjection,
         counter := counter + 1;
         
         Info( InfoConstructibleImage, 2, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" );
-        Info( InfoConstructibleImage, 2, step, counter, " in CPR: processing for level ", node!.level + 1, " the pre/negative node number ", node!.number );
+        Info( InfoConstructibleImage, 2, step, counter, " in CPR: processing for level ", node!.level, " the pre/negative node number ", node!.number );
         
         Gamma := node!.context;
 
@@ -440,7 +440,7 @@ InstallMethod( ConstructibleProjection,
             Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (yes)" );
             
             if not ( squash_layers = false or squash = false ) and MinimalLevelOfPreNodes( C ) > level then
-                Squash( C : level := level + 1 );
+                Squash( C : level := level );
             fi;
             
             continue;
@@ -513,13 +513,13 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 10, step, counter, " in CPR: image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( projection_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( f ) ) ) ), ")" );
         
         if not ( squash_layers = false or squash = false ) and MinimalLevelOfPreNodes( C ) > level then
-            Squash( C : level := level + 1 );
+            Squash( C : level := level );
         fi;
         
     od;
     
     if not squash = false then
-        Squash( C : level := level + 1 );
+        Squash( C : level := level );
     fi;
     
     return AsUnionOfMultipleDifferences( C );
