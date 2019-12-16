@@ -636,14 +636,14 @@ end );
 ##
 InstallMethod( Pullback,
         "for a homalg ring map and a constructible object as a union of formal single differences",
-        [ IsHomalgRingMap, IsConstructibleObjectAsUnionOfDifferences ],
+        [ IsHomalgRingMap, IsConstructibleObjectAsUnionOfSingleDifferences ],
         
   function( phi, A )
     local B;
     
-    A := List( A, a -> Pullback( phi, a ) );
+    B := List( A, a -> Pullback( phi, a ) );
     
-    B := CallFuncList( UnionOfDifferences, A );
+    B := CallFuncList( UnionOfDifferences, B );
     
     if HasParametrizedObject( A ) then
         SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
