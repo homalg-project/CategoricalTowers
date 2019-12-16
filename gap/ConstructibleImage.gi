@@ -362,8 +362,8 @@ InstallMethod( ConstructibleProjection,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local step, B, initial, C, node, level, counter, decomposition, relative_boundary_hull_decomposition,
-          squash_layers, squash, additional_components, components, projection_closure_and_relative_boundary_hull,
+    local step, B, initial, C, level, counter, decomposition, relative_boundary_hull_decomposition,
+          squash_layers, squash, node, additional_components, components, projection_closure_and_relative_boundary_hull,
           neg_node, pre_nodes, projection_closure, relative_boundary_hull, relative_boundary_hull_decomp, pos_node;
     
     step := "Step ";
@@ -378,7 +378,19 @@ InstallMethod( ConstructibleProjection,
     
     C!.InitialObject := initial;
     
-    node := NodeInDatastructureOfConstructibleObject( C, B, fail : number := 0, context := Gamma );
+    Gamma := KnownFactors( Gamma );
+    
+    if Length( Gamma ) > 1 then
+        
+        ## the following line enhances the list of pre-nodes as a side effect
+        List( [ 1 .. Length( Gamma ) ], i -> NodeInDatastructureOfConstructibleObject( C, B, fail : number := Concatenation( "0_", String( i ) ), context := Gamma[i] ) );
+        
+    else
+        
+        ## the following line enhances the list of pre-nodes as a side effect
+        NodeInDatastructureOfConstructibleObject( C, B, fail : number := 0, context := Gamma[1] );
+        
+    fi;
     
     counter := 0;
     
@@ -443,8 +455,10 @@ InstallMethod( ConstructibleProjection,
             
             Info( InfoConstructibleImage, 4, step, counter, " in CPR: found ", Length( additional_components ), " additional component(s) of dimension(s) ", List( additional_components, Dimension ) );
             
-            if node!.number = 0 then
+            if node!.number = 0 or ( IsString( node!.number ) and node!.number[1] = '0' ) then
                 
+                ## the following line enhances the list of pre-nodes as a side effect,
+                ## the variable pre_nodes is not accessed below
                 pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : number := Concatenation( String( node!.number ), "_", String( i ) ), first := true, context := additional_components[i] ) );
                 
             else
@@ -457,6 +471,8 @@ InstallMethod( ConstructibleProjection,
                 
                 neg_node := neg_node[1];
                 
+                ## the following line enhances the list of pre-nodes as a side effect,
+                ## the variable pre_nodes is not accessed below
                 pre_nodes := List( [ 1 .. Length( additional_components ) ], i -> NodeInDatastructureOfConstructibleObject( C, node!.object, fail : parents := [ neg_node ], number := Concatenation( String( neg_node!.number ), "_", String( i ) ), first := true, context := additional_components[i] ) );
                 
             fi;
