@@ -96,12 +96,12 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         all_nodes := C!.all_neg_nodes;
         
     else
-        ## pre-node, these are the ones returned when calling Pop( C )
         
+        ## pre-node, these are the ones returned when calling Pop( C )
         if number = 0 or ( IsString( number ) and number[1] = '0' ) then
-            N!.level := 0;
+            N!.level := 1;
         else
-            N!.level := parents[1]!.level;
+            N!.level := parents[1]!.level + 1;
         fi;
         
         nodes := C!.pre_nodes;
