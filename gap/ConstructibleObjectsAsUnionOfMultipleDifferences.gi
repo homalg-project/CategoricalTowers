@@ -12,13 +12,13 @@ InstallMethod( IsHomSetInhabitedWithTypeCast,
   function( A, B )
     local Ap, Bp, b;
     
-    A := AsDifference( A );
+    A := AsSingleDifference( A );
     A := PairInUnderlyingLattice( A );
     
     Ap := A[2];
     A := A[1];
     
-    B := List( B, AsDifference );
+    B := List( B, AsSingleDifference );
     
     B := List( B, PairInUnderlyingLattice );
     

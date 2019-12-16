@@ -71,7 +71,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddIsInitial( D,
       function( A )
         
-        return IsInitial( AsDifference( A ) );
+        return IsInitial( AsSingleDifference( A ) );
         
     end );
     
@@ -352,7 +352,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
 end );
 
 ##
-InstallMethod( AsDifference,
+InstallMethod( AsSingleDifference,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         

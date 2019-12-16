@@ -38,7 +38,7 @@ DeclareAttribute( "EquivalenceToMeetSemilatticeOfDifferences",
         IsCapCategory );
 
 #! @Arguments A
-DeclareAttribute( "AsDifference",
+DeclareAttribute( "AsSingleDifference",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 #! @Section Operations
