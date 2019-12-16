@@ -343,6 +343,39 @@ InstallMethod( AsObjectInHomCategory,
 end );
 
 ##
+InstallMethod( AsObjectInHomCategory,
+        "for a CAP category, a list (of images of objects) and a list (of images of morphisms)",
+        [ IsCapCategory, IsList, IsList ],
+        
+  function( B, images_of_objects, images_of_morphisms )
+    local  Q, vertices, arrows, rec_images_of_objects, rec_images_of_morphisms, i, F;
+    
+    Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
+    
+    vertices := Vertices( Q );
+    arrows := Arrows( Q );
+    
+    rec_images_of_objects := rec( );
+    rec_images_of_morphisms := rec( );
+    
+    for i in [ 1 .. Length( vertices ) ] do
+        rec_images_of_objects.(String( vertices[i] )) := images_of_objects[i];
+    od;
+    
+    for i in [ 1 .. Length( arrows ) ] do
+        rec_images_of_morphisms.(String( arrows[i] )) := images_of_morphisms[i];
+    od;
+    
+    F := AsObjectInHomCategory( B, rec_images_of_objects, rec_images_of_morphisms );
+    
+    SetValuesOnAllObjects( F, images_of_objects );
+    SetValuesOnAllGeneratingMorphisms( F, images_of_morphisms );
+    
+    return F;
+    
+end );
+
+##
 InstallMethod( AsMorphismInHomCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],

@@ -154,6 +154,14 @@ DeclareOperation( "AsObjectInHomCategory",
         [ IsCapCategory, IsRecord, IsRecord ] );
 
 #! @Description
+#! @Arguments B, images_of_objects, images_of_morphisms
+#!  Another alternative input is the source category <A>B</A> and two defining lists <A>images_of_objects</A> and <A>images_of_morphisms</A> of <A>F</A>.
+#!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
+#! @Group AsObjectInHomCategory
+DeclareOperation( "AsObjectInHomCategory",
+        [ IsCapCategory, IsList, IsList ] );
+
+#! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInHomCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInHomCategory( G )</C>
 #!  in the category of functors <C><A>H</A> := Hom( B, C )</C>, where
