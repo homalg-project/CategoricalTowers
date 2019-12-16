@@ -564,6 +564,11 @@ InstallMethodWithCache( Hom,
         
     fi;
     
+    ## setting the cache comparison to IsIdenticalObj
+    ## boosts the performance considerably
+    AddIsEqualForCacheForObjects( Hom, IsIdenticalObj );
+    AddIsEqualForCacheForMorphisms( Hom, IsIdenticalObj );
+    
     ## e.g., ZeroObject
     create_func_object0 :=
       function( name )
