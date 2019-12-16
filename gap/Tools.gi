@@ -496,7 +496,7 @@ InstallMethod( Squash,
   function( C )
     local l;
     
-    Info( InfoSquashDatastructureForConstructibleObjects, 2, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" );
+    Info( InfoSquashDatastructureForConstructibleObjects, 2, "----------------------------------------" );
     
     repeat
         
