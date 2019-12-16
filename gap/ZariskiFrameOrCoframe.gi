@@ -354,6 +354,18 @@ InstallMethod( IsClosed,
         
   IsClosedSubobject );
 
+## InstallTrueMethod produces a `matches more than one declaration'-warning
+## ReturnTrue produces an `InstallTrueMethod'-warning
+InstallOtherMethod( IsLocallyClosed,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    return true;
+    
+end );
+
 ##
 InstallMethod( NormalizeObject,
         "for an object in a Zariski frame or coframe",
