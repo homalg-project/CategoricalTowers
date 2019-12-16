@@ -542,23 +542,49 @@ InstallMethodWithCache( Hom,
         
         AddIsEqualForObjects( Hom,
           function( F, G )
+            local Fo, Go, o, Fm, Gm, m;
             
-            return ForAll( vertices, o -> IsEqualForObjects( F( o ), G( o ) ) ) and
-                   ForAll( arrows, m -> IsEqualForMorphisms( F( m ), G( m ) ) );
+            Fo := ValuesOnAllObjects( F );
+            Go := ValuesOnAllObjects( G );
+            
+            o := Length( Fo );
+            
+            if not ForAll( [ 1 .. o ], i -> IsEqualForObjects( Fo[i], Go[i] ) ) then
+                return false;
+            fi;
+            
+            Fm := ValuesOnAllGeneratingMorphisms( F );
+            Gm := ValuesOnAllGeneratingMorphisms( G );
+            
+            m := Length( Fm );
+            
+            return ForAll( [ 1 .. m ], i -> IsEqualForMorphisms( Fm[i], Gm[i] ) );
             
           end );
         
         AddIsEqualForMorphisms( Hom,
           function( eta, epsilon )
+            local o;
             
-            return ForAll( vertices, o -> IsEqualForMorphisms( eta( o ), epsilon( o ) ) );
+            eta := ValuesOnAllObjects( eta );
+            epsilon := ValuesOnAllObjects( epsilon );
+            
+            o := Length( eta );
+            
+            return ForAll( [ 1 .. o ], i -> IsEqualForMorphisms( eta[i], epsilon[i] ) );
             
           end );
         
         AddIsCongruentForMorphisms( Hom,
           function( eta, epsilon )
+            local o;
             
-            return ForAll( vertices, o -> IsCongruentForMorphisms( eta( o ), epsilon( o ) ) );
+            eta := ValuesOnAllObjects( eta );
+            epsilon := ValuesOnAllObjects( epsilon );
+            
+            o := Length( eta );
+            
+            return ForAll( [ 1 .. o ], i -> IsCongruentForMorphisms( eta[i], epsilon[i] ) );
             
           end );
         
