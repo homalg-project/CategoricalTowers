@@ -343,6 +343,39 @@ InstallMethod( AsObjectInHomCategory,
 end );
 
 ##
+InstallMethod( AsObjectInHomCategory,
+        "for a CAP category, a list (of images of objects) and a list (of images of morphisms)",
+        [ IsCapCategory, IsList, IsList ],
+        
+  function( B, images_of_objects, images_of_morphisms )
+    local  Q, vertices, arrows, rec_images_of_objects, rec_images_of_morphisms, i, F;
+    
+    Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
+    
+    vertices := Vertices( Q );
+    arrows := Arrows( Q );
+    
+    rec_images_of_objects := rec( );
+    rec_images_of_morphisms := rec( );
+    
+    for i in [ 1 .. Length( vertices ) ] do
+        rec_images_of_objects.(String( vertices[i] )) := images_of_objects[i];
+    od;
+    
+    for i in [ 1 .. Length( arrows ) ] do
+        rec_images_of_morphisms.(String( arrows[i] )) := images_of_morphisms[i];
+    od;
+    
+    F := AsObjectInHomCategory( B, rec_images_of_objects, rec_images_of_morphisms );
+    
+    SetValuesOnAllObjects( F, images_of_objects );
+    SetValuesOnAllGeneratingMorphisms( F, images_of_morphisms );
+    
+    return F;
+    
+end );
+
+##
 InstallMethod( AsMorphismInHomCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],
@@ -394,6 +427,34 @@ InstallMethod( AsMorphismInHomCategory,
                    UnderlyingCapTwoCategoryCell( V ) );
     
     return AsMorphismInHomCategory( eta );
+    
+end );
+
+##
+InstallMethod( AsMorphismInHomCategory,
+        "for a list and two objects in Hom-category",
+        [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ],
+        
+  function( U, e, V )
+    local B, Q, vertices, eta, i;
+    
+    B := AsCapCategory( Source( UnderlyingCapTwoCategoryCell( U ) ) );
+    
+    Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
+    
+    vertices := Vertices( Q );
+    
+    eta := rec( );
+    
+    for i in [ 1 .. Length( vertices ) ] do
+        eta.(String( vertices[i] )) := e[i];
+    od;
+    
+    eta := AsMorphismInHomCategory( U, eta, V );
+    
+    SetValuesOnAllObjects( eta, e );
+    
+    return eta;
     
 end );
 
@@ -489,27 +550,58 @@ InstallMethodWithCache( Hom,
         
         AddIsEqualForObjects( Hom,
           function( F, G )
+            local Fo, Go, o, Fm, Gm, m;
             
-            return ForAll( vertices, o -> IsEqualForObjects( F( o ), G( o ) ) ) and
-                   ForAll( arrows, m -> IsEqualForMorphisms( F( m ), G( m ) ) );
+            Fo := ValuesOnAllObjects( F );
+            Go := ValuesOnAllObjects( G );
+            
+            o := Length( Fo );
+            
+            if not ForAll( [ 1 .. o ], i -> IsEqualForObjects( Fo[i], Go[i] ) ) then
+                return false;
+            fi;
+            
+            Fm := ValuesOnAllGeneratingMorphisms( F );
+            Gm := ValuesOnAllGeneratingMorphisms( G );
+            
+            m := Length( Fm );
+            
+            return ForAll( [ 1 .. m ], i -> IsEqualForMorphisms( Fm[i], Gm[i] ) );
             
           end );
         
         AddIsEqualForMorphisms( Hom,
           function( eta, epsilon )
+            local o;
             
-            return ForAll( vertices, o -> IsEqualForMorphisms( eta( o ), epsilon( o ) ) );
+            eta := ValuesOnAllObjects( eta );
+            epsilon := ValuesOnAllObjects( epsilon );
+            
+            o := Length( eta );
+            
+            return ForAll( [ 1 .. o ], i -> IsEqualForMorphisms( eta[i], epsilon[i] ) );
             
           end );
         
         AddIsCongruentForMorphisms( Hom,
           function( eta, epsilon )
+            local o;
             
-            return ForAll( vertices, o -> IsCongruentForMorphisms( eta( o ), epsilon( o ) ) );
+            eta := ValuesOnAllObjects( eta );
+            epsilon := ValuesOnAllObjects( epsilon );
+            
+            o := Length( eta );
+            
+            return ForAll( [ 1 .. o ], i -> IsCongruentForMorphisms( eta[i], epsilon[i] ) );
             
           end );
         
     fi;
+    
+    ## setting the cache comparison to IsIdenticalObj
+    ## boosts the performance considerably
+    AddIsEqualForCacheForObjects( Hom, IsIdenticalObj );
+    AddIsEqualForCacheForMorphisms( Hom, IsIdenticalObj );
     
     ## e.g., ZeroObject
     create_func_object0 :=
