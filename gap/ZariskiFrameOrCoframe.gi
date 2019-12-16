@@ -418,7 +418,7 @@ InstallMethod( AffineApproximation,
     A := DistinguishedLocallyClosedPart( A );
     
     if IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
-        A := AsDifference( A );
+        A := AsSingleDifference( A );
     fi;
     
     Ap := A.J;
