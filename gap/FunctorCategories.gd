@@ -184,6 +184,13 @@ DeclareAttribute( "AsMorphismInHomCategory",
 DeclareOperation( "AsMorphismInHomCategory",
         [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ] );
 
+#! @Arguments U, e, V
+#!  Another alternative input is the triple (<A>U</A>, <A>e</A>, <A>V</A>),
+#!  where <A>e</A> is a defining list of <A>eta</A>.
+#! @Group AsMorphismInHomCategory
+DeclareOperation( "AsMorphismInHomCategory",
+        [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ] );
+
 #! @Description
 #!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)
 #!  on all objects of the source category.

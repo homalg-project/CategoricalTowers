@@ -431,6 +431,34 @@ InstallMethod( AsMorphismInHomCategory,
 end );
 
 ##
+InstallMethod( AsMorphismInHomCategory,
+        "for a list and two objects in Hom-category",
+        [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ],
+        
+  function( U, e, V )
+    local B, Q, vertices, eta, i;
+    
+    B := AsCapCategory( Source( UnderlyingCapTwoCategoryCell( U ) ) );
+    
+    Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
+    
+    vertices := Vertices( Q );
+    
+    eta := rec( );
+    
+    for i in [ 1 .. Length( vertices ) ] do
+        eta.(String( vertices[i] )) := e[i];
+    od;
+    
+    eta := AsMorphismInHomCategory( U, eta, V );
+    
+    SetValuesOnAllObjects( eta, e );
+    
+    return eta;
+    
+end );
+
+##
 InstallMethodWithCache( Hom,
         "for two CAP categories",
         [ IsAlgebroid, IsCapCategory ],
