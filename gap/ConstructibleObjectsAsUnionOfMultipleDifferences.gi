@@ -162,7 +162,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                    local D;
                    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
                        return List( A );
-                   elif IsConstructibleObjectAsUnionOfDifferences( A ) then
+                   elif IsConstructibleObjectAsUnionOfSingleDifferences( A ) then
                        return List( A, AsMultipleDifference );
                    elif IsObjectInMeetSemilatticeOfMultipleDifferences( A ) then
                        return A;

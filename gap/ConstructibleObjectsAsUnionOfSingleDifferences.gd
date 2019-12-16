@@ -12,7 +12,7 @@
 #!  The &GAP; category of objects in a Boolean algebra of constructible objects,
 #!  the latter as unions of formal single differences.
 #! @Arguments object
-DeclareCategory( "IsConstructibleObjectAsUnionOfDifferences",
+DeclareCategory( "IsConstructibleObjectAsUnionOfSingleDifferences",
         IsConstructibleObject );
 
 #! @Description
@@ -25,13 +25,13 @@ DeclareCategory( "IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences",
 #! @Section Attributes
 
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
-        IsConstructibleObjectAsUnionOfDifferences );
+        IsConstructibleObjectAsUnionOfSingleDifferences );
 
 DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
-        IsConstructibleObjectAsUnionOfDifferences );
+        IsConstructibleObjectAsUnionOfSingleDifferences );
 
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
-        IsConstructibleObjectAsUnionOfDifferences );
+        IsConstructibleObjectAsUnionOfSingleDifferences );
 
 #! @Section Operations
 
@@ -40,16 +40,16 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsInMeetSemilatticeOfDifferences",
-        [ IsConstructibleObjectAsUnionOfDifferences ] );
+        [ IsConstructibleObjectAsUnionOfSingleDifferences ] );
 
 DeclareOperation( "ListOp",
-        [ IsConstructibleObjectAsUnionOfDifferences ] );
+        [ IsConstructibleObjectAsUnionOfSingleDifferences ] );
 
 DeclareOperation( "ListOp",
-        [ IsConstructibleObjectAsUnionOfDifferences, IsFunction ] );
+        [ IsConstructibleObjectAsUnionOfSingleDifferences, IsFunction ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfDifferences ] );
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ] );
 
 #! @Section Constructors
 
