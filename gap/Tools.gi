@@ -75,6 +75,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
     Objectify( TheTypeNodeInDatastructureForConstructibleObjects, N );
     
     if b = true then
+        
         ## positive node
         if not parents = [ ] then
             N!.level := parents[1]!.level + 1;
@@ -83,7 +84,9 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         fi;
         nodes := C!.pos_nodes;
         all_nodes := C!.all_pos_nodes;
+        
     elif b = false then
+        
         ## negative node
         if parents = [ ] then
             Error( "I cannot create a negative node with no parents\n" );
@@ -91,6 +94,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         N!.level := parents[1]!.level;
         nodes := C!.neg_nodes;
         all_nodes := C!.all_neg_nodes;
+        
     else
         ## pre-node, these are the ones returned when calling Pop( C )
         
@@ -115,6 +119,7 @@ InstallMethod( NodeInDatastructureOfConstructibleObject,
         fi;
         
         return N;
+        
     fi;
     
     if b = false then
