@@ -178,7 +178,7 @@ DeclareAttribute( "AsMorphismInHomCategory",
         IsCapNaturalTransformation );
 
 #! @Arguments U, e, V
-#!  An alternative input is the triple a defining record (<A>U</A>, <A>e</A>, <A>V</A>),
+#!  An alternative input is the triple (<A>U</A>, <A>e</A>, <A>V</A>),
 #!  where <A>e</A> is a defining record of <A>eta</A>.
 #! @Group AsMorphismInHomCategory
 DeclareOperation( "AsMorphismInHomCategory",
