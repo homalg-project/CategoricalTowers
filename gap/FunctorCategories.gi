@@ -995,3 +995,64 @@ end );
 # View, Print, and Display methods:
 #
 ####################################
+
+##
+InstallMethod( Display,
+          [ IsCapCategoryObjectInHomCategory ],
+  function( F )
+    local algebroid, objects, images_of_objects, morphisms, images_of_morphisms, i;
+    
+    Print( "An object in ", Name( CapCategory( F ) ), " defined by the following data:\n" );
+    
+    algebroid := AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) );
+    
+    objects := SetOfObjects( algebroid );
+    
+    images_of_objects := ValuesOnAllObjects( F );
+    
+    for i in [ 1 .. Size( objects ) ] do
+      
+      Print( "\n\nImage of " ); ViewObj( objects[ i ] ); Print( ":\n" );
+      
+      Display( images_of_objects[ i ] );
+      
+    od;
+    
+    morphisms := SetOfGeneratingMorphisms( algebroid );
+    
+    images_of_morphisms := ValuesOnAllGeneratingMorphisms( F );
+    
+    for i in [ 1 .. Size( morphisms ) ] do
+       
+      Print( "\n\nImage of " ); ViewObj( morphisms[ i ] ); Print( ":\n" );
+      
+      Display( images_of_morphisms[ i ] );
+      
+    od;
+   
+end );
+
+##
+InstallMethod( Display,
+          [ IsCapCategoryMorphismInHomCategory ],
+  function( eta )
+    local algebroid, objects, images_of_objects, i;
+    
+    Print( "A morphism in ", Name( CapCategory( eta ) ), " defined by the following data:\n" );
+    
+    algebroid := AsCapCategory( Source( Source( UnderlyingCapTwoCategoryCell( eta ) ) ) );
+    
+    objects := SetOfObjects( algebroid );
+    
+    images_of_objects := ValuesOnAllObjects( eta );
+    
+    for i in [ 1 .. Size( objects ) ] do
+      
+      Print( "\n\nImage of " ); ViewObj( objects[ i ] ); Print( ":\n" );
+      
+      Display( images_of_objects[ i ] );
+      
+    od;
+       
+end );
+
