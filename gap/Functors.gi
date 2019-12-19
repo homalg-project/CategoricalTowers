@@ -1,4 +1,5 @@
 
+BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ##
 InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
@@ -16,7 +17,7 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
       
     fi;
     
-    field := matrix_cat!.field_for_matrix_category;
+    field := CommutativeRingOfLinearCategory( matrix_cat );
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -134,29 +135,49 @@ InstallMethod( IsomorphismIntoCategoryOfQuiverRepresentations,
         
         V := List( Vertices( quiver ),
           v -> Dimension( ApplyFunctor( U, B.( String( v ) ) ) ) );
+          
+        if IsHomalgExternalRingRep( matrix_cat!.field_for_matrix_category ) then
+          
+          L := List( Arrows( quiver ),
+                l -> UnderlyingMatrix( ApplyFunctor( U, B.( String( l ) ) ) ) * FUNCTOR_CATEGORIES!.QQ
+                );
+                
+        else
+          
+          L := List( Arrows( quiver ), l -> UnderlyingMatrix( ApplyFunctor( U, B.( String( l ) ) ) ) );
+          
+        fi;
         
-        L := List( Arrows( quiver ),
-              l -> UnderlyingMatrix( ApplyFunctor( U, B.( String( l ) ) ) ) );
-              
-        L := List( L, 
-              l -> MatrixByRows( 
+        L := List( L,
+              l -> MatrixByRows(
                 field, [ NrRows( l ), NrColumns( l ) ],
                   EntriesOfHomalgMatrixAsListList( l ) ) );
                   
         return QuiverRepresentation( A, V, L );
         
       end );
-    
+      
     AddMorphismFunction( G,
       function( source, mor, range )
         local U, V;
         
         U := UnderlyingCapTwoCategoryCell( mor );
         
-        V := List( Vertices( quiver ),
+        if IsHomalgExternalRingRep( matrix_cat!.field_for_matrix_category ) then
+          
+          V := List( Vertices( quiver ),
+                v -> UnderlyingMatrix(
+                  ApplyNaturalTransformation( U, B.( String( v ) ) ) ) * FUNCTOR_CATEGORIES!.QQ
+                );
+                
+        else
+          
+          V := List( Vertices( quiver ),
                 v -> UnderlyingMatrix(
                   ApplyNaturalTransformation( U, B.( String( v ) ) ) ) );
-                  
+                   
+        fi;
+        
         V := List( V,
           v -> MatrixByRows( field, [ NrRows( v ), NrColumns( v ) ],
             EntriesOfHomalgMatrixAsListList( v ) ) );
