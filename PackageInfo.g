@@ -9,7 +9,7 @@
 SetPackageInfo( rec(
 
 PackageName := "CategoryConstructor",
-Subtitle := "Category constructor",
+Subtitle := "Construct categories out of given ones",
 Version := Maximum( [
                    "2019.11.01", ## Mohamed's version
                    ## this line prevents merge conflicts
@@ -75,7 +75,8 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= " ],
+                   [ "CAP", ">= 2019.10.29" ],
+                   [ "MonoidalCategories", ">= 2019.08.10" ],
                    ],
   SuggestedOtherPackages := [
                    [ "IO_ForHomalg", ">= 2019.01.01" ],

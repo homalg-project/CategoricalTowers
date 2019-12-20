@@ -9,23 +9,18 @@ SetInfoLevel( InfoCategoryConstructor, 1 );
 
 ##
 InstallGlobalFunction( CategoryConstructor,
-  function( C )
-    local name, CC, category_object_filter, category_morphism_filter,
-          properties, list_of_operations_to_install, recnames, skip, func, pos,
+  function( )
+    local name, CC, category_object_filter, category_morphism_filter, commutative_ring,
+          list_of_operations_to_install, skip, is_monoidal, func, pos,
           create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
           info, add;
     
-    name := Concatenation( "Category constructed out of ", Name( C ) );
-    name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", name );
+    name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", "new category" );
     
     CC := CreateCapCategory( name );
-    
-    CC!.IsPositivelyZGradedCategory := true;
-    
-    CC!.UnderlyingCategory := C;
     
     category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsCapCategoryObject );
     category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsCapCategoryMorphism );
@@ -33,44 +28,47 @@ InstallGlobalFunction( CategoryConstructor,
     AddObjectRepresentation( CC, category_object_filter );
     AddMorphismRepresentation( CC, category_morphism_filter );
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        SetCommutativeRingOfLinearCategory( CC, CommutativeRingOfLinearCategory( C ) );
+    commutative_ring := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "commutative_ring", fail );
+    
+    if not commutative_ring = fail then
+        SetCommutativeRingOfLinearCategory( CC, commutative_ring );
     fi;
-    
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsAdditiveCategory",
-                    "IsPreAbelianCategory",
-                    "IsAbelianCategory",
-                    "IsMonoidalCategory",
-                    "IsBraidedMonoidalCategory",
-                    "IsSymmetricMonoidalCategory",
-                    ];
-    
-    properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", properties );
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( CC, name( C ) );
-        
-    od;
     
     list_of_operations_to_install := SortedList( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
     
     list_of_operations_to_install := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations_to_install", list_of_operations_to_install );
     
-    recnames := ShallowCopy( list_of_operations_to_install );
+    list_of_operations_to_install := ShallowCopy( list_of_operations_to_install );
     
     skip := [ 
               "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
+    is_monoidal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_monoidal", false );
+    
+    if is_monoidal = false then
+        Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+    fi;
+    
     for func in skip do
         
-        pos := Position( recnames, func );
+        pos := Position( list_of_operations_to_install, func );
         if not pos = fail then
-            Remove( recnames, pos );
+            Remove( list_of_operations_to_install, pos );
+        fi;
+        
+    od;
+    
+    for func in skip do
+        
+        pos := Position( list_of_operations_to_install, func );
+        if not pos = fail then
+            Remove( list_of_operations_to_install, pos );
         fi;
         
     od;
@@ -90,6 +88,9 @@ InstallGlobalFunction( CategoryConstructor,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism", fail );
     
+    ## e.g., CokernelColiftWithGivenCokernelObject
+    create_func_universal_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_universal_morphism", fail );
+    
     ##
     create_func_list := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_list", fail );
     
@@ -102,10 +103,7 @@ InstallGlobalFunction( CategoryConstructor,
     ##
     create_func_other_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_other_morphism", fail );
     
-    ## e.g., CokernelColiftWithGivenCokernelObject
-    create_func_universal_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_universal_morphism", fail );
-    
-    for name in recnames do
+    for name in list_of_operations_to_install do
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -159,15 +157,15 @@ InstallGlobalFunction( CategoryConstructor,
               name = info.with_given_without_given_name_pair[1] then
                 ## do not install universal morphisms but their
                 ## with-given-universal-object counterpart
-                if not info.with_given_without_given_name_pair[2] in recnames then
-                    Add( recnames, info.with_given_without_given_name_pair[2] );
+                if not info.with_given_without_given_name_pair[2] in list_of_operations_to_install then
+                    Add( list_of_operations_to_install, info.with_given_without_given_name_pair[2] );
                 fi;
                 continue;
             elif IsBound( info.universal_object ) and
-              Position( recnames, info.universal_object ) = fail then
+              Position( list_of_operations_to_install, info.universal_object ) = fail then
                 ## add the corresponding universal object
                 ## at the end of the list for its method to be installed
-                Add( recnames, info.universal_object );
+                Add( list_of_operations_to_install, info.universal_object );
             fi;
             
             if IsList( info.with_given_without_given_name_pair ) then
