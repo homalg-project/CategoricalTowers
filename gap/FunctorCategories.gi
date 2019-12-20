@@ -992,6 +992,72 @@ end );
 
 ####################################
 #
+# Attributes
+#
+####################################
+
+##
+InstallMethod( IndecProjectiveObjects,
+          [ IsCapHomCategory ],
+  function( Hom )
+    local pp, iso;
+    
+    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    pp := IndecProjRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    
+    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+    
+    return List( pp, p -> ApplyFunctor( iso, p ) );
+    
+end );
+
+##
+InstallMethod( IndecInjectiveObjects,
+          [ IsCapHomCategory ],
+  function( Hom )
+    local ii, iso;
+    
+    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    ii := IndecInjRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    
+    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+    
+    return List( ii, i -> ApplyFunctor( iso, i ) );
+    
+end );
+
+##
+InstallMethod( SimpleObjects,
+          [ IsCapHomCategory ],
+  function( Hom )
+    local ss, iso;
+    
+    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    ss := SimpleRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    
+    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+    
+    return List( ss, s -> ApplyFunctor( iso, s ) );
+    
+end );
+
+####################################
+#
 # View, Print, and Display methods:
 #
 ####################################

@@ -199,6 +199,30 @@ DeclareOperation( "AsMorphismInHomCategory",
         [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ] );
 
 #! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of indecomposable projective objects in <A>Hom</A> up to isomorphism.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "IndecProjectiveObjects",
+        IsCapHomCategory );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of indecomposable injective objects in <A>Hom</A> up to isomorphism.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "IndecInjectiveObjects",
+        IsCapHomCategory );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of simple objects in <A>Hom</A>.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "SimpleObjects",
+        IsCapHomCategory );
+
+#! @Description
 #!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)
 #!  on all objects of the source category.
 #! @Arguments c
