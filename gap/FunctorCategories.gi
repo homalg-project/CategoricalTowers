@@ -872,6 +872,102 @@ InstallMethodWithCache( Hom,
     
     if IsBound( C!.field_for_matrix_category ) then
       
+      SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
+      
+      SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
+      
+      AddIsProjective( Hom,
+        function( F )
+          local iso;
+          
+          iso := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          return IsProjective( ApplyFunctor( iso, F ) );
+          
+      end );
+      
+      AddIsInjective( Hom,
+        function( F )
+          local iso;
+          
+          iso := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          return IsInjective( ApplyFunctor( iso, F ) );
+          
+      end );
+      
+      AddSomeProjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, SomeProjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddSomeInjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, SomeInjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddEpimorphismFromSomeProjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, EpimorphismFromSomeProjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddMonomorphismIntoSomeInjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, MonomorphismIntoSomeInjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddProjectiveLift( Hom,
+        function( eta_1, eta_2 )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, ProjectiveLift( ApplyFunctor( iso_1, eta_1 ), ApplyFunctor( iso_1, eta_2 ) ) );
+          
+      end );
+      
+      AddInjectiveColift( Hom,
+        function( eta_1, eta_2 )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, InjectiveColift( ApplyFunctor( iso_1, eta_1 ), ApplyFunctor( iso_1, eta_2 ) ) );
+          
+      end );
+      
       AddBasisOfExternalHom( Hom,
         BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CATEGORY );
         
