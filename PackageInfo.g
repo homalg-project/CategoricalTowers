@@ -5,7 +5,7 @@ PackageName := "CategoriesWithAmbientObjects",
 Subtitle := "Categories with ambient objects for CAP",
 
 Version := Maximum( [
-                   "2017.05.02", ## Mohamed's version
+                   "2019.12.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Kamal's version
                    ## this line prevents merge conflicts
