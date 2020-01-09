@@ -149,6 +149,11 @@ InstallMethod( AsFullSubcategoryCell,
 end );
 
 ##
+InstallMethod( \/, [ IsCapCategoryCell, IsCapFullSubcategory ],
+  { cell, cat } -> AsFullSubcategoryCell( cat, cell )
+);
+
+##
 InstallMethod( AmbientCategory,
         [ IsCapFullSubcategory ],
         
