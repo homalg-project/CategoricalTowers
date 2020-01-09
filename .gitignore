@@ -1,5 +1,5 @@
 /maketest.g
-/tst/finsetsforcap*.tst
+/tst/subcategoriesforcap*.tst
 /doc/*.xml
 
 /doc/chap*.html
