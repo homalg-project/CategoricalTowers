@@ -1,0 +1,98 @@
+@Chapter The category of finite sets
+
+@Section GAP Categories
+@Section Attributes
+@Section Constructors
+@Section Tools
+@Section Examples
+
+@Subsection PreCompose
+@InsertChunk PreCompose
+
+@Subsection Initial and Terminal Objects
+@InsertChunk InitialTerminal
+
+@Subsection Product
+@InsertChunk DirectProduct
+
+@Subsection Coproduct
+@InsertChunk Coproduct
+
+@Subsection Image
+@InsertChunk ImageObject
+
+@Subsection Coimage
+@InsertChunk Coimage
+
+@Subsection Equalizer
+@InsertChunk Equalizer
+
+@Subsection Pullback
+@InsertChunk FiberProduct
+
+@Subsection Coequalizer
+@InsertChunk Coequalizer
+
+@Subsection Pushout
+@InsertChunk Pushout
+
+@Subsection Cartesian lambda introduction
+@InsertChunk CartesianLambdaIntroduction
+
+@Subsection Topos properties
+@InsertChunk Topos
+
+@Subsection Subobject Classifier
+@InsertChunk SubobjectClassifier
+
+@Chapter The category of skeletal finite sets
+
+@Section Skeletal GAP Categories
+@Section Skeletal Attributes
+@Section Skeletal Constructors
+@Section Skeletal Tools
+@Section Skeletal Examples
+
+@Subsection Skeletal WellDefined
+@InsertChunk SkeletalWellDefined
+
+@Subsection Skeletal PreCompose
+@InsertChunk SkeletalPreCompose
+
+@Subsection Skeletal Monomophisms and Epimophisms
+@InsertChunk SkeletalMonoEpi
+
+@Subsection Skeletal Initial and Terminal Objects
+@InsertChunk SkeletalInitialTerminal
+
+@Subsection Skeletal Product
+@InsertChunk SkeletalDirectProduct
+
+@Subsection Skeletal Coproduct
+@InsertChunk SkeletalCoproduct
+
+@Subsection Skeletal Image
+@InsertChunk SkeletalImageObject
+@InsertChunk SkeletalImageEmbedding
+@InsertChunk SkeletalCoastrictionToImage
+
+@Subsection Skeletal Preimage
+@InsertChunk SkeletalPreimage
+
+@Subsection Skeletal Equalizer
+@InsertChunk SkeletalEqualizer
+
+@Subsection Skeletal Pullback
+@InsertChunk SkeletalFiberProduct
+
+@Subsection Skeletal Coequalizer
+@InsertChunk SkeletalCoequalizer
+
+@Subsection Skeletal Pushout
+@InsertChunk SkeletalPushout
+
+@Subsection Skeletal Lift
+@InsertChunk SkeletalLift
+
+@Subsection Skeletal topos properties
+@InsertChunk SkeletalTopos
