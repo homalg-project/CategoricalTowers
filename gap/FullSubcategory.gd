@@ -111,4 +111,3 @@ DeclareGlobalFunction( "FullSubcategoryGeneratedByListOfObjects" );
 #! @Returns CapFunctor
 DeclareOperation( "RestrictFunctorToFullSubcategoryOfSource",
                   [ IsCapFunctor, IsCapFullSubcategory ] );
-
