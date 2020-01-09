@@ -196,73 +196,12 @@ InstallMethod( FullSubcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local D, properties, is_additive, list_of_operations_to_install,
-          create_func_bool, create_func_object0, create_func_morphism0,
+    local create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
-          recnames, skip, func, pos, info, add, finalize;
+          list_of_operations_to_install, skip, func, pos, commutative_ring,
+          D, properties, is_additive, finalize;
     
     name := Concatenation( name, Name( C ) );
-    
-    D := CreateCapCategory( name );
-    
-    SetFilterObj( D, IsCapFullSubcategory );
-    
-    D!.AmbientCategory := C;
-    
-    AddObjectRepresentation( D, IsCapCategoryObjectInAFullSubcategory );
-    
-    AddMorphismRepresentation( D, IsCapCategoryMorphismInAFullSubcategory );
-    
-    AddIsEqualForObjects( D,
-      function( a, b )
-        return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
-    end );
-       
-    AddIsEqualForMorphisms( D,
-      function( phi, psi )
-        return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
-    end );
-    
-    AddIsCongruentForMorphisms( D,
-      function( phi, psi )
-        return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
-    end );
-    
-    AddIsEqualForCacheForObjects( D,
-      function( a, b )
-        return IsEqualForCacheForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
-    end );
-       
-    AddIsEqualForCacheForMorphisms( D,
-      function( phi, psi )
-        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
-    end );
-    
-    if HasCommutativeRingOfLinearCategory( C ) then
-        SetCommutativeRingOfLinearCategory( D, CommutativeRingOfLinearCategory( C ) );
-        SetIsLinearCategoryOverCommutativeRing( D, IsLinearCategoryOverCommutativeRing( C ) );
-    fi;
-    
-    list_of_operations_to_install := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
-    
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing"
-                    ];
-    
-    is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
-    
-    if IsIdenticalObj( is_additive, true ) then
-        Add( properties, "IsAdditiveCategory" );
-        Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
-    fi;
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( D, name( C ) );
-        
-    od;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -271,7 +210,12 @@ InstallMethod( FullSubcategory,
         
         oper := ValueGlobal( name );
         
-        return cell -> oper( UnderlyingCell( cell ) );
+        return
+          function( arg )
+            
+            return CallFuncList( oper, List( arg, UnderlyingCell ) );
+            
+        end;
         
     end;
     
@@ -371,70 +315,93 @@ InstallMethod( FullSubcategory,
         
     end;
     
-    ## ListPrimitivelyInstalledOperationsOfCategory is not enough!
-    recnames := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
+    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY;
     
-    recnames := Intersection( recnames, list_of_operations_to_install );
+    is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
+    
+    if IsIdenticalObj( is_additive, true ) then
+        Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
+    fi;
+    
+    list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
-              "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
+              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
     for func in skip do
         
-        pos := Position( recnames, func );
+        pos := Position( list_of_operations_to_install, func );
         if not pos = fail then
-            Remove( recnames, pos );
+            Remove( list_of_operations_to_install, pos );
         fi;
         
     od;
     
-    for name in recnames do
+    if HasCommutativeRingOfLinearCategory( C ) then
+        commutative_ring := CommutativeRingOfLinearCategory( C );
+    else
+        commutative_ring := fail;
+    fi;
+    
+    D := CategoryConstructor( :
+                 name := name,
+                 category_object_filter := IsCapCategoryObjectInAFullSubcategory,
+                 category_morphism_filter := IsCapCategoryMorphismInAFullSubcategory,
+                 commutative_ring := commutative_ring,
+                 list_of_operations_to_install := list_of_operations_to_install,
+                 create_func_bool := create_func_bool,
+                 create_func_object0 := create_func_object0,
+                 create_func_morphism0 := create_func_morphism0,
+                 create_func_object := create_func_object,
+                 create_func_morphism := create_func_morphism,
+                 create_func_universal_morphism := create_func_universal_morphism
+                 );
+    
+    SetFilterObj( D, IsCapFullSubcategory );
+    
+    D!.AmbientCategory := C;
+    
+    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing"
+                    ];
+    
+    if IsIdenticalObj( is_additive, true ) then
+        Add( properties, "IsAdditiveCategory" );
+    fi;
+    
+    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
+        name := ValueGlobal( name );
         
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if info.return_type = "bool" then
-            continue;
-            #func := create_func_bool( name );
-        elif info.return_type = "object" and info.filter_list = [ "category" ] then
-            func := create_func_object0( name );
-        elif info.return_type = "object" then
-            func := create_func_object( name );
-        elif info.return_type = "morphism" and info.filter_list = [ "category" ] then
-            func := create_func_morphism0( name );
-        elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
-            if not IsBound( info.io_type ) then
-                ## if there is no io_type we cannot do anything
-                continue;
-            elif IsList( info.with_given_without_given_name_pair ) and
-              name = info.with_given_without_given_name_pair[1] then
-                ## do not install universal morphisms but their
-                ## with-given-universal-object counterpart
-                if not info.with_given_without_given_name_pair[2] in recnames then
-                    Add( recnames, info.with_given_without_given_name_pair[2] );
-                fi;
-                continue;
-            elif IsBound( info.universal_object ) and
-              Position( recnames, info.universal_object ) = fail then
-                ## add the corresponding universal object
-                ## at the end of the list for its method to be installed
-                Add( recnames, info.universal_object );
-            fi;
-            
-            if IsList( info.with_given_without_given_name_pair ) then
-                func := create_func_universal_morphism( name );
-            else
-                func := create_func_morphism( name );
-            fi;
-        else
-            Error( "unkown return type of the operation ", name );
-        fi;
-        
-        add := ValueGlobal( Concatenation( "Add", name ) );
-        
-        add( D, func );
+        Setter( name )( D, name( C ) );
         
     od;
+    
+    AddIsEqualForObjects( D,
+      function( a, b )
+        return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+    end );
+    
+    AddIsEqualForMorphisms( D,
+      function( phi, psi )
+        return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+    end );
+    
+    AddIsCongruentForMorphisms( D,
+      function( phi, psi )
+        return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+    end );
+    
+    AddIsEqualForCacheForObjects( D,
+      function( a, b )
+        return IsEqualForCacheForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+    end );
+    
+    AddIsEqualForCacheForMorphisms( D,
+      function( phi, psi )
+        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+    end );
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
