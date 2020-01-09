@@ -1,5 +1,5 @@
 #
-# Bialgebroids: Create a full subcategory
+# SubcategoriesForCAP: Create a full subcategory
 #
 # Implementations
 #
