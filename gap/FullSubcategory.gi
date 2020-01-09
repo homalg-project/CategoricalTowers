@@ -151,6 +151,7 @@ end );
 ##
 InstallMethod( AmbientCategory,
         [ IsCapFullSubcategory ],
+        
   function( A )
     
     return A!.AmbientCategory;
@@ -160,6 +161,7 @@ end );
 ##
 InstallMethod( InclusionFunctor,
         [ IsCapFullSubcategory ],
+        
   function( A )
     local C, name, F;
     
