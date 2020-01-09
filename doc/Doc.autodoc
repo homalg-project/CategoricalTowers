@@ -4,3 +4,14 @@
 @Section Global variables
 @Section Attributes
 @Section Constructors
+
+@Chapter Slice categories
+
+@Section GAP categories
+@Section Global variables
+@Section Attributes
+@Section Constructors
+@Section Examples
+
+@Subsection PreCompose
+@InsertChunk PreCompose

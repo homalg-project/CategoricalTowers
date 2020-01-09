@@ -5,3 +5,4 @@
 #
 
 ReadPackage( "SubcategoriesForCAP", "gap/FullSubcategory.gi");
+ReadPackage( "SubcategoriesForCAP", "gap/SliceCategory.gi");

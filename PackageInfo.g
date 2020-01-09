@@ -11,9 +11,11 @@ SetPackageInfo( rec(
 PackageName := "SubcategoriesForCAP",
 Subtitle := "Subcategory and other related constructors for CAP categories",
 Version := Maximum( [
-                   "2019.12.09", ## Mohamed's version
+                   "2019.12.15", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.12.08" ## Kamal's version
+                   "2019.12.08", ## Kamal's version
+                   ## this line prevents merge conflicts
+                   "2019.12.08", ## Tom's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -30,6 +32,20 @@ Persons := [
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
                "57072 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Tom",
+    LastName := "Kuhmichel",
+    WWWHome := "https://github.com/TKuh",
+    Email := "tom.kuhmichel@student.uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",

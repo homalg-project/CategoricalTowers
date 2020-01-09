@@ -5,6 +5,8 @@
 # metadata in PackageInfo.g.
 #
 
+LoadPackage( "FinSetsForCAP", ">= 2019.12.15" );
+
 options := rec(
     exitGAP := true,
     testOptions := rec(
