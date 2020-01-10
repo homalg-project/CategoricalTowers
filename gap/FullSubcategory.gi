@@ -86,7 +86,7 @@ InstallOtherMethod( UnderlyingCell,
 ##
 InstallMethod( AsFullSubcategoryCell,
         "for a CAP category and a CAP object",
-        [ IsCapCategory, IsCapCategoryObject ],
+        [ IsCapFullSubcategory, IsCapCategoryObject ],
         
   function( D, object )
     local o;
@@ -136,7 +136,7 @@ end );
 ##
 InstallMethod( AsFullSubcategoryCell,
         "for a CAP category and a CAP morphism",
-        [ IsCapCategory, IsCapCategoryMorphism ],
+        [ IsCapFullSubcategory, IsCapCategoryMorphism ],
         
   function( D, morphism )
     

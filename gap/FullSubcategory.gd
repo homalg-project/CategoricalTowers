@@ -62,7 +62,7 @@ DeclareAttribute( "UnderlyingCell",
 #! @Arguments A
 #! @Returns a list
 DeclareAttribute( "SetOfKnownObjects",
-        IsCapCategory, "mutable" );
+        IsCapFullSubcategory, "mutable" );
 
 #! @Description
 #!  The ambient category of the full subcategory <A>A</A>.
@@ -85,7 +85,7 @@ DeclareOperation( "FullSubcategory",
                   [ IsCapCategory, IsString ] );
 
 DeclareOperation( "AsFullSubcategoryCell",
-                  [ IsCapCategory, IsCapCategoryCell ] );
+                  [ IsCapFullSubcategory, IsCapCategoryCell ] );
 
 DeclareOperation( "AsFullSubcategoryCell",
                   [ IsCapCategoryObjectInAFullSubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInAFullSubcategory ] );
