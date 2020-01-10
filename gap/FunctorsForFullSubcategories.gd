@@ -25,4 +25,11 @@ DeclareAttribute( "InclusionFunctor",
 KeyDependentOperation( "RestrictFunctorToFullSubcategoryOfSource",
                   IsCapFunctor, IsCapFullSubcategory, ReturnTrue );
 
+#! @Description
+#!  The arguments are a functor <A>F</A> and a full subcategory <A>full</A> of <C>Range</C>(<A>F</A>).
+#!  The output is the restriction functor $F_{full}$:<C>Source</C>(<A>F</A>)$\to$<A>full</A>.
+#! @Arguments F, full
+#! @Returns CapFunctor
+KeyDependentOperation( "RestrictFunctorToFullSubcategoryOfRange",
+                  IsCapFunctor, IsCapFullSubcategory, ReturnTrue );
 
