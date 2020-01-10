@@ -13,7 +13,7 @@ Subtitle := "Subcategory and other related constructors for CAP categories",
 Version := Maximum( [
                    "2019.12.15", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.12.08", ## Kamal's version
+                   "2019.12.16", ## Kamal's version
                    ## this line prevents merge conflicts
                    "2019.12.08", ## Tom's version
                    ] ),
