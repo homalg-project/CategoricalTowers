@@ -4,6 +4,7 @@
 @Section Global variables
 @Section Attributes
 @Section Constructors
+@Section Functors
 
 @Chapter Slice categories
 
