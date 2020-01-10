@@ -51,6 +51,20 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_SLICE_CATEGOR
 ####################################
 
 #! @Description
+#!  The base object of the slice category <A>S</A>.
+#! @Arguments S
+#! @Returns a &CAP; object
+DeclareAttribute( "BaseObject",
+        IsCapSliceCategory );
+
+#! @Description
+#!  The base object underlying <A>cell</A>.
+#! @Arguments cell
+#! @Returns a &CAP; object
+DeclareAttribute( "BaseObject",
+        IsCapCategoryCellInASliceCategory );
+
+#! @Description
 #!  The morphism in the ambient category underlying <A>object</A>.
 #! @Arguments object
 #! @Returns a &CAP; morphism
@@ -62,13 +76,6 @@ DeclareAttribute( "UnderlyingMorphism",
 #! @Arguments cell
 #! @Returns a &CAP; cell
 DeclareAttribute( "UnderlyingCell",
-        IsCapCategoryCellInASliceCategory );
-
-#! @Description
-#!  The base object underlying <A>cell</A>.
-#! @Arguments cell
-#! @Returns a &CAP; object
-DeclareAttribute( "BaseObject",
         IsCapCategoryCellInASliceCategory );
 
 #! @Description

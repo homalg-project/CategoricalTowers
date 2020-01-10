@@ -285,6 +285,8 @@ InstallMethod( SliceCategory,
     
     S!.AmbientCategory := C;
     
+    SetBaseObject( S, B );
+    
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                     "IsAbCategory",
                     "IsLinearCategoryOverCommutativeRing"
