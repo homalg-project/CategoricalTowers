@@ -108,3 +108,47 @@ InstallMethod( RestrictFunctorToFullSubcategoryOfRangeOp,
     return R;
     
 end );
+
+##
+InstallMethodWithCache( RestrictFunctorToFullSubcategories,
+          [ IsCapFunctor, IsCapFullSubcategory, IsCapFullSubcategory ],
+  function( F, full_1, full_2 )
+    local source_F, range_F, name, R;
+    
+    source_F := AsCapCategory( Source( F ) );
+    
+    range_F := AsCapCategory( Range( F ) );
+    
+    if not IsIdenticalObj( AmbientCategory( full_1 ), source_F ) then
+      
+      Error( "The source of ", Name( F ), " is not identical to the ambient category of ", Name( full_1 ) );
+      
+    fi;
+    
+    if not IsIdenticalObj( AmbientCategory( full_2 ), range_F ) then
+      
+      Error( "The range of ", Name( F ), " is not identical to the ambient category of ", Name( full_2 ) );
+      
+    fi;
+   
+    name := Concatenation( "The restriction of ", Name( F ), " to full subcategories in source and range" );
+    
+    R := CapFunctor( name, full_1, full_2 );
+    
+    AddObjectFunction( R,
+      function( a )
+        
+        return AsFullSubcategoryCell( full_2, ApplyFunctor( F, UnderlyingCell( a ) ) );
+        
+    end );
+    
+    AddMorphismFunction( R,
+      function( s, alpha, r )
+        
+        return AsFullSubcategoryCell( s, ApplyFunctor( F, UnderlyingCell( alpha ) ), r );
+        
+    end );
+    
+    return R;
+   
+end );
