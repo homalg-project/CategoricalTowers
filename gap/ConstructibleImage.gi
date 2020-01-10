@@ -616,6 +616,53 @@ InstallMethod( ConstructibleImage,
 end );
 
 ##
+InstallMethod( CharacteristicSetAsList,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  function( M )
+    local C, R, Cc, Cs;
+    
+    C := ConstructibleProjection( M );
+    
+    StandardizeObject( C );
+    
+    C := CanonicalObject( C );
+    
+    Cc := Closure( C );
+    
+    R := UnderlyingRing( Cc );
+    
+    if HasIsFieldForHomalg( R ) and IsFieldForHomalg( R )
+       and IsTerminal( Cc ) then
+        return [ [ Characteristic( R ) ], [ 1 ] ];
+    fi;
+    
+    if IsTerminal( Cc ) then
+        Cc := 0;
+    else
+        Cc := Int( String( MatElm( UnderlyingMatrix( MorphismOfUnderlyingCategory( Cc ) ), 1, 1 ) ) );
+    fi;
+    
+    Cc := Factors( Cc );
+    
+    if IsClosed( C ) then
+        Cs := [ 1 ];
+    else
+        Cs := List( C, a -> a.J );
+        
+        Cs := List( Cs, a -> Int( String( MatElm( UnderlyingMatrix( MorphismOfUnderlyingCategory( a ) ), 1, 1 ) ) ) );
+        
+        Cs := Concatenation( List( Cs, Factors ) );
+        
+        Cs := Set( Cs );
+    fi;
+    
+    return [ Cc, Cs ];
+    
+end );
+
+##
 InstallOtherMethod( DotVertexLabelledDigraph,
         "for a constructible object",
         [ IsConstructibleObject ],

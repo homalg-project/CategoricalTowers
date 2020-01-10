@@ -60,6 +60,9 @@ DeclareOperation( "ConstructibleImage",
 DeclareOperation( "ConstructibleImage",
         [ IsHomalgRingMap, IsHomalgRing ] );
 
+DeclareAttribute( "CharacteristicSetAsList",
+        IsObjectInThinCategory );
+
 #! @Description
 #!  Opens a PDF with the graph of datastructure underlying the constructible object <A>A</A>,
 #!  provided it was created using <C>AsUnionOfMultipleDifferences</C>.
