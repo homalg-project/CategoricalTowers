@@ -7,13 +7,25 @@ LoadPackage( "FinSetsForCAP" );
 #! true
 B := FinSet( 2 );
 #! <An object in SkeletalFinSets>
+o0 := AsSliceCategoryCell( MapOfFinSets( B, [ 2, 2 ], B ) );
+#! An object in the slice category given by: <A morphism in SkeletalFinSets>
 o1 := AsSliceCategoryCell( MapOfFinSets( FinSet( 3 ), [ 1, 2, 1 ], B ) );
 #! An object in the slice category given by: <A morphism in SkeletalFinSets>
 o2 := AsSliceCategoryCell( MapOfFinSets( FinSet( 4 ), [ 2, 1, 2, 1 ], B ) );
 #! An object in the slice category given by: <A morphism in SkeletalFinSets>
+IsWellDefined( o0 );
+#! true
 IsWellDefined( o1 );
 #! true
 IsWellDefined( o2 );
+#! true
+IsHomSetInhabited( o1, o0 );
+#! false
+IsHomSetInhabited( o0, o1 );
+#! true
+IsHomSetInhabited( o1, o2 );
+#! true
+IsHomSetInhabited( o2, o1 );
 #! true
 n := MapOfFinSets( FinSet( 3 ), [ 3, 1, 4 ], FinSet( 4 ) );
 #! <A morphism in SkeletalFinSets>

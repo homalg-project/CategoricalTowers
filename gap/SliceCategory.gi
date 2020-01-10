@@ -346,6 +346,11 @@ InstallMethod( SliceCategory,
         return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
+    AddIsHomSetInhabited( S,
+      function( A, B )
+        return IsLiftable( UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+    end );
+    
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
         ##
