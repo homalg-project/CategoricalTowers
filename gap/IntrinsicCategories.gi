@@ -1339,14 +1339,6 @@ InstallMethod( IntrinsicCategory,
     
     SetIntrinsifiedCategory( IC, C );
     
-    AddIsEqualForObjects( IC, IsIdenticalObj );
-    AddIsEqualForMorphisms( IC,
-            function( m, n )
-              ## CAP checks IsEqualForObjects for Source and Range automatically
-              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
-            end );
-    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
-    
     strict := ValueOption( "strict" );
     
     if strict = fail or not IsBool( strict ) then
@@ -1364,6 +1356,14 @@ InstallMethod( IntrinsicCategory,
         AddIsEqualForCacheForMorphisms( IC, IsIdenticalObj );
         SetCachingOfCategoryWeak( IC );
     fi;
+    
+    AddIsEqualForObjects( IC, IsIdenticalObj );
+    AddIsEqualForMorphisms( IC,
+            function( m, n )
+              ## CAP checks IsEqualForObjects for Source and Range automatically
+              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+            end );
+    AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
     
     filter_end := ValueOption( "filter_end" );
     
