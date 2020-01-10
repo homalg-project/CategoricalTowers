@@ -1211,22 +1211,22 @@ InstallMethod( IntrinsicCategory,
           
       end;
     
-    ## e.g., CokernelColiftWithGivenCokernelObject
+    ## e.g., CokernelColift[WithGivenCokernelObject]
     create_func_universal_morphism :=
       function( name )
         local info, oper, type, context;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        if not IsList( info.with_given_without_given_name_pair ) then
+            Error( "unable to extract the name of the operation computing the universal object\n" );
         fi;
         
         oper := ValueGlobal( name );
         
         type := info.io_type;
         
-        context := Concatenation( info.universal_object, "_Context" );
+        context := Concatenation( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).universal_object, "_Context" );
         
         return
           function( arg )
