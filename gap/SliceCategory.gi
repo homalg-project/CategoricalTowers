@@ -346,6 +346,37 @@ InstallMethod( SliceCategory,
         return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
+    AddInitialObject( S,
+      function( arg )
+        local B, C, I;
+        
+        B := BaseObject( S );
+        
+        C := AmbientCategory( S );
+        
+        I := InitialObject( C );
+        
+        return AsSliceCategoryCell( UniversalMorphismFromInitialObjectWithGivenInitialObject( B, I ) );
+        
+    end );
+    
+    AddTerminalObject( S,
+      function( arg )
+        local B;
+        
+        B := BaseObject( S );
+        
+        return AsSliceCategoryCell( IdentityMorphism( B ) );
+        
+    end );
+    
+    AddUniversalMorphismIntoTerminalObject( S,
+      function( M )
+        
+        return AsSliceCategoryCell( M, UnderlyingMorphism( M ), TerminalObject( M ) );
+        
+    end );
+    
     AddIsHomSetInhabited( S,
       function( A, B )
         return IsLiftable( UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
