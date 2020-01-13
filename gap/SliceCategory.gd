@@ -79,15 +79,15 @@ DeclareAttribute( "UnderlyingCell",
         IsCapCategoryCellInASliceCategory );
 
 #! @Description
-#!  The ambient category of the slice category <A>A</A>.
-#! @Arguments A
+#!  The ambient category of the slice category <A>S</A>.
+#! @Arguments S
 #! @Returns a list
 DeclareAttribute( "AmbientCategory",
         IsCapSliceCategory );
 
 #! @Description
-#!  The natural embedding functor from <A>A</A> to <A>AmbientCategory(A)</A>.
-#! @Arguments A
+#!  The natural embedding functor from <A>S</A> to <C>AmbientCategory</C>(<A>S</A>).
+#! @Arguments S
 #! @Returns CapFunctor
 DeclareAttribute( "InclusionFunctor",
         IsCapSliceCategory );
