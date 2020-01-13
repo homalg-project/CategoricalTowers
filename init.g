@@ -5,5 +5,5 @@
 #
 
 ReadPackage( "SubcategoriesForCAP", "gap/FullSubcategory.gd");
-ReadPackage( "SubcategoriesForCAP", "gap/SliceCategory.gd");
 ReadPackage( "SubcategoriesForCAP", "gap/FunctorsForFullSubcategories.gd");
+ReadPackage( "SubcategoriesForCAP", "gap/SliceCategory.gd");
