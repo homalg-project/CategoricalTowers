@@ -103,11 +103,8 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_SLICE_CATEGORY" );
 DeclareAttribute( "SliceCategory",
         IsCapCategoryObject );
 
-DeclareOperation( "AsSliceCategoryCell",
-        [ IsCapCategory, IsCapCategoryMorphism ] );
-
-DeclareOperation( "AsSliceCategoryCell",
-        [ IsCapCategoryMorphism ] );
+DeclareAttribute( "AsSliceCategoryCell",
+        IsCapCategoryMorphism );
 
 DeclareOperation( "AsSliceCategoryCell",
         [ IsCapCategoryObjectInASliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInASliceCategory ] );

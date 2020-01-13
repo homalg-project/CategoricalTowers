@@ -56,17 +56,13 @@ InstallOtherMethod( UnderlyingCell,
 
 ##
 InstallMethod( AsSliceCategoryCell,
-        "for a CAP category and a CAP morphism",
-        [ IsCapCategory, IsCapCategoryMorphism ],
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
         
-  function( S, morphism )
-    local o;
+  function( morphism )
+    local S, o;
     
-    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( S ) ) then
-        
-        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( S ) ), "\n" );
-        
-    fi;
+    S := SliceCategory( Range( morphism ) );
     
     o := rec( );
     
@@ -78,21 +74,6 @@ InstallMethod( AsSliceCategoryCell,
     return o;
     
 end );
-
-##
-InstallMethod( AsSliceCategoryCell,
-        "for a CAP morphism",
-        [ IsCapCategoryMorphism ],
-        
-  function( morphism )
-    local S;
-    
-    S := SliceCategory( Range( morphism ) );
-    
-    return AsSliceCategoryCell( S, morphism );
-    
-end );
-
 
 ##
 InstallMethod( AsSliceCategoryCell,
