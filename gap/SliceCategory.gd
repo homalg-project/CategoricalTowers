@@ -1,5 +1,5 @@
 #
-# SubcategoriesForCAP: Create a slice category
+# SubcategoriesForCAP: Slice categories
 #
 # Declarations
 #
