@@ -304,7 +304,10 @@ InstallMethod( SliceCategory,
     
     AddIsEqualForObjects( S,
       function( a, b )
-        return IsCongruentForMorphisms( UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
+        a := UnderlyingMorphism( a );
+        b := UnderlyingMorphism( b );
+        
+        return IsEqualForObjects( Source( a ), Source( b ) ) and IsCongruentForMorphisms( a, b );
     end );
     
     AddIsEqualForMorphisms( S,
