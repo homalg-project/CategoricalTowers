@@ -470,6 +470,17 @@ InstallMethod( AffineApproximation,
     
 end );
 
+##
+InstallMethod( ConstructibleProjection,
+        "for an object in a meet-semilattice of differences",
+        [ IsObjectInMeetSemilatticeOfDifferences ],
+        
+  function( A )
+    
+    return ConstructibleProjection( RabinowitschCover( A ) );
+    
+end );
+
 ## the fallback method
 InstallMethod( AClosedSuperset,
         "for an object in a thin category",
