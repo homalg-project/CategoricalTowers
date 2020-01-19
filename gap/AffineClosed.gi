@@ -633,6 +633,54 @@ InstallMethod( AClosedSingleton,
     
 end );
 
+## the second argument is for the method selection
+InstallMethod( RabinowitschCover,
+        "for an object in a meet-semilattice of formal single differences and an object in a Zariski coframe of an affine variety",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInZariskiCoframeOfAnAffineVariety ],
+        
+  function( A, Ac )
+    local Ap, R, indets, B, S, t;
+    
+    A := StandardizeObject( A );
+    
+    Ap := A.J;
+    Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
+    
+    A := A.I;
+    
+    A := MorphismOfUnderlyingCategory( A );
+    
+    R := UnderlyingRing( CapCategory( A ) );
+    
+    A := UnderlyingMatrix( A );
+    
+    Ap := DecideZeroRows( Ap, A );
+    Ap := CertainRows( Ap, NonZeroRows( Ap ) );
+    
+    indets := List( RelativeIndeterminatesOfPolynomialRing( R ), String );
+    
+    B := BaseRing( R );
+    
+    S := B * Concatenation( indets, [ "t_Rabinowitsch" ] );
+    
+    t := RelativeIndeterminatesOfPolynomialRing( S )[Length( indets) + 1];
+    
+    A := S * A;
+    Ap := S * Ap;
+    
+    Ap := EntriesOfHomalgMatrix( Ap );
+    Ap := DuplicateFreeList( Ap );
+    Ap := List( Ap, a -> t * a - 1 );
+    
+    Ap := List( Ap, p -> HomalgMatrix( [ p ], 1, 1, S ) );
+    A := List( Ap, p -> UnionOfRows( A, p ) );
+    
+    A := List( A, ClosedSubsetOfSpecByReducedMorphism );
+    
+    return Sum( A );
+    
+end );
+
 ##
 InstallMethod( TangentSpaceAtPoint,
         "for an object in a Zariski coframe of an affine variety and a homalg matrix",

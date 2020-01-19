@@ -966,6 +966,28 @@ InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
 end );
 
 ##
+InstallMethod( RabinowitschCover,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( A )
+    
+    return RabinowitschCover( A, A.I );
+    
+end );
+
+##
+InstallMethod( RabinowitschCover,
+        "for an object in a meet-semilattice of formal multiple differences",
+        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
+        
+  function( A )
+    
+    return RabinowitschCover( AsSingleDifference( A ) );
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],

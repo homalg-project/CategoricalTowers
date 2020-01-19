@@ -111,6 +111,19 @@ DeclareAttribute( "AffineApproximation",
 DeclareAttribute( "CanonicalObject",
         IsObjectInZariskiFrameOrCoframe );
 
+#! @Description
+#!  The argument <A>A</A> is a locally closed subset of some  ambient space $X$.
+#!  The result is a closed subset of the ambient space $X \times \mathbb{A}^1 \to X$
+#!  which (set-theoretically) projects onto <A>A</A> with finite fibers.
+#! @Arguments A
+#! @Returns a &CAP; object
+DeclareAttribute( "RabinowitschCover",
+        IsObjectInMeetSemilatticeOfDifferences );
+
+DeclareOperation( "RabinowitschCover",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences,
+          IsObjectInZariskiFrameOrCoframe ] );
+
 #! @Section Operations
 
 #! @Description
