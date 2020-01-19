@@ -481,6 +481,17 @@ InstallMethod( ConstructibleProjection,
     
 end );
 
+##
+InstallMethod( ConstructibleProjection,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    
+    return Sum( List( A, ConstructibleProjection ) );
+    
+end );
+
 ## the fallback method
 InstallMethod( AClosedSuperset,
         "for an object in a thin category",
