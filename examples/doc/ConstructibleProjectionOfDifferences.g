@@ -40,7 +40,7 @@ Display( V4 );
 W4 := ConstructibleProjection( V4 );
 #! V_{Q[a]}( I ) \ V_{Q[a]}( J_1 ) \ .. \ V_{Q[a]}( J_3 )
 Display( W4 );
-#! V( <> ) \ V( <a-1> ) \ V( <a> ) \ V( <a+1> )
+#! V( <> ) \ V( <a> ) \ V( <a-1> ) \ V( <a+1> )
 V5 := (ClosedSubsetOfSpec( "b-a^2+1", R ) + ClosedSubsetOfSpec( "a-1", R ))
       - ClosedSubsetOfSpec( "a*b", R );
 #! V_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )
