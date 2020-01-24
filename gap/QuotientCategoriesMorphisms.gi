@@ -13,7 +13,7 @@ InstallMethod( QuotientCategoryMorphism,
   function( quotient_category, alpha )
     local quotient_alpha, source, range;
   
-    if not IsIdenticalObj( CapCategory( alpha ), UnderlyingCapCategory( quotient_category ) ) then
+    if not IsIdenticalObj( CapCategory( alpha ), UnderlyingCategory( quotient_category ) ) then
       
       Error( "Wrong input!" );
       

@@ -34,7 +34,7 @@ DeclareOperation( "QuotientCategory", [ IsCapCategory, IsFunction ] );
 #! The input is a quotient category $Q := C/F$. The output is the category $C$.
 #! @Arguments Q
 #! @Returns a category
-DeclareAttribute( "UnderlyingCapCategory", IsQuotientCategory );
+DeclareAttribute( "UnderlyingCategory", IsQuotientCategory );
 
 #! @Description
 #! The input is a quotient category $Q := C/F$. The output is the congruence test function $F$.

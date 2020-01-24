@@ -13,7 +13,7 @@ InstallMethod( QuotientCategoryObject,
   function( quotient_category, a )
     local quotient_a;
   
-    if not IsIdenticalObj( CapCategory( a ), UnderlyingCapCategory( quotient_category ) ) then
+    if not IsIdenticalObj( CapCategory( a ), UnderlyingCategory( quotient_category ) ) then
       
       Error( "Wrong input!" );
       

@@ -65,7 +65,7 @@ InstallMethod( QuotientCategory,
     fi;
     
     # Setting the attributes
-    SetUnderlyingCapCategory( quotient_category, category );
+    SetUnderlyingCategory( quotient_category, category );
      
     SetCongruencyTestFunctionForQuotientCategory( quotient_category, membership_function );
     
@@ -116,7 +116,7 @@ InstallMethod( ProjectionFunctor,
   function( quotient_category )
     local category, name, projection;
     
-    category := UnderlyingCapCategory( quotient_category );
+    category := UnderlyingCategory( quotient_category );
     
     name := Concatenation( "Canonical projection functor from ", Name( category ), " in ", Name( quotient_category ) );
     
@@ -145,7 +145,7 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
   function( quotient_category )
     local category, test_func;
     
-    category := UnderlyingCapCategory( quotient_category );
+    category := UnderlyingCategory( quotient_category );
     
     # test_func( alpha_1, alpha_2 ) = true if alpha_1 is congruent to alpha_2
     test_func := CongruencyTestFunctionForQuotientCategory( quotient_category );
@@ -445,7 +445,7 @@ InstallMethod( IsIsomorphism,
   function( quotient_alpha )
     local cat;
     
-    cat := UnderlyingCapCategory( CapCategory( quotient_alpha ) );
+    cat := UnderlyingCategory( CapCategory( quotient_alpha ) );
     
     if IsIdenticalToIdentityMorphism( quotient_alpha ) then
       return true;
@@ -472,7 +472,7 @@ InstallMethod( InverseOp,
   function( quotient_alpha )
     local cat, alpha;
     
-    cat := UnderlyingCapCategory( CapCategory( quotient_alpha ) );
+    cat := UnderlyingCategory( CapCategory( quotient_alpha ) );
     
     if IsIdenticalToIdentityMorphism( quotient_alpha ) then
       return quotient_alpha;
