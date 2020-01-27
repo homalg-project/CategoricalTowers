@@ -195,7 +195,11 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
     
     SetUnderlyingRing( ZariskiCoframe, R );
     
-    ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
+    if not IsBound( R!.CategoryOfRows ) then
+        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
+    fi;
+    
+    ZariskiCoframe!.UnderlyingCategory := R!.CategoryOfRows;
     
     AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAProjectiveVariety );
     

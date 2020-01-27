@@ -190,7 +190,11 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     SetUnderlyingRing( ZariskiFrame, R );
     
-    ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
+    if not IsBound( R!.CategoryOfRows ) then
+        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
+    fi;
+    
+    ZariskiFrame!.UnderlyingCategory := R!.CategoryOfRows;
     
     ZariskiFrame!.Constructor := OpenSubsetOfProj;
     ZariskiFrame!.ConstructorByListOfMorphismsOfRank1Range := OpenSubsetOfProjByListOfMorphismsOfRank1Range;

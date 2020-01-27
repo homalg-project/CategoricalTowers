@@ -287,7 +287,11 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     SetUnderlyingRing( ZariskiFrame, R );
     
-    ZariskiFrame!.UnderlyingCategory := CategoryOfRows( R );
+    if not IsBound( R!.CategoryOfRows ) then
+        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
+    fi;
+    
+    ZariskiFrame!.UnderlyingCategory := R!.CategoryOfRows;
     
     ZariskiFrame!.Constructor := OpenSubsetOfSpec;
     ZariskiFrame!.ConstructorByListOfMorphismsOfRank1Range := OpenSubsetOfSpecByListOfMorphismsOfRank1Range;

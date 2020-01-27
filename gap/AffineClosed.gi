@@ -375,8 +375,12 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     ZariskiCoframe := CreateCapCategory( name );
     
     SetUnderlyingRing( ZariskiCoframe, R );
+
+    if not IsBound( R!.CategoryOfRows ) then
+        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
+    fi;
     
-    ZariskiCoframe!.UnderlyingCategory := CategoryOfRows( R );
+    ZariskiCoframe!.UnderlyingCategory := R!.CategoryOfRows;
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
     ZariskiCoframe!.ConstructorByListOfMorphismsOfRank1Range := ClosedSubsetOfSpecByListOfMorphismsOfRank1Range;
