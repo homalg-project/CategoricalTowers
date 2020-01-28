@@ -7,6 +7,9 @@
 
 LoadPackage( "FinSetsForCAP", ">= 2019.12.15" );
 
+LoadPackage( "IO_ForHomalg" );
+HOMALG_IO.show_banners := false;
+
 options := rec(
     exitGAP := true,
     testOptions := rec(
