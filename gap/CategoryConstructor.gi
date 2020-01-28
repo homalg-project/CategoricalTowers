@@ -10,8 +10,8 @@ SetInfoLevel( InfoCategoryConstructor, 1 );
 ##
 InstallGlobalFunction( CategoryConstructor,
   function( )
-    local name, CC, category_object_filter, category_morphism_filter, commutative_ring,
-          list_of_operations_to_install, skip, is_monoidal, func, pos,
+    local name, CC, category_object_filter, category_morphism_filter, category_filter,
+          commutative_ring, list_of_operations_to_install, skip, is_monoidal, func, pos,
           create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
@@ -27,6 +27,12 @@ InstallGlobalFunction( CategoryConstructor,
     
     AddObjectRepresentation( CC, category_object_filter );
     AddMorphismRepresentation( CC, category_morphism_filter );
+    
+    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_filter", fail );
+    
+    if not category_filter = fail then
+        SetFilterObj( CC, category_filter );
+    fi;
     
     commutative_ring := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "commutative_ring", fail );
     
