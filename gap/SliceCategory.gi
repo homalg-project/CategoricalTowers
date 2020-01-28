@@ -378,6 +378,50 @@ InstallMethod( SliceCategory,
         
     fi;
     
+    if CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
+        
+        ##
+        AddDirectProduct( S, # WeakDirectProduct
+           function( L )
+            local biased_weak_fiber_product;
+            
+            if Length( L ) = 1 then
+                return L[1];
+            fi;
+            
+            L := List( L, UnderlyingMorphism );
+            
+            biased_weak_fiber_product := function( I, J )
+                return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+            end;
+            
+            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ) );
+            
+        end );
+        
+    elif CanCompute( C, "ProjectionInFactorOfFiberProduct" ) then # FIXME: this should become obsolete once we have a derivation
+        
+        ##
+        AddDirectProduct( S,
+           function( L )
+            local biased_weak_fiber_product;
+            
+            if Length( L ) = 1 then
+                return L[1];
+            fi;
+            
+            L := List( L, UnderlyingMorphism );
+            
+            biased_weak_fiber_product := function( I, J )
+                return PreCompose( ProjectionInFactorOfFiberProduct( [ I, J ], 1 ), I );
+            end;
+            
+            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ) );
+            
+        end );
+        
+    fi;
+    
     finalize := ValueOption( "FinalizeCategory" );
     
     if finalize = false then
