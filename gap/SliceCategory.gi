@@ -425,9 +425,9 @@ InstallMethod( SliceCategory,
     finalize := ValueOption( "FinalizeCategory" );
     
     if finalize = false then
-      
-      return S;
-      
+        
+        return S;
+        
     fi;
     
     Finalize( S );
