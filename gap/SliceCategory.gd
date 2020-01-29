@@ -100,11 +100,14 @@ DeclareAttribute( "InclusionFunctor",
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_SLICE_CATEGORY" );
 
+#! @Arguments B
 DeclareAttribute( "SliceCategory",
         IsCapCategoryObject );
 
+#! @Arguments mor
 DeclareAttribute( "AsSliceCategoryCell",
         IsCapCategoryMorphism );
 
+#! @Arguments A, mor, B
 DeclareOperation( "AsSliceCategoryCell",
         [ IsCapCategoryObjectInASliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInASliceCategory ] );
