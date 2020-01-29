@@ -104,6 +104,10 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_SLICE_CATEGORY" );
 DeclareAttribute( "SliceCategory",
         IsCapCategoryObject );
 
+#! @Arguments M
+DeclareAttribute( "SliceCategoryOverTensorUnit",
+        IsCapCategory );
+
 #! @Arguments mor
 DeclareAttribute( "AsSliceCategoryCell",
         IsCapCategoryMorphism );

@@ -451,6 +451,47 @@ InstallMethod( SliceCategory,
     
 end );
 
+##
+InstallMethod( SliceCategoryOverTensorUnit,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function( M )
+    local S, finalize;
+    
+    S := SliceCategory( TensorUnit( M ) : FinalizeCategory := false );
+    
+    AddTensorUnit( S,
+      function( )
+        
+        return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ) );
+        
+    end );
+    
+    AddTensorProductOnObjects( S,
+      function( I, J )
+        
+        return AsSliceCategoryCell(
+                       PreCompose(
+                               TensorProductOnMorphisms( UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
+                               LeftUnitor( BaseObject( CapCategory( I ) ) ) ) );
+        
+    end );
+    
+    finalize := ValueOption( "FinalizeCategory" );
+    
+    if finalize = false then
+        
+        return S;
+        
+    fi;
+    
+    Finalize( S );
+    
+    return S;
+    
+end );
+
 ##################################
 ##
 ## View & Display
