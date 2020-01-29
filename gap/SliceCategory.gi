@@ -76,6 +76,21 @@ InstallMethod( AsSliceCategoryCell,
 end );
 
 ##
+InstallMethod( \/,
+        "for a CAP morphism and a CAP slice category",
+        [ IsCapCategoryMorphism, IsCapSliceCategory ],
+        
+  function( morphism, S )
+    
+    if not IsEqualForObjects( Range( morphism ), BaseObject( S ) ) then
+        Error( "the target of morphism and the base object of the slice category S are not equal\n" );
+    fi;
+    
+    return AsSliceCategoryCell( morphism );
+    
+end );
+
+##
 InstallMethod( AsSliceCategoryCell,
         "for two CAP objects in a slice category and a CAP morphism",
         [ IsCapCategoryObjectInASliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInASliceCategory ],

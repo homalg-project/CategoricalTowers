@@ -108,6 +108,10 @@ DeclareAttribute( "SliceCategory",
 DeclareAttribute( "AsSliceCategoryCell",
         IsCapCategoryMorphism );
 
+#! @Arguments mor
+DeclareOperation( "/",
+        [ IsCapCategoryMorphism, IsCapSliceCategory ] );
+
 #! @Arguments A, mor, B
 DeclareOperation( "AsSliceCategoryCell",
         [ IsCapCategoryObjectInASliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInASliceCategory ] );
