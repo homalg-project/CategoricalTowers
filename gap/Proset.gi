@@ -211,6 +211,15 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         end );
     fi;
     
+    if CanCompute( C, "Coproduct" ) then ## WeakCoproduct
+        AddCoproduct( P,
+          function( L )
+            
+            return Coproduct( List( L, UnderlyingObject ) ) / CapCategory( L[1] );
+            
+        end );
+    fi;
+    
     if CanCompute( C, "TensorProductOnObjects" ) then
         AddTensorProductOnObjects( P,
           function( I, J )

@@ -437,6 +437,24 @@ InstallMethod( SliceCategory,
         
     fi;
     
+    if CanCompute( C, "UniversalMorphismFromCoproduct" ) then
+        
+        ##
+        AddCoproduct( S,
+           function( L )
+            
+            if Length( L ) = 1 then
+                return L[1];
+            fi;
+            
+            L := List( L, UnderlyingMorphism );
+            
+            return AsSliceCategoryCell( UniversalMorphismFromCoproduct( L ) );
+            
+        end );
+        
+    fi;
+    
     finalize := ValueOption( "FinalizeCategory" );
     
     if finalize = false then

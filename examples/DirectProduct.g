@@ -31,4 +31,7 @@ IsHomSetInhabited( IJ, IiJ );
 #! true
 IsHomSetInhabited( IiJ, IJ );
 #! false
+IpJ := Coproduct( I, J );
+#! An object in the poset given by: An object in the slice category given by:
+#! <A morphism in Rows( Q[x,y] )>
 #! @EndExample
