@@ -482,6 +482,8 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
     full := FullSubcategory( cat, name : FinalizeCategory := false );
     
+    SetFilterObj( full, IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects );
+    
     full!.Objects := L;
     
     AddIsWellDefinedForObjects( full,
@@ -519,6 +521,12 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     return full;
     
 end );
+
+##
+InstallMethod( \[\],
+          [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ],
+  { full, i } -> SetOfKnownObjects( full )[ i ]
+);
 
 ##################################
 ##
