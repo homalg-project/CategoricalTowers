@@ -524,6 +524,12 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
 end );
 
+##
+InstallMethod( \[\],
+          [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ],
+  { full, i } -> SetOfKnownObjects( full )[ i ]
+);
+
 ##################################
 ##
 ## View & Display

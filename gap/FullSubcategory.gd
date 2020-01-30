@@ -104,3 +104,7 @@ DeclareOperation( "\/",
 #! @Arguments C, L
 #! @Returns CapFullSubcategory
 DeclareGlobalFunction( "FullSubcategoryGeneratedByListOfObjects" );
+
+DeclareOperation( "\[\]",
+          [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ] );
+
