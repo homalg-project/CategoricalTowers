@@ -6,6 +6,9 @@
 ##
 #############################################################################
 
+
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY" );
+
 #! @Chapter Filters and constructors
 
 #! @Section Filters

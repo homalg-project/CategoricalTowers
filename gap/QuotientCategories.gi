@@ -16,17 +16,62 @@ BindGlobal( "TheTypeOfQuotientCategory",
                 IsQuotientCategoryRep ) );
 
 ##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
+  [
+   "AdditionForMorphisms",
+   "AdditiveInverseForMorphisms",
+   "IdentityMorphism",
+   "IsEndomorphism",
+   "IsIdenticalToIdentityMorphism",
+   "IsIdenticalToZeroMorphism",
+   "MultiplyWithElementOfCommutativeRingForMorphisms",
+   "PostCompose",
+   "PreCompose",
+   "SubtractionForMorphisms",
+   "ZeroMorphism",
+   
+   # Additive operations
+   
+   "ComponentOfMorphismFromDirectSum",
+   "ComponentOfMorphismIntoDirectSum",
+   "DirectSum",
+   "DirectSumCodiagonalDifference",
+   "DirectSumDiagonalDifference",
+   "DirectSumFunctorialWithGivenDirectSums",
+   "DirectSumProjectionInPushout",
+   "InjectionOfCofactorOfDirectSum",
+   "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+   "IsomorphismFromCoproductToDirectSum",
+   "IsomorphismFromDirectProductToDirectSum",
+   "IsomorphismFromDirectSumToCoproduct",
+   "IsomorphismFromDirectSumToDirectProduct",
+   "MorphismBetweenDirectSums",
+   "ProjectionInFactorOfDirectSum",
+   "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+   "UniversalMorphismFromDirectSum",
+   "UniversalMorphismFromDirectSumWithGivenDirectSum",
+   "UniversalMorphismIntoDirectSum",
+   "UniversalMorphismIntoDirectSumWithGivenDirectSum",
+   "UniversalMorphismFromZeroObject",
+   "UniversalMorphismFromZeroObjectWithGivenZeroObject",
+   "UniversalMorphismIntoZeroObject",
+   "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+   "ZeroObject",
+   "ZeroObjectFunctorial",
+   ] );
+
+##
 InstallMethod( QuotientCategory,
-                 [ IsCapCategory, IsFunction ],
-                 
-  function( category, membership_function )
-    local name, name_membership_function, quotient_category, reps, to_be_finalized;
+          [ IsCapCategory, IsFunction ],
+  function( C, membership_function )
+    local create_func_bool, create_func_object0, create_func_morphism0,
+          create_func_object, create_func_morphism, create_func_universal_morphism,
+          list_of_operations_to_install, skip, func, pos, commutative_ring,
+          D, properties, finalize, name, name_membership_function, category_filter, object_filter, morphism_filter, reps;
     
     name := ValueOption( "NameOfCategory" );
     
     if name = fail then
-      
-      name := Name( category );
       
       name_membership_function := NameFunction( membership_function );
        
@@ -36,77 +81,255 @@ InstallMethod( QuotientCategory,
         
       fi;
       
-      name := Concatenation( "The quotient category of ", name, " by ", name_membership_function );
+      name := Concatenation( "Quotient category ( ", Name( C ), " ) by ", name_membership_function );
       
     fi;
+   
+    ## e.g., IsSplitEpimorphism
+    create_func_bool :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( arg )
+            
+            return CallFuncList( oper, List( arg, UnderlyingCell ) );
+            
+        end;
+        
+    end;
     
-    quotient_category := CreateCapCategory( name );
+    ## e.g., ZeroObject
+    create_func_object0 :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( )
+            
+            return QuotientCategoryObject( D, oper( C ) );
+            
+          end;
+          
+      end;
+    
+    ## e.g., ZeroObjectFunctorial
+    create_func_morphism0 :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( D )
+            
+            return QuotientCategoryMorphism( D, oper( C ) );
+            
+          end;
+          
+      end;
+    
+    ## e.g., DirectSum
+    create_func_object :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return ## a constructor for universal objects
+          function( arg )
+            
+            return QuotientCategoryObject( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
+            
+          end;
+          
+      end;
+    
+    ## e.g., IdentityMorphism, PreCompose
+    create_func_morphism :=
+      function( name )
+        local oper, type;
+        
+        oper := ValueGlobal( name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
+        
+        return
+          function( arg )
+            
+            return QuotientCategoryMorphism( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
+            
+          end;
+          
+      end;
+    
+    ## e.g., CokernelColiftWithGivenCokernelObject
+    create_func_universal_morphism :=
+      function( name )
+        local info, oper, type;
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        if not info.with_given_without_given_name_pair[2] = name then
+            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        fi;
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( arg )
+            local src_trg, S, T;
+            
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            S := src_trg[1];
+            T := src_trg[2];
+            
+            return QuotientCategoryMorphism( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
+            
+        end;
+        
+    end;
+    
+    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY;
+        
+    list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
+    
+    skip := [
+              #"MultiplyWithElementOfCommutativeRingForMorphisms"
+            ];
+    
+    for func in skip do
+        
+        pos := Position( list_of_operations_to_install, func );
+        if not pos = fail then
+            Remove( list_of_operations_to_install, pos );
+        fi;
+        
+    od;
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+        commutative_ring := CommutativeRingOfLinearCategory( C );
+    else
+        commutative_ring := fail;
+    fi;
     
     reps := ValueOption( "SpecialFilters" );
     
     if IsList( reps ) and Length( reps ) = 3 then
       
-      # Setting the filter
-      SetFilterObj( quotient_category, reps[ 1 ] );
-   
-      AddObjectRepresentation( quotient_category, reps[ 2 ] );
-    
-      AddMorphismRepresentation( quotient_category, reps[ 3 ] );
+      category_filter := reps[ 1 ];
+      
+      object_filter := reps[ 2 ];
+      
+      morphism_filter := reps[ 3 ];
          
     else
       
-      # Setting the filter
-      SetFilterObj( quotient_category, IsQuotientCategory );
+      category_filter := IsQuotientCategory;
+      
+      object_filter := IsQuotientCategoryObject;
+      
+      morphism_filter := IsQuotientCategoryMorphism;
+      
+    fi;
+    
+    D := CategoryConstructor( :
+                 name := name,
+                 category_object_filter := object_filter,
+                 category_morphism_filter := morphism_filter,
+                 commutative_ring := commutative_ring,
+                 list_of_operations_to_install := list_of_operations_to_install,
+                 create_func_bool := create_func_bool,
+                 create_func_object0 := create_func_object0,
+                 create_func_morphism0 := create_func_morphism0,
+                 create_func_object := create_func_object,
+                 create_func_morphism := create_func_morphism,
+                 create_func_universal_morphism := create_func_universal_morphism
+                 );
+    
+    
+    ## Setting filter
+    
+    SetFilterObj( D, category_filter );
+    
+    ## Setting attributes
+    
+    SetUnderlyingCategory( D, C );
+    
+    SetCongruencyTestFunctionForQuotientCategory( D, membership_function );
    
-      AddObjectRepresentation( quotient_category, IsQuotientCategoryObject );
+    properties := [
+                    "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing",
+                    "IsAdditiveCategory"
+                  ];
     
-      AddMorphismRepresentation( quotient_category, IsQuotientCategoryMorphism );
-         
-    fi;
-    
-    # Setting the attributes
-    SetUnderlyingCategory( quotient_category, category );
-     
-    SetCongruencyTestFunctionForQuotientCategory( quotient_category, membership_function );
-    
-    # Setting the properties
-    if HasIsAbCategory( category ) and IsAbCategory( category ) then
-
-      SetIsAbCategory( quotient_category, true );
-
-    fi;
-
-    if HasIsAdditiveCategory( category ) and IsAdditiveCategory( category ) then
-
-      SetIsAdditiveCategory( quotient_category, true );
-
-    fi;
-    
-    if HasIsLinearCategoryOverCommutativeRing( category ) and
-        HasCommutativeRingOfLinearCategory( category ) then
+    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
+        name := ValueGlobal( name );
         
-        SetIsLinearCategoryOverCommutativeRing( quotient_category,
-          IsLinearCategoryOverCommutativeRing( category ) );
+        Setter( name )( D, name( C ) );
         
-        SetCommutativeRingOfLinearCategory( quotient_category,
-          CommutativeRingOfLinearCategory( category ) );
+    od;
     
+    AddIsEqualForObjects( D,
+      function( a, b )
+        return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+    end );
+    
+    AddIsEqualForMorphisms( D,
+      function( phi, psi )
+        return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+    end );
+    
+    AddIsCongruentForMorphisms( D,
+      function( phi, psi )
+      
+        return membership_function( UnderlyingCell( phi ), UnderlyingCell( psi ) );
+        
+    end );
+    
+    AddIsEqualForCacheForObjects( D,
+      function( a, b )
+        return IsEqualForCacheForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+    end );
+    
+    AddIsEqualForCacheForMorphisms( D,
+      function( phi, psi )
+        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+    end );
+    
+    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+        
+        ##
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
+          function( r, phi )
+            
+            return QuotientCategoryMorphism( D,
+                    MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( phi ) ) );
+            
+        end );
+        
+    fi;
+        
+    finalize := ValueOption( "FinalizeCategory" );
+    
+    if finalize = false then
+      
+      return D;
+      
     fi;
     
-    # Adding the basic categorical operations
-    ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY( quotient_category );
+    Finalize( D );
     
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-      
-      return quotient_category;
-      
-    fi;
-    
-    Finalize( quotient_category );
-    
-    return quotient_category;
+    return D;
     
 end );
 
@@ -137,304 +360,6 @@ InstallMethod( ProjectionFunctor,
     end );
     
     return projection;
-    
-end );
-
-##
-InstallGlobalFunction( ADD_BASIC_OPERATIONS_FOR_QUOTIENT_CATEGORY,
-  function( quotient_category )
-    local category, test_func;
-    
-    category := UnderlyingCategory( quotient_category );
-    
-    # test_func( alpha_1, alpha_2 ) = true if alpha_1 is congruent to alpha_2
-    test_func := CongruencyTestFunctionForQuotientCategory( quotient_category );
-    
-    if CanCompute( category, "IsEqualForObjects" ) then
-    
-      AddIsEqualForObjects( quotient_category,
-        
-        function( a, b )
-        
-          return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "IsWellDefinedForObjects" ) then
-      
-      AddIsWellDefinedForObjects( quotient_category,
-        function( a )
-        
-          return IsWellDefinedForObjects( UnderlyingCell( a ) );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "IsEqualForMorphisms" ) then
-       
-      AddIsEqualForMorphisms( quotient_category,
-        function( alpha_1, alpha_2 )
-            
-          return IsEqualForMorphisms( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2  ) );
-      
-      end );
-    
-    fi;
-      
-    AddIsCongruentForMorphisms( quotient_category,
-      function( alpha_1, alpha_2 )
-      
-        return test_func( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
-        
-    end );
-    
-    if CanCompute( category, "IsWellDefinedForMorphisms" ) then
-      
-      AddIsWellDefinedForMorphisms( quotient_category,
-        function( alpha )
-          
-          return IsWellDefinedForMorphisms( UnderlyingCell( alpha ) );
-      
-      end );
-    
-    fi;
-    
-    ## PreCompose
-    if CanCompute( category, "PreCompose" ) then
-      
-      AddPreCompose( quotient_category,
-        function( alpha_1, alpha_2 )
-          local composition;
-          
-          composition := PreCompose( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
-          
-          return QuotientCategoryMorphism( quotient_category, composition );
-      
-      end );
-    
-    fi;
-    
-    ## IdentityMorphism
-    if CanCompute( category, "IdentityMorphism" ) then
-      
-      AddIdentityMorphism( quotient_category,
-        function( a )
-          
-          return QuotientCategoryMorphism( quotient_category, IdentityMorphism( UnderlyingCell( a ) ) );
-          
-      end );
-    
-    fi;
-
-    ## Addition for morphisms
-    if CanCompute( category, "AdditionForMorphisms" ) then
-      
-      AddAdditionForMorphisms( quotient_category,
-        function( alpha_1, alpha_2 )
-          local sum;
-          
-          sum := AdditionForMorphisms( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
-          
-          return QuotientCategoryMorphism( quotient_category, sum );
-      
-      end );
-    
-    fi;
-
-    if CanCompute( category, "AdditiveInverseForMorphisms" ) then
-      
-      AddAdditiveInverseForMorphisms( quotient_category,
-        function( alpha )
-          
-          return QuotientCategoryMorphism( quotient_category, AdditiveInverseForMorphisms( UnderlyingCell( alpha ) ) );
-        
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "SubtractionForMorphisms" ) then
-      
-       AddSubtractionForMorphisms( quotient_category,
-        function( alpha_1, alpha_2 )
-          local sub;
-          
-          sub := SubtractionForMorphisms( UnderlyingCell( alpha_1 ), UnderlyingCell( alpha_2 ) );
-          
-          return QuotientCategoryMorphism( quotient_category, sub );
-      
-      end );
-    
-    fi;
-    
-    ## Zero morphism
-    if CanCompute( category, "ZeroMorphism" ) then
-      
-      AddZeroMorphism( quotient_category,
-      
-      function( a, b )
-        
-        return QuotientCategoryMorphism(
-                 quotient_category,
-                   ZeroMorphism( UnderlyingCell( a ), UnderlyingCell( b ) )
-                     );
-      
-      end );
-    
-    fi;
-    
-    ## IsZeroForMorphisms
-    if CanCompute( category, "IsZeroForMorphisms" ) then
-      
-      AddIsZeroForMorphisms( quotient_category,
-        
-        function( alpha )
-          local underlying_mor;
-          
-          underlying_mor := UnderlyingCell( alpha );
-          
-          if HasIsZero( underlying_mor ) and IsZero( underlying_mor ) then
-            
-            return true;
-          
-          else
-            
-            return test_func( underlying_mor, ZeroMorphism( Source( underlying_mor ), Range( underlying_mor ) ) );
-          
-          fi;
-      
-      end );
-    
-    fi;
-    
-    ## Zero object
-    if CanCompute( category, "ZeroObject" ) then
-      
-      AddZeroObject( quotient_category,
-        function( )
-          
-          return QuotientCategoryObject( quotient_category, ZeroObject( category ) );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "UniversalMorphismIntoZeroObject" ) then
-      
-      AddUniversalMorphismIntoZeroObject( quotient_category,
-        function( a )
-          
-          return QuotientCategoryMorphism( quotient_category,
-                   UniversalMorphismIntoZeroObject( UnderlyingCell( a ) )
-                     );
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "UniversalMorphismFromZeroObject" ) then
-      
-      AddUniversalMorphismFromZeroObject( quotient_category,
-        function( a )
-          
-          return QuotientCategoryMorphism( quotient_category,
-                   UniversalMorphismFromZeroObject( UnderlyingCell( a ) )
-                     );
-      
-      end );
-      
-      ## direct sum
-    
-    fi;
-    
-    if CanCompute( category, "DirectSum" ) then
-      
-      AddDirectSum( quotient_category,
-        function( obj_list )
-          
-          return QuotientCategoryObject( quotient_category,
-                   DirectSum( List( obj_list, UnderlyingCell ) )
-                     );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "InjectionOfCofactorOfDirectSumWithGivenDirectSum" ) then
-      
-      AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( quotient_category,
-        function( list, n, direct_sum )
-        
-          return QuotientCategoryMorphism( quotient_category,
-                   InjectionOfCofactorOfDirectSumWithGivenDirectSum(
-                     List( list, UnderlyingCell ), n, UnderlyingCell( direct_sum ) )
-                       );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "ProjectionInFactorOfDirectSumWithGivenDirectSum" ) then
-      
-      AddProjectionInFactorOfDirectSumWithGivenDirectSum( quotient_category,
-        function( D, n, direct_sum )
-          
-          return QuotientCategoryMorphism( quotient_category,
-                   ProjectionInFactorOfDirectSumWithGivenDirectSum(
-                     List( D, UnderlyingCell ), n, UnderlyingCell( direct_sum ) )
-                       );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "UniversalMorphismIntoDirectSumWithGivenDirectSum" ) then
-      
-      AddUniversalMorphismIntoDirectSumWithGivenDirectSum( quotient_category,
-          function( D, tau, direct_sum )
-            return QuotientCategoryMorphism( quotient_category,
-                     UniversalMorphismIntoDirectSumWithGivenDirectSum(
-                       List( D, UnderlyingCell ),
-                         List( tau, UnderlyingCell ),
-                           UnderlyingCell( direct_sum ) )
-                             );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "UniversalMorphismFromDirectSumWithGivenDirectSum" ) then
-      
-      AddUniversalMorphismFromDirectSumWithGivenDirectSum( quotient_category,
-          function( D, tau, direct_sum )
-            return QuotientCategoryMorphism( quotient_category,
-                     UniversalMorphismFromDirectSumWithGivenDirectSum(
-                       List( D, UnderlyingCell ),
-                         List( tau, UnderlyingCell ),
-                           UnderlyingCell( direct_sum ) )
-                             );
-      
-      end );
-    
-    fi;
-    
-    if CanCompute( category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
-    
-      AddMultiplyWithElementOfCommutativeRingForMorphisms( quotient_category,
-        function( r, phi )
-        
-          phi := UnderlyingCell( phi );
-        
-          return
-          QuotientCategoryMorphism( quotient_category,
-            MultiplyWithElementOfCommutativeRingForMorphisms( r, phi ) );
-        
-      end );
-    
-    fi;
-    
-    return;
     
 end );
 
