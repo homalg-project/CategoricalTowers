@@ -6,28 +6,27 @@
 ##
 #############################################################################
 
+
 ##
 InstallMethod( QuotientCategoryMorphism,
-               [ IsQuotientCategory, IsCapCategoryMorphism ],
+               [ IsQuotientCategoryObject, IsCapCategoryMorphism, IsQuotientCategoryObject ],
   
-  function( quotient_category, alpha )
-    local quotient_alpha, source, range;
-  
+  function( quotient_source, alpha, quotient_range )
+    local quotient_category, quotient_alpha;
+    
+    quotient_category := CapCategory( quotient_source );
+    
     if not IsIdenticalObj( CapCategory( alpha ), UnderlyingCategory( quotient_category ) ) then
       
       Error( "Wrong input!" );
       
     fi;
-    
+
     quotient_alpha := rec( );
-    
-    source := QuotientCategoryObject( quotient_category, Source( alpha ) );
-    
-    range := QuotientCategoryObject( quotient_category, Range( alpha ) );
-    
+        
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( quotient_alpha, quotient_category,
-                                           source,
-                                           range,
+                                           quotient_source,
+                                           quotient_range,
                                            UnderlyingCell, alpha );
     
     return quotient_alpha;
@@ -35,9 +34,23 @@ InstallMethod( QuotientCategoryMorphism,
 end );
 
 ##
+InstallMethod( QuotientCategoryMorphism,
+               [ IsQuotientCategory, IsCapCategoryMorphism ],
+  function( quotient_category, alpha )
+    local quotient_source, quotient_range;
+        
+    quotient_source := QuotientCategoryObject( quotient_category, Source( alpha ) );
+    
+    quotient_range := QuotientCategoryObject( quotient_category, Range( alpha ) );
+    
+    return QuotientCategoryMorphism( quotient_source, alpha, quotient_range );
+    
+end );
+
+##
 InstallMethod( \/,
           [ IsCapCategoryMorphism, IsQuotientCategory ],
-  {a,Q} -> QuotientCategoryMorphism( Q, a )
+  { alpha, Q } -> QuotientCategoryMorphism( Q, alpha )
 );
 
 ##

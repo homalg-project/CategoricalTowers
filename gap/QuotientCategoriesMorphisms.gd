@@ -20,6 +20,14 @@ DeclareCategory( "IsQuotientCategoryMorphism",
 #! @Section Constructors
 
 #! @Description
+#!  The arguments are two objects $\underline{a}, \underline{b}$ in a quotient category $Q=C/F$ 
+#!  and a morphism $\alpha:a \rightarrow b$ in $C$.
+#!  The output is $\underline{\alpha}: \underline{a} \rightarrow \underline{b}$ in $Q$.
+#! @Arguments _a_, alpha, _b_
+#! @Returns a morphism
+DeclareOperation( "QuotientCategoryMorphism", [ IsQuotientCategoryObject, IsCapCategoryMorphism, IsQuotientCategoryObject ] );
+
+#! @Description
 #! The input is a quotient category $Q=C/F$ and a morphism $\alpha:a \rightarrow b$ in $C$.
 #! The output is $\underline{\alpha}: \underline{a} \rightarrow \underline{b}$ in $Q$.
 #! @Arguments Q, alpha
