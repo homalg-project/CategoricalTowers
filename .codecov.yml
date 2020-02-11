@@ -1,0 +1,4 @@
+ignore:
+  - "init.g"
+  - "PackageInfo.g"
+  - "read.g"
