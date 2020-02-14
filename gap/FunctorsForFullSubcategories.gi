@@ -94,14 +94,14 @@ InstallMethod( RestrictFunctorToFullSubcategoryOfRangeOp,
     AddObjectFunction( R,
       function( a )
         
-        return AsFullSubcategoryCell( full, ApplyFunctor( F, a ) );
+        return AsSubcategoryCell( full, ApplyFunctor( F, a ) );
         
     end );
     
     AddMorphismFunction( R,
       function( s, alpha, r )
         
-        return AsFullSubcategoryCell( s, ApplyFunctor( F, alpha ), r );
+        return AsSubcategoryCell( s, ApplyFunctor( F, alpha ), r );
         
     end );
     
@@ -138,14 +138,14 @@ InstallMethodWithCache( RestrictFunctorToFullSubcategories,
     AddObjectFunction( R,
       function( a )
         
-        return AsFullSubcategoryCell( full_2, ApplyFunctor( F, UnderlyingCell( a ) ) );
+        return AsSubcategoryCell( full_2, ApplyFunctor( F, UnderlyingCell( a ) ) );
         
     end );
     
     AddMorphismFunction( R,
       function( s, alpha, r )
         
-        return AsFullSubcategoryCell( s, ApplyFunctor( F, UnderlyingCell( alpha ) ), r );
+        return AsSubcategoryCell( s, ApplyFunctor( F, UnderlyingCell( alpha ) ), r );
         
     end );
     

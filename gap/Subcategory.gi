@@ -1,72 +1,122 @@
 #
-# SubcategoriesForCAP: Create a full subcategory
+# SubcategoriesForCAP: Create a subcategory
 #
 # Implementations
 #
 
 ##
-InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY,
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY,
   [
-   "AdditionForMorphisms",
-   "AdditiveInverseForMorphisms",
-   "Colift",
    "IdentityMorphism",
-   "InverseImmutable",
-   "IsAutomorphism",
-   "IsColiftable",
-   "IsCongruentForMorphisms",
    "IsEndomorphism",
    "IsIdempotent",
    "IsIdenticalToIdentityMorphism",
    "IsIdenticalToZeroMorphism",
-   "IsIsomorphism",
-   "IsLiftable",
    "IsOne",
-   "IsSplitEpimorphism",
-   "IsSplitMonomorphism",
-   "IsZeroForMorphisms",
-   "Lift",
-   "MultiplyWithElementOfCommutativeRingForMorphisms",
    "PostCompose",
    "PreCompose",
-   "SubtractionForMorphisms",
-   "ZeroMorphism"
    ] );
 
 ##
-InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY,
-  [
-   "ComponentOfMorphismFromDirectSum",
-   "ComponentOfMorphismIntoDirectSum",
-   "DirectSum",
-   "DirectSumCodiagonalDifference",
-   "DirectSumDiagonalDifference",
-   "DirectSumFunctorialWithGivenDirectSums",
-   "DirectSumProjectionInPushout",
-   "InjectionOfCofactorOfDirectSum",
-   "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
-   "IsomorphismFromCoproductToDirectSum",
-   "IsomorphismFromDirectProductToDirectSum",
-   "IsomorphismFromDirectSumToCoproduct",
-   "IsomorphismFromDirectSumToDirectProduct",
-   "IsZeroForObjects",
-   "MorphismBetweenDirectSums",
-   "ProjectionInFactorOfDirectSum",
-   "ProjectionInFactorOfDirectSumWithGivenDirectSum",
-   "UniversalMorphismFromDirectSum",
-   "UniversalMorphismFromDirectSumWithGivenDirectSum",
-   "UniversalMorphismIntoDirectSum",
-   "UniversalMorphismIntoDirectSumWithGivenDirectSum",
-   "UniversalMorphismFromZeroObject",
-   "UniversalMorphismFromZeroObjectWithGivenZeroObject",
-   "UniversalMorphismIntoZeroObject",
-   "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
-   "ZeroObject",
-   "ZeroObjectFunctorial",
-   ] );
+InstallOtherMethod( UnderlyingCell,
+        "for a list",
+        [ IsList ],
+        
+  function( L )
+    
+    return List( L, UnderlyingCell );
+    
+end );
 
 ##
-InstallMethod( FullSubcategory,
+InstallOtherMethod( UnderlyingCell,
+        "for an integer",
+        [ IsInt ],
+        
+  IdFunc );
+
+##
+InstallMethod( AsSubcategoryCell,
+        "for a CAP category and a CAP object",
+        [ IsCapSubcategory, IsCapCategoryObject ],
+        
+  function( D, object )
+    local o;
+    
+    if not IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) then
+        
+        Error( "the given object should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
+        
+    fi;
+    
+    o := rec( );
+    
+    ObjectifyObjectForCAPWithAttributes( o, D,
+            UnderlyingCell, object );
+    
+    return o;
+    
+end );
+
+##
+InstallMethod( AsSubcategoryCell,
+        "for two CAP objects in a subcategory and a CAP morphism",
+        [ IsCapCategoryObjectInASubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInASubcategory ],
+        
+  function( source, morphism, range )
+    local D, m;
+    
+    D := CapCategory( source );
+    
+    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( D ) ) then
+        
+        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
+        
+    fi;
+    
+    m := rec( );
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
+            source,
+            range,
+            UnderlyingCell, morphism );
+    
+    return m;
+    
+end );
+
+##
+InstallMethod( AsSubcategoryCell,
+        "for a CAP category and a CAP morphism",
+        [ IsCapSubcategory, IsCapCategoryMorphism ],
+        
+  function( D, morphism )
+    
+    return AsSubcategoryCell(
+                   AsSubcategoryCell( D, Source( morphism ) ),
+                   morphism,
+                   AsSubcategoryCell( D, Range( morphism ) )
+                   );
+    
+end );
+
+##
+InstallMethod( \/, [ IsCapCategoryCell, IsCapSubcategory ],
+  { cell, cat } -> AsSubcategoryCell( cat, cell )
+);
+
+##
+InstallMethod( AmbientCategory,
+        [ IsCapSubcategory ],
+        
+  function( A )
+    
+    return A!.AmbientCategory;
+    
+end );
+
+##
+InstallMethod( Subcategory,
         "for a CAP category and a string",
         [ IsCapCategory, IsString ],
         
@@ -219,8 +269,8 @@ InstallMethod( FullSubcategory,
     
     D := CategoryConstructor( :
                  name := name,
-                 category_object_filter := IsCapCategoryObjectInAFullSubcategory,
-                 category_morphism_filter := IsCapCategoryMorphismInAFullSubcategory,
+                 category_object_filter := IsCapCategoryObjectInASubcategory,
+                 category_morphism_filter := IsCapCategoryMorphismInASubcategory,
                  commutative_ring := commutative_ring,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
@@ -231,7 +281,7 @@ InstallMethod( FullSubcategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    SetFilterObj( D, IsCapFullSubcategory );
+    SetFilterObj( D, IsCapSubcategory );
     
     D!.AmbientCategory := C;
     
@@ -354,9 +404,9 @@ InstallMethod( FullSubcategory,
 end );
 
 ##
-InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
+InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
   function( L )
-    local cat, name, full, finalize;
+    local cat, name, subcat, finalize;
     
     if L = [ ] then
         Error( "the input list is empty\n" );
@@ -368,27 +418,27 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
     MakeImmutable( L );
     
-    name := ValueOption( "name_of_full_subcategory" );
+    name := ValueOption( "name_of_subcat_subcategory" );
     
     if name = fail then
       
       name := Name( cat );
       
       if Size( L ) > 1 then
-        name := Concatenation( "Full subcategory generated by ", String( Size( L ) ), " objects in ", name );
+        name := Concatenation( "Subcategory generated by ", String( Size( L ) ), " objects in ", name );
       else
-        name := Concatenation( "Full subcategory generated by 1 object in ", name );
+        name := Concatenation( "Subcategory generated by 1 object in ", name );
       fi;
       
     fi;
     
-    full := FullSubcategory( cat, name : FinalizeCategory := false );
+    subcat := Subcategory( cat, name : FinalizeCategory := false );
     
-    SetFilterObj( full, IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects );
+    SetFilterObj( subcat, IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms );
     
-    full!.Objects := L;
+    subcat!.Objects := L;
     
-    AddIsWellDefinedForObjects( full,
+    AddIsWellDefinedForObjects( subcat,
       function( a )
         
         return ForAny( L, obj -> IsEqualForObjects( obj, UnderlyingCell( a ) ) );
@@ -397,7 +447,7 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
     if CanCompute( cat, "IsWellDefinedForMorphisms" ) then
       
-      AddIsWellDefinedForMorphisms( full,
+      AddIsWellDefinedForMorphisms( subcat,
         function( phi )
           
           return IsWellDefinedForObjects( Source( phi ) )
@@ -408,27 +458,21 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
       
     fi;
     
-    SetSetOfKnownObjects( full, List( L, obj -> AsSubcategoryCell( full, obj ) ) );
+    SetSetOfKnownObjects( subcat, List( L, obj -> AsSubcategoryCell( subcat, obj ) ) );
     
     finalize := ValueOption( "FinalizeCategory" );
     
     if finalize = false then
       
-      return full;
+      return subcat;
       
     fi;
     
-    Finalize( full );
+    Finalize( subcat );
     
-    return full;
+    return subcat;
     
 end );
-
-##
-InstallMethod( \[\],
-          [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ],
-  { full, i } -> SetOfKnownObjects( full )[ i ]
-);
 
 ##################################
 ##
@@ -438,10 +482,10 @@ InstallMethod( \[\],
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryObjectInAFullSubcategory ],
+    [ IsCapCategoryObjectInASubcategory ],
   function( a )
     
-    Print( "An object in full subcategory given by: " );
+    Print( "An object in subcategory given by: " );
     
     ViewObj( UnderlyingCell( a ) );
     
@@ -449,10 +493,10 @@ end );
 
 ##
 InstallMethod( ViewObj,
-    [ IsCapCategoryMorphismInAFullSubcategory ],
+    [ IsCapCategoryMorphismInASubcategory ],
   function( phi )
     
-    Print( "A morphism in full subcategory given by: " );
+    Print( "A morphism in subcategory given by: " );
     
     ViewObj( UnderlyingCell( phi ) );
     
@@ -460,10 +504,10 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryObjectInAFullSubcategory ],
+    [ IsCapCategoryObjectInASubcategory ],
   function( a )
     
-    Print( "An object in full subcategory given by: " );
+    Print( "An object in subcategory given by: " );
     
     Display( UnderlyingCell( a ) );
     
@@ -471,11 +515,12 @@ end );
 
 ##
 InstallMethod( Display,
-    [ IsCapCategoryMorphismInAFullSubcategory ],
+    [ IsCapCategoryMorphismInASubcategory ],
   function( phi )
     
-    Print( "A morphism in full subcategory given by: " );
+    Print( "A morphism in subcategory given by: " );
     
     Display( UnderlyingCell( phi ) );
     
 end );
+
