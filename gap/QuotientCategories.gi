@@ -29,6 +29,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
    "PreCompose",
    "SubtractionForMorphisms",
    "ZeroMorphism",
+   "IsWellDefinedForObjects",
+   "IsWellDefinedForMorphisms",
    
    # Additive operations
    
