@@ -80,3 +80,9 @@ DeclareOperation( "EmbeddedComplementOfTangentSpaceOfFiberAtPoint",
 #! @Arguments V, p_base, p_fiber
 DeclareOperation( "EmbeddedComplementOfTangentSpaceOfFiberAtPoint",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ] );
+
+#! @Description
+#! @Arguments V, p_base, p_fiber
+#! @Returns an object in a Zariski coframe of an affine variety
+DeclareOperation( "ClosedSubsetWithGenericallyZeroDimensionalFibers",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ] );

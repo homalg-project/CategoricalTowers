@@ -380,3 +380,21 @@ InstallMethod( EmbeddedComplementOfTangentSpaceOfFiberAtPoint,
     return EmbeddedComplementOfTangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
     
 end );
+
+##
+InstallMethod( ClosedSubsetWithGenericallyZeroDimensionalFibers,
+        "for an object in a Zariski coframe of an affine variety and two matrices",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
+        
+  function( Gamma, b, x )
+    local complement_at_b_x, Gamma0, image_closure, frame;
+    
+    Info( InfoConstructibleImage, 2, "before:        ", DimensionsOfFibrationAtClosedPoint( Gamma, b, x ) );
+    complement_at_b_x := EmbeddedComplementOfTangentSpaceOfFiberAtPoint( Gamma, b, x );
+    Gamma0 := Gamma * complement_at_b_x;
+    
+    Info( InfoConstructibleImage, 2, "after:         ", DimensionsOfFibrationAtClosedPoint( Gamma0, b, x ) );
+
+    return Gamma0;
+    
+end );
