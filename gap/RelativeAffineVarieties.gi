@@ -245,9 +245,7 @@ InstallMethod( TangentSpaceOfFiberAtPoint,
     
     T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
     
-    R := UnderlyingRing( gamma );
-    
-    return ClosedSubsetOfSpecByReducedMorphism( R * T );
+    return ClosedSubsetOfSpecByReducedMorphism( T );
     
 end );
 
@@ -313,17 +311,11 @@ InstallMethod( ComplementOfTangentSpaceOfFiberAtPoint,
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
         
   function( gamma, p_base, p_fiber )
-    local fiber, T, R;
+    local fiber;
     
     fiber := FiberOfProjectionOverBasePoint( gamma, p_base );
     
-    T := ComplementOfTangentSpaceAtPoint( fiber, p_fiber );
-    
-    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
-    
-    R := UnderlyingRing( gamma );
-    
-    return ClosedSubsetOfSpecByReducedMorphism( R * T );
+    return ComplementOfTangentSpaceAtPoint( fiber, p_fiber );
     
 end );
 
@@ -343,5 +335,48 @@ InstallMethod( ComplementOfTangentSpaceOfFiberAtPoint,
     p_fiber := HomalgMatrix( p_fiber, Length( p_fiber ), 1, k );
     
     return ComplementOfTangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
+    
+end );
+
+##
+InstallMethod( EmbeddedComplementOfTangentSpaceOfFiberAtPoint,
+        "for an object in a Zariski coframe of an affine variety and two homalg matrices",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ],
+        
+  function( gamma, p_base, p_fiber )
+    local C, R, var;
+    
+    C := ComplementOfTangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
+    
+    R := UnderlyingRing( gamma );
+    
+    C := R * C;
+    
+    var := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    var := HomalgMatrix( var, Length( var ), 1, R );
+    
+    C := C * ( var - R * p_fiber );
+    
+    return ClosedSubsetOfSpecByReducedMorphism( C );
+    
+end );
+
+##
+InstallMethod( EmbeddedComplementOfTangentSpaceOfFiberAtPoint,
+        "for an object in a Zariski coframe of an affine variety and two lists",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ],
+        
+  function( gamma, p_base, p_fiber )
+    local R, k;
+    
+    R := UnderlyingRing( gamma );
+    
+    k := CoefficientsRing( R );
+    
+    p_base := HomalgMatrix( p_base, Length( p_base ), 1, k );
+    p_fiber := HomalgMatrix( p_fiber, Length( p_fiber ), 1, k );
+    
+    return EmbeddedComplementOfTangentSpaceOfFiberAtPoint( gamma, p_base, p_fiber );
     
 end );

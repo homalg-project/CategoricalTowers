@@ -62,15 +62,21 @@ DeclareOperation( "DimensionsOfFibrationAtClosedPoint",
 DeclareOperation( "DimensionsOfFibrationAtClosedPoint",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ] );
 
+DeclareOperation( "ComplementOfTangentSpaceOfFiberAtPoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ] );
+
+DeclareOperation( "ComplementOfTangentSpaceOfFiberAtPoint",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ] );
+
 #! @Description
 #!  Compute a compolement of the tangent space of the fiber of <A>V</A>
 #!  over the closed base point <A>p_base</A> at the closed point <A>p_fiber</A>
 #!  as an affine subspace of the ambient space of <A>V</A> intersecting <A>(p_base, p_fiber)</A>.
 #! @Arguments V, p_base, p_fiber
 #! @Returns an object in a Zariski coframe
-DeclareOperation( "ComplementOfTangentSpaceOfFiberAtPoint",
+DeclareOperation( "EmbeddedComplementOfTangentSpaceOfFiberAtPoint",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ] );
 
 #! @Arguments V, p_base, p_fiber
-DeclareOperation( "ComplementOfTangentSpaceOfFiberAtPoint",
+DeclareOperation( "EmbeddedComplementOfTangentSpaceOfFiberAtPoint",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList ] );

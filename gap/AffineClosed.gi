@@ -731,7 +731,7 @@ InstallMethod( ComplementOfTangentSpaceAtPoint,
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix ],
         
   function( gamma, point )
-    local R, T, C, var;
+    local R, T;
     
     R := UnderlyingRing( gamma );
     
@@ -739,13 +739,7 @@ InstallMethod( ComplementOfTangentSpaceAtPoint,
     
     T := TangentSpaceByEquationsAtPoint( gamma, point );
     
-    C := MatrixOfGenerators( ByASmallerPresentation( LeftPresentation( T ) ) );
-    
-    var := Indeterminates( R );
-    
-    C := ( R * C ) * HomalgMatrix( var, Length( var ), 1, R );
-    
-    return ClosedSubsetOfSpecByReducedMorphism( C );
+    return MatrixOfGenerators( ByASmallerPresentation( LeftPresentation( T ) ) );
     
 end );
 
