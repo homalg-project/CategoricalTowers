@@ -11,10 +11,16 @@
 #! @Section Filters
 
 #! @Description
-#!  The category of objects in the quotient category.
+#!  The &Gap; category of cells in the quotient category.
+#! @Arguments a object
+DeclareCategory( "IsQuotientCategoryCell",
+                 IsCapCategoryCell );
+
+#! @Description
+#!  The &Gap; category of objects in the quotient category.
 #! @Arguments a object
 DeclareCategory( "IsQuotientCategoryObject",
-                 IsCapCategoryObject );
+                 IsQuotientCategoryCell and IsCapCategoryObject );
 
 #! @Section Constructors
 

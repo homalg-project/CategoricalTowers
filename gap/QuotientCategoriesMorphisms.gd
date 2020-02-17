@@ -15,7 +15,7 @@
 #! @Arguments alpha
 #! @Returns a boolian
 DeclareCategory( "IsQuotientCategoryMorphism",
-                 IsCapCategoryMorphism );
+                 IsQuotientCategoryCell and IsCapCategoryMorphism );
 
 #! @Section Constructors
 
