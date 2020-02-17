@@ -43,7 +43,7 @@ DeclareOperation( "FiberOfProjectionOverBasePoint",
 #!  over closed base point <A>p_base</A> at the closed point <A>p_fiber</A>
 #!  as an affine subspace of the ambient space of <A>V</A> intersecting <A>(p_base, p_fiber)</A>.
 #! @Arguments V, p_base, p_fiber
-#! @Returns an object in a Zariski coframe
+#! @Returns an object in a Zariski coframe of an affine variety
 DeclareOperation( "TangentSpaceOfFiberAtPoint",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ] );
 
@@ -54,7 +54,7 @@ DeclareOperation( "TangentSpaceOfFiberAtPoint",
 #! @Description
 #!  
 #! @Arguments V, p_base, p_fiber
-#! @Returns an object in a Zariski coframe
+#! @Returns a list
 DeclareOperation( "DimensionsOfFibrationAtClosedPoint",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ] );
 
