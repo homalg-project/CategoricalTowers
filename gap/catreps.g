@@ -87,12 +87,12 @@ end;
 
 ##############################################################################
 ##
-## Objects(cat) returns the objects of the concrete category cat, as a list
+## ObjectsList(cat) returns the objects of the concrete category cat, as a list
 ## of sets. At the moment it will not work unless for every object there
 ## is at least one generator morphism whose support is that object.
 ##
 ##############################################################################
-Objects:=function(cat)
+ObjectsList:=function(cat)
     local m;
     if IsBound(cat.objects) then return(cat.objects);
     fi;
@@ -139,7 +139,7 @@ end;
 
 
 Domains:=function(C)
-Objects(C);
+ObjectsList(C);
 C.domain:=List(C.generators,x->Origin(C,x));
 C.codomain:=List(C.generators,x->Terminus(C,x));
 end;
@@ -224,7 +224,7 @@ ConcreteCategory:=function(arg)
         output.objects:=SSortedList(arg[2]);
     
     elif Length(arg)=1 then
-        Objects(output);
+        ObjectsList(output);
     fi;
 
     Domains(output);
@@ -250,17 +250,17 @@ end;
 
 ##############################################################################
 ##
-## Morphisms(cat) returns an l x l matrix, where l is the number of objects
+## MorphismsList(cat) returns an l x l matrix, where l is the number of objects
 ## in the category cat, and where the i,j entry is a list of the
 ## morphisms from object i to
 ## object j.
 ##
 ##############################################################################
-Morphisms:=function(cat)
+MorphismsList:=function(cat)
     local n, genmat, g, mormat, oldlength, newlength, i, j, k, h, templist;
     if IsBound(cat.morphisms) then return(cat.morphisms);
     fi;
-    if not IsBound(cat.objects) then Objects(cat);
+    if not IsBound(cat.objects) then ObjectsList(cat);
     fi;
     n:=Length(cat.objects);
     genmat:=EmptyMat(n,n);
@@ -355,7 +355,7 @@ end;
 
 CatRep:=function(C,L,F)
     local dimvec, i;
-    dimvec:=List(Objects(C),x->0);
+    dimvec:=List(ObjectsList(C),x->0);
     for i in [1..Length(C.generators)] do
         if IsBound(L[i]) then
             dimvec[C.domain[i]]:=Length(L[i]);
@@ -382,7 +382,7 @@ end;
 YonedaRep:=function(cat,object,F)
     local genmatrices, mor, dimvec, i, j, k, f, matrix;
     genmatrices:=[];
-    mor:=Morphisms(cat);
+    mor:=MorphismsList(cat);
     dimvec:=List(mor[object],Length);
     for i in [1..Length(cat.generators)] do
         if dimvec[cat.domain[i]]>0 then
@@ -416,7 +416,7 @@ end;
 YonedaDualRep:=function(cat,object,F)
     local genmatrices, mor, dimvec, i, j, k, f, matrix;
     genmatrices:=[];
-    mor:=Morphisms(cat);
+    mor:=MorphismsList(cat);
     dimvec:=List(mor, x->Length(x[object]));
     for i in [1..Length(cat.generators)] do
         if dimvec[cat.domain[i]]>0 then
@@ -446,7 +446,7 @@ end;
 
 ZeroRep:=function(cat,F)
     local dimvec;
-    dimvec:=List(Objects(cat),x->0);
+    dimvec:=List(ObjectsList(cat),x->0);
     return rec(
      category:=cat,
      genimages:=List(cat.generators,x->[]),
@@ -463,7 +463,7 @@ end;
 
 ConstantRep:=function(cat,F)
     local dimvec;
-    dimvec:=List(Objects(cat),x->1);
+    dimvec:=List(ObjectsList(cat),x->1);
     return rec(
      category:=cat,
      genimages:=List(cat.generators,x->[[One(F)]]),
@@ -1143,7 +1143,7 @@ MorphismsRep:=function(rep)
     cat:=rep.category;
     if IsBound(rep.morphimgs) then return(rep.morphimgs);
     fi;
-    if not IsBound(cat.objects) then Objects(cat);
+    if not IsBound(cat.objects) then ObjectsList(cat);
     fi;
     n:=Length(cat.objects);
     genmat:=EmptyMat(n,n);
