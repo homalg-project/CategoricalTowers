@@ -106,6 +106,8 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.06.07" ],
+                   [ "FinSetsForCAP", ">= 2019.12.19" ],
+                   [ "SubcategoriesForCAP", ">= 2020.01.06" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
