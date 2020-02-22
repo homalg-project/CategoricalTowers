@@ -57,7 +57,46 @@ InstallMethod( SetOfObjects,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],
         
-  A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
+  A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
+
+##
+InstallMethod( AssignSetOfObjects,
+        [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
+  function( A, label )
+    local names, objects, func;
+    
+    names := List( Vertices( UnderlyingQuiver( A ) ), String );
+    
+    objects := SetOfObjects( A );
+    
+    func := function( name, o )
+              
+              if Int( name ) <> fail and label = "" then
+                  Error( "The second argument should be a non-empty string" );
+              fi;
+              
+              name := Concatenation( label, ReplacedString( name, "-", "m" ) );
+              
+              MakeReadWriteGlobal( name );
+              
+              DeclareSynonym( name, o );
+              
+              return 1;
+              
+            end;
+            
+    ListN( names, objects, func );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfObjects,
+        [ IsAlgebroid and HasUnderlyingQuiver ],
+  function( A )
+  
+    AssignSetOfObjects( A, "" );
+    
+end );
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
@@ -65,6 +104,46 @@ InstallMethod( SetOfGeneratingMorphisms,
         [ IsAlgebroid and HasUnderlyingQuiver ],
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
+
+##
+InstallMethod( AssignSetOfGeneratingMorphisms,
+        [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
+  function( A, label )
+    local names, morphisms, func;
+    
+    names := List( Arrows( UnderlyingQuiver( A ) ), String );
+    
+    morphisms := SetOfGeneratingMorphisms( A );
+    
+    func := function( name, m )
+              
+              if Int( name ) <> fail and label = "" then
+                  Error( "The second argument should be a non-empty string" );
+              fi;
+              
+              name := Concatenation( label, ReplacedString( name, "-", "m" ) );
+              
+              MakeReadWriteGlobal( name );
+              
+              DeclareSynonym( name, m );
+              
+              return 1;
+              
+            end;
+            
+    ListN( names, morphisms, func );
+    
+end );
+
+##
+InstallOtherMethod( AssignSetOfGeneratingMorphisms,
+        [ IsAlgebroid and HasUnderlyingQuiver ],
+  function( A )
+    
+    AssignSetOfGeneratingMorphisms( A, "" );
+    
+end );
+
 
 ##
 InstallMethod( RelationsOfAlgebroid,

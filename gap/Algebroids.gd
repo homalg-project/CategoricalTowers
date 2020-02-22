@@ -132,11 +132,27 @@ DeclareAttribute( "SetOfObjects",
         IsAlgebroid );
 
 #! @Description
+#!  Assigns the objects of the finitely presented algebroid <A>A</A> to global variables.
+#!  Names of the variables are the concatenation of <A>label</A> with the names of the defining vertices.
+#! @Arguments A, label
+#! @Returns nothing
+DeclareOperation( "AssignSetOfObjects",
+        [ IsAlgebroid, IsString ] );
+
+#! @Description
 #!  The finite set of morphisms generating the finitely presented algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsAlgebroid );
+
+#! @Description
+#!  Assigns the generating morphisms of the finitely presented algebroid <A>A</A> to global variables.
+#!  Names of the variables are the concatenation of <A>label</A> with the names of the defining arrows.
+#! @Arguments A, label
+#! @Returns nothing
+DeclareOperation( "AssignSetOfGeneratingMorphisms",
+        [ IsAlgebroid, IsString ] );
 
 #! @Description
 #!  The relations of the algebroid <A>A</A> corresponding to
