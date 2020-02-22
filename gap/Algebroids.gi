@@ -631,6 +631,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID( category, over_Z );
         
+        ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID( category, over_Z );
+        
     fi;
     
     Finalize( category );
@@ -835,6 +837,75 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         return MorphismInAlgebroid( a, element, b );
         
     end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
+  function( A, over_Z )
+    
+    if over_Z then
+      
+      # to do
+      return;
+      
+    else
+      
+      AddRandomObjectByInteger( A,
+        { A, n } -> Random( SetOfObjects( A ) )
+      );
+      
+      AddRandomMorphismWithFixedSourceByInteger( A,
+        function( o, n )
+          local objects, p, b; 
+          
+          objects := Shuffle( ShallowCopy( SetOfObjects( A ) ) );
+          
+          p := PositionProperty( objects, obj -> not IsZero( HomStructure( o, obj ) ) );
+          
+          if p = fail then
+              return Random( [ 0 .. AbsInt( n ) ] ) * One( UnderlyingAlgebra( A ) ) * IdentityMorphism( o );
+          fi;
+          
+          b := BasisOfExternalHom( o, objects[ p ] );
+          
+          return Sum( List( [ 0 .. AbsInt( n ) ], i -> Random( b ) ) );
+          
+      end );
+      
+      AddRandomMorphismWithFixedRangeByInteger( A,
+        function( o, n )
+          local objects, p, b;
+          
+          objects := Shuffle( ShallowCopy( SetOfObjects( A ) ) );
+          
+          p := PositionProperty( objects, obj -> not IsZero( HomStructure( obj, o ) ) );
+          
+          if p = fail then
+              return Random( [ 0 .. AbsInt( n ) ] ) * One( UnderlyingAlgebra( A ) ) * IdentityMorphism( o );
+          fi;
+          
+          b := BasisOfExternalHom( objects[ p ], o );
+          
+          return Sum( List( [ 0 .. AbsInt( n ) ], i -> Random( b ) ) );
+          
+      end );
+      
+      AddRandomMorphismWithFixedSourceAndRangeByInteger( A,
+        function( s, r, n )
+          local b;
+          
+          b := BasisOfExternalHom( s, r );
+          
+          if IsEmpty( b ) then
+              return ZeroMorphism( s, r );
+          fi;
+          
+          return Sum( List( [ 0 .. AbsInt( n ) ], i -> Random( b ) ) );
+          
+      end );
+      
+    fi;
     
 end );
 

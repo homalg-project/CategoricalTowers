@@ -291,6 +291,8 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_ALGEBROID" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID" );
 
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID" );
+
 DeclareOperation( "CategoryOfAlgebroids",
                   [ IsHomalgRing, IsString ] );
 
