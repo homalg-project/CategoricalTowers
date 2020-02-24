@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Full subcategories
+#! @Chapter Finite concrete categories
 
 ####################################
 #
