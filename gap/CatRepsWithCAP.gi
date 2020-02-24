@@ -12,9 +12,14 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
 	for O in objects do
 		if Length(Intersection(gen,O)) > 0 then
 			T := FinSet(O);
+			break;
 		fi;
 	od;
-		
+	
+	if not IsBound( T ) then
+		Error( "unable to find target set\n" );
+	fi;
+	
 	## returns the positions i in L where L[i] is bound as a dense list.
 	isb := function(L)
 		local M,i,j;
@@ -30,13 +35,6 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
 	end;
 	
 	S := FinSet(isb(gen));
-	
-	# not sure if necessary
-#	for O in objects do
-#		if Length(Intersection(isb(gen),O)) > 0 then
-#			S := FinSet(O);
-#		fi;
-#	od;
 	
 	G := [];
 	j := 1;
