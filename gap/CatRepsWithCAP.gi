@@ -63,8 +63,8 @@ InstallMethod( ConcreteCategoryForCAP,
 
     C!.ConcreteCategoryRecord := c;
     
-    SetOfObjects( C, List( c.objects, FinSet ) );
-    #SetOfGeneratingMorphism( C, c.generators );
+    SetSetOfObjects( C, List( c.objects, FinSet ) );
+    SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( c.objects, g ) ) );
     
     return C;
     

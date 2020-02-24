@@ -81,6 +81,7 @@ DeclareAttribute( "SetOfMorphisms",
 #! @Returns a &CAP; object
 DeclareOperation( "ConcreteCategoryForCAP",
         [ IsList ] );
+#! @InsertChunk ConcreteCategoryForCAP
 
 ####################################
 #
@@ -88,5 +89,10 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #
 ####################################
 
+#! @Description
+#!  Construct the map of finite sets corresponding to
+#!  the list of images in the convention of catreps.
+#! @Arguments objects_list, generator
+#! @Returns a morphism of finite sets
 DeclareGlobalFunction( "ConvertToMapOfFinSets" );
 #! @InsertChunk ConvertToMapOfFinSets
