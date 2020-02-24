@@ -89,3 +89,4 @@ DeclareOperation( "ConcreteCategoryForCAP",
 ####################################
 
 DeclareGlobalFunction( "ConvertToMapOfFinSets" );
+#! @InsertChunk ConvertToMapOfFinSets

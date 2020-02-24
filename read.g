@@ -5,4 +5,4 @@
 #
 
 ReadPackage( "CatReps", "gap/catreps.g");
-ReadPackage( "CatReps", "gap/CatReps.gi");
+ReadPackage( "CatReps", "gap/CatRepsWithCAP.gi");
