@@ -1,5 +1,5 @@
 /maketest.g
-/tst/subcategoriesforcap*.tst
+/tst/catreps*.tst
 /doc/*.xml
 
 /doc/chap*.html

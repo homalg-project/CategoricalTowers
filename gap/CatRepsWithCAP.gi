@@ -7,9 +7,35 @@
 ##
 InstallGlobalFunction( ConvertToMapOfFinSets,
    function( objects, gen )
-    
-    ## code
-    
+        local T, isb, S, G, j, i;
+	
+	T := FinSet(gen);
+		
+	## returns the positions i in L where L[i] is bound as a dense list.
+	isb := function(L)
+		local M,i,j;
+		j := 1;
+		M := [];
+		for i in [1..Length(L)] do
+			if IsBound(L[i]) then
+				M[j] := i;
+				j := j+1;
+			fi;
+		od;
+		return M;
+	end;
+	
+	S := FinSet(isb(gen));
+	
+	G := [];
+	j := 1;
+	for i in S do
+		G[j] := [ i, gen[i] ];  # gen[i] is sure to be bound
+                j := j + 1;
+	od;
+	
+	return MapOfFinSets( S, G, T );
+	
 end );
 
 ##

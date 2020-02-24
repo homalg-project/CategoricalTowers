@@ -4,4 +4,4 @@
 # Reading the declaration part of the package.
 #
 
-ReadPackage( "CatReps", "gap/CatReps.gd");
+ReadPackage( "CatReps", "gap/CatRepsWithCAP.gd");
