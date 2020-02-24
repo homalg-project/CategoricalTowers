@@ -56,15 +56,15 @@ InstallMethod( ConcreteCategoryForCAP,
     local C, c;
     
     C := Subcategory( FinSets, "A finite concrete category" );
-
+    
     SetFilterObj( C, IsFiniteConcreteCategory );
-
+    
     c := ConcreteCategory( L );
-
+    
     C!.ConcreteCategoryRecord := c;
     
-    SetSetOfObjects( C, List( c.objects, FinSet ) );
-    SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( c.objects, g ) ) );
+    SetSetOfObjects( C, List( c.objects, o -> FinSet( o ) / C ) );
+    SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( c.objects, g ) / C ) );
     
     return C;
     
