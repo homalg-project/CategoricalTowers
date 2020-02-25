@@ -83,7 +83,7 @@ InstallMethod( QuotientCategory,
         
       fi;
       
-      name := Concatenation( "Quotient category ( ", Name( C ), " ) by ", name_membership_function );
+      name := Concatenation( "Quotient category( ", Name( C ), " ) by ", name_membership_function );
       
     fi;
    
