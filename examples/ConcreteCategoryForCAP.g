@@ -91,4 +91,14 @@ nine(A.1);
 #! <A vector space object over GF(3) of dimension 5>
 nine(A.2);
 #! <A vector space object over GF(3) of dimension 4>
+nine(A.b);
+#! <A morphism in Category of matrices over GF(3)>
+Display( nine(A.b) );
+#!  . 1 . .
+#!  . . 1 .
+#!  . . . .
+#!  . 1 . 1
+#!  . . 1 .
+#! 
+#! A morphism in Category of matrices over GF(3)
 #! @EndExample
