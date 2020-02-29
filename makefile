@@ -42,4 +42,4 @@ test-spacing:
 	rm spacing_diff
 	rm spacing_diff_no_blanks
 
-ci-test: test-tabs test-overfull-hboxes test-with-coverage
+ci-test: test-overfull-hboxes test-with-coverage
