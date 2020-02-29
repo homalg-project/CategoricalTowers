@@ -17,7 +17,16 @@ jobs:
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
+          git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
+          git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
+          git clone --depth 1 https://github.com/homalg-project/InfiniteLists.git
+          git clone --depth 1 https://github.com/homalg-project/ComplexesForCAP.git
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
+          git clone --depth 1 https://github.com/homalg-project/Locales.git
+          git clone --depth 1 https://github.com/homalg-project/QPA2.git
+          git clone --depth 1 https://github.com/homalg-project/Bialgebroids.git
+          git clone --depth 1 https://github.com/homalg-project/FunctorCategories.git
+          git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP.git
           cd CatReps
           TERM=dumb make ci-test
           bash <(curl -s https://codecov.io/bash)
