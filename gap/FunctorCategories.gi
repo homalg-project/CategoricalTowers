@@ -464,38 +464,17 @@ InstallMethodWithCache( Hom,
         [ IsAlgebroid, IsCapCategory ],
         
   function( B, C )
-    local name, Hom, name_of_object, vertices, create_func_bool, arrows, relations,
-          create_func_object0, create_func_object,
+    local name, vertices, create_func_bool,
+          name_of_object, create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
-          recnames, skip, func, pos, info, add;
+          list_of_operations_to_install, skip, func, pos, commutative_ring,
+          Hom, arrows, relations;
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
-        Hom := CreateCapCategory( name );
     else
-        Hom := CreateCapCategory( );
+        name := Concatenation( "Category of functors" );
     fi;
-    
-    SetFilterObj( Hom, IsCapHomCategory );
-    
-    AddObjectRepresentation( Hom, IsCapCategoryObjectInHomCategory );
-    AddMorphismRepresentation( Hom, IsCapCategoryMorphismInHomCategory );
-    
-    SetSource( Hom, B );
-    SetRange( Hom, C );
-    
-    for name in ListKnownCategoricalProperties( C ) do
-        name := ValueGlobal( name );
-        Setter( name )( Hom, name( C ) );
-    od;
-    
-    if HasCommutativeRingOfLinearCategory( C ) then
-      
-      SetCommutativeRingOfLinearCategory( Hom, CommutativeRingOfLinearCategory( C ) );
-      
-    fi;
-    
-    name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         
@@ -511,97 +490,13 @@ InstallMethodWithCache( Hom,
             
         end;
         
-        arrows := SetOfGeneratingMorphisms( B );
+    else
         
-        AddIsWellDefinedForMorphisms( Hom,
-          function( eta )
-            local S, T;
-            
-            S := Source( eta );
-            T := Range( eta );
-            
-            return ForAll( arrows,
-                           function( m )
-                             return
-                               IsEqualForMorphisms(
-                                       PreCompose( S( m ), eta( Range( m ) ) ),
-                                       PreCompose( eta( Source( m ) ), T( m ) ) );
-                           end );
-            
-          end );
-        
-        relations := RelationsOfAlgebroid( B );
-        relations := List( relations, UnderlyingQuiverAlgebraElement );
-        
-        AddIsWellDefinedForObjects( Hom,
-          function( F )
-            
-            if not ForAll( arrows, m -> IsEqualForObjects( F( Source( m ) ), Source( F( m ) ) ) ) then
-                return false;
-            elif not ForAll( arrows, m -> IsEqualForObjects( F( Range( m ) ), Range( F( m ) ) ) ) then
-                return false;
-            fi;
-            
-            F := UnderlyingCapTwoCategoryCell( F );
-            
-            return ForAll( relations, m -> IsZero( ApplyToQuiverAlgebraElement( F, m ) ) );
-            
-          end );
-        
-        AddIsEqualForObjects( Hom,
-          function( F, G )
-            local Fo, Go, o, Fm, Gm, m;
-            
-            Fo := ValuesOnAllObjects( F );
-            Go := ValuesOnAllObjects( G );
-            
-            o := Length( Fo );
-            
-            if not ForAll( [ 1 .. o ], i -> IsEqualForObjects( Fo[i], Go[i] ) ) then
-                return false;
-            fi;
-            
-            Fm := ValuesOnAllGeneratingMorphisms( F );
-            Gm := ValuesOnAllGeneratingMorphisms( G );
-            
-            m := Length( Fm );
-            
-            return ForAll( [ 1 .. m ], i -> IsEqualForMorphisms( Fm[i], Gm[i] ) );
-            
-          end );
-        
-        AddIsEqualForMorphisms( Hom,
-          function( eta, epsilon )
-            local o;
-            
-            eta := ValuesOnAllObjects( eta );
-            epsilon := ValuesOnAllObjects( epsilon );
-            
-            o := Length( eta );
-            
-            return ForAll( [ 1 .. o ], i -> IsEqualForMorphisms( eta[i], epsilon[i] ) );
-            
-          end );
-        
-        AddIsCongruentForMorphisms( Hom,
-          function( eta, epsilon )
-            local o;
-            
-            eta := ValuesOnAllObjects( eta );
-            epsilon := ValuesOnAllObjects( epsilon );
-            
-            o := Length( eta );
-            
-            return ForAll( [ 1 .. o ], i -> IsCongruentForMorphisms( eta[i], epsilon[i] ) );
-            
-          end );
+        create_func_bool := fail;
         
     fi;
     
-    ## setting the cache comparison to IsIdenticalObj
-    ## boosts the performance considerably
-    AddIsEqualForCacheForObjects( Hom, IsIdenticalObj );
-    AddIsEqualForCacheForMorphisms( Hom, IsIdenticalObj );
+    name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
     ## e.g., ZeroObject
     create_func_object0 :=
@@ -631,13 +526,13 @@ InstallMethodWithCache( Hom,
             AddMorphismFunction( result,
               function( new_source, morB, new_range )
                 return functorial( C );
-              end );
+            end );
             
             return AsObjectInHomCategory( Hom, result );
             
-          end;
-          
-      end;
+        end;
+        
+    end;
     
     ## e.g., DirectSum, KernelObject
     create_func_object :=
@@ -759,7 +654,7 @@ InstallMethodWithCache( Hom,
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
       function( name )
-        local oper, type;
+        local info, oper, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -788,16 +683,16 @@ InstallMethodWithCache( Hom,
               function( source, objB, range )
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
-            
+              
             return AsMorphismInHomCategory( Hom, result );
             
-          end;
-          
-      end;
+        end;
+        
+    end;
     
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
-    recnames := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
-    recnames := Intersection( recnames, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
+    list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
+    list_of_operations_to_install := Intersection( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
     
     skip := [
              ];
@@ -809,67 +704,115 @@ InstallMethodWithCache( Hom,
                   "TensorProductOnObjects",
                   "DualOnObjects",
                   ] );
-    else
-        Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
     fi;
     
     for func in skip do
         
-        pos := Position( recnames, func );
+        pos := Position( list_of_operations_to_install, func );
         if not pos = fail then
-            Remove( recnames, pos );
+            Remove( list_of_operations_to_install, pos );
         fi;
         
     od;
     
-    for name in recnames do
+    if HasCommutativeRingOfLinearCategory( C ) then
+        commutative_ring := CommutativeRingOfLinearCategory( C );
+    else
+        commutative_ring := fail;
+    fi;
+    
+    Hom := CategoryConstructor( :
+                   name := name,
+                   category_object_filter := IsCapCategoryObjectInHomCategory,
+                   category_morphism_filter := IsCapCategoryMorphismInHomCategory,
+                   commutative_ring := commutative_ring,
+                   is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
+                   list_of_operations_to_install := list_of_operations_to_install,
+                   create_func_bool := create_func_bool,
+                   create_func_object0 := create_func_object0,
+                   create_func_object := create_func_object,
+                   create_func_morphism := create_func_morphism,
+                   create_func_universal_morphism := create_func_universal_morphism
+                   );
+    
+    ## setting the cache comparison to IsIdenticalObj
+    ## boosts the performance considerably
+    AddIsEqualForCacheForObjects( Hom, IsIdenticalObj );
+    AddIsEqualForCacheForMorphisms( Hom, IsIdenticalObj );
+    
+    SetFilterObj( Hom, IsCapHomCategory );
+    
+    SetSource( Hom, B );
+    SetRange( Hom, C );
+    
+    for name in ListKnownCategoricalProperties( C ) do
+        name := ValueGlobal( name );
+        Setter( name )( Hom, name( C ) );
+    od;
+    
+    if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        arrows := SetOfGeneratingMorphisms( B );
         
-        if info.return_type = "bool" then
-            if not ( HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) then
-                continue;
-            fi;
-            func := create_func_bool( name );
-        elif info.return_type = "object" and info.filter_list = [ "category" ] then
-            func := create_func_object0( name );
-        elif info.return_type = "object" then
-            func := create_func_object( name );
-        elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
-            if not IsBound( info.io_type ) then
-                ## if there is no io_type we cannot do anything
-                continue;
-            elif IsList( info.with_given_without_given_name_pair ) and
-              name = info.with_given_without_given_name_pair[1] then
-                ## do not install universal morphisms but their
-                ## with-given-universal-object counterpart
-                Add( recnames, info.with_given_without_given_name_pair[2] );
-                continue;
-            elif IsBound( info.universal_object ) and
-              Position( recnames, info.universal_object ) = fail then
-                ## add the corresponding universal object
-                ## at the end of the list for its method to be installed
-                Add( recnames, info.universal_object );
+        AddIsWellDefinedForMorphisms( Hom,
+          function( eta )
+            local S, T;
+            
+            S := Source( eta );
+            T := Range( eta );
+            
+            return ForAll( arrows,
+                           function( m )
+                             return
+                               IsEqualForMorphisms(
+                                       PreCompose( S( m ), eta( Range( m ) ) ),
+                                       PreCompose( eta( Source( m ) ), T( m ) ) );
+                           end );
+            
+          end );
+        
+        relations := RelationsOfAlgebroid( B );
+        relations := List( relations, UnderlyingQuiverAlgebraElement );
+        
+        AddIsWellDefinedForObjects( Hom,
+          function( F )
+            
+            if not ForAll( arrows, m -> IsEqualForObjects( F( Source( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( arrows, m -> IsEqualForObjects( F( Range( m ) ), Range( F( m ) ) ) ) then
+                return false;
             fi;
             
-            if IsList( info.with_given_without_given_name_pair ) then
-                func := create_func_universal_morphism( name );
-            else
-                func := create_func_morphism( name );
-            fi;
-        elif info.return_type in [ "other_object", "other_morphism", IsList ] then
-            Info( InfoFunctorCategories, 2, "cannot yet handle ", info.return_type, " required for ", name );
-            continue;
-        else
-            Error( "unknown return type of the operation ", name );
-        fi;
+            F := UnderlyingCapTwoCategoryCell( F );
+            
+            return ForAll( relations, m -> IsZero( ApplyToQuiverAlgebraElement( F, m ) ) );
+            
+          end );
         
-        add := ValueGlobal( Concatenation( "Add", name ) );
+        AddIsEqualForObjects( Hom,
+          function( F, G )
+            
+            return ForAll( vertices, o -> IsEqualForObjects( F( o ), G( o ) ) ) and
+                   ForAll( arrows, m -> IsEqualForMorphisms( F( m ), G( m ) ) );
+            
+          end );
         
-        add( Hom, func );
+        AddIsEqualForMorphisms( Hom,
+          function( eta, epsilon )
+            
+            return ForAll( vertices, o -> IsEqualForMorphisms( eta( o ), epsilon( o ) ) );
+            
+          end );
         
-    od;
-    
+        AddIsCongruentForMorphisms( Hom,
+          function( eta, epsilon )
+            
+            return ForAll( vertices, o -> IsCongruentForMorphisms( eta( o ), epsilon( o ) ) );
+            
+          end );
+          
+    fi;
+
     if IsMatrixCategory( C ) and
         IsFiniteDimensional( UnderlyingQuiverAlgebra( B ) ) then
       
@@ -1218,4 +1161,3 @@ InstallMethod( Display,
     od;
        
 end );
-
