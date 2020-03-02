@@ -14,6 +14,7 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/Bialgebroids.git
+          git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
           git clone --depth 1 https://github.com/homalg-project/InfiniteLists.git
           git clone --depth 1 https://github.com/homalg-project/ComplexesForCAP.git
           git clone --depth 1 https://github.com/homalg-project/QPA2.git
