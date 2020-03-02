@@ -871,9 +871,7 @@ InstallMethodWithCache( Hom,
     od;
     
     if IsMatrixCategory( C ) and
-        IsFiniteDimensional(
-          UnderlyingQuiverAlgebra( B )
-            ) then
+        IsFiniteDimensional( UnderlyingQuiverAlgebra( B ) ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
       
