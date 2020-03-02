@@ -4,3 +4,5 @@
 # Reading the implementation part of the package.
 #
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
+ReadPackage( "FunctorCategories", "gap/ExternalHom.gi");
+ReadPackage( "FunctorCategories", "gap/Functors.gi");

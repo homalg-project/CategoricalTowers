@@ -17,6 +17,13 @@ SetInfoLevel( InfoFunctorCategories, 1 );
 ####################################
 
 #! @Description
+#!  The &GAP; category of Hom-categories of functors between two fixed categories.
+#! @Arguments category
+DeclareCategory( "IsCapHomCategory",
+        IsCapCategory and
+        IsAttributeStoringRep );
+
+#! @Description
 #!  The &GAP; category of cells in a Hom-category of functors between two fixed categories.
 #! @Arguments cell
 DeclareCategory( "IsCapCategoryCellInHomCategory",
@@ -190,6 +197,30 @@ DeclareOperation( "AsMorphismInHomCategory",
 #! @Group AsMorphismInHomCategory
 DeclareOperation( "AsMorphismInHomCategory",
         [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ] );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of indecomposable projective objects in <A>Hom</A> up to isomorphism.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "IndecProjectiveObjects",
+        IsCapHomCategory );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of indecomposable injective objects in <A>Hom</A> up to isomorphism.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "IndecInjectiveObjects",
+        IsCapHomCategory );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of simple objects in <A>Hom</A>.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "SimpleObjects",
+        IsCapHomCategory );
 
 #! @Description
 #!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)

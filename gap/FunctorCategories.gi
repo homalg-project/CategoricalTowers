@@ -476,6 +476,8 @@ InstallMethodWithCache( Hom,
         Hom := CreateCapCategory( );
     fi;
     
+    SetFilterObj( Hom, IsCapHomCategory );
+    
     AddObjectRepresentation( Hom, IsCapCategoryObjectInHomCategory );
     AddMorphismRepresentation( Hom, IsCapCategoryMorphismInHomCategory );
     
@@ -486,6 +488,12 @@ InstallMethodWithCache( Hom,
         name := ValueGlobal( name );
         Setter( name )( Hom, name( C ) );
     od;
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+      
+      SetCommutativeRingOfLinearCategory( Hom, CommutativeRingOfLinearCategory( C ) );
+      
+    fi;
     
     name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
     
@@ -849,11 +857,11 @@ InstallMethodWithCache( Hom,
             else
                 func := create_func_morphism( name );
             fi;
-        elif info.return_type in [ "other_object", "other_morphism" ] then
+        elif info.return_type in [ "other_object", "other_morphism", IsList ] then
             Info( InfoFunctorCategories, 2, "cannot yet handle ", info.return_type, " required for ", name );
             continue;
         else
-            Error( "unkown return type of the operation ", name );
+            Error( "unknown return type of the operation ", name );
         fi;
         
         add := ValueGlobal( Concatenation( "Add", name ) );
@@ -861,6 +869,113 @@ InstallMethodWithCache( Hom,
         add( Hom, func );
         
     od;
+    
+    if IsMatrixCategory( C ) and
+        IsFiniteDimensional( UnderlyingQuiverAlgebra( B ) ) then
+      
+      SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
+      
+      SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
+      
+      AddIsProjective( Hom,
+        function( F )
+          local iso;
+          
+          iso := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          return IsProjective( ApplyFunctor( iso, F ) );
+          
+      end );
+      
+      AddIsInjective( Hom,
+        function( F )
+          local iso;
+          
+          iso := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          return IsInjective( ApplyFunctor( iso, F ) );
+          
+      end );
+      
+      AddSomeProjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, SomeProjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddSomeInjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, SomeInjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddEpimorphismFromSomeProjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, EpimorphismFromSomeProjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddMonomorphismIntoSomeInjectiveObject( Hom,
+        function( F )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, MonomorphismIntoSomeInjectiveObject( ApplyFunctor( iso_1, F ) ) );
+          
+      end );
+      
+      AddProjectiveLift( Hom,
+        function( eta_1, eta_2 )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, ProjectiveLift( ApplyFunctor( iso_1, eta_1 ), ApplyFunctor( iso_1, eta_2 ) ) );
+          
+      end );
+      
+      AddInjectiveColift( Hom,
+        function( eta_1, eta_2 )
+          local iso_1, iso_2;
+          
+          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          
+          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+          
+          return ApplyFunctor( iso_2, InjectiveColift( ApplyFunctor( iso_1, eta_1 ), ApplyFunctor( iso_1, eta_2 ) ) );
+          
+      end );
+      
+      AddBasisOfExternalHom( Hom,
+        BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CATEGORY );
+        
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
+        COEFFICIENTS_OF_MORPHISM_OF_FUNCTORS_INTO_MATRIX_CATEGORY );
+        
+    fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasCounit( B ) and HasComultiplication( B ) then
@@ -974,6 +1089,133 @@ end );
 
 ####################################
 #
+# Attributes
+#
+####################################
+
+##
+InstallMethod( IndecProjectiveObjects,
+          [ IsCapHomCategory ],
+  function( Hom )
+    local pp, iso;
+    
+    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    pp := IndecProjRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    
+    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+    
+    return List( pp, p -> ApplyFunctor( iso, p ) );
+    
+end );
+
+##
+InstallMethod( IndecInjectiveObjects,
+          [ IsCapHomCategory ],
+  function( Hom )
+    local ii, iso;
+    
+    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    ii := IndecInjRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    
+    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+    
+    return List( ii, i -> ApplyFunctor( iso, i ) );
+    
+end );
+
+##
+InstallMethod( SimpleObjects,
+          [ IsCapHomCategory ],
+  function( Hom )
+    local ss, iso;
+    
+    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    ss := SimpleRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    
+    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
+    
+    return List( ss, s -> ApplyFunctor( iso, s ) );
+    
+end );
+
+####################################
+#
 # View, Print, and Display methods:
 #
 ####################################
+
+##
+InstallMethod( Display,
+          [ IsCapCategoryObjectInHomCategory ],
+  function( F )
+    local algebroid, objects, images_of_objects, morphisms, images_of_morphisms, i;
+    
+    Print( "An object in ", Name( CapCategory( F ) ), " defined by the following data:\n" );
+    
+    algebroid := AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) );
+    
+    objects := SetOfObjects( algebroid );
+    
+    images_of_objects := ValuesOnAllObjects( F );
+    
+    for i in [ 1 .. Size( objects ) ] do
+      
+      Print( "\n\nImage of " ); ViewObj( objects[ i ] ); Print( ":\n" );
+      
+      Display( images_of_objects[ i ] );
+      
+    od;
+    
+    morphisms := SetOfGeneratingMorphisms( algebroid );
+    
+    images_of_morphisms := ValuesOnAllGeneratingMorphisms( F );
+    
+    for i in [ 1 .. Size( morphisms ) ] do
+       
+      Print( "\n\nImage of " ); ViewObj( morphisms[ i ] ); Print( ":\n" );
+      
+      Display( images_of_morphisms[ i ] );
+      
+    od;
+   
+end );
+
+##
+InstallMethod( Display,
+          [ IsCapCategoryMorphismInHomCategory ],
+  function( eta )
+    local algebroid, objects, images_of_objects, i;
+    
+    Print( "A morphism in ", Name( CapCategory( eta ) ), " defined by the following data:\n" );
+    
+    algebroid := AsCapCategory( Source( Source( UnderlyingCapTwoCategoryCell( eta ) ) ) );
+    
+    objects := SetOfObjects( algebroid );
+    
+    images_of_objects := ValuesOnAllObjects( eta );
+    
+    for i in [ 1 .. Size( objects ) ] do
+      
+      Print( "\n\nImage of " ); ViewObj( objects[ i ] ); Print( ":\n" );
+      
+      Display( images_of_objects[ i ] );
+      
+    od;
+       
+end );
+
