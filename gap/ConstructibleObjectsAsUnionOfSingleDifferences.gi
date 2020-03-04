@@ -500,6 +500,28 @@ InstallMethod( ClosureAsConstructibleObject,
 end );
 
 ##
+InstallMethod( \*,
+        "for a constructible object as a union of formal single differences and an object in a meet-semilattice of formal single differences",
+        [ IsConstructibleObjectAsUnionOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences ],
+
+  function( A, B )
+    
+    return A * ( B + 0 );
+    
+end );
+
+##
+InstallMethod( \*,
+        "for an object in a meet-semilattice of formal single differences and a constructible object as a union of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ],
+
+  function( A, B )
+    
+    return ( A + 0 ) * B;
+    
+end );
+
+##
 InstallMethod( \=,
         "for an object in a thin category and a constructible object as a union of formal single differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfSingleDifferences ],
