@@ -970,6 +970,7 @@ InstallMethodWithCache( Hom,
                 fi;
                 
                 return coef * id;
+                
               end );
             
             return AsObjectInHomCategory( Hom, I );
