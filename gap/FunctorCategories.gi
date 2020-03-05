@@ -697,15 +697,6 @@ InstallMethodWithCache( Hom,
     skip := [
              ];
     
-    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
-       HasCounit( B ) and HasComultiplication( B ) then
-        Append( skip,
-                [ "TensorUnit",
-                  "TensorProductOnObjects",
-                  "DualOnObjects",
-                  ] );
-    fi;
-    
     for func in skip do
         
         pos := Position( list_of_operations_to_install, func );
