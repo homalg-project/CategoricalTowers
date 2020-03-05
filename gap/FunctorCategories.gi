@@ -468,7 +468,7 @@ InstallMethodWithCache( Hom,
           name_of_object, create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          Hom, arrows, relations;
+          Hom, properties, arrows, relations;
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -745,9 +745,21 @@ InstallMethodWithCache( Hom,
     SetSource( Hom, B );
     SetRange( Hom, C );
     
-    for name in ListKnownCategoricalProperties( C ) do
+    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing",
+                    "IsAdditiveCategory",
+                    "IsPreAbelianCategory",
+                    "IsAbelianCategory",
+                    #"IsAbelianCategoryWithEnoughProjectives",
+                    #"IsAbelianCategoryWithEnoughInjectives",
+                    ];
+    
+    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
         name := ValueGlobal( name );
+        
         Setter( name )( Hom, name( C ) );
+        
     od;
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
@@ -922,6 +934,21 @@ InstallMethodWithCache( Hom,
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasCounit( B ) and HasComultiplication( B ) then
+
+        properties := [ "IsMonoidalCategory",
+                        "IsBraidedMonoidalCategory",
+                        "IsSymmetricMonoidalCategory",
+                        "IsClosedMonoidalCategory",
+                        "IsSymmetricClosedMonoidalCategory",
+                        "IsRigidSymmetricClosedMonoidalCategory",
+                        ];
+        
+        for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
+            name := ValueGlobal( name );
+            
+            Setter( name )( Hom, name( C ) );
+            
+        od;
         
         AddTensorUnit( Hom,
           function( )
@@ -1015,7 +1042,7 @@ InstallMethodWithCache( Hom,
             return AsObjectInHomCategory( Hom, Fd );
             
           end );
-          
+        
     fi;
     
     AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function() IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
@@ -1025,7 +1052,14 @@ InstallMethodWithCache( Hom,
     fi;
     
     Finalize( Hom );
-
+    
+    if not ( HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+             HasCounit( B ) and HasComultiplication( B ) ) then
+        
+        SetIsMonoidalCategory( Hom, false );
+        
+    fi;
+    
     return Hom;
     
 end );
