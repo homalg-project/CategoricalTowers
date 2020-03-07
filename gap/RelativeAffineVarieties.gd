@@ -16,6 +16,13 @@ DeclareAttribute( "FunctorClosureOfProjectionBetweenZariskiCoframes",
 DeclareAttribute( "ClosureOfProjection",
         IsObjectInZariskiCoframeOfAnAffineVariety );
 
+#! @Description
+#!  Compute the image closure of the morphism defined by the morphism <A>phi</A> of affine rings.
+#! @Arguments phi
+#! @Returns a constructible object as a union of formal multiple differences
+DeclareAttribute( "ClosureOfImage",
+        IsHomalgRingMap );
+
 #!
 DeclareAttribute( "FunctorPreimageOfProjectionBetweenZariskiCoframes",
         IsCapCategory );
