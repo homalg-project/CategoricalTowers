@@ -7,3 +7,4 @@
 ReadPackage( "Bialgebroids", "gap/Algebroids.gi");
 ReadPackage( "Bialgebroids", "gap/Bialgebroids.gi");
 ReadPackage( "Bialgebroids", "gap/QPA2.gi");
+ReadPackage( "Bialgebroids", "gap/Functors.gi");

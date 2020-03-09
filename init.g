@@ -6,3 +6,4 @@
 
 ReadPackage( "Bialgebroids", "gap/Algebroids.gd");
 ReadPackage( "Bialgebroids", "gap/Bialgebroids.gd");
+ReadPackage( "Bialgebroids", "gap/Functors.gd");
