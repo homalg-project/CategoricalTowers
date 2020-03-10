@@ -16,7 +16,6 @@ AutoDoc(rec(
                 \usepackage{tikz}
                 \usetikzlibrary{shapes,arrows,matrix}
                 \usepackage{faktor}
-                \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
                 """
         ),
     ),
