@@ -106,12 +106,12 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.12.12" ],
-                   [ "CategoryConstructor", ">= 2019.11.02" ],
-                   [ "Toposes", ">= 2019.11.06" ],
+                   [ "CategoryConstructor", ">= 2019.11.02" ]
+                  ],
+  SuggestedOtherPackages := [
                    [ "Locales", ">= 2019.11.15" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
-                   ],
-  SuggestedOtherPackages := [ ],
+                  ],
   ExternalConditions := [ ],
 ),
 
