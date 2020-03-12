@@ -34,7 +34,7 @@ InstallMethod( InclusionFunctor,
 end );
 
 ##
-InstallMethod( RestrictFunctorToFullSubcategoryOfSourceOp,
+InstallMethodWithCache( RestrictFunctorToFullSubcategoryOfSource,
           [ IsCapFunctor, IsCapFullSubcategory ],
   function( F, full )
     local source_F, range_F, name, R;
@@ -72,7 +72,7 @@ InstallMethod( RestrictFunctorToFullSubcategoryOfSourceOp,
 end );
 
 ##
-InstallMethod( RestrictFunctorToFullSubcategoryOfRangeOp,
+InstallMethodWithCache( RestrictFunctorToFullSubcategoryOfRange,
           [ IsCapFunctor, IsCapFullSubcategory ],
   function( F, full )
     local source_F, range_F, name, R;

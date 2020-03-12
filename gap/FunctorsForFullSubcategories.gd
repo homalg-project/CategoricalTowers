@@ -22,16 +22,16 @@ DeclareAttribute( "InclusionFunctor",
 #!  The output is the restriction functor $F_{full}$:<A>full</A>$\to$<C>Range</C>(<A>F</A>).
 #! @Arguments F, full
 #! @Returns CapFunctor
-KeyDependentOperation( "RestrictFunctorToFullSubcategoryOfSource",
-                  IsCapFunctor, IsCapFullSubcategory, ReturnTrue );
+DeclareOperation( "RestrictFunctorToFullSubcategoryOfSource",
+        [ IsCapFunctor, IsCapFullSubcategory ] );
 
 #! @Description
 #!  The arguments are a functor <A>F</A> and a full subcategory <A>full</A> of <C>Range</C>(<A>F</A>).
 #!  The output is the restriction functor $F_{full}$:<C>Source</C>(<A>F</A>)$\to$<A>full</A>.
 #! @Arguments F, full
 #! @Returns CapFunctor
-KeyDependentOperation( "RestrictFunctorToFullSubcategoryOfRange",
-                  IsCapFunctor, IsCapFullSubcategory, ReturnTrue );
+DeclareOperation( "RestrictFunctorToFullSubcategoryOfRange",
+        [ IsCapFunctor, IsCapFullSubcategory ] );
 
 #! @Description
 #!  The arguments are a functor <A>F</A> and two full subcategories <A>full_1</A> of <C>Source</C>(<A>F</A>)
