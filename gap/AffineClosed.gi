@@ -511,8 +511,9 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         ## instead:
         
         l := L[1];
-        
-        if ForAny( L, IsInitial ) then
+
+        ## testing the membership of 1 might be very expensive for some ideals in the sum
+        if ForAny( L, a -> HasIsInitial( a ) and IsInitial( a ) ) then
             return InitialObject( l );
         fi;
         

@@ -309,7 +309,8 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         l := L[1];
         
-        if ForAny( L, IsTerminal ) then
+        ## testing the membership of 1 might be very expensive for some ideals in the sum
+        if ForAny( L, a -> HasIsTerminal( a ) and IsTerminal( a ) ) then
             return TerminalObject( l );
         fi;
         
