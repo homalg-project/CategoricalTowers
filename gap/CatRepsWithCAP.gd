@@ -79,9 +79,9 @@ DeclareAttribute( "SetOfMorphisms",
 #!  Construct finite concrete category out of the list <A>L</A> of morphisms given by images.
 #! @Arguments L
 #! @Returns a &CAP; object
-DeclareOperation( "ConcreteCategoryForCAP",
+DeclareOperation( "ConcreteCategoryWithEndomorphismGroups",
         [ IsList ] );
-#! @InsertChunk ConcreteCategoryForCAP
+#! @InsertChunk ConcreteCategoryWithEndomorphismGroups
 
 #! @Description
 #!  Construct the category of representations of the algebroid <A>kq</A>

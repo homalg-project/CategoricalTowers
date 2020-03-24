@@ -1,9 +1,9 @@
-#! @Chunk ConcreteCategoryForCAP
+#! @Chunk ConcreteCategoryWithEndomorphismGroups
 
 LoadPackage( "CatReps" );
 
 #! @Example
-c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
+c3c3 := ConcreteCategoryWithEndomorphismGroups( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
 #! A finite concrete category
 objects := SetOfObjects( c3c3 );
 #! [ An object in subcategory given by: <An object in FinSets>,

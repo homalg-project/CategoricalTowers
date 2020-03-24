@@ -48,7 +48,7 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
 end );
 
 ##
-InstallMethod( ConcreteCategoryForCAP,
+InstallMethod( ConcreteCategoryWithEndomorphismGroups,
         "for a list",
         [ IsList ],
         
