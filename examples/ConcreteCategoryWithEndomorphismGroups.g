@@ -585,5 +585,5 @@ Display( iso );
 #!  . . . 1 . . . . . . . . . . . .
 #!  . . . . . . . . . . . 1 . . . .
 #! 
-#! A morphism in Category of matrices over GF(3)
+#! An isomorphism in Category of matrices over GF(3)
 #! @EndExample

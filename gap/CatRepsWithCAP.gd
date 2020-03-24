@@ -93,8 +93,8 @@ DeclareOperation( "CategoryOfRepresentations",
 
 #! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
-#!  by a list <A>eta</A> of monomorphisms being the components of the
-#!  natural monomorphism from $S$ into <A>F</A>.
+#!  by a list <A>eta</A> of morphisms, where the image embeddings thereof are
+#!  the components of the natural monomorphism from $S$ into <A>F</A>.
 #! @Arguments eta, F
 #! @Returns an morphism in a Hom-category
 DeclareOperation( "EmbeddingOfSubRepresentation",

@@ -150,6 +150,8 @@ InstallMethod( EmbeddingOfSubRepresentation,
     
     kq := Source( CapCategory( F ) );
     
+    eta := List( eta, function( eta_o ) if IsMonomorphism( eta_o ) then return eta_o; fi; return ImageEmbedding( eta_o ); end );
+    
     objects := List( eta, Source );
     morphisms := List(
                       SetOfGeneratingMorphisms( kq ),
