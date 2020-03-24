@@ -93,6 +93,22 @@ DeclareOperation( "CategoryOfRepresentations",
 
 ####################################
 #
+#! @Section Operations
+#
+####################################
+
+#! @Description
+#!  Return a list of monomorphisms describing the embeddings
+#!  of a list of direct summands of the representation <A>F</A>,
+#!  the direct sum thereof is isomorphic to <A>F</A>.
+#! @Arguments 
+#! @Returns F
+DeclareOperation( "WeakDirectSumDecomposition",
+        [ IsCapCategoryObjectInHomCategory ] );
+
+
+####################################
+#
 #! @Section Tools
 #
 ####################################
@@ -104,3 +120,13 @@ DeclareOperation( "CategoryOfRepresentations",
 #! @Returns a morphism of finite sets
 DeclareGlobalFunction( "ConvertToMapOfFinSets" );
 #! @InsertChunk ConvertToMapOfFinSets
+
+#! @Arguments F
+#! @Returns a record
+DeclareAttribute( "RecordOfCategory",
+        IsAlgebroid );
+
+#! @Arguments F
+#! @Returns a record
+DeclareAttribute( "RecordOfCatRep",
+        IsCapCategoryObjectInHomCategory, "mutable" );

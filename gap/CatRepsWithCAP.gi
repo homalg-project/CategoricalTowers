@@ -79,7 +79,7 @@ InstallMethod( CategoryOfRepresentations,
     local CatReps;
     
     CatReps := Hom( kq, A : FinalizeCategory := false );
-
+    
     AddTensorUnit( CatReps,
       function( )
         local objects, morphisms;
@@ -109,5 +109,71 @@ InstallMethod( CategoryOfRepresentations,
     Finalize( CatReps );
     
     return CatReps;
+    
+end );
+
+##
+InstallMethod( RecordOfCategory,
+        "for an algebroid",
+        [ IsAlgebroid ],
+        
+  function( kq )
+
+    return rec( domain := List( SetOfGeneratingMorphisms( kq ), a -> Int( String( UnderlyingVertex( Source( a ) ) ) ) ),
+                codomain := List( SetOfGeneratingMorphisms( kq ), a -> Int( String( UnderlyingVertex( Range( a ) ) ) ) ),
+                );
+    
+end );
+
+##
+InstallMethod( RecordOfCatRep,
+        "for an object in a Hom-category",
+        [ IsCapCategoryObjectInHomCategory ],
+        
+  function( F )
+
+    return rec( category := RecordOfCategory( Source( CapCategory( F ) ) ),               
+                genimages := List( ValuesOnAllGeneratingMorphisms( F ), a -> Eval( UnderlyingMatrix( a ) )!.matrix ),
+                dimension := List( ValuesOnAllObjects( F ), Dimension ),
+                field := CommutativeRingOfLinearCategory( Source( CapCategory( F ) ) )!.ring
+                );
+    
+end );
+
+    
+
+##
+InstallMethod( WeakDirectSumDecomposition,
+        "for an object in a Hom-category",
+        [ IsCapCategoryObjectInHomCategory ],
+        
+  function( F )
+    local f, d, kq, k, objects, morphisms, summands, embeddings;
+    
+    f := RecordOfCatRep( F );
+    
+    d := Decompose( f );
+    
+    kq := Source( CapCategory( F ) );
+    
+    k := CommutativeRingOfLinearCategory( kq );
+    
+    d := List( d, eta -> List( [ 1 .. Length( eta ) ], i -> VectorSpaceMorphism( VectorSpaceObject( Length( eta[i] ), k ), eta[i], F( kq.(i) ) ) ) );
+    
+    objects := List( d, eta -> List( eta, Source ) );
+    morphisms := List( d, eta ->
+                       List(
+                            SetOfGeneratingMorphisms( kq ),
+                            m ->
+                            LiftAlongMonomorphism( eta[Int( String( UnderlyingVertex( Range( m ) ) ) )],
+                                    PreCompose( eta[Int( String( UnderlyingVertex( Source( m ) ) ) )], F( m ) ) ) ) );
+    
+    summands := ListN( objects, morphisms, {o,m} -> AsObjectInHomCategory( kq, o, m ) );
+    
+    embeddings := List( [ 1 .. Length( d ) ], i -> AsMorphismInHomCategory( summands[i], d[i], F ) );
+    
+    Perform( embeddings, function( eta ) SetIsMonomorphism( eta, true ); end );
+    
+    return embeddings;
     
 end );
