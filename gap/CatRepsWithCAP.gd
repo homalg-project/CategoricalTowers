@@ -91,6 +91,15 @@ DeclareOperation( "ConcreteCategoryForCAP",
 DeclareOperation( "CategoryOfRepresentations",
         [ IsAlgebroid, IsCapCategory ] );
 
+#! @Description
+#!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
+#!  by a list <A>eta</A> of monomorphisms being the components of the
+#!  natural monomorphism from $S$ into <A>F</A>.
+#! @Arguments eta, F
+#! @Returns an morphism in a Hom-category
+DeclareOperation( "EmbeddingOfSubRepresentation",
+        [ IsList, IsCapCategoryObjectInHomCategory ] );
+
 ####################################
 #
 #! @Section Operations
@@ -105,7 +114,6 @@ DeclareOperation( "CategoryOfRepresentations",
 #! @Returns F
 DeclareOperation( "WeakDirectSumDecomposition",
         [ IsCapCategoryObjectInHomCategory ] );
-
 
 ####################################
 #

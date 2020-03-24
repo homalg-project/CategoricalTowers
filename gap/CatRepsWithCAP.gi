@@ -140,7 +140,32 @@ InstallMethod( RecordOfCatRep,
     
 end );
 
+##
+InstallMethod( EmbeddingOfSubRepresentation,
+        "for a list and an object in a Hom-category",
+        [ IsList, IsCapCategoryObjectInHomCategory ],
+        
+  function( eta, F )
+    local kq, objects, morphisms, subrep, embedding;
     
+    kq := Source( CapCategory( F ) );
+    
+    objects := List( eta, Source );
+    morphisms := List(
+                      SetOfGeneratingMorphisms( kq ),
+                      m ->
+                      LiftAlongMonomorphism( eta[Int( String( UnderlyingVertex( Range( m ) ) ) )],
+                              PreCompose( eta[Int( String( UnderlyingVertex( Source( m ) ) ) )], F( m ) ) ) );
+    
+    subrep := AsObjectInHomCategory( kq, objects, morphisms );
+    
+    embedding := AsMorphismInHomCategory( subrep, eta, F );
+    
+    SetIsMonomorphism( embedding, true );
+    
+    return embedding;
+    
+end );
 
 ##
 InstallMethod( WeakDirectSumDecomposition,
@@ -159,21 +184,7 @@ InstallMethod( WeakDirectSumDecomposition,
     k := CommutativeRingOfLinearCategory( kq );
     
     d := List( d, eta -> List( [ 1 .. Length( eta ) ], i -> VectorSpaceMorphism( VectorSpaceObject( Length( eta[i] ), k ), eta[i], F( kq.(i) ) ) ) );
-    
-    objects := List( d, eta -> List( eta, Source ) );
-    morphisms := List( d, eta ->
-                       List(
-                            SetOfGeneratingMorphisms( kq ),
-                            m ->
-                            LiftAlongMonomorphism( eta[Int( String( UnderlyingVertex( Range( m ) ) ) )],
-                                    PreCompose( eta[Int( String( UnderlyingVertex( Source( m ) ) ) )], F( m ) ) ) ) );
-    
-    summands := ListN( objects, morphisms, {o,m} -> AsObjectInHomCategory( kq, o, m ) );
-    
-    embeddings := List( [ 1 .. Length( d ) ], i -> AsMorphismInHomCategory( summands[i], d[i], F ) );
-    
-    Perform( embeddings, function( eta ) SetIsMonomorphism( eta, true ); end );
-    
-    return embeddings;
+
+    return List( d, eta -> EmbeddingOfSubRepresentation( eta, F ) );
     
 end );
