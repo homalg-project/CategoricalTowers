@@ -78,18 +78,6 @@ V1 := VectorSpaceObject( 5, GF3 );
 #! <A vector space object over GF(3) of dimension 5>
 V2 := VectorSpaceObject( 4, GF3 );
 #! <A vector space object over GF(3) of dimension 4>
-e := [[1,1,0,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,0,1,1],[0,0,0,0,1]];;
-e := HomalgMatrix( e, 5, 5, GF3 );;
-e := VectorSpaceMorphism( V1, e, V1 );
-#! <A morphism in Category of matrices over GF(3)>
-Display( e );
-#!  1 1 . . .
-#!  . 1 1 . .
-#!  . . 1 . .
-#!  . . . 1 1
-#!  . . . . 1
-#! 
-#! A morphism in Category of matrices over GF(3)
 d := [[1,1,0,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,0,1,1],[0,0,0,0,1]];;
 d := HomalgMatrix( d, 5, 5, GF3 );;
 d := VectorSpaceMorphism( V1, d, V1 );
