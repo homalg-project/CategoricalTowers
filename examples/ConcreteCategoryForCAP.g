@@ -137,6 +137,10 @@ fortyone := TensorProductOnObjects( nine, nine );
 #!  q(2)[a:1->1,b:1->2,c:2->2] -> Category of matrices over GF(3)>
 IsWellDefined( fortyone );
 #! true
+fortyone( kq.1 );
+#! <A vector space object over GF(3) of dimension 25>
+fortyone( kq.2 );
+#! <A vector space object over GF(3) of dimension 16>
 fortyone(kq.a) = TensorProductOnMorphisms( nine(kq.a), nine(kq.a) );
 #! true
 fortyone(kq.b) = TensorProductOnMorphisms( nine(kq.b), nine(kq.b) );
