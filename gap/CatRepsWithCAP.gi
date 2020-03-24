@@ -140,7 +140,8 @@ InstallMethod( RecordOfCatRep,
     
 end );
 
-##
+## EmbeddingOfSubRepresentation = Spin in catreps
+## Source( EmbeddingOfSubRepresentation ) = SubmoduleRep in catreps
 InstallMethod( EmbeddingOfSubRepresentation,
         "for a list and an object in a Hom-category",
         [ IsList, IsCapCategoryObjectInHomCategory ],
