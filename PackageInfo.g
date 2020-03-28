@@ -121,4 +121,6 @@ AvailabilityTest := function()
 
 TestFile := "tst/testall.g",
 
+Keywords := [ "finite categories, concrete categories, representations of categories" ],
+
 ));
