@@ -486,7 +486,7 @@ InstallMethodWithCache( Hom,
             
             oper := ValueGlobal( name );
             
-            return F_or_eta -> ForAll( vertices, o -> oper( F_or_eta( o ) ) );
+            return F_or_eta -> ForAll( ValuesOnAllObjects( F_or_eta ), oper );
             
         end;
         
