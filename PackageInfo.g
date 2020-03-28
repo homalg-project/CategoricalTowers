@@ -27,7 +27,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "https://algebra.mathematik.uni-siegen.de/barakat/",
+    WWWHome := "https://mohamed-barakat.github.io",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -45,7 +45,7 @@ Persons := [
     Email := "tibor.gruen@student.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57068 Siegen\n",
+               "57072 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
