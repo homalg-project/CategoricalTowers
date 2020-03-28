@@ -1,4 +1,4 @@
-#! @Chunk PreCompose
+#! @Chunk SliceCategory
 
 LoadPackage( "SubcategoriesForCAP" );
 

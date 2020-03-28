@@ -14,17 +14,5 @@
 @Section Constructors
 @Section Examples
 
-@Subsection PreCompose
-@InsertChunk PreCompose
-
-@Chapter The proset/poset of a category
-
-@Section GAP categories
-@Section Global variables
-@Section Attributes
-@Section Constructors
-@Section Operations
-@Section Examples
-
-@Subsection DirectProduct
-@InsertChunk DirectProduct
+@Subsection SliceCategory
+@InsertChunk SliceCategory
