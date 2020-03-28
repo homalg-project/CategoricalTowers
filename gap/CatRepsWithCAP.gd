@@ -110,8 +110,8 @@ DeclareOperation( "EmbeddingOfSubRepresentation",
 #!  Return a list of monomorphisms describing the embeddings
 #!  of a list of direct summands of the representation <A>F</A>,
 #!  the direct sum thereof is isomorphic to <A>F</A>.
-#! @Arguments 
-#! @Returns F
+#! @Arguments F
+#! @Returns a list
 DeclareOperation( "WeakDirectSumDecomposition",
         [ IsCapCategoryObjectInHomCategory ] );
 
