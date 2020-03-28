@@ -1,5 +1,17 @@
 @Chapter Prosets (preordered sets)
 
+@Chapter The proset/poset of a category
+
+@Section GAP categories
+@Section Global variables
+@Section Attributes
+@Section Constructors
+@Section Operations
+@Section Examples
+
+@Subsection PosetOfCategory
+@InsertChunk PosetOfCategory
+
 @Chapter Posets (partially ordered sets)
 
 @Chapter Lattices

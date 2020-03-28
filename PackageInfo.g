@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Locales",
 Subtitle := "",
 Version := Maximum( [
-                   "2020.02.01", ## Mohamed's version
+                   "2020.02.02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.17", ## Tom's version
                    ] ),
@@ -108,6 +108,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2019.02.17" ],
                    [ "CAP", ">= 2019.10.29" ],
+                   [ "CategoryConstructor", ">= 2019.11.02" ],
                    [ "Toposes", ">= 2019.11.15" ],
                    [ "Digraphs", ">= 0.12.1" ],
                    ],
