@@ -29,3 +29,23 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     end );
     
 end );
+
+##
+InstallMethod( \<,
+        "for two objects in a thin category",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+        
+  function( A, B )
+    local C;
+    
+    C := CapCategory( A );
+    
+    if not ( HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) ) then
+        TryNextMethod( );
+    elif not IsIdenticalObj( C, CapCategory( B ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return IsHomSetInhabited( A, B ) and not IsEqualForObjectsIfIsHomSetInhabited( A, B );
+    
+end );
