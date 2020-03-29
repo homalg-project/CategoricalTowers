@@ -105,11 +105,10 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2019.12.12" ],
+                   [ "CAP", ">= 2020.02.16" ],
                    [ "CategoryConstructor", ">= 2019.11.02" ]
                   ],
   SuggestedOtherPackages := [
-                   [ "Toposes", ">= 2019.11.15" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
                   ],
   ExternalConditions := [ ],
