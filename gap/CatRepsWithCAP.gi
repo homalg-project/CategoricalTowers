@@ -78,7 +78,9 @@ InstallMethod( CategoryOfRepresentations,
   function( kq, A )
     local CatReps;
     
-    CatReps := Hom( kq, A : FinalizeCategory := false );
+    CatReps := Hom( kq, A :
+                    doctrines := [ [ "IsSymmetricMonoidalCategory", true ] ],
+                    FinalizeCategory := false );
     
     AddTensorUnit( CatReps,
       function( )
