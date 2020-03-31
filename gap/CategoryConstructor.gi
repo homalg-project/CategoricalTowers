@@ -11,8 +11,8 @@ SetInfoLevel( InfoCategoryConstructor, 1 );
 InstallGlobalFunction( CategoryConstructor,
   function( )
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
-          commutative_ring, list_of_operations_to_install, skip, is_monoidal, func, pos,
-          create_func_bool, create_func_object0, create_func_morphism0,
+          commutative_ring, list_of_operations_to_install, skip, doctrines, doc, is_monoidal,
+          func, pos, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
@@ -49,6 +49,31 @@ InstallGlobalFunction( CategoryConstructor,
     skip := [ 
               "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
+    
+    doctrines := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "doctrines", [ ] );
+    
+    if not doctrines = [ ] and IsStringRep( doctrines ) then
+        doctrines := [ doctrines ];
+    fi;
+
+    if not ForAll( doctrines, doc -> IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) or IsStringRep( doc ) ) then
+        Error( "the list of doctrines  ", doctrines, " has a wrong syntax, it should be something like [ [ \"doc1\", bool1 ], \"doc2\", [ \"doc3\", bool3 ] ]\n" );
+    fi;
+    
+    for doc in doctrines do
+        if IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) then
+            name := doc[1];
+            doc := doc[2];
+        else
+            name := doc;
+            doc := true;
+        fi;
+        
+        name := ValueGlobal( name );
+        
+        Setter( name )( CC, doc );
+        
+    od;
     
     is_monoidal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_monoidal", false );
     
