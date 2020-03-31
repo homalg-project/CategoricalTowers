@@ -925,13 +925,13 @@ InstallMethodWithCache( Hom,
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasCounit( B ) and HasComultiplication( B ) then
-
+        
         properties := [ "IsMonoidalCategory",
-                        "IsBraidedMonoidalCategory",
-                        "IsSymmetricMonoidalCategory",
-                        "IsClosedMonoidalCategory",
-                        "IsSymmetricClosedMonoidalCategory",
-                        "IsRigidSymmetricClosedMonoidalCategory",
+                        #"IsBraidedMonoidalCategory",
+                        #"IsSymmetricMonoidalCategory",
+                        #"IsClosedMonoidalCategory",
+                        #"IsSymmetricClosedMonoidalCategory",
+                        #"IsRigidSymmetricClosedMonoidalCategory",
                         ];
         
         for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
