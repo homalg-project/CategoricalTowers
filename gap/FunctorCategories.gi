@@ -468,7 +468,7 @@ InstallMethodWithCache( Hom,
           name_of_object, create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          Hom, properties, arrows, relations;
+          properties, doctrines, doc, prop, Hom, arrows, relations;
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -712,11 +712,41 @@ InstallMethodWithCache( Hom,
         commutative_ring := fail;
     fi;
     
+    properties := Intersection( ListKnownCategoricalProperties( C ),
+                          [ "IsEnrichedOverCommutativeRegularSemigroup",
+                            "IsAbCategory",
+                            "IsLinearCategoryOverCommutativeRing",
+                            "IsAdditiveCategory",
+                            "IsPreAbelianCategory",
+                            "IsAbelianCategory",
+                            #"IsAbelianCategoryWithEnoughProjectives",
+                            #"IsAbelianCategoryWithEnoughInjectives",
+                            ] );
+
+    doctrines := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "doctrines", [ ] );
+    
+    if not doctrines = [ ] and IsStringRep( doctrines ) then
+        doctrines := [ doctrines ];
+    fi;
+    
+    for doc in properties do
+        if IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) then
+            prop := doc[1];
+        else
+            prop := doc;
+        fi;
+        if not ForAny( doctrines, doc -> ( IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) and doc[1] = prop ) or doc = prop ) then
+            Add( doctrines, doc );
+        fi;
+    od;
+    
     Hom := CategoryConstructor( :
                    name := name,
                    category_object_filter := IsCapCategoryObjectInHomCategory,
                    category_morphism_filter := IsCapCategoryMorphismInHomCategory,
+                   category_filter := IsCapHomCategory,
                    commutative_ring := commutative_ring,
+                   doctrines := doctrines,
                    is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
                    create_func_bool := create_func_bool,
@@ -731,27 +761,8 @@ InstallMethodWithCache( Hom,
     AddIsEqualForCacheForObjects( Hom, IsIdenticalObj );
     AddIsEqualForCacheForMorphisms( Hom, IsIdenticalObj );
     
-    SetFilterObj( Hom, IsCapHomCategory );
-    
     SetSource( Hom, B );
     SetRange( Hom, C );
-    
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing",
-                    "IsAdditiveCategory",
-                    "IsPreAbelianCategory",
-                    "IsAbelianCategory",
-                    #"IsAbelianCategoryWithEnoughProjectives",
-                    #"IsAbelianCategoryWithEnoughInjectives",
-                    ];
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( Hom, name( C ) );
-        
-    od;
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         

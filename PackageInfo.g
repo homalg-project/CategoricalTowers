@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2020.02.17", ## Mohamed's version
+                   "2020.02.18", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.10.18", ## Florians version
                    ] ),
@@ -78,7 +78,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2019.10.29" ],
                    [ "MonoidalCategories", ">= 2019.01.16" ],
                    [ "Bialgebroids", ">= 2019.02.01" ],
-                   [ "CategoryConstructor", ">= 2019.11.01" ],
+                   [ "CategoryConstructor", ">= 2020.02.18" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
