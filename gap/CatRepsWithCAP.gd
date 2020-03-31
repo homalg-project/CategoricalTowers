@@ -115,6 +115,15 @@ DeclareOperation( "EmbeddingOfSubRepresentation",
 DeclareOperation( "WeakDirectSumDecomposition",
         [ IsCapCategoryObjectInHomCategory ] );
 
+#! @Description
+#!  Return Yoneda's projective representation given by the object <A>o</A>,
+#!  i.e., the submodule of the category algebra consisting of all arrows
+#!  starting at <A>o</A>.
+#! @Arguments H, o
+#! @Returns IsCapCategoryObjectInHomCategory
+DeclareOperation( "YonedaProjective",
+        [ IsCapHomCategory, IsCapCategoryObject ] );
+
 ####################################
 #
 #! @Section Tools
