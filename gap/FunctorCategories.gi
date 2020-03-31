@@ -468,7 +468,7 @@ InstallMethodWithCache( Hom,
           name_of_object, create_func_object0, create_func_object,
           name_of_morphism, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, doctrines, doc, prop, Hom, arrows, relations;
+          properties, doctrines, doc, prop, Hom, arrows, relations, kq;
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -827,8 +827,11 @@ InstallMethodWithCache( Hom,
           
     fi;
 
+    kq := UnderlyingQuiverAlgebra( B );
+    
     if IsMatrixCategory( C ) and
-        IsFiniteDimensional( UnderlyingQuiverAlgebra( B ) ) then
+       IsFiniteDimensional( kq ) and
+       IsAdmissibleQuiverAlgebra( kq ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
       
