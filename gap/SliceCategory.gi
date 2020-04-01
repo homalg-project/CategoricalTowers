@@ -482,6 +482,8 @@ InstallMethod( SliceCategoryOverTensorUnit,
     
     S := SliceCategory( TensorUnit( M ) : FinalizeCategory := false );
     
+    SetIsMonoidalCategory( S, true );
+    
     AddTensorUnit( S,
       function( )
         
