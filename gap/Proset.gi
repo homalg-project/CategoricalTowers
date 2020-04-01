@@ -6,10 +6,10 @@
 
 SetInfoLevel( InfoLocales, 1 );
 
-InstallValue( PROSET_METHOD_NAME_RECORD,
+InstallValue( PREORDERED_SET_METHOD_NAME_RECORD,
         rec(
-            IsEqualForObjectsIfIsHomSetInhabited := rec(
-                                     installation_name := "IsEqualForObjectsIfIsHomSetInhabited",
+            IsIsomorphicForObjectsIfIsHomSetInhabited := rec(
+                                     installation_name := "IsIsomorphicForObjectsIfIsHomSetInhabited",
                                      filter_list := [ "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true
@@ -17,9 +17,9 @@ InstallValue( PROSET_METHOD_NAME_RECORD,
             )
         );
 
-CAP_INTERNAL_ENHANCE_NAME_RECORD( PROSET_METHOD_NAME_RECORD );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( PREORDERED_SET_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( PROSET_METHOD_NAME_RECORD );
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( PREORDERED_SET_METHOD_NAME_RECORD );
 
 ##
 InstallMethod( UniqueMorphism,
@@ -96,6 +96,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
       function( u1, u2 )
         
         return UniqueMorphism( Source( u1 ), Range( u2 ) );
+        
+    end );
+    
+    ##
+    AddIsIsomorphicForObjectsIfIsHomSetInhabited( preordered_set,
+      function( A, B )
+        
+        return IsHomSetInhabited( B, A );
         
     end );
     

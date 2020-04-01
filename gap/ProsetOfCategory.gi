@@ -5,7 +5,7 @@
 #
 
 ##
-InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PROSET_OF_CATEGORY,
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
   [
    "IsWellDefinedForObjects",
    "IsEqualForObjects",
@@ -150,7 +150,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     end;
     
-    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_PROSET_OF_CATEGORY;
+    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY;
     
     list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
     

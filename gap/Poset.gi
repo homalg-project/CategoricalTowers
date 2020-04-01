@@ -4,6 +4,21 @@
 # Implementations
 #
 
+InstallValue( POSET_METHOD_NAME_RECORD,
+        rec(
+            IsEqualForObjectsIfIsHomSetInhabited := rec(
+                                     installation_name := "IsEqualForObjectsIfIsHomSetInhabited",
+                                     filter_list := [ "object", "object" ],
+                                     return_type := "bool",
+                                     is_merely_set_theoretic := true
+                                    ),
+            )
+        );
+
+CAP_INTERNAL_ENHANCE_NAME_RECORD( POSET_METHOD_NAME_RECORD );
+
+CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( POSET_METHOD_NAME_RECORD );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
   function( poset )
@@ -13,18 +28,15 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( poset );
     
     ##
+    AddIsEqualForObjectsIfIsHomSetInhabited( poset,
+      IsIsomorphicForObjectsIfIsHomSetInhabited );
+    
+    ##
     AddIsEqualForObjects( poset,
       function( A, B )
         
-        return IsHomSetInhabited( A, B ) and IsHomSetInhabited( B, A );
-        
-    end );
-    
-    ##
-    AddIsEqualForObjectsIfIsHomSetInhabited( poset,
-      function( A, B )
-        
-        return IsHomSetInhabited( B, A );
+        return IsHomSetInhabited( A, B ) and
+               IsIsomorphicForObjectsIfIsHomSetInhabited( A, B );
         
     end );
     
@@ -46,6 +58,6 @@ InstallMethod( \<,
         TryNextMethod( );
     fi;
     
-    return IsHomSetInhabited( A, B ) and not IsEqualForObjectsIfIsHomSetInhabited( A, B );
+    return IsHomSetInhabited( A, B ) and not IsIsomorphicForObjectsIfIsHomSetInhabited( A, B );
     
 end );

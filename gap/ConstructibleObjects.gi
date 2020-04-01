@@ -59,7 +59,7 @@ InstallMethod( IsClosedSubobject,
         
   function( A )
     
-    return IsEqualForObjectsIfIsHomSetInhabited( A, ClosureAsConstructibleObject( A ) );
+    return IsIsomorphicForObjectsIfIsHomSetInhabited( A, ClosureAsConstructibleObject( A ) );
     
 end );
 

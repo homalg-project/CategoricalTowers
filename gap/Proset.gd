@@ -35,30 +35,31 @@ AddCategoricalProperty( [ "IsThinCategory" ] );
 #! @Section Operations
 
 #! @Description
-#!  Check if <A>A</A> is equal to <A>B</A> under the assumption that
+#!  Check if <A>A</A> is isomorphic to <A>B</A> under the assumption that
+#!  there exists a morphism from <A>A</A> to <A>B</A>, i.e., if
 #!  <A>A</A> is known to be less or equal to <A>B</A> w.r.t. the preorder.
 #! @Arguments A, B
 #! @Returns <C>true</C> or <C>false</C>
-DeclareOperation( "IsEqualForObjectsIfIsHomSetInhabited",
+DeclareOperation( "IsIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEqualForObjectsIfIsHomSetInhabited</C>.
-#! $F: A, B \mapsto \mathrm{IsEqualForObjectsIfIsHomSetInhabited}(A, B)$.
+#! to the category for the basic operation <C>IsIsomorphicForObjectsIfIsHomSetInhabited</C>.
+#! $F: A, B \mapsto \mathrm{IsIsomorphicForObjectsIfIsHomSetInhabited}(A, B)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsEqualForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsList ] );
 
 #! @Section Constructors
@@ -72,6 +73,6 @@ DeclareOperation( "UniqueMorphism",
 
 # @Section Tools
 
-DeclareGlobalVariable( "PROSET_METHOD_NAME_RECORD" );
+DeclareGlobalVariable( "PREORDERED_SET_METHOD_NAME_RECORD" );
 
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_PREORDERED_SETS" );

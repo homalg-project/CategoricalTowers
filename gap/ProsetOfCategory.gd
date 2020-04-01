@@ -74,7 +74,7 @@ DeclareCategory( "IsCapCategoryMorphismInPosetOfACategory",
 ####################################
 
 #!
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PROSET_OF_CATEGORY" );
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY" );
 
 ####################################
 #
