@@ -392,6 +392,8 @@ InstallMethod( SliceCategory,
     
     if CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
         
+        SetIsCartesianCategory( S, true );
+        
         ##
         AddDirectProduct( S, # WeakDirectProduct
            function( L )
@@ -412,6 +414,8 @@ InstallMethod( SliceCategory,
         end );
         
     elif CanCompute( C, "ProjectionInFactorOfFiberProduct" ) then # FIXME: this should become obsolete once we have a derivation
+        
+        SetIsCartesianCategory( S, true );
         
         ##
         AddDirectProduct( S,
@@ -435,6 +439,8 @@ InstallMethod( SliceCategory,
     fi;
     
     if CanCompute( C, "UniversalMorphismFromCoproduct" ) then
+        
+        SetIsCocartesianCategory( S, true );
         
         ##
         AddCoproduct( S,
