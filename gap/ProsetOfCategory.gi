@@ -116,7 +116,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     local skeletal, name, category_filter, category_object_filter, category_morphism_filter,
           create_func_bool, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos,
-          P, properties, finalize;
+          P, finalize;
     
     skeletal := ValueOption( "skeletal" );
     
@@ -176,16 +176,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  );
     
     P!.AmbientCategory := C;
-    
-    properties := [ 
-                    ];
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( P, name( C ) );
-        
-    od;
     
     if IsIdenticalObj( skeletal, true ) then
         ADD_COMMON_METHODS_FOR_POSETS( P );
