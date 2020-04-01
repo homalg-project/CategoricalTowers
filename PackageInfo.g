@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicCategories",
 Subtitle := "Intrinsic categories for CAP",
 Version := Maximum( [
-                   "2019.11.03", ## Mohamed's version
+                   "2020.02.21", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Sebas' version
                    ## this line prevents merge conflicts
@@ -79,7 +79,7 @@ Dependencies := rec(
                    [ "AutoDoc", ">= 2016.02.16" ],
                    [ "CAP", ">= 2019.10.29" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
-                   [ "CategoryConstructor", ">= 2019.11.01" ],
+                   [ "CategoryConstructor", ">= 2020.02.21" ],
                    [ "GAPDoc", ">= 1.1" ]
                    ],
   SuggestedOtherPackages := [ ],

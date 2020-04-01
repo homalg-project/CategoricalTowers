@@ -1074,11 +1074,11 @@ InstallMethod( IntrinsicCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, filter_obj, filter_mor, properties,
+    local name, filter_obj, filter_mor,
           create_func_bool, create_func_object0, create_func_object, todo_func,
           create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, func, pos, skip, commutative_ring,
-          IC, strict, filter_end;
+          properties, IC, strict, filter_end;
     
     if HasName( C ) then
         name := Concatenation( "intrinsic ", Name( C ) );
@@ -1097,8 +1097,6 @@ InstallMethod( IntrinsicCategory,
     if filter_mor = fail or not IsFilter( filter_mor ) then
         filter_mor := IsCapCategoryIntrinsicMorphism;
     fi;
-    
-    properties := ListKnownCategoricalProperties( C );
     
     create_func_bool :=
       function( name )
@@ -1304,20 +1302,6 @@ InstallMethod( IntrinsicCategory,
         commutative_ring := fail;
     fi;
     
-    IC := CategoryConstructor( :
-                  name := name,
-                  category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
-                  category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
-                  commutative_ring := commutative_ring,
-                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
-                  list_of_operations_to_install := list_of_operations_to_install,
-                  create_func_bool := create_func_bool,
-                  create_func_object0 := create_func_object0,
-                  create_func_object := create_func_object,
-                  create_func_morphism := create_func_morphism,
-                  create_func_universal_morphism := create_func_universal_morphism
-                  );
-    
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                     "IsAbCategory",
                     "IsAdditiveCategory",
@@ -1330,12 +1314,22 @@ InstallMethod( IntrinsicCategory,
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    for name in properties do
-        name := ValueGlobal( name );
-        
-        Setter( name )( IC, name( C ) );
-        
-    od;
+    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    
+    IC := CategoryConstructor( :
+                  name := name,
+                  category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
+                  category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
+                  commutative_ring := commutative_ring,
+                  properties := properties,
+                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
+                  list_of_operations_to_install := list_of_operations_to_install,
+                  create_func_bool := create_func_bool,
+                  create_func_object0 := create_func_object0,
+                  create_func_object := create_func_object,
+                  create_func_morphism := create_func_morphism,
+                  create_func_universal_morphism := create_func_universal_morphism
+                  );
     
     SetIntrinsifiedCategory( IC, C );
     
