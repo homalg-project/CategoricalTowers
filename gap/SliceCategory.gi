@@ -168,7 +168,7 @@ InstallMethod( SliceCategory,
     local C, name, create_func_bool,
           create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          S, properties, finalize;
+          properties, S, finalize;
     
     C := CapCategory( B );
     
@@ -266,34 +266,31 @@ InstallMethod( SliceCategory,
         commutative_ring := fail;
     fi;
     
+    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing"
+                    ];
+    
+    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    
+    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    
     S := CategoryConstructor( :
                  name := name,
                  category_object_filter := IsCapCategoryObjectInASliceCategory,
                  category_morphism_filter := IsCapCategoryMorphismInASliceCategory,
+                 category_filter := IsCapSliceCategory,
                  commutative_ring := commutative_ring,
+                 properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
                  create_func_morphism := create_func_morphism,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    SetFilterObj( S, IsCapSliceCategory );
-    
     S!.AmbientCategory := C;
     
     SetBaseObject( S, B );
-    
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing"
-                    ];
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( S, name( C ) );
-        
-    od;
     
     AddIsWellDefinedForObjects( S,
       function( a )

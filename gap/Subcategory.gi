@@ -124,7 +124,7 @@ InstallMethod( Subcategory,
     local create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          D, properties, is_additive, finalize;
+          properties, D, is_additive, finalize;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -267,11 +267,26 @@ InstallMethod( Subcategory,
         commutative_ring := fail;
     fi;
     
+    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing"
+                    ];
+    
+    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    
+    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    
+    if IsIdenticalObj( is_additive, true ) then
+        Add( properties, [ "IsAdditiveCategory", true ] );
+    fi;
+    
     D := CategoryConstructor( :
                  name := name,
                  category_object_filter := IsCapCategoryObjectInASubcategory,
                  category_morphism_filter := IsCapCategoryMorphismInASubcategory,
+                 category_filter := IsCapSubcategory,
                  commutative_ring := commutative_ring,
+                 properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
                  create_func_object0 := create_func_object0,
@@ -281,25 +296,7 @@ InstallMethod( Subcategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    SetFilterObj( D, IsCapSubcategory );
-    
     D!.AmbientCategory := C;
-    
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing"
-                    ];
-    
-    if IsIdenticalObj( is_additive, true ) then
-        Add( properties, "IsAdditiveCategory" );
-    fi;
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( D, name( C ) );
-        
-    od;
     
     AddIsEqualForObjects( D,
       function( a, b )
