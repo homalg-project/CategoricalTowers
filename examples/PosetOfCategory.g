@@ -14,7 +14,7 @@ P := CategoryOfRows( R );
 S := SliceCategoryOverTensorUnit( P );
 #! A slice category of Rows( Q[x,y] )
 L := PosetOfCategory( S );
-#! The poset (category) of A slice category of Rows( Q[x,y] )
+#! Poset( A slice category of Rows( Q[x,y] ) )
 I := HomalgMatrix( "x", 1, 1, R ) / P / S / L;
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>

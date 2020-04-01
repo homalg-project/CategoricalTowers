@@ -121,18 +121,18 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     skeletal := ValueOption( "skeletal" );
     
     if IsIdenticalObj( skeletal, true ) then
-        name := "The poset";
+        name := "Poset";
         category_filter := IsPosetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInPosetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInPosetOfACategory;
     else
-        name := "The proset";
+        name := "Proset";
         category_filter := IsProsetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInProsetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInProsetOfACategory;
     fi;
     
-    name := Concatenation( name, " (category) of ", Name( C ) );
+    name := Concatenation( name, "( ", Name( C ), " )" );
     
     ## e.g., IsHomSetInhabited
     create_func_bool :=
