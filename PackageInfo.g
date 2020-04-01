@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "CategoryConstructor",
 Subtitle := "Construct categories out of given ones",
 Version := Maximum( [
-                   "2020.02.18", ## Mohamed's version
+                   "2020.02.21", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
