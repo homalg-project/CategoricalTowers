@@ -32,11 +32,6 @@ DeclareCategory( "IsMorphismInThinCategory",
 #! @Arguments C
 AddCategoricalProperty( [ "IsThinCategory" ] );
 
-#! @Description
-#!  The property of <A>C</A> being a skeletal &CAP; category.
-#! @Arguments C
-AddCategoricalProperty( [ "IsSkeletalCategory" ] );
-
 #! @Section Operations
 
 #! @Description
