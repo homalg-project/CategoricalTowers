@@ -12,7 +12,7 @@ InstallGlobalFunction( CategoryConstructor,
   function( )
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
           commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
-          is_monoidal, func, pos, create_func_bool, create_func_object0, create_func_morphism0,
+          preinstall, func, is_monoidal, pos, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
@@ -86,6 +86,16 @@ InstallGlobalFunction( CategoryConstructor,
         
         Setter( name )( CC, doc );
         
+    od;
+    
+    preinstall := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "preinstall", [ ] );
+    
+    if IsFunction( preinstall ) then
+        preinstall := [ preinstall ];
+    fi;
+    
+    for func in preinstall do
+        func( CC );
     od;
     
     is_monoidal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_monoidal", false );
