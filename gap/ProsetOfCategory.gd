@@ -83,6 +83,13 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATE
 ####################################
 
 #! @Description
+#!  The cell in the ambient category underlying <A>cell</A>.
+#! @Arguments cell
+#! @Returns a &CAP; cell
+DeclareAttribute( "UnderlyingCell",
+        IsProsetOrPosetOfCapCategory );
+
+#! @Description
 #!  The ambient category of the proset <A>P</A>.
 #! @Arguments P
 #! @Returns a list
@@ -103,31 +110,18 @@ DeclareOperation( "CreateProsetOrPosetOfCategory",
 DeclareAttribute( "ProsetOfCategory",
         IsCapCategory );
 
-#! @Arguments object
-DeclareAttribute( "AsObjectOfProset",
-        IsCapCategoryObject );
+#! @Arguments c
+DeclareAttribute( "AsCellOfProset",
+        IsCapCategoryCell );
 
 #! @Arguments C
 DeclareAttribute( "PosetOfCategory",
         IsCapCategory );
 
-#! @Arguments object
-DeclareAttribute( "AsObjectOfPoset",
-        IsCapCategoryObject );
+#! @Arguments c
+DeclareAttribute( "AsCellOfPoset",
+        IsCapCategoryCell );
 
 #! @Arguments object, P
 DeclareOperation( "/",
         [ IsCapCategoryObject, IsProsetOrPosetOfCapCategory ] );
-
-####################################
-#
-#! @Section Operations
-#
-####################################
-
-#! @Description
-#!  The object in the ambient category underlying <A>object</A>.
-#! @Arguments object
-#! @Returns a &CAP; object
-DeclareOperation( "UnderlyingObject",
-        [ IsCapCategoryObjectInProsetOrPosetOfACategory ] );

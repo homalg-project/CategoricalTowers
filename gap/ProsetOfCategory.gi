@@ -13,36 +13,25 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    ] );
 
 ##
-InstallOtherMethod( UnderlyingObject,
+InstallOtherMethod( UnderlyingCell,
         "for a list",
         [ IsList ],
         
   function( L )
     
-    return List( L, UnderlyingObject );
+    return List( L, UnderlyingCell );
     
 end );
 
 ##
-InstallOtherMethod( UnderlyingObject,
+InstallOtherMethod( UnderlyingCell,
         "for an integer",
         [ IsInt ],
         
   IdFunc );
 
 ##
-InstallOtherMethod( UnderlyingObject,
-        "for an object in the proset or poset of a category",
-        [ IsCapCategoryObjectInProsetOrPosetOfACategory ],
-        
-  function( o )
-    
-    return o!.UnderlyingObject;
-    
-end );
-
-##
-InstallMethod( AsObjectOfProset,
+InstallMethod( AsCellOfProset,
         "for a CAP object",
         [ IsCapCategoryObject ],
         
@@ -51,16 +40,17 @@ InstallMethod( AsObjectOfProset,
     
     P := ProsetOfCategory( CapCategory( object ) );
     
-    o := rec( UnderlyingObject := object );
+    o := rec( );
     
-    ObjectifyObjectForCAPWithAttributes( o, P );
+    ObjectifyObjectForCAPWithAttributes( o, P,
+            UnderlyingCell, object );
     
     return o;
     
 end );
 
 ##
-InstallMethod( AsObjectOfPoset,
+InstallMethod( AsCellOfPoset,
         "for a CAP object",
         [ IsCapCategoryObject ],
         
@@ -69,9 +59,10 @@ InstallMethod( AsObjectOfPoset,
     
     P := PosetOfCategory( CapCategory( object ) );
     
-    o := rec( UnderlyingObject := object );
+    o := rec( );
     
-    ObjectifyObjectForCAPWithAttributes( o, P );
+    ObjectifyObjectForCAPWithAttributes( o, P,
+            UnderlyingCell, object );
     
     return o;
     
@@ -89,9 +80,10 @@ InstallMethod( \/,
         Error( "the category of the object and the ambient category of proset do not coincide\n" );
     fi;
     
-    o := rec( UnderlyingObject := object );
+    o := rec( );
     
-    ObjectifyObjectForCAPWithAttributes( o, P );
+    ObjectifyObjectForCAPWithAttributes( o, P,
+            UnderlyingCell, object );
     
     return o;
     
@@ -144,7 +136,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         return
           function( arg )
             
-            return CallFuncList( oper, List( arg, UnderlyingObject ) );
+            return CallFuncList( oper, List( arg, UnderlyingCell ) );
             
         end;
         
@@ -196,7 +188,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddDirectProduct( P,
           function( L )
             
-            return DirectProduct( List( L, UnderlyingObject ) ) / CapCategory( L[1] );
+            return DirectProduct( List( L, UnderlyingCell ) ) / CapCategory( L[1] );
             
         end );
     fi;
@@ -205,7 +197,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddCoproduct( P,
           function( L )
             
-            return Coproduct( List( L, UnderlyingObject ) ) / CapCategory( L[1] );
+            return Coproduct( List( L, UnderlyingCell ) ) / CapCategory( L[1] );
             
         end );
     fi;
@@ -214,7 +206,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddTensorProductOnObjects( P,
           function( I, J )
             
-            return TensorProductOnObjects( UnderlyingObject( I ), UnderlyingObject( J ) ) / CapCategory( I );
+            return TensorProductOnObjects( UnderlyingCell( I ), UnderlyingCell( J ) ) / CapCategory( I );
             
         end );
     fi;
@@ -265,7 +257,7 @@ InstallMethod( ViewObj,
     
     Print( "An object in the proset given by: " );
     
-    ViewObj( UnderlyingObject( a ) );
+    ViewObj( UnderlyingCell( a ) );
     
 end );
 
@@ -277,7 +269,7 @@ InstallMethod( Display,
     
     Print( "An object in the proset given by: " );
     
-    Display( UnderlyingObject( a ) );
+    Display( UnderlyingCell( a ) );
     
 end );
 
@@ -289,7 +281,7 @@ InstallMethod( ViewObj,
     
     Print( "An object in the poset given by: " );
     
-    ViewObj( UnderlyingObject( a ) );
+    ViewObj( UnderlyingCell( a ) );
     
 end );
 
@@ -301,6 +293,6 @@ InstallMethod( Display,
     
     Print( "An object in the poset given by: " );
     
-    Display( UnderlyingObject( a ) );
+    Display( UnderlyingCell( a ) );
     
 end );
