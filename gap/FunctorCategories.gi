@@ -712,33 +712,19 @@ InstallMethodWithCache( Hom,
         commutative_ring := fail;
     fi;
     
-    properties := Intersection( ListKnownCategoricalProperties( C ),
-                          [ "IsEnrichedOverCommutativeRegularSemigroup",
-                            "IsAbCategory",
-                            "IsLinearCategoryOverCommutativeRing",
-                            "IsAdditiveCategory",
-                            "IsPreAbelianCategory",
-                            "IsAbelianCategory",
-                            #"IsAbelianCategoryWithEnoughProjectives",
-                            #"IsAbelianCategoryWithEnoughInjectives",
-                            ] );
-
-    doctrines := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "doctrines", [ ] );
+    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing",
+                    "IsAdditiveCategory",
+                    "IsPreAbelianCategory",
+                    "IsAbelianCategory",
+                    #"IsAbelianCategoryWithEnoughProjectives",
+                    #"IsAbelianCategoryWithEnoughInjectives",
+                    ];
     
-    if not doctrines = [ ] and IsStringRep( doctrines ) then
-        doctrines := [ doctrines ];
-    fi;
+    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    for doc in properties do
-        if IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) then
-            prop := doc[1];
-        else
-            prop := doc;
-        fi;
-        if not ForAny( doctrines, doc -> ( IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) and doc[1] = prop ) or doc = prop ) then
-            Add( doctrines, doc );
-        fi;
-    od;
+    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
     
     Hom := CategoryConstructor( :
                    name := name,
@@ -746,7 +732,8 @@ InstallMethodWithCache( Hom,
                    category_morphism_filter := IsCapCategoryMorphismInHomCategory,
                    category_filter := IsCapHomCategory,
                    commutative_ring := commutative_ring,
-                   doctrines := doctrines,
+                   properties := properties,
+                   ## the option doctrines can be passed from higher code
                    is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
                    create_func_bool := create_func_bool,
