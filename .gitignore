@@ -22,10 +22,13 @@
 /doc/*.tex
 /doc/*.toc
 /doc/manual.pdf
+/doc/CatReps.synctex.gz
 
 .deps/
 .dirstamp
 .libs/
+
+texput.log
 
 /aclocal.m4
 /autom4te.cache/

@@ -5,6 +5,7 @@ GF3 := HomalgRingOfIntegers( 3 );
 GF3q := PathAlgebra( GF3, qc3c3 );
 rel := [GF3q.a^3-GF3q.1, GF3q.c^3-GF3q.2, GF3q.a*GF3q.b-GF3q.b*GF3q.c];;
 kq := Algebroid( GF3q, rel );
+kq2 := kq^2;
 counit := rec( a := 1, b := 1, c := 1 );
 comult := rec( a := PreCompose( kq2.ax1, kq2.1xa ),
                b := PreCompose( kq2.1xb, kq2.bx2 ),
@@ -33,6 +34,7 @@ etas := WeakDirectSumDecomposition( fortyone );;
 eta := etas[3];;
 six := Source( eta );;
 thirtyfive := CokernelObject( eta );;
+
 #! Now we check the associator if the pentagonal diagram commutes:
 
 #! @Example
