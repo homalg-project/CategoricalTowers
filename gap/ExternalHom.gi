@@ -1,5 +1,3 @@
-
-
 ## Computing basis of external hom for functors category whose range is matrix category of some homalg field
 ##
 
@@ -13,13 +11,13 @@ InstallGlobalFunction( BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CA
     
     matrix_cat := Range( cat );
     
-    if not IsBound( matrix_cat!.field_for_matrix_category ) then
+    if not IsMatrixCategory( matrix_cat ) then
       
       Error( "The range category of the input should be a matrix category for some homalg field!\n" );
       
     fi;
     
-    field := matrix_cat!.field_for_matrix_category;
+    field := CommutativeRingOfLinearCategory( matrix_cat );
     
     A := UnderlyingQuiverAlgebra( algebroid );
     
