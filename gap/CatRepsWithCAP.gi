@@ -121,8 +121,8 @@ InstallMethod( RecordOfCategory,
         
   function( kq )
 
-    return rec( domain := List( SetOfGeneratingMorphisms( kq ), a -> Int( String( UnderlyingVertex( Source( a ) ) ) ) ),
-                codomain := List( SetOfGeneratingMorphisms( kq ), a -> Int( String( UnderlyingVertex( Range( a ) ) ) ) ),
+    return rec( domain := List( SetOfGeneratingMorphisms( kq ), a -> VertexIndex( UnderlyingVertex( Source( a ) ) ) ),
+                codomain := List( SetOfGeneratingMorphisms( kq ), a -> VertexIndex( UnderlyingVertex( Range( a ) ) ) ),
                 );
     
 end );
@@ -159,8 +159,8 @@ InstallMethod( EmbeddingOfSubRepresentation,
     morphisms := List(
                       SetOfGeneratingMorphisms( kq ),
                       m ->
-                      LiftAlongMonomorphism( eta[Int( String( UnderlyingVertex( Range( m ) ) ) )],
-                              PreCompose( eta[Int( String( UnderlyingVertex( Source( m ) ) ) )], F( m ) ) ) );
+                      LiftAlongMonomorphism( eta[VertexIndex( UnderlyingVertex( Range( m ) ) )],
+                              PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )], F( m ) ) ) );
     
     subrep := AsObjectInHomCategory( kq, objects, morphisms );
     
