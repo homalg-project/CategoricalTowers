@@ -1,6 +1,7 @@
 LoadPackage( "CatReps" );
 c3c3 := ConcreteCategoryWithEndomorphismGroups( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
 qc3c3 := RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" );
+HOMALG_MATRICES.PreferDenseMatrices := true;
 GF3 := HomalgRingOfIntegers( 3 );
 GF3q := PathAlgebra( GF3, qc3c3 );
 rel := [GF3q.a^3-GF3q.1, GF3q.c^3-GF3q.2, GF3q.a*GF3q.b-GF3q.b*GF3q.c];;
