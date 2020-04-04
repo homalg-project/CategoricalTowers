@@ -267,9 +267,9 @@ InstallMethod( Display,
         
   function( a )
     
-    Print( "An object in the proset given by: " );
-    
     Display( UnderlyingCell( a ) );
+    
+    Print( "\nAn object in the proset given by the above data" );
     
 end );
 
@@ -291,8 +291,8 @@ InstallMethod( Display,
         
   function( a )
     
-    Print( "An object in the poset given by: " );
-    
     Display( UnderlyingCell( a ) );
+    
+    Print( "\nAn object in the poset given by the above data" );
     
 end );
