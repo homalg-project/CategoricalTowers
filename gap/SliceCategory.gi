@@ -548,9 +548,9 @@ InstallMethod( Display,
     [ IsCapCategoryObjectInASliceCategory ],
   function( a )
     
-    Print( "An object in the slice category given by: " );
-    
     Display( UnderlyingMorphism( a ) );
+    
+    Display( "\nAn object in the slice category given by the above data" );
     
 end );
 
@@ -559,8 +559,8 @@ InstallMethod( Display,
     [ IsCapCategoryMorphismInASliceCategory ],
   function( phi )
     
-    Print( "A morphism in the slice category given by: " );
-    
     Display( UnderlyingCell( phi ) );
+    
+    Display( "\nA morphism in the slice category given by the above data" );
     
 end );

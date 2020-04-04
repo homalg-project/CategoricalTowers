@@ -30,13 +30,17 @@ IsHomSetInhabited( o2, o1 );
 iota := UniversalMorphismFromInitialObject( o1 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
 Display( iota );
-#! A morphism in the slice category given by: [ 0, [  ], 3 ]
+#! [ 0, [  ], 3 ]
+#! 
+#! A morphism in the slice category given by the above data
 IsInitial( Source( iota ) );
 #! true
 tau := UniversalMorphismIntoTerminalObject( o2 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
 Display( tau );
-#! A morphism in the slice category given by: [ 4, [ 2, 1, 2, 1 ], 2 ]
+#! [ 4, [ 2, 1, 2, 1 ], 2 ]
+#! 
+#! A morphism in the slice category given by the above data
 IsTerminal( Range( tau ) );
 #! true
 n := MapOfFinSets( FinSet( 3 ), [ 3, 1, 4 ], FinSet( 4 ) );
