@@ -891,6 +891,12 @@ InstallMethodWithCache( Hom,
 
     kq := UnderlyingQuiverAlgebra( B );
     
+    if IsFiniteDimensional( kq ) then
+      
+      ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATEGORY( Hom );
+      
+    fi;
+    
     if IsMatrixCategory( C ) and
        IsFiniteDimensional( kq ) and
        IsAdmissibleQuiverAlgebra( kq ) then
@@ -991,12 +997,6 @@ InstallMethodWithCache( Hom,
           
       end );
       
-      AddBasisOfExternalHom( Hom,
-        BASIS_OF_EXTERNAL_HOM_BETWEEN_TWO_FUNCTORS_INTO_MATRIX_CATEGORY );
-        
-      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
-        COEFFICIENTS_OF_MORPHISM_OF_FUNCTORS_INTO_MATRIX_CATEGORY );
-        
     fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
