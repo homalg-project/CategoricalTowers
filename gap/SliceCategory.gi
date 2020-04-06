@@ -500,6 +500,35 @@ InstallMethod( SliceCategoryOverTensorUnit,
                                LeftUnitor( BaseObject( CapCategory( I ) ) ) ) );
         
     end );
+
+    if HasIsSymmetricClosedMonoidalCategory( M ) and IsSymmetricClosedMonoidalCategory( M ) and
+       CanCompute( M, "ProjectionOfBiasedWeakFiberProduct" ) then
+        
+        SetIsSymmetricClosedMonoidalCategory( S, true );
+        
+        AddInternalHomOnObjects( S,
+          function( J, I ) ## the abstraction of the ideal quotient I:J
+            local R;
+            
+            I := UnderlyingMorphism( I );
+            J := UnderlyingMorphism( J );
+            
+            R := TensorUnit( CapCategory( I ) );
+            
+            return AsSliceCategoryCell(
+                           PreCompose(
+                                   [ ProjectionOfBiasedWeakFiberProduct(
+                                           InternalHomOnMorphisms( J, IdentityMorphism( Range( I ) ) ),
+                                           InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I )
+                                           ), ## the range is InternalHom( R, R )
+                                     RightUnitorInverse( InternalHomOnObjects( R, R ) ), ## InternalHom( R, R ) -> InternalHom( R, R ) ⊗ R
+                                     EvaluationMorphism( R, R ) ## InternalHom( R, R ) ⊗ R -> R
+                                     ]
+                           ) );
+            
+        end );
+        
+    fi;
     
     finalize := ValueOption( "FinalizeCategory" );
     
