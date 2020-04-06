@@ -415,7 +415,7 @@ InstallMethod( Display,
     
     Display( UnderlyingCell( a ) );
     
-    Print( "\nAn object in the proset given by the above data" );
+    Display( "\nAn object in the proset given by the above data" );
     
 end );
 
@@ -439,6 +439,6 @@ InstallMethod( Display,
     
     Display( UnderlyingCell( a ) );
     
-    Print( "\nAn object in the poset given by the above data" );
+    Display( "\nAn object in the poset given by the above data" );
     
 end );
