@@ -1449,11 +1449,11 @@ InstallMethod( \.,
         [ IsAlgebroid, IsPosInt ],
         
   function( B, string_as_int )
-    local q, name, a, b;
-    
-    q := UnderlyingQuiver( B );
+    local name, q, a, b;
     
     name := NameRNam( string_as_int );
+    
+    q := UnderlyingQuiver( B );
     
     a := q.(name);
     
@@ -1482,7 +1482,7 @@ InstallMethod( \.,
     fi;
     
     return b;
-     
+    
 end );
 
 InstallMethod( ObjectInAlgebroid,
