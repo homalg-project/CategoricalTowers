@@ -1,5 +1,6 @@
 LoadPackage( "FunctorCategories" );
 LoadPackage( "LinearAlgebraForCAP" );
+LoadPackage( "RingsForHomalg" );
 
 field := HomalgFieldOfRationals( );
 
@@ -33,24 +34,16 @@ A := QuotientOfPathAlgebra(
 
 algebroid := Algebroid( A );
 
-quivers_cat := CategoryOfQuiverRepresentations( A );
+matrix_cat := MatrixCategory( field );
 
-#external_field := HomalgFieldOfRationalsInMAGMA( );
-external_field := HomalgFieldOfRationalsInSingular( );
+H := Hom( algebroid, matrix_cat );
 
-matrix_cat := MatrixCategory( external_field );
+indec_projs := IndecProjectiveObjects( H );
 
-functors_cat := Hom( algebroid, matrix_cat );
+a := DirectSum( List( [ 1 .. 4 ], i -> Random( indec_projs ) ) );
 
-F := IsomorphismFromCategoryOfQuiverRepresentations( functors_cat );
+b := DirectSum( List( [ 1 .. 4 ], i -> Random( indec_projs ) ) );
 
-G := IsomorphismIntoCategoryOfQuiverRepresentations( functors_cat );
+Hom_a_b := HomStructure( a, b );
 
-projs := List( IndecProjRepresentations( A ), p -> ApplyFunctor( F, p ) );
-
-a := DirectSum( List( [ 1 .. 10 ], i -> Random( projs ) ) );
-
-b := DirectSum( List( [ 1 .. 10 ], i -> Random( projs ) ) );
-
-h_a_b := HomomorphismStructureOnObjects( a, b );
-
+B := BasisOfExternalHom( a, b );
