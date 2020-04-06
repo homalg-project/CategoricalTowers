@@ -291,6 +291,81 @@ InstallMethod( CallFuncList,
     
 end );
 
+##
+InstallMethod( YonedaProjective,
+        "for a Hom-category and a CAP object",
+        [ IsCapHomCategory, IsCapCategoryObject ],
+        
+  function( CatReps, o )
+    local kq, k, kmat, basis_list, A, basis, dimensions, a, arrows, matrices,
+          source, target, dim_source, dim_target, b, b_source, b_target,
+          matrix, b_a_path, b_a, coeffs, yproj;
+    
+    kq := Source( CatReps );
+    
+    o := Position( SetOfObjects( kq ), o );
+    
+    k := CommutativeRingOfLinearCategory( CatReps );
+    
+    kmat := Range( CatReps );
+    
+    ## code from QPA2/lib/special-representations.gi
+    
+    A := UnderlyingQuiverAlgebra( kq );
+    
+    basis_list := BasisOfProjectives( A );
+    basis := basis_list[ o ];
+    
+    dimensions := List( basis, Length );
+    arrows := Arrows( QuiverOfAlgebra( A ) );
+    matrices := [ ];
+    
+    for a in arrows do
+        
+        source := VertexIndex( Source( a ) );
+        target := VertexIndex( Target( a ) );
+        
+        dim_source := dimensions[ source ];
+        dim_target := dimensions[ target ];
+        
+        if dim_source = 0 or dim_target = 0 then
+            
+            matrix := HomalgZeroMatrix( dim_source, dim_target, k );
+            
+        else
+            
+            b_source := List( basis[ source ], b -> Paths(b)[ 1 ] );
+            b_target := List( basis[ target ], b -> Paths(b)[ 1 ] );
+            
+            matrix := [ ];
+            
+            for b in b_source do
+                b_a_path := ComposePaths( b, a );
+                b_a := PathAsAlgebraElement( A, b_a_path );
+                coeffs := CoefficientsOfPaths( b_target, b_a );
+                Add( matrix, coeffs );
+            od;
+            
+            matrix := HomalgMatrix( matrix, dim_source, dim_target, k );
+            
+        fi;
+        
+        matrix := matrix / kmat;
+        
+        Add( matrices, matrix );
+        
+    od;
+    
+    dimensions := List( dimensions, dim -> VectorSpaceObject( dim, k ) );
+    
+    yproj := AsObjectInHomCategory( kq, dimensions, matrices );
+    
+    SetIsProjective( yproj, true );
+    
+    return yproj;
+    
+end );
+
 ####################################
 #
 # methods for constructors:
@@ -1059,7 +1134,7 @@ end );
 
 ####################################
 #
-# Attributes
+# Methods for attributes
 #
 ####################################
 
