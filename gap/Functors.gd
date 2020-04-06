@@ -11,8 +11,8 @@ DeclareOperation( "IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows",
 
 DeclareAttribute( "IsomorphismFromQuiverRows", IsAdditiveClosureCategory );
 
-DeclareAttribute( "IsomorphismIntoQuiverRows", IsAdditiveClosureCategory );
+DeclareAttribute( "IsomorphismOntoQuiverRows", IsAdditiveClosureCategory );
 
 DeclareAttribute( "IsomorphismFromAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
 
-DeclareAttribute( "IsomorphismIntoAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
+DeclareAttribute( "IsomorphismOntoAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );

@@ -173,7 +173,7 @@ InstallMethod( IsomorphismFromQuiverRows,
 end );
 
 ##
-InstallMethod( IsomorphismIntoQuiverRows,
+InstallMethod( IsomorphismOntoQuiverRows,
           [ IsAdditiveClosureCategory ],
   function( additive_closure )
     local algebroid, A, ring, QRowsA;
@@ -233,7 +233,7 @@ InstallMethod( IsomorphismFromAdditiveClosureOfAlgebroid,
 end );
 
 ##
-InstallMethod( IsomorphismIntoAdditiveClosureOfAlgebroid,
+InstallMethod( IsomorphismOntoAdditiveClosureOfAlgebroid,
           [ IsQuiverRowsCategory ],
   function( QRowsA )
     local A, ring, additive_closure;
