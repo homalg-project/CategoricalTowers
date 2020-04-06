@@ -78,9 +78,9 @@ InstallMethodWithCache( RestrictFunctorToFullSubcategoryOfRange,
       
       R := CapFunctor( name, AsCapCategory( Source( F ) ), full );
       
-      AddObjectFunction( R, a -> ApplyFunctor( F, UnderlyingCell( a ) ) );
+      AddObjectFunction( R, a -> ApplyFunctor( F, a ) / full );
       
-      AddMorphismFunction( R, { s, alpha, r } -> ApplyFunctor( F, UnderlyingCell( alpha ) ) );
+      AddMorphismFunction( R, { s, alpha, r } -> ApplyFunctor( F, alpha ) / full );
       
       return R;
       
