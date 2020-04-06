@@ -1067,15 +1067,17 @@ end );
 InstallMethod( IndecProjectiveObjects,
           [ IsCapHomCategory ],
   function( Hom )
-    local pp, iso;
+    local A, pp, iso;
     
-    if not IsMatrixCategory( Range( Hom ) ) then
+    A := UnderlyingQuiverAlgebra( Source( Hom ) );
+    
+    if not ( IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A ) ) then
       
       TryNextMethod( );
       
     fi;
     
-    pp := IndecProjRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    pp := IndecProjRepresentations( A );
     
     iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
     
@@ -1087,15 +1089,17 @@ end );
 InstallMethod( IndecInjectiveObjects,
           [ IsCapHomCategory ],
   function( Hom )
-    local ii, iso;
+    local A, ii, iso;
     
-    if not IsMatrixCategory( Range( Hom ) ) then
+    A := UnderlyingQuiverAlgebra( Source( Hom ) );
+    
+    if not ( IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A ) ) then
       
       TryNextMethod( );
       
     fi;
     
-    ii := IndecInjRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    ii := IndecInjRepresentations( A );
     
     iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
     
@@ -1107,15 +1111,17 @@ end );
 InstallMethod( SimpleObjects,
           [ IsCapHomCategory ],
   function( Hom )
-    local ss, iso;
+    local A, ss, iso;
     
-    if not IsMatrixCategory( Range( Hom ) ) then
+    A := UnderlyingQuiverAlgebra( Source( Hom ) );
+    
+    if not ( IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A ) ) then
       
       TryNextMethod( );
       
     fi;
     
-    ss := SimpleRepresentations( UnderlyingQuiverAlgebra( Source( Hom ) ) );
+    ss := SimpleRepresentations( A );
     
     iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
     
