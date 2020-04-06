@@ -8,8 +8,10 @@
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
   [
    "IsWellDefinedForObjects",
-   "IsEqualForObjects",
    "IsHomSetInhabited",
+   "TensorUnit",
+   "TensorProductOnObjects",
+   "InternalHomOnObjects",
    ] );
 
 ##
@@ -106,9 +108,10 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
   function( C )
     local skeletal, name, category_filter, category_object_filter, category_morphism_filter,
-          create_func_bool, create_func_morphism, create_func_universal_morphism,
-          list_of_operations_to_install, skip, func, pos,
-          P, finalize;
+          create_func_bool, create_func_object0, create_func_morphism0,
+          create_func_object, create_func_morphism, create_func_universal_morphism,
+          list_of_operations_to_install, is_limit, skip, func, pos,
+          properties, P, finalize;
     
     skeletal := ValueOption( "skeletal" );
     
@@ -142,10 +145,133 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     end;
     
-    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY;
+    ## e.g., TerminalObject
+    create_func_object0 :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( )
+            
+            return oper( C ) / P;
+            
+          end;
+          
+      end;
     
-    list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
+    ## e.g., TerminalObjectFunctorial
+    create_func_morphism0 :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( P )
+            
+            return oper( P!.AmbientCategory ) / P;
+            
+          end;
+          
+      end;
     
+    ## e.g., DirectProduct
+    create_func_object :=
+      function( name )
+        local oper;
+        
+        oper := ValueGlobal( name );
+        
+        return ## a constructor for universal objects
+          function( arg )
+            
+            return CallFuncList( oper, List( arg, UnderlyingCell ) ) / P;
+            
+          end;
+          
+      end;
+    
+    ## e.g., IdentityMorphism, PreCompose
+    create_func_morphism :=
+      function( name )
+        local oper, type;
+        
+        oper := ValueGlobal( name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
+        
+        return
+          function( arg )
+            local src_trg, S, T;
+            
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            S := src_trg[1];
+            T := src_trg[2];
+            
+            return UniqueMorphism( S, T );
+            
+          end;
+          
+      end;
+    
+    ## e.g., UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
+    create_func_universal_morphism :=
+      function( name )
+        local info, oper, type;
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
+        if not info.with_given_without_given_name_pair[2] = name then
+            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
+        fi;
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
+        
+        oper := ValueGlobal( name );
+        
+        return
+          function( arg )
+            local src_trg, S, T;
+            
+            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
+            S := src_trg[1];
+            T := src_trg[2];
+            
+            return UniqueMorphism( S, T );
+            
+        end;
+        
+    end;
+    
+    is_limit :=
+      function( a )
+        local entry;
+        
+        entry := CAP_INTERNAL_METHOD_NAME_RECORD.(a);
+        
+        if IsBound( entry.universal_type ) and entry.universal_type in [ "Limit", "limit", "Colimit", "colimit" ] then
+            return true;
+        fi;
+        
+        return false;
+        
+    end;
+
+    ## P admits the same (co)limits as C,
+    ## in fact, a weak (co)limit in C becomes a (co)limit in P
+    list_of_operations_to_install := Filtered( ListInstalledOperationsOfCategory( C ), is_limit );
+    
+    list_of_operations_to_install :=
+      Concatenation(
+              Intersection(
+                      CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
+                      ListInstalledOperationsOfCategory( C ) ),
+              list_of_operations_to_install );
+
     skip := [ 
               ];
     
@@ -158,13 +284,58 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     od;
     
+    properties := [ #"IsEnrichedOverCommutativeRegularSemigroup",
+                    #"IsAbCategory",
+                    "IsAdditiveCategory",
+                    "IsPreAbelianCategory",
+                    "IsAbelianCategory",
+                    "IsMonoidalCategory",
+                    "IsBraidedMonoidalCategory",
+                    "IsSymmetricMonoidalCategory",
+                    "IsClosedMonoidalCategory",
+                    "IsSymmetricClosedMonoidalCategory",
+                    "IsCartesianCategory",
+                    "IsStrictCartesianCategory",
+                    "IsCartesianClosedCategory",
+                    "IsCocartesianCategory",
+                    "IsStrictCocartesianCategory",
+                    "IsCocartesianCoclosedCategory",
+                    ];
+    
+    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    
+    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    
+    Add( properties, [ "IsThinCategory", true ] );
+    
+    if IsIdenticalObj( skeletal, true ) then
+        
+        Add( properties, [ "IsSkeletalCategory", true ] );
+        
+        if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
+            Add( properties, [ "IsStrictCartesianCategory", true ] );
+        fi;
+        
+        if HasIsCocartesianCategory( C ) and IsCocartesianCategory( C ) then
+            Add( properties, [ "IsStrictCocartesianCategory", true ] );
+        fi;
+        
+    fi;
+    
     P := CategoryConstructor( :
                  name := name,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
+                 properties := properties,
+                 is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool
+                 create_func_bool := create_func_bool,
+                 create_func_object0 := create_func_object0,
+                 create_func_morphism0 := create_func_morphism0,
+                 create_func_object := create_func_object,
+                 create_func_morphism := create_func_morphism,
+                 create_func_universal_morphism := create_func_universal_morphism
                  );
     
     P!.AmbientCategory := C;
@@ -173,42 +344,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         ADD_COMMON_METHODS_FOR_POSETS( P );
     else
         ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
-    fi;
-    
-    if CanCompute( C, "TensorUnit" ) then
-        AddTensorUnit( P,
-          function( )
-            
-            return TensorUnit( AmbientCategory( P ) ) / P;
-            
-        end );
-    fi;
-    
-    if CanCompute( C, "DirectProduct" ) then ## WeakDirectProduct
-        AddDirectProduct( P,
-          function( L )
-            
-            return DirectProduct( List( L, UnderlyingCell ) ) / CapCategory( L[1] );
-            
-        end );
-    fi;
-    
-    if CanCompute( C, "Coproduct" ) then ## WeakCoproduct
-        AddCoproduct( P,
-          function( L )
-            
-            return Coproduct( List( L, UnderlyingCell ) ) / CapCategory( L[1] );
-            
-        end );
-    fi;
-    
-    if CanCompute( C, "TensorProductOnObjects" ) then
-        AddTensorProductOnObjects( P,
-          function( I, J )
-            
-            return TensorProductOnObjects( UnderlyingCell( I ), UnderlyingCell( J ) ) / CapCategory( I );
-            
-        end );
     fi;
     
     finalize := ValueOption( "FinalizeCategory" );
