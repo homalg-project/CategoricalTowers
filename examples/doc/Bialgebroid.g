@@ -82,9 +82,9 @@ comult := Comultiplication( B );
 
 #! @Example
 ApplyFunctor( counit, B.u );
-#! (1)
+#! <(1)>
 ApplyFunctor( counit, B.v );
-#! (1)
+#! <(1)>
 ApplyFunctor( counit, IdentityMorphism( B.u ) );
 #! (1)-[1*(1)]->(1)
 ApplyFunctor( counit, IdentityMorphism( B.v ) );
@@ -94,9 +94,9 @@ ApplyFunctor( counit, B.a );
 ApplyFunctor( counit, B.b );
 #! (1)-[1*(1)]->(1)
 ApplyFunctor( comult, B.u );
-#! (uu)
+#! <(uu)>
 ApplyFunctor( comult, B.v );
-#! (vv)
+#! <(vv)>
 ApplyFunctor( comult, IdentityMorphism( B.u ) );
 #! (uu)-[{ 1*(uu) }]->(uu)
 ApplyFunctor( comult, IdentityMorphism( B.v ) );

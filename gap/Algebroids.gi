@@ -2145,7 +2145,7 @@ InstallMethod( ViewObj,
 
   function( o )
     
-    ViewObj( UnderlyingVertex( o ) );
+    Print( "<", StringView( UnderlyingVertex( o ) ), ">" );
     
 end );
 
@@ -2181,17 +2181,17 @@ InstallMethod( ViewObj,
   function( o )
     
     if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
-        ViewObj( Source( o ) );
+        ViewObj( UnderlyingVertex( Source( o ) ) );
         Print( "-[" );
         ViewObj( UnderlyingQuiverAlgebraElement( o ) );
         Print( "]->" );
-        ViewObj( Range( o ) );
+        ViewObj( UnderlyingVertex( Range( o ) ) );
     else
-        ViewObj( Range( o ) );
+        ViewObj( UnderlyingVertex( Range( o ) ) );
         Print( "<-[" );
         ViewObj( UnderlyingQuiverAlgebraElement( o ) );
         Print( "]-" );
-        ViewObj( Source( o ) );
+        ViewObj( UnderlyingVertex( Source( o ) ) );
     fi;
     
 end );
