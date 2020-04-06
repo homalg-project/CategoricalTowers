@@ -1069,7 +1069,7 @@ InstallMethod( IndecProjectiveObjects,
   function( Hom )
     local pp, iso;
     
-    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+    if not IsMatrixCategory( Range( Hom ) ) then
       
       TryNextMethod( );
       
@@ -1089,7 +1089,7 @@ InstallMethod( IndecInjectiveObjects,
   function( Hom )
     local ii, iso;
     
-    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+    if not IsMatrixCategory( Range( Hom ) ) then
       
       TryNextMethod( );
       
@@ -1109,7 +1109,7 @@ InstallMethod( SimpleObjects,
   function( Hom )
     local ss, iso;
     
-    if not IsBound( Range( Hom )!.field_for_matrix_category ) then
+    if not IsMatrixCategory( Range( Hom ) ) then
       
       TryNextMethod( );
       
