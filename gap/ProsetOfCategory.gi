@@ -111,7 +111,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
           create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, is_limit, skip, func, pos,
-          properties, P, finalize;
+          properties, preinstall, P, finalize;
     
     skeletal := ValueOption( "skeletal" );
     
@@ -312,12 +312,28 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
         Add( properties, [ "IsSkeletalCategory", true ] );
         
+        preinstall := [ ADD_COMMON_METHODS_FOR_POSETS ];
+        
         if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
             Add( properties, [ "IsStrictCartesianCategory", true ] );
+            preinstall := [ ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES ];
         fi;
         
         if HasIsCocartesianCategory( C ) and IsCocartesianCategory( C ) then
             Add( properties, [ "IsStrictCocartesianCategory", true ] );
+            Add( preinstall, ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES );
+        fi;
+        
+    else
+        
+        preinstall := [ ADD_COMMON_METHODS_FOR_PREORDERED_SETS ];
+        
+        if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
+            preinstall := [ ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS ];
+        fi;
+        
+        if HasIsCocartesianCategory( C ) and IsCocartesianCategory( C ) then
+            Add( preinstall, ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS );
         fi;
         
     fi;
@@ -328,6 +344,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
                  properties := properties,
+                 preinstall := preinstall,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
@@ -339,12 +356,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  );
     
     P!.AmbientCategory := C;
-    
-    if IsIdenticalObj( skeletal, true ) then
-        ADD_COMMON_METHODS_FOR_POSETS( P );
-    else
-        ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
-    fi;
     
     finalize := ValueOption( "FinalizeCategory" );
     
