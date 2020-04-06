@@ -1211,6 +1211,55 @@ end );
 ####################################
 
 ##
+InstallMethod( ViewObj,
+          [ IsCapCategoryObjectInHomCategory ],
+  function( F )
+    local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
+    
+    if not IsMatrixCategory( Range( CapCategory( F ) ) ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    algebroid := Source( CapCategory( F ) );
+    
+    vertices := List( SetOfObjects( algebroid ), UnderlyingVertex );
+    
+    v_dim := List( ValuesOnAllObjects( F ), Dimension );
+    
+    v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
+    
+    v_string := JoinStringsWithSeparator( v_string, ", " );
+    
+    arrows := List( SetOfGeneratingMorphisms( algebroid ), UnderlyingQuiverAlgebraElement );
+    
+    if not IsPathAlgebra( UnderlyingQuiverAlgebra( algebroid ) ) then
+      
+      arrows := List( arrows, a -> Paths( Representative( a ) )[ 1 ] );
+      
+    else
+      
+      arrows := List( arrows, a -> Paths( a )[ 1 ] );
+      
+    fi;
+    
+    a_dim := List( ValuesOnAllGeneratingMorphisms( F ), m -> [ Dimension( Source( m ) ), Dimension( Range( m ) ) ] );
+    
+    a_string := ListN( arrows, a_dim,
+                  { arrow, dim } -> Concatenation(
+                      "(", String( arrow ), ")->", String( dim[ 1 ] ), "x", String( dim[ 2 ] ) )
+                    );
+    
+    a_string := JoinStringsWithSeparator( a_string, ", " );
+    
+    string := Concatenation( v_string, "; ", a_string );
+    
+    Print( "<", string, ">" );
+    
+end );
+
+##
 InstallMethod( Display,
           [ IsCapCategoryObjectInHomCategory ],
   function( F )
@@ -1244,6 +1293,37 @@ InstallMethod( Display,
       
     od;
    
+end );
+
+
+##
+InstallMethod( ViewObj,
+          [ IsCapCategoryMorphismInHomCategory ],
+  function( eta )
+    local algebroid, vertices, s_dim, r_dim, string;
+    
+    if not IsMatrixCategory( Range( CapCategory( eta ) ) ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    algebroid := Source( CapCategory( eta ) );
+    
+    vertices := List( SetOfObjects( algebroid ), UnderlyingVertex );
+     
+    s_dim := List( ValuesOnAllObjects( Source( eta ) ), Dimension );
+    
+    r_dim := List( ValuesOnAllObjects( Range( eta ) ), Dimension );
+   
+    string := ListN( vertices, s_dim, r_dim,
+                { vertex, s, r } ->
+                    Concatenation( "(", String( vertex ), ")->", String( s ), "x", String( r ) ) );
+    
+    string := JoinStringsWithSeparator( string, ", " );
+    
+    Print( "<", string, ">" );
+    
 end );
 
 ##
