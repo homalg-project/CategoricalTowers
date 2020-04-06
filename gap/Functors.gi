@@ -4,7 +4,7 @@
 # Functors
 
 ##
-InstallMethod( IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid,
+InstallMethod( IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid,
           [ IsQuiverRowsCategory, IsAdditiveClosureCategory ],
   function( QRowsA, additive_closure )
     local ring_QRowsA, ring_additive_closure, is_rationals, is_integers, algebroid, name, F;
@@ -81,7 +81,7 @@ InstallMethod( IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid,
 end );
 
 ##
-InstallMethod( IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows,
+InstallMethod( IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows,
           [ IsAdditiveClosureCategory, IsQuiverRowsCategory ],
   function( additive_closure, QRowsA )
     local ring_QRowsA, ring_additive_closure, is_rationals, is_integers, algebroid, name, F;
@@ -139,7 +139,7 @@ InstallMethod( IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows,
 end );
 
 ##
-InstallMethod( IsomorphismFunctorFromQuiverRows,
+InstallMethod( IsomorphismFromQuiverRows,
           [ IsAdditiveClosureCategory ],
   function( additive_closure )
     local algebroid, A, ring, QRowsA;
@@ -160,20 +160,20 @@ InstallMethod( IsomorphismFunctorFromQuiverRows,
       
       QRowsA := QuiverRows( A, true );
       
-      return IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
+      return IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
       
     else
       
       QRowsA := QuiverRows( A );
       
-      return IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
+      return IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
       
     fi;
     
 end );
 
 ##
-InstallMethod( IsomorphismFunctorIntoQuiverRows,
+InstallMethod( IsomorphismIntoQuiverRows,
           [ IsAdditiveClosureCategory ],
   function( additive_closure )
     local algebroid, A, ring, QRowsA;
@@ -194,20 +194,20 @@ InstallMethod( IsomorphismFunctorIntoQuiverRows,
       
       QRowsA := QuiverRows( A, true );
       
-      return IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
+      return IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
       
     else
       
       QRowsA := QuiverRows( A );
       
-      return IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
+      return IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
       
     fi;
     
 end );
 
 ##
-InstallMethod( IsomorphismFunctorFromAdditiveClosureOfAlgebroid,
+InstallMethod( IsomorphismFromAdditiveClosureOfAlgebroid,
           [ IsQuiverRowsCategory ],
   function( QRowsA )
     local A, ring, additive_closure;
@@ -220,20 +220,20 @@ InstallMethod( IsomorphismFunctorFromAdditiveClosureOfAlgebroid,
       
       additive_closure := AdditiveClosure( Algebroid( A, true ) );
       
-      return IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
+      return IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
       
     else
       
       additive_closure := AdditiveClosure( Algebroid( A ) );
       
-      return IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
+      return IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows( additive_closure, QRowsA );
       
     fi;
     
 end );
 
 ##
-InstallMethod( IsomorphismFunctorIntoAdditiveClosureOfAlgebroid,
+InstallMethod( IsomorphismIntoAdditiveClosureOfAlgebroid,
           [ IsQuiverRowsCategory ],
   function( QRowsA )
     local A, ring, additive_closure;
@@ -246,13 +246,13 @@ InstallMethod( IsomorphismFunctorIntoAdditiveClosureOfAlgebroid,
       
       additive_closure := AdditiveClosure( Algebroid( A, true ) );
       
-      return IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
+      return IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
       
     else
       
       additive_closure := AdditiveClosure( Algebroid( A ) );
       
-      return IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
+      return IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid( QRowsA, additive_closure );
       
     fi;
     

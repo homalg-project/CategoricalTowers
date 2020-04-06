@@ -3,16 +3,16 @@
 #
 # Functors
 
-DeclareOperation( "IsomorphismFunctorFromQuiverRowsIntoAdditiveClosureOfAlgebroid",
+DeclareOperation( "IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid",
           [ IsQuiverRowsCategory, IsAdditiveClosureCategory ] );
 
-DeclareOperation( "IsomorphismFunctorFromAdditiveClosureOfAlgebroidIntoQuiverRows",
+DeclareOperation( "IsomorphismFromAdditiveClosureOfAlgebroidIntoQuiverRows",
           [ IsAdditiveClosureCategory, IsQuiverRowsCategory ] );
 
-DeclareAttribute( "IsomorphismFunctorFromQuiverRows", IsAdditiveClosureCategory );
+DeclareAttribute( "IsomorphismFromQuiverRows", IsAdditiveClosureCategory );
 
-DeclareAttribute( "IsomorphismFunctorIntoQuiverRows", IsAdditiveClosureCategory );
+DeclareAttribute( "IsomorphismIntoQuiverRows", IsAdditiveClosureCategory );
 
-DeclareAttribute( "IsomorphismFunctorFromAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
+DeclareAttribute( "IsomorphismFromAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
 
-DeclareAttribute( "IsomorphismFunctorIntoAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
+DeclareAttribute( "IsomorphismIntoAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
