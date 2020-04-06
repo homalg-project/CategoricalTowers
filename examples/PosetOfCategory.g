@@ -3,7 +3,7 @@
 LoadPackage( "Locales" );
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP" );
+LoadPackage( "SubcategoriesForCAP", ">= 2020.02.25" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
@@ -37,5 +37,10 @@ IpJ := Coproduct( I, J );
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
 IpJ = J;
+#! true
+IIJ := InternalHomOnObjects( I, IJ );
+#! An object in the poset given by: An object in the slice category given by:
+#! <A morphism in Rows( Q[x,y] )>
+IIJ = J;
 #! true
 #! @EndExample
