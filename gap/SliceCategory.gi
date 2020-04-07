@@ -165,14 +165,27 @@ InstallMethod( SliceCategory,
         [ IsCapCategoryObject ],
         
   function( B )
-    local C, name, create_func_bool,
-          create_func_morphism, create_func_universal_morphism,
+    local C, name, over_tensor_unit, category_filter,
+          category_object_filter, category_morphism_filter,
+          create_func_bool, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, S, finalize;
     
     C := CapCategory( B );
     
     name := Concatenation( "A slice category of ", Name( C ) );
+    
+    over_tensor_unit := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "over_tensor_unit", fail );
+    
+    if IsIdenticalObj( over_tensor_unit, true ) then
+        category_filter := IsCapSliceCategoryOverTensorUnit;
+        category_object_filter := IsCapCategoryObjectInASliceCategoryOverTensorUnit;
+        category_morphism_filter := IsCapCategoryMorphismInASliceCategoryOverTensorUnit;
+    else
+        category_filter := IsCapSliceCategory;
+        category_object_filter := IsCapCategoryObjectInASliceCategory;
+        category_morphism_filter := IsCapCategoryMorphismInASliceCategory;
+    fi;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -277,9 +290,9 @@ InstallMethod( SliceCategory,
     
     S := CategoryConstructor( :
                  name := name,
-                 category_object_filter := IsCapCategoryObjectInASliceCategory,
-                 category_morphism_filter := IsCapCategoryMorphismInASliceCategory,
-                 category_filter := IsCapSliceCategory,
+                 category_filter := category_filter,
+                 category_object_filter := category_object_filter,
+                 category_morphism_filter := category_morphism_filter,
                  commutative_ring := commutative_ring,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
@@ -457,6 +470,58 @@ InstallMethod( SliceCategory,
         end );
         
     fi;
+
+    if IsIdenticalObj( over_tensor_unit, true ) then
+        
+        SetIsMonoidalCategory( S, true );
+        
+        AddTensorUnit( S,
+          function( )
+            
+            return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ) );
+            
+        end );
+        
+        AddTensorProductOnObjects( S,
+          function( I, J )
+            
+            return AsSliceCategoryCell(
+                           PreCompose(
+                                   TensorProductOnMorphisms( UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
+                                   LeftUnitor( BaseObject( CapCategory( I ) ) ) ) );
+            
+        end );
+        
+        if HasIsSymmetricClosedMonoidalCategory( C ) and IsSymmetricClosedMonoidalCategory( C ) and
+           CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
+            
+            SetIsSymmetricClosedMonoidalCategory( S, true );
+            
+            AddInternalHomOnObjects( S,
+              function( J, I ) ## the abstraction of the ideal quotient I:J
+                local R;
+                
+                I := UnderlyingMorphism( I );
+                J := UnderlyingMorphism( J );
+                
+                R := TensorUnit( CapCategory( I ) );
+                
+                return AsSliceCategoryCell(
+                               PreCompose(
+                                       [ ProjectionOfBiasedWeakFiberProduct(
+                                               InternalHomOnMorphisms( J, IdentityMorphism( Range( I ) ) ),
+                                               InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I )
+                                               ),   ## the range is InternalHom( R, R )
+                                         RightUnitorInverse( InternalHomOnObjects( R, R ) ), ## InternalHom( R, R ) -> InternalHom( R, R ) ⊗ R
+                                         EvaluationMorphism( R, R ) ## InternalHom( R, R ) ⊗ R -> R
+                                         ]
+                                       ) );
+                
+            end );
+            
+        fi;
+        
+    fi;
     
     finalize := ValueOption( "FinalizeCategory" );
     
@@ -480,55 +545,9 @@ InstallMethod( SliceCategoryOverTensorUnit,
   function( M )
     local S, finalize;
     
-    S := SliceCategory( TensorUnit( M ) : FinalizeCategory := false );
-    
-    SetIsMonoidalCategory( S, true );
-    
-    AddTensorUnit( S,
-      function( )
-        
-        return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ) );
-        
-    end );
-    
-    AddTensorProductOnObjects( S,
-      function( I, J )
-        
-        return AsSliceCategoryCell(
-                       PreCompose(
-                               TensorProductOnMorphisms( UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
-                               LeftUnitor( BaseObject( CapCategory( I ) ) ) ) );
-        
-    end );
-
-    if HasIsSymmetricClosedMonoidalCategory( M ) and IsSymmetricClosedMonoidalCategory( M ) and
-       CanCompute( M, "ProjectionOfBiasedWeakFiberProduct" ) then
-        
-        SetIsSymmetricClosedMonoidalCategory( S, true );
-        
-        AddInternalHomOnObjects( S,
-          function( J, I ) ## the abstraction of the ideal quotient I:J
-            local R;
-            
-            I := UnderlyingMorphism( I );
-            J := UnderlyingMorphism( J );
-            
-            R := TensorUnit( CapCategory( I ) );
-            
-            return AsSliceCategoryCell(
-                           PreCompose(
-                                   [ ProjectionOfBiasedWeakFiberProduct(
-                                           InternalHomOnMorphisms( J, IdentityMorphism( Range( I ) ) ),
-                                           InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I )
-                                           ), ## the range is InternalHom( R, R )
-                                     RightUnitorInverse( InternalHomOnObjects( R, R ) ), ## InternalHom( R, R ) -> InternalHom( R, R ) ⊗ R
-                                     EvaluationMorphism( R, R ) ## InternalHom( R, R ) ⊗ R -> R
-                                     ]
-                           ) );
-            
-        end );
-        
-    fi;
+    S := SliceCategory( TensorUnit( M ) :
+                 over_tensor_unit := true,
+                 FinalizeCategory := false );
     
     finalize := ValueOption( "FinalizeCategory" );
     

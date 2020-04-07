@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "SubcategoriesForCAP",
 Subtitle := "Subcategory and other related constructors for CAP categories",
 Version := Maximum( [
-                   "2020.03.03", ## Mohamed's version
+                   "2020.03.04", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.03.02", ## Kamal's version
                    ## this line prevents merge conflicts

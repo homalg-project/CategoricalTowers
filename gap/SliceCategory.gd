@@ -32,6 +32,26 @@ DeclareCategory( "IsCapCategoryObjectInASliceCategory",
 DeclareCategory( "IsCapCategoryMorphismInASliceCategory",
         IsCapCategoryCellInASliceCategory and IsCapCategoryMorphism );
 
+#! @Description
+#!  The &GAP; category of a slice category over the tensor unit.
+DeclareCategory( "IsCapSliceCategoryOverTensorUnit",
+        IsCapSliceCategory );
+
+#! @Description
+#!  The &GAP; category of cells in a slice category over the tensor unit.
+DeclareCategory( "IsCapCategoryCellInASliceCategoryOverTensorUnit",
+        IsCapCategoryCellInASliceCategory );
+
+#! @Description
+#!  The &GAP; category of objects in a slice category over the tensor unit.
+DeclareCategory( "IsCapCategoryObjectInASliceCategoryOverTensorUnit",
+        IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryObjectInASliceCategory );
+
+#! @Description
+#!  The &GAP; category of morphisms in a slice category over the tensor unit.
+DeclareCategory( "IsCapCategoryMorphismInASliceCategoryOverTensorUnit",
+        IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryMorphismInASliceCategory );
+
 ####################################
 #
 #! @Section Global variables
