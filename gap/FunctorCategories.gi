@@ -366,6 +366,35 @@ InstallMethod( YonedaProjective,
     
 end );
 
+##
+InstallMethod( EmbeddingOfSumOfImagesOfAllMorphisms,
+        "for two Hom-category objects",
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ],
+        
+  function( F, G )
+    local hom;
+    
+    hom := BasisOfExternalHom( F, G );
+    
+    if hom = [ ] then
+        return UniversalMorphismFromZeroObject( G );
+    fi;
+    
+    return ImageEmbedding( UniversalMorphismFromDirectSum( hom ) );
+    
+end );
+
+##
+InstallMethod( SumOfImagesOfAllMorphisms,
+        "for two Hom-category objects",
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ],
+        
+  function( F, G )
+    
+    return Source( EmbeddingOfSumOfImagesOfAllMorphisms( F, G ) );
+    
+end );
+
 ####################################
 #
 # methods for constructors:

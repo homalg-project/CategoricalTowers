@@ -134,6 +134,20 @@ DeclareOperation( "ApplyCell",
 DeclareOperation( "YonedaProjective",
         [ IsCapHomCategory, IsCapCategoryObject ] );
 
+#! @Description
+#!  Return the embedding of the sum of images of all morphisms between <A>F</A> and <A>G</A>.
+#! @Arguments F, G
+#! @Returns IsCapCategoryMorphismInHomCategory
+DeclareOperation( "EmbeddingOfSumOfImagesOfAllMorphisms",
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ] );
+
+#! @Description
+#!  Return the sum of images of all morphisms between <A>F</A> and <A>G</A>.
+#! @Arguments F, G
+#! @Returns IsCapCategoryObjectInHomCategory
+DeclareOperation( "SumOfImagesOfAllMorphisms",
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ] );
+
 ####################################
 #
 #! @Section Constructors
