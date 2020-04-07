@@ -88,7 +88,7 @@ DeclareAttribute( "AmbientCategory",
 #! @Description
 #!  The natural embedding functor from <A>S</A> to <C>AmbientCategory</C>(<A>S</A>).
 #! @Arguments S
-#! @Returns CapFunctor
+#! @Returns a functor
 DeclareAttribute( "InclusionFunctor",
         IsCapSliceCategory );
 
