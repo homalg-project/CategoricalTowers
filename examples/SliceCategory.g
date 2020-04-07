@@ -57,8 +57,6 @@ m1 := AsSliceCategoryCell( o1, m1, o2 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
 IsWellDefined( m1 );
 #! true
-IsSplitMonomorphism( m1 );
-#! true
 IsSplitEpimorphism( m1 );
 #! false
 m2 := MapOfFinSets( FinSet( 4 ), [ 2, 3, 2, 1 ], FinSet( 3 ) );
@@ -69,8 +67,6 @@ IsWellDefined( m2 );
 #! true
 IsSplitEpimorphism( m2 );
 #! true
-IsSplitMonomorphism( m2 );
-#! false
 m3 := PreCompose( m1, m2 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
 IsWellDefined( m3 );
