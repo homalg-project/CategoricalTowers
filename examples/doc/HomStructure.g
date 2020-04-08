@@ -25,7 +25,13 @@ Beilinson_P3 := Algebroid( Qq,
   ]
 );;
 objs := SetOfObjects( Beilinson_P3 );;
-n := 4;;
+Length( objs ) = 4;
+#! true
+maps := SetOfGeneratingMorphisms( Beilinson_P3.1, Beilinson_P3.2 );;
+maps = SetOfGeneratingMorphisms( Beilinson_P3, 1, 2 );
+#! true
+Length( maps ) = 4;
+#! true
 ForAll( [ 0 .. 3 ], k ->
 Dimension( HomomorphismStructureOnObjects( objs[1], objs[1 + k] ) ) = Binomial( 4 + k - 1, k )
 );

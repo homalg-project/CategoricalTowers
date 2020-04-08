@@ -106,6 +106,30 @@ InstallMethod( SetOfGeneratingMorphisms,
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
 ##
+InstallMethodWithCache( SetOfGeneratingMorphisms,
+        "for and algebroid and two objects",
+        [ IsAlgebroid and HasUnderlyingQuiver, IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ],
+        
+  { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
+);
+
+##
+InstallMethod( SetOfGeneratingMorphisms,
+        "for two objects in an algebroid",
+         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ],
+         
+  { obj_1, obj_2 } -> SetOfGeneratingMorphisms( CapCategory( obj_1 ), obj_1, obj_2 )
+);
+
+##
+InstallMethodWithCache( SetOfGeneratingMorphisms,
+        "for and algebroid and two integers",
+        [ IsAlgebroid and HasUnderlyingQuiver, IsInt, IsInt ],
+        
+  { A, i, j } -> SetOfGeneratingMorphisms( A, SetOfObjects( A )[ i ], SetOfObjects( A )[ j ] )
+);
+
+##
 InstallMethod( AssignSetOfGeneratingMorphisms,
         [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
   function( A, label )

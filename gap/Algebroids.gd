@@ -147,6 +147,27 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
         IsAlgebroid );
 
 #! @Description
+#!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
+#! @Arguments A, obj_1, obj_2
+#! @Returns a list
+DeclareOperation( "SetOfGeneratingMorphisms",
+        [ IsAlgebroid, IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ] );
+
+#! @Description
+#!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
+#! @Arguments obj_1, obj_2
+#! @Returns a list
+DeclareOperation( "SetOfGeneratingMorphisms",
+        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ] );
+
+#! @Description
+#!  Delegates to <C>SetOfGeneratingMorphisms</C>( <A>A</A>, <C>SetOfObjects</C>(<A>A</A>)[<A>i</A>], <C>SetOfObjects</C>(<A>A</A>)[<A>j</A>] ).
+#! @Arguments A, i, j
+#! @Returns a list
+DeclareOperation( "SetOfGeneratingMorphisms",
+        [ IsAlgebroid, IsInt, IsInt ] );
+
+#! @Description
 #!  Assigns the generating morphisms of the finitely presented algebroid <A>A</A> to global variables.
 #!  Names of the variables are the concatenation of <A>label</A> with the names of the defining arrows.
 #! @Arguments A, label
