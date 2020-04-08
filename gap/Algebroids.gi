@@ -1613,13 +1613,13 @@ InstallMethod( MorphismInAlgebroid,
     fi;
     
     A := Algebroid( AlgebraOfElement( path ) );
-    l := LeadingPath( path );
+    l := LeadingPath( Representative( path ) );
     
     S := String( Source( l ) );
     T := String( Target( l ) );
     
     return MorphismInAlgebroid( A.(S), path, A.(T) );
-
+    
 end );
 
 ##
