@@ -412,6 +412,12 @@ DeclareOperation( "ObjectInAlgebroid",
         [ IsAlgebroid, IsQuiverVertex ] );
 
 #! @Description
+#!  Delegates to <C>ObjectInAlgebroid</C>( <A>A</A>,  <A>V</A> ).
+#! @Arguments V, A
+#! @Returns an object in a &CAP; category
+DeclareOperation( "\/", [ IsQuiverVertex, IsAlgebroid ] );
+
+#! @Description
 #!  The constructor of morphisms in an algebroid given the source <A>S</A>,
 #!  the target <A>T</A>, and the underlying quiver algebra element <A>path</A>.
 #!  If neither <A>S</A> nor <A>T</A> are provided they are read off from <A>path</A>.
@@ -425,6 +431,12 @@ DeclareOperation( "MorphismInAlgebroid",
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
         [ IsQuiverAlgebraElement ] );
+
+#! @Description
+#!  Delegates to <C>MorphismInAlgebroid</C>( <A>path</A> ).
+#! @Arguments path, A
+#! @Returns a morphism in a &CAP; category
+DeclareOperation( "\/", [ IsQuiverAlgebraElement, IsAlgebroid ] );
 
 DeclareAttribute( "AsCapCategory",
         IsCategoryOfAlgebroidsObject );

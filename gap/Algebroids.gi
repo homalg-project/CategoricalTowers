@@ -1524,6 +1524,13 @@ InstallMethod( ObjectInAlgebroid,
 end );
 
 ##
+InstallMethod( \/,
+        [ IsQuiverVertex, IsAlgebroid ],
+        
+  { v, A } -> ObjectInAlgebroid( A, v )
+);
+
+##
 InstallMethod( MorphismInAlgebroid,
         "for two objects in an algebroid and an element of the quiver algebra",
         [ IsCapCategoryObjectInAlgebroidRep, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
@@ -1599,6 +1606,20 @@ InstallMethod( MorphismInAlgebroid,
 end );
 
 ##
+InstallMethod( \/,
+        [ IsPathAlgebraElement, IsAlgebroid ],
+        
+  function( path, A )
+    
+    if not IsIdenticalObj( Algebroid( AlgebraOfElement( path ) ), A ) then
+        Error( "Wrong input!\n" );
+    fi;
+    
+    return MorphismInAlgebroid( path );
+    
+end );
+
+##
 InstallMethod( MorphismInAlgebroid,
         "an element of a quotient of a path algebra",
         [ IsQuotientOfPathAlgebraElement],
@@ -1619,6 +1640,20 @@ InstallMethod( MorphismInAlgebroid,
     T := String( Target( l ) );
     
     return MorphismInAlgebroid( A.(S), path, A.(T) );
+    
+end );
+
+##
+InstallMethod( \/,
+        [ IsQuotientOfPathAlgebraElement, IsAlgebroid ],
+        
+  function( path, A )
+    
+    if not IsIdenticalObj( Algebroid( AlgebraOfElement( path ) ), A ) then
+        Error( "Wrong input!\n" );
+    fi;
+    
+    return MorphismInAlgebroid( path );
     
 end );
 
