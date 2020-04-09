@@ -569,6 +569,12 @@ end );
 ##
 ##################################
 
+##################################
+##
+## View & Display
+##
+##################################
+
 ##
 InstallMethod( ViewObj,
     [ IsCapCategoryObjectInASliceCategory ],
