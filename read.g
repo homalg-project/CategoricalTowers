@@ -5,3 +5,4 @@
 #
 
 ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gi");
+ReadPackage( "CategoryConstructor", "gap/Tools.gi");

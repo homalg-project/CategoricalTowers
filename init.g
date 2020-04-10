@@ -5,3 +5,4 @@
 #
 
 ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gd");
+ReadPackage( "CategoryConstructor", "gap/Tools.gd");
