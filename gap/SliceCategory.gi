@@ -160,6 +160,22 @@ InstallMethod( InclusionFunctor,
 end );
 
 ##
+InstallMethod( DualOverTensorUnit,
+        [ IsCapCategoryMorphism ],
+        
+  function( J )
+    local R;
+    
+    R := TensorUnit( CapCategory( J ) );
+    
+    return PreCompose(
+                   [ Inverse( EvaluationMorphism( R, R ) ),       ## R -> InternalHom( R, R ) ⊗ R
+                     RightUnitor( InternalHomOnObjects( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
+                     InternalHomOnMorphisms( J, IdentityMorphism( R ) ) ] );
+    
+end );
+
+##
 InstallMethod( SliceCategory,
         "for a CAP category object",
         [ IsCapCategoryObject ],
@@ -499,22 +515,14 @@ InstallMethod( SliceCategory,
             
             AddInternalHomOnObjects( S,
               function( J, I ) ## the abstraction of the ideal quotient I:J
-                local R;
                 
                 I := UnderlyingMorphism( I );
                 J := UnderlyingMorphism( J );
                 
-                R := TensorUnit( CapCategory( I ) );
-                
                 return AsSliceCategoryCell(
-                               PreCompose(
-                                       [ ProjectionOfBiasedWeakFiberProduct(
-                                               InternalHomOnMorphisms( J, IdentityMorphism( Range( I ) ) ),
-                                               InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I )
-                                               ),   ## the range is InternalHom( R, R )
-                                         RightUnitorInverse( InternalHomOnObjects( R, R ) ), ## InternalHom( R, R ) -> InternalHom( R, R ) ⊗ R
-                                         EvaluationMorphism( R, R ) ## InternalHom( R, R ) ⊗ R -> R
-                                         ]
+                               ProjectionOfBiasedWeakFiberProduct(
+                                       DualOverTensorUnit( J ),
+                                       InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I )
                                        ) );
                 
             end );

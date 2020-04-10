@@ -112,6 +112,9 @@ DeclareAttribute( "AmbientCategory",
 DeclareAttribute( "InclusionFunctor",
         IsCapSliceCategory );
 
+DeclareAttribute( "DualOverTensorUnit",
+        IsCapCategoryMorphism );
+
 ####################################
 #
 #! @Section Constructors
