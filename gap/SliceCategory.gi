@@ -531,6 +531,25 @@ InstallMethod( SliceCategory,
                 
             end );
             
+            AddInternalHomOnMorphismsWithGivenInternalHoms( S,
+              function( source, phi, psi, target ) ## phi: J -> J', psi: I -> I'
+                local J, Jp, I, Ip;
+                
+                J := UnderlyingMorphism( Source( phi ) );
+                Jp := UnderlyingMorphism( Range( phi ) );
+                I := UnderlyingMorphism( Source( psi ) );
+                Ip := UnderlyingMorphism( Range( psi ) );
+                
+                return AsSliceCategoryCell(
+                               source,
+                               UniversalMorphismIntoBiasedWeakFiberProduct(
+                                       DualOverTensorUnit( J ),
+                                       InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), Ip ),
+                                       UnderlyingMorphism( source ) ),
+                               target );
+                
+            end );
+            
         fi;
         
     fi;
