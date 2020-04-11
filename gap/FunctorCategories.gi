@@ -539,11 +539,10 @@ InstallMethodWithCache( Hom,
         [ IsAlgebroid, IsCapCategory ],
         
   function( B, C )
-    local name, vertices, create_func_bool,
-          name_of_object, create_func_object0, create_func_object,
-          name_of_morphism, create_func_morphism, create_func_universal_morphism,
+    local name, vertices, create_func_bool, create_func_object0,
+          create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, doctrines, doc, prop, Hom, arrows, relations, kq;
+          properties, preinstall, doc, prop, Hom, arrows, relations, kq, name_of_object;
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -556,7 +555,7 @@ InstallMethodWithCache( Hom,
         vertices := SetOfObjects( B );
         
         create_func_bool :=
-          function( name )
+          function( name, Hom )
             local oper;
             
             oper := ValueGlobal( name );
@@ -571,12 +570,15 @@ InstallMethodWithCache( Hom,
         
     fi;
     
-    name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-    
     ## e.g., ZeroObject
     create_func_object0 :=
-      function( name )
-        local info, oper, functorial;
+      function( name, Hom )
+        local B, C, name_of_object, info, oper, functorial;
+
+        B := Source( Hom );
+        C := Range( Hom );
+        
+        name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -611,8 +613,13 @@ InstallMethodWithCache( Hom,
     
     ## e.g., DirectSum, KernelObject
     create_func_object :=
-      function( name )
-        local info, oper, functorial, diagram;
+      function( name, Hom )
+        local B, C, name_of_object, info, oper, functorial, diagram;
+        
+        B := Source( Hom );
+        C := Range( Hom );
+        
+        name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -692,12 +699,15 @@ InstallMethodWithCache( Hom,
         
       end;
     
-    name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-    
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
-        local oper, type;
+      function( name, Hom )
+        local B, C, name_of_morphism, oper, type;
+        
+        B := Source( Hom );
+        C := Range( Hom );
+        
+        name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
         oper := ValueGlobal( name );
         
@@ -728,8 +738,13 @@ InstallMethodWithCache( Hom,
     
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
-      function( name )
-        local info, oper, type;
+      function( name, Hom )
+        local B, C, name_of_morphism, info, oper, type;
+        
+        B := Source( Hom );
+        C := Range( Hom );
+        
+        name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -737,9 +752,9 @@ InstallMethodWithCache( Hom,
             Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
         fi;
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
         oper := ValueGlobal( name );
+        
+        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
           function( arg )
@@ -801,6 +816,11 @@ InstallMethodWithCache( Hom,
     
     properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
     
+    preinstall :=
+      [ function( Hom ) SetSource( Hom, B ); end,
+        function( Hom ) SetRange( Hom, C ); end,
+          ];
+    
     Hom := CategoryConstructor( :
                    name := name,
                    category_object_filter := IsCapCategoryObjectInHomCategory,
@@ -808,6 +828,7 @@ InstallMethodWithCache( Hom,
                    category_filter := IsCapHomCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
+                   preinstall := preinstall,
                    ## the option doctrines can be passed from higher code
                    is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
@@ -1016,6 +1037,8 @@ InstallMethodWithCache( Hom,
             Setter( name )( Hom, name( C ) );
             
         od;
+        
+        name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
         AddTensorUnit( Hom,
           function( )
