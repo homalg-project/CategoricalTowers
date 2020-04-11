@@ -1099,7 +1099,7 @@ InstallMethod( IntrinsicCategory,
     fi;
     
     create_func_bool :=
-      function( name )
+      function( name, IC )
         local oper;
         
         oper := ValueGlobal( name );
@@ -1118,7 +1118,7 @@ InstallMethod( IntrinsicCategory,
     
     ## e.g., ZeroObject
     create_func_object0 :=
-      function( name )
+      function( name, IC )
         local oper, context;
         
         oper := ValueGlobal( name );
@@ -1143,7 +1143,7 @@ InstallMethod( IntrinsicCategory,
     
     ## e.g., DirectSum
     create_func_object :=
-      function( name )
+      function( name, IC )
         local oper, context;
         
         oper := ValueGlobal( name );
@@ -1178,7 +1178,7 @@ InstallMethod( IntrinsicCategory,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
+      function( name, IC )
         local oper, type;
         
         oper := ValueGlobal( name );
@@ -1211,7 +1211,7 @@ InstallMethod( IntrinsicCategory,
     
     ## e.g., CokernelColift[WithGivenCokernelObject]
     create_func_universal_morphism :=
-      function( name )
+      function( name, IC )
         local info, oper, type, context;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
