@@ -339,7 +339,11 @@ InstallMethod( SliceCategory,
         mS := UnderlyingMorphism( Source( phi ) );
         mT := UnderlyingMorphism( Range( phi ) );
         
-        return IsCongruentForMorphisms( mS, PreCompose( UnderlyingCell( phi ), mT ) );
+        phi := UnderlyingCell( phi );
+        
+        return IsEqualForObjects( Source( mS ), Source( phi ) ) and
+               IsEqualForObjects( Source( mT ), Range( phi ) ) and
+               IsCongruentForMorphisms( mS, PreCompose( phi, mT ) );
         
     end );
     
