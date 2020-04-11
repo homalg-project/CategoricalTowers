@@ -117,6 +117,21 @@ DeclareAttribute( "DualOverTensorUnit",
 
 ####################################
 #
+#! @Section Operations
+#
+####################################
+
+
+#! @Description
+#!  The natural morphism $I \to \mathrm{\underbrace{Hom}}(J,I)$, where
+#!  <A>I</A> and <A>J</A> are objects in a slice category over the tensor unit.
+#! @Arguments J, I
+#! @Returns a morphism
+DeclareOperation( "MorphismFromCovariantArgumentOfInternalHom",
+        [ IsCapCategoryObjectInASliceCategoryOverTensorUnit, IsCapCategoryObjectInASliceCategoryOverTensorUnit ] );
+
+####################################
+#
 #! @Section Constructors
 #
 ####################################

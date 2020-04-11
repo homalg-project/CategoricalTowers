@@ -600,6 +600,30 @@ end );
 ##
 ##################################
 
+##
+InstallMethod( MorphismFromCovariantArgumentOfInternalHom,
+        "for two objects in a slice category over a tensor unit",
+        [ IsCapCategoryObjectInASliceCategoryOverTensorUnit, IsCapCategoryObjectInASliceCategoryOverTensorUnit ],
+        
+  function( J, I )
+    local source, target;
+    
+    source := I;
+    target := InternalHomOnObjects( J, I );
+    
+    I := UnderlyingMorphism( I );
+    J := UnderlyingMorphism( J );
+
+    return AsSliceCategoryCell(
+                   source,
+                   UniversalMorphismIntoBiasedWeakFiberProduct(
+                           DualOverTensorUnit( J ),
+                           InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I ),
+                           I ),
+                   target );
+    
+end );
+
 ##################################
 ##
 ## View & Display
