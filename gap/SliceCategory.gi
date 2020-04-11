@@ -205,7 +205,7 @@ InstallMethod( SliceCategory,
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
-      function( name )
+      function( name, S )
         local oper;
         
         oper := ValueGlobal( name );
@@ -221,7 +221,7 @@ InstallMethod( SliceCategory,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
+      function( name, S )
         local oper, type;
         
         oper := ValueGlobal( name );
@@ -245,7 +245,7 @@ InstallMethod( SliceCategory,
     
     ## e.g., UniversalMorphismFromInitialObjectWithGivenInitialObject
     create_func_universal_morphism :=
-      function( name )
+      function( name, S )
         local info, oper, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);

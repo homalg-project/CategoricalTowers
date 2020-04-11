@@ -128,7 +128,7 @@ InstallMethod( Subcategory,
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -144,7 +144,7 @@ InstallMethod( Subcategory,
     
     ## e.g., ZeroObject
     create_func_object0 :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -152,7 +152,7 @@ InstallMethod( Subcategory,
         return
           function( )
             
-            return AsSubcategoryCell( D, oper( C ) );
+            return AsSubcategoryCell( D, oper( D!.AmbientCategory ) );
             
           end;
           
@@ -160,7 +160,7 @@ InstallMethod( Subcategory,
     
     ## e.g., ZeroObjectFunctorial
     create_func_morphism0 :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -176,7 +176,7 @@ InstallMethod( Subcategory,
     
     ## e.g., DirectSum
     create_func_object :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -192,7 +192,7 @@ InstallMethod( Subcategory,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
+      function( name, D )
         local oper, type;
         
         oper := ValueGlobal( name );
@@ -210,7 +210,7 @@ InstallMethod( Subcategory,
     
     ## e.g., ProjectionInFactorOfDirectSumWithGivenDirectSum
     create_func_universal_morphism :=
-      function( name )
+      function( name, D )
         local info, oper, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
