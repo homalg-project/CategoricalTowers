@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
 Version := Maximum( [
-                   "2020.04.04", ## Mohamed's version
+                   "2020.04.06", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.01.01", ## Tibor's version
                    ## this line prevents merge conflicts
@@ -107,6 +107,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2020.02.16" ],
                    [ "FinSetsForCAP", ">= 2019.12.19" ],
+                   [ "CategoryConstructor", ">= 2020.04.06" ],
                    [ "SubcategoriesForCAP", ">= 2020.02.02" ],
                    [ "MatricesForHomalg", ">= 2020.02.02" ],
                    [ "Toposes", ">= 2020.02.19" ],
