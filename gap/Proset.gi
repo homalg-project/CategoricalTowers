@@ -8,8 +8,8 @@ SetInfoLevel( InfoLocales, 1 );
 
 InstallValue( PREORDERED_SET_METHOD_NAME_RECORD,
         rec(
-            IsIsomorphicForObjectsIfIsHomSetInhabited := rec(
-                                     installation_name := "IsIsomorphicForObjectsIfIsHomSetInhabited",
+            AreIsomorphicForObjectsIfIsHomSetInhabited := rec(
+                                     installation_name := "AreIsomorphicForObjectsIfIsHomSetInhabited",
                                      filter_list := [ "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true
@@ -100,7 +100,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
-    AddIsIsomorphicForObjectsIfIsHomSetInhabited( preordered_set,
+    AddAreIsomorphicForObjectsIfIsHomSetInhabited( preordered_set,
       function( A, B )
         
         return IsHomSetInhabited( B, A );

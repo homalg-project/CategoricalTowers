@@ -23,7 +23,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     AddIsHomSetInhabited( cartesian_proset,
       function( S, T )
         
-        return IsIsomorphicForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
+        return AreIsomorphicForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
         
     end );
     
@@ -31,7 +31,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     AddIsTerminal( cartesian_proset,
       function( A )
         
-        return IsIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
+        return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
         
     end );
     
@@ -147,7 +147,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     AddIsHomSetInhabited( cocartesian_proset,
       function( S, T )
         
-        return IsIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
+        return AreIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
         
     end );
     
@@ -155,7 +155,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     AddIsInitial( cocartesian_proset,
       function( A )
         
-        return IsIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
+        return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
         
     end );
     

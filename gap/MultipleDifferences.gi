@@ -263,7 +263,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         
         T_new := DirectProduct( List( A, a -> a.I ) );
         
-    until IsIsomorphicForObjectsIfIsHomSetInhabited( T_new, T );
+    until AreIsomorphicForObjectsIfIsHomSetInhabited( T_new, T );
     
     pos := PositionsOfMaximalObjects( List( A, d -> d.J ), IsHomSetInhabited );
     

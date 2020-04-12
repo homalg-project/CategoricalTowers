@@ -40,26 +40,26 @@ AddCategoricalProperty( [ "IsThinCategory" ] );
 #!  <A>A</A> is known to be less or equal to <A>B</A> w.r.t. the preorder.
 #! @Arguments A, B
 #! @Returns <C>true</C> or <C>false</C>
-DeclareOperation( "IsIsomorphicForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AreIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsIsomorphicForObjectsIfIsHomSetInhabited</C>.
-#! $F: A, B \mapsto \mathrm{IsIsomorphicForObjectsIfIsHomSetInhabited}(A, B)$.
+#! to the category for the basic operation <C>AreIsomorphicForObjectsIfIsHomSetInhabited</C>.
+#! $F: A, B \mapsto \mathrm{AreIsomorphicForObjectsIfIsHomSetInhabited}(A, B)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddAreIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddAreIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddAreIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddIsIsomorphicForObjectsIfIsHomSetInhabited",
+DeclareOperation( "AddAreIsomorphicForObjectsIfIsHomSetInhabited",
         [ IsCapCategory, IsList ] );
 
 #! @Section Constructors

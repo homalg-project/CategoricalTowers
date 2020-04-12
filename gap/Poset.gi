@@ -29,14 +29,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     
     ##
     AddIsEqualForObjectsIfIsHomSetInhabited( poset,
-      IsIsomorphicForObjectsIfIsHomSetInhabited );
+      AreIsomorphicForObjectsIfIsHomSetInhabited );
     
     ##
     AddIsEqualForObjects( poset,
       function( A, B )
         
         return IsHomSetInhabited( A, B ) and
-               IsIsomorphicForObjectsIfIsHomSetInhabited( A, B );
+               AreIsomorphicForObjectsIfIsHomSetInhabited( A, B );
         
     end );
     
@@ -58,6 +58,6 @@ InstallMethod( \<,
         TryNextMethod( );
     fi;
     
-    return IsHomSetInhabited( A, B ) and not IsIsomorphicForObjectsIfIsHomSetInhabited( A, B );
+    return IsHomSetInhabited( A, B ) and not AreIsomorphicForObjectsIfIsHomSetInhabited( A, B );
     
 end );
