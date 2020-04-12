@@ -69,7 +69,8 @@ InstallMethod( QuotientCategory,
     local create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          D, properties, finalize, name, name_membership_function, category_filter, object_filter, morphism_filter, reps;
+          category_filter, object_filter, morphism_filter, properties, preinstall,
+          D, finalize, name, name_membership_function, reps;
     
     name := ValueOption( "NameOfCategory" );
     
@@ -89,7 +90,7 @@ InstallMethod( QuotientCategory,
    
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -105,7 +106,7 @@ InstallMethod( QuotientCategory,
     
     ## e.g., ZeroObject
     create_func_object0 :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -113,7 +114,7 @@ InstallMethod( QuotientCategory,
         return
           function( )
             
-            return QuotientCategoryObject( D, oper( C ) );
+            return QuotientCategoryObject( D, oper( UnderlyingCategory( D ) ) );
             
           end;
           
@@ -121,7 +122,7 @@ InstallMethod( QuotientCategory,
     
     ## e.g., ZeroObjectFunctorial
     create_func_morphism0 :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -129,7 +130,7 @@ InstallMethod( QuotientCategory,
         return
           function( D )
             
-            return QuotientCategoryMorphism( D, oper( C ) );
+            return QuotientCategoryMorphism( D, oper( UnderlyingCategory( D ) ) );
             
           end;
           
@@ -137,7 +138,7 @@ InstallMethod( QuotientCategory,
     
     ## e.g., DirectSum
     create_func_object :=
-      function( name )
+      function( name, D )
         local oper;
         
         oper := ValueGlobal( name );
@@ -153,7 +154,7 @@ InstallMethod( QuotientCategory,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
+      function( name, D )
         local oper, type;
         
         oper := ValueGlobal( name );
@@ -171,7 +172,7 @@ InstallMethod( QuotientCategory,
     
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
-      function( name )
+      function( name, D )
         local info, oper, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
@@ -242,11 +243,31 @@ InstallMethod( QuotientCategory,
       
     fi;
     
+    properties := [
+                    "IsEnrichedOverCommutativeRegularSemigroup",
+                    "IsAbCategory",
+                    "IsLinearCategoryOverCommutativeRing",
+                    "IsAdditiveCategory"
+                  ];
+    
+    properties := Intersection( ListKnownCategoricalProperties( C ), properties );
+    
+    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    
+    preinstall :=
+      [ function( D ) SetUnderlyingCategory( D, C ); end,
+        function( D ) SetCongruencyTestFunctionForQuotientCategory( D, membership_function ); end,
+      ];
+    
     D := CategoryConstructor( :
                  name := name,
+                 category_filter := category_filter,
                  category_object_filter := object_filter,
                  category_morphism_filter := morphism_filter,
                  commutative_ring := commutative_ring,
+                 properties := properties,
+                 preinstall := preinstall,
+                 ## the option doctrines can be passed from higher code
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
                  create_func_object0 := create_func_object0,
@@ -256,30 +277,6 @@ InstallMethod( QuotientCategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    
-    ## Setting filter
-    
-    SetFilterObj( D, category_filter );
-    
-    ## Setting attributes
-    
-    SetUnderlyingCategory( D, C );
-    
-    SetCongruencyTestFunctionForQuotientCategory( D, membership_function );
-   
-    properties := [
-                    "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing",
-                    "IsAdditiveCategory"
-                  ];
-    
-    for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-        name := ValueGlobal( name );
-        
-        Setter( name )( D, name( C ) );
-        
-    od;
     
     AddIsEqualForObjects( D,
       function( a, b )
