@@ -239,13 +239,99 @@ InstallMethod( ApplyCell,
 end );
 
 ##
+InstallMethod( ApplyCell,
+        "for an object in a Hom-category and a CAP object",
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryObject ],
+        
+  function( F, o )
+    local objects, pos, values;
+    
+    objects := SetOfObjects( F );
+    
+    pos := Position( objects, o );
+    
+    if not pos = fail then
+        values := F!.ValuesOnAllObjects;
+        if not IsBound( values[pos] ) then
+            values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), o );
+        fi;
+        return values[pos];
+    fi;
+    
+    return ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), o );
+    
+end );
+
+##
+InstallMethod( ApplyCell,
+        "for an object in a Hom-category and a CAP morphism",
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryMorphism ],
+        
+  function( F, m )
+    local morphisms, pos, values;
+    
+    morphisms := SetOfGeneratingMorphisms( F );
+    
+    pos := Position( morphisms, m );
+    
+    if not pos = fail then
+        values := F!.ValuesOnAllGeneratingMorphisms;
+        if not IsBound( values[pos] ) then
+            values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), m );
+        fi;
+        return values[pos];
+    fi;
+    
+    return ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), m );
+    
+end );
+
+##
+InstallMethod( ApplyCell,
+        "for a morphism in a Hom-category and a CAP object",
+        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryObject ],
+        
+  function( eta, o )
+    local objects, pos, values;
+    
+    objects := SetOfObjects( eta );
+    
+    pos := Position( objects, o );
+    
+    if not pos = fail then
+        values := eta!.ValuesOnAllObjects;
+        if not IsBound( values[pos] ) then
+            values[pos] := ApplyNaturalTransformation( UnderlyingCapTwoCategoryCell( eta ), o );
+        fi;
+        return values[pos];
+    fi;
+    
+    return ApplyNaturalTransformation( UnderlyingCapTwoCategoryCell( eta ), o );
+    
+end );
+
+##
+InstallMethod( ApplyCell,
+        "for a morphism in a Hom-category and a CAP morphism",
+        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryMorphism ],
+        
+  function( eta, mor )
+    
+    return [ ApplyCell( eta, Source( mor ) ),
+             ApplyCell( Source( eta ), mor ),
+             ApplyCell( Range( eta ), mor ),
+             ApplyCell( eta, Range( mor ) ) ];
+    
+end );
+
+##
 InstallMethod( CallFuncList,
         "for a CAP cell in a Hom-category and a list",
         [ IsCapCategoryCellInHomCategory, IsList ],
         
   function( F_or_eta, L )
     
-    return ApplyCell( UnderlyingCapTwoCategoryCell( F_or_eta ), L[1] );
+    return ApplyCell( F_or_eta, L[1] );
     
 end );
 
@@ -256,7 +342,7 @@ InstallMethod( ValuesOnAllObjects,
         
   function( F )
     
-    return List( SetOfObjects( F ), UnderlyingCapTwoCategoryCell( F ) );
+    return List( SetOfObjects( F ), F );
     
 end );
 
@@ -267,7 +353,7 @@ InstallMethod( ValuesOnAllGeneratingMorphisms,
         
   function( F )
     
-    return List( SetOfGeneratingMorphisms( F ), UnderlyingCapTwoCategoryCell( F ) );
+    return List( SetOfGeneratingMorphisms( F ), F );
     
 end );
 
@@ -278,7 +364,7 @@ InstallMethod( ValuesOnAllObjects,
         
   function( eta )
     
-    return List( SetOfObjects( eta ), UnderlyingCapTwoCategoryCell( eta ) );
+    return List( SetOfObjects( eta ), eta );
     
 end );
 
@@ -371,7 +457,8 @@ InstallMethod( AsObjectInHomCategory,
   function( H, F )
     local obj, kq;
     
-    obj := rec( );
+    obj := rec( ValuesOnAllObjects := [ ],
+                ValuesOnAllGeneratingMorphisms := [ ] );
     
     kq := Source( H );
     
@@ -437,8 +524,8 @@ InstallMethod( AsObjectInHomCategory,
     
     F := AsObjectInHomCategory( B, rec_images_of_objects, rec_images_of_morphisms );
     
-    SetValuesOnAllObjects( F, images_of_objects );
-    SetValuesOnAllGeneratingMorphisms( F, images_of_morphisms );
+    F!.ValuesOnAllObjects := images_of_objects;
+    F!.ValuesOnAllGeneratingMorphisms := images_of_morphisms;
     
     return F;
     
@@ -522,7 +609,7 @@ InstallMethod( AsMorphismInHomCategory,
     
     eta := AsMorphismInHomCategory( U, eta, V );
     
-    SetValuesOnAllObjects( eta, e );
+    eta!.ValuesOnAllObjects := e;
     
     return eta;
     

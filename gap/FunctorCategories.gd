@@ -111,35 +111,45 @@ DeclareAttribute( "SimpleObjects",
 ####################################
 
 #! @Description
-#!  Apply the functor <A>F</A> to the cell <A>c</A>.
+#!  Apply the functor <A>F</A> (as an object in the corresponding Hom-category) to the cell <A>c</A>.
+#!  The shorthand is <A>F</A>(<A>c</A>).
 #! @Arguments F, c
 #! @Returns a &CAP; cell
 DeclareOperation( "ApplyCell",
-        [ IsCapFunctor, IsCapCategoryCell ] );
+        [ IsCapCategoryObjectInHomCategory, IsCapCategoryCell ] );
 
 #! @Description
-#!  Apply the natural transformation <A>eta</A> to the object <A>o</A>
+#!  Apply the natural transformation <A>eta</A> (as an object in the corresponding Hom-category) to the object <A>o</A>.
+#!  The shorthand is <A>eta</A>(<A>o</A>).
 #! @Arguments eta, o
+DeclareOperation( "ApplyCell",
+        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryObject ] );
+
+#! @Description
+#! @Returns Four morphisms that form a commutative square that appears in the definition of natural transformations
+#! (as an object in the corresponding Hom-category).
+#! These are the four morphisms of the compatibility diagram of a natural transformation <A>eta</A> with the morphism <A>mor</A>.
+#! @Arguments eta, mor
+DeclareOperation( "ApplyCell",
+        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryMorphism ] );
+
+##
+DeclareOperation( "ApplyCell",
+        [ IsCapFunctor, IsCapCategoryCell ] );
+
+##
 DeclareOperation( "ApplyCell",
         [ IsCapNaturalTransformation, IsCapCategoryObject ] );
 
-#! @Description
-#! @Returns Four morphisms that form a commutative square that appears in the definition of natural transformations (the compatibility of a natural transformation <A>eta</A> with morphisms <A>mor</A>)
-#! @Arguments eta, mor
+##
 DeclareOperation( "ApplyCell",
         [ IsCapNaturalTransformation, IsCapCategoryMorphism ] );
 
-#! @Description
-#!  Apply every element of the List <A>L</A> to the cell <A>c</A> and return the obtained list.
-#! @Arguments L, c
-#! @Returns a list of &CAP; cells
+##
 DeclareOperation( "ApplyCell",
         [ IsList, IsCapCategoryCell ] );
 
-#! @Description
-#!  Given a natural number <A>n</A> and a cell <A>c</A> return <A>n</A>.
-#! @Arguments n, c
-#! @Returns a natural number
+##
 DeclareOperation( "ApplyCell",
         [ IsInt, IsCapCategoryCell ] );
 
@@ -149,16 +159,16 @@ DeclareOperation( "ApplyCell",
 #!  on all objects of the source category.
 #! @Arguments c
 #! @Returns a list
-DeclareAttribute( "ValuesOnAllObjects",
-        IsCapCategoryCellInHomCategory );
+DeclareOperation( "ValuesOnAllObjects",
+        [ IsCapCategoryCellInHomCategory ] );
 
 #! @Description
 #!  Returns the values of the functor <A>F</A>
 #!  on all morphisms of the source category.
 #! @Arguments F
 #! @Returns a list
-DeclareAttribute( "ValuesOnAllGeneratingMorphisms",
-        IsCapCategoryObjectInHomCategory );
+DeclareOperation( "ValuesOnAllGeneratingMorphisms",
+        [ IsCapCategoryObjectInHomCategory ] );
 
 #! @Description
 #!  Return Yoneda's projective representation given by the object <A>o</A>,
