@@ -130,12 +130,8 @@ DeclareOperation( "WeakDirectSumDecomposition",
 DeclareGlobalFunction( "ConvertToMapOfFinSets" );
 #! @InsertChunk ConvertToMapOfFinSets
 
-#! @Arguments F
-#! @Returns a record
 DeclareAttribute( "RecordOfCategory",
         IsAlgebroid );
 
-#! @Arguments F
-#! @Returns a record
 DeclareAttribute( "RecordOfCatRep",
         IsCapCategoryObjectInHomCategory, "mutable" );
