@@ -38,12 +38,12 @@ IpJ := Coproduct( I, J );
 #! <A morphism in Rows( Q[x,y] )>
 IpJ = J;
 #! true
-IIJ := InternalHomOnObjects( I, IJ );
+IJqJ := InternalHomOnObjects( J, IJ );
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
-IIJ = J;
+IJqJ = I;
 #! true
-iota := InternalHomOnMorphisms( UniversalMorphismIntoTerminalObject( I ),
+iota := InternalHomOnMorphisms( UniversalMorphismIntoTerminalObject( J ),
                 IdentityMorphism( IJ ) );
 #! <An epi-, monomorphism in Poset( A slice category of Rows( Q[x,y] ) )>
 IsWellDefined( iota );
