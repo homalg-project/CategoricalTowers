@@ -55,12 +55,6 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY" );
 
 ####################################
 #
-#! @Section Technical stuff
-#
-####################################
-
-####################################
-#
 #! @Section Attributes
 #
 ####################################
@@ -85,6 +79,30 @@ DeclareAttribute( "Range",
 #! @Returns a &CAP; functor
 DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsObject );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of indecomposable projective objects in <A>Hom</A> up to isomorphism.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "IndecProjectiveObjects",
+        IsCapHomCategory );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of indecomposable injective objects in <A>Hom</A> up to isomorphism.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "IndecInjectiveObjects",
+        IsCapHomCategory );
+
+#! @Description
+#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
+#!  The output is the list of simple objects in <A>Hom</A>.
+#! @Arguments Hom
+#! @Returns a list
+DeclareAttribute( "SimpleObjects",
+        IsCapHomCategory );
 
 ####################################
 #
@@ -124,6 +142,23 @@ DeclareOperation( "ApplyCell",
 #! @Returns a natural number
 DeclareOperation( "ApplyCell",
         [ IsInt, IsCapCategoryCell ] );
+
+
+#! @Description
+#!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)
+#!  on all objects of the source category.
+#! @Arguments c
+#! @Returns a list
+DeclareAttribute( "ValuesOnAllObjects",
+        IsCapCategoryCellInHomCategory );
+
+#! @Description
+#!  Returns the values of the functor <A>F</A>
+#!  on all morphisms of the source category.
+#! @Arguments F
+#! @Returns a list
+DeclareAttribute( "ValuesOnAllGeneratingMorphisms",
+        IsCapCategoryObjectInHomCategory );
 
 #! @Description
 #!  Return Yoneda's projective representation given by the object <A>o</A>,
@@ -206,43 +241,3 @@ DeclareOperation( "AsMorphismInHomCategory",
 #! @Group AsMorphismInHomCategory
 DeclareOperation( "AsMorphismInHomCategory",
         [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ] );
-
-#! @Description
-#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
-#!  The output is the list of indecomposable projective objects in <A>Hom</A> up to isomorphism.
-#! @Arguments Hom
-#! @Returns a list
-DeclareAttribute( "IndecProjectiveObjects",
-        IsCapHomCategory );
-
-#! @Description
-#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
-#!  The output is the list of indecomposable injective objects in <A>Hom</A> up to isomorphism.
-#! @Arguments Hom
-#! @Returns a list
-DeclareAttribute( "IndecInjectiveObjects",
-        IsCapHomCategory );
-
-#! @Description
-#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
-#!  The output is the list of simple objects in <A>Hom</A>.
-#! @Arguments Hom
-#! @Returns a list
-DeclareAttribute( "SimpleObjects",
-        IsCapHomCategory );
-
-#! @Description
-#!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)
-#!  on all objects of the source category.
-#! @Arguments c
-#! @Returns a list
-DeclareAttribute( "ValuesOnAllObjects",
-        IsCapCategoryCellInHomCategory );
-
-#! @Description
-#!  Returns the values of the functor <A>F</A>
-#!  on all morphisms of the source category.
-#! @Arguments F
-#! @Returns a list
-DeclareAttribute( "ValuesOnAllGeneratingMorphisms",
-        IsCapCategoryObjectInHomCategory );
