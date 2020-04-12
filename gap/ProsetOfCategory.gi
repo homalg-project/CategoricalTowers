@@ -12,6 +12,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    "TensorUnit",
    "TensorProductOnObjects",
    "InternalHomOnObjects",
+   "InternalHomOnMorphismsWithGivenInternalHoms",
    ] );
 
 ##

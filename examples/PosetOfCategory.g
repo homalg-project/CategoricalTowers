@@ -3,7 +3,7 @@
 LoadPackage( "Locales" );
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2020.02.25" );
+LoadPackage( "SubcategoriesForCAP", ">= 2020.03.04" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
@@ -42,5 +42,10 @@ IIJ := InternalHomOnObjects( I, IJ );
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
 IIJ = J;
+#! true
+iota := InternalHomOnMorphisms( UniversalMorphismIntoTerminalObject( I ),
+                IdentityMorphism( IJ ) );
+#! <An epi-, monomorphism in Poset( A slice category of Rows( Q[x,y] ) )>
+IsWellDefined( iota );
 #! true
 #! @EndExample
