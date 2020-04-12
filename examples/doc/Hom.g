@@ -111,8 +111,6 @@ ApplyFunctor( antipode, B.t );
 #! Its objects are non-negative integers and its morphisms are matrices with coefficients in $\mathbb{Q}$.
 
 #! @Example
-LoadPackage( "LinearAlgebraForCAP" );
-#! true
 A := MatrixCategory( Q );
 #! Category of matrices over Q
 #! @EndExample

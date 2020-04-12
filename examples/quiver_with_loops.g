@@ -1,6 +1,4 @@
 LoadPackage( "FunctorCategories" );
-LoadPackage( "LinearAlgebraForCAP" );
-LoadPackage( "RingsForHomalg" );
 
 field := HomalgFieldOfRationals( );
 

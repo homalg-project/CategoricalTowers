@@ -532,6 +532,57 @@ InstallMethod( AsObjectInHomCategory,
 end );
 
 ##
+InstallMethod( AsObjectInHomCategory,
+        "for an algebroid and two lists",
+        [ IsAlgebroid, IsList, IsList ], 10001,
+        
+  function( kq, dims, matrices )
+    local k, kmat, objects, morphisms, mat;
+    
+    if dims = [ ] then
+        Error( "the list of dimensions is empty\n" );
+    fi;
+    
+    if not IsInt( dims[1] ) then
+        TryNextMethod( );
+    fi;
+    
+    k := CommutativeRingOfLinearCategory( kq );
+    
+    if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
+        TryNextMethod( );
+    fi;
+    
+    kmat := MatrixCategory( k );
+    
+    objects := List( dims, dim -> dim / kmat );
+    
+    morphisms := SetOfGeneratingMorphisms( kq );
+    
+    mat :=
+      function( m )
+        local source, target;
+        
+        source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
+        target := VertexIndex( UnderlyingVertex( Range( morphisms[m] ) ) );
+        
+        if IsHomalgMatrix( matrices[m] ) then
+            m := matrices[m];
+        else
+            m := HomalgMatrix( One( k ) * matrices[m], dims[source], dims[target], k );
+        fi;
+        
+        return m / kmat;
+        
+    end;
+    
+    morphisms := List( [ 1 .. Length( morphisms ) ], mat );
+    
+    return AsObjectInHomCategory( kq, objects, morphisms );
+    
+end );
+
+##
 InstallMethod( AsMorphismInHomCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],

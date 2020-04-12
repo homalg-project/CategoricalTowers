@@ -125,8 +125,6 @@ ApplyFunctor( antipode, B.t );
 #! We use it as a skeletal model of the category of finite dimension vector spaces.
 
 #! @Example
-LoadPackage( "LinearAlgebraForCAP" );
-#! true
 A := MatrixCategory( Q );
 #! Category of matrices over Q
 #! @EndExample
@@ -171,27 +169,11 @@ phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );
 #! <A 3 x 3 matrix over an internal ring>
 #! @EndExample
 
-#! Let $V$ be a $\mathbb{Q}$-vector space of dimension 3.
-
-#! @Example
-V := VectorSpaceObject( 3, Q );
-#! <A vector space object over Q of dimension 3>
-#! @EndExample
-
-#! Construct a record that will be used to define a functor from $B$ to $A$.
-
-#! @Example
-V_obj := rec( 1 := V );
-#! rec( 1 := <A vector space object over Q of dimension 3> )
-V_mor := rec( t := VectorSpaceMorphism( V, phi, V ) );
-#! rec( t := <A morphism in Category of matrices over Q> )
-#! @EndExample
-
 #! Finally construct a functor from $B$ to $A$ that sends the unique object $1$ of $B$ to the natural number 3 (representing a $\mathbb{Q}$-vector space of dimension 3) and the morphism $t$ in $B$ to the morphism induced by $\varphi$.
 #! We call this functor again $V$.
 
 #! @Example
-V := AsObjectInHomCategory( B, V_obj, V_mor );
+V := AsObjectInHomCategory( B, [ 3 ], [ phi ] );
 #! <(1)->3; (t)->3x3>
 #! @EndExample
 

@@ -218,6 +218,13 @@ DeclareOperation( "AsObjectInHomCategory",
 #! @Arguments B, images_of_objects, images_of_morphisms
 #!  Another alternative input is the source category <A>B</A> and two defining lists <A>images_of_objects</A> and <A>images_of_morphisms</A> of <A>F</A>.
 #!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
+#!  
+#!  For the convenience of the user the following input is also valid:
+#!  If <A>images_of_objects</A> is a list of nonnegative integers,
+#!  <A>images_of_morphisms</A> is a list of matrices, and
+#!  $k:=$ <C>CommutativeRingOfLinearCategory</C>( B ) is a field
+#!  then the two lists are interpreted as objects and morphisms
+#!  in <C>MatrixCategory</C>( $k$ ), respectively.
 #! @Group AsObjectInHomCategory
 DeclareOperation( "AsObjectInHomCategory",
         [ IsCapCategory, IsList, IsList ] );
