@@ -124,4 +124,4 @@ DeclareAttribute( "AsCellOfPoset",
 
 #! @Arguments object, P
 DeclareOperation( "/",
-        [ IsCapCategoryObject, IsProsetOrPosetOfCapCategory ] );
+        [ IsCapCategoryCell, IsProsetOrPosetOfCapCategory ] );

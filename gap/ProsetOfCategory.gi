@@ -53,6 +53,27 @@ InstallMethod( AsCellOfProset,
 end );
 
 ##
+InstallMethod( AsCellOfProset,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( morphism )
+    local P, m;
+    
+    P := ProsetOfCategory( CapCategory( morphism ) );
+    
+    m := rec( );
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
+            Source( morphism ) / P,
+            Range( morphism ) / P,
+            UnderlyingCell, morphism );
+    
+    return m;
+    
+end );
+
+##
 InstallMethod( AsCellOfPoset,
         "for a CAP object",
         [ IsCapCategoryObject ],
@@ -68,6 +89,27 @@ InstallMethod( AsCellOfPoset,
             UnderlyingCell, object );
     
     return o;
+    
+end );
+
+##
+InstallMethod( AsCellOfPoset,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( morphism )
+    local P, m;
+    
+    P := PosetOfCategory( CapCategory( morphism ) );
+    
+    m := rec( );
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
+            Source( morphism ) / P,
+            Range( morphism ) / P,
+            UnderlyingCell, morphism );
+    
+    return m;
     
 end );
 
@@ -89,6 +131,29 @@ InstallMethod( \/,
             UnderlyingCell, object );
     
     return o;
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism, IsProsetOrPosetOfCapCategory ],
+        
+  function( morphism, P )
+    local m;
+    
+    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( P ) ) then
+        Error( "the category of the morphism and the ambient category of proset do not coincide\n" );
+    fi;
+    
+    m := rec( );
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
+            Source( morphism ) / P,
+            Range( morphism ) / P,
+            UnderlyingCell, morphism );
+    
+    return m;
     
 end );
 
