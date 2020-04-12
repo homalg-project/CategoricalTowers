@@ -132,7 +132,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     ## e.g., IsHomSetInhabited
     create_func_bool :=
-      function( name )
+      function( name, P )
         local oper;
         
         oper := ValueGlobal( name );
@@ -148,7 +148,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     ## e.g., TerminalObject
     create_func_object0 :=
-      function( name )
+      function( name, P )
         local oper;
         
         oper := ValueGlobal( name );
@@ -164,7 +164,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     ## e.g., TerminalObjectFunctorial
     create_func_morphism0 :=
-      function( name )
+      function( name, P )
         local oper;
         
         oper := ValueGlobal( name );
@@ -180,7 +180,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     ## e.g., DirectProduct
     create_func_object :=
-      function( name )
+      function( name, P )
         local oper;
         
         oper := ValueGlobal( name );
@@ -196,7 +196,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
+      function( name, P )
         local oper, type;
         
         oper := ValueGlobal( name );
@@ -220,7 +220,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     ## e.g., UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
     create_func_universal_morphism :=
-      function( name )
+      function( name, P )
         local info, oper, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
