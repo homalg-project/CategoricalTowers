@@ -79,9 +79,9 @@ DeclareAttribute( "SetOfMorphisms",
 #!  Construct finite concrete category out of the list <A>L</A> of morphisms given by images.
 #! @Arguments L
 #! @Returns a &CAP; object
-DeclareOperation( "ConcreteCategoryWithEndomorphismGroups",
+DeclareOperation( "ConcreteCategoryForCAP",
         [ IsList ] );
-#! @InsertChunk ConcreteCategoryWithEndomorphismGroups
+#! @InsertChunk ConcreteCategoryForCAP
 
 #! @Description
 #!  Construct the category of representations of the algebroid <A>kq</A>
@@ -90,6 +90,7 @@ DeclareOperation( "ConcreteCategoryWithEndomorphismGroups",
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryOfRepresentations",
         [ IsAlgebroid, IsCapCategory ] );
+#! @InsertChunk CategoryOfRepresentations
 
 #! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
