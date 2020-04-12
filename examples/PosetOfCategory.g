@@ -48,4 +48,17 @@ iota := InternalHomOnMorphisms( UniversalMorphismIntoTerminalObject( J ),
 #! <An epi-, monomorphism in Poset( A slice category of Rows( Q[x,y] ) )>
 IsWellDefined( iota );
 #! true
+IJJ := TensorProduct( IJ, J );
+#! An object in the poset given by: An object in the slice category given by:
+#! <A morphism in Rows( Q[x,y] )>
+IJJqJ := InternalHomOnObjects( J, IJJ );
+#! An object in the poset given by: An object in the slice category given by:
+#! <A morphism in Rows( Q[x,y] )>
+IJJqJ = I;
+#! false
+IJJsJ := StableInternalHom( J, IJJ );
+#! An object in the poset given by: An object in the slice category given by:
+#! <A morphism in Rows( Q[x,y] )>
+IJJsJ = I;
+#! true
 #! @EndExample

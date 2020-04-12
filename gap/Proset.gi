@@ -22,6 +22,25 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( PREORDERED_SET_METHOD_NAME_RECORD );
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( PREORDERED_SET_METHOD_NAME_RECORD );
 
 ##
+InstallMethod( StableInternalHom,
+        "for two objects in a thin category",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  function( A, B )
+    local AB;
+    
+    AB := B;
+    
+    repeat
+        B := AB;
+        AB := InternalHomOnObjects( A, AB );
+    until AreIsomorphicForObjectsIfIsHomSetInhabited( B, AB );
+    
+    return AB;
+    
+end );
+
+##
 InstallMethod( UniqueMorphism,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
