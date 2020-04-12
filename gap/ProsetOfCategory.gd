@@ -1,5 +1,5 @@
 #
-# SubcategoriesForCAP: The proset/poset of a category
+# Locales: The proset/poset of a category
 #
 # Declarations
 #
