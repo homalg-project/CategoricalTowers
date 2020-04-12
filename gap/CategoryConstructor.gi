@@ -167,42 +167,42 @@ InstallGlobalFunction( CategoryConstructor,
             if not IsFunction( create_func_bool ) then
                 continue;
             fi;
-            func := create_func_bool( name );
+            func := create_func_bool( name, CC );
         elif info.return_type = "object" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_object0 ) then
                 continue;
             fi;
-            func := create_func_object0( name );
+            func := create_func_object0( name, CC );
         elif info.return_type = "object" then
             if not IsFunction( create_func_object ) then
                 continue;
             fi;
-            func := create_func_object( name );
+            func := create_func_object( name, CC );
         elif IsIdenticalObj( info.return_type, IsList ) then
             if not IsFunction( create_func_list ) then
                 continue;
             fi;
-            func := create_func_list( name );
+            func := create_func_list( name, CC );
         elif info.return_type = "object_or_fail" then
             if not IsFunction( create_func_object_or_fail ) then
                 continue;
             fi;
-            func := create_func_object_or_fail( name );
+            func := create_func_object_or_fail( name, CC );
         elif info.return_type = "other_object" then
             if not IsFunction( create_func_other_object ) then
                 continue;
             fi;
-            func := create_func_other_object( name );
+            func := create_func_other_object( name, CC );
         elif info.return_type = "other_morphism" then
             if not IsFunction( create_func_other_morphism ) then
                 continue;
             fi;
-            func := create_func_other_morphism( name );
+            func := create_func_other_morphism( name, CC );
         elif info.return_type = "morphism" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_morphism0 ) then
                 continue;
             fi;
-            func := create_func_morphism0( name );
+            func := create_func_morphism0( name, CC );
         elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
@@ -226,12 +226,12 @@ InstallGlobalFunction( CategoryConstructor,
                 if not IsFunction( create_func_universal_morphism ) then
                     continue;
                 fi;
-                func := create_func_universal_morphism( name );
+                func := create_func_universal_morphism( name, CC );
             else
                 if not IsFunction( create_func_morphism ) then
                     continue;
                 fi;
-                func := create_func_morphism( name );
+                func := create_func_morphism( name, CC );
             fi;
         else
             Info( InfoCategoryConstructor, 3, "cannot yet handle return_type=\"", info.return_type, "\" required for ", name );
