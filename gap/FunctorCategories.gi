@@ -255,11 +255,8 @@ InstallMethod( ValuesOnAllObjects,
         [ IsCapCategoryObjectInHomCategory ],
         
   function( F )
-    local vertices;
     
-    vertices := SetOfObjects( AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) ) );
-    
-    return List( vertices, F );
+    return List( SetOfObjects( F ), UnderlyingCapTwoCategoryCell( F ) );
     
 end );
 
@@ -269,11 +266,8 @@ InstallMethod( ValuesOnAllGeneratingMorphisms,
         [ IsCapCategoryObjectInHomCategory ],
         
   function( F )
-    local arrows;
     
-    arrows := SetOfGeneratingMorphisms( AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) ) );
-    
-    return List( arrows, F );
+    return List( SetOfGeneratingMorphisms( F ), UnderlyingCapTwoCategoryCell( F ) );
     
 end );
 
@@ -283,11 +277,8 @@ InstallMethod( ValuesOnAllObjects,
         [ IsCapCategoryMorphismInHomCategory ],
         
   function( eta )
-    local vertices;
     
-    vertices := SetOfObjects( AsCapCategory( Source( Source( UnderlyingCapTwoCategoryCell( eta ) ) ) ) );
-    
-    return List( vertices, eta );
+    return List( SetOfObjects( eta ), UnderlyingCapTwoCategoryCell( eta ) );
     
 end );
 
@@ -378,15 +369,18 @@ InstallMethod( AsObjectInHomCategory,
         [ IsCapCategory, IsCapFunctor ],
         
   function( H, F )
-    local obj;
+    local obj, kq;
     
     obj := rec( );
     
-    ObjectifyObjectForCAPWithAttributes( obj, H,
-            UnderlyingCapTwoCategoryCell, F
-            );
+    kq := Source( H );
     
-    Add( H, obj );
+    ObjectifyObjectForCAPWithAttributes( obj, H,
+            UnderlyingCapTwoCategoryCell, F,
+            Source, kq,
+            Range, Range( H ),
+            SetOfObjects, SetOfObjects( kq ),
+            SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( kq ) );
     
     return obj;
     
@@ -456,17 +450,18 @@ InstallMethod( AsMorphismInHomCategory,
         [ IsCapCategory, IsCapNaturalTransformation ],
         
   function( H, eta )
-    local mor;
+    local mor, kq;
     
-    mor := rec( );
+    mor := rec( ValuesOnAllObjects := [ ] );
+    
+    kq := Source( H );
     
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, H,
             AsObjectInHomCategory( H, Source( eta ) ),
             AsObjectInHomCategory( H, Range( eta ) ),
-            UnderlyingCapTwoCategoryCell, eta
-            );
-    
-    Add( H, mor );
+            UnderlyingCapTwoCategoryCell, eta,
+            SetOfObjects, SetOfObjects( kq ),
+            SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( kq ) );
     
     return mor;
     
@@ -513,7 +508,7 @@ InstallMethod( AsMorphismInHomCategory,
   function( U, e, V )
     local B, Q, vertices, eta, i;
     
-    B := AsCapCategory( Source( UnderlyingCapTwoCategoryCell( U ) ) );
+    B := Source( U );
     
     Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
     
@@ -1286,13 +1281,11 @@ end );
 InstallMethod( Display,
           [ IsCapCategoryObjectInHomCategory ],
   function( F )
-    local algebroid, objects, images_of_objects, morphisms, images_of_morphisms, i;
+    local objects, images_of_objects, morphisms, images_of_morphisms, i;
     
     Print( "An object in ", Name( CapCategory( F ) ), " defined by the following data:\n" );
     
-    algebroid := AsCapCategory( Source( UnderlyingCapTwoCategoryCell( F ) ) );
-    
-    objects := SetOfObjects( algebroid );
+    objects := SetOfObjects( F );
     
     images_of_objects := ValuesOnAllObjects( F );
     
@@ -1304,7 +1297,7 @@ InstallMethod( Display,
       
     od;
     
-    morphisms := SetOfGeneratingMorphisms( algebroid );
+    morphisms := SetOfGeneratingMorphisms( F );
     
     images_of_morphisms := ValuesOnAllGeneratingMorphisms( F );
     
@@ -1323,7 +1316,7 @@ end );
 InstallMethod( ViewObj,
           [ IsCapCategoryMorphismInHomCategory ],
   function( eta )
-    local algebroid, vertices, s_dim, r_dim, string;
+    local vertices, s_dim, r_dim, string;
     
     if not IsMatrixCategory( Range( CapCategory( eta ) ) ) then
       
@@ -1331,9 +1324,7 @@ InstallMethod( ViewObj,
       
     fi;
     
-    algebroid := Source( CapCategory( eta ) );
-    
-    vertices := List( SetOfObjects( algebroid ), UnderlyingVertex );
+    vertices := List( SetOfObjects( eta ), UnderlyingVertex );
      
     s_dim := List( ValuesOnAllObjects( Source( eta ) ), Dimension );
     
@@ -1353,13 +1344,11 @@ end );
 InstallMethod( Display,
           [ IsCapCategoryMorphismInHomCategory ],
   function( eta )
-    local algebroid, objects, images_of_objects, i;
+    local objects, images_of_objects, i;
     
     Print( "A morphism in ", Name( CapCategory( eta ) ), " defined by the following data:\n" );
     
-    algebroid := AsCapCategory( Source( Source( UnderlyingCapTwoCategoryCell( eta ) ) ) );
-    
-    objects := SetOfObjects( algebroid );
+    objects := SetOfObjects( eta );
     
     images_of_objects := ValuesOnAllObjects( eta );
     
