@@ -1267,6 +1267,46 @@ InstallMethodWithCache( Hom,
             
           end );
         
+    elif HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+      HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+        
+        properties := [ "IsMonoidalCategory",
+                        "IsBraidedMonoidalCategory",
+                        "IsSymmetricMonoidalCategory",
+                        #"IsClosedMonoidalCategory",
+                        #"IsSymmetricClosedMonoidalCategory",
+                        #"IsRigidSymmetricClosedMonoidalCategory",
+                        ];
+        
+        for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
+            name := ValueGlobal( name );
+            
+            Setter( name )( Hom, name( C ) );
+            
+        od;
+        
+        AddTensorUnit( Hom,
+          function( )
+            local objects, morphisms;
+            
+            objects := List( [ 1 .. Length( SetOfObjects( B ) ) ], i -> TensorUnit( C ) );
+            morphisms := List( [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ], i -> IdentityMorphism( TensorUnit( C ) ) );
+            
+            return AsObjectInHomCategory( B, objects, morphisms );
+            
+        end );
+        
+        AddTensorProductOnObjects( Hom,
+          function( F, G )
+            local objects, morphisms;
+            
+            objects := ListN( ValuesOnAllObjects( F ), ValuesOnAllObjects( G ), TensorProductOnObjects );
+            morphisms := ListN( ValuesOnAllGeneratingMorphisms( F ), ValuesOnAllGeneratingMorphisms( G ), TensorProductOnMorphisms );
+            
+            return AsObjectInHomCategory( B, objects, morphisms );
+            
+        end );
+        
     fi;
     
     AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function() IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
@@ -1277,8 +1317,7 @@ InstallMethodWithCache( Hom,
     
     Finalize( Hom );
     
-    if not ( HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
-             HasCounit( B ) and HasComultiplication( B ) ) then
+    if not CanCompute( Hom, "TensorProductOnObjects" ) then
         
         SetIsMonoidalCategory( Hom, false );
         
