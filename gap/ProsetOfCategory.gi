@@ -179,7 +179,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
           list_of_operations_to_install, is_limit, skip, func, pos,
           properties, preinstall, P, finalize;
     
-    skeletal := ValueOption( "skeletal" );
+    skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", fail );
     
     if IsIdenticalObj( skeletal, true ) then
         name := "Poset";
