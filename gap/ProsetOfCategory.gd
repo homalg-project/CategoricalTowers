@@ -110,13 +110,13 @@ DeclareOperation( "CreateProsetOrPosetOfCategory",
 DeclareAttribute( "ProsetOfCategory",
         IsCapCategory );
 
-#! @Arguments c
-DeclareAttribute( "AsCellOfProset",
-        IsCapCategoryCell );
-
 #! @Arguments C
 DeclareAttribute( "PosetOfCategory",
         IsCapCategory );
+
+#! @Arguments c
+DeclareAttribute( "AsCellOfProset",
+        IsCapCategoryCell );
 
 #! @Arguments c
 DeclareAttribute( "AsCellOfPoset",
