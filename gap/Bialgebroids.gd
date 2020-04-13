@@ -37,6 +37,11 @@ DeclareProperty( "IsCocommutative",
 DeclareProperty( "IsHopfAlgebroid",
         IsBialgebroid );
 
+#! @Description
+#!  The property of <A>C</A> being a linear closure of a category.
+#! @Arguments C
+AddCategoricalProperty( [ "IsLinearClosureOfACategory" ] );
+
 ####################################
 #
 #! @Section Attributes
