@@ -57,50 +57,6 @@ InstallMethod( ConcreteCategoryForCAP,
 end );
 
 ##
-InstallMethod( CategoryOfRepresentations,
-        "for an algebroid and a CAP category",
-        [ IsAlgebroid, IsCapCategory ],
-        
-  function( kq, A )
-    local CatReps;
-    
-    CatReps := Hom( kq, A :
-                    doctrines := [ [ "IsSymmetricMonoidalCategory", true ] ],
-                    FinalizeCategory := false );
-    
-    AddTensorUnit( CatReps,
-      function( )
-        local objects, morphisms;
-        
-        objects := List( [ 1 .. Length( SetOfObjects( kq ) ) ], i -> TensorUnit( A ) );
-        morphisms := List( [ 1 .. Length( SetOfGeneratingMorphisms( kq ) ) ], i -> IdentityMorphism( TensorUnit( A ) ) );
-        
-        return AsObjectInHomCategory( kq, objects, morphisms );
-        
-    end );
-    
-    AddTensorProductOnObjects( CatReps,
-      function( F, G )
-        local objects, morphisms;
-        
-        objects := ListN( ValuesOnAllObjects( F ), ValuesOnAllObjects( G ), TensorProductOnObjects );
-        morphisms := ListN( ValuesOnAllGeneratingMorphisms( F ), ValuesOnAllGeneratingMorphisms( G ), TensorProductOnMorphisms );
-        
-        return AsObjectInHomCategory( kq, objects, morphisms );
-        
-    end );
-    
-    if ValueOption( "FinalizeCategory" ) = false then
-        return CatReps;
-    fi;
-    
-    Finalize( CatReps );
-    
-    return CatReps;
-    
-end );
-
-##
 InstallMethod( RecordOfCategory,
         "for an algebroid",
         [ IsAlgebroid ],

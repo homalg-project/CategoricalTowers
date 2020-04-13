@@ -84,15 +84,6 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #! @InsertChunk ConcreteCategoryForCAP
 
 #! @Description
-#!  Construct the category of representations of the algebroid <A>kq</A>
-#!  with values in the Abelian category <A>A</A>.
-#! @Arguments kq, A
-#! @Returns a &CAP; category
-DeclareOperation( "CategoryOfRepresentations",
-        [ IsAlgebroid, IsCapCategory ] );
-#! @InsertChunk CategoryOfRepresentations
-
-#! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
 #!  by a list <A>eta</A> of morphisms, where the image embeddings thereof are
 #!  the components of the natural monomorphism from $S$ into <A>F</A>.

@@ -4,4 +4,8 @@
 @Section Global variables
 @Section Attributes
 @Section Constructors
+@Section Operations
 @Section Tools
+@Section Example
+
+@InsertChunk CategoryOfRepresentations
