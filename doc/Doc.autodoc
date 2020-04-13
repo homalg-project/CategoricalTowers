@@ -9,3 +9,7 @@
 @Subsection Differential modules as a category of functors
 
 @InsertChunk DifferentialModules
+
+@Subsection The category of equivariant maps as a category of functors
+
+@InsertChunk C3C3
