@@ -91,6 +91,61 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
 end );
 
 ##
+InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
+               [ IsList, IsList ],
+               
+  function( alpha, delta )
+    local cat, beta, gamma, i;
+    
+    cat := CapCategory( alpha[1][1] );
+    
+    if not CanCompute( cat, "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory" ) then
+      TryNextMethod( );
+    fi;
+    
+    beta := [ ];
+    
+    gamma := [ ];
+    
+    for i in [ 1 .. Length( alpha ) ] do
+      
+      Add( beta, List( [ 1 .. Length( delta[i] ) ],
+        function( j )
+           local alpha_ij, delta_ij;
+           
+           alpha_ij := alpha[i][j];
+           delta_ij := delta[i][j];
+           
+          if IsEndomorphism( delta_ij ) and not IsIdenticalToZeroMorphism( alpha_ij ) then
+              return IdentityMorphism( Source( delta_ij ) );
+          fi;
+          
+          return ZeroMorphism( Source( delta_ij ), Range( delta_ij ) );
+          
+        end ) );
+        
+      Add( gamma, List( [ 1 .. Length( alpha[i] ) ],
+        function( j )
+          local alpha_ij, delta_ij;
+          
+          alpha_ij := alpha[i][j];
+          delta_ij := delta[i][j];
+          
+          if IsEndomorphism( alpha_ij ) and not IsIdenticalToZeroMorphism( delta_ij ) then
+              return IdentityMorphism( Source( alpha_ij ) );
+          fi;
+          
+          return ZeroMorphism( Source( alpha_ij ), Range( alpha_ij ) );
+          
+        end ) );
+        
+    od;
+    
+    return BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory( alpha, beta, gamma, delta );
+    
+end );
+
+##
 InstallMethod( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
                [ IsList, IsList, IsList ],
                
@@ -435,4 +490,3 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
   end,
   Description := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory using the homomorphism structure"
 );
-

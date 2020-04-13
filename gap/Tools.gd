@@ -107,7 +107,7 @@ DeclareOperation( "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,
 #! but the output is simply <C>true</C> if a unique solution exists,
-#! <C>false</C> otherwise.
+#! and <C>false</C> otherwise.
 #! @Returns a boolean
 #! @Arguments left_coeffs, right_coeffs, right_side
 DeclareOperation( "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
@@ -131,7 +131,7 @@ DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCat
 
 #! @Description
 #! but the output is <C>true</C> if the homogeneous system has only the trivial solution,
-#! <C>false</C> otherwise.
+#! and <C>false</C> otherwise.
 #! @Returns a boolean
 #! @Arguments left_coeffs, right_coeffs
 DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
@@ -154,7 +154,7 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
                    [ IsList, IsList, IsCapCategory ] );
 
 #! @Description
-#! The arguments are two lists $\alpha$ and $\beta$ of morphisms in some linear category over commutative ring.
+#! The arguments are two lists of lists $\alpha$ and $\beta$ of morphisms in some linear category over commutative ring.
 #! The first list $\alpha$ (the left coefficients) is a list of list of morphisms $\alpha_{ij}: A_i \rightarrow B_j$,
 #! where $i = 1 \dots m$ and $j = 1 \dots n$ for integers $m,n \geq 1$.
 #! The second list $\beta$ (the right coefficients) is a list of list of morphisms $\beta_{ij}: C_j \rightarrow D_i$,
@@ -187,7 +187,7 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCatego
                    [ IsList, IsList, IsList, IsList, IsCapCategory ] );
 
 #! @Description
-#! The arguments are four lists $\alpha$, $\beta$, $\gamma$, $\delta$ of morphisms in some linear category over commutative ring.
+#! The arguments are four lists of lists $\alpha$, $\beta$, $\gamma$, $\delta$ of morphisms in some linear category over commutative ring.
 #! Each of $\alpha$ and $\gamma$ is a list of list of morphisms $\alpha_{ij}, \gamma_{ij}: A_i \rightarrow B_j$,
 #! where $i = 1 \dots m$ and $j = 1 \dots n$ for integers $m,n \geq 1$.
 #! Each of $\beta$ and $\delta$ is also a list of list of morphisms $\beta_{ij}, \delta_{ij}: C_j \rightarrow D_i$,
@@ -215,6 +215,22 @@ DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCat
 DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are two lists of lists $\alpha$, $\delta$ morphisms in some linear category
+#! over commutative ring.
+#! $\alpha$ is a list of list of morphisms $\alpha_{ij}:A_i \rightarrow B_j$ and
+#! $\delta$ is a list of list of morphisms $\delta_{ij}:C_j \rightarrow D_i$,
+#! where $i = 1 \dots m$ and $j = 1 \dots n$ for integers $m,n \geq 1$.
+#! The method delegates to <C>BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</C> applied on
+#! $\alpha$, $\beta$, $\gamma$, $\delta$ where $\beta_{ij}$ equals <C>IdentityMorphism</C>(<C>Source</C>($\delta_{ij}$))
+#! whenever $\delta_{ij}$ is endomorphism and equals to $0*\delta_{ij}$ otherwise; and
+#! $\gamma_{ij}$ equals <C>IdentityMorphism</C>(<C>Source</C>($\alpha_{ij}$))
+#! whenever $\alpha_{ij}$ is endomorphism and equals to $0*\alpha_{ij}$ otherwise for all
+#! $i = 1 \dots m$ and $j = 1 \dots n$.
+#! @Returns a list of lists of morphisms $[X^1, \dots, X^t]$
+#! @Arguments alpha, delta
+DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
+                   [ IsList, IsList ] );
 
 ####################################
 #
