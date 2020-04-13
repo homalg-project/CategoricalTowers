@@ -53,6 +53,25 @@ InstallMethod( AsCellOfProset,
 end );
 
 ##
+InstallMethod( AsCellOfStableProset,
+        "for a CAP object",
+        [ IsCapCategoryObject ],
+        
+  function( object )
+    local P, o;
+    
+    P := StableProsetOfCategory( CapCategory( object ) );
+    
+    o := rec( );
+    
+    ObjectifyObjectForCAPWithAttributes( o, P,
+            UnderlyingCell, object );
+    
+    return o;
+    
+end );
+
+##
 InstallMethod( AsCellOfProset,
         "for a CAP morphism",
         [ IsCapCategoryMorphism ],
@@ -61,6 +80,27 @@ InstallMethod( AsCellOfProset,
     local P, m;
     
     P := ProsetOfCategory( CapCategory( morphism ) );
+    
+    m := rec( );
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
+            Source( morphism ) / P,
+            Range( morphism ) / P,
+            UnderlyingCell, morphism );
+    
+    return m;
+    
+end );
+
+##
+InstallMethod( AsCellOfStableProset,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( morphism )
+    local P, m;
+    
+    P := StableProsetOfCategory( CapCategory( morphism ) );
     
     m := rec( );
     
@@ -93,6 +133,25 @@ InstallMethod( AsCellOfPoset,
 end );
 
 ##
+InstallMethod( AsCellOfStablePoset,
+        "for a CAP object",
+        [ IsCapCategoryObject ],
+        
+  function( object )
+    local P, o;
+    
+    P := StablePosetOfCategory( CapCategory( object ) );
+    
+    o := rec( );
+    
+    ObjectifyObjectForCAPWithAttributes( o, P,
+            UnderlyingCell, object );
+    
+    return o;
+    
+end );
+
+##
 InstallMethod( AsCellOfPoset,
         "for a CAP morphism",
         [ IsCapCategoryMorphism ],
@@ -101,6 +160,27 @@ InstallMethod( AsCellOfPoset,
     local P, m;
     
     P := PosetOfCategory( CapCategory( morphism ) );
+    
+    m := rec( );
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
+            Source( morphism ) / P,
+            Range( morphism ) / P,
+            UnderlyingCell, morphism );
+    
+    return m;
+    
+end );
+
+##
+InstallMethod( AsCellOfStablePoset,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( morphism )
+    local P, m;
+    
+    P := StablePosetOfCategory( CapCategory( morphism ) );
     
     m := rec( );
     
@@ -173,13 +253,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         [ IsCapCategory ],
         
   function( C )
-    local skeletal, name, category_filter, category_object_filter, category_morphism_filter,
-          create_func_bool, create_func_object0, create_func_morphism0,
+    local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
+          name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, is_limit, skip, func, pos,
           properties, preinstall, P, finalize;
     
-    skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", fail );
+    skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
     
     if IsIdenticalObj( skeletal, true ) then
         name := "Poset";
@@ -191,6 +271,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         category_filter := IsProsetOfCapCategory;
         category_object_filter := IsCapCategoryObjectInProsetOfACategory;
         category_morphism_filter := IsCapCategoryMorphismInProsetOfACategory;
+    fi;
+    
+    stable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "stable", false );
+    
+    if IsIdenticalObj( stable, true ) then
+        category_object_filter := category_object_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
+        category_morphism_filter := category_morphism_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
     fi;
     
     name := Concatenation( name, "( ", Name( C ), " )" );
@@ -341,6 +428,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     skip := [ 
               ];
     
+    if IsIdenticalObj( stable, true ) then
+        Append( skip,
+                [ "IsHomSetInhabited",
+                  "AreIsomorphicForObjectsIfIsHomSetInhabited",
+                  ] );
+    fi;
+    
     for func in skip do
         
         pos := Position( list_of_operations_to_install, func );
@@ -373,6 +467,10 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
     
     Add( properties, [ "IsThinCategory", true ] );
+    
+    if IsIdenticalObj( stable, true ) then
+        Add( properties, [ "IsStableProset", true ] );
+    fi;
     
     if IsIdenticalObj( skeletal, true ) then
         
@@ -423,6 +521,18 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     P!.AmbientCategory := C;
     
+    if IsIdenticalObj( stable, true ) then
+        
+        ##
+        AddIsHomSetInhabited( P,
+          function( S, T )
+            
+            return IsTerminal( StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) );
+            
+        end );
+        
+    fi;
+    
     finalize := ValueOption( "FinalizeCategory" );
     
     if finalize = false then
@@ -455,6 +565,28 @@ InstallMethod( PosetOfCategory,
     
 end );
 
+##
+InstallMethod( StableProsetOfCategory,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function( C )
+    
+    return ProsetOfCategory( C : stable := true );
+    
+end );
+
+##
+InstallMethod( StablePosetOfCategory,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function( C )
+    
+    return PosetOfCategory( C : stable := true );
+    
+end );
+
 ##################################
 ##
 ## View & Display
@@ -474,6 +606,18 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( ViewObj,
+        [ IsCapCategoryObjectInProsetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        
+  function( a )
+    
+    Print( "An object in the stable proset given by: " );
+    
+    ViewObj( UnderlyingCell( a ) );
+    
+end );
+
+##
 InstallMethod( Display,
         [ IsCapCategoryObjectInProsetOfACategory ],
         
@@ -482,6 +626,18 @@ InstallMethod( Display,
     Display( UnderlyingCell( a ) );
     
     Display( "\nAn object in the proset given by the above data" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsCapCategoryObjectInProsetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        
+  function( a )
+    
+    Display( UnderlyingCell( a ) );
+    
+    Display( "\nAn object in the stable proset given by the above data" );
     
 end );
 
@@ -498,6 +654,18 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( ViewObj,
+        [ IsCapCategoryObjectInPosetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        
+  function( a )
+    
+    Print( "An object in the stable poset given by: " );
+    
+    ViewObj( UnderlyingCell( a ) );
+    
+end );
+
+##
 InstallMethod( Display,
         [ IsCapCategoryObjectInPosetOfACategory ],
         
@@ -506,5 +674,17 @@ InstallMethod( Display,
     Display( UnderlyingCell( a ) );
     
     Display( "\nAn object in the poset given by the above data" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsCapCategoryObjectInPosetOfACategory and IsCapCategoryCellInStableProsetOrPosetOfACategory ],
+        
+  function( a )
+    
+    Display( UnderlyingCell( a ) );
+    
+    Display( "\nAn object in the stable poset given by the above data" );
     
 end );

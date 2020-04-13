@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter The proset/poset of a category
+#! @Chapter The (stable) proset/poset of a category
 
 ####################################
 #
@@ -21,6 +21,11 @@ DeclareCategory( "IsProsetOrPosetOfCapCategory",
 #!  The &GAP; category of cells in a proset or poset of a CAP category.
 DeclareCategory( "IsCapCategoryCellInProsetOrPosetOfACategory",
         IsCapCategoryCell );
+
+#! @Description
+#!  The &GAP; category of cells in a stable proset or poset of a CAP category.
+DeclareCategory( "IsCapCategoryCellInStableProsetOrPosetOfACategory",
+        IsCapCategoryCellInProsetOrPosetOfACategory );
 
 #! @Description
 #!  The &GAP; category of objects in a proset or poset of a CAP category.
@@ -67,6 +72,8 @@ DeclareCategory( "IsCapCategoryObjectInPosetOfACategory",
 DeclareCategory( "IsCapCategoryMorphismInPosetOfACategory",
         IsCapCategoryCellInPosetOfACategory and IsMorphismInThinCategory );
 
+AddCategoricalProperty( [ "IsStableProset" ] );
+
 ####################################
 #
 #! @Section Global variables
@@ -111,7 +118,15 @@ DeclareAttribute( "ProsetOfCategory",
         IsCapCategory );
 
 #! @Arguments C
+DeclareAttribute( "StableProsetOfCategory",
+        IsCapCategory );
+
+#! @Arguments C
 DeclareAttribute( "PosetOfCategory",
+        IsCapCategory );
+
+#! @Arguments C
+DeclareAttribute( "StablePosetOfCategory",
         IsCapCategory );
 
 #! @Arguments c
@@ -119,7 +134,15 @@ DeclareAttribute( "AsCellOfProset",
         IsCapCategoryCell );
 
 #! @Arguments c
+DeclareAttribute( "AsCellOfStableProset",
+        IsCapCategoryCell );
+
+#! @Arguments c
 DeclareAttribute( "AsCellOfPoset",
+        IsCapCategoryCell );
+
+#! @Arguments c
+DeclareAttribute( "AsCellOfStablePoset",
         IsCapCategoryCell );
 
 #! @Arguments object, P

@@ -1,6 +1,14 @@
 @Chapter Prosets (preordered sets)
 
-@Chapter The proset/poset of a category
+@Chapter Posets (partially ordered sets)
+
+@Chapter Lattices
+
+@Chapter Heyting algebras
+
+@Chapter Co-Heyting algebras
+
+@Chapter The (stable) proset/poset of a category
 
 @Section GAP categories
 @Section Global variables
@@ -12,13 +20,8 @@
 @Subsection PosetOfCategory
 @InsertChunk PosetOfCategory
 
-@Chapter Posets (partially ordered sets)
-
-@Chapter Lattices
-
-@Chapter Heyting algebras
-
-@Chapter Co-Heyting algebras
+@Subsection StablePosetOfCategory
+@InsertChunk StablePosetOfCategory
 
 @Chapter Boolean algebras
 
