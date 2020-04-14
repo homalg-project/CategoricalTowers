@@ -917,7 +917,7 @@ InstallMethodWithCache( Hom,
     list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
     list_of_operations_to_install := Intersection( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
     
-    skip := [
+    skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
              ];
     
     for func in skip do
@@ -979,6 +979,37 @@ InstallMethodWithCache( Hom,
     
     SetSource( Hom, B );
     SetRange( Hom, C );
+    
+    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+        
+        ##
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( Hom,
+          function( r, eta )
+            local Hom, B, C, name_of_morphism, S, T, result;
+            
+            Hom := CapCategory( eta );
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+
+            eta := UnderlyingCapTwoCategoryCell( eta );
+            
+            S := Source( eta );
+            T := Range( eta );
+            
+            result := NaturalTransformation( name_of_morphism, S, T );
+            
+            AddNaturalTransformationFunction( result,
+              function( source, objB, range )
+                return MultiplyWithElementOfCommutativeRingForMorphisms( r, ApplyCell( eta, objB ) );
+            end );
+            
+            return AsMorphismInHomCategory( Hom, result );
+            
+        end );
+        
+    fi;
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         
