@@ -357,7 +357,7 @@ Range( epsilon ) = V;
 #! Compute the internal hom object $\operatorname{Hom}(V,V)$.
 
 #! @Example
-EndV := InternalHomOnObjects( V, V );
+EndV := InternalHom( V, V );
 #! <(1)->9; (t)->9x9>
 #! @EndExample
 

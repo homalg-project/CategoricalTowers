@@ -443,7 +443,7 @@ Source( epsilon ) = U;
 #! true
 Range( epsilon ) = U;
 #! true
-EndU := InternalHomOnObjects( U, U );
+EndU := InternalHom( U, U );
 #! <(1)->4; (t)->4x4>
 UsU := TensorProductOnObjects( Us, U );
 #! <(1)->4; (t)->4x4>
