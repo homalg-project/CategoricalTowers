@@ -170,8 +170,8 @@ InstallMethod( DualOverTensorUnit,
     
     return PreCompose(
                    [ Inverse( EvaluationMorphism( R, R ) ),       ## R -> InternalHom( R, R ) ⊗ R
-                     RightUnitor( InternalHomOnObjects( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
-                     InternalHomOnMorphisms( J, IdentityMorphism( R ) ) ] );
+                     RightUnitor( InternalHom( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
+                     InternalHom( J, R ) ] );
     
 end );
 
@@ -526,7 +526,7 @@ InstallMethod( SliceCategory,
                 return AsSliceCategoryCell(
                                ProjectionOfBiasedWeakFiberProduct(
                                        DualOverTensorUnit( J ),
-                                       InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I )
+                                       InternalHom( Source( J ), I )
                                        ) );
                 
             end );
@@ -544,7 +544,7 @@ InstallMethod( SliceCategory,
                                source,
                                UniversalMorphismIntoBiasedWeakFiberProduct(
                                        DualOverTensorUnit( J ),
-                                       InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), Ip ),
+                                       InternalHom( Source( J ), Ip ),
                                        UnderlyingMorphism( source ) ),
                                target );
                 
@@ -609,7 +609,7 @@ InstallMethod( MorphismFromCovariantArgumentOfInternalHom,
     local source, target;
     
     source := I;
-    target := InternalHomOnObjects( J, I );
+    target := InternalHom( J, I );
     
     I := UnderlyingMorphism( I );
     J := UnderlyingMorphism( J );
@@ -618,7 +618,7 @@ InstallMethod( MorphismFromCovariantArgumentOfInternalHom,
                    source,
                    UniversalMorphismIntoBiasedWeakFiberProduct(
                            DualOverTensorUnit( J ),
-                           InternalHomOnMorphisms( IdentityMorphism( Source( J ) ), I ),
+                           InternalHom( Source( J ), I ),
                            I ),
                    target );
     
