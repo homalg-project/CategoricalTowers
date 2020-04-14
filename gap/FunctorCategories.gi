@@ -184,6 +184,56 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 
 ####################################
 #
+# compatibility methods for "multiple arrows"-case below:
+#
+####################################
+
+##
+InstallOtherMethod( EqualizerFunctorialWithGivenEqualizers,
+        "for two objects and four lists",
+        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
+        
+  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+    
+    return FiberProductFunctorialWithGivenFiberProducts( source, Lsource, LmorS[1], Ltarget, target );
+    
+end );
+
+##
+InstallOtherMethod( CoequalizerFunctorialWithGivenCoequalizers,
+        "for two objects and four lists",
+        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
+        
+  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+    
+    return CoequalizerFunctorialWithGivenCoequalizers( source, Lsource, LmorT[1], Ltarget, target );
+    
+end );
+
+##
+InstallOtherMethod( FiberProductFunctorialWithGivenFiberProducts,
+        "for two objects and four lists",
+        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
+        
+  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+    
+    return FiberProductFunctorialWithGivenFiberProducts( source, Lsource, LmorS, Ltarget, target );
+    
+end );
+
+##
+InstallOtherMethod( PushoutFunctorialWithGivenPushouts,
+        "for two objects and four lists",
+        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
+        
+  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+    
+    return PushoutFunctorialWithGivenPushouts( source, Lsource, LmorT, Ltarget, target );
+    
+end );
+
+####################################
+#
 # methods for operations:
 #
 ####################################
@@ -764,19 +814,54 @@ InstallMethodWithCache( Hom,
         
         functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
-        if IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[2] ) and
+        if IsBound( functorial.filter_list ) and Length( functorial.filter_list ) >= 5 and
+           IsBound( functorial.filter_list[2] ) and
            ( ( IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList ) or
              functorial.filter_list[2] = "list_of_morphisms" ) then
-            diagram := true;
+            diagram := "multiple arrows";
+        elif IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[2] ) and
+           ( ( IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList ) or
+             functorial.filter_list[2] = "list_of_morphisms" ) then
+            diagram := "multiple objects";
         else
-            diagram := false;
+            diagram := "single arrow";
         fi;
         
         functorial := ValueGlobal( info.functorial );
+
+        if diagram = "multiple arrows" then
         
-        ## no unified input syntax for *FunctorialWithGiven* (yet),
-        ## https://github.com/homalg-project/CAP_project/pull/116
-        if diagram then
+            return ## a constructor for universal objects: DirectSum
+              function( arg )
+                local eval_arg, result;
+                
+                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                
+                result := CapFunctor( name_of_object, B, C );
+                
+                AddObjectFunction( result,
+                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                
+                AddMorphismFunction( result,
+                  function( new_source, morB, new_range )
+                    local FmorB;
+                    
+                    FmorB := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
+                    
+                    FmorB := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
+                    
+                    return CallFuncList( functorial,
+                                   Concatenation(
+                                           [ new_source ],
+                                           FmorB,
+                                           [ new_range ] ) );
+                    end );
+                
+                return AsObjectInHomCategory( Hom, result );
+                
+              end;
+            
+        elif diagram = "multiple objects" then
             
             return ## a constructor for universal objects: DirectSum
               function( arg )
