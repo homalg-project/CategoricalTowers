@@ -68,6 +68,33 @@ CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD )
 #
 ####################################
 
+
+##
+InstallOtherMethod( \*,
+        "for two CAP morphism",
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+
+  function( mor1, mor2 )
+    
+    return PreCompose( mor1, mor2 );
+    
+end );
+
+##
+InstallOtherMethod( OneMutable,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( mor )
+    
+    if not IsEndomorphism( mor ) then
+        TryNextMethod( );
+    fi;
+    
+    return IdentityMorphism( Source( mor ) );
+    
+end );
+
 ##
 InstallMethod( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
                [ IsList, IsList ],
