@@ -84,6 +84,14 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #! @InsertChunk ConcreteCategoryForCAP
 
 #! @Description
+#!  Return the <A>k</A>-linear closure of the category <A>C</A>
+#!  over the commutative ring <A>k</A>.
+#! @Arguments k, C
+#! @Returns a k-linear category
+DeclareOperation( "Algebroid",
+        [ IsHomalgRing, IsCapCategory ] );
+
+#! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
 #!  by a list <A>eta</A> of morphisms, where the image embeddings thereof are
 #!  the components of the natural monomorphism from $S$ into <A>F</A>.

@@ -57,6 +57,32 @@ InstallMethod( ConcreteCategoryForCAP,
 end );
 
 ##
+InstallMethod( Algebroid,
+        "for a homalg ring and a finite category",
+        [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
+        
+  function( k, C )
+    local q, kq, rel;
+    
+    TryNextMethod( );
+    
+    #q := ...
+    
+    #kq := PathAlgebra( k, q )
+    
+    #rel := ...
+    
+    kq := Algebroid( kq, rel );
+    
+    SetUnderlyingCategory( kq, C );
+    
+    SetIsLinearClosureOfACategory( kq, true );
+    
+    return kq;
+    
+end );
+
+##
 InstallMethod( RecordOfCategory,
         "for an algebroid",
         [ IsAlgebroid ],
