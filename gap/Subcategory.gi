@@ -199,7 +199,7 @@ InstallMethod( Subcategory,
     ## e.g., ProjectionInFactorOfDirectSumWithGivenDirectSum
     create_func_universal_morphism :=
       function( name, D )
-        local info, oper, type;
+        local info, oper;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -207,20 +207,12 @@ InstallMethod( Subcategory,
             Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
         fi;
         
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
         oper := ValueGlobal( name );
         
         return
           function( arg )
-            local src_trg, S, T;
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsSubcategoryCell( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
+            return AsSubcategoryCell( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
             
         end;
         
