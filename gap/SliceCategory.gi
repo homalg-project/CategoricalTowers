@@ -119,16 +119,6 @@ InstallMethod( AsSliceCategoryCell,
 end );
 
 ##
-InstallMethod( AmbientCategory,
-        [ IsCapSliceCategory ],
-        
-  function( A )
-    
-    return A!.AmbientCategory;
-    
-end );
-
-##
 InstallMethod( InclusionFunctor,
         [ IsCapSliceCategory ],
         
@@ -317,7 +307,7 @@ InstallMethod( SliceCategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    S!.AmbientCategory := C;
+    SetAmbientCategory( S, C );
     
     SetBaseObject( S, B );
     

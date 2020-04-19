@@ -118,7 +118,7 @@ InstallMethod( FullSubcategory,
         return
           function( D )
             
-            return AsSubcategoryCell( D, oper( D!.AmbientCategory ) );
+            return AsSubcategoryCell( D, oper( AmbientCategory( D ) ) );
             
           end;
           
@@ -246,7 +246,7 @@ InstallMethod( FullSubcategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    D!.AmbientCategory := C;
+    SetAmbientCategory( D, C );
     
     AddIsEqualForObjects( D,
       function( a, b )
