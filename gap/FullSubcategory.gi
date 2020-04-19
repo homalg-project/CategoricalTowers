@@ -143,11 +143,9 @@ InstallMethod( FullSubcategory,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
       function( name, D )
-        local oper, type;
+        local oper;
         
         oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
           function( arg )
