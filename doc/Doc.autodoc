@@ -1,0 +1,15 @@
+@Chapter Lazy categories
+
+@Section Examples
+
+@Subsection Disassembling the snake in the Abelian category
+@InsertChunk SnakeInAbelian
+
+@Subsection Disassembling the snake in an underlying additive category
+@InsertChunk SnakeInAdditive
+
+@Section GAP categories
+@Section Global variables
+@Section Attributes
+@Section Constructors
+@Section Functors
