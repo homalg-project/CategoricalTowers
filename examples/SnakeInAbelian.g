@@ -18,7 +18,7 @@ QRowsA := QuiverRows( A );
 #! QuiverRows( (Q * q) / [ 1*(a*b*c) ] )
 Adelman := AdelmanCategory( QRowsA );
 #! Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )
-Lazy := LazyCategory( Adelman );
+Lazy := LazyCategory( Adelman : show_evaluation := true );
 #! LazyCategory( Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )
 a := A.a / QRowsA / Adelman / Lazy; a!.Label := "a";;
 #! <An evaluated morphism in LazyCategory(

@@ -5,11 +5,24 @@
 #
 
 ##
+SetInfoLevel( InfoLazyCategory, 1 );
+
+##
 InstallMethod( EvaluatedCell,
         "for a cell in a lazy CAP category",
         [ IsLazyCapCategoryCell ],
 
   function( c )
+    local C;
+    
+    C := CapCategory( c );
+    C!.evaluations := C!.evaluations + 1;
+    
+    if C!.show_evaluation then
+        Print( C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+    else
+        Info( InfoLazyCategory, 2, C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
+    fi;
     
     return CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ), List( GenesisOfCellArguments( c ), EvaluatedCell ) );
     
@@ -229,7 +242,7 @@ InstallMethod( LazyCategory,
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, finalize;
+          properties, D, show_evaluation, finalize;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -394,6 +407,15 @@ InstallMethod( LazyCategory,
                  );
     
     SetUnderlyingCategory( D, C );
+    
+    show_evaluation := IsIdenticalObj( ValueOption( "show_evaluation" ), true );
+    
+    D!.show_evaluation := show_evaluation;
+    
+    D!.evaluations := 0;
+    
+    D!.shortname := name{[ Minimum( 15,  Length( name ) ) .. Minimum( Length( name ), 41 ) ]};  ## LazyCategory( Category of matrices over Q )
+    D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 30 - Length( D!.shortname ), '.' ) );
     
     AddIsEqualForObjects( D,
       IsEqualForCells );
