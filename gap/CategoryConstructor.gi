@@ -16,7 +16,7 @@ InstallGlobalFunction( CategoryConstructor,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
-          info, add;
+          print, info, add;
     
     name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", "new category" );
     
@@ -157,6 +157,12 @@ InstallGlobalFunction( CategoryConstructor,
     ##
     create_func_other_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_other_morphism", fail );
     
+    print := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false );
+    
+    if IsIdenticalObj( print, true ) then
+        print := Name( CC );
+    fi;
+    
     for name in list_of_operations_to_install do
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
@@ -238,7 +244,11 @@ InstallGlobalFunction( CategoryConstructor,
             continue;
         fi;
         
-        Info( InfoCategoryConstructor, 2, "Installing ", name );
+        Info( InfoCategoryConstructor, 2, Name( CC ), ": Installing ", name );
+        
+        if IsString( print ) then
+            Print( print, " <- ", name, "\n" );
+        fi;
         
         add := ValueGlobal( Concatenation( "Add", name ) );
         
