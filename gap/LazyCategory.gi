@@ -242,7 +242,7 @@ InstallMethod( LazyCategory,
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, show_evaluation, finalize;
+          properties, D, show_evaluation, lazify_range_of_hom_structure, HC, finalize;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -458,52 +458,110 @@ InstallMethod( LazyCategory,
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        SetRangeCategoryOfHomomorphismStructure( D, RangeCategoryOfHomomorphismStructure( C ) );
+        lazify_range_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true );
         
-        if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
-            AddDistinguishedObjectOfHomomorphismStructure( D,
-              function( )
-                
-                return DistinguishedObjectOfHomomorphismStructure( C );
-                
-            end );
+        HC := RangeCategoryOfHomomorphismStructure( C );
+        
+        if IsIdenticalObj( lazify_range_of_hom_structure, true ) and
+           not IsLazyCapCategory( HC ) then
+            
+            HC := LazyCategory( HC : lazify_range_of_hom_structure := false, show_evaluation := show_evaluation );
+            
+            if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
+                AddDistinguishedObjectOfHomomorphismStructure( D,
+                  function( )
+                    
+                    return AsObjectInLazyCategory( HC, DistinguishedObjectOfHomomorphismStructure( C ) );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "HomomorphismStructureOnObjects" ) then
+                AddHomomorphismStructureOnObjects( D,
+                  function( a, b )
+                    
+                    return AsObjectInLazyCategory( HC, "HomomorphismStructureOnObjects", [ a, b ] );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
+                AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
+                  function( s, alpha, beta, r )
+                    
+                    return AsMorphismInLazyCategory( s, "HomomorphismStructureOnMorphismsWithGivenObjects", [ s, alpha, beta, r ], r );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
+                  function( alpha )
+                    
+                    return AsMorphismInLazyCategory( DistinguishedObjectOfHomomorphismStructure( CapCategory( alpha ) ), "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure", [ alpha ], HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
+                AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
+                  function( a, b, iota )
+                    
+                    return AsMorphismInLazyCategory( a, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ a, b, iota ], b );
+                    
+                end );
+            fi;
+            
+        else
+            
+            if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
+                AddDistinguishedObjectOfHomomorphismStructure( D,
+                  function( )
+                    
+                    return DistinguishedObjectOfHomomorphismStructure( C );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "HomomorphismStructureOnObjects" ) then
+                AddHomomorphismStructureOnObjects( D,
+                  function( a, b )
+                    
+                    return HomomorphismStructureOnObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
+                AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
+                  function( s, alpha, beta, r )
+                    
+                    return HomomorphismStructureOnMorphismsWithGivenObjects( s, EvaluatedCell( alpha ), EvaluatedCell( beta ), r );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
+                  function( alpha )
+                    
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( EvaluatedCell( alpha ) );
+                    
+                end );
+            fi;
+            
+            if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
+                AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
+                  function( a, b, iota )
+                    
+                    return AsMorphismInLazyCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( EvaluatedCell( a ), EvaluatedCell( b ), iota ) );
+                    
+                end );
+            fi;
+            
         fi;
         
-        if CanCompute( C, "HomomorphismStructureOnObjects" ) then
-            AddHomomorphismStructureOnObjects( D,
-              function( a, b )
-                
-                return HomomorphismStructureOnObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
-            AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-              function( s, alpha, beta, r )
-                
-                return HomomorphismStructureOnMorphismsWithGivenObjects( s, EvaluatedCell( alpha ), EvaluatedCell( beta ), r );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
-            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-              function( alpha )
-                
-                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( EvaluatedCell( alpha ) );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
-            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-              function( a, b, iota )
-                
-                return AsMorphismInLazyCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( EvaluatedCell( a ), EvaluatedCell( b ), iota ) );
-                
-            end );
-        fi;
+        SetRangeCategoryOfHomomorphismStructure( D, HC );
         
     fi;
     
@@ -529,12 +587,17 @@ end );
 
 ##
 InstallValue( RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS,
-        rec( ) );
+        rec(
+            HomomorphismStructureOnObjects := "HomStructure\nOnObjects",
+            HomomorphismStructureOnMorphismsWithGivenObjects := "HomStructure\nOnMorphisms\nWithGivenObjects",
+            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := "InterpretMorphism\nFromDistinguishedObject\nToHomStructure\nAsMorphism",
+            InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := "InterpretMorphism\nAsMorphismFrom\nDistinguishedObject\nToHomStructure"
+            ) );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
   function( name )
-    local l, posUniv, posCaps, posWith, posFrom, posInto, posOf, cname;
+    local l, posUniv, posCaps, posWith, posFrom, posInto, posOf, posHom, cname;
     
     if IsBound( RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS.(name) ) then
         return RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS.(name);
@@ -548,13 +611,14 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
     posFrom := PositionSublist( name, "From" );
     posInto := PositionSublist( name, "Into" );
     posOf := PositionsSublist( name, "Of" );
+    posHom := PositionSublist( name, "HomomorphismStructure" );
     
     if not IsEmpty( posOf ) then
         posOf := posOf[Length( posOf )];
     fi;
     
     cname := name;
-
+    
     if IsInt( posWith ) then
         if posWith > l / 2 then
             if IsInt( posOf ) then
@@ -565,7 +629,11 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
                 if IsInt( posUniv ) then
                     cname := Concatenation( name{[ 1 .. 17 ]}, "\n", name{[ 18 .. posWith - 1 ]}, "\n", name{[ posWith .. posWith + 8 ]}, "\n", name{[ posWith + 9 .. l ]} );
                 else
-                    cname := Concatenation( name{[ 1 .. posWith - 1 ]}, "\n", name{[ posWith .. l ]} );
+                    if IsInt( posHom ) then
+                        cname := Concatenation( name{[ 1 .. 21 ]}, "\n", name{[ 22 .. posWith - 1 ]}, "\n", name{[ posWith .. l ]} );
+                    else
+                        cname := Concatenation( name{[ 1 .. posWith - 1 ]}, "\n", name{[ posWith .. l ]} );
+                    fi;
                 fi;
             fi;
         else

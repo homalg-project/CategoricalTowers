@@ -8,6 +8,9 @@
 @Subsection Disassembling the snake in an underlying additive category
 @InsertChunk SnakeInAdditive
 
+@Subsection Disassembling the snake in an underlying additive category (different model)
+@InsertChunk SnakeInAdditive2
+
 @Section GAP categories
 @Section Global variables
 @Section Attributes
