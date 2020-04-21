@@ -67,8 +67,10 @@ InstallMethod( IsEqualForCells,
 
   function( a, b )
     
-    if HasEvaluatedCell( a ) and HasEvaluatedCell( b ) then
+    if not HasGenesisOfCellOperation( a ) and not HasGenesisOfCellOperation( b ) then
         return IsEqualForObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
+    elif not HasGenesisOfCellOperation( a ) = HasGenesisOfCellOperation( b ) then
+        return false;
     elif HasGenesisOfCellOperation( a ) and HasGenesisOfCellOperation( b ) then
         return GenesisOfCellOperation( a ) = GenesisOfCellOperation( b ) and
                IsEqualForCells( GenesisOfCellArguments( a ), GenesisOfCellArguments( b ) );
@@ -85,8 +87,10 @@ InstallMethod( IsEqualForCells,
         
   function( phi, psi )
     
-    if HasEvaluatedCell( phi ) and HasEvaluatedCell( psi ) then
+    if not HasGenesisOfCellOperation( phi ) and not HasGenesisOfCellOperation( psi ) then
         return IsEqualForMorphismsOnMor( EvaluatedCell( phi ), EvaluatedCell( psi ) );
+    elif not HasGenesisOfCellOperation( phi ) = HasGenesisOfCellOperation( psi ) then
+        return false;
     elif HasGenesisOfCellOperation( phi ) and HasGenesisOfCellOperation( psi ) then
         return GenesisOfCellOperation( phi ) = GenesisOfCellOperation( psi ) and
                IsEqualForCells( GenesisOfCellArguments( phi ), GenesisOfCellArguments( psi ) );
