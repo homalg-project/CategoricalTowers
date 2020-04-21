@@ -686,7 +686,9 @@ InstallMethod( ListOfEvaluationNodes,
     equal :=
       function( a, b )
         
-        if ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) then
+        if not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
+            return false;
+        elif ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) then
             return IsEqualForCells( a, b );
         fi;
         
@@ -769,7 +771,9 @@ InstallMethod( DigraphOfEvaluation,
     equal :=
       function( a, b )
         
-        if ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) then
+        if not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
+            return false;
+        elif ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) then
             return IsEqualForCells( a, b );
         fi;
         
