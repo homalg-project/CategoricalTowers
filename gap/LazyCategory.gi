@@ -458,14 +458,14 @@ InstallMethod( LazyCategory,
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        lazify_range_of_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true );
+        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true ), true );
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if IsIdenticalObj( lazify_range_of_hom_structure, true ) and
+        if lazify_range_of_hom_structure and
            not IsLazyCapCategory( HC ) then
             
-            HC := LazyCategory( HC : lazify_range_of_hom_structure := false, show_evaluation := show_evaluation );
+            HC := LazyCategory( HC : lazify_range_of_hom_structure := false );
             
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
