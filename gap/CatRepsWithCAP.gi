@@ -74,10 +74,14 @@ InstallMethod( Algebroid,
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local q, kq, rel;
+    local n, qstring, q, kq, rel;
     
     TryNextMethod( );
     
+	n := Length( SetOfObjects( C ) );
+	
+	qstring := Concatenation( "q(", String(n),")[");
+	#close with "]"
     #q := ...
     
     #kq := PathAlgebra( k, q )
