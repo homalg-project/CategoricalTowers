@@ -603,7 +603,7 @@ InstallMethod( AsObjectInHomCategory,
         TryNextMethod( );
     fi;
     
-    kmat := MatrixCategory( k );
+    kmat := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "MatrixCategory", MatrixCategory( k ) );
     
     objects := List( dims, dim -> dim / kmat );
     
