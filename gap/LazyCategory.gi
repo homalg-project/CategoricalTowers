@@ -256,8 +256,9 @@ InstallMethod( LazyCategory,
   function( C )
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
-          lift_primitive_operations, list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, show_evaluation, print, list, lazify_range_of_hom_structure, HC, finalize;
+          lift_primitive_operations, list_of_operations_to_install, skip, func, pos,
+          commutative_ring, properties, D, show_evaluation, cache, print,
+          list, lazify_range_of_hom_structure, HC, finalize;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -441,6 +442,13 @@ InstallMethod( LazyCategory,
     D!.shortname := name{[ Minimum( 15,  Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
     D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 39 - Length( D!.shortname ), '.' ) );
     
+    cache := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "cache", true );
+    
+    if IsIdenticalObj( cache, false ) then
+        DeactivateCachingOfCategory( C );
+        DeactivateCachingOfCategory( D );
+    fi;
+    
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
     
     AddIsEqualForObjects( D,
@@ -555,6 +563,10 @@ InstallMethod( LazyCategory,
         lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true ), true );
         
         HC := RangeCategoryOfHomomorphismStructure( C );
+        
+        if IsIdenticalObj( cache, false ) then
+            DeactivateCachingOfCategory( HC );
+        fi;
         
         if lazify_range_of_hom_structure and not IsLazyCapCategory( HC ) then
             
