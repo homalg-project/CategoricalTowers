@@ -486,8 +486,7 @@ InstallMethod( LazyCategory,
         
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if lazify_range_of_hom_structure and
-           not IsLazyCapCategory( HC ) then
+        if lazify_range_of_hom_structure and not IsLazyCapCategory( HC ) then
             
             HC := LazyCategory( HC : lazify_range_of_hom_structure := false );
             
