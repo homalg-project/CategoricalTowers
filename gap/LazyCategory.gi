@@ -438,8 +438,8 @@ InstallMethod( LazyCategory,
     
     D!.evaluations := 0;
     
-    D!.shortname := name{[ Minimum( 15,  Length( name ) ) .. Minimum( Length( name ), 41 ) ]};  ## LazyCategory( Category of matrices over Q )
-    D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 30 - Length( D!.shortname ), '.' ) );
+    D!.shortname := name{[ Minimum( 15,  Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
+    D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 39 - Length( D!.shortname ), '.' ) );
     
     AddIsEqualForObjects( D,
       IsEqualForCells );
