@@ -228,6 +228,17 @@ InstallMethod( AsMorphismInLazyCategory,
 end );
 
 ##
+InstallOtherMethod( \/,
+        "for an object and a lazy CAP category",
+        [ IsObject, IsLazyCapCategory ],
+        
+  function( data, C )
+    
+    return ( data / UnderlyingCategory( C ) ) / C;
+    
+end );
+
+##
 InstallMethod( \/, [ IsCapCategoryObject, IsLazyCapCategory ],
   { object, cat } -> AsObjectInLazyCategory( cat, object )
 );
