@@ -257,7 +257,7 @@ InstallMethod( LazyCategory,
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           lift_primitive_operations, list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, show_evaluation, lazify_range_of_hom_structure, HC, finalize;
+          properties, D, show_evaluation, print, list, lazify_range_of_hom_structure, HC, finalize;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -441,6 +441,8 @@ InstallMethod( LazyCategory,
     D!.shortname := name{[ Minimum( 15,  Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
     D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 39 - Length( D!.shortname ), '.' ) );
     
+    print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
+    
     AddIsEqualForObjects( D,
       IsEqualForCells );
     
@@ -455,8 +457,12 @@ InstallMethod( LazyCategory,
     
     AddIsEqualForMorphismsOnMor( D,
       IsEqualForCells );
-    
+
     if CanCompute( C, "IsCongruentForMorphisms" ) then
+
+        if print then
+            Display( "IsCongruentForMorphisms" );
+        fi;
         
         ##
         AddIsCongruentForMorphisms( D,
@@ -470,6 +476,10 @@ InstallMethod( LazyCategory,
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
+        if print then
+            Display( "MultiplyWithElementOfCommutativeRingForMorphisms" );
+        fi;
+        
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( r, phi )
@@ -479,8 +489,25 @@ InstallMethod( LazyCategory,
         end );
         
     fi;
-    
+
     if HasRangeCategoryOfHomomorphismStructure( C ) then
+        
+        if print then
+            list := [
+                     "DistinguishedObjectOfHomomorphismStructure",
+                     "HomomorphismStructureOnObjects",
+                     "HomomorphismStructureOnMorphismsWithGivenObjects",
+                     "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+                     ];
+            
+            for func in list do
+                if CanCompute( C, func ) then
+                    Display( func );
+                fi;
+            od;
+            Display( "" );
+        fi;
         
         lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true ), true );
         
