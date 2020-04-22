@@ -74,27 +74,51 @@ InstallMethod( Algebroid,
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local n, qstring, q, kq, rel;
+    local n, objects, gmorphisms, arrows, q, kq, rel;
     
     TryNextMethod( );
     
-	n := Length( SetOfObjects( C ) );
-	
-	qstring := Concatenation( "q(", String(n),")[");
-	#close with "]"
-    #q := ...
+	objects := SetOfObjects( C );
+	gmorphisms := SetOfGeneratingMorphisms( C );
+    q := RightQuiverFromConcreteCategory( C );
     
-    #kq := PathAlgebra( k, q )
+    kq := PathAlgebra( k, q );
     
     #rel := ...
     
-    kq := Algebroid( kq, rel );
+    #kq := Algebroid( kq, rel );
     
-    SetUnderlyingCategory( kq, C );
+    #SetUnderlyingCategory( kq, C );
     
-    SetIsLinearClosureOfACategory( kq, true );
+    #SetIsLinearClosureOfACategory( kq, true );
     
     return kq;
+    
+end );
+
+##
+InstallMethod( RightQuiverFromConcreteCategory,
+        "for a finite category",
+        [ IsFiniteConcreteCategory ],
+        
+  function( C )
+    local objects, gmorphisms, arrows, i, mor, q;
+        
+	objects := SetOfObjects( C );
+	gmorphisms := SetOfGeneratingMorphisms( C );
+	arrows := [];
+	i := 1;
+	for mor in gmorphisms do
+	    arrows[i] :=[
+		  PositionProperty( objects, o -> IsEqualForObjects( Source(mor), o )),
+		  PositionProperty( objects, o -> IsEqualForObjects( Range(mor), o ))
+		];
+		i := i+1;
+	od;
+	
+    q := RightQuiver( "q(1)[a]",Length( objects ),arrows );
+    
+    return q;
     
 end );
 

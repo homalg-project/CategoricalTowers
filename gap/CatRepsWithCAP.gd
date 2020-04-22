@@ -90,6 +90,14 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #! @Returns a k-linear category
 DeclareOperation( "Algebroid",
         [ IsHomalgRing, IsCapCategory ] );
+		
+#! @Description
+#!  Return the right quiver <A>q(n)</A> from the finite 
+#!  category <A>C</A> with n objects.
+#! @Arguments C
+#! @Returns a right quiver
+DeclareOperation( "RightQuiverFromConcreteCategory",
+        [ IsCapCategory ] );
 
 #! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
