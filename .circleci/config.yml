@@ -20,7 +20,6 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
-          git clone --depth 1 https://github.com/homalg-project/QPA2.git
           cd SubcategoriesForCAP
           TERM=dumb make ci-test
           bash <(curl -s https://codecov.io/bash)
