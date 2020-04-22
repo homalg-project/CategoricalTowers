@@ -157,10 +157,13 @@ InstallGlobalFunction( CategoryConstructor,
     ##
     create_func_other_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_other_morphism", fail );
     
-    print := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false );
+    print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
     
-    if IsIdenticalObj( print, true ) then
+    Info( InfoCategoryConstructor, 2,  "Lifting the following operations for ", Name( CC ), ":\n" );
+    
+    if print then
         print := Name( CC );
+        Print( "Lifting the following operations for ", print, ":\n\n" );
     fi;
     
     for name in list_of_operations_to_install do
@@ -244,10 +247,10 @@ InstallGlobalFunction( CategoryConstructor,
             continue;
         fi;
         
-        Info( InfoCategoryConstructor, 2, Name( CC ), ": Installing ", name );
+        Info( InfoCategoryConstructor, 2, name );
         
         if IsString( print ) then
-            Print( print, " <- ", name, "\n" );
+            Display( name );
         fi;
         
         add := ValueGlobal( Concatenation( "Add", name ) );
@@ -255,6 +258,12 @@ InstallGlobalFunction( CategoryConstructor,
         add( CC, func );
         
     od;
+    
+    Info( InfoCategoryConstructor, 2, "" );
+    
+    if IsString( print ) then
+        Display( "" );
+    fi;
     
     return CC;
     
