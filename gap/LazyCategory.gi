@@ -494,6 +494,8 @@ InstallMethod( LazyCategory,
         
         if print then
             list := [
+                     "BasisOfExternalHom",
+                     "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
                      "DistinguishedObjectOfHomomorphismStructure",
                      "HomomorphismStructureOnObjects",
                      "HomomorphismStructureOnMorphismsWithGivenObjects",
@@ -507,6 +509,47 @@ InstallMethod( LazyCategory,
                 fi;
             od;
             Display( "" );
+        fi;
+        
+        if CanCompute( C, "BasisOfExternalHom" ) then
+            AddBasisOfExternalHom( D,
+              function( a, b )
+                local C;
+                
+                C := CapCategory( a );
+                C!.evaluations := C!.evaluations + 1;
+                
+                if C!.show_evaluation then
+                    Print( C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                else
+                    Info( InfoLazyCategory, 2, C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                fi;
+                
+                return List( BasisOfExternalHom( EvaluatedCell( a ), EvaluatedCell( b ) ),
+                             mor -> AsMorphismInLazyCategory( a, mor, b ) );
+                
+            end );
+        fi;
+        
+        if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
+            AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
+              function( alpha, L )
+                local C;
+                
+                C := CapCategory( alpha );
+                C!.evaluations := C!.evaluations + 1;
+                
+                if C!.show_evaluation then
+                    Print( C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                else
+                    Info( InfoLazyCategory, 2, C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                fi;
+                
+                return CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                               EvaluatedCell( alpha ),
+                               List( L, EvaluatedCell ) );
+                
+            end );
         fi;
         
         lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", true ), true );
