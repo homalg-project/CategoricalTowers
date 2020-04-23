@@ -74,7 +74,7 @@ InstallMethod( Algebroid,
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local n, objects, gmorphisms, arrows, q, kq, rel;
+    local objects, gmorphisms, q, kq, i, mor, rel;
     
     TryNextMethod( );
     
@@ -84,6 +84,13 @@ InstallMethod( Algebroid,
     
     kq := PathAlgebra( k, q );
     
+	for i in [1..Length(gmorphisms)] do
+	    mor := gmorphisms[i];
+		if IsEndomorphism( mor ) then
+		    ##
+		fi;
+	od;
+	
     #rel := ...
     
     #kq := Algebroid( kq, rel );
