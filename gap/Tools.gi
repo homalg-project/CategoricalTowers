@@ -88,10 +88,39 @@ InstallOtherMethod( OneMutable,
   function( mor )
     
     if not IsEndomorphism( mor ) then
-        fail;
+        return fail;
     fi;
     
     return IdentityMorphism( Source( mor ) );
+    
+end );
+
+##
+InstallOtherMethod( POW,
+        "for a CAP morphism and an integer",
+        [ IsCapCategoryMorphism, IsInt ],
+
+  function( mor, power )
+    
+    if power = 0 then
+        return OneMutable( mor );
+    fi;
+    
+    if power < 0 then
+        mor := Inverse( mor );
+        if mor = fail then
+            return mor;
+        fi;
+        power := -power;
+    fi;
+    
+    if power > 1 then
+        if not IsEndomorphism( mor ) then
+            return fail;
+        fi;
+    fi;
+    
+    return Product( ListWithIdenticalEntries( power, mor ) );
     
 end );
 
