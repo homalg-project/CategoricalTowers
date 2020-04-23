@@ -88,7 +88,7 @@ InstallOtherMethod( OneMutable,
   function( mor )
     
     if not IsEndomorphism( mor ) then
-        TryNextMethod( );
+        fail;
     fi;
     
     return IdentityMorphism( Source( mor ) );
