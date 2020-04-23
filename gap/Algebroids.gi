@@ -771,7 +771,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     if over_Z then
         
-        range_category := CategoryOfRows( ring );
+        range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( ring ) );
         
         object_constructor := function( size )
         return CategoryOfRowsObject( size, range_category );
@@ -797,7 +797,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
                 );
         end;
         
-        range_category := MatrixCategory( ring );
+        range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", MatrixCategory( ring ) );
         
         distinguished_object := function()
         return TensorUnit( range_category );
