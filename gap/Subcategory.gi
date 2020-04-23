@@ -218,7 +218,7 @@ InstallMethod( Subcategory,
         
     end;
     
-    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY;
+    list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
     
     is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
     
