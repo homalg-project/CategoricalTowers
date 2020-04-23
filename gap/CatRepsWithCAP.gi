@@ -50,6 +50,11 @@ InstallMethod( ConcreteCategoryForCAP,
         return IsAutomorphism( UnderlyingCell( alpha ) );
     end );
     
+    AddInverse( C,
+      function( alpha )
+        return Inverse( UnderlyingCell( alpha ) ) / CapCategory( alpha );
+    end );
+    
     c := ConcreteCategory( L );
     
     C!.ConcreteCategoryRecord := c;
