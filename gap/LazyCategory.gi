@@ -41,8 +41,8 @@ end );
 
 ##
 InstallOtherMethod( EvaluatedCell,
-        "for an integer",
-        [ IsInt ],
+        "for a ring element",
+        [ IsRingElement ],
 
   IdFunc );
 
@@ -117,9 +117,9 @@ end );
 
 ##
 InstallMethod( IsEqualForCells,
-        "for two lists",
-        [ IsInt, IsInt ],
-
+        "for two ring elements",
+        [ IsRingElement, IsRingElement ],
+        
   \= );
 
 ##
@@ -492,7 +492,7 @@ InstallMethod( LazyCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( r, phi )
             
-            return AsMorphismInLazyCategory( Source( phi ), "MultiplyWithElementOfCommutativeRingForMorphisms", phi, Range( phi ) );
+            return AsMorphismInLazyCategory( Source( phi ), "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ], Range( phi ) );
             
         end );
         
