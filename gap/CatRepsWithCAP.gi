@@ -41,9 +41,14 @@ InstallMethod( ConcreteCategoryForCAP,
   function( L )
     local C, c;
     
-    C := Subcategory( FinSets, "A finite concrete category" );
+    C := Subcategory( FinSets, "A finite concrete category" : FinalizeCategory := false );
     
     SetFilterObj( C, IsFiniteConcreteCategory );
+    
+    AddIsAutomorphism( C,
+      function( alpha )
+        return IsAutomorphism( UnderlyingCell( alpha ) );
+    end );
     
     c := ConcreteCategory( L );
     
@@ -51,6 +56,8 @@ InstallMethod( ConcreteCategoryForCAP,
     
     SetSetOfObjects( C, List( c.objects, o -> FinSet( o ) / C ) );
     SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( c.objects, g ) / C ) );
+    
+    Finalize( C );
     
     return C;
     
