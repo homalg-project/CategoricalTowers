@@ -1008,7 +1008,8 @@ InstallMethod( PositivelyZGradedCategory,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
               "Lift",
               "Colift",
-              "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
+              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
+              "DirectSumDiagonalDifference", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
     for func in skip do
