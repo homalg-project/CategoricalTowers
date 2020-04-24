@@ -116,10 +116,10 @@ end );
 
 ##
 InstallMethod( RelationsOfEndomorphisms,
-        "for a finite category",
-        [ IsFiniteConcreteCategory ],
+        "for a homalg ring and a finite category",
+        [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
-  function( C )
+  function( k, C )
     local objects, gmorphisms, q, 
 		relEndoString, relEndo,
 		i, mor, homset, m, n, foundEqual,
@@ -129,27 +129,23 @@ InstallMethod( RelationsOfEndomorphisms,
 	objects := SetOfObjects( C );
 	gmorphisms := SetOfGeneratingMorphisms( C );
     q := RightQuiverFromConcreteCategory( C );
-    
-	relEndoString := function(q,j,m,n)
-		local a, s, one;
-	    a := Arrows(q)[j];
-		# a := "abcdefghijklmnopqrstuvwxyz"{[j]};
-		s := "";
+    kq := PathAlgebra( k, q );
+	
+	relEndo := function(q,kq,i,m,n)
+		local a, rel, one;
+	    a := Arrows(q)[i];
+		rel := [];
 		if m = 0 then
 			one := Source( a );
-			s := Concatenation( [
-				"kq.",String(a),"^",String(n),
-				"-kq.",String(one) ] );
+			rel := kq.(String(a))^n-kq.(String(one));
 		else
-  	        s := Concatenation( [
-				"kq.",String(a),"^",String(m+n),
-				"-kq.",String(a),"^",String(m) ] );
+  	        rel := kq.(String(a))^(m+n)-kq.(String(a))^m;
 		fi;
-		return s;
+		return rel;
 	end;
 	
 	#assuming at most 1 generating endomorphism per vertex
-    relEndo := [];
+    relsEndo := [];
 	for i in [1..Length(gmorphisms)] do
 	    mor := gmorphisms[i];
 		if IsEndomorphism( mor ) then
@@ -161,7 +157,8 @@ InstallMethod( RelationsOfEndomorphisms,
 				n := 1;
 			    while not foundEqual do
 				    if IsEqualForMorphisms( mor^(m+n), mor^m ) then
-					    Append( relEndo, [ relEndoString( q,i,m,n) ] );
+					    Append( relsEndo, 
+						[ relEndo ( q,kq,i,m,n ) ] );
 						foundEqual := true;
 					fi;
 				    n := n+1;
@@ -172,7 +169,7 @@ InstallMethod( RelationsOfEndomorphisms,
 		fi;
 	od;
 	
-    return relEndo;
+    return relsEndo;
     
 end );
 

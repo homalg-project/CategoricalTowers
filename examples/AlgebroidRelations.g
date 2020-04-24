@@ -11,8 +11,9 @@ HOMALG_MATRICES.PreferDenseMatrices := true;
 #! true
 GF3 := HomalgRingOfIntegers( 3 );
 #! GF(3)
-relEndo := RelationsOfEndomorphisms( c3c3c3 );
-#! [ "kq.a^3-kq.1", "kq.c^3-kq.2", "kq.e^3-kq.3" ]
+relEndo := RelationsOfEndomorphisms( GF3, c3c3c3 );
+#! [ Z(3)^0*(a*a*a) + Z(3)*(1), 
+#!   Z(3)^0*(c*c*c) + Z(3)*(2), Z(3)^0*(e*e*e) + Z(3)*(3) ]
 #! @EndExample
 
 

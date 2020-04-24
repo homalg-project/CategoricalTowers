@@ -94,10 +94,10 @@ DeclareOperation( "Algebroid",
 #! @Description
 #!  Return the endomorphism relations of the
 #!  category <A>C</A>.
-#! @Arguments C
-#! @Returns list of relations as strings
+#! @Arguments k, C
+#! @Returns list of relations as generators of ideal.
 DeclareOperation( "RelationsOfEndomorphisms",
-        [ IsCapCategory ] );
+        [ IsHomalgRing, IsCapCategory ] );
 		
 #! @Description
 #!  Return the right quiver <A>q(n)</A> from the finite 
