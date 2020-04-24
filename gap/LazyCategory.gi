@@ -13,18 +13,31 @@ InstallMethod( EvaluatedCell,
         [ IsLazyCapCategoryCell ],
 
   function( c )
-    local C;
+    local C, show, count, result;
     
     C := CapCategory( c );
-    C!.evaluations := C!.evaluations + 1;
     
-    if C!.show_evaluation then
-        Print( C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+    show := C!.show_evaluation;
+    
+    count := C!.evaluations + 1;
+    
+    C!.evaluations := count;
+    
+    if show then
+        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluting in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
     else
-        Info( InfoLazyCategory, 2, C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
+        Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
     
-    return CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ), List( GenesisOfCellArguments( c ), EvaluatedCell ) );
+    result := CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ), List( GenesisOfCellArguments( c ), EvaluatedCell ) );
+
+    if show then
+        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluted  in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+    else
+        Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
+    fi;
+    
+    return result;
     
 end );
 
@@ -522,19 +535,32 @@ InstallMethod( LazyCategory,
         if CanCompute( C, "BasisOfExternalHom" ) then
             AddBasisOfExternalHom( D,
               function( a, b )
-                local C;
+                local C, show, count, result;
                 
                 C := CapCategory( a );
-                C!.evaluations := C!.evaluations + 1;
                 
-                if C!.show_evaluation then
-                    Print( C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                show := C!.show_evaluation;
+                
+                count := C!.evaluations + 1;
+                
+                C!.evaluations := count;
+                
+                if show then
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluting in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
                 
-                return List( BasisOfExternalHom( EvaluatedCell( a ), EvaluatedCell( b ) ),
-                             mor -> AsMorphismInLazyCategory( a, mor, b ) );
+                result := List( BasisOfExternalHom( EvaluatedCell( a ), EvaluatedCell( b ) ),
+                                mor -> AsMorphismInLazyCategory( a, mor, b ) );
+                
+                if show then
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluted  in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                else
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                fi;
+                
+                return result;
                 
             end );
         fi;
@@ -542,20 +568,33 @@ InstallMethod( LazyCategory,
         if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
             AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
               function( alpha, L )
-                local C;
+                local C, show, count, result;
                 
                 C := CapCategory( alpha );
-                C!.evaluations := C!.evaluations + 1;
                 
-                if C!.show_evaluation then
-                    Print( C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                show := C!.show_evaluation;
+                
+                count := C!.evaluations + 1;
+                
+                C!.evaluations := count;
+                
+                if show then
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluting in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, C!.evaluations, ".\tevaluation in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
                 
-                return CoefficientsOfMorphismWithGivenBasisOfExternalHom(
-                               EvaluatedCell( alpha ),
-                               List( L, EvaluatedCell ) );
+                result := CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                                  EvaluatedCell( alpha ),
+                                  List( L, EvaluatedCell ) );
+                
+                if show then
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluted  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                else
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                fi;
+                
+                return result;
                 
             end );
         fi;
