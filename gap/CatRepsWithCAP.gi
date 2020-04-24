@@ -113,6 +113,69 @@ InstallMethod( Algebroid,
     
 end );
 
+
+##
+InstallMethod( RelationsOfEndomorphisms,
+        "for a finite category",
+        [ IsFiniteConcreteCategory ],
+        
+  function( C )
+    local objects, gmorphisms, q, 
+		relEndoString, relEndo,
+		i, mor, homset, m, n, foundEqual,
+		rel;
+    
+    
+	objects := SetOfObjects( C );
+	gmorphisms := SetOfGeneratingMorphisms( C );
+    q := RightQuiverFromConcreteCategory( C );
+    
+	relEndoString := function(q,j,m,n)
+		local a, s, one;
+	    a := Arrows(q)[j];
+		# a := "abcdefghijklmnopqrstuvwxyz"{[j]};
+		s := "";
+		if m = 0 then
+			one := Source( a );
+			s := Concatenation( [
+				"kq.",String(a),"^",String(n),
+				"-kq.",String(one) ] );
+		else
+  	        s := Concatenation( [
+				"kq.",String(a),"^",String(m+n),
+				"-kq.",String(a),"^",String(m) ] );
+		fi;
+		return s;
+	end;
+	
+	#assuming at most 1 generating endomorphism per vertex
+    relEndo := [];
+	for i in [1..Length(gmorphisms)] do
+	    mor := gmorphisms[i];
+		if IsEndomorphism( mor ) then
+		    homset := [];
+			m := 0;
+			# rho sigma lemma
+			foundEqual := false;
+			while not mor^m in homset do
+				n := 1;
+			    while not foundEqual do
+				    if IsEqualForMorphisms( mor^(m+n), mor^m ) then
+					    Append( relEndo, [ relEndoString( q,i,m,n) ] );
+						foundEqual := true;
+					fi;
+				    n := n+1;
+				od;
+				Append( homset, [ mor^m ] );
+			    m := m+1;
+			od;
+		fi;
+	od;
+	
+    return relEndo;
+    
+end );
+
 ##
 InstallMethod( RightQuiverFromConcreteCategory,
         "for a finite category",
