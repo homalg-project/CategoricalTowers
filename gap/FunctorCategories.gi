@@ -1443,6 +1443,26 @@ InstallMethodWithCache( Hom,
     
 end );
 
+##
+InstallMethodWithCache( Hom,
+        "for a CAP category and a homalg field",
+        [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
+        
+  function( B, k )
+    local kmat;
+    
+    DeactivateCachingOfCategory( B );
+    DisableSanityChecks( B );
+    
+    kmat := MatrixCategory( k );
+    
+    DeactivateCachingOfCategory( kmat );
+    DisableSanityChecks( kmat );
+    
+    return Hom( B, kmat );
+    
+end );
+
 ####################################
 #
 # Methods for attributes
