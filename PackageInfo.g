@@ -111,7 +111,7 @@ Dependencies := rec(
                    [ "SubcategoriesForCAP", ">= 2020.04.07" ],
                    [ "MatricesForHomalg", ">= 2020.02.02" ],
                    [ "Toposes", ">= 2020.02.19" ],
-                   [ "FunctorCategories", ">= 2020.04.08" ],
+                   [ "FunctorCategories", ">= 2020.04.13" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
