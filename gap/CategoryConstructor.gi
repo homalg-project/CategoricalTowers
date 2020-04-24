@@ -47,6 +47,8 @@ InstallGlobalFunction( CategoryConstructor,
     list_of_operations_to_install := ShallowCopy( list_of_operations_to_install );
     
     skip := [ 
+              "DirectSumCodiagonalDifference",    ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
+              "DirectSumDiagonalDifference",      ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
