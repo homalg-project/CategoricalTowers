@@ -74,7 +74,9 @@ InstallMethod( Algebroid,
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local objects, gmorphisms, q, kq, i, mor, rel;
+    local objects, gmorphisms, q, 
+		i, mor, relEndoString, relEndo,
+		kq, rel;
     
     TryNextMethod( );
     
@@ -84,6 +86,14 @@ InstallMethod( Algebroid,
     
     kq := PathAlgebra( k, q );
     
+	relEndoString := function(j,m,n)
+		local a;
+	    a := "abcdefghijklmnopqrstuvwxyz"{[j]};
+	    return Concatenation( [
+		"kq.",a,"^",String(m+n),
+		"-kq.",a,"^",String(m) ] );
+	end;
+	
 	for i in [1..Length(gmorphisms)] do
 	    mor := gmorphisms[i];
 		if IsEndomorphism( mor ) then
@@ -91,7 +101,7 @@ InstallMethod( Algebroid,
 		fi;
 	od;
 	
-    #rel := ...
+    relEndo := [];
     
     #kq := Algebroid( kq, rel );
     
