@@ -827,7 +827,7 @@ InstallMethod( PositivelyZGradedCategory,
   function( C )
     local name, ZC, properties, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
-          recnames, skip, func, pos, info, add;
+          recnames, skip, func, pos, info, universal_object, add;
     
     if IsBound( C!.IsPositivelyZGradedCategory ) and
        C!.IsPositivelyZGradedCategory = true then
@@ -1041,16 +1041,15 @@ InstallMethod( PositivelyZGradedCategory,
             elif IsList( info.with_given_without_given_name_pair ) and
               name = info.with_given_without_given_name_pair[1] then
                 ## do not install universal morphisms but their
-                ## with-given-universal-object counterpart
+                ## with-given-universal-object counterpart and the universal object
                 if not info.with_given_without_given_name_pair[2] in recnames then
                     Add( recnames, info.with_given_without_given_name_pair[2] );
                 fi;
+                universal_object := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).universal_object;
+                if not universal_object in recnames then
+                    Add( recnames, universal_object );
+                fi;
                 continue;
-            elif IsBound( info.universal_object ) and
-              Position( recnames, info.universal_object ) = fail then
-                ## add the corresponding universal object
-                ## at the end of the list for its method to be installed
-                Add( recnames, info.universal_object );
             fi;
             
             if IsList( info.with_given_without_given_name_pair ) then
