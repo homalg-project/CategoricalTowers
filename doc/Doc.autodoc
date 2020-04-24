@@ -1,11 +1,13 @@
 @Chapter Finite concrete categories
 
+@Section Example
+
+@Subsection A category of module homomorphisms
+@InsertChunk CategoryOfRepresentations
+
 @Section GAP categories
 @Section Global variables
 @Section Attributes
 @Section Constructors
 @Section Operations
 @Section Tools
-@Section Example
-
-@InsertChunk CategoryOfRepresentations
