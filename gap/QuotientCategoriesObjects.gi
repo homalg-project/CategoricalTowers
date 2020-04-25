@@ -31,8 +31,17 @@ end );
 ##
 InstallMethod( \/,
           [ IsCapCategoryObject, IsQuotientCategory ],
-  {a,Q} -> QuotientCategoryObject( Q, a )
-);
+  function( a, quotient_category )
+    
+    if not IsIdenticalObj( CapCategory( a ), UnderlyingCategory( quotient_category ) ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    return QuotientCategoryObject( quotient_category, a );
+    
+end );
 
 ##
 InstallMethod( Display,

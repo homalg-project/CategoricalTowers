@@ -50,8 +50,17 @@ end );
 ##
 InstallMethod( \/,
           [ IsCapCategoryMorphism, IsQuotientCategory ],
-  { alpha, Q } -> QuotientCategoryMorphism( Q, alpha )
-);
+  function( alpha, quotient_category )
+    
+    if not IsIdenticalObj( CapCategory( alpha ), UnderlyingCategory( quotient_category ) ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    return QuotientCategoryMorphism( quotient_category, alpha );
+    
+end );
 
 ##
 InstallMethod( Display,
