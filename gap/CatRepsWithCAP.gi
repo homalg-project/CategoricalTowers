@@ -75,7 +75,7 @@ InstallMethod( Algebroid,
         
   function( k, C )
     local objects, gmorphisms, q, 
-		i, mor, relEndoString, relEndo,
+		i, mor, relEndo,
 		kq, rel;
     
     TryNextMethod( );
@@ -85,24 +85,14 @@ InstallMethod( Algebroid,
     q := RightQuiverFromConcreteCategory( C );
     
     kq := PathAlgebra( k, q );
+		
+    relEndo := RelationsOfEndomorphisms( k, C );
     
-	relEndoString := function(j,m,n)
-		local a;
-	    a := "abcdefghijklmnopqrstuvwxyz"{[j]};
-	    return Concatenation( [
-		"kq.",a,"^",String(m+n),
-		"-kq.",a,"^",String(m) ] );
-	end;
+	kq := kq / relEndo; # this 
 	
-	for i in [1..Length(gmorphisms)] do
-	    mor := gmorphisms[i];
-		if IsEndomorphism( mor ) then
-		    ##
-		fi;
-	od;
+	rel := [];
 	
-    relEndo := [];
-    
+	
     #kq := Algebroid( kq, rel );
     
     #SetUnderlyingCategory( kq, C );
@@ -114,26 +104,26 @@ InstallMethod( Algebroid,
 end );
 
 
+
+
 ##
 InstallMethod( RelationsOfEndomorphisms,
         "for a homalg ring and a finite category",
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local objects, gmorphisms, q, 
-		relEndoString, relEndo,
+    local objects, gmorphisms, q, kq,
+		RelationsOfEndomorphisms,
 		i, mor, homset, m, n, foundEqual,
-		rel;
-    
+		relsEndo;
     
 	objects := SetOfObjects( C );
 	gmorphisms := SetOfGeneratingMorphisms( C );
     q := RightQuiverFromConcreteCategory( C );
     kq := PathAlgebra( k, q );
 	
-	relEndo := function(q,kq,i,m,n)
-		local a, rel, one;
-	    a := Arrows(q)[i];
+	RelationsOfEndomorphisms := function(kq,a,m,n)
+		local rel, one;
 		rel := [];
 		if m = 0 then
 			one := Source( a );
@@ -158,7 +148,7 @@ InstallMethod( RelationsOfEndomorphisms,
 			    while not foundEqual do
 				    if IsEqualForMorphisms( mor^(m+n), mor^m ) then
 					    Append( relsEndo, 
-						[ relEndo ( q,kq,i,m,n ) ] );
+						[ RelationsOfEndomorphisms ( kq,Arrows(q)[i],m,n ) ] );
 						foundEqual := true;
 					fi;
 				    n := n+1;
