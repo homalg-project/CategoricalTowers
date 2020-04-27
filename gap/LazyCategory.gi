@@ -741,7 +741,7 @@ InstallValue( RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS,
 ##
 InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
   function( name )
-    local l, posUniv, posCaps, posWith, posFrom, posInto, posOf, posHom, cname;
+    local l, posUniv, posCaps, posWith, posFrom, posInto, i, posOf, posHom, cname;
     
     if IsBound( RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS.(name) ) then
         return RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS.(name);
@@ -754,12 +754,15 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
     posWith := PositionSublist( name, "WithGiven" );
     posFrom := PositionSublist( name, "From" );
     posInto := PositionSublist( name, "Into" );
-    posOf := PositionsSublist( name, "Of" );
+    # find last occurrence of "Of"
+    posOf := fail;
+    for i in [ Length( name ) - 2 .. 0 ] do
+        posOf := PositionSublist( name, "Of", i );
+        if posOf <> fail then
+            break;
+        fi;
+    od;
     posHom := PositionSublist( name, "HomomorphismStructure" );
-    
-    if not IsEmpty( posOf ) then
-        posOf := posOf[Length( posOf )];
-    fi;
     
     cname := name;
     

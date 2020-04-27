@@ -13,6 +13,8 @@ Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
                    "2020.04.22", ## Mohamed's version
                    ## this line prevents merge conflicts
+                   "2020.04.27", ## Fabian's version
+                   ## this line prevents merge conflicts
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
