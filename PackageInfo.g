@@ -12,6 +12,8 @@ PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
 Version := Maximum( [
   "2019.02.02", ## Mohamed's version
+  ## this line prevents merge conflicts
+  "2020.04.27", ## Fabian's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -76,7 +78,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "GradedCategories", ">= 2019.10.30" ],
-                           [ "ActionsForCAP", ">= 2019.09.16" ],
+                           [ "ActionsForCAP", ">= 2020.04.27" ],
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

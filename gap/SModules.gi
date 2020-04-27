@@ -29,38 +29,11 @@ InstallMethod( CategoryOfLeftSModules,
     name := Concatenation( "Abelian category of left modules over the internal symmetric algebra of ", String( SV[1] ), " with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts" );
     
     SVMod := LeftActionsCategory( SV, name,
-                   [ IsCategoryOfLeftSModules, IsLeftSModule, IsLeftSModuleMorphism ] : FinalizeCategory := false );
+                   [ IsCategoryOfLeftSModules, IsLeftSModule, IsLeftSModuleMorphism ] : TensorPreservesEpis := true, FinalizeCategory := false );
     
     SVMod!.AlgebraMultiplicationMorphism := structure_morphism;
     
     SetCommutativeRingOfLinearCategory( SVMod, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
-    
-    ## the reason for manually adding this method is that
-    ## our constructor InternalModule does more than what
-    ## the underlying constructor LeftActionObject does.
-    AddCokernelObject( SVMod,
-      function( phi )
-        local phi_, SVMod, SV, id_SV, epi, SVepi, tau, lambda;
-        
-        phi_ := UnderlyingMorphism( phi );
-        
-        SVMod := CapCategory( phi );
-        
-        SV := UnderlyingActingObject( SVMod );
-        
-        id_SV := IdentityMorphism( SV );
-        
-        epi := CokernelProjection( phi_ );
-        
-        SVepi := TensorProductOnMorphisms( id_SV, epi );
-        
-        tau := PreCompose( StructureMorphism( Range( phi ) ), epi );
-        
-        lambda := ColiftAlongEpimorphism( SVepi, tau );
-        
-        return InternalModule( lambda, SVMod );
-        
-    end );
     
     SetIsAbelianCategory( SVMod, true );
     
@@ -89,7 +62,7 @@ InstallMethod( CategoryOfRightSModules,
     name := Concatenation( "Abelian category of right modules over the internal symmetric algebra of ", String( SV[1] ), " with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts" );
     
     ModSV := RightActionsCategory( SV, name,
-                   [ IsCategoryOfRightSModules, IsRightSModule, IsRightSModuleMorphism ] : FinalizeCategory := false );
+                   [ IsCategoryOfRightSModules, IsRightSModule, IsRightSModuleMorphism ] : TensorPreservesEpis := true, FinalizeCategory := false );
     
     SetIsAbelianCategory( ModSV, true );
     
