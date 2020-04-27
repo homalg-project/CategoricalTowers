@@ -38,30 +38,6 @@ InstallMethod( CategoryOfLeftSModules,
     ## the reason for manually adding this method is that
     ## our constructor InternalModule does more than what
     ## the underlying constructor LeftActionObject does.
-    AddKernelObject( SVMod,
-      function( phi )
-        local phi_, SVMod, SV, id_SV, emb, SVemb, tau, kappa;
-        
-        phi_ := UnderlyingMorphism( phi );
-        
-        SVMod := CapCategory( phi );
-        
-        SV := UnderlyingActingObject( SVMod );
-        
-        id_SV := IdentityMorphism( SV );
-        
-        emb := KernelEmbedding( phi_ );
-        
-        SVemb := TensorProductOnMorphisms( id_SV, emb );
-        
-        tau := PreCompose( SVemb, StructureMorphism( Source( phi ) ) );
-        
-        kappa := KernelLiftWithGivenKernelObject( phi_, tau, Source( emb ) );
-        
-        return InternalModule( kappa, SVMod );
-        
-    end );
-    
     AddCokernelObject( SVMod,
       function( phi )
         local phi_, SVMod, SV, id_SV, epi, SVepi, tau, lambda;
