@@ -70,7 +70,7 @@ InstallMethodWithCache( FreeInternalModule,
     
     structure_morphism := FreeInternalModuleActionMorphism( V, category );
     
-    return InternalModule( FreeInternalModuleActionMorphism( V, category ), category );
+    return InternalModule( structure_morphism, category );
     
 end );
 
@@ -108,8 +108,8 @@ InstallMethod( UniversalMorphismFromFreeModule,
   function( iota, M )
     local AMod, A, id_A, chi, degree, Fchi, Achi, structure_morphism, AoM, Aiota, morphism;
     
-    if not UnderlyingCell( M ) = Range( iota ) then
-        Error( "the positively Z-graded category underlying M is not equal to Range( iota )\n" );
+    if not IsEqualForObjects( UnderlyingCell( M ), Range( iota ) ) then
+        Error( "the positively Z-graded object underlying M is not equal to Range( iota )\n" );
     fi;
     
     AMod := CapCategory( M );

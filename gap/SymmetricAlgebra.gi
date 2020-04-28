@@ -31,7 +31,7 @@ InstallMethod( SymmetricAlgebraAsInfiniteList,
             Error( "a symmetric algebra generated in degree 0 will never be supported by this package\n" );
         fi;
         if not degree = 1 then
-            Error( "a symmetric algebra generated in different from 1 is not supported yet\n" );
+            Error( "a symmetric algebra generated in degree different from 1 is not supported yet\n" );
         fi;
     else
         degree := 1;
