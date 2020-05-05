@@ -474,9 +474,9 @@ end );
 InstallMethod( ApplyToQuiverAlgebraElement,
         "for an object function, a morphism function, a category, a quiver algebra element and a boolean",
         [ IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool ],
-
-    function( object_function, morphism_function, range_category, p, contravariant )
-      local applyF, paths, coefs, paths_final, s, all_objects_in_image;
+        
+  function( object_func, morphism_func, range_category, p, contravariant )
+    local applyF, paths, paths_final;
     
     # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
     applyF :=
@@ -484,17 +484,50 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         local m;
         
         if IsQuiverVertex( b ) then
-            m := object_function( b );
+            m := object_func( b );
             return IdentityMorphism( m );
         fi;
-        m := morphism_function( b );
         
-        return m;
+        return morphism_func( b );
         
-      end;
+    end;
     
-    paths := DecomposeQuiverAlgebraElement( p );
+    paths := DecomposeQuiverAlgebraElement( p )[2];
+    
+    if contravariant = false then
+        paths_final := List( paths, a -> PreCompose( List( a, applyF ) ) );
+    else
+        paths_final := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
+    fi;
+    
+    return PreCompose( paths_final );
+    
+end );
 
+##
+InstallMethod( ApplyToQuiverAlgebraElement,
+        "for an object function, a morphism function, a linear category, a quiver algebra element, and a boolean",
+        [ IsFunction, IsFunction, IsCapCategory and IsLinearCategoryOverCommutativeRing, IsQuiverAlgebraElement, IsBool ],
+        
+  function( object_func, morphism_func, range_category, p, contravariant )
+    local applyF, paths, coefs, paths_final, s, all_objects_in_image;
+    
+    # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
+    applyF :=
+      function( b )
+        local m;
+        
+        if IsQuiverVertex( b ) then
+            m := object_func( b );
+            return IdentityMorphism( m );
+        fi;
+        
+        return morphism_func( b );
+        
+    end;
+      
+    paths := DecomposeQuiverAlgebraElement( p );
+    
     coefs := paths[1];
     paths := paths[2];
     
@@ -503,16 +536,16 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     else
         paths_final := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
     fi;
-
+    
     if Length( coefs ) > 0 then
-      s := Sum( ListN( coefs, paths_final, function( r, p ) return r * p; end ) );
+        s := Sum( ListN( coefs, paths_final, function( r, p ) return r * p; end ) );
     else
-      all_objects_in_image := SetOfObjects( range_category );
-      s := Sum( List( all_objects_in_image, o -> ZeroMorphism(o,o)) );
+        all_objects_in_image := SetOfObjects( range_category );
+        s := Sum( List( all_objects_in_image, o -> ZeroMorphism(o,o)) );
     fi;
     
     return s;
-
+    
 end );
 
 ##
