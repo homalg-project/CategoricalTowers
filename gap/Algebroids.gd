@@ -385,11 +385,11 @@ DeclareOperation( "Algebroid",
         [ IsHomalgRing, IsQuiver ] );
 
 #! @Description
-#!  Construct, using the record of images <A>ImagesOfObject</A> and <A>ImagesOfMorphisms</A>,
+#!  Construct, using the record of images <A>rec_images_of_objects</A> and <A>rec_images_of_morphisms</A>,
 #!  a functor with source the finitely presented algebroid <A>A</A>.
-#!  The record <A>ImagesOfObject</A> is supposed to contain the images of the objects of <A>A</A>.
-#!  The record <A>ImagesOfMorphisms</A> is supposed to contain the images of the set of generating morphisms of <A>A</A>.
-#! @Arguments A, ImagesOfObject, ImagesOfMorphisms
+#!  The record <A>rec_images_of_objects</A> is supposed to contain the images of the objects of <A>A</A>.
+#!  The record <A>rec_images_of_morphisms</A> is supposed to contain the images of the set of generating morphisms of <A>A</A>.
+#! @Arguments A, rec_images_of_objects, rec_images_of_morphisms
 #! @Returns a &CAP; functor
 DeclareOperation( "CapFunctor",
         [ IsAlgebroid, IsRecord, IsRecord ] );

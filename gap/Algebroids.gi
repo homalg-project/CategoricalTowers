@@ -2033,11 +2033,11 @@ InstallMethod( CapFunctor,
         "for an algebroid and two records",
         [ IsAlgebroid, IsRecord, IsRecord ],
         
-  function( A, ImagesOfObjects, ImagesOfMorphisms )
+  function( A, rec_images_of_objects, rec_images_of_morphisms )
     local b, Rq, B, functor, names_morphisms, names_objects;
     
-    names_morphisms := NamesOfComponents( ImagesOfMorphisms );
-    names_objects := NamesOfComponents( ImagesOfObjects );
+    names_morphisms := NamesOfComponents( rec_images_of_morphisms );
+    names_objects := NamesOfComponents( rec_images_of_objects );
     
     if names_objects = [ ] then
         Error( "the record of images of objects is empty\n" );
@@ -2046,21 +2046,21 @@ InstallMethod( CapFunctor,
     # Construct the target category B
     if Length(names_morphisms) > 0 then
         for b in names_morphisms do
-            if IsQuiverAlgebraElement( ImagesOfMorphisms.(b) ) then
-                Rq := AlgebraOfElement( ImagesOfMorphisms.(b) );
+            if IsQuiverAlgebraElement( rec_images_of_morphisms.(b) ) then
+                Rq := AlgebraOfElement( rec_images_of_morphisms.(b) );
                 B := Algebroid( Rq );
                 break;
-            elif IsCapCategoryCell( ImagesOfMorphisms.(b) ) then
-                if not IsCapCategoryMorphism( ImagesOfMorphisms.(b) ) then
+            elif IsCapCategoryCell( rec_images_of_morphisms.(b) ) then
+                if not IsCapCategoryMorphism( rec_images_of_morphisms.(b) ) then
                     Error( Concatenation( "image of ", String(b), " is not a morphism"));
                 fi;
 
-                B := CapCategory( ImagesOfMorphisms.(b) );
+                B := CapCategory( rec_images_of_morphisms.(b) );
                 break;
             fi;
         od;
     else
-        B := CapCategory( ImagesOfObjects.(names_objects[1]) );
+        B := CapCategory( rec_images_of_objects.(names_objects[1]) );
     fi;
 
     if not IsBound( B ) then
@@ -2072,14 +2072,14 @@ InstallMethod( CapFunctor,
     functor := CapFunctor( functor, A, B );
     
     AddObjectFunction( functor,
-            obj -> ImagesOfObjects.(String( UnderlyingVertex( obj ) )) );
+            obj -> rec_images_of_objects.(String( UnderlyingVertex( obj ) )) );
     
     AddMorphismFunction( functor,
             function( new_source, mor, new_range )
               if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
-                  return ApplyToQuiverAlgebraElement( ImagesOfObjects, ImagesOfMorphisms, UnderlyingQuiverAlgebraElement( mor ), true);
+                  return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), true);
               else
-                  return ApplyToQuiverAlgebraElement( ImagesOfObjects, ImagesOfMorphisms, UnderlyingQuiverAlgebraElement( mor ), false );
+                  return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), false );
               fi;
             end );
     
