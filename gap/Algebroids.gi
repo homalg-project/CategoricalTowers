@@ -2090,6 +2090,34 @@ InstallMethod( CapFunctor,
 end );
 
 ##
+InstallMethod( CapFunctor,
+        "for an algebroid and two lists",
+        [ IsAlgebroid, IsList, IsList ],
+        
+  function( A, images_of_objects, images_of_morphisms )
+    local  kq, vertices, arrows, rec_images_of_objects, rec_images_of_morphisms, i;
+    
+    kq := QuiverOfAlgebra( UnderlyingQuiverAlgebra( A ) );
+    
+    vertices := Vertices( kq );
+    arrows := Arrows( kq );
+    
+    rec_images_of_objects := rec( );
+    rec_images_of_morphisms := rec( );
+    
+    for i in [ 1 .. Length( vertices ) ] do
+        rec_images_of_objects.(String( vertices[i] )) := images_of_objects[i];
+    od;
+    
+    for i in [ 1 .. Length( arrows ) ] do
+        rec_images_of_morphisms.(String( arrows[i] )) := images_of_morphisms[i];
+    od;
+    
+    return CapFunctor( A, rec_images_of_objects, rec_images_of_morphisms );
+    
+end );
+
+##
 InstallMethod( Opposite,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],
