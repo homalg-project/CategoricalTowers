@@ -1525,7 +1525,7 @@ InstallMethod( \.,
             UnderlyingVertex, a
         );
         B!.Vertices.(name) := b;
-    elif IsArrow( a ) then
+    elif IsArrow( a ) or IsCompositePath( a ) then
         if IsBound( B!.Arrows.(name) ) then
             return B!.Arrows.(name);
         fi;
