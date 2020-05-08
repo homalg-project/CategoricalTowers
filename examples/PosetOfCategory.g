@@ -38,20 +38,19 @@ IpJ := Coproduct( I, J );
 #! <A morphism in Rows( Q[x,y] )>
 IpJ = J;
 #! true
-IJqJ := InternalHomOnObjects( J, IJ );
+IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
 IJqJ = I;
 #! true
-iota := InternalHomOnMorphisms( UniversalMorphismIntoTerminalObject( J ),
-                IdentityMorphism( IJ ) );
+iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
 #! <An epi-, monomorphism in Poset( A slice category of Rows( Q[x,y] ) )>
 IsWellDefined( iota );
 #! true
 IJJ := TensorProduct( IJ, J );
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
-IJJqJ := InternalHomOnObjects( J, IJJ );
+IJJqJ := InternalHom( J, IJJ );
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
 IJJqJ = I;
