@@ -27,11 +27,11 @@ IJ := TensorProduct( I, J );
 IiJ := DirectProduct( I, J );
 #! An object in the stable poset given by:
 #! An object in the slice category given by: <A morphism in Rows( Q[x,y] )>
-IiJ = I;
-#! true
 IsHomSetInhabited( IJ, IiJ );
 #! true
 IsHomSetInhabited( IiJ, IJ );
+#! true
+IiJ = I;
 #! true
 IpJ := Coproduct( I, J );
 #! An object in the stable poset given by:
@@ -46,6 +46,8 @@ IJqJ = I;
 iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
 #! <An epi-, monomorphism in Poset( A slice category of Rows( Q[x,y] ) )>
 IsWellDefined( iota );
+#! true
+IsIsomorphism( iota );
 #! true
 IJJ := TensorProduct( IJ, J );
 #! An object in the stable poset given by:
