@@ -1187,6 +1187,9 @@ InstallMethod( Algebroid,
     
     A := CreateCapCategory( A );
     
+    AddObjectRepresentation( A, IsCapCategoryObjectInAlgebroidRep );
+    AddMorphismRepresentation( A, IsCapCategoryMorphismInAlgebroidRep );
+    
     SetIsAbCategory( A, true );
     SetIsLinearCategoryOverCommutativeRing( A, true );
     
@@ -1206,9 +1209,6 @@ InstallMethod( Algebroid,
     if Length( Vertices( quiver ) ) = 1 then
         SetFilterObj( A, IsAlgebraAsCategory );
     fi;
-    
-    AddObjectRepresentation( A, IsCapCategoryObjectInAlgebroidRep );
-    AddMorphismRepresentation( A, IsCapCategoryMorphismInAlgebroidRep );
     
     A!.Vertices := rec( );
     A!.Arrows := rec( );
