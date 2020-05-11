@@ -69,6 +69,14 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 DeclareAttribute( "SetOfMorphisms",
         IsCapSubcategory );
 
+#! @Description
+#!  Return the right quiver <A>q(n)</A> from the concrete category <A>C</A>
+#!  with $n$ objects.
+#! @Arguments C
+#! @Returns a right quiver
+DeclareAttribute( "RightQuiverFromConcreteCategory",
+        IsCapCategory );
+
 ####################################
 #
 #! @Section Constructors
@@ -99,14 +107,6 @@ DeclareOperation( "Algebroid",
 DeclareOperation( "RelationsOfEndomorphisms",
         [ IsHomalgRing, IsCapCategory ] );
 		
-#! @Description
-#!  Return the right quiver <A>q(n)</A> from the finite 
-#!  category <A>C</A> with n objects.
-#! @Arguments C
-#! @Returns a right quiver
-DeclareOperation( "RightQuiverFromConcreteCategory",
-        [ IsCapCategory ] );
-
 #! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
 #!  by a list <A>eta</A> of morphisms, where the image embeddings thereof are
