@@ -11,12 +11,12 @@ q := RightQuiverFromConcreteCategory( c3c3c3 );
 #! q(3)[a:1->1,b:1->2,c:2->2,d:2->3,e:3->3,f:1->3]
 Q := HomalgFieldOfRationals();
 #! Q
-relEndo := RelationsOfEndomorphisms( Q, c3c3c3 );
-#! [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(e*e*e) - 1*(3) ]
 kq := PathAlgebra( Q, q );
 #! Q * q
 IsFiniteDimensional( kq );
 #! false
+relEndo := RelationsOfEndomorphisms( Q, c3c3c3 );
+#! [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(e*e*e) - 1*(3) ]
 kq := kq / relEndo;
 #! (Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(e*e*e) - 1*(3) ]
 IsFiniteDimensional( kq );
