@@ -6,31 +6,30 @@
 
 ##
 InstallGlobalFunction( ConvertToMapOfFinSets,
-   function( objects, gen )
-        local O, T, S, G, j, i;
-	
-	for O in objects do
-		if Length(Intersection(gen,O)) > 0 then
-			T := FinSet(O);
-			break;
-		fi;
-	od;
-	
-	if not IsBound( T ) then
-		Error( "unable to find target set\n" );
-	fi;
-	
-	S := FinSet(PositionsProperty(Flat(objects),i->IsBound(gen[i])));
-	
-	G := [];
-	j := 1;
-	for i in S do
-		G[j] := [ i, gen[i] ];  # gen[i] is sure to be bound
-                j := j + 1;
-	od;
-	
-	return MapOfFinSets( S, G, T );
-	
+  function( objects, gen )
+    local O, T, S, G, j, i;
+    
+    T := First( objects, O -> Length( Intersection( gen, AsList( O ) ) ) > 0 );
+    
+    if T = fail then
+        Error( "unable to find target set\n" );
+    fi;
+    
+    S := PositionsProperty( Flat( List( objects, O -> AsList( O ) ) ), i -> IsBound( gen[i] ) );
+    
+    S := First( objects, O -> AsList( O ) = S );
+    
+    if S = fail then
+        Error( "unable to find source set\n" );
+    fi;
+    
+    G := [ ];
+    j := 1;
+
+    G := List( S, i -> [ i, gen[i] ] ); # gen[i] is sure to be bound
+    
+    return MapOfFinSets( S, G, T );
+    
 end );
 
 ##
@@ -39,7 +38,7 @@ InstallMethod( ConcreteCategoryForCAP,
         [ IsList ],
         
   function( L )
-    local C, c;
+    local C, c, objects;
     
     C := Subcategory( FinSets, "A finite concrete category" : FinalizeCategory := false );
     
@@ -59,8 +58,11 @@ InstallMethod( ConcreteCategoryForCAP,
     
     C!.ConcreteCategoryRecord := c;
     
-    SetSetOfObjects( C, List( c.objects, o -> FinSet( o ) / C ) );
-    SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( c.objects, g ) / C ) );
+    objects := List( c.objects, FinSet );
+    
+    SetSetOfObjects( C, List( objects, o -> o / C ) );
+    
+    SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C ) );
     
     Finalize( C );
     
