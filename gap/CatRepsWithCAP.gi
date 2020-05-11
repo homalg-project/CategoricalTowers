@@ -84,7 +84,6 @@ InstallMethod( Algebroid,
     kq := PathAlgebra( k, q );
     relEndo := RelationsOfEndomorphisms( k, C );
 	A := Algebroid( kq, relEndo );
-	DeactivateCachingOfCategory( A );
 	kq := UnderlyingQuiverAlgebra( A );
 	F := CapFunctor( A, objects, gmorphisms );
 	
