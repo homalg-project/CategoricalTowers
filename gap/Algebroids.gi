@@ -1189,6 +1189,7 @@ InstallMethod( Algebroid,
     
     DeactivateCachingOfCategory( A );
     CapCategorySwitchLogicOff( A );
+    DisableSanityChecks( A );
     
     AddObjectRepresentation( A, IsCapCategoryObjectInAlgebroidRep );
     AddMorphismRepresentation( A, IsCapCategoryMorphismInAlgebroidRep );
