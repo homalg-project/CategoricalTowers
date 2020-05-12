@@ -76,58 +76,59 @@ InstallMethod( Algebroid,
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local objects, gmorphisms, q,
-		kq, relEndo, A, F, vertices, rel,
-		func, st, s, t, homST, list, p, pos;
+    local objects, gmorphisms, q, kq, relEndo, A, F, vertices, rel,
+          func, st, s, t, homST, list, p, pos;
     
-	objects := SetOfObjects( C );
-	gmorphisms := SetOfGeneratingMorphisms( C );
+    objects := SetOfObjects( C );
+    gmorphisms := SetOfGeneratingMorphisms( C );
     q := RightQuiverFromConcreteCategory( C );
     kq := PathAlgebra( k, q );
     relEndo := RelationsOfEndomorphisms( k, C );
-	A := Algebroid( kq, relEndo );
-	kq := UnderlyingQuiverAlgebra( A );
-	F := CapFunctor( A, objects, gmorphisms );
-	
-	vertices := List( SetOfObjects(A), UnderlyingVertex );
-	
-	rel := [];
-	func :=
-		function( p, l )
-		return ForAny( l, p1->
-			IsCongruentForMorphisms(
-			ApplyToQuiverAlgebraElement( F, p ),
-			ApplyToQuiverAlgebraElement( F, p1 ) )
-		); 
-	end;
-	for st in Cartesian(vertices,vertices) do
-		s := st[1];
-		t := st[2];
-		if s = t then
-			continue;
-		fi;
-		homST := BasisPathsBetweenVertices( kq, s, t );
-		homST := List( homST, p -> PathAsAlgebraElement( kq, p ) );
-		
-		list := [];
-		for p in homST do
-			pos := PositionProperty( list, l->func(p,l) );
-			if IsInt(pos) then
-				Add( list[pos], p );
-			else
-				Add( list, [p] );
-			fi;
-		od;
-		list := List( list, l-> List( l, p -> p!.representative ) );
-		Append( rel, list );
-	od;
-	
-	rel := Filtered( rel, l -> Length(l)>1 );
-	rel := List( rel, l -> List( l{[ 2 .. Length(l) ]}, p -> l[1]-p ) );
-	rel := Flat( rel );
-	rel := Concatenation( relEndo, rel );
-	
-	kq := Algebroid( PathAlgebra( kq ), rel );
+    A := Algebroid( kq, relEndo );
+    kq := UnderlyingQuiverAlgebra( A );
+    F := CapFunctor( A, objects, gmorphisms );
+    
+    vertices := List( SetOfObjects(A), UnderlyingVertex );
+    
+    rel := [];
+    func :=
+      function( p, l )
+        return ForAny( l, p1->
+                       IsCongruentForMorphisms(
+                               ApplyToQuiverAlgebraElement( F, p ),
+                               ApplyToQuiverAlgebraElement( F, p1 ) )
+                       );
+    end;
+    
+    for st in Cartesian(vertices,vertices) do
+        s := st[1];
+        t := st[2];
+        if s = t then
+            continue;
+        fi;
+        homST := BasisPathsBetweenVertices( kq, s, t );
+        homST := List( homST, p -> PathAsAlgebraElement( kq, p ) );
+        
+        list := [];
+        
+        for p in homST do
+            pos := PositionProperty( list, l->func(p,l) );
+            if IsInt(pos) then
+                Add( list[pos], p );
+            else
+                Add( list, [p] );
+            fi;
+        od;
+        list := List( list, l-> List( l, p -> p!.representative ) );
+        Append( rel, list );
+    od;
+    
+    rel := Filtered( rel, l -> Length(l)>1 );
+    rel := List( rel, l -> List( l{[ 2 .. Length(l) ]}, p -> l[1]-p ) );
+    rel := Flat( rel );
+    rel := Concatenation( relEndo, rel );
+    
+    kq := Algebroid( PathAlgebra( kq ), rel );
     
     SetUnderlyingCategory( kq, C );
     
@@ -137,72 +138,69 @@ InstallMethod( Algebroid,
     
 end );
 
-
-
-
 ##
 InstallMethod( RelationsOfEndomorphisms,
         "for a homalg ring and a finite category",
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local objects, gmorphisms, q, kq,
-		RelationsOfEndomorphisms,
-		arrows, endos, vertices, i,
-		mor, powers, m, n, foundEqual,
-		relsEndo;
+    local objects, gmorphisms, q, kq, RelationsOfEndomorphisms,
+          arrows, endos, vertices, i, mor, powers, m, n, foundEqual, relsEndo;
     
-	objects := SetOfObjects( C );
-	gmorphisms := SetOfGeneratingMorphisms( C );
+    objects := SetOfObjects( C );
+    gmorphisms := SetOfGeneratingMorphisms( C );
     q := RightQuiverFromConcreteCategory( C );
     kq := PathAlgebra( k, q );
-	
-	RelationsOfEndomorphisms := function(kq, a, m, n)
-		local rel, one;
-		rel := [];
-		if m = 0 then
-			one := Source( a );
-			rel := PathAsAlgebraElement( kq, a )^n
-			- PathAsAlgebraElement( kq, one );
-		else
-  	        rel := PathAsAlgebraElement( kq, a )^(m+n)
-			- PathAsAlgebraElement( kq, a )^m;
-		fi;
-		return rel;
-	end;
-	
-	arrows := Arrows( q );
-	endos := Filtered( arrows, a -> Source( a ) = Target( a ) );
-	vertices := Collected( List( endos, Source ) );
-	if ForAny( vertices, l -> l[2] > 1 ) then
-		Error( "we assume at most 1 generating endomorphism per vertex\n" );
-	fi;
-	
+    
+    RelationsOfEndomorphisms := function(kq, a, m, n)
+        local rel, one;
+        rel := [];
+        if m = 0 then
+            one := Source( a );
+            rel := PathAsAlgebraElement( kq, a )^n
+                   - PathAsAlgebraElement( kq, one );
+        else
+            rel := PathAsAlgebraElement( kq, a )^(m+n)
+                   - PathAsAlgebraElement( kq, a )^m;
+        fi;
+        return rel;
+    end;
+    
+    arrows := Arrows( q );
+    endos := Filtered( arrows, a -> Source( a ) = Target( a ) );
+    
+    vertices := Collected( List( endos, Source ) );
+    
+    if ForAny( vertices, l -> l[2] > 1 ) then
+        Error( "we assume at most 1 generating endomorphism per vertex\n" );
+    fi;
+    
     relsEndo := [];
-	for i in [ 1 .. Length( gmorphisms ) ] do
-		mor := gmorphisms[i];
-		if not IsEndomorphism( mor ) then
-			continue;
-		fi;
-	    powers := [];
-		m := 0;
-		# sigma lemma
-		foundEqual := false;
-		while not mor^m in powers do
-			n := 1;
-		    while not foundEqual do
-			    if IsCongruentForMorphisms( mor^(m+n), mor^m ) then
-				    Add( relsEndo, 
-					RelationsOfEndomorphisms( kq, arrows[i], m, n ) );
-					foundEqual := true;
-				fi;
-			    n := n+1;
-			od;
-			Add( powers, mor^m );
-		    m := m+1;
-		od;
-	od;
-	
+    
+    for i in [ 1 .. Length( gmorphisms ) ] do
+        mor := gmorphisms[i];
+        if not IsEndomorphism( mor ) then
+            continue;
+        fi;
+        powers := [];
+        m := 0;
+        # sigma lemma
+        foundEqual := false;
+        while not mor^m in powers do
+            n := 1;
+            while not foundEqual do
+                if IsCongruentForMorphisms( mor^(m+n), mor^m ) then
+                    Add( relsEndo,
+                         RelationsOfEndomorphisms( kq, arrows[i], m, n ) );
+                    foundEqual := true;
+                fi;
+                n := n+1;
+            od;
+            Add( powers, mor^m );
+            m := m+1;
+        od;
+    od;
+    
     return relsEndo;
     
 end );
@@ -215,20 +213,22 @@ InstallMethod( RightQuiverFromConcreteCategory,
   function( C )
     local objects, gmorphisms, arrows, i, mor, q;
     
-	objects := SetOfObjects( C );
-	gmorphisms := SetOfGeneratingMorphisms( C );
-	arrows := [];
-	i := 1;
-	for mor in gmorphisms do
-	    arrows[i] :=[
-		  PositionProperty( objects,
-			o -> IsEqualForObjects( Source( mor ), o ) ),
-		  PositionProperty( objects,
-			o -> IsEqualForObjects( Range( mor ), o ) )
-		];
-		i := i+1;
-	od;
-	
+    objects := SetOfObjects( C );
+    gmorphisms := SetOfGeneratingMorphisms( C );
+    arrows := [];
+    
+    i := 1;
+    
+    for mor in gmorphisms do
+        arrows[i] :=[
+                     PositionProperty( objects,
+                             o -> IsEqualForObjects( Source( mor ), o ) ),
+                     PositionProperty( objects,
+                             o -> IsEqualForObjects( Range( mor ), o ) )
+                     ];
+        i := i+1;
+    od;
+    
     q := RightQuiver( "q(1)[a]", Length( objects ), arrows );
     
     return q;
