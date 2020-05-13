@@ -820,7 +820,7 @@ InstallMethodWithCache( Hom,
 
         if diagram = "multiple arrows" then
         
-            return ## a constructor for universal objects: DirectSum
+            return ## a constructor for universal objects: FiberProduct
               function( arg )
                 local eval_arg, result;
                 
