@@ -554,13 +554,13 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ],
   
   function( F_objects, F_morphisms, p, contravariant )
-    local func_obj, func_mor, eval_F_objects, some_object_in_image;
+    local func_obj, func_mor, some_object_in_image;
     
     func_obj := b -> F_objects.(String( b ));
     func_mor := b -> F_morphisms.(String( b ));
     
-    some_object_in_image := List( RecNames(F_objects), func_obj )[1];
-
+    some_object_in_image := func_obj( RecNames( F_objects )[1] );
+    
     return ApplyToQuiverAlgebraElement( func_obj, func_mor, CapCategory(some_object_in_image), p, contravariant );
     
 end );
@@ -571,15 +571,18 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         [ IsCapFunctor, IsQuiverAlgebraElement ],
 
   function( functor, p )
-    local func, b;
+    local algebroid, func;
     
-    func := b -> ApplyFunctor( functor, AsCapCategory(Source(functor)).(String(b)) );
+    algebroid := AsCapCategory( Source( functor ) );
+    
+    func := b -> ApplyFunctor( functor, algebroid.(String( b )) );
     
     if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
         return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, true );
     else
         return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, false );
     fi;
+    
 end );
 
 ####################################
