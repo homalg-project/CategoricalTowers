@@ -759,7 +759,7 @@ InstallMethodWithCache( Hom,
         
         return
           function( )
-            local result, objC;
+            local result, objC, morC;
             
             result := CapFunctor( name_of_object, B, C );
             
@@ -770,9 +770,11 @@ InstallMethodWithCache( Hom,
             
             AddObjectFunction( result, objB -> objC );
             
+            morC := functorial( C );
+            
             AddMorphismFunction( result,
               function( new_source, morB, new_range )
-                return functorial( C );
+                return morC;
             end );
             
             return AsObjectInHomCategory( Hom, result );
