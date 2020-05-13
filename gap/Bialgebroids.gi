@@ -79,7 +79,7 @@ InstallMethod( AddAntipode,
         "for a CAP category and a record",
         [ IsAlgebroid, IsRecord ],
         
-  function( B, S_images_of_morphisms )
+  function( B, S_images_of_generating_morphisms )
     local vertices, S_images_of_objects, S_functor, a;
     
     if IsAlgebraAsCategory(B) then
@@ -95,7 +95,7 @@ InstallMethod( AddAntipode,
         S_images_of_objects.(a) := B.(a);
     od;
     
-    S_functor := CapFunctor( B, S_images_of_objects, S_images_of_morphisms, false );
+    S_functor := CapFunctor( B, S_images_of_objects, S_images_of_generating_morphisms, false );
     
     S_functor!.Name := Concatenation( "Contravariant f", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );
     

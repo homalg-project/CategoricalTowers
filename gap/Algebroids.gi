@@ -1261,7 +1261,7 @@ InstallMethod( Multiplication,
         "for a commutative algebra as cateogry",
         [ IsAlgebraAsCategory and IsCommutative ],
   function (A)
-    local unique_object_in_A, unique_object_in_A_string, morphisms_in_A, A2, unique_object_in_A2, unique_object_in_A2_string, mult_functor_images_of_objects, mult_functor_images_of_morphisms, a, b, axg, axg_string, fxb, fxb_string, mult_functor, g, f;
+    local unique_object_in_A, unique_object_in_A_string, morphisms_in_A, A2, unique_object_in_A2, unique_object_in_A2_string, mult_functor_images_of_objects, mult_functor_images_of_generating_morphisms, a, b, axg, axg_string, fxb, fxb_string, mult_functor, g, f;
 
     unique_object_in_A := SetOfObjects( A )[1];
     unique_object_in_A_string := String( UnderlyingVertex( unique_object_in_A ) );
@@ -1275,7 +1275,7 @@ InstallMethod( Multiplication,
     mult_functor_images_of_objects := rec( );
     mult_functor_images_of_objects.(unique_object_in_A2_string) := unique_object_in_A;
 
-    mult_functor_images_of_morphisms := rec(); # FIXME
+    mult_functor_images_of_generating_morphisms := rec(); # FIXME
 
     a := unique_object_in_A;
     b := unique_object_in_A;
@@ -1285,7 +1285,7 @@ InstallMethod( Multiplication,
         axg := ElementaryTensor( a, g, A2 );
         axg_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( axg ) ) ) );
 
-        mult_functor_images_of_morphisms.(axg_string) := g;
+        mult_functor_images_of_generating_morphisms.(axg_string) := g;
 
     od;
 
@@ -1294,11 +1294,11 @@ InstallMethod( Multiplication,
         fxb := ElementaryTensor( f, b, A2 );
         fxb_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( fxb ) ) ) );
 
-        mult_functor_images_of_morphisms.(fxb_string) := f;
+        mult_functor_images_of_generating_morphisms.(fxb_string) := f;
 
     od;
     
-    mult_functor := CapFunctor( A2, mult_functor_images_of_objects, mult_functor_images_of_morphisms );
+    mult_functor := CapFunctor( A2, mult_functor_images_of_objects, mult_functor_images_of_generating_morphisms );
     
     return mult_functor;
 
@@ -1309,7 +1309,7 @@ InstallMethod( Unit,
         "for algebra as category",
         [ IsAlgebraAsCategory ],
   function( A )
-    local unique_object_in_A, unique_object_in_A_string, unique_object_in_A0, unique_object_in_A0_string, unit_functor_images_of_objects, unit_functor_images_of_morphisms, A0;
+    local unique_object_in_A, unique_object_in_A_string, unique_object_in_A0, unique_object_in_A0_string, unit_functor_images_of_objects, unit_functor_images_of_generating_morphisms, A0;
     
     unique_object_in_A := SetOfObjects( A )[1];
     unique_object_in_A_string := String( UnderlyingVertex( unique_object_in_A ) );
@@ -1321,16 +1321,16 @@ InstallMethod( Unit,
     
     unit_functor_images_of_objects := rec( );
     unit_functor_images_of_objects.(unique_object_in_A0_string) := unique_object_in_A;
-    unit_functor_images_of_morphisms := rec( );
+    unit_functor_images_of_generating_morphisms := rec( );
     
-    return CapFunctor(A0, unit_functor_images_of_objects, unit_functor_images_of_morphisms );
+    return CapFunctor(A0, unit_functor_images_of_objects, unit_functor_images_of_generating_morphisms );
 end );
 
 InstallMethod( LeftUnitorAsFunctor,
         "for algebroid as category",
         [ IsAlgebroid ],
   function( A )
-    local objects_in_A, k, kxA, unique_object_in_k, objects_in_kxA, unitor_functor_images_of_objects, unitor_functor_images_of_morphisms, s, o, m;
+    local objects_in_A, k, kxA, unique_object_in_k, objects_in_kxA, unitor_functor_images_of_objects, unitor_functor_images_of_generating_morphisms, s, o, m;
     
     objects_in_A := SetOfObjects( A );
     
@@ -1347,20 +1347,20 @@ InstallMethod( LeftUnitorAsFunctor,
         unitor_functor_images_of_objects.(String(UnderlyingVertex(ElementaryTensor( unique_object_in_k, o, kxA ) ) ) ) := o;
     od;
     
-    unitor_functor_images_of_morphisms := rec();
+    unitor_functor_images_of_generating_morphisms := rec();
     for m in SetOfGeneratingMorphisms( A ) do
         s := String( Paths( UnderlyingQuiverAlgebraElement( ElementaryTensor( unique_object_in_k, m, kxA) ) )[1] );
-        unitor_functor_images_of_morphisms.(s) := m;
+        unitor_functor_images_of_generating_morphisms.(s) := m;
     od;
 
-    return CapFunctor(kxA, unitor_functor_images_of_objects, unitor_functor_images_of_morphisms);
+    return CapFunctor(kxA, unitor_functor_images_of_objects, unitor_functor_images_of_generating_morphisms);
 end );
 
 InstallMethod( RightUnitorAsFunctor,
         "for algebroid as category",
         [ IsAlgebroid ],
   function( A )
-    local objects_in_A, k, Axk, unique_object_in_k, objects_in_Axk, unitor_functor_images_of_objects, unitor_functor_images_of_morphisms, s, o, m;
+    local objects_in_A, k, Axk, unique_object_in_k, objects_in_Axk, unitor_functor_images_of_objects, unitor_functor_images_of_generating_morphisms, s, o, m;
     
     objects_in_A := SetOfObjects( A );
     
@@ -1377,20 +1377,20 @@ InstallMethod( RightUnitorAsFunctor,
         unitor_functor_images_of_objects.(String(UnderlyingVertex(ElementaryTensor( o, unique_object_in_k, Axk ) ) ) ) := o;
     od;
     
-    unitor_functor_images_of_morphisms := rec();
+    unitor_functor_images_of_generating_morphisms := rec();
     for m in SetOfGeneratingMorphisms( A ) do
         s := String(Paths(UnderlyingQuiverAlgebraElement( ElementaryTensor(m, unique_object_in_k, Axk) ))[1]);
-        unitor_functor_images_of_morphisms.(s) := m;
+        unitor_functor_images_of_generating_morphisms.(s) := m;
     od;
 
-    return CapFunctor(Axk, unitor_functor_images_of_objects, unitor_functor_images_of_morphisms);
+    return CapFunctor(Axk, unitor_functor_images_of_objects, unitor_functor_images_of_generating_morphisms);
 end );
 
 InstallMethod( LeftUnitorInverseAsFunctor,
         "for algebroid as category",
         [ IsAlgebroid ],
   function( A )
-    local objects_in_A, k, kxA, unique_object_in_k, objects_in_kxA, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_morphisms, s, o, m;
+    local objects_in_A, k, kxA, unique_object_in_k, objects_in_kxA, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_generating_morphisms, s, o, m;
     
     objects_in_A := SetOfObjects( A );
     
@@ -1407,20 +1407,20 @@ InstallMethod( LeftUnitorInverseAsFunctor,
         unitor_inverse_functor_images_of_objects.(String(UnderlyingVertex(o))) := ElementaryTensor( unique_object_in_k, o, kxA );
     od;
     
-    unitor_inverse_functor_images_of_morphisms := rec();
+    unitor_inverse_functor_images_of_generating_morphisms := rec();
     for m in SetOfGeneratingMorphisms( A ) do
         s := String( Paths(UnderlyingQuiverAlgebraElement(m))[1] );
-        unitor_inverse_functor_images_of_morphisms.(s) := ElementaryTensor(unique_object_in_k, m, kxA);
+        unitor_inverse_functor_images_of_generating_morphisms.(s) := ElementaryTensor(unique_object_in_k, m, kxA);
     od;
 
-    return CapFunctor(A, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_morphisms);
+    return CapFunctor(A, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_generating_morphisms);
 end );
 
 InstallMethod( RightUnitorInverseAsFunctor,
         "for algebroid as category",
         [ IsAlgebroid ],
   function( A )
-    local objects_in_A, k, Axk, unique_object_in_k, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_morphisms, s, o, m;
+    local objects_in_A, k, Axk, unique_object_in_k, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_generating_morphisms, s, o, m;
     
     objects_in_A := SetOfObjects( A );
     
@@ -1435,14 +1435,14 @@ InstallMethod( RightUnitorInverseAsFunctor,
         unitor_inverse_functor_images_of_objects.(String(UnderlyingVertex(o))) := ElementaryTensor( o, unique_object_in_k, Axk );
     od;
     
-    unitor_inverse_functor_images_of_morphisms := rec();
+    unitor_inverse_functor_images_of_generating_morphisms := rec();
     
     for m in SetOfGeneratingMorphisms( A ) do
         s := String( Paths(UnderlyingQuiverAlgebraElement(m))[1] );
-        unitor_inverse_functor_images_of_morphisms.(s) := ElementaryTensor(m, unique_object_in_k, Axk);
+        unitor_inverse_functor_images_of_generating_morphisms.(s) := ElementaryTensor(m, unique_object_in_k, Axk);
     od;
 
-    return CapFunctor(A, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_morphisms);
+    return CapFunctor(A, unitor_inverse_functor_images_of_objects, unitor_inverse_functor_images_of_generating_morphisms);
 end );
 
 
@@ -1450,13 +1450,13 @@ InstallMethod( AssociatorLeftToRightWithGivenTensorProductsAsFunctor,
         "for algebroids as categories",
         [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ],
   function( AxB_C, A, B, C, A_BxC )
-    local algebra_of_AxB_C, algebra_of_A_BxC, iso_to_flat, iso_from_flat, functor_images_of_morphisms, functor_images_of_objects, m_flat, m_right, m_string, m_right_string, o_string, o_flat, o_right, o_right_string, m, o;
+    local algebra_of_AxB_C, algebra_of_A_BxC, iso_to_flat, iso_from_flat, functor_images_of_generating_morphisms, functor_images_of_objects, m_flat, m_right, m_string, m_right_string, o_string, o_flat, o_right, o_right_string, m, o;
     algebra_of_AxB_C := UnderlyingQuiverAlgebra(AxB_C);
     algebra_of_A_BxC := UnderlyingQuiverAlgebra(A_BxC);
     iso_to_flat := IsomorphismToFlatTensorProduct(algebra_of_AxB_C);
     iso_from_flat := IsomorphismFromFlatTensorProduct(algebra_of_A_BxC);
   
-    functor_images_of_morphisms := rec();
+    functor_images_of_generating_morphisms := rec();
     functor_images_of_objects := rec();
 
     for m in SetOfGeneratingMorphisms( AxB_C ) do
@@ -1464,7 +1464,7 @@ InstallMethod( AssociatorLeftToRightWithGivenTensorProductsAsFunctor,
         m_right := ImageElm( iso_from_flat, m_flat );
         m_string := String(Paths(UnderlyingQuiverAlgebraElement(m))[1]);
         m_right_string := String(Paths(m_right)[1]);
-        functor_images_of_morphisms.(m_string) := A_BxC.(m_right_string);
+        functor_images_of_generating_morphisms.(m_string) := A_BxC.(m_right_string);
     od;
     for o in SetOfObjects( AxB_C ) do
         o_string := String( UnderlyingVertex( o ) );
@@ -1474,27 +1474,27 @@ InstallMethod( AssociatorLeftToRightWithGivenTensorProductsAsFunctor,
         functor_images_of_objects.(o_string) := A_BxC.(o_right_string); 
     od;
 
-    return CapFunctor( AxB_C, functor_images_of_objects, functor_images_of_morphisms );
+    return CapFunctor( AxB_C, functor_images_of_objects, functor_images_of_generating_morphisms );
 end );
 
 InstallMethod( AssociatorRightToLeftWithGivenTensorProductsAsFunctor,
         "for algebroids as categories",
         [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ],
   function( A_BxC, A, B, C, AxB_C )
-    local algebra_of_A_BxC, algebra_of_AxB_C, iso_to_flat, iso_from_flat, functor_images_of_morphisms, functor_images_of_objects, m_flat, m_right, s, o_string, o_flat, o_left, o_left_string, m, o;
+    local algebra_of_A_BxC, algebra_of_AxB_C, iso_to_flat, iso_from_flat, functor_images_of_generating_morphisms, functor_images_of_objects, m_flat, m_right, s, o_string, o_flat, o_left, o_left_string, m, o;
     algebra_of_A_BxC := UnderlyingQuiverAlgebra(A_BxC);
     algebra_of_AxB_C := UnderlyingQuiverAlgebra(AxB_C);
     iso_to_flat := IsomorphismToFlatTensorProduct(algebra_of_A_BxC);
     iso_from_flat := IsomorphismFromFlatTensorProduct(algebra_of_AxB_C);
   
-    functor_images_of_morphisms := rec();
+    functor_images_of_generating_morphisms := rec();
     functor_images_of_objects := rec();
 
     for m in SetOfGeneratingMorphisms( A_BxC ) do
         m_flat := ImageElm( iso_to_flat, UnderlyingQuiverAlgebraElement(m) );
         m_right := ImageElm( iso_from_flat, m_flat );
         s := String(Paths(m_right)[1]);
-        functor_images_of_morphisms.(s) := AxB_C.(s);
+        functor_images_of_generating_morphisms.(s) := AxB_C.(s);
     od;
     for o in SetOfObjects( A_BxC ) do
         o_string := String( UnderlyingVertex( o ) );
@@ -1504,7 +1504,7 @@ InstallMethod( AssociatorRightToLeftWithGivenTensorProductsAsFunctor,
         functor_images_of_objects.(o_string) := AxB_C.(o_left_string);
     od;
 
-    return CapFunctor( A_BxC, functor_images_of_objects, functor_images_of_morphisms );
+    return CapFunctor( A_BxC, functor_images_of_objects, functor_images_of_generating_morphisms );
 end );
 
 ##
@@ -1929,7 +1929,7 @@ InstallMethod(TensorProductOnMorphisms,
         "for morphisms between algebroids",
         [ IsAlgebroidMorphism, IsAlgebroidMorphism ],
   function( F, G )
-    local SF, SG, TF, TG, SF_objects, SG_objects, SFxSG, SFxSG_quiver_algebra, images_of_SF_objects_under_F, images_of_SG_objects_under_G, TFxTG, record_with_images_of_objects, a, b, axb, Gb, Fa, SF_mor, SG_mor, SF_mor_underlying_quiver_algebra_elements, SG_mor_underlying_quiver_algebra_elements, SF_mor_underlying_paths, SG_mor_underlying_paths, record_with_images_of_morphisms, g, axg, f, TF_objects, TG_objects, l, fxb, Ts, product_of_sources, product_of_targets, objects_of_product_of_targets, objects_of_product_of_sources, s, t, p, rp, lp, products_of_quiver_algebra_elements_of_generating_morphisms_of_sources, x;
+    local SF, SG, TF, TG, SF_objects, SG_objects, SFxSG, SFxSG_quiver_algebra, images_of_SF_objects_under_F, images_of_SG_objects_under_G, TFxTG, record_with_images_of_objects, a, b, axb, Gb, Fa, SF_mor, SG_mor, SF_mor_underlying_quiver_algebra_elements, SG_mor_underlying_quiver_algebra_elements, SF_mor_underlying_paths, SG_mor_underlying_paths, record_with_images_of_generating_morphisms, g, axg, f, TF_objects, TG_objects, l, fxb, Ts, product_of_sources, product_of_targets, objects_of_product_of_targets, objects_of_product_of_sources, s, t, p, rp, lp, products_of_quiver_algebra_elements_of_generating_morphisms_of_sources, x;
 
     SF := AsCapCategory( Source( F ) );
     SG := AsCapCategory( Source( G ) );
@@ -1968,7 +1968,7 @@ InstallMethod(TensorProductOnMorphisms,
     SF_mor_underlying_quiver_algebra_elements := List( SF_mor, UnderlyingQuiverAlgebraElement );
     SG_mor_underlying_quiver_algebra_elements := List( SG_mor, UnderlyingQuiverAlgebraElement );
     
-    record_with_images_of_morphisms := rec();
+    record_with_images_of_generating_morphisms := rec();
 
     for a in SF_objects do
       for g in SG_mor do
@@ -1984,7 +1984,7 @@ InstallMethod(TensorProductOnMorphisms,
         
         axg := String( LeadingPath( axg ) );
 
-        record_with_images_of_morphisms.(axg) := ElementaryTensor( ApplyFunctor( F, a ), ApplyFunctor( G, g ), TFxTG );
+        record_with_images_of_generating_morphisms.(axg) := ElementaryTensor( ApplyFunctor( F, a ), ApplyFunctor( G, g ), TFxTG );
 
       od;
     od;
@@ -2003,7 +2003,7 @@ InstallMethod(TensorProductOnMorphisms,
 
         fxb := String( LeadingPath( fxb ) );
 
-        record_with_images_of_morphisms.(fxb) := ElementaryTensor( ApplyFunctor( F, f ), ApplyFunctor( G, b ), TFxTG );
+        record_with_images_of_generating_morphisms.(fxb) := ElementaryTensor( ApplyFunctor( F, f ), ApplyFunctor( G, b ), TFxTG );
 
       od;
     od;
@@ -2022,7 +2022,7 @@ InstallMethod(TensorProductOnMorphisms,
 
     products_of_quiver_algebra_elements_of_generating_morphisms_of_sources := ListX( SF_mor_underlying_quiver_algebra_elements, SG_mor_underlying_quiver_algebra_elements, Ts, ElementaryTensor );
 
-    return CapFunctor( SFxSG, record_with_images_of_objects, record_with_images_of_morphisms );
+    return CapFunctor( SFxSG, record_with_images_of_objects, record_with_images_of_generating_morphisms );
 
 end );
 
@@ -2040,10 +2040,10 @@ InstallMethod( CapFunctor,
         "for an algebroid, two records, and a boolean",
         [ IsAlgebroid, IsRecord, IsRecord, IsBool ],
         
-  function( A, rec_images_of_objects, rec_images_of_morphisms, covariant )
+  function( A, rec_images_of_objects, rec_images_of_generating_morphisms, covariant )
     local b, Rq, B, functor, names_morphisms, names_objects;
     
-    names_morphisms := NamesOfComponents( rec_images_of_morphisms );
+    names_morphisms := NamesOfComponents( rec_images_of_generating_morphisms );
     names_objects := NamesOfComponents( rec_images_of_objects );
     
     if names_objects = [ ] then
@@ -2053,16 +2053,16 @@ InstallMethod( CapFunctor,
     # Construct the target category B
     if Length(names_morphisms) > 0 then
         for b in names_morphisms do
-            if IsQuiverAlgebraElement( rec_images_of_morphisms.(b) ) then
-                Rq := AlgebraOfElement( rec_images_of_morphisms.(b) );
+            if IsQuiverAlgebraElement( rec_images_of_generating_morphisms.(b) ) then
+                Rq := AlgebraOfElement( rec_images_of_generating_morphisms.(b) );
                 B := Algebroid( Rq );
                 break;
-            elif IsCapCategoryCell( rec_images_of_morphisms.(b) ) then
-                if not IsCapCategoryMorphism( rec_images_of_morphisms.(b) ) then
+            elif IsCapCategoryCell( rec_images_of_generating_morphisms.(b) ) then
+                if not IsCapCategoryMorphism( rec_images_of_generating_morphisms.(b) ) then
                     Error( Concatenation( "image of ", String(b), " is not a morphism"));
                 fi;
 
-                B := CapCategory( rec_images_of_morphisms.(b) );
+                B := CapCategory( rec_images_of_generating_morphisms.(b) );
                 break;
             fi;
         od;
@@ -2092,14 +2092,14 @@ InstallMethod( CapFunctor,
         
         AddMorphismFunction( functor,
           function( new_source, mor, new_range )
-            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), true );
+            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_generating_morphisms, UnderlyingQuiverAlgebraElement( mor ), true );
         end );
         
     else
         
         AddMorphismFunction( functor,
           function( new_source, mor, new_range )
-            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), false );
+            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_generating_morphisms, UnderlyingQuiverAlgebraElement( mor ), false );
         end );
         
     fi;
@@ -2113,9 +2113,9 @@ InstallMethod( CapFunctor,
         "for an algebroid and two records",
         [ IsAlgebroid, IsRecord, IsRecord ],
         
-  function( A, rec_images_of_objects, rec_images_of_morphisms )
+  function( A, rec_images_of_objects, rec_images_of_generating_morphisms )
     
-    return CapFunctor( A, rec_images_of_objects, rec_images_of_morphisms, true );
+    return CapFunctor( A, rec_images_of_objects, rec_images_of_generating_morphisms, true );
     
 end );
 
@@ -2124,8 +2124,8 @@ InstallMethod( CapFunctor,
         "for an algebroid and two lists",
         [ IsAlgebroid, IsList, IsList ],
         
-  function( A, images_of_objects, images_of_morphisms )
-    local  kq, vertices, arrows, rec_images_of_objects, rec_images_of_morphisms, i;
+  function( A, images_of_objects, images_of_generating_morphisms )
+    local  kq, vertices, arrows, rec_images_of_objects, rec_images_of_generating_morphisms, i;
     
     kq := QuiverOfAlgebra( UnderlyingQuiverAlgebra( A ) );
     
@@ -2133,17 +2133,17 @@ InstallMethod( CapFunctor,
     arrows := Arrows( kq );
     
     rec_images_of_objects := rec( );
-    rec_images_of_morphisms := rec( );
+    rec_images_of_generating_morphisms := rec( );
     
     for i in [ 1 .. Length( vertices ) ] do
         rec_images_of_objects.(String( vertices[i] )) := images_of_objects[i];
     od;
     
     for i in [ 1 .. Length( arrows ) ] do
-        rec_images_of_morphisms.(String( arrows[i] )) := images_of_morphisms[i];
+        rec_images_of_generating_morphisms.(String( arrows[i] )) := images_of_generating_morphisms[i];
     od;
     
-    return CapFunctor( A, rec_images_of_objects, rec_images_of_morphisms );
+    return CapFunctor( A, rec_images_of_objects, rec_images_of_generating_morphisms );
     
 end );
 
@@ -2207,7 +2207,7 @@ InstallMethod( Twist,
         "for two algebroids",
         [ IsAlgebroid, IsAlgebroid ],
   function( A, B )
-    local A_underlying_quiver_algebra, B_underlying_quiver_algebra, AxB, BxA, A_objects, B_objects, A_morphisms, B_morphisms, a, b, record_with_images_of_objects, record_with_images_of_morphisms, axg, axg_string, fxb, fxb_string, g, f;
+    local A_underlying_quiver_algebra, B_underlying_quiver_algebra, AxB, BxA, A_objects, B_objects, A_morphisms, B_morphisms, a, b, record_with_images_of_objects, record_with_images_of_generating_morphisms, axg, axg_string, fxb, fxb_string, g, f;
     
     A_underlying_quiver_algebra := UnderlyingQuiver( A );
     B_underlying_quiver_algebra := UnderlyingQuiver( B );
@@ -2229,13 +2229,13 @@ InstallMethod( Twist,
       od;
     od;
     
-    record_with_images_of_morphisms := rec( );
+    record_with_images_of_generating_morphisms := rec( );
     
     for a in A_objects do
         for g in B_morphisms do
             axg := ElementaryTensor( a, g, AxB );
             axg_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( axg ) ) ) );
-            record_with_images_of_morphisms.(axg_string) := ElementaryTensor( g, a, BxA );
+            record_with_images_of_generating_morphisms.(axg_string) := ElementaryTensor( g, a, BxA );
         od;
     od;
     
@@ -2243,11 +2243,11 @@ InstallMethod( Twist,
         for f in A_morphisms do
             fxb := ElementaryTensor( f, b, AxB );
             fxb_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( fxb ) ) ) );
-            record_with_images_of_morphisms.(fxb_string) := ElementaryTensor( b, f, BxA );
+            record_with_images_of_generating_morphisms.(fxb_string) := ElementaryTensor( b, f, BxA );
         od;
     od;
     
-    return CapFunctor( AxB, record_with_images_of_objects, record_with_images_of_morphisms );
+    return CapFunctor( AxB, record_with_images_of_objects, record_with_images_of_generating_morphisms );
 
 end);
 
