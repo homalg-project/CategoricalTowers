@@ -2078,6 +2078,9 @@ InstallMethod( CapFunctor,
    
     functor := CapFunctor( functor, A, B );
     
+    DeactivateCachingObject( ObjectCache( functor ) );
+    DeactivateCachingObject( MorphismCache( functor ) );
+    
     AddObjectFunction( functor,
             obj -> rec_images_of_objects.(String( UnderlyingVertex( obj ) )) );
     
