@@ -763,6 +763,9 @@ InstallMethodWithCache( Hom,
             
             result := CapFunctor( name_of_object, B, C );
             
+            DeactivateCachingObject( ObjectCache( result ) );
+            DeactivateCachingObject( MorphismCache( result ) );
+            
             objC := oper( C );
             
             AddObjectFunction( result, objB -> objC );
@@ -823,6 +826,9 @@ InstallMethodWithCache( Hom,
                 
                 result := CapFunctor( name_of_object, B, C );
                 
+                DeactivateCachingObject( ObjectCache( result ) );
+                DeactivateCachingObject( MorphismCache( result ) );
+                
                 AddObjectFunction( result,
                         objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
                 
@@ -855,6 +861,9 @@ InstallMethodWithCache( Hom,
                 
                 result := CapFunctor( name_of_object, B, C );
                 
+                DeactivateCachingObject( ObjectCache( result ) );
+                DeactivateCachingObject( MorphismCache( result ) );
+                
                 AddObjectFunction( result,
                         objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
                 
@@ -880,6 +889,9 @@ InstallMethodWithCache( Hom,
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
                 result := CapFunctor( name_of_object, B, C );
+                
+                DeactivateCachingObject( ObjectCache( result ) );
+                DeactivateCachingObject( MorphismCache( result ) );
                 
                 AddObjectFunction( result,
                         objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
@@ -1279,6 +1291,9 @@ InstallMethodWithCache( Hom,
             
             I := CapFunctor( name_of_object, B, C );
             
+            DeactivateCachingObject( ObjectCache( I ) );
+            DeactivateCachingObject( MorphismCache( I ) );
+            
             I_C := TensorUnit( C );
             
             AddObjectFunction( I, objB -> I_C );
@@ -1315,6 +1330,9 @@ InstallMethodWithCache( Hom,
             
             FG := CapFunctor( name_of_object, B, C );
             
+            DeactivateCachingObject( ObjectCache( FG ) );
+            DeactivateCachingObject( MorphismCache( FG ) );
+            
             AddObjectFunction( FG,
                     objB -> TensorProductOnObjects( F( objB ), G( objB ) ) );
             
@@ -1343,6 +1361,9 @@ InstallMethodWithCache( Hom,
             local Fd, antipode;
             
             Fd := CapFunctor( name_of_object, B, C );
+            
+            DeactivateCachingObject( ObjectCache( Fd ) );
+            DeactivateCachingObject( MorphismCache( Fd ) );
             
             AddObjectFunction( Fd,
                     objB -> DualOnObjects( F( objB ) ) );
