@@ -475,7 +475,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         "for an object function, a morphism function, a category, a quiver algebra element and a boolean",
         [ IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool ],
         
-  function( object_func, morphism_func, range_category, p, contravariant )
+  function( object_func, morphism_func, range_category, p, covariant )
     local applyF, paths, paths_final;
     
     # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
@@ -494,7 +494,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     
     paths := DecomposeQuiverAlgebraElement( p )[2];
     
-    if contravariant = false then
+    if covariant then
         paths_final := List( paths, a -> PreCompose( List( a, applyF ) ) );
     else
         paths_final := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
@@ -509,7 +509,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         "for an object function, a morphism function, a linear category, a quiver algebra element, and a boolean",
         [ IsFunction, IsFunction, IsCapCategory and IsLinearCategoryOverCommutativeRing, IsQuiverAlgebraElement, IsBool ],
         
-  function( object_func, morphism_func, range_category, p, contravariant )
+  function( object_func, morphism_func, range_category, p, covariant )
     local applyF, paths, coefs, paths_final, s, all_objects_in_image;
     
     # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
@@ -531,7 +531,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     coefs := paths[1];
     paths := paths[2];
     
-    if contravariant = false then
+    if covariant then
         paths_final := List( paths, a -> PreCompose( List( a, applyF ) ) );
     else
         paths_final := List( paths, a -> PreCompose( Reversed( List( a, applyF ) ) ) );
@@ -553,7 +553,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         "for a record (of images of objects), a record (of images of morphisms) and a quiver algebra element",
         [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ],
   
-  function( F_objects, F_morphisms, p, contravariant )
+  function( F_objects, F_morphisms, p, covariant )
     local func_obj, func_mor, some_object_in_image;
     
     func_obj := b -> F_objects.(String( b ));
@@ -561,7 +561,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     
     some_object_in_image := func_obj( RecNames( F_objects )[1] );
     
-    return ApplyToQuiverAlgebraElement( func_obj, func_mor, CapCategory(some_object_in_image), p, contravariant );
+    return ApplyToQuiverAlgebraElement( func_obj, func_mor, CapCategory(some_object_in_image), p, covariant );
     
 end );
 
@@ -578,10 +578,10 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     func := b -> ApplyFunctor( functor, algebroid.(String( b )) );
     
     if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
-        return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, true );
-    else
         return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, false );
     fi;
+    
+    return ApplyToQuiverAlgebraElement( func, func, AsCapCategory(Range(functor)), p, true );
     
 end );
 
@@ -2037,10 +2037,10 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for an algebroid and two records",
-        [ IsAlgebroid, IsRecord, IsRecord ],
+        "for an algebroid, two records, and a boolean",
+        [ IsAlgebroid, IsRecord, IsRecord, IsBool ],
         
-  function( A, rec_images_of_objects, rec_images_of_morphisms )
+  function( A, rec_images_of_objects, rec_images_of_morphisms, covariant )
     local b, Rq, B, functor, names_morphisms, names_objects;
     
     names_morphisms := NamesOfComponents( rec_images_of_morphisms );
@@ -2078,24 +2078,44 @@ InstallMethod( CapFunctor,
    
     functor := CapFunctor( functor, A, B );
     
+    functor!.IsContravariant := not covariant;
+    
     DeactivateCachingObject( ObjectCache( functor ) );
     DeactivateCachingObject( MorphismCache( functor ) );
+    
+    SetFilterObj( functor, IsAlgebroidMorphism );
     
     AddObjectFunction( functor,
             obj -> rec_images_of_objects.(String( UnderlyingVertex( obj ) )) );
     
-    AddMorphismFunction( functor,
-            function( new_source, mor, new_range )
-              if IsBound( functor!.IsContravariant ) and functor!.IsContravariant then
-                  return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), true);
-              else
-                  return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), false );
-              fi;
-            end );
-    
-    SetFilterObj( functor, IsAlgebroidMorphism );
+    if covariant then
+        
+        AddMorphismFunction( functor,
+          function( new_source, mor, new_range )
+            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), true );
+        end );
+        
+    else
+        
+        AddMorphismFunction( functor,
+          function( new_source, mor, new_range )
+            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_morphisms, UnderlyingQuiverAlgebraElement( mor ), false );
+        end );
+        
+    fi;
     
     return functor;
+    
+end );
+
+##
+InstallMethod( CapFunctor,
+        "for an algebroid and two records",
+        [ IsAlgebroid, IsRecord, IsRecord ],
+        
+  function( A, rec_images_of_objects, rec_images_of_morphisms )
+    
+    return CapFunctor( A, rec_images_of_objects, rec_images_of_morphisms, true );
     
 end );
 

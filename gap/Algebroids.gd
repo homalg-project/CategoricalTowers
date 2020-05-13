@@ -307,7 +307,7 @@ DeclareOperation( "DecomposeQuiverAlgebraElement",
 
 #! @Description
 #!  Apply the functor defined by the records <A>images_of_objects</A> and <A>images_of_morphisms</A> to the quiver algebra element <A>p</A>.
-#! @Arguments images_of_objects, images_of_morphisms, path, contravariant
+#! @Arguments images_of_objects, images_of_morphisms, path, covariant
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ApplyToQuiverAlgebraElement",
         [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ] );
@@ -389,16 +389,23 @@ DeclareOperation( "Algebroid",
 #!  a functor with source the finitely presented algebroid <A>A</A>.
 #!  The record <A>rec_images_of_objects</A> is supposed to contain the images of the objects of <A>A</A>.
 #!  The record <A>rec_images_of_morphisms</A> is supposed to contain the images of the set of generating morphisms of <A>A</A>.
-#! @Arguments A, rec_images_of_objects, rec_images_of_morphisms
+#! @Arguments A, rec_images_of_objects, rec_images_of_morphisms, covariant
 #! @Returns a &CAP; functor
+#! @Group CapFunctor
+DeclareOperation( "CapFunctor",
+        [ IsAlgebroid, IsRecord, IsRecord, IsBool ] );
+
+#! @Description
+#!  If the fourth boolean argument <A>covariant</A> is not specified it defaults to <C>true</C>.
+#! @Arguments A, rec_images_of_objects, rec_images_of_morphisms
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
         [ IsAlgebroid, IsRecord, IsRecord ] );
 
 #! @Description
-#! @Arguments A, images_of_objects, images_of_morphisms
 #!  An alternative input is the source category <A>A</A> and two defining lists <A>images_of_objects</A> and <A>images_of_morphisms</A> of the resulting functor.
 #!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
+#! @Arguments A, images_of_objects, images_of_morphisms
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
         [ IsAlgebroid, IsList, IsList ] );

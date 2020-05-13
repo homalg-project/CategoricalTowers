@@ -94,9 +94,8 @@ InstallMethod( AddAntipode,
     for a in vertices do
         S_images_of_objects.(a) := B.(a);
     od;
-
-    S_functor := CapFunctor( B, S_images_of_objects, S_images_of_morphisms );
-    S_functor!.IsContravariant := true;
+    
+    S_functor := CapFunctor( B, S_images_of_objects, S_images_of_morphisms, false );
     
     S_functor!.Name := Concatenation( "Contravariant f", S_functor!.Name{[ 2 .. Length( S_functor!.Name ) ]} );
     
