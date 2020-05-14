@@ -86,7 +86,7 @@ InstallMethod( Algebroid,
     relEndo := RelationsOfEndomorphisms( k, C );
     A := Algebroid( kq, relEndo );
     kq := UnderlyingQuiverAlgebra( A );
-    F := CapFunctor( A, objects, gmorphisms );
+    F := CapFunctor( A, objects, gmorphisms, C );
     
     vertices := List( SetOfObjects(A), UnderlyingVertex );
     
