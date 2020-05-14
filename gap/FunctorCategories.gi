@@ -759,25 +759,25 @@ InstallMethodWithCache( Hom,
         
         return
           function( )
-            local result, objC, morC;
+            local F, objC, morC;
             
-            result := CapFunctor( name_of_object, B, C );
+            F := CapFunctor( name_of_object, B, C );
             
-            DeactivateCachingObject( ObjectCache( result ) );
-            DeactivateCachingObject( MorphismCache( result ) );
+            DeactivateCachingObject( ObjectCache( F ) );
+            DeactivateCachingObject( MorphismCache( F ) );
             
             objC := oper( C );
             
-            AddObjectFunction( result, objB -> objC );
+            AddObjectFunction( F, objB -> objC );
             
             morC := functorial( C );
             
-            AddMorphismFunction( result,
+            AddMorphismFunction( F,
               function( new_source, morB, new_range )
                 return morC;
             end );
             
-            return AsObjectInHomCategory( Hom, result );
+            return AsObjectInHomCategory( Hom, F );
             
         end;
         
@@ -822,19 +822,19 @@ InstallMethodWithCache( Hom,
         
             return ## a constructor for universal objects: FiberProduct
               function( arg )
-                local eval_arg, result;
+                local eval_arg, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
-                result := CapFunctor( name_of_object, B, C );
+                F := CapFunctor( name_of_object, B, C );
                 
-                DeactivateCachingObject( ObjectCache( result ) );
-                DeactivateCachingObject( MorphismCache( result ) );
+                DeactivateCachingObject( ObjectCache( F ) );
+                DeactivateCachingObject( MorphismCache( F ) );
                 
-                AddObjectFunction( result,
+                AddObjectFunction( F,
                         objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
                 
-                AddMorphismFunction( result,
+                AddMorphismFunction( F,
                   function( new_source, morB, new_range )
                     local FmorB;
                     
@@ -849,7 +849,7 @@ InstallMethodWithCache( Hom,
                                            [ new_range ] ) );
                     end );
                 
-                return AsObjectInHomCategory( Hom, result );
+                return AsObjectInHomCategory( Hom, F );
                 
               end;
             
@@ -857,19 +857,19 @@ InstallMethodWithCache( Hom,
             
             return ## a constructor for universal objects: DirectSum
               function( arg )
-                local eval_arg, result;
+                local eval_arg, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
-                result := CapFunctor( name_of_object, B, C );
+                F := CapFunctor( name_of_object, B, C );
                 
-                DeactivateCachingObject( ObjectCache( result ) );
-                DeactivateCachingObject( MorphismCache( result ) );
+                DeactivateCachingObject( ObjectCache( F ) );
+                DeactivateCachingObject( MorphismCache( F ) );
                 
-                AddObjectFunction( result,
+                AddObjectFunction( F,
                         objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
                 
-                AddMorphismFunction( result,
+                AddMorphismFunction( F,
                   function( new_source, morB, new_range )
                     return CallFuncList( functorial,
                                    Concatenation(
@@ -878,7 +878,7 @@ InstallMethodWithCache( Hom,
                                            [ new_range ] ) );
                     end );
                 
-                return AsObjectInHomCategory( Hom, result );
+                return AsObjectInHomCategory( Hom, F );
                 
               end;
             
@@ -886,19 +886,19 @@ InstallMethodWithCache( Hom,
             
             return ## a constructor for universal objects: KernelObject
               function( arg )
-                local eval_arg, result;
+                local eval_arg, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
-                result := CapFunctor( name_of_object, B, C );
+                F := CapFunctor( name_of_object, B, C );
                 
-                DeactivateCachingObject( ObjectCache( result ) );
-                DeactivateCachingObject( MorphismCache( result ) );
+                DeactivateCachingObject( ObjectCache( F ) );
+                DeactivateCachingObject( MorphismCache( F ) );
                 
-                AddObjectFunction( result,
+                AddObjectFunction( F,
                         objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
                 
-                AddMorphismFunction( result,
+                AddMorphismFunction( F,
                   function( new_source, morB, new_range )
                     return CallFuncList( functorial,
                                    Concatenation(
@@ -907,7 +907,7 @@ InstallMethodWithCache( Hom,
                                            [ new_range ] ) );
                     end );
                 
-                return AsObjectInHomCategory( Hom, result );
+                return AsObjectInHomCategory( Hom, F );
                 
               end;
             
@@ -931,7 +931,7 @@ InstallMethodWithCache( Hom,
         
         return
           function( arg )
-            local src_trg, S, T, eval_arg, result;
+            local src_trg, S, T, eval_arg, eta;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             S := UnderlyingCapTwoCategoryCell( src_trg[1] );
@@ -939,14 +939,14 @@ InstallMethodWithCache( Hom,
             
             eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
             
-            result := NaturalTransformation( name_of_morphism, S, T );
+            eta := NaturalTransformation( name_of_morphism, S, T );
             
-            AddNaturalTransformationFunction( result,
+            AddNaturalTransformationFunction( eta,
               function( source, objB, range )
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
             
-            return AsMorphismInHomCategory( Hom, result );
+            return AsMorphismInHomCategory( Hom, eta );
             
           end;
           
@@ -974,7 +974,7 @@ InstallMethodWithCache( Hom,
         
         return
           function( arg )
-            local src_trg, S, T, eval_arg, result;
+            local src_trg, S, T, eval_arg, eta;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             
@@ -983,14 +983,14 @@ InstallMethodWithCache( Hom,
             
             eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
             
-            result := NaturalTransformation( name_of_morphism, S, T );
+            eta := NaturalTransformation( name_of_morphism, S, T );
             
-            AddNaturalTransformationFunction( result,
+            AddNaturalTransformationFunction( eta,
               function( source, objB, range )
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
               
-            return AsMorphismInHomCategory( Hom, result );
+            return AsMorphismInHomCategory( Hom, eta );
             
         end;
         
@@ -1068,27 +1068,27 @@ InstallMethodWithCache( Hom,
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( Hom,
           function( r, eta )
-            local Hom, B, C, name_of_morphism, S, T, result;
+            local Hom, B, C, name_of_morphism, S, T, r_eta;
             
             Hom := CapCategory( eta );
             B := Source( Hom );
             C := Range( Hom );
             
             name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-
+            
             eta := UnderlyingCapTwoCategoryCell( eta );
             
             S := Source( eta );
             T := Range( eta );
             
-            result := NaturalTransformation( name_of_morphism, S, T );
+            r_eta := NaturalTransformation( name_of_morphism, S, T );
             
-            AddNaturalTransformationFunction( result,
+            AddNaturalTransformationFunction( r_eta,
               function( source, objB, range )
                 return MultiplyWithElementOfCommutativeRingForMorphisms( r, ApplyCell( eta, objB ) );
             end );
             
-            return AsMorphismInHomCategory( Hom, result );
+            return AsMorphismInHomCategory( Hom, r_eta );
             
         end );
         
