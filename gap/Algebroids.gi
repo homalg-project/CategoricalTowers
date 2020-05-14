@@ -550,23 +550,6 @@ end );
 
 ##
 InstallMethod( ApplyToQuiverAlgebraElement,
-        "for a record (of images of objects), a record (of images of morphisms) and a quiver algebra element",
-        [ IsRecord, IsRecord, IsQuiverAlgebraElement, IsBool ],
-  
-  function( F_objects, F_morphisms, p, covariant )
-    local func_obj, func_mor, some_object_in_image;
-    
-    func_obj := b -> F_objects.(String( b ));
-    func_mor := b -> F_morphisms.(String( b ));
-    
-    some_object_in_image := func_obj( RecNames( F_objects )[1] );
-    
-    return ApplyToQuiverAlgebraElement( func_obj, func_mor, CapCategory(some_object_in_image), p, covariant );
-    
-end );
-
-##
-InstallMethod( ApplyToQuiverAlgebraElement,
         "for a functor and a quiver algebra element",
         [ IsCapFunctor, IsQuiverAlgebraElement ],
 
@@ -2037,46 +2020,23 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for an algebroid, two records, and a boolean",
-        [ IsAlgebroid, IsRecord, IsRecord, IsBool ],
+        "for an algebroid, two lists, a CAP Category, and a boolean",
+        [ IsAlgebroid, IsList, IsList, IsCapCategory, IsBool ],
         
-  function( A, rec_images_of_objects, rec_images_of_generating_morphisms, covariant )
-    local b, Rq, B, functor, names_morphisms, names_objects;
+  function( A, images_of_objects, images_of_generating_morphisms, B, covariant )
+    local  kq, vertices, arrows, functor, func_obj, func_mor;
     
-    names_morphisms := NamesOfComponents( rec_images_of_generating_morphisms );
-    names_objects := NamesOfComponents( rec_images_of_objects );
+    kq := QuiverOfAlgebra( UnderlyingQuiverAlgebra( A ) );
     
-    if names_objects = [ ] then
-        Error( "the record of images of objects is empty\n" );
-    fi;
-
-    # Construct the target category B
-    if Length(names_morphisms) > 0 then
-        for b in names_morphisms do
-            if IsQuiverAlgebraElement( rec_images_of_generating_morphisms.(b) ) then
-                Rq := AlgebraOfElement( rec_images_of_generating_morphisms.(b) );
-                B := Algebroid( Rq );
-                break;
-            elif IsCapCategoryCell( rec_images_of_generating_morphisms.(b) ) then
-                if not IsCapCategoryMorphism( rec_images_of_generating_morphisms.(b) ) then
-                    Error( Concatenation( "image of ", String(b), " is not a morphism"));
-                fi;
-
-                B := CapCategory( rec_images_of_generating_morphisms.(b) );
-                break;
-            fi;
-        od;
-    else
-        B := CapCategory( rec_images_of_objects.(names_objects[1]) );
-    fi;
-
-    if not IsBound( B ) then
-        Error( "unable to extract target category from the records of images\n" );
-    fi;
+    vertices := Vertices( kq );
+    arrows := Arrows( kq );
     
     functor := Concatenation( "Functor from finitely presented ", Name( A ), " -> ", Name( B ) );
-   
+    
     functor := CapFunctor( functor, A, B );
+    
+    functor!.ValuesOnAllObjects := images_of_objects;
+    functor!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
     
     functor!.IsContravariant := not covariant;
     
@@ -2086,20 +2046,56 @@ InstallMethod( CapFunctor,
     SetFilterObj( functor, IsAlgebroidMorphism );
     
     AddObjectFunction( functor,
-            obj -> rec_images_of_objects.(String( UnderlyingVertex( obj ) )) );
+      function( obj )
+        local i;
+        
+        i := Position( vertices, UnderlyingVertex( obj ) );
+        
+        if IsInt( i ) then
+            return images_of_objects[i];
+        fi;
+        
+        Error( "vertex UnderlyingVertex( obj ) = ", UnderlyingVertex( obj ), " not found in the list ", vertices, " of vertices\n"  );
+        
+    end );
+    
+    func_obj := o -> images_of_objects[ Position( vertices, o ) ];
+    func_mor := a -> images_of_generating_morphisms[ Position( arrows, a ) ];
     
     if covariant then
         
         AddMorphismFunction( functor,
           function( new_source, mor, new_range )
-            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_generating_morphisms, UnderlyingQuiverAlgebraElement( mor ), true );
+            local i;
+            
+            mor := UnderlyingQuiverAlgebraElement( mor );
+            
+            i := Position( arrows, mor );
+            
+            if IsInt( i ) then
+                return images_of_generating_morphisms[i];
+            fi;
+            
+            return ApplyToQuiverAlgebraElement( func_obj, func_mor, B, mor, true );
+            
         end );
         
     else
         
         AddMorphismFunction( functor,
           function( new_source, mor, new_range )
-            return ApplyToQuiverAlgebraElement( rec_images_of_objects, rec_images_of_generating_morphisms, UnderlyingQuiverAlgebraElement( mor ), false );
+            local i;
+            
+            mor := UnderlyingQuiverAlgebraElement( mor );
+            
+            i := Position( arrows, mor );
+            
+            if IsInt( i ) then
+                return images_of_objects[i];
+            fi;
+            
+            return ApplyToQuiverAlgebraElement( func_obj, func_mor, B, mor, false );
+            
         end );
         
     fi;
@@ -2110,40 +2106,73 @@ end );
 
 ##
 InstallMethod( CapFunctor,
+        "for an algebroid, two lists, and a CAP category",
+        [ IsAlgebroid, IsList, IsList, IsCapCategory ],
+        
+  function( A, images_of_objects, images_of_generating_morphisms, B )
+    
+    return CapFunctor( A, images_of_objects, images_of_generating_morphisms, B, true );
+    
+end );
+
+## this a convenience method
+InstallMethod( CapFunctor,
+        "for an algebroid, two records, and a boolean",
+        [ IsAlgebroid, IsRecord, IsRecord, IsBool ],
+        
+  function( A, rec_images_of_objects, rec_images_of_generating_morphisms, covariant )
+    local kq, vertices, images_of_objects, arrows, images_of_generating_morphisms,
+          mor, Rq, B;
+    
+    kq := QuiverOfAlgebra( UnderlyingQuiverAlgebra( A ) );
+    
+    vertices := Vertices( kq );
+    
+    images_of_objects := List( vertices, v -> rec_images_of_objects.(String( v ) ) );
+    
+    if images_of_objects = [ ] then
+        Error( "the record rec_images_of_objects does not contain a named image of an object in the source category A\n" );
+    fi;
+    
+    arrows := Arrows( kq );
+    
+    images_of_generating_morphisms := List( arrows, a -> rec_images_of_generating_morphisms.(String( a ) ) );
+    
+    # Construct the target category B
+    if not IsEmpty( images_of_generating_morphisms ) then
+        for mor in images_of_generating_morphisms do
+            if IsQuiverAlgebraElement( mor ) then
+                Rq := AlgebraOfElement( mor );
+                B := Algebroid( Rq );
+                break;
+            elif IsCapCategoryCell( mor ) then
+                if not IsCapCategoryMorphism( mor ) then
+                    Error( Concatenation( "the image ", mor, " is not a morphism"));
+                fi;
+                B := CapCategory( mor );
+                break;
+            fi;
+        od;
+    else
+        B := CapCategory( images_of_objects[1] );
+    fi;
+    
+    if not IsBound( B ) then
+        Error( "unable to extract target category from the records of images\n" );
+    fi;
+    
+    return CapFunctor( A, images_of_objects, images_of_generating_morphisms, B, covariant );
+    
+end );
+
+## this a convenience method
+InstallMethod( CapFunctor,
         "for an algebroid and two records",
         [ IsAlgebroid, IsRecord, IsRecord ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms )
     
     return CapFunctor( A, rec_images_of_objects, rec_images_of_generating_morphisms, true );
-    
-end );
-
-##
-InstallMethod( CapFunctor,
-        "for an algebroid and two lists",
-        [ IsAlgebroid, IsList, IsList ],
-        
-  function( A, images_of_objects, images_of_generating_morphisms )
-    local  kq, vertices, arrows, rec_images_of_objects, rec_images_of_generating_morphisms, i;
-    
-    kq := QuiverOfAlgebra( UnderlyingQuiverAlgebra( A ) );
-    
-    vertices := Vertices( kq );
-    arrows := Arrows( kq );
-    
-    rec_images_of_objects := rec( );
-    rec_images_of_generating_morphisms := rec( );
-    
-    for i in [ 1 .. Length( vertices ) ] do
-        rec_images_of_objects.(String( vertices[i] )) := images_of_objects[i];
-    od;
-    
-    for i in [ 1 .. Length( arrows ) ] do
-        rec_images_of_generating_morphisms.(String( arrows[i] )) := images_of_generating_morphisms[i];
-    od;
-    
-    return CapFunctor( A, rec_images_of_objects, rec_images_of_generating_morphisms );
     
 end );
 
