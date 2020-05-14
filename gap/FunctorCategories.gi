@@ -300,7 +300,7 @@ InstallMethod( ApplyCell,
     
     pos := Position( objects, o );
     
-    if not pos = fail then
+    if IsInt( pos ) then
         values := F!.ValuesOnAllObjects;
         if not IsBound( values[pos] ) then
             values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), o );
@@ -324,7 +324,7 @@ InstallMethod( ApplyCell,
     
     pos := Position( morphisms, m );
     
-    if not pos = fail then
+    if IsInt( pos ) then
         values := F!.ValuesOnAllGeneratingMorphisms;
         if not IsBound( values[pos] ) then
             values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), m );
@@ -348,7 +348,7 @@ InstallMethod( ApplyCell,
     
     pos := Position( objects, o );
     
-    if not pos = fail then
+    if IsInt( pos ) then
         values := eta!.ValuesOnAllObjects;
         if not IsBound( values[pos] ) then
             values[pos] := ApplyNaturalTransformation( UnderlyingCapTwoCategoryCell( eta ), o );
@@ -556,7 +556,11 @@ InstallMethod( AsObjectInHomCategory,
   function( B, images_of_objects, images_of_morphisms )
     local  F;
     
-    F := AsObjectInHomCategory( CapFunctor( B, images_of_objects, images_of_morphisms ) );
+    if IsEmpty( images_of_objects ) then
+        Error( "the list of images is empty\n" );
+    fi;
+    
+    F := AsObjectInHomCategory( CapFunctor( B, images_of_objects, images_of_morphisms, CapCategory( images_of_objects[1] ) ) );
     
     F!.ValuesOnAllObjects := images_of_objects;
     F!.ValuesOnAllGeneratingMorphisms := images_of_morphisms;
@@ -706,10 +710,11 @@ InstallMethodWithCache( Hom,
         [ IsAlgebroid, IsCapCategory ],
         
   function( B, C )
-    local name, vertices, create_func_bool, create_func_object0,
+    local name, create_func_bool, create_func_object0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, preinstall, doc, prop, Hom, arrows, relations, kq, name_of_object;
+          properties, preinstall, doc, prop, Hom,
+          vertices, arrows, relations, kq, name_of_object;
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -718,8 +723,6 @@ InstallMethodWithCache( Hom,
     fi;
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
-        
-        vertices := SetOfObjects( B );
         
         create_func_bool :=
           function( name, Hom )
@@ -786,10 +789,13 @@ InstallMethodWithCache( Hom,
     ## e.g., DirectSum, KernelObject
     create_func_object :=
       function( name, Hom )
-        local B, C, name_of_object, info, oper, functorial, diagram;
+        local B, C, vertices, arrows, name_of_object, info, oper, functorial, diagram;
         
         B := Source( Hom );
         C := Range( Hom );
+        
+        vertices := SetOfObjects( B );
+        arrows := SetOfGeneratingMorphisms( B );
         
         name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
@@ -817,12 +823,12 @@ InstallMethodWithCache( Hom,
         fi;
         
         functorial := ValueGlobal( info.functorial );
-
-        if diagram = "multiple arrows" then
         
+        if diagram = "multiple arrows" then
+            
             return ## a constructor for universal objects: FiberProduct
               function( arg )
-                local eval_arg, F;
+                local eval_arg, images_of_objects, images_of_generating_morphisms, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
@@ -831,33 +837,72 @@ InstallMethodWithCache( Hom,
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
+                images_of_objects := [ ];
+                images_of_generating_morphisms := [ ];
+                
+                F!.ValuesOnAllObjects := images_of_objects;
+                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
+                
                 AddObjectFunction( F,
-                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                  function( objB )
+                    local pos;
+                    
+                    pos := Position( vertices, objB );
+                    
+                    if pos = fail then
+                        Error( objB, " not found in ", vertices );
+                    fi;
+                    
+                    if not IsBound( images_of_objects[pos] ) then
+                        images_of_objects[pos] := CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) );
+                    fi;
+                    
+                    return images_of_objects[pos];
+                    
+                end );
                 
                 AddMorphismFunction( F,
                   function( new_source, morB, new_range )
-                    local FmorB;
+                    local pos, FmorB;
+                    
+                    pos := Position( arrows, morB );
+                    
+                    if IsInt( pos ) then
+                        
+                        if not IsBound( images_of_generating_morphisms[pos] ) then
+                            
+                            FmorB := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
+                            
+                            FmorB := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
+                            
+                            images_of_generating_morphisms[pos] :=
+                              CallFuncList( functorial,
+                                      Concatenation( [ new_source ], FmorB, [ new_range ] ) );
+                            
+                        fi;
+                        
+                        return images_of_generating_morphisms[pos];
+                        
+                    fi;
                     
                     FmorB := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
                     
                     FmorB := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
                     
                     return CallFuncList( functorial,
-                                   Concatenation(
-                                           [ new_source ],
-                                           FmorB,
-                                           [ new_range ] ) );
-                    end );
+                                   Concatenation( [ new_source ], FmorB, [ new_range ] ) );
+                    
+                end );
                 
                 return AsObjectInHomCategory( Hom, F );
                 
-              end;
+            end;
             
         elif diagram = "multiple objects" then
             
             return ## a constructor for universal objects: DirectSum
               function( arg )
-                local eval_arg, F;
+                local eval_arg, images_of_objects, images_of_generating_morphisms, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
@@ -866,27 +911,70 @@ InstallMethodWithCache( Hom,
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
+                images_of_objects := [ ];
+                images_of_generating_morphisms := [ ];
+                
+                F!.ValuesOnAllObjects := images_of_objects;
+                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
+                
                 AddObjectFunction( F,
-                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                  function( objB )
+                    local pos;
+                    
+                    pos := Position( vertices, objB );
+                    
+                    if pos = fail then
+                        Error( objB, " not found in ", vertices );
+                    fi;
+                    
+                    if not IsBound( images_of_objects[pos] ) then
+                        images_of_objects[pos] := CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) );
+                    fi;
+                    
+                    return images_of_objects[pos];
+                    
+                end );
                 
                 AddMorphismFunction( F,
                   function( new_source, morB, new_range )
+                    local pos, FmorB;
+                    
+                    pos := Position( arrows, morB );
+                    
+                    if IsInt( pos ) then
+                        
+                        if not IsBound( images_of_generating_morphisms[pos] ) then
+                            
+                            images_of_generating_morphisms[pos] :=
+                              CallFuncList( functorial,
+                                      Concatenation(
+                                              [ new_source ],
+                                              List( eval_arg, F -> ApplyCell( F, morB ) ),
+                                              [ new_range ] ) );
+                            
+                        fi;
+                        
+                        return images_of_generating_morphisms[pos];
+                        
+                    fi;
+                    
                     return CallFuncList( functorial,
                                    Concatenation(
                                            [ new_source ],
                                            List( eval_arg, F -> ApplyCell( F, morB ) ),
                                            [ new_range ] ) );
-                    end );
+                    
+                end );
                 
                 return AsObjectInHomCategory( Hom, F );
                 
-              end;
+            end;
             
         else
             
             return ## a constructor for universal objects: KernelObject
               function( arg )
-                local eval_arg, F;
+                local eval_arg, images_of_objects, images_of_generating_morphisms, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
                 
@@ -895,25 +983,68 @@ InstallMethodWithCache( Hom,
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
+                images_of_objects := [ ];
+                images_of_generating_morphisms := [ ];
+                
+                F!.ValuesOnAllObjects := images_of_objects;
+                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
+                
                 AddObjectFunction( F,
-                        objB -> CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) ) );
+                  function( objB )
+                    local pos;
+                    
+                    pos := Position( vertices, objB );
+                    
+                    if pos = fail then
+                        Error( objB, " not found in ", vertices );
+                    fi;
+                    
+                    if not IsBound( images_of_objects[pos] ) then
+                        images_of_objects[pos] := CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) );
+                    fi;
+                    
+                    return images_of_objects[pos];
+                    
+                end );
                 
                 AddMorphismFunction( F,
                   function( new_source, morB, new_range )
+                    local pos, FmorB;
+                    
+                    pos := Position( arrows, morB );
+                    
+                    if IsInt( pos ) then
+                        
+                        if not IsBound( images_of_generating_morphisms[pos] ) then
+                            
+                            images_of_generating_morphisms[pos] :=
+                              CallFuncList( functorial,
+                                   Concatenation(
+                                           [ new_source ],
+                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
+                                           [ new_range ] ) );
+                            
+                        fi;
+                        
+                        return images_of_generating_morphisms[pos];
+                        
+                    fi;
+                    
                     return CallFuncList( functorial,
                                    Concatenation(
                                            [ new_source ],
                                            Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
                                            [ new_range ] ) );
-                    end );
+                    
+                end );
                 
                 return AsObjectInHomCategory( Hom, F );
                 
-              end;
+            end;
             
         fi;
         
-      end;
+    end;
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
@@ -1006,7 +1137,7 @@ InstallMethodWithCache( Hom,
     for func in skip do
         
         pos := Position( list_of_operations_to_install, func );
-        if not pos = fail then
+        if IsInt( pos ) then
             Remove( list_of_operations_to_install, pos );
         fi;
         
@@ -1096,6 +1227,7 @@ InstallMethodWithCache( Hom,
     
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         
+        vertices := SetOfObjects( B );
         arrows := SetOfGeneratingMorphisms( B );
         
         AddIsWellDefinedForMorphisms( Hom,
