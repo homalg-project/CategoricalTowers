@@ -136,7 +136,11 @@ InstallMethod( Algebroid,
     rel := Flat( rel );
     rel := Concatenation( relEndo, rel );
     
-    kq := Algebroid( PathAlgebra( kq ), rel );
+    kq := PathAlgebra( kq ) / rel;
+    
+    kq := PathAlgebra( kq ) / GroebnerBasis( IdealOfQuotient( kq ) );
+    
+    kq := Algebroid( kq );
     
     SetUnderlyingCategory( kq, C );
     

@@ -98,7 +98,8 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #! @Returns a k-linear category
 DeclareOperation( "Algebroid",
         [ IsHomalgRing, IsCapCategory ] );
-		
+#! @InsertChunk Algebroid
+
 #! @Description
 #!  Return the endomorphism relations of the
 #!  category <A>C</A>.
