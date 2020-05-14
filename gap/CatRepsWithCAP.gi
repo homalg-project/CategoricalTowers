@@ -40,7 +40,15 @@ InstallMethod( ConcreteCategoryForCAP,
   function( L )
     local C, c, objects;
     
-    C := Subcategory( FinSets, "A finite concrete category" : FinalizeCategory := false );
+    DeactivateCachingOfCategory( FinSets );
+    CapCategorySwitchLogicOff( FinSets );
+    DisableSanityChecks( FinSets );
+    
+    C := Subcategory( FinSets, "A finite concrete category" : overhead := false, FinalizeCategory := false );
+    
+    DeactivateCachingOfCategory( C );
+    CapCategorySwitchLogicOff( C );
+    DisableSanityChecks( C );
     
     SetFilterObj( C, IsFiniteConcreteCategory );
     
