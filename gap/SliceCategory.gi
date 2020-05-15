@@ -182,7 +182,7 @@ InstallMethod( SliceCategory,
         [ IsCapCategoryObject ],
         
   function( B )
-    local C, name, over_tensor_unit, category_filter,
+    local C, over_tensor_unit, name, category_filter,
           category_object_filter, category_morphism_filter,
           create_func_bool, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
@@ -190,9 +190,13 @@ InstallMethod( SliceCategory,
     
     C := CapCategory( B );
     
-    name := Concatenation( "A slice category of ", Name( C ) );
+    over_tensor_unit := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "over_tensor_unit", false );
     
-    over_tensor_unit := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "over_tensor_unit", fail );
+    if over_tensor_unit then
+        name := Concatenation( "SliceCategoryOverTensorUnit( ", Name( C ), " )" );
+    else
+        name := Concatenation( "A slice category of ", Name( C ) );
+    fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
         category_filter := IsCapSliceCategoryOverTensorUnit;
