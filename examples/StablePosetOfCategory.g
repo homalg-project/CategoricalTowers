@@ -3,7 +3,7 @@
 LoadPackage( "Locales" );
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2020.03.04" );
+LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
@@ -12,13 +12,13 @@ R := Q["x,y"];
 P := CategoryOfRows( R );
 #! Rows( Q[x,y] )
 S := SliceCategoryOverTensorUnit( P );
-#! A slice category of Rows( Q[x,y] )
+#! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 L := StablePosetOfCategory( S );
-#! Poset( A slice category of Rows( Q[x,y] ) )
-I := HomalgMatrix( "x", 1, 1, R ) / P / S / L;
+#! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+I := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S / L;
 #! An object in the stable poset given by:
 #! An object in the slice category given by: <A morphism in Rows( Q[x,y] )>
-J := HomalgMatrix( "x,y", 2, 1, R ) / P / S / L;
+J := HomalgMatrix( "[ x, y ]", 2, 1, R ) / P / S / L;
 #! An object in the stable poset given by:
 #! An object in the slice category given by: <A morphism in Rows( Q[x,y] )>
 IJ := TensorProduct( I, J );
@@ -44,7 +44,8 @@ IJqJ := InternalHom( J, IJ ); ## this is the ideal quotient IJ : J
 IJqJ = I;
 #! true
 iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
-#! <An epi-, monomorphism in Poset( A slice category of Rows( Q[x,y] ) )>
+#! <An epi-, monomorphism in Poset( SliceCategoryOverTensorUnit( \
+#!  Rows( Q[x,y] ) ) )>
 IsWellDefined( iota );
 #! true
 IsIsomorphism( iota );

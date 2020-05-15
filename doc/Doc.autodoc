@@ -17,10 +17,10 @@
 @Section Operations
 @Section Examples
 
-@Subsection PosetOfCategory
+@Subsection Poset of category
 @InsertChunk PosetOfCategory
 
-@Subsection StablePosetOfCategory
+@Subsection Stable poset of category
 @InsertChunk StablePosetOfCategory
 
 @Chapter Boolean algebras
