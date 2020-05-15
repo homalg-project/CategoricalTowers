@@ -167,11 +167,12 @@ InstallMethod( DualOverTensorUnit,
     local R;
     
     R := TensorUnit( CapCategory( J ) );
-    
+
+    ## R -> InternalHom( J, R )
     return PreCompose(
                    [ Inverse( EvaluationMorphism( R, R ) ),       ## R -> InternalHom( R, R ) ⊗ R
                      RightUnitor( InternalHom( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
-                     InternalHom( J, R ) ] );
+                     InternalHom( J, R ) ] ); ## InternalHom( R, R ) -> InternalHom( J, R )
     
 end );
 
