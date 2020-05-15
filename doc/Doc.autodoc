@@ -17,6 +17,9 @@
 @Section Operations
 @Section Examples
 
+@Subsection Ideal quotient
+@InsertChunk IdealQuotient
+
 @Subsection Poset of category
 @InsertChunk PosetOfCategory
 
