@@ -20,15 +20,16 @@ Adelman := AdelmanCategory( QRowsA );
 #! Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )
 Lazy := LazyCategory( Adelman : show_evaluation := true );
 #! LazyCategory( Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )
-a := A.a / QRowsA / Adelman / Lazy; a!.Label := "a";;
+a := A.a / QRowsA / Adelman / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
-b := A.b / QRowsA / Adelman / Lazy; b!.Label:="b";; Range( b )!.Label:="3";;
+b := A.b / QRowsA / Adelman / Lazy; SetLabel( b, "b" ); SetLabel(Range( b ), "3");
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
-c := A.c / QRowsA / Adelman / Lazy; c!.Label := "c";;
+c := A.c / QRowsA / Adelman / Lazy;
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
+SetLabel( c, "c" );
 d := CokernelProjection( a );
 #! <An epimorphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>

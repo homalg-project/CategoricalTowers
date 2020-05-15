@@ -5,3 +5,7 @@
 #
 
 ReadPackage( "LazyCategories", "gap/LazyCategory.gi");
+
+if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+    ReadPackage( "LazyCategories", "gap/Julia.gi");
+fi;

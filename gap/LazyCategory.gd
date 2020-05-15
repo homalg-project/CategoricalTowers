@@ -113,6 +113,10 @@ DeclareOperation( "LazyCategory",
 ####################################
 
 #!
+DeclareOperation( "SetLabel",
+                [ IsLazyCapCategoryCell, IsString ] );
+
+#!
 DeclareOperation( "IsEqualForCells",
                   [ IsObject, IsObject ] );
 

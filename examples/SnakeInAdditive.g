@@ -18,13 +18,13 @@ QRowsA := QuiverRows( A );
 #! QuiverRows( (Q * q) / [ 1*(a*b*c) ] )
 Lazy := LazyCategory( QRowsA : show_evaluation := true );
 #! LazyCategory( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )
-a := A.a / QRowsA / Lazy; a!.Label := "a";;
+a := A.a / QRowsA / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in
 #!  LazyCategory( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )>
-b := A.b / QRowsA / Lazy; b!.Label := "b";; Range( b )!.Label := "3";;
+b := A.b / QRowsA / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );
 #! <An evaluated morphism in
 #!  LazyCategory( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )>
-c := A.c / QRowsA / Lazy; c!.Label := "c";;
+c := A.c / QRowsA / Lazy; SetLabel( c, "c" );
 #! <An evaluated morphism in
 #!  LazyCategory( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )>
 Adelman := AdelmanCategory( Lazy );

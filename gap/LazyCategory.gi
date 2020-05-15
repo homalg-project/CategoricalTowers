@@ -60,6 +60,17 @@ InstallOtherMethod( EvaluatedCell,
   IdFunc );
 
 ##
+InstallMethod( SetLabel,
+        "for a lazy category cell and a string",
+        [ IsLazyCapCategoryCell, IsString ],
+
+  function( c, str )
+    
+    c!.Label := str;
+    
+end );
+
+##
 InstallMethod( IsEqualForCells,
         "for two CAP objects",
         [ IsCapCategoryObject, IsCapCategoryObject ],
