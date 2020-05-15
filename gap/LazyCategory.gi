@@ -136,7 +136,7 @@ InstallMethod( IsEqualForCells,
   \= );
 
 ##
-InstallMethod( AsObjectInLazyCategory,
+InstallMethodWithCache( AsObjectInLazyCategory,
         "for a lazy CAP category and a CAP object",
         [ IsLazyCapCategory, IsCapCategoryObject ],
         
@@ -204,7 +204,7 @@ InstallMethod( AsMorphismInLazyCategory,
 end );
 
 ##
-InstallMethod( AsMorphismInLazyCategory,
+InstallMethodWithCache( AsMorphismInLazyCategory,
         "for a lazy CAP category and a CAP morphism",
         [ IsLazyCapCategory, IsCapCategoryMorphism ],
         
