@@ -1,0 +1,2 @@
+DeclareOperation( "VisualizeInJulia",
+        [ IsLazyCapCategoryCell ] );
