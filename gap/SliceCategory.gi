@@ -172,7 +172,7 @@ InstallMethod( DualOverTensorUnit,
     return PreCompose(
                    [ Inverse( EvaluationMorphism( R, R ) ),       ## R -> InternalHom( R, R ) ⊗ R
                      RightUnitor( InternalHom( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
-                     InternalHom( J, R ) ] ); ## InternalHom( R, R ) -> InternalHom( J, R )
+                     InternalHom( J, R ) ] ); ## InternalHom( R, R ) -> InternalHom( R^m, R )
     
 end );
 
@@ -526,33 +526,33 @@ InstallMethod( SliceCategory,
             AddInternalHomOnObjects( S,
               function( J, I ) ## the abstraction of the ideal quotient I:J
                 
-                I := UnderlyingMorphism( I );
-                J := UnderlyingMorphism( J );
+                I := UnderlyingMorphism( I ); ## R^n -> R
+                J := UnderlyingMorphism( J ); ## R^m -> R
                 
                 return AsSliceCategoryCell(
                                ProjectionOfBiasedWeakFiberProduct(
-                                       DualOverTensorUnit( J ),
-                                       InternalHom( Source( J ), I )
+                                       DualOverTensorUnit( J ), ## R -> Hom( R^m, R )
+                                       InternalHom( Source( J ), I ) ## Hom( R^m, R^n ) -> Hom( R^m, R )
                                        ),
                                S );
                 
             end );
             
-            AddInternalHomOnMorphismsWithGivenInternalHoms( S,
+            AddInternalHomOnMorphismsWithGivenInternalHoms( S, ## I:J' = Hom( J', I ) -> Hom( J, I' ) = I':J
               function( source, phi, psi, target ) ## phi: J -> J', psi: I -> I'
                 local J, Jp, I, Ip;
                 
-                J := UnderlyingMorphism( Source( phi ) );
-                Jp := UnderlyingMorphism( Range( phi ) );
-                I := UnderlyingMorphism( Source( psi ) );
-                Ip := UnderlyingMorphism( Range( psi ) );
+                J := UnderlyingMorphism( Source( phi ) ); ## R^m -> R
+                Jp := UnderlyingMorphism( Range( phi ) ); ## R^m' -> R
+                I := UnderlyingMorphism( Source( psi ) ); ## R^n -> R
+                Ip := UnderlyingMorphism( Range( psi ) ); ## R^n' -> R
                 
                 return AsSliceCategoryCell(
                                source,
                                UniversalMorphismIntoBiasedWeakFiberProduct(
-                                       DualOverTensorUnit( J ),
-                                       InternalHom( Source( J ), Ip ),
-                                       UnderlyingMorphism( source ) ),
+                                       DualOverTensorUnit( J ), ## R -> Hom( R^m, R )
+                                       InternalHom( Source( J ), Ip ), ## Hom( R^m, R^n' ) -> Hom( R^m, R )
+                                       UnderlyingMorphism( source ) ), ## R^l -> R where l = nr_gen( I:J' )
                                target );
                 
             end );
