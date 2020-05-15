@@ -146,11 +146,15 @@ DeclareAttribute( "SliceCategory",
 DeclareAttribute( "SliceCategoryOverTensorUnit",
         IsCapCategory );
 
+#! @Arguments mor, S
+DeclareOperation( "AsSliceCategoryCell",
+        [ IsCapCategoryMorphism, IsCapSliceCategory ] );
+
 #! @Arguments mor
 DeclareAttribute( "AsSliceCategoryCell",
         IsCapCategoryMorphism );
 
-#! @Arguments mor
+#! @Arguments mor, S
 DeclareOperation( "/",
         [ IsCapCategoryMorphism, IsCapSliceCategory ] );
 

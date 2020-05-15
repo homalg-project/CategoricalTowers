@@ -56,22 +56,40 @@ InstallOtherMethod( UnderlyingCell,
 
 ##
 InstallMethod( AsSliceCategoryCell,
-        "for a CAP morphism",
-        [ IsCapCategoryMorphism ],
+        "for a CAP morphism and a CAP slice category",
+        [ IsCapCategoryMorphism, IsCapSliceCategory ],
         
-  function( morphism )
-    local S, o;
+  function( morphism, S )
+    local B, o;
     
-    S := SliceCategory( Range( morphism ) );
+    B := BaseObject( S );
+    
+    if not IsEqualForObjects( Range( morphism ), B ) then
+        Error( "the target of morphism and the base object of the slice category S are not equal\n" );
+    fi;
     
     o := rec( );
     
     ObjectifyObjectForCAPWithAttributes( o, S,
             UnderlyingMorphism, morphism,
             UnderlyingCell, Source( morphism ),
-            BaseObject, Range( morphism ) );
+            BaseObject, B );
     
     return o;
+    
+end );
+
+##
+InstallMethod( AsSliceCategoryCell,
+        "for a CAP morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( morphism )
+    local S;
+    
+    S := SliceCategory( Range( morphism ) );
+    
+    return AsSliceCategoryCell( morphism, S );
     
 end );
 
@@ -80,15 +98,7 @@ InstallMethod( \/,
         "for a CAP morphism and a CAP slice category",
         [ IsCapCategoryMorphism, IsCapSliceCategory ],
         
-  function( morphism, S )
-    
-    if not IsEqualForObjects( Range( morphism ), BaseObject( S ) ) then
-        Error( "the target of morphism and the base object of the slice category S are not equal\n" );
-    fi;
-    
-    return AsSliceCategoryCell( morphism );
-    
-end );
+  AsSliceCategoryCell );
 
 ##
 InstallMethod( AsSliceCategoryCell,
@@ -375,7 +385,7 @@ InstallMethod( SliceCategory,
         
         I := InitialObject( C );
         
-        return AsSliceCategoryCell( UniversalMorphismFromInitialObjectWithGivenInitialObject( B, I ) );
+        return AsSliceCategoryCell( UniversalMorphismFromInitialObjectWithGivenInitialObject( B, I ), S );
         
     end );
     
@@ -385,7 +395,7 @@ InstallMethod( SliceCategory,
         
         B := BaseObject( S );
         
-        return AsSliceCategoryCell( IdentityMorphism( B ) );
+        return AsSliceCategoryCell( IdentityMorphism( B ), S );
         
     end );
     
@@ -432,7 +442,7 @@ InstallMethod( SliceCategory,
                 return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
             end;
             
-            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ) );
+            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), S );
             
         end );
         
@@ -455,7 +465,7 @@ InstallMethod( SliceCategory,
                 return PreCompose( ProjectionInFactorOfFiberProduct( [ I, J ], 1 ), I );
             end;
             
-            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ) );
+            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), S );
             
         end );
         
@@ -475,7 +485,7 @@ InstallMethod( SliceCategory,
             
             L := List( L, UnderlyingMorphism );
             
-            return AsSliceCategoryCell( UniversalMorphismFromCoproduct( L ) );
+            return AsSliceCategoryCell( UniversalMorphismFromCoproduct( L ), S );
             
         end );
         
@@ -488,7 +498,7 @@ InstallMethod( SliceCategory,
         AddTensorUnit( S,
           function( )
             
-            return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ) );
+            return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ), S );
             
         end );
         
@@ -498,7 +508,8 @@ InstallMethod( SliceCategory,
             return AsSliceCategoryCell(
                            PreCompose(
                                    TensorProductOnMorphisms( UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
-                                   LeftUnitor( BaseObject( CapCategory( I ) ) ) ) );
+                                   LeftUnitor( BaseObject( CapCategory( I ) ) ) ),
+                           S );
             
         end );
         
@@ -517,7 +528,8 @@ InstallMethod( SliceCategory,
                                ProjectionOfBiasedWeakFiberProduct(
                                        DualOverTensorUnit( J ),
                                        InternalHom( Source( J ), I )
-                                       ) );
+                                       ),
+                               S );
                 
             end );
             
