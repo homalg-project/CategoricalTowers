@@ -100,7 +100,7 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
 end );
 
 ##
-InstallMethod( IsomorphismIntoCategoryOfQuiverRepresentations,
+InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
           [ IsCapHomCategory ],
   function( functors )
     local B, matrix_cat, A, field, quiver, quiver_reps, name, G;

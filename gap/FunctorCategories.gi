@@ -1309,7 +1309,7 @@ InstallMethodWithCache( Hom,
         function( F )
           local iso;
           
-          iso := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           return IsProjective( ApplyFunctor( iso, F ) );
           
@@ -1319,7 +1319,7 @@ InstallMethodWithCache( Hom,
         function( F )
           local iso;
           
-          iso := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           return IsInjective( ApplyFunctor( iso, F ) );
           
@@ -1329,7 +1329,7 @@ InstallMethodWithCache( Hom,
         function( F )
           local iso_1, iso_2;
           
-          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
           
@@ -1341,7 +1341,7 @@ InstallMethodWithCache( Hom,
         function( F )
           local iso_1, iso_2;
           
-          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
           
@@ -1353,7 +1353,7 @@ InstallMethodWithCache( Hom,
         function( F )
           local iso_1, iso_2;
           
-          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
           
@@ -1365,7 +1365,7 @@ InstallMethodWithCache( Hom,
         function( F )
           local iso_1, iso_2;
           
-          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
           
@@ -1377,7 +1377,7 @@ InstallMethodWithCache( Hom,
         function( eta_1, eta_2 )
           local iso_1, iso_2;
           
-          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
           
@@ -1389,7 +1389,7 @@ InstallMethodWithCache( Hom,
         function( eta_1, eta_2 )
           local iso_1, iso_2;
           
-          iso_1 := IsomorphismIntoCategoryOfQuiverRepresentations( Hom );
+          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
           iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
           
