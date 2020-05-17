@@ -190,3 +190,49 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
     
 end );
 
+##
+InstallMethod( YonedaEmbedding,
+          [ IsAlgebroid ],
+  function( algebroid )
+    local k, matrix_cat, algebroid_op, objs, mors, functors_cat, name, Yoneda;
+    
+    k := CommutativeRingOfLinearCategory( algebroid );
+    
+    matrix_cat := MatrixCategory( k );
+    
+    algebroid_op := AlgebroidOverOppositeAlgebra( algebroid );
+    
+    objs := List( SetOfObjects( algebroid_op ), o -> OppositePath( UnderlyingVertex( o ) ) / algebroid );
+    
+    mors := List( SetOfGeneratingMorphisms( algebroid_op ), m -> OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / algebroid );
+    
+    functors_cat := Hom( algebroid_op, matrix_cat );
+    
+    name := "Yoneda embedding functor";
+    
+    Yoneda := CapFunctor( name, algebroid, functors_cat );
+    
+    AddObjectFunction( Yoneda,
+      function( o )
+        local m;
+        
+        m := List( mors, mor -> HomStructure( mor, o ) );
+        
+        o := List( objs, obj -> HomStructure( obj, o ) );
+        
+        return AsObjectInHomCategory( algebroid_op, o, m );
+        
+    end );
+    
+    AddMorphismFunction( Yoneda,
+      function( s, m, r )
+        
+        m := List( objs, o -> HomStructure( o, m ) );
+        
+        return AsMorphismInHomCategory( s, m, r );
+        
+    end );
+    
+    return Yoneda;
+    
+end );
