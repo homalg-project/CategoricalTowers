@@ -2177,20 +2177,26 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( Opposite,
+InstallMethod( AlgebroidOverOppositeAlgebra,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],
         
   function( A )
-    local q_op, R, A_op;
+    local ring, over_Z, A_op;
     
-    q_op := OppositeQuiver( UnderlyingQuiver( A ) );
+    ring := CommutativeRingOfLinearCategory( A );
     
-    R := LeftActingDomain( UnderlyingQuiverAlgebra( A ) );
+    over_Z := false;
     
-    A_op := Algebroid( R, q_op );
+    if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
+      
+      over_Z := true;
+      
+    fi;
     
-    SetOpposite( A_op, A );
+    A_op := Algebroid( OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ), over_Z );
+    
+    SetAlgebroidOverOppositeAlgebra( A_op, A );
     
     return A_op;
     
