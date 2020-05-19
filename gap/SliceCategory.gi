@@ -170,7 +170,7 @@ InstallMethod( DualOverTensorUnit,
 
     ## R -> InternalHom( J, R )
     return PreCompose(
-                   [ Inverse( EvaluationMorphism( R, R ) ),       ## R -> InternalHom( R, R ) ⊗ R
+                   [ Inverse( EvaluationMorphism( R, R ) ), ## R -> InternalHom( R, R ) ⊗ R
                      RightUnitor( InternalHom( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
                      InternalHom( J, R ) ] ); ## InternalHom( R, R ) -> InternalHom( R^m, R )
     
@@ -582,6 +582,12 @@ InstallMethod( SliceCategoryOverTensorUnit,
         
   function( M )
     local S, finalize;
+
+    if not (HasIsMonoidalCategory( M ) and IsMonoidalCategory( M )) then
+
+        Error( Name( M ), " is not monoidal");
+
+    fi;
     
     S := SliceCategory( TensorUnit( M ) :
                  over_tensor_unit := true,
