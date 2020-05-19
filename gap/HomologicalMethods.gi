@@ -58,3 +58,117 @@ InstallMethod( RadicalInclusion,
     return embedding_of_radical;
     
 end );
+
+##
+InstallMethod( CoverElementByProjectiveObject,
+        [ IsObjectInFunctorCategory, IsCapCategoryMorphism, IsInt ],
+        
+  function ( F, l, n )
+    local Hom, algebroid, C, vertices, v, P_v, val_objs;
+    
+    Hom := CapCategory( F );
+    
+    algebroid := Source( Hom );
+    
+    C := Range( Hom );
+    
+    vertices := SetOfObjects( algebroid );
+     
+    v := vertices[ n ];
+     
+    P_v := IndecProjectiveObjects( Hom )[ n ];
+    
+    val_objs := List( vertices, u -> List( BasisOfExternalHom( v, u ), m -> PreCompose( l, F( m ) ) ) );
+    
+    val_objs := ListN(
+                  ValuesOfFunctor( P_v )[1],
+                  val_objs,
+                  ValuesOfFunctor( F )[1],
+                  { s, tau, r } -> UniversalMorphismFromDirectSumWithGivenDirectSum( C, List( tau, Source ), r, tau, s ) );
+                
+    return AsMorphismInFunctorCategoryByValues( Hom, P_v, val_objs, F );
+    
+end );
+
+##
+InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
+        [ IsObjectInFunctorCategory ],
+        
+  function ( F )
+    local Hom, matrix_cat, k, i_F, pi_i_F, pre_images, dec;
+    
+    Hom := CapCategory( F );
+    
+    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( Hom ) ) ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    matrix_cat := Range( Hom );
+    
+    k := 1 / matrix_cat;
+    
+    i_F := RadicalInclusion( F );
+    
+    pi_i_F := CokernelProjection( i_F );
+    
+    pre_images := List( ValuesOnAllObjects( pi_i_F ), m -> Lift( IdentityMorphism( Range( m ) ), m ) );
+    
+    dec :=
+      ListN( pre_images, [ 1 .. Length( pre_images ) ],
+        function( pre_image, i )
+          local m, n, D, iotas;
+          
+          n := Dimension( Source( pre_image ) );
+          
+          D := ListWithIdenticalEntries( n, k );
+          
+          iotas := List( [ 1 .. n ], j -> PreCompose( InjectionOfCofactorOfDirectSum( D, j ), pre_image ) );
+          
+          return List( iotas, iota -> CoverElementByProjectiveObject( F, iota, i ) );
+          
+        end );
+    
+        return Concatenation( dec );
+    
+end );
+
+##
+InstallMethod( DirectSumDecompositionOfProjectiveObject,
+        [ IsObjectInFunctorCategory ], # and IsProjective
+        
+  MorphismsFromDirectSumDecompositionOfProjectiveCover );
+
+##
+InstallMethod( ProjectiveCover,
+        [ IsObjectInFunctorCategory ],
+        
+  function ( F )
+    local Hom, dec, sources, D, m;
+    
+    Hom := CapCategory( F );
+    
+    dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( F );
+    
+    sources := List( dec, Source );
+    
+    if IsEmpty( sources ) then
+        
+        D := ZeroObject( Hom );
+        
+        m := [ ];
+        
+    else
+        
+        D := DirectSum( sources );
+        
+        m := List( [ 1 .. Size( sources ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( sources, i, D ) );
+        
+    fi;
+    
+    SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( Hom, List( dec, Source ), F, dec, D );
+    
+end );
