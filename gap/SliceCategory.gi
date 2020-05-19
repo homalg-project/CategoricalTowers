@@ -585,7 +585,7 @@ InstallMethod( SliceCategoryOverTensorUnit,
 
     if not (HasIsMonoidalCategory( M ) and IsMonoidalCategory( M )) then
 
-        Error( Name( M ), " is not monoidal");
+        Error( Name( M ), " is not monoidal\n");
 
     fi;
     
