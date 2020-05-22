@@ -17,7 +17,7 @@ A := QuotientOfPathAlgebra( A, [ A.abc ] );
 QRowsA := QuiverRows( A );
 #! QuiverRows( (Q * q) / [ 1*(a*b*c) ] )
 Lazy := LazyCategory( QRowsA :
-                show_evaluation := true, lift_primitive_operations := true );
+                show_evaluation := true, primitive_operations := true );
 #! LazyCategory( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )
 a := A.a / QRowsA / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in

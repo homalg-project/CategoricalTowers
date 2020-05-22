@@ -280,7 +280,7 @@ InstallMethod( LazyCategory,
   function( C )
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
-          lift_primitive_operations, list_of_operations_to_install, skip, func, pos,
+          primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, D, show_evaluation, cache, print,
           list, lazify_range_of_hom_structure, HC, finalize;
     
@@ -399,9 +399,9 @@ InstallMethod( LazyCategory,
         
     end;
     
-    lift_primitive_operations := IsIdenticalObj( ValueOption( "lift_primitive_operations" ), true );
+    primitive_operations := IsIdenticalObj( ValueOption( "primitive_operations" ), true );
     
-    if lift_primitive_operations then
+    if primitive_operations then
         list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategory( C );
     else
         list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
