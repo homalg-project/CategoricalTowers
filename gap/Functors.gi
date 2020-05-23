@@ -202,9 +202,9 @@ InstallMethod( YonedaEmbedding,
     
     algebroid_op := AlgebroidOverOppositeAlgebra( algebroid );
     
-    objs := List( SetOfObjects( algebroid_op ), o -> OppositePath( UnderlyingVertex( o ) ) / algebroid );
+    objs := SetOfObjects( algebroid_op );
     
-    mors := List( SetOfGeneratingMorphisms( algebroid_op ), m -> OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / algebroid );
+    mors := SetOfGeneratingMorphisms( algebroid_op );
     
     functors_cat := Hom( algebroid_op, matrix_cat );
     
@@ -216,9 +216,11 @@ InstallMethod( YonedaEmbedding,
       function( o )
         local m;
         
-        m := List( mors, mor -> HomStructure( mor, o ) );
+        o := OppositePath( UnderlyingVertex( o ) ) / algebroid_op;
         
-        o := List( objs, obj -> HomStructure( obj, o ) );
+        m := List( mors, mor -> HomStructure( o, mor ) );
+        
+        o := List( objs, obj -> HomStructure( o, obj ) );
         
         return AsObjectInHomCategory( algebroid_op, o, m );
         
@@ -227,7 +229,9 @@ InstallMethod( YonedaEmbedding,
     AddMorphismFunction( Yoneda,
       function( s, m, r )
         
-        m := List( objs, o -> HomStructure( o, m ) );
+        m := OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / algebroid_op;
+        
+        m := List( objs, o -> HomStructure( m, o ) );
         
         return AsMorphismInHomCategory( s, m, r );
         
@@ -236,3 +240,4 @@ InstallMethod( YonedaEmbedding,
     return Yoneda;
     
 end );
+
