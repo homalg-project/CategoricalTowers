@@ -22,7 +22,7 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/InfiniteLists
           git clone --depth 1 https://github.com/homalg-project/ComplexesCategories
           git clone --depth 1 https://github.com/homalg-project/QPA2
-          git clone --depth 1 https://github.com/homalg-project/Bialgebroids
+          git clone --depth 1 https://github.com/homalg-project/Algebroids
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor
           git clone --depth 1 https://github.com/homalg-project/FunctorCategories
           git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP
