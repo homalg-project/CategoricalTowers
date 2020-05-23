@@ -20,7 +20,7 @@ AutoDoc(
             maketest := rec( folder := ".",
                              commands :=
                              [ "LoadPackage( \"FunctorCategories\" );",
-                               "LoadPackage( \"Bialgebroids\" );",
+                               "LoadPackage( \"Algebroids\" );",
                                "LoadPackage( \"GaussForHomalg\" );",
                                "LoadPackage( \"LinearAlgebraForCAP\" );",
                              ],

@@ -18,7 +18,7 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/InfiniteLists.git
           git clone --depth 1 https://github.com/homalg-project/ComplexesForCAP.git
           git clone --depth 1 https://github.com/homalg-project/QPA2.git
-          git clone --depth 1 https://github.com/homalg-project/Bialgebroids.git
+          git clone --depth 1 https://github.com/homalg-project/Algebroids.git
           cd FunctorCategories
           echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
           echo "SetInfoLevel(InfoPackageLoading, 3);" > ~/.gap/gaprc
