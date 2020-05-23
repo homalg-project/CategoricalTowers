@@ -7,3 +7,4 @@
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gd");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gd");
 ReadPackage( "FunctorCategories", "gap/Functors.gd");
+ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gd");
