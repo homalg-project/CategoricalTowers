@@ -1,5 +1,5 @@
 #
-# Bialgebroids: Differential modules
+# Algebroids: Algebroids with extra structure
 #
 # This file is a script which compiles the package manual.
 #
@@ -19,7 +19,7 @@ AutoDoc(
 
             maketest := rec( folder := ".",
                              commands :=
-                             [ "LoadPackage( \"Bialgebroids\" );",
+                             [ "LoadPackage( \"Algebroids\" );",
                                "LoadPackage( \"GaussForHomalg\" );",
                              ],
                            ),

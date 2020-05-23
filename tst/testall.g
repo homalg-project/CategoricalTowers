@@ -1,16 +1,16 @@
 #
-# Bialgebroids: Bialgebroids with extra structure
+# Algebroids: Algebroids with extra structure
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
 #
-LoadPackage( "Bialgebroids" );
+LoadPackage( "Algebroids" );
 
 LoadPackage( "GaussForHomalg" );
 
 HOMALG_IO.show_banners := false;
 
-TestDirectory( DirectoriesPackageLibrary( "Bialgebroids", "tst" ),
+TestDirectory( DirectoriesPackageLibrary( "Algebroids", "tst" ),
   rec(
         testOptions := rec ( compareFunction := "uptowhitespace" ),
         exitGAP := true,
