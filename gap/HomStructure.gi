@@ -182,9 +182,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         
         maps := ValuesOnAllObjects( eta );
         
-        maps := Concatenation( maps, maps{ loops } );
-        
         maps := List( maps, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure );
+        
+        maps := Concatenation( maps, maps{ loops } );
         
         maps := MorphismBetweenDirectSums( [ maps ] );
         
@@ -286,9 +286,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
           return List( basis, maps ->
                       AsMorphismInHomCategory(
                           S,
-                          ListN( S_o_vals, R_o_vals, maps,
-                              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-                          ){ [ 1 .. nr_vertices ] },
+                          List( [ 1 .. nr_vertices ], i ->
+                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                S_o_vals[ i ],
+                                R_o_vals[ i ],
+                                maps[ i ] )
+                          ),
                           R
                       )
                     );
