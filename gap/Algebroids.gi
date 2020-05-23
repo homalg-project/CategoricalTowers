@@ -181,7 +181,7 @@ InstallMethod( RelationsOfAlgebroid,
     
     relations := Filtered( relations, r -> not IsZero( r ) );
     
-    return List( relations, MorphismInAlgebroid );
+    return List( relations, a -> MorphismInAlgebroid( A, a ) );
     
 end );
 
@@ -1605,19 +1605,17 @@ end );
 
 ##
 InstallMethod( MorphismInAlgebroid,
-        "an element of a path algebra",
-        [ IsPathAlgebraElement ],
+        "for an algebroid and an element of a path algebra",
+        [ IsAlgebroid, IsPathAlgebraElement ],
         
-  function( path )
-    local A, l, S, T;
+  function( A, path )
+    local l, S, T;
     
     if IsZero( path ) then
         Error( "source and target of the zero path is ambiguous\n" );
     elif not IsUniform( path ) then
         Error( "the path ", path, " is not uniform\n" );
     fi;
-    
-    A := Algebroid( AlgebraOfElement( path ) );
     
     l := LeadingPath( path );
     
@@ -1634,21 +1632,17 @@ InstallMethod( \/,
         
   function( path, A )
     
-    if not IsIdenticalObj( Algebroid( AlgebraOfElement( path ) ), A ) then
-        Error( "Wrong input!\n" );
-    fi;
-    
-    return MorphismInAlgebroid( path );
+    return MorphismInAlgebroid( A, path );
     
 end );
 
 ##
 InstallMethod( MorphismInAlgebroid,
-        "an element of a quotient of a path algebra",
-        [ IsQuotientOfPathAlgebraElement],
+        "for an algebroid and an element of a quotient of a path algebra",
+        [ IsAlgebroid, IsQuotientOfPathAlgebraElement],
         
-  function( path )
-    local A, l, S, T;
+  function( A, path )
+    local l, S, T;
     
     if IsZero( path ) then
         Error( "source and target of the zero path is ambiguous\n" );
@@ -1656,7 +1650,6 @@ InstallMethod( MorphismInAlgebroid,
         Error( "the path ", path, " is not uniform\n" );
     fi;
     
-    A := Algebroid( AlgebraOfElement( path ) );
     l := LeadingPath( Representative( path ) );
     
     S := String( Source( l ) );
@@ -1672,11 +1665,7 @@ InstallMethod( \/,
         
   function( path, A )
     
-    if not IsIdenticalObj( Algebroid( AlgebraOfElement( path ) ), A ) then
-        Error( "Wrong input!\n" );
-    fi;
-    
-    return MorphismInAlgebroid( path );
+    return MorphismInAlgebroid( A, path );
     
 end );
 

@@ -58,7 +58,7 @@ ObjectInAlgebroid(Al, ql.u) = Al.u;
 #! true
 Al.u = ql.u / Al;
 #! true
-MorphismInAlgebroid( algebra_Al.a ) = Al.a;
+MorphismInAlgebroid( Al, algebra_Al.a ) = Al.a;
 #! true
 Al.a = algebra_Al.a / Al;
 #! true
