@@ -5,7 +5,7 @@
 # metadata in PackageInfo.g.
 #
 
-LoadPackage( "Bialgebroids" );
+LoadPackage( "Algebroids" );
 
 LoadPackage( "FreydCategoriesForCAP" );
 

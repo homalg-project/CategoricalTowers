@@ -23,7 +23,7 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/InfiniteLists.git
           git clone --depth 1 https://github.com/homalg-project/ComplexesForCAP.git
           git clone --depth 1 https://github.com/homalg-project/QPA2.git
-          git clone --depth 1 https://github.com/homalg-project/Bialgebroids.git
+          git clone --depth 1 https://github.com/homalg-project/Algebroids.git
           cd LazyCategories
           TERM=dumb make ci-test
           bash <(curl -s https://codecov.io/bash)

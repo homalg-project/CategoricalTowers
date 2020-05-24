@@ -3,7 +3,7 @@
 LoadPackage( "LazyCategories" );
 
 #! @Example
-LoadPackage( "Bialgebroids" );
+LoadPackage( "Algebroids" );
 #! true
 LoadPackage( "FreydCategoriesForCAP" );
 #! true
