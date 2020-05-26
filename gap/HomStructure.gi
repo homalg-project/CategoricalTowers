@@ -253,44 +253,42 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
       ##
       AddBasisOfExternalHom( Hom,
         function( S, R )
-          local S_o_vals, R_o_vals, iota, K, D, basis, summands, direct_sum;
+          local iota, K, D, S_o_vals, R_o_vals, summands, direct_sum, iotas, basis;
           
-          S_o_vals := ValuesOnAllObjects( S );
-          
-          S_o_vals := Concatenation( S_o_vals, S_o_vals{ loops } );
-          
-          R_o_vals := ValuesOnAllObjects( R );
-          
-          R_o_vals := Concatenation( R_o_vals, R_o_vals{ loops } );
-         
           iota := KernelEmbedding( AuxiliaryMorphism( S, R ) );
           
           K := Source( iota );
           
           D := DistinguishedObjectOfHomomorphismStructure( range_category );
           
-          basis := BasisOfExternalHom( D, K );
+          S_o_vals := ValuesOnAllObjects( S );
           
-          basis := List( basis, b -> PreCompose( b, iota ) );
+          R_o_vals := ValuesOnAllObjects( R );
           
           summands := ListN( S_o_vals, R_o_vals, HomomorphismStructureOnObjects );
           
+          summands := Concatenation( summands, summands{loops} );
+          
           direct_sum := DirectSum( summands );
           
-          summands := List( [ 1 .. Size( summands ) ],
-                          i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( summands, i, direct_sum )
-                        );
+          summands := List( [ 1 .. Length( S_o_vals ) ],
+                            i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( summands, i, direct_sum )
+                            );
           
-          basis := List( basis, b -> List( summands, s -> PreCompose( b, s ) ) );
+          iotas := List( summands, s -> PreCompose( iota, s ) );
           
-          return List( basis, maps ->
+          basis := BasisOfExternalHom( D, K );
+          
+          iotas := List( iotas, iota -> List( basis, b -> PreCompose( b, iota ) ) );
+          
+          return List( [ 1 .. Dimension( K ) ], j ->
                       AsMorphismInHomCategory(
                           S,
                           List( [ 1 .. nr_vertices ], i ->
                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                                 S_o_vals[ i ],
                                 R_o_vals[ i ],
-                                maps[ i ] )
+                                iotas[i][j] )
                           ),
                           R
                       )
