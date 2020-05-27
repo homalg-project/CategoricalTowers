@@ -489,9 +489,9 @@ InstallMethod( LazyCategory,
     
     AddIsEqualForMorphismsOnMor( D,
       IsEqualForCells );
-
+    
     if CanCompute( C, "IsCongruentForMorphisms" ) then
-
+        
         if print then
             Display( "IsCongruentForMorphisms" );
         fi;
@@ -521,7 +521,7 @@ InstallMethod( LazyCategory,
         end );
         
     fi;
-
+    
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
         if print then
