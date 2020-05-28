@@ -281,7 +281,7 @@ InstallMethod( LazyCategory,
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
-          commutative_ring, properties, D, show_evaluation, cache, print,
+          commutative_ring, properties, ignore, D, show_evaluation, cache, print,
           list, lazify_range_of_hom_structure, HC, finalize;
     
     if HasName( C ) then
@@ -435,6 +435,28 @@ InstallMethod( LazyCategory,
     fi;
     
     properties := ListKnownCategoricalProperties( C );
+    
+    ignore := Filtered( properties, p -> IsInt( PositionSublist( p, "Strict" ) ) and ValueGlobal( p )( C ) );
+    
+    properties := Difference( properties, ignore );
+    
+    if not IsEmpty( ignore ) then
+        Info( InfoLazyCategory, 2, "LazyCategory cannot deal with strictness of monoidal structures yet, ",
+              "so we will be ignoring the following properties for ", C, ": ", ignore );
+        
+        if primitive_operations then
+            Append( list_of_operations_to_install,
+                    [ "AssociatorLeftToRightWithGivenTensorProducts",
+                      "AssociatorRightToLeftWithGivenTensorProducts",
+                      "LeftUnitorWithGivenTensorProduct",
+                      "RightUnitorWithGivenTensorProduct",
+                      ] );
+            
+            Sort( list_of_operations_to_install );
+            
+        fi;
+        
+    fi;
     
     properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
     
