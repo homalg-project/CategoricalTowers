@@ -3,6 +3,8 @@
 LoadPackage( "Locales" );
 
 #! @Example
+LoadPackage( "FreydCategoriesForCAP" );
+#! true
 LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
 #! true
 LoadPackage( "LazyCategories", ">= 2020.05.01" );
