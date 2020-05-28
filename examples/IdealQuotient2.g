@@ -1,4 +1,4 @@
-#! @Chunk IdealQuotient
+#! @Chunk IdealQuotient2
 
 LoadPackage( "Locales" );
 
@@ -19,7 +19,7 @@ I := KroneckerMat( K, J );
 #! <An unevaluated 4 x 1 matrix over an external ring>
 P := CategoryOfRows( R );
 #! Rows( Q[x,y] )
-P := LazyCategory( P : show_evaluation := false );
+P := LazyCategory( P : primitive_operations := true, show_evaluation := false );
 #! LazyCategory( Rows( Q[x,y] ) )
 I := I / P; SetLabel( I, "I" ); SetLabel( Source( I ), "R^i" );
 #! <An evaluated morphism in LazyCategory( Rows( Q[x,y] ) )>

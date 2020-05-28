@@ -19,6 +19,7 @@
 
 @Subsection Ideal quotient
 @InsertChunk IdealQuotient
+@InsertChunk IdealQuotient2
 
 @Subsection Poset of category
 @InsertChunk PosetOfCategory
