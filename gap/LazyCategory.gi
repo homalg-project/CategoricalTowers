@@ -953,6 +953,8 @@ InstallMethod( DigraphOfEvaluation,
     
     D := Digraph( D );
     
+    D := DigraphReverse( D );
+    
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
               local node, l, ints;
