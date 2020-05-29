@@ -21,7 +21,7 @@ I = KroneckerMat( K, J )
 
 P = CategoryOfRows( R )
 
-P = LazyCategory( P, show_evaluation = true )
+P = LazyCategory( P, primitive_operations = true, show_evaluation = true )
 
 I = I / P
 
