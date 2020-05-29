@@ -851,41 +851,42 @@ InstallGlobalFunction( CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION,
 end );
 
 ##
+InstallGlobalFunction( AreEqualForLazyCells,
+  function( a, b )
+    
+    if not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
+        return false;
+    elif not ( ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) ) then
+        return false;
+    fi;
+    
+    return IsEqualForCells( a, b );
+    
+end );
+
+##
 InstallMethod( ListOfEvaluationNodes,
         "for a cell in a lazy CAP category",
         [ IsLazyCapCategoryCell ],
 
   function( c )
-    local nodes, queue, equal, add_to_nodes, add_to_queue, children,
+    local nodes, queue, add_to_nodes, add_to_queue, children,
           children_with_multiplicity, D;
     
     nodes := [ ];
     
     queue := [ c ];
 
-    equal :=
-      function( a, b )
-        
-        if not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
-            return false;
-        elif not ( ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) ) then
-            return false;
-        fi;
-        
-        return IsEqualForCells( a, b );
-        
-    end;
-    
     add_to_nodes :=
       function( a )
-        if PositionProperty( nodes, b -> equal( a, b ) ) = fail then
+        if PositionProperty( nodes, b -> AreEqualForLazyCells( a, b ) ) = fail then
             Add( nodes, a );
         fi;
     end;
     
     add_to_queue :=
       function( a )
-        if PositionProperty( Concatenation( nodes, queue ), b -> equal( a, b ) ) = fail then
+        if PositionProperty( Concatenation( nodes, queue ), b -> AreEqualForLazyCells( a, b ) ) = fail then
             Add( queue, a );
         fi;
     end;
@@ -926,7 +927,7 @@ InstallMethod( ListOfEvaluationNodes,
         
         children := Filtered( children, IsLazyCapCategoryCell );
         
-        return List( children, child -> PositionProperty( nodes, a -> equal( child, a ) ) );
+        return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
         
     end;
     
@@ -944,22 +945,9 @@ InstallMethod( DigraphOfEvaluation,
         [ IsLazyCapCategoryCell ],
 
   function( c )
-    local nodes, equal, children_with_multiplicity, D;
+    local nodes, children_with_multiplicity, D;
     
     nodes := ListOfEvaluationNodes( c );
-    
-    equal :=
-      function( a, b )
-        
-        if not IsIdenticalObj( CapCategory( a ), CapCategory( b ) ) then
-            return false;
-        elif not ( ForAll( [ a, b ], IsCapCategoryObject ) or ForAll( [ a, b ], IsCapCategoryMorphism ) ) then
-            return false;
-        fi;
-        
-        return IsEqualForCells( a, b );
-        
-    end;
     
     children_with_multiplicity :=
       function( node )
@@ -975,7 +963,7 @@ InstallMethod( DigraphOfEvaluation,
         
         children := Filtered( children, IsLazyCapCategoryCell );
         
-        return List( children, child -> PositionProperty( nodes, a -> equal( child, a ) ) );
+        return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
         
     end;
     

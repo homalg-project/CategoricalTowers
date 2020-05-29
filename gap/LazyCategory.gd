@@ -130,4 +130,6 @@ DeclareOperation( "Visualize",
 #
 ####################################
 
+DeclareGlobalFunction( "AreEqualForLazyCells" );
+
 DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );
