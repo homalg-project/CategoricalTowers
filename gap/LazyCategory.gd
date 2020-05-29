@@ -132,4 +132,6 @@ DeclareOperation( "Visualize",
 
 DeclareGlobalFunction( "AreEqualForLazyCells" );
 
+DeclareGlobalFunction( "PositionsOfChildrenOfALazyCell" );
+
 DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );

@@ -865,13 +865,31 @@ InstallGlobalFunction( AreEqualForLazyCells,
 end );
 
 ##
+InstallGlobalFunction( PositionsOfChildrenOfALazyCell,
+  function( node, nodes )
+    local children;
+    
+    if not HasGenesisOfCellArguments( node ) then
+        return [ ];
+    fi;
+    
+    children := GenesisOfCellArguments( node );
+    
+    children := Flat( children );
+    
+    children := Filtered( children, IsLazyCapCategoryCell );
+    
+    return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
+    
+end );
+
+##
 InstallMethod( ListOfEvaluationNodes,
         "for a cell in a lazy CAP category",
         [ IsLazyCapCategoryCell ],
 
   function( c )
-    local nodes, queue, add_to_nodes, add_to_queue, children,
-          children_with_multiplicity, D;
+    local nodes, queue, add_to_nodes, add_to_queue, children, D;
     
     nodes := [ ];
     
@@ -913,25 +931,7 @@ InstallMethod( ListOfEvaluationNodes,
     
     nodes := Reversed( nodes );
     
-    children_with_multiplicity :=
-      function( node )
-        local children;
-        
-        if not HasGenesisOfCellArguments( node ) then
-            return [ ];
-        fi;
-        
-        children := GenesisOfCellArguments( node );
-        
-        children := Flat( children );
-        
-        children := Filtered( children, IsLazyCapCategoryCell );
-        
-        return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
-        
-    end;
-    
-    D := List( nodes, children_with_multiplicity );
+    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( node, nodes ) );
     
     D := Digraph( D );
     
@@ -945,29 +945,11 @@ InstallMethod( DigraphOfEvaluation,
         [ IsLazyCapCategoryCell ],
 
   function( c )
-    local nodes, children_with_multiplicity, D;
+    local nodes, D;
     
     nodes := ListOfEvaluationNodes( c );
     
-    children_with_multiplicity :=
-      function( node )
-        local children;
-        
-        if not HasGenesisOfCellArguments( node ) then
-            return [ ];
-        fi;
-        
-        children := GenesisOfCellArguments( node );
-        
-        children := Flat( children );
-        
-        children := Filtered( children, IsLazyCapCategoryCell );
-        
-        return List( children, child -> PositionProperty( nodes, a -> AreEqualForLazyCells( child, a ) ) );
-        
-    end;
-    
-    D := List( nodes, children_with_multiplicity );
+    D := List( nodes, node -> PositionsOfChildrenOfALazyCell( node, nodes ) );
     
     D := Digraph( D );
     
