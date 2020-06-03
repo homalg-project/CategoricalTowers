@@ -996,8 +996,33 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         [ IsLazyCapCategoryCell ],
         
   function( c )
+    local out, str, i, j, eval;
     
-    return DotVertexLabelledDigraph( DigraphOfEvaluation( c ) );
+    eval := DigraphOfEvaluation( c );
+
+    # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
+    out  := OutNeighbours( eval );
+    str  := "//dot\n";
+
+    Append( str, "digraph hgn{\n" );
+    Append( str, "node [shape=rect]\n" );
+
+    for i in DigraphVertices( eval ) do
+      Append( str, String(i) );
+      Append( str, " [label=\"" );
+      Append( str, String( DigraphVertexLabel( eval, i ) ) );
+      Append( str, "\"]\n" );
+    od;
+
+    for i in DigraphVertices( eval ) do
+      for j in out[i] do
+        Append( str, Concatenation( String(i), " -> ", String(j), "\n" ) );
+      od;
+    od;
+    
+    Append( str, "}\n" );
+    
+    return str;
     
 end );
 
