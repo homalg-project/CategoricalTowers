@@ -519,20 +519,21 @@ InstallMethod( SliceCategory,
         end );
         
         if HasIsSymmetricClosedMonoidalCategory( C ) and IsSymmetricClosedMonoidalCategory( C ) and
-           CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
+           CanCompute( C, "UniversalMorphismIntoWeakBiFiberProduct" ) then
             
             SetIsSymmetricClosedMonoidalCategory( S, true );
             
             AddInternalHomOnObjects( S,
               function( J, I ) ## the abstraction of the ideal quotient I:J
                 
-                I := UnderlyingMorphism( I ); ## R^n -> R
-                J := UnderlyingMorphism( J ); ## R^m -> R
+                I := UnderlyingMorphism( I ); ## R^i -> R
+                J := UnderlyingMorphism( J ); ## R^j -> R
                 
                 return AsSliceCategoryCell(
-                               ProjectionOfBiasedWeakFiberProduct(
-                                       DualOverTensorUnit( J ), ## R -> Hom( R^m, R )
-                                       InternalHom( Source( J ), I ) ## Hom( R^m, R^n ) -> Hom( R^m, R )
+                               ## ProjectionOfBiasedWeakFiberProduct(
+                               ProjectionInFirstFactorOfWeakBiFiberProduct(
+                                       DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
+                                       InternalHom( Source( J ), I ) ## Hom( R^j, R^i ) -> Hom( R^j, R )
                                        ),
                                S );
                 
@@ -540,19 +541,28 @@ InstallMethod( SliceCategory,
             
             AddInternalHomOnMorphismsWithGivenInternalHoms( S, ## I:J' = Hom( J', I ) -> Hom( J, I' ) = I':J
               function( source, phi, psi, target ) ## phi: J -> J', psi: I -> I'
-                local J, Jp, I, Ip;
+                local J, Jp, I, Ip, tau1, tau2;
                 
-                J := UnderlyingMorphism( Source( phi ) ); ## R^m -> R
-                Jp := UnderlyingMorphism( Range( phi ) ); ## R^m' -> R
-                I := UnderlyingMorphism( Source( psi ) ); ## R^n -> R
-                Ip := UnderlyingMorphism( Range( psi ) ); ## R^n' -> R
+                J := UnderlyingMorphism( Source( phi ) ); ## R^j -> R
+                Jp := UnderlyingMorphism( Range( phi ) ); ## R^j' -> R
+                I := UnderlyingMorphism( Source( psi ) ); ## R^i -> R
+                Ip := UnderlyingMorphism( Range( psi ) ); ## R^i' -> R
+                
+                tau1 := UnderlyingMorphism( source ); ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
+                tau2 := PreCompose(                   ## R^(i:j') -> Hom( R^j, R^i' ),	where i:j' = nr_gen( I:J' )
+                                ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j') -> Hom( R^j', R^i ), where i:j' = nr_gen( I:J' )
+                                        DualOverTensorUnit( Jp ),         ## R -> Hom( R^j', R )
+                                        InternalHom( Source( Jp ), I ) ),  ## Hom( R^j', R^i ) -> Hom( R^j', R )
+                                InternalHom( phi, psi ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
                 
                 return AsSliceCategoryCell(
                                source,
-                               UniversalMorphismIntoBiasedWeakFiberProduct(
-                                       DualOverTensorUnit( J ), ## R -> Hom( R^m, R )
-                                       InternalHom( Source( J ), Ip ), ## Hom( R^m, R^n' ) -> Hom( R^m, R )
-                                       UnderlyingMorphism( source ) ), ## R^l -> R where l = nr_gen( I:J' )
+                               ##UniversalMorphismIntoBiasedWeakFiberProduct(
+                               UniversalMorphismIntoWeakBiFiberProduct(
+                                       DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
+                                       InternalHom( Source( J ), Ip ), ## Hom( R^j, R^i' ) -> Hom( R^j, R )
+                                       tau1,   ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
+                                       tau2 ), ## R^(i:j') -> Hom( R^j, R^i' ), 	where i:j' = nr_gen( I:J' )
                                target );
                 
             end );
