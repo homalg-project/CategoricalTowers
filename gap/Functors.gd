@@ -16,3 +16,5 @@ DeclareAttribute( "IsomorphismOntoQuiverRows", IsAdditiveClosureCategory );
 DeclareAttribute( "IsomorphismFromAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
 
 DeclareAttribute( "IsomorphismOntoAdditiveClosureOfAlgebroid", IsQuiverRowsCategory );
+
+DeclareAttribute( "ProjectionFromAlgebroidOfPathAlgebra", IsAlgebroid );

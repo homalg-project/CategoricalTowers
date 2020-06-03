@@ -257,3 +257,43 @@ InstallMethod( IsomorphismOntoAdditiveClosureOfAlgebroid,
     fi;
     
 end );
+
+##
+InstallMethod( ProjectionFromAlgebroidOfPathAlgebra,
+          [ IsAlgebroid ],
+  function( algebroid )
+    local A, kQ, path_algebroid, F;
+    
+    A := UnderlyingQuiverAlgebra( algebroid );
+    
+    kQ := PathAlgebra( A );
+    
+    if IsIdenticalObj( A, kQ ) then
+      
+      return IdentityFunctor( algebroid );
+      
+    fi;
+    
+    path_algebroid := Algebroid( kQ );
+    
+    F := CapFunctor( "Projection functor", path_algebroid, algebroid );
+    
+    AddObjectFunction( F,
+      o -> ObjectInAlgebroid( algebroid, UnderlyingVertex( o ) )
+    );
+    
+    AddMorphismFunction( F,
+      { s, m, r } -> MorphismInAlgebroid(
+                        s,
+                        QuotientOfPathAlgebraElement(
+                            A,
+                            UnderlyingQuiverAlgebraElement( m )
+                          ),
+                        r
+                      )
+    );
+    
+    return F;
+    
+end );
+
