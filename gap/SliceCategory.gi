@@ -567,6 +567,58 @@ InstallMethod( SliceCategory,
                 
             end );
             
+            AddTensorProductToInternalHomAdjunctionMap( S,
+              function( K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
+                local I, source, target, tau2;
+                
+                I := Range( f );
+                
+                source := K;
+                target := InternalHom( J, I );
+                
+                K := UnderlyingMorphism( K ); ## R^k -> R
+                J := UnderlyingMorphism( J ); ## R^j -> R
+                I := UnderlyingMorphism( I ); ## R^i -> R
+                
+                tau2 := TensorProductToInternalHomAdjunctionMap( Source( K ), Source( J ), UnderlyingCell( f ) );
+                
+                return AsSliceCategoryCell(
+                               source,
+                               UniversalMorphismIntoWeakBiFiberProduct(
+                                       DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
+                                       InternalHom( Source( J ), I ), ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                                       K,   ## R^k -> R,
+                                       tau2 ), ## R^k -> Hom( R^j, R^i )
+                               target );
+                
+            end );
+            
+            AddInternalHomToTensorProductAdjunctionMap( S,
+              function( J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
+                local K, source, target, tau2;
+                
+                K := Source( g );
+                
+                source := TensorProductOnObjects( K, J );
+                target := I;
+                
+                K := UnderlyingMorphism( K ); ## R^k -> R
+                J := UnderlyingMorphism( J ); ## R^j -> R
+                I := UnderlyingMorphism( I ); ## R^i -> R
+
+                g := PreCompose(
+                             UnderlyingCell( g ),
+                             ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j) -> Hom( R^j, R^i ), where i:j = nr_gen( I:J )
+                                     DualOverTensorUnit( J ),              ## R -> Hom( R^j, R )
+                                     InternalHom( Source( J ), I ) ) );    ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                
+                return AsSliceCategoryCell(
+                               source,
+                               InternalHomToTensorProductAdjunctionMap( Source( J ), Source( I ), g ), ## f: R^k ⊗ R^j -> R^i
+                               target );
+                
+            end );
+            
         fi;
         
     fi;
