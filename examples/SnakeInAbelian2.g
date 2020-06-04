@@ -12,7 +12,7 @@ Q := HomalgFieldOfRationals( );
 #! Q
 A := PathAlgebra( Q, snake_quiver );
 #! Q * q
-A := QuotientOfPathAlgebra( A, [ A.abc ] );
+A := A / [ A.abc ];
 #! (Q * q) / [ 1*(a*b*c) ]
 QRowsA := QuiverRows( A );
 #! QuiverRows( (Q * q) / [ 1*(a*b*c) ] )
@@ -24,7 +24,7 @@ Lazy := LazyCategory( Adelman :
 a := A.a / QRowsA / Adelman / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
-b := A.b / QRowsA / Adelman / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "3" );
+b := A.b / QRowsA / Adelman / Lazy; SetLabel( b, "b" ); SetLabel(Range( b ), "3");
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
 c := A.c / QRowsA / Adelman / Lazy; SetLabel( c, "c" );
