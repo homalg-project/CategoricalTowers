@@ -24,7 +24,7 @@ InstallMethod( EvaluatedCell,
     C!.evaluations := count;
     
     if show then
-        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluting in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
     else
         Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
@@ -32,7 +32,7 @@ InstallMethod( EvaluatedCell,
     result := CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ), List( GenesisOfCellArguments( c ), EvaluatedCell ) );
 
     if show then
-        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluted  in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
     else
         Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
@@ -579,7 +579,7 @@ InstallMethod( LazyCategory,
                 C!.evaluations := count;
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluting in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
                     Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
@@ -588,7 +588,7 @@ InstallMethod( LazyCategory,
                                 mor -> AsMorphismInLazyCategory( a, mor, b ) );
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluted  in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
                     Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
@@ -612,7 +612,7 @@ InstallMethod( LazyCategory,
                 C!.evaluations := count;
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluting in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
                     Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
@@ -622,7 +622,7 @@ InstallMethod( LazyCategory,
                                   List( L, EvaluatedCell ) );
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluted  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
                     Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
