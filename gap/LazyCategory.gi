@@ -477,6 +477,41 @@ InstallMethod( LazyCategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
+    AddPreCompose( D,
+      [ 
+        [ function( phi, psi )
+            local composition;
+            
+            return AsMorphismInLazyCategory( Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
+            
+        end, [ , ] ],
+        
+        [ function( left_morphism, identity_morphism )
+              
+              return left_morphism;
+              
+          end, [ , IsIdenticalToIdentityMorphism ] ],
+        
+        [ function( identity_morphism, right_morphism )
+              
+              return right_morphism;
+              
+          end, [ IsIdenticalToIdentityMorphism, ] ],
+        
+        [ function( left_morphism, zero_morphism )
+              
+              return ZeroMorphism( Source( left_morphism ), Range( zero_morphism ) );
+              
+          end, [ , IsIdenticalToZeroMorphism ] ],
+        
+        [ function( zero_morphism, right_morphism )
+              
+              return ZeroMorphism( Source( zero_morphism ), Range( right_morphism ) );
+              
+          end, [ IsIdenticalToZeroMorphism, ] ],
+      ]
+    );
+    
     SetUnderlyingCategory( D, C );
     
     show_evaluation := IsIdenticalObj( ValueOption( "show_evaluation" ), true );
