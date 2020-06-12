@@ -955,9 +955,11 @@ InstallMethod( DigraphOfEvaluation,
     
     D := DigraphReverse( D );
     
+    D!.EdgeLabels := [ ];
+    
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
-              local node, l, ints;
+              local node, l, ints, children, c;
               
               node := nodes[i];
               
@@ -983,6 +985,18 @@ InstallMethod( DigraphOfEvaluation,
               l := Concatenation( "[", String( i ), "]\n", l );
               
               SetDigraphVertexLabel( D, i, l );
+              
+              children := PositionsOfChildrenOfALazyCell( node, nodes );
+              
+              c := Length( children );
+
+              D!.EdgeLabels[i] := [ ];
+              
+              if c = 1 or Length( Set( children ) ) = 1 then
+                  D!.EdgeLabels[i,children[1]] := "";
+              else
+                  Perform( [ 1 .. c ], function( j ) D!.EdgeLabels[i, children[j]] := String( j ); end );
+              fi;
               
           end );
           
@@ -1016,7 +1030,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 
     for i in DigraphVertices( eval ) do
       for j in out[i] do
-        Append( str, Concatenation( String(i), " -> ", String(j), "\n" ) );
+        Append( str, Concatenation( String(i), " -> ", String(j), " [ label=\"", eval!.EdgeLabels[j, i], "\" ]\n" ) );
       od;
     od;
     
