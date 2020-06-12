@@ -1,4 +1,4 @@
-#! @Chunk SnakeInAbelian2
+#! @Chunk SnakeInFreeAbelian
 
 LoadPackage( "LazyCategories" );
 
@@ -18,8 +18,7 @@ QRowsA := QuiverRows( A );
 #! QuiverRows( (Q * q) / [ 1*(a*b*c) ] )
 Adelman := AdelmanCategory( QRowsA );
 #! Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) )
-Lazy := LazyCategory( Adelman :
-                show_evaluation := true, primitive_operations := true );
+Lazy := LazyCategory( Adelman : show_evaluation := true );
 #! LazyCategory( Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )
 a := A.a / QRowsA / Adelman / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in LazyCategory(
