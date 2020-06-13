@@ -12,11 +12,17 @@ Q := HomalgFieldOfRationals( );
 id := HomalgIdentityMatrix( 8, Q );
 #! <An unevaluated 8 x 8 identity matrix over an internal ring>
 a := CertainColumns( CertainRows( id, [ 1, 2, 3 ] ), [ 2, 3, 4, 5 ] );
-#! <An unevaluated 3 x 4 matrix over an internal ring>
+#! <An unevaluated non-zero 3 x 4 matrix over an internal ring>
 b := CertainColumns( CertainRows( id, [ 1, 2, 3, 4 ] ), [ 2, 3, 4, 5, 6 ] );
-#! <An unevaluated 4 x 5 matrix over an internal ring>
+#! <An unevaluated non-zero 4 x 5 matrix over an internal ring>
 c := CertainColumns( CertainRows( id, [ 1, 2, 3, 4, 5 ] ), [ 3, 4, 5, 6, 7, 8 ] );
-#! <An unevaluated 5 x 6 matrix over an internal ring>
+#! <An unevaluated non-zero 5 x 6 matrix over an internal ring>
+IsZero( a * b );
+#! false
+IsZero( b * c );
+#! false
+IsZero( a * b * c );
+#! true
 Qmat := MatrixCategory( Q );
 #! Category of matrices over Q
 Lazy := LazyCategory( Qmat :
