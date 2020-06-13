@@ -1,4 +1,4 @@
-#! @Chunk SnakeInAbelian2
+#! @Chunk SnakeInAbelianPrimitive
 
 LoadPackage( "LazyCategories" );
 

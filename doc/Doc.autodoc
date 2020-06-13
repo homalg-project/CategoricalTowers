@@ -6,22 +6,22 @@
 @InsertChunk SnakeInAbelian
 
 @Subsection Disassembling the snake in the Abelian category (only lift primitve operations)
-@InsertChunk SnakeInAbelian2
+@InsertChunk SnakeInAbelianPrimitive
 
 @Subsection Disassembling the snake in the free Abelian category
 @InsertChunk SnakeInFreeAbelian
 
 @Subsection Disassembling the snake in the free Abelian category (only lift primitve operations)
-@InsertChunk SnakeInFreeAbelian2
+@InsertChunk SnakeInFreeAbelianPrimitive
 
 @Subsection Disassembling the snake in an underlying additive category
 @InsertChunk SnakeInAdditive
 
 @Subsection Disassembling the snake in an underlying additive category (only lift primitve operations)
-@InsertChunk SnakeInAdditive2
+@InsertChunk SnakeInAdditivePrimitive
 
 @Subsection Disassembling the snake in an underlying additive category (different model)
-@InsertChunk SnakeInAdditive3
+@InsertChunk SnakeInAdditiveClosureOfAlgebroid
 
 @Section GAP categories
 @Section Global variables

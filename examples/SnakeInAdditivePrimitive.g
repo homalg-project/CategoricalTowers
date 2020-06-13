@@ -1,4 +1,4 @@
-#! @Chunk SnakeInAdditive2
+#! @Chunk SnakeInAdditivePrimitive
 
 LoadPackage( "LazyCategories" );
 

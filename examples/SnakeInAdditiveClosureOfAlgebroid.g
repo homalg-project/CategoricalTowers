@@ -1,4 +1,4 @@
-#! @Chunk SnakeInAdditive3
+#! @Chunk SnakeInAdditiveClosureOfAlgebroid
 
 LoadPackage( "LazyCategories" );
 
