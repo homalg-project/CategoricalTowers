@@ -7,6 +7,7 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP" );
 #! true
+SwitchGeneralizedMorphismStandard( "cospan" );
 Q := HomalgFieldOfRationals( );
 #! Q
 id := HomalgIdentityMatrix( 8, Q );
@@ -34,12 +35,6 @@ b := b / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "C" );
 #! <An evaluated morphism in LazyCategory( Category of matrices over Q )>
 c := c / Lazy; SetLabel( c, "c" );
 #! <An evaluated morphism in LazyCategory( Category of matrices over Q )>
-IsZero( a * b * c );
-#! 1.	-> evaluating in Category of matrices over Q............: PreCompose
-#! 2.	 -> evaluating in Category of matrices over Q............: PreCompose
-#! 2.	 <- evaluated  in Category of matrices over Q............: PreCompose
-#! 1.	<- evaluated  in Category of matrices over Q............: PreCompose
-#! true
 d := CokernelProjection( a );
 #! <An epimorphism in LazyCategory( Category of matrices over Q )>
 e := CokernelColift( a, PreCompose( b, c ) );
@@ -54,22 +49,22 @@ i := CokernelProjection( h );
 #! <An epimorphism in LazyCategory( Category of matrices over Q )>
 ff := AsGeneralizedMorphism( f );
 #! <A morphism in Generalized morphism category of
-#!  LazyCategory( Category of matrices over Q )>
+#!  LazyCategory( Category of matrices over Q ) by cospan>
 dd := AsGeneralizedMorphism( d );
 #! <A morphism in Generalized morphism category of
-#!  LazyCategory( Category of matrices over Q )>
+#!  LazyCategory( Category of matrices over Q ) by cospan>
 bb := AsGeneralizedMorphism( b );
 #! <A morphism in Generalized morphism category of
-#!  LazyCategory( Category of matrices over Q )>
+#!  LazyCategory( Category of matrices over Q ) by cospan>
 gg := AsGeneralizedMorphism( g );
 #! <A morphism in Generalized morphism category of
-#!  LazyCategory( Category of matrices over Q )>
+#!  LazyCategory( Category of matrices over Q ) by cospan>
 ii := AsGeneralizedMorphism( i );
 #! <A morphism in Generalized morphism category of
-#!  LazyCategory( Category of matrices over Q )>
+#!  LazyCategory( Category of matrices over Q ) by cospan>
 ss := PreCompose( [ ff, PseudoInverse( dd ), bb, PseudoInverse( gg ), ii ] );
 #! <A morphism in Generalized morphism category of
-#!  LazyCategory( Category of matrices over Q )>
+#!  LazyCategory( Category of matrices over Q ) by cospan>
 s := HonestRepresentative( ss );
 #! <A morphism in LazyCategory( Category of matrices over Q )>
 j := KernelObjectFunctorial( b, d, e );
