@@ -156,7 +156,7 @@ InstallMethod( RelationsOfEndomorphisms,
         [ IsHomalgRing and IsCommutative, IsFiniteConcreteCategory ],
         
   function( k, C )
-    local objects, gmorphisms, q, kq, RelationsOfEndomorphisms,
+    local objects, gmorphisms, q, kq, relation_of_enomorphism,
           arrows, endos, vertices, i, mor, powers, m, n, foundEqual, relsEndo;
     
     objects := SetOfObjects( C );
@@ -164,7 +164,7 @@ InstallMethod( RelationsOfEndomorphisms,
     q := RightQuiverFromConcreteCategory( C );
     kq := PathAlgebra( k, q );
     
-    RelationsOfEndomorphisms := function(kq, a, m, n)
+    relation_of_enomorphism := function(kq, a, m, n)
         local rel, one;
         rel := [];
         if m = 0 then
@@ -203,7 +203,7 @@ InstallMethod( RelationsOfEndomorphisms,
             while not foundEqual do
                 if IsCongruentForMorphisms( mor^(m+n), mor^m ) then
                     Add( relsEndo,
-                         RelationsOfEndomorphisms( kq, arrows[i], m, n ) );
+                         relation_of_enomorphism( kq, arrows[i], m, n ) );
                     foundEqual := true;
                 fi;
                 n := n+1;
