@@ -990,11 +990,11 @@ InstallMethod( DigraphOfEvaluation,
     
     D := DigraphReverse( D );
     
-    D!.EdgeLabels := [ ];
+    D!.list_of_children := [ ];
     
     Perform( [ 1 .. Length( nodes ) ],
             function( i )
-              local node, l, ints, children, c;
+              local node, l, ints;
               
               node := nodes[i];
               
@@ -1021,17 +1021,7 @@ InstallMethod( DigraphOfEvaluation,
               
               SetDigraphVertexLabel( D, i, l );
               
-              children := PositionsOfChildrenOfALazyCell( node, nodes );
-              
-              c := Length( children );
-
-              D!.EdgeLabels[i] := [ ];
-              
-              if c = 1 or Length( Set( children ) ) = 1 then
-                  D!.EdgeLabels[i,children[1]] := "";
-              else
-                  Perform( [ 1 .. c ], function( j ) D!.EdgeLabels[i, children[j]] := String( j ); end );
-              fi;
+              D!.list_of_children[i] := PositionsOfChildrenOfALazyCell( node, nodes );
               
           end );
           
@@ -1045,28 +1035,37 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         [ IsLazyCapCategoryCell ],
         
   function( c )
-    local out, str, i, j, eval;
+    local D, str, i, j, list_of_children, children, l;
     
-    eval := DigraphOfEvaluation( c );
-
+    D := DigraphOfEvaluation( c );
+    
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
-    out  := OutNeighbours( eval );
     str  := "//dot\n";
-
+    
     Append( str, "digraph hgn{\n" );
     Append( str, "node [shape=rect]\n" );
 
-    for i in DigraphVertices( eval ) do
-      Append( str, String(i) );
-      Append( str, " [label=\"" );
-      Append( str, String( DigraphVertexLabel( eval, i ) ) );
-      Append( str, "\"]\n" );
+    for i in DigraphVertices( D ) do
+        Append( str, String(i) );
+        Append( str, " [label=\"" );
+        Append( str, String( DigraphVertexLabel( D, i ) ) );
+        Append( str, "\"]\n" );
     od;
-
-    for i in DigraphVertices( eval ) do
-      for j in out[i] do
-        Append( str, Concatenation( String(i), " -> ", String(j), " [ label=\"", eval!.EdgeLabels[j, i], "\" ]\n" ) );
-      od;
+    
+    list_of_children := D!.list_of_children;
+    
+    for i in DigraphVertices( D ) do
+        children := list_of_children[i];
+        l := Length( children );
+        if l > 1 and Length( Set( children ) ) > 1 then
+            for j in [ 1 .. l ] do
+                Append( str, Concatenation( String(children[j]), " -> ", String(i), " [ label=\"", String(j), "\" ]\n" ) );
+            od;
+        else
+            for j in [ 1 .. l ] do
+                Append( str, Concatenation( String(children[j]), " -> ", String(i), " \n" ) );
+            od;
+        fi;
     od;
     
     Append( str, "}\n" );
