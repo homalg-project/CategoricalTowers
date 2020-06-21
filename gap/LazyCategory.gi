@@ -281,8 +281,8 @@ InstallMethod( LazyCategory,
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
-          commutative_ring, properties, ignore, D, show_evaluation, cache, print,
-          list, lazify_range_of_hom_structure, HC, finalize;
+          commutative_ring, properties, ignore, D, optimize, show_evaluation,
+          cache, print, list, lazify_range_of_hom_structure, HC, finalize;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -477,40 +477,50 @@ InstallMethod( LazyCategory,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
     
-    AddPreCompose( D,
-      [ 
-        [ function( phi, psi )
-            local composition;
+    optimize := ValueOption( "optimize" );
+    
+    if not ( IsInt( optimize ) and optimize >= 0 ) then
+        optimize := 1;
+    fi;
+    
+    if optimize > 0 then
+        
+        AddPreCompose( D,
+          [ 
+            [ function( phi, psi )
+                local composition;
+                
+                return AsMorphismInLazyCategory( Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
+                
+            end, [ , ] ],
             
-            return AsMorphismInLazyCategory( Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
+            [ function( left_morphism, identity_morphism )
+                
+                return left_morphism;
+              
+            end, [ , IsIdenticalToIdentityMorphism ] ],
             
-        end, [ , ] ],
+            [ function( identity_morphism, right_morphism )
+                
+                return right_morphism;
+                
+              end, [ IsIdenticalToIdentityMorphism, ] ],
+            
+            [ function( left_morphism, zero_morphism )
+                
+                return ZeroMorphism( Source( left_morphism ), Range( zero_morphism ) );
+                
+              end, [ , IsIdenticalToZeroMorphism ] ],
+            
+            [ function( zero_morphism, right_morphism )
+                
+                return ZeroMorphism( Source( zero_morphism ), Range( right_morphism ) );
+                
+              end, [ IsIdenticalToZeroMorphism, ] ],
+          ]
+        );
         
-        [ function( left_morphism, identity_morphism )
-              
-              return left_morphism;
-              
-          end, [ , IsIdenticalToIdentityMorphism ] ],
-        
-        [ function( identity_morphism, right_morphism )
-              
-              return right_morphism;
-              
-          end, [ IsIdenticalToIdentityMorphism, ] ],
-        
-        [ function( left_morphism, zero_morphism )
-              
-              return ZeroMorphism( Source( left_morphism ), Range( zero_morphism ) );
-              
-          end, [ , IsIdenticalToZeroMorphism ] ],
-        
-        [ function( zero_morphism, right_morphism )
-              
-              return ZeroMorphism( Source( zero_morphism ), Range( right_morphism ) );
-              
-          end, [ IsIdenticalToZeroMorphism, ] ],
-      ]
-    );
+    fi;
     
     SetUnderlyingCategory( D, C );
     
