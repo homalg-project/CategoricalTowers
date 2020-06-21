@@ -30,7 +30,7 @@ Lazy := LazyCategory( Qmat : show_evaluation := true );
 #! LazyCategory( Category of matrices over Q )
 a := a / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in LazyCategory( Category of matrices over Q )>
-b := b / Lazy; SetLabel( b, "b" ); SetLabel( Range( b ), "C" );
+b := b / Lazy; SetLabel( b, "b" );
 #! <An evaluated morphism in LazyCategory( Category of matrices over Q )>
 c := c / Lazy; SetLabel( c, "c" );
 #! <An evaluated morphism in LazyCategory( Category of matrices over Q )>

@@ -23,7 +23,7 @@ Lazy := LazyCategory( Adelman : show_evaluation := true );
 a := A.a / QRowsA / Adelman / Lazy; SetLabel( a, "a" );
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
-b := A.b / QRowsA / Adelman / Lazy; SetLabel( b, "b" ); SetLabel(Range( b ), "3");
+b := A.b / QRowsA / Adelman / Lazy; SetLabel( b, "b" );
 #! <An evaluated morphism in LazyCategory(
 #!  Adelman category( QuiverRows( (Q * q) / [ 1*(a*b*c) ] ) ) )>
 c := A.c / QRowsA / Adelman / Lazy; SetLabel( c, "c" );
