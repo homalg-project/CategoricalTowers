@@ -567,6 +567,94 @@ InstallMethod( LazyCategory,
             
         end );
         
+        AddFiberProduct( D,
+          function( diagram )
+            local ess;
+            
+            ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            
+            if IsEmpty( ess ) then
+                ess := diagram[1];
+            fi;
+            
+            if Length( ess ) = 1 then
+                return Source( ess[1] );
+            fi;
+            
+            return AsObjectInLazyCategory( D, "FiberProduct", [ diagram ] );
+            
+        end );
+        
+        AddProjectionInFactorOfFiberProductWithGivenFiberProduct( D,
+          function( diagram, k, P )
+            local pos, mor;
+            
+            pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            
+            if IsEmpty( pos ) then
+                pos := [ 1 ];
+            fi;
+            
+            if Length( pos ) = 1 then
+                
+                mor := diagram[pos[1]];
+                
+                if k = pos[1] then
+                    return IdentityMorphism( Source( mor ) );
+                fi;
+                
+                return mor;
+                
+            fi;
+            
+            return AsMorphismInLazyCategory( P, "ProjectionInFactorOfFiberProductWithGivenFiberProduct", [ diagram, k, P ], Source( diagram[k] ) );
+            
+        end );
+        
+        AddPushout( D,
+          function( diagram )
+            local ess;
+            
+            ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            
+            if IsEmpty( ess ) then
+                ess := diagram[1];
+            fi;
+            
+            if Length( ess ) = 1 then
+                return Range( ess[1] );
+            fi;
+            
+            return AsObjectInLazyCategory( D, "Pushout", [ diagram ] );
+            
+        end );
+        
+        AddInjectionOfCofactorOfPushoutWithGivenPushout( D,
+          function( diagram, k, I )
+            local pos, mor;
+            
+            pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            
+            if IsEmpty( pos ) then
+                pos := [ 1 ];
+            fi;
+            
+            if Length( pos ) = 1 then
+                
+                mor := diagram[pos[1]];
+                
+                if k = pos[1] then
+                    return IdentityMorphism( Range( mor ) );
+                fi;
+                
+                return mor;
+                
+            fi;
+            
+            return AsMorphismInLazyCategory( Range( diagram[k] ), "InjectionOfCofactorOfPushoutWithGivenPushout", [ diagram, k, I ], I );
+            
+        end );
+        
     fi;
     
     SetUnderlyingCategory( D, C );
