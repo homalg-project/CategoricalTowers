@@ -281,8 +281,8 @@ InstallMethod( LazyCategory,
     local name, create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
-          commutative_ring, properties, ignore, D, optimize, show_evaluation,
-          cache, print, list, lazify_range_of_hom_structure, HC, finalize;
+          commutative_ring, properties, ignore, D, isidentical_methods, optimize,
+          show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC, finalize;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -476,6 +476,42 @@ InstallMethod( LazyCategory,
                  create_func_morphism := create_func_morphism,
                  create_func_universal_morphism := create_func_universal_morphism
                  );
+    
+    isidentical_methods := ValueOption( "isidentical_methods" );
+    
+    if not IsIdenticalObj( isidentical_methods, false ) then
+        isidentical_methods := true;
+    fi;
+    
+    if isidentical_methods then
+        
+        AddIsIdenticalToIdentityMorphism( D,
+          function( morphism )
+            
+            if not HasGenesisOfCellOperation( morphism ) then
+                return IsIdenticalToIdentityMorphism( EvaluatedCell( morphism ) );
+            fi;
+            
+            return GenesisOfCellOperation( morphism ) = "IsIdenticalToIdentityMorphism";
+            
+        end );
+        
+        if CanCompute( C, "IsIdenticalToZeroMorphism" ) then
+            
+            AddIsIdenticalToZeroMorphism( D,
+              function( morphism )
+                
+                if not HasGenesisOfCellOperation( morphism ) then
+                    return IsIdenticalToZeroMorphism( EvaluatedCell( morphism ) );
+                fi;
+                
+                return GenesisOfCellOperation( morphism ) = "IsIdenticalToZeroMorphism";
+                
+            end );
+            
+        fi;
+        
+    fi;
     
     optimize := ValueOption( "optimize" );
     
