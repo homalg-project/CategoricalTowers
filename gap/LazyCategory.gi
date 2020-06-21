@@ -520,6 +520,17 @@ InstallMethod( LazyCategory,
           ]
         );
         
+        AddDirectSum( D,
+          function( arg )
+            
+            if Length( arg[1] ) = 1 and IsCapCategoryObject( arg[1][1] ) then
+                return arg[1][1];
+            fi;
+            
+            return AsObjectInLazyCategory( D, "DirectSum", arg );
+            
+        end );
+        
     fi;
     
     SetUnderlyingCategory( D, C );
