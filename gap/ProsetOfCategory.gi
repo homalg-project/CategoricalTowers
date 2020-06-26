@@ -527,7 +527,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsHomSetInhabited( P,
           function( S, T )
             
-            return IsTerminal( StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) );
+            return IsHomSetInhabited(
+                           TerminalObject( CapCategory( UnderlyingCell( S ) ) ),
+                           StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) );
             
         end );
         
