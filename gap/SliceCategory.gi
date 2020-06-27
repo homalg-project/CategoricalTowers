@@ -559,8 +559,8 @@ InstallMethod( SliceCategory,
                                 ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j') -> Hom( R^j', R^i ), where i:j' = nr_gen( I:J' )
                                         DualOverTensorUnit( Jp ),         ## R -> Hom( R^j', R )
                                         InternalHom( Source( Jp ), I ) ),  ## Hom( R^j', R^i ) -> Hom( R^j', R )
-                                InternalHom( phi, psi ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
-                
+                                InternalHom( UnderlyingCell( phi ), UnderlyingCell( psi ) ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
+
                 return AsSliceCategoryCell(
                                source,
                                ##UniversalMorphismIntoBiasedWeakFiberProduct(
