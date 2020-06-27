@@ -235,14 +235,20 @@ InstallMethod( SliceCategory,
         
         return
           function( arg )
-            local src_trg, S, T;
+            local result, src_trg, S, T;
+            
+            result := CallFuncList( oper, List( arg, UnderlyingCell ) );
+            
+            if result = fail then
+                return fail;
+            fi;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             
             S := src_trg[1];
             T := src_trg[2];
             
-            return AsSliceCategoryCell( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
+            return AsSliceCategoryCell( S, result, T );
             
           end;
           
