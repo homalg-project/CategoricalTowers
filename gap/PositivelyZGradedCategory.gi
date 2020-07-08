@@ -394,7 +394,7 @@ end );
 ##
 InstallMethod( Support,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory and HasSupportHullDegrees ],
+        [ IsObjectInPositivelyZGradedCategory ],
         
   function( M )
     
