@@ -1008,8 +1008,30 @@ InstallMethod( PositivelyZGradedCategory,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
               "Lift",
               "Colift",
-              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
-              "DirectSumDiagonalDifference", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
+              ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS cannot deal with these yet:
+              "FiberProductEmbeddingInDirectSum",
+              "DirectSumDiagonalDifference",
+              "DirectSumCodiagonalDifference",
+              "DirectSumProjectionInPushout",
+              "IsomorphismFromCoimageToCokernelOfKernel",
+              "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
+              "IsomorphismFromCokernelOfKernelToCoimage",
+              "IsomorphismFromCoproductToDirectSum",
+              "IsomorphismFromDirectProductToDirectSum",
+              "IsomorphismFromDirectSumToCoproduct",
+              "IsomorphismFromDirectSumToDirectProduct",
+              "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
+              "IsomorphismFromImageObjectToKernelOfCokernel",
+              "IsomorphismFromKernelOfCokernelToImageObject",
+              "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
+              "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
+              "CanonicalIdentificationFromCoimageToImageObject",
+              "CanonicalIdentificationFromImageObjectToCoimage",
+              "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
+              "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
+              "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
+              "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
+              ## END TODO
               ];
     
     for func in skip do
