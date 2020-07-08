@@ -222,11 +222,11 @@ DeclareOperation( "TensorProductIndices",
         [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ] );
 
 #! @Description
-#!  Returns the function f over which to run the tensor product summation
-#!  <A>A</A>[i] $\otimes$ <A>B</A>[j] $\otimes$ <A>C</A>[k] ($[i,j,k] \in f(n)$)
-#!  for (<A>A</A> $\otimes$ <A>B</A> $\otimes$ <A>C</A>)[n].
+#!  Returns two functions over which to run the tensor product summation
+#!  for (<A>A</A> $\otimes$ (<A>B</A> $\otimes$ <A>C</A>))[n]
+#!  resp. for ((<A>A</A> $\otimes$ <A>B</A>) $\otimes$ <A>C</A>)[n].
 #! @Arguments A, B
-#! @Returns a function
+#! @Returns a pair of functions
 DeclareOperation( "TensorProductIndices",
         [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ] );
 
