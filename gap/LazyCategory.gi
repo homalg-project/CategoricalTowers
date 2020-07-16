@@ -263,14 +263,34 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \/, [ IsCapCategoryObject, IsLazyCapCategory ],
-  { object, cat } -> AsObjectInLazyCategory( cat, object )
-);
+InstallMethod( \/,
+        "for a CAP category object and a lazy CAP category",
+         [ IsCapCategoryObject, IsLazyCapCategory ],
+        
+  function( object, cat )
+    
+    if not IsIdenticalObj( CapCategory( object ), UnderlyingCategory( cat ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return AsObjectInLazyCategory( cat, object );
+    
+end );
 
 ##
-InstallMethod( \/, [ IsCapCategoryMorphism, IsLazyCapCategory ],
-  { morphism, cat } -> AsMorphismInLazyCategory( cat, morphism )
-);
+InstallMethod( \/,
+        "for a CAP category morphism and a lazy CAP category",
+        [ IsCapCategoryMorphism, IsLazyCapCategory ],
+        
+  function( morphism, cat )
+    
+    if not IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( cat ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return AsMorphismInLazyCategory( cat, morphism );
+    
+end );
 
 ##
 InstallMethod( LazyCategory,
