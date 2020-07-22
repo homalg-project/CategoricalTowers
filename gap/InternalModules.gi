@@ -20,7 +20,7 @@ InstallMethod( InternalModule,
         [ IsMorphismInPositivelyZGradedCategory, IsCategoryOfSModules ],
         
   function( structure_morphism, category )
-    local F, head, degree;
+    local F;
     
     if IsCategoryOfLeftSModules( category ) then
         
@@ -31,16 +31,6 @@ InstallMethod( InternalModule,
         F := RightActionObject( structure_morphism, category );
         
     fi;
-    
-    head := Range( structure_morphism );
-    
-    degree := ActiveLowerBound( head );
-    
-    head := head[degree];
-    
-    head := ObjectInPositivelyZGradedCategory( head, degree );
-    
-    SetHead( F, head );
     
     return F;
     

@@ -95,10 +95,6 @@ DeclareOperation( "UniversalMorphismFromFreeModule",
 ##
 ####################################
 
-#! @Arguments M
-#! @Returns a CAP; object morphism in the filter <C>IsObjectInPositivelyZGradedCategory</C>
-DeclareAttribute( "Head", IsInternalModule );
-
 ####################################
 ##
 #! @Section Operations
