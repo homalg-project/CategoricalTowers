@@ -64,62 +64,9 @@ InstallMethod( CategoryOfRightSModules,
     ModSV := RightActionsCategory( SV, name,
                    [ IsCategoryOfRightSModules, IsRightSModule, IsRightSModuleMorphism ] : TensorPreservesEpis := true, FinalizeCategory := false );
     
-    SetIsAbelianCategory( ModSV, true );
-    
     ModSV!.AlgebraMultiplicationMorphism := structure_morphism;
     
     SetCommutativeRingOfLinearCategory( ModSV, CommutativeRingOfLinearCategory( CapCategory( V ) ) );
-    
-    ## the reason for manually adding this method is that
-    ## our constructor InternalModule does more than what
-    ## the underlying constructor RightActionObject does.
-    AddKernelObject( ModSV,
-      function( phi )
-        local phi_, ModSV, SV, id_SV, emb, embSV, tau, kappa;
-        
-        phi_ := UnderlyingMorphism( phi );
-        
-        ModSV := CapCategory( phi );
-        
-        SV := UnderlyingActingObject( ModSV );
-        
-        id_SV := IdentityMorphism( SV );
-        
-        emb := KernelEmbedding( phi_ );
-        
-        embSV := TensorProductOnMorphisms( emb, id_SV );
-        
-        tau := PreCompose( embSV, StructureMorphism( Source( phi ) ) );
-        
-        kappa := KernelLiftWithGivenKernelObject( phi_, tau, Source( emb ) );
-        
-        return InternalModule( kappa, ModSV );
-        
-    end );
-    
-    AddCokernelObject( ModSV,
-      function( phi )
-        local phi_, ModSV, SV, id_SV, epi, epiSV, tau, lambda;
-        
-        phi_ := UnderlyingMorphism( phi );
-        
-        ModSV := CapCategory( phi );
-        
-        SV := UnderlyingActingObject( ModSV );
-        
-        id_SV := IdentityMorphism( SV );
-        
-        epi := CokernelProjection( phi_ );
-        
-        epiSV := TensorProductOnMorphisms( epi, id_SV );
-        
-        tau := PreCompose( StructureMorphism( Range( phi ) ), epi );
-        
-        lambda := ColiftAlongEpimorphism( epiSV, tau );
-        
-        return InternalModule( lambda, ModSV );
-        
-    end );
     
     SetIsAbelianCategory( ModSV, true );
     
