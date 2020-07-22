@@ -16,19 +16,31 @@
 
 ##
 InstallMethod( InternalModule,
-        "for a positively Z-graded category morphism and a category of internal modules",
-        [ IsMorphismInPositivelyZGradedCategory, IsCategoryOfSModules ],
+        "for a CAP category morphism and a category of internal modules",
+        [ IsCapCategoryMorphism, IsCategoryOfInternalModules ],
         
   function( structure_morphism, category )
     local F;
     
-    if IsCategoryOfLeftSModules( category ) then
+    if not IsIdenticalObj( CapCategory( structure_morphism ), CapCategory( UnderlyingActingObject( category ) ) ) then
+        
+        Error( "the structure morphism must be in the same category as the acting object" );
+        
+    fi;
+    
+    if IsCategoryOfInternalLeftModules( category ) then
         
         F := LeftActionObject( structure_morphism, category );
         
     else
         
         F := RightActionObject( structure_morphism, category );
+        
+    fi;
+    
+    if not IsInternalModule( F ) then
+        
+        Error( "the object filter of the category of internal modules must imply the filter \"IsInternalModule\"" );
         
     fi;
     
@@ -68,21 +80,47 @@ end );
 
 ##
 InstallMethod( InternalModuleMorphism,
-        "for a free left S-modue, a positively Z-graded category morphism, and a free left S-modue",
-        [ IsLeftSModule,
-          IsMorphismInPositivelyZGradedCategory,
-          IsLeftSModule ],
+        "for an internal module, a CAP category morphism, and an internal module",
+        [ IsInternalModule,
+          IsCapCategoryMorphism,
+          IsInternalModule ],
         
-  LeftActionMorphism );
+  function( S, morphism, T )
+    local category, module_morphism;
 
-##
-InstallMethod( InternalModuleMorphism,
-        "for a free right S-modue, a positively Z-graded category morphism, and a free right S-modue",
-        [ IsRightSModule,
-          IsMorphismInPositivelyZGradedCategory,
-          IsRightSModule ],
+    category := CapCategory( S );
+    
+    if not IsIdenticalObj( category, CapCategory( T ) ) then
         
-  RightActionMorphism );
+        Error( "source and range must be in the same category" );
+        
+    fi;
+    
+    if not IsIdenticalObj( CapCategory( morphism ), CapCategory( UnderlyingActingObject( category ) ) ) then
+        
+        Error( "the morphism must be in the same category as the acting object" );
+        
+    fi;
+    
+    if IsCategoryOfInternalLeftModules( category ) then
+        
+        module_morphism := LeftActionMorphism( S, morphism, T );
+        
+    else
+        
+        module_morphism := RightActionMorphism( S, morphism, T );
+        
+    fi;
+    
+    if not IsInternalModuleMorphism( module_morphism ) then
+        
+        Error( "the morphism filter of the category of internal modules must imply the filter \"IsInternalModuleMorphism\"" );
+        
+    fi;
+    
+    return module_morphism;
+    
+end );
 
 ####################################
 ##
