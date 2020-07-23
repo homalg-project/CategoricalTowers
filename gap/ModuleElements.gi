@@ -152,7 +152,7 @@ InstallMethod( CoefficientsVector,
     
     L := List( L, function( a ) if not IsZero( a ) then return a; fi; return ZeroMorphism( I, Range( a ) ); end );
     
-    vec := MorphismBetweenDirectSums( [ L ] );
+    vec := UniversalMorphismIntoDirectSum( L );
     
     return UnderlyingMatrix( vec );
     
