@@ -100,6 +100,11 @@ DeclareAttribute( "AdditiveInverse",
         IsElementInInternalAlgebraOrModule );
 fi;
 
+#! @Arguments e
+#! @Returns a &CAP; morphism
+DeclareAttribute( "UniversalMorphismFromFreeModule",
+        IsElementInInternalAlgebraOrModule );
+
 ####################################
 ##
 #! @Section Operations

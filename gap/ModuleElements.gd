@@ -68,11 +68,6 @@ DeclareOperation( "InternalElement",
 ####################################
 
 #! @Arguments e
-#! @Returns a &CAP; morphism
-DeclareAttribute( "UniversalMorphismFromFreeModule",
-        IsElementInInternalAlgebraOrModule );
-
-#! @Arguments e
 #! @Returns a &homalg; matrix
 #! @Group CoefficientsVector
 DeclareAttribute( "CoefficientsVector",
