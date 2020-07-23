@@ -108,7 +108,7 @@ fi;
 
 #! @Arguments e1, e2
 #! @Returns a morphism in a positively Z-graded category
-DeclareOperation( "PreInternalAddition",
+DeclareOperation( "InternalPreAddition",
         [ IsElementInInternalAlgebraOrModule, IsElementInInternalAlgebraOrModule ] );
 
 if false then
@@ -125,7 +125,7 @@ DeclareOperation( "-",
 
 #! @Arguments a, m
 #! @Returns a morphism in a positively Z-graded category
-DeclareOperation( "PreInternalMultiplication",
+DeclareOperation( "InternalPreMultiplication",
         [ IsRingElement, IsElementInInternalAlgebraOrModule ] );
 
 #! @Arguments a, m

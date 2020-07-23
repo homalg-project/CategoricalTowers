@@ -188,7 +188,7 @@ InstallMethod( IsZero,
 end );
 
 ##
-InstallMethod( PreInternalAddition,
+InstallMethod( InternalPreAddition,
         "for two elements in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule, IsElementInInternalAlgebraOrModule ],
         
@@ -214,7 +214,7 @@ InstallMethod( \+,
   function( e1, e2 )
     local e, source, add_components;
     
-    e := PreInternalAddition( e1, e2 );
+    e := InternalPreAddition( e1, e2 );
     
     source := Source( e );
     
@@ -262,7 +262,7 @@ InstallMethod( \*,
 end );
 
 ##
-InstallMethod( PreInternalMultiplication,
+InstallMethod( InternalPreMultiplication,
         "for an element in an internal algebra and an element in an internal algebra or module",
         [ IsElementInInternalAlgebra, IsElementInInternalAlgebraOrModule ],
         
@@ -299,7 +299,7 @@ InstallMethod( \*,
   function( a, m )
     local am, source, add_components;
     
-    am := PreInternalMultiplication( a, m );
+    am := InternalPreMultiplication( a, m );
     
     source := Source( am );
     
@@ -323,7 +323,7 @@ InstallMethod( BraidedMultiplication,
   function( a, b )
     local ab, source, braiding, add_components;
     
-    ab := PreInternalMultiplication( a, b );
+    ab := InternalPreMultiplication( a, b );
     
     source := Source( ab );
     
