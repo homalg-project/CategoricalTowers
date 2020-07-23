@@ -17,6 +17,9 @@
 ## categories
 
 #!
+DeclareCategory( "IsInternalAlgebra", IsCapCategory );
+
+#!
 DeclareCategory( "IsElementInInternalAlgebraOrModule",
         IsAttributeStoringRep and
         IsAdditivelyCommutativeElement and
@@ -48,12 +51,12 @@ DeclareOperation( "InternalElement",
 #! @Arguments SV, chi, degree, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ] );
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ] );
 
 #! @Arguments SV, chi, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt ] );
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ] );
 
 ####################################
 ##

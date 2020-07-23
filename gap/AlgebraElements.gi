@@ -14,7 +14,7 @@
 
 ##
 InstallMethod( InternalElement,
-        "for a positively Z-graded category morphism",
+        "for a positively Z-graded category morphism with an internal algebra as its range",
         [ IsMorphismInPositivelyZGradedCategory ],
         
   function( iota )
@@ -59,8 +59,8 @@ end );
 
 ##
 InstallMethod( InternalElement,
-        "for a positively Z-graded category morphism, an object, and two integers",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],
+        "for an internal algebra in a positively Z-graded category, an object, and two integers",
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],
         
   function( SV, chi, degree, i )
     local iota;
@@ -73,8 +73,8 @@ end );
 
 ##
 InstallMethod( InternalElement,
-        "for a positively Z-graded category morphism, an object, and an integer",
-        [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt ],
+        "for an internal algebra in a positively Z-graded category, an object, and an integer",
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ],
         
   function( SV, chi, i )
     local iota;
