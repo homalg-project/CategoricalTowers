@@ -174,7 +174,7 @@ InstallMethod( CoefficientsVector,
     
     vecs := List( L, CoefficientsVector );
     
-    return Iterated( vecs, UnionOfRows );
+    return UnionOfRows( vecs );
     
 end );
 
