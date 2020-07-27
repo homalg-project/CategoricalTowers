@@ -825,8 +825,7 @@ InstallMethod( PositivelyZGradedCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, ZC, properties, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+    local name, ZC, properties, create_func_object, create_func_morphism, create_func_universal_morphism,
           recnames, skip, func, pos, info, universal_object, add, required_operations;
     
     if IsBound( C!.IsPositivelyZGradedCategory ) and
@@ -884,50 +883,20 @@ InstallMethod( PositivelyZGradedCategory,
         Setter( name )( ZC, name( C ) );
         
     od;
-    
-    ## e.g., ZeroObject
-    create_func_object0 :=
-      function( name )
-        local oper;
+
+    ##
+    AddZeroObject( ZC,
+      function( )
+        local zero;
         
-        oper := ValueGlobal( name );
+        zero := MapLazy( IntegersList, i -> ZeroObject( C ), 1 );
         
-        return
-          function( )
-            local zero;
-            
-            zero := MapLazy( IntegersList, i -> oper( C ), 1 );
-            
-            zero!.LowerBound := infinity;
-            zero!.UpperBound := -infinity;
-            
-            return ObjectInPositivelyZGradedCategory( zero, ZC );
-            
-          end;
-          
-      end;
-    
-    ## e.g., ZeroObjectFunctorial
-    create_func_morphism0 :=
-      function( name )
-        local oper;
+        zero!.LowerBound := infinity;
+        zero!.UpperBound := -infinity;
         
-        oper := ValueGlobal( name );
+        return ObjectInPositivelyZGradedCategory( zero, ZC );
         
-        return
-          function( ZC )
-            local zero;
-            
-            zero := MapLazy( IntegersList, i -> oper( ZC!.UnderlyingCategory ), 1 );
-            
-            zero!.LowerBound := infinity;
-            zero!.UpperBound := -infinity;
-            
-            return ObjectInPositivelyZGradedCategory( zero, ZC );
-            
-          end;
-          
-      end;
+    end );
     
     ## e.g., DirectSum
     create_func_object :=
@@ -1063,11 +1032,11 @@ InstallMethod( PositivelyZGradedCategory,
             continue;
             #func := create_func_bool( name );
         elif info.return_type = "object" and info.filter_list = [ "category" ] then
-            func := create_func_object0( name );
+            continue;
         elif info.return_type = "object" then
             func := create_func_object( name );
         elif info.return_type = "morphism" and info.filter_list = [ "category" ] then
-            func := create_func_morphism0( name );
+            continue;
         elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
