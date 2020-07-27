@@ -827,11 +827,23 @@ InstallMethod( PositivelyZGradedCategory,
   function( C )
     local name, ZC, properties, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
-          recnames, skip, func, pos, info, universal_object, add;
+          recnames, skip, func, pos, info, universal_object, add, required_operations;
     
     if IsBound( C!.IsPositivelyZGradedCategory ) and
        C!.IsPositivelyZGradedCategory = true then
         Error( "trying to iterate the construction\n" );
+    fi;
+    
+    if not ( HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) ) then
+        
+        Error( "the input category must be a skeletal category" );
+        
+    fi;
+    
+    if not ( CanCompute( C, "ZeroObject" ) and CanCompute( C, "ZeroMorphism" ) ) then
+        
+        Error( "the input category must have a zero object and zero morphisms" );
+        
     fi;
     
     name := "The positively graded category of ";
@@ -1106,7 +1118,26 @@ InstallMethod( PositivelyZGradedCategory,
         
     fi;
     
-    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
+    required_operations := [
+        "DirectSum",
+        "DirectSumFunctorialWithGivenDirectSums",
+        "MorphismBetweenDirectSums",
+        "TensorUnit",
+        "TensorProductOnObjects",
+        "TensorProductOnMorphismsWithGivenTensorProducts",
+        "LeftUnitorWithGivenTensorProduct",
+        "LeftUnitorInverseWithGivenTensorProduct",
+        "RightUnitorWithGivenTensorProduct",
+        "RightUnitorInverseWithGivenTensorProduct",
+        "AssociatorRightToLeftWithGivenTensorProducts",
+        "AssociatorLeftToRightWithGivenTensorProducts",
+        "LeftDistributivityExpandingWithGivenObjects",
+        "LeftDistributivityFactoringWithGivenObjects",
+        "RightDistributivityExpandingWithGivenObjects",
+        "RightDistributivityFactoringWithGivenObjects",
+    ];
+    
+    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and ForAll( required_operations, oper -> CanCompute( C, oper ) ) then
         
         ##
         AddTensorUnit( ZC,
@@ -1423,67 +1454,75 @@ InstallMethod( PositivelyZGradedCategory,
             
         end );
         
-        ##
-        AddBraidingWithGivenTensorProducts( ZC,
-          function( AoB, A, B, BoA )
-            local f, tensor_product_indices_AB, L;
+        if CanCompute( C, "BraidingWithGivenTensorProducts" ) then
             
-            tensor_product_indices_AB := TensorProductIndices( A, B );
+            ##
+            AddBraidingWithGivenTensorProducts( ZC,
+              function( AoB, A, B, BoA )
+                local f, tensor_product_indices_AB, L;
+                
+                tensor_product_indices_AB := TensorProductIndices( A, B );
+                
+                f :=
+                  function( n )
+                    local indices;
+                    
+                    indices := tensor_product_indices_AB( n );
+                    
+                    if indices = [ ] then
+                        return ZeroMorphism( AoB[n], BoA[n] );
+                    fi;
+                    
+                    return DirectSumFunctorialWithGivenDirectSums(
+                                   AoB[n],
+                                   List( indices, i -> Braiding( A[i], B[n - i] ) ),
+                                   BoA[n] );
+                    
+                end;
+                
+                return MorphismInPositivelyZGradedCategory(
+                               AoB,
+                               MapLazy( IntegersList, f, 1 ),
+                               BoA );
+                
+            end );
             
-            f :=
-              function( n )
-                local indices;
-                
-                indices := tensor_product_indices_AB( n );
-                
-                if indices = [ ] then
-                    return ZeroMorphism( AoB[n], BoA[n] );
-                fi;
-                
-                return DirectSumFunctorialWithGivenDirectSums(
-                               AoB[n],
-                               List( indices, i -> Braiding( A[i], B[n - i] ) ),
-                               BoA[n] );
-                
-            end;
-            
-            return MorphismInPositivelyZGradedCategory(
-                           AoB,
-                           MapLazy( IntegersList, f, 1 ),
-                           BoA );
-            
-        end );
+        fi;
         
-        ##
-        AddBraidingInverseWithGivenTensorProducts( ZC,
-          function( BoA, A, B, AoB )
-            local f, tensor_product_indices_AB, L;
+        if CanCompute( C, "BraidingInverseWithGivenTensorProducts" ) then
             
-            tensor_product_indices_AB := TensorProductIndices( A, B );
+            ##
+            AddBraidingInverseWithGivenTensorProducts( ZC,
+              function( BoA, A, B, AoB )
+                local f, tensor_product_indices_AB, L;
+                
+                tensor_product_indices_AB := TensorProductIndices( A, B );
+                
+                f :=
+                  function( n )
+                    local indices;
+                    
+                    indices := tensor_product_indices_AB( n );
+                    
+                    if indices = [ ] then
+                        return ZeroMorphism( BoA[n], AoB[n] );
+                    fi;
+                    
+                    return DirectSumFunctorialWithGivenDirectSums(
+                                   BoA[n],
+                                   List( indices, i -> BraidingInverse( A[i], B[n - i] ) ),
+                                   AoB[n] );
+                    
+                end;
+                
+                return MorphismInPositivelyZGradedCategory(
+                               BoA,
+                               MapLazy( IntegersList, f, 1 ),
+                               AoB );
+                
+            end );
             
-            f :=
-              function( n )
-                local indices;
-                
-                indices := tensor_product_indices_AB( n );
-                
-                if indices = [ ] then
-                    return ZeroMorphism( BoA[n], AoB[n] );
-                fi;
-                
-                return DirectSumFunctorialWithGivenDirectSums(
-                               BoA[n],
-                               List( indices, i -> BraidingInverse( A[i], B[n - i] ) ),
-                               AoB[n] );
-                
-            end;
-            
-            return MorphismInPositivelyZGradedCategory(
-                           BoA,
-                           MapLazy( IntegersList, f, 1 ),
-                           AoB );
-            
-        end );
+        fi;
         
     fi;
     
