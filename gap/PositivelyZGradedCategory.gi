@@ -195,7 +195,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethod( ObjectInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         "for CAP category object and an integer",
         [ IsCapCategoryObject, IsInt ],
         
@@ -223,7 +223,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethod( ObjectInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         "for an object in a Z-graded semisimple representation category",
         [ IsSemisimpleCategoryObject and IsRepresentationCategoryZGradedObject ],
         
@@ -258,7 +258,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethod( ObjectInPositivelyZGradedCategory,
+InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         "for an object in a semisimple CAP category and and integer",
         [ IsSemisimpleCategoryObject and HasDegreeDecomposition, IsInt ],
         
