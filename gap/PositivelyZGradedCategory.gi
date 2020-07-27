@@ -1079,6 +1079,8 @@ InstallMethod( PositivelyZGradedCategory,
             else
                 func := create_func_morphism( name );
             fi;
+        elif info.return_type = "twocell" then
+            continue;
         else
             Error( "unkown return type of the operation ", name );
         fi;
