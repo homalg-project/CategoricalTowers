@@ -608,7 +608,7 @@ InstallMethod( ComponentInclusionMorphism,
         [ IsList, IsObjectInPositivelyZGradedCategory ],
         
   function( degrees, M )
-    local support, S, f;
+    local support_with_degrees, support, S, f;
     
     if degrees = [ ] then
         return UniversalMorphismFromZeroObject( M );
@@ -616,12 +616,12 @@ InstallMethod( ComponentInclusionMorphism,
     
     degrees := Set( degrees );
     
-    support := DecomposedSupportWithDegreesWithGivenDegrees( M, degrees );
+    support_with_degrees := DecomposedSupportWithDegreesWithGivenDegrees( M, degrees );
     
-    S := ObjectInPositivelyZGradedCategory( support );
+    S := ObjectInPositivelyZGradedCategory( support_with_degrees );
     
-    degrees := List( support, a -> a[1] );
-    support := List( support, a -> a[2] );
+    degrees := List( support_with_degrees, a -> a[1] );
+    support := List( support_with_degrees, a -> a[2] );
     
     f :=
       function( n )
