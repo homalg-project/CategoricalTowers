@@ -36,6 +36,20 @@ Persons := [
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Fabian",
+    LastName := "Zickgraf",
+    WWWHome := "https://algebra.mathematik.uni-siegen.de/zickgraf",
+    Email := "fabian.zickgraf@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
 ],
 
 SourceRepository := rec(
