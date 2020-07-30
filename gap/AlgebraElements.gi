@@ -218,7 +218,7 @@ InstallMethod( \+,
     
     source := Source( e );
     
-    add_components := ComponentInclusionMorphism( SupportDegrees( source ), source );
+    add_components := DiagonalEmbedding( SupportDegrees( source ), source );
     
     e := PreCompose( add_components, e );
     
@@ -303,7 +303,7 @@ InstallMethod( \*,
     
     source := Source( am );
     
-    add_components := ComponentInclusionMorphism( SupportDegrees( source ), source );
+    add_components := DiagonalEmbedding( SupportDegrees( source ), source );
     
     am := PreCompose( add_components, am );
     
@@ -332,7 +332,7 @@ InstallMethod( BraidedMultiplication,
                         Source( UnderlyingEmbedding( a ) ), Source( UnderlyingEmbedding( b ) ),
                         source );
     
-    add_components := ComponentInclusionMorphism( SupportDegrees( source ), source );
+    add_components := DiagonalEmbedding( SupportDegrees( source ), source );
     
     ab := PreCompose( [ add_components, braiding, ab ] );
     
