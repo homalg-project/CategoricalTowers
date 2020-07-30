@@ -13,7 +13,7 @@ Subtitle := "Modules over internal algebras",
 Version := Maximum( [
   "2019.02.02", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2020.07.23", ## Fabian's version
+  "2020.07.24", ## Fabian's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -91,7 +91,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "GradedCategories", ">= 2020.07.23" ],
+                           [ "GradedCategories", ">= 2020.07.24" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
                          ],
   SuggestedOtherPackages := [ ],
