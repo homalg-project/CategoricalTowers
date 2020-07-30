@@ -45,6 +45,7 @@ InstallMethod( InternalElement,
 end );
 
 ##
+# graded version
 InstallMethod( InternalElement,
         "for an internal module, an object, and two integers",
         [ IsInternalModule, IsObject, IsInt, IsInt ],
@@ -59,6 +60,7 @@ InstallMethod( InternalElement,
 end );
 
 ##
+# graded version
 InstallMethod( InternalElement,
         "for an internal module, an object, and an integer",
         [ IsInternalModule, IsObject, IsInt ],

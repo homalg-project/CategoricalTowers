@@ -48,11 +48,13 @@ BindGlobal( "TheTypeInternalAlgebraElement",
 DeclareOperation( "InternalElement",
         [ IsCapCategoryMorphism ] );
 
+# graded version
 #! @Arguments SV, chi, degree, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
         [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ] );
 
+# graded version
 #! @Arguments SV, chi, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",

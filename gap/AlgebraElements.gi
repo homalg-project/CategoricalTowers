@@ -37,6 +37,7 @@ InstallMethod( InternalElement,
 end );
 
 ##
+# graded version
 InstallMethod( InternalElement,
         "for an internal algebra in a positively Z-graded category, an object, and two integers",
         [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],
@@ -51,6 +52,7 @@ InstallMethod( InternalElement,
 end );
 
 ##
+# graded version
 InstallMethod( InternalElement,
         "for an internal algebra in a positively Z-graded category, an object, and an integer",
         [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ],

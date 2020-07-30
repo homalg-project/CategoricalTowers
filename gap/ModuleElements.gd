@@ -51,11 +51,13 @@ BindGlobal( "TheTypeInternalRightModuleElement",
 DeclareOperation( "InternalElement",
         [ IsCapCategoryMorphism, IsInternalModule ] );
 
+# graded version
 #! @Arguments M, chi, degree, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
         [ IsInternalModule, IsObject, IsInt, IsInt ] );
 
+# graded version
 #! @Arguments M, chi, i
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
