@@ -137,8 +137,10 @@ InstallMethod( FreeInternalModuleActionMorphism,
   function( U, AMod )
     local id_U, A, mu;
     
-    if not IsObjectInPositivelyZGradedCategory( U ) then
-        U := ObjectInPositivelyZGradedCategory( U );
+    if not IsIdenticalObj( CapCategory( U ), CapCategory( UnderlyingActingObject( AMod ) ) ) then
+        
+        Error( "the object must be in the same category as the acting object" );
+        
     fi;
     
     id_U := IdentityMorphism( U );
