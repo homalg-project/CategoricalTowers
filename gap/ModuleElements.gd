@@ -49,7 +49,7 @@ BindGlobal( "TheTypeInternalRightModuleElement",
 #! @Returns a &CAP; morphism
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsMorphismInPositivelyZGradedCategory, IsInternalModule ] );
+        [ IsCapCategoryMorphism, IsInternalModule ] );
 
 #! @Arguments M, chi, degree, i
 #! @Group InternalElement

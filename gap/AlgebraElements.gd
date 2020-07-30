@@ -46,7 +46,7 @@ BindGlobal( "TheTypeInternalAlgebraElement",
 #! @Returns a &CAP; morphism
 #! @Group InternalElement
 DeclareOperation( "InternalElement",
-        [ IsMorphismInPositivelyZGradedCategory ] );
+        [ IsCapCategoryMorphism ] );
 
 #! @Arguments SV, chi, degree, i
 #! @Group InternalElement
@@ -72,11 +72,6 @@ DeclareAttribute( "UnderlyingEmbedding", IsElementInInternalAlgebraOrModule );
 #! @Returns a list
 DeclareAttribute( "SupportDegrees",
         IsElementInInternalAlgebraOrModule );
-
-#! @Arguments e
-#! @Returns a list
-DeclareAttribute( "SupportHullDegrees",
-        IsElementInInternalAlgebraOrModule, "mutable" );
 
 #! @Arguments e
 #! @Returns a list

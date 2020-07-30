@@ -14,67 +14,33 @@
 
 ##
 InstallMethod( InternalElement,
-        "for a positively Z-graded category morphism and an internal module",
-        [ IsMorphismInPositivelyZGradedCategory, IsInternalModule ],
+        "for a CAP category morphism and an internal module",
+        [ IsCapCategoryMorphism, IsInternalModule ],
         
   function( iota, M )
-    local source, chi, degrees;
+    local source;
     
     source := Source( iota );
-    
-    chi := rec( );
     
     if not Range( iota ) = ActionDomain( M ) then
         
         Error( "Range( iota ) = ActionDomain( M ) returned false\n" );
         
-    elif HasSupportDegrees( source ) then
-        
-        degrees := SupportDegrees( source );
-        
-        if IsInternalLeftModule( M ) then
-            
-            ObjectifyWithAttributes( chi, TheTypeInternalLeftModuleElement,
-                    Range, M,
-                    SupportDegrees, degrees,
-                    SupportHullDegrees, degrees,
-                    UnderlyingEmbedding, iota );
-            
-        else
-            
-            ObjectifyWithAttributes( chi, TheTypeInternalRightModuleElement,
-                    Range, M,
-                    SupportDegrees, degrees,
-                    SupportHullDegrees, degrees,
-                    UnderlyingEmbedding, iota );
-            
-        fi;
-        
-    elif HasSupportHullDegrees( source )  then
-        
-        if IsInternalLeftModule( M ) then
-            
-            ObjectifyWithAttributes( chi, TheTypeInternalLeftModuleElement,
-                    Range, M,
-                    SupportHullDegrees, SupportHullDegrees( source ),
-                    UnderlyingEmbedding, iota );
-            
-        else
-            
-            ObjectifyWithAttributes( chi, TheTypeInternalRightModuleElement,
-                    Range, M,
-                    SupportHullDegrees, SupportHullDegrees( source ),
-                    UnderlyingEmbedding, iota );
-            
-        fi;
-            
-    else
-        
-        Error( "Source( iota ) does not have the attribute Support(Hull)Degrees\n" );
-        
     fi;
     
-    return chi;
+    if IsInternalLeftModule( M ) then
+        
+        return ObjectifyWithAttributes( rec( ), TheTypeInternalLeftModuleElement,
+                Range, M,
+                UnderlyingEmbedding, iota );
+        
+    else
+        
+        return ObjectifyWithAttributes( rec( ), TheTypeInternalRightModuleElement,
+                Range, M,
+                UnderlyingEmbedding, iota );
+        
+    fi;
     
 end );
 

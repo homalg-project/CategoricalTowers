@@ -14,46 +14,25 @@
 
 ##
 InstallMethod( InternalElement,
-        "for a positively Z-graded category morphism with an internal algebra as its range",
-        [ IsMorphismInPositivelyZGradedCategory ],
+        "for a CAP category morphism with an internal algebra as its range",
+        [ IsCapCategoryMorphism ],
         
   function( iota )
-    local source, SV, chi, degrees;
+    local source, SV;
     
     source := Source( iota );
     
     SV := Range( iota );
     
-    chi := rec( );
-    
     if not IsInternalAlgebra( SV ) then
         
         Error( "IsInternalAlgebra( Range( iota ) ) returned false\n" );
         
-    elif HasSupportDegrees( source ) then
-        
-        degrees := SupportDegrees( source );
-        
-        ObjectifyWithAttributes( chi, TheTypeInternalAlgebraElement,
-                Range, SV,
-                # SupportDegrees, degrees, ## no, this depends on iota!!!
-                SupportHullDegrees, degrees,
-                UnderlyingEmbedding, iota );
-        
-    elif HasSupportHullDegrees( source )  then
-        
-        ObjectifyWithAttributes( chi, TheTypeInternalAlgebraElement,
-                Range, SV,
-                SupportHullDegrees, SupportHullDegrees( source ),
-                UnderlyingEmbedding, iota );
-        
-    else
-        
-        Error( "Source( iota ) does not have the attribute Support(Hull)Degrees\n" );
-        
     fi;
     
-    return chi;
+    return ObjectifyWithAttributes( rec( ), TheTypeInternalAlgebraElement,
+                Range, SV,
+                UnderlyingEmbedding, iota );
     
 end );
 
@@ -97,11 +76,13 @@ InstallMethod( SupportDegrees,
         [ IsElementInInternalAlgebraOrModule ],
         
   function( e )
-    local iota;
+    local iota, source;
     
     iota := UnderlyingEmbedding( e );
     
-    return Filtered( SupportHullDegrees( e ), i -> not IsZero( iota[i] ) );
+    source := Source( iota );
+    
+    return Filtered( SupportDegrees( source ), i -> not IsZero( iota[i] ) );
     
 end );
 
