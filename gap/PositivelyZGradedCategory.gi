@@ -603,7 +603,7 @@ InstallMethod( ComponentInclusionMorphism,
 end );
 
 ## this method is used for the addition method of internal module elements
-InstallMethod( ComponentInclusionMorphism,
+InstallMethod( DiagonalEmbedding,
         "for a list and an object in a positively Z-graded category",
         [ IsList, IsObjectInPositivelyZGradedCategory ],
         
@@ -666,7 +666,7 @@ InstallMethod( ComponentInclusionMorphism,
 end );
 
 ## this method was previously used for the addition method of internal module elements
-InstallMethod( ComponentInclusionMorphism,
+InstallMethod( DiagonalEmbedding,
         "for two objects in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory and HasDecomposedSupportWithDegrees,
           IsObjectInPositivelyZGradedCategory ],
