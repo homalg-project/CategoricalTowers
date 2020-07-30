@@ -13,7 +13,7 @@ Subtitle := "Graded categories",
 Version := Maximum( [
                    "2020.05.01", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2020.07.20", ## Fabian's version
+                   "2020.07.21", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},

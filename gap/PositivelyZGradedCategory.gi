@@ -167,6 +167,10 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     ObjectifyObjectForCAPWithAttributes( M, ZC,
             UnderlyingInfiniteList, L );
     
+    if L!.UpperBound < infinity then
+        SetSupportHullDegrees( M, [ L!.LowerBound .. L!.UpperBound ] );
+    fi;
+    
     return M;
     
 end );
@@ -185,10 +189,6 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     L!.UpperBound := upper_bound;
     
     M := ObjectInPositivelyZGradedCategory( L, ZC );
-    
-    if upper_bound < infinity then
-        SetSupportHullDegrees( M, [ lower_bound, upper_bound ] );
-    fi;
     
     return M;
     
@@ -900,7 +900,7 @@ InstallMethod( PositivelyZGradedCategory,
         
         return ## a constructor for universal objects
           function( arg )
-            local L;
+            local L, object, degrees;
             
             L := MapLazy( IntegersList, i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ), 1 );
             
@@ -909,8 +909,19 @@ InstallMethod( PositivelyZGradedCategory,
             fi;
             
             L!.LowerBound := Minimum( List( arg, ActiveLowerBound ) );
+            L!.UpperBound := Maximum( List( arg, ActiveUpperBound ) );
             
-            return ObjectInPositivelyZGradedCategory( L, ZC );
+            object := ObjectInPositivelyZGradedCategory( L, ZC );
+            
+            if ForAll( arg, x -> HasSupportHullDegrees( x ) or HasSupportDegrees ( x ) ) then
+                
+                degrees := Union( List( arg, x -> SupportDegrees( x ) ) );
+                
+                SetSupportHullDegrees( object, degrees );
+                
+            fi;
+            
+            return object;
             
           end;
           
@@ -1129,7 +1140,7 @@ InstallMethod( PositivelyZGradedCategory,
         ##
         AddTensorProductOnObjects( ZC,
           function( A, B )
-            local zero_object, tensor_product_indices_AB, f, L;
+            local zero_object, tensor_product_indices_AB, f, L, tensor_product, degrees;
             
             zero_object :=  ZeroObject( CapCategory( A )!.UnderlyingCategory );
             
@@ -1152,8 +1163,19 @@ InstallMethod( PositivelyZGradedCategory,
             L := MapLazy( IntegersList, f, 1 );
             
             L!.LowerBound := ActiveLowerBound( A ) + ActiveLowerBound( B );
+            L!.UpperBound := ActiveUpperBound( A ) + ActiveUpperBound( B );
             
-            return ObjectInPositivelyZGradedCategory( L, ZC );
+            tensor_product := ObjectInPositivelyZGradedCategory( L, ZC );
+            
+            if ForAll( [ A, B ], x -> HasSupportHullDegrees( x ) or HasSupportDegrees ( x ) ) then
+                
+                degrees := Set( List( Cartesian( SupportDegrees( A ), SupportDegrees( B ) ), Sum ) );
+                
+                SetSupportHullDegrees( tensor_product, degrees );
+                
+            fi;
+            
+            return tensor_product;
             
         end );
         
