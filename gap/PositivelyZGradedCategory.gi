@@ -414,7 +414,7 @@ InstallMethod( NonZeroPartsWithDegrees,
 end );
 
 ##
-InstallMethod( DecomposedSupportWithDegreesWithGivenDegrees,
+InstallMethod( SupportWithDegreesWithGivenDegrees,
         "for an object in a positively Z-graded category and a list",
         [ IsObjectInPositivelyZGradedCategory, IsList ],
         
@@ -427,13 +427,13 @@ InstallMethod( DecomposedSupportWithDegreesWithGivenDegrees,
 end );
 
 ##
-InstallMethod( DecomposedSupportWithDegrees,
+InstallMethod( SupportWithDegrees,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
   function( M )
     
-    return DecomposedSupportWithDegreesWithGivenDegrees( M, NonZeroDegrees( M ) );
+    return SupportWithDegreesWithGivenDegrees( M, NonZeroDegrees( M ) );
     
 end );
 
@@ -616,7 +616,7 @@ InstallMethod( DiagonalEmbedding,
     
     degrees := Set( degrees );
     
-    support_with_degrees := DecomposedSupportWithDegreesWithGivenDegrees( M, degrees );
+    support_with_degrees := SupportWithDegreesWithGivenDegrees( M, degrees );
     
     S := ObjectInPositivelyZGradedCategory( support_with_degrees );
     
@@ -668,13 +668,13 @@ end );
 ## this method was previously used for the addition method of internal module elements
 InstallMethod( DiagonalEmbedding,
         "for two objects in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory and HasDecomposedSupportWithDegrees,
+        [ IsObjectInPositivelyZGradedCategory and HasSupportWithDegrees,
           IsObjectInPositivelyZGradedCategory ],
         
   function( S, M )
     local support, degrees, f, iota;
     
-    support := DecomposedSupportWithDegrees( S );
+    support := SupportWithDegrees( S );
     
     degrees := List( support, a -> a[1] );
     support := List( support, a -> a[2] );

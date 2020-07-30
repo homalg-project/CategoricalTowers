@@ -82,14 +82,14 @@ DeclareAttribute( "NonZeroPartsWithDegrees",
 
 #! @Arguments object
 #! @Returns a list
-DeclareAttribute( "DecomposedSupportWithDegrees",
+DeclareAttribute( "SupportWithDegrees",
         IsObjectInPositivelyZGradedCategory );
 
 #! @Description
-#!  Like DecomposedSupportWithDegrees
+#!  Like SupportWithDegrees
 #!  but only considers the degrees in the given list <A>L</A>.
 #! @Arguments object, L
-DeclareOperation( "DecomposedSupportWithDegreesWithGivenDegrees",
+DeclareOperation( "SupportWithDegreesWithGivenDegrees",
         [ IsObjectInPositivelyZGradedCategory, IsList ] );
 
 ####################################
