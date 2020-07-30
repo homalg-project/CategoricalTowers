@@ -63,15 +63,16 @@ DeclareCategory( "IsInternalRightModuleMorphism", IsInternalModuleMorphism and I
 DeclareOperation( "InternalModule",
         [ IsCapCategoryMorphism, IsCategoryOfInternalModules ] );
 
-#! @Arguments U, degree, AMod
-#! @Group FreeInternalModule
-DeclareOperationWithCache( "FreeInternalModule",
-        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ] );
-
 #! @Arguments U, AMod
 #! @Group FreeInternalModule
 DeclareOperationWithCache( "FreeInternalModule",
         [ IsCapCategoryObject, IsCategoryOfInternalModules ] );
+
+# graded version
+#! @Arguments U, degree, AMod
+#! @Group FreeInternalModule
+DeclareOperationWithCache( "FreeInternalModule",
+        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ] );
 
 ## morphisms
 
@@ -92,16 +93,17 @@ DeclareOperation( "InternalModuleMorphism",
 ##
 ####################################
 
+#! @Arguments U, SVmod
+#! @Group FreeInternalModuleActionMorphism
+DeclareOperation( "FreeInternalModuleActionMorphism",
+        [ IsCapCategoryObject, IsCategoryOfInternalModules ] );
+
+# graded version
 #! @Arguments U, degree, SVmod
 #! @Returns a morphism in a positively Z-graded category
 #! @Group FreeInternalModuleActionMorphism
 DeclareOperation( "FreeInternalModuleActionMorphism",
         [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ] );
-
-#! @Arguments U, SVmod
-#! @Group FreeInternalModuleActionMorphism
-DeclareOperation( "FreeInternalModuleActionMorphism",
-        [ IsCapCategoryObject, IsCategoryOfInternalModules ] );
 
 #! @Arguments phi, M
 #! @Returns a &CAP; morphism
@@ -109,20 +111,29 @@ DeclareOperation( "FreeInternalModuleActionMorphism",
 DeclareOperation( "UniversalMorphismFromFreeModule",
         [ IsCapCategoryMorphism, IsInternalModule ] );
 
+# graded version
 #! @Arguments M, chi, degree, i
 #! @Group UniversalMorphismFromFreeModule
 DeclareOperation( "UniversalMorphismFromFreeModule",
         [ IsInternalModule, IsObject, IsInt, IsInt ] );
 
+# graded version
 #! @Arguments M, chi, i
 #! @Group UniversalMorphismFromFreeModule
 DeclareOperation( "UniversalMorphismFromFreeModule",
         [ IsInternalModule, IsObject, IsInt ] );
 
+# graded version
 #! @Arguments M, degree
 #! @Group UniversalMorphismFromFreeModule
 DeclareOperation( "UniversalMorphismFromFreeModule",
         [ IsInternalModule, IsInt ] );
+
+####################################
+##
+## Helpers for grading
+##
+####################################
 
 #! @Description
 #!  The <A>i</A>-th degree part of the cell (=object or morphism) <A>c</A>.

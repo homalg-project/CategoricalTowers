@@ -50,20 +50,6 @@ end );
 
 ##
 InstallMethodWithCrispCache( FreeInternalModule,
-        "for a CAP category object, an integer, and a category of internal modules",
-        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
-        
-  function( V, degree, category )
-    local structure_morphism;
-    
-    structure_morphism := FreeInternalModuleActionMorphism( V, degree, category );
-    
-    return InternalModule( structure_morphism, category );
-    
-end );
-
-##
-InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object and a category of internal modules",
         [ IsCapCategoryObject, IsCategoryOfInternalModules ],
         
@@ -71,6 +57,21 @@ InstallMethodWithCrispCache( FreeInternalModule,
     local structure_morphism;
     
     structure_morphism := FreeInternalModuleActionMorphism( V, category );
+    
+    return InternalModule( structure_morphism, category );
+    
+end );
+
+##
+# graded version
+InstallMethodWithCrispCache( FreeInternalModule,
+        "for a CAP category object, an integer, and a category of internal modules",
+        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
+        
+  function( V, degree, category )
+    local structure_morphism;
+    
+    structure_morphism := FreeInternalModuleActionMorphism( V, degree, category );
     
     return InternalModule( structure_morphism, category );
     
@@ -129,6 +130,50 @@ end );
 ####################################
 
 ##
+InstallMethod( FreeInternalModuleActionMorphism,
+        "for a CAP category object and a category of internal modules",
+        [ IsCapCategoryObject, IsCategoryOfInternalModules ],
+        
+  function( U, AMod )
+    local id_U, A, mu;
+    
+    if not IsObjectInPositivelyZGradedCategory( U ) then
+        U := ObjectInPositivelyZGradedCategory( U );
+    fi;
+    
+    id_U := IdentityMorphism( U );
+    
+    A := UnderlyingActingObject( AMod );
+    
+    mu := AMod!.AlgebraMultiplicationMorphism;
+    
+    if IsCategoryOfInternalLeftModules( AMod ) then
+        return PreCompose(
+                       AssociatorRightToLeft( A, A, U ),
+                       TensorProductOnMorphisms( mu, id_U ) );
+    else
+        return PreCompose(
+                       AssociatorLeftToRight( U, A, A ),
+                       TensorProductOnMorphisms( id_U, mu ) );
+    fi;
+    
+end );
+
+##
+# graded version
+InstallMethod( FreeInternalModuleActionMorphism,
+        "for a CAP category object, an integer, and a category of internal modules",
+        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
+        
+  function( U, degree, AMod )
+    
+    U := ObjectInPositivelyZGradedCategory( U, degree );
+    
+    return FreeInternalModuleActionMorphism( U, AMod );
+    
+end );
+
+##
 InstallMethod( UniversalMorphismFromFreeModule,
         "for a CAP category morphism and an internal module",
         [ IsCapCategoryMorphism, IsInternalModule ],
@@ -179,6 +224,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
 end );
 
 ##
+# graded version
 InstallMethod( UniversalMorphismFromFreeModule,
         "for an internal module, an object, and two integers",
         [ IsInternalModule, IsObject, IsInt, IsInt ],
@@ -193,6 +239,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
 end );
 
 ##
+# graded version
 InstallMethod( UniversalMorphismFromFreeModule,
         "for an internal module, an object, and an integer",
         [ IsInternalModule, IsObject, IsInt ],
@@ -207,6 +254,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
 end );
 
 ##
+# graded version
 InstallMethod( UniversalMorphismFromFreeModule,
         "for an internal module and an integer",
         [ IsInternalModule, IsInt ],
@@ -220,48 +268,11 @@ InstallMethod( UniversalMorphismFromFreeModule,
     
 end );
 
+####################################
 ##
-InstallMethod( FreeInternalModuleActionMorphism,
-        "for a CAP category object and a category of internal modules",
-        [ IsCapCategoryObject, IsCategoryOfInternalModules ],
-        
-  function( U, AMod )
-    local id_U, A, mu;
-    
-    if not IsObjectInPositivelyZGradedCategory( U ) then
-        U := ObjectInPositivelyZGradedCategory( U );
-    fi;
-    
-    id_U := IdentityMorphism( U );
-    
-    A := UnderlyingActingObject( AMod );
-    
-    mu := AMod!.AlgebraMultiplicationMorphism;
-    
-    if IsCategoryOfInternalLeftModules( AMod ) then
-        return PreCompose(
-                       AssociatorRightToLeft( A, A, U ),
-                       TensorProductOnMorphisms( mu, id_U ) );
-    else
-        return PreCompose(
-                       AssociatorLeftToRight( U, A, A ),
-                       TensorProductOnMorphisms( id_U, mu ) );
-    fi;
-    
-end );
-
+## Helpers for grading
 ##
-InstallMethod( FreeInternalModuleActionMorphism,
-        "for a CAP category object, an integer, and a category of internal modules",
-        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
-        
-  function( U, degree, AMod )
-    
-    U := ObjectInPositivelyZGradedCategory( U, degree );
-    
-    return FreeInternalModuleActionMorphism( U, AMod );
-    
-end );
+####################################
 
 ##
 InstallMethod( \[\],
