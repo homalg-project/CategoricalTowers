@@ -58,26 +58,26 @@ DeclareAttribute( "UnderlyingInfiniteList",
 #!  The support of the object <A>c</A>.
 #! @Arguments object
 #! @Returns a list
-DeclareAttribute( "Support",
+DeclareAttribute( "NonZeroParts",
         IsObjectInPositivelyZGradedCategory );
 
 #! @Description
 #!  The list of degrees of the support of the object <A>c</A>.
 #! @Arguments object
 #! @Returns a list
-DeclareAttribute( "SupportDegrees",
+DeclareAttribute( "NonZeroDegrees",
         IsObjectInPositivelyZGradedCategory );
 
 #! @Description
 #!  A list of integers containing the list of degrees of the support of the object <A>c</A>.
 #! @Arguments object
 #! @Returns a list
-DeclareAttribute( "SupportHullDegrees",
+DeclareAttribute( "NonZeroDegreesHull",
         IsObjectInPositivelyZGradedCategory, "mutable" );
 
 #! @Arguments object
 #! @Returns a list
-DeclareAttribute( "SupportWithDegrees",
+DeclareAttribute( "NonZeroPartsWithDegrees",
         IsObjectInPositivelyZGradedCategory );
 
 #! @Arguments object

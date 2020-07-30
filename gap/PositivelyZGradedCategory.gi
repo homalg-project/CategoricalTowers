@@ -168,7 +168,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
             UnderlyingInfiniteList, L );
     
     if L!.UpperBound < infinity then
-        SetSupportHullDegrees( M, [ L!.LowerBound .. L!.UpperBound ] );
+        SetNonZeroDegreesHull( M, [ L!.LowerBound .. L!.UpperBound ] );
     fi;
     
     return M;
@@ -311,7 +311,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     M := ObjectInPositivelyZGradedCategory( f, Minimum( degrees ), Maximum( degrees ), ZC );
     
     ## do not overwrite degrees as it is used in the function f as a multi-list
-    SetSupportHullDegrees( M, Set( degrees ) );
+    SetNonZeroDegreesHull( M, Set( degrees ) );
     
     return M;
     
@@ -376,40 +376,40 @@ InstallMethod( SetActiveUpperBound,
 end );
 
 ##
-InstallMethod( SupportDegrees,
+InstallMethod( NonZeroDegrees,
         "for an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory and HasSupportHullDegrees ],
+        [ IsObjectInPositivelyZGradedCategory and HasNonZeroDegreesHull ],
         
   function( M )
     local degrees;
     
-    degrees := Filtered( SupportHullDegrees( M ), i -> not IsZero( M[i] ) );
+    degrees := Filtered( NonZeroDegreesHull( M ), i -> not IsZero( M[i] ) );
     
-    SetSupportHullDegrees( M, degrees );
+    SetNonZeroDegreesHull( M, degrees );
     
     return degrees;
     
 end );
 
 ##
-InstallMethod( Support,
+InstallMethod( NonZeroParts,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
   function( M )
     
-    return List( SupportDegrees( M ), i -> M[i] );
+    return List( NonZeroDegrees( M ), i -> M[i] );
     
 end );
 
 ##
-InstallMethod( SupportWithDegrees,
+InstallMethod( NonZeroPartsWithDegrees,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
   function( M )
     
-    return List( SupportDegrees( M ), d -> [ d, M[d] ] );
+    return List( NonZeroDegrees( M ), d -> [ d, M[d] ] );
     
 end );
 
@@ -433,7 +433,7 @@ InstallMethod( DecomposedSupportWithDegrees,
         
   function( M )
     
-    return DecomposedSupportWithDegreesWithGivenDegrees( M, SupportDegrees( M ) );
+    return DecomposedSupportWithDegreesWithGivenDegrees( M, NonZeroDegrees( M ) );
     
 end );
 
@@ -499,7 +499,7 @@ InstallMethod( ComponentInclusionMorphism,
         
         iota := UniversalMorphismFromZeroObject( M );
         
-        SetSupportDegrees( Source( iota ), [ ] );
+        SetNonZeroDegrees( Source( iota ), [ ] );
         
         return iota;
         
@@ -543,7 +543,7 @@ InstallMethod( ComponentInclusionMorphism,
                     MapLazy( IntegersList, f, 1 ),
                     M );
     
-    SetSupportDegrees( Source( iota ), [ degree ] );
+    SetNonZeroDegrees( Source( iota ), [ degree ] );
     
     return iota;
     
@@ -574,7 +574,7 @@ InstallMethod( ComponentInclusionMorphism,
         
         iota := UniversalMorphismFromZeroObject( M );
         
-        SetSupportDegrees( Source( iota ), [ ] );
+        SetNonZeroDegrees( Source( iota ), [ ] );
         
         return iota;
         
@@ -596,7 +596,7 @@ InstallMethod( ComponentInclusionMorphism,
                     MapLazy( IntegersList, f, 1 ),
                     M );
     
-    SetSupportDegrees( Source( iota ), [ degree ] );
+    SetNonZeroDegrees( Source( iota ), [ degree ] );
     
     return iota;
     
@@ -913,11 +913,11 @@ InstallMethod( PositivelyZGradedCategory,
             
             object := ObjectInPositivelyZGradedCategory( L, ZC );
             
-            if ForAll( arg, x -> HasSupportHullDegrees( x ) or HasSupportDegrees ( x ) ) then
+            if ForAll( arg, x -> HasNonZeroDegreesHull( x ) or HasNonZeroDegrees ( x ) ) then
                 
-                degrees := Union( List( arg, x -> SupportDegrees( x ) ) );
+                degrees := Union( List( arg, x -> NonZeroDegrees( x ) ) );
                 
-                SetSupportHullDegrees( object, degrees );
+                SetNonZeroDegreesHull( object, degrees );
                 
             fi;
             
@@ -1167,11 +1167,11 @@ InstallMethod( PositivelyZGradedCategory,
             
             tensor_product := ObjectInPositivelyZGradedCategory( L, ZC );
             
-            if ForAll( [ A, B ], x -> HasSupportHullDegrees( x ) or HasSupportDegrees ( x ) ) then
+            if ForAll( [ A, B ], x -> HasNonZeroDegreesHull( x ) or HasNonZeroDegrees ( x ) ) then
                 
-                degrees := Set( List( Cartesian( SupportDegrees( A ), SupportDegrees( B ) ), Sum ) );
+                degrees := Set( List( Cartesian( NonZeroDegrees( A ), NonZeroDegrees( B ) ), Sum ) );
                 
-                SetSupportHullDegrees( tensor_product, degrees );
+                SetNonZeroDegreesHull( tensor_product, degrees );
                 
             fi;
             
