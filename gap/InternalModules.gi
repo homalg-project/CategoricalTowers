@@ -51,7 +51,7 @@ end );
 ##
 InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object, an integer, and a category of internal modules",
-        [ IsCapCategoryObject, IsInt, IsCategoryOfSModules ],
+        [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
         
   function( V, degree, category )
     local structure_morphism;
@@ -65,7 +65,7 @@ end );
 ##
 InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object and a category of internal modules",
-        [ IsCapCategoryObject, IsCategoryOfSModules ],
+        [ IsCapCategoryObject, IsCategoryOfInternalModules ],
         
   function( V, category )
     local structure_morphism;
@@ -180,8 +180,8 @@ end );
 
 ##
 InstallMethod( UniversalMorphismFromFreeModule,
-        "for an S-module, an object, and two integers",
-        [ IsSModule, IsObject, IsInt, IsInt ],
+        "for an internal module, an object, and two integers",
+        [ IsInternalModule, IsObject, IsInt, IsInt ],
         
   function( M, chi, degree, i )
     local iota;
@@ -194,8 +194,8 @@ end );
 
 ##
 InstallMethod( UniversalMorphismFromFreeModule,
-        "for an S-module, an object, and an integer",
-        [ IsSModule, IsObject, IsInt ],
+        "for an internal module, an object, and an integer",
+        [ IsInternalModule, IsObject, IsInt ],
         
   function( M, chi, i )
     local iota;
@@ -208,8 +208,8 @@ end );
 
 ##
 InstallMethod( UniversalMorphismFromFreeModule,
-        "for an S-module and an integer",
-        [ IsSModule, IsInt ],
+        "for an internal module and an integer",
+        [ IsInternalModule, IsInt ],
         
   function( M, degree )
     local iota;
