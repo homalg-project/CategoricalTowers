@@ -73,14 +73,8 @@ DeclareOperation( "InternalElement",
 DeclareAttribute( "CoefficientsVector",
         IsElementInInternalAlgebraOrModule );
 
-####################################
-##
-#! @Section Operations
-##
-####################################
-
 #! @Arguments L
 #! @Returns a &homalg; matrix
 #! @Group CoefficientsVector
 DeclareAttribute( "CoefficientsVector",
-        IsList, "mutable" );
+        IsList );

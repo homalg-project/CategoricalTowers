@@ -124,12 +124,6 @@ InstallMethod( CoefficientsVector,
     
 end );
 
-####################################
-##
-## Operations
-##
-####################################
-
 ##
 InstallMethod( CoefficientsVector,
         "for a list",
