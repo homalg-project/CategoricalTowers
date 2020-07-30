@@ -409,7 +409,7 @@ InstallMethod( SupportWithDegrees,
         
   function( M )
     
-    return ListN( SupportDegrees( M ), Support( M ) , {d,a} -> [ d, a ] );
+    return List( SupportDegrees( M ), d -> [ d, M[d] ] );
     
 end );
 
@@ -432,11 +432,11 @@ InstallMethod( DecomposedSupportWithDegrees,
         [ IsObjectInPositivelyZGradedCategory ],
         
   function( M )
-    local support;
+    local degrees, support;
     
-    support := SupportWithDegrees( M );
+    degrees := SupportDegrees( M );
     
-    support := List( support, a -> List( SemisimpleCategoryObjectListWithActualObjects( a[2] ), c -> [ a[1], c[2] ] ) );
+    support := List( degrees, d -> List( SemisimpleCategoryObjectListWithActualObjects( M[d] ), c -> [ d, c[2] ] ) );
     
     return Concatenation( support );
     
