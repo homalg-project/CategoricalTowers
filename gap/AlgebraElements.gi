@@ -112,7 +112,7 @@ InstallMethod( NonZeroPartsWithDegrees,
 end );
 
 ##
-InstallMethod( DecomposedSupportWithDegrees,
+InstallMethod( SupportWithDegrees,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         

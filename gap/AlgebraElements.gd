@@ -85,7 +85,7 @@ DeclareAttribute( "NonZeroPartsWithDegrees",
 
 #! @Arguments e
 #! @Returns a list
-DeclareAttribute( "DecomposedSupportWithDegrees",
+DeclareAttribute( "SupportWithDegrees",
         IsElementInInternalAlgebraOrModule );
 
 if false then
