@@ -108,7 +108,7 @@ InstallMethod( CoefficientsVector,
   function( e )
     local supp, L, I, vec;
     
-    supp := SupportDegrees( e );
+    supp := NonZeroDegrees( e );
     
     L := Concatenation( List( supp, d -> SemisimpleCategoryMorphismList( UnderlyingEmbedding( e )[d] ) ) );
     

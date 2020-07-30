@@ -43,6 +43,4 @@ e1 := MorphismInPositivelyZGradedCategory(
               f1,
               SV );
 
-SetSupportHullDegrees( Source( e1 ), [ 3 ] );
-
 e1 := InternalElement( e1 );

@@ -70,17 +70,17 @@ DeclareAttribute( "UnderlyingEmbedding", IsElementInInternalAlgebraOrModule );
 
 #! @Arguments e
 #! @Returns a list
-DeclareAttribute( "SupportDegrees",
+DeclareAttribute( "NonZeroDegrees",
         IsElementInInternalAlgebraOrModule );
 
 #! @Arguments e
 #! @Returns a list
-DeclareAttribute( "Support",
+DeclareAttribute( "NonZeroParts",
         IsElementInInternalAlgebraOrModule );
 
 #! @Arguments e
 #! @Returns a list
-DeclareAttribute( "SupportWithDegrees",
+DeclareAttribute( "NonZeroPartsWithDegrees",
         IsElementInInternalAlgebraOrModule );
 
 #! @Arguments e

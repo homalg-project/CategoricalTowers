@@ -71,7 +71,7 @@ end );
 ####################################
 
 ##
-InstallMethod( SupportDegrees,
+InstallMethod( NonZeroDegrees,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         
@@ -82,12 +82,12 @@ InstallMethod( SupportDegrees,
     
     source := Source( iota );
     
-    return Filtered( SupportDegrees( source ), i -> not IsZero( iota[i] ) );
+    return Filtered( NonZeroDegrees( source ), i -> not IsZero( iota[i] ) );
     
 end );
 
 ##
-InstallMethod( Support,
+InstallMethod( NonZeroParts,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         
@@ -96,18 +96,18 @@ InstallMethod( Support,
     
     iota := UnderlyingEmbedding( e );
     
-    return List( SupportDegrees( e ), i -> Source( iota[i] ) );
+    return List( NonZeroDegrees( e ), i -> Source( iota[i] ) );
     
 end );
 
 ##
-InstallMethod( SupportWithDegrees,
+InstallMethod( NonZeroPartsWithDegrees,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         
   function( e )
     
-    return ListN( SupportDegrees( e ), Support( e ) , {d,a} -> [ d, a ] );
+    return ListN( NonZeroDegrees( e ), NonZeroParts( e ) , {d,a} -> [ d, a ] );
     
 end );
 
@@ -119,7 +119,7 @@ InstallMethod( DecomposedSupportWithDegrees,
   function( e )
     local support;
     
-    support := SupportWithDegrees( e );
+    support := NonZeroPartsWithDegrees( e );
     
     support := List( support, a -> List( SemisimpleCategoryObjectListWithActualObjects( a[2] ), c -> [ a[1], c[2] ] ) );
     
@@ -164,7 +164,7 @@ InstallMethod( IsZero,
 
   function( e )
     
-    return SupportDegrees( e ) = [ ];
+    return NonZeroDegrees( e ) = [ ];
     
 end );
 
@@ -197,7 +197,7 @@ InstallMethod( \+,
     
     source := Source( e );
     
-    add_components := DiagonalEmbedding( SupportDegrees( source ), source );
+    add_components := DiagonalEmbedding( NonZeroDegrees( source ), source );
     
     e := PreCompose( add_components, e );
     
@@ -278,7 +278,7 @@ InstallMethod( \*,
     
     source := Source( am );
     
-    add_components := DiagonalEmbedding( SupportDegrees( source ), source );
+    add_components := DiagonalEmbedding( NonZeroDegrees( source ), source );
     
     am := PreCompose( add_components, am );
     
@@ -307,7 +307,7 @@ InstallMethod( BraidedMultiplication,
                         Source( UnderlyingEmbedding( a ) ), Source( UnderlyingEmbedding( b ) ),
                         source );
     
-    add_components := DiagonalEmbedding( SupportDegrees( source ), source );
+    add_components := DiagonalEmbedding( NonZeroDegrees( source ), source );
     
     ab := PreCompose( [ add_components, braiding, ab ] );
     
@@ -342,7 +342,7 @@ InstallMethod( ViewObj,
     
     iota := UnderlyingEmbedding( e );
     
-    degrees := SupportDegrees( e );
+    degrees := NonZeroDegrees( e );
     
     if degrees =  [ ] then
         Print( "0" );
