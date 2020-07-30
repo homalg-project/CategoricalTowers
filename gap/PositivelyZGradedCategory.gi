@@ -602,12 +602,12 @@ InstallMethod( ComponentInclusionMorphism,
     
 end );
 
-## this method is used for the addition method of internal module elements
-InstallMethod( DiagonalEmbedding,
-        "for a list and an object in a positively Z-graded category",
-        [ IsList, IsObjectInPositivelyZGradedCategory ],
+##
+InstallMethod( DiagonalEmbeddingWithGivenDegrees,
+        "for an object in a positively Z-graded category and a list",
+        [ IsObjectInPositivelyZGradedCategory, IsList ],
         
-  function( degrees, M )
+  function( M, degrees )
     local support_with_degrees, support, S, f;
     
     if degrees = [ ] then
@@ -662,6 +662,23 @@ InstallMethod( DiagonalEmbedding,
                    S,
                    MapLazy( IntegersList, f, 1 ),
                    M );
+    
+end );
+
+## this method is used for the addition method of internal module elements
+InstallMethod( DiagonalEmbedding,
+        "for a finite object in a positively Z-graded category",
+        [ IsObjectInPositivelyZGradedCategory ],
+        
+  function( M )
+    
+    if not ( HasNonZeroDegreesHull( M ) or HasNonZeroDegrees( M ) ) then
+        
+        Error( "the object must be finite" );
+        
+    fi;
+    
+    return DiagonalEmbeddingWithGivenDegrees( M, NonZeroDegrees( M ) );
     
 end );
 

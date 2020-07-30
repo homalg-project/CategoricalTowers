@@ -162,10 +162,14 @@ DeclareOperation( "ComponentInclusionMorphism",
 DeclareOperation( "ComponentInclusionMorphism",
         [ IsObjectInPositivelyZGradedCategory, IsInt ] );
 
-#! @Arguments degrees, M
+#! @Arguments M, degrees
+DeclareOperation( "DiagonalEmbeddingWithGivenDegrees",
+        [ IsObjectInPositivelyZGradedCategory, IsList ] );
+
+#! @Arguments M
 #! @Group DiagonalEmbedding
 DeclareOperation( "DiagonalEmbedding",
-        [ IsList, IsObjectInPositivelyZGradedCategory ] );
+        [ IsObjectInPositivelyZGradedCategory ] );
 
 #! @Arguments S, M
 #! @Group DiagonalEmbedding
