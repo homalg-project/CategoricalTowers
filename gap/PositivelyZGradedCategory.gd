@@ -77,22 +77,20 @@ DeclareAttribute( "SupportHullDegrees",
 
 #! @Arguments object
 #! @Returns a list
-#! @Group SupporWithtDegrees
 DeclareAttribute( "SupportWithDegrees",
         IsObjectInPositivelyZGradedCategory );
-
-#! @Description
-#!  The two argument version is like the first
-#!  but only considers the degrees in the given list <A>L</A>.
-#! @Arguments object, L
-#! @Group SupporWithtDegrees
-DeclareOperation( "SupporWithtDegrees",
-        [ IsObjectInPositivelyZGradedCategory, IsList ] );
 
 #! @Arguments object
 #! @Returns a list
 DeclareAttribute( "DecomposedSupportWithDegrees",
         IsObjectInPositivelyZGradedCategory );
+
+#! @Description
+#!  Like DecomposedSupportWithDegrees
+#!  but only considers the degrees in the given list <A>L</A>.
+#! @Arguments object, L
+DeclareOperation( "DecomposedSupportWithDegreesWithGivenDegrees",
+        [ IsObjectInPositivelyZGradedCategory, IsList ] );
 
 ####################################
 #

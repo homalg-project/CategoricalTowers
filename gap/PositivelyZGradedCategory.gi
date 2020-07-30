@@ -414,7 +414,7 @@ InstallMethod( SupportWithDegrees,
 end );
 
 ##
-InstallOtherMethod( SupportWithDegrees,
+InstallMethod( DecomposedSupportWithDegreesWithGivenDegrees,
         "for an object in a positively Z-graded category and a list",
         [ IsObjectInPositivelyZGradedCategory, IsList ],
         
@@ -432,13 +432,8 @@ InstallMethod( DecomposedSupportWithDegrees,
         [ IsObjectInPositivelyZGradedCategory ],
         
   function( M )
-    local degrees, support;
     
-    degrees := SupportDegrees( M );
-    
-    support := List( degrees, d -> List( SemisimpleCategoryObjectListWithActualObjects( M[d] ), c -> [ d, c[2] ] ) );
-    
-    return Concatenation( support );
+    return DecomposedSupportWithDegreesWithGivenDegrees( M, SupportDegrees( M ) );
     
 end );
 
@@ -621,7 +616,7 @@ InstallMethod( ComponentInclusionMorphism,
     
     degrees := Set( degrees );
     
-    support := SupportWithDegrees( M, degrees );
+    support := DecomposedSupportWithDegreesWithGivenDegrees( M, degrees );
     
     S := ObjectInPositivelyZGradedCategory( support );
     
