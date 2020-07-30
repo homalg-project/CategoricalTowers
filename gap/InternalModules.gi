@@ -49,7 +49,7 @@ InstallMethod( InternalModule,
 end );
 
 ##
-InstallMethodWithCache( FreeInternalModule,
+InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object, an integer, and a category of internal modules",
         [ IsCapCategoryObject, IsInt, IsCategoryOfSModules ],
         
@@ -63,7 +63,7 @@ InstallMethodWithCache( FreeInternalModule,
 end );
 
 ##
-InstallMethodWithCache( FreeInternalModule,
+InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object and a category of internal modules",
         [ IsCapCategoryObject, IsCategoryOfSModules ],
         
