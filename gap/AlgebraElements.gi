@@ -199,8 +199,6 @@ InstallMethod( InternalPreAddition,
     iota2 := UnderlyingEmbedding( e2 );
     
     e := UniversalMorphismFromDirectSum( iota1, iota2 );
-
-    SetSupportHullDegrees( Source( e ), Union( SupportDegrees( e1 ), SupportDegrees( e2 ) ) );
     
     return e;
     
@@ -273,10 +271,6 @@ InstallMethod( InternalPreMultiplication,
     iota_m := UnderlyingEmbedding( m );
     
     source := TensorProduct( Source( iota_a ), Source( iota_m ) );
-    
-    degrees := Set( List( Cartesian( SupportDegrees( a ), SupportDegrees( m ) ), Sum ) );
-    
-    SetSupportHullDegrees( source, degrees );
     
     structure_morphism := StructureMorphism( Range( m ) );
     
