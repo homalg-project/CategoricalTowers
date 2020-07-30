@@ -620,8 +620,6 @@ InstallMethod( ComponentInclusionMorphism,
     
     S := ObjectInPositivelyZGradedCategory( support );
     
-    support := DecomposedSupportWithDegrees( S );
-    
     degrees := List( support, a -> a[1] );
     support := List( support, a -> a[2] );
     
