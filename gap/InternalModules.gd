@@ -80,12 +80,6 @@ DeclareOperationWithCache( "FreeInternalModule",
 DeclareOperation( "InternalModuleMorphism",
         [ IsInternalModule, IsCapCategoryMorphism, IsInternalModule ] );
 
-#! @Arguments phi, M
-#! @Returns a &CAP; morphism
-#! @Group UniversalMorphismFromFreeModule
-DeclareOperation( "UniversalMorphismFromFreeModule",
-        [ IsMorphismInPositivelyZGradedCategory, IsInternalModule ] );
-
 ####################################
 ##
 #! @Section Attributes
@@ -108,6 +102,12 @@ DeclareOperation( "FreeInternalModuleActionMorphism",
 #! @Group FreeInternalModuleActionMorphism
 DeclareOperation( "FreeInternalModuleActionMorphism",
         [ IsCapCategoryObject, IsCategoryOfInternalModules ] );
+
+#! @Arguments phi, M
+#! @Returns a &CAP; morphism
+#! @Group UniversalMorphismFromFreeModule
+DeclareOperation( "UniversalMorphismFromFreeModule",
+        [ IsCapCategoryMorphism, IsInternalModule ] );
 
 #! @Arguments M, chi, degree, i
 #! @Group UniversalMorphismFromFreeModule

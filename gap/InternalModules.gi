@@ -130,14 +130,16 @@ end );
 
 ##
 InstallMethod( UniversalMorphismFromFreeModule,
-        "for a positively Z-graded category morphism and an S-module",
-        [ IsMorphismInPositivelyZGradedCategory, IsSModule ],
+        "for a CAP category morphism and an internal module",
+        [ IsCapCategoryMorphism, IsInternalModule ],
         
   function( iota, M )
-    local AMod, A, id_A, chi, degree, Fchi, Achi, structure_morphism, AoM, Aiota, morphism;
+    local AMod, A, id_A, N, FN, structure_morphism, AoN, AoM, Aiota, NoA, MoA, morphism;
     
     if not IsEqualForObjects( UnderlyingCell( M ), Range( iota ) ) then
-        Error( "the positively Z-graded object underlying M is not equal to Range( iota )\n" );
+        
+        Error( "the object underlying M is not equal to Range( iota )\n" );
+        
     fi;
     
     AMod := CapCategory( M );
@@ -146,29 +148,33 @@ InstallMethod( UniversalMorphismFromFreeModule,
     
     id_A := IdentityMorphism( A );
     
-    chi := Source( iota );
+    N := Source( iota );
     
-    degree := ActiveLowerBound( chi );
-    
-    chi := chi[degree];
-    
-    Fchi := FreeInternalModule( chi, degree, AMod );
-    
-    Achi := ActionDomain( Fchi );
+    FN := FreeInternalModule( N, AMod );
     
     structure_morphism := StructureMorphism( M );
     
-    AoM := Source( structure_morphism );
-    
-    if IsLeftSModule( M ) then
-        Aiota := TensorProductOnMorphismsWithGivenTensorProducts( Achi, id_A, iota, AoM );
+    if IsInternalLeftModule( M ) then
+        
+        AoN := ActionDomain( FN );
+        
+        AoM := Source( structure_morphism );
+        
+        Aiota := TensorProductOnMorphismsWithGivenTensorProducts( AoN, id_A, iota, AoM );
+        
     else
-        Aiota := TensorProductOnMorphismsWithGivenTensorProducts( Achi, iota, id_A, AoM );
+        
+        NoA := ActionDomain( FN );
+        
+        MoA := Source( structure_morphism );
+        
+        Aiota := TensorProductOnMorphismsWithGivenTensorProducts( NoA, iota, id_A, MoA );
+        
     fi;
     
     morphism := PreCompose( Aiota, structure_morphism );
-    
-    return InternalModuleMorphism( Fchi, morphism, M );
+
+    return InternalModuleMorphism( FN, morphism, M );
     
 end );
 
