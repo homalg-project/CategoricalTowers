@@ -157,7 +157,7 @@ InstallMethod( RelationsOfEndomorphisms,
         
   function( k, C )
     local objects, gmorphisms, q, kq, relation_of_endomorphism,
-          arrows, endos, vertices, i, mor, powers, m, n, foundEqual, relsEndo;
+          arrows, endos, vertices, i, mor, mpowers, m, npowers, n, foundEqual, relsEndo;
     
     objects := SetOfObjects( C );
     gmorphisms := SetOfGeneratingMorphisms( C );
@@ -194,21 +194,24 @@ InstallMethod( RelationsOfEndomorphisms,
         if not IsEndomorphism( mor ) then
             continue;
         fi;
-        powers := [];
-        m := 0;
+        mpowers := [];
+		m := 0;
         # sigma lemma
         foundEqual := false;
-        while not mor^m in powers do
+        while not mor^m in mpowers do
             n := 1;
-            while not foundEqual do
+			npowers := [];
+            while (not mor^(m+n) in npowers) and
+			  not foundEqual do
                 if IsCongruentForMorphisms( mor^(m+n), mor^m ) then
                     Add( relsEndo,
                          relation_of_endomorphism( kq, arrows[i], m, n ) );
                     foundEqual := true;
                 fi;
+				Add( npowers, mor^(m+n) );
                 n := n+1;
             od;
-            Add( powers, mor^m );
+            Add( mpowers, mor^m );
             m := m+1;
         od;
     od;

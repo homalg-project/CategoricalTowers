@@ -107,7 +107,8 @@ DeclareOperation( "Algebroid",
 #! @Returns list of relations as generators of ideal.
 DeclareOperation( "RelationsOfEndomorphisms",
         [ IsHomalgRing, IsCapCategory ] );
-		
+#! @InsertChunk Endomorphisms
+
 #! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>
 #!  by a list <A>eta</A> of morphisms, where the image embeddings thereof are
