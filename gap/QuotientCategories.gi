@@ -6,6 +6,12 @@
 ##
 #############################################################################
 
+InstallOtherMethod( UnderlyingCell,
+          [ IsList ],
+  function( L )
+    return List( L, UnderlyingCell );
+end );
+
 ##
 DeclareRepresentation( "IsQuotientCategoryRep",
                        IsCapCategoryRep and IsQuotientCategory,
