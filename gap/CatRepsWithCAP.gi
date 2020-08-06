@@ -7,7 +7,7 @@
 ##
 InstallGlobalFunction( ConvertToMapOfFinSets,
   function( objects, gen )
-    local O, T, S, G, j, i;
+    local O, T, fl, S, G, j, i;
     
     T := First( objects, O -> Length( Intersection( gen, AsList( O ) ) ) > 0 );
     
@@ -15,7 +15,8 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
         Error( "unable to find target set\n" );
     fi;
     
-    S := PositionsProperty( Flat( List( objects, O -> AsList( O ) ) ), i -> IsBound( gen[i] ) );
+	fl := Flat( List( objects, O -> AsList( O ) ));
+    S := fl{PositionsProperty( fl , i -> IsBound( gen[i] ))};
     
     S := First( objects, O -> AsList( O ) = S );
     
