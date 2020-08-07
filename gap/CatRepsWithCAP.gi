@@ -6,8 +6,9 @@
 
 ##
 InstallGlobalFunction( ConvertToMapOfFinSets,
+
   function( objects, gen )
-    local O, T, fl, S, G, j, i;
+    local O, T, fl, S, G, i;
     
     T := First( objects, O -> Length( Intersection( gen, AsList( O ) ) ) > 0 );
     
@@ -15,7 +16,7 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
         Error( "unable to find target set\n" );
     fi;
     
-	fl := Flat( List( objects, O -> AsList( O ) ));
+    fl := Flat( List( objects, O -> AsList( O ) ));
     S := fl{PositionsProperty( fl , i -> IsBound( gen[i] ))};
     
     S := First( objects, O -> AsList( O ) = S );
@@ -25,7 +26,6 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
     fi;
     
     G := [ ];
-    j := 1;
 
     G := List( S, i -> [ i, gen[i] ] ); # gen[i] is sure to be bound
     
@@ -325,7 +325,11 @@ InstallMethod( WeakDirectSumDecomposition,
     
     k := CommutativeRingOfLinearCategory( kq );
     
-    d := List( d, eta -> List( [ 1 .. Length( eta ) ], i -> VectorSpaceMorphism( VectorSpaceObject( Length( eta[i] ), k ), eta[i], F( kq.(i) ) ) ) );
+    d := List( d, eta -> List( [ 1 .. Length( eta ) ], 
+		i -> VectorSpaceMorphism( 
+			VectorSpaceObject( Length( eta[i] ), k ),
+			eta[i],
+			F( kq.(i) ) ) ) );
     
     return List( d, eta -> EmbeddingOfSubRepresentation( eta, F ) );
     
