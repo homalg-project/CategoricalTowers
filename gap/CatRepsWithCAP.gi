@@ -202,7 +202,7 @@ InstallMethod( RelationsOfEndomorphisms,
         while not mor^m in mpowers do
             n := 1;
 			npowers := [];
-            while (not mor^(m+n) in npowers) and
+            while not mor^(m+n) in npowers and
 			  not foundEqual do
                 if IsCongruentForMorphisms( mor^(m+n), mor^m ) then
                     Add( relsEndo,
