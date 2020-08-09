@@ -15,6 +15,8 @@ Version := Maximum( [
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Sebas' version
                    ## this line prevents merge conflicts
+                   "2020.08.01", ## Kamal's version
+                   ## this line prevents merge conflicts
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -77,7 +79,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2016.02.16" ],
-                   [ "CAP", ">= 2019.10.29" ],
+                   [ "CAP", ">= 2020.08.01" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "CategoryConstructor", ">= 2020.04.05" ],
                    [ "GAPDoc", ">= 1.1" ]

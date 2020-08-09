@@ -1034,7 +1034,7 @@ InstallMethod( CanonicalizeZeroObjectsAsIdentityFunctor,
     Id := IdentityFunctor( IC );
     
     ## using IC instead of C causes error, recursion depth trap (5000)
-    iso := NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects( C );
+    iso := NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects( C );
     
     F := Intrinsify( Range( iso ), IC );
     
@@ -1059,7 +1059,7 @@ InstallMethod( CanonicalizeZeroMorphismsAsIdentityFunctor,
     
     Id := IdentityFunctor( IC );
     
-    iso := NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms( C );
+    iso := NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms( C );
     
     F := Intrinsify( Range( iso ), IC );
     
