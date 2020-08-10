@@ -10,7 +10,8 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
   function( objects, gen )
     local O, T, fl, S, G, i;
     
-    T := First( objects, O -> Length( Intersection( gen, AsList( O ) ) ) > 0 );
+    T := First( objects, O -> Length( 
+	Intersection( gen, AsList( O ) ) ) > 0 );
     
     if T = fail then
         Error( "unable to find target set\n" );
@@ -45,7 +46,8 @@ InstallMethod( ConcreteCategoryForCAP,
     CapCategorySwitchLogicOff( FinSets );
     DisableSanityChecks( FinSets );
     
-    C := Subcategory( FinSets, "A finite concrete category" : overhead := false, FinalizeCategory := false );
+    C := Subcategory( FinSets, "A finite concrete category" :
+	overhead := false, FinalizeCategory := false );
     
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
@@ -71,7 +73,8 @@ InstallMethod( ConcreteCategoryForCAP,
     
     SetSetOfObjects( C, List( objects, o -> o / C ) );
     
-    SetSetOfGeneratingMorphisms( C, List( c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C ) );
+    SetSetOfGeneratingMorphisms( C, List(
+	c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C ) );
     
     Finalize( C );
     
@@ -158,7 +161,8 @@ InstallMethod( RelationsOfEndomorphisms,
         
   function( k, C )
     local objects, gmorphisms, q, kq, relation_of_endomorphism,
-          arrows, endos, vertices, i, mor, mpowers, m, npowers, n, foundEqual, relsEndo;
+          arrows, endos, vertices, i, mor, mpowers, m, npowers, n, foundEqual,
+		  relsEndo;
     
     objects := SetOfObjects( C );
     gmorphisms := SetOfGeneratingMorphisms( C );
@@ -258,8 +262,10 @@ InstallMethod( RecordOfCategory,
         
   function( kq )
 
-    return rec( domain := List( SetOfGeneratingMorphisms( kq ), a -> VertexIndex( UnderlyingVertex( Source( a ) ) ) ),
-                codomain := List( SetOfGeneratingMorphisms( kq ), a -> VertexIndex( UnderlyingVertex( Range( a ) ) ) ),
+    return rec( domain := List( SetOfGeneratingMorphisms( kq ), 
+		a -> VertexIndex( UnderlyingVertex( Source( a ) ) ) ),
+                codomain := List( SetOfGeneratingMorphisms( kq ), 
+		a -> VertexIndex( UnderlyingVertex( Range( a ) ) ) ),
                 );
     
 end );
@@ -272,9 +278,11 @@ InstallMethod( RecordOfCatRep,
   function( F )
 
     return rec( category := RecordOfCategory( Source( CapCategory( F ) ) ),               
-                genimages := List( ValuesOnAllGeneratingMorphisms( F ), a -> Eval( UnderlyingMatrix( a ) )!.matrix ),
+                genimages := List( ValuesOnAllGeneratingMorphisms( F ), 
+					a -> Eval( UnderlyingMatrix( a ) )!.matrix ),
                 dimension := List( ValuesOnAllObjects( F ), Dimension ),
-                field := CommutativeRingOfLinearCategory( Source( CapCategory( F ) ) )!.ring
+                field := CommutativeRingOfLinearCategory( 
+					Source( CapCategory( F ) ) )!.ring
                 );
     
 end );
@@ -290,14 +298,17 @@ InstallMethod( EmbeddingOfSubRepresentation,
     
     kq := Source( CapCategory( F ) );
     
-    eta := List( eta, function( eta_o ) if IsMonomorphism( eta_o ) then return eta_o; fi; return ImageEmbedding( eta_o ); end );
+    eta := List( eta, function( eta_o ) if IsMonomorphism( eta_o ) then 
+		return eta_o; fi; return ImageEmbedding( eta_o ); end );
     
     objects := List( eta, Source );
     morphisms := List(
                       SetOfGeneratingMorphisms( kq ),
                       m ->
-                      LiftAlongMonomorphism( eta[VertexIndex( UnderlyingVertex( Range( m ) ) )],
-                              PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )], F( m ) ) ) );
+                      LiftAlongMonomorphism(
+						eta[VertexIndex( UnderlyingVertex( Range( m ) ) )],
+                        PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )],
+							F( m ) ) ) );
     
     subrep := AsObjectInHomCategory( kq, objects, morphisms );
     
