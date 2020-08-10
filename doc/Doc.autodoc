@@ -5,6 +5,9 @@
 @Subsection A category of module homomorphisms
 @InsertChunk CategoryOfRepresentations
 
+@Subsection Another category of module homomorphisms
+@InsertChunk RepresentingC4C4
+
 @Section GAP categories
 @Section Global variables
 @Section Attributes
