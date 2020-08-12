@@ -17,7 +17,7 @@
 ## categories
 
 #!
-DeclareCategory( "IsInternalAlgebra", IsCapCategory );
+DeclareCategory( "IsInternalAlgebra", IsCapCategoryObject );
 
 #!
 DeclareCategory( "IsElementInInternalAlgebraOrModule",
