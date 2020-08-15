@@ -594,7 +594,7 @@ InstallMethod( LazyCategory,
             ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
             
             if IsEmpty( ess ) then
-                ess := diagram[1];
+                ess := [ diagram[1] ];
             fi;
             
             if Length( ess ) = 1 then
@@ -638,7 +638,7 @@ InstallMethod( LazyCategory,
             ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
             
             if IsEmpty( ess ) then
-                ess := diagram[1];
+                ess := [ diagram[1] ];
             fi;
             
             if Length( ess ) = 1 then
