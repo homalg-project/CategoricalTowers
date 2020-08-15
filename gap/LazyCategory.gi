@@ -542,39 +542,34 @@ InstallMethod( LazyCategory,
     if optimize > 0 then
         
         AddPreCompose( D,
-          [ 
-            [ function( phi, psi )
-                local composition;
+          function( phi, psi )
+            local composition;
+
+            if IsIdenticalToIdentityMorphism( psi ) then
                 
-                return AsMorphismInLazyCategory( Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
+                return phi;
                 
-            end, [ , ] ],
+            fi;
             
-            [ function( left_morphism, identity_morphism )
+            if IsIdenticalToIdentityMorphism( phi ) then
                 
-                return left_morphism;
-              
-            end, [ , IsIdenticalToIdentityMorphism ] ],
+                return psi;
+                
+            fi;
             
-            [ function( identity_morphism, right_morphism )
+            if CanCompute( D, "IsIdenticalToZeroMorphism" ) then
                 
-                return right_morphism;
+                if IsIdenticalToZeroMorphism( phi ) or IsIdenticalToZeroMorphism( psi ) then
+                    
+                    return ZeroMorphism( Source( phi ), Range( psi ) );
+                    
+                fi;
                 
-              end, [ IsIdenticalToIdentityMorphism, ] ],
+            fi;
             
-            [ function( left_morphism, zero_morphism )
-                
-                return ZeroMorphism( Source( left_morphism ), Range( zero_morphism ) );
-                
-              end, [ , IsIdenticalToZeroMorphism ] ],
+            return AsMorphismInLazyCategory( Source( phi ), "PreCompose", [ phi, psi ], Range( psi ) );
             
-            [ function( zero_morphism, right_morphism )
-                
-                return ZeroMorphism( Source( zero_morphism ), Range( right_morphism ) );
-                
-              end, [ IsIdenticalToZeroMorphism, ] ],
-          ]
-        );
+        end );
         
         AddDirectSum( D,
           function( arg )
