@@ -28,12 +28,12 @@ Display( g );
 #! @EndExample
 
 #! We can also create finite concrete categories with objects 
-#! not starting from 1, to demonstrate that
-#! ConcreteCategoryForCAP( [ [,,,5,6,4], [,,,7,8,9], [,,,,,,8,9,7] ] ) 
-#! and ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] ) yield
-#! equivalent categories, i.e. their underlying quivers are 
-#! the same and they give the same algebroid and category 
-#! of representations.
+#! not starting with $1$, to demonstrate that
+#! <C>ConcreteCategoryForCAP( [ [,,,5,6,4], [,,,7,8,9], [,,,,,,8,9,7] ] )</C>
+#! and <C>ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] )</C> yield
+#! isomorphic categories, in particular, their underlying quivers are
+#! isomorphic (here even equal), inducing isomorphic algebroids and
+#! isomorphic categories of representations.
 
 #! @Example
 ccat := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
@@ -57,6 +57,3 @@ CatReps2 := Hom( A2, GF3 );
 CatReps1 = CatReps2;
 #! true
 #! @EndExample
-
-
-
