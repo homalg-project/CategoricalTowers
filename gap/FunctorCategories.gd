@@ -214,14 +214,13 @@ DeclareAttribute( "AsObjectInHomCategory",
         IsCapFunctor );
 
 #! @Description
-#! @Arguments B, rec_images_of_objects, rec_images_of_morphisms
 #!  An alternative input is the source category <A>B</A> and two defining records <A>rec_images_of_objects</A> and <A>rec_images_of_morphisms</A> of <A>F</A>.
+#! @Arguments B, rec_images_of_objects, rec_images_of_morphisms
 #! @Group AsObjectInHomCategory
 DeclareOperation( "AsObjectInHomCategory",
         [ IsCapCategory, IsRecord, IsRecord ] );
 
 #! @Description
-#! @Arguments B, images_of_objects, images_of_morphisms
 #!  Another alternative input is the source category <A>B</A> and two defining lists <A>images_of_objects</A> and <A>images_of_morphisms</A> of <A>F</A>.
 #!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
 #!  
@@ -231,6 +230,7 @@ DeclareOperation( "AsObjectInHomCategory",
 #!  $k:=$ <C>CommutativeRingOfLinearCategory</C>( B ) is a field
 #!  then the two lists are interpreted as objects and morphisms
 #!  in <C>MatrixCategory</C>( $k$ ), respectively.
+#! @Arguments B, images_of_objects, images_of_morphisms
 #! @Group AsObjectInHomCategory
 DeclareOperation( "AsObjectInHomCategory",
         [ IsCapCategory, IsList, IsList ] );
