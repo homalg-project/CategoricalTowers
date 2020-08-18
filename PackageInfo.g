@@ -13,7 +13,7 @@ Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
                    "2020.06.01", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2020.08.15", ## Fabian's version
+                   "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -78,7 +78,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2020.04.15" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
-                   [ "CategoryConstructor", ">= 2020.04.10" ],
+                   [ "CategoryConstructor", ">= 2020.08.16" ],
                    [ "Digraphs", ">= 0.12.1" ],
                   ],
   SuggestedOtherPackages := [
