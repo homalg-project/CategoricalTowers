@@ -12,6 +12,10 @@ InstallOtherMethod( UnderlyingCell,
     return List( L, UnderlyingCell );
 end );
 
+InstallOtherMethod( UnderlyingCell,
+          [ IsInt ], IdFunc
+);
+
 ##
 DeclareRepresentation( "IsQuotientCategoryRep",
                        IsCapCategoryRep and IsQuotientCategory,
@@ -199,7 +203,7 @@ InstallMethod( QuotientCategory,
             
             S := src_trg[1];
             T := src_trg[2];
-            
+             
             return QuotientCategoryMorphism( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
             
         end;
