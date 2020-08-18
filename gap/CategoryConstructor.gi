@@ -47,6 +47,8 @@ InstallGlobalFunction( CategoryConstructor,
     list_of_operations_to_install := ShallowCopy( list_of_operations_to_install );
     
     skip := [ 
+              "IsIdenticalToIdentityMorphism",    ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
+              "IsIdenticalToZeroMorphism",        ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
               "DirectSumCodiagonalDifference",    ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               "DirectSumDiagonalDifference",      ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
