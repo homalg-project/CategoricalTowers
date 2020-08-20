@@ -1,4 +1,5 @@
 /maketest.g
+/tst/internalmodules*.tst
 /doc/*.xml
 
 /doc/chap*.html

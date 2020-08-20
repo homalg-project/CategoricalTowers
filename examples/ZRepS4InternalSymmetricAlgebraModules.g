@@ -1,82 +1,138 @@
-LoadPackage( "GroupRepresentationsForCAP" );
+#! @Chapter Examples and tests
 
-RepG := RepresentationCategoryZGraded( SymmetricGroup( 4 ) );
-
-G := UnderlyingGroupForRepresentationCategory( RepG );
-
-irr := Irr( G );
-
-v := RepresentationCategoryZGradedObject( 1, irr[2], RepG );
-
-LoadPackage( "GradedCategories" );
-
-ZRepG := PositivelyZGradedCategory( RepG );
+#! @Section Examples
 
 LoadPackage( "InternalModules" );
 
-V := ObjectInPositivelyZGradedCategory( v );
+#! @Example
 
+G := SymmetricGroup( 4 );;
+irr := Irr( G );;
+one := GIrreducibleObject( irr[5] );;
+SetString( one, "1" );;
+sigma := GIrreducibleObject( irr[1] );;
+SetString( sigma, "sigma" );;
+rho := GIrreducibleObject( irr[3] );;
+SetString( rho, "rho" );;
+nu := GIrreducibleObject( irr[4] );;
+SetString( nu, "nu" );;
+chi := GIrreducibleObject( irr[2] );;
+SetString( chi, "chi" );;
+
+RepG := RepresentationCategoryZGraded( G );;
+v := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;
+ZRepG := PositivelyZGradedCategory( RepG );
+#! The positively graded category of The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )
+V := ObjectInPositivelyZGradedCategory( v );;
 SVMod := CategoryOfLeftSModules( v );
-
+#! Abelian category of left modules over the internal symmetric algebra of
+#! 1*(x_[1, 2])
+#! with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts
+ModSV := CategoryOfRightSModules( v );;
 SV := UnderlyingActingObject( SVMod );
-
-ModSV := CategoryOfRightSModules( v );
-
+#! <An object in The positively graded category of The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )>
 S := SymmetricAlgebraAsLeftModule( v );
+#! <An object in Abelian category of left modules over the internal symmetric algebra of
+#! 1*(x_[1, 2])
+#! with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts>
 
-u := RepresentationCategoryZGradedObject( 3, irr[2], RepG );
-
-U := ObjectInPositivelyZGradedCategory( u );
-
+u := RepresentationCategoryZGradedObject( 3, irr[2], RepG );;
+U := ObjectInPositivelyZGradedCategory( u );;
 F := FreeInternalModule( U, SVMod );
+#! <An object in Abelian category of left modules over the internal symmetric algebra of
+#! 1*(x_[1, 2])
+#! with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts>
+H := FreeInternalModule( U, ModSV );;
 
-H := FreeInternalModule( U, ModSV );
+nu6 := Support( F[6] )[4];
+#! <x_[6, 4]>
+c1 := UniversalMorphismFromFreeModule( F, nu6, 1 );;
+c2 := UniversalMorphismFromFreeModule( F, nu6, 2 );;
+c := 2 * c1 - 3 * c2;;
+Display( c[6] );
+#! Component: (x_[6, 4])
+#! 
+#! 2,-3,0,0
+#! 
+#! A morphism in Category of matrices over Q
+#! 
+#! ------------------------
 
-chi := Support( F[6] )[4];
+a := InternalElement( SV, Support( SV[1] )[1], 1 );;
+b := InternalElement( SV, Support( SV[2] )[1], 1 );;
+c := InternalElement( SV, Support( SV[2] )[2], 1 );;
+d := InternalElement( SV, Support( SV[3] )[3], 1 );;
 
-c1 := UniversalMorphismFromFreeModule( F, chi, 1 );
+cc := UniversalMorphismFromFreeModule( c );;
+dd := UniversalMorphismFromFreeModule( d );;
 
-c2 := UniversalMorphismFromFreeModule( F, chi, 2 );
+pp := ProjectionInFactorOfFiberProduct( [ cc, dd ], 1 );;
+qq := ProjectionInFactorOfFiberProduct( [ cc, dd ], 2 );;
 
-c := 2 * c1 - 3 * c2;
+ff := PreCompose( pp, cc ) - PreCompose( qq, dd );;
+Set( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );
+#! [ true ]
 
-a := InternalElement( SV, Support( SV[1] )[1], 1 );
-b := InternalElement( SV, Support( SV[2] )[1], 1 );
-c := InternalElement( SV, Support( SV[2] )[2], 1 );
-d := InternalElement( SV, Support( SV[3] )[3], 1 );
-
-cc := UniversalMorphismFromFreeModule( c );
-dd := UniversalMorphismFromFreeModule( d );
-
-pp := ProjectionInFactorOfFiberProduct( [ cc, dd ], 1 );
-qq := ProjectionInFactorOfFiberProduct( [ cc, dd ], 2 );
-
-ff := PreCompose( pp, cc ) - PreCompose( qq, dd );
-
-Assert( 0, Set( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) ) = [ true ] );
-
-ss := UniversalMorphismIntoDirectSum( pp, -qq );
-tt := UniversalMorphismFromDirectSum( cc, dd );
+ss := UniversalMorphismIntoDirectSum( pp, -qq );;
+tt := UniversalMorphismFromDirectSum( cc, dd );;
 
 ## homology
-hh := ImageObject( PreCompose( KernelEmbedding( tt ), CokernelProjection( ss ) ) );
+hh := ImageObject( PreCompose( KernelEmbedding( tt ), CokernelProjection( ss ) ) );;
+Set( List( Sublist( hh, [ 0 .. 5 ] ), IsZero ) );
+#! [ true ]
 
-Assert( 0, Set( List( Sublist( hh, [ 0 .. 5 ] ), IsZero ) ) = [ true ] );
+sigma3 := Support( SV[3] )[1];
+#! <x_[3, 1]>
+chi3 := Support( SV[3] )[2];
+#! <x_[3, 2]>
+nu3 := Support( SV[3] )[3];
+#! <x_[3, 4]>
 
-chi1 := Support( SV[3] )[1];
-chi2 := Support( SV[3] )[2];
-chi3 := Support( SV[3] )[3];
-
-e1 := InternalElement( SV, chi1, 1 );
-e2 := InternalElement( SV, chi2, 1 );
-e3 := InternalElement( SV, chi2, 2 );
-e4 := InternalElement( SV, chi3, 1 );
+e1 := InternalElement( SV, sigma3, 1 );;
+e2 := InternalElement( SV, chi3, 1 );;
+e3 := InternalElement( SV, chi3, 2 );;
+e4 := InternalElement( SV, nu3, 1 );;
 
 e := e1 + 2 * e2 - 1/3 * e3 + e4;
+#! degree: 3
+#! 
+#! Component: (x_[3, 1])
+#! 
+#! 1
+#! 
+#! A morphism in Category of matrices over Q
+#! 
+#! ------------------------
+#! Component: (x_[3, 2])
+#! 
+#! 2,-1/3
+#! 
+#! A morphism in Category of matrices over Q
+#! 
+#! ------------------------
+#! Component: (x_[3, 4])
+#! 
+#! 1
+#! 
+#! A morphism in Category of matrices over Q
+#! 
+#! ------------------------
 
-Assert( 0, e2 * e3 = BraidedMultiplication( e3, e2 ) );
+e2 * e3 = BraidedMultiplication( e3, e2 );
+#! true
 
-m1 := InternalElement( F, chi, 1 );
-m2 := InternalElement( F, chi, 2 );
+m1 := InternalElement( F, nu6, 1 );;
+m2 := InternalElement( F, nu6, 2 );;
 
 m := 2 * m1 - 1/3 * m2;
+#! degree: 6
+#! 
+#! Component: (x_[6, 4])
+#! 
+#! 2,-1/3,0,0
+#! 
+#! A morphism in Category of matrices over Q
+#! 
+#! ------------------------
+
+#! @EndExample

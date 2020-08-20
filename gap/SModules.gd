@@ -4,7 +4,7 @@
 ##
 ##  Copyright 2019, Mohamed Barakat,   University of Siegen
 ##
-#! @Chapter Internal symmetric algebra modules
+#! @Chapter Modules over the internal symmetric algebra
 ##
 #############################################################################
 
