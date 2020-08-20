@@ -6,18 +6,19 @@ doc/manual.six: makedoc.g \
 		PackageInfo.g \
 		doc/Doc.autodoc \
 		gap/*.gd gap/*.gi examples/*.g examples/doc/*.g
-	        gap makedoc.g
+			gap makedoc.g
 
 clean:
 	(cd doc ; ./clean)
 
-test:	doc
-	gap maketest.g
+test: doc
+	gap tst/testall.g
+
+test-tabs:
+	! grep -RP "\t" examples/ gap/
 
 test-with-coverage: doc
-	OUTPUT=$$(gap --banner --quitonbreak --cover stats maketest.g 2>&1); \
-	echo "$$OUTPUT"; \
-	! echo "$$OUTPUT" | sed "s/\r//" | grep -v "Running list" | grep -v "^#I  " | grep "" > /dev/null
+	gap --quitonbreak --cover stats tst/testall.g
 	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap
 
-ci-test: test-with-coverage
+ci-test: test-tabs test-with-coverage

@@ -1,4 +1,5 @@
 /maketest.g
+/tst/gradedcategories*.tst
 /doc/*.xml
 
 /doc/chap*.html
