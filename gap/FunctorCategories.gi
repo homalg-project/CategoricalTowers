@@ -1311,7 +1311,7 @@ InstallMethodWithCache( Hom,
           
           iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
-          return IsProjective( ApplyFunctor( iso, F ) );
+          return IsProjectiveRepresentation( ApplyFunctor( iso, F ) );
           
       end );
       
@@ -1321,7 +1321,7 @@ InstallMethodWithCache( Hom,
           
           iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
           
-          return IsInjective( ApplyFunctor( iso, F ) );
+          return IsInjectiveRepresentation( ApplyFunctor( iso, F ) );
           
       end );
       
