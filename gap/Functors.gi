@@ -214,7 +214,7 @@ InstallMethod( YonedaEmbedding,
     
     AddObjectFunction( Yoneda,
       function( o )
-        local m;
+        local m, Yo;
         
         o := OppositePath( UnderlyingVertex( o ) ) / algebroid_op;
         
@@ -222,7 +222,11 @@ InstallMethod( YonedaEmbedding,
         
         o := List( objs, obj -> HomStructure( o, obj ) );
         
-        return AsObjectInHomCategory( algebroid_op, o, m );
+        Yo := AsObjectInHomCategory( algebroid_op, o, m );
+        
+        SetIsProjective( Yo, true );
+        
+        return Yo;
         
     end );
     
