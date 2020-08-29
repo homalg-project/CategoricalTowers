@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
 Version := Maximum( [
-  "2019.02.02", ## Mohamed's version
+  "2020.07.25", ## Mohamed's version
   ## this line prevents merge conflicts
   "2020.07.24", ## Fabian's version
 ] ),
@@ -27,7 +27,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "http://mohamed-barakat.github.io",
+    WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -57,10 +57,9 @@ SourceRepository := rec(
     URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
                                  "/", ~.PackageName, "-", ~.Version ),
@@ -89,7 +88,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.8",
+  GAP := ">= 4.9.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "GradedCategories", ">= 2020.07.24" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
@@ -102,8 +101,8 @@ AvailabilityTest := function()
         return true;
     end,
 
-Keywords := [ "internal symmetric algebra" ],
+TestFile := "tst/testall.g",
+
+Keywords := [ "internalized algebras, modules over internalized algebras, internalized symmetric algebra" ],
 
 ));
-
-
