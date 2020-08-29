@@ -1,4 +1,4 @@
-# InternalModules -- Modules over internalized algebras
+# InternalModules – Modules over internalized algebras
 
 | **Documentation**                                                 | **Build Status**                                                                                |
 |:-----------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
