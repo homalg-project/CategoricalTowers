@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
 Version := Maximum( [
-                   "2020.05.15", ## Mohamed's version
+                   "2020.05.16", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.01.01", ## Tibor's version
                    ## this line prevents merge conflicts
@@ -31,7 +31,7 @@ Persons := [
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
@@ -45,7 +45,7 @@ Persons := [
     Email := "tibor.gruen@student.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
