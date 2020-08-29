@@ -284,7 +284,8 @@ git archive --prefix=$BASENAME/ $TAG . | tar xf - -C "$TMP_DIR/"
 cd "$TMP_DIR/$BASENAME"
 
 notice "Removing unnecessary files"
-rm -f .git* .hg* .cvs*
+rm -rf .github .circleci
+rm -f .git* .hg* .cvs* .codecov*
 
 if [ -x autogen.sh ] ; then
     notice "Generating build system files"
