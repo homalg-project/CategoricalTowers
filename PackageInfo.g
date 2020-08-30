@@ -11,13 +11,15 @@ SetPackageInfo( rec(
 PackageName := "GradedCategories",
 Subtitle := "Graded categories",
 Version := Maximum( [
-                   "2020.05.01", ## Mohamed's version
+                   "2020.07.25", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.07.24", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
+
 
 Persons := [
   rec(
@@ -25,7 +27,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "https://mohamed-barakat.github.io",
+    WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -55,10 +57,9 @@ SourceRepository := rec(
     URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
                                  "/", ~.PackageName, "-", ~.Version ),
