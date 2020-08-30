@@ -9,9 +9,9 @@
 SetPackageInfo( rec(
 
 PackageName := "GradedCategories",
-Subtitle := "Graded categories",
+Subtitle := "Graded closures of categories",
 Version := Maximum( [
-                   "2020.07.25", ## Mohamed's version
+                   "2020.07.27", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.07.24", ## Fabian's version
                    ] ),
@@ -84,7 +84,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Graded categories",
+  LongTitle := "Graded closures of categories",
 ),
 
 Dependencies := rec(

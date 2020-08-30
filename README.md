@@ -1,4 +1,4 @@
-# GradedCategories
+# GradedCategories – Graded closures of categories
 
 | **Documentation**                       | **Build Status**                                            |
 |:---------------------------------------:|:-----------------------------------------------------------:|
@@ -13,4 +13,4 @@
 [codecov-img]: https://codecov.io/gh/homalg-project/GradedCategories/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/GradedCategories
 
-* [SymmetricAlgebraInternalToS4rep](https://nbviewer.jupyter.org/github/homalg-project/InternalModules/blob/master/examples/julia/notebooks/SymmetricAlgebraInternalToS4rep.ipynb): Computations over an internalized symmetric algebra.
+This package is used by [InternalModules](https://github.com/homalg-project/InternalModules) to construct graded closures of tensor categories in which to internalize graded algebras like the symmetric algebra.
