@@ -52,6 +52,29 @@ end );
 ##
 # graded version
 InstallMethod( InternalElement,
+        "for an internal algebra in a positively Z-graded category, a CAP category object, and two integers",
+        [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsSemisimpleCategoryObject, IsInt, IsInt ],
+        
+  function ( SV, obj, degree, i )
+    local decomposition, chi;
+    
+    decomposition := SemisimpleCategoryObjectList( obj );
+    
+    if Length( decomposition ) <> 1 or decomposition[1][1] <> 1 then
+        
+        Error( "obj must be a simple object" );
+        
+    fi;
+    
+    chi := decomposition[1][2];
+    
+    return InternalElement( SV, chi, degree, i );
+    
+end );
+
+##
+# graded version
+InstallMethod( InternalElement,
         "for an internal algebra in a positively Z-graded category, an object, and an integer",
         [ IsInternalAlgebra and IsObjectInPositivelyZGradedCategory, IsObject, IsInt ],
         

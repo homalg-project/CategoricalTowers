@@ -58,6 +58,29 @@ InstallMethod( InternalElement,
 end );
 
 ##
+# graded version
+InstallMethod( InternalElement,
+        "for an internal module, a CAP category object, and two integers",
+        [ IsInternalModule, IsSemisimpleCategoryObject, IsInt, IsInt ],
+        
+  function ( M, obj, degree, i )
+    local decomposition, chi;
+    
+    decomposition := SemisimpleCategoryObjectList( obj );
+    
+    if Length( decomposition ) <> 1 or decomposition[1][1] <> 1 then
+        
+        Error( "obj must be a simple object" );
+        
+    fi;
+    
+    chi := decomposition[1][2];
+    
+    return InternalElement( M, chi, degree, i );
+    
+end );
+
+##
 # graded version, and chi knows its degree
 InstallMethod( InternalElement,
         "for an internal module, an object, and an integer",
