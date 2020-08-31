@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
 Version := Maximum( [
-  "2020.07.29", ## Mohamed's version
+  "2020.07.30", ## Mohamed's version
   ## this line prevents merge conflicts
   "2020.07.24", ## Fabian's version
 ] ),
