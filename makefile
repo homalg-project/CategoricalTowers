@@ -17,8 +17,8 @@ test: doc
 test-tabs:
 	! grep -RP "\t" examples/ gap/
 
-test-overfull-hboxes:
-	gap makedoc_with_overfull_box_warnings.g | perl -pe 'END { exit $$status } $$status=1 if /Overfull \\hbox/;'
+test-doc:
+	gap makedoc_with_overfull_hbox_warnings.g | perl -pe 'END { exit $$status } $$status=1 if /#W/;'
 
 test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
@@ -42,4 +42,4 @@ test-spacing:
 	rm spacing_diff
 	rm spacing_diff_no_blanks
 
-ci-test: test-tabs test-spacing test-overfull-hboxes test-with-coverage
+ci-test: test-tabs test-spacing test-doc test-with-coverage
