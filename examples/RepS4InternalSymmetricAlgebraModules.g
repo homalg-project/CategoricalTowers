@@ -22,26 +22,31 @@ SetString( chi, "chi" );;
 RepG := RepresentationCategory( G );;
 v := RepresentationCategoryObject( irr[2], RepG );;
 ZRepG := PositivelyZGradedCategory( RepG );
-#! The positively graded category of The representation category of SymmetricGroup( [ 1 .. 4 ] )
+#! The positively graded category of The representation category of
+#! SymmetricGroup( [ 1 .. 4 ] )
 V := ObjectInPositivelyZGradedCategory( v, 1 );;
 SVMod := CategoryOfLeftSModules( v );
 #! Abelian category of left modules over the internal symmetric algebra of
 #! 1*(x_chi)
-#! with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts
+#! with undecidable (mathematical) equality of morphisms and
+#! uncomputable lifts and colifts
 ModSV := CategoryOfRightSModules( v );;
 SV := UnderlyingActingObject( SVMod );
-#! <An object in The positively graded category of The representation category of SymmetricGroup( [ 1 .. 4 ] )>
+#! <An object in The positively graded category of
+#!  The representation category of SymmetricGroup( [ 1 .. 4 ] )>
 S := SymmetricAlgebraAsLeftModule( v );
-#! <An object in Abelian category of left modules over the internal symmetric algebra of
-#! 1*(x_chi)
-#! with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts>
+#! <An object in Abelian category of
+#!  left modules over the internal symmetric algebra of 1*(x_chi)
+#!  with undecidable (mathematical) equality of morphisms and
+#!  uncomputable lifts and colifts>
 
 u := RepresentationCategoryObject( irr[2], RepG );;
 U := ObjectInPositivelyZGradedCategory( u, 3 );;
 F := FreeInternalModule( U, SVMod );
-#! <An object in Abelian category of left modules over the internal symmetric algebra of
-#! 1*(x_chi)
-#! with undecidable (mathematical) equality of morphisms and uncomputable lifts and colifts>
+#! <An object in Abelian category of
+#!  left modules over the internal symmetric algebra of 1*(x_chi)
+#!  with undecidable (mathematical) equality of morphisms and
+#!  uncomputable lifts and colifts>
 H := FreeInternalModule( U, ModSV );;
 
 nu := Support( F[6] )[4];
@@ -76,9 +81,8 @@ Set( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );
 ss := UniversalMorphismIntoDirectSum( pp, -qq );;
 tt := UniversalMorphismFromDirectSum( cc, dd );;
 
-## homology
-hh := ImageObject( PreCompose( KernelEmbedding( tt ), CokernelProjection( ss ) ) );;
-Set( List( Sublist( hh, [ 0 .. 5 ] ), IsZero ) );
+homology := HomologyObject( ss, tt );;
+Set( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );
 #! [ true ]
 
 sigma := Support( SV[3] )[1];
