@@ -60,7 +60,7 @@ InstallMethod( InternalElement,
 end );
 
 ##
-# graded version
+# graded version, and chi knows its degree
 InstallMethod( InternalElement,
         "for an internal module, an object, and an integer",
         [ IsInternalModule, IsObject, IsInt ],
