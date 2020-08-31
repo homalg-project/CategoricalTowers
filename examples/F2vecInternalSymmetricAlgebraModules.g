@@ -37,13 +37,14 @@ F := FreeInternalModule( U, SVMod );
 #!  uncomputable lifts and colifts>
 H := FreeInternalModule( U, ModSV );;
 
-f1 :=
-  function( n )
-    if not n = 3 then
-        return UniversalMorphismFromZeroObject( SV[n] ); fi; return VectorSpaceMorphism( SV[0], CertainRows( HomalgIdentityMatrix( 10, F2 ), [ 1 ] ), SV[3] ); end;;
 e1 := MorphismInPositivelyZGradedCategory(
               ObjectInPositivelyZGradedCategory( SV[0], 3 ),
-              f1,
+              VectorSpaceMorphism(
+                  SV[0],
+                  CertainRows( HomalgIdentityMatrix( 10, F2 ), [ 1 ] ),
+                  SV[3]
+              ),
+              3,
               SV );;
 e1 := InternalElement( e1 );
 #! degree: 3
