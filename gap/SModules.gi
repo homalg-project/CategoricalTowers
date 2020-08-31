@@ -1,8 +1,8 @@
 ############################################################################
 ##
-##                                InternalModules package
+## InternalModules package
 ##
-##  Copyright 2019, Mohamed Barakat,   University of Siegen
+## Copyright 2019, Mohamed Barakat, University of Siegen
 ##
 #############################################################################
 
@@ -19,7 +19,7 @@ InstallMethod( CategoryOfLeftSModules,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     local structure_morphism, SV, name, SVMod;
     
     structure_morphism := SymmetricAlgebraMultiplicationMorphism( V );
@@ -52,7 +52,7 @@ InstallMethod( CategoryOfRightSModules,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     local structure_morphism, SV, name, ModSV;
     
     structure_morphism := SymmetricAlgebraMultiplicationMorphism( V );

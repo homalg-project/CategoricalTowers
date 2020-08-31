@@ -1,8 +1,8 @@
 ############################################################################
 ##
-##                                InternalModules package
+## InternalModules package
 ##
-##  Copyright 2019, Mohamed Barakat,   University of Siegen
+## Copyright 2019, Mohamed Barakat, University of Siegen
 ##
 #############################################################################
 
@@ -17,7 +17,7 @@ InstallMethod( InternalElement,
         "for a CAP category morphism and an internal module",
         [ IsCapCategoryMorphism, IsInternalModule ],
         
-  function( iota, M )
+  function ( iota, M )
     local source;
     
     source := Source( iota );
@@ -50,7 +50,7 @@ InstallMethod( InternalElement,
         "for an internal module, an object, and two integers",
         [ IsInternalModule, IsObject, IsInt, IsInt ],
         
-  function( M, chi, degree, i )
+  function ( M, chi, degree, i )
     local iota;
     
     iota := ComponentInclusionMorphism( ActionDomain( M ), chi, degree, i );
@@ -65,7 +65,7 @@ InstallMethod( InternalElement,
         "for an internal module, an object, and an integer",
         [ IsInternalModule, IsObject, IsInt ],
         
-  function( M, chi, i )
+  function ( M, chi, i )
     local iota;
     
     iota := ComponentInclusionMorphism( ActionDomain( M ), chi, i );
@@ -85,9 +85,9 @@ InstallMethod( AdditiveInverse,
         "for an element in an internal module",
         [ IsElementInInternalModule ],
         
-  function( e )
+  function ( e )
     
-    return InternalElement( -UnderlyingEmbedding( e ), Range( e ) );
+    return InternalElement( - UnderlyingEmbedding( e ), Range( e ) );
     
 end );
 
@@ -96,7 +96,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
         "for an element in an internal module",
         [ IsElementInInternalModule ],
         
-  function( e )
+  function ( e )
     
     return UniversalMorphismFromFreeModule( UnderlyingEmbedding( e ), Range( e ) );
     
@@ -107,7 +107,7 @@ InstallMethod( CoefficientsVector,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         
-  function( e )
+  function ( e )
     local supp, L, I, vec;
     
     supp := NonZeroDegrees( e );
@@ -118,7 +118,7 @@ InstallMethod( CoefficientsVector,
     
     I := TensorUnit( CapCategory( Range( L[1] ) ) );
     
-    L := List( L, function( a ) if not IsZero( a ) then return a; fi; return ZeroMorphism( I, Range( a ) ); end );
+    L := List( L, function ( a ) if not IsZero( a ) then return a; fi; return ZeroMorphism( I, Range( a ) ); end );
     
     vec := UniversalMorphismIntoDirectSum( L );
     
@@ -131,7 +131,7 @@ InstallMethod( CoefficientsVector,
         "for a list",
         [ IsList ],
         
-  function( L )
+  function ( L )
     local vecs;
     
     vecs := List( L, CoefficientsVector );

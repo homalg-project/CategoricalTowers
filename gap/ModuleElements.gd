@@ -1,8 +1,8 @@
 ############################################################################
 ##
-##                                InternalModules package
+## InternalModules package
 ##
-##  Copyright 2019, Mohamed Barakat,   University of Siegen
+## Copyright 2019, Mohamed Barakat, University of Siegen
 ##
 #! @Chapter Internal module elements
 ##

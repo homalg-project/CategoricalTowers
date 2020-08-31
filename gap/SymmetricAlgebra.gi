@@ -1,8 +1,8 @@
 ############################################################################
 ##
-##                                InternalModules package
+## InternalModules package
 ##
-##  Copyright 2019, Mohamed Barakat,   University of Siegen
+## Copyright 2019, Mohamed Barakat, University of Siegen
 ##
 #############################################################################
 
@@ -17,7 +17,7 @@ InstallMethod( SymmetricAlgebraAsInfiniteList,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     local L, degree, sym;
     
     if IsRepresentationCategoryZGradedObject( V ) then
@@ -38,7 +38,7 @@ InstallMethod( SymmetricAlgebraAsInfiniteList,
     fi;
     
     sym :=
-      function( n )
+      function ( n )
         if n > 1 then
             return Range( SymmetricAlgebraMultiplication( V, n - 1, 1 ) );
         elif n = 1 then
@@ -66,7 +66,7 @@ InstallMethod( SymmetricAlgebraMultiplicationListList,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     local SV;
     
     SV := SymmetricAlgebra( V );
@@ -81,7 +81,7 @@ InstallMethod( SymmetricAlgebra,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     local SV;
     
     SV := SymmetricAlgebraAsInfiniteList( V );
@@ -105,7 +105,7 @@ InstallMethod( SymmetricAlgebraMultiplicationMorphism,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     local SV, SVoSV, mul;
     
     SV := SymmetricAlgebra( V );
@@ -113,7 +113,7 @@ InstallMethod( SymmetricAlgebraMultiplicationMorphism,
     SVoSV := TensorProduct( SV, SV );
         
     mul :=
-      function( n )
+      function ( n )
         local mul;
         
         if n < 0 then
@@ -137,7 +137,7 @@ InstallMethod( SymmetricAlgebraAsLeftModule,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     
     return InternalModule( SymmetricAlgebraMultiplicationMorphism( V ),
                    CategoryOfLeftSModules( V ) );
@@ -149,7 +149,7 @@ InstallMethod( SymmetricAlgebraAsRightModule,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( V )
+  function ( V )
     
     return InternalModule( SymmetricAlgebraMultiplicationMorphism( V ),
                    CategoryOfRightSModules( V ) );
@@ -167,7 +167,7 @@ InstallMethod( SymmetricAlgebraMultiplication,
         "for a CAP category object and two integers",
         [ IsCapCategoryObject, IsInt, IsInt ],
         
-  function( V, i, j )
+  function ( V, i, j )
     local mul_matrix, n, mul_matrix_n, S, id_V, m_ij, Si_minus_1, tau, m_i_minus_1_1_V, Si, epi, pre_m_ij;
     
     if i < 0 then

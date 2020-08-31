@@ -1,8 +1,8 @@
 ############################################################################
 ##
-##                                InternalModules package
+## InternalModules package
 ##
-##  Copyright 2019, Mohamed Barakat,   University of Siegen
+## Copyright 2019, Mohamed Barakat, University of Siegen
 ##
 #############################################################################
 
@@ -19,7 +19,7 @@ InstallMethod( InternalModule,
         "for a CAP category morphism and a category of internal modules",
         [ IsCapCategoryMorphism, IsCategoryOfInternalModules ],
         
-  function( structure_morphism, category )
+  function ( structure_morphism, category )
     local F;
     
     if not IsIdenticalObj( CapCategory( structure_morphism ), CapCategory( UnderlyingActingObject( category ) ) ) then
@@ -53,7 +53,7 @@ InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object and a category of internal modules",
         [ IsCapCategoryObject, IsCategoryOfInternalModules ],
         
-  function( V, category )
+  function ( V, category )
     local structure_morphism;
     
     structure_morphism := FreeInternalModuleActionMorphism( V, category );
@@ -68,7 +68,7 @@ InstallMethodWithCrispCache( FreeInternalModule,
         "for a CAP category object, an integer, and a category of internal modules",
         [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
         
-  function( V, degree, category )
+  function ( V, degree, category )
     local structure_morphism;
     
     structure_morphism := FreeInternalModuleActionMorphism( V, degree, category );
@@ -86,7 +86,7 @@ InstallMethod( InternalModuleMorphism,
           IsCapCategoryMorphism,
           IsInternalModule ],
         
-  function( S, morphism, T )
+  function ( S, morphism, T )
     local category, module_morphism;
 
     category := CapCategory( S );
@@ -134,7 +134,7 @@ InstallMethod( FreeInternalModuleActionMorphism,
         "for a CAP category object and a category of internal modules",
         [ IsCapCategoryObject, IsCategoryOfInternalModules ],
         
-  function( U, AMod )
+  function ( U, AMod )
     local id_U, A, mu;
     
     if not IsIdenticalObj( CapCategory( U ), CapCategory( UnderlyingActingObject( AMod ) ) ) then
@@ -167,7 +167,7 @@ InstallMethod( FreeInternalModuleActionMorphism,
         "for a CAP category object, an integer, and a category of internal modules",
         [ IsCapCategoryObject, IsInt, IsCategoryOfInternalModules ],
         
-  function( U, degree, AMod )
+  function ( U, degree, AMod )
     
     U := ObjectInPositivelyZGradedCategory( U, degree );
     
@@ -180,7 +180,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
         "for a CAP category morphism and an internal module",
         [ IsCapCategoryMorphism, IsInternalModule ],
         
-  function( iota, M )
+  function ( iota, M )
     local AMod, A, id_A, N, FN, structure_morphism, AoN, AoM, Aiota, NoA, MoA, morphism;
     
     if not IsEqualForObjects( UnderlyingCell( M ), Range( iota ) ) then
@@ -231,7 +231,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
         "for an internal module, an object, and two integers",
         [ IsInternalModule, IsObject, IsInt, IsInt ],
         
-  function( M, chi, degree, i )
+  function ( M, chi, degree, i )
     local iota;
     
     iota := ComponentInclusionMorphism( ActionDomain( M ), chi, degree, i );
@@ -246,7 +246,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
         "for an internal module, an object, and an integer",
         [ IsInternalModule, IsObject, IsInt ],
         
-  function( M, chi, i )
+  function ( M, chi, i )
     local iota;
     
     iota := ComponentInclusionMorphism( ActionDomain( M ), chi, i );
@@ -261,7 +261,7 @@ InstallMethod( UniversalMorphismFromFreeModule,
         "for an internal module and an integer",
         [ IsInternalModule, IsInt ],
         
-  function( M, degree )
+  function ( M, degree )
     local iota;
     
     iota := ComponentInclusionMorphism( ActionDomain( M ), degree );
@@ -281,7 +281,7 @@ InstallMethod( \[\],
         "for a cell in the category of internal modules and an integer",
         [ IsInternalModuleCell, IsInt ],
         
-  function( c, n )
+  function ( c, n )
     
     return UnderlyingCell( c )[n];
     
@@ -292,7 +292,7 @@ InstallMethod( Sublist,
         "for a cell in the category of internal modules and a list",
         [ IsInternalModuleCell, IsList ],
         
-  function( c, L )
+  function ( c, L )
     
     return Sublist( UnderlyingCell( c ), L );
     
@@ -303,7 +303,7 @@ InstallMethod( IsWellDefined,
         "for an internal module and an integer",
         [ IsInternalModule, IsInt ],
         
-  function( M, n )
+  function ( M, n )
     local mu, A, id_A, AoA, structure_morphism, M_, id_M,
           AoM, AoAoM, MoA, MoAoA, mor1, mor2, bool;
     
@@ -384,7 +384,7 @@ InstallMethod( IsWellDefined,
         return [ [ "sources equal", bool[1] ], [ "ranges equal", bool[2] ] ];
     fi;
     
-    bool := [ IsWellDefined( mor1[n] ), IsWellDefined( mor2[n] ),  mor1[n] = mor2[n] ];
+    bool := [ IsWellDefined( mor1[n] ), IsWellDefined( mor2[n] ), mor1[n] = mor2[n] ];
     
     if Set( bool ) = [ true ] then
         return true;
@@ -399,7 +399,7 @@ InstallMethod( IsWellDefined,
         "for an internal module morphism and an integer",
         [ IsInternalModuleMorphism, IsInt ],
         
-  function( phi, n )
+  function ( phi, n )
     local m, s, t, A, id_A, Am, mor1, mor2, bool;
     
     m := UnderlyingCell( phi );
@@ -428,7 +428,7 @@ InstallMethod( IsWellDefined,
         return [ [ "sources equal", bool[1] ], [ "ranges equal", bool[2] ] ];
     fi;
     
-    bool := [ IsWellDefined( mor1[n] ), IsWellDefined( mor2[n] ),  mor1[n] = mor2[n] ];
+    bool := [ IsWellDefined( mor1[n] ), IsWellDefined( mor2[n] ), mor1[n] = mor2[n] ];
     
     if Set( bool ) = [ true ] then
         return true;
@@ -443,7 +443,7 @@ InstallMethod( IsWellDefined,
         "for a cell in the category of A-modules and a list",
         [ IsInternalModuleCell, IsList ],
         
-  function( c, L )
+  function ( c, L )
     local bool;
     
     bool := List( L, n -> IsWellDefined( c, n ) );
@@ -467,7 +467,7 @@ InstallMethod( Display,
         "for an internal module",
         [ IsInternalModule ],
         
-  function( object )
+  function ( object )
     
     Display( Range( StructureMorphism( object ) ) );
     
@@ -478,7 +478,7 @@ InstallMethod( Display,
         "for an internal module morphism",
         [ IsInternalModuleMorphism ],
         
-  function( morphism )
+  function ( morphism )
     
     Display( UnderlyingMorphism( morphism ) );
     
