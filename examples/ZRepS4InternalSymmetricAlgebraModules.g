@@ -5,19 +5,10 @@ LoadPackage( "InternalModules" );
 #! @Example
 
 G := SymmetricGroup( 4 );;
-irr := Irr( G );;
-one := GIrreducibleObject( irr[5] );;
-SetString( one, "1" );;
-sigma := GIrreducibleObject( irr[1] );;
-SetString( sigma, "sigma" );;
-rho := GIrreducibleObject( irr[3] );;
-SetString( rho, "rho" );;
-nu := GIrreducibleObject( irr[4] );;
-SetString( nu, "nu" );;
-chi := GIrreducibleObject( irr[2] );;
-SetString( chi, "chi" );;
-
 RepG := RepresentationCategoryZGraded( G );;
+
+irr := Irr( G );;
+
 v := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;
 ZRepG := PositivelyZGradedCategory( RepG );
 #! The positively graded category of The skeletal Z-graded representation category

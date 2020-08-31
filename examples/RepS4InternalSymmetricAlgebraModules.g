@@ -5,20 +5,16 @@ LoadPackage( "InternalModules" );
 #! @Example
 
 G := SymmetricGroup( 4 );;
-irr := Irr( G );;
-one := GIrreducibleObject( irr[5] );;
-SetString( one, "1" );;
-sigma := GIrreducibleObject( irr[1] );;
-SetString( sigma, "sigma" );;
-rho := GIrreducibleObject( irr[3] );;
-SetString( rho, "rho" );;
-nu := GIrreducibleObject( irr[4] );;
-SetString( nu, "nu" );;
-chi := GIrreducibleObject( irr[2] );;
-SetString( chi, "chi" );;
-
 RepG := RepresentationCategory( G );;
-v := RepresentationCategoryObject( irr[2], RepG );;
+
+irr := Irr( G );;
+one := RepresentationCategoryObject( irr[5], RepG, "1" );;
+sigma := RepresentationCategoryObject( irr[1], RepG, "sigma" );;
+rho := RepresentationCategoryObject( irr[3], RepG, "rho" );;
+nu := RepresentationCategoryObject( irr[4], RepG, "nu" );;
+chi := RepresentationCategoryObject( irr[2], RepG, "chi" );;
+
+v := chi;;
 ZRepG := PositivelyZGradedCategory( RepG );
 #! The positively graded category of The representation category of
 #! SymmetricGroup( [ 1 .. 4 ] )
@@ -38,7 +34,7 @@ S := SymmetricAlgebraAsLeftModule( v );
 #!  with undecidable (mathematical) equality of morphisms and
 #!  uncomputable lifts and colifts>
 
-u := RepresentationCategoryObject( irr[2], RepG );;
+u := chi;;
 U := ObjectInPositivelyZGradedCategory( u, 3 );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category of
@@ -47,10 +43,8 @@ F := FreeInternalModule( U, SVMod );
 #!  uncomputable lifts and colifts>
 H := FreeInternalModule( U, ModSV );;
 
-nu := Support( F[6] )[4];
-#! <x_nu>
-c1 := UniversalMorphismFromFreeModule( F, nu, 6, 1 );;
-c2 := UniversalMorphismFromFreeModule( F, nu, 6, 2 );;
+c1 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 1 );;
+c2 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 2 );;
 c := 2 * c1 - 3 * c2;;
 Display( c[6] );
 #! Component: (x_nu)
@@ -82,13 +76,6 @@ tt := UniversalMorphismFromDirectSum( cc, dd );;
 homology := HomologyObject( ss, tt );;
 Set( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );
 #! [ true ]
-
-sigma := Support( SV[3] )[1];
-#! <x_sigma>
-chi := Support( SV[3] )[2];
-#! <x_chi>
-nu := Support( SV[3] )[3];
-#! <x_nu>
 
 e1 := InternalElement( SV, sigma, 3, 1 );;
 e2 := InternalElement( SV, chi, 3, 1 );;
