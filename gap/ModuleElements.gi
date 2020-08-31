@@ -1,10 +1,8 @@
-############################################################################
-##
-## InternalModules package
-##
-## Copyright 2019, Mohamed Barakat, University of Siegen
-##
-#############################################################################
+#
+# InternalModules: Modules over internal algebras
+#
+# Implementations
+#
 
 ####################################
 ##

@@ -1,12 +1,10 @@
-############################################################################
-##
-## InternalModules package
-##
-## Copyright 2019, Mohamed Barakat, University of Siegen
-##
+#
+# InternalModules: Modules over internal algebras
+#
+# Declarations
+#
+
 #! @Chapter Modules over the internal symmetric algebra
-##
-#############################################################################
 
 ####################################
 ##
