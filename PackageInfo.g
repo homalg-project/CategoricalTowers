@@ -13,7 +13,7 @@ Subtitle := "Modules over internal algebras",
 Version := Maximum( [
   "2020.08.26", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2020.08.25", ## Fabian's version
+  "2020.08.27", ## Fabian's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
