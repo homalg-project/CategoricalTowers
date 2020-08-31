@@ -1,6 +1,4 @@
-#! @Chapter Examples and tests
-
-#! @Section Examples
+#! @Chunk RepS4InternalSymmetricAlgebraModules
 
 LoadPackage( "InternalModules" );
 
@@ -138,8 +136,6 @@ m := 2 * m1 - 1/3 * m2;
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-
-# computations in the proposal
 sigma := RepresentationCategoryObject( irr[1], RepG );;
 rho := RepresentationCategoryObject( irr[3], RepG );;
 Display( AssociatorRightToLeft( rho, sigma, rho ) );

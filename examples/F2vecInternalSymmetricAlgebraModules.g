@@ -1,6 +1,4 @@
-#! @Chapter Examples and tests
-
-#! @Section Examples
+#! @Chunk F2vecInternalSymmetricAlgebraModules
 
 LoadPackage( "InternalModules" );
 

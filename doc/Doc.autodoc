@@ -1,3 +1,21 @@
+@Chapter Introduction
+
+@Section Examples
+
+The following examples demonstrate the internalization of the symmetric algera and its modules in the positively graded closure of various tensor categories.
+
+@Subsection The tensor category of finite dimensional GF(2)-vector spaces
+@InsertChunk F2vecInternalSymmetricAlgebraModules
+
+@Subsection The tensor category of finite dimensional Q-vector spaces
+@InsertChunk QvecInternalSymmetricAlgebraModules
+
+@Subsection The tensor category of finite dimensional Q-representations of the symmetric group Sym(4).
+@InsertChunk RepS4InternalSymmetricAlgebraModules
+
+@Subsection The tensor category of finite dimensional Z-graded Q-representations of the symmetric group Sym(4).
+@InsertChunk ZRepS4InternalSymmetricAlgebraModules
+
 @Chapter Internal Symmetric Algebra Modules
 
 @Chapter Internal algebra elements
@@ -9,5 +27,3 @@
 @Chapter Internal symmetric algebra
 
 @Chapter Modules over the internal symmetric algebra
-
-@Chapter Examples and tests
