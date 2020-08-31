@@ -55,6 +55,22 @@ Persons := [
   rec(
     IsAuthor := true,
     IsMaintainer := true,
+    FirstNames := "Sebastian",
+    LastName := "Posur",
+    WWWHome := "https://sebastianpos.github.io/",
+    Email := "sebastian.posur@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
     FirstNames := "Kamal",
     LastName := "Saleh",
     WWWHome := "https://github.com/kamalsaleh",
