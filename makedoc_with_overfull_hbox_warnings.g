@@ -17,6 +17,12 @@ AutoDoc( rec(
     gapdoc := rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
+                \usepackage{bbm}
+                \DeclareUnicodeCharacter{1D7D9}{\ensuremath{\mathbbm{1}}}
+                \DeclareUnicodeCharacter{03C3}{\ensuremath{\sigma}}
+                \DeclareUnicodeCharacter{03C1}{\ensuremath{\rho}}
+                \DeclareUnicodeCharacter{03BD}{\ensuremath{\nu}}
+                \DeclareUnicodeCharacter{03C7}{\ensuremath{\chi}}
                 % Many thanks to https://tex.stackexchange.com/questions/22466/how-to-convince-fancyvrb-to-give-overfull-warnings/534486#534486
                 \makeatletter
                 \def\FV@ListProcessLine#1{%

@@ -16,6 +16,15 @@ The following examples demonstrate the internalization of the symmetric algera a
 @Subsection The tensor category of finite dimensional Z-graded Q-representations of the symmetric group Sym(4).
 @InsertChunk ZRepS4InternalSymmetricAlgebraModules
 
+@Subsection Futher computations in the symmetric algebra
+
+This is an example for explicit computations in the symmetric algebra
+$\mathrm{S}W$ internal to the positively graded closure
+$\mathrm{srep}_k(G)_+$ of the tensor category $\mathrm{srep}_k(G)$,
+where $G := S_4$ is the symmetric group on four points and $k =
+\mathbb{Q}$, its minimal splitting field.
+
+@InsertChunk SymmetricAlgebraInternalToS4rep
 
 @Chapter Internal algebra elements
 
