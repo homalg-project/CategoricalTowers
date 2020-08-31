@@ -474,6 +474,59 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
 end );
 
 ##
+InstallMethodWithCrispCache( MorphismInPositivelyZGradedCategory,
+        "for an object in a positively Z-graded category, a CAP category morphism, an integer, and an object in a positively Z-graded category",
+        [ IsObjectInPositivelyZGradedCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedCategory ],
+        
+  function( S, phi, degree, T )
+    local f;
+
+    if not IsIdenticalObj( CapCategory( phi ), CapCategory( S )!.UnderlyingCategory ) then
+        
+        Error( "phi must lie in the same category as the category underlying the category of S" );
+        
+    fi;
+    
+    if not IsIdenticalObj( CapCategory( phi ), CapCategory( T )!.UnderlyingCategory ) then
+        
+        Error( "phi must lie in the same category as the category underlying the category of T" );
+        
+    fi;
+    
+    if not IsEqualForObjects( Source( phi ), S[degree] ) then
+        
+        Error( "the source of phi be equal to S[degree]" );
+        
+    fi;
+    
+    if not IsEqualForObjects( Range( phi ), T[degree] ) then
+        
+        Error( "the range of phi be equal to T[degree]" );
+        
+    fi;
+    
+    f := function ( n )
+        
+        if not n = degree then
+            
+            return ZeroMorphism( S[degree], T[degree] );
+            
+        else
+            
+            return phi;
+            
+        fi;
+        
+    end;
+    
+    return MorphismInPositivelyZGradedCategory(
+                   S,
+                   f,
+                   T );
+    
+end );
+
+##
 InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category, an object, and an integer",
         [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],

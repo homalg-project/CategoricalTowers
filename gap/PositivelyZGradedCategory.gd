@@ -146,6 +146,11 @@ DeclareOperation( "MorphismInPositivelyZGradedCategory",
 DeclareOperation( "MorphismInPositivelyZGradedCategory",
         [ IsObjectInPositivelyZGradedCategory, IsFunction, IsObjectInPositivelyZGradedCategory ] );
 
+#! @Arguments S, phi, degree, T
+#! @Group MorphismInPositivelyZGradedCategory
+DeclareOperation( "MorphismInPositivelyZGradedCategory",
+        [ IsObjectInPositivelyZGradedCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedCategory ] );
+
 #! @Arguments M, chi, degree, i
 #! @Returns a &CAP; morphism
 #! @Group ComponentInclusionMorphism
