@@ -16,7 +16,6 @@ The following examples demonstrate the internalization of the symmetric algera a
 @Subsection The tensor category of finite dimensional Z-graded Q-representations of the symmetric group Sym(4).
 @InsertChunk ZRepS4InternalSymmetricAlgebraModules
 
-@Chapter Internal Symmetric Algebra Modules
 
 @Chapter Internal algebra elements
 
