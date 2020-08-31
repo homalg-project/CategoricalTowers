@@ -20,7 +20,7 @@ Future versions of `CatReps` will rely on [`reps`](https://www-users.math.umn.ed
 [docs-stable-url]: https://homalg-project.github.io/CatReps/doc/chap0.html
 
 [tests-img]: https://github.com/homalg-project/CatReps/workflows/Tests/badge.svg
-[tests-url]: https://github.com/homalg-project/CatReps/
+[tests-url]: https://github.com/homalg-project/CatReps/actions?query=workflow%3ATests
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CatReps/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/CatReps
