@@ -1,7 +1,7 @@
 
 using HomalgProject
 
-LoadPackage( "GroupRepresentationsForCAP" )
+LoadPackage( "InternalModules" )
 
 srepG = RepresentationCategory( SymmetricGroup( 4 ) )
 
@@ -9,17 +9,25 @@ G = UnderlyingGroupForRepresentationCategory( srepG )
 
 irr = Irr( G );
 
-one = GIrreducibleObject( irr[5] ); SetString( one, g"1" ); one
+𝟙 = RepresentationCategoryObject( irr[5], srepG, "𝟙" )
 
-sigma = GIrreducibleObject( irr[1] ); SetString( sigma, g"sigma" ); sigma
+σ = RepresentationCategoryObject( irr[1], srepG, "σ" )
 
-rho = GIrreducibleObject( irr[3] ); SetString( rho, g"rho" ); rho
+ρ = RepresentationCategoryObject( irr[3], srepG, "ρ" )
 
-nu = GIrreducibleObject( irr[4] ); SetString( nu, g"nu" ); nu
+ν = RepresentationCategoryObject( irr[4], srepG, "ν" )
 
-chi = GIrreducibleObject( irr[2] ); SetString( chi, g"chi" ); chi
+χ = RepresentationCategoryObject( irr[2], srepG, "χ" )
 
-W = RepresentationCategoryObject( irr[2], srepG )
+TensorProduct( ρ, σ, ρ )
+
+TensorProduct( ρ, ρ )
+
+Display( AssociatorRightToLeft( ρ, σ, ρ ) )
+
+Display( Braiding( ρ, ρ ) )
+
+W = χ
 
 LoadPackage( "GradedCategories" )
 
@@ -29,15 +37,25 @@ LoadPackage( "InternalModules" )
 
 SWMod = CategoryOfLeftSModules( W )
 
-SW = UnderlyingActingObject( SWMod );
+SW = UnderlyingActingObject( SWMod )
 
-χ¹ = InternalElement( SW, GIrreducibleObject( irr[2] ), 1, 1 )
+SW[0]
 
-ρ² = InternalElement( SW, GIrreducibleObject( irr[3] ), 2, 1 )
+SW[1]
 
-ν² = InternalElement( SW, GIrreducibleObject( irr[4] ), 2, 1 )
+SW[2]
 
-ν³ = InternalElement( SW, GIrreducibleObject( irr[4] ), 3, 1 )
+SW[3]
+
+SW[4]
+
+χ¹ = InternalElement( SW, χ, 1, 1 )
+
+ρ² = InternalElement( SW, ρ, 2, 1 )
+
+ν² = InternalElement( SW, ν, 2, 1 )
+
+ν³ = InternalElement( SW, ν, 3, 1 )
 
 χ¹ * χ¹
 
@@ -69,6 +87,6 @@ SW = UnderlyingActingObject( SWMod );
 
 χ¹ * ν³ == ν³ * χ¹
 
-χ¹ * (χ¹ * (χ¹ * χ¹)) == ((χ¹ * χ¹) * χ¹) * χ¹
+χ¹ * (χ¹ * (χ¹ * χ¹)) != ((χ¹ * χ¹) * χ¹) * χ¹
 
 
