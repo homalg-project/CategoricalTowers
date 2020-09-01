@@ -6,7 +6,7 @@
 
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
-        [ 
+        [
           "AdditionForMorphisms",
           "AdditiveInverseForMorphisms",
           "AstrictionToCoimage",
@@ -153,7 +153,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
         "for an infinite list and a category",
         [ IsZList, IsCapCategory ],
         
-  function( L, ZC )
+  function ( L, ZC )
     local M;
     
     if not IsBound( L!.LowerBound ) then
@@ -180,7 +180,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
         "for a unary function, an integer, an integer or infinity, and a category",
         [ IsFunction, IsInt, IsAdditiveElement, IsCapCategory ],
         
-  function( f, lower_bound, upper_bound, ZC )
+  function ( f, lower_bound, upper_bound, ZC )
     local L, M;
     
     L := MapLazy( IntegersList, f, 1 );
@@ -199,13 +199,13 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         "for CAP category object and an integer",
         [ IsCapCategoryObject, IsInt ],
         
-  function( M, degree )
+  function ( M, degree )
     local zero, degrees, f, ZC;
     
     zero := ZeroObject( M );
     
     f :=
-      function( n )
+      function ( n )
         
         if not n = degree then
             return zero;
@@ -227,7 +227,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         "for an object in a Z-graded semisimple representation category",
         [ IsSemisimpleCategoryObject and IsRepresentationCategoryZGradedObject ],
         
-  function( M )
+  function ( M )
     local zero, degrees, f, ZC;
     
     zero := ZeroObject( M );
@@ -237,7 +237,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
     degrees := List( M, a -> a[1] );
     
     f :=
-      function( n )
+      function ( n )
         local pos;
         
         pos := Position( degrees, n );
@@ -262,7 +262,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         "for an object in a semisimple CAP category and and integer",
         [ IsSemisimpleCategoryObject and HasDegreeDecomposition, IsInt ],
         
-  function( M, degree )
+  function ( M, degree )
     local degrees;
     
     degrees := List( DegreeDecomposition( M ), a -> a[1] );
@@ -280,7 +280,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
         "for a list of pairs",
         [ IsList ],
         
-  function( support_with_degrees )
+  function ( support_with_degrees )
     local degrees, support, zero, f, ZC, M;
     
     if support_with_degrees = [ ] then
@@ -293,7 +293,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     zero := ZeroObject( support_with_degrees[1][2] );
     
     f :=
-      function( n )
+      function ( n )
         local pos;
         
         pos := Positions( degrees, n );
@@ -322,7 +322,7 @@ InstallMethod( ActiveLowerBound,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
-  function( M )
+  function ( M )
     
     return UnderlyingInfiniteList( M )!.LowerBound;
     
@@ -333,7 +333,7 @@ InstallMethod( SetActiveLowerBound,
         "for an object in a positively Z-graded category and an integer or infinity",
         [ IsObjectInPositivelyZGradedCategory, IsAdditiveElement ],
         
-  function( M, l )
+  function ( M, l )
     local L;
     
     L := UnderlyingInfiniteList( M );
@@ -351,7 +351,7 @@ InstallMethod( ActiveUpperBound,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
-  function( M )
+  function ( M )
     
     return UnderlyingInfiniteList( M )!.UpperBound;
     
@@ -362,7 +362,7 @@ InstallMethod( SetActiveUpperBound,
         "for an object in a positively Z-graded category and an integer or infinity",
         [ IsObjectInPositivelyZGradedCategory, IsAdditiveElement ],
         
-  function( M, u )
+  function ( M, u )
     local L;
     
     L := UnderlyingInfiniteList( M );
@@ -380,7 +380,7 @@ InstallMethod( NonZeroDegrees,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory and HasNonZeroDegreesHull ],
         
-  function( M )
+  function ( M )
     local degrees;
     
     degrees := Filtered( NonZeroDegreesHull( M ), i -> not IsZero( M[i] ) );
@@ -396,7 +396,7 @@ InstallMethod( NonZeroParts,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
-  function( M )
+  function ( M )
     
     return List( NonZeroDegrees( M ), i -> M[i] );
     
@@ -407,7 +407,7 @@ InstallMethod( NonZeroPartsWithDegrees,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
-  function( M )
+  function ( M )
     
     return List( NonZeroDegrees( M ), d -> [ d, M[d] ] );
     
@@ -418,7 +418,7 @@ InstallMethod( SupportWithDegreesWithGivenDegrees,
         "for an object in a positively Z-graded category and a list",
         [ IsObjectInPositivelyZGradedCategory, IsList ],
         
-  function( M, degrees )
+  function ( M, degrees )
     
     degrees := Set( degrees );
     
@@ -431,7 +431,7 @@ InstallMethod( SupportWithDegrees,
         "for an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
-  function( M )
+  function ( M )
     
     return SupportWithDegreesWithGivenDegrees( M, NonZeroDegrees( M ) );
     
@@ -442,7 +442,7 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
         "for an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory, IsZList, IsObjectInPositivelyZGradedCategory ],
         
-  function( S, L, T )
+  function ( S, L, T )
     local phi;
     
     phi := rec(
@@ -464,7 +464,7 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
         "for an object in a positively Z-graded category, a function, and an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory, IsFunction, IsObjectInPositivelyZGradedCategory ],
         
-  function( S, f, T )
+  function ( S, f, T )
     
     return MorphismInPositivelyZGradedCategory(
                    S,
@@ -478,7 +478,7 @@ InstallMethodWithCrispCache( MorphismInPositivelyZGradedCategory,
         "for an object in a positively Z-graded category, a CAP category morphism, an integer, and an object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory, IsCapCategoryMorphism, IsInt, IsObjectInPositivelyZGradedCategory ],
         
-  function( S, phi, degree, T )
+  function ( S, phi, degree, T )
     local f;
 
     if not IsIdenticalObj( CapCategory( phi ), CapCategory( S )!.UnderlyingCategory ) then
@@ -531,7 +531,7 @@ InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category, an object, and an integer",
         [ IsObjectInPositivelyZGradedCategory, IsObject, IsInt, IsInt ],
         
-  function( M, chi, degree, i )
+  function ( M, chi, degree, i )
     local Md, multiplicity, support, l, iota, underlying_category, V, f, summands, iota_d;
     
     Md := M[degree];
@@ -563,7 +563,7 @@ InstallMethod( ComponentInclusionMorphism,
     V := SemisimpleCategoryObject( [ [ 1, chi ] ], underlying_category );
     
     f :=
-      function( j )
+      function ( j )
         local psi;
         
         if not j = l then
@@ -581,7 +581,7 @@ InstallMethod( ComponentInclusionMorphism,
     iota_d := InjectionOfCofactorOfDirectSumWithGivenDirectSum( summands, l - 1 + i, Md );
     
     f :=
-      function( n )
+      function ( n )
         
         if not n = degree then
             return UniversalMorphismFromZeroObject( M[n] );
@@ -607,7 +607,7 @@ InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category, an object, and an integer",
         [ IsObjectInPositivelyZGradedCategory, IsObject and HasUnderlyingDegree, IsInt ],
         
-  function( M, chi, i )
+  function ( M, chi, i )
     
     return ComponentInclusionMorphism( M, chi, UnderlyingDegree( chi ), i );
     
@@ -618,7 +618,7 @@ InstallMethod( ComponentInclusionMorphism,
         "for an object in a positively Z-graded category and an integer",
         [ IsObjectInPositivelyZGradedCategory, IsInt ],
         
-  function( M, degree )
+  function ( M, degree )
     local Md, f, iota;
     
     Md := M[degree];
@@ -634,7 +634,7 @@ InstallMethod( ComponentInclusionMorphism,
     fi;
     
     f :=
-      function( n )
+      function ( n )
         
         if not n = degree then
             return UniversalMorphismFromZeroObject( M[n] );
@@ -660,7 +660,7 @@ InstallMethod( DiagonalEmbeddingWithGivenDegrees,
         "for an object in a positively Z-graded category and a list",
         [ IsObjectInPositivelyZGradedCategory, IsList ],
         
-  function( M, degrees )
+  function ( M, degrees )
     local support_with_degrees, support, S, f;
     
     if degrees = [ ] then
@@ -677,7 +677,7 @@ InstallMethod( DiagonalEmbeddingWithGivenDegrees,
     support := List( support_with_degrees, a -> a[2] );
     
     f :=
-      function( n )
+      function ( n )
         local pos, support_n, g, supp;
         
         pos := Positions( degrees, n );
@@ -689,7 +689,7 @@ InstallMethod( DiagonalEmbeddingWithGivenDegrees,
         support_n := SemisimpleCategoryObjectListWithActualObjects( M[n] );
         support_n := Concatenation( List( support_n, a -> ListWithIdenticalEntries( a[1], a[2] ) ) );
         
-        g := function( s )
+        g := function ( s )
             local p;
             
             p := Positions( support_n, s );
@@ -723,9 +723,9 @@ InstallMethod( DiagonalEmbedding,
         "for a finite object in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory ],
         
-  function( M )
+  function ( M )
     
-    if not ( HasNonZeroDegreesHull( M ) or HasNonZeroDegrees( M ) ) then
+    if not (HasNonZeroDegreesHull( M ) or HasNonZeroDegrees( M )) then
         
         Error( "the object must be finite" );
         
@@ -741,7 +741,7 @@ InstallMethod( DiagonalEmbedding,
         [ IsObjectInPositivelyZGradedCategory and HasSupportWithDegrees,
           IsObjectInPositivelyZGradedCategory ],
         
-  function( S, M )
+  function ( S, M )
     local support, degrees, f, iota;
     
     support := SupportWithDegrees( S );
@@ -750,7 +750,7 @@ InstallMethod( DiagonalEmbedding,
     support := List( support, a -> a[2] );
     
     f :=
-      function( n )
+      function ( n )
         local pos, support_n, g, supp;
         
         pos := Positions( degrees, n );
@@ -762,7 +762,7 @@ InstallMethod( DiagonalEmbedding,
         support_n := SemisimpleCategoryObjectListWithActualObjects( M[n] );
         support_n := Concatenation( List( support_n, a -> ListWithIdenticalEntries( a[1], a[2] ) ) );
         
-        g := function( s )
+        g := function ( s )
             local p;
             
             p := Position( support_n, s );
@@ -793,7 +793,7 @@ InstallMethod( ActiveLowerBound,
         "for a morphism in a positively Z-graded category",
         [ IsMorphismInPositivelyZGradedCategory ],
         
-  function( phi )
+  function ( phi )
     local l;
     
     l := Maximum( phi!.LowerBound, ActiveLowerBound( Source( phi ) ), ActiveLowerBound( Range( phi ) ) );
@@ -809,7 +809,7 @@ InstallMethod( SetActiveLowerBound,
         "for a morphism in a positively Z-graded category and an integer or infinity",
         [ IsMorphismInPositivelyZGradedCategory, IsAdditiveElement ],
         
-  function( phi, l )
+  function ( phi, l )
     
     if phi!.LowerBound < l then
         phi!.LowerBound := l;
@@ -824,7 +824,7 @@ InstallMethod( ActiveUpperBound,
         "for a morphism in a positively Z-graded category",
         [ IsMorphismInPositivelyZGradedCategory ],
         
-  function( phi )
+  function ( phi )
     local u;
     
     u := Minimum( phi!.UpperBound, ActiveUpperBound( Source( phi ) ), ActiveUpperBound( Range( phi ) ) );
@@ -840,7 +840,7 @@ InstallMethod( SetActiveUpperBound,
         "for a morphism in a positively Z-graded category and an integer or infinity",
         [ IsMorphismInPositivelyZGradedCategory, IsAdditiveElement ],
         
-  function( phi, u )
+  function ( phi, u )
     
     if u < phi!.UpperBound then
         phi!.UpperBound := u;
@@ -855,7 +855,7 @@ InstallMethod( TensorProductIndices,
         "for two objects in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ],
         
-  function( A, B )
+  function ( A, B )
     
     ## leave these active bound here as they may change between different invocations of this function
     return n -> [ ActiveLowerBound( A ) .. n - ActiveLowerBound( B ) ];
@@ -867,7 +867,7 @@ InstallMethod( TensorProductIndices,
         "for thre objects in a positively Z-graded category",
         [ IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory ],
         
-  function( A, B, C )
+  function ( A, B, C )
     local tensor_product_indices_A_BC, tensor_product_indices_BC,
           tensor_product_indices_AB_C, tensor_product_indices_AB;
     
@@ -887,7 +887,7 @@ InstallMethod( PositivelyZGradedCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( C )
+  function ( C )
     local name, ZC, properties, create_func_object, create_func_morphism, create_func_universal_morphism,
           recnames, skip, func, pos, info, universal_object, add, required_operations;
     
@@ -896,13 +896,13 @@ InstallMethod( PositivelyZGradedCategory,
         Error( "trying to iterate the construction\n" );
     fi;
     
-    if not ( HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) ) then
+    if not (HasIsSkeletalCategory( C ) and IsSkeletalCategory( C )) then
         
         Error( "the input category must be a skeletal category" );
         
     fi;
     
-    if not ( CanCompute( C, "ZeroObject" ) and CanCompute( C, "ZeroMorphism" ) ) then
+    if not (CanCompute( C, "ZeroObject" ) and CanCompute( C, "ZeroMorphism" )) then
         
         Error( "the input category must have a zero object and zero morphisms" );
         
@@ -949,13 +949,13 @@ InstallMethod( PositivelyZGradedCategory,
 
     ##
     AddZeroObject( ZC,
-      function( )
+      function ( )
         local zero;
         
         zero := MapLazy( IntegersList, i -> ZeroObject( C ), 1 );
         
         zero!.LowerBound := infinity;
-        zero!.UpperBound := -infinity;
+        zero!.UpperBound := - infinity;
         
         return ObjectInPositivelyZGradedCategory( zero, ZC );
         
@@ -963,13 +963,13 @@ InstallMethod( PositivelyZGradedCategory,
     
     ## e.g., DirectSum
     create_func_object :=
-      function( name )
+      function ( name )
         local oper;
         
         oper := ValueGlobal( name );
         
         return ## a constructor for universal objects
-          function( arg )
+          function ( arg )
             local L, object, degrees;
             
             L := MapLazy( IntegersList, i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ), 1 );
@@ -999,7 +999,7 @@ InstallMethod( PositivelyZGradedCategory,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name )
+      function ( name )
         local oper, type;
         
         oper := ValueGlobal( name );
@@ -1007,7 +1007,7 @@ InstallMethod( PositivelyZGradedCategory,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function ( arg )
             local src_trg, S, T;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -1025,7 +1025,7 @@ InstallMethod( PositivelyZGradedCategory,
     
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
-      function( name )
+      function ( name )
         local info, oper, type;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
@@ -1039,7 +1039,7 @@ InstallMethod( PositivelyZGradedCategory,
         type := info.io_type;
         
         return
-          function( arg )
+          function ( arg )
             local src_trg, S, T;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -1150,7 +1150,7 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( ZC,
-          function( r, phi )
+          function ( r, phi )
             
             return MorphismInPositivelyZGradedCategory(
                            Source( phi ),
@@ -1184,11 +1184,11 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddTensorUnit( ZC,
-          function( )
+          function ( )
             local f, L;
             
             f :=
-              function( n )
+              function ( n )
                 
                 if n = 0 then
                     return TensorUnit( C );
@@ -1209,15 +1209,15 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddTensorProductOnObjects( ZC,
-          function( A, B )
+          function ( A, B )
             local zero_object, tensor_product_indices_AB, f, L, tensor_product, degrees;
             
-            zero_object :=  ZeroObject( CapCategory( A )!.UnderlyingCategory );
+            zero_object := ZeroObject( CapCategory( A )!.UnderlyingCategory );
             
             tensor_product_indices_AB := TensorProductIndices( A, B );
             
             f :=
-              function( n )
+              function ( n )
                 local indices;
                 
                 indices := tensor_product_indices_AB( n );
@@ -1251,14 +1251,14 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddTensorProductOnMorphismsWithGivenTensorProducts( ZC,
-          function( S, phi, psi, T )
+          function ( S, phi, psi, T )
             local tensor_product_indices_sources, tensor_product_indices_targets, f, L;
             
             tensor_product_indices_sources := TensorProductIndices( Source( phi ), Source( psi ) );
             tensor_product_indices_targets := TensorProductIndices( Range( phi ), Range( psi ) );
             
             f :=
-              function( n )
+              function ( n )
                 local indices;
                 
                 indices := Union( tensor_product_indices_sources( n ),
@@ -1284,11 +1284,11 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddLeftUnitorWithGivenTensorProduct( ZC,
-          function( A, 1oA )
+          function ( A, 1oA )
             local f, L;
             
             f :=
-              function( n )
+              function ( n )
                 
                 return LeftUnitorWithGivenTensorProduct( A[n], 1oA[n] );
                 
@@ -1303,11 +1303,11 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddLeftUnitorInverseWithGivenTensorProduct( ZC,
-          function( A, 1oA )
+          function ( A, 1oA )
             local f, L;
             
             f :=
-              function( n )
+              function ( n )
                 
                 return LeftUnitorInverseWithGivenTensorProduct( A[n], 1oA[n] );
                 
@@ -1322,11 +1322,11 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddRightUnitorWithGivenTensorProduct( ZC,
-          function( A, Ao1 )
+          function ( A, Ao1 )
             local f, L;
             
             f :=
-              function( n )
+              function ( n )
                 
                 return RightUnitorWithGivenTensorProduct( A[n], Ao1[n] );
                 
@@ -1341,11 +1341,11 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddRightUnitorInverseWithGivenTensorProduct( ZC,
-          function( A, Ao1 )
+          function ( A, Ao1 )
             local f, L;
             
             f :=
-              function( n )
+              function ( n )
                 
                 return RightUnitorInverseWithGivenTensorProduct( A[n], Ao1[n] );
                 
@@ -1360,13 +1360,13 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddAssociatorRightToLeftWithGivenTensorProducts( ZC,
-          function( AoBC, A, B, C, ABoC )
+          function ( AoBC, A, B, C, ABoC )
             local tensor_product_indices_ABC, f, L;
             
             tensor_product_indices_ABC := TensorProductIndices( A, B, C );
             
             f :=
-              function( n )
+              function ( n )
                 local indices_A_BC, indices_AB_C, indices_source, indices_target,
                       s, summands_source, summands_target, source, target, p, permuted_associator;
                 
@@ -1387,13 +1387,13 @@ InstallMethod( PositivelyZGradedCategory,
                 summands_target := List( indices_target, l -> TensorProduct( TensorProduct( A[l[1]], B[l[2]] ), C[l[3]] ) );
                 
                 p :=
-                  function( i )
+                  function ( i )
                     local l, g;
                     
                     l := indices_source[i];
                     
                     g :=
-                      function( j )
+                      function ( j )
                         
                         if not l = indices_target[j] then
                             return ZeroMorphism( summands_source[i], summands_target[j] );
@@ -1435,13 +1435,13 @@ InstallMethod( PositivelyZGradedCategory,
         
         ##
         AddAssociatorLeftToRightWithGivenTensorProducts( ZC,
-          function( ABoC, A, B, C, AoBC )
+          function ( ABoC, A, B, C, AoBC )
             local tensor_product_indices_ABC, f, L;
             
             tensor_product_indices_ABC := TensorProductIndices( A, B, C );
             
             f :=
-              function( n )
+              function ( n )
                 local indices_A_BC, indices_AB_C, indices_source, indices_target,
                       s, summands_source, summands_target, source, target, p, permuted_associator;
                 
@@ -1462,13 +1462,13 @@ InstallMethod( PositivelyZGradedCategory,
                 summands_target := List( indices_target, l -> TensorProduct( A[l[1]], TensorProduct( B[l[2]], C[l[3]] ) ) );
                 
                 p :=
-                  function( i )
+                  function ( i )
                     local l, g;
                     
                     l := indices_source[i];
                     
                     g :=
-                      function( j )
+                      function ( j )
                         
                         if not l = indices_target[j] then
                             return ZeroMorphism( summands_source[i], summands_target[j] );
@@ -1512,13 +1512,13 @@ InstallMethod( PositivelyZGradedCategory,
             
             ##
             AddBraidingWithGivenTensorProducts( ZC,
-              function( AoB, A, B, BoA )
+              function ( AoB, A, B, BoA )
                 local f, tensor_product_indices_AB, L;
                 
                 tensor_product_indices_AB := TensorProductIndices( A, B );
                 
                 f :=
-                  function( n )
+                  function ( n )
                     local indices;
                     
                     indices := tensor_product_indices_AB( n );
@@ -1547,13 +1547,13 @@ InstallMethod( PositivelyZGradedCategory,
             
             ##
             AddBraidingInverseWithGivenTensorProducts( ZC,
-              function( BoA, A, B, AoB )
+              function ( BoA, A, B, AoB )
                 local f, tensor_product_indices_AB, L;
                 
                 tensor_product_indices_AB := TensorProductIndices( A, B );
                 
                 f :=
-                  function( n )
+                  function ( n )
                     local indices;
                     
                     indices := tensor_product_indices_AB( n );
@@ -1593,7 +1593,7 @@ InstallMethod( CertainDegreePart,
         "for a cell in a positively Z-graded category and an integer",
         [ IsCellInPositivelyZGradedCategory, IsInt ],
         
-  function( c, n )
+  function ( c, n )
     
     return c[n];
     
@@ -1604,7 +1604,7 @@ InstallMethod( CertainDegreePart,
         "for a list and an integer",
         [ IsList, IsInt ],
         
-  function( L, n )
+  function ( L, n )
     
     return List( L, e -> CertainDegreePart( e, n ) );
     
@@ -1615,7 +1615,7 @@ InstallMethod( CertainDegreePart,
         "for an integer and an integer",
         [ IsInt, IsInt ],
         
-  function( p, n )
+  function ( p, n )
     
     return p;
     
@@ -1626,7 +1626,7 @@ InstallMethod( \[\],
         "for a cell in a positively Z-graded category and an integer",
         [ IsCellInPositivelyZGradedCategory, IsInt ],
         
-  function( c, n )
+  function ( c, n )
     
     return UnderlyingInfiniteList( c )[n];
     
@@ -1637,7 +1637,7 @@ InstallMethod( Sublist,
         "for a cell in a positively Z-graded category and a list",
         [ IsCellInPositivelyZGradedCategory, IsList ],
         
-  function( c, L )
+  function ( c, L )
     
     c := UnderlyingInfiniteList( c );
     

@@ -99,14 +99,14 @@ DeclareOperation( "SupportWithDegreesWithGivenDegrees",
 ####################################
 
 #! @Description
-#!  Construct the positively $Z$-graded closure of the category <A>A</A>.
+#!  Construct the positively $Z$-graded closure of the category <A>C</A>.
 #! @Arguments C
 #! @Returns a &CAP; category
 DeclareAttribute( "PositivelyZGradedCategory",
         IsCapCategory );
 
 #! @Description
-#!  
+#!  Construct an object in a positively $Z$-graded category.
 #! @Arguments L, C
 #! @Returns a &CAP; object
 #! @Group ObjectInPositivelyZGradedCategory
@@ -134,7 +134,7 @@ DeclareAttribute( "ObjectInPositivelyZGradedCategory",
         IsList );
 
 #! @Description
-#!  
+#!  Construct a morphism in a positively $Z$-graded category.
 #! @Arguments S, L, T
 #! @Returns a &CAP; morphism
 #! @Group MorphismInPositivelyZGradedCategory
