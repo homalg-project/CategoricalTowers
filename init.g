@@ -1,5 +1,5 @@
 #
-# GradedCategories: Graded categories
+# GradedCategories: Graded closures of categories
 #
 # Reading the declaration part of the package.
 #

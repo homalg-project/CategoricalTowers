@@ -1,5 +1,5 @@
 #
-# GradedCategories: Graded categories
+# GradedCategories: Graded closures of categories
 #
 # Implementations
 #
