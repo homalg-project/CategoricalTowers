@@ -1,11 +1,14 @@
-# InternalModules – Modules over internalized algebras
+<!-- BEGIN HEADER -->
+# InternalModules – Modules over internal algebras
 
-| **Documentation**                                                 | **Build Status**                                                                                |
-|:-----------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
-| [![][docs-stable-img]][docs-stable-url]                           | [![][tests-img]][tests-url] [![][codecov-img]][codecov-url] |
+| **Documentation**                       | **Build Status**                                            |
+|:---------------------------------------:|:-----------------------------------------------------------:|
+| [![][docs-stable-img]][docs-stable-url] | [![][tests-img]][tests-url] [![][codecov-img]][codecov-url] |
+<!-- END HEADER -->
 
 * [SymmetricAlgebraInternalToS4rep](https://nbviewer.jupyter.org/github/homalg-project/InternalModules/blob/master/examples/julia/notebooks/SymmetricAlgebraInternalToS4rep.ipynb): Computations over an internalized symmetric algebra.
 
+<!-- BEGIN FOOTER -->
 [docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
 [docs-stable-url]: https://homalg-project.github.io/InternalModules/doc/chap0.html
 
@@ -14,3 +17,4 @@
 
 [codecov-img]: https://codecov.io/gh/homalg-project/InternalModules/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/InternalModules
+<!-- END FOOTER -->
