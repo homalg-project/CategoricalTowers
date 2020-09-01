@@ -356,13 +356,56 @@ end );
 ####################################
 
 ##
+InstallMethod( LaTeXString,
+        "for an element in an internal algebra or module",
+        [ IsElementInInternalAlgebraOrModule ],
+        
+  function ( e )
+    local degrees, d, i, L, a, j, l;
+    
+    degrees := NonZeroDegrees( e );
+    
+    if degrees = [ ] then
+        return "0";
+    fi;
+
+    d := Length( degrees );
+
+    l := "";
+    
+    for i in [ 1 .. d ] do
+        
+        L := Filtered( SemisimpleCategoryMorphismList( UnderlyingEmbedding( e )[degrees[i]] ), a -> not IsZero( a[1] ) );
+
+        a := Length( L );
+        
+        for j in [ 1 .. a ] do
+            
+            Append( l, LaTeXString( UnderlyingMatrix( L[j][1] ) ) );
+            Append( l, " " );
+            Append( l, String( L[j][2] ) );
+            Append( l, Concatenation( "^{\\{", String( degrees[i] ), "\\}}" ) );
+            
+            if j < a then
+                Append( l, "\n+\n" );
+            fi;
+            
+        od;
+        
+    od;
+    
+    return l;
+    
+end );
+
+##
 InstallMethod( ViewObj,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         
   function ( e )
     local iota, degrees, i;
-    
+
     iota := UnderlyingEmbedding( e );
     
     degrees := NonZeroDegrees( e );

@@ -142,3 +142,7 @@ DeclareOperation( "BraidedMultiplication",
 #! @Returns an element of an internal algebra or module
 DeclareOperation( "[]",
         [ IsElementInInternalAlgebraOrModule, IsInt ] );
+
+#
+DeclareOperation( "LaTeXString",
+        [ IsElementInInternalAlgebraOrModule ] );
