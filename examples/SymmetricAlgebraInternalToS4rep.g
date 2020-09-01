@@ -1,6 +1,6 @@
 #! @Chunk SymmetricAlgebraInternalToS4rep
 
-LoadPackage( "InternalModules" )
+LoadPackage( "InternalModules" );
 
 #! @Example
 srepG := RepresentationCategory( SymmetricGroup( 4 ) );
