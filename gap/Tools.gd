@@ -25,3 +25,11 @@
 #! @Returns an object in $G$-mod
 #! @Arguments c, C, str
 DeclareOperation( "RepresentationCategoryObject", [ IsList, IsCapCategory, IsString ] );
+
+#
+DeclareOperation( "LaTeXString",
+        [ IsSemisimpleCategoryObject ] );
+
+#
+DeclareOperation( "LaTeXString",
+        [ IsSemisimpleCategoryMorphism ] );
