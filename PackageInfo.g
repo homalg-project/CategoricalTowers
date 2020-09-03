@@ -92,6 +92,7 @@ Dependencies := rec(
                            [ "GradedCategories", ">= 2020.08.24" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
                            [ "MatricesForHomalg", ">= 2020.08.30" ],
+                           [ "ToolsForHomalg", ">= 2020.08.02" ],
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

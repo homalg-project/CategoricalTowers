@@ -18,8 +18,19 @@ InstallMethod( RepresentationCategoryObject,
 end );
 
 ##
-DeclareOperation( "IsShowable",
-        [ IsString, IsSemisimpleCategoryObject, ] );
+InstallMethod( IsShowable,
+        "for a string and a an element in an internal algebra or module",
+        [ IsString, IsElementInInternalAlgebraOrModule ],
+        
+  function ( mime, e )
+    
+    if not mime in [ "text/latex", "application/x-latex" ] then
+        TryNextMethod();
+    fi;
+    
+    return true;
+    
+end );
 
 ##
 InstallMethod( IsShowable,
@@ -28,7 +39,7 @@ InstallMethod( IsShowable,
         
   function ( mime, e )
     
-    if not mime in [ "text/plain", "text/latex", "application/x-latex" ] then
+    if not mime in [ "text/latex", "application/x-latex" ] then
         TryNextMethod();
     fi;
     
@@ -95,17 +106,13 @@ InstallMethod( LaTeXString,
 end );
 
 ##
-DeclareOperation( "IsShowable",
-        [ IsString, IsSemisimpleCategoryMorphism, ] );
-
-##
 InstallMethod( IsShowable,
         "for a string and a an element in an internal algebra or module",
         [ IsString, IsSemisimpleCategoryMorphism ],
         
   function ( mime, e )
     
-    if not mime in [ "text/plain", "text/latex", "application/x-latex" ] then
+    if not mime in [ "text/latex", "application/x-latex" ] then
         TryNextMethod();
     fi;
     
