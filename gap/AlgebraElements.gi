@@ -356,7 +356,7 @@ end );
 ####################################
 
 ##
-InstallMethod( LaTeXString,
+InstallMethod( LaTeXStringOp,
         "for an element in an internal algebra or module",
         [ IsElementInInternalAlgebraOrModule ],
         
@@ -381,7 +381,7 @@ InstallMethod( LaTeXString,
         
         for j in [ 1 .. a ] do
             
-            Append( l, LaTeXString( UnderlyingMatrix( L[j][1] ) ) );
+            Append( l, LaTeXStringOp( UnderlyingMatrix( L[j][1] ) ) );
             Append( l, " " );
             Append( l, String( L[j][2] ) );
             Append( l, Concatenation( "^{\\{", String( degrees[i] ), "\\}}" ) );

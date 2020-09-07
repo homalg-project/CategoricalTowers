@@ -27,9 +27,9 @@
 DeclareOperation( "RepresentationCategoryObject", [ IsList, IsCapCategory, IsString ] );
 
 #
-DeclareOperation( "LaTeXString",
+DeclareOperation( "LaTeXStringOp",
         [ IsSemisimpleCategoryObject ] );
 
 #
-DeclareOperation( "LaTeXString",
+DeclareOperation( "LaTeXStringOp",
         [ IsSemisimpleCategoryMorphism ] );

@@ -78,7 +78,7 @@ BindGlobal( "LaTeXStringOfSemisimpleCategoryObjectList",
         
         if false and IsShowable( "text/latex", irr ) then
             
-            Append( string, LaTeXString( irr ) );
+            Append( string, LaTeXStringOp( irr ) );
             
         else
             
@@ -95,7 +95,7 @@ BindGlobal( "LaTeXStringOfSemisimpleCategoryObjectList",
 end );
 
 ##
-InstallMethod( LaTeXString,
+InstallMethod( LaTeXStringOp,
         "for an element in an internal algebra or module",
         [ IsSemisimpleCategoryObject ],
         
@@ -121,7 +121,7 @@ InstallMethod( IsShowable,
 end );
 
 ##
-InstallMethod( LaTeXString,
+InstallMethod( LaTeXStringOp,
         "for an element in an internal algebra or module",
         [ IsSemisimpleCategoryMorphism ],
         
@@ -150,11 +150,11 @@ InstallMethod( LaTeXString,
             
             if NrRows( matrix ) = 1 then
                 
-                Add( diag_entries, LaTeXString( matrix[1, 1] ) );
+                Add( diag_entries, LaTeXStringOp( matrix[1, 1] ) );
                 
             else
                 
-                Add( diag_entries, LaTeXString( matrix ) );
+                Add( diag_entries, LaTeXStringOp( matrix ) );
                 
             fi;
             
