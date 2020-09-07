@@ -3,9 +3,9 @@ using HomalgProject
 
 LoadPackage( "InternalModules" )
 
-srepG = RepresentationCategory( SymmetricGroup( 4 ) )
+G = SymmetricGroup( 4 )
 
-G = UnderlyingGroupForRepresentationCategory( srepG )
+srepG = RepresentationCategory( G )
 
 irr = Irr( G );
 
@@ -21,11 +21,11 @@ irr = Irr( G );
 
 TensorProduct( ρ, σ, ρ )
 
+AssociatorRightToLeft( ρ, σ, ρ )
+
 TensorProduct( ρ, ρ )
 
-Display( AssociatorRightToLeft( ρ, σ, ρ ) )
-
-Display( Braiding( ρ, ρ ) )
+Braiding( ρ, ρ )
 
 W = χ
 
