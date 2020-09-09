@@ -321,7 +321,7 @@ InstallMethod( EmbeddingOfSubRepresentation,
 end );
 
 ##
-InstallMethod( WeakDirectSumDecomposition,
+InstallMethod( WeakDirectSumDecompositionOld,
         "for an object in a Hom-category",
         [ IsCapCategoryObjectInHomCategory ],
         

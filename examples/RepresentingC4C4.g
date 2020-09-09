@@ -165,7 +165,7 @@ Display( eleven );
 #! . . . . 1
 #!
 #! A morphism in Category of matrices over GF(3)
-gammas := WeakDirectSumDecomposition( eleven );
+gammas := WeakDirectSumDecompositionOld( eleven );
 #! [ <(1)->1x6, (2)->0x5>, <(1)->1x6, (2)->1x5>, <(1)->1x6, (2)->1x5>,
 #!  <(1)->2x6, (2)->0x5>, <(1)->0x6, (2)->2x5>, <(1)->1x6, (2)->1x5> ]
 #! @EndExample

@@ -159,7 +159,7 @@ Display( nine(kq.b) );
 #! A morphism in Category of matrices over GF(3)
 IsWellDefined( nine );
 #! true
-Length( WeakDirectSumDecomposition( nine ) );
+Length( WeakDirectSumDecompositionOld( nine ) );
 #! 1
 fortyone := TensorProductOnObjects( nine, nine );
 #! <(1)->25, (2)->16; (a)->25x25, (b)->25x16, (c)->16x16>
@@ -266,7 +266,7 @@ Display( fortyone );
 #!  . . . . . . . . . . . . . . . 1
 #! 
 #! A morphism in Category of matrices over GF(3)
-etas := WeakDirectSumDecomposition( fortyone );;
+etas := WeakDirectSumDecompositionOld( fortyone );;
 dec := List( etas, eta -> List( SetOfObjects( kq ),
              o -> Dimension( Source( UnderlyingCapTwoCategoryCell( eta )( o ) ) ) ) );
 #! [ [ 3, 0 ], [ 3, 1 ], [ 3, 3 ], [ 3, 3 ], [ 0, 3 ],

@@ -130,7 +130,7 @@ DeclareOperation( "EmbeddingOfSubRepresentation",
 #!  the direct sum thereof is isomorphic to <A>F</A>.
 #! @Arguments F
 #! @Returns a list
-DeclareOperation( "WeakDirectSumDecomposition",
+DeclareOperation( "WeakDirectSumDecompositionOld",
         [ IsCapCategoryObjectInHomCategory ] );
 
 ####################################
