@@ -9,4 +9,3 @@ ReadPackage( "InternalModules", "gap/InternalModules.gd" );
 ReadPackage( "InternalModules", "gap/ModuleElements.gd" );
 ReadPackage( "InternalModules", "gap/SymmetricAlgebra.gd" );
 ReadPackage( "InternalModules", "gap/SModules.gd" );
-ReadPackage( "InternalModules", "gap/Tools.gd" );
