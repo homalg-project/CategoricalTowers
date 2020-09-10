@@ -398,20 +398,7 @@ InstallMethod( LaTeXStringOp,
     
 end );
 
-##
-InstallMethod( IsShowable,
-        "for a string and a an element in an internal algebra or module",
-        [ IsString, IsElementInInternalAlgebraOrModule ],
-        
-  function ( mime, e )
-    
-    if not mime in [ "text/latex", "application/x-latex" ] then
-        TryNextMethod();
-    fi;
-    
-    return true;
-    
-end );
+MakeShowable( [ "text/latex", "application/x-latex" ], IsElementInInternalAlgebraOrModule );
 
 ##
 InstallMethod( ViewObj,

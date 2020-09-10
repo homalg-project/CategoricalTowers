@@ -93,7 +93,7 @@ Dependencies := rec(
                            [ "ActionsForCAP", ">= 2020.04.27" ],
                            [ "RingsForHomalg", ">= 2020.09.02" ],
                            [ "MatricesForHomalg", ">= 2020.09.03" ],
-                           [ "ToolsForHomalg", ">= 2020.08.02" ],
+                           [ "ToolsForHomalg", ">= 2020.09.01" ],
                          ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
