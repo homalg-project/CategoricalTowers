@@ -1,7 +1,7 @@
 
 using HomalgProject
 
-LoadPackage( "InternalModules" )
+LoadPackage( "GroupRepresentationsForCAP" )
 
 G = SymmetricGroup( 4 )
 
@@ -27,13 +27,13 @@ TensorProduct( ρ, ρ )
 
 Braiding( ρ, ρ )
 
-W = χ
-
 LoadPackage( "GradedCategories" )
 
 ZsrepG = PositivelyZGradedCategory( srepG )
 
 LoadPackage( "InternalModules" )
+
+W = χ
 
 SWMod = CategoryOfLeftSModules( W )
 
@@ -87,6 +87,6 @@ SW[4]
 
 χ¹ * ν³ == ν³ * χ¹
 
-χ¹ * (χ¹ * (χ¹ * χ¹)) != ((χ¹ * χ¹) * χ¹) * χ¹
+χ¹ * (χ¹ * (χ¹ * χ¹)) ≠ ((χ¹ * χ¹) * χ¹) * χ¹
 
 
