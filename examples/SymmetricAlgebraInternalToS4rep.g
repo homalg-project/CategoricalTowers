@@ -9,35 +9,35 @@ G := UnderlyingGroupForRepresentationCategory( srepG );
 #! Sym( [ 1 .. 4 ] )
 irr := Irr( G );;
 one := RepresentationCategoryObject( irr[5], srepG, "𝟙" );
-#! 1*(x_𝟙)
+#! 1*(𝟙)
 sigma := RepresentationCategoryObject( irr[1], srepG, "σ" );
-#! 1*(x_σ)
+#! 1*(σ)
 rho := RepresentationCategoryObject( irr[3], srepG, "ρ" );
-#! 1*(x_ρ)
+#! 1*(ρ)
 nu := RepresentationCategoryObject( irr[4], srepG, "ν" );
-#! 1*(x_ν)
+#! 1*(ν)
 chi := RepresentationCategoryObject( irr[2], srepG, "χ" );
-#! 1*(x_χ)
+#! 1*(χ)
 TensorProduct( rho, sigma, rho );
-#! 1*(x_σ) + 1*(x_ρ) + 1*(x_𝟙)
+#! 1*(σ) + 1*(ρ) + 1*(𝟙)
 TensorProduct( rho, rho );
-#! 1*(x_σ) + 1*(x_ρ) + 1*(x_𝟙)
+#! 1*(σ) + 1*(ρ) + 1*(𝟙)
 Display( AssociatorRightToLeft( rho, sigma, rho ) );
-#! Component: (x_σ)
+#! Component: (σ)
 #! 
 #! -1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! -1
 #! 
@@ -45,21 +45,21 @@ Display( AssociatorRightToLeft( rho, sigma, rho ) );
 #! 
 #! ------------------------
 Display( Braiding( rho, rho ) );
-#! Component: (x_σ)
+#! Component: (σ)
 #! 
 #! -1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! 1
 #! 
@@ -67,7 +67,7 @@ Display( Braiding( rho, rho ) );
 #! 
 #! ------------------------
 W := chi;
-#! 1*(x_χ)
+#! 1*(χ)
 LoadPackage( "GradedCategories" );
 #! true
 ZsrepG := PositivelyZGradedCategory( srepG );
@@ -76,26 +76,26 @@ ZsrepG := PositivelyZGradedCategory( srepG );
 LoadPackage( "InternalModules" );
 #! true
 SWMod := CategoryOfLeftSModules( W );
-#! Abelian category of left modules over the internal symmetric algebra of 1*(x_χ)
+#! Abelian category of left modules over the internal symmetric algebra of 1*(χ)
 #! with undecidable (mathematical) equality of morphisms
 #! and uncomputable lifts and colifts
 SW := UnderlyingActingObject( SWMod );
 #! <An object in The positively graded category of The representation category
 #!  of SymmetricGroup( [ 1 .. 4 ] )>
 SW[0];
-#! 1*(x_𝟙)
+#! 1*(𝟙)
 SW[1];
-#! 1*(x_χ)
+#! 1*(χ)
 SW[2];
-#! 1*(x_ρ) + 1*(x_ν) + 1*(x_𝟙)
+#! 1*(ρ) + 1*(ν) + 1*(𝟙)
 SW[3];
-#! 1*(x_σ) + 2*(x_χ) + 1*(x_ν)
+#! 1*(σ) + 2*(χ) + 1*(ν)
 SW[4];
-#! 1*(x_χ) + 2*(x_ρ) + 2*(x_ν) + 2*(x_𝟙)
+#! 1*(χ) + 2*(ρ) + 2*(ν) + 2*(𝟙)
 chi1 := InternalElement( SW, chi, 1, 1 );
 #! degree: 1
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 1
 #! 
@@ -106,7 +106,7 @@ chi1 := InternalElement( SW, chi, 1, 1 );
 rho2 := InternalElement( SW, rho, 2, 1 );
 #! degree: 2
 #! 
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 1
 #! 
@@ -117,7 +117,7 @@ rho2 := InternalElement( SW, rho, 2, 1 );
 nu2 := InternalElement( SW, nu, 2, 1 );
 #! degree: 2
 #! 
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 1
 #! 
@@ -128,7 +128,7 @@ nu2 := InternalElement( SW, nu, 2, 1 );
 nu3 := InternalElement( SW, nu, 3, 1 );
 #! degree: 3
 #! 
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 1
 #! 
@@ -139,21 +139,21 @@ nu3 := InternalElement( SW, nu, 3, 1 );
 chi1 * chi1;
 #! degree: 2
 #! 
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! 1
 #! 
@@ -164,21 +164,21 @@ chi1 * chi1;
 chi1 * (chi1 * chi1);
 #! degree: 3
 #! 
-#! Component: (x_σ)
+#! Component: (σ)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 5,3
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 3
 #! 
@@ -191,14 +191,14 @@ chi1 * (chi1 * chi1) = (chi1 * chi1) * chi1;
 chi1 * rho2;
 #! degree: 3
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 0,2
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 1
 #! 
@@ -211,21 +211,21 @@ chi1 * rho2 = rho2 * chi1;
 chi1 * nu2;
 #! degree: 3
 #! 
-#! Component: (x_σ)
+#! Component: (σ)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 8,0
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 2
 #! 
@@ -238,28 +238,28 @@ chi1 * nu2 = nu2 * chi1;
 chi1 * (chi1 * (chi1 * chi1));
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! -2
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 3,-31
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 5,6
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! 5,3
 #! 
@@ -270,28 +270,28 @@ chi1 * (chi1 * (chi1 * chi1));
 (chi1 * chi1) * (chi1 * chi1);
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 8
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 9/4,43/4
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! -16,-6
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! -7,9/8
 #! 
@@ -302,28 +302,28 @@ chi1 * (chi1 * (chi1 * chi1));
 ((chi1 * chi1) * chi1) * chi1;
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 26
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 3,-31
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 5,6
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! 5,3
 #! 
@@ -334,28 +334,28 @@ chi1 * (chi1 * (chi1 * chi1));
 (chi1 * chi1) * rho2;
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 4
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 5/4,-9/4
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! -4,-4
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! 0,1/8
 #! 
@@ -366,28 +366,28 @@ chi1 * (chi1 * (chi1 * chi1));
 chi1 * (chi1 * rho2);
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! -2
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 2,-12
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! -1,-1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! 0,2
 #! 
@@ -398,28 +398,28 @@ chi1 * (chi1 * rho2);
 (chi1 * chi1) * nu2;
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 4
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 0,16
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! -8,-1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_𝟙)
+#! Component: (𝟙)
 #! 
 #! -4,0
 #! 
@@ -430,21 +430,21 @@ chi1 * (chi1 * rho2);
 chi1 * nu3;
 #! degree: 4
 #! 
-#! Component: (x_χ)
+#! Component: (χ)
 #! 
 #! 4
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ρ)
+#! Component: (ρ)
 #! 
 #! 0,-12
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_ν)
+#! Component: (ν)
 #! 
 #! 1,1
 #! 

@@ -21,7 +21,7 @@ ZRepG := PositivelyZGradedCategory( RepG );
 V := ObjectInPositivelyZGradedCategory( v, 1 );;
 SVMod := CategoryOfLeftSModules( v );
 #! Abelian category of left modules over the internal symmetric algebra of
-#! 1*(x_chi)
+#! 1*(chi)
 #! with undecidable (mathematical) equality of morphisms and
 #! uncomputable lifts and colifts
 ModSV := CategoryOfRightSModules( v );;
@@ -30,7 +30,7 @@ SV := UnderlyingActingObject( SVMod );
 #!  The representation category of SymmetricGroup( [ 1 .. 4 ] )>
 S := SymmetricAlgebraAsLeftModule( v );
 #! <An object in Abelian category of
-#!  left modules over the internal symmetric algebra of 1*(x_chi)
+#!  left modules over the internal symmetric algebra of 1*(chi)
 #!  with undecidable (mathematical) equality of morphisms and
 #!  uncomputable lifts and colifts>
 
@@ -38,7 +38,7 @@ u := chi;;
 U := ObjectInPositivelyZGradedCategory( u, 3 );;
 F := FreeInternalModule( U, SVMod );
 #! <An object in Abelian category of
-#!  left modules over the internal symmetric algebra of 1*(x_chi)
+#!  left modules over the internal symmetric algebra of 1*(chi)
 #!  with undecidable (mathematical) equality of morphisms and
 #!  uncomputable lifts and colifts>
 H := FreeInternalModule( U, ModSV );;
@@ -47,7 +47,7 @@ c1 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 1 );;
 c2 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 2 );;
 c := 2 * c1 - 3 * c2;;
 Display( c[6] );
-#! Component: (x_nu)
+#! Component: (nu)
 #! 
 #! 2,-3,0,0
 #! 
@@ -85,21 +85,21 @@ e4 := InternalElement( SV, nu, 3, 1 );;
 e := e1 + 2 * e2 - 1/3 * e3 + e4;
 #! degree: 3
 #! 
-#! Component: (x_sigma)
+#! Component: (sigma)
 #! 
 #! 1
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_chi)
+#! Component: (chi)
 #! 
 #! 2,-1/3
 #! 
 #! A morphism in Category of matrices over Q
 #! 
 #! ------------------------
-#! Component: (x_nu)
+#! Component: (nu)
 #! 
 #! 1
 #! 
@@ -116,7 +116,7 @@ m2 := InternalElement( F, nu, 6, 2 );;
 m := 2 * m1 - 1/3 * m2;
 #! degree: 6
 #! 
-#! Component: (x_nu)
+#! Component: (nu)
 #! 
 #! 2,-1/3,0,0
 #! 
