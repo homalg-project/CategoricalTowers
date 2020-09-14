@@ -165,9 +165,9 @@ Display( eleven );
 #! . . . . 1
 #!
 #! A morphism in Category of matrices over GF(3)
-gammas := WeakDirectSumDecompositionOld( eleven );
+gammas := WeakDirectSumDecomposition( eleven );
 #! [ <(1)->1x6, (2)->0x5>, <(1)->1x6, (2)->1x5>, <(1)->1x6, (2)->1x5>,
-#!  <(1)->2x6, (2)->0x5>, <(1)->0x6, (2)->2x5>, <(1)->1x6, (2)->1x5> ]
+#!   <(1)->0x6, (2)->2x5>, <(1)->2x6, (2)->0x5>, <(1)->1x6, (2)->1x5> ]
 #! @EndExample
 
 #! As opposed to nine in the previous example, eleven itself
@@ -187,33 +187,33 @@ Display( Source( UniversalMorphismFromDirectSum( gammas ) ) );
 #! A vector space object over GF(3) of dimension 5
 #!
 #! Image of (1)-[{ Z(3)^0*(a) }]->(1):
-#! 1 . . . . .
-#! . 1 . . . .
-#! . . 2 . . .
-#! . . . . 2 .
-#! . . . 1 . .
-#! . . . . . 1
+#!  1 . . . . .
+#!  . 2 . . . .
+#!  . . 1 . . .
+#!  . . . . 2 .
+#!  . . . 1 . .
+#!  . . . . . 1
 #!
 #! A morphism in Category of matrices over GF(3)
 #!
 #!
 #! Image of (1)-[{ Z(3)^0*(b) }]->(2):
-#! . . . . .
-#! 1 . . . .
-#! . 1 . . .
-#! . . . . .
-#! . . . . .
-#! . . . . 2
+#!  . . . . .
+#!  1 . . . .
+#!  . 2 . . .
+#!  . . . . .
+#!  . . . . .
+#!  . . . . 1
 #!
 #! A morphism in Category of matrices over GF(3)
 #!
 #!
 #! Image of (2)-[{ Z(3)^0*(c) }]->(2):
-#! 1 . . . .
-#! . 2 . . .
-#! . . 2 2 .
-#! . . 2 1 .
-#! . . . . 1
+#!  2 . . . .
+#!  . 1 . . .
+#!  . . . 2 .
+#!  . . 1 . .
+#!  . . . . 1
 #!
 #! A morphism in Category of matrices over GF(3)
 #! @EndExample
