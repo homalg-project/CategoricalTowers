@@ -1,10 +1,15 @@
+#
+# FunctorCategories: Categories of functors
+#
+# Implementations
+#
 
 BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ##
 InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
           [ IsCapHomCategory ],
-  function( functors )
+  function ( functors )
     local B, matrix_cat, field, A, quiver, quiver_reps, name, F;
     
     B := Source( functors );
@@ -30,7 +35,7 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
     F := CapFunctor( name, quiver_reps, functors );
     
     AddObjectFunction( F,
-      function( rep )
+      function ( rep )
         local obj, dimension_vec, mor, matrices, i;
         
         obj := rec( );
@@ -39,7 +44,7 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
         
         for i in [ 1 .. Size( dimension_vec ) ] do
           
-          obj!.( String( Vertex( quiver, i ) ) ) := VectorSpaceObject( dimension_vec[ i ], field );
+          obj!.(String( Vertex( quiver, i ) )) := VectorSpaceObject( dimension_vec[i], field );
           
         od;
         
@@ -48,18 +53,18 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
         matrices := MatricesOfRepresentation( rep );
         
         matrices := List( matrices,
-          mat -> HomalgMatrix( 
-                    RowsOfMatrix( mat ), 
+          mat -> HomalgMatrix(
+                    RowsOfMatrix( mat ),
                       DimensionsMat( mat )[ 1 ],
                         DimensionsMat( mat )[ 2 ], field ) );
                         
-        for i in [ 1 .. Size( matrices ) ] do;
+        for i in [ 1 .. Size( matrices ) ] do
           
-          mor!.( String( Arrow( quiver, i ) ) ) :=
+          mor!.(String( Arrow( quiver, i ) )) :=
             VectorSpaceMorphism(
-              obj!.( String( Source( Arrow( quiver, i ) ) ) ), 
-                matrices[ i ],
-                  obj!.( String( Target( Arrow( quiver, i ) ) ) ) );
+              obj!.(String( Source( Arrow( quiver, i ) ) )),
+                matrices[i],
+                  obj!.(String( Target( Arrow( quiver, i ) ) )) );
                   
         od;
         
@@ -68,7 +73,7 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
     end );
     
     AddMorphismFunction( F,
-      function( source, rep_mor, range )
+      function ( source, rep_mor, range )
         local matrices, mor, i;
         
         matrices := MatricesOfRepresentationHomomorphism( rep_mor );
@@ -83,11 +88,11 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
         
         for i in [ 1 .. Size( matrices ) ] do
           
-          mor!.( String( Vertex( quiver, i ) ) ) :=
+          mor!.(String( Vertex( quiver, i ) )) :=
             VectorSpaceMorphism(
-              VectorSpaceObject( NrRows( matrices[ i ] ), field ),
-                matrices[ i ],
-                  VectorSpaceObject( NrColumns( matrices[ i ] ), field ) );
+              VectorSpaceObject( NrRows( matrices[i] ), field ),
+                matrices[i],
+                  VectorSpaceObject( NrColumns( matrices[i] ), field ) );
                   
         od;
         
@@ -102,7 +107,7 @@ end );
 ##
 InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
           [ IsCapHomCategory ],
-  function( functors )
+  function ( functors )
     local B, matrix_cat, A, field, quiver, quiver_reps, name, G;
     
     B := Source( functors );
@@ -128,7 +133,7 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
     G := CapFunctor( name, functors, quiver_reps );
     
     AddObjectFunction( G,
-      function( func )
+      function ( func )
         local U, V, L;
         
         U := UnderlyingCapTwoCategoryCell( func );
@@ -158,7 +163,7 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
       end );
       
     AddMorphismFunction( G,
-      function( source, mor, range )
+      function ( source, mor, range )
         local U, V;
         
         U := UnderlyingCapTwoCategoryCell( mor );
@@ -193,7 +198,7 @@ end );
 ##
 InstallMethod( YonedaEmbedding,
           [ IsAlgebroid ],
-  function( algebroid )
+  function ( algebroid )
     local k, matrix_cat, algebroid_op, objs, mors, functors_cat, name, Yoneda;
     
     k := CommutativeRingOfLinearCategory( algebroid );
@@ -213,7 +218,7 @@ InstallMethod( YonedaEmbedding,
     Yoneda := CapFunctor( name, algebroid, functors_cat );
     
     AddObjectFunction( Yoneda,
-      function( o )
+      function ( o )
         local m, Yo;
         
         o := OppositePath( UnderlyingVertex( o ) ) / algebroid_op;
@@ -231,7 +236,7 @@ InstallMethod( YonedaEmbedding,
     end );
     
     AddMorphismFunction( Yoneda,
-      function( s, m, r )
+      function ( s, m, r )
         
         m := OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / algebroid_op;
         

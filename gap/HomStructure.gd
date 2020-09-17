@@ -1,4 +1,8 @@
-
+#
+# FunctorCategories: Categories of functors
+#
+# Declarations
+#
 
 DeclareProperty( "IsQuiverVertexWithLoop", IsQuiverVertex );
 

@@ -1,15 +1,20 @@
+#
+# FunctorCategories: Categories of functors
+#
+# Implementations
+#
 
 ##
 InstallMethod( IsQuiverVertexWithLoop,
           [ IsQuiverVertex ],
-  function( v )
+  function ( v )
     return ForAny( OutgoingArrows( v ), a -> Target( a ) = v );
 end );
 
 ##
 InstallMethodWithCache( AuxiliaryMorphism,
           [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ],
-  function( S, R )
+  function ( S, R )
     local cat, algebroid, A, quiver, nr_vertices, nr_arrows, S_o_vals, S_m_vals, R_o_vals, R_m_vals, loops, nr_loops, left_coeffs, right_coeffs, S_o_val_i, R_o_val_i, new_left_coeff, new_right_coeff, arrow, s, t, H, i, j, k;
     
     cat := CapCategory( S );
@@ -38,9 +43,9 @@ InstallMethodWithCache( AuxiliaryMorphism,
     
     nr_loops := Size( loops );
     
-    S_o_vals := Concatenation( S_o_vals, S_o_vals{ loops } );
+    S_o_vals := Concatenation( S_o_vals, S_o_vals{loops} );
     
-    R_o_vals := Concatenation( R_o_vals, R_o_vals{ loops } );
+    R_o_vals := Concatenation( R_o_vals, R_o_vals{loops} );
     
     left_coeffs := [ ];
 
@@ -48,9 +53,9 @@ InstallMethodWithCache( AuxiliaryMorphism,
     
     for i in [ 1 .. nr_loops ] do
       
-      S_o_val_i := S_o_vals[ loops[ i ] ];
+      S_o_val_i := S_o_vals[loops[i]];
       
-      R_o_val_i := R_o_vals[ loops[ i ] ];
+      R_o_val_i := R_o_vals[loops[i]];
       
       new_left_coeff := [ ];
       
@@ -58,7 +63,7 @@ InstallMethodWithCache( AuxiliaryMorphism,
       
       for k in [ 1 .. nr_vertices + nr_loops ] do
         
-        if k = loops[ i ] then
+        if k = loops[i] then
           
           Add( new_left_coeff, IdentityMorphism( S_o_val_i ), k );
           Add( new_right_coeff, IdentityMorphism( R_o_val_i ), k );
@@ -66,12 +71,12 @@ InstallMethodWithCache( AuxiliaryMorphism,
         elif k = nr_vertices + i then
           
           Add( new_left_coeff, IdentityMorphism( S_o_val_i ), k );
-          Add( new_right_coeff, -IdentityMorphism( R_o_val_i ), k );
+          Add( new_right_coeff, - IdentityMorphism( R_o_val_i ), k );
           
         else
           
-          Add( new_left_coeff, ZeroMorphism( S_o_val_i, S_o_vals[ k ] ), k );
-          Add( new_right_coeff, ZeroMorphism( R_o_vals[ k ], R_o_val_i ), k );
+          Add( new_left_coeff, ZeroMorphism( S_o_val_i, S_o_vals[k] ), k );
+          Add( new_right_coeff, ZeroMorphism( R_o_vals[k], R_o_val_i ), k );
           
         fi;
         
@@ -104,19 +109,19 @@ InstallMethodWithCache( AuxiliaryMorphism,
       for k in [ 1 .. nr_vertices + nr_loops ] do
         
         if k = s then
-          Add( new_left_coeff, IdentityMorphism( S_o_vals[ s ] ), s );
-          Add( new_right_coeff, R_m_vals[ i ], s );
+          Add( new_left_coeff, IdentityMorphism( S_o_vals[s] ), s );
+          Add( new_right_coeff, R_m_vals[i], s );
         fi;
         
         if k = t then
-          Add( new_left_coeff, S_m_vals[ i ], t );
-          Add( new_right_coeff, AdditiveInverse( IdentityMorphism( R_o_vals[ t ] ) ), t );
+          Add( new_left_coeff, S_m_vals[i], t );
+          Add( new_right_coeff, AdditiveInverse( IdentityMorphism( R_o_vals[t] ) ), t );
         fi;
         
         if k <> s and k <> t then
-          Add( new_left_coeff, ZeroMorphism( S_o_vals[ s ], S_o_vals[ k ] ), k );
-          Add( new_right_coeff, ZeroMorphism( R_o_vals[ k ], R_o_vals[ t ] ), k );
-        fi;           
+          Add( new_left_coeff, ZeroMorphism( S_o_vals[s], S_o_vals[k] ), k );
+          Add( new_right_coeff, ZeroMorphism( R_o_vals[k], R_o_vals[t] ), k );
+        fi;
         
       od;
        
@@ -136,7 +141,7 @@ end );
 
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATEGORY,
-  function( Hom )
+  function ( Hom )
     local A, quiver, nr_vertices, loops, range_category, range_category_of_hom, D;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
@@ -157,7 +162,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     range_category_of_hom := RangeCategoryOfHomomorphismStructure( range_category );
     
-    if not ( HasIsAbelianCategory( range_category_of_hom ) and IsAbelianCategory( range_category_of_hom ) ) then
+    if not (HasIsAbelianCategory( range_category_of_hom ) and IsAbelianCategory( range_category_of_hom )) then
       
       return;
       
@@ -177,14 +182,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom,
-      function( eta )
+      function ( eta )
         local maps;
         
         maps := ValuesOnAllObjects( eta );
         
         maps := List( maps, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure );
         
-        maps := Concatenation( maps, maps{ loops } );
+        maps := Concatenation( maps, maps{loops} );
         
         maps := MorphismBetweenDirectSums( [ maps ] );
         
@@ -196,16 +201,16 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
-      function( S, R, iota )
+      function ( S, R, iota )
         local S_o_vals, R_o_vals, map, summands;
         
         S_o_vals := ValuesOnAllObjects( S );
         
-        S_o_vals := Concatenation( S_o_vals, S_o_vals{ loops } );
+        S_o_vals := Concatenation( S_o_vals, S_o_vals{loops} );
         
         R_o_vals := ValuesOnAllObjects( R );
         
-        R_o_vals := Concatenation( R_o_vals, R_o_vals{ loops } );
+        R_o_vals := Concatenation( R_o_vals, R_o_vals{loops} );
         
         map := AuxiliaryMorphism( S, R );
         
@@ -219,22 +224,22 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         
         iota := ListN( S_o_vals, R_o_vals, iota, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism );
         
-        return AsMorphismInHomCategory( S, iota, R ); 
+        return AsMorphismInHomCategory( S, iota, R );
         
     end );
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
-      function( s, eta, mu, r )
+      function ( s, eta, mu, r )
         local eta_maps, mu_maps, maps, r_eta_s_mu, s_eta_r_mu;
         
         eta_maps := ValuesOnAllObjects( eta );
         
-        eta_maps := Concatenation( eta_maps, eta_maps{ loops } );
+        eta_maps := Concatenation( eta_maps, eta_maps{loops} );
         
         mu_maps := ValuesOnAllObjects( mu );
         
-        mu_maps := Concatenation( mu_maps, mu_maps{ loops } );
+        mu_maps := Concatenation( mu_maps, mu_maps{loops} );
         
         maps := ListN( eta_maps, mu_maps, HomomorphismStructureOnMorphisms );
         
@@ -252,7 +257,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
       
       ##
       AddBasisOfExternalHom( Hom,
-        function( S, R )
+        function ( S, R )
           local iota, K, D, S_o_vals, R_o_vals, summands, direct_sum, iotas, basis;
           
           iota := KernelEmbedding( AuxiliaryMorphism( S, R ) );
@@ -286,8 +291,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
                           S,
                           List( [ 1 .. nr_vertices ], i ->
                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
-                                S_o_vals[ i ],
-                                R_o_vals[ i ],
+                                S_o_vals[i],
+                                R_o_vals[i],
                                 iotas[i][j] )
                           ),
                           R
