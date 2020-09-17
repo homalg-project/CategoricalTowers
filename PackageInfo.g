@@ -19,7 +19,8 @@ Version := Maximum( [
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -38,17 +39,19 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
     URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName, "/" ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "blob/master/PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "blob/master/README.md" ),
+PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
                                  "/", ~.PackageName, "-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -106,5 +109,3 @@ Keywords := [
              ],
 
 ));
-
-

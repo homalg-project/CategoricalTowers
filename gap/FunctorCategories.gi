@@ -12,7 +12,7 @@
 
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
-        [ 
+        [
           "AdditionForMorphisms",
           "AdditiveInverseForMorphisms",
           "AssociatorLeftToRightWithGivenTensorProducts",
@@ -193,7 +193,7 @@ InstallOtherMethod( EqualizerFunctorialWithGivenEqualizers,
         "for two objects and four lists",
         [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
         
-  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
     
     return FiberProductFunctorialWithGivenFiberProducts( source, Lsource, LmorS[1], Ltarget, target );
     
@@ -204,7 +204,7 @@ InstallOtherMethod( CoequalizerFunctorialWithGivenCoequalizers,
         "for two objects and four lists",
         [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
         
-  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
     
     return CoequalizerFunctorialWithGivenCoequalizers( source, Lsource, LmorT[1], Ltarget, target );
     
@@ -215,7 +215,7 @@ InstallOtherMethod( FiberProductFunctorialWithGivenFiberProducts,
         "for two objects and four lists",
         [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
         
-  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
     
     return FiberProductFunctorialWithGivenFiberProducts( source, Lsource, LmorS, Ltarget, target );
     
@@ -226,7 +226,7 @@ InstallOtherMethod( PushoutFunctorialWithGivenPushouts,
         "for two objects and four lists",
         [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
         
-  function( source, Lsource, LmorS, LmorT, Ltarget, target )
+  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
     
     return PushoutFunctorialWithGivenPushouts( source, Lsource, LmorT, Ltarget, target );
     
@@ -257,7 +257,7 @@ InstallMethod( ApplyCell,
         "for a CAP natural transformation and a CAP morphism",
         [ IsCapNaturalTransformation, IsCapCategoryMorphism ],
         
-  function( eta, mor )
+  function ( eta, mor )
     
     return [ ApplyNaturalTransformation( eta, Source( mor ) ),
              ApplyFunctor( Source( eta ), mor ),
@@ -271,7 +271,7 @@ InstallMethod( ApplyCell,
         "for a list and a CAP cell",
         [ IsList, IsCapCategoryCell ],
         
-  function( L, c )
+  function ( L, c )
     
     return List( L, F_or_eta -> ApplyCell( F_or_eta, c ) );
     
@@ -282,7 +282,7 @@ InstallMethod( ApplyCell,
         "for an integer and a CAP cell",
         [ IsInt, IsCapCategoryCell ],
         
-  function( i, c )
+  function ( i, c )
     
     return i;
     
@@ -293,7 +293,7 @@ InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP object",
         [ IsCapCategoryObjectInHomCategory, IsCapCategoryObject ],
         
-  function( F, o )
+  function ( F, o )
     local objects, pos, values;
     
     objects := SetOfObjects( F );
@@ -317,7 +317,7 @@ InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP morphism",
         [ IsCapCategoryObjectInHomCategory, IsCapCategoryMorphism ],
         
-  function( F, m )
+  function ( F, m )
     local morphisms, pos, values;
     
     morphisms := SetOfGeneratingMorphisms( F );
@@ -341,7 +341,7 @@ InstallMethod( ApplyCell,
         "for a morphism in a Hom-category and a CAP object",
         [ IsCapCategoryMorphismInHomCategory, IsCapCategoryObject ],
         
-  function( eta, o )
+  function ( eta, o )
     local objects, pos, values;
     
     objects := SetOfObjects( eta );
@@ -365,7 +365,7 @@ InstallMethod( ApplyCell,
         "for a morphism in a Hom-category and a CAP morphism",
         [ IsCapCategoryMorphismInHomCategory, IsCapCategoryMorphism ],
         
-  function( eta, mor )
+  function ( eta, mor )
     
     return [ ApplyCell( eta, Source( mor ) ),
              ApplyCell( Source( eta ), mor ),
@@ -379,7 +379,7 @@ InstallMethod( CallFuncList,
         "for a CAP cell in a Hom-category and a list",
         [ IsCapCategoryCellInHomCategory, IsList ],
         
-  function( F_or_eta, L )
+  function ( F_or_eta, L )
     
     return ApplyCell( F_or_eta, L[1] );
     
@@ -390,7 +390,7 @@ InstallMethod( ValuesOnAllObjects,
         "for a CAP object in a Hom-category",
         [ IsCapCategoryObjectInHomCategory ],
         
-  function( F )
+  function ( F )
     
     return List( SetOfObjects( F ), F );
     
@@ -401,7 +401,7 @@ InstallMethod( ValuesOnAllGeneratingMorphisms,
         "for a CAP object in a Hom-category",
         [ IsCapCategoryObjectInHomCategory ],
         
-  function( F )
+  function ( F )
     
     return List( SetOfGeneratingMorphisms( F ), F );
     
@@ -412,7 +412,7 @@ InstallMethod( ValuesOnAllObjects,
         "for a CAP morphism in a Hom-category",
         [ IsCapCategoryMorphismInHomCategory ],
         
-  function( eta )
+  function ( eta )
     
     return List( SetOfObjects( eta ), eta );
     
@@ -429,7 +429,7 @@ InstallMethod( AsObjectInHomCategory,
         "for a CAP category and a CAP functor",
         [ IsCapCategory, IsCapFunctor ],
         
-  function( H, F )
+  function ( H, F )
     local obj, kq;
     
     obj := rec( ValuesOnAllObjects := [ ],
@@ -453,7 +453,7 @@ InstallMethod( AsObjectInHomCategory,
         "for a CAP functor",
         [ IsCapFunctor ],
         
-  function( F )
+  function ( F )
     local H;
     
     H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
@@ -467,7 +467,7 @@ InstallMethod( AsObjectInHomCategory,
         "for a CAP category, a record (of images of objects) and a record (of images of morphisms)",
         [ IsCapCategory, IsRecord, IsRecord ],
         
-  function( B, rec_images_of_objects, rec_images_of_morphisms )
+  function ( B, rec_images_of_objects, rec_images_of_morphisms )
     
     return AsObjectInHomCategory( CapFunctor( B, rec_images_of_objects, rec_images_of_morphisms ) );
     
@@ -478,8 +478,8 @@ InstallMethod( AsObjectInHomCategory,
         "for a CAP category, a list (of images of objects) and a list (of images of morphisms)",
         [ IsCapCategory, IsList, IsList ],
         
-  function( B, images_of_objects, images_of_morphisms )
-    local  F;
+  function ( B, images_of_objects, images_of_morphisms )
+    local F;
     
     if IsEmpty( images_of_objects ) then
         Error( "the list of images is empty\n" );
@@ -499,7 +499,7 @@ InstallMethod( AsObjectInHomCategory,
         "for an algebroid and two lists",
         [ IsAlgebroid, IsList, IsList ], 10001,
         
-  function( kq, dims, matrices )
+  function ( kq, dims, matrices )
     local k, kmat, objects, morphisms, mat;
     
     if dims = [ ] then
@@ -507,13 +507,13 @@ InstallMethod( AsObjectInHomCategory,
     fi;
     
     if not IsInt( dims[1] ) then
-        TryNextMethod( );
+        TryNextMethod();
     fi;
     
     k := CommutativeRingOfLinearCategory( kq );
     
-    if not ( HasIsFieldForHomalg( k ) and IsFieldForHomalg( k ) ) then
-        TryNextMethod( );
+    if not (HasIsFieldForHomalg( k ) and IsFieldForHomalg( k )) then
+        TryNextMethod();
     fi;
     
     kmat := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "MatrixCategory", MatrixCategory( k ) );
@@ -523,7 +523,7 @@ InstallMethod( AsObjectInHomCategory,
     morphisms := SetOfGeneratingMorphisms( kq );
     
     mat :=
-      function( m )
+      function ( m )
         local source, target;
         
         source := VertexIndex( UnderlyingVertex( Source( morphisms[m] ) ) );
@@ -550,7 +550,7 @@ InstallMethod( AsMorphismInHomCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],
         
-  function( H, eta )
+  function ( H, eta )
     local mor, kq;
     
     mor := rec( ValuesOnAllObjects := [ ] );
@@ -573,7 +573,7 @@ InstallMethod( AsMorphismInHomCategory,
         "for a CAP natural transformation",
         [ IsCapNaturalTransformation ],
         
-  function( eta )
+  function ( eta )
     local F, H;
     
     F := Source( eta );
@@ -589,7 +589,7 @@ InstallMethod( AsMorphismInHomCategory,
         "for a record and two objects in Hom-category",
         [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ],
         
-  function( U, e, V )
+  function ( U, e, V )
     local eta;
     
     eta := NaturalTransformation(
@@ -606,7 +606,7 @@ InstallMethod( AsMorphismInHomCategory,
         "for a list and two objects in Hom-category",
         [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ],
         
-  function( U, e, V )
+  function ( U, e, V )
     local B, Q, vertices, eta, i;
     
     B := Source( U );
@@ -634,7 +634,7 @@ InstallMethodWithCache( Hom,
         "for two CAP categories",
         [ IsAlgebroid, IsCapCategory ],
         
-  function( B, C )
+  function ( B, C )
     local name, create_func_bool, create_func_object0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
@@ -650,7 +650,7 @@ InstallMethodWithCache( Hom,
     if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
         
         create_func_bool :=
-          function( name, Hom )
+          function ( name, Hom )
             local oper;
             
             oper := ValueGlobal( name );
@@ -667,7 +667,7 @@ InstallMethodWithCache( Hom,
     
     ## e.g., ZeroObject
     create_func_object0 :=
-      function( name, Hom )
+      function ( name, Hom )
         local B, C, name_of_object, info, oper, functorial;
 
         B := Source( Hom );
@@ -686,7 +686,7 @@ InstallMethodWithCache( Hom,
         functorial := ValueGlobal( info.functorial );
         
         return
-          function( )
+          function ( )
             local F, objC, morC;
             
             F := CapFunctor( name_of_object, B, C );
@@ -701,7 +701,7 @@ InstallMethodWithCache( Hom,
             morC := functorial( C );
             
             AddMorphismFunction( F,
-              function( new_source, morB, new_range )
+              function ( new_source, morB, new_range )
                 return morC;
             end );
             
@@ -713,7 +713,7 @@ InstallMethodWithCache( Hom,
     
     ## e.g., DirectSum, KernelObject
     create_func_object :=
-      function( name, Hom )
+      function ( name, Hom )
         local B, C, vertices, arrows, name_of_object, info, oper, functorial, diagram;
         
         B := Source( Hom );
@@ -752,7 +752,7 @@ InstallMethodWithCache( Hom,
         if diagram = "multiple arrows" then
             
             return ## a constructor for universal objects: FiberProduct
-              function( arg )
+              function ( arg )
                 local eval_arg, images_of_objects, images_of_generating_morphisms, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
@@ -769,7 +769,7 @@ InstallMethodWithCache( Hom,
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
                 
                 AddObjectFunction( F,
-                  function( objB )
+                  function ( objB )
                     local pos;
                     
                     pos := Position( vertices, objB );
@@ -787,7 +787,7 @@ InstallMethodWithCache( Hom,
                 end );
                 
                 AddMorphismFunction( F,
-                  function( new_source, morB, new_range )
+                  function ( new_source, morB, new_range )
                     local pos, FmorB;
                     
                     pos := Position( arrows, morB );
@@ -826,7 +826,7 @@ InstallMethodWithCache( Hom,
         elif diagram = "multiple objects" then
             
             return ## a constructor for universal objects: DirectSum
-              function( arg )
+              function ( arg )
                 local eval_arg, images_of_objects, images_of_generating_morphisms, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
@@ -843,7 +843,7 @@ InstallMethodWithCache( Hom,
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
                 
                 AddObjectFunction( F,
-                  function( objB )
+                  function ( objB )
                     local pos;
                     
                     pos := Position( vertices, objB );
@@ -861,7 +861,7 @@ InstallMethodWithCache( Hom,
                 end );
                 
                 AddMorphismFunction( F,
-                  function( new_source, morB, new_range )
+                  function ( new_source, morB, new_range )
                     local pos, FmorB;
                     
                     pos := Position( arrows, morB );
@@ -898,7 +898,7 @@ InstallMethodWithCache( Hom,
         else
             
             return ## a constructor for universal objects: KernelObject
-              function( arg )
+              function ( arg )
                 local eval_arg, images_of_objects, images_of_generating_morphisms, F;
                 
                 eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
@@ -915,7 +915,7 @@ InstallMethodWithCache( Hom,
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
                 
                 AddObjectFunction( F,
-                  function( objB )
+                  function ( objB )
                     local pos;
                     
                     pos := Position( vertices, objB );
@@ -933,7 +933,7 @@ InstallMethodWithCache( Hom,
                 end );
                 
                 AddMorphismFunction( F,
-                  function( new_source, morB, new_range )
+                  function ( new_source, morB, new_range )
                     local pos, FmorB;
                     
                     pos := Position( arrows, morB );
@@ -973,7 +973,7 @@ InstallMethodWithCache( Hom,
     
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name, Hom )
+      function ( name, Hom )
         local B, C, name_of_morphism, oper, type;
         
         B := Source( Hom );
@@ -986,7 +986,7 @@ InstallMethodWithCache( Hom,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function ( arg )
             local src_trg, S, T, eval_arg, eta;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -998,7 +998,7 @@ InstallMethodWithCache( Hom,
             eta := NaturalTransformation( name_of_morphism, S, T );
             
             AddNaturalTransformationFunction( eta,
-              function( source, objB, range )
+              function ( source, objB, range )
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
             
@@ -1010,7 +1010,7 @@ InstallMethodWithCache( Hom,
     
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
-      function( name, Hom )
+      function ( name, Hom )
         local B, C, name_of_morphism, info, oper, type;
         
         B := Source( Hom );
@@ -1029,7 +1029,7 @@ InstallMethodWithCache( Hom,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function ( arg )
             local src_trg, S, T, eval_arg, eta;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -1042,7 +1042,7 @@ InstallMethodWithCache( Hom,
             eta := NaturalTransformation( name_of_morphism, S, T );
             
             AddNaturalTransformationFunction( eta,
-              function( source, objB, range )
+              function ( source, objB, range )
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
               
@@ -1089,8 +1089,8 @@ InstallMethodWithCache( Hom,
     properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
     
     preinstall :=
-      [ function( Hom ) SetSource( Hom, B ); end,
-        function( Hom ) SetRange( Hom, C ); end,
+      [ function ( Hom ) SetSource( Hom, B ); end,
+        function ( Hom ) SetRange( Hom, C ); end,
           ];
     
     Hom := CategoryConstructor( :
@@ -1123,7 +1123,7 @@ InstallMethodWithCache( Hom,
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( Hom,
-          function( r, eta )
+          function ( r, eta )
             local Hom, B, C, name_of_morphism, S, T, r_eta;
             
             Hom := CapCategory( eta );
@@ -1140,7 +1140,7 @@ InstallMethodWithCache( Hom,
             r_eta := NaturalTransformation( name_of_morphism, S, T );
             
             AddNaturalTransformationFunction( r_eta,
-              function( source, objB, range )
+              function ( source, objB, range )
                 return MultiplyWithElementOfCommutativeRingForMorphisms( r, ApplyCell( eta, objB ) );
             end );
             
@@ -1156,14 +1156,14 @@ InstallMethodWithCache( Hom,
         arrows := SetOfGeneratingMorphisms( B );
         
         AddIsWellDefinedForMorphisms( Hom,
-          function( eta )
+          function ( eta )
             local S, T;
             
             S := Source( eta );
             T := Range( eta );
             
             return ForAll( arrows,
-                           function( m )
+                           function ( m )
                              return
                                IsEqualForMorphisms(
                                        PreCompose( S( m ), eta( Range( m ) ) ),
@@ -1176,7 +1176,7 @@ InstallMethodWithCache( Hom,
         relations := List( relations, UnderlyingQuiverAlgebraElement );
         
         AddIsWellDefinedForObjects( Hom,
-          function( F )
+          function ( F )
             
             if not ForAll( arrows, m -> IsEqualForObjects( F( Source( m ) ), Source( F( m ) ) ) ) then
                 return false;
@@ -1191,7 +1191,7 @@ InstallMethodWithCache( Hom,
           end );
         
         AddIsEqualForObjects( Hom,
-          function( F, G )
+          function ( F, G )
             
             return ForAll( vertices, o -> IsEqualForObjects( F( o ), G( o ) ) ) and
                    ForAll( arrows, m -> IsEqualForMorphisms( F( m ), G( m ) ) );
@@ -1199,14 +1199,14 @@ InstallMethodWithCache( Hom,
           end );
         
         AddIsEqualForMorphisms( Hom,
-          function( eta, epsilon )
+          function ( eta, epsilon )
             
             return ForAll( vertices, o -> IsEqualForMorphisms( eta( o ), epsilon( o ) ) );
             
           end );
         
         AddIsCongruentForMorphisms( Hom,
-          function( eta, epsilon )
+          function ( eta, epsilon )
             
             return ForAll( vertices, o -> IsCongruentForMorphisms( eta( o ), epsilon( o ) ) );
             
@@ -1231,7 +1231,7 @@ InstallMethodWithCache( Hom,
       SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
       
       AddIsProjective( Hom,
-        function( F )
+        function ( F )
           local iso;
           
           iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1241,7 +1241,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddIsInjective( Hom,
-        function( F )
+        function ( F )
           local iso;
           
           iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1251,7 +1251,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddSomeProjectiveObject( Hom,
-        function( F )
+        function ( F )
           local iso_1, iso_2;
           
           iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1263,7 +1263,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddSomeInjectiveObject( Hom,
-        function( F )
+        function ( F )
           local iso_1, iso_2;
           
           iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1275,7 +1275,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
-        function( F )
+        function ( F )
           local iso_1, iso_2;
           
           iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1287,7 +1287,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddMonomorphismIntoSomeInjectiveObject( Hom,
-        function( F )
+        function ( F )
           local iso_1, iso_2;
           
           iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1299,7 +1299,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddProjectiveLift( Hom,
-        function( eta_1, eta_2 )
+        function ( eta_1, eta_2 )
           local iso_1, iso_2;
           
           iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1311,7 +1311,7 @@ InstallMethodWithCache( Hom,
       end );
       
       AddInjectiveColift( Hom,
-        function( eta_1, eta_2 )
+        function ( eta_1, eta_2 )
           local iso_1, iso_2;
           
           iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
@@ -1345,7 +1345,7 @@ InstallMethodWithCache( Hom,
         name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
         
         AddTensorUnit( Hom,
-          function( )
+          function ( )
             local I, I_C, counit, id;
             
             I := CapFunctor( name_of_object, B, C );
@@ -1362,7 +1362,7 @@ InstallMethodWithCache( Hom,
             id := IdentityMorphism( I_C );
             
             AddMorphismFunction( I,
-              function( new_source, morB, new_range )
+              function ( new_source, morB, new_range )
                 local coef;
                 
                 coef := Coefficients( UnderlyingQuiverAlgebraElement( ApplyFunctor( counit, morB ) ) );
@@ -1384,7 +1384,7 @@ InstallMethodWithCache( Hom,
           end );
           
         AddTensorProductOnObjects( Hom,
-          function( F, G )
+          function ( F, G )
             local FG, comult;
             
             FG := CapFunctor( name_of_object, B, C );
@@ -1398,7 +1398,7 @@ InstallMethodWithCache( Hom,
             comult := Comultiplication( B );
             
             AddMorphismFunction( FG,
-              function( new_source, morB, new_range )
+              function ( new_source, morB, new_range )
                 local Delta;
                 
                 Delta := ApplyFunctor( comult, morB );
@@ -1416,7 +1416,7 @@ InstallMethodWithCache( Hom,
           end );
           
         AddDualOnObjects( Hom,
-          function( F )
+          function ( F )
             local Fd, antipode;
             
             Fd := CapFunctor( name_of_object, B, C );
@@ -1430,7 +1430,7 @@ InstallMethodWithCache( Hom,
             antipode := Antipode( B );
             
             AddMorphismFunction( Fd,
-              function( new_source, morB, new_range )
+              function ( new_source, morB, new_range )
                 local S;
                 
                 S := ApplyFunctor( antipode, morB );
@@ -1466,7 +1466,7 @@ InstallMethodWithCache( Hom,
         od;
         
         AddTensorUnit( Hom,
-          function( )
+          function ( )
             local objects, morphisms;
             
             objects := List( [ 1 .. Length( SetOfObjects( B ) ) ], i -> TensorUnit( C ) );
@@ -1477,7 +1477,7 @@ InstallMethodWithCache( Hom,
         end );
         
         AddTensorProductOnObjects( Hom,
-          function( F, G )
+          function ( F, G )
             local objects, morphisms;
             
             objects := ListN( ValuesOnAllObjects( F ), ValuesOnAllObjects( G ), TensorProductOnObjects );
@@ -1489,7 +1489,7 @@ InstallMethodWithCache( Hom,
         
     fi;
     
-    AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function() IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
+    AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function ( ) IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
     
     if ValueOption( "FinalizeCategory" ) = false then
         return Hom;
@@ -1512,7 +1512,7 @@ InstallMethodWithCache( Hom,
         "for a CAP category and a homalg field",
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
-  function( B, k )
+  function ( B, k )
     local kmat;
     
     DeactivateCachingOfCategory( B );
@@ -1536,14 +1536,14 @@ end );
 ##
 InstallMethod( IndecProjectiveObjects,
           [ IsCapHomCategory ],
-  function( Hom )
+  function ( Hom )
     local A, pp, iso;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
-    if not ( IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A ) ) then
+    if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
       
-      TryNextMethod( );
+      TryNextMethod();
       
     fi;
     
@@ -1558,14 +1558,14 @@ end );
 ##
 InstallMethod( IndecInjectiveObjects,
           [ IsCapHomCategory ],
-  function( Hom )
+  function ( Hom )
     local A, ii, iso;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
-    if not ( IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A ) ) then
+    if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
       
-      TryNextMethod( );
+      TryNextMethod();
       
     fi;
     
@@ -1580,14 +1580,14 @@ end );
 ##
 InstallMethod( SimpleObjects,
           [ IsCapHomCategory ],
-  function( Hom )
+  function ( Hom )
     local A, ss, iso;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
-    if not ( IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A ) ) then
+    if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
       
-      TryNextMethod( );
+      TryNextMethod();
       
     fi;
     
@@ -1608,12 +1608,12 @@ end );
 ##
 InstallMethod( ViewObj,
           [ IsCapCategoryObjectInHomCategory ],
-  function( F )
+  function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
     if not IsMatrixCategory( Range( CapCategory( F ) ) ) then
       
-      TryNextMethod( );
+      TryNextMethod();
       
     fi;
     
@@ -1657,7 +1657,7 @@ end );
 ##
 InstallMethod( Display,
           [ IsCapCategoryObjectInHomCategory ],
-  function( F )
+  function ( F )
     local objects, images_of_objects, morphisms, images_of_morphisms, i;
     
     Print( "An object in ", Name( CapCategory( F ) ), " defined by the following data:\n" );
@@ -1668,9 +1668,9 @@ InstallMethod( Display,
     
     for i in [ 1 .. Size( objects ) ] do
       
-      Print( "\n\nImage of " ); ViewObj( objects[ i ] ); Print( ":\n" );
+      Print( "\n\nImage of " ); ViewObj( objects[i] ); Print( ":\n" );
       
-      Display( images_of_objects[ i ] );
+      Display( images_of_objects[i] );
       
     od;
     
@@ -1680,9 +1680,9 @@ InstallMethod( Display,
     
     for i in [ 1 .. Size( morphisms ) ] do
        
-      Print( "\n\nImage of " ); ViewObj( morphisms[ i ] ); Print( ":\n" );
+      Print( "\n\nImage of " ); ViewObj( morphisms[i] ); Print( ":\n" );
       
-      Display( images_of_morphisms[ i ] );
+      Display( images_of_morphisms[i] );
       
     od;
    
@@ -1692,12 +1692,12 @@ end );
 ##
 InstallMethod( ViewObj,
           [ IsCapCategoryMorphismInHomCategory ],
-  function( eta )
+  function ( eta )
     local vertices, s_dim, r_dim, string;
     
     if not IsMatrixCategory( Range( CapCategory( eta ) ) ) then
       
-      TryNextMethod( );
+      TryNextMethod();
       
     fi;
     
@@ -1720,7 +1720,7 @@ end );
 ##
 InstallMethod( Display,
           [ IsCapCategoryMorphismInHomCategory ],
-  function( eta )
+  function ( eta )
     local objects, images_of_objects, i;
     
     Print( "A morphism in ", Name( CapCategory( eta ) ), " defined by the following data:\n" );
@@ -1731,9 +1731,9 @@ InstallMethod( Display,
     
     for i in [ 1 .. Size( objects ) ] do
       
-      Print( "\n\nImage of " ); ViewObj( objects[ i ] ); Print( ":\n" );
+      Print( "\n\nImage of " ); ViewObj( objects[i] ); Print( ":\n" );
       
-      Display( images_of_objects[ i ] );
+      Display( images_of_objects[i] );
       
     od;
        

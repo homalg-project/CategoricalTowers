@@ -214,7 +214,7 @@ DeclareOperation( "AsObjectInHomCategory",
 #! @Description
 #!  Another alternative input is the source category <A>B</A> and two defining lists <A>images_of_objects</A> and <A>images_of_morphisms</A> of <A>F</A>.
 #!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
-#!  
+#!
 #!  For the convenience of the user the following input is also valid:
 #!  If <A>images_of_objects</A> is a list of nonnegative integers,
 #!  <A>images_of_morphisms</A> is a list of matrices, and

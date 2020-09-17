@@ -9,7 +9,7 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
         "for an object in a Hom-category",
         [ IsCapCategoryObjectInHomCategory ],
         
-  function( F )
+  function ( F )
     local d, endbas, k, n, random, b, alpha, i, alpha2, keremb;
     
     d := Maximum( List( ValuesOnAllObjects( F ), Dimension ) );
@@ -66,7 +66,7 @@ InstallMethod( WeakDirectSumDecomposition,
         "for an object in a Hom-category",
         [ IsCapCategoryObjectInHomCategory ],
         
-  function( F )
+  function ( F )
     local queue, summands, eta, result;
     
     queue := [ IdentityMorphism( F ) ];

@@ -1,3 +1,10 @@
+#
+# FunctorCategories: Categories of functors
+#
+# Declarations
+#
+
+
 #! @Chapter Categories of functors
 
 ####################################
