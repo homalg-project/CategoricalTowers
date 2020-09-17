@@ -1,8 +1,10 @@
+<!-- BEGIN HEADER -->
 # CatReps
 
 | **Documentation**                                                 | **Build Status**                                                                                |
 |:-----------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
 | [![][docs-stable-img]][docs-stable-url]                           | [![][tests-img]][tests-url] [![][codecov-img]][codecov-url] |
+<!-- END HEADER -->
 
 The package `CatReps` constructs the category of finite dimensional k-linear representations of a finite (concrete) category.
 The supported categorical doctrine is "symmetric monoidal Abelian category with enough projectives and (possibly incomplete) direct sum decomposition".
@@ -16,6 +18,7 @@ In March 2020 [Peter Webb](https://www-users.math.umn.edu/~webb/)' and his coaut
 
 Future versions of `CatReps` will rely on [`reps`](https://www-users.math.umn.edu/~webb/GAPfiles/reps).
 
+<!-- BEGIN FOOTER -->
 [docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
 [docs-stable-url]: https://homalg-project.github.io/CatReps/doc/chap0.html
 
@@ -24,3 +27,4 @@ Future versions of `CatReps` will rely on [`reps`](https://www-users.math.umn.ed
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CatReps/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/CatReps
+<!-- END FOOTER -->
