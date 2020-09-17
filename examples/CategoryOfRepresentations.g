@@ -7,8 +7,6 @@ c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
 #! A finite concrete category
 qc3c3 := RightQuiverFromConcreteCategory( c3c3 );
 #! q(2)[a:1->1,b:1->2,c:2->2]
-HOMALG_MATRICES.PreferDenseMatrices := true;
-#! true
 GF3 := HomalgRingOfIntegers( 3 );
 #! GF(3)
 kq := Algebroid( GF3, c3c3 );

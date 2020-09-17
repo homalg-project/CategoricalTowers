@@ -278,8 +278,8 @@ InstallMethod( RecordOfCatRep,
   function( F )
 
     return rec( category := RecordOfCategory( Source( CapCategory( F ) ) ),               
-                genimages := List( ValuesOnAllGeneratingMorphisms( F ), 
-					a -> Eval( UnderlyingMatrix( a ) )!.matrix ),
+                genimages := List( ValuesOnAllGeneratingMorphisms( F ),
+                                    a -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( a ) ) ),
                 dimension := List( ValuesOnAllObjects( F ), Dimension ),
                 field := CommutativeRingOfLinearCategory( 
 					Source( CapCategory( F ) ) )!.ring
