@@ -255,38 +255,6 @@ InstallMethod( RightQuiverFromConcreteCategory,
     
 end );
 
-##
-InstallMethod( RecordOfCategory,
-        "for an algebroid",
-        [ IsAlgebroid ],
-        
-  function( kq )
-
-    return rec( domain := List( SetOfGeneratingMorphisms( kq ), 
-		a -> VertexIndex( UnderlyingVertex( Source( a ) ) ) ),
-                codomain := List( SetOfGeneratingMorphisms( kq ), 
-		a -> VertexIndex( UnderlyingVertex( Range( a ) ) ) ),
-                );
-    
-end );
-
-##
-InstallMethod( RecordOfCatRep,
-        "for an object in a Hom-category",
-        [ IsCapCategoryObjectInHomCategory ],
-        
-  function( F )
-
-    return rec( category := RecordOfCategory( Source( CapCategory( F ) ) ),               
-                genimages := List( ValuesOnAllGeneratingMorphisms( F ),
-                                    a -> EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( a ) ) ),
-                dimension := List( ValuesOnAllObjects( F ), Dimension ),
-                field := CommutativeRingOfLinearCategory( 
-					Source( CapCategory( F ) ) )!.ring
-                );
-    
-end );
-
 ## EmbeddingOfSubRepresentation = Spin in catreps
 ## Source( EmbeddingOfSubRepresentation ) = SubmoduleRep in catreps
 InstallMethod( EmbeddingOfSubRepresentation,
@@ -317,31 +285,5 @@ InstallMethod( EmbeddingOfSubRepresentation,
     SetIsMonomorphism( embedding, true );
     
     return embedding;
-    
-end );
-
-##
-InstallMethod( WeakDirectSumDecompositionOld,
-        "for an object in a Hom-category",
-        [ IsCapCategoryObjectInHomCategory ],
-        
-  function( F )
-    local f, d, kq, k, objects, morphisms, summands, embeddings;
-    
-    f := RecordOfCatRep( F );
-    
-    d := Decompose( f );
-    
-    kq := Source( CapCategory( F ) );
-    
-    k := CommutativeRingOfLinearCategory( kq );
-    
-    d := List( d, eta -> List( [ 1 .. Length( eta ) ], 
-		i -> VectorSpaceMorphism( 
-			VectorSpaceObject( Length( eta[i] ), k ),
-			eta[i],
-			F( kq.(i) ) ) ) );
-    
-    return List( d, eta -> EmbeddingOfSubRepresentation( eta, F ) );
     
 end );
