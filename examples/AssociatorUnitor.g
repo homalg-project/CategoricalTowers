@@ -31,8 +31,8 @@ f := HomalgMatrix( f, 4, 4, GF3 );;
 f := VectorSpaceMorphism( V2, f, V2 );;
 nine := AsObjectInHomCategory( kq, [ V1, V2 ], [ d, e, f ] );;
 fortyone := TensorProductOnObjects( nine, nine );;
-etas := WeakDirectSumDecompositionOld( fortyone );;
-eta := etas[3];;
+etas := WeakDirectSumDecomposition( fortyone );;
+eta := etas[9];;
 six := Source( eta );;
 thirtyfive := CokernelObject( eta );
 #! <(1)->22, (2)->13; (a)->22x22, (b)->22x13, (c)->13x13>
