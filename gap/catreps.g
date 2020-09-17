@@ -40,61 +40,6 @@ end;
 
 ##############################################################################
 ##
-## IdMorphism(l) returns the identity morphism on the set l.
-## A morphism is stored as a list of the images of its values on a set
-## of numbers, which form its domain of definition, and are taken to be
-## an object in a concrete category. At elements of other objects the
-## morphism will be undefined.
-##
-##############################################################################
-IdMorphism:=function(l)
-    local m, i;
-    m:=[];
-    for i in l do
-        m[i]:=i;
-    od;
-    return(m);
-end;
-
-##############################################################################
-##
-## Composition(f,g) returns the composition of the functions f and g, expressed
-## as lists of their values.
-##
-##############################################################################
-Composition:=function(f,g)
-    local i, h;
-    h:=[];
-    for i in [1..Length(f)] do
-        if IsBound(f[i]) then
-            if IsBound(g[f[i]]) then
-                h[i]:=g[f[i]];
-            else return(false);
-            fi;
-        fi;
-    od;
-    return(h);
-end;
-
-##############################################################################
-##
-## IsComposable(f,g) returns true if the functions f and g, expressed
-## as lists of their values, can be composed and false otherwise.
-##
-##############################################################################
-IsComposable:=function(f,g)
-    local i;
-    for i in [1..Length(f)] do
-        if IsBound(f[i]) then
-            if not IsBound(g[f[i]]) then return(false);
-            fi;
-        fi;
-    od;
-    return(true);
-end;
-
-##############################################################################
-##
 ## ObjectsList(cat) returns the objects of the concrete category cat, as a list
 ## of sets. At the moment it will not work unless for every object there
 ## is at least one generator morphism whose support is that object.
