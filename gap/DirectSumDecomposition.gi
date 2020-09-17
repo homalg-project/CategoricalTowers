@@ -1,10 +1,16 @@
+#
+# FunctorCategories: Categories of functors
+#
+# Implementations
+#
+
 ##
 InstallMethod( DecomposeOnceByRandomEndomorphism,
         "for an object in a Hom-category",
         [ IsCapCategoryObjectInHomCategory ],
         
   function( F )
-    local d, n, endbas, k, b, alpha, i, alpha2, keremb;
+    local d, endbas, k, n, random, b, alpha, i, alpha2, keremb;
     
     d := Maximum( List( ValuesOnAllObjects( F ), Dimension ) );
     
@@ -16,9 +22,16 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
     
     n := Int( Log2( Float( d ) ) ) + 1;
     
+    ## the default is true
+    random := IsIdenticalObj( ValueOption( "random" ), fail );
+    
     for b in Reversed( [ 2 .. Length( endbas ) ] ) do
         
-        alpha := endbas[b] + Random( k ) * endbas[b-1];
+        if random then
+            alpha := endbas[b] + Random( k ) * endbas[b-1];
+        else
+            alpha := endbas[b] + endbas[b-1];
+        fi;
         
         SetFilterObj( alpha, IsMultiplicativeElementWithInverse );
         
