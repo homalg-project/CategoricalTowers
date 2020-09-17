@@ -15,7 +15,7 @@ gap> c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
 A finite concrete category
 ```
 
-Using the procedure `Algebroid` one can then construct a finite presentation of the $k$-linear closure of the given concrete category. The current preliminary implementation only works when the endomorphism monoids of the concrete category are explicitly cyclic:
+Using the procedure `Algebroid` one can then construct a finite presentation of the k-linear closure of the given concrete category. The current preliminary implementation only works when the endomorphism monoids of the concrete category are explicitly cyclic:
 
 ```gap
 gap> Q := HomalgFieldOfRationals( );
@@ -27,7 +27,7 @@ gap> UnderlyingQuiverAlgebra( Qq );
 gap> SetIsLinearClosureOfACategory( Qq, true );
 ```
 
-Finally, using the constructor `Hom` from the package [`FunctorCategories`](https://github.com/homalg-project/FunctorCategories) one can construct the category of finite dimensional $k$-linear representations of the finite concrete category:
+Finally, using the constructor `Hom` from the package [`FunctorCategories`](https://github.com/homalg-project/FunctorCategories) one can construct the category of finite dimensional k-linear representations of the finite concrete category:
 
 ```gap
 gap> CatReps := Hom( Qq, Q );
@@ -37,7 +37,7 @@ q(2)[a:1->1,b:1->2,c:2->2] -> Category of matrices over Q
 
 The supported categorical doctrine of the category of representations is
 
-* $k$-linear,
+* k-linear,
 * symmetric monoidal,
 * Abelian category
 * with enough projectives, and
