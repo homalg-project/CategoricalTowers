@@ -25,8 +25,6 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
     if S = fail then
         Error( "unable to find source set\n" );
     fi;
-    
-    G := [ ];
 
     G := List( S, i -> [ i, gen[i] ] ); # gen[i] is sure to be bound
     
