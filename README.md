@@ -13,6 +13,14 @@ gap> LoadPackage( "CatReps" );
 true
 gap> c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
 A finite concrete category
+gap> mors := SetOfGeneratingMorphisms( c3c3 );
+[ A morphism in subcategory given by: <A morphism in FinSets>,
+  A morphism in subcategory given by: <A morphism in FinSets>,
+  A morphism in subcategory given by: <A morphism in FinSets> ]
+gap> Perform( mors, Display );
+A morphism in subcategory given by: [ [ 1, 2, 3 ], [ [ 1, 2 ], [ 2, 3 ], [ 3, 1 ] ], [ 1, 2, 3 ] ]
+A morphism in subcategory given by: [ [ 1, 2, 3 ], [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ], [ 4, 5, 6 ] ]
+A morphism in subcategory given by: [ [ 4, 5, 6 ], [ [ 4, 5 ], [ 5, 6 ], [ 6, 4 ] ], [ 4, 5, 6 ] ]
 ```
 
 Using the procedure `Algebroid` one can then construct a finite presentation of the k-linear closure of the given concrete category. The current preliminary implementation only works when the endomorphism monoids of the concrete category are explicitly cyclic:
