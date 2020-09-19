@@ -27,21 +27,29 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( poset );
     
-    ##
-    AddIsEqualForObjectsIfIsHomSetInhabited( poset,
-      AreIsomorphicForObjectsIfIsHomSetInhabited );
-    
-    ##
-    AddIsEqualForObjects( poset,
-      function( A, B )
-        
-        return IsHomSetInhabited( A, B ) and
-               AreIsomorphicForObjectsIfIsHomSetInhabited( A, B );
-        
-    end );
-    
 end );
 
+##
+AddDerivationToCAP( IsEqualForObjectsIfIsHomSetInhabited,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
+        
+  AreIsomorphicForObjectsIfIsHomSetInhabited :
+      Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited",
+      CategoryFilter := IsThinCategory and IsSkeletalCategory );
+
+##
+AddDerivationToCAP( IsEqualForObjects,
+        [ [ IsHomSetInhabited, 1 ],
+          [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
+        
+  function( A, B )
+    
+    return IsHomSetInhabited( A, B ) and
+           AreIsomorphicForObjectsIfIsHomSetInhabited( A, B );
+        
+end : Description := "",
+      CategoryFilter := IsThinCategory and IsSkeletalCategory );
+    
 ##
 InstallMethod( \<,
         "for two objects in a thin category",

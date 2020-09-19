@@ -20,22 +20,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     SetIsCartesianCategory( cartesian_proset, true );
     
     ##
-    AddIsHomSetInhabited( cartesian_proset,
-      function( S, T )
-        
-        return AreIsomorphicForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
-        
-    end );
-    
-    ##
-    AddIsTerminal( cartesian_proset,
-      function( A )
-        
-        return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
-        
-    end );
-    
-    ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( cartesian_proset,
       function( D, k, P )
         
@@ -126,6 +110,30 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
 end );
 
 ##
+AddDerivationToCAP( IsHomSetInhabited,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+          [ DirectProduct, 1 ] ],
+        
+  function( S, T )
+    
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
+    
+end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and DirectProduct",
+      CategoryFilter := IsThinCategory and IsCartesianCategory );
+
+##
+AddDerivationToCAP( IsTerminal,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+          [ TerminalObject, 1 ] ],
+        
+  function( A )
+    
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
+    
+end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabited and TerminalObject",
+      CategoryFilter := IsThinCategory and IsCartesianCategory );
+
+##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
   function( meet_semilattice )
     
@@ -142,22 +150,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cocartesian_proset );
     
     SetIsCocartesianCategory( cocartesian_proset, true );
-    
-    ##
-    AddIsHomSetInhabited( cocartesian_proset,
-      function( S, T )
-        
-        return AreIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
-        
-    end );
-    
-    ##
-    AddIsInitial( cocartesian_proset,
-      function( A )
-        
-        return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
-        
-    end );
     
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cocartesian_proset,
@@ -248,6 +240,30 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     end );
     
 end );
+
+##
+AddDerivationToCAP( IsHomSetInhabited,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+          [ Coproduct, 1 ], ],
+        
+  function( S, T )
+    
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
+    
+end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and Coproduct",
+      CategoryFilter := IsThinCategory and IsCocartesianCategory );
+
+##
+AddDerivationToCAP( IsInitial,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+          [ InitialObject, 1 ] ],
+        
+  function( A )
+    
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
+    
+end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited and InitialObject",
+      CategoryFilter := IsThinCategory and IsCocartesianCategory );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,

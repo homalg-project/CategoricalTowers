@@ -67,14 +67,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
     
-    ##
-    AddIsHomSetInhabited( heyting_algebra,
-      function( S, T )
-        
-        return IsTerminal( ExponentialOnObjects( S, T ) );
-        
-    end );
-    
     ## The cartesian monoidal structure
     
     ## The closedness of the cartesian monoidal structure
@@ -154,22 +146,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ## The negation
     
     ##
-    AddNegationOnObjects( heyting_algebra,
-      function( A )
-        
-        return ExponentialOnObjects( A, InitialObject( heyting_algebra ) );
-        
-    end );
-    
-    ##
-    AddNegationOnMorphismsWithGivenNegations( heyting_algebra,
-      function( B_, u, A_ )
-        
-        return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( heyting_algebra ) ), A_ );
-        
-    end );
-    
-    ##
     AddMorphismToDoubleNegationWithGivenDoubleNegation( heyting_algebra,
       function( A, B )
         
@@ -178,3 +154,40 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
 end );
+
+##
+AddDerivationToCAP( IsHomSetInhabited,
+        [ [ IsTerminal, 1 ],
+          [ ExponentialOnObjects, 1 ] ],
+        
+  function( S, T )
+    
+    return IsTerminal( ExponentialOnObjects( S, T ) );
+    
+end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
+      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( NegationOnObjects,
+        [ [ ExponentialOnObjects, 1 ],
+          [ InitialObject, 1 ] ],
+        
+  function( A )
+    
+    return ExponentialOnObjects( A, InitialObject( CapCategory( A ) ) );
+    
+end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
+      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCartesianClosedCategory );
+
+##
+AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
+        [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
+          [ IdentityMorphism, 1 ],
+          [ InitialObject, 1 ] ],
+        
+  function( B_, u, A_ )
+    
+    return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( CapCategory( u ) ) ), A_ );
+    
+end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
+      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCartesianClosedCategory );

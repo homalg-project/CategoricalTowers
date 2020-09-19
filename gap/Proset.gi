@@ -95,14 +95,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
-    AddIsEqualForMorphisms( preordered_set,
-      function( u1, u2 )
-        
-        return Source( u1 ) = Source( u2 ) and Range( u1 ) = Range( u2 );
-        
-    end );
-    
-    ##
     AddIdentityMorphism( preordered_set,
       function( A )
         
@@ -115,30 +107,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
       function( u1, u2 )
         
         return UniqueMorphism( Source( u1 ), Range( u2 ) );
-        
-    end );
-    
-    ##
-    AddAreIsomorphicForObjectsIfIsHomSetInhabited( preordered_set,
-      function( A, B )
-        
-        return IsHomSetInhabited( B, A );
-        
-    end );
-    
-    ##
-    AddIsDominating( preordered_set,
-      function( u1, u2 )
-        
-        return IsHomSetInhabited( Source( u1 ), Source( u2 ) );
-        
-    end );
-    
-    ##
-    AddIsCodominating( preordered_set,
-      function( u1, u2 )
-        
-        return IsHomSetInhabited( Range( u2 ), Range( u1 ) );
         
     end );
     
@@ -167,22 +135,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
-    AddLift( preordered_set,
-      LiftAlongMonomorphism );
-    
-    ##
-    AddColift( preordered_set,
-      ColiftAlongEpimorphism );
-    
-    ##
-    AddIsIsomorphism( preordered_set,
-      function( u )
-        
-        return IsHomSetInhabited( Range( u ), Source( u ) );
-        
-    end );
-    
-    ##
     AddInverse( preordered_set,
       function( u )
         
@@ -207,22 +159,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
-    AddEqualizer( preordered_set,
-      function( D )
-        
-        return Source( D[1] );
-        
-    end );
-    
-    ##
-    AddEmbeddingOfEqualizerWithGivenEqualizer( preordered_set,
-      function( D, E )
-        
-        return IdentityMorphism( E );
-        
-    end );
-    
-    ##
     AddUniversalMorphismIntoEqualizerWithGivenEqualizer( preordered_set,
       function( D, tau, E )
         
@@ -235,22 +171,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
       function( s, L1, m, L3, r )
         
         return UniqueMorphism( s, r );
-        
-    end );
-    
-    ##
-    AddCoequalizer( preordered_set,
-      function( D )
-        
-        return Range( D[1] );
-        
-    end );
-    
-    ##
-    AddProjectionOntoCoequalizerWithGivenCoequalizer( preordered_set,
-      function( D, C )
-        
-        return IdentityMorphism( C );
         
     end );
     
@@ -271,6 +191,122 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
 end );
+
+##
+AddDerivationToCAP( IsEqualForMorphisms,
+        [ [ IsEqualForObjects, 2 ] ],
+        
+  function( u1, u2 )
+    
+    return IsEqualForObjects( Source( u1 ), Source( u2 ) ) and
+           IsEqualForObjects( Range( u1 ), Range( u2 ) );
+        
+end : Description := "IsEqualForMorphisms using IsEqualForObjects applied to sources and ranges",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( A, B )
+    
+    return IsHomSetInhabited( B, A );
+    
+end : Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using IsHomSetInhabited",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsDominating,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( u1, u2 )
+    
+    return IsHomSetInhabited( Source( u1 ), Source( u2 ) );
+    
+end : Description := "IsDominating using IsHomSetInhabited applied to the sources",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsCodominating,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( u1, u2 )
+    
+    return IsHomSetInhabited( Range( u2 ), Range( u1 ) );
+    
+end : Description := "IsCodominating using IsHomSetInhabited applied to the ranges",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( Equalizer,
+        [ [ IsHomSetInhabited, 1 ] ], ## FIXME: this should be obsolete, there is a bug in CAP
+        
+  function( D )
+    
+    return Source( D[1] );
+    
+end : Description := "Equalizer using Source",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( EmbeddingOfEqualizerWithGivenEqualizer,
+        [ [ IdentityMorphism, 1 ] ],
+        
+  function( D, E )
+    
+    return IdentityMorphism( E );
+    
+end : Description := "EmbeddingOfEqualizerWithGivenEqualizer using IdentityMorphism",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( Coequalizer,
+        [ [ IsHomSetInhabited, 1 ] ], ## FIXME: this should be obsolete, there is a bug in CAP
+        
+  function( D )
+    
+    return Range( D[1] );
+    
+end : Description := "Coequalizer using Range",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( ProjectionOntoCoequalizerWithGivenCoequalizer,
+        [ [ IdentityMorphism, 1 ] ],
+        
+  function( D, C )
+    
+    return IdentityMorphism( C );
+    
+end : Description := "ProjectionOntoCoequalizerWithGivenCoequalizer using IdentityMorphism",
+      CategoryFilter := IsThinCategory );
+    
+##
+AddDerivationToCAP( Lift,
+        [ [ LiftAlongMonomorphism, 1 ] ],
+        
+  LiftAlongMonomorphism :
+      Description := "Lift using LiftAlongMonomorphism",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( Colift,
+        [ [ LiftAlongMonomorphism, 1 ] ],
+        
+  ColiftAlongEpimorphism :
+      Description := "Colift using ColiftAlongEpimorphism",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsIsomorphism,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( u )
+    
+    return IsHomSetInhabited( Range( u ), Source( u ) );
+    
+end : Description := "IsIsomorphism using IsHomSetInhabited",
+      CategoryFilter := IsThinCategory );
 
 ##
 InstallMethod( Display,
