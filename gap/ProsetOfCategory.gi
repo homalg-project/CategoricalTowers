@@ -276,6 +276,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     stable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "stable", false );
     
     if IsIdenticalObj( stable, true ) then
+        name := Concatenation( "Stable", name );
         category_object_filter := category_object_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
         category_morphism_filter := category_morphism_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
     fi;
