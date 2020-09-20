@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Locales",
 Subtitle := "",
 Version := Maximum( [
-                   "2020.06.04", ## Mohamed's version
+                   "2020.06.05", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.17", ## Tom's version
                    ] ),
@@ -110,7 +110,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2019.10.29" ],
                    [ "CategoryConstructor", ">= 2020.04.05" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
-                   [ "Toposes", ">= 2020.05.17" ],
+                   [ "Toposes", ">= 2020.06.05" ],
                    [ "Digraphs", ">= 0.12.1" ],
                    ],
   SuggestedOtherPackages := [ ],

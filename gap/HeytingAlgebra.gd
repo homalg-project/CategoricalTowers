@@ -111,6 +111,15 @@ DeclareOperation( "AddMorphismToDoubleNegationWithGivenDoubleNegation",
 DeclareOperation( "AddMorphismToDoubleNegationWithGivenDoubleNegation",
                   [ IsCapCategory, IsList ] );
 
+#! @Section Stable internal Hom
+
+#! @Description
+#!  Return the stable internal Hom: $\mathrm{\underline{Hom}}(J,\mathrm{\underline{Hom}}(J,...\mathrm{\underline{Hom}}(J,I)...))$.
+#! @Arguments J, I
+#! @Returns a &CAP; object
+DeclareOperation( "StableInternalHom",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 # @Section Tools
 
 DeclareGlobalVariable( "HEYTING_ALGEBRA_METHOD_NAME_RECORD" );
