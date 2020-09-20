@@ -216,6 +216,30 @@ end : Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using IsHomSetI
       CategoryFilter := IsThinCategory );
 
 ##
+AddDerivationToCAP( IsTerminal,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+          [ TerminalObject, 1 ] ],
+        
+  function( A )
+    
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
+    
+end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabited and TerminalObject",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsInitial,
+        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
+          [ InitialObject, 1 ] ],
+        
+  function( A )
+    
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
+    
+end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited and InitialObject",
+      CategoryFilter := IsThinCategory );
+
+##
 AddDerivationToCAP( IsDominating,
         [ [ IsHomSetInhabited, 1 ] ],
         

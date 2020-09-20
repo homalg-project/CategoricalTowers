@@ -122,18 +122,6 @@ end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetI
       CategoryFilter := IsThinCategory and IsCartesianCategory );
 
 ##
-AddDerivationToCAP( IsTerminal,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ TerminalObject, 1 ] ],
-        
-  function( A )
-    
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
-    
-end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabited and TerminalObject",
-      CategoryFilter := IsThinCategory and IsCartesianCategory );
-
-##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
   function( meet_semilattice )
     
@@ -253,18 +241,6 @@ AddDerivationToCAP( IsHomSetInhabited,
     return AreIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
     
 end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and Coproduct",
-      CategoryFilter := IsThinCategory and IsCocartesianCategory );
-
-##
-AddDerivationToCAP( IsInitial,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ InitialObject, 1 ] ],
-        
-  function( A )
-    
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
-    
-end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited and InitialObject",
       CategoryFilter := IsThinCategory and IsCocartesianCategory );
 
 ##
