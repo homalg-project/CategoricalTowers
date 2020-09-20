@@ -16,3 +16,4 @@
 
 @Subsection SliceCategory
 @InsertChunk SliceCategory
+@InsertChunk IteratedInternalHom
