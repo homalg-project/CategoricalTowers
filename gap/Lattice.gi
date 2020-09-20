@@ -141,6 +141,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
     
     ADD_COMMON_METHODS_FOR_POSETS( meet_semilattice );
     
+    SetIsStrictCartesianCategory( meet_semilattice, true );
+    
 end );
 
 ##
@@ -272,6 +274,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS( join_semilattice );
     
     ADD_COMMON_METHODS_FOR_POSETS( join_semilattice );
+    
+    SetIsStrictCocartesianCategory( join_semilattice, true );
     
 end );
 
