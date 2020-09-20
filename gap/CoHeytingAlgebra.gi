@@ -161,7 +161,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     return IsInitial( CoexponentialOnObjects( S, T ) );
     
 end : Description := "IsHomSetInhabited using IsInitial and CoexponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCocartesianCoclosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCocartesianCoclosedCategory );
 
 ##
 AddDerivationToCAP( ConegationOnObjects,
@@ -173,7 +173,7 @@ AddDerivationToCAP( ConegationOnObjects,
     return CoexponentialOnObjects( TerminalObject( CapCategory( A ) ), A );
     
 end : Description := "ConegationOnObjects using CoexponentialOnObjects and TerminalObject",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCocartesianCoclosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCocartesianCoclosedCategory );
 
 ##
 AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
@@ -186,4 +186,4 @@ AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
     return CoexponentialOnMorphismsWithGivenCoexponentials( B_, IdentityMorphism( TerminalObject( CapCategory( u ) ) ), u, A_ );
     
 end : Description := "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCocartesianCoclosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCocartesianCoclosedCategory );

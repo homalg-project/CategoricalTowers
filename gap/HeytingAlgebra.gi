@@ -161,7 +161,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     return IsTerminal( ExponentialOnObjects( S, T ) );
     
 end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCartesianClosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( NegationOnObjects,
@@ -173,7 +173,7 @@ AddDerivationToCAP( NegationOnObjects,
     return ExponentialOnObjects( A, InitialObject( CapCategory( A ) ) );
     
 end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCartesianClosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
@@ -186,4 +186,4 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
     return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( CapCategory( u ) ) ), A_ );
     
 end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory and IsStrictCartesianCategory and IsStrictCocartesianCategory and IsCartesianClosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
