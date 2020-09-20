@@ -161,7 +161,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     return IsTerminal( ExponentialOnObjects( S, T ) );
     
 end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( NegationOnObjects,
@@ -173,7 +173,7 @@ AddDerivationToCAP( NegationOnObjects,
     return ExponentialOnObjects( A, InitialObject( CapCategory( A ) ) );
     
 end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
-      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
 
 ##
 AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
