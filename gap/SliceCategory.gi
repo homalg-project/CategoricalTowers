@@ -419,7 +419,9 @@ InstallMethod( SliceCategory,
     
     AddIsHomSetInhabited( S,
       function( A, B )
+        
         return IsLiftable( UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+        
     end );
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
