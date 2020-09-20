@@ -276,6 +276,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     stable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "stable", false );
     
     if IsIdenticalObj( stable, true ) then
+        
+        if not (HasIsThinCategory( C ) and IsThinCategory( C )) then
+            Error( "only compatible (co)closed monoidal structures of (co)cartesian *thin* categories can be stabilized\n" );
+        fi;
+        
         name := Concatenation( "Stable", name );
         category_object_filter := category_object_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
         category_morphism_filter := category_morphism_filter and IsCapCategoryCellInStableProsetOrPosetOfACategory;
