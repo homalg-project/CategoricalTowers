@@ -187,3 +187,22 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
     
 end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
       CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
+
+##
+InstallMethod( StableInternalHom,
+        "for two objects in a thin category",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  function( J, I )
+    local IqJ;
+    
+    IqJ := I;
+    
+    repeat
+        I := IqJ;
+        IqJ := InternalHomOnObjects( J, IqJ );
+    until AreIsomorphicForObjectsIfIsHomSetInhabited( I, IqJ );
+    
+    return IqJ;
+    
+end );
