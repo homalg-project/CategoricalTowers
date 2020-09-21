@@ -651,7 +651,7 @@ InstallMethod( SliceCategoryOverTensorUnit,
         [ IsCapCategory ],
         
   function( M )
-    local S, finalize;
+    local S;
 
     if not (HasIsMonoidalCategory( M ) and IsMonoidalCategory( M )) then
 
@@ -660,18 +660,7 @@ InstallMethod( SliceCategoryOverTensorUnit,
     fi;
     
     S := SliceCategory( TensorUnit( M ) :
-                 over_tensor_unit := true,
-                 FinalizeCategory := false );
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-        
-        return S;
-        
-    fi;
-    
-    Finalize( S );
+                 over_tensor_unit := true );
     
     return S;
     
