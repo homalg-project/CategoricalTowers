@@ -151,7 +151,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
 end );
 
-##
+## IsTerminal( Exp( S, T ) ) <=(thin)=> TerminalObject ≤ Hom( S, T ) <=(cart. closed)=> ( TerminalObject ∧ S ) ≤ T <==> S ≤ T
 AddDerivationToCAP( IsHomSetInhabited,
         [ [ IsTerminal, 1 ],
           [ ExponentialOnObjects, 1 ] ],
