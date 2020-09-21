@@ -1,5 +1,5 @@
 #
-# SubcategoriesForCAP: Slice categories
+# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
 #
 # Declarations
 #

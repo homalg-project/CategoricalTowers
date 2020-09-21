@@ -1,5 +1,5 @@
 #
-# SubcategoriesForCAP: Create a subcategory
+# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
 #
 # Declarations
 #

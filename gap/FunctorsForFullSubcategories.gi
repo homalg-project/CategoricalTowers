@@ -1,8 +1,8 @@
 #
-# SubcategoriesForCAP
+# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
 #
-# FunctorsForFullSubcategories.gi
-
+# Implementations
+#
 ##
 InstallMethod( InclusionFunctor,
         [ IsCapFullSubcategory ],

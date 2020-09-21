@@ -1,5 +1,5 @@
 #
-# SubcategoriesForCAP: Slice categories
+# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
 #
 # Implementations
 #
@@ -556,23 +556,23 @@ InstallMethod( SliceCategory,
                 I := UnderlyingMorphism( Source( psi ) ); ## R^i -> R
                 Ip := UnderlyingMorphism( Range( psi ) ); ## R^i' -> R
                 
-                tau1 := UnderlyingMorphism( source ); ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
+                tau1 := UnderlyingMorphism( source ); ## R^(i:j') -> R, where i:j' = nr_gen( I:J' )
 
                 ## only relevant for the unbiased pullback operation which we should not use:
-                #tau2 := PreCompose(                  ## R^(i:j') -> Hom( R^j, R^i' ),	where i:j' = nr_gen( I:J' )
+                #tau2 := PreCompose(                  ## R^(i:j') -> Hom( R^j, R^i' ), where i:j' = nr_gen( I:J' )
                 #                ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j') -> Hom( R^j', R^i ), where i:j' = nr_gen( I:J' )
                 #                        DualOverTensorUnit( Jp ),         ## R -> Hom( R^j', R )
                 #                        InternalHom( Source( Jp ), I ) ),  ## Hom( R^j', R^i ) -> Hom( R^j', R )
                 #                InternalHom( UnderlyingCell( phi ), UnderlyingCell( psi ) ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
-
+                
                 return AsSliceCategoryCell(
                                source,
                                UniversalMorphismIntoBiasedWeakFiberProduct(
                                ## UniversalMorphismIntoWeakBiFiberProduct( ## NEVER use this unbiased pullback operation as it allows the source to unnecessarily explode
                                        DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
                                        InternalHom( Source( J ), Ip ), ## Hom( R^j, R^i' ) -> Hom( R^j, R )
-                                       tau1 ),  ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
-                                       #tau2 ), ## R^(i:j') -> Hom( R^j, R^i' ), 	where i:j' = nr_gen( I:J' )
+                                       tau1 ),  ## R^(i:j') -> R,                where i:j' = nr_gen( I:J' )
+                                       #tau2 ), ## R^(i:j') -> Hom( R^j, R^i' ), where i:j' = nr_gen( I:J' )
                                target );
                 
             end );

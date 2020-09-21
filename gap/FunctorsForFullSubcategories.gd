@@ -1,8 +1,8 @@
 #
-# SubcategoriesForCAP
+# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
 #
-# FunctorsForFullSubcategories.gd
-
+# Declarations
+#
 ####################################
 #
 #! @Chapter Full subcategories
