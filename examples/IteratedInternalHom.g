@@ -2,9 +2,9 @@
 
 LoadPackage( "Locales" );
 
-#! This example shows that iteratively applying $\underline{Hom}(J,-)$
-#! to $\iota: I \to T$, where $T$ is the terminal object of the slice category
-#! never becomes an isomorphism.
+#! Iteratively applying $\underline{Hom}(J,-)$ to the universal morphism $\iota: I \to T$,
+#! where $T$ is the terminal object of the slice category, might never become an isomorphism.
+#! However, in this example it does.
 
 #! @Example
 LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
@@ -44,11 +44,11 @@ Display( iota );
 #! A row module over Q[x,y] of rank 2
 #! 
 #! Matrix:
-#! y,1,
-#! x,0
+#! y,
+#! x
 #! 
 #! Range:
-#! A row module over Q[x,y] of rank 2
+#! A row module over Q[x,y] of rank 1
 #! 
 #! A morphism in Rows( Q[x,y] )
 #! 
@@ -57,30 +57,13 @@ iota := InternalHom( J, iota );
 #! A morphism in the slice category given by: <A morphism in Rows( Q[x,y] )>
 Display( iota );
 #! Source:
-#! A row module over Q[x,y] of rank 2
+#! A row module over Q[x,y] of rank 1
 #! 
 #! Matrix:
-#! 0,1,
-#! x,0
+#! 1
 #! 
 #! Range:
-#! A row module over Q[x,y] of rank 2
-#! 
-#! A morphism in Rows( Q[x,y] )
-#! 
-#! A morphism in the slice category given by the above data
-iota := InternalHom( J, iota );
-#! A morphism in the slice category given by: <A morphism in Rows( Q[x,y] )>
-Display( iota );
-#! Source:
-#! A row module over Q[x,y] of rank 2
-#! 
-#! Matrix:
-#! x,0,
-#! 0,1
-#! 
-#! Range:
-#! A row module over Q[x,y] of rank 2
+#! A row module over Q[x,y] of rank 1
 #! 
 #! A morphism in Rows( Q[x,y] )
 #! 
@@ -88,13 +71,12 @@ Display( iota );
 iota = InternalHom( J, iota );
 #! true
 IsIsomorphism( iota );
-#! false
+#! true
 Display( Source( iota ) );
 #! Source:
-#! A row module over Q[x,y] of rank 2
+#! A row module over Q[x,y] of rank 1
 #! 
 #! Matrix:
-#! 0,
 #! 1
 #! 
 #! Range:

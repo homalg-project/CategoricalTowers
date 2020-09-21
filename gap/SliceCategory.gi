@@ -538,8 +538,8 @@ InstallMethod( SliceCategory,
                 J := UnderlyingMorphism( J ); ## R^j -> R
                 
                 return AsSliceCategoryCell(
-                               ## ProjectionOfBiasedWeakFiberProduct(
-                               ProjectionInFirstFactorOfWeakBiFiberProduct(
+                               ## ProjectionInFirstFactorOfWeakBiFiberProduct( ## NEVER use this unbiased pullback operation as it allows the source to unnecessarily explode
+                               ProjectionOfBiasedWeakFiberProduct(
                                        DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
                                        InternalHom( Source( J ), I ) ## Hom( R^j, R^i ) -> Hom( R^j, R )
                                        ),
@@ -557,24 +557,28 @@ InstallMethod( SliceCategory,
                 Ip := UnderlyingMorphism( Range( psi ) ); ## R^i' -> R
                 
                 tau1 := UnderlyingMorphism( source ); ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
-                tau2 := PreCompose(                   ## R^(i:j') -> Hom( R^j, R^i' ),	where i:j' = nr_gen( I:J' )
-                                ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j') -> Hom( R^j', R^i ), where i:j' = nr_gen( I:J' )
-                                        DualOverTensorUnit( Jp ),         ## R -> Hom( R^j', R )
-                                        InternalHom( Source( Jp ), I ) ),  ## Hom( R^j', R^i ) -> Hom( R^j', R )
-                                InternalHom( UnderlyingCell( phi ), UnderlyingCell( psi ) ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
+
+                ## only relevant for the unbiased pullback operation which we should not use:
+                #tau2 := PreCompose(                  ## R^(i:j') -> Hom( R^j, R^i' ),	where i:j' = nr_gen( I:J' )
+                #                ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j') -> Hom( R^j', R^i ), where i:j' = nr_gen( I:J' )
+                #                        DualOverTensorUnit( Jp ),         ## R -> Hom( R^j', R )
+                #                        InternalHom( Source( Jp ), I ) ),  ## Hom( R^j', R^i ) -> Hom( R^j', R )
+                #                InternalHom( UnderlyingCell( phi ), UnderlyingCell( psi ) ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
 
                 return AsSliceCategoryCell(
                                source,
-                               ##UniversalMorphismIntoBiasedWeakFiberProduct(
-                               UniversalMorphismIntoWeakBiFiberProduct(
+                               UniversalMorphismIntoBiasedWeakFiberProduct(
+                               ## UniversalMorphismIntoWeakBiFiberProduct( ## NEVER use this unbiased pullback operation as it allows the source to unnecessarily explode
                                        DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
                                        InternalHom( Source( J ), Ip ), ## Hom( R^j, R^i' ) -> Hom( R^j, R )
-                                       tau1,   ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
-                                       tau2 ), ## R^(i:j') -> Hom( R^j, R^i' ), 	where i:j' = nr_gen( I:J' )
+                                       tau1 ),  ## R^(i:j') -> R,			where i:j' = nr_gen( I:J' )
+                                       #tau2 ), ## R^(i:j') -> Hom( R^j, R^i' ), 	where i:j' = nr_gen( I:J' )
                                target );
                 
             end );
             
+            ## FIXME: comply with the internal Hom operations and replace
+            ## the weak binary pullback with a weak biased pullback
             AddTensorProductToInternalHomAdjunctionMap( S,
               function( K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
                 local I, source, target, tau2;
@@ -601,6 +605,8 @@ InstallMethod( SliceCategory,
                 
             end );
             
+            ## FIXME: comply with the internal Hom operations and replace
+            ## the weak binary pullback with a weak biased pullback
             AddInternalHomToTensorProductAdjunctionMap( S,
               function( J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
                 local K, source, target, tau2;
