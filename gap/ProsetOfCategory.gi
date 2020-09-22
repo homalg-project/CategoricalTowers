@@ -435,8 +435,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
               ];
     
     if IsIdenticalObj( stable, true ) then
+        
+        Add( list_of_operations_to_install, "IsTerminal" );
+        
         Append( skip,
                 [ "IsHomSetInhabited",
+                  "InternalHomOnObjects",
                   "AreIsomorphicForObjectsIfIsHomSetInhabited",
                   ] );
     fi;
@@ -528,16 +532,32 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     P!.AmbientCategory := C;
     
     if IsIdenticalObj( stable, true ) then
-        
-        ##
-        AddIsHomSetInhabited( P,
-          function( S, T )
+        if CanCompute( C, "InternalHomOnObjects" ) then
             
-            return IsHomSetInhabited(
-                           TerminalObject( CapCategory( UnderlyingCell( S ) ) ),
-                           StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) );
+            ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( P );
             
-        end );
+            ##
+            AddInternalHomOnObjects( P,
+              function( S, T )
+                
+                return StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / CapCategory( S );
+                
+            end );
+            
+            ## InternalHomOnMorphismsWithGivenInternalHoms is passed from the ambient Heyting algebra,
+            ## its source are and target are not identical but equal to above (altered) internal Hom
+            
+            ##
+            AddExponentialOnObjects( P,
+              InternalHomOnObjects );
+            
+            ##
+            AddExponentialOnMorphismsWithGivenExponentials( P,
+              InternalHomOnMorphismsWithGivenInternalHoms );
+            
+        else
+            
+        fi;
         
     fi;
     
