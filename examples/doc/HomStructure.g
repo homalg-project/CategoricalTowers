@@ -6,7 +6,10 @@ LoadPackage( "Bialgebroid" );
 #! the projective space of dimension 3.
 
 #! @Example
-q := RightQuiver( "q(4)[x0:1->2,x1:1->2,x2:1->2,x3:1->2,y0:2->3,y1:2->3,y2:2->3,y3:2->3,z0:3->4,z1:3->4,z2:3->4,z3:3->4]" );;
+q := RightQuiver( "q(4)[\
+x0:1->2,x1:1->2,x2:1->2,x3:1->2,\
+y0:2->3,y1:2->3,y2:2->3,y3:2->3,\
+z0:3->4,z1:3->4,z2:3->4,z3:3->4]" );;
 Q := HomalgFieldOfRationals( );;
 Qq := PathAlgebra( Q, q );;
 Beilinson_P3 := Algebroid( Qq, 
@@ -33,13 +36,15 @@ maps = SetOfGeneratingMorphisms( Beilinson_P3, 1, 2 );
 Length( maps ) = 4;
 #! true
 ForAll( [ 0 .. 3 ], k ->
-Dimension( HomomorphismStructureOnObjects( objs[1], objs[1 + k] ) ) = Binomial( 4 + k - 1, k )
+        Dimension( HomomorphismStructureOnObjects( objs[1], objs[1 + k] ) )
+        = Binomial( 4 + k - 1, k )
 );
 #! true
 alpha := Beilinson_P3.x0;;
 beta := ( Beilinson_P3.z1 + Beilinson_P3.z2 );;
 gamma := PreCompose( [ alpha, (Beilinson_P3.y1 - Beilinson_P3.y3), beta ] );;
-sol := SolveLinearSystemInAbCategory( [ [ alpha ] ], [ [ beta ] ], [ gamma ] )[1];;
+sol := SolveLinearSystemInAbCategory(
+               [ [ alpha ] ], [ [ beta ] ], [ gamma ] )[1];;
 IsCongruentForMorphisms( PreCompose( [ alpha, sol, beta ] ), gamma );
 #! true
 #! @EndExample

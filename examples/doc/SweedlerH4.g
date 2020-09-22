@@ -57,7 +57,9 @@ ApplyFunctor(antipode, H.g);
 ApplyFunctor(antipode, H.x);
 #! (1)-[{ -1*(x*g) }]->(1)
 
-IsEqualForMorphisms( ApplyFunctor( antipode, H.x ), -PreCompose( H.x, H.g ) );
+IsEqualForMorphisms(
+        ApplyFunctor( antipode, H.x ),
+        -PreCompose( H.x, H.g ) );
 #! true
 
 #! @EndExample

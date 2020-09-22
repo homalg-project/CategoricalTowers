@@ -32,7 +32,7 @@ InstallMethodWithCache( CategoryOfAlgebroids,
   function( homalg_ring, parity )
     local category;
     
-    category := CreateCapCategory( Concatenation( "(", parity, ") Algebroids( ", RingName( homalg_ring )," )"  ) );
+    category := CreateCapCategory( Concatenation( "(", parity, ") Algebroids( ", RingName( homalg_ring )," )" ) );
     
     SetFilterObj( category, IsCategoryOfAlgebroids );
     
@@ -433,7 +433,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
         end
     );
 
-    AddAssociatorRightToLeftWithGivenTensorProducts( category, 
+    AddAssociatorRightToLeftWithGivenTensorProducts( category,
         function( A_BxC, A, B, C, AxB_C )
             local AxB_C_as_category, A_as_category, B_as_category, C_as_category, A_BxC_as_category;
             A_BxC_as_category := AsCapCategory( A_BxC );
@@ -620,7 +620,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
             
         fi;
         
-        v := Source( LeadingPath( m ) ); 
+        v := Source( LeadingPath( m ) );
         
         if not ( UnderlyingVertex( Source( alpha ) ) = v ) then
             
@@ -979,7 +979,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
       
       AddRandomMorphismWithFixedSourceByInteger( A,
         function( o, n )
-          local objects, p, b; 
+          local objects, p, b;
           
           objects := Shuffle( ShallowCopy( SetOfObjects( A ) ) );
           
@@ -1041,7 +1041,7 @@ InstallMethod( CategoryOfAlgebroidsObject,
     
     category_of_algebroids_object := rec( );
     
-    ObjectifyObjectForCAPWithAttributes( category_of_algebroids_object, 
+    ObjectifyObjectForCAPWithAttributes( category_of_algebroids_object,
                                          category,
                                          AsCapCategory, A
     );
@@ -1454,7 +1454,7 @@ InstallMethod( AssociatorLeftToRightWithGivenTensorProductsAsFunctor,
         o_flat := ImageElm( iso_to_flat, PathAsAlgebraElement( algebra_of_AxB_C, UnderlyingVertex(o) ) );
         o_right := ImageElm( iso_from_flat, o_flat );
         o_right_string := String(Paths(o_right)[1]);
-        functor_images_of_objects.(o_string) := A_BxC.(o_right_string); 
+        functor_images_of_objects.(o_string) := A_BxC.(o_right_string);
     od;
 
     return CapFunctor( AxB_C, functor_images_of_objects, functor_images_of_generating_morphisms );
@@ -2013,7 +2013,7 @@ InstallMethod( CapFunctor,
         [ IsAlgebroid, IsList, IsList, IsCapCategory, IsBool ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B, covariant )
-    local  kq, vertices, arrows, functor, func_obj, func_mor;
+    local kq, vertices, arrows, functor, func_obj, func_mor;
     
     kq := QuiverOfAlgebra( UnderlyingQuiverAlgebra( A ) );
     
@@ -2044,7 +2044,7 @@ InstallMethod( CapFunctor,
             return images_of_objects[i];
         fi;
         
-        Error( "vertex UnderlyingVertex( obj ) = ", UnderlyingVertex( obj ), " not found in the list ", vertices, " of vertices\n"  );
+        Error( "vertex UnderlyingVertex( obj ) = ", UnderlyingVertex( obj ), " not found in the list ", vertices, " of vertices\n" );
         
     end );
     

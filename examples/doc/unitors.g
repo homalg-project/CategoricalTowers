@@ -29,10 +29,16 @@ AsCapCategory(Range(lui)) = TensorProductOnObjects( B0, B );
 AsCapCategory(Range(rui)) = TensorProductOnObjects( B, B0 );
 #! true
 l := Concatenation( [
- List( SetOfObjects(B), o -> ApplyFunctor( PreCompose(lui, lu), o) = o and ApplyFunctor( PreCompose(rui, ru), o) = o ),
- List( SetOfGeneratingMorphisms(B), m -> ApplyFunctor( PreCompose(lui, lu), m) = m and ApplyFunctor( PreCompose(rui, ru), m) = m ),
- List( SetOfObjects(B^0 * B), o -> ApplyFunctor( PreCompose(lu, lui), o) = o ),
- List( SetOfGeneratingMorphisms(B^0 * B), m -> ApplyFunctor( PreCompose(lu, lui), m) = m)
+             List( SetOfObjects(B),
+                   o -> ApplyFunctor( PreCompose(lui, lu), o) = o and
+                   ApplyFunctor( PreCompose(rui, ru), o) = o ),
+             List( SetOfGeneratingMorphisms(B),
+                   m -> ApplyFunctor( PreCompose(lui, lu), m) = m and
+                   ApplyFunctor( PreCompose(rui, ru), m) = m ),
+             List( SetOfObjects(B^0 * B),
+                   o -> ApplyFunctor( PreCompose(lu, lui), o) = o ),
+             List( SetOfGeneratingMorphisms(B^0 * B),
+                   m -> ApplyFunctor( PreCompose(lu, lui), m) = m)
  ] );;
 and_function := function(x,y) return x and y; end;;
 Iterated( l, and_function );
@@ -48,13 +54,17 @@ lu_as_functor := LeftUnitor( BB );;
 rui_as_functor := RightUnitorInverse( BB );;
 lui_as_functor := LeftUnitorInverse( BB );;
 
-IsCongruentForMorphisms( PreCompose( ru_as_functor, rui_as_functor ), IdentityMorphism( TensorProductOnObjects( BB,  BB0) ) );
+IsCongruentForMorphisms( PreCompose( ru_as_functor, rui_as_functor ),
+        IdentityMorphism( TensorProductOnObjects( BB,  BB0 ) ) );
 #! true
-IsCongruentForMorphisms( PreCompose( lu_as_functor, lui_as_functor ), IdentityMorphism( TensorProductOnObjects( BB0,  BB) ) );
+IsCongruentForMorphisms( PreCompose( lu_as_functor, lui_as_functor ),
+        IdentityMorphism( TensorProductOnObjects( BB0,  BB ) ) );
 #! true
-IsCongruentForMorphisms( PreCompose( rui_as_functor, ru_as_functor ), IdentityMorphism( BB ) );
+IsCongruentForMorphisms( PreCompose( rui_as_functor, ru_as_functor ),
+        IdentityMorphism( BB ) );
 #! true
-IsCongruentForMorphisms( PreCompose( lui_as_functor, lu_as_functor ), IdentityMorphism( BB ) );
+IsCongruentForMorphisms( PreCompose( lui_as_functor, lu_as_functor ),
+        IdentityMorphism( BB ) );
 #! true
 
 #! @EndExample

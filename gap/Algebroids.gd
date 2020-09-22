@@ -73,7 +73,7 @@ DeclareCategory( "IsCategoryOfAlgebroids",
 DeclareProperty( "IsFinitelyPresentedCategory",
         IsCapCategory );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory :=  Concatenation( [
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory := Concatenation( [
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
 
 
@@ -245,7 +245,7 @@ DeclareOperation( "\*",
 DeclareOperation( "TrivialAlgebroid",
         [ IsHomalgRing, IsString ] );
 
-DeclareOperation("TensorProductOnObjects",
+DeclareOperation( "TensorProductOnObjects",
         [ IsAlgebroid, IsAlgebroid ] );
 
 DeclareOperation( "LeftUnitorInverseAsFunctor",
@@ -277,21 +277,21 @@ DeclareOperation( "Twist",
 #!  Given an object <A>a</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and b in T.
 #! @Arguments a, b, T
 #! @Returns a morphism in a &CAP; category
-DeclareOperation("ElementaryTensor",
+DeclareOperation( "ElementaryTensor",
         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
 
 #! @Description
 #!  Given an object <A>a</A> in an algebroid A and a morphism <A>g</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and g in T.
 #! @Arguments a, g, T
 #! @Returns a morphism in a &CAP; category
-DeclareOperation("ElementaryTensor",
+DeclareOperation( "ElementaryTensor",
         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryMorphismInAlgebroid, IsAlgebroid ] );
 
 #! @Description
 #!  Given a morphism <A>f</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of f and b in T.
 #! @Arguments f, b, T
 #! @Returns a morphism in a &CAP; category
-DeclareOperation("ElementaryTensor",
+DeclareOperation( "ElementaryTensor",
         [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
 
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
@@ -313,9 +313,9 @@ DeclareOperation( "DecomposeQuiverAlgebraElement",
         [ IsQuiverAlgebraElement ] );
 
 #! @Description
-#!  Apply the functor <A>F</A> (e.g., defined by the functions <A>images_of_objects_func</A> and
-#!  <A>images_of_generating_morphisms_func</A>) to the quiver algebra element <A>p</A>.
-#! @Arguments images_of_objects_func, images_of_generating_morphisms_func, path, covariant
+#!  Apply the functor <A>F</A> (e.g., defined by the functions <A>img_of_objs_func</A> and
+#!  <A>imgs_of_generating_mors_func</A>) to the quiver algebra element <A>p</A>.
+#! @Arguments img_of_objs_func, imgs_of_generating_mors_func, path, covariant
 #! @Returns a morphism in a &CAP; category
 #! @Group ApplyToQuiverAlgebraElement
 DeclareOperation( "ApplyToQuiverAlgebraElement",
@@ -367,9 +367,9 @@ DeclareAttribute( "Algebroid",
 #! $A' \otimes_{\mathbb{Z}} \mathbb{Q} \simeq A$.
 #! For the construction of $A'$, let $T$ be the multiplication table of the underlying quiver algebra of $A$
 #! expressed with respect to the $\mathbb{Q}$-basis <C>BasisPaths( CanonicalBasis( A' ) )</C>, denoted by $B$.
-#! Now, we expect the following technical condition to hold: $T$ should only consist of 
+#! Now, we expect the following technical condition to hold: $T$ should only consist of
 #! integral linear combinations of paths in $B$.
-#! Then $A'$ is constructed as the algebroid over $\mathbb{Z}$, realized as <C>HomalgRingOfIntegers</C>, 
+#! Then $A'$ is constructed as the algebroid over $\mathbb{Z}$, realized as <C>HomalgRingOfIntegers</C>,
 #! with the same vertices as $A$,
 #! a $\mathbb{Z}$-basis of paths given by $B$,
 #! and composition is carried out using the rules defined by $T$.

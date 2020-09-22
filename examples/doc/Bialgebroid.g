@@ -54,7 +54,7 @@ B2 := B^2;
 #! The following record will be used to define the comultiplication $B \to B \otimes_{\mathbb{Q}} B$.
 
 #! @Example
-comult := rec( a := PreCompose(B2.au, B2.va), b := PreCompose(B2.bv, B2.ub) );
+comult:= rec( a := PreCompose(B2.au, B2.va), b:= PreCompose(B2.bv, B2.ub) );
 #! rec( a := (uu)-[{ 1*(ua*av) }]->(vv), b := (vv)-[{ 1*(vb*bu) }]->(uu) )
 #! @EndExample
 
