@@ -1,4 +1,6 @@
+codecov:
+  disable_default_path_fixes: true
+fixes:
+  - "/home/gap/.gap/pkg/Algebroids/::"
 ignore:
-  - "init.g"
-  - "PackageInfo.g"
-  - "read.g"
+  - "home/"
