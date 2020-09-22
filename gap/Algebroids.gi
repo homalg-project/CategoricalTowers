@@ -2347,6 +2347,7 @@ InstallMethod( Display,
     ViewObj( CapCategory(o) );
     
 end );
+
 ##
 InstallMethod( ViewObj,
         "for a morphism in an algebroid",
@@ -2369,3 +2370,50 @@ InstallMethod( ViewObj,
     fi;
     
 end );
+
+##
+InstallMethod( LaTeXStringOp,
+          [ IsCapCategoryObjectInAlgebroidRep ],
+          
+  o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
+);
+
+##
+InstallMethod( LaTeXOutput,
+          [ IsCapCategoryObjectInAlgebroidRep ],
+          
+  LaTeXStringOp
+);
+
+##
+InstallMethod( LaTeXStringOp,
+          [ IsCapCategoryMorphismInAlgebroidRep ],
+          
+  function( m )
+    local s;
+    
+    s := LaTeXStringForQPA( UnderlyingQuiverAlgebraElement( m ) );
+    
+    if ValueOption( "OnlyDatum" ) = true then
+      
+      return s;
+      
+    else
+      
+      return Concatenation(
+                "{", LaTeXOutput( Source( m ) ), "}-\\left(",
+                "{", s, "}\\right)\\rightarrow",
+                "{", LaTeXOutput( Range( m ) ), "}"
+              );
+              
+    fi;
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+          [ IsCapCategoryMorphismInAlgebroidRep ],
+          
+  LaTeXStringOp
+);
+

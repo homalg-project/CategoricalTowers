@@ -326,6 +326,18 @@ DeclareOperation( "ApplyToQuiverAlgebraElement",
 DeclareOperation( "ApplyToQuiverAlgebraElement",
         [ IsCapFunctor, IsQuiverAlgebraElement ] );
 
+#! @Description
+#! The ouput is the LaTeX string of the object <A>o</A>.
+#! @Arguments o
+#! Returns a string
+DeclareOperation( "LaTeXStringOp", [ IsCapCategoryObjectInAlgebroid ] );
+
+#! @Description
+#! The ouput is the LaTeX string of the morphism <A>m</A>.
+#! @Arguments m
+#! Returns a string
+DeclareOperation( "LaTeXStringOp", [ IsCapCategoryMorphismInAlgebroid ] );
+
 ####################################
 #
 #! @Section Constructors
