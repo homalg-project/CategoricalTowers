@@ -1,5 +1,5 @@
 #
-# Locales: ConstructibleObjects
+# Locales: Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
 #
 # Declarations
 #

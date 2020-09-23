@@ -1,5 +1,5 @@
 #
-# Locales
+# Locales: Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
 #
 # Reading the implementation part of the package.
 #
