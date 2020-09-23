@@ -10,8 +10,8 @@ InstallGlobalFunction( ConvertToMapOfFinSets,
   function( objects, gen )
     local O, T, fl, S, G, i;
     
-    T := First( objects, O -> Length( 
-	Intersection( gen, AsList( O ) ) ) > 0 );
+    T := First( objects, O -> Length(
+        Intersection( gen, AsList( O ) ) ) > 0 );
     
     if T = fail then
         Error( "unable to find target set\n" );
@@ -47,7 +47,7 @@ InstallMethod( ConcreteCategoryForCAP,
     DisableSanityChecks( FinSets );
     
     C := Subcategory( FinSets, "A finite concrete category" :
-	overhead := false, FinalizeCategory := false );
+        overhead := false, FinalizeCategory := false );
     
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
@@ -74,7 +74,7 @@ InstallMethod( ConcreteCategoryForCAP,
     SetSetOfObjects( C, List( objects, o -> o / C ) );
     
     SetSetOfGeneratingMorphisms( C, List(
-	c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C ) );
+        c.generators, g -> ConvertToMapOfFinSets( objects, g ) / C ) );
     
     Finalize( C );
     
@@ -162,7 +162,7 @@ InstallMethod( RelationsOfEndomorphisms,
   function( k, C )
     local objects, gmorphisms, q, kq, relation_of_endomorphism,
           arrows, endos, vertices, i, mor, mpowers, m, npowers, n, foundEqual,
-		  relsEndo;
+          relsEndo;
     
     objects := SetOfObjects( C );
     gmorphisms := SetOfGeneratingMorphisms( C );
@@ -200,20 +200,21 @@ InstallMethod( RelationsOfEndomorphisms,
             continue;
         fi;
         mpowers := [];
-		m := 0;
+        m := 0;
+        
         # sigma lemma
         foundEqual := false;
         while not mor^m in mpowers do
             n := 1;
-			npowers := [];
+            npowers := [];
             while not mor^(m+n) in npowers and
-			  not foundEqual do
+              not foundEqual do
                 if IsCongruentForMorphisms( mor^(m+n), mor^m ) then
                     Add( relsEndo,
                          relation_of_endomorphism( kq, arrows[i], m, n ) );
                     foundEqual := true;
                 fi;
-				Add( npowers, mor^(m+n) );
+                Add( npowers, mor^(m+n) );
                 n := n+1;
             od;
             Add( mpowers, mor^m );
@@ -266,17 +267,17 @@ InstallMethod( EmbeddingOfSubRepresentation,
     
     kq := Source( CapCategory( F ) );
     
-    eta := List( eta, function( eta_o ) if IsMonomorphism( eta_o ) then 
-		return eta_o; fi; return ImageEmbedding( eta_o ); end );
+    eta := List( eta, function( eta_o ) if IsMonomorphism( eta_o ) then
+            return eta_o; fi; return ImageEmbedding( eta_o ); end );
     
     objects := List( eta, Source );
     morphisms := List(
                       SetOfGeneratingMorphisms( kq ),
                       m ->
                       LiftAlongMonomorphism(
-						eta[VertexIndex( UnderlyingVertex( Range( m ) ) )],
-                        PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )],
-							F( m ) ) ) );
+                              eta[VertexIndex( UnderlyingVertex( Range( m ) ) )],
+                              PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )],
+                                      F( m ) ) ) );
     
     subrep := AsObjectInHomCategory( kq, objects, morphisms );
     

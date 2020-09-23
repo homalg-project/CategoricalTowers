@@ -1,8 +1,8 @@
 #***************************************************************************
 # This is an excerpt of the file
-# 
+#
 # [catreps](https://www-users.math.umn.edu/~webb/GAPfiles/catreps)
-# 
+#
 # It includes only those functions necessary to define the function `ConcreteCategory`
 #***************************************************************************
 
@@ -14,7 +14,7 @@
 #                  http://www.gnu.org/licenses/
 #
 #  The overall structure of the catreps package was designed and most if it
-#  written by Peter Webb <webb@math.umn.edu>, who is also the maintainer. 
+#  written by Peter Webb <webb@math.umn.edu>, who is also the maintainer.
 #  Contributions were made by Dan Christensen,
 #  Fan Zhang and Moriah Elkin.
 #***************************************************************************
@@ -24,7 +24,7 @@
 
 ##############################################################################
 ##
-## SupportOfMorphism(m) returns the list of positions at which the 
+## SupportOfMorphism(m) returns the list of positions at which the
 ## list m is defined.
 ##
 ##############################################################################

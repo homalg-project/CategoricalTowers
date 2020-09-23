@@ -99,23 +99,23 @@ rAUC := TensorProductOnObjects( TensorProductOnObjects( A, unit), C );
 #! <(1)->66, (2)->39; (a)->66x66, (b)->66x39, (c)->39x39>
 IsEqualForMorphisms(
 PreCompose(
-	AssociatorRightToLeftWithGivenTensorProducts( sAUC, A,unit,C, rAUC ),
-	TensorProductOnMorphisms(
-		RightUnitor( A ),
-		IdentityMorphism( C )
-	)
+        AssociatorRightToLeftWithGivenTensorProducts( sAUC, A,unit,C, rAUC ),
+        TensorProductOnMorphisms(
+                RightUnitor( A ),
+                IdentityMorphism( C )
+        )
 ),
 TensorProductOnMorphisms(
-	IdentityMorphism( A ),
-	LeftUnitor( C )
-	)
+        IdentityMorphism( A ),
+        LeftUnitor( C )
+        )
 );
 #! true
 IsEqualForMorphisms(
-	TensorProductOnMorphisms(
+        TensorProductOnMorphisms(
                 IdentityMorphism( A ),
                 LeftUnitor( C )
                 ),
-	IdentityMorphism( sAUC ) 
+        IdentityMorphism( sAUC )
 );
 #! true
