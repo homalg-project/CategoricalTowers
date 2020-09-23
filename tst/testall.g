@@ -11,7 +11,7 @@ options := rec(
     ),
 );
 
-LoadPackage( "Algebroids" );
+LoadPackage( "FreydCategoriesForCAP" );
 
 TestDirectory( DirectoriesPackageLibrary( "Algebroids", "tst" ), options );
 
