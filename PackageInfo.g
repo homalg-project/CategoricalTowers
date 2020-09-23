@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets
+# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,9 +9,9 @@
 SetPackageInfo( rec(
 
 PackageName := "ZariskiFrames",
-Subtitle := "(Co)frames/Locales of Zariski closed/open subsets",
+Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
 Version := Maximum( [
-                   "2020.05.02", ## Mohamed's version
+                   "2020.07.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.06.02", ## Markus's version
                    ## this line prevents merge conflicts
@@ -19,7 +19,8 @@ Version := Maximum( [
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -68,18 +69,17 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/ZariskiFrames",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/ZariskiFrames",
+PackageInfoURL  := "https://homalg-project.github.io/ZariskiFrames/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/ZariskiFrames/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/ZariskiFrames/releases/download/v", ~.Version, "/ZariskiFrames-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 

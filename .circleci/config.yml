@@ -16,8 +16,8 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/Toposes
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor
           git clone --depth 1 https://github.com/homalg-project/Locales
-          git clone --depth 1 https://github.com/homalg-project/InfiniteLists
-          git clone --depth 1 https://github.com/homalg-project/ComplexesCategories
+          git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP
+          git clone --depth 1 https://github.com/homalg-project/HigherHomologicalAlgebra
           git clone --depth 1 https://github.com/homalg-project/QPA2
           cd ZariskiFrames
           echo "SetInfoLevel(InfoPackageLoading, 3);" > ~/.gap/gaprc

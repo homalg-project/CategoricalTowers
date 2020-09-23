@@ -1,8 +1,8 @@
-##
-InstallOtherMethod( ClosedSubsetOfSpec,
-        "for a Julia object and a homalg ring",
-        [ IsJuliaObject, IsHomalgRing ],
-
+#
+# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
+#
+# Implementations
+#
   function( str, R )
     
     str := JuliaToGAP( IsString, str );

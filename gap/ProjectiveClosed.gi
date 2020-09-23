@@ -1,5 +1,5 @@
 #
-# ZariskiFrames: The coframe of Zariski closed subsets in a projective variety
+# ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 #
 # Implementations
 #
