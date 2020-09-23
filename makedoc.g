@@ -1,33 +1,32 @@
 #
-# CatReps
+# CatReps: Representations and cohomology of finite categories
 #
 # This file is a script which compiles the package manual.
 #
-if fail = LoadPackage("AutoDoc", "2019.05.20") then
-    Error("AutoDoc version 2019.05.20 or newer is required.");
+if fail = LoadPackage( "AutoDoc", "2019.05.20" ) then
+    
+    Error( "AutoDoc version 2019.05.20 or newer is required." );
+    
 fi;
 
-AutoDoc(rec(
+AutoDoc( rec(
+    autodoc := rec(
+        files := [ "doc/Doc.autodoc" ],
+        scan_dirs := [ "gap", "examples", "examples/doc" ],
+    ),
+    extract_examples := rec(
+        units := "Single",
+    ),
     gapdoc := rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
-                """
+                \usepackage{mathtools}
+            """,
         ),
     ),
     scaffold := rec(
-        entities := [ "GAP4", "CAP" ],
+        entities := [ "homalg", "CAP" ],
     ),
-    autodoc := rec( files := [ "doc/Doc.autodoc" ] ),
-    extract_examples := rec( units := "Single" ),
-    maketest := rec( folder := ".",
-                     commands :=
-                     [ "LoadPackage( \"FinSetsForCAP\" );",
-                       "LoadPackage( \"IO_ForHomalg\" );",
-                       "HOMALG_IO.show_banners := false;",
-                       "HOMALG_IO.suppress_PID := true;",
-                       "HOMALG_IO.use_common_stream := true;",
-                       ],
-                     ),
-));
+) );
 
 QUIT;

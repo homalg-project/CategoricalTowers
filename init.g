@@ -1,5 +1,5 @@
 #
-# CatReps
+# CatReps: Representations and cohomology of finite categories
 #
 # Reading the declaration part of the package.
 #
