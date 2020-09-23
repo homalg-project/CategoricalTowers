@@ -9,7 +9,7 @@
 SetPackageInfo( rec(
 
 PackageName := "Locales",
-Subtitle := "",
+Subtitle := "Locales, frames, coframes, lattices of locally closed subsets, and lattices of constructible sets/objects",
 Version := Maximum( [
                    "2020.06.07", ## Mohamed's version
                    ## this line prevents merge conflicts
@@ -99,7 +99,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Locales, frames, coframes, lattices of locally closed subsets, and lattices of constructible sets",
+  LongTitle := "Locales, frames, coframes, lattices of locally closed subsets, and lattices of constructible sets/objects",
 ),
 
 Dependencies := rec(
