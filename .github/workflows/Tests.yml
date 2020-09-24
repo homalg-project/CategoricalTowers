@@ -44,4 +44,5 @@ jobs:
           TERM=dumb make -C Algebroids -j $(nproc) --output-sync ci-test
           TERM=dumb make -C FunctorCategories -j $(nproc) --output-sync ci-test
           TERM=dumb make -C CatReps -j $(nproc) --output-sync ci-test
+          cp ./Algebroids/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
