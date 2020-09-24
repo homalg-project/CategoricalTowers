@@ -42,4 +42,5 @@ jobs:
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C CatReps -j $(nproc) --output-sync ci-test
+          cp ./CatReps/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
