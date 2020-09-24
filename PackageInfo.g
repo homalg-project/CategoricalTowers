@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "GradedCategories",
 Subtitle := "Graded closures of categories",
 Version := Maximum( [
-                   "2020.08.28", ## Mohamed's version
+                   "2020.09.07", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.29", ## Fabian's version
                    ] ),
@@ -51,17 +51,17 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/GradedCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/GradedCategories",
+PackageInfoURL  := "https://homalg-project.github.io/GradedCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/GradedCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/GradedCategories/releases/download/v", ~.Version, "/GradedCategories-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
