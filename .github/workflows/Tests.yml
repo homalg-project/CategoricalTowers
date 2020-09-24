@@ -43,4 +43,5 @@ jobs:
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C FunctorCategories -j $(nproc) --output-sync ci-test
           TERM=dumb make -C CatReps -j $(nproc) --output-sync ci-test
+          cp ./FunctorCategories/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
