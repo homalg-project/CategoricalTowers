@@ -39,4 +39,5 @@ jobs:
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C SubcategoriesForCAP -j $(nproc) --output-sync ci-test
+          cp ./SubcategoriesForCAP/.codecov.yml ./
           curl -s https://codecov.io/bash | bash

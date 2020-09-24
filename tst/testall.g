@@ -11,7 +11,7 @@ options := rec(
     ),
 );
 
-LoadPackage( "SubcategoriesForCAP" );
+LoadPackage( "FreydCategoriesForCAP" );
 
 TestDirectory( DirectoriesPackageLibrary( "SubcategoriesForCAP", "tst" ), options );
 
