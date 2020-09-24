@@ -34,9 +34,14 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
           git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP.git
+          git clone --depth 1 https://github.com/homalg-project/ZariskiFrames.git
           git clone --depth 1 https://github.com/homalg-project/LazyCategories.git
+          git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
+          git clone --depth 1 https://github.com/homalg-project/HigherHomologicalAlgebra.git
+          git clone --depth 1 https://github.com/homalg-project/QPA2.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C Locales -j $(nproc) --output-sync ci-test
+          TERM=dumb make -C ZariskiFrames -j $(nproc) --output-sync ci-test
           cp ./Locales/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
