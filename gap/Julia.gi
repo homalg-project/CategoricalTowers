@@ -1,3 +1,9 @@
+#
+# LazyCategories: Construct an equivalent lazy category out of a CAP category
+#
+# Implementations
+#
+
 ##
 InstallOtherMethod( SetLabel,
         "for a lazy category cell and a julia object",

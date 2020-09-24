@@ -1,25 +1,17 @@
 #
-# LazyCategories
+# LazyCategories: Construct an equivalent lazy category out of a CAP category
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
 #
-
-LoadPackage( "Algebroids" );
-
-LoadPackage( "FreydCategoriesForCAP" );
-
-LoadPackage( "IO_ForHomalg" );
-HOMALG_IO.show_banners := false;
-
 options := rec(
     exitGAP := true,
     testOptions := rec(
-        compareFunction := "uptowhitespace"
+        compareFunction := "uptowhitespace",
     ),
 );
 
-LoadPackage( "LazyCategories" );
+LoadPackage( "FreydCategoriesForCAP" );
 
 TestDirectory( DirectoriesPackageLibrary( "LazyCategories", "tst" ), options );
 

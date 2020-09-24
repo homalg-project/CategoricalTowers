@@ -1,5 +1,5 @@
 #
-# LazyCategories
+# LazyCategories: Construct an equivalent lazy category out of a CAP category
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -11,14 +11,15 @@ SetPackageInfo( rec(
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
-                   "2020.06.02", ## Mohamed's version
+                   "2020.09.03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -37,17 +38,17 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/LazyCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName, "/" ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "blob/master/PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "blob/master/README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/LazyCategories",
+PackageInfoURL  := "https://homalg-project.github.io/LazyCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/LazyCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/LazyCategories/releases/download/v", ~.Version, "/LazyCategories-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 

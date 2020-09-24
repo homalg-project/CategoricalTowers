@@ -1,5 +1,5 @@
 #
-# LazyCategories: Create a lazy category
+# LazyCategories: Construct an equivalent lazy category out of a CAP category
 #
 # Implementations
 #

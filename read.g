@@ -1,5 +1,5 @@
 #
-# LazyCategories
+# LazyCategories: Construct an equivalent lazy category out of a CAP category
 #
 # Reading the implementation part of the package.
 #
