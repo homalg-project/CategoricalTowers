@@ -73,7 +73,7 @@ In March 2020 [Peter Webb](https://www-users.math.umn.edu/~webb/)' and his coaut
 
 <!-- BEGIN FOOTER -->
 [docs-img]: https://img.shields.io/badge/docs-stable-blue.svg
-[docs-url]: https://homalg-project.github.io/CatReps/doc/chap0.html
+[docs-url]: https://homalg-project.github.io/CatReps/doc/chap0_mj.html
 
 [tests-img]: https://github.com/homalg-project/CatReps/workflows/Tests/badge.svg
 [tests-url]: https://github.com/homalg-project/CatReps/actions?query=workflow%3ATests
