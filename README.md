@@ -1,17 +1,18 @@
-# The GAP package QuotientCategoriesForCAP
+<!-- BEGIN HEADER -->
+# QuotientCategories – Quotient categories of CAP categories by two-sided ideals
 
-TODO: add a description of your package; perhaps also instructions how how to
-install and use it, resp. where to find out more
+| **Documentation**         | **Build Status of [HigherHomologicalAlgebra](/../../)**                                            |
+|:-------------------------:|:-----------------------------------------------------------:|
+| [![][docs-img]][docs-url] | [![][tests-img]][tests-url] [![][codecov-img]][codecov-url] |
+<!-- END HEADER -->
 
+<!-- BEGIN FOOTER -->
+[docs-img]: https://img.shields.io/badge/PDF-dev-blue.svg
+[docs-url]: /../../raw/doc/QuotientCategories.pdf
 
-## Contact
+[tests-img]: https://github.com/homalg-project/HigherHomologicalAlgebra/workflows/Tests/badge.svg
+[tests-url]: https://github.com/homalg-project/HigherHomologicalAlgebra/actions?query=workflow%3ATests
 
-TODO: add info on how to contact you and/or how to report issues with your
-package
-
-## License
-
-TODO: Provide information on the license of your package. A license is
-important as it determines who has a right to distribute your package. The
-"default" license to consider is GNU General Public License v2 or later, as
-that is the license of GAP itself.
+[codecov-img]: https://codecov.io/gh/homalg-project/HigherHomologicalAlgebra/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/homalg-project/HigherHomologicalAlgebra
+<!-- END FOOTER -->

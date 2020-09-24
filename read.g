@@ -1,5 +1,5 @@
 #
-# QuotientCategories: A gap package to create quotient categories of CAP categories
+# QuotientCategories: Quotient categories of CAP categories by two-sided ideals
 #
 # Reading the implementation part of the package.
 #

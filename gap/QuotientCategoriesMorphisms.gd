@@ -1,10 +1,8 @@
-#############################################################################
-##
-##  QuotientCategories: Quotient categories for CAP categories
-##
-##  Copyright 2019, Kamal Saleh, University of Siegen
-##
-#############################################################################
+#
+# QuotientCategories: Quotient categories of CAP categories by two-sided ideals
+#
+# Declarations
+#
 
 #! @Chapter Filters and constructors
 

@@ -4,7 +4,9 @@
 #! @Chunk abelian_groups
 #! @BeginExampleSession
 #! gap> LoadPackage( "ModulePresentations" );
+#! true
 #! gap> LoadPackage( "QuotientCategories" );
+#! true
 #! gap> ZZ := HomalgRingOfIntegers( );
 #! Z
 #! gap> cat := LeftPresentations( ZZ );
