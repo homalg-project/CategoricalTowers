@@ -7,8 +7,8 @@
 <!-- END HEADER -->
 
 <!-- BEGIN FOOTER -->
-[docs-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-url]: /../../raw/doc/QuotientCategories.pdf
+[docs-img]: https://img.shields.io/badge/docs-stable-blue.svg
+[docs-url]: https://homalg-project.github.io/HigherHomologicalAlgebra/QuotientCategories/doc/chap0_mj.html
 
 [tests-img]: https://github.com/homalg-project/HigherHomologicalAlgebra/workflows/Tests/badge.svg
 [tests-url]: https://github.com/homalg-project/HigherHomologicalAlgebra/actions?query=workflow%3ATests
