@@ -24,17 +24,17 @@ InstallMethod( EvaluatedCell,
     C!.evaluations := count;
     
     if show then
-        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
     else
-        Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
+        Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
     
     result := CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ), List( GenesisOfCellArguments( c ), EvaluatedCell ) );
 
     if show then
-        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
+        Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
     else
-        Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
+        Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
     
     return result;
@@ -122,7 +122,7 @@ InstallMethod( IsEqualForCells,
     
     return false;
     
-end  );
+end );
 
 ##
 InstallMethod( IsEqualForCells,
@@ -644,7 +644,7 @@ InstallMethod( LazyCategory,
     
     D!.evaluations := 0;
     
-    D!.shortname := name{[ Minimum( 15,  Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
+    D!.shortname := name{[ Minimum( 15, Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
     D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 39 - Length( D!.shortname ), '.' ) );
     
     cache := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "cache", true );
@@ -738,18 +738,18 @@ InstallMethod( LazyCategory,
                 C!.evaluations := count;
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
                 
                 result := List( BasisOfExternalHom( EvaluatedCell( a ), EvaluatedCell( b ) ),
                                 mor -> AsMorphismInLazyCategory( a, mor, b ) );
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
                 
                 return result;
@@ -771,9 +771,9 @@ InstallMethod( LazyCategory,
                 C!.evaluations := count;
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
                 
                 result := CoefficientsOfMorphismWithGivenBasisOfExternalHom(
@@ -781,9 +781,9 @@ InstallMethod( LazyCategory,
                                   List( L, EvaluatedCell ) );
                 
                 if show then
-                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' '  ), "<- evaluated  in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".\t", ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
                 
                 return result;
@@ -1164,7 +1164,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     D := DigraphOfEvaluation( c );
     
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
-    str  := "//dot\n";
+    str := "//dot\n";
     
     Append( str, "digraph hgn{\n" );
     Append( str, "node [shape=rect]\n" );
