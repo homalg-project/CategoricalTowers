@@ -13,7 +13,7 @@ Subtitle := "Representations and cohomology of finite categories",
 Version := Maximum( [
                    "2020.07.03", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2020.01.01", ## Tibor's version
+                   "2020.07.04", ## Tibor's version
                    ## this line prevents merge conflicts
                    "2020.01.01", ## Peter's version
                    ] ),
