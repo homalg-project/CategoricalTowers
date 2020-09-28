@@ -23,7 +23,7 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
     n := Int( Log2( Float( d ) ) ) + 1;
     
     ## the default is true
-    random := IsIdenticalObj( ValueOption( "random" ), fail );
+    random := not IsIdenticalObj( ValueOption( "random" ), false );
     
     for b in Reversed( [ 2 .. Length( endbas ) ] ) do
         
