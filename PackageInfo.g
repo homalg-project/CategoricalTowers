@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
-                   "2020.09.03", ## Mohamed's version
+                   "2020.09.06", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
@@ -77,6 +77,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
+                   [ "ToolsForHomalg", ">= 2020.09.06" ],
                    [ "CAP", ">= 2020.04.15" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
                    [ "CategoryConstructor", ">= 2020.08.16" ],
