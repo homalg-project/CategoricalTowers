@@ -7,6 +7,24 @@
 ##
 SetInfoLevel( InfoCategoryConstructor, 1 );
 
+## recursion method
+InstallMethod( UnderlyingCell,
+        "for a list",
+        [ IsList ],
+        
+  function( L )
+    
+    return List( L, UnderlyingCell );
+    
+end );
+
+## the identity on integers
+InstallMethod( UnderlyingCell,
+        "for an integer",
+        [ IsInt ],
+        
+  IdFunc );
+
 ##
 InstallGlobalFunction( CategoryConstructor,
   function( )

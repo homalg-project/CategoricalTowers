@@ -41,3 +41,23 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #! @Arguments nothing
 #! @Returns a &CAP; category
 DeclareGlobalFunction( "CategoryConstructor" );
+
+####################################
+#
+#! @Section Operations
+#
+####################################
+
+#! @Description
+#!  Return <C>List</C>( <A>L</A>, <C>UnderlyingCell</C> ).
+#! @Arguments L
+#! @Returns a list
+DeclareAttribute( "UnderlyingCell",
+        IsList );
+
+#! @Description
+#!  Give the integer <A>i</A> return <A>i</A>.
+#! @Arguments i
+#! @Returns an integer
+DeclareAttribute( "UnderlyingCell",
+        IsInt );
