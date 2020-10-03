@@ -1,8 +1,8 @@
-##
-InstallMethod( PreCompose,
-        "for a julia object",
-        [ IsJuliaObject ],
-        
+#
+# CategoryConstructor: Construct categories out of given ones
+#
+# Implementations
+#
   function( L )
     
     return PreCompose( ConvertJuliaToGAP( L ) );

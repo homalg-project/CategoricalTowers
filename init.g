@@ -1,5 +1,5 @@
 #
-# CategoryConstructor: Category constructor
+# CategoryConstructor: Construct categories out of given ones
 #
 # Reading the declaration part of the package.
 #

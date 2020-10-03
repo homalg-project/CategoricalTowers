@@ -1,5 +1,5 @@
 #
-# CategoryConstructor: Category constructor
+# CategoryConstructor: Construct categories out of given ones
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "CategoryConstructor",
 Subtitle := "Construct categories out of given ones",
 Version := Maximum( [
-                   "2020.05.01", ## Mohamed's version
+                   "2020.09.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.04.06", ## Kamal's version
                    ## this line prevents merge conflicts
@@ -20,7 +20,8 @@ Version := Maximum( [
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -39,18 +40,17 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/CategoryConstructor",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/CategoryConstructor",
+PackageInfoURL  := "https://homalg-project.github.io/CategoryConstructor/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoryConstructor/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoryConstructor/releases/download/v", ~.Version, "/CategoryConstructor-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -72,7 +72,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Category constructor",
+  LongTitle := "Construct categories out of given ones",
 ),
 
 Dependencies := rec(
