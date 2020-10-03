@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
-                   "2020.09.06", ## Mohamed's version
+                   "2020.09.07", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
@@ -27,11 +27,11 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "https://algebra.mathematik.uni-siegen.de/barakat/",
+    WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
