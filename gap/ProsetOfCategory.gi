@@ -16,24 +16,6 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    ] );
 
 ##
-InstallOtherMethod( UnderlyingCell,
-        "for a list",
-        [ IsList ],
-        
-  function( L )
-    
-    return List( L, UnderlyingCell );
-    
-end );
-
-##
-InstallOtherMethod( UnderlyingCell,
-        "for an integer",
-        [ IsInt ],
-        
-  IdFunc );
-
-##
 InstallMethod( AsCellOfProset,
         "for a CAP object",
         [ IsCapCategoryObject ],
