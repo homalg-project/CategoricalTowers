@@ -18,24 +18,6 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY,
    ] );
 
 ##
-InstallOtherMethod( UnderlyingCell,
-        "for a list",
-        [ IsList ],
-        
-  function( L )
-    
-    return List( L, UnderlyingCell );
-    
-end );
-
-##
-InstallOtherMethod( UnderlyingCell,
-        "for an integer",
-        [ IsInt ],
-        
-  IdFunc );
-
-##
 InstallMethod( AsSubcategoryCell,
         "for a CAP category and a CAP object",
         [ IsCapSubcategory, IsCapCategoryObject ],

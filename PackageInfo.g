@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "SubcategoriesForCAP",
 Subtitle := "Subcategory and other related constructors for CAP categories",
 Version := Maximum( [
-                   "2020.07.03", ## Mohamed's version
+                   "2020.09.10", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.03.02", ## Kamal's version
                    ## this line prevents merge conflicts
@@ -108,7 +108,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2020.02.16" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
-                   [ "CategoryConstructor", ">= 2020.04.05" ]
+                   [ "CategoryConstructor", ">= 2020.09.10" ]
                   ],
   SuggestedOtherPackages := [
                    [ "Toposes", ">= 2020.02.19" ],

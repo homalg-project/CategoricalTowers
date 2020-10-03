@@ -37,24 +37,6 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    ] );
 
 ##
-InstallOtherMethod( UnderlyingCell,
-        "for a list",
-        [ IsList ],
-        
-  function( L )
-    
-    return List( L, UnderlyingCell );
-    
-end );
-
-##
-InstallOtherMethod( UnderlyingCell,
-        "for an integer",
-        [ IsInt ],
-        
-  IdFunc );
-
-##
 InstallMethod( AsSliceCategoryCell,
         "for a CAP morphism and a CAP slice category",
         [ IsCapCategoryMorphism, IsCapSliceCategory ],
