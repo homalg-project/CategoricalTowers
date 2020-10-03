@@ -470,7 +470,7 @@ Display( emb );
 #! Image of <(1)>:
 #!  . 1 .
 #! 
-#! A morphism in Category of matrices over GF(3)
+#! A split monomorphism in Category of matrices over GF(3)
 #! 
 #! 
 #! Image of <(2)>:
