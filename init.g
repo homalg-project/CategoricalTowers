@@ -13,5 +13,6 @@ if IsPackageMarkedForLoading( "Toposes", ">= 2020.02.19" ) and
      
   ReadPackage( "SubcategoriesForCAP", "gap/SliceCategory.gd");
   ReadPackage( "SubcategoriesForCAP", "gap/EagerSliceCategory.gd");
+  ReadPackage( "SubcategoriesForCAP", "gap/LazySliceCategory.gd");
   
 fi;

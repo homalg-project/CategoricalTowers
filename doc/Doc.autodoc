@@ -30,3 +30,13 @@
 @InsertChunk SliceCategory
 @Subsection IteratedInternalHom
 @InsertChunk IteratedInternalHom
+
+@Chapter Slice categories (lazy data structure)
+
+@Section GAP categories
+@Section Attributes
+@Section Constructors
+
+@Section Examples
+@Subsection LazySliceCategory
+@InsertChunk LazySliceCategory
