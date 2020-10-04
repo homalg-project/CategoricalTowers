@@ -61,9 +61,6 @@ DeclareCategory( "IsCapCategoryMorphismInASliceCategoryOverTensorUnit",
 #!
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY" );
 
-#!
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_SLICE_CATEGORY" );
-
 ####################################
 #
 #! @Section Attributes
@@ -134,8 +131,6 @@ DeclareOperation( "MorphismFromCovariantArgumentOfInternalHom",
 #! @Section Constructors
 #
 ####################################
-
-DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_SLICE_CATEGORY" );
 
 #! @Arguments B
 DeclareAttribute( "SliceCategory",
