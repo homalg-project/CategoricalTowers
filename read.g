@@ -12,5 +12,6 @@ if IsPackageMarkedForLoading( "Toposes", ">= 2020.02.19" ) and
    IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2019.11.02" ) then
     
   ReadPackage( "SubcategoriesForCAP", "gap/SliceCategory.gi");
+  ReadPackage( "SubcategoriesForCAP", "gap/EagerSliceCategory.gi");
   
 fi;

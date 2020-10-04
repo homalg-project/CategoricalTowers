@@ -19,11 +19,14 @@
 @Section Global variables
 @Section Attributes
 @Section Constructors
-@Section Examples
 
+@Chapter Slice categories (eager data structure)
+
+@Section GAP categories
+@Section Constructors
+
+@Section Examples
 @Subsection SliceCategory
 @InsertChunk SliceCategory
-
 @Subsection IteratedInternalHom
 @InsertChunk IteratedInternalHom
-

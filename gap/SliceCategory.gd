@@ -132,21 +132,9 @@ DeclareOperation( "MorphismFromCovariantArgumentOfInternalHom",
 #
 ####################################
 
-#! @Arguments B
-DeclareAttribute( "SliceCategory",
-        IsCapCategoryObject );
-
-#! @Arguments M
-DeclareAttribute( "SliceCategoryOverTensorUnit",
-        IsCapCategory );
-
 #! @Arguments mor, S
 DeclareOperation( "AsSliceCategoryCell",
         [ IsCapCategoryMorphism, IsCapSliceCategory ] );
-
-#! @Arguments mor
-DeclareAttribute( "AsSliceCategoryCell",
-        IsCapCategoryMorphism );
 
 #! @Arguments mor, S
 DeclareOperation( "/",
