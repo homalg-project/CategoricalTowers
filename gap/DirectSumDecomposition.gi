@@ -14,6 +14,10 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
     
     d := Maximum( List( ValuesOnAllObjects( F ), Dimension ) );
     
+    if d = 0 then
+        return fail;
+    fi;
+    
     endbas := ShallowCopy( BasisOfExternalHom( F, F ) );
     
     Add( endbas, ZeroMorphism( F, F ) );
