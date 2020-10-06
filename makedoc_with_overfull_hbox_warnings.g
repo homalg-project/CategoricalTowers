@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # QuotientCategories: Quotient categories of CAP categories by two-sided ideals
 #
 # This file is a script which compiles the package manual and prints overfull hbox warnings.
