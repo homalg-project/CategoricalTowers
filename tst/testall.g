@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # InternalModules: Modules over internal algebras
 #
 # This file runs package tests. It is also referenced in the package
