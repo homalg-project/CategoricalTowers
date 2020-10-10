@@ -1,11 +1,18 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CategoriesWithAmbientObjects: Categories with objects having ambient objects
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
+
 SetPackageInfo( rec(
 
 PackageName := "CategoriesWithAmbientObjects",
-
-Subtitle := "Categories with ambient objects for CAP",
-
+Subtitle := "Categories with objects having ambient objects",
 Version := Maximum( [
-                   "2019.12.01", ## Mohamed's version
+                   "2020.10.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Kamal's version
                    ## this line prevents merge conflicts
@@ -13,11 +20,9 @@ Version := Maximum( [
 
 # this avoids git-merge conflicts
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
-ArchiveURL := Concatenation( "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/CategoriesWithAmbientObjects-", ~.Version ),
-
-ArchiveFormats := ".tar.gz",
 
 Persons := [
   rec( 
@@ -26,7 +31,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "mohamed.barakat@uni-siegen.de",
-    WWWHome       := "http://www.mathematik.uni-kl.de/~barakat/",
+    WWWHome       := "https://mohamed-barakat.github.io/",
     PostalAddress := Concatenation( [
                        "Walter-Flex-Str. 3\n",
                        "57068 Siegen\n",
@@ -40,7 +45,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "kamal.saleh@uni-siegen.de",
-    WWWHome       := "https://github.com/kamalsaleh",
+    WWWHome       := "https://github.com/kamalsaleh/",
     PostalAddress := Concatenation( [
                        "Walter-Flex-Str. 3\n",
                        "57068 Siegen\n",
@@ -51,12 +56,31 @@ Persons := [
   
 ],
 
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CategoriesWithAmbientObjects",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/CategoriesWithAmbientObjects",
+PackageInfoURL  := "https://homalg-project.github.io/CategoriesWithAmbientObjects/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoriesWithAmbientObjects/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoriesWithAmbientObjects/releases/download/v", ~.Version, "/CategoriesWithAmbientObjects-", ~.Version ),
+# END URLS
+
+ArchiveFormats := ".tar.gz",
+
+##  Status information. Currently the following cases are recognized:
+##    "accepted"      for successfully refereed packages
+##    "submitted"     for packages submitted for the refereeing
+##    "deposited"     for packages for which the GAP developers agreed
+##                    to distribute them with the core GAP system
+##    "dev"           for development versions of packages
+##    "other"         for all other packages
+##
 Status := "dev",
 
-README_URL := 
-  "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/CategoriesWithAmbientObjects/README.CategoriesWithAmbientObjects",
-PackageInfoURL := 
-  "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/CategoriesWithAmbientObjects/PackageInfo.g",
+AbstractHTML   :=  "",
 
 PackageDoc := rec(
   BookName  := "CategoriesWithAmbientObjects",
@@ -64,8 +88,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Categories with ambient objects for CAP",
-  Autoload  := false
+  LongTitle := "Categories with objects having ambient objects",
 ),
 
 Dependencies := rec(
@@ -78,14 +101,14 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.1" ]
                    ],
   SuggestedOtherPackages := [ ],
-  ExternalConditions := [ ]
+  ExternalConditions := [ ],
 ),
 
 AvailabilityTest := function( )
     return true;
-  end,
+end,
 
-Autoload := false,
+TestFile := "tst/testall.g",
 
 Keywords := [ "categories", "ambient objects" ]
 

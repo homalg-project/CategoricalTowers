@@ -1,13 +1,8 @@
-#############################################################################
-##
-##  CategoriesWithAmbientObjects.gi                   CategoriesWithAmbientObjects package
-##
-##  Copyright 2016,      Mohamed Barakat, University of Siegen
-##                       Kamal Saleh, University of Siegen
-##
-##  Implementation stuff for categories with ambient objects.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CategoriesWithAmbientObjects: Categories with objects having ambient objects
+#
+# Implementations
+#
 
 ####################################
 #
