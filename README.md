@@ -20,6 +20,8 @@ To obtain current versions of all dependencies, clone the following repositories
 
 <!-- END HEADER -->
 
+### About
+
 This package rewrites the [`homalg`](https://github.com/homalg-project/homalg_project#readme) package [`Modules`](https://github.com/homalg-project/homalg_project/tree/master/Modules#readme) using [`CAP`](https://github.com/homalg-project/CAP_project#readme) .
 
 <!-- BEGIN FOOTER -->
