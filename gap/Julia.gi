@@ -108,10 +108,30 @@ InstallMethod( LeftQuiver,
     
 end );
 
+##
+InstallMethod( SetLabelsAsLaTeXStrings,
+        [ IsQuiver, IsJuliaObject, IsJuliaObject ],
+        
+  function( q, vertices, arrows )
+    
+    SetLabelsAsLaTeXStrings( q, ConvertJuliaToGAP( vertices ), ConvertJuliaToGAP( arrows ) );
+    
+end );
+
+##
+InstallMethod( SetLabelsAsLaTeXStrings,
+        [ IsQuiver, IsJuliaObject ],
+        
+  function( q, arrows )
+    
+    SetLabelsAsLaTeXStrings( q, ConvertJuliaToGAP( arrows ) );
+    
+end );
+
 ## does not work
 InstallOtherMethod( \/,
         [ IsPathAlgebra, IsJuliaObject ],
-
+        
   function( A, relations )
     
     return A / JuliaToGAP( IsList, relations );
