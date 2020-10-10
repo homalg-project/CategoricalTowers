@@ -1,5 +1,5 @@
-#
-# IntrinsicModules: Intrinsic modules with elements for the CAP based homalg
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicModules: Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 #
 # Reading the implementation part of the package.
 #

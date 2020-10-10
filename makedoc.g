@@ -1,30 +1,32 @@
-#
-# IntrinsicModules: Intrinsic modules with elements for the CAP based homalg
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicModules: Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 #
 # This file is a script which compiles the package manual.
 #
-if fail = LoadPackage("AutoDoc", "2016.02.16") then
-    Error("AutoDoc version 2016.02.16 or newer is required.");
+if fail = LoadPackage( "AutoDoc", "2019.05.20" ) then
+    
+    Error( "AutoDoc version 2019.05.20 or newer is required." );
+    
 fi;
 
-AutoDoc( 
-        rec(
-            scaffold := rec( entities := [ "GAP4", "homalg", "CAP" ],
-                             ),
-            
-            autodoc := rec( files := [ "doc/Doc.autodoc" ] ),
-
-            maketest := rec( folder := ".",
-                             commands :=
-                             [ "LoadPackage( \"IntrinsicModules\" );",
-                               "LoadPackage( \"RingsForHomalg\" );",
-                               "LoadPackage( \"IO_ForHomalg\" );",
-                               "HOMALG_IO.show_banners := false;",
-                               "HOMALG_IO.suppress_PID := true;",
-                               "HOMALG_IO.use_common_stream := true;",
-                             ],
-                           ),
-            )
-);
+AutoDoc( rec(
+    autodoc := rec(
+        files := [ "doc/Doc.autodoc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc" ],
+    ),
+    extract_examples := rec(
+        units := "Single",
+    ),
+    gapdoc := rec(
+        LaTeXOptions := rec(
+            LateExtraPreamble := """
+                \usepackage{mathtools}
+            """,
+        ),
+    ),
+    scaffold := rec(
+        entities := [ "homalg", "CAP" ],
+    ),
+) );
 
 QUIT;

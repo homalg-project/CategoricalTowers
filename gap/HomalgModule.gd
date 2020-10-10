@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicModules: Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
+#
+# Declarations
+#
+
 #! @Chapter Modules
 
 #! A &homalg; module is a data structure for a finitely presented module. A presentation is given by

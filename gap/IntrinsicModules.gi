@@ -1,7 +1,8 @@
-#
-# IntrinsicModules: Intrinsic finitely presented modules with generators and elements
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicModules: Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 #
 # Implementations
+#
 
 ##
 InstallMethod( TurnAutoequivalenceIntoIdentityFunctorForHomalg,

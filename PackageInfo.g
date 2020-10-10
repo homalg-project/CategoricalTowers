@@ -1,5 +1,5 @@
-#
-# IntrinsicModules: Intrinsic finitely presented modules with generators and elements
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicModules: Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -9,16 +9,17 @@
 SetPackageInfo( rec(
 
 PackageName := "IntrinsicModules",
-Subtitle := "Intrinsic finitely presented modules with generators and elements",
+Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
 Version := Maximum( [
-                   "2019.03.05", ## Mohamed's version
+                   "2020.10.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03.14", ## Kamals's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -51,18 +52,17 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/IntrinsicModules",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/IntrinsicModules",
+PackageInfoURL  := "https://homalg-project.github.io/IntrinsicModules/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/IntrinsicModules/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/IntrinsicModules/releases/download/v", ~.Version, "/IntrinsicModules-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -84,7 +84,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Intrinsic finitely presented modules with generators and elements",
+  LongTitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 ),
 
 Dependencies := rec(
@@ -111,5 +111,3 @@ TestFile := "tst/testall.g",
 Keywords := [ "module", "finite presentation", "computable ring" ],
 
 ));
-
-

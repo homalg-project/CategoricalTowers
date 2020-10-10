@@ -74,15 +74,15 @@ Source( psi );
 #! @EndExample
 #!  To construct a map between not yet specified free left modules
 #! @Example
-chi := HomalgMap( mat );	## or chi := HomalgMap( mat, "l" );
+chi := HomalgMap( mat ); ## or chi := HomalgMap( mat, "l" );
 #! <A homomorphism of left modules>
 Source( chi );
 #! <A free left module of rank 3 on free generators>
 Range( chi );
 #! <A free left module of rank 4 on free generators>
-#! ]]></Example>
+#! @EndExample
 #! To construct a map between not yet specified free right modules
-#!     <Example><![CDATA[
+#! @Example
 kappa := HomalgMap( mat, "r" );
 #! <A homomorphism of right modules>
 Source( kappa );
