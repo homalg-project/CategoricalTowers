@@ -34,6 +34,12 @@ DeclareOperation( "LeftQuiver",
 DeclareOperation( "LeftQuiver",
         [ IsObject, IsJuliaObject, IsJuliaObject, IsJuliaObject, IsJuliaObject ] );
 
+DeclareOperation( "SetLabelsAsLaTeXStrings",
+        [ IsObject, IsJuliaObject, IsJuliaObject ] );
+
+DeclareOperation( "SetLabelsAsLaTeXStrings",
+        [ IsObject, IsJuliaObject ] );
+
 DeclareOperation( "QuiverRowsObject",
         [ IsJuliaObject, IsQuiverRowsCategory ] );
 
