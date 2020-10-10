@@ -1,8 +1,8 @@
-#############################################################################
-##
-##  read.g                                       IntrinsicCategories package
-##
-##  Copyright 2015-2016,      Mohamed Barakat, University of Siegen
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicCategories: Intrinsic categories for CAP
+#
+# Reading the implementation part of the package.
+#
 ##                            Kamal Saleh, University of Siegen
 ##
 ##  Reading the implementation part of the IntrinsicCategories package.

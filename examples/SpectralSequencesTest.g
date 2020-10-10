@@ -111,12 +111,11 @@ s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic Category
 #!  of left presentations of Q[x,y]>
 Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
-#! 0
+#! (an empty 0 x 1 matrix)
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );
 #! <A morphism in Generalized morphism category of intrinsic Category
 #!  of left presentations of Q[x,y]>
 Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
-#! x*y^3,
 #! x*y,
 #! x^2
 s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );
@@ -162,7 +161,7 @@ s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );
 #! <A morphism in Generalized morphism category of intrinsic Category
 #!  of left presentations of Q[x,y]>
 Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );
-#! -y,x
+#! x,-y
 s := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );
 #! <A morphism in Generalized morphism category of intrinsic Category
 #!  of left presentations of Q[x,y]>
@@ -172,6 +171,6 @@ s := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2
 #! <an intrinsic morphism on active cell: <A morphism in Category
 #!  of left presentations of Q[x,y]>>
 Display( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, s ) ) ) );
-#! x^2,
-#! x*y
+#! x*y,
+#! x^2
 #! @EndExample

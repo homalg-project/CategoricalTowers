@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  IntrinsicCategories.gd                       IntrinsicCategories package
-##
-##  Copyright 2015-2019,               Mohamed Barakat, University of Siegen
-##
-##  Implementation stuff for intrinsic categories.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# IntrinsicCategories: Intrinsic categories for CAP
+#
+# Implementations
+#
 
 ####################################
 #
