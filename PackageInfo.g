@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "GradedCategories",
 Subtitle := "Graded closures of categories",
 Version := Maximum( [
-                   "2020.10.01", ## Mohamed's version
+                   "2020.10.02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.29", ## Fabian's version
                    ] ),
