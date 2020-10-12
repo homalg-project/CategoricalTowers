@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # CategoryConstructor: Construct categories out of given ones
 #
 # This file is a script which compiles the package manual.
