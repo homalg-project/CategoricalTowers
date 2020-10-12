@@ -8,7 +8,7 @@
 InstallOtherMethod( AsObjectInHomCategory,
         [ IsCapCategory, IsJuliaObject, IsJuliaObject ],
         
-  function( B, images_of_objects, images_of_morphisms )
+  function ( B, images_of_objects, images_of_morphisms )
     
     return AsObjectInHomCategory( B, ConvertJuliaToGAP( images_of_objects ), ConvertJuliaToGAP( images_of_morphisms ) );
     

@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FunctorCategories: Categories of functors
 #
 # This file contains package meta data. For additional information on
@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2020.09.02", ## Mohamed's version
+                   "2020.10.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.10.18", ## Florian's version
                    ## this line prevents merge conflicts
