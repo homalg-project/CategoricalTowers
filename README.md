@@ -1,9 +1,12 @@
 <!-- BEGIN HEADER -->
-# CatReps – Representations and cohomology of finite categories
+# CatReps
 
-| **Documentation**         | **Build Status**                                            |
-|:-------------------------:|:-----------------------------------------------------------:|
-| [![][docs-img]][docs-url] | [![][tests-img]][tests-url] [![][codecov-img]][codecov-url] |
+### Representations and cohomology of finite categories
+
+| Documentation | Build Status | Code Coverage |
+| ------------- | ------------ | ------------- |
+| [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
+
 <!-- END HEADER -->
 
 The package `CatReps` provides a constructor for *finite concrete categories* (i.e., finite subcategories of the category of finite sets) by generating morphisms:
@@ -72,11 +75,14 @@ Q
 In March 2020 [Peter Webb](https://www-users.math.umn.edu/~webb/)' and his coauthors made a major new release of the former packages `reps` and `catreps` in which they are combined as one. The code of these former packages is still available at [`groupreps`](https://www-users.math.umn.edu/~webb/GAPfiles/groupreps) ([tutorial](https://www-users.math.umn.edu/~webb/GAPfiles/grouprepstutorial.html)) (the new name for the former reps) and [`catreps`](https://www-users.math.umn.edu/~webb/GAPfiles/catreps) ([tutorial](https://www-users.math.umn.edu/~webb/GAPfiles/catrepstutorial.html)), but it will no longer be supported. The new package [`reps`](https://www-users.math.umn.edu/~webb/GAPfiles/reps) combines the functionality of both former packages.
 
 <!-- BEGIN FOOTER -->
-[docs-img]: https://img.shields.io/badge/docs-stable-blue.svg
+---
+
+
+[docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [docs-url]: https://homalg-project.github.io/CatReps/doc/chap0_mj.html
 
-[tests-img]: https://github.com/homalg-project/CatReps/workflows/Tests/badge.svg
-[tests-url]: https://github.com/homalg-project/CatReps/actions?query=workflow%3ATests
+[tests-img]: https://github.com/homalg-project/CatReps/workflows/Tests/badge.svg?branch=master
+[tests-url]: https://github.com/homalg-project/CatReps/actions?query=workflow%3ATests+branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CatReps/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/CatReps

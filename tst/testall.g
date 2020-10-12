@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # CatReps: Representations and cohomology of finite categories
 #
 # This file runs package tests. It is also referenced in the package
