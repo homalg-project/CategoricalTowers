@@ -1,22 +1,26 @@
 <!-- BEGIN HEADER -->
-# CategoriesWithAmbientObjects – Categories with objects having ambient objects
+# CategoriesWithAmbientObjects
+
+### Categories with objects having ambient objects
 
 | Documentation | Build Status | Code Coverage |
 | ------------- | ------------ | ------------- |
 | [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
+<!-- END HEADER -->
+<!-- BEGIN FOOTER -->
+---
+
 ### Dependencies
 
-To obtain current versions of all dependencies, clone the following repositories:
-|   | Repository | URL |
-| - | ---------- | --- |
+To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
+
+|    | Repository | URL |
+|--- | ---------- | --- |
 | 1. | **homalg_project** | https://github.com/homalg-project/homalg_project |
 | 2. | **CAP_project** | https://github.com/homalg-project/CAP_project |
 
----
 
-<!-- END HEADER -->
-<!-- BEGIN FOOTER -->
 [docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [docs-url]: https://homalg-project.github.io/CategoriesWithAmbientObjects/doc/chap0_mj.html
 
