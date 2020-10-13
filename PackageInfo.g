@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "IntrinsicCategories",
 Subtitle := "Intrinsic categories for CAP",
 Version := Maximum( [
-                   "2020.10.01", ## Mohamed's version
+                   "2020.10.03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10.06", ## Sebas' version
                    ## this line prevents merge conflicts

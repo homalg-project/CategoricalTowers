@@ -1,13 +1,19 @@
 <!-- BEGIN HEADER -->
-# IntrinsicCategories – Intrinsic categories for CAP
+# IntrinsicCategories
+
+### Intrinsic categories for CAP
 
 | Documentation | Build Status | Code Coverage |
 | ------------- | ------------ | ------------- |
 | [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
+<!-- END HEADER -->
+<!-- BEGIN FOOTER -->
+---
+
 ### Dependencies
 
-To obtain current versions of all dependencies, clone the following repositories:
+To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
 
 |    | Repository | URL |
 |--- | ---------- | --- |
@@ -15,10 +21,7 @@ To obtain current versions of all dependencies, clone the following repositories
 | 2. | **CAP_project** | https://github.com/homalg-project/CAP_project |
 | 3. | **CategoryConstructor** | https://github.com/homalg-project/CategoryConstructor |
 
----
 
-<!-- END HEADER -->
-<!-- BEGIN FOOTER -->
 [docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [docs-url]: https://homalg-project.github.io/IntrinsicCategories/doc/chap0_mj.html
 
