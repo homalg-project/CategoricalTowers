@@ -1,13 +1,24 @@
 <!-- BEGIN HEADER -->
-# IntrinsicModules – Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
+# IntrinsicModules
+
+### Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
 
 | Documentation | Build Status | Code Coverage |
 | ------------- | ------------ | ------------- |
 | [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
+<!-- END HEADER -->
+
+### About
+
+This package rewrites the [`homalg`](https://github.com/homalg-project/homalg_project#readme) package [`Modules`](https://github.com/homalg-project/homalg_project/tree/master/Modules#readme) using [`CAP`](https://github.com/homalg-project/CAP_project#readme) .
+
+<!-- BEGIN FOOTER -->
+---
+
 ### Dependencies
 
-To obtain current versions of all dependencies, clone the following repositories:
+To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
 
 |    | Repository | URL |
 |--- | ---------- | --- |
@@ -17,15 +28,7 @@ To obtain current versions of all dependencies, clone the following repositories
 | 4. | **CategoriesWithAmbientObjects** | https://github.com/homalg-project/CategoriesWithAmbientObjects |
 | 5. | **IntrinsicCategories** | https://github.com/homalg-project/IntrinsicCategories |
 
----
 
-<!-- END HEADER -->
-
-### About
-
-This package rewrites the [`homalg`](https://github.com/homalg-project/homalg_project#readme) package [`Modules`](https://github.com/homalg-project/homalg_project/tree/master/Modules#readme) using [`CAP`](https://github.com/homalg-project/CAP_project#readme) .
-
-<!-- BEGIN FOOTER -->
 [docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [docs-url]: https://homalg-project.github.io/IntrinsicModules/doc/chap0_mj.html
 
