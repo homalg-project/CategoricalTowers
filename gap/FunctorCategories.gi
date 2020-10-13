@@ -1513,17 +1513,17 @@ InstallMethodWithCache( Hom,
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
   function ( B, k )
-    local kmat;
+    local kmat, hom;
     
-    DeactivateCachingOfCategory( B );
-    DisableSanityChecks( B );
+    kmat := MatrixCategory( k : overhead := false );
     
-    kmat := MatrixCategory( k );
+    CapCategorySwitchLogicOn( kmat );
     
-    DeactivateCachingOfCategory( kmat );
-    DisableSanityChecks( kmat );
+    hom := Hom( B, kmat : overhead := false );
     
-    return Hom( B, kmat );
+    CapCategorySwitchLogicOn( hom );
+    
+    return hom;
     
 end );
 
