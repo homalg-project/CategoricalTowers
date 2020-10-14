@@ -78,7 +78,7 @@ InstallMethod( UnderlyingMorphism,
         [ IsCapCategoryObjectInALazySliceCategory ],
         
   function( a )
-    local L, biased_weak_fiber_product;
+    local L, morphism_from_biased_weak_fiber_product_to_sink;
     
     L := UnderlyingMorphismList( a );
     
@@ -86,11 +86,11 @@ InstallMethod( UnderlyingMorphism,
         return L[1];
     fi;
     
-    biased_weak_fiber_product := function( I, J )
+    morphism_from_biased_weak_fiber_product_to_sink := function( I, J )
         return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
     end;
     
-    return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), CapCategory( a ) );
+    return AsSliceCategoryCell( Iterated( L, morphism_from_biased_weak_fiber_product_to_sink ), CapCategory( a ) );
     
 end );
     
