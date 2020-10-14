@@ -370,6 +370,13 @@ InstallMethod( LazySliceCategory,
         
     end );
     
+    AddIsTerminal( S,
+      function( M )
+        
+        return IsIsomorphism( UnderlyingMorphism( M ) );
+        
+    end );
+    
     AddUniversalMorphismIntoTerminalObject( S,
       function( M )
         
