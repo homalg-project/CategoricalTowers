@@ -9,7 +9,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
   [
    "AdditionForMorphisms",
    "AdditiveInverseForMorphisms",
-   #Colift cannot be derived from the ambient category
+   # "Colift" cannot be derived from the ambient category
    "ColiftAlongEpimorphism",
    "IdentityMorphism",
    "InverseImmutable",
@@ -22,8 +22,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    "IsLiftable",
    "IsLiftableAlongMonomorphism",
    "IsOne",
-   "IsSplitEpimorphism",
-   #"IsSplitMonomorphism" cannot be derived from the ambient category, a special case of Colift
+   "IsSplitEpimorphism", ## this is a special case of Lift
+   # "IsSplitMonomorphism" cannot be derived from the ambient category, a special case of Colift
    "IsZeroForMorphisms",
    "Lift",
    "LiftAlongMonomorphism",
