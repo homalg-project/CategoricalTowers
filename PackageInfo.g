@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 #
 # This file contains package meta data. For additional information on
@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
 Version := Maximum( [
-                   "2020.07.05", ## Mohamed's version
+                   "2020.09.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.06.02", ## Markus's version
                    ## this line prevents merge conflicts

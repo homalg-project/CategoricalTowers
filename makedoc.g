@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ZariskiFrames: (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 #
 # This file is a script which compiles the package manual.
@@ -12,7 +12,7 @@ fi;
 AutoDoc( rec(
     autodoc := rec(
         files := [ "doc/Doc.autodoc" ],
-        scan_dirs := [ "gap", "examples", "examples/doc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc" ],
     ),
     extract_examples := rec(
         units := "Single",
@@ -29,7 +29,7 @@ AutoDoc( rec(
         ),
     ),
     scaffold := rec(
-        entities := [ "homalg", "CAP" ],
+        entities := [ "homalg", "CAP", "QPA" ],
     ),
 ) );
 
