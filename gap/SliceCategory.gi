@@ -24,7 +24,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    "IsOne",
    "IsSplitEpimorphism", ## this is a special case of Lift
    # "IsSplitMonomorphism" cannot be derived from the ambient category, a special case of Colift
-   "IsZeroForMorphisms",
+   # "IsZeroForMorphisms" does not make sense, since a zero object only becomes an initial object (unless the category is terminal)
+   # "IsZeroForObjects"
    "Lift",
    "LiftAlongMonomorphism",
    "MultiplyWithElementOfCommutativeRingForMorphisms",
