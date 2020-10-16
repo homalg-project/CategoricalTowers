@@ -6,7 +6,7 @@
 @InsertChunk CategoryOfRepresentations
 
 @Subsection One step in the direct sum decomposition
-@InsertChunk DecomposeOnceByRandomEndomorphism
+@InsertChunk DecomposeOnce
 
 @Subsection Another category of module homomorphisms
 @InsertChunk RepresentingC4C4
