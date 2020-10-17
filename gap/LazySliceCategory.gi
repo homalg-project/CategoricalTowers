@@ -384,6 +384,31 @@ InstallMethod( LazySliceCategory,
         
     end );
     
+    if CanCompute( C, "IsSplitEpimorphism" ) then
+        
+        AddIsWeakTerminal( S,
+          function( M )
+            local mor;
+            
+            mor := UnderlyingMorphismList( M );
+            
+            return ForAll( mor, IsSplitEpimorphism );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "ZeroObject" ) and CanCompute( C, "IsZeroForMorphisms" ) then
+        
+        AddIsWeakInitial( S,
+          function( M )
+            
+            return IsZeroForMorphisms( UnderlyingMorphism( M ) );
+            
+        end );
+        
+    fi;
+    
     AddIsHomSetInhabited( S,
       function( A, B )
         
