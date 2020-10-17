@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SubcategoriesForCAP: Subcategory and other related constructors for CAP categories
+#
+# Declarations
+#
+
 #! @Chapter Slice categories (lazy data structure)
 
 ####################################
