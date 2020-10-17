@@ -64,9 +64,9 @@ gap> CommutativeRingOfLinearCategory( CatReps );
 Q
 ```
 
-### Software dependency
+### `FunctorCategories`
 
-`CatReps` heavily relies on the package [`FunctorCategories`](https://github.com/homalg-project/FunctorCategories), which itself depends on [various other packages](https://github.com/homalg-project/CatReps/blob/master/.github/workflows/Tests.yml#L25), all of which can be cloned from the [homalg project repositories page](https://github.com/homalg-project).
+`CatReps` heavily relies on the package [`FunctorCategories`](https://github.com/homalg-project/FunctorCategories), which itself depends on [various other packages](https://github.com/homalg-project/CatReps/blob/master/.github/workflows/Tests.yml#L25).
 
 ### History of this package
 
@@ -75,6 +75,25 @@ Q
 In March 2020 [Peter Webb](https://www-users.math.umn.edu/~webb/)' and his coauthors made a major new release of the former packages `reps` and `catreps` in which they are combined as one. The code of these former packages is still available at [`groupreps`](https://www-users.math.umn.edu/~webb/GAPfiles/groupreps) ([tutorial](https://www-users.math.umn.edu/~webb/GAPfiles/grouprepstutorial.html)) (the new name for the former reps) and [`catreps`](https://www-users.math.umn.edu/~webb/GAPfiles/catreps) ([tutorial](https://www-users.math.umn.edu/~webb/GAPfiles/catrepstutorial.html)), but it will no longer be supported. The new package [`reps`](https://www-users.math.umn.edu/~webb/GAPfiles/reps) combines the functionality of both former packages.
 
 <!-- BEGIN FOOTER -->
+---
+
+### Dependencies
+
+To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
+
+|    | Repository | URL |
+|--- | ---------- | --- |
+| 1. | **homalg_project** | https://github.com/homalg-project/homalg_project |
+| 2. | **CAP_project** | https://github.com/homalg-project/CAP_project |
+| 3. | **CategoryConstructor** | https://github.com/homalg-project/CategoryConstructor |
+| 4. | **HigherHomologicalAlgebra** | https://github.com/homalg-project/HigherHomologicalAlgebra |
+| 5. | **QPA2** | https://github.com/homalg-project/QPA2 |
+| 6. | **Algebroids** | https://github.com/homalg-project/Algebroids |
+| 7. | **Toposes** | https://github.com/homalg-project/Toposes |
+| 8. | **FinSetsForCAP** | https://github.com/homalg-project/FinSetsForCAP |
+| 9. | **FunctorCategories** | https://github.com/homalg-project/FunctorCategories |
+| 10. | **SubcategoriesForCAP** | https://github.com/homalg-project/SubcategoriesForCAP |
+
 [html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/CatReps/doc/chap0_mj.html
 
