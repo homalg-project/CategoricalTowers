@@ -89,9 +89,9 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 | 4. | **HigherHomologicalAlgebra** | https://github.com/homalg-project/HigherHomologicalAlgebra |
 | 5. | **QPA2** | https://github.com/homalg-project/QPA2 |
 | 6. | **Algebroids** | https://github.com/homalg-project/Algebroids |
-| 7. | **Toposes** | https://github.com/homalg-project/Toposes |
-| 8. | **FinSetsForCAP** | https://github.com/homalg-project/FinSetsForCAP |
-| 9. | **FunctorCategories** | https://github.com/homalg-project/FunctorCategories |
+| 7. | **FunctorCategories** | https://github.com/homalg-project/FunctorCategories |
+| 8. | **Toposes** | https://github.com/homalg-project/Toposes |
+| 9. | **FinSetsForCAP** | https://github.com/homalg-project/FinSetsForCAP |
 | 10. | **SubcategoriesForCAP** | https://github.com/homalg-project/SubcategoriesForCAP |
 
 [html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
