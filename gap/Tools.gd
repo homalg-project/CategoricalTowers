@@ -12,6 +12,74 @@ DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 
 ###################################
 ##
+#! @Section IsWeakTerminal
+##
+###################################
+
+#! @Description
+#! The argument is an object $a$ of a category $\mathbf{C}$.
+#! The output is <C>true</C> if $a$ is weak terminal $\mathbf{C}$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsWeakTerminal",
+                 IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>IsWeakTerminal</C>.
+#! $F: a \mapsto \mathtt{IsWeakTerminal}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsWeakTerminal",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWeakTerminal",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsWeakTerminal",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsWeakTerminal",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
+#! @Section IsWeakInitial
+##
+###################################
+
+#! @Description
+#! The argument is an object $a$ of a category $\mathbf{C}$.
+#! The output is <C>true</C> if $a$ is weak initial in $\mathbf{C}$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsWeakInitial",
+                 IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>IsWeakInitial</C>.
+#! $F: a \mapsto \mathtt{IsWeakInitial}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsWeakInitial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsWeakInitial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsWeakInitial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsWeakInitial",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
 #! @Section EmbeddingOfSumOfImagesOfAllMorphisms
 ##
 ###################################

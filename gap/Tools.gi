@@ -6,6 +6,20 @@
 
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD,
         rec(
+            IsWeakTerminal := rec(
+                                     installation_name := "IsWeakTerminal",
+                                     filter_list := [ "object" ],
+                                     well_defined_todo := false,
+                                     return_type := "bool",
+                                     dual_operation := "IsWeakInitial",
+                                     property_of := "object" ),
+            IsWeakInitial := rec(
+                                     installation_name := "IsWeakInitial",
+                                     filter_list := [ "object" ],
+                                     well_defined_todo := false,
+                                     return_type := "bool",
+                                     dual_operation := "IsWeakTerminal",
+                                     property_of := "object" ),
             MorphismOntoSumOfImagesOfAllMorphisms := rec(
                                      installation_name := "MorphismOntoSumOfImagesOfAllMorphisms",
                                      filter_list := [ "object", "object" ],
