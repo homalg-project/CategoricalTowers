@@ -3,9 +3,9 @@
 
 ### Representations and cohomology of finite categories
 
-| Documentation | Build Status | Code Coverage |
-| ------------- | ------------ | ------------- |
-| [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
+| Documentation | Latest Release | Build Status | Code Coverage |
+| ------------- | -------------- | ------------ | ------------- |
+| [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
 <!-- END HEADER -->
 
@@ -75,11 +75,17 @@ Q
 In March 2020 [Peter Webb](https://www-users.math.umn.edu/~webb/)' and his coauthors made a major new release of the former packages `reps` and `catreps` in which they are combined as one. The code of these former packages is still available at [`groupreps`](https://www-users.math.umn.edu/~webb/GAPfiles/groupreps) ([tutorial](https://www-users.math.umn.edu/~webb/GAPfiles/grouprepstutorial.html)) (the new name for the former reps) and [`catreps`](https://www-users.math.umn.edu/~webb/GAPfiles/catreps) ([tutorial](https://www-users.math.umn.edu/~webb/GAPfiles/catrepstutorial.html)), but it will no longer be supported. The new package [`reps`](https://www-users.math.umn.edu/~webb/GAPfiles/reps) combines the functionality of both former packages.
 
 <!-- BEGIN FOOTER -->
----
+[html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-url]: https://homalg-project.github.io/CatReps/doc/chap0_mj.html
 
+[pdf-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-url]: https://homalg-project.github.io/CatReps/download_pdf.html
 
-[docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-url]: https://homalg-project.github.io/CatReps/doc/chap0_mj.html
+[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CatReps/badge_version.json
+[version-url]: https://homalg-project.github.io/CatReps/view_release.html
+
+[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CatReps/badge_date.json
+[date-url]: https://homalg-project.github.io/CatReps/view_release.html
 
 [tests-img]: https://github.com/homalg-project/CatReps/workflows/Tests/badge.svg?branch=master
 [tests-url]: https://github.com/homalg-project/CatReps/actions?query=workflow%3ATests+branch%3Amaster
