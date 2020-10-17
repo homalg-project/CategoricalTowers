@@ -278,13 +278,11 @@ InstallMethod( ZariskiCoframeOfProjUsingCategoryOfRows,
     ##
     AddIsInitial( ZariskiCoframe,
       function( A )
-        local mor, one;
+        local mor;
         
         mor := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
         
-        one := StandardMorphismOfUnderlyingCategory( InitialObject( A ) );
-        
-        return ForAll( mor, m -> IsLiftable( one, m ) );
+        return ForAll( mor, IsSplitEpimorphism );
         
     end );
     
