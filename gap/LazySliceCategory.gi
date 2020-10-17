@@ -470,7 +470,7 @@ InstallMethod( LazySliceCategory,
         end );
         
     fi;
-
+    
     if IsIdenticalObj( over_tensor_unit, true ) then
         
         SetIsMonoidalCategory( S, true );
