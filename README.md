@@ -23,9 +23,6 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 | 3. | **Toposes** | https://github.com/homalg-project/Toposes |
 | 4. | **CategoryConstructor** | https://github.com/homalg-project/CategoryConstructor |
 | 5. | **Locales** | https://github.com/homalg-project/Locales |
-| 6. | **FinSetsForCAP** | https://github.com/homalg-project/FinSetsForCAP |
-| 7. | **QPA2** | https://github.com/homalg-project/QPA2 |
-| 8. | **HigherHomologicalAlgebra** | https://github.com/homalg-project/HigherHomologicalAlgebra |
 
 [html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/ZariskiFrames/doc/chap0_mj.html

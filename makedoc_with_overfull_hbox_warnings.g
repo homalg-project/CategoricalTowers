@@ -40,7 +40,7 @@ AutoDoc( rec(
         ),
     ),
     scaffold := rec(
-        entities := [ "homalg", "CAP", "QPA" ],
+        entities := [ "homalg", "CAP" ],
     ),
 ) );
 
