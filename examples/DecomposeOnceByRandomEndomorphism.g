@@ -22,7 +22,7 @@ DecomposeOnceByRandomEndomorphism( nine );
 #! fail
 #! @EndExample
 
-#! The above shows that our representation <C>nine</C> is 
+#! The above shows that our representation <C>nine</C> is
 #! indecomposable (with a high probability).
 #! We use the tensor product to generate another representation
 #! <C>fortyone</C>, that is hopefully decomposable, and
