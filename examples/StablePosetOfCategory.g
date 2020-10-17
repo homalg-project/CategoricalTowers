@@ -3,7 +3,7 @@
 LoadPackage( "Locales" );
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2020.05.18" );
+LoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q

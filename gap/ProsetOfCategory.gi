@@ -513,6 +513,28 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     P!.AmbientCategory := C;
     
+    if CanCompute( C, "IsWeakTerminal" ) then
+        
+        AddIsTerminal( P,
+          function( S )
+            
+            return IsWeakTerminal( UnderlyingCell( S ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "IsWeakInitial" ) then
+        
+        AddIsInitial( P,
+          function( S )
+            
+            return IsWeakInitial( UnderlyingCell( S ) );
+            
+        end );
+        
+    fi;
+    
     if IsIdenticalObj( stable, true ) then
         if CanCompute( C, "InternalHomOnObjects" ) then
             
