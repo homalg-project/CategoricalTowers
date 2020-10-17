@@ -19,7 +19,7 @@ Version := Maximum( [
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -81,7 +81,7 @@ README_URL      := "https://homalg-project.github.io/ZariskiFrames/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/ZariskiFrames/releases/download/v", ~.Version, "/ZariskiFrames-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages

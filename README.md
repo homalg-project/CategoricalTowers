@@ -3,9 +3,9 @@
 
 ### (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 
-| Documentation | Build Status | Code Coverage |
-| ------------- | ------------ | ------------- |
-| [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
+| Documentation | Latest Release | Build Status | Code Coverage |
+| ------------- | -------------- | ------------ | ------------- |
+| [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
 <!-- END HEADER -->
 
@@ -27,9 +27,17 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 | 7. | **QPA2** | https://github.com/homalg-project/QPA2 |
 | 8. | **HigherHomologicalAlgebra** | https://github.com/homalg-project/HigherHomologicalAlgebra |
 
+[html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-url]: https://homalg-project.github.io/ZariskiFrames/doc/chap0_mj.html
 
-[docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-url]: https://homalg-project.github.io/ZariskiFrames/doc/chap0_mj.html
+[pdf-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-url]: https://homalg-project.github.io/ZariskiFrames/download_pdf.html
+
+[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/ZariskiFrames/badge_version.json
+[version-url]: https://homalg-project.github.io/ZariskiFrames/view_release.html
+
+[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/ZariskiFrames/badge_date.json
+[date-url]: https://homalg-project.github.io/ZariskiFrames/view_release.html
 
 [tests-img]: https://github.com/homalg-project/ZariskiFrames/workflows/Tests/badge.svg?branch=master
 [tests-url]: https://github.com/homalg-project/ZariskiFrames/actions?query=workflow%3ATests+branch%3Amaster
