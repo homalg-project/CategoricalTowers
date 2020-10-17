@@ -34,6 +34,7 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
+          git clone --depth 1 https://github.com/homalg-project/Locales.git
           git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
           git clone --depth 1 https://github.com/homalg-project/HigherHomologicalAlgebra.git
           git clone --depth 1 https://github.com/homalg-project/QPA2.git

@@ -1,13 +1,13 @@
 #! @Chunk IteratedInternalHom
 
-LoadPackage( "Locales" );
+LoadPackage( "SubcategoriesForCAP" );
 
 #! Iteratively applying $\underline{Hom}(J,-)$ to the universal morphism $\iota: I \to T$,
 #! where $T$ is the terminal object of the slice category, might never become an isomorphism.
 #! However, in this example it does.
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
+LoadPackage( "Locales" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
