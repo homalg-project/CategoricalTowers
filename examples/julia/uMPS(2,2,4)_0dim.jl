@@ -1,5 +1,5 @@
 
-using HomalgProject
+using CapAndHomalgt
 
 LoadPackage( "ZariskiFrames" )
 
