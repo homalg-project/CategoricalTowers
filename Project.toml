@@ -1,5 +1,5 @@
 [deps]
-HomalgProject = "50bd374c-87b5-11e9-015a-2febe71398bd"
+CapAndHomalg = "c4774649-1891-41ea-a883-87141804c57c"
 IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
 
 [compat]
