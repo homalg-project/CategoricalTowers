@@ -136,6 +136,7 @@ README_URL=
 PUSH=yes
 FORCE=no
 ONLY_TARBALL=no
+SKIP_EXISTING_RELEASE=no
 while [ x"$1" != x ]; do
   option="$1" ; shift
   case "$option" in
@@ -160,6 +161,8 @@ while [ x"$1" != x ]; do
     --no-force ) FORCE=no ;;
 
     --only-tarball ) ONLY_TARBALL=yes ;;
+
+    --skip-existing-release ) SKIP_EXISTING_RELEASE=yes ;;
 
     -- ) break ;;
     * ) error "unknown option '$option'" ;;
@@ -241,6 +244,7 @@ else
     tmp := GAPInfo.PackageInfoCurrent.ArchiveURL;
     Print("GAP_ERROR=\"The ArchiveURL has unexpected value '",tmp,"'\"\n");
 fi;
+Print("PDFFile=\"",GAPInfo.PackageInfoCurrent.PackageDoc.PDFFile,"\"\n");
 EOF
 
 # evaluate the output of GAP, which should be valid shell script code
@@ -330,7 +334,7 @@ UPLOAD_URL=https://uploads.github.com/repos/$REPO/releases
 
 ######################################################################
 #
-# Determine the tag, and validate it
+# Determine the tag
 #
 verify_git_clean
 
@@ -341,12 +345,43 @@ else
     git tag "$TAG"
 fi;
 
+######################################################################
+#
+# Check if a GitHub release for this tag already exists
+#
+response=$(curl -s -S -X GET "$API_URL/tags/$TAG" -H "Authorization: token $TOKEN")
+MESSAGE=$(json_get_key message)
+RELEASE_ID=$(json_get_key id)
+
+if [ "$MESSAGE" = "Not Found" ] ; then
+    MESSAGE=  # release does not yet exist -> that's how we like it
+elif [ x"$RELEASE_ID" != x ] ; then
+    # release already exists -> skip, error out or delete it
+    if [ "x$SKIP_EXISTING_RELEASE" = xyes ] ; then
+        notice "release $TAG already exists on GitHub, skipping release"
+        exit 0
+    elif [ "x$FORCE" = xyes ] ; then
+        notice "Deleting existing release $TAG from GitHub"
+        response=$(curl --fail -s -S -X DELETE "$API_URL/$RELEASE_ID" -H "Authorization: token $TOKEN")
+        MESSAGE=
+    else
+        error "release $TAG already exists on GitHub, aborting (use --force to override this)"
+    fi
+fi
+
+if [ x"$MESSAGE" != x ] ; then
+    error "accessing GitHub failed: $MESSAGE"
+fi
+
+######################################################################
+#
+# Validate the tag
+#
 HEAD_REF=$(git rev-parse --verify HEAD)
 TAG_REF=$(git rev-parse --verify "$TAG^{}")
 
 if [ "x$TAG_REF" != "x$HEAD_REF" ] ; then
-    notice "tag $TAG is not the HEAD commit -- skipping release of package $PKG"
-    exit 0
+    error "tag $TAG is not the HEAD commit -- did you tag the right commit?"
 fi
 
 
@@ -372,6 +407,13 @@ git archive --prefix="$BASENAME/" "$TAG" . | tar xf - -C "$TMP_DIR"
 
 # Build the package documentation, run autoconf, etc.
 cd "$TMP_DIR/$BASENAME"
+
+# adjust date
+# Note that we cannot use sed's `-i` option for in-place editing, as
+# that is a non-portable extension of POSIX, which works differently in
+# BSD and GNU make.
+sed "s;Date := .*;Date := \"$(date +%d/%m/%Y)\",;" PackageInfo.g > PackageInfo.g.bak
+mv PackageInfo.g.bak PackageInfo.g
 
 notice "Removing unnecessary files"
 rm -rf .github .circleci
@@ -416,6 +458,20 @@ fi
 
 # make sure every file is readable
 chmod -R a+r .
+
+# adjust links to other manuals
+# Note that we cannot use sed's `-i` option for in-place editing, as
+# that is a non-portable extension of POSIX, which works differently in
+# BSD and GNU make.
+for f in ./*/*.htm* ; do
+  sed 's;href="/home/gap/.gap/pkg/homalg_project/Modules/doc/;href="https://homalg-project.github.io/homalg_project/Modules/doc/;g' "$f" > "$f.bak"
+  mv "$f.bak" "$f"
+done
+
+for f in ./*/*.htm* ; do
+  sed 's;href="/home/gap/.gap/pkg/homalg_project/homalg/doc/;href="https://homalg-project.github.io/homalg_project/homalg/doc/;g' "$f" > "$f.bak"
+  mv "$f.bak" "$f"
+done
 
 # basic sanity check
 fgrep -q -r '<a href="/' */*.htm* &&
@@ -505,28 +561,6 @@ fi
 # Create the GitHub release
 #
 
-# check if release already exists
-response=$(curl -s -S -X GET "$API_URL/tags/$TAG" -H "Authorization: token $TOKEN")
-MESSAGE=$(json_get_key message)
-RELEASE_ID=$(json_get_key id)
-
-if [ "$MESSAGE" = "Not Found" ] ; then
-    MESSAGE=  # release does not yet exist -> that's how we like it
-elif [ x"$RELEASE_ID" != x ] ; then
-    # release already exists -> error out or delete it
-    if [ "x$FORCE" = xyes ] ; then
-        notice "Deleting existing release $TAG from GitHub"
-        response=$(curl --fail -s -S -X DELETE "$API_URL/$RELEASE_ID" -H "Authorization: token $TOKEN")
-        MESSAGE=
-    else
-        error "release $TAG already exists on GitHub, aborting (use --force to override this)"
-    fi
-fi
-
-if [ x"$MESSAGE" != x ] ; then
-    error "accessing GitHub failed: $MESSAGE"
-fi
-
 # Create the release by sending suitable JSON
 DATA=$(cat <<EOF
 {
@@ -583,6 +617,26 @@ done
 
 ######################################################################
 #
+# Upload PDF
+#
+cd "$TMP_DIR"
+echo ""
+
+FULLNAME="$TMP_DIR/$BASENAME/$PDFFile"
+if [ ! -f "$FULLNAME" ] ; then
+	error "could not find PDF"
+fi
+notice "Uploading PDF"
+response=$(curl --fail --progress-bar -o "$TMP_DIR/upload.log" \
+	-X POST "$UPLOAD_URL/$RELEASE_ID/assets?name=$BASENAME.pdf" \
+	-H "Accept: application/vnd.github.v3+json" \
+	-H "Authorization: token $TOKEN" \
+	-H "Content-Type: application/pdf" \
+	--data-binary @"$FULLNAME")
+
+
+######################################################################
+#
 # Update the website
 #
 notice "Updating website"
@@ -615,7 +669,7 @@ run_gap <<GAPInput
 Read("$UPDATE_FILE");
 GAPInput
 
-git add -A .
+git add -A
 git commit -m "Update website for $PKG $VERSION"
 
 if [ "x$PUSH" = xyes ] ; then
