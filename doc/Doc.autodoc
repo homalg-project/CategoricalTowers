@@ -26,6 +26,7 @@
 @InsertChunk PosetOfCategory
 
 @Subsection Stable poset of category
+@InsertChunk NilRadical
 @InsertChunk StablePosetOfCategory
 
 @Chapter Boolean algebras
