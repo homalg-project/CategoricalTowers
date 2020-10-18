@@ -1,5 +1,5 @@
 
-using HomalgProject
+using CapAndHomalg
 
 LoadPackage( "FreydCategoriesForCAP" )
 
