@@ -9,16 +9,16 @@ Q := HomalgFieldOfRationalsInSingular( );
 #! Q
 R := Q["x,y"];
 #! Q[x,y]
-P := CategoryOfRows( R );
+F := CategoryOfRows( R );
 #! Rows( Q[x,y] )
-S := SliceCategoryOverTensorUnit( P );
+S := SliceCategoryOverTensorUnit( F );
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
-L := PosetOfCategory( S );
+P := PosetOfCategory( S );
 #! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
-I := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S / L;
+I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P;
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
-J := HomalgMatrix( "[ x, y ]", 2, 1, R ) / P / S / L;
+J := HomalgMatrix( "[ x, y ]", 2, 1, R ) / F / S / P;
 #! An object in the poset given by: An object in the slice category given by:
 #! <A morphism in Rows( Q[x,y] )>
 IJ := TensorProduct( I, J );
