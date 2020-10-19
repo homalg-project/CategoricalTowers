@@ -92,6 +92,14 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
+    AddIsMonomorphism( preordered_set,
+      ReturnTrue );
+    
+    ##
+    AddIsEpimorphism( preordered_set,
+      ReturnTrue );
+    
+    ##
     AddLiftAlongMonomorphism( preordered_set,
       function( u1, u2 )
         
@@ -183,6 +191,18 @@ AddDerivationToCAP( IsEqualForMorphisms,
            IsEqualForObjects( Range( u1 ), Range( u2 ) );
         
 end : Description := "IsEqualForMorphisms using IsEqualForObjects applied to sources and ranges",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsMonomorphism,
+        
+  ReturnTrue : Description := "IsMonomorphism is always true",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsEpimorphism,
+        
+  ReturnTrue : Description := "IsEpimorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
