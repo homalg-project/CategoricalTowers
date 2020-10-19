@@ -194,18 +194,6 @@ end : Description := "IsEqualForMorphisms using IsEqualForObjects applied to sou
       CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( IsMonomorphism,
-        
-  ReturnTrue : Description := "IsMonomorphism is always true",
-      CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( IsEpimorphism,
-        
-  ReturnTrue : Description := "IsEpimorphism is always true",
-      CategoryFilter := IsThinCategory );
-
-##
 AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
         [ [ IsHomSetInhabited, 1 ] ],
         
@@ -320,6 +308,18 @@ AddDerivationToCAP( Colift,
         
   ColiftAlongEpimorphism :
       Description := "Colift using ColiftAlongEpimorphism",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsMonomorphism,
+        
+  ReturnTrue : Description := "IsMonomorphism is always true",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsEpimorphism,
+        
+  ReturnTrue : Description := "IsEpimorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
