@@ -100,6 +100,10 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
       ReturnTrue );
     
     ##
+    AddIsOne( preordered_set,
+      IsAutomorphism );
+    
+    ##
     AddLiftAlongMonomorphism( preordered_set,
       function( u1, u2 )
         
@@ -331,6 +335,13 @@ AddDerivationToCAP( IsIsomorphism,
     return IsHomSetInhabited( Range( u ), Source( u ) );
     
 end : Description := "IsIsomorphism using IsHomSetInhabited",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsOne,
+        [ [ IsAutomorphism, 1 ] ],
+        
+  IsAutomorphism : Description := "IsOne using IsAutomorphism",
       CategoryFilter := IsThinCategory );
 
 ##

@@ -56,7 +56,7 @@ iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), IJ );
 #!  SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )>
 IsWellDefined( iota );
 #! true
-IsIsomorphism( iota );
+IsOne( iota );
 #! true
 IJJ := TensorProduct( IJ, J );
 #! An object in the stable poset given by:
