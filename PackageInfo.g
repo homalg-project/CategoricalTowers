@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2020.10.02", ## Mohamed's version
+                   "2020.10-03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.10.18", ## Florian's version
                    ## this line prevents merge conflicts
@@ -21,7 +21,7 @@ Version := Maximum( [
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -53,7 +53,7 @@ README_URL      := "https://homalg-project.github.io/FunctorCategories/README.md
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/FunctorCategories/releases/download/v", ~.Version, "/FunctorCategories-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages

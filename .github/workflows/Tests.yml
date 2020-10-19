@@ -33,9 +33,9 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
-          git clone --depth 1 https://github.com/homalg-project/Algebroids.git
           git clone --depth 1 https://github.com/homalg-project/HigherHomologicalAlgebra.git
           git clone --depth 1 https://github.com/homalg-project/QPA2.git
+          git clone --depth 1 https://github.com/homalg-project/Algebroids.git
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
           git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP.git
@@ -53,7 +53,7 @@ jobs:
           if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
-            ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
+            LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
           else \
             echo "Not making a release."; \
           fi
