@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
-                   "2020.10.01", ## Mohamed's version
+                   "2020.10-02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
