@@ -11,7 +11,7 @@
 
 ### About
 
-This package is used by [InternalModules](https://github.com/homalg-project/InternalModules) to construct graded closures of tensor categories in which to internalize graded algebras like the symmetric algebra.
+This package is used by [InternalModules](https://github.com/homalg-project/InternalModules#readme) to construct graded closures of tensor categories in which to internalize graded algebras like the symmetric algebra.
 
 <!-- BEGIN FOOTER -->
 ---
