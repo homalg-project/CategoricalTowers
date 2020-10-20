@@ -9,7 +9,11 @@
 
 <!-- END HEADER -->
 
-* [SymmetricAlgebraInternalToS4rep](https://nbviewer.jupyter.org/github/homalg-project/InternalModules/blob/master/examples/julia/notebooks/SymmetricAlgebraInternalToS4rep.ipynb): Computations over an internalized symmetric algebra.
+### About
+
+This package allows to internalize classes of algebras and their modules in a (constructive) braided monoidal category. For this, the algebra should admit a categorical description (like the symmetric or the exterior algebra).
+
+[This Jupyter notebook](https://nbviewer.jupyter.org/github/homalg-project/InternalModules/blob/master/examples/julia/notebooks/SymmetricAlgebraInternalToS4rep.ipynb) shows an example of explicit computations in the symmetric algebra S*W* internal to the so-called positively graded closure srep<sub>*k*</sub>(*G*)<sub>+</sub> of the tensor category srep<sub>*k*</sub>(*G*) of finite dimensional *k*-linear representations of *G*, where *G*=S<sub>4</sub> is the symmetric group on four points and *k*=ℚ, its minimal splitting field.
 
 <!-- BEGIN FOOTER -->
 ---
