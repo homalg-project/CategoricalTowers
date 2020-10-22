@@ -38,7 +38,7 @@ A := Algebroid( Q, c3c3c3 );
 kq := UnderlyingQuiverAlgebra( A );
 #! (Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(e*e*e) - 1*(3), \
 #! -1*(b*c) + 1*(a*b), -1*(b*d) + 1*(f), -1*(f*e) + 1*(a*f), -1*(d*e) + 1*(c*d) ]
-unit := kq.1+kq.2+kq.3;
+unit := kq.1 + kq.2 + kq.3;
 #! { 1*(3) + 1*(2) + 1*(1) }
 unit * kq.a = kq.a;
 #! true
