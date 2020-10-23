@@ -16,11 +16,11 @@
 
 To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
 
-|    | Repository | URL |
-|--- | ---------- | --- |
-| 1. | **homalg_project** | https://github.com/homalg-project/homalg_project |
-| 2. | **CAP_project** | https://github.com/homalg-project/CAP_project |
-| 3. | **CategoryConstructor** | https://github.com/homalg-project/CategoryConstructor |
+|    | Repository | git URL |
+|--- | ---------- | ------- |
+| 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
+| 2. | [**CAP_project**](https://github.com/homalg-project/CAP_project#readme) | https://github.com/homalg-project/CAP_project.git |
+| 3. | [**CategoryConstructor**](https://github.com/homalg-project/CategoryConstructor#readme) | https://github.com/homalg-project/CategoryConstructor.git |
 
 [html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/LazyCategories/doc/chap0_mj.html
