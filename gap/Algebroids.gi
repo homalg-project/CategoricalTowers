@@ -985,7 +985,7 @@ InstallMethod( Algebroid,
     
     for path in L do
         if not IsUniform( path ) then
-            Error( "only uniform relations are admissible, while the path ", path, " is not uniform\n" );
+            Error( "only uniform relations are admissible, while the path algebra element ", path, " is not uniform\n" );
         fi;
     od;
     
@@ -1168,7 +1168,7 @@ InstallMethod( MorphismInAlgebroid,
     if not IsZero( path ) then
         
         if not IsUniform( path ) then
-            Error( "the path ", path, " is neither zero nor uniform\n" );
+            Error( "the quiver algebra element ", path, " is neither zero nor uniform\n" );
         fi;
         
         ## TODO: we are avoiding for the moment the sanity test for
@@ -1178,11 +1178,11 @@ InstallMethod( MorphismInAlgebroid,
             l := LeadingPath( path );
         
             if not ( Source( l ) = UnderlyingVertex( S ) ) and not ( Target( l ) = UnderlyingVertex( T ) ) then
-                Error( "the path ", path, " is not zero, it does not match the given source S and it does not match the given target T\n" );
+                Error( "the path algebra element ", path, " is not zero, it does not match the given source S and it does not match the given target T\n" );
             elif not ( Source( l ) = UnderlyingVertex( S ) ) then
-                Error( "the path ", path, " is not zero and it does not match the given source S\n" );
+                Error( "the path algebra element ", path, " is not zero and it does not match the given source S\n" );
             elif not ( Target( l ) = UnderlyingVertex( T ) ) then
-                Error( "the path ", path, " is not zero and it does not match the given target T\n" );
+                Error( "the path algebra element ", path, " is not zero and it does not match the given target T\n" );
             fi;
         fi;
         
@@ -1218,7 +1218,7 @@ InstallMethod( MorphismInAlgebroid,
     if IsZero( path ) then
         Error( "source and target of the zero path is ambiguous\n" );
     elif not IsUniform( path ) then
-        Error( "the path ", path, " is not uniform\n" );
+        Error( "the path algebra element ", path, " is not uniform\n" );
     fi;
     
     l := LeadingPath( path );
@@ -1251,7 +1251,7 @@ InstallMethod( MorphismInAlgebroid,
     if IsZero( path ) then
         Error( "source and target of the zero path is ambiguous\n" );
     elif not IsUniform( path ) then
-        Error( "the path ", path, " is not uniform\n" );
+        Error( "the quiver algebra element ", path, " is not uniform\n" );
     fi;
     
     l := LeadingPath( Representative( path ) );
