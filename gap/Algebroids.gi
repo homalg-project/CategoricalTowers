@@ -4,6 +4,14 @@
 # Implementations
 #
 
+SetInfoLevel( InfoAlgebroids, 1 );
+
+InstallValue( ALGEBRIODS,
+        rec(
+            ring := HomalgFieldOfRationals( ),
+           )
+);
+
 ####################################
 #
 # representations:
