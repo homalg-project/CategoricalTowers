@@ -7,6 +7,10 @@ LoadPackage( "Algebroids" );
 #! @Example
 q := RightQuiver( "q(o)[m:o->o]" );
 #! q(o)[m:o->o]
+o := q.o;
+#! (o)
+m := q.m;
+#! (m)
 #! @EndExample
 
 #! Create a monoid from $q$.
@@ -26,16 +30,16 @@ SetOfGeneratingMorphisms( N );
 #! [ (o)-[(m)]->(o) ]
 SetOfGeneratingMorphisms( N, N.o, N.o );
 #! [ (o)-[(m)]->(o) ]
-ObjectInFpCategory( N, q.o ) = N.o;
+ObjectInFpCategory( N, o ) = N.o;
 #! true
-N.o = q.o / N;
-#! true
-MorphismInFpCategory( N, q.m ) = N.m;
-#! true
-N.m = q.m / N;
+N.o = o / N;
 #! true
 IdentityMorphism( N.o );
 #! (o)-[(o)]->(o)
+MorphismInFpCategory( N, m ) = N.m;
+#! true
+N.m = m / N;
+#! true
 #! @EndExample
 
 #! We can compute in the algebroids.
