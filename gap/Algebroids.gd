@@ -295,6 +295,9 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID" );
 
+DeclareOperation( "Algebroid",
+        [ IsQuiverAlgebra, IsBool ] );
+
 #! @Description
 #!  Construct the algebroid associated to the path $R$-algebra <A>Rq</A>
 #!  of the quiver $q$ modulo the relations <A>L</A> as an $R$-linear category.
@@ -303,6 +306,16 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID" );
 #! @Group Algebroid
 DeclareAttribute( "Algebroid",
         IsQuiverAlgebra );
+
+#! @Arguments Rq, L
+#! @Group Algebroid
+DeclareOperation( "Algebroid",
+        [ IsPathAlgebra, IsList ] );
+
+#! @Arguments R, q
+#! @Group Algebroid
+DeclareOperation( "Algebroid",
+        [ IsHomalgRing, IsQuiver ] );
 
 #! @Description
 #! The argument is an algebroid $A$ with left acting domain given by the field of rationals $\mathbb{Q}$,
@@ -322,20 +335,6 @@ DeclareAttribute( "Algebroid",
 #! @Returns a &CAP; category
 DeclareAttribute( "DescentToZDefinedByBasisPaths",
         IsAlgebroid );
-
-#!
-DeclareOperation( "Algebroid",
-        [ IsQuiverAlgebra, IsBool ] );
-
-#! @Arguments Rq, L
-#! @Group Algebroid
-DeclareOperation( "Algebroid",
-        [ IsPathAlgebra, IsList ] );
-
-#! @Arguments R, q
-#! @Group Algebroid
-DeclareOperation( "Algebroid",
-        [ IsHomalgRing, IsQuiver ] );
 
 #! @Description
 #!  Construct a functor with source the finitely presented algebroid <A>A</A> and target <A>B</A> using

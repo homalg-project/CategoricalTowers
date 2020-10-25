@@ -855,22 +855,6 @@ end );
 
 ##
 InstallMethod( Algebroid,
-        "for a QPA quiver algebra",
-        [ IsQuiverAlgebra ],
-    function( A )
-        return Algebroid( A, false );
-end );
-
-##
-InstallMethod( DescentToZDefinedByBasisPaths,
-        "for an algebroid",
-        [ IsAlgebroid ],
-    function( A )
-        return Algebroid( UnderlyingQuiverAlgebra( A ), true );
-end );
-
-##
-InstallMethod( Algebroid,
         "for a QPA quiver algebra and a boolean",
         [ IsQuiverAlgebra, IsBool ],
         
@@ -973,6 +957,17 @@ end );
 
 ##
 InstallMethod( Algebroid,
+        "for a QPA quiver algebra",
+        [ IsQuiverAlgebra ],
+        
+  function( A )
+    
+    return Algebroid( A, false );
+    
+end );
+
+##
+InstallMethod( Algebroid,
         "for a QPA path algebra and a list",
         [ IsPathAlgebra, IsList ],
         
@@ -1002,6 +997,16 @@ InstallMethod( Algebroid,
     
 end );
 
+##
+InstallMethod( DescentToZDefinedByBasisPaths,
+        "for an algebroid",
+        [ IsAlgebroid ],
+        
+  function( A )
+    
+    return Algebroid( UnderlyingQuiverAlgebra( A ), true );
+    
+end );
 
 ##
 InstallMethod( Multiplication,
