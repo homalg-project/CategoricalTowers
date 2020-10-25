@@ -662,7 +662,7 @@ InstallMethod( POW,
         [ IsFpCategory and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( C, n )
-    local Qq, R, trivial_quiver;
+    local Qq, R, parity;
     
     if n < 0 then
         Error( "the only admissible values for n are non-negative integers\n" );
@@ -681,12 +681,12 @@ InstallMethod( POW,
         if not IsBound( C!.powers.0 ) then
             
             if IsRightQuiverAlgebra( Qq ) then
-                trivial_quiver := RightQuiver( "*(1)[]" );
+                parity := "right";
             else
-                trivial_quiver := LeftQuiver( "*(1)[]" );
+                parity := "left";
             fi;
             
-            C!.powers.0 := Category( PathAlgebra( R, trivial_quiver ) );
+            C!.powers.0 := TrivialCategory( parity );
             
         fi;
         

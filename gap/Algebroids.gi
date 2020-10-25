@@ -1279,7 +1279,7 @@ InstallMethod( POW,
         [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( A, n )
-    local Rq, R, trivial_quiver;
+    local Rq, R, parity;
     
     if n < 0 then
         Error( "the only admissible values for n are non-negative integers\n" );
@@ -1298,12 +1298,12 @@ InstallMethod( POW,
         if not IsBound( A!.powers.0 ) then
             
             if IsRightQuiverAlgebra( Rq ) then
-                trivial_quiver := RightQuiver( "*(1)[]" );
+                parity := "right";
             else
-                trivial_quiver := LeftQuiver( "*(1)[]" );
+                parity := "left";
             fi;
             
-            A!.powers.0 := Algebroid( PathAlgebra( R, trivial_quiver ) );
+            A!.powers.0 := TrivialAlgebroid( R, parity );
             
         fi;
         
