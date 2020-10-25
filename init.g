@@ -4,6 +4,7 @@
 # Reading the declaration part of the package.
 #
 
+ReadPackage( "Algebroids", "gap/FpCategories.gd");
 ReadPackage( "Algebroids", "gap/Algebroids.gd");
 ReadPackage( "Algebroids", "gap/Functors.gd");
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gd");
