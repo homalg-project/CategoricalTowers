@@ -26,6 +26,7 @@ DeclareRepresentation( "IsCapCategoryMorphismInAlgebroidRep",
 #
 ####################################
 
+##
 InstallMethodWithCache( CategoryOfAlgebroids,
                [ IsHomalgRing, IsString ],
                
@@ -448,6 +449,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS,
 
     
 end );
+
 ##
 InstallMethod( DecomposeQuiverAlgebraElement,
         "for a quiver algebra element",
@@ -1031,6 +1033,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
     
 end );
 
+##
 InstallMethod( CategoryOfAlgebroidsObject,
                         [ IsAlgebroid ],
                
@@ -1076,6 +1079,7 @@ InstallMethod( CategoryOfAlgebroidsMorphism,
     
 end );
 
+##
 InstallMethod( CategoryOfAlgebroidsMorphism,
                [ IsAlgebroidMorphism ],
                
@@ -1743,7 +1747,7 @@ InstallMethod( TrivialAlgebroid,
 end );
 
 ##
-InstallMethod(ElementaryTensor,
+InstallMethod( ElementaryTensor,
         "for objects in algebroids",
         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
   function( a, b, T )
@@ -1757,7 +1761,7 @@ InstallMethod(ElementaryTensor,
 end);
 
 ##
-InstallMethod(ElementaryTensor,
+InstallMethod( ElementaryTensor,
         "for object and morphism in algebroids",
         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryMorphismInAlgebroid, IsAlgebroid ],
   function( object, morphism, T )
@@ -1822,7 +1826,7 @@ InstallMethod(ElementaryTensor,
 end );
 
 ##
-InstallMethod(ElementaryTensor,
+InstallMethod( ElementaryTensor,
         "for morphism and object in algebroids",
         [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
   function( morphism, object, T )
@@ -1887,7 +1891,7 @@ InstallMethod(ElementaryTensor,
 end );
 
 ##
-InstallMethod(TensorProductOnObjects,
+InstallMethod( TensorProductOnObjects,
         "for algebroids",
         [ IsAlgebroid, IsAlgebroid ],
   function( X, Y )
@@ -1897,7 +1901,7 @@ InstallMethod(TensorProductOnObjects,
 end );
 
 ##
-InstallMethod(TensorProductOnMorphisms,
+InstallMethod( TensorProductOnMorphisms,
         "for morphisms between algebroids",
         [ IsAlgebroidMorphism, IsAlgebroidMorphism ],
   function( F, G )
@@ -2416,4 +2420,3 @@ InstallMethod( LaTeXOutput,
           
   LaTeXStringOp
 );
-
