@@ -1,6 +1,6 @@
 #! @BeginChunk unitors
 
-LoadPackage( "Bialgebroid" );
+LoadPackage( "Algebroids" );
 
 #! @Example
 q := LeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );;

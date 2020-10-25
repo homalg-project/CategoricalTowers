@@ -1,5 +1,6 @@
 #! @BeginChunk over_Z
-LoadPackage( "Bialgebroid" );
+
+LoadPackage( "Algebroids" );
 
 #! We create an algebroid over $\mathbb{Q}$ and its descent to $\mathbb{Z}$ defined by basis paths.
 

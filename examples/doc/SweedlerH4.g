@@ -1,6 +1,6 @@
 #! @BeginChunk Sweedler_H4
 
-LoadPackage( "Bialgebroid" );
+LoadPackage( "Algebroids" );
 
 # Sweedlers 4-dimensional Hopf algebra
 

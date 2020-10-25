@@ -1,6 +1,6 @@
 #! @BeginChunk group-like
 
-LoadPackage( "Bialgebroid" );
+LoadPackage( "Algebroids" );
 
 #! @Example
 q := RightQuiver( "q(1)[g:1->1,h:1->1]" );

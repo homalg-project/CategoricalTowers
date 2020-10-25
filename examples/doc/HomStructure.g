@@ -1,6 +1,6 @@
 #! @BeginChunk HomStructure
 
-LoadPackage( "Bialgebroid" );
+LoadPackage( "Algebroids" );
 
 #! We perform simple computations with the Homomorphism structure of the Beilison quiver of
 #! the projective space of dimension 3.

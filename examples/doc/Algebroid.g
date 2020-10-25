@@ -1,7 +1,6 @@
 #! @BeginChunk Algebroid
 
-LoadPackage( "Bialgebroid" );
-LoadPackage( "MatricesForHomalg" );
+LoadPackage( "Algebroids" );
 
 #! Create a left quiver $ql$ with 3 vertices u,v,w and 4 edges a,b,c,d.
 
@@ -20,8 +19,6 @@ qr := RightQuiver( "qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );
 #! Create algebroids from these quivers over $\mathbb{Q}$.
 
 #! @Example
-LoadPackage( "MatricesForHomalg" );
-#! true
 Q := HomalgFieldOfRationals( );
 #! Q
 Al := Algebroid( Q, ql );

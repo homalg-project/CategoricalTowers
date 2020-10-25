@@ -1,6 +1,6 @@
 #! @BeginChunk Bialgebroid
 
-LoadPackage( "Bialgebroid" );
+LoadPackage( "Algebroids" );
 
 #! Create a right quiver $q$ with two vertices $u$ and $v$ and two edges $a$ and $b$.
 

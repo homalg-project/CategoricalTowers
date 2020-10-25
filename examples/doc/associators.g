@@ -1,6 +1,6 @@
 #! @BeginChunk associators
 
-LoadPackage( "Bialgebroid" );
+LoadPackage( "Algebroids" );
 
 #! @Example
 q := RightQuiver( "q(1)[t:1->1]" );
