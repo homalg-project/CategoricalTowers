@@ -32,33 +32,9 @@ DeclareCategory( "IsAlgebroid",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of morphisms of algebroids.
-DeclareCategory( "IsAlgebroidMorphism",
-        IsCapFunctor );
-
-#! @Description
 #!  The &GAP; category of algebras.
 DeclareCategory( "IsAlgebraAsCategory",
         IsAlgebroid );
-
-#! @Description
-#! The GAP category of objects in the category
-#! of algebroids over a ring $R$.
-#! @Arguments object
-DeclareCategory( "IsCategoryOfAlgebroidsObject",
-                 IsCapCategoryObject );
-
-#! @Description
-#! The GAP category of morphisms in the category
-#! of algebroids over a ring $R$.
-#! @Arguments object
-DeclareCategory( "IsCategoryOfAlgebroidsMorphism",
-                 IsCapCategoryMorphism );
-
-DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ALGEBROIDS" );
-
-DeclareCategory( "IsCategoryOfAlgebroids",
-                 IsCapCategory );
 
 ####################################
 #
@@ -83,8 +59,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFinitelyPresentedCategory := Conca
 #! @Returns true or false
 DeclareProperty( "IsCommutative",
         IsAlgebroid );
-DeclareProperty( "IsCommutative",
-        IsCategoryOfAlgebroidsObject );
 
 #! @Description
 #!  Check whether <A>B</A> is counitary.
@@ -92,8 +66,6 @@ DeclareProperty( "IsCommutative",
 #! @Returns true or false
 DeclareProperty( "IsCounitary",
         IsAlgebroid );
-DeclareProperty( "IsCounitary",
-        IsCategoryOfAlgebroidsObject );
 
 #! @Description
 #!  Check whether <A>B</A> is coassociative.
@@ -101,8 +73,6 @@ DeclareProperty( "IsCounitary",
 #! @Returns true or false
 DeclareProperty( "IsCoassociative",
         IsAlgebroid );
-DeclareProperty( "IsCoassociative",
-        IsCategoryOfAlgebroidsObject );
 
 ####################################
 #
@@ -239,38 +209,45 @@ DeclareAttribute( "Parity",
 DeclareOperation( "POW",
         [ IsAlgebroid, IsInt ] );
 
-DeclareOperation( "\*",
-        [ IsAlgebroid, IsAlgebroid ] );
+DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
+        IsQuiverAlgebra );
 
+DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
+        IsCapCategoryMorphismInAlgebroid );
+
+DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
+        IsCapCategoryMorphismInAlgebroid );
+
+####################################
+#
+#! @Section Operations
+#
+####################################
+
+#! @Arguments e
+DeclareOperation( "DecomposeQuiverAlgebraElement",
+        [ IsQuiverAlgebraElement ] );
+
+#! @Description
+#!  Apply the functor <A>F</A> (e.g., defined by the functions <A>img_of_objs_func</A> and
+#!  <A>imgs_of_generating_mors_func</A>) to the quiver algebra element <A>p</A>.
+#! @Arguments img_of_objs_func, imgs_of_generating_mors_func, path, covariant
+#! @Returns a morphism in a &CAP; category
+#! @Group ApplyToQuiverAlgebraElement
+DeclareOperation( "ApplyToQuiverAlgebraElement",
+        [ IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool ] );
+
+#! @Arguments F, path
+#! @Group ApplyToQuiverAlgebraElement
+DeclareOperation( "ApplyToQuiverAlgebraElement",
+        [ IsCapFunctor, IsQuiverAlgebraElement ] );
+
+#! @Arguments k, str
 DeclareOperation( "TrivialAlgebroid",
         [ IsHomalgRing, IsString ] );
 
-DeclareOperation( "TensorProductOnObjects",
-        [ IsAlgebroid, IsAlgebroid ] );
-
-DeclareOperation( "LeftUnitorInverseAsFunctor",
-        [ IsAlgebroid ] );
-
-DeclareOperation( "LeftUnitorAsFunctor",
-        [ IsAlgebroid ] );
-
-DeclareOperation( "RightUnitorInverseAsFunctor",
-        [ IsAlgebroid ] );
-
-DeclareOperation( "RightUnitorAsFunctor",
-        [ IsAlgebroid ] );
-
-DeclareOperation( "AssociatorLeftToRightWithGivenTensorProductsAsFunctor",
-        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ] );
-
-DeclareOperation( "AssociatorRightToLeftWithGivenTensorProductsAsFunctor",
-        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ] );
-
-#! @Description
-#!  Construct the canonical twist from <A>A</A> $\otimes$ <A>B</A> to <A>B</A> $\otimes$ <A>A</A>
 #! @Arguments A, B
-#! @Returns a &CAP; functor
-DeclareOperation( "Twist",
+DeclareOperation( "\*",
         [ IsAlgebroid, IsAlgebroid ] );
 
 #! @Description
@@ -293,38 +270,6 @@ DeclareOperation( "ElementaryTensor",
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
         [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
-
-DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
-        IsQuiverAlgebra );
-
-DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
-        IsCapCategoryMorphismInAlgebroid );
-
-DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
-        IsCapCategoryMorphismInAlgebroid );
-
-####################################
-#
-#! @Section Operations
-#
-####################################
-
-DeclareOperation( "DecomposeQuiverAlgebraElement",
-        [ IsQuiverAlgebraElement ] );
-
-#! @Description
-#!  Apply the functor <A>F</A> (e.g., defined by the functions <A>img_of_objs_func</A> and
-#!  <A>imgs_of_generating_mors_func</A>) to the quiver algebra element <A>p</A>.
-#! @Arguments img_of_objs_func, imgs_of_generating_mors_func, path, covariant
-#! @Returns a morphism in a &CAP; category
-#! @Group ApplyToQuiverAlgebraElement
-DeclareOperation( "ApplyToQuiverAlgebraElement",
-        [ IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool ] );
-
-#! @Arguments F, path
-#! @Group ApplyToQuiverAlgebraElement
-DeclareOperation( "ApplyToQuiverAlgebraElement",
-        [ IsCapFunctor, IsQuiverAlgebraElement ] );
 
 #! @Description
 #! The ouput is the LaTeX string of the object <A>o</A>.
@@ -349,18 +294,6 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_ALGEBROID" );
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID" );
-
-DeclareOperation( "CategoryOfAlgebroids",
-                  [ IsHomalgRing, IsString ] );
-
-DeclareAttribute( "CategoryOfAlgebroidsObject",
-                  IsAlgebroid );
-
-DeclareOperation( "CategoryOfAlgebroidsMorphism",
-                  [ IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject ] );
-
-DeclareOperation( "CategoryOfAlgebroidsMorphism",
-                  [ IsAlgebroidMorphism ] );
 
 #! @Description
 #!  Construct the algebroid associated to the path $R$-algebra <A>Rq</A>
@@ -477,9 +410,3 @@ DeclareOperation( "MorphismInAlgebroid",
 #! @Arguments path, A
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "\/", [ IsQuiverAlgebraElement, IsAlgebroid ] );
-
-DeclareAttribute( "AsCapCategory",
-        IsCategoryOfAlgebroidsObject );
-
-DeclareAttribute( "AsCapFunctor",
-        IsCategoryOfAlgebroidsMorphism );
