@@ -580,7 +580,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     fi;
     
     Finalize( category );
-    SetFilterObj(IdentityFunctor(category), IsAlgebroidMorphism);
+    
+    SetFilterObj( IdentityFunctor( category ), IsAlgebroidMorphism );
     
     return category;
     
@@ -1012,8 +1013,12 @@ end );
 InstallMethod( Multiplication,
         "for a commutative algebra as cateogry",
         [ IsAlgebraAsCategory and IsCommutative ],
-  function (A)
-    local unique_object_in_A, unique_object_in_A_string, morphisms_in_A, A2, unique_object_in_A2, unique_object_in_A2_string, mult_functor_images_of_objects, mult_functor_images_of_generating_morphisms, a, b, axg, axg_string, fxb, fxb_string, mult_functor, g, f;
+        
+  function( A )
+    local unique_object_in_A, unique_object_in_A_string,
+          morphisms_in_A, A2, unique_object_in_A2, unique_object_in_A2_string,
+          mult_functor_images_of_objects, mult_functor_images_of_generating_morphisms,
+          a, b, axg, axg_string, fxb, fxb_string, mult_functor, g, f;
 
     unique_object_in_A := SetOfObjects( A )[1];
     unique_object_in_A_string := String( UnderlyingVertex( unique_object_in_A ) );
@@ -1060,8 +1065,11 @@ end );
 InstallMethod( Unit,
         "for algebra as category",
         [ IsAlgebraAsCategory ],
+        
   function( A )
-    local unique_object_in_A, unique_object_in_A_string, unique_object_in_A0, unique_object_in_A0_string, unit_functor_images_of_objects, unit_functor_images_of_generating_morphisms, A0;
+    local unique_object_in_A, unique_object_in_A_string,
+          unique_object_in_A0, unique_object_in_A0_string,
+          unit_functor_images_of_objects, unit_functor_images_of_generating_morphisms, A0;
     
     unique_object_in_A := SetOfObjects( A )[1];
     unique_object_in_A_string := String( UnderlyingVertex( unique_object_in_A ) );
@@ -1314,11 +1322,12 @@ end );
 
 ##
 InstallMethod( TrivialAlgebroid,
-        "for a homalg ring",
+        "for a homalg ring and a string",
         [ IsHomalgRing, IsString ],
+        
   function( R, parity )
     local trivial_quiver;
-   
+    
     if parity = "right" then
         trivial_quiver := RightQuiver( "*(1)[]" );
     elif parity = "left" then
@@ -1328,21 +1337,23 @@ InstallMethod( TrivialAlgebroid,
     fi;
     
     return Algebroid( PathAlgebra( R, trivial_quiver ) );
+    
 end );
 
 ##
 InstallMethod( ElementaryTensor,
         "for objects in algebroids",
         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
+        
   function( a, b, T )
-      
     local product_string, a_string, b_string, product_vertex;
-  
+    
     product_vertex := PathInProductQuiver( QuiverOfAlgebra( UnderlyingQuiverAlgebra( T ) ), [ UnderlyingVertex( a ), UnderlyingVertex( b ) ] );
     product_string := String(product_vertex);
-  
+    
     return T.(product_string);
-end);
+    
+end );
 
 ##
 InstallMethod( ElementaryTensor,
