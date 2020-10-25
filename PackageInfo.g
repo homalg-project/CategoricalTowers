@@ -15,7 +15,7 @@ Version := Maximum( [
                    ## this line prevents merge conflicts
                    "2020.09-08", ## Kamal's version
                    ## this line prevents merge conflicts
-                   "2020.10-02", ## Florian's version
+                   "2020.10-03", ## Florian's version
                    ## this line prevents merge conflicts
                    "2019.10-30", ## Sepp's version
                    ] ),

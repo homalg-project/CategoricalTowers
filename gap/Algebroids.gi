@@ -1718,55 +1718,6 @@ InstallMethod( IsCommutative,
 end );
 
 ##
-InstallMethod( Twist,
-        "for two algebroids",
-        [ IsAlgebroid, IsAlgebroid ],
-  function( A, B )
-    local A_underlying_quiver_algebra, B_underlying_quiver_algebra, AxB, BxA, A_objects, B_objects, A_morphisms, B_morphisms, a, b, record_with_images_of_objects, record_with_images_of_generating_morphisms, axg, axg_string, fxb, fxb_string, g, f;
-    
-    A_underlying_quiver_algebra := UnderlyingQuiver( A );
-    B_underlying_quiver_algebra := UnderlyingQuiver( B );
-    
-    AxB := A * B;
-    BxA := B * A;
-    
-    A_objects := SetOfObjects( A );
-    B_objects := SetOfObjects( B );
-    
-    A_morphisms := SetOfGeneratingMorphisms( A );
-    B_morphisms := SetOfGeneratingMorphisms( B );
-    
-    record_with_images_of_objects := rec( );
-
-    for a in A_objects do
-      for b in B_objects do
-        record_with_images_of_objects.( String( UnderlyingVertex( ElementaryTensor( a, b, AxB ) ) ) ) := ElementaryTensor( b, a, BxA );
-      od;
-    od;
-    
-    record_with_images_of_generating_morphisms := rec( );
-    
-    for a in A_objects do
-        for g in B_morphisms do
-            axg := ElementaryTensor( a, g, AxB );
-            axg_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( axg ) ) ) );
-            record_with_images_of_generating_morphisms.(axg_string) := ElementaryTensor( g, a, BxA );
-        od;
-    od;
-    
-    for b in B_objects do
-        for f in A_morphisms do
-            fxb := ElementaryTensor( f, b, AxB );
-            fxb_string := String( LeadingPath( Representative( UnderlyingQuiverAlgebraElement( fxb ) ) ) );
-            record_with_images_of_generating_morphisms.(fxb_string) := ElementaryTensor( b, f, BxA );
-        od;
-    od;
-    
-    return CapFunctor( AxB, record_with_images_of_objects, record_with_images_of_generating_morphisms );
-
-end);
-
-##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
         [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],

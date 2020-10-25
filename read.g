@@ -5,10 +5,10 @@
 #
 
 ReadPackage( "Algebroids", "gap/Algebroids.gi");
-ReadPackage( "Algebroids", "gap/Bialgebroids.gi");
 ReadPackage( "Algebroids", "gap/QPA2.gi");
 ReadPackage( "Algebroids", "gap/Functors.gi");
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gi");
+ReadPackage( "Algebroids", "gap/Bialgebroids.gi");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "Algebroids", "gap/Julia.gi" );

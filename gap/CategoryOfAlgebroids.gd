@@ -26,11 +26,6 @@ DeclareCategory( "IsCategoryOfAlgebroidsObject",
 DeclareCategory( "IsCategoryOfAlgebroidsMorphism",
                  IsCapCategoryMorphism );
 
-#! @Description
-#!  The &GAP; category of morphisms of algebroids.
-DeclareCategory( "IsAlgebroidMorphism",
-        IsCapFunctor );
-
 DeclareCategory( "IsCategoryOfAlgebroids",
                  IsCapCategory );
 
