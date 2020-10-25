@@ -1243,7 +1243,7 @@ end );
 ##
 InstallMethod( MorphismInAlgebroid,
         "for an algebroid and an element of a quotient of a path algebra",
-        [ IsAlgebroid, IsQuotientOfPathAlgebraElement],
+        [ IsAlgebroid, IsQuotientOfPathAlgebraElement ],
         
   function( A, path )
     local l, S, T;
