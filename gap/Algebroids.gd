@@ -12,7 +12,7 @@ SetInfoLevel( InfoAlgebroids, 1 );
 
 ####################################
 #
-#! @Section Categories
+#! @Section GAP categories
 #
 ####################################
 
