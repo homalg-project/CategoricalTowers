@@ -92,22 +92,33 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #! @InsertChunk ConcreteCategoryForCAP
 
 #! @Description
-#!  Return the <A>k</A>-linear closure of the category <A>C</A>
-#!  over the commutative ring <A>k</A>.
+#!  Return a finitely presented category isomorphic to the finite category <A>C</A>.
+#! @Arguments C
+#! @Returns a finitely presented category
+DeclareAttribute( "AsFpCategory",
+        IsFiniteConcreteCategory );
+#! @InsertChunk CategoryRelations
+
+#!  Return the <A>k</A>-linear closure of the category <A>C</A> over the commutative ring <A>k</A>.
 #! @Arguments k, C
 #! @Returns a k-linear category
+#! @Group Algebroid
 DeclareOperation( "Algebroid",
-        [ IsHomalgRing, IsCapCategory ] );
+        [ IsHomalgRing, IsFiniteConcreteCategory ] );
+
+#! @Arguments k, C
+#! @Group Algebroid
+DeclareOperation( "[]",
+        [ IsHomalgRing, IsFiniteConcreteCategory ] );
 #! @InsertChunk Algebroid
 
 #! @Description
-#!  Return the endomorphism relations of the
-#!  category <A>C</A>.
-#! @Arguments k, C
+#!  Return the endomorphism relations of the category <A>C</A>.
+#! @Arguments C
 #! @Returns list of relations as generators of ideal.
 DeclareOperation( "RelationsOfEndomorphisms",
-        [ IsHomalgRing, IsCapCategory ] );
-#! @InsertChunk Endomorphisms
+        [ IsFiniteConcreteCategory ] );
+#! @InsertChunk RelationsOfEndomorphisms
 
 #! @Description
 #!  Concstruct the embedding of a subrepresentation $S$ of <A>F</A>

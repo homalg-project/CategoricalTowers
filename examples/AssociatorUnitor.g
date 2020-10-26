@@ -1,11 +1,7 @@
 LoadPackage( "CatReps" );
 c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
-qc3c3 := RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" );
-HOMALG_MATRICES.PreferDenseMatrices := true;
 GF3 := HomalgRingOfIntegers( 3 );
-GF3q := PathAlgebra( GF3, qc3c3 );
-rel := [GF3q.a^3-GF3q.1, GF3q.c^3-GF3q.2, GF3q.a*GF3q.b-GF3q.b*GF3q.c];;
-kq := Algebroid( GF3q, rel );
+kq := GF3[c3c3];
 kq2 := kq^2;
 counit := rec( a := 1, b := 1, c := 1 );
 comult := rec( a := PreCompose( kq2.ax1, kq2.1xa ),
