@@ -1013,6 +1013,45 @@ InstallMethod( Algebroid,
 end );
 
 ##
+InstallMethodWithCache( Algebroid,
+        "for a homalg ring and a finitely presented category",
+        [ IsHomalgRing, IsFpCategory ],
+        
+  function( k, C )
+    local relations, kq, A;
+    
+    relations := C!.relations;
+    
+    if relations = [ ] and not IsPathAlgebra( UnderlyingQuiverAlgebra( C ) ) then
+        Error( "the underlying quiver algebra is not a path algebra, nevertheless the list of relations is empty\n" );
+    fi;
+    
+    kq := PathAlgebra( k, UnderlyingQuiver( C ) );
+    
+    relations := List( relations, a -> PathAsAlgebraElement( kq, a[1] ) - PathAsAlgebraElement( kq, a[2] ) );
+    
+    A := kq / Ideal( kq, relations );
+    
+    A := kq / GroebnerBasis( IdealOfQuotient( A ) );
+    
+    A := Algebroid( A, false ); ## do not call the single argument method Algebroid as it is an attribute
+    
+    SetUnderlyingCategory( A, C );
+    
+    SetIsLinearClosureOfACategory( A, true );
+    
+    return A;
+    
+end );
+
+##
+InstallMethod( \[\],
+        "for a homalg ring and a finitely presented category",
+        [ IsHomalgRing, IsFpCategory ],
+        
+  Algebroid );
+
+##
 InstallMethod( DescentToZDefinedByBasisPaths,
         "for an algebroid",
         [ IsAlgebroid ],
