@@ -11,13 +11,13 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2020.10-03", ## Mohamed's version
+                   "2020.10-04", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2018.10.18", ## Florian's version
+                   "2018.10-18", ## Florian's version
                    ## this line prevents merge conflicts
-                   "2020.05.10", ## Kamal's version
+                   "2020.05-10", ## Kamal's version
                    ## this line prevents merge conflicts
-                   "2020.09.01", ## Tibor's version
+                   "2020.09-01", ## Tibor's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -82,7 +82,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.10.29" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
-                   [ "Algebroids", ">= 2020.04.24" ],
+                   [ "Algebroids", ">= 2020.10-08" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],
                    [ "LinearAlgebraForCAP", ">= 2020.01.10" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
