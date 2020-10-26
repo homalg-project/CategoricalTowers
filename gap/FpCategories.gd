@@ -275,8 +275,9 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_FP_CATEGORY" );
 
-DeclareAttribute( "Category",
-        IsQuiverAlgebra );
+# do not turn this into an attribute:
+DeclareOperation( "Category",
+        [ IsQuiverAlgebra ] );
 
 DeclareOperation( "Category",
         [ IsPathAlgebra, IsList ] );
@@ -287,8 +288,8 @@ DeclareOperation( "Category",
 #! @Arguments q
 #! @Returns a &CAP; category
 #! @Group FpCategory
-DeclareAttribute( "Category",
-        IsQuiver );
+DeclareOperation( "Category",
+        [ IsQuiver ] );
 
 #! @Arguments q, L
 #! @Group FpCategory

@@ -429,7 +429,7 @@ InstallMethod( Category,
 end );
 
 ##
-InstallMethod( Category,
+InstallMethodWithCache( Category,
         "for a QPA quiver",
         [ IsQuiver ],
         
