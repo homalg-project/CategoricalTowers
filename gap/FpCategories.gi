@@ -396,7 +396,7 @@ InstallMethod( Category,
         [ IsPathAlgebra, IsList ],
         
   function( Qq, L )
-    local relations;
+    local relations, A;
     
     if not ( IsList( L ) and
              ForAll( L, IsList ) and
@@ -409,7 +409,11 @@ InstallMethod( Category,
     
     relations := List( L, a -> PathAsAlgebraElement( Qq, a[1] ) - PathAsAlgebraElement( Qq, a[2] ) );
     
-    return Category( Qq / Ideal( Qq, relations ) : relations := L );
+    A := Qq / Ideal( Qq, relations );
+    
+    A := Qq / GroebnerBasis( IdealOfQuotient( A ) );
+    
+    return Category( A : relations := L );
     
 end );
 
