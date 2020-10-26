@@ -347,7 +347,7 @@ InstallMethod( Category,
         C := Concatenation( C, " with relations" );
     fi;
     
-    if not relations = [ ] then
+    if not relations = [ ] and Length( relations ) < 6 then
         
         rels := Concatenation(
                         " [",
