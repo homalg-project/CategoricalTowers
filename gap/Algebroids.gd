@@ -323,6 +323,8 @@ DeclareOperation( "Algebroid",
 #! @Group Algebroid
 DeclareAttribute( "Algebroid",
         IsQuiverAlgebra );
+# this must remain an attribute to be able to compose functors,
+# which is need for Bialgebroid.g to work!!!
 
 #! @Arguments Rq, L
 #! @Group Algebroid
