@@ -922,7 +922,13 @@ InstallMethod( Algebroid,
     
     if over_Z then
         
-        A := Concatenation( A, " over Z");
+        A := Concatenation( A, " over Z" );
+        
+    fi;
+    
+    if IsPathAlgebra( Rq ) then
+        
+        A := Concatenation( A, " freely" );
         
     fi;
     
