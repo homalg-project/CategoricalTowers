@@ -1,6 +1,6 @@
 #! @Chunk S3
 
-LoadPackage( "CatReps" );
+LoadPackage( "FunctorCategories" );
 
 #! @Example
 q := RightQuiver( "q(1)[a:1->1,b:1->1]" );
