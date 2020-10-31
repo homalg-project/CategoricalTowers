@@ -1056,18 +1056,18 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( CategoryOverOppositeAlgebra,
+InstallMethod( CategoryOverOppositeQuiver,
         "for a f.p. category",
-        [ IsFpCategory and HasUnderlyingQuiver ],
+        [ IsFpCategory and HasRelationsOfFpCategory ],
         
-  function( A )
-    local A_op;
+  function( C )
+    local relations;
     
-    A_op := Category( OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ) );
+    relations := RelationsOfFpCategory( C );
     
-    SetCategoryOverOppositeAlgebra( A_op, A );
+    relations := List( relations, a -> List( a, OppositePath ) );
     
-    return A_op;
+    return Category( OppositeQuiver( UnderlyingQuiver( C ) ), relations );
     
 end );
 
