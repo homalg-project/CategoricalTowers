@@ -142,22 +142,6 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     
 end );
 
-##
-InstallMethod( RelationsOfFpCategory,
-        "for a f.p. category",
-        [ IsFpCategory and HasUnderlyingQuiverAlgebra ],
-        
-  function( A )
-    local relations;
-    
-    relations := RelationsOfAlgebra( UnderlyingQuiverAlgebra( A ) );
-    
-    relations := Filtered( relations, r -> not IsZero( r ) );
-    
-    return List( relations, a -> MorphismInFpCategory( A, a ) );
-    
-end );
-
 ####################################
 #
 # methods for constructors:
@@ -396,7 +380,7 @@ InstallMethod( Category,
         [ IsPathAlgebra, IsList ],
         
   function( Qq, L )
-    local relations, A;
+    local relations, A, C;
     
     if not ( IsList( L ) and
              ForAll( L, IsList ) and
@@ -413,7 +397,11 @@ InstallMethod( Category,
     
     A := Qq / GroebnerBasis( IdealOfQuotient( A ) );
     
-    return Category( A : relations := L );
+    C := Category( A : relations := L );
+    
+    SetRelationsOfFpCategory( C, L );
+    
+    return C;
     
 end );
 
