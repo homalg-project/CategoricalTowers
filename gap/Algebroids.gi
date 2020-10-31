@@ -89,7 +89,7 @@ InstallMethod( SetOfGeneratingMorphisms,
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
-        "for and algebroid and two objects",
+        "for an algebroid and two objects",
         [ IsAlgebroid and HasUnderlyingQuiver, IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ],
         
   { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
@@ -105,7 +105,7 @@ InstallMethod( SetOfGeneratingMorphisms,
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
-        "for and algebroid and two integers",
+        "for an algebroid and two integers",
         [ IsAlgebroid and HasUnderlyingQuiver, IsInt, IsInt ],
         
   { A, i, j } -> SetOfGeneratingMorphisms( A, SetOfObjects( A )[ i ], SetOfObjects( A )[ j ] )

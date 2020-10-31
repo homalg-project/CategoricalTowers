@@ -28,7 +28,7 @@ DeclareRepresentation( "IsCapCategoryMorphismInFpCategoryRep",
 
 ##
 InstallMethod( SetOfObjects,
-        "for an algebroid",
+        "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiver ],
         
   A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
@@ -74,14 +74,14 @@ end );
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
-        "for an algebroid",
+        "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiver ],
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
-        "for and algebroid and two objects",
+        "for a f.p. category and two objects",
         [ IsFpCategory and HasUnderlyingQuiver, IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory ],
         
   { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
@@ -89,7 +89,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
-        "for two objects in an algebroid",
+        "for two objects in a f.p. category",
          [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory ],
          
   { obj_1, obj_2 } -> SetOfGeneratingMorphisms( CapCategory( obj_1 ), obj_1, obj_2 )
@@ -97,7 +97,7 @@ InstallMethod( SetOfGeneratingMorphisms,
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
-        "for and algebroid and two integers",
+        "for a f.p. category and two integers",
         [ IsFpCategory and HasUnderlyingQuiver, IsInt, IsInt ],
         
   { A, i, j } -> SetOfGeneratingMorphisms( A, SetOfObjects( A )[ i ], SetOfObjects( A )[ j ] )
@@ -144,7 +144,7 @@ end );
 
 ##
 InstallMethod( RelationsOfFpCategory,
-        "for an algebroid",
+        "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiverAlgebra ],
         
   function( A )
@@ -521,7 +521,7 @@ end );
 
 ##
 InstallMethod( \.,
-        "for an algebroid and a positive integer",
+        "for a f.p. category and a positive integer",
         [ IsFpCategory, IsPosInt ],
         
   function( C, string_as_int )
@@ -563,7 +563,7 @@ end );
 
 ##
 InstallMethod( ObjectInFpCategory,
-         "for an algebroid and a vertex of a quiver",
+         "for a f.p. category and a vertex of a quiver",
         [ IsFpCategory, IsQuiverVertex ],
   function( C, v )
     local o;
@@ -585,7 +585,7 @@ InstallMethod( \/,
 
 ##
 InstallMethod( MorphismInFpCategory,
-        "for two objects in an algebroid and an element of the quiver algebra",
+        "for two objects in a f.p. category and an element of the quiver algebra",
         [ IsCapCategoryObjectInFpCategoryRep, IsQuiverAlgebraElement, IsCapCategoryObjectInFpCategoryRep ],
         
   function( S, path, T )
@@ -632,7 +632,7 @@ end );
 
 ##
 InstallMethod( MorphismInFpCategory,
-        "for an algebroid and an element of a path algebra",
+        "for a f.p. category and an element of a path algebra",
         [ IsFpCategory, IsPathAlgebraElement ],
         
   function( C, path )
@@ -657,7 +657,7 @@ end );
 
 ##
 InstallMethod( MorphismInFpCategory,
-        "for an algebroid and an element of a quotient of a path algebra",
+        "for a f.p. category and an element of a quotient of a path algebra",
         [ IsFpCategory, IsQuotientOfPathAlgebraElement ],
         
   function( A, path )
@@ -680,7 +680,7 @@ end );
 
 ##
 InstallMethod( MorphismInFpCategory,
-        "for an algebroid and a path",
+        "for a f.p. category and a path",
         [ IsFpCategory, IsPath ],
         
   function( C, path )
@@ -703,7 +703,7 @@ end );
 
 ##
 InstallMethod( POW,
-        "for an algebroid and an integer",
+        "for a f.p. category and an integer",
         [ IsFpCategory and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( C, n )
@@ -777,7 +777,7 @@ end );
 
 ##
 InstallMethod( ElementaryTensor,
-        "for objects in algebroids",
+        "for objects in categorys",
         [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ],
   function( a, b, T )
       
@@ -792,7 +792,7 @@ end );
 
 ##
 InstallMethod( ElementaryTensor,
-        "for object and morphism in algebroids",
+        "for object and morphism in categorys",
         [ IsCapCategoryObjectInFpCategory, IsCapCategoryMorphismInFpCategory, IsFpCategory ],
         
   function( object, morphism, T )
@@ -846,7 +846,7 @@ end );
 
 ##
 InstallMethod( ElementaryTensor,
-        "for morphism and object in algebroids",
+        "for morphism and object in categorys",
         [ IsCapCategoryMorphismInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ],
         
   function( morphism, object, T )
@@ -900,7 +900,7 @@ end );
 
 ##
 InstallMethod( \*,
-        "for two algebroids",
+        "for two categorys",
         [ IsFpCategory and HasUnderlyingQuiverAlgebra, IsFpCategory and HasUnderlyingQuiverAlgebra ],
         
   function( A, B )
@@ -911,7 +911,7 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for an algebroid, two lists, a CAP Category, and a boolean",
+        "for a f.p. category, two lists, a CAP Category, and a boolean",
         [ IsFpCategory, IsList, IsList, IsCapCategory, IsBool ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B, covariant )
@@ -997,7 +997,7 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for an algebroid, two lists, and a CAP category",
+        "for a f.p. category, two lists, and a CAP category",
         [ IsFpCategory, IsList, IsList, IsCapCategory ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B )
@@ -1008,7 +1008,7 @@ end );
 
 ## this a convenience method
 InstallMethod( CapFunctor,
-        "for an algebroid, two records, and a boolean",
+        "for a f.p. category, two records, and a boolean",
         [ IsFpCategory, IsRecord, IsRecord, IsBool ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms, covariant )
@@ -1058,7 +1058,7 @@ end );
 
 ## this a convenience method
 InstallMethod( CapFunctor,
-        "for an algebroid and two records",
+        "for a f.p. category and two records",
         [ IsFpCategory, IsRecord, IsRecord ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms )
@@ -1069,7 +1069,7 @@ end );
 
 ##
 InstallMethod( CategoryOverOppositeAlgebra,
-        "for an algebroid",
+        "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiver ],
         
   function( A )
@@ -1119,7 +1119,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for an object in an algebroid",
+        "for an object in a f.p. category",
         [ IsCapCategoryObjectInFpCategoryRep ],
 
   function( o )
@@ -1130,7 +1130,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for a morphism in an algebroid",
+        "for a morphism in a f.p. category",
         [ IsCapCategoryMorphismInFpCategoryRep ],
 
   function( o )
