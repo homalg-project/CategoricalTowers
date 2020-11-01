@@ -13,9 +13,9 @@ Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projec
 Version := Maximum( [
                    "2020.10-04", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.06.02", ## Markus's version
+                   "2019.06-02", ## Markus's version
                    ## this line prevents merge conflicts
-                   "2019.06.05", ## Tom's version
+                   "2019.06-05", ## Tom's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
