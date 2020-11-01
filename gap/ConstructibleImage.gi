@@ -242,8 +242,8 @@ InstallMethod( LocallyClosedApproximationOfProjection,
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
-    local counter, step, d, projection_closure, d0, fiber_dim, Gamma0, additional_components,
-          l, decomposition, relative_boundary_hull, smaller_relative_boundary_hull, i;
+    local counter, step, d, projection_closure, d0, fiber_dim, additional_components,
+          Gamma0, l, relative_boundary_hull, smaller_relative_boundary_hull, i;
 
     counter := ValueOption( "counter" );
     
