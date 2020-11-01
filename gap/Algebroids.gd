@@ -174,7 +174,7 @@ DeclareAttribute( "RelationsOfAlgebroid",
 #!  The algebroid defined by the opposite of the underlying quiver algebra.
 #! @Arguments A
 #! @Returns a &CAP; category
-DeclareAttribute( "AlgebroidOverOppositeAlgebra",
+DeclareAttribute( "OppositeAlgebroidOverOppositeQuiverAlgebra",
         IsAlgebroid );
 
 DeclareAttribute( "Multiplication",

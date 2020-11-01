@@ -158,7 +158,7 @@ DeclareAttribute( "RelationsOfFpCategory",
 #!  The finitely presented category defined by the opposite of the underlying quiver with relations.
 #! @Arguments C
 #! @Returns a CAP category
-DeclareAttribute( "CategoryOverOppositeQuiver",
+DeclareAttribute( "OppositeCategoryOverOppositeQuiver",
         IsFpCategory );
 
 DeclareAttribute( "Multiplication",
