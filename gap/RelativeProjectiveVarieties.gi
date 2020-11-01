@@ -107,3 +107,14 @@ InstallMethod( ImageOfProjection,
     return ApplyFunctor( F, gamma_hat );
     
 end );
+
+##
+InstallMethod( ProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+        
+  function( Gamma )
+    
+    return ImageOfProjection( PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma ) );
+    
+end );

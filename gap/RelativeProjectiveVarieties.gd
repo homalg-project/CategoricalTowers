@@ -19,3 +19,7 @@ DeclareAttribute( "FunctorClosedProjectionBetweenZariskiCoframes",
 #!
 DeclareAttribute( "ImageOfProjection",
         IsObjectInZariskiCoframeOfAProjectiveVariety );
+
+#!
+DeclareAttribute( "ProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure",
+        IsObjectInZariskiCoframeOfAnAffineVariety );

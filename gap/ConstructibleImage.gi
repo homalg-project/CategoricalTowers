@@ -303,12 +303,8 @@ InstallMethod( LocallyClosedApproximationOfProjection,
 
     fi;
 
-    Info( InfoConstructibleImage, 6, step, counter, " in LCA: points at infinity..." );
-    relative_boundary_hull := PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
-    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
-
-    Info( InfoConstructibleImage, 6, step, counter, " in LCA: relative boundary hull..." );
-    relative_boundary_hull := ImageOfProjection( relative_boundary_hull );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: relative boundary hull coming from points at infinity..." );
+    relative_boundary_hull := ProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
     Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
     ## the followin line will trigger ideal intersection
