@@ -8,6 +8,13 @@
 
 #! @Section Attributes
 
+#! @Description
+#!  Compute the graph the morphism of the morphism <A>phi</A> of affine rings.
+#! @Arguments phi
+#! @Returns an object in a Zariski coframe of an affine variety
+DeclareAttribute( "GraphOfRingMorphism",
+        IsHomalgRingMap );
+
 #!
 DeclareAttribute( "FunctorClosureOfProjectionBetweenZariskiCoframes",
         IsCapCategory );

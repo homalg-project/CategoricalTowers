@@ -346,13 +346,11 @@ InstallMethod( LocallyClosedApproximationOfImage,
         [ IsHomalgRingMap ],
         
   function( phi )
-    local gamma;
+    local Gamma;
     
-    gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
+    Gamma := GraphOfRingMorphism( phi );
     
-    gamma := ClosedSubsetOfSpecByReducedMorphism( gamma );
-    
-    return LocallyClosedApproximationOfProjection( gamma );
+    return LocallyClosedApproximationOfProjection( Gamma );
     
 end );
 
@@ -545,13 +543,11 @@ InstallMethod( ConstructibleImage,
         [ IsHomalgRingMap ],
         
   function( phi )
-    local gamma;
+    local Gamma;
     
-    gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
+    Gamma := GraphOfRingMorphism( phi );
     
-    gamma := ClosedSubsetOfSpecByReducedMorphism( gamma );
-    
-    return ConstructibleProjection( gamma );
+    return ConstructibleProjection( Gamma );
     
 end );
 

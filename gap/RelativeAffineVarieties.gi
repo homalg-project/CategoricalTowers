@@ -5,6 +5,20 @@
 #
 
 ##
+InstallMethod( GraphOfRingMorphism,
+        "for a homalg ring map",
+        [ IsHomalgRingMap ],
+        
+  function( phi )
+    local Gamma;
+    
+    Gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
+    
+    return ClosedSubsetOfSpecByReducedMorphism( Gamma );
+    
+end );
+
+##
 InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         "for a CAP category",
         [ IsCapCategory and IsThinCategory ],
@@ -94,13 +108,11 @@ InstallMethod( ClosureOfImage,
         [ IsHomalgRingMap ],
         
   function( phi )
-    local gamma;
+    local Gamma;
     
-    gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
+    Gamma := GraphOfRingMorphism( phi );
     
-    gamma := ClosedSubsetOfSpecByReducedMorphism( gamma );
-    
-    return ClosureOfProjection( gamma );
+    return ClosureOfProjection( Gamma );
     
 end );
 
