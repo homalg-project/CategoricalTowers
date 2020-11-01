@@ -312,7 +312,8 @@ InstallMethod( LocallyClosedApproximationOfProjection,
     Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
 
     ## the followin line will trigger ideal intersection
-    Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+    Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ",
+          EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
     
     smaller_relative_boundary_hull := ValueOption( "smaller_rbhull" );
     
@@ -325,7 +326,8 @@ InstallMethod( LocallyClosedApproximationOfProjection,
                 relative_boundary_hull := relative_boundary_hull * l;
                 MorphismOfUnderlyingCategory( relative_boundary_hull );
                 ## the followin line will trigger ideal intersection
-                Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+                Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ",
+                      EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
             else
                 Info( InfoConstructibleImage, 4, step, counter, " in LCA: break" );
                 break;
