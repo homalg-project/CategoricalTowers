@@ -1,11 +1,11 @@
 <!-- BEGIN HEADER -->
-# IntrinsicCategories
+# IntrinsicCategories&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
 ### Intrinsic categories for CAP
 
-| Documentation | Build Status | Code Coverage |
-| ------------- | ------------ | ------------- |
-| [![HTML stable documentation][docs-img]][docs-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
+| Documentation | Latest Release | Build Status | Code Coverage |
+| ------------- | -------------- | ------------ | ------------- |
+| [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
 <!-- END HEADER -->
 <!-- BEGIN FOOTER -->
@@ -15,19 +15,30 @@
 
 To obtain current versions of all dependencies, `git clone` (or `git pull` to update) the following repositories:
 
-|    | Repository | URL |
-|--- | ---------- | --- |
-| 1. | **homalg_project** | https://github.com/homalg-project/homalg_project |
-| 2. | **CAP_project** | https://github.com/homalg-project/CAP_project |
-| 3. | **CategoryConstructor** | https://github.com/homalg-project/CategoryConstructor |
+|    | Repository | git URL |
+|--- | ---------- | ------- |
+| 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
+| 2. | [**CAP_project**](https://github.com/homalg-project/CAP_project#readme) | https://github.com/homalg-project/CAP_project.git |
+| 3. | [**CategoryConstructor**](https://github.com/homalg-project/CategoryConstructor#readme) | https://github.com/homalg-project/CategoryConstructor.git |
 
+[html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-url]: https://homalg-project.github.io/IntrinsicCategories/doc/chap0_mj.html
 
-[docs-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-url]: https://homalg-project.github.io/IntrinsicCategories/doc/chap0_mj.html
+[pdf-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-url]: https://homalg-project.github.io/IntrinsicCategories/download_pdf.html
+
+[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/IntrinsicCategories/badge_version.json&label=🔗%20version&color=yellow
+[version-url]: https://homalg-project.github.io/IntrinsicCategories/view_release.html
+
+[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/IntrinsicCategories/badge_date.json&label=🔗%20released%20on&color=yellow
+[date-url]: https://homalg-project.github.io/IntrinsicCategories/view_release.html
 
 [tests-img]: https://github.com/homalg-project/IntrinsicCategories/workflows/Tests/badge.svg?branch=master
 [tests-url]: https://github.com/homalg-project/IntrinsicCategories/actions?query=workflow%3ATests+branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/IntrinsicCategories/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/IntrinsicCategories
+
+[code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
+[code-url]: https://github.com/homalg-project/IntrinsicCategories#top
 <!-- END FOOTER -->
