@@ -12,9 +12,11 @@ PackageName := "IntrinsicModules",
 Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
 Version := Maximum( [
-                   "2020.10.03", ## Mohamed's version
+                   "2020.10-03", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2017.03.14", ## Kamals's version
+                   "2017.03-14", ## Kamals's version
+                   ## this line prevents merge conflicts
+                   "2020.11-01", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
