@@ -237,13 +237,13 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 end );
 
 ##
-InstallMethod( LocallyClosedApproximationOfProjection,
+InstallMethod( ClosedSubsetWithGenericallyZeroDimensionalFibersOnComponentOfProjection,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
   function( Gamma )
     local counter, step, d, projection_closure, d0, fiber_dim, additional_components,
-          Gamma0, l, relative_boundary_hull, smaller_relative_boundary_hull, i;
+          Gamma0, l;
 
     counter := ValueOption( "counter" );
     
@@ -302,7 +302,35 @@ InstallMethod( LocallyClosedApproximationOfProjection,
         Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done => dim(Gamma0) = ", d0, ", dim(fiber) = ", fiber_dim );
 
     fi;
+    
+    return [ Gamma0, projection_closure, additional_components ];
+    
+end );
 
+##
+InstallMethod( LocallyClosedApproximationOfProjection,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( Gamma )
+    local counter, step, l, Gamma0, projection_closure, additional_components,
+          relative_boundary_hull, smaller_relative_boundary_hull, i;
+    
+    counter := ValueOption( "counter" );
+    
+    if counter = fail then
+        step := "";
+        counter := "";
+    else
+        step := "Step ";
+    fi;
+    
+    l := ClosedSubsetWithGenericallyZeroDimensionalFibersOnComponentOfProjection( Gamma : counter := counter );
+    
+    Gamma0 := l[1];
+    projection_closure := l[2];
+    additional_components := l[3];
+    
     Info( InfoConstructibleImage, 6, step, counter, " in LCA: relative boundary hull coming from points at infinity..." );
     relative_boundary_hull := ProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 );
     Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
