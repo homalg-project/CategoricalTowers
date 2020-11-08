@@ -373,10 +373,13 @@ InstallMethod( Remove,
     for grandparent in grandparents do
         aunts := grandparent!.act_children;
         p := IdenticalPosition( aunts, neg_node );
+        ## p = fail in CavenderFarrisNeyman_reduced.g:
+        ## #I  Level 3 in RMV: removed 116 -> 20
         if p = fail then
-            Error( "neg_node is not among the aunts\n" );
+            #Error( "neg_node is not among the aunts\n" );
+        else
+            Remove( aunts, p );
         fi;
-        Remove( aunts, p );
         AppendNew( aunts, children );
     od;
     
