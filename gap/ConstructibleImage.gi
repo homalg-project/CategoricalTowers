@@ -524,7 +524,11 @@ InstallMethod( ConstructibleProjection,
         fi;
         Info( InfoConstructibleImage, 8, step, counter, " in CPR: ...done (no)" );
         
-        projection_closure_and_relative_boundary_hull := LocallyClosedApproximationOfProjection( Gamma : counter := counter );
+        if ValueOption( "freeness" ) = true then
+            projection_closure_and_relative_boundary_hull := LocallyClosedApproximationOfProjectionViaGenericFreeness( Gamma : counter := counter );
+        else
+            projection_closure_and_relative_boundary_hull := LocallyClosedApproximationOfProjection( Gamma : counter := counter );
+        fi;
         
         additional_components := Concatenation( additional_components, projection_closure_and_relative_boundary_hull[2] );
         
