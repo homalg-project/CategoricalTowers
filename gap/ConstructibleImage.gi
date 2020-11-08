@@ -381,6 +381,59 @@ InstallMethod( LocallyClosedApproximationOfImage,
 end );
 
 ##
+InstallMethod( LocallyClosedApproximationOfProjectionViaGenericFreeness,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe ],
+        
+  function( Gamma )
+    local counter, step, d, projection_closure, relative_boundary_hull;
+    
+    counter := ValueOption( "counter" );
+
+    if counter = fail then
+        step := "";
+        counter := "";
+    else
+        step := "Step ";
+    fi;
+
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: dimension of Gamma..." );
+    d := Dimension( Gamma );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done => dim(Gamma) = ", d );
+    
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: closure of projection of Gamma..." );
+    projection_closure := ClosureOfProjection( Gamma );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
+    
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: closed subset of base with free fibers on complement..." );
+    relative_boundary_hull := ClosedSubsetOfBaseWithFreeFibersOverComplement( Gamma );
+    Info( InfoConstructibleImage, 6, step, counter, " in LCA: ...done" );
+
+    relative_boundary_hull := relative_boundary_hull * projection_closure;
+    
+    ## the followin line will trigger ideal intersection
+    Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ",
+          EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+    
+    return [ projection_closure - relative_boundary_hull, [ ] ];
+    
+end );
+
+##
+InstallMethod( LocallyClosedApproximationOfImageViaGenericFreeness,
+        "for a homalg ring map",
+        [ IsHomalgRingMap ],
+        
+  function( phi )
+    local Gamma;
+    
+    Gamma := GraphOfRingMorphism( phi );
+    
+    return LocallyClosedApproximationOfProjectionViaGenericFreeness( Gamma );
+    
+end );
+
+##
 InstallMethod( ConstructibleProjection,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],

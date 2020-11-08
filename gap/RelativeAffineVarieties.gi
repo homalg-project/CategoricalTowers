@@ -426,3 +426,57 @@ InstallMethod( ClosedSubsetWithGenericallyZeroDimensionalFibers,
     return Gamma0;
     
 end );
+
+##
+InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplement,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+        
+  function( Gamma )
+    local projection_closure, gamma, R, R_elim;
+
+    projection_closure := ClosureOfProjection( Gamma );
+    
+    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( Gamma ) );
+    
+    R := UnderlyingRing( Gamma );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R, R_elim ) then
+        gamma := R_elim * gamma;
+    fi;
+    
+    gamma := BasisOfRows( gamma );
+    
+    gamma := EntriesOfHomalgMatrix( gamma );
+    
+    gamma := Filtered( gamma, a -> Degree( a ) > 0 );
+    
+    gamma := List( gamma, LeadingCoefficient );
+    
+    gamma := Filtered( gamma, a -> not IsUnit( a ) );
+    
+    gamma := HomalgMatrix( gamma, Length( gamma ), 1, R_elim );
+    
+    gamma := BaseRing( R_elim ) * gamma;
+    
+    gamma := EntriesOfHomalgMatrix( gamma );
+    
+    gamma := List( gamma, IrreducibleFactors );
+    
+    gamma := Concatenation( gamma );
+    
+    gamma := Set( gamma );
+    
+    if gamma = [ ] then
+        return InitialObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) ) );
+    fi;
+    
+    gamma := List( gamma, ClosedSubsetOfSpec );
+    
+    gamma := List( gamma, a -> a * projection_closure );
+    
+    return Coproduct( gamma );
+    
+end );
