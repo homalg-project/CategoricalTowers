@@ -364,6 +364,12 @@ InstallMethod( Remove,
         AppendNew( spouses, grandparents );
     od;
     
+    if not children = pos_node!.act_children then
+        Error( "not children = pos_node!.act_children" );
+    elif not grandparents = neg_node!.act_parents then
+        Error( "not grandparents = neg_node!.act_parents" );
+    fi;
+    
     for grandparent in grandparents do
         aunts := grandparent!.act_children;
         p := IdenticalPosition( aunts, neg_node );
