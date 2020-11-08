@@ -24,9 +24,9 @@ LoadPackage( "ZariskiFrames" );
 
 #SetInfoLevel( InfoConstructibleImage, 4 );
 
-#im := ConstructibleImage( phi );
+im := ConstructibleImage( phi );
 
-#cim := CanonicalObject( im );
+cim := CanonicalObject( im );
 
 #Assert( 0, IsLocallyClosed( cim ) );
 #Assert( 0, Dimension( cim.I ) = 2 );
