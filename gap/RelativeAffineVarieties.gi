@@ -428,15 +428,13 @@ InstallMethod( ClosedSubsetWithGenericallyZeroDimensionalFibers,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplement,
+InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( Gamma )
-    local projection_closure, gamma, R, R_elim;
+    local gamma, R, R_elim;
 
-    projection_closure := ClosureOfProjection( Gamma );
-    
     gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( Gamma ) );
     
     R := UnderlyingRing( Gamma );
@@ -474,6 +472,24 @@ InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplement,
     fi;
     
     gamma := List( gamma, ClosedSubsetOfSpec );
+    
+    return Coproduct( gamma );
+    
+end );
+
+##
+InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplement,
+        "for an object in a Zariski coframe of an affine variety",
+        [ IsObjectInZariskiCoframeOfAnAffineVariety ],
+        
+  function( Gamma )
+    local gamma, projection_closure;
+    
+    gamma := ClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty( Gamma );
+    
+    gamma := KnownFactors( gamma );
+    
+    projection_closure := ClosureOfProjection( Gamma );
     
     gamma := List( gamma, a -> a * projection_closure );
     

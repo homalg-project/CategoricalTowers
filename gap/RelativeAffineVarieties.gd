@@ -102,5 +102,9 @@ DeclareOperation( "ClosedSubsetWithGenericallyZeroDimensionalFibers",
         [ IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix ] );
 
 #!
+DeclareAttribute( "ClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty",
+        IsObjectInZariskiCoframeOfAnAffineVariety );
+
+#!
 DeclareAttribute( "ClosedSubsetOfBaseWithFreeFibersOverComplement",
         IsObjectInZariskiCoframeOfAnAffineVariety );
