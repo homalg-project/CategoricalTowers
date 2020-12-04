@@ -11,8 +11,6 @@ options := rec(
     ),
 );
 
-LoadPackage( "FreydCategoriesForCAP" );
-
 TestDirectory( DirectoriesPackageLibrary( "CatReps", "tst" ), options );
 
 FORCE_QUIT_GAP( 1 ); # if we ever get here, there was an error
