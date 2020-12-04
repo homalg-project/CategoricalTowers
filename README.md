@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER -->
-# LazyCategories
+# LazyCategories&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
 ### Construct an equivalent lazy category out of a CAP category
 
@@ -22,16 +22,16 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 | 2. | [**CAP_project**](https://github.com/homalg-project/CAP_project#readme) | https://github.com/homalg-project/CAP_project.git |
 | 3. | [**CategoryConstructor**](https://github.com/homalg-project/CategoryConstructor#readme) | https://github.com/homalg-project/CategoryConstructor.git |
 
-[html-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/LazyCategories/doc/chap0_mj.html
 
-[pdf-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-url]: https://homalg-project.github.io/LazyCategories/download_pdf.html
 
-[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/LazyCategories/badge_version.json
+[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/LazyCategories/badge_version.json&label=🔗%20version&color=yellow
 [version-url]: https://homalg-project.github.io/LazyCategories/view_release.html
 
-[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/LazyCategories/badge_date.json
+[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/LazyCategories/badge_date.json&label=🔗%20released%20on&color=yellow
 [date-url]: https://homalg-project.github.io/LazyCategories/view_release.html
 
 [tests-img]: https://github.com/homalg-project/LazyCategories/workflows/Tests/badge.svg?branch=master
@@ -39,4 +39,7 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 
 [codecov-img]: https://codecov.io/gh/homalg-project/LazyCategories/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/LazyCategories
+
+[code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
+[code-url]: https://github.com/homalg-project/LazyCategories#top
 <!-- END FOOTER -->

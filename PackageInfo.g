@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
 Version := Maximum( [
-                   "2020.10-03", ## Mohamed's version
+                   "2020.12-01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08-16", ## Fabian's version
                    ## this line prevents merge conflicts
@@ -44,7 +44,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/LazyCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/LazyCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/LazyCategories",
 PackageInfoURL  := "https://homalg-project.github.io/LazyCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/LazyCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/LazyCategories/releases/download/v", ~.Version, "/LazyCategories-", ~.Version ),
