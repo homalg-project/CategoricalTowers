@@ -39,7 +39,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/HigherHomologicalAlgebra",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/HigherHomologicalAlgebra/QuotientCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/QuotientCategories",
 PackageInfoURL  := "https://homalg-project.github.io/HigherHomologicalAlgebra/QuotientCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/HigherHomologicalAlgebra/QuotientCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/HigherHomologicalAlgebra/releases/download/QuotientCategories-", ~.Version, "/QuotientCategories-", ~.Version ),
