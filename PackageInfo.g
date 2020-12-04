@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
 Version := Maximum( [
-                   "2020.11-02", ## Mohamed's version
+                   "2020.12-01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2018.10-18", ## Florian's version
                    ## this line prevents merge conflicts
@@ -47,7 +47,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/FunctorCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/FunctorCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/FunctorCategories",
 PackageInfoURL  := "https://homalg-project.github.io/FunctorCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/FunctorCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/FunctorCategories/releases/download/v", ~.Version, "/FunctorCategories-", ~.Version ),
