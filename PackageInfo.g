@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ZariskiFrames",
 Subtitle := "(Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties",
 Version := Maximum( [
-                   "2020.11-05", ## Mohamed's version
+                   "2020.12-01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.06-02", ## Markus's version
                    ## this line prevents merge conflicts
@@ -75,7 +75,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/ZariskiFrames",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/ZariskiFrames",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ZariskiFrames",
 PackageInfoURL  := "https://homalg-project.github.io/ZariskiFrames/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/ZariskiFrames/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/ZariskiFrames/releases/download/v", ~.Version, "/ZariskiFrames-", ~.Version ),
