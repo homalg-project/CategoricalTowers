@@ -4,5 +4,3 @@
 # This file tests if the package can be loaded without errors or warnings.
 #
 
-gap> LoadPackage( "FreydCategoriesForCAP", false );
-true
