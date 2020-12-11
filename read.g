@@ -11,3 +11,4 @@ ReadPackage( "IntrinsicModules", "gap/HomalgModule.gi");
 ReadPackage( "IntrinsicModules", "gap/HomalgMap.gi");
 ReadPackage( "IntrinsicModules", "gap/HomalgFunctor.gi");
 ReadPackage( "IntrinsicModules", "gap/Modules.gi" );
+ReadPackage( "IntrinsicModules", "gap/Functors.gi" );
