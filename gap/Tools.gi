@@ -6,6 +6,22 @@
 
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD,
         rec(
+            PreInverse := rec(
+                                     installation_name := "PreInverse",
+                                     filter_list := [ "morphism" ],
+                                     io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
+                                     return_type := "morphism",
+                                     dual_operation := "PostInverse",
+                                     is_merely_set_theoretic := true
+                             ),
+            PostInverse := rec(
+                                     installation_name := "PostInverse",
+                                     filter_list := [ "morphism" ],
+                                     io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
+                                     return_type := "morphism",
+                                     dual_operation := "PreInverse",
+                                     is_merely_set_theoretic := true
+                              ),
             IsWeakTerminal := rec(
                                      installation_name := "IsWeakTerminal",
                                      filter_list := [ "object" ],
@@ -240,6 +256,30 @@ end );
 # categorical methods derivations:
 #
 ####################################
+
+##
+AddDerivationToCAP( PreInverse,
+        [ [ IdentityMorphism, 1 ],
+          [ Lift, 1 ],
+          ],
+        
+  function( alpha )
+    
+    return Lift( IdentityMorphism( Range( alpha ) ), alpha );
+    
+end : Description := "PreInverse using IdentityMorphism of Range and Lift" );
+
+##
+AddDerivationToCAP( PostInverse,
+        [ [ IdentityMorphism, 1 ],
+          [ Colift, 1 ],
+          ],
+        
+  function( alpha )
+    
+    return Colift( alpha, IdentityMorphism( Source( alpha ) ) );
+    
+end : Description := "PostInverse using IdentityMorphism of Source and Colift" );
 
 ##
 AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,

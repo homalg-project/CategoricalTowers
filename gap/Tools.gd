@@ -12,6 +12,68 @@ DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 
 ###################################
 ##
+#! @Section PreInverse and PostInverse
+##
+###################################
+
+#! @Description
+#!  The argument is a morphism $\alpha: A \rightarrow B$.
+#!  The output is the preinverse $\iota: B \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(B,A)$
+#! @Arguments alpha
+#! @Returns a morphism
+DeclareOperation( "PreInverse",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The arguments are a category $C$ and a function $F$.
+#!  This operation adds the given function $F$
+#!  to the category for the basic operation <C>PreInverse</C>.
+#!  $F: A, B \mapsto \mathrm{PreInverse}(A, B)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPreInverse",
+        [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPreInverse",
+        [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPreInverse",
+        [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPreInverse",
+        [ IsCapCategory, IsList ] );
+
+#! @Description
+#!  The argument is a morphism $\alpha: A \rightarrow B$.
+#!  The output is the postinverse $\iota: B \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(B,A)$
+#! @Arguments alpha
+#! @Returns a morphism
+DeclareOperation( "PostInverse",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The arguments are a category $C$ and a function $F$.
+#!  This operation adds the given function $F$
+#!  to the category for the basic operation <C>PostInverse</C>.
+#!  $F: A, B \mapsto \mathrm{PostInverse}(A, B)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPostInverse",
+        [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPostInverse",
+        [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPostInverse",
+        [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPostInverse",
+        [ IsCapCategory, IsList ] );
+
+###################################
+##
 #! @Section IsWeakTerminal
 ##
 ###################################
@@ -305,3 +367,11 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCatego
 #! @Section Operations
 #
 ####################################
+
+#!
+DeclareOperation( "PostInverse",
+        [ IsCapCategoryMorphism ] );
+
+#!
+DeclareOperation( "PreInverse",
+        [ IsCapCategoryMorphism ] );
