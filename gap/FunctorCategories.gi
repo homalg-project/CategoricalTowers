@@ -2398,17 +2398,21 @@ InstallMethod( IndecProjectiveObjects,
         [ IsFunctorCategory ],
         
   function ( Hom )
-    local A;
+    local A, A_oid_op, Y;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
     if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
       
-      TryNextMethod();
+      TryNextMethod( );
       
     fi;
     
-    return List( IndecProjRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
+    A_oid_op := OppositeAlgebroid( Source( Hom ) );
+    
+    Y := YonedaEmbedding( A_oid_op );
+    
+    return List( SetOfObjects( A_oid_op ), o -> ApplyFunctor( Y, o ) );
     
 end );
 
