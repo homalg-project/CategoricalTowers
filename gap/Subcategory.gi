@@ -285,69 +285,6 @@ InstallMethod( Subcategory,
         return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
-        
-        ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
-          function( r, phi )
-            
-            return AsSubcategoryCell( CapCategory( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( phi ) ) );
-            
-        end );
-        
-    fi;
-    
-    if HasRangeCategoryOfHomomorphismStructure( C ) then
-        
-        SetRangeCategoryOfHomomorphismStructure( D, RangeCategoryOfHomomorphismStructure( C ) );
-        
-        if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
-            AddDistinguishedObjectOfHomomorphismStructure( D,
-              function( )
-                
-                return DistinguishedObjectOfHomomorphismStructure( C );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "HomomorphismStructureOnObjects" ) then
-            AddHomomorphismStructureOnObjects( D,
-              function( a, b )
-                
-                return HomomorphismStructureOnObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
-            AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-              function( s, alpha, beta, r )
-                
-                return HomomorphismStructureOnMorphismsWithGivenObjects( s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
-            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-              function( alpha )
-                
-                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( alpha ) );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
-            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-              function( a, b, iota )
-                
-                return AsSubcategoryCell( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
-                
-            end );
-        fi;
-        
-    fi;
-    
     finalize := ValueOption( "FinalizeCategory" );
     
     if finalize = false then
