@@ -260,7 +260,7 @@ InstallMethod( LazySliceCategory,
         
     od;
     
-    properties := [ #"IsEnrichedOverCommutativeRegularSemigroup",  cannot be inherited
+    properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                     #"IsAbCategory", cannot be inherited
                     #"IsLinearCategoryOverCommutativeRing", cannot be inherited
                     ];
