@@ -30,7 +30,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    # "IsZeroForObjects"
    "Lift",
    "LiftAlongMonomorphism",
-   "MultiplyWithElementOfCommutativeRingForMorphisms",
+   #"MultiplyWithElementOfCommutativeRingForMorphisms", violates the commutativity of the defining triangle of morphisms
    "PostCompose",
    "PreCompose",
    "SubtractionForMorphisms",
