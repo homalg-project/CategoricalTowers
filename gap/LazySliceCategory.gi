@@ -145,7 +145,7 @@ InstallMethod( LazySliceCategory,
     local C, over_tensor_unit, name, category_filter,
           category_object_filter, category_morphism_filter,
           create_func_bool, create_func_morphism, create_func_universal_morphism,
-          list_of_operations_to_install, skip, func, pos, commutative_ring,
+          list_of_operations_to_install, skip, func, pos,
           properties, S, finalize;
     
     C := CapCategory( B );
@@ -248,7 +248,7 @@ InstallMethod( LazySliceCategory,
     
     list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
     
-    skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
+    skip := [ 
               ];
     
     for func in skip do
@@ -260,15 +260,9 @@ InstallMethod( LazySliceCategory,
         
     od;
     
-    if HasCommutativeRingOfLinearCategory( C ) then
-        commutative_ring := CommutativeRingOfLinearCategory( C );
-    else
-        commutative_ring := fail;
-    fi;
-    
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing"
+    properties := [ #"IsEnrichedOverCommutativeRegularSemigroup",  cannot be inherited
+                    #"IsAbCategory", cannot be inherited
+                    #"IsLinearCategoryOverCommutativeRing", cannot be inherited
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
@@ -280,7 +274,6 @@ InstallMethod( LazySliceCategory,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
-                 commutative_ring := commutative_ring,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
@@ -415,18 +408,6 @@ InstallMethod( LazySliceCategory,
         return IsLiftable( UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
         
     end );
-    
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
-        
-        ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( S,
-          function( r, phi )
-            
-            return AsSliceCategoryCell( Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( phi ) ), Range( phi ) );
-            
-        end );
-        
-    fi;
     
     if CanCompute( C, "ProjectionOfBiasedWeakFiberProduct" ) then
         

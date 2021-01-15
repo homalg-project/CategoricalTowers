@@ -229,9 +229,9 @@ InstallMethod( Subcategory,
         commutative_ring := fail;
     fi;
     
-    properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
-                    "IsAbCategory",
-                    "IsLinearCategoryOverCommutativeRing"
+    properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
+                    #"IsAbCategory", cannot be inherited
+                    #"IsLinearCategoryOverCommutativeRing", cannot be inherited
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
