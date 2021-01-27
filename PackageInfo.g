@@ -48,7 +48,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/IntrinsicCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/IntrinsicCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/IntrinsicCategories",
 PackageInfoURL  := "https://homalg-project.github.io/IntrinsicCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/IntrinsicCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/IntrinsicCategories/releases/download/v", ~.Version, "/IntrinsicCategories-", ~.Version ),
