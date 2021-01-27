@@ -64,7 +64,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CategoriesWithAmbientObjects",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CategoriesWithAmbientObjects",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects",
 PackageInfoURL  := "https://homalg-project.github.io/CategoriesWithAmbientObjects/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CategoriesWithAmbientObjects/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoriesWithAmbientObjects/releases/download/v", ~.Version, "/CategoriesWithAmbientObjects-", ~.Version ),
