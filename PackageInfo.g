@@ -74,7 +74,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/Locales",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/Locales",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/Locales",
 PackageInfoURL  := "https://homalg-project.github.io/Locales/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/Locales/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/Locales/releases/download/v", ~.Version, "/Locales-", ~.Version ),
