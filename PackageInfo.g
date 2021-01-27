@@ -46,7 +46,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CategoryConstructor",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CategoryConstructor",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/CategoryConstructor",
 PackageInfoURL  := "https://homalg-project.github.io/CategoryConstructor/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CategoryConstructor/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoryConstructor/releases/download/v", ~.Version, "/CategoryConstructor-", ~.Version ),
