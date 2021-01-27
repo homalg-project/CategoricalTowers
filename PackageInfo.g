@@ -60,7 +60,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/IntrinsicModules",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/IntrinsicModules",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/IntrinsicModules",
 PackageInfoURL  := "https://homalg-project.github.io/IntrinsicModules/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/IntrinsicModules/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/IntrinsicModules/releases/download/v", ~.Version, "/IntrinsicModules-", ~.Version ),
