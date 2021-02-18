@@ -417,7 +417,7 @@ InstallMethod( Category,
 end );
 
 ##
-InstallMethodWithCache( Category,
+InstallMethodWithCache( FreeCategory,
         "for a QPA quiver",
         [ IsQuiver ],
         
@@ -760,7 +760,7 @@ InstallMethod( TrivialCategory,
         Error( "parity must be either \"left\" or \"right\"" );
     fi;
     
-    return Category( trivial_quiver );
+    return FreeCategory( trivial_quiver );
 end );
 
 ##

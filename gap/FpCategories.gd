@@ -288,7 +288,7 @@ DeclareOperation( "Category",
 #! @Arguments q
 #! @Returns a &CAP; category
 #! @Group FpCategory
-DeclareOperation( "Category",
+DeclareOperation( "FreeCategory",
         [ IsQuiver ] );
 
 #! @Arguments q, L
