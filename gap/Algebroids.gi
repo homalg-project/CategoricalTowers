@@ -35,6 +35,13 @@ DeclareRepresentation( "IsCapCategoryMorphismInAlgebroidRep",
 ####################################
 
 ##
+InstallOtherMethod( Range,
+        "for a primitive path",
+        [ IsPrimitivePath and IsNontrivialPath and IsArrow ],
+        
+  Target );
+
+##
 InstallMethod( SetOfObjects,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],
