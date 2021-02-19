@@ -238,7 +238,11 @@ InstallMethod( YonedaEmbedding,
     AddMorphismFunction( Yoneda,
       function ( s, m, r )
         
-        m := OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / algebroid_op;
+        m := MorphismInAlgebroid(
+                OppositePath( UnderlyingVertex( Range( m ) ) ) / algebroid_op,
+                OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ),
+                OppositePath( UnderlyingVertex( Source( m ) ) ) / algebroid_op
+              );
         
         m := List( objs, o -> HomStructure( m, o ) );
         
