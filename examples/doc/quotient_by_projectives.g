@@ -17,7 +17,7 @@
 #! Quotient category( Category of left presentations of Z ) by congruence_func
 #! gap> F := ProjectionFunctor( quotient_cat );;
 #! gap> a := FreeLeftPresentation( 3, ZZ );
-#! <An object in Category of left presentations of Z>
+#! <A projective object in Category of left presentations of Z>
 #! gap> quotient_a := ApplyFunctor( F, a );
 #! <An object in Quotient category( Category of left presentations of Z ) by congruence_func>
 #! gap> IsZero( quotient_a );
