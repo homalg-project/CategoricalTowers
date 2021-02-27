@@ -23,7 +23,7 @@ M := Intrinsify( category, M );
 #!  of left presentations of Q[x,y]>>
 F := Intrinsify( category, Source( phi ) );
 #! <an intrinsic object on active cell:
-#!  <An object in Category of left presentations of Q[x,y]>>
+#!  <A projective object in Category of left presentations of Q[x,y]>>
 phi := Intrinsify( phi, F, 1, M, 1 );
 #! <an intrinsic morphism on active cell:
 #!  <A morphism in Category of left presentations of Q[x,y]>>

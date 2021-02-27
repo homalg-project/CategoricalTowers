@@ -14,8 +14,8 @@ R := QQ * "x,y";
 category := IntrinsicCategory( LeftPresentations( R ) );
 #! intrinsic Category of left presentations of Q[x,y]
 S := Intrinsify( category, FreeLeftPresentation( 1, R ) );
-#! <an intrinsic object on active cell: <An object in Category
-#!  of left presentations of Q[x,y]>>
+#! <an intrinsic object on active cell:
+#!  <A projective object in Category of left presentations of Q[x,y]>>
 object_func := function( i ) return S; end;
 #! function( i ) ... end
 morphism_func := function( i ) return IdentityMorphism( S ); end;
@@ -24,8 +24,8 @@ C0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, ca
 #! <An object in Functors from integers into intrinsic Category
 #!  of left presentations of Q[x,y]>
 S2 := Intrinsify( category, FreeLeftPresentation( 2, R ) );
-#! <an intrinsic object on active cell: <An object in Category
-#!  of left presentations of Q[x,y]>>
+#! <an intrinsic object on active cell:
+#!  <A projective object in Category of left presentations of Q[x,y]>>
 C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );
 #! <An object in Functors from integers into intrinsic Category
 #!  of left presentations of Q[x,y]>
