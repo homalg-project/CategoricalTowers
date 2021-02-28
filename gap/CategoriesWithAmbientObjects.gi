@@ -436,12 +436,12 @@ InstallMethod( CategoryWithAmbientObject,
         if CanCompute( abelian_category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
             
             AddMultiplyWithElementOfCommutativeRingForMorphisms( category_with_ambient_objects,
-              function( r, alpha )
+              function( r, morphism )
                 
                 return MorphismWithAmbientObject(
-                               Source( alpha ),
-                               MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( alpha ) ),
-                               Range( alpha ) );
+                               Source( morphism ),
+                               MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( morphism ) ),
+                               Range( morphism ) );
                 
             end );
             
