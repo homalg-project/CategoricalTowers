@@ -12,7 +12,7 @@ SetPackageInfo( rec(
 PackageName := "CategoriesWithAmbientObjects",
 Subtitle := "Categories with objects having ambient objects",
 Version := Maximum( [
-                   "2021.02-03", ## Mohamed's version
+                   "2021.03-01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2015.10-06", ## Kamal's version
                    ## this line prevents merge conflicts
@@ -99,6 +99,7 @@ Dependencies := rec(
                    [ "AutoDoc", ">= 2013.12.04" ],
                    [ "AttributeCategoryForCAP", ">= 2016.09.14" ],
                    [ "GeneralizedMorphismsForCAP", ">= 2017.04.01" ],
+                   [ "FreydCategoriesForCAP", ">= 2020.09-21" ],
                    [ "ToolsForHomalg", ">= 2015.09.23" ],
                    [ "GAPDoc", ">= 1.1" ]
                    ],

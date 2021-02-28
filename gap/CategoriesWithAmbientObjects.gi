@@ -532,6 +532,40 @@ InstallMethod( CategoryWithAmbientObject,
         
     fi;
     
+    if CanCompute( abelian_category, "EpimorphismFromSomeProjectiveObject" ) then
+        
+        AddEpimorphismFromSomeProjectiveObject( category_with_ambient_objects,
+          function( object )
+            local pi;
+            
+            pi := EpimorphismFromSomeProjectiveObject( UnderlyingCell( object ) );
+            
+            return MorphismWithAmbientObject(
+                           ObjectWithAmbientObject( AsGeneralizedMorphismByCospan( IdentityMorphism( Source( pi ) ) ), CapCategory( object ) ),
+                           pi,
+                           object );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( abelian_category, "EpimorphismFromSomeProjectiveObjectForKernelObject" ) then
+        
+        AddEpimorphismFromSomeProjectiveObjectForKernelObject( category_with_ambient_objects,
+          function( morphism )
+            local pi;
+            
+            pi := EpimorphismFromSomeProjectiveObjectForKernelObject( UnderlyingCell( morphism ) );
+            
+            return MorphismWithAmbientObject(
+                           ObjectWithAmbientObject( AsGeneralizedMorphismByCospan( IdentityMorphism( Source( pi ) ) ), CapCategory( morphism ) ),
+                           pi,
+                           KernelObject( morphism ) );
+            
+        end );
+        
+    fi;
+    
     ADD_FUNCTIONS_FOR_CATEGORY_WITH_AMBIENT_OBJECTS( category_with_ambient_objects );
     
     ## TODO: Logic for category_with_ambient_objects
