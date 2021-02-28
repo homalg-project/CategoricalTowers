@@ -196,7 +196,7 @@ InstallMethod( CategoryWithAmbientObject,
         [ IsCapCategory ],
         
   function( abelian_category )
-    local category_with_ambient_objects, structure_record,
+    local category_with_ambient_objects, prop, structure_record,
           preconditions, category_weight_list,
           zero_object;
     
@@ -212,6 +212,11 @@ InstallMethod( CategoryWithAmbientObject,
     fi;
     
     category_with_ambient_objects := CreateCapCategory( Concatenation( Name( abelian_category ), " with ambient objects" ) );
+    
+    for prop in ListKnownCategoricalProperties( abelian_category ) do
+        prop := ValueGlobal( prop );
+        Setter( prop )( category_with_ambient_objects, prop( abelian_category ) );
+    od;
     
     structure_record := rec(
       underlying_category := abelian_category,
