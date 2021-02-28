@@ -132,6 +132,13 @@ InstallMethod( AdditiveInverseMutable,
   AdditiveInverseForMorphisms );
 
 ##
+InstallMethod( MulMorphism,
+        "for a ring element and a homalg/CAP module map",
+        [ IsRingElement, IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        
+  MultiplyWithElementOfCommutativeRingForMorphisms );
+
+##
 InstallMethod( CoproductMorphism,
         "for two homalg/CAP module maps",
         [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism,

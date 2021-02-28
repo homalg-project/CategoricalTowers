@@ -12,7 +12,7 @@ PackageName := "IntrinsicModules",
 Subtitle := "Finitely presented modules over computable rings allowing multiple presentations and the notion of elements",
 
 Version := Maximum( [
-                   "2021.02-01", ## Mohamed's version
+                   "2021.02-02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2017.03-14", ## Kamals's version
                    ## this line prevents merge conflicts
@@ -99,7 +99,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2020.10-01" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],
                    [ "IntrinsicCategories", ">= 2019.03.05" ],
-                   [ "CategoriesWithAmbientObjects", ">= 2017.05.01" ],
+                   [ "CategoriesWithAmbientObjects", ">= 2021.02-01" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
