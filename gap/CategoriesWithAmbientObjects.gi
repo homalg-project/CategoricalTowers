@@ -281,32 +281,6 @@ InstallMethod( CategoryWithAmbientObject,
           end;
     fi;
     
-    ## TensorUnit with ambient object
-    preconditions := [ "TensorUnit" ];
-    
-    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
-        
-        structure_record.TensorUnit :=
-          function( underlying_tensor_unit )
-            local gen, lazy;
-            
-            gen := AsGeneralizedMorphismByCospan( IdentityMorphism( underlying_tensor_unit ) );
-            
-            Assert( 4, IsMonomorphism( gen ) );
-            SetIsSplitMonomorphism( gen, true );
-            
-            lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
-                            underlying_tensor_unit,
-                            IdFunc,
-                            [ [ IdFunc, gen ] ] );
-            
-            SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
-            
-            return [ lazy ];
-            
-          end;
-    fi;
-    
     ## DirectSum with ambient object
     preconditions := [ "DirectSum",
                        "PreCompose" ];
@@ -372,6 +346,32 @@ InstallMethod( CategoryWithAmbientObject,
             
           end;
         
+    fi;
+    
+    ## TensorUnit with ambient object
+    preconditions := [ "TensorUnit" ];
+    
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
+        
+        structure_record.TensorUnit :=
+          function( underlying_tensor_unit )
+            local gen, lazy;
+            
+            gen := AsGeneralizedMorphismByCospan( IdentityMorphism( underlying_tensor_unit ) );
+            
+            Assert( 4, IsMonomorphism( gen ) );
+            SetIsSplitMonomorphism( gen, true );
+            
+            lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                            underlying_tensor_unit,
+                            IdFunc,
+                            [ [ IdFunc, gen ] ] );
+            
+            SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
+            
+            return [ lazy ];
+            
+          end;
     fi;
     
     structure_record.NoInstallList := [ "Lift", "Colift" ];
