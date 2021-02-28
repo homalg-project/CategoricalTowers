@@ -379,6 +379,84 @@ InstallMethod( CategoryWithAmbientObject,
           end;
     fi;
     
+    ## TensorProductOnObjects with ambient object
+    preconditions := [ "TensorProductOnObjects" ];
+    
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
+        
+        structure_record.TensorProductOnObjects :=
+          function( object1, object2, underlying_tensor_product )
+            local gen, lazy;
+            
+            gen := AsGeneralizedMorphismByCospan( IdentityMorphism( underlying_tensor_product ) );
+            
+            Assert( 4, IsMonomorphism( gen ) );
+            SetIsSplitMonomorphism( gen, true );
+            
+            lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                            underlying_tensor_product,
+                            IdFunc,
+                            [ [ IdFunc, gen ] ] );
+            
+            SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
+            
+            return [ lazy ];
+            
+          end;
+    fi;
+    
+    ## DualOnObjects with ambient object
+    preconditions := [ "IsomorphismFromDualToInternalHom" ];
+    
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
+        
+        structure_record.DualOnObjects :=
+          function( object, underlying_dual_object )
+            local gen, lazy;
+            
+            gen := AsGeneralizedMorphismByCospan( IdentityMorphism( underlying_dual_object ) );
+            
+            Assert( 4, IsMonomorphism( gen ) );
+            SetIsSplitMonomorphism( gen, true );
+            
+            lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                            underlying_dual_object,
+                            IdFunc,
+                            [ [ IdFunc, gen ] ] );
+            
+            SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
+            
+            return [ lazy ];
+            
+          end;
+    fi;
+    
+    ## InternalHomOnObjects with ambient object
+    preconditions := [ "InternalHomOnObjects" ];
+    
+    if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
+        
+        structure_record.InternalHomOnObjects :=
+          function( object1, object2, underlying_internal_hom )
+            local gen, lazy;
+            
+            gen := AsGeneralizedMorphismByCospan( IdentityMorphism( underlying_internal_hom ) );
+            
+            Assert( 4, IsMonomorphism( gen ) );
+            SetIsSplitMonomorphism( gen, true );
+            
+            lazy := CreateLazyGeneralizedEmbeddingInAmbientObject(
+                            underlying_internal_hom,
+                            IdFunc,
+                            [ [ IdFunc, gen ] ] );
+            
+            SetEvaluatedGeneralizedEmbeddingInAmbientObject( lazy, gen );
+            
+            return [ lazy ];
+            
+          end;
+    fi;
+    
     structure_record.NoInstallList := [ "Lift", "Colift" ];
     
     structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
