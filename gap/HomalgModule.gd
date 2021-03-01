@@ -50,5 +50,3 @@ DeclareOperation( "LeftPresentation",
 DeclareOperation( "RightPresentation",
         [ IsHomalgMatrix ] );
 #! @InsertChunk RightPresentation
-
-#! @Section Operations and global functions
