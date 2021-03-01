@@ -9,7 +9,7 @@
 #! A &homalg; module is a data structure for a finitely presented module. A presentation is given by
 #! a set of generators and a set of relations among these generators. The data structure for modules in &homalg;
 #! has two novel features:
-#! *  The data structure allows several presentations linked with so-called transition matrices.
+#! * The data structure allows several presentations linked with so-called transition matrices.
 #!   One of the presentations is marked as the default presentation, which is usually the last added one.
 #!   A new presentation can always be added provided it is linked to the default presentation by a transition matrix.
 #!   If needed, the user can reset the default presentation by choosing one of the other presentations saved
