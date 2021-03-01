@@ -47,7 +47,8 @@ DeclareOperation( "LeftPresentation",
 #! @InsertChunk LeftPresentation
 
 #! @Description
-#!  
+#!  This constructor returns the finitely presented right module with relations
+#!  given by the columns of the &homalg; matrix <A>mat</A>.
 #! @Arguments mat
 #! @Returns a &homalg; right module
 DeclareOperation( "RightPresentation",
