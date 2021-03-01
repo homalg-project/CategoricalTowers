@@ -120,6 +120,8 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
        "IsCyclic",
        ];
     
+    SetFilterObj( A, IsCategoryOfHomalgModules );
+    
     ## TODO: legacy
     SetFilterObj( A, IsHomalgCategory );
     

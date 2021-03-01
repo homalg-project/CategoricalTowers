@@ -6,6 +6,12 @@
 
 #! @Chapter Categories of finitely presented modules
 
+#! @Section GAP categories
+
+#!
+DeclareCategory( "IsCategoryOfHomalgModules",
+        IsCapCategory );
+
 #! @Section Constructors
 
 DeclareGlobalFunction( "INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS" );

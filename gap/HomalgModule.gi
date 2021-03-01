@@ -296,8 +296,8 @@ end );
 
 ##
 InstallMethod( Intrinsify,
-        "for a CAP intrinsic category and an object with ambient object",
-        [ IsCapCategory, IsCapCategoryObjectWithAmbientObject ],
+        "for a category of homalg modules and an object with ambient object",
+        [ IsCategoryOfHomalgModules, IsCapCategoryObjectWithAmbientObject ],
 
   function( A, cell )
     local left, rels, M, R;
