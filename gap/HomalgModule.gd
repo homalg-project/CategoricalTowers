@@ -26,10 +26,11 @@
 
 #! @Section Constructors
 
-#! @Description
-#!  
-#! @Arguments M
-#! @Returns a &homalg; module, i.e., an intrinsic module with generators for each cell
+# @Description
+#  This is a technical operation meant to avoid code duplication
+#  in <C>LeftPresentation</C>/<C>RightPresentation</C>.
+# @Arguments M
+# @Returns a &homalg; module, i.e., an intrinsic module with generators for each cell
 DeclareOperation( "HomalgModule",
         [ IsLeftOrRightPresentation ] );
 
