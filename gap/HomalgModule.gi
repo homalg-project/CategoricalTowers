@@ -385,7 +385,7 @@ end );
 
 ##
 InstallMethod( RightPresentation,
-        "constructor for homalg right modules",
+        "for a homalg matrix",
         [ IsHomalgMatrix ],
 
   function( M )
