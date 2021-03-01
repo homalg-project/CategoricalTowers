@@ -34,6 +34,9 @@
 DeclareOperation( "HomalgModule",
         [ IsLeftOrRightPresentation ] );
 
+## remove the enclosing "if false then" once the homalg_project package Modules is deprecated
+if false then
+
 #! @Description
 #!  This constructor returns the finitely presented left module with relations
 #!  given by the rows of the &homalg; matrix <A>mat</A>.
@@ -50,3 +53,5 @@ DeclareOperation( "LeftPresentation",
 DeclareOperation( "RightPresentation",
         [ IsHomalgMatrix ] );
 #! @InsertChunk RightPresentation
+
+fi;

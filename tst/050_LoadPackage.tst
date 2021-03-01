@@ -6,7 +6,5 @@
 
 gap> LoadPackage( "IntrinsicModules", false );
 #I  method installed for UnderlyingCell matches more than one declaration
-#I  equal requirements in multiple declarations for operation `LeftPresentation'
-#I  equal requirements in multiple declarations for operation `RightPresentation'
 #I  method installed for HomalgMap matches more than one declaration
 true
