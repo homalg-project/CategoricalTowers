@@ -6,5 +6,4 @@
 
 gap> LoadPackage( "IntrinsicModules", false );
 #I  method installed for UnderlyingCell matches more than one declaration
-#I  method installed for HomalgMap matches more than one declaration
 true

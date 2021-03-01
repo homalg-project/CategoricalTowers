@@ -8,6 +8,9 @@
 
 #! @Section Constructors
 
+## remove the enclosing "if false then" once the homalg_project package Modules is deprecated
+if false then
+
 #! @Description
 #!  This constructor returns a map (homomorphism) of finitely presented modules. It is represented by the
 #!  &homalg; matrix <A>mat</A> relative to the current set of generators of the source &homalg; module <A>M</A>
@@ -25,6 +28,8 @@
 DeclareOperation( "HomalgMap",
         [ IsHomalgMatrix, IsHomalgModule, IsHomalgModule ] );
 #! @InsertChunk HomalgMap
+
+fi;
 
 #! @Section Operations and global functions
 
