@@ -399,6 +399,32 @@ InstallMethod( RightPresentation,
 end );
 
 ##
+InstallMethod( HomalgFreeLeftModule,
+        "for an integer and a homalg ring",
+        [ IsInt, IsHomalgRing ],
+
+  function( r, R )
+    
+    CategoryOfHomalgFinitelyPresentedLeftModules( R );
+    
+    return HomalgModule( FreeLeftPresentation( r, R ) );
+    
+end );
+
+##
+InstallMethod( HomalgFreeRightModule,
+        "for an integer and a homalg ring",
+        [ IsInt, IsHomalgRing ],
+
+  function( r, R )
+    
+    CategoryOfHomalgFinitelyPresentedRightModules( R );
+    
+    return HomalgModule( FreeRightPresentation( r, R ) );
+    
+end );
+
+##
 InstallMethod( HomalgZeroLeftModule,
         "for a homalg ring",
         [ IsHomalgRing ],
