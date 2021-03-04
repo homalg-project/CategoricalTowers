@@ -2421,17 +2421,23 @@ InstallMethod( IndecInjectiveObjects,
         [ IsFunctorCategory ],
         
   function ( Hom )
-    local A;
+    local A, A_oid_op, Hom_op, indec_proj;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
     if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
-      
-      TryNextMethod();
+        
+        TryNextMethod( );
       
     fi;
     
-    return List( IndecInjRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
+    A_oid_op := OppositeAlgebroid( Source( Hom ) );
+    
+    Hom_op := FunctorCategory( A_oid_op, Range( Hom ) );
+    
+    indec_proj := IndecProjectiveObjects( Hom_op );
+    
+    return List( indec_proj, DualOfObjectInFunctorCategory );
     
 end );
 
