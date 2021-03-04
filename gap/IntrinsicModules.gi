@@ -85,7 +85,10 @@ end );
 ##
 BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
   function( R, left, filter_obj, filter_mor, filter_end )
-    local A, etaSM, etaZG, etaLG;
+    local info_level, A, etaSM, etaZG, etaLG;
+    
+    info_level := InfoLevel( InfoDebug );
+    SetInfoLevel( InfoDebug, 0 );
     
     if left then
         A := LeftPresentations( R : FinalizeCategory := false );
@@ -104,6 +107,8 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
                  filter_mor := filter_mor,
                  filter_end := filter_end,
                  todo_func := INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+    
+    SetInfoLevel( InfoDebug, info_level );
     
     A!.MorphismConstructor := HomalgMap;
     A!.TypeOfElements := TheTypeHomalgModuleElement;
