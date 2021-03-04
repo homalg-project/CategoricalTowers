@@ -1991,73 +1991,17 @@ InstallMethodWithCache( FunctorCategory,
       SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
       
       AddIsProjective( Hom,
-        { Hom, F } -> IsProjectiveRepresentation(
-                          ConvertToCellInCategoryOfQuiverRepresentations( F )
-                      )
-      );
+        { Hom, F } -> IsSplitEpimorphism( ProjectiveCover( F ) ) );
       
       AddIsInjective( Hom,
-        { Hom, F } -> IsInjectiveRepresentation(
-                          ConvertToCellInCategoryOfQuiverRepresentations( F )
-                      )
-      );
+        { Hom, F } -> IsSplitMonomorphism( InjectiveEnvelope( F ) ) );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
-        function( Hom, F )
-          local reps, R, epi, PR;
-          
-          reps := CategoryOfQuiverRepresentations( kq );
-          
-          R := ConvertToCellInCategoryOfQuiverRepresentations( F );
-          
-          epi := EpimorphismFromSomeProjectiveObject( reps, R );
-          
-          PR := ConvertToCellInFunctorCategory( Source( epi ), Hom );
-          
-          return ConvertToCellInFunctorCategory( PR, epi, F );
-          
-      end );
-
+        { Hom, F } -> ProjectiveCover( F ) );
+      
       AddMonomorphismIntoSomeInjectiveObject( Hom,
-        function( Hom, F )
-          local reps, R, mo, IR;
-          
-          reps := CategoryOfQuiverRepresentations( kq );
-          
-          R := ConvertToCellInCategoryOfQuiverRepresentations( F );
-          
-          mo := MonomorphismIntoSomeInjectiveObject( reps, R );
-          
-          IR := ConvertToCellInFunctorCategory( Range( mo ), Hom );
-          
-          return ConvertToCellInFunctorCategory( F, mo, IR );
-          
-      end );
+        { Hom, F } -> InjectiveEnvelope( F ) );
       
-      AddProjectiveLift( Hom,
-        { Hom, alpha, epi } ->
-            ConvertToCellInFunctorCategory(
-              Source( alpha ),
-              ProjectiveLift(
-                CategoryOfQuiverRepresentations( kq ),
-                ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
-                ConvertToCellInCategoryOfQuiverRepresentations( epi ) ),
-              Source( epi )
-          )
-      );
-      
-      AddInjectiveColift( Hom,
-        { Hom, mono, alpha } ->
-            ConvertToCellInFunctorCategory(
-              Range( mono ),
-              InjectiveColift(
-                CategoryOfQuiverRepresentations( kq ),
-                ConvertToCellInCategoryOfQuiverRepresentations( mono ),
-                ConvertToCellInCategoryOfQuiverRepresentations( alpha ) ),
-              Range( alpha )
-          )
-      );
-    
     fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
