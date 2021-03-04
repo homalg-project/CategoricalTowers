@@ -13,3 +13,7 @@ DeclareAttribute( "MorphismsFromDirectSumDecompositionOfProjectiveCover", IsObje
 DeclareAttribute( "DirectSumDecompositionOfProjectiveObject", IsObjectInFunctorCategory );
 
 DeclareAttribute( "ProjectiveCover", IsObjectInFunctorCategory );
+
+DeclareAttribute( "DualOfObjectInFunctorCategory", IsObjectInFunctorCategory );
+
+DeclareAttribute( "DualOfMorphismInFunctorCategory", IsMorphismInFunctorCategory );

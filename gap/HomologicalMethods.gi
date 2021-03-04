@@ -172,3 +172,63 @@ InstallMethod( ProjectiveCover,
     return UniversalMorphismFromDirectSumWithGivenDirectSum( Hom, List( dec, Source ), F, dec, D );
     
 end );
+
+##
+InstallMethod( DualOfObjectInFunctorCategory,
+          [ IsObjectInFunctorCategory ],
+          
+  function ( F )
+    local Hom, B, kvec, Hom_op, images_of_morphisms, D_F;
+    
+    Hom := CapCategory( F );
+    
+    B := Source( Hom );
+    
+    kvec := Range( Hom );
+    
+    if not IsMatrixCategory( kvec ) then
+        
+        Error( "The range category should be a category of matrices" );
+        
+    fi;
+    
+    Hom_op := FunctorCategory( OppositeAlgebroid( B ), kvec );
+    
+    images_of_morphisms := List( ValuesOfFunctor( F )[2], v -> TransposedMatrix( UnderlyingMatrix( v ) ) / kvec );
+    
+    D_F := AsObjectInFunctorCategoryByValues( Hom_op, ValuesOfFunctor( F )[1], images_of_morphisms );
+    
+    SetDualOfObjectInFunctorCategory( D_F, F );
+    
+    return D_F;
+    
+end );
+
+##
+InstallMethod( DualOfMorphismInFunctorCategory,
+        [ IsMorphismInFunctorCategory ],
+        
+  function ( eta )
+    local Hom, F, G, Hom_op, B_op, kvec, images_of_objects, D_eta;
+    
+    Hom := CapCategory( eta );
+    
+    F := DualOfObjectInFunctorCategory( Source( eta ) );
+    
+    G := DualOfObjectInFunctorCategory( Range( eta ) );
+    
+    Hom_op := CapCategory( F );
+    
+    B_op := Source( Hom_op );
+    
+    kvec := Range( Hom_op );
+    
+    images_of_objects := List( ValuesOnAllObjects( eta ), v -> TransposedMatrix( UnderlyingMatrix( v ) ) / kvec );
+    
+    D_eta := AsMorphismInFunctorCategoryByValues( Hom, G, images_of_objects, F );
+    
+    SetDualOfMorphismInFunctorCategory( D_eta, eta );
+    
+    return D_eta;
+    
+end );
