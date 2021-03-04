@@ -232,3 +232,21 @@ InstallMethod( DualOfMorphismInFunctorCategory,
     return D_eta;
     
 end );
+
+##
+InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
+        [ IsObjectInFunctorCategory ],
+        
+  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInFunctorCategory( F ) ), DualOfMorphismInFunctorCategory ) );
+
+##
+InstallMethod( DirectSumDecompositionOfInjectiveObject,
+        [ IsObjectInFunctorCategory ],
+        
+  F -> List( DirectSumDecompositionOfProjectiveObject( DualOfObjectInFunctorCategory( F ) ), DualOfMorphismInFunctorCategory ) );
+
+##
+InstallMethod( InjectiveEnvelope,
+        [ IsObjectInFunctorCategory ],
+        
+  F -> DualOfMorphismInFunctorCategory( ProjectiveCover( DualOfObjectInFunctorCategory( F ) ) ) );

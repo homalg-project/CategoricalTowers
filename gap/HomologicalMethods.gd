@@ -17,3 +17,9 @@ DeclareAttribute( "ProjectiveCover", IsObjectInFunctorCategory );
 DeclareAttribute( "DualOfObjectInFunctorCategory", IsObjectInFunctorCategory );
 
 DeclareAttribute( "DualOfMorphismInFunctorCategory", IsMorphismInFunctorCategory );
+
+DeclareAttribute( "MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope", IsObjectInFunctorCategory );
+
+DeclareAttribute( "DirectSumDecompositionOfInjectiveObject", IsObjectInFunctorCategory );
+
+DeclareAttribute( "InjectiveEnvelope", IsObjectInFunctorCategory );
