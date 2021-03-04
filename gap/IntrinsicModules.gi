@@ -90,6 +90,8 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     info_level := InfoLevel( InfoDebug );
     SetInfoLevel( InfoDebug, 0 );
     
+    SuspendMethodReordering();
+    
     if left then
         A := LeftPresentations( R : FinalizeCategory := false );
         AddImageEmbedding( A, ImageEmbeddingForLeftModules );
@@ -109,6 +111,8 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
                  todo_func := INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     SetInfoLevel( InfoDebug, info_level );
+    
+    ResumeMethodReordering();
     
     A!.MorphismConstructor := HomalgMap;
     A!.TypeOfElements := TheTypeHomalgModuleElement;
