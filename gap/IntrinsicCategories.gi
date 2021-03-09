@@ -1362,6 +1362,61 @@ InstallMethod( IntrinsicCategory,
         IC!.IsCapCategoryIntrinsicEndomorphism := IsCapCategoryIntrinsicMorphism and filter_end;
     fi;
     
+    if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+        
+        SetRangeCategoryOfHomomorphismStructure( IC, RangeCategoryOfHomomorphismStructure( C ) );
+        
+        AddDistinguishedObjectOfHomomorphismStructure( IC,
+          function( IC )
+            
+            return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( IC ) );
+            
+        end );
+        
+        AddHomomorphismStructureOnObjects( IC,
+          function( IC, object1, object2 )
+            
+            return HomomorphismStructureOnObjects( UnderlyingCategory( IC ), ActiveCell( object1 ), ActiveCell( object2 ) );
+            
+        end );
+        
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( IC,
+          function( IC, source, alpha, beta, range )
+            
+            return HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( IC ), source, ActiveCell( alpha ), ActiveCell( beta ), range );
+            
+        end );
+        
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IC,
+          function( IC, morphism )
+            
+            return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( IC ), ActiveCell( morphism ) );
+            
+        end );
+        
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( IC,
+          function( IC, source, range, morphism )
+            local s, t;
+            
+            s := PositionOfActiveCell( source );
+            t := PositionOfActiveCell( range );
+            
+            return
+              Intrinsify(
+                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                              UnderlyingCategory( IC ),
+                              CertainCell( source, s ),
+                              CertainCell( range, t ),
+                              morphism ),
+                      source, s,
+                      range, t );
+            
+        end );
+
+        SetIsEquippedWithHomomorphismStructure( IC, true );
+        
+    fi;
+    
     Finalize( IC );
     
     IdentityFunctor( IC )!.UnderlyingFunctor := IdentityFunctor( C );
