@@ -461,6 +461,11 @@ InstallMethod( CategoryWithAmbientObjects,
     fi;
     
     structure_record.NoInstallList := [
+                                       "DistinguishedObjectOfHomomorphismStructure",
+                                       "HomomorphismStructureOnObjects",
+                                       "HomomorphismStructureOnMorphismsWithGivenObjects",
+                                       "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+                                       "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                                        ];
     
     structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism", "Lift", "Colift" ];
@@ -582,6 +587,56 @@ InstallMethod( CategoryWithAmbientObjects,
                            KernelObject( morphism ) );
             
         end );
+        
+    fi;
+    
+    if CheckConstructivenessOfCategory( abelian_category, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+        
+        SetRangeCategoryOfHomomorphismStructure( category_with_ambient_objects, RangeCategoryOfHomomorphismStructure( abelian_category ) );
+        
+        AddDistinguishedObjectOfHomomorphismStructure( category_with_ambient_objects,
+          function( )
+            
+            return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( category_with_ambient_objects ) );
+            
+        end );
+        
+        AddHomomorphismStructureOnObjects( category_with_ambient_objects,
+          function( object1, object2 )
+            
+            return HomomorphismStructureOnObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) );
+            
+        end );
+        
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( category_with_ambient_objects,
+          function( source, alpha, beta, range )
+            
+            return HomomorphismStructureOnMorphismsWithGivenObjects( source, UnderlyingCell( alpha ), UnderlyingCell( beta ), range );
+            
+        end );
+        
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category_with_ambient_objects,
+          function( morphism )
+            
+            return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( morphism ) );
+            
+        end );
+        
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category_with_ambient_objects,
+          function( source, range, morphism )
+            
+            return
+              MorphismWithAmbientObject(
+                      source,
+                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                              UnderlyingCell( source ),
+                              UnderlyingCell( range ),
+                              morphism ),
+                      range );
+            
+        end );
+        
+        SetIsEquippedWithHomomorphismStructure( category_with_ambient_objects, true );
         
     fi;
     
