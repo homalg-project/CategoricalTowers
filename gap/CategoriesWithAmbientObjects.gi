@@ -457,9 +457,10 @@ InstallMethod( CategoryWithAmbientObject,
           end;
     fi;
     
-    structure_record.NoInstallList := [ "Lift", "Colift" ];
+    structure_record.NoInstallList := [
+                                       ];
     
-    structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
+    structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism", "Lift", "Colift" ];
     
     EnhancementWithAttributes( structure_record );
     
