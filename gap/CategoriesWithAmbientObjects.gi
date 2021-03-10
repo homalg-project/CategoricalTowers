@@ -490,6 +490,21 @@ InstallMethod( CategoryWithAmbientObject,
     end );
     
     ##
+    InstallMethod( ObjectWithAmbientObject,
+                   [ IsCapCategoryObject,
+                     IsCapCategory and CategoryFilter( category_with_ambient_objects ) ],
+                   
+      function( o, attribute_category )
+        
+        if not IsIdenticalObj( CapCategory( o ), UnderlyingCategory( attribute_category ) ) then
+            Error( "the object o is not an object in UnderlyingCategory( attribute_category )" );
+        fi;
+        
+        return ObjectWithAmbientObject( AsGeneralizedMorphismByCospan( IdentityMorphism( o ) ), attribute_category );
+        
+    end );
+    
+    ##
     InstallMethod( ObjectWithAmbientObjectFromLazyGeneralizedEmbedding,
                    [ IsLazyGeneralizedEmbeddingInAmbientObject,
                      IsCapCategory and CategoryFilter( category_with_ambient_objects ) ],
@@ -543,7 +558,7 @@ InstallMethod( CategoryWithAmbientObject,
             pi := EpimorphismFromSomeProjectiveObject( UnderlyingCell( object ) );
             
             return MorphismWithAmbientObject(
-                           ObjectWithAmbientObject( AsGeneralizedMorphismByCospan( IdentityMorphism( Source( pi ) ) ), CapCategory( object ) ),
+                           ObjectWithAmbientObject( Source( pi ), CapCategory( object ) ),
                            pi,
                            object );
             
@@ -560,7 +575,7 @@ InstallMethod( CategoryWithAmbientObject,
             pi := EpimorphismFromSomeProjectiveObjectForKernelObject( UnderlyingCell( morphism ) );
             
             return MorphismWithAmbientObject(
-                           ObjectWithAmbientObject( AsGeneralizedMorphismByCospan( IdentityMorphism( Source( pi ) ) ), CapCategory( morphism ) ),
+                           ObjectWithAmbientObject( Source( pi ), CapCategory( morphism ) ),
                            pi,
                            KernelObject( morphism ) );
             

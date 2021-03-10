@@ -110,6 +110,15 @@ DeclareOperation( "ObjectWithAmbientObject",
 
 #! @Description
 #!  Construct an object in the category <A>A</A> with ambient objects
+#!  out of the identity morphism of <A>o</A>, view as a generalized embedding
+#!  of <A>o</A> in itself.
+#! @Arguments o, A
+#! @Returns an object in the category <A>A</A> with ambient objects
+DeclareOperation( "ObjectWithAmbientObject",
+        [ IsCapCategoryObject, IsCapCategory ] );
+
+#! @Description
+#!  Construct an object in the category <A>A</A> with ambient objects
 #!  out of the lazy generalized embedding <A>iota</A>.
 #! @Arguments iota, A
 #! @Returns an object in the category <A>A</A> with ambient objects
