@@ -1074,7 +1074,8 @@ InstallMethod( IntrinsicCategory,
           create_func_bool, create_func_object0, create_func_object, todo_func,
           create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, func, pos, skip, commutative_ring,
-          properties, IC, strict, filter_end;
+          properties, IC, strict, filter_end,
+          hom_filter_obj, hom_filter_mor,  hom_filter_end, hom_todo_func, H;
     
     if HasName( C ) then
         name := Concatenation( "IntrinsicCategory( ", Name( C ), " )" );
@@ -1364,33 +1365,92 @@ InstallMethod( IntrinsicCategory,
     
     if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
         
-        SetRangeCategoryOfHomomorphismStructure( IC, RangeCategoryOfHomomorphismStructure( C ) );
+        hom_filter_obj := ValueOption( "hom_filter_obj" );
+        
+        if hom_filter_obj = fail or not IsFilter( hom_filter_obj ) then
+            hom_filter_obj := IsCapCategoryIntrinsicObject;
+        fi;
+        
+        hom_filter_mor := ValueOption( "hom_filter_mor" );
+        
+        if hom_filter_mor = fail or not IsFilter( hom_filter_mor ) then
+            hom_filter_mor := IsCapCategoryIntrinsicMorphism;
+        fi;
+        
+        hom_filter_end := ValueOption( "filter_end" );
+        
+        hom_todo_func := ValueOption( "hom_todo_func" );
+        
+        if hom_todo_func = fail or not IsFunction( hom_todo_func ) then
+            hom_todo_func := ReturnNothing;
+        fi;
+        
+        H := RangeCategoryOfHomomorphismStructure( C );
+        
+        if not IsIdenticalObj( C, H ) then
+            H := IntrinsicCategory( H :
+                         filter_obj := hom_filter_obj,
+                         filter_mor := hom_filter_mor,
+                         filter_end := hom_filter_end,
+                         todo_func := hom_todo_func );
+        else
+            H := IC;
+        fi;
+        
+        SetRangeCategoryOfHomomorphismStructure( IC, H );
         
         AddDistinguishedObjectOfHomomorphismStructure( IC,
           function( IC )
+            local D;
             
-            return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( IC ) );
+            D := DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( IC ) );
+            
+            return Intrinsify( RangeCategoryOfHomomorphismStructure( IC ), D );
             
         end );
         
         AddHomomorphismStructureOnObjects( IC,
           function( IC, object1, object2 )
+            local hom;
             
-            return HomomorphismStructureOnObjects( UnderlyingCategory( IC ), ActiveCell( object1 ), ActiveCell( object2 ) );
+            hom := HomomorphismStructureOnObjects( UnderlyingCategory( IC ), ActiveCell( object1 ), ActiveCell( object2 ) );
+            
+            return Intrinsify( RangeCategoryOfHomomorphismStructure( IC ), hom );
             
         end );
         
         AddHomomorphismStructureOnMorphismsWithGivenObjects( IC,
           function( IC, source, alpha, beta, range )
+            local s, t, hom;
             
-            return HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( IC ), source, ActiveCell( alpha ), ActiveCell( beta ), range );
+            s := PositionOfActiveCell( source );
+            t := PositionOfActiveCell( range );
+            
+            ## FIXME: take care of the connecton between the positions of active cells in
+            ## source = Hom( Range( alpha ), Source( beta ) ) and range = Hom( Source( alpha ), Range( beta ) )
+            ## and the positions of active cells in Range( alpha ), Source( beta ), Source( alpha ), Range( beta ).
+            
+            hom := HomomorphismStructureOnMorphismsWithGivenObjects(
+                           UnderlyingCategory( IC ), CertainCell( source, s ), ActiveCell( alpha ), ActiveCell( beta ), CertainCell( range, t ) );
+            
+            return Intrinsify( hom, source, s, range, t );
             
         end );
         
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IC,
           function( IC, morphism )
+            local mor, D, hom;
             
-            return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( IC ), ActiveCell( morphism ) );
+            mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( IC ), ActiveCell( morphism ) );
+            
+            D := DistinguishedObjectOfHomomorphismStructure( IC );
+            
+            hom := HomomorphismStructureOnMorphismsWithGivenObjects( Source( morphism ), Range( morphism ) );
+            
+            return Intrinsify(
+                           mor,
+                           D, PositionOfActiveCell( D ),
+                           hom, PositionOfActiveCell( hom ) );
             
         end );
         
@@ -1407,7 +1467,7 @@ InstallMethod( IntrinsicCategory,
                               UnderlyingCategory( IC ),
                               CertainCell( source, s ),
                               CertainCell( range, t ),
-                              morphism ),
+                              ActiveCell( morphism ) ),
                       source, s,
                       range, t );
             
