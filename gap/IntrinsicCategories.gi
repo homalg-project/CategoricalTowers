@@ -1077,9 +1077,9 @@ InstallMethod( IntrinsicCategory,
           properties, IC, strict, filter_end;
     
     if HasName( C ) then
-        name := Concatenation( "intrinsic ", Name( C ) );
+        name := Concatenation( "IntrinsicCategory( ", Name( C ), " )" );
     else
-        name := "intrinsic category";
+        name := "IntrinsicCategory( ... )";
     fi;
     
     filter_obj := ValueOption( "filter_obj" );
