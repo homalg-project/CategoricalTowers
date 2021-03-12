@@ -18,6 +18,11 @@ SetInfoLevel( InfoCategoriesWithAmbientObjects, 1 );
 
 #! @Description
 #!  The &GAP; category of lazy evaluated generalized embeddings in ambient objects.
+DeclareCategory( "IsCapCategoryWithAmbientObjects",
+        IsCapCategory );
+
+#! @Description
+#!  The &GAP; category of lazy evaluated generalized embeddings in ambient objects.
 DeclareCategory( "IsLazyGeneralizedEmbeddingInAmbientObject",
         IsAttributeStoringRep );
 

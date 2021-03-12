@@ -214,6 +214,8 @@ InstallMethod( CategoryWithAmbientObject,
     
     category_with_ambient_objects := CreateCapCategory( Concatenation( Name( abelian_category ), " with ambient objects" ) );
     
+    SetFilterObj( category_with_ambient_objects, IsCapCategoryWithAmbientObjects );
+    
     for prop in ListKnownCategoricalProperties( abelian_category ) do
         prop := ValueGlobal( prop );
         Setter( prop )( category_with_ambient_objects, prop( abelian_category ) );
