@@ -212,7 +212,7 @@ InstallMethod( CategoryWithAmbientObject,
         
     fi;
     
-    category_with_ambient_objects := CreateCapCategory( Concatenation( Name( abelian_category ), " with ambient objects" ) );
+    category_with_ambient_objects := CreateCapCategory( Concatenation( "CategoryWithAmbientObject( ", Name( abelian_category ), " )" ) );
     
     SetFilterObj( category_with_ambient_objects, IsCapCategoryWithAmbientObjects );
     

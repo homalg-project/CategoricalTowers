@@ -16,7 +16,7 @@ M := AsLeftOrRightPresentation(
   HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ), true );
 #! <An object in Category of left presentations of Q[x,y]>
 Ag := CategoryWithAmbientObject( CapCategory( M ) );
-#! Category of left presentations of Q[x,y] with ambient objects
+#! CategoryWithAmbientObject( Category of left presentations of Q[x,y] )
 pi := AsGeneralizedMorphismByCospan( CoverByFreeModule( M ) );
 #! <A morphism in Generalized morphism category of
 #!  Category of left presentations of Q[x,y] by cospan>
