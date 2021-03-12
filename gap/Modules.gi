@@ -3,6 +3,7 @@
 #
 # Implementations
 #
+
 ##
 InstallMethod( PushPresentationByIsomorphism,
         "for a homalg/CAP module isomorphism",
