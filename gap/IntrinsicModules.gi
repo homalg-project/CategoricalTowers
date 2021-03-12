@@ -192,7 +192,7 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
         [ IsHomalgRing ],
         
   function( R )
-    local A, filter_obj, filter_mor, filter_end;
+    local filter_obj, filter_mor, filter_end;
     
     filter_obj := IsFinitelyPresentedModuleRep and
                   IsHomalgRightObjectOrMorphismOfRightObjects;
