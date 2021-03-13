@@ -82,6 +82,90 @@ InstallGlobalFunction( INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
     
 end );
 
+BindGlobal( "INSTALL_ImageEmbeddingForFpModules",
+  function( image_embedding, basis, decide_zero, get_rid_of_zero_generators, syzygies, object_constructor, morphism_constructor )
+    
+    ## the following method corresponds to
+    ## "InstallMethod( \/," in homalg_project/Modules/gap/Modules.gi, called by
+    ## "ImageObjectEmb" installed by "_Functor_ImageObject_OnModules" in homalg_project/Modules/gap/BasicFunctors.gi
+    
+    ## the latter is usually called by
+    ## "EmbeddingInSuperObject" in homalg_project/homalg/gap/LIOBJ.gi, usually called by
+    ## "UnderlyingObject" in homalg_project/homalg/gap/HomalgSubobject.gi, usually called by
+    ## "Kernel" installed by "_Functor_Kernel_OnObjects" in homalg_project/Modules/gap/BasicFunctors.gi
+    
+    ## we will use this method to install ImageEmbedding which is neither installed in
+    ## CAP_project/ModulePresentationsForCAP nor CAP_project/FreydCategoriesForCAP
+    
+    ## when used to derive KernelEmbedding it leads to the algorithm in
+    ## CAP_project/ModulePresentationsForCAP installed by commit fc8e92ee
+    
+    ## we will also use it to add an alternative to KernelEmbedding
+    ## installed in CAP_project/FreydCategoriesForCAP
+    
+    ##
+    InstallGlobalFunction( image_embedding,
+      function( morphism )
+        local mat, T, B, N, S, img, emb;
+        
+        mat := UnderlyingMatrix( morphism );
+        
+        T := Range( morphism );
+        
+        B := UnderlyingMatrix( T );
+        
+        # basis of the set of relations of T:
+        B := basis( B );
+        
+        # TODO: RelativeReducedRows( mat, B );
+        # normal form of mat with respect to B:
+        N := decide_zero( mat, B );
+        
+        # get a better basis for N (by default, it only throws away the zero generators):
+        N := get_rid_of_zero_generators( N );
+        
+        # this matrix of generators is often enough the identity matrix
+        # and knowing this will avoid computations:
+        IsOne( N );
+        
+        # compute the syzygies of N modulo B, i.e. the relations among N modulo B:
+        S := syzygies( N, B );        ## using ReducedSyzygiesGenerators here causes too many operations (cf. the ex. Triangle.g)
+        
+        # the image object
+        img := object_constructor( S );
+        
+            # the image embedding
+        emb := morphism_constructor( img, N, T );
+        
+        ## check assertion
+        Assert( 5, IsMonomorphism( emb ) );
+        
+        return emb;
+        
+    end );
+    
+end );
+
+##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpLeftModules,
+        BasisOfRows,
+        DecideZeroRows,
+        N -> CertainRows( N, NonZeroRows( N ) ),
+        LazySyzygiesOfRows,
+        AsLeftPresentation,
+        PresentationMorphism );
+
+##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpRightModules,
+        BasisOfColumns,
+        DecideZeroColumns,
+        N -> CertainColumns( N, NonZeroColumns( N ) ),
+        LazySyzygiesOfColumns,
+        AsRightPresentation,
+        PresentationMorphism );
+
 ##
 BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
   function( R, left, filter_obj, filter_mor, filter_end )
@@ -94,10 +178,10 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     if left then
         A := LeftPresentations( R : FinalizeCategory := false );
-        AddImageEmbedding( A, ImageEmbeddingForLeftModules );
+        AddImageEmbedding( A, ImageEmbeddingForFpLeftModules );
     else
         A := RightPresentations( R : FinalizeCategory := false );
-        AddImageEmbedding( A, ImageEmbeddingForRightModules );
+        AddImageEmbedding( A, ImageEmbeddingForFpRightModules );
     fi;
     
     Finalize( A );

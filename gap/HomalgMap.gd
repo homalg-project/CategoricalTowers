@@ -30,17 +30,3 @@ DeclareOperation( "HomalgMap",
 #! @InsertChunk HomalgMap
 
 fi;
-
-#! @Section Operations and global functions
-
-#! @Description
-#!  The image-embedding method used for &homalg; left modules.
-#! @Arguments morphism
-#! @Returns a left &homalg; module map
-DeclareGlobalFunction( "ImageEmbeddingForLeftModules" );
-
-#! @Description
-#!  The image-embedding method used for &homalg; right modules.
-#! @Arguments morphism
-#! @Returns a right &homalg; module map
-DeclareGlobalFunction( "ImageEmbeddingForRightModules" );

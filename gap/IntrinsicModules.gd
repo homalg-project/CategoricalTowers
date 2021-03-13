@@ -40,3 +40,17 @@ DeclareAttribute( "CategoryOfHomalgFinitelyPresentedLeftModules",
 #! @Returns an intrinsic cateogry of right modules
 DeclareAttribute( "CategoryOfHomalgFinitelyPresentedRightModules",
         IsHomalgRing );
+
+#! @Section Operations and global functions
+
+#! @Description
+#!  The image-embedding method used for &homalg; left modules.
+#! @Arguments morphism
+#! @Returns a left &homalg; module map
+DeclareGlobalFunction( "ImageEmbeddingForFpLeftModules" );
+
+#! @Description
+#!  The image-embedding method used for &homalg; right modules.
+#! @Arguments morphism
+#! @Returns a right &homalg; module map
+DeclareGlobalFunction( "ImageEmbeddingForFpRightModules" );
