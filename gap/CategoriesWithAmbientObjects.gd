@@ -141,7 +141,7 @@ DeclareOperation( "MorphismWithAmbientObject",
 #!  
 #! @Arguments A
 #! @Returns a &CAP; category
-DeclareAttribute( "CategoryWithAmbientObject",
+DeclareAttribute( "CategoryWithAmbientObjects",
         IsCapCategory );
 
 #! @Description

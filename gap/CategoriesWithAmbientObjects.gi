@@ -192,7 +192,7 @@ InstallMethod( CreateLazyGeneralizedEmbeddingInAmbientObject,
 end );
 
 ##
-InstallMethod( CategoryWithAmbientObject,
+InstallMethod( CategoryWithAmbientObjects,
         "for a CAP category",
         [ IsCapCategory ],
         
@@ -212,7 +212,7 @@ InstallMethod( CategoryWithAmbientObject,
         
     fi;
     
-    category_with_ambient_objects := CreateCapCategory( Concatenation( "CategoryWithAmbientObject( ", Name( abelian_category ), " )" ) );
+    category_with_ambient_objects := CreateCapCategory( Concatenation( "CategoryWithAmbientObjects( ", Name( abelian_category ), " )" ) );
     
     SetFilterObj( category_with_ambient_objects, IsCapCategoryWithAmbientObjects );
     
