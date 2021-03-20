@@ -19,48 +19,11 @@ InstallImmediateMethod( EvaluatedMatrixOfRelations,
 ##
 InstallMethod( UnderlyingHomalgRing,
         "for a set of relations of a homalg/CAP right module",
-        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        [ IsHomalgRelationsOfRightModule and IsLeftOrRightPresentation ],
         
   function( rels )
     
-    rels := rels!.LazyUnderlyingMatrix;
-    
-    return HomalgRing( EvalSyzygiesOfColumns( rels )[1] );
-    
-end );
-
-##
-InstallMethod( UnderlyingHomalgRing,
-        "for a set of relations of a homalg/CAP right module",
-        [ IsHomalgRelationsOfRightModule and IsRightPresentation and HasUnderlyingMatrix ],
-        
-  function( rels )
-    
-    return HomalgRing( UnderlyingMatrix( rels ) );
-    
-end );
-
-##
-InstallMethod( UnderlyingHomalgRing,
-        "for a set of relations of a homalg/CAP left module",
-        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
-        
-  function( rels )
-    
-    rels := rels!.LazyUnderlyingMatrix;
-    
-    return HomalgRing( EvalSyzygiesOfRows( rels )[1] );
-    
-end );
-
-##
-InstallMethod( UnderlyingHomalgRing,
-        "for a set of relations of a homalg/CAP left module",
-        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation and HasUnderlyingMatrix ],
-        
-  function( rels )
-    
-    return HomalgRing( UnderlyingMatrix( rels ) );
+    return CapCategory( rels )!.ring_for_representation_category;
     
 end );
 
