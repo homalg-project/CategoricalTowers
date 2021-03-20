@@ -143,6 +143,7 @@ InstallMethod( EmbeddingInAmbientObject,
     local rel;
     
     gen := NormalizedCospan( EvaluatedGeneralizedEmbeddingInAmbientObject( gen ) );
+    
     rel := ReversedArrow( gen );
     
     gen := PreCompose( Arrow( gen ), ColiftAlongEpimorphism( rel, CokernelProjection( KernelEmbedding( rel ) ) ) );
