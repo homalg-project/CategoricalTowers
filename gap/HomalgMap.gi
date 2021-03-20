@@ -89,10 +89,15 @@ InstallMethod( DecideZero,
         [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
+    local A;
     
     IsZero( ActiveCell( phi ) );
     
-    ApplyFunctor( CapCategory( phi )!.IdSM, phi );
+    A := CapCategory( phi );
+    
+    if IsBound( A!.IdSM ) then
+        ApplyFunctor( A!.IdSM, phi );
+    fi;
     
     return phi;
     
@@ -393,7 +398,7 @@ InstallMethod( HomalgMap,
     
     ResetFilterObj( m, IsMutable );
     
-    m := PresentationMorphism( RelationsOfModule( M[1], M[2] ), m, RelationsOfModule( N[1], N[2] ) );
+    m := FpModuleMorphism( RelationsOfModule( M[1], M[2] ), m, RelationsOfModule( N[1], N[2] ) );
     
     m := MorphismWithAmbientObject( CertainCell( M[1], M[2] ), m, CertainCell( N[1], N[2] ) );
     

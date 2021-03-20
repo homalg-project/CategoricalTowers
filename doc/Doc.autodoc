@@ -8,6 +8,10 @@
 
 @Chapter Maps
 
+@Chapter Functors
+
+@Chapter Natural transformations
+
 @Chapter Examples
 
 @InsertChunk HomalgFreeLeftModule
