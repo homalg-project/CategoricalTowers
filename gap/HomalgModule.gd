@@ -26,14 +26,6 @@
 
 #! @Section Constructors
 
-# @Description
-#  This is a technical operation meant to avoid code duplication
-#  in <C>LeftPresentation</C>/<C>RightPresentation</C>.
-# @Arguments M
-# @Returns a &homalg; module, i.e., an intrinsic module with generators for each cell
-DeclareOperation( "HomalgModule",
-        [ IsLeftOrRightPresentation ] );
-
 ## remove the enclosing "if false then" once the homalg_project package Modules is deprecated
 if false then
 

@@ -335,49 +335,16 @@ InstallMethod( Intrinsify,
 end );
 
 ##
-InstallMethod( HomalgModule,
-        "for a left or right CAP presentation",
-        [ IsLeftOrRightPresentation ],
-
-  function( M )
-    local R, A, left, pi, iota;
-    
-    R := UnderlyingHomalgRing( M );
-    
-    A := CapCategory( M );
-    
-    left := IsLeftPresentation( M );
-    
-    A := CategoryWithAmbientObject( A );
-    
-    pi := AsGeneralizedMorphismByCospan( EpimorphismFromSomeProjectiveObject( M ) );
-    
-    iota := PseudoInverse( pi );
-    
-    M := ObjectWithAmbientObject( iota, A );
-    
-    if left then
-        A := CategoryOfHomalgFinitelyPresentedLeftModules( R );
-    else
-        A := CategoryOfHomalgFinitelyPresentedRightModules( R );
-    fi;
-    
-    M := Intrinsify( A, M );
-    
-    return M;
-    
-end );
-
-##
 InstallMethod( LeftPresentation,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( M )
+    local A;
     
-    CategoryOfHomalgFinitelyPresentedLeftModules( HomalgRing( M ) );
+    A := CategoryOfHomalgFinitelyPresentedLeftModules( HomalgRing( M ) );
     
-    M := AsLeftPresentation( M );
+    M := A!.ObjectConstructor( M );
     
     return HomalgModule( M );
     
@@ -387,12 +354,13 @@ end );
 InstallMethod( RightPresentation,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( M )
+    local A;
     
-    CategoryOfHomalgFinitelyPresentedRightModules( HomalgRing( M ) );
+    A := CategoryOfHomalgFinitelyPresentedRightModules( HomalgRing( M ) );
     
-    M := AsRightPresentation( M );
+    M := A!.ObjectConstructor( M );
     
     return HomalgModule( M );
     
@@ -402,12 +370,13 @@ end );
 InstallMethod( HomalgFreeLeftModule,
         "for an integer and a homalg ring",
         [ IsInt, IsHomalgRing ],
-
+        
   function( r, R )
+    local A;
     
-    CategoryOfHomalgFinitelyPresentedLeftModules( R );
+    A := CategoryOfHomalgFinitelyPresentedLeftModules( R );
     
-    return HomalgModule( FreeLeftPresentation( r, R ) );
+    return HomalgModule( A!.FreeObjectConstructor( r, R ) );
     
 end );
 
@@ -415,12 +384,13 @@ end );
 InstallMethod( HomalgFreeRightModule,
         "for an integer and a homalg ring",
         [ IsInt, IsHomalgRing ],
-
+        
   function( r, R )
+    local A;
     
-    CategoryOfHomalgFinitelyPresentedRightModules( R );
+    A := CategoryOfHomalgFinitelyPresentedRightModules( R );
     
-    return HomalgModule( FreeRightPresentation( r, R ) );
+    return HomalgModule( A!.FreeObjectConstructor( r, R ) );
     
 end );
 
@@ -428,7 +398,7 @@ end );
 InstallMethod( HomalgZeroLeftModule,
         "for a homalg ring",
         [ IsHomalgRing ],
-
+        
   function( R )
     local A;
     

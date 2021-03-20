@@ -148,7 +148,7 @@ end );
 
 ##
 INSTALL_ImageEmbeddingForFpModules(
-        ImageEmbeddingForFpLeftModules,
+        ImageEmbeddingForFpLeftModulesByPresentations,
         BasisOfRows,
         DecideZeroRows,
         N -> CertainRows( N, NonZeroRows( N ) ),
@@ -158,7 +158,7 @@ INSTALL_ImageEmbeddingForFpModules(
 
 ##
 INSTALL_ImageEmbeddingForFpModules(
-        ImageEmbeddingForFpRightModules,
+        ImageEmbeddingForFpRightModulesByPresentations,
         BasisOfColumns,
         DecideZeroColumns,
         N -> CertainColumns( N, NonZeroColumns( N ) ),
@@ -178,10 +178,10 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     if left then
         A := LeftPresentations( R : FinalizeCategory := false );
-        AddImageEmbedding( A, ImageEmbeddingForFpLeftModules );
+        AddImageEmbedding( A, ImageEmbeddingForFpLeftModulesByPresentations );
     else
         A := RightPresentations( R : FinalizeCategory := false );
-        AddImageEmbedding( A, ImageEmbeddingForFpRightModules );
+        AddImageEmbedding( A, ImageEmbeddingForFpRightModulesByPresentations );
     fi;
     
     Finalize( A );
@@ -222,6 +222,10 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     if left then
         
+        A!.ObjectConstructor := AsLeftPresentation;
+        
+        A!.FreeObjectConstructor := FreeLeftPresentation;
+        
         etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
         
         etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft( R );
@@ -229,6 +233,10 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
         etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
         
     else
+        
+        A!.ObjectConstructor := AsRightPresentation;
+        
+        A!.FreeObjectConstructor := FreeRightPresentation;
         
         etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
         

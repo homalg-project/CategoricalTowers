@@ -489,17 +489,6 @@ end );
 
 ##
 InstallMethod( HomalgMap,
-        "for a set of relation, a string, and a homalg/CAP module",
-        [ IsHomalgRelations and IsLeftOrRightPresentation, IsString, IsHomalgModule and IsCapCategoryIntrinsicObject ],
-
-  function( m, s, N )
-    
-    return HomalgMap( MatrixOfRelations( m ), s, N );
-    
-end );
-
-##
-InstallMethod( HomalgMap,
         "",
         [ IsObject, IsObject ],
 
@@ -577,22 +566,6 @@ end );
 ##
 InstallMethod( HomalgMap,
         "for a homalg matrix",
-        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
-        
-  function( rels )
-    local R;
-    
-    R := HomalgRing( rels );
-    
-    return HomalgMap( MatrixOfRelations( rels ),
-                   "free",
-                   HomalgFreeLeftModule( NrGenerators( rels ), R ) );
-    
-end );
-
-##
-InstallMethod( HomalgMap,
-        "for a homalg matrix",
         [ IsHomalgMatrix ],
         
   function( mat )
@@ -603,38 +576,6 @@ InstallMethod( HomalgMap,
     return HomalgMap( mat,
                    "free",
                    HomalgFreeLeftModule( NrColumns( mat ), R ) );
-    
-end );
-
-##
-InstallMethod( HomalgMap,
-        "for a set of homalg/CAP relations of a left module",
-        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
-        
-  function( rels )
-    local R;
-    
-    R := HomalgRing( rels );
-    
-    return HomalgMap( MatrixOfRelations( rels ),
-                   "free",
-                   HomalgFreeLeftModule( NrGenerators( rels ), R ) );
-    
-end );
-
-##
-InstallMethod( HomalgMap,
-        "for a set of homalg/CAP relations of a right module",
-        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
-        
-  function( rels )
-    local R;
-    
-    R := HomalgRing( rels );
-    
-    return HomalgMap( MatrixOfRelations( rels ),
-                   "free",
-                   HomalgFreeRightModule( NrGenerators( rels ), R ) );
     
 end );
 
