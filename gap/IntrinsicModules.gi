@@ -134,7 +134,7 @@ BindGlobal( "INSTALL_ImageEmbeddingForFpModules",
         # the image object
         img := object_constructor( S );
         
-            # the image embedding
+        # the image embedding
         emb := morphism_constructor( img, N, T );
         
         ## check assertion
