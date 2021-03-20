@@ -14,7 +14,7 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctorForHomalg,
     
     F := Range( natiso );
     
-    ## CategoryWithAmbientObject
+    ## CategoryWithAmbientObjects
     
     if not HasIntrinsifiedCategory( cat_intrinsic ) then
         Error( "the second argument is not an intrinsic category\n" );
@@ -186,7 +186,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     Finalize( A );
     
-    A := CategoryWithAmbientObject( A );
+    A := CategoryWithAmbientObjects( A );
     
     A := IntrinsicCategory( A :
                  filter_obj := filter_obj,

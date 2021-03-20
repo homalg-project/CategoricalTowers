@@ -24,7 +24,7 @@ InstallMethod( HomalgModule,
     
     left := IsLeftPresentation( M );
     
-    A := CategoryWithAmbientObject( A );
+    A := CategoryWithAmbientObjects( A );
     
     pi := AsGeneralizedMorphismByCospan( EpimorphismFromSomeProjectiveObject( M ) );
     
