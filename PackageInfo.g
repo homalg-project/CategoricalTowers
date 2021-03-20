@@ -91,7 +91,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2021.05-01" ],
                    [ "FreydCategoriesForCAP", ">= 2020.10-01" ],
                    [ "ModulePresentationsForCAP", ">= 2017.03.27" ],
-                   [ "IntrinsicCategories", ">= 2021.03-03" ],
+                   [ "IntrinsicCategories", ">= 2021.03-05" ],
                    [ "CategoriesWithAmbientObjects", ">= 2021.03-05" ],
                    ],
   SuggestedOtherPackages := [ ],

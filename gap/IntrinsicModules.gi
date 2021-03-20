@@ -168,8 +168,8 @@ INSTALL_ImageEmbeddingForFpModules(
 
 ##
 BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
-  function( R, left, filter_obj, filter_mor, filter_end )
-    local info_level, A, etaSM, etaZG, etaLG;
+  function( R, left, filter_obj, filter_mor, filter_end, hom_filter_obj, hom_filter_mor, hom_filter_end )
+    local info_level, A, P, etaSM, etaZG, etaLG, H;
     
     info_level := InfoLevel( InfoDebug );
     SetInfoLevel( InfoDebug, 0 );
@@ -192,7 +192,11 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
                  filter_obj := filter_obj,
                  filter_mor := filter_mor,
                  filter_end := filter_end,
-                 todo_func := INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
+                 todo_func := INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS,
+                 hom_filter_obj := filter_obj,
+                 hom_filter_mor := filter_mor,
+                 hom_filter_end := filter_end,
+                 hom_todo_func := INSTALL_TODO_LISTS_FOR_HOMALG_MORPHISMS );
     
     SetInfoLevel( InfoDebug, info_level );
     
@@ -252,6 +256,16 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
+    #if HasRangeCategoryOfHomomorphismStructure( A ) then
+    #    H := RangeCategoryOfHomomorphismStructure( A );
+    #    
+    #    if not IsIdenticalObj( H, A ) then
+    #        if IsIntrinsicCategory( H ) and not IsBound( H!.IdLG ) then
+    #            Error( "the range of the homomorphism structure is an intrinsic category not complying to homalg\n" );
+    #        fi;
+    #    fi;
+    #fi;
+    
     return A;
     
 end );
@@ -274,7 +288,7 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
                   IsMapOfFinitelyGeneratedModulesRep and
                   IsHomalgLeftObjectOrMorphismOfLeftObjects;
     
-    return CATEGORY_OF_HOMALG_MODULES( R, true, filter_obj, filter_mor, filter_end );
+    return CATEGORY_OF_HOMALG_MODULES( R, true, filter_obj, filter_mor, filter_end, filter_obj, filter_mor, filter_end );
     
 end );
 
@@ -296,6 +310,6 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
                   IsMapOfFinitelyGeneratedModulesRep and
                   IsHomalgRightObjectOrMorphismOfRightObjects;
     
-    return CATEGORY_OF_HOMALG_MODULES( R, false, filter_obj, filter_mor, filter_end );
+    return CATEGORY_OF_HOMALG_MODULES( R, false, filter_obj, filter_mor, filter_end, filter_obj, filter_mor, filter_end );
     
 end );
