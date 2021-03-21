@@ -3,6 +3,12 @@
 #
 # Implementations
 #
+
+##
+InstallOtherMethod( ClosedSubsetOfSpec,
+        "for a Julia object and a homalg ring",
+        [ IsJuliaObject, IsHomalgRing ],
+        
   function( str, R )
     
     str := JuliaToGAP( IsString, str );
