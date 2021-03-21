@@ -16,11 +16,11 @@ InstallMethod( TurnAutoequivalenceIntoIdentityFunctorForHomalg,
     
     ## CategoryWithAmbientObjects
     
-    if not HasIntrinsifiedCategory( cat_intrinsic ) then
+    if not HasUnderlyingCategory( cat_intrinsic ) then
         Error( "the second argument is not an intrinsic category\n" );
     fi;
     
-    cat_with_amb_objects := IntrinsifiedCategory( cat_intrinsic );
+    cat_with_amb_objects := UnderlyingCategory( cat_intrinsic );
     
     Id := IdentityFunctor( cat_with_amb_objects );
     
