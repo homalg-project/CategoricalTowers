@@ -641,7 +641,7 @@ InstallMethod( AddToIntrinsicMorphism,
     S := Source( mor );
     T := Range( mor );
     
-    if not IsIdenticalObj( IntrinsifiedCategory( C ), CapCategory( m ) ) then
+    if not IsIdenticalObj( UnderlyingCategory( C ), CapCategory( m ) ) then
         Error( "the category of the second morphism is not the category underlying the intrinsic category of the first\n" );
     elif not IsEqualForObjects( Source( m ), CertainCell( S, s ) ) then
         Error( "the source of the second morphism is not equal to the specified cell in the given intrinsic source\n" );
@@ -783,9 +783,9 @@ InstallMethod( Intrinsify,
   function( F, name, A, B )
     local intF;
     
-    if not IsIdenticalObj( AsCapCategory( Source( F ) ), IntrinsifiedCategory( A ) ) then
+    if not IsIdenticalObj( AsCapCategory( Source( F ) ), UnderlyingCategory( A ) ) then
         Error( "the source of the functor and the category underlying the intrinsic source do not coincide\n" );
-    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), IntrinsifiedCategory( B ) ) then
+    elif not IsIdenticalObj( AsCapCategory( Range( F ) ), UnderlyingCategory( B ) ) then
         Error( "the target of the functor and the category underlying the intrinsic target do not coincide\n" );
     fi;
     
@@ -1021,11 +1021,11 @@ InstallMethod( CanonicalizeZeroObjectsAsIdentityFunctor,
   function( IC )
     local C, Id, iso, F;
     
-    if not HasIntrinsifiedCategory( IC ) then
+    if not HasUnderlyingCategory( IC ) then
         Error( "this argument is not an intrinsic category\n" );
     fi;
     
-    C :=  IntrinsifiedCategory( IC );
+    C :=  UnderlyingCategory( IC );
     
     Id := IdentityFunctor( IC );
     
@@ -1047,11 +1047,11 @@ InstallMethod( CanonicalizeZeroMorphismsAsIdentityFunctor,
   function( IC )
     local C, Id, iso, F;
     
-    if not HasIntrinsifiedCategory( IC ) then
+    if not HasUnderlyingCategory( IC ) then
         Error( "this argument is not an intrinsic category\n" );
     fi;
     
-    C :=  IntrinsifiedCategory( IC );
+    C :=  UnderlyingCategory( IC );
     
     Id := IdentityFunctor( IC );
     
@@ -1325,7 +1325,7 @@ InstallMethod( IntrinsicCategory,
                   create_func_universal_morphism := create_func_universal_morphism
                   );
     
-    SetIntrinsifiedCategory( IC, C );
+    SetUnderlyingCategory( IC, C );
     
     strict := ValueOption( "strict" );
     

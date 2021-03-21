@@ -203,7 +203,7 @@ DeclareOperation( "IntrinsicCategory",
 #! @Description
 #!  The category underlying the intrinsic category <A>C</A>.
 #! @Arguments C
-DeclareAttribute( "IntrinsifiedCategory",
+DeclareAttribute( "UnderlyingCategory",
         IsCapCategory );
 
 ####################################
