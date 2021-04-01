@@ -4,89 +4,98 @@
 # Implementations
 #
 
-InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD,
-        rec(
-            PreInverse := rec(
-                                     installation_name := "PreInverse",
-                                     filter_list := [ "morphism" ],
-                                     io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-                                     return_type := "morphism",
-                                     dual_operation := "PostInverse",
-                                     is_merely_set_theoretic := true
-                             ),
-            PostInverse := rec(
-                                     installation_name := "PostInverse",
-                                     filter_list := [ "morphism" ],
-                                     io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-                                     return_type := "morphism",
-                                     dual_operation := "PreInverse",
-                                     is_merely_set_theoretic := true
-                              ),
-            IsWeakTerminal := rec(
-                                     installation_name := "IsWeakTerminal",
-                                     filter_list := [ "object" ],
-                                     well_defined_todo := false,
-                                     return_type := "bool",
-                                     dual_operation := "IsWeakInitial",
-                                     property_of := "object" ),
-            IsWeakInitial := rec(
-                                     installation_name := "IsWeakInitial",
-                                     filter_list := [ "object" ],
-                                     well_defined_todo := false,
-                                     return_type := "bool",
-                                     dual_operation := "IsWeakTerminal",
-                                     property_of := "object" ),
-            MorphismOntoSumOfImagesOfAllMorphisms := rec(
-                                     installation_name := "MorphismOntoSumOfImagesOfAllMorphisms",
-                                     filter_list := [ "object", "object" ],
-                                     io_type := [ [ "a", "b" ], [ "d", "b" ] ],
-                                     return_type := "morphism",
-                                     is_merely_set_theoretic := true
-                                    ),
-            EmbeddingOfSumOfImagesOfAllMorphisms := rec(
-                                     installation_name := "EmbeddingOfSumOfImagesOfAllMorphisms",
-                                     filter_list := [ "object", "object" ],
-                                     io_type := [ [ "a", "b" ], [ "s", "b" ] ],
-                                     return_type := "morphism",
-                                     is_merely_set_theoretic := true
-                                    ),
-            SumOfImagesOfAllMorphisms := rec(
-                                     installation_name := "SumOfImagesOfAllMorphisms",
-                                     filter_list := [ "object", "object" ],
-                                     return_type := "object",
-                                     is_merely_set_theoretic := true
-                                    ),
-            MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory := rec(
-                                     installation_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
-                                     argument_list := [ 1, 2, 3 ],
-                                     filter_list := [ IsList, IsList, IsList, "category" ],
-                                     cache_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
-                                     return_type := "bool"
-                                    ),
-            MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory := rec(
-                                     installation_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategoryOp",
-                                     argument_list := [ 1, 2 ],
-                                     filter_list := [ IsList, IsList, "category" ],
-                                     cache_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
-                                     return_type := "bool"
-                                    ),
-            BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
-                                     installation_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
-                                     argument_list := [ 1, 2 ],
-                                     filter_list := [ IsList, IsList, "category" ],
-                                     cache_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
-                                     return_type := IsList
-                                    ),
-            BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
-                                     installation_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp",
-                                     argument_list := [ 1, 2, 3, 4 ],
-                                     filter_list := [ IsList, IsList, IsList, IsList, "category" ],
-                                     cache_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
-                                     return_type := IsList
-                                    ),
+InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
-            )
-        );
+PreInverse := rec(
+  installation_name := "PreInverse",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
+  return_type := "morphism",
+  dual_operation := "PostInverse",
+  is_merely_set_theoretic := true
+),
+
+PostInverse := rec(
+  installation_name := "PostInverse",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
+  return_type := "morphism",
+  dual_operation := "PreInverse",
+  is_merely_set_theoretic := true
+),
+
+IsWeakTerminal := rec(
+  installation_name := "IsWeakTerminal",
+  filter_list := [ "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsWeakInitial",
+  property_of := "object" ),
+
+IsWeakInitial := rec(
+  installation_name := "IsWeakInitial",
+  filter_list := [ "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsWeakTerminal",
+  property_of := "object" ),
+
+MorphismOntoSumOfImagesOfAllMorphisms := rec(
+  installation_name := "MorphismOntoSumOfImagesOfAllMorphisms",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "d", "b" ] ],
+  return_type := "morphism",
+  is_merely_set_theoretic := true
+),
+
+EmbeddingOfSumOfImagesOfAllMorphisms := rec(
+  installation_name := "EmbeddingOfSumOfImagesOfAllMorphisms",
+  filter_list := [ "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "s", "b" ] ],
+  return_type := "morphism",
+  is_merely_set_theoretic := true
+),
+
+SumOfImagesOfAllMorphisms := rec(
+  installation_name := "SumOfImagesOfAllMorphisms",
+  filter_list := [ "object", "object" ],
+  return_type := "object",
+  is_merely_set_theoretic := true
+),
+
+MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory := rec(
+  installation_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
+  return_type := "bool"
+),
+
+MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory := rec(
+  installation_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2 ],
+  filter_list := [ IsList, IsList, "category" ],
+  cache_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
+  return_type := "bool"
+),
+
+BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
+  installation_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
+  argument_list := [ 1, 2 ],
+  filter_list := [ IsList, IsList, "category" ],
+  cache_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
+  return_type := IsList
+),
+
+BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
+  installation_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp",
+  argument_list := [ 1, 2, 3, 4 ],
+  filter_list := [ IsList, IsList, IsList, IsList, "category" ],
+  cache_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
+  return_type := IsList
+),
+
+) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
 
