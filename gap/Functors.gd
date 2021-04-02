@@ -29,7 +29,7 @@ DeclareAttribute( "IsomorphismOntoCategoryOfQuiverRepresentations", IsCapHomCate
 DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsCapHomCategory );
 
 #! @Description
-#!  The input is an algebroid <A>B</A> defined by some quiver <C>K</C>-algebra <C>A</C>. The output is the Yondea embedding functor from
+#!  The input is an algebroid <A>B</A> defined by some quiver <C>K</C>-algebra <C>A</C>. The output is the Yoneda embedding functor from
 #!  <A>B</A> into the functors category <C>Hom</C>( <C>OppositeAlgebroidOverOppositeQuiverAlgebra</C>(<A>B</A>),<C>C</C>), where
 #!  <C>C</C> is a matrix category over <C>K</C>.
 #! @Arguments B
