@@ -8,7 +8,8 @@ BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ##
 InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
-          [ IsCapHomCategory ],
+        [ IsCapHomCategory ],
+        
   function ( functors )
     local B, matrix_cat, field, A, quiver, quiver_reps, name, F;
     
@@ -106,7 +107,8 @@ end );
 
 ##
 InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
-          [ IsCapHomCategory ],
+        [ IsCapHomCategory ],
+        
   function ( functors )
     local B, matrix_cat, A, field, quiver, quiver_reps, name, G;
     
@@ -197,7 +199,8 @@ end );
 
 ##
 InstallMethod( YonedaEmbedding,
-          [ IsAlgebroid ],
+        [ IsAlgebroid ],
+        
   function ( algebroid )
     local k, matrix_cat, algebroid_op, objs, mors, functors_cat, name, Yoneda;
     
