@@ -23,22 +23,22 @@ InstallLogicalImplicationsForHomalgObjects(
 ####################################
 
 InstallImmediateMethod( CokernelEpi,
-        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasCokernelProjection, 0,
+        IsHomalgMap and IsCapCategoryIntrinsicMorphism and HasCokernelProjection, 0,
 
   CokernelProjection );
 
 InstallImmediateMethod( ImageObjectEmb,
-        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasImageEmbedding, 0,
+        IsHomalgMap and IsCapCategoryIntrinsicMorphism and HasImageEmbedding, 0,
 
   ImageEmbedding );
 
 InstallImmediateMethod( ImageObjectEpi,
-        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasCoastrictionToImage, 0,
+        IsHomalgMap and IsCapCategoryIntrinsicMorphism and HasCoastrictionToImage, 0,
 
   CoastrictionToImage );
 
 InstallImmediateMethod( KernelEmb,
-        IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and HasKernelEmbedding, 0,
+        IsHomalgMap and IsCapCategoryIntrinsicMorphism and HasKernelEmbedding, 0,
 
   KernelEmbedding );
 
@@ -51,7 +51,7 @@ InstallImmediateMethod( KernelEmb,
 ##
 InstallMethod( MatrixOfMap,
         "for homalg/CAP module maps",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism, IsInt, IsInt ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism, IsInt, IsInt ],
         
   function( phi, _pos_s, _pos_t )
     local pos_s, pos_t;
@@ -75,7 +75,7 @@ end );
 ##
 InstallMethod( MatrixOfMap,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     
@@ -86,7 +86,7 @@ end );
 ##
 InstallMethod( DecideZero,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     
@@ -127,37 +127,37 @@ end );
 ##
 InstallMethod( AdditiveInverseMutable,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   AdditiveInverseForMorphisms );
 
 ##
 InstallMethod( MulMorphism,
         "for a ring element and a homalg/CAP module map",
-        [ IsRingElement, IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsRingElement, IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   MultiplyWithElementOfCommutativeRingForMorphisms );
 
 ##
 InstallMethod( CoproductMorphism,
         "for two homalg/CAP module maps",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism,
-          IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism,
+          IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   UniversalMorphismFromDirectSum );
 
 ##
 InstallMethod( ProductMorphism,
         "for two homalg/CAP module maps",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism,
-          IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism,
+          IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   UniversalMorphismIntoDirectSum );
 
 ##
 InstallMethod( ImageObjectEmb,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     local emb;
@@ -185,7 +185,7 @@ end );
 ##
 InstallMethod( ImageObjectEmb,
         "for a homalg/CAP zero map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism and IsZero ],
         
   function( phi )
     local T;
@@ -199,7 +199,7 @@ end );
 ##
 InstallMethod( ImageObjectEpi,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     local epi;
@@ -227,7 +227,7 @@ end );
 ##
 InstallMethod( ImageObjectEpi,
         "for a homalg/CAP zero map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism and IsZero ],
         
   function( phi )
     local S;
@@ -241,7 +241,7 @@ end );
 ##
 InstallMethod( Cokernel,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     local epi, coker;
@@ -259,7 +259,7 @@ end );
 ##
 InstallMethod( CokernelEpi,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     local epi;
@@ -288,7 +288,7 @@ end );
 ##
 InstallMethod( CokernelEpi,
         "for a homalg/CAP zero map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism and IsZero ],
         
   function( phi )
     
@@ -299,7 +299,7 @@ end );
 ##
 InstallMethod( Kernel,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     local emb, ker;
@@ -318,7 +318,7 @@ end );
 ##
 InstallMethod( KernelEmb,
         "for a homalg/CAP module map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
   function( phi )
     local emb;
@@ -346,7 +346,7 @@ end );
 ##
 InstallMethod( KernelEmb,
         "for a homalg/CAP zero map",
-        [ IsMapOfFinitelyGeneratedModulesRep and IsCapCategoryIntrinsicMorphism and IsZero ],
+        [ IsHomalgMap and IsCapCategoryIntrinsicMorphism and IsZero ],
         
   function( phi )
     
