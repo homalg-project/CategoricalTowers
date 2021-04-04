@@ -604,8 +604,8 @@ end );
 
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     function( algebroid, over_Z )
-    local quiver_algebra, quiver, vertices, basis, data, path,
-          object_constructor, morphism_constructor, distinguished_object, ring, range_category;
+    local quiver_algebra, quiver, vertices, basis, data, maps, path,
+          object_constructor, morphism_constructor, distinguished_object, ring, range_category, representative_func;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -618,9 +618,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     data := List( vertices, i -> List( vertices, i -> [ ] ) );
     
+    maps := List( vertices, i -> List( vertices, i -> [ ] ) );
+    
     for path in basis do
         
         Add( data[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
+        
+        Add( maps[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInAlgebroid( algebroid, PathAsAlgebraElement( quiver_algebra, path ) ) );
         
     od;
     
@@ -795,6 +799,54 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         element := QuiverAlgebraElement( quiver_algebra, coefficients, basis );
         
         return MorphismInAlgebroid( a, element, b );
+        
+    end );
+    
+    ##
+    if IsQuotientOfPathAlgebra( quiver_algebra ) then
+        
+        representative_func := Representative;
+        
+    else
+        
+        representative_func := IdFunc;
+        
+    fi;
+    
+    ## Both methods can be derived, but it is more efficient to add them as primitive methods.
+    ##
+    AddBasisOfExternalHom( algebroid,
+      function( object_1, object_2 )
+        local nr_source, nr_range;
+        
+        nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
+        
+        nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
+         
+        return maps[nr_source][nr_range];
+        
+    end );
+    
+    ##
+    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( algebroid,
+    
+      { morphism, basis } -> CoefficientsOfMorphism( morphism )
+    );
+    
+    ##
+    InstallMethod( CoefficientsOfMorphism,
+              [ IsCapCategoryMorphismInAlgebroid and MorphismFilter( algebroid ) ],
+              
+      function( morphism )
+        local nr_source, nr_range, element;
+       
+        nr_source := VertexIndex( UnderlyingVertex( Source( morphism ) ) );
+        
+        nr_range := VertexIndex( UnderlyingVertex( Range( morphism ) ) );
+        
+        element := UnderlyingQuiverAlgebraElement( morphism );
+        
+        return CoefficientsOfPaths( data[nr_source][nr_range], representative_func( element ) );
         
     end );
     
