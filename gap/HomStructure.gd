@@ -4,8 +4,6 @@
 # Declarations
 #
 
-DeclareProperty( "IsQuiverVertexWithLoop", IsQuiverVertex );
-
 DeclareOperation( "AuxiliaryMorphism",
     [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ] );
 
