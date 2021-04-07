@@ -50,6 +50,25 @@ DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory"
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `BiasedRelativeWeakFiberProduct`.
+#! $F: ( arg2, arg3, arg4 ) \mapsto \mathtt{BiasedRelativeWeakFiberProduct}(arg2, arg3, arg4)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfSumOfImagesOfAllMorphisms`.
 #! $F: ( a, b ) \mapsto \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)$.
 #! @Returns nothing
@@ -202,6 +221,63 @@ DeclareOperation( "AddPreInverse",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ProjectionOfBiasedRelativeWeakFiberProduct`.
+#! $F: ( a, b, c ) \mapsto \mathtt{ProjectionOfBiasedRelativeWeakFiberProduct}(a, b, c)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct`.
+#! $F: ( a, b, c, P ) \mapsto \mathtt{ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a, b, c, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativeLift`.
+#! $F: ( beta, alpha, nu ) \mapsto \mathtt{RelativeLift}(beta, alpha, nu)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativeLift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativeLift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativeLift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativeLift",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `SumOfImagesOfAllMorphisms`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)$.
 #! @Returns nothing
@@ -216,4 +292,42 @@ DeclareOperation( "AddSumOfImagesOfAllMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddSumOfImagesOfAllMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalMorphismIntoBiasedRelativeWeakFiberProduct`.
+#! $F: ( a, b, c, t ) \mapsto \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a, b, c, t)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct`.
+#! $F: ( a, b, c, t, P ) \mapsto \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a, b, c, t, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
                   [ IsCapCategory, IsList ] );

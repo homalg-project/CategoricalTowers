@@ -4,6 +4,66 @@
 # Implementations
 #
 
+##
+InstallGlobalFunction( RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  function( cat, morphism_1, morphism_2, morphism_3, arg... )
+    local current_value;
+    
+    current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether morphism_1 and morphism_2 have equal ranges" ];
+    elif current_value = false then
+        return [ false, "morphism_1 and morphism_2 must have equal ranges" ];
+    fi;
+    
+    current_value := IsEqualForObjects( Range( morphism_3 ), Source( morphism_1 ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the range of morphism_3 and the source of morphism_1 are equal" ];
+    elif current_value = false then
+        return [ false, "the range of morphism_3 and the source of morphism_1 must be equal" ];
+    fi;
+    
+    return [ true ];
+    
+  end
+);
+
+##
+InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
+  function( cat, morphism_1, morphism_2, morphism_3, test_morphism, arg... )
+    local current_value;
+    
+    current_value := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether morphism_1 and morphism_2 have equal ranges" ];
+    elif current_value = false then
+        return [ false, "morphism_1 and morphism_2 must have equal ranges" ];
+    fi;
+    
+    current_value := IsEqualForObjects( Range( morphism_3 ), Source( morphism_1 ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the range of morphism_3 and the source of morphism_1 are equal" ];
+    elif current_value = false then
+        return [ false, "the range of morphism_3 and the source of morphism_1 must be equal" ];
+    fi;
+    
+    current_value := IsEqualForObjects( Source( morphism_1 ), Range( test_morphism ) );
+    
+    if current_value = fail then
+        return [ false, "cannot decide whether the range of the test morphism is equal to the source of the first morphism " ];
+    elif current_value = false then
+        return [ false, "the range of the test morphism must equal the source of the first morphism" ];
+    fi;
+    
+    return [ true ];
+    
+  end
+);
+
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
 PreInverse := rec(
@@ -35,6 +95,97 @@ IsWeakInitial := rec(
   return_type := "bool",
   dual_operation := "IsWeakTerminal",
   property_of := "object" ),
+
+RelativeLift := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  io_type := [ [ "beta", "alpha", "nu" ], [ "beta_source", "alpha_source" ] ],
+  pre_function := function( category, beta, alpha, nu )
+    local value;
+    
+    value := IsEqualForObjects( Range( beta ), Range( alpha ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms beta and alpha have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms beta and alpha must have equal ranges" ];
+        
+    fi;
+    
+    value := IsEqualForObjects( Range( beta ), Range( nu ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms beta and nu have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms beta and nu must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism_or_fail",
+  #dual_operation := "RelativeColift",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true ),
+
+## biased weak fiber product
+## FIXME: create universal_type substitute
+
+BiasedRelativeWeakFiberProduct := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  cache_name := "BiasedRelativeWeakFiberProduct",
+  universal_type := "Limit",
+  #dual_operation := "BiasedRelativeWeakPushout",
+  pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "object",
+  is_merely_set_theoretic := true ),
+
+ProjectionOfBiasedRelativeWeakFiberProduct := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  io_type := [ [ "a", "b", "c" ], [ "P", "a_source" ] ],
+  cache_name := "ProjectionOfBiasedRelativeWeakFiberProduct",
+  with_given_object_position := "Source",
+  universal_type := "Limit",
+  #dual_operation := "InjectionOfBiasedRelativeWeakPushout",
+  pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "a", "b", "c", "P" ], [ "P", "a_source" ] ],
+  cache_name := "ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+  universal_type := "Limit",
+  #dual_operation := "InjectionOfBiasedRelativeWeakPushoutWithGivenBiasedRelativeWeakPushout",
+  pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+UniversalMorphismIntoBiasedRelativeWeakFiberProduct := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism", "morphism" ],
+  io_type := [ [ "a", "b", "c", "t" ], [ "t_source", "P" ] ],
+  cache_name := "UniversalMorphismIntoBiasedRelativeWeakFiberProduct",
+  with_given_object_position := "Range",
+  universal_type := "Limit",
+  #dual_operation := "UniversalMorphismFromBiasedRelativeWeakPushout",
+  pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
+
+UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "a", "b", "c", "t", "P", ], [ "t_source", "P" ] ],
+  cache_name := "UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+  universal_type := "Limit",
+  #dual_operation := "UniversalMorphismFromBiasedRelativeWeakPushoutWithGivenBiasedRelativeWeakPushout",
+  pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
+  return_type := "morphism",
+  is_merely_set_theoretic := true ),
 
 MorphismOntoSumOfImagesOfAllMorphisms := rec(
   filter_list := [ "category", "object", "object" ],
@@ -268,6 +419,25 @@ AddDerivationToCAP( PostInverse,
     return Colift( cat, alpha, IdentityMorphism( cat, Source( alpha ) ) );
     
 end : Description := "PostInverse using IdentityMorphism of Source and Colift" );
+
+##
+AddDerivationToCAP( BiasedRelativeWeakFiberProduct,
+        
+  function( cat, alpha, beta, gamma )
+    
+    return Source( ProjectionOfBiasedRelativeWeakFiberProduct( alpha, beta, gamma ) );
+    
+end : Description := "BiasedRelativeWeakFiberProduct as the source of ProjectionOfBiasedRelativeWeakFiberProduct" );
+
+##
+AddDerivationToCAP( UniversalMorphismIntoBiasedRelativeWeakFiberProduct,
+        
+  function( cat, alpha, beta, gamma, test_mor )
+    
+    return RelativeLift( test_mor,
+                 ProjectionOfBiasedRelativeWeakFiberProduct( alpha, beta, gamma ), gamma );
+    
+end : Description := "UniversalMorphismIntoBiasedRelativeWeakFiberProduct using RelativeLift" );
 
 ##
 AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,

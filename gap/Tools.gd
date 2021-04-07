@@ -10,6 +10,10 @@ DeclareGlobalVariable( "CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD" );
 
 DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 
+DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
+
+DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
+
 ###################################
 ##
 #! @Section PreInverse and PostInverse
@@ -57,6 +61,108 @@ DeclareProperty( "IsWeakTerminal",
 #! @Arguments a
 DeclareProperty( "IsWeakInitial",
                  IsCapCategoryObject );
+
+###################################
+##
+#! @Section RelativeLift/RelativeColift
+##
+###################################
+
+#! @Description
+#! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow c$, and $\nu: d \rightarrows c$ .
+#! The output is a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$.
+#! if such a relative lift exists or $\mathtt{fail}$ if it doesn't.
+#! Recall that a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$ is
+#! a morphism such that $\alpha \circ (\beta / \alpha) \sim_{b,c} \beta + \chi \nu$, for some morphism $\chi: b \rightarrow d$.
+#! @Returns a morphism in $\mathrm{Hom}(b,a) + \{ \mathtt{fail} \}$
+#! @Arguments beta, alpha, nu
+DeclareOperation( "RelativeLift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+####################################
+##
+#! @Section Biased relative weak fiber product
+##
+####################################
+
+#! For a given pair of morphisms $(\alpha: A \rightarrow B, \beta \colon C \rightarrow B)$, a biased relative weak fiber product of $(\alpha, \beta)$ consists of three parts:
+#! * an object $P$,
+#! * a morphism $\pi: P \rightarrow A$ such that there exists a morphism $\delta: P \rightarrow C$ such that $\beta \circ \delta \sim_{P,B} \alpha \circ \pi$,
+#! * a dependent function $u$ mapping each $\tau: T \rightarrow A$, which admits a morphism $\mu \colon T \rightarrow C$ with $\beta \circ \mu \sim_{T,B} \alpha \circ \tau$, to a morphism $u(\tau):T \rightarrow P$ such that $\pi \circ u(\tau) \sim_{T,A} \tau$.
+#! The triple $( P, \pi, u )$ is called a <Emph>biased relative weak fiber product</Emph> of $(\alpha,\beta)$.
+#! We denote the object $P$ of such a triple by $\mathrm{BiasedRelativeWeakFiberProduct}(\alpha,\beta)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the biased relative weak fiber product</Emph>.
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (C) at (\w,\w) {$C$};
+#! \node (P) at (0,\w) {$P$};
+#! \node (T) at (-\w,2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (C) to node[pos=0.45, right] {$\beta$} (B);
+#! \draw[-latex] (P) to node[pos=0.45, left] {$\pi$} (A);
+#! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\exists u( \tau )$} (P);
+#! \draw[-latex, dotted] (P) to node[pos=0.45, above] {$\delta$} (C);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\mu$} (C);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+
+## Main Operations and Attributes
+
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the biased relative weak fiber product $P$ of $\alpha$ and $\beta$.
+#! @Returns an object
+#! @Arguments alpha, beta, sigma
+DeclareOperation( "BiasedRelativeWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+## corresponds to projection in 1st factor
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$, $\sigma: D \rightarrow A$.
+#! The output is the biased relative weak fiber product projection $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}( P, A )$
+#! @Arguments alpha, beta, sigma
+DeclareOperation( "ProjectionOfBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$, $\sigma: D \rightarrow A$,
+#! and an object $P = \mathrm{BiasedRelativeWeakFiberProduct}( \alpha, \beta )$.
+#! The output is the biased relative weak fiber product projection $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}( P, A )$
+#! @Arguments alpha, beta, sigma, P
+DeclareOperation( "ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$, $\sigma: D \rightarrow A$,
+#! $\tau: T \rightarrow A$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the biased relative weak fiber product
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments alpha, beta, sigma, tau
+DeclareOperation( "UniversalMorphismIntoBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$,
+#! $\tau: T \rightarrow A$
+#! and an object $P = \mathrm{BiasedRelativeWeakFiberProduct}( \alpha, \beta )$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the biased relative weak fiber product
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments alpha, beta, sigma, tau, P
+DeclareOperation( "UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ###################################
 ##
