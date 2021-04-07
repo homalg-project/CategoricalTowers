@@ -1312,6 +1312,7 @@ InstallMethod( IntrinsicCategory,
     
     IC := CategoryConstructor( :
                   name := name,
+                  category_filter := IsIntrinsicCategory,
                   category_object_filter := IsCapCategoryIntrinsicObject and filter_obj,
                   category_morphism_filter := IsCapCategoryIntrinsicMorphism and filter_mor,
                   commutative_ring := commutative_ring,

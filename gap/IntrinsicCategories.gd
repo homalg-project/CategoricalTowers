@@ -17,6 +17,11 @@ SetInfoLevel( InfoIntrinsicCategories, 1 );
 ####################################
 
 #! @Description
+#!  The &GAP; category of an intrinsic CAP category.
+DeclareCategory( "IsIntrinsicCategory",
+        IsCapCategory );
+
+#! @Description
 #!  The &GAP; category of intrinsic cells in an intrinsic &CAP; category.
 DeclareCategory( "IsCapCategoryIntrinsicCell",
         IsCapCategoryCell and
