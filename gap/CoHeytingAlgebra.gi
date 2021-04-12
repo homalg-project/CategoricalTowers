@@ -156,7 +156,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         [ [ IsInitial, 1 ],
           [ CoexponentialOnObjects, 1 ] ],
         
-  function( S, T )
+  function( cat, S, T )
     
     return IsInitial( CoexponentialOnObjects( S, T ) );
     

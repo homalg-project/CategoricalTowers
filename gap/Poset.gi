@@ -42,7 +42,7 @@ AddDerivationToCAP( IsEqualForObjects,
         [ [ IsHomSetInhabited, 1 ],
           [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
         
-  function( A, B )
+  function( cat, A, B )
     
     return IsHomSetInhabited( A, B ) and
            AreIsomorphicForObjectsIfIsHomSetInhabited( A, B );

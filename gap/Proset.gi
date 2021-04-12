@@ -189,7 +189,7 @@ end );
 AddDerivationToCAP( IsEqualForMorphisms,
         [ [ IsEqualForObjects, 2 ] ],
         
-  function( u1, u2 )
+  function( cat, u1, u2 )
     
     return IsEqualForObjects( Source( u1 ), Source( u2 ) ) and
            IsEqualForObjects( Range( u1 ), Range( u2 ) );
@@ -213,7 +213,7 @@ AddDerivationToCAP( IsTerminal,
         [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
           [ TerminalObject, 1 ] ],
         
-  function( A )
+  function( cat, A )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
     
@@ -225,7 +225,7 @@ AddDerivationToCAP( IsInitial,
         [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
           [ InitialObject, 1 ] ],
         
-  function( A )
+  function( cat, A )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
     
@@ -236,7 +236,7 @@ end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited
 AddDerivationToCAP( IsDominating,
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( u1, u2 )
+  function( cat, u1, u2 )
     
     return IsHomSetInhabited( Source( u1 ), Source( u2 ) );
     
@@ -247,7 +247,7 @@ end : Description := "IsDominating using IsHomSetInhabited applied to the source
 AddDerivationToCAP( IsCodominating,
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( u1, u2 )
+  function( cat, u1, u2 )
     
     return IsHomSetInhabited( Range( u2 ), Range( u1 ) );
     
@@ -258,7 +258,7 @@ end : Description := "IsCodominating using IsHomSetInhabited applied to the rang
 AddDerivationToCAP( Equalizer,
         [ [ IsHomSetInhabited, 1 ] ], ## FIXME: this should be obsolete, there is a bug in CAP
         
-  function( D )
+  function( cat, D )
     
     return Source( D[1] );
     
@@ -269,7 +269,7 @@ end : Description := "Equalizer using Source",
 AddDerivationToCAP( EmbeddingOfEqualizerWithGivenEqualizer,
         [ [ IdentityMorphism, 1 ] ],
         
-  function( D, E )
+  function( cat, D, E )
     
     return IdentityMorphism( E );
     
@@ -280,7 +280,7 @@ end : Description := "EmbeddingOfEqualizerWithGivenEqualizer using IdentityMorph
 AddDerivationToCAP( Coequalizer,
         [ [ IsHomSetInhabited, 1 ] ], ## FIXME: this should be obsolete, there is a bug in CAP
         
-  function( D )
+  function( cat, D )
     
     return Range( D[1] );
     
@@ -291,7 +291,7 @@ end : Description := "Coequalizer using Range",
 AddDerivationToCAP( ProjectionOntoCoequalizerWithGivenCoequalizer,
         [ [ IdentityMorphism, 1 ] ],
         
-  function( D, C )
+  function( cat, D, C )
     
     return IdentityMorphism( C );
     
@@ -330,7 +330,7 @@ AddDerivationToCAP( IsEpimorphism,
 AddDerivationToCAP( IsIsomorphism,
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( u )
+  function( cat, u )
     
     return IsHomSetInhabited( Range( u ), Source( u ) );
     
@@ -341,7 +341,7 @@ end : Description := "IsIsomorphism using IsHomSetInhabited",
 AddDerivationToCAP( IsOne,
         [ [ IsAutomorphism, 1 ] ],
         
-  IsAutomorphism : Description := "IsOne using IsAutomorphism",
+  { cat, mor } -> IsAutomorphism( cat, mor ) : Description := "IsOne using IsAutomorphism",
       CategoryFilter := IsThinCategory );
 
 ##
