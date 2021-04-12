@@ -232,7 +232,7 @@ DeclareOperation( "AddSumOfImagesOfAllMorphisms",
 
 ##
 DeclareOperation( "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsList, IsCapCategory ] );
+                   [ IsList, IsList, IsList ] );
 
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,
@@ -257,7 +257,7 @@ DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
 
 ##
 DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsCapCategory ] );
+                   [ IsCapCategory, IsList, IsList ] );
 
 #! @Description
 #! but the output is <C>true</C> if the homogeneous system has only the trivial solution,
@@ -281,7 +281,7 @@ DeclareOperation( "AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAb
 
 ##
 DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
-                   [ IsList, IsList, IsCapCategory ] );
+                   [ IsCapCategory, IsList, IsList ] );
 
 #! @Description
 #! The arguments are two lists of lists $\alpha$ and $\beta$ of morphisms in some linear category over commutative ring.
@@ -314,7 +314,7 @@ DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory"
 
 ##
 DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp",
-                   [ IsList, IsList, IsList, IsList, IsCapCategory ] );
+                   [ IsCapCategory, IsList, IsList, IsList, IsList ] );
 
 #! @Description
 #! The arguments are four lists of lists $\alpha$, $\beta$, $\gamma$, $\delta$ of morphisms in some linear category over commutative ring.

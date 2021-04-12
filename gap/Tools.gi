@@ -8,7 +8,7 @@ InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
 PreInverse := rec(
   installation_name := "PreInverse",
-  filter_list := [ "morphism" ],
+  filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
   return_type := "morphism",
   dual_operation := "PostInverse",
@@ -17,7 +17,7 @@ PreInverse := rec(
 
 PostInverse := rec(
   installation_name := "PostInverse",
-  filter_list := [ "morphism" ],
+  filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
   return_type := "morphism",
   dual_operation := "PreInverse",
@@ -26,7 +26,7 @@ PostInverse := rec(
 
 IsWeakTerminal := rec(
   installation_name := "IsWeakTerminal",
-  filter_list := [ "object" ],
+  filter_list := [ "category", "object" ],
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsWeakInitial",
@@ -34,7 +34,7 @@ IsWeakTerminal := rec(
 
 IsWeakInitial := rec(
   installation_name := "IsWeakInitial",
-  filter_list := [ "object" ],
+  filter_list := [ "category", "object" ],
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsWeakTerminal",
@@ -42,7 +42,7 @@ IsWeakInitial := rec(
 
 MorphismOntoSumOfImagesOfAllMorphisms := rec(
   installation_name := "MorphismOntoSumOfImagesOfAllMorphisms",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "d", "b" ] ],
   return_type := "morphism",
   is_merely_set_theoretic := true
@@ -50,7 +50,7 @@ MorphismOntoSumOfImagesOfAllMorphisms := rec(
 
 EmbeddingOfSumOfImagesOfAllMorphisms := rec(
   installation_name := "EmbeddingOfSumOfImagesOfAllMorphisms",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "b" ] ],
   return_type := "morphism",
   is_merely_set_theoretic := true
@@ -58,39 +58,35 @@ EmbeddingOfSumOfImagesOfAllMorphisms := rec(
 
 SumOfImagesOfAllMorphisms := rec(
   installation_name := "SumOfImagesOfAllMorphisms",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "category", "object", "object" ],
   return_type := "object",
   is_merely_set_theoretic := true
 ),
 
 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory := rec(
   installation_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
-  argument_list := [ 1, 2, 3 ],
-  filter_list := [ IsList, IsList, IsList, "category" ],
+  filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
   cache_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory := rec(
   installation_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategoryOp",
-  argument_list := [ 1, 2 ],
-  filter_list := [ IsList, IsList, "category" ],
+  filter_list := [ "category", IsList, IsList ],
   cache_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
   installation_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
-  argument_list := [ 1, 2 ],
-  filter_list := [ IsList, IsList, "category" ],
+  filter_list := [ "category", IsList, IsList ],
   cache_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
   return_type := IsList
 ),
 
 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
   installation_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp",
-  argument_list := [ 1, 2, 3, 4 ],
-  filter_list := [ IsList, IsList, IsList, IsList, "category" ],
+  filter_list := [ "category", IsList, IsList, IsList, IsList ],
   cache_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
   return_type := IsList
 ),
@@ -169,7 +165,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
                
   function( left_coeffs, right_coeffs )
     
-    return BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp( left_coeffs, right_coeffs, CapCategory( right_coeffs[1, 1] ) );
+    return BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp( CapCategory( right_coeffs[1, 1] ), left_coeffs, right_coeffs );
     
 end );
 
@@ -180,7 +176,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
   function( alpha, beta, gamma, delta )
     
     return BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp(
-                    alpha, beta, gamma, delta, CapCategory( delta[1, 1] )
+                    CapCategory( delta[1, 1] ), alpha, beta, gamma, delta
                   );
     
 end );
@@ -246,7 +242,7 @@ InstallMethod( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
                
   function( left_coeffs, right_coeffs, right_side )
     
-    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp( CapCategory( right_side[1] ), left_coeffs, right_coeffs, right_side );
     
 end );
 
@@ -256,7 +252,7 @@ InstallMethod( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategor
                
   function( left_coeffs, right_coeffs )
     
-    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, CapCategory( right_coeffs[1,1] ) );
+    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp( CapCategory( right_coeffs[1,1] ), left_coeffs, right_coeffs );
     
 end );
 
@@ -272,7 +268,7 @@ AddDerivationToCAP( PreInverse,
           [ Lift, 1 ],
           ],
         
-  function( alpha )
+  function( cat, alpha )
     
     return Lift( IdentityMorphism( Range( alpha ) ), alpha );
     
@@ -284,7 +280,7 @@ AddDerivationToCAP( PostInverse,
           [ Colift, 1 ],
           ],
         
-  function( alpha )
+  function( cat, alpha )
     
     return Colift( alpha, IdentityMorphism( Source( alpha ) ) );
     
@@ -297,7 +293,7 @@ AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,
           [ UniversalMorphismFromDirectSum, 1 ]
           ],
         
-  function( a, b )
+  function( cat, a, b )
     local hom;
     
     hom := BasisOfExternalHom( a, b );
@@ -317,7 +313,7 @@ AddDerivationToCAP( EmbeddingOfSumOfImagesOfAllMorphisms,
           [ ImageEmbedding, 1 ],
           ],
         
-  function( a, b )
+  function( cat, a, b )
     
     return ImageEmbedding( MorphismOntoSumOfImagesOfAllMorphisms( a, b ) );
     
@@ -329,7 +325,7 @@ AddDerivationToCAP( SumOfImagesOfAllMorphisms,
         [ [ EmbeddingOfSumOfImagesOfAllMorphisms, 1 ],
           ],
         
-  function( a, b )
+  function( cat, a, b )
     
     return Source( EmbeddingOfSumOfImagesOfAllMorphisms( a, b ) );
     
@@ -342,10 +338,8 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
-  function( left_coefficients, right_coefficients )
-    local cat, m, n, list, H, B, summands;
-    
-    cat := CapCategory( left_coefficients[ 1 ][ 1 ] );
+  function( cat, left_coefficients, right_coefficients )
+    local m, n, list, H, B, summands;
     
     m := Size( left_coefficients );
     
@@ -423,10 +417,8 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
                       [ DistinguishedObjectOfHomomorphismStructure, 1 ]
                     ],
-  function( alpha, beta, gamma, delta )
-    local cat, m, n, list_1, H_1, list_2, H_2, H, B, summands;
-    
-    cat := CapCategory( alpha[ 1 ][ 1 ] );
+  function( cat, alpha, beta, gamma, delta )
+    local m, n, list_1, H_1, list_2, H_2, H, B, summands;
     
     m := Size( alpha );
     
@@ -509,7 +501,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
-  function( left_coefficients, right_coefficients, right_side )
+  function( cat, left_coefficients, right_coefficients, right_side )
     local m, n, nu, list, H;
     
     m := Size( left_coefficients );
@@ -566,7 +558,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory,
                     [ [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ] ],
-  function( left_coefficients, right_coefficients )
+  function( cat, left_coefficients, right_coefficients )
     local m, n, list, H;
     
     m := Size( left_coefficients );
