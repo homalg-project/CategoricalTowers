@@ -156,7 +156,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         [ [ IsTerminal, 1 ],
           [ ExponentialOnObjects, 1 ] ],
         
-  function( S, T )
+  function( cat, S, T )
     
     return IsTerminal( ExponentialOnObjects( S, T ) );
     

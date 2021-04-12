@@ -114,7 +114,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
           [ DirectProduct, 1 ] ],
         
-  function( S, T )
+  function( cat, S, T )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
     
@@ -236,7 +236,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
           [ Coproduct, 1 ], ],
         
-  function( S, T )
+  function( cat, S, T )
     
     return AreIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
     
