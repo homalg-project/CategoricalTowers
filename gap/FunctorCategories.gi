@@ -669,7 +669,7 @@ InstallMethodWithCache( Hom,
     create_func_object0 :=
       function ( name, Hom )
         local B, C, name_of_object, info, oper, functorial;
-
+        
         B := Source( Hom );
         C := Range( Hom );
         
@@ -990,6 +990,7 @@ InstallMethodWithCache( Hom,
             local src_trg, S, T, eval_arg, eta;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            
             S := UnderlyingCapTwoCategoryCell( src_trg[1] );
             T := UnderlyingCapTwoCategoryCell( src_trg[2] );
             
@@ -1001,12 +1002,12 @@ InstallMethodWithCache( Hom,
               function ( source, objB, range )
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
-            
+              
             return AsMorphismInHomCategory( Hom, eta );
             
-          end;
-          
-      end;
+        end;
+        
+    end;
     
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism :=
