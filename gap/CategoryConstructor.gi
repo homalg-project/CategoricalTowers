@@ -40,6 +40,10 @@ InstallGlobalFunction( CategoryConstructor,
     
     CC := CreateCapCategory( name );
     
+    if IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_as_first_argument", false ), true ) then
+        CC!.category_as_first_argument := true;
+    fi;
+    
     category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsCapCategoryObject );
     category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsCapCategoryMorphism );
     
