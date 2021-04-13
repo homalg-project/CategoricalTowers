@@ -18,6 +18,8 @@ Version := Maximum( [
                    "2021.04-02", ## Kamal's version
                    ## this line prevents merge conflicts
                    "2020.09-01", ## Tibor's version
+                   ## this line prevents merge conflicts
+                   "2021.04-03", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -80,7 +82,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2019.10.29" ],
+                   [ "CAP", ">= 2021.03-01" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
                    [ "Algebroids", ">= 2020.11-01" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],
