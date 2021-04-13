@@ -418,7 +418,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIsWellDefinedForObjects( category,
-      function( o )
+      function( category, o )
         
         o := UnderlyingVertex( o );
         
@@ -428,7 +428,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( alpha )
+      function( category, alpha )
         local m, v, w;
         
         m := UnderlyingQuiverAlgebraElement( alpha );
@@ -480,7 +480,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( category, object_1, object_2 )
         
         return UnderlyingVertex( object_1 ) = UnderlyingVertex( object_2 );
         
@@ -488,7 +488,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( category, morphism_1, morphism_2 )
         
         return UnderlyingQuiverAlgebraElement( morphism_1 ) = UnderlyingQuiverAlgebraElement( morphism_2 );
         
@@ -496,7 +496,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( category, morphism_1, morphism_2 )
         
         return UnderlyingQuiverAlgebraElement( morphism_1 ) = UnderlyingQuiverAlgebraElement( morphism_2 );
         
@@ -504,10 +504,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddIdentityMorphism( category,
-      function( object )
+      function( category, object )
         local quiver_algebra, id;
         
-        quiver_algebra := UnderlyingQuiverAlgebra( CapCategory( object ) );
+        quiver_algebra := UnderlyingQuiverAlgebra( category );
         
         id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
         
@@ -520,12 +520,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddPreCompose( category,
-      function( morphism_1, morphism_2 )
-        local B, quiver;
+      function( category, morphism_1, morphism_2 )
+        local quiver;
         
-        B := CapCategory( morphism_1 );
-        
-        quiver := UnderlyingQuiver( B );
+        quiver := UnderlyingQuiver( category );
         
         if IsRightQuiver( quiver ) then
             return MorphismInAlgebroid(
@@ -543,7 +541,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( category, morphism_1, morphism_2 )
         
         return MorphismInAlgebroid(
                        Source( morphism_1 ),
@@ -554,7 +552,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( category, morphism )
         
         return MorphismInAlgebroid(
                        Source( morphism ),
@@ -563,9 +561,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
     end );
     
-    #
+    ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-      function( r, morphism )
+      function( category, r, morphism )
         
         return MorphismInAlgebroid(
                        Source( morphism ),
@@ -576,11 +574,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
     ##
     AddZeroMorphism( category,
-      function( S, T )
+      function( category, S, T )
         
         return MorphismInAlgebroid(
                        S,
-                       Zero( UnderlyingQuiverAlgebra( CapCategory( S ) ) ),
+                       Zero( UnderlyingQuiverAlgebra( category ) ),
                        T );
         
     end );
@@ -670,7 +668,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     AddHomomorphismStructureOnObjects( algebroid,
-      function( object_1, object_2 )
+      function( algebroid, object_1, object_2 )
         local nr_source, nr_range, basis_elements;
         
         nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
@@ -685,7 +683,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( algebroid,
-      function( source, alpha, beta, range )
+      function( algebroid, source, alpha, beta, range )
         local elem_alpha, elem_beta, a, b, ap, bp, basis_elements_source, basis_elements_range, size_source, size_range, images, path;
         
         elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
@@ -744,7 +742,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( algebroid,
-      function( )
+      function( algebroid )
         
         return distinguished_object();
         
@@ -752,7 +750,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( algebroid,
-      function( alpha )
+      function( algebroid, alpha )
         local a, b, basis_elements, size_basis, element;
         
         a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
@@ -789,7 +787,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( algebroid,
-      function( a, b, morphism )
+      function( algebroid, a, b, morphism )
         local coefficients, basis, element;
         
         coefficients := EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
@@ -816,7 +814,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     ## Both methods can be derived, but it is more efficient to add them as primitive methods.
     ##
     AddBasisOfExternalHom( algebroid,
-      function( object_1, object_2 )
+      function( algebroid, object_1, object_2 )
         local nr_source, nr_range;
         
         nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
@@ -830,7 +828,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( algebroid,
     
-      { morphism, basis } -> CoefficientsOfMorphism( morphism )
+      { algebroid, morphism, basis } -> CoefficientsOfMorphism( morphism )
     );
     
     ##
@@ -868,7 +866,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
       );
       
       AddRandomMorphismWithFixedSourceByInteger( A,
-        function( o, n )
+        function( A, o, n )
           local objects, p, b;
           
           objects := Shuffle( ShallowCopy( SetOfObjects( A ) ) );
@@ -886,7 +884,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
       end );
       
       AddRandomMorphismWithFixedRangeByInteger( A,
-        function( o, n )
+        function( A, o, n )
           local objects, p, b;
           
           objects := Shuffle( ShallowCopy( SetOfObjects( A ) ) );
@@ -904,7 +902,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
       end );
       
       AddRandomMorphismWithFixedSourceAndRangeByInteger( A,
-        function( s, r, n )
+        function( A, s, r, n )
           local b;
           
           b := BasisOfExternalHom( s, r );
@@ -994,6 +992,8 @@ InstallMethod( Algebroid,
     A := Concatenation( A, " generated by the ", parity, " quiver ", String( quiver ) );
     
     A := CreateCapCategory( A );
+    
+    A!.category_as_first_argument := true;
     
     DeactivateCachingOfCategory( A );
     CapCategorySwitchLogicOff( A );

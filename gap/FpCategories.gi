@@ -155,7 +155,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddIsWellDefinedForObjects( category,
-      function( o )
+      function( category, o )
         
         o := UnderlyingVertex( o );
         
@@ -165,7 +165,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( alpha )
+      function( category, alpha )
         local m, v, w;
         
         m := UnderlyingQuiverAlgebraElement( alpha );
@@ -217,7 +217,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( category, object_1, object_2 )
         
         return UnderlyingVertex( object_1 ) = UnderlyingVertex( object_2 );
         
@@ -225,7 +225,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( category, morphism_1, morphism_2 )
         
         return UnderlyingQuiverAlgebraElement( morphism_1 ) = UnderlyingQuiverAlgebraElement( morphism_2 );
         
@@ -233,7 +233,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( category, morphism_1, morphism_2 )
         
         return UnderlyingQuiverAlgebraElement( morphism_1 ) = UnderlyingQuiverAlgebraElement( morphism_2 );
         
@@ -241,10 +241,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddIdentityMorphism( category,
-      function( object )
+      function( category, object )
         local quiver_algebra, id;
         
-        quiver_algebra := UnderlyingQuiverAlgebra( CapCategory( object ) );
+        quiver_algebra := UnderlyingQuiverAlgebra( category );
         
         id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
         
@@ -257,12 +257,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     ##
     AddPreCompose( category,
-      function( morphism_1, morphism_2 )
-        local B, quiver;
+      function( category, morphism_1, morphism_2 )
+        local quiver;
         
-        B := CapCategory( morphism_1 );
-        
-        quiver := UnderlyingQuiver( B );
+        quiver := UnderlyingQuiver( category );
         
         if IsRightQuiver( quiver ) then
             return MorphismInFpCategory(
@@ -343,6 +341,8 @@ InstallMethod( Category,
     fi;
     
     C := CreateCapCategory( C );
+    
+    C!.category_as_first_argument := true;
     
     C!.relations := relations;
     
