@@ -734,14 +734,14 @@ InstallMethodWithCache( Hom,
         
         functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
-        if IsBound( functorial.filter_list ) and Length( functorial.filter_list ) >= 5 and
-           IsBound( functorial.filter_list[2] ) and
-           ( ( IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList ) or
-             functorial.filter_list[2] = "list_of_morphisms" ) then
+        if IsBound( functorial.filter_list ) and Length( functorial.filter_list ) >= 6 and
+           IsBound( functorial.filter_list[3] ) and
+           ( ( IsFilter( functorial.filter_list[3] ) and functorial.filter_list[3] = IsList ) or
+             functorial.filter_list[3] = "list_of_morphisms" ) then
             diagram := "multiple arrows";
-        elif IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[2] ) and
-           ( ( IsFilter( functorial.filter_list[2] ) and functorial.filter_list[2] = IsList ) or
-             functorial.filter_list[2] = "list_of_morphisms" ) then
+        elif IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[3] ) and
+           ( ( IsFilter( functorial.filter_list[3] ) and functorial.filter_list[3] = IsList ) or
+             functorial.filter_list[3] = "list_of_morphisms" ) then
             diagram := "multiple objects";
         else
             diagram := "single arrow";
