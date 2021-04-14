@@ -202,7 +202,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
   function ( M, degree )
     local zero, degrees, f, ZC;
     
-    zero := ZeroObject( M );
+    zero := ZeroObject( CapCategory( M ) );
     
     f :=
       function ( n )
@@ -230,7 +230,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
   function ( M )
     local zero, degrees, f, ZC;
     
-    zero := ZeroObject( M );
+    zero := ZeroObject( CapCategory( M ) );
     
     M := DegreeDecomposition( M );
     
@@ -290,7 +290,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     degrees := List( support_with_degrees, a -> a[1] );
     support := List( support_with_degrees, a -> a[2] );
     
-    zero := ZeroObject( support_with_degrees[1][2] );
+    zero := ZeroObject( CapCategory( support_with_degrees[1][2] ) );
     
     f :=
       function ( n )
