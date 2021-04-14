@@ -91,12 +91,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( Hom,
-        { } -> DistinguishedObjectOfHomomorphismStructure( Range( Hom ) )
+        { Hom } -> DistinguishedObjectOfHomomorphismStructure( Range( Hom ) )
     );
     
     ##
     AddHomomorphismStructureOnObjects( Hom,
-      function ( S, R )
+      function ( Hom, S, R )
         local map, H_SR;
         
         map := AuxiliaryMorphism( S, R );
@@ -109,7 +109,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom,
-      function ( eta )
+      function ( Hom, eta )
         local m, H_SR;
         
         m := ValuesOnAllObjects( eta );
@@ -126,7 +126,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
-      function ( S, R, iota )
+      function ( Hom, S, R, iota )
         local S_o_vals, R_o_vals, map, summands;
         
         S_o_vals := ValuesOnAllObjects( S );
@@ -151,7 +151,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
-      function ( s, eta, mu, r )
+      function ( Hom, s, eta, mu, r )
         local eta_v, mu_v, m;
         
         eta_v := ValuesOnAllObjects( eta );
@@ -174,7 +174,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
       
       ##
       AddBasisOfExternalHom( Hom,
-        function ( S, R )
+        function ( Hom, S, R )
           local H_SR, iota, D, S_o_vals, R_o_vals, summands, nr_o, direct_sum, iotas, basis;
           
           H_SR := AuxiliaryMorphism( S, R );
@@ -220,7 +220,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
       
       ##
       AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
-        { eta, B } -> CoefficientsOfMorphism( eta )
+        { Hom, eta, B } -> CoefficientsOfMorphism( eta )
       );
       
       ##
