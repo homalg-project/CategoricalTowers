@@ -232,6 +232,28 @@ InstallOtherMethod( PushoutFunctorialWithGivenPushouts,
     
 end );
 
+##
+InstallOtherMethod( KernelObjectFunctorialWithGivenKernelObjects,
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( s, alpha, mu, nu, alpha_prime, r )
+    
+    return KernelObjectFunctorialWithGivenKernelObjects( s, alpha, mu, alpha_prime, r );
+    
+end );
+
+##
+InstallOtherMethod( CokernelObjectFunctorialWithGivenCokernelObjects,
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( s, alpha, mu, nu, alpha_prime, r )
+    
+    return CokernelObjectFunctorialWithGivenCokernelObjects( s, alpha, nu, alpha_prime, r );
+    
+end );
+
 ####################################
 #
 # methods for operations:
