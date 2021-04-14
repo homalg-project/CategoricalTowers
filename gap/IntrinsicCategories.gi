@@ -94,7 +94,7 @@ InstallImmediateMethod( CanonicalizedToZero,
     
     o := ActiveCell( obj );
     
-    if IsEqualForObjects( o, ZeroObject( o ) ) then
+    if IsEqualForObjects( o, ZeroObject( CapCategory( o ) ) ) then
         return true;
     fi;
     
