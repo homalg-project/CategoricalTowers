@@ -310,7 +310,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     AddUniversalMorphismIntoTerminalObject( S,
       function( M )
         
-        return AsSliceCategoryCell( M, UnderlyingMorphism( M ), TerminalObject( M ) );
+        return AsSliceCategoryCell( M, UnderlyingMorphism( M ), TerminalObject( CapCategory( M ) ) );
         
     end );
     
