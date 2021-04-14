@@ -275,7 +275,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
         ## IsEqualForObjectsIfIsHomSetInhabited would trigger
         ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
         ## which is for this context unnecessary and expensive
-        return IsHomSetInhabited( TerminalObject( A ), A );
+        return IsHomSetInhabited( TerminalObject( CapCategory( A ) ), A );
         
     end );
     
@@ -286,7 +286,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
         ## IsEqualForObjectsIfIsHomSetInhabited would trigger
         ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
         ## which is for this context unnecessary and expensive
-        return IsHomSetInhabited( A, InitialObject( A ) );
+        return IsHomSetInhabited( A, InitialObject( CapCategory( A ) ) );
         
     end );
     

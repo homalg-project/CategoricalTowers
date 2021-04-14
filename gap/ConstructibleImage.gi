@@ -68,7 +68,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
     additional_components := [];
 
-    L := TerminalObject( Gamma );
+    L := TerminalObject( CapCategory( Gamma ) );
 
     for a in values do
 
@@ -447,7 +447,7 @@ InstallMethod( ConstructibleProjection,
     
     B := BaseOfFibration( Gamma );
     
-    initial := InitialObject( B );
+    initial := InitialObject( CapCategory( B ) );
     
     initial := UnionOfMultipleDifferences( initial - initial );
     

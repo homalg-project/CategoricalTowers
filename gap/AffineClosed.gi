@@ -473,13 +473,13 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         l := L[1];
         
         if ForAny( L, IsTerminal ) then
-            return TerminalObject( l );
+            return TerminalObject( CapCategory( l ) );
         fi;
         
         L := Filtered( L, A -> not IsInitial( A ) );
         
         if L = [ ] then
-            return InitialObject( l );
+            return InitialObject( CapCategory( l ) );
         elif Length( L ) = 1 then
             return L[1];
         fi;
@@ -509,13 +509,13 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
 
         ## testing the membership of 1 might be very expensive for some ideals in the sum
         if ForAny( L, a -> HasIsInitial( a ) and IsInitial( a ) ) then
-            return InitialObject( l );
+            return InitialObject( CapCategory( l ) );
         fi;
         
         L := Filtered( L, A -> not IsTerminal( A ) );
         
         if L = [ ] then
-            return TerminalObject( l );
+            return TerminalObject( CapCategory( l ) );
         elif Length( L ) = 1 then
             return L[1];
         fi;
@@ -548,7 +548,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
         B := MorphismOfUnderlyingCategory( B );
         
         if IsZero( B ) then
-            return InitialObject( A );
+            return InitialObject( CapCategory( A ) );
         fi;
         
         A := MorphismOfUnderlyingCategory( A );

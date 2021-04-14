@@ -123,7 +123,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     Ap := A.J;
     
     if IsInitial( Ap ) then
-        Ap := InitialObject( Ap );
+        Ap := InitialObject( CapCategory( Ap ) );
     elif HasPreDistinguishedSubtrahend( A ) or HasNormalizedDistinguishedSubtrahend( A ) then
         Ap := DistinguishedSubtrahend( A );
     fi;
@@ -190,7 +190,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     for D in A do
         
         if IsInitial( D.J ) then
-            D := InitialObject( D.J );
+            D := InitialObject( CapCategory( D.J ) );
         elif HasPreDistinguishedSubtrahend( D ) or HasNormalizedDistinguishedSubtrahend( D ) then
             D := DistinguishedSubtrahend( D );
         else
@@ -228,7 +228,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     A := Closure( A );
     
     if d = [ ] then
-        d := [ InitialObject( A ) ];
+        d := [ InitialObject( CapCategory( A ) ) ];
     fi;
     
     A := List( d, s -> A - s );

@@ -306,13 +306,13 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         ## testing the membership of 1 might be very expensive for some ideals in the sum
         if ForAny( L, a -> HasIsTerminal( a ) and IsTerminal( a ) ) then
-            return TerminalObject( l );
+            return TerminalObject( CapCategory( l ) );
         fi;
         
         L := Filtered( L, A -> not IsInitial( A ) );
         
         if L = [ ] then
-            return InitialObject( l );
+            return InitialObject( CapCategory( l ) );
         elif Length( L ) = 1 then
             return L[1];
         fi;
@@ -345,13 +345,13 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         l := L[1];
         
         if ForAny( L, IsInitial ) then
-            return InitialObject( l );
+            return InitialObject( CapCategory( l ) );
         fi;
         
         L := Filtered( L, A -> not IsTerminal( A ) );
         
         if L = [ ] then
-            return TerminalObject( l );
+            return TerminalObject( CapCategory( l ) );
         elif Length( L ) = 1 then
             return L[1];
         fi;
@@ -376,7 +376,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         A := MorphismOfUnderlyingCategory( A );
         
         if IsZero( A ) then
-            return TerminalObject( B );
+            return TerminalObject( CapCategory( B ) );
         fi;
         
         B := MorphismOfUnderlyingCategory( B );
