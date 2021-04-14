@@ -22,7 +22,7 @@ InstallMethod( AdditiveInverseMutable,
         
   function( A )
     
-    return TerminalObject( A ) - A;
+    return TerminalObject( CapCategory( A ) ) - A;
     
 end );
 
@@ -126,7 +126,7 @@ InstallMethod( CanonicalObjectOp,
     local C;
     
     if IsInitial( A ) then
-        return InitialObject( A );
+        return InitialObject( CapCategory( A ) );
     fi;
     
     C := LocallyClosedPart( A );

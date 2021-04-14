@@ -395,7 +395,7 @@ InstallMethod( NormalizedObject,
     L := Filtered( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), m -> not IsInitial( m ) );
     
     if L = [ ] then
-        return InitialObject( A );
+        return InitialObject( CapCategory( A ) );
     fi;
     
     return CallFuncList( UnionOfDifferences, L );
@@ -413,7 +413,7 @@ InstallMethod( StandardizedObject,
     L := Filtered( ListOfStandardObjectsInMeetSemilatticeOfDifferences( A ), m -> not IsInitial( m ) );
     
     if L = [ ] then
-        return InitialObject( A );
+        return InitialObject( CapCategory( A ) );
     fi;
     
     return CallFuncList( UnionOfDifferences, L );

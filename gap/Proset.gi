@@ -215,7 +215,7 @@ AddDerivationToCAP( IsTerminal,
         
   function( cat, A )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( A ) );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( cat ) );
     
 end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabited and TerminalObject",
       CategoryFilter := IsThinCategory );
@@ -227,7 +227,7 @@ AddDerivationToCAP( IsInitial,
         
   function( cat, A )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( A ), A );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( cat ), A );
     
 end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited and InitialObject",
       CategoryFilter := IsThinCategory );

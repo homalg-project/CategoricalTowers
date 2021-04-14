@@ -173,7 +173,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    return A - InitialObject( A );
+    return A - InitialObject( CapCategory( A ) );
     
 end );
 
@@ -195,7 +195,7 @@ InstallMethod( AdditiveInverseMutable,
         
   function( A )
     
-    return TerminalObject( A ) - A;
+    return TerminalObject( CapCategory( A ) ) - A;
     
 end );
 
@@ -302,7 +302,7 @@ InstallMethod( FactorsAttr,
     facAp := Factors( A.J );
     
     if facAp = [ ] then
-        facAp := [ InitialObject( Ac ) ];
+        facAp := [ InitialObject( CapCategory( Ac ) ) ];
     fi;
     
     A := List( facAc, T -> CallFuncList( AsMultipleDifference, List( facAp, S -> T - S ) ) );
