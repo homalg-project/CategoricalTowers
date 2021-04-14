@@ -107,7 +107,9 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddLiftAlongMonomorphism( preordered_set,
       function( cat, u1, u2 )
         
-        if not IsDominating( u1, u2 ) then
+
+        ## WARNING: when installing primitive methods use primitively installed methhods
+        if not IsDominating( cat, u1, u2 ) then
             return fail;
         fi;
         
@@ -119,7 +121,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddColiftAlongEpimorphism( preordered_set,
       function( cat, u1, u2 )
         
-        if not IsCodominating( u2, u1 ) then
+        ## WARNING: when installing primitive methods use primitively installed methhods
+        if not IsCodominating( cat, u2, u1 ) then
             return fail;
         fi;
         

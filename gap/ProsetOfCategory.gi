@@ -16,6 +16,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    "TensorProductOnObjects",
    "InternalHomOnObjects",
    "InternalHomOnMorphismsWithGivenInternalHoms",
+   "InternalCoHomOnObjects",
+   "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
    # P admits the same (co)limits as C,
    # in fact, a weak (co)limit in C becomes a (co)limit in P.
    # However, we must not automatically detect these (co)limits via `universal_type`,
@@ -368,11 +370,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     if IsIdenticalObj( stable, true ) then
         
-        Add( list_of_operations_to_install, "IsTerminal" );
+        Append( list_of_operations_to_install, [ "IsTerminal" ] ); ## do not add "IsInitial"
         
         Append( skip,
                 [ "IsHomSetInhabited",
                   "InternalHomOnObjects",
+                  "InternalCoHomOnObjects",
                   "AreIsomorphicForObjectsIfIsHomSetInhabited",
                   ] );
     fi;
@@ -395,7 +398,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                     "IsBraidedMonoidalCategory",
                     "IsSymmetricMonoidalCategory",
                     "IsClosedMonoidalCategory",
+                    "IsCoclosedMonoidalCategory",
                     "IsSymmetricClosedMonoidalCategory",
+                    "IsSymmetricCoclosedMonoidalCategory",
                     "IsCartesianCategory",
                     "IsStrictCartesianCategory",
                     "IsCartesianClosedCategory",
@@ -507,7 +512,30 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddExponentialOnMorphismsWithGivenExponentials( P,
               { cat, S, alpha, beta, T } -> InternalHomOnMorphismsWithGivenInternalHoms( cat, S, alpha, beta, T ) );
             
-        else
+        fi;
+        
+        if CanCompute( C, "InternalCoHomOnObjects" ) then
+            
+            ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( P );
+            
+            ##
+            AddInternalCoHomOnObjects( P,
+              function( cat, S, T )
+                
+                return StableInternalCoHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / cat;
+                
+            end );
+            
+            ## InternalCoHomOnMorphismsWithGivenInternalCoHoms is passed from the ambient co-Heyting algebra,
+            ## its source are and target are not identical but equal to above (altered) internal CoHom
+            
+            ##
+            AddCoexponentialOnObjects( P,
+              InternalCoHomOnObjects );
+            
+            ##
+            AddCoexponentialOnMorphismsWithGivenCoexponentials( P,
+              InternalCoHomOnMorphismsWithGivenInternalCoHoms );
             
         fi;
         

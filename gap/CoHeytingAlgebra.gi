@@ -187,3 +187,22 @@ AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
     
 end : Description := "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
       CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCocartesianCoclosedCategory );
+
+##
+InstallMethod( StableInternalCoHom,
+        "for two objects in a thin category",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  function( V, W )
+    local V_W;
+    
+    V_W := V;
+    
+    repeat
+        V := V_W;
+        V_W := InternalCoHomOnObjects( V_W, W );
+    until AreIsomorphicForObjectsIfIsHomSetInhabited( V_W, V );
+    
+    return V_W;
+    
+end );

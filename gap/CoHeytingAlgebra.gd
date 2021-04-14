@@ -111,6 +111,15 @@ DeclareOperation( "AddMorphismFromDoubleConegationWithGivenDoubleConegation",
 DeclareOperation( "AddMorphismFromDoubleConegationWithGivenDoubleConegation",
                   [ IsCapCategory, IsList ] );
 
+#! @Section Stable internal coHom
+
+#! @Description
+#!  Return the stable internal coHom: $\mathrm{\underline{coHom}}(\mathrm{\underline{coHom}}(...\mathrm{\underline{coHom}}(V,W)...,W),W)$.
+#! @Arguments V, W
+#! @Returns a &CAP; object
+DeclareOperation( "StableInternalCoHom",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 # @Section Tools
 
 DeclareGlobalVariable( "COHEYTING_ALGEBRA_METHOD_NAME_RECORD" );
