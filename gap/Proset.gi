@@ -128,7 +128,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
-    AddInverse( preordered_set,
+    AddInverseForMorphisms( preordered_set,
       function( u )
         
         return UniqueMorphism( Range( u ), Source( u ) );
