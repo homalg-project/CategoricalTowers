@@ -58,7 +58,7 @@ InstallMethod( ConcreteCategoryForCAP,
         return IsAutomorphism( UnderlyingCell( alpha ) );
     end );
     
-    AddInverse( C,
+    AddInverseForMorphisms( C,
       function( alpha )
         return Inverse( UnderlyingCell( alpha ) ) / CapCategory( alpha );
     end );
