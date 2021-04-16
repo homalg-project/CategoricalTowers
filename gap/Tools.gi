@@ -64,28 +64,28 @@ SumOfImagesOfAllMorphisms := rec(
 ),
 
 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory := rec(
-  installation_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
+  installation_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
   cache_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory := rec(
-  installation_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategoryOp",
+  installation_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
   filter_list := [ "category", IsList, IsList ],
   cache_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
-  installation_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
+  installation_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
   filter_list := [ "category", IsList, IsList ],
   cache_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
   return_type := IsList
 ),
 
 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
-  installation_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp",
+  installation_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
   filter_list := [ "category", IsList, IsList, IsList, IsList ],
   cache_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
   return_type := IsList
@@ -165,7 +165,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
                
   function( left_coeffs, right_coeffs )
     
-    return BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp( CapCategory( right_coeffs[1, 1] ), left_coeffs, right_coeffs );
+    return BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory( CapCategory( right_coeffs[1, 1] ), left_coeffs, right_coeffs );
     
 end );
 
@@ -175,7 +175,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
                
   function( alpha, beta, gamma, delta )
     
-    return BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp(
+    return BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory(
                     CapCategory( delta[1, 1] ), alpha, beta, gamma, delta
                   );
     
@@ -237,22 +237,12 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
 end );
 
 ##
-InstallMethod( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
-               [ IsList, IsList, IsList ],
-               
-  function( left_coeffs, right_coeffs, right_side )
-    
-    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp( CapCategory( right_side[1] ), left_coeffs, right_coeffs, right_side );
-    
-end );
-
-##
 InstallMethod( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory,
                [ IsList, IsList ],
                
   function( left_coeffs, right_coeffs )
     
-    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp( CapCategory( right_coeffs[1,1] ), left_coeffs, right_coeffs );
+    return MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory( CapCategory( right_coeffs[1,1] ), left_coeffs, right_coeffs );
     
 end );
 

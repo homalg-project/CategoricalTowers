@@ -230,10 +230,6 @@ DeclareOperation( "AddSumOfImagesOfAllMorphisms",
 ##
 ###################################
 
-##
-DeclareOperation( "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsList ] );
-
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,
 #! but the output is simply <C>true</C> if a unique solution exists,
@@ -256,7 +252,7 @@ DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
                   [ IsCapCategory, IsList ] );
 
 ##
-DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategoryOp",
+DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
                    [ IsCapCategory, IsList, IsList ] );
 
 #! @Description
@@ -280,7 +276,7 @@ DeclareOperation( "AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAb
                   [ IsCapCategory, IsList ] );
 
 ##
-DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategoryOp",
+DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
                    [ IsCapCategory, IsList, IsList ] );
 
 #! @Description
@@ -313,7 +309,7 @@ DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory"
                   [ IsCapCategory, IsList ] );
 
 ##
-DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategoryOp",
+DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
                    [ IsCapCategory, IsList, IsList, IsList, IsList ] );
 
 #! @Description
