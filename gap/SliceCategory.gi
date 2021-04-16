@@ -12,7 +12,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    # "Colift" cannot be derived from the ambient category
    "ColiftAlongEpimorphism",
    "IdentityMorphism",
-   "InverseImmutable",
+   "InverseForMorphisms",
    "IsAutomorphism",
    "IsColiftableAlongEpimorphism",
    "IsCongruentForMorphisms",
