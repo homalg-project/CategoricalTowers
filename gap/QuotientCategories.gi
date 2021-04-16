@@ -398,7 +398,7 @@ InstallMethod( IsIsomorphism,
 end );
 
 ##
-InstallMethod( InverseOp,
+InstallMethod( InverseForMorphisms,
           [ IsCapCategoryMorphism and IsQuotientCategoryMorphism ],
           5000,
   function( quotient_alpha )
@@ -416,7 +416,7 @@ InstallMethod( InverseOp,
     
       if IsIsomorphism( alpha ) then
       
-        return InverseImmutable( alpha ) / CapCategory( quotient_alpha );
+        return InverseForMorphisms( alpha ) / CapCategory( quotient_alpha );
       
       fi;
     
