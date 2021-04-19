@@ -20,7 +20,7 @@ DeclareCategory( "IsQuotientCategory",
 #! @Section Constructors
 
 #! @Description
-#! The input is a categpry $C$ and a function $F$. For two objects $a$ and $b$ in $C$,
+#! The input is a category $C$ and a function $F$. For two objects $a$ and $b$ in $C$,
 #! the function $F$ can be applied on two morphisms $\alpha,\beta \in \mathrm{Hom}_C(a,b)$ and returns 
 #! <C>true</C> if $\alpha \sim \beta$ and <C>false</C> otherwise.
 #! The output is the quotient category $C/F$.
