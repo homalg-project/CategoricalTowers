@@ -66,7 +66,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
   
   function ( Hom )
     local range_category, range_of_hom_structure;
-     
+    
     range_category := Range( Hom );
     
     if not HasRangeCategoryOfHomomorphismStructure( range_category ) then
@@ -103,8 +103,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         
         H_SR := KernelObject( map );
         
-        H_SR!.AuxiliaryMorphism := map;
-        
         return H_SR;
         
     end );
@@ -120,13 +118,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         
         m := MorphismBetweenDirectSums( [ m ] );
         
-        H_SR := HomomorphismStructureOnObjects( Source( eta ), Range( eta ) );
+        H_SR := AuxiliaryMorphism( Source( eta ), Range( eta ) );
         
-        return KernelLiftWithGivenKernelObject(
-                  H_SR!.AuxiliaryMorphism,
-                  m,
-                  H_SR
-                );
+        return KernelLift( H_SR, m );
+        
     end );
     
     ##
@@ -138,7 +133,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         
         R_o_vals := ValuesOnAllObjects( R );
         
-        map := Range( iota )!.AuxiliaryMorphism;
+        map := AuxiliaryMorphism( S, R );
         
         iota := PreCompose( iota, KernelEmbedding( map ) );
         
@@ -160,16 +155,16 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         local eta_v, mu_v, m;
         
         eta_v := ValuesOnAllObjects( eta );
-         
+        
         mu_v := ValuesOnAllObjects( mu );
-         
+        
         m := ListN( eta_v, mu_v, HomomorphismStructureOnMorphisms );
         
         return KernelObjectFunctorialWithGivenKernelObjects(
                   s,
-                  s!.AuxiliaryMorphism,
+                  AuxiliaryMorphism( Range( eta ), Source( mu ) ),
                   DirectSumFunctorial( m ),
-                  r!.AuxiliaryMorphism,
+                  AuxiliaryMorphism( Source( eta ), Range( mu ) ),
                   r
                 );
                 
@@ -182,9 +177,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
         function ( S, R )
           local H_SR, iota, D, S_o_vals, R_o_vals, summands, nr_o, direct_sum, iotas, basis;
           
-          H_SR := HomomorphismStructureOnObjects( S, R );
+          H_SR := AuxiliaryMorphism( S, R );
           
-          iota := KernelEmbedding( H_SR!.AuxiliaryMorphism );
+          iota := KernelEmbedding( H_SR );
           
           D := DistinguishedObjectOfHomomorphismStructure( Hom );
           
@@ -204,7 +199,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATE
           
           iotas := List( summands, s -> PreCompose( iota, s ) );
           
-          basis := BasisOfExternalHom( D, H_SR );
+          basis := BasisOfExternalHom( D, Source( iota ) );
           
           iotas := List( iotas, iota -> List( basis, b -> PreCompose( b, iota ) ) );
           
