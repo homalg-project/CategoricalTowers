@@ -36,6 +36,7 @@ InstallMethod( SetOfObjects,
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsFpCategory and HasUnderlyingQuiver, IsString ],
+        
   function( A, label )
     local names, objects, func;
     
@@ -413,6 +414,26 @@ InstallMethod( Category,
   function( quiver, L )
     
     return Category( PathAlgebra( ALGEBRIODS.ring, quiver ), L );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a f.p. category and a list",
+        [ IsFpCategory and HasUnderlyingQuiver, IsList ],
+        
+  function( C, L )
+    local f;
+
+    f :=
+      function( p )
+        if IsCapCategoryObjectInFpCategoryRep( p ) then
+            return UnderlyingVertex( p );
+        fi;
+        return Paths( UnderlyingQuiverAlgebraElement( p ) )[1];
+    end;
+    
+    return Category( UnderlyingQuiver( C ), List( L, a -> List( a, f ) ) );
     
 end );
 

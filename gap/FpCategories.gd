@@ -296,6 +296,11 @@ DeclareOperation( "FreeCategory",
 DeclareOperation( "Category",
         [ IsQuiver, IsList ] );
 
+#! @Arguments C, L
+#! @Group FpCategory
+DeclareOperation( "/",
+        [ IsFpCategory, IsList ] );
+
 #! @Description
 #!  Construct a functor with source the finitely presented finitely presented category <A>C</A> and target <A>B</A> using
 #!  the two defining lists of images <A>images_of_objects</A> and <A>images_of_generating_morphisms</A>.
