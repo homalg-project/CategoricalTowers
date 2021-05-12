@@ -376,25 +376,25 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## the weak binary pullback with a weak biased pullback
             AddTensorProductToInternalHomAdjunctionMap( S,
               function( cat, K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
-                local I, source, target, tau2;
+                local I, source, target, K2, J2, I2, tau2;
                 
                 I := Range( f );
                 
                 source := K;
                 target := InternalHomOnObjects( cat, J, I );
                 
-                K := UnderlyingMorphism( K ); ## R^k -> R
-                J := UnderlyingMorphism( J ); ## R^j -> R
-                I := UnderlyingMorphism( I ); ## R^i -> R
+                K2 := UnderlyingMorphism( K ); ## R^k -> R
+                J2 := UnderlyingMorphism( J ); ## R^j -> R
+                I2 := UnderlyingMorphism( I ); ## R^i -> R
                 
-                tau2 := TensorProductToInternalHomAdjunctionMap( C, Source( K ), Source( J ), UnderlyingCell( f ) );
+                tau2 := TensorProductToInternalHomAdjunctionMap( C, Source( K2 ), Source( J2 ), UnderlyingCell( f ) );
                 
                 return MorphismConstructor( cat,
                                source,
                                UniversalMorphismIntoWeakBiFiberProduct( C,
-                                       DualOverTensorUnit( C, J ), ## R -> Hom( R^j, R )
-                                       InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J ) ), I ), ## Hom( R^j, R^i ) -> Hom( R^j, R )
-                                       K,   ## R^k -> R,
+                                       DualOverTensorUnit( C, J2 ), ## R -> Hom( R^j, R )
+                                       InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J2 ) ), I2 ), ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                                       K2,   ## R^k -> R,
                                        tau2 ), ## R^k -> Hom( R^j, R^i )
                                target );
                 
@@ -404,26 +404,26 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## the weak binary pullback with a weak biased pullback
             AddInternalHomToTensorProductAdjunctionMap( S,
               function( cat, J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
-                local K, source, target, tau2;
+                local K, source, target, K2, J2, I2, g2, tau2;
                 
                 K := Source( g );
                 
                 source := TensorProductOnObjects( cat, K, J );
                 target := I;
                 
-                K := UnderlyingMorphism( K ); ## R^k -> R
-                J := UnderlyingMorphism( J ); ## R^j -> R
-                I := UnderlyingMorphism( I ); ## R^i -> R
+                K2 := UnderlyingMorphism( K ); ## R^k -> R
+                J2 := UnderlyingMorphism( J ); ## R^j -> R
+                I2 := UnderlyingMorphism( I ); ## R^i -> R
 
-                g := PreCompose( C,
+                g2 := PreCompose( C,
                              UnderlyingCell( g ),
                              ProjectionInSecondFactorOfWeakBiFiberProduct( C, ## R^(i:j) -> Hom( R^j, R^i ), where i:j = nr_gen( I:J )
-                                     DualOverTensorUnit( C, J ),              ## R -> Hom( R^j, R )
-                                     InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J ) ), I ) ) );    ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                                     DualOverTensorUnit( C, J2 ),              ## R -> Hom( R^j, R )
+                                     InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J2 ) ), I2 ) ) );    ## Hom( R^j, R^i ) -> Hom( R^j, R )
                 
                 return MorphismConstructor( cat,
                                source,
-                               InternalHomToTensorProductAdjunctionMap( C, Source( J ), Source( I ), g ), ## f: R^k ⊗ R^j -> R^i
+                               InternalHomToTensorProductAdjunctionMap( C, Source( J2 ), Source( I2 ), g2 ), ## f: R^k ⊗ R^j -> R^i
                                target );
                 
             end );
