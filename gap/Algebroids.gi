@@ -1043,7 +1043,7 @@ end );
 ##
 InstallMethod( Algebroid,
         "for a QPA path algebra and a list",
-        [ IsPathAlgebra, IsList ],
+        [ IsQuiverAlgebra, IsList ],
         
   function( Rq, L )
     local path;

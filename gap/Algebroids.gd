@@ -329,7 +329,7 @@ DeclareAttribute( "Algebroid",
 #! @Arguments Rq, L
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
-        [ IsPathAlgebra, IsList ] );
+        [ IsQuiverAlgebra, IsList ] );
 
 #! @Arguments R, q
 #! @Group Algebroid
