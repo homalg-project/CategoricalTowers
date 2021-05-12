@@ -423,8 +423,14 @@ InstallMethod( \/,
         [ IsFpCategory and HasUnderlyingQuiver, IsList ],
         
   function( C, L )
-    local f;
-
+    local relations, f;
+    
+    if HasRelationsOfFpCategory( C ) then
+        relations := ShallowCopy( RelationsOfFpCategory( C ) );
+    else
+        relations := [ ];
+    fi;
+    
     f :=
       function( p )
         if IsCapCategoryObjectInFpCategoryRep( p ) then
@@ -433,7 +439,9 @@ InstallMethod( \/,
         return Paths( UnderlyingQuiverAlgebraElement( p ) )[1];
     end;
     
-    return Category( UnderlyingQuiver( C ), List( L, a -> List( a, f ) ) );
+    Append( relations, List( L, a -> List( a, f ) ) );
+    
+    return Category( UnderlyingQuiver( C ), relations );
     
 end );
 
