@@ -346,6 +346,10 @@ DeclareOperation( "Algebroid",
 DeclareOperation( "[]",
         [ IsHomalgRing, IsFpCategory ] );
 
+#! @Arguments A, L
+DeclareOperation( "/",
+        [ IsAlgebroid, IsList ] );
+
 #! @Description
 #! The argument is an algebroid $A$ with left acting domain given by the field of rationals $\mathbb{Q}$,
 #! either realized by <C>Rationals</C> or by <C>HomalgFieldOfRationals</C> (in no external CAS).

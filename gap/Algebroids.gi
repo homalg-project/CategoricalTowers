@@ -1111,6 +1111,17 @@ InstallMethod( \[\],
   Algebroid );
 
 ##
+InstallMethod( \/,
+        "for an algebroid and a list",
+        [ IsAlgebroid, IsList ],
+
+  function( A, relations )
+    
+    return Algebroid( UnderlyingQuiverAlgebra( A ), List( relations, UnderlyingQuiverAlgebraElement ) );
+    
+end );
+
+##
 InstallMethod( DescentToZDefinedByBasisPaths,
         "for an algebroid",
         [ IsAlgebroid ],
