@@ -1860,6 +1860,29 @@ InstallMethod( NaturalTransformation,
     
 end );
 
+##
+InstallMethod( POW,
+        "for a CAP endomorphism and an integer",
+        [ IsCapCategoryMorphism, IsInt ],
+
+  function( phi, i )
+    
+    if not IsEndomorphism( phi ) then
+        TryNextMethod( );
+    elif i = 0 then
+        return IdentityMorphism( Source( phi ) );
+    elif i < 0 then
+        if not IsIsomorphism( phi ) then
+            Error( "the given endomorphism is not an isomorphism\n" );
+        fi;
+        
+        return Inverse( phi )^(-i);
+    fi;
+    
+    return PreCompose( ListWithIdenticalEntries( i, phi ) );
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:

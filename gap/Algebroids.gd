@@ -438,3 +438,11 @@ DeclareOperation( "MorphismInAlgebroid",
 #! @Arguments path, A
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "\/", [ IsQuiverAlgebraElement, IsAlgebroid ] );
+
+
+#! @Description
+#!  The <A>i</A>-th power of the CAP endomorhpism <A>phi</A>.
+#! @Arguments phi, i
+#! @Returns a CAP morphism
+DeclareOperation( "POW",
+        [ IsCapCategoryMorphism, IsInt ] );
