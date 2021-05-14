@@ -1220,24 +1220,24 @@ InstallMethod( IntrinsicCategory,
         
         type := info.io_type;
         
-        context := Concatenation( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).universal_object, "_Context" );
+        context := Concatenation( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name, "_Context" );
         
         return
           function( arg )
-            local l, universal_object, active_pos, context_of_constructor,
+            local l, with_given_object, active_pos, context_of_constructor,
                   active_positions, src_trg, S, s, T, t, eval_arg, result;
             
             l := Length( arg );
             
-            universal_object := arg[l];
+            with_given_object := arg[l];
             
-            active_pos := PositionOfActiveCell( universal_object );
+            active_pos := PositionOfActiveCell( with_given_object );
             
             if not active_pos = 1 then
-                SetPositionOfActiveCell( universal_object, 1 );
+                SetPositionOfActiveCell( with_given_object, 1 );
             fi;
             
-            context_of_constructor := universal_object!.(context);
+            context_of_constructor := with_given_object!.(context);
             
             active_positions := List( context_of_constructor[1], PositionOfActiveCell );
             
@@ -1263,7 +1263,7 @@ InstallMethod( IntrinsicCategory,
             fi;
             
             if not active_pos = 1 then
-                SetPositionOfActiveCell( universal_object, active_pos );
+                SetPositionOfActiveCell( with_given_object, active_pos );
             fi;
             
             todo_func( arg, result );
