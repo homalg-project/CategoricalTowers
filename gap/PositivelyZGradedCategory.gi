@@ -60,7 +60,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
           "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
           "InjectionOfCofactorOfPushout",
           "InjectionOfCofactorOfPushoutWithGivenPushout",
-          "InverseImmutable",
+          "InverseForMorphisms",
           "InverseMorphismFromCoimageToImageWithGivenObjects",
           "IsEndomorphism",
           "IsIdenticalToIdentityMorphism",
@@ -889,7 +889,7 @@ InstallMethod( PositivelyZGradedCategory,
         
   function ( C )
     local name, ZC, properties, create_func_object, create_func_morphism, create_func_universal_morphism,
-          recnames, skip, func, pos, info, universal_object, add, required_operations;
+          recnames, skip, func, pos, info, with_given_object_name, add, required_operations;
     
     if IsBound( C!.IsPositivelyZGradedCategory ) and
        C!.IsPositivelyZGradedCategory = true then
@@ -1122,9 +1122,9 @@ InstallMethod( PositivelyZGradedCategory,
                 if not info.with_given_without_given_name_pair[2] in recnames then
                     Add( recnames, info.with_given_without_given_name_pair[2] );
                 fi;
-                universal_object := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).universal_object;
-                if not universal_object in recnames then
-                    Add( recnames, universal_object );
+                with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name;
+                if not with_given_object_name in recnames then
+                    Add( recnames, with_given_object_name );
                 fi;
                 continue;
             fi;
