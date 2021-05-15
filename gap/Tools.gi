@@ -379,7 +379,7 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "PreCompose",
           "KernelEmbedding",
           "BasisOfExternalHom"
@@ -465,7 +465,7 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "PreCompose",
           "KernelEmbedding",
           "BasisOfExternalHom"
@@ -526,7 +526,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "IsLiftable",
           "IsMonomorphism"
         ];
@@ -574,7 +574,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
         B := RangeCategoryOfHomomorphismStructure( cat );
         
         conditions := [
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "IsMonomorphism"
         ];
         
