@@ -57,7 +57,7 @@ InstallMethod( AuxiliaryMorphism,
       od;
     od;
     
-    return MorphismBetweenDirectSums( DirectSum( source_summands ), map, DirectSum( range_summands ) );
+    return MorphismBetweenDirectSums( map );
     
 end );
 

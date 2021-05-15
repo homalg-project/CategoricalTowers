@@ -100,7 +100,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "LiftAlongMonomorphism",
           #"MonoidalPostComposeMorphismWithGivenObjects",
           #"MonoidalPreComposeMorphismWithGivenObjects",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "MorphismFromBidualWithGivenBidual",
           "MorphismFromFiberProductToSink",
           "MorphismFromFiberProductToSinkWithGivenFiberProduct",
@@ -763,7 +763,7 @@ InstallMethodWithCache( Hom,
             diagram := "multiple arrows";
         elif IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[3] ) and
            ( ( IsFilter( functorial.filter_list[3] ) and functorial.filter_list[3] = IsList ) or
-             functorial.filter_list[3] = "list_of_morphisms" ) then
+             functorial.filter_list[3] = "list_of_objects" ) then
             diagram := "multiple objects";
         else
             diagram := "single arrow";
