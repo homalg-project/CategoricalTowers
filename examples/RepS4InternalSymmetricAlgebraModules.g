@@ -70,8 +70,8 @@ ff := PreCompose( pp, cc ) - PreCompose( qq, dd );;
 Set( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );
 #! [ true ]
 
-ss := UniversalMorphismIntoDirectSum( pp, -qq );;
-tt := UniversalMorphismFromDirectSum( cc, dd );;
+ss := UniversalMorphismIntoDirectSum( [ pp, -qq ] );;
+tt := UniversalMorphismFromDirectSum( [ cc, dd ] );;
 
 homology := HomologyObject( ss, tt );;
 Set( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );

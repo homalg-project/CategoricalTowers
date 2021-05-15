@@ -202,7 +202,7 @@ InstallMethod( InternalPreAddition,
     iota1 := UnderlyingEmbedding( e1 );
     iota2 := UnderlyingEmbedding( e2 );
     
-    e := UniversalMorphismFromDirectSum( iota1, iota2 );
+    e := UniversalMorphismFromDirectSum( [ iota1, iota2 ] );
     
     return e;
     
