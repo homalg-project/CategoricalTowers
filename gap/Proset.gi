@@ -153,7 +153,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismIntoEqualizerWithGivenEqualizer( preordered_set,
-      function( D, tau, E )
+      function( D, test_object, tau, E )
         
         return UniqueMorphism( Source( tau ), E );
         
@@ -169,7 +169,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( preordered_set,
-      function( D, tau, C )
+      function( D, test_object, tau, C )
         
         return UniqueMorphism( C, Range( tau ) );
         
