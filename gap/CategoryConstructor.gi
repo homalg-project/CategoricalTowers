@@ -34,7 +34,7 @@ InstallGlobalFunction( CategoryConstructor,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
-          print, info, universal_object, add;
+          print, info, with_given_object_name, add;
     
     name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", "new category" );
     
@@ -249,9 +249,9 @@ InstallGlobalFunction( CategoryConstructor,
                 if not info.with_given_without_given_name_pair[2] in list_of_operations_to_install then
                     Add( list_of_operations_to_install, info.with_given_without_given_name_pair[2] );
                 fi;
-                universal_object := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).universal_object;
-                if not universal_object in list_of_operations_to_install then
-                    Add( list_of_operations_to_install, universal_object );
+                with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name;
+                if not with_given_object_name in list_of_operations_to_install then
+                    Add( list_of_operations_to_install, with_given_object_name );
                 fi;
                 continue;
             fi;
