@@ -92,7 +92,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
           "KernelObject",
           "KernelObjectFunctorialWithGivenKernelObjects",
           "LiftAlongMonomorphism",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "MorphismFromCoimageToImageWithGivenObjects",
           "MorphismFromFiberProductToSink",
           "MorphismFromFiberProductToSinkWithGivenFiberProduct",
@@ -1164,7 +1164,7 @@ InstallMethod( PositivelyZGradedCategory,
     required_operations := [
         "DirectSum",
         "DirectSumFunctorialWithGivenDirectSums",
-        "MorphismBetweenDirectSums",
+        "MorphismBetweenDirectSumsWithGivenDirectSums",
         "TensorUnit",
         "TensorProductOnObjects",
         "TensorProductOnMorphismsWithGivenTensorProducts",
@@ -1410,7 +1410,7 @@ InstallMethod( PositivelyZGradedCategory,
                 source := DirectSum( summands_source );
                 target := DirectSum( summands_target );
                 
-                permuted_associator := MorphismBetweenDirectSums( source, List( [ 1 .. s ], p ), target );
+                permuted_associator := MorphismBetweenDirectSums( List( [ 1 .. s ], p ) );
                 
                 return PreCompose( [
                                DirectSumFunctorialWithGivenDirectSums(
@@ -1485,7 +1485,7 @@ InstallMethod( PositivelyZGradedCategory,
                 source := DirectSum( summands_source );
                 target := DirectSum( summands_target );
                 
-                permuted_associator := MorphismBetweenDirectSums( source, List( [ 1 .. s ], p ), target );
+                permuted_associator := MorphismBetweenDirectSums( List( [ 1 .. s ], p ) );
                 
                 return PreCompose( [
                                DirectSumFunctorialWithGivenDirectSums(

@@ -13,7 +13,7 @@ Subtitle := "Graded closures of categories",
 Version := Maximum( [
                    "2021.05-01", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2021.04-01", ## Fabian's version
+                   "2021.05-02", ## Fabian's version
                    ] ),
 
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -90,7 +90,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2019.10.29" ],
+                   [ "CAP", ">= 2021.05-02" ],
                    [ "InfiniteLists", ">= 2017.08.01" ],
                    [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
                    ],
