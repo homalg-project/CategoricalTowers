@@ -348,7 +348,7 @@ InstallMethod( ProjectionFunctor,
     
     category := UnderlyingCategory( quotient_category );
     
-    name := Concatenation( "Canonical projection functor from ", Name( category ), " in ", Name( quotient_category ) );
+    name := "Projection functor onto quotient category";
     
     projection := CapFunctor( name, category, quotient_category );
     
