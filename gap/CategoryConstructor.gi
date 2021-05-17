@@ -35,7 +35,8 @@ InstallGlobalFunction( CategoryConstructor,
           create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
-          print, info, with_given_object_name, add;
+          print, info, with_given_object_name, add,
+          underlying_category_getter_string, underlying_object_getter_string, underlying_morphism_getter_string, underlying_arguments;
     
     name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", "new category" );
     
@@ -220,6 +221,11 @@ InstallGlobalFunction( CategoryConstructor,
     create_func_other_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_other_morphism", fail );
     
     ##
+    underlying_category_getter_string := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "underlying_category_getter_string", fail );
+    underlying_object_getter_string := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "underlying_object_getter_string", fail );
+    underlying_morphism_getter_string := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "underlying_morphism_getter_string", fail );
+    
+    ##
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
     
     # deprecate create_func_object0 and create_func_morphism0 if category_as_first_argument is set
@@ -278,30 +284,71 @@ InstallGlobalFunction( CategoryConstructor,
         func := fail;
         
         if info.return_type = "bool" then
-            if not IsFunction( create_func_bool ) then
+            if IsFunction( create_func_bool ) then
+                func := create_func_bool( name, CC );
+            elif create_func_bool = "default" then
+                func := """
+                    function( input_arguments )
+                        
+                        return operation_name( underlying_arguments );
+                        
+                    end
+                """;
+            else
                 continue;
             fi;
-            func := create_func_bool( name, CC );
         elif ValueOption( "category_as_first_argument" ) <> true and info.return_type = "object" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_object0 ) then
                 continue;
             fi;
             func := create_func_object0( name, CC );
         elif info.return_type = "object" then
-            if not IsFunction( create_func_object ) then
+            if IsFunction( create_func_object ) then
+                func := create_func_object( name, CC );
+            elif create_func_object = "default" then
+                func := """
+                    function( input_arguments )
+                      local result;
+                        
+                        result := operation_name( underlying_arguments );
+                        
+                        return ObjectConstructor( cat, result );
+                        
+                    end
+                """;
+            else
                 continue;
             fi;
-            func := create_func_object( name, CC );
         elif IsIdenticalObj( info.return_type, IsList ) then
             if not IsFunction( create_func_list ) then
                 continue;
             fi;
             func := create_func_list( name, CC );
         elif info.return_type = "object_or_fail" then
-            if not IsFunction( create_func_object_or_fail ) then
+            if IsFunction( create_func_object_or_fail ) then
+                func := create_func_object_or_fail( name, CC );
+            elif create_func_object_or_fail = "default" then
+                func := """
+                    function( input_arguments )
+                      local result;
+                        
+                        result := operation_name( underlying_arguments );
+                        
+                        if result = fail then
+                            
+                            return fail;
+                            
+                        else
+                            
+                            return ObjectConstructor( cat, result );
+                            
+                        fi;
+                        
+                    end
+                """;
+            else
                 continue;
             fi;
-            func := create_func_object_or_fail( name, CC );
         elif info.return_type = "other_object" then
             if not IsFunction( create_func_other_object ) then
                 continue;
@@ -322,10 +369,30 @@ InstallGlobalFunction( CategoryConstructor,
                 ## if there is no io_type we cannot do anything
                 continue;
             fi;
-            if not IsFunction( create_func_morphism_or_fail ) then
+            if IsFunction( create_func_morphism_or_fail ) then
+                func := create_func_morphism_or_fail( name, CC );
+            elif create_func_morphism_or_fail = "default" then
+                func := """
+                    function( input_arguments )
+                      local result;
+                        
+                        result := operation_name( underlying_arguments );
+                        
+                        if result = fail then
+                            
+                            return fail;
+                            
+                        else
+                            
+                            return MorphismConstructor( cat, top_source, result, top_range );
+                            
+                        fi;
+                        
+                    end
+                """;
+            else
                 continue;
             fi;
-            func := create_func_morphism_or_fail( name, CC );
         elif info.return_type = "morphism" then
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
@@ -347,15 +414,39 @@ InstallGlobalFunction( CategoryConstructor,
             fi;
             
             if IsList( info.with_given_without_given_name_pair ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
-                if not IsFunction( create_func_universal_morphism ) then
+                if IsFunction( create_func_universal_morphism ) then
+                    func := create_func_universal_morphism( name, CC );
+                elif create_func_universal_morphism = "default" then
+                    func := """
+                        function( input_arguments )
+                          local result;
+                            
+                            result := operation_name( underlying_arguments );
+                            
+                            return MorphismConstructor( cat, top_source, result, top_range );
+                            
+                        end
+                    """;
+                else
                     continue;
                 fi;
-                func := create_func_universal_morphism( name, CC );
             else
-                if not IsFunction( create_func_morphism ) then
+                if IsFunction( create_func_morphism ) then
+                    func := create_func_morphism( name, CC );
+                elif create_func_morphism = "default" then
+                    func := """
+                        function( input_arguments )
+                          local result;
+                            
+                            result := operation_name( underlying_arguments );
+                            
+                            return MorphismConstructor( cat, top_source, result, top_range );
+                            
+                        end
+                    """;
+                else
                     continue;
                 fi;
-                func := create_func_morphism( name, CC );
             fi;
         else
             Info( InfoCategoryConstructor, 3, "cannot yet handle return_type=\"", info.return_type, "\" required for ", name );
@@ -369,6 +460,95 @@ InstallGlobalFunction( CategoryConstructor,
         fi;
         
         add := ValueGlobal( Concatenation( "Add", name ) );
+        
+        if IsString( func ) then
+            
+            func := ReplacedStringViaRecord( func, rec(
+                operation_name := name,
+                input_arguments := info.input_arguments_names,
+            ) );
+            
+            if underlying_category_getter_string <> fail and underlying_object_getter_string <> fail and underlying_morphism_getter_string <> fail then
+                
+                if not ForAll( info.filter_list, filter -> filter in [ "category", "object", "morphism", IsInt, IsRingElement, IsCyclotomic, "list_of_objects", "list_of_morphisms" ] ) then
+                    
+                    continue;
+                    
+                fi;
+                
+                underlying_arguments := List( [ 1 .. Length( info.filter_list ) ], function( i )
+                  local filter, argument_name;
+                    
+                    filter := info.filter_list[i];
+                    argument_name := info.input_arguments_names[i];
+                    
+                    if filter = "category" then
+                        
+                        return Concatenation( underlying_category_getter_string, "( ", argument_name, " )" );
+                        
+                    elif filter = "object" then
+                        
+                        return Concatenation( underlying_object_getter_string, "( cat, ", argument_name, " )" );
+                        
+                    elif filter = "morphism" then
+                        
+                        return Concatenation( underlying_morphism_getter_string, "( cat, ", argument_name, " )" );
+                        
+                    elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
+                        
+                        return argument_name;
+                        
+                    elif filter = "list_of_objects" then
+                        
+                        return Concatenation( "List( ", argument_name, ", x -> ", underlying_object_getter_string, "( cat, x ) )" );
+                        
+                    elif filter = "list_of_morphisms" then
+                        
+                        return Concatenation( "List( ", argument_name, ", x -> ", underlying_morphism_getter_string, "( cat, x ) )" );
+                        
+                    else
+                        
+                        Error( "this should never happen" );
+                        
+                    fi;
+                    
+                end );
+                
+                func := ReplacedStringViaRecord( func, rec(
+                    underlying_arguments := underlying_arguments,
+                ) );
+                
+            elif PositionSublist( func, "underlying_arguments" ) <> fail then
+                
+                Error( "for generating underlying_arguments you must pass category, object and morphism getter strings" );
+                
+            fi;
+            
+            if IsBound( info.output_source_getter_string ) and info.can_always_compute_output_source_getter then
+                
+                func := ReplacedStringViaRecord( func, rec(
+                    top_source := info.output_source_getter_string,
+                ) );
+                
+            fi;
+            
+            if IsBound( info.output_range_getter_string ) and info.can_always_compute_output_range_getter then
+                
+                func := ReplacedStringViaRecord( func, rec(
+                    top_range := info.output_range_getter_string,
+                ) );
+                
+            fi;
+            
+            if PositionSublist( func, "top_source" ) <> fail or PositionSublist( func, "top_range" ) <> fail then
+                
+                continue;
+                
+            fi;
+            
+            func := EvalString( func );
+            
+        fi;
         
         add( CC, func );
         
