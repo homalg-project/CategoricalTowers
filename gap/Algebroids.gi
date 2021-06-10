@@ -348,6 +348,10 @@ InstallMethod( ApplyToQuiverAlgebraElement,
         
   function( object_func, morphism_func, range_category, p, covariant )
     local applyF, paths, coefs, paths_final, s, all_objects_in_image;
+
+    if IsZero( p ) then
+        Error( "cannot handle the zero path algebra element, as it contains no information about its source and target\n" );
+    fi;
     
     # function to be applied to an arrow (or a vertex representing the trivial path at this vertex)
     applyF :=
@@ -367,7 +371,7 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     
     coefs := paths[1];
     paths := paths[2];
-    
+
     if covariant then
         paths_final := List( paths, a -> PreCompose( List( a, applyF ) ) );
     else
@@ -376,9 +380,6 @@ InstallMethod( ApplyToQuiverAlgebraElement,
     
     if Length( coefs ) > 0 then
         s := Sum( ListN( coefs, paths_final, function( r, p ) return r * p; end ) );
-    else
-        all_objects_in_image := SetOfObjects( range_category );
-        s := Sum( List( all_objects_in_image, o -> ZeroMorphism(o,o)) );
     fi;
     
     return s;
@@ -1679,6 +1680,10 @@ InstallMethod( CapFunctor,
           function( new_source, mor, new_range )
             local i;
             
+            if IsZero( mor ) then
+                return ZeroMorphism( new_source, new_range );
+            fi;
+            
             mor := UnderlyingQuiverAlgebraElement( mor );
             
             i := Position( arrows, mor );
@@ -1696,6 +1701,10 @@ InstallMethod( CapFunctor,
         AddMorphismFunction( functor,
           function( new_source, mor, new_range )
             local i;
+            
+            if IsZero( mor ) then
+                return ZeroMorphism( new_source, new_range );
+            fi;
             
             mor := UnderlyingQuiverAlgebraElement( mor );
             
