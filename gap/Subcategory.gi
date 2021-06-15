@@ -93,8 +93,7 @@ InstallMethod( Subcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+    local create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, D, is_additive, finalize;
     
@@ -106,45 +105,13 @@ InstallMethod( Subcategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( cat, arg... )
             
-            return CallFuncList( oper, List( arg, UnderlyingCell ) );
+            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
             
         end;
         
     end;
-    
-    ## e.g., ZeroObject
-    create_func_object0 :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( )
-            
-            return AsSubcategoryCell( D, oper( AmbientCategory( D ) ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., ZeroObjectFunctorial
-    create_func_morphism0 :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( D )
-            
-            return AsSubcategoryCell( D, oper( AmbientCategory( D ) ) );
-            
-          end;
-          
-      end;
     
     ## e.g., DirectSum
     create_func_object :=
@@ -154,9 +121,9 @@ InstallMethod( Subcategory,
         oper := ValueGlobal( name );
         
         return ## a constructor for universal objects
-          function( arg )
+          function( cat, arg... )
             
-            return AsSubcategoryCell( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
+            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
@@ -170,35 +137,13 @@ InstallMethod( Subcategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( cat, arg... )
             
-            return AsSubcategoryCell( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
+            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
       end;
-    
-    ## e.g., ProjectionInFactorOfDirectSumWithGivenDirectSum
-    create_func_universal_morphism :=
-      function( name, D )
-        local info, oper;
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( arg )
-            
-            return AsSubcategoryCell( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
     
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
     
@@ -251,37 +196,35 @@ InstallMethod( Subcategory,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
-                 create_func_object0 := create_func_object0,
-                 create_func_morphism0 := create_func_morphism0,
                  create_func_object := create_func_object,
                  create_func_morphism := create_func_morphism,
-                 create_func_universal_morphism := create_func_universal_morphism
+                 category_as_first_argument := true
                  );
     
     SetAmbientCategory( D, C );
     
     AddIsEqualForObjects( D,
-      function( a, b )
+      function( cat, a, b )
         return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
     end );
     
     AddIsEqualForMorphisms( D,
-      function( phi, psi )
+      function( cat, phi, psi )
         return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
     AddIsCongruentForMorphisms( D,
-      function( phi, psi )
+      function( cat, phi, psi )
         return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
     AddIsEqualForCacheForObjects( D,
-      function( a, b )
+      function( cat, a, b )
         return IsEqualForCacheForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
     end );
     
     AddIsEqualForCacheForMorphisms( D,
-      function( phi, psi )
+      function( cat, phi, psi )
         return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
@@ -335,7 +278,7 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
     subcat!.Objects := L;
     
     AddIsWellDefinedForObjects( subcat,
-      function( a )
+      function( cat, a )
         
         return ForAny( L, obj -> IsEqualForObjects( obj, UnderlyingCell( a ) ) );
         
@@ -344,7 +287,7 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
     if CanCompute( cat, "IsWellDefinedForMorphisms" ) then
       
       AddIsWellDefinedForMorphisms( subcat,
-        function( phi )
+        function( cat, phi )
           
           return IsWellDefinedForObjects( Source( phi ) )
                   and IsWellDefinedForObjects( Range( phi ) )

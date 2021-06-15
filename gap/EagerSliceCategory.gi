@@ -143,7 +143,7 @@ InstallMethod( SliceCategory,
     if CanCompute( C, "IsSplitEpimorphism" ) then
         
         AddIsWeakTerminal( S,
-          function( M )
+          function( cat, M )
             
             return IsSplitEpimorphism( UnderlyingMorphism( M ) );
             
@@ -157,7 +157,7 @@ InstallMethod( SliceCategory,
         
         ##
         AddDirectProduct( S, # WeakDirectProduct
-           function( L )
+           function( cat, L )
             local biased_weak_fiber_product;
             
             if Length( L ) = 1 then
@@ -180,7 +180,7 @@ InstallMethod( SliceCategory,
         
         ##
         AddDirectProduct( S,
-           function( L )
+           function( cat, L )
             local biased_weak_fiber_product;
             
             if Length( L ) = 1 then
@@ -205,7 +205,7 @@ InstallMethod( SliceCategory,
         
         ##
         AddCoproduct( S,
-           function( L )
+           function( cat, L )
             
             if Length( L ) = 1 then
                 return L[1];
