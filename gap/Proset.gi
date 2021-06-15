@@ -56,7 +56,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddIsWellDefinedForMorphisms( preordered_set,
-      function( u )
+      function( cat, u )
         
         return IsHomSetInhabited( Source( u ), Range( u ) );
         
@@ -64,11 +64,11 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddIsEqualForCacheForObjects( preordered_set,
-      IsIdenticalObj );
+      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
     
     ##
     AddIsEqualForCacheForMorphisms( preordered_set,
-      function( u1, u2 )
+      function( cat, u1, u2 )
         
         return IsEqualForCacheForObjects( Source( u1 ), Source( u2 ) ) and
                IsEqualForCacheForObjects( Range( u1 ), Range( u2 ) );
@@ -77,7 +77,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddIdentityMorphism( preordered_set,
-      function( A )
+      function( cat, A )
         
         return UniqueMorphism( A, A );
         
@@ -85,7 +85,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddPreCompose( preordered_set,
-      function( u1, u2 )
+      function( cat, u1, u2 )
         
         return UniqueMorphism( Source( u1 ), Range( u2 ) );
         
@@ -93,19 +93,19 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddIsMonomorphism( preordered_set,
-      ReturnTrue );
+      { cat, alpha } -> true );
     
     ##
     AddIsEpimorphism( preordered_set,
-      ReturnTrue );
+      { cat, alpha } -> true );
     
     ##
     AddIsOne( preordered_set,
-      IsAutomorphism );
+      { cat, alpha } -> IsAutomorphism( cat, alpha ) );
     
     ##
     AddLiftAlongMonomorphism( preordered_set,
-      function( u1, u2 )
+      function( cat, u1, u2 )
         
         if not IsDominating( u1, u2 ) then
             return fail;
@@ -117,7 +117,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddColiftAlongEpimorphism( preordered_set,
-      function( u1, u2 )
+      function( cat, u1, u2 )
         
         if not IsCodominating( u2, u1 ) then
             return fail;
@@ -129,7 +129,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddInverseForMorphisms( preordered_set,
-      function( u )
+      function( cat, u )
         
         return UniqueMorphism( Range( u ), Source( u ) );
         
@@ -137,7 +137,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( preordered_set,
-      function( A, T )
+      function( cat, A, T )
         
         return UniqueMorphism( A, T );
         
@@ -145,7 +145,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( preordered_set,
-      function( A, I )
+      function( cat, A, I )
         
         return UniqueMorphism( I, A );
         
@@ -153,7 +153,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismIntoEqualizerWithGivenEqualizer( preordered_set,
-      function( D, test_object, tau, E )
+      function( cat, D, test_object, tau, E )
         
         return UniqueMorphism( Source( tau ), E );
         
@@ -161,7 +161,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddEqualizerFunctorialWithGivenEqualizers( preordered_set,
-      function( s, L1, m, L3, r )
+      function( cat, s, L1, m, L3, r )
         
         return UniqueMorphism( s, r );
         
@@ -169,7 +169,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( preordered_set,
-      function( D, test_object, tau, C )
+      function( cat, D, test_object, tau, C )
         
         return UniqueMorphism( C, Range( tau ) );
         
@@ -177,7 +177,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     
     ##
     AddCoequalizerFunctorialWithGivenCoequalizers( preordered_set,
-      function( s, L1, m, L3, r )
+      function( cat, s, L1, m, L3, r )
         
         return UniqueMorphism( s, r );
         

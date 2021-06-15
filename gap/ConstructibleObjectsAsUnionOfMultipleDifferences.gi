@@ -50,6 +50,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     C := CreateCapCategory( name );
     
+    C!.category_as_first_argument := true;
+    
     SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( C, true );
     SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
     
@@ -64,7 +66,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddIsWellDefinedForObjects( C,
-      function( A )
+      function( cat, A )
         
         return ForAll( A, IsWellDefinedForObjects );
         
@@ -72,7 +74,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddIsHomSetInhabited( C,
-      function( A, B )
+      function( cat, A, B )
         
         return ForAll( A, M -> IsHomSetInhabitedWithTypeCast( M, B ) );
         
@@ -80,7 +82,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddTerminalObject( C,
-      function( arg )
+      function( cat )
         local T;
         
         T := TerminalObject( C!.MeetSemilatticeOfMultipleDifferences );
@@ -91,7 +93,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddInitialObject( C,
-      function( arg )
+      function( cat )
         local I;
         
         I := InitialObject( C!.MeetSemilatticeOfMultipleDifferences );
@@ -102,7 +104,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddIsInitial( C,
-      function( A )
+      function( cat, A )
         
         return ForAll( A, IsInitial );
         
@@ -127,7 +129,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddDirectProduct( C,
-      function( L )
+      function( cat, L )
         
         return Iterated( L, BinaryDirectProduct );
         
@@ -135,7 +137,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     ##
     AddCoproduct( C,
-      function( L )
+      function( cat, L )
         
         L := List( L, List );
         

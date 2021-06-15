@@ -69,7 +69,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCoexponentialOnMorphismsWithGivenCoexponentials( coheyting_algebra,
-      function( S, alpha, beta, R )
+      function( cat, S, alpha, beta, R )
         
         return UniqueMorphism( S, R );
         
@@ -77,7 +77,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCocartesianEvaluationMorphismWithGivenRange( coheyting_algebra,
-      function( A, B, BxCoex_A_B )
+      function( cat, A, B, BxCoex_A_B )
         
         return UniqueMorphism( A, BxCoex_A_B );
         
@@ -85,7 +85,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCocartesianCoevaluationMorphismWithGivenSource( coheyting_algebra,
-      function( A, B, Coex_AxB_A)
+      function( cat, A, B, Coex_AxB_A)
         
         return UniqueMorphism( Coex_AxB_A, B );
         
@@ -93,7 +93,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCoproductToCoexponentialAdjunctionMap( coheyting_algebra,
-      function( B, C, g )
+      function( cat, B, C, g )
         local A;
         
         A := Source( g );
@@ -104,7 +104,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCoexponentialToCoproductAdjunctionMap( coheyting_algebra,
-      function( A, B, f )
+      function( cat, A, B, f )
         local C, BC;
         
         C := Range( f );
@@ -117,7 +117,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCocartesianPreCoComposeMorphismWithGivenObjects( coheyting_algebra,
-      function( Coex_A_C, A, B, C, Coex_A_BxCoex_B_C);
+      function( cat, Coex_A_C, A, B, C, Coex_A_BxCoex_B_C);
         
         return UniqueMorphism( Coex_A_C, Coex_A_BxCoex_B_C );
         
@@ -125,7 +125,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCocartesianPostCoComposeMorphismWithGivenObjects( coheyting_algebra,
-      function( Coex_A_C, A, B, C, Coex_B_CxCoex_A_B );
+      function( cat, Coex_A_C, A, B, C, Coex_B_CxCoex_A_B );
         
         return UniqueMorphism( Coex_A_C, Coex_B_CxCoex_A_B );
         
@@ -133,7 +133,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects( coheyting_algebra,
-      function( A1, A2, B1, B2, L )
+      function( cat, A1, A2, B1, B2, L )
         
         return UniqueMorphism( L[1], L[2] );
         
@@ -143,7 +143,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddMorphismFromDoubleConegationWithGivenDoubleConegation( coheyting_algebra,
-      function( A, B )
+      function( cat, A, B )
         
         return UniqueMorphism( A, B );
         

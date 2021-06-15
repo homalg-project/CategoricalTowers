@@ -47,6 +47,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     C := CreateCapCategory( name );
     
+    C!.category_as_first_argument := true;
+    
     SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( C, true );
     SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
     
@@ -61,7 +63,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddIsWellDefinedForObjects( C,
-      function( A )
+      function( cat, A )
         
         return ForAll( A, IsWellDefinedForObjects );
         
@@ -69,7 +71,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddIsHomSetInhabited( C,
-      function( A, B )
+      function( cat, A, B )
         
         return ForAll( A, M -> IsHomSetInhabitedWithTypeCast( M, B ) );
         
@@ -77,7 +79,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddTerminalObject( C,
-      function( arg )
+      function( cat )
         local T;
         
         T := TerminalObject( C!.MeetSemilatticeOfDifferences );
@@ -88,7 +90,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddInitialObject( C,
-      function( arg )
+      function( cat )
         local I;
         
         I := InitialObject( C!.MeetSemilatticeOfDifferences );
@@ -99,7 +101,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddIsInitial( C,
-      function( A )
+      function( cat, A )
         
         return ForAll( A, IsInitial );
         
@@ -124,7 +126,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddDirectProduct( C,
-      function( L )
+      function( cat, L )
         
         return Iterated( L, BinaryDirectProduct );
         
@@ -132,7 +134,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     ##
     AddCoproduct( C,
-      function( L )
+      function( cat, L )
         
         L := List( L, List );
         
