@@ -170,7 +170,7 @@ InstallMethod( LazySliceCategory,
     if CanCompute( C, "IsSplitEpimorphism" ) then
         
         AddIsWeakTerminal( S,
-          function( M )
+          function( cat, M )
             local mor;
             
             mor := UnderlyingMorphismList( M );
@@ -183,7 +183,7 @@ InstallMethod( LazySliceCategory,
     
     ##
     AddDirectProduct( S, # WeakDirectProduct
-      function( L )
+      function( cat, L )
         local l;
         
         l := L[1];
@@ -218,7 +218,7 @@ InstallMethod( LazySliceCategory,
         
         ##
         AddCoproduct( S,
-           function( L )
+           function( cat, L )
             local l;
             
             ## triggers radical computations which we want to avoid by all means
