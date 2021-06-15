@@ -183,7 +183,21 @@ InstallGlobalFunction( CategoryConstructor,
     ##
     create_func_other_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_other_morphism", fail );
     
+    ##
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
+    
+    # deprecate create_func_object0 and create_func_morphism0 if category_as_first_argument is set
+    if ValueOption( "category_as_first_argument" ) = true and create_func_object0 <> fail then
+        
+        Display( "WARNING: category_as_first_argument is set to true, so create_func_object will be used instead of create_func_object0. Adjust create_func_object and remove create_func_object0 to prevent this warning." );
+        
+    fi;
+    
+    if ValueOption( "category_as_first_argument" ) = true and create_func_morphism0 <> fail then
+        
+        Display( "WARNING: category_as_first_argument is set to true, so create_func_morphism will be used instead of create_func_morphism0. Adjust create_func_morphism and remove create_func_morphism0 to prevent this warning." );
+        
+    fi;
     
     Info( InfoCategoryConstructor, 2,  "Lifting the following operations for ", Name( CC ), ":\n" );
     
@@ -219,7 +233,7 @@ InstallGlobalFunction( CategoryConstructor,
                 continue;
             fi;
             func := create_func_bool( name, CC );
-        elif info.return_type = "object" and info.filter_list = [ "category" ] then
+        elif ValueOption( "category_as_first_argument" ) <> true and info.return_type = "object" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_object0 ) then
                 continue;
             fi;
@@ -249,7 +263,7 @@ InstallGlobalFunction( CategoryConstructor,
                 continue;
             fi;
             func := create_func_other_morphism( name, CC );
-        elif info.return_type = "morphism" and info.filter_list = [ "category" ] then
+        elif ValueOption( "category_as_first_argument" ) <> true and info.return_type = "morphism" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_morphism0 ) then
                 continue;
             fi;
