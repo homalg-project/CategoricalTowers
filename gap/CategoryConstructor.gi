@@ -199,6 +199,13 @@ InstallGlobalFunction( CategoryConstructor,
         
     fi;
     
+    # set default values
+    if create_func_universal_morphism = fail then
+        
+        create_func_universal_morphism := create_func_morphism;
+        
+    fi;
+    
     Info( InfoCategoryConstructor, 2,  "Lifting the following operations for ", Name( CC ), ":\n" );
     
     if print then
