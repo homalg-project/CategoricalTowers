@@ -8,7 +8,7 @@ InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 NegationOnObjects := rec(
   installation_name := "NegationOnObjects",
-  filter_list := [ "object" ],
+  filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "an" ] ],
   cache_name := "NegationOnObjects",
   return_type := "object" ),
@@ -16,13 +16,13 @@ NegationOnObjects := rec(
 NegationOnMorphismsWithGivenNegations := rec(
   installation_name := "NegationOnMorphismsWithGivenNegations",
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
-  filter_list := [ "object", "morphism", "object" ],
+  filter_list := [ "category", "object", "morphism", "object" ],
   cache_name := "NegationOnMorphismsWithGivenNegations",
   return_type := "morphism" ),
 
 MorphismToDoubleNegationWithGivenDoubleNegation := rec(
   installation_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
   cache_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
   return_type := "morphism" )
@@ -158,7 +158,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         
   function( cat, S, T )
     
-    return IsTerminal( ExponentialOnObjects( S, T ) );
+    return IsTerminal( cat, ExponentialOnObjects( cat, S, T ) );
     
 end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
       CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
@@ -168,9 +168,9 @@ AddDerivationToCAP( NegationOnObjects,
         [ [ ExponentialOnObjects, 1 ],
           [ InitialObject, 1 ] ],
         
-  function( A )
+  function( cat, A )
     
-    return ExponentialOnObjects( A, InitialObject( CapCategory( A ) ) );
+    return ExponentialOnObjects( cat, A, InitialObject( cat ) );
     
 end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
       CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
@@ -181,9 +181,9 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
           [ IdentityMorphism, 1 ],
           [ InitialObject, 1 ] ],
         
-  function( B_, u, A_ )
+  function( cat, B_, u, A_ )
     
-    return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( CapCategory( u ) ) ), A_ );
+    return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
     
 end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
       CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );

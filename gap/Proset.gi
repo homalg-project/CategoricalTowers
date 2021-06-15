@@ -10,7 +10,7 @@ InstallValue( PREORDERED_SET_METHOD_NAME_RECORD,
         rec(
             AreIsomorphicForObjectsIfIsHomSetInhabited := rec(
                                      installation_name := "AreIsomorphicForObjectsIfIsHomSetInhabited",
-                                     filter_list := [ "object", "object" ],
+                                     filter_list := [ "category", "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true
                                     ),
@@ -191,8 +191,8 @@ AddDerivationToCAP( IsEqualForMorphisms,
         
   function( cat, u1, u2 )
     
-    return IsEqualForObjects( Source( u1 ), Source( u2 ) ) and
-           IsEqualForObjects( Range( u1 ), Range( u2 ) );
+    return IsEqualForObjects( cat, Source( u1 ), Source( u2 ) ) and
+           IsEqualForObjects( cat, Range( u1 ), Range( u2 ) );
         
 end : Description := "IsEqualForMorphisms using IsEqualForObjects applied to sources and ranges",
       CategoryFilter := IsThinCategory );
@@ -201,9 +201,9 @@ end : Description := "IsEqualForMorphisms using IsEqualForObjects applied to sou
 AddDerivationToCAP( AreIsomorphicForObjectsIfIsHomSetInhabited,
         [ [ IsHomSetInhabited, 1 ] ],
         
-  function( A, B )
+  function( cat, A, B )
     
-    return IsHomSetInhabited( B, A );
+    return IsHomSetInhabited( cat, B, A );
     
 end : Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using IsHomSetInhabited",
       CategoryFilter := IsThinCategory );
@@ -215,7 +215,7 @@ AddDerivationToCAP( IsTerminal,
         
   function( cat, A )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( A, TerminalObject( cat ) );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, TerminalObject( cat, cat ) );
     
 end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabited and TerminalObject",
       CategoryFilter := IsThinCategory );
@@ -227,7 +227,7 @@ AddDerivationToCAP( IsInitial,
         
   function( cat, A )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( InitialObject( cat ), A );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, InitialObject( cat ), A );
     
 end : Description := "IsInitial using AreIsomorphicForObjectsIfIsHomSetInhabited and InitialObject",
       CategoryFilter := IsThinCategory );
@@ -238,7 +238,7 @@ AddDerivationToCAP( IsDominating,
         
   function( cat, u1, u2 )
     
-    return IsHomSetInhabited( Source( u1 ), Source( u2 ) );
+    return IsHomSetInhabited( cat, Source( u1 ), Source( u2 ) );
     
 end : Description := "IsDominating using IsHomSetInhabited applied to the sources",
       CategoryFilter := IsThinCategory );
@@ -249,7 +249,7 @@ AddDerivationToCAP( IsCodominating,
         
   function( cat, u1, u2 )
     
-    return IsHomSetInhabited( Range( u2 ), Range( u1 ) );
+    return IsHomSetInhabited( cat, Range( u2 ), Range( u1 ) );
     
 end : Description := "IsCodominating using IsHomSetInhabited applied to the ranges",
       CategoryFilter := IsThinCategory );
@@ -271,7 +271,7 @@ AddDerivationToCAP( EmbeddingOfEqualizerWithGivenEqualizer,
         
   function( cat, D, E )
     
-    return IdentityMorphism( E );
+    return IdentityMorphism( cat, E );
     
 end : Description := "EmbeddingOfEqualizerWithGivenEqualizer using IdentityMorphism",
       CategoryFilter := IsThinCategory );
@@ -293,7 +293,7 @@ AddDerivationToCAP( ProjectionOntoCoequalizerWithGivenCoequalizer,
         
   function( cat, D, C )
     
-    return IdentityMorphism( C );
+    return IdentityMorphism( cat, C );
     
 end : Description := "ProjectionOntoCoequalizerWithGivenCoequalizer using IdentityMorphism",
       CategoryFilter := IsThinCategory );
@@ -302,7 +302,8 @@ end : Description := "ProjectionOntoCoequalizerWithGivenCoequalizer using Identi
 AddDerivationToCAP( Lift,
         [ [ LiftAlongMonomorphism, 1 ] ],
         
-  LiftAlongMonomorphism :
+  ## Caution with the order of the arguments!
+  { cat, alpha, beta } -> LiftAlongMonomorphism( cat, beta, alpha ) :
       Description := "Lift using LiftAlongMonomorphism",
       CategoryFilter := IsThinCategory );
 
@@ -310,20 +311,20 @@ AddDerivationToCAP( Lift,
 AddDerivationToCAP( Colift,
         [ [ LiftAlongMonomorphism, 1 ] ],
         
-  ColiftAlongEpimorphism :
+  { cat, alpha, beta } -> ColiftAlongEpimorphism( cat, alpha, beta ) :
       Description := "Colift using ColiftAlongEpimorphism",
       CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( IsMonomorphism,
         
-  ReturnTrue : Description := "IsMonomorphism is always true",
+  { cat, alpha } -> true : Description := "IsMonomorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( IsEpimorphism,
         
-  ReturnTrue : Description := "IsEpimorphism is always true",
+  { cat, alpha } -> true : Description := "IsEpimorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
@@ -332,7 +333,7 @@ AddDerivationToCAP( IsIsomorphism,
         
   function( cat, u )
     
-    return IsHomSetInhabited( Range( u ), Source( u ) );
+    return IsHomSetInhabited( cat, Range( u ), Source( u ) );
     
 end : Description := "IsIsomorphism using IsHomSetInhabited",
       CategoryFilter := IsThinCategory );
