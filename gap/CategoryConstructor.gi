@@ -196,6 +196,22 @@ InstallGlobalFunction( CategoryConstructor,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
+        if ValueOption( "category_as_first_argument" ) = true then
+            
+            if info.filter_list[1] <> "category" then
+                
+                Display( Concatenation(
+                    "WARNING: If the option category_as_first_argument is set to true, category contructor cannot deal with operations which do not get the category as the first argument. ",
+                    "The installation of ", name, " will be skipped. ",
+                    "To get rid of this warning, add \"category\" as the first entry of `filter_list` in the corresponding method record entry. ",
+                    "For more information about the implications of doing so, search for `filter_list` in the documentation of CAP."
+                ) );
+                continue;
+                
+            fi;
+            
+        fi;
+        
         func := fail;
         
         if info.return_type = "bool" then
