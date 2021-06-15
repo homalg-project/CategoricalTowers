@@ -31,7 +31,7 @@ InstallGlobalFunction( CategoryConstructor,
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
           commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
           preinstall, func, is_monoidal, pos, create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+          create_func_object, create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
           print, info, with_given_object_name, add;
@@ -168,6 +168,9 @@ InstallGlobalFunction( CategoryConstructor,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism", fail );
     
+    ## e.g., Lift
+    create_func_morphism_or_fail := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism_or_fail", fail );
+    
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_universal_morphism", fail );
     
@@ -200,6 +203,12 @@ InstallGlobalFunction( CategoryConstructor,
     fi;
     
     # set default values
+    if create_func_morphism_or_fail = fail then
+        
+        create_func_morphism_or_fail := create_func_morphism;
+        
+    fi;
+    
     if create_func_universal_morphism = fail then
         
         create_func_universal_morphism := create_func_morphism;
@@ -275,7 +284,16 @@ InstallGlobalFunction( CategoryConstructor,
                 continue;
             fi;
             func := create_func_morphism0( name, CC );
-        elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
+        elif info.return_type = "morphism_or_fail" then
+            if not IsBound( info.io_type ) then
+                ## if there is no io_type we cannot do anything
+                continue;
+            fi;
+            if not IsFunction( create_func_morphism_or_fail ) then
+                continue;
+            fi;
+            func := create_func_morphism_or_fail( name, CC );
+        elif info.return_type = "morphism" then
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
                 continue;
