@@ -33,11 +33,11 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * create_func_morphism0
 #!  * create_func_object
 #!  * create_func_morphism
+#!  * create_func_morphism_or_fail
 #!  * create_func_list
 #!  * create_func_object_or_fail
 #!  * create_func_other_object
 #!  * create_func_other_morphism
-#!  * create_func_universal_morphism
 #! @Arguments nothing
 #! @Returns a &CAP; category
 DeclareGlobalFunction( "CategoryConstructor" );

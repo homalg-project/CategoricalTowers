@@ -31,7 +31,7 @@ InstallGlobalFunction( CategoryConstructor,
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
           commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
           preinstall, func, is_monoidal, pos, create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+          create_func_object, create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
           print, info, with_given_object_name, add;
@@ -168,6 +168,9 @@ InstallGlobalFunction( CategoryConstructor,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism", fail );
     
+    ## e.g., Lift
+    create_func_morphism_or_fail := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_morphism_or_fail", fail );
+    
     ## e.g., CokernelColiftWithGivenCokernelObject
     create_func_universal_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_universal_morphism", fail );
     
@@ -183,7 +186,34 @@ InstallGlobalFunction( CategoryConstructor,
     ##
     create_func_other_morphism := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_other_morphism", fail );
     
+    ##
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
+    
+    # deprecate create_func_object0 and create_func_morphism0 if category_as_first_argument is set
+    if ValueOption( "category_as_first_argument" ) = true and create_func_object0 <> fail then
+        
+        Display( "WARNING: category_as_first_argument is set to true, so create_func_object will be used instead of create_func_object0. Adjust create_func_object and remove create_func_object0 to prevent this warning." );
+        
+    fi;
+    
+    if ValueOption( "category_as_first_argument" ) = true and create_func_morphism0 <> fail then
+        
+        Display( "WARNING: category_as_first_argument is set to true, so create_func_morphism will be used instead of create_func_morphism0. Adjust create_func_morphism and remove create_func_morphism0 to prevent this warning." );
+        
+    fi;
+    
+    # set default values
+    if create_func_morphism_or_fail = fail then
+        
+        create_func_morphism_or_fail := create_func_morphism;
+        
+    fi;
+    
+    if create_func_universal_morphism = fail then
+        
+        create_func_universal_morphism := create_func_morphism;
+        
+    fi;
     
     Info( InfoCategoryConstructor, 2,  "Lifting the following operations for ", Name( CC ), ":\n" );
     
@@ -196,6 +226,22 @@ InstallGlobalFunction( CategoryConstructor,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
+        if ValueOption( "category_as_first_argument" ) = true then
+            
+            if info.filter_list[1] <> "category" then
+                
+                Display( Concatenation(
+                    "WARNING: If the option category_as_first_argument is set to true, category contructor cannot deal with operations which do not get the category as the first argument. ",
+                    "The installation of ", name, " will be skipped. ",
+                    "To get rid of this warning, add \"category\" as the first entry of `filter_list` in the corresponding method record entry. ",
+                    "For more information about the implications of doing so, search for `filter_list` in the documentation of CAP."
+                ) );
+                continue;
+                
+            fi;
+            
+        fi;
+        
         func := fail;
         
         if info.return_type = "bool" then
@@ -203,7 +249,7 @@ InstallGlobalFunction( CategoryConstructor,
                 continue;
             fi;
             func := create_func_bool( name, CC );
-        elif info.return_type = "object" and info.filter_list = [ "category" ] then
+        elif ValueOption( "category_as_first_argument" ) <> true and info.return_type = "object" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_object0 ) then
                 continue;
             fi;
@@ -233,12 +279,21 @@ InstallGlobalFunction( CategoryConstructor,
                 continue;
             fi;
             func := create_func_other_morphism( name, CC );
-        elif info.return_type = "morphism" and info.filter_list = [ "category" ] then
+        elif ValueOption( "category_as_first_argument" ) <> true and info.return_type = "morphism" and info.filter_list = [ "category" ] then
             if not IsFunction( create_func_morphism0 ) then
                 continue;
             fi;
             func := create_func_morphism0( name, CC );
-        elif info.return_type = "morphism" or info.return_type = "morphism_or_fail" then
+        elif info.return_type = "morphism_or_fail" then
+            if not IsBound( info.io_type ) then
+                ## if there is no io_type we cannot do anything
+                continue;
+            fi;
+            if not IsFunction( create_func_morphism_or_fail ) then
+                continue;
+            fi;
+            func := create_func_morphism_or_fail( name, CC );
+        elif info.return_type = "morphism" then
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
                 continue;
