@@ -285,6 +285,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiFrame := CreateCapCategory( name );
     
+    ZariskiFrame!.category_as_first_argument := true;
+    
     SetUnderlyingRing( ZariskiFrame, R );
     
     if not IsBound( R!.CategoryOfRows ) then
@@ -308,20 +310,20 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddIsHomSetInhabited( ZariskiFrame,
-      IsHomSetInhabitedForFramesUsingCategoryOfRows );
+      { cat, S, T } -> IsHomSetInhabitedForFramesUsingCategoryOfRows( S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiFrame,
-          IsEqualForObjectsIfIsHomSetInhabitedForFramesUsingCategoryOfRows );
+          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForFramesUsingCategoryOfRows( A, B ) );
         
     fi;
     
     ##
     AddIsEqualForObjects( ZariskiFrame,
-      function( A, B )
+      function( cat, A, B )
         
         if not DimensionOfComplement( A ) = DimensionOfComplement( B ) then
             return false;
@@ -333,7 +335,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddTerminalObject( ZariskiFrame,
-      function( arg )
+      function( cat )
         local T;
         
         T := OpenSubsetOfSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
@@ -346,7 +348,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddInitialObject( ZariskiFrame,
-      function( arg )
+      function( cat )
         local I;
         
         I := OpenSubsetOfSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
@@ -359,7 +361,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddIsTerminal( ZariskiFrame,
-      function( A )
+      function( cat, A )
         local mor;
         
         mor := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
@@ -370,7 +372,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddIsInitial( ZariskiFrame,
-      function( A )
+      function( cat, A )
         
         return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
         
@@ -378,7 +380,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddCoproduct( ZariskiFrame,
-      function( L )
+      function( cat, L )
         local l;
         
         ## triggers radical computations which we want to avoid by all means
@@ -422,7 +424,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddDirectProduct( ZariskiFrame,
-      function( L )
+      function( cat, L )
         local l;
         
         l := L[1];
@@ -453,7 +455,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddExponentialOnObjects( ZariskiFrame,
-      function( A, B )
+      function( cat, A, B )
         local L;
         
         A := MorphismOfUnderlyingCategory( A );

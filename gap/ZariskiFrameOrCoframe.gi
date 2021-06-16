@@ -260,7 +260,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
     
     ##
     AddIsWellDefinedForObjects( zariski_frame_or_coframe,
-      function( A )
+      function( cat, A )
         
         A := MorphismOfUnderlyingCategory( A );
         
@@ -270,7 +270,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
     
     ##
     AddIsTerminal( zariski_frame_or_coframe,
-      function( A )
+      function( cat, A )
         
         ## IsEqualForObjectsIfIsHomSetInhabited would trigger
         ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
@@ -281,7 +281,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
     
     ##
     AddIsInitial( zariski_frame_or_coframe,
-      function( A )
+      function( cat, A )
         
         ## IsEqualForObjectsIfIsHomSetInhabited would trigger
         ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows

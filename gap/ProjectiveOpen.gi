@@ -188,6 +188,8 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ZariskiFrame := CreateCapCategory( name );
     
+    ZariskiFrame!.category_as_first_argument := true;
+    
     SetUnderlyingRing( ZariskiFrame, R );
     
     if not IsBound( R!.CategoryOfRows ) then
@@ -211,7 +213,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddIsHomSetInhabited( ZariskiFrame,
-      function( S, T )
+      function( cat, S, T )
         
         S := MorphismOfUnderlyingCategory( S );
         T := MorphismOfUnderlyingCategory( T );
@@ -225,7 +227,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiFrame,
-          function( S, T )
+          function( cat, S, T )
             
             S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
             T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
@@ -238,7 +240,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddIsEqualForObjects( ZariskiFrame,
-      function( A, B )
+      function( cat, A, B )
         
         if not DimensionOfComplement( A ) = DimensionOfComplement( B ) then
             return false;
@@ -250,7 +252,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddTerminalObject( ZariskiFrame,
-      function( arg )
+      function( cat )
         local T;
         
         T := OpenSubsetOfProjByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
@@ -263,7 +265,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddInitialObject( ZariskiFrame,
-      function( arg )
+      function( cat )
         local I;
         
         I := OpenSubsetOfProjByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
@@ -276,7 +278,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddIsTerminal( ZariskiFrame,
-      function( A )
+      function( cat, A )
         local mor;
         
         mor := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
@@ -287,7 +289,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddIsInitial( ZariskiFrame,
-      function( A )
+      function( cat, A )
         
         return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
         
@@ -295,7 +297,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddCoproduct( ZariskiFrame,
-      function( L )
+      function( cat, L )
         local l;
         
         ## triggers radical computations which we want to avoid by all means
@@ -339,7 +341,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddDirectProduct( ZariskiFrame,
-      function( L )
+      function( cat, L )
         local l;
         
         l := L[1];
@@ -370,7 +372,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddExponentialOnObjects( ZariskiFrame,
-      function( A, B )
+      function( cat, A, B )
         local L;
         
         A := MorphismOfUnderlyingCategory( A );

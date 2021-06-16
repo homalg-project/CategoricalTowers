@@ -374,6 +374,8 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiCoframe := CreateCapCategory( name );
     
+    ZariskiCoframe!.category_as_first_argument := true;
+    
     SetUnderlyingRing( ZariskiCoframe, R );
 
     if not IsBound( R!.CategoryOfRows ) then
@@ -397,20 +399,20 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddIsHomSetInhabited( ZariskiCoframe,
-      IsHomSetInhabitedForCoframesUsingCategoryOfRows );
+      { cat, S, T } -> IsHomSetInhabitedForCoframesUsingCategoryOfRows( S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiCoframe,
-          IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows );
+          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows( A, B ) );
         
     fi;
     
     ##
     AddIsEqualForObjects( ZariskiCoframe,
-      function( A, B )
+      function( cat, A, B )
         
         if not Dimension( A ) = Dimension( B ) then
             return false;
@@ -422,7 +424,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddTerminalObject( ZariskiCoframe,
-      function( arg )
+      function( cat )
         local T;
         
         T := ClosedSubsetOfSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
@@ -435,7 +437,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddInitialObject( ZariskiCoframe,
-      function( arg )
+      function( cat )
         local I;
         
         I := ClosedSubsetOfSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
@@ -448,7 +450,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddIsTerminal( ZariskiCoframe,
-      function( A )
+      function( cat, A )
         
         return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
         
@@ -456,7 +458,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddIsInitial( ZariskiCoframe,
-      function( A )
+      function( cat, A )
         local mor;
         
         mor := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
@@ -467,7 +469,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddCoproduct( ZariskiCoframe,
-      function( L )
+      function( cat, L )
         local l;
         
         l := L[1];
@@ -498,7 +500,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ##
     AddDirectProduct( ZariskiCoframe,
-      function( L )
+      function( cat, L )
         local l;
         
         ## triggers radical computations which we want to avoid by all means
@@ -542,7 +544,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ## the closure of the set theortic difference
     AddCoexponentialOnObjects( ZariskiCoframe,
-      function( A, B )
+      function( cat, A, B )
         local L;
         
         B := MorphismOfUnderlyingCategory( B );
