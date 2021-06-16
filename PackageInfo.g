@@ -19,7 +19,7 @@ Version := Maximum( [
                    ## this line prevents merge conflicts
                    "2020.09-01", ## Tibor's version
                    ## this line prevents merge conflicts
-                   "2021.05-01", ## Fabian's version
+                   "2021.06-01", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -88,7 +88,7 @@ Dependencies := rec(
                    [ "RingsForHomalg", ">= 2020.02.04" ],
                    [ "LinearAlgebraForCAP", ">= 2020.01.10" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
-                   [ "CategoryConstructor", ">= 2021.04-01" ],
+                   [ "CategoryConstructor", ">= 2021.06-01" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
