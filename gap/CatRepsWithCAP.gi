@@ -54,12 +54,12 @@ InstallMethod( ConcreteCategoryForCAP,
     SetFilterObj( C, IsFiniteConcreteCategory );
     
     AddIsAutomorphism( C,
-      function( alpha )
+      function( C, alpha )
         return IsAutomorphism( UnderlyingCell( alpha ) );
     end );
     
     AddInverseForMorphisms( C,
-      function( alpha )
+      function( C, alpha )
         return Inverse( UnderlyingCell( alpha ) ) / CapCategory( alpha );
     end );
     
