@@ -8,7 +8,7 @@ InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 NegationOnObjects := rec(
   installation_name := "NegationOnObjects",
-  filter_list := [ "object" ],
+  filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "an" ] ],
   cache_name := "NegationOnObjects",
   return_type := "object" ),
@@ -16,13 +16,13 @@ NegationOnObjects := rec(
 NegationOnMorphismsWithGivenNegations := rec(
   installation_name := "NegationOnMorphismsWithGivenNegations",
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
-  filter_list := [ "object", "morphism", "object" ],
+  filter_list := [ "category", "object", "morphism", "object" ],
   cache_name := "NegationOnMorphismsWithGivenNegations",
   return_type := "morphism" ),
 
 MorphismToDoubleNegationWithGivenDoubleNegation := rec(
   installation_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
-  filter_list := [ "object", "object" ],
+  filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
   cache_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
   return_type := "morphism" )
@@ -69,7 +69,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddExponentialOnMorphismsWithGivenExponentials( heyting_algebra,
-      function( S, alpha, beta, R )
+      function( cat, S, alpha, beta, R )
         
         return UniqueMorphism( S, R );
         
@@ -77,7 +77,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddCartesianEvaluationMorphismWithGivenSource( heyting_algebra,
-      function( A, B, Exp_A_BxA )
+      function( cat, A, B, Exp_A_BxA )
         
         return UniqueMorphism( Exp_A_BxA, B);
         
@@ -85,7 +85,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddCartesianCoevaluationMorphismWithGivenRange( heyting_algebra,
-      function( A, B, Exp_B_AxB )
+      function( cat, A, B, Exp_B_AxB )
         
         return UniqueMorphism( A, Exp_B_AxB );
         
@@ -93,7 +93,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddDirectProductToExponentialAdjunctionMap( heyting_algebra,
-      function( A, B, f )
+      function( cat, A, B, f )
         local L;
         
         L := Range( f );
@@ -104,7 +104,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddExponentialToDirectProductAdjunctionMap( heyting_algebra,
-      function( B, C, g )
+      function( cat, B, C, g )
         local A, AB;
         
         A := Source( g );
@@ -117,7 +117,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddCartesianPreComposeMorphismWithGivenObjects( heyting_algebra,
-      function( Exp_A_BxExp_B_C, A, B, C, Exp_A_C );
+      function( cat, Exp_A_BxExp_B_C, A, B, C, Exp_A_C );
         
         return UniqueMorphism( Exp_A_BxExp_B_C, Exp_A_C );
         
@@ -125,7 +125,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddCartesianPostComposeMorphismWithGivenObjects( heyting_algebra,
-      function( Exp_B_CxExp_A_B, A, B, C, Exp_A_C );
+      function( cat, Exp_B_CxExp_A_B, A, B, C, Exp_A_C );
         
         return UniqueMorphism( Exp_B_CxExp_A_B, Exp_A_C );
         
@@ -133,7 +133,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddDirectProductExponentialCompatibilityMorphismWithGivenObjects( heyting_algebra,
-      function( A1, A2, B1, B2, L )
+      function( cat, A1, A2, B1, B2, L )
         
         return UniqueMorphism( L[1], L[2] );
         
@@ -143,7 +143,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddMorphismToDoubleNegationWithGivenDoubleNegation( heyting_algebra,
-      function( A, B )
+      function( cat, A, B )
         
         return UniqueMorphism( A, B );
         
@@ -158,7 +158,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         
   function( cat, S, T )
     
-    return IsTerminal( ExponentialOnObjects( S, T ) );
+    return IsTerminal( cat, ExponentialOnObjects( cat, S, T ) );
     
 end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
       CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
@@ -168,9 +168,9 @@ AddDerivationToCAP( NegationOnObjects,
         [ [ ExponentialOnObjects, 1 ],
           [ InitialObject, 1 ] ],
         
-  function( A )
+  function( cat, A )
     
-    return ExponentialOnObjects( A, InitialObject( CapCategory( A ) ) );
+    return ExponentialOnObjects( cat, A, InitialObject( cat ) );
     
 end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
       CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
@@ -181,9 +181,9 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
           [ IdentityMorphism, 1 ],
           [ InitialObject, 1 ] ],
         
-  function( B_, u, A_ )
+  function( cat, B_, u, A_ )
     
-    return ExponentialOnMorphismsWithGivenExponentials( B_, u, IdentityMorphism( InitialObject( CapCategory( u ) ) ), A_ );
+    return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
     
 end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
       CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );

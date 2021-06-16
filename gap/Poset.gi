@@ -8,7 +8,7 @@ InstallValue( POSET_METHOD_NAME_RECORD,
         rec(
             IsEqualForObjectsIfIsHomSetInhabited := rec(
                                      installation_name := "IsEqualForObjectsIfIsHomSetInhabited",
-                                     filter_list := [ "object", "object" ],
+                                     filter_list := [ "category", "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true
                                     ),
@@ -33,7 +33,7 @@ end );
 AddDerivationToCAP( IsEqualForObjectsIfIsHomSetInhabited,
         [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
         
-  AreIsomorphicForObjectsIfIsHomSetInhabited :
+  { cat, A, B } -> AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B ) :
       Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited",
       CategoryFilter := IsThinCategory and IsSkeletalCategory );
 
@@ -44,8 +44,8 @@ AddDerivationToCAP( IsEqualForObjects,
         
   function( cat, A, B )
     
-    return IsHomSetInhabited( A, B ) and
-           AreIsomorphicForObjectsIfIsHomSetInhabited( A, B );
+    return IsHomSetInhabited( cat, A, B ) and
+           AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B );
         
 end : Description := "",
       CategoryFilter := IsThinCategory and IsSkeletalCategory );

@@ -21,7 +21,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( cartesian_proset,
-      function( D, k, P )
+      function( cat, D, k, P )
         
         return UniqueMorphism( P, D[k] );
         
@@ -29,7 +29,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( cartesian_proset,
-      function( D, test_object, tau, P )
+      function( cat, D, test_object, tau, P )
         
         return UniqueMorphism( Source( tau[1] ), P );
         
@@ -37,7 +37,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddDirectProductFunctorialWithGivenDirectProducts( cartesian_proset,
-      function( s, source_diagram, L, range_diagram, r )
+      function( cat, s, source_diagram, L, range_diagram, r )
         
         return UniqueMorphism( s, r );
         
@@ -45,7 +45,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianAssociatorRightToLeftWithGivenDirectProducts( cartesian_proset,
-      function( s, a, b, c, r )
+      function( cat, s, a, b, c, r )
         
         return UniqueMorphism( s, r );
         
@@ -53,7 +53,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianAssociatorLeftToRightWithGivenDirectProducts( cartesian_proset,
-      function( s, a, b, c, r )
+      function( cat, s, a, b, c, r )
         
         return UniqueMorphism( s, r );
         
@@ -61,7 +61,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianLeftUnitorWithGivenDirectProduct( cartesian_proset,
-      function( M, TM )
+      function( cat, M, TM )
         
         return UniqueMorphism( TM, M );
         
@@ -69,7 +69,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianLeftUnitorInverseWithGivenDirectProduct( cartesian_proset,
-      function( M, TM )
+      function( cat, M, TM )
         
         return UniqueMorphism( M, TM );
         
@@ -77,7 +77,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianRightUnitorWithGivenDirectProduct( cartesian_proset,
-      function( M, MT )
+      function( cat, M, MT )
         
         return UniqueMorphism( MT, M );
         
@@ -85,7 +85,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianRightUnitorInverseWithGivenDirectProduct( cartesian_proset,
-      function( M, MT )
+      function( cat, M, MT )
         
         return UniqueMorphism( M, MT );
         
@@ -93,7 +93,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianBraidingWithGivenDirectProducts( cartesian_proset,
-      function( MN, M, N, NM )
+      function( cat, MN, M, N, NM )
         
         return UniqueMorphism( MN, NM );
         
@@ -101,7 +101,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     
     ##
     AddCartesianBraidingInverseWithGivenDirectProducts( cartesian_proset,
-      function( NM, M, N, MN )
+      function( cat, NM, M, N, MN )
         
         return UniqueMorphism( NM, MN );
         
@@ -116,7 +116,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         
   function( cat, S, T )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( DirectProduct( S, T ), S );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, DirectProduct( cat, S, T ), S );
     
 end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and DirectProduct",
       CategoryFilter := IsThinCategory and IsCartesianCategory );
@@ -143,7 +143,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cocartesian_proset,
-      function( D, k, I )
+      function( cat, D, k, I )
         
         return UniqueMorphism( D[k], I );
         
@@ -151,7 +151,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddUniversalMorphismFromCoproductWithGivenCoproduct( cocartesian_proset,
-      function( D, test_object, tau, I )
+      function( cat, D, test_object, tau, I )
         
         return UniqueMorphism( I, Range( tau[1] ) );
         
@@ -159,7 +159,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCoproductFunctorialWithGivenCoproducts( cocartesian_proset,
-      function( s, source_diagram, L, range_diagram, r )
+      function( cat, s, source_diagram, L, range_diagram, r )
         
         return UniqueMorphism( s, r );
         
@@ -167,7 +167,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianAssociatorRightToLeftWithGivenCoproducts( cocartesian_proset,
-      function( s, a, b, c, r )
+      function( cat, s, a, b, c, r )
         
         return UniqueMorphism( s, r );
         
@@ -175,7 +175,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianAssociatorLeftToRightWithGivenCoproducts( cocartesian_proset,
-      function( s, a, b, c, r )
+      function( cat, s, a, b, c, r )
         
         return UniqueMorphism( s, r );
         
@@ -183,7 +183,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianLeftUnitorWithGivenCoproduct( cocartesian_proset,
-      function( M, TM )
+      function( cat, M, TM )
         
         return UniqueMorphism( TM, M );
         
@@ -191,7 +191,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianLeftUnitorInverseWithGivenCoproduct( cocartesian_proset,
-      function( M, TM )
+      function( cat, M, TM )
         
         return UniqueMorphism( M, TM );
         
@@ -199,7 +199,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianRightUnitorWithGivenCoproduct( cocartesian_proset,
-      function( M, MT )
+      function( cat, M, MT )
         
         return UniqueMorphism( MT, M );
         
@@ -207,7 +207,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianRightUnitorInverseWithGivenCoproduct( cocartesian_proset,
-      function( M, MT )
+      function( cat, M, MT )
         
         return UniqueMorphism( M, MT );
         
@@ -215,7 +215,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianBraidingWithGivenCoproducts( cocartesian_proset,
-      function( MN, M, N, NM )
+      function( cat, MN, M, N, NM )
         
         return UniqueMorphism( MN, NM );
         
@@ -223,7 +223,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ##
     AddCocartesianBraidingInverseWithGivenCoproducts( cocartesian_proset,
-      function( NM, M, N, MN )
+      function( cat, NM, M, N, MN )
         
         return UniqueMorphism( NM, MN );
         
@@ -238,7 +238,7 @@ AddDerivationToCAP( IsHomSetInhabited,
         
   function( cat, S, T )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( T, Coproduct( S, T ) );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, T, Coproduct( cat, S, T ) );
     
 end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and Coproduct",
       CategoryFilter := IsThinCategory and IsCocartesianCategory );

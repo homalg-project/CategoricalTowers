@@ -18,6 +18,8 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     D := CreateCapCategory( name );
     
+    D!.category_as_first_argument := true;
+    
     D!.UnderlyingCategory := P;
     D!.MeetSemilatticeOfDifferences := MeetSemilatticeOfDifferences( P );
     
@@ -31,7 +33,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     ##
     AddIsWellDefinedForObjects( D,
-      function( A )
+      function( cat, A )
         
         return ForAll( A, IsObjectInMeetSemilatticeOfSingleDifferences ) and ForAll( A, IsWellDefinedForObjects );
         
@@ -39,7 +41,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     ##
     AddIsHomSetInhabited( D,
-      function( A, B )
+      function( cat, A, B )
         
         return IsInitial( A - B.I ) and ForAll( B, d -> IsInitial( A * d.J ) );
         
@@ -47,7 +49,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     ##
     AddTerminalObject( D,
-      function( arg )
+      function( cat )
         local T;
         
         T := TerminalObject( D!.MeetSemilatticeOfDifferences );
@@ -58,7 +60,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     ##
     AddInitialObject( D,
-      function( arg )
+      function( cat )
         local I;
         
         I := InitialObject( D!.MeetSemilatticeOfDifferences );
@@ -69,7 +71,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     ##
     AddIsInitial( D,
-      function( A )
+      function( cat, A )
         
         return IsInitial( AsSingleDifference( A ) );
         
@@ -77,7 +79,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     ##
     AddDirectProduct( D,
-      function( L )
+      function( cat, L )
         
         L := List( L, List );
         

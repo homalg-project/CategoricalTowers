@@ -7,12 +7,45 @@
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
   [
+   # create_func_bool and create_func_object can only deal with operations which do
+   # not get morphisms as arguments, because they access `UnderlyingCell` which is
+   # not set for morphisms
    "IsWellDefinedForObjects",
    "IsHomSetInhabited",
    "TensorUnit",
    "TensorProductOnObjects",
    "InternalHomOnObjects",
    "InternalHomOnMorphismsWithGivenInternalHoms",
+   # P admits the same (co)limits as C,
+   # in fact, a weak (co)limit in C becomes a (co)limit in P.
+   # However, we must not automatically detect these (co)limits via `universal_type`,
+   # because `universal_type` is sometimes set for technical instead of mathematical reasons.
+   # Additionally, we must be careful with the restrictions of create_func_bool and create_func_object
+   # mentioned above.
+   # DirectProduct
+   "DirectProduct",
+   "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+   "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+   # Coproduct
+   "Coproduct",
+   "InjectionOfCofactorOfCoproductWithGivenCoproduct",
+   "UniversalMorphismFromCoproductWithGivenCoproduct",
+   # DirectSum
+   "DirectSum",
+   "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+   "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+   "UniversalMorphismIntoDirectSumWithGivenDirectSum",
+   "UniversalMorphismFromDirectSumWithGivenDirectSum",
+   # TerminalObject
+   "TerminalObject",
+   "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+   # InitialObject
+   "InitialObject",
+   "UniversalMorphismFromInitialObjectWithGivenInitialObject",
+   # ZeroObject
+   "ZeroObject",
+   "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+   "UniversalMorphismFromZeroObjectWithGivenZeroObject",
    ] );
 
 ##
@@ -236,9 +269,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
   function( C )
     local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
-          name, create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
-          list_of_operations_to_install, is_limit, skip, func, pos,
+          name, create_func_bool, create_func_object, create_func_morphism,
+          list_of_operations_to_install, skip, func, pos,
           properties, preinstall, P, finalize;
     
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
@@ -278,45 +310,13 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( cat, arg... )
             
-            return CallFuncList( oper, List( arg, UnderlyingCell ) );
+            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
             
         end;
         
     end;
-    
-    ## e.g., TerminalObject
-    create_func_object0 :=
-      function( name, P )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( )
-            
-            return oper( C ) / P;
-            
-          end;
-          
-      end;
-    
-    ## e.g., TerminalObjectFunctorial
-    create_func_morphism0 :=
-      function( name, P )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( P )
-            
-            return oper( P!.AmbientCategory ) / P;
-            
-          end;
-          
-      end;
     
     ## e.g., DirectProduct
     create_func_object :=
@@ -326,9 +326,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         oper := ValueGlobal( name );
         
         return ## a constructor for universal objects
-          function( arg )
+          function( cat, arg... )
             
-            return CallFuncList( oper, List( arg, UnderlyingCell ) ) / P;
+            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) / P;
             
           end;
           
@@ -344,7 +344,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function( cat, arg... )
             local src_trg, S, T;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -358,61 +358,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
           
       end;
     
-    ## e.g., UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
-    create_func_universal_morphism :=
-      function( name, P )
-        local info, oper, type;
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( arg )
-            local src_trg, S, T;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return UniqueMorphism( S, T );
-            
-        end;
-        
-    end;
+    list_of_operations_to_install := Intersection(
+        CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
+        ListInstalledOperationsOfCategory( C )
+    );
     
-    is_limit :=
-      function( a )
-        local entry;
-        
-        entry := CAP_INTERNAL_METHOD_NAME_RECORD.(a);
-        
-        if IsBound( entry.universal_type ) and entry.universal_type in [ "Limit", "limit", "Colimit", "colimit" ] then
-            return true;
-        fi;
-        
-        return false;
-        
-    end;
-
-    ## P admits the same (co)limits as C,
-    ## in fact, a weak (co)limit in C becomes a (co)limit in P
-    list_of_operations_to_install := Filtered( ListInstalledOperationsOfCategory( C ), is_limit );
-    
-    list_of_operations_to_install :=
-      Concatenation(
-              Intersection(
-                      CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
-                      ListInstalledOperationsOfCategory( C ) ),
-              list_of_operations_to_install );
-
     skip := [ 
               ];
     
@@ -504,11 +454,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
-                 create_func_object0 := create_func_object0,
-                 create_func_morphism0 := create_func_morphism0,
                  create_func_object := create_func_object,
                  create_func_morphism := create_func_morphism,
-                 create_func_universal_morphism := create_func_universal_morphism
+                 category_as_first_argument := true
                  );
     
     P!.AmbientCategory := C;
@@ -516,7 +464,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     if CanCompute( C, "IsWeakTerminal" ) then
         
         AddIsTerminal( P,
-          function( S )
+          function( cat, S )
             
             return IsWeakTerminal( UnderlyingCell( S ) );
             
@@ -527,7 +475,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     if CanCompute( C, "IsWeakInitial" ) then
         
         AddIsInitial( P,
-          function( S )
+          function( cat, S )
             
             return IsWeakInitial( UnderlyingCell( S ) );
             
@@ -542,7 +490,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddInternalHomOnObjects( P,
-              function( S, T )
+              function( cat, S, T )
                 
                 return StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / CapCategory( S );
                 
@@ -553,11 +501,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddExponentialOnObjects( P,
-              InternalHomOnObjects );
+              { cat, S, T } -> InternalHomOnObjects( cat, S, T ) );
             
             ##
             AddExponentialOnMorphismsWithGivenExponentials( P,
-              InternalHomOnMorphismsWithGivenInternalHoms );
+              { cat, S, alpha, beta, T } -> InternalHomOnMorphismsWithGivenInternalHoms( cat, S, alpha, beta, T ) );
             
         else
             
