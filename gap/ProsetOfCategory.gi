@@ -7,12 +7,45 @@
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
   [
+   # create_func_bool and create_func_object can only deal with operations which do
+   # not get morphisms as arguments, because they access `UnderlyingCell` which is
+   # not set for morphisms
    "IsWellDefinedForObjects",
    "IsHomSetInhabited",
    "TensorUnit",
    "TensorProductOnObjects",
    "InternalHomOnObjects",
    "InternalHomOnMorphismsWithGivenInternalHoms",
+   # P admits the same (co)limits as C,
+   # in fact, a weak (co)limit in C becomes a (co)limit in P.
+   # However, we must not automatically detect these (co)limits via `universal_type`,
+   # because `universal_type` is sometimes set for technical instead of mathematical reasons.
+   # Additionally, we must be careful with the restrictions of create_func_bool and create_func_object
+   # mentioned above.
+   # DirectProduct
+   "DirectProduct",
+   "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+   "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+   # Coproduct
+   "Coproduct",
+   "InjectionOfCofactorOfCoproductWithGivenCoproduct",
+   "UniversalMorphismFromCoproductWithGivenCoproduct",
+   # DirectSum
+   "DirectSum",
+   "ProjectionInFactorOfDirectSumWithGivenDirectSum",
+   "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+   "UniversalMorphismIntoDirectSumWithGivenDirectSum",
+   "UniversalMorphismFromDirectSumWithGivenDirectSum",
+   # TerminalObject
+   "TerminalObject",
+   "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+   # InitialObject
+   "InitialObject",
+   "UniversalMorphismFromInitialObjectWithGivenInitialObject",
+   # ZeroObject
+   "ZeroObject",
+   "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+   "UniversalMorphismFromZeroObjectWithGivenZeroObject",
    ] );
 
 ##
@@ -237,7 +270,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
   function( C )
     local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
           name, create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, is_limit, skip, func, pos,
+          list_of_operations_to_install, skip, func, pos,
           properties, preinstall, P, finalize;
     
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
@@ -325,31 +358,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
           
       end;
     
-    is_limit :=
-      function( a )
-        local entry;
-        
-        entry := CAP_INTERNAL_METHOD_NAME_RECORD.(a);
-        
-        if IsBound( entry.universal_type ) and entry.universal_type in [ "Limit", "limit", "Colimit", "colimit" ] then
-            return true;
-        fi;
-        
-        return false;
-        
-    end;
-
-    ## P admits the same (co)limits as C,
-    ## in fact, a weak (co)limit in C becomes a (co)limit in P
-    list_of_operations_to_install := Filtered( ListInstalledOperationsOfCategory( C ), is_limit );
+    list_of_operations_to_install := Intersection(
+        CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
+        ListInstalledOperationsOfCategory( C )
+    );
     
-    list_of_operations_to_install :=
-      Concatenation(
-              Intersection(
-                      CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
-                      ListInstalledOperationsOfCategory( C ) ),
-              list_of_operations_to_install );
-
     skip := [ 
               ];
     
