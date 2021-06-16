@@ -657,8 +657,7 @@ InstallMethodWithCache( Hom,
         [ IsAlgebroid, IsCapCategory ],
         
   function ( B, C )
-    local name, create_func_bool, create_func_object0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+    local name, create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, doc, prop, Hom,
           vertices, arrows, relations, kq, name_of_object;
@@ -687,52 +686,6 @@ InstallMethodWithCache( Hom,
         
     fi;
     
-    ## e.g., ZeroObject
-    create_func_object0 :=
-      function ( name, Hom )
-        local B, C, name_of_object, info, oper, functorial;
-        
-        B := Source( Hom );
-        C := Range( Hom );
-        
-        name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        oper := ValueGlobal( name );
-        
-        if not IsBound( info.functorial ) then
-            Error( "the method record entry ", name, ".functorial is not bound\n" );
-        fi;
-        
-        functorial := ValueGlobal( info.functorial );
-        
-        return
-          function ( Hom )
-            local F, objC, morC;
-            
-            F := CapFunctor( name_of_object, B, C );
-            
-            DeactivateCachingObject( ObjectCache( F ) );
-            DeactivateCachingObject( MorphismCache( F ) );
-            
-            objC := oper( C );
-            
-            AddObjectFunction( F, objB -> objC );
-            
-            morC := functorial( C );
-            
-            AddMorphismFunction( F,
-              function ( new_source, morB, new_range )
-                return morC;
-            end );
-            
-            return AsObjectInHomCategory( Hom, F );
-            
-        end;
-        
-    end;
-    
     ## e.g., DirectSum, KernelObject
     create_func_object :=
       function ( name, Hom )
@@ -756,22 +709,59 @@ InstallMethodWithCache( Hom,
         
         functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
-        if IsBound( functorial.filter_list ) and Length( functorial.filter_list ) >= 6 and
-           IsBound( functorial.filter_list[3] ) and
-           ( ( IsFilter( functorial.filter_list[3] ) and functorial.filter_list[3] = IsList ) or
-             functorial.filter_list[3] = "list_of_morphisms" ) then
+        if not IsBound( functorial.filter_list ) then
+            Error( "the filter_list of method record entry ", name, ".functorial is not set\n" );
+        fi;
+        
+        if not IsDenseList( functorial.filter_list ) then
+            Error( "the filter list of method record entry ", name, ".functorial is not a dense list\n" );
+        fi;
+        
+        if not Length( functorial.filter_list ) in [ 1, 6 ] then
+            Error( "the length of the filter list of method record entry ", name, ".functorial is not 1 or 6, FunctorCategories cannot handle this\n" );
+        fi;
+        
+        if Length( functorial.filter_list ) = 1 then
+            diagram := "empty diagram";
+        elif functorial.filter_list[3] = "list_of_morphisms" then
             diagram := "multiple arrows";
-        elif IsBound( functorial.filter_list ) and IsBound( functorial.filter_list[3] ) and
-           ( ( IsFilter( functorial.filter_list[3] ) and functorial.filter_list[3] = IsList ) or
-             functorial.filter_list[3] = "list_of_objects" ) then
+        elif functorial.filter_list[3] = "list_of_objects" then
             diagram := "multiple objects";
-        else
+        elif functorial.filter_list[3] = "morphism" then
             diagram := "single arrow";
+        else
+            Error( "FunctorCategories cannot determine the diagram type of method record entry ", name, ".functorial\n" );
         fi;
         
         functorial := ValueGlobal( info.functorial );
         
-        if diagram = "multiple arrows" then
+        if diagram = "empty diagram" then
+            
+            return ## a constructor for universal objects: TerminalObject
+              function ( Hom )
+                local F, objC, morC;
+                
+                F := CapFunctor( name_of_object, B, C );
+                
+                DeactivateCachingObject( ObjectCache( F ) );
+                DeactivateCachingObject( MorphismCache( F ) );
+                
+                objC := oper( C );
+                
+                AddObjectFunction( F, objB -> objC );
+                
+                morC := functorial( C );
+                
+                AddMorphismFunction( F,
+                  function ( new_source, morB, new_range )
+                    return morC;
+                end );
+                
+                return AsObjectInHomCategory( Hom, F );
+                
+            end;
+            
+        elif diagram = "multiple arrows" then
             
             return ## a constructor for universal objects: FiberProduct
               function ( Hom, arg... )
@@ -1031,50 +1021,6 @@ InstallMethodWithCache( Hom,
         
     end;
     
-    ## e.g., CokernelColiftWithGivenCokernelObject
-    create_func_universal_morphism :=
-      function ( name, Hom )
-        local B, C, name_of_morphism, info, oper, type;
-        
-        B := Source( Hom );
-        C := Range( Hom );
-        
-        name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function ( Hom, arg... )
-            local src_trg, S, T, eval_arg, eta;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := UnderlyingCapTwoCategoryCell( src_trg[1] );
-            T := UnderlyingCapTwoCategoryCell( src_trg[2] );
-            
-            eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
-            
-            eta := NaturalTransformation( name_of_morphism, S, T );
-            
-            AddNaturalTransformationFunction( eta,
-              function ( source, objB, range )
-                return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
-              end );
-              
-            return AsMorphismInHomCategory( Hom, eta );
-            
-        end;
-        
-    end;
-    
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
     list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
     list_of_operations_to_install := Intersection( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
@@ -1129,10 +1075,8 @@ InstallMethodWithCache( Hom,
                    is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
                    create_func_bool := create_func_bool,
-                   create_func_object0 := create_func_object0,
                    create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism,
-                   create_func_universal_morphism := create_func_universal_morphism
+                   create_func_morphism := create_func_morphism
                    );
     
     ## setting the cache comparison to IsIdenticalObj
