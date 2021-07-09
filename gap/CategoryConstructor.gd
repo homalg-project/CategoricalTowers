@@ -48,16 +48,8 @@ DeclareGlobalFunction( "CategoryConstructor" );
 #
 ####################################
 
-#! @Description
-#!  Return <C>List</C>( <A>L</A>, <C>UnderlyingCell</C> ).
-#! @Arguments L
-#! @Returns a list
+##
+if not ( IsBound( UnderlyingCell ) and IsAttribute( UnderlyingCell ) ) then
 DeclareAttribute( "UnderlyingCell",
-        IsList );
-
-#! @Description
-#!  Give the integer <A>i</A> return <A>i</A>.
-#! @Arguments i
-#! @Returns an integer
-DeclareAttribute( "UnderlyingCell",
-        IsInt );
+        IsObject );
+fi;
