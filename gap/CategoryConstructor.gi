@@ -8,7 +8,7 @@
 SetInfoLevel( InfoCategoryConstructor, 1 );
 
 ## recursion method
-InstallMethod( UnderlyingCell,
+InstallOtherMethod( UnderlyingCell,
         "for a list",
         [ IsList ],
         
@@ -19,7 +19,7 @@ InstallMethod( UnderlyingCell,
 end );
 
 ## the identity on integers
-InstallMethod( UnderlyingCell,
+InstallOtherMethod( UnderlyingCell,
         "for an integer",
         [ IsInt ],
         
