@@ -51,5 +51,5 @@ DeclareGlobalFunction( "CategoryConstructor" );
 ##
 if not ( IsBound( UnderlyingCell ) and IsAttribute( UnderlyingCell ) ) then
 DeclareAttribute( "UnderlyingCell",
-        IsObject );
+        IsInt );
 fi;
