@@ -30,8 +30,8 @@ sol := SolveLinearSystemInAbCategory( [ [ alpha ] ], [ [ id ] ], [ gamma ] );
 alpha := 2 * A_Z.a;;
 id := IdentityMorphism( A_Z.4 );;
 gamma := PreCompose( A_Z.b, A_Z.c );;
-sol := SolveLinearSystemInAbCategory( [ [ alpha ] ], [ [ id ] ], [ gamma ] );
-#! fail
+sol := MereExistenceOfSolutionOfLinearSystemInAbCategory( [ [ alpha ] ], [ [ id ] ], [ gamma ] );
+#! false
 #! @EndExample
 
 #! No solution exists over the integers.
