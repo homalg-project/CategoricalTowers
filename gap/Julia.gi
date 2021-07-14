@@ -20,6 +20,6 @@ InstallOtherMethod( AsMorphismInHomCategory,
         
   function ( F, images_of_objects, G )
     
-    return AsObjectInMorphismCategory( F, ConvertJuliaToGAP( images_of_objects ), G );
+    return AsMorphismInHomCategory( F, ConvertJuliaToGAP( images_of_objects ), G );
     
 end );
