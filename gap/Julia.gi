@@ -14,3 +14,12 @@ InstallOtherMethod( AsObjectInHomCategory,
     
 end );
 
+##
+InstallOtherMethod( AsMorphismInHomCategory,
+        [ IsCapCategoryObjectInHomCategory, IsJuliaObject, IsCapCategoryObjectInHomCategory ],
+        
+  function ( F, images_of_objects, G )
+    
+    return AsObjectInHomCategory( F, ConvertJuliaToGAP( images_of_objects ), G );
+    
+end );
