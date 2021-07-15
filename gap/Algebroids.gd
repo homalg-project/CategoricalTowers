@@ -20,7 +20,7 @@ DeclareInfoClass( "InfoAlgebroids" );
 #
 ####################################
 
-DeclareGlobalVariable( "ALGEBRIODS" );
+DeclareGlobalVariable( "ALGEBROIDS" );
 
 ####################################
 #

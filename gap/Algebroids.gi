@@ -6,7 +6,7 @@
 
 SetInfoLevel( InfoAlgebroids, 1 );
 
-InstallValue( ALGEBRIODS,
+InstallValue( ALGEBROIDS,
         rec(
             ring := HomalgFieldOfRationals( ),
            )
