@@ -413,7 +413,7 @@ InstallMethod( Category,
         
   function( quiver, L )
     
-    return Category( PathAlgebra( ALGEBRIODS.ring, quiver ), L );
+    return Category( PathAlgebra( ALGEBROIDS.ring, quiver ), L );
     
 end );
 
