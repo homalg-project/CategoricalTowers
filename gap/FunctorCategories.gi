@@ -629,9 +629,17 @@ InstallMethod( AsMorphismInHomCategory,
         [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ],
         
   function ( U, e, V )
-    local B, Q, vertices, eta, i;
+    local B, kmat, Q, vertices, eta, i;
     
     B := Source( U );
+    
+    if not IsEmpty( e ) and IsHomalgMatrix( e[1] ) then
+        
+        kmat := Range( U );
+        
+        e := List( e, mat -> mat / kmat );
+        
+    fi;
     
     Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
     
