@@ -580,8 +580,8 @@ InstallMethod( AsMorphismInHomCategory,
     kq := Source( H );
     
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, H,
-            AsObjectInHomCategory( H, Source( eta ) ),
-            AsObjectInHomCategory( H, Range( eta ) ),
+            AsObjectInHomCategory( Source( eta ) ),
+            AsObjectInHomCategory( Range( eta ) ),
             UnderlyingCapTwoCategoryCell, eta,
             SetOfObjects, SetOfObjects( kq ),
             SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( kq ) );
