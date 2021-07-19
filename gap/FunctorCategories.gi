@@ -1206,97 +1206,53 @@ InstallMethodWithCache( Hom,
       SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
       
       AddIsProjective( Hom,
-        function ( Hom, F )
-          local iso;
-          
-          iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          return IsProjectiveRepresentation( ApplyFunctor( iso, F ) );
-          
-      end );
+        { Hom, F } -> IsProjectiveRepresentation(
+                          ConvertToCellInCategoryOfQuiverRepresentations( F )
+                      )
+      );
       
       AddIsInjective( Hom,
-        function ( Hom, F )
-          local iso;
-          
-          iso := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          return IsInjectiveRepresentation( ApplyFunctor( iso, F ) );
-          
-      end );
-      
-      AddSomeProjectiveObject( Hom,
-        function ( Hom, F )
-          local iso_1, iso_2;
-          
-          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-          
-          return ApplyFunctor( iso_2, SomeProjectiveObject( ApplyFunctor( iso_1, F ) ) );
-          
-      end );
-      
-      AddSomeInjectiveObject( Hom,
-        function ( Hom, F )
-          local iso_1, iso_2;
-          
-          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-          
-          return ApplyFunctor( iso_2, SomeInjectiveObject( ApplyFunctor( iso_1, F ) ) );
-          
-      end );
+        { Hom, F } -> IsInjectiveRepresentation(
+                          ConvertToCellInCategoryOfQuiverRepresentations( F )
+                      )
+      );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
-        function ( Hom, F )
-          local iso_1, iso_2;
-          
-          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-          
-          return ApplyFunctor( iso_2, EpimorphismFromSomeProjectiveObject( ApplyFunctor( iso_1, F ) ) );
-          
-      end );
+        { Hom, F } -> ConvertToCellInHomCategory(
+                        EpimorphismFromSomeProjectiveObject(
+                          ConvertToCellInCategoryOfQuiverRepresentations( F )
+                        )
+                      )
+      );
       
       AddMonomorphismIntoSomeInjectiveObject( Hom,
-        function ( Hom, F )
-          local iso_1, iso_2;
-          
-          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-          
-          return ApplyFunctor( iso_2, MonomorphismIntoSomeInjectiveObject( ApplyFunctor( iso_1, F ) ) );
-          
-      end );
+        { Hom, F } -> ConvertToCellInHomCategory(
+                        MonomorphismIntoSomeInjectiveObject(
+                          ConvertToCellInCategoryOfQuiverRepresentations( F )
+                        )
+                      )
+      );
       
       AddProjectiveLift( Hom,
-        function ( Hom, eta_1, eta_2 )
-          local iso_1, iso_2;
-          
-          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-          
-          return ApplyFunctor( iso_2, ProjectiveLift( ApplyFunctor( iso_1, eta_1 ), ApplyFunctor( iso_1, eta_2 ) ) );
-          
-      end );
+        { Hom, alpha, epi } ->
+            ConvertToCellInHomCategory(
+            ProjectiveLift(
+              ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
+              ConvertToCellInCategoryOfQuiverRepresentations( epi )
+            )
+          )
+      );
       
       AddInjectiveColift( Hom,
-        function ( Hom, eta_1, eta_2 )
-          local iso_1, iso_2;
-          
-          iso_1 := IsomorphismOntoCategoryOfQuiverRepresentations( Hom );
-          
-          iso_2 := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-          
-          return ApplyFunctor( iso_2, InjectiveColift( ApplyFunctor( iso_1, eta_1 ), ApplyFunctor( iso_1, eta_2 ) ) );
-          
-      end );
-      
+        { Hom, mono, alpha } ->
+            ConvertToCellInHomCategory(
+            InjectiveColift(
+              ConvertToCellInCategoryOfQuiverRepresentations( mono ),
+              ConvertToCellInCategoryOfQuiverRepresentations( alpha )
+            )
+          )
+      );
+    
     fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
@@ -1511,8 +1467,9 @@ end );
 ##
 InstallMethod( IndecProjectiveObjects,
           [ IsCapHomCategory ],
+          
   function ( Hom )
-    local A, pp, iso;
+    local A;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
@@ -1522,11 +1479,7 @@ InstallMethod( IndecProjectiveObjects,
       
     fi;
     
-    pp := IndecProjRepresentations( A );
-    
-    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-    
-    return List( pp, p -> ApplyFunctor( iso, p ) );
+    return List( IndecProjRepresentations( A ), ConvertToCellInHomCategory );
     
 end );
 
@@ -1534,7 +1487,7 @@ end );
 InstallMethod( IndecInjectiveObjects,
           [ IsCapHomCategory ],
   function ( Hom )
-    local A, ii, iso;
+    local A;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
@@ -1544,19 +1497,16 @@ InstallMethod( IndecInjectiveObjects,
       
     fi;
     
-    ii := IndecInjRepresentations( A );
-    
-    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-    
-    return List( ii, i -> ApplyFunctor( iso, i ) );
+    return List( IndecInjRepresentations( A ), ConvertToCellInHomCategory );
     
 end );
 
 ##
 InstallMethod( SimpleObjects,
           [ IsCapHomCategory ],
+          
   function ( Hom )
-    local A, ss, iso;
+    local A;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
@@ -1566,11 +1516,7 @@ InstallMethod( SimpleObjects,
       
     fi;
     
-    ss := SimpleRepresentations( A );
-    
-    iso := IsomorphismFromCategoryOfQuiverRepresentations( Hom );
-    
-    return List( ss, s -> ApplyFunctor( iso, s ) );
+    return List( SimpleRepresentations( A ), ConvertToCellInHomCategory );
     
 end );
 
