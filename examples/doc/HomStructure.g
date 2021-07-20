@@ -36,7 +36,7 @@ maps = SetOfGeneratingMorphisms( Beilinson_P3, 1, 2 );
 Length( maps ) = 4;
 #! true
 ForAll( [ 0 .. 3 ], k ->
-        Dimension( HomomorphismStructureOnObjects( objs[1], objs[1 + k] ) )
+        RankOfObject( HomomorphismStructureOnObjects( objs[1], objs[1 + k] ) )
         = Binomial( 4 + k - 1, k )
 );
 #! true
