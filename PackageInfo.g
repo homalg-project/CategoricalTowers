@@ -17,7 +17,7 @@ Version := Maximum( [
                    ## this line prevents merge conflicts
                    "2020.01-01", ## Peter's version
                    ## this line prevents merge conflicts
-                   "2021.07-01", ## Fabian's version
+                   "2021.07-02", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -109,6 +109,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2021.06-01" ],
+                   [ "LinearAlgebraForCAP", ">= 2021.07-01" ],
                    [ "FinSetsForCAP", ">= 2020.04.01" ],
                    [ "CategoryConstructor", ">= 2020.06-01" ],
                    [ "SubcategoriesForCAP", ">= 2020.06-01" ],
