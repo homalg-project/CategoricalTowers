@@ -19,7 +19,7 @@ Version := Maximum( [
                    ## this line prevents merge conflicts
                    "2019.10-30", ## Sepp's version
                    ## this line prevents merge conflicts
-                   "2021.07-02", ## Fabian's version
+                   "2021.07-03", ## Fabian's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -132,8 +132,7 @@ Dependencies := rec(
                    [ "MonoidalCategories", ">= 2019.01.16" ],
                    [ "QPA", ">= 2.0" ],
                    [ "MatricesForHomalg", ">= 2017.05.25" ],
-                   [ "LinearAlgebraForCAP", ">= 2018.10.11" ],
-                   [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
+                   [ "FreydCategoriesForCAP", ">= 2021.07-01" ],
                    [ "RingsForHomalg", ">= 2018.12.02" ],
                    ],
   SuggestedOtherPackages := [ ],

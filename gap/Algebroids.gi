@@ -604,7 +604,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     function( algebroid, over_Z )
     local quiver_algebra, quiver, vertices, basis, data, maps, path,
-          object_constructor, morphism_constructor, distinguished_object, ring, range_category, representative_func;
+          ring, range_category, representative_func;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -629,41 +629,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ring := CommutativeRingOfLinearCategory( algebroid );
     
-    if over_Z then
-        
-        range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( ring ) );
-        
-        object_constructor := function( size )
-        return CategoryOfRowsObject( size, range_category );
-        end;
-        
-        morphism_constructor := mat -> AsCategoryOfRowsMorphism( mat, range_category );
-        
-        distinguished_object := function()
-        return CategoryOfRowsObject( 1, range_category );
-        end;
-    
-    else
-        
-        object_constructor := function( size )
-        return VectorSpaceObject( size, ring );
-        end;
-        
-        morphism_constructor := function( mat )
-        return VectorSpaceMorphism(
-                VectorSpaceObject( NrRows( mat ), ring ),
-                mat,
-                VectorSpaceObject( NrColumns( mat ), ring )
-                );
-        end;
-        
-        range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", MatrixCategory( ring ) );
-        
-        distinguished_object := function()
-        return TensorUnit( range_category );
-        end;
-        
-    fi;
+    range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( ring ) );
     
     SetRangeCategoryOfHomomorphismStructure( algebroid, range_category );
     
@@ -678,7 +644,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         basis_elements := data[nr_source][nr_range];
         
-        return object_constructor( Size( basis_elements ) );
+        return ObjectConstructor( range_category, Size( basis_elements ) );
         
     end );
     
@@ -709,7 +675,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         if size_source = 0 or size_range = 0 then
             
-            return morphism_constructor( HomalgZeroMatrix( size_source, size_range, ring ) );
+            return ZeroMorphism( range_category, source, range );
             
         fi;
         
@@ -737,7 +703,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
             
         fi;
         
-        return morphism_constructor( HomalgMatrix( images, size_source, size_range, ring ) );
+        return MorphismConstructor( range_category, source, HomalgMatrix( images, size_source, size_range, ring ), range );
         
     end );
     
@@ -745,14 +711,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     AddDistinguishedObjectOfHomomorphismStructure( algebroid,
       function( algebroid )
         
-        return distinguished_object();
+        return ObjectConstructor( range_category, 1 );
         
     end );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( algebroid,
       function( algebroid, alpha )
-        local a, b, basis_elements, size_basis, element;
+        local a, b, basis_elements, size_basis, source, range, element;
         
         a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
@@ -762,9 +728,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         size_basis := Size( basis_elements );
         
+        source := DistinguishedObjectOfHomomorphismStructure( algebroid );
+        range := HomomorphismStructureOnObjects( algebroid, Source( alpha ), Range( alpha ) );
+        
         if size_basis = 0 then
             
-            return morphism_constructor( HomalgZeroMatrix( 1, 0, ring ) );
+            return ZeroMorphism( range_category, source, range );
             
         fi;
         
@@ -772,14 +741,20 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         if IsQuotientOfPathAlgebraElement( element ) then
             
-            return morphism_constructor(
-                    HomalgMatrix( CoefficientsOfPaths( basis_elements, Representative( element ) ), 1, size_basis, ring )
+            return MorphismConstructor(
+                    range_category,
+                    source,
+                    HomalgMatrix( CoefficientsOfPaths( basis_elements, Representative( element ) ), 1, size_basis, ring ),
+                    range
                   );
             
         else
             
-            return morphism_constructor(
-                    HomalgMatrix( CoefficientsOfPaths( basis_elements, element ), 1, size_basis, ring )
+            return MorphismConstructor(
+                    range_category,
+                    source,
+                    HomalgMatrix( CoefficientsOfPaths( basis_elements, element ), 1, size_basis, ring ),
+                    range
                   );
             
         fi;
