@@ -252,7 +252,7 @@ InstallMethodWithCache( Algebroid,
         
   function( k, C )
     
-    return Algebroid( k, AsFpCategory( C ) );
+    return Algebroid( k, AsFpCategory( C ) : range_of_HomStructure := MatrixCategory( k ) );
     
 end );
 
