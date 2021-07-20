@@ -198,11 +198,15 @@ InstallMethod( YonedaEmbedding,
         [ IsAlgebroid ],
         
   function ( algebroid )
-    local k, matrix_cat, algebroid_op, objs, mors, functors_cat, name, Yoneda;
+    local A, algebroid_op, objs, mors, kmat, functors_cat, name, Yoneda;
     
-    k := CommutativeRingOfLinearCategory( algebroid );
+    A := UnderlyingQuiverAlgebra( algebroid );
     
-    matrix_cat := MatrixCategory( k );
+    if not IsFiniteDimensional( A ) then
+        
+        Error( "The underlying quiver algebra should be finite dimensional!\n" );
+        
+    fi;
     
     algebroid_op := OppositeAlgebroidOverOppositeQuiverAlgebra( algebroid );
     
@@ -210,7 +214,9 @@ InstallMethod( YonedaEmbedding,
     
     mors := SetOfGeneratingMorphisms( algebroid_op );
     
-    functors_cat := Hom( algebroid_op, matrix_cat );
+    kmat := RangeCategoryOfHomomorphismStructure( algebroid );
+    
+    functors_cat := Hom( algebroid_op, kmat );
     
     name := "Yoneda embedding functor";
     

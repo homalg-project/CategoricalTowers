@@ -15,7 +15,7 @@ Version := Maximum( [
                    ## this line prevents merge conflicts
                    "2018.10-18", ## Florian's version
                    ## this line prevents merge conflicts
-                   "2021.07-07", ## Kamal's version
+                   "2021.07-08", ## Kamal's version
                    ## this line prevents merge conflicts
                    "2020.09-01", ## Tibor's version
                    ## this line prevents merge conflicts
@@ -84,7 +84,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2021.05-02" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
-                   [ "Algebroids", ">= 2020.11-01" ],
+                   [ "Algebroids", ">= 2021.07-04" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],
                    [ "LinearAlgebraForCAP", ">= 2020.01.10" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
