@@ -7,101 +7,160 @@
 BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ##
+InstallMethod( ConvertToCellInHomCategory,
+    [ IsQuiverRepresentation ],
+    
+  function ( rep )
+    local reps, A, A_oid, k, dims, matrices, F;
+    
+    reps := CapCategory( rep );
+    
+    A := AlgebraOfCategory( reps );
+    
+    A_oid := Algebroid( A );
+    
+    k := CommutativeRingOfLinearCategory( A_oid );
+    
+    dims := DimensionVector( rep );
+    
+    matrices := List( MatricesOfRepresentation( rep ),
+      mat -> HomalgMatrix(
+                RowsOfMatrix( mat ),
+                  DimensionsMat( mat )[ 1 ],
+                    DimensionsMat( mat )[ 2 ], k ) );
+    
+    F := AsObjectInHomCategory( A_oid, dims, matrices );
+    
+    SetConvertToCellInCategoryOfQuiverRepresentations( F, rep );
+    
+    return F;
+    
+end );
+
+##
+InstallMethod( ConvertToCellInHomCategory,
+          [ IsQuiverRepresentationHomomorphism ],
+          
+  function ( phi )
+    local reps, A, A_oid, k, e, F, G, eta;
+    
+    reps := CapCategory( phi );
+    
+    A := AlgebraOfCategory( reps );
+    
+    A_oid := Algebroid( A );
+    
+    k := CommutativeRingOfLinearCategory( A_oid );
+    
+    e := List( MatricesOfRepresentationHomomorphism( phi ),
+          mat -> HomalgMatrix(
+                    RowsOfMatrix( mat ),
+                      DimensionsMat( mat )[ 1 ],
+                        DimensionsMat( mat )[ 2 ], k ) );
+    
+    F := ConvertToCellInHomCategory( Source( phi ) );
+    G := ConvertToCellInHomCategory( Range( phi ) );
+    
+    eta := AsMorphismInHomCategory( F, e, G );
+    
+    SetConvertToCellInCategoryOfQuiverRepresentations( eta, phi );
+    
+    return eta;
+    
+end );
+
+##
 InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
         [ IsCapHomCategory ],
         
   function ( functors )
-    local B, matrix_cat, field, A, quiver, quiver_reps, name, F;
+    local B, A, reps, name, I;
     
     B := Source( functors );
     
-    matrix_cat := Range( functors );
+    A := UnderlyingQuiverAlgebra( B );
     
-    if not IsBound( matrix_cat!.field_for_matrix_category ) then
-      
-      Error( "The range category of the input should be a matrix category for some homalg field!\n" );
-      
-    fi;
+    reps := CategoryOfQuiverRepresentations( A );
     
-    field := CommutativeRingOfLinearCategory( matrix_cat );
+    name := Concatenation( "Isomorphism functor: ", Name( reps ), " -> ", Name( functors ) );
+    
+    I := CapFunctor( name, reps, functors );
+    
+    AddObjectFunction( I,
+      rep -> ConvertToCellInHomCategory( rep )
+    );
+    
+    AddMorphismFunction( I,
+      { S, phi, R } -> ConvertToCellInHomCategory( phi )
+    );
+    
+    return I;
+    
+end );
+
+##
+InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
+          [ IsCapCategoryObjectInHomCategory ],
+          
+  function ( F )
+    local B, A, k, dims, matrices, rep;
+    
+    B := Source( F );
     
     A := UnderlyingQuiverAlgebra( B );
     
-    quiver := QuiverOfAlgebra( A );
+    k := LeftActingDomain( A );
     
-    quiver_reps := CategoryOfQuiverRepresentations( A );
+    dims := List( ValuesOnAllObjects( F ), Dimension );
     
-    name := Concatenation( "Isomorphism functor from ", Name( quiver_reps ), " into ", Name( functors ) );
+    matrices := List( ValuesOnAllGeneratingMorphisms( F ), UnderlyingMatrix );
     
-    F := CapFunctor( name, quiver_reps, functors );
+    matrices := List( matrices, m -> MatrixByRows(
+                                        k,
+                                        [ NrRows( m ), NrColumns( m ) ],
+                                        EntriesOfHomalgMatrixAsListList( m )
+                                      )
+                    );
     
-    AddObjectFunction( F,
-      function ( rep )
-        local obj, dimension_vec, mor, matrices, i;
-        
-        obj := rec( );
-        
-        dimension_vec := DimensionVector( rep );
-        
-        for i in [ 1 .. Size( dimension_vec ) ] do
+    rep := QuiverRepresentation( A, dims, matrices );
+    
+    SetConvertToCellInHomCategory( rep, F );
+    
+    return rep;
+    
+end );
+
+##
+InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
+          [ IsCapCategoryMorphismInHomCategory ],
           
-          obj!.(String( Vertex( quiver, i ) )) := VectorSpaceObject( dimension_vec[i], field );
-          
-        od;
-        
-        mor := rec( );
-        
-        matrices := MatricesOfRepresentation( rep );
-        
-        matrices := List( matrices,
-          mat -> HomalgMatrix(
-                    RowsOfMatrix( mat ),
-                      DimensionsMat( mat )[ 1 ],
-                        DimensionsMat( mat )[ 2 ], field ) );
-                        
-        for i in [ 1 .. Size( matrices ) ] do
-          
-          mor!.(String( Arrow( quiver, i ) )) :=
-            VectorSpaceMorphism(
-              obj!.(String( Source( Arrow( quiver, i ) ) )),
-                matrices[i],
-                  obj!.(String( Target( Arrow( quiver, i ) ) )) );
-                  
-        od;
-        
-        return AsObjectInHomCategory( B, obj, mor );
-        
-    end );
+  function ( eta )
+    local B, A, k, matrices, S, R, phi;
     
-    AddMorphismFunction( F,
-      function ( source, rep_mor, range )
-        local matrices, mor, i;
-        
-        matrices := MatricesOfRepresentationHomomorphism( rep_mor );
-        
-        matrices := List( matrices,
-          mat -> HomalgMatrix(
-                    RowsOfMatrix( mat ),
-                      DimensionsMat( mat )[ 1 ],
-                        DimensionsMat( mat )[ 2 ], field ) );
-                        
-        mor := rec( );
-        
-        for i in [ 1 .. Size( matrices ) ] do
-          
-          mor!.(String( Vertex( quiver, i ) )) :=
-            VectorSpaceMorphism(
-              VectorSpaceObject( NrRows( matrices[i] ), field ),
-                matrices[i],
-                  VectorSpaceObject( NrColumns( matrices[i] ), field ) );
-                  
-        od;
-        
-        return AsMorphismInHomCategory( source, mor, range );
-        
-    end );
+    B := Source( CapCategory( eta ) );
     
-    return F;
+    A := UnderlyingQuiverAlgebra( B );
+    
+    k := LeftActingDomain( A );
+    
+    matrices := List( ValuesOnAllObjects( eta ), UnderlyingMatrix );
+    
+    matrices := List( matrices, m -> MatrixByRows(
+                                        k,
+                                        [ NrRows( m ), NrColumns( m ) ],
+                                        EntriesOfHomalgMatrixAsListList( m )
+                                      )
+                    );
+    
+    S := ConvertToCellInCategoryOfQuiverRepresentations( Source( eta ) );
+    
+    R := ConvertToCellInCategoryOfQuiverRepresentations( Range( eta ) );
+    
+    phi := QuiverRepresentationHomomorphism( S, R, matrices );
+    
+    SetConvertToCellInHomCategory( phi, eta );
+    
+    return phi;
     
 end );
 
@@ -110,90 +169,27 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
         [ IsCapHomCategory ],
         
   function ( functors )
-    local B, matrix_cat, A, field, quiver, quiver_reps, name, G;
+    local B, A, reps, name, J;
     
     B := Source( functors );
     
-    matrix_cat := Range( functors );
-    
-    if not IsBound( matrix_cat!.field_for_matrix_category ) then
-      
-      Error( "The range category of the input should be a matrix category for some homalg field!\n" );
-      
-    fi;
-    
     A := UnderlyingQuiverAlgebra( B );
     
-    field := LeftActingDomain( A );
+    reps := CategoryOfQuiverRepresentations( A );
     
-    quiver := QuiverOfAlgebra( A );
+    name := Concatenation( "Isomorphism functor: ", Name( functors ), " -> ", Name( reps ) );
     
-    quiver_reps := CategoryOfQuiverRepresentations( A );
+    J := CapFunctor( name, functors, reps );
     
-    name := Concatenation( "Isomorphism functor from ", Name( functors ), " into ", Name( quiver_reps ) );
+    AddObjectFunction( J,
+      F -> ConvertToCellInCategoryOfQuiverRepresentations( F )
+    );
     
-    G := CapFunctor( name, functors, quiver_reps );
+    AddMorphismFunction( J,
+      { F, eta, G } -> ConvertToCellInCategoryOfQuiverRepresentations( eta )
+    );
     
-    AddObjectFunction( G,
-      function ( func )
-        local U, V, L;
-        
-        U := UnderlyingCapTwoCategoryCell( func );
-        
-        V := List( Vertices( quiver ),
-          v -> Dimension( ApplyFunctor( U, B.( String( v ) ) ) ) );
-          
-        if IsHomalgExternalRingRep( matrix_cat!.field_for_matrix_category ) then
-          
-          L := List( Arrows( quiver ),
-                l -> UnderlyingMatrix( ApplyFunctor( U, B.( String( l ) ) ) ) * FUNCTOR_CATEGORIES!.QQ
-                );
-                
-        else
-          
-          L := List( Arrows( quiver ), l -> UnderlyingMatrix( ApplyFunctor( U, B.( String( l ) ) ) ) );
-          
-        fi;
-        
-        L := List( L,
-              l -> MatrixByRows(
-                field, [ NrRows( l ), NrColumns( l ) ],
-                  EntriesOfHomalgMatrixAsListList( l ) ) );
-                  
-        return QuiverRepresentation( A, V, L );
-        
-      end );
-      
-    AddMorphismFunction( G,
-      function ( source, mor, range )
-        local U, V;
-        
-        U := UnderlyingCapTwoCategoryCell( mor );
-        
-        if IsHomalgExternalRingRep( matrix_cat!.field_for_matrix_category ) then
-          
-          V := List( Vertices( quiver ),
-                v -> UnderlyingMatrix(
-                  ApplyNaturalTransformation( U, B.( String( v ) ) ) ) * FUNCTOR_CATEGORIES!.QQ
-                );
-                
-        else
-          
-          V := List( Vertices( quiver ),
-                v -> UnderlyingMatrix(
-                  ApplyNaturalTransformation( U, B.( String( v ) ) ) ) );
-                   
-        fi;
-        
-        V := List( V,
-          v -> MatrixByRows( field, [ NrRows( v ), NrColumns( v ) ],
-            EntriesOfHomalgMatrixAsListList( v ) ) );
-            
-        return QuiverRepresentationHomomorphism( source, range, V );
-        
-      end );
-      
-    return G;
+    return J;
     
 end );
 
