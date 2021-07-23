@@ -112,6 +112,21 @@ DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsAlgebroid );
 
 #! @Description
+#!  The zero of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
+#! @Arguments A
+#! @Returns a &QPA; path algebra element
+DeclareAttribute( "ZeroOfUnderlyingQuiverAlgebra",
+        IsAlgebroid );
+
+#! @Description
+#!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>,
+#!  indexed by the vertex indices of source and target of the path.
+#! @Arguments A
+#! @Returns a matrix of basis paths of a &QPA; path algebra
+DeclareAttribute( "BasisPathsByVertexIndex",
+        IsAlgebroid );
+
+#! @Description
 #!  The finite set of objects of the finitely presented algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a list
