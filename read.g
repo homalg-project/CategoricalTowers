@@ -4,6 +4,8 @@
 # Reading the implementation part of the package.
 #
 
+ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
+
 ReadPackage( "Algebroids", "gap/FpCategories.gi");
 ReadPackage( "Algebroids", "gap/Algebroids.gi");
 ReadPackage( "Algebroids", "gap/QPA2.gi");

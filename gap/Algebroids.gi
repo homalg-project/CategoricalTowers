@@ -987,6 +987,39 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
     
 end );
 
+BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function ( cat )
+  local A, Rq, is_finite_dimensional, is_quotient_of_path_algebra, is_right_quiver, over_Z;
+    
+    Assert( 0, IsAdditiveClosureCategory( cat ) );
+    
+    A := UnderlyingCategory( cat );
+    
+    Assert( 0, IsAlgebroid( A ) );
+    
+    Rq := UnderlyingQuiverAlgebra( A );
+    
+    is_finite_dimensional := IsFiniteDimensional( Rq );
+    
+    is_quotient_of_path_algebra := IsQuotientOfPathAlgebra( Rq );
+    
+    is_right_quiver := IsRightQuiver( QuiverOfAlgebra( Rq ) );
+    
+    over_Z := A!.over_Z;
+    
+    if is_finite_dimensional and is_quotient_of_path_algebra and is_right_quiver and not over_Z then
+        
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+        
+        return true;
+        
+    else
+        
+        return false;
+        
+    fi;
+    
+end );
+
 ##
 InstallMethod( Algebroid,
         "for a QPA quiver algebra and a boolean",
@@ -1070,6 +1103,13 @@ InstallMethod( Algebroid,
             "BasisPathsByVertexIndex",
             "HomStructureOnBasisPaths",
         ],
+        # EXPERIMENTAL
+        precompiled_towers := [
+            rec(
+                remaining_constructors_in_tower := [ "AdditiveClosure" ],
+                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled
+            ),
+        ],
     );
     
     DeactivateCachingOfCategory( A );
@@ -1092,6 +1132,7 @@ InstallMethod( Algebroid,
     else
         SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
     fi;
+    A!.over_Z := over_Z;
     
     SetUnderlyingQuiverAlgebra( A, Rq );
     SetZeroOfUnderlyingQuiverAlgebra( A, Zero( Rq ) );
