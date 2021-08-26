@@ -604,7 +604,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     function( algebroid, over_Z )
     local quiver_algebra, quiver, vertices, basis, data, maps, path,
-          ring, range_category, representative_func;
+          ring, default_range_of_HomStructure, range_category, representative_func;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -629,7 +629,17 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ring := CommutativeRingOfLinearCategory( algebroid );
     
-    range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", CategoryOfRows( ring ) );
+    if over_Z then
+        
+        default_range_of_HomStructure := CategoryOfRows( ring );
+        
+    else
+        
+        default_range_of_HomStructure := MatrixCategory( ring );
+        
+    fi;
+    
+    range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", default_range_of_HomStructure );
     
     SetRangeCategoryOfHomomorphismStructure( algebroid, range_category );
     
