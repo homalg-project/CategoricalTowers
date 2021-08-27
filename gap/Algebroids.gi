@@ -1782,7 +1782,7 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( OppositeAlgebroidOverOppositeQuiverAlgebra,
+InstallMethod( OppositeAlgebroid,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],
         
@@ -1819,7 +1819,7 @@ InstallMethod( OppositeAlgebroidOverOppositeQuiverAlgebra,
     
     fi;
     
-    SetOppositeAlgebroidOverOppositeQuiverAlgebra( A_op, A );
+    SetOppositeAlgebroid( A_op, A );
     
     return A_op;
     
