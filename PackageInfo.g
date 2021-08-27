@@ -10,14 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CategoryConstructor",
 Subtitle := "Construct categories out of given ones",
-Version := Maximum( [
-                   "2021.07-03", ## Mohamed's version
-                   ## this line prevents merge conflicts
-                   "2020.04-06", ## Kamal's version
-                   ## this line prevents merge conflicts
-                   "2021.06-01", ## Fabian's version
-                   ## this line prevents merge conflicts
-                   ] ),
+Version := "2021.08-01",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),

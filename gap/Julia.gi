@@ -5,12 +5,23 @@
 #
 
 ##
-InstallMethod( PreCompose,
+InstallOtherMethod( PreCompose,
         "for a julia object",
         [ IsJuliaObject ],
         
   function( L )
     
     return PreCompose( ConvertJuliaToGAP( L ) );
+    
+end );
+
+##
+InstallOtherMethod( CanCompute,
+        "for a julia object",
+        [ IsCapCategory, IsJuliaObject ],
+        
+  function( C, oper )
+    
+    return CanCompute( C, ConvertJuliaToGAP( oper ) );
     
 end );
