@@ -208,7 +208,7 @@ InstallMethod( YonedaEmbedding,
         
     fi;
     
-    algebroid_op := OppositeAlgebroidOverOppositeQuiverAlgebra( algebroid );
+    algebroid_op := OppositeAlgebroid( algebroid );
     
     objs := SetOfObjects( algebroid_op );
     
