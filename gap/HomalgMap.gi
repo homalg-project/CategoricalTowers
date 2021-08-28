@@ -143,8 +143,12 @@ InstallMethod( CoproductMorphism,
         "for two homalg/CAP module maps",
         [ IsHomalgMap and IsCapCategoryIntrinsicMorphism,
           IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
-        
-  UniversalMorphismFromDirectSum );
+
+  function( phi, psi )
+    
+    return UniversalMorphismFromDirectSum( [ phi, psi ] );
+    
+end );
 
 ##
 InstallMethod( ProductMorphism,
@@ -152,7 +156,11 @@ InstallMethod( ProductMorphism,
         [ IsHomalgMap and IsCapCategoryIntrinsicMorphism,
           IsHomalgMap and IsCapCategoryIntrinsicMorphism ],
         
-  UniversalMorphismIntoDirectSum );
+  function( phi, psi )
+    
+    return UniversalMorphismIntoDirectSum( [ phi, psi ] );
+    
+end );
 
 ##
 InstallMethod( ImageObjectEmb,
@@ -192,7 +200,7 @@ InstallMethod( ImageObjectEmb,
     
     T := Range( phi );
     
-    return ZeroMorphism( ZeroObject( T ), T );
+    return ZeroMorphism( ZeroObject( CapCategory( T ) ), T );
     
 end );
 
@@ -234,7 +242,7 @@ InstallMethod( ImageObjectEpi,
     
     S := Source( phi );
     
-    return ZeroMorphism( S, ZeroObject( S ) );
+    return ZeroMorphism( S, ZeroObject( CapCategory( S ) ) );
     
 end );
 
