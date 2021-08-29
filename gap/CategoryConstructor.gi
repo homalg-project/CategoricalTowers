@@ -30,8 +30,9 @@ InstallGlobalFunction( CategoryConstructor,
   function( )
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
           commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
-          preinstall, func, is_monoidal, pos, create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
+          preinstall, func, is_monoidal, pos, object_constructor, object_datum, morphism_constructor, morphism_datum,
+          create_func_bool, create_func_object0, create_func_morphism0, create_func_object,
+          create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
           create_func_other_object, create_func_other_morphism,
           print, info, with_given_object_name, add;
@@ -156,6 +157,34 @@ InstallGlobalFunction( CategoryConstructor,
         fi;
         
     od;
+    
+    ## ObjectConstructor
+    object_constructor := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "object_constructor", fail );
+    
+    if IsFunction( object_constructor ) then
+        AddObjectConstructor( CC, object_constructor );
+    fi;
+    
+    ## ObjectDatum
+    object_datum := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "object_datum", fail );
+    
+    if IsFunction( object_datum ) then
+        AddObjectDatum( CC, object_datum );
+    fi;
+    
+    ## MorphismConstructor
+    morphism_constructor := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "morphism_constructor", fail );
+    
+    if IsFunction( morphism_constructor ) then
+        AddMorphismConstructor( CC, morphism_constructor );
+    fi;
+    
+    ## MorphismDatum
+    morphism_datum := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "morphism_datum", fail );
+    
+    if IsFunction( morphism_datum ) then
+        AddMorphismDatum( CC, morphism_datum );
+    fi;
     
     ## e.g., IsMonomorphism
     create_func_bool := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_bool", fail );
