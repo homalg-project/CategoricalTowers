@@ -457,6 +457,7 @@ InstallMethod( LazyCategory,
     properties := ListKnownCategoricalProperties( C );
     
     ignore := Filtered( properties, p -> IsInt( PositionSublist( p, "Strict" ) ) and ValueGlobal( p )( C ) );
+    Add( ignore, "IsSkeletalCategory" );
     
     properties := Difference( properties, ignore );
     
