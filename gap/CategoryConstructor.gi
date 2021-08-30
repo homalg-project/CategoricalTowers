@@ -330,7 +330,7 @@ InstallGlobalFunction( CategoryConstructor,
             if not IsBound( info.io_type ) then
                 ## if there is no io_type we cannot do anything
                 continue;
-            elif IsList( info.with_given_without_given_name_pair ) and
+            elif IsList( info.with_given_without_given_name_pair ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) and
               name = info.with_given_without_given_name_pair[1] then
                 ## do not install universal morphisms but their
                 ## with-given-universal-object counterpart and the universal object
@@ -344,7 +344,7 @@ InstallGlobalFunction( CategoryConstructor,
                 continue;
             fi;
             
-            if IsList( info.with_given_without_given_name_pair ) then
+            if IsList( info.with_given_without_given_name_pair ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
                 if not IsFunction( create_func_universal_morphism ) then
                     continue;
                 fi;
