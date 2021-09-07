@@ -617,8 +617,7 @@ end );
 
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     function( algebroid, over_Z )
-    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, path,
-          ring, default_range_of_HomStructure, range_category, representative_func;
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths, representative_func, ring, default_range_of_HomStructure, range_category, path;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -628,6 +627,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     vertices := Vertices( quiver );
     
     basis := BasisPaths( CanonicalBasis( quiver_algebra ) );
+    
+    ## prepare the homomorphism structure
     
     ## storing the basis paths
     ## basis_paths_by_vertex_index[ v_index ][ w_index ] = [ p_1:v -> w, p_2:v -> w, ... ]
@@ -650,6 +651,83 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     SetBasisPathsByVertexIndex( algebroid, basis_paths_by_vertex_index );
     
     Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( algebroid ) ) );
+    
+    ## precomputing matrices for the hom structure
+    ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
+    ## for basis_path_1: v' -> v and basis_path_2: w -> w'
+    
+    MATRIX_FOR_HOMSTRUCTURE := function( v, w, vp, wp, path_1, path_2 )
+        local mat, hom_v_w, hom_vp_wp, alpha, beta, path;
+        
+        mat := [];
+        
+        hom_v_w := basis_paths_by_vertex_index[ VertexIndex( v ) ][ VertexIndex( w ) ];
+        
+        if IsEmpty( hom_v_w ) then
+            
+            return mat;
+            
+        fi;
+        
+        hom_vp_wp := basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( wp ) ];
+        
+        if IsEmpty( hom_vp_wp ) then
+            
+            return mat;
+            
+        fi;
+        
+        alpha := PathAsAlgebraElement( quiver_algebra, path_1 );
+        
+        beta := PathAsAlgebraElement( quiver_algebra, path_2 );
+        
+        if IsQuotientOfPathAlgebra( quiver_algebra ) then
+            
+            for path in hom_v_w do
+                
+                Add( mat,
+                  CoefficientsOfPaths( hom_vp_wp, Representative( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) )
+                );
+                
+            od;
+            
+        else
+            
+            for path in hom_v_w do
+                
+                Add( mat,
+                  CoefficientsOfPaths( hom_vp_wp, ( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) )
+                );
+                
+            od;
+            
+        fi;
+        
+        return mat;
+        
+    end;
+    
+    hom_structure_on_basis_paths :=
+        List( vertices, v ->
+            List( vertices, w ->
+                List( vertices, vp ->
+                    List( vertices, wp ->
+                        List( basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( v ) ], basis_path_1 ->
+                            List( basis_paths_by_vertex_index[ VertexIndex( w ) ][ VertexIndex( wp ) ], basis_path_2 ->
+                                MATRIX_FOR_HOMSTRUCTURE( v, w, vp, wp, basis_path_1, basis_path_2 )
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    
+    # if `hom_structure_on_basis_paths` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `hom_structure_on_basis_paths` anymore
+    MakeImmutable( hom_structure_on_basis_paths );
+    
+    SetHomStructureOnBasisPaths( algebroid, hom_structure_on_basis_paths );
+    
+    Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( algebroid ) ) );
     
     ##
     if IsQuotientOfPathAlgebra( quiver_algebra ) then
@@ -696,7 +774,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( algebroid,
       function( algebroid, source, alpha, beta, range )
-        local elem_alpha, elem_beta, a, b, ap, bp, basis_elements_source, basis_elements_range, size_source, size_range, images, path;
+        local elem_alpha, elem_beta, a, b, ap, bp, basis_ap_a, basis_b_bp, size_source, size_range, coeffs_alpha, coeffs_beta, entries;
         
         elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
         
@@ -710,9 +788,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
         
-        basis_elements_source := basis_paths_by_vertex_index[a][b];
-        
-        basis_elements_range := basis_paths_by_vertex_index[ap][bp];
+        basis_ap_a := basis_paths_by_vertex_index[ap][a];
+        basis_b_bp := basis_paths_by_vertex_index[b][bp];
         
         # getting the sizes from `source` and `range` is more efficient for the compiler
         size_source := ObjectDatum( range_category, source );
@@ -725,9 +802,22 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
             
         else
             
-            images := List( basis_elements_source, path -> CoefficientsOfPaths( basis_elements_range, representative_func( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) ) );
+            coeffs_alpha := CoefficientsOfPaths( basis_ap_a, elem_alpha );
             
-            return MorphismConstructor( range_category, source, HomalgMatrix( images, size_source, size_range, ring ), range );
+            coeffs_beta := CoefficientsOfPaths( basis_b_bp, elem_beta );
+            
+            # If Length( basis_ap_a ) = 0 (resp. Length( basis_b_bp ) = 0), then alpha (resp. beta) must be zero,
+            # and these cases are handled above -> we can ignore the empty cases here.
+            entries := Sum(
+                [ 1 .. Length( basis_ap_a ) ],
+                p ->
+                Sum(
+                    [ 1 .. Length( basis_b_bp ) ],
+                    q -> coeffs_alpha[p] * coeffs_beta[q] * hom_structure_on_basis_paths[ a ][ b ][ ap ][ bp ][ p ][ q ]
+                )
+            );
+            
+            return MorphismConstructor( range_category, source, HomalgMatrix( entries, size_source, size_range, ring ), range );
             
         fi;
         
@@ -978,6 +1068,7 @@ InstallMethod( Algebroid,
             "UnderlyingQuiverAlgebra",
             "ZeroOfUnderlyingQuiverAlgebra",
             "BasisPathsByVertexIndex",
+            "HomStructureOnBasisPaths",
         ],
     );
     
