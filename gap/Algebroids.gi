@@ -584,6 +584,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
     end );
     
+    AddIsZeroForMorphisms( category,
+      function( category, morphism )
+        
+        return IsZero( UnderlyingQuiverAlgebraElement( morphism ) );
+        
+    end );
+    
     ## only create the Hom-structure for finite dimensional quiver algebras
     if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
         
