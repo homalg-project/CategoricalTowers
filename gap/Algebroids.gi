@@ -661,7 +661,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         basis_elements := data[nr_source][nr_range];
         
-        return ObjectConstructor( range_category, Size( basis_elements ) );
+        return ObjectConstructor( range_category, Length( basis_elements ) );
         
     end );
     
@@ -743,7 +743,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         basis_elements := data[a][b];
         
-        size_basis := Size( basis_elements );
+        size_basis := Length( basis_elements );
         
         source := DistinguishedObjectOfHomomorphismStructure( algebroid );
         range := HomomorphismStructureOnObjects( algebroid, Source( alpha ), Range( alpha ) );
