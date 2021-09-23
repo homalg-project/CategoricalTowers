@@ -62,7 +62,7 @@ InstallMethod( AuxiliaryMorphism,
 end );
 
 ##
-InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTORS_CATEGORY,
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY,
   
   function ( Hom )
     local range_category, range_of_hom_structure;
