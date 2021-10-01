@@ -662,13 +662,23 @@ end );
 ##
 InstallMethodWithCache( Hom,
         "for two CAP categories",
-        [ IsAlgebroid, IsCapCategory ],
+        [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
-    local name, create_func_bool, create_func_object, create_func_morphism,
+    local relations, name, create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, doc, prop, Hom,
-          vertices, arrows, relations, kq, name_of_object;
+          vertices, arrows, kq, name_of_object;
+    
+    if IsFpCategory( B ) then
+        relations := RelationsOfFpCategory( B );
+    elif IsAlgebroid( B ) then
+        relations := RelationsOfAlgebroid( B );
+    else
+        Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
+    fi;
+    
+    relations := List( relations, UnderlyingQuiverAlgebraElement );
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -1146,10 +1156,7 @@ InstallMethodWithCache( Hom,
                            end );
             
           end );
-        
-        relations := RelationsOfAlgebroid( B );
-        relations := List( relations, UnderlyingQuiverAlgebraElement );
-        
+
         AddIsWellDefinedForObjects( Hom,
           function ( Hom, F )
             
