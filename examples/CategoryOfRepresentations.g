@@ -32,6 +32,7 @@ CatReps := Hom( A, GF3 );
 #! q(2)[a:1->1,b:1->2,c:2->2] -> Category of matrices over GF(3)
 InfoOfInstalledOperationsOfCategory( CatReps );
 #! 106 primitive operations were used to derive 258 operations for this category which
+#! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsSymmetricMonoidalCategory
 #! * IsAbelianCategory
