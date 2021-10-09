@@ -95,10 +95,5 @@ DeclareAttribute( "CharacteristicSetAsList",
 #!  provided it was created using <C>AsUnionOfMultipleDifferences</C>.
 #! @Arguments A
 #! @Returns nothing
-#! @Group Visualize
 DeclareOperation( "Visualize",
-        [ IsConstructibleObject ] );
-
-#! @Group Visualize
-DeclareOperation( "VisualizeInJulia",
         [ IsConstructibleObject ] );
