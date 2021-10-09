@@ -16,11 +16,15 @@ InstallOtherMethod( SetLabel,
 end );
 
 ##
-InstallMethod( VisualizeInJulia,
+InstallOtherMethod( Visualize,
         "for a cell in a lazy CAP category",
         [ IsLazyCapCategoryCell ],
         
   function( c )
+    
+    if not IsRunningInJupyter( ) then
+        TryNextMethod( );
+    fi;
     
     Julia.Base.display(
             Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
