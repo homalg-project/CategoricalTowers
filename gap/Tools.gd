@@ -138,6 +138,3 @@ DeclareOperation( "DigraphOfChildren",
 #! @Returns nothing
 DeclareOperation( "Visualize",
         [ IsDatastructureForConstructibleObjects ] );
-
-DeclareOperation( "VisualizeInJulia",
-        [ IsDatastructureForConstructibleObjects ] );

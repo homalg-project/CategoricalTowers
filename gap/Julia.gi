@@ -5,11 +5,15 @@
 #
 
 ##
-InstallMethod( VisualizeInJulia,
+InstallOtherMethod( Visualize,
         "for a datastructure of a constructible object",
         [ IsDatastructureForConstructibleObjects ],
         
   function( C )
+    
+    if not IsRunningInJupyter( ) then
+        TryNextMethod( );
+    fi;
     
     Julia.Base.display(
             Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),

@@ -49,7 +49,7 @@ K = K / S / L
 
 IqJ = InternalHom( J, I )
 
-VisualizeInJulia( UnderlyingMorphism( UnderlyingCell( IqJ ) ) )
+Visualize( UnderlyingMorphism( UnderlyingCell( IqJ ) ) )
 
 K == IqJ
 
