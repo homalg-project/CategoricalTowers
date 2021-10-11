@@ -122,82 +122,9 @@ end );
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
   function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
-    local C, create_func_bool, create_func_morphism, create_func_morphism_or_fail,
-          list_of_operations_to_install, skip, func, pos, properties, S;
+    local C, list_of_operations_to_install, skip, func, pos, properties, S;
     
     C := CapCategory( B );
-    
-    ## e.g., IsSplitEpimorphism
-    create_func_bool :=
-      function( name, S )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-      function( name, S )
-        local oper, type;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( cat, arg... )
-            local result, src_trg, S, T;
-            
-            result := CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsSliceCategoryCell( S, result, T );
-            
-          end;
-          
-      end;
-    
-    ## e.g., LiftOrFail
-    create_func_morphism_or_fail :=
-      function( name, S )
-        local oper, type;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( cat, arg... )
-            local result, src_trg, S, T;
-            
-            result := CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-            if result = fail then
-                return fail;
-            fi;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsSliceCategoryCell( S, result, T );
-            
-          end;
-          
-      end;
     
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY;
     
@@ -231,9 +158,12 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                  category_morphism_filter := category_morphism_filter,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_morphism := create_func_morphism,
-                 create_func_morphism := create_func_morphism_or_fail,
+                 create_func_bool := "default",
+                 create_func_morphism := "default",
+                 create_func_morphism_or_fail := "default",
+                 underlying_category_getter_string := "AmbientCategory",
+                 underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
+                 underlying_morphism_getter_string := "({ cat, mor } -> UnderlyingCell( mor ))",
                  category_as_first_argument := true
                  );
     

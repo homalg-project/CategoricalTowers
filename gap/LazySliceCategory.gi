@@ -16,12 +16,7 @@ InstallMethod( AsSliceCategoryCell,
     
     S := LazySliceCategory( B );
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, S,
-            UnderlyingMorphismList, L );
-    
-    return o;
+    return ObjectConstructor( S, L );
     
 end );
 
@@ -32,7 +27,7 @@ InstallMethod( AsSliceCategoryCell,
         
   function( m, S )
     
-    return AsSliceCategoryCell( [ m ] );
+    return ObjectConstructor( S, [ m ] );
     
 end );
 
@@ -53,20 +48,7 @@ InstallMethod( AsSliceCategoryCell,
     
     S := CapCategory( source );
     
-    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( S ) ) then
-        
-        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( S ) ), "\n" );
-        
-    fi;
-    
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, S,
-            source,
-            range,
-            UnderlyingCell, morphism );
-    
-    return m;
+    return MorphismConstructor( S, source, morphism, range );
     
 end );
 
@@ -153,6 +135,68 @@ InstallMethod( LazySliceCategory,
     fi;
     
     S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );
+    
+    ##
+    AddObjectConstructor( S, function( cat, underlying_morphism_list )
+        
+        if IsCapCategoryMorphism( underlying_morphism_list ) then
+            
+            underlying_morphism_list := [ underlying_morphism_list ];
+            
+        fi;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( underlying_morphism_list, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        
+        if not ForAll( underlying_morphism_list, morphism -> IsEqualForObjects( Range( morphism ), BaseObject( cat ) ) ) then
+            
+            Error( "the targets of the morphisms and the base object of the slice category S are not equal\n" );
+            
+        fi;
+        
+        return ObjectifyObjectForCAPWithAttributes( rec( ), S,
+                UnderlyingMorphismList, underlying_morphism_list );
+        
+    end );
+    
+    ##
+    AddObjectDatum( S, function( cat, object )
+        
+        return UnderlyingMorphismList( object );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( S, function( cat, source, underlying_morphism, range )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+            
+            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            
+        fi;
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+            
+            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                source,
+                range,
+                UnderlyingCell, underlying_morphism );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( S, function( cat, morphism )
+        
+        return UnderlyingCell( morphism );
+        
+    end );
     
     if CanCompute( C, "IsSplitEpimorphism" ) then
         
