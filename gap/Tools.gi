@@ -260,7 +260,7 @@ AddDerivationToCAP( PreInverse,
         
   function( cat, alpha )
     
-    return Lift( IdentityMorphism( Range( alpha ) ), alpha );
+    return Lift( cat, IdentityMorphism( cat, Range( alpha ) ), alpha );
     
 end : Description := "PreInverse using IdentityMorphism of Range and Lift" );
 
@@ -272,7 +272,7 @@ AddDerivationToCAP( PostInverse,
         
   function( cat, alpha )
     
-    return Colift( alpha, IdentityMorphism( Source( alpha ) ) );
+    return Colift( cat, alpha, IdentityMorphism( cat, Source( alpha ) ) );
     
 end : Description := "PostInverse using IdentityMorphism of Source and Colift" );
 
@@ -286,13 +286,13 @@ AddDerivationToCAP( MorphismOntoSumOfImagesOfAllMorphisms,
   function( cat, a, b )
     local hom;
     
-    hom := BasisOfExternalHom( a, b );
+    hom := BasisOfExternalHom( cat, a, b );
     
     if hom = [ ] then
-        return UniversalMorphismFromZeroObject( b );
+        return UniversalMorphismFromZeroObject( cat, b );
     fi;
     
-    return UniversalMorphismFromDirectSum( hom );
+    return UniversalMorphismFromDirectSum( cat, hom );
     
 end : Description := "MorphismOntoSumOfImagesOfAllMorphisms using BasisOfExternalHom and UniversalMorphismFromDirectSum",
       CategoryFilter := IsAbelianCategory );
@@ -305,7 +305,7 @@ AddDerivationToCAP( EmbeddingOfSumOfImagesOfAllMorphisms,
         
   function( cat, a, b )
     
-    return ImageEmbedding( MorphismOntoSumOfImagesOfAllMorphisms( a, b ) );
+    return ImageEmbedding( cat, MorphismOntoSumOfImagesOfAllMorphisms( cat, a, b ) );
     
 end : Description := "EmbeddingOfSumOfImagesOfAllMorphisms using MorphismOntoSumOfImagesOfAllMorphisms and ImageEmbedding",
       CategoryFilter := IsAbelianCategory );
@@ -317,7 +317,7 @@ AddDerivationToCAP( SumOfImagesOfAllMorphisms,
         
   function( cat, a, b )
     
-    return Source( EmbeddingOfSumOfImagesOfAllMorphisms( a, b ) );
+    return Source( EmbeddingOfSumOfImagesOfAllMorphisms( cat, a, b ) );
     
 end : Description := "SumOfImagesOfAllMorphisms as Source of EmbeddingOfSumOfImagesOfAllMorphisms",
       CategoryFilter := IsAbelianCategory );
@@ -337,19 +337,19 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
     
     list :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
     H := MorphismBetweenDirectSums( list );
     
-    H := KernelEmbedding( H );
+    H := KernelEmbedding( RangeCategoryOfHomomorphismStructure( cat ), H );
     
-    B := BasisOfExternalHom( DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
+    B := BasisOfExternalHom( RangeCategoryOfHomomorphismStructure( cat ), DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
     
-    B := List( B, m -> PreCompose( m, H ) );
+    B := List( B, m -> PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, H ) );
     
     summands := List( [ 1 .. n ],
-                  j -> HomomorphismStructureOnObjects(
+                  j -> HomomorphismStructureOnObjects( cat,
                           Range( left_coefficients[1][j] ),
                           Source( right_coefficients[1][j] )
                         )
@@ -358,10 +358,10 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
     return
       List( B, m ->
         List( [ 1 .. n ], j ->
-          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
             Range( left_coefficients[1][j] ),
             Source( right_coefficients[1][j] ),
-            PreCompose( m, ProjectionInFactorOfDirectSum( summands, j ) )
+            PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, ProjectionInFactorOfDirectSum( RangeCategoryOfHomomorphismStructure( cat ), summands, j ) )
           )
         )
       );
@@ -416,26 +416,26 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
     
     list_1 :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( alpha[i][j], beta[i][j] ) )
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, alpha[i][j], beta[i][j] ) )
     );
     
     H_1 := MorphismBetweenDirectSums( list_1 );
     
     list_2 :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( gamma[i][j], delta[i][j] ) )
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, gamma[i][j], delta[i][j] ) )
     );
     
     H_2 := MorphismBetweenDirectSums( list_2 );
     
-    H := KernelEmbedding( H_1 - H_2 );
+    H := KernelEmbedding( RangeCategoryOfHomomorphismStructure( cat ), H_1 - H_2 );
     
-    B := BasisOfExternalHom( DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
+    B := BasisOfExternalHom( RangeCategoryOfHomomorphismStructure( cat ), DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
     
-    B := List( B, m -> PreCompose( m, H ) );
+    B := List( B, m -> PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, H ) );
     
     summands := List( [ 1 .. n ],
-                  j -> HomomorphismStructureOnObjects(
+                  j -> HomomorphismStructureOnObjects( cat,
                           Range( alpha[1][j] ),
                           Source( beta[1][j] )
                         )
@@ -444,10 +444,10 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
     return
       List( B, m ->
         List( [ 1 .. n ], j ->
-          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
             Range( alpha[1][j] ),
             Source( beta[1][j] ),
-            PreCompose( m, ProjectionInFactorOfDirectSum( summands, j ) )
+            PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, ProjectionInFactorOfDirectSum( RangeCategoryOfHomomorphismStructure( cat ), summands, j ) )
           )
         )
       );
@@ -501,19 +501,19 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     ## create lift diagram
     
     nu :=
-      UniversalMorphismIntoDirectSum(
+      UniversalMorphismIntoDirectSum( RangeCategoryOfHomomorphismStructure( cat ),
         List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( right_side[i] ) )
+        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) )
     );
     
     list :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
     H := MorphismBetweenDirectSums( list );
     
-    return IsLiftable( nu, H ) and IsMonomorphism( H );
+    return IsLiftable( RangeCategoryOfHomomorphismStructure( cat ), nu, H ) and IsMonomorphism( RangeCategoryOfHomomorphismStructure( cat ), H );
     
   end :
   ConditionsListComplete := true,
@@ -557,12 +557,12 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
     
     list :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
     H := MorphismBetweenDirectSums( list );
     
-    return IsMonomorphism( H );
+    return IsMonomorphism( RangeCategoryOfHomomorphismStructure( cat ), H );
     
   end :
   ConditionsListComplete := true,
