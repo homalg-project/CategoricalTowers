@@ -263,15 +263,19 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
-    AddIsEqualForCacheForObjects( S,
-      function( cat, a, b )
-        return IsEqualForCacheForMorphisms( UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
-    end );
-    
-    AddIsEqualForCacheForMorphisms( S,
-      function( cat, phi, psi )
-        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
-    end );
+    if CanCompute( C, "IsEqualForCacheForMorphisms" ) then
+        
+        AddIsEqualForCacheForObjects( S,
+          function( cat, a, b )
+            return IsEqualForCacheForMorphisms( UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
+        end );
+        
+        AddIsEqualForCacheForMorphisms( S,
+          function( cat, phi, psi )
+            return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        end );
+        
+    fi;
     
     AddInitialObject( S,
       function( cat )
