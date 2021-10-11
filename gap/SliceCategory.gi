@@ -315,20 +315,6 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     end );
     
-    if CanCompute( C, "IsSplitEpimorphism" ) then
-        
-        AddIsWeakTerminal( S,
-          function( cat, M )
-            local mor;
-            
-            mor := UnderlyingMorphismList( M );
-            
-            return ForAll( mor, IsSplitEpimorphism );
-            
-        end );
-        
-    fi;
-    
     if CanCompute( C, "ZeroObject" ) and CanCompute( C, "IsZeroForMorphisms" ) then
         
         AddIsWeakInitial( S,
