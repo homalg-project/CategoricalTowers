@@ -70,7 +70,7 @@ InstallMethod( UnderlyingMorphism,
         return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
     end;
     
-    return AsSliceCategoryCell( Iterated( L, morphism_from_biased_weak_fiber_product_to_sink ), CapCategory( a ) );
+    return ObjectConstructor( CapCategory( a ), Iterated( L, morphism_from_biased_weak_fiber_product_to_sink ) );
     
 end );
     
@@ -206,7 +206,7 @@ InstallMethod( LazySliceCategory,
             
             mor := UnderlyingMorphismList( M );
             
-            return ForAll( mor, IsSplitEpimorphism );
+            return ForAll( mor, m -> IsSplitEpimorphism( C, m ) );
             
         end );
         
@@ -219,14 +219,14 @@ InstallMethod( LazySliceCategory,
         
         l := L[1];
         
-        if ForAny( L, IsInitial ) then
-            return InitialObject( l );
+        if ForAny( L, A -> IsInitial( cat, A ) ) then
+            return InitialObject( cat, l );
         fi;
         
-        L := Filtered( L, A -> not IsTerminal( A ) );
+        L := Filtered( L, A -> not IsTerminal( cat, A ) );
         
         if L = [ ] then
-            return TerminalObject( l );
+            return TerminalObject( cat, l );
         elif Length( L ) = 1 then
             return L[1];
         fi;
@@ -235,7 +235,7 @@ InstallMethod( LazySliceCategory,
         
         L := Concatenation( L );
         
-        l := AsSliceCategoryCell( L );
+        l := ObjectConstructor( cat, L );
         
         SetIsTerminal( l, false );
         
@@ -259,14 +259,14 @@ InstallMethod( LazySliceCategory,
             l := L[1];
             
             ## testing the membership of 1 might be very expensive for some ideals in the sum
-            if ForAny( L, a -> HasIsTerminal( a ) and IsTerminal( a ) ) then
-                return TerminalObject( l );
+            if ForAny( L, a -> HasIsTerminal( cat, a ) and IsTerminal( cat, a ) ) then
+                return TerminalObject( cat, l );
             fi;
             
-            L := Filtered( L, A -> not IsInitial( A ) );
+            L := Filtered( L, A -> not IsInitial( cat, A ) );
             
             if L = [ ] then
-                return InitialObject( l );
+                return InitialObject( cat, l );
             elif Length( L ) = 1 then
                 return L[1];
             fi;
@@ -281,9 +281,9 @@ InstallMethod( LazySliceCategory,
             ## so never execute the next line:
             #L := MaximalObjects( L, IsLiftable );
             
-            l := UniversalMorphismFromCoproduct( L );
+            l := UniversalMorphismFromCoproduct( C, L );
             
-            l := AsSliceCategoryCell( l );
+            l := ObjectConstructor( cat, l );
             
             SetIsInitial( l, false );
             

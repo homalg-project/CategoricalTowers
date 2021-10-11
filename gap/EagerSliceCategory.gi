@@ -173,7 +173,7 @@ InstallMethod( SliceCategory,
         AddIsWeakTerminal( S,
           function( cat, M )
             
-            return IsSplitEpimorphism( UnderlyingMorphism( M ) );
+            return IsSplitEpimorphism( C, UnderlyingMorphism( M ) );
             
         end );
         
@@ -186,19 +186,19 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S, # WeakDirectProduct
            function( cat, L )
-            local biased_weak_fiber_product;
+            local L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            L := List( L, UnderlyingMorphism );
+            L2 := List( L, UnderlyingMorphism );
             
             biased_weak_fiber_product := function( I, J )
-                return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+                return PreCompose( C, ProjectionOfBiasedWeakFiberProduct( C, I, J ), I );
             end;
             
-            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), S );
+            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
             
         end );
         
@@ -209,19 +209,19 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S,
            function( cat, L )
-            local biased_weak_fiber_product;
+            local L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            L := List( L, UnderlyingMorphism );
+            L2 := List( L, UnderlyingMorphism );
             
             biased_weak_fiber_product := function( I, J )
-                return PreCompose( ProjectionInFactorOfFiberProduct( [ I, J ], 1 ), I );
+                return PreCompose( C, ProjectionInFactorOfFiberProduct( C, [ I, J ], 1 ), I );
             end;
             
-            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), S );
+            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
             
         end );
         
@@ -234,14 +234,15 @@ InstallMethod( SliceCategory,
         ##
         AddCoproduct( S,
            function( cat, L )
+            local L2;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            L := List( L, UnderlyingMorphism );
+            L2 := List( L, UnderlyingMorphism );
             
-            return AsSliceCategoryCell( UniversalMorphismFromCoproduct( L ), S );
+            return ObjectConstructor( cat, UniversalMorphismFromCoproduct( C, List( L2, Source ), B, L2 ) );
             
         end );
         
