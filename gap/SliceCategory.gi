@@ -177,6 +177,13 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                  category_as_first_argument := true
                  );
     
+    S!.compiler_hints := rec(
+        category_attribute_names := [
+            "AmbientCategory",
+            "BaseObject",
+        ],
+    );
+    
     SetAmbientCategory( S, C );
     
     SetBaseObject( S, B );
