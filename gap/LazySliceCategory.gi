@@ -19,8 +19,7 @@ InstallMethod( AsSliceCategoryCell,
     o := rec( );
     
     ObjectifyObjectForCAPWithAttributes( o, S,
-            UnderlyingMorphismList, L,
-            BaseObject, B );
+            UnderlyingMorphismList, L );
     
     return o;
     
@@ -65,8 +64,7 @@ InstallMethod( AsSliceCategoryCell,
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, S,
             source,
             range,
-            UnderlyingCell, morphism,
-            BaseObject, BaseObject( source ) );
+            UnderlyingCell, morphism );
     
     return m;
     
@@ -94,17 +92,6 @@ InstallMethod( UnderlyingMorphism,
     
 end );
     
-##
-InstallMethod( UnderlyingCell,
-        "for a CAP object in a lazy slice category",
-        [ IsCapCategoryObjectInALazySliceCategory ],
-        
-  function( a )
-    
-    return Source( UnderlyingMorphism( a ) );
-    
-end );
-
 ##
 InstallMethod( InclusionFunctor,
         [ IsCapLazySliceCategory ],

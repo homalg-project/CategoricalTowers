@@ -46,6 +46,28 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
 ##################################
 
 ##
+InstallMethod( BaseObject,
+        "for a CAP slice category object",
+        [ IsCapCategoryCellInASliceCategory ],
+        
+  function( object )
+    
+    return BaseObject( CapCategory( object ) );
+    
+end );
+
+##
+InstallMethod( UnderlyingCell,
+        "for a CAP slice category object",
+        [ IsCapCategoryObjectInASliceCategory ],
+        
+  function( object )
+    
+    return Source( UnderlyingMorphism( object ) );
+    
+end );
+
+##
 InstallMethod( DualOverTensorUnit,
         [ IsCapCategoryMorphism ],
         
@@ -225,7 +247,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         m := UnderlyingMorphism( a );
         
-        return IsIdenticalObj( Range( m ), BaseObject( a ) ) and
+        return IsIdenticalObj( Range( m ), BaseObject( cat ) ) and
                IsWellDefinedForMorphisms( m );
         
     end );
@@ -281,7 +303,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
       function( cat )
         local B, C, I;
         
-        B := BaseObject( S );
+        B := BaseObject( cat );
         
         C := AmbientCategory( S );
         
@@ -295,7 +317,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
       function( cat )
         local B;
         
-        B := BaseObject( S );
+        B := BaseObject( cat );
         
         return AsSliceCategoryCell( IdentityMorphism( B ), S );
         
@@ -340,7 +362,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         AddTensorUnit( S,
           function( cat )
             
-            return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ), S );
+            return AsSliceCategoryCell( IdentityMorphism( BaseObject( cat ) ), S );
             
         end );
         
@@ -350,7 +372,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             return AsSliceCategoryCell(
                            PreCompose(
                                    TensorProductOnMorphisms( UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
-                                   LeftUnitor( BaseObject( CapCategory( I ) ) ) ),
+                                   LeftUnitor( BaseObject( cat ) ) ),
                            S );
             
         end );

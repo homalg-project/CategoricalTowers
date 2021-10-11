@@ -21,9 +21,7 @@ InstallMethod( AsSliceCategoryCell,
     o := rec( );
     
     ObjectifyObjectForCAPWithAttributes( o, S,
-            UnderlyingMorphism, morphism,
-            UnderlyingCell, Source( morphism ),
-            BaseObject, B );
+            UnderlyingMorphism, morphism );
     
     return o;
     
@@ -71,8 +69,7 @@ InstallMethod( AsSliceCategoryCell,
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, S,
             source,
             range,
-            UnderlyingCell, morphism,
-            BaseObject, BaseObject( source ) );
+            UnderlyingCell, morphism );
     
     return m;
     
