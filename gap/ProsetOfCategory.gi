@@ -255,16 +255,6 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( AmbientCategory,
-        [ IsProsetOrPosetOfCapCategory ],
-        
-  function( A )
-    
-    return A!.AmbientCategory;
-    
-end );
-
-##
 InstallMethod( CreateProsetOrPosetOfCategory,
         "for a CAP category",
         [ IsCapCategory ],
@@ -464,7 +454,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_as_first_argument := true
                  );
     
-    P!.AmbientCategory := C;
+    SetAmbientCategory( P, C );
     
     if CanCompute( C, "IsWeakTerminal" ) then
         
