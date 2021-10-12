@@ -421,7 +421,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsTerminal( P,
           function( cat, S )
             
-            return IsWeakTerminal( UnderlyingCell( S ) );
+            return IsWeakTerminal( C, UnderlyingCell( S ) );
             
         end );
         
@@ -432,7 +432,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsInitial( P,
           function( cat, S )
             
-            return IsWeakInitial( UnderlyingCell( S ) );
+            return IsWeakInitial( C, UnderlyingCell( S ) );
             
         end );
         
@@ -447,7 +447,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalHomOnObjects( P,
               function( cat, S, T )
                 
-                return StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / CapCategory( S );
+                return ObjectConstructor( cat, StableInternalHom( C, UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -472,7 +472,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalCoHomOnObjects( P,
               function( cat, S, T )
                 
-                return StableInternalCoHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / cat;
+                return ObjectConstructor( cat, StableInternalCoHom( C, UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -481,11 +481,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddCoexponentialOnObjects( P,
-              InternalCoHomOnObjects );
+              { cat, S, T } -> InternalCoHomOnObjects( cat, S, T ) );
             
             ##
             AddCoexponentialOnMorphismsWithGivenCoexponentials( P,
-              InternalCoHomOnMorphismsWithGivenInternalCoHoms );
+              { cat, S, alpha, beta, T } -> InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat, S, alpha, beta, T ) );
             
         fi;
         
