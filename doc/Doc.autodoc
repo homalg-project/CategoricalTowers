@@ -38,3 +38,8 @@
 @Chapter Boolean algebra of constructible objects
 
 @Chapter Tools
+
+@Chapter Tests
+
+@Subsection Precompilation
+@InsertChunk StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled
