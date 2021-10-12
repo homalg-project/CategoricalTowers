@@ -46,19 +46,51 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
 ##################################
 
 ##
+InstallMethod( BaseObject,
+        "for a CAP slice category object",
+        [ IsCapCategoryCellInASliceCategory ],
+        
+  function( object )
+    
+    return BaseObject( CapCategory( object ) );
+    
+end );
+
+##
+InstallMethod( UnderlyingCell,
+        "for a CAP slice category object",
+        [ IsCapCategoryObjectInASliceCategory ],
+        
+  function( object )
+    
+    return Source( UnderlyingMorphism( object ) );
+    
+end );
+
+##
 InstallMethod( DualOverTensorUnit,
         [ IsCapCategoryMorphism ],
         
   function( J )
+    
+    return DualOverTensorUnit( CapCategory( J ), J );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( DualOverTensorUnit,
+        [ IsCapCategory, IsCapCategoryMorphism ],
+        
+  function( cat, J )
     local R;
     
-    R := TensorUnit( CapCategory( J ) );
-
+    R := TensorUnit( cat );
+    
     ## R -> InternalHom( J, R )
-    return PreCompose(
-                   [ Inverse( EvaluationMorphism( R, R ) ), ## R -> InternalHom( R, R ) ⊗ R
-                     RightUnitor( InternalHom( R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
-                     InternalHom( J, R ) ] ); ## InternalHom( R, R ) -> InternalHom( R^m, R )
+    return PreComposeList( cat,
+                   [ InverseForMorphisms( cat, EvaluationMorphism( cat, R, R ) ), ## R -> InternalHom( R, R ) ⊗ R
+                     RightUnitor( cat, InternalHomOnObjects( cat, R, R ) ), ## InternalHom( R, R ) ⊗ R -> InternalHom( R, R )
+                     InternalHomOnMorphisms( cat, J, IdentityMorphism( cat, R ) ) ] ); ## InternalHom( R, R ) -> InternalHom( R^m, R )
     
 end );
 
@@ -82,7 +114,7 @@ InstallMethod( MorphismFromCovariantArgumentOfInternalHom,
     I := UnderlyingMorphism( I );
     J := UnderlyingMorphism( J );
 
-    return AsSliceCategoryCell(
+    return MorphismConstructor( CapCategory( source ),
                    source,
                    UniversalMorphismIntoBiasedWeakFiberProduct(
                            DualOverTensorUnit( J ),
@@ -100,82 +132,9 @@ end );
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
   function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
-    local C, create_func_bool, create_func_morphism, create_func_morphism_or_fail,
-          list_of_operations_to_install, skip, func, pos, properties, S;
+    local C, list_of_operations_to_install, skip, func, pos, properties, S;
     
     C := CapCategory( B );
-    
-    ## e.g., IsSplitEpimorphism
-    create_func_bool :=
-      function( name, S )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-      function( name, S )
-        local oper, type;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( cat, arg... )
-            local result, src_trg, S, T;
-            
-            result := CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsSliceCategoryCell( S, result, T );
-            
-          end;
-          
-      end;
-    
-    ## e.g., LiftOrFail
-    create_func_morphism_or_fail :=
-      function( name, S )
-        local oper, type;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( cat, arg... )
-            local result, src_trg, S, T;
-            
-            result := CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-            if result = fail then
-                return fail;
-            fi;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsSliceCategoryCell( S, result, T );
-            
-          end;
-          
-      end;
     
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY;
     
@@ -209,11 +168,21 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                  category_morphism_filter := category_morphism_filter,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_morphism := create_func_morphism,
-                 create_func_morphism := create_func_morphism_or_fail,
+                 create_func_bool := "default",
+                 create_func_morphism := "default",
+                 create_func_morphism_or_fail := "default",
+                 underlying_category_getter_string := "AmbientCategory",
+                 underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
+                 underlying_morphism_getter_string := "({ cat, mor } -> UnderlyingCell( mor ))",
                  category_as_first_argument := true
                  );
+    
+    S!.compiler_hints := rec(
+        category_attribute_names := [
+            "AmbientCategory",
+            "BaseObject",
+        ],
+    );
     
     SetAmbientCategory( S, C );
     
@@ -225,65 +194,66 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         m := UnderlyingMorphism( a );
         
-        return IsIdenticalObj( Range( m ), BaseObject( a ) ) and
-               IsWellDefinedForMorphisms( m );
+        return IsIdenticalObj( Range( m ), BaseObject( cat ) ) and
+               IsWellDefinedForMorphisms( C, m );
         
     end );
     
     AddIsWellDefinedForMorphisms( S,
       function( cat, phi )
-        local mS, mT;
+        local mS, mT, phi_underlying;
         
         mS := UnderlyingMorphism( Source( phi ) );
         mT := UnderlyingMorphism( Range( phi ) );
         
-        phi := UnderlyingCell( phi );
+        phi_underlying := UnderlyingCell( phi );
         
-        return IsEqualForObjects( Source( mS ), Source( phi ) ) and
-               IsEqualForObjects( Source( mT ), Range( phi ) ) and
-               IsCongruentForMorphisms( mS, PreCompose( phi, mT ) );
+        return IsEqualForObjects( C, Source( mS ), Source( phi_underlying ) ) and
+               IsEqualForObjects( C, Source( mT ), Range( phi_underlying ) ) and
+               IsCongruentForMorphisms( C, mS, PreCompose( C, phi_underlying, mT ) );
         
     end );
     
     AddIsEqualForObjects( S,
       function( cat, a, b )
-        a := UnderlyingMorphism( a );
-        b := UnderlyingMorphism( b );
+        local a_underlying, b_underlying;
+        a_underlying := UnderlyingMorphism( a );
+        b_underlying := UnderlyingMorphism( b );
         
-        return IsEqualForObjects( Source( a ), Source( b ) ) and IsCongruentForMorphisms( a, b );
+        return IsEqualForObjects( C, Source( a_underlying ), Source( b_underlying ) ) and IsCongruentForMorphisms( C, a_underlying, b_underlying );
     end );
     
     AddIsEqualForMorphisms( S,
       function( cat, phi, psi )
-        return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        return IsEqualForMorphisms( C, UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
     AddIsCongruentForMorphisms( S,
       function( cat, phi, psi )
-        return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        return IsCongruentForMorphisms( C, UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
-    AddIsEqualForCacheForObjects( S,
-      function( cat, a, b )
-        return IsEqualForCacheForMorphisms( UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
-    end );
-    
-    AddIsEqualForCacheForMorphisms( S,
-      function( cat, phi, psi )
-        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
-    end );
+    if CanCompute( C, "IsEqualForCacheForMorphisms" ) then
+        
+        AddIsEqualForCacheForObjects( S,
+          function( cat, a, b )
+            return IsEqualForCacheForMorphisms( C, UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
+        end );
+        
+        AddIsEqualForCacheForMorphisms( S,
+          function( cat, phi, psi )
+            return IsEqualForCacheForMorphisms( C, UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        end );
+        
+    fi;
     
     AddInitialObject( S,
       function( cat )
-        local B, C, I;
+        local B;
         
-        B := BaseObject( S );
+        B := BaseObject( cat );
         
-        C := AmbientCategory( S );
-        
-        I := InitialObject( C );
-        
-        return AsSliceCategoryCell( UniversalMorphismFromInitialObjectWithGivenInitialObject( B, I ), S );
+        return ObjectConstructor( cat, UniversalMorphismFromInitialObject( C, B ) );
         
     end );
     
@@ -291,46 +261,32 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
       function( cat )
         local B;
         
-        B := BaseObject( S );
+        B := BaseObject( cat );
         
-        return AsSliceCategoryCell( IdentityMorphism( B ), S );
+        return ObjectConstructor( cat, IdentityMorphism( C, B ) );
         
     end );
     
     AddIsTerminal( S,
       function( cat, M )
         
-        return IsIsomorphism( UnderlyingMorphism( M ) );
+        return IsIsomorphism( C, UnderlyingMorphism( M ) );
         
     end );
     
     AddUniversalMorphismIntoTerminalObject( S,
       function( cat, M )
         
-        return AsSliceCategoryCell( M, UnderlyingMorphism( M ), TerminalObject( CapCategory( M ) ) );
+        return MorphismConstructor( cat, M, UnderlyingMorphism( M ), TerminalObject( cat ) );
         
     end );
-    
-    if CanCompute( C, "IsSplitEpimorphism" ) then
-        
-        AddIsWeakTerminal( S,
-          function( cat, M )
-            local mor;
-            
-            mor := UnderlyingMorphismList( M );
-            
-            return ForAll( mor, IsSplitEpimorphism );
-            
-        end );
-        
-    fi;
     
     if CanCompute( C, "ZeroObject" ) and CanCompute( C, "IsZeroForMorphisms" ) then
         
         AddIsWeakInitial( S,
           function( cat, M )
             
-            return IsZeroForMorphisms( UnderlyingMorphism( M ) );
+            return IsZeroForMorphisms( C, UnderlyingMorphism( M ) );
             
         end );
         
@@ -339,7 +295,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     AddIsHomSetInhabited( S,
       function( cat, A, B )
         
-        return IsLiftable( UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+        return IsLiftable( C, UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
         
     end );
     
@@ -350,18 +306,17 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         AddTensorUnit( S,
           function( cat )
             
-            return AsSliceCategoryCell( IdentityMorphism( BaseObject( S ) ), S );
+            return ObjectConstructor( cat, IdentityMorphism( C, BaseObject( cat ) ) );
             
         end );
         
         AddTensorProductOnObjects( S,
           function( cat, I, J )
             
-            return AsSliceCategoryCell(
-                           PreCompose(
-                                   TensorProductOnMorphisms( UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
-                                   LeftUnitor( BaseObject( CapCategory( I ) ) ) ),
-                           S );
+            return ObjectConstructor( cat,
+                           PreCompose( C,
+                                   TensorProductOnMorphisms( C, UnderlyingMorphism( I ), UnderlyingMorphism( J ) ),
+                                   LeftUnitor( C, BaseObject( cat ) ) ) );
             
         end );
         
@@ -372,17 +327,18 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             AddInternalHomOnObjects( S,
               function( cat, J, I ) ## the abstraction of the ideal quotient I:J
+                local I2, J2;
                 
-                I := UnderlyingMorphism( I ); ## R^i -> R
-                J := UnderlyingMorphism( J ); ## R^j -> R
+                I2 := UnderlyingMorphism( I ); ## R^i -> R
+                J2 := UnderlyingMorphism( J ); ## R^j -> R
                 
-                return AsSliceCategoryCell(
+                return ObjectConstructor( cat,
                                ## ProjectionInFirstFactorOfWeakBiFiberProduct( ## NEVER use this unbiased pullback operation as it allows the source to unnecessarily explode
-                               ProjectionOfBiasedWeakFiberProduct(
-                                       DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
-                                       InternalHom( Source( J ), I ) ## Hom( R^j, R^i ) -> Hom( R^j, R )
-                                       ),
-                               S );
+                               ProjectionOfBiasedWeakFiberProduct( C,
+                                       DualOverTensorUnit( C, J2 ), ## R -> Hom( R^j, R )
+                                       InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J2 ) ), I2 ) ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                                       )
+                               );
                 
             end );
             
@@ -404,12 +360,12 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                 #                        InternalHom( Source( Jp ), I ) ),  ## Hom( R^j', R^i ) -> Hom( R^j', R )
                 #                InternalHom( UnderlyingCell( phi ), UnderlyingCell( psi ) ) ); ## Hom( R^j', R^i ) -> Hom( R^j, R^i' )
                 
-                return AsSliceCategoryCell(
+                return MorphismConstructor( cat,
                                source,
-                               UniversalMorphismIntoBiasedWeakFiberProduct(
+                               UniversalMorphismIntoBiasedWeakFiberProduct( C,
                                ## UniversalMorphismIntoWeakBiFiberProduct( ## NEVER use this unbiased pullback operation as it allows the source to unnecessarily explode
-                                       DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
-                                       InternalHom( Source( J ), Ip ), ## Hom( R^j, R^i' ) -> Hom( R^j, R )
+                                       DualOverTensorUnit( C, J ), ## R -> Hom( R^j, R )
+                                       InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J ) ), Ip ), ## Hom( R^j, R^i' ) -> Hom( R^j, R )
                                        tau1 ),  ## R^(i:j') -> R,                where i:j' = nr_gen( I:J' )
                                        #tau2 ), ## R^(i:j') -> Hom( R^j, R^i' ), where i:j' = nr_gen( I:J' )
                                target );
@@ -420,25 +376,25 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## the weak binary pullback with a weak biased pullback
             AddTensorProductToInternalHomAdjunctionMap( S,
               function( cat, K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
-                local I, source, target, tau2;
+                local I, source, target, K2, J2, I2, tau2;
                 
                 I := Range( f );
                 
                 source := K;
-                target := InternalHom( J, I );
+                target := InternalHomOnObjects( cat, J, I );
                 
-                K := UnderlyingMorphism( K ); ## R^k -> R
-                J := UnderlyingMorphism( J ); ## R^j -> R
-                I := UnderlyingMorphism( I ); ## R^i -> R
+                K2 := UnderlyingMorphism( K ); ## R^k -> R
+                J2 := UnderlyingMorphism( J ); ## R^j -> R
+                I2 := UnderlyingMorphism( I ); ## R^i -> R
                 
-                tau2 := TensorProductToInternalHomAdjunctionMap( Source( K ), Source( J ), UnderlyingCell( f ) );
+                tau2 := TensorProductToInternalHomAdjunctionMap( C, Source( K2 ), Source( J2 ), UnderlyingCell( f ) );
                 
-                return AsSliceCategoryCell(
+                return MorphismConstructor( cat,
                                source,
-                               UniversalMorphismIntoWeakBiFiberProduct(
-                                       DualOverTensorUnit( J ), ## R -> Hom( R^j, R )
-                                       InternalHom( Source( J ), I ), ## Hom( R^j, R^i ) -> Hom( R^j, R )
-                                       K,   ## R^k -> R,
+                               UniversalMorphismIntoWeakBiFiberProduct( C,
+                                       DualOverTensorUnit( C, J2 ), ## R -> Hom( R^j, R )
+                                       InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J2 ) ), I2 ), ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                                       K2,   ## R^k -> R,
                                        tau2 ), ## R^k -> Hom( R^j, R^i )
                                target );
                 
@@ -448,26 +404,26 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## the weak binary pullback with a weak biased pullback
             AddInternalHomToTensorProductAdjunctionMap( S,
               function( cat, J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
-                local K, source, target, tau2;
+                local K, source, target, K2, J2, I2, g2, tau2;
                 
                 K := Source( g );
                 
-                source := TensorProductOnObjects( K, J );
+                source := TensorProductOnObjects( cat, K, J );
                 target := I;
                 
-                K := UnderlyingMorphism( K ); ## R^k -> R
-                J := UnderlyingMorphism( J ); ## R^j -> R
-                I := UnderlyingMorphism( I ); ## R^i -> R
+                K2 := UnderlyingMorphism( K ); ## R^k -> R
+                J2 := UnderlyingMorphism( J ); ## R^j -> R
+                I2 := UnderlyingMorphism( I ); ## R^i -> R
 
-                g := PreCompose(
+                g2 := PreCompose( C,
                              UnderlyingCell( g ),
-                             ProjectionInSecondFactorOfWeakBiFiberProduct( ## R^(i:j) -> Hom( R^j, R^i ), where i:j = nr_gen( I:J )
-                                     DualOverTensorUnit( J ),              ## R -> Hom( R^j, R )
-                                     InternalHom( Source( J ), I ) ) );    ## Hom( R^j, R^i ) -> Hom( R^j, R )
+                             ProjectionInSecondFactorOfWeakBiFiberProduct( C, ## R^(i:j) -> Hom( R^j, R^i ), where i:j = nr_gen( I:J )
+                                     DualOverTensorUnit( C, J2 ),              ## R -> Hom( R^j, R )
+                                     InternalHomOnMorphisms( C, IdentityMorphism( C, Source( J2 ) ), I2 ) ) );    ## Hom( R^j, R^i ) -> Hom( R^j, R )
                 
-                return AsSliceCategoryCell(
+                return MorphismConstructor( cat,
                                source,
-                               InternalHomToTensorProductAdjunctionMap( Source( J ), Source( I ), g ), ## f: R^k ⊗ R^j -> R^i
+                               InternalHomToTensorProductAdjunctionMap( C, Source( J2 ), Source( I2 ), g2 ), ## f: R^k ⊗ R^j -> R^i
                                target );
                 
             end );

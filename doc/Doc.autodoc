@@ -30,6 +30,8 @@
 @InsertChunk SliceCategory
 @Subsection IteratedInternalHom
 @InsertChunk IteratedInternalHom
+@Subsection Precompilation
+@InsertChunk SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled
 
 @Chapter Slice categories (lazy data structure)
 

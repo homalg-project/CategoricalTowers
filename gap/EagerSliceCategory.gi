@@ -10,22 +10,8 @@ InstallMethod( AsSliceCategoryCell,
         [ IsCapCategoryMorphism, IsCapEagerSliceCategory ],
         
   function( morphism, S )
-    local B, o;
     
-    B := BaseObject( S );
-    
-    if not IsEqualForObjects( Range( morphism ), B ) then
-        Error( "the target of morphism and the base object of the slice category S are not equal\n" );
-    fi;
-    
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, S,
-            UnderlyingMorphism, morphism,
-            UnderlyingCell, Source( morphism ),
-            BaseObject, B );
-    
-    return o;
+    return ObjectConstructor( S, morphism );
     
 end );
 
@@ -60,21 +46,7 @@ InstallMethod( AsSliceCategoryCell,
     
     S := CapCategory( source );
     
-    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( S ) ) then
-        
-        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( S ) ), "\n" );
-        
-    fi;
-    
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, S,
-            source,
-            range,
-            UnderlyingCell, morphism,
-            BaseObject, BaseObject( source ) );
-    
-    return m;
+    return MorphismConstructor( S, source, morphism, range );
     
 end );
 
@@ -140,12 +112,68 @@ InstallMethod( SliceCategory,
     
     S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );
     
+    ##
+    AddObjectConstructor( S, function( cat, underlying_morphism )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        
+        if not IsEqualForObjects( Range( underlying_morphism ), BaseObject( cat ) ) then
+            
+            Error( "the target of morphism and the base object of the slice category S are not equal\n" );
+            
+        fi;
+        
+        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                    UnderlyingMorphism, underlying_morphism );
+        
+    end );
+    
+    ##
+    AddObjectDatum( S, function( cat, object )
+        
+        return UnderlyingMorphism( object );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( S, function( cat, source, underlying_morphism, range )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+            
+            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            
+        fi;
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+            
+            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                source,
+                range,
+                UnderlyingCell, underlying_morphism );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( S, function( cat, morphism )
+        
+        return UnderlyingCell( morphism );
+        
+    end );
+    
     if CanCompute( C, "IsSplitEpimorphism" ) then
         
         AddIsWeakTerminal( S,
           function( cat, M )
             
-            return IsSplitEpimorphism( UnderlyingMorphism( M ) );
+            return IsSplitEpimorphism( C, UnderlyingMorphism( M ) );
             
         end );
         
@@ -158,19 +186,19 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S, # WeakDirectProduct
            function( cat, L )
-            local biased_weak_fiber_product;
+            local L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            L := List( L, UnderlyingMorphism );
+            L2 := List( L, UnderlyingMorphism );
             
             biased_weak_fiber_product := function( I, J )
-                return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+                return PreCompose( C, ProjectionOfBiasedWeakFiberProduct( C, I, J ), I );
             end;
             
-            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), S );
+            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
             
         end );
         
@@ -181,19 +209,19 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S,
            function( cat, L )
-            local biased_weak_fiber_product;
+            local L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            L := List( L, UnderlyingMorphism );
+            L2 := List( L, UnderlyingMorphism );
             
             biased_weak_fiber_product := function( I, J )
-                return PreCompose( ProjectionInFactorOfFiberProduct( [ I, J ], 1 ), I );
+                return PreCompose( C, ProjectionInFactorOfFiberProduct( C, [ I, J ], 1 ), I );
             end;
             
-            return AsSliceCategoryCell( Iterated( L, biased_weak_fiber_product ), S );
+            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
             
         end );
         
@@ -206,14 +234,15 @@ InstallMethod( SliceCategory,
         ##
         AddCoproduct( S,
            function( cat, L )
+            local L2;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            L := List( L, UnderlyingMorphism );
+            L2 := List( L, UnderlyingMorphism );
             
-            return AsSliceCategoryCell( UniversalMorphismFromCoproduct( L ), S );
+            return ObjectConstructor( cat, UniversalMorphismFromCoproduct( C, List( L2, Source ), B, L2 ) );
             
         end );
         
