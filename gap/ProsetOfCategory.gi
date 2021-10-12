@@ -414,6 +414,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_as_first_argument := true
                  );
     
+    P!.compiler_hints := rec(
+        category_attribute_names := [
+            "AmbientCategory",
+        ],
+    );
+    
     SetAmbientCategory( P, C );
     
     if CanCompute( C, "IsWeakTerminal" ) then
