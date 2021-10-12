@@ -9,6 +9,11 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of a Boolean algebra of constructible objects as union of multiple differences.
+DeclareCategory( "IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences",
+        IsBooleanAlgebraOfConstructibleObjects );
+
+#! @Description
 #!  The &GAP; category of objects in ...
 #! @Arguments object
 DeclareCategory( "IsConstructibleObjectAsUnionOfMultipleDifferences",

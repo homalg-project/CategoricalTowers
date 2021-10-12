@@ -20,7 +20,9 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     D!.category_as_first_argument := true;
     
-    D!.UnderlyingCategory := P;
+    SetFilterObj( D, IsMeetSemilatticeOfSingleDifferences );
+    
+    SetUnderlyingCategory( D, P );
     
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfSingleDifferences );
     
@@ -74,8 +76,8 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( cat )
         local T, I;
         
-        T := TerminalObject( D!.UnderlyingCategory );
-        I := InitialObject( D!.UnderlyingCategory );
+        T := TerminalObject( UnderlyingCategory( D ) );
+        I := InitialObject( UnderlyingCategory( D ) );
         
         return T - I;
         
@@ -86,7 +88,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( cat )
         local I;
         
-        I := InitialObject( D!.UnderlyingCategory );
+        I := InitialObject( UnderlyingCategory( D ) );
         
         return I - I;
         
@@ -367,7 +369,7 @@ InstallMethod( IsClosedSubobject,
   function( A )
     local H;
     
-    H := CapCategory( A )!.UnderlyingCategory;
+    H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
         return IsInitial( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
@@ -387,7 +389,7 @@ InstallMethod( Closure,
   function( A )
     local H;
     
-    H := CapCategory( A )!.UnderlyingCategory;
+    H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
         return NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[1];

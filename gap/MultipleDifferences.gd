@@ -9,6 +9,11 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of a meet-semilattice of multiple differences.
+DeclareCategory( "IsMeetSemilatticeOfMultipleDifferences",
+        IsMeetSemilatticeOfDifferences );
+
+#! @Description
 #!  The &GAP; category of objects in a meet-semilattice of multiple differences.
 #! @Arguments object
 DeclareCategory( "IsObjectInMeetSemilatticeOfMultipleDifferences",
