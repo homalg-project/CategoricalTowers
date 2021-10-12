@@ -145,6 +145,12 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
     end );
     
+    if ValueOption( "FinalizeCategory" ) = false then
+        
+        return C;
+        
+    fi;
+    
     Finalize( C );
     
     return C;
