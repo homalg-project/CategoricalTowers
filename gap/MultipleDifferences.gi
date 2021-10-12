@@ -20,7 +20,9 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     D!.category_as_first_argument := true;
     
-    D!.UnderlyingCategory := P;
+    SetFilterObj( D, IsMeetSemilatticeOfMultipleDifferences );
+    
+    SetUnderlyingCategory( D, P );
     D!.MeetSemilatticeOfDifferences := MeetSemilatticeOfDifferences( P );
     
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfMultipleDifferences );
@@ -361,7 +363,7 @@ InstallMethod( AsSingleDifference,
   function( A )
     local P, F;
     
-    P := CapCategory( A )!.UnderlyingCategory;
+    P := UnderlyingCategory( CapCategory( A ) );
     
     F := EquivalenceToMeetSemilatticeOfDifferences( P );
     
@@ -433,7 +435,7 @@ InstallMethod( IsClosedSubobject,
   function( A )
     local H;
     
-    H := CapCategory( A )!.UnderlyingCategory;
+    H := UnderlyingCategory( CapCategory( A ) );
     
     if ( HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) ) or
        ( HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) ) then
@@ -452,7 +454,7 @@ InstallMethod( Closure,
   function( A )
     local H;
     
-    H := CapCategory( A )!.UnderlyingCategory;
+    H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
         return ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A )[1].I;

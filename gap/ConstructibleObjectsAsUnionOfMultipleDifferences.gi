@@ -52,10 +52,12 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     C!.category_as_first_argument := true;
     
+    SetFilterObj( C, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences );
+    
     SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( C, true );
     SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
     
-    C!.UnderlyingCategory := P;
+    SetUnderlyingCategory( C, P );
     C!.MeetSemilatticeOfMultipleDifferences := MeetSemilatticeOfMultipleDifferences( P );
     
     AddObjectRepresentation( C, IsConstructibleObjectAsUnionOfMultipleDifferences );
@@ -417,7 +419,7 @@ InstallMethod( Closure,
   function( A )
     local H;
     
-    H := CapCategory( A )!.UnderlyingCategory;
+    H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
         return Coproduct( List( A, Closure ) );

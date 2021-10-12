@@ -9,6 +9,11 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of a Boolean algebra of constructible objects as union of single differences.
+DeclareCategory( "IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences",
+        IsBooleanAlgebraOfConstructibleObjects );
+
+#! @Description
 #!  The &GAP; category of objects in a Boolean algebra of constructible objects,
 #!  the latter as unions of formal single differences.
 #! @Arguments object

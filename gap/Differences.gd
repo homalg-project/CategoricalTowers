@@ -9,6 +9,12 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of a meet-semilattice of single/multiple differences.
+#! @Arguments object
+DeclareCategory( "IsMeetSemilatticeOfDifferences",
+        IsThinCategory );
+
+#! @Description
 #!  The &GAP; category of objects in a meet-semilattice of single/multiple differences.
 #! @Arguments object
 DeclareCategory( "IsObjectInMeetSemilatticeOfDifferences",
@@ -45,6 +51,13 @@ DeclareProperty( "IsLocallyClosed",
         IsObjectInMeetSemilatticeOfDifferences );
 
 #! @Section Attributes
+
+#! @Description
+#!  The category underlying the meet-semilattice of single/multiple differences <A>D</A>.
+#! @Arguments D
+#! @Returns a CAP category
+DeclareAttribute( "UnderlyingCategory",
+        IsMeetSemilatticeOfDifferences );
 
 #! @Arguments A
 DeclareAttribute( "LocallyClosedPart",

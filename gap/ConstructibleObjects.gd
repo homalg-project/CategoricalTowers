@@ -9,6 +9,11 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of a Boolean algebra of constructible objects.
+DeclareCategory( "IsBooleanAlgebraOfConstructibleObjects",
+        IsThinCategory );
+
+#! @Description
 #!  The &GAP; category of objects in a Boolean algebra of constructible objects.
 #! @Arguments object
 DeclareCategory( "IsConstructibleObject",
@@ -39,6 +44,13 @@ DeclareProperty( "IsLocallyClosed",
         IsConstructibleObject );
 
 #! @Section Attributes
+
+#! @Description
+#!  The category underlying the Boolean algebra of constructible objects <A>C</A>.
+#! @Arguments C
+#! @Returns a CAP category
+DeclareAttribute( "UnderlyingCategory",
+        IsBooleanAlgebraOfConstructibleObjects );
 
 #! @Arguments A
 DeclareAttribute( "LocallyClosedPart",
