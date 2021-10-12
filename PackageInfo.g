@@ -10,17 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "SubcategoriesForCAP",
 Subtitle := "Subcategory and other related constructors for CAP categories",
-Version := Maximum( [
-                   "2021.04-01", ## Mohamed's version
-                   ## this line prevents merge conflicts
-                   "2020.03.02", ## Kamal's version
-                   ## this line prevents merge conflicts
-                   "2019.05.01", ## Tom's version
-                   ## this line prevents merge conflicts
-                   "2021.06-01", ## Fabian's version
-                   ] ),
-
-Date := ~.Version{[ 1 .. 10 ]},
+Version := "2021.10-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
