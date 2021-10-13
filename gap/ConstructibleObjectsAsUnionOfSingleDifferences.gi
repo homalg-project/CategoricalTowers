@@ -49,6 +49,12 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     C!.category_as_first_argument := true;
     
+    C!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     SetFilterObj( C, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences );
     
     SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( C, true );
@@ -144,6 +150,12 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         return CallFuncList( UnionOfDifferences, Concatenation( L ) );
         
     end );
+    
+    if ValueOption( "FinalizeCategory" ) = false then
+        
+        return C;
+        
+    fi;
     
     Finalize( C );
     

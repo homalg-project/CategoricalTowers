@@ -58,7 +58,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddIsWellDefinedForMorphisms( preordered_set,
       function( cat, u )
         
-        return IsHomSetInhabited( Source( u ), Range( u ) );
+        return IsHomSetInhabited( cat, Source( u ), Range( u ) );
         
     end );
     
@@ -70,8 +70,8 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddIsEqualForCacheForMorphisms( preordered_set,
       function( cat, u1, u2 )
         
-        return IsEqualForCacheForObjects( Source( u1 ), Source( u2 ) ) and
-               IsEqualForCacheForObjects( Range( u1 ), Range( u2 ) );
+        return IsEqualForCacheForObjects( cat, Source( u1 ), Source( u2 ) ) and
+               IsEqualForCacheForObjects( cat, Range( u1 ), Range( u2 ) );
         
     end );
     

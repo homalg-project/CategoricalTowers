@@ -56,16 +56,11 @@ InstallMethod( AsCellOfProset,
         [ IsCapCategoryObject ],
         
   function( object )
-    local P, o;
+    local P;
     
     P := ProsetOfCategory( CapCategory( object ) );
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, P,
-            UnderlyingCell, object );
-    
-    return o;
+    return ObjectConstructor( P, object );
     
 end );
 
@@ -75,16 +70,11 @@ InstallMethod( AsCellOfStableProset,
         [ IsCapCategoryObject ],
         
   function( object )
-    local P, o;
+    local P;
     
     P := StableProsetOfCategory( CapCategory( object ) );
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, P,
-            UnderlyingCell, object );
-    
-    return o;
+    return ObjectConstructor( P, object );
     
 end );
 
@@ -94,18 +84,16 @@ InstallMethod( AsCellOfProset,
         [ IsCapCategoryMorphism ],
         
   function( morphism )
-    local P, m;
+    local P;
     
     P := ProsetOfCategory( CapCategory( morphism ) );
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
-            Source( morphism ) / P,
-            Range( morphism ) / P,
-            UnderlyingCell, morphism );
-    
-    return m;
+    return MorphismConstructor(
+        P,
+        ObjectConstructor( P, Source( morphism ) ),
+        morphism,
+        ObjectConstructor( P, Range( morphism ) )
+    );
     
 end );
 
@@ -115,18 +103,16 @@ InstallMethod( AsCellOfStableProset,
         [ IsCapCategoryMorphism ],
         
   function( morphism )
-    local P, m;
+    local P;
     
     P := StableProsetOfCategory( CapCategory( morphism ) );
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
-            Source( morphism ) / P,
-            Range( morphism ) / P,
-            UnderlyingCell, morphism );
-    
-    return m;
+    return MorphismConstructor(
+        P,
+        ObjectConstructor( P, Source( morphism ) ),
+        morphism,
+        ObjectConstructor( P, Range( morphism ) )
+    );
     
 end );
 
@@ -136,16 +122,11 @@ InstallMethod( AsCellOfPoset,
         [ IsCapCategoryObject ],
         
   function( object )
-    local P, o;
+    local P;
     
     P := PosetOfCategory( CapCategory( object ) );
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, P,
-            UnderlyingCell, object );
-    
-    return o;
+    return ObjectConstructor( P, object );
     
 end );
 
@@ -155,16 +136,11 @@ InstallMethod( AsCellOfStablePoset,
         [ IsCapCategoryObject ],
         
   function( object )
-    local P, o;
+    local P;
     
     P := StablePosetOfCategory( CapCategory( object ) );
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, P,
-            UnderlyingCell, object );
-    
-    return o;
+    return ObjectConstructor( P, object );
     
 end );
 
@@ -174,18 +150,16 @@ InstallMethod( AsCellOfPoset,
         [ IsCapCategoryMorphism ],
         
   function( morphism )
-    local P, m;
+    local P;
     
     P := PosetOfCategory( CapCategory( morphism ) );
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
-            Source( morphism ) / P,
-            Range( morphism ) / P,
-            UnderlyingCell, morphism );
-    
-    return m;
+    return MorphismConstructor(
+        P,
+        ObjectConstructor( P, Source( morphism ) ),
+        morphism,
+        ObjectConstructor( P, Range( morphism ) )
+    );
     
 end );
 
@@ -195,18 +169,16 @@ InstallMethod( AsCellOfStablePoset,
         [ IsCapCategoryMorphism ],
         
   function( morphism )
-    local P, m;
+    local P;
     
     P := StablePosetOfCategory( CapCategory( morphism ) );
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
-            Source( morphism ) / P,
-            Range( morphism ) / P,
-            UnderlyingCell, morphism );
-    
-    return m;
+    return MorphismConstructor(
+        P,
+        ObjectConstructor( P, Source( morphism ) ),
+        morphism,
+        ObjectConstructor( P, Range( morphism ) )
+    );
     
 end );
 
@@ -216,18 +188,8 @@ InstallMethod( \/,
         [ IsCapCategoryObject, IsProsetOrPosetOfCapCategory ],
         
   function( object, P )
-    local o;
     
-    if not IsIdenticalObj( CapCategory( object ), AmbientCategory( P ) ) then
-        Error( "the category of the object and the ambient category of proset do not coincide\n" );
-    fi;
-    
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, P,
-            UnderlyingCell, object );
-    
-    return o;
+    return ObjectConstructor( P, object );
     
 end );
 
@@ -237,30 +199,13 @@ InstallMethod( \/,
         [ IsCapCategoryMorphism, IsProsetOrPosetOfCapCategory ],
         
   function( morphism, P )
-    local m;
     
-    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( P ) ) then
-        Error( "the category of the morphism and the ambient category of proset do not coincide\n" );
-    fi;
-    
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, P,
-            Source( morphism ) / P,
-            Range( morphism ) / P,
-            UnderlyingCell, morphism );
-    
-    return m;
-    
-end );
-
-##
-InstallMethod( AmbientCategory,
-        [ IsProsetOrPosetOfCapCategory ],
-        
-  function( A )
-    
-    return A!.AmbientCategory;
+    return MorphismConstructor(
+        P,
+        ObjectConstructor( P, Source( morphism ) ),
+        morphism,
+        ObjectConstructor( P, Range( morphism ) )
+    );
     
 end );
 
@@ -271,9 +216,9 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
   function( C )
     local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
-          name, create_func_bool, create_func_object, create_func_morphism,
+          name, create_func_morphism,
           list_of_operations_to_install, skip, func, pos,
-          properties, preinstall, P, finalize;
+          properties, preinstall, P, object_constructor, object_datum, morphism_constructor, morphism_datum, finalize;
     
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
     
@@ -304,61 +249,19 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     name := Concatenation( name, "( ", Name( C ), " )" );
     
-    ## e.g., IsHomSetInhabited
-    create_func_bool :=
-      function( name, P )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
-    
-    ## e.g., DirectProduct
-    create_func_object :=
-      function( name, P )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return ## a constructor for universal objects
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) / P;
-            
-          end;
-          
-      end;
-    
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
-      function( name, P )
-        local oper, type;
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        return
-          function( cat, arg... )
-            local src_trg, S, T;
+        function( name, P )
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            return """
+                function( input_arguments )
+                    
+                    return UniqueMorphism( top_source, top_range );
+                    
+                end
+            """;
             
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return UniqueMorphism( S, T );
-            
-          end;
-          
-      end;
+        end;
     
     list_of_operations_to_install := Intersection(
         CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
@@ -449,6 +352,45 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
     fi;
     
+    ##
+    object_constructor := function( cat, underlying_object )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        
+        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                    UnderlyingCell, underlying_object );
+        
+    end;
+    
+    object_datum := { cat, object } -> UnderlyingCell( object );
+    
+    morphism_constructor := function( cat, source, underlying_morphism, range )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+            
+            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            
+        fi;
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+            
+            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                                                        source,
+                                                                        range,
+                                                                        UnderlyingCell, underlying_morphism );
+        
+    end;
+    
+    morphism_datum := { cat, morphism } -> UnderlyingCell( morphism );
+    
     P := CategoryConstructor( :
                  name := name,
                  category_filter := category_filter,
@@ -458,20 +400,34 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  preinstall := preinstall,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_object := create_func_object,
+                 create_func_bool := "default",
+                 create_func_object := "default",
                  create_func_morphism := create_func_morphism,
+                 create_func_morphism_or_fail := "default",
+                 object_constructor := object_constructor,
+                 object_datum := object_datum,
+                 morphism_constructor := morphism_constructor,
+                 morphism_datum := morphism_datum,
+                 underlying_category_getter_string := "AmbientCategory",
+                 underlying_object_getter_string := "ObjectDatum",
+                 underlying_morphism_getter_string := "MorphismDatum",
                  category_as_first_argument := true
                  );
     
-    P!.AmbientCategory := C;
+    P!.compiler_hints := rec(
+        category_attribute_names := [
+            "AmbientCategory",
+        ],
+    );
+    
+    SetAmbientCategory( P, C );
     
     if CanCompute( C, "IsWeakTerminal" ) then
         
         AddIsTerminal( P,
           function( cat, S )
             
-            return IsWeakTerminal( UnderlyingCell( S ) );
+            return IsWeakTerminal( C, UnderlyingCell( S ) );
             
         end );
         
@@ -482,7 +438,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         AddIsInitial( P,
           function( cat, S )
             
-            return IsWeakInitial( UnderlyingCell( S ) );
+            return IsWeakInitial( C, UnderlyingCell( S ) );
             
         end );
         
@@ -497,7 +453,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalHomOnObjects( P,
               function( cat, S, T )
                 
-                return StableInternalHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / CapCategory( S );
+                return ObjectConstructor( cat, StableInternalHom( C, UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -522,7 +478,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddInternalCoHomOnObjects( P,
               function( cat, S, T )
                 
-                return StableInternalCoHom( UnderlyingCell( S ), UnderlyingCell( T ) ) / cat;
+                return ObjectConstructor( cat, StableInternalCoHom( C, UnderlyingCell( S ), UnderlyingCell( T ) ) );
                 
             end );
             
@@ -531,11 +487,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             ##
             AddCoexponentialOnObjects( P,
-              InternalCoHomOnObjects );
+              { cat, S, T } -> InternalCoHomOnObjects( cat, S, T ) );
             
             ##
             AddCoexponentialOnMorphismsWithGivenCoexponentials( P,
-              InternalCoHomOnMorphismsWithGivenInternalCoHoms );
+              { cat, S, alpha, beta, T } -> InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat, S, alpha, beta, T ) );
             
         fi;
         

@@ -192,17 +192,18 @@ end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnM
 InstallMethod( StableInternalHom,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
+    { J, I } -> StableInternalHom( CapCategory( J ), J, I )
+   );
 
-  function( J, I )
-    local IqJ;
+##
+InstallOtherMethodForCompilerForCAP( StableInternalHom,
+        [ IsCapCategory, IsObjectInThinCategory, IsObjectInThinCategory ],
+  function( cat, J, I )
     
-    IqJ := I;
-    
-    repeat
-        I := IqJ;
-        IqJ := InternalHomOnObjects( J, IqJ );
-    until AreIsomorphicForObjectsIfIsHomSetInhabited( I, IqJ );
-    
-    return IqJ;
+    return CapFixpoint(
+        { x, y } -> AreIsomorphicForObjectsIfIsHomSetInhabited( cat, x, y ),
+        x -> InternalHomOnObjects( cat, J, x ),
+        I
+    );
     
 end );
