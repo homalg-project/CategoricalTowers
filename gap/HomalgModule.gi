@@ -58,6 +58,13 @@ InstallMethod( SetPositionOfTheDefaultPresentation,
   SetPositionOfActiveCell );
 
 ##
+InstallMethod( PositionOfLastStoredSetOfRelations,
+        "for a homalg/CAP module",
+        [ IsHomalgModule and IsCapCategoryIntrinsicObject ],
+        
+  PositionOfLastStoredCell );
+
+##
 InstallMethod( HasNrGenerators,
         "for a homalg/CAP module",
         [ IsFinitelyPresentedModuleOrSubmoduleRep and IsCapCategoryIntrinsicObject ],
@@ -182,19 +189,29 @@ InstallMethod( BasisOfModule,
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
-    local pos, rels;
+    local pos, A, rels;
     
     ## TODO: write a wrapper for the IdentityFunctors with side-effect to
     ## update generators and more
     pos := PositionOfActiveCell( M );
     
-    ApplyFunctor( CapCategory( M )!.IdSM, M );
+    A := CapCategory( M );
     
-    UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
-    
-    rels := RelationsOfModule( M );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+    if IsBound( A!.IdSM ) then
+        
+        ApplyFunctor( A!.IdSM, M );
+        
+        UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
+        
+        rels := RelationsOfModule( M );
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+        
+    else
+        
+        rels := RelationsOfModule( M );
+        
+    fi;
     
     return rels;
     
@@ -206,17 +223,27 @@ InstallMethod( GetRidOfZeroGenerators,
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
-    local pos, rels;
+    local pos, A, rels;
     
     pos := PositionOfActiveCell( M );
     
-    ApplyFunctor( CapCategory( M )!.IdZG, M );
+    A := CapCategory( M );
     
-    UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
-    
-    rels := RelationsOfModule( M );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+    if IsBound( A!.IdZG ) then
+        
+        ApplyFunctor( A!.IdZG, M );
+        
+        UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
+        
+        rels := RelationsOfModule( M );
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+        
+    else
+        
+        rels := RelationsOfModule( M );
+        
+    fi;
     
     return M;
     
@@ -228,17 +255,27 @@ InstallMethod( OnLessGenerators,
         [ IsFinitelyPresentedModuleRep and IsCapCategoryIntrinsicObject ],
         
   function( M )
-    local pos, rels;
+    local pos, A, rels;
     
     pos := PositionOfActiveCell( M );
     
-    ApplyFunctor( CapCategory( M )!.IdLG, M );
+    A := CapCategory( M );
     
-    UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
-    
-    rels := RelationsOfModule( M );
-    
-    INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+    if IsBound( A!.IdLG ) then
+        
+        ApplyFunctor( A!.IdLG, M );
+        
+        UpdateHomalgGenerators( GeneratorsOfModule( M, pos ), GeneratorsOfModule( M ) );
+        
+        rels := RelationsOfModule( M );
+        
+        INSTALL_TODO_LIST_ENTRIES_FOR_MATRICES_OF_RELATIONS( MatrixOfRelations( rels ), rels );
+        
+    else
+        
+        rels := RelationsOfModule( M );
+        
+    fi;
     
     return M;
     

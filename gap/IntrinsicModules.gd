@@ -47,6 +47,18 @@ DeclareAttribute( "CategoryOfHomalgFinitelyPresentedRightModules",
 #!  The image-embedding method used for &homalg; left modules.
 #! @Arguments morphism
 #! @Returns a left &homalg; module map
+DeclareGlobalFunction( "ImageEmbeddingForFpLeftModulesByFreyd" );
+
+#! @Description
+#!  The image-embedding method used for &homalg; right modules.
+#! @Arguments morphism
+#! @Returns a right &homalg; module map
+DeclareGlobalFunction( "ImageEmbeddingForFpRightModulesByFreyd" );
+
+#! @Description
+#!  The image-embedding method used for &homalg; left modules.
+#! @Arguments morphism
+#! @Returns a left &homalg; module map
 DeclareGlobalFunction( "ImageEmbeddingForFpLeftModulesByPresentations" );
 
 #! @Description

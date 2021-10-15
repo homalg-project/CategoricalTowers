@@ -6,22 +6,43 @@
 
 ####################################
 #
+# methods for operations:
+#
+####################################
+
+##
+InstallOtherMethod( UnderlyingMatrix,
+        "for a Freyd category morphism",
+        [ IsFreydCategoryMorphism ],
+        
+  function( mor )
+    
+    return UnderlyingMatrix( MorphismDatum( mor ) );
+    
+end );
+
+##
+InstallOtherMethod( UnderlyingHomalgRing,
+        "for a Freyd category morphism",
+        [ IsFreydCategoryMorphism ],
+        
+  function( mor )
+    
+    return HomalgRing( UnderlyingMatrix( mor ) );
+    
+end );
+
+####################################
+#
 # methods for constructors:
 #
 ####################################
 
 ##
-InstallOtherMethod( FpModuleMorphism,
-        "for two left/right presentations and a homalg matrix",
-        [ IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation ],
-        
-  PresentationMorphism );
-
-##
 InstallMethod( HomalgMap,
         "for a set of relation, a string, and a homalg/CAP module",
-        [ IsHomalgRelations and IsLeftOrRightPresentation, IsString, IsHomalgModule and IsCapCategoryIntrinsicObject ],
-
+        [ IsHomalgRelations and IsFreydCategoryObject, IsString, IsHomalgModule and IsCapCategoryIntrinsicObject ],
+        
   function( m, s, N )
     
     return HomalgMap( MatrixOfRelations( m ), s, N );
@@ -31,7 +52,7 @@ end );
 ##
 InstallMethod( HomalgMap,
         "for a homalg matrix",
-        [ IsHomalgRelationsOfLeftModule and IsLeftPresentation ],
+        [ IsHomalgRelationsOfLeftModule and IsFreydCategoryObject ],
         
   function( rels )
     local R;
@@ -47,7 +68,7 @@ end );
 ##
 InstallMethod( HomalgMap,
         "for a set of homalg/CAP relations of a right module",
-        [ IsHomalgRelationsOfRightModule and IsRightPresentation ],
+        [ IsHomalgRelationsOfRightModule and IsFreydCategoryObject ],
         
   function( rels )
     local R;
@@ -59,4 +80,3 @@ InstallMethod( HomalgMap,
                    HomalgFreeRightModule( NrGenerators( rels ), R ) );
     
 end );
-

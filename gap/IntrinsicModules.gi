@@ -97,15 +97,9 @@ BindGlobal( "INSTALL_ImageEmbeddingForFpModules",
     ## we will use this method to install ImageEmbedding which is neither installed in
     ## CAP_project/ModulePresentationsForCAP nor CAP_project/FreydCategoriesForCAP
     
-    ## when used to derive KernelEmbedding it leads to the algorithm in
-    ## CAP_project/ModulePresentationsForCAP installed by commit fc8e92ee
-    
-    ## we will also use it to add an alternative to KernelEmbedding
-    ## installed in CAP_project/FreydCategoriesForCAP
-    
     ##
     InstallGlobalFunction( image_embedding,
-      function( morphism )
+      function( category, morphism )
         local mat, T, B, N, S, img, emb;
         
         mat := UnderlyingMatrix( morphism );
@@ -137,14 +131,40 @@ BindGlobal( "INSTALL_ImageEmbeddingForFpModules",
         # the image embedding
         emb := morphism_constructor( img, N, T );
         
-        ## check assertion
+        # check assertion
         Assert( 5, IsMonomorphism( emb ) );
+        SetIsMonomorphism( emb, true );
+        
+        # set properties and attributes
+        if HasRankOfObject( Source( morphism ) ) and RankOfObject( Source( morphism ) ) = 0 then
+            SetRankOfObject( Source( emb ), 0 );
+        fi;
         
         return emb;
         
     end );
     
 end );
+
+##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpLeftModulesByFreyd,
+        BasisOfRows,
+        DecideZeroRows,
+        N -> CertainRows( N, NonZeroRows( N ) ),
+        SyzygiesOfRows,
+        FpLeftModuleByFreyd,
+        FpModuleMorphism );
+
+##
+INSTALL_ImageEmbeddingForFpModules(
+        ImageEmbeddingForFpRightModulesByFreyd,
+        BasisOfColumns,
+        DecideZeroColumns,
+        N -> CertainColumns( N, NonZeroColumns( N ) ),
+        SyzygiesOfColumns,
+        FpRightModuleByFreyd,
+        FpModuleMorphism );
 
 ##
 INSTALL_ImageEmbeddingForFpModules(
@@ -168,7 +188,7 @@ INSTALL_ImageEmbeddingForFpModules(
 
 ##
 BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
-  function( R, left, filter_obj, filter_mor, filter_end, hom_filter_obj, hom_filter_mor, hom_filter_end )
+  function( R, left, filter_obj, filter_mor, filter_end, hom_filter_obj, hom_filter_mor, hom_filter_end, use_freyd )
     local info_level, A, P, etaSM, etaZG, etaLG, H;
     
     info_level := InfoLevel( InfoDebug );
@@ -177,11 +197,19 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     SuspendMethodReordering();
     
     if left then
-        A := LeftPresentations( R : FinalizeCategory := false );
-        AddImageEmbedding( A, ImageEmbeddingForFpLeftModulesByPresentations );
+        if use_freyd then
+            A := CategoryOfFpLeftModules( R : FinalizeCategory := false );
+        else
+            A := LeftPresentations( R : FinalizeCategory := false );
+            AddImageEmbedding( A, ImageEmbeddingForFpLeftModulesByPresentations );
+        fi;
     else
-        A := RightPresentations( R : FinalizeCategory := false );
-        AddImageEmbedding( A, ImageEmbeddingForFpRightModulesByPresentations );
+        if use_freyd then
+            A := CategoryOfFpRightModules( R : FinalizeCategory := false );
+        else
+            A := RightPresentations( R : FinalizeCategory := false );
+            AddImageEmbedding( A, ImageEmbeddingForFpRightModulesByPresentations );
+        fi;
     fi;
     
     Finalize( A );
@@ -224,29 +252,65 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     A!.containers := rec( );
     
+    if use_freyd then
+        P := UnderlyingCategory( UnderlyingCategory( UnderlyingCategory( A ) ) );
+    fi;
+    
     if left then
         
-        A!.ObjectConstructor := AsLeftPresentation;
-        
-        A!.FreeObjectConstructor := FreeLeftPresentation;
-        
-        etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
-        
-        etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft( R );
-        
-        etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
+        if use_freyd then
+            
+            A!.ObjectConstructor := FpLeftModuleByFreyd;
+            
+            A!.FreeObjectConstructor := FreeFpLeftModuleByFreyd;
+            
+            etaSM := NaturalIsomorphismFromIdentityToStandardPresentationOfFpLeftModule( P );
+            
+            etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpLeftModule( P );
+            
+            etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsOfFpLeftModule( P );
+            
+        else
+            
+            A!.ObjectConstructor := AsLeftPresentation;
+            
+            A!.FreeObjectConstructor := FreeLeftPresentation;
+            
+            etaSM := NaturalIsomorphismFromIdentityToStandardModuleLeft( R );
+            
+            etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft( R );
+            
+            etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R );
+            
+        fi;
         
     else
         
-        A!.ObjectConstructor := AsRightPresentation;
-        
-        A!.FreeObjectConstructor := FreeRightPresentation;
-        
-        etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
-        
-        etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight( R );
-        
-        etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
+        if use_freyd then
+            
+            A!.ObjectConstructor := FpRightModuleByFreyd;
+            
+            A!.FreeObjectConstructor := FreeFpRightModuleByFreyd;
+            
+            etaSM := NaturalIsomorphismFromIdentityToStandardPresentationOfFpRightModule( P );
+            
+            etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpRightModule( P );
+            
+            etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsOfFpRightModule( P );
+            
+        else
+            
+            A!.ObjectConstructor := AsRightPresentation;
+            
+            A!.FreeObjectConstructor := FreeRightPresentation;
+            
+            etaSM := NaturalIsomorphismFromIdentityToStandardModuleRight( R );
+            
+            etaZG := NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight( R );
+            
+            etaLG := NaturalIsomorphismFromIdentityToLessGeneratorsRight( R );
+            
+        fi;
         
     fi;
     
@@ -288,7 +352,7 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedLeftModules,
                   IsMapOfFinitelyGeneratedModulesRep and
                   IsHomalgLeftObjectOrMorphismOfLeftObjects;
     
-    return CATEGORY_OF_HOMALG_MODULES( R, true, filter_obj, filter_mor, filter_end, filter_obj, filter_mor, filter_end );
+    return CATEGORY_OF_HOMALG_MODULES( R, true, filter_obj, filter_mor, filter_end, filter_obj, filter_mor, filter_end, true );
     
 end );
 
@@ -310,6 +374,6 @@ InstallMethod( CategoryOfHomalgFinitelyPresentedRightModules,
                   IsMapOfFinitelyGeneratedModulesRep and
                   IsHomalgRightObjectOrMorphismOfRightObjects;
     
-    return CATEGORY_OF_HOMALG_MODULES( R, false, filter_obj, filter_mor, filter_end, filter_obj, filter_mor, filter_end );
+    return CATEGORY_OF_HOMALG_MODULES( R, false, filter_obj, filter_mor, filter_end, filter_obj, filter_mor, filter_end, true );
     
 end );
