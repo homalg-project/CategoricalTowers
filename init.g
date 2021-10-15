@@ -6,6 +6,7 @@
 
 ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gd");
 ReadPackage( "CategoryConstructor", "gap/Tools.gd");
+ReadPackage( "CategoryConstructor", "gap/Tools.autogen.gd");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "CategoryConstructor", "gap/Julia.gd" );

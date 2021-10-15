@@ -1,3 +1,15 @@
 @Chapter The category constructor
 
-@Chapter Tools
+@Chapter Futher CAP operations
+
+@Section PreInverse and PostInverse
+
+@Section IsWeakTerminal and IsWeakInitial
+
+@Section EmbeddingOfSumOfImagesOfAllMorphisms
+
+@Section Systems of homogeneous linear equations in linear categories
+
+@Section Add-methods
+
+
