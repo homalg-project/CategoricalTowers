@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Tools
+#! @Chapter Futher CAP operations
 
 DeclareGlobalVariable( "CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD" );
 
@@ -22,27 +22,8 @@ DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 #! @Returns a morphism in $\mathrm{Hom}(B,A)$
 #! @Arguments alpha
 #! @Returns a morphism
-DeclareOperation( "PreInverse",
-        [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#!  The arguments are a category $C$ and a function $F$.
-#!  This operation adds the given function $F$
-#!  to the category for the basic operation <C>PreInverse</C>.
-#!  $F: A, B \mapsto \mathrm{PreInverse}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPreInverse",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPreInverse",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPreInverse",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPreInverse",
-        [ IsCapCategory, IsList ] );
+DeclareOperation( "PostInverse",
+        [ IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The argument is a morphism $\alpha: A \rightarrow B$.
@@ -50,31 +31,12 @@ DeclareOperation( "AddPreInverse",
 #! @Returns a morphism in $\mathrm{Hom}(B,A)$
 #! @Arguments alpha
 #! @Returns a morphism
-DeclareOperation( "PostInverse",
-        [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#!  The arguments are a category $C$ and a function $F$.
-#!  This operation adds the given function $F$
-#!  to the category for the basic operation <C>PostInverse</C>.
-#!  $F: A, B \mapsto \mathrm{PostInverse}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPostInverse",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPostInverse",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPostInverse",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPostInverse",
-        [ IsCapCategory, IsList ] );
+DeclareOperation( "PreInverse",
+        [ IsCapCategoryMorphism ] );
 
 ###################################
 ##
-#! @Section IsWeakTerminal
+#! @Section IsWeakTerminal and IsWeakInitial
 ##
 ###################################
 
@@ -88,31 +50,6 @@ DeclareProperty( "IsWeakTerminal",
                  IsCapCategoryObject );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsWeakTerminal</C>.
-#! $F: a \mapsto \mathtt{IsWeakTerminal}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsWeakTerminal",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsWeakTerminal",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsWeakTerminal",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsWeakTerminal",
-                  [ IsCapCategory, IsList ] );
-
-###################################
-##
-#! @Section IsWeakInitial
-##
-###################################
-
-#! @Description
 #! The argument is an object $a$ of a category $\mathbf{C}$.
 #! The output is <C>true</C> if $a$ is weak initial in $\mathbf{C}$,
 #! otherwise the output is <C>false</C>.
@@ -120,25 +57,6 @@ DeclareOperation( "AddIsWeakTerminal",
 #! @Arguments a
 DeclareProperty( "IsWeakInitial",
                  IsCapCategoryObject );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsWeakInitial</C>.
-#! $F: a \mapsto \mathtt{IsWeakInitial}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsWeakInitial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsWeakInitial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsWeakInitial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsWeakInitial",
-                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -154,25 +72,6 @@ DeclareOperation( "MorphismOntoSumOfImagesOfAllMorphisms",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  The arguments are a category $C$ and a function $F$.
-#!  This operation adds the given function $F$
-#!  to the category for the basic operation <C>MorphismOntoSumOfImagesOfAllMorphisms</C>.
-#!  $F: A, B \mapsto \mathrm{MorphismOntoSumOfImagesOfAllMorphisms}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsList ] );
-
-#! @Description
 #!  Return the embedding of the sum of images of all morphisms between <A>a</A> and <A>b</A>.
 #! @Arguments a, b
 #! @Returns a morphism
@@ -180,49 +79,11 @@ DeclareOperation( "EmbeddingOfSumOfImagesOfAllMorphisms",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#!  The arguments are a category $C$ and a function $F$.
-#!  This operation adds the given function $F$
-#!  to the category for the basic operation <C>EmbeddingOfSumOfImagesOfAllMorphisms</C>.
-#!  $F: A, B \mapsto \mathrm{EmbeddingOfSumOfImagesOfAllMorphisms}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEmbeddingOfSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsList ] );
-
-#! @Description
 #!  Return the sum of images of all morphisms between <A>a</A> and <A>b</A>.
 #! @Arguments a, b
 #! @Returns a morphism
 DeclareOperation( "SumOfImagesOfAllMorphisms",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#!  The arguments are a category $C$ and a function $F$.
-#!  This operation adds the given function $F$
-#!  to the category for the basic operation <C>SumOfImagesOfAllMorphisms</C>.
-#!  $F: A, B \mapsto \mathrm{SumOfImagesOfAllMorphisms}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSumOfImagesOfAllMorphisms",
-        [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -239,18 +100,6 @@ DeclareOperation( "AddSumOfImagesOfAllMorphisms",
 DeclareOperation( "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
                    [ IsList, IsList, IsList ] );
 
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList ] );
-
 ##
 DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
                    [ IsCapCategory, IsList, IsList ] );
@@ -262,18 +111,6 @@ DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCat
 #! @Arguments left_coeffs, right_coeffs
 DeclareOperation( "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
                    [ IsList, IsList ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList ] );
 
 ##
 DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
@@ -296,18 +133,6 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
 DeclareOperation( "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
                    [ IsList, IsList ] );
 
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsList ] );
-
 ##
 DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
                    [ IsCapCategory, IsList, IsList, IsList, IsList ] );
@@ -329,18 +154,6 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCatego
 DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
                    [ IsList, IsList, IsList, IsList] );
 
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! The arguments are two lists of lists $\alpha$, $\delta$ morphisms in some linear category
 #! over commutative ring.
@@ -357,17 +170,3 @@ DeclareOperation( "AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCat
 #! @Arguments alpha, delta
 DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
                    [ IsList, IsList ] );
-
-####################################
-#
-#! @Section Operations
-#
-####################################
-
-#!
-DeclareOperation( "PostInverse",
-        [ IsCapCategoryMorphism ] );
-
-#!
-DeclareOperation( "PreInverse",
-        [ IsCapCategoryMorphism ] );

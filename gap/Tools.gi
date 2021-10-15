@@ -7,7 +7,6 @@
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
 PreInverse := rec(
-  installation_name := "PreInverse",
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
   return_type := "morphism",
@@ -16,7 +15,6 @@ PreInverse := rec(
 ),
 
 PostInverse := rec(
-  installation_name := "PostInverse",
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
   return_type := "morphism",
@@ -25,7 +23,6 @@ PostInverse := rec(
 ),
 
 IsWeakTerminal := rec(
-  installation_name := "IsWeakTerminal",
   filter_list := [ "category", "object" ],
   well_defined_todo := false,
   return_type := "bool",
@@ -33,7 +30,6 @@ IsWeakTerminal := rec(
   property_of := "object" ),
 
 IsWeakInitial := rec(
-  installation_name := "IsWeakInitial",
   filter_list := [ "category", "object" ],
   well_defined_todo := false,
   return_type := "bool",
@@ -41,7 +37,6 @@ IsWeakInitial := rec(
   property_of := "object" ),
 
 MorphismOntoSumOfImagesOfAllMorphisms := rec(
-  installation_name := "MorphismOntoSumOfImagesOfAllMorphisms",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "d", "b" ] ],
   return_type := "morphism",
@@ -49,7 +44,6 @@ MorphismOntoSumOfImagesOfAllMorphisms := rec(
 ),
 
 EmbeddingOfSumOfImagesOfAllMorphisms := rec(
-  installation_name := "EmbeddingOfSumOfImagesOfAllMorphisms",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "b" ] ],
   return_type := "morphism",
@@ -57,43 +51,42 @@ EmbeddingOfSumOfImagesOfAllMorphisms := rec(
 ),
 
 SumOfImagesOfAllMorphisms := rec(
-  installation_name := "SumOfImagesOfAllMorphisms",
   filter_list := [ "category", "object", "object" ],
   return_type := "object",
   is_merely_set_theoretic := true
 ),
 
 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory := rec(
-  installation_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
-  cache_name := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory := rec(
-  installation_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
   filter_list := [ "category", IsList, IsList ],
-  cache_name := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory := rec(
-  installation_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
   filter_list := [ "category", IsList, IsList ],
-  cache_name := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory",
   return_type := IsList
 ),
 
 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
-  installation_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
   filter_list := [ "category", IsList, IsList, IsList, IsList ],
-  cache_name := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
   return_type := IsList
 ),
 
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
+
+CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+    CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD,
+    "CategoryConstructor",
+    "Tools.autogen.gd",
+    "Futher CAP operations",
+    "Add-methods"
+);
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
 
