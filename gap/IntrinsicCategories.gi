@@ -1071,7 +1071,7 @@ InstallMethod( IntrinsicCategory,
         
   function( C )
     local name, filter_obj, filter_mor,
-          create_func_bool, create_func_object0, create_func_object, todo_func,
+          create_func_bool, create_func_object, todo_func,
           create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, func, pos, skip, commutative_ring,
           properties, IC, strict, filter_end,
@@ -1102,41 +1102,18 @@ InstallMethod( IntrinsicCategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( IC, arg... )
             local eval_arg;
             
-            eval_arg := ActiveCell( arg );
+            eval_arg := List( arg, ActiveCell );
+            
+            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
             
             return CallFuncList( oper, eval_arg );
             
           end;
           
         end;
-    
-    ## e.g., ZeroObject
-    create_func_object0 :=
-      function( name, IC )
-        local oper, context;
-        
-        oper := ValueGlobal( name );
-        
-        context := Concatenation( name, "_Context" );
-        
-        return
-          function( )
-            local result;
-            
-            result := oper( C );
-            
-            result := Intrinsify( IC, result );
-            
-            result!.(context) := [ [ ], [ ] ];
-            
-            return result;
-            
-          end;
-          
-      end;
     
     ## e.g., DirectSum
     create_func_object :=
@@ -1148,12 +1125,14 @@ InstallMethod( IntrinsicCategory,
         context := Concatenation( name, "_Context" );
         
         return ## a constructor for universal objects
-          function( arg )
+          function( IC, arg... )
             local active_pos, eval_arg, result;
             
             active_pos := List( arg, PositionOfActiveCell );
             
             eval_arg := List( arg, ActiveCell );
+            
+            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
             
             result := CallFuncList( oper, eval_arg );
             
@@ -1183,7 +1162,7 @@ InstallMethod( IntrinsicCategory,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function( IC, arg... )
             local src_trg, S, s, T, t, eval_arg, result;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -1193,6 +1172,8 @@ InstallMethod( IntrinsicCategory,
             t := PositionOfActiveCell( T );
             
             eval_arg := List( arg, ActiveCell );
+            
+            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
             
             result := CallFuncList( oper, eval_arg );
             
@@ -1224,7 +1205,7 @@ InstallMethod( IntrinsicCategory,
         context := Concatenation( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name, "_Context" );
         
         return
-          function( arg )
+          function( IC, arg... )
             local l, with_given_object, active_pos, context_of_constructor,
                   active_positions, src_trg, S, s, T, t, eval_arg, result;
             
@@ -1253,6 +1234,8 @@ InstallMethod( IntrinsicCategory,
             t := PositionOfActiveCell( T );
             
             eval_arg := List( arg, ActiveCell );
+            
+            eval_arg := Concatenation( [ UnderlyingCategory( IC ) ], eval_arg );
             
             result := CallFuncList( oper, eval_arg );
             
@@ -1321,10 +1304,10 @@ InstallMethod( IntrinsicCategory,
                   is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                   list_of_operations_to_install := list_of_operations_to_install,
                   create_func_bool := create_func_bool,
-                  create_func_object0 := create_func_object0,
                   create_func_object := create_func_object,
                   create_func_morphism := create_func_morphism,
-                  create_func_universal_morphism := create_func_universal_morphism
+                  create_func_universal_morphism := create_func_universal_morphism,
+                  category_as_first_argument := true
                   );
     
     SetUnderlyingCategory( IC, C );
@@ -1347,11 +1330,11 @@ InstallMethod( IntrinsicCategory,
         SetCachingOfCategoryWeak( IC );
     fi;
     
-    AddIsEqualForObjects( IC, IsIdenticalObj );
+    AddIsEqualForObjects( IC, { IC, a, b } -> IsIdenticalObj( a, b ) );
     AddIsEqualForMorphisms( IC,
-            function( m, n )
+            function( IC, m, n )
               ## CAP checks IsEqualForObjects for Source and Range automatically
-              return IsCongruentForMorphisms( ActiveCell( m ), ActiveCell( n ) );
+              return IsCongruentForMorphisms( UnderlyingCategory( IC ), ActiveCell( m ), ActiveCell( n ) );
             end );
     AddIsCongruentForMorphisms( IC, IsEqualForMorphisms );
     
@@ -1445,7 +1428,7 @@ InstallMethod( IntrinsicCategory,
             
             D := DistinguishedObjectOfHomomorphismStructure( IC );
             
-            hom := HomomorphismStructureOnMorphismsWithGivenObjects( Source( morphism ), Range( morphism ) );
+            hom := HomomorphismStructureOnMorphismsWithGivenObjects( IC, Source( morphism ), Range( morphism ) );
             
             return Intrinsify(
                            mor,
@@ -1472,7 +1455,7 @@ InstallMethod( IntrinsicCategory,
                       range, t );
             
         end );
-
+        
         SetIsEquippedWithHomomorphismStructure( IC, true );
         
     fi;
