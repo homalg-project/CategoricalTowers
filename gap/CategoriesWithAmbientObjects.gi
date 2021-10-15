@@ -199,7 +199,7 @@ InstallMethod( CategoryWithAmbientObjects,
   function( abelian_category )
     local category_with_ambient_objects, prop, structure_record,
           preconditions, category_weight_list,
-          zero_object;
+          zero_object, H;
     
     if not IsFinalized( abelian_category ) then
         
@@ -461,6 +461,11 @@ InstallMethod( CategoryWithAmbientObjects,
     fi;
     
     structure_record.NoInstallList := [
+                                       "DistinguishedObjectOfHomomorphismStructure",
+                                       "HomomorphismStructureOnObjects",
+                                       "HomomorphismStructureOnMorphismsWithGivenObjects",
+                                       "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
+                                       "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                                        ];
     
     structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism", "Lift", "Colift" ];
@@ -582,6 +587,79 @@ InstallMethod( CategoryWithAmbientObjects,
                            KernelObject( morphism ) );
             
         end );
+        
+    fi;
+    
+    if CheckConstructivenessOfCategory( abelian_category, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+        
+        H := RangeCategoryOfHomomorphismStructure( abelian_category );
+        
+        if not IsIdenticalObj( abelian_category, H ) then
+            H := CategoryWithAmbientObjects( H );
+        else
+            H := category_with_ambient_objects;
+        fi;
+        
+        SetRangeCategoryOfHomomorphismStructure( category_with_ambient_objects, H );
+        
+        AddDistinguishedObjectOfHomomorphismStructure( category_with_ambient_objects,
+          function( )
+            local D;
+            
+            D := DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( category_with_ambient_objects ) );
+            
+            return ObjectWithAmbientObject( D, RangeCategoryOfHomomorphismStructure( category_with_ambient_objects ) );
+            
+        end );
+        
+        AddHomomorphismStructureOnObjects( category_with_ambient_objects,
+          function( object1, object2 )
+            local hom;
+            
+            hom := HomomorphismStructureOnObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) );
+            
+            return ObjectWithAmbientObject( hom, RangeCategoryOfHomomorphismStructure( CapCategory( object1 ) ) );
+            
+        end );
+        
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( category_with_ambient_objects,
+          function( source, alpha, beta, range )
+            local hom;
+            
+            hom := HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCell( source ), UnderlyingCell( alpha ), UnderlyingCell( beta ), UnderlyingCell( range ) );
+            
+            return MorphismWithAmbientObject( source, hom, range );
+            
+        end );
+        
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category_with_ambient_objects,
+          function( morphism )
+            local mor;
+            
+            mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( morphism ) );
+            
+            return MorphismWithAmbientObject(
+                           DistinguishedObjectOfHomomorphismStructure( CapCategory( morphism ) ),
+                           mor,
+                           HomomorphismStructureOnMorphismsWithGivenObjects( Source( morphism ), Range( morphism ) ) );
+            
+        end );
+        
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category_with_ambient_objects,
+          function( source, range, morphism )
+            
+            return
+              MorphismWithAmbientObject(
+                      source,
+                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                              UnderlyingCell( source ),
+                              UnderlyingCell( range ),
+                              UnderlyingCell( morphism ) ),
+                      range );
+            
+        end );
+        
+        SetIsEquippedWithHomomorphismStructure( category_with_ambient_objects, true );
         
     fi;
     
