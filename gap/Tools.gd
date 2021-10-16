@@ -69,7 +69,7 @@ DeclareProperty( "IsWeakInitial",
 ###################################
 
 #! @Description
-#! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow c$, and $\nu: d \rightarrows c$ .
+#! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow c$, and $\nu: d \rightarrow c$ .
 #! The output is a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$.
 #! if such a relative lift exists or $\mathtt{fail}$ if it doesn't.
 #! Recall that a relative lift $\beta / \alpha: b \rightarrow a$ of $\beta$ along $\alpha$ modulo $\nu$ is

@@ -21,6 +21,9 @@ AutoDoc( rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
                 \usepackage{mathtools}
+                \usepackage{tikz}
+                \usetikzlibrary{arrows}
+                \pgfarrowsdeclarecombine{twohead}{twohead}{latex}{latex}{latex}{latex}
             """,
         ),
     ),
