@@ -45,7 +45,8 @@ jobs:
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C SubcategoriesForCAP -j $(nproc) --output-sync ci-test
           cp ./SubcategoriesForCAP/.codecov.yml ./
-          curl -s https://codecov.io/bash | bash
+          (cd SubcategoriesForCAP && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
+          [ "${{ matrix.image }}" = "gapsystem/gap-docker-master" ] && ./SubcategoriesForCAP/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd SubcategoriesForCAP
