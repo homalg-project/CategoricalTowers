@@ -988,7 +988,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
 end );
 
 BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function ( cat )
-  local A, Rq, is_finite_dimensional, is_quotient_of_path_algebra, is_right_quiver, over_Z;
+  local A, Rq, is_finite_dimensional, is_path_algebra, is_right_quiver, over_field;
     
     Assert( 0, IsAdditiveClosureCategory( cat ) );
     
@@ -1000,15 +1000,37 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function 
     
     is_finite_dimensional := IsFiniteDimensional( Rq );
     
-    is_quotient_of_path_algebra := IsQuotientOfPathAlgebra( Rq );
+    is_path_algebra := IsPathAlgebra( Rq );
     
     is_right_quiver := IsRightQuiver( QuiverOfAlgebra( Rq ) );
     
-    over_Z := A!.over_Z;
+    over_field := not A!.over_Z;
     
-    if is_finite_dimensional and is_quotient_of_path_algebra and is_right_quiver and not over_Z then
+    if is_finite_dimensional and is_path_algebra and is_right_quiver and over_field then
+        
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+        
+        return true;
+        
+    elif is_finite_dimensional and not is_path_algebra and is_right_quiver and over_field then
+        
+        Assert( 0, IsQuotientOfPathAlgebra( Rq ) );
         
         ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+        
+        return true;
+        
+    elif is_finite_dimensional and is_path_algebra and is_right_quiver and not over_field then
+        
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled( cat );
+        
+        return true;
+        
+    elif is_finite_dimensional and not is_path_algebra and is_right_quiver and not over_field then
+        
+        Assert( 0, IsQuotientOfPathAlgebra( Rq ) );
+        
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled( cat );
         
         return true;
         

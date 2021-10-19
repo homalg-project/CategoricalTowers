@@ -4,7 +4,10 @@
 # Reading the implementation part of the package.
 #
 
+ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
+ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled.gi" );
+ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled.gi" );
 
 ReadPackage( "Algebroids", "gap/FpCategories.gi");
 ReadPackage( "Algebroids", "gap/Algebroids.gi");
