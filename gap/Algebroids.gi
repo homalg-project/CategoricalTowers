@@ -617,8 +617,7 @@ end );
 
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     function( algebroid, over_Z )
-    local quiver_algebra, quiver, vertices, basis, data, maps, path,
-          ring, default_range_of_HomStructure, range_category, representative_func;
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths, representative_func, ring, default_range_of_HomStructure, range_category, path;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -629,17 +628,117 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     basis := BasisPaths( CanonicalBasis( quiver_algebra ) );
     
-    data := List( vertices, i -> List( vertices, i -> [ ] ) );
+    ## prepare the homomorphism structure
+    
+    ## storing the basis paths
+    ## basis_paths_by_vertex_index[ v_index ][ w_index ] = [ p_1:v -> w, p_2:v -> w, ... ]
+    
+    basis_paths_by_vertex_index := List( vertices, i -> List( vertices, i -> [ ] ) );
     
     maps := List( vertices, i -> List( vertices, i -> [ ] ) );
     
     for path in basis do
         
-        Add( data[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
+        Add( basis_paths_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
         
         Add( maps[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInAlgebroid( algebroid, PathAsAlgebraElement( quiver_algebra, path ) ) );
         
     od;
+    
+    # if `basis_paths_by_vertex_index` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `basis_paths_by_vertex_index` anymore
+    MakeImmutable( basis_paths_by_vertex_index );
+    
+    SetBasisPathsByVertexIndex( algebroid, basis_paths_by_vertex_index );
+    
+    Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( algebroid ) ) );
+    
+    ## precomputing matrices for the hom structure
+    ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
+    ## for basis_path_1: v' -> v and basis_path_2: w -> w'
+    
+    MATRIX_FOR_HOMSTRUCTURE := function( v, w, vp, wp, path_1, path_2 )
+        local mat, hom_v_w, hom_vp_wp, alpha, beta, path;
+        
+        mat := [];
+        
+        hom_v_w := basis_paths_by_vertex_index[ VertexIndex( v ) ][ VertexIndex( w ) ];
+        
+        if IsEmpty( hom_v_w ) then
+            
+            return mat;
+            
+        fi;
+        
+        hom_vp_wp := basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( wp ) ];
+        
+        if IsEmpty( hom_vp_wp ) then
+            
+            return mat;
+            
+        fi;
+        
+        alpha := PathAsAlgebraElement( quiver_algebra, path_1 );
+        
+        beta := PathAsAlgebraElement( quiver_algebra, path_2 );
+        
+        if IsQuotientOfPathAlgebra( quiver_algebra ) then
+            
+            for path in hom_v_w do
+                
+                Add( mat,
+                  CoefficientsOfPaths( hom_vp_wp, Representative( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) )
+                );
+                
+            od;
+            
+        else
+            
+            for path in hom_v_w do
+                
+                Add( mat,
+                  CoefficientsOfPaths( hom_vp_wp, ( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) )
+                );
+                
+            od;
+            
+        fi;
+        
+        return mat;
+        
+    end;
+    
+    hom_structure_on_basis_paths :=
+        List( vertices, v ->
+            List( vertices, w ->
+                List( vertices, vp ->
+                    List( vertices, wp ->
+                        List( basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( v ) ], basis_path_1 ->
+                            List( basis_paths_by_vertex_index[ VertexIndex( w ) ][ VertexIndex( wp ) ], basis_path_2 ->
+                                MATRIX_FOR_HOMSTRUCTURE( v, w, vp, wp, basis_path_1, basis_path_2 )
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    
+    # if `hom_structure_on_basis_paths` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `hom_structure_on_basis_paths` anymore
+    MakeImmutable( hom_structure_on_basis_paths );
+    
+    SetHomStructureOnBasisPaths( algebroid, hom_structure_on_basis_paths );
+    
+    Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( algebroid ) ) );
+    
+    ##
+    if IsQuotientOfPathAlgebra( quiver_algebra ) then
+        
+        representative_func := Representative;
+        
+    else
+        
+        representative_func := IdFunc;
+        
+    fi;
     
     ring := CommutativeRingOfLinearCategory( algebroid );
     
@@ -666,7 +765,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
         
-        basis_elements := data[nr_source][nr_range];
+        basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
         
         return ObjectConstructor( range_category, Length( basis_elements ) );
         
@@ -675,7 +774,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( algebroid,
       function( algebroid, source, alpha, beta, range )
-        local elem_alpha, elem_beta, a, b, ap, bp, basis_elements_source, basis_elements_range, size_source, size_range, images, path;
+        local elem_alpha, elem_beta, a, b, ap, bp, basis_ap_a, basis_b_bp, size_source, size_range, coeffs_alpha, coeffs_beta, entries;
         
         elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
         
@@ -689,45 +788,38 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
         
-        basis_elements_source := data[a][b];
+        basis_ap_a := basis_paths_by_vertex_index[ap][a];
+        basis_b_bp := basis_paths_by_vertex_index[b][bp];
         
-        basis_elements_range := data[ap][bp];
+        # getting the sizes from `source` and `range` is more efficient for the compiler
+        size_source := ObjectDatum( range_category, source );
+        size_range := ObjectDatum( range_category, range );
         
-        size_source := Size( basis_elements_source );
-        
-        size_range := Size( basis_elements_range );
-        
-        if size_source = 0 or size_range = 0 then
+        # the brackets allow the compiler to hoist the condition `IsZeroForMorphisms( algebroid, alpha ) or size_source = 0` more easily
+        if (IsZeroForMorphisms( algebroid, alpha ) or size_source = 0) or (IsZeroForMorphisms( algebroid, beta ) or size_range = 0) then
             
             return ZeroMorphism( range_category, source, range );
             
-        fi;
-        
-        images := [ ];
-        
-        if IsQuotientOfPathAlgebraElement( elem_alpha ) then
-            
-            for path in basis_elements_source do
-                
-                Add( images,
-                  CoefficientsOfPaths( basis_elements_range, Representative( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
-                );
-                
-            od;
-            
         else
-        
-            for path in basis_elements_source do
-                
-                Add( images,
-                  CoefficientsOfPaths( basis_elements_range, ( elem_alpha * PathAsAlgebraElement( quiver_algebra, path ) * elem_beta ) )
-                );
-                
-            od;
+            
+            coeffs_alpha := CoefficientsOfPaths( basis_ap_a, elem_alpha );
+            
+            coeffs_beta := CoefficientsOfPaths( basis_b_bp, elem_beta );
+            
+            # If Length( basis_ap_a ) = 0 (resp. Length( basis_b_bp ) = 0), then alpha (resp. beta) must be zero,
+            # and these cases are handled above -> we can ignore the empty cases here.
+            entries := Sum(
+                [ 1 .. Length( basis_ap_a ) ],
+                p ->
+                Sum(
+                    [ 1 .. Length( basis_b_bp ) ],
+                    q -> coeffs_alpha[p] * coeffs_beta[q] * hom_structure_on_basis_paths[ a ][ b ][ ap ][ bp ][ p ][ q ]
+                )
+            );
+            
+            return MorphismConstructor( range_category, source, HomalgMatrix( entries, size_source, size_range, ring ), range );
             
         fi;
-        
-        return MorphismConstructor( range_category, source, HomalgMatrix( images, size_source, size_range, ring ), range );
         
     end );
     
@@ -748,7 +840,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
-        basis_elements := data[a][b];
+        basis_elements := basis_paths_by_vertex_index[a][b];
         
         size_basis := Length( basis_elements );
         
@@ -763,25 +855,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         element := UnderlyingQuiverAlgebraElement( alpha );
         
-        if IsQuotientOfPathAlgebraElement( element ) then
-            
-            return MorphismConstructor(
-                    range_category,
-                    source,
-                    HomalgMatrix( CoefficientsOfPaths( basis_elements, Representative( element ) ), 1, size_basis, ring ),
-                    range
-                  );
-            
-        else
-            
-            return MorphismConstructor(
-                    range_category,
-                    source,
-                    HomalgMatrix( CoefficientsOfPaths( basis_elements, element ), 1, size_basis, ring ),
-                    range
-                  );
-            
-        fi;
+        return MorphismConstructor(
+                range_category,
+                source,
+                HomalgMatrix( CoefficientsOfPaths( basis_elements, representative_func( element ) ), 1, size_basis, ring ),
+                range
+              );
         
     end );
     
@@ -792,24 +871,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         coefficients := EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
         
-        basis := data[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
+        basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
         element := QuiverAlgebraElement( quiver_algebra, coefficients, basis );
         
         return MorphismInAlgebroid( a, element, b );
         
     end );
-    
-    ##
-    if IsQuotientOfPathAlgebra( quiver_algebra ) then
-        
-        representative_func := Representative;
-        
-    else
-        
-        representative_func := IdFunc;
-        
-    fi;
     
     ## Both methods can be derived, but it is more efficient to add them as primitive methods.
     ##
@@ -844,7 +912,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         element := UnderlyingQuiverAlgebraElement( morphism );
         
-        return CoefficientsOfPaths( data[nr_source][nr_range], representative_func( element ) );
+        return CoefficientsOfPaths( basis_paths_by_vertex_index[nr_source][nr_range], representative_func( element ) );
         
     end );
     
@@ -915,6 +983,39 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
           
       end );
       
+    fi;
+    
+end );
+
+BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function ( cat )
+  local A, Rq, is_finite_dimensional, is_quotient_of_path_algebra, is_right_quiver, over_Z;
+    
+    Assert( 0, IsAdditiveClosureCategory( cat ) );
+    
+    A := UnderlyingCategory( cat );
+    
+    Assert( 0, IsAlgebroid( A ) );
+    
+    Rq := UnderlyingQuiverAlgebra( A );
+    
+    is_finite_dimensional := IsFiniteDimensional( Rq );
+    
+    is_quotient_of_path_algebra := IsQuotientOfPathAlgebra( Rq );
+    
+    is_right_quiver := IsRightQuiver( QuiverOfAlgebra( Rq ) );
+    
+    over_Z := A!.over_Z;
+    
+    if is_finite_dimensional and is_quotient_of_path_algebra and is_right_quiver and not over_Z then
+        
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+        
+        return true;
+        
+    else
+        
+        return false;
+        
     fi;
     
 end );
@@ -995,6 +1096,22 @@ InstallMethod( Algebroid,
     
     A!.category_as_first_argument := true;
     
+    A!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingQuiverAlgebra",
+            "ZeroOfUnderlyingQuiverAlgebra",
+            "BasisPathsByVertexIndex",
+            "HomStructureOnBasisPaths",
+        ],
+        # EXPERIMENTAL
+        precompiled_towers := [
+            rec(
+                remaining_constructors_in_tower := [ "AdditiveClosure" ],
+                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled
+            ),
+        ],
+    );
+    
     DeactivateCachingOfCategory( A );
     CapCategorySwitchLogicOff( A );
     DisableSanityChecks( A );
@@ -1015,8 +1132,10 @@ InstallMethod( Algebroid,
     else
         SetCommutativeRingOfLinearCategory( A, LeftActingDomain( Rq ) );
     fi;
+    A!.over_Z := over_Z;
     
     SetUnderlyingQuiverAlgebra( A, Rq );
+    SetZeroOfUnderlyingQuiverAlgebra( A, Zero( Rq ) );
     SetFilterObj( A, IsAlgebroid );
     if Length( Vertices( quiver ) ) = 1 then
         SetFilterObj( A, IsAlgebraAsCategory );
@@ -1273,13 +1392,14 @@ InstallMethod( \/,
 );
 
 ##
-InstallMethod( MorphismInAlgebroid,
+InstallMethodForCompilerForCAP( MorphismInAlgebroid,
         "for two objects in an algebroid and an element of the quiver algebra",
         [ IsCapCategoryObjectInAlgebroidRep, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroidRep ],
         
   function( S, path, T )
     local l, mor, A;
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if not IsZero( path ) then
         
         if not IsUniform( path ) then
@@ -1305,20 +1425,19 @@ InstallMethod( MorphismInAlgebroid,
     
     mor := rec( );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if not IsIdenticalObj( CapCategory(S), CapCategory(T) ) then
         Error( "source and target do not belong to the same category");
     fi;
 
     A := CapCategory( S );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
             mor, A,
             S,
             T,
             UnderlyingQuiverAlgebraElement, path
             );
-    
-    return mor;
     
 end );
 

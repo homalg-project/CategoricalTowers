@@ -112,6 +112,30 @@ DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsAlgebroid );
 
 #! @Description
+#!  The zero of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
+#! @Arguments A
+#! @Returns a &QPA; path algebra element
+DeclareAttribute( "ZeroOfUnderlyingQuiverAlgebra",
+        IsAlgebroid );
+
+#! @Description
+#!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>,
+#!  indexed by the vertex indices of source and target of the path.
+#! @Arguments A
+#! @Returns a matrix of basis paths of a &QPA; path algebra
+DeclareAttribute( "BasisPathsByVertexIndex",
+        IsAlgebroid );
+
+#! @Description
+#!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>:
+#!  `HomStructureOnBasisPaths( `<A>A</A>` )[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]`
+#!  for `basis_path_1: v' -> v` and `basis_path_2: w -> w'`.
+#! @Arguments A
+#! @Returns a six-dimensional matrix of matrices
+DeclareAttribute( "HomStructureOnBasisPaths",
+        IsAlgebroid );
+
+#! @Description
 #!  The finite set of objects of the finitely presented algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a list
