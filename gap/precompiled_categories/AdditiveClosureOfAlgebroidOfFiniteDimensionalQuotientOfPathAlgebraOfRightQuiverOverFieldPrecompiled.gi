@@ -438,7 +438,7 @@ function ( cat_1, arg2_1, arg3_1 )
         cap_jit_hoisted_expression_1_1 := [ 1 .. cap_jit_deduplicated_expression_2_1 ];
         return ForAll( [ 1 .. cap_jit_deduplicated_expression_1_1 ], function ( i_2 )
                 return ForAll( cap_jit_hoisted_expression_1_1, function ( j_3 )
-                        return IsCongruentForMorphisms( MatElm( arg2_1, i_2, j_3 ), MatElm( arg3_1, i_2, j_3 ) );
+                        return UnderlyingQuiverAlgebraElement( MatElm( arg2_1, i_2, j_3 ) ) = UnderlyingQuiverAlgebraElement( MatElm( arg3_1, i_2, j_3 ) );
                     end );
             end );
     fi;
@@ -514,7 +514,7 @@ function ( cat_1, arg2_1, arg3_1 )
         cap_jit_hoisted_expression_1_1 := [ 1 .. cap_jit_deduplicated_expression_2_1 ];
         return ForAll( [ 1 .. cap_jit_deduplicated_expression_1_1 ], function ( i_2 )
                 return ForAll( cap_jit_hoisted_expression_1_1, function ( j_3 )
-                        return IsEqualForMorphisms( MatElm( arg2_1, i_2, j_3 ), MatElm( arg3_1, i_2, j_3 ) );
+                        return UnderlyingQuiverAlgebraElement( MatElm( arg2_1, i_2, j_3 ) ) = UnderlyingQuiverAlgebraElement( MatElm( arg3_1, i_2, j_3 ) );
                     end );
             end );
     fi;
