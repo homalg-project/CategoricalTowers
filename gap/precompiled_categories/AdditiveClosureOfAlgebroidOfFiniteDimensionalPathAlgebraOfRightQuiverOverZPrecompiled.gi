@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -82,7 +82,7 @@ end
 ########
 function ( cat_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), RangeCategoryOfHomomorphismStructure( cat_1 ), Dimension, 1 );
+           ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, 1 );
 end
 ########
         
@@ -137,7 +137,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     cap_jit_hoisted_expression_8_1 := cap_jit_deduplicated_expression_10_1;
     cap_jit_hoisted_expression_9_1 := HomStructureOnBasisPaths( cap_jit_deduplicated_expression_21_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cap_jit_deduplicated_expression_15_1, source_1, range_1, UnderlyingMatrix, UnionOfRows( cap_jit_deduplicated_expression_10_1, Dimension( range_1 ), List( [ 1 .. function (  )
+           ), cap_jit_deduplicated_expression_15_1, source_1, range_1, UnderlyingMatrix, UnionOfRows( cap_jit_deduplicated_expression_10_1, RankOfObject( range_1 ), List( [ 1 .. function (  )
                       if cap_jit_deduplicated_expression_11_1 then
                           return NumberColumns( cap_jit_deduplicated_expression_16_1 );
                       else
@@ -226,7 +226,7 @@ function ( cat_1, arg2_1, arg3_1 )
     cap_jit_hoisted_expression_1_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     cap_jit_hoisted_expression_2_1 := ObjectList( arg3_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), RangeCategoryOfHomomorphismStructure( cat_1 ), Dimension, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
+           ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
                   local cap_jit_hoisted_expression_3_2;
                   cap_jit_hoisted_expression_3_2 := cap_jit_hoisted_expression_1_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
                   return List( cap_jit_hoisted_expression_2_1, function ( logic_new_func_x_3 )
@@ -284,7 +284,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
     cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_5_1 );
     cap_jit_deduplicated_expression_7_1 := MorphismMatrix( alpha_1 );
     cap_jit_deduplicated_expression_4_1 := IsMatrixObj( cap_jit_deduplicated_expression_7_1 );
-    cap_jit_deduplicated_expression_6_1 := Dimension( source_1 );
+    cap_jit_deduplicated_expression_6_1 := RankOfObject( source_1 );
     cap_jit_hoisted_expression_1_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_3_1;
     cap_jit_hoisted_expression_3_1 := [ 1 .. function (  )
@@ -313,7 +313,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
                           if cap_jit_deduplicated_expression_1_3 = 0 then
                               return HomalgZeroMatrix( 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
                           else
-                              return HomalgMatrix( CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, Representative( UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_8_3 ) ) ), 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
+                              return HomalgMatrix( CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, ID_FUNC( UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_8_3 ) ) ), 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
                           fi;
                           return;
                       end ) );
@@ -368,7 +368,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
                   cap_jit_hoisted_expression_19_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( obj_i_2 ) )];
                   return List( cap_jit_hoisted_expression_2_1, function ( obj_j_3 )
                           return ObjectifyObjectForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_8_1, Dimension, Length( cap_jit_hoisted_expression_19_2[VertexIndex( UnderlyingVertex( obj_j_3 ) )] ) );
+                                 ), cap_jit_hoisted_expression_8_1, RankOfObject, Length( cap_jit_hoisted_expression_19_2[VertexIndex( UnderlyingVertex( obj_j_3 ) )] ) );
                       end );
               end ) );
         return AdditiveClosureMorphismListList( arg2_1, List( cap_jit_deduplicated_expression_2_1, function ( i_2 )
@@ -384,7 +384,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
                           cap_jit_deduplicated_expression_1_3 := Sum( cap_jit_hoisted_expression_7_1{[ 1 .. cap_jit_deduplicated_expression_11_3 - 1 ]} ) + 1;
                           cap_jit_deduplicated_expression_9_3 := cap_jit_hoisted_expression_2_1[j_3];
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_16_2, cap_jit_hoisted_expression_17_2, cap_jit_deduplicated_expression_9_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( cap_jit_hoisted_expression_11_1, EntriesOfHomalgMatrix( CertainColumns( cap_jit_hoisted_expression_10_1, [ cap_jit_deduplicated_expression_1_3 .. cap_jit_deduplicated_expression_1_3 - 1 + Dimension( cap_jit_hoisted_expression_9_1[cap_jit_deduplicated_expression_11_3] ) ] ) ), cap_jit_hoisted_expression_15_2[VertexIndex( UnderlyingVertex( cap_jit_deduplicated_expression_9_3 ) )] ) );
+                                 ), cap_jit_hoisted_expression_16_2, cap_jit_hoisted_expression_17_2, cap_jit_deduplicated_expression_9_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( cap_jit_hoisted_expression_11_1, EntriesOfHomalgMatrix( CertainColumns( cap_jit_hoisted_expression_10_1, [ cap_jit_deduplicated_expression_1_3 .. cap_jit_deduplicated_expression_1_3 - 1 + RankOfObject( cap_jit_hoisted_expression_9_1[cap_jit_deduplicated_expression_11_3] ) ] ) ), cap_jit_hoisted_expression_15_2[VertexIndex( UnderlyingVertex( cap_jit_deduplicated_expression_9_3 ) )] ) );
                       end );
               end ), arg3_1 );
     fi;
@@ -819,21 +819,21 @@ end
     
 end );
 
-BindGlobal( "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled", function ( Rq )
+BindGlobal( "AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled", function ( Rq )
   local category_constructor, cat;
     
     category_constructor := 
         
         
         function ( Rq )
-    return AdditiveClosure( Algebroid( Rq, false : FinalizeCategory := true ) );
+    return AdditiveClosure( Algebroid( Rq, true : FinalizeCategory := true ) );
 end;
         
         
     
     cat := category_constructor( Rq : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled( cat );
     
     if ValueOption( "FinalizeCategory" ) = false then
         

@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -313,7 +313,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
                           if cap_jit_deduplicated_expression_1_3 = 0 then
                               return HomalgZeroMatrix( 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
                           else
-                              return HomalgMatrix( CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, Representative( UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_8_3 ) ) ), 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
+                              return HomalgMatrix( CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, ID_FUNC( UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_8_3 ) ) ), 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
                           fi;
                           return;
                       end ) );
@@ -819,7 +819,7 @@ end
     
 end );
 
-BindGlobal( "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled", function ( Rq )
+BindGlobal( "AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled", function ( Rq )
   local category_constructor, cat;
     
     category_constructor := 
@@ -833,7 +833,7 @@ end;
     
     cat := category_constructor( Rq : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
     
     if ValueOption( "FinalizeCategory" ) = false then
         
