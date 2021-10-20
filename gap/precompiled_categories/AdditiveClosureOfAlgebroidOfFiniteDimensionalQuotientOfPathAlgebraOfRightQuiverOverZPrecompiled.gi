@@ -835,12 +835,6 @@ end;
     
     ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled( cat );
     
-    if ValueOption( "FinalizeCategory" ) = false then
-        
-        return cat;
-        
-    fi;
-    
     Finalize( cat );
     
     return cat;
