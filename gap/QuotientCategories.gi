@@ -78,7 +78,7 @@ InstallMethod( QuotientCategory,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           category_filter, object_filter, morphism_filter, properties, preinstall,
-          D, finalize, name, name_membership_function, reps;
+          D, name, name_membership_function, reps;
     
     name := ValueOption( "NameOfCategory" );
     
@@ -326,14 +326,6 @@ InstallMethod( QuotientCategory,
         
     fi;
         
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return D;
-      
-    fi;
-    
     Finalize( D );
     
     return D;
