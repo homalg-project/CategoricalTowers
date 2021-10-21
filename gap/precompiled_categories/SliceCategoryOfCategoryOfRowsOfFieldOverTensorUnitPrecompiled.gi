@@ -578,12 +578,6 @@ end;
     
     ADD_FUNCTIONS_FOR_SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled( cat );
     
-    if ValueOption( "FinalizeCategory" ) = false then
-        
-        return cat;
-        
-    fi;
-    
     Finalize( cat );
     
     return cat;
