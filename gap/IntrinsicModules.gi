@@ -212,7 +212,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
         fi;
     fi;
     
-    Finalize( A );
+    Finalize( A : FinalizeCategory := true );
     
     A := CategoryWithAmbientObjects( A );
     

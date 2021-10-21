@@ -16,27 +16,11 @@ InstallMethod( CategoryOfFpModules,
         [ IsCapCategory and IsAdditiveCategory ],
         
   function( P )
-    local R, B, Freyd;
-    
-    R := UnderlyingRing( P );
-    
-    if HasIsCommutative( R ) and IsCommutative( R ) then
-        B := R;
-    else
-        B := BaseRing( R );
-    fi;
-    
-    SetCommutativeRingOfLinearCategory( P, B );
-    
-    SetIsLinearCategoryOverCommutativeRing( P, true );
-    
-    Finalize( P );
-    
-    if HasRangeCategoryOfHomomorphismStructure( P ) then
-        Finalize( RangeCategoryOfHomomorphismStructure( P ) );
-    fi;
+    local Freyd, R;
     
     Freyd := FREYD_CATEGORY( P : FinalizeCategory := false );
+    
+    R := UnderlyingRing( P );
     
     if IsCategoryOfRows( P ) then
         SetFilterObj( Freyd, IsCategoryOfFpLeftModules );
@@ -121,11 +105,25 @@ InstallMethod( CategoryOfFpLeftModules,
         [ IsHomalgRing ],
         
   function( ring )
-    local P;
+    local P, R, B;
     
     P := CategoryOfRows( ring : FinalizeCategory := false );
     
     INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_ROWS( P );
+    
+    R := UnderlyingRing( P );
+    
+    if HasIsCommutative( R ) and IsCommutative( R ) then
+        B := R;
+    else
+        B := BaseRing( R );
+    fi;
+    
+    SetCommutativeRingOfLinearCategory( P, B );
+    
+    SetIsLinearCategoryOverCommutativeRing( P, true );
+    
+    Finalize( P : FinalizeCategory := true );
     
     return FreydCategory( P );
     
@@ -180,11 +178,25 @@ InstallMethod( CategoryOfFpRightModules,
         [ IsHomalgRing ],
         
   function( ring )
-    local P;
+    local P, R, B;
     
     P := CategoryOfColumns( ring : FinalizeCategory := false );
     
     INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS( P );
+    
+    R := UnderlyingRing( P );
+    
+    if HasIsCommutative( R ) and IsCommutative( R ) then
+        B := R;
+    else
+        B := BaseRing( R );
+    fi;
+    
+    SetCommutativeRingOfLinearCategory( P, B );
+    
+    SetIsLinearCategoryOverCommutativeRing( P, true );
+    
+    Finalize( P : FinalizeCategory := true );
     
     return FreydCategory( P );
     
