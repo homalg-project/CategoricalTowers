@@ -10,14 +10,13 @@ BindGlobal( "ADD_FUNCTIONS_FOR_StablePosetOfCategoryOfPosetOfCategoryOfSliceCate
         
 ########
 function ( cat_1, a_1, b_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_9_1;
+    local cap_jit_morphism_attribute_1_1, cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_9_1;
     cap_jit_deduplicated_expression_7_1 := AmbientCategory( cat_1 );
     cap_jit_deduplicated_expression_6_1 := AmbientCategory( cap_jit_deduplicated_expression_7_1 );
     cap_jit_deduplicated_expression_4_1 := AmbientCategory( cap_jit_deduplicated_expression_6_1 );
     cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_4_1 );
     cap_jit_deduplicated_expression_2_1 := HomalgIdentityMatrix( 1, cap_jit_deduplicated_expression_3_1 );
     cap_jit_deduplicated_expression_9_1 := 1 * 1;
-    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_2_1;
     cap_jit_deduplicated_expression_1_1 := KroneckerMat( HomalgIdentityMatrix( cap_jit_deduplicated_expression_9_1, cap_jit_deduplicated_expression_3_1 ), cap_jit_deduplicated_expression_2_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. cap_jit_deduplicated_expression_9_1 ], function ( i_2 )
                         local cap_jit_deduplicated_expression_8_2;
                         cap_jit_deduplicated_expression_8_2 := (i_2 - 1);
@@ -26,19 +25,17 @@ function ( cat_1, a_1, b_1 )
                 if (1 = 0) then
                     return HomalgZeroMatrix( cap_jit_deduplicated_expression_9_1, 1, cap_jit_deduplicated_expression_3_1 );
                 else
-                    return UnionOfRows( List( [ 1 .. 1 ], function ( i_3 )
-                              return CertainColumns( cap_jit_hoisted_expression_1_1, [ i_3 ] );
-                          end ) );
+                    return ConvertMatrixToColumn( cap_jit_deduplicated_expression_2_1 );
                 fi;
                 return;
             end(  ) );
     cap_jit_deduplicated_expression_5_1 := UnderlyingMorphism( UnderlyingCell( UnderlyingCell( a_1 ) ) );
-    cap_jit_hoisted_expression_2_1 := TransposedMatrix( HomalgIdentityMatrix( RankOfObject( Source( cap_jit_deduplicated_expression_5_1 ) ), cap_jit_deduplicated_expression_3_1 ) );
-    cap_jit_hoisted_expression_3_1 := RightDivide( HomalgIdentityMatrix( NumberColumns( cap_jit_deduplicated_expression_1_1 ), cap_jit_deduplicated_expression_3_1 ), cap_jit_deduplicated_expression_1_1 ) * KroneckerMat( TransposedMatrix( UnderlyingMatrix( cap_jit_deduplicated_expression_5_1 ) ), cap_jit_deduplicated_expression_2_1 );
+    cap_jit_hoisted_expression_1_1 := TransposedMatrix( HomalgIdentityMatrix( RankOfObject( Source( cap_jit_deduplicated_expression_5_1 ) ), cap_jit_deduplicated_expression_3_1 ) );
+    cap_jit_hoisted_expression_2_1 := RightDivide( HomalgIdentityMatrix( NumberColumns( cap_jit_deduplicated_expression_1_1 ), cap_jit_deduplicated_expression_3_1 ), cap_jit_deduplicated_expression_1_1 ) * KroneckerMat( TransposedMatrix( UnderlyingMatrix( cap_jit_deduplicated_expression_5_1 ) ), cap_jit_deduplicated_expression_2_1 );
     cap_jit_morphism_attribute_1_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( DecideZeroRows( y_2, x_2 ) );
         end, function ( x_2 )
-            return ReducedSyzygiesOfRows( cap_jit_hoisted_expression_3_1, KroneckerMat( cap_jit_hoisted_expression_2_1, x_2 ) );
+            return ReducedSyzygiesOfRows( cap_jit_hoisted_expression_2_1, KroneckerMat( cap_jit_hoisted_expression_1_1, x_2 ) );
         end, UnderlyingMatrix( UnderlyingMorphism( UnderlyingCell( UnderlyingCell( b_1 ) ) ) ) );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
