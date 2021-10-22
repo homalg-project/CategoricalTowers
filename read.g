@@ -6,6 +6,7 @@
 
 ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gi");
 ReadPackage( "CategoryConstructor", "gap/Tools.gi");
+ReadPackage( "CategoryConstructor", "gap/LogicTemplatesForIsHomalgMatrix.gi");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "CategoryConstructor", "gap/Julia.gi" );
