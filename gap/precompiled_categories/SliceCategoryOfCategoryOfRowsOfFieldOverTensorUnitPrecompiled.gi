@@ -57,21 +57,18 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1;
     if Length( arg2_1 ) = 1 then
         return arg2_1[1];
     else
-        cap_jit_deduplicated_expression_2_1 := AmbientCategory( cat_1 );
-        cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cap_jit_deduplicated_expression_2_1 );
-        cap_jit_morphism_attribute_1_1 := HomalgIdentityMatrix( Sum( List( arg2_1, function ( logic_new_func_x_2 )
-                      return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
-                  end ) ), cap_jit_deduplicated_expression_1_1 ) * UnionOfRows( cap_jit_deduplicated_expression_1_1, 1, List( arg2_1, function ( logic_new_func_x_2 )
-                    return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
-                end ) );
+        cap_jit_deduplicated_expression_1_1 := AmbientCategory( cat_1 );
+        cap_jit_morphism_attribute_1_1 := UnionOfRows( UnderlyingRing( cap_jit_deduplicated_expression_1_1 ), 1, List( arg2_1, function ( logic_new_func_x_2 )
+                  return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
+              end ) );
         return ObjectifyObjectForCAPWithAttributes( rec(
                ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                 ), cap_jit_deduplicated_expression_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-                   ), cap_jit_deduplicated_expression_2_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), BaseObject( cat_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
+                 ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                   ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), BaseObject( cat_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
     fi;
     return;
 end
