@@ -1077,6 +1077,12 @@ InstallMethod( IntrinsicCategory,
           properties, IC, strict, filter_end,
           hom_filter_obj, hom_filter_mor,  hom_filter_end, hom_todo_func, H;
     
+    if not IsFinalized( C ) then
+        
+        Error( "the underlying category must be finalized" );
+        
+    fi;
+    
     if HasName( C ) then
         name := Concatenation( "IntrinsicCategory( ", Name( C ), " )" );
     else
@@ -1460,7 +1466,7 @@ InstallMethod( IntrinsicCategory,
         
     fi;
     
-    Finalize( IC );
+    Finalize( IC : FinalizeCategory := true );
     
     IdentityFunctor( IC )!.UnderlyingFunctor := IdentityFunctor( C );
     
