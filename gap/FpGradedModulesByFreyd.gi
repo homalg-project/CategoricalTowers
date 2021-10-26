@@ -48,12 +48,6 @@ BindGlobal( "FP_GRADED_MODULES",
         
     fi;
     
-    Finalize( P : FinalizeCategory := true );
-    
-    if HasRangeCategoryOfHomomorphismStructure( P ) then
-        Finalize( RangeCategoryOfHomomorphismStructure( P ) : FinalizeCategory := true );
-    fi;
-    
     Freyd := FREYD_CATEGORY( P : FinalizeCategory := false );
     
     INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY( Freyd );
@@ -91,7 +85,7 @@ InstallMethod( FpGradedLeftModules,
     P := CategoryOfGradedRows( graded_ring : FinalizeCategory := false );
     
     P!.Name := Concatenation( "GradedRows( ", String( graded_ring ), " )" );
-    
+
     if HasRangeCategoryOfHomomorphismStructure( P ) then
         
         H := RangeCategoryOfHomomorphismStructure( P );
@@ -142,6 +136,10 @@ InstallMethod( FpGradedLeftModules,
     end );
     
     Finalize( P : FinalizeCategory := true );
+    
+    if HasRangeCategoryOfHomomorphismStructure( P ) then
+        Finalize( RangeCategoryOfHomomorphismStructure( P ) : FinalizeCategory := true );
+    fi;
     
     Freyd := FreydCategory( P );
     
@@ -218,6 +216,10 @@ InstallMethod( FpGradedRightModules,
     end );
     
     Finalize( P : FinalizeCategory := true );
+    
+    if HasRangeCategoryOfHomomorphismStructure( P ) then
+        Finalize( RangeCategoryOfHomomorphismStructure( P ) : FinalizeCategory := true );
+    fi;
     
     Freyd := FreydCategory( P );
     
