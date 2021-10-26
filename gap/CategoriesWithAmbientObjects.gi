@@ -667,7 +667,7 @@ InstallMethod( CategoryWithAmbientObjects,
     
     ## TODO: Logic for category_with_ambient_objects
     
-    Finalize( category_with_ambient_objects );
+    Finalize( category_with_ambient_objects : FinalizeCategory := true );
     
     IdentityFunctor( category_with_ambient_objects )!.UnderlyingFunctor := IdentityFunctor( abelian_category );
     
