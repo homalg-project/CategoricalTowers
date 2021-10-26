@@ -5,3 +5,9 @@
 @Section Functors
 
 @Section Natural transformations
+
+@Section GAP categories
+
+@Section Examples
+
+@InsertChunk PresentationWithDegrees

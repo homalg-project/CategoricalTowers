@@ -10,18 +10,19 @@ S := Q["x,y,z"];
 #! Q[x,y,z]
 #! (weights: yet unset)
 A := CategoryOfHomalgFinitelyPresentedGradedLeftModules( S );
-#! intrinsic Category of f.p. graded left modules over
-#! over Q[x,y,z] (with weights [ 1, 1, 1 ]) with ambient objects
+#! IntrinsicCategory( CategoryWithAmbientObjects( Freyd( GradedRows(
+#! Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) )
 mat := HomalgMatrix( "[ 0, z, -y,  -z, 0, x,  y, -x, 0 ]", 3, 3, S );
 #! <A 3 x 3 matrix over a graded ring>
 phi := GradedMap( mat, "left", S );
-#! <A "homomorphism" of left graded modules>
+#! <A homomorphism of left graded modules>
 IsWellDefined( phi );
 #! true
 phi;
 #! <A homomorphism of left graded modules>
 N := CokernelObject( phi );
 #! <A graded left module presented by 3 relations for 3 generators>
+Display( N );
 #! 0, z, -y,
 #! -z,0, x,
 #! y, -x,0
@@ -35,9 +36,7 @@ N := CokernelObject( phi );
 #! 
 #! (graded, degrees of generators: [ 0, 0, 0 ])
 H := InternalHomOnObjects( N, N );
-#! <A graded left module presented by 9 relations for 10 generators>
-quit;
-
+#! <A graded left module presented by 2 relations for 3 generators>
 M := LeftPresentationWithDegrees( mat );
 #! <A graded left module presented by 3 relations for 3 generators>
 IsWellDefined( M );
@@ -51,13 +50,13 @@ ZeroObject( A );
 0 * S = ZeroObject( A );
 #! true
 Ms := DualOnObjects( M );
-#! <A graded left vector space of dimension 1 on a free generator>
+#! <A graded free left module of rank 1 on a free generator>
 Display( Ms );
-#! Q (with weights [ 1 ])^(1 x 1)
+#! Q[x,y,z] (with weights [ 1, 1, 1 ])^(1 x 1)
 #! 
-#! (graded, degree of generator: -1)
+#! (graded, degree of generator: 1)
 pi := EpimorphismFromSomeProjectiveObject( M );
-#! <A homomorphism of left graded vector spaces>
+#! <A homomorphism of left graded modules>
 IsWellDefined( pi );
 #! true
 Display( pi );
