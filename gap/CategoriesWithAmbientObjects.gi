@@ -212,6 +212,8 @@ InstallMethod( CategoryWithAmbientObjects,
         
     fi;
     
+    GeneralizedMorphismCategoryByCospans( abelian_category: FinalizeCategory := true );
+    
     category_with_ambient_objects := CreateCapCategory( Concatenation( "CategoryWithAmbientObjects( ", Name( abelian_category ), " )" ) );
     
     SetFilterObj( category_with_ambient_objects, IsCapCategoryWithAmbientObjects );
