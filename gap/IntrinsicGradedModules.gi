@@ -15,16 +15,18 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
     SetInfoLevel( InfoDebug, 0 );
     
     if left then
-        A := FpGradedLeftModules( S ); # : FinalizeCategory := false
+        A := FpGradedLeftModules( S : FinalizeCategory := true ); # : FinalizeCategory := false
         #AddImageEmbedding( A, ImageEmbeddingForLeftModules );
     else
-        A := FpGradedRightModules( S ); # : FinalizeCategory := false
+        A := FpGradedRightModules( S : FinalizeCategory := true ); # : FinalizeCategory := false
         #AddImageEmbedding( A, ImageEmbeddingForRightModules );
     fi;
     
-    Finalize( A );
-    
+    Finalize( A : FinalizeCategory := true );
+
     A := CategoryWithAmbientObjects( A );
+    
+    Finalize( A : FinalizeCategory := true );
     
     A := IntrinsicCategory( A :
                  filter_obj := filter_obj,

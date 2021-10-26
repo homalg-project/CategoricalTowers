@@ -48,10 +48,10 @@ BindGlobal( "FP_GRADED_MODULES",
         
     fi;
     
-    Finalize( P );
+    Finalize( P : FinalizeCategory := true );
     
     if HasRangeCategoryOfHomomorphismStructure( P ) then
-        Finalize( RangeCategoryOfHomomorphismStructure( P ) );
+        Finalize( RangeCategoryOfHomomorphismStructure( P ) : FinalizeCategory := true );
     fi;
     
     Freyd := FREYD_CATEGORY( P : FinalizeCategory := false );
@@ -59,6 +59,10 @@ BindGlobal( "FP_GRADED_MODULES",
     INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY( Freyd );
     
     Finalize( Freyd );
+    
+    if HasRangeCategoryOfHomomorphismStructure( Freyd ) then
+        Finalize( RangeCategoryOfHomomorphismStructure( Freyd ) );
+    fi;
     
     return Freyd;
     
@@ -94,7 +98,7 @@ InstallMethod( FpGradedLeftModules,
         
         INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_ROWS( H );
         
-        Finalize( H );
+        Finalize( H : FinalizeCategory := true );
         
     fi;
     
@@ -137,12 +141,16 @@ InstallMethod( FpGradedLeftModules,
         
     end );
     
+    Finalize( P : FinalizeCategory := true );
+    
     Freyd := FreydCategory( P );
     
     ## mimic the FreydCategory-method in GradedModulePresentationsForCAP
     #Freyd!.Name := Concatenation( "Category of f.p. graded left modules over ", RingName( graded_ring ) );
     
     SetFilterObj( Freyd, IsFpGradedLeftModules );
+    
+    Finalize( Freyd );
     
     return Freyd;
     
@@ -209,12 +217,16 @@ InstallMethod( FpGradedRightModules,
         
     end );
     
+    Finalize( P : FinalizeCategory := true );
+    
     Freyd := FreydCategory( P );
     
     ## mimic the FreydCategory-method in GradedModulePresentationsForCAP
     #Freyd!.Name := Concatenation( "Category of f.p. graded right modules over ", RingName( graded_ring ) );
     
     SetFilterObj( Freyd, IsFpGradedRightModules );
+    
+    Finalize( Freyd );
     
     return Freyd;
     
