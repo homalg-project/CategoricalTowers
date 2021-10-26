@@ -46,17 +46,6 @@ BindGlobal( "FP_GRADED_MODULES",
             SetCommutativeRingOfLinearCategory( P, UnderlyingNonGradedRing( B ) );
         fi;
         
-        ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
-          function( r, alpha )
-            local mat;
-            
-            mat := UnderlyingHomalgMatrix( alpha );
-            
-            return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
-            
-        end );
-        
     fi;
     
     Finalize( P );
@@ -140,8 +129,11 @@ InstallMethod( FpGradedLeftModules,
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
       function( r, alpha )
+        local mat;
         
-        return GradedRowOrColumnMorphism( Source( alpha ), r * UnderlyingHomalgMatrix( alpha ), Range( alpha ) );
+        mat := UnderlyingHomalgMatrix( alpha );
+        
+        return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
         
     end );
     
@@ -209,8 +201,11 @@ InstallMethod( FpGradedRightModules,
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( P,
       function( r, alpha )
+        local mat;
         
-        return GradedRowOrColumnMorphism( Source( alpha ), r * UnderlyingHomalgMatrix( alpha ), Range( alpha ) );
+        mat := UnderlyingHomalgMatrix( alpha );
+        
+        return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
         
     end );
     
