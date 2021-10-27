@@ -10,24 +10,24 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPath
         
 ########
 function ( cat_1, a_1, b_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
-    cap_jit_deduplicated_expression_2_1 := Source( a_1 );
-    cap_jit_deduplicated_expression_3_1 := MorphismMatrix( a_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := Source( a_1 );
+    cap_jit_deduplicated_expression_2_1 := MorphismMatrix( a_1 );
     cap_jit_hoisted_expression_1_1 := [ 1 .. NumberColumns( a_1 ) ];
-    return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_2_1, List( [ 1 .. function (  )
-                    if IsMatrixObj( cap_jit_deduplicated_expression_3_1 ) then
-                        return NumberRows( cap_jit_deduplicated_expression_3_1 );
+    return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_1_1, List( [ 1 .. function (  )
+                    if IsMatrixObj( cap_jit_deduplicated_expression_2_1 ) then
+                        return NumberRows( cap_jit_deduplicated_expression_2_1 );
                     else
-                        return Length( ObjectList( cap_jit_deduplicated_expression_2_1 ) );
+                        return Length( ObjectList( cap_jit_deduplicated_expression_1_1 ) );
                     fi;
                     return;
                 end(  ) ], function ( i_2 )
               return List( cap_jit_hoisted_expression_1_1, function ( j_3 )
-                      local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_4_3;
-                      cap_jit_deduplicated_expression_4_3 := MatElm( a_1, i_2, j_3 );
-                      cap_jit_deduplicated_expression_1_3 := Source( cap_jit_deduplicated_expression_4_3 );
+                      local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_2_3;
+                      cap_jit_deduplicated_expression_2_3 := MatElm( a_1, i_2, j_3 );
+                      cap_jit_deduplicated_expression_1_3 := Source( cap_jit_deduplicated_expression_2_3 );
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), CapCategory( cap_jit_deduplicated_expression_1_3 ), cap_jit_deduplicated_expression_1_3, Range( cap_jit_deduplicated_expression_4_3 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_4_3 ) + UnderlyingQuiverAlgebraElement( MatElm( b_1, i_2, j_3 ) ) );
+                             ), CapCategory( cap_jit_deduplicated_expression_1_3 ), cap_jit_deduplicated_expression_1_3, Range( cap_jit_deduplicated_expression_2_3 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_2_3 ) + UnderlyingQuiverAlgebraElement( MatElm( b_1, i_2, j_3 ) ) );
                   end );
           end ), Range( a_1 ) );
 end
@@ -40,24 +40,24 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
-    cap_jit_deduplicated_expression_2_1 := Source( a_1 );
-    cap_jit_deduplicated_expression_3_1 := MorphismMatrix( a_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := Source( a_1 );
+    cap_jit_deduplicated_expression_2_1 := MorphismMatrix( a_1 );
     cap_jit_hoisted_expression_1_1 := [ 1 .. NumberColumns( a_1 ) ];
-    return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_2_1, List( [ 1 .. function (  )
-                    if IsMatrixObj( cap_jit_deduplicated_expression_3_1 ) then
-                        return NumberRows( cap_jit_deduplicated_expression_3_1 );
+    return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_1_1, List( [ 1 .. function (  )
+                    if IsMatrixObj( cap_jit_deduplicated_expression_2_1 ) then
+                        return NumberRows( cap_jit_deduplicated_expression_2_1 );
                     else
-                        return Length( ObjectList( cap_jit_deduplicated_expression_2_1 ) );
+                        return Length( ObjectList( cap_jit_deduplicated_expression_1_1 ) );
                     fi;
                     return;
                 end(  ) ], function ( i_2 )
               return List( cap_jit_hoisted_expression_1_1, function ( j_3 )
-                      local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_4_3;
-                      cap_jit_deduplicated_expression_4_3 := MatElm( a_1, i_2, j_3 );
-                      cap_jit_deduplicated_expression_1_3 := Source( cap_jit_deduplicated_expression_4_3 );
+                      local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_2_3;
+                      cap_jit_deduplicated_expression_2_3 := MatElm( a_1, i_2, j_3 );
+                      cap_jit_deduplicated_expression_1_3 := Source( cap_jit_deduplicated_expression_2_3 );
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), CapCategory( cap_jit_deduplicated_expression_1_3 ), cap_jit_deduplicated_expression_1_3, Range( cap_jit_deduplicated_expression_4_3 ), UnderlyingQuiverAlgebraElement, - UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_4_3 ) );
+                             ), CapCategory( cap_jit_deduplicated_expression_1_3 ), cap_jit_deduplicated_expression_1_3, Range( cap_jit_deduplicated_expression_2_3 ), UnderlyingQuiverAlgebraElement, - UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_2_3 ) );
                   end );
           end ), Range( a_1 ) );
 end
@@ -93,115 +93,115 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_hoisted_expression_7_1, cap_jit_hoisted_expression_8_1, cap_jit_hoisted_expression_9_1, cap_jit_hoisted_expression_10_1, cap_jit_deduplicated_expression_10_1, cap_jit_deduplicated_expression_11_1, cap_jit_deduplicated_expression_14_1, cap_jit_deduplicated_expression_15_1, cap_jit_deduplicated_expression_16_1, cap_jit_deduplicated_expression_17_1, cap_jit_deduplicated_expression_20_1, cap_jit_deduplicated_expression_21_1, cap_jit_deduplicated_expression_22_1, cap_jit_deduplicated_expression_23_1, cap_jit_deduplicated_expression_24_1;
-    cap_jit_deduplicated_expression_15_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    cap_jit_deduplicated_expression_10_1 := UnderlyingRing( cap_jit_deduplicated_expression_15_1 );
-    cap_jit_deduplicated_expression_16_1 := MorphismMatrix( alpha_1 );
-    cap_jit_deduplicated_expression_11_1 := IsMatrixObj( cap_jit_deduplicated_expression_16_1 );
-    cap_jit_deduplicated_expression_23_1 := MorphismMatrix( beta_1 );
-    cap_jit_deduplicated_expression_14_1 := IsMatrixObj( cap_jit_deduplicated_expression_23_1 );
-    cap_jit_deduplicated_expression_17_1 := Range( alpha_1 );
-    cap_jit_deduplicated_expression_20_1 := Source( alpha_1 );
-    cap_jit_deduplicated_expression_21_1 := UnderlyingCategory( cat_1 );
-    cap_jit_deduplicated_expression_22_1 := Source( beta_1 );
-    cap_jit_deduplicated_expression_24_1 := Range( beta_1 );
-    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_17_1;
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_hoisted_expression_7_1, cap_jit_hoisted_expression_8_1, cap_jit_hoisted_expression_9_1, cap_jit_hoisted_expression_10_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_9_1, cap_jit_deduplicated_expression_10_1, cap_jit_deduplicated_expression_11_1;
+    cap_jit_deduplicated_expression_4_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cap_jit_deduplicated_expression_4_1 );
+    cap_jit_deduplicated_expression_10_1 := MorphismMatrix( beta_1 );
+    cap_jit_deduplicated_expression_11_1 := Range( beta_1 );
+    cap_jit_deduplicated_expression_5_1 := MorphismMatrix( alpha_1 );
+    cap_jit_deduplicated_expression_2_1 := IsMatrixObj( cap_jit_deduplicated_expression_5_1 );
+    cap_jit_deduplicated_expression_3_1 := IsMatrixObj( cap_jit_deduplicated_expression_10_1 );
+    cap_jit_deduplicated_expression_6_1 := Range( alpha_1 );
+    cap_jit_deduplicated_expression_7_1 := Source( alpha_1 );
+    cap_jit_deduplicated_expression_8_1 := UnderlyingCategory( cat_1 );
+    cap_jit_deduplicated_expression_9_1 := Source( beta_1 );
+    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_6_1;
     cap_jit_hoisted_expression_10_1 := [ 1 .. function (  )
-                if cap_jit_deduplicated_expression_11_1 then
-                    return NumberRows( cap_jit_deduplicated_expression_16_1 );
+                if cap_jit_deduplicated_expression_2_1 then
+                    return NumberRows( cap_jit_deduplicated_expression_5_1 );
                 else
-                    return Length( ObjectList( cap_jit_deduplicated_expression_20_1 ) );
+                    return Length( ObjectList( cap_jit_deduplicated_expression_7_1 ) );
                 fi;
                 return;
             end(  ) ];
-    cap_jit_hoisted_expression_2_1 := BasisPathsByVertexIndex( cap_jit_deduplicated_expression_21_1 );
-    cap_jit_hoisted_expression_3_1 := cap_jit_deduplicated_expression_22_1;
+    cap_jit_hoisted_expression_2_1 := BasisPathsByVertexIndex( cap_jit_deduplicated_expression_8_1 );
+    cap_jit_hoisted_expression_3_1 := cap_jit_deduplicated_expression_9_1;
     cap_jit_hoisted_expression_4_1 := [ 1 .. function (  )
-                if cap_jit_deduplicated_expression_14_1 then
-                    return NumberRows( cap_jit_deduplicated_expression_23_1 );
+                if cap_jit_deduplicated_expression_3_1 then
+                    return NumberRows( cap_jit_deduplicated_expression_10_1 );
                 else
-                    return Length( ObjectList( cap_jit_deduplicated_expression_22_1 ) );
+                    return Length( ObjectList( cap_jit_deduplicated_expression_9_1 ) );
                 fi;
                 return;
             end(  ) ];
-    cap_jit_hoisted_expression_5_1 := cap_jit_deduplicated_expression_20_1;
-    cap_jit_hoisted_expression_6_1 := cap_jit_deduplicated_expression_24_1;
+    cap_jit_hoisted_expression_5_1 := cap_jit_deduplicated_expression_7_1;
+    cap_jit_hoisted_expression_6_1 := cap_jit_deduplicated_expression_11_1;
     cap_jit_hoisted_expression_7_1 := [ 1 .. function (  )
-                if cap_jit_deduplicated_expression_14_1 then
-                    return NumberColumns( cap_jit_deduplicated_expression_23_1 );
+                if cap_jit_deduplicated_expression_3_1 then
+                    return NumberColumns( cap_jit_deduplicated_expression_10_1 );
                 else
-                    return Length( ObjectList( cap_jit_deduplicated_expression_24_1 ) );
+                    return Length( ObjectList( cap_jit_deduplicated_expression_11_1 ) );
                 fi;
                 return;
             end(  ) ];
-    cap_jit_hoisted_expression_8_1 := cap_jit_deduplicated_expression_10_1;
-    cap_jit_hoisted_expression_9_1 := HomStructureOnBasisPaths( cap_jit_deduplicated_expression_21_1 );
+    cap_jit_hoisted_expression_8_1 := cap_jit_deduplicated_expression_1_1;
+    cap_jit_hoisted_expression_9_1 := HomStructureOnBasisPaths( cap_jit_deduplicated_expression_8_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cap_jit_deduplicated_expression_15_1, source_1, range_1, UnderlyingMatrix, UnionOfRows( cap_jit_deduplicated_expression_10_1, Dimension( range_1 ), List( [ 1 .. function (  )
-                      if cap_jit_deduplicated_expression_11_1 then
-                          return NumberColumns( cap_jit_deduplicated_expression_16_1 );
+           ), cap_jit_deduplicated_expression_4_1, source_1, range_1, UnderlyingMatrix, UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( range_1 ), List( [ 1 .. function (  )
+                      if cap_jit_deduplicated_expression_2_1 then
+                          return NumberColumns( cap_jit_deduplicated_expression_5_1 );
                       else
-                          return Length( ObjectList( cap_jit_deduplicated_expression_17_1 ) );
+                          return Length( ObjectList( cap_jit_deduplicated_expression_6_1 ) );
                       fi;
                       return;
                   end(  ) ], function ( logic_new_func_x_2 )
-                local cap_jit_hoisted_expression_11_2, cap_jit_hoisted_expression_12_2;
-                cap_jit_hoisted_expression_11_2 := cap_jit_hoisted_expression_2_1[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_1_1[logic_new_func_x_2] ) )];
-                cap_jit_hoisted_expression_12_2 := Sum( cap_jit_hoisted_expression_4_1, function ( logic_new_func_x_3 )
-                        return Length( cap_jit_hoisted_expression_11_2[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_3_1[logic_new_func_x_3] ) )] );
+                local cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2;
+                cap_jit_hoisted_expression_1_2 := cap_jit_hoisted_expression_2_1[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_1_1[logic_new_func_x_2] ) )];
+                cap_jit_hoisted_expression_2_2 := Sum( cap_jit_hoisted_expression_4_1, function ( logic_new_func_x_3 )
+                        return Length( cap_jit_hoisted_expression_1_2[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_3_1[logic_new_func_x_3] ) )] );
                     end );
                 return UnionOfColumns( cap_jit_hoisted_expression_8_1, Sum( List( cap_jit_hoisted_expression_4_1, function ( logic_new_func_x_3 )
-                            return Length( cap_jit_hoisted_expression_11_2[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_3_1[logic_new_func_x_3] ) )] );
+                            return Length( cap_jit_hoisted_expression_1_2[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_3_1[logic_new_func_x_3] ) )] );
                         end ) ), List( cap_jit_hoisted_expression_10_1, function ( logic_new_func_x_3 )
-                          local cap_jit_hoisted_expression_13_3, cap_jit_hoisted_expression_14_3, cap_jit_hoisted_expression_15_3, cap_jit_hoisted_expression_16_3, cap_jit_hoisted_expression_17_3, cap_jit_hoisted_expression_18_3, cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_3_3, cap_jit_deduplicated_expression_8_3, cap_jit_deduplicated_expression_9_3, cap_jit_deduplicated_expression_12_3, cap_jit_deduplicated_expression_18_3;
-                          cap_jit_hoisted_expression_13_3 := cap_jit_hoisted_expression_2_1[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_5_1[logic_new_func_x_3] ) )];
+                          local cap_jit_hoisted_expression_1_3, cap_jit_hoisted_expression_2_3, cap_jit_hoisted_expression_3_3, cap_jit_hoisted_expression_4_3, cap_jit_hoisted_expression_5_3, cap_jit_hoisted_expression_6_3, cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_2_3, cap_jit_deduplicated_expression_3_3, cap_jit_deduplicated_expression_4_3, cap_jit_deduplicated_expression_5_3, cap_jit_deduplicated_expression_6_3;
+                          cap_jit_hoisted_expression_1_3 := cap_jit_hoisted_expression_2_1[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_5_1[logic_new_func_x_3] ) )];
                           cap_jit_deduplicated_expression_1_3 := Sum( List( cap_jit_hoisted_expression_7_1, function ( logic_new_func_x_4 )
-                                    return Length( cap_jit_hoisted_expression_13_3[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_6_1[logic_new_func_x_4] ) )] );
+                                    return Length( cap_jit_hoisted_expression_1_3[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_6_1[logic_new_func_x_4] ) )] );
                                 end ) );
-                          cap_jit_deduplicated_expression_18_3 := MatElm( alpha_1, logic_new_func_x_3, logic_new_func_x_2 );
-                          cap_jit_deduplicated_expression_12_3 := UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_18_3 );
-                          if IsZero( cap_jit_deduplicated_expression_12_3 ) then
-                              return HomalgZeroMatrix( cap_jit_hoisted_expression_12_2, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_8_1 );
+                          cap_jit_deduplicated_expression_6_3 := MatElm( alpha_1, logic_new_func_x_3, logic_new_func_x_2 );
+                          cap_jit_deduplicated_expression_5_3 := UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_6_3 );
+                          if IsZero( cap_jit_deduplicated_expression_5_3 ) then
+                              return HomalgZeroMatrix( cap_jit_hoisted_expression_2_2, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_8_1 );
                           else
-                              cap_jit_deduplicated_expression_8_3 := VertexIndex( UnderlyingVertex( Source( cap_jit_deduplicated_expression_18_3 ) ) );
-                              cap_jit_deduplicated_expression_9_3 := VertexIndex( UnderlyingVertex( Range( cap_jit_deduplicated_expression_18_3 ) ) );
-                              cap_jit_deduplicated_expression_3_3 := cap_jit_hoisted_expression_2_1[cap_jit_deduplicated_expression_8_3][cap_jit_deduplicated_expression_9_3];
-                              cap_jit_hoisted_expression_14_3 := Sum( cap_jit_hoisted_expression_7_1, function ( logic_new_func_x_4 )
-                                      return Length( cap_jit_hoisted_expression_13_3[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_6_1[logic_new_func_x_4] ) )] );
+                              cap_jit_deduplicated_expression_3_3 := VertexIndex( UnderlyingVertex( Source( cap_jit_deduplicated_expression_6_3 ) ) );
+                              cap_jit_deduplicated_expression_4_3 := VertexIndex( UnderlyingVertex( Range( cap_jit_deduplicated_expression_6_3 ) ) );
+                              cap_jit_deduplicated_expression_2_3 := cap_jit_hoisted_expression_2_1[cap_jit_deduplicated_expression_3_3][cap_jit_deduplicated_expression_4_3];
+                              cap_jit_hoisted_expression_2_3 := Sum( cap_jit_hoisted_expression_7_1, function ( logic_new_func_x_4 )
+                                      return Length( cap_jit_hoisted_expression_1_3[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_6_1[logic_new_func_x_4] ) )] );
                                   end );
-                              cap_jit_hoisted_expression_15_3 := CoefficientsOfPaths( cap_jit_deduplicated_expression_3_3, cap_jit_deduplicated_expression_12_3 );
-                              cap_jit_hoisted_expression_16_3 := cap_jit_hoisted_expression_9_1[cap_jit_deduplicated_expression_9_3];
-                              cap_jit_hoisted_expression_17_3 := cap_jit_deduplicated_expression_8_3;
-                              cap_jit_hoisted_expression_18_3 := [ 1 .. Length( cap_jit_deduplicated_expression_3_3 ) ];
+                              cap_jit_hoisted_expression_3_3 := CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, cap_jit_deduplicated_expression_5_3 );
+                              cap_jit_hoisted_expression_4_3 := cap_jit_hoisted_expression_9_1[cap_jit_deduplicated_expression_4_3];
+                              cap_jit_hoisted_expression_5_3 := cap_jit_deduplicated_expression_3_3;
+                              cap_jit_hoisted_expression_6_3 := [ 1 .. Length( cap_jit_deduplicated_expression_2_3 ) ];
                               return UnionOfRows( cap_jit_hoisted_expression_8_1, cap_jit_deduplicated_expression_1_3, List( cap_jit_hoisted_expression_4_1, function ( logic_new_func_x_4 )
-                                        local cap_jit_hoisted_expression_19_4, cap_jit_deduplicated_expression_4_4;
-                                        cap_jit_deduplicated_expression_4_4 := Length( cap_jit_hoisted_expression_11_2[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_3_1[logic_new_func_x_4] ) )] );
-                                        if cap_jit_deduplicated_expression_4_4 = 0 then
-                                            return HomalgZeroMatrix( cap_jit_deduplicated_expression_4_4, cap_jit_hoisted_expression_14_3, cap_jit_hoisted_expression_8_1 );
+                                        local cap_jit_hoisted_expression_1_4, cap_jit_deduplicated_expression_1_4;
+                                        cap_jit_deduplicated_expression_1_4 := Length( cap_jit_hoisted_expression_1_2[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_3_1[logic_new_func_x_4] ) )] );
+                                        if cap_jit_deduplicated_expression_1_4 = 0 then
+                                            return HomalgZeroMatrix( cap_jit_deduplicated_expression_1_4, cap_jit_hoisted_expression_2_3, cap_jit_hoisted_expression_8_1 );
                                         else
-                                            cap_jit_hoisted_expression_19_4 := cap_jit_deduplicated_expression_4_4;
-                                            return UnionOfColumns( cap_jit_hoisted_expression_8_1, cap_jit_deduplicated_expression_4_4, List( cap_jit_hoisted_expression_7_1, function ( logic_new_func_x_5 )
-                                                      local cap_jit_hoisted_expression_20_5, cap_jit_hoisted_expression_21_5, cap_jit_hoisted_expression_22_5, cap_jit_deduplicated_expression_2_5, cap_jit_deduplicated_expression_5_5, cap_jit_deduplicated_expression_6_5, cap_jit_deduplicated_expression_7_5, cap_jit_deduplicated_expression_13_5, cap_jit_deduplicated_expression_19_5;
-                                                      cap_jit_deduplicated_expression_19_5 := MatElm( beta_1, logic_new_func_x_4, logic_new_func_x_5 );
-                                                      cap_jit_deduplicated_expression_13_5 := UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_19_5 );
-                                                      cap_jit_deduplicated_expression_5_5 := Length( cap_jit_hoisted_expression_13_3[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_6_1[logic_new_func_x_5] ) )] );
-                                                      if IsZero( cap_jit_deduplicated_expression_13_5 ) or cap_jit_deduplicated_expression_5_5 = 0 then
-                                                          return HomalgZeroMatrix( cap_jit_hoisted_expression_19_4, cap_jit_deduplicated_expression_5_5, cap_jit_hoisted_expression_8_1 );
+                                            cap_jit_hoisted_expression_1_4 := cap_jit_deduplicated_expression_1_4;
+                                            return UnionOfColumns( cap_jit_hoisted_expression_8_1, cap_jit_deduplicated_expression_1_4, List( cap_jit_hoisted_expression_7_1, function ( logic_new_func_x_5 )
+                                                      local cap_jit_hoisted_expression_1_5, cap_jit_hoisted_expression_2_5, cap_jit_hoisted_expression_3_5, cap_jit_deduplicated_expression_1_5, cap_jit_deduplicated_expression_2_5, cap_jit_deduplicated_expression_3_5, cap_jit_deduplicated_expression_4_5, cap_jit_deduplicated_expression_5_5, cap_jit_deduplicated_expression_6_5;
+                                                      cap_jit_deduplicated_expression_6_5 := MatElm( beta_1, logic_new_func_x_4, logic_new_func_x_5 );
+                                                      cap_jit_deduplicated_expression_2_5 := Length( cap_jit_hoisted_expression_1_3[VertexIndex( UnderlyingVertex( cap_jit_hoisted_expression_6_1[logic_new_func_x_5] ) )] );
+                                                      cap_jit_deduplicated_expression_5_5 := UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_6_5 );
+                                                      if IsZero( cap_jit_deduplicated_expression_5_5 ) or cap_jit_deduplicated_expression_2_5 = 0 then
+                                                          return HomalgZeroMatrix( cap_jit_hoisted_expression_1_4, cap_jit_deduplicated_expression_2_5, cap_jit_hoisted_expression_8_1 );
                                                       else
-                                                          cap_jit_deduplicated_expression_6_5 := VertexIndex( UnderlyingVertex( Source( cap_jit_deduplicated_expression_19_5 ) ) );
-                                                          cap_jit_deduplicated_expression_7_5 := VertexIndex( UnderlyingVertex( Range( cap_jit_deduplicated_expression_19_5 ) ) );
-                                                          cap_jit_deduplicated_expression_2_5 := cap_jit_hoisted_expression_2_1[cap_jit_deduplicated_expression_6_5][cap_jit_deduplicated_expression_7_5];
-                                                          cap_jit_hoisted_expression_20_5 := CoefficientsOfPaths( cap_jit_deduplicated_expression_2_5, cap_jit_deduplicated_expression_13_5 );
-                                                          cap_jit_hoisted_expression_21_5 := cap_jit_hoisted_expression_16_3[cap_jit_deduplicated_expression_6_5][cap_jit_hoisted_expression_17_3][cap_jit_deduplicated_expression_7_5];
-                                                          cap_jit_hoisted_expression_22_5 := [ 1 .. Length( cap_jit_deduplicated_expression_2_5 ) ];
-                                                          return HomalgMatrix( Sum( cap_jit_hoisted_expression_18_3, function ( p_6 )
-                                                                    local cap_jit_hoisted_expression_23_6, cap_jit_hoisted_expression_24_6;
-                                                                    cap_jit_hoisted_expression_23_6 := cap_jit_hoisted_expression_15_3[p_6];
-                                                                    cap_jit_hoisted_expression_24_6 := cap_jit_hoisted_expression_21_5[p_6];
-                                                                    return Sum( cap_jit_hoisted_expression_22_5, function ( q_7 )
-                                                                            return cap_jit_hoisted_expression_23_6 * cap_jit_hoisted_expression_20_5[q_7] * cap_jit_hoisted_expression_24_6[q_7];
+                                                          cap_jit_deduplicated_expression_3_5 := VertexIndex( UnderlyingVertex( Source( cap_jit_deduplicated_expression_6_5 ) ) );
+                                                          cap_jit_deduplicated_expression_4_5 := VertexIndex( UnderlyingVertex( Range( cap_jit_deduplicated_expression_6_5 ) ) );
+                                                          cap_jit_deduplicated_expression_1_5 := cap_jit_hoisted_expression_2_1[cap_jit_deduplicated_expression_3_5][cap_jit_deduplicated_expression_4_5];
+                                                          cap_jit_hoisted_expression_1_5 := CoefficientsOfPaths( cap_jit_deduplicated_expression_1_5, cap_jit_deduplicated_expression_5_5 );
+                                                          cap_jit_hoisted_expression_2_5 := cap_jit_hoisted_expression_4_3[cap_jit_deduplicated_expression_3_5][cap_jit_hoisted_expression_5_3][cap_jit_deduplicated_expression_4_5];
+                                                          cap_jit_hoisted_expression_3_5 := [ 1 .. Length( cap_jit_deduplicated_expression_1_5 ) ];
+                                                          return HomalgMatrix( Sum( cap_jit_hoisted_expression_6_3, function ( p_6 )
+                                                                    local cap_jit_hoisted_expression_1_6, cap_jit_hoisted_expression_2_6;
+                                                                    cap_jit_hoisted_expression_1_6 := cap_jit_hoisted_expression_3_3[p_6];
+                                                                    cap_jit_hoisted_expression_2_6 := cap_jit_hoisted_expression_2_5[p_6];
+                                                                    return Sum( cap_jit_hoisted_expression_3_5, function ( q_7 )
+                                                                            return cap_jit_hoisted_expression_1_6 * cap_jit_hoisted_expression_1_5[q_7] * cap_jit_hoisted_expression_2_6[q_7];
                                                                         end );
-                                                                end ), cap_jit_hoisted_expression_19_4, cap_jit_deduplicated_expression_5_5, cap_jit_hoisted_expression_8_1 );
+                                                                end ), cap_jit_hoisted_expression_1_4, cap_jit_deduplicated_expression_2_5, cap_jit_hoisted_expression_8_1 );
                                                       fi;
                                                       return;
                                                   end ) );
@@ -227,10 +227,10 @@ function ( cat_1, arg2_1, arg3_1 )
     cap_jit_hoisted_expression_2_1 := ObjectList( arg3_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), RangeCategoryOfHomomorphismStructure( cat_1 ), Dimension, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
-                  local cap_jit_hoisted_expression_3_2;
-                  cap_jit_hoisted_expression_3_2 := cap_jit_hoisted_expression_1_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                  local cap_jit_hoisted_expression_1_2;
+                  cap_jit_hoisted_expression_1_2 := cap_jit_hoisted_expression_1_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
                   return List( cap_jit_hoisted_expression_2_1, function ( logic_new_func_x_3 )
-                          return Length( cap_jit_hoisted_expression_3_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )] );
+                          return Length( cap_jit_hoisted_expression_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )] );
                       end );
               end ) ) ) );
 end
@@ -243,28 +243,28 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1;
-    cap_jit_deduplicated_expression_3_1 := ObjectList( a_1 );
-    cap_jit_deduplicated_expression_1_1 := [ 1 .. Length( cap_jit_deduplicated_expression_3_1 ) ];
-    cap_jit_deduplicated_expression_4_1 := UnderlyingCategory( cat_1 );
-    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_3_1;
-    cap_jit_hoisted_expression_2_1 := UnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_4_1 );
-    cap_jit_hoisted_expression_3_1 := ZeroOfUnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_4_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
+    cap_jit_deduplicated_expression_2_1 := ObjectList( a_1 );
+    cap_jit_deduplicated_expression_1_1 := [ 1 .. Length( cap_jit_deduplicated_expression_2_1 ) ];
+    cap_jit_deduplicated_expression_3_1 := UnderlyingCategory( cat_1 );
+    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_2_1;
+    cap_jit_hoisted_expression_2_1 := UnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_3_1 );
+    cap_jit_hoisted_expression_3_1 := ZeroOfUnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_3_1 );
     cap_jit_hoisted_expression_4_1 := cap_jit_deduplicated_expression_1_1;
     return AdditiveClosureMorphismListList( a_1, List( cap_jit_deduplicated_expression_1_1, function ( i_2 )
-              local cap_jit_hoisted_expression_5_2, cap_jit_hoisted_expression_6_2, cap_jit_hoisted_expression_7_2, cap_jit_deduplicated_expression_2_2, cap_jit_deduplicated_expression_5_2;
-              cap_jit_deduplicated_expression_5_2 := cap_jit_hoisted_expression_1_1[i_2];
-              cap_jit_deduplicated_expression_2_2 := CapCategory( cap_jit_deduplicated_expression_5_2 );
-              cap_jit_hoisted_expression_5_2 := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), cap_jit_deduplicated_expression_2_2, cap_jit_deduplicated_expression_5_2, cap_jit_deduplicated_expression_5_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( cap_jit_hoisted_expression_2_1, UnderlyingVertex( cap_jit_deduplicated_expression_5_2 ) ) );
-              cap_jit_hoisted_expression_6_2 := cap_jit_deduplicated_expression_2_2;
-              cap_jit_hoisted_expression_7_2 := cap_jit_deduplicated_expression_5_2;
+              local cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_hoisted_expression_3_2, cap_jit_deduplicated_expression_1_2, cap_jit_deduplicated_expression_2_2;
+              cap_jit_deduplicated_expression_2_2 := cap_jit_hoisted_expression_1_1[i_2];
+              cap_jit_deduplicated_expression_1_2 := CapCategory( cap_jit_deduplicated_expression_2_2 );
+              cap_jit_hoisted_expression_1_2 := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_2, cap_jit_deduplicated_expression_2_2, cap_jit_deduplicated_expression_2_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( cap_jit_hoisted_expression_2_1, UnderlyingVertex( cap_jit_deduplicated_expression_2_2 ) ) );
+              cap_jit_hoisted_expression_2_2 := cap_jit_deduplicated_expression_1_2;
+              cap_jit_hoisted_expression_3_2 := cap_jit_deduplicated_expression_2_2;
               return List( cap_jit_hoisted_expression_4_1, function ( j_3 )
                       if i_2 = j_3 then
-                          return cap_jit_hoisted_expression_5_2;
+                          return cap_jit_hoisted_expression_1_2;
                       else
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_6_2, cap_jit_hoisted_expression_7_2, cap_jit_hoisted_expression_1_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
+                                 ), cap_jit_hoisted_expression_2_2, cap_jit_hoisted_expression_3_2, cap_jit_hoisted_expression_1_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
                       fi;
                       return;
                   end );
@@ -279,41 +279,41 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1;
-    cap_jit_deduplicated_expression_5_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_5_1 );
-    cap_jit_deduplicated_expression_7_1 := MorphismMatrix( alpha_1 );
-    cap_jit_deduplicated_expression_4_1 := IsMatrixObj( cap_jit_deduplicated_expression_7_1 );
-    cap_jit_deduplicated_expression_6_1 := Dimension( source_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1;
+    cap_jit_deduplicated_expression_3_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cap_jit_deduplicated_expression_3_1 );
+    cap_jit_deduplicated_expression_5_1 := MorphismMatrix( alpha_1 );
+    cap_jit_deduplicated_expression_2_1 := IsMatrixObj( cap_jit_deduplicated_expression_5_1 );
+    cap_jit_deduplicated_expression_4_1 := Dimension( source_1 );
     cap_jit_hoisted_expression_1_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
-    cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_3_1;
+    cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_1_1;
     cap_jit_hoisted_expression_3_1 := [ 1 .. function (  )
-                if cap_jit_deduplicated_expression_4_1 then
-                    return NumberColumns( cap_jit_deduplicated_expression_7_1 );
+                if cap_jit_deduplicated_expression_2_1 then
+                    return NumberColumns( cap_jit_deduplicated_expression_5_1 );
                 else
                     return Length( ObjectList( Range( alpha_1 ) ) );
                 fi;
                 return;
             end(  ) ];
-    cap_jit_hoisted_expression_4_1 := cap_jit_deduplicated_expression_6_1;
+    cap_jit_hoisted_expression_4_1 := cap_jit_deduplicated_expression_4_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cap_jit_deduplicated_expression_5_1, source_1, range_1, UnderlyingMatrix, UnionOfColumns( cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_6_1, List( [ 1 .. function (  )
-                      if cap_jit_deduplicated_expression_4_1 then
-                          return NumberRows( cap_jit_deduplicated_expression_7_1 );
+           ), cap_jit_deduplicated_expression_3_1, source_1, range_1, UnderlyingMatrix, UnionOfColumns( cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_4_1, List( [ 1 .. function (  )
+                      if cap_jit_deduplicated_expression_2_1 then
+                          return NumberRows( cap_jit_deduplicated_expression_5_1 );
                       else
                           return Length( ObjectList( Source( alpha_1 ) ) );
                       fi;
                       return;
                   end(  ) ], function ( logic_new_func_x_2 )
                 return UnionOfColumns( cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_4_1, List( cap_jit_hoisted_expression_3_1, function ( logic_new_func_x_3 )
-                          local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_2_3, cap_jit_deduplicated_expression_8_3;
-                          cap_jit_deduplicated_expression_8_3 := MatElm( alpha_1, logic_new_func_x_2, logic_new_func_x_3 );
-                          cap_jit_deduplicated_expression_2_3 := cap_jit_hoisted_expression_1_1[VertexIndex( UnderlyingVertex( Source( cap_jit_deduplicated_expression_8_3 ) ) )][VertexIndex( UnderlyingVertex( Range( cap_jit_deduplicated_expression_8_3 ) ) )];
+                          local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_2_3, cap_jit_deduplicated_expression_3_3;
+                          cap_jit_deduplicated_expression_3_3 := MatElm( alpha_1, logic_new_func_x_2, logic_new_func_x_3 );
+                          cap_jit_deduplicated_expression_2_3 := cap_jit_hoisted_expression_1_1[VertexIndex( UnderlyingVertex( Source( cap_jit_deduplicated_expression_3_3 ) ) )][VertexIndex( UnderlyingVertex( Range( cap_jit_deduplicated_expression_3_3 ) ) )];
                           cap_jit_deduplicated_expression_1_3 := Length( cap_jit_deduplicated_expression_2_3 );
                           if cap_jit_deduplicated_expression_1_3 = 0 then
                               return HomalgZeroMatrix( 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
                           else
-                              return HomalgMatrix( CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, ID_FUNC( UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_8_3 ) ) ), 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
+                              return HomalgMatrix( CoefficientsOfPaths( cap_jit_deduplicated_expression_2_3, ID_FUNC( UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_3_3 ) ) ), 1, cap_jit_deduplicated_expression_1_3, cap_jit_hoisted_expression_2_1 );
                           fi;
                           return;
                       end ) );
@@ -328,63 +328,63 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_hoisted_expression_7_1, cap_jit_hoisted_expression_8_1, cap_jit_hoisted_expression_9_1, cap_jit_hoisted_expression_10_1, cap_jit_hoisted_expression_11_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1;
-    cap_jit_deduplicated_expression_5_1 := ObjectList( arg2_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_hoisted_expression_7_1, cap_jit_hoisted_expression_8_1, cap_jit_hoisted_expression_9_1, cap_jit_hoisted_expression_10_1, cap_jit_hoisted_expression_11_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1;
+    cap_jit_deduplicated_expression_4_1 := ObjectList( arg2_1 );
+    cap_jit_deduplicated_expression_2_1 := Length( cap_jit_deduplicated_expression_4_1 );
+    cap_jit_deduplicated_expression_1_1 := [ 1 .. cap_jit_deduplicated_expression_2_1 ];
+    cap_jit_deduplicated_expression_5_1 := ObjectList( arg3_1 );
     cap_jit_deduplicated_expression_3_1 := Length( cap_jit_deduplicated_expression_5_1 );
-    cap_jit_deduplicated_expression_2_1 := [ 1 .. cap_jit_deduplicated_expression_3_1 ];
-    cap_jit_deduplicated_expression_6_1 := ObjectList( arg3_1 );
-    cap_jit_deduplicated_expression_4_1 := Length( cap_jit_deduplicated_expression_6_1 );
-    cap_jit_deduplicated_expression_7_1 := UnderlyingCategory( cat_1 );
-    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_5_1;
-    cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_6_1;
-    cap_jit_hoisted_expression_4_1 := [ 1 .. cap_jit_deduplicated_expression_4_1 ];
-    if cap_jit_deduplicated_expression_3_1 = 0 or cap_jit_deduplicated_expression_4_1 = 0 then
-        cap_jit_hoisted_expression_3_1 := ZeroOfUnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_7_1 );
-        return AdditiveClosureMorphismListList( arg2_1, List( cap_jit_deduplicated_expression_2_1, function ( i_2 )
-                  local cap_jit_hoisted_expression_12_2, cap_jit_hoisted_expression_13_2, cap_jit_deduplicated_expression_8_2;
-                  cap_jit_deduplicated_expression_8_2 := cap_jit_hoisted_expression_1_1[i_2];
-                  cap_jit_hoisted_expression_12_2 := CapCategory( cap_jit_deduplicated_expression_8_2 );
-                  cap_jit_hoisted_expression_13_2 := cap_jit_deduplicated_expression_8_2;
+    cap_jit_deduplicated_expression_6_1 := UnderlyingCategory( cat_1 );
+    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_4_1;
+    cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_5_1;
+    cap_jit_hoisted_expression_4_1 := [ 1 .. cap_jit_deduplicated_expression_3_1 ];
+    if cap_jit_deduplicated_expression_2_1 = 0 or cap_jit_deduplicated_expression_3_1 = 0 then
+        cap_jit_hoisted_expression_3_1 := ZeroOfUnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_6_1 );
+        return AdditiveClosureMorphismListList( arg2_1, List( cap_jit_deduplicated_expression_1_1, function ( i_2 )
+                  local cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_deduplicated_expression_1_2;
+                  cap_jit_deduplicated_expression_1_2 := cap_jit_hoisted_expression_1_1[i_2];
+                  cap_jit_hoisted_expression_1_2 := CapCategory( cap_jit_deduplicated_expression_1_2 );
+                  cap_jit_hoisted_expression_2_2 := cap_jit_deduplicated_expression_1_2;
                   return List( cap_jit_hoisted_expression_4_1, function ( j_3 )
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_12_2, cap_jit_hoisted_expression_13_2, cap_jit_hoisted_expression_2_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
+                                 ), cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_hoisted_expression_2_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
                       end );
               end ), arg3_1 );
     else
         cap_jit_hoisted_expression_10_1 := UnderlyingMatrix( arg4_1 );
-        cap_jit_hoisted_expression_11_1 := UnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_7_1 );
-        cap_jit_hoisted_expression_5_1 := BasisPathsByVertexIndex( cap_jit_deduplicated_expression_7_1 );
-        cap_jit_hoisted_expression_6_1 := cap_jit_deduplicated_expression_4_1;
-        cap_jit_hoisted_expression_7_1 := Concatenation( List( cap_jit_deduplicated_expression_5_1, function ( logic_new_func_x_2 )
-                  local cap_jit_hoisted_expression_18_2;
-                  cap_jit_hoisted_expression_18_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+        cap_jit_hoisted_expression_11_1 := UnderlyingQuiverAlgebra( cap_jit_deduplicated_expression_6_1 );
+        cap_jit_hoisted_expression_5_1 := BasisPathsByVertexIndex( cap_jit_deduplicated_expression_6_1 );
+        cap_jit_hoisted_expression_6_1 := cap_jit_deduplicated_expression_3_1;
+        cap_jit_hoisted_expression_7_1 := Concatenation( List( cap_jit_deduplicated_expression_4_1, function ( logic_new_func_x_2 )
+                  local cap_jit_hoisted_expression_1_2;
+                  cap_jit_hoisted_expression_1_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
                   return List( cap_jit_hoisted_expression_2_1, function ( logic_new_func_x_3 )
-                          return Length( cap_jit_hoisted_expression_18_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )] );
+                          return Length( cap_jit_hoisted_expression_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )] );
                       end );
               end ) );
         cap_jit_hoisted_expression_8_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-        cap_jit_hoisted_expression_9_1 := Concatenation( List( cap_jit_deduplicated_expression_5_1, function ( obj_i_2 )
-                  local cap_jit_hoisted_expression_19_2;
-                  cap_jit_hoisted_expression_19_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( obj_i_2 ) )];
+        cap_jit_hoisted_expression_9_1 := Concatenation( List( cap_jit_deduplicated_expression_4_1, function ( obj_i_2 )
+                  local cap_jit_hoisted_expression_1_2;
+                  cap_jit_hoisted_expression_1_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( obj_i_2 ) )];
                   return List( cap_jit_hoisted_expression_2_1, function ( obj_j_3 )
                           return ObjectifyObjectForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_8_1, Dimension, Length( cap_jit_hoisted_expression_19_2[VertexIndex( UnderlyingVertex( obj_j_3 ) )] ) );
+                                 ), cap_jit_hoisted_expression_8_1, Dimension, Length( cap_jit_hoisted_expression_1_2[VertexIndex( UnderlyingVertex( obj_j_3 ) )] ) );
                       end );
               end ) );
-        return AdditiveClosureMorphismListList( arg2_1, List( cap_jit_deduplicated_expression_2_1, function ( i_2 )
-                  local cap_jit_hoisted_expression_14_2, cap_jit_hoisted_expression_15_2, cap_jit_hoisted_expression_16_2, cap_jit_hoisted_expression_17_2, cap_jit_deduplicated_expression_10_2;
-                  cap_jit_deduplicated_expression_10_2 := cap_jit_hoisted_expression_1_1[i_2];
-                  cap_jit_hoisted_expression_14_2 := cap_jit_hoisted_expression_6_1 * (i_2 - 1);
-                  cap_jit_hoisted_expression_15_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( cap_jit_deduplicated_expression_10_2 ) )];
-                  cap_jit_hoisted_expression_16_2 := CapCategory( cap_jit_deduplicated_expression_10_2 );
-                  cap_jit_hoisted_expression_17_2 := cap_jit_deduplicated_expression_10_2;
+        return AdditiveClosureMorphismListList( arg2_1, List( cap_jit_deduplicated_expression_1_1, function ( i_2 )
+                  local cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_hoisted_expression_3_2, cap_jit_hoisted_expression_4_2, cap_jit_deduplicated_expression_1_2;
+                  cap_jit_deduplicated_expression_1_2 := cap_jit_hoisted_expression_1_1[i_2];
+                  cap_jit_hoisted_expression_1_2 := cap_jit_hoisted_expression_6_1 * (i_2 - 1);
+                  cap_jit_hoisted_expression_2_2 := cap_jit_hoisted_expression_5_1[VertexIndex( UnderlyingVertex( cap_jit_deduplicated_expression_1_2 ) )];
+                  cap_jit_hoisted_expression_3_2 := CapCategory( cap_jit_deduplicated_expression_1_2 );
+                  cap_jit_hoisted_expression_4_2 := cap_jit_deduplicated_expression_1_2;
                   return List( cap_jit_hoisted_expression_4_1, function ( j_3 )
-                          local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_9_3, cap_jit_deduplicated_expression_11_3;
-                          cap_jit_deduplicated_expression_11_3 := cap_jit_hoisted_expression_14_2 + j_3;
-                          cap_jit_deduplicated_expression_1_3 := Sum( cap_jit_hoisted_expression_7_1{[ 1 .. cap_jit_deduplicated_expression_11_3 - 1 ]} ) + 1;
-                          cap_jit_deduplicated_expression_9_3 := cap_jit_hoisted_expression_2_1[j_3];
+                          local cap_jit_deduplicated_expression_1_3, cap_jit_deduplicated_expression_2_3, cap_jit_deduplicated_expression_3_3;
+                          cap_jit_deduplicated_expression_3_3 := cap_jit_hoisted_expression_1_2 + j_3;
+                          cap_jit_deduplicated_expression_1_3 := Sum( cap_jit_hoisted_expression_7_1{[ 1 .. cap_jit_deduplicated_expression_3_3 - 1 ]} ) + 1;
+                          cap_jit_deduplicated_expression_2_3 := cap_jit_hoisted_expression_2_1[j_3];
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_16_2, cap_jit_hoisted_expression_17_2, cap_jit_deduplicated_expression_9_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( cap_jit_hoisted_expression_11_1, EntriesOfHomalgMatrix( CertainColumns( cap_jit_hoisted_expression_10_1, [ cap_jit_deduplicated_expression_1_3 .. cap_jit_deduplicated_expression_1_3 - 1 + Dimension( cap_jit_hoisted_expression_9_1[cap_jit_deduplicated_expression_11_3] ) ] ) ), cap_jit_hoisted_expression_15_2[VertexIndex( UnderlyingVertex( cap_jit_deduplicated_expression_9_3 ) )] ) );
+                                 ), cap_jit_hoisted_expression_3_2, cap_jit_hoisted_expression_4_2, cap_jit_deduplicated_expression_2_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( cap_jit_hoisted_expression_11_1, EntriesOfHomalgMatrix( CertainColumns( cap_jit_hoisted_expression_10_1, [ cap_jit_deduplicated_expression_1_3 .. cap_jit_deduplicated_expression_1_3 - 1 + Dimension( cap_jit_hoisted_expression_9_1[cap_jit_deduplicated_expression_3_3] ) ] ) ), cap_jit_hoisted_expression_2_2[VertexIndex( UnderlyingVertex( cap_jit_deduplicated_expression_2_3 ) )] ) );
                       end );
               end ), arg3_1 );
     fi;
@@ -553,9 +553,8 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1;
-    cap_jit_deduplicated_expression_7_1 := Source( arg2_1 );
-    cap_jit_deduplicated_expression_4_1 := ObjectList( cap_jit_deduplicated_expression_7_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1;
+    cap_jit_deduplicated_expression_4_1 := ObjectList( Source( arg2_1 ) );
     cap_jit_deduplicated_expression_2_1 := Length( cap_jit_deduplicated_expression_4_1 );
     cap_jit_deduplicated_expression_1_1 := [ 1 .. cap_jit_deduplicated_expression_2_1 ];
     cap_jit_deduplicated_expression_5_1 := ObjectList( Range( arg2_1 ) );
@@ -580,12 +579,12 @@ function ( cat_1, arg2_1 )
              end ) then
         return false;
     elif not ForAll( cap_jit_deduplicated_expression_1_1, function ( i_2 )
-                 local cap_jit_hoisted_expression_5_2;
-                 cap_jit_hoisted_expression_5_2 := UnderlyingVertex( cap_jit_hoisted_expression_3_1[i_2] );
+                 local cap_jit_hoisted_expression_1_2;
+                 cap_jit_hoisted_expression_1_2 := UnderlyingVertex( cap_jit_hoisted_expression_3_1[i_2] );
                  return ForAll( cap_jit_hoisted_expression_1_1, function ( j_3 )
-                         local cap_jit_deduplicated_expression_8_3;
-                         cap_jit_deduplicated_expression_8_3 := MatElm( arg2_1, i_2, j_3 );
-                         return (UnderlyingVertex( Source( cap_jit_deduplicated_expression_8_3 ) ) = cap_jit_hoisted_expression_5_2 and UnderlyingVertex( Range( cap_jit_deduplicated_expression_8_3 ) ) = UnderlyingVertex( cap_jit_hoisted_expression_4_1[j_3] ));
+                         local cap_jit_deduplicated_expression_1_3;
+                         cap_jit_deduplicated_expression_1_3 := MatElm( arg2_1, i_2, j_3 );
+                         return (UnderlyingVertex( Source( cap_jit_deduplicated_expression_1_3 ) ) = cap_jit_hoisted_expression_1_2 and UnderlyingVertex( Range( cap_jit_deduplicated_expression_1_3 ) ) = UnderlyingVertex( cap_jit_hoisted_expression_4_1[j_3] ));
                      end );
              end ) then
         return false;
@@ -669,55 +668,55 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_8_1;
-    cap_jit_deduplicated_expression_5_1 := MorphismMatrix( alpha_1 );
-    if IsMatrixObj( cap_jit_deduplicated_expression_5_1 ) then
-        cap_jit_deduplicated_expression_1_1 := NumberColumns( cap_jit_deduplicated_expression_5_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1;
+    cap_jit_deduplicated_expression_4_1 := MorphismMatrix( alpha_1 );
+    if IsMatrixObj( cap_jit_deduplicated_expression_4_1 ) then
+        cap_jit_deduplicated_expression_1_1 := NumberColumns( cap_jit_deduplicated_expression_4_1 );
     else
         cap_jit_deduplicated_expression_1_1 := Length( ObjectList( Range( alpha_1 ) ) );
     fi;
-    cap_jit_deduplicated_expression_7_1 := Source( alpha_1 );
-    cap_jit_deduplicated_expression_8_1 := Range( beta_1 );
-    cap_jit_deduplicated_expression_6_1 := MorphismMatrix( beta_1 );
+    cap_jit_deduplicated_expression_6_1 := Source( alpha_1 );
+    cap_jit_deduplicated_expression_7_1 := Range( beta_1 );
+    cap_jit_deduplicated_expression_5_1 := MorphismMatrix( beta_1 );
     if ForAny( [ cap_jit_deduplicated_expression_1_1, function (  )
-                    if IsMatrixObj( cap_jit_deduplicated_expression_6_1 ) then
-                        return NumberRows( cap_jit_deduplicated_expression_6_1 );
+                    if IsMatrixObj( cap_jit_deduplicated_expression_5_1 ) then
+                        return NumberRows( cap_jit_deduplicated_expression_5_1 );
                     else
                         return Length( ObjectList( Source( beta_1 ) ) );
                     fi;
                     return;
                 end(  ) ], IsZero ) then
-        cap_jit_deduplicated_expression_2_1 := ObjectList( cap_jit_deduplicated_expression_7_1 );
-        cap_jit_deduplicated_expression_4_1 := ObjectList( cap_jit_deduplicated_expression_8_1 );
+        cap_jit_deduplicated_expression_2_1 := ObjectList( cap_jit_deduplicated_expression_6_1 );
+        cap_jit_deduplicated_expression_3_1 := ObjectList( cap_jit_deduplicated_expression_7_1 );
         cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_2_1;
-        cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_4_1;
+        cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_3_1;
         cap_jit_hoisted_expression_3_1 := ZeroOfUnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) );
-        cap_jit_hoisted_expression_4_1 := [ 1 .. Length( cap_jit_deduplicated_expression_4_1 ) ];
-        return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_7_1, List( [ 1 .. Length( cap_jit_deduplicated_expression_2_1 ) ], function ( i_2 )
-                  local cap_jit_hoisted_expression_7_2, cap_jit_hoisted_expression_8_2, cap_jit_deduplicated_expression_11_2;
-                  cap_jit_deduplicated_expression_11_2 := cap_jit_hoisted_expression_1_1[i_2];
-                  cap_jit_hoisted_expression_7_2 := CapCategory( cap_jit_deduplicated_expression_11_2 );
-                  cap_jit_hoisted_expression_8_2 := cap_jit_deduplicated_expression_11_2;
+        cap_jit_hoisted_expression_4_1 := [ 1 .. Length( cap_jit_deduplicated_expression_3_1 ) ];
+        return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_6_1, List( [ 1 .. Length( cap_jit_deduplicated_expression_2_1 ) ], function ( i_2 )
+                  local cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_deduplicated_expression_1_2;
+                  cap_jit_deduplicated_expression_1_2 := cap_jit_hoisted_expression_1_1[i_2];
+                  cap_jit_hoisted_expression_1_2 := CapCategory( cap_jit_deduplicated_expression_1_2 );
+                  cap_jit_hoisted_expression_2_2 := cap_jit_deduplicated_expression_1_2;
                   return List( cap_jit_hoisted_expression_4_1, function ( j_3 )
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), cap_jit_hoisted_expression_7_2, cap_jit_hoisted_expression_8_2, cap_jit_hoisted_expression_2_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
+                                 ), cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_hoisted_expression_2_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
                       end );
-              end ), cap_jit_deduplicated_expression_8_1 );
+              end ), cap_jit_deduplicated_expression_7_1 );
     else
         cap_jit_hoisted_expression_5_1 := [ 1 .. cap_jit_deduplicated_expression_1_1 ];
         cap_jit_hoisted_expression_6_1 := [ 1 .. NumberColumns( beta_1 ) ];
-        return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_7_1, List( [ 1 .. NumberRows( alpha_1 ) ], function ( i_2 )
+        return AdditiveClosureMorphismListList( cap_jit_deduplicated_expression_6_1, List( [ 1 .. NumberRows( alpha_1 ) ], function ( i_2 )
                   return List( cap_jit_hoisted_expression_6_1, function ( j_3 )
                           return Sum( List( cap_jit_hoisted_expression_5_1, function ( k_4 )
-                                    local cap_jit_deduplicated_expression_3_4, cap_jit_deduplicated_expression_9_4, cap_jit_deduplicated_expression_10_4;
-                                    cap_jit_deduplicated_expression_10_4 := MatElm( beta_1, k_4, j_3 );
-                                    cap_jit_deduplicated_expression_9_4 := MatElm( alpha_1, i_2, k_4 );
-                                    cap_jit_deduplicated_expression_3_4 := Source( cap_jit_deduplicated_expression_9_4 );
+                                    local cap_jit_deduplicated_expression_1_4, cap_jit_deduplicated_expression_2_4, cap_jit_deduplicated_expression_3_4;
+                                    cap_jit_deduplicated_expression_2_4 := MatElm( alpha_1, i_2, k_4 );
+                                    cap_jit_deduplicated_expression_1_4 := Source( cap_jit_deduplicated_expression_2_4 );
+                                    cap_jit_deduplicated_expression_3_4 := MatElm( beta_1, k_4, j_3 );
                                     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                           ), CapCategory( cap_jit_deduplicated_expression_3_4 ), cap_jit_deduplicated_expression_3_4, Range( cap_jit_deduplicated_expression_10_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_9_4 ) * UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_10_4 ) );
+                                           ), CapCategory( cap_jit_deduplicated_expression_1_4 ), cap_jit_deduplicated_expression_1_4, Range( cap_jit_deduplicated_expression_3_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_2_4 ) * UnderlyingQuiverAlgebraElement( cap_jit_deduplicated_expression_3_4 ) );
                                 end ) );
                       end );
-              end ), cap_jit_deduplicated_expression_8_1 );
+              end ), cap_jit_deduplicated_expression_7_1 );
     fi;
     return;
 end
@@ -792,13 +791,13 @@ function ( cat_1, a_1, b_1 )
     cap_jit_hoisted_expression_3_1 := ZeroOfUnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) );
     cap_jit_hoisted_expression_4_1 := [ 1 .. Length( cap_jit_deduplicated_expression_2_1 ) ];
     return AdditiveClosureMorphismListList( a_1, List( [ 1 .. Length( cap_jit_deduplicated_expression_1_1 ) ], function ( i_2 )
-              local cap_jit_hoisted_expression_5_2, cap_jit_hoisted_expression_6_2, cap_jit_deduplicated_expression_3_2;
-              cap_jit_deduplicated_expression_3_2 := cap_jit_hoisted_expression_1_1[i_2];
-              cap_jit_hoisted_expression_5_2 := CapCategory( cap_jit_deduplicated_expression_3_2 );
-              cap_jit_hoisted_expression_6_2 := cap_jit_deduplicated_expression_3_2;
+              local cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_deduplicated_expression_1_2;
+              cap_jit_deduplicated_expression_1_2 := cap_jit_hoisted_expression_1_1[i_2];
+              cap_jit_hoisted_expression_1_2 := CapCategory( cap_jit_deduplicated_expression_1_2 );
+              cap_jit_hoisted_expression_2_2 := cap_jit_deduplicated_expression_1_2;
               return List( cap_jit_hoisted_expression_4_1, function ( j_3 )
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), cap_jit_hoisted_expression_5_2, cap_jit_hoisted_expression_6_2, cap_jit_hoisted_expression_2_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
+                             ), cap_jit_hoisted_expression_1_2, cap_jit_hoisted_expression_2_2, cap_jit_hoisted_expression_2_1[j_3], UnderlyingQuiverAlgebraElement, cap_jit_hoisted_expression_3_1 );
                   end );
           end ), b_1 );
 end
