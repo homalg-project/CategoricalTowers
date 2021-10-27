@@ -10,20 +10,20 @@ BindGlobal( "ADD_FUNCTIONS_FOR_StablePosetOfCategoryOfPosetOfCategoryOfSliceCate
         
 ########
 function ( cat_1, a_1, b_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_9_1;
+    local cap_jit_morphism_attribute_1_1, cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_8_1;
     cap_jit_deduplicated_expression_7_1 := AmbientCategory( cat_1 );
     cap_jit_deduplicated_expression_6_1 := AmbientCategory( cap_jit_deduplicated_expression_7_1 );
     cap_jit_deduplicated_expression_4_1 := AmbientCategory( cap_jit_deduplicated_expression_6_1 );
     cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_4_1 );
     cap_jit_deduplicated_expression_2_1 := HomalgIdentityMatrix( 1, cap_jit_deduplicated_expression_3_1 );
-    cap_jit_deduplicated_expression_9_1 := 1 * 1;
-    cap_jit_deduplicated_expression_1_1 := DiagMat( cap_jit_deduplicated_expression_3_1, ListWithIdenticalEntries( cap_jit_deduplicated_expression_9_1, cap_jit_deduplicated_expression_2_1 ) ) * HomalgMatrix( PermutationMat( PermList( List( [ 1 .. cap_jit_deduplicated_expression_9_1 ], function ( i_2 )
-                      local cap_jit_deduplicated_expression_8_2;
-                      cap_jit_deduplicated_expression_8_2 := (i_2 - 1);
-                      return (REM_INT( cap_jit_deduplicated_expression_8_2, 1 ) * 1 + QUO_INT( cap_jit_deduplicated_expression_8_2, 1 ) + 1);
-                  end ) ), cap_jit_deduplicated_expression_9_1 ), cap_jit_deduplicated_expression_9_1, cap_jit_deduplicated_expression_9_1, cap_jit_deduplicated_expression_3_1 ) * DiagMat( cap_jit_deduplicated_expression_3_1, ListWithIdenticalEntries( 1, function (  )
+    cap_jit_deduplicated_expression_8_1 := 1 * 1;
+    cap_jit_deduplicated_expression_1_1 := DiagMat( cap_jit_deduplicated_expression_3_1, ListWithIdenticalEntries( cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_2_1 ) ) * HomalgMatrix( PermutationMat( PermList( List( [ 1 .. cap_jit_deduplicated_expression_8_1 ], function ( i_2 )
+                      local cap_jit_deduplicated_expression_1_2;
+                      cap_jit_deduplicated_expression_1_2 := (i_2 - 1);
+                      return (REM_INT( cap_jit_deduplicated_expression_1_2, 1 ) * 1 + QUO_INT( cap_jit_deduplicated_expression_1_2, 1 ) + 1);
+                  end ) ), cap_jit_deduplicated_expression_8_1 ), cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_3_1 ) * DiagMat( cap_jit_deduplicated_expression_3_1, ListWithIdenticalEntries( 1, function (  )
                   if (1 = 0) then
-                      return HomalgZeroMatrix( cap_jit_deduplicated_expression_9_1, 1, cap_jit_deduplicated_expression_3_1 );
+                      return HomalgZeroMatrix( cap_jit_deduplicated_expression_8_1, 1, cap_jit_deduplicated_expression_3_1 );
                   else
                       return ConvertMatrixToColumn( cap_jit_deduplicated_expression_2_1 );
                   fi;
