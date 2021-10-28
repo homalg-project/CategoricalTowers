@@ -77,9 +77,6 @@ InstallGlobalFunction( CategoryConstructor,
               "MorphismDatum",
               "IsIdenticalToIdentityMorphism",    ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
               "IsIdenticalToZeroMorphism",        ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
-              "DirectSumCodiagonalDifference",    ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
-              "DirectSumDiagonalDifference",      ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
-              "FiberProductEmbeddingInDirectSum", ## TOOD: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
     properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] );
@@ -410,6 +407,14 @@ InstallGlobalFunction( CategoryConstructor,
                         Add( list_of_operations_to_install, with_given_object_name );
                     fi;
                 fi;
+                continue;
+            fi;
+            
+            # if source and range cannot be computed we cannot do anything
+            if not (
+                    IsBound( info.output_source_getter_string ) and info.can_always_compute_output_source_getter and
+                    IsBound( info.output_range_getter_string ) and info.can_always_compute_output_range_getter
+                   ) then
                 continue;
             fi;
             
