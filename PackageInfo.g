@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2021.10-01",
+Version := "2021.10-02",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -30,6 +30,22 @@ Persons := [
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Kamal",
+    LastName := "Saleh",
+    WWWHome := "https://github.com/kamalsaleh",
+    Email := "kamal.saleh@uni-siegen.de",
+    PostalAddress := Concatenation(
+                       "Department Mathematik\n",
+                       "Universität Siegen\n",
+                       "Walter-Flex-Straße 3\n",
+                       "57072 Siegen\n",
+                       "Germany" ),
+    Place := "Siegen",
+    Institution := "Universität Siegen",
   ),
 ],
 
