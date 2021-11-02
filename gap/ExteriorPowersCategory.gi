@@ -262,9 +262,6 @@ InstallMethod( ExteriorPowersCategory,
     
     SetCachingOfCategoryCrisp( EC );
     
-    AddIsEqualForObjects( EC, { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
-    AddIsEqualForMorphisms( EC, { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
-    
     if HasCommutativeRingOfLinearCategory( C ) then
         SetCommutativeRingOfLinearCategory( EC, CommutativeRingOfLinearCategory( C ) );
     fi;
