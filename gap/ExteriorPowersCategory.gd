@@ -25,14 +25,14 @@ DeclareCategory( "IsCellInExteriorPowersCategory",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in an exterior power category
+#!  The &GAP; category of objects in an exterior powers category
 #! @Arguments object
 DeclareCategory( "IsObjectInExteriorPowersCategory",
         IsCellInExteriorPowersCategory and
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in an exterior power category
+#!  The &GAP; category of morphisms in an exterior powers category
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInExteriorPowersCategory",
         IsCellInExteriorPowersCategory and
@@ -45,7 +45,8 @@ DeclareCategory( "IsMorphismInExteriorPowersCategory",
 ####################################
 
 #! @Description
-#!  The infinite list underlying the cell (=object or morphism) <A>c</A>.
+#!  The CAP category object or listlist of CAP category morphisms
+#!  underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
 #! @Returns a &CAP; category
 DeclareAttribute( "UnderlyingCell",
@@ -95,7 +96,7 @@ DeclareOperation( "*",
         [ IsHomalgRing, IsCellInExteriorPowersCategory ] );
 
 #! @Description
-#!  Construct a morphism in a positively $Z$-graded category.
+#!  Construct a morphism in an exterior powers category
 #! @Arguments S, L, T
 #! @Returns a &CAP; morphism
 #! @Group MorphismInExteriorPowersCategory
