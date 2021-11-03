@@ -1,5 +1,3 @@
-Add( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, "HomalgIdentityMatrix" );
-
 # HomalgIdentityMatrix( size, ring ) * matrix -> matrix
 CapJitAddLogicTemplate(
     rec(
