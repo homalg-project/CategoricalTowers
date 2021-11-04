@@ -1121,7 +1121,6 @@ InstallMethod( Algebroid,
     A!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingQuiverAlgebra",
-            "ZeroOfUnderlyingQuiverAlgebra",
             "BasisPathsByVertexIndex",
             "HomStructureOnBasisPaths",
         ],
@@ -1157,7 +1156,6 @@ InstallMethod( Algebroid,
     A!.over_Z := over_Z;
     
     SetUnderlyingQuiverAlgebra( A, Rq );
-    SetZeroOfUnderlyingQuiverAlgebra( A, Zero( Rq ) );
     SetFilterObj( A, IsAlgebroid );
     if Length( Vertices( quiver ) ) = 1 then
         SetFilterObj( A, IsAlgebraAsCategory );
