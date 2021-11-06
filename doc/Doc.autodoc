@@ -6,10 +6,12 @@
 
 @Section IsWeakTerminal and IsWeakInitial
 
+@Section RelativeLift/RelativeColift
+
+@Section Biased relative weak fiber product
+
 @Section EmbeddingOfSumOfImagesOfAllMorphisms
 
 @Section Systems of homogeneous linear equations in linear categories
 
 @Section Add-methods
-
-
