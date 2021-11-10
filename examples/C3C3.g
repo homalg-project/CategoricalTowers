@@ -83,19 +83,19 @@ Display( zero );
 #! Image of (1)-[{ Z(3)^0*(a) }]->(1):
 #! (an empty 0 x 0 matrix)
 #! 
-#! A zero, identity morphism in Category of matrices over GF(3)
+#! A morphism in Category of matrices over GF(3)
 #! 
 #! 
 #! Image of (1)-[{ Z(3)^0*(b) }]->(2):
 #! (an empty 0 x 0 matrix)
 #! 
-#! A zero, identity morphism in Category of matrices over GF(3)
+#! A morphism in Category of matrices over GF(3)
 #! 
 #! 
 #! Image of (2)-[{ Z(3)^0*(c) }]->(2):
 #! (an empty 0 x 0 matrix)
 #! 
-#! A zero, identity morphism in Category of matrices over GF(3)
+#! A morphism in Category of matrices over GF(3)
 const := TensorUnit( FunCat );
 #! <(1)->1, (2)->1; (a)->1x1, (b)->1x1, (c)->1x1>
 Display( const );
