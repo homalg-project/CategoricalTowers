@@ -57,7 +57,7 @@ The supported categorical doctrine of the category of representations is
 
 ```gap
 gap> InfoOfInstalledOperationsOfCategory( CatReps );
-93 primitive operations were used to derive 255 operations for this category which
+93 primitive operations were used to derive 265 operations for this category which
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRing
 * IsSymmetricMonoidalCategory
