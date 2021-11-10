@@ -136,7 +136,7 @@ z := ZeroObject( H );
 z( B.1 );
 #! <A vector space object over Q of dimension 0>
 z( B.t );
-#! <A zero, identity morphism in Category of matrices over Q>
+#! <A morphism in Category of matrices over Q>
 idz := IdentityMorphism( z );
 #! <(1)->0x0>
 idz( B.1 );

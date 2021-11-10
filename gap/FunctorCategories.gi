@@ -735,23 +735,34 @@ InstallMethodWithCache( Hom,
             Error( "the filter list of method record entry ", name, ".functorial is not a dense list\n" );
         fi;
         
-        if not Length( functorial.filter_list ) in [ 1, 6 ] then
-            Error( "the length of the filter list of method record entry ", name, ".functorial is not 1 or 6, FunctorCategories cannot handle this\n" );
+        if not Length( functorial.filter_list ) in [ 1, 4 ] then
+            Error( "the length of the filter list of method record entry ", name, ".functorial is not 1 or 4, FunctorCategories cannot handle this\n" );
         fi;
+        
+        Assert( 0, functorial.filter_list[1] = "category" );
         
         if Length( functorial.filter_list ) = 1 then
             diagram := "empty diagram";
-        elif functorial.filter_list[3] = "list_of_morphisms" then
+        elif functorial.filter_list[2] = "list_of_morphisms" then
             diagram := "multiple arrows";
-        elif functorial.filter_list[3] = "list_of_objects" then
+        elif functorial.filter_list[2] = "list_of_objects" then
             diagram := "multiple objects";
-        elif functorial.filter_list[3] = "morphism" then
+        elif functorial.filter_list[2] = "morphism" then
             diagram := "single arrow";
         else
             Error( "FunctorCategories cannot determine the diagram type of method record entry ", name, ".functorial\n" );
         fi;
         
-        functorial := ValueGlobal( info.functorial );
+        if diagram = "empty diagram" then
+            
+            functorial := ValueGlobal( info.functorial );
+            
+        else
+            
+            # use the WithGiven version
+            functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
+            
+        fi;
         
         if diagram = "empty diagram" then
             
