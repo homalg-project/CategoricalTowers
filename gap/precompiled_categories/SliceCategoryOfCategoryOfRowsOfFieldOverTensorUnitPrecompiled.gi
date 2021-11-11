@@ -158,10 +158,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
-    cap_jit_deduplicated_expression_2_1 := UnderlyingCell( arg2_1 );
-    cap_jit_deduplicated_expression_1_1 := UnderlyingMatrix( cap_jit_deduplicated_expression_2_1 );
-    return RankOfObject( Source( cap_jit_deduplicated_expression_2_1 ) ) = RankOfObject( Range( cap_jit_deduplicated_expression_2_1 ) ) and (IsZero( ReducedSyzygiesOfRows( cap_jit_deduplicated_expression_1_1 ) ) and IsZero( ReducedSyzygiesOfColumns( cap_jit_deduplicated_expression_1_1 ) ));
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
+    cap_jit_deduplicated_expression_3_1 := UnderlyingCell( arg2_1 );
+    cap_jit_deduplicated_expression_2_1 := UnderlyingMatrix( cap_jit_deduplicated_expression_3_1 );
+    cap_jit_deduplicated_expression_1_1 := RowRankOfMatrix( cap_jit_deduplicated_expression_2_1 );
+    return RankOfObject( Source( cap_jit_deduplicated_expression_3_1 ) ) = RankOfObject( Range( cap_jit_deduplicated_expression_3_1 ) ) and (NumberRows( cap_jit_deduplicated_expression_2_1 ) - cap_jit_deduplicated_expression_1_1 = 0 and NumberColumns( cap_jit_deduplicated_expression_2_1 ) - cap_jit_deduplicated_expression_1_1 = 0);
 end
 ########
         
@@ -241,9 +242,10 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_deduplicated_expression_1_1;
-    cap_jit_deduplicated_expression_1_1 := UnderlyingMatrix( UnderlyingCell( arg2_1 ) );
-    return IsZero( ReducedSyzygiesOfRows( cap_jit_deduplicated_expression_1_1 ) ) and IsZero( ReducedSyzygiesOfColumns( cap_jit_deduplicated_expression_1_1 ) );
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_2_1 := UnderlyingMatrix( UnderlyingCell( arg2_1 ) );
+    cap_jit_deduplicated_expression_1_1 := RowRankOfMatrix( cap_jit_deduplicated_expression_2_1 );
+    return NumberRows( cap_jit_deduplicated_expression_2_1 ) - cap_jit_deduplicated_expression_1_1 = 0 and NumberColumns( cap_jit_deduplicated_expression_2_1 ) - cap_jit_deduplicated_expression_1_1 = 0;
 end
 ########
         
@@ -302,9 +304,10 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_deduplicated_expression_1_1;
-    cap_jit_deduplicated_expression_1_1 := UnderlyingMatrix( UnderlyingMorphism( arg2_1 ) );
-    return IsZero( ReducedSyzygiesOfRows( cap_jit_deduplicated_expression_1_1 ) ) and IsZero( ReducedSyzygiesOfColumns( cap_jit_deduplicated_expression_1_1 ) );
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_2_1 := UnderlyingMatrix( UnderlyingMorphism( arg2_1 ) );
+    cap_jit_deduplicated_expression_1_1 := RowRankOfMatrix( cap_jit_deduplicated_expression_2_1 );
+    return NumberRows( cap_jit_deduplicated_expression_2_1 ) - cap_jit_deduplicated_expression_1_1 = 0 and NumberColumns( cap_jit_deduplicated_expression_2_1 ) - cap_jit_deduplicated_expression_1_1 = 0;
 end
 ########
         
