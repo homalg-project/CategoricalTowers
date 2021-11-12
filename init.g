@@ -6,6 +6,7 @@
 
 ReadPackage( "IntrinsicGradedModules", "gap/IntrinsicGradedModules.gd" );
 ReadPackage( "IntrinsicGradedModules", "gap/FpGradedModulesByFreyd.gd" );
+ReadPackage( "IntrinsicGradedModules", "gap/FpGradedModulesByFreyd.autogen.gd" );
 ReadPackage( "IntrinsicGradedModules", "gap/FunctorsForFpGradedModulesByFreyd.gd" );
 ReadPackage( "IntrinsicGradedModules", "gap/NatTrForFpGradedModulesByFreyd.gd" );
 ReadPackage( "IntrinsicGradedModules", "gap/GradedModule.gd" );

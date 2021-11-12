@@ -6,8 +6,10 @@
 
 @Section Natural transformations
 
-@Section GAP categories
-
 @Section Examples
 
 @InsertChunk PresentationWithDegrees
+
+@Section Supported CAP operations
+
+@Section GAP categories
