@@ -28,7 +28,7 @@ end );
 ####################################
 
 BindGlobal( "FP_GRADED_MODULES",
-  function( P )
+  function( P, left )
     local graded_ring, B, weights, Freyd;
     
     graded_ring := UnderlyingGradedRing( P );
@@ -50,6 +50,24 @@ BindGlobal( "FP_GRADED_MODULES",
     
     Freyd := FREYD_CATEGORY( P : FinalizeCategory := false );
     
+    if left then
+        
+        SetFilterObj( Freyd, IsFpGradedLeftModules );
+        
+        AddObjectRepresentation( Freyd, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedLeftModulesObject );
+        
+        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasMorphismDatum and IsFpGradedLeftModulesMorphism );
+        
+    else
+         
+        SetFilterObj( Freyd, IsFpGradedRightModules );
+        
+        AddObjectRepresentation( Freyd, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedRightModulesObject );
+        
+        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasMorphismDatum and IsFpGradedRightModulesMorphism );
+        
+    fi;
+    
     INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY( Freyd );
     
     Finalize( Freyd );
@@ -66,13 +84,13 @@ end );
 InstallMethod( FreydCategory,
         [ IsCategoryOfGradedRows ],
 
-  FP_GRADED_MODULES );
+  P -> FP_GRADED_MODULES( P, true ) );
         
 ##
 InstallMethod( FreydCategory,
         [ IsCategoryOfGradedColumns ],
 
-  FP_GRADED_MODULES );
+  P -> FP_GRADED_MODULES( P, false ) );
         
 ##
 InstallMethod( FpGradedLeftModules,
@@ -145,8 +163,6 @@ InstallMethod( FpGradedLeftModules,
     
     ## mimic the FreydCategory-method in GradedModulePresentationsForCAP
     #Freyd!.Name := Concatenation( "Category of f.p. graded left modules over ", RingName( graded_ring ) );
-    
-    SetFilterObj( Freyd, IsFpGradedLeftModules );
     
     Finalize( Freyd );
     
@@ -225,8 +241,6 @@ InstallMethod( FpGradedRightModules,
     
     ## mimic the FreydCategory-method in GradedModulePresentationsForCAP
     #Freyd!.Name := Concatenation( "Category of f.p. graded right modules over ", RingName( graded_ring ) );
-    
-    SetFilterObj( Freyd, IsFpGradedRightModules );
     
     Finalize( Freyd );
     
