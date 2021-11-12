@@ -1,5 +1,13 @@
 @Chapter Categories of finitely presented modules
 
+@Section Constructors
+
+@Section Supported CAP operations
+
+@Section Operations and global functions
+
+@Section GAP categories
+
 @Chapter Relations
 
 @Chapter Generators

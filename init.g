@@ -7,6 +7,7 @@
 ReadPackage( "IntrinsicModules", "gap/IntrinsicModules.gd" );
 ReadPackage( "IntrinsicModules", "gap/FreydCategory.gd" );
 ReadPackage( "IntrinsicModules", "gap/FpModulesByFreyd.gd" );
+ReadPackage( "IntrinsicModules", "gap/FpModulesByFreyd.autogen.gd" );
 ReadPackage( "IntrinsicModules", "gap/FunctorsForFpModulesByFreyd.gd" );
 ReadPackage( "IntrinsicModules", "gap/NatTrForFpModulesByFreyd.gd" );
 ReadPackage( "IntrinsicModules", "gap/HomalgRelationsByPresentations.gd" );
