@@ -48,7 +48,15 @@ jobs:
           [ "${{ matrix.image }}" = "gapsystem/gap-docker-master" ] && ./IntrinsicModules/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
-          cd IntrinsicModules
+          cd CAP_project/CAP/
+          make doc
+          cd ../MonoidalCategories/
+          make doc
+          cd ../FreydCategoriesForCAP/
+          make doc
+          cd ../../CategoryConstructor/
+          make doc
+          cd ../IntrinsicModules
           CUR_SHA=$(git rev-parse --verify HEAD)
           if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
