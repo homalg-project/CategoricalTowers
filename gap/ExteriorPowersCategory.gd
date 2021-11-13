@@ -48,7 +48,7 @@ DeclareCategory( "IsMorphismInExteriorPowersCategory",
 #!  The CAP category object or listlist of CAP category morphisms
 #!  underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
-#! @Returns a &CAP; category
+#! @Returns a &CAP; category object or listlist
 DeclareAttribute( "UnderlyingCell",
         IsCellInExteriorPowersCategory );
 
