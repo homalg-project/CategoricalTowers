@@ -6,13 +6,14 @@
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
-  function( key_val_rec )
+  function( key_val_rec, package_name )
     local L, name, pos;
     
     L := [ "IsMonoidalCategory",
            "IsStrictMonoidalCategory",
            "IsBraidedMonoidalCategory",
            "IsSymmetricMonoidalCategory",
+           "AdditiveMonoidal",
            "TensorProductOnObjects",
            "TensorProduct",
            "TensorUnit",
@@ -34,12 +35,12 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
            "oplus",
            "tensor_product",
            "tensorSproduct",
-           "DistributiveS",
+           "AdditiveS",
            "BraidedS",
            ];
     
     for name in L do
-        if IsList( name ) and not IsString( name) then
+        if IsList( name ) and not IsString( name ) then
             if not IsBound( key_val_rec.( name[1] ) ) then
                 if not IsBound( key_val_rec.( name[2] ) ) then
                     Error( "both components with the names ", name[1], " and ", name[2], " are missing in the given key_value_record record\n" );
@@ -58,8 +59,10 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
     
     L := List( L{[ 1 .. Length( L ) - 2 ]}, name -> [ name, key_val_rec.(name) ] );
     
+    L := Concatenation( [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ] ], L );
+    
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
-    Add( L, [ "Distributive ", key_val_rec.DistributiveS ] );
+    Add( L, [ "Additive ", key_val_rec.AdditiveS ] );
     Add( L, [ "Braided ", key_val_rec.BraidedS ] );
     
     return L;
@@ -69,16 +72,16 @@ end );
 ##    
 InstallGlobalFunction( WriteFileForMonoidalStructure,
   function( key_val_rec, package_name, files_rec )
-    local dir, L, files, file, source, target;
+    local dir, L, files, header, file, source, target;
     
-    L := CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES( key_val_rec );
+    L := CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES( key_val_rec, package_name );
     
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     
     files := [ "MonoidalCategoriesDoc_gd",
                "MonoidalCategoriesTensorProductAndUnit_gd",
                "MonoidalCategories_gd",
-               "DistributiveMonoidalCategories_gd",
+               "AdditiveMonoidalCategories_gd",
                "BraidedMonoidalCategoriesDoc_gd",
                "BraidedMonoidalCategories_gd",
                "SymmetricMonoidalCategoriesDoc_gd",
@@ -86,8 +89,8 @@ InstallGlobalFunction( WriteFileForMonoidalStructure,
                "MonoidalCategoriesTensorProductAndUnit_gi",
                "MonoidalCategoriesMethodRecord_gi",
                "MonoidalCategories_gi",
-               "DistributiveMonoidalCategoriesMethodRecord_gi",
-               "DistributiveMonoidalCategories_gi",
+               "AdditiveMonoidalCategoriesMethodRecord_gi",
+               "AdditiveMonoidalCategories_gi",
                "BraidedMonoidalCategoriesMethodRecord_gi",
                "BraidedMonoidalCategories_gi",
                "MonoidalCategoriesDerivedMethods_gi",
@@ -96,13 +99,19 @@ InstallGlobalFunction( WriteFileForMonoidalStructure,
                "SymmetricMonoidalCategoriesDerivedMethods_gi",
                ];
     
+    header := Concatenation(
+                      "\n\n\n\n\n\n",
+                      "# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v",
+                      PackageInfo( "MonoidalCategories" )[1].Version,
+                      "\n\n" );
+    
     for file in files do
         if not IsBound( files_rec.(file) ) then
             Info( InfoWarning, 1, "the component ", file, " is not bound files_rec" );
         elif IsString( files_rec.(file) ) then
             source := Concatenation( dir, ReplacedString( file, "_", "." ) );
             target := Concatenation( PackageInfo( package_name )[1].InstallationPath, "/gap/", files_rec.(file) );
-            WriteReplacedFileForHomalg( source, L, target );
+            WriteReplacedFileForHomalg( source, L, target : header := header );
         fi;
     od;
     
