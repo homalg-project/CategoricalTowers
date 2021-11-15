@@ -133,9 +133,9 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects( coheyting_algebra,
-      function( cat, A1, A2, B1, B2, L )
+      function( cat, source, L, range )
         
-        return UniqueMorphism( L[1], L[2] );
+        return UniqueMorphism( source, range );
         
     end );
     
