@@ -59,7 +59,11 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
     
     L := List( L{[ 1 .. Length( L ) - 2 ]}, name -> [ name, key_val_rec.(name) ] );
     
-    L := Concatenation( [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ] ], L );
+    L := Concatenation(
+                 [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ],
+                   [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
+                     Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
+                   ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "Additive ", key_val_rec.AdditiveS ] );
@@ -100,7 +104,6 @@ InstallGlobalFunction( WriteFileForMonoidalStructure,
                ];
     
     header := Concatenation(
-                      "\n\n\n\n\n\n",
                       "# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v",
                       PackageInfo( "MonoidalCategories" )[1].Version,
                       "\n\n" );

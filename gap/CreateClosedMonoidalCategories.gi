@@ -56,6 +56,8 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
     
     L := Concatenation(
                  [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ],
+                   [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
+                     Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
                    [ "Closed Monoidal", key_val_rec.ClosedSMonoidal ] ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
@@ -90,7 +92,6 @@ InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
                ];
     
     header := Concatenation(
-                      "\n\n\n\n\n\n",
                       "# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v",
                       PackageInfo( "MonoidalCategories" )[1].Version,
                       "\n\n" );
