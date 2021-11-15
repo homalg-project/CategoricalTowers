@@ -10,45 +10,45 @@ BindGlobal( "ADD_FUNCTIONS_FOR_StablePosetOfCategoryOfPosetOfCategoryOfSliceCate
         
 ########
 function ( cat_1, a_1, b_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1, cap_jit_deduplicated_expression_7_1, cap_jit_deduplicated_expression_8_1;
-    cap_jit_deduplicated_expression_7_1 := AmbientCategory( cat_1 );
-    cap_jit_deduplicated_expression_6_1 := AmbientCategory( cap_jit_deduplicated_expression_7_1 );
-    cap_jit_deduplicated_expression_4_1 := AmbientCategory( cap_jit_deduplicated_expression_6_1 );
-    cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_4_1 );
-    cap_jit_deduplicated_expression_2_1 := HomalgIdentityMatrix( 1, cap_jit_deduplicated_expression_3_1 );
-    cap_jit_deduplicated_expression_8_1 := 1 * 1;
-    cap_jit_deduplicated_expression_1_1 := DiagMat( cap_jit_deduplicated_expression_3_1, ListWithIdenticalEntries( cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_2_1 ) ) * HomalgMatrix( PermutationMat( PermList( List( [ 1 .. cap_jit_deduplicated_expression_8_1 ], function ( i_2 )
-                      local cap_jit_deduplicated_expression_1_2;
-                      cap_jit_deduplicated_expression_1_2 := (i_2 - 1);
-                      return (REM_INT( cap_jit_deduplicated_expression_1_2, 1 ) * 1 + QUO_INT( cap_jit_deduplicated_expression_1_2, 1 ) + 1);
-                  end ) ), cap_jit_deduplicated_expression_8_1 ), cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_8_1, cap_jit_deduplicated_expression_3_1 ) * DiagMat( cap_jit_deduplicated_expression_3_1, ListWithIdenticalEntries( 1, function (  )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
+    deduped_11_1 := AmbientCategory( cat_1 );
+    deduped_10_1 := AmbientCategory( deduped_11_1 );
+    deduped_12_1 := 1 * 1;
+    deduped_8_1 := AmbientCategory( deduped_10_1 );
+    deduped_7_1 := UnderlyingRing( deduped_8_1 );
+    deduped_6_1 := HomalgIdentityMatrix( 1, deduped_7_1 );
+    deduped_5_1 := DiagMat( deduped_7_1, ListWithIdenticalEntries( deduped_12_1, deduped_6_1 ) ) * HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_12_1 ], function ( i_2 )
+                      local deduped_1_2;
+                      deduped_1_2 := (i_2 - 1);
+                      return (REM_INT( deduped_1_2, 1 ) * 1 + QUO_INT( deduped_1_2, 1 ) + 1);
+                  end ) ), deduped_12_1 ), deduped_12_1, deduped_12_1, deduped_7_1 ) * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, function (  )
                   if (1 = 0) then
-                      return HomalgZeroMatrix( cap_jit_deduplicated_expression_8_1, 1, cap_jit_deduplicated_expression_3_1 );
+                      return HomalgZeroMatrix( deduped_12_1, 1, deduped_7_1 );
                   else
-                      return ConvertMatrixToColumn( cap_jit_deduplicated_expression_2_1 );
+                      return ConvertMatrixToColumn( deduped_6_1 );
                   fi;
                   return;
               end(  ) ) );
-    cap_jit_deduplicated_expression_5_1 := UnderlyingMorphism( UnderlyingCell( UnderlyingCell( a_1 ) ) );
-    cap_jit_hoisted_expression_1_1 := RankOfObject( Source( cap_jit_deduplicated_expression_5_1 ) );
-    cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_3_1;
-    cap_jit_hoisted_expression_3_1 := RightDivide( HomalgIdentityMatrix( NumberColumns( cap_jit_deduplicated_expression_1_1 ), cap_jit_deduplicated_expression_3_1 ), cap_jit_deduplicated_expression_1_1 ) * TransposedMatrix( UnderlyingMatrix( cap_jit_deduplicated_expression_5_1 ) );
-    cap_jit_morphism_attribute_1_1 := CapFixpoint( function ( x_2, y_2 )
+    deduped_9_1 := UnderlyingMorphism( UnderlyingCell( UnderlyingCell( a_1 ) ) );
+    hoisted_2_1 := RankOfObject( Source( deduped_9_1 ) );
+    hoisted_3_1 := deduped_7_1;
+    hoisted_4_1 := RightDivide( HomalgIdentityMatrix( NumberColumns( deduped_5_1 ), deduped_7_1 ), deduped_5_1 ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
+    morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( DecideZeroRows( y_2, x_2 ) );
         end, function ( x_2 )
-            return ReducedSyzygiesOfRows( cap_jit_hoisted_expression_3_1, DiagMat( cap_jit_hoisted_expression_2_1, ListWithIdenticalEntries( cap_jit_hoisted_expression_1_1, x_2 ) ) );
+            return ReducedSyzygiesOfRows( hoisted_4_1, DiagMat( hoisted_3_1, ListWithIdenticalEntries( hoisted_2_1, x_2 ) ) );
         end, UnderlyingMatrix( UnderlyingMorphism( UnderlyingCell( UnderlyingCell( b_1 ) ) ) ) );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cap_jit_deduplicated_expression_7_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
-               ), cap_jit_deduplicated_expression_6_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                 ), cap_jit_deduplicated_expression_4_1, ObjectifyObjectForCAPWithAttributes( rec(
-                   ), cap_jit_deduplicated_expression_4_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                   ), cap_jit_deduplicated_expression_4_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) ) ) );
+             ), deduped_11_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_10_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                 ), deduped_8_1, ObjectifyObjectForCAPWithAttributes( rec(
+                   ), deduped_8_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                   ), deduped_8_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
 end
 ########
         
-    );
+    , 100 );
     
 end );
 
