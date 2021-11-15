@@ -52,13 +52,15 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
         fi;
     od;
     
-    L := List( L{[ 1 .. Length( L ) - 3 ]}, name -> [ name, key_val_rec.(name) ] );
+    L := List( L{[ 1 .. Length( L ) - 4 ]}, name -> [ name, key_val_rec.(name) ] );
     
     L := Concatenation(
                  [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ],
                    [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
                      Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
-                   [ "Closed Monoidal", key_val_rec.ClosedSMonoidal ] ], L );
+                   [ "Closed Monoidal", key_val_rec.ClosedSMonoidal ],
+                   [ "TensorProductOnObjects\( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
+                   ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "tensor hom", key_val_rec.tensor_hom ] );

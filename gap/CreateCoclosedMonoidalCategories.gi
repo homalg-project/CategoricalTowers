@@ -44,6 +44,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
            "coHom_tensor",
            "coHom",
            "CoclosedSMonoidal",
+           "TensorProductOnObjectsBCcat",
            ];
     
     for name in L do
@@ -52,13 +53,15 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
         fi;
     od;
     
-    L := List( L{[ 1 .. Length( L ) - 3 ]}, name -> [ name, key_val_rec.(name) ] );
+    L := List( L{[ 1 .. Length( L ) - 4 ]}, name -> [ name, key_val_rec.(name) ] );
     
     L := Concatenation(
                  [ [ "\"MonoidalCategories\",", Concatenation( "\"", package_name, "\"," ) ],
                    [ Concatenation( PackageInfo( "MonoidalCategories" )[1].PackageName, ": ", PackageInfo( "MonoidalCategories" )[1].Subtitle ),
                      Concatenation( PackageInfo( package_name )[1].PackageName, ": ", PackageInfo( package_name )[1].Subtitle ) ],
-                   [ "Coclosed Monoidal", key_val_rec.CoclosedSMonoidal ] ], L );
+                   [ "Coclosed Monoidal", key_val_rec.CoclosedSMonoidal ],
+                   [ "TensorProductOnObjects\( cat,", key_val_rec.TensorProductOnObjectsBCcat ],
+                   ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "coHom tensor", key_val_rec.coHom_tensor ] );
