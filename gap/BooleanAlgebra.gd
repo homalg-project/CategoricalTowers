@@ -11,12 +11,12 @@
 #! @Description
 #!  The property of <A>C</A> being a cartesian closed &CAP; category with isomorphic double negations.
 #! @Arguments C
-AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegations" ] );
+AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegations", fail ] );
 
 #! @Description
 #!  The property of <A>C</A> being a cocartesian coclosed &CAP; category with isomorphic double conegations.
 #! @Arguments C
-AddCategoricalProperty( [ "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations" ] );
+AddCategoricalProperty( [ "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations", fail ] );
 
 #! @Section Operations
 

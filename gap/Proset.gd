@@ -30,7 +30,7 @@ DeclareCategory( "IsMorphismInThinCategory",
 #! @Description
 #!  The property of <A>C</A> being a thin &CAP; category.
 #! @Arguments C
-AddCategoricalProperty( [ "IsThinCategory" ] );
+AddCategoricalProperty( [ "IsThinCategory", "IsThinCategory" ] );
 
 #! @Section Operations
 
