@@ -107,7 +107,7 @@ Dependencies := rec(
                    [ "CategoryConstructor", ">= 2021.10-07" ],
                    [ "SubcategoriesForCAP", ">= 2020.06-01" ],
                    [ "MatricesForHomalg", ">= 2020.02.02" ],
-                   [ "Toposes", ">= 2020.04.27" ],
+                   [ "Toposes", ">= 2021.11-13" ],
                    [ "Algebroids", ">= 2021.08-02" ],
                    [ "FunctorCategories", ">= 2021.08-01" ],
                    ],
