@@ -1291,8 +1291,8 @@ InstallMethod( IntrinsicCategory,
     properties := Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST );
     
     ## we cannot guarantee skeletality
-    properties := Difference( properties, [ "IsSkeletalCategory" ] );
-    
+    properties := Difference( properties, [ fail, "IsSkeletalCategory" ] );
+
     ## we cannot guarantee strictness
     properties := Filtered( properties, prop -> Length( prop ) >= 8 and not prop{[ 1 .. 8 ]} = "IsStrict" );
     
