@@ -40,7 +40,7 @@ DeclareInfoClass( "InfoCategoryConstructor" );
 #!  * create_func_other_morphism
 #! @Arguments nothing
 #! @Returns a &CAP; category
-DeclareGlobalFunction( "CategoryConstructor" );
+DeclareOperation( "CategoryConstructor", [ ] );
 
 ####################################
 #
