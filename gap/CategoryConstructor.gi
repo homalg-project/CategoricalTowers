@@ -26,7 +26,9 @@ InstallOtherMethod( UnderlyingCell,
   IdFunc );
 
 ##
-InstallGlobalFunction( CategoryConstructor,
+InstallMethod( CategoryConstructor,
+               [ ],
+               
   function( )
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
           commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
