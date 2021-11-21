@@ -26,22 +26,22 @@ DeclareCategory( "IsFunctorCategory",
 #! @Description
 #!  The &GAP; category of cells in a Hom-category of functors between two fixed categories.
 #! @Arguments cell
-DeclareCategory( "IsCapCategoryCellInHomCategory",
+DeclareCategory( "IsCellInFunctorCategory",
         IsCapCategoryCell and
         IsAttributeStoringRep );
 
 #! @Description
 #!  The &GAP; category of objects in a Hom-category of functors between two fixed categories.
 #! @Arguments obj
-DeclareCategory( "IsCapCategoryObjectInHomCategory",
-        IsCapCategoryCellInHomCategory and
+DeclareCategory( "IsObjectInFunctorCategory",
+        IsCellInFunctorCategory and
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Hom-category of functors between two fixed categories.
 #! @Arguments mor
-DeclareCategory( "IsCapCategoryMorphismInHomCategory",
-        IsCapCategoryCellInHomCategory and
+DeclareCategory( "IsMorphismInFunctorCategory",
+        IsCellInFunctorCategory and
         IsCapCategoryMorphism );
 
 ####################################
@@ -64,14 +64,14 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY" );
 #! @Arguments F
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
-        IsCapCategoryObjectInHomCategory );
+        IsObjectInFunctorCategory );
 
 #! @Description
 #!  The target of the functor underlying the functor object <A>F</A>.
 #! @Arguments F
 #! @Returns a &CAP; category
 DeclareAttribute( "Range",
-        IsCapCategoryObjectInHomCategory );
+        IsObjectInFunctorCategory );
 
 #! @Description
 #!  The functor underlying the functor object <A>F</A>.
@@ -116,14 +116,14 @@ DeclareAttribute( "SimpleObjects",
 #! @Arguments F, c
 #! @Returns a &CAP; cell
 DeclareOperation( "ApplyCell",
-        [ IsCapCategoryObjectInHomCategory, IsCapCategoryCell ] );
+        [ IsObjectInFunctorCategory, IsCapCategoryCell ] );
 
 #! @Description
 #!  Apply the natural transformation <A>eta</A> (as an object in the corresponding Hom-category) to the object <A>o</A>.
 #!  The shorthand is <A>eta</A>(<A>o</A>).
 #! @Arguments eta, o
 DeclareOperation( "ApplyCell",
-        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryObject ] );
+        [ IsMorphismInFunctorCategory, IsCapCategoryObject ] );
 
 #! @Description
 #! @Returns Four morphisms that form a commutative square that appears in the definition of natural transformations
@@ -131,7 +131,7 @@ DeclareOperation( "ApplyCell",
 #! These are the four morphisms of the compatibility diagram of a natural transformation <A>eta</A> with the morphism <A>mor</A>.
 #! @Arguments eta, mor
 DeclareOperation( "ApplyCell",
-        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryMorphism ] );
+        [ IsMorphismInFunctorCategory, IsCapCategoryMorphism ] );
 
 ##
 DeclareOperation( "ApplyCell",
@@ -160,7 +160,7 @@ DeclareOperation( "ApplyCell",
 #! @Arguments c
 #! @Returns a list
 DeclareOperation( "ValuesOnAllObjects",
-        [ IsCapCategoryCellInHomCategory ] );
+        [ IsCellInFunctorCategory ] );
 
 #! @Description
 #!  Returns the values of the functor <A>F</A>
@@ -168,7 +168,7 @@ DeclareOperation( "ValuesOnAllObjects",
 #! @Arguments F
 #! @Returns a list
 DeclareOperation( "ValuesOnAllGeneratingMorphisms",
-        [ IsCapCategoryObjectInHomCategory ] );
+        [ IsObjectInFunctorCategory ] );
 
 ####################################
 #
@@ -267,11 +267,11 @@ DeclareAttribute( "AsMorphismInHomCategory",
 #!  where <A>e</A> is a defining record of <A>eta</A>.
 #! @Group AsMorphismInHomCategory
 DeclareOperation( "AsMorphismInHomCategory",
-        [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ] );
+        [ IsObjectInFunctorCategory, IsRecord, IsObjectInFunctorCategory ] );
 
 #! @Arguments U, e, V
 #!  Another alternative input is the triple (<A>U</A>, <A>e</A>, <A>V</A>),
 #!  where <A>e</A> is a defining list of <A>eta</A>.
 #! @Group AsMorphismInHomCategory
 DeclareOperation( "AsMorphismInHomCategory",
-        [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ] );
+        [ IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ] );

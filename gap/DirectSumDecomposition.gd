@@ -20,7 +20,7 @@
 #! @Arguments F
 #! @Returns a list
 DeclareOperation( "DecomposeOnceByRandomEndomorphism",
-        [ IsCapCategoryObjectInHomCategory ] );
+        [ IsObjectInFunctorCategory ] );
 
 #! @Description
 #!  Return a list of monomorphisms describing the embeddings
@@ -29,4 +29,4 @@ DeclareOperation( "DecomposeOnceByRandomEndomorphism",
 #! @Arguments F
 #! @Returns a list
 DeclareOperation( "WeakDirectSumDecomposition",
-        [ IsCapCategoryObjectInHomCategory ] );
+        [ IsObjectInFunctorCategory ] );

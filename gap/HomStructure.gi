@@ -6,7 +6,7 @@
 
 ##
 InstallMethod( AuxiliaryMorphism,
-          [ IsCapCategoryObjectInHomCategory, IsCapCategoryObjectInHomCategory ],
+          [ IsObjectInFunctorCategory, IsObjectInFunctorCategory ],
           
   function ( S, R )
     local algebroid, o, nr_o, S_o_vals, R_o_vals, m, nr_m, S_m_vals, R_m_vals, source_summands, range_summands, map, i, j;
@@ -225,7 +225,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
       
       ##
       InstallMethod( CoefficientsOfMorphism,
-                [ IsCapCategoryMorphismInHomCategory and MorphismFilter( Hom ) ],
+                [ IsMorphismInFunctorCategory and MorphismFilter( Hom ) ],
         eta -> CoefficientsOfMorphism( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( eta ) )
       );
      

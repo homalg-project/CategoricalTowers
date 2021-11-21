@@ -313,7 +313,7 @@ end );
 ##
 InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP object",
-        [ IsCapCategoryObjectInHomCategory, IsCapCategoryObject ],
+        [ IsObjectInFunctorCategory, IsCapCategoryObject ],
         
   function ( F, o )
     local objects, pos, values;
@@ -337,7 +337,7 @@ end );
 ##
 InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP morphism",
-        [ IsCapCategoryObjectInHomCategory, IsCapCategoryMorphism ],
+        [ IsObjectInFunctorCategory, IsCapCategoryMorphism ],
         
   function ( F, m )
     local morphisms, pos, values;
@@ -361,7 +361,7 @@ end );
 ##
 InstallMethod( ApplyCell,
         "for a morphism in a Hom-category and a CAP object",
-        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryObject ],
+        [ IsMorphismInFunctorCategory, IsCapCategoryObject ],
         
   function ( eta, o )
     local objects, pos, values;
@@ -385,7 +385,7 @@ end );
 ##
 InstallMethod( ApplyCell,
         "for a morphism in a Hom-category and a CAP morphism",
-        [ IsCapCategoryMorphismInHomCategory, IsCapCategoryMorphism ],
+        [ IsMorphismInFunctorCategory, IsCapCategoryMorphism ],
         
   function ( eta, mor )
     
@@ -399,7 +399,7 @@ end );
 ##
 InstallMethod( CallFuncList,
         "for a CAP cell in a Hom-category and a list",
-        [ IsCapCategoryCellInHomCategory, IsList ],
+        [ IsCellInFunctorCategory, IsList ],
         
   function ( F_or_eta, L )
     
@@ -410,7 +410,7 @@ end );
 ##
 InstallMethod( ValuesOnAllObjects,
         "for a CAP object in a Hom-category",
-        [ IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory ],
         
   function ( F )
     
@@ -421,7 +421,7 @@ end );
 ##
 InstallMethod( ValuesOnAllGeneratingMorphisms,
         "for a CAP object in a Hom-category",
-        [ IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory ],
         
   function ( F )
     
@@ -432,7 +432,7 @@ end );
 ##
 InstallMethod( ValuesOnAllObjects,
         "for a CAP morphism in a Hom-category",
-        [ IsCapCategoryMorphismInHomCategory ],
+        [ IsMorphismInFunctorCategory ],
         
   function ( eta )
     
@@ -609,7 +609,7 @@ end );
 ##
 InstallMethod( AsMorphismInHomCategory,
         "for a record and two objects in Hom-category",
-        [ IsCapCategoryObjectInHomCategory, IsRecord, IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory, IsRecord, IsObjectInFunctorCategory ],
         
   function ( U, e, V )
     local eta;
@@ -626,7 +626,7 @@ end );
 ##
 InstallMethod( AsMorphismInHomCategory,
         "for a list and two objects in Hom-category",
-        [ IsCapCategoryObjectInHomCategory, IsList, IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ],
         
   function ( U, e, V )
     local B, kmat, Q, vertices, eta, i;
@@ -1094,8 +1094,8 @@ InstallMethodWithCache( Hom,
     Hom := CategoryConstructor( :
                    name := name,
                    category_as_first_argument := true,
-                   category_object_filter := IsCapCategoryObjectInHomCategory,
-                   category_morphism_filter := IsCapCategoryMorphismInHomCategory,
+                   category_object_filter := IsObjectInFunctorCategory,
+                   category_morphism_filter := IsMorphismInFunctorCategory,
                    category_filter := IsFunctorCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
@@ -1568,7 +1568,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-          [ IsCapCategoryObjectInHomCategory ],
+          [ IsObjectInFunctorCategory ],
   function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
@@ -1617,7 +1617,7 @@ end );
 
 ##
 InstallMethod( Display,
-          [ IsCapCategoryObjectInHomCategory ],
+          [ IsObjectInFunctorCategory ],
   function ( F )
     local objects, images_of_objects, morphisms, images_of_morphisms, i;
     
@@ -1652,7 +1652,7 @@ end );
 
 ##
 InstallMethod( ViewObj,
-          [ IsCapCategoryMorphismInHomCategory ],
+          [ IsMorphismInFunctorCategory ],
   function ( eta )
     local vertices, s_dim, r_dim, string;
     
@@ -1680,7 +1680,7 @@ end );
 
 ##
 InstallMethod( Display,
-          [ IsCapCategoryMorphismInHomCategory ],
+          [ IsMorphismInFunctorCategory ],
   function ( eta )
     local objects, images_of_objects, i;
     

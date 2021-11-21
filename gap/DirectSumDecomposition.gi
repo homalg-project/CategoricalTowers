@@ -7,7 +7,7 @@
 ##
 InstallMethod( DecomposeOnceByRandomEndomorphism,
         "for an object in a Hom-category",
-        [ IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory ],
         
   function ( F )
     local d, endbas, k, n, random, b, alpha, i, alpha2, keremb;
@@ -68,7 +68,7 @@ end );
 ##
 InstallMethod( WeakDirectSumDecomposition,
         "for an object in a Hom-category",
-        [ IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory ],
         
   function ( F )
     local queue, summands, eta, result;

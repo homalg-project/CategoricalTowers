@@ -100,7 +100,7 @@ end );
 
 ##
 InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
-          [ IsCapCategoryObjectInHomCategory ],
+          [ IsObjectInFunctorCategory ],
           
   function ( F )
     local B, A, k, dims, matrices, rep;
@@ -132,7 +132,7 @@ end );
 
 ##
 InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
-          [ IsCapCategoryMorphismInHomCategory ],
+          [ IsMorphismInFunctorCategory ],
           
   function ( eta )
     local B, A, k, matrices, S, R, phi;

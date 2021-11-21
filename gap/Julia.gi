@@ -16,7 +16,7 @@ end );
 
 ##
 InstallOtherMethod( AsMorphismInHomCategory,
-        [ IsCapCategoryObjectInHomCategory, IsJuliaObject, IsCapCategoryObjectInHomCategory ],
+        [ IsObjectInFunctorCategory, IsJuliaObject, IsObjectInFunctorCategory ],
         
   function ( F, images_of_objects, G )
     

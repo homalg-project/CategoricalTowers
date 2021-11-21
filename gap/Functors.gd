@@ -13,8 +13,8 @@
 
 DeclareAttribute( "ConvertToCellInHomCategory", IsQuiverRepresentation );
 DeclareAttribute( "ConvertToCellInHomCategory", IsQuiverRepresentationHomomorphism );
-DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsCapCategoryObjectInHomCategory );
-DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsCapCategoryMorphismInHomCategory );
+DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsObjectInFunctorCategory );
+DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsMorphismInFunctorCategory );
 
 #! @Description
 #! The input is a Hom-category <A>H</A><C>:=Hom(B,C)</C> where <C>B</C> is an algebroid defined by some quiver algebra <C>A</C> and
