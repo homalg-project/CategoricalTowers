@@ -155,6 +155,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
   function( category )
     
     ##
+    AddMorphismConstructor( category,
+      function( category, source, m, range )
+        
+        return MorphismInFpCategory( source, m, range );
+        
+      end );
+    
+    ##
     AddIsWellDefinedForObjects( category,
       function( category, o )
         

@@ -418,6 +418,14 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
   function( category, over_Z )
     
     ##
+    AddMorphismConstructor( category,
+      function( category, source, m, range )
+        
+        return MorphismInAlgebroid( source, m, range );
+        
+      end );
+    
+    ##
     AddIsWellDefinedForObjects( category,
       function( category, o )
         
