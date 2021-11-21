@@ -34,7 +34,7 @@ Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStruc
 ## The rewriting rule
 K_V := FinSet( [ 1, 2 ] );
 K_E := InitialObject( FinSets );
-K := AsObjectInHomCategory( Fop,
+K := AsObjectInFunctorCategory( Fop,
              rec( E := K_E, V := K_V ),
              rec( s := UniversalMorphismFromInitialObject( K_V ),
                   t := UniversalMorphismFromInitialObject( K_V ) ) );
@@ -42,7 +42,7 @@ Assert( 0, IsWellDefined( K ) );
 
 L_V := FinSet( [ 1, 2, 4 ] );
 L_E := FinSet( [ "2E1", "4E1", "4E4" ] );
-L := AsObjectInHomCategory( Fop,
+L := AsObjectInFunctorCategory( Fop,
              rec( E := L_E, V := L_V ),
              rec( s := MapOfFinSets( L_E, [ [ "2E1", 2 ], [ "4E1", 4 ], [ "4E4", 4 ] ], L_V ),
                   t := MapOfFinSets( L_E, [ [ "2E1", 1 ], [ "4E1", 1 ], [ "4E4", 4 ] ], L_V ) ) );
@@ -50,7 +50,7 @@ Assert( 0, IsWellDefined( L ) );
 
 D_V := FinSet( [ 1, 2, 3 ] );
 D_E := FinSet( [ "3E1", "3E2" ] );
-D := AsObjectInHomCategory( Fop,
+D := AsObjectInFunctorCategory( Fop,
              rec( E := D_E, V := D_V ),
              rec( s := MapOfFinSets( D_E, [ [ "3E1", 3 ], [ "3E2", 3 ] ], D_V ),
                   t := MapOfFinSets( D_E, [ [ "3E1", 1 ], [ "3E2", 2 ] ], D_V ) ) );
@@ -58,27 +58,27 @@ Assert( 0, IsWellDefined( D ) );
 
 R_V := FinSet( [ 1, 2, 3 ] );
 R_E := FinSet( [ "3E1", "1E2" ] );
-R := AsObjectInHomCategory( Fop,
+R := AsObjectInFunctorCategory( Fop,
              rec( E := R_E, V := R_V ),
              rec( s := MapOfFinSets( R_E, [ [ "3E1", 3 ], [ "1E2", 1 ] ], R_V ),
                   t := MapOfFinSets( R_E, [ [ "3E1", 1 ], [ "1E2", 2 ] ], R_V ) ) );
 Assert( 0, IsWellDefined( R ) );
 
-l := AsMorphismInHomCategory(
+l := AsMorphismInFunctorCategory(
              K,
              rec( E := EmbeddingOfFinSets( K_E, L_E ),
                   V := EmbeddingOfFinSets( K_V, L_V ) ),
              L );
 Assert( 0, IsWellDefined( l ) );
 
-r := AsMorphismInHomCategory(
+r := AsMorphismInFunctorCategory(
              K,
              rec( E := EmbeddingOfFinSets( K_E, R_E ),
                   V := EmbeddingOfFinSets( K_V, R_V ) ),
              R );
 Assert( 0, IsWellDefined( r ) );
 
-n := AsMorphismInHomCategory(
+n := AsMorphismInFunctorCategory(
              K,
              rec( E := EmbeddingOfFinSets( K_E, D_E ),
                   V := EmbeddingOfFinSets( K_V, D_V ) ),
@@ -88,13 +88,13 @@ Assert( 0, IsWellDefined( n ) );
 ## The matching
 G_V := FinSet( [ 1 .. 4 ] );
 G_E := FinSet( [ "2E1", "4E1", "4E4", "3E1", "3E2" ] );
-G := AsObjectInHomCategory( Fop,
+G := AsObjectInFunctorCategory( Fop,
              rec( E := G_E, V := G_V ),
              rec( s := MapOfFinSets( G_E, [ [ "2E1", 2 ], [ "4E1", 4 ], [ "4E4", 4 ], [ "3E1", 3 ], [ "3E2", 3 ] ], G_V ),
                   t := MapOfFinSets( G_E, [ [ "2E1", 1 ], [ "4E1", 1 ], [ "4E4", 4 ], [ "3E1", 1 ], [ "3E2", 2 ] ], G_V ) ) );
 Assert( 0, IsWellDefined( G ) );
 
-m := AsMorphismInHomCategory(
+m := AsMorphismInFunctorCategory(
              L,
              rec( E := EmbeddingOfFinSets( L_E, G_E ),
                   V := EmbeddingOfFinSets( L_V, G_V ) ),

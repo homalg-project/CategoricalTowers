@@ -7,7 +7,7 @@
 BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ##
-InstallMethod( ConvertToCellInHomCategory,
+InstallMethod( ConvertToCellInFunctorCategory,
     [ IsQuiverRepresentation ],
     
   function ( rep )
@@ -29,7 +29,7 @@ InstallMethod( ConvertToCellInHomCategory,
                   DimensionsMat( mat )[ 1 ],
                     DimensionsMat( mat )[ 2 ], k ) );
     
-    F := AsObjectInHomCategory( A_oid, dims, matrices );
+    F := AsObjectInFunctorCategory( A_oid, dims, matrices );
     
     SetConvertToCellInCategoryOfQuiverRepresentations( F, rep );
     
@@ -38,7 +38,7 @@ InstallMethod( ConvertToCellInHomCategory,
 end );
 
 ##
-InstallMethod( ConvertToCellInHomCategory,
+InstallMethod( ConvertToCellInFunctorCategory,
           [ IsQuiverRepresentationHomomorphism ],
           
   function ( phi )
@@ -58,10 +58,10 @@ InstallMethod( ConvertToCellInHomCategory,
                       DimensionsMat( mat )[ 1 ],
                         DimensionsMat( mat )[ 2 ], k ) );
     
-    F := ConvertToCellInHomCategory( Source( phi ) );
-    G := ConvertToCellInHomCategory( Range( phi ) );
+    F := ConvertToCellInFunctorCategory( Source( phi ) );
+    G := ConvertToCellInFunctorCategory( Range( phi ) );
     
-    eta := AsMorphismInHomCategory( F, e, G );
+    eta := AsMorphismInFunctorCategory( F, e, G );
     
     SetConvertToCellInCategoryOfQuiverRepresentations( eta, phi );
     
@@ -87,11 +87,11 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
     I := CapFunctor( name, reps, functors );
     
     AddObjectFunction( I,
-      rep -> ConvertToCellInHomCategory( rep )
+      rep -> ConvertToCellInFunctorCategory( rep )
     );
     
     AddMorphismFunction( I,
-      { S, phi, R } -> ConvertToCellInHomCategory( phi )
+      { S, phi, R } -> ConvertToCellInFunctorCategory( phi )
     );
     
     return I;
@@ -124,7 +124,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
     
     rep := QuiverRepresentation( A, dims, matrices );
     
-    SetConvertToCellInHomCategory( rep, F );
+    SetConvertToCellInFunctorCategory( rep, F );
     
     return rep;
     
@@ -158,7 +158,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
     
     phi := QuiverRepresentationHomomorphism( S, R, matrices );
     
-    SetConvertToCellInHomCategory( phi, eta );
+    SetConvertToCellInFunctorCategory( phi, eta );
     
     return phi;
     
@@ -238,7 +238,7 @@ InstallMethod( YonedaEmbedding,
         
         o := List( objs, obj -> HomStructure( o, obj ) );
         
-        Yo := AsObjectInHomCategory( B_op, o, m );
+        Yo := AsObjectInFunctorCategory( B_op, o, m );
         
         SetIsProjective( Yo, true );
         
@@ -257,7 +257,7 @@ InstallMethod( YonedaEmbedding,
         
         m := List( objs, o -> HomStructure( m, o ) );
         
-        return AsMorphismInHomCategory( s, m, r );
+        return AsMorphismInFunctorCategory( s, m, r );
         
     end );
     

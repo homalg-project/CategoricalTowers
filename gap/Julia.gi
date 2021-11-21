@@ -5,21 +5,21 @@
 #
 
 ##
-InstallOtherMethod( AsObjectInHomCategory,
+InstallOtherMethod( AsObjectInFunctorCategory,
         [ IsCapCategory, IsJuliaObject, IsJuliaObject ],
         
   function ( B, images_of_objects, images_of_morphisms )
     
-    return AsObjectInHomCategory( B, ConvertJuliaToGAP( images_of_objects ), ConvertJuliaToGAP( images_of_morphisms ) );
+    return AsObjectInFunctorCategory( B, ConvertJuliaToGAP( images_of_objects ), ConvertJuliaToGAP( images_of_morphisms ) );
     
 end );
 
 ##
-InstallOtherMethod( AsMorphismInHomCategory,
+InstallOtherMethod( AsMorphismInFunctorCategory,
         [ IsObjectInFunctorCategory, IsJuliaObject, IsObjectInFunctorCategory ],
         
   function ( F, images_of_objects, G )
     
-    return AsMorphismInHomCategory( F, ConvertJuliaToGAP( images_of_objects ), G );
+    return AsMorphismInFunctorCategory( F, ConvertJuliaToGAP( images_of_objects ), G );
     
 end );

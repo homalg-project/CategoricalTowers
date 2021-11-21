@@ -145,7 +145,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         iota := ListN( S_o_vals, R_o_vals, iota, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism );
         
-        return AsMorphismInHomCategory( S, iota, R );
+        return AsMorphismInFunctorCategory( S, iota, R );
         
     end );
     
@@ -204,7 +204,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
           iotas := List( iotas, iota -> List( basis, b -> PreCompose( b, iota ) ) );
           
           return List( [ 1 .. Size( basis ) ], j ->
-                      AsMorphismInHomCategory(
+                      AsMorphismInFunctorCategory(
                           S,
                           List( [ 1 .. nr_o ], i ->
                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(

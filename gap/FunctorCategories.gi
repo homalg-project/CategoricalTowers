@@ -447,7 +447,7 @@ end );
 ####################################
 
 ##
-InstallMethod( AsObjectInHomCategory,
+InstallMethod( AsObjectInFunctorCategory,
         "for a CAP category and a CAP functor",
         [ IsCapCategory, IsCapFunctor ],
         
@@ -471,7 +471,7 @@ InstallMethod( AsObjectInHomCategory,
 end );
 
 ##
-InstallMethod( AsObjectInHomCategory,
+InstallMethod( AsObjectInFunctorCategory,
         "for a CAP functor",
         [ IsCapFunctor ],
         
@@ -480,23 +480,23 @@ InstallMethod( AsObjectInHomCategory,
     
     H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
-    return AsObjectInHomCategory( H, F );
+    return AsObjectInFunctorCategory( H, F );
     
 end );
 
 ##
-InstallMethod( AsObjectInHomCategory,
+InstallMethod( AsObjectInFunctorCategory,
         "for a CAP category, a record (of images of objects) and a record (of images of morphisms)",
         [ IsCapCategory, IsRecord, IsRecord ],
         
   function ( B, rec_images_of_objects, rec_images_of_morphisms )
     
-    return AsObjectInHomCategory( CapFunctor( B, rec_images_of_objects, rec_images_of_morphisms ) );
+    return AsObjectInFunctorCategory( CapFunctor( B, rec_images_of_objects, rec_images_of_morphisms ) );
     
 end );
 
 ##
-InstallMethod( AsObjectInHomCategory,
+InstallMethod( AsObjectInFunctorCategory,
         "for a CAP category, a list (of images of objects) and a list (of images of morphisms)",
         [ IsCapCategory, IsList, IsList ],
         
@@ -507,7 +507,7 @@ InstallMethod( AsObjectInHomCategory,
         Error( "the list of images is empty\n" );
     fi;
     
-    F := AsObjectInHomCategory( CapFunctor( B, images_of_objects, images_of_morphisms, CapCategory( images_of_objects[1] ) ) );
+    F := AsObjectInFunctorCategory( CapFunctor( B, images_of_objects, images_of_morphisms, CapCategory( images_of_objects[1] ) ) );
     
     F!.ValuesOnAllObjects := images_of_objects;
     F!.ValuesOnAllGeneratingMorphisms := images_of_morphisms;
@@ -517,7 +517,7 @@ InstallMethod( AsObjectInHomCategory,
 end );
 
 ##
-InstallMethod( AsObjectInHomCategory,
+InstallMethod( AsObjectInFunctorCategory,
         "for an algebroid and two lists",
         [ IsAlgebroid, IsList, IsList ], 10001,
         
@@ -563,12 +563,12 @@ InstallMethod( AsObjectInHomCategory,
     
     morphisms := List( [ 1 .. Length( morphisms ) ], mat );
     
-    return AsObjectInHomCategory( kq, objects, morphisms );
+    return AsObjectInFunctorCategory( kq, objects, morphisms );
     
 end );
 
 ##
-InstallMethod( AsMorphismInHomCategory,
+InstallMethod( AsMorphismInFunctorCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],
         
@@ -580,8 +580,8 @@ InstallMethod( AsMorphismInHomCategory,
     kq := Source( H );
     
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, H,
-            AsObjectInHomCategory( Source( eta ) ),
-            AsObjectInHomCategory( Range( eta ) ),
+            AsObjectInFunctorCategory( Source( eta ) ),
+            AsObjectInFunctorCategory( Range( eta ) ),
             UnderlyingCapTwoCategoryCell, eta,
             SetOfObjects, SetOfObjects( kq ),
             SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( kq ) );
@@ -591,7 +591,7 @@ InstallMethod( AsMorphismInHomCategory,
 end );
 
 ##
-InstallMethod( AsMorphismInHomCategory,
+InstallMethod( AsMorphismInFunctorCategory,
         "for a CAP natural transformation",
         [ IsCapNaturalTransformation ],
         
@@ -602,12 +602,12 @@ InstallMethod( AsMorphismInHomCategory,
     
     H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
-    return AsMorphismInHomCategory( H, eta );
+    return AsMorphismInFunctorCategory( H, eta );
     
 end );
 
 ##
-InstallMethod( AsMorphismInHomCategory,
+InstallMethod( AsMorphismInFunctorCategory,
         "for a record and two objects in Hom-category",
         [ IsObjectInFunctorCategory, IsRecord, IsObjectInFunctorCategory ],
         
@@ -619,12 +619,12 @@ InstallMethod( AsMorphismInHomCategory,
                    UnderlyingCapTwoCategoryCell( U ),
                    UnderlyingCapTwoCategoryCell( V ) );
     
-    return AsMorphismInHomCategory( eta );
+    return AsMorphismInFunctorCategory( eta );
     
 end );
 
 ##
-InstallMethod( AsMorphismInHomCategory,
+InstallMethod( AsMorphismInFunctorCategory,
         "for a list and two objects in Hom-category",
         [ IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ],
         
@@ -651,7 +651,7 @@ InstallMethod( AsMorphismInHomCategory,
         eta.(String( vertices[i] )) := e[i];
     od;
     
-    eta := AsMorphismInHomCategory( U, eta, V );
+    eta := AsMorphismInFunctorCategory( U, eta, V );
     
     eta!.ValuesOnAllObjects := e;
     
@@ -786,7 +786,7 @@ InstallMethodWithCache( Hom,
                     return morC;
                 end );
                 
-                return AsObjectInHomCategory( Hom, F );
+                return AsObjectInFunctorCategory( Hom, F );
                 
             end;
             
@@ -860,7 +860,7 @@ InstallMethodWithCache( Hom,
                     
                 end );
                 
-                return AsObjectInHomCategory( Hom, F );
+                return AsObjectInFunctorCategory( Hom, F );
                 
             end;
             
@@ -932,7 +932,7 @@ InstallMethodWithCache( Hom,
                     
                 end );
                 
-                return AsObjectInHomCategory( Hom, F );
+                return AsObjectInFunctorCategory( Hom, F );
                 
             end;
             
@@ -1004,7 +1004,7 @@ InstallMethodWithCache( Hom,
                     
                 end );
                 
-                return AsObjectInHomCategory( Hom, F );
+                return AsObjectInFunctorCategory( Hom, F );
                 
             end;
             
@@ -1044,7 +1044,7 @@ InstallMethodWithCache( Hom,
                 return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
               end );
               
-            return AsMorphismInHomCategory( Hom, eta );
+            return AsMorphismInFunctorCategory( Hom, eta );
             
         end;
         
@@ -1140,7 +1140,7 @@ InstallMethodWithCache( Hom,
                 return MultiplyWithElementOfCommutativeRingForMorphisms( r, ApplyCell( eta, objB ) );
             end );
             
-            return AsMorphismInHomCategory( Hom, r_eta );
+            return AsMorphismInFunctorCategory( Hom, r_eta );
             
         end );
         
@@ -1236,7 +1236,7 @@ InstallMethodWithCache( Hom,
       );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
-        { Hom, F } -> ConvertToCellInHomCategory(
+        { Hom, F } -> ConvertToCellInFunctorCategory(
                         EpimorphismFromSomeProjectiveObject(
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                         )
@@ -1244,7 +1244,7 @@ InstallMethodWithCache( Hom,
       );
       
       AddMonomorphismIntoSomeInjectiveObject( Hom,
-        { Hom, F } -> ConvertToCellInHomCategory(
+        { Hom, F } -> ConvertToCellInFunctorCategory(
                         MonomorphismIntoSomeInjectiveObject(
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                         )
@@ -1253,7 +1253,7 @@ InstallMethodWithCache( Hom,
       
       AddProjectiveLift( Hom,
         { Hom, alpha, epi } ->
-            ConvertToCellInHomCategory(
+            ConvertToCellInFunctorCategory(
             ProjectiveLift(
               ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
               ConvertToCellInCategoryOfQuiverRepresentations( epi )
@@ -1263,7 +1263,7 @@ InstallMethodWithCache( Hom,
       
       AddInjectiveColift( Hom,
         { Hom, mono, alpha } ->
-            ConvertToCellInHomCategory(
+            ConvertToCellInFunctorCategory(
             InjectiveColift(
               ConvertToCellInCategoryOfQuiverRepresentations( mono ),
               ConvertToCellInCategoryOfQuiverRepresentations( alpha )
@@ -1328,7 +1328,7 @@ InstallMethodWithCache( Hom,
                 
               end );
             
-            return AsObjectInHomCategory( Hom, I );
+            return AsObjectInFunctorCategory( Hom, I );
             
           end );
           
@@ -1360,7 +1360,7 @@ InstallMethodWithCache( Hom,
                 
               end );
             
-            return AsObjectInHomCategory( Hom, FG );
+            return AsObjectInFunctorCategory( Hom, FG );
             
           end );
           
@@ -1392,7 +1392,7 @@ InstallMethodWithCache( Hom,
                 
               end );
             
-            return AsObjectInHomCategory( Hom, Fd );
+            return AsObjectInFunctorCategory( Hom, Fd );
             
           end );
         
@@ -1421,7 +1421,7 @@ InstallMethodWithCache( Hom,
             objects := List( [ 1 .. Length( SetOfObjects( B ) ) ], i -> TensorUnit( C ) );
             morphisms := List( [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ], i -> IdentityMorphism( TensorUnit( C ) ) );
             
-            return AsObjectInHomCategory( B, objects, morphisms );
+            return AsObjectInFunctorCategory( B, objects, morphisms );
             
         end );
         
@@ -1432,7 +1432,7 @@ InstallMethodWithCache( Hom,
             objects := ListN( ValuesOnAllObjects( F ), ValuesOnAllObjects( G ), TensorProductOnObjects );
             morphisms := ListN( ValuesOnAllGeneratingMorphisms( F ), ValuesOnAllGeneratingMorphisms( G ), TensorProductOnMorphisms );
             
-            return AsObjectInHomCategory( B, objects, morphisms );
+            return AsObjectInFunctorCategory( B, objects, morphisms );
             
         end );
         
@@ -1519,7 +1519,7 @@ InstallMethod( IndecProjectiveObjects,
       
     fi;
     
-    return List( IndecProjRepresentations( A ), ConvertToCellInHomCategory );
+    return List( IndecProjRepresentations( A ), ConvertToCellInFunctorCategory );
     
 end );
 
@@ -1537,7 +1537,7 @@ InstallMethod( IndecInjectiveObjects,
       
     fi;
     
-    return List( IndecInjRepresentations( A ), ConvertToCellInHomCategory );
+    return List( IndecInjRepresentations( A ), ConvertToCellInFunctorCategory );
     
 end );
 
@@ -1556,7 +1556,7 @@ InstallMethod( SimpleObjects,
       
     fi;
     
-    return List( SimpleRepresentations( A ), ConvertToCellInHomCategory );
+    return List( SimpleRepresentations( A ), ConvertToCellInFunctorCategory );
     
 end );
 

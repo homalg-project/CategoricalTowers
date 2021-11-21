@@ -215,20 +215,20 @@ DeclareOperationWithCache( "PreSheaves",
 #!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>H</A> := Hom( <A>B</A>, C )</C>.
 #! @Arguments H, F
 #! @Returns an object in a &CAP; category
-#! @Group AsObjectInHomCategory
-DeclareOperation( "AsObjectInHomCategory",
+#! @Group AsObjectInFunctorCategory
+DeclareOperation( "AsObjectInFunctorCategory",
         [ IsCapCategory, IsCapFunctor ] );
 
 #! @Arguments F
-#! @Group AsObjectInHomCategory
-DeclareAttribute( "AsObjectInHomCategory",
+#! @Group AsObjectInFunctorCategory
+DeclareAttribute( "AsObjectInFunctorCategory",
         IsCapFunctor );
 
 #! @Description
 #!  An alternative input is the source category <A>B</A> and two defining records <A>rec_images_of_objects</A> and <A>rec_images_of_morphisms</A> of <A>F</A>.
 #! @Arguments B, rec_images_of_objects, rec_images_of_morphisms
-#! @Group AsObjectInHomCategory
-DeclareOperation( "AsObjectInHomCategory",
+#! @Group AsObjectInFunctorCategory
+DeclareOperation( "AsObjectInFunctorCategory",
         [ IsCapCategory, IsRecord, IsRecord ] );
 
 #! @Description
@@ -242,36 +242,36 @@ DeclareOperation( "AsObjectInHomCategory",
 #!  then the two lists are interpreted as objects and morphisms
 #!  in <C>MatrixCategory</C>( $k$ ), respectively.
 #! @Arguments B, images_of_objects, images_of_morphisms
-#! @Group AsObjectInHomCategory
-DeclareOperation( "AsObjectInHomCategory",
+#! @Group AsObjectInFunctorCategory
+DeclareOperation( "AsObjectInFunctorCategory",
         [ IsCapCategory, IsList, IsList ] );
 
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
-#!  <C><A>U</A> := AsObjectInHomCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInHomCategory( G )</C>
+#!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
 #!  in the category of functors <C><A>H</A> := Hom( B, C )</C>, where
 #!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
 #! @Arguments H, eta
 #! @Returns a morphism in a &CAP; category
-#! @Group AsMorphismInHomCategory
-DeclareOperation( "AsMorphismInHomCategory",
+#! @Group AsMorphismInFunctorCategory
+DeclareOperation( "AsMorphismInFunctorCategory",
         [ IsCapCategory, IsCapNaturalTransformation ] );
 
 #! @Arguments eta
-#! @Group AsMorphismInHomCategory
-DeclareAttribute( "AsMorphismInHomCategory",
+#! @Group AsMorphismInFunctorCategory
+DeclareAttribute( "AsMorphismInFunctorCategory",
         IsCapNaturalTransformation );
 
 #! @Arguments U, e, V
 #!  An alternative input is the triple (<A>U</A>, <A>e</A>, <A>V</A>),
 #!  where <A>e</A> is a defining record of <A>eta</A>.
-#! @Group AsMorphismInHomCategory
-DeclareOperation( "AsMorphismInHomCategory",
+#! @Group AsMorphismInFunctorCategory
+DeclareOperation( "AsMorphismInFunctorCategory",
         [ IsObjectInFunctorCategory, IsRecord, IsObjectInFunctorCategory ] );
 
 #! @Arguments U, e, V
 #!  Another alternative input is the triple (<A>U</A>, <A>e</A>, <A>V</A>),
 #!  where <A>e</A> is a defining list of <A>eta</A>.
-#! @Group AsMorphismInHomCategory
-DeclareOperation( "AsMorphismInHomCategory",
+#! @Group AsMorphismInFunctorCategory
+DeclareOperation( "AsMorphismInFunctorCategory",
         [ IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ] );
