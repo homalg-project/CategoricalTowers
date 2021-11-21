@@ -1090,13 +1090,17 @@ InstallMethod( OppositeFpCategory,
         [ IsFpCategory and HasRelationsOfFpCategory ],
         
   function( C )
-    local relations;
+    local relations, C_op;
     
     relations := RelationsOfFpCategory( C );
     
     relations := List( relations, a -> List( a, OppositePath ) );
     
-    return Category( OppositeQuiver( UnderlyingQuiver( C ) ), relations );
+    C_op := Category( OppositeQuiver( UnderlyingQuiver( C ) ), relations );
+    
+    SetOppositeFpCategory( C_op, C );
+    
+    return C_op;
     
 end );
 
