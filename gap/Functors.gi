@@ -71,7 +71,7 @@ end );
 
 ##
 InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
-        [ IsCapHomCategory ],
+        [ IsFunctorCategory ],
         
   function ( functors )
     local B, A, reps, name, I;
@@ -166,7 +166,7 @@ end );
 
 ##
 InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
-        [ IsCapHomCategory ],
+        [ IsFunctorCategory ],
         
   function ( functors )
     local B, A, reps, name, J;

@@ -19,7 +19,7 @@ SetInfoLevel( InfoFunctorCategories, 1 );
 #! @Description
 #!  The &GAP; category of Hom-categories of functors between two fixed categories.
 #! @Arguments category
-DeclareCategory( "IsCapHomCategory",
+DeclareCategory( "IsFunctorCategory",
         IsCapCategory and
         IsAttributeStoringRep );
 
@@ -86,7 +86,7 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
 #! @Arguments Hom
 #! @Returns a list
 DeclareAttribute( "IndecProjectiveObjects",
-        IsCapHomCategory );
+        IsFunctorCategory );
 
 #! @Description
 #!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
@@ -94,7 +94,7 @@ DeclareAttribute( "IndecProjectiveObjects",
 #! @Arguments Hom
 #! @Returns a list
 DeclareAttribute( "IndecInjectiveObjects",
-        IsCapHomCategory );
+        IsFunctorCategory );
 
 #! @Description
 #!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
@@ -102,7 +102,7 @@ DeclareAttribute( "IndecInjectiveObjects",
 #! @Arguments Hom
 #! @Returns a list
 DeclareAttribute( "SimpleObjects",
-        IsCapHomCategory );
+        IsFunctorCategory );
 
 ####################################
 #

@@ -1096,7 +1096,7 @@ InstallMethodWithCache( Hom,
                    category_as_first_argument := true,
                    category_object_filter := IsCapCategoryObjectInHomCategory,
                    category_morphism_filter := IsCapCategoryMorphismInHomCategory,
-                   category_filter := IsCapHomCategory,
+                   category_filter := IsFunctorCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
                    preinstall := preinstall,
@@ -1506,7 +1506,7 @@ end );
 
 ##
 InstallMethod( IndecProjectiveObjects,
-          [ IsCapHomCategory ],
+          [ IsFunctorCategory ],
           
   function ( Hom )
     local A;
@@ -1525,7 +1525,7 @@ end );
 
 ##
 InstallMethod( IndecInjectiveObjects,
-          [ IsCapHomCategory ],
+          [ IsFunctorCategory ],
   function ( Hom )
     local A;
     
@@ -1543,7 +1543,7 @@ end );
 
 ##
 InstallMethod( SimpleObjects,
-          [ IsCapHomCategory ],
+          [ IsFunctorCategory ],
           
   function ( Hom )
     local A;

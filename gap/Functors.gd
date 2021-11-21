@@ -22,7 +22,7 @@ DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsCapCategor
 #! The output is the isomorphism from <A>H</A> into <C>CategoryOfQuiverRepresentations(A)</C>.
 #! @Arguments H
 #! @Returns a &CAP; functor
-DeclareAttribute( "IsomorphismOntoCategoryOfQuiverRepresentations", IsCapHomCategory );
+DeclareAttribute( "IsomorphismOntoCategoryOfQuiverRepresentations", IsFunctorCategory );
 
 
 #! @Description
@@ -31,7 +31,7 @@ DeclareAttribute( "IsomorphismOntoCategoryOfQuiverRepresentations", IsCapHomCate
 #! The output is the isomorphism from  <C>CategoryOfQuiverRepresentations(A)</C> into <A>H</A>.
 #! @Arguments H
 #! @Returns a &CAP; functor
-DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsCapHomCategory );
+DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsFunctorCategory );
 
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is the Yoneda embedding functor from
