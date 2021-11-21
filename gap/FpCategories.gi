@@ -1085,7 +1085,7 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( OppositeCategoryOverOppositeQuiver,
+InstallMethod( OppositeFpCategory,
         "for a f.p. category",
         [ IsFpCategory and HasRelationsOfFpCategory ],
         
