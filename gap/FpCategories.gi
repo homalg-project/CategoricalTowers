@@ -270,19 +270,164 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     end );
     
     ## only create the Hom-structure for finite dimensional quiver algebras
-    #if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
-    #    
-    #    ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY( category );
-    #    
-    #    ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_FP_CATEGORY( category );
-    #    
-    #fi;
+    if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
+        
+        ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY( category );
+        
+        #ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_FP_CATEGORY( category );
+        
+    fi;
     
     Finalize( category );
     
     SetFilterObj( IdentityFunctor( category ), IsFpCategoryMorphism );
     
     return category;
+    
+end );
+
+##
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
+  function( fpcategory )
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, representative_func, default_range_of_HomStructure, range_category, path;
+    
+    quiver_algebra := UnderlyingQuiverAlgebra( fpcategory );
+    
+    ## Prepare quick access to basis elements
+    quiver := QuiverOfAlgebra( quiver_algebra );
+    
+    vertices := Vertices( quiver );
+    
+    basis := BasisPaths( CanonicalBasis( quiver_algebra ) );
+    
+    ## prepare the homomorphism structure
+    
+    ## storing the basis paths
+    ## basis_paths_by_vertex_index[ v_index ][ w_index ] = [ p_1:v -> w, p_2:v -> w, ... ]
+    
+    basis_paths_by_vertex_index := List( vertices, i -> List( vertices, i -> [ ] ) );
+    
+    maps := List( vertices, i -> List( vertices, i -> [ ] ) );
+    
+    for path in basis do
+        
+        Add( basis_paths_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
+        
+        Add( maps[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInFpCategory( fpcategory, PathAsAlgebraElement( quiver_algebra, path ) ) );
+        
+    od;
+    
+    # if `basis_paths_by_vertex_index` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `basis_paths_by_vertex_index` anymore
+    MakeImmutable( basis_paths_by_vertex_index );
+    
+    SetBasisPathsByVertexIndex( fpcategory, basis_paths_by_vertex_index );
+    
+    Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( fpcategory ) ) );
+    
+    ##
+    if IsQuotientOfPathAlgebra( quiver_algebra ) then
+        
+        representative_func := Representative;
+        
+    else
+        
+        representative_func := IdFunc;
+        
+    fi;
+    
+    default_range_of_HomStructure := SkeletalFinSets;
+    
+    range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", default_range_of_HomStructure );
+    
+    SetRangeCategoryOfHomomorphismStructure( fpcategory, range_category );
+    
+    ##
+    AddHomomorphismStructureOnObjects( fpcategory,
+      function( fpcategory, object_1, object_2 )
+        local nr_source, nr_range, basis_elements;
+        
+        nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
+        
+        nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
+        
+        basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
+        
+        return ObjectConstructor( range_category, Length( basis_elements ) );
+        
+    end );
+    
+    ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
+      function( fpcategory, source, alpha, beta, range )
+        local a, b, basis_a_b, ap, bp, basis_ap_bp, elem_alpha, elem_beta, entries;
+        
+        a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+        
+        b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
+        
+        basis_a_b := basis_paths_by_vertex_index[a][b];
+        
+        ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
+        
+        bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
+        
+        basis_ap_bp := basis_paths_by_vertex_index[ap][bp];
+        
+        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
+        
+        elem_beta := UnderlyingQuiverAlgebraElement( beta );
+        
+        entries := List( basis_a_b, phi -> Position( basis_ap_bp, Paths( elem_alpha * phi * elem_beta )[1] ) );
+        
+        return MorphismConstructor( range_category, source, entries, range );
+        
+    end );
+    
+    ##
+    AddDistinguishedObjectOfHomomorphismStructure( fpcategory,
+      function( fpcategory )
+        
+        return ObjectConstructor( range_category, 1 );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( fpcategory,
+      function( fpcategory, alpha )
+        local source, range, element, a, b, basis_elements;
+        
+        source := DistinguishedObjectOfHomomorphismStructure( fpcategory );
+        range := HomomorphismStructureOnObjects( fpcategory, Source( alpha ), Range( alpha ) );
+        
+        element := UnderlyingQuiverAlgebraElement( alpha );
+        
+        a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
+        
+        b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+        
+        basis_elements := basis_paths_by_vertex_index[a][b];
+        
+        return MorphismConstructor(
+                range_category,
+                source,
+                [ Position( basis_elements, Paths( element )[1] ) ],
+                range
+              );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( fpcategory,
+      function( fpcategory, a, b, morphism )
+        local basis, element;
+        
+        basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
+        
+        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ AsList( morphism )[1] ]} );
+        
+        return MorphismInFpCategory( a, element, b );
+        
+    end );
     
 end );
 
