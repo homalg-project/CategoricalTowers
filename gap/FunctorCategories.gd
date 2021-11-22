@@ -192,6 +192,26 @@ DeclareOperationWithCache( "Hom",
         [ IsCapCategory, IsHomalgRing ] );
 
 #! @Description
+#!  Construct the category <C>Hom( <A>B</A>^op, <A>C</A> )</C> of
+#!  functors from the opposite of the small category <A>B</A> to the category <A>C</A> as objects
+#!  and their natural transformations as morphisms.
+#! @Arguments B, C
+#! @Returns a &CAP; category
+#! @Group PreSheaves
+DeclareOperationWithCache( "PreSheaves",
+        [ IsCapCategory, IsCapCategory ] );
+
+#! @Arguments B, k
+#! @Group PreSheaves
+DeclareOperationWithCache( "PreSheaves",
+        [ IsCapCategory, IsHomalgRing ] );
+
+#! @Arguments B
+#! @Group PreSheaves
+DeclareOperationWithCache( "PreSheaves",
+        [ IsCapCategory ] );
+
+#! @Description
 #!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>H</A> := Hom( <A>B</A>, C )</C>.
 #! @Arguments H, F
 #! @Returns an object in a &CAP; category

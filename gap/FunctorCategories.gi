@@ -1476,6 +1476,28 @@ InstallMethodWithCache( Hom,
     
 end );
 
+##
+InstallMethodWithCache( PreSheaves,
+        "for two CAP categories",
+        [ IsCapCategory, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return Hom( OppositeFpCategory( B ), C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function ( B )
+    
+    return Hom( OppositeFpCategory( B ), FinSets );
+    
+end );
+
 ####################################
 #
 # Methods for attributes
