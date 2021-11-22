@@ -15,6 +15,21 @@ digraphs_quiver := RightQuiver( "q(V,E)[s:V->E,t:V->E]" );
 F := FreeCategory( digraphs_quiver );
 Digraphs := PreSheaves( F, FinSets );
 Fop := Source( Digraphs );
+Y := YonedaEmbedding( F );
+
+Display( Y( F.V ) );
+Display( Y( F.E ) );
+
+D := DistinguishedObjectOfHomomorphismStructure( Fop );
+
+ss := MapOfFinSets( D, [ 1 ], HomStructure( Fop.E, Fop.V ) );
+tt := MapOfFinSets( D, [ 2 ], HomStructure( Fop.E, Fop.V ) );
+
+s := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Fop, Fop.E, Fop.V, ss );
+t := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Fop, Fop.E, Fop.V, tt );
+
+Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( s ) = ss );
+Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( t ) = tt );
 
 ## The rewriting rule
 K_V := FinSet( [ 1, 2 ] );

@@ -195,12 +195,20 @@ end );
 
 ##
 InstallMethod( YonedaEmbedding,
-        [ IsAlgebroid ],
+        [ IsCapCategory ],
         
-  function ( algebroid )
-    local A, algebroid_op, objs, mors, kmat, functors_cat, name, Yoneda;
+  function ( B )
+    local A, B_op, objs, mors, H, functors_cat, name, Yoneda;
     
-    A := UnderlyingQuiverAlgebra( algebroid );
+    if IsFpCategory( B ) then
+        B_op := OppositeFpCategory( B );
+    elif IsAlgebroid( B ) then
+        B_op := OppositeAlgebroid( B );
+    else
+        Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
+    fi;
+    
+    A := UnderlyingQuiverAlgebra( B );
     
     if not IsFiniteDimensional( A ) then
         
@@ -208,31 +216,29 @@ InstallMethod( YonedaEmbedding,
         
     fi;
     
-    algebroid_op := OppositeAlgebroid( algebroid );
+    objs := SetOfObjects( B_op );
     
-    objs := SetOfObjects( algebroid_op );
+    mors := SetOfGeneratingMorphisms( B_op );
     
-    mors := SetOfGeneratingMorphisms( algebroid_op );
+    H := RangeCategoryOfHomomorphismStructure( B );
     
-    kmat := RangeCategoryOfHomomorphismStructure( algebroid );
-    
-    functors_cat := Hom( algebroid_op, kmat );
+    functors_cat := Hom( B_op, H );
     
     name := "Yoneda embedding functor";
     
-    Yoneda := CapFunctor( name, algebroid, functors_cat );
+    Yoneda := CapFunctor( name, B, functors_cat );
     
     AddObjectFunction( Yoneda,
       function ( o )
         local m, Yo;
         
-        o := OppositePath( UnderlyingVertex( o ) ) / algebroid_op;
+        o := OppositePath( UnderlyingVertex( o ) ) / B_op;
         
         m := List( mors, mor -> HomStructure( o, mor ) );
         
         o := List( objs, obj -> HomStructure( o, obj ) );
         
-        Yo := AsObjectInHomCategory( algebroid_op, o, m );
+        Yo := AsObjectInHomCategory( B_op, o, m );
         
         SetIsProjective( Yo, true );
         
@@ -243,10 +249,10 @@ InstallMethod( YonedaEmbedding,
     AddMorphismFunction( Yoneda,
       function ( s, m, r )
         
-        m := MorphismInAlgebroid(
-                OppositePath( UnderlyingVertex( Range( m ) ) ) / algebroid_op,
+        m := MorphismConstructor(
+                OppositePath( UnderlyingVertex( Range( m ) ) ) / B_op,
                 OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ),
-                OppositePath( UnderlyingVertex( Source( m ) ) ) / algebroid_op
+                OppositePath( UnderlyingVertex( Source( m ) ) ) / B_op
               );
         
         m := List( objs, o -> HomStructure( m, o ) );
@@ -258,4 +264,3 @@ InstallMethod( YonedaEmbedding,
     return Yoneda;
     
 end );
-
