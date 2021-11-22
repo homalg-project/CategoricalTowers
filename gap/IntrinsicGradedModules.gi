@@ -63,7 +63,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
     SetFilterObj( A, IsHomalgCategory );
     
     A!.containers := rec( );
-
+    
     has_hom_structure := HasRangeCategoryOfHomomorphismStructure( A );
     
     if has_hom_structure then
