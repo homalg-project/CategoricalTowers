@@ -51,6 +51,7 @@ InstallMethod( SetOfObjects,
 ##
 InstallMethod( AssignSetOfObjects,
         [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
+        
   function( A, label )
     local names, objects, func;
     
@@ -81,6 +82,7 @@ end );
 ##
 InstallOtherMethod( AssignSetOfObjects,
         [ IsAlgebroid and HasUnderlyingQuiver ],
+        
   function( A )
   
     AssignSetOfObjects( A, "" );
@@ -121,6 +123,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 ##
 InstallMethod( AssignSetOfGeneratingMorphisms,
         [ IsAlgebroid and HasUnderlyingQuiver, IsString ],
+        
   function( A, label )
     local names, morphisms, func;
     
@@ -151,6 +154,7 @@ end );
 ##
 InstallOtherMethod( AssignSetOfGeneratingMorphisms,
         [ IsAlgebroid and HasUnderlyingQuiver ],
+        
   function( A )
     
     AssignSetOfGeneratingMorphisms( A, "" );
@@ -623,8 +627,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     
 end );
 
+##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
-    function( algebroid, over_Z )
+  function( algebroid, over_Z )
     local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths, representative_func, ring, default_range_of_HomStructure, range_category, path;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
@@ -1401,6 +1406,7 @@ end );
 InstallMethod( ObjectInAlgebroid,
          "for an algebroid and a vertex of a quiver",
         [ IsAlgebroid, IsQuiverVertex ],
+        
   function( A, v )
     local o;
     o := rec();
@@ -2077,7 +2083,7 @@ end );
 InstallMethod( ViewObj,
         "for an object in an algebroid",
         [ IsCapCategoryObjectInAlgebroidRep ],
-
+        
   function( o )
     
     Print( "<", StringView( UnderlyingVertex( o ) ), ">" );
@@ -2088,7 +2094,7 @@ end );
 InstallMethod( ViewObj,
         "for a morphism in an algebroid",
         [ IsCapCategoryMorphismInAlgebroidRep ],
-
+        
   function( o )
     
     if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then

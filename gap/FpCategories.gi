@@ -590,6 +590,7 @@ end );
 InstallMethod( ObjectInFpCategory,
          "for a f.p. category and a vertex of a quiver",
         [ IsFpCategory, IsQuiverVertex ],
+        
   function( C, v )
     local o;
     o := rec();
@@ -804,6 +805,7 @@ end );
 InstallMethod( ElementaryTensor,
         "for objects in categorys",
         [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ],
+        
   function( a, b, T )
       
     local product_string, a_string, b_string, product_vertex;
@@ -1150,7 +1152,7 @@ end );
 InstallMethod( ViewObj,
         "for an object in a f.p. category",
         [ IsCapCategoryObjectInFpCategoryRep ],
-
+        
   function( o )
     
     Print( "<", StringView( UnderlyingVertex( o ) ), ">" );
@@ -1161,7 +1163,7 @@ end );
 InstallMethod( ViewObj,
         "for a morphism in a f.p. category",
         [ IsCapCategoryMorphismInFpCategoryRep ],
-
+        
   function( o )
     
     if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
