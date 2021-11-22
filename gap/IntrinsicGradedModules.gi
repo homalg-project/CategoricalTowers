@@ -22,11 +22,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
         #AddImageEmbedding( A, ImageEmbeddingForRightModules );
     fi;
     
-    Finalize( A : FinalizeCategory := true );
-
-    A := CategoryWithAmbientObjects( A );
-    
-    Finalize( A : FinalizeCategory := true );
+    A := CategoryWithAmbientObjects( A : FinalizeCategory := true );
     
     A := IntrinsicCategory( A :
                  filter_obj := filter_obj,
