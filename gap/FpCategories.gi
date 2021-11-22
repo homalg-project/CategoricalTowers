@@ -67,7 +67,7 @@ InstallMethod( SetOfGeneratingMorphisms,
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
         "for a f.p. category and two objects",
-        [ IsFpCategory and HasUnderlyingQuiver, IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory ],
+        [ IsFpCategory and HasUnderlyingQuiver, IsObjectInFpCategory, IsObjectInFpCategory ],
         
   { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
 );
@@ -75,7 +75,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 ##
 InstallMethod( SetOfGeneratingMorphisms,
         "for two objects in a f.p. category",
-         [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory ],
+         [ IsObjectInFpCategory, IsObjectInFpCategory ],
          
   { obj_1, obj_2 } -> SetOfGeneratingMorphisms( CapCategory( obj_1 ), obj_1, obj_2 )
 );
@@ -488,8 +488,8 @@ InstallMethod( Category,
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
     
-    AddObjectRepresentation( C, IsCapCategoryObjectInFpCategory );
-    AddMorphismRepresentation( C, IsCapCategoryMorphismInFpCategory );
+    AddObjectRepresentation( C, IsObjectInFpCategory );
+    AddMorphismRepresentation( C, IsMorphismInFpCategory );
     
     SetIsFinitelyPresentedCategory( C, true );
     SetUnderlyingQuiver( C, quiver );
@@ -570,7 +570,7 @@ InstallMethod( \/,
     
     f :=
       function( p )
-        if IsCapCategoryObjectInFpCategory( p ) then
+        if IsObjectInFpCategory( p ) then
             return UnderlyingVertex( p );
         fi;
         return Paths( UnderlyingQuiverAlgebraElement( p ) )[1];
@@ -741,7 +741,7 @@ InstallMethod( \/,
 ##
 InstallMethod( MorphismInFpCategory,
         "for two objects in a f.p. category and an element of the quiver algebra",
-        [ IsCapCategoryObjectInFpCategory, IsQuiverAlgebraElement, IsCapCategoryObjectInFpCategory ],
+        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
         
   function( S, path, T )
     local l, mor, C;
@@ -933,7 +933,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for objects in categorys",
-        [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ],
+        [ IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory ],
         
   function( a, b, T )
       
@@ -949,7 +949,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for object and morphism in categorys",
-        [ IsCapCategoryObjectInFpCategory, IsCapCategoryMorphismInFpCategory, IsFpCategory ],
+        [ IsObjectInFpCategory, IsMorphismInFpCategory, IsFpCategory ],
         
   function( object, morphism, T )
     local source, range, morphism_as_quiver_algebra_element, path,
@@ -1003,7 +1003,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for morphism and object in categorys",
-        [ IsCapCategoryMorphismInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ],
+        [ IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory ],
         
   function( morphism, object, T )
     local source, range, morphism_as_quiver_algebra_element, path,
@@ -1280,7 +1280,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an object in a f.p. category",
-        [ IsCapCategoryObjectInFpCategory ],
+        [ IsObjectInFpCategory ],
         
   function( o )
     
@@ -1291,7 +1291,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a morphism in a f.p. category",
-        [ IsCapCategoryMorphismInFpCategory ],
+        [ IsMorphismInFpCategory ],
         
   function( o )
     
@@ -1313,21 +1313,21 @@ end );
 
 ##
 InstallMethod( LaTeXStringOp,
-          [ IsCapCategoryObjectInFpCategory ],
+          [ IsObjectInFpCategory ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapCategoryObjectInFpCategory ],
+          [ IsObjectInFpCategory ],
           
   LaTeXStringOp
 );
 
 ##
 InstallMethod( LaTeXStringOp,
-          [ IsCapCategoryMorphismInFpCategory ],
+          [ IsMorphismInFpCategory ],
           
   function( m )
     local s;
@@ -1352,7 +1352,7 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapCategoryMorphismInFpCategory ],
+          [ IsMorphismInFpCategory ],
           
   LaTeXStringOp
 );

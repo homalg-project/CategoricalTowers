@@ -14,12 +14,12 @@
 
 #! @Description
 #!  The &GAP; category of objects in an algebroid.
-DeclareCategory( "IsCapCategoryObjectInFpCategory",
+DeclareCategory( "IsObjectInFpCategory",
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid.
-DeclareCategory( "IsCapCategoryMorphismInFpCategory",
+DeclareCategory( "IsMorphismInFpCategory",
         IsCapCategoryMorphism );
 
 #! @Description
@@ -122,14 +122,14 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 #! @Arguments C, obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsFpCategory, IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory ] );
+        [ IsFpCategory, IsObjectInFpCategory, IsObjectInFpCategory ] );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
 #! @Arguments obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory ] );
+        [ IsObjectInFpCategory, IsObjectInFpCategory ] );
 
 #! @Description
 #!  Delegates to <C>SetOfGeneratingMorphisms</C>( <A>C</A>, <C>SetOfObjects</C>(<A>C</A>)[<A>i</A>], <C>SetOfObjects</C>(<A>C</A>)[<A>j</A>] ).
@@ -179,14 +179,14 @@ DeclareAttribute( "Antipode",
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
-        IsCapCategoryObjectInFpCategory );
+        IsObjectInFpCategory );
 
 #! @Description
 #!  The quiver algebra element underlying the morphism <A>mor</A> in an algebroid.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
-        IsCapCategoryMorphismInFpCategory );
+        IsMorphismInFpCategory );
 
 #! @Description
 #!  The underlying algebra of an algebroid.
@@ -211,10 +211,10 @@ DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
 DeclareAttribute( "DecompositionOfMorphismInFpCategory",
-        IsCapCategoryMorphismInFpCategory );
+        IsMorphismInFpCategory );
 
 DeclareAttribute( "DecompositionOfMorphismInSquareOfFpCategory",
-        IsCapCategoryMorphismInFpCategory );
+        IsMorphismInFpCategory );
 
 ####################################
 #
@@ -235,33 +235,33 @@ DeclareOperation( "\*",
 #! @Arguments a, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsCapCategoryObjectInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ] );
+        [ IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory ] );
 
 #! @Description
 #!  Given an object <A>a</A> in a finitely presented category A and a morphism <A>g</A> in a finitely presented category B and the tensor product <A>T</A> of A and B, return the tensor product of a and g in T.
 #! @Arguments a, g, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsCapCategoryObjectInFpCategory, IsCapCategoryMorphismInFpCategory, IsFpCategory ] );
+        [ IsObjectInFpCategory, IsMorphismInFpCategory, IsFpCategory ] );
 
 #! @Description
 #!  Given a morphism <A>f</A> in a finitely presented category A and an object <A>b</A> in a finitely presented category B and the tensor product <A>T</A> of A and B, return the tensor product of f and b in T.
 #! @Arguments f, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsCapCategoryMorphismInFpCategory, IsCapCategoryObjectInFpCategory, IsFpCategory ] );
+        [ IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory ] );
 
 #! @Description
 #! The ouput is the LaTeX string of the object <A>o</A>.
 #! @Arguments o
 #! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsCapCategoryObjectInFpCategory ] );
+DeclareOperation( "LaTeXStringOp", [ IsObjectInFpCategory ] );
 
 #! @Description
 #! The ouput is the LaTeX string of the morphism <A>m</A>.
 #! @Arguments m
 #! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsCapCategoryMorphismInFpCategory ] );
+DeclareOperation( "LaTeXStringOp", [ IsMorphismInFpCategory ] );
 
 ####################################
 #
@@ -349,7 +349,7 @@ DeclareOperation( "\/", [ IsQuiverVertex, IsFpCategory ] );
 fi;
 
 DeclareOperation( "MorphismInFpCategory",
-        [ IsCapCategoryObjectInFpCategory, IsQuiverAlgebraElement, IsCapCategoryObjectInFpCategory ] );
+        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ] );
 
 DeclareOperation( "MorphismInFpCategory",
         [ IsFpCategory, IsQuiverAlgebraElement ] );
@@ -362,7 +362,7 @@ DeclareOperation( "MorphismInFpCategory",
 #! @Returns a morphism in a &CAP; category
 #! @Group MorphismInFpCategory
 DeclareOperation( "MorphismInFpCategory",
-        [ IsCapCategoryObjectInFpCategory, IsPath, IsCapCategoryObjectInFpCategory ] );
+        [ IsObjectInFpCategory, IsPath, IsObjectInFpCategory ] );
 
 #! @Arguments A, path
 #! @Group MorphismInFpCategory

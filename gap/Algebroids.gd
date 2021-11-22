@@ -30,12 +30,12 @@ DeclareGlobalVariable( "ALGEBROIDS" );
 
 #! @Description
 #!  The &GAP; category of objects in an algebroid.
-DeclareCategory( "IsCapCategoryObjectInAlgebroid",
+DeclareCategory( "IsObjectInAlgebroid",
         IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid.
-DeclareCategory( "IsCapCategoryMorphismInAlgebroid",
+DeclareCategory( "IsMorphismInAlgebroid",
         IsCapCategoryMorphism );
 
 #! @Description
@@ -155,14 +155,14 @@ DeclareAttribute( "SetOfGeneratingMorphisms",
 #! @Arguments A, obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsAlgebroid, IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ] );
+        [ IsAlgebroid, IsObjectInAlgebroid, IsObjectInAlgebroid ] );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
 #! @Arguments obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ] );
+        [ IsObjectInAlgebroid, IsObjectInAlgebroid ] );
 
 #! @Description
 #!  Delegates to <C>SetOfGeneratingMorphisms</C>( <A>A</A>, <C>SetOfObjects</C>(<A>A</A>)[<A>i</A>], <C>SetOfObjects</C>(<A>A</A>)[<A>j</A>] ).
@@ -212,14 +212,14 @@ DeclareAttribute( "Antipode",
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
-        IsCapCategoryObjectInAlgebroid );
+        IsObjectInAlgebroid );
 
 #! @Description
 #!  The quiver algebra element underlying the morphism <A>mor</A> in an algebroid.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
-        IsCapCategoryMorphismInAlgebroid );
+        IsMorphismInAlgebroid );
 
 #! @Description
 #!  The underlying algebra of an algebroid.
@@ -247,10 +247,10 @@ DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 
 DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
-        IsCapCategoryMorphismInAlgebroid );
+        IsMorphismInAlgebroid );
 
 DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
-        IsCapCategoryMorphismInAlgebroid );
+        IsMorphismInAlgebroid );
 
 ####################################
 #
@@ -289,33 +289,33 @@ DeclareOperation( "\*",
 #! @Arguments a, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
+        [ IsObjectInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ] );
 
 #! @Description
 #!  Given an object <A>a</A> in an algebroid A and a morphism <A>g</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and g in T.
 #! @Arguments a, g, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryMorphismInAlgebroid, IsAlgebroid ] );
+        [ IsObjectInAlgebroid, IsMorphismInAlgebroid, IsAlgebroid ] );
 
 #! @Description
 #!  Given a morphism <A>f</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of f and b in T.
 #! @Arguments f, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ] );
+        [ IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ] );
 
 #! @Description
 #! The ouput is the LaTeX string of the object <A>o</A>.
 #! @Arguments o
 #! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsCapCategoryObjectInAlgebroid ] );
+DeclareOperation( "LaTeXStringOp", [ IsObjectInAlgebroid ] );
 
 #! @Description
 #! The ouput is the LaTeX string of the morphism <A>m</A>.
 #! @Arguments m
 #! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsCapCategoryMorphismInAlgebroid ] );
+DeclareOperation( "LaTeXStringOp", [ IsMorphismInAlgebroid ] );
 
 ####################################
 #
@@ -447,7 +447,7 @@ DeclareOperation( "\/", [ IsQuiverVertex, IsAlgebroid ] );
 #! @Returns a morphism in a &CAP; category
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
-        [ IsCapCategoryObjectInAlgebroid, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroid ] );
+        [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ] );
 
 #! @Arguments A, path
 #! @Group MorphismInAlgebroid

@@ -83,7 +83,7 @@ InstallMethod( SetOfGeneratingMorphisms,
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
         "for an algebroid and two objects",
-        [ IsAlgebroid and HasUnderlyingQuiver, IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ],
+        [ IsAlgebroid and HasUnderlyingQuiver, IsObjectInAlgebroid, IsObjectInAlgebroid ],
         
   { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Range( m ) ) )
 );
@@ -91,7 +91,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 ##
 InstallMethod( SetOfGeneratingMorphisms,
         "for two objects in an algebroid",
-         [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid ],
+         [ IsObjectInAlgebroid, IsObjectInAlgebroid ],
          
   { obj_1, obj_2 } -> SetOfGeneratingMorphisms( CapCategory( obj_1 ), obj_1, obj_2 )
 );
@@ -196,7 +196,7 @@ end );
 ##
 InstallMethod( DecompositionOfMorphismInAlgebroid,
         "for a morphism in an algebroid",
-        [ IsCapCategoryMorphismInAlgebroid ],
+        [ IsMorphismInAlgebroid ],
         
   function( mor )
     local B, func;
@@ -229,7 +229,7 @@ end );
 ##
 InstallMethod( DecompositionOfMorphismInSquareOfAlgebroid,
         "for a morphism in an algebroid",
-        [ IsCapCategoryMorphismInAlgebroid ],
+        [ IsMorphismInAlgebroid ],
         
   function( mor )
     local B, Rq, gens, prod, func;
@@ -898,7 +898,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ##
     InstallMethod( CoefficientsOfMorphism,
-              [ IsCapCategoryMorphismInAlgebroid and MorphismFilter( algebroid ) ],
+              [ IsMorphismInAlgebroid and MorphismFilter( algebroid ) ],
               
       function( morphism )
         local nr_source, nr_range, element;
@@ -1134,8 +1134,8 @@ InstallMethod( Algebroid,
     CapCategorySwitchLogicOff( A );
     DisableSanityChecks( A );
     
-    AddObjectRepresentation( A, IsCapCategoryObjectInAlgebroid );
-    AddMorphismRepresentation( A, IsCapCategoryMorphismInAlgebroid );
+    AddObjectRepresentation( A, IsObjectInAlgebroid );
+    AddMorphismRepresentation( A, IsMorphismInAlgebroid );
     
     SetIsAbCategory( A, true );
     SetIsLinearCategoryOverCommutativeRing( A, true );
@@ -1412,7 +1412,7 @@ InstallMethod( \/,
 ##
 InstallMethodForCompilerForCAP( MorphismInAlgebroid,
         "for two objects in an algebroid and an element of the quiver algebra",
-        [ IsCapCategoryObjectInAlgebroid, IsQuiverAlgebraElement, IsCapCategoryObjectInAlgebroid ],
+        [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
         
   function( S, path, T )
     local l, mor, A;
@@ -1603,7 +1603,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for objects in algebroids",
-        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
+        [ IsObjectInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ],
         
   function( a, b, T )
     local product_string, a_string, b_string, product_vertex;
@@ -1618,7 +1618,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for object and morphism in algebroids",
-        [ IsCapCategoryObjectInAlgebroid, IsCapCategoryMorphismInAlgebroid, IsAlgebroid ],
+        [ IsObjectInAlgebroid, IsMorphismInAlgebroid, IsAlgebroid ],
         
   function( object, morphism, T )
     local source, range, morphism_as_quiver_algebra_element, paths, coeffs,
@@ -1688,7 +1688,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for morphism and object in algebroids",
-        [ IsCapCategoryMorphismInAlgebroid, IsCapCategoryObjectInAlgebroid, IsAlgebroid ],
+        [ IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ],
         
   function( morphism, object, T )
     local source, range, morphism_as_quiver_algebra_element, coeffs, paths,
@@ -2066,7 +2066,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an object in an algebroid",
-        [ IsCapCategoryObjectInAlgebroid ],
+        [ IsObjectInAlgebroid ],
         
   function( o )
     
@@ -2077,7 +2077,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a morphism in an algebroid",
-        [ IsCapCategoryMorphismInAlgebroid ],
+        [ IsMorphismInAlgebroid ],
         
   function( o )
     
@@ -2099,21 +2099,21 @@ end );
 
 ##
 InstallMethod( LaTeXStringOp,
-          [ IsCapCategoryObjectInAlgebroid ],
+          [ IsObjectInAlgebroid ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapCategoryObjectInAlgebroid ],
+          [ IsObjectInAlgebroid ],
           
   LaTeXStringOp
 );
 
 ##
 InstallMethod( LaTeXStringOp,
-          [ IsCapCategoryMorphismInAlgebroid ],
+          [ IsMorphismInAlgebroid ],
           
   function( m )
     local s;
@@ -2138,7 +2138,7 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapCategoryMorphismInAlgebroid ],
+          [ IsMorphismInAlgebroid ],
           
   LaTeXStringOp
 );
