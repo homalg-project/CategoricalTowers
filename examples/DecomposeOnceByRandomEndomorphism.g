@@ -19,7 +19,7 @@ CatReps := Hom( A, GF3 );
 d := [[1,1,0,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,0,1,1],[0,0,0,0,1]];;
 e := [[0,1,0,0],[0,0,1,0],[0,0,0,0],[0,1,0,1],[0,0,1,0]];;
 f := [[1,1,0,0],[0,1,1,0],[0,0,1,0],[0,0,0,1]];;
-nine := AsObjectInHomCategory( A, [ 5, 4 ], [ d, e, f ] );
+nine := AsObjectInFunctorCategory( A, [ 5, 4 ], [ d, e, f ] );
 #! <(1)->5, (2)->4; (a)->5x5, (b)->5x4, (c)->4x4>
 DecomposeOnceByRandomEndomorphism( nine );
 #! fail

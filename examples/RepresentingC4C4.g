@@ -115,7 +115,7 @@ amat * bmat = bmat * cmat;
 #! well-defined representation of C4C4.
 
 #! @Example
-eleven := AsObjectInHomCategory( A, [ 6, 5 ], [ amat, bmat, cmat ] );
+eleven := AsObjectInFunctorCategory( A, [ 6, 5 ], [ amat, bmat, cmat ] );
 #! <(1)->6, (2)->5; (a)->6x6, (b)->6x5, (c)->5x5>
 IsWellDefined( eleven );
 #! true

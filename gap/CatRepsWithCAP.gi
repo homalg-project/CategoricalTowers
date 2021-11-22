@@ -267,7 +267,7 @@ InstallMethod( \[\],
 ## Source( EmbeddingOfSubRepresentation ) = SubmoduleRep in catreps
 InstallMethod( EmbeddingOfSubRepresentation,
         "for a list and an object in a Hom-category",
-        [ IsList, IsCapCategoryObjectInHomCategory ],
+        [ IsList, IsObjectInFunctorCategory ],
         
   function( eta, F )
     local kq, objects, morphisms, subrep, embedding;
@@ -286,9 +286,9 @@ InstallMethod( EmbeddingOfSubRepresentation,
                               PreCompose( eta[VertexIndex( UnderlyingVertex( Source( m ) ) )],
                                       F( m ) ) ) );
     
-    subrep := AsObjectInHomCategory( kq, objects, morphisms );
+    subrep := AsObjectInFunctorCategory( kq, objects, morphisms );
     
-    embedding := AsMorphismInHomCategory( subrep, eta, F );
+    embedding := AsMorphismInFunctorCategory( subrep, eta, F );
     
     SetIsMonomorphism( embedding, true );
     

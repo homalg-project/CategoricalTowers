@@ -127,7 +127,7 @@ DeclareOperation( "RelationsOfEndomorphisms",
 #! @Arguments eta, F
 #! @Returns an morphism in a Hom-category
 DeclareOperation( "EmbeddingOfSubRepresentation",
-        [ IsList, IsCapCategoryObjectInHomCategory ] );
+        [ IsList, IsObjectInFunctorCategory ] );
 
 ####################################
 #
