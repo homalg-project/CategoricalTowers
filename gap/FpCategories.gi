@@ -6,22 +6,6 @@
 
 ####################################
 #
-# representations:
-#
-####################################
-
-DeclareRepresentation( "IsCapCategoryObjectInFpCategoryRep",
-        IsCapCategoryObjectInFpCategory and
-        IsAttributeStoringRep,
-        [ ] );
-
-DeclareRepresentation( "IsCapCategoryMorphismInFpCategoryRep",
-        IsCapCategoryMorphismInFpCategory and
-        IsAttributeStoringRep,
-        [ ] );
-
-####################################
-#
 # methods for attributes:
 #
 ####################################
@@ -359,8 +343,8 @@ InstallMethod( Category,
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
     
-    AddObjectRepresentation( C, IsCapCategoryObjectInFpCategoryRep );
-    AddMorphismRepresentation( C, IsCapCategoryMorphismInFpCategoryRep );
+    AddObjectRepresentation( C, IsCapCategoryObjectInFpCategory );
+    AddMorphismRepresentation( C, IsCapCategoryMorphismInFpCategory );
     
     SetIsFinitelyPresentedCategory( C, true );
     SetUnderlyingQuiver( C, quiver );
@@ -441,7 +425,7 @@ InstallMethod( \/,
     
     f :=
       function( p )
-        if IsCapCategoryObjectInFpCategoryRep( p ) then
+        if IsCapCategoryObjectInFpCategory( p ) then
             return UnderlyingVertex( p );
         fi;
         return Paths( UnderlyingQuiverAlgebraElement( p ) )[1];
@@ -612,7 +596,7 @@ InstallMethod( \/,
 ##
 InstallMethod( MorphismInFpCategory,
         "for two objects in a f.p. category and an element of the quiver algebra",
-        [ IsCapCategoryObjectInFpCategoryRep, IsQuiverAlgebraElement, IsCapCategoryObjectInFpCategoryRep ],
+        [ IsCapCategoryObjectInFpCategory, IsQuiverAlgebraElement, IsCapCategoryObjectInFpCategory ],
         
   function( S, path, T )
     local l, mor, C;
@@ -1151,7 +1135,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for an object in a f.p. category",
-        [ IsCapCategoryObjectInFpCategoryRep ],
+        [ IsCapCategoryObjectInFpCategory ],
         
   function( o )
     
@@ -1162,7 +1146,7 @@ end );
 ##
 InstallMethod( ViewObj,
         "for a morphism in a f.p. category",
-        [ IsCapCategoryMorphismInFpCategoryRep ],
+        [ IsCapCategoryMorphismInFpCategory ],
         
   function( o )
     
@@ -1184,21 +1168,21 @@ end );
 
 ##
 InstallMethod( LaTeXStringOp,
-          [ IsCapCategoryObjectInFpCategoryRep ],
+          [ IsCapCategoryObjectInFpCategory ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapCategoryObjectInFpCategoryRep ],
+          [ IsCapCategoryObjectInFpCategory ],
           
   LaTeXStringOp
 );
 
 ##
 InstallMethod( LaTeXStringOp,
-          [ IsCapCategoryMorphismInFpCategoryRep ],
+          [ IsCapCategoryMorphismInFpCategory ],
           
   function( m )
     local s;
@@ -1223,7 +1207,7 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsCapCategoryMorphismInFpCategoryRep ],
+          [ IsCapCategoryMorphismInFpCategory ],
           
   LaTeXStringOp
 );
