@@ -177,18 +177,29 @@ DeclareOperation( "ValuesOnAllGeneratingMorphisms",
 ####################################
 
 #! @Description
-#!  Construct the category <C>Hom( <A>B</A>, <A>C</A> )</C> of
-#!  functors from the small category <A>B</A> to the category <A>C</A> as objects
+#!  Construct the category <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)</C>=
+#!  <C>Hom(</C> <A>B</A>, <A>C</A> <C>)</C> of functors from the small category
+#!  <A>B</A> to the category <A>C</A> as objects
 #!  and their natural transformations as morphisms.
-#! @Arguments B, C
 #! @Returns a &CAP; category
-#! @Group Hom
-DeclareOperationWithCache( "Hom",
+#! @Arguments B, C
+#! @Group FunctorCategory
+DeclareOperationWithCache( "FunctorCategory",
         [ IsCapCategory, IsCapCategory ] );
 
 #! @Arguments B, k
-#! @Group Hom
-DeclareOperationWithCache( "Hom",
+#! @Group FunctorCategory
+DeclareOperationWithCache( "FunctorCategory",
+        [ IsCapCategory, IsHomalgRing ] );
+
+#! @Arguments B, C
+#! @Group FunctorCategory
+DeclareOperation( "Hom",
+        [ IsCapCategory, IsCapCategory ] );
+
+#! @Arguments B, k
+#! @Group FunctorCategory
+DeclareOperation( "Hom",
         [ IsCapCategory, IsHomalgRing ] );
 
 #! @Description

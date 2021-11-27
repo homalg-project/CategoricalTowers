@@ -660,7 +660,7 @@ InstallMethod( AsMorphismInFunctorCategory,
 end );
 
 ##
-InstallMethodWithCache( Hom,
+InstallMethodWithCache( FunctorCategory,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
@@ -1080,6 +1080,11 @@ InstallMethodWithCache( Hom,
                     "IsAbelianCategory",
                     #"IsAbelianCategoryWithEnoughProjectives",
                     #"IsAbelianCategoryWithEnoughInjectives",
+                    "IsCartesianCategory",
+                    "IsCocartesianCategory",
+                    "IsCartesianClosedCategory",
+                    "IsCocartesianCoclosedCategory",
+                    "IsElementaryTopos",
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
@@ -1090,7 +1095,7 @@ InstallMethodWithCache( Hom,
       [ function ( Hom ) SetSource( Hom, B ); end,
         function ( Hom ) SetRange( Hom, C ); end,
           ];
-    
+
     Hom := CategoryConstructor( :
                    name := name,
                    category_as_first_argument := true,
@@ -1446,18 +1451,12 @@ InstallMethodWithCache( Hom,
     
     Finalize( Hom );
     
-    if not CanCompute( Hom, "TensorProductOnObjects" ) then
-        
-        SetIsMonoidalCategory( Hom, false );
-        
-    fi;
-    
     return Hom;
     
 end );
 
 ##
-InstallMethodWithCache( Hom,
+InstallMethodWithCache( FunctorCategory,
         "for a CAP category and a homalg field",
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
@@ -1477,13 +1476,27 @@ InstallMethodWithCache( Hom,
 end );
 
 ##
+InstallMethod( Hom,
+        "for two CAP categories",
+        [ IsCapCategory, IsCapCategory ],
+        
+  FunctorCategory );
+
+##
+InstallMethod( Hom,
+        "for a CAP category and a homalg field",
+        [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
+        
+  FunctorCategory );
+
+##
 InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
     
-    return Hom( OppositeFpCategory( B ), C );
+    return FunctorCategory( OppositeFpCategory( B ), C );
     
 end );
 
@@ -1494,7 +1507,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B )
     
-    return Hom( OppositeFpCategory( B ), FinSets );
+    return FunctorCategory( OppositeFpCategory( B ), FinSets );
     
 end );
 
