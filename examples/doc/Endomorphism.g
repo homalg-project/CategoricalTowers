@@ -1,4 +1,4 @@
-#! @Chunk Hom
+#! @Chunk Endomorphism
 
 LoadPackage( "FunctorCategories" );
 
