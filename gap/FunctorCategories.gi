@@ -1080,6 +1080,11 @@ InstallMethodWithCache( Hom,
                     "IsAbelianCategory",
                     #"IsAbelianCategoryWithEnoughProjectives",
                     #"IsAbelianCategoryWithEnoughInjectives",
+                    "IsCartesianCategory",
+                    "IsCocartesianCategory",
+                    "IsCartesianClosedCategory",
+                    "IsCocartesianCoclosedCategory",
+                    "IsElementaryTopos",
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
