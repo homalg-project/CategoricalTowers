@@ -1090,7 +1090,7 @@ InstallMethodWithCache( Hom,
       [ function ( Hom ) SetSource( Hom, B ); end,
         function ( Hom ) SetRange( Hom, C ); end,
           ];
-    
+
     Hom := CategoryConstructor( :
                    name := name,
                    category_as_first_argument := true,
