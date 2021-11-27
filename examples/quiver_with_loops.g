@@ -20,7 +20,7 @@ algebroid := Algebroid( A );
 
 matrix_cat := MatrixCategory( field );
 
-H := Hom( algebroid, matrix_cat );
+H := FunctorCategory( algebroid, matrix_cat );
 
 indec_projs := IndecProjectiveObjects( H );
 
