@@ -1446,12 +1446,6 @@ InstallMethodWithCache( Hom,
     
     Finalize( Hom );
     
-    if not CanCompute( Hom, "TensorProductOnObjects" ) then
-        
-        SetIsMonoidalCategory( Hom, false );
-        
-    fi;
-    
     return Hom;
     
 end );
