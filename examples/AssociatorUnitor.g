@@ -11,7 +11,7 @@ AddBialgebroidStructure( kq, counit, comult );
 counit := Counit( kq );
 comult := Comultiplication( kq );
 kmat := MatrixCategory( GF3 );
-CatReps := Hom( kq, kmat );
+CatReps := FunctorCategory( kq, kmat );
 zero := ZeroObject( CatReps );
 unit := TensorUnit( CatReps );
 V1 := VectorSpaceObject( 5, GF3 );
