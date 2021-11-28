@@ -1,26 +1,39 @@
 @Chapter Prosets (preordered sets)
 
+@Section Info Class
+@Section Constructors
+@Section Operations
+@Section Add-methods
+@Section GAP Categories
+
 @Chapter Posets (partially ordered sets)
+@Section Operations
+@Section Add-methods
 
 @Chapter Lattices
 
 @Chapter Heyting algebras
+@Section Operations
+@Section Stable internal Hom
+@Section Add-methods
 
 @Chapter Co-Heyting algebras
+@Section Operations
+@Section Stable internal coHom
+@Section Add-methods
 
 @Chapter The (stable) proset/poset of a category
 
-@Section GAP categories
 @Section Global variables
 @Section Attributes
 @Section Constructors
 @Section Operations
 @Section Examples
-
 @Subsection Ideal quotient
 @InsertChunk IdealQuotient
 @InsertChunk IdealQuotient2
 @InsertChunk IdealQuotient3
+@Section GAP categories
 
 @Subsection Poset of category
 @InsertChunk PosetOfCategory
@@ -30,14 +43,36 @@
 @InsertChunk StablePosetOfCategory
 
 @Chapter Boolean algebras
+@Section Operations
+@Section Add-methods
 
 @Chapter Meet-semilattice of differences
 
+@Section Constructors
+@Section Operations
+@Section GAP Categories
+
 @Chapter Meet-semilattice of multiple differences
+
+@Section Constructors
+@Section Attributes
+@Section Operations
+@Section GAP Categories
 
 @Chapter Boolean algebra of constructible objects
 
+@Section Constructors
+@Section Properties
+@Section Attributes
+@Section Operations
+@Section GAP Categories
+
 @Chapter Tools
+
+@Section Info Class
+@Section Constructors
+@Section Operations
+@Section GAP Categories
 
 @Chapter Tests
 
