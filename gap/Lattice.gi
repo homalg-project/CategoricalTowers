@@ -110,18 +110,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
 end );
 
 ##
-AddDerivationToCAP( IsHomSetInhabited,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ DirectProduct, 1 ] ],
-        
-  function( cat, S, T )
-    
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, DirectProduct( cat, S, T ), S );
-    
-end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and DirectProduct",
-      CategoryFilter := IsThinCategory and IsCartesianCategory );
-
-##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
   function( meet_semilattice )
     
@@ -230,18 +218,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     end );
     
 end );
-
-##
-AddDerivationToCAP( IsHomSetInhabited,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ],
-          [ Coproduct, 1 ], ],
-        
-  function( cat, S, T )
-    
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, T, Coproduct( cat, S, T ) );
-    
-end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and Coproduct",
-      CategoryFilter := IsThinCategory and IsCocartesianCategory );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,

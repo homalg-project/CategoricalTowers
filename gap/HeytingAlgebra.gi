@@ -4,35 +4,6 @@
 # Implementations
 #
 
-InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
-        rec(
-NegationOnObjects := rec(
-  installation_name := "NegationOnObjects",
-  filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "an" ] ],
-  cache_name := "NegationOnObjects",
-  return_type := "object" ),
-
-NegationOnMorphismsWithGivenNegations := rec(
-  installation_name := "NegationOnMorphismsWithGivenNegations",
-  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
-  filter_list := [ "category", "object", "morphism", "object" ],
-  cache_name := "NegationOnMorphismsWithGivenNegations",
-  return_type := "morphism" ),
-
-MorphismToDoubleNegationWithGivenDoubleNegation := rec(
-  installation_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
-  filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
-  return_type := "morphism" )
-
-            ) );
-
-CAP_INTERNAL_ENHANCE_NAME_RECORD( HEYTING_ALGEBRA_METHOD_NAME_RECORD );
-
-CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( HEYTING_ALGEBRA_METHOD_NAME_RECORD );
-
 InstallValue( CAP_INTERNAL_HEYTING_ALGEBRAS_BASIC_OPERATIONS, rec( ) );
 
 ##
@@ -150,43 +121,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
 end );
-
-## IsTerminal( Exp( S, T ) ) <=(thin)=> TerminalObject ≤ Hom( S, T ) <=(cart. closed)=> ( TerminalObject ∧ S ) ≤ T <==> S ≤ T
-AddDerivationToCAP( IsHomSetInhabited,
-        [ [ IsTerminal, 1 ],
-          [ ExponentialOnObjects, 1 ] ],
-        
-  function( cat, S, T )
-    
-    return IsTerminal( cat, ExponentialOnObjects( cat, S, T ) );
-    
-end : Description := "IsHomSetInhabited using IsTerminal and ExponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( NegationOnObjects,
-        [ [ ExponentialOnObjects, 1 ],
-          [ InitialObject, 1 ] ],
-        
-  function( cat, A )
-    
-    return ExponentialOnObjects( cat, A, InitialObject( cat ) );
-    
-end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
-      CategoryFilter := IsThinCategory and IsCartesianClosedCategory );
-
-##
-AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
-        [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
-          [ IdentityMorphism, 1 ],
-          [ InitialObject, 1 ] ],
-        
-  function( cat, B_, u, A_ )
-    
-    return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
-    
-end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
-      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
 
 ##
 InstallMethod( StableInternalHom,

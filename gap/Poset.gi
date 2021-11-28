@@ -4,21 +4,6 @@
 # Implementations
 #
 
-InstallValue( POSET_METHOD_NAME_RECORD,
-        rec(
-            IsEqualForObjectsIfIsHomSetInhabited := rec(
-                                     installation_name := "IsEqualForObjectsIfIsHomSetInhabited",
-                                     filter_list := [ "category", "object", "object" ],
-                                     return_type := "bool",
-                                     is_merely_set_theoretic := true
-                                    ),
-            )
-        );
-
-CAP_INTERNAL_ENHANCE_NAME_RECORD( POSET_METHOD_NAME_RECORD );
-
-CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( POSET_METHOD_NAME_RECORD );
-
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
   function( poset )
@@ -29,27 +14,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
     
 end );
 
-##
-AddDerivationToCAP( IsEqualForObjectsIfIsHomSetInhabited,
-        [ [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
-        
-  { cat, A, B } -> AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B ) :
-      Description := "AreIsomorphicForObjectsIfIsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory );
-
-##
-AddDerivationToCAP( IsEqualForObjects,
-        [ [ IsHomSetInhabited, 1 ],
-          [ AreIsomorphicForObjectsIfIsHomSetInhabited, 1 ] ],
-        
-  function( cat, A, B )
-    
-    return IsHomSetInhabited( cat, A, B ) and
-           AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B );
-        
-end : Description := "",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory );
-    
 ##
 InstallMethod( \<,
         "for two objects in a thin category",

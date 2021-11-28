@@ -4,35 +4,6 @@
 # Implementations
 #
 
-InstallValue( COHEYTING_ALGEBRA_METHOD_NAME_RECORD,
-        rec(
-ConegationOnObjects := rec(
-  installation_name := "ConegationOnObjects",
-  filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "an" ] ],
-  cache_name := "ConegationOnObjects",
-  return_type := "object" ),
-
-ConegationOnMorphismsWithGivenConegations := rec(
-  installation_name := "ConegationOnMorphismsWithGivenConegations",
-  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
-  filter_list := [ "category", "object", "morphism", "object" ],
-  cache_name := "ConegationOnMorphismsWithGivenConegations",
-  return_type := "morphism" ),
-
-MorphismFromDoubleConegationWithGivenDoubleConegation := rec(
-  installation_name := "MorphismFromDoubleConegationWithGivenDoubleConegation",
-  filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismFromDoubleConegationWithGivenDoubleConegation",
-  return_type := "morphism" )
-
-            ) );
-
-CAP_INTERNAL_ENHANCE_NAME_RECORD( COHEYTING_ALGEBRA_METHOD_NAME_RECORD );
-
-CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( COHEYTING_ALGEBRA_METHOD_NAME_RECORD );
-
 InstallValue( CAP_INTERNAL_COHEYTING_ALGEBRAS_BASIC_OPERATIONS, rec( ) );
 
 ##
@@ -150,43 +121,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     end );
     
 end );
-
-##
-AddDerivationToCAP( IsHomSetInhabited,
-        [ [ IsInitial, 1 ],
-          [ CoexponentialOnObjects, 1 ] ],
-        
-  function( cat, S, T )
-    
-    return IsInitial( cat, CoexponentialOnObjects( cat, S, T ) );
-    
-end : Description := "IsHomSetInhabited using IsInitial and CoexponentialOnObjects",
-      CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory );
-
-##
-AddDerivationToCAP( ConegationOnObjects,
-        [ [ CoexponentialOnObjects, 1 ],
-          [ TerminalObject, 1 ] ],
-        
-  function( cat, A )
-    
-    return CoexponentialOnObjects( cat, TerminalObject( cat ), A );
-    
-end : Description := "ConegationOnObjects using CoexponentialOnObjects and TerminalObject",
-      CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory );
-
-##
-AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
-        [ [ CoexponentialOnMorphismsWithGivenCoexponentials, 1 ],
-          [ IdentityMorphism, 1 ],
-          [ TerminalObject, 1 ] ],
-        
-  function( cat, B_, u, A_ )
-    
-    return CoexponentialOnMorphismsWithGivenCoexponentials( cat, B_, IdentityMorphism( cat, TerminalObject( cat ) ), u, A_ );
-    
-end : Description := "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
-      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCocartesianCoclosedCategory );
 
 ##
 InstallMethod( StableInternalCoHom,
