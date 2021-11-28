@@ -7,25 +7,33 @@
 InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 NegationOnObjects := rec(
-  installation_name := "NegationOnObjects",
   filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "an" ] ],
-  cache_name := "NegationOnObjects",
   return_type := "object" ),
 
+NegationOnMorphisms := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
+  output_source_getter_string := "NegationOnObjects( cat, Range( alpha ) )",
+  output_range_getter_string := "NegationOnObjects( cat, Source( alpha ) )",
+  with_given_object_position := "both",
+  return_type := "morphism" ),
+
 NegationOnMorphismsWithGivenNegations := rec(
-  installation_name := "NegationOnMorphismsWithGivenNegations",
-  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "category", "object", "morphism", "object" ],
-  cache_name := "NegationOnMorphismsWithGivenNegations",
+  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
+  return_type := "morphism" ),
+
+MorphismToDoubleNegation := rec(
+  filter_list := [ "category", "object" ],
+  input_arguments_names := [ "cat", "a" ],
+  output_range_getter_string := "NegationOnObjects( cat, NegationOnObjects( cat, a ) )",
+  with_given_object_position := "Range",
   return_type := "morphism" ),
 
 MorphismToDoubleNegationWithGivenDoubleNegation := rec(
-  installation_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
-  return_type := "morphism" )
+  return_type := "morphism" ),
 
             ) );
 

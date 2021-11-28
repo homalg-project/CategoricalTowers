@@ -12,6 +12,25 @@
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismToDoubleNegation`.
+#! $F: ( a ) \mapsto \mathtt{MorphismToDoubleNegation}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismToDoubleNegation",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismToDoubleNegation",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismToDoubleNegation",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismToDoubleNegation",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismToDoubleNegationWithGivenDoubleNegation`.
 #! $F: ( a, r ) \mapsto \mathtt{MorphismToDoubleNegationWithGivenDoubleNegation}(a, r)$.
 #! @Returns nothing
@@ -26,6 +45,25 @@ DeclareOperation( "AddMorphismToDoubleNegationWithGivenDoubleNegation",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddMorphismToDoubleNegationWithGivenDoubleNegation",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `NegationOnMorphisms`.
+#! $F: ( alpha ) \mapsto \mathtt{NegationOnMorphisms}(alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddNegationOnMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddNegationOnMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddNegationOnMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddNegationOnMorphisms",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -51,7 +89,7 @@ DeclareOperation( "AddNegationOnMorphismsWithGivenNegations",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `NegationOnObjects`.
-#! $F: ( a ) \mapsto \mathtt{NegationOnObjects}(a)$.
+#! $F: ( arg2 ) \mapsto \mathtt{NegationOnObjects}(arg2)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddNegationOnObjects",
