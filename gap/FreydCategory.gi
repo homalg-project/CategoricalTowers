@@ -26,13 +26,14 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         ## in https://doi.org/10.1007/s10485-020-09612-y we switch the arguments
         ## [ MorphismDatum( morphism ), relation_morphism ] in order to increase the
         ## similarity to the output in ModulePresentationsForCAP and homalg_project/Modules
-        cokernel_object := FreydCategoryObject(
+        cokernel_object := FreydCategoryObject( category,
                                    UniversalMorphismFromDirectSumWithGivenDirectSum(
                                            diagram,
                                            test_morphisms,
                                            DirectSum( diagram ) ) );
         
-        return FreydCategoryMorphism( range,
+        return FreydCategoryMorphism( category,
+                       range,
                        IdentityMorphism( Range( relation_morphism ) ),
                        cokernel_object );
         
@@ -56,10 +57,10 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         ker := ProjectionOfBiasedWeakFiberProduct( emb, rho_A );
         
         emb :=
-          FreydCategoryMorphism(
-                  FreydCategoryObject( ker ),
+          FreydCategoryMorphism( category,
+                  FreydCategoryObject( category, ker ),
                   emb,
-                  FreydCategoryObject( rho_A ) );
+                  FreydCategoryObject( category, rho_A ) );
         
         # check assertion
         Assert( 5, IsMonomorphism( emb ) );
@@ -79,7 +80,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     ##
     #AddLiftAlongMonomorphism( A,
-    #  function( alpha, test_morphism )
+    #  function( category, alpha, test_morphism )
     #    local sigma, R_B, A, tau_A;
     #    
     #    sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
@@ -92,7 +93,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
     #    ## in the body of the function passed to AddCokernelProjection above
     #    tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ A, R_B ], 1 ) );
     #    
-    #    return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
+    #    return FreydCategoryMorphism( category, Source( test_morphism ), tau_A, Source( alpha ) );
     #    
     #end );
         
@@ -110,16 +111,16 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         chi := RelativeLift( beta, alpha, N );
         
-        return FreydCategoryMorphism( Source( test_morphism ), chi, Source( monomorphism ) );
+        return FreydCategoryMorphism( category, Source( test_morphism ), chi, Source( monomorphism ) );
         
     end );
             
     ##
     #AddColiftAlongEpimorphism( A,
-    #  function( alpha, test_morphism )
+    #  function( category, alpha, test_morphism )
     #    local witness, R_B, A, sigma_A;
     #    
-    #    witness := WitnessForBeingCongruentToZero( CokernelProjection( alpha ) );
+    #    witness := WitnessForBeingCongruentToZero( CokernelProjection( category, alpha ) );
     #    
     #    R_B := Source( RelationMorphism( Range( alpha ) ) );
     #    
@@ -129,7 +130,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
     #    ## in the body of the function passed to AddCokernelProjection above
     #    sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ A, R_B ], 1 ) );
     #    
-    #    return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
+    #    return FreydCategoryMorphism( category, Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
     #    
     #end );
     
@@ -147,7 +148,7 @@ InstallGlobalFunction( INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         chi := RelativeLift( beta, alpha, N );
         
-        return FreydCategoryMorphism( Range( epimorphism ), PreCompose( chi, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
+        return FreydCategoryMorphism( category, Range( epimorphism ), PreCompose( chi, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
         
     end );
 

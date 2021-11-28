@@ -216,7 +216,7 @@ InstallMethod( FpLeftModuleByFreyd,
     
     M := AsCategoryOfRowsMorphism( mat, UnderlyingCategory( A ) );
     
-    M := FreydCategoryObject( M );
+    M := FreydCategoryObject( A, M );
     
     SetUnderlyingHomalgRing( M, R );
     
@@ -238,7 +238,7 @@ InstallOtherMethod( FpRightModuleByFreyd,
     
     M := AsCategoryOfColumnsMorphism( mat, UnderlyingCategory( A ) );
     
-    M := FreydCategoryObject( M );
+    M := FreydCategoryObject( A, M );
     
     SetUnderlyingHomalgRing( M, R );
     
@@ -285,7 +285,7 @@ InstallMethod( FpModuleMorphism,
         mat := CategoryOfColumnsMorphism( s, mat, r );
     fi;
     
-    return FreydCategoryMorphism( source, mat, range );
+    return FreydCategoryMorphism( CapCategory( source ), source, mat, range );
     
 end );
 
