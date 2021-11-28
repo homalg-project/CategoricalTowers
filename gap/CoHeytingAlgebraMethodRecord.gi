@@ -8,7 +8,6 @@ InstallValue( COHEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 ConegationOnObjects := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "an" ] ],
   return_type := "object" ),
 
 ConegationOnMorphismsWithGivenConegations := rec(

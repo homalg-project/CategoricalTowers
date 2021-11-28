@@ -8,7 +8,6 @@ InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 NegationOnObjects := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "a" ], [ "an" ] ],
   return_type := "object" ),
 
 NegationOnMorphismsWithGivenNegations := rec(
