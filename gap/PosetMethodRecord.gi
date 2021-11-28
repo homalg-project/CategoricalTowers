@@ -7,7 +7,6 @@
 InstallValue( POSET_METHOD_NAME_RECORD,
         rec(
             IsEqualForObjectsIfIsHomSetInhabited := rec(
-                                     installation_name := "IsEqualForObjectsIfIsHomSetInhabited",
                                      filter_list := [ "category", "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true

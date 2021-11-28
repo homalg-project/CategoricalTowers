@@ -7,7 +7,6 @@
 InstallValue( PREORDERED_SET_METHOD_NAME_RECORD,
         rec(
             AreIsomorphicForObjectsIfIsHomSetInhabited := rec(
-                                     installation_name := "AreIsomorphicForObjectsIfIsHomSetInhabited",
                                      filter_list := [ "category", "object", "object" ],
                                      return_type := "bool",
                                      is_merely_set_theoretic := true

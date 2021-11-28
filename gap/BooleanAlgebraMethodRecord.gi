@@ -7,17 +7,13 @@
 InstallValue( BOOLEAN_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 MorphismFromDoubleNegationWithGivenDoubleNegation := rec(
-  installation_name := "MorphismFromDoubleNegationWithGivenDoubleNegation",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  cache_name := "MorphismFromDoubleNegationWithGivenDoubleNegation",
   return_type := "morphism" ),
 
 MorphismToDoubleConegationWithGivenDoubleConegation := rec(
-  installation_name := "MorphismToDoubleConegationWithGivenDoubleConegation",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  cache_name := "MorphismToDoubleConegationWithGivenDoubleConegation",
   return_type := "morphism" ),
 ) );
 

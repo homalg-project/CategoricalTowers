@@ -7,24 +7,18 @@
 InstallValue( COHEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 ConegationOnObjects := rec(
-  installation_name := "ConegationOnObjects",
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "an" ] ],
-  cache_name := "ConegationOnObjects",
   return_type := "object" ),
 
 ConegationOnMorphismsWithGivenConegations := rec(
-  installation_name := "ConegationOnMorphismsWithGivenConegations",
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "category", "object", "morphism", "object" ],
-  cache_name := "ConegationOnMorphismsWithGivenConegations",
   return_type := "morphism" ),
 
 MorphismFromDoubleConegationWithGivenDoubleConegation := rec(
-  installation_name := "MorphismFromDoubleConegationWithGivenDoubleConegation",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismFromDoubleConegationWithGivenDoubleConegation",
   return_type := "morphism" )
 
             ) );

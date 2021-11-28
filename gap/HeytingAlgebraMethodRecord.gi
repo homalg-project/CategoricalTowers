@@ -7,24 +7,18 @@
 InstallValue( HEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 NegationOnObjects := rec(
-  installation_name := "NegationOnObjects",
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "an" ] ],
-  cache_name := "NegationOnObjects",
   return_type := "object" ),
 
 NegationOnMorphismsWithGivenNegations := rec(
-  installation_name := "NegationOnMorphismsWithGivenNegations",
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "category", "object", "morphism", "object" ],
-  cache_name := "NegationOnMorphismsWithGivenNegations",
   return_type := "morphism" ),
 
 MorphismToDoubleNegationWithGivenDoubleNegation := rec(
-  installation_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismToDoubleNegationWithGivenDoubleNegation",
   return_type := "morphism" )
 
             ) );
