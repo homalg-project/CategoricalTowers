@@ -4,28 +4,6 @@
 # Implementations
 #
 
-InstallValue( CAP_INTERNAL_HEYTING_ALGEBRAS_BASIC_OPERATIONS, rec( ) );
-
-##
-CAP_INTERNAL_HEYTING_ALGEBRAS_BASIC_OPERATIONS.NegationOnMorphisms :=
-  [ [ "NegationOnMorphismsWithGivenNegations", 1 ],
-    [ "NegationOnObjects", 2 ] ];
-
-##
-InstallMethod( NegationOnMorphisms,
-               [ IsCapCategoryMorphism ],
-        
-  function( morphism )
-    
-    return NegationOnMorphismsWithGivenNegations(
-                   NegationOnObjects( Range( morphism ) ),
-                   morphism,
-                   NegationOnObjects( Source( morphism ) ) );
-    
-end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_HEYTING_ALGEBRAS_BASIC_OPERATIONS );
-
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
   function( heyting_algebra )

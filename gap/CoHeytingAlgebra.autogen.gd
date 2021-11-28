@@ -12,6 +12,25 @@
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ConegationOnMorphisms`.
+#! $F: ( alpha ) \mapsto \mathtt{ConegationOnMorphisms}(alpha)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddConegationOnMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddConegationOnMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddConegationOnMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddConegationOnMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ConegationOnMorphismsWithGivenConegations`.
 #! $F: ( s, alpha, r ) \mapsto \mathtt{ConegationOnMorphismsWithGivenConegations}(s, alpha, r)$.
 #! @Returns nothing
@@ -32,7 +51,7 @@ DeclareOperation( "AddConegationOnMorphismsWithGivenConegations",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `ConegationOnObjects`.
-#! $F: ( a ) \mapsto \mathtt{ConegationOnObjects}(a)$.
+#! $F: ( arg2 ) \mapsto \mathtt{ConegationOnObjects}(arg2)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddConegationOnObjects",
@@ -45,6 +64,25 @@ DeclareOperation( "AddConegationOnObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddConegationOnObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismFromDoubleConegation`.
+#! $F: ( a ) \mapsto \mathtt{MorphismFromDoubleConegation}(a)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromDoubleConegation",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromDoubleConegation",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromDoubleConegation",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromDoubleConegation",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
