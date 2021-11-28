@@ -11,8 +11,8 @@ NegationOnObjects := rec(
   return_type := "object" ),
 
 NegationOnMorphismsWithGivenNegations := rec(
-  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "category", "object", "morphism", "object" ],
+  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   return_type := "morphism" ),
 
 MorphismToDoubleNegationWithGivenDoubleNegation := rec(
