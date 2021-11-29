@@ -302,7 +302,7 @@ InstallMethod( LazyCategory,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, ignore, D, optimize,
-          show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC, finalize;
+          show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
     
     if HasName( C ) then
         name := Concatenation( "LazyCategory( ", Name( C ), " )" );
@@ -900,14 +900,6 @@ InstallMethod( LazyCategory,
         
         SetRangeCategoryOfHomomorphismStructure( D, HC );
         
-    fi;
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return D;
-      
     fi;
     
     Finalize( D );
