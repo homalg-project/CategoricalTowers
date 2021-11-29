@@ -96,8 +96,11 @@ InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
                ];
     
     header := Concatenation(
-                      "# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v",
+                      "# THIS FILE WAS AUTOMATICALLY GENERATED",
+                      "\n# FROM MonoidalCategories v",
                       PackageInfo( "MonoidalCategories" )[1].Version,
+                      "\n# USING CategoryConstructor v",
+                      PackageInfo( "CategoryConstructor" )[1].Version,
                       "\n\n" );
     for file in files do
         if not IsBound( files_rec.(file) ) then
