@@ -1445,10 +1445,6 @@ InstallMethodWithCache( FunctorCategory,
     
     AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function ( ) IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
     
-    if ValueOption( "FinalizeCategory" ) = false then
-        return Hom;
-    fi;
-    
     Finalize( Hom );
     
     return Hom;
