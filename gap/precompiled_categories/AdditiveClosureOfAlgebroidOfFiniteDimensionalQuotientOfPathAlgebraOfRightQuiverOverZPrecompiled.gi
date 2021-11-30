@@ -80,107 +80,104 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1;
-    deduped_19_1 := Range( alpha_1 );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1;
+    deduped_22_1 := Range( beta_1 );
+    deduped_21_1 := Source( beta_1 );
+    deduped_20_1 := UnderlyingCategory( cat_1 );
+    deduped_19_1 := Source( alpha_1 );
+    deduped_18_1 := Range( alpha_1 );
+    deduped_17_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_16_1 := UnderlyingRing( deduped_17_1 );
     deduped_15_1 := [ 1 .. Length( ObjectList( deduped_19_1 ) ) ];
-    deduped_20_1 := Source( alpha_1 );
-    deduped_16_1 := [ 1 .. Length( ObjectList( deduped_20_1 ) ) ];
-    deduped_18_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_17_1 := UnderlyingRing( deduped_18_1 );
-    deduped_21_1 := UnderlyingCategory( cat_1 );
-    deduped_22_1 := Source( beta_1 );
-    deduped_23_1 := Range( beta_1 );
-    hoisted_1_1 := deduped_19_1;
-    hoisted_2_1 := BasisPathsByVertexIndex( deduped_21_1 );
-    hoisted_4_1 := deduped_18_1;
-    hoisted_7_1 := deduped_20_1;
-    hoisted_8_1 := deduped_23_1;
-    hoisted_9_1 := [ 1 .. Length( ObjectList( deduped_23_1 ) ) ];
-    hoisted_10_1 := List( deduped_16_1, function ( i_2 )
+    deduped_14_1 := [ 1 .. Length( ObjectList( deduped_18_1 ) ) ];
+    hoisted_13_1 := deduped_15_1;
+    hoisted_12_1 := HomStructureOnBasisPaths( deduped_20_1 );
+    hoisted_11_1 := deduped_16_1;
+    hoisted_8_1 := [ 1 .. Length( ObjectList( deduped_22_1 ) ) ];
+    hoisted_7_1 := deduped_22_1;
+    hoisted_6_1 := deduped_19_1;
+    hoisted_2_1 := BasisPathsByVertexIndex( deduped_20_1 );
+    hoisted_9_1 := List( deduped_15_1, function ( i_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_2_1[VertexIndex( UnderlyingVertex( hoisted_7_1[i_2] ) )];
-            return List( hoisted_9_1, function ( t_3 )
-                    return ObjectifyObjectForCAPWithAttributes( rec(
-                           ), hoisted_4_1, RankOfObject, Length( hoisted_1_2[VertexIndex( UnderlyingVertex( hoisted_8_1[t_3] ) )] ) );
+            hoisted_1_2 := hoisted_2_1[VertexIndex( UnderlyingVertex( hoisted_6_1[i_2] ) )];
+            return List( hoisted_8_1, function ( logic_new_func_x_3 )
+                    return Length( hoisted_1_2[VertexIndex( UnderlyingVertex( hoisted_7_1[logic_new_func_x_3] ) )] );
                 end );
         end );
-    hoisted_11_1 := List( deduped_16_1, function ( logic_new_func_x_2 )
+    hoisted_10_1 := List( deduped_15_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_10_1[logic_new_func_x_2];
-            return Sum( List( hoisted_9_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( hoisted_1_2[logic_new_func_x_3] );
+            hoisted_1_2 := hoisted_9_1[logic_new_func_x_2];
+            return Sum( List( hoisted_8_1, function ( logic_new_func_x_3 )
+                      return hoisted_1_2[logic_new_func_x_3];
                   end ) );
         end );
-    hoisted_12_1 := deduped_17_1;
-    hoisted_13_1 := HomStructureOnBasisPaths( deduped_21_1 );
-    hoisted_14_1 := deduped_16_1;
-    hoisted_3_1 := deduped_22_1;
-    hoisted_5_1 := [ 1 .. Length( ObjectList( deduped_22_1 ) ) ];
-    hoisted_6_1 := List( deduped_15_1, function ( j_2 )
+    hoisted_4_1 := [ 1 .. Length( ObjectList( deduped_21_1 ) ) ];
+    hoisted_3_1 := deduped_21_1;
+    hoisted_1_1 := deduped_18_1;
+    hoisted_5_1 := List( deduped_14_1, function ( j_2 )
             local hoisted_1_2;
             hoisted_1_2 := hoisted_2_1[VertexIndex( UnderlyingVertex( hoisted_1_1[j_2] ) )];
-            return List( hoisted_5_1, function ( s_3 )
-                    return ObjectifyObjectForCAPWithAttributes( rec(
-                           ), hoisted_4_1, RankOfObject, Length( hoisted_1_2[VertexIndex( UnderlyingVertex( hoisted_3_1[s_3] ) )] ) );
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return Length( hoisted_1_2[VertexIndex( UnderlyingVertex( hoisted_3_1[logic_new_func_x_3] ) )] );
                 end );
         end );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), deduped_18_1, source_1, range_1, UnderlyingMatrix, UnionOfRows( deduped_17_1, RankOfObject( range_1 ), List( deduped_15_1, function ( logic_new_func_x_2 )
+           ), deduped_17_1, source_1, range_1, UnderlyingMatrix, UnionOfRows( deduped_16_1, RankOfObject( range_1 ), List( deduped_14_1, function ( logic_new_func_x_2 )
                 local hoisted_1_2, hoisted_2_2;
-                hoisted_1_2 := hoisted_6_1[logic_new_func_x_2];
-                hoisted_2_2 := Sum( hoisted_5_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( hoisted_1_2[logic_new_func_x_3] );
+                hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
+                hoisted_2_2 := Sum( hoisted_4_1, function ( logic_new_func_x_3 )
+                        return hoisted_1_2[logic_new_func_x_3];
                     end );
-                return UnionOfColumns( hoisted_12_1, Sum( List( hoisted_5_1, function ( logic_new_func_x_3 )
-                            return RankOfObject( hoisted_1_2[logic_new_func_x_3] );
-                        end ) ), List( hoisted_14_1, function ( logic_new_func_x_3 )
+                return UnionOfColumns( hoisted_11_1, Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
+                            return hoisted_1_2[logic_new_func_x_3];
+                        end ) ), List( hoisted_13_1, function ( logic_new_func_x_3 )
                           local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3, deduped_10_3, deduped_11_3, deduped_12_3;
+                          deduped_12_3 := hoisted_10_1[logic_new_func_x_3];
                           deduped_11_3 := MatElm( alpha_1, logic_new_func_x_3, logic_new_func_x_2 );
                           deduped_10_3 := UnderlyingQuiverAlgebraElement( deduped_11_3 );
-                          deduped_12_3 := hoisted_11_1[logic_new_func_x_3];
                           if IsZero( deduped_10_3 ) then
-                              return HomalgZeroMatrix( hoisted_2_2, deduped_12_3, hoisted_12_1 );
+                              return HomalgZeroMatrix( hoisted_2_2, deduped_12_3, hoisted_11_1 );
                           else
-                              deduped_8_3 := VertexIndex( UnderlyingVertex( Source( deduped_11_3 ) ) );
                               deduped_9_3 := VertexIndex( UnderlyingVertex( Range( deduped_11_3 ) ) );
+                              deduped_8_3 := VertexIndex( UnderlyingVertex( Source( deduped_11_3 ) ) );
                               deduped_7_3 := hoisted_2_1[deduped_8_3][deduped_9_3];
-                              hoisted_1_3 := hoisted_10_1[logic_new_func_x_3];
-                              hoisted_2_3 := Sum( hoisted_9_1, function ( logic_new_func_x_4 )
-                                      return RankOfObject( hoisted_1_3[logic_new_func_x_4] );
-                                  end );
-                              hoisted_3_3 := CoefficientsOfPaths( deduped_7_3, deduped_10_3 );
-                              hoisted_4_3 := hoisted_13_1[deduped_9_3];
-                              hoisted_5_3 := deduped_8_3;
                               hoisted_6_3 := [ 1 .. Length( deduped_7_3 ) ];
-                              return UnionOfRows( hoisted_12_1, deduped_12_3, List( hoisted_5_1, function ( logic_new_func_x_4 )
+                              hoisted_5_3 := deduped_8_3;
+                              hoisted_4_3 := hoisted_12_1[deduped_9_3];
+                              hoisted_3_3 := CoefficientsOfPaths( deduped_7_3, deduped_10_3 );
+                              hoisted_1_3 := hoisted_9_1[logic_new_func_x_3];
+                              hoisted_2_3 := Sum( hoisted_8_1, function ( logic_new_func_x_4 )
+                                      return hoisted_1_3[logic_new_func_x_4];
+                                  end );
+                              return UnionOfRows( hoisted_11_1, deduped_12_3, List( hoisted_4_1, function ( logic_new_func_x_4 )
                                         local hoisted_1_4, deduped_2_4;
-                                        deduped_2_4 := RankOfObject( hoisted_1_2[logic_new_func_x_4] );
+                                        deduped_2_4 := hoisted_1_2[logic_new_func_x_4];
                                         if deduped_2_4 = 0 then
-                                            return HomalgZeroMatrix( deduped_2_4, hoisted_2_3, hoisted_12_1 );
+                                            return HomalgZeroMatrix( deduped_2_4, hoisted_2_3, hoisted_11_1 );
                                         else
                                             hoisted_1_4 := deduped_2_4;
-                                            return UnionOfColumns( hoisted_12_1, deduped_2_4, List( hoisted_9_1, function ( logic_new_func_x_5 )
+                                            return UnionOfColumns( hoisted_11_1, deduped_2_4, List( hoisted_8_1, function ( logic_new_func_x_5 )
                                                       local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5, deduped_7_5, deduped_8_5, deduped_9_5;
-                                                      deduped_9_5 := MatElm( beta_1, logic_new_func_x_4, logic_new_func_x_5 );
-                                                      deduped_7_5 := UnderlyingQuiverAlgebraElement( deduped_9_5 );
-                                                      deduped_8_5 := RankOfObject( hoisted_1_3[logic_new_func_x_5] );
-                                                      if IsZero( deduped_7_5 ) or deduped_8_5 = 0 then
-                                                          return HomalgZeroMatrix( hoisted_1_4, deduped_8_5, hoisted_12_1 );
+                                                      deduped_9_5 := hoisted_1_3[logic_new_func_x_5];
+                                                      deduped_8_5 := MatElm( beta_1, logic_new_func_x_4, logic_new_func_x_5 );
+                                                      deduped_7_5 := UnderlyingQuiverAlgebraElement( deduped_8_5 );
+                                                      if IsZero( deduped_7_5 ) or deduped_9_5 = 0 then
+                                                          return HomalgZeroMatrix( hoisted_1_4, deduped_9_5, hoisted_11_1 );
                                                       else
-                                                          deduped_5_5 := VertexIndex( UnderlyingVertex( Source( deduped_9_5 ) ) );
-                                                          deduped_6_5 := VertexIndex( UnderlyingVertex( Range( deduped_9_5 ) ) );
+                                                          deduped_6_5 := VertexIndex( UnderlyingVertex( Range( deduped_8_5 ) ) );
+                                                          deduped_5_5 := VertexIndex( UnderlyingVertex( Source( deduped_8_5 ) ) );
                                                           deduped_4_5 := hoisted_2_1[deduped_5_5][deduped_6_5];
-                                                          hoisted_1_5 := CoefficientsOfPaths( deduped_4_5, deduped_7_5 );
-                                                          hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
                                                           hoisted_3_5 := [ 1 .. Length( deduped_4_5 ) ];
+                                                          hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
+                                                          hoisted_1_5 := CoefficientsOfPaths( deduped_4_5, deduped_7_5 );
                                                           return HomalgMatrix( Sum( hoisted_6_3, function ( p_6 )
                                                                     local hoisted_1_6, hoisted_2_6;
-                                                                    hoisted_1_6 := hoisted_3_3[p_6];
                                                                     hoisted_2_6 := hoisted_2_5[p_6];
+                                                                    hoisted_1_6 := hoisted_3_3[p_6];
                                                                     return Sum( hoisted_3_5, function ( q_7 )
                                                                             return hoisted_1_6 * hoisted_1_5[q_7] * hoisted_2_6[q_7];
                                                                         end );
-                                                                end ), hoisted_1_4, deduped_8_5, hoisted_12_1 );
+                                                                end ), hoisted_1_4, deduped_9_5, hoisted_11_1 );
                                                       fi;
                                                       return;
                                                   end ) );
@@ -202,8 +199,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, hoisted_4_1;
-    hoisted_3_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     hoisted_4_1 := ObjectList( arg3_1 );
+    hoisted_3_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
                   local hoisted_1_2;
@@ -224,21 +221,21 @@ end
 function ( cat_1, a_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := ObjectList( a_1 );
-    deduped_5_1 := [ 1 .. Length( deduped_7_1 ) ];
     deduped_6_1 := UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) );
-    hoisted_1_1 := deduped_7_1;
-    hoisted_2_1 := deduped_6_1;
-    hoisted_3_1 := ZeroImmutable( deduped_6_1 );
+    deduped_5_1 := [ 1 .. Length( deduped_7_1 ) ];
     hoisted_4_1 := deduped_5_1;
+    hoisted_3_1 := ZeroImmutable( deduped_6_1 );
+    hoisted_2_1 := deduped_6_1;
+    hoisted_1_1 := deduped_7_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, a_1, a_1, MorphismMatrix, List( deduped_5_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := hoisted_1_1[i_2];
               deduped_4_2 := CapCategory( deduped_5_2 );
+              hoisted_3_2 := deduped_5_2;
+              hoisted_2_2 := deduped_4_2;
               hoisted_1_2 := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                      ), deduped_4_2, deduped_5_2, deduped_5_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( hoisted_2_1, UnderlyingVertex( deduped_5_2 ) ) );
-              hoisted_2_2 := deduped_4_2;
-              hoisted_3_2 := deduped_5_2;
               return List( hoisted_4_1, function ( j_3 )
                       if i_2 = j_3 then
                           return hoisted_1_2;
@@ -260,13 +257,13 @@ end
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := RankOfObject( source_1 );
     deduped_6_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_5_1 := UnderlyingRing( deduped_6_1 );
-    deduped_7_1 := RankOfObject( source_1 );
-    hoisted_1_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
-    hoisted_2_1 := deduped_5_1;
-    hoisted_3_1 := [ 1 .. Length( ObjectList( Range( alpha_1 ) ) ) ];
     hoisted_4_1 := deduped_7_1;
+    hoisted_3_1 := [ 1 .. Length( ObjectList( Range( alpha_1 ) ) ) ];
+    hoisted_2_1 := deduped_5_1;
+    hoisted_1_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), deduped_6_1, source_1, range_1, UnderlyingMatrix, UnionOfColumns( deduped_5_1, deduped_7_1, List( [ 1 .. Length( ObjectList( Source( alpha_1 ) ) ) ], function ( logic_new_func_x_2 )
                 return UnionOfColumns( hoisted_2_1, hoisted_4_1, List( hoisted_3_1, function ( logic_new_func_x_3 )
@@ -292,60 +289,49 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1;
-    deduped_15_1 := ObjectList( arg2_1 );
-    deduped_13_1 := [ 1 .. Length( deduped_15_1 ) ];
-    deduped_16_1 := ObjectList( arg3_1 );
-    deduped_14_1 := Length( deduped_16_1 );
-    deduped_17_1 := UnderlyingCategory( cat_1 );
-    hoisted_1_1 := deduped_15_1;
-    hoisted_10_1 := [ 1 .. deduped_14_1 ];
-    hoisted_2_1 := deduped_16_1;
-    hoisted_3_1 := BasisPathsByVertexIndex( deduped_17_1 );
-    hoisted_4_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    hoisted_5_1 := deduped_14_1;
-    hoisted_6_1 := Concatenation( List( deduped_15_1, function ( obj_i_2 )
-              local hoisted_1_2;
-              hoisted_1_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( obj_i_2 ) )];
-              return List( hoisted_2_1, function ( obj_j_3 )
-                      return ObjectifyObjectForCAPWithAttributes( rec(
-                             ), hoisted_4_1, RankOfObject, Length( hoisted_1_2[VertexIndex( UnderlyingVertex( obj_j_3 ) )] ) );
-                  end );
-          end ) );
-    hoisted_7_1 := Concatenation( List( deduped_15_1, function ( logic_new_func_x_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1;
+    deduped_14_1 := UnderlyingCategory( cat_1 );
+    deduped_13_1 := ObjectList( arg3_1 );
+    deduped_12_1 := ObjectList( arg2_1 );
+    deduped_11_1 := Length( deduped_13_1 );
+    deduped_10_1 := [ 1 .. Length( deduped_12_1 ) ];
+    hoisted_9_1 := UnderlyingQuiverAlgebra( deduped_14_1 );
+    hoisted_7_1 := [ 1 .. deduped_11_1 ];
+    hoisted_6_1 := UnderlyingMatrix( arg4_1 );
+    hoisted_3_1 := BasisPathsByVertexIndex( deduped_14_1 );
+    hoisted_2_1 := deduped_13_1;
+    hoisted_5_1 := Concatenation( List( deduped_12_1, function ( logic_new_func_x_2 )
               local hoisted_1_2;
               hoisted_1_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
               return List( hoisted_2_1, function ( logic_new_func_x_3 )
                       return Length( hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )] );
                   end );
           end ) );
-    hoisted_8_1 := UnderlyingMatrix( arg4_1 );
-    hoisted_9_1 := Source( arg4_1 );
-    hoisted_11_1 := List( deduped_13_1, function ( i_2 )
+    hoisted_4_1 := deduped_11_1;
+    hoisted_8_1 := List( deduped_10_1, function ( i_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_5_1 * (i_2 - 1);
-            return List( hoisted_10_1, function ( j_3 )
+            hoisted_1_2 := hoisted_4_1 * (i_2 - 1);
+            return List( hoisted_7_1, function ( logic_new_func_x_3 )
                     local deduped_1_3, deduped_2_3;
-                    deduped_2_3 := hoisted_1_2 + j_3;
-                    deduped_1_3 := Sum( hoisted_7_1{[ 1 .. deduped_2_3 - 1 ]} ) + 1;
-                    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                           ), hoisted_4_1, hoisted_9_1, hoisted_6_1[deduped_2_3], UnderlyingMatrix, CertainColumns( hoisted_8_1, [ deduped_1_3 .. deduped_1_3 - 1 + hoisted_7_1[deduped_2_3] ] ) );
+                    deduped_2_3 := hoisted_1_2 + logic_new_func_x_3;
+                    deduped_1_3 := Sum( hoisted_5_1{[ 1 .. deduped_2_3 - 1 ]} ) + 1;
+                    return EntriesOfHomalgMatrix( CertainColumns( hoisted_6_1, [ deduped_1_3 .. deduped_1_3 - 1 + hoisted_5_1[deduped_2_3] ] ) );
                 end );
         end );
-    hoisted_12_1 := UnderlyingQuiverAlgebra( deduped_17_1 );
+    hoisted_1_1 := deduped_12_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), CapCategory( arg2_1 ), arg2_1, arg3_1, MorphismMatrix, List( deduped_13_1, function ( i_2 )
+           ), CapCategory( arg2_1 ), arg2_1, arg3_1, MorphismMatrix, List( deduped_10_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2;
               deduped_5_2 := hoisted_1_1[i_2];
-              hoisted_1_2 := hoisted_11_1[i_2];
-              hoisted_2_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( deduped_5_2 ) )];
-              hoisted_3_2 := CapCategory( deduped_5_2 );
               hoisted_4_2 := deduped_5_2;
-              return List( hoisted_10_1, function ( j_3 )
+              hoisted_3_2 := CapCategory( deduped_5_2 );
+              hoisted_2_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( deduped_5_2 ) )];
+              hoisted_1_2 := hoisted_8_1[i_2];
+              return List( hoisted_7_1, function ( j_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_2_1[j_3];
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), hoisted_3_2, hoisted_4_2, deduped_1_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( hoisted_12_1, EntriesOfHomalgMatrix( UnderlyingMatrix( hoisted_1_2[j_3] ) ), hoisted_2_2[VertexIndex( UnderlyingVertex( deduped_1_3 ) )] ) );
+                             ), hoisted_3_2, hoisted_4_2, deduped_1_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( hoisted_9_1, hoisted_1_2[j_3], hoisted_2_2[VertexIndex( UnderlyingVertex( deduped_1_3 ) )] ) );
                   end );
           end ) );
 end
@@ -359,8 +345,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, deduped_4_1, deduped_5_1;
-    deduped_4_1 := Length( ObjectList( Source( arg2_1 ) ) );
     deduped_5_1 := Length( ObjectList( Range( arg2_1 ) ) );
+    deduped_4_1 := Length( ObjectList( Source( arg2_1 ) ) );
     if deduped_4_1 <> Length( ObjectList( Source( arg3_1 ) ) ) then
         return false;
     elif deduped_5_1 <> Length( ObjectList( Range( arg3_1 ) ) ) then
@@ -387,8 +373,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, deduped_4_1, deduped_5_1;
-    deduped_4_1 := Length( ObjectList( Source( arg2_1 ) ) );
     deduped_5_1 := Length( ObjectList( Range( arg2_1 ) ) );
+    deduped_4_1 := Length( ObjectList( Source( arg2_1 ) ) );
     if deduped_4_1 <> Length( ObjectList( Source( arg3_1 ) ) ) then
         return false;
     elif deduped_5_1 <> Length( ObjectList( Range( arg3_1 ) ) ) then
@@ -415,14 +401,14 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := ObjectList( arg3_1 );
     deduped_6_1 := ObjectList( arg2_1 );
     deduped_5_1 := Length( deduped_6_1 );
-    deduped_7_1 := ObjectList( arg3_1 );
     if deduped_5_1 <> Length( deduped_7_1 ) then
         return false;
     else
-        hoisted_3_1 := deduped_6_1;
         hoisted_4_1 := deduped_7_1;
+        hoisted_3_1 := deduped_6_1;
         return ForAll( [ 1 .. deduped_5_1 ], function ( i_2 )
                 return UnderlyingVertex( hoisted_3_1[i_2] ) = UnderlyingVertex( hoisted_4_1[i_2] );
             end );
@@ -440,15 +426,15 @@ end
 function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
     deduped_10_1 := MorphismMatrix( arg2_1 );
+    deduped_9_1 := ObjectList( Range( arg2_1 ) );
     deduped_8_1 := ObjectList( Source( arg2_1 ) );
+    deduped_7_1 := Length( deduped_9_1 );
     deduped_6_1 := Length( deduped_8_1 );
     deduped_5_1 := [ 1 .. deduped_6_1 ];
-    deduped_9_1 := ObjectList( Range( arg2_1 ) );
-    deduped_7_1 := Length( deduped_9_1 );
-    hoisted_1_1 := [ 1 .. deduped_7_1 ];
-    hoisted_2_1 := UnderlyingCategory( cat_1 );
-    hoisted_3_1 := deduped_8_1;
     hoisted_4_1 := deduped_9_1;
+    hoisted_3_1 := deduped_8_1;
+    hoisted_2_1 := UnderlyingCategory( cat_1 );
+    hoisted_1_1 := [ 1 .. deduped_7_1 ];
     if IsMatrixObj( deduped_10_1 ) and not (deduped_6_1 = NumberRows( deduped_10_1 ) and deduped_7_1 = NumberColumns( deduped_10_1 )) then
         return false;
     elif not ForAll( deduped_5_1, function ( i_2 )
@@ -548,38 +534,38 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1;
-    deduped_12_1 := Source( alpha_1 );
     deduped_13_1 := Range( beta_1 );
+    deduped_12_1 := Source( alpha_1 );
     deduped_9_1 := Length( ObjectList( Range( alpha_1 ) ) );
     if ForAny( [ deduped_9_1, Length( ObjectList( Source( beta_1 ) ) ) ], IsZero ) then
-        deduped_10_1 := ObjectList( deduped_12_1 );
         deduped_11_1 := ObjectList( deduped_13_1 );
-        hoisted_3_1 := deduped_10_1;
-        hoisted_4_1 := deduped_11_1;
-        hoisted_5_1 := ZeroImmutable( UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) ) );
+        deduped_10_1 := ObjectList( deduped_12_1 );
         hoisted_6_1 := [ 1 .. Length( deduped_11_1 ) ];
+        hoisted_5_1 := ZeroImmutable( UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) ) );
+        hoisted_4_1 := deduped_11_1;
+        hoisted_3_1 := deduped_10_1;
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, deduped_12_1, deduped_13_1, MorphismMatrix, List( [ 1 .. Length( deduped_10_1 ) ], function ( i_2 )
                   local hoisted_1_2, hoisted_2_2, deduped_3_2;
                   deduped_3_2 := hoisted_3_1[i_2];
-                  hoisted_1_2 := CapCategory( deduped_3_2 );
                   hoisted_2_2 := deduped_3_2;
+                  hoisted_1_2 := CapCategory( deduped_3_2 );
                   return List( hoisted_6_1, function ( j_3 )
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                                  ), hoisted_1_2, hoisted_2_2, hoisted_4_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_5_1 );
                       end );
               end ) );
     else
-        hoisted_7_1 := [ 1 .. deduped_9_1 ];
         hoisted_8_1 := [ 1 .. NumberColumns( beta_1 ) ];
+        hoisted_7_1 := [ 1 .. deduped_9_1 ];
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), CapCategory( deduped_12_1 ), deduped_12_1, deduped_13_1, MorphismMatrix, List( [ 1 .. NumberRows( alpha_1 ) ], function ( i_2 )
                   return List( hoisted_8_1, function ( j_3 )
                           return Sum( List( hoisted_7_1, function ( k_4 )
                                     local deduped_1_4, deduped_2_4, deduped_3_4;
+                                    deduped_3_4 := MatElm( beta_1, k_4, j_3 );
                                     deduped_2_4 := MatElm( alpha_1, i_2, k_4 );
                                     deduped_1_4 := Source( deduped_2_4 );
-                                    deduped_3_4 := MatElm( beta_1, k_4, j_3 );
                                     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                                            ), CapCategory( deduped_1_4 ), deduped_1_4, Range( deduped_3_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( deduped_2_4 ) * UnderlyingQuiverAlgebraElement( deduped_3_4 ) );
                                 end ) );
@@ -636,18 +622,18 @@ end
 ########
 function ( cat_1, a_1, b_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
-    deduped_5_1 := ObjectList( a_1 );
     deduped_6_1 := ObjectList( b_1 );
-    hoisted_1_1 := deduped_5_1;
-    hoisted_2_1 := deduped_6_1;
-    hoisted_3_1 := ZeroImmutable( UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) ) );
+    deduped_5_1 := ObjectList( a_1 );
     hoisted_4_1 := [ 1 .. Length( deduped_6_1 ) ];
+    hoisted_3_1 := ZeroImmutable( UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) ) );
+    hoisted_2_1 := deduped_6_1;
+    hoisted_1_1 := deduped_5_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, a_1, b_1, MorphismMatrix, List( [ 1 .. Length( deduped_5_1 ) ], function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := hoisted_1_1[i_2];
-              hoisted_1_2 := CapCategory( deduped_3_2 );
               hoisted_2_2 := deduped_3_2;
+              hoisted_1_2 := CapCategory( deduped_3_2 );
               return List( hoisted_4_1, function ( j_3 )
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                              ), hoisted_1_2, hoisted_2_2, hoisted_2_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_3_1 );
