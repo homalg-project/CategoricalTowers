@@ -11,9 +11,10 @@ BindGlobal( "ADD_FUNCTIONS_FOR_StablePosetOfCategoryOfPosetOfCategoryOfSliceCate
 ########
 function ( cat_1, a_1, b_1 )
     local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
+    deduped_12_1 := 1 * 1;
     deduped_11_1 := AmbientCategory( cat_1 );
     deduped_10_1 := AmbientCategory( deduped_11_1 );
-    deduped_12_1 := 1 * 1;
+    deduped_9_1 := UnderlyingMorphism( UnderlyingCell( UnderlyingCell( a_1 ) ) );
     deduped_8_1 := AmbientCategory( deduped_10_1 );
     deduped_7_1 := UnderlyingRing( deduped_8_1 );
     deduped_6_1 := HomalgIdentityMatrix( 1, deduped_7_1 );
@@ -29,10 +30,9 @@ function ( cat_1, a_1, b_1 )
                   fi;
                   return;
               end(  ) ) );
-    deduped_9_1 := UnderlyingMorphism( UnderlyingCell( UnderlyingCell( a_1 ) ) );
-    hoisted_2_1 := RankOfObject( Source( deduped_9_1 ) );
-    hoisted_3_1 := deduped_7_1;
     hoisted_4_1 := RightDivide( HomalgIdentityMatrix( NumberColumns( deduped_5_1 ), deduped_7_1 ), deduped_5_1 ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
+    hoisted_3_1 := deduped_7_1;
+    hoisted_2_1 := RankOfObject( Source( deduped_9_1 ) );
     morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
             return IsZero( DecideZeroRows( y_2, x_2 ) );
         end, function ( x_2 )
