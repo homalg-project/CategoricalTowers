@@ -25,11 +25,14 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
            "Distributivity",
            "Braiding",
            "CoLambda",
+           "Lambda",
            "CoclosedEvaluation",
            "CoclosedCoevaluation",
            "InternalCoHom",
            "CoDual",
+           "Dual",
            "CoBidual",
+           "Bidual",
            "CoclosedMonoidalCategories",
            "COCLOSED_MONOIDAL",
            "CoclosedMonoidal",
@@ -68,6 +71,10 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "coHom tensor", key_val_rec.coHom_tensor ] );
     Add( L, [ "\\\underline{coHom}", key_val_rec.coHom ] );
+    
+    if IsBound( key_val_rec.replace ) then
+        Add( L, [ key_val_rec.replace[1], key_val_rec.replace[2] ] );
+    fi;
     
     return L;
     

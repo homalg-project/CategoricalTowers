@@ -24,11 +24,14 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
            "RightUnitor",
            "Distributivity",
            "Braiding",
+           "CoLambda",
            "Lambda",
            "Evaluation",
            "Coevaluation",
            "InternalHom",
+           "CoDual",
            "Dual",
+           "CoBidual",
            "Bidual",
            "ClosedMonoidalCategories",
            "CLOSED_MONOIDAL",
@@ -67,6 +70,10 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
     Add( L, [ "tensor hom", key_val_rec.tensor_hom ] );
     Add( L, [ "\\\underline{Hom}", key_val_rec.Hom ] );
+    
+    if IsBound( key_val_rec.replace ) then
+        Add( L, [ key_val_rec.replace[1], key_val_rec.replace[2] ] );
+    fi;
     
     return L;
     
