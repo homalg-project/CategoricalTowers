@@ -69,6 +69,17 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
     Add( L, [ "coHom tensor", key_val_rec.coHom_tensor ] );
     Add( L, [ "\\\underline{coHom}", key_val_rec.coHom ] );
     
+    if IsBound( key_val_rec.replace ) then
+        Append( L, key_val_rec.replace );
+    fi;
+    
+    if IsBound( key_val_rec.safe_replace ) then
+        L := Concatenation(
+                     List( key_val_rec.safe_replace, r -> [ r[1], ShaSum( r[1] ) ] ), ## detect at the very beginning and replace by sha's (order is important!)
+                     L,
+                     List( key_val_rec.safe_replace, r -> [ ShaSum( r[1] ), r[2] ] ) ); ## safely replace the sha's at the very end
+    fi;
+    
     return L;
     
 end );
