@@ -220,7 +220,7 @@ InstallMethod( YonedaEmbedding,
     
     mors := SetOfGeneratingMorphisms( B_op );
     
-    H := RangeCategoryOfHomomorphismStructure( B );
+    H := RangeCategoryOfHomomorphismStructure( B_op );
     
     functors_cat := Hom( B_op, H );
     
