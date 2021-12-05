@@ -1499,11 +1499,11 @@ end );
 ##
 InstallMethodWithCache( PreSheaves,
         "for a CAP category",
-        [ IsCapCategory ],
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     
-    return FunctorCategory( OppositeFpCategory( B ), FinSets );
+    return FunctorCategory( OppositeFpCategory( B ), RangeCategoryOfHomomorphismStructure( OppositeFpCategory( B ) ) );
     
 end );
 
