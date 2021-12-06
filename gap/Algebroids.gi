@@ -799,9 +799,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
             return ZeroMorphism( range_category, source, range );
             
         else
-            
+
+            ## These two lines need QPA in a dynamic way
             coeffs_alpha := CoefficientsOfPaths( basis_ap_a, elem_alpha );
-            
             coeffs_beta := CoefficientsOfPaths( basis_b_bp, elem_beta );
             
             # If Length( basis_ap_a ) = 0 (resp. Length( basis_b_bp ) = 0), then alpha (resp. beta) must be zero,
