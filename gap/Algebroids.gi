@@ -746,7 +746,15 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
     else
         
-        default_range_of_HomStructure := MatrixCategory( ring );
+        if ValueOption( "no_precompiled_code" ) = true then
+            
+            default_range_of_HomStructure := MatrixCategoryAsAdditiveClosureOfRingAsCategory( ring );
+            
+        else
+            
+            default_range_of_HomStructure := MatrixCategory( ring );
+            
+        fi;
         
     fi;
     
@@ -835,7 +843,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
                 )
             );
             
-            return morphism_constructor( range_category, source, HomalgMatrix( entries, size_source, size_range, ring ), range );
+            return morphism_constructor( range_category, source, HomalgMatrixListList( entries, size_source, size_range, ring ), range );
             
         fi;
         
@@ -876,7 +884,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         return morphism_constructor(
                 range_category,
                 source,
-                HomalgMatrix( CoefficientsOfPaths( basis_elements, representative_func( element ) ), 1, size_basis, ring ),
+                HomalgMatrixListList( [ CoefficientsOfPaths( basis_elements, representative_func( element ) ) ], 1, size_basis, ring ),
                 range
               );
         
@@ -887,7 +895,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
       function( algebroid, a, b, morphism )
         local coefficients, basis, element;
         
-        coefficients := EntriesOfHomalgMatrix( morphism_datum( morphism ) );
+        coefficients := EntriesOfHomalgMatrixAsListList( morphism_datum( morphism ) )[1];
         
         basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
