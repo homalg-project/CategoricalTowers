@@ -614,7 +614,7 @@ end );
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
   function( algebroid, over_Z )
-    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths, representative_func, ring, default_range_of_HomStructure, range_category, path;
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths, representative_func, ring, default_range_of_HomStructure, range_category, object_constructor, object_datum, morphism_constructor, morphism_datum, path;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -752,6 +752,26 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", default_range_of_HomStructure );
     
+    if IsMatrixCategory( range_category ) then
+        
+        object_constructor := MatrixCategoryObject;
+        object_datum := Dimension;
+        morphism_constructor := VectorSpaceMorphism;
+        morphism_datum := UnderlyingMatrix;
+        
+    elif IsCategoryOfRows( range_category ) then
+        
+        object_constructor := CategoryOfRowsObject;
+        object_datum := RankOfObject;
+        morphism_constructor := CategoryOfRowsMorphism;
+        morphism_datum := UnderlyingMatrix;
+        
+    else
+        
+        Error( "range_of_HomStructure must be a matrix category or a category of rows" );
+        
+    fi;
+    
     SetRangeCategoryOfHomomorphismStructure( algebroid, range_category );
     
     ##
@@ -765,7 +785,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
         
-        return ObjectConstructor( range_category, Length( basis_elements ) );
+        return object_constructor( range_category, Length( basis_elements ) );
         
     end );
     
@@ -790,8 +810,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         basis_b_bp := basis_paths_by_vertex_index[b][bp];
         
         # getting the sizes from `source` and `range` is more efficient for the compiler
-        size_source := ObjectDatum( range_category, source );
-        size_range := ObjectDatum( range_category, range );
+        size_source := object_datum( source );
+        size_range := object_datum( range );
         
         # the brackets allow the compiler to hoist the condition `IsZeroForMorphisms( algebroid, alpha ) or size_source = 0` more easily
         if (IsZeroForMorphisms( algebroid, alpha ) or size_source = 0) or (IsZeroForMorphisms( algebroid, beta ) or size_range = 0) then
@@ -815,7 +835,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
                 )
             );
             
-            return MorphismConstructor( range_category, source, HomalgMatrix( entries, size_source, size_range, ring ), range );
+            return morphism_constructor( range_category, source, HomalgMatrix( entries, size_source, size_range, ring ), range );
             
         fi;
         
@@ -825,7 +845,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     AddDistinguishedObjectOfHomomorphismStructure( algebroid,
       function( algebroid )
         
-        return ObjectConstructor( range_category, 1 );
+        return object_constructor( range_category, 1 );
         
     end );
     
@@ -853,7 +873,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         element := UnderlyingQuiverAlgebraElement( alpha );
         
-        return MorphismConstructor(
+        return morphism_constructor(
                 range_category,
                 source,
                 HomalgMatrix( CoefficientsOfPaths( basis_elements, representative_func( element ) ), 1, size_basis, ring ),
@@ -867,7 +887,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
       function( algebroid, a, b, morphism )
         local coefficients, basis, element;
         
-        coefficients := EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+        coefficients := EntriesOfHomalgMatrix( morphism_datum( morphism ) );
         
         basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
