@@ -650,7 +650,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( algebroid ) ) );
     
     ## precomputing matrices for the hom structure
-    ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
+    ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
+    ## [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
     ## for basis_path_1: v' -> v and basis_path_2: w -> w'
     
     MATRIX_FOR_HOMSTRUCTURE := function( v, w, vp, wp, path_1, path_2 )
