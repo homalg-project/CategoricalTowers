@@ -1214,12 +1214,19 @@ InstallMethodWithCache( Algebroid,
         [ IsHomalgRing, IsFpCategory ],
         
   function( k, C )
-    local relations, kq, A;
+    local relations, kq, A, over_Z;
     
     relations := C!.relations;
     
     if relations = [ ] and not IsPathAlgebra( UnderlyingQuiverAlgebra( C ) ) then
         Error( "the underlying quiver algebra is not a path algebra, nevertheless the list of relations is empty\n" );
+    fi;
+    
+    if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
+        k := HomalgFieldOfRationals( );
+        over_Z := true;
+    else
+        over_Z := false;
     fi;
     
     kq := PathAlgebra( k, UnderlyingQuiver( C ) );
@@ -1230,7 +1237,7 @@ InstallMethodWithCache( Algebroid,
     
     A := kq / GroebnerBasis( IdealOfQuotient( A ) );
     
-    A := Algebroid( A, false ); ## do not call the single argument method Algebroid as it is an attribute
+    A := Algebroid( A, over_Z ); ## do not call the single argument method Algebroid as it is an attribute
     
     SetUnderlyingCategory( A, C );
     
