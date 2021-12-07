@@ -5,11 +5,11 @@
 #
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "ring", "nr_rows1", "list", "condA", "condB", "nr_rows2", "nr_cols", "value" ],
+        variable_names := [ "nr_rows1", "list", "condA", "condB", "nr_rows2", "nr_cols", "value" ],
         src_template := """
-            return UnionOfColumns( ring, nr_rows1, List( list, function( l )
+            return UnionOfColumnsListList( nr_rows1, List( list, function( l )
                 if condA or condB then
-                    return HomalgZeroMatrix( nr_rows2, nr_cols, ring );
+                    return NullMatImmutable( nr_rows2, nr_cols );
                 else
                     return value;
                 fi;
@@ -17,11 +17,11 @@ CapJitAddLogicTemplate(
         """,
         dst_template := """
             if condA then
-                return HomalgZeroMatrix( nr_rows1, Sum( list, l -> nr_cols ), ring );
+                return NullMatImmutable( nr_rows1, Sum( list, l -> nr_cols ) );
             else
-                return UnionOfColumns( ring, nr_rows1, List( list, function( l )
+                return UnionOfColumnsListList( nr_rows1, List( list, function( l )
                     if condB then
-                        return HomalgZeroMatrix( nr_rows2, nr_cols, ring );
+                        return NullMatImmutable( nr_rows2, nr_cols );
                     else
                         return value;
                     fi;
@@ -29,17 +29,17 @@ CapJitAddLogicTemplate(
             fi;
         """,
         returns_value := false,
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "ring", "nr_cols1", "list", "condA", "condB", "nr_rows", "nr_cols2", "value" ],
+        variable_names := [ "nr_cols1", "list", "condA", "condB", "nr_rows", "nr_cols2", "value" ],
         src_template := """
-            return UnionOfRows( ring, nr_cols1, List( list, function( l )
+            return UnionOfRowsListList( nr_cols1, List( list, function( l )
                 if condA or condB then
-                    return HomalgZeroMatrix( nr_rows, nr_cols2, ring );
+                    return NullMatImmutable( nr_rows, nr_cols2 );
                 else
                     return value;
                 fi;
@@ -47,11 +47,11 @@ CapJitAddLogicTemplate(
         """,
         dst_template := """
             if condA then
-                return HomalgZeroMatrix( Sum( list, l -> nr_rows ), nr_cols1, ring );
+                return NullMatImmutable( Sum( list, l -> nr_rows ), nr_cols1 );
             else
-                return UnionOfRows( ring, nr_cols1, List( list, function( l )
+                return UnionOfRowsListList( nr_cols1, List( list, function( l )
                     if condB then
-                        return HomalgZeroMatrix( nr_rows, nr_cols2, ring );
+                        return NullMatImmutable( nr_rows, nr_cols2 );
                     else
                         return value;
                     fi;
@@ -59,6 +59,61 @@ CapJitAddLogicTemplate(
             fi;
         """,
         returns_value := false,
-        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
+    )
+);
+
+# EntriesOfHomalgMatrixAsListList( HomalgMatrixListList( listlist ) ) => listlist
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "listlist", "nr_rows", "nr_cols", "ring" ],
+        src_template := "EntriesOfHomalgMatrixAsListList( HomalgMatrixListList( listlist, nr_rows, nr_cols, ring ) )",
+        dst_template := "listlist",
+        returns_value := true,
+        needed_packages := [ [ "MatricesForHomalg", ">= 2021.12-01" ] ],
+    )
+);
+
+# Length( ListWithIdenticalEntries( number, obj ) ) => number
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number", "obj" ],
+        src_template := "Length( ListWithIdenticalEntries( number, obj ) )",
+        dst_template := "number",
+        returns_value := true,
+    )
+);
+
+# List( L, x -> x ) => L
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "List( list, x -> x )",
+        dst_template := "list",
+        returns_value := true,
+    )
+);
+
+# UnionOfRowsListList
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "nr_cols", "listlist", "func" ],
+        src_template := "List( UnionOfRowsListList( nr_cols, listlist ), row -> List( row, func ) )",
+        dst_template := "UnionOfRowsListList( nr_cols, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
+        new_funcs := [ [ "list" ], [ "new_row" ] ],
+        returns_value := true,
+        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
+    )
+);
+
+# UnionOfColumnsListList
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "nr_rows", "listlist", "func" ],
+        src_template := "List( UnionOfColumnsListList( nr_rows, listlist ), row -> List( row, func ) )",
+        dst_template := "UnionOfColumnsListList( nr_rows, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
+        new_funcs := [ [ "list" ], [ "new_row" ] ],
+        returns_value := true,
+        needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
