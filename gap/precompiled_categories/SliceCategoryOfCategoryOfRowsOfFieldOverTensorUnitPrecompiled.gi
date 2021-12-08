@@ -19,7 +19,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
@@ -34,7 +34,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddColiftAlongEpimorphism( cat,
@@ -50,7 +50,7 @@ function ( cat_1, epsilon_1, tau_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddCoproduct( cat,
@@ -75,7 +75,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddDirectProduct( cat,
@@ -102,7 +102,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIdentityMorphism( cat,
@@ -118,7 +118,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddInitialObject( cat,
@@ -136,7 +136,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddInverseForMorphisms( cat,
@@ -153,7 +153,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsAutomorphism( cat,
@@ -168,7 +168,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsColiftableAlongEpimorphism( cat,
@@ -179,7 +179,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsCongruentForMorphisms( cat,
@@ -190,7 +190,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsEqualForMorphisms( cat,
@@ -201,7 +201,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsEqualForObjects( cat,
@@ -215,7 +215,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsHomSetInhabited( cat,
@@ -226,7 +226,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsInitial( cat,
@@ -237,7 +237,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsIsomorphism( cat,
@@ -251,7 +251,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsLiftable( cat,
@@ -262,7 +262,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsLiftableAlongMonomorphism( cat,
@@ -273,7 +273,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsOne( cat,
@@ -286,7 +286,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsSplitEpimorphism( cat,
@@ -299,7 +299,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsTerminal( cat,
@@ -313,7 +313,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsWeakInitial( cat,
@@ -324,7 +324,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsWeakTerminal( cat,
@@ -337,7 +337,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -352,7 +352,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -384,7 +384,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddLift( cat,
@@ -400,7 +400,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddLiftAlongMonomorphism( cat,
@@ -416,7 +416,7 @@ function ( cat_1, iota_1, tau_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddMorphismConstructor( cat,
@@ -428,7 +428,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddMorphismDatum( cat,
@@ -439,7 +439,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddObjectConstructor( cat,
@@ -451,7 +451,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddObjectDatum( cat,
@@ -462,7 +462,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddPostCompose( cat,
@@ -478,7 +478,7 @@ function ( cat_1, beta_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddPreCompose( cat,
@@ -494,7 +494,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSubtractionForMorphisms( cat,
@@ -510,7 +510,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddTerminalObject( cat,
@@ -526,7 +526,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( cat,
@@ -543,7 +543,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddUniversalMorphismIntoTerminalObject( cat,
@@ -560,14 +560,14 @@ function ( cat_1, T_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
 end );
 
 BindGlobal( "SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled", function ( field )
   local category_constructor, cat;
     
-    category_constructor := 
+    category_constructor :=
         
         
         function ( field )
