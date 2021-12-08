@@ -48,7 +48,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
 end );
 
