@@ -26,7 +26,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
@@ -49,7 +49,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddComponentOfMorphismFromDirectSum( cat,
@@ -67,7 +67,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddComponentOfMorphismIntoDirectSum( cat,
@@ -88,7 +88,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddDirectSum( cat,
@@ -100,7 +100,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
@@ -112,7 +112,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
@@ -215,7 +215,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddHomomorphismStructureOnObjects( cat,
@@ -236,7 +236,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIdentityMorphism( cat,
@@ -273,7 +273,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
@@ -306,7 +306,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
@@ -361,7 +361,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsCongruentForMorphisms( cat,
@@ -389,7 +389,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsEqualForMorphisms( cat,
@@ -417,7 +417,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsEqualForObjects( cat,
@@ -441,7 +441,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -490,7 +490,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -510,7 +510,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsZeroForMorphisms( cat,
@@ -527,7 +527,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
@@ -550,7 +550,7 @@ function ( cat_1, r_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddPreCompose( cat,
@@ -605,7 +605,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
@@ -619,7 +619,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( cat,
@@ -633,7 +633,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddZeroMorphism( cat,
@@ -661,7 +661,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddZeroObject( cat,
@@ -673,7 +673,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
 end );
 
