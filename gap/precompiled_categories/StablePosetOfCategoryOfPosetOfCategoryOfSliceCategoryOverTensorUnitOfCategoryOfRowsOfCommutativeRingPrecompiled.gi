@@ -48,14 +48,14 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
 end );
 
 BindGlobal( "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled", function ( R )
   local category_constructor, cat;
     
-    category_constructor := 
+    category_constructor :=
         
         
         function ( R )
