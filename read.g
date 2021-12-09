@@ -6,7 +6,6 @@
 
 ReadPackage( "CategoryConstructor", "gap/CategoryConstructor.gi");
 ReadPackage( "CategoryConstructor", "gap/Tools.gi");
-ReadPackage( "CategoryConstructor", "gap/LogicTemplatesForIsHomalgMatrix.gi");
 
 ## Create files for monoidal categories
 ReadPackage( "CategoryConstructor", "gap/CreateMonoidalCategories.gi" );
