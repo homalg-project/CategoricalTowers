@@ -686,7 +686,8 @@ InstallMethodWithCache( FunctorCategory,
         name := Concatenation( "Category of functors" );
     fi;
     
-    if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
+    if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         create_func_bool :=
           function ( name, Hom )
@@ -1151,7 +1152,8 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
-    if HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) then
+    if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         vertices := SetOfObjects( B );
         arrows := SetOfGeneratingMorphisms( B );
