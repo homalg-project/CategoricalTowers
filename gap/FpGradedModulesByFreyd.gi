@@ -56,7 +56,7 @@ BindGlobal( "FP_GRADED_MODULES",
         
         AddObjectRepresentation( Freyd, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedLeftModulesObject );
         
-        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasMorphismDatum and IsFpGradedLeftModulesMorphism );
+        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedLeftModulesMorphism );
         
     else
          
@@ -64,7 +64,7 @@ BindGlobal( "FP_GRADED_MODULES",
         
         AddObjectRepresentation( Freyd, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedRightModulesObject );
         
-        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasMorphismDatum and IsFpGradedRightModulesMorphism );
+        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedRightModulesMorphism );
         
     fi;
     
