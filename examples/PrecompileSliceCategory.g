@@ -9,6 +9,17 @@ LoadPackage( "FreydCategoriesForCAP" );
 
 QQ := HomalgFieldOfRationals( );;
 
+# HomalgIdentityMatrix( size, ring ) * matrix -> matrix
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "size", "ring", "matrix" ],
+        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",
+        dst_template := "matrix",
+        returns_value := true,
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
 # we do not use SliceCategoryOverTensorUnit because that installs more operations
 # which we are not interested in for this simple test
 category_constructor := field ->
@@ -21,9 +32,6 @@ category_constructor := field ->
 given_arguments := [ QQ ];;
 compiled_category_name := "SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled";;
 package_name := "SubcategoriesForCAP";;
-
-Add( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, "HomalgIdentityMatrix" );;
-Add( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, "HomalgZeroMatrix" );;
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
