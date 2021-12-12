@@ -92,13 +92,13 @@ InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
     
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     
-    files := [ "ClosedMonoidalCategoriesDoc_gd",
-               "ClosedMonoidalCategories_gd",
-               "SymmetricClosedMonoidalCategoriesDoc_gd",
-               "RigidSymmetricClosedMonoidalCategoriesDoc_gd",
+    files := [ "ClosedMonoidalCategories_gd",
                "RigidSymmetricClosedMonoidalCategories_gd",
+               "ClosedMonoidalCategoriesProperties_gi",
                "ClosedMonoidalCategoriesMethodRecord_gi",
                "ClosedMonoidalCategories_gi",
+               "SymmetricClosedMonoidalCategoriesProperties_gi",
+               "RigidSymmetricClosedMonoidalCategoriesProperties_gi",
                "RigidSymmetricClosedMonoidalCategoriesMethodRecord_gi",
                "RigidSymmetricClosedMonoidalCategories_gi",
                "ClosedMonoidalCategoriesDerivedMethods_gi",

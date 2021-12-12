@@ -93,13 +93,13 @@ InstallGlobalFunction( WriteFileForCoclosedMonoidalStructure,
     
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     
-    files := [ "CoclosedMonoidalCategoriesDoc_gd",
-               "CoclosedMonoidalCategories_gd",
-               "SymmetricCoclosedMonoidalCategoriesDoc_gd",
-               "RigidSymmetricCoclosedMonoidalCategoriesDoc_gd",
+    files := [ "CoclosedMonoidalCategories_gd",
                "RigidSymmetricCoclosedMonoidalCategories_gd",
+               "CoclosedMonoidalCategoriesProperties_gi",
                "CoclosedMonoidalCategoriesMethodRecord_gi",
                "CoclosedMonoidalCategories_gi",
+               "SymmetricCoclosedMonoidalCategoriesProperties_gi",
+               "RigidSymmetricCoclosedMonoidalCategoriesProperties_gi",
                "RigidSymmetricCoclosedMonoidalCategoriesMethodRecord_gi",
                "RigidSymmetricCoclosedMonoidalCategories_gi",
                "CoclosedMonoidalCategoriesDerivedMethods_gi",
