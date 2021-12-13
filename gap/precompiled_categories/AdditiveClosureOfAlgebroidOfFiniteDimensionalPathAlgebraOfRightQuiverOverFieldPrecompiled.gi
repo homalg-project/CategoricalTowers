@@ -10,17 +10,17 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPath
         
 ########
 function ( cat_1, a_1, b_1 )
-    local hoisted_3_1, deduped_4_1;
-    deduped_4_1 := Source( a_1 );
-    hoisted_3_1 := [ 1 .. NumberColumns( a_1 ) ];
+    local hoisted_3_1, hoisted_4_1, deduped_5_1;
+    deduped_5_1 := Source( a_1 );
+    hoisted_4_1 := [ 1 .. NumberColumns( a_1 ) ];
+    hoisted_3_1 := UnderlyingCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, deduped_4_1, Range( a_1 ), MorphismMatrix, List( [ 1 .. Length( ObjectList( deduped_4_1 ) ) ], function ( i_2 )
-              return List( hoisted_3_1, function ( j_3 )
-                      local deduped_1_3, deduped_2_3;
-                      deduped_2_3 := MatElm( a_1, i_2, j_3 );
-                      deduped_1_3 := Source( deduped_2_3 );
+           ), cat_1, deduped_5_1, Range( a_1 ), MorphismMatrix, List( [ 1 .. Length( ObjectList( deduped_5_1 ) ) ], function ( i_2 )
+              return List( hoisted_4_1, function ( j_3 )
+                      local deduped_1_3;
+                      deduped_1_3 := MatElm( a_1, i_2, j_3 );
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), CapCategory( deduped_1_3 ), deduped_1_3, Range( deduped_2_3 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( deduped_2_3 ) + UnderlyingQuiverAlgebraElement( MatElm( b_1, i_2, j_3 ) ) );
+                             ), hoisted_3_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( deduped_1_3 ) + UnderlyingQuiverAlgebraElement( MatElm( b_1, i_2, j_3 ) ) );
                   end );
           end ) );
 end
@@ -33,17 +33,17 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local hoisted_1_1, deduped_2_1;
-    deduped_2_1 := Source( a_1 );
-    hoisted_1_1 := [ 1 .. NumberColumns( a_1 ) ];
+    local hoisted_1_1, hoisted_2_1, deduped_3_1;
+    deduped_3_1 := Source( a_1 );
+    hoisted_2_1 := [ 1 .. NumberColumns( a_1 ) ];
+    hoisted_1_1 := UnderlyingCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, deduped_2_1, Range( a_1 ), MorphismMatrix, List( [ 1 .. Length( ObjectList( deduped_2_1 ) ) ], function ( i_2 )
-              return List( hoisted_1_1, function ( j_3 )
-                      local deduped_1_3, deduped_2_3;
-                      deduped_2_3 := MatElm( a_1, i_2, j_3 );
-                      deduped_1_3 := Source( deduped_2_3 );
+           ), cat_1, deduped_3_1, Range( a_1 ), MorphismMatrix, List( [ 1 .. Length( ObjectList( deduped_3_1 ) ) ], function ( i_2 )
+              return List( hoisted_2_1, function ( j_3 )
+                      local deduped_1_3;
+                      deduped_1_3 := MatElm( a_1, i_2, j_3 );
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), CapCategory( deduped_1_3 ), deduped_1_3, Range( deduped_2_3 ), UnderlyingQuiverAlgebraElement, - UnderlyingQuiverAlgebraElement( deduped_2_3 ) );
+                             ), hoisted_1_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, - UnderlyingQuiverAlgebraElement( deduped_1_3 ) );
                   end );
           end ) );
 end
@@ -56,14 +56,13 @@ end
         
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := S_1[i_1];
+    local deduped_1_1, deduped_2_1;
     deduped_2_1 := List( S_1, function ( s_2 )
             return Length( ObjectList( s_2 ) );
         end );
     deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), CapCategory( deduped_3_1 ), deduped_3_1, Range( alpha_1 ), MorphismMatrix, MorphismMatrix( alpha_1 ){[ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ]} );
+           ), cat_1, S_1[i_1], Range( alpha_1 ), MorphismMatrix, MorphismMatrix( alpha_1 ){[ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ]} );
 end
 ########
         
@@ -74,15 +73,14 @@ end
         
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := Source( alpha_1 );
+    local hoisted_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := List( S_1, function ( s_2 )
             return Length( ObjectList( s_2 ) );
         end );
     deduped_2_1 := Sum( deduped_3_1{[ 1 .. i_1 - 1 ]} ) + 1;
     hoisted_1_1 := [ deduped_2_1 .. deduped_2_1 - 1 + deduped_3_1[i_1] ];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), CapCategory( deduped_4_1 ), deduped_4_1, S_1[i_1], MorphismMatrix, List( MorphismMatrix( alpha_1 ), function ( row_2 )
+           ), cat_1, Source( alpha_1 ), S_1[i_1], MorphismMatrix, List( MorphismMatrix( alpha_1 ), function ( row_2 )
               return row_2{hoisted_1_1};
           end ) );
 end
@@ -257,29 +255,29 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := ObjectList( a_1 );
-    deduped_6_1 := UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) );
-    deduped_5_1 := [ 1 .. Length( deduped_7_1 ) ];
-    hoisted_4_1 := deduped_5_1;
-    hoisted_3_1 := ZeroImmutable( deduped_6_1 );
-    hoisted_2_1 := deduped_6_1;
-    hoisted_1_1 := deduped_7_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := UnderlyingCategory( cat_1 );
+    deduped_8_1 := ObjectList( a_1 );
+    deduped_7_1 := UnderlyingQuiverAlgebra( deduped_9_1 );
+    deduped_6_1 := [ 1 .. Length( deduped_8_1 ) ];
+    hoisted_5_1 := deduped_6_1;
+    hoisted_4_1 := ZeroImmutable( deduped_7_1 );
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := deduped_7_1;
+    hoisted_1_1 := deduped_8_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, a_1, a_1, MorphismMatrix, List( deduped_5_1, function ( i_2 )
-              local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := hoisted_1_1[i_2];
-              deduped_4_2 := CapCategory( deduped_5_2 );
-              hoisted_3_2 := deduped_5_2;
-              hoisted_2_2 := deduped_4_2;
+           ), cat_1, a_1, a_1, MorphismMatrix, List( deduped_6_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              deduped_3_2 := hoisted_1_1[i_2];
+              hoisted_2_2 := deduped_3_2;
               hoisted_1_2 := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), deduped_4_2, deduped_5_2, deduped_5_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( hoisted_2_1, UnderlyingVertex( deduped_5_2 ) ) );
-              return List( hoisted_4_1, function ( j_3 )
+                     ), hoisted_3_1, deduped_3_2, deduped_3_2, UnderlyingQuiverAlgebraElement, PathAsAlgebraElement( hoisted_2_1, UnderlyingVertex( deduped_3_2 ) ) );
+              return List( hoisted_5_1, function ( j_3 )
                       if i_2 = j_3 then
                           return hoisted_1_2;
                       else
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), hoisted_2_2, hoisted_3_2, hoisted_1_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_3_1 );
+                                 ), hoisted_3_1, hoisted_2_2, hoisted_1_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_4_1 );
                       fi;
                       return;
                   end );
@@ -325,26 +323,27 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1;
+    deduped_15_1 := ObjectList( arg3_1 );
     deduped_14_1 := UnderlyingCategory( cat_1 );
-    deduped_13_1 := ObjectList( arg3_1 );
-    deduped_12_1 := ObjectList( arg2_1 );
-    deduped_11_1 := Length( deduped_13_1 );
-    deduped_10_1 := [ 1 .. Length( deduped_12_1 ) ];
+    deduped_13_1 := ObjectList( arg2_1 );
+    deduped_12_1 := Length( deduped_15_1 );
+    deduped_11_1 := [ 1 .. Length( deduped_13_1 ) ];
+    hoisted_10_1 := deduped_14_1;
     hoisted_9_1 := UnderlyingQuiverAlgebra( deduped_14_1 );
-    hoisted_7_1 := [ 1 .. deduped_11_1 ];
+    hoisted_7_1 := [ 1 .. deduped_12_1 ];
     hoisted_6_1 := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( arg4_1 ) );
     hoisted_3_1 := BasisPathsByVertexIndex( deduped_14_1 );
-    hoisted_2_1 := deduped_13_1;
-    hoisted_5_1 := Concatenation( List( deduped_12_1, function ( logic_new_func_x_2 )
+    hoisted_2_1 := deduped_15_1;
+    hoisted_5_1 := Concatenation( List( deduped_13_1, function ( logic_new_func_x_2 )
               local hoisted_1_2;
               hoisted_1_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
               return List( hoisted_2_1, function ( logic_new_func_x_3 )
                       return Length( hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )] );
                   end );
           end ) );
-    hoisted_4_1 := deduped_11_1;
-    hoisted_8_1 := List( deduped_10_1, function ( i_2 )
+    hoisted_4_1 := deduped_12_1;
+    hoisted_8_1 := List( deduped_11_1, function ( i_2 )
             local hoisted_1_2;
             hoisted_1_2 := hoisted_4_1 * (i_2 - 1);
             return List( hoisted_7_1, function ( logic_new_func_x_3 )
@@ -357,20 +356,19 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
                         end );
                 end );
         end );
-    hoisted_1_1 := deduped_12_1;
+    hoisted_1_1 := deduped_13_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), CapCategory( arg2_1 ), arg2_1, arg3_1, MorphismMatrix, List( deduped_10_1, function ( i_2 )
-              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2;
-              deduped_5_2 := hoisted_1_1[i_2];
-              hoisted_4_2 := deduped_5_2;
-              hoisted_3_2 := CapCategory( deduped_5_2 );
-              hoisted_2_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( deduped_5_2 ) )];
+           ), cat_1, arg2_1, arg3_1, MorphismMatrix, List( deduped_11_1, function ( i_2 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2;
+              deduped_4_2 := hoisted_1_1[i_2];
+              hoisted_3_2 := deduped_4_2;
+              hoisted_2_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( deduped_4_2 ) )];
               hoisted_1_2 := hoisted_8_1[i_2];
               return List( hoisted_7_1, function ( j_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_2_1[j_3];
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), hoisted_3_2, hoisted_4_2, deduped_1_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( hoisted_9_1, hoisted_1_2[j_3][1], hoisted_2_2[VertexIndex( UnderlyingVertex( deduped_1_3 ) )] ) );
+                             ), hoisted_10_1, hoisted_3_2, deduped_1_3, UnderlyingQuiverAlgebraElement, QuiverAlgebraElement( hoisted_9_1, hoisted_1_2[j_3][1], hoisted_2_2[VertexIndex( UnderlyingVertex( deduped_1_3 ) )] ) );
                   end );
           end ) );
 end
@@ -549,17 +547,16 @@ end
         
 ########
 function ( cat_1, r_1, a_1 )
-    local hoisted_1_1, deduped_2_1;
-    deduped_2_1 := Source( a_1 );
-    hoisted_1_1 := [ 1 .. NumberColumns( a_1 ) ];
+    local hoisted_1_1, hoisted_2_1;
+    hoisted_2_1 := [ 1 .. NumberColumns( a_1 ) ];
+    hoisted_1_1 := UnderlyingCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), CapCategory( deduped_2_1 ), deduped_2_1, Range( a_1 ), MorphismMatrix, List( [ 1 .. NumberRows( a_1 ) ], function ( i_2 )
-              return List( hoisted_1_1, function ( j_3 )
-                      local deduped_1_3, deduped_2_3;
-                      deduped_2_3 := MatElm( a_1, i_2, j_3 );
-                      deduped_1_3 := Source( deduped_2_3 );
+           ), cat_1, Source( a_1 ), Range( a_1 ), MorphismMatrix, List( [ 1 .. NumberRows( a_1 ) ], function ( i_2 )
+              return List( hoisted_2_1, function ( j_3 )
+                      local deduped_1_3;
+                      deduped_1_3 := MatElm( a_1, i_2, j_3 );
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), CapCategory( deduped_1_3 ), deduped_1_3, Range( deduped_2_3 ), UnderlyingQuiverAlgebraElement, r_1 * UnderlyingQuiverAlgebraElement( deduped_2_3 ) );
+                             ), hoisted_1_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, r_1 * UnderlyingQuiverAlgebraElement( deduped_1_3 ) );
                   end );
           end ) );
 end
@@ -572,46 +569,43 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1;
-    deduped_13_1 := Range( beta_1 );
-    deduped_12_1 := Source( alpha_1 );
-    deduped_9_1 := Length( ObjectList( Range( alpha_1 ) ) );
-    if ForAny( [ deduped_9_1, Length( ObjectList( Source( beta_1 ) ) ) ], IsZero ) then
+    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1;
+    deduped_15_1 := UnderlyingCategory( cat_1 );
+    deduped_14_1 := Range( beta_1 );
+    deduped_13_1 := Source( alpha_1 );
+    deduped_10_1 := Length( ObjectList( Range( alpha_1 ) ) );
+    hoisted_5_1 := deduped_15_1;
+    if ForAny( [ deduped_10_1, Length( ObjectList( Source( beta_1 ) ) ) ], IsZero ) then
+        deduped_12_1 := ObjectList( deduped_14_1 );
         deduped_11_1 := ObjectList( deduped_13_1 );
-        deduped_10_1 := ObjectList( deduped_12_1 );
-        hoisted_6_1 := [ 1 .. Length( deduped_11_1 ) ];
-        hoisted_5_1 := ZeroImmutable( UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) ) );
-        hoisted_4_1 := deduped_11_1;
-        hoisted_3_1 := deduped_10_1;
+        hoisted_7_1 := [ 1 .. Length( deduped_12_1 ) ];
+        hoisted_6_1 := ZeroImmutable( UnderlyingQuiverAlgebra( deduped_15_1 ) );
+        hoisted_4_1 := deduped_12_1;
+        hoisted_3_1 := deduped_11_1;
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), cat_1, deduped_12_1, deduped_13_1, MorphismMatrix, List( [ 1 .. Length( deduped_10_1 ) ], function ( i_2 )
-                  local hoisted_1_2, hoisted_2_2, deduped_3_2;
-                  deduped_3_2 := hoisted_3_1[i_2];
-                  hoisted_2_2 := deduped_3_2;
-                  hoisted_1_2 := CapCategory( deduped_3_2 );
-                  return List( hoisted_6_1, function ( j_3 )
+               ), cat_1, deduped_13_1, deduped_14_1, MorphismMatrix, List( [ 1 .. Length( deduped_11_1 ) ], function ( i_2 )
+                  local hoisted_1_2;
+                  hoisted_1_2 := hoisted_3_1[i_2];
+                  return List( hoisted_7_1, function ( j_3 )
                           return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                 ), hoisted_1_2, hoisted_2_2, hoisted_4_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_5_1 );
+                                 ), hoisted_5_1, hoisted_1_2, hoisted_4_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_6_1 );
                       end );
               end ) );
     else
-        hoisted_8_1 := [ 1 .. NumberColumns( beta_1 ) ];
-        hoisted_7_1 := [ 1 .. deduped_9_1 ];
+        hoisted_9_1 := [ 1 .. NumberColumns( beta_1 ) ];
+        hoisted_8_1 := [ 1 .. deduped_10_1 ];
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), CapCategory( deduped_12_1 ), deduped_12_1, deduped_13_1, MorphismMatrix, List( [ 1 .. NumberRows( alpha_1 ) ], function ( i_2 )
-                  return List( hoisted_8_1, function ( j_3 )
-                          return Iterated( List( hoisted_7_1, function ( k_4 )
-                                    local deduped_1_4, deduped_2_4, deduped_3_4;
-                                    deduped_3_4 := MatElm( beta_1, k_4, j_3 );
-                                    deduped_2_4 := MatElm( alpha_1, i_2, k_4 );
-                                    deduped_1_4 := Source( deduped_2_4 );
+               ), cat_1, deduped_13_1, deduped_14_1, MorphismMatrix, List( [ 1 .. NumberRows( alpha_1 ) ], function ( i_2 )
+                  return List( hoisted_9_1, function ( j_3 )
+                          return Iterated( List( hoisted_8_1, function ( k_4 )
+                                    local deduped_1_4, deduped_2_4;
+                                    deduped_2_4 := MatElm( beta_1, k_4, j_3 );
+                                    deduped_1_4 := MatElm( alpha_1, i_2, k_4 );
                                     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                           ), CapCategory( deduped_1_4 ), deduped_1_4, Range( deduped_3_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( deduped_2_4 ) * UnderlyingQuiverAlgebraElement( deduped_3_4 ) );
+                                           ), hoisted_5_1, Source( deduped_1_4 ), Range( deduped_2_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( deduped_1_4 ) * UnderlyingQuiverAlgebraElement( deduped_2_4 ) );
                                 end ), function ( alpha_4, beta_4 )
-                                  local deduped_1_4;
-                                  deduped_1_4 := Source( alpha_4 );
                                   return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                                         ), CapCategory( deduped_1_4 ), deduped_1_4, Range( alpha_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( alpha_4 ) + UnderlyingQuiverAlgebraElement( beta_4 ) );
+                                         ), hoisted_5_1, Source( alpha_4 ), Range( alpha_4 ), UnderlyingQuiverAlgebraElement, UnderlyingQuiverAlgebraElement( alpha_4 ) + UnderlyingQuiverAlgebraElement( beta_4 ) );
                               end );
                       end );
               end ) );
@@ -655,22 +649,22 @@ end
         
 ########
 function ( cat_1, a_1, b_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := ObjectList( b_1 );
-    deduped_5_1 := ObjectList( a_1 );
-    hoisted_4_1 := [ 1 .. Length( deduped_6_1 ) ];
-    hoisted_3_1 := ZeroImmutable( UnderlyingQuiverAlgebra( UnderlyingCategory( cat_1 ) ) );
-    hoisted_2_1 := deduped_6_1;
-    hoisted_1_1 := deduped_5_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := UnderlyingCategory( cat_1 );
+    deduped_7_1 := ObjectList( b_1 );
+    deduped_6_1 := ObjectList( a_1 );
+    hoisted_5_1 := [ 1 .. Length( deduped_7_1 ) ];
+    hoisted_4_1 := ZeroImmutable( UnderlyingQuiverAlgebra( deduped_8_1 ) );
+    hoisted_3_1 := deduped_8_1;
+    hoisted_2_1 := deduped_7_1;
+    hoisted_1_1 := deduped_6_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, a_1, b_1, MorphismMatrix, List( [ 1 .. Length( deduped_5_1 ) ], function ( i_2 )
-              local hoisted_1_2, hoisted_2_2, deduped_3_2;
-              deduped_3_2 := hoisted_1_1[i_2];
-              hoisted_2_2 := deduped_3_2;
-              hoisted_1_2 := CapCategory( deduped_3_2 );
-              return List( hoisted_4_1, function ( j_3 )
+           ), cat_1, a_1, b_1, MorphismMatrix, List( [ 1 .. Length( deduped_6_1 ) ], function ( i_2 )
+              local hoisted_1_2;
+              hoisted_1_2 := hoisted_1_1[i_2];
+              return List( hoisted_5_1, function ( j_3 )
                       return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                             ), hoisted_1_2, hoisted_2_2, hoisted_2_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_3_1 );
+                             ), hoisted_3_1, hoisted_1_2, hoisted_2_1[j_3], UnderlyingQuiverAlgebraElement, hoisted_4_1 );
                   end );
           end ) );
 end
