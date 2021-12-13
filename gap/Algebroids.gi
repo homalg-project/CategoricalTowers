@@ -409,7 +409,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
-        return MorphismInAlgebroid( source, m, range );
+        return MorphismInAlgebroid( category, source, m, range );
         
       end );
     
@@ -508,7 +508,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
         
-        return MorphismInAlgebroid(
+        return MorphismInAlgebroid( category,
                        object,
                        id,
                        object );
@@ -521,7 +521,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         AddPreCompose( category,
           function( category, morphism_1, morphism_2 )
             
-            return MorphismInAlgebroid(
+            return MorphismInAlgebroid( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
                            Range( morphism_2 ) );
@@ -534,7 +534,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         AddPreCompose( category,
           function( category, morphism_1, morphism_2 )
             
-            return MorphismInAlgebroid(
+            return MorphismInAlgebroid( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
                            Range( morphism_2 ) );
@@ -547,7 +547,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddAdditionForMorphisms( category,
       function( category, morphism_1, morphism_2 )
         
-        return MorphismInAlgebroid(
+        return MorphismInAlgebroid( category,
                        Source( morphism_1 ),
                        UnderlyingQuiverAlgebraElement( morphism_1 ) + UnderlyingQuiverAlgebraElement( morphism_2 ),
                        Range( morphism_1 ) );
@@ -558,7 +558,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddAdditiveInverseForMorphisms( category,
       function( category, morphism )
         
-        return MorphismInAlgebroid(
+        return MorphismInAlgebroid( category,
                        Source( morphism ),
                        -UnderlyingQuiverAlgebraElement( morphism ),
                        Range( morphism ) );
@@ -569,7 +569,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
       function( category, r, morphism )
         
-        return MorphismInAlgebroid(
+        return MorphismInAlgebroid( category,
                        Source( morphism ),
                        r * UnderlyingQuiverAlgebraElement( morphism ),
                        Range( morphism ) );
@@ -580,7 +580,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     AddZeroMorphism( category,
       function( category, S, T )
         
-        return MorphismInAlgebroid(
+        return MorphismInAlgebroid( category,
                        S,
                        Zero( UnderlyingQuiverAlgebra( category ) ),
                        T );
@@ -901,7 +901,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         element := QuiverAlgebraElement( quiver_algebra, coefficients, basis );
         
-        return MorphismInAlgebroid( a, element, b );
+        return MorphismInAlgebroid( algebroid, a, element, b );
         
     end );
     
@@ -1446,12 +1446,23 @@ InstallMethod( \/,
 );
 
 ##
-InstallMethodForCompilerForCAP( MorphismInAlgebroid,
-        "for two objects in an algebroid and an element of the quiver algebra",
-        [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
-        
+InstallMethod( MorphismInAlgebroid,
+               "for two objects in an algebroid and an element of the quiver algebra",
+               [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+               
   function( S, path, T )
-    local l, mor, A;
+    
+    return MorphismInAlgebroid( CapCategory( S ), S, path, T );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
+                                     "for an algebroid, two objects in this algebroid and an element of the quiver algebra",
+                                     [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+                                     
+  function( A, S, path, T )
+    local l;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if not IsZero( path ) then
@@ -1477,21 +1488,17 @@ InstallMethodForCompilerForCAP( MorphismInAlgebroid,
         
     fi;
     
-    mor := rec( );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( S, A, {} -> "the source given to MorphismInAlgebroid" );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not IsIdenticalObj( CapCategory(S), CapCategory(T) ) then
-        Error( "source and target do not belong to the same category");
-    fi;
-
-    A := CapCategory( S );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( T, A, {} -> "the range given to MorphismInAlgebroid" );
     
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-            mor, A,
-            S,
-            T,
-            UnderlyingQuiverAlgebraElement, path
-            );
+        rec( ), A,
+        S, T,
+        UnderlyingQuiverAlgebraElement, path
+    );
     
 end );
 
@@ -1514,7 +1521,7 @@ InstallMethod( MorphismInAlgebroid,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInAlgebroid( A.(S), path, A.(T) );
+    return MorphismInAlgebroid( A, A.(S), path, A.(T) );
     
 end );
 
@@ -1547,7 +1554,7 @@ InstallMethod( MorphismInAlgebroid,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInAlgebroid( A.(S), path, A.(T) );
+    return MorphismInAlgebroid( A, A.(S), path, A.(T) );
     
 end );
 
