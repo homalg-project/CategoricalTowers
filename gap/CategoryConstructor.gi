@@ -137,7 +137,9 @@ InstallMethod( CategoryConstructor,
         Append( skip, NamesOfComponents( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
         Append( skip, NamesOfComponents( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
         Append( skip, NamesOfComponents( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
         Append( skip, NamesOfComponents( RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
+        Append( skip, NamesOfComponents( RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
     fi;
     
     for func in skip do
