@@ -9,12 +9,14 @@ InstallValue( BOOLEAN_ALGEBRA_METHOD_NAME_RECORD,
 MorphismFromDoubleNegationWithGivenDoubleNegation := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "MorphismToDoubleConegationWithGivenDoubleConegation" ),
 
 MorphismToDoubleConegationWithGivenDoubleConegation := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "MorphismFromDoubleNegationWithGivenDoubleNegation" ),
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( BOOLEAN_ALGEBRA_METHOD_NAME_RECORD );
