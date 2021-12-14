@@ -8,7 +8,8 @@ InstallValue( COHEYTING_ALGEBRA_METHOD_NAME_RECORD,
         rec(
 ConegationOnObjects := rec(
   filter_list := [ "category", "object" ],
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "NegationOnObjects" ),
 
 ConegationOnMorphisms := rec(
   filter_list := [ "category", "morphism" ],
@@ -16,12 +17,14 @@ ConegationOnMorphisms := rec(
   output_source_getter_string := "ConegationOnObjects( cat, Range( alpha ) )",
   output_range_getter_string := "ConegationOnObjects( cat, Source( alpha ) )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "NegationOnMorphisms" ),
 
 ConegationOnMorphismsWithGivenConegations := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "NegationOnMorphismsWithGivenNegations" ),
 
 MorphismFromDoubleConegation := rec(
   filter_list := [ "category", "object" ],
@@ -29,12 +32,14 @@ MorphismFromDoubleConegation := rec(
   output_source_getter_string := "ConegationOnObjects( cat, ConegationOnObjects( cat, a ) )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "MorphismToDoubleNegation" ),
 
 MorphismFromDoubleConegationWithGivenDoubleConegation := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "r", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "MorphismToDoubleNegationWithGivenDoubleNegation" ),
 
             ) );
 

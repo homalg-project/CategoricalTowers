@@ -16,7 +16,7 @@ AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegation
 #! @Description
 #!  The property of <A>C</A> being a cocartesian coclosed &CAP; category with isomorphic double conegations.
 #! @Arguments C
-AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegations", "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations" ] );
+AddCategoricalProperty( [ "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations", "IsCartesianClosedCategoryWithIsomorphicDoubleNegations" ] );
 
 #! @Section Operations
 
