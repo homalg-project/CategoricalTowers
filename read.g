@@ -16,11 +16,12 @@ ReadPackage( "Locales", "gap/Lattice.gi");
 ReadPackage( "Locales", "gap/LatticeDerivedMethods.gi");
 
 ReadPackage( "Locales", "gap/HeytingAlgebraMethodRecord.gi");
-ReadPackage( "Locales", "gap/HeytingAlgebra.gi");
-ReadPackage( "Locales", "gap/HeytingAlgebraDerivedMethods.gi");
-
 ReadPackage( "Locales", "gap/CoHeytingAlgebraMethodRecord.gi");
+
+ReadPackage( "Locales", "gap/HeytingAlgebra.gi");
 ReadPackage( "Locales", "gap/CoHeytingAlgebra.gi");
+
+ReadPackage( "Locales", "gap/HeytingAlgebraDerivedMethods.gi");
 ReadPackage( "Locales", "gap/CoHeytingAlgebraDerivedMethods.gi");
 
 ReadPackage( "Locales", "gap/BooleanAlgebraMethodRecord.gi");

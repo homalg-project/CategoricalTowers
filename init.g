@@ -13,9 +13,9 @@ ReadPackage( "Locales", "gap/Poset.autogen.gd");
 ReadPackage( "Locales", "gap/Lattice.gd");
 
 ReadPackage( "Locales", "gap/HeytingAlgebra.gd");
-ReadPackage( "Locales", "gap/HeytingAlgebra.autogen.gd");
-
 ReadPackage( "Locales", "gap/CoHeytingAlgebra.gd");
+
+ReadPackage( "Locales", "gap/HeytingAlgebra.autogen.gd");
 ReadPackage( "Locales", "gap/CoHeytingAlgebra.autogen.gd");
 
 ReadPackage( "Locales", "gap/BooleanAlgebra.gd");
