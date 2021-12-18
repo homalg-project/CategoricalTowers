@@ -9,6 +9,7 @@ ReadPackage( "Algebroids", "gap/Algebroids.gd");
 ReadPackage( "Algebroids", "gap/Functors.gd");
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gd");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gd");
+ReadPackage( "Algebroids", "gap/SimplicialCategory.gd");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "Algebroids", "gap/Julia.gd" );
