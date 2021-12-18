@@ -112,6 +112,13 @@ DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsAlgebroid );
 
 #! @Description
+#!  The dimension of the underlying quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
+#! @Arguments A
+#! @Returns a nonnegative integer
+DeclareAttribute( "Dimension",
+        IsAlgebroid );
+
+#! @Description
 #!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>,
 #!  indexed by the vertex indices of source and target of the path.
 #! @Arguments A

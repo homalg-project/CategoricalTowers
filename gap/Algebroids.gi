@@ -26,6 +26,17 @@ InstallOtherMethod( Range,
   Target );
 
 ##
+InstallMethod( Dimension,
+        "for an algebroid",
+        [ IsAlgebroid ],
+        
+  function( A )
+    
+    return Dimension( UnderlyingQuiverAlgebra( A ) );
+    
+end );
+
+##
 InstallMethod( SetOfObjects,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],

@@ -95,6 +95,14 @@ DeclareAttribute( "UnderlyingQuiver",
 DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsFpCategory );
 
+
+#! @Description
+#!  The number of morphisms in the finitely presented category <A>C</A>.
+#! @Arguments C
+#! @Returns a nonnegative integer
+DeclareAttribute( "Size",
+        IsFpCategory );
+
 #! @Description
 #!  The finite set of objects of the finitely presented category <A>C</A>.
 #! @Arguments C

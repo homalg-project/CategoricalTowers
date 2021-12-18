@@ -11,6 +11,17 @@
 ####################################
 
 ##
+InstallMethod( Size,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( A )
+    
+    return Dimension( UnderlyingQuiverAlgebra( A ) );
+    
+end );
+
+##
 InstallMethod( SetOfObjects,
         "for a f.p. category",
         [ IsFpCategory and HasUnderlyingQuiver ],
