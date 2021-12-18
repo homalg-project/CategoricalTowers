@@ -96,14 +96,14 @@ DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsFpCategory );
 
 #! @Description
-#!  The finite set of objects of the finitely presented finitely presented category <A>C</A>.
+#!  The finite set of objects of the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a list
 DeclareAttribute( "SetOfObjects",
         IsFpCategory );
 
 #! @Description
-#!  Assigns the objects of the finitely presented finitely presented category <A>C</A> to global variables.
+#!  Assigns the objects of the finitely presented category <A>C</A> to global variables.
 #!  Names of the variables are the concatenation of <A>label</A> with the names of the defining vertices.
 #! @Arguments C, label
 #! @Returns nothing
@@ -111,7 +111,7 @@ DeclareOperation( "AssignSetOfObjects",
         [ IsFpCategory, IsString ] );
 
 #! @Description
-#!  The finite set of morphisms generating the finitely presented finitely presented category <A>C</A>.
+#!  The finite set of morphisms generating the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
@@ -139,7 +139,7 @@ DeclareOperation( "SetOfGeneratingMorphisms",
         [ IsFpCategory, IsInt, IsInt ] );
 
 #! @Description
-#!  Assigns the generating morphisms of the finitely presented finitely presented category <A>C</A> to global variables.
+#!  Assigns the generating morphisms of the finitely presented category <A>C</A> to global variables.
 #!  Names of the variables are the concatenation of <A>label</A> with the names of the defining arrows.
 #! @Arguments C, label
 #! @Returns nothing
@@ -302,7 +302,7 @@ DeclareOperation( "/",
         [ IsFpCategory, IsList ] );
 
 #! @Description
-#!  Construct a functor with source the finitely presented finitely presented category <A>C</A> and target <A>B</A> using
+#!  Construct a functor with source the finitely presented category <A>C</A> and target <A>B</A> using
 #!  the two defining lists of images <A>images_of_objects</A> and <A>images_of_generating_morphisms</A>.
 #!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
 #! @Arguments A, images_of_objects, images_of_generating_morphisms, B, covariant
