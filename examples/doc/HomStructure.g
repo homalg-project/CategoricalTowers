@@ -10,23 +10,22 @@ q := RightQuiver( "q(4)[\
 x0:1->2,x1:1->2,x2:1->2,x3:1->2,\
 y0:2->3,y1:2->3,y2:2->3,y3:2->3,\
 z0:3->4,z1:3->4,z2:3->4,z3:3->4]" );;
+F := FreeCategory( q );;
+beilinson_P3 := F /
+                [ [ PreCompose( F.x0, F.y1 ), PreCompose( F.x1, F.y0 ) ],
+                  [ PreCompose( F.x0, F.y2 ), PreCompose( F.x2, F.y0 ) ],
+                  [ PreCompose( F.x0, F.y3 ), PreCompose( F.x3, F.y0 ) ],
+                  [ PreCompose( F.x1, F.y2 ), PreCompose( F.x2, F.y1 ) ],
+                  [ PreCompose( F.x1, F.y3 ), PreCompose( F.x3, F.y1 ) ],
+                  [ PreCompose( F.x2, F.y3 ), PreCompose( F.x3, F.y2 ) ],
+                  [ PreCompose( F.y0, F.z1 ), PreCompose( F.y1, F.z0 ) ],
+                  [ PreCompose( F.y0, F.z2 ), PreCompose( F.y2, F.z0 ) ],
+                  [ PreCompose( F.y0, F.z3 ), PreCompose( F.y3, F.z0 ) ],
+                  [ PreCompose( F.y1, F.z2 ), PreCompose( F.y2, F.z1 ) ],
+                  [ PreCompose( F.y1, F.z3 ), PreCompose( F.y3, F.z1 ) ],
+                  [ PreCompose( F.y2, F.z3 ), PreCompose( F.y3, F.z2 ) ] ];;
 Q := HomalgFieldOfRationals( );;
-Qq := PathAlgebra( Q, q );;
-Beilinson_P3 := Algebroid( Qq, 
-  [ Qq.x0 * Qq.y1 - Qq.x1 * Qq.y0,
-    Qq.x0 * Qq.y2 - Qq.x2 * Qq.y0,
-    Qq.x0 * Qq.y3 - Qq.x3 * Qq.y0,
-    Qq.x1 * Qq.y2 - Qq.x2 * Qq.y1,
-    Qq.x1 * Qq.y3 - Qq.x3 * Qq.y1,
-    Qq.x2 * Qq.y3 - Qq.x3 * Qq.y2,
-    Qq.y0 * Qq.z1 - Qq.y1 * Qq.z0,
-    Qq.y0 * Qq.z2 - Qq.y2 * Qq.z0,
-    Qq.y0 * Qq.z3 - Qq.y3 * Qq.z0,
-    Qq.y1 * Qq.z2 - Qq.y2 * Qq.z1,
-    Qq.y1 * Qq.z3 - Qq.y3 * Qq.z1,
-    Qq.y2 * Qq.z3 - Qq.y3 * Qq.z2
-  ]
-);;
+Beilinson_P3 := Q[beilinson_P3];;
 objs := SetOfObjects( Beilinson_P3 );;
 Length( objs ) = 4;
 #! true
