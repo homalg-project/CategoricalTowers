@@ -3,6 +3,7 @@
 #
 # Declarations
 #
+
 DeclareOperation( "IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid",
           [ IsQuiverRowsCategory, IsAdditiveClosureCategory ] );
 
