@@ -44,6 +44,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
            "tensor_hom",
            "Hom",
            "ClosedSMonoidal",
+           "TensorProductOnObjectsBCcat",
            "CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE",
            ];
     
