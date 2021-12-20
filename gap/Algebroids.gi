@@ -753,7 +753,15 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     if over_Z then
         
-        default_range_of_HomStructure := CategoryOfRows( ring );
+        if ValueOption( "no_precompiled_code" ) = true then
+            
+            default_range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( ring );
+            
+        else
+            
+            default_range_of_HomStructure := CategoryOfRows( ring );
+            
+        fi;
         
     else
         
