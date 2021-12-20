@@ -105,6 +105,7 @@ InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
                "ClosedMonoidalCategoriesDerivedMethods_gi",
                "SymmetricClosedMonoidalCategoriesDerivedMethods_gi",
                "RigidSymmetricClosedMonoidalCategoriesDerivedMethods_gi",
+               "HomomorphismStructureDerivedMethods_gi",
                ];
     
     header := Concatenation(
