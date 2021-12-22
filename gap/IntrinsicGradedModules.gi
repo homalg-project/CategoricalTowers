@@ -81,7 +81,9 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
             P := F;
         fi;
         
-        S0 := UnderlyingRing( P );
+        if HasUnderlyingRing( P ) then
+            S0 := UnderlyingRing( P );
+        fi;
         
     fi;
     
@@ -94,7 +96,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
         etaLG := NaturalIsomorphismFromIdentityToLessHomogeneousGeneratorsLeft( S );
         
         ## TODO: the following if-code should be obsolete once IntrinsicModules uses WrapperCategory as its last layer instead of IntrinsicCategory
-        if has_hom_structure then
+        if has_hom_structure and IsBound( S0 ) then
             
             if HasCategoryOfHomalgFinitelyPresentedLeftModules( S0 ) and
                not IsIdenticalObj( CategoryOfHomalgFinitelyPresentedLeftModules( S0 ), H ) then
@@ -132,7 +134,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
         etaLG := NaturalIsomorphismFromIdentityToLessHomogeneousGeneratorsRight( S );
         
         ## TODO: the following if-code should be obsolete once IntrinsicModules uses WrapperCategory as its last layer instead of IntrinsicCategory
-        if has_hom_structure then
+        if has_hom_structure and IsBound( S0 ) then
             
             if HasCategoryOfHomalgFinitelyPresentedRightModules( S0 ) and
                not IsIdenticalObj( CategoryOfHomalgFinitelyPresentedRightModules( S0 ), H ) then
@@ -169,7 +171,7 @@ BindGlobal( "CATEGORY_OF_HOMALG_GRADED_MODULES",
     
     A!.IdLG := TurnAutoequivalenceIntoIdentityFunctorForHomalg( etaLG, A );
     
-    if has_hom_structure then
+    if has_hom_structure and IsBound( S0 ) then
         
         if IsFreydCategory( F ) then
             
