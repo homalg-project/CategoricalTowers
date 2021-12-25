@@ -1240,13 +1240,21 @@ InstallMethod( OppositeFpCategory,
         [ IsFpCategory and HasRelationsOfFpCategory ],
         
   function( C )
-    local relations, C_op;
+    local relations, range_category, C_op;
     
     relations := RelationsOfFpCategory( C );
     
     relations := List( relations, a -> List( a, OppositePath ) );
     
-    C_op := Category( OppositeQuiver( UnderlyingQuiver( C ) ), relations );
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
+        range_category := RangeCategoryOfHomomorphismStructure( C );
+    else
+        range_category := fail;
+    fi;
+    
+    C_op := Category(
+                    OppositeQuiver( UnderlyingQuiver( C ) ),
+                    relations : range_of_HomStructure := range_category );
     
     SetOppositeFpCategory( C_op, C );
     
