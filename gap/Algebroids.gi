@@ -2000,37 +2000,26 @@ InstallMethod( OppositeAlgebroid,
         [ IsAlgebroid and HasUnderlyingQuiver ],
         
   function( A )
-    local ring, over_Z, range, A_op;
+    local ring, over_Z, range_category, A_op;
     
     ring := CommutativeRingOfLinearCategory( A );
      
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
-      
-      over_Z := true;
-      
+        over_Z := true;
     else
-      
-      over_Z := false;
-      
+        over_Z := false;
     fi;
     
     if HasRangeCategoryOfHomomorphismStructure( A ) then
-      
-      range := RangeCategoryOfHomomorphismStructure( A );
-      
-      A_op := Algebroid(
-                OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ),
-                over_Z : range_of_HomStructure := range
-            );
-       
+        range_category := RangeCategoryOfHomomorphismStructure( A );
     else
-      
-      A_op := Algebroid(
-                OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ),
-                over_Z
-            );
-    
+        range_category := fail;
     fi;
+    
+    A_op := Algebroid(
+                    OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ),
+                    over_Z : range_of_HomStructure := range_category
+                    );
     
     SetOppositeAlgebroid( A_op, A );
     
