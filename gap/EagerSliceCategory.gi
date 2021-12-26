@@ -173,7 +173,7 @@ InstallMethod( SliceCategory,
         AddIsWeakTerminal( S,
           function( cat, M )
             
-            return IsSplitEpimorphism( C, UnderlyingMorphism( M ) );
+            return IsSplitEpimorphism( AmbientCategory( cat ), UnderlyingMorphism( M ) );
             
         end );
         
@@ -186,11 +186,13 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S, # WeakDirectProduct
            function( cat, L )
-            local L2, biased_weak_fiber_product;
+            local C, L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
+            
+            C := AmbientCategory( cat );
             
             L2 := List( L, UnderlyingMorphism );
             
@@ -209,11 +211,13 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S,
            function( cat, L )
-            local L2, biased_weak_fiber_product;
+            local C, L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
                 return L[1];
             fi;
+            
+            C := AmbientCategory( cat );
             
             L2 := List( L, UnderlyingMorphism );
             
@@ -242,7 +246,7 @@ InstallMethod( SliceCategory,
             
             L2 := List( L, UnderlyingMorphism );
             
-            return ObjectConstructor( cat, UniversalMorphismFromCoproduct( C, List( L2, Source ), B, L2 ) );
+            return ObjectConstructor( cat, UniversalMorphismFromCoproduct( AmbientCategory( cat ), List( L2, Source ), B, L2 ) );
             
         end );
         

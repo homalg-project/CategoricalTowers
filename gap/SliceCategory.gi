@@ -195,13 +195,15 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         m := UnderlyingMorphism( a );
         
         return IsIdenticalObj( Range( m ), BaseObject( cat ) ) and
-               IsWellDefinedForMorphisms( C, m );
+               IsWellDefinedForMorphisms( AmbientCategory( cat ), m );
         
     end );
     
     AddIsWellDefinedForMorphisms( S,
       function( cat, phi )
-        local mS, mT, phi_underlying;
+        local C, mS, mT, phi_underlying;
+        
+        C := AmbientCategory( cat );
         
         mS := UnderlyingMorphism( Source( phi ) );
         mT := UnderlyingMorphism( Range( phi ) );
@@ -217,32 +219,42 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     AddIsEqualForObjects( S,
       function( cat, a, b )
         local a_underlying, b_underlying;
+        
         a_underlying := UnderlyingMorphism( a );
         b_underlying := UnderlyingMorphism( b );
         
-        return IsEqualForObjects( C, Source( a_underlying ), Source( b_underlying ) ) and IsCongruentForMorphisms( C, a_underlying, b_underlying );
+        return IsEqualForObjects( AmbientCategory( cat ), Source( a_underlying ), Source( b_underlying ) ) and IsCongruentForMorphisms( C, a_underlying, b_underlying );
+        
     end );
     
     AddIsEqualForMorphisms( S,
       function( cat, phi, psi )
-        return IsEqualForMorphisms( C, UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
+        return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     AddIsCongruentForMorphisms( S,
       function( cat, phi, psi )
-        return IsCongruentForMorphisms( C, UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
+        return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     if CanCompute( C, "IsEqualForCacheForMorphisms" ) then
         
         AddIsEqualForCacheForObjects( S,
           function( cat, a, b )
-            return IsEqualForCacheForMorphisms( C, UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
+            
+            return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingMorphism( a ), UnderlyingMorphism( b ) );
+            
         end );
         
         AddIsEqualForCacheForMorphisms( S,
           function( cat, phi, psi )
-            return IsEqualForCacheForMorphisms( C, UnderlyingCell( psi ), UnderlyingCell( phi ) );
+            
+            return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+            
         end );
         
     fi;
@@ -253,7 +265,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         B := BaseObject( cat );
         
-        return ObjectConstructor( cat, UniversalMorphismFromInitialObject( C, B ) );
+        return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), B ) );
         
     end );
     
@@ -263,14 +275,14 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         B := BaseObject( cat );
         
-        return ObjectConstructor( cat, IdentityMorphism( C, B ) );
+        return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), B ) );
         
     end );
     
     AddIsTerminal( S,
       function( cat, M )
         
-        return IsIsomorphism( C, UnderlyingMorphism( M ) );
+        return IsIsomorphism( AmbientCategory( cat ), UnderlyingMorphism( M ) );
         
     end );
     
@@ -286,7 +298,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         AddIsWeakInitial( S,
           function( cat, M )
             
-            return IsZeroForMorphisms( C, UnderlyingMorphism( M ) );
+            return IsZeroForMorphisms( AmbientCategory( cat ), UnderlyingMorphism( M ) );
             
         end );
         
@@ -295,7 +307,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     AddIsHomSetInhabited( S,
       function( cat, A, B )
         
-        return IsLiftable( C, UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+        return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
         
     end );
     
@@ -306,12 +318,15 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         AddTensorUnit( S,
           function( cat )
             
-            return ObjectConstructor( cat, IdentityMorphism( C, BaseObject( cat ) ) );
+            return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
             
         end );
         
         AddTensorProductOnObjects( S,
           function( cat, I, J )
+            local C;
+            
+            C := AmbientCategory( cat );
             
             return ObjectConstructor( cat,
                            PreCompose( C,
@@ -327,7 +342,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             AddInternalHomOnObjects( S,
               function( cat, J, I ) ## the abstraction of the ideal quotient I:J
-                local I2, J2;
+                local C, I2, J2;
+                
+                C := AmbientCategory( cat );
                 
                 I2 := UnderlyingMorphism( I ); ## R^i -> R
                 J2 := UnderlyingMorphism( J ); ## R^j -> R
@@ -344,7 +361,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
             AddInternalHomOnMorphismsWithGivenInternalHoms( S, ## I:J' = Hom( J', I ) -> Hom( J, I' ) = I':J
               function( cat, source, phi, psi, target ) ## phi: J -> J', psi: I -> I'
-                local J, Jp, I, Ip, tau1, tau2;
+                local C, J, Jp, I, Ip, tau1, tau2;
+                
+                C := AmbientCategory( cat );
                 
                 J := UnderlyingMorphism( Source( phi ) ); ## R^j -> R
                 Jp := UnderlyingMorphism( Range( phi ) ); ## R^j' -> R
@@ -376,7 +395,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## the weak binary pullback with a weak biased pullback
             AddTensorProductToInternalHomAdjunctionMap( S,
               function( cat, K, J, f ) ## (f: K ⊗ J -> I) -> (g: K -> Hom( J, I ) = I:J)
-                local I, source, target, K2, J2, I2, tau2;
+                local C, I, source, target, K2, J2, I2, tau2;
+                
+                C := AmbientCategory( cat );
                 
                 I := Range( f );
                 
@@ -404,7 +425,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             ## the weak binary pullback with a weak biased pullback
             AddInternalHomToTensorProductAdjunctionMap( S,
               function( cat, J, I, g ) ## (g: K -> Hom( J, I ) = I:J) -> (f: K ⊗ J -> I)
-                local K, source, target, K2, J2, I2, g2, tau2;
+                local C, K, source, target, K2, J2, I2, g2, tau2;
+                
+                C := AmbientCategory( cat );
                 
                 K := Source( g );
                 
