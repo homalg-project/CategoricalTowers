@@ -206,7 +206,7 @@ InstallMethod( LazySliceCategory,
             
             mor := UnderlyingMorphismList( M );
             
-            return ForAll( mor, m -> IsSplitEpimorphism( C, m ) );
+            return ForAll( mor, m -> IsSplitEpimorphism( AmbientCategory( cat ), m ) );
             
         end );
         
@@ -281,7 +281,7 @@ InstallMethod( LazySliceCategory,
             ## so never execute the next line:
             #L := MaximalObjects( L, IsLiftable );
             
-            l := UniversalMorphismFromCoproduct( C, L );
+            l := UniversalMorphismFromCoproduct( AmbientCategory( cat ), L );
             
             l := ObjectConstructor( cat, l );
             
