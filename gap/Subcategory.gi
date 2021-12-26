@@ -95,7 +95,7 @@ InstallMethod( Subcategory,
   function( C, name )
     local create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, is_additive, finalize;
+          properties, D, is_additive;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -228,14 +228,6 @@ InstallMethod( Subcategory,
         return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
     end );
     
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return D;
-      
-    fi;
-    
     Finalize( D );
     
     return D;
@@ -245,7 +237,7 @@ end );
 ##
 InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
   function( L )
-    local cat, name, subcat, finalize;
+    local C, name, subcat;
     
     if L = [ ] then
         Error( "the input list is empty\n" );
@@ -284,28 +276,20 @@ InstallGlobalFunction( SubcategoryGeneratedByListOfMorphisms,
         
     end );
     
-    if CanCompute( cat, "IsWellDefinedForMorphisms" ) then
-      
-      AddIsWellDefinedForMorphisms( subcat,
-        function( cat, phi )
-          
-          return IsWellDefinedForObjects( Source( phi ) )
-                  and IsWellDefinedForObjects( Range( phi ) )
-                    and IsWellDefined( UnderlyingCell( phi ) );
-                    
-      end );
-      
+    if CanCompute( C, "IsWellDefinedForMorphisms" ) then
+        
+        AddIsWellDefinedForMorphisms( subcat,
+          function( cat, phi )
+            
+            return IsWellDefinedForObjects( cat, Source( phi ) ) and
+                   IsWellDefinedForObjects( cat, Range( phi ) ) and
+                   IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( phi ) );
+            
+        end );
+        
     fi;
     
     SetSetOfKnownObjects( subcat, List( L, obj -> AsSubcategoryCell( subcat, obj ) ) );
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return subcat;
-      
-    fi;
     
     Finalize( subcat );
     

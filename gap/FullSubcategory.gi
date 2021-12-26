@@ -73,7 +73,7 @@ InstallMethod( FullSubcategory,
   function( C, name )
     local create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, is_additive, finalize;
+          properties, D, is_additive;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -262,19 +262,11 @@ InstallMethod( FullSubcategory,
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
               function( cat, a, b, iota )
                 
-                return AsSubcategoryCell( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
+                return AsSubcategoryCell( cat, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
                 
             end );
         fi;
         
-    fi;
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return D;
-      
     fi;
     
     Finalize( D );
@@ -286,7 +278,7 @@ end );
 ##
 InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
   function( L )
-    local cat, name, full, finalize;
+    local C, name, full;
     
     if L = [ ] then
         Error( "the input list is empty\n" );
@@ -339,14 +331,6 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     fi;
     
     SetSetOfKnownObjects( full, List( L, obj -> AsSubcategoryCell( full, obj ) ) );
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return full;
-      
-    fi;
     
     Finalize( full );
     
