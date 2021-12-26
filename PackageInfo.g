@@ -110,6 +110,7 @@ Keywords := [
              "functors",
              "natural transformations",
              "finitely presented categories",
+             "functors into categories",
              "functors into pre-additive categories",
              "functors into additive categories",
              "functors into pre-abelian categories",
