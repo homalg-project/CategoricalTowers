@@ -134,7 +134,6 @@ InstallMethod( FullSubcategory,
     list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
-              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
     for func in skip do
