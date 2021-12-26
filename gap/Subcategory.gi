@@ -107,7 +107,7 @@ InstallMethod( Subcategory,
         return
           function( cat, arg... )
             
-            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
+            return CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) );
             
         end;
         
@@ -123,7 +123,7 @@ InstallMethod( Subcategory,
         return ## a constructor for universal objects
           function( cat, arg... )
             
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) );
+            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
@@ -139,7 +139,7 @@ InstallMethod( Subcategory,
         return
           function( cat, arg... )
             
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) );
+            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
@@ -204,27 +204,37 @@ InstallMethod( Subcategory,
     
     AddIsEqualForObjects( D,
       function( cat, a, b )
-        return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+        
+        return IsEqualForObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
+        
     end );
     
     AddIsEqualForMorphisms( D,
       function( cat, phi, psi )
-        return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
+        return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     AddIsCongruentForMorphisms( D,
       function( cat, phi, psi )
-        return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
+        return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     AddIsEqualForCacheForObjects( D,
       function( cat, a, b )
-        return IsEqualForCacheForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+        
+        return IsEqualForCacheForObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
+        
     end );
     
     AddIsEqualForCacheForMorphisms( D,
       function( cat, phi, psi )
-        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
+        return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     Finalize( D );
