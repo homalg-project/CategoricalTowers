@@ -70,6 +70,113 @@ InstallMethod( SetLabel,
     
 end );
 
+## fallback method
+InstallMethod( GetLabel,
+        "for a CAP category object",
+        [ IsCapCategoryObject ],
+        
+  function( c )
+    
+    return fail;
+    
+end );
+
+##
+InstallMethod( GetLabel,
+        "for a CAP category object",
+        [ IsCapCategoryObject ],
+        
+  function( o )
+    local datum, label;
+    
+    if IsBound( o!.Label ) then
+        return o!.Label;
+    fi;
+    
+    if not CanCompute( CapCategory( o ), "ObjectDatum" ) then
+        TryNextMethod( );
+    fi;
+    
+    datum := ObjectDatum( o );
+    
+    if IsList( datum ) then
+        if not Length( datum ) = 1 then
+            return fail;
+        fi;
+        datum := datum[1];
+    fi;
+    
+    if not IsCapCategoryCell( datum ) then
+        return fail;
+    fi;
+    
+    label := GetLabel( datum );
+    
+    o!.Label := label;
+    
+    return label;
+    
+end );
+
+##
+InstallMethod( GetLabel,
+        "for a CAP category morphism",
+        [ IsCapCategoryMorphism ],
+        
+  function( m )
+    local datum, label;
+    
+    if IsBound( m!.Label ) then
+        return m!.Label;
+    fi;
+    
+    if not ( HasMorphismDatum( m ) or CanCompute( CapCategory( m ), "MorphismDatum" ) ) then
+        TryNextMethod( );
+    fi;
+    
+    datum := MorphismDatum( m );
+    
+    if IsList( datum ) then
+        if not ( Length( datum ) = 1 and IsList( datum[1] ) and Length( datum[1] ) = 1 ) then
+            return fail;
+        fi;
+        datum := datum[1,1];
+    fi;
+    
+    if not IsCapCategoryCell( datum ) then
+        return fail;
+    fi;
+    
+    label := GetLabel( datum );
+    
+    m!.Label := label;
+    
+    return label;
+    
+end );
+
+##
+InstallMethod( GetLabel,
+        "for a CAP category object",
+        [ IsLazyCapCategoryCell ],
+        
+  function( c )
+    local label;
+    
+    if IsBound( c!.Label ) then
+        return c!.Label;
+    fi;
+    
+    label := GetLabel( EvaluatedCell( c ) );
+    
+    if not label = fail then
+        SetLabel( c, label );
+    fi;
+    
+    return label;
+    
+end );
+
 ##
 InstallMethod( IsEqualForCells,
         "for two CAP objects",
@@ -1129,6 +1236,7 @@ InstallMethod( DigraphOfEvaluation,
                   elif IsCapCategoryMorphism( node ) then
                       l := Concatenation( l, "\n", "morphism" );
                   fi;
+                  GetLabel( node );
                   if IsBound( node!.Label ) then
                       l := Concatenation( l, "\n<", node!.Label, ">" );
                   fi;
