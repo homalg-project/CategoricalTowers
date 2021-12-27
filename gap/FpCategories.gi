@@ -698,17 +698,11 @@ InstallMethod( \.,
     
     a := q.(name);
     
-    b := rec( );
-    
     if IsQuiverVertex( a ) then
         if IsBound( C!.Vertices.(name) ) then
             return C!.Vertices.(name);
         fi;
-        ObjectifyObjectForCAPWithAttributes(
-            b, C,
-            UnderlyingVertex, a
-        );
-        C!.Vertices.(name) := b;
+        b := ObjectInFpCategory( C, a );
     elif IsArrow( a ) or IsCompositePath( a ) then
         if IsBound( C!.Arrows.(name) ) then
             return C!.Arrows.(name);

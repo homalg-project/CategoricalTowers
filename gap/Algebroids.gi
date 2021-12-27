@@ -1414,17 +1414,11 @@ InstallMethod( \.,
     
     a := q.(name);
     
-    b := rec( );
-    
     if IsQuiverVertex( a ) then
         if IsBound( B!.Vertices.(name) ) then
             return B!.Vertices.(name);
         fi;
-        ObjectifyObjectForCAPWithAttributes(
-            b, B,
-            UnderlyingVertex, a
-        );
-        B!.Vertices.(name) := b;
+        b := ObjectInAlgebroid( B, a );
     elif IsArrow( a ) or IsCompositePath( a ) then
         if IsBound( B!.Arrows.(name) ) then
             return B!.Arrows.(name);
