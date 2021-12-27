@@ -1406,14 +1406,21 @@ InstallMethod( ObjectInAlgebroid,
         [ IsAlgebroid, IsQuiverVertex ],
         
   function( A, v )
-    local o;
-    o := rec();
+    local o, name;
+    
+    o := rec( );
+    
+    name := String( v );
+    
     ObjectifyObjectForCAPWithAttributes(
-        o, A,
-        UnderlyingVertex, v
-    );
-    A!.Vertices.(String(v)) := o;
+            o, A,
+            UnderlyingVertex, v,
+            Label, name );
+    
+    A!.Vertices.(name) := o;
+    
     return o;
+    
 end );
 
 ##
@@ -1507,6 +1514,7 @@ InstallMethod( \.,
                      B.(String( Source( a ) ) ),
                      PathAsAlgebraElement( UnderlyingQuiverAlgebra( B ), a ),
                      B.(String( Target( a ) ) ) );
+        SetLabel( b, name );
         B!.Arrows.(name) := b;
     else
         Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );

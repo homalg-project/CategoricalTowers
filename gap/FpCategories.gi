@@ -690,14 +690,21 @@ InstallMethod( ObjectInFpCategory,
         [ IsFpCategory, IsQuiverVertex ],
         
   function( C, v )
-    local o;
-    o := rec();
+    local o, name;
+    
+    o := rec( );
+    
+    name := String( v );
+    
     ObjectifyObjectForCAPWithAttributes(
-        o, C,
-        UnderlyingVertex, v
-    );
-    C!.Vertices.(String(v)) := o;
+            o, C,
+            UnderlyingVertex, v,
+            Label, name );
+    
+    C!.Vertices.(name) := o;
+    
     return o;
+    
 end );
 
 ##
@@ -806,6 +813,7 @@ InstallMethod( \.,
                      C.(String( Source( a ) ) ),
                      PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), a ),
                      C.(String( Target( a ) ) ) );
+        SetLabel( b, name );
         C!.Arrows.(name) := b;
     else
         Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
