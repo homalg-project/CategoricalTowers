@@ -1465,17 +1465,6 @@ InstallMethod( \/,
 );
 
 ##
-InstallMethod( MorphismInAlgebroid,
-               "for two objects in an algebroid and an element of the quiver algebra",
-               [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
-               
-  function( S, path, T )
-    
-    return MorphismInAlgebroid( CapCategory( S ), S, path, T );
-    
-end );
-
-##
 InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
                                      "for an algebroid, two objects in this algebroid and an element of the quiver algebra",
                                      [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
@@ -1518,6 +1507,17 @@ InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
         S, T,
         UnderlyingQuiverAlgebraElement, path
     );
+    
+end );
+
+##
+InstallMethod( MorphismInAlgebroid,
+               "for two objects in an algebroid and an element of the quiver algebra",
+               [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+               
+  function( S, path, T )
+    
+    return MorphismInAlgebroid( CapCategory( S ), S, path, T );
     
 end );
 
