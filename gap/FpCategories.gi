@@ -150,12 +150,36 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
   function( category )
     
     ##
+    AddObjectConstructor( category,
+      function( category, v )
+        
+        return ObjectInFpCategory( category, v );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( category, o )
+        
+        return UnderlyingVertex( o );
+        
+    end );
+    
+    ##
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
         return MorphismInFpCategory( source, m, range );
         
-      end );
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( category, m )
+        
+        return UnderlyingQuiverAlgebraElement( m );
+        
+    end );
     
     ##
     AddIsWellDefinedForObjects( category,
@@ -165,7 +189,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         return IsQuiverVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
         
-      end );
+    end );
     
     ##
     AddIsWellDefinedForMorphisms( category,
@@ -217,7 +241,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         # all tests passed, so it is well-defined
         return true;
         
-      end );
+    end );
     
     ##
     AddIsEqualForObjects( category,
@@ -685,61 +709,26 @@ InstallMethod( Unit,
 end );
 
 ##
-InstallMethod( \.,
-        "for a f.p. category and a positive integer",
-        [ IsFpCategory, IsPosInt ],
-        
-  function( C, string_as_int )
-    local name, q, a, b;
-    
-    name := NameRNam( string_as_int );
-    
-    q := UnderlyingQuiver( C );
-    
-    a := q.(name);
-    
-    b := rec( );
-    
-    if IsQuiverVertex( a ) then
-        if IsBound( C!.Vertices.(name) ) then
-            return C!.Vertices.(name);
-        fi;
-        ObjectifyObjectForCAPWithAttributes(
-            b, C,
-            UnderlyingVertex, a
-        );
-        C!.Vertices.(name) := b;
-    elif IsArrow( a ) or IsCompositePath( a ) then
-        if IsBound( C!.Arrows.(name) ) then
-            return C!.Arrows.(name);
-        fi;
-        b := MorphismInFpCategory(
-                     C.(String( Source( a ) ) ),
-                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), a ),
-                     C.(String( Target( a ) ) ) );
-        C!.Arrows.(name) := b;
-    else
-        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
-    fi;
-    
-    return b;
-    
-end );
-
-##
 InstallMethod( ObjectInFpCategory,
          "for a f.p. category and a vertex of a quiver",
         [ IsFpCategory, IsQuiverVertex ],
         
   function( C, v )
-    local o;
-    o := rec();
+    local o, name;
+    
+    o := rec( );
+    
+    name := String( v );
+    
     ObjectifyObjectForCAPWithAttributes(
-        o, C,
-        UnderlyingVertex, v
-    );
-    C!.Vertices.(String(v)) := o;
+            o, C,
+            UnderlyingVertex, v,
+            Label, name );
+    
+    C!.Vertices.(name) := o;
+    
     return o;
+    
 end );
 
 ##
@@ -818,6 +807,43 @@ InstallMethod( MorphismInFpCategory,
     T := String( Target( l ) );
     
     return MorphismInFpCategory( C.(S), path, C.(T) );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a f.p. category and a positive integer",
+        [ IsFpCategory, IsPosInt ],
+        
+  function( C, string_as_int )
+    local name, q, a, b;
+    
+    name := NameRNam( string_as_int );
+    
+    q := UnderlyingQuiver( C );
+    
+    a := q.(name);
+    
+    if IsQuiverVertex( a ) then
+        if IsBound( C!.Vertices.(name) ) then
+            return C!.Vertices.(name);
+        fi;
+        b := ObjectInFpCategory( C, a );
+    elif IsArrow( a ) or IsCompositePath( a ) then
+        if IsBound( C!.Arrows.(name) ) then
+            return C!.Arrows.(name);
+        fi;
+        b := MorphismInFpCategory(
+                     C.(String( Source( a ) ) ),
+                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), a ),
+                     C.(String( Target( a ) ) ) );
+        SetLabel( b, name );
+        C!.Arrows.(name) := b;
+    else
+        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
+    fi;
+    
+    return b;
     
 end );
 
@@ -1240,13 +1266,21 @@ InstallMethod( OppositeFpCategory,
         [ IsFpCategory and HasRelationsOfFpCategory ],
         
   function( C )
-    local relations, C_op;
+    local relations, range_category, C_op;
     
     relations := RelationsOfFpCategory( C );
     
     relations := List( relations, a -> List( a, OppositePath ) );
     
-    C_op := Category( OppositeQuiver( UnderlyingQuiver( C ) ), relations );
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
+        range_category := RangeCategoryOfHomomorphismStructure( C );
+    else
+        range_category := fail;
+    fi;
+    
+    C_op := Category(
+                    OppositeQuiver( UnderlyingQuiver( C ) ),
+                    relations : range_of_HomStructure := range_category );
     
     SetOppositeFpCategory( C_op, C );
     

@@ -417,12 +417,36 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
   function( category, over_Z )
     
     ##
+    AddObjectConstructor( category,
+      function( category, v )
+        
+        return ObjectInAlgebroid( category, v );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( category, o )
+        
+        return UnderlyingVertex( o );
+        
+    end );
+    
+    ##
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
         return MorphismInAlgebroid( category, source, m, range );
         
-      end );
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( category, m )
+        
+        return UnderlyingQuiverAlgebraElement( m );
+        
+    end );
     
     ##
     AddIsWellDefinedForObjects( category,
@@ -432,7 +456,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         return IsQuiverVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
         
-      end );
+    end );
     
     ##
     AddIsWellDefinedForMorphisms( category,
@@ -484,7 +508,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         # all tests passed, so it is well-defined
         return true;
         
-      end );
+    end );
     
     ##
     AddIsEqualForObjects( category,
@@ -1401,60 +1425,26 @@ InstallMethod( Unit,
 end );
 
 ##
-InstallMethod( \.,
-        "for an algebroid and a positive integer",
-        [ IsAlgebroid, IsPosInt ],
-        
-  function( B, string_as_int )
-    local name, q, a, b;
-    
-    name := NameRNam( string_as_int );
-    
-    q := UnderlyingQuiver( B );
-    
-    a := q.(name);
-    
-    b := rec( );
-    
-    if IsQuiverVertex( a ) then
-        if IsBound( B!.Vertices.(name) ) then
-            return B!.Vertices.(name);
-        fi;
-        ObjectifyObjectForCAPWithAttributes(
-            b, B,
-            UnderlyingVertex, a
-        );
-        B!.Vertices.(name) := b;
-    elif IsArrow( a ) or IsCompositePath( a ) then
-        if IsBound( B!.Arrows.(name) ) then
-            return B!.Arrows.(name);
-        fi;
-        b := MorphismInAlgebroid(
-                     B.(String( Source( a ) ) ),
-                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( B ), a ),
-                     B.(String( Target( a ) ) ) );
-        B!.Arrows.(name) := b;
-    else
-        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
-    fi;
-    
-    return b;
-    
-end );
-
 InstallMethod( ObjectInAlgebroid,
          "for an algebroid and a vertex of a quiver",
         [ IsAlgebroid, IsQuiverVertex ],
         
   function( A, v )
-    local o;
-    o := rec();
+    local o, name;
+    
+    o := rec( );
+    
+    name := String( v );
+    
     ObjectifyObjectForCAPWithAttributes(
-        o, A,
-        UnderlyingVertex, v
-    );
-    A!.Vertices.(String(v)) := o;
+            o, A,
+            UnderlyingVertex, v,
+            Label, name );
+    
+    A!.Vertices.(name) := o;
+    
     return o;
+    
 end );
 
 ##
@@ -1463,17 +1453,6 @@ InstallMethod( \/,
         
   { v, A } -> ObjectInAlgebroid( A, v )
 );
-
-##
-InstallMethod( MorphismInAlgebroid,
-               "for two objects in an algebroid and an element of the quiver algebra",
-               [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
-               
-  function( S, path, T )
-    
-    return MorphismInAlgebroid( CapCategory( S ), S, path, T );
-    
-end );
 
 ##
 InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
@@ -1518,6 +1497,54 @@ InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
         S, T,
         UnderlyingQuiverAlgebraElement, path
     );
+    
+end );
+
+##
+InstallMethod( MorphismInAlgebroid,
+               "for two objects in an algebroid and an element of the quiver algebra",
+               [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+               
+  function( S, path, T )
+    
+    return MorphismInAlgebroid( CapCategory( S ), S, path, T );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for an algebroid and a positive integer",
+        [ IsAlgebroid, IsPosInt ],
+        
+  function( B, string_as_int )
+    local name, q, a, b;
+    
+    name := NameRNam( string_as_int );
+    
+    q := UnderlyingQuiver( B );
+    
+    a := q.(name);
+    
+    if IsQuiverVertex( a ) then
+        if IsBound( B!.Vertices.(name) ) then
+            return B!.Vertices.(name);
+        fi;
+        b := ObjectInAlgebroid( B, a );
+    elif IsArrow( a ) or IsCompositePath( a ) then
+        if IsBound( B!.Arrows.(name) ) then
+            return B!.Arrows.(name);
+        fi;
+        b := MorphismInAlgebroid(
+                     B.(String( Source( a ) ) ),
+                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( B ), a ),
+                     B.(String( Target( a ) ) ) );
+        SetLabel( b, name );
+        B!.Arrows.(name) := b;
+    else
+        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
+    fi;
+    
+    return b;
     
 end );
 
@@ -2000,37 +2027,26 @@ InstallMethod( OppositeAlgebroid,
         [ IsAlgebroid and HasUnderlyingQuiver ],
         
   function( A )
-    local ring, over_Z, range, A_op;
+    local ring, over_Z, range_category, A_op;
     
     ring := CommutativeRingOfLinearCategory( A );
      
     if IsIntegers( ring ) or ( HasIsIntegersForHomalg( ring ) and IsIntegersForHomalg( ring ) ) then
-      
-      over_Z := true;
-      
+        over_Z := true;
     else
-      
-      over_Z := false;
-      
+        over_Z := false;
     fi;
     
     if HasRangeCategoryOfHomomorphismStructure( A ) then
-      
-      range := RangeCategoryOfHomomorphismStructure( A );
-      
-      A_op := Algebroid(
-                OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ),
-                over_Z : range_of_HomStructure := range
-            );
-       
+        range_category := RangeCategoryOfHomomorphismStructure( A );
     else
-      
-      A_op := Algebroid(
-                OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ),
-                over_Z
-            );
-    
+        range_category := fail;
     fi;
+    
+    A_op := Algebroid(
+                    OppositeAlgebra( UnderlyingQuiverAlgebra( A ) ),
+                    over_Z : range_of_HomStructure := range_category
+                    );
     
     SetOppositeAlgebroid( A_op, A );
     
