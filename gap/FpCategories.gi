@@ -685,42 +685,6 @@ InstallMethod( Unit,
 end );
 
 ##
-InstallMethod( \.,
-        "for a f.p. category and a positive integer",
-        [ IsFpCategory, IsPosInt ],
-        
-  function( C, string_as_int )
-    local name, q, a, b;
-    
-    name := NameRNam( string_as_int );
-    
-    q := UnderlyingQuiver( C );
-    
-    a := q.(name);
-    
-    if IsQuiverVertex( a ) then
-        if IsBound( C!.Vertices.(name) ) then
-            return C!.Vertices.(name);
-        fi;
-        b := ObjectInFpCategory( C, a );
-    elif IsArrow( a ) or IsCompositePath( a ) then
-        if IsBound( C!.Arrows.(name) ) then
-            return C!.Arrows.(name);
-        fi;
-        b := MorphismInFpCategory(
-                     C.(String( Source( a ) ) ),
-                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), a ),
-                     C.(String( Target( a ) ) ) );
-        C!.Arrows.(name) := b;
-    else
-        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
-    fi;
-    
-    return b;
-    
-end );
-
-##
 InstallMethod( ObjectInFpCategory,
          "for a f.p. category and a vertex of a quiver",
         [ IsFpCategory, IsQuiverVertex ],
@@ -812,6 +776,42 @@ InstallMethod( MorphismInFpCategory,
     T := String( Target( l ) );
     
     return MorphismInFpCategory( C.(S), path, C.(T) );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a f.p. category and a positive integer",
+        [ IsFpCategory, IsPosInt ],
+        
+  function( C, string_as_int )
+    local name, q, a, b;
+    
+    name := NameRNam( string_as_int );
+    
+    q := UnderlyingQuiver( C );
+    
+    a := q.(name);
+    
+    if IsQuiverVertex( a ) then
+        if IsBound( C!.Vertices.(name) ) then
+            return C!.Vertices.(name);
+        fi;
+        b := ObjectInFpCategory( C, a );
+    elif IsArrow( a ) or IsCompositePath( a ) then
+        if IsBound( C!.Arrows.(name) ) then
+            return C!.Arrows.(name);
+        fi;
+        b := MorphismInFpCategory(
+                     C.(String( Source( a ) ) ),
+                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), a ),
+                     C.(String( Target( a ) ) ) );
+        C!.Arrows.(name) := b;
+    else
+        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
+    fi;
+    
+    return b;
     
 end );
 

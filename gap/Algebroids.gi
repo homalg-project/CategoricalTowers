@@ -1401,41 +1401,6 @@ InstallMethod( Unit,
 end );
 
 ##
-InstallMethod( \.,
-        "for an algebroid and a positive integer",
-        [ IsAlgebroid, IsPosInt ],
-        
-  function( B, string_as_int )
-    local name, q, a, b;
-    
-    name := NameRNam( string_as_int );
-    
-    q := UnderlyingQuiver( B );
-    
-    a := q.(name);
-    
-    if IsQuiverVertex( a ) then
-        if IsBound( B!.Vertices.(name) ) then
-            return B!.Vertices.(name);
-        fi;
-        b := ObjectInAlgebroid( B, a );
-    elif IsArrow( a ) or IsCompositePath( a ) then
-        if IsBound( B!.Arrows.(name) ) then
-            return B!.Arrows.(name);
-        fi;
-        b := MorphismInAlgebroid(
-                     B.(String( Source( a ) ) ),
-                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( B ), a ),
-                     B.(String( Target( a ) ) ) );
-        B!.Arrows.(name) := b;
-    else
-        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
-    fi;
-    
-    return b;
-    
-end );
-
 InstallMethod( ObjectInAlgebroid,
          "for an algebroid and a vertex of a quiver",
         [ IsAlgebroid, IsQuiverVertex ],
@@ -1512,6 +1477,42 @@ InstallMethod( MorphismInAlgebroid,
   function( S, path, T )
     
     return MorphismInAlgebroid( CapCategory( S ), S, path, T );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for an algebroid and a positive integer",
+        [ IsAlgebroid, IsPosInt ],
+        
+  function( B, string_as_int )
+    local name, q, a, b;
+    
+    name := NameRNam( string_as_int );
+    
+    q := UnderlyingQuiver( B );
+    
+    a := q.(name);
+    
+    if IsQuiverVertex( a ) then
+        if IsBound( B!.Vertices.(name) ) then
+            return B!.Vertices.(name);
+        fi;
+        b := ObjectInAlgebroid( B, a );
+    elif IsArrow( a ) or IsCompositePath( a ) then
+        if IsBound( B!.Arrows.(name) ) then
+            return B!.Arrows.(name);
+        fi;
+        b := MorphismInAlgebroid(
+                     B.(String( Source( a ) ) ),
+                     PathAsAlgebraElement( UnderlyingQuiverAlgebra( B ), a ),
+                     B.(String( Target( a ) ) ) );
+        B!.Arrows.(name) := b;
+    else
+        Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
+    fi;
+    
+    return b;
     
 end );
 
