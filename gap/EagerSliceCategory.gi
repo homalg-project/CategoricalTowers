@@ -88,7 +88,7 @@ InstallMethod( SliceCategory,
         
   function( B )
     local C, over_tensor_unit, name, category_filter,
-          category_object_filter, category_morphism_filter, S, finalize;
+          category_object_filter, category_morphism_filter, S;
     
     C := CapCategory( B );
     
@@ -249,14 +249,6 @@ InstallMethod( SliceCategory,
             return ObjectConstructor( cat, UniversalMorphismFromCoproduct( AmbientCategory( cat ), List( L2, Source ), B, L2 ) );
             
         end );
-        
-    fi;
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-        
-        return S;
         
     fi;
     

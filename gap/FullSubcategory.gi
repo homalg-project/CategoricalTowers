@@ -73,7 +73,7 @@ InstallMethod( FullSubcategory,
   function( C, name )
     local create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, is_additive, finalize;
+          properties, D, is_additive;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -85,7 +85,7 @@ InstallMethod( FullSubcategory,
         return
           function( cat, arg... )
             
-            return CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) );
+            return CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) );
             
         end;
         
@@ -101,7 +101,7 @@ InstallMethod( FullSubcategory,
         return ## a constructor for universal objects
           function( cat, arg... )
             
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) );
+            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
@@ -117,7 +117,7 @@ InstallMethod( FullSubcategory,
         return
           function( cat, arg... )
             
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ C ], List( arg, UnderlyingCell ) ) ) );
+            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
@@ -134,7 +134,6 @@ InstallMethod( FullSubcategory,
     list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
-              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
               ];
     
     for func in skip do
@@ -183,27 +182,37 @@ InstallMethod( FullSubcategory,
     
     AddIsEqualForObjects( D,
       function( cat, a, b )
-        return IsEqualForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+
+        return IsEqualForObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
+        
     end );
     
     AddIsEqualForMorphisms( D,
       function( cat, phi, psi )
-        return IsEqualForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+
+        return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     AddIsCongruentForMorphisms( D,
       function( cat, phi, psi )
-        return IsCongruentForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+
+        return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     AddIsEqualForCacheForObjects( D,
       function( cat, a, b )
-        return IsEqualForCacheForObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+
+        return IsEqualForCacheForObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
+        
     end );
     
     AddIsEqualForCacheForMorphisms( D,
       function( cat, phi, psi )
-        return IsEqualForCacheForMorphisms( UnderlyingCell( psi ), UnderlyingCell( phi ) );
+
+        return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        
     end );
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
@@ -212,7 +221,7 @@ InstallMethod( FullSubcategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( cat, r, phi )
             
-            return AsSubcategoryCell( CapCategory( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingCell( phi ) ) );
+            return AsSubcategoryCell( cat, MultiplyWithElementOfCommutativeRingForMorphisms( AmbientCategory( cat ), r, UnderlyingCell( phi ) ) );
             
         end );
         
@@ -226,7 +235,7 @@ InstallMethod( FullSubcategory,
             AddDistinguishedObjectOfHomomorphismStructure( D,
               function( cat )
                 
-                return DistinguishedObjectOfHomomorphismStructure( C );
+                return DistinguishedObjectOfHomomorphismStructure( AmbientCategory( cat ) );
                 
             end );
         fi;
@@ -235,7 +244,7 @@ InstallMethod( FullSubcategory,
             AddHomomorphismStructureOnObjects( D,
               function( cat, a, b )
                 
-                return HomomorphismStructureOnObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+                return HomomorphismStructureOnObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
                 
             end );
         fi;
@@ -244,7 +253,7 @@ InstallMethod( FullSubcategory,
             AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
               function( cat, s, alpha, beta, r )
                 
-                return HomomorphismStructureOnMorphismsWithGivenObjects( s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
+                return HomomorphismStructureOnMorphismsWithGivenObjects( AmbientCategory( cat ), s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
                 
             end );
         fi;
@@ -253,7 +262,7 @@ InstallMethod( FullSubcategory,
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
               function( cat, alpha )
                 
-                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( alpha ) );
+                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( AmbientCategory( cat ), UnderlyingCell( alpha ) );
                 
             end );
         fi;
@@ -262,19 +271,11 @@ InstallMethod( FullSubcategory,
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
               function( cat, a, b, iota )
                 
-                return AsSubcategoryCell( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
+                return AsSubcategoryCell( cat, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
                 
             end );
         fi;
         
-    fi;
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return D;
-      
     fi;
     
     Finalize( D );
@@ -286,13 +287,13 @@ end );
 ##
 InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
   function( L )
-    local cat, name, full, finalize;
+    local C, name, full;
     
     if L = [ ] then
         Error( "the input list is empty\n" );
     fi;
     
-    cat := CapCategory( L[1] );
+    C := CapCategory( L[1] );
     
     L := ShallowCopy( L );
     
@@ -302,7 +303,7 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
     if name = fail then
       
-      name := Name( cat );
+      name := Name( C );
       
       if Size( L ) > 1 then
         name := Concatenation( "Full subcategory generated by ", String( Size( L ) ), " objects in ", name );
@@ -312,7 +313,7 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
       
     fi;
     
-    full := FullSubcategory( cat, name : FinalizeCategory := false );
+    full := FullSubcategory( C, name : FinalizeCategory := false );
     
     SetFilterObj( full, IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects );
     
@@ -325,28 +326,20 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
         
     end );
     
-    if CanCompute( cat, "IsWellDefinedForMorphisms" ) then
+    if CanCompute( C, "IsWellDefinedForMorphisms" ) then
       
       AddIsWellDefinedForMorphisms( full,
         function( cat, phi )
           
-          return IsWellDefinedForObjects( Source( phi ) )
-                  and IsWellDefinedForObjects( Range( phi ) )
-                    and IsWellDefined( UnderlyingCell( phi ) );
+          return IsWellDefinedForObjects( cat, Source( phi ) ) and
+                 IsWellDefinedForObjects( cat, Range( phi ) ) and
+                 IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( phi ) );
                     
       end );
       
     fi;
     
     SetSetOfKnownObjects( full, List( L, obj -> AsSubcategoryCell( full, obj ) ) );
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return full;
-      
-    fi;
     
     Finalize( full );
     
