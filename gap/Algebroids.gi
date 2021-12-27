@@ -422,7 +422,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         return MorphismInAlgebroid( category, source, m, range );
         
-      end );
+    end );
     
     ##
     AddIsWellDefinedForObjects( category,
@@ -432,7 +432,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         return IsQuiverVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
         
-      end );
+    end );
     
     ##
     AddIsWellDefinedForMorphisms( category,
@@ -484,7 +484,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         # all tests passed, so it is well-defined
         return true;
         
-      end );
+    end );
     
     ##
     AddIsEqualForObjects( category,

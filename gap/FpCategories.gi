@@ -155,7 +155,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         return MorphismInFpCategory( source, m, range );
         
-      end );
+    end );
     
     ##
     AddIsWellDefinedForObjects( category,
@@ -165,7 +165,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         return IsQuiverVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
         
-      end );
+    end );
     
     ##
     AddIsWellDefinedForMorphisms( category,
@@ -217,7 +217,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         # all tests passed, so it is well-defined
         return true;
         
-      end );
+    end );
     
     ##
     AddIsEqualForObjects( category,
