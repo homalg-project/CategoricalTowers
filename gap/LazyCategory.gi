@@ -832,7 +832,7 @@ InstallMethod( LazyCategory,
                     Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
                 
-                result := List( BasisOfExternalHom( EvaluatedCell( a ), EvaluatedCell( b ) ),
+                result := List( BasisOfExternalHom( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ) ),
                                 mor -> AsMorphismInLazyCategory( a, mor, b ) );
                 
                 if show then
@@ -864,6 +864,7 @@ InstallMethod( LazyCategory,
                 fi;
                 
                 result := CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                                  UnderlyingCategory( D ),
                                   EvaluatedCell( alpha ),
                                   List( L, EvaluatedCell ) );
                 
