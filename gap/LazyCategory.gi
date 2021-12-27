@@ -29,8 +29,11 @@ InstallMethod( EvaluatedCell,
         Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", GenesisOfCellOperation( c ) );
     fi;
     
-    result := CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ), List( GenesisOfCellArguments( c ), EvaluatedCell ) );
-
+    result := CallFuncList( ValueGlobal( GenesisOfCellOperation( c ) ),
+                      Concatenation(
+                              [ UnderlyingCategory( C ) ],
+                              List( GenesisOfCellArguments( c ), EvaluatedCell ) ) );
+    
     if show then
         Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", GenesisOfCellOperation( c ), "\n" );
     else
@@ -405,7 +408,7 @@ InstallMethod( LazyCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, create_func_bool, create_func_object0, create_func_morphism0,
+    local name, create_func_bool,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, ignore, D, optimize,
@@ -425,52 +428,29 @@ InstallMethod( LazyCategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( D, arg... )
+            local eval_arg;
             
-            return CallFuncList( oper, List( arg, EvaluatedCell ) );
+            eval_arg := List( arg, EvaluatedCell );
+            
+            eval_arg := Concatenation( [ UnderlyingCategory( D ) ], eval_arg );
+            
+            return CallFuncList( oper, eval_arg );
             
         end;
         
     end;
     
-    ## e.g., ZeroObject
-    create_func_object0 :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( )
-            
-            return AsObjectInLazyCategory( D, oper( C ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., ZeroObjectFunctorial
-    create_func_morphism0 :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( D )
-            
-            return AsMorphismInLazyCategory( D, oper( UnderlyingCategory( D ) ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., DirectSum
+    ## e.g., ZeroObject, DirectSum
     create_func_object :=
       function( name, D )
         
         return ## a constructor for universal objects
-          function( arg )
+          function( D, arg... )
+            
+            if Length( arg ) = 0 then
+                return AsObjectInLazyCategory( D, ValueGlobal( name )( UnderlyingCategory( D ) ) );
+            fi;
             
             return AsObjectInLazyCategory( D, name, arg );
             
@@ -478,7 +458,7 @@ InstallMethod( LazyCategory,
           
       end;
     
-    ## e.g., IdentityMorphism, PreCompose
+    ## e.g., ZeroObjectFunctorial, IdentityMorphism, PreCompose
     create_func_morphism :=
       function( name, D )
         local type;
@@ -486,8 +466,12 @@ InstallMethod( LazyCategory,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function( D, arg... )
             local src_trg, S, T;
+            
+            if Length( arg ) = 0 then
+                return AsMorphismInLazyCategory( D, ValueGlobal( name )( UnderlyingCategory( D ) ) );
+            fi;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             S := src_trg[1];
@@ -513,7 +497,7 @@ InstallMethod( LazyCategory,
         type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
         
         return
-          function( arg )
+          function( D, arg... )
             local src_trg, S, T;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
@@ -590,6 +574,7 @@ InstallMethod( LazyCategory,
     
     D := CategoryConstructor( :
                  name := name,
+                 category_as_first_argument := true,
                  category_filter := IsLazyCapCategory,
                  category_object_filter := IsLazyCapCategoryObject,
                  category_morphism_filter := IsLazyCapCategoryMorphism,
@@ -598,8 +583,6 @@ InstallMethod( LazyCategory,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
-                 create_func_object0 := create_func_object0,
-                 create_func_morphism0 := create_func_morphism0,
                  create_func_object := create_func_object,
                  create_func_morphism := create_func_morphism,
                  create_func_universal_morphism := create_func_universal_morphism
@@ -614,16 +597,16 @@ InstallMethod( LazyCategory,
     if optimize > 0 then
         
         AddPreCompose( D,
-          function( phi, psi )
+          function( D, phi, psi )
             local composition;
 
-            if IsIdenticalToIdentityMorphism( psi ) then
+            if IsIdenticalToIdentityMorphism( D, psi ) then
                 
                 return phi;
                 
             fi;
             
-            if IsIdenticalToIdentityMorphism( phi ) then
+            if IsIdenticalToIdentityMorphism( D, phi ) then
                 
                 return psi;
                 
@@ -631,9 +614,9 @@ InstallMethod( LazyCategory,
             
             if CanCompute( D, "IsIdenticalToZeroMorphism" ) then
                 
-                if IsIdenticalToZeroMorphism( phi ) or IsIdenticalToZeroMorphism( psi ) then
+                if IsIdenticalToZeroMorphism( D, phi ) or IsIdenticalToZeroMorphism( D, psi ) then
                     
-                    return ZeroMorphism( Source( phi ), Range( psi ) );
+                    return ZeroMorphism( D, Source( phi ), Range( psi ) );
                     
                 fi;
                 
@@ -644,7 +627,7 @@ InstallMethod( LazyCategory,
         end );
         
         AddDirectSum( D,
-          function( arg )
+          function( D, arg... )
             
             if Length( arg[1] ) = 1 and IsCapCategoryObject( arg[1][1] ) then
                 return arg[1][1];
@@ -655,10 +638,10 @@ InstallMethod( LazyCategory,
         end );
         
         AddFiberProduct( D,
-          function( diagram )
+          function( D, diagram )
             local ess;
             
-            ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
             
             if IsEmpty( ess ) then
                 ess := [ diagram[1] ];
@@ -673,10 +656,10 @@ InstallMethod( LazyCategory,
         end );
         
         AddProjectionInFactorOfFiberProductWithGivenFiberProduct( D,
-          function( diagram, k, P )
+          function( D, diagram, k, P )
             local pos, mor;
             
-            pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
             
             if IsEmpty( pos ) then
                 pos := [ 1 ];
@@ -687,7 +670,7 @@ InstallMethod( LazyCategory,
                 mor := diagram[pos[1]];
                 
                 if k = pos[1] then
-                    return IdentityMorphism( Source( mor ) );
+                    return IdentityMorphism( D, Source( mor ) );
                 fi;
                 
                 return mor;
@@ -699,10 +682,10 @@ InstallMethod( LazyCategory,
         end );
         
         AddPushout( D,
-          function( diagram )
+          function( D, diagram )
             local ess;
             
-            ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
             
             if IsEmpty( ess ) then
                 ess := [ diagram[1] ];
@@ -717,10 +700,10 @@ InstallMethod( LazyCategory,
         end );
         
         AddInjectionOfCofactorOfPushoutWithGivenPushout( D,
-          function( diagram, k, I )
+          function( D, diagram, k, I )
             local pos, mor;
             
-            pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( m ) );
+            pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
             
             if IsEmpty( pos ) then
                 pos := [ 1 ];
@@ -731,7 +714,7 @@ InstallMethod( LazyCategory,
                 mor := diagram[pos[1]];
                 
                 if k = pos[1] then
-                    return IdentityMorphism( Range( mor ) );
+                    return IdentityMorphism( D, Range( mor ) );
                 fi;
                 
                 return mor;
@@ -765,19 +748,19 @@ InstallMethod( LazyCategory,
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
     
     AddIsEqualForObjects( D,
-      IsEqualForCells );
+      { D, a, b } -> IsEqualForCells( a, b ) );
     
     AddIsEqualForMorphisms( D,
-      IsEqualForCells );
+      { D, phi, psi } -> IsEqualForCells( phi, psi ) );
     
     AddIsEqualForCacheForObjects( D,
-      IsEqualForObjects );
+      { D, a, b } -> IsEqualForObjects( a, b ) );
     
     AddIsEqualForCacheForMorphisms( D,
-      IsEqualForCells );
+      { D, phi, psi } -> IsEqualForCells( phi, psi ) );
     
     AddIsEqualForMorphismsOnMor( D,
-      IsEqualForCells );
+      { D, phi, psi } -> IsEqualForCells( phi, psi ) );
     
     if CanCompute( C, "IsCongruentForMorphisms" ) then
         
@@ -787,9 +770,9 @@ InstallMethod( LazyCategory,
         
         ##
         AddIsCongruentForMorphisms( D,
-          function( phi, psi )
+          function( D, phi, psi )
             
-            return IsCongruentForMorphisms( EvaluatedCell( phi ), EvaluatedCell( psi ) );
+            return IsCongruentForMorphisms( UnderlyingCategory( D ), EvaluatedCell( phi ), EvaluatedCell( psi ) );
             
         end );
         
@@ -803,7 +786,7 @@ InstallMethod( LazyCategory,
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
-          function( r, phi )
+          function( D, r, phi )
             
             return AsMorphismInLazyCategory( Source( phi ), "MultiplyWithElementOfCommutativeRingForMorphisms", [ r, phi ], Range( phi ) );
             
@@ -834,30 +817,28 @@ InstallMethod( LazyCategory,
         
         if CanCompute( C, "BasisOfExternalHom" ) then
             AddBasisOfExternalHom( D,
-              function( a, b )
-                local C, show, count, result;
+              function( D, a, b )
+                local show, count, result;
                 
-                C := CapCategory( a );
+                show := D!.show_evaluation;
                 
-                show := C!.show_evaluation;
+                count := D!.evaluations + 1;
                 
-                count := C!.evaluations + 1;
-                
-                C!.evaluations := count;
+                D!.evaluations := count;
                 
                 if show then
-                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
                 
                 result := List( BasisOfExternalHom( EvaluatedCell( a ), EvaluatedCell( b ) ),
                                 mor -> AsMorphismInLazyCategory( a, mor, b ) );
                 
                 if show then
-                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "BasisOfExternalHom", "\n" );
+                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "BasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "BasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "BasisOfExternalHom" );
                 fi;
                 
                 return result;
@@ -867,21 +848,19 @@ InstallMethod( LazyCategory,
         
         if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
             AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
-              function( alpha, L )
-                local C, show, count, result;
+              function( D, alpha, L )
+                local show, count, result;
                 
-                C := CapCategory( alpha );
+                show := D!.show_evaluation;
                 
-                show := C!.show_evaluation;
+                count := D!.evaluations + 1;
                 
-                count := C!.evaluations + 1;
-                
-                C!.evaluations := count;
+                D!.evaluations := count;
                 
                 if show then
-                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
                 
                 result := CoefficientsOfMorphismWithGivenBasisOfExternalHom(
@@ -889,9 +868,9 @@ InstallMethod( LazyCategory,
                                   List( L, EvaluatedCell ) );
                 
                 if show then
-                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", C!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
                 fi;
                 
                 return result;
@@ -913,16 +892,16 @@ InstallMethod( LazyCategory,
             
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
-                  function( )
+                  function( D )
                     
-                    return AsObjectInLazyCategory( HC, DistinguishedObjectOfHomomorphismStructure( C ) );
+                    return AsObjectInLazyCategory( HC, DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( D ) ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnObjects" ) then
                 AddHomomorphismStructureOnObjects( D,
-                  function( a, b )
+                  function( D, a, b )
                     
                     return AsObjectInLazyCategory( HC, "HomomorphismStructureOnObjects", [ a, b ] );
                     
@@ -931,7 +910,7 @@ InstallMethod( LazyCategory,
             
             if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-                  function( s, alpha, beta, r )
+                  function( D, s, alpha, beta, r )
                     
                     return AsMorphismInLazyCategory( s, "HomomorphismStructureOnMorphismsWithGivenObjects", [ s, alpha, beta, r ], r );
                     
@@ -940,16 +919,16 @@ InstallMethod( LazyCategory,
             
             if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( alpha )
+                  function( D, alpha )
                     
-                    return AsMorphismInLazyCategory( DistinguishedObjectOfHomomorphismStructure( CapCategory( alpha ) ), "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure", [ alpha ], HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
+                    return AsMorphismInLazyCategory( DistinguishedObjectOfHomomorphismStructure( D ), "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure", [ alpha ], HomomorphismStructureOnObjects( D, Source( alpha ), Range( alpha ) ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-                  function( a, b, iota )
+                  function( D, a, b, iota )
                     
                     return AsMorphismInLazyCategory( a, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism", [ a, b, iota ], b );
                     
@@ -960,45 +939,45 @@ InstallMethod( LazyCategory,
             
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
-                  function( )
+                  function( D )
                     
-                    return DistinguishedObjectOfHomomorphismStructure( C );
+                    return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( D ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnObjects" ) then
                 AddHomomorphismStructureOnObjects( D,
-                  function( a, b )
+                  function( D, a, b )
                     
-                    return HomomorphismStructureOnObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
+                    return HomomorphismStructureOnObjects( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-                  function( s, alpha, beta, r )
+                  function( D, s, alpha, beta, r )
                     
-                    return HomomorphismStructureOnMorphismsWithGivenObjects( s, EvaluatedCell( alpha ), EvaluatedCell( beta ), r );
+                    return HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( D ), s, EvaluatedCell( alpha ), EvaluatedCell( beta ), r );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( alpha )
+                  function( D, alpha )
                     
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( EvaluatedCell( alpha ) );
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( D ), EvaluatedCell( alpha ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-                  function( a, b, iota )
+                  function( D, a, b, iota )
                     
-                    return AsMorphismInLazyCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( EvaluatedCell( a ), EvaluatedCell( b ), iota ) );
+                    return AsMorphismInLazyCategory( D, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( D ), EvaluatedCell( a ), EvaluatedCell( b ), iota ) );
                     
                 end );
             fi;
