@@ -150,10 +150,34 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
   function( category )
     
     ##
+    AddObjectConstructor( category,
+      function( category, v )
+        
+        return ObjectInFpCategory( category, v );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( category, o )
+        
+        return UnderlyingVertex( o );
+        
+    end );
+    
+    ##
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
         return MorphismInFpCategory( source, m, range );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( category, m )
+        
+        return UnderlyingQuiverAlgebraElement( m );
         
     end );
     
