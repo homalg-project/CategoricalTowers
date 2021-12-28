@@ -976,7 +976,7 @@ InstallMethodWithCache( FunctorCategory,
                     if IsInt( pos ) then
                         images_of_generating_morphisms[pos] := FmorB;
                     fi;
-
+                    
                     return FmorB;
                     
                 end );
