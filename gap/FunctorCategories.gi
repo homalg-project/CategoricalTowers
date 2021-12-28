@@ -830,7 +830,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, FmorB;
+                    local pos, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
@@ -838,12 +838,12 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
-                    FmorB := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
+                    L := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
                     
-                    FmorB := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
+                    L := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
 
                     FmorB := CallFuncList( functorial,
-                                     Concatenation( [ new_source ], FmorB, [ new_range ] ) );
+                                     Concatenation( [ new_source ], L, [ new_range ] ) );
                     
                     if IsInt( pos ) then
                         images_of_generating_morphisms[pos] := FmorB;
@@ -896,7 +896,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, FmorB;
+                    local pos, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
@@ -904,11 +904,10 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
+                    L := List( eval_arg, F -> ApplyCell( F, morB ) );
+                    
                     FmorB := CallFuncList( functorial,
-                                     Concatenation(
-                                             [ new_source ],
-                                             List( eval_arg, F -> ApplyCell( F, morB ) ),
-                                             [ new_range ] ) );
+                                     Concatenation( [ new_source ], L, [ new_range ] ) );
                     
                     if IsInt( pos ) then
                         images_of_generating_morphisms[pos] := FmorB;
@@ -961,7 +960,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, FmorB;
+                    local pos, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
@@ -969,11 +968,10 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
+                    L := Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) );
+                    
                     FmorB := CallFuncList( functorial,
-                                     Concatenation(
-                                             [ new_source ],
-                                             Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
-                                             [ new_range ] ) );
+                                     Concatenation( [ new_source ], L, [ new_range ] ) );
                     
                     if IsInt( pos ) then
                         images_of_generating_morphisms[pos] := FmorB;
