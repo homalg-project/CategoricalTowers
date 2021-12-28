@@ -812,7 +812,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddObjectFunction( F,
                   function ( objB )
-                    local pos;
+                    local pos, L;
                     
                     pos := Position( vertices, objB );
                     
@@ -821,7 +821,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
-                        images_of_objects[pos] := CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) );
+                        L := List( eval_arg, F -> ApplyCell( F, objB ) );
+                        images_of_objects[pos] := CallFuncList( oper, L );
                     fi;
                     
                     return images_of_objects[pos];
@@ -878,7 +879,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddObjectFunction( F,
                   function ( objB )
-                    local pos;
+                    local pos, L;
                     
                     pos := Position( vertices, objB );
                     
@@ -887,7 +888,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
-                        images_of_objects[pos] := CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) );
+                        L := List( eval_arg, F -> ApplyCell( F, objB ) );
+                        images_of_objects[pos] := CallFuncList( oper, L );
                     fi;
                     
                     return images_of_objects[pos];
@@ -942,7 +944,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddObjectFunction( F,
                   function ( objB )
-                    local pos;
+                    local pos, L;
                     
                     pos := Position( vertices, objB );
                     
@@ -951,7 +953,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
-                        images_of_objects[pos] := CallFuncList( oper, List( eval_arg, F -> ApplyCell( F, objB ) ) );
+                        L := List( eval_arg, F -> ApplyCell( F, objB ) );
+                        images_of_objects[pos] := CallFuncList( oper, L );
                     fi;
                     
                     return images_of_objects[pos];
