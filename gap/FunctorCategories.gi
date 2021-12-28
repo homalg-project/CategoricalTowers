@@ -312,6 +312,17 @@ end );
 
 ##
 InstallMethod( ApplyCell,
+        "for a CAP category and a CAP cell",
+        [ IsCapCategory, IsCapCategoryCell ],
+        
+  function ( C, cell )
+    
+    return C;
+    
+end );
+
+##
+InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP object",
         [ IsObjectInFunctorCategory, IsCapCategoryObject ],
         
@@ -691,13 +702,21 @@ InstallMethodWithCache( FunctorCategory,
         
         create_func_bool :=
           function ( name, Hom )
-            local oper;
-            
-            oper := ValueGlobal( name );
-            
-            return { Hom, F_or_eta } -> ForAll( ValuesOnAllObjects( F_or_eta ), oper );
-            
-        end;
+            return
+              """
+              function( input_arguments )
+                local L;
+                
+                L := [ input_arguments ];
+                
+                ## due to issue https://github.com/homalg-project/CAP_project/issues/802
+                ## the result is not saved if operation_name is called with Range( cat ) as first argument
+                
+                return ForAll( ValuesOnAllObjects( L[2] ), object -> operation_name( object ) );
+                
+              end
+              """;
+          end;
         
     else
         
@@ -708,19 +727,9 @@ InstallMethodWithCache( FunctorCategory,
     ## e.g., DirectSum, KernelObject
     create_func_object :=
       function ( name, Hom )
-        local B, C, vertices, arrows, name_of_object, info, oper, functorial, diagram;
-        
-        B := Source( Hom );
-        C := Range( Hom );
-        
-        vertices := SetOfObjects( B );
-        arrows := SetOfGeneratingMorphisms( B );
-        
-        name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+        local info, functorial, diagram;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        oper := ValueGlobal( name );
         
         if not IsBound( info.functorial ) then
             Error( "the method record entry ", name, ".functorial is not bound\n" );
@@ -756,27 +765,28 @@ InstallMethodWithCache( FunctorCategory,
         
         if diagram = "empty diagram" then
             
-            functorial := ValueGlobal( info.functorial );
-            
-        else
-            
-            # use the WithGiven version
-            functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
-            
-        fi;
-        
-        if diagram = "empty diagram" then
-            
             return ## a constructor for universal objects: TerminalObject
-              function ( Hom )
-                local F, objC, morC;
+              """
+              function ( input_arguments )
+                local B, C, name_of_object, name, info, functorial, F, objC, morC;
+                
+                B := Source( cat );
+                C := Range( cat );
+                
+                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                name := NAME_FUNC( operation_name );
+                
+                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+                
+                functorial := ValueGlobal( info.functorial );
                 
                 F := CapFunctor( name_of_object, B, C );
                 
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
-                objC := oper( C );
+                objC := operation_name( C );
                 
                 AddObjectFunction( F, objB -> objC );
                 
@@ -787,17 +797,34 @@ InstallMethodWithCache( FunctorCategory,
                     return morC;
                 end );
                 
-                return AsObjectInFunctorCategory( Hom, F );
+                return AsObjectInFunctorCategory( cat, F );
                 
-            end;
+              end
+              """;
             
         elif diagram = "multiple arrows" then
             
             return ## a constructor for universal objects: FiberProduct
-              function ( Hom, arg... )
-                local eval_arg, images_of_objects, images_of_generating_morphisms, F;
+              """
+              function ( input_arguments )
+                local B, C, vertices, arrows, name_of_object, name, info, functorial, F, images_of_objects, images_of_generating_morphisms;
                 
-                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                B := Source( cat );
+                C := Range( cat );
+                
+                vertices := SetOfObjects( B );
+                arrows := SetOfGeneratingMorphisms( B );
+                
+                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                name := NAME_FUNC( operation_name );
+                
+                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+                
+                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
+                
+                # use the WithGiven version
+                functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
                 
                 F := CapFunctor( name_of_object, B, C );
                 
@@ -821,8 +848,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
-                        L := List( eval_arg, F -> ApplyCell( F, objB ) );
-                        images_of_objects[pos] := CallFuncList( oper, L );
+                        L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
+                        images_of_objects[pos] := CallFuncList( operation_name, L );
                     fi;
                     
                     return images_of_objects[pos];
@@ -831,7 +858,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, L, FmorB;
+                    local pos, u_arg, l, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
@@ -839,10 +866,12 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
-                    L := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
+                    u_arg := [ underlying_arguments ];
                     
-                    L := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
-
+                    l := List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) )[1];
+                    
+                    L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
+                    
                     FmorB := CallFuncList( functorial,
                                      Concatenation( [ new_source ], L, [ new_range ] ) );
                     
@@ -854,17 +883,34 @@ InstallMethodWithCache( FunctorCategory,
                     
                 end );
                 
-                return AsObjectInFunctorCategory( Hom, F );
+                return AsObjectInFunctorCategory( cat, F );
                 
-            end;
+              end
+              """;
             
         elif diagram = "multiple objects" then
             
             return ## a constructor for universal objects: DirectSum
-              function ( Hom, arg... )
-                local eval_arg, images_of_objects, images_of_generating_morphisms, F;
+              """
+              function ( input_arguments )
+                local B, C, vertices, arrows, name_of_object, name, info, functorial, F, images_of_objects, images_of_generating_morphisms;
                 
-                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                B := Source( cat );
+                C := Range( cat );
+                
+                vertices := SetOfObjects( B );
+                arrows := SetOfGeneratingMorphisms( B );
+                
+                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                name := NAME_FUNC( operation_name );
+                
+                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+                
+                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
+                
+                # use the WithGiven version
+                functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
                 
                 F := CapFunctor( name_of_object, B, C );
                 
@@ -888,8 +934,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
-                        L := List( eval_arg, F -> ApplyCell( F, objB ) );
-                        images_of_objects[pos] := CallFuncList( oper, L );
+                        L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
+                        images_of_objects[pos] := CallFuncList( operation_name, L );
                     fi;
                     
                     return images_of_objects[pos];
@@ -898,7 +944,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, L, FmorB;
+                    local pos, u_arg, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
@@ -906,8 +952,12 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
-                    L := List( eval_arg, F -> ApplyCell( F, morB ) );
+                    u_arg := [ underlying_arguments ];
                     
+                    L := List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) );
+                    
+                    ## here we do not pass the category as first argument,
+                    ## because of the limitation on the number of arguments of an operation
                     FmorB := CallFuncList( functorial,
                                      Concatenation( [ new_source ], L, [ new_range ] ) );
                     
@@ -919,17 +969,34 @@ InstallMethodWithCache( FunctorCategory,
                     
                 end );
                 
-                return AsObjectInFunctorCategory( Hom, F );
+                return AsObjectInFunctorCategory( cat, F );
                 
-            end;
+              end
+              """;
             
         else
             
             return ## a constructor for universal objects: KernelObject
-              function ( Hom, arg... )
-                local eval_arg, images_of_objects, images_of_generating_morphisms, F;
+              """
+              function ( input_arguments )
+                local B, C, vertices, arrows, name_of_object, name, info, functorial, F, images_of_objects, images_of_generating_morphisms;
                 
-                eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
+                B := Source( cat );
+                C := Range( cat );
+                
+                vertices := SetOfObjects( B );
+                arrows := SetOfGeneratingMorphisms( B );
+                
+                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                name := NAME_FUNC( operation_name );
+                
+                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+                
+                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
+                
+                # use the WithGiven version
+                functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
                 
                 F := CapFunctor( name_of_object, B, C );
                 
@@ -953,8 +1020,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
-                        L := List( eval_arg, F -> ApplyCell( F, objB ) );
-                        images_of_objects[pos] := CallFuncList( oper, L );
+                        L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
+                        images_of_objects[pos] := CallFuncList( operation_name, L );
                     fi;
                     
                     return images_of_objects[pos];
@@ -963,7 +1030,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, L, FmorB;
+                    local pos, u_arg, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
@@ -971,8 +1038,12 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
-                    L := Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) );
+                    u_arg := [ underlying_arguments ];
                     
+                    L := Concatenation( List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) ) );
+                    
+                    ## here we do not pass the category as first argument,
+                    ## because of the limitation on the number of arguments of an operation
                     FmorB := CallFuncList( functorial,
                                      Concatenation( [ new_source ], L, [ new_range ] ) );
                     
@@ -984,9 +1055,10 @@ InstallMethodWithCache( FunctorCategory,
                     
                 end );
                 
-                return AsObjectInFunctorCategory( Hom, F );
+                return AsObjectInFunctorCategory( cat, F );
                 
-            end;
+            end
+            """;
             
         fi;
         
@@ -995,39 +1067,32 @@ InstallMethodWithCache( FunctorCategory,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
       function ( name, Hom )
-        local B, C, name_of_morphism, oper, type;
-        
-        B := Source( Hom );
-        C := Range( Hom );
-        
-        name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-        
-        oper := ValueGlobal( name );
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
         return
-          function ( Hom, arg... )
-            local src_trg, S, T, eval_arg, eta;
+          """
+          function ( input_arguments )
+            local B, C, name_of_morphism, eta;
             
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
+            B := Source( cat );
+            C := Range( cat );
             
-            S := UnderlyingCapTwoCategoryCell( src_trg[1] );
-            T := UnderlyingCapTwoCategoryCell( src_trg[2] );
+            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
             
-            eval_arg := List( arg, UnderlyingCapTwoCategoryCell );
-            
-            eta := NaturalTransformation( name_of_morphism, S, T );
+            eta := NaturalTransformation(
+                           name_of_morphism,
+                           UnderlyingCapTwoCategoryCell( top_source ),
+                           UnderlyingCapTwoCategoryCell( top_range ) );
             
             AddNaturalTransformationFunction( eta,
               function ( source, objB, range )
-                return CallFuncList( oper, List( eval_arg, F_or_eta -> ApplyCell( F_or_eta, objB ) ) );
-              end );
-              
-            return AsMorphismInFunctorCategory( Hom, eta );
+                
+                return CallFuncList( operation_name, List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) ) );
+                
+            end );
             
-        end;
-        
+            return AsMorphismInFunctorCategory( cat, eta );
+            
+          end
+          """;
     end;
     
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
@@ -1090,7 +1155,10 @@ InstallMethodWithCache( FunctorCategory,
                    list_of_operations_to_install := list_of_operations_to_install,
                    create_func_bool := create_func_bool,
                    create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism
+                   create_func_morphism := create_func_morphism,
+                   underlying_category_getter_string := "Range",
+                   underlying_object_getter_string := "( { cat, F } -> UnderlyingCapTwoCategoryCell( F ) )",
+                   underlying_morphism_getter_string := "( { cat, eta } -> UnderlyingCapTwoCategoryCell( eta ) )"
                    );
     
     if IsBound( C!.supports_empty_limits ) then
@@ -1106,6 +1174,44 @@ InstallMethodWithCache( FunctorCategory,
     
     SetSource( Hom, B );
     SetRange( Hom, C );
+    
+    ## this code should become obsolete with following feature request:
+    ## https://github.com/homalg-project/CAP_project/issues/801
+    if CanCompute( C, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
+        
+        ##
+        AddMorphismBetweenDirectSumsWithGivenDirectSums( Hom,
+          function ( Hom, S, diagram_S, M, diagram_T, T )
+            local B, C, name_of_morphism, eta;
+            
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            
+            eta := NaturalTransformation(
+                           name_of_morphism,
+                           UnderlyingCapTwoCategoryCell( S ),
+                           UnderlyingCapTwoCategoryCell( T ) );
+            
+            AddNaturalTransformationFunction( eta,
+              function ( source, objB, range )
+                
+                return MorphismBetweenDirectSumsWithGivenDirectSums(
+                               C,
+                               ApplyCell( S, objB ),
+                               List( diagram_S, Si -> ApplyCell( Si, objB ) ),
+                               List( M, row -> List( row, m -> ApplyCell( m, objB ) ) ),
+                               List( diagram_T, Ti -> ApplyCell( Ti, objB ) ),
+                               ApplyCell( T, objB ) );
+                
+            end );
+            
+            return AsMorphismInFunctorCategory( Hom, eta );
+            
+        end );
+        
+    fi;
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         

@@ -154,9 +154,15 @@ DeclareOperation( "ApplyCell",
         [ IsInt, IsCapCategoryCell ] );
 
 
+##
+DeclareOperation( "ApplyCell",
+        [ IsCapCategory, IsCapCategoryCell ] );
+
+
 #! @Description
-#!  Returns the values of the cell <A>c</A> (which is either a functor or a natural transformation)
-#!  on all objects of the source category.
+#!  Returns the values of the cell <A>c</A> in the functor category <A>Hom</A>
+#!  (which is either a functor or a natural transformation)
+#!  on all objects of the source category of <A>Hom</A>.
 #! @Arguments c
 #! @Returns a list
 DeclareOperation( "ValuesOnAllObjects",
