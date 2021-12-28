@@ -834,30 +834,22 @@ InstallMethodWithCache( FunctorCategory,
                     
                     pos := Position( arrows, morB );
                     
-                    if IsInt( pos ) then
-                        
-                        if not IsBound( images_of_generating_morphisms[pos] ) then
-                            
-                            FmorB := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
-                            
-                            FmorB := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
-                            
-                            images_of_generating_morphisms[pos] :=
-                              CallFuncList( functorial,
-                                      Concatenation( [ new_source ], FmorB, [ new_range ] ) );
-                            
-                        fi;
-                        
+                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
-                        
                     fi;
                     
                     FmorB := List( eval_arg, F -> ApplyCell( F, morB ) )[1];
                     
                     FmorB := List( [ 1 .. 4 ], i -> List( FmorB, mor -> mor[i] ) );
+
+                    FmorB := CallFuncList( functorial,
+                                     Concatenation( [ new_source ], FmorB, [ new_range ] ) );
                     
-                    return CallFuncList( functorial,
-                                   Concatenation( [ new_source ], FmorB, [ new_range ] ) );
+                    if IsInt( pos ) then
+                        images_of_generating_morphisms[pos] := FmorB;
+                    fi;
+                    
+                    return FmorB;
                     
                 end );
                 
@@ -908,28 +900,21 @@ InstallMethodWithCache( FunctorCategory,
                     
                     pos := Position( arrows, morB );
                     
-                    if IsInt( pos ) then
-                        
-                        if not IsBound( images_of_generating_morphisms[pos] ) then
-                            
-                            images_of_generating_morphisms[pos] :=
-                              CallFuncList( functorial,
-                                      Concatenation(
-                                              [ new_source ],
-                                              List( eval_arg, F -> ApplyCell( F, morB ) ),
-                                              [ new_range ] ) );
-                            
-                        fi;
-                        
+                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
-                        
                     fi;
                     
-                    return CallFuncList( functorial,
-                                   Concatenation(
-                                           [ new_source ],
-                                           List( eval_arg, F -> ApplyCell( F, morB ) ),
-                                           [ new_range ] ) );
+                    FmorB := CallFuncList( functorial,
+                                     Concatenation(
+                                             [ new_source ],
+                                             List( eval_arg, F -> ApplyCell( F, morB ) ),
+                                             [ new_range ] ) );
+                    
+                    if IsInt( pos ) then
+                        images_of_generating_morphisms[pos] := FmorB;
+                    fi;
+                    
+                    return FmorB;
                     
                 end );
                 
@@ -980,28 +965,21 @@ InstallMethodWithCache( FunctorCategory,
                     
                     pos := Position( arrows, morB );
                     
-                    if IsInt( pos ) then
-                        
-                        if not IsBound( images_of_generating_morphisms[pos] ) then
-                            
-                            images_of_generating_morphisms[pos] :=
-                              CallFuncList( functorial,
-                                   Concatenation(
-                                           [ new_source ],
-                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
-                                           [ new_range ] ) );
-                            
-                        fi;
-                        
+                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
-                        
                     fi;
                     
-                    return CallFuncList( functorial,
-                                   Concatenation(
-                                           [ new_source ],
-                                           Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
-                                           [ new_range ] ) );
+                    FmorB := CallFuncList( functorial,
+                                     Concatenation(
+                                             [ new_source ],
+                                             Concatenation( List( eval_arg, F -> ApplyCell( F, morB ) ) ),
+                                             [ new_range ] ) );
+                    
+                    if IsInt( pos ) then
+                        images_of_generating_morphisms[pos] := FmorB;
+                    fi;
+
+                    return FmorB;
                     
                 end );
                 
