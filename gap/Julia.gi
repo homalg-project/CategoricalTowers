@@ -22,12 +22,22 @@ InstallOtherMethod( Visualize,
         
   function( c )
     
-    if not IsRunningInJupyter( ) then
-        TryNextMethod( );
+    if IsRunningInJupyter( ) then
+        
+        Julia.Base.display(
+                Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
+                GAPToJulia( DotToSVG( DotVertexLabelledDigraph( c ) ) ) );
+        
+    elif IsRunningInPluto( ) then
+        
+        JuliaEvalString( "import PlutoUI" );
+        
+        return Julia.PlutoUI.Show(
+                       Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
+                       GAPToJulia( DotToSVG( DotVertexLabelledDigraph( c ) ) ) );
+        
     fi;
     
-    Julia.Base.display(
-            Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
-            GAPToJulia( DotToSVG( DotVertexLabelledDigraph( c ) ) ) );
+    TryNextMethod( );
     
 end );
