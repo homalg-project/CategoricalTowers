@@ -1654,7 +1654,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B )
     
-    return FunctorCategory( OppositeFpCategory( B ), RangeCategoryOfHomomorphismStructure( OppositeFpCategory( B ) ) );
+    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
     
 end );
 
