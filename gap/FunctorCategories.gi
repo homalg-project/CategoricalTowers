@@ -702,20 +702,25 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
-    local relations, name, create_func_bool, create_func_object, create_func_morphism,
+    local kq, A, relations, name, create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, preinstall, doc, prop, Hom,
-          vertices, arrows, kq;
+          properties, preinstall, doc, prop, Hom, vertices, arrows;
+    
+    kq := UnderlyingQuiverAlgebra( B );
     
     if IsFpCategory( B ) then
         relations := RelationsOfFpCategory( B );
+        A := kq;
+        if IsQuotientOfPathAlgebra( A ) then
+            A := PathAlgebra( A );
+        fi;
+        relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
     elif IsAlgebroid( B ) then
         relations := RelationsOfAlgebroid( B );
+        relations := List( relations, UnderlyingQuiverAlgebraElement );
     else
         Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
     fi;
-    
-    relations := List( relations, UnderlyingQuiverAlgebraElement );
     
     if HasName( B ) and HasName( C ) then
         name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
@@ -1293,24 +1298,48 @@ InstallMethodWithCache( FunctorCategory,
                            end );
             
           end );
-        
-        AddIsWellDefinedForObjects( Hom,
-          function ( Hom, F )
-            local C;
-            
-            C := Range( Hom );
-            
-            if not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
-                return false;
-            elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Range( m ) ), Range( F( m ) ) ) ) then
-                return false;
-            fi;
-            
-            F := UnderlyingCapTwoCategoryCell( F );
-            
-            return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
-            
-          end );
+          
+          if IsFpCategory( B ) then
+
+              AddIsWellDefinedForObjects( Hom,
+                function ( Hom, F )
+                  local C;
+                  
+                  C := Range( Hom );
+                  
+                  if not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
+                      return false;
+                  elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Range( m ) ), Range( F( m ) ) ) ) then
+                      return false;
+                  fi;
+                  
+                  F := UnderlyingCapTwoCategoryCell( F );
+                  
+                  return ForAll( relations, m -> IsCongruentForMorphisms( C, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
+                  
+              end );
+              
+          elif IsAlgebroid( B ) then
+              
+              AddIsWellDefinedForObjects( Hom,
+                function ( Hom, F )
+                  local C;
+                  
+                  C := Range( Hom );
+                  
+                  if not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
+                      return false;
+                  elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Range( m ) ), Range( F( m ) ) ) ) then
+                      return false;
+                  fi;
+                  
+                  F := UnderlyingCapTwoCategoryCell( F );
+                  
+                  return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
+                  
+              end );
+              
+        fi;
         
         AddIsEqualForObjects( Hom,
           function ( Hom, F, G )
@@ -1345,8 +1374,6 @@ InstallMethodWithCache( FunctorCategory,
           
     fi;
 
-    kq := UnderlyingQuiverAlgebra( B );
-    
     if IsFiniteDimensional( kq ) then
       
       ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY( Hom );
