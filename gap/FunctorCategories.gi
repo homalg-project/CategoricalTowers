@@ -1638,8 +1638,8 @@ InstallMethod( Hom,
 
 ##
 InstallMethodWithCache( PreSheaves,
-        "for two CAP categories",
-        [ IsCapCategory, IsCapCategory ],
+        "for a f.p. category and a CAP category",
+        [ IsFpCategory, IsCapCategory ],
         
   function ( B, C )
     
