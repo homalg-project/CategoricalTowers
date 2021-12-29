@@ -1093,6 +1093,12 @@ InstallMethodWithCache( FunctorCategory,
                    create_func_morphism := create_func_morphism
                    );
     
+    if IsBound( C!.supports_empty_limits ) then
+        
+        Hom!.supports_empty_limits := C!.supports_empty_limits;
+        
+    fi;
+    
     ## setting the cache comparison to IsIdenticalObj
     ## boosts the performance considerably
     AddIsEqualForCacheForObjects( Hom, { Hom, F, G } -> IsIdenticalObj( F, G ) );
