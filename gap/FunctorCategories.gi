@@ -409,7 +409,7 @@ end );
 
 ##
 InstallMethod( CallFuncList,
-        "for a CAP cell in a Hom-category and a list",
+        "for a cell in a functor category and a list",
         [ IsCellInFunctorCategory, IsList ],
         
   function ( F_or_eta, L )
@@ -420,7 +420,7 @@ end );
 
 ##
 InstallMethod( ValuesOnAllObjects,
-        "for a CAP object in a Hom-category",
+        "for an object in a functor category",
         [ IsObjectInFunctorCategory ],
         
   function ( F )
@@ -431,7 +431,7 @@ end );
 
 ##
 InstallMethod( ValuesOnAllGeneratingMorphisms,
-        "for a CAP object in a Hom-category",
+        "for an object in a functor category",
         [ IsObjectInFunctorCategory ],
         
   function ( F )
@@ -442,7 +442,7 @@ end );
 
 ##
 InstallMethod( ValuesOnAllObjects,
-        "for a CAP morphism in a Hom-category",
+        "for a morphism in a functor category",
         [ IsMorphismInFunctorCategory ],
         
   function ( eta )
