@@ -135,12 +135,18 @@ z := ZeroObject( H );
 #! <(1)->0; (t)->0x0>
 z( B.1 );
 #! <A vector space object over Q of dimension 0>
+z.1;
+#! <A vector space object over Q of dimension 0>
 z( B.t );
 #! <A morphism in Category of matrices over Q>
+z.t = z( B.t );
+#! true
 idz := IdentityMorphism( z );
 #! <(1)->0x0>
 idz( B.1 );
 #! <A zero, identity morphism in Category of matrices over Q>
+idz.1 = idz( B.1 );
+#! true
 DirectSum( z, z );
 #! <(1)->0; (t)->0x0>
 DirectSum( z, z ) = z;
@@ -193,10 +199,14 @@ IsWellDefined( W );
 #! Display some of the properties of this functor.
 
 #! @Example
-V( B.1 );
+V.1;
 #! <A vector space object over Q of dimension 3>
-V( B.t );
+V.1 = V( B.1 );
+#! true
+V.t;
 #! <A morphism in Category of matrices over Q>
+V.t = V( B.t );
+#! true
 Display( V( B.t ) );
 #! [ [  0,  1,  0 ],
 #!   [  0,  0,  1 ],

@@ -419,6 +419,32 @@ InstallMethod( CallFuncList,
 end );
 
 ##
+InstallMethod( \.,
+        "for an object in a functor category and positive integer",
+        [ IsObjectInFunctorCategory, IsPosInt ],
+        
+  function ( F, string_as_int )
+    
+    name := NameRNam( string_as_int );
+    
+    return ApplyCell( F, Source( F ).(name) );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a morphism in a functor category and positive integer",
+        [ IsMorphismInFunctorCategory, IsPosInt ],
+        
+  function ( eta, string_as_int )
+    
+    name := NameRNam( string_as_int );
+    
+    return ApplyCell( eta, Source( Source( eta ) ).(name) );
+    
+end );
+
+##
 InstallMethod( ValuesOnAllObjects,
         "for an object in a functor category",
         [ IsObjectInFunctorCategory ],
