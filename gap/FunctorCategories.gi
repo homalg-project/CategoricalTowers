@@ -1649,6 +1649,17 @@ end );
 
 ##
 InstallMethodWithCache( PreSheaves,
+        "for an algebroid and a CAP category",
+        [ IsAlgebroid, IsCapCategory and IsAbCategory ],
+        
+  function ( B, A )
+    
+    return FunctorCategory( OppositeAlgebroid( B ), A );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
         "for a CAP category",
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
