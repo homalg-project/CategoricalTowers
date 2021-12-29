@@ -19,12 +19,12 @@ InstallGlobalFunction( SimplicialCategoryTruncatedInDegree,
         F := FreeCategory( RightQuiver( "Delta(C0)[]" ) );
         return F;
     elif n = 1 then
-        F := FreeCategory( RightQuiver( "Delta(C0,C1)[s:C0->C1,t:C0->C1,id:C1->C0]" ) );
+        F := FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) );
         return F /
                [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
                  [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ] ];
     elif n = 2 then
-        F := FreeCategory( RightQuiver( "Delta(C0,C1,C2)[s:C0->C1,t:C0->C1,id:C1->C0,ps:C1->C2,pt:C1->C2,is:C2->C1,it:C2->C1,mu:C1->C2]" ) );
+        F := FreeCategory( RightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) );
         return F /
                [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
                  [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ],
