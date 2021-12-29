@@ -668,7 +668,7 @@ InstallMethodWithCache( FunctorCategory,
     local relations, name, create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, doc, prop, Hom,
-          vertices, arrows, kq, name_of_object;
+          vertices, arrows, kq;
     
     if IsFpCategory( B ) then
         relations := RelationsOfFpCategory( B );
@@ -1128,7 +1128,7 @@ InstallMethodWithCache( FunctorCategory,
             
             AddNaturalTransformationFunction( r_eta,
               function ( source, objB, range )
-                return MultiplyWithElementOfCommutativeRingForMorphisms( r, ApplyCell( eta, objB ) );
+                return MultiplyWithElementOfCommutativeRingForMorphisms( C, r, ApplyCell( eta, objB ) );
             end );
             
             return AsMorphismInFunctorCategory( Hom, r_eta );
@@ -1145,7 +1145,9 @@ InstallMethodWithCache( FunctorCategory,
         
         AddIsWellDefinedForMorphisms( Hom,
           function ( Hom, eta )
-            local S, T;
+            local C, S, T;
+            
+            C := Range( Hom );
             
             S := Source( eta );
             T := Range( eta );
@@ -1154,46 +1156,58 @@ InstallMethodWithCache( FunctorCategory,
                            function ( m )
                              return
                                IsEqualForMorphisms(
-                                       PreCompose( S( m ), eta( Range( m ) ) ),
-                                       PreCompose( eta( Source( m ) ), T( m ) ) );
+                                       PreCompose( C, S( m ), eta( Range( m ) ) ),
+                                       PreCompose( C, eta( Source( m ) ), T( m ) ) );
                            end );
             
           end );
-
+        
         AddIsWellDefinedForObjects( Hom,
           function ( Hom, F )
+            local C;
             
-            if not ForAll( arrows, m -> IsEqualForObjects( F( Source( m ) ), Source( F( m ) ) ) ) then
+            C := Range( Hom );
+            
+            if not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
                 return false;
-            elif not ForAll( arrows, m -> IsEqualForObjects( F( Range( m ) ), Range( F( m ) ) ) ) then
+            elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Range( m ) ), Range( F( m ) ) ) ) then
                 return false;
             fi;
             
             F := UnderlyingCapTwoCategoryCell( F );
             
-            return ForAll( relations, m -> IsZero( ApplyToQuiverAlgebraElement( F, m ) ) );
+            return ForAll( relations, m -> IsZeroForMorphisms( C, ApplyToQuiverAlgebraElement( F, m ) ) );
             
           end );
         
         AddIsEqualForObjects( Hom,
           function ( Hom, F, G )
+            local C;
             
-            return ForAll( vertices, o -> IsEqualForObjects( F( o ), G( o ) ) ) and
-                   ForAll( arrows, m -> IsEqualForMorphisms( F( m ), G( m ) ) );
+            C := Range( Hom );
+            
+            return ForAll( vertices, o -> IsEqualForObjects( C, F( o ), G( o ) ) ) and
+                   ForAll( arrows, m -> IsEqualForMorphisms( C, F( m ), G( m ) ) );
             
           end );
         
         AddIsEqualForMorphisms( Hom,
           function ( Hom, eta, epsilon )
+            local C;
             
-            return ForAll( vertices, o -> IsEqualForMorphisms( eta( o ), epsilon( o ) ) );
+            C := Range( Hom );
+            
+            return ForAll( vertices, o -> IsEqualForMorphisms( C, eta( o ), epsilon( o ) ) );
             
           end );
         
         AddIsCongruentForMorphisms( Hom,
           function ( Hom, eta, epsilon )
+            local C;
             
-            return ForAll( vertices, o -> IsCongruentForMorphisms( eta( o ), epsilon( o ) ) );
+            C := Range( Hom );
+            
+            return ForAll( vertices, o -> IsCongruentForMorphisms( C, eta( o ), epsilon( o ) ) );
             
           end );
           
@@ -1283,11 +1297,14 @@ InstallMethodWithCache( FunctorCategory,
             
         od;
         
-        name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-        
         AddTensorUnit( Hom,
           function ( Hom )
-            local I, I_C, counit, id;
+            local B, C, name_of_object, I, I_C, counit, id;
+            
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
             
             I := CapFunctor( name_of_object, B, C );
             
@@ -1300,7 +1317,7 @@ InstallMethodWithCache( FunctorCategory,
             
             counit := Counit( B );
             
-            id := IdentityMorphism( I_C );
+            id := IdentityMorphism( C, I_C );
             
             AddMorphismFunction( I,
               function ( new_source, morB, new_range )
@@ -1326,7 +1343,12 @@ InstallMethodWithCache( FunctorCategory,
           
         AddTensorProductOnObjects( Hom,
           function ( Hom, F, G )
-            local FG, comult;
+            local B, C, name_of_object, FG, comult;
+            
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
             
             FG := CapFunctor( name_of_object, B, C );
             
@@ -1334,7 +1356,7 @@ InstallMethodWithCache( FunctorCategory,
             DeactivateCachingObject( MorphismCache( FG ) );
             
             AddObjectFunction( FG,
-                    objB -> TensorProductOnObjects( F( objB ), G( objB ) ) );
+                    objB -> TensorProductOnObjects( C, F( objB ), G( objB ) ) );
             
             comult := Comultiplication( B );
             
@@ -1347,8 +1369,8 @@ InstallMethodWithCache( FunctorCategory,
                 Delta := DecompositionOfMorphismInSquareOfAlgebroid( Delta );
                 
                 return Sum( List( Delta,
-                               s -> s[1] * PreCompose( List( s[2],
-                                       t -> TensorProductOnMorphisms( F( t[1] ), G( t[2] ) ) ) ) ) );
+                               s -> s[1] * PreComposeList( C, List( s[2],
+                                       t -> TensorProductOnMorphisms( C, F( t[1] ), G( t[2] ) ) ) ) ) );
                 
               end );
             
@@ -1358,7 +1380,12 @@ InstallMethodWithCache( FunctorCategory,
           
         AddDualOnObjects( Hom,
           function ( Hom, F )
-            local Fd, antipode;
+            local B, C, name_of_object, Fd, antipode;
+            
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
             
             Fd := CapFunctor( name_of_object, B, C );
             
@@ -1366,7 +1393,7 @@ InstallMethodWithCache( FunctorCategory,
             DeactivateCachingObject( MorphismCache( Fd ) );
             
             AddObjectFunction( Fd,
-                    objB -> DualOnObjects( F( objB ) ) );
+                    objB -> DualOnObjects( C, F( objB ) ) );
             
             antipode := Antipode( B );
             
@@ -1379,8 +1406,8 @@ InstallMethodWithCache( FunctorCategory,
                 S := DecompositionOfMorphismInAlgebroid( S );
                 
                 return Sum( List( S,
-                               s -> s[1] * PreCompose( List( s[2],
-                                       t -> DualOnMorphisms( F( t ) ) ) ) ) );
+                               s -> s[1] * PreComposeList( C, List( s[2],
+                                       t -> DualOnMorphisms( C, F( t ) ) ) ) ) );
                 
               end );
             
@@ -1408,7 +1435,10 @@ InstallMethodWithCache( FunctorCategory,
         
         AddTensorUnit( Hom,
           function ( Hom )
-            local objects, morphisms;
+            local B, C, objects, morphisms;
+            
+            B := Source( Hom );
+            C := Range( Hom );
             
             objects := List( [ 1 .. Length( SetOfObjects( B ) ) ], i -> TensorUnit( C ) );
             morphisms := List( [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ], i -> IdentityMorphism( TensorUnit( C ) ) );
@@ -1419,7 +1449,9 @@ InstallMethodWithCache( FunctorCategory,
         
         AddTensorProductOnObjects( Hom,
           function ( Hom, F, G )
-            local objects, morphisms;
+            local B, objects, morphisms;
+            
+            B := Source( Hom );
             
             objects := ListN( ValuesOnAllObjects( F ), ValuesOnAllObjects( G ), TensorProductOnObjects );
             morphisms := ListN( ValuesOnAllGeneratingMorphisms( F ), ValuesOnAllGeneratingMorphisms( G ), TensorProductOnMorphisms );
