@@ -13,6 +13,10 @@ LoadPackage( "FunctorCategories" );
 
 quivers_quiver := RightQuiver( "q(V,E)[s:V->E,t:V->E]" );
 F := FreeCategory( quivers_quiver );
+
+N := NerveTruncatedInDegree2( F );
+Assert( 0, IsWellDefined( N ) );
+
 Quivers := PreSheaves( F, FinSets );
 Fop := Source( Quivers );
 Y := YonedaEmbedding( F );

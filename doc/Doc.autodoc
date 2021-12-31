@@ -1,6 +1,6 @@
 @Chapter Categories of functors
 
-@Section Introduction
+@Section Introduction and examples
 
 @Subsection Representations of the cyclic groups of order 3 as a category of functors
 
@@ -13,3 +13,13 @@
 @Subsection The category of equivariant maps as a category of functors
 
 @InsertChunk C3C3
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories

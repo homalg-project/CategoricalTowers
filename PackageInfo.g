@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2021.12-08",
+Version := "2021.12-09",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -22,7 +22,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "https://mohamed-barakat.github.io",
+    WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
