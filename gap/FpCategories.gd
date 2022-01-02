@@ -218,11 +218,6 @@ DeclareAttribute( "Parity",
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
-DeclareAttribute( "DecompositionOfMorphismInFpCategory",
-        IsMorphismInFpCategory );
-
-DeclareAttribute( "DecompositionOfMorphismInSquareOfFpCategory",
-        IsMorphismInFpCategory );
 
 ####################################
 #
