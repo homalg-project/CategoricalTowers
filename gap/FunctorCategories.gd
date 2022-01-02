@@ -229,6 +229,15 @@ DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory ] );
 
 #! @Description
+#!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
+#!  The output the full subcategory of the subcategory of functors from the
+#!  <C>SimplicialCategoryTruncatedInDegree</C>(2) into <A>C</A>
+#!  for which each such functor is the nerve truncated in degree $2$ of a category internal to <A>C</A>.
+#! @Arguments C
+DeclareAttribute( "CategoryOfInternalCategories",
+        IsCapCategory );
+
+#! @Description
 #!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>H</A> := Hom( <A>B</A>, C )</C>.
 #! @Arguments H, F
 #! @Returns an object in a &CAP; category

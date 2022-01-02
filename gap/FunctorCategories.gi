@@ -1696,6 +1696,67 @@ InstallMethodWithCache( PreSheaves,
     
 end );
 
+##
+InstallMethod( CategoryOfInternalCategories,
+        "for a CAP category",
+        [ IsCapCategory ],
+        
+  function ( C )
+    local Delta2, sC, membership_function;
+    
+    Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
+    
+    sC := PreSheaves( Delta2, C );
+    
+    membership_function :=
+      function ( IntCat, nerve )
+        local N, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2, DC3, C3, p12, p23, mux1, 1xmu;
+        
+        N := UnderlyingCell( nerve );
+        
+        DC1xC1 := [ N.s, N.t ];
+        
+        C1xC1 := FiberProduct( DC1xC1 );
+        
+        C2_C1xC1 := UniversalMorphismIntoFiberProduct( DC1xC1, [ N.pt, N.ps ] );
+        
+        if not IsIsomorphism( C2_C1xC1 ) then
+            return false;
+        fi;
+        
+        C1xC1_C2 := Inverse( C2_C1xC1 );
+        
+        DC3 := [ N.ps, N.pt ];
+        
+        C3 := FiberProduct( DC3 );
+        
+        p12 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( DC3, 2, C3 );
+        p23 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( DC3, 1, C3 );
+        
+        mux1 := PreCompose(
+                        UniversalMorphismIntoFiberProductWithGivenFiberProduct(
+                                DC1xC1,
+                                C3,
+                                [ PreCompose( p23, N.pt ), PreCompose( p12, N.mu ) ],
+                                C1xC1 ),
+                        C1xC1_C2 );
+        
+        1xmu := PreCompose(
+                        UniversalMorphismIntoFiberProductWithGivenFiberProduct(
+                                DC1xC1,
+                                C3,
+                                [ PreCompose( p23, N.mu ), PreCompose( p12, N.ps ) ],
+                                C1xC1 ),
+                        C1xC1_C2 );
+        
+        return IsCongruentForMorphisms( PreCompose( 1xmu, N.mu ), PreCompose( mux1, N.mu ) );
+        
+    end;
+    
+    return FullSubcategoryByObjectMembershipFunction( sC, membership_function );
+    
+end );
+
 ####################################
 #
 # Methods for attributes
