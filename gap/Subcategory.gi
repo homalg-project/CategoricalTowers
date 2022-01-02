@@ -99,57 +99,8 @@ InstallMethod( Subcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, is_full, is_additive, skip, func, pos, commutative_ring,
+    local list_of_operations_to_install, is_full, is_additive, skip, func, pos, commutative_ring,
           category_object_filter, category_morphism_filter, category_filter, properties, D;
-    
-    ## e.g., IsSplitEpimorphism
-    create_func_bool :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
-    
-    ## e.g., DirectSum
-    create_func_object :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return ## a constructor for universal objects
-          function( cat, arg... )
-            
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
-            
-          end;
-          
-      end;
     
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
     
@@ -219,9 +170,13 @@ InstallMethod( Subcategory,
                  commutative_ring := commutative_ring,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
+                 create_func_bool := "default",
+                 create_func_object := "default",
+                 create_func_morphism := "default",
+                 create_func_morphism_or_fail := "default",
+                 underlying_category_getter_string := "AmbientCategory",
+                 underlying_object_getter_string := "( { cat, object } -> UnderlyingCell( object ) )",
+                 underlying_morphism_getter_string := "( { cat, morphism } -> UnderlyingCell( morphism ) )",
                  category_as_first_argument := true
                  );
     
