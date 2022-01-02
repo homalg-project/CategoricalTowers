@@ -239,8 +239,6 @@ InstallMethod( AsFpCategory,
     
     fpC := Category( q, relations );
     
-    SetUnderlyingCategory( fpC, C );
-    
     return fpC;
     
 end );
