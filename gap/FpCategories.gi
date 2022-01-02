@@ -467,7 +467,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
 end );
 
 ##
-InstallMethod( Category,
+InstallMethodWithCache( Category,
         "for a QPA quiver algebra",
         [ IsQuiverAlgebra ],
         
