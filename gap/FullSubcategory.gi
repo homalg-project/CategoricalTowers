@@ -204,6 +204,41 @@ InstallMethod( \[\],
   { full, i } -> SetOfKnownObjects( full )[ i ]
 );
 
+##
+InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
+  function( C, membership_func )
+    local name, full;
+    
+    name := ValueOption( "name_of_full_subcategory" );
+    
+    if name = fail then
+        
+        name := Name( C );
+        
+        name := Concatenation( "FullSubcategoryByObjectMembershipFunction( ", name, ", ObjectMembershipFunction )" );
+        
+    fi;
+    
+    full := FullSubcategory( C, name : FinalizeCategory := false );
+    
+    SetFilterObj( full, IsCapFullSubcategoryDefinedByObjectMembershipFunction );
+    
+    full!.ObjectMembershipFunction := membership_func;
+    
+    ##
+    AddIsWellDefinedForObjects( full,
+      function( cat, a )
+        
+        return cat!.ObjectMembershipFunction( cat, a );
+        
+    end );
+    
+    Finalize( full );
+    
+    return full;
+    
+end );
+
 ##################################
 ##
 ## View & Display

@@ -23,6 +23,11 @@ DeclareCategory( "IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects",
         IsCapFullSubcategory );
 
 #! @Description
+#!  The &GAP; category of a full subcategory defined by an object-membership function.
+DeclareCategory( "IsCapFullSubcategoryDefinedByObjectMembershipFunction",
+        IsCapFullSubcategory );
+
+#! @Description
 #!  The &GAP; category of cells in a full subcategory.
 DeclareCategory( "IsCapCategoryCellInAFullSubcategory",
         IsCapCategoryCellInASubcategory );
@@ -67,3 +72,10 @@ DeclareGlobalFunction( "FullSubcategoryGeneratedByListOfObjects" );
 
 DeclareOperation( "\[\]",
           [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ] );
+
+#! @Description
+#!  The input is a category <A>C</A> and an object membership function <A>membership_func</A>.
+#!  The output is the full subcategory of <A>C</A> determined by <A>membership_func</A>.
+#! @Arguments C, membership_func
+#! @Returns CapFullSubcategory
+DeclareGlobalFunction( "FullSubcategoryByObjectMembershipFunction" );
