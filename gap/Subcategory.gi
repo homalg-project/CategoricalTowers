@@ -7,6 +7,12 @@
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY,
   [
+   "IsEqualForObjects",
+   "IsEqualForMorphisms",
+   "IsCongruentForMorphisms",
+   "IsEqualForCacheForObjects",
+   "IsEqualForCacheForMorphisms",
+   #
    "IdentityMorphism",
    "IsEndomorphism",
    "IsIdempotent",
@@ -93,61 +99,18 @@ InstallMethod( Subcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, D, is_additive;
-    
-    ## e.g., IsSplitEpimorphism
-    create_func_bool :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
-    
-    ## e.g., DirectSum
-    create_func_object :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return ## a constructor for universal objects
-          function( cat, arg... )
-            
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return AsSubcategoryCell( D, CallFuncList( oper, Concatenation( [ AmbientCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
-            
-          end;
-          
-      end;
+    local list_of_operations_to_install, is_full, is_additive, skip, func, pos, commutative_ring,
+          category_object_filter, category_morphism_filter, category_filter, properties, D;
     
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
     
+    is_full := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_full", false );
+    
     is_additive := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_additive", false );
+    
+    if IsIdenticalObj( is_full, true ) then
+        Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY );
+    fi;
     
     if IsIdenticalObj( is_additive, true ) then
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
@@ -173,10 +136,23 @@ InstallMethod( Subcategory,
         commutative_ring := fail;
     fi;
     
-    properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
-                    #"IsAbCategory", cannot be inherited
-                    #"IsLinearCategoryOverCommutativeRing", cannot be inherited
-                    ];
+    if is_full then
+        category_object_filter := IsCapCategoryObjectInAFullSubcategory;
+        category_morphism_filter := IsCapCategoryMorphismInAFullSubcategory;
+        category_filter := IsCapFullSubcategory;
+        properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
+                        "IsAbCategory",
+                        "IsLinearCategoryOverCommutativeRing"
+                        ];
+    else
+        category_object_filter := IsCapCategoryObjectInASubcategory;
+        category_morphism_filter := IsCapCategoryMorphismInASubcategory;
+        category_filter := IsCapSubcategory;
+        properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
+                        #"IsAbCategory", cannot be inherited
+                        #"IsLinearCategoryOverCommutativeRing", cannot be inherited
+                        ];
+    fi;
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
@@ -188,52 +164,41 @@ InstallMethod( Subcategory,
     
     D := CategoryConstructor( :
                  name := name,
-                 category_object_filter := IsCapCategoryObjectInASubcategory,
-                 category_morphism_filter := IsCapCategoryMorphismInASubcategory,
-                 category_filter := IsCapSubcategory,
+                 category_object_filter := category_object_filter,
+                 category_morphism_filter := category_morphism_filter,
+                 category_filter := category_filter,
                  commutative_ring := commutative_ring,
                  properties := properties,
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
+                 create_func_bool := "default",
+                 create_func_object := "default",
+                 create_func_morphism := "default",
+                 create_func_morphism_or_fail := "default",
+                 underlying_category_getter_string := "AmbientCategory",
+                 underlying_object_getter_string := "( { cat, object } -> UnderlyingCell( object ) )",
+                 underlying_morphism_getter_string := "( { cat, morphism } -> UnderlyingCell( morphism ) )",
                  category_as_first_argument := true
                  );
     
+    D!.compiler_hints := rec(
+        category_attribute_names := [
+            "AmbientCategory",
+        ],
+    );
+    
     SetAmbientCategory( D, C );
     
-    AddIsEqualForObjects( D,
-      function( cat, a, b )
+    AddObjectConstructor( D,
+      function( cat, obj )
         
-        return IsEqualForObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
-        
-    end );
-    
-    AddIsEqualForMorphisms( D,
-      function( cat, phi, psi )
-        
-        return IsEqualForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        return AsSubcategoryCell( cat, obj );
         
     end );
     
-    AddIsCongruentForMorphisms( D,
-      function( cat, phi, psi )
+    AddMorphismConstructor( D,
+      function( cat, source, mor, range )
         
-        return IsCongruentForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
-        
-    end );
-    
-    AddIsEqualForCacheForObjects( D,
-      function( cat, a, b )
-        
-        return IsEqualForCacheForObjects( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
-        
-    end );
-    
-    AddIsEqualForCacheForMorphisms( D,
-      function( cat, phi, psi )
-        
-        return IsEqualForCacheForMorphisms( AmbientCategory( cat ), UnderlyingCell( psi ), UnderlyingCell( phi ) );
+        return AsSubcategoryCell( source, mor, range );
         
     end );
     

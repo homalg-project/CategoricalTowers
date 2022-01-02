@@ -55,10 +55,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEG
 #
 ####################################
 
-DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_FULL_SUBCATEGORY" );
-
-DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FULL_SUBCATEGORY" );
-
+#! @Arguments C, name
 DeclareOperation( "FullSubcategory",
                   [ IsCapCategory, IsString ] );
 

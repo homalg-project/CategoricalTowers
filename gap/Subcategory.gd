@@ -80,15 +80,19 @@ DeclareAttribute( "AmbientCategory",
 #
 ####################################
 
+#! @Arguments C, name
 DeclareOperation( "Subcategory",
                   [ IsCapCategory, IsString ] );
 
+#! @Arguments D, c
 DeclareOperation( "AsSubcategoryCell",
                   [ IsCapSubcategory, IsCapCategoryCell ] );
 
+#! @Arguments source, mor, range
 DeclareOperation( "AsSubcategoryCell",
                   [ IsCapCategoryObjectInASubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInASubcategory ] );
 
+#! @Arguments c, D
 DeclareOperation( "\/",
                 [ IsCapCategoryCell, IsCapSubcategory ] );
 
