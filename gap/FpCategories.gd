@@ -13,12 +13,12 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of objects in an algebroid.
+#!  The &GAP; category of objects in a finitely presented category.
 DeclareCategory( "IsObjectInFpCategory",
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in an algebroid.
+#!  The &GAP; category of morphisms in a finitely presented category.
 DeclareCategory( "IsMorphismInFpCategory",
         IsCapCategoryMorphism );
 
@@ -183,28 +183,28 @@ DeclareAttribute( "Antipode",
         IsFpCategory );
 
 #! @Description
-#!  The vertex of the quiver underlying the object <A>obj</A> in an algebroid.
+#!  The vertex of the quiver underlying the object <A>obj</A> in a finitely presented category.
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
         IsObjectInFpCategory );
 
 #! @Description
-#!  The quiver algebra element underlying the morphism <A>mor</A> in an algebroid.
+#!  The quiver algebra element underlying the morphism <A>mor</A> in a finitely presented category.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInFpCategory );
 
 #! @Description
-#!  The underlying algebra of an algebroid.
+#!  The underlying algebra of the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a ring
 DeclareAttribute( "UnderlyingAlgebra",
         IsFpCategory );
 
 #! @Description
-#!  The parity of an algebroid.
+#!  The parity of the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a string ("left" or "right")
 DeclareAttribute( "Parity",
@@ -218,11 +218,17 @@ DeclareAttribute( "Parity",
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
-DeclareAttribute( "DecompositionOfMorphismInFpCategory",
-        IsMorphismInFpCategory );
-
-DeclareAttribute( "DecompositionOfMorphismInSquareOfFpCategory",
-        IsMorphismInFpCategory );
+#! @Description
+#!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
+#!  with values in the skeletal category <C>SkeletalFinSets</C> of finite sets.
+#!  The output is the nerve of <A>B</A> truncated in degree $2$,
+#!  as a presheaf on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
+#!  with values in <C>SkeletalFinSets</C>.
+#! @Arguments C
+#! @Returns a &CAP; functor
+DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
+        IsFpCategory );
+#! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
 ####################################
 #
