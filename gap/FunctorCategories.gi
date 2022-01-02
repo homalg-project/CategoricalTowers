@@ -723,9 +723,9 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     if HasName( B ) and HasName( C ) then
-        name := Concatenation( "The category of functors: ", Name( B ), " -> ", Name( C ) );
+        name := Concatenation( "FunctorCategory( ", Name( B ), " -> ", Name( C ), " )" );
     else
-        name := Concatenation( "Category of functors" );
+        name := Concatenation( "FunctorCategory( ... -> ... )" );
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
