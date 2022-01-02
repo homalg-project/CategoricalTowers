@@ -218,6 +218,17 @@ DeclareAttribute( "Parity",
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
+#! @Description
+#!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
+#!  with values in the skeletal category <C>SkeletalFinSets</C> of finite sets.
+#!  The output is the nerve of <A>B</A> truncated in degree $2$,
+#!  as a presheaf on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
+#!  with values in <C>SkeletalFinSets</C>.
+#! @Arguments C
+#! @Returns a &CAP; functor
+DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
+        IsFpCategory );
+#! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
 ####################################
 #
