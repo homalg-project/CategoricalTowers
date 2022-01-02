@@ -55,6 +55,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEG
 #
 ####################################
 
+#! @Arguments C, name
 DeclareOperation( "FullSubcategory",
                   [ IsCapCategory, IsString ] );
 
