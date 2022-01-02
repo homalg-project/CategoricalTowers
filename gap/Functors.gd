@@ -42,8 +42,8 @@ DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsFunctorCat
 DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 
 #! @Description
-#!  The input is a category <A>B</A>with finitely many objects and a homomorphism structure
-#!  with values in a finite complete and finite cocomplete category <A>H</A>.
+#!  The input is a category <A>B</A> with finitely many objects equipped with
+#!  a homomorphism structure with values in a finite complete and finite cocomplete category <A>H</A>.
 #!  The output is the nerve of <A>B</A> truncated in degree $2$,
 #!  as an object in the category of presheaves on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
 #!  with values in <A>H</A>.
