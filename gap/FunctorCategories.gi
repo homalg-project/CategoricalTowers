@@ -1765,8 +1765,8 @@ end );
 
 ##
 InstallMethod( IndecProjectiveObjects,
-          [ IsFunctorCategory ],
-          
+        [ IsFunctorCategory ],
+        
   function ( Hom )
     local A;
     
@@ -1784,7 +1784,8 @@ end );
 
 ##
 InstallMethod( IndecInjectiveObjects,
-          [ IsFunctorCategory ],
+        [ IsFunctorCategory ],
+        
   function ( Hom )
     local A;
     
@@ -1802,8 +1803,8 @@ end );
 
 ##
 InstallMethod( SimpleObjects,
-          [ IsFunctorCategory ],
-          
+        [ IsFunctorCategory ],
+        
   function ( Hom )
     local A;
     
