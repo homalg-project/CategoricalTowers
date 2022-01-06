@@ -195,18 +195,10 @@ end );
 
 ##
 InstallMethod( YonedaEmbedding,
-        [ IsCapCategory ],
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, B_op, objs, mors, H, functors_cat, name, Yoneda;
-    
-    if IsFpCategory( B ) then
-        B_op := OppositeFpCategory( B );
-    elif IsAlgebroid( B ) then
-        B_op := OppositeAlgebroid( B );
-    else
-        Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
-    fi;
+    local A, PSh, B_op, objs, mors, name, Yoneda;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -216,29 +208,25 @@ InstallMethod( YonedaEmbedding,
         
     fi;
     
-    objs := SetOfObjects( B_op );
+    PSh := PreSheaves( B );
     
-    mors := SetOfGeneratingMorphisms( B_op );
+    B_op := Source( PSh );
     
-    H := RangeCategoryOfHomomorphismStructure( B_op );
+    objs := SetOfObjects( B );
     
-    functors_cat := Hom( B_op, H );
+    mors := SetOfGeneratingMorphisms( B );
     
     name := "Yoneda embedding functor";
     
-    Yoneda := CapFunctor( name, B, functors_cat );
+    Yoneda := CapFunctor( name, B, PSh );
     
     AddObjectFunction( Yoneda,
-      function ( o )
-        local m, Yo;
+      function ( obj )
+        local Yo;
         
-        o := OppositePath( UnderlyingVertex( o ) ) / B_op;
-        
-        m := List( mors, mor -> HomStructure( o, mor ) );
-        
-        o := List( objs, obj -> HomStructure( o, obj ) );
-        
-        Yo := AsObjectInFunctorCategory( B_op, o, m );
+        Yo := AsObjectInFunctorCategory( B_op,
+                      List( objs, o -> HomStructure( o, obj ) ),
+                      List( mors, m -> HomStructure( m, obj ) ) );
         
         SetIsProjective( Yo, true );
         
@@ -247,17 +235,12 @@ InstallMethod( YonedaEmbedding,
     end );
     
     AddMorphismFunction( Yoneda,
-      function ( s, m, r )
+      function ( s, mor, r )
         
-        m := MorphismConstructor(
-                OppositePath( UnderlyingVertex( Range( m ) ) ) / B_op,
-                OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ),
-                OppositePath( UnderlyingVertex( Source( m ) ) ) / B_op
-              );
-        
-        m := List( objs, o -> HomStructure( m, o ) );
-        
-        return AsMorphismInFunctorCategory( s, m, r );
+        return AsMorphismInFunctorCategory(
+                       s,
+                       List( objs, o -> HomStructure( o, mor ) ),
+                       r );
         
     end );
     
