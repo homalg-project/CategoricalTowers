@@ -1289,7 +1289,9 @@ InstallMethodWithCache( FunctorCategory,
             S := Source( eta );
             T := Range( eta );
             
-            return ForAll( arrows,
+            return
+              ForAll( vertices, o -> IsWellDefinedForMorphisms( C, eta( o ) ) ) and
+              ForAll( arrows,
                            function ( m )
                              return
                                IsEqualForMorphisms(
@@ -1307,7 +1309,11 @@ InstallMethodWithCache( FunctorCategory,
                   
                   C := Range( Hom );
                   
-                  if not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
+                  if not ForAll( vertices, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                      return false;
+                  elif not ForAll( arrows, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                      return false;
+                  elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
                       return false;
                   elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Range( m ) ), Range( F( m ) ) ) ) then
                       return false;
@@ -1327,7 +1333,11 @@ InstallMethodWithCache( FunctorCategory,
                   
                   C := Range( Hom );
                   
-                  if not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
+                  if not ForAll( vertices, o -> IsWellDefinedForObjects( C, F( o ) ) ) then
+                      return false;
+                  elif not ForAll( arrows, m -> IsWellDefinedForMorphisms( C, F( m ) ) ) then
+                      return false;
+                  elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Source( m ) ), Source( F( m ) ) ) ) then
                       return false;
                   elif not ForAll( arrows, m -> IsEqualForObjects( C, F( Range( m ) ), Range( F( m ) ) ) ) then
                       return false;
