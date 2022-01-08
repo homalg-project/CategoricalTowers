@@ -1289,11 +1289,11 @@ InstallMethod( OppositeFpCategory,
 end );
 
 ##
-InstallMethod( YonedaCompositionAsNaturalEpimorphism,
+InstallMethod( YonedaNaturalEpimorphisms,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, N1, N2, mu;
+    local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, N1, N2, pt, mu;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -1374,6 +1374,18 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
                                                                 HomStructure( b, psi ) ] ) ) ) ) ) ),
                   H );
     
+    pt := NaturalTransformation(
+                  N2,
+                  List( [ 1 .. o ],
+                        c -> CoproductFunctorial(
+                                List( [ 1 .. o ],
+                                      b -> UniversalMorphismFromCoproduct(
+                                              List( [ 1 .. o ],
+                                                    a -> ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ),
+                  N1 );
+    
+    SetIsEpimorphism( pt, true );
+    
     mu := NaturalTransformation(
                   N2,
                   List( [ 1 .. o ],
@@ -1386,7 +1398,27 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
     
     SetIsEpimorphism( mu, true );
     
-    return mu;
+    return [ pt, mu ];
+    
+end );
+
+##
+InstallMethod( YonedaProjectionAsNaturalEpimorphism,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    
+    return YonedaNaturalEpimorphisms( B )[1];
+    
+end );
+
+##
+InstallMethod( YonedaCompositionAsNaturalEpimorphism,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    
+    return YonedaNaturalEpimorphisms( B )[2];
     
 end );
 
