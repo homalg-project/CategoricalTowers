@@ -256,6 +256,14 @@ DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
         IsFpCategory );
 #! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
+#! @Description
+#!  Return the functor of sieves from <C>OppositeFpCategory</C>( <A>B</A> )
+#!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "SieveFunctor", IsFpCategory );
+#! @InsertChunk SieveFunctor
+
 ####################################
 #
 #! @Section Operations

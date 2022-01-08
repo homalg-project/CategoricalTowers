@@ -1639,6 +1639,85 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     
 end );
 
+##
+InstallMethod( SieveFunctor,
+        [ IsFpCategory ],
+        
+  function ( B )
+    local Bop, H, Ymu, Ypt, mors, sieves, Sieves_objects, Sieves_morphisms;
+    
+    Bop := OppositeFpCategory( B );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    Ypt := YonedaProjectionAsNaturalEpimorphism( B );
+    Ymu := YonedaCompositionAsNaturalEpimorphism( B );
+    
+    mors := SetOfGeneratingMorphisms( B );
+    
+    sieves :=
+      function ( c )
+        local pt_c, mu_c, hom_c, H, D, Omega, power, action;
+        
+        pt_c := Ypt( c );
+        
+        mu_c := Ymu( c );
+        
+        hom_c := Range( mu_c );
+        
+        H := CapCategory( hom_c );
+        
+        D := DistinguishedObjectOfHomomorphismStructure( H );
+        
+        Omega := SubobjectClassifier( H );
+        
+        power := HomStructure( hom_c, Omega );
+        
+        action :=
+          MapOfFinSets(
+                  power,
+                  List( power,
+                        i ->
+                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                                ClassifyingMorphismOfSubobject(
+                                        ImageEmbedding(
+                                                PreCompose(
+                                                        ProjectionInFactorOfFiberProduct(
+                                                                [ pt_c,
+                                                                  SubobjectOfClassifyingMorphism(
+                                                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                                                  hom_c,
+                                                                                  Omega,
+                                                                                  MapOfFinSets( D, [ i ], power ) ) )
+                                                                  ], 1 ),
+                                                        mu_c ) ) ) )( 1 ) ),
+                  power );
+        
+        return EmbeddingOfEqualizer( [ action, IdentityMorphism( power ) ] );
+        
+    end;
+    
+    Sieves_objects := List( SetOfObjects( B ), c -> Source( sieves( c ) ) );
+    
+    Sieves_morphisms :=
+      List( SetOfGeneratingMorphisms( B ),
+            function ( psi )
+              local hom_psi, Omega;
+              
+              hom_psi := Range( Ypt )( psi );
+              
+              Omega := SubobjectClassifier( CapCategory( hom_psi ) );
+              
+              return LiftAlongMonomorphism(
+                             sieves( Source( psi ) ),
+                             PreCompose( sieves( Range( psi ) ), HomStructure( hom_psi, Omega ) ) );
+              
+          end );
+    
+    return CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
+    
+end );
+
 ####################################
 #
 # methods for properties:
