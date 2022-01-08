@@ -42,6 +42,19 @@ DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsFunctorCat
 DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 
 #! @Description
+#!  The input is a finitely presented category <A>B</A>. The output an epimorphism in the category
+#!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#!  Its source is the functor
+#!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
+#!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
+#!  Its target is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#! @Arguments B
+#! @Returns a &CAP; natural transformation
+DeclareAttribute( "YonedaComposition", IsCapCategory );
+#! @InsertChunk YonedaComposition
+
+#! @Description
 #!  The input is a category <A>B</A> with finitely many objects equipped with
 #!  a homomorphism structure with values in a finite complete and finite cocomplete category <A>H</A>.
 #!  The output is the nerve of <A>B</A> truncated in degree $2$,
