@@ -229,7 +229,8 @@ InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
     AddIsWellDefinedForObjects( full,
       function( cat, a )
         
-        return cat!.ObjectMembershipFunction( cat, a );
+        return IsWellDefinedForObjects( AmbientCategory( cat ), UnderlyingCell( a ) ) and
+               cat!.ObjectMembershipFunction( cat, a );
         
     end );
     
