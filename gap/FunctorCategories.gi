@@ -666,9 +666,7 @@ InstallMethod( AsMorphismInFunctorCategory,
         [ IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ],
         
   function ( U, e, V )
-    local B, kmat, Q, vertices, eta, i;
-    
-    B := Source( U );
+    local kmat, eta;
     
     if not IsEmpty( e ) and IsHomalgMatrix( e[1] ) then
         
@@ -678,17 +676,11 @@ InstallMethod( AsMorphismInFunctorCategory,
         
     fi;
     
-    Q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
-    
-    vertices := Vertices( Q );
-    
-    eta := rec( );
-    
-    for i in [ 1 .. Length( vertices ) ] do
-        eta.(String( vertices[i] )) := e[i];
-    od;
-    
-    eta := AsMorphismInFunctorCategory( U, eta, V );
+    eta := AsMorphismInFunctorCategory(
+                   NaturalTransformation(
+                           UnderlyingCapTwoCategoryCell( U ),
+                           e,
+                           UnderlyingCapTwoCategoryCell( V ) ) );
     
     eta!.ValuesOnAllObjects := e;
     

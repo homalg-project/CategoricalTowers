@@ -253,94 +253,9 @@ InstallMethod( YonedaComposition,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, N1, N2, mu;
+    local mu;
     
-    A := UnderlyingQuiverAlgebra( B );
-    
-    if not IsFiniteDimensional( A ) then
-        
-        Error( "The underlying quiver algebra should be finite dimensional!\n" );
-        
-    fi;
-    
-    objs := SetOfObjects( B );
-    mors := SetOfGeneratingMorphisms( B );
-    
-    o := Length( objs );
-    m := Length( mors );
-    
-    Hom2 := List( objs,
-                  c -> List( objs,
-                          a -> HomomorphismStructureOnObjects( a, c ) ) );
-    
-    hom3 := List( [ 1 .. o ],
-                  c -> List( [ 1 .. o ],
-                          a -> List( [ 1 .. o ],
-                                  b -> [ Hom2[b, a], Hom2[c, b] ] ) ) );
-    
-    Hom3 := List( [ 1 .. o ],
-                  c -> List( [ 1 .. o ],
-                          a -> List( [ 1 .. o ],
-                                  b -> DirectProduct( hom3[c][a, b] ) ) ) );
-    
-    H := RangeCategoryOfHomomorphismStructure( B );
-    
-    D := DistinguishedObjectOfHomomorphismStructure( H );
-    
-    precompose :=
-      function ( a, b, c )
-        return
-          MapOfFinSets(
-                  Hom3[c][a, b],
-                  List( Hom3[c][a, b],
-                        function ( i )
-                          local d, d_ab, d_bc, m_ab, m_bc, m;
-                          
-                          d := MapOfFinSets( D, [ i ], Hom3[c][a, b] );
-                          d_ab := PreCompose( d, ProjectionInFactorOfDirectProduct( hom3[c][a, b], 1 ) );
-                          d_bc := PreCompose( d, ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) );
-                          
-                          m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( objs[a], objs[b], d_ab );
-                          m_bc := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( objs[b], objs[c], d_bc );
-                          
-                          m := PreCompose( m_ab, m_bc );
-                          
-                          return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( m )( 1 );
-                          
-                      end ),
-                  Hom2[c, a] );
-    end;
-    
-    N1 := AsObjectInFunctorCategory(
-                  B,
-                  List( [ 1 .. o ],
-                        c -> Coproduct( Hom2[c] ) ),
-                  List( mors,
-                        psi -> CoproductFunctorial(
-                                List( objs, a -> HomStructure( a, psi ) ) ) ) );
-    
-    N2 := AsObjectInFunctorCategory(
-                  B,
-                  List( [ 1 .. o ],
-                        c -> Coproduct( Concatenation( Hom3[c] ) ) ),
-                  List( mors,
-                        psi -> CoproductFunctorial(
-                                Concatenation(
-                                        List( objs,
-                                              a -> List( objs,
-                                                      b -> DirectProductFunctorial(
-                                                              [ HomStructure( IdentityMorphism( a ), IdentityMorphism( b ) ),
-                                                                HomStructure( b, psi ) ] ) ) ) ) ) ) );
-    
-    mu := AsMorphismInFunctorCategory(
-                  N2,
-                  List( [ 1 .. o ],
-                        c -> CoproductFunctorial(
-                                List( [ 1 .. o ],
-                                      a -> UniversalMorphismFromCoproduct(
-                                              List( [ 1 .. o ],
-                                                    b -> precompose( a, b, c ) ) ) ) ) ),
-                  N1 );
+    mu := AsMorphismInFunctorCategory( YonedaCompositionAsNaturalEpimorphism( B ) );
     
     Assert( 3, IsEpimorphism( mu ) );
     SetIsEpimorphism( mu, true );
