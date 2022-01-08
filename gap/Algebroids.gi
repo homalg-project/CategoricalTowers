@@ -2113,6 +2113,30 @@ InstallMethod( NaturalTransformation,
 end );
 
 ##
+InstallMethod( NaturalTransformation,
+        "for a list and two CAP functors",
+        [ IsCapFunctorRep, IsList, IsCapFunctorRep ],
+        
+  function( F, images, G )
+    local B, q, vertices, eta, i;
+    
+    B := AsCapCategory( Source( F ) );
+    
+    q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
+    
+    vertices := Vertices( q );
+    
+    eta := rec( );
+    
+    for i in [ 1 .. Length( vertices ) ] do
+        eta.(String( vertices[i] )) := images[i];
+    od;
+    
+    return NaturalTransformation( eta, F, G );
+    
+end );
+
+##
 InstallMethod( POW,
         "for a CAP endomorphism and an integer",
         [ IsCapCategoryMorphism, IsInt ],
