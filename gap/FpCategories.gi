@@ -1293,7 +1293,8 @@ InstallMethod( YonedaNaturalEpimorphisms,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, N1, N2, pt, mu;
+    local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, sum3, emb3, iso3, inv3,
+          N1, N2, pt, mu;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -1322,6 +1323,15 @@ InstallMethod( YonedaNaturalEpimorphisms,
                   c -> List( [ 1 .. o ],
                           a -> List( [ 1 .. o ],
                                   b -> DirectProduct( hom3[c][a, b] ) ) ) );
+    
+    sum3 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
+    
+    emb3 := List( [ 1 .. o ],
+                  c -> List( [ 1 .. o ],
+                          a -> List( [ 1 .. o ],
+                                  b -> InjectionOfCofactorOfCoproduct( sum3[c], o * ( b - 1 ) + a ) ) ) );
+    
+    iso3 := List( emb3, emb -> UniversalMorphismFromCoproduct( Concatenation( emb ) ) );
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1377,11 +1387,13 @@ InstallMethod( YonedaNaturalEpimorphisms,
     pt := NaturalTransformation(
                   N2,
                   List( [ 1 .. o ],
-                        c -> CoproductFunctorial(
-                                List( [ 1 .. o ],
-                                      b -> UniversalMorphismFromCoproduct(
-                                              List( [ 1 .. o ],
-                                                    a -> ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ),
+                        c -> PreCompose(
+                                iso3[c],
+                                CoproductFunctorial(
+                                        List( [ 1 .. o ],
+                                              b -> UniversalMorphismFromCoproduct(
+                                                      List( [ 1 .. o ],
+                                                            a -> ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ) ),
                   N1 );
     
     SetIsEpimorphism( pt, true );
