@@ -1640,36 +1640,33 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
 end );
 
 ##
-InstallMethod( SieveFunctor,
+InstallMethod( TruthMorphismOfTrueToSieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, Ymu, Ypt, mors, sieves, Sieves_objects, Sieves_morphisms;
+    local Bop, H, D, Omega, Ymu, Ypt, sieves,
+          Sieves, Sieves_emb, Sieves_maximal, c, Sieves_objects, Sieves_morphisms;
     
     Bop := OppositeFpCategory( B );
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
+    D := DistinguishedObjectOfHomomorphismStructure( H );
+    
+    Omega := SubobjectClassifier( H );
+    
     Ypt := YonedaProjectionAsNaturalEpimorphism( B );
     Ymu := YonedaCompositionAsNaturalEpimorphism( B );
     
-    mors := SetOfGeneratingMorphisms( B );
-    
     sieves :=
       function ( c )
-        local pt_c, mu_c, hom_c, H, D, Omega, power, action;
+        local pt_c, mu_c, hom_c, power, action, maximal, emb;
         
         pt_c := Ypt( c );
         
         mu_c := Ymu( c );
         
         hom_c := Range( mu_c );
-        
-        H := CapCategory( hom_c );
-        
-        D := DistinguishedObjectOfHomomorphismStructure( H );
-        
-        Omega := SubobjectClassifier( H );
         
         power := HomStructure( hom_c, Omega );
         
@@ -1693,28 +1690,55 @@ InstallMethod( SieveFunctor,
                                                         mu_c ) ) ) )( 1 ) ),
                   power );
         
-        return EmbeddingOfEqualizer( [ action, IdentityMorphism( power ) ] );
+        emb := EmbeddingOfEqualizer( [ action, IdentityMorphism( power ) ] );
+        
+        maximal := LiftAlongMonomorphism(
+                           emb,
+                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ClassifyingMorphismOfSubobject( IdentityMorphism( hom_c ) ) ) );
+        
+        return [ emb, maximal ];
         
     end;
     
-    Sieves_objects := List( SetOfObjects( B ), c -> Source( sieves( c ) ) );
+    Sieves := rec( );
+    Sieves_emb := rec( );
+    Sieves_maximal := rec( );
+    
+    for c in SetOfObjects( B ) do
+        Sieves.(String( UnderlyingVertex( c ) )) := sieves( c );
+        Sieves_emb.(String( UnderlyingVertex( c ) )) := Sieves.(String( UnderlyingVertex( c ) ))[1];
+        Sieves_maximal.(String( UnderlyingVertex( c ) )) := Sieves.(String( UnderlyingVertex( c ) ))[2];
+    od;
+    
+    Sieves_objects :=
+      List( SetOfObjects( B ),
+            c -> Source( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
     
     Sieves_morphisms :=
       List( SetOfGeneratingMorphisms( B ),
-            function ( psi )
-              local hom_psi, Omega;
-              
-              hom_psi := Range( Ypt )( psi );
-              
-              Omega := SubobjectClassifier( CapCategory( hom_psi ) );
-              
-              return LiftAlongMonomorphism(
-                             sieves( Source( psi ) ),
-                             PreCompose( sieves( Range( psi ) ), HomStructure( hom_psi, Omega ) ) );
-              
-          end );
+            psi -> LiftAlongMonomorphism(
+                    Sieves_emb.(String( UnderlyingVertex( Source( psi ) ) )),
+                    PreCompose(
+                            Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
+                            HomStructure( Range( Ypt )( psi ), Omega ) ) ) );
     
-    return CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
+    return NaturalTransformation(
+                   Sieves_maximal,
+                   CapFunctor( Bop,
+                           ListWithIdenticalEntries( Length( SetOfObjects( B ) ), D ),
+                           ListWithIdenticalEntries( Length( SetOfGeneratingMorphisms( B ) ), IdentityMorphism( D ) ),
+                           H ),
+                   CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H ) );
+    
+end );
+
+##
+InstallMethod( SieveFunctor,
+        [ IsFpCategory ],
+        
+  function ( B )
+    
+    return Range( TruthMorphismOfTrueToSieveFunctor( B ) );
     
 end );
 

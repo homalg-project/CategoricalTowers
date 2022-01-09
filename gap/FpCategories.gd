@@ -257,6 +257,15 @@ DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
 #! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
 #! @Description
+#!  Return the truth morphism of true from terminal functor
+#!  to the functor of sieves from <C>OppositeFpCategory</C>( <A>B</A> )
+#!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "TruthMorphismOfTrueToSieveFunctor", IsFpCategory );
+#! @InsertChunk SieveFunctor
+
+#! @Description
 #!  Return the functor of sieves from <C>OppositeFpCategory</C>( <A>B</A> )
 #!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #! @Arguments B
