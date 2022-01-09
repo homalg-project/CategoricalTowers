@@ -249,6 +249,22 @@ InstallMethod( YonedaEmbedding,
 end );
 
 ##
+InstallMethod( YonedaProjection,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local mu;
+    
+    mu := AsMorphismInFunctorCategory( YonedaProjectionAsNaturalEpimorphism( B ) );
+    
+    Assert( 3, IsEpimorphism( mu ) );
+    SetIsEpimorphism( mu, true );
+    
+    return mu;
+    
+end );
+
+##
 InstallMethod( YonedaComposition,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
