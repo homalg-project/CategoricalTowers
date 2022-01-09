@@ -51,6 +51,18 @@ DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 #!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
 #! @Arguments B
 #! @Returns a morphism in a &CAP; category
+DeclareAttribute( "YonedaProjection", IsCapCategory );
+
+#! @Description
+#!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
+#!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#!  Its source is the functor
+#!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
+#!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
+#!  Its target is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#! @Arguments B
+#! @Returns a morphism in a &CAP; category
 DeclareAttribute( "YonedaComposition", IsCapCategory );
 #! @InsertChunk YonedaComposition
 
