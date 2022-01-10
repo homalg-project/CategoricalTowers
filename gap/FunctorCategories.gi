@@ -871,6 +871,8 @@ InstallMethodWithCache( FunctorCategory,
                     fi;
                     
                     if not IsBound( images_of_objects[pos] ) then
+                        ## Locally deactivating caching by switching the next line with the above if-line
+                        ## introduces a huge regression in CatReps/examples/CategoryOfRepresentations.g.
                         L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
                         images_of_objects[pos] := CallFuncList( operation_name, L );
                     fi;
