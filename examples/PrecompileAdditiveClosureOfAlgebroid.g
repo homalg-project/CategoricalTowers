@@ -53,23 +53,35 @@ AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPr
 #! @Example
 
 cat := AdditiveClosure( Algebroid( A, false ) );;
-NamesLocalVariablesFunction(
-        Last( cat!.added_functions.ZeroObject )[1] )[1] = "cat_1";
+argument_name := NamesLocalVariablesFunction(
+                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
+
+( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
+  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
 #! true
 
 cat := AdditiveClosure( Algebroid( A_bar, false ) );;
-NamesLocalVariablesFunction(
-        Last( cat!.added_functions.ZeroObject )[1] )[1] = "cat_1";
+argument_name := NamesLocalVariablesFunction(
+                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
+
+( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
+  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
 #! true
 
 cat := AdditiveClosure( Algebroid( A, true ) );;
-NamesLocalVariablesFunction(
-        Last( cat!.added_functions.ZeroObject )[1] )[1] = "cat_1";
+argument_name := NamesLocalVariablesFunction(
+                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
+
+( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
+  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
 #! true
 
 cat := AdditiveClosure( Algebroid( A_bar, true ) );;
-NamesLocalVariablesFunction(
-        Last( cat!.added_functions.ZeroObject )[1] )[1] = "cat_1";
+argument_name := NamesLocalVariablesFunction(
+                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
+
+( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
+  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
 #! true
 
 #! @EndExample
