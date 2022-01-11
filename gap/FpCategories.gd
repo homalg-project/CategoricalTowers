@@ -252,6 +252,9 @@ DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
         IsFpCategory );
 #! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
+DeclareAttribute( "TruthMorphismOfTrueToSieveFunctorAndEmbedding", IsFpCategory );
+DeclareAttribute( "EmbeddingOfSieveFunctor", IsFpCategory );
+
 #! @Description
 #!  Return the truth morphism of true from terminal functor
 #!  to the functor of sieves from <C>OppositeFpCategory</C>( <A>B</A> )
