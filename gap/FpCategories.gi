@@ -1652,12 +1652,13 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
 end );
 
 ##
-InstallMethod( TruthMorphismOfTrueToSieveFunctor,
+InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         [ IsFpCategory ],
         
   function ( B )
     local Bop, H, D, Omega, Ymu, Ypt, sieves,
-          Sieves, Sieves_emb, Sieves_maximal, c, Sieves_objects, Sieves_morphisms;
+          Sieves, Sieves_emb, Sieves_maximal, c, Sieves_objects, Sieves_morphisms, Sieves_functor,
+          HomHomOmega_objects, HomHomOmega_morphisms, HomHomOmega_functor;
     
     Bop := OppositeFpCategory( B );
     
@@ -1734,13 +1735,40 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctor,
                             Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
                             HomStructure( Range( Ypt )( psi ), Omega ) ) ) );
     
-    return NaturalTransformation(
+    Sieves_functor := CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
+    
+    ## Hom( Hom( -, c ), Omega )
+    HomHomOmega_objects :=
+      List( SetOfObjects( B ),
+            c -> Range( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
+    
+    HomHomOmega_morphisms :=
+      List( SetOfGeneratingMorphisms( B ),
+            psi -> HomStructure( Range( Ypt )( psi ), Omega ) );
+    
+    HomHomOmega_functor := CapFunctor( Bop, HomHomOmega_objects, HomHomOmega_morphisms, H );
+    
+    return [ NaturalTransformation(
                    Sieves_maximal,
                    CapFunctor( Bop,
                            ListWithIdenticalEntries( Length( SetOfObjects( B ) ), D ),
                            ListWithIdenticalEntries( Length( SetOfGeneratingMorphisms( B ) ), IdentityMorphism( D ) ),
                            H ),
-                   CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H ) );
+                   Sieves_functor ),
+             NaturalTransformation(
+                     Sieves_emb,
+                     Sieves_functor,
+                     HomHomOmega_functor ) ];
+    
+end );
+
+##
+InstallMethod( TruthMorphismOfTrueToSieveFunctor,
+        [ IsFpCategory ],
+        
+  function ( B )
+    
+    return TruthMorphismOfTrueToSieveFunctorAndEmbedding( B )[1];
     
 end );
 
@@ -1751,6 +1779,16 @@ InstallMethod( SieveFunctor,
   function ( B )
     
     return Range( TruthMorphismOfTrueToSieveFunctor( B ) );
+    
+end );
+
+##
+InstallMethod( EmbeddingOfSieveFunctor,
+        [ IsFpCategory ],
+        
+  function ( B )
+    
+    return TruthMorphismOfTrueToSieveFunctorAndEmbedding( B )[2];
     
 end );
 
