@@ -1310,103 +1310,146 @@ InstallMethod( YonedaNaturalEpimorphisms,
     o := Length( objs );
     m := Length( mors );
     
+    ## [ [ Hom(a, c) ]_{a ∈ B} ]_{c ∈ B}:
     Hom2 := List( objs,
                   c -> List( objs,
                           a -> HomomorphismStructureOnObjects( a, c ) ) );
     
+    ## [ [ [ ( Hom(a, b), Hom(b, c) ) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
     hom3 := List( [ 1 .. o ],
                   c -> List( [ 1 .. o ],
                           a -> List( [ 1 .. o ],
                                   b -> [ Hom2[b, a], Hom2[c, b] ] ) ) );
     
+    ## [ [ [ Hom(a, b) × Hom(b, c) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
     Hom3 := List( [ 1 .. o ],
                   c -> List( [ 1 .. o ],
                           a -> List( [ 1 .. o ],
                                   b -> DirectProduct( hom3[c][a, b] ) ) ) );
     
+    ## [ [ Hom(a, b) × Hom(b, c) ]_{a, b ∈ B} ]_{c ∈ B}:
     sum3 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
     
+    ## The embeddings into the double coproducts
+    ## [ [ [ Hom(a, b) × Hom(b, c) ↪ ⊔_{a' ∈ B} ⊔_{b' ∈ B} Hom(a', b') × Hom(b', c) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
     emb3 := List( [ 1 .. o ],
                   c -> List( [ 1 .. o ],
                           a -> List( [ 1 .. o ],
                                   b -> InjectionOfCofactorOfCoproduct( sum3[c], o * ( b - 1 ) + a ) ) ) );
     
+    ## The isomorphisms
+    ## [ ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ]_{c ∈ B}:
     iso3 := List( emb3, emb -> UniversalMorphismFromCoproduct( Concatenation( emb ) ) );
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
     D := DistinguishedObjectOfHomomorphismStructure( H );
     
+    ## mu_{a,b,c}: Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
     precompose :=
       function ( a, b, c )
         return
           MapOfFinSets(
-                  Hom3[c][a, b],
+                  Hom3[c][a, b], # = Hom(a, b) × Hom(b, c)
                   List( Hom3[c][a, b],
                         function ( i )
                           local d, d_ab, d_bc, m_ab, m_bc, m;
                           
+                          ## D → Hom(a, b) × Hom(b, c):
                           d := MapOfFinSets( D, [ i ], Hom3[c][a, b] );
+                          
+                          ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
                           d_ab := PreCompose( d, ProjectionInFactorOfDirectProduct( hom3[c][a, b], 1 ) );
+                          
+                          ## D → Hom(a, b) × Hom(b, c) → Hom(b, c):
                           d_bc := PreCompose( d, ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) );
                           
+                          ## the map a → b corresponding to d_ab:
                           m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( objs[a], objs[b], d_ab );
+                          
+                          ## the map b → c corresponding to d_bc:
                           m_bc := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( objs[b], objs[c], d_bc );
                           
+                          ## the composition a → b → c:
                           m := PreCompose( m_ab, m_bc );
                           
+                          ## reinterpret the composition m as a morphism D → Hom(a, c),
+                          ## then get its number as an element in Hom(a, c):
                           return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( m )( 1 );
                           
                       end ),
-                  Hom2[c, a] );
+                  Hom2[c, a] ); # = Hom(a, c)
     end;
     
+    ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
     N1 := CapFunctor(
                   B,
-                  List( [ 1 .. o ],
-                        c -> Coproduct( Hom2[c] ) ),
-                  List( mors,
-                        psi -> CoproductFunctorial(
+                  List( [ 1 .. o ], c ->
+                        ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c):
+                        Coproduct( Hom2[c] ) ),
+                  List( mors, psi ->
+                        ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+                        CoproductFunctorial(
                                 List( objs, a -> HomStructure( a, psi ) ) ) ),
                   H );
     
+    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
+    ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
     N2 := CapFunctor(
                   B,
-                  List( [ 1 .. o ],
-                        c -> Coproduct( Concatenation( Hom3[c] ) ) ),
-                  List( mors,
-                        psi -> CoproductFunctorial(
+                  List( [ 1 .. o ], c ->
+                        ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c):
+                        Coproduct( Concatenation( Hom3[c] ) ) ),
+                  List( mors, psi ->
+                        ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+                        CoproductFunctorial(
                                 Concatenation(
-                                        List( objs,
-                                              a -> List( objs,
-                                                      b -> DirectProductFunctorial(
+                                        List( objs, a ->
+                                              List( objs, b ->
+                                                    ## Hom(id_a, id_b) × Hom(id_b, ψ):
+                                                    DirectProductFunctorial(
                                                               [ HomStructure( IdentityMorphism( a ), IdentityMorphism( b ) ),
-                                                                HomStructure( b, psi ) ] ) ) ) ) ) ),
+                                                                HomStructure( IdentityMorphism( b ), psi ) ] ) ) ) ) ) ),
                   H );
     
+    ## The Yoneda project is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
     pt := NaturalTransformation(
-                  N2,
-                  List( [ 1 .. o ],
-                        c -> PreCompose(
+                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  List( [ 1 .. o ], c ->
+                        ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
+                        PreCompose(
+                                ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c):
                                 iso3[c],
+                                ## ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
                                 CoproductFunctorial(
-                                        List( [ 1 .. o ],
-                                              b -> UniversalMorphismFromCoproduct(
-                                                      List( [ 1 .. o ],
-                                                            a -> ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ) ),
-                  N1 );
+                                        List( [ 1 .. o ], b ->
+                                              ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
+                                              UniversalMorphismFromCoproduct(
+                                                      List( [ 1 .. o ], a ->
+                                                            ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
+                                                            ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ) ),
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ)
     
     SetIsEpimorphism( pt, true );
     
+    ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
     mu := NaturalTransformation(
-                  N2,
-                  List( [ 1 .. o ],
-                        c -> CoproductFunctorial(
-                                List( [ 1 .. o ],
-                                      a -> UniversalMorphismFromCoproduct(
-                                              List( [ 1 .. o ],
-                                                    b -> precompose( a, b, c ) ) ) ) ) ),
-                  N1 );
+                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  List( [ 1 .. o ], c ->
+                        ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{a ∈ B} Hom(a, c):
+                        CoproductFunctorial(
+                                List( [ 1 .. o ], a ->
+                                      ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
+                                      UniversalMorphismFromCoproduct(
+                                              List( [ 1 .. o ], b ->
+                                                    ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
+                                                    precompose( a, b, c ) ) ) ) ) ),
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ)
     
     SetIsEpimorphism( mu, true );
     
@@ -1679,35 +1722,55 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         
         mu_c := Ymu( c );
         
+        ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
         hom_c := Range( mu_c );
         
+        ## Hom(Hom(-, c), Ω) := Hom(⊔_{a ∈ B} Hom(a, c), Ω)
         power := HomStructure( hom_c, Omega );
         
+        ## define the action as an endomorphism on Hom(Hom(-, c), Ω)
         action :=
           MapOfFinSets(
-                  power,
-                  List( power,
-                        i ->
+                  power, ## Hom(Hom(-, c), Ω)
+                  List( power, i ->
+                        ## interpreted as an "element" of Hom(Hom(-, c), Omega)
                         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                                ## interpreted as a classifying morphism Hom(-, c) → Ω
                                 ClassifyingMorphismOfSubobject(
+                                        ## s' ↪ Hom(-, c)
                                         ImageEmbedding(
+                                                ## Hom(-, -) × s → Hom(-, c)
                                                 PreCompose(
+                                                        ## Hom(-, -) × s ↪ Hom(-, -) × Hom(-, c)
                                                         ProjectionInFactorOfFiberProduct(
                                                                 [ pt_c,
+                                                                  ## interpreted as a subobject s ↪ Hom(-, c)
                                                                   SubobjectOfClassifyingMorphism(
+                                                                          ## interpreted as a  classifying morphism Hom(-, c) → Ω
                                                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                                                                                   hom_c,
                                                                                   Omega,
+                                                                                  ## an "element" D -> Hom(Hom(-, c), Omega)
                                                                                   MapOfFinSets( D, [ i ], power ) ) )
                                                                   ], 1 ),
+                                                        ## μ_c: Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
                                                         mu_c ) ) ) )( 1 ) ),
-                  power );
+                  power ); ## Hom(Hom(-, c), Ω)
         
+        ## The sieves on c are the fixed points of the above action on Hom(Hom(-, c), Ω),
+        ## resulting in the embedding Sieves(c) ↪ Hom(Hom(-, c), Ω):
         emb := EmbeddingOfEqualizer( [ action, IdentityMorphism( power ) ] );
         
+        ## the "element" D → Sieves(c) corresponding to the maximal sieve:
         maximal := LiftAlongMonomorphism(
+                           ## Sieves(c) ↪ Hom(Hom(-, c), Ω):
                            emb,
-                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ClassifyingMorphismOfSubobject( IdentityMorphism( hom_c ) ) ) );
+                           ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
+                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                                   ## the corresponding classifying morphism χ: Hom(-, c) → Ω
+                                   ClassifyingMorphismOfSubobject(
+                                           ## id: Hom(-, c) → Hom(-, c)
+                                           IdentityMorphism( hom_c ) ) ) );
         
         return [ emb, maximal ];
         
@@ -1737,7 +1800,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     Sieves_functor := CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
     
-    ## Hom( Hom( -, c ), Omega )
+    ## Hom(Hom(-, c), Ω)
     HomHomOmega_objects :=
       List( SetOfObjects( B ),
             c -> Range( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
@@ -1748,13 +1811,15 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     HomHomOmega_functor := CapFunctor( Bop, HomHomOmega_objects, HomHomOmega_morphisms, H );
     
-    return [ NaturalTransformation(
+    return [ ## T → Sieves, c ↦ ( T(c) = {*} → Sieves(c), * ↦ maximal_sieve(c) := Hom(-, c) )
+             NaturalTransformation(
                    Sieves_maximal,
                    CapFunctor( Bop,
                            ListWithIdenticalEntries( Length( SetOfObjects( B ) ), D ),
                            ListWithIdenticalEntries( Length( SetOfGeneratingMorphisms( B ) ), IdentityMorphism( D ) ),
                            H ),
                    Sieves_functor ),
+             ## Sieves → Hom(Hom(-, c), Ω), c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω), s ↦ s )
              NaturalTransformation(
                      Sieves_emb,
                      Sieves_functor,
