@@ -1462,11 +1462,11 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     B0 := SetOfObjects( B );
     N0 := FinSet( H, Length( B0 ) );
     
-    ## N0 x N0
+    ## N0 × N0
     D00 := [ N0, N0 ];
     N0N0 := DirectProduct( D00 );
     
-    ## N0 x N0 -> N0
+    ## N0 × N0 -> N0
     p21 := ProjectionInFactorOfDirectProduct( D00, 1 );
     p22 := ProjectionInFactorOfDirectProduct( D00, 2 );
     
@@ -1475,7 +1475,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     
     N1 := Coproduct( B1 );
     
-    ## N0 -> N0 x N0
+    ## N0 -> N0 × N0
     d := EmbeddingOfEqualizer( [ p21, p22 ] );
     Assert( 0, d = UniversalMorphismIntoDirectProduct( D00, N0, [ IdentityMorphism( N0 ), IdentityMorphism( N0 ) ] ) );
     
@@ -1488,23 +1488,23 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                                 InjectionOfCofactorOfCoproduct( B1, d( i ) ) )(1) ),
                   N1 );
     
-    ## N1 -> N0 x N0
+    ## N1 -> N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N1 in SkeletalFinSets is taken over the index set N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
     pi2 := MapOfFinSets( N1, Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[i] ), i ) ) ), N0N0 );
     
-    ## N1 -> N0 x N0 -> N0
+    ## N1 -> N0 × N0 -> N0
     s := PreCompose( pi2, p21 );
     
-    ## N1 -> N0 x N0 -> N0
+    ## N1 -> N0 × N0 -> N0
     t := PreCompose( pi2, p22 );
     
-    ## N0 x N0 x N0
+    ## N0 × N0 × N0
     D000 := [ N0, N0, N0 ];
     N0N0N0 := DirectProduct( D000 );
     
-    ## N0 x N0 x N0 -> N0
+    ## N0 × N0 × N0 -> N0
     p31 := ProjectionInFactorOfDirectProduct( D000, 1 );
     p32 := ProjectionInFactorOfDirectProduct( D000, 2 );
     p33 := ProjectionInFactorOfDirectProduct( D000, 3 );
@@ -1518,7 +1518,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     
     T := TerminalObject( H );
     
-    ## N1 -> N0 x N0 -> N0 x N0 x N0
+    ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
     ds := PreCompose( pi2, EmbeddingOfEqualizer( [ p32, p33 ] ) );
     
@@ -1533,7 +1533,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                                 InjectionOfCofactorOfCoproduct( B2, ds( i ) ) )(1) ),
                   N2 );
     
-    ## N1 -> N0 x N0 -> N0 x N0 x N0
+    ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
     dt := PreCompose( pi2, EmbeddingOfEqualizer( [ p31, p32 ] ) );
     
@@ -1548,7 +1548,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                                 InjectionOfCofactorOfCoproduct( B2, dt( i ) ) )(1) ),
                   N2 );
 
-    ## N0 x N0 x N0 -> N0 x N0
+    ## N0 × N0 × N0 -> N0 × N0
     p312 := UniversalMorphismIntoDirectProduct( [ p31, p32 ] );
     p323 := UniversalMorphismIntoDirectProduct( [ p32, p33 ] );
     p313 := UniversalMorphismIntoDirectProduct( [ p31, p33 ] );
@@ -1556,13 +1556,13 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     Assert( 0, p312 = ProjectionInFactorOfDirectProduct( [ N0N0, N0 ], 1 ) );
     Assert( 0, p323 = ProjectionInFactorOfDirectProduct( [ N0, N0N0 ], 2 ) );
     
-    ## N2 -> N0 x N0 x N0
+    ## N2 -> N0 × N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N2 in SkeletalFinSets is taken over the index set N0N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
     pi3 := MapOfFinSets( N2, Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[i] ), i ) ) ), N0N0N0 );
     
-    ## N2 -> N0 x N0 x N0 -> N0 x N0
+    ## N2 -> N0 × N0 × N0 -> N0 × N0
     pi312 := PreCompose( pi3, p312 );
     pi323 := PreCompose( pi3, p323 );
     pi313 := PreCompose( pi3, p313 );
