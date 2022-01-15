@@ -238,7 +238,6 @@ DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
 #! @Arguments B
 #! @Returns a &CAP; natural transformation
 DeclareAttribute( "YonedaProjectionAsNaturalEpimorphism", IsCapCategory );
-#! @InsertChunk YonedaProjectionAsNaturalEpimorphism
 
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is a natural epimorphism.
