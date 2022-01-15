@@ -229,6 +229,16 @@ DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
 DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
 
 #! @Description
+#!  The input is a finitely presented category <A>B</A>. The output is a natural morphism.
+#!  Its source is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#!  Its targe is the constant functor of $0$-cells
+#!  $B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}$.
+#! @Arguments B
+#! @Returns a &CAP; natural transformation
+DeclareAttribute( "YonedaSourceFibrationAsNaturalTransformation", IsCapCategory );
+
+#! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is a natural epimorphism.
 #!  Its source is the functor
 #!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
@@ -238,7 +248,6 @@ DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
 #! @Arguments B
 #! @Returns a &CAP; natural transformation
 DeclareAttribute( "YonedaProjectionAsNaturalEpimorphism", IsCapCategory );
-#! @InsertChunk YonedaProjectionAsNaturalEpimorphism
 
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is a natural epimorphism.
@@ -386,6 +395,15 @@ DeclareOperation( "CapFunctor",
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
         [ IsFpCategory, IsRecord, IsRecord ] );
+
+#! @Description
+#!  In the case of two arguments, where the second argument is an object <A>obj</A>
+#!  then the output is the constant functor having <A>obj</A> as the value on objects
+#!  and <C>IdentityMorphism</C>(<A>obj</A>) as the value on morphisms.
+#! @Arguments A, obj
+#! @Group CapFunctor
+DeclareOperation( "CapFunctor",
+        [ IsFpCategory, IsCapCategoryObject ] );
 
 #! @Description
 #!  The constructor of objects in a finitely presented category <A>C</A> given a vertex <A>V</A>

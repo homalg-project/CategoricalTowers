@@ -2022,6 +2022,21 @@ InstallMethod( CapFunctor,
 end );
 
 ##
+InstallMethod( CapFunctor,
+        "for an algebroid and a CAP category object",
+        [ IsFpCategory, IsCapCategoryObject ],
+        
+  function( A, object )
+    
+    return CapFunctor(
+                   A,
+                   ListWithIdenticalEntries( Length( SetOfObjects( A ) ), object ),
+                   ListWithIdenticalEntries( Length( SetOfGeneratingMorphisms( A ) ), IdentityMorphism( object ) ),
+                   CapCategory( object ) );
+    
+end );
+
+##
 InstallMethod( OppositeAlgebroid,
         "for an algebroid",
         [ IsAlgebroid and HasUnderlyingQuiver ],
