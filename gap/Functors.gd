@@ -44,6 +44,17 @@ DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
 #!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#!  Its source is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#!  Its targe is the constant functor of $0$-cells
+#!  $B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}$.
+#! @Arguments B
+#! @Returns a morphism in a &CAP; category
+DeclareAttribute( "YonedaSourceFibration", IsCapCategory );
+
+#! @Description
+#!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
+#!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #!  Its source is the functor
 #!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
 #!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
