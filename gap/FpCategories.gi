@@ -1575,7 +1575,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
-    D := DistinguishedObjectOfHomomorphismStructure( H );
+    D := DistinguishedObjectOfHomomorphismStructure( B );
     
     ## mu_{a,b,c}: Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
     precompose :=
@@ -1747,7 +1747,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
-    D := DistinguishedObjectOfHomomorphismStructure( H );
+    D := DistinguishedObjectOfHomomorphismStructure( B );
     
     Omega := SubobjectClassifier( H );
     
