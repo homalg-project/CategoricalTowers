@@ -1699,8 +1699,8 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, D, Omega, Ymu, Ypt, sieves,
-          Sieves, Sieves_emb, Sieves_maximal, c, Sieves_objects, Sieves_morphisms, Sieves_functor,
+    local Bop, H, D, Omega, Ymu, Ypt, sieves, Sieves, Sieves_emb, Sieves_maximal, c,
+          Y, action, actions, psi, Sieves_objects, Sieves_morphisms, Sieves_functor,
           HomHomOmega_objects, HomHomOmega_morphisms, HomHomOmega_functor;
     
     Bop := OppositeFpCategory( B );
@@ -1788,6 +1788,65 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         Sieves_maximal.(String( UnderlyingVertex( c ) )) := Sieves.(String( UnderlyingVertex( c ) ))[2];
     od;
     
+    ## The Yoneda embedding
+    ## Y: B ↪ FunctorCategory( B^op, H ), c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+    Y := Range( Ypt );
+    
+    ## ψ: c → d induces a morphsim Hom(-, ψ): Hom(-, c) → Hom(-, d),
+    ## which induces a morphism Hom(Hom(-, c), Ω) → Hom(Hom(-, d), Ω),
+    ## which cannot be the one coming from the functoriality of Hom(-, Ω)
+    action :=
+      function ( psi )
+        local hom_psi, hom_c, hom_d, power_c, power_d;
+        
+        ## Hom(-, ψ): Hom(-, c) → Hom(-, d)
+        hom_psi := Y( psi );
+        
+        ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
+        hom_c := Source( hom_psi );
+        
+        ## Hom(-, d) := ⊔_{a ∈ B} Hom(a, d)
+        hom_d := Range( hom_psi );
+        
+        ## Hom(Hom(-, c), Ω) := Hom(⊔_{a ∈ B} Hom(a, c), Ω)
+        power_c := HomStructure( hom_c, Omega );
+        
+        ## Hom(Hom(-, c), Ω) := Hom(⊔_{a ∈ B} Hom(a, d), Ω)
+        power_d := HomStructure( hom_d, Omega );
+        
+        ## action of ψ as a morphism Hom(Hom(-, c), Ω) → Hom(Hom(-, d), Ω)
+        return
+          MapOfFinSets(
+                  power_c, ## Hom(Hom(-, c), Ω)
+                  List( power_c, i ->
+                        ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
+                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                                ## interpreted as a classifying morphism χ_{s'}: Hom(-, c) → Ω
+                                ClassifyingMorphismOfSubobject(
+                                        ## s' ↪ Hom(-, d)
+                                        ImageEmbedding(
+                                                ## s ↪ Hom(-, c) → Hom(-, d)
+                                                PreCompose(
+                                                        ## interpreted as a subobject s ↪ Hom(-, c)
+                                                        SubobjectOfClassifyingMorphism(
+                                                                ## interpreted as a  classifying morphism χ_s: Hom(-, c) → Ω
+                                                                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                                        hom_c,
+                                                                        Omega,
+                                                                        ## an "element" D → Hom(Hom(-, c), Ω)
+                                                                        MapOfFinSets( D, [ i ], power_c ) ) ),
+                                                        ## Hom(-, ψ): Hom(-, c) → Hom(-, d)
+                                                        hom_psi ) ) ) )(1) ),
+                  power_d ); ## Hom(Hom(-, d), Ω)
+        
+    end;
+    
+    actions := rec( );
+    
+    for psi in SetOfGeneratingMorphisms( B ) do
+        actions.(StringView( psi )) := action( psi );
+    od;
+    
     Sieves_objects :=
       List( SetOfObjects( B ),
             c -> Source( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
@@ -1798,7 +1857,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                     Sieves_emb.(String( UnderlyingVertex( Source( psi ) ) )),
                     PreCompose(
                             Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
-                            HomStructure( Range( Ypt )( psi ), Omega ) ) ) );
+                            actions.(StringView( psi )) ) ) );
     
     Sieves_functor := CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
     
@@ -1808,8 +1867,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
             c -> Range( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
     
     HomHomOmega_morphisms :=
-      List( SetOfGeneratingMorphisms( B ),
-            psi -> HomStructure( Range( Ypt )( psi ), Omega ) );
+      List( SetOfGeneratingMorphisms( B ), psi -> actions.(StringView( psi )) );
     
     HomHomOmega_functor := CapFunctor( Bop, HomHomOmega_objects, HomHomOmega_morphisms, H );
     
