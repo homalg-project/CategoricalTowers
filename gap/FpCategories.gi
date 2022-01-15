@@ -1526,7 +1526,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
         
   function ( B )
     local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, sum3, emb3, iso3, inv3,
-          N1, N2, pt, mu;
+          N0, N1, N2, pt, mu, s;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -1613,6 +1613,9 @@ InstallMethod( YonedaNaturalEpimorphisms,
                   Hom2[c, a] ); # = Hom(a, c)
     end;
     
+    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
+    N0 := CapFunctor( B, FinSet( o ) );
+    
     ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
@@ -1685,7 +1688,19 @@ InstallMethod( YonedaNaturalEpimorphisms,
     
     SetIsEpimorphism( mu, true );
     
-    return [ pt, mu ];
+    ## The source functor is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
+    ## Hom(-, c) ↠ B_0:
+    s := NaturalTransformation(
+                 N1, ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ)
+                 List( [ 1 .. o ], c ->
+                       ## ⊔_{a ∈ B} Hom(a, c) → B_0, ϕ ↦ Source(ϕ)
+                       CoproductFunctorial(
+                               List( [ 1 .. o ], a ->
+                                     ## Hom(a, c) → {a}, ϕ ↦ a
+                                     UniversalMorphismIntoTerminalObject( Hom2[c, a] ) ) ) ),
+                 N0 ); ## The constant functor of 0-cells
+    
+    return [ pt, mu, s ];
     
 end );
 
@@ -1706,6 +1721,16 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
   function ( B )
     
     return YonedaNaturalEpimorphisms( B )[2];
+    
+end );
+
+##
+InstallMethod( YonedaSourceFibrationAsNaturalTransformation,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    
+    return YonedaNaturalEpimorphisms( B )[3];
     
 end );
 
