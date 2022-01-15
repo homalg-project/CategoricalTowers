@@ -1718,8 +1718,10 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
       function ( c )
         local pt_c, mu_c, hom_c, power, action, maximal, emb;
         
+        ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
         pt_c := Ypt( c );
         
+        ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
         mu_c := Ymu( c );
         
         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
@@ -1733,9 +1735,9 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
           MapOfFinSets(
                   power, ## Hom(Hom(-, c), Ω)
                   List( power, i ->
-                        ## interpreted as an "element" of Hom(Hom(-, c), Omega)
+                        ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
                         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
-                                ## interpreted as a classifying morphism Hom(-, c) → Ω
+                                ## interpreted as a classifying morphism χ_{s'}: Hom(-, c) → Ω
                                 ClassifyingMorphismOfSubobject(
                                         ## s' ↪ Hom(-, c)
                                         ImageEmbedding(
@@ -1746,11 +1748,11 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                                                                 [ pt_c,
                                                                   ## interpreted as a subobject s ↪ Hom(-, c)
                                                                   SubobjectOfClassifyingMorphism(
-                                                                          ## interpreted as a  classifying morphism Hom(-, c) → Ω
+                                                                          ## interpreted as a  classifying morphism χ_s: Hom(-, c) → Ω
                                                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                                                                                   hom_c,
                                                                                   Omega,
-                                                                                  ## an "element" D -> Hom(Hom(-, c), Omega)
+                                                                                  ## an "element" D → Hom(Hom(-, c), Ω)
                                                                                   MapOfFinSets( D, [ i ], power ) ) )
                                                                   ], 1 ),
                                                         ## μ_c: Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
