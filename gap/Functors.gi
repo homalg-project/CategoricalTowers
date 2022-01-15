@@ -281,6 +281,16 @@ InstallMethod( YonedaComposition,
 end );
 
 ##
+InstallMethod( YonedaSourceFibration,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    
+    return AsMorphismInFunctorCategory( YonedaSourceFibrationAsNaturalTransformation( B ) );
+    
+end );
+
+##
 InstallMethod( NerveTruncatedInDegree2,
         [ IsFpCategory ],
         
