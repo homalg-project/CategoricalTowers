@@ -1377,11 +1377,31 @@ InstallMethodWithCache( FunctorCategory,
           end );
           
     fi;
-
+    
     if IsFiniteDimensional( kq ) then
       
       ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY( Hom );
       
+    fi;
+    
+    if HasRangeCategoryOfHomomorphismStructure( B ) and
+       IsIdenticalObj( RangeCategoryOfHomomorphismStructure( B ), C ) and
+       CanCompute( C, "SubobjectClassifier" ) then
+        
+        AddSubobjectClassifier( Hom,
+          function ( Hom )
+            
+            return AsObjectInFunctorCategory( SieveFunctor( OppositeFpCategory( Source( Hom ) ) ) );
+            
+        end );
+        
+        AddTruthMorphismOfTrueWithGivenObjects( Hom,
+          function ( Hom, T, Omega )
+            
+            return AsMorphismInFunctorCategory( TruthMorphismOfTrueToSieveFunctor( OppositeFpCategory( Source( Hom ) ) ) );
+            
+        end );
+        
     fi;
     
     if IsMatrixCategory( C ) and
