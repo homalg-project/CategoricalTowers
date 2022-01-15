@@ -420,6 +420,15 @@ DeclareOperation( "CapFunctor",
         [ IsAlgebroid, IsRecord, IsRecord ] );
 
 #! @Description
+#!  In the case of two arguments, where the second argument is an object <A>obj</A>
+#!  then the output is the constant functor having <A>obj</A> as the value on objects
+#!  and <C>IdentityMorphism</C>(<A>obj</A>) as the value on morphisms.
+#! @Arguments A, obj
+#! @Group CapFunctor
+DeclareOperation( "CapFunctor",
+        [ IsAlgebroid, IsCapCategoryObject ] );
+
+#! @Description
 #!  Construct, using the record (or list) of images <A>eta</A>, a natural transformation
 #!  from the functor <A>F</A> to the parallel functor <A>G</A>.
 #! @Arguments eta, F, G

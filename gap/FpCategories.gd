@@ -388,6 +388,15 @@ DeclareOperation( "CapFunctor",
         [ IsFpCategory, IsRecord, IsRecord ] );
 
 #! @Description
+#!  In the case of two arguments, where the second argument is an object <A>obj</A>
+#!  then the output is the constant functor having <A>obj</A> as the value on objects
+#!  and <C>IdentityMorphism</C>(<A>obj</A>) as the value on morphisms.
+#! @Arguments A, obj
+#! @Group CapFunctor
+DeclareOperation( "CapFunctor",
+        [ IsFpCategory, IsCapCategoryObject ] );
+
+#! @Description
 #!  The constructor of objects in a finitely presented category <A>C</A> given a vertex <A>V</A>
 #!  in the underlying quiver.
 #! @Arguments A, V
