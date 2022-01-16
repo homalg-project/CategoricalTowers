@@ -1616,7 +1616,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
     ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
     N0 := CapFunctor( B, FinSet( o ) );
     
-    ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ), where
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
     N1 := CapFunctor(
@@ -1667,7 +1667,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
                                                       List( [ 1 .. o ], a ->
                                                             ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
                                                             ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ) ),
-                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ)
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
     SetIsEpimorphism( pt, true );
     
@@ -1684,14 +1684,14 @@ InstallMethod( YonedaNaturalEpimorphisms,
                                               List( [ 1 .. o ], b ->
                                                     ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
                                                     precompose( a, b, c ) ) ) ) ) ),
-                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ)
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
     SetIsEpimorphism( mu, true );
     
     ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
     ## Hom(-, c) ↠ B_0:
     s := NaturalTransformation(
-                 N1, ## The Yoneda functor B → H, c ↦ Hom(-, c) and ψ ↦ Hom(-, ψ)
+                 N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
                  List( [ 1 .. o ], c ->
                        ## ⊔_{a ∈ B} Hom(a, c) → B_0, ϕ ↦ Source(ϕ)
                        CoproductFunctorial(
