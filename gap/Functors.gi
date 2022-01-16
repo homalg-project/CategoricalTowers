@@ -281,12 +281,12 @@ InstallMethod( YonedaComposition,
 end );
 
 ##
-InstallMethod( YonedaSourceFibration,
+InstallMethod( YonedaFibration,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     
-    return AsMorphismInFunctorCategory( YonedaSourceFibrationAsNaturalTransformation( B ) );
+    return AsMorphismInFunctorCategory( YonedaFibrationAsNaturalTransformation( B ) );
     
 end );
 
