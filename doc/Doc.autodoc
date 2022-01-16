@@ -14,6 +14,10 @@
 
 @InsertChunk C3C3
 
+@Subsection The subobject classifier
+
+@InsertChunk SubobjectClassifier
+
 @Section Constructors
 
 @Section Attributes

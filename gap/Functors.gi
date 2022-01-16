@@ -194,6 +194,16 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
 end );
 
 ##
+InstallMethod( NerveTruncatedInDegree2,
+        [ IsFpCategory ],
+        
+  function ( B )
+    
+    return AsObjectInFunctorCategory( NerveTruncatedInDegree2AsFunctor( B ) );
+    
+end );
+
+##
 InstallMethod( YonedaEmbedding,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
@@ -291,11 +301,118 @@ InstallMethod( YonedaFibration,
 end );
 
 ##
-InstallMethod( NerveTruncatedInDegree2,
-        [ IsFpCategory ],
+InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
+        [ IsFunctorCategory, IsMorphismInFunctorCategory ],
         
-  function ( B )
+  function ( Hom, iota ) ## ι: Q ↪ P
+    local Q, P, Bop, B_0, B, H, D, emb, Omega, OmegaH, s, Y,
+          truth_values, bool, paths_to_truth;
     
-    return AsObjectInFunctorCategory( NerveTruncatedInDegree2AsFunctor( B ) );
+    ## B^op
+    Bop := Source( Hom );
+    
+    ## B^op → H
+    Q := Source( iota );
+    P := Range( iota );
+    
+    B_0 := SetOfObjects( Bop );
+    
+    B := OppositeFpCategory( Bop );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    D := DistinguishedObjectOfHomomorphismStructure( B );
+    
+    ## The natural transformation c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω) )
+    emb := AsMorphismInFunctorCategory( EmbeddingOfSieveFunctor( B ) );
+    
+    Omega := Source( emb );
+    
+    OmegaH := SubobjectClassifier( H );
+    
+    ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
+    ## Hom(-, c) → B_0:
+    s := YonedaFibration( B );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    Y := Source( s );
+    
+    ## Truth values of Ω
+    truth_values := [ TruthMorphismOfTrue( H )( 1 ), TruthMorphismOfFalse( H )( 1 ) ];
+    
+    ## true ↦ 1, false ↦ 2
+    bool :=
+      function ( b )
+        if b then
+            return truth_values[1];
+        else
+            return truth_values[2];
+        fi;
+    end;
+    
+    ## the sieve of all f ∈ Hom(-, c), such that x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f):
+    paths_to_truth :=
+      function ( c, x )
+        local hom_c, s_c, emb_c, sieve;
+        
+        ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
+        hom_c := Y( OppositePath( UnderlyingVertex( c ) ) / B );
+        
+        ## Hom(-, c) → B_0
+        s_c := s( OppositePath( UnderlyingVertex( c ) ) / B );
+        
+        ## Sieves(c) ↪ Hom(Hom(-, c), Ω)
+        emb_c := emb( c );
+        
+        ## Sieve(x) ↪ Hom(-, c) as an "element" D → Sieves(c):
+        return LiftAlongMonomorphism(
+                       ## Sieves(c) ↪ Hom(Hom(-, c), Ω)
+                       emb_c,
+                       ## Sieve(x) ↪ Hom(-, c) as an "element" D → Hom(Hom(-, c), Ω):
+                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                               ## χ: Hom(-, c) → Ω:
+                               MapOfFinSets(
+                                       hom_c,
+                                       List( List( hom_c, f ->
+                                               ## Is x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f)?
+                                               IsLiftableAlongMonomorphism(
+                                                       ## ι_c: Q(c) ↪ P(c):
+                                                       iota( c ),
+                                                       ## x P(f) ∈ P(a), where a = Source(f):
+                                                       PreCompose(
+                                                               ## x ∈ P(c):
+                                                               x,
+                                                               ## P(f): P(c) → P(a):
+                                                               P(
+                                                                 ## f: a → c, where a = Source(f):
+                                                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                                         B_0[s_c( f )],
+                                                                         c,
+                                                                         MapOfFinSets( D, [ f ], hom_c ) ) ) ) ) ), bool ),
+                                       OmegaH ) ) )(1);
+        
+    end;
+    
+    ## χ: P → Ω
+    return AsMorphismInFunctorCategory(
+                   P,
+                   List( B_0,
+                         c -> MapOfFinSets(
+                                 P( c ),
+                                 List( P( c ), x -> paths_to_truth( c, MapOfFinSets( D, [ x ], P( c ) ) ) ),
+                                 Omega( c ) ) ),
+                   Omega );
+    
+end );
+
+##
+InstallMethod( SievesOfPathsToTruth,
+        [ IsMorphismInFunctorCategory and IsMonomorphism ],
+        
+  function ( iota )
+    
+    return SievesOfPathsToTruth( CapCategory( iota ), iota );
     
 end );

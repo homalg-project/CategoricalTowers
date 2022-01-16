@@ -34,6 +34,17 @@ DeclareAttribute( "IsomorphismOntoCategoryOfQuiverRepresentations", IsFunctorCat
 DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsFunctorCategory );
 
 #! @Description
+#!  The input is a category <A>B</A> with finitely many objects equipped with
+#!  a homomorphism structure with values in a finite complete and finite cocomplete category <A>H</A>.
+#!  The output is the nerve of <A>B</A> truncated in degree $2$,
+#!  as an object in the category of presheaves on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
+#!  with values in <A>H</A>.
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
+#! @InsertChunk NerveTruncatedInDegree2
+
+#! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is the Yoneda embedding functor from
 #!  <A>B</A> into the functors category <C>Hom</C>( <C>OppositeAlgebroid</C>(<A>B</A>),$H$), where
 #!  $H$=<C>RangeCategoryOfHomomorphismStructure</C>(<A>B</A>).
@@ -78,12 +89,19 @@ DeclareAttribute( "YonedaComposition", IsCapCategory );
 #! @InsertChunk YonedaComposition
 
 #! @Description
-#!  The input is a category <A>B</A> with finitely many objects equipped with
-#!  a homomorphism structure with values in a finite complete and finite cocomplete category <A>H</A>.
-#!  The output is the nerve of <A>B</A> truncated in degree $2$,
-#!  as an object in the category of presheaves on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
-#!  with values in <A>H</A>.
-#! @Arguments B
-#! @Returns a &CAP; functor
-DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
-#! @InsertChunk NerveTruncatedInDegree2
+#!  The input is a monomorphism <A>iota</A>:$Q \to P$ in the category of
+#!  presheaves with values in <C>RangeCategoryOfHomomorphismStructure</C>($C$)
+#!  on the finitely presented category
+#!  $C:=$<C>OppositeFpCategory</C>(<C>Source</C>($P$)) with finite $\mathrm{Hom}$-sets.
+#!  The output is the morphism from $P$ to
+#!  the <C>SieveFunctor</C>($C$) mapping for each $c \in C$ the element $x \in P(c)$
+#!  to its <Q>paths to truth</Q> $f: a \to c$ translating $x$ into $f(x) \in Q(a) \subseteq P(a)$.
+#! @Returns a monomorphisms in a Hom-category of functors
+#! @Arguments iota
+#! @Group SievesOfPathsToTruth
+DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInFunctorCategory );
+
+#! @Arguments Hom, iota
+#! @Group SievesOfPathsToTruth
+DeclareOperation( "SievesOfPathsToTruth",
+        [ IsFunctorCategory, IsMorphismInFunctorCategory ] );

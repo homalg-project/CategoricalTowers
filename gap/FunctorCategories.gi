@@ -1402,6 +1402,13 @@ InstallMethodWithCache( FunctorCategory,
             
         end );
         
+        AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( Hom,
+          function ( Hom, iota, Omega )
+            
+            return SievesOfPathsToTruth( Hom, iota );
+            
+        end );
+        
     fi;
     
     if IsMatrixCategory( C ) and
