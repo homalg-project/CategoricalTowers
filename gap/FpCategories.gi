@@ -1689,7 +1689,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
     SetIsEpimorphism( mu, true );
     
     ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
-    ## Hom(-, c) ↠ B_0:
+    ## Hom(-, c) → B_0:
     s := NaturalTransformation(
                  N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
                  List( [ 1 .. o ], c ->
