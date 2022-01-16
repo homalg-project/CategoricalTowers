@@ -194,6 +194,16 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
 end );
 
 ##
+InstallMethod( NerveTruncatedInDegree2,
+        [ IsFpCategory ],
+        
+  function ( B )
+    
+    return AsObjectInFunctorCategory( NerveTruncatedInDegree2AsFunctor( B ) );
+    
+end );
+
+##
 InstallMethod( YonedaEmbedding,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
@@ -287,15 +297,5 @@ InstallMethod( YonedaFibration,
   function ( B )
     
     return AsMorphismInFunctorCategory( YonedaFibrationAsNaturalTransformation( B ) );
-    
-end );
-
-##
-InstallMethod( NerveTruncatedInDegree2,
-        [ IsFpCategory ],
-        
-  function ( B )
-    
-    return AsObjectInFunctorCategory( NerveTruncatedInDegree2AsFunctor( B ) );
     
 end );
