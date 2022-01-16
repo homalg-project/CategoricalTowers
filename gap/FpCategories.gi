@@ -1828,8 +1828,9 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         Sieves_maximal.(String( UnderlyingVertex( c ) )) := Sieves.(String( UnderlyingVertex( c ) ))[2];
     od;
     
-    ## The Yoneda embedding
-    ## Y: B ↪ FunctorCategory( B^op, H ), c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+    ## The Yoneda embedding Y: B ↪ H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c) and
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
     Y := Range( Ypt );
     
     ## ψ: c → d induces a morphsim Hom(-, ψ): Hom(-, c) → Hom(-, d),
