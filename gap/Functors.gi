@@ -389,8 +389,8 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                                        List( List( hom_c, f ->
                                                ## Is x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f)?
                                                IsLiftableAlongMonomorphism(
-                                                       ## ι_c: Q(c) ↪ P(c):
-                                                       iota( c ),
+                                                       ## ι_a: Q(a) ↪ P(a):
+                                                       iota( Bop_0[s_c( f )] ), ## = a
                                                        ## x P(f) ∈ P(a), where a = Source(f):
                                                        PreCompose(
                                                                ## x ∈ P(c):
