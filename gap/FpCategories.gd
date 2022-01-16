@@ -236,7 +236,7 @@ DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
 #!  $B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}$.
 #! @Arguments B
 #! @Returns a &CAP; natural transformation
-DeclareAttribute( "YonedaSourceFibrationAsNaturalTransformation", IsCapCategory );
+DeclareAttribute( "YonedaFibrationAsNaturalTransformation", IsCapCategory );
 
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is a natural epimorphism.

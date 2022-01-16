@@ -1725,7 +1725,7 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
 end );
 
 ##
-InstallMethod( YonedaSourceFibrationAsNaturalTransformation,
+InstallMethod( YonedaFibrationAsNaturalTransformation,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
