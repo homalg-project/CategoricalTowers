@@ -1895,9 +1895,9 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     Sieves_morphisms :=
       List( SetOfGeneratingMorphisms( B ),
             psi -> LiftAlongMonomorphism(
-                    Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
+                    Sieves_emb.(String( UnderlyingVertex( Source( psi ) ) )),
                     PreCompose(
-                            Sieves_emb.(String( UnderlyingVertex( Source( psi ) ) )),
+                            Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
                             actions.(StringView( psi )) ) ) );
     
     Sieves_functor := CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
