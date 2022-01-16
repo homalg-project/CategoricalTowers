@@ -305,19 +305,20 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
         [ IsFunctorCategory, IsMorphismInFunctorCategory ],
         
   function ( Hom, iota ) ## ι: Q ↪ P
-    local Q, P, Bop, B_0, B, H, D, emb, Omega, OmegaH, s, Y,
-          truth_values, bool, paths_to_truth;
+    local Q, P, Bop, Bop_0, B, B_0, H, D, emb, Omega, OmegaH, s, Y,
+          truth_values, into_OmegaH, paths_to_truth;
     
     ## B^op
     Bop := Source( Hom );
+    
+    Bop_0 := SetOfObjects( Bop );
     
     ## B^op → H
     Q := Source( iota );
     P := Range( iota );
     
-    B_0 := SetOfObjects( Bop );
-    
     B := OppositeFpCategory( Bop );
+    B_0 := SetOfObjects( B );
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
@@ -343,7 +344,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     truth_values := [ TruthMorphismOfTrue( H )( 1 ), TruthMorphismOfFalse( H )( 1 ) ];
     
     ## true ↦ 1, false ↦ 2
-    bool :=
+    into_OmegaH :=
       function ( b )
         if b then
             return truth_values[1];
@@ -355,13 +356,23 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     ## the sieve of all f ∈ Hom(-, c), such that x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f):
     paths_to_truth :=
       function ( c, x )
-        local hom_c, s_c, emb_c, sieve;
+        local c_in_B, hom_c, s_c, pr, emb_c, sieve;
+        
+        ## c in B
+        c_in_B := OppositePath( UnderlyingVertex( c ) ) / B;
         
         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
-        hom_c := Y( OppositePath( UnderlyingVertex( c ) ) / B );
+        hom_c := Y( c_in_B );
         
         ## Hom(-, c) → B_0
-        s_c := s( OppositePath( UnderlyingVertex( c ) ) / B );
+        s_c := s( c_in_B );
+        
+        pr := List( hom_c, f ->
+                    LiftAlongMonomorphism(
+                            InjectionOfCofactorOfCoproduct(
+                                    List( B_0, a -> HomStructure( a, c_in_B ) ),
+                                    s_c( f ) ),
+                            MapOfFinSets( D, [ f ], hom_c ) )(1) );
         
         ## Sieves(c) ↪ Hom(Hom(-, c), Ω)
         emb_c := emb( c );
@@ -386,11 +397,15 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                                                                x,
                                                                ## P(f): P(c) → P(a):
                                                                P(
-                                                                 ## f: a → c, where a = Source(f):
+                                                                 ## f: a → c in B, where a = Source(f):
                                                                  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
-                                                                         B_0[s_c( f )],
                                                                          c,
-                                                                         MapOfFinSets( D, [ f ], hom_c ) ) ) ) ) ), bool ),
+                                                                         Bop_0[s_c( f )], ## = a
+                                                                         MapOfFinSets(
+                                                                                 D,
+                                                                                 [ pr[ f ] ],
+                                                                                 HomStructure( c, Bop_0[s_c( f )] ) ) ) ) ) ) ),
+                                             into_OmegaH ),
                                        OmegaH ) ) )(1);
         
     end;
@@ -398,7 +413,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     ## χ: P → Ω
     return AsMorphismInFunctorCategory(
                    P,
-                   List( B_0,
+                   List( Bop_0,
                          c -> MapOfFinSets(
                                  P( c ),
                                  List( P( c ), x -> paths_to_truth( c, MapOfFinSets( D, [ x ], P( c ) ) ) ),
