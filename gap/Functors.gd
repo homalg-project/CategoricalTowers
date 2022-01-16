@@ -87,3 +87,21 @@ DeclareAttribute( "YonedaProjection", IsCapCategory );
 #! @Returns a morphism in a &CAP; category
 DeclareAttribute( "YonedaComposition", IsCapCategory );
 #! @InsertChunk YonedaComposition
+
+#! @Description
+#!  The input is a monomorphism <A>iota</A>:$Q \to P$ in the category of
+#!  presheaves with values in <C>RangeCategoryOfHomomorphismStructure</C>($C$)
+#!  on the finitely presented category
+#!  $C:=$<C>OppositeFpCategory</C>(<C>Source</C>($P$)) with finite $\mathrm{Hom}$-sets.
+#!  The output is the morphism from $P$ to
+#!  the <C>SieveFunctor</C>($C$) mapping for each $c \in C$ the element $x \in P(c)$
+#!  to its <Q>paths to truth</Q> $f: a \to c$ translating $x$ into $f(x) \in Q(a) \subseteq P(a)$.
+#! @Returns a monomorphisms in a Hom-category of functors
+#! @Arguments iota
+#! @Group SievesOfPathsToTruth
+DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInFunctorCategory );
+
+#! @Arguments Hom, iota
+#! @Group SievesOfPathsToTruth
+DeclareOperation( "SievesOfPathsToTruth",
+        [ IsFunctorCategory, IsMorphismInFunctorCategory ] );
