@@ -218,7 +218,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
           name, create_func_morphism,
           list_of_operations_to_install, skip, func, pos,
-          properties, preinstall, P, object_constructor, object_datum, morphism_constructor, morphism_datum, finalize;
+          properties, preinstall, P, object_constructor, object_datum, morphism_constructor, morphism_datum;
     
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
     
@@ -494,14 +494,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
               { cat, S, alpha, beta, T } -> InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat, S, alpha, beta, T ) );
             
         fi;
-        
-    fi;
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-        
-        return P;
         
     fi;
     
