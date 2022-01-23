@@ -4,9 +4,9 @@
 # Declarations
 #
 
-# @Chapter Coclosed monoidal categories
+#! @Chapter Tools
 
-# @Section Global functions
+#! @Section Global functions
 
 DeclareGlobalFunction( "CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES" );
 
