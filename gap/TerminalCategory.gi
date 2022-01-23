@@ -55,12 +55,27 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     list_of_operations_to_install :=
       Concatenation( List( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ), p -> CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(p) ) );
+
+    Append( list_of_operations_to_install,
+            [ "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+              "UniversalMorphismFromCoproductWithGivenCoproduct",
+              "Colift",
+              "Lift",
+              "IsColiftable",
+              "IsLiftable",
+               ] );
     
     for r in
       [ "BRAIDED_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
         "BRAIDED_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
         "DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
-        "DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" ] do
+        "DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
+        #"RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD",
+        #"RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD",
+        "CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD",
+        "FREYD_CATEGORIES_METHOD_NAME_RECORD",
+        "BOOLEAN_ALGEBRA_METHOD_NAME_RECORD",
+        ] do
 
         if IsBoundGlobal( r ) then
             Append( list_of_operations_to_install, RecNames( ValueGlobal( r ) ) );
@@ -73,6 +88,10 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     skip := [ "IsEqualForObjects",
               "IsEqualForMorphisms",
               "IsCongruentForMorphisms",
+              "MorphismToBidualWithGivenBidual",
+              "MorphismFromBidualWithGivenBidual",
+              "MorphismToCoBidualWithGivenCoBidual",
+              "MorphismFromCoBidualWithGivenCoBidual",
               ];
     
     for func in skip do
@@ -132,7 +151,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
                  morphism_datum := morphism_datum,
                  category_as_first_argument := true
                  );
-
+    
     ##
     AddIsWellDefinedForObjects( T,
       function( T, object )
