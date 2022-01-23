@@ -45,110 +45,109 @@ gap> exp_at := ExponentialOnObjects( a, t );;
 
 gap> T_op := Opposite( T );;
 
-gap> aop := Opposite( a );;
-gap> bop := Opposite( b );;
-gap> cop := Opposite( c );;
-gap> dop := Opposite( d );;
-gap> iop := Opposite( i );;
+gap> a_op := Opposite( a );;
+gap> b_op := Opposite( b );;
+gap> c_op := Opposite( c );;
+gap> d_op := Opposite( d );;
 
-gap> iop := InitialObject( T_op );;
-gap> top := TerminalObject( T_op );;
+gap> i_op := InitialObject( T_op );;
+gap> t_op := TerminalObject( T_op );;
 
-gap> a_coproduct_bop := Coproduct( aop, bop );;
-gap> b_coproduct_aop := Coproduct( bop, aop );;
-gap> c_coproduct_dop := Coproduct( cop, dop );;
-gap> d_coproduct_cop := Coproduct( dop, cop );;
+gap> a_coproduct_b_op := Coproduct( a_op, b_op );;
+gap> b_coproduct_a_op := Coproduct( b_op, a_op );;
+gap> c_coproduct_d_op := Coproduct( c_op, d_op );;
+gap> d_coproduct_c_op := Coproduct( d_op, c_op );;
 
-gap> i_coproduct_aop := Coproduct( iop, aop );;
-gap> a_coproduct_iop := Coproduct( aop, iop );;
+gap> i_coproduct_a_op := Coproduct( i_op, a_op );;
+gap> a_coproduct_i_op := Coproduct( a_op, i_op );;
 
-gap> t_coproduct_aop := Coproduct( top, aop );;
-gap> a_coproduct_top := Coproduct( aop, top );;
+gap> t_coproduct_a_op := Coproduct( t_op, a_op );;
+gap> a_coproduct_t_op := Coproduct( a_op, t_op );;
 
-gap> coexp_abop := CoexponentialOnObjects( aop, bop );;
-gap> coexp_baop := CoexponentialOnObjects( bop, aop );;
-gap> coexp_cdop := CoexponentialOnObjects( cop, dop );;
-gap> coexp_dcop := CoexponentialOnObjects( dop, cop );;
+gap> coexp_ab_op := CoexponentialOnObjects( a_op, b_op );;
+gap> coexp_ba_op := CoexponentialOnObjects( b_op, a_op );;
+gap> coexp_cd_op := CoexponentialOnObjects( c_op, d_op );;
+gap> coexp_dc_op := CoexponentialOnObjects( d_op, c_op );;
 
-gap> coexp_iaop := CoexponentialOnObjects( iop, aop );;
-gap> coexp_aiop := CoexponentialOnObjects( aop, iop );;
-gap> coexp_taop := CoexponentialOnObjects( top, aop );;
-gap> coexp_atop := CoexponentialOnObjects( aop, top );;
+gap> coexp_ia_op := CoexponentialOnObjects( i_op, a_op );;
+gap> coexp_ai_op := CoexponentialOnObjects( a_op, i_op );;
+gap> coexp_ta_op := CoexponentialOnObjects( t_op, a_op );;
+gap> coexp_at_op := CoexponentialOnObjects( a_op, t_op );;
 
 # Opposite correspondence on product objects
 
-gap> iop = Opposite( t );
+gap> i_op = Opposite( t );
 true
-gap> top = Opposite( i );
-true
-
-gap> a_coproduct_bop = Opposite( a_product_b );
-true
-gap> b_coproduct_aop = Opposite( b_product_a );
-true
-gap> c_coproduct_dop = Opposite( c_product_d );
-true
-gap> d_coproduct_cop = Opposite( d_product_c );
+gap> t_op = Opposite( i );
 true
 
-gap> i_coproduct_aop = Opposite( t_product_a );
+gap> a_coproduct_b_op = Opposite( a_product_b );
 true
-gap> a_coproduct_iop = Opposite( a_product_t );
+gap> b_coproduct_a_op = Opposite( b_product_a );
+true
+gap> c_coproduct_d_op = Opposite( c_product_d );
+true
+gap> d_coproduct_c_op = Opposite( d_product_c );
 true
 
-gap> t_coproduct_aop = Opposite( i_product_a );
+gap> i_coproduct_a_op = Opposite( t_product_a );
 true
-gap> a_coproduct_top = Opposite( a_product_i );
+gap> a_coproduct_i_op = Opposite( a_product_t );
 true
 
-gap> b_coproduct_aop = Opposite( c_product_d );
+gap> t_coproduct_a_op = Opposite( i_product_a );
 true
-gap> b_coproduct_aop = Opposite( d_product_c );
+gap> a_coproduct_t_op = Opposite( a_product_i );
 true
-gap> c_coproduct_dop = Opposite( a_product_b );
+
+gap> b_coproduct_a_op = Opposite( c_product_d );
 true
-gap> c_coproduct_dop = Opposite( b_product_a );
+gap> b_coproduct_a_op = Opposite( d_product_c );
+true
+gap> c_coproduct_d_op = Opposite( a_product_b );
+true
+gap> c_coproduct_d_op = Opposite( b_product_a );
 true
 
 # Opposite correspondence on (co)exps
 
-gap> coexp_abop = Opposite( exp_ba );
+gap> coexp_ab_op = Opposite( exp_ba );
 true
-gap> coexp_baop = Opposite( exp_ab );
+gap> coexp_ba_op = Opposite( exp_ab );
 true
-gap> coexp_cdop = Opposite( exp_dc );
+gap> coexp_cd_op = Opposite( exp_dc );
 true
-gap> coexp_dcop = Opposite( exp_cd );
-true
-
-gap> coexp_iaop = Opposite( exp_at );
-true
-gap> coexp_aiop = Opposite( exp_ta );
+gap> coexp_dc_op = Opposite( exp_cd );
 true
 
-gap> coexp_taop = Opposite( exp_ai );
+gap> coexp_ia_op = Opposite( exp_at );
 true
-gap> coexp_atop = Opposite( exp_ia );
+gap> coexp_ai_op = Opposite( exp_ta );
 true
 
-gap> coexp_cdop = Opposite( exp_ab );
+gap> coexp_ta_op = Opposite( exp_ai );
 true
-gap> coexp_cdop = Opposite( exp_ba );
+gap> coexp_at_op = Opposite( exp_ia );
 true
-gap> coexp_dcop = Opposite( exp_ab );
+
+gap> coexp_cd_op = Opposite( exp_ab );
 true
-gap> coexp_dcop = Opposite( exp_ba );
+gap> coexp_cd_op = Opposite( exp_ba );
+true
+gap> coexp_dc_op = Opposite( exp_ab );
+true
+gap> coexp_dc_op = Opposite( exp_ba );
 true
 
 # Opposite must be self-inverse
 
-gap> exp_ab = Opposite( coexp_baop );
+gap> exp_ab = Opposite( coexp_ba_op );
 true
-gap> exp_ba = Opposite( coexp_abop );
+gap> exp_ba = Opposite( coexp_ab_op );
 true
-gap> exp_cd = Opposite( coexp_dcop );
+gap> exp_cd = Opposite( coexp_dc_op );
 true
-gap> exp_dc = Opposite( coexp_cdop );
+gap> exp_dc = Opposite( coexp_cd_op );
 true
 
 # Convenience methods
@@ -171,22 +170,22 @@ true
 gap> exp_at = Exponential( a, t );
 true
 
-gap> coexp_abop = Coexponential( aop, bop );
+gap> coexp_ab_op = Coexponential( a_op, b_op );
 true
-gap> coexp_baop = Coexponential( bop, aop );
+gap> coexp_ba_op = Coexponential( b_op, a_op );
 true
-gap> coexp_cdop = Coexponential( cop, dop );
+gap> coexp_cd_op = Coexponential( c_op, d_op );
 true
-gap> coexp_dcop = Coexponential( dop, cop );
+gap> coexp_dc_op = Coexponential( d_op, c_op );
 true
 
-gap> coexp_iaop = Coexponential( iop, aop );
+gap> coexp_ia_op = Coexponential( i_op, a_op );
 true
-gap> coexp_aiop = Coexponential( aop, iop );
+gap> coexp_ai_op = Coexponential( a_op, i_op );
 true
-gap> coexp_taop = Coexponential( top, aop );
+gap> coexp_ta_op = Coexponential( t_op, a_op );
 true
-gap> coexp_atop = Coexponential( aop, top );
+gap> coexp_at_op = Coexponential( a_op, t_op );
 true
 
 ################################################################
@@ -219,27 +218,27 @@ gap> exp_beta_alpha := ExponentialOnMorphisms( beta, alpha );;
 
 # Morphisms for opposite of the terminal category
 
-gap> id_aop := IdentityMorphism( aop );;
-gap> id_bop := IdentityMorphism( bop );;
+gap> id_a_op := IdentityMorphism( a_op );;
+gap> id_b_op := IdentityMorphism( b_op );;
 
-gap> alphaop := Opposite( alpha );;
-gap> betaop := Opposite( beta );;
-gap> gammaop := Opposite( gamma );;
+gap> alpha_op := Opposite( alpha );;
+gap> beta_op := Opposite( beta );;
+gap> gamma_op := Opposite( gamma );;
 
-gap> alpha_gammaop := PostCompose( alphaop, gammaop );;
-gap> gamma_betaop := PostCompose( gammaop, betaop );;
-gap> alpha_gamma_betaop := PostCompose( [ alphaop, gammaop, betaop ] );;
+gap> alpha_gamma_op := PostCompose( alpha_op, gamma_op );;
+gap> gamma_beta_op := PostCompose( gamma_op, beta_op );;
+gap> alpha_gamma_beta_op := PostCompose( [ alpha_op, gamma_op, beta_op ] );;
 
-gap> alpha_coproduct_betaop := CoproductOnMorphisms( alphaop, betaop );;
-gap> beta_coproduct_alphaop := CoproductOnMorphisms( betaop, alphaop );;
+gap> alpha_coproduct_beta_op := CoproductOnMorphisms( alpha_op, beta_op );;
+gap> beta_coproduct_alpha_op := CoproductOnMorphisms( beta_op, alpha_op );;
 
-gap> coexp_alpha_id_aop := CoexponentialOnMorphisms( alphaop, id_aop );;
-gap> coexp_alpha_id_bop := CoexponentialOnMorphisms( alphaop, id_bop );;
-gap> coexp_id_a_alphaop := CoexponentialOnMorphisms( id_aop, alphaop );;
-gap> coexp_id_b_alphaop := CoexponentialOnMorphisms( id_bop, alphaop );;
+gap> coexp_alpha_id_a_op := CoexponentialOnMorphisms( alpha_op, id_a_op );;
+gap> coexp_alpha_id_b_op := CoexponentialOnMorphisms( alpha_op, id_b_op );;
+gap> coexp_id_a_alpha_op := CoexponentialOnMorphisms( id_a_op, alpha_op );;
+gap> coexp_id_b_alpha_op := CoexponentialOnMorphisms( id_b_op, alpha_op );;
 
-gap> coexp_alpha_betaop := CoexponentialOnMorphisms( alphaop, betaop );;
-gap> coexp_beta_alphaop := CoexponentialOnMorphisms( betaop, alphaop );;
+gap> coexp_alpha_beta_op := CoexponentialOnMorphisms( alpha_op, beta_op );;
+gap> coexp_beta_alpha_op := CoexponentialOnMorphisms( beta_op, alpha_op );;
 
 # Check if morphisms are well-defined
 
@@ -250,59 +249,59 @@ true
 gap> IsWellDefined( gamma );
 true
 
-gap> IsWellDefined( alphaop );
+gap> IsWellDefined( alpha_op );
 true
-gap> IsWellDefined( betaop );
+gap> IsWellDefined( beta_op );
 true
-gap> IsWellDefined( gammaop );
+gap> IsWellDefined( gamma_op );
 true
 
 # Opposite correspondence on products of morphisms
 
-gap> alpha_coproduct_betaop = Opposite( alpha_product_beta );
+gap> alpha_coproduct_beta_op = Opposite( alpha_product_beta );
 true
-gap> beta_coproduct_alphaop = Opposite( beta_product_alpha );
+gap> beta_coproduct_alpha_op = Opposite( beta_product_alpha );
 true
 
 # Opposite correspondence on (co)exps
 
-gap> coexp_alpha_betaop = Opposite( exp_beta_alpha );
+gap> coexp_alpha_beta_op = Opposite( exp_beta_alpha );
 true
-gap> coexp_beta_alphaop = Opposite( exp_alpha_beta );
+gap> coexp_beta_alpha_op = Opposite( exp_alpha_beta );
 true
 
-gap> coexp_alpha_betaop = Opposite( exp_alpha_beta );
+gap> coexp_alpha_beta_op = Opposite( exp_alpha_beta );
 true
-gap> coexp_beta_alphaop = Opposite( exp_beta_alpha );
+gap> coexp_beta_alpha_op = Opposite( exp_beta_alpha );
 true
 
 # Opposite correspondence on compositions of morphisms
 
-gap> alpha_gammaop = Opposite( alpha_gamma );
+gap> alpha_gamma_op = Opposite( alpha_gamma );
 true
-gap> gamma_betaop = Opposite( gamma_beta );
+gap> gamma_beta_op = Opposite( gamma_beta );
 true
-gap> alpha_gamma_betaop = Opposite( alpha_gamma_beta );
+gap> alpha_gamma_beta_op = Opposite( alpha_gamma_beta );
 true
 
-gap> alpha_gammaop = Opposite( gamma_beta );
+gap> alpha_gamma_op = Opposite( gamma_beta );
 false
-gap> alpha_gammaop = Opposite( alpha_gamma_beta );
+gap> alpha_gamma_op = Opposite( alpha_gamma_beta );
 false
-gap> gamma_betaop = Opposite( alpha_gamma );
+gap> gamma_beta_op = Opposite( alpha_gamma );
 false
-gap> gamma_betaop = Opposite( alpha_gamma_beta );
+gap> gamma_beta_op = Opposite( alpha_gamma_beta );
 false
-gap> alpha_gamma_betaop = Opposite( alpha_gamma );
+gap> alpha_gamma_beta_op = Opposite( alpha_gamma );
 false
-gap> alpha_gamma_betaop = Opposite( gamma_beta );
+gap> alpha_gamma_beta_op = Opposite( gamma_beta );
 false
 
 # Opposite must be self-inverse
 
-gap> exp_alpha_beta = Opposite( coexp_beta_alphaop );
+gap> exp_alpha_beta = Opposite( coexp_beta_alpha_op );
 true
-gap> exp_beta_alpha = Opposite( coexp_alpha_betaop );
+gap> exp_beta_alpha = Opposite( coexp_alpha_beta_op );
 true
 
 # Convenience methods in the opposite category
@@ -312,18 +311,18 @@ true
 gap> exp_beta_alpha = Exponential( beta, alpha );
 true
 
-gap> coexp_alpha_betaop = Coexponential( alphaop, betaop );
+gap> coexp_alpha_beta_op = Coexponential( alpha_op, beta_op );
 true
-gap> coexp_beta_alphaop = Coexponential( betaop, alphaop );
+gap> coexp_beta_alpha_op = Coexponential( beta_op, alpha_op );
 true
 
-gap> coexp_alpha_id_aop = Coexponential( alphaop, aop );
+gap> coexp_alpha_id_a_op = Coexponential( alpha_op, a_op );
 true
-gap> coexp_alpha_id_bop = Coexponential( alphaop, bop );
+gap> coexp_alpha_id_b_op = Coexponential( alpha_op, b_op );
 true
-gap> coexp_id_a_alphaop = Coexponential( aop, alphaop );
+gap> coexp_id_a_alpha_op = Coexponential( a_op, alpha_op );
 true
-gap> coexp_id_b_alphaop = Coexponential( bop, alphaop );
+gap> coexp_id_b_alpha_op = Coexponential( b_op, alpha_op );
 true
 
 ######################################################
@@ -339,12 +338,12 @@ gap> cart_left_unitor_d := CartesianLeftUnitor( d );;
 gap> cart_left_unitor_i := CartesianLeftUnitor( i );;
 gap> cart_left_unitor_t := CartesianLeftUnitor( t );;
 
-gap> cart_left_unitor_aop := CartesianLeftUnitor( aop );;
-gap> cart_left_unitor_bop := CartesianLeftUnitor( bop );;
-gap> cart_left_unitor_cop := CartesianLeftUnitor( cop );;
-gap> cart_left_unitor_dop := CartesianLeftUnitor( dop );;
-gap> cart_left_unitor_iop := CartesianLeftUnitor( iop );;
-gap> cart_left_unitor_top := CartesianLeftUnitor( top );;
+gap> cart_left_unitor_a_op := CartesianLeftUnitor( a_op );;
+gap> cart_left_unitor_b_op := CartesianLeftUnitor( b_op );;
+gap> cart_left_unitor_c_op := CartesianLeftUnitor( c_op );;
+gap> cart_left_unitor_d_op := CartesianLeftUnitor( d_op );;
+gap> cart_left_unitor_i_op := CartesianLeftUnitor( i_op );;
+gap> cart_left_unitor_t_op := CartesianLeftUnitor( t_op );;
 
 gap> cart_right_unitor_a := CartesianRightUnitor( a );;
 gap> cart_right_unitor_b := CartesianRightUnitor( b );;
@@ -353,12 +352,12 @@ gap> cart_right_unitor_d := CartesianRightUnitor( d );;
 gap> cart_right_unitor_i := CartesianRightUnitor( i );;
 gap> cart_right_unitor_t := CartesianRightUnitor( t );;
 
-gap> cart_right_unitor_aop := CartesianRightUnitor( aop );;
-gap> cart_right_unitor_bop := CartesianRightUnitor( bop );;
-gap> cart_right_unitor_cop := CartesianRightUnitor( cop );;
-gap> cart_right_unitor_dop := CartesianRightUnitor( dop );;
-gap> cart_right_unitor_iop := CartesianRightUnitor( iop );;
-gap> cart_right_unitor_top := CartesianRightUnitor( top );;
+gap> cart_right_unitor_a_op := CartesianRightUnitor( a_op );;
+gap> cart_right_unitor_b_op := CartesianRightUnitor( b_op );;
+gap> cart_right_unitor_c_op := CartesianRightUnitor( c_op );;
+gap> cart_right_unitor_d_op := CartesianRightUnitor( d_op );;
+gap> cart_right_unitor_i_op := CartesianRightUnitor( i_op );;
+gap> cart_right_unitor_t_op := CartesianRightUnitor( t_op );;
 
 # Cocartesian unitors
 
@@ -369,12 +368,12 @@ gap> cocart_left_unitor_d := CocartesianLeftUnitor( d );;
 gap> cocart_left_unitor_i := CocartesianLeftUnitor( i );;
 gap> cocart_left_unitor_t := CocartesianLeftUnitor( t );;
 
-gap> cocart_left_unitor_aop := CocartesianLeftUnitor( aop );;
-gap> cocart_left_unitor_bop := CocartesianLeftUnitor( bop );;
-gap> cocart_left_unitor_cop := CocartesianLeftUnitor( cop );;
-gap> cocart_left_unitor_dop := CocartesianLeftUnitor( dop );;
-gap> cocart_left_unitor_iop := CocartesianLeftUnitor( iop );;
-gap> cocart_left_unitor_top := CocartesianLeftUnitor( top );;
+gap> cocart_left_unitor_a_op := CocartesianLeftUnitor( a_op );;
+gap> cocart_left_unitor_b_op := CocartesianLeftUnitor( b_op );;
+gap> cocart_left_unitor_c_op := CocartesianLeftUnitor( c_op );;
+gap> cocart_left_unitor_d_op := CocartesianLeftUnitor( d_op );;
+gap> cocart_left_unitor_i_op := CocartesianLeftUnitor( i_op );;
+gap> cocart_left_unitor_t_op := CocartesianLeftUnitor( t_op );;
 
 gap> cocart_right_unitor_a := CocartesianRightUnitor( a );;
 gap> cocart_right_unitor_b := CocartesianRightUnitor( b );;
@@ -383,12 +382,12 @@ gap> cocart_right_unitor_d := CocartesianRightUnitor( d );;
 gap> cocart_right_unitor_i := CocartesianRightUnitor( i );;
 gap> cocart_right_unitor_t := CocartesianRightUnitor( t );;
 
-gap> cocart_right_unitor_aop := CocartesianRightUnitor( aop );;
-gap> cocart_right_unitor_bop := CocartesianRightUnitor( bop );;
-gap> cocart_right_unitor_cop := CocartesianRightUnitor( cop );;
-gap> cocart_right_unitor_dop := CocartesianRightUnitor( dop );;
-gap> cocart_right_unitor_iop := CocartesianRightUnitor( iop );;
-gap> cocart_right_unitor_top := CocartesianRightUnitor( top );;
+gap> cocart_right_unitor_a_op := CocartesianRightUnitor( a_op );;
+gap> cocart_right_unitor_b_op := CocartesianRightUnitor( b_op );;
+gap> cocart_right_unitor_c_op := CocartesianRightUnitor( c_op );;
+gap> cocart_right_unitor_d_op := CocartesianRightUnitor( d_op );;
+gap> cocart_right_unitor_i_op := CocartesianRightUnitor( i_op );;
+gap> cocart_right_unitor_t_op := CocartesianRightUnitor( t_op );;
 
 # Inverse cartesian unitors
 
@@ -399,12 +398,12 @@ gap> cart_left_unitor_inverse_d := CartesianLeftUnitorInverse( d );;
 gap> cart_left_unitor_inverse_i := CartesianLeftUnitorInverse( i );;
 gap> cart_left_unitor_inverse_t := CartesianLeftUnitorInverse( t );;
 
-gap> cart_left_unitor_inverse_aop := CartesianLeftUnitorInverse( aop );;
-gap> cart_left_unitor_inverse_bop := CartesianLeftUnitorInverse( bop );;
-gap> cart_left_unitor_inverse_cop := CartesianLeftUnitorInverse( cop );;
-gap> cart_left_unitor_inverse_dop := CartesianLeftUnitorInverse( dop );;
-gap> cart_left_unitor_inverse_iop := CartesianLeftUnitorInverse( iop );;
-gap> cart_left_unitor_inverse_top := CartesianLeftUnitorInverse( top );;
+gap> cart_left_unitor_inverse_a_op := CartesianLeftUnitorInverse( a_op );;
+gap> cart_left_unitor_inverse_b_op := CartesianLeftUnitorInverse( b_op );;
+gap> cart_left_unitor_inverse_c_op := CartesianLeftUnitorInverse( c_op );;
+gap> cart_left_unitor_inverse_d_op := CartesianLeftUnitorInverse( d_op );;
+gap> cart_left_unitor_inverse_i_op := CartesianLeftUnitorInverse( i_op );;
+gap> cart_left_unitor_inverse_t_op := CartesianLeftUnitorInverse( t_op );;
 
 gap> cart_right_unitor_inverse_a := CartesianRightUnitorInverse( a );;
 gap> cart_right_unitor_inverse_b := CartesianRightUnitorInverse( b );;
@@ -413,12 +412,12 @@ gap> cart_right_unitor_inverse_d := CartesianRightUnitorInverse( d );;
 gap> cart_right_unitor_inverse_i := CartesianRightUnitorInverse( i );;
 gap> cart_right_unitor_inverse_t := CartesianRightUnitorInverse( t );;
 
-gap> cart_right_unitor_inverse_aop := CartesianRightUnitorInverse( aop );;
-gap> cart_right_unitor_inverse_bop := CartesianRightUnitorInverse( bop );;
-gap> cart_right_unitor_inverse_cop := CartesianRightUnitorInverse( cop );;
-gap> cart_right_unitor_inverse_dop := CartesianRightUnitorInverse( dop );;
-gap> cart_right_unitor_inverse_iop := CartesianRightUnitorInverse( iop );;
-gap> cart_right_unitor_inverse_top := CartesianRightUnitorInverse( top );;
+gap> cart_right_unitor_inverse_a_op := CartesianRightUnitorInverse( a_op );;
+gap> cart_right_unitor_inverse_b_op := CartesianRightUnitorInverse( b_op );;
+gap> cart_right_unitor_inverse_c_op := CartesianRightUnitorInverse( c_op );;
+gap> cart_right_unitor_inverse_d_op := CartesianRightUnitorInverse( d_op );;
+gap> cart_right_unitor_inverse_i_op := CartesianRightUnitorInverse( i_op );;
+gap> cart_right_unitor_inverse_t_op := CartesianRightUnitorInverse( t_op );;
 
 # Inverse cocartesian unitors
 
@@ -429,12 +428,12 @@ gap> cocart_left_unitor_inverse_d := CocartesianLeftUnitorInverse( d );;
 gap> cocart_left_unitor_inverse_i := CocartesianLeftUnitorInverse( i );;
 gap> cocart_left_unitor_inverse_t := CocartesianLeftUnitorInverse( t );;
 
-gap> cocart_left_unitor_inverse_aop := CocartesianLeftUnitorInverse( aop );;
-gap> cocart_left_unitor_inverse_bop := CocartesianLeftUnitorInverse( bop );;
-gap> cocart_left_unitor_inverse_cop := CocartesianLeftUnitorInverse( cop );;
-gap> cocart_left_unitor_inverse_dop := CocartesianLeftUnitorInverse( dop );;
-gap> cocart_left_unitor_inverse_iop := CocartesianLeftUnitorInverse( iop );;
-gap> cocart_left_unitor_inverse_top := CocartesianLeftUnitorInverse( top );;
+gap> cocart_left_unitor_inverse_a_op := CocartesianLeftUnitorInverse( a_op );;
+gap> cocart_left_unitor_inverse_b_op := CocartesianLeftUnitorInverse( b_op );;
+gap> cocart_left_unitor_inverse_c_op := CocartesianLeftUnitorInverse( c_op );;
+gap> cocart_left_unitor_inverse_d_op := CocartesianLeftUnitorInverse( d_op );;
+gap> cocart_left_unitor_inverse_i_op := CocartesianLeftUnitorInverse( i_op );;
+gap> cocart_left_unitor_inverse_t_op := CocartesianLeftUnitorInverse( t_op );;
 
 gap> cocart_right_unitor_inverse_a := CocartesianRightUnitorInverse( a );;
 gap> cocart_right_unitor_inverse_b := CocartesianRightUnitorInverse( b );;
@@ -443,223 +442,223 @@ gap> cocart_right_unitor_inverse_d := CocartesianRightUnitorInverse( d );;
 gap> cocart_right_unitor_inverse_i := CocartesianRightUnitorInverse( i );;
 gap> cocart_right_unitor_inverse_t := CocartesianRightUnitorInverse( t );;
 
-gap> cocart_right_unitor_inverse_aop := CocartesianRightUnitorInverse( aop );;
-gap> cocart_right_unitor_inverse_bop := CocartesianRightUnitorInverse( bop );;
-gap> cocart_right_unitor_inverse_cop := CocartesianRightUnitorInverse( cop );;
-gap> cocart_right_unitor_inverse_dop := CocartesianRightUnitorInverse( dop );;
-gap> cocart_right_unitor_inverse_iop := CocartesianRightUnitorInverse( iop );;
-gap> cocart_right_unitor_inverse_top := CocartesianRightUnitorInverse( top );;
+gap> cocart_right_unitor_inverse_a_op := CocartesianRightUnitorInverse( a_op );;
+gap> cocart_right_unitor_inverse_b_op := CocartesianRightUnitorInverse( b_op );;
+gap> cocart_right_unitor_inverse_c_op := CocartesianRightUnitorInverse( c_op );;
+gap> cocart_right_unitor_inverse_d_op := CocartesianRightUnitorInverse( d_op );;
+gap> cocart_right_unitor_inverse_i_op := CocartesianRightUnitorInverse( i_op );;
+gap> cocart_right_unitor_inverse_t_op := CocartesianRightUnitorInverse( t_op );;
 
 # Opposite correspondence
 
 # Left unitors
 
-gap> cart_left_unitor_aop = Opposite( cocart_left_unitor_inverse_a );
+gap> cart_left_unitor_a_op = Opposite( cocart_left_unitor_inverse_a );
 true
-gap> cart_left_unitor_bop = Opposite( cocart_left_unitor_inverse_b );
+gap> cart_left_unitor_b_op = Opposite( cocart_left_unitor_inverse_b );
 true
-gap> cart_left_unitor_cop = Opposite( cocart_left_unitor_inverse_c );
+gap> cart_left_unitor_c_op = Opposite( cocart_left_unitor_inverse_c );
 true
-gap> cart_left_unitor_dop = Opposite( cocart_left_unitor_inverse_d );
+gap> cart_left_unitor_d_op = Opposite( cocart_left_unitor_inverse_d );
 true
-gap> cart_left_unitor_iop = Opposite( cocart_left_unitor_inverse_t );
+gap> cart_left_unitor_i_op = Opposite( cocart_left_unitor_inverse_t );
 true
-gap> cart_left_unitor_top = Opposite( cocart_left_unitor_inverse_i );
+gap> cart_left_unitor_t_op = Opposite( cocart_left_unitor_inverse_i );
 true
 
-gap> cocart_left_unitor_aop = Opposite( cart_left_unitor_inverse_a );
+gap> cocart_left_unitor_a_op = Opposite( cart_left_unitor_inverse_a );
 true
-gap> cocart_left_unitor_bop = Opposite( cart_left_unitor_inverse_b );
+gap> cocart_left_unitor_b_op = Opposite( cart_left_unitor_inverse_b );
 true
-gap> cocart_left_unitor_cop = Opposite( cart_left_unitor_inverse_c );
+gap> cocart_left_unitor_c_op = Opposite( cart_left_unitor_inverse_c );
 true
-gap> cocart_left_unitor_dop = Opposite( cart_left_unitor_inverse_d );
+gap> cocart_left_unitor_d_op = Opposite( cart_left_unitor_inverse_d );
 true
-gap> cocart_left_unitor_iop = Opposite( cart_left_unitor_inverse_t );
+gap> cocart_left_unitor_i_op = Opposite( cart_left_unitor_inverse_t );
 true
-gap> cocart_left_unitor_top = Opposite( cart_left_unitor_inverse_i );
+gap> cocart_left_unitor_t_op = Opposite( cart_left_unitor_inverse_i );
 true
 
 # Left unitor inverses
 
-gap> cart_left_unitor_inverse_aop = Opposite( cocart_left_unitor_a );
+gap> cart_left_unitor_inverse_a_op = Opposite( cocart_left_unitor_a );
 true
-gap> cart_left_unitor_inverse_bop = Opposite( cocart_left_unitor_b );
+gap> cart_left_unitor_inverse_b_op = Opposite( cocart_left_unitor_b );
 true
-gap> cart_left_unitor_inverse_cop = Opposite( cocart_left_unitor_c );
+gap> cart_left_unitor_inverse_c_op = Opposite( cocart_left_unitor_c );
 true
-gap> cart_left_unitor_inverse_dop = Opposite( cocart_left_unitor_d );
+gap> cart_left_unitor_inverse_d_op = Opposite( cocart_left_unitor_d );
 true
-gap> cart_left_unitor_inverse_iop = Opposite( cocart_left_unitor_t );
+gap> cart_left_unitor_inverse_i_op = Opposite( cocart_left_unitor_t );
 true
-gap> cart_left_unitor_inverse_top = Opposite( cocart_left_unitor_i );
+gap> cart_left_unitor_inverse_t_op = Opposite( cocart_left_unitor_i );
 true
 
-gap> cocart_left_unitor_inverse_aop = Opposite( cart_left_unitor_a );
+gap> cocart_left_unitor_inverse_a_op = Opposite( cart_left_unitor_a );
 true
-gap> cocart_left_unitor_inverse_bop = Opposite( cart_left_unitor_b );
+gap> cocart_left_unitor_inverse_b_op = Opposite( cart_left_unitor_b );
 true
-gap> cocart_left_unitor_inverse_cop = Opposite( cart_left_unitor_c );
+gap> cocart_left_unitor_inverse_c_op = Opposite( cart_left_unitor_c );
 true
-gap> cocart_left_unitor_inverse_dop = Opposite( cart_left_unitor_d );
+gap> cocart_left_unitor_inverse_d_op = Opposite( cart_left_unitor_d );
 true
-gap> cocart_left_unitor_inverse_iop = Opposite( cart_left_unitor_t );
+gap> cocart_left_unitor_inverse_i_op = Opposite( cart_left_unitor_t );
 true
-gap> cocart_left_unitor_inverse_top = Opposite( cart_left_unitor_i );
+gap> cocart_left_unitor_inverse_t_op = Opposite( cart_left_unitor_i );
 true
 
 # Right unitors
 
-gap> cart_right_unitor_aop = Opposite( cocart_right_unitor_inverse_a );
+gap> cart_right_unitor_a_op = Opposite( cocart_right_unitor_inverse_a );
 true
-gap> cart_right_unitor_bop = Opposite( cocart_right_unitor_inverse_b );
+gap> cart_right_unitor_b_op = Opposite( cocart_right_unitor_inverse_b );
 true
-gap> cart_right_unitor_cop = Opposite( cocart_right_unitor_inverse_c );
+gap> cart_right_unitor_c_op = Opposite( cocart_right_unitor_inverse_c );
 true
-gap> cart_right_unitor_dop = Opposite( cocart_right_unitor_inverse_d );
+gap> cart_right_unitor_d_op = Opposite( cocart_right_unitor_inverse_d );
 true
-gap> cart_right_unitor_iop = Opposite( cocart_right_unitor_inverse_t );
+gap> cart_right_unitor_i_op = Opposite( cocart_right_unitor_inverse_t );
 true
-gap> cart_right_unitor_top = Opposite( cocart_right_unitor_inverse_i );
+gap> cart_right_unitor_t_op = Opposite( cocart_right_unitor_inverse_i );
 true
 
-gap> cocart_right_unitor_aop = Opposite( cart_right_unitor_inverse_a );
+gap> cocart_right_unitor_a_op = Opposite( cart_right_unitor_inverse_a );
 true
-gap> cocart_right_unitor_bop = Opposite( cart_right_unitor_inverse_b );
+gap> cocart_right_unitor_b_op = Opposite( cart_right_unitor_inverse_b );
 true
-gap> cocart_right_unitor_cop = Opposite( cart_right_unitor_inverse_c );
+gap> cocart_right_unitor_c_op = Opposite( cart_right_unitor_inverse_c );
 true
-gap> cocart_right_unitor_dop = Opposite( cart_right_unitor_inverse_d );
+gap> cocart_right_unitor_d_op = Opposite( cart_right_unitor_inverse_d );
 true
-gap> cocart_right_unitor_iop = Opposite( cart_right_unitor_inverse_t );
+gap> cocart_right_unitor_i_op = Opposite( cart_right_unitor_inverse_t );
 true
-gap> cocart_right_unitor_top = Opposite( cart_right_unitor_inverse_i );
+gap> cocart_right_unitor_t_op = Opposite( cart_right_unitor_inverse_i );
 true
 
 # Right unitor inverses
 
-gap> cart_right_unitor_inverse_aop = Opposite( cocart_right_unitor_a );
+gap> cart_right_unitor_inverse_a_op = Opposite( cocart_right_unitor_a );
 true
-gap> cart_right_unitor_inverse_bop = Opposite( cocart_right_unitor_b );
+gap> cart_right_unitor_inverse_b_op = Opposite( cocart_right_unitor_b );
 true
-gap> cart_right_unitor_inverse_cop = Opposite( cocart_right_unitor_c );
+gap> cart_right_unitor_inverse_c_op = Opposite( cocart_right_unitor_c );
 true
-gap> cart_right_unitor_inverse_dop = Opposite( cocart_right_unitor_d );
+gap> cart_right_unitor_inverse_d_op = Opposite( cocart_right_unitor_d );
 true
-gap> cart_right_unitor_inverse_iop = Opposite( cocart_right_unitor_t );
+gap> cart_right_unitor_inverse_i_op = Opposite( cocart_right_unitor_t );
 true
-gap> cart_right_unitor_inverse_top = Opposite( cocart_right_unitor_i );
+gap> cart_right_unitor_inverse_t_op = Opposite( cocart_right_unitor_i );
 true
 
-gap> cocart_right_unitor_inverse_aop = Opposite( cart_right_unitor_a );
+gap> cocart_right_unitor_inverse_a_op = Opposite( cart_right_unitor_a );
 true
-gap> cocart_right_unitor_inverse_bop = Opposite( cart_right_unitor_b );
+gap> cocart_right_unitor_inverse_b_op = Opposite( cart_right_unitor_b );
 true
-gap> cocart_right_unitor_inverse_cop = Opposite( cart_right_unitor_c );
+gap> cocart_right_unitor_inverse_c_op = Opposite( cart_right_unitor_c );
 true
-gap> cocart_right_unitor_inverse_dop = Opposite( cart_right_unitor_d );
+gap> cocart_right_unitor_inverse_d_op = Opposite( cart_right_unitor_d );
 true
-gap> cocart_right_unitor_inverse_iop = Opposite( cart_right_unitor_t );
+gap> cocart_right_unitor_inverse_i_op = Opposite( cart_right_unitor_t );
 true
-gap> cocart_right_unitor_inverse_top = Opposite( cart_right_unitor_i );
+gap> cocart_right_unitor_inverse_t_op = Opposite( cart_right_unitor_i );
 true
 
 # False tests
 
 # Left unitors
 
-gap> cart_left_unitor_bop = Opposite( cocart_left_unitor_inverse_a );
+gap> cart_left_unitor_b_op = Opposite( cocart_left_unitor_inverse_a );
 false
-gap> cart_left_unitor_bop = Opposite( cocart_left_unitor_inverse_c );
+gap> cart_left_unitor_b_op = Opposite( cocart_left_unitor_inverse_c );
 false
-gap> cart_left_unitor_bop = Opposite( cocart_left_unitor_inverse_d );
+gap> cart_left_unitor_b_op = Opposite( cocart_left_unitor_inverse_d );
 false
-gap> cart_left_unitor_bop = Opposite( cart_left_unitor_inverse_b );
+gap> cart_left_unitor_b_op = Opposite( cart_left_unitor_inverse_b );
 false
-gap> cart_left_unitor_bop = Opposite( cart_left_unitor_b );
+gap> cart_left_unitor_b_op = Opposite( cart_left_unitor_b );
 false
 
-gap> cocart_left_unitor_bop = Opposite( cart_left_unitor_inverse_a );
+gap> cocart_left_unitor_b_op = Opposite( cart_left_unitor_inverse_a );
 false
-gap> cocart_left_unitor_bop = Opposite( cart_left_unitor_inverse_c );
+gap> cocart_left_unitor_b_op = Opposite( cart_left_unitor_inverse_c );
 false
-gap> cocart_left_unitor_bop = Opposite( cart_left_unitor_inverse_d );
+gap> cocart_left_unitor_b_op = Opposite( cart_left_unitor_inverse_d );
 false
-gap> cocart_left_unitor_bop = Opposite( cocart_left_unitor_inverse_b );
+gap> cocart_left_unitor_b_op = Opposite( cocart_left_unitor_inverse_b );
 false
-gap> cocart_left_unitor_bop = Opposite( cocart_left_unitor_b );
+gap> cocart_left_unitor_b_op = Opposite( cocart_left_unitor_b );
 false
 
 # Left unitor inverses
 
-gap> cart_left_unitor_inverse_cop = Opposite( cocart_left_unitor_a );
+gap> cart_left_unitor_inverse_c_op = Opposite( cocart_left_unitor_a );
 false
-gap> cart_left_unitor_inverse_cop = Opposite( cocart_left_unitor_b );
+gap> cart_left_unitor_inverse_c_op = Opposite( cocart_left_unitor_b );
 false
-gap> cart_left_unitor_inverse_cop = Opposite( cocart_left_unitor_d );
+gap> cart_left_unitor_inverse_c_op = Opposite( cocart_left_unitor_d );
 false
-gap> cart_left_unitor_inverse_cop = Opposite( cart_left_unitor_d );
+gap> cart_left_unitor_inverse_c_op = Opposite( cart_left_unitor_d );
 false
-gap> cart_left_unitor_inverse_cop = Opposite( cart_left_unitor_inverse_c );
+gap> cart_left_unitor_inverse_c_op = Opposite( cart_left_unitor_inverse_c );
 false
 
-gap> cocart_left_unitor_inverse_cop = Opposite( cart_left_unitor_a );
+gap> cocart_left_unitor_inverse_c_op = Opposite( cart_left_unitor_a );
 false
-gap> cocart_left_unitor_inverse_cop = Opposite( cart_left_unitor_b );
+gap> cocart_left_unitor_inverse_c_op = Opposite( cart_left_unitor_b );
 false
-gap> cocart_left_unitor_inverse_cop = Opposite( cart_left_unitor_d );
+gap> cocart_left_unitor_inverse_c_op = Opposite( cart_left_unitor_d );
 false
-gap> cocart_left_unitor_inverse_cop = Opposite( cocart_left_unitor_c );
+gap> cocart_left_unitor_inverse_c_op = Opposite( cocart_left_unitor_c );
 false
-gap> cocart_left_unitor_inverse_cop = Opposite( cocart_left_unitor_inverse_c );
+gap> cocart_left_unitor_inverse_c_op = Opposite( cocart_left_unitor_inverse_c );
 false
 
 # Right unitors
 
-gap> cart_right_unitor_aop = Opposite( cocart_right_unitor_inverse_b );
+gap> cart_right_unitor_a_op = Opposite( cocart_right_unitor_inverse_b );
 false
-gap> cart_right_unitor_aop = Opposite( cocart_right_unitor_inverse_c );
+gap> cart_right_unitor_a_op = Opposite( cocart_right_unitor_inverse_c );
 false
-gap> cart_right_unitor_aop = Opposite( cocart_right_unitor_inverse_d );
+gap> cart_right_unitor_a_op = Opposite( cocart_right_unitor_inverse_d );
 false
-gap> cart_right_unitor_aop = Opposite( cart_right_unitor_inverse_a );
+gap> cart_right_unitor_a_op = Opposite( cart_right_unitor_inverse_a );
 false
-gap> cart_right_unitor_aop = Opposite( cart_right_unitor_a );
+gap> cart_right_unitor_a_op = Opposite( cart_right_unitor_a );
 false
 
-gap> cocart_right_unitor_aop = Opposite( cart_right_unitor_inverse_b );
+gap> cocart_right_unitor_a_op = Opposite( cart_right_unitor_inverse_b );
 false
-gap> cocart_right_unitor_aop = Opposite( cart_right_unitor_inverse_c );
+gap> cocart_right_unitor_a_op = Opposite( cart_right_unitor_inverse_c );
 false
-gap> cocart_right_unitor_aop = Opposite( cart_right_unitor_inverse_d );
+gap> cocart_right_unitor_a_op = Opposite( cart_right_unitor_inverse_d );
 false
-gap> cocart_right_unitor_aop = Opposite( cocart_right_unitor_inverse_a );
+gap> cocart_right_unitor_a_op = Opposite( cocart_right_unitor_inverse_a );
 false
-gap> cocart_right_unitor_aop = Opposite( cocart_right_unitor_a );
+gap> cocart_right_unitor_a_op = Opposite( cocart_right_unitor_a );
 false
 
 # Right unitor inverses
 
-gap> cart_right_unitor_inverse_dop = Opposite( cocart_right_unitor_a );
+gap> cart_right_unitor_inverse_d_op = Opposite( cocart_right_unitor_a );
 false
-gap> cart_right_unitor_inverse_dop = Opposite( cocart_right_unitor_b );
+gap> cart_right_unitor_inverse_d_op = Opposite( cocart_right_unitor_b );
 false
-gap> cart_right_unitor_inverse_dop = Opposite( cocart_right_unitor_c );
+gap> cart_right_unitor_inverse_d_op = Opposite( cocart_right_unitor_c );
 false
-gap> cart_right_unitor_inverse_dop = Opposite( cart_right_unitor_d );
+gap> cart_right_unitor_inverse_d_op = Opposite( cart_right_unitor_d );
 false
-gap> cart_right_unitor_inverse_dop = Opposite( cart_right_unitor_inverse_d );
+gap> cart_right_unitor_inverse_d_op = Opposite( cart_right_unitor_inverse_d );
 false
 
-gap> cocart_right_unitor_inverse_dop = Opposite( cart_right_unitor_a );
+gap> cocart_right_unitor_inverse_d_op = Opposite( cart_right_unitor_a );
 false
-gap> cocart_right_unitor_inverse_dop = Opposite( cart_right_unitor_b );
+gap> cocart_right_unitor_inverse_d_op = Opposite( cart_right_unitor_b );
 false
-gap> cocart_right_unitor_inverse_dop = Opposite( cart_right_unitor_c );
+gap> cocart_right_unitor_inverse_d_op = Opposite( cart_right_unitor_c );
 false
-gap> cocart_right_unitor_inverse_dop = Opposite( cocart_right_unitor_d );
+gap> cocart_right_unitor_inverse_d_op = Opposite( cocart_right_unitor_d );
 false
-gap> cocart_right_unitor_inverse_dop = Opposite( cocart_right_unitor_inverse_d );
+gap> cocart_right_unitor_inverse_d_op = Opposite( cocart_right_unitor_inverse_d );
 false
 
 ######################################################
@@ -676,13 +675,13 @@ gap> cart_associator_left_to_right_dcb := CartesianAssociatorLeftToRight( d, c, 
 gap> cart_associator_left_to_right_dib := CartesianAssociatorLeftToRight( d, i, b );;
 gap> cart_associator_left_to_right_dtb := CartesianAssociatorLeftToRight( d, t, b );;
 
-gap> cart_associator_left_to_right_abcop := CartesianAssociatorLeftToRight( aop, bop, cop );;
-gap> cart_associator_left_to_right_bcdop := CartesianAssociatorLeftToRight( bop, cop, dop );;
-gap> cart_associator_left_to_right_acdop := CartesianAssociatorLeftToRight( aop, cop, dop );;
-gap> cart_associator_left_to_right_cbaop := CartesianAssociatorLeftToRight( cop, bop, aop );;
-gap> cart_associator_left_to_right_dcbop := CartesianAssociatorLeftToRight( dop, cop, bop );;
-gap> cart_associator_left_to_right_dibop := CartesianAssociatorLeftToRight( dop, iop, bop );;
-gap> cart_associator_left_to_right_dtbop := CartesianAssociatorLeftToRight( dop, top, bop );;
+gap> cart_associator_left_to_right_abc_op := CartesianAssociatorLeftToRight( a_op, b_op, c_op );;
+gap> cart_associator_left_to_right_bcd_op := CartesianAssociatorLeftToRight( b_op, c_op, d_op );;
+gap> cart_associator_left_to_right_acd_op := CartesianAssociatorLeftToRight( a_op, c_op, d_op );;
+gap> cart_associator_left_to_right_cba_op := CartesianAssociatorLeftToRight( c_op, b_op, a_op );;
+gap> cart_associator_left_to_right_dcb_op := CartesianAssociatorLeftToRight( d_op, c_op, b_op );;
+gap> cart_associator_left_to_right_dib_op := CartesianAssociatorLeftToRight( d_op, i_op, b_op );;
+gap> cart_associator_left_to_right_dtb_op := CartesianAssociatorLeftToRight( d_op, t_op, b_op );;
 
 gap> cart_associator_right_to_left_abc := CartesianAssociatorRightToLeft( a, b, c );;
 gap> cart_associator_right_to_left_bcd := CartesianAssociatorRightToLeft( b, c, d );;
@@ -692,13 +691,13 @@ gap> cart_associator_right_to_left_dcb := CartesianAssociatorRightToLeft( d, c, 
 gap> cart_associator_right_to_left_dib := CartesianAssociatorRightToLeft( d, i, b );;
 gap> cart_associator_right_to_left_dtb := CartesianAssociatorRightToLeft( d, t, b );;
 
-gap> cart_associator_right_to_left_abcop := CartesianAssociatorRightToLeft( aop, bop, cop );;
-gap> cart_associator_right_to_left_bcdop := CartesianAssociatorRightToLeft( bop, cop, dop );;
-gap> cart_associator_right_to_left_acdop := CartesianAssociatorRightToLeft( aop, cop, dop );;
-gap> cart_associator_right_to_left_cbaop := CartesianAssociatorRightToLeft( cop, bop, aop );;
-gap> cart_associator_right_to_left_dcbop := CartesianAssociatorRightToLeft( dop, cop, bop );;
-gap> cart_associator_right_to_left_dibop := CartesianAssociatorRightToLeft( dop, iop, bop );;
-gap> cart_associator_right_to_left_dtbop := CartesianAssociatorRightToLeft( dop, top, bop );;
+gap> cart_associator_right_to_left_abc_op := CartesianAssociatorRightToLeft( a_op, b_op, c_op );;
+gap> cart_associator_right_to_left_bcd_op := CartesianAssociatorRightToLeft( b_op, c_op, d_op );;
+gap> cart_associator_right_to_left_acd_op := CartesianAssociatorRightToLeft( a_op, c_op, d_op );;
+gap> cart_associator_right_to_left_cba_op := CartesianAssociatorRightToLeft( c_op, b_op, a_op );;
+gap> cart_associator_right_to_left_dcb_op := CartesianAssociatorRightToLeft( d_op, c_op, b_op );;
+gap> cart_associator_right_to_left_dib_op := CartesianAssociatorRightToLeft( d_op, i_op, b_op );;
+gap> cart_associator_right_to_left_dtb_op := CartesianAssociatorRightToLeft( d_op, t_op, b_op );;
 
 # Coartesian associators
 
@@ -710,13 +709,13 @@ gap> cocart_associator_left_to_right_dcb := CocartesianAssociatorLeftToRight( d,
 gap> cocart_associator_left_to_right_dib := CocartesianAssociatorLeftToRight( d, i, b );;
 gap> cocart_associator_left_to_right_dtb := CocartesianAssociatorLeftToRight( d, t, b );;
 
-gap> cocart_associator_left_to_right_abcop := CocartesianAssociatorLeftToRight( aop, bop, cop );;
-gap> cocart_associator_left_to_right_bcdop := CocartesianAssociatorLeftToRight( bop, cop, dop );;
-gap> cocart_associator_left_to_right_acdop := CocartesianAssociatorLeftToRight( aop, cop, dop );;
-gap> cocart_associator_left_to_right_cbaop := CocartesianAssociatorLeftToRight( cop, bop, aop );;
-gap> cocart_associator_left_to_right_dcbop := CocartesianAssociatorLeftToRight( dop, cop, bop );;
-gap> cocart_associator_left_to_right_dibop := CocartesianAssociatorLeftToRight( dop, iop, bop );;
-gap> cocart_associator_left_to_right_dtbop := CocartesianAssociatorLeftToRight( dop, top, bop );;
+gap> cocart_associator_left_to_right_abc_op := CocartesianAssociatorLeftToRight( a_op, b_op, c_op );;
+gap> cocart_associator_left_to_right_bcd_op := CocartesianAssociatorLeftToRight( b_op, c_op, d_op );;
+gap> cocart_associator_left_to_right_acd_op := CocartesianAssociatorLeftToRight( a_op, c_op, d_op );;
+gap> cocart_associator_left_to_right_cba_op := CocartesianAssociatorLeftToRight( c_op, b_op, a_op );;
+gap> cocart_associator_left_to_right_dcb_op := CocartesianAssociatorLeftToRight( d_op, c_op, b_op );;
+gap> cocart_associator_left_to_right_dib_op := CocartesianAssociatorLeftToRight( d_op, i_op, b_op );;
+gap> cocart_associator_left_to_right_dtb_op := CocartesianAssociatorLeftToRight( d_op, t_op, b_op );;
 
 gap> cocart_associator_right_to_left_abc := CocartesianAssociatorRightToLeft( a, b, c );;
 gap> cocart_associator_right_to_left_bcd := CocartesianAssociatorRightToLeft( b, c, d );;
@@ -726,162 +725,162 @@ gap> cocart_associator_right_to_left_dcb := CocartesianAssociatorRightToLeft( d,
 gap> cocart_associator_right_to_left_dib := CocartesianAssociatorRightToLeft( d, i, b );;
 gap> cocart_associator_right_to_left_dtb := CocartesianAssociatorRightToLeft( d, t, b );;
 
-gap> cocart_associator_right_to_left_abcop := CocartesianAssociatorRightToLeft( aop, bop, cop );;
-gap> cocart_associator_right_to_left_bcdop := CocartesianAssociatorRightToLeft( bop, cop, dop );;
-gap> cocart_associator_right_to_left_acdop := CocartesianAssociatorRightToLeft( aop, cop, dop );;
-gap> cocart_associator_right_to_left_cbaop := CocartesianAssociatorRightToLeft( cop, bop, aop );;
-gap> cocart_associator_right_to_left_dcbop := CocartesianAssociatorRightToLeft( dop, cop, bop );;
-gap> cocart_associator_right_to_left_dibop := CocartesianAssociatorRightToLeft( dop, iop, bop );;
-gap> cocart_associator_right_to_left_dtbop := CocartesianAssociatorRightToLeft( dop, top, bop );;
+gap> cocart_associator_right_to_left_abc_op := CocartesianAssociatorRightToLeft( a_op, b_op, c_op );;
+gap> cocart_associator_right_to_left_bcd_op := CocartesianAssociatorRightToLeft( b_op, c_op, d_op );;
+gap> cocart_associator_right_to_left_acd_op := CocartesianAssociatorRightToLeft( a_op, c_op, d_op );;
+gap> cocart_associator_right_to_left_cba_op := CocartesianAssociatorRightToLeft( c_op, b_op, a_op );;
+gap> cocart_associator_right_to_left_dcb_op := CocartesianAssociatorRightToLeft( d_op, c_op, b_op );;
+gap> cocart_associator_right_to_left_dib_op := CocartesianAssociatorRightToLeft( d_op, i_op, b_op );;
+gap> cocart_associator_right_to_left_dtb_op := CocartesianAssociatorRightToLeft( d_op, t_op, b_op );;
 
 # Opposite correspondence
 
-gap> cart_associator_left_to_right_abcop = Opposite( cocart_associator_right_to_left_abc );
+gap> cart_associator_left_to_right_abc_op = Opposite( cocart_associator_right_to_left_abc );
 true
-gap> cart_associator_left_to_right_bcdop = Opposite( cocart_associator_right_to_left_bcd );
+gap> cart_associator_left_to_right_bcd_op = Opposite( cocart_associator_right_to_left_bcd );
 true
-gap> cart_associator_left_to_right_acdop = Opposite( cocart_associator_right_to_left_acd );
+gap> cart_associator_left_to_right_acd_op = Opposite( cocart_associator_right_to_left_acd );
 true
-gap> cart_associator_left_to_right_cbaop = Opposite( cocart_associator_right_to_left_cba );
+gap> cart_associator_left_to_right_cba_op = Opposite( cocart_associator_right_to_left_cba );
 true
-gap> cart_associator_left_to_right_dcbop = Opposite( cocart_associator_right_to_left_dcb );
+gap> cart_associator_left_to_right_dcb_op = Opposite( cocart_associator_right_to_left_dcb );
 true
-gap> cart_associator_left_to_right_dibop = Opposite( cocart_associator_right_to_left_dtb );
+gap> cart_associator_left_to_right_dib_op = Opposite( cocart_associator_right_to_left_dtb );
 true
-gap> cart_associator_left_to_right_dtbop = Opposite( cocart_associator_right_to_left_dib );
-true
-
-gap> cocart_associator_left_to_right_abcop = Opposite( cart_associator_right_to_left_abc );
-true
-gap> cocart_associator_left_to_right_bcdop = Opposite( cart_associator_right_to_left_bcd );
-true
-gap> cocart_associator_left_to_right_acdop = Opposite( cart_associator_right_to_left_acd );
-true
-gap> cocart_associator_left_to_right_cbaop = Opposite( cart_associator_right_to_left_cba );
-true
-gap> cocart_associator_left_to_right_dcbop = Opposite( cart_associator_right_to_left_dcb );
-true
-gap> cocart_associator_left_to_right_dibop = Opposite( cart_associator_right_to_left_dtb );
-true
-gap> cocart_associator_left_to_right_dtbop = Opposite( cart_associator_right_to_left_dib );
+gap> cart_associator_left_to_right_dtb_op = Opposite( cocart_associator_right_to_left_dib );
 true
 
-gap> cart_associator_right_to_left_abcop = Opposite( cocart_associator_left_to_right_abc );
+gap> cocart_associator_left_to_right_abc_op = Opposite( cart_associator_right_to_left_abc );
 true
-gap> cart_associator_right_to_left_bcdop = Opposite( cocart_associator_left_to_right_bcd );
+gap> cocart_associator_left_to_right_bcd_op = Opposite( cart_associator_right_to_left_bcd );
 true
-gap> cart_associator_right_to_left_acdop = Opposite( cocart_associator_left_to_right_acd );
+gap> cocart_associator_left_to_right_acd_op = Opposite( cart_associator_right_to_left_acd );
 true
-gap> cart_associator_right_to_left_cbaop = Opposite( cocart_associator_left_to_right_cba );
+gap> cocart_associator_left_to_right_cba_op = Opposite( cart_associator_right_to_left_cba );
 true
-gap> cart_associator_right_to_left_dcbop = Opposite( cocart_associator_left_to_right_dcb );
+gap> cocart_associator_left_to_right_dcb_op = Opposite( cart_associator_right_to_left_dcb );
 true
-gap> cart_associator_right_to_left_dibop = Opposite( cocart_associator_left_to_right_dtb );
+gap> cocart_associator_left_to_right_dib_op = Opposite( cart_associator_right_to_left_dtb );
 true
-gap> cart_associator_right_to_left_dtbop = Opposite( cocart_associator_left_to_right_dib );
+gap> cocart_associator_left_to_right_dtb_op = Opposite( cart_associator_right_to_left_dib );
 true
 
-gap> cocart_associator_right_to_left_abcop = Opposite( cart_associator_left_to_right_abc );
+gap> cart_associator_right_to_left_abc_op = Opposite( cocart_associator_left_to_right_abc );
 true
-gap> cocart_associator_right_to_left_bcdop = Opposite( cart_associator_left_to_right_bcd );
+gap> cart_associator_right_to_left_bcd_op = Opposite( cocart_associator_left_to_right_bcd );
 true
-gap> cocart_associator_right_to_left_acdop = Opposite( cart_associator_left_to_right_acd );
+gap> cart_associator_right_to_left_acd_op = Opposite( cocart_associator_left_to_right_acd );
 true
-gap> cocart_associator_right_to_left_cbaop = Opposite( cart_associator_left_to_right_cba );
+gap> cart_associator_right_to_left_cba_op = Opposite( cocart_associator_left_to_right_cba );
 true
-gap> cocart_associator_right_to_left_dcbop = Opposite( cart_associator_left_to_right_dcb );
+gap> cart_associator_right_to_left_dcb_op = Opposite( cocart_associator_left_to_right_dcb );
 true
-gap> cart_associator_right_to_left_dibop = Opposite( cocart_associator_left_to_right_dtb );
+gap> cart_associator_right_to_left_dib_op = Opposite( cocart_associator_left_to_right_dtb );
 true
-gap> cart_associator_right_to_left_dtbop = Opposite( cocart_associator_left_to_right_dib );
+gap> cart_associator_right_to_left_dtb_op = Opposite( cocart_associator_left_to_right_dib );
+true
+
+gap> cocart_associator_right_to_left_abc_op = Opposite( cart_associator_left_to_right_abc );
+true
+gap> cocart_associator_right_to_left_bcd_op = Opposite( cart_associator_left_to_right_bcd );
+true
+gap> cocart_associator_right_to_left_acd_op = Opposite( cart_associator_left_to_right_acd );
+true
+gap> cocart_associator_right_to_left_cba_op = Opposite( cart_associator_left_to_right_cba );
+true
+gap> cocart_associator_right_to_left_dcb_op = Opposite( cart_associator_left_to_right_dcb );
+true
+gap> cart_associator_right_to_left_dib_op = Opposite( cocart_associator_left_to_right_dtb );
+true
+gap> cart_associator_right_to_left_dtb_op = Opposite( cocart_associator_left_to_right_dib );
 true
 
 # False Tests
 
-gap> cart_associator_left_to_right_cbaop = Opposite( cocart_associator_right_to_left_bcd );
+gap> cart_associator_left_to_right_cba_op = Opposite( cocart_associator_right_to_left_bcd );
 true
-gap> cart_associator_left_to_right_cbaop = Opposite( cocart_associator_right_to_left_acd );
+gap> cart_associator_left_to_right_cba_op = Opposite( cocart_associator_right_to_left_acd );
 true
-gap> cart_associator_left_to_right_cbaop = Opposite( cocart_associator_right_to_left_dcb );
-true
-
-gap> cocart_associator_left_to_right_cbaop = Opposite( cart_associator_right_to_left_bcd );
-true
-gap> cocart_associator_left_to_right_cbaop = Opposite( cart_associator_right_to_left_acd );
-true
-gap> cocart_associator_left_to_right_cbaop = Opposite( cart_associator_right_to_left_dcb );
+gap> cart_associator_left_to_right_cba_op = Opposite( cocart_associator_right_to_left_dcb );
 true
 
-gap> cart_associator_right_to_left_acdop = Opposite( cocart_associator_left_to_right_abc );
+gap> cocart_associator_left_to_right_cba_op = Opposite( cart_associator_right_to_left_bcd );
 true
-gap> cart_associator_right_to_left_acdop = Opposite( cocart_associator_left_to_right_bcd );
+gap> cocart_associator_left_to_right_cba_op = Opposite( cart_associator_right_to_left_acd );
 true
-gap> cart_associator_right_to_left_acdop = Opposite( cocart_associator_left_to_right_cba );
+gap> cocart_associator_left_to_right_cba_op = Opposite( cart_associator_right_to_left_dcb );
 true
 
-gap> cocart_associator_right_to_left_acdop = Opposite( cart_associator_left_to_right_abc );
+gap> cart_associator_right_to_left_acd_op = Opposite( cocart_associator_left_to_right_abc );
 true
-gap> cocart_associator_right_to_left_acdop = Opposite( cart_associator_left_to_right_bcd );
+gap> cart_associator_right_to_left_acd_op = Opposite( cocart_associator_left_to_right_bcd );
 true
-gap> cocart_associator_right_to_left_acdop = Opposite( cart_associator_left_to_right_cba );
+gap> cart_associator_right_to_left_acd_op = Opposite( cocart_associator_left_to_right_cba );
+true
+
+gap> cocart_associator_right_to_left_acd_op = Opposite( cart_associator_left_to_right_abc );
+true
+gap> cocart_associator_right_to_left_acd_op = Opposite( cart_associator_left_to_right_bcd );
+true
+gap> cocart_associator_right_to_left_acd_op = Opposite( cart_associator_left_to_right_cba );
 true
 
 # False tests with initial/terminal objects
 
-gap> cart_associator_left_to_right_dibop = Opposite( cocart_associator_right_to_left_dib );
+gap> cart_associator_left_to_right_dib_op = Opposite( cocart_associator_right_to_left_dib );
 true
-gap> cart_associator_left_to_right_dibop = Opposite( cart_associator_right_to_left_dib );
+gap> cart_associator_left_to_right_dib_op = Opposite( cart_associator_right_to_left_dib );
 false
-gap> cart_associator_left_to_right_dibop = Opposite( cart_associator_right_to_left_dtb );
+gap> cart_associator_left_to_right_dib_op = Opposite( cart_associator_right_to_left_dtb );
 false
 
-gap> cart_associator_left_to_right_dtbop = Opposite( cocart_associator_right_to_left_dtb );
+gap> cart_associator_left_to_right_dtb_op = Opposite( cocart_associator_right_to_left_dtb );
 true
-gap> cart_associator_left_to_right_dtbop = Opposite( cart_associator_right_to_left_dtb );
+gap> cart_associator_left_to_right_dtb_op = Opposite( cart_associator_right_to_left_dtb );
 false
-gap> cart_associator_left_to_right_dtbop = Opposite( cart_associator_right_to_left_dib );
+gap> cart_associator_left_to_right_dtb_op = Opposite( cart_associator_right_to_left_dib );
 false
 
-gap> cocart_associator_left_to_right_dibop = Opposite( cart_associator_right_to_left_dib );
+gap> cocart_associator_left_to_right_dib_op = Opposite( cart_associator_right_to_left_dib );
 true
-gap> cocart_associator_left_to_right_dibop = Opposite( cocart_associator_right_to_left_dib );
+gap> cocart_associator_left_to_right_dib_op = Opposite( cocart_associator_right_to_left_dib );
 false
-gap> cocart_associator_left_to_right_dibop = Opposite( cocart_associator_right_to_left_dtb );
+gap> cocart_associator_left_to_right_dib_op = Opposite( cocart_associator_right_to_left_dtb );
 false
 
-gap> cocart_associator_left_to_right_dtbop = Opposite( cart_associator_right_to_left_dtb );
+gap> cocart_associator_left_to_right_dtb_op = Opposite( cart_associator_right_to_left_dtb );
 true
-gap> cocart_associator_left_to_right_dtbop = Opposite( cocart_associator_right_to_left_dtb );
+gap> cocart_associator_left_to_right_dtb_op = Opposite( cocart_associator_right_to_left_dtb );
 false
-gap> cocart_associator_left_to_right_dtbop = Opposite( cocart_associator_right_to_left_dib );
+gap> cocart_associator_left_to_right_dtb_op = Opposite( cocart_associator_right_to_left_dib );
 false
 
-gap> cart_associator_right_to_left_dibop = Opposite( cocart_associator_left_to_right_dib );
+gap> cart_associator_right_to_left_dib_op = Opposite( cocart_associator_left_to_right_dib );
 true
-gap> cart_associator_right_to_left_dibop = Opposite( cart_associator_left_to_right_dib );
+gap> cart_associator_right_to_left_dib_op = Opposite( cart_associator_left_to_right_dib );
 false
-gap> cart_associator_right_to_left_dibop = Opposite( cart_associator_left_to_right_dtb );
+gap> cart_associator_right_to_left_dib_op = Opposite( cart_associator_left_to_right_dtb );
 false
 
-gap> cart_associator_right_to_left_dtbop = Opposite( cocart_associator_left_to_right_dtb );
+gap> cart_associator_right_to_left_dtb_op = Opposite( cocart_associator_left_to_right_dtb );
 true
-gap> cart_associator_right_to_left_dtbop = Opposite( cart_associator_left_to_right_dtb );
+gap> cart_associator_right_to_left_dtb_op = Opposite( cart_associator_left_to_right_dtb );
 false
-gap> cart_associator_right_to_left_dtbop = Opposite( cart_associator_left_to_right_dib );
+gap> cart_associator_right_to_left_dtb_op = Opposite( cart_associator_left_to_right_dib );
 false
 
-gap> cocart_associator_right_to_left_dibop = Opposite( cart_associator_left_to_right_dib );
+gap> cocart_associator_right_to_left_dib_op = Opposite( cart_associator_left_to_right_dib );
 true
-gap> cocart_associator_right_to_left_dibop = Opposite( cocart_associator_left_to_right_dib );
+gap> cocart_associator_right_to_left_dib_op = Opposite( cocart_associator_left_to_right_dib );
 false
-gap> cocart_associator_right_to_left_dibop = Opposite( cocart_associator_left_to_right_dtb );
+gap> cocart_associator_right_to_left_dib_op = Opposite( cocart_associator_left_to_right_dtb );
 false
 
-gap> cocart_associator_right_to_left_dtbop = Opposite( cart_associator_left_to_right_dtb );
+gap> cocart_associator_right_to_left_dtb_op = Opposite( cart_associator_left_to_right_dtb );
 true
-gap> cocart_associator_right_to_left_dtbop = Opposite( cocart_associator_left_to_right_dtb );
+gap> cocart_associator_right_to_left_dtb_op = Opposite( cocart_associator_left_to_right_dtb );
 false
-gap> cocart_associator_right_to_left_dtbop = Opposite( cocart_associator_left_to_right_dib );
+gap> cocart_associator_right_to_left_dtb_op = Opposite( cocart_associator_left_to_right_dib );
 false
 
 ######################################################
@@ -900,15 +899,15 @@ gap> cartesian_braiding_a_t := CartesianBraiding( a, t );;
 
 # Add tests once these morphisms are available
 
-# gap> cartesian_braiding_a_bop := CartesianBraiding( aop, bop );;
-# gap> cartesian_braiding_b_aop := CartesianBraiding( bop, aop );;
-# gap> cartesian_braiding_c_dop := CartesianBraiding( cop, dop );;
-# gap> cartesian_braiding_d_cop := CartesianBraiding( dop, cop );;
+# gap> cartesian_braiding_a_b_op := CartesianBraiding( a_op, b_op );;
+# gap> cartesian_braiding_b_a_op := CartesianBraiding( b_op, a_op );;
+# gap> cartesian_braiding_c_d_op := CartesianBraiding( c_op, d_op );;
+# gap> cartesian_braiding_d_c_op := CartesianBraiding( d_op, c_op );;
 
-# gap> cartesian_braiding_i_aop := CartesianBraiding( iop, aop );;
-# gap> cartesian_braiding_a_iop := CartesianBraiding( aop, iop );;
-# gap> cartesian_braiding_t_aop := CartesianBraiding( top, aop );;
-# gap> cartesian_braiding_a_top := CartesianBraiding( aop, top );;
+# gap> cartesian_braiding_i_a_op := CartesianBraiding( i_op, a_op );;
+# gap> cartesian_braiding_a_i_op := CartesianBraiding( a_op, i_op );;
+# gap> cartesian_braiding_t_a_op := CartesianBraiding( t_op, a_op );;
+# gap> cartesian_braiding_a_t_op := CartesianBraiding( a_op, t_op );;
 
 # gap> cocartesian_braiding_a_b := CocartesianBraiding( a, b );;
 # gap> cocartesian_braiding_b_a := CocartesianBraiding( b, a );;
@@ -920,15 +919,15 @@ gap> cartesian_braiding_a_t := CartesianBraiding( a, t );;
 # gap> cocartesian_braiding_t_a := CocartesianBraiding( t, a );;
 # gap> cocartesian_braiding_a_t := CocartesianBraiding( a, t );;
 
-gap> cocartesian_braiding_a_bop := CocartesianBraiding( aop, bop );;
-gap> cocartesian_braiding_b_aop := CocartesianBraiding( bop, aop );;
-gap> cocartesian_braiding_c_dop := CocartesianBraiding( cop, dop );;
-gap> cocartesian_braiding_d_cop := CocartesianBraiding( dop, cop );;
+gap> cocartesian_braiding_a_b_op := CocartesianBraiding( a_op, b_op );;
+gap> cocartesian_braiding_b_a_op := CocartesianBraiding( b_op, a_op );;
+gap> cocartesian_braiding_c_d_op := CocartesianBraiding( c_op, d_op );;
+gap> cocartesian_braiding_d_c_op := CocartesianBraiding( d_op, c_op );;
 
-gap> cocartesian_braiding_i_aop := CocartesianBraiding( iop, aop );;
-gap> cocartesian_braiding_a_iop := CocartesianBraiding( aop, iop );;
-gap> cocartesian_braiding_t_aop := CocartesianBraiding( top, aop );;
-gap> cocartesian_braiding_a_top := CocartesianBraiding( aop, top );;
+gap> cocartesian_braiding_i_a_op := CocartesianBraiding( i_op, a_op );;
+gap> cocartesian_braiding_a_i_op := CocartesianBraiding( a_op, i_op );;
+gap> cocartesian_braiding_t_a_op := CocartesianBraiding( t_op, a_op );;
+gap> cocartesian_braiding_a_t_op := CocartesianBraiding( a_op, t_op );;
 
 gap> cartesian_braiding_inverse_a_b := CartesianBraidingInverse( a, b );;
 gap> cartesian_braiding_inverse_b_a := CartesianBraidingInverse( b, a );;
@@ -952,96 +951,96 @@ gap> cartesian_braiding_inverse_a_t := CartesianBraidingInverse( a, t );;
 # gap> cocartesian_braiding_inverse_t_a := CocartesianBraidingInverse( t, a );;
 # gap> cocartesian_braiding_inverse_a_t := CocartesianBraidingInverse( a, t );;
 
-# gap> cartesian_braiding_inverse_a_bop := CartesianBraidingInverse( aop, bop );;
-# gap> cartesian_braiding_inverse_b_aop := CartesianBraidingInverse( bop, aop );;
-# gap> cartesian_braiding_inverse_c_dop := CartesianBraidingInverse( cop, dop );;
-# gap> cartesian_braiding_inverse_d_cop := CartesianBraidingInverse( dop, cop );;
+# gap> cartesian_braiding_inverse_a_b_op := CartesianBraidingInverse( a_op, b_op );;
+# gap> cartesian_braiding_inverse_b_a_op := CartesianBraidingInverse( b_op, a_op );;
+# gap> cartesian_braiding_inverse_c_d_op := CartesianBraidingInverse( c_op, d_op );;
+# gap> cartesian_braiding_inverse_d_c_op := CartesianBraidingInverse( d_op, c_op );;
 
-# gap> cartesian_braiding_inverse_i_aop := CartesianBraidingInverse( iop, aop );;
-# gap> cartesian_braiding_inverse_a_iop := CartesianBraidingInverse( aop, iop );;
-# gap> cartesian_braiding_inverse_t_aop := CartesianBraidingInverse( top, aop );;
-# gap> cartesian_braiding_inverse_a_top := CartesianBraidingInverse( aop, top );;
+# gap> cartesian_braiding_inverse_i_a_op := CartesianBraidingInverse( i_op, a_op );;
+# gap> cartesian_braiding_inverse_a_i_op := CartesianBraidingInverse( a_op, i_op );;
+# gap> cartesian_braiding_inverse_t_a_op := CartesianBraidingInverse( t_op, a_op );;
+# gap> cartesian_braiding_inverse_a_t_op := CartesianBraidingInverse( a_op, t_op );;
 
-gap> cocartesian_braiding_inverse_a_bop := CocartesianBraidingInverse( aop, bop );;
-gap> cocartesian_braiding_inverse_b_aop := CocartesianBraidingInverse( bop, aop );;
-gap> cocartesian_braiding_inverse_c_dop := CocartesianBraidingInverse( cop, dop );;
-gap> cocartesian_braiding_inverse_d_cop := CocartesianBraidingInverse( dop, cop );;
+gap> cocartesian_braiding_inverse_a_b_op := CocartesianBraidingInverse( a_op, b_op );;
+gap> cocartesian_braiding_inverse_b_a_op := CocartesianBraidingInverse( b_op, a_op );;
+gap> cocartesian_braiding_inverse_c_d_op := CocartesianBraidingInverse( c_op, d_op );;
+gap> cocartesian_braiding_inverse_d_c_op := CocartesianBraidingInverse( d_op, c_op );;
 
-gap> cocartesian_braiding_inverse_i_aop := CocartesianBraidingInverse( iop, aop );;
-gap> cocartesian_braiding_inverse_a_iop := CocartesianBraidingInverse( aop, iop );;
-gap> cocartesian_braiding_inverse_t_aop := CocartesianBraidingInverse( top, aop );;
-gap> cocartesian_braiding_inverse_a_top := CocartesianBraidingInverse( aop, top );;
+gap> cocartesian_braiding_inverse_i_a_op := CocartesianBraidingInverse( i_op, a_op );;
+gap> cocartesian_braiding_inverse_a_i_op := CocartesianBraidingInverse( a_op, i_op );;
+gap> cocartesian_braiding_inverse_t_a_op := CocartesianBraidingInverse( t_op, a_op );;
+gap> cocartesian_braiding_inverse_a_t_op := CocartesianBraidingInverse( a_op, t_op );;
 
 # Opposite correspondence
 
-gap> cocartesian_braiding_a_bop = Opposite( cartesian_braiding_inverse_a_b );
+gap> cocartesian_braiding_a_b_op = Opposite( cartesian_braiding_inverse_a_b );
 true
-gap> cocartesian_braiding_b_aop = Opposite( cartesian_braiding_inverse_b_a );
+gap> cocartesian_braiding_b_a_op = Opposite( cartesian_braiding_inverse_b_a );
 true
-gap> cocartesian_braiding_c_dop = Opposite( cartesian_braiding_inverse_c_d );
+gap> cocartesian_braiding_c_d_op = Opposite( cartesian_braiding_inverse_c_d );
 true
-gap> cocartesian_braiding_d_cop = Opposite( cartesian_braiding_inverse_d_c );
+gap> cocartesian_braiding_d_c_op = Opposite( cartesian_braiding_inverse_d_c );
 true
-gap> cocartesian_braiding_i_aop = Opposite( cartesian_braiding_inverse_t_a );
+gap> cocartesian_braiding_i_a_op = Opposite( cartesian_braiding_inverse_t_a );
 true
-gap> cocartesian_braiding_a_iop = Opposite( cartesian_braiding_inverse_a_t );
+gap> cocartesian_braiding_a_i_op = Opposite( cartesian_braiding_inverse_a_t );
 true
-gap> cocartesian_braiding_t_aop = Opposite( cartesian_braiding_inverse_i_a );
+gap> cocartesian_braiding_t_a_op = Opposite( cartesian_braiding_inverse_i_a );
 true
-gap> cocartesian_braiding_a_top = Opposite( cartesian_braiding_inverse_a_i );
-true
-
-gap> cocartesian_braiding_inverse_a_bop = Opposite( cartesian_braiding_a_b );
-true
-gap> cocartesian_braiding_inverse_b_aop = Opposite( cartesian_braiding_b_a );
-true
-gap> cocartesian_braiding_inverse_c_dop = Opposite( cartesian_braiding_c_d );
-true
-gap> cocartesian_braiding_inverse_d_cop = Opposite( cartesian_braiding_d_c );
-true
-gap> cocartesian_braiding_inverse_i_aop = Opposite( cartesian_braiding_t_a );
-true
-gap> cocartesian_braiding_inverse_a_iop = Opposite( cartesian_braiding_a_t );
-true
-gap> cocartesian_braiding_inverse_t_aop = Opposite( cartesian_braiding_i_a );
-true
-gap> cocartesian_braiding_inverse_a_top = Opposite( cartesian_braiding_a_i );
+gap> cocartesian_braiding_a_t_op = Opposite( cartesian_braiding_inverse_a_i );
 true
 
-gap> cocartesian_braiding_a_bop = Opposite( cartesian_braiding_inverse_b_a );
+gap> cocartesian_braiding_inverse_a_b_op = Opposite( cartesian_braiding_a_b );
 true
-gap> cocartesian_braiding_a_bop = Opposite( cartesian_braiding_inverse_c_d );
+gap> cocartesian_braiding_inverse_b_a_op = Opposite( cartesian_braiding_b_a );
 true
-gap> cocartesian_braiding_a_bop = Opposite( cartesian_braiding_inverse_d_c );
+gap> cocartesian_braiding_inverse_c_d_op = Opposite( cartesian_braiding_c_d );
 true
-gap> cocartesian_braiding_i_aop = Opposite( cartesian_braiding_inverse_a_t );
+gap> cocartesian_braiding_inverse_d_c_op = Opposite( cartesian_braiding_d_c );
 true
-
-gap> cocartesian_braiding_c_dop = Opposite( cartesian_braiding_inverse_a_b );
+gap> cocartesian_braiding_inverse_i_a_op = Opposite( cartesian_braiding_t_a );
 true
-gap> cocartesian_braiding_c_dop = Opposite( cartesian_braiding_inverse_b_a );
+gap> cocartesian_braiding_inverse_a_i_op = Opposite( cartesian_braiding_a_t );
 true
-gap> cocartesian_braiding_c_dop = Opposite( cartesian_braiding_inverse_d_c );
+gap> cocartesian_braiding_inverse_t_a_op = Opposite( cartesian_braiding_i_a );
 true
-gap> cocartesian_braiding_a_top = Opposite( cartesian_braiding_inverse_t_a );
-true
-
-gap> cocartesian_braiding_inverse_b_aop = Opposite( cartesian_braiding_a_b );
-true
-gap> cocartesian_braiding_inverse_b_aop = Opposite( cartesian_braiding_c_d );
-true
-gap> cocartesian_braiding_inverse_b_aop = Opposite( cartesian_braiding_d_c );
-true
-gap> cocartesian_braiding_inverse_a_iop = Opposite( cartesian_braiding_t_a );
+gap> cocartesian_braiding_inverse_a_t_op = Opposite( cartesian_braiding_a_i );
 true
 
-gap> cocartesian_braiding_inverse_d_cop = Opposite( cartesian_braiding_a_b );
+gap> cocartesian_braiding_a_b_op = Opposite( cartesian_braiding_inverse_b_a );
 true
-gap> cocartesian_braiding_inverse_d_cop = Opposite( cartesian_braiding_b_a );
+gap> cocartesian_braiding_a_b_op = Opposite( cartesian_braiding_inverse_c_d );
 true
-gap> cocartesian_braiding_inverse_d_cop = Opposite( cartesian_braiding_c_d );
+gap> cocartesian_braiding_a_b_op = Opposite( cartesian_braiding_inverse_d_c );
 true
-gap> cocartesian_braiding_inverse_t_aop = Opposite( cartesian_braiding_t_a );
+gap> cocartesian_braiding_i_a_op = Opposite( cartesian_braiding_inverse_a_t );
+true
+
+gap> cocartesian_braiding_c_d_op = Opposite( cartesian_braiding_inverse_a_b );
+true
+gap> cocartesian_braiding_c_d_op = Opposite( cartesian_braiding_inverse_b_a );
+true
+gap> cocartesian_braiding_c_d_op = Opposite( cartesian_braiding_inverse_d_c );
+true
+gap> cocartesian_braiding_a_t_op = Opposite( cartesian_braiding_inverse_t_a );
+true
+
+gap> cocartesian_braiding_inverse_b_a_op = Opposite( cartesian_braiding_a_b );
+true
+gap> cocartesian_braiding_inverse_b_a_op = Opposite( cartesian_braiding_c_d );
+true
+gap> cocartesian_braiding_inverse_b_a_op = Opposite( cartesian_braiding_d_c );
+true
+gap> cocartesian_braiding_inverse_a_i_op = Opposite( cartesian_braiding_t_a );
+true
+
+gap> cocartesian_braiding_inverse_d_c_op = Opposite( cartesian_braiding_a_b );
+true
+gap> cocartesian_braiding_inverse_d_c_op = Opposite( cartesian_braiding_b_a );
+true
+gap> cocartesian_braiding_inverse_d_c_op = Opposite( cartesian_braiding_c_d );
+true
+gap> cocartesian_braiding_inverse_t_a_op = Opposite( cartesian_braiding_t_a );
 true
 
 ######################################################
@@ -1060,15 +1059,15 @@ gap> id_a_product_i := IdentityMorphism( a_product_i );;
 gap> id_t_product_a := IdentityMorphism( t_product_a );;
 gap> id_a_product_t := IdentityMorphism( a_product_t );;
 
-gap> id_a_coproduct_bop := IdentityMorphism( a_coproduct_bop );;
-gap> id_b_coproduct_aop := IdentityMorphism( b_coproduct_aop );;
-gap> id_c_coproduct_dop := IdentityMorphism( c_coproduct_dop );;
-gap> id_d_coproduct_cop := IdentityMorphism( d_coproduct_cop );;
+gap> id_a_coproduct_b_op := IdentityMorphism( a_coproduct_b_op );;
+gap> id_b_coproduct_a_op := IdentityMorphism( b_coproduct_a_op );;
+gap> id_c_coproduct_d_op := IdentityMorphism( c_coproduct_d_op );;
+gap> id_d_coproduct_c_op := IdentityMorphism( d_coproduct_c_op );;
 
-gap> id_i_coproduct_aop := IdentityMorphism( i_coproduct_aop );;
-gap> id_a_coproduct_iop := IdentityMorphism( a_coproduct_iop );;
-gap> id_t_coproduct_aop := IdentityMorphism( t_coproduct_aop );;
-gap> id_a_coproduct_top := IdentityMorphism( a_coproduct_top );;
+gap> id_i_coproduct_a_op := IdentityMorphism( i_coproduct_a_op );;
+gap> id_a_coproduct_i_op := IdentityMorphism( a_coproduct_i_op );;
+gap> id_t_coproduct_a_op := IdentityMorphism( t_coproduct_a_op );;
+gap> id_a_coproduct_t_op := IdentityMorphism( a_coproduct_t_op );;
 
 # Identities for (co)exps
 
@@ -1085,72 +1084,72 @@ gap> id_exp_at := IdentityMorphism( exp_at );;
 gap> id_exp_ta := IdentityMorphism( exp_ta );;
 gap> id_exp_at := IdentityMorphism( exp_at );;
 
-gap> id_coexp_abop := IdentityMorphism( coexp_abop );;
-gap> id_coexp_baop := IdentityMorphism( coexp_baop );;
-gap> id_coexp_cdop := IdentityMorphism( coexp_cdop );;
-gap> id_coexp_dcop := IdentityMorphism( coexp_dcop );;
+gap> id_coexp_ab_op := IdentityMorphism( coexp_ab_op );;
+gap> id_coexp_ba_op := IdentityMorphism( coexp_ba_op );;
+gap> id_coexp_cd_op := IdentityMorphism( coexp_cd_op );;
+gap> id_coexp_dc_op := IdentityMorphism( coexp_dc_op );;
 
-gap> id_coexp_iaop := IdentityMorphism( coexp_iaop );;
-gap> id_coexp_aiop := IdentityMorphism( coexp_aiop );;
-gap> id_coexp_taop := IdentityMorphism( coexp_taop );;
-gap> id_coexp_atop := IdentityMorphism( coexp_atop );;
+gap> id_coexp_ia_op := IdentityMorphism( coexp_ia_op );;
+gap> id_coexp_ai_op := IdentityMorphism( coexp_ai_op );;
+gap> id_coexp_ta_op := IdentityMorphism( coexp_ta_op );;
+gap> id_coexp_at_op := IdentityMorphism( coexp_at_op );;
 
 # Opposite correspondence on identities of (co)products
 
-gap> id_a_coproduct_bop = Opposite( id_a_product_b );
+gap> id_a_coproduct_b_op = Opposite( id_a_product_b );
 true
-gap> id_b_coproduct_aop = Opposite( id_b_product_a );
+gap> id_b_coproduct_a_op = Opposite( id_b_product_a );
 true
-gap> id_c_coproduct_dop = Opposite( id_c_product_d );
+gap> id_c_coproduct_d_op = Opposite( id_c_product_d );
 true
-gap> id_d_coproduct_cop = Opposite( id_d_product_c );
-true
-
-gap> id_i_coproduct_aop = Opposite( id_t_product_a );
-true
-gap> id_a_coproduct_iop = Opposite( id_a_product_t );
-true
-gap> id_t_coproduct_aop = Opposite( id_i_product_a );
-true
-gap> id_a_coproduct_top = Opposite( id_a_product_i );
+gap> id_d_coproduct_c_op = Opposite( id_d_product_c );
 true
 
-gap> id_a_coproduct_bop = Opposite( id_c_product_d );
+gap> id_i_coproduct_a_op = Opposite( id_t_product_a );
 true
-gap> id_a_coproduct_bop = Opposite( id_d_product_c );
+gap> id_a_coproduct_i_op = Opposite( id_a_product_t );
 true
-gap> id_c_coproduct_dop = Opposite( id_a_product_b );
+gap> id_t_coproduct_a_op = Opposite( id_i_product_a );
 true
-gap> id_c_coproduct_dop = Opposite( id_b_product_a );
+gap> id_a_coproduct_t_op = Opposite( id_a_product_i );
+true
+
+gap> id_a_coproduct_b_op = Opposite( id_c_product_d );
+true
+gap> id_a_coproduct_b_op = Opposite( id_d_product_c );
+true
+gap> id_c_coproduct_d_op = Opposite( id_a_product_b );
+true
+gap> id_c_coproduct_d_op = Opposite( id_b_product_a );
 true
 
 # Opposite correspondence on identities of (co)exps
 
-gap> id_coexp_abop = Opposite( id_exp_ba );
+gap> id_coexp_ab_op = Opposite( id_exp_ba );
 true
-gap> id_coexp_baop = Opposite( id_exp_ab );
+gap> id_coexp_ba_op = Opposite( id_exp_ab );
 true
-gap> id_coexp_cdop = Opposite( id_exp_dc );
+gap> id_coexp_cd_op = Opposite( id_exp_dc );
 true
-gap> id_coexp_dcop = Opposite( id_exp_cd );
-true
-
-gap> id_coexp_iaop = Opposite( id_exp_at );
-true
-gap> id_coexp_aiop = Opposite( id_exp_ta );
-true
-gap> id_coexp_taop = Opposite( id_exp_ai );
-true
-gap> id_coexp_atop = Opposite( id_exp_ia );
+gap> id_coexp_dc_op = Opposite( id_exp_cd );
 true
 
-gap> id_coexp_abop = Opposite( id_exp_cd );
+gap> id_coexp_ia_op = Opposite( id_exp_at );
 true
-gap> id_coexp_abop = Opposite( id_exp_dc );
+gap> id_coexp_ai_op = Opposite( id_exp_ta );
 true
-gap> id_coexp_abop = Opposite( id_exp_ia );
+gap> id_coexp_ta_op = Opposite( id_exp_ai );
 true
-gap> id_coexp_abop = Opposite( id_exp_ta );
+gap> id_coexp_at_op = Opposite( id_exp_ia );
+true
+
+gap> id_coexp_ab_op = Opposite( id_exp_cd );
+true
+gap> id_coexp_ab_op = Opposite( id_exp_dc );
+true
+gap> id_coexp_ab_op = Opposite( id_exp_ia );
+true
+gap> id_coexp_ab_op = Opposite( id_exp_ta );
 true
 
 #####################################################
@@ -1181,91 +1180,91 @@ gap> cart_coev_at := CartesianCoevaluationMorphism( a, t );;
 
 # Units and counits for opposite of the terminal category
 
-gap> cocart_ev_abop := CocartesianEvaluationMorphism( aop, bop );;
-gap> cocart_ev_baop := CocartesianEvaluationMorphism( bop, aop );;
-gap> cocart_ev_cdop := CocartesianEvaluationMorphism( cop, dop );;
-gap> cocart_ev_dcop := CocartesianEvaluationMorphism( dop, cop );;
+gap> cocart_ev_ab_op := CocartesianEvaluationMorphism( a_op, b_op );;
+gap> cocart_ev_ba_op := CocartesianEvaluationMorphism( b_op, a_op );;
+gap> cocart_ev_cd_op := CocartesianEvaluationMorphism( c_op, d_op );;
+gap> cocart_ev_dc_op := CocartesianEvaluationMorphism( d_op, c_op );;
 
-gap> cocart_ev_iaop := CocartesianEvaluationMorphism( iop, aop );;
-gap> cocart_ev_aiop := CocartesianEvaluationMorphism( aop, iop );;
-gap> cocart_ev_taop := CocartesianEvaluationMorphism( top, aop );;
-gap> cocart_ev_atop := CocartesianEvaluationMorphism( aop, top );;
+gap> cocart_ev_ia_op := CocartesianEvaluationMorphism( i_op, a_op );;
+gap> cocart_ev_ai_op := CocartesianEvaluationMorphism( a_op, i_op );;
+gap> cocart_ev_ta_op := CocartesianEvaluationMorphism( t_op, a_op );;
+gap> cocart_ev_at_op := CocartesianEvaluationMorphism( a_op, t_op );;
 
-gap> cocart_coev_abop := CocartesianCoevaluationMorphism( aop, bop );;
-gap> cocart_coev_baop := CocartesianCoevaluationMorphism( bop, aop );;
-gap> cocart_coev_cdop := CocartesianCoevaluationMorphism( cop, dop );;
-gap> cocart_coev_dcop := CocartesianCoevaluationMorphism( dop, cop );;
+gap> cocart_coev_ab_op := CocartesianCoevaluationMorphism( a_op, b_op );;
+gap> cocart_coev_ba_op := CocartesianCoevaluationMorphism( b_op, a_op );;
+gap> cocart_coev_cd_op := CocartesianCoevaluationMorphism( c_op, d_op );;
+gap> cocart_coev_dc_op := CocartesianCoevaluationMorphism( d_op, c_op );;
 
-gap> cocart_coev_iaop := CocartesianCoevaluationMorphism( iop, aop );;
-gap> cocart_coev_aiop := CocartesianCoevaluationMorphism( aop, iop );;
-gap> cocart_coev_taop := CocartesianCoevaluationMorphism( top, aop );;
-gap> cocart_coev_atop := CocartesianCoevaluationMorphism( aop, top );;
+gap> cocart_coev_ia_op := CocartesianCoevaluationMorphism( i_op, a_op );;
+gap> cocart_coev_ai_op := CocartesianCoevaluationMorphism( a_op, i_op );;
+gap> cocart_coev_ta_op := CocartesianCoevaluationMorphism( t_op, a_op );;
+gap> cocart_coev_at_op := CocartesianCoevaluationMorphism( a_op, t_op );;
 
 # Opposite correspondence on units and counits
 
 # Arguments must be reversed for evaluations
-gap> cocart_ev_abop = Opposite( cart_ev_ba );
+gap> cocart_ev_ab_op = Opposite( cart_ev_ba );
 true
-gap> cocart_ev_baop = Opposite( cart_ev_ab );
+gap> cocart_ev_ba_op = Opposite( cart_ev_ab );
 true
-gap> cocart_ev_cdop = Opposite( cart_ev_dc );
+gap> cocart_ev_cd_op = Opposite( cart_ev_dc );
 true
-gap> cocart_ev_dcop = Opposite( cart_ev_cd );
-true
-
-gap> cocart_ev_iaop = Opposite( cart_ev_at );
-true
-gap> cocart_ev_aiop = Opposite( cart_ev_ta );
-true
-gap> cocart_ev_taop = Opposite( cart_ev_ai );
-true
-gap> cocart_ev_atop = Opposite( cart_ev_ia );
+gap> cocart_ev_dc_op = Opposite( cart_ev_cd );
 true
 
-gap> cocart_coev_abop = Opposite( cart_coev_ab );
+gap> cocart_ev_ia_op = Opposite( cart_ev_at );
 true
-gap> cocart_coev_baop = Opposite( cart_coev_ba );
+gap> cocart_ev_ai_op = Opposite( cart_ev_ta );
 true
-gap> cocart_coev_cdop = Opposite( cart_coev_cd );
+gap> cocart_ev_ta_op = Opposite( cart_ev_ai );
 true
-gap> cocart_coev_dcop = Opposite( cart_coev_dc );
-true
-
-gap> cocart_coev_iaop = Opposite( cart_coev_ta );
-true
-gap> cocart_coev_aiop = Opposite( cart_coev_at );
-true
-gap> cocart_coev_taop = Opposite( cart_coev_ia );
-true
-gap> cocart_coev_atop = Opposite( cart_coev_ai );
+gap> cocart_ev_at_op = Opposite( cart_ev_ia );
 true
 
-gap> cocart_ev_baop = Opposite( cart_ev_ba );
+gap> cocart_coev_ab_op = Opposite( cart_coev_ab );
+true
+gap> cocart_coev_ba_op = Opposite( cart_coev_ba );
+true
+gap> cocart_coev_cd_op = Opposite( cart_coev_cd );
+true
+gap> cocart_coev_dc_op = Opposite( cart_coev_dc );
+true
+
+gap> cocart_coev_ia_op = Opposite( cart_coev_ta );
+true
+gap> cocart_coev_ai_op = Opposite( cart_coev_at );
+true
+gap> cocart_coev_ta_op = Opposite( cart_coev_ia );
+true
+gap> cocart_coev_at_op = Opposite( cart_coev_ai );
+true
+
+gap> cocart_ev_ba_op = Opposite( cart_ev_ba );
 false
-gap> cocart_ev_baop = Opposite( cart_ev_cd );
+gap> cocart_ev_ba_op = Opposite( cart_ev_cd );
 false
-gap> cocart_ev_baop = Opposite( cart_ev_dc );
+gap> cocart_ev_ba_op = Opposite( cart_ev_dc );
 false
 
-gap> cocart_coev_dcop = Opposite( cart_coev_cd );
+gap> cocart_coev_dc_op = Opposite( cart_coev_cd );
 false
-gap> cocart_coev_dcop = Opposite( cart_coev_ab );
+gap> cocart_coev_dc_op = Opposite( cart_coev_ab );
 false
-gap> cocart_coev_dcop = Opposite( cart_coev_ba );
-false
-
-gap> cocart_ev_cdop = Opposite( cart_ev_ab );
-false
-gap> cocart_ev_cdop = Opposite( cart_ev_ba );
-false
-gap> cocart_ev_cdop = Opposite( cart_ev_cd );
+gap> cocart_coev_dc_op = Opposite( cart_coev_ba );
 false
 
-gap> cocart_coev_abop = Opposite( cart_coev_ba );
+gap> cocart_ev_cd_op = Opposite( cart_ev_ab );
 false
-gap> cocart_coev_abop = Opposite( cart_coev_cd );
+gap> cocart_ev_cd_op = Opposite( cart_ev_ba );
 false
-gap> cocart_coev_abop = Opposite( cart_coev_dc );
+gap> cocart_ev_cd_op = Opposite( cart_ev_cd );
+false
+
+gap> cocart_coev_ab_op = Opposite( cart_coev_ba );
+false
+gap> cocart_coev_ab_op = Opposite( cart_coev_cd );
+false
+gap> cocart_coev_ab_op = Opposite( cart_coev_dc );
 false
 
 #####################################################
@@ -1296,102 +1295,102 @@ gap> exp_to_product_adjunction_on_id_exp_at := ExponentialToDirectProductAdjunct
 
 # Coclosed cocartesian structure for opposite of the terminal category
 
-gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_bop := CoproductToCoexponentialAdjunctionMap( aop, bop, id_a_coproduct_bop );;
-gap> coproduct_to_coexp_adjunction_on_id_b_coproduct_aop := CoproductToCoexponentialAdjunctionMap( bop, aop, id_b_coproduct_aop );;
-gap> coproduct_to_coexp_adjunction_on_id_c_coproduct_dop := CoproductToCoexponentialAdjunctionMap( cop, dop, id_c_coproduct_dop );;
-gap> coproduct_to_coexp_adjunction_on_id_d_coproduct_cop := CoproductToCoexponentialAdjunctionMap( dop, cop, id_d_coproduct_cop );;
+gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_b_op := CoproductToCoexponentialAdjunctionMap( a_op, b_op, id_a_coproduct_b_op );;
+gap> coproduct_to_coexp_adjunction_on_id_b_coproduct_a_op := CoproductToCoexponentialAdjunctionMap( b_op, a_op, id_b_coproduct_a_op );;
+gap> coproduct_to_coexp_adjunction_on_id_c_coproduct_d_op := CoproductToCoexponentialAdjunctionMap( c_op, d_op, id_c_coproduct_d_op );;
+gap> coproduct_to_coexp_adjunction_on_id_d_coproduct_c_op := CoproductToCoexponentialAdjunctionMap( d_op, c_op, id_d_coproduct_c_op );;
 
-gap> coproduct_to_coexp_adjunction_on_id_i_coproduct_aop := CoproductToCoexponentialAdjunctionMap( iop, aop, id_i_coproduct_aop );;
-gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_iop := CoproductToCoexponentialAdjunctionMap( aop, iop, id_a_coproduct_iop );;
-gap> coproduct_to_coexp_adjunction_on_id_t_coproduct_aop := CoproductToCoexponentialAdjunctionMap( top, aop, id_t_coproduct_aop );;
-gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_top := CoproductToCoexponentialAdjunctionMap( aop, top, id_a_coproduct_top );;
+gap> coproduct_to_coexp_adjunction_on_id_i_coproduct_a_op := CoproductToCoexponentialAdjunctionMap( i_op, a_op, id_i_coproduct_a_op );;
+gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_i_op := CoproductToCoexponentialAdjunctionMap( a_op, i_op, id_a_coproduct_i_op );;
+gap> coproduct_to_coexp_adjunction_on_id_t_coproduct_a_op := CoproductToCoexponentialAdjunctionMap( t_op, a_op, id_t_coproduct_a_op );;
+gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_t_op := CoproductToCoexponentialAdjunctionMap( a_op, t_op, id_a_coproduct_t_op );;
 
-gap> coexp_to_coproduct_adjunction_on_id_coexp_abop := CoexponentialToCoproductAdjunctionMap( aop, bop, id_coexp_abop );;
-gap> coexp_to_coproduct_adjunction_on_id_coexp_baop := CoexponentialToCoproductAdjunctionMap( bop, aop, id_coexp_baop );;
-gap> coexp_to_coproduct_adjunction_on_id_coexp_cdop := CoexponentialToCoproductAdjunctionMap( cop, dop, id_coexp_cdop );;
-gap> coexp_to_coproduct_adjunction_on_id_coexp_dcop := CoexponentialToCoproductAdjunctionMap( dop, cop, id_coexp_dcop );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ab_op := CoexponentialToCoproductAdjunctionMap( a_op, b_op, id_coexp_ab_op );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ba_op := CoexponentialToCoproductAdjunctionMap( b_op, a_op, id_coexp_ba_op );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_cd_op := CoexponentialToCoproductAdjunctionMap( c_op, d_op, id_coexp_cd_op );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_dc_op := CoexponentialToCoproductAdjunctionMap( d_op, c_op, id_coexp_dc_op );;
 
-gap> coexp_to_coproduct_adjunction_on_id_coexp_iaop := CoexponentialToCoproductAdjunctionMap( iop, aop, id_coexp_iaop );;
-gap> coexp_to_coproduct_adjunction_on_id_coexp_aiop := CoexponentialToCoproductAdjunctionMap( aop, iop, id_coexp_aiop );;
-gap> coexp_to_coproduct_adjunction_on_id_coexp_taop := CoexponentialToCoproductAdjunctionMap( top, aop, id_coexp_taop );;
-gap> coexp_to_coproduct_adjunction_on_id_coexp_atop := CoexponentialToCoproductAdjunctionMap( aop, top, id_coexp_atop );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ia_op := CoexponentialToCoproductAdjunctionMap( i_op, a_op, id_coexp_ia_op );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ai_op := CoexponentialToCoproductAdjunctionMap( a_op, i_op, id_coexp_ai_op );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ta_op := CoexponentialToCoproductAdjunctionMap( t_op, a_op, id_coexp_ta_op );;
+gap> coexp_to_coproduct_adjunction_on_id_coexp_at_op := CoexponentialToCoproductAdjunctionMap( a_op, t_op, id_coexp_at_op );;
 
 # Opposite correspondence on adjunction maps
 
 # coclev = op( ev ), arguments must be reversed for evaluations
 
-gap> coexp_to_coproduct_adjunction_on_id_coexp_abop = Opposite( exp_to_product_adjunction_on_id_exp_ba ); # a -> Coexp( a, b ) x b  ==  op( Exp( b, a ) x b -> a )
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ab_op = Opposite( exp_to_product_adjunction_on_id_exp_ba ); # a -> Coexp( a, b ) x b  ==  op( Exp( b, a ) x b -> a )
 true
-gap> coexp_to_coproduct_adjunction_on_id_coexp_baop = Opposite( exp_to_product_adjunction_on_id_exp_ab ); # b -> Coexp( b, a ) x a  ==  op( Exp( a, b ) x a -> b )
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ba_op = Opposite( exp_to_product_adjunction_on_id_exp_ab ); # b -> Coexp( b, a ) x a  ==  op( Exp( a, b ) x a -> b )
 true
-gap> coexp_to_coproduct_adjunction_on_id_coexp_cdop = Opposite( exp_to_product_adjunction_on_id_exp_dc ); # c -> Coexp( c, d ) x d  ==  op( Exp( d, c ) x d -> c )
+gap> coexp_to_coproduct_adjunction_on_id_coexp_cd_op = Opposite( exp_to_product_adjunction_on_id_exp_dc ); # c -> Coexp( c, d ) x d  ==  op( Exp( d, c ) x d -> c )
 true
-gap> coexp_to_coproduct_adjunction_on_id_coexp_dcop = Opposite( exp_to_product_adjunction_on_id_exp_cd ); # d -> Coexp( d, c ) x c  ==  op( Exp( c, d ) x c -> d )
-true
-
-gap> coexp_to_coproduct_adjunction_on_id_coexp_iaop = Opposite( exp_to_product_adjunction_on_id_exp_at ); # i -> Coexp( i, a ) x a  ==  op( Exp( a, t ) x a -> t )
-true
-gap> coexp_to_coproduct_adjunction_on_id_coexp_aiop = Opposite( exp_to_product_adjunction_on_id_exp_ta ); # a -> Coexp( a, i ) x i  ==  op( Exp( t, a ) x t -> a )
-true
-gap> coexp_to_coproduct_adjunction_on_id_coexp_taop = Opposite( exp_to_product_adjunction_on_id_exp_ai ); # t -> Coexp( t, a ) x a  ==  op( Exp( a, i ) x a -> i )
-true
-gap> coexp_to_coproduct_adjunction_on_id_coexp_atop = Opposite( exp_to_product_adjunction_on_id_exp_ia ); # a -> Coexp( a, t ) x t  ==  op( Exp( i, a ) x i -> a )
+gap> coexp_to_coproduct_adjunction_on_id_coexp_dc_op = Opposite( exp_to_product_adjunction_on_id_exp_cd ); # d -> Coexp( d, c ) x c  ==  op( Exp( c, d ) x c -> d )
 true
 
-gap> cocart_ev_abop = Opposite( exp_to_product_adjunction_on_id_exp_ba );
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ia_op = Opposite( exp_to_product_adjunction_on_id_exp_at ); # i -> Coexp( i, a ) x a  ==  op( Exp( a, t ) x a -> t )
 true
-gap> cocart_ev_baop = Opposite( exp_to_product_adjunction_on_id_exp_ab );
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ai_op = Opposite( exp_to_product_adjunction_on_id_exp_ta ); # a -> Coexp( a, i ) x i  ==  op( Exp( t, a ) x t -> a )
 true
-gap> cocart_ev_cdop = Opposite( exp_to_product_adjunction_on_id_exp_dc );
+gap> coexp_to_coproduct_adjunction_on_id_coexp_ta_op = Opposite( exp_to_product_adjunction_on_id_exp_ai ); # t -> Coexp( t, a ) x a  ==  op( Exp( a, i ) x a -> i )
 true
-gap> cocart_ev_dcop = Opposite( exp_to_product_adjunction_on_id_exp_cd );
+gap> coexp_to_coproduct_adjunction_on_id_coexp_at_op = Opposite( exp_to_product_adjunction_on_id_exp_ia ); # a -> Coexp( a, t ) x t  ==  op( Exp( i, a ) x i -> a )
 true
 
-gap> cocart_ev_iaop = Opposite( exp_to_product_adjunction_on_id_exp_at );
+gap> cocart_ev_ab_op = Opposite( exp_to_product_adjunction_on_id_exp_ba );
 true
-gap> cocart_ev_aiop = Opposite( exp_to_product_adjunction_on_id_exp_ta );
+gap> cocart_ev_ba_op = Opposite( exp_to_product_adjunction_on_id_exp_ab );
 true
-gap> cocart_ev_taop = Opposite( exp_to_product_adjunction_on_id_exp_ai );
+gap> cocart_ev_cd_op = Opposite( exp_to_product_adjunction_on_id_exp_dc );
 true
-gap> cocart_ev_atop = Opposite( exp_to_product_adjunction_on_id_exp_ia );
+gap> cocart_ev_dc_op = Opposite( exp_to_product_adjunction_on_id_exp_cd );
+true
+
+gap> cocart_ev_ia_op = Opposite( exp_to_product_adjunction_on_id_exp_at );
+true
+gap> cocart_ev_ai_op = Opposite( exp_to_product_adjunction_on_id_exp_ta );
+true
+gap> cocart_ev_ta_op = Opposite( exp_to_product_adjunction_on_id_exp_ai );
+true
+gap> cocart_ev_at_op = Opposite( exp_to_product_adjunction_on_id_exp_ia );
 true
 
 # coclcoev = op( coev )
 
-gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_bop = Opposite( product_to_exp_adjunction_on_id_a_product_b ); # Coexp( a x b, b ) -> a  ==  op( a -> Exp( b, a x b ) )
+gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_b_op = Opposite( product_to_exp_adjunction_on_id_a_product_b ); # Coexp( a x b, b ) -> a  ==  op( a -> Exp( b, a x b ) )
 true
-gap> coproduct_to_coexp_adjunction_on_id_b_coproduct_aop = Opposite( product_to_exp_adjunction_on_id_b_product_a ); # Coexp( b x a, a ) -> b  ==  op( b -> Exp( a, b x a ) )
+gap> coproduct_to_coexp_adjunction_on_id_b_coproduct_a_op = Opposite( product_to_exp_adjunction_on_id_b_product_a ); # Coexp( b x a, a ) -> b  ==  op( b -> Exp( a, b x a ) )
 true
-gap> coproduct_to_coexp_adjunction_on_id_c_coproduct_dop = Opposite( product_to_exp_adjunction_on_id_c_product_d ); # Coexp( c x d, d ) -> c  ==  op( c -> Exp( d, c x d ) )
+gap> coproduct_to_coexp_adjunction_on_id_c_coproduct_d_op = Opposite( product_to_exp_adjunction_on_id_c_product_d ); # Coexp( c x d, d ) -> c  ==  op( c -> Exp( d, c x d ) )
 true
-gap> coproduct_to_coexp_adjunction_on_id_d_coproduct_cop = Opposite( product_to_exp_adjunction_on_id_d_product_c ); # Coexp( d x c, c ) -> d  ==  op( d -> Exp( c, d x c ) )
-true
-
-gap> coproduct_to_coexp_adjunction_on_id_i_coproduct_aop = Opposite( product_to_exp_adjunction_on_id_t_product_a ); # Coexp( i x a, a ) -> i  ==  op( t -> Exp( a, t x a ) )
-true
-gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_iop = Opposite( product_to_exp_adjunction_on_id_a_product_t ); # Coexp( a x i, i ) -> a  ==  op( a -> Exp( t, a x t ) )
-true
-gap> coproduct_to_coexp_adjunction_on_id_t_coproduct_aop = Opposite( product_to_exp_adjunction_on_id_i_product_a ); # Coexp( t x a, a ) -> t  ==  op( i -> Exp( a, i x a ) )
-true
-gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_top = Opposite( product_to_exp_adjunction_on_id_a_product_i ); # Coexp( a x t, t ) -> a  ==  op( a -> Exp( i, a x i ) )
+gap> coproduct_to_coexp_adjunction_on_id_d_coproduct_c_op = Opposite( product_to_exp_adjunction_on_id_d_product_c ); # Coexp( d x c, c ) -> d  ==  op( d -> Exp( c, d x c ) )
 true
 
-gap> cocart_coev_abop = Opposite( product_to_exp_adjunction_on_id_a_product_b );
+gap> coproduct_to_coexp_adjunction_on_id_i_coproduct_a_op = Opposite( product_to_exp_adjunction_on_id_t_product_a ); # Coexp( i x a, a ) -> i  ==  op( t -> Exp( a, t x a ) )
 true
-gap> cocart_coev_baop = Opposite( product_to_exp_adjunction_on_id_b_product_a );
+gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_i_op = Opposite( product_to_exp_adjunction_on_id_a_product_t ); # Coexp( a x i, i ) -> a  ==  op( a -> Exp( t, a x t ) )
 true
-gap> cocart_coev_cdop = Opposite( product_to_exp_adjunction_on_id_c_product_d );
+gap> coproduct_to_coexp_adjunction_on_id_t_coproduct_a_op = Opposite( product_to_exp_adjunction_on_id_i_product_a ); # Coexp( t x a, a ) -> t  ==  op( i -> Exp( a, i x a ) )
 true
-gap> cocart_coev_dcop = Opposite( product_to_exp_adjunction_on_id_d_product_c );
+gap> coproduct_to_coexp_adjunction_on_id_a_coproduct_t_op = Opposite( product_to_exp_adjunction_on_id_a_product_i ); # Coexp( a x t, t ) -> a  ==  op( a -> Exp( i, a x i ) )
 true
 
-gap> cocart_coev_iaop = Opposite( product_to_exp_adjunction_on_id_t_product_a );
+gap> cocart_coev_ab_op = Opposite( product_to_exp_adjunction_on_id_a_product_b );
 true
-gap> cocart_coev_aiop = Opposite( product_to_exp_adjunction_on_id_a_product_t );
+gap> cocart_coev_ba_op = Opposite( product_to_exp_adjunction_on_id_b_product_a );
 true
-gap> cocart_coev_taop = Opposite( product_to_exp_adjunction_on_id_i_product_a );
+gap> cocart_coev_cd_op = Opposite( product_to_exp_adjunction_on_id_c_product_d );
 true
-gap> cocart_coev_atop = Opposite( product_to_exp_adjunction_on_id_a_product_i );
+gap> cocart_coev_dc_op = Opposite( product_to_exp_adjunction_on_id_d_product_c );
+true
+
+gap> cocart_coev_ia_op = Opposite( product_to_exp_adjunction_on_id_t_product_a );
+true
+gap> cocart_coev_ai_op = Opposite( product_to_exp_adjunction_on_id_a_product_t );
+true
+gap> cocart_coev_ta_op = Opposite( product_to_exp_adjunction_on_id_i_product_a );
+true
+gap> cocart_coev_at_op = Opposite( product_to_exp_adjunction_on_id_a_product_i );
 true
 
 #####################################################
@@ -1403,16 +1402,16 @@ true
 gap> product_to_exp_adjunction_on_alpha_product_beta := DirectProductToExponentialAdjunctionMap( a, c, alpha_product_beta );;
 gap> product_to_exp_adjunction_on_beta_product_alpha := DirectProductToExponentialAdjunctionMap( c, a, beta_product_alpha );;
 
-gap> coproduct_to_coexp_adjunction_on_alpha_coproduct_betaop := CoproductToCoexponentialAdjunctionMap( aop, cop, alpha_coproduct_betaop  );;
-gap> coproduct_to_coexp_adjunction_on_beta_coproduct_alphaop := CoproductToCoexponentialAdjunctionMap( cop, aop, beta_coproduct_alphaop );;
+gap> coproduct_to_coexp_adjunction_on_alpha_coproduct_beta_op := CoproductToCoexponentialAdjunctionMap( a_op, c_op, alpha_coproduct_beta_op  );;
+gap> coproduct_to_coexp_adjunction_on_beta_coproduct_alpha_op := CoproductToCoexponentialAdjunctionMap( c_op, a_op, beta_coproduct_alpha_op );;
 
 # Adjunction maps on (co)exponential morphisms
 
 gap> exp_to_product_adjunction_on_exp_alpha_beta := ExponentialToDirectProductAdjunctionMap( a, d, exp_alpha_beta );;
 gap> exp_to_product_adjunction_on_exp_beta_alpha := ExponentialToDirectProductAdjunctionMap( c, b, exp_beta_alpha );;
 
-gap> coexp_to_coproduct_adjunction_on_coexp_alpha_betaop := CoexponentialToCoproductAdjunctionMap( bop, cop, coexp_alpha_betaop );;
-gap> coexp_to_coproduct_adjunction_on_coexp_beta_alphaop := CoexponentialToCoproductAdjunctionMap( dop, aop, coexp_beta_alphaop );;
+gap> coexp_to_coproduct_adjunction_on_coexp_alpha_beta_op := CoexponentialToCoproductAdjunctionMap( b_op, c_op, coexp_alpha_beta_op );;
+gap> coexp_to_coproduct_adjunction_on_coexp_beta_alpha_op := CoexponentialToCoproductAdjunctionMap( d_op, a_op, coexp_beta_alpha_op );;
 
 # Opposite correspondence on adjunction maps on (co)products
 
@@ -1426,17 +1425,17 @@ gap> coexp_to_coproduct_adjunction_on_coexp_beta_alphaop := CoexponentialToCopro
 #                                            #
 ##############################################
 #                                            #
-# alphaop: b -> a                         #
-# betaop:  d -> c                         #
+# alpha_op: b -> a                         #
+# beta_op:  d -> c                         #
 #                                            #
-# alpha_coproduct_betaop : b x d -> a x c #
-# beta_coproduct_alphaop : d x b -> c x a #
+# alpha_coproduct_beta_op : b x d -> a x c #
+# beta_coproduct_alpha_op : d x b -> c x a #
 #                                            #
 ##############################################
 
-gap> coproduct_to_coexp_adjunction_on_alpha_coproduct_betaop = Opposite( product_to_exp_adjunction_on_alpha_product_beta ); # Coexp( b x d, c ) -> a  ==  op( a -> Exp( c, b x d ) )
+gap> coproduct_to_coexp_adjunction_on_alpha_coproduct_beta_op = Opposite( product_to_exp_adjunction_on_alpha_product_beta ); # Coexp( b x d, c ) -> a  ==  op( a -> Exp( c, b x d ) )
 true
-gap> coproduct_to_coexp_adjunction_on_beta_coproduct_alphaop = Opposite( product_to_exp_adjunction_on_beta_product_alpha ); # Coexp( d x b, a ) -> c  ==  op( c -> Exp( a, d x b ) )
+gap> coproduct_to_coexp_adjunction_on_beta_coproduct_alpha_op = Opposite( product_to_exp_adjunction_on_beta_product_alpha ); # Coexp( d x b, a ) -> c  ==  op( c -> Exp( a, d x b ) )
 true
 
 # Opposite correspondence on adjunction maps on (co)exps
@@ -1446,22 +1445,22 @@ true
 #   exp_alpha_beta: Exp( b, c ) -> Exp( a, d )       #
 #   exp_beta_alpha: Exp( d, a ) -> Exp( c, b )       #
 #                                                       #
-#   exp_alpha_betaop: Exp( a, d ) -> Exp( b, c )     #
-#   exp_beta_alphaop: Exp( c, b ) -> Exp( d, a )     #
+#   exp_alpha_beta_op: Exp( a, d ) -> Exp( b, c )     #
+#   exp_beta_alpha_op: Exp( c, b ) -> Exp( d, a )     #
 #                                                       #
 #########################################################
 #                                                       #
 # coexp_alpha_beta: Coexp( a, d ) -> Coexp( b, c )   #
 # coexp_beta_alpha: Coexp( c, b ) -> Coexp( d, a )   #
 #                                                       #
-# coexp_alpha_betaop: Coexp( b, c ) -> Coexp( a, d ) #
-# coexp_beta_alphaop: Coexp( d, a ) -> Coexp( c, b ) #
+# coexp_alpha_beta_op: Coexp( b, c ) -> Coexp( a, d ) #
+# coexp_beta_alpha_op: Coexp( d, a ) -> Coexp( c, b ) #
 #                                                       #
 #########################################################
 
-gap> coexp_to_coproduct_adjunction_on_coexp_alpha_betaop = Opposite( exp_to_product_adjunction_on_exp_beta_alpha ); # b -> Coexp( a, d ) x c  ==  op( Exp( d, a ) x c -> b )
+gap> coexp_to_coproduct_adjunction_on_coexp_alpha_beta_op = Opposite( exp_to_product_adjunction_on_exp_beta_alpha ); # b -> Coexp( a, d ) x c  ==  op( Exp( d, a ) x c -> b )
 true
-gap> coexp_to_coproduct_adjunction_on_coexp_beta_alphaop = Opposite( exp_to_product_adjunction_on_exp_alpha_beta ); # d -> Coexp( c, b ) x a  ==  op( Exp( b, c ) x a -> d )
+gap> coexp_to_coproduct_adjunction_on_coexp_beta_alpha_op = Opposite( exp_to_product_adjunction_on_exp_alpha_beta ); # d -> Coexp( c, b ) x a  ==  op( Exp( b, c ) x a -> d )
 true
 
 #####################################################
@@ -1471,25 +1470,25 @@ true
 gap> precompose_abc := CartesianPreComposeMorphism( a, b, c );;
 gap> precompose_cba := CartesianPreComposeMorphism( c, b, a );;
 
-gap> precocompose_abcop := CocartesianPreCoComposeMorphism( aop, bop, cop );;
-gap> precocompose_cbaop := CocartesianPreCoComposeMorphism( cop, bop, aop );;
+gap> precocompose_abc_op := CocartesianPreCoComposeMorphism( a_op, b_op, c_op );;
+gap> precocompose_cba_op := CocartesianPreCoComposeMorphism( c_op, b_op, a_op );;
 
 gap> postcompose_abc := CartesianPostComposeMorphism( a, b, c );;
 gap> postcompose_cba := CartesianPostComposeMorphism( c, b, a );;
 
-gap> postcocompose_abcop := CocartesianPostCoComposeMorphism( aop, bop, cop );;
-gap> postcocompose_cbaop := CocartesianPostCoComposeMorphism( cop, bop, aop );;
+gap> postcocompose_abc_op := CocartesianPostCoComposeMorphism( a_op, b_op, c_op );;
+gap> postcocompose_cba_op := CocartesianPostCoComposeMorphism( c_op, b_op, a_op );;
 
 # Opposite correspondence on compositions
 
-gap> precocompose_abcop = Opposite( precompose_cba );
+gap> precocompose_abc_op = Opposite( precompose_cba );
 true
-gap> precocompose_cbaop = Opposite( precompose_abc );
+gap> precocompose_cba_op = Opposite( precompose_abc );
 true
 
-gap> postcocompose_abcop = Opposite( postcompose_cba );
+gap> postcocompose_abc_op = Opposite( postcompose_cba );
 true
-gap> postcocompose_cbaop = Opposite( postcompose_abc );
+gap> postcocompose_cba_op = Opposite( postcompose_abc );
 true
 
 #####################################################
@@ -1499,8 +1498,8 @@ true
 gap> a_dual := CartesianDualOnObjects( a );;
 gap> b_dual := CartesianDualOnObjects( b );;
 
-gap> a_codualop := CocartesianDualOnObjects( aop );;
-gap> b_codualop := CocartesianDualOnObjects( bop );;
+gap> a_codualop := CocartesianDualOnObjects( a_op );;
+gap> b_codualop := CocartesianDualOnObjects( b_op );;
 
 # CartesianDual on morphisms for the terminal category
 
@@ -1515,14 +1514,14 @@ gap> dual_cart_coev_ba := CartesianDualOnMorphisms( cart_coev_ba );;
 
 # CocartesianDual on morphisms for opposite of the terminal category
 
-gap> codual_id_a_coproduct_bop := CocartesianDualOnMorphisms( id_a_coproduct_bop );;
-gap> codual_id_b_coproduct_aop := CocartesianDualOnMorphisms( id_b_coproduct_aop );;
+gap> codual_id_a_coproduct_b_op := CocartesianDualOnMorphisms( id_a_coproduct_b_op );;
+gap> codual_id_b_coproduct_a_op := CocartesianDualOnMorphisms( id_b_coproduct_a_op );;
 
-gap> codual_coexp_alpha_betaop := CocartesianDualOnMorphisms( coexp_alpha_betaop );;
-gap> codual_coexp_beta_alphaop := CocartesianDualOnMorphisms( coexp_beta_alphaop );;
+gap> codual_coexp_alpha_beta_op := CocartesianDualOnMorphisms( coexp_alpha_beta_op );;
+gap> codual_coexp_beta_alpha_op := CocartesianDualOnMorphisms( coexp_beta_alpha_op );;
 
-gap> codual_cocart_coev_abop := CocartesianDualOnMorphisms( cocart_coev_abop );;
-gap> codual_cocart_coev_baop := CocartesianDualOnMorphisms( cocart_coev_baop );;
+gap> codual_cocart_coev_ab_op := CocartesianDualOnMorphisms( cocart_coev_ab_op );;
+gap> codual_cocart_coev_ba_op := CocartesianDualOnMorphisms( cocart_coev_ba_op );;
 
 # Opposite correspondence
 
@@ -1531,19 +1530,19 @@ true
 gap> b_codualop = Opposite( b_dual );
 true
 
-gap> codual_id_a_coproduct_bop = Opposite( dual_id_a_product_b );
+gap> codual_id_a_coproduct_b_op = Opposite( dual_id_a_product_b );
 true
-gap> codual_id_b_coproduct_aop = Opposite( dual_id_b_product_a );
-true
-
-gap> codual_coexp_alpha_betaop = Opposite( dual_exp_beta_alpha );
-true
-gap> codual_coexp_beta_alphaop = Opposite( dual_exp_alpha_beta );
+gap> codual_id_b_coproduct_a_op = Opposite( dual_id_b_product_a );
 true
 
-gap> codual_cocart_coev_abop = Opposite( dual_cart_coev_ab );
+gap> codual_coexp_alpha_beta_op = Opposite( dual_exp_beta_alpha );
 true
-gap> codual_cocart_coev_baop = Opposite( dual_cart_coev_ba );
+gap> codual_coexp_beta_alpha_op = Opposite( dual_exp_alpha_beta );
+true
+
+gap> codual_cocart_coev_ab_op = Opposite( dual_cart_coev_ab );
+true
+gap> codual_cocart_coev_ba_op = Opposite( dual_cart_coev_ba );
 true
 
 #####################################################
@@ -1555,29 +1554,29 @@ gap> cart_ev_for_dual_b := CartesianEvaluationForCartesianDual( b );;
 gap> cart_ev_for_dual_i := CartesianEvaluationForCartesianDual( i );;
 gap> cart_ev_for_dual_t := CartesianEvaluationForCartesianDual( t );;
 
-gap> cocart_ev_for_codual_aop := CocartesianEvaluationForCocartesianDual( aop );;
-gap> cocart_ev_for_codual_bop := CocartesianEvaluationForCocartesianDual( bop );;
-gap> cocart_ev_for_codual_iop := CocartesianEvaluationForCocartesianDual( iop );;
-gap> cocart_ev_for_codual_top := CocartesianEvaluationForCocartesianDual( top );;
+gap> cocart_ev_for_codual_a_op := CocartesianEvaluationForCocartesianDual( a_op );;
+gap> cocart_ev_for_codual_b_op := CocartesianEvaluationForCocartesianDual( b_op );;
+gap> cocart_ev_for_codual_i_op := CocartesianEvaluationForCocartesianDual( i_op );;
+gap> cocart_ev_for_codual_t_op := CocartesianEvaluationForCocartesianDual( t_op );;
 
 # Opposite correspondence
 
-gap> cocart_ev_for_codual_aop = Opposite( cart_ev_for_dual_a );
+gap> cocart_ev_for_codual_a_op = Opposite( cart_ev_for_dual_a );
 true
-gap> cocart_ev_for_codual_bop = Opposite( cart_ev_for_dual_b );
+gap> cocart_ev_for_codual_b_op = Opposite( cart_ev_for_dual_b );
 true
-gap> cocart_ev_for_codual_iop = Opposite( cart_ev_for_dual_t );
+gap> cocart_ev_for_codual_i_op = Opposite( cart_ev_for_dual_t );
 true
-gap> cocart_ev_for_codual_top = Opposite( cart_ev_for_dual_i );
+gap> cocart_ev_for_codual_t_op = Opposite( cart_ev_for_dual_i );
 true
 
-gap> cocart_ev_for_codual_aop = Opposite( cart_ev_for_dual_b );
+gap> cocart_ev_for_codual_a_op = Opposite( cart_ev_for_dual_b );
 true
-gap> cocart_ev_for_codual_bop = Opposite( cart_ev_for_dual_a );
+gap> cocart_ev_for_codual_b_op = Opposite( cart_ev_for_dual_a );
 true
-gap> cocart_ev_for_codual_iop = Opposite( cart_ev_for_dual_i );
+gap> cocart_ev_for_codual_i_op = Opposite( cart_ev_for_dual_i );
 true
-gap> cocart_ev_for_codual_top = Opposite( cart_ev_for_dual_t );
+gap> cocart_ev_for_codual_t_op = Opposite( cart_ev_for_dual_t );
 true
 
 #####################################################
@@ -1587,19 +1586,19 @@ true
 gap> morphism_to_cart_bidual_c := MorphismToCartesianBidual( c );;
 gap> morphism_to_cart_bidual_d := MorphismToCartesianBidual( d );;
 
-gap> morphism_from_cocart_bidual_cop := MorphismFromCocartesianBidual( cop );;
-gap> morphism_from_cocart_bidual_dop := MorphismFromCocartesianBidual( dop );;
+gap> morphism_from_cocart_bidual_c_op := MorphismFromCocartesianBidual( c_op );;
+gap> morphism_from_cocart_bidual_d_op := MorphismFromCocartesianBidual( d_op );;
 
 # Opposite correspondence
 
-gap> morphism_from_cocart_bidual_cop = Opposite( morphism_to_cart_bidual_c );
+gap> morphism_from_cocart_bidual_c_op = Opposite( morphism_to_cart_bidual_c );
 true
-gap> morphism_from_cocart_bidual_dop = Opposite( morphism_to_cart_bidual_d );
+gap> morphism_from_cocart_bidual_d_op = Opposite( morphism_to_cart_bidual_d );
 true
 
-gap> morphism_from_cocart_bidual_cop = Opposite( morphism_to_cart_bidual_d );
+gap> morphism_from_cocart_bidual_c_op = Opposite( morphism_to_cart_bidual_d );
 false
-gap> morphism_from_cocart_bidual_dop = Opposite( morphism_to_cart_bidual_c );
+gap> morphism_from_cocart_bidual_d_op = Opposite( morphism_to_cart_bidual_c );
 false
 
 #############################################################
@@ -1609,19 +1608,19 @@ false
 gap> product_to_exp_compatibility_abcd := DirectProductExponentialCompatibilityMorphism( [ a, b, c, d ] );; # Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d )
 gap> product_to_exp_compatibility_cadb := DirectProductExponentialCompatibilityMorphism( [ c, a, d, b ] );; # Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b )
 
-gap> coexp_to_coproduct_compatibility_abcdop := CoexponentialCoproductCompatibilityMorphism( [ aop, bop, cop, dop ] );; # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )
-gap> coexp_to_coproduct_compatibility_bdacop := CoexponentialCoproductCompatibilityMorphism( [ bop, dop, aop, cop ] );; # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )
+gap> coexp_to_coproduct_compatibility_abcd_op := CoexponentialCoproductCompatibilityMorphism( [ a_op, b_op, c_op, d_op ] );; # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )
+gap> coexp_to_coproduct_compatibility_bdac_op := CoexponentialCoproductCompatibilityMorphism( [ b_op, d_op, a_op, c_op ] );; # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )
 
 # Opposite correspondence
 
-gap> coexp_to_coproduct_compatibility_abcdop = Opposite( product_to_exp_compatibility_cadb ); # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )  ==  op( Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b ) )
+gap> coexp_to_coproduct_compatibility_abcd_op = Opposite( product_to_exp_compatibility_cadb ); # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )  ==  op( Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b ) )
 true
-gap> coexp_to_coproduct_compatibility_bdacop = Opposite( product_to_exp_compatibility_abcd ); # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )  ==  op( Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d ) )
+gap> coexp_to_coproduct_compatibility_bdac_op = Opposite( product_to_exp_compatibility_abcd ); # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )  ==  op( Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d ) )
 true
 
-gap> coexp_to_coproduct_compatibility_abcdop = Opposite( product_to_exp_compatibility_abcd ); # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )  =/=  op( Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d ) )
+gap> coexp_to_coproduct_compatibility_abcd_op = Opposite( product_to_exp_compatibility_abcd ); # Coexp( a x b, c x d ) -> Coexp( a, c ) x Coexp( b, d )  =/=  op( Exp( a, b ) x Exp( c, d ) -> Exp( a x c, b x d ) )
 true
-gap> coexp_to_coproduct_compatibility_bdacop = Opposite( product_to_exp_compatibility_cadb ); # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )  =/=  op( Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b ) )
+gap> coexp_to_coproduct_compatibility_bdac_op = Opposite( product_to_exp_compatibility_cadb ); # Coexp( b x d, a x c ) -> Coexp( b, a ) x Coexp( d, c )  =/=  op( Exp( c, a ) x Exp( d, b ) -> Exp( c x d, a x b ) )
 true
 
 #########################################################
@@ -1635,29 +1634,29 @@ gap> direct_product_cart_duality_compatibility_ba := DirectProductCartesianDuali
 gap> direct_product_cart_duality_compatibility_cd := DirectProductCartesianDualityCompatibilityMorphism( c, d );; # c^v x d^v -> (c x d)^v
 gap> direct_product_cart_duality_compatibility_dc := DirectProductCartesianDualityCompatibilityMorphism( d, c );; # d^v x c^v -> (d x c)^v
 
-gap> cocart_duality_coproduct_compatibility_abop := CocartesianDualityCoproductCompatibilityMorphism( aop, bop );; # (a x b)_v -> a_v x b_v
-gap> cocart_duality_coproduct_compatibility_baop := CocartesianDualityCoproductCompatibilityMorphism( bop, aop );; # (b x a)_v -> b_v x a_v
-gap> cocart_duality_coproduct_compatibility_cdop := CocartesianDualityCoproductCompatibilityMorphism( cop, dop );; # (c x d)_v -> c_v x d_v
-gap> cocart_duality_coproduct_compatibility_dcop := CocartesianDualityCoproductCompatibilityMorphism( dop, cop );; # (d x c)_v -> d_v x c_v
+gap> cocart_duality_coproduct_compatibility_ab_op := CocartesianDualityCoproductCompatibilityMorphism( a_op, b_op );; # (a x b)_v -> a_v x b_v
+gap> cocart_duality_coproduct_compatibility_ba_op := CocartesianDualityCoproductCompatibilityMorphism( b_op, a_op );; # (b x a)_v -> b_v x a_v
+gap> cocart_duality_coproduct_compatibility_cd_op := CocartesianDualityCoproductCompatibilityMorphism( c_op, d_op );; # (c x d)_v -> c_v x d_v
+gap> cocart_duality_coproduct_compatibility_dc_op := CocartesianDualityCoproductCompatibilityMorphism( d_op, c_op );; # (d x c)_v -> d_v x c_v
 
 # Opposite correspondence on (co)duality compatibility
 
-gap> cocart_duality_coproduct_compatibility_abop = Opposite( direct_product_cart_duality_compatibility_ab );
+gap> cocart_duality_coproduct_compatibility_ab_op = Opposite( direct_product_cart_duality_compatibility_ab );
 true
-gap> cocart_duality_coproduct_compatibility_baop = Opposite( direct_product_cart_duality_compatibility_ba );
+gap> cocart_duality_coproduct_compatibility_ba_op = Opposite( direct_product_cart_duality_compatibility_ba );
 true
-gap> cocart_duality_coproduct_compatibility_cdop = Opposite( direct_product_cart_duality_compatibility_cd );
+gap> cocart_duality_coproduct_compatibility_cd_op = Opposite( direct_product_cart_duality_compatibility_cd );
 true
-gap> cocart_duality_coproduct_compatibility_dcop = Opposite( direct_product_cart_duality_compatibility_dc );
+gap> cocart_duality_coproduct_compatibility_dc_op = Opposite( direct_product_cart_duality_compatibility_dc );
 true
 
-gap> cocart_duality_coproduct_compatibility_baop = Opposite( direct_product_cart_duality_compatibility_cd );
+gap> cocart_duality_coproduct_compatibility_ba_op = Opposite( direct_product_cart_duality_compatibility_cd );
 true
-gap> cocart_duality_coproduct_compatibility_baop = Opposite( direct_product_cart_duality_compatibility_dc );
+gap> cocart_duality_coproduct_compatibility_ba_op = Opposite( direct_product_cart_duality_compatibility_dc );
 true
-gap> cocart_duality_coproduct_compatibility_dcop = Opposite( direct_product_cart_duality_compatibility_ab );
+gap> cocart_duality_coproduct_compatibility_dc_op = Opposite( direct_product_cart_duality_compatibility_ab );
 true
-gap> cocart_duality_coproduct_compatibility_dcop = Opposite( direct_product_cart_duality_compatibility_ba );
+gap> cocart_duality_coproduct_compatibility_dc_op = Opposite( direct_product_cart_duality_compatibility_ba );
 true
 
 #########################################################
@@ -1669,30 +1668,30 @@ gap> morphism_from_direct_product_to_exp_ba := MorphismFromDirectProductToExpone
 gap> morphism_from_direct_product_to_exp_cd := MorphismFromDirectProductToExponential( c, d );;
 gap> morphism_from_direct_product_to_exp_dc := MorphismFromDirectProductToExponential( d, c );;
 
-gap> morphism_from_coexp_to_coproduct_abop := MorphismFromCoexponentialToCoproduct( aop, bop );;
-gap> morphism_from_coexp_to_coproduct_baop := MorphismFromCoexponentialToCoproduct( bop, aop );;
-gap> morphism_from_coexp_to_coproduct_cdop := MorphismFromCoexponentialToCoproduct( cop, dop );;
-gap> morphism_from_coexp_to_coproduct_dcop := MorphismFromCoexponentialToCoproduct( dop, cop );;
+gap> morphism_from_coexp_to_coproduct_ab_op := MorphismFromCoexponentialToCoproduct( a_op, b_op );;
+gap> morphism_from_coexp_to_coproduct_ba_op := MorphismFromCoexponentialToCoproduct( b_op, a_op );;
+gap> morphism_from_coexp_to_coproduct_cd_op := MorphismFromCoexponentialToCoproduct( c_op, d_op );;
+gap> morphism_from_coexp_to_coproduct_dc_op := MorphismFromCoexponentialToCoproduct( d_op, c_op );;
 
 # Opposite correspondence
 
-gap> morphism_from_coexp_to_coproduct_abop = Opposite( morphism_from_direct_product_to_exp_ba );
+gap> morphism_from_coexp_to_coproduct_ab_op = Opposite( morphism_from_direct_product_to_exp_ba );
 true
-gap> morphism_from_coexp_to_coproduct_baop = Opposite( morphism_from_direct_product_to_exp_ab );
+gap> morphism_from_coexp_to_coproduct_ba_op = Opposite( morphism_from_direct_product_to_exp_ab );
 true
-gap> morphism_from_coexp_to_coproduct_cdop = Opposite( morphism_from_direct_product_to_exp_dc );
+gap> morphism_from_coexp_to_coproduct_cd_op = Opposite( morphism_from_direct_product_to_exp_dc );
 true
-gap> morphism_from_coexp_to_coproduct_dcop = Opposite( morphism_from_direct_product_to_exp_cd );
-true
-
-gap> morphism_from_coexp_to_coproduct_abop = Opposite( morphism_from_direct_product_to_exp_cd );
-true
-gap> morphism_from_coexp_to_coproduct_abop = Opposite( morphism_from_direct_product_to_exp_dc );
+gap> morphism_from_coexp_to_coproduct_dc_op = Opposite( morphism_from_direct_product_to_exp_cd );
 true
 
-gap> morphism_from_coexp_to_coproduct_cdop = Opposite( morphism_from_direct_product_to_exp_ab );
+gap> morphism_from_coexp_to_coproduct_ab_op = Opposite( morphism_from_direct_product_to_exp_cd );
 true
-gap> morphism_from_coexp_to_coproduct_cdop = Opposite( morphism_from_direct_product_to_exp_ba );
+gap> morphism_from_coexp_to_coproduct_ab_op = Opposite( morphism_from_direct_product_to_exp_dc );
+true
+
+gap> morphism_from_coexp_to_coproduct_cd_op = Opposite( morphism_from_direct_product_to_exp_ab );
+true
+gap> morphism_from_coexp_to_coproduct_cd_op = Opposite( morphism_from_direct_product_to_exp_ba );
 true
 
 #########################################################
@@ -1709,48 +1708,48 @@ gap> isomorphism_from_exp_to_dual_b := IsomorphismFromExponentialToCartesianDual
 gap> isomorphism_from_exp_to_dual_c := IsomorphismFromExponentialToCartesianDual( c );;
 gap> isomorphism_from_exp_to_dual_d := IsomorphismFromExponentialToCartesianDual( d );;
 
-gap> isomorphism_from_codual_to_coexp_aop := IsomorphismFromCocartesianDualToCoexponential( aop );;
-gap> isomorphism_from_codual_to_coexp_bop := IsomorphismFromCocartesianDualToCoexponential( bop );;
-gap> isomorphism_from_codual_to_coexp_cop := IsomorphismFromCocartesianDualToCoexponential( cop );;
-gap> isomorphism_from_codual_to_coexp_dop := IsomorphismFromCocartesianDualToCoexponential( dop );;
+gap> isomorphism_from_codual_to_coexp_a_op := IsomorphismFromCocartesianDualToCoexponential( a_op );;
+gap> isomorphism_from_codual_to_coexp_b_op := IsomorphismFromCocartesianDualToCoexponential( b_op );;
+gap> isomorphism_from_codual_to_coexp_c_op := IsomorphismFromCocartesianDualToCoexponential( c_op );;
+gap> isomorphism_from_codual_to_coexp_d_op := IsomorphismFromCocartesianDualToCoexponential( d_op );;
 
-gap> isomorphism_from_coexp_to_codual_aop := IsomorphismFromCoexponentialToCocartesianDual( aop );;
-gap> isomorphism_from_coexp_to_codual_bop := IsomorphismFromCoexponentialToCocartesianDual( bop );;
-gap> isomorphism_from_coexp_to_codual_cop := IsomorphismFromCoexponentialToCocartesianDual( cop );;
-gap> isomorphism_from_coexp_to_codual_dop := IsomorphismFromCoexponentialToCocartesianDual( dop );;
+gap> isomorphism_from_coexp_to_codual_a_op := IsomorphismFromCoexponentialToCocartesianDual( a_op );;
+gap> isomorphism_from_coexp_to_codual_b_op := IsomorphismFromCoexponentialToCocartesianDual( b_op );;
+gap> isomorphism_from_coexp_to_codual_c_op := IsomorphismFromCoexponentialToCocartesianDual( c_op );;
+gap> isomorphism_from_coexp_to_codual_d_op := IsomorphismFromCoexponentialToCocartesianDual( d_op );;
 
 # Opposite correspondence
 
-gap> isomorphism_from_codual_to_coexp_aop = Opposite( isomorphism_from_exp_to_dual_a );
+gap> isomorphism_from_codual_to_coexp_a_op = Opposite( isomorphism_from_exp_to_dual_a );
 true
-gap> isomorphism_from_codual_to_coexp_bop = Opposite( isomorphism_from_exp_to_dual_b );
+gap> isomorphism_from_codual_to_coexp_b_op = Opposite( isomorphism_from_exp_to_dual_b );
 true
-gap> isomorphism_from_codual_to_coexp_cop = Opposite( isomorphism_from_exp_to_dual_c );
+gap> isomorphism_from_codual_to_coexp_c_op = Opposite( isomorphism_from_exp_to_dual_c );
 true
-gap> isomorphism_from_codual_to_coexp_dop = Opposite( isomorphism_from_exp_to_dual_d );
-true
-
-gap> isomorphism_from_coexp_to_codual_aop = Opposite( isomorphism_from_dual_to_exp_a );
-true
-gap> isomorphism_from_coexp_to_codual_bop = Opposite( isomorphism_from_dual_to_exp_b );
-true
-gap> isomorphism_from_coexp_to_codual_cop = Opposite( isomorphism_from_dual_to_exp_c );
-true
-gap> isomorphism_from_coexp_to_codual_dop = Opposite( isomorphism_from_dual_to_exp_d );
+gap> isomorphism_from_codual_to_coexp_d_op = Opposite( isomorphism_from_exp_to_dual_d );
 true
 
-gap> isomorphism_from_codual_to_coexp_cop = Opposite( isomorphism_from_exp_to_dual_a );
+gap> isomorphism_from_coexp_to_codual_a_op = Opposite( isomorphism_from_dual_to_exp_a );
 true
-gap> isomorphism_from_codual_to_coexp_cop = Opposite( isomorphism_from_exp_to_dual_b );
+gap> isomorphism_from_coexp_to_codual_b_op = Opposite( isomorphism_from_dual_to_exp_b );
 true
-gap> isomorphism_from_codual_to_coexp_cop = Opposite( isomorphism_from_exp_to_dual_d );
+gap> isomorphism_from_coexp_to_codual_c_op = Opposite( isomorphism_from_dual_to_exp_c );
+true
+gap> isomorphism_from_coexp_to_codual_d_op = Opposite( isomorphism_from_dual_to_exp_d );
 true
 
-gap> isomorphism_from_coexp_to_codual_dop = Opposite( isomorphism_from_dual_to_exp_a );
+gap> isomorphism_from_codual_to_coexp_c_op = Opposite( isomorphism_from_exp_to_dual_a );
 true
-gap> isomorphism_from_coexp_to_codual_dop = Opposite( isomorphism_from_dual_to_exp_b );
+gap> isomorphism_from_codual_to_coexp_c_op = Opposite( isomorphism_from_exp_to_dual_b );
 true
-gap> isomorphism_from_coexp_to_codual_dop = Opposite( isomorphism_from_dual_to_exp_c );
+gap> isomorphism_from_codual_to_coexp_c_op = Opposite( isomorphism_from_exp_to_dual_d );
+true
+
+gap> isomorphism_from_coexp_to_codual_d_op = Opposite( isomorphism_from_dual_to_exp_a );
+true
+gap> isomorphism_from_coexp_to_codual_d_op = Opposite( isomorphism_from_dual_to_exp_b );
+true
+gap> isomorphism_from_coexp_to_codual_d_op = Opposite( isomorphism_from_dual_to_exp_c );
 true
 
 #########################################################
@@ -1765,30 +1764,30 @@ gap> cd_to_t := UniversalMorphismIntoTerminalObject( c_product_d );;
 gap> i_to_ab := UniversalMorphismFromInitialObject( a_product_b );;
 gap> i_to_cd := UniversalMorphismFromInitialObject( c_product_d );;
 
-gap> ab_to_top := UniversalMorphismIntoTerminalObject( a_coproduct_bop );;
-gap> cd_to_top := UniversalMorphismIntoTerminalObject( c_coproduct_dop );;
+gap> ab_to_t_op := UniversalMorphismIntoTerminalObject( a_coproduct_b_op );;
+gap> cd_to_t_op := UniversalMorphismIntoTerminalObject( c_coproduct_d_op );;
 
-gap> t_to_abop := UniversalMorphismFromInitialObject( a_coproduct_bop );;
-gap> t_to_cdop := UniversalMorphismFromInitialObject( c_coproduct_dop );;
+gap> t_to_ab_op := UniversalMorphismFromInitialObject( a_coproduct_b_op );;
+gap> t_to_cd_op := UniversalMorphismFromInitialObject( c_coproduct_d_op );;
 
 # Universal property
 
 gap> universal_property_of_cart_dual_ab_to_t := UniversalPropertyOfCartesianDual( a, b, ab_to_t );;
 gap> universal_property_of_cart_dual_cd_to_t := UniversalPropertyOfCartesianDual( c, d, cd_to_t );;
 
-gap> universal_property_of_cocart_dual_t_to_abop := UniversalPropertyOfCocartesianDual( aop, bop, t_to_abop );;
-gap> universal_property_of_cocart_dual_t_to_cdop := UniversalPropertyOfCocartesianDual( cop, dop, t_to_cdop);;
+gap> universal_property_of_cocart_dual_t_to_ab_op := UniversalPropertyOfCocartesianDual( a_op, b_op, t_to_ab_op );;
+gap> universal_property_of_cocart_dual_t_to_cd_op := UniversalPropertyOfCocartesianDual( c_op, d_op, t_to_cd_op);;
 
 # Opposite correspondence
 
-gap> universal_property_of_cocart_dual_t_to_abop = Opposite( universal_property_of_cart_dual_ab_to_t );
+gap> universal_property_of_cocart_dual_t_to_ab_op = Opposite( universal_property_of_cart_dual_ab_to_t );
 true
-gap> universal_property_of_cocart_dual_t_to_cdop = Opposite( universal_property_of_cart_dual_cd_to_t );
+gap> universal_property_of_cocart_dual_t_to_cd_op = Opposite( universal_property_of_cart_dual_cd_to_t );
 true
 
-gap> universal_property_of_cocart_dual_t_to_abop = Opposite( universal_property_of_cart_dual_cd_to_t );
+gap> universal_property_of_cocart_dual_t_to_ab_op = Opposite( universal_property_of_cart_dual_cd_to_t );
 false
-gap> universal_property_of_cocart_dual_t_to_cdop = Opposite( universal_property_of_cart_dual_ab_to_t );
+gap> universal_property_of_cocart_dual_t_to_cd_op = Opposite( universal_property_of_cart_dual_ab_to_t );
 false
 
 #########################################################
@@ -1799,42 +1798,42 @@ gap> cart_lambda_intro_a_to_b := CartesianLambdaIntroduction( alpha );;
 gap> cart_lambda_intro_b_to_c := CartesianLambdaIntroduction( gamma );;
 gap> cart_lambda_intro_c_to_d := CartesianLambdaIntroduction( beta );;
 
-gap> cocart_lambda_intro_b_to_aop := CocartesianLambdaIntroduction( alphaop );;
-gap> cocart_lambda_intro_c_to_bop := CocartesianLambdaIntroduction( gammaop );;
-gap> cocart_lambda_intro_d_to_cop := CocartesianLambdaIntroduction( betaop );;
+gap> cocart_lambda_intro_b_to_a_op := CocartesianLambdaIntroduction( alpha_op );;
+gap> cocart_lambda_intro_c_to_b_op := CocartesianLambdaIntroduction( gamma_op );;
+gap> cocart_lambda_intro_d_to_c_op := CocartesianLambdaIntroduction( beta_op );;
 
 gap> cart_lambda_elim_t_to_exp_ab := CartesianLambdaElimination( a, b, cart_lambda_intro_a_to_b );;
 gap> cart_lambda_elim_t_to_exp_bc := CartesianLambdaElimination( b, c, cart_lambda_intro_b_to_c );;
 gap> cart_lambda_elim_t_to_exp_cd := CartesianLambdaElimination( c, d, cart_lambda_intro_c_to_d );;
 
-gap> cocart_lambda_elim_coexp_ba_to_top := CocartesianLambdaElimination( bop, aop, cocart_lambda_intro_b_to_aop );;
-gap> cocart_lambda_elim_coexp_cb_to_top := CocartesianLambdaElimination( cop, bop, cocart_lambda_intro_c_to_bop );;
-gap> cocart_lambda_elim_coexp_dc_to_top := CocartesianLambdaElimination( dop, cop, cocart_lambda_intro_d_to_cop );;
+gap> cocart_lambda_elim_coexp_ba_to_t_op := CocartesianLambdaElimination( b_op, a_op, cocart_lambda_intro_b_to_a_op );;
+gap> cocart_lambda_elim_coexp_cb_to_t_op := CocartesianLambdaElimination( c_op, b_op, cocart_lambda_intro_c_to_b_op );;
+gap> cocart_lambda_elim_coexp_dc_to_t_op := CocartesianLambdaElimination( d_op, c_op, cocart_lambda_intro_d_to_c_op );;
 
 # Opposite correspondence
 
-gap> cocart_lambda_intro_b_to_aop = Opposite( cart_lambda_intro_a_to_b );
+gap> cocart_lambda_intro_b_to_a_op = Opposite( cart_lambda_intro_a_to_b );
 true
-gap> cocart_lambda_intro_c_to_bop = Opposite( cart_lambda_intro_b_to_c );
+gap> cocart_lambda_intro_c_to_b_op = Opposite( cart_lambda_intro_b_to_c );
 true
-gap> cocart_lambda_intro_d_to_cop = Opposite( cart_lambda_intro_c_to_d );
-true
-
-gap> cocart_lambda_elim_coexp_ba_to_top = Opposite( cart_lambda_elim_t_to_exp_ab );
-true
-gap> cocart_lambda_elim_coexp_cb_to_top = Opposite( cart_lambda_elim_t_to_exp_bc );
-true
-gap> cocart_lambda_elim_coexp_dc_to_top = Opposite( cart_lambda_elim_t_to_exp_cd );
+gap> cocart_lambda_intro_d_to_c_op = Opposite( cart_lambda_intro_c_to_d );
 true
 
-gap> cocart_lambda_intro_d_to_cop = Opposite( cart_lambda_intro_a_to_b );
+gap> cocart_lambda_elim_coexp_ba_to_t_op = Opposite( cart_lambda_elim_t_to_exp_ab );
 true
-gap> cocart_lambda_intro_d_to_cop = Opposite( cart_lambda_intro_b_to_c );
+gap> cocart_lambda_elim_coexp_cb_to_t_op = Opposite( cart_lambda_elim_t_to_exp_bc );
+true
+gap> cocart_lambda_elim_coexp_dc_to_t_op = Opposite( cart_lambda_elim_t_to_exp_cd );
 true
 
-gap> cocart_lambda_elim_coexp_dc_to_top = Opposite( cart_lambda_elim_t_to_exp_ab );
+gap> cocart_lambda_intro_d_to_c_op = Opposite( cart_lambda_intro_a_to_b );
+true
+gap> cocart_lambda_intro_d_to_c_op = Opposite( cart_lambda_intro_b_to_c );
+true
+
+gap> cocart_lambda_elim_coexp_dc_to_t_op = Opposite( cart_lambda_elim_t_to_exp_ab );
 false
-gap> cocart_lambda_elim_coexp_dc_to_top = Opposite( cart_lambda_elim_t_to_exp_bc );
+gap> cocart_lambda_elim_coexp_dc_to_t_op = Opposite( cart_lambda_elim_t_to_exp_bc );
 false
 
 #########################################################
@@ -1855,19 +1854,19 @@ gap> isomorphism_from_exp_to_d := IsomorphismFromExponentialToObject( d );;
 gap> isomorphism_from_exp_to_i := IsomorphismFromExponentialToObject( i );;
 gap> isomorphism_from_exp_to_t := IsomorphismFromExponentialToObject( t );;
 
-gap> isomorphism_from_a_to_coexpop := IsomorphismFromObjectToCoexponential( aop );;
-gap> isomorphism_from_b_to_coexpop := IsomorphismFromObjectToCoexponential( bop );;
-gap> isomorphism_from_c_to_coexpop := IsomorphismFromObjectToCoexponential( cop );;
-gap> isomorphism_from_d_to_coexpop := IsomorphismFromObjectToCoexponential( dop );;
-gap> isomorphism_from_i_to_coexpop := IsomorphismFromObjectToCoexponential( iop );;
-gap> isomorphism_from_t_to_coexpop := IsomorphismFromObjectToCoexponential( top );;
+gap> isomorphism_from_a_to_coexpop := IsomorphismFromObjectToCoexponential( a_op );;
+gap> isomorphism_from_b_to_coexpop := IsomorphismFromObjectToCoexponential( b_op );;
+gap> isomorphism_from_c_to_coexpop := IsomorphismFromObjectToCoexponential( c_op );;
+gap> isomorphism_from_d_to_coexpop := IsomorphismFromObjectToCoexponential( d_op );;
+gap> isomorphism_from_i_to_coexpop := IsomorphismFromObjectToCoexponential( i_op );;
+gap> isomorphism_from_t_to_coexpop := IsomorphismFromObjectToCoexponential( t_op );;
 
-gap> isomorphism_from_coexp_to_aop := IsomorphismFromCoexponentialToObject( aop );;
-gap> isomorphism_from_coexp_to_bop := IsomorphismFromCoexponentialToObject( bop );;
-gap> isomorphism_from_coexp_to_cop := IsomorphismFromCoexponentialToObject( cop) ;;
-gap> isomorphism_from_coexp_to_dop := IsomorphismFromCoexponentialToObject( dop );;
-gap> isomorphism_from_coexp_to_iop := IsomorphismFromCoexponentialToObject( iop );;
-gap> isomorphism_from_coexp_to_top := IsomorphismFromCoexponentialToObject( top );;
+gap> isomorphism_from_coexp_to_a_op := IsomorphismFromCoexponentialToObject( a_op );;
+gap> isomorphism_from_coexp_to_b_op := IsomorphismFromCoexponentialToObject( b_op );;
+gap> isomorphism_from_coexp_to_c_op := IsomorphismFromCoexponentialToObject( c_op ) ;;
+gap> isomorphism_from_coexp_to_d_op := IsomorphismFromCoexponentialToObject( d_op );;
+gap> isomorphism_from_coexp_to_i_op := IsomorphismFromCoexponentialToObject( i_op );;
+gap> isomorphism_from_coexp_to_t_op := IsomorphismFromCoexponentialToObject( t_op );;
 
 # Opposite correspondence
 
@@ -1884,17 +1883,17 @@ true
 gap> isomorphism_from_t_to_coexpop = Opposite( isomorphism_from_exp_to_i );
 true
 
-gap> isomorphism_from_coexp_to_aop = Opposite( isomorphism_from_a_to_exp );
+gap> isomorphism_from_coexp_to_a_op = Opposite( isomorphism_from_a_to_exp );
 true
-gap> isomorphism_from_coexp_to_bop = Opposite( isomorphism_from_b_to_exp );
+gap> isomorphism_from_coexp_to_b_op = Opposite( isomorphism_from_b_to_exp );
 true
-gap> isomorphism_from_coexp_to_cop = Opposite( isomorphism_from_c_to_exp );
+gap> isomorphism_from_coexp_to_c_op = Opposite( isomorphism_from_c_to_exp );
 true
-gap> isomorphism_from_coexp_to_dop = Opposite( isomorphism_from_d_to_exp );
+gap> isomorphism_from_coexp_to_d_op = Opposite( isomorphism_from_d_to_exp );
 true
-gap> isomorphism_from_coexp_to_iop = Opposite( isomorphism_from_t_to_exp );
+gap> isomorphism_from_coexp_to_i_op = Opposite( isomorphism_from_t_to_exp );
 true
-gap> isomorphism_from_coexp_to_top = Opposite( isomorphism_from_i_to_exp );
+gap> isomorphism_from_coexp_to_t_op = Opposite( isomorphism_from_i_to_exp );
 true
 
 gap> isomorphism_from_c_to_coexpop = Opposite( isomorphism_from_exp_to_a );
@@ -1906,13 +1905,13 @@ false
 gap> isomorphism_from_c_to_coexpop = Opposite( isomorphism_from_exp_to_i );
 false
 
-gap> isomorphism_from_coexp_to_dop = Opposite( isomorphism_from_a_to_exp );
+gap> isomorphism_from_coexp_to_d_op = Opposite( isomorphism_from_a_to_exp );
 false
-gap> isomorphism_from_coexp_to_dop = Opposite( isomorphism_from_b_to_exp );
+gap> isomorphism_from_coexp_to_d_op = Opposite( isomorphism_from_b_to_exp );
 false
-gap> isomorphism_from_coexp_to_dop = Opposite( isomorphism_from_c_to_exp );
+gap> isomorphism_from_coexp_to_d_op = Opposite( isomorphism_from_c_to_exp );
 false
-gap> isomorphism_from_coexp_to_dop = Opposite( isomorphism_from_t_to_exp );
+gap> isomorphism_from_coexp_to_d_op = Opposite( isomorphism_from_t_to_exp );
 false
 
 gap> STOP_TEST("TerminalCategory.tst", 1);
