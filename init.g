@@ -13,6 +13,10 @@ ReadPackage( "CategoryConstructor", "gap/CreateMonoidalCategories.gd" );
 ReadPackage( "CategoryConstructor", "gap/CreateClosedMonoidalCategories.gd" );
 ReadPackage( "CategoryConstructor", "gap/CreateCoclosedMonoidalCategories.gd" );
 
+
+## TerminalCategory
+ReadPackage( "CategoryConstructor", "gap/TerminalCategory.gd" );
+
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "CategoryConstructor", "gap/Julia.gd" );
 fi;
