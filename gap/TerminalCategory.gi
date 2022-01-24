@@ -70,8 +70,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         "BRAIDED_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
         "DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
         "DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD",
-        #"RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD",
-        #"RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD",
+        "RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD",
+        "RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD",
         "CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD",
         "FREYD_CATEGORIES_METHOD_NAME_RECORD",
         "BOOLEAN_ALGEBRA_METHOD_NAME_RECORD",
@@ -88,6 +88,10 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     skip := [ "IsEqualForObjects",
               "IsEqualForMorphisms",
               "IsCongruentForMorphisms",
+              "MorphismToBidual",
+              "MorphismFromBidual",
+              "MorphismToCoBidual",
+              "MorphismFromCoBidual",
               "MorphismToBidualWithGivenBidual",
               "MorphismFromBidualWithGivenBidual",
               "MorphismToCoBidualWithGivenCoBidual",
@@ -180,9 +184,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     AddIsEqualForMorphisms( T,
       function( T, morphism1, morphism2 )
         
-        return IsEqualForObjects( Source( morphism1 ), Source( morphism2 ) ) and
-               IsEqualForObjects( Range( morphism1 ), Range( morphism2 ) ) and
-               String( morphism1 ) = String( morphism2 );
+        ## equality of source and target is part of the specification of the input and checked by the pre-function
+        return String( morphism1 ) = String( morphism2 );
         
     end );
     
@@ -190,8 +193,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     AddIsCongruentForMorphisms( T,
       function( T, morphism1, morphism2 )
         
-        return IsEqualForObjects( Source( morphism1 ), Source( morphism2 ) ) and
-               IsEqualForObjects( Range( morphism1 ), Range( morphism2 ) );
+        ## equality of source and target is part of the specification of the input and checked by the pre-function
+        return true;
         
     end );
     
