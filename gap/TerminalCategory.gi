@@ -57,9 +57,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
       Concatenation( List( RecNames( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD ), p -> CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.(p) ) );
 
     Append( list_of_operations_to_install,
-            [ "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-              "UniversalMorphismFromCoproductWithGivenCoproduct",
-              "Colift",
+            [ "Colift",
               "Lift",
               "IsColiftable",
               "IsLiftable",
