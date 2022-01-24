@@ -891,6 +891,8 @@ InstallMethod( LazyCategory,
             
             HC := LazyCategory( HC : lazify_range_of_hom_structure := false );
             
+            SetRangeCategoryOfHomomorphismStructure( D, HC );
+            
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( D )
@@ -938,6 +940,8 @@ InstallMethod( LazyCategory,
             
         else
             
+            SetRangeCategoryOfHomomorphismStructure( D, HC );
+            
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( D )
@@ -984,8 +988,6 @@ InstallMethod( LazyCategory,
             fi;
             
         fi;
-        
-        SetRangeCategoryOfHomomorphismStructure( D, HC );
         
     fi;
     
