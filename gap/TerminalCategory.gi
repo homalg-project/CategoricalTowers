@@ -180,9 +180,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     AddIsEqualForMorphisms( T,
       function( T, morphism1, morphism2 )
         
-        return IsEqualForObjects( Source( morphism1 ), Source( morphism2 ) ) and
-               IsEqualForObjects( Range( morphism1 ), Range( morphism2 ) ) and
-               String( morphism1 ) = String( morphism2 );
+        ## equality of source and target is part of the specification of the input and checked by the pre-function
+        return String( morphism1 ) = String( morphism2 );
         
     end );
     
@@ -190,8 +189,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     AddIsCongruentForMorphisms( T,
       function( T, morphism1, morphism2 )
         
-        return IsEqualForObjects( Source( morphism1 ), Source( morphism2 ) ) and
-               IsEqualForObjects( Range( morphism1 ), Range( morphism2 ) );
+        ## equality of source and target is part of the specification of the input and checked by the pre-function
+        return true;
         
     end );
     

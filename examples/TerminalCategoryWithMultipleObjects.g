@@ -30,6 +30,8 @@ t := TensorProduct( a, b );
 #! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( t );
 #! TensorProductOnObjects
+a = t;
+#! false
 m := MorphismConstructor( a, "m", b );
 #! <A morphism in TerminalCategoryWithMultipleObjects( )>
 Display( m );
