@@ -136,7 +136,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     T := CategoryConstructor( :
                  name := "TerminalCategoryWithMultipleObjects( )",
-                 category_filter := IsTerminalCategory,
+                 category_filter := IsTerminalCategory and IsTerminalCategoryWithMultipleObjects,
                  category_object_filter := IsCapTerminalCategoryObjectRep,
                  category_morphism_filter := IsCapTerminalCategoryMorphismRep,
                  commutative_ring := HomalgRingOfIntegers( ),
@@ -199,6 +199,16 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     Finalize( T );
     
     return T;
+    
+end );
+
+##
+InstallMethod( \/,
+        [ IsString, IsTerminalCategoryWithMultipleObjects ],
+        
+  function( string, T )
+    
+    return ObjectConstructor( T, string );
     
 end );
 

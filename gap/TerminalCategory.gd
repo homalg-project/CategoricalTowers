@@ -21,7 +21,20 @@
 #! provided by &CAP; or any &CAP;-based package.
 
 #! @Description
+#!  The &GAP; type of a terminal category with multiple objects.
+#! @Arguments T
+DeclareCategory( "IsTerminalCategoryWithMultipleObjects",
+        IsCapCategory );
+
+#! @Description
 #!  Construct a terminal category with multiple objects.
 #! @Arguments
 DeclareGlobalFunction( "TerminalCategoryWithMultipleObjects" );
 #! @InsertChunk TerminalCategoryWithMultipleObjects
+
+#! @Description
+#!  Create an object $a$ in the terminal category <A>T</A> with multiple objects
+#!  with <C>String</C>(<A>str</A>) = $a$.
+#! @Arguments T, str
+DeclareOperation( "/",
+        [ IsString, IsTerminalCategoryWithMultipleObjects ] );

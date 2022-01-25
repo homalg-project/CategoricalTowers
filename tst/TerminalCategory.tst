@@ -12,10 +12,10 @@ gap> START_TEST("TerminalCategory.tst");
 # Products and exponential objects for the terminal category
 
 gap> T := TerminalCategoryWithMultipleObjects( );;
-gap> a := ObjectConstructor( T, "a" );;
-gap> b := ObjectConstructor( T, "b" );;
-gap> c := ObjectConstructor( T, "c" );;
-gap> d := ObjectConstructor( T, "d" );;
+gap> a := "a" / T;;
+gap> b := "b" / T;;
+gap> c := "c" / T;;
+gap> d := "d" / T;;
 
 gap> i := InitialObject( T );;
 gap> t := TerminalObject( T );;

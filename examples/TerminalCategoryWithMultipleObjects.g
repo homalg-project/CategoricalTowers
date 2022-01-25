@@ -9,7 +9,7 @@ LoadPackage( "SubcategoriesForCAP" );
 #! @Example
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
-a := ObjectConstructor( T, "a" );
+a := "a" / T;
 #! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( a );
 #! a
@@ -21,7 +21,7 @@ Display( aa );
 #! a
 a = aa;
 #! true
-b := ObjectConstructor( T, "b" );
+b := "b" / T;
 #! <An object in TerminalCategoryWithMultipleObjects( )>
 Display( b );
 #! b
