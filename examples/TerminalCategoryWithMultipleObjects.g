@@ -1,11 +1,12 @@
 #! @Chunk TerminalCategoryWithMultipleObjects
 
+# the following packages introduce more CAP operations
+# which are not used below; still they make the example file
+# useful for further testing
+LoadPackage( "Locales" );
+LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
-LoadPackage( "Locales" );
-#! true
-LoadPackage( "SubcategoriesForCAP" );
-#! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 a := ObjectConstructor( T, "a" );
