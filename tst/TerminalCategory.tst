@@ -1863,7 +1863,7 @@ gap> isomorphism_from_t_to_coexpop := IsomorphismFromObjectToCoexponential( t_op
 
 gap> isomorphism_from_coexp_to_a_op := IsomorphismFromCoexponentialToObject( a_op );;
 gap> isomorphism_from_coexp_to_b_op := IsomorphismFromCoexponentialToObject( b_op );;
-gap> isomorphism_from_coexp_to_c_op := IsomorphismFromCoexponentialToObject( c_op ) ;;
+gap> isomorphism_from_coexp_to_c_op := IsomorphismFromCoexponentialToObject( c_op );;
 gap> isomorphism_from_coexp_to_d_op := IsomorphismFromCoexponentialToObject( d_op );;
 gap> isomorphism_from_coexp_to_i_op := IsomorphismFromCoexponentialToObject( i_op );;
 gap> isomorphism_from_coexp_to_t_op := IsomorphismFromCoexponentialToObject( t_op );;
