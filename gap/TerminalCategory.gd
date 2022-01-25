@@ -4,20 +4,24 @@
 # Declarations
 #
 
-#! @Chapter The terminal category allowing multiple objects
-
-#! This is an example of category created using <C>CategoryConstructor</C>
-#! which takes not input.
-
-#! The category is also used in conjunction with <C>LazyCategory</C> to
-#! to check the type-correctness of derived methods.
+#! @Chapter The category constructor
 
 ####################################
 #
-#! @Section Constructors
+#! @Section Example
 #
 ####################################
 
+#! This is an example of a category which is created using <C>CategoryConstructor</C>
+#! out of no input.
+
+#! This category <Q>lies</Q> in all doctrines and can hence
+#! be used (in conjunction with <C>LazyCategory</C>)
+#! in order to check the type-correctness of the various derived methods
+#! provided by &CAP; or any &CAP;-based package.
+
+#! @Description
+#!  Construct a terminal category with multiple objects.
 #! @Arguments
 DeclareGlobalFunction( "TerminalCategoryWithMultipleObjects" );
 #! @InsertChunk TerminalCategoryWithMultipleObjects
