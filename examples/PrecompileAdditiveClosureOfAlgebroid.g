@@ -13,6 +13,11 @@ A_bar := QuotientOfPathAlgebra( A, [ A.abc ] );;
 ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
+# only valid for the construction above
+# FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP
+CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsPathAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuotientOfPathAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+
 precompile_AdditiveClosureOfAlgebroid :=
   function( Rq, over_Z, path_algebra, ring )
     CapJitPrecompileCategoryAndCompareResult(
