@@ -12,10 +12,10 @@ gap> START_TEST("TerminalCategory.tst");
 # Products and exponential objects for the terminal category
 
 gap> T := TerminalCategoryWithMultipleObjects( );;
-gap> a := ObjectConstructor( T, "a" );;
-gap> b := ObjectConstructor( T, "b" );;
-gap> c := ObjectConstructor( T, "c" );;
-gap> d := ObjectConstructor( T, "d" );;
+gap> a := "a" / T;;
+gap> b := "b" / T;;
+gap> c := "c" / T;;
+gap> d := "d" / T;;
 
 gap> i := InitialObject( T );;
 gap> t := TerminalObject( T );;
@@ -1863,7 +1863,7 @@ gap> isomorphism_from_t_to_coexpop := IsomorphismFromObjectToCoexponential( t_op
 
 gap> isomorphism_from_coexp_to_a_op := IsomorphismFromCoexponentialToObject( a_op );;
 gap> isomorphism_from_coexp_to_b_op := IsomorphismFromCoexponentialToObject( b_op );;
-gap> isomorphism_from_coexp_to_c_op := IsomorphismFromCoexponentialToObject( c_op ) ;;
+gap> isomorphism_from_coexp_to_c_op := IsomorphismFromCoexponentialToObject( c_op );;
 gap> isomorphism_from_coexp_to_d_op := IsomorphismFromCoexponentialToObject( d_op );;
 gap> isomorphism_from_coexp_to_i_op := IsomorphismFromCoexponentialToObject( i_op );;
 gap> isomorphism_from_coexp_to_t_op := IsomorphismFromCoexponentialToObject( t_op );;
