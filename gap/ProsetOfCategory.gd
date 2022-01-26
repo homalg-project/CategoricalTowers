@@ -90,18 +90,34 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATE
 ####################################
 
 #! @Description
-#!  The cell in the ambient category underlying <A>cell</A>.
-#! @Arguments cell
-#! @Returns a &CAP; cell
-DeclareAttribute( "UnderlyingCell",
-        IsProsetOrPosetOfCapCategory );
-
-#! @Description
 #!  The ambient category of the proset <A>P</A>.
 #! @Arguments P
 #! @Returns a list
 DeclareAttribute( "AmbientCategory",
         IsProsetOrPosetOfCapCategory );
+
+#! @Description
+#!  The cell in the ambient category underlying <A>cell</A>.
+#! @Arguments cell
+#! @Returns a &CAP; cell
+DeclareAttribute( "UnderlyingCell",
+        IsCapCategoryCellInProsetOfACategory );
+
+CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryObjectInPosetOfACategory ], function ( args, func_stack )
+    
+    Assert( 0, IsProsetOrPosetOfCapCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := AmbientCategory( args.1.data_type.category )!.object_representation, category := AmbientCategory( args.1.data_type.category ) ) );
+    
+end );
+
+CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInPosetOfACategory ], function ( args, func_stack )
+    
+    Assert( 0, IsProsetOrPosetOfCapCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := AmbientCategory( args.1.data_type.category )!.morphism_representation, category := AmbientCategory( args.1.data_type.category ) ) );
+    
+end );
 
 ####################################
 #
