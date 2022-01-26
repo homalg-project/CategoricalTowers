@@ -16,7 +16,8 @@ a := CertainColumns( CertainRows( id, [ 1, 2, 3 ] ), [ 2, 3, 4, 5 ] );
 #! <An unevaluated non-zero 3 x 4 matrix over an internal ring>
 b := CertainColumns( CertainRows( id, [ 1, 2, 3, 4 ] ), [ 2, 3, 4, 5, 6 ] );
 #! <An unevaluated non-zero 4 x 5 matrix over an internal ring>
-c := CertainColumns( CertainRows( id, [ 1, 2, 3, 4, 5 ] ), [ 3, 4, 5, 6, 7, 8 ] );
+c := CertainColumns(
+             CertainRows( id, [ 1, 2, 3, 4, 5 ] ), [ 3, 4, 5, 6, 7, 8 ] );
 #! <An unevaluated non-zero 5 x 6 matrix over an internal ring>
 IsZero( a * b );
 #! false
