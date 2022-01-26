@@ -15,6 +15,10 @@ gap> LoadPackage( "FreydCategoriesForCAP", false );
 true
 gap> LoadPackage( "Algebroids", false );
 true
+gap> LoadPackage( "Locales", false );
+true
+gap> LoadPackage( "SubcategoriesForCAP", false );
+true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "LazyCategories" );
 true
@@ -25,5 +29,9 @@ true
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
 gap> LoadPackage( "Algebroids" );
+true
+gap> LoadPackage( "Locales" );
+true
+gap> LoadPackage( "SubcategoriesForCAP" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;

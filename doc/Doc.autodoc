@@ -23,6 +23,9 @@
 @Subsection Disassembling the snake in an underlying additive category (different model)
 @InsertChunk SnakeInAdditiveClosureOfAlgebroid
 
+@Subsection Lazy terminal category with multiple objects
+@InsertChunk LazyTerminalCategory
+
 @Section GAP categories
 @Section Global variables
 @Section Attributes
