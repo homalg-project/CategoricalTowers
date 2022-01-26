@@ -68,6 +68,13 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY" );
 ####################################
 
 #! @Description
+#!  The ambient category of the slice category <A>S</A>.
+#! @Arguments S
+#! @Returns a list
+DeclareAttribute( "AmbientCategory",
+        IsCapSliceCategory );
+
+#! @Description
 #!  The base object of the slice category <A>S</A>.
 #! @Arguments S
 #! @Returns a &CAP; object
@@ -88,6 +95,14 @@ DeclareAttribute( "BaseObject",
 DeclareAttribute( "UnderlyingMorphism",
         IsCapCategoryObjectInASliceCategory );
 
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsCapCategoryObjectInASliceCategory ], function ( args, func_stack )
+    
+    Assert( 0, IsCapSliceCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := AmbientCategory( args.1.data_type.category )!.morphism_representation, category := AmbientCategory( args.1.data_type.category ) ) );
+    
+end );
+
 #! @Description
 #!  The cell in the ambient category underlying <A>cell</A>.
 #! @Arguments cell
@@ -95,12 +110,13 @@ DeclareAttribute( "UnderlyingMorphism",
 DeclareAttribute( "UnderlyingCell",
         IsCapCategoryCellInASliceCategory );
 
-#! @Description
-#!  The ambient category of the slice category <A>S</A>.
-#! @Arguments S
-#! @Returns a list
-DeclareAttribute( "AmbientCategory",
-        IsCapSliceCategory );
+CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInASliceCategory ], function ( args, func_stack )
+    
+    Assert( 0, IsCapSliceCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := AmbientCategory( args.1.data_type.category )!.morphism_representation, category := AmbientCategory( args.1.data_type.category ) ) );
+    
+end );
 
 #! @Description
 #!  The natural embedding functor from <A>S</A> to <C>AmbientCategory</C>(<A>S</A>).
