@@ -216,6 +216,7 @@ DeclareAttribute( "Antipode",
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
         IsObjectInAlgebroid );
+CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInAlgebroid ], IsQuiverVertex );
 
 #! @Description
 #!  The quiver algebra element underlying the morphism <A>mor</A> in an algebroid.
@@ -223,6 +224,26 @@ DeclareAttribute( "UnderlyingVertex",
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInAlgebroid );
+
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], function ( args, func_stack )
+    
+    Assert( 0, IsAlgebroid( args.1.data_type.category ) );
+    
+    if IsPathAlgebra( UnderlyingQuiverAlgebra( args.1.data_type.category ) ) then
+        
+        return rec( args := args, output_type := rec( filter := IsPathAlgebraElement ) );
+        
+    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( args.1.data_type.category ) ) then
+        
+        return rec( args := args, output_type := rec( filter := IsQuotientOfPathAlgebraElement ) );
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+    
+end );
 
 #! @Description
 #!  The underlying algebra of an algebroid.
