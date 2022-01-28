@@ -43,8 +43,8 @@ function ( cat_1, a_1, b_1 )
              ), deduped_11_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
                ), deduped_10_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                  ), deduped_8_1, ObjectifyObjectForCAPWithAttributes( rec(
-                   ), deduped_8_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                   ), deduped_8_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
+                   ), deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                   ), deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
 end
 ########
         
