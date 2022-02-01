@@ -359,17 +359,22 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := AmbientCategory( cat_1 );
-    deduped_3_1 := UnderlyingMorphism( arg2_1 );
-    deduped_2_1 := UnderlyingMatrix( deduped_3_1 );
-    deduped_1_1 := Range( deduped_3_1 );
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := AmbientCategory( cat_1 );
+    deduped_4_1 := UnderlyingMorphism( arg2_1 );
+    deduped_3_1 := UnderlyingMatrix( deduped_4_1 );
+    deduped_2_1 := Source( deduped_4_1 );
+    deduped_1_1 := Range( deduped_4_1 );
     return IS_IDENTICAL_OBJ( deduped_1_1, BaseObject( cat_1 ) ) and function (  )
-              if not IS_IDENTICAL_OBJ( deduped_4_1, deduped_4_1 ) then
+              if not IS_IDENTICAL_OBJ( deduped_5_1, CapCategory( deduped_2_1 ) ) then
                   return false;
-              elif NumberRows( deduped_2_1 ) <> RankOfObject( Source( deduped_3_1 ) ) then
+              elif not IS_IDENTICAL_OBJ( deduped_5_1, CapCategory( deduped_4_1 ) ) then
                   return false;
-              elif NumberColumns( deduped_2_1 ) <> RankOfObject( deduped_1_1 ) then
+              elif not IS_IDENTICAL_OBJ( deduped_5_1, CapCategory( deduped_1_1 ) ) then
+                  return false;
+              elif NumberRows( deduped_3_1 ) <> RankOfObject( deduped_2_1 ) then
+                  return false;
+              elif NumberColumns( deduped_3_1 ) <> RankOfObject( deduped_1_1 ) then
                   return false;
               else
                   return true;
