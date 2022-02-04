@@ -1122,14 +1122,16 @@ InstallMethod( PositivelyZGradedCategory,
                 if not info.with_given_without_given_name_pair[2] in recnames then
                     Add( recnames, info.with_given_without_given_name_pair[2] );
                 fi;
-                with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name;
-                if not with_given_object_name in recnames then
-                    Add( recnames, with_given_object_name );
+                if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
+                    with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name;
+                    if not with_given_object_name in recnames then
+                        Add( recnames, with_given_object_name );
+                    fi;
                 fi;
                 continue;
             fi;
             
-            if IsList( info.with_given_without_given_name_pair ) then
+            if IsList( info.with_given_without_given_name_pair ) and IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) then
                 func := create_func_universal_morphism( name );
             else
                 func := create_func_morphism( name );
