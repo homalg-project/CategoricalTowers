@@ -134,12 +134,9 @@ RelativeLift := rec(
   is_merely_set_theoretic := true ),
 
 ## biased weak fiber product
-## FIXME: create universal_type substitute
 
 BiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
-  cache_name := "BiasedRelativeWeakFiberProduct",
-  universal_type := "Limit",
   #dual_operation := "BiasedRelativeWeakPushout",
   pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   return_type := "object",
@@ -148,9 +145,7 @@ BiasedRelativeWeakFiberProduct := rec(
 ProjectionOfBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
   io_type := [ [ "a", "b", "c" ], [ "P", "a_source" ] ],
-  cache_name := "ProjectionOfBiasedRelativeWeakFiberProduct",
   with_given_object_position := "Source",
-  universal_type := "Limit",
   #dual_operation := "InjectionOfBiasedRelativeWeakPushout",
   pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   return_type := "morphism",
@@ -159,8 +154,6 @@ ProjectionOfBiasedRelativeWeakFiberProduct := rec(
 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "c", "P" ], [ "P", "a_source" ] ],
-  cache_name := "ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
-  universal_type := "Limit",
   #dual_operation := "InjectionOfBiasedRelativeWeakPushoutWithGivenBiasedRelativeWeakPushout",
   pre_function := RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   return_type := "morphism",
@@ -169,9 +162,7 @@ ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduc
 UniversalMorphismIntoBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism" ],
   io_type := [ [ "a", "b", "c", "t" ], [ "t_source", "P" ] ],
-  cache_name := "UniversalMorphismIntoBiasedRelativeWeakFiberProduct",
   with_given_object_position := "Range",
-  universal_type := "Limit",
   #dual_operation := "UniversalMorphismFromBiasedRelativeWeakPushout",
   pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
   return_type := "morphism",
@@ -180,8 +171,6 @@ UniversalMorphismIntoBiasedRelativeWeakFiberProduct := rec(
 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "c", "t", "P", ], [ "t_source", "P" ] ],
-  cache_name := "UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
-  universal_type := "Limit",
   #dual_operation := "UniversalMorphismFromBiasedRelativeWeakPushoutWithGivenBiasedRelativeWeakPushout",
   pre_function := UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION,
   return_type := "morphism",
