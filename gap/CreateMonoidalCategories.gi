@@ -77,7 +77,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
     
 end );
 
-##    
+##
 InstallGlobalFunction( WriteFileForMonoidalStructure,
   function( key_val_rec, package_name, files_rec )
     local dir, L, files, header, file, source, target;
@@ -87,18 +87,24 @@ InstallGlobalFunction( WriteFileForMonoidalStructure,
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     
     files := [ "MonoidalCategoriesTensorProductAndUnit_gd",
+               "MonoidalCategoriesTensorProductAndUnitTest_gd",
                "MonoidalCategories_gd",
+               "MonoidalCategoriesTest_gd",
                "AdditiveMonoidalCategories_gd",
                "BraidedMonoidalCategories_gd",
+               "BraidedMonoidalCategoriesTest_gd",
                "MonoidalCategoriesTensorProductAndUnitMethodRecord_gi",
                "MonoidalCategoriesTensorProductAndUnit_gi",
+               "MonoidalCategoriesTensorProductAndUnitTest_gi",
                "MonoidalCategoriesMethodRecord_gi",
                "MonoidalCategories_gi",
+               "MonoidalCategoriesTest_gi",
                "AdditiveMonoidalCategoriesMethodRecord_gi",
                "AdditiveMonoidalCategories_gi",
                "BraidedMonoidalCategoriesProperties_gi",
                "BraidedMonoidalCategoriesMethodRecord_gi",
                "BraidedMonoidalCategories_gi",
+               "BraidedMonoidalCategoriesTest_gi",
                "SymmetricMonoidalCategoriesProperties_gi",
                "MonoidalCategoriesDerivedMethods_gi",
                "AdditiveMonoidalCategoriesDerivedMethods_gi",
