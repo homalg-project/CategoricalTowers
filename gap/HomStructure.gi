@@ -97,13 +97,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     ##
     AddHomomorphismStructureOnObjects( Hom,
       function ( Hom, S, R )
-        local map, H_SR;
         
-        map := AuxiliaryMorphism( S, R );
-        
-        H_SR := KernelObject( map );
-        
-        return H_SR;
+        return KernelObject( AuxiliaryMorphism( S, R ) );
         
     end );
     
