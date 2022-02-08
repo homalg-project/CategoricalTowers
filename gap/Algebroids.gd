@@ -225,17 +225,17 @@ CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInAlgebroid ], IsQuiverVer
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInAlgebroid );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], function ( args, func_stack )
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], function ( input_types )
     
-    Assert( 0, IsAlgebroid( args.1.data_type.category ) );
+    Assert( 0, IsAlgebroid( input_types[1].category ) );
     
-    if IsPathAlgebra( UnderlyingQuiverAlgebra( args.1.data_type.category ) ) then
+    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
         
-        return rec( args := args, output_type := rec( filter := IsPathAlgebraElement ) );
+        return rec( filter := IsPathAlgebraElement );
         
-    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( args.1.data_type.category ) ) then
+    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
         
-        return rec( args := args, output_type := rec( filter := IsQuotientOfPathAlgebraElement ) );
+        return rec( filter := IsQuotientOfPathAlgebraElement );
         
     else
         
