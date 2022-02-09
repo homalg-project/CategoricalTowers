@@ -4,6 +4,78 @@
 # Implementations
 #
 
+# func( ..., EXPR_CASE, ... ) => EXPR_CASE
+# This should become part of `CompilerForCAP`, but in a more general way because it otherwise causes
+# regressions when compiling StablePosetOfCategory( PosetOfCategory( SliceCategoryOverTensorUnit( CategoryOfRows( ZZ ) ) ) ).
+# Putting this before cancelling attributes and using pre_func instead of result_func significantly
+# improves the performance for PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid.g
+Add( CAP_JIT_LOGIC_FUNCTIONS, function ( tree )
+  local pre_func, result_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for func( ..., EXPR_CASE, ... )." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local pos;
+        
+        if tree.type = "EXPR_FUNCCALL" then
+            
+            pos := PositionProperty( tree.args, a -> a.type = "EXPR_CASE" );
+            
+            if pos <> fail then
+                
+                return rec(
+                    type := "EXPR_CASE",
+                    branches := List( tree.args.(pos).branches, branch -> rec(
+                        type := "CASE_BRANCH",
+                        condition := branch.condition,
+                        value := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := CapJitCopyWithNewFunctionIDs( tree.funcref ),
+                            args := AsSyntaxTreeList(
+                                List(
+                                    [ 1 .. tree.args.length ],
+                                    function ( i )
+                                        
+                                        if i = pos then
+                                            
+                                            return branch.value;
+                                            
+                                        else
+                                            
+                                            return CapJitCopyWithNewFunctionIDs( tree.args.(i) );
+                                            
+                                        fi;
+                                        
+                                    end
+                                )
+                            ),
+                        ),
+                    ) ),
+                );
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end, 1 );
+
+# ListN( [ entry1, entry2 ], [ entry3, entry4 ], func )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry1", "entry2", "entry3", "entry4", "func" ],
+        src_template := "ListN( [ entry1, entry2 ], [ entry3, entry4 ], func )",
+        dst_template := "[ func( entry1, entry3 ), func( entry2, entry4 ) ]",
+        returns_value := true,
+    )
+);
+
 # additive_closure_object[i] => ObjectList( additive_closure_object )[i]
 CapJitAddLogicTemplate(
     rec(
@@ -160,5 +232,25 @@ CapJitAddLogicTemplate(
         new_funcs := [ [ "list" ], [ "new_row" ] ],
         returns_value := true,
         needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
+    )
+);
+
+# IsZero( Zero( ... ) ) => true
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "something" ],
+        src_template := "IsZero( ZeroImmutable( something ) )",
+        dst_template := "true",
+        returns_value := true,
+    )
+);
+
+# UnionOfColumns for a single matrix
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "ring", "nr_rows", "entry" ],
+        src_template := "UnionOfColumns( ring, nr_rows, [ entry ] )",
+        dst_template := "entry",
+        returns_value := true,
     )
 );

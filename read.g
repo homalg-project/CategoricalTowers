@@ -9,6 +9,8 @@ ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroi
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled.gi" );
 
+ReadPackage( "Algebroids", "gap/precompiled_categories/AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled.gi" );
+
 ReadPackage( "Algebroids", "gap/FpCategories.gi");
 ReadPackage( "Algebroids", "gap/Algebroids.gi");
 ReadPackage( "Algebroids", "gap/QPA2.gi");
