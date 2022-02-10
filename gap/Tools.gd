@@ -276,3 +276,112 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCatego
 #! @Arguments alpha, delta
 DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory",
                    [ IsList, IsList ] );
+
+###################################
+##
+#! @Section Limit
+##
+###################################
+
+#! @Description
+#!  The input is
+#!  * a category <A>cat</A> and
+#!  * a finite diagram (or subquiver) in <A>cat</A> given by
+#!      - a list <A>objs</A> of objects in <A>cat</A>, and
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>.
+#!
+#!  The output is a pair of parallel morphisms in <A>cat</A>,
+#!  the binary equalizer of which is the limit of the diagram.
+#! @Arguments cat, objs, decorated_mors
+#! @Returns a pair of morphisms
+DeclareOperation( "LimitPair",
+        [ IsCapCategory, IsList, IsList ] );
+
+#! @Description
+#!  The input is a finite diagram (or subquiver) <A>D</A> (in a category <A>cat</A>)
+#!  consisting of
+#!  * a list <A>objs</A> of objects in <A>cat</A> and
+#!  * a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!    where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>.
+#!
+#!  The output is the limit object $\mathrm{Limit}$(<A>D</A>) of the diagram <A>D</A>.
+#! @Arguments objs, decorated_mors
+#! @Returns an object
+#! @Group Limit
+DeclareOperation( "Limit",
+        [ IsList, IsList ] );
+
+#! @Arguments cat, D
+#! @Group Limit
+DeclareOperation( "Limit",
+        [ IsCapCategory, IsList ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <A>D</A> (in a category <A>cat</A>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <A>cat</A>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>, and
+#!  * a positive integer <A>k</A>.
+#!  
+#!  The output is the projection of the limit object $P := \mathrm{Limit}$(<A>D</A>) of the diagram <A>D</A>
+#!  into the <A>k</A>-th objects $P_k =$<A>objs</A>[<A>k</A>].
+#! @Arguments objects, decorated_morphisms, k
+#! @Returns a morphism in $\mathrm{Hom}( P, P_k )$
+#! @Group ProjectionInFactorOfLimit
+DeclareOperation( "ProjectionInFactorOfLimit",
+                  [ IsList, IsList, IsInt ] );
+
+#! @Arguments cat, D, k
+#! @Group ProjectionInFactorOfLimit
+DeclareOperation( "ProjectionInFactorOfLimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <M>D</M> (in a category <A>cat</A>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <A>cat</A>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>,
+#!  * a positive integer <A>k</A>, and
+#!  * an object <A>P</A>$= \mathrm{Limit}(D)$.
+#!  
+#!  The output is the projection of the limit object <A>P</A> $:=\mathrm{Limit}(D)$ into $P_k =$<A>objs</A>[<A>k</A>].
+#! @Returns a morphism in $\mathrm{Hom}( P, P_k )$
+#! @Arguments objects, decorated_morphisms, k, P
+DeclareOperation( "ProjectionInFactorOfLimitWithGivenLimit",
+                  [ IsList, IsList, IsInt, IsCapCategoryObject ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <M>D</M> (in a category <M>cat</M>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <M>cat</M>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <M>cat</M>,
+#!  * a test object <A>T</A>, and
+#!  * a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$ in <M>cat</M> defining a cone over $D$.
+#!  
+#!  The output is the morphism $u( \tau ): T \rightarrow \mathrm{Limit}(D)$
+#!  given by the universal property of the limit.
+#! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{Limit}(D) )$
+#! @Arguments objects, decorated_morphisms, T, tau
+DeclareOperation( "UniversalMorphismIntoLimit",
+                  [ IsList, IsList, IsCapCategoryObject, IsList ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <M>D</M> (in a category <M>cat</M>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <M>cat</M>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <M>cat</M>,
+#!  * a test object <A>T</A>,
+#!  * a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$ in <M>cat</M> defining a cone over $D$, and
+#!  * an object <A>P</A>$= \mathrm{Limit}(D)$.
+#!  
+#!  The output is the morphism $u( \tau ): T \rightarrow P = \mathrm{Limit}(D)$
+#!  given by the universal property of the limit.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments objects, decorated_morphisms, T, tau, P
+DeclareOperation( "UniversalMorphismIntoLimitWithGivenLimit",
+                  [ IsList, IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );

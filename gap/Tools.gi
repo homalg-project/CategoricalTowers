@@ -216,6 +216,102 @@ BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory := rec(
   return_type := IsList
 ),
 
+Limit := rec(
+  filter_list := [ "category", "list_of_objects", IsList ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms" ],
+  return_type := "object",
+  
+  #pre_function := function( cat, objects, decorated_morphisms )
+  #  local base, current_morphism, current_value;
+  #  
+  #  if IsEmpty( objects ) then
+  #      
+  #      return [ true ];
+  #      
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "Colimit",
+  ),
+
+ProjectionInFactorOfLimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, IsInt ],
+  io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "P", "objects_k" ] ],
+  with_given_object_position := "Source",
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, projection_number )
+  #  local base, current_morphism, current_value;
+  #  
+  #  if projection_number < 1 or projection_number > Length( objects ) then
+  #      return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "InjectionOfCofactorOfColimit",
+  ),
+
+ProjectionInFactorOfLimitWithGivenLimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, IsInt, "object" ],
+  io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "P", "objects_k" ] ],
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, projection_number, limit )
+  #  local base, current_morphism, current_value;
+  #  
+  #  if projection_number < 1 or projection_number > Length( objects ) then
+  #      return[ false, Concatenation( "there does not exist a ", String( projection_number ), "th projection" ) ];
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "InjectionOfCofactorOfColimitWithColimit",
+  ),
+
+UniversalMorphismIntoLimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms" ],
+  io_type := [ [ "objects", "decorated_morphisms", "T", "tau" ], [ "T", "P" ] ],
+  with_given_object_position := "Range",
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, test_object, source )
+  #  local base, current_morphism, current_value, current_morphism_position;
+  #  
+  #  if Length( objects ) <> Length( source ) then
+  #      return [ false, "fiber product diagram and test diagram must have equal length" ];
+  #  fi;
+  #  
+  #  if IsEmpty( objects ) then
+  #      
+  #      return [ true ];
+  #      
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "UniversalMorphismFromColimit",
+  ),
+
+UniversalMorphismIntoLimitWithGivenLimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "objects", "decorated_morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, test_object, source, limit )
+  #  local base, current_morphism, current_value, current_morphism_position;
+  #  
+  #  if Length( objects ) <> Length( source ) then
+  #      return [ false, "fiber product diagram and test diagram must have equal length" ];
+  #  fi;
+  #  
+  #  if IsEmpty( objects ) then
+  #      
+  #      return [ true ];
+  #      
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "UniversalMorphismFromColimitWithGivenColimit",
+  ),
+
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD );
@@ -756,3 +852,131 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
   end,
   Description := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory using the homomorphism structure"
 );
+
+##
+InstallMethodForCompilerForCAP( LimitPair,
+        "for a catgory and two lists",
+        [ IsCapCategory, IsList, IsList ],
+
+  function( cat, objects, decorated_morphisms )
+    local source, projections, diagram, tau, range, mor1, compositions, mor2;
+    
+    source := DirectProduct( cat, objects );
+    
+    projections := List( [ 1 .. Length( objects ) ],
+                         i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, objects, i, source ) );
+    
+    diagram := List( decorated_morphisms, m -> objects[m[3]] );
+    
+    tau := List( decorated_morphisms, m -> projections[m[3]] );
+    
+    range := DirectProduct( cat, diagram );
+    
+    mor1 := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                    diagram, source, tau, range );
+    
+    compositions := List( decorated_morphisms,
+                          m -> PreCompose( cat,
+                                  projections[m[1]],
+                                  m[2] ) );
+    
+    mor2 := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                    diagram, source, compositions, range );
+    
+    return [ mor1, mor2 ];
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( Limit,
+        "for a catgory and a list",
+        [ IsCapCategory, IsList ],
+
+  function( cat, diagram )
+    
+    return Limit( cat, diagram[1], diagram[2] );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ProjectionInFactorOfLimit,
+        "for a catgory, a list, and an integer",
+        [ IsCapCategory, IsList, IsInt ],
+        
+  function( cat, diagram, k )
+    
+    return ProjectionInFactorOfLimit( cat, diagram[1], diagram[2], k );
+    
+end );
+
+##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+        rec(
+            LimitPair :=
+            [ [ "DirectProduct", 2 ],
+              [ "ProjectionInFactorOfDirectProductWithGivenDirectProduct", 2 ], ## called in List
+              [ "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 ],
+              [ "PreCompose", 2 ] ] ## called in List
+            )
+);
+
+##
+AddFinalDerivation( Limit,
+        [ [ DirectProduct, 2 ],
+          [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## called in List
+          [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
+          [ PreCompose, 3 ], ## called in List
+          [ EmbeddingOfEqualizerWithGivenEqualizer, 2 ],
+          [ ProjectionInFactorOfDirectProduct, 1 ],
+          [ UniversalMorphismIntoDirectProduct, 1 ],
+          [ LiftAlongMonomorphism, 1 ],
+          ],
+        [ Limit,
+          ProjectionInFactorOfLimit,
+          ProjectionInFactorOfLimitWithGivenLimit,
+          UniversalMorphismIntoLimit,
+          UniversalMorphismIntoLimitWithGivenLimit,
+          ],
+        
+    function( cat, objects, decorated_morphisms )
+      
+      return Equalizer( cat,
+                     LimitPair( cat,
+                             objects,
+                             decorated_morphisms ) );
+      
+  end,
+[
+  ProjectionInFactorOfLimitWithGivenLimit,
+    function( cat, objects, decorated_morphisms, k, limit )
+      
+      return PreCompose( cat,
+                     EmbeddingOfEqualizerWithGivenEqualizer( cat,
+                             LimitPair( cat,
+                                     objects,
+                                     decorated_morphisms ),
+                             limit ),
+                     ProjectionInFactorOfDirectProduct( cat,
+                             objects,
+                             k ) );
+      
+  end
+],
+[
+  UniversalMorphismIntoLimitWithGivenLimit,
+    function( cat, objects, decorated_morphisms, T, tau, limit )
+      
+      return LiftAlongMonomorphism( cat,
+                     EmbeddingOfEqualizerWithGivenEqualizer( cat,
+                             LimitPair( cat,
+                                     objects,
+                                     decorated_morphisms ),
+                             limit ),
+                     UniversalMorphismIntoDirectProduct( cat,
+                             objects,
+                             T,
+                             tau ) );
+      
+  end
+]
+: Description := "Limit using DirectProduct and Equalizer" );
