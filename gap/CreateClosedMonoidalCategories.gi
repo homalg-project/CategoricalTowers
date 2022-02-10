@@ -84,7 +84,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_CLOSED_MONOIDAL_STRUCTURES,
     
 end );
 
-##    
+##
 InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
   function( key_val_rec, package_name, files_rec )
     local dir, L, files, header, file, source, target;
@@ -94,14 +94,18 @@ InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     
     files := [ "ClosedMonoidalCategories_gd",
+               "ClosedMonoidalCategoriesTest_gd",
                "RigidSymmetricClosedMonoidalCategories_gd",
+               "RigidSymmetricClosedMonoidalCategoriesTest_gd",
                "ClosedMonoidalCategoriesProperties_gi",
                "ClosedMonoidalCategoriesMethodRecord_gi",
                "ClosedMonoidalCategories_gi",
+               "ClosedMonoidalCategoriesTest_gi",
                "SymmetricClosedMonoidalCategoriesProperties_gi",
                "RigidSymmetricClosedMonoidalCategoriesProperties_gi",
                "RigidSymmetricClosedMonoidalCategoriesMethodRecord_gi",
                "RigidSymmetricClosedMonoidalCategories_gi",
+               "RigidSymmetricClosedMonoidalCategoriesTest_gi",
                "ClosedMonoidalCategoriesDerivedMethods_gi",
                "SymmetricClosedMonoidalCategoriesDerivedMethods_gi",
                "RigidSymmetricClosedMonoidalCategoriesDerivedMethods_gi",

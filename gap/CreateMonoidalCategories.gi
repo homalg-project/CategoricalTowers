@@ -73,11 +73,22 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_MONOIDAL_STRUCTURES,
     Add( L, [ "Additive ", key_val_rec.AdditiveS ] );
     Add( L, [ "Braided ", key_val_rec.BraidedS ] );
     
+    if IsBound( key_val_rec.replace ) then
+        Append( L, key_val_rec.replace );
+    fi;
+    
+    if IsBound( key_val_rec.safe_replace ) then
+        L := Concatenation(
+                     List( key_val_rec.safe_replace, r -> [ r[1], ShaSum( r[1] ) ] ), ## detect at the very beginning and replace by sha's (order is important!)
+                     L,
+                     List( key_val_rec.safe_replace, r -> [ ShaSum( r[1] ), r[2] ] ) ); ## safely replace the sha's at the very end
+    fi;
+    
     return L;
     
 end );
 
-##    
+##
 InstallGlobalFunction( WriteFileForMonoidalStructure,
   function( key_val_rec, package_name, files_rec )
     local dir, L, files, header, file, source, target;
@@ -87,18 +98,24 @@ InstallGlobalFunction( WriteFileForMonoidalStructure,
     dir := Concatenation( PackageInfo( "MonoidalCategories" )[1].InstallationPath, "/gap/" );
     
     files := [ "MonoidalCategoriesTensorProductAndUnit_gd",
+               "MonoidalCategoriesTensorProductAndUnitTest_gd",
                "MonoidalCategories_gd",
+               "MonoidalCategoriesTest_gd",
                "AdditiveMonoidalCategories_gd",
                "BraidedMonoidalCategories_gd",
+               "BraidedMonoidalCategoriesTest_gd",
                "MonoidalCategoriesTensorProductAndUnitMethodRecord_gi",
                "MonoidalCategoriesTensorProductAndUnit_gi",
+               "MonoidalCategoriesTensorProductAndUnitTest_gi",
                "MonoidalCategoriesMethodRecord_gi",
                "MonoidalCategories_gi",
+               "MonoidalCategoriesTest_gi",
                "AdditiveMonoidalCategoriesMethodRecord_gi",
                "AdditiveMonoidalCategories_gi",
                "BraidedMonoidalCategoriesProperties_gi",
                "BraidedMonoidalCategoriesMethodRecord_gi",
                "BraidedMonoidalCategories_gi",
+               "BraidedMonoidalCategoriesTest_gi",
                "SymmetricMonoidalCategoriesProperties_gi",
                "MonoidalCategoriesDerivedMethods_gi",
                "AdditiveMonoidalCategoriesDerivedMethods_gi",
