@@ -4,6 +4,9 @@
 # Declarations
 #
 
+DeclareOperation( "ExternalHomDiagram",
+    [ IsCapCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ] );
+
 DeclareOperation( "AuxiliaryMorphism",
     [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ] );
 
