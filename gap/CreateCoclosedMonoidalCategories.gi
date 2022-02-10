@@ -41,7 +41,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
            "otimes",
            "tensor_product",
            "tensorSproduct",
-           "coHom_tensor",
+           "cohom_tensor",
            "coHom",
            "CoclosedSMonoidal",
            "TensorProductOnObjectsBCcat",
@@ -66,7 +66,7 @@ InstallGlobalFunction( CAP_INTERNAL_FUNC_FOR_COCLOSED_MONOIDAL_STRUCTURES,
                    ], L );
     
     Add( L, [ "tensor product", key_val_rec.tensorSproduct ] );
-    Add( L, [ "coHom tensor", key_val_rec.coHom_tensor ] );
+    Add( L, [ "cohom tensor", key_val_rec.cohom_tensor ] );
     Add( L, [ "\\\underline{coHom}", key_val_rec.coHom ] );
     
     if IsBound( key_val_rec.replace ) then
