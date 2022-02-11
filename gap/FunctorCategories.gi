@@ -1555,6 +1555,91 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
+    if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] then
+
+        ##
+        AddExponentialOnObjects ( Hom,
+          function ( Hom, F, G )
+            local B, C, name_of_object, expFG, Yoneda;
+            
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            
+            expFG := CapFunctor( name_of_object, B, C );
+            
+            DeactivateCachingObject( ObjectCache( expFG ) );
+            DeactivateCachingObject( MorphismCache( expFG ) );
+            
+            ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
+            Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
+            
+            AddObjectFunction( expFG,
+              function( objB )
+                
+                return HomomorphismStructureOnObjects( Hom,
+                               DirectProduct( Hom,
+                                       [ Yoneda( Opposite( B, objB ) ),
+                                         F ] ),
+                               G );
+                
+            end );
+            
+            AddMorphismFunction( expFG,
+              function ( new_source, morB, new_range )
+                
+                return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
+                               new_source,
+                               DirectProductFunctorial( Hom,
+                                       [ Yoneda( Opposite( B, morB ) ),
+                                         IdentityMorphism( Hom, F ) ] ),
+                               IdentityMorphism( Hom, G ),
+                               new_range );
+                
+              end );
+            
+            return AsObjectInFunctorCategory( Hom, expFG );
+            
+        end );
+
+        ##
+        AddExponentialOnMorphismsWithGivenExponentials( Hom,
+          function( Hom, source, eta, rho, range )
+            local B, C, name_of_morphism, exp_eta_rho, Yoneda;
+            
+            B := Source( Hom );
+            C := Range( Hom );
+            
+            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            
+            exp_eta_rho := NaturalTransformation(
+                                   name_of_morphism,
+                                   UnderlyingCapTwoCategoryCell( source ),
+                                   UnderlyingCapTwoCategoryCell( range ) );
+            
+            ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
+            Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
+            
+            AddNaturalTransformationFunction( exp_eta_rho,
+              function ( source, objB, range )
+                
+                return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
+                               source,
+                               DirectProductFunctorial( Hom,
+                                       [ IdentityMorphism( Hom, Yoneda( Opposite( B, objB ) ) ),
+                                         eta ] ),
+                               rho,
+                               range );
+                
+            end );
+            
+            return AsMorphismInFunctorCategory( Hom, exp_eta_rho );
+            
+        end );
+        
+    fi;
+    
     if HasRangeCategoryOfHomomorphismStructure( B ) and
        IsIdenticalObj( RangeCategoryOfHomomorphismStructure( B ), C ) and
        CanCompute( C, "SubobjectClassifier" ) then
