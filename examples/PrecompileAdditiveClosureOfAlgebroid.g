@@ -1,4 +1,4 @@
-#! @BeginChunk Precompilation
+#! @BeginChunk PrecompileAdditiveClosureOfAlgebroid
 
 #! @Example
 

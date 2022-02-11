@@ -75,4 +75,5 @@
 @Section GAP categories
 
 @Chapter Precompilation
-@InsertChunk Precompilation
+@InsertChunk PrecompileAdditiveClosureOfAlgebroid
+@InsertChunk PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid
