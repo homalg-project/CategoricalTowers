@@ -1650,7 +1650,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
                                                                 HomStructure( IdentityMorphism( b ), psi ) ] ) ) ) ) ) ),
                   H );
     
-    ## The Yoneda project is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
     pt := NaturalTransformation(
                   N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
