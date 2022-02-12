@@ -5,6 +5,6 @@
 #
 
 DeclareOperation( "AuxiliaryMorphism",
-    [ IsObjectInFunctorCategory, IsObjectInFunctorCategory ] );
+    [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ] );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY" );
