@@ -126,6 +126,25 @@ DeclareOperation( "AddIsWeakTerminal",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `Limit`.
+#! $F: ( objects, decorated_morphisms ) \mapsto \mathtt{Limit}(objects, decorated_morphisms)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLimit",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory}(arg2, arg3)$.
 #! @Returns nothing
@@ -216,6 +235,44 @@ DeclareOperation( "AddPreInverse",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPreInverse",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ProjectionInFactorOfLimit`.
+#! $F: ( objects, decorated_morphisms, k ) \mapsto \mathtt{ProjectionInFactorOfLimit}(objects, decorated_morphisms, k)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionInFactorOfLimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfLimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfLimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfLimit",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ProjectionInFactorOfLimitWithGivenLimit`.
+#! $F: ( objects, decorated_morphisms, k, P ) \mapsto \mathtt{ProjectionInFactorOfLimitWithGivenLimit}(objects, decorated_morphisms, k, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectionInFactorOfLimitWithGivenLimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectionInFactorOfLimitWithGivenLimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfLimitWithGivenLimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectionInFactorOfLimitWithGivenLimit",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -330,4 +387,42 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGiv
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalMorphismIntoLimit`.
+#! $F: ( objects, decorated_morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T, tau)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoLimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoLimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoLimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoLimit",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalMorphismIntoLimitWithGivenLimit`.
+#! $F: ( objects, decorated_morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismIntoLimitWithGivenLimit}(objects, decorated_morphisms, T, tau, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismIntoLimitWithGivenLimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismIntoLimitWithGivenLimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoLimitWithGivenLimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismIntoLimitWithGivenLimit",
                   [ IsCapCategory, IsList ] );
