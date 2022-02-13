@@ -29,14 +29,19 @@ DeclareGlobalVariable( "ALGEBROIDS" );
 ####################################
 
 #! @Description
+#!  The &GAP; category of cells in an algebroid.
+DeclareCategory( "IsCellInAlgebroid",
+        IsCapCategoryCell );
+
+#! @Description
 #!  The &GAP; category of objects in an algebroid.
 DeclareCategory( "IsObjectInAlgebroid",
-        IsCapCategoryObject );
+        IsCellInAlgebroid and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid.
 DeclareCategory( "IsMorphismInAlgebroid",
-        IsCapCategoryMorphism );
+        IsCellInAlgebroid and IsCapCategoryMorphism );
 
 #! @Description
 #!  The &GAP; category of algebroids.
@@ -281,6 +286,14 @@ DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
 #! @Section Operations
 #
 ####################################
+
+#! @Description
+#!  Return the cell <A>c</A> in an algebroid <M>B</M> = <C>CapCategory</C>(<A>c</A>)
+#!  interpreted as a cell in <C>OppositeAlgebroid</C>(<M>B</M>).
+#! @Arguments B, c
+#! @Returns a cell in a finitely presented category
+DeclareOperation( "Opposite",
+        [ IsAlgebroid, IsCellInAlgebroid ] );
 
 #! @Arguments e
 DeclareOperation( "DecomposeQuiverAlgebraElement",

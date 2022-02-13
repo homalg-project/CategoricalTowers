@@ -13,14 +13,19 @@
 ####################################
 
 #! @Description
+#!  The &GAP; category of cells in a finitely presented category.
+DeclareCategory( "IsCellInFpCategory",
+        IsCapCategoryCell );
+
+#! @Description
 #!  The &GAP; category of objects in a finitely presented category.
 DeclareCategory( "IsObjectInFpCategory",
-        IsCapCategoryObject );
+        IsCellInFpCategory and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finitely presented category.
 DeclareCategory( "IsMorphismInFpCategory",
-        IsCapCategoryMorphism );
+        IsCellInFpCategory and IsCapCategoryMorphism );
 
 #! @Description
 #!  The &GAP; category of finitely presented categories.
@@ -286,6 +291,14 @@ DeclareAttribute( "SieveFunctor", IsFpCategory );
 #! @Section Operations
 #
 ####################################
+
+#! @Description
+#!  Return the cell <A>c</A> in a finitely presented category <M>C</M> = <C>CapCategory</C>(<A>c</A>)
+#!  interpreted as a cell in <C>OppositeFpCategory</C>(<M>C</M>).
+#! @Arguments C, c
+#! @Returns a cell in a finitely presented category
+DeclareOperation( "Opposite",
+        [ IsFpCategory, IsCellInFpCategory ] );
 
 #! @Arguments str
 DeclareOperation( "TrivialCategory",
