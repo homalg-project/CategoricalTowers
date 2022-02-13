@@ -13,14 +13,19 @@
 ####################################
 
 #! @Description
+#!  The &GAP; category of cells in a finitely presented category.
+DeclareCategory( "IsCellInFpCategory",
+        IsCapCategoryCell );
+
+#! @Description
 #!  The &GAP; category of objects in a finitely presented category.
 DeclareCategory( "IsObjectInFpCategory",
-        IsCapCategoryObject );
+        IsCellInFpCategory and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finitely presented category.
 DeclareCategory( "IsMorphismInFpCategory",
-        IsCapCategoryMorphism );
+        IsCellInFpCategory and IsCapCategoryMorphism );
 
 #! @Description
 #!  The &GAP; category of finitely presented categories.

@@ -29,14 +29,19 @@ DeclareGlobalVariable( "ALGEBROIDS" );
 ####################################
 
 #! @Description
+#!  The &GAP; category of cells in an algebroid.
+DeclareCategory( "IsCellInAlgebroid",
+        IsCapCategoryCell );
+
+#! @Description
 #!  The &GAP; category of objects in an algebroid.
 DeclareCategory( "IsObjectInAlgebroid",
-        IsCapCategoryObject );
+        IsCellInAlgebroid and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid.
 DeclareCategory( "IsMorphismInAlgebroid",
-        IsCapCategoryMorphism );
+        IsCellInAlgebroid and IsCapCategoryMorphism );
 
 #! @Description
 #!  The &GAP; category of algebroids.
