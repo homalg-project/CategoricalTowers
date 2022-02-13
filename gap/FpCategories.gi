@@ -138,6 +138,17 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     
 end );
 
+##
+InstallMethod( Opposite,
+        "for a f.p. category and a cell in it",
+        [ IsFpCategory, IsCellInFpCategory ],
+
+  function( C, c )
+    
+    return OppositeFpCategory( C ).(Label( c ));
+    
+end );
+
 ####################################
 #
 # methods for constructors:

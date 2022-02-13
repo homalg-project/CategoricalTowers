@@ -285,6 +285,17 @@ end );
 ####################################
 
 ##
+InstallMethod( Opposite,
+        "for a f.p. algebroid and a cell in it",
+        [ IsAlgebroid, IsCellInAlgebroid ],
+
+  function( C, c )
+    
+    return OppositeFpCategory( C ).(Label( c ));
+    
+end );
+
+##
 InstallMethod( DecomposeQuiverAlgebraElement,
         "for a quiver algebra element",
         [ IsQuiverAlgebraElement ],
