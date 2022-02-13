@@ -1403,9 +1403,156 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     if IsFiniteDimensional( kq ) then
-      
-      ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY( Hom );
-      
+
+        if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
+           CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
+            
+            ##
+            SetRangeCategoryOfHomomorphismStructure( Hom,
+                    RangeCategoryOfHomomorphismStructure( Range( Hom ) ) );
+            
+            ##
+            AddDistinguishedObjectOfHomomorphismStructure( Hom,
+                    { Hom } -> DistinguishedObjectOfHomomorphismStructure( Range( Hom ) ) );
+            
+            ##
+            AddHomomorphismStructureOnObjects( Hom,
+              function ( Hom, F, G )
+                
+                return Limit( Range( Hom ), ExternalHomDiagram( Hom, F, G ) );
+                
+            end );
+            
+            ##
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom,
+              function ( Hom, eta )
+                local range_category, range_category_of_hom_structure, mors, mor, hom_diagram, hom, prjs, emb;
+                
+                range_category := Range( Hom );
+                
+                range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+                
+                ## the component eta_o defines a morphism DistinguishedObjectOfHomomorphismStructure( Hom ) -> Hom( o, o ), for o in objects:
+                mors := List( ValuesOnAllObjects( eta ),
+                              m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( range_category, m ) );
+                
+                mor := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
+                               List( mors, Range ),
+                               DistinguishedObjectOfHomomorphismStructure( Hom ),
+                               mors );
+                
+                hom_diagram := ExternalHomDiagram( Hom, Source( eta ), Range( eta ) );
+                
+                hom := Limit( range_category_of_hom_structure,
+                              hom_diagram );
+                
+                prjs := List( [ 1 .. Length( SetOfObjects( Source( Hom ) ) ) ],
+                              i -> ProjectionInFactorOfLimit( range_category_of_hom_structure,
+                                      hom_diagram,
+                                      i ) );
+                
+                emb := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
+                               List( prjs, Range ),
+                               hom,
+                               prjs );
+                
+                return LiftAlongMonomorphism( range_category_of_hom_structure,
+                               emb,
+                               mor );
+                
+            end );
+            
+            ##
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
+              function ( Hom, F, G, iota )
+                local range_category, range_category_of_hom_structure, F_o_vals, G_o_vals, hom_diagram;
+                
+                range_category := Range( Hom );
+                
+                range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+                
+                F_o_vals := ValuesOnAllObjects( F );
+                
+                G_o_vals := ValuesOnAllObjects( G );
+                
+                hom_diagram := ExternalHomDiagram( Hom, F, G );
+                
+                return
+                  AsMorphismInFunctorCategory(
+                          F,
+                          ListN( F_o_vals,
+                                 G_o_vals,
+                                 List( [ 1 .. Length( F_o_vals ) ],
+                                       i -> PreCompose( range_category_of_hom_structure,
+                                               iota,
+                                               ProjectionInFactorOfLimit( range_category_of_hom_structure,
+                                                       hom_diagram,
+                                                       i ) ) ),
+                                 { F_o, G_o, eta } -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( range_category, F_o, G_o, eta ) ),
+                          G );
+                
+            end );
+            
+            ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
+              function ( Hom, s, eta, rho, r )
+                local range_category, range_category_of_hom_structure, o, hom_diagram_source, hom_source, prjs_source, emb_source,
+                      hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor;
+                
+                range_category := Range( Hom );
+                
+                range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+                
+                o := Length( SetOfObjects( Source( Hom ) ) );
+                
+                hom_diagram_source := ExternalHomDiagram( Hom, Range( eta ), Source( rho ) );
+                
+                hom_source := Limit( range_category_of_hom_structure,
+                                     hom_diagram_source );
+                
+                prjs_source := List( [ 1 .. o ],
+                                     i -> ProjectionInFactorOfLimit( range_category_of_hom_structure,
+                                             hom_diagram_source,
+                                             i ) );
+                
+                emb_source := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
+                                      List( prjs_source, Range ),
+                                      hom_source,
+                                      prjs_source );
+                
+                hom_diagram_range := ExternalHomDiagram( Hom, Source( eta ), Range( rho ) );
+                
+                hom_range := Limit( range_category_of_hom_structure,
+                                    hom_diagram_range );
+                
+                prjs_range := List( [ 1 .. o ],
+                                    i -> ProjectionInFactorOfLimit( range_category_of_hom_structure,
+                                            hom_diagram_range,
+                                            i ) );
+                
+                emb_range := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
+                                     List( prjs_range, Range ),
+                                     hom_range,
+                                     prjs_range );
+                
+                mors := ListN( ValuesOnAllObjects( eta ), ValuesOnAllObjects( rho ),
+                               { eta_o, rho_o } -> HomomorphismStructureOnMorphisms( range_category, eta_o, rho_o ) );
+                
+                mor := DirectProductFunctorial( range_category_of_hom_structure,
+                               mors );
+                
+                return LiftAlongMonomorphism( range_category_of_hom_structure,
+                               emb_range,
+                               PreCompose( range_category_of_hom_structure,
+                                       emb_source,
+                                       mor ) );
+                
+            end );
+            
+        fi;
+        
+        ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY( Hom );
+        
     fi;
     
     if HasRangeCategoryOfHomomorphismStructure( B ) and
