@@ -117,7 +117,7 @@ InstallGlobalFunction( WriteFileForClosedMonoidalStructure,
                       "\n\n" );
     for file in files do
         if not IsBound( files_rec.(file) ) then
-            Info( InfoWarning, 1, "the component ", file, " is not bound files_rec" );
+            Info( InfoWarning, 1, "the component ", file, " is not bound in the record 'files_rec'" );
         elif IsString( files_rec.(file) ) then
             source := Concatenation( dir, ReplacedString( file, "_", "." ) );
             target := Concatenation( PackageInfo( package_name )[1].InstallationPath, "/gap/", files_rec.(file) );
