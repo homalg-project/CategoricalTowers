@@ -1199,6 +1199,30 @@ InstallMethodWithCache( FunctorCategory,
     
     SetSource( Hom, B );
     SetRange( Hom, C );
+
+    if CanCompute( C, "IsLiftableAlongMonomorphism" ) then
+        
+        ##
+        AddIsLiftableAlongMonomorphism( Hom,
+          function ( Hom, eta, rho )
+            
+            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsLiftableAlongMonomorphism( eta( object ), rho( object ) ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "IsColiftableAlongEpimorphism" ) then
+        
+        ##
+        AddIsColiftableAlongEpimorphism( Hom,
+          function ( Hom, eta, rho )
+            
+            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsColiftableAlongEpimorphism( eta( object ), rho( object ) ) );
+            
+        end );
+        
+    fi;
     
     ## this code should become obsolete with following feature request:
     ## https://github.com/homalg-project/CAP_project/issues/801
