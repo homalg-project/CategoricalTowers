@@ -23,13 +23,9 @@ gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, b );;
 gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, b : only_primitive_operations := true );;
 
 gap> z := ZeroObject( T );;
-gap> b := "b" / T;;
 
 gap> MonoidalCategoriesTensorProductAndUnitTest( T, z, b );;
 gap> MonoidalCategoriesTensorProductAndUnitTest( T, z, b : only_primitive_operations := true );;
-
-gap> a := "a" / T;;
-gap> z := ZeroObject( T );;
 
 gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, z );;
 gap> MonoidalCategoriesTensorProductAndUnitTest( T, a, z : only_primitive_operations := true );;
@@ -90,36 +86,38 @@ gap> b := "b" / T;;
 gap> c := "c" / T;;
 gap> d := "d" / T;;
 
-gap> z := ZeroObject( T );;
+gap> u := TensorUnit( T );;
 
-gap> a_product_b := DirectProduct( a, b );;
-gap> c_product_d := DirectProduct( c, d );;
+gap> a_product_b := TensorProduct( a, b );;
+gap> c_product_d := TensorProduct( c, d );;
 
-gap> exp_ab := Exponential( a, b );;
-gap> exp_cd := Exponential( c, d );;
+gap> hom_ab := InternalHom( a, b );;
+gap> hom_cd := InternalHom( c, d );;
 
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
-gap> gamma := UniversalMorphismIntoZeroObject( a_product_b );;
-gap> delta := UniversalMorphismIntoZeroObject( c_product_d );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_ab );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_cd );;
+gap> gamma := MorphismConstructor( a_product_b, "f_abu", u );;
+gap> delta := MorphismConstructor( c_product_d, "f_cdu", u );;
+gap> epsilon := MorphismConstructor( u, "f_uhomab", hom_ab );;
+gap> zeta := MorphismConstructor( u, "f_uhomcd", hom_cd );;
 
 gap> ClosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> ClosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
 
-gap> z_product_a := DirectProduct( z, a );;
-gap> a_product_z := DirectProduct( a, z );;
+gap> z := ZeroObject( T );;
 
-gap> exp_za := Exponential( z, a );;
-gap> exp_az := Exponential( a, z );;
+gap> z_product_a := TensorProduct( z, a );;
+gap> a_product_z := TensorProduct( a, z );;
 
-gap> alpha := UniversalMorphismFromZeroObject( a );;
-gap> beta := UniversalMorphismIntoZeroObject( a );;
-gap> gamma := UniversalMorphismIntoZeroObject( z_product_a );;
-gap> delta := UniversalMorphismIntoZeroObject( a_product_z );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_za );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_az );;
+gap> hom_za := InternalHom( z, a );;
+gap> hom_az := InternalHom( a, z );;
+
+gap> alpha := MorphismConstructor( z, "f_za", a );;
+gap> beta := MorphismConstructor( a, "f_az", z );;
+gap> gamma := MorphismConstructor( z_product_a, "f_zau", u );;
+gap> delta := MorphismConstructor( a_product_z, "f_azu", u );;
+gap> epsilon := MorphismConstructor( u, "f_uhomza", hom_za );;
+gap> zeta := MorphismConstructor( u, "f_uhomaz", hom_az );;
 
 gap> ClosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> ClosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
@@ -133,36 +131,38 @@ gap> b := "b" / T;;
 gap> c := "c" / T;;
 gap> d := "d" / T;;
 
-gap> a_product_b := Coproduct( a, b );;
-gap> c_product_d := Coproduct( c, d );;
+gap> u := TensorUnit( T );;
 
-gap> exp_ab := Coexponential( a, b );;
-gap> exp_cd := Coexponential( c, d );;
+gap> a_product_b := TensorProduct( a, b );;
+gap> c_product_d := TensorProduct( c, d );;
+
+gap> cohom_ab := InternalCoHom( a, b );;
+gap> cohom_cd := InternalCoHom( c, d );;
 
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
-gap> gamma := UniversalMorphismIntoZeroObject( a_product_b );;
-gap> delta := UniversalMorphismIntoZeroObject( c_product_d );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_ab );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_cd );;
+gap> gamma := MorphismConstructor( u, "f_uab", a_product_b );;
+gap> delta := MorphismConstructor( u, "f_ucd", c_product_d );;
+gap> epsilon := MorphismConstructor( cohom_ab, "f_cohomabu", u );;
+gap> zeta := MorphismConstructor( cohom_cd, "f_cohomcdu", u);;
 
 gap> CoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> CoclosedMonoidalCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
 
 gap> z := ZeroObject( T );;
 
-gap> z_product_a := Coproduct( z, a );;
-gap> a_product_z := Coproduct( a, z );;
+gap> z_product_a := TensorProduct( z, a );;
+gap> a_product_z := TensorProduct( a, z );;
 
-gap> exp_za := Coexponential( z, a );;
-gap> exp_az := Coexponential( a, z );;
+gap> cohom_za := InternalCoHom( z, a );;
+gap> cohom_az := InternalCoHom( a, z );;
 
-gap> alpha := UniversalMorphismFromZeroObject( a );;
-gap> beta := UniversalMorphismIntoZeroObject( a );;
-gap> gamma := UniversalMorphismIntoZeroObject( z_product_a );;
-gap> delta := UniversalMorphismIntoZeroObject( a_product_z );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_za );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_az );;
+gap> alpha := MorphismConstructor( z, "f_za", a );;
+gap> beta := MorphismConstructor( a, "f_az", z );;
+gap> gamma := MorphismConstructor( u, "f_uza", z_product_a );;
+gap> delta := MorphismConstructor( u, "f_uaz", a_product_z );;
+gap> epsilon := MorphismConstructor( cohom_za, "f_cohomzau", u );;
+gap> zeta := MorphismConstructor( cohom_az, "cohomazu", u );;
 
 gap> CoclosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> CoclosedMonoidalCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
