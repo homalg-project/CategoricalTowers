@@ -7,7 +7,7 @@ gap> START_TEST("TerminalCategoryMonoidal.tst");
 
 gap> LoadPackage("CategoryConstructor", false);
 true
-gap> LoadPackage("Toposes", false);
+gap> LoadPackage("MonoidalCategories", false);
 true
 
 gap> T := TerminalCategoryWithMultipleObjects( );;
