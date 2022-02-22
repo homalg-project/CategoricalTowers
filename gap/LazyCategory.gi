@@ -730,13 +730,13 @@ InstallMethod( LazyCategory,
     AddIsEqualForObjects( D,
       function( D, a, b )
         
-        if not HasGenesisOfCellOperation( a ) and not HasGenesisOfCellOperation( b ) then
-            return IsEqualForObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
-        elif not HasGenesisOfCellOperation( a ) = HasGenesisOfCellOperation( b ) then
-            return false;
-        elif HasGenesisOfCellOperation( a ) and HasGenesisOfCellOperation( b ) then
-            return GenesisOfCellOperation( a ) = GenesisOfCellOperation( b ) and
-                   IsEqualForCells( GenesisOfCellArguments( a ), GenesisOfCellArguments( b ) );
+        if HasGenesisOfCellOperation( a ) = HasGenesisOfCellOperation( b ) then
+            if HasGenesisOfCellOperation( a ) then
+                return GenesisOfCellOperation( a ) = GenesisOfCellOperation( b ) and
+                       IsEqualForCells( GenesisOfCellArguments( a ), GenesisOfCellArguments( b ) );
+            else
+                return IsEqualForObjects( C, EvaluatedCell( a ), EvaluatedCell( b ) );
+            fi;
         fi;
         
         return false;
@@ -746,13 +746,13 @@ InstallMethod( LazyCategory,
     AddIsEqualForMorphisms( D,
       function( D, phi, psi )
         
-        if not HasGenesisOfCellOperation( phi ) and not HasGenesisOfCellOperation( psi ) then
-            return IsEqualForMorphismsOnMor( EvaluatedCell( phi ), EvaluatedCell( psi ) );
-        elif not HasGenesisOfCellOperation( phi ) = HasGenesisOfCellOperation( psi ) then
-            return false;
-        elif HasGenesisOfCellOperation( phi ) and HasGenesisOfCellOperation( psi ) then
-            return GenesisOfCellOperation( phi ) = GenesisOfCellOperation( psi ) and
-                   IsEqualForCells( GenesisOfCellArguments( phi ), GenesisOfCellArguments( psi ) );
+        if HasGenesisOfCellOperation( phi ) = HasGenesisOfCellOperation( psi ) then
+            if HasGenesisOfCellOperation( phi ) then
+                return GenesisOfCellOperation( phi ) = GenesisOfCellOperation( psi ) and
+                       IsEqualForCells( GenesisOfCellArguments( phi ), GenesisOfCellArguments( psi ) );
+            else
+                return IsEqualForMorphismsOnMor( C, EvaluatedCell( phi ), EvaluatedCell( psi ) );
+            fi;
         fi;
         
         return false;
