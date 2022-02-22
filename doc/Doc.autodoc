@@ -14,6 +14,10 @@
 
 @InsertChunk C3C3
 
+@Subsection Proof of the snake lemma in a free Abelian category
+
+@InsertChunk SnakeInFreeAbelian
+
 @Subsection The subobject classifier
 
 @InsertChunk SubobjectClassifier
