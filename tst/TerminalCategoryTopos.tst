@@ -50,8 +50,8 @@ gap> d := "d" / T;;
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
 
-gap> CartesianCategoriesTest( T, a, b, c, alpha, beta );;
-gap> CartesianCategoriesTest( T, a, b, c, alpha, beta : only_primitive_operations := true );;
+gap> CocartesianCategoriesTest( T, a, b, c, alpha, beta );;
+gap> CocartesianCategoriesTest( T, a, b, c, alpha, beta : only_primitive_operations := true );;
 
 gap> z := ZeroObject( T );;
 
@@ -115,6 +115,8 @@ gap> b := "b" / T;;
 gap> c := "c" / T;;
 gap> d := "d" / T;;
 
+gap> t := TerminalObject( T );;
+
 gap> a_product_b := DirectProduct( a, b );;
 gap> c_product_d := DirectProduct( c, d );;
 
@@ -123,10 +125,10 @@ gap> exp_cd := Exponential( c, d );;
 
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
-gap> gamma := UniversalMorphismIntoZeroObject( a_product_b );;
-gap> delta := UniversalMorphismIntoZeroObject( c_product_d );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_ab );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_cd );;
+gap> gamma := MorphismConstructor( a_product_b, "f_abt", t );;
+gap> delta := MorphismConstructor( c_product_d, "f_cdt", t );;
+gap> epsilon := MorphismConstructor( t, "f_texpab", exp_ab );;
+gap> zeta := MorphismConstructor( t, "f_texpcd", exp_cd );;
 
 gap> CartesianClosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> CartesianClosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
@@ -139,12 +141,12 @@ gap> a_product_z := DirectProduct( a, z );;
 gap> exp_za := Exponential( z, a );;
 gap> exp_az := Exponential( a, z );;
 
-gap> alpha := UniversalMorphismFromZeroObject( a );;
-gap> beta := UniversalMorphismIntoZeroObject( a );;
-gap> gamma := UniversalMorphismIntoZeroObject( z_product_a );;
-gap> delta := UniversalMorphismIntoZeroObject( a_product_z );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_za );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_az );;
+gap> alpha := MorphismConstructor( z, "f_za", a );;
+gap> beta := MorphismConstructor( a, "f_az", z );;
+gap> gamma := MorphismConstructor( z_product_a, "f_zat", t );;
+gap> delta := MorphismConstructor( a_product_z, "f_azt", t );;
+gap> epsilon := MorphismConstructor( t, "f_texpza", exp_za );;
+gap> zeta := MorphismConstructor( t, "f_texpaz", exp_az );;
 
 gap> CartesianClosedCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> CartesianClosedCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
@@ -158,18 +160,20 @@ gap> b := "b" / T;;
 gap> c := "c" / T;;
 gap> d := "d" / T;;
 
+gap> i := InitialObject( T );;
+
 gap> a_product_b := Coproduct( a, b );;
 gap> c_product_d := Coproduct( c, d );;
 
-gap> exp_ab := Coexponential( a, b );;
-gap> exp_cd := Coexponential( c, d );;
+gap> coexp_ab := Coexponential( a, b );;
+gap> coexp_cd := Coexponential( c, d );;
 
 gap> alpha := MorphismConstructor( a, "f_ab", b );;
 gap> beta := MorphismConstructor( c, "f_cd", d );;
-gap> gamma := UniversalMorphismIntoZeroObject( a_product_b );;
-gap> delta := UniversalMorphismIntoZeroObject( c_product_d );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_ab );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_cd );;
+gap> gamma := MorphismConstructor( i, "f_iab", a_product_b );;
+gap> delta := MorphismConstructor( i, "f_icd", c_product_d );;
+gap> epsilon := MorphismConstructor( coexp_ab, "f_coexpabi", i );;
+gap> zeta := MorphismConstructor( coexp_cd, "f_coexpcdi", i );;
 
 gap> CocartesianCoclosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> CocartesianCoclosedCategoriesTest( T, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
@@ -179,15 +183,15 @@ gap> z := ZeroObject( T );;
 gap> z_product_a := Coproduct( z, a );;
 gap> a_product_z := Coproduct( a, z );;
 
-gap> exp_za := Coexponential( z, a );;
-gap> exp_az := Coexponential( a, z );;
+gap> coexp_za := Coexponential( z, a );;
+gap> coexp_az := Coexponential( a, z );;
 
-gap> alpha := UniversalMorphismFromZeroObject( a );;
-gap> beta := UniversalMorphismIntoZeroObject( a );;
-gap> gamma := UniversalMorphismIntoZeroObject( z_product_a );;
-gap> delta := UniversalMorphismIntoZeroObject( a_product_z );;
-gap> epsilon := UniversalMorphismFromZeroObject( exp_za );;
-gap> zeta := UniversalMorphismFromZeroObject( exp_az );;
+gap> alpha := MorphismConstructor( z, "f_za", a );;
+gap> beta := MorphismConstructor( a, "f_az", z );;
+gap> gamma := MorphismConstructor( i, "f_iza", z_product_a );;
+gap> delta := MorphismConstructor( i, "f_iaz", a_product_z );;
+gap> epsilon := MorphismConstructor( coexp_za, "f_coexpzai", i );;
+gap> zeta := MorphismConstructor( coexp_az, "coexpazi", i );;
 
 gap> CocartesianCoclosedCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta );;
 gap> CocartesianCoclosedCategoriesTest( T, z, a, a, z, alpha, beta, gamma, delta, epsilon, zeta : only_primitive_operations := true );;
