@@ -192,47 +192,7 @@ InstallMethod( IsEqualForCells,
         "for two CAP morphisms",
         [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
-  IsEqualForMorphisms );
-
-##
-InstallMethod( IsEqualForCells,
-        "for two objects in a lazy CAP category",
-        [ IsLazyCapCategoryObject, IsLazyCapCategoryObject ],
-
-  function( a, b )
-    
-    if not HasGenesisOfCellOperation( a ) and not HasGenesisOfCellOperation( b ) then
-        return IsEqualForObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
-    elif not HasGenesisOfCellOperation( a ) = HasGenesisOfCellOperation( b ) then
-        return false;
-    elif HasGenesisOfCellOperation( a ) and HasGenesisOfCellOperation( b ) then
-        return GenesisOfCellOperation( a ) = GenesisOfCellOperation( b ) and
-               IsEqualForCells( GenesisOfCellArguments( a ), GenesisOfCellArguments( b ) );
-    fi;
-    
-    return false;
-    
-end );
-
-##
-InstallMethod( IsEqualForCells,
-        "for two morphisms in a lazy CAP category",
-        [ IsLazyCapCategoryMorphism, IsLazyCapCategoryMorphism ],
-        
-  function( phi, psi )
-    
-    if not HasGenesisOfCellOperation( phi ) and not HasGenesisOfCellOperation( psi ) then
-        return IsEqualForMorphismsOnMor( EvaluatedCell( phi ), EvaluatedCell( psi ) );
-    elif not HasGenesisOfCellOperation( phi ) = HasGenesisOfCellOperation( psi ) then
-        return false;
-    elif HasGenesisOfCellOperation( phi ) and HasGenesisOfCellOperation( psi ) then
-        return GenesisOfCellOperation( phi ) = GenesisOfCellOperation( psi ) and
-               IsEqualForCells( GenesisOfCellArguments( phi ), GenesisOfCellArguments( psi ) );
-    fi;
-    
-    return false;
-    
-end );
+  IsEqualForMorphismsOnMor );
 
 ##
 InstallMethod( IsEqualForCells,
@@ -768,19 +728,42 @@ InstallMethod( LazyCategory,
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
     
     AddIsEqualForObjects( D,
-      { D, a, b } -> IsEqualForCells( a, b ) );
+      function( D, a, b )
+        
+        if not HasGenesisOfCellOperation( a ) and not HasGenesisOfCellOperation( b ) then
+            return IsEqualForObjects( EvaluatedCell( a ), EvaluatedCell( b ) );
+        elif not HasGenesisOfCellOperation( a ) = HasGenesisOfCellOperation( b ) then
+            return false;
+        elif HasGenesisOfCellOperation( a ) and HasGenesisOfCellOperation( b ) then
+            return GenesisOfCellOperation( a ) = GenesisOfCellOperation( b ) and
+                   IsEqualForCells( GenesisOfCellArguments( a ), GenesisOfCellArguments( b ) );
+        fi;
+        
+        return false;
+        
+    end );
     
     AddIsEqualForMorphisms( D,
-      { D, phi, psi } -> IsEqualForCells( phi, psi ) );
+      function( D, phi, psi )
+        
+        if not HasGenesisOfCellOperation( phi ) and not HasGenesisOfCellOperation( psi ) then
+            return IsEqualForMorphismsOnMor( EvaluatedCell( phi ), EvaluatedCell( psi ) );
+        elif not HasGenesisOfCellOperation( phi ) = HasGenesisOfCellOperation( psi ) then
+            return false;
+        elif HasGenesisOfCellOperation( phi ) and HasGenesisOfCellOperation( psi ) then
+            return GenesisOfCellOperation( phi ) = GenesisOfCellOperation( psi ) and
+                   IsEqualForCells( GenesisOfCellArguments( phi ), GenesisOfCellArguments( psi ) );
+        fi;
+        
+        return false;
+        
+    end );
     
     AddIsEqualForCacheForObjects( D,
-      { D, a, b } -> IsEqualForObjects( a, b ) );
+      { D, a, b } -> IsEqualForObjects( D, a, b ) );
     
     AddIsEqualForCacheForMorphisms( D,
-      { D, phi, psi } -> IsEqualForCells( phi, psi ) );
-    
-    AddIsEqualForMorphismsOnMor( D,
-      { D, phi, psi } -> IsEqualForCells( phi, psi ) );
+      { D, phi, psi } -> IsEqualForMorphismsOnMor( D, phi, psi ) );
     
     if CanCompute( C, "IsCongruentForMorphisms" ) then
         
