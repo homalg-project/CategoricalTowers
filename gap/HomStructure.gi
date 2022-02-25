@@ -16,7 +16,7 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
           
   function ( Hom, F, G )
     local source_category, range_category, objs, nr_o, F_o, G_o, mors, nr_m, F_m, G_m,
-          sources, st, oo, pairs, pos, other_ranges, objects, all, mor_pair, morphisms;
+          sources, mor_pair, morphisms, objects;
     
     source_category := Source( F );
     range_category := Range( G );
@@ -34,44 +34,27 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     
     sources := ListN( F_o, G_o, { Fo, Go } -> HomomorphismStructureOnObjects( range_category, Fo, Go ) );
     
-    st := List( mors, m -> [ Source( m ), Range( m ) ] );
-    
-    oo := List( objs, o -> [ o, o ] );
-    
-    pairs := Filtered( DuplicateFreeList( st ), pair -> not pair in oo );
-    
-    pos := List( pairs, pair -> Position( st, pair ) );
-    
-    other_ranges := ListN( F_m{pos}, G_m{pos}, { Fm, Gm } -> HomomorphismStructureOnObjects( range_category, Source( Fm ), Range( Gm ) ) );
-    
-    objects := Concatenation( sources, other_ranges );
-    
-    all := Concatenation( oo, pairs );
-    
-    Assert( 0, Length( objects ) = Length( all ) );
-    
     mor_pair :=
       function ( i )
-        local pos;
-        
-        pos := Position( all, [ Source( mors[i] ), Range( mors[i] ) ] );
         
         return [ [ Position( objs, Source( mors[i] ) ),
                    HomomorphismStructureOnMorphisms( range_category, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(s(m)), G(t(m)) )
                            IdentityMorphism( range_category, Source( F_m[i] ) ),
                            G_m[i] ),
-                   pos ],
+                   nr_o + i ],
                  [ Position( objs, Range( mors[i] ) ),
                    HomomorphismStructureOnMorphisms( range_category, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(s(m)), G(t(m)) )
                            F_m[i],
                            IdentityMorphism( range_category, Range( G_m[i] ) ) ),
-                   pos ] ];
+                   nr_o + i ] ];
         
     end;
     
-    morphisms := Concatenation( List( [ 1 .. nr_m ], mor_pair ) );
+    morphisms := List( [ 1 .. nr_m ], mor_pair );
     
-    return [ objects, morphisms ];
+    objects := Concatenation( sources, List( morphisms, m -> Range( m[1][2] ) ) );
+    
+    return [ objects, Concatenation( morphisms ) ];
     
 end );
 
