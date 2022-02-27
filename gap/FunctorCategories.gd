@@ -158,6 +158,9 @@ DeclareOperation( "ApplyCell",
 DeclareOperation( "ApplyCell",
         [ IsCapCategory, IsCapCategoryCell ] );
 
+##
+DeclareOperation( "CapFunctor",
+        [ IsString, IsCapCategory, IsCapCategory, IsFunction, IsFunction ] );
 
 #! @Description
 #!  Returns the values of the cell <A>c</A> in the functor category <A>Hom</A>
