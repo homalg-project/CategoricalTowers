@@ -1559,8 +1559,11 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
-    if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] then
-
+    if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] and
+       ## in the following we require (1) that the range category C of the functor category
+       ## is itself the range category of the homomorphism structure of the functor category:
+       IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( Hom ) ) then
+        
         ##
         AddExponentialOnObjects ( Hom,
           function ( Hom, F, G )
@@ -1582,6 +1585,8 @@ InstallMethodWithCache( FunctorCategory,
             AddObjectFunction( expFG,
               function( objB )
                 
+                ## the output lives by construction in the range category of the homomorphism structure of the functor category,
+                ## but should live in the range category C of the functor category (necessitating requirement (1) above):
                 return HomomorphismStructureOnObjects( Hom,
                                DirectProduct( Hom,
                                        [ Yoneda( Opposite( B, objB ) ),
