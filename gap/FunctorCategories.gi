@@ -789,20 +789,15 @@ InstallMethodWithCache( FunctorCategory,
         if diagram = "empty diagram" then
             
             return ## a constructor for universal objects: TerminalObject
+              ReplacedStringViaRecord(
               """
               function ( input_arguments )
-                local B, C, name_of_object, name, info, functorial, F, objC, morC;
+                local B, C, name_of_object, F, objC, morC;
                 
                 B := Source( cat );
                 C := Range( cat );
                 
                 name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                name := NAME_FUNC( operation_name );
-                
-                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-                
-                functorial := ValueGlobal( info.functorial );
                 
                 F := CapFunctor( name_of_object, B, C );
                 
@@ -822,15 +817,17 @@ InstallMethodWithCache( FunctorCategory,
                 
                 return AsObjectInFunctorCategory( cat, F );
                 
-              end
-              """;
+            end
+            """,
+            rec( functorial := info.functorial ) );
             
         elif diagram = "multiple arrows" then
             
             return ## a constructor for universal objects: FiberProduct
+              ReplacedStringViaRecord(
               """
               function ( input_arguments )
-                local B, C, vertices, arrows, name_of_object, name, info, functorial, F, images_of_objects, images_of_generating_morphisms;
+                local B, C, vertices, arrows, name_of_object, F, images_of_objects, images_of_generating_morphisms, u_arg;
                 
                 B := Source( cat );
                 C := Range( cat );
@@ -839,15 +836,6 @@ InstallMethodWithCache( FunctorCategory,
                 arrows := SetOfGeneratingMorphisms( B );
                 
                 name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                name := NAME_FUNC( operation_name );
-                
-                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-                
-                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
-                
-                # use the WithGiven version
-                functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
                 
                 F := CapFunctor( name_of_object, B, C );
                 
@@ -860,9 +848,11 @@ InstallMethodWithCache( FunctorCategory,
                 F!.ValuesOnAllObjects := images_of_objects;
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
                 
+                u_arg := [ underlying_arguments ];
+                
                 AddObjectFunction( F,
                   function ( objB )
-                    local pos, L;
+                    local pos;
                     
                     pos := Position( vertices, objB );
                     
@@ -873,8 +863,7 @@ InstallMethodWithCache( FunctorCategory,
                     if not IsBound( images_of_objects[pos] ) then
                         ## Locally deactivating caching by switching the next line with the above if-line
                         ## introduces a huge regression in CatReps/examples/CategoryOfRepresentations.g.
-                        L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
-                        images_of_objects[pos] := CallFuncList( operation_name, L );
+                        images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
                     fi;
                     
                     return images_of_objects[pos];
@@ -883,194 +872,19 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddMorphismFunction( F,
                   function ( new_source, morB, new_range )
-                    local pos, u_arg, l, L, FmorB;
+                    local pos, l, L, FmorB;
                     
                     pos := Position( arrows, morB );
                     
                     if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
                     fi;
-                    
-                    u_arg := [ underlying_arguments ];
                     
                     l := List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) )[1];
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    FmorB := CallFuncList( functorial,
-                                     Concatenation( [ new_source ], L, [ new_range ] ) );
-                    
-                    if IsInt( pos ) then
-                        images_of_generating_morphisms[pos] := FmorB;
-                    fi;
-                    
-                    return FmorB;
-                    
-                end );
-                
-                return AsObjectInFunctorCategory( cat, F );
-                
-              end
-              """;
-            
-        elif diagram = "multiple objects" then
-            
-            return ## a constructor for universal objects: DirectSum
-              """
-              function ( input_arguments )
-                local B, C, vertices, arrows, name_of_object, name, info, functorial, F, images_of_objects, images_of_generating_morphisms;
-                
-                B := Source( cat );
-                C := Range( cat );
-                
-                vertices := SetOfObjects( B );
-                arrows := SetOfGeneratingMorphisms( B );
-                
-                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                name := NAME_FUNC( operation_name );
-                
-                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-                
-                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
-                
-                # use the WithGiven version
-                functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
-                
-                F := CapFunctor( name_of_object, B, C );
-                
-                DeactivateCachingObject( ObjectCache( F ) );
-                DeactivateCachingObject( MorphismCache( F ) );
-                
-                images_of_objects := [ ];
-                images_of_generating_morphisms := [ ];
-                
-                F!.ValuesOnAllObjects := images_of_objects;
-                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
-                
-                AddObjectFunction( F,
-                  function ( objB )
-                    local pos, L;
-                    
-                    pos := Position( vertices, objB );
-                    
-                    if pos = fail then
-                        Error( objB, " not found in ", vertices );
-                    fi;
-                    
-                    if not IsBound( images_of_objects[pos] ) then
-                        L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
-                        images_of_objects[pos] := CallFuncList( operation_name, L );
-                    fi;
-                    
-                    return images_of_objects[pos];
-                    
-                end );
-                
-                AddMorphismFunction( F,
-                  function ( new_source, morB, new_range )
-                    local pos, u_arg, L, FmorB;
-                    
-                    pos := Position( arrows, morB );
-                    
-                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
-                        return images_of_generating_morphisms[pos];
-                    fi;
-                    
-                    u_arg := [ underlying_arguments ];
-                    
-                    L := List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) );
-                    
-                    ## here we do not pass the category as first argument,
-                    ## because of the limitation on the number of arguments of an operation
-                    FmorB := CallFuncList( functorial,
-                                     Concatenation( [ new_source ], L, [ new_range ] ) );
-                    
-                    if IsInt( pos ) then
-                        images_of_generating_morphisms[pos] := FmorB;
-                    fi;
-                    
-                    return FmorB;
-                    
-                end );
-                
-                return AsObjectInFunctorCategory( cat, F );
-                
-              end
-              """;
-            
-        else
-            
-            return ## a constructor for universal objects: KernelObject
-              """
-              function ( input_arguments )
-                local B, C, vertices, arrows, name_of_object, name, info, functorial, F, images_of_objects, images_of_generating_morphisms;
-                
-                B := Source( cat );
-                C := Range( cat );
-                
-                vertices := SetOfObjects( B );
-                arrows := SetOfGeneratingMorphisms( B );
-                
-                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                name := NAME_FUNC( operation_name );
-                
-                info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-                
-                functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
-                
-                # use the WithGiven version
-                functorial := ValueGlobal( functorial.with_given_without_given_name_pair[2] );
-                
-                F := CapFunctor( name_of_object, B, C );
-                
-                DeactivateCachingObject( ObjectCache( F ) );
-                DeactivateCachingObject( MorphismCache( F ) );
-                
-                images_of_objects := [ ];
-                images_of_generating_morphisms := [ ];
-                
-                F!.ValuesOnAllObjects := images_of_objects;
-                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
-                
-                AddObjectFunction( F,
-                  function ( objB )
-                    local pos, L;
-                    
-                    pos := Position( vertices, objB );
-                    
-                    if pos = fail then
-                        Error( objB, " not found in ", vertices );
-                    fi;
-                    
-                    if not IsBound( images_of_objects[pos] ) then
-                        L := List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) );
-                        images_of_objects[pos] := CallFuncList( operation_name, L );
-                    fi;
-                    
-                    return images_of_objects[pos];
-                    
-                end );
-                
-                AddMorphismFunction( F,
-                  function ( new_source, morB, new_range )
-                    local pos, u_arg, L, FmorB;
-                    
-                    pos := Position( arrows, morB );
-                    
-                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
-                        return images_of_generating_morphisms[pos];
-                    fi;
-                    
-                    u_arg := [ underlying_arguments ];
-                    
-                    L := Concatenation( List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) ) );
-                    
-                    ## here we do not pass the category as first argument,
-                    ## because of the limitation on the number of arguments of an operation
-                    FmorB := CallFuncList( functorial,
-                                     Concatenation( [ new_source ], L, [ new_range ] ) );
+                    FmorB := functorial( new_source, L[1], L[2], L[3], L[4], new_range );
                     
                     if IsInt( pos ) then
                         images_of_generating_morphisms[pos] := FmorB;
@@ -1083,7 +897,163 @@ InstallMethodWithCache( FunctorCategory,
                 return AsObjectInFunctorCategory( cat, F );
                 
             end
-            """;
+            """,
+            rec( functorial := functorial.with_given_without_given_name_pair[2],
+                 sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ) ) );
+            
+        elif diagram = "multiple objects" then
+            
+            return ## a constructor for universal objects: DirectSum
+              ReplacedStringViaRecord(
+              """
+              function ( input_arguments )
+                local B, C, vertices, arrows, name_of_object, F, images_of_objects, images_of_generating_morphisms, u_arg;
+                
+                B := Source( cat );
+                C := Range( cat );
+                
+                vertices := SetOfObjects( B );
+                arrows := SetOfGeneratingMorphisms( B );
+                
+                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                F := CapFunctor( name_of_object, B, C );
+                
+                DeactivateCachingObject( ObjectCache( F ) );
+                DeactivateCachingObject( MorphismCache( F ) );
+                
+                images_of_objects := [ ];
+                images_of_generating_morphisms := [ ];
+                
+                F!.ValuesOnAllObjects := images_of_objects;
+                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
+                
+                u_arg := [ underlying_arguments ];
+                
+                AddObjectFunction( F,
+                  function ( objB )
+                    local pos;
+                    
+                    pos := Position( vertices, objB );
+                    
+                    if pos = fail then
+                        Error( objB, " not found in ", vertices );
+                    fi;
+                    
+                    if not IsBound( images_of_objects[pos] ) then
+                        images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
+                    fi;
+                    
+                    return images_of_objects[pos];
+                    
+                end );
+                
+                AddMorphismFunction( F,
+                  function ( new_source, morB, new_range )
+                    local pos, FmorB;
+                    
+                    pos := Position( arrows, morB );
+                    
+                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
+                        return images_of_generating_morphisms[pos];
+                    fi;
+                    
+                    FmorB := functorial( C, new_source, sequence_of_arguments_morB, new_range );
+                    
+                    if IsInt( pos ) then
+                        images_of_generating_morphisms[pos] := FmorB;
+                    fi;
+                    
+                    return FmorB;
+                    
+                end );
+                
+                return AsObjectInFunctorCategory( cat, F );
+                
+            end
+            """,
+            rec( functorial := functorial.with_given_without_given_name_pair[2],
+                 sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ),
+                 sequence_of_arguments_morB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], morB )" ) ) ) );
+            
+        else
+            
+            return ## a constructor for universal objects: KernelObject
+              ReplacedStringViaRecord(
+              """
+              function ( input_arguments )
+                local B, C, vertices, arrows, name_of_object, F, images_of_objects, images_of_generating_morphisms, u_arg;
+                
+                B := Source( cat );
+                C := Range( cat );
+                
+                vertices := SetOfObjects( B );
+                arrows := SetOfGeneratingMorphisms( B );
+                
+                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                F := CapFunctor( name_of_object, B, C );
+                
+                DeactivateCachingObject( ObjectCache( F ) );
+                DeactivateCachingObject( MorphismCache( F ) );
+                
+                images_of_objects := [ ];
+                images_of_generating_morphisms := [ ];
+                
+                F!.ValuesOnAllObjects := images_of_objects;
+                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
+                
+                u_arg := [ underlying_arguments ];
+                
+                AddObjectFunction( F,
+                  function ( objB )
+                    local pos;
+                    
+                    pos := Position( vertices, objB );
+                    
+                    if pos = fail then
+                        Error( objB, " not found in ", vertices );
+                    fi;
+                    
+                    if not IsBound( images_of_objects[pos] ) then
+                        images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
+                    fi;
+                    
+                    return images_of_objects[pos];
+                    
+                end );
+                
+                AddMorphismFunction( F,
+                  function ( new_source, morB, new_range )
+                    local pos, L, FmorB;
+                    
+                    pos := Position( arrows, morB );
+                    
+                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
+                        return images_of_generating_morphisms[pos];
+                    fi;
+                    
+                    L := sequence_of_arguments_morB;
+                    
+                    ## here we do not pass the category as first argument,
+                    ## because of the limitation on the number of arguments of an operation
+                    FmorB := functorial( new_source, L[1], L[2], L[3], L[4], new_range );
+                    
+                    if IsInt( pos ) then
+                        images_of_generating_morphisms[pos] := FmorB;
+                    fi;
+                    
+                    return FmorB;
+                    
+                end );
+                
+                return AsObjectInFunctorCategory( cat, F );
+                
+            end
+            """,
+            rec( functorial := functorial.with_given_without_given_name_pair[2],
+                 sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ),
+                 sequence_of_arguments_morB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], morB )" ) ) ) );
             
         fi;
         
@@ -1092,10 +1062,15 @@ InstallMethodWithCache( FunctorCategory,
     ## e.g., IdentityMorphism, PreCompose
     create_func_morphism :=
       function ( name, Hom )
+        local info;
+        
+        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+        
         return
+          ReplacedStringViaRecord(
           """
           function ( input_arguments )
-            local B, C, name_of_morphism, eta;
+            local B, C, name_of_morphism, eta, u_arg;
             
             B := Source( cat );
             C := Range( cat );
@@ -1107,17 +1082,21 @@ InstallMethodWithCache( FunctorCategory,
                            UnderlyingCapTwoCategoryCell( top_source ),
                            UnderlyingCapTwoCategoryCell( top_range ) );
             
+            u_arg := [ underlying_arguments ];
+            
             AddNaturalTransformationFunction( eta,
               function ( source, objB, range )
                 
-                return CallFuncList( operation_name, List( [ underlying_arguments ], cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, objB ) ) );
+                return operation_name( C, sequence_of_arguments_objB );
                 
             end );
             
             return AsMorphismInFunctorCategory( cat, eta );
             
-          end
-          """;
+        end
+        """,
+        rec( sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ) ) );
+        
     end;
     
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
