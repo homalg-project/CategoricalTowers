@@ -1419,7 +1419,7 @@ InstallMethodWithCache( FunctorCategory,
             AddHomomorphismStructureOnObjects( Hom,
               function ( Hom, F, G )
                 
-                return Limit( Range( Hom ), ExternalHomDiagram( Hom, F, G ) );
+                return Limit( RangeCategoryOfHomomorphismStructure( Hom ), ExternalHomDiagram( Hom, F, G ) );
                 
             end );
             
