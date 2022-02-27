@@ -1407,9 +1407,13 @@ InstallMethodWithCache( FunctorCategory,
         if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
            CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
             
-            ##
+            ## Set the range category of the homomorphism structure of the functor category to be
+            ## the range category of the homomorphism structure of the range category C of the functor category:
             SetRangeCategoryOfHomomorphismStructure( Hom,
                     RangeCategoryOfHomomorphismStructure( Range( Hom ) ) );
+
+            ## Be sure the above assignment succeeded:
+            Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( Hom ), RangeCategoryOfHomomorphismStructure( Range( Hom ) ) ) );
             
             ##
             AddDistinguishedObjectOfHomomorphismStructure( Hom,
@@ -1419,7 +1423,7 @@ InstallMethodWithCache( FunctorCategory,
             AddHomomorphismStructureOnObjects( Hom,
               function ( Hom, F, G )
                 
-                return Limit( Range( Hom ), ExternalHomDiagram( Hom, F, G ) );
+                return Limit( RangeCategoryOfHomomorphismStructure( Hom ), ExternalHomDiagram( Hom, F, G ) );
                 
             end );
             
@@ -1555,8 +1559,11 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
-    if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] then
-
+    if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] and
+       ## in the following we require (1) that the range category C of the functor category
+       ## is itself the range category of the homomorphism structure of the functor category:
+       IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( Hom ) ) then
+        
         ##
         AddExponentialOnObjects ( Hom,
           function ( Hom, F, G )
@@ -1578,6 +1585,8 @@ InstallMethodWithCache( FunctorCategory,
             AddObjectFunction( expFG,
               function( objB )
                 
+                ## the output lives by construction in the range category of the homomorphism structure of the functor category,
+                ## but should live in the range category C of the functor category (necessitating requirement (1) above):
                 return HomomorphismStructureOnObjects( Hom,
                                DirectProduct( Hom,
                                        [ Yoneda( Opposite( B, objB ) ),
@@ -1637,6 +1646,138 @@ InstallMethodWithCache( FunctorCategory,
             return AsMorphismInFunctorCategory( Hom, exp_eta_rho );
             
         end );
+        
+        ## the following code requires (2) that the range category C of the functor category coincides with the category SkeletalFinSets:
+        if IsCategoryOfSkeletalFinSets( C ) and
+           ## and requires (3) that the range category C of the functor category must coincide with
+           ## the range category of the homomorphism structure of the source category B of the functor category
+           IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( B ) ) then
+            
+            ## G^F × F → G
+            AddCartesianEvaluationMorphismWithGivenSource( Hom,
+              function( Hom, F, G, exp )
+                local B, C, name_of_morphism, evaluation, Yoneda, T;
+                
+                B := Source( Hom );
+                C := Range( Hom );
+                
+                name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                evaluation := NaturalTransformation(
+                                      name_of_morphism,
+                                      UnderlyingCapTwoCategoryCell( exp ),
+                                      UnderlyingCapTwoCategoryCell( G ) );
+                
+                ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
+                Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
+                
+                ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the functor category,
+                ## and once as the distinguished object of the homomorphism structure of the functor category itself, which both coincide by the above assumption:
+                T := DistinguishedObjectOfHomomorphismStructure( B );
+                
+                AddNaturalTransformationFunction( evaluation,
+                  function ( source, b, range )
+                    local expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, e_b;
+                    
+                    ## source = G^F(b) × F(b)
+                    ## range  = G(b)
+                    
+                    ## G^F(b) := Hom(Y(b) × F, G) ∈ Obj(C):
+                    expFG_b := ExponentialOnObjects( Hom,
+                                       F,
+                                       G )( b );
+                    
+                    ## Fb := F(b) ∈ Obj(C):
+                    Fb := F( b );
+                    
+                    ## G^F(b) × F(b) ↠ G^F(b) ∈ Mor(C):
+                    prj1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
+                                    [ expFG_b, Fb ],
+                                    1,
+                                    source );
+                    
+                    ## G^F(b) × F(b) ↠ F(b) ∈ Mor(C):
+                    prj2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
+                                    [ expFG_b, Fb ],
+                                    2,
+                                    source );
+                    
+                    ## Hom(b, b) is an object in the range category of the homomorphism structure of the source category B of the functor category,
+                    ## which is required below to be an object in the range category C of the functor category (necessitating requirement (3) above):
+                    hom_bb := HomomorphismStructureOnObjects( B,
+                                      b,
+                                      b );
+                    
+                    ## id_b ∈ Y(b)(b) := Hom(b, b) ∈ Mor(B):
+                    id_b := IdentityMorphism( B, b );
+                    
+                    ## interpreted as 1 → Hom(b, b) ∈ Mor( RangeCategoryOfHomomorphismStructure( B ) ) = Mor(C):
+                    i_b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( B,
+                                   T, ## the distinguished object of the homomorphism structure of the source category B of the functor category
+                                   id_b,
+                                   hom_bb );
+                    
+                    ## e_b: G^F(b) × F(b) → G(b), i = (t, f) ↦ e_b(i), where G^F(b) := Hom(y(b) × F, G):
+                    e_b :=
+                      function( i )
+                        local ii, t, f, id_b_f, theta, theta_b;
+                        
+                        ## this function assumes that the range category C of the functor category is the category SkeletalFinSets (necessitating requirement (2) above):
+                        
+                        ## the input is an integer i interpreted as an element of the skeletal finite set G^F(b) × F(b),
+                        ## i.e., it corresponds to a pair (t, f) ∈ G^F(b) × F(b), the entries of which we will construct below:
+                        
+                        ## interpret the integer i as a morphsim 1 → G^F(b) × F(b):
+                        ii := MapOfFinSets( T, [ i ], source ); ## T plays here the role of the terminal object of the range category C of the functor category
+                        
+                        ## the 1st projection 1 → G^F(b) ∈ Mor(C) corresponds to the 1st entry t ∈ G^F(b) of the pair (t, f):
+                        t := PreCompose( C,
+                                     ii,
+                                     prj1 );
+                        
+                        ## reinterpret t: 1 → G^F(b) := Hom(Y(b) × F, G) ∈ Mor(C) as a natural transformation theta: Y(b) × F → G;
+                        theta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
+                                         DirectProduct( Hom,
+                                                 [ Yoneda( Opposite( B, b ) ),
+                                                   F ] ),
+                                         G,
+                                         ## here we need that the range category C of the functor category coincides with
+                                         ## the range category of the homomorphism structure of the functor category (see requirement (1) above):
+                                         t );
+                        
+                        ## the 2nd projection 1 → F(b) corresponds to the 2nd entry f ∈ F(b) of the pair (theta, f):
+                        f := PreCompose( C,
+                                     ii,
+                                     prj2 );
+                        
+                        ## Hom(b, b), T, and i_b must all live in C (necessitating requirement (3) above):
+                        
+                        ## the pair (id_b, f) interpreted as 1 → Hom(b, b) × F(b) ∈ Mor(C):
+                        id_b_f := UniversalMorphismIntoDirectProduct( C,
+                                          [ hom_bb, Fb ],
+                                          T,
+                                          [ i_b, f ] );
+                        
+                        ## theta_b: Y(b)(b) × F(b) → G(b) ∈ Mor(C)
+                        theta_b := theta( b );
+                        
+                        ## 1 → Hom(b, b) × F(b) → G(b) ∈ Mor(C)
+                        return PreCompose( C,
+                                       id_b_f,
+                                       theta_b )(1);
+                        
+                    end;
+                    
+                    ## G^F(b) × F(b) → G(b)
+                    return MapOfFinSets( source, List( source, e_b ), range );
+                    
+                end );
+                
+                return AsMorphismInFunctorCategory( Hom, evaluation );
+                
+            end );
+            
+        fi;
         
     fi;
     
