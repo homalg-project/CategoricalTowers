@@ -1407,9 +1407,13 @@ InstallMethodWithCache( FunctorCategory,
         if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
            CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
             
-            ##
+            ## Set the range category of the homomorphism structure of the functor category to be
+            ## the range category of the homomorphism structure of the range category C of the functor category:
             SetRangeCategoryOfHomomorphismStructure( Hom,
                     RangeCategoryOfHomomorphismStructure( Range( Hom ) ) );
+
+            ## Be sure the above assignment succeeded:
+            Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( Hom ), RangeCategoryOfHomomorphismStructure( Range( Hom ) ) ) );
             
             ##
             AddDistinguishedObjectOfHomomorphismStructure( Hom,
