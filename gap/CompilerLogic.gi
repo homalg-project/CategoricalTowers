@@ -72,7 +72,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "entry1", "entry2", "entry3", "entry4", "func" ],
         src_template := "ListN( [ entry1, entry2 ], [ entry3, entry4 ], func )",
         dst_template := "[ func( entry1, entry3 ), func( entry2, entry4 ) ]",
-        returns_value := true,
     )
 );
 
@@ -83,7 +82,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureObject, IsInt ],
         src_template := "additive_closure_object[index]",
         dst_template := "ObjectList( additive_closure_object )[index]",
-        returns_value := true,
     )
 );
 
@@ -94,7 +92,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism, IsInt, IsInt ],
         src_template := "additive_closure_morphism[row, column]",
         dst_template := "MorphismMatrix( additive_closure_morphism )[row][column]",
-        returns_value := true,
     )
 );
 
@@ -105,7 +102,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism ],
         src_template := "NumberRows( additive_closure_morphism )",
         dst_template := "Length( ObjectList( Source( additive_closure_morphism ) ) )",
-        returns_value := true,
     )
 );
 
@@ -116,7 +112,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism ],
         src_template := "NumberColumns( additive_closure_morphism )",
         dst_template := "Length( ObjectList( Range( additive_closure_morphism ) ) )",
-        returns_value := true,
     )
 );
 
@@ -124,7 +119,7 @@ CapJitAddLogicTemplate(
     rec(
         variable_names := [ "nr_rows1", "list", "condA", "condB", "nr_rows2", "nr_cols", "value" ],
         src_template := """
-            return UnionOfColumnsListList( nr_rows1, List( list, function( l )
+            UnionOfColumnsListList( nr_rows1, List( list, function( l )
                 if condA or condB then
                     return NullMatImmutable( nr_rows2, nr_cols );
                 else
@@ -133,19 +128,19 @@ CapJitAddLogicTemplate(
             end ) );
         """,
         dst_template := """
-            if condA then
-                return NullMatImmutable( nr_rows1, Sum( list, l -> nr_cols ) );
-            else
-                return UnionOfColumnsListList( nr_rows1, List( list, function( l )
+            CAP_JIT_INTERNAL_EXPR_CASE(
+                condA,
+                NullMatImmutable( nr_rows1, Sum( list, l -> nr_cols ) ),
+                true,
+                UnionOfColumnsListList( nr_rows1, List( list, function( l )
                     if condB then
                         return NullMatImmutable( nr_rows2, nr_cols );
                     else
                         return value;
                     fi;
-                end ) );
-            fi;
+                end ) )
+            )
         """,
-        returns_value := false,
         needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
@@ -154,7 +149,7 @@ CapJitAddLogicTemplate(
     rec(
         variable_names := [ "nr_cols1", "list", "condA", "condB", "nr_rows", "nr_cols2", "value" ],
         src_template := """
-            return UnionOfRowsListList( nr_cols1, List( list, function( l )
+            UnionOfRowsListList( nr_cols1, List( list, function( l )
                 if condA or condB then
                     return NullMatImmutable( nr_rows, nr_cols2 );
                 else
@@ -163,19 +158,19 @@ CapJitAddLogicTemplate(
             end ) );
         """,
         dst_template := """
-            if condA then
-                return NullMatImmutable( Sum( list, l -> nr_rows ), nr_cols1 );
-            else
-                return UnionOfRowsListList( nr_cols1, List( list, function( l )
+            CAP_JIT_INTERNAL_EXPR_CASE(
+                condA,
+                NullMatImmutable( Sum( list, l -> nr_rows ), nr_cols1 ),
+                true,
+                UnionOfRowsListList( nr_cols1, List( list, function( l )
                     if condB then
                         return NullMatImmutable( nr_rows, nr_cols2 );
                     else
                         return value;
                     fi;
-                end ) );
-            fi;
+                end ) )
+            )
         """,
-        returns_value := false,
         needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
@@ -186,7 +181,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "listlist", "nr_rows", "nr_cols", "ring" ],
         src_template := "EntriesOfHomalgMatrixAsListList( HomalgMatrixListList( listlist, nr_rows, nr_cols, ring ) )",
         dst_template := "listlist",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2021.12-01" ] ],
     )
 );
@@ -197,7 +191,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "number", "obj" ],
         src_template := "Length( ListWithIdenticalEntries( number, obj ) )",
         dst_template := "number",
-        returns_value := true,
     )
 );
 
@@ -207,7 +200,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "list" ],
         src_template := "List( list, x -> x )",
         dst_template := "list",
-        returns_value := true,
     )
 );
 
@@ -218,7 +210,6 @@ CapJitAddLogicTemplate(
         src_template := "List( UnionOfRowsListList( nr_cols, listlist ), row -> List( row, func ) )",
         dst_template := "UnionOfRowsListList( nr_cols, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
         new_funcs := [ [ "list" ], [ "new_row" ] ],
-        returns_value := true,
         needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
@@ -230,7 +221,6 @@ CapJitAddLogicTemplate(
         src_template := "List( UnionOfColumnsListList( nr_rows, listlist ), row -> List( row, func ) )",
         dst_template := "UnionOfColumnsListList( nr_rows, List( listlist, list -> List( list, new_row -> List( new_row, func ) ) ) )",
         new_funcs := [ [ "list" ], [ "new_row" ] ],
-        returns_value := true,
         needed_packages := [ [ "FreydCategoriesForCAP", ">= 2021.12-02" ] ],
     )
 );
@@ -241,7 +231,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "something" ],
         src_template := "IsZero( ZeroImmutable( something ) )",
         dst_template := "true",
-        returns_value := true,
     )
 );
 
@@ -251,6 +240,5 @@ CapJitAddLogicTemplate(
         variable_names := [ "ring", "nr_rows", "entry" ],
         src_template := "UnionOfColumns( ring, nr_rows, [ entry ] )",
         dst_template := "entry",
-        returns_value := true,
     )
 );
