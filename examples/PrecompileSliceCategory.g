@@ -15,7 +15,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "size", "ring", "matrix" ],
         src_template := "HomalgIdentityMatrix( size, ring ) * matrix",
         dst_template := "matrix",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
