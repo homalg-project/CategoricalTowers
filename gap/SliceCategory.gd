@@ -95,11 +95,11 @@ DeclareAttribute( "BaseObject",
 DeclareAttribute( "UnderlyingMorphism",
         IsCapCategoryObjectInASliceCategory );
 
-CapJitAddTypeSignature( "UnderlyingMorphism", [ IsCapCategoryObjectInASliceCategory ], function ( args, func_stack )
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsCapCategoryObjectInASliceCategory ], function ( input_types )
     
-    Assert( 0, IsCapSliceCategory( args.1.data_type.category ) );
+    Assert( 0, IsCapSliceCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := AmbientCategory( args.1.data_type.category )!.morphism_representation, category := AmbientCategory( args.1.data_type.category ) ) );
+    return rec( filter := AmbientCategory( input_types[1].category )!.morphism_representation, category := AmbientCategory( input_types[1].category ) );
     
 end );
 
@@ -110,11 +110,11 @@ end );
 DeclareAttribute( "UnderlyingCell",
         IsCapCategoryCellInASliceCategory );
 
-CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInASliceCategory ], function ( args, func_stack )
+CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInASliceCategory ], function ( input_types )
     
-    Assert( 0, IsCapSliceCategory( args.1.data_type.category ) );
+    Assert( 0, IsCapSliceCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := AmbientCategory( args.1.data_type.category )!.morphism_representation, category := AmbientCategory( args.1.data_type.category ) ) );
+    return rec( filter := AmbientCategory( input_types[1].category )!.morphism_representation, category := AmbientCategory( input_types[1].category ) );
     
 end );
 
