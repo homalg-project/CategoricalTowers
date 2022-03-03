@@ -22,6 +22,10 @@
 
 @InsertChunk SubobjectClassifier
 
+@Subsection The category of quivers
+
+@InsertChunk CategoryOfQuivers
+
 @Section Constructors
 
 @Section Attributes
