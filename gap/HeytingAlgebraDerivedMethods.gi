@@ -4,7 +4,14 @@
 # Implementations
 #
 
-## IsTerminal( Exp( S, T ) ) <=(thin)=> TerminalObject ≤ Hom( S, T ) <=(cart. closed)=> ( TerminalObject ∧ S ) ≤ T <==> S ≤ T
+## IsTerminal( Exp( S, T ) )
+## <=(thin)=>
+## TerminalObject ≤ Exp( S, T )
+## <=(cart. closed)=>
+## ( TerminalObject ∧ S ) ≤ T
+## <==>
+## S ≤ T
+##
 AddDerivationToCAP( IsHomSetInhabited,
         [ [ IsTerminal, 1 ],
           [ ExponentialOnObjects, 1 ] ],

@@ -4,6 +4,14 @@
 # Implementations
 #
 
+## See: https://ncatlab.org/nlab/show/co-Heyting+algebra#properties:
+## IsInitial( S \ T ) = IsInitial( coExp( S, T ) )
+## <=(thin)=>
+## coExp( S, T ) ≤ InitialObject
+## <=(cocart. coclosed)=>
+## S ≤ ( InitialObject ∨ T )
+## <==>
+## S ≤ T
 ##
 AddDerivationToCAP( IsHomSetInhabited,
         [ [ IsInitial, 1 ],
