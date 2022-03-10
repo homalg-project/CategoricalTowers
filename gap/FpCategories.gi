@@ -1625,7 +1625,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
     end;
     
     ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
-    N0 := CapFunctor( B, FinSet( o ) );
+    N0 := CapFunctor( B, FinSet( H, o ) );
     
     ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
