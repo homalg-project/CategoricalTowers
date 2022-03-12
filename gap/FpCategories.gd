@@ -110,6 +110,7 @@ DeclareAttribute( "Size",
 #! @Returns a list
 DeclareAttribute( "SetOfObjects",
         IsFpCategory );
+CapJitAddTypeSignature( "SetOfObjects", [ IsCapCategory ], rec( filter := IsList, element_type := rec( filter := IsCapCategoryObject ) ) );
 
 #! @Description
 #!  Assigns the objects of the finitely presented category <A>C</A> to global variables.
@@ -125,6 +126,7 @@ DeclareOperation( "AssignSetOfObjects",
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsFpCategory );
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCapCategory ], rec( filter := IsList, element_type := rec( filter := IsCapCategoryMorphism ) ) );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
