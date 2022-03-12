@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2022.02-08",
+Version := "2022.03-01",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -96,6 +96,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
                    [ "CategoryConstructor", ">= 2021.06-01" ],
                    [ "SubcategoriesForCAP", ">= 2021.12-01" ],
+                   [ "Toposes", ">= 2022.03-01" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
