@@ -2294,7 +2294,7 @@ InstallMethod( Display,
     
     images_of_objects := ValuesOnAllObjects( F );
     
-    for i in [ 1 .. Size( objects ) ] do
+    for i in [ 1 .. Length( objects ) ] do
       
       Print( "\n\nImage of " ); ViewObj( objects[i] ); Print( ":\n" );
       
@@ -2306,7 +2306,7 @@ InstallMethod( Display,
     
     images_of_morphisms := ValuesOnAllGeneratingMorphisms( F );
     
-    for i in [ 1 .. Size( morphisms ) ] do
+    for i in [ 1 .. Length( morphisms ) ] do
        
       Print( "\n\nImage of " ); ViewObj( morphisms[i] ); Print( ":\n" );
       
@@ -2357,7 +2357,7 @@ InstallMethod( Display,
     
     images_of_objects := ValuesOnAllObjects( eta );
     
-    for i in [ 1 .. Size( objects ) ] do
+    for i in [ 1 .. Length( objects ) ] do
       
       Print( "\n\nImage of " ); ViewObj( objects[i] ); Print( ":\n" );
       
