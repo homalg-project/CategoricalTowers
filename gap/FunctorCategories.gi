@@ -195,7 +195,7 @@ InstallOtherMethod( EqualizerFunctorialWithGivenEqualizers,
         
   function ( source, Lsource, LmorS, LmorT, Ltarget, target )
     
-    return FiberProductFunctorialWithGivenFiberProducts( source, Lsource, LmorS[1], Ltarget, target );
+    return EqualizerFunctorialWithGivenEqualizers( source, Lsource, LmorS[1], Ltarget, target );
     
 end );
 
