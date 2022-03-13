@@ -1382,7 +1382,7 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     if IsFiniteDimensional( kq ) then
-
+        
         if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
            CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
             
