@@ -85,7 +85,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "KernelObject",
           "KernelObjectFunctorialWithGivenKernelObjects",
           "LiftAlongMonomorphism",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
+          #"MorphismBetweenDirectSumsWithGivenDirectSums",
           #"MorphismFromFiberProductToSink", # use their derivation
           #"MorphismFromFiberProductToSinkWithGivenFiberProduct", # use their derivation
           "MorphismFromSourceToPushout",
@@ -177,115 +177,79 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY_WITH_D
 
 ####################################
 #
-# methods for attributes:
-#
-####################################
-
-##
-InstallMethod( UnderlyingCapTwoCategoryCell,
-        "for a list",
-        [ IsList ],
-        
-  L -> List( L, UnderlyingCapTwoCategoryCell ) );
-
-##
-InstallMethod( UnderlyingCapTwoCategoryCell,
-        "fallback method for an arbitrary GAP object",
-        [ IsObject ],
-        
-  IdFunc );
-
-####################################
-#
 # compatibility methods for "multiple arrows"-case below:
 #
 ####################################
 
 ##
-InstallOtherMethod( EqualizerFunctorialWithGivenEqualizers,
-        "for two objects and four lists",
-        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
-        
-  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
-    
-    return EqualizerFunctorialWithGivenEqualizers( source, Lsource, LmorS[1], Ltarget, target );
+BindGlobal( "EqualizerFunctorialWithGivenEqualizers_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
+
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return EqualizerFunctorialWithGivenEqualizers( cat, source, Lsource, LmorS[1], Ltarget, target );
     
 end );
 
 ##
-InstallOtherMethod( CoequalizerFunctorialWithGivenCoequalizers,
-        "for two objects and four lists",
-        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
-        
-  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
+BindGlobal( "CoequalizerFunctorialWithGivenCoequalizers_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
     
-    return CoequalizerFunctorialWithGivenCoequalizers( source, Lsource, LmorT[1], Ltarget, target );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return CoequalizerFunctorialWithGivenCoequalizers( cat, source, Lsource, LmorT[1], Ltarget, target );
     
 end );
 
 ##
-InstallOtherMethod( FiberProductFunctorialWithGivenFiberProducts,
-        "for two objects and four lists",
-        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
-        
-  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
+BindGlobal( "FiberProductFunctorialWithGivenFiberProducts_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
     
-    return FiberProductFunctorialWithGivenFiberProducts( source, Lsource, LmorS, Ltarget, target );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return FiberProductFunctorialWithGivenFiberProducts( cat, source, Lsource, LmorS, Ltarget, target );
     
 end );
 
 ##
-InstallOtherMethod( PushoutFunctorialWithGivenPushouts,
-        "for two objects and four lists",
-        [ IsCapCategoryObject, IsList, IsList, IsList, IsList, IsCapCategoryObject ],
-        
-  function ( source, Lsource, LmorS, LmorT, Ltarget, target )
+BindGlobal( "PushoutFunctorialWithGivenPushouts_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
     
-    return PushoutFunctorialWithGivenPushouts( source, Lsource, LmorT, Ltarget, target );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return PushoutFunctorialWithGivenPushouts( cat, source, Lsource, LmorT, Ltarget, target );
     
 end );
 
 ##
-InstallOtherMethod( KernelObjectFunctorialWithGivenKernelObjects,
-        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
-          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
-        
-  function ( s, alpha, mu, nu, alpha_prime, r )
+BindGlobal( "KernelObjectFunctorialWithGivenKernelObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
-    return KernelObjectFunctorialWithGivenKernelObjects( s, alpha, mu, alpha_prime, r );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return KernelObjectFunctorialWithGivenKernelObjects( cat, s, alpha, mu, alpha_prime, r );
     
 end );
 
 ##
-InstallOtherMethod( CokernelObjectFunctorialWithGivenCokernelObjects,
-        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
-          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
-        
-  function ( s, alpha, mu, nu, alpha_prime, r )
+BindGlobal( "CokernelObjectFunctorialWithGivenCokernelObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
-    return CokernelObjectFunctorialWithGivenCokernelObjects( s, alpha, nu, alpha_prime, r );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return CokernelObjectFunctorialWithGivenCokernelObjects( cat, s, alpha, nu, alpha_prime, r );
     
 end );
 
 ##
-InstallOtherMethod( ImageObjectFunctorialWithGivenImageObjects,
-        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
-          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
-        
-  function ( s, alpha, mu, nu, alpha_prime, r )
+BindGlobal( "ImageObjectFunctorialWithGivenImageObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
-    return ImageObjectFunctorialWithGivenImageObjects( s, alpha, nu, alpha_prime, r );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return ImageObjectFunctorialWithGivenImageObjects( cat, s, alpha, nu, alpha_prime, r );
     
 end );
 
 ##
-InstallOtherMethod( CoimageObjectFunctorialWithGivenCoimageObjects,
-        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
-          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
-        
-  function ( s, alpha, mu, nu, alpha_prime, r )
+BindGlobal( "CoimageObjectFunctorialWithGivenCoimageObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
-    return CoimageObjectFunctorialWithGivenCoimageObjects( s, alpha, mu, alpha_prime, r );
+    #% CAP_JIT_RESOLVE_FUNCTION
+    return CoimageObjectFunctorialWithGivenCoimageObjects( cat, s, alpha, mu, alpha_prime, r );
     
 end );
 
@@ -296,149 +260,110 @@ end );
 ####################################
 
 ##
-InstallMethod( ApplyCell,
-        "for a CAP functor and a CAP cell",
-        [ IsCapFunctor, IsCapCategoryCell ],
-        
-  ApplyFunctor );
-
-##
-InstallMethod( ApplyCell,
-        "for a CAP natural transformation and a CAP object",
-        [ IsCapNaturalTransformation, IsCapCategoryObject ],
-        
-  ApplyNaturalTransformation );
-
-##
-InstallMethod( ApplyCell,
-        "for a CAP natural transformation and a CAP morphism",
-        [ IsCapNaturalTransformation, IsCapCategoryMorphism ],
-        
-  function ( eta, mor )
-    
-    return [ ApplyNaturalTransformation( eta, Source( mor ) ),
-             ApplyFunctor( Source( eta ), mor ),
-             ApplyFunctor( Range( eta ), mor ),
-             ApplyNaturalTransformation( eta, Range( mor ) ) ];
-    
-end );
-
-##
-InstallMethod( ApplyCell,
-        "for a list and a CAP cell",
-        [ IsList, IsCapCategoryCell ],
-        
-  function ( L, c )
-    
-    return List( L, F_or_eta -> ApplyCell( F_or_eta, c ) );
-    
-end );
-
-##
-InstallMethod( ApplyCell,
-        "for an integer and a CAP cell",
-        [ IsInt, IsCapCategoryCell ],
-        
-  function ( i, c )
-    
-    return i;
-    
-end );
-
-##
-InstallMethod( ApplyCell,
+InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToObject,
         "for an object in a Hom-category and a CAP object",
-        [ IsObjectInFunctorCategory, IsCapCategoryObject ],
+        [ IsFunctorCategory, IsObjectInFunctorCategory, IsCapCategoryObject ],
         
-  function ( F, o )
-    local objects, pos, values;
+  function ( Hom, F, objB )
+    local pos;
     
-    objects := SetOfObjects( F );
+    pos := SafePosition( SetOfObjects( Source( Hom ) ), objB );
     
-    pos := Position( objects, o );
-    
-    if IsInt( pos ) then
-        values := F!.ValuesOnAllObjects;
-        if not IsCapCategoryObject( values[pos] ) then
-            values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), o );
-        fi;
-        return values[pos];
-    fi;
-    
-    return ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), o );
+    return ValuesOnAllObjects( F )[pos];
     
 end );
 
 ##
-InstallMethod( ApplyCell,
+InstallOtherMethod( UnderlyingCapTwoCategoryCell,
+        "for an object in a functor category",
+        [ IsFunctorCategory, IsObjectInFunctorCategory ],
+        
+  function ( Hom, F )
+    
+    return CapFunctor( Source( Hom ), ValuesOnAllObjects( F ), ValuesOnAllGeneratingMorphisms( F ), Range( Hom ) );
+    
+end );
+
+##
+InstallMethod( UnderlyingCapTwoCategoryCell,
+        "for an object in a functor category",
+        [ IsObjectInFunctorCategory ],
+        
+  function ( F )
+    
+    return UnderlyingCapTwoCategoryCell( CapCategory( F ), F );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToMorphism,
         "for an object in a Hom-category and a CAP morphism",
-        [ IsObjectInFunctorCategory, IsCapCategoryMorphism ],
+        [ IsFunctorCategory, IsObjectInFunctorCategory, IsCapCategoryMorphism ],
         
-  function ( F, m )
-    local morphisms, pos, values;
+  function ( Hom, F, morB )
+    local pos;
     
-    morphisms := SetOfGeneratingMorphisms( F );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    pos := Position( SetOfGeneratingMorphisms( Source( Hom ) ), morB );
     
-    pos := Position( morphisms, m );
-    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsInt( pos ) then
-        values := F!.ValuesOnAllGeneratingMorphisms;
-        if not IsCapCategoryMorphism( values[pos] ) then
-            values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), m );
-        fi;
-        return values[pos];
+        return ValuesOnAllGeneratingMorphisms( F )[pos];
     fi;
     
-    return ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), m );
+    return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( Hom, F ) )(
+                   ApplyObjectInFunctorCategoryToObject( Hom, F, Source( morB ) ),
+                   morB,
+                   ApplyObjectInFunctorCategoryToObject( Hom, F, Range( morB ) ) );
     
 end );
 
 ##
-InstallMethod( ApplyCell,
+InstallMethodForCompilerForCAP( ApplyMorphismInFunctorCategoryToObject,
         "for a morphism in a Hom-category and a CAP object",
-        [ IsMorphismInFunctorCategory, IsCapCategoryObject ],
+        [ IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject ],
         
-  function ( eta, o )
-    local objects, pos, values;
+  function ( Hom, eta, objB )
+    local pos;
     
-    objects := SetOfObjects( eta );
+    pos := SafePosition( SetOfObjects( Source( Hom ) ), objB );
     
-    pos := Position( objects, o );
-    
-    if IsInt( pos ) then
-        values := eta!.ValuesOnAllObjects;
-        if not IsCapCategoryObject( values[pos] ) then
-            values[pos] := ApplyNaturalTransformation( UnderlyingCapTwoCategoryCell( eta ), o );
-        fi;
-        return values[pos];
-    fi;
-    
-    return ApplyNaturalTransformation( UnderlyingCapTwoCategoryCell( eta ), o );
-    
-end );
-
-##
-InstallMethod( ApplyCell,
-        "for a morphism in a Hom-category and a CAP morphism",
-        [ IsMorphismInFunctorCategory, IsCapCategoryMorphism ],
-        
-  function ( eta, mor )
-    
-    return [ ApplyCell( eta, Source( mor ) ),
-             ApplyCell( Source( eta ), mor ),
-             ApplyCell( Range( eta ), mor ),
-             ApplyCell( eta, Range( mor ) ) ];
+    return ValuesOnAllObjects( eta )[pos];
     
 end );
 
 ##
 InstallMethod( CallFuncList,
-        "for a cell in a functor category and a list",
-        [ IsCellInFunctorCategory, IsList ],
+        "for an object in a functor category and a list",
+        [ IsObjectInFunctorCategory, IsList ],
         
-  function ( F_or_eta, L )
+  function ( F, L )
+    local Hom;
     
-    return ApplyCell( F_or_eta, L[1] );
+    Hom := CapCategory( F );
+    
+    if IsCapCategoryObject( L[1] ) then
+        return ApplyObjectInFunctorCategoryToObject( Hom, F, L[1] );
+    elif IsCapCategoryMorphism( L[1] ) then
+        return ApplyObjectInFunctorCategoryToMorphism( Hom, F, L[1] );
+    fi;
+    
+    Error( "the argument ", L[1], " is neither an object nor a morphism in ", Source( F ), "\n" );
+    
+end );
+
+##
+InstallMethod( CallFuncList,
+        "for a morphism in a functor category and a list",
+        [ IsMorphismInFunctorCategory, IsList ],
+        
+  function ( eta, L )
+    
+    if IsCapCategoryObject( L[1] ) then
+        return ApplyMorphismInFunctorCategoryToObject( CapCategory( eta ), eta, L[1] );
+    fi;
+    
+    Error( "the argument ", L[1], " is not an object in ", Source( Source( eta ) ), "\n" );
     
 end );
 
@@ -452,7 +377,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    return ApplyCell( F, Source( F ).(name) );
+    return F( Source( F ).(name) );
     
 end );
 
@@ -466,40 +391,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    return ApplyCell( eta, Source( Source( eta ) ).(name) );
-    
-end );
-
-##
-InstallMethod( ValuesOnAllObjects,
-        "for an object in a functor category",
-        [ IsObjectInFunctorCategory ],
-        
-  function ( F )
-    
-    return List( SetOfObjects( F ), F );
-    
-end );
-
-##
-InstallMethod( ValuesOnAllGeneratingMorphisms,
-        "for an object in a functor category",
-        [ IsObjectInFunctorCategory ],
-        
-  function ( F )
-    
-    return List( SetOfGeneratingMorphisms( F ), F );
-    
-end );
-
-##
-InstallMethod( ValuesOnAllObjects,
-        "for a morphism in a functor category",
-        [ IsMorphismInFunctorCategory ],
-        
-  function ( eta )
-    
-    return List( SetOfObjects( eta ), eta );
+    return eta( Source( Source( eta ) ).(name) );
     
 end );
 
@@ -510,24 +402,61 @@ end );
 ####################################
 
 ##
-InstallMethod( AsObjectInFunctorCategory,
-        "for a CAP category and a CAP functor",
-        [ IsCapCategory, IsCapFunctor ],
+InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
+        "for a functor category and two lists",
+        [ IsFunctorCategory, IsList, IsList ],
+        
+  function ( Hom, values_of_all_objects, values_of_all_generating_morphisms )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), Hom,
+                   Source, Source( Hom ),
+                   Range, Range( Hom ),
+                   ValuesOnAllObjects, values_of_all_objects,
+                   ValuesOnAllGeneratingMorphisms, values_of_all_generating_morphisms );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByFunctions,
+        "for a functor category and two functions",
+        [ IsFunctorCategory, IsFunction, IsFunction ],
+        
+  function ( Hom, functor_on_objects, functor_on_generating_morphisms )
+    local defining_pair, nr_objs, mors, nr_mors, values_of_all_objects, values_of_all_generating_morphisms;
+    
+    defining_pair := DefiningPairOfUnderlyingQuiver( Hom );
+    
+    nr_objs := defining_pair[1];
+    mors := defining_pair[2];
+    nr_mors := Length( mors );
+    
+    values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> functor_on_objects( o ) );
+    values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> functor_on_generating_morphisms(
+                                                  functor_on_objects( mors[m][1] ),
+                                                  m,
+                                                  functor_on_objects( mors[m][2] ) ) );
+    
+    return AsObjectInFunctorCategoryByValues( Hom, values_of_all_objects, values_of_all_generating_morphisms );
+    
+end );
+
+##
+InstallOtherMethod( AsObjectInFunctorCategory,
+        "for a functor category and a CAP functor",
+        [ IsFunctorCategory, IsCapFunctor ],
         
   function ( Hom, F )
-    local B, obj;
+    local B, objs, mors, functor_on_objects, functor_on_generating_morphism;
     
     B := Source( Hom );
     
-    obj := rec( ValuesOnAllObjects := [ 1 .. Length( SetOfObjects( B ) ) ],
-                ValuesOnAllGeneratingMorphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ] );
+    objs := SetOfObjects( B );
+    mors := SetOfGeneratingMorphisms( B );
     
-    return ObjectifyObjectForCAPWithAttributes( obj, Hom,
-                   UnderlyingCapTwoCategoryCell, F,
-                   Source, B,
-                   Range, Range( Hom ),
-                   SetOfObjects, SetOfObjects( B ),
-                   SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( B ) );
+    functor_on_objects := objB_index -> FunctorObjectOperation( F )( objs[objB_index] );
+    functor_on_generating_morphism := { source, morB_index, range } -> FunctorMorphismOperation( F )( source, mors[morB_index], range );
+    
+    return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_generating_morphism );
     
 end );
 
@@ -562,18 +491,12 @@ InstallMethod( AsObjectInFunctorCategory,
         [ IsCapCategory, IsList, IsList ],
         
   function ( B, images_of_objects, images_of_morphisms )
-    local F;
     
     if IsEmpty( images_of_objects ) then
         Error( "the list of images is empty\n" );
     fi;
     
-    F := AsObjectInFunctorCategory( CapFunctor( B, images_of_objects, images_of_morphisms, CapCategory( images_of_objects[1] ) ) );
-    
-    F!.ValuesOnAllObjects := images_of_objects;
-    F!.ValuesOnAllGeneratingMorphisms := images_of_morphisms;
-    
-    return F;
+    return AsObjectInFunctorCategory( CapFunctor( B, images_of_objects, images_of_morphisms, CapCategory( images_of_objects[1] ) ) );
     
 end );
 
@@ -624,30 +547,60 @@ InstallMethod( AsObjectInFunctorCategory,
     
     morphisms := List( [ 1 .. Length( morphisms ) ], mat );
     
-    return AsObjectInFunctorCategory( kq, objects, morphisms );
+    return AsObjectInFunctorCategoryByValues( FunctorCategory( kq, kmat ), objects, morphisms );
     
 end );
 
 ##
-InstallMethod( AsMorphismInFunctorCategory,
-        "for a CAP category and a CAP natural transformation",
-        [ IsCapCategory, IsCapNaturalTransformation ],
+InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategoryByValues,
+        "for a functor category, two objects in the functor category, and a list",
+        [ IsFunctorCategory, IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ],
+        
+  function ( Hom, source, values_on_all_objects, range )
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), Hom,
+                   source,
+                   range,
+                   ValuesOnAllObjects, values_on_all_objects );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategory,
+        "for a functor category, two objects in the functor category, and a function",
+        [ IsFunctorCategory, IsObjectInFunctorCategory, IsFunction, IsObjectInFunctorCategory ],
+        
+  function ( Hom, source, natural_transformation_on_objects, range )
+    local nr_objs, source_values, range_values, values_on_all_objects;
+    
+    nr_objs := DefiningPairOfUnderlyingQuiver( Hom )[1];
+    
+    source_values := ValuesOnAllObjects( source );
+    range_values := ValuesOnAllObjects( range );
+    
+    values_on_all_objects := LazyHList( [ 1 .. nr_objs ],
+                                     o -> natural_transformation_on_objects( source_values[o], o, range_values[o] ) );
+    
+    return AsMorphismInFunctorCategoryByValues( Hom, source, values_on_all_objects, range );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategory,
+        "for a functor category and a CAP natural transformation",
+        [ IsFunctorCategory, IsCapNaturalTransformation ],
         
   function ( Hom, eta )
-    local B, mor;
+    local B, objs;
     
     B := Source( Hom );
     
-    mor := rec( ValuesOnAllObjects := [ 1 .. Length( SetOfObjects( B ) ) ] );
+    objs := SetOfObjects( B );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, Hom,
-            AsObjectInFunctorCategory( Source( eta ) ),
-            AsObjectInFunctorCategory( Range( eta ) ),
-            UnderlyingCapTwoCategoryCell, eta,
-            SetOfObjects, SetOfObjects( B ),
-            SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( B ) );
-    
-    return mor;
+    return AsMorphismInFunctorCategory( Hom,
+                   AsObjectInFunctorCategory( Source( eta ) ),
+                   { source, objB_index, range } -> NaturalTransformationOperation( eta )( source, objs[objB_index], range ),
+                   AsObjectInFunctorCategory( Range( eta ) ) );
     
 end );
 
@@ -674,7 +627,7 @@ InstallMethod( AsMorphismInFunctorCategory,
         
   function ( U, e, V )
     local eta;
-    
+
     eta := NaturalTransformation(
                    e,
                    UnderlyingCapTwoCategoryCell( U ),
@@ -686,11 +639,11 @@ end );
 
 ##
 InstallMethod( AsMorphismInFunctorCategory,
-        "for a list and two objects in Hom-category",
+        "for two objects in a functor category and a list",
         [ IsObjectInFunctorCategory, IsList, IsObjectInFunctorCategory ],
         
   function ( U, e, V )
-    local kmat, eta;
+    local kmat;
     
     if not IsEmpty( e ) and IsHomalgMatrix( e[1] ) then
         
@@ -700,15 +653,7 @@ InstallMethod( AsMorphismInFunctorCategory,
         
     fi;
     
-    eta := AsMorphismInFunctorCategory(
-                   NaturalTransformation(
-                           UnderlyingCapTwoCategoryCell( U ),
-                           e,
-                           UnderlyingCapTwoCategoryCell( V ) ) );
-    
-    eta!.ValuesOnAllObjects := e;
-    
-    return eta;
+    return AsMorphismInFunctorCategoryByValues( CapCategory( U ), U, e, V );
     
 end );
 
@@ -779,7 +724,7 @@ InstallMethodWithCache( FunctorCategory,
     ##
     object_constructor := function( cat, input )
         
-        return AsObjectInFunctorCategory( cat, CapFunctor( "", Source( cat ), Range( cat ) ) );
+        return AsObjectInFunctorCategoryByValues( cat, [ ], [ ] );
         
     end;
     
@@ -787,7 +732,7 @@ InstallMethodWithCache( FunctorCategory,
     
     morphism_constructor := function( cat, source, input, range )
         
-        return AsMorphismInFunctorCategory( cat, NaturalTransformation( UnderlyingCapTwoCategoryCell( source ), UnderlyingCapTwoCategoryCell( range ) ) );
+        return AsMorphismInFunctorCategoryByValues( cat, source, [ ], range );
         
     end;
     
@@ -862,10 +807,14 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
-    local kq, A, relations, B_op, source, name, list_of_operations,
+    local defining_pair, nr_obj, kq, A, relations, B_op, source, name, list_of_operations,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, supports_empty_limits, doc, prop, Hom, vertices, arrows, H;
+    
+    defining_pair := DefiningPairOfAQuiver( UnderlyingQuiver( B ) );
+    
+    nr_obj := defining_pair[1];
     
     if IsFpCategory( B ) then
         kq := UnderlyingQuiverAlgebra( B );
@@ -935,12 +884,16 @@ InstallMethodWithCache( FunctorCategory,
               function( input_arguments )
                 local L;
                 
-                L := [ input_arguments ];
+                L := NTuple( number_of_arguments, input_arguments );
                 
                 ## due to issue https://github.com/homalg-project/CAP_project/issues/802
                 ## the result is not saved if operation_name is called with Range( cat ) as first argument
                 
-                return ForAll( ValuesOnAllObjects( L[2] ), object -> operation_name( object ) );
+                if IsObjectInFunctorCategory( L[2] ) then
+                    return ForAll( ValuesOnAllObjects( L[2] ), object -> operation_name( object ) );
+                else
+                    return ForAll( ValuesOnAllObjects( L[2] ), object -> operation_name( object ) );
+                fi;
                 
               end
               """;
@@ -997,30 +950,19 @@ InstallMethodWithCache( FunctorCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments )
-                local B, C, name_of_object, F, objC, morC;
+                local C, objC, morC, functor_on_objects, functor_on_morphisms;
                 
-                B := Source( cat );
                 C := Range( cat );
-                
-                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                F := CapFunctor( name_of_object, B, C );
-                
-                DeactivateCachingObject( ObjectCache( F ) );
-                DeactivateCachingObject( MorphismCache( F ) );
                 
                 objC := operation_name( C );
                 
-                AddObjectFunction( F, objB -> objC );
+                functor_on_objects := objB_index -> objC;
                 
                 morC := functorial( C );
                 
-                AddMorphismFunction( F,
-                  function ( new_source, morB, new_range )
-                    return morC;
-                end );
+                functor_on_morphisms := { new_source, morB_index, new_range } -> morC;
                 
-                return AsObjectInFunctorCategory( cat, F );
+                return AsObjectInFunctorCategoryByFunctions( cat, functor_on_objects, functor_on_morphisms );
                 
             end
             """,
@@ -1032,79 +974,40 @@ InstallMethodWithCache( FunctorCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments )
-                local B, C, vertices, arrows, name_of_object, F, images_of_objects, images_of_generating_morphisms, u_arg;
+                local C, i_arg, etas, functor_on_objects, mors, functor_on_morphisms;
                 
-                B := Source( cat );
                 C := Range( cat );
                 
-                vertices := SetOfObjects( B );
-                arrows := SetOfGeneratingMorphisms( B );
+                i_arg := NTuple( number_of_arguments, input_arguments );
                 
-                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                etas := i_arg[2];
                 
-                F := CapFunctor( name_of_object, B, C );
+                functor_on_objects := objB_index -> operation_name( C, List( etas, F -> ValuesOnAllObjects( F )[objB_index] ) );
                 
-                DeactivateCachingObject( ObjectCache( F ) );
-                DeactivateCachingObject( MorphismCache( F ) );
+                mors := DefiningPairOfUnderlyingQuiver( cat )[2];
                 
-                images_of_objects := [ 1 .. Length( SetOfObjects( B ) ) ];
-                images_of_generating_morphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ];
-                
-                F!.ValuesOnAllObjects := images_of_objects;
-                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
-                
-                u_arg := [ underlying_arguments ];
-                
-                AddObjectFunction( F,
-                  function ( objB )
-                    local pos;
+                functor_on_morphisms :=
+                  function ( new_source, morB_index, new_range )
+                    local l, L;
                     
-                    pos := Position( vertices, objB );
-                    
-                    if pos = fail then
-                        Error( objB, " not found in ", vertices );
-                    fi;
-                    
-                    if not IsCapCategoryObject( images_of_objects[pos] ) then
-                        ## Locally deactivating caching by switching the next line with the above if-line
-                        ## introduces a huge regression in CatReps/examples/CategoryOfRepresentations.g.
-                        images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
-                    fi;
-                    
-                    return images_of_objects[pos];
-                    
-                end );
-                
-                AddMorphismFunction( F,
-                  function ( new_source, morB, new_range )
-                    local pos, l, L, FmorB;
-                    
-                    pos := Position( arrows, morB );
-                    
-                    if IsInt( pos ) and IsCapCategoryMorphism( images_of_generating_morphisms[pos] ) then
-                        return images_of_generating_morphisms[pos];
-                    fi;
-                    
-                    l := List( u_arg{[ 2 .. Length( u_arg ) ]}, F_or_eta -> ApplyCell( F_or_eta, morB ) )[1];
+                    l := List( etas, eta ->
+                               [ ValuesOnAllObjects( eta )[mors[morB_index][1]],              ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Source( morB ) )
+                                 ValuesOnAllGeneratingMorphisms( Source( eta ) )[morB_index], ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
+                                 ValuesOnAllGeneratingMorphisms( Range( eta ) )[morB_index],  ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
+                                 ValuesOnAllObjects( eta )[mors[morB_index][2]]               ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Range( morB ) )
+                                 ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    FmorB := functorial( new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
-                    if IsInt( pos ) then
-                        images_of_generating_morphisms[pos] := FmorB;
-                    fi;
-                    
-                    return FmorB;
-                    
-                end );
+                end;
                 
-                return AsObjectInFunctorCategory( cat, F );
+                return AsObjectInFunctorCategoryByFunctions( cat, functor_on_objects, functor_on_morphisms );
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2],
-                 sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ) ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
         elif diagram = "multiple objects" then
             
@@ -1112,153 +1015,69 @@ InstallMethodWithCache( FunctorCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments )
-                local B, C, vertices, arrows, name_of_object, F, images_of_objects, images_of_generating_morphisms, u_arg;
+                local C, i_arg, Fs, functor_on_objects, functor_on_morphisms;
                 
-                B := Source( cat );
                 C := Range( cat );
                 
-                vertices := SetOfObjects( B );
-                arrows := SetOfGeneratingMorphisms( B );
+                i_arg := NTuple( number_of_arguments, input_arguments );
                 
-                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                Fs := i_arg[2];
                 
-                F := CapFunctor( name_of_object, B, C );
+                functor_on_objects := objB_index ->
+                                      operation_name( C, List( Fs, F -> ValuesOnAllObjects( F )[objB_index] ) );
                 
-                DeactivateCachingObject( ObjectCache( F ) );
-                DeactivateCachingObject( MorphismCache( F ) );
+                functor_on_morphisms := { new_source, morB_index, new_range } ->
+                                        functorial( C,
+                                                new_source,
+                                                List( Fs, F -> ValuesOnAllGeneratingMorphisms( F )[morB_index] ),
+                                                new_range );
                 
-                images_of_objects := [ 1 .. Length( SetOfObjects( B ) ) ];
-                images_of_generating_morphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ];
-                
-                F!.ValuesOnAllObjects := images_of_objects;
-                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
-                
-                u_arg := [ underlying_arguments ];
-                
-                AddObjectFunction( F,
-                  function ( objB )
-                    local pos;
-                    
-                    pos := Position( vertices, objB );
-                    
-                    if pos = fail then
-                        Error( objB, " not found in ", vertices );
-                    fi;
-                    
-                    if not IsCapCategoryObject( images_of_objects[pos] ) then
-                        images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
-                    fi;
-                    
-                    return images_of_objects[pos];
-                    
-                end );
-                
-                AddMorphismFunction( F,
-                  function ( new_source, morB, new_range )
-                    local pos, FmorB;
-                    
-                    pos := Position( arrows, morB );
-                    
-                    if IsInt( pos ) and IsCapCategoryMorphism( images_of_generating_morphisms[pos] ) then
-                        return images_of_generating_morphisms[pos];
-                    fi;
-                    
-                    FmorB := functorial( C, new_source, sequence_of_arguments_morB, new_range );
-                    
-                    if IsInt( pos ) then
-                        images_of_generating_morphisms[pos] := FmorB;
-                    fi;
-                    
-                    return FmorB;
-                    
-                end );
-                
-                return AsObjectInFunctorCategory( cat, F );
+                return AsObjectInFunctorCategoryByFunctions( cat, functor_on_objects, functor_on_morphisms );
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2],
-                 sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ),
-                 sequence_of_arguments_morB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], morB )" ) ) ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
-        else
+        elif diagram = "single arrow" then
             
             return ## a constructor for universal objects: KernelObject
               ReplacedStringViaRecord(
               """
               function ( input_arguments )
-                local B, C, vertices, arrows, name_of_object, F, images_of_objects, images_of_generating_morphisms, u_arg;
+                local C, i_arg, eta, functor_on_objects, mors, functor_on_morphisms;
                 
-                B := Source( cat );
                 C := Range( cat );
                 
-                vertices := SetOfObjects( B );
-                arrows := SetOfGeneratingMorphisms( B );
+                i_arg := NTuple( number_of_arguments, input_arguments );
                 
-                name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                eta := i_arg[2];
                 
-                F := CapFunctor( name_of_object, B, C );
+                functor_on_objects := objB_index -> operation_name( C, ValuesOnAllObjects( eta )[objB_index] );
                 
-                DeactivateCachingObject( ObjectCache( F ) );
-                DeactivateCachingObject( MorphismCache( F ) );
+                mors := DefiningPairOfUnderlyingQuiver( cat )[2];
                 
-                images_of_objects := [ 1 .. Length( SetOfObjects( B ) ) ];
-                images_of_generating_morphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ];
-                
-                F!.ValuesOnAllObjects := images_of_objects;
-                F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
-                
-                u_arg := [ underlying_arguments ];
-                
-                AddObjectFunction( F,
-                  function ( objB )
-                    local pos;
+                functor_on_morphisms :=
+                  function ( new_source, morB_index, new_range )
+                    local L;
                     
-                    pos := Position( vertices, objB );
+                    L := [ ValuesOnAllObjects( eta )[mors[morB_index][1]],              ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Source( morB ) )
+                           ValuesOnAllGeneratingMorphisms( Source( eta ) )[morB_index], ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
+                           ValuesOnAllGeneratingMorphisms( Range( eta ) )[morB_index],  ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
+                           ValuesOnAllObjects( eta )[mors[morB_index][2]]               ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Range( morB ) )
+                           ];
                     
-                    if pos = fail then
-                        Error( objB, " not found in ", vertices );
-                    fi;
-                    
-                    if not IsCapCategoryObject( images_of_objects[pos] ) then
-                        images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
-                    fi;
-                    
-                    return images_of_objects[pos];
-                    
-                end );
-                
-                AddMorphismFunction( F,
-                  function ( new_source, morB, new_range )
-                    local pos, L, FmorB;
-                    
-                    pos := Position( arrows, morB );
-                    
-                    if IsInt( pos ) and IsCapCategoryMorphism( images_of_generating_morphisms[pos] ) then
-                        return images_of_generating_morphisms[pos];
-                    fi;
-                    
-                    L := sequence_of_arguments_morB;
                     
                     ## here we do not pass the category as first argument,
                     ## because of the limitation on the number of arguments of an operation
-                    FmorB := functorial( new_source, L[1], L[2], L[3], L[4], new_range );
+                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
-                    if IsInt( pos ) then
-                        images_of_generating_morphisms[pos] := FmorB;
-                    fi;
-                    
-                    return FmorB;
-                    
-                end );
-                
-                return AsObjectInFunctorCategory( cat, F );
+                end;
+
+                return AsObjectInFunctorCategoryByFunctions( cat, functor_on_objects, functor_on_morphisms );
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[2],
-                 sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ),
-                 sequence_of_arguments_morB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], morB )" ) ) ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
         fi;
         
@@ -1275,34 +1094,46 @@ InstallMethodWithCache( FunctorCategory,
           ReplacedStringViaRecord(
           """
           function ( input_arguments )
-            local B, C, name_of_morphism, eta, u_arg;
+            local B, C, i_arg, natural_transformation_on_objects;
             
             B := Source( cat );
             C := Range( cat );
             
-            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            i_arg := NTuple( number_of_arguments, input_arguments );
             
-            eta := NaturalTransformation(
-                           name_of_morphism,
-                           UnderlyingCapTwoCategoryCell( top_source ),
-                           UnderlyingCapTwoCategoryCell( top_range ) );
-            
-            SetCachingObjectCrisp( NaturalTransformationCache( eta ) );
-            
-            u_arg := [ underlying_arguments ];
-            
-            AddNaturalTransformationFunction( eta,
-              function ( source, objB, range )
+            natural_transformation_on_objects :=
+              function ( source, objB_index, range )
                 
                 return operation_name( C, sequence_of_arguments_objB );
                 
-            end );
+            end;
             
-            return AsMorphismInFunctorCategory( cat, eta );
+            return AsMorphismInFunctorCategory( cat, top_source, natural_transformation_on_objects, top_range );
             
         end
         """,
-        rec( sequence_of_arguments_objB := List( [ 2 .. Length( info.filter_list ) ], i -> Concatenation( "ApplyCell( u_arg[", String( i ), "], objB )" ) ) ) );
+        rec( sequence_of_arguments_objB :=
+             List( [ 2 .. Length( info.filter_list ) ],
+                   function( i )
+                     local type;
+                     
+                     type := info.filter_list[i];
+                     
+                     if type = IsInt then
+                         return Concatenation( "i_arg[", String( i ), "]" );
+                     elif type = "object" then
+                         return Concatenation( "ValuesOnAllObjects( i_arg[", String( i ), "] )[objB_index]" );
+                     elif type = "morphism" then
+                         return Concatenation( "ValuesOnAllObjects( i_arg[", String( i ), "] )[objB_index]" );
+                     elif type = "list_of_objects" then
+                         return Concatenation( "List( i_arg[", String( i ), "], F -> ValuesOnAllObjects( F )[objB_index] )" );
+                     elif type = "list_of_morphisms" then
+                         return Concatenation( "List( i_arg[", String( i ), "], eta -> ValuesOnAllObjects( eta )[objB_index] )" );
+                     else
+                         Error( "can only deal with IsInt, \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
+                     fi;
+                     
+                  end ) ) );
         
     end;
     
@@ -1365,9 +1196,9 @@ InstallMethodWithCache( FunctorCategory,
                    name := name,
                    category_as_first_argument := true,
                    supports_empty_limits := supports_empty_limits,
+                   category_filter := IsFunctorCategory,
                    category_object_filter := IsObjectInFunctorCategory,
                    category_morphism_filter := IsMorphismInFunctorCategory,
-                   category_filter := IsFunctorCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
                    preinstall := preinstall,
@@ -1377,20 +1208,30 @@ InstallMethodWithCache( FunctorCategory,
                    create_func_bool := create_func_bool,
                    create_func_object := create_func_object,
                    create_func_morphism := create_func_morphism,
-                   underlying_category_getter_string := "Range",
-                   underlying_object_getter_string := "( { cat, F } -> UnderlyingCapTwoCategoryCell( F ) )",
-                   underlying_morphism_getter_string := "( { cat, eta } -> UnderlyingCapTwoCategoryCell( eta ) )"
+                   underlying_category_getter_string := "Range"
+                   #underlying_object_getter_string := "( { cat, F } -> UnderlyingCapTwoCategoryCell( F ) )",
+                   #underlying_morphism_getter_string := "( { cat, eta } -> UnderlyingCapTwoCategoryCell( eta ) )"
                    );
     
+    
+    SetSource( Hom, B );
+    SetRange( Hom, C );
+    
     SetOppositeOfSource( Hom, B_op );
+    SetDefiningPairOfUnderlyingQuiver( Hom, defining_pair );
+    
+    Hom!.compiler_hints.category_attribute_names :=
+      [
+       "Source",
+       "Range",
+       "OppositeOfSource",
+       "DefiningPairOfUnderlyingQuiver",
+       ];
     
     ## setting the cache comparison to IsIdenticalObj
     ## boosts the performance considerably
     AddIsEqualForCacheForObjects( Hom, { Hom, F, G } -> IsIdenticalObj( F, G ) );
     AddIsEqualForCacheForMorphisms( Hom, { Hom, eta, epsilon } -> IsIdenticalObj( eta, epsilon ) );
-    
-    SetSource( Hom, B );
-    SetRange( Hom, C );
     
     if CanCompute( C, "IsLiftableAlongMonomorphism" ) then
         
@@ -1429,32 +1270,28 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddMorphismBetweenDirectSumsWithGivenDirectSums( Hom,
           function ( Hom, S, diagram_S, M, diagram_T, T )
-            local B, C, name_of_morphism, eta;
+            local B, C, S_o_vals, T_o_vals, natural_transformation_on_objects;
             
             B := Source( Hom );
             C := Range( Hom );
             
-            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            S_o_vals := ValuesOnAllObjects( S );
+            T_o_vals := ValuesOnAllObjects( T );
             
-            eta := NaturalTransformation(
-                           name_of_morphism,
-                           UnderlyingCapTwoCategoryCell( S ),
-                           UnderlyingCapTwoCategoryCell( T ) );
-            
-            AddNaturalTransformationFunction( eta,
-              function ( source, objB, range )
+            natural_transformation_on_objects :=
+              function ( source, objB_index, range )
                 
                 return MorphismBetweenDirectSumsWithGivenDirectSums(
                                C,
-                               ApplyCell( S, objB ),
-                               List( diagram_S, Si -> ApplyCell( Si, objB ) ),
-                               List( M, row -> List( row, m -> ApplyCell( m, objB ) ) ),
-                               List( diagram_T, Ti -> ApplyCell( Ti, objB ) ),
-                               ApplyCell( T, objB ) );
+                               S_o_vals[objB_index],
+                               List( diagram_S, Si -> ValuesOnAllObjects( Si )[objB_index] ),
+                               List( M, row -> List( row, m -> ValuesOnAllObjects( m )[objB_index] ) ),
+                               List( diagram_T, Ti -> ValuesOnAllObjects( Ti )[objB_index] ),
+                               T_o_vals[objB_index] );
                 
-            end );
+            end;
             
-            return AsMorphismInFunctorCategory( Hom, eta );
+            return AsMorphismInFunctorCategory( Hom, S, natural_transformation_on_objects, T );
             
         end );
         
@@ -1465,26 +1302,21 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( Hom,
           function ( Hom, r, eta )
-            local B, C, name_of_morphism, S, T, r_eta;
+            local B, C, eta_o_vals, natural_transformation_on_objects;
             
             B := Source( Hom );
             C := Range( Hom );
             
-            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            eta_o_vals := ValuesOnAllObjects( eta );
             
-            eta := UnderlyingCapTwoCategoryCell( eta );
+            natural_transformation_on_objects :=
+              function ( source, objB_index, range )
+                
+                return MultiplyWithElementOfCommutativeRingForMorphisms( C, r, eta_o_vals[objB_index] );
+                
+            end;
             
-            S := Source( eta );
-            T := Range( eta );
-            
-            r_eta := NaturalTransformation( name_of_morphism, S, T );
-            
-            AddNaturalTransformationFunction( r_eta,
-              function ( source, objB, range )
-                return MultiplyWithElementOfCommutativeRingForMorphisms( C, r, ApplyCell( eta, objB ) );
-            end );
-            
-            return AsMorphismInFunctorCategory( Hom, r_eta );
+            return AsMorphismInFunctorCategory( Hom, Source( eta ), natural_transformation_on_objects, Range( eta ) );
             
         end );
         
@@ -1518,7 +1350,7 @@ InstallMethodWithCache( FunctorCategory,
           end );
           
           if IsFpCategory( B ) then
-
+              
               AddIsWellDefinedForObjects( Hom,
                 function ( Hom, F )
                   local C;
@@ -1699,7 +1531,7 @@ InstallMethodWithCache( FunctorCategory,
                                               hom_diagram[2],
                                               i ) ) );
                 
-                return AsMorphismInFunctorCategory(
+                return AsMorphismInFunctorCategoryByValues( Hom,
                                F,
                                List( [ 1 .. o ],
                                      i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
@@ -1714,7 +1546,7 @@ InstallMethodWithCache( FunctorCategory,
             AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
               function ( Hom, s, eta, rho, r )
                 local C, H, o, hom_diagram_source, hom_source, prjs_source, emb_source,
-                      hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor;
+                      hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor, eta_vals, rho_vals;
                 
                 C := Range( Hom );
                 
@@ -1756,8 +1588,13 @@ InstallMethodWithCache( FunctorCategory,
                                      hom_range,
                                      prjs_range );
                 
-                mors := ListN( ValuesOnAllObjects( eta ), ValuesOnAllObjects( rho ),
-                               { eta_o, rho_o } -> HomomorphismStructureOnMorphisms( C, eta_o, rho_o ) );
+                eta_vals := ValuesOnAllObjects( eta );
+                rho_vals := ValuesOnAllObjects( rho );
+                
+                mors := List( [ 1 .. o ],
+                              i -> HomomorphismStructureOnMorphisms( C,
+                                      eta_vals[i],
+                                      rho_vals[i] ) );
                 
                 mor := DirectProductFunctorial( H,
                                mors );
@@ -1790,37 +1627,32 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddExponentialOnObjects ( Hom,
           function ( Hom, F, G )
-            local B, C, name_of_object, expFG, Yoneda;
+            local B, objs, C, Yoneda, functor_on_objects, mors, functor_on_morphisms;
             
             B := Source( Hom );
-            C := Range( Hom );
             
-            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-            
-            expFG := CapFunctor( name_of_object, B, C );
-            
-            DeactivateCachingObject( ObjectCache( expFG ) );
-            DeactivateCachingObject( MorphismCache( expFG ) );
+            objs := SetOfObjects( B );
             
             ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
             Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
             
-            AddObjectFunction( expFG,
-              function( objB )
+            functor_on_objects :=
+              function ( objB_index )
                 
                 ## the output lives by construction in the range category of the homomorphism structure of the functor category,
                 ## but should live in the range category C of the functor category (necessitating requirement (1) above):
                 return HomomorphismStructureOnObjects( Hom,
                                DirectProduct( Hom,
-                                       [ ApplyFunctor( Yoneda, Opposite( B, objB ) ),
+                                       [ ApplyFunctor( Yoneda, Opposite( B, objs[objB_index] ) ),
                                          F ] ),
                                G );
                 
-            end );
+            end;
             
-            ## TODO: FIXME: the following will fail on composed generating morphism (or identities)
-            AddMorphismFunction( expFG,
-              function ( new_source, morB, new_range )
+            mors := SetOfGeneratingMorphisms( B );
+            
+            functor_on_morphisms :=
+              function ( new_source, morB_index, new_range )
                 
                 #if IsOne( morB ) then
                 #    return IdentityMorphism( new_source );
@@ -1829,49 +1661,43 @@ InstallMethodWithCache( FunctorCategory,
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                new_source,
                                DirectProductFunctorial( Hom,
-                                       [ ApplyFunctor( Yoneda, Opposite( B, morB ) ),
+                                       [ ApplyFunctor( Yoneda, Opposite( B, mors[morB_index] ) ),
                                          IdentityMorphism( Hom, F ) ] ),
                                IdentityMorphism( Hom, G ),
                                new_range );
                 
-              end );
+            end;
             
-            return AsObjectInFunctorCategory( Hom, expFG );
+            return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_morphisms );
             
         end );
         
         ##
         AddExponentialOnMorphismsWithGivenExponentials( Hom,
           function( Hom, source, eta, rho, range )
-            local B, C, name_of_morphism, exp_eta_rho, Yoneda;
+            local B, objs, Yoneda, natural_transformation_on_objects;
             
             B := Source( Hom );
-            C := Range( Hom );
             
-            name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-            
-            exp_eta_rho := NaturalTransformation(
-                                   name_of_morphism,
-                                   UnderlyingCapTwoCategoryCell( source ),
-                                   UnderlyingCapTwoCategoryCell( range ) );
+            objs := SetOfObjects( B );
             
             ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
             Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
             
-            AddNaturalTransformationFunction( exp_eta_rho,
-              function ( source, objB, range )
+            natural_transformation_on_objects :=
+              function ( source, objB_index, range )
                 
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                source,
                                DirectProductFunctorial( Hom,
-                                       [ IdentityMorphism( Hom, ApplyFunctor( Yoneda, Opposite( B, objB ) ) ),
+                                       [ IdentityMorphism( Hom, ApplyFunctor( Yoneda, Opposite( B, objs[objB_index] ) ) ),
                                          eta ] ),
                                rho,
                                range );
                 
-            end );
+            end;
             
-            return AsMorphismInFunctorCategory( Hom, exp_eta_rho );
+            return AsMorphismInFunctorCategory( Hom, source, natural_transformation_on_objects, range );
             
         end );
         
@@ -1884,17 +1710,12 @@ InstallMethodWithCache( FunctorCategory,
             ## G^F × F → G
             AddCartesianEvaluationMorphismWithGivenSource( Hom,
               function( Hom, F, G, exp )
-                local B, C, name_of_morphism, evaluation, Yoneda, T;
+                local B, C, objs, Yoneda, T, natural_transformation_on_objects;
                 
                 B := Source( Hom );
                 C := Range( Hom );
                 
-                name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                evaluation := NaturalTransformation(
-                                      name_of_morphism,
-                                      UnderlyingCapTwoCategoryCell( exp ),
-                                      UnderlyingCapTwoCategoryCell( G ) );
+                objs := SetOfObjects( B );
                 
                 ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
                 Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
@@ -1903,20 +1724,23 @@ InstallMethodWithCache( FunctorCategory,
                 ## and once as the distinguished object of the homomorphism structure of the functor category itself, which both coincide by the above assumption:
                 T := DistinguishedObjectOfHomomorphismStructure( B );
                 
-                AddNaturalTransformationFunction( evaluation,
-                  function ( source, b, range )
-                    local expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, ev_b;
+                natural_transformation_on_objects :=
+                  function ( source, objB_index, range )
+                    local b, expFG, expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, ev_b;
+                    
+                    b := objs[objB_index];
                     
                     ## source = G^F(b) × F(b)
                     ## range  = G(b)
                     
+                    ## G^F := Hom(Y(-) × F, G) ∈ Obj(C):
+                    expFG := ExponentialOnObjects( Hom, F, G );
+                    
                     ## G^F(b) := Hom(Y(b) × F, G) ∈ Obj(C):
-                    expFG_b := ExponentialOnObjects( Hom,
-                                       F,
-                                       G )( b );
+                    expFG_b := ValuesOnAllObjects( expFG )[objB_index];
                     
                     ## Fb := F(b) ∈ Obj(C):
-                    Fb := F( b );
+                    Fb := ValuesOnAllObjects( F )[objB_index];
                     
                     ## G^F(b) × F(b) ↠ G^F(b) ∈ Mor(C):
                     prj1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
@@ -1932,9 +1756,7 @@ InstallMethodWithCache( FunctorCategory,
                     
                     ## Hom(b, b) is an object in the range category of the homomorphism structure of the source category B of the functor category,
                     ## which is required below to be an object in the range category C of the functor category (necessitating requirement (3) above):
-                    hom_bb := HomomorphismStructureOnObjects( B,
-                                      b,
-                                      b );
+                    hom_bb := HomomorphismStructureOnObjects( B, b, b );
                     
                     ## id_b ∈ Y(b)(b) := Hom(b, b) ∈ Mor(B):
                     id_b := IdentityMorphism( B, b );
@@ -1999,26 +1821,21 @@ InstallMethodWithCache( FunctorCategory,
                     ## ev_b: G^F(b) × F(b) → G(b)
                     return MapOfFinSets( source, List( source, ev_b ), range );
                     
-                end );
+                end;
                 
-                return AsMorphismInFunctorCategory( Hom, evaluation );
+                return AsMorphismInFunctorCategory( Hom, exp, natural_transformation_on_objects, G );
                 
             end );
             
             ## F → (F × G)^G
             AddCartesianCoevaluationMorphismWithGivenRange( Hom,
               function( Hom, F, G, exp )
-                local B, C, name_of_morphism, coevaluation, Yoneda, T;
+                local B, C, objs, Yoneda, T, natural_transformation_on_objects;
                 
                 B := Source( Hom );
                 C := Range( Hom );
                 
-                name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-                
-                coevaluation := NaturalTransformation(
-                                        name_of_morphism,
-                                        UnderlyingCapTwoCategoryCell( F ),
-                                        UnderlyingCapTwoCategoryCell( exp ) );
+                objs := SetOfObjects( B );
                 
                 ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
                 Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
@@ -2027,17 +1844,19 @@ InstallMethodWithCache( FunctorCategory,
                 ## and once as the distinguished object of the homomorphism structure of the functor category itself, which both coincide by the above assumption:
                 T := DistinguishedObjectOfHomomorphismStructure( B );
                 
-                AddNaturalTransformationFunction( coevaluation,
-                  function ( source, b, range )
-                    local Yb, YbxG, FxG, coev_b;
+                natural_transformation_on_objects :=
+                  function ( source, objB_index, range )
+                    local b, Yb, YbxG, FxG, coev_b;
+                    
+                    b := objs[objB_index];
                     
                     ## source = F(b)
                     ## range  = ((F × G)^G)(b)
                     
                     Yb := ApplyFunctor( Yoneda, Opposite( B, b ) );
                     
-                    YbxG := DirectProduct( Yb, G );
-                    FxG := DirectProduct( F, G );
+                    YbxG := DirectProduct( Hom, [ Yb, G ] );
+                    FxG := DirectProduct( Hom, [ F, G ] );
                     
                     ## coev_b: F(b) → ((F × G)^G)(b), f ↦ coev_b(f), where ((F × G)^G)(b) := Hom(Y(b) × G, F × G):
                     coev_b :=
@@ -2053,7 +1872,7 @@ InstallMethodWithCache( FunctorCategory,
                             
                             phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b, b')
                                           phi -> ## φ ∈ Hom_B(b, b') as a natural number
-                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
                                                   b,
                                                   b_,
                                                   MapOfFinSets( T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b, b')
@@ -2077,22 +1896,22 @@ InstallMethodWithCache( FunctorCategory,
                         end;
                         
                         ## coev_b_f: (Y(b) × G) → F × G
-                        coev_b_f := AsMorphismInFunctorCategory(
+                        coev_b_f := AsMorphismInFunctorCategory( Hom,
                                            YbxG,
-                                           List( SetOfObjects( B ), b_ -> component( b_ ) ),
+                                           List( objs, b_ -> component( b_ ) ),
                                            FxG );
                         
                         ## 1 → Hom(Y(b) × G, F × G)
-                        return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coev_b_f )( 1 );
+                        return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coev_b_f ) )[1 + 0];
                         
                     end;
                     
                     ## coev_b: F(b) → ((F × G)^G)(b)
                     return MapOfFinSets( source, List( source, coev_b ), range );
                     
-                end );
+                end;
                 
-                return AsMorphismInFunctorCategory( Hom, coevaluation );
+                return AsMorphismInFunctorCategory( Hom, F, natural_transformation_on_objects, exp );
                 
             end );
             
@@ -2106,15 +1925,18 @@ InstallMethodWithCache( FunctorCategory,
         
         AddSubobjectClassifier( Hom,
           function ( Hom )
+            local sieve_functor;
             
-            return AsObjectInFunctorCategory( SieveFunctor( OppositeFpCategory( Source( Hom ) ) ) );
+            sieve_functor := SieveFunctor( OppositeFpCategory( Source( Hom ) ) );
+            
+            return AsObjectInFunctorCategory( Hom, sieve_functor );
             
         end );
         
         AddTruthMorphismOfTrueWithGivenObjects( Hom,
           function ( Hom, T, Omega )
             
-            return AsMorphismInFunctorCategory( TruthMorphismOfTrueToSieveFunctor( OppositeFpCategory( Source( Hom ) ) ) );
+            return AsMorphismInFunctorCategory( Hom, TruthMorphismOfTrueToSieveFunctor( OppositeFpCategory( Source( Hom ) ) ) );
             
         end );
         
@@ -2224,31 +2046,26 @@ InstallMethodWithCache( FunctorCategory,
         
         AddTensorUnit( Hom,
           function ( Hom )
-            local B, C, name_of_object, I, I_C, counit, id;
+            local B, C, I_C, functor_on_objects, counit, id, mors, functor_on_morphisms;
             
             B := Source( Hom );
             C := Range( Hom );
             
-            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
-            
-            I := CapFunctor( name_of_object, B, C );
-            
-            DeactivateCachingObject( ObjectCache( I ) );
-            DeactivateCachingObject( MorphismCache( I ) );
-            
             I_C := TensorUnit( C );
             
-            AddObjectFunction( I, objB -> I_C );
+            functor_on_objects := objB_index -> I_C;
             
             counit := Counit( B );
             
             id := IdentityMorphism( C, I_C );
             
-            AddMorphismFunction( I,
-              function ( new_source, morB, new_range )
+            mors := SetOfGeneratingMorphisms( B );
+            
+            functor_on_morphisms :=
+              function ( new_source, morB_index, new_range )
                 local coef;
                 
-                coef := Coefficients( UnderlyingQuiverAlgebraElement( ApplyFunctor( counit, morB ) ) );
+                coef := Coefficients( UnderlyingQuiverAlgebraElement( ApplyFunctor( counit, mors[morB_index] ) ) );
                 
                 if Length( coef ) = 1 then
                     coef := coef[1];
@@ -2260,36 +2077,33 @@ InstallMethodWithCache( FunctorCategory,
                 
                 return coef * id;
                 
-              end );
+            end;
             
-            return AsObjectInFunctorCategory( Hom, I );
+            return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_morphisms );
             
           end );
           
         AddTensorProductOnObjects( Hom,
           function ( Hom, F, G )
-            local B, C, name_of_object, FG, comult;
+            local B, C, F_o_vals, G_o_vals, functor_on_objects, comult, mors, functor_on_morphisms;
             
             B := Source( Hom );
             C := Range( Hom );
             
-            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            F_o_vals := ValuesOnAllObjects( F );
+            G_o_vals := ValuesOnAllObjects( G );
             
-            FG := CapFunctor( name_of_object, B, C );
-            
-            DeactivateCachingObject( ObjectCache( FG ) );
-            DeactivateCachingObject( MorphismCache( FG ) );
-            
-            AddObjectFunction( FG,
-                    objB -> TensorProductOnObjects( C, F( objB ), G( objB ) ) );
+            functor_on_objects := objB_index -> TensorProductOnObjects( C, F_o_vals[objB_index], G_o_vals[objB_index] );
             
             comult := Comultiplication( B );
             
-            AddMorphismFunction( FG,
-              function ( new_source, morB, new_range )
+            mors := SetOfGeneratingMorphisms( B );
+            
+            functor_on_morphisms :=
+              function ( new_source, morB_index, new_range )
                 local Delta;
                 
-                Delta := ApplyFunctor( comult, morB );
+                Delta := ApplyFunctor( comult, mors[morB_index] );
                 
                 Delta := DecompositionOfMorphismInSquareOfAlgebroid( Delta );
                 
@@ -2297,46 +2111,40 @@ InstallMethodWithCache( FunctorCategory,
                                s -> s[1] * PreComposeList( C, List( s[2],
                                        t -> TensorProductOnMorphisms( C, F( t[1] ), G( t[2] ) ) ) ) ) );
                 
-              end );
+            end;
             
-            return AsObjectInFunctorCategory( Hom, FG );
+            return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_morphisms );
             
           end );
           
         AddDualOnObjects( Hom,
           function ( Hom, F )
-            local B, C, name_of_object, Fd, antipode;
+            local B, C, F_o_vals, functor_on_objects, antipode, mors, functor_on_morphisms;
             
             B := Source( Hom );
             C := Range( Hom );
             
-            name_of_object := Concatenation( "An object in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+            F_o_vals := ValuesOnAllObjects( F );
             
-            Fd := CapFunctor( name_of_object, B, C );
-            
-            DeactivateCachingObject( ObjectCache( Fd ) );
-            DeactivateCachingObject( MorphismCache( Fd ) );
-            
-            AddObjectFunction( Fd,
-                    objB -> DualOnObjects( C, F( objB ) ) );
+            functor_on_objects := objB_index -> DualOnObjects( C, F_o_vals[objB_index] );
             
             antipode := Antipode( B );
             
-            AddMorphismFunction( Fd,
-              function ( new_source, morB, new_range )
+            mors := SetOfGeneratingMorphisms( B );
+            
+            functor_on_morphisms :=
+              function ( new_source, morB_index, new_range )
                 local S;
                 
-                S := ApplyFunctor( antipode, morB );
-                
-                S := DecompositionOfMorphismInAlgebroid( S );
+                S := DecompositionOfMorphismInAlgebroid( ApplyFunctor( antipode, mors[morB_index] ) );
                 
                 return Sum( List( S,
                                s -> s[1] * PreComposeList( C, List( s[2],
                                        t -> DualOnMorphisms( C, F( t ) ) ) ) ) );
                 
-              end );
+            end;
             
-            return AsObjectInFunctorCategory( Hom, Fd );
+            return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_morphisms );
             
           end );
         
@@ -2360,34 +2168,63 @@ InstallMethodWithCache( FunctorCategory,
         
         AddTensorUnit( Hom,
           function ( Hom )
-            local B, C, objects, morphisms;
+            local C, I, functor_on_objects, id_I, functor_on_morphisms;
             
-            B := Source( Hom );
             C := Range( Hom );
             
-            objects := List( [ 1 .. Length( SetOfObjects( B ) ) ], i -> TensorUnit( C ) );
-            morphisms := List( [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ], i -> IdentityMorphism( TensorUnit( C ) ) );
+            I := TensorUnit( C );
             
-            return AsObjectInFunctorCategory( B, objects, morphisms );
+            functor_on_objects := objB_index -> I;
+            
+            id_I := IdentityMorphism( C, TensorUnit( C ) );
+            
+            functor_on_morphisms := { new_source, morB_index, new_range } -> id_I;
+            
+            return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_morphisms );
             
         end );
         
         AddTensorProductOnObjects( Hom,
           function ( Hom, F, G )
-            local B, objects, morphisms;
+            local C, F_o_vals, G_o_vals, functor_on_objects, F_m_vals, G_m_vals, functor_on_morphisms;
             
-            B := Source( Hom );
+            C := Range( Hom );
             
-            objects := ListN( ValuesOnAllObjects( F ), ValuesOnAllObjects( G ), TensorProductOnObjects );
-            morphisms := ListN( ValuesOnAllGeneratingMorphisms( F ), ValuesOnAllGeneratingMorphisms( G ), TensorProductOnMorphisms );
+            F_o_vals := ValuesOnAllObjects( F );
+            G_o_vals := ValuesOnAllObjects( G );
             
-            return AsObjectInFunctorCategory( B, objects, morphisms );
+            functor_on_objects := objB_index -> TensorProductOnObjects( C, F_o_vals[objB_index], G_o_vals[objB_index] );
+            
+            F_m_vals := ValuesOnAllGeneratingMorphisms( F );
+            G_m_vals := ValuesOnAllGeneratingMorphisms( G );
+            
+            functor_on_morphisms := { new_source, morB_index, new_range } -> TensorProductOnMorphisms( C, F_m_vals[morB_index], G_m_vals[morB_index] );
+            
+            return AsObjectInFunctorCategoryByFunctions( Hom, functor_on_objects, functor_on_morphisms );
             
         end );
         
     fi;
     
     AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function ( ) IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
+
+    if false then
+    #if ValueOption( "no_precompiled_code" ) <> true then
+        
+        if IsFpCategory( B ) then
+            ADD_FUNCTIONS_FOR_PreSheavesPrecompiled( Hom );
+            ADD_FUNCTIONS_FOR_PreSheavesPrecompiled_rest( Hom );
+        elif IsAlgebroid( B ) then
+            if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
+               ( HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+                 HasCounit( B ) and HasComultiplication( B ) ) then
+                ADD_FUNCTIONS_FOR_FunctorCategoryOfAlgebroidWithRelationsInMatrixCategoryPrecompiled( Hom );
+            else
+                ADD_FUNCTIONS_FOR_FunctorCategoryOfFreeAlgebroidInMatrixCategoryPrecompiled( Hom );
+            fi;
+        fi;
+        
+    fi;
     
     Finalize( Hom );
     
@@ -2658,7 +2495,7 @@ InstallMethod( Display,
   function ( F )
     local objects, images_of_objects, morphisms, images_of_morphisms, i;
     
-    objects := SetOfObjects( F );
+    objects := SetOfObjects( Source( F ) );
     
     images_of_objects := ValuesOnAllObjects( F );
 
@@ -2672,7 +2509,7 @@ InstallMethod( Display,
       
     od;
     
-    morphisms := SetOfGeneratingMorphisms( F );
+    morphisms := SetOfGeneratingMorphisms( Source( F ) );
     
     images_of_morphisms := ValuesOnAllGeneratingMorphisms( F );
     
@@ -2703,7 +2540,7 @@ InstallMethod( ViewObj,
       
     fi;
     
-    vertices := List( SetOfObjects( eta ), UnderlyingVertex );
+    vertices := List( SetOfObjects( Source( Source( eta ) ) ), UnderlyingVertex );
      
     s_dim := List( ValuesOnAllObjects( Source( eta ) ), Dimension );
     
@@ -2725,7 +2562,7 @@ InstallMethod( Display,
   function ( eta )
     local objects, images_of_objects, i;
     
-    objects := SetOfObjects( eta );
+    objects := SetOfObjects( Source( Source( eta ) ) );
     
     images_of_objects := ValuesOnAllObjects( eta );
     
