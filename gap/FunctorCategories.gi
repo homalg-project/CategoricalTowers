@@ -335,7 +335,7 @@ InstallMethod( ApplyCell,
     
     if IsInt( pos ) then
         values := F!.ValuesOnAllObjects;
-        if not IsBound( values[pos] ) then
+        if not IsCapCategoryObject( values[pos] ) then
             values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), o );
         fi;
         return values[pos];
@@ -359,7 +359,7 @@ InstallMethod( ApplyCell,
     
     if IsInt( pos ) then
         values := F!.ValuesOnAllGeneratingMorphisms;
-        if not IsBound( values[pos] ) then
+        if not IsCapCategoryMorphism( values[pos] ) then
             values[pos] := ApplyFunctor( UnderlyingCapTwoCategoryCell( F ), m );
         fi;
         return values[pos];
@@ -383,7 +383,7 @@ InstallMethod( ApplyCell,
     
     if IsInt( pos ) then
         values := eta!.ValuesOnAllObjects;
-        if not IsBound( values[pos] ) then
+        if not IsCapCategoryObject( values[pos] ) then
             values[pos] := ApplyNaturalTransformation( UnderlyingCapTwoCategoryCell( eta ), o );
         fi;
         return values[pos];
@@ -489,21 +489,19 @@ InstallMethod( AsObjectInFunctorCategory,
         [ IsCapCategory, IsCapFunctor ],
         
   function ( H, F )
-    local obj, kq;
+    local B, obj;
     
-    obj := rec( ValuesOnAllObjects := [ ],
-                ValuesOnAllGeneratingMorphisms := [ ] );
+    B := Source( H );
     
-    kq := Source( H );
+    obj := rec( ValuesOnAllObjects := [ 1 .. Length( SetOfObjects( B ) ) ],
+                ValuesOnAllGeneratingMorphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ] );
     
-    ObjectifyObjectForCAPWithAttributes( obj, H,
-            UnderlyingCapTwoCategoryCell, F,
-            Source, kq,
-            Range, Range( H ),
-            SetOfObjects, SetOfObjects( kq ),
-            SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( kq ) );
-    
-    return obj;
+    return ObjectifyObjectForCAPWithAttributes( obj, H,
+                   UnderlyingCapTwoCategoryCell, F,
+                   Source, B,
+                   Range, Range( H ),
+                   SetOfObjects, SetOfObjects( B ),
+                   SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( B ) );
     
 end );
 
@@ -610,18 +608,18 @@ InstallMethod( AsMorphismInFunctorCategory,
         [ IsCapCategory, IsCapNaturalTransformation ],
         
   function ( H, eta )
-    local mor, kq;
+    local B, mor;
     
-    mor := rec( ValuesOnAllObjects := [ ] );
+    B := Source( H );
     
-    kq := Source( H );
+    mor := rec( ValuesOnAllObjects := [ 1 .. Length( SetOfObjects( B ) ) ] );
     
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, H,
             AsObjectInFunctorCategory( Source( eta ) ),
             AsObjectInFunctorCategory( Range( eta ) ),
             UnderlyingCapTwoCategoryCell, eta,
-            SetOfObjects, SetOfObjects( kq ),
-            SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( kq ) );
+            SetOfObjects, SetOfObjects( B ),
+            SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( B ) );
     
     return mor;
     
@@ -842,8 +840,8 @@ InstallMethodWithCache( FunctorCategory,
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
-                images_of_objects := [ ];
-                images_of_generating_morphisms := [ ];
+                images_of_objects := [ 1 .. Length( SetOfObjects( B ) ) ];
+                images_of_generating_morphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ];
                 
                 F!.ValuesOnAllObjects := images_of_objects;
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
@@ -860,7 +858,7 @@ InstallMethodWithCache( FunctorCategory,
                         Error( objB, " not found in ", vertices );
                     fi;
                     
-                    if not IsBound( images_of_objects[pos] ) then
+                    if not IsCapCategoryObject( images_of_objects[pos] ) then
                         ## Locally deactivating caching by switching the next line with the above if-line
                         ## introduces a huge regression in CatReps/examples/CategoryOfRepresentations.g.
                         images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
@@ -876,7 +874,7 @@ InstallMethodWithCache( FunctorCategory,
                     
                     pos := Position( arrows, morB );
                     
-                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
+                    if IsInt( pos ) and IsCapCategoryMorphism( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
                     fi;
                     
@@ -922,8 +920,8 @@ InstallMethodWithCache( FunctorCategory,
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
-                images_of_objects := [ ];
-                images_of_generating_morphisms := [ ];
+                images_of_objects := [ 1 .. Length( SetOfObjects( B ) ) ];
+                images_of_generating_morphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ];
                 
                 F!.ValuesOnAllObjects := images_of_objects;
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
@@ -940,7 +938,7 @@ InstallMethodWithCache( FunctorCategory,
                         Error( objB, " not found in ", vertices );
                     fi;
                     
-                    if not IsBound( images_of_objects[pos] ) then
+                    if not IsCapCategoryObject( images_of_objects[pos] ) then
                         images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
                     fi;
                     
@@ -954,7 +952,7 @@ InstallMethodWithCache( FunctorCategory,
                     
                     pos := Position( arrows, morB );
                     
-                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
+                    if IsInt( pos ) and IsCapCategoryMorphism( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
                     fi;
                     
@@ -997,8 +995,8 @@ InstallMethodWithCache( FunctorCategory,
                 DeactivateCachingObject( ObjectCache( F ) );
                 DeactivateCachingObject( MorphismCache( F ) );
                 
-                images_of_objects := [ ];
-                images_of_generating_morphisms := [ ];
+                images_of_objects := [ 1 .. Length( SetOfObjects( B ) ) ];
+                images_of_generating_morphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ];
                 
                 F!.ValuesOnAllObjects := images_of_objects;
                 F!.ValuesOnAllGeneratingMorphisms := images_of_generating_morphisms;
@@ -1015,7 +1013,7 @@ InstallMethodWithCache( FunctorCategory,
                         Error( objB, " not found in ", vertices );
                     fi;
                     
-                    if not IsBound( images_of_objects[pos] ) then
+                    if not IsCapCategoryObject( images_of_objects[pos] ) then
                         images_of_objects[pos] := operation_name( C, sequence_of_arguments_objB );
                     fi;
                     
@@ -1029,7 +1027,7 @@ InstallMethodWithCache( FunctorCategory,
                     
                     pos := Position( arrows, morB );
                     
-                    if IsInt( pos ) and IsBound( images_of_generating_morphisms[pos] ) then
+                    if IsInt( pos ) and IsCapCategoryMorphism( images_of_generating_morphisms[pos] ) then
                         return images_of_generating_morphisms[pos];
                     fi;
                     
