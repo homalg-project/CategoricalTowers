@@ -168,6 +168,13 @@ CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInFunctorCategory ],
     
 end );
 
+CapJitAddTypeSignature( "OppositeOfSource", [ IsFunctorCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( OppositeOfSource( input_types[1].category ) );
+    
+end );
+
 #!  The 2-cell underlying the functor object <A>F_or_eta</A>.
 #! @Arguments F_or_eta
 #! @Returns a &CAP; functor or natural transformation
@@ -229,6 +236,13 @@ DeclareAttribute( "YonedaComposition", IsCapCategory );
 #! @Section Operations
 #
 ####################################
+
+CapJitAddTypeSignature( "ListOfValues", [ IsList ],
+  function ( input_types )
+    
+    return input_types[1];
+    
+end );
 
 #! @Description
 #!  Apply the functor <A>F</A> (as an object in the corresponding Hom-category) to the cell <A>c</A>.

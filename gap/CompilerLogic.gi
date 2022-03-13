@@ -220,3 +220,27 @@ CapJitAddLogicTemplate(
         dst_template := "[ entry1, entry2, entry3 ]",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func" ],
+        src_template := "Length( LazyHList( list, func ) )",
+        dst_template := "Length( list )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number", "entry", "value" ],
+        src_template := "List( ListWithIdenticalEntries( number, entry ), x -> value )",
+        dst_template := "ListWithIdenticalEntries( number, value )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number", "entry" ],
+        src_template := "List( ListWithIdenticalEntries( number, [ entry ] ), Length )",
+        dst_template := "ListWithIdenticalEntries( number, 1 )",
+    )
+);
