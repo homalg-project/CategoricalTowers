@@ -1654,7 +1654,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 AddNaturalTransformationFunction( evaluation,
                   function ( source, b, range )
-                    local expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, e_b;
+                    local expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, ev_b;
                     
                     ## source = G^F(b) × F(b)
                     ## range  = G(b)
@@ -1694,8 +1694,8 @@ InstallMethodWithCache( FunctorCategory,
                                    id_b,
                                    hom_bb );
                     
-                    ## e_b: G^F(b) × F(b) → G(b), i = (t, f) ↦ e_b(i), where G^F(b) := Hom(y(b) × F, G):
-                    e_b :=
+                    ## ev_b: G^F(b) × F(b) → G(b), i = (t, f) ↦ ev_b(i), where G^F(b) := Hom(y(b) × F, G):
+                    ev_b :=
                       function( i )
                         local ii, t, f, id_b_f, theta, theta_b;
                         
@@ -1745,8 +1745,8 @@ InstallMethodWithCache( FunctorCategory,
                         
                     end;
                     
-                    ## G^F(b) × F(b) → G(b)
-                    return MapOfFinSets( source, List( source, e_b ), range );
+                    ## ev_b: G^F(b) × F(b) → G(b)
+                    return MapOfFinSets( source, List( source, ev_b ), range );
                     
                 end );
                 
