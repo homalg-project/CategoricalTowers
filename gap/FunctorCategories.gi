@@ -1754,6 +1754,97 @@ InstallMethodWithCache( FunctorCategory,
                 
             end );
             
+            ## F → (F × G)^G
+            AddCartesianCoevaluationMorphismWithGivenRange( Hom,
+              function( Hom, F, G, exp )
+                local B, C, name_of_morphism, coevaluation, Yoneda, T;
+                
+                B := Source( Hom );
+                C := Range( Hom );
+                
+                name_of_morphism := Concatenation( "A morphism in the functor category Hom( ", Name( B ), ", ", Name( C ), " )" );
+                
+                coevaluation := NaturalTransformation(
+                                        name_of_morphism,
+                                        UnderlyingCapTwoCategoryCell( F ),
+                                        UnderlyingCapTwoCategoryCell( exp ) );
+                
+                ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
+                Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
+                
+                ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the functor category,
+                ## and once as the distinguished object of the homomorphism structure of the functor category itself, which both coincide by the above assumption:
+                T := DistinguishedObjectOfHomomorphismStructure( B );
+                
+                AddNaturalTransformationFunction( coevaluation,
+                  function ( source, b, range )
+                    local Yb, YbxG, FxG, coev_b;
+                    
+                    ## source = F(b)
+                    ## range  = ((F × G)^G)(b)
+                    
+                    Yb := Yoneda( Opposite( B, b ) );
+                    
+                    YbxG := DirectProduct( Yb, G );
+                    FxG := DirectProduct( F, G );
+                    
+                    ## coev_b: F(b) → ((F × G)^G)(b), f ↦ coev_b(f), where ((F × G)^G)(b) := Hom(Y(b) × G, F × G):
+                    coev_b :=
+                      function( f ) ## ∈ F(b)
+                        local component, coev_b_f;
+                        
+                        ## this function assumes that the range category of the homomorphism structure of
+                        ## the functor category is the category SkeletalFinSets (necessitating requirement (2) above):
+                        
+                        component :=
+                          function( b_ )
+                            local phis, Fphis, images, factor1;
+                            
+                            phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b, b')
+                                          phi -> ## φ ∈ Hom_B(b, b') as a natural number
+                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                  b,
+                                                  b_,
+                                                  MapOfFinSets( T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b, b')
+                                                  ) ## φ: b → b'
+                                          );
+                            
+                            Fphis := List( phis,
+                                           phi -> F( phi ) ## F(φ): F(b) → F(b')
+                                           );
+                            
+                            images := List( Fphis,
+                                            Fphi -> Fphi( f ) ## F(φ)(f) ∈ F(b')
+                                            );
+                            
+                            ## Y(b)(b') = Hom_B(b, b') → F(b'), (φ: b → b') ↦ (F(φ)(f): F(b) → F(b'))
+                            factor1 := MapOfFinSets( Yb( b_ ), images, F( b_ ) );
+                            
+                            ## (Y(b) × G)(b') = Y(b)(b') × G(b') → F(b') × G(b') = (F × G)(b')
+                            return DirectProductOnMorphisms( factor1, IdentityMorphism( G( b_ ) ) );
+                            
+                        end;
+                        
+                        ## coev_b_f: (Y(b) × G) → F × G
+                        coev_b_f := AsMorphismInFunctorCategory(
+                                           YbxG,
+                                           List( SetOfObjects( B ), b_ -> component( b_ ) ),
+                                           FxG );
+                        
+                        ## 1 → Hom(Y(b) × G, F × G)
+                        return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coev_b_f )( 1 );
+                        
+                    end;
+                    
+                    ## coev_b: F(b) → ((F × G)^G)(b)
+                    return MapOfFinSets( source, List( source, coev_b ), range );
+                    
+                end );
+                
+                return AsMorphismInFunctorCategory( Hom, coevaluation );
+                
+            end );
+            
         fi;
         
     fi;
