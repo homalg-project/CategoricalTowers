@@ -2109,56 +2109,53 @@ end );
 
 ##
 InstallMethod( NaturalTransformation,
-        "for a record and two CAP functors",
-        [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],
+        "for a list and two CAP functors",
+        [ IsCapFunctorRep, IsList, IsCapFunctorRep ],
         
-  function( eta, F, G )
-    local nat_tr;
+  function( F, images, G )
+    local eta, vertices;
     
-    if NamesOfComponents( F ) = [ ] then
-        Error( "the record of images is empty\n" );
-    fi;
+    eta := NaturalTransformation( Concatenation( "Natural transformation from ", Name( F ), " -> ", Name( G ) ), F, G );
     
-    if IsBound( eta.name ) then
-        nat_tr := eta.name;
-    else
-        nat_tr := Concatenation( "Natural transformation from ", Name( F ), " -> ", Name( G ) );
-    fi;
+    eta!.ValuesOnAllObjects := images;
     
-    nat_tr := NaturalTransformation( nat_tr, F, G );
+    vertices := Vertices( QuiverOfAlgebra( UnderlyingQuiverAlgebra( AsCapCategory( Source( F ) ) ) ) );
     
-    nat_tr!.defining_record := eta;
-    
-    AddNaturalTransformationFunction( nat_tr,
+    AddNaturalTransformationFunction( eta,
       function( source, obj, range )
-        return eta.(String( UnderlyingVertex( obj ) ));
-      end );
+        local pos;
+        
+        pos := Position( vertices, UnderlyingVertex( obj ) );
+        
+        if not IsInt( pos ) then
+            Error( "vertex UnderlyingVertex( obj ) = ", UnderlyingVertex( obj ), " not found in the list ", vertices, " of vertices\n" );
+        fi;
+        
+        return images[pos];
+        
+    end );
     
-    return nat_tr;
+    return eta;
     
 end );
 
 ##
 InstallMethod( NaturalTransformation,
-        "for a list and two CAP functors",
-        [ IsCapFunctorRep, IsList, IsCapFunctorRep ],
+        "for a record and two CAP functors",
+        [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],
         
-  function( F, images, G )
-    local B, q, vertices, eta, i;
+  function( eta, F, G )
+    local vertices, images;
     
-    B := AsCapCategory( Source( F ) );
+    if NamesOfComponents( F ) = [ ] then
+        Error( "the record of images is empty\n" );
+    fi;
     
-    q := QuiverOfAlgebra( UnderlyingQuiverAlgebra( B ) );
+    vertices := Vertices( QuiverOfAlgebra( UnderlyingQuiverAlgebra( AsCapCategory( Source( F ) ) ) ) );
     
-    vertices := Vertices( q );
+    images := List( vertices, v -> eta.(String( v ) ) );
     
-    eta := rec( );
-    
-    for i in [ 1 .. Length( vertices ) ] do
-        eta.(String( vertices[i] )) := images[i];
-    od;
-    
-    return NaturalTransformation( eta, F, G );
+    return NaturalTransformation( F, images, G );
     
 end );
 
