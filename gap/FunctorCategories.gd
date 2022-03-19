@@ -155,10 +155,6 @@ DeclareOperation( "ApplyCell",
 
 
 ##
-DeclareOperation( "ApplyCell",
-        [ IsCapCategory, IsCapCategoryCell ] );
-
-##
 DeclareOperation( "CapFunctor",
         [ IsString, IsCapCategory, IsCapCategory, IsFunction, IsFunction ] );
 

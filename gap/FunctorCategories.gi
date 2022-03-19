@@ -312,17 +312,6 @@ end );
 
 ##
 InstallMethod( ApplyCell,
-        "for a CAP category and a CAP cell",
-        [ IsCapCategory, IsCapCategoryCell ],
-        
-  function ( C, cell )
-    
-    return C;
-    
-end );
-
-##
-InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP object",
         [ IsObjectInFunctorCategory, IsCapCategoryObject ],
         
@@ -878,7 +867,7 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
-                    l := List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) )[1];
+                    l := List( u_arg{[ 2 .. Length( u_arg ) ]}, F_or_eta -> ApplyCell( F_or_eta, morB ) )[1];
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
