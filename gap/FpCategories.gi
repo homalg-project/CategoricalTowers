@@ -530,6 +530,14 @@ InstallMethodWithCache( Category,
     
     C!.relations := relations;
     
+    C!.compiler_hints :=
+      rec(
+          category_attribute_names :=
+          [ "SetOfObjects",
+            "SetOfGeneratingMorphisms",
+            ]
+          );
+    
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
