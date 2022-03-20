@@ -502,7 +502,7 @@ InstallMethod( AsObjectInFunctorCategory,
   function ( F )
     local H;
     
-    H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    H := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
     return AsObjectInFunctorCategory( H, F );
     
@@ -624,7 +624,7 @@ InstallMethod( AsMorphismInFunctorCategory,
     
     F := Source( eta );
     
-    H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    H := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
     return AsMorphismInFunctorCategory( H, eta );
     
@@ -2126,7 +2126,7 @@ InstallMethodWithCache( FunctorCategory,
     
     CapCategorySwitchLogicOn( kmat );
     
-    hom := Hom( B, kmat : overhead := false );
+    hom := FunctorCategory( B, kmat : overhead := false );
     
     CapCategorySwitchLogicOn( hom );
     
