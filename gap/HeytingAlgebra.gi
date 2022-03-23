@@ -20,7 +20,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddExponentialOnMorphismsWithGivenExponentials( heyting_algebra,
       function( cat, S, alpha, beta, R )
         
-        return UniqueMorphism( S, R );
+        return UniqueMorphism( cat, S, R );
         
     end );
     
@@ -28,7 +28,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddCartesianEvaluationMorphismWithGivenSource( heyting_algebra,
       function( cat, A, B, Exp_A_BxA )
         
-        return UniqueMorphism( Exp_A_BxA, B);
+        return UniqueMorphism( cat, Exp_A_BxA, B);
         
     end );
     
@@ -36,7 +36,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddCartesianCoevaluationMorphismWithGivenRange( heyting_algebra,
       function( cat, A, B, Exp_B_AxB )
         
-        return UniqueMorphism( A, Exp_B_AxB );
+        return UniqueMorphism( cat, A, Exp_B_AxB );
         
     end );
     
@@ -47,7 +47,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
         
         L := Range( f );
         
-        return UniqueMorphism( A, ExponentialOnObjects( B, L ) );
+        return UniqueMorphism( cat, A, ExponentialOnObjects( B, L ) );
         
     end );
     
@@ -60,7 +60,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
         
         AB := DirectProduct( A, B );
         
-        return UniqueMorphism( AB, C );
+        return UniqueMorphism( cat, AB, C );
         
     end );
     
@@ -68,7 +68,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddCartesianPreComposeMorphismWithGivenObjects( heyting_algebra,
       function( cat, Exp_A_BxExp_B_C, A, B, C, Exp_A_C );
         
-        return UniqueMorphism( Exp_A_BxExp_B_C, Exp_A_C );
+        return UniqueMorphism( cat, Exp_A_BxExp_B_C, Exp_A_C );
         
     end );
     
@@ -76,7 +76,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddCartesianPostComposeMorphismWithGivenObjects( heyting_algebra,
       function( cat, Exp_B_CxExp_A_B, A, B, C, Exp_A_C );
         
-        return UniqueMorphism( Exp_B_CxExp_A_B, Exp_A_C );
+        return UniqueMorphism( cat, Exp_B_CxExp_A_B, Exp_A_C );
         
     end );
     
@@ -84,7 +84,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddDirectProductExponentialCompatibilityMorphismWithGivenObjects( heyting_algebra,
       function( cat, source, L, range )
         
-        return UniqueMorphism( source, range );
+        return UniqueMorphism( cat, source, range );
         
     end );
     
@@ -94,7 +94,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     AddMorphismToDoubleNegationWithGivenDoubleNegation( heyting_algebra,
       function( cat, A, B )
         
-        return UniqueMorphism( A, B );
+        return UniqueMorphism( cat, A, B );
         
     end );
     

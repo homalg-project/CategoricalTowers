@@ -7,22 +7,42 @@
 SetInfoLevel( InfoLocales, 1 );
 
 ##
-InstallMethod( UniqueMorphism,
-        "for two objects in a thin category",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ],
-
-  function( A, B )
-    local C, u;
+InstallOtherMethodForCompilerForCAP( UniqueMorphism,
+        "for a thin category and two objects in a thin category",
+        [ IsCapCategory and IsThinCategory, IsObjectInThinCategory, IsObjectInThinCategory ],
+        
+  function( C, A, B )
     
-    C := CapCategory( A );
+    if not IsIdenticalObj( C, CapCategory( A ) ) then
+        Error( "the first object belong to different category\n" );
+    fi;
     
     if not IsIdenticalObj( C, CapCategory( B ) ) then
-        Error( "the two objects belong to different categories\n" );
+        Error( "the second object belong to different category\n" );
     fi;
     
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), C,
                    A,
                    B );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
+        [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+  function ( input_type )
+
+    return rec( filter := input_type[2].category!.morphism_representation, category := input_type[2].category );
+
+end );
+
+##
+InstallMethod( UniqueMorphism,
+        "for two objects in a thin category",
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+
+  function( A, B )
+    
+    return UniqueMorphism( CapCategory( A ), A, B );
     
 end );
 
@@ -57,7 +77,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddIdentityMorphism( preordered_set,
       function( cat, A )
         
-        return UniqueMorphism( A, A );
+        return UniqueMorphism( cat, A, A );
         
     end );
     
@@ -65,7 +85,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddPreCompose( preordered_set,
       function( cat, u1, u2 )
         
-        return UniqueMorphism( Source( u1 ), Range( u2 ) );
+        return UniqueMorphism( cat, Source( u1 ), Range( u2 ) );
         
     end );
     
@@ -91,7 +111,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
             return fail;
         fi;
         
-        return UniqueMorphism( Source( u1 ), Source( u2 ) );
+        return UniqueMorphism( cat, Source( u1 ), Source( u2 ) );
         
     end );
     
@@ -104,7 +124,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
             return fail;
         fi;
         
-        return UniqueMorphism( Range( u1 ), Range( u2 ) );
+        return UniqueMorphism( cat, Range( u1 ), Range( u2 ) );
         
     end );
     
@@ -112,7 +132,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddInverseForMorphisms( preordered_set,
       function( cat, u )
         
-        return UniqueMorphism( Range( u ), Source( u ) );
+        return UniqueMorphism( cat, Range( u ), Source( u ) );
         
     end );
     
@@ -120,7 +140,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( preordered_set,
       function( cat, A, T )
         
-        return UniqueMorphism( A, T );
+        return UniqueMorphism( cat, A, T );
         
     end );
     
@@ -128,7 +148,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddUniversalMorphismFromInitialObjectWithGivenInitialObject( preordered_set,
       function( cat, A, I )
         
-        return UniqueMorphism( I, A );
+        return UniqueMorphism( cat, I, A );
         
     end );
     
@@ -136,7 +156,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddUniversalMorphismIntoEqualizerWithGivenEqualizer( preordered_set,
       function( cat, D, test_object, tau, E )
         
-        return UniqueMorphism( Source( tau ), E );
+        return UniqueMorphism( cat, Source( tau ), E );
         
     end );
     
@@ -144,7 +164,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddEqualizerFunctorialWithGivenEqualizers( preordered_set,
       function( cat, s, L1, m, L3, r )
         
-        return UniqueMorphism( s, r );
+        return UniqueMorphism( cat, s, r );
         
     end );
     
@@ -152,7 +172,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( preordered_set,
       function( cat, D, test_object, tau, C )
         
-        return UniqueMorphism( C, Range( tau ) );
+        return UniqueMorphism( cat, C, Range( tau ) );
         
     end );
     
@@ -160,7 +180,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddCoequalizerFunctorialWithGivenCoequalizers( preordered_set,
       function( cat, s, L1, m, L3, r )
         
-        return UniqueMorphism( s, r );
+        return UniqueMorphism( cat, s, r );
         
     end );
     

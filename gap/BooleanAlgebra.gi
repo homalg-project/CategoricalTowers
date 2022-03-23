@@ -20,7 +20,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
     AddMorphismFromDoubleNegationWithGivenDoubleNegation( boolean_algebra,
       function( cat, A, B )
         
-        return UniqueMorphism( B, A );
+        return UniqueMorphism( cat, B, A );
         
     end );
     
@@ -28,7 +28,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
     AddMorphismToDoubleConegationWithGivenDoubleConegation( boolean_algebra,
       function( cat, A, B )
         
-        return UniqueMorphism( A, B );
+        return UniqueMorphism( cat, A, B );
         
     end );
     

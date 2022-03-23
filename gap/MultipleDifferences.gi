@@ -347,7 +347,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
     AddMorphismFunction( squash,
       function( new_source, mor, new_range )
         
-        return UniqueMorphism( new_source, new_range );
+        return UniqueMorphism( T, new_source, new_range );
         
     end );
     
