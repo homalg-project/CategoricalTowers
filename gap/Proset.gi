@@ -20,16 +20,9 @@ InstallMethod( UniqueMorphism,
         Error( "the two objects belong to different categories\n" );
     fi;
     
-    u := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( u, C,
-            A,
-            B,
-            IsMonomorphism, true,
-            IsEpimorphism, true
-            );
-    
-    return u;
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), C,
+                   A,
+                   B );
     
 end );
 
