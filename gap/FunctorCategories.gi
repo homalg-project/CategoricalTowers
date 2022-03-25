@@ -312,17 +312,6 @@ end );
 
 ##
 InstallMethod( ApplyCell,
-        "for a CAP category and a CAP cell",
-        [ IsCapCategory, IsCapCategoryCell ],
-        
-  function ( C, cell )
-    
-    return C;
-    
-end );
-
-##
-InstallMethod( ApplyCell,
         "for an object in a Hom-category and a CAP object",
         [ IsObjectInFunctorCategory, IsCapCategoryObject ],
         
@@ -513,7 +502,7 @@ InstallMethod( AsObjectInFunctorCategory,
   function ( F )
     local H;
     
-    H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    H := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
     return AsObjectInFunctorCategory( H, F );
     
@@ -635,7 +624,7 @@ InstallMethod( AsMorphismInFunctorCategory,
     
     F := Source( eta );
     
-    H := Hom( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    H := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
     return AsMorphismInFunctorCategory( H, eta );
     
@@ -878,7 +867,7 @@ InstallMethodWithCache( FunctorCategory,
                         return images_of_generating_morphisms[pos];
                     fi;
                     
-                    l := List( u_arg{[ 2 .. Length( u_arg ) ]}, cat_or_F_or_eta -> ApplyCell( cat_or_F_or_eta, morB ) )[1];
+                    l := List( u_arg{[ 2 .. Length( u_arg ) ]}, F_or_eta -> ApplyCell( F_or_eta, morB ) )[1];
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
@@ -1566,19 +1555,24 @@ InstallMethodWithCache( FunctorCategory,
                 ## but should live in the range category C of the functor category (necessitating requirement (1) above):
                 return HomomorphismStructureOnObjects( Hom,
                                DirectProduct( Hom,
-                                       [ Yoneda( Opposite( B, objB ) ),
+                                       [ ApplyFunctor( Yoneda, Opposite( B, objB ) ),
                                          F ] ),
                                G );
                 
             end );
             
+            ## TODO: FIXME: the following will fail on composed generating morphism (or identities)
             AddMorphismFunction( expFG,
               function ( new_source, morB, new_range )
+                
+                #if IsOne( morB ) then
+                #    return IdentityMorphism( new_source );
+                #fi;
                 
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                new_source,
                                DirectProductFunctorial( Hom,
-                                       [ Yoneda( Opposite( B, morB ) ),
+                                       [ ApplyFunctor( Yoneda, Opposite( B, morB ) ),
                                          IdentityMorphism( Hom, F ) ] ),
                                IdentityMorphism( Hom, G ),
                                new_range );
@@ -1613,7 +1607,7 @@ InstallMethodWithCache( FunctorCategory,
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                source,
                                DirectProductFunctorial( Hom,
-                                       [ IdentityMorphism( Hom, Yoneda( Opposite( B, objB ) ) ),
+                                       [ IdentityMorphism( Hom, ApplyFunctor( Yoneda, Opposite( B, objB ) ) ),
                                          eta ] ),
                                rho,
                                range );
@@ -1715,7 +1709,7 @@ InstallMethodWithCache( FunctorCategory,
                         ## reinterpret t: 1 → G^F(b) := Hom(Y(b) × F, G) ∈ Mor(C) as a natural transformation theta: Y(b) × F → G;
                         theta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
                                          DirectProduct( Hom,
-                                                 [ Yoneda( Opposite( B, b ) ),
+                                                 [ ApplyFunctor( Yoneda, Opposite( B, b ) ),
                                                    F ] ),
                                          G,
                                          ## here we need that the range category C of the functor category coincides with
@@ -1783,7 +1777,7 @@ InstallMethodWithCache( FunctorCategory,
                     ## source = F(b)
                     ## range  = ((F × G)^G)(b)
                     
-                    Yb := Yoneda( Opposite( B, b ) );
+                    Yb := ApplyFunctor( Yoneda, Opposite( B, b ) );
                     
                     YbxG := DirectProduct( Yb, G );
                     FxG := DirectProduct( F, G );
@@ -2137,7 +2131,7 @@ InstallMethodWithCache( FunctorCategory,
     
     CapCategorySwitchLogicOn( kmat );
     
-    hom := Hom( B, kmat : overhead := false );
+    hom := FunctorCategory( B, kmat : overhead := false );
     
     CapCategorySwitchLogicOn( hom );
     
