@@ -88,45 +88,56 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
     
     range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( range_category );
     
-    map := List( [ 1 .. nr_o ], i -> [ ] );
-    
-    for i in [ 1 .. nr_o ] do
-        for j in [ 1 .. nr_m ] do
-            
-            map[i, j] := ZeroMorphism( range_category_of_hom_structure,
-                                 source_summands[i],
-                                 range_summands[j] );
-            
-            if objs[i] = Source( mors[j] ) then
-                map[i, j] := AdditiveInverseForMorphisms( range_category_of_hom_structure,
-                                     HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
-                                             source_summands[i],
-                                             IdentityMorphism( range_category, S_o_vals[i] ),
-                                             R_m_vals[j],
-                                             range_summands[j]
-                                             )
-                                     );
-            fi;
-            
-            if objs[i] = Range( mors[j] ) then
-                map[i, j] := AdditionForMorphisms( range_category_of_hom_structure,
-                                     map[i, j],
-                                     HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
-                                             source_summands[i],
-                                             S_m_vals[j],
-                                             IdentityMorphism( range_category, R_o_vals[i] ),
-                                             range_summands[j]
-                                             ) );
-            fi;
-            
-        od;
+    map :=
+      function( i, j )
         
-    od;
+        if objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
+            
+            return SubtractionForMorphisms( range_category_of_hom_structure,
+                           HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
+                                   source_summands[i],
+                                   S_m_vals[j],
+                                   IdentityMorphism( range_category, R_o_vals[i] ),
+                                   range_summands[j] ),
+                           HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
+                                   source_summands[i],
+                                   IdentityMorphism( range_category, S_o_vals[i] ),
+                                   R_m_vals[j],
+                                   range_summands[j] )
+                           );
+            
+        elif objs[i] = Source( mors[j] ) and not objs[i] = Range( mors[j] ) then
+            
+            return AdditiveInverseForMorphisms( range_category_of_hom_structure,
+                           HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
+                                   source_summands[i],
+                                   IdentityMorphism( range_category, S_o_vals[i] ),
+                                   R_m_vals[j],
+                                   range_summands[j] )
+                           );
+            
+        elif not objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
+            
+            return HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
+                           source_summands[i],
+                           S_m_vals[j],
+                           IdentityMorphism( range_category, R_o_vals[i] ),
+                           range_summands[j] );
+            
+        else
+            
+            return ZeroMorphism( range_category_of_hom_structure,
+                           source_summands[i],
+                           range_summands[j] );
+            
+        fi;
+        
+    end;
     
     return MorphismBetweenDirectSumsWithGivenDirectSums( range_category_of_hom_structure,
                    DirectSum( range_category_of_hom_structure, source_summands ),
                    source_summands,
-                   map,
+                   List( [ 1 .. nr_o ], i -> List( [ 1 .. nr_m ], j -> map( i, j ) ) ),
                    range_summands,
                    DirectSum( range_category_of_hom_structure, range_summands ) );
     
