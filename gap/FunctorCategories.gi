@@ -19,6 +19,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "AssociatorRightToLeftWithGivenTensorProducts",
           "BraidingInverseWithGivenTensorProducts",
           "BraidingWithGivenTensorProducts",
+          "CoastrictionToImage",
+          "CoastrictionToImageWithGivenImageObject",
           "Coequalizer",
           "CoequalizerFunctorialWithGivenCoequalizers",
           "CoevaluationForDualWithGivenTensorProduct",
@@ -55,6 +57,9 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "HorizontalPreCompose",
           "IdentityMorphism",
           "IdentityTwoCell",
+          "ImageEmbedding",
+          "ImageEmbeddingWithGivenImageObject",
+          "ImageObject",
           "InitialObject",
           "InitialObjectFunctorial",
           "InjectionOfCofactorOfCoproduct",
@@ -137,6 +142,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "UniversalMorphismFromCoproductWithGivenCoproduct",
           "UniversalMorphismFromDirectSum",
           "UniversalMorphismFromDirectSumWithGivenDirectSum",
+          "UniversalMorphismFromImage",
+          "UniversalMorphismFromImageWithGivenImageObject",
           "UniversalMorphismFromInitialObject",
           "UniversalMorphismFromInitialObjectWithGivenInitialObject",
           "UniversalMorphismFromPushout",
@@ -251,6 +258,28 @@ InstallOtherMethod( CokernelObjectFunctorialWithGivenCokernelObjects,
   function ( s, alpha, mu, nu, alpha_prime, r )
     
     return CokernelObjectFunctorialWithGivenCokernelObjects( s, alpha, nu, alpha_prime, r );
+    
+end );
+
+##
+InstallOtherMethod( ImageObjectFunctorialWithGivenImageObjects,
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( s, alpha, mu, nu, alpha_prime, r )
+    
+    return ImageObjectFunctorialWithGivenImageObjects( s, alpha, nu, alpha_prime, r );
+    
+end );
+
+##
+InstallOtherMethod( CoimageObjectFunctorialWithGivenCoimageObjects,
+        [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
+          IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function ( s, alpha, mu, nu, alpha_prime, r )
+    
+    return CoimageObjectFunctorialWithGivenCoimageObjects( s, alpha, mu, alpha_prime, r );
     
 end );
 
@@ -1131,7 +1160,10 @@ InstallMethodWithCache( FunctorCategory,
       [ function ( Hom ) SetSource( Hom, B ); end,
         function ( Hom ) SetRange( Hom, C ); end,
           ];
-
+    
+    CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
+    CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
+    
     Hom := CategoryConstructor( :
                    name := name,
                    category_as_first_argument := true,
