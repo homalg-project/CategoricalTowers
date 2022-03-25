@@ -1561,8 +1561,13 @@ InstallMethodWithCache( FunctorCategory,
                 
             end );
             
+            ## TODO: FIXME: the following will fail on composed generating morphism (or identities)
             AddMorphismFunction( expFG,
               function ( new_source, morB, new_range )
+                
+                #if IsOne( morB ) then
+                #    return IdentityMorphism( new_source );
+                #fi;
                 
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                new_source,
