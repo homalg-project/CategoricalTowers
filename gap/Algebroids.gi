@@ -1198,12 +1198,14 @@ InstallMethod( Algebroid,
     
     A!.category_as_first_argument := true;
     
-    A!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingQuiverAlgebra",
-            "BasisPathsByVertexIndex",
-            "HomStructureOnBasisPaths",
-        ],
+    A!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "SetOfObjects",
+             "SetOfGeneratingMorphisms",
+             "UnderlyingQuiverAlgebra",
+             "BasisPathsByVertexIndex",
+             "HomStructureOnBasisPaths",
+             ],
         # EXPERIMENTAL
         precompiled_towers := [
             rec(
