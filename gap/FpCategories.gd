@@ -373,6 +373,9 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY" );
 
 DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_FP_CATEGORY" );
 
+DeclareOperation( "Category",
+        [ IsQuiverAlgebra, IsCapCategory ] );
+
 # do not turn this into an attribute:
 DeclareOperation( "Category",
         [ IsQuiverAlgebra ] );
