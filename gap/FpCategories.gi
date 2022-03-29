@@ -326,8 +326,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     
     Finalize( category );
     
-    SetFilterObj( IdentityFunctor( category ), IsFpCategoryMorphism );
-    
     return category;
     
 end );
@@ -335,7 +333,7 @@ end );
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
   function( fpcategory )
-    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, representative_func, default_range_of_HomStructure, range_category, path;
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, representative_func, path, range_category_of_HomStructure;
     
     quiver_algebra := UnderlyingQuiverAlgebra( fpcategory );
     
@@ -381,11 +379,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
     fi;
     
-    default_range_of_HomStructure := SkeletalFinSets;
-    
-    range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", default_range_of_HomStructure );
-    
-    SetRangeCategoryOfHomomorphismStructure( fpcategory, range_category );
+    range_category_of_HomStructure := RangeCategoryOfHomomorphismStructure( fpcategory );
     
     ##
     AddHomomorphismStructureOnObjects( fpcategory,
@@ -398,7 +392,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
         
-        return ObjectConstructor( range_category, Length( basis_elements ) );
+        return ObjectConstructor( range_category_of_HomStructure, Length( basis_elements ) );
         
     end );
     
@@ -425,7 +419,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         entries := List( basis_a_b, phi -> Position( basis_ap_bp, Paths( elem_alpha * phi * elem_beta )[1] ) );
         
-        return MorphismConstructor( range_category, source, entries, range );
+        return MorphismConstructor( range_category_of_HomStructure, source, entries, range );
         
     end );
     
@@ -433,7 +427,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     AddDistinguishedObjectOfHomomorphismStructure( fpcategory,
       function( fpcategory )
         
-        return ObjectConstructor( range_category, 1 );
+        return ObjectConstructor( range_category_of_HomStructure, 1 );
         
     end );
     
@@ -454,7 +448,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         basis_elements := basis_paths_by_vertex_index[a][b];
         
         return MorphismConstructor(
-                range_category,
+                range_category_of_HomStructure,
                 source,
                 [ Position( basis_elements, Paths( element )[1] ) ],
                 range
@@ -479,10 +473,10 @@ end );
 
 ##
 InstallMethodWithCache( Category,
-        "for a QPA quiver algebra",
-        [ IsQuiverAlgebra ],
+        "for a QPA quiver algebra and a CAP category",
+        [ IsQuiverAlgebra, IsCapCategory ],
         
-  function( A )
+  function( A, range_category_of_HomStructure )
     local domain, parity, quiver, C, relations, rels;
     
     domain := LeftActingDomain( A );
@@ -562,7 +556,24 @@ InstallMethodWithCache( Category,
     C!.Vertices := rec( );
     C!.Arrows := rec( );
     
+    if IsFiniteDimensional( A ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
+        
+    fi;
+    
     return ADD_FUNCTIONS_FOR_FP_CATEGORY( C );
+    
+end );
+
+##
+InstallMethod( Category,
+        "for a QPA quiver algebra",
+        [ IsQuiverAlgebra ],
+        
+  function( A )
+    
+    return Category( A, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", SkeletalFinSets ) );
     
 end );
 
@@ -637,7 +648,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethodWithCache( FreeCategory,
+InstallMethod( FreeCategory,
         "for a QPA quiver",
         [ IsQuiver ],
         
