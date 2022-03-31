@@ -948,28 +948,6 @@ InstallMethodForCompilerForCAP( LimitPair,
 end );
 
 ##
-InstallMethodForCompilerForCAP( Limit,
-        "for a catgory and a list",
-        [ IsCapCategory, IsList ],
-
-  function( cat, diagram )
-    
-    return Limit( cat, diagram[1], diagram[2] );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( ProjectionInFactorOfLimit,
-        "for a catgory, a list, and an integer",
-        [ IsCapCategory, IsList, IsInt ],
-        
-  function( cat, diagram, k )
-    
-    return ProjectionInFactorOfLimit( cat, diagram[1], diagram[2], k );
-    
-end );
-
-##
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         rec(
             LimitPair :=

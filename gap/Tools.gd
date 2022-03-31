@@ -369,14 +369,8 @@ DeclareOperation( "LimitPair",
 #!  The output is the limit object $\mathrm{Limit}$(<A>D</A>) of the diagram <A>D</A>.
 #! @Arguments objs, decorated_mors
 #! @Returns an object
-#! @Group Limit
 DeclareOperation( "Limit",
         [ IsList, IsList ] );
-
-#! @Arguments cat, D
-#! @Group Limit
-DeclareOperation( "Limit",
-        [ IsCapCategory, IsList ] );
 
 #! @Description
 #!  The input is
@@ -390,14 +384,8 @@ DeclareOperation( "Limit",
 #!  into the <A>k</A>-th objects $P_k =$<A>objs</A>[<A>k</A>].
 #! @Arguments objects, decorated_morphisms, k
 #! @Returns a morphism in $\mathrm{Hom}( P, P_k )$
-#! @Group ProjectionInFactorOfLimit
 DeclareOperation( "ProjectionInFactorOfLimit",
                   [ IsList, IsList, IsInt ] );
-
-#! @Arguments cat, D, k
-#! @Group ProjectionInFactorOfLimit
-DeclareOperation( "ProjectionInFactorOfLimit",
-                  [ IsCapCategory, IsList, IsInt ] );
 
 #! @Description
 #!  The input is
