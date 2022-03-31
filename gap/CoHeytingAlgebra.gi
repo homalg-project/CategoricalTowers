@@ -58,7 +58,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
         
         C := Range( f );
         
-        BC := Coproduct( B, C );
+        BC := Coproduct( cat, [ B, C ] );
         
         return UniqueMorphism( cat, A, BC );
         
