@@ -66,6 +66,44 @@ InstallGlobalFunction( UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUC
 
 InstallValue( CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD, rec(
 
+ImageObjectFunctorial := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  input_arguments_names := [ "cat", "alpha", "nu", "alphap" ],
+  return_type := "morphism",
+  output_source_getter_string := "ImageObject( cat, alpha )",
+  output_range_getter_string := "ImageObject( cat, alphap )",
+  with_given_object_position := "both",
+  dual_operation := "CoimageObjectFunctorial",
+  dual_arguments_reversed := true,
+),
+
+ImageObjectFunctorialWithGivenImageObjects := rec(
+  filter_list := [ "category", "object", "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "I", "alpha", "nu", "alphap", "Ip" ], [ "I", "Ip" ] ],
+  return_type := "morphism",
+  dual_operation := "CoimageObjectFunctorialWithGivenCoimageObjects",
+  dual_arguments_reversed := true,
+),
+
+CoimageObjectFunctorial := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  input_arguments_names := [ "cat", "alpha", "mu", "alphap" ],
+  return_type := "morphism",
+  output_source_getter_string := "CoimageObject( cat, alpha )",
+  output_range_getter_string := "CoimageObject( cat, alphap )",
+  with_given_object_position := "both",
+  dual_operation := "ImageObjectFunctorial",
+  dual_arguments_reversed := true,
+),
+
+CoimageObjectFunctorialWithGivenCoimageObjects := rec(
+  filter_list := [ "category", "object", "morphism", "morphism", "morphism", "object" ],
+  io_type := [ [ "C", "alpha", "mu", "alphap", "Cp" ], [ "C", "Cp" ] ],
+  return_type := "morphism",
+  dual_operation := "ImageObjectFunctorialWithGivenImageObjects",
+  dual_arguments_reversed := true,
+),
+
 PreInverse := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
@@ -486,6 +524,28 @@ end );
 # categorical methods derivations:
 #
 ####################################
+
+##
+AddDerivationToCAP( ImageObjectFunctorialWithGivenImageObjects,
+                    
+  function( cat, I, alpha, nu, alphap, Ip )
+    
+    return LiftAlongMonomorphism( cat,
+                   ImageEmbeddingWithGivenImageObject( cat, alphap, Ip ),
+                   PreCompose( cat, ImageEmbeddingWithGivenImageObject( cat, alpha, I ), nu ) );
+    
+end : Description := "ImageObjectFunctorialWithGivenImageObjects using the universality" );
+
+##
+AddDerivationToCAP( CoimageObjectFunctorialWithGivenCoimageObjects,
+                    
+  function( cat, C, alpha, mu, alphap, Cp )
+    
+    return ColiftAlongEpimorphism( cat,
+                   CoimageProjectionWithGivenCoimageObject( cat, alpha, C ),
+                   PreCompose( cat, mu, CoimageProjectionWithGivenCoimageObject( cat, alphap, Cp ) ) );
+    
+end : Description := "CoimageObjectFunctorialWithGivenCoimageObjects using the universality" );
 
 ##
 AddDerivationToCAP( PreInverse,
