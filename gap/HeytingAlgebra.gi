@@ -66,7 +66,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddCartesianPreComposeMorphismWithGivenObjects( heyting_algebra,
-      function( cat, Exp_A_BxExp_B_C, A, B, C, Exp_A_C );
+      function( cat, Exp_A_BxExp_B_C, A, B, C, Exp_A_C )
         
         return UniqueMorphism( cat, Exp_A_BxExp_B_C, Exp_A_C );
         
@@ -74,7 +74,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     
     ##
     AddCartesianPostComposeMorphismWithGivenObjects( heyting_algebra,
-      function( cat, Exp_B_CxExp_A_B, A, B, C, Exp_A_C );
+      function( cat, Exp_B_CxExp_A_B, A, B, C, Exp_A_C )
         
         return UniqueMorphism( cat, Exp_B_CxExp_A_B, Exp_A_C );
         

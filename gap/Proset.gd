@@ -52,6 +52,19 @@ DeclareOperation( "AreIsomorphicForObjectsIfIsHomSetInhabited",
 DeclareOperation( "UniqueMorphism",
         [ IsObjectInThinCategory, IsObjectInThinCategory ] );
 
+##
+CapJitAddTypeSignature( "UniqueMorphism",
+        [ IsCapCategory,
+          IsObjectInThinCategory,
+          IsObjectInThinCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsThinCategory( input_types[1].category ) );
+    
+    return rec( filter := input_types[1].category!.morphism_representation,
+                category := input_types[1].category );
+end );
+
 # @Section Tools
 
 DeclareGlobalVariable( "PREORDERED_SET_METHOD_NAME_RECORD" );
