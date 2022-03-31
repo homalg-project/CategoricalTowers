@@ -2160,7 +2160,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, C )
     
-    return FunctorCategory( OppositeFpCategory( B ), C );
+    return FunctorCategory( OppositeFpCategory( B : FinalizeCategory := true ), C );
     
 end );
 
@@ -2171,7 +2171,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, A )
     
-    return FunctorCategory( OppositeAlgebroid( B ), A );
+    return FunctorCategory( OppositeAlgebroid( B : FinalizeCategory := true ), A );
     
 end );
 
@@ -2194,7 +2194,7 @@ InstallMethod( CategoryOfInternalCategories,
   function ( C )
     local Delta2, sC, membership_function;
     
-    Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
+    Delta2 := SimplicialCategoryTruncatedInDegree( 2 : FinalizeCategory := true );
     
     sC := PreSheaves( Delta2, C );
     
