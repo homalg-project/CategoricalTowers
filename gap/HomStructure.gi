@@ -298,7 +298,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
       ##
       AddBasisOfExternalHom( Hom,
         function ( Hom, S, R )
-          local range_category, range_category_of_hom_structure, iota, D, S_o_vals, R_o_vals, summands, nr_o, direct_sum, iotas, basis;
+          local range_category, range_category_of_hom_structure, iota, D, S_o_vals, R_o_vals, nr_o, summands, direct_sum, prjs, cmps, iotas, basis;
           
           range_category := Range( Hom );
           
@@ -322,22 +322,22 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
           
           direct_sum := Range( iota ); # is equal to DirectSum( summands )
           
-          summands := List( [ 1 .. Length( S_o_vals ) ],
-                            i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( range_category_of_hom_structure,
-                                    summands,
-                                    i,
-                                    direct_sum ) );
+          prjs := List( [ 1 .. Length( S_o_vals ) ],
+                        i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( range_category_of_hom_structure,
+                                summands,
+                                i,
+                                direct_sum ) );
           
-          iotas := List( summands,
-                         s -> PreCompose( range_category_of_hom_structure,
-                                 iota,
-                                 s ) );
+          cmps := List( prjs,
+                        s -> PreCompose( range_category_of_hom_structure,
+                                iota,
+                                s ) );
           
           basis := BasisOfExternalHom( range_category_of_hom_structure,
                            D,
                            Source( iota ) );
           
-          iotas := List( iotas,
+          iotas := List( cmps,
                          iota -> List( basis,
                                  b -> PreCompose( range_category_of_hom_structure,
                                          b,
