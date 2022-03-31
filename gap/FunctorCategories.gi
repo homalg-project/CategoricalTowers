@@ -1582,7 +1582,7 @@ InstallMethodWithCache( FunctorCategory,
             return AsObjectInFunctorCategory( Hom, expFG );
             
         end );
-
+        
         ##
         AddExponentialOnMorphismsWithGivenExponentials( Hom,
           function( Hom, source, eta, rho, range )
