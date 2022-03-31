@@ -358,15 +358,21 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
       
       ##
       AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
-        { Hom, eta, B } -> CoefficientsOfMorphism( eta )
-      );
+        function( Hom, eta, B )
+          local iota, range_category_of_hom_structure;
+          
+          iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom, eta );
+          
+          range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+          
+          return CoefficientsOfMorphismWithGivenBasisOfExternalHom( range_category_of_hom_structure,
+                         iota,
+                         BasisOfExternalHom( range_category_of_hom_structure,
+                                 Source( iota ),
+                                 Range( iota ) ) );
+          
+      end );
       
-      ##
-      InstallMethod( CoefficientsOfMorphism,
-                [ IsMorphismInFunctorCategory and MorphismFilter( Hom ) ],
-        eta -> CoefficientsOfMorphism( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( eta ) )
-      );
-     
     fi;
     
 end );
