@@ -1388,8 +1388,13 @@ InstallMethodWithCache( FunctorCategory,
             ##
             AddHomomorphismStructureOnObjects( Hom,
               function ( Hom, F, G )
+                local hom_diagram;
                 
-                return Limit( RangeCategoryOfHomomorphismStructure( Hom ), ExternalHomDiagram( Hom, F, G ) );
+                hom_diagram := ExternalHomDiagram( Hom, F, G );
+                
+                return Limit( RangeCategoryOfHomomorphismStructure( Hom ),
+                              hom_diagram[1],
+                              hom_diagram[2] );
                 
             end );
             
@@ -1414,11 +1419,13 @@ InstallMethodWithCache( FunctorCategory,
                 hom_diagram := ExternalHomDiagram( Hom, Source( eta ), Range( eta ) );
                 
                 hom := Limit( range_category_of_hom_structure,
-                              hom_diagram );
+                              hom_diagram[1],
+                              hom_diagram[2] );
                 
                 prjs := List( [ 1 .. Length( SetOfObjects( Source( Hom ) ) ) ],
                               i -> ProjectionInFactorOfLimit( range_category_of_hom_structure,
-                                      hom_diagram,
+                                      hom_diagram[1],
+                                      hom_diagram[2],
                                       i ) );
                 
                 emb := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
@@ -1435,7 +1442,7 @@ InstallMethodWithCache( FunctorCategory,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
               function ( Hom, F, G, iota )
-                local range_category, range_category_of_hom_structure, F_o_vals, G_o_vals, hom_diagram;
+                local range_category, range_category_of_hom_structure, F_o_vals, G_o_vals, hom_diagram, o, etas;
                 
                 range_category := Range( Hom );
                 
@@ -1447,19 +1454,24 @@ InstallMethodWithCache( FunctorCategory,
                 
                 hom_diagram := ExternalHomDiagram( Hom, F, G );
                 
-                return
-                  AsMorphismInFunctorCategory(
-                          F,
-                          ListN( F_o_vals,
-                                 G_o_vals,
-                                 List( [ 1 .. Length( F_o_vals ) ],
-                                       i -> PreCompose( range_category_of_hom_structure,
-                                               iota,
-                                               ProjectionInFactorOfLimit( range_category_of_hom_structure,
-                                                       hom_diagram,
-                                                       i ) ) ),
-                                 { F_o, G_o, eta } -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( range_category, F_o, G_o, eta ) ),
-                          G );
+                o := Length( SetOfObjects( Source( Hom ) ) );
+                
+                etas := List( [ 1 .. o ],
+                              i -> PreCompose( range_category_of_hom_structure,
+                                      iota,
+                                      ProjectionInFactorOfLimit( range_category_of_hom_structure,
+                                              hom_diagram[1],
+                                              hom_diagram[2],
+                                              i ) ) );
+                
+                return AsMorphismInFunctorCategory(
+                               F,
+                               List( [ 1 .. o ],
+                                     i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( range_category,
+                                             F_o_vals[i],
+                                             G_o_vals[i],
+                                             etas[i] ) ),
+                               G );
                 
             end );
             
@@ -1478,11 +1490,13 @@ InstallMethodWithCache( FunctorCategory,
                 hom_diagram_source := ExternalHomDiagram( Hom, Range( eta ), Source( rho ) );
                 
                 hom_source := Limit( range_category_of_hom_structure,
-                                     hom_diagram_source );
+                                     hom_diagram_source[1],
+                                     hom_diagram_source[2] );
                 
                 prjs_source := List( [ 1 .. o ],
                                      i -> ProjectionInFactorOfLimit( range_category_of_hom_structure,
-                                             hom_diagram_source,
+                                             hom_diagram_source[1],
+                                             hom_diagram_source[2],
                                              i ) );
                 
                 emb_source := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
@@ -1493,11 +1507,13 @@ InstallMethodWithCache( FunctorCategory,
                 hom_diagram_range := ExternalHomDiagram( Hom, Source( eta ), Range( rho ) );
                 
                 hom_range := Limit( range_category_of_hom_structure,
-                                    hom_diagram_range );
+                                    hom_diagram_range[1],
+                                    hom_diagram_range[2] );
                 
                 prjs_range := List( [ 1 .. o ],
                                     i -> ProjectionInFactorOfLimit( range_category_of_hom_structure,
-                                            hom_diagram_range,
+                                            hom_diagram_range[1],
+                                            hom_diagram_range[2],
                                             i ) );
                 
                 emb_range := UniversalMorphismIntoDirectProduct( range_category_of_hom_structure,
@@ -1582,7 +1598,7 @@ InstallMethodWithCache( FunctorCategory,
             return AsObjectInFunctorCategory( Hom, expFG );
             
         end );
-
+        
         ##
         AddExponentialOnMorphismsWithGivenExponentials( Hom,
           function( Hom, source, eta, rho, range )
@@ -2160,7 +2176,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, C )
     
-    return FunctorCategory( OppositeFpCategory( B ), C );
+    return FunctorCategory( OppositeFpCategory( B : FinalizeCategory := true ), C );
     
 end );
 
@@ -2171,7 +2187,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, A )
     
-    return FunctorCategory( OppositeAlgebroid( B ), A );
+    return FunctorCategory( OppositeAlgebroid( B : FinalizeCategory := true ), A );
     
 end );
 
@@ -2194,7 +2210,7 @@ InstallMethod( CategoryOfInternalCategories,
   function ( C )
     local Delta2, sC, membership_function;
     
-    Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
+    Delta2 := SimplicialCategoryTruncatedInDegree( 2 : FinalizeCategory := true );
     
     sC := PreSheaves( Delta2, C );
     
