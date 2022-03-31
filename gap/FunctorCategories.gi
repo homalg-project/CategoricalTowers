@@ -1442,7 +1442,7 @@ InstallMethodWithCache( FunctorCategory,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
               function ( Hom, F, G, iota )
-                local range_category, range_category_of_hom_structure, F_o_vals, G_o_vals, hom_diagram;
+                local range_category, range_category_of_hom_structure, F_o_vals, G_o_vals, hom_diagram, o, etas;
                 
                 range_category := Range( Hom );
                 
@@ -1454,20 +1454,24 @@ InstallMethodWithCache( FunctorCategory,
                 
                 hom_diagram := ExternalHomDiagram( Hom, F, G );
                 
-                return
-                  AsMorphismInFunctorCategory(
-                          F,
-                          ListN( F_o_vals,
-                                 G_o_vals,
-                                 List( [ 1 .. Length( F_o_vals ) ],
-                                       i -> PreCompose( range_category_of_hom_structure,
-                                               iota,
-                                               ProjectionInFactorOfLimit( range_category_of_hom_structure,
-                                                       hom_diagram[1],
-                                                       hom_diagram[2],
-                                                       i ) ) ),
-                                 { F_o, G_o, eta } -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( range_category, F_o, G_o, eta ) ),
-                          G );
+                o := Length( SetOfObjects( Source( Hom ) ) );
+                
+                etas := List( [ 1 .. o ],
+                              i -> PreCompose( range_category_of_hom_structure,
+                                      iota,
+                                      ProjectionInFactorOfLimit( range_category_of_hom_structure,
+                                              hom_diagram[1],
+                                              hom_diagram[2],
+                                              i ) ) );
+                
+                return AsMorphismInFunctorCategory(
+                               F,
+                               List( [ 1 .. o ],
+                                     i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( range_category,
+                                             F_o_vals[i],
+                                             G_o_vals[i],
+                                             etas[i] ) ),
+                               G );
                 
             end );
             
