@@ -47,7 +47,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
         
         L := Range( f );
         
-        return UniqueMorphism( cat, A, ExponentialOnObjects( B, L ) );
+        return UniqueMorphism( cat, A, ExponentialOnObjects( cat, B, L ) );
         
     end );
     

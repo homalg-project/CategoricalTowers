@@ -47,7 +47,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
         
         A := Source( g );
         
-        return UniqueMorphism( cat, CoexponentialOnObjects( A, B ), C );
+        return UniqueMorphism( cat, CoexponentialOnObjects( cat, A, B ), C );
         
     end );
     
