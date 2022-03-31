@@ -1171,8 +1171,11 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddIsLiftableAlongMonomorphism( Hom,
           function ( Hom, eta, rho )
+            local range_category;
             
-            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsLiftableAlongMonomorphism( eta( object ), rho( object ) ) );
+            range_category := Range( Hom );
+            
+            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsLiftableAlongMonomorphism( range_category, eta( object ), rho( object ) ) );
             
         end );
         
@@ -1183,8 +1186,11 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddIsColiftableAlongEpimorphism( Hom,
           function ( Hom, eta, rho )
+            local range_category;
             
-            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsColiftableAlongEpimorphism( eta( object ), rho( object ) ) );
+            range_category := Range( Hom );
+            
+            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsColiftableAlongEpimorphism( range_category, eta( object ), rho( object ) ) );
             
         end );
         
@@ -1278,7 +1284,7 @@ InstallMethodWithCache( FunctorCategory,
               ForAll( arrows,
                            function ( m )
                              return
-                               IsEqualForMorphisms(
+                               IsEqualForMorphisms( C,
                                        PreCompose( C, S( m ), eta( Range( m ) ) ),
                                        PreCompose( C, eta( Source( m ) ), T( m ) ) );
                            end );
