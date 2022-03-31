@@ -1895,20 +1895,20 @@ InstallMethodWithCache( FunctorCategory,
       SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
       
       AddIsProjective( Hom,
-        { Hom, F } -> IsProjectiveRepresentation(
+        { Hom, F } -> IsProjectiveRepresentation( Hom,
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                       )
       );
       
       AddIsInjective( Hom,
-        { Hom, F } -> IsInjectiveRepresentation(
+        { Hom, F } -> IsInjectiveRepresentation( Hom,
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                       )
       );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
         { Hom, F } -> ConvertToCellInFunctorCategory(
-                        EpimorphismFromSomeProjectiveObject(
+                        EpimorphismFromSomeProjectiveObject( Hom,
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                         )
                       )
@@ -1916,7 +1916,7 @@ InstallMethodWithCache( FunctorCategory,
       
       AddMonomorphismIntoSomeInjectiveObject( Hom,
         { Hom, F } -> ConvertToCellInFunctorCategory(
-                        MonomorphismIntoSomeInjectiveObject(
+                        MonomorphismIntoSomeInjectiveObject( Hom,
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                         )
                       )
@@ -1925,7 +1925,7 @@ InstallMethodWithCache( FunctorCategory,
       AddProjectiveLift( Hom,
         { Hom, alpha, epi } ->
             ConvertToCellInFunctorCategory(
-            ProjectiveLift(
+            ProjectiveLift( Hom,
               ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
               ConvertToCellInCategoryOfQuiverRepresentations( epi )
             )
@@ -1935,7 +1935,7 @@ InstallMethodWithCache( FunctorCategory,
       AddInjectiveColift( Hom,
         { Hom, mono, alpha } ->
             ConvertToCellInFunctorCategory(
-            InjectiveColift(
+            InjectiveColift( Hom,
               ConvertToCellInCategoryOfQuiverRepresentations( mono ),
               ConvertToCellInCategoryOfQuiverRepresentations( alpha )
             )
