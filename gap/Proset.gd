@@ -23,7 +23,7 @@ DeclareCategory( "IsObjectInThinCategory",
 #!  The &GAP; category of morphisms in a thin &CAP; category.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInThinCategory",
-                 IsCapCategoryMorphism );
+                 IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism );
 
 #! @Section GAP Properties
 

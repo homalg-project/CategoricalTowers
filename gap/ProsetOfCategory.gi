@@ -256,7 +256,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             return """
                 function( input_arguments )
                     
-                    return UniqueMorphism( top_source, top_range );
+                    return UniqueMorphism( cat, top_source, top_range );
                     
                 end
             """;
