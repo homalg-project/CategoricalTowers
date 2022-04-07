@@ -659,118 +659,118 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, hoisted_38_1, hoisted_39_1, hoisted_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, hoisted_44_1, hoisted_45_1, hoisted_46_1, hoisted_47_1, hoisted_48_1, hoisted_49_1, hoisted_50_1, hoisted_51_1, hoisted_52_1, hoisted_53_1, hoisted_54_1, hoisted_55_1, hoisted_56_1, hoisted_57_1, hoisted_58_1, hoisted_59_1, hoisted_60_1, hoisted_61_1, hoisted_62_1, hoisted_63_1, hoisted_64_1, hoisted_65_1, hoisted_66_1, deduped_67_1, deduped_68_1, deduped_69_1, deduped_70_1, deduped_71_1, deduped_72_1, deduped_73_1, deduped_74_1, deduped_75_1, deduped_76_1, deduped_77_1, deduped_78_1, deduped_79_1, deduped_80_1, deduped_81_1, deduped_82_1, deduped_83_1, deduped_84_1, deduped_85_1, deduped_86_1, deduped_87_1, deduped_88_1, deduped_89_1, deduped_90_1, deduped_91_1, deduped_92_1, deduped_93_1, deduped_94_1, deduped_95_1, deduped_96_1, deduped_97_1, deduped_98_1, deduped_99_1, deduped_100_1, deduped_101_1, deduped_102_1, deduped_103_1, deduped_104_1, deduped_105_1;
-    deduped_105_1 := UnderlyingCategory( cat_1 );
-    deduped_104_1 := UnderlyingMorphism( arg2_1 );
-    deduped_103_1 := MorphismMatrix( UnderlyingMorphism( arg3_1 ) );
-    deduped_102_1 := MorphismMatrix( deduped_104_1 );
-    deduped_101_1 := UnderlyingCategory( deduped_105_1 );
-    deduped_100_1 := CorelationMorphism( Source( arg3_1 ) );
-    deduped_99_1 := RelationMorphism( Range( arg3_1 ) );
-    deduped_98_1 := CorelationMorphism( Source( arg2_1 ) );
-    deduped_97_1 := MorphismMatrix( deduped_98_1 );
-    deduped_96_1 := MorphismMatrix( deduped_100_1 );
-    deduped_95_1 := MorphismMatrix( deduped_99_1 );
-    deduped_94_1 := UnderlyingQuiverAlgebra( deduped_101_1 );
-    deduped_93_1 := BasisPathsByVertexIndex( deduped_101_1 );
-    deduped_92_1 := UnderlyingRing( RangeCategoryOfHomomorphismStructure( deduped_105_1 ) );
-    deduped_91_1 := ObjectList( Source( deduped_104_1 ) );
-    deduped_90_1 := ObjectList( Source( deduped_98_1 ) );
-    deduped_89_1 := ObjectList( Source( deduped_100_1 ) );
-    deduped_88_1 := ObjectList( Source( deduped_99_1 ) );
-    deduped_87_1 := ZeroImmutable( deduped_94_1 );
-    deduped_86_1 := ObjectList( Range( deduped_100_1 ) );
-    deduped_85_1 := ObjectList( Range( deduped_99_1 ) );
-    deduped_84_1 := Length( ObjectList( Range( deduped_104_1 ) ) );
-    deduped_83_1 := ObjectList( Range( deduped_98_1 ) );
-    deduped_82_1 := [ 1 .. Length( deduped_91_1 ) ];
-    deduped_81_1 := Length( deduped_89_1 );
-    deduped_80_1 := Length( deduped_88_1 );
+    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, hoisted_38_1, hoisted_39_1, hoisted_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, hoisted_44_1, hoisted_45_1, hoisted_46_1, hoisted_47_1, hoisted_48_1, hoisted_49_1, hoisted_50_1, hoisted_51_1, hoisted_52_1, hoisted_53_1, hoisted_54_1, hoisted_55_1, hoisted_56_1, hoisted_57_1, hoisted_58_1, hoisted_59_1, hoisted_60_1, hoisted_61_1, hoisted_62_1, hoisted_63_1, hoisted_64_1, hoisted_65_1, hoisted_66_1, hoisted_67_1, hoisted_68_1, deduped_69_1, deduped_70_1, deduped_71_1, deduped_72_1, deduped_73_1, deduped_74_1, deduped_75_1, deduped_76_1, deduped_77_1, deduped_78_1, deduped_79_1, deduped_80_1, deduped_81_1, deduped_82_1, deduped_83_1, deduped_84_1, deduped_85_1, deduped_86_1, deduped_87_1, deduped_88_1, deduped_89_1, deduped_90_1, deduped_91_1, deduped_92_1, deduped_93_1, deduped_94_1, deduped_95_1, deduped_96_1, deduped_97_1, deduped_98_1, deduped_99_1, deduped_100_1, deduped_101_1, deduped_102_1, deduped_103_1, deduped_104_1, deduped_105_1, deduped_106_1, deduped_107_1;
+    deduped_107_1 := UnderlyingCategory( cat_1 );
+    deduped_106_1 := UnderlyingMorphism( arg2_1 );
+    deduped_105_1 := MorphismMatrix( UnderlyingMorphism( arg3_1 ) );
+    deduped_104_1 := UnderlyingCategory( deduped_107_1 );
+    deduped_103_1 := CorelationMorphism( Source( arg3_1 ) );
+    deduped_102_1 := MorphismMatrix( deduped_106_1 );
+    deduped_101_1 := RelationMorphism( Range( arg3_1 ) );
+    deduped_100_1 := CorelationMorphism( Source( arg2_1 ) );
+    deduped_99_1 := MorphismMatrix( deduped_100_1 );
+    deduped_98_1 := MorphismMatrix( deduped_103_1 );
+    deduped_97_1 := MorphismMatrix( deduped_101_1 );
+    deduped_96_1 := UnderlyingQuiverAlgebra( deduped_104_1 );
+    deduped_95_1 := BasisPathsByVertexIndex( deduped_104_1 );
+    deduped_94_1 := UnderlyingRing( RangeCategoryOfHomomorphismStructure( deduped_107_1 ) );
+    deduped_93_1 := ObjectList( Source( deduped_106_1 ) );
+    deduped_92_1 := ObjectList( Source( deduped_100_1 ) );
+    deduped_91_1 := ObjectList( Source( deduped_103_1 ) );
+    deduped_90_1 := ObjectList( Source( deduped_101_1 ) );
+    deduped_89_1 := ZeroImmutable( deduped_96_1 );
+    deduped_88_1 := ObjectList( Range( deduped_103_1 ) );
+    deduped_87_1 := ObjectList( Range( deduped_101_1 ) );
+    deduped_86_1 := Length( ObjectList( Range( deduped_106_1 ) ) );
+    deduped_85_1 := ObjectList( Range( deduped_100_1 ) );
+    deduped_84_1 := [ 1 .. Length( deduped_93_1 ) ];
+    deduped_83_1 := Length( deduped_91_1 );
+    deduped_82_1 := Length( deduped_90_1 );
+    deduped_81_1 := List( deduped_90_1, function ( logic_new_func_x_2 )
+            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    deduped_80_1 := List( deduped_87_1, UnderlyingVertex );
     deduped_79_1 := List( deduped_88_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_78_1 := List( deduped_85_1, UnderlyingVertex );
-    deduped_77_1 := List( deduped_86_1, function ( logic_new_func_x_2 )
+    deduped_78_1 := List( deduped_87_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_76_1 := Length( deduped_85_1 );
-    deduped_75_1 := List( deduped_85_1, function ( logic_new_func_x_2 )
-            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
-        end );
-    deduped_74_1 := [ 1 .. Length( deduped_90_1 ) ];
-    deduped_73_1 := [ 1 .. deduped_80_1 ];
-    deduped_72_1 := [ 1 .. Length( deduped_86_1 ) ];
-    deduped_71_1 := [ 1 .. deduped_76_1 ];
-    deduped_70_1 := [ 1 .. Length( deduped_83_1 ) ];
-    deduped_69_1 := Length( Concatenation( deduped_85_1, deduped_86_1 ) );
-    deduped_68_1 := [ 1 .. deduped_69_1 ];
-    hoisted_30_1 := deduped_86_1;
-    hoisted_29_1 := deduped_85_1;
-    hoisted_4_1 := List( deduped_93_1, function ( logic_new_func_list_2 )
+    deduped_77_1 := Length( deduped_87_1 );
+    deduped_76_1 := [ 1 .. Length( deduped_92_1 ) ];
+    deduped_75_1 := [ 1 .. deduped_82_1 ];
+    deduped_74_1 := [ 1 .. Length( deduped_88_1 ) ];
+    deduped_73_1 := [ 1 .. deduped_77_1 ];
+    deduped_72_1 := [ 1 .. Length( deduped_85_1 ) ];
+    deduped_71_1 := Length( Concatenation( deduped_87_1, deduped_88_1 ) );
+    deduped_70_1 := [ 1 .. deduped_71_1 ];
+    hoisted_32_1 := deduped_88_1;
+    hoisted_31_1 := deduped_87_1;
+    hoisted_6_1 := List( deduped_95_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Length );
         end );
-    deduped_67_1 := Sum( Concatenation( List( deduped_91_1, function ( logic_new_func_x_2 )
+    deduped_69_1 := Sum( Concatenation( List( deduped_93_1, function ( logic_new_func_x_2 )
                 local hoisted_1_2;
-                hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                return Concatenation( List( hoisted_29_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                return Concatenation( List( hoisted_31_1, function ( logic_new_func_x_3 )
                           return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                      end ), List( hoisted_30_1, function ( logic_new_func_x_3 )
+                      end ), List( hoisted_32_1, function ( logic_new_func_x_3 )
                           return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                       end ) );
             end ) ) );
-    hoisted_66_1 := deduped_74_1;
-    hoisted_58_1 := Concatenation( deduped_78_1, List( deduped_86_1, UnderlyingVertex ) );
-    hoisted_25_1 := deduped_94_1;
-    hoisted_2_1 := deduped_68_1;
-    hoisted_65_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
+    hoisted_68_1 := deduped_76_1;
+    hoisted_60_1 := Concatenation( deduped_80_1, List( deduped_88_1, UnderlyingVertex ) );
+    hoisted_27_1 := deduped_96_1;
+    hoisted_4_1 := deduped_70_1;
+    hoisted_67_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_58_1[logic_new_func_x_2] );
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_60_1[logic_new_func_x_2] );
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return deduped_87_1;
+                        return deduped_89_1;
                     fi;
                     return;
                 end );
         end );
-    hoisted_64_1 := List( deduped_97_1, function ( logic_new_func_list_2 )
+    hoisted_66_1 := List( deduped_99_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
-    hoisted_5_1 := Concatenation( deduped_75_1, deduped_77_1 );
-    hoisted_63_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
+    hoisted_7_1 := Concatenation( deduped_78_1, deduped_79_1 );
+    hoisted_65_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_7_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return hoisted_5_1[logic_new_func_x_3];
+                        return hoisted_7_1[logic_new_func_x_3];
                     fi;
                     return;
                 end );
         end );
-    hoisted_62_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
+    hoisted_64_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_7_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     return hoisted_1_2;
                 end );
         end );
-    hoisted_61_1 := List( deduped_97_1, function ( logic_new_func_x_2 )
+    hoisted_63_1 := List( deduped_99_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                 end );
         end );
-    hoisted_60_1 := List( deduped_97_1, function ( logic_new_func_x_2 )
+    hoisted_62_1 := List( deduped_99_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                 end );
         end );
-    hoisted_59_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
+    hoisted_61_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_25_1, hoisted_58_1[logic_new_func_x_2] ) );
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_27_1, hoisted_60_1[logic_new_func_x_2] ) );
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
@@ -779,166 +779,166 @@ function ( cat_1, arg2_1, arg3_1 )
                     return;
                 end );
         end );
-    hoisted_55_1 := List( deduped_90_1, function ( logic_new_func_x_2 )
+    hoisted_57_1 := List( deduped_92_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    hoisted_56_1 := List( deduped_74_1, function ( logic_new_func_x_2 )
+    hoisted_58_1 := List( deduped_76_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_55_1[logic_new_func_x_2]];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_5_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_57_1[logic_new_func_x_2]];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_7_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_57_1 := List( deduped_74_1, function ( logic_new_func_x_2 )
+    hoisted_59_1 := List( deduped_76_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_56_1[logic_new_func_x_2];
-            return Sum( List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_58_1[logic_new_func_x_2];
+            return Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
                       return hoisted_1_2[logic_new_func_x_3];
                   end ) );
         end );
-    hoisted_54_1 := List( deduped_97_1, function ( logic_new_func_x_2 )
+    hoisted_56_1 := List( deduped_99_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                 end );
         end );
-    hoisted_52_1 := List( deduped_83_1, function ( logic_new_func_x_2 )
+    hoisted_54_1 := List( deduped_85_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    hoisted_53_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
+    hoisted_55_1 := List( deduped_72_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_52_1[logic_new_func_x_2]];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_5_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_54_1[logic_new_func_x_2]];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_7_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_51_1 := deduped_89_1;
-    hoisted_50_1 := deduped_88_1;
-    hoisted_49_1 := HomStructureOnBasisPaths( deduped_101_1 );
-    hoisted_20_1 := deduped_87_1;
-    hoisted_26_1 := List( deduped_72_1, function ( logic_new_func_x_2 )
-            return hoisted_20_1;
+    hoisted_53_1 := deduped_91_1;
+    hoisted_52_1 := deduped_90_1;
+    hoisted_51_1 := HomStructureOnBasisPaths( deduped_104_1 );
+    hoisted_22_1 := deduped_89_1;
+    hoisted_28_1 := List( deduped_74_1, function ( logic_new_func_x_2 )
+            return hoisted_22_1;
         end );
-    hoisted_48_1 := UnionOfRowsListList( deduped_69_1, [ UnionOfColumnsListList( deduped_80_1, [ List( deduped_95_1, function ( logic_new_func_new_row_2 )
+    hoisted_50_1 := UnionOfRowsListList( deduped_71_1, [ UnionOfColumnsListList( deduped_82_1, [ List( deduped_97_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
-                    end ), List( deduped_73_1, function ( logic_new_func_x_2 )
-                        return hoisted_26_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_81_1, [ List( deduped_103_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_75_1, function ( logic_new_func_x_2 )
+                        return hoisted_28_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_83_1, [ List( deduped_105_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
-                    end ), List( deduped_96_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_98_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
                     end ) ] ) ] );
-    hoisted_35_1 := deduped_82_1;
-    hoisted_34_1 := List( deduped_91_1, UnderlyingVertex );
-    hoisted_47_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_37_1 := deduped_84_1;
+    hoisted_36_1 := List( deduped_93_1, UnderlyingVertex );
+    hoisted_49_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_34_1[logic_new_func_x_2] );
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_36_1[logic_new_func_x_2] );
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return deduped_87_1;
+                        return deduped_89_1;
                     fi;
                     return;
                 end );
         end );
-    hoisted_14_1 := deduped_77_1;
-    hoisted_15_1 := List( deduped_72_1, function ( logic_new_func_x_2 )
-            return hoisted_14_1[logic_new_func_x_2];
+    hoisted_16_1 := deduped_79_1;
+    hoisted_17_1 := List( deduped_74_1, function ( logic_new_func_x_2 )
+            return hoisted_16_1[logic_new_func_x_2];
         end );
-    hoisted_46_1 := UnionOfRowsListList( deduped_69_1, [ UnionOfColumnsListList( deduped_80_1, [ List( deduped_95_1, function ( logic_new_func_new_row_2 )
+    hoisted_48_1 := UnionOfRowsListList( deduped_71_1, [ UnionOfColumnsListList( deduped_82_1, [ List( deduped_97_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                             end );
-                    end ), List( deduped_73_1, function ( logic_new_func_x_2 )
-                        return hoisted_15_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_81_1, [ List( deduped_103_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_75_1, function ( logic_new_func_x_2 )
+                        return hoisted_17_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_83_1, [ List( deduped_105_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                             end );
-                    end ), List( deduped_96_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_98_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                             end );
                     end ) ] ) ] );
-    hoisted_44_1 := deduped_72_1;
-    hoisted_43_1 := deduped_79_1;
-    hoisted_45_1 := UnionOfRowsListList( deduped_69_1, [ UnionOfColumnsListList( deduped_80_1, [ List( deduped_95_1, function ( logic_new_func_new_row_2 )
+    hoisted_46_1 := deduped_74_1;
+    hoisted_45_1 := deduped_81_1;
+    hoisted_47_1 := UnionOfRowsListList( deduped_71_1, [ UnionOfColumnsListList( deduped_82_1, [ List( deduped_97_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                             end );
-                    end ), List( deduped_73_1, function ( logic_new_func_x_2 )
+                    end ), List( deduped_75_1, function ( logic_new_func_x_2 )
                         local hoisted_1_2;
-                        hoisted_1_2 := hoisted_43_1[logic_new_func_x_2];
-                        return List( hoisted_44_1, function ( logic_new_func_x_3 )
+                        hoisted_1_2 := hoisted_45_1[logic_new_func_x_2];
+                        return List( hoisted_46_1, function ( logic_new_func_x_3 )
                                 return hoisted_1_2;
                             end );
-                    end ) ] ), UnionOfColumnsListList( deduped_81_1, [ List( deduped_103_1, function ( logic_new_func_new_row_2 )
+                    end ) ] ), UnionOfColumnsListList( deduped_83_1, [ List( deduped_105_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                             end );
-                    end ), List( deduped_96_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_98_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                             end );
                     end ) ] ) ] );
-    hoisted_1_1 := List( deduped_91_1, function ( logic_new_func_x_2 )
+    hoisted_3_1 := List( deduped_93_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    hoisted_42_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_44_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1[logic_new_func_x_2];
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return hoisted_1_1[logic_new_func_x_3];
+                        return hoisted_3_1[logic_new_func_x_3];
                     fi;
                     return;
                 end );
         end );
-    hoisted_41_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_43_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1[logic_new_func_x_2];
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
                     return hoisted_1_2;
                 end );
         end );
-    hoisted_39_1 := List( deduped_72_1, function ( logic_new_func_x_2 )
+    hoisted_41_1 := List( deduped_74_1, function ( logic_new_func_x_2 )
             return true;
         end );
-    hoisted_40_1 := UnionOfRowsListList( deduped_69_1, [ UnionOfColumnsListList( deduped_80_1, [ List( deduped_95_1, function ( logic_new_func_new_row_2 )
+    hoisted_42_1 := UnionOfRowsListList( deduped_71_1, [ UnionOfColumnsListList( deduped_82_1, [ List( deduped_97_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                             end );
-                    end ), List( deduped_73_1, function ( logic_new_func_x_2 )
-                        return hoisted_39_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_81_1, [ List( deduped_103_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_75_1, function ( logic_new_func_x_2 )
+                        return hoisted_41_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_83_1, [ List( deduped_105_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                             end );
-                    end ), List( deduped_96_1, function ( logic_new_func_new_row_2 )
+                    end ), List( deduped_98_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                             end );
                     end ) ] ) ] );
-    hoisted_37_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_39_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_1_1[logic_new_func_x_2]];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_5_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_3_1[logic_new_func_x_2]];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_7_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_38_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_40_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_37_1[logic_new_func_x_2];
-            return Sum( List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_39_1[logic_new_func_x_2];
+            return Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
                       return hoisted_1_2[logic_new_func_x_3];
                   end ) );
         end );
-    hoisted_36_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_38_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_25_1, hoisted_34_1[logic_new_func_x_2] ) );
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_27_1, hoisted_36_1[logic_new_func_x_2] ) );
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
@@ -947,125 +947,125 @@ function ( cat_1, arg2_1, arg3_1 )
                     return;
                 end );
         end );
-    hoisted_32_1 := [ 1 .. Length( Concatenation( deduped_88_1, deduped_89_1 ) ) ];
-    hoisted_31_1 := Concatenation( deduped_79_1, List( deduped_89_1, function ( logic_new_func_x_2 )
+    hoisted_34_1 := [ 1 .. Length( Concatenation( deduped_90_1, deduped_91_1 ) ) ];
+    hoisted_33_1 := Concatenation( deduped_81_1, List( deduped_91_1, function ( logic_new_func_x_2 )
               return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
           end ) );
-    hoisted_33_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_35_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_1_1[logic_new_func_x_2]];
-            return List( hoisted_32_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_31_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_3_1[logic_new_func_x_2]];
+            return List( hoisted_34_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_33_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_24_1 := deduped_78_1;
-    hoisted_13_1 := deduped_71_1;
-    hoisted_27_1 := UnionOfColumnsListList( deduped_76_1, [ List( deduped_71_1, function ( logic_new_func_x_2 )
+    hoisted_26_1 := deduped_80_1;
+    hoisted_15_1 := deduped_73_1;
+    hoisted_29_1 := UnionOfColumnsListList( deduped_77_1, [ List( deduped_73_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2;
-                  hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_24_1[logic_new_func_x_2] );
-                  return List( hoisted_13_1, function ( logic_new_func_x_3 )
+                  hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_26_1[logic_new_func_x_2] );
+                  return List( hoisted_15_1, function ( logic_new_func_x_3 )
                           if logic_new_func_x_2 = logic_new_func_x_3 then
                               return hoisted_1_2;
                           else
-                              return deduped_87_1;
+                              return deduped_89_1;
                           fi;
                           return;
                       end );
-              end ), List( deduped_71_1, function ( logic_new_func_x_2 )
-                  return hoisted_26_1;
+              end ), List( deduped_73_1, function ( logic_new_func_x_2 )
+                  return hoisted_28_1;
               end ) ] );
-    hoisted_23_1 := List( deduped_102_1, function ( logic_new_func_list_2 )
+    hoisted_25_1 := List( deduped_102_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
-    hoisted_10_1 := [ 1 .. deduped_84_1 ];
-    hoisted_28_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_12_1 := [ 1 .. deduped_86_1 ];
+    hoisted_30_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_23_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return Iterated( List( hoisted_10_1, function ( logic_new_func_x_4 )
-                              return hoisted_1_2[logic_new_func_x_4] * hoisted_27_1[logic_new_func_x_4][logic_new_func_x_3];
+            hoisted_1_2 := hoisted_25_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return Iterated( List( hoisted_12_1, function ( logic_new_func_x_4 )
+                              return hoisted_1_2[logic_new_func_x_4] * hoisted_29_1[logic_new_func_x_4][logic_new_func_x_3];
                           end ), function ( alpha_4, beta_4 )
                             return alpha_4 + beta_4;
                         end );
                 end );
         end );
-    hoisted_21_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
-            return hoisted_20_1;
+    hoisted_23_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
+            return hoisted_22_1;
         end );
-    hoisted_22_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
-            return hoisted_21_1;
+    hoisted_24_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
+            return hoisted_23_1;
         end );
-    hoisted_19_1 := deduped_93_1;
-    hoisted_12_1 := deduped_75_1;
-    hoisted_16_1 := UnionOfColumnsListList( deduped_76_1, [ List( deduped_71_1, function ( logic_new_func_x_2 )
+    hoisted_21_1 := deduped_95_1;
+    hoisted_14_1 := deduped_78_1;
+    hoisted_18_1 := UnionOfColumnsListList( deduped_77_1, [ List( deduped_73_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2;
-                  hoisted_1_2 := hoisted_12_1[logic_new_func_x_2];
-                  return List( hoisted_13_1, function ( logic_new_func_x_3 )
+                  hoisted_1_2 := hoisted_14_1[logic_new_func_x_2];
+                  return List( hoisted_15_1, function ( logic_new_func_x_3 )
                           if logic_new_func_x_2 = logic_new_func_x_3 then
                               return hoisted_1_2;
                           else
-                              return hoisted_12_1[logic_new_func_x_3];
+                              return hoisted_14_1[logic_new_func_x_3];
                           fi;
                           return;
                       end );
-              end ), List( deduped_71_1, function ( logic_new_func_x_2 )
-                  return hoisted_15_1;
+              end ), List( deduped_73_1, function ( logic_new_func_x_2 )
+                  return hoisted_17_1;
               end ) ] );
-    hoisted_17_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
-            return List( hoisted_10_1, function ( logic_new_func_x_3 )
-                      return hoisted_16_1[logic_new_func_x_3][logic_new_func_x_2];
+    hoisted_19_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
+            return List( hoisted_12_1, function ( logic_new_func_x_3 )
+                      return hoisted_18_1[logic_new_func_x_3][logic_new_func_x_2];
                   end )[1];
         end );
-    hoisted_18_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
-            return hoisted_17_1;
+    hoisted_20_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
+            return hoisted_19_1;
         end );
-    hoisted_9_1 := List( deduped_102_1, function ( logic_new_func_x_2 )
+    hoisted_11_1 := List( deduped_102_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                 end );
         end );
-    hoisted_11_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_13_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2;
-            hoisted_1_2 := hoisted_9_1[logic_new_func_x_2];
-            hoisted_2_2 := List( hoisted_10_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_11_1[logic_new_func_x_2];
+            hoisted_2_2 := List( hoisted_12_1, function ( logic_new_func_x_3 )
                       return hoisted_1_2[logic_new_func_x_3];
                   end )[1];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     return hoisted_2_2;
                 end );
         end );
-    hoisted_8_1 := ForAny( [ deduped_84_1, deduped_76_1 ], IsZero );
-    hoisted_6_1 := List( deduped_68_1, function ( logic_new_func_x_2 )
-            return hoisted_5_1[logic_new_func_x_2];
+    hoisted_10_1 := ForAny( [ deduped_86_1, deduped_77_1 ], IsZero );
+    hoisted_8_1 := List( deduped_70_1, function ( logic_new_func_x_2 )
+            return hoisted_7_1[logic_new_func_x_2];
         end );
-    hoisted_7_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
-            return hoisted_6_1;
+    hoisted_9_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
+            return hoisted_8_1;
         end );
-    hoisted_3_1 := List( deduped_82_1, function ( logic_new_func_x_2 )
+    hoisted_5_1 := List( deduped_84_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     return hoisted_1_2;
                 end );
         end );
-    return IsZero( DecideZeroRows( HomalgMatrixListList( UnionOfColumnsListList( 1, List( deduped_82_1, function ( logic_new_func_x_2 )
+    return IsZero( DecideZeroRows( HomalgMatrixListList( UnionOfColumnsListList( 1, List( deduped_84_1, function ( logic_new_func_x_2 )
                     local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2;
-                    hoisted_6_2 := hoisted_28_1[logic_new_func_x_2];
-                    hoisted_5_2 := hoisted_22_1[logic_new_func_x_2];
-                    hoisted_4_2 := hoisted_18_1[logic_new_func_x_2];
-                    hoisted_3_2 := hoisted_11_1[logic_new_func_x_2];
-                    hoisted_2_2 := hoisted_7_1[logic_new_func_x_2];
-                    hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
-                    return UnionOfColumnsListList( 1, List( hoisted_2_1, function ( logic_new_func_x_3 )
+                    hoisted_6_2 := hoisted_30_1[logic_new_func_x_2];
+                    hoisted_5_2 := hoisted_24_1[logic_new_func_x_2];
+                    hoisted_4_2 := hoisted_20_1[logic_new_func_x_2];
+                    hoisted_3_2 := hoisted_13_1[logic_new_func_x_2];
+                    hoisted_2_2 := hoisted_9_1[logic_new_func_x_2];
+                    hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
+                    return UnionOfColumnsListList( 1, List( hoisted_4_1, function ( logic_new_func_x_3 )
                               local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
                               deduped_6_3 := hoisted_4_2[logic_new_func_x_3];
                               deduped_5_3 := hoisted_3_2[logic_new_func_x_3];
                               deduped_4_3 := hoisted_2_2[logic_new_func_x_3];
                               deduped_3_3 := hoisted_1_2[logic_new_func_x_3];
-                              deduped_2_3 := hoisted_4_1[deduped_5_3][deduped_6_3];
-                              deduped_1_3 := hoisted_4_1[deduped_3_3][deduped_4_3];
+                              deduped_2_3 := hoisted_6_1[deduped_5_3][deduped_6_3];
+                              deduped_1_3 := hoisted_6_1[deduped_3_3][deduped_4_3];
                               if function (  )
-                                          if hoisted_8_1 then
+                                          if hoisted_10_1 then
                                               return deduped_1_3;
                                           else
                                               return deduped_2_3;
@@ -1073,7 +1073,7 @@ function ( cat_1, arg2_1, arg3_1 )
                                           return;
                                       end(  ) = 0 then
                                   return function (  )
-                                          if hoisted_8_1 then
+                                          if hoisted_10_1 then
                                               return NullMatImmutable( 1, deduped_1_3 );
                                           else
                                               return NullMatImmutable( 1, deduped_2_3 );
@@ -1082,52 +1082,52 @@ function ( cat_1, arg2_1, arg3_1 )
                                       end(  );
                               else
                                   return [ function (  )
-                                              if hoisted_8_1 then
-                                                  return CoefficientsOfPaths( hoisted_19_1[deduped_3_3][deduped_4_3], hoisted_5_2[logic_new_func_x_3] );
+                                              if hoisted_10_1 then
+                                                  return CoefficientsOfPaths( hoisted_21_1[deduped_3_3][deduped_4_3], hoisted_5_2[logic_new_func_x_3] );
                                               else
-                                                  return CoefficientsOfPaths( hoisted_19_1[deduped_5_3][deduped_6_3], hoisted_6_2[logic_new_func_x_3] );
+                                                  return CoefficientsOfPaths( hoisted_21_1[deduped_5_3][deduped_6_3], hoisted_6_2[logic_new_func_x_3] );
                                               fi;
                                               return;
                                           end(  ) ];
                               fi;
                               return;
                           end ) );
-                end ) ), 1, deduped_67_1, deduped_92_1 ), UnionOfRows( deduped_92_1, Sum( [ deduped_67_1 ] ), [ HomalgMatrixListList( UnionOfRowsListList( deduped_67_1, List( deduped_82_1, function ( logic_new_func_x_2 )
+                end ) ), 1, deduped_69_1, deduped_94_1 ), UnionOfRows( deduped_94_1, Sum( [ deduped_69_1 ] ), [ HomalgMatrixListList( UnionOfRowsListList( deduped_69_1, List( deduped_84_1, function ( logic_new_func_x_2 )
                           local hoisted_1_2, hoisted_2_2;
-                          hoisted_1_2 := hoisted_33_1[logic_new_func_x_2];
-                          hoisted_2_2 := Sum( hoisted_32_1, function ( logic_new_func_x_3 )
+                          hoisted_1_2 := hoisted_35_1[logic_new_func_x_2];
+                          hoisted_2_2 := Sum( hoisted_34_1, function ( logic_new_func_x_3 )
                                   return hoisted_1_2[logic_new_func_x_3];
                               end );
-                          return UnionOfColumnsListList( Sum( List( hoisted_32_1, function ( logic_new_func_x_3 )
+                          return UnionOfColumnsListList( Sum( List( hoisted_34_1, function ( logic_new_func_x_3 )
                                       return hoisted_1_2[logic_new_func_x_3];
-                                  end ) ), List( hoisted_35_1, function ( logic_new_func_x_3 )
+                                  end ) ), List( hoisted_37_1, function ( logic_new_func_x_3 )
                                     local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
-                                    deduped_9_3 := hoisted_38_1[logic_new_func_x_3];
-                                    if hoisted_36_1[logic_new_func_x_3][logic_new_func_x_2] then
+                                    deduped_9_3 := hoisted_40_1[logic_new_func_x_3];
+                                    if hoisted_38_1[logic_new_func_x_3][logic_new_func_x_2] then
                                         return NullMatImmutable( hoisted_2_2, deduped_9_3 );
                                     else
-                                        deduped_8_3 := hoisted_42_1[logic_new_func_x_3][logic_new_func_x_2];
-                                        deduped_7_3 := hoisted_41_1[logic_new_func_x_3][logic_new_func_x_2];
-                                        hoisted_6_3 := [ 1 .. hoisted_4_1[deduped_7_3][deduped_8_3] ];
+                                        deduped_8_3 := hoisted_44_1[logic_new_func_x_3][logic_new_func_x_2];
+                                        deduped_7_3 := hoisted_43_1[logic_new_func_x_3][logic_new_func_x_2];
+                                        hoisted_6_3 := [ 1 .. hoisted_6_1[deduped_7_3][deduped_8_3] ];
                                         hoisted_5_3 := deduped_7_3;
-                                        hoisted_4_3 := hoisted_49_1[deduped_8_3];
-                                        hoisted_3_3 := CoefficientsOfPaths( hoisted_19_1[deduped_7_3][deduped_8_3], hoisted_47_1[logic_new_func_x_3][logic_new_func_x_2] );
-                                        hoisted_1_3 := hoisted_37_1[logic_new_func_x_3];
-                                        hoisted_2_3 := Sum( hoisted_2_1, function ( logic_new_func_x_4 )
+                                        hoisted_4_3 := hoisted_51_1[deduped_8_3];
+                                        hoisted_3_3 := CoefficientsOfPaths( hoisted_21_1[deduped_7_3][deduped_8_3], hoisted_49_1[logic_new_func_x_3][logic_new_func_x_2] );
+                                        hoisted_1_3 := hoisted_39_1[logic_new_func_x_3];
+                                        hoisted_2_3 := Sum( hoisted_4_1, function ( logic_new_func_x_4 )
                                                 return hoisted_1_3[logic_new_func_x_4];
                                             end );
-                                        return UnionOfRowsListList( deduped_9_3, List( hoisted_32_1, function ( logic_new_func_x_4 )
+                                        return UnionOfRowsListList( deduped_9_3, List( hoisted_34_1, function ( logic_new_func_x_4 )
                                                   local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
                                                   deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
                                                   if deduped_6_4 = 0 then
                                                       return NullMatImmutable( deduped_6_4, hoisted_2_3 );
                                                   else
-                                                      hoisted_5_4 := hoisted_48_1[logic_new_func_x_4];
-                                                      hoisted_4_4 := hoisted_46_1[logic_new_func_x_4];
-                                                      hoisted_3_4 := hoisted_45_1[logic_new_func_x_4];
+                                                      hoisted_5_4 := hoisted_50_1[logic_new_func_x_4];
+                                                      hoisted_4_4 := hoisted_48_1[logic_new_func_x_4];
+                                                      hoisted_3_4 := hoisted_47_1[logic_new_func_x_4];
                                                       hoisted_2_4 := deduped_6_4;
-                                                      hoisted_1_4 := hoisted_40_1[logic_new_func_x_4];
-                                                      return UnionOfColumnsListList( deduped_6_4, List( hoisted_2_1, function ( logic_new_func_x_5 )
+                                                      hoisted_1_4 := hoisted_42_1[logic_new_func_x_4];
+                                                      return UnionOfColumnsListList( deduped_6_4, List( hoisted_4_1, function ( logic_new_func_x_5 )
                                                                 local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
                                                                 deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
                                                                 if hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0 then
@@ -1135,9 +1135,9 @@ function ( cat_1, arg2_1, arg3_1 )
                                                                 else
                                                                     deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
                                                                     deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
-                                                                    hoisted_3_5 := [ 1 .. hoisted_4_1[deduped_5_5][deduped_6_5] ];
+                                                                    hoisted_3_5 := [ 1 .. hoisted_6_1[deduped_5_5][deduped_6_5] ];
                                                                     hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
-                                                                    hoisted_1_5 := CoefficientsOfPaths( hoisted_19_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
+                                                                    hoisted_1_5 := CoefficientsOfPaths( hoisted_21_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
                                                                     return Sum( hoisted_6_3, function ( p_6 )
                                                                             local hoisted_1_6, hoisted_2_6;
                                                                             hoisted_2_6 := hoisted_2_5[p_6];
@@ -1155,50 +1155,50 @@ function ( cat_1, arg2_1, arg3_1 )
                                     fi;
                                     return;
                                 end ) );
-                      end ) ), Sum( Concatenation( List( deduped_91_1, function ( logic_new_func_x_2 )
+                      end ) ), Sum( Concatenation( List( deduped_93_1, function ( logic_new_func_x_2 )
                             local hoisted_1_2;
-                            hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                            return Concatenation( List( hoisted_50_1, function ( logic_new_func_x_3 )
+                            hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                            return Concatenation( List( hoisted_52_1, function ( logic_new_func_x_3 )
                                       return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                  end ), List( hoisted_51_1, function ( logic_new_func_x_3 )
+                                  end ), List( hoisted_53_1, function ( logic_new_func_x_3 )
                                       return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                                   end ) );
-                        end ) ) ), deduped_67_1, deduped_92_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_67_1, List( deduped_70_1, function ( logic_new_func_x_2 )
+                        end ) ) ), deduped_69_1, deduped_94_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_69_1, List( deduped_72_1, function ( logic_new_func_x_2 )
                           local hoisted_1_2, hoisted_2_2;
-                          hoisted_1_2 := hoisted_53_1[logic_new_func_x_2];
-                          hoisted_2_2 := Sum( hoisted_2_1, function ( logic_new_func_x_3 )
+                          hoisted_1_2 := hoisted_55_1[logic_new_func_x_2];
+                          hoisted_2_2 := Sum( hoisted_4_1, function ( logic_new_func_x_3 )
                                   return hoisted_1_2[logic_new_func_x_3];
                               end );
-                          return UnionOfColumnsListList( Sum( List( hoisted_2_1, function ( logic_new_func_x_3 )
+                          return UnionOfColumnsListList( Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
                                       return hoisted_1_2[logic_new_func_x_3];
-                                  end ) ), List( hoisted_66_1, function ( logic_new_func_x_3 )
+                                  end ) ), List( hoisted_68_1, function ( logic_new_func_x_3 )
                                     local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
-                                    deduped_9_3 := hoisted_57_1[logic_new_func_x_3];
-                                    if hoisted_54_1[logic_new_func_x_3][logic_new_func_x_2] then
+                                    deduped_9_3 := hoisted_59_1[logic_new_func_x_3];
+                                    if hoisted_56_1[logic_new_func_x_3][logic_new_func_x_2] then
                                         return NullMatImmutable( hoisted_2_2, deduped_9_3 );
                                     else
-                                        deduped_8_3 := hoisted_61_1[logic_new_func_x_3][logic_new_func_x_2];
-                                        deduped_7_3 := hoisted_60_1[logic_new_func_x_3][logic_new_func_x_2];
-                                        hoisted_6_3 := [ 1 .. hoisted_4_1[deduped_7_3][deduped_8_3] ];
+                                        deduped_8_3 := hoisted_63_1[logic_new_func_x_3][logic_new_func_x_2];
+                                        deduped_7_3 := hoisted_62_1[logic_new_func_x_3][logic_new_func_x_2];
+                                        hoisted_6_3 := [ 1 .. hoisted_6_1[deduped_7_3][deduped_8_3] ];
                                         hoisted_5_3 := deduped_7_3;
-                                        hoisted_4_3 := hoisted_49_1[deduped_8_3];
-                                        hoisted_3_3 := CoefficientsOfPaths( hoisted_19_1[deduped_7_3][deduped_8_3], hoisted_64_1[logic_new_func_x_3][logic_new_func_x_2] );
-                                        hoisted_1_3 := hoisted_56_1[logic_new_func_x_3];
-                                        hoisted_2_3 := Sum( hoisted_2_1, function ( logic_new_func_x_4 )
+                                        hoisted_4_3 := hoisted_51_1[deduped_8_3];
+                                        hoisted_3_3 := CoefficientsOfPaths( hoisted_21_1[deduped_7_3][deduped_8_3], hoisted_66_1[logic_new_func_x_3][logic_new_func_x_2] );
+                                        hoisted_1_3 := hoisted_58_1[logic_new_func_x_3];
+                                        hoisted_2_3 := Sum( hoisted_4_1, function ( logic_new_func_x_4 )
                                                 return hoisted_1_3[logic_new_func_x_4];
                                             end );
-                                        return UnionOfRowsListList( deduped_9_3, List( hoisted_2_1, function ( logic_new_func_x_4 )
+                                        return UnionOfRowsListList( deduped_9_3, List( hoisted_4_1, function ( logic_new_func_x_4 )
                                                   local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
                                                   deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
                                                   if deduped_6_4 = 0 then
                                                       return NullMatImmutable( deduped_6_4, hoisted_2_3 );
                                                   else
-                                                      hoisted_5_4 := hoisted_65_1[logic_new_func_x_4];
-                                                      hoisted_4_4 := hoisted_63_1[logic_new_func_x_4];
-                                                      hoisted_3_4 := hoisted_62_1[logic_new_func_x_4];
+                                                      hoisted_5_4 := hoisted_67_1[logic_new_func_x_4];
+                                                      hoisted_4_4 := hoisted_65_1[logic_new_func_x_4];
+                                                      hoisted_3_4 := hoisted_64_1[logic_new_func_x_4];
                                                       hoisted_2_4 := deduped_6_4;
-                                                      hoisted_1_4 := hoisted_59_1[logic_new_func_x_4];
-                                                      return UnionOfColumnsListList( deduped_6_4, List( hoisted_2_1, function ( logic_new_func_x_5 )
+                                                      hoisted_1_4 := hoisted_61_1[logic_new_func_x_4];
+                                                      return UnionOfColumnsListList( deduped_6_4, List( hoisted_4_1, function ( logic_new_func_x_5 )
                                                                 local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
                                                                 deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
                                                                 if hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0 then
@@ -1206,9 +1206,9 @@ function ( cat_1, arg2_1, arg3_1 )
                                                                 else
                                                                     deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
                                                                     deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
-                                                                    hoisted_3_5 := [ 1 .. hoisted_4_1[deduped_5_5][deduped_6_5] ];
+                                                                    hoisted_3_5 := [ 1 .. hoisted_6_1[deduped_5_5][deduped_6_5] ];
                                                                     hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
-                                                                    hoisted_1_5 := CoefficientsOfPaths( hoisted_19_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
+                                                                    hoisted_1_5 := CoefficientsOfPaths( hoisted_21_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
                                                                     return Sum( hoisted_6_3, function ( p_6 )
                                                                             local hoisted_1_6, hoisted_2_6;
                                                                             hoisted_2_6 := hoisted_2_5[p_6];
@@ -1226,15 +1226,15 @@ function ( cat_1, arg2_1, arg3_1 )
                                     fi;
                                     return;
                                 end ) );
-                      end ) ), Sum( Concatenation( List( deduped_83_1, function ( logic_new_func_x_2 )
+                      end ) ), Sum( Concatenation( List( deduped_85_1, function ( logic_new_func_x_2 )
                             local hoisted_1_2;
-                            hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                            return Concatenation( List( hoisted_29_1, function ( logic_new_func_x_3 )
+                            hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                            return Concatenation( List( hoisted_31_1, function ( logic_new_func_x_3 )
                                       return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                  end ), List( hoisted_30_1, function ( logic_new_func_x_3 )
+                                  end ), List( hoisted_32_1, function ( logic_new_func_x_3 )
                                       return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                                   end ) );
-                        end ) ) ), deduped_67_1, deduped_92_1 ) ] ) ) );
+                        end ) ) ), deduped_69_1, deduped_94_1 ) ] ) ) );
 end
 ########
         
@@ -1245,203 +1245,203 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, hoisted_38_1, hoisted_39_1, hoisted_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, hoisted_44_1, hoisted_45_1, hoisted_46_1, hoisted_47_1, hoisted_48_1, hoisted_49_1, hoisted_50_1, hoisted_51_1, hoisted_52_1, hoisted_53_1, hoisted_54_1, hoisted_55_1, hoisted_56_1, hoisted_57_1, hoisted_58_1, hoisted_59_1, hoisted_60_1, hoisted_61_1, hoisted_62_1, hoisted_63_1, hoisted_64_1, hoisted_65_1, hoisted_66_1, hoisted_67_1, hoisted_68_1, hoisted_69_1, hoisted_70_1, hoisted_71_1, hoisted_72_1, hoisted_73_1, hoisted_74_1, hoisted_75_1, hoisted_76_1, hoisted_77_1, hoisted_78_1, hoisted_79_1, hoisted_80_1, hoisted_81_1, hoisted_82_1, hoisted_83_1, hoisted_84_1, hoisted_85_1, hoisted_86_1, hoisted_87_1, hoisted_88_1, hoisted_89_1, hoisted_90_1, hoisted_91_1, hoisted_92_1, hoisted_93_1, hoisted_94_1, hoisted_95_1, hoisted_96_1, hoisted_97_1, hoisted_98_1, hoisted_99_1, hoisted_100_1, hoisted_101_1, hoisted_102_1, hoisted_103_1, hoisted_104_1, hoisted_105_1, hoisted_106_1, hoisted_107_1, hoisted_108_1, hoisted_109_1, hoisted_110_1, hoisted_111_1, hoisted_112_1, hoisted_113_1, hoisted_114_1, hoisted_115_1, hoisted_116_1, hoisted_117_1, hoisted_118_1, hoisted_119_1, hoisted_120_1, hoisted_121_1, hoisted_122_1, hoisted_123_1, hoisted_124_1, hoisted_125_1, deduped_126_1, deduped_127_1, deduped_128_1, deduped_129_1, deduped_130_1, deduped_131_1, deduped_132_1, deduped_133_1, deduped_134_1, deduped_135_1, deduped_136_1, deduped_137_1, deduped_138_1, deduped_139_1, deduped_140_1, deduped_141_1, deduped_142_1, deduped_143_1, deduped_144_1, deduped_145_1, deduped_146_1, deduped_147_1, deduped_148_1, deduped_149_1, deduped_150_1, deduped_151_1, deduped_152_1, deduped_153_1, deduped_154_1, deduped_155_1, deduped_156_1, deduped_157_1, deduped_158_1, deduped_159_1, deduped_160_1, deduped_161_1, deduped_162_1, deduped_163_1, deduped_164_1, deduped_165_1, deduped_166_1, deduped_167_1, deduped_168_1, deduped_169_1, deduped_170_1, deduped_171_1, deduped_172_1, deduped_173_1, deduped_174_1, deduped_175_1, deduped_176_1, deduped_177_1, deduped_178_1, deduped_179_1, deduped_180_1, deduped_181_1, deduped_182_1, deduped_183_1, deduped_184_1, deduped_185_1, deduped_186_1, deduped_187_1, deduped_188_1, deduped_189_1, deduped_190_1, deduped_191_1, deduped_192_1, deduped_193_1, deduped_194_1, deduped_195_1, deduped_196_1, deduped_197_1, deduped_198_1, deduped_199_1;
-    deduped_199_1 := UnderlyingMorphism( arg3_1 );
-    deduped_198_1 := UnderlyingCategory( cat_1 );
-    deduped_197_1 := UnderlyingMorphism( arg2_1 );
+    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, hoisted_35_1, hoisted_36_1, hoisted_37_1, hoisted_38_1, hoisted_39_1, hoisted_40_1, hoisted_41_1, hoisted_42_1, hoisted_43_1, hoisted_44_1, hoisted_45_1, hoisted_46_1, hoisted_47_1, hoisted_48_1, hoisted_49_1, hoisted_50_1, hoisted_51_1, hoisted_52_1, hoisted_53_1, hoisted_54_1, hoisted_55_1, hoisted_56_1, hoisted_57_1, hoisted_58_1, hoisted_59_1, hoisted_60_1, hoisted_61_1, hoisted_62_1, hoisted_63_1, hoisted_64_1, hoisted_65_1, hoisted_66_1, hoisted_67_1, hoisted_68_1, hoisted_69_1, hoisted_70_1, hoisted_71_1, hoisted_72_1, hoisted_73_1, hoisted_74_1, hoisted_75_1, hoisted_76_1, hoisted_77_1, hoisted_78_1, hoisted_79_1, hoisted_80_1, hoisted_81_1, hoisted_82_1, hoisted_83_1, hoisted_84_1, hoisted_85_1, hoisted_86_1, hoisted_87_1, hoisted_88_1, hoisted_89_1, hoisted_90_1, hoisted_91_1, hoisted_92_1, hoisted_93_1, hoisted_94_1, hoisted_95_1, hoisted_96_1, hoisted_97_1, hoisted_98_1, hoisted_99_1, hoisted_100_1, hoisted_101_1, hoisted_102_1, hoisted_103_1, hoisted_104_1, hoisted_105_1, hoisted_106_1, hoisted_107_1, hoisted_108_1, hoisted_109_1, hoisted_110_1, hoisted_111_1, hoisted_112_1, hoisted_113_1, hoisted_114_1, hoisted_115_1, hoisted_116_1, hoisted_117_1, hoisted_118_1, hoisted_119_1, hoisted_120_1, hoisted_121_1, hoisted_122_1, hoisted_123_1, hoisted_124_1, hoisted_125_1, hoisted_126_1, hoisted_127_1, deduped_128_1, deduped_129_1, deduped_130_1, deduped_131_1, deduped_132_1, deduped_133_1, deduped_134_1, deduped_135_1, deduped_136_1, deduped_137_1, deduped_138_1, deduped_139_1, deduped_140_1, deduped_141_1, deduped_142_1, deduped_143_1, deduped_144_1, deduped_145_1, deduped_146_1, deduped_147_1, deduped_148_1, deduped_149_1, deduped_150_1, deduped_151_1, deduped_152_1, deduped_153_1, deduped_154_1, deduped_155_1, deduped_156_1, deduped_157_1, deduped_158_1, deduped_159_1, deduped_160_1, deduped_161_1, deduped_162_1, deduped_163_1, deduped_164_1, deduped_165_1, deduped_166_1, deduped_167_1, deduped_168_1, deduped_169_1, deduped_170_1, deduped_171_1, deduped_172_1, deduped_173_1, deduped_174_1, deduped_175_1, deduped_176_1, deduped_177_1, deduped_178_1, deduped_179_1, deduped_180_1, deduped_181_1, deduped_182_1, deduped_183_1, deduped_184_1, deduped_185_1, deduped_186_1, deduped_187_1, deduped_188_1, deduped_189_1, deduped_190_1, deduped_191_1, deduped_192_1, deduped_193_1, deduped_194_1, deduped_195_1, deduped_196_1, deduped_197_1, deduped_198_1, deduped_199_1, deduped_200_1, deduped_201_1;
+    deduped_201_1 := UnderlyingMorphism( arg3_1 );
+    deduped_200_1 := UnderlyingCategory( cat_1 );
+    deduped_199_1 := UnderlyingMorphism( arg2_1 );
+    deduped_198_1 := MorphismMatrix( deduped_201_1 );
+    deduped_197_1 := UnderlyingCategory( deduped_200_1 );
     deduped_196_1 := MorphismMatrix( deduped_199_1 );
-    deduped_195_1 := RelationMorphism( Range( arg3_1 ) );
-    deduped_194_1 := UnderlyingCategory( deduped_198_1 );
-    deduped_193_1 := MorphismMatrix( deduped_197_1 );
-    deduped_192_1 := RelationMorphism( Range( arg2_1 ) );
-    deduped_191_1 := CorelationMorphism( Source( arg3_1 ) );
-    deduped_190_1 := CorelationMorphism( Source( arg2_1 ) );
-    deduped_189_1 := List( deduped_196_1, function ( logic_new_func_new_row_2 )
+    deduped_195_1 := RelationMorphism( Range( arg2_1 ) );
+    deduped_194_1 := RelationMorphism( Range( arg3_1 ) );
+    deduped_193_1 := CorelationMorphism( Source( arg3_1 ) );
+    deduped_192_1 := CorelationMorphism( Source( arg2_1 ) );
+    deduped_191_1 := List( deduped_198_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
         end );
-    deduped_188_1 := MorphismMatrix( deduped_195_1 );
-    deduped_187_1 := BasisPathsByVertexIndex( deduped_194_1 );
-    deduped_186_1 := MorphismMatrix( deduped_191_1 );
-    deduped_185_1 := List( deduped_193_1, function ( logic_new_func_new_row_2 )
+    deduped_190_1 := MorphismMatrix( deduped_194_1 );
+    deduped_189_1 := BasisPathsByVertexIndex( deduped_197_1 );
+    deduped_188_1 := MorphismMatrix( deduped_193_1 );
+    deduped_187_1 := List( deduped_196_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
         end );
-    deduped_184_1 := UnderlyingQuiverAlgebra( deduped_194_1 );
-    deduped_183_1 := MorphismMatrix( deduped_190_1 );
-    deduped_182_1 := MorphismMatrix( deduped_192_1 );
+    deduped_186_1 := UnderlyingQuiverAlgebra( deduped_197_1 );
+    deduped_185_1 := MorphismMatrix( deduped_192_1 );
+    deduped_184_1 := MorphismMatrix( deduped_195_1 );
+    deduped_183_1 := ObjectList( Source( deduped_201_1 ) );
+    deduped_182_1 := UnderlyingRing( RangeCategoryOfHomomorphismStructure( deduped_200_1 ) );
     deduped_181_1 := ObjectList( Source( deduped_199_1 ) );
-    deduped_180_1 := UnderlyingRing( RangeCategoryOfHomomorphismStructure( deduped_198_1 ) );
-    deduped_179_1 := ObjectList( Source( deduped_197_1 ) );
-    deduped_178_1 := Length( ObjectList( Range( deduped_199_1 ) ) );
-    deduped_177_1 := ObjectList( Source( deduped_195_1 ) );
-    deduped_176_1 := List( deduped_186_1, function ( logic_new_func_list_2 )
+    deduped_180_1 := Length( ObjectList( Range( deduped_201_1 ) ) );
+    deduped_179_1 := ObjectList( Source( deduped_194_1 ) );
+    deduped_178_1 := List( deduped_188_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
-    deduped_175_1 := ObjectList( Range( deduped_195_1 ) );
-    deduped_174_1 := ObjectList( Source( deduped_191_1 ) );
-    deduped_173_1 := List( deduped_183_1, function ( logic_new_func_new_row_2 )
+    deduped_177_1 := ObjectList( Source( deduped_193_1 ) );
+    deduped_176_1 := List( deduped_185_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
         end );
-    deduped_172_1 := ZeroImmutable( deduped_184_1 );
-    deduped_171_1 := ObjectList( Source( deduped_190_1 ) );
-    deduped_170_1 := ObjectList( Source( deduped_192_1 ) );
-    deduped_169_1 := ObjectList( Range( deduped_192_1 ) );
-    deduped_168_1 := Length( ObjectList( Range( deduped_197_1 ) ) );
-    deduped_167_1 := ObjectList( Range( deduped_191_1 ) );
-    deduped_166_1 := ObjectList( Range( deduped_190_1 ) );
-    deduped_165_1 := [ 1 .. Length( deduped_181_1 ) ];
-    deduped_164_1 := [ 1 .. Length( deduped_179_1 ) ];
-    deduped_163_1 := Length( deduped_169_1 );
-    deduped_162_1 := List( deduped_169_1, function ( logic_new_func_x_2 )
+    deduped_175_1 := ZeroImmutable( deduped_186_1 );
+    deduped_174_1 := ObjectList( Source( deduped_192_1 ) );
+    deduped_173_1 := ObjectList( Source( deduped_195_1 ) );
+    deduped_172_1 := ObjectList( Range( deduped_195_1 ) );
+    deduped_171_1 := ObjectList( Range( deduped_194_1 ) );
+    deduped_170_1 := Length( ObjectList( Range( deduped_199_1 ) ) );
+    deduped_169_1 := ObjectList( Range( deduped_193_1 ) );
+    deduped_168_1 := ObjectList( Range( deduped_192_1 ) );
+    deduped_167_1 := [ 1 .. Length( deduped_183_1 ) ];
+    deduped_166_1 := [ 1 .. Length( deduped_181_1 ) ];
+    deduped_165_1 := Length( deduped_172_1 );
+    deduped_164_1 := List( deduped_172_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_161_1 := List( deduped_171_1, function ( logic_new_func_x_2 )
+    deduped_163_1 := List( deduped_174_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_160_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+    deduped_162_1 := List( deduped_168_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_159_1 := Length( deduped_177_1 );
-    deduped_158_1 := List( deduped_177_1, function ( logic_new_func_x_2 )
+    deduped_161_1 := Length( deduped_179_1 );
+    deduped_160_1 := List( deduped_179_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_157_1 := List( deduped_175_1, UnderlyingVertex );
-    deduped_156_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
+    deduped_159_1 := List( deduped_171_1, UnderlyingVertex );
+    deduped_158_1 := List( deduped_169_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_155_1 := Length( deduped_175_1 );
-    deduped_154_1 := List( deduped_175_1, function ( logic_new_func_x_2 )
+    deduped_157_1 := List( deduped_171_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_153_1 := List( deduped_169_1, UnderlyingVertex );
+    deduped_156_1 := List( deduped_172_1, UnderlyingVertex );
+    deduped_155_1 := Length( deduped_177_1 );
+    deduped_154_1 := List( deduped_177_1, function ( logic_new_func_x_2 )
+            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    deduped_153_1 := List( deduped_173_1, function ( logic_new_func_x_2 )
+            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     deduped_152_1 := Length( deduped_174_1 );
-    deduped_151_1 := List( deduped_174_1, function ( logic_new_func_x_2 )
-            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
-        end );
-    deduped_150_1 := List( deduped_170_1, function ( logic_new_func_x_2 )
-            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
-        end );
-    deduped_149_1 := Length( deduped_171_1 );
-    deduped_148_1 := Length( deduped_170_1 );
-    deduped_147_1 := [ 1 .. deduped_163_1 ];
-    deduped_146_1 := [ 1 .. deduped_149_1 ];
-    deduped_145_1 := [ 1 .. deduped_159_1 ];
-    deduped_144_1 := [ 1 .. deduped_155_1 ];
-    deduped_143_1 := [ 1 .. deduped_152_1 ];
-    deduped_142_1 := [ 1 .. deduped_148_1 ];
-    deduped_141_1 := [ 1 .. Length( deduped_167_1 ) ];
-    deduped_140_1 := [ 1 .. Length( deduped_166_1 ) ];
-    deduped_139_1 := Length( Concatenation( deduped_175_1, deduped_167_1 ) );
-    deduped_138_1 := List( deduped_186_1, function ( logic_new_func_x_2 )
+    deduped_151_1 := Length( deduped_173_1 );
+    deduped_150_1 := Length( deduped_171_1 );
+    deduped_149_1 := [ 1 .. deduped_165_1 ];
+    deduped_148_1 := [ 1 .. deduped_152_1 ];
+    deduped_147_1 := [ 1 .. deduped_161_1 ];
+    deduped_146_1 := [ 1 .. deduped_150_1 ];
+    deduped_145_1 := [ 1 .. deduped_155_1 ];
+    deduped_144_1 := [ 1 .. deduped_151_1 ];
+    deduped_143_1 := [ 1 .. Length( deduped_169_1 ) ];
+    deduped_142_1 := [ 1 .. Length( deduped_168_1 ) ];
+    deduped_141_1 := Length( Concatenation( deduped_171_1, deduped_169_1 ) );
+    deduped_140_1 := List( deduped_188_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                 end );
         end );
-    deduped_137_1 := List( deduped_183_1, function ( logic_new_func_new_row_2 )
+    deduped_139_1 := List( deduped_185_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                     return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                 end );
         end );
-    deduped_136_1 := Length( Concatenation( deduped_169_1, deduped_166_1 ) );
-    deduped_135_1 := [ 1 .. deduped_139_1 ];
-    deduped_134_1 := [ 1 .. deduped_136_1 ];
-    deduped_133_1 := List( deduped_196_1, function ( logic_new_func_new_row_2 )
+    deduped_138_1 := Length( Concatenation( deduped_172_1, deduped_168_1 ) );
+    deduped_137_1 := [ 1 .. deduped_141_1 ];
+    deduped_136_1 := [ 1 .. deduped_138_1 ];
+    deduped_135_1 := List( deduped_198_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                 end );
         end );
-    deduped_132_1 := List( deduped_186_1, function ( logic_new_func_x_2 )
+    deduped_134_1 := List( deduped_188_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                 end );
         end );
-    deduped_131_1 := List( deduped_186_1, function ( logic_new_func_x_2 )
+    deduped_133_1 := List( deduped_188_1, function ( logic_new_func_x_2 )
             return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                 end );
         end );
-    deduped_130_1 := List( deduped_183_1, function ( logic_new_func_new_row_2 )
+    deduped_132_1 := List( deduped_185_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                 end );
         end );
-    deduped_129_1 := List( deduped_183_1, function ( logic_new_func_new_row_2 )
+    deduped_131_1 := List( deduped_185_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                 end );
         end );
-    deduped_128_1 := List( deduped_193_1, function ( logic_new_func_new_row_2 )
+    deduped_130_1 := List( deduped_196_1, function ( logic_new_func_new_row_2 )
             return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                     return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                 end );
         end );
-    hoisted_91_1 := deduped_166_1;
-    hoisted_90_1 := deduped_169_1;
-    hoisted_4_1 := List( deduped_187_1, function ( logic_new_func_list_2 )
+    hoisted_93_1 := deduped_168_1;
+    hoisted_92_1 := deduped_172_1;
+    hoisted_6_1 := List( deduped_189_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Length );
         end );
-    deduped_127_1 := Sum( Concatenation( List( deduped_181_1, function ( logic_new_func_x_2 )
+    deduped_129_1 := Sum( Concatenation( List( deduped_183_1, function ( logic_new_func_x_2 )
                 local hoisted_1_2;
-                hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                return Concatenation( List( hoisted_90_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                return Concatenation( List( hoisted_92_1, function ( logic_new_func_x_3 )
                           return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                      end ), List( hoisted_91_1, function ( logic_new_func_x_3 )
+                      end ), List( hoisted_93_1, function ( logic_new_func_x_3 )
                           return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                       end ) );
             end ) ) );
-    hoisted_30_1 := deduped_167_1;
-    hoisted_29_1 := deduped_175_1;
-    deduped_126_1 := Sum( Concatenation( List( deduped_179_1, function ( logic_new_func_x_2 )
+    hoisted_32_1 := deduped_169_1;
+    hoisted_31_1 := deduped_171_1;
+    deduped_128_1 := Sum( Concatenation( List( deduped_181_1, function ( logic_new_func_x_2 )
                 local hoisted_1_2;
-                hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                return Concatenation( List( hoisted_29_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                return Concatenation( List( hoisted_31_1, function ( logic_new_func_x_3 )
                           return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                      end ), List( hoisted_30_1, function ( logic_new_func_x_3 )
+                      end ), List( hoisted_32_1, function ( logic_new_func_x_3 )
                           return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                       end ) );
             end ) ) );
-    hoisted_125_1 := deduped_143_1;
-    hoisted_117_1 := Concatenation( deduped_153_1, List( deduped_166_1, UnderlyingVertex ) );
-    hoisted_68_1 := deduped_134_1;
-    hoisted_25_1 := deduped_184_1;
-    hoisted_124_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
+    hoisted_127_1 := deduped_145_1;
+    hoisted_119_1 := Concatenation( deduped_156_1, List( deduped_168_1, UnderlyingVertex ) );
+    hoisted_70_1 := deduped_136_1;
+    hoisted_27_1 := deduped_186_1;
+    hoisted_126_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_117_1[logic_new_func_x_2] );
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_119_1[logic_new_func_x_2] );
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return deduped_172_1;
+                        return deduped_175_1;
                     fi;
                     return;
                 end );
         end );
-    hoisted_123_1 := deduped_176_1;
-    hoisted_70_1 := Concatenation( deduped_162_1, deduped_160_1 );
-    hoisted_122_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
+    hoisted_125_1 := deduped_178_1;
+    hoisted_72_1 := Concatenation( deduped_164_1, deduped_162_1 );
+    hoisted_124_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_70_1[logic_new_func_x_2];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_72_1[logic_new_func_x_2];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return hoisted_70_1[logic_new_func_x_3];
+                        return hoisted_72_1[logic_new_func_x_3];
                     fi;
                     return;
                 end );
         end );
-    hoisted_121_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
+    hoisted_123_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_70_1[logic_new_func_x_2];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_72_1[logic_new_func_x_2];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
                     return hoisted_1_2;
                 end );
         end );
-    hoisted_120_1 := deduped_132_1;
-    hoisted_119_1 := deduped_131_1;
-    hoisted_118_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
+    hoisted_122_1 := deduped_134_1;
+    hoisted_121_1 := deduped_133_1;
+    hoisted_120_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_25_1, hoisted_117_1[logic_new_func_x_2] ) );
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_27_1, hoisted_119_1[logic_new_func_x_2] ) );
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
@@ -1450,416 +1450,137 @@ function ( cat_1, arg2_1, arg3_1 )
                     return;
                 end );
         end );
-    hoisted_114_1 := deduped_151_1;
-    hoisted_115_1 := List( deduped_143_1, function ( logic_new_func_x_2 )
+    hoisted_116_1 := deduped_154_1;
+    hoisted_117_1 := List( deduped_145_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_114_1[logic_new_func_x_2]];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_70_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_116_1[logic_new_func_x_2]];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_72_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_116_1 := List( deduped_143_1, function ( logic_new_func_x_2 )
+    hoisted_118_1 := List( deduped_145_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_115_1[logic_new_func_x_2];
-            return Sum( List( hoisted_68_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_117_1[logic_new_func_x_2];
+            return Sum( List( hoisted_70_1, function ( logic_new_func_x_3 )
                       return hoisted_1_2[logic_new_func_x_3];
                   end ) );
         end );
-    hoisted_113_1 := deduped_138_1;
-    hoisted_14_1 := deduped_156_1;
-    hoisted_112_1 := List( deduped_141_1, function ( logic_new_func_x_2 )
+    hoisted_115_1 := deduped_140_1;
+    hoisted_16_1 := deduped_158_1;
+    hoisted_114_1 := List( deduped_143_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_14_1[logic_new_func_x_2]];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_70_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_16_1[logic_new_func_x_2]];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_72_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_111_1 := deduped_171_1;
-    hoisted_110_1 := deduped_170_1;
-    hoisted_20_1 := deduped_172_1;
-    hoisted_87_1 := List( deduped_140_1, function ( logic_new_func_x_2 )
-            return hoisted_20_1;
+    hoisted_113_1 := deduped_174_1;
+    hoisted_112_1 := deduped_173_1;
+    hoisted_22_1 := deduped_175_1;
+    hoisted_89_1 := List( deduped_142_1, function ( logic_new_func_x_2 )
+            return hoisted_22_1;
         end );
-    hoisted_109_1 := UnionOfRowsListList( deduped_136_1, [ UnionOfColumnsListList( deduped_148_1, [ List( deduped_182_1, function ( logic_new_func_new_row_2 )
+    hoisted_111_1 := UnionOfRowsListList( deduped_138_1, [ UnionOfColumnsListList( deduped_151_1, [ List( deduped_184_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
-                    end ), List( deduped_142_1, function ( logic_new_func_x_2 )
-                        return hoisted_87_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_149_1, [ deduped_185_1, deduped_173_1 ] ) ] );
-    hoisted_96_1 := deduped_165_1;
-    hoisted_95_1 := List( deduped_181_1, UnderlyingVertex );
-    hoisted_108_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
+                    end ), List( deduped_144_1, function ( logic_new_func_x_2 )
+                        return hoisted_89_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_152_1, [ deduped_187_1, deduped_176_1 ] ) ] );
+    hoisted_98_1 := deduped_167_1;
+    hoisted_97_1 := List( deduped_183_1, UnderlyingVertex );
+    hoisted_110_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_95_1[logic_new_func_x_2] );
-            return List( hoisted_96_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_97_1[logic_new_func_x_2] );
+            return List( hoisted_98_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return deduped_172_1;
+                        return deduped_175_1;
                     fi;
                     return;
                 end );
         end );
-    hoisted_52_1 := deduped_160_1;
-    hoisted_79_1 := List( deduped_140_1, function ( logic_new_func_x_2 )
-            return hoisted_52_1[logic_new_func_x_2];
+    hoisted_54_1 := deduped_162_1;
+    hoisted_81_1 := List( deduped_142_1, function ( logic_new_func_x_2 )
+            return hoisted_54_1[logic_new_func_x_2];
         end );
-    hoisted_107_1 := UnionOfRowsListList( deduped_136_1, [ UnionOfColumnsListList( deduped_148_1, [ List( deduped_182_1, function ( logic_new_func_new_row_2 )
+    hoisted_109_1 := UnionOfRowsListList( deduped_138_1, [ UnionOfColumnsListList( deduped_151_1, [ List( deduped_184_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                             end );
-                    end ), List( deduped_142_1, function ( logic_new_func_x_2 )
-                        return hoisted_79_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_149_1, [ List( deduped_193_1, function ( logic_new_func_new_row_2 )
-                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
-                            end );
-                    end ), deduped_130_1 ] ) ] );
-    hoisted_105_1 := deduped_140_1;
-    hoisted_104_1 := deduped_150_1;
-    hoisted_106_1 := UnionOfRowsListList( deduped_136_1, [ UnionOfColumnsListList( deduped_148_1, [ List( deduped_182_1, function ( logic_new_func_new_row_2 )
-                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
-                            end );
-                    end ), List( deduped_142_1, function ( logic_new_func_x_2 )
-                        local hoisted_1_2;
-                        hoisted_1_2 := hoisted_104_1[logic_new_func_x_2];
-                        return List( hoisted_105_1, function ( logic_new_func_x_3 )
-                                return hoisted_1_2;
-                            end );
-                    end ) ] ), UnionOfColumnsListList( deduped_149_1, [ deduped_128_1, deduped_129_1 ] ) ] );
-    hoisted_67_1 := List( deduped_181_1, function ( logic_new_func_x_2 )
-            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
-        end );
-    hoisted_103_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_67_1[logic_new_func_x_2];
-            return List( hoisted_96_1, function ( logic_new_func_x_3 )
-                    if logic_new_func_x_2 = logic_new_func_x_3 then
-                        return hoisted_1_2;
-                    else
-                        return hoisted_67_1[logic_new_func_x_3];
-                    fi;
-                    return;
-                end );
-        end );
-    hoisted_102_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_67_1[logic_new_func_x_2];
-            return List( hoisted_96_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2;
-                end );
-        end );
-    hoisted_100_1 := List( deduped_140_1, function ( logic_new_func_x_2 )
-            return true;
-        end );
-    hoisted_101_1 := UnionOfRowsListList( deduped_136_1, [ UnionOfColumnsListList( deduped_148_1, [ List( deduped_182_1, function ( logic_new_func_new_row_2 )
-                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
-                            end );
-                    end ), List( deduped_142_1, function ( logic_new_func_x_2 )
-                        return hoisted_100_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_149_1, [ List( deduped_193_1, function ( logic_new_func_new_row_2 )
-                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
-                            end );
-                    end ), deduped_137_1 ] ) ] );
-    hoisted_98_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_67_1[logic_new_func_x_2]];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_70_1[logic_new_func_x_3]];
-                end );
-        end );
-    hoisted_99_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_98_1[logic_new_func_x_2];
-            return Sum( List( hoisted_68_1, function ( logic_new_func_x_3 )
-                      return hoisted_1_2[logic_new_func_x_3];
-                  end ) );
-        end );
-    hoisted_97_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_25_1, hoisted_95_1[logic_new_func_x_2] ) );
-            return List( hoisted_96_1, function ( logic_new_func_x_3 )
-                    if logic_new_func_x_2 = logic_new_func_x_3 then
-                        return hoisted_1_2;
-                    else
-                        return true;
-                    fi;
-                    return;
-                end );
-        end );
-    hoisted_93_1 := [ 1 .. Length( Concatenation( deduped_170_1, deduped_171_1 ) ) ];
-    hoisted_92_1 := Concatenation( deduped_150_1, deduped_161_1 );
-    hoisted_94_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_67_1[logic_new_func_x_2]];
-            return List( hoisted_93_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_92_1[logic_new_func_x_3]];
-                end );
-        end );
-    hoisted_86_1 := deduped_153_1;
-    hoisted_78_1 := deduped_147_1;
-    hoisted_88_1 := UnionOfColumnsListList( deduped_163_1, [ List( deduped_147_1, function ( logic_new_func_x_2 )
-                  local hoisted_1_2;
-                  hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_86_1[logic_new_func_x_2] );
-                  return List( hoisted_78_1, function ( logic_new_func_x_3 )
-                          if logic_new_func_x_2 = logic_new_func_x_3 then
-                              return hoisted_1_2;
-                          else
-                              return deduped_172_1;
-                          fi;
-                          return;
-                      end );
-              end ), List( deduped_147_1, function ( logic_new_func_x_2 )
-                  return hoisted_87_1;
-              end ) ] );
-    hoisted_85_1 := deduped_189_1;
-    hoisted_75_1 := [ 1 .. deduped_178_1 ];
-    hoisted_89_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_85_1[logic_new_func_x_2];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
-                    return Iterated( List( hoisted_75_1, function ( logic_new_func_x_4 )
-                              return hoisted_1_2[logic_new_func_x_4] * hoisted_88_1[logic_new_func_x_4][logic_new_func_x_3];
-                          end ), function ( alpha_4, beta_4 )
-                            return alpha_4 + beta_4;
-                        end );
-                end );
-        end );
-    hoisted_83_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
-            return hoisted_20_1;
-        end );
-    hoisted_84_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            return hoisted_83_1;
-        end );
-    hoisted_77_1 := deduped_162_1;
-    hoisted_80_1 := UnionOfColumnsListList( deduped_163_1, [ List( deduped_147_1, function ( logic_new_func_x_2 )
-                  local hoisted_1_2;
-                  hoisted_1_2 := hoisted_77_1[logic_new_func_x_2];
-                  return List( hoisted_78_1, function ( logic_new_func_x_3 )
-                          if logic_new_func_x_2 = logic_new_func_x_3 then
-                              return hoisted_1_2;
-                          else
-                              return hoisted_77_1[logic_new_func_x_3];
-                          fi;
-                          return;
-                      end );
-              end ), List( deduped_147_1, function ( logic_new_func_x_2 )
-                  return hoisted_79_1;
-              end ) ] );
-    hoisted_81_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
-            return List( hoisted_75_1, function ( logic_new_func_x_3 )
-                      return hoisted_80_1[logic_new_func_x_3][logic_new_func_x_2];
-                  end )[1];
-        end );
-    hoisted_82_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            return hoisted_81_1;
-        end );
-    hoisted_74_1 := deduped_133_1;
-    hoisted_76_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2, hoisted_2_2;
-            hoisted_1_2 := hoisted_74_1[logic_new_func_x_2];
-            hoisted_2_2 := List( hoisted_75_1, function ( logic_new_func_x_3 )
-                      return hoisted_1_2[logic_new_func_x_3];
-                  end )[1];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
-                    return hoisted_2_2;
-                end );
-        end );
-    hoisted_73_1 := ForAny( [ deduped_178_1, deduped_163_1 ], IsZero );
-    hoisted_71_1 := List( deduped_134_1, function ( logic_new_func_x_2 )
-            return hoisted_70_1[logic_new_func_x_2];
-        end );
-    hoisted_72_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            return hoisted_71_1;
-        end );
-    hoisted_69_1 := List( deduped_165_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_67_1[logic_new_func_x_2];
-            return List( hoisted_68_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2;
-                end );
-        end );
-    hoisted_66_1 := deduped_146_1;
-    hoisted_58_1 := Concatenation( deduped_157_1, List( deduped_167_1, UnderlyingVertex ) );
-    hoisted_2_1 := deduped_135_1;
-    hoisted_65_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_58_1[logic_new_func_x_2] );
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    if logic_new_func_x_2 = logic_new_func_x_3 then
-                        return hoisted_1_2;
-                    else
-                        return deduped_172_1;
-                    fi;
-                    return;
-                end );
-        end );
-    hoisted_64_1 := deduped_173_1;
-    hoisted_5_1 := Concatenation( deduped_154_1, deduped_156_1 );
-    hoisted_63_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    if logic_new_func_x_2 = logic_new_func_x_3 then
-                        return hoisted_1_2;
-                    else
-                        return hoisted_5_1[logic_new_func_x_3];
-                    fi;
-                    return;
-                end );
-        end );
-    hoisted_62_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2;
-                end );
-        end );
-    hoisted_61_1 := deduped_130_1;
-    hoisted_60_1 := deduped_129_1;
-    hoisted_59_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_25_1, hoisted_58_1[logic_new_func_x_2] ) );
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    if logic_new_func_x_2 = logic_new_func_x_3 then
-                        return hoisted_1_2;
-                    else
-                        return true;
-                    fi;
-                    return;
-                end );
-        end );
-    hoisted_55_1 := deduped_161_1;
-    hoisted_56_1 := List( deduped_146_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_55_1[logic_new_func_x_2]];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_5_1[logic_new_func_x_3]];
-                end );
-        end );
-    hoisted_57_1 := List( deduped_146_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_56_1[logic_new_func_x_2];
-            return Sum( List( hoisted_2_1, function ( logic_new_func_x_3 )
-                      return hoisted_1_2[logic_new_func_x_3];
-                  end ) );
-        end );
-    hoisted_54_1 := deduped_137_1;
-    hoisted_53_1 := List( deduped_140_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_52_1[logic_new_func_x_2]];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_5_1[logic_new_func_x_3]];
-                end );
-        end );
-    hoisted_51_1 := deduped_174_1;
-    hoisted_50_1 := deduped_177_1;
-    hoisted_49_1 := HomStructureOnBasisPaths( deduped_194_1 );
-    hoisted_26_1 := List( deduped_141_1, function ( logic_new_func_x_2 )
-            return hoisted_20_1;
-        end );
-    hoisted_48_1 := UnionOfRowsListList( deduped_139_1, [ UnionOfColumnsListList( deduped_159_1, [ List( deduped_188_1, function ( logic_new_func_new_row_2 )
-                        return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
-                    end ), List( deduped_145_1, function ( logic_new_func_x_2 )
-                        return hoisted_26_1;
-                    end ) ] ), UnionOfColumnsListList( deduped_152_1, [ deduped_189_1, deduped_176_1 ] ) ] );
-    hoisted_35_1 := deduped_164_1;
-    hoisted_34_1 := List( deduped_179_1, UnderlyingVertex );
-    hoisted_47_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
-            local hoisted_1_2;
-            hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_34_1[logic_new_func_x_2] );
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
-                    if logic_new_func_x_2 = logic_new_func_x_3 then
-                        return hoisted_1_2;
-                    else
-                        return deduped_172_1;
-                    fi;
-                    return;
-                end );
-        end );
-    hoisted_15_1 := List( deduped_141_1, function ( logic_new_func_x_2 )
-            return hoisted_14_1[logic_new_func_x_2];
-        end );
-    hoisted_46_1 := UnionOfRowsListList( deduped_139_1, [ UnionOfColumnsListList( deduped_159_1, [ List( deduped_188_1, function ( logic_new_func_new_row_2 )
-                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
-                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
-                            end );
-                    end ), List( deduped_145_1, function ( logic_new_func_x_2 )
-                        return hoisted_15_1;
+                    end ), List( deduped_144_1, function ( logic_new_func_x_2 )
+                        return hoisted_81_1;
                     end ) ] ), UnionOfColumnsListList( deduped_152_1, [ List( deduped_196_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
                             end );
                     end ), deduped_132_1 ] ) ] );
-    hoisted_44_1 := deduped_141_1;
-    hoisted_43_1 := deduped_158_1;
-    hoisted_45_1 := UnionOfRowsListList( deduped_139_1, [ UnionOfColumnsListList( deduped_159_1, [ List( deduped_188_1, function ( logic_new_func_new_row_2 )
+    hoisted_107_1 := deduped_142_1;
+    hoisted_106_1 := deduped_153_1;
+    hoisted_108_1 := UnionOfRowsListList( deduped_138_1, [ UnionOfColumnsListList( deduped_151_1, [ List( deduped_184_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
                             end );
-                    end ), List( deduped_145_1, function ( logic_new_func_x_2 )
+                    end ), List( deduped_144_1, function ( logic_new_func_x_2 )
                         local hoisted_1_2;
-                        hoisted_1_2 := hoisted_43_1[logic_new_func_x_2];
-                        return List( hoisted_44_1, function ( logic_new_func_x_3 )
+                        hoisted_1_2 := hoisted_106_1[logic_new_func_x_2];
+                        return List( hoisted_107_1, function ( logic_new_func_x_3 )
                                 return hoisted_1_2;
                             end );
-                    end ) ] ), UnionOfColumnsListList( deduped_152_1, [ deduped_133_1, deduped_131_1 ] ) ] );
-    hoisted_1_1 := List( deduped_179_1, function ( logic_new_func_x_2 )
+                    end ) ] ), UnionOfColumnsListList( deduped_152_1, [ deduped_130_1, deduped_131_1 ] ) ] );
+    hoisted_69_1 := List( deduped_183_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    hoisted_42_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_105_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1[logic_new_func_x_2];
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_69_1[logic_new_func_x_2];
+            return List( hoisted_98_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
-                        return hoisted_1_1[logic_new_func_x_3];
+                        return hoisted_69_1[logic_new_func_x_3];
                     fi;
                     return;
                 end );
         end );
-    hoisted_41_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_104_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1[logic_new_func_x_2];
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_69_1[logic_new_func_x_2];
+            return List( hoisted_98_1, function ( logic_new_func_x_3 )
                     return hoisted_1_2;
                 end );
         end );
-    hoisted_39_1 := List( deduped_141_1, function ( logic_new_func_x_2 )
+    hoisted_102_1 := List( deduped_142_1, function ( logic_new_func_x_2 )
             return true;
         end );
-    hoisted_40_1 := UnionOfRowsListList( deduped_139_1, [ UnionOfColumnsListList( deduped_159_1, [ List( deduped_188_1, function ( logic_new_func_new_row_2 )
+    hoisted_103_1 := UnionOfRowsListList( deduped_138_1, [ UnionOfColumnsListList( deduped_151_1, [ List( deduped_184_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                             end );
-                    end ), List( deduped_145_1, function ( logic_new_func_x_2 )
-                        return hoisted_39_1;
+                    end ), List( deduped_144_1, function ( logic_new_func_x_2 )
+                        return hoisted_102_1;
                     end ) ] ), UnionOfColumnsListList( deduped_152_1, [ List( deduped_196_1, function ( logic_new_func_new_row_2 )
                         return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
                                 return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
                             end );
-                    end ), deduped_138_1 ] ) ] );
-    hoisted_37_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+                    end ), deduped_139_1 ] ) ] );
+    hoisted_100_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_1_1[logic_new_func_x_2]];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_5_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_69_1[logic_new_func_x_2]];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_72_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_38_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_101_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_37_1[logic_new_func_x_2];
-            return Sum( List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_100_1[logic_new_func_x_2];
+            return Sum( List( hoisted_70_1, function ( logic_new_func_x_3 )
                       return hoisted_1_2[logic_new_func_x_3];
                   end ) );
         end );
-    hoisted_36_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_99_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_25_1, hoisted_34_1[logic_new_func_x_2] ) );
-            return List( hoisted_35_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_27_1, hoisted_97_1[logic_new_func_x_2] ) );
+            return List( hoisted_98_1, function ( logic_new_func_x_3 )
                     if logic_new_func_x_2 = logic_new_func_x_3 then
                         return hoisted_1_2;
                     else
@@ -1868,117 +1589,396 @@ function ( cat_1, arg2_1, arg3_1 )
                     return;
                 end );
         end );
-    hoisted_32_1 := [ 1 .. Length( Concatenation( deduped_177_1, deduped_174_1 ) ) ];
-    hoisted_31_1 := Concatenation( deduped_158_1, deduped_151_1 );
-    hoisted_33_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_95_1 := [ 1 .. Length( Concatenation( deduped_173_1, deduped_174_1 ) ) ];
+    hoisted_94_1 := Concatenation( deduped_153_1, deduped_163_1 );
+    hoisted_96_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_4_1[hoisted_1_1[logic_new_func_x_2]];
-            return List( hoisted_32_1, function ( logic_new_func_x_3 )
-                    return hoisted_1_2[hoisted_31_1[logic_new_func_x_3]];
+            hoisted_1_2 := hoisted_6_1[hoisted_69_1[logic_new_func_x_2]];
+            return List( hoisted_95_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_94_1[logic_new_func_x_3]];
                 end );
         end );
-    hoisted_24_1 := deduped_157_1;
-    hoisted_13_1 := deduped_144_1;
-    hoisted_27_1 := UnionOfColumnsListList( deduped_155_1, [ List( deduped_144_1, function ( logic_new_func_x_2 )
+    hoisted_88_1 := deduped_156_1;
+    hoisted_80_1 := deduped_149_1;
+    hoisted_90_1 := UnionOfColumnsListList( deduped_165_1, [ List( deduped_149_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2;
-                  hoisted_1_2 := PathAsAlgebraElement( hoisted_25_1, hoisted_24_1[logic_new_func_x_2] );
-                  return List( hoisted_13_1, function ( logic_new_func_x_3 )
+                  hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_88_1[logic_new_func_x_2] );
+                  return List( hoisted_80_1, function ( logic_new_func_x_3 )
                           if logic_new_func_x_2 = logic_new_func_x_3 then
                               return hoisted_1_2;
                           else
-                              return deduped_172_1;
+                              return deduped_175_1;
                           fi;
                           return;
                       end );
-              end ), List( deduped_144_1, function ( logic_new_func_x_2 )
-                  return hoisted_26_1;
+              end ), List( deduped_149_1, function ( logic_new_func_x_2 )
+                  return hoisted_89_1;
               end ) ] );
-    hoisted_23_1 := deduped_185_1;
-    hoisted_10_1 := [ 1 .. deduped_168_1 ];
-    hoisted_28_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_87_1 := deduped_191_1;
+    hoisted_77_1 := [ 1 .. deduped_180_1 ];
+    hoisted_91_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_23_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
-                    return Iterated( List( hoisted_10_1, function ( logic_new_func_x_4 )
-                              return hoisted_1_2[logic_new_func_x_4] * hoisted_27_1[logic_new_func_x_4][logic_new_func_x_3];
+            hoisted_1_2 := hoisted_87_1[logic_new_func_x_2];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
+                    return Iterated( List( hoisted_77_1, function ( logic_new_func_x_4 )
+                              return hoisted_1_2[logic_new_func_x_4] * hoisted_90_1[logic_new_func_x_4][logic_new_func_x_3];
                           end ), function ( alpha_4, beta_4 )
                             return alpha_4 + beta_4;
                         end );
                 end );
         end );
-    hoisted_21_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            return hoisted_20_1;
+    hoisted_85_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
+            return hoisted_22_1;
         end );
-    hoisted_22_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
-            return hoisted_21_1;
+    hoisted_86_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
+            return hoisted_85_1;
         end );
-    hoisted_19_1 := deduped_187_1;
-    hoisted_12_1 := deduped_154_1;
-    hoisted_16_1 := UnionOfColumnsListList( deduped_155_1, [ List( deduped_144_1, function ( logic_new_func_x_2 )
+    hoisted_79_1 := deduped_164_1;
+    hoisted_82_1 := UnionOfColumnsListList( deduped_165_1, [ List( deduped_149_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2;
-                  hoisted_1_2 := hoisted_12_1[logic_new_func_x_2];
-                  return List( hoisted_13_1, function ( logic_new_func_x_3 )
+                  hoisted_1_2 := hoisted_79_1[logic_new_func_x_2];
+                  return List( hoisted_80_1, function ( logic_new_func_x_3 )
                           if logic_new_func_x_2 = logic_new_func_x_3 then
                               return hoisted_1_2;
                           else
-                              return hoisted_12_1[logic_new_func_x_3];
+                              return hoisted_79_1[logic_new_func_x_3];
                           fi;
                           return;
                       end );
-              end ), List( deduped_144_1, function ( logic_new_func_x_2 )
-                  return hoisted_15_1;
+              end ), List( deduped_149_1, function ( logic_new_func_x_2 )
+                  return hoisted_81_1;
               end ) ] );
-    hoisted_17_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            return List( hoisted_10_1, function ( logic_new_func_x_3 )
-                      return hoisted_16_1[logic_new_func_x_3][logic_new_func_x_2];
+    hoisted_83_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
+            return List( hoisted_77_1, function ( logic_new_func_x_3 )
+                      return hoisted_82_1[logic_new_func_x_3][logic_new_func_x_2];
                   end )[1];
         end );
-    hoisted_18_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
-            return hoisted_17_1;
+    hoisted_84_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
+            return hoisted_83_1;
         end );
-    hoisted_9_1 := deduped_128_1;
-    hoisted_11_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_76_1 := deduped_135_1;
+    hoisted_78_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2;
-            hoisted_1_2 := hoisted_9_1[logic_new_func_x_2];
-            hoisted_2_2 := List( hoisted_10_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_76_1[logic_new_func_x_2];
+            hoisted_2_2 := List( hoisted_77_1, function ( logic_new_func_x_3 )
                       return hoisted_1_2[logic_new_func_x_3];
                   end )[1];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
                     return hoisted_2_2;
                 end );
         end );
-    hoisted_8_1 := ForAny( [ deduped_168_1, deduped_155_1 ], IsZero );
-    hoisted_6_1 := List( deduped_135_1, function ( logic_new_func_x_2 )
-            return hoisted_5_1[logic_new_func_x_2];
+    hoisted_75_1 := ForAny( [ deduped_180_1, deduped_165_1 ], IsZero );
+    hoisted_73_1 := List( deduped_136_1, function ( logic_new_func_x_2 )
+            return hoisted_72_1[logic_new_func_x_2];
         end );
-    hoisted_7_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
-            return hoisted_6_1;
+    hoisted_74_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
+            return hoisted_73_1;
         end );
-    hoisted_3_1 := List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_71_1 := List( deduped_167_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1[logic_new_func_x_2];
-            return List( hoisted_2_1, function ( logic_new_func_x_3 )
+            hoisted_1_2 := hoisted_69_1[logic_new_func_x_2];
+            return List( hoisted_70_1, function ( logic_new_func_x_3 )
                     return hoisted_1_2;
                 end );
         end );
-    return IsZero( DecideZeroRows( HomalgMatrixListList( UnionOfColumnsListList( 1, List( deduped_164_1, function ( logic_new_func_x_2 )
+    hoisted_68_1 := deduped_148_1;
+    hoisted_60_1 := Concatenation( deduped_159_1, List( deduped_169_1, UnderlyingVertex ) );
+    hoisted_4_1 := deduped_137_1;
+    hoisted_67_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_60_1[logic_new_func_x_2] );
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    if logic_new_func_x_2 = logic_new_func_x_3 then
+                        return hoisted_1_2;
+                    else
+                        return deduped_175_1;
+                    fi;
+                    return;
+                end );
+        end );
+    hoisted_66_1 := deduped_176_1;
+    hoisted_7_1 := Concatenation( deduped_157_1, deduped_158_1 );
+    hoisted_65_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_7_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    if logic_new_func_x_2 = logic_new_func_x_3 then
+                        return hoisted_1_2;
+                    else
+                        return hoisted_7_1[logic_new_func_x_3];
+                    fi;
+                    return;
+                end );
+        end );
+    hoisted_64_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_7_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2;
+                end );
+        end );
+    hoisted_63_1 := deduped_132_1;
+    hoisted_62_1 := deduped_131_1;
+    hoisted_61_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_27_1, hoisted_60_1[logic_new_func_x_2] ) );
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    if logic_new_func_x_2 = logic_new_func_x_3 then
+                        return hoisted_1_2;
+                    else
+                        return true;
+                    fi;
+                    return;
+                end );
+        end );
+    hoisted_57_1 := deduped_163_1;
+    hoisted_58_1 := List( deduped_148_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_6_1[hoisted_57_1[logic_new_func_x_2]];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_7_1[logic_new_func_x_3]];
+                end );
+        end );
+    hoisted_59_1 := List( deduped_148_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_58_1[logic_new_func_x_2];
+            return Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
+                      return hoisted_1_2[logic_new_func_x_3];
+                  end ) );
+        end );
+    hoisted_56_1 := deduped_139_1;
+    hoisted_55_1 := List( deduped_142_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_6_1[hoisted_54_1[logic_new_func_x_2]];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_7_1[logic_new_func_x_3]];
+                end );
+        end );
+    hoisted_53_1 := deduped_177_1;
+    hoisted_52_1 := deduped_179_1;
+    hoisted_51_1 := HomStructureOnBasisPaths( deduped_197_1 );
+    hoisted_28_1 := List( deduped_143_1, function ( logic_new_func_x_2 )
+            return hoisted_22_1;
+        end );
+    hoisted_50_1 := UnionOfRowsListList( deduped_141_1, [ UnionOfColumnsListList( deduped_161_1, [ List( deduped_190_1, function ( logic_new_func_new_row_2 )
+                        return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
+                    end ), List( deduped_147_1, function ( logic_new_func_x_2 )
+                        return hoisted_28_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_155_1, [ deduped_191_1, deduped_178_1 ] ) ] );
+    hoisted_37_1 := deduped_166_1;
+    hoisted_36_1 := List( deduped_181_1, UnderlyingVertex );
+    hoisted_49_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_36_1[logic_new_func_x_2] );
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
+                    if logic_new_func_x_2 = logic_new_func_x_3 then
+                        return hoisted_1_2;
+                    else
+                        return deduped_175_1;
+                    fi;
+                    return;
+                end );
+        end );
+    hoisted_17_1 := List( deduped_143_1, function ( logic_new_func_x_2 )
+            return hoisted_16_1[logic_new_func_x_2];
+        end );
+    hoisted_48_1 := UnionOfRowsListList( deduped_141_1, [ UnionOfColumnsListList( deduped_161_1, [ List( deduped_190_1, function ( logic_new_func_new_row_2 )
+                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
+                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                            end );
+                    end ), List( deduped_147_1, function ( logic_new_func_x_2 )
+                        return hoisted_17_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_155_1, [ List( deduped_198_1, function ( logic_new_func_new_row_2 )
+                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
+                                return VertexIndex( UnderlyingVertex( Range( logic_new_func_x_3 ) ) );
+                            end );
+                    end ), deduped_134_1 ] ) ] );
+    hoisted_46_1 := deduped_143_1;
+    hoisted_45_1 := deduped_160_1;
+    hoisted_47_1 := UnionOfRowsListList( deduped_141_1, [ UnionOfColumnsListList( deduped_161_1, [ List( deduped_190_1, function ( logic_new_func_new_row_2 )
+                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
+                                return VertexIndex( UnderlyingVertex( Source( logic_new_func_x_3 ) ) );
+                            end );
+                    end ), List( deduped_147_1, function ( logic_new_func_x_2 )
+                        local hoisted_1_2;
+                        hoisted_1_2 := hoisted_45_1[logic_new_func_x_2];
+                        return List( hoisted_46_1, function ( logic_new_func_x_3 )
+                                return hoisted_1_2;
+                            end );
+                    end ) ] ), UnionOfColumnsListList( deduped_155_1, [ deduped_135_1, deduped_133_1 ] ) ] );
+    hoisted_3_1 := List( deduped_181_1, function ( logic_new_func_x_2 )
+            return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
+    hoisted_44_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
+                    if logic_new_func_x_2 = logic_new_func_x_3 then
+                        return hoisted_1_2;
+                    else
+                        return hoisted_3_1[logic_new_func_x_3];
+                    fi;
+                    return;
+                end );
+        end );
+    hoisted_43_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2;
+                end );
+        end );
+    hoisted_41_1 := List( deduped_143_1, function ( logic_new_func_x_2 )
+            return true;
+        end );
+    hoisted_42_1 := UnionOfRowsListList( deduped_141_1, [ UnionOfColumnsListList( deduped_161_1, [ List( deduped_190_1, function ( logic_new_func_new_row_2 )
+                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
+                                return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
+                            end );
+                    end ), List( deduped_147_1, function ( logic_new_func_x_2 )
+                        return hoisted_41_1;
+                    end ) ] ), UnionOfColumnsListList( deduped_155_1, [ List( deduped_198_1, function ( logic_new_func_new_row_2 )
+                        return List( logic_new_func_new_row_2, function ( logic_new_func_x_3 )
+                                return IsZero( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
+                            end );
+                    end ), deduped_140_1 ] ) ] );
+    hoisted_39_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_6_1[hoisted_3_1[logic_new_func_x_2]];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_7_1[logic_new_func_x_3]];
+                end );
+        end );
+    hoisted_40_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_39_1[logic_new_func_x_2];
+            return Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
+                      return hoisted_1_2[logic_new_func_x_3];
+                  end ) );
+        end );
+    hoisted_38_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := IsZero( PathAsAlgebraElement( hoisted_27_1, hoisted_36_1[logic_new_func_x_2] ) );
+            return List( hoisted_37_1, function ( logic_new_func_x_3 )
+                    if logic_new_func_x_2 = logic_new_func_x_3 then
+                        return hoisted_1_2;
+                    else
+                        return true;
+                    fi;
+                    return;
+                end );
+        end );
+    hoisted_34_1 := [ 1 .. Length( Concatenation( deduped_179_1, deduped_177_1 ) ) ];
+    hoisted_33_1 := Concatenation( deduped_160_1, deduped_154_1 );
+    hoisted_35_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_6_1[hoisted_3_1[logic_new_func_x_2]];
+            return List( hoisted_34_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2[hoisted_33_1[logic_new_func_x_3]];
+                end );
+        end );
+    hoisted_26_1 := deduped_159_1;
+    hoisted_15_1 := deduped_146_1;
+    hoisted_29_1 := UnionOfColumnsListList( deduped_150_1, [ List( deduped_146_1, function ( logic_new_func_x_2 )
+                  local hoisted_1_2;
+                  hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_26_1[logic_new_func_x_2] );
+                  return List( hoisted_15_1, function ( logic_new_func_x_3 )
+                          if logic_new_func_x_2 = logic_new_func_x_3 then
+                              return hoisted_1_2;
+                          else
+                              return deduped_175_1;
+                          fi;
+                          return;
+                      end );
+              end ), List( deduped_146_1, function ( logic_new_func_x_2 )
+                  return hoisted_28_1;
+              end ) ] );
+    hoisted_25_1 := deduped_187_1;
+    hoisted_12_1 := [ 1 .. deduped_170_1 ];
+    hoisted_30_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_25_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return Iterated( List( hoisted_12_1, function ( logic_new_func_x_4 )
+                              return hoisted_1_2[logic_new_func_x_4] * hoisted_29_1[logic_new_func_x_4][logic_new_func_x_3];
+                          end ), function ( alpha_4, beta_4 )
+                            return alpha_4 + beta_4;
+                        end );
+                end );
+        end );
+    hoisted_23_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            return hoisted_22_1;
+        end );
+    hoisted_24_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            return hoisted_23_1;
+        end );
+    hoisted_21_1 := deduped_189_1;
+    hoisted_14_1 := deduped_157_1;
+    hoisted_18_1 := UnionOfColumnsListList( deduped_150_1, [ List( deduped_146_1, function ( logic_new_func_x_2 )
+                  local hoisted_1_2;
+                  hoisted_1_2 := hoisted_14_1[logic_new_func_x_2];
+                  return List( hoisted_15_1, function ( logic_new_func_x_3 )
+                          if logic_new_func_x_2 = logic_new_func_x_3 then
+                              return hoisted_1_2;
+                          else
+                              return hoisted_14_1[logic_new_func_x_3];
+                          fi;
+                          return;
+                      end );
+              end ), List( deduped_146_1, function ( logic_new_func_x_2 )
+                  return hoisted_17_1;
+              end ) ] );
+    hoisted_19_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            return List( hoisted_12_1, function ( logic_new_func_x_3 )
+                      return hoisted_18_1[logic_new_func_x_3][logic_new_func_x_2];
+                  end )[1];
+        end );
+    hoisted_20_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            return hoisted_19_1;
+        end );
+    hoisted_11_1 := deduped_130_1;
+    hoisted_13_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2, hoisted_2_2;
+            hoisted_1_2 := hoisted_11_1[logic_new_func_x_2];
+            hoisted_2_2 := List( hoisted_12_1, function ( logic_new_func_x_3 )
+                      return hoisted_1_2[logic_new_func_x_3];
+                  end )[1];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_2_2;
+                end );
+        end );
+    hoisted_10_1 := ForAny( [ deduped_170_1, deduped_150_1 ], IsZero );
+    hoisted_8_1 := List( deduped_137_1, function ( logic_new_func_x_2 )
+            return hoisted_7_1[logic_new_func_x_2];
+        end );
+    hoisted_9_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            return hoisted_8_1;
+        end );
+    hoisted_5_1 := List( deduped_166_1, function ( logic_new_func_x_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+            return List( hoisted_4_1, function ( logic_new_func_x_3 )
+                    return hoisted_1_2;
+                end );
+        end );
+    return IsZero( DecideZeroRows( HomalgMatrixListList( UnionOfColumnsListList( 1, List( deduped_166_1, function ( logic_new_func_x_2 )
                       local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2;
-                      hoisted_6_2 := hoisted_28_1[logic_new_func_x_2];
-                      hoisted_5_2 := hoisted_22_1[logic_new_func_x_2];
-                      hoisted_4_2 := hoisted_18_1[logic_new_func_x_2];
-                      hoisted_3_2 := hoisted_11_1[logic_new_func_x_2];
-                      hoisted_2_2 := hoisted_7_1[logic_new_func_x_2];
-                      hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
-                      return UnionOfColumnsListList( 1, List( hoisted_2_1, function ( logic_new_func_x_3 )
+                      hoisted_6_2 := hoisted_30_1[logic_new_func_x_2];
+                      hoisted_5_2 := hoisted_24_1[logic_new_func_x_2];
+                      hoisted_4_2 := hoisted_20_1[logic_new_func_x_2];
+                      hoisted_3_2 := hoisted_13_1[logic_new_func_x_2];
+                      hoisted_2_2 := hoisted_9_1[logic_new_func_x_2];
+                      hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
+                      return UnionOfColumnsListList( 1, List( hoisted_4_1, function ( logic_new_func_x_3 )
                                 local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
                                 deduped_6_3 := hoisted_4_2[logic_new_func_x_3];
                                 deduped_5_3 := hoisted_3_2[logic_new_func_x_3];
                                 deduped_4_3 := hoisted_2_2[logic_new_func_x_3];
                                 deduped_3_3 := hoisted_1_2[logic_new_func_x_3];
-                                deduped_2_3 := hoisted_4_1[deduped_5_3][deduped_6_3];
-                                deduped_1_3 := hoisted_4_1[deduped_3_3][deduped_4_3];
+                                deduped_2_3 := hoisted_6_1[deduped_5_3][deduped_6_3];
+                                deduped_1_3 := hoisted_6_1[deduped_3_3][deduped_4_3];
                                 if function (  )
-                                            if hoisted_8_1 then
+                                            if hoisted_10_1 then
                                                 return deduped_1_3;
                                             else
                                                 return deduped_2_3;
@@ -1986,7 +1986,7 @@ function ( cat_1, arg2_1, arg3_1 )
                                             return;
                                         end(  ) = 0 then
                                     return function (  )
-                                            if hoisted_8_1 then
+                                            if hoisted_10_1 then
                                                 return NullMatImmutable( 1, deduped_1_3 );
                                             else
                                                 return NullMatImmutable( 1, deduped_2_3 );
@@ -1995,52 +1995,52 @@ function ( cat_1, arg2_1, arg3_1 )
                                         end(  );
                                 else
                                     return [ function (  )
-                                                if hoisted_8_1 then
-                                                    return CoefficientsOfPaths( hoisted_19_1[deduped_3_3][deduped_4_3], hoisted_5_2[logic_new_func_x_3] );
+                                                if hoisted_10_1 then
+                                                    return CoefficientsOfPaths( hoisted_21_1[deduped_3_3][deduped_4_3], hoisted_5_2[logic_new_func_x_3] );
                                                 else
-                                                    return CoefficientsOfPaths( hoisted_19_1[deduped_5_3][deduped_6_3], hoisted_6_2[logic_new_func_x_3] );
+                                                    return CoefficientsOfPaths( hoisted_21_1[deduped_5_3][deduped_6_3], hoisted_6_2[logic_new_func_x_3] );
                                                 fi;
                                                 return;
                                             end(  ) ];
                                 fi;
                                 return;
                             end ) );
-                  end ) ), 1, deduped_126_1, deduped_180_1 ), UnionOfRows( deduped_180_1, Sum( [ deduped_126_1 ] ), [ HomalgMatrixListList( UnionOfRowsListList( deduped_126_1, List( deduped_164_1, function ( logic_new_func_x_2 )
+                  end ) ), 1, deduped_128_1, deduped_182_1 ), UnionOfRows( deduped_182_1, Sum( [ deduped_128_1 ] ), [ HomalgMatrixListList( UnionOfRowsListList( deduped_128_1, List( deduped_166_1, function ( logic_new_func_x_2 )
                             local hoisted_1_2, hoisted_2_2;
-                            hoisted_1_2 := hoisted_33_1[logic_new_func_x_2];
-                            hoisted_2_2 := Sum( hoisted_32_1, function ( logic_new_func_x_3 )
+                            hoisted_1_2 := hoisted_35_1[logic_new_func_x_2];
+                            hoisted_2_2 := Sum( hoisted_34_1, function ( logic_new_func_x_3 )
                                     return hoisted_1_2[logic_new_func_x_3];
                                 end );
-                            return UnionOfColumnsListList( Sum( List( hoisted_32_1, function ( logic_new_func_x_3 )
+                            return UnionOfColumnsListList( Sum( List( hoisted_34_1, function ( logic_new_func_x_3 )
                                         return hoisted_1_2[logic_new_func_x_3];
-                                    end ) ), List( hoisted_35_1, function ( logic_new_func_x_3 )
+                                    end ) ), List( hoisted_37_1, function ( logic_new_func_x_3 )
                                       local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
-                                      deduped_9_3 := hoisted_38_1[logic_new_func_x_3];
-                                      if hoisted_36_1[logic_new_func_x_3][logic_new_func_x_2] then
+                                      deduped_9_3 := hoisted_40_1[logic_new_func_x_3];
+                                      if hoisted_38_1[logic_new_func_x_3][logic_new_func_x_2] then
                                           return NullMatImmutable( hoisted_2_2, deduped_9_3 );
                                       else
-                                          deduped_8_3 := hoisted_42_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          deduped_7_3 := hoisted_41_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          hoisted_6_3 := [ 1 .. hoisted_4_1[deduped_7_3][deduped_8_3] ];
+                                          deduped_8_3 := hoisted_44_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          deduped_7_3 := hoisted_43_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          hoisted_6_3 := [ 1 .. hoisted_6_1[deduped_7_3][deduped_8_3] ];
                                           hoisted_5_3 := deduped_7_3;
-                                          hoisted_4_3 := hoisted_49_1[deduped_8_3];
-                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_19_1[deduped_7_3][deduped_8_3], hoisted_47_1[logic_new_func_x_3][logic_new_func_x_2] );
-                                          hoisted_1_3 := hoisted_37_1[logic_new_func_x_3];
-                                          hoisted_2_3 := Sum( hoisted_2_1, function ( logic_new_func_x_4 )
+                                          hoisted_4_3 := hoisted_51_1[deduped_8_3];
+                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_21_1[deduped_7_3][deduped_8_3], hoisted_49_1[logic_new_func_x_3][logic_new_func_x_2] );
+                                          hoisted_1_3 := hoisted_39_1[logic_new_func_x_3];
+                                          hoisted_2_3 := Sum( hoisted_4_1, function ( logic_new_func_x_4 )
                                                   return hoisted_1_3[logic_new_func_x_4];
                                               end );
-                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_32_1, function ( logic_new_func_x_4 )
+                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_34_1, function ( logic_new_func_x_4 )
                                                     local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
                                                     deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
                                                     if deduped_6_4 = 0 then
                                                         return NullMatImmutable( deduped_6_4, hoisted_2_3 );
                                                     else
-                                                        hoisted_5_4 := hoisted_48_1[logic_new_func_x_4];
-                                                        hoisted_4_4 := hoisted_46_1[logic_new_func_x_4];
-                                                        hoisted_3_4 := hoisted_45_1[logic_new_func_x_4];
+                                                        hoisted_5_4 := hoisted_50_1[logic_new_func_x_4];
+                                                        hoisted_4_4 := hoisted_48_1[logic_new_func_x_4];
+                                                        hoisted_3_4 := hoisted_47_1[logic_new_func_x_4];
                                                         hoisted_2_4 := deduped_6_4;
-                                                        hoisted_1_4 := hoisted_40_1[logic_new_func_x_4];
-                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_2_1, function ( logic_new_func_x_5 )
+                                                        hoisted_1_4 := hoisted_42_1[logic_new_func_x_4];
+                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_4_1, function ( logic_new_func_x_5 )
                                                                   local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
                                                                   deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
                                                                   if (hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0) then
@@ -2048,195 +2048,9 @@ function ( cat_1, arg2_1, arg3_1 )
                                                                   else
                                                                       deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
                                                                       deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
-                                                                      hoisted_3_5 := [ 1 .. hoisted_4_1[deduped_5_5][deduped_6_5] ];
+                                                                      hoisted_3_5 := [ 1 .. hoisted_6_1[deduped_5_5][deduped_6_5] ];
                                                                       hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
-                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_19_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
-                                                                      return Sum( hoisted_6_3, function ( p_6 )
-                                                                              local hoisted_1_6, hoisted_2_6;
-                                                                              hoisted_2_6 := hoisted_2_5[p_6];
-                                                                              hoisted_1_6 := hoisted_3_3[p_6];
-                                                                              return Sum( hoisted_3_5, function ( q_7 )
-                                                                                      return hoisted_1_6 * hoisted_1_5[q_7] * hoisted_2_6[q_7];
-                                                                                  end );
-                                                                          end );
-                                                                  fi;
-                                                                  return;
-                                                              end ) );
-                                                    fi;
-                                                    return;
-                                                end ) );
-                                      fi;
-                                      return;
-                                  end ) );
-                        end ) ), Sum( Concatenation( List( deduped_179_1, function ( logic_new_func_x_2 )
-                              local hoisted_1_2;
-                              hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                              return Concatenation( List( hoisted_50_1, function ( logic_new_func_x_3 )
-                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                    end ), List( hoisted_51_1, function ( logic_new_func_x_3 )
-                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                    end ) );
-                          end ) ) ), deduped_126_1, deduped_180_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_126_1, List( deduped_140_1, function ( logic_new_func_x_2 )
-                            local hoisted_1_2, hoisted_2_2;
-                            hoisted_1_2 := hoisted_53_1[logic_new_func_x_2];
-                            hoisted_2_2 := Sum( hoisted_2_1, function ( logic_new_func_x_3 )
-                                    return hoisted_1_2[logic_new_func_x_3];
-                                end );
-                            return UnionOfColumnsListList( Sum( List( hoisted_2_1, function ( logic_new_func_x_3 )
-                                        return hoisted_1_2[logic_new_func_x_3];
-                                    end ) ), List( hoisted_66_1, function ( logic_new_func_x_3 )
-                                      local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
-                                      deduped_9_3 := hoisted_57_1[logic_new_func_x_3];
-                                      if hoisted_54_1[logic_new_func_x_3][logic_new_func_x_2] then
-                                          return NullMatImmutable( hoisted_2_2, deduped_9_3 );
-                                      else
-                                          deduped_8_3 := hoisted_61_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          deduped_7_3 := hoisted_60_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          hoisted_6_3 := [ 1 .. hoisted_4_1[deduped_7_3][deduped_8_3] ];
-                                          hoisted_5_3 := deduped_7_3;
-                                          hoisted_4_3 := hoisted_49_1[deduped_8_3];
-                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_19_1[deduped_7_3][deduped_8_3], hoisted_64_1[logic_new_func_x_3][logic_new_func_x_2] );
-                                          hoisted_1_3 := hoisted_56_1[logic_new_func_x_3];
-                                          hoisted_2_3 := Sum( hoisted_2_1, function ( logic_new_func_x_4 )
-                                                  return hoisted_1_3[logic_new_func_x_4];
-                                              end );
-                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_2_1, function ( logic_new_func_x_4 )
-                                                    local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
-                                                    deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
-                                                    if deduped_6_4 = 0 then
-                                                        return NullMatImmutable( deduped_6_4, hoisted_2_3 );
-                                                    else
-                                                        hoisted_5_4 := hoisted_65_1[logic_new_func_x_4];
-                                                        hoisted_4_4 := hoisted_63_1[logic_new_func_x_4];
-                                                        hoisted_3_4 := hoisted_62_1[logic_new_func_x_4];
-                                                        hoisted_2_4 := deduped_6_4;
-                                                        hoisted_1_4 := hoisted_59_1[logic_new_func_x_4];
-                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_2_1, function ( logic_new_func_x_5 )
-                                                                  local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
-                                                                  deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
-                                                                  if (hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0) then
-                                                                      return NullMatImmutable( hoisted_2_4, deduped_4_5 );
-                                                                  else
-                                                                      deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
-                                                                      deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
-                                                                      hoisted_3_5 := [ 1 .. hoisted_4_1[deduped_5_5][deduped_6_5] ];
-                                                                      hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
-                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_19_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
-                                                                      return Sum( hoisted_6_3, function ( p_6 )
-                                                                              local hoisted_1_6, hoisted_2_6;
-                                                                              hoisted_2_6 := hoisted_2_5[p_6];
-                                                                              hoisted_1_6 := hoisted_3_3[p_6];
-                                                                              return Sum( hoisted_3_5, function ( q_7 )
-                                                                                      return hoisted_1_6 * hoisted_1_5[q_7] * hoisted_2_6[q_7];
-                                                                                  end );
-                                                                          end );
-                                                                  fi;
-                                                                  return;
-                                                              end ) );
-                                                    fi;
-                                                    return;
-                                                end ) );
-                                      fi;
-                                      return;
-                                  end ) );
-                        end ) ), Sum( Concatenation( List( deduped_166_1, function ( logic_new_func_x_2 )
-                              local hoisted_1_2;
-                              hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                              return Concatenation( List( hoisted_29_1, function ( logic_new_func_x_3 )
-                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                    end ), List( hoisted_30_1, function ( logic_new_func_x_3 )
-                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                    end ) );
-                          end ) ) ), deduped_126_1, deduped_180_1 ) ] ) ) ) and IsZero( DecideZeroRows( HomalgMatrixListList( UnionOfColumnsListList( 1, List( deduped_165_1, function ( logic_new_func_x_2 )
-                      local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2;
-                      hoisted_6_2 := hoisted_89_1[logic_new_func_x_2];
-                      hoisted_5_2 := hoisted_84_1[logic_new_func_x_2];
-                      hoisted_4_2 := hoisted_82_1[logic_new_func_x_2];
-                      hoisted_3_2 := hoisted_76_1[logic_new_func_x_2];
-                      hoisted_2_2 := hoisted_72_1[logic_new_func_x_2];
-                      hoisted_1_2 := hoisted_69_1[logic_new_func_x_2];
-                      return UnionOfColumnsListList( 1, List( hoisted_68_1, function ( logic_new_func_x_3 )
-                                local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
-                                deduped_6_3 := hoisted_4_2[logic_new_func_x_3];
-                                deduped_5_3 := hoisted_3_2[logic_new_func_x_3];
-                                deduped_4_3 := hoisted_2_2[logic_new_func_x_3];
-                                deduped_3_3 := hoisted_1_2[logic_new_func_x_3];
-                                deduped_2_3 := hoisted_4_1[deduped_5_3][deduped_6_3];
-                                deduped_1_3 := hoisted_4_1[deduped_3_3][deduped_4_3];
-                                if function (  )
-                                            if hoisted_73_1 then
-                                                return deduped_1_3;
-                                            else
-                                                return deduped_2_3;
-                                            fi;
-                                            return;
-                                        end(  ) = 0 then
-                                    return function (  )
-                                            if hoisted_73_1 then
-                                                return NullMatImmutable( 1, deduped_1_3 );
-                                            else
-                                                return NullMatImmutable( 1, deduped_2_3 );
-                                            fi;
-                                            return;
-                                        end(  );
-                                else
-                                    return [ function (  )
-                                                if hoisted_73_1 then
-                                                    return CoefficientsOfPaths( hoisted_19_1[deduped_3_3][deduped_4_3], hoisted_5_2[logic_new_func_x_3] );
-                                                else
-                                                    return CoefficientsOfPaths( hoisted_19_1[deduped_5_3][deduped_6_3], hoisted_6_2[logic_new_func_x_3] );
-                                                fi;
-                                                return;
-                                            end(  ) ];
-                                fi;
-                                return;
-                            end ) );
-                  end ) ), 1, deduped_127_1, deduped_180_1 ), UnionOfRows( deduped_180_1, Sum( [ deduped_127_1 ] ), [ HomalgMatrixListList( UnionOfRowsListList( deduped_127_1, List( deduped_165_1, function ( logic_new_func_x_2 )
-                            local hoisted_1_2, hoisted_2_2;
-                            hoisted_1_2 := hoisted_94_1[logic_new_func_x_2];
-                            hoisted_2_2 := Sum( hoisted_93_1, function ( logic_new_func_x_3 )
-                                    return hoisted_1_2[logic_new_func_x_3];
-                                end );
-                            return UnionOfColumnsListList( Sum( List( hoisted_93_1, function ( logic_new_func_x_3 )
-                                        return hoisted_1_2[logic_new_func_x_3];
-                                    end ) ), List( hoisted_96_1, function ( logic_new_func_x_3 )
-                                      local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
-                                      deduped_9_3 := hoisted_99_1[logic_new_func_x_3];
-                                      if hoisted_97_1[logic_new_func_x_3][logic_new_func_x_2] then
-                                          return NullMatImmutable( hoisted_2_2, deduped_9_3 );
-                                      else
-                                          deduped_8_3 := hoisted_103_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          deduped_7_3 := hoisted_102_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          hoisted_6_3 := [ 1 .. hoisted_4_1[deduped_7_3][deduped_8_3] ];
-                                          hoisted_5_3 := deduped_7_3;
-                                          hoisted_4_3 := hoisted_49_1[deduped_8_3];
-                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_19_1[deduped_7_3][deduped_8_3], hoisted_108_1[logic_new_func_x_3][logic_new_func_x_2] );
-                                          hoisted_1_3 := hoisted_98_1[logic_new_func_x_3];
-                                          hoisted_2_3 := Sum( hoisted_68_1, function ( logic_new_func_x_4 )
-                                                  return hoisted_1_3[logic_new_func_x_4];
-                                              end );
-                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_93_1, function ( logic_new_func_x_4 )
-                                                    local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
-                                                    deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
-                                                    if deduped_6_4 = 0 then
-                                                        return NullMatImmutable( deduped_6_4, hoisted_2_3 );
-                                                    else
-                                                        hoisted_5_4 := hoisted_109_1[logic_new_func_x_4];
-                                                        hoisted_4_4 := hoisted_107_1[logic_new_func_x_4];
-                                                        hoisted_3_4 := hoisted_106_1[logic_new_func_x_4];
-                                                        hoisted_2_4 := deduped_6_4;
-                                                        hoisted_1_4 := hoisted_101_1[logic_new_func_x_4];
-                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_68_1, function ( logic_new_func_x_5 )
-                                                                  local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
-                                                                  deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
-                                                                  if (hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0) then
-                                                                      return NullMatImmutable( hoisted_2_4, deduped_4_5 );
-                                                                  else
-                                                                      deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
-                                                                      deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
-                                                                      hoisted_3_5 := [ 1 .. hoisted_4_1[deduped_5_5][deduped_6_5] ];
-                                                                      hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
-                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_19_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
+                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_21_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
                                                                       return Sum( hoisted_6_3, function ( p_6 )
                                                                               local hoisted_1_6, hoisted_2_6;
                                                                               hoisted_2_6 := hoisted_2_5[p_6];
@@ -2256,48 +2070,48 @@ function ( cat_1, arg2_1, arg3_1 )
                                   end ) );
                         end ) ), Sum( Concatenation( List( deduped_181_1, function ( logic_new_func_x_2 )
                               local hoisted_1_2;
-                              hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                              return Concatenation( List( hoisted_110_1, function ( logic_new_func_x_3 )
+                              hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                              return Concatenation( List( hoisted_52_1, function ( logic_new_func_x_3 )
                                         return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                    end ), List( hoisted_111_1, function ( logic_new_func_x_3 )
+                                    end ), List( hoisted_53_1, function ( logic_new_func_x_3 )
                                         return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                                     end ) );
-                          end ) ) ), deduped_127_1, deduped_180_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_127_1, List( deduped_141_1, function ( logic_new_func_x_2 )
+                          end ) ) ), deduped_128_1, deduped_182_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_128_1, List( deduped_142_1, function ( logic_new_func_x_2 )
                             local hoisted_1_2, hoisted_2_2;
-                            hoisted_1_2 := hoisted_112_1[logic_new_func_x_2];
-                            hoisted_2_2 := Sum( hoisted_68_1, function ( logic_new_func_x_3 )
+                            hoisted_1_2 := hoisted_55_1[logic_new_func_x_2];
+                            hoisted_2_2 := Sum( hoisted_4_1, function ( logic_new_func_x_3 )
                                     return hoisted_1_2[logic_new_func_x_3];
                                 end );
-                            return UnionOfColumnsListList( Sum( List( hoisted_68_1, function ( logic_new_func_x_3 )
+                            return UnionOfColumnsListList( Sum( List( hoisted_4_1, function ( logic_new_func_x_3 )
                                         return hoisted_1_2[logic_new_func_x_3];
-                                    end ) ), List( hoisted_125_1, function ( logic_new_func_x_3 )
+                                    end ) ), List( hoisted_68_1, function ( logic_new_func_x_3 )
                                       local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
-                                      deduped_9_3 := hoisted_116_1[logic_new_func_x_3];
-                                      if hoisted_113_1[logic_new_func_x_3][logic_new_func_x_2] then
+                                      deduped_9_3 := hoisted_59_1[logic_new_func_x_3];
+                                      if hoisted_56_1[logic_new_func_x_3][logic_new_func_x_2] then
                                           return NullMatImmutable( hoisted_2_2, deduped_9_3 );
                                       else
-                                          deduped_8_3 := hoisted_120_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          deduped_7_3 := hoisted_119_1[logic_new_func_x_3][logic_new_func_x_2];
-                                          hoisted_6_3 := [ 1 .. hoisted_4_1[deduped_7_3][deduped_8_3] ];
+                                          deduped_8_3 := hoisted_63_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          deduped_7_3 := hoisted_62_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          hoisted_6_3 := [ 1 .. hoisted_6_1[deduped_7_3][deduped_8_3] ];
                                           hoisted_5_3 := deduped_7_3;
-                                          hoisted_4_3 := hoisted_49_1[deduped_8_3];
-                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_19_1[deduped_7_3][deduped_8_3], hoisted_123_1[logic_new_func_x_3][logic_new_func_x_2] );
-                                          hoisted_1_3 := hoisted_115_1[logic_new_func_x_3];
-                                          hoisted_2_3 := Sum( hoisted_68_1, function ( logic_new_func_x_4 )
+                                          hoisted_4_3 := hoisted_51_1[deduped_8_3];
+                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_21_1[deduped_7_3][deduped_8_3], hoisted_66_1[logic_new_func_x_3][logic_new_func_x_2] );
+                                          hoisted_1_3 := hoisted_58_1[logic_new_func_x_3];
+                                          hoisted_2_3 := Sum( hoisted_4_1, function ( logic_new_func_x_4 )
                                                   return hoisted_1_3[logic_new_func_x_4];
                                               end );
-                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_68_1, function ( logic_new_func_x_4 )
+                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_4_1, function ( logic_new_func_x_4 )
                                                     local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
                                                     deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
                                                     if deduped_6_4 = 0 then
                                                         return NullMatImmutable( deduped_6_4, hoisted_2_3 );
                                                     else
-                                                        hoisted_5_4 := hoisted_124_1[logic_new_func_x_4];
-                                                        hoisted_4_4 := hoisted_122_1[logic_new_func_x_4];
-                                                        hoisted_3_4 := hoisted_121_1[logic_new_func_x_4];
+                                                        hoisted_5_4 := hoisted_67_1[logic_new_func_x_4];
+                                                        hoisted_4_4 := hoisted_65_1[logic_new_func_x_4];
+                                                        hoisted_3_4 := hoisted_64_1[logic_new_func_x_4];
                                                         hoisted_2_4 := deduped_6_4;
-                                                        hoisted_1_4 := hoisted_118_1[logic_new_func_x_4];
-                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_68_1, function ( logic_new_func_x_5 )
+                                                        hoisted_1_4 := hoisted_61_1[logic_new_func_x_4];
+                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_4_1, function ( logic_new_func_x_5 )
                                                                   local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
                                                                   deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
                                                                   if (hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0) then
@@ -2305,9 +2119,9 @@ function ( cat_1, arg2_1, arg3_1 )
                                                                   else
                                                                       deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
                                                                       deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
-                                                                      hoisted_3_5 := [ 1 .. hoisted_4_1[deduped_5_5][deduped_6_5] ];
+                                                                      hoisted_3_5 := [ 1 .. hoisted_6_1[deduped_5_5][deduped_6_5] ];
                                                                       hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
-                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_19_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
+                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_21_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
                                                                       return Sum( hoisted_6_3, function ( p_6 )
                                                                               local hoisted_1_6, hoisted_2_6;
                                                                               hoisted_2_6 := hoisted_2_5[p_6];
@@ -2325,15 +2139,201 @@ function ( cat_1, arg2_1, arg3_1 )
                                       fi;
                                       return;
                                   end ) );
-                        end ) ), Sum( Concatenation( List( deduped_167_1, function ( logic_new_func_x_2 )
+                        end ) ), Sum( Concatenation( List( deduped_168_1, function ( logic_new_func_x_2 )
                               local hoisted_1_2;
-                              hoisted_1_2 := hoisted_4_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
-                              return Concatenation( List( hoisted_90_1, function ( logic_new_func_x_3 )
+                              hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                              return Concatenation( List( hoisted_31_1, function ( logic_new_func_x_3 )
                                         return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
-                                    end ), List( hoisted_91_1, function ( logic_new_func_x_3 )
+                                    end ), List( hoisted_32_1, function ( logic_new_func_x_3 )
                                         return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
                                     end ) );
-                          end ) ) ), deduped_127_1, deduped_180_1 ) ] ) ) );
+                          end ) ) ), deduped_128_1, deduped_182_1 ) ] ) ) ) and IsZero( DecideZeroRows( HomalgMatrixListList( UnionOfColumnsListList( 1, List( deduped_167_1, function ( logic_new_func_x_2 )
+                      local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2;
+                      hoisted_6_2 := hoisted_91_1[logic_new_func_x_2];
+                      hoisted_5_2 := hoisted_86_1[logic_new_func_x_2];
+                      hoisted_4_2 := hoisted_84_1[logic_new_func_x_2];
+                      hoisted_3_2 := hoisted_78_1[logic_new_func_x_2];
+                      hoisted_2_2 := hoisted_74_1[logic_new_func_x_2];
+                      hoisted_1_2 := hoisted_71_1[logic_new_func_x_2];
+                      return UnionOfColumnsListList( 1, List( hoisted_70_1, function ( logic_new_func_x_3 )
+                                local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3, deduped_5_3, deduped_6_3;
+                                deduped_6_3 := hoisted_4_2[logic_new_func_x_3];
+                                deduped_5_3 := hoisted_3_2[logic_new_func_x_3];
+                                deduped_4_3 := hoisted_2_2[logic_new_func_x_3];
+                                deduped_3_3 := hoisted_1_2[logic_new_func_x_3];
+                                deduped_2_3 := hoisted_6_1[deduped_5_3][deduped_6_3];
+                                deduped_1_3 := hoisted_6_1[deduped_3_3][deduped_4_3];
+                                if function (  )
+                                            if hoisted_75_1 then
+                                                return deduped_1_3;
+                                            else
+                                                return deduped_2_3;
+                                            fi;
+                                            return;
+                                        end(  ) = 0 then
+                                    return function (  )
+                                            if hoisted_75_1 then
+                                                return NullMatImmutable( 1, deduped_1_3 );
+                                            else
+                                                return NullMatImmutable( 1, deduped_2_3 );
+                                            fi;
+                                            return;
+                                        end(  );
+                                else
+                                    return [ function (  )
+                                                if hoisted_75_1 then
+                                                    return CoefficientsOfPaths( hoisted_21_1[deduped_3_3][deduped_4_3], hoisted_5_2[logic_new_func_x_3] );
+                                                else
+                                                    return CoefficientsOfPaths( hoisted_21_1[deduped_5_3][deduped_6_3], hoisted_6_2[logic_new_func_x_3] );
+                                                fi;
+                                                return;
+                                            end(  ) ];
+                                fi;
+                                return;
+                            end ) );
+                  end ) ), 1, deduped_129_1, deduped_182_1 ), UnionOfRows( deduped_182_1, Sum( [ deduped_129_1 ] ), [ HomalgMatrixListList( UnionOfRowsListList( deduped_129_1, List( deduped_167_1, function ( logic_new_func_x_2 )
+                            local hoisted_1_2, hoisted_2_2;
+                            hoisted_1_2 := hoisted_96_1[logic_new_func_x_2];
+                            hoisted_2_2 := Sum( hoisted_95_1, function ( logic_new_func_x_3 )
+                                    return hoisted_1_2[logic_new_func_x_3];
+                                end );
+                            return UnionOfColumnsListList( Sum( List( hoisted_95_1, function ( logic_new_func_x_3 )
+                                        return hoisted_1_2[logic_new_func_x_3];
+                                    end ) ), List( hoisted_98_1, function ( logic_new_func_x_3 )
+                                      local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
+                                      deduped_9_3 := hoisted_101_1[logic_new_func_x_3];
+                                      if hoisted_99_1[logic_new_func_x_3][logic_new_func_x_2] then
+                                          return NullMatImmutable( hoisted_2_2, deduped_9_3 );
+                                      else
+                                          deduped_8_3 := hoisted_105_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          deduped_7_3 := hoisted_104_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          hoisted_6_3 := [ 1 .. hoisted_6_1[deduped_7_3][deduped_8_3] ];
+                                          hoisted_5_3 := deduped_7_3;
+                                          hoisted_4_3 := hoisted_51_1[deduped_8_3];
+                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_21_1[deduped_7_3][deduped_8_3], hoisted_110_1[logic_new_func_x_3][logic_new_func_x_2] );
+                                          hoisted_1_3 := hoisted_100_1[logic_new_func_x_3];
+                                          hoisted_2_3 := Sum( hoisted_70_1, function ( logic_new_func_x_4 )
+                                                  return hoisted_1_3[logic_new_func_x_4];
+                                              end );
+                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_95_1, function ( logic_new_func_x_4 )
+                                                    local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
+                                                    deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
+                                                    if deduped_6_4 = 0 then
+                                                        return NullMatImmutable( deduped_6_4, hoisted_2_3 );
+                                                    else
+                                                        hoisted_5_4 := hoisted_111_1[logic_new_func_x_4];
+                                                        hoisted_4_4 := hoisted_109_1[logic_new_func_x_4];
+                                                        hoisted_3_4 := hoisted_108_1[logic_new_func_x_4];
+                                                        hoisted_2_4 := deduped_6_4;
+                                                        hoisted_1_4 := hoisted_103_1[logic_new_func_x_4];
+                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_70_1, function ( logic_new_func_x_5 )
+                                                                  local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
+                                                                  deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
+                                                                  if (hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0) then
+                                                                      return NullMatImmutable( hoisted_2_4, deduped_4_5 );
+                                                                  else
+                                                                      deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
+                                                                      deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
+                                                                      hoisted_3_5 := [ 1 .. hoisted_6_1[deduped_5_5][deduped_6_5] ];
+                                                                      hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
+                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_21_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
+                                                                      return Sum( hoisted_6_3, function ( p_6 )
+                                                                              local hoisted_1_6, hoisted_2_6;
+                                                                              hoisted_2_6 := hoisted_2_5[p_6];
+                                                                              hoisted_1_6 := hoisted_3_3[p_6];
+                                                                              return Sum( hoisted_3_5, function ( q_7 )
+                                                                                      return hoisted_1_6 * hoisted_1_5[q_7] * hoisted_2_6[q_7];
+                                                                                  end );
+                                                                          end );
+                                                                  fi;
+                                                                  return;
+                                                              end ) );
+                                                    fi;
+                                                    return;
+                                                end ) );
+                                      fi;
+                                      return;
+                                  end ) );
+                        end ) ), Sum( Concatenation( List( deduped_183_1, function ( logic_new_func_x_2 )
+                              local hoisted_1_2;
+                              hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                              return Concatenation( List( hoisted_112_1, function ( logic_new_func_x_3 )
+                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
+                                    end ), List( hoisted_113_1, function ( logic_new_func_x_3 )
+                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
+                                    end ) );
+                          end ) ) ), deduped_129_1, deduped_182_1 ), HomalgMatrixListList( UnionOfRowsListList( deduped_129_1, List( deduped_143_1, function ( logic_new_func_x_2 )
+                            local hoisted_1_2, hoisted_2_2;
+                            hoisted_1_2 := hoisted_114_1[logic_new_func_x_2];
+                            hoisted_2_2 := Sum( hoisted_70_1, function ( logic_new_func_x_3 )
+                                    return hoisted_1_2[logic_new_func_x_3];
+                                end );
+                            return UnionOfColumnsListList( Sum( List( hoisted_70_1, function ( logic_new_func_x_3 )
+                                        return hoisted_1_2[logic_new_func_x_3];
+                                    end ) ), List( hoisted_127_1, function ( logic_new_func_x_3 )
+                                      local hoisted_1_3, hoisted_2_3, hoisted_3_3, hoisted_4_3, hoisted_5_3, hoisted_6_3, deduped_7_3, deduped_8_3, deduped_9_3;
+                                      deduped_9_3 := hoisted_118_1[logic_new_func_x_3];
+                                      if hoisted_115_1[logic_new_func_x_3][logic_new_func_x_2] then
+                                          return NullMatImmutable( hoisted_2_2, deduped_9_3 );
+                                      else
+                                          deduped_8_3 := hoisted_122_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          deduped_7_3 := hoisted_121_1[logic_new_func_x_3][logic_new_func_x_2];
+                                          hoisted_6_3 := [ 1 .. hoisted_6_1[deduped_7_3][deduped_8_3] ];
+                                          hoisted_5_3 := deduped_7_3;
+                                          hoisted_4_3 := hoisted_51_1[deduped_8_3];
+                                          hoisted_3_3 := CoefficientsOfPaths( hoisted_21_1[deduped_7_3][deduped_8_3], hoisted_125_1[logic_new_func_x_3][logic_new_func_x_2] );
+                                          hoisted_1_3 := hoisted_117_1[logic_new_func_x_3];
+                                          hoisted_2_3 := Sum( hoisted_70_1, function ( logic_new_func_x_4 )
+                                                  return hoisted_1_3[logic_new_func_x_4];
+                                              end );
+                                          return UnionOfRowsListList( deduped_9_3, List( hoisted_70_1, function ( logic_new_func_x_4 )
+                                                    local hoisted_1_4, hoisted_2_4, hoisted_3_4, hoisted_4_4, hoisted_5_4, deduped_6_4;
+                                                    deduped_6_4 := hoisted_1_2[logic_new_func_x_4];
+                                                    if deduped_6_4 = 0 then
+                                                        return NullMatImmutable( deduped_6_4, hoisted_2_3 );
+                                                    else
+                                                        hoisted_5_4 := hoisted_126_1[logic_new_func_x_4];
+                                                        hoisted_4_4 := hoisted_124_1[logic_new_func_x_4];
+                                                        hoisted_3_4 := hoisted_123_1[logic_new_func_x_4];
+                                                        hoisted_2_4 := deduped_6_4;
+                                                        hoisted_1_4 := hoisted_120_1[logic_new_func_x_4];
+                                                        return UnionOfColumnsListList( deduped_6_4, List( hoisted_70_1, function ( logic_new_func_x_5 )
+                                                                  local hoisted_1_5, hoisted_2_5, hoisted_3_5, deduped_4_5, deduped_5_5, deduped_6_5;
+                                                                  deduped_4_5 := hoisted_1_3[logic_new_func_x_5];
+                                                                  if (hoisted_1_4[logic_new_func_x_5] or deduped_4_5 = 0) then
+                                                                      return NullMatImmutable( hoisted_2_4, deduped_4_5 );
+                                                                  else
+                                                                      deduped_6_5 := hoisted_4_4[logic_new_func_x_5];
+                                                                      deduped_5_5 := hoisted_3_4[logic_new_func_x_5];
+                                                                      hoisted_3_5 := [ 1 .. hoisted_6_1[deduped_5_5][deduped_6_5] ];
+                                                                      hoisted_2_5 := hoisted_4_3[deduped_5_5][hoisted_5_3][deduped_6_5];
+                                                                      hoisted_1_5 := CoefficientsOfPaths( hoisted_21_1[deduped_5_5][deduped_6_5], hoisted_5_4[logic_new_func_x_5] );
+                                                                      return Sum( hoisted_6_3, function ( p_6 )
+                                                                              local hoisted_1_6, hoisted_2_6;
+                                                                              hoisted_2_6 := hoisted_2_5[p_6];
+                                                                              hoisted_1_6 := hoisted_3_3[p_6];
+                                                                              return Sum( hoisted_3_5, function ( q_7 )
+                                                                                      return hoisted_1_6 * hoisted_1_5[q_7] * hoisted_2_6[q_7];
+                                                                                  end );
+                                                                          end );
+                                                                  fi;
+                                                                  return;
+                                                              end ) );
+                                                    fi;
+                                                    return;
+                                                end ) );
+                                      fi;
+                                      return;
+                                  end ) );
+                        end ) ), Sum( Concatenation( List( deduped_169_1, function ( logic_new_func_x_2 )
+                              local hoisted_1_2;
+                              hoisted_1_2 := hoisted_6_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
+                              return Concatenation( List( hoisted_92_1, function ( logic_new_func_x_3 )
+                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
+                                    end ), List( hoisted_93_1, function ( logic_new_func_x_3 )
+                                        return hoisted_1_2[VertexIndex( UnderlyingVertex( logic_new_func_x_3 ) )];
+                                    end ) );
+                          end ) ) ), deduped_129_1, deduped_182_1 ) ] ) ) );
 end
 ########
         
