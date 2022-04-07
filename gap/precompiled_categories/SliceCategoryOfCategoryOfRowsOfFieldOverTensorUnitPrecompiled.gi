@@ -160,11 +160,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingCell( arg2_1 );
-    deduped_2_1 := UnderlyingMatrix( deduped_3_1 );
-    deduped_1_1 := RowRankOfMatrix( deduped_2_1 );
-    return RankOfObject( Source( deduped_3_1 ) ) = RankOfObject( Range( deduped_3_1 ) ) and (NumberRows( deduped_2_1 ) - deduped_1_1 = 0 and NumberColumns( deduped_2_1 ) - deduped_1_1 = 0);
+    local deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := UnderlyingCell( arg2_1 );
+    deduped_4_1 := UnderlyingMatrix( deduped_5_1 );
+    deduped_3_1 := RowRankOfMatrix( deduped_4_1 );
+    return RankOfObject( Source( deduped_5_1 ) ) = RankOfObject( Range( deduped_5_1 ) ) and (NumberRows( deduped_4_1 ) - deduped_3_1 = 0 and NumberColumns( deduped_4_1 ) - deduped_3_1 = 0);
 end
 ########
         
@@ -244,10 +244,10 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( UnderlyingCell( arg2_1 ) );
-    deduped_1_1 := RowRankOfMatrix( deduped_2_1 );
-    return NumberRows( deduped_2_1 ) - deduped_1_1 = 0 and NumberColumns( deduped_2_1 ) - deduped_1_1 = 0;
+    local deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingMatrix( UnderlyingCell( arg2_1 ) );
+    deduped_3_1 := RowRankOfMatrix( deduped_4_1 );
+    return NumberRows( deduped_4_1 ) - deduped_3_1 = 0 and NumberColumns( deduped_4_1 ) - deduped_3_1 = 0;
 end
 ########
         
@@ -280,9 +280,9 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingCell( arg2_1 );
-    return HomalgIdentityMatrix( RankOfObject( Source( deduped_1_1 ) ), UnderlyingRing( AmbientCategory( cat_1 ) ) ) = UnderlyingMatrix( deduped_1_1 );
+    local deduped_3_1;
+    deduped_3_1 := UnderlyingCell( arg2_1 );
+    return HomalgIdentityMatrix( RankOfObject( Source( deduped_3_1 ) ), UnderlyingRing( AmbientCategory( cat_1 ) ) ) = UnderlyingMatrix( deduped_3_1 );
 end
 ########
         
@@ -293,9 +293,9 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingCell( arg2_1 );
-    return IsZero( DecideZeroRows( HomalgIdentityMatrix( RankOfObject( Range( deduped_1_1 ) ), UnderlyingRing( AmbientCategory( cat_1 ) ) ), UnderlyingMatrix( deduped_1_1 ) ) );
+    local deduped_3_1;
+    deduped_3_1 := UnderlyingCell( arg2_1 );
+    return IsZero( DecideZeroRows( HomalgIdentityMatrix( RankOfObject( Range( deduped_3_1 ) ), UnderlyingRing( AmbientCategory( cat_1 ) ) ), UnderlyingMatrix( deduped_3_1 ) ) );
 end
 ########
         
