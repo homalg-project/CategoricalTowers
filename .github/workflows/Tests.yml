@@ -36,6 +36,8 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/Locales.git
           git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP.git
+          git clone --depth 1 https://github.com/homalg-project/QPA2.git
+          git clone --depth 1 https://github.com/homalg-project/HigherHomologicalAlgebra.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
