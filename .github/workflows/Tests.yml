@@ -36,6 +36,8 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/Locales.git
           git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP.git
+          git clone --depth 1 https://github.com/homalg-project/QPA2.git
+          git clone --depth 1 https://github.com/homalg-project/HigherHomologicalAlgebra.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
@@ -50,7 +52,7 @@ jobs:
           TERM=dumb make -C CategoryConstructor -j $(nproc) --output-sync ci-test
           cp ./CategoryConstructor/.codecov.yml ./
           (cd CategoryConstructor && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
-          [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CategoryConstructor/upload_codecov.sh
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CategoryConstructor/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd CategoryConstructor
