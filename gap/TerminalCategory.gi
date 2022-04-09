@@ -8,7 +8,7 @@
 InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
   function(  )
     local create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, r, skip, func, pos, properties, T,
+          list_of_operations_to_install, r, skip, func, pos, properties, ignore, T,
           object_constructor, object_datum, morphism_constructor, morphism_datum;
     
     ## e.g., IsMonomorphism
@@ -107,9 +107,10 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     properties := Set( List( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, a -> a[1] ) );
     
-    properties := Difference( properties,
-                          [ "IsSkeletalCategory",
-                            ] );
+    ## prevent skeletality and strictness
+    ignore := Filtered( properties, p -> IsInt( PositionSublist( p, "Strict" ) ) );
+    Add( ignore, "IsSkeletalCategory" );
+    properties := Difference( properties, ignore );
     
     ##
     object_constructor := function( cat, string )
