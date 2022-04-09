@@ -7,7 +7,7 @@ gap> START_TEST("TerminalCategoryTopos.tst");
 
 gap> LoadPackage("CategoryConstructor", false);
 true
-gap> LoadPackage("Toposes", false);
+gap> LoadPackage("Toposes", ">= 2022.04-04", false);
 true
 
 gap> T := TerminalCategoryWithMultipleObjects( );;
