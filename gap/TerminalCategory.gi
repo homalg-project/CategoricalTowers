@@ -74,7 +74,7 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
         "FREYD_CATEGORIES_METHOD_NAME_RECORD",
         "BOOLEAN_ALGEBRA_METHOD_NAME_RECORD",
         ] do
-
+        
         if IsBoundGlobal( r ) then
             Append( list_of_operations_to_install, RecNames( ValueGlobal( r ) ) );
         fi;
