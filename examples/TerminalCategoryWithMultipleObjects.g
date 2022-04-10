@@ -10,13 +10,15 @@ LoadPackage( "SubcategoriesForCAP" );
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects
 InfoOfInstalledOperationsOfCategory( T );
-#! 133 primitive operations were used to derive 561 operations for this category which
+#! 129 primitive operations were used to derive 561 operations for this category which
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! * IsDistributiveCartesianCategory
+#! * IsCodistributiveCocartesianCategory
 #! * IsElementaryTopos
 #! * IsCocartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughProjectives
