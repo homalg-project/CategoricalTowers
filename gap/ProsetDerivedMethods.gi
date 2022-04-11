@@ -34,7 +34,7 @@ AddDerivationToCAP( IsTerminal,
         
   function( cat, A )
     
-    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, TerminalObject( cat, cat ) );
+    return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, TerminalObject( cat ) );
     
 end : Description := "IsTerminal using AreIsomorphicForObjectsIfIsHomSetInhabited and TerminalObject",
       CategoryFilter := IsThinCategory );
