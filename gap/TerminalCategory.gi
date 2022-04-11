@@ -82,6 +82,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     skip := [ "IsEqualForObjects",
               "IsEqualForMorphisms",
               "IsCongruentForMorphisms",
+              "LeftCartesianDistributivityExpandingWithGivenObjects", ## gets derived since IsDistributiveCartesianCategory := true
+              "LeftCocartesianCodistributivityFactoringWithGivenObjects", ## gets derived since IsCodistributiveCocartesianCategory := true
               "MorphismToBidual",
               "MorphismFromBidual",
               "MorphismToCoBidual",
