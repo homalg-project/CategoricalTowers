@@ -17,9 +17,9 @@ InfoOfInstalledOperationsOfCategory( T );
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
-#! * IsDistributiveCartesianCategory
-#! * IsCodistributiveCocartesianCategory
 #! * IsElementaryTopos
+#! * IsCodistributiveCocartesianCategory
+#! * IsCartesianClosedCategory
 #! * IsCocartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughProjectives
 a := "a" / T;
