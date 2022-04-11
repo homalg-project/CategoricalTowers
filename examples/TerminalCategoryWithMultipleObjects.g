@@ -10,7 +10,7 @@ LoadPackage( "SubcategoriesForCAP" );
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects
 InfoOfInstalledOperationsOfCategory( T );
-#! 129 primitive operations were used to derive 561 operations for this category which
+#! 127 primitive operations were used to derive 561 operations for this category which
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsAbelianCategoryWithEnoughInjectives
