@@ -1098,6 +1098,8 @@ InstallMethodWithCache( FunctorCategory,
                            UnderlyingCapTwoCategoryCell( top_source ),
                            UnderlyingCapTwoCategoryCell( top_range ) );
             
+            SetCachingObjectCrisp( NaturalTransformationCache( eta ) );
+            
             u_arg := [ underlying_arguments ];
             
             AddNaturalTransformationFunction( eta,
