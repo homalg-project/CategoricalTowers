@@ -269,7 +269,7 @@ Display( fortyone );
 #! A morphism in Category of matrices over GF(3)
 etas := WeakDirectSumDecomposition( fortyone : random := false );;
 dec := List( etas, eta -> List( SetOfObjects( A ),
-             o -> Dimension( Source( UnderlyingCapTwoCategoryCell( eta )( o ) ) ) ) );
+             o -> Dimension( Source( eta( o ) ) ) ) );
 #! [ [ 3, 0 ], [ 3, 0 ], [ 3, 0 ], [ 3, 0 ], [ 0, 3 ],
 #!   [ 1, 3 ], [ 3, 3 ], [ 3, 3 ], [ 3, 3 ], [ 3, 1 ] ]
 iso := UniversalMorphismFromDirectSum( etas );
