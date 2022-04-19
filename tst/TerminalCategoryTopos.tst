@@ -7,7 +7,7 @@ gap> START_TEST("TerminalCategoryTopos.tst");
 
 gap> LoadPackage("CategoryConstructor", false);
 true
-gap> LoadPackage("Toposes", ">= 2022.04-13", false);
+gap> LoadPackage("Toposes", ">= 2022.04-17", false);
 true
 
 gap> T := TerminalCategoryWithMultipleObjects( );;
@@ -63,6 +63,26 @@ gap> CocartesianCategoriesTest( T, z, a, a, alpha, beta : only_primitive_operati
 
 gap> CocartesianCategoriesTest( T, a, z, z, beta, alpha );;
 gap> CocartesianCategoriesTest( T, a, z, z, beta, alpha : only_primitive_operations := true );;
+
+##############################################
+# DistributiveCartesianCategoriesTest
+##############################################
+
+gap> a := "a" / T;;
+gap> L := [ "b" / T, "c" / T, "d" / T ];;
+
+gap> DistributiveCartesianCategoriesTest( T, a, L );;
+gap> DistributiveCartesianCategoriesTest( T, a, L : only_primitive_operations := true );;
+
+##############################################
+# CodistributiveCocartesianCategoriesTest
+##############################################
+
+gap> a := "a" / T;;
+gap> L := [ "b" / T, "c" / T, "d" / T ];;
+
+gap> CodistributiveCocartesianCategoriesTest( T, a, L );;
+gap> CodistributiveCocartesianCategoriesTest( T, a, L : only_primitive_operations := true );;
 
 ##############################################
 # BraidedCartesianCategoriesTest
