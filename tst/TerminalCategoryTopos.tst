@@ -107,8 +107,8 @@ gap> BraidedCartesianCategoriesTest( L, a, z : only_primitive_operations := true
 gap> a := "a" / T / L;;
 gap> l := [ "b" / T / L, "c" / T / L, "d" / T / L ];;
 
-gap> CodistributiveCocartesianCategoriesTest( L, a, l );;
 gap> CodistributiveCocartesianCategoriesTest( L, a, l : only_primitive_operations := true );;
+gap> CodistributiveCocartesianCategoriesTest( L, a, l );;
 
 ##############################################
 # DistributiveCartesianCategoriesTest
@@ -117,8 +117,8 @@ gap> CodistributiveCocartesianCategoriesTest( L, a, l : only_primitive_operation
 gap> a := "a" / T / L;;
 gap> l := [ "b" / T / L, "c" / T / L, "d" / T / L ];;
 
-gap> DistributiveCartesianCategoriesTest( L, a, l );;
 gap> DistributiveCartesianCategoriesTest( L, a, l : only_primitive_operations := true );;
+gap> DistributiveCartesianCategoriesTest( L, a, l );;
 
 ##############################################
 # BraidedCocartesianCategoriesTest
