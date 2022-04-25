@@ -249,7 +249,11 @@ InstallMethod( SliceCategory,
             
             L2 := List( L, UnderlyingMorphism );
             
-            return ObjectConstructor( cat, UniversalMorphismFromCoproduct( AmbientCategory( cat ), List( L2, Source ), B, L2 ) );
+            return ObjectConstructor( cat,
+                           UniversalMorphismFromCoproduct( AmbientCategory( cat ),
+                                   List( L2, Source ),
+                                   B,
+                                   L2 ) );
             
         end );
         
