@@ -62,6 +62,7 @@ InstallMethod( UnderlyingMorphism,
     
     L := UnderlyingMorphismList( a );
     
+    ## this should be handled somewhere else globally
     if Length( L ) = 1 then
         return L[1];
     fi;
@@ -225,6 +226,7 @@ InstallMethod( LazySliceCategory,
         
         L := Filtered( L, A -> not IsTerminal( cat, A ) );
         
+        ## this should be handled somewhere else globally
         if L = [ ] then
             return TerminalObject( cat, l );
         elif Length( L ) = 1 then
@@ -265,6 +267,7 @@ InstallMethod( LazySliceCategory,
             
             L := Filtered( L, A -> not IsInitial( cat, A ) );
             
+            ## this should be handled somewhere else globally
             if L = [ ] then
                 return InitialObject( cat, l );
             elif Length( L ) = 1 then

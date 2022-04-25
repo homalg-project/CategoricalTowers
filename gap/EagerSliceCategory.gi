@@ -188,6 +188,7 @@ InstallMethod( SliceCategory,
            function( cat, L )
             local C, L2, biased_weak_fiber_product;
             
+            ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
@@ -213,6 +214,7 @@ InstallMethod( SliceCategory,
           function( cat, L )
             local C, L2, biased_weak_fiber_product;
             
+            ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
@@ -240,6 +242,7 @@ InstallMethod( SliceCategory,
           function( cat, L )
             local L2;
             
+            ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
