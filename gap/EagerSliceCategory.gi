@@ -212,22 +212,15 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S,
           function( cat, L )
-            local C, L2, biased_weak_fiber_product;
             
             ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            C := AmbientCategory( cat );
-            
-            L2 := List( L, UnderlyingMorphism );
-            
-            biased_weak_fiber_product := function( I, J )
-                return PreCompose( C, ProjectionInFactorOfFiberProduct( C, [ I, J ], 1 ), I );
-            end;
-            
-            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
+            return ObjectConstructor( cat,
+                           MorphismFromFiberProductToSink( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ) ) );
             
         end );
         
