@@ -256,7 +256,8 @@ InstallMethod( SliceCategory,
         
     fi;
     
-    if CanCompute( C, "UniversalMorphismFromCoproduct" ) then
+    if CanCompute( C, "InjectionOfCofactorOfCoproductWithGivenCoproduct" ) and
+       CanCompute( C, "UniversalMorphismFromCoproductWithGivenCoproduct" ) then
         
         SetIsCocartesianCategory( S, true );
         
@@ -277,6 +278,35 @@ InstallMethod( SliceCategory,
                                    List( L2, Source ),
                                    B,
                                    L2 ) );
+            
+        end );
+        
+        ##
+        AddInjectionOfCofactorOfCoproductWithGivenCoproduct( S,
+          function( cat, L, k, I )
+            
+            return MorphismConstructor( cat,
+                           L[k],
+                           InjectionOfCofactorOfCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   k,
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismFromCoproductWithGivenCoproduct( S,
+          function( cat, L, T, tau, I )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
             
         end );
         

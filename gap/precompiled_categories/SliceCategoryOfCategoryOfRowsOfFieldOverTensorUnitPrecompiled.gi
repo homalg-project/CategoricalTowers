@@ -139,6 +139,41 @@ end
     , 100 );
     
     ##
+    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
+        
+########
+function ( cat_1, objects_1, k_1, P_1 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := AmbientCategory( cat_1 );
+    deduped_8_1 := UnderlyingRing( deduped_9_1 );
+    deduped_7_1 := List( objects_1, function ( logic_new_func_x_2 )
+            return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
+        end );
+    deduped_6_1 := deduped_7_1[k_1];
+    hoisted_5_1 := deduped_8_1;
+    hoisted_4_1 := deduped_6_1;
+    hoisted_3_1 := deduped_7_1;
+    hoisted_2_1 := HomalgIdentityMatrix( deduped_6_1, deduped_8_1 );
+    morphism_attr_1_1 := UnionOfColumns( deduped_8_1, deduped_6_1, List( [ 1 .. Length( objects_1 ) ], function ( logic_new_func_x_2 )
+                if (logic_new_func_x_2 = k_1) then
+                    return hoisted_2_1;
+                else
+                    return HomalgZeroMatrix( hoisted_4_1, hoisted_3_1[logic_new_func_x_2], hoisted_5_1 );
+                fi;
+                return;
+            end ) ) * HomalgIdentityMatrix( Sum( deduped_7_1 ), deduped_8_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, objects_1[k_1], P_1, UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_9_1, List( objects_1, function ( Li_2 )
+                  return Source( UnderlyingMorphism( Li_2 ) );
+              end )[k_1], ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_9_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddInverseForMorphisms( cat,
         
 ########
@@ -523,6 +558,26 @@ function ( cat_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( cat,
+        
+########
+function ( cat_1, objects_1, T_1, tau_1, P_1 )
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := AmbientCategory( cat_1 );
+    deduped_2_1 := Source( UnderlyingMorphism( T_1 ) );
+    morphism_attr_1_1 := UnionOfRows( UnderlyingRing( deduped_3_1 ), RankOfObject( deduped_2_1 ), List( tau_1, function ( logic_new_func_x_2 )
+              return UnderlyingMatrix( UnderlyingCell( logic_new_func_x_2 ) );
+          end ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, T_1, P_1, UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_3_1, ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
