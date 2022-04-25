@@ -205,7 +205,8 @@ InstallMethod( SliceCategory,
             
         end );
         
-    elif CanCompute( C, "ProjectionInFactorOfFiberProduct" ) then # FIXME: this should become obsolete once we have a derivation
+    elif CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
+      CanCompute( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) then # FIXME: this should become obsolete once we have a derivation
         
         SetIsCartesianCategory( S, true );
         
@@ -221,6 +222,35 @@ InstallMethod( SliceCategory,
             return ObjectConstructor( cat,
                            MorphismFromFiberProductToSink( AmbientCategory( cat ),
                                    List( L, UnderlyingMorphism ) ) );
+            
+        end );
+        
+        ##
+        AddProjectionInFactorOfDirectProductWithGivenDirectProduct( S,
+          function( cat, L, k, P )
+            
+            return MorphismConstructor( cat,
+                           P,
+                           ProjectionInFactorOfFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   k,
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           L[k] );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( S,
+          function( cat, L, T, tau, P )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismIntoFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           P );
             
         end );
         
