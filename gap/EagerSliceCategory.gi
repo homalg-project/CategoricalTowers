@@ -210,7 +210,7 @@ InstallMethod( SliceCategory,
         
         ##
         AddDirectProduct( S,
-           function( cat, L )
+          function( cat, L )
             local C, L2, biased_weak_fiber_product;
             
             if Length( L ) = 1 then
@@ -237,7 +237,7 @@ InstallMethod( SliceCategory,
         
         ##
         AddCoproduct( S,
-           function( cat, L )
+          function( cat, L )
             local L2;
             
             if Length( L ) = 1 then
