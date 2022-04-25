@@ -303,13 +303,17 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         end );
         
     fi;
-    
-    AddIsHomSetInhabited( S,
-      function( cat, A, B )
+
+    if CanCompute( C, "IsLiftable" ) then
         
-        return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+        AddIsHomSetInhabited( S,
+          function( cat, A, B )
+            
+            return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+            
+        end );
         
-    end );
+    fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
         
