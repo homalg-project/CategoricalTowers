@@ -188,6 +188,7 @@ InstallMethod( SliceCategory,
            function( cat, L )
             local C, L2, biased_weak_fiber_product;
             
+            ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
@@ -204,49 +205,108 @@ InstallMethod( SliceCategory,
             
         end );
         
-    elif CanCompute( C, "ProjectionInFactorOfFiberProduct" ) then # FIXME: this should become obsolete once we have a derivation
+    elif CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
+      CanCompute( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) then # FIXME: this should become obsolete once we have a derivation
         
         SetIsCartesianCategory( S, true );
         
         ##
         AddDirectProduct( S,
-           function( cat, L )
-            local C, L2, biased_weak_fiber_product;
+          function( cat, L )
             
+            ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
-            C := AmbientCategory( cat );
+            return ObjectConstructor( cat,
+                           MorphismFromFiberProductToSink( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ) ) );
             
-            L2 := List( L, UnderlyingMorphism );
+        end );
+        
+        ##
+        AddProjectionInFactorOfDirectProductWithGivenDirectProduct( S,
+          function( cat, L, k, P )
             
-            biased_weak_fiber_product := function( I, J )
-                return PreCompose( C, ProjectionInFactorOfFiberProduct( C, [ I, J ], 1 ), I );
-            end;
+            return MorphismConstructor( cat,
+                           P,
+                           ProjectionInFactorOfFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   k,
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           L[k] );
             
-            return ObjectConstructor( cat, Iterated( L2, biased_weak_fiber_product ) );
+        end );
+        
+        ##
+        AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( S,
+          function( cat, L, T, tau, P )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismIntoFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           P );
             
         end );
         
     fi;
     
-    if CanCompute( C, "UniversalMorphismFromCoproduct" ) then
+    if CanCompute( C, "InjectionOfCofactorOfCoproductWithGivenCoproduct" ) and
+       CanCompute( C, "UniversalMorphismFromCoproductWithGivenCoproduct" ) then
         
         SetIsCocartesianCategory( S, true );
         
         ##
         AddCoproduct( S,
-           function( cat, L )
+          function( cat, L )
             local L2;
             
+            ## this should be handled somewhere else globally
             if Length( L ) = 1 then
                 return L[1];
             fi;
             
             L2 := List( L, UnderlyingMorphism );
             
-            return ObjectConstructor( cat, UniversalMorphismFromCoproduct( AmbientCategory( cat ), List( L2, Source ), B, L2 ) );
+            return ObjectConstructor( cat,
+                           UniversalMorphismFromCoproduct( AmbientCategory( cat ),
+                                   List( L2, Source ),
+                                   B,
+                                   L2 ) );
+            
+        end );
+        
+        ##
+        AddInjectionOfCofactorOfCoproductWithGivenCoproduct( S,
+          function( cat, L, k, I )
+            
+            return MorphismConstructor( cat,
+                           L[k],
+                           InjectionOfCofactorOfCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   k,
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismFromCoproductWithGivenCoproduct( S,
+          function( cat, L, T, tau, I )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
             
         end );
         
