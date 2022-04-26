@@ -34,15 +34,15 @@ itr := PseudoIteratorOfClosedPoints( V );
 IsDoneIterator( itr );
 #! false
 a := NextIterator( itr );
-#! <A 1 x 1 matrix over an external ring>
+#! <An unevaluated 1 x 1 zero matrix over an external ring>
 Display( a );
-#! 1
+#! 0
 HomalgRing( a );
 #! Q
 b := NextIterator( itr );
-#! <An unevaluated 1 x 1 zero matrix over an external ring>
+#! <A 1 x 1 matrix over an external ring>
 Display( b );
-#! 0
+#! 1
 HomalgRing( b );
 #! Q
 IsDoneIterator( itr );
