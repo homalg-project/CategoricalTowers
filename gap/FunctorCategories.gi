@@ -2429,17 +2429,17 @@ InstallMethod( Display,
   function ( F )
     local objects, images_of_objects, morphisms, images_of_morphisms, i;
     
-    Print( "An object in ", Name( CapCategory( F ) ), " defined by the following data:\n" );
-    
     objects := SetOfObjects( F );
     
     images_of_objects := ValuesOnAllObjects( F );
-    
+
     for i in [ 1 .. Length( objects ) ] do
       
-      Print( "\n\nImage of " ); ViewObj( objects[i] ); Print( ":\n" );
+      Print( "Image of " ); ViewObj( objects[i] ); Print( ":\n" );
       
       Display( images_of_objects[i] );
+      
+      Print( "\n" );
       
     od;
     
@@ -2449,12 +2449,16 @@ InstallMethod( Display,
     
     for i in [ 1 .. Length( morphisms ) ] do
        
-      Print( "\n\nImage of " ); ViewObj( morphisms[i] ); Print( ":\n" );
+      Print( "Image of " ); ViewObj( morphisms[i] ); Print( ":\n" );
       
       Display( images_of_morphisms[i] );
       
+      Print( "\n" );
+      
     od;
-   
+    
+    Print( "An object in ", Name( CapCategory( F ) ), " given by the above data\n" );
+    
 end );
 
 
@@ -2492,18 +2496,20 @@ InstallMethod( Display,
   function ( eta )
     local objects, images_of_objects, i;
     
-    Print( "A morphism in ", Name( CapCategory( eta ) ), " defined by the following data:\n" );
-    
     objects := SetOfObjects( eta );
     
     images_of_objects := ValuesOnAllObjects( eta );
     
     for i in [ 1 .. Length( objects ) ] do
       
-      Print( "\n\nImage of " ); ViewObj( objects[i] ); Print( ":\n" );
+      Print( "Image of " ); ViewObj( objects[i] ); Print( ":\n" );
       
       Display( images_of_objects[i] );
+
+      Print( "\n" );
       
     od;
-       
+    
+    Print( "A morphism in ", Name( CapCategory( eta ) ), " given by the above data\n" );
+    
 end );
