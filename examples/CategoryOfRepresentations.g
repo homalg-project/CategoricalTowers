@@ -34,10 +34,9 @@ InfoOfInstalledOperationsOfCategory( CatReps );
 #! 99 primitive operations were used to derive 318 operations for this category
 #! which constructively
 #! * IsEquippedWithHomomorphismStructure
-#! * IsCartesianCategory
-#! * IsCocartesianCategory
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsSymmetricMonoidalCategory
+#! * IsBicartesianCategory
 #! * IsAbelianCategory
 CommutativeRingOfLinearCategory( CatReps );
 #! GF(3)
