@@ -36,7 +36,6 @@ InfoOfInstalledOperationsOfCategory( CatReps );
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsSymmetricMonoidalCategory
-#! * IsBicartesianCategory
 #! * IsAbelianCategory
 CommutativeRingOfLinearCategory( CatReps );
 #! GF(3)
