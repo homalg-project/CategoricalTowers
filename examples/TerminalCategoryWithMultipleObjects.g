@@ -16,8 +16,8 @@ InfoOfInstalledOperationsOfCategory( T );
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsCodistributiveCocartesianCategory
 #! * IsBicartesianCoclosedCategory
-#! * IsAbelianCategoryWithEnoughProjectives
 #! * IsAbelianCategoryWithEnoughInjectives
+#! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! * IsElementaryTopos
