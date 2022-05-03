@@ -442,6 +442,7 @@ InstallMethod( \.,
         [ IsObjectInFunctorCategory, IsPosInt ],
         
   function ( F, string_as_int )
+    local name;
     
     name := NameRNam( string_as_int );
     
@@ -455,6 +456,7 @@ InstallMethod( \.,
         [ IsMorphismInFunctorCategory, IsPosInt ],
         
   function ( eta, string_as_int )
+    local name;
     
     name := NameRNam( string_as_int );
     
