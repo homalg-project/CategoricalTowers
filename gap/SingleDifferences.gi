@@ -103,11 +103,12 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     ##
     AddIsInitial( D,
-      function( cat, A )
+      function( D, A )
+        local pair;
         
-        A := PairInUnderlyingLattice( A );
+        pair := PrePairInUnderlyingLattice( A );
         
-        return IsHomSetInhabited( A[1], A[2] );
+        return IsHomSetInhabited( UnderlyingCategory( D ), pair[1], pair[2] );
         
     end );
     
