@@ -24,6 +24,12 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     SetUnderlyingCategory( D, P );
     
+    D!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfSingleDifferences );
     
     AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfSingleDifferences );
