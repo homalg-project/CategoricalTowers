@@ -141,7 +141,7 @@ InstallMethod( \-,
     H := CapCategory( A );
     
     if not IsIdenticalObj( H, CapCategory( B ) ) then
-        Error( "the arguments A and B are in differenct categories\n" );
+        Error( "the arguments A and B are in different categories\n" );
     fi;
     
     D := MeetSemilatticeOfDifferences( H );
