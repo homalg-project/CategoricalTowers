@@ -36,6 +36,17 @@ DeclareAttribute( "NormalizedDistinguishedSubtrahend",
 DeclareAttribute( "PrePairInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
+CapJitAddTypeSignature( "PrePairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
+    
+    Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
+    
+    return rec( filter := IsList,
+                element_type :=
+                rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation,
+                     category := UnderlyingCategory( input_types[1].category ) ) );
+    
+end );
+
 DeclareAttribute( "NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
@@ -50,6 +61,17 @@ DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
 #! @Returns a pair of objects in a thin category
 DeclareOperation( "PairInUnderlyingLattice",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
+
+CapJitAddTypeSignature( "PairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
+    
+    Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
+    
+    return rec( filter := IsList,
+                element_type :=
+                rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation,
+                     category := UnderlyingCategory( input_types[1].category ) ) );
+    
+end );
 
 #! @Description
 #!  The output <C>S</C> should satisfy <A>A</A>.I - <C>S</C> = <A>A</A>.

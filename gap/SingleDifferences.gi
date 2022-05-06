@@ -24,42 +24,70 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     SetUnderlyingCategory( D, P );
     
+    D!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfSingleDifferences );
     
     AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfSingleDifferences );
     
     SetIsStrictCartesianCategory( D, true );
     
+    ##
+    AddObjectConstructor( D,
+      function( D, AB )
+        local C;
+        
+        C := ObjectifyObjectForCAPWithAttributes( rec( ), D,
+                     PrePairInUnderlyingLattice, AB,
+                     IsLocallyClosed, true );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 4, IsWellDefinedForObjects( C ) );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if HasIsInitial( AB[1] ) and IsInitial( AB[1] ) then
+            SetIsInitial( C, true );
+        fi;
+        
+        return C;
+        
+    end );
+    
     ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( D );
     
     ##
     AddIsWellDefinedForObjects( D,
-      function( cat, A )
-        local L;
+      function( D, A )
+        local pair, C;
         
-        A := PairInUnderlyingLattice( A );
+        pair := PairInUnderlyingLattice( A );
         
-        L := CapCategory( A[1] );
+        C := UnderlyingCategory( D );
         
-        return IsIdenticalObj( L, CapCategory( A[2] ) ) and ForAll( A, IsWellDefinedForObjects );
+        return IsIdenticalObj( CapCategory( pair[1] ), C ) and
+               IsIdenticalObj( CapCategory( pair[2] ), C ) and
+               IsWellDefinedForObjects( C, pair[1] ) and
+               IsWellDefinedForObjects( C, pair[2] );
         
     end );
     
-    ##
+    ## (A - A') ≤_D (B - B') ⟺  ( A ≤_C ( A' ∨ B ) ) and ( ( A ∧ B' ) ≤_C A' )
     AddIsHomSetInhabited( D,
-      function( cat, A, B )
-        local Ap, Bp;
+      function( D, A, B )
+        local A_pair, B_pair, C;
         
-        A := PairInUnderlyingLattice( A );
-        B := PairInUnderlyingLattice( B );
+        A_pair := PrePairInUnderlyingLattice( A );
+        B_pair := PrePairInUnderlyingLattice( B );
         
-        Ap := A[2];
-        A := A[1];
+        C := UnderlyingCategory( D );
         
-        Bp := B[2];
-        B := B[1];
-        
-        return IsInitial( A - Coproduct( Ap, B ) ) and IsInitial( DirectProduct( A, Bp ) - Ap );
+        return IsHomSetInhabited( C, A_pair[1], Coproduct( C, [ A_pair[2], B_pair[1] ] ) )
+               and
+               IsHomSetInhabited( C, DirectProduct( C, [ A_pair[1], B_pair[2] ] ), A_pair[2] );
         
     end );
     
@@ -73,48 +101,51 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     ##
     AddTerminalObject( D,
-      function( cat )
+      function( D )
         local T, I;
         
         T := TerminalObject( UnderlyingCategory( D ) );
         I := InitialObject( UnderlyingCategory( D ) );
         
-        return T - I;
+        return ObjectConstructor( D, [ T, I ] );
         
     end );
     
     ##
     AddInitialObject( D,
-      function( cat )
+      function( D )
         local I;
         
         I := InitialObject( UnderlyingCategory( D ) );
         
-        return I - I;
+        return ObjectConstructor( D, [ I, I ] );
         
     end );
     
     ##
     AddIsInitial( D,
-      function( cat, A )
+      function( D, A )
+        local pair;
         
-        A := PairInUnderlyingLattice( A );
+        pair := PrePairInUnderlyingLattice( A );
         
-        return IsHomSetInhabited( A[1], A[2] );
+        return IsHomSetInhabited( UnderlyingCategory( D ), pair[1], pair[2] );
         
     end );
     
     ##
     AddDirectProduct( D,
-      function( cat, L )
-        local T, S;
+      function( D, L )
+        local L_pairs, C, T, S;
         
-        L := List( L, PairInUnderlyingLattice );
+        L_pairs := List( L, PrePairInUnderlyingLattice );
         
-        T := DirectProduct( List( L, a -> a[1] ) );
-        S := Coproduct( List( L, a -> a[2] ) );
+        C := UnderlyingCategory( D );
         
-        return T - S;
+        T := DirectProduct( C, List( L_pairs, a -> a[1] ) );
+        S := Coproduct( C, List( L_pairs, a -> a[2] ) );
+        
+        return ObjectConstructor( D, [ T, S ] );
         
     end );
     
@@ -130,30 +161,17 @@ InstallMethod( \-,
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
   function( A, B )
-    local H, D, C;
+    local H, D;
     
     H := CapCategory( A );
     
     if not IsIdenticalObj( H, CapCategory( B ) ) then
-        Error( "the arguments A and B are in differenct categories\n" );
+        Error( "the arguments A and B are in different categories\n" );
     fi;
     
     D := MeetSemilatticeOfDifferences( H );
     
-    C := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( C, D,
-            PrePairInUnderlyingLattice, [ A, B ],
-            IsLocallyClosed, true
-            );
-    
-    Assert( 4, IsWellDefinedForObjects( C ) );
-    
-    if HasIsInitial( A ) and IsInitial( A ) then
-        SetIsInitial( C, true );
-    fi;
-    
-    return C;
+    return ObjectConstructor( D, [ A, B ] );
     
 end );
 
