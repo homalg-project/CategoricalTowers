@@ -40,14 +40,17 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     ##
     AddIsWellDefinedForObjects( D,
-      function( cat, A )
-        local L;
+      function( D, A )
+        local pair, C;
         
-        A := PairInUnderlyingLattice( A );
+        pair := PairInUnderlyingLattice( A );
         
-        L := CapCategory( A[1] );
+        C := UnderlyingCategory( D );
         
-        return IsIdenticalObj( L, CapCategory( A[2] ) ) and ForAll( A, IsWellDefinedForObjects );
+        return IsIdenticalObj( CapCategory( pair[1] ), C ) and
+               IsIdenticalObj( CapCategory( pair[2] ), C ) and
+               IsWellDefinedForObjects( C, pair[1] ) and
+               IsWellDefinedForObjects( C, pair[2] );
         
     end );
     
