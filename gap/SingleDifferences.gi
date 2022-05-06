@@ -54,21 +54,19 @@ InstallMethod( MeetSemilatticeOfDifferences,
         
     end );
     
-    ##
+    ## (A - A') ≤_D (B - B') ⟺  ( A ≤_C ( A' ∨ B ) ) and ( ( A ∧ B' ) ≤_C A' )
     AddIsHomSetInhabited( D,
-      function( cat, A, B )
-        local Ap, Bp;
+      function( D, A, B )
+        local A_pair, B_pair, C;
         
-        A := PairInUnderlyingLattice( A );
-        B := PairInUnderlyingLattice( B );
+        A_pair := PrePairInUnderlyingLattice( A );
+        B_pair := PrePairInUnderlyingLattice( B );
         
-        Ap := A[2];
-        A := A[1];
+        C := UnderlyingCategory( D );
         
-        Bp := B[2];
-        B := B[1];
-        
-        return IsInitial( A - Coproduct( Ap, B ) ) and IsInitial( DirectProduct( A, Bp ) - Ap );
+        return IsHomSetInhabited( C, A_pair[1], Coproduct( C, [ A_pair[2], B_pair[1] ] ) )
+               and
+               IsHomSetInhabited( C, DirectProduct( C, [ A_pair[1], B_pair[2] ] ), A_pair[2] );
         
     end );
     
