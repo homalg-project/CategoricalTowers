@@ -131,11 +131,11 @@ InstallMethod( Subobject,
     
     arrows := Set( images_of_arrows );
     
-    arrows_as_pairs := Arrows( quiver ){arrows};
+    arrows_as_pairs := Arrows( quiver ){1 + arrows};
     
-    vertices := AsList( quiver.V ){Set( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
+    vertices := AsList( quiver.V ){1 + Set( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
     
-    source := CreateQuiver( CapCategory( quiver ), Length( vertices ), List( arrows_as_pairs, a -> [ Position( vertices, a[1] ), Position( vertices, a[2] )] ) );
+    source := CreateQuiver( CapCategory( quiver ), Length( vertices ), List( arrows_as_pairs, a -> -1 + [ Position( vertices, a[1] ), Position( vertices, a[2] ) ] ) );
     
     subquiver := CreateQuiverMorphism( source, vertices, arrows, quiver );
     
@@ -235,7 +235,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
     for i in AsList( quiver.A ) do
         ## https://graphviz.org/docs/attrs/fontsize/
-        Append( str, Concatenation( String( arrows[i][1] ), " -> ", String( arrows[i][2] ), " [label=\"", String( i ), "\" fontsize = 10]\n" ) );
+        Append( str, Concatenation( String( arrows[1 + i][1] ), " -> ", String( arrows[1 + i][2] ), " [label=\"", String( i ), "\" fontsize = 10]\n" ) );
     od;
     
     Append( str, "}\n" );
@@ -280,7 +280,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
     for i in AsList( quiver.A ) do
         ## https://graphviz.org/docs/attrs/fontsize/
-        Append( str, Concatenation( String( arrows_as_pairs[i][1] ), " -> ", String( arrows_as_pairs[i][2] ), " [label=\"", String( i ), "\" fontsize = 10" ) );
+        Append( str, Concatenation( String( arrows_as_pairs[1 + i][1] ), " -> ", String( arrows_as_pairs[1 + i][2] ), " [label=\"", String( i ), "\" fontsize = 10" ) );
         if not i in arrows then
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );

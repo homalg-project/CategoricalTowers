@@ -1795,7 +1795,7 @@ InstallMethodWithCache( FunctorCategory,
                         ## 1 → Hom(b, b) × F(b) → G(b) ∈ Mor(C)
                         return PreCompose( C,
                                        id_b_f,
-                                       theta_b )(1);
+                                       theta_b )(0);
                         
                     end;
                     

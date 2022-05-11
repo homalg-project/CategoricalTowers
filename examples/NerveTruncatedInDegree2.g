@@ -41,7 +41,7 @@ Display( N.C2 );
 N.id;
 #! <A morphism in SkeletalFinSets>
 Display( N.id );
-#! [ 3, [ 1, 8, 22 ], 31 ]
+#! [ 3, [ 0, 7, 21 ], 31 ]
 IntCat := CategoryOfInternalCategories(
                   RangeCategoryOfHomomorphismStructure( Delta2 ) );
 #! FullSubcategoryByObjectMembershipFunction( FunctorCategory(
