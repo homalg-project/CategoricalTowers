@@ -44,6 +44,6 @@ Display( N( Delta2op.C2 ) );
 N( Delta2op.id );
 #! <A morphism in SkeletalFinSets>
 Display( N( Delta2op.id ) );
-#! [ 3, [ 1, 8, 22 ], 31 ]
+#! [ 3, [ 0, 7, 21 ], 31 ]
 #! @EndExample
 #! @EndChunk

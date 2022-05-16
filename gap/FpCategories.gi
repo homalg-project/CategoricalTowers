@@ -417,7 +417,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
-        entries := List( basis_a_b, phi -> Position( basis_ap_bp, Paths( elem_alpha * phi * elem_beta )[1] ) );
+        entries := List( basis_a_b, phi -> -1 + Position( basis_ap_bp, Paths( elem_alpha * phi * elem_beta )[1] ) );
         
         return MorphismConstructor( range_category_of_HomStructure, source, entries, range );
         
@@ -450,7 +450,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         return MorphismConstructor(
                 range_category_of_HomStructure,
                 source,
-                [ Position( basis_elements, Paths( element )[1] ) ],
+                [ -1 + Position( basis_elements, Paths( element )[1] ) ],
                 range
               );
         
@@ -463,7 +463,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
-        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ AsList( morphism )[1] ]} );
+        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{1 + [ AsList( morphism )[1] ]} );
         
         return MorphismInFpCategory( a, element, b );
         
@@ -1370,7 +1370,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     p22 := ProjectionInFactorOfDirectProduct( D00, 2 );
     
     B1 := List( N0N0,
-                i -> HomomorphismStructureOnObjects( B0[p21( i )], B0[p22( i )] ) );
+                i -> HomomorphismStructureOnObjects( B0[1 + p21( i )], B0[1 + p22( i )] ) );
     
     N1 := Coproduct( B1 );
     
@@ -1383,15 +1383,15 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                   N0,
                   List( N0,
                         i -> PreCompose(
-                                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[i] ) ),
-                                InjectionOfCofactorOfCoproduct( B1, d( i ) ) )(1) ),
+                                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[1 + i] ) ),
+                                InjectionOfCofactorOfCoproduct( B1, 1 + d( i ) ) )( 0 ) ),
                   N1 );
     
     ## N1 -> N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N1 in SkeletalFinSets is taken over the index set N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
-    pi2 := MapOfFinSets( N1, Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[i] ), i ) ) ), N0N0 );
+    pi2 := MapOfFinSets( N1, Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ), N0N0 );
     
     ## N1 -> N0 × N0 -> N0
     s := PreCompose( pi2, p21 );
@@ -1410,8 +1410,8 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     
     B2 := List( N0N0N0,
                 i -> DirectProduct(
-                        HomomorphismStructureOnObjects( B0[p31( i )], B0[p32( i )] ),
-                        HomomorphismStructureOnObjects( B0[p32( i )], B0[p33( i )] ) ) );
+                        HomomorphismStructureOnObjects( B0[1 + p31( i )], B0[1 + p32( i )] ),
+                        HomomorphismStructureOnObjects( B0[1 + p32( i )], B0[1 + p33( i )] ) ) );
     
     N2 := Coproduct( B2 );
     
@@ -1427,9 +1427,9 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                   List( N1,
                         i -> PreCompose(
                                 DirectProductFunctorial(
-                                        [ LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B1, pi2( i ) ), MapOfFinSets( T, [ i ], N1 ) ),
-                                          InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[t( i )] ) ) ] ),
-                                InjectionOfCofactorOfCoproduct( B2, ds( i ) ) )(1) ),
+                                        [ LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B1, 1 + pi2( i ) ), MapOfFinSets( T, [ i ], N1 ) ),
+                                          InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[1 + t( i )] ) ) ] ),
+                                InjectionOfCofactorOfCoproduct( B2, 1 + ds( i ) ) )( 0 ) ),
                   N2 );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
@@ -1442,9 +1442,9 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                   List( N1,
                         i -> PreCompose(
                                 DirectProductFunctorial(
-                                        [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[s( i )] ) ),
-                                          LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B1, pi2( i ) ), MapOfFinSets( T, [ i ], N1 ) ) ] ),
-                                InjectionOfCofactorOfCoproduct( B2, dt( i ) ) )(1) ),
+                                        [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[1 + s( i )] ) ),
+                                          LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B1, 1 + pi2( i ) ), MapOfFinSets( T, [ i ], N1 ) ) ] ),
+                                InjectionOfCofactorOfCoproduct( B2, 1 + dt( i ) ) )( 0 ) ),
                   N2 );
 
     ## N0 × N0 × N0 -> N0 × N0
@@ -1459,7 +1459,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N2 in SkeletalFinSets is taken over the index set N0N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
-    pi3 := MapOfFinSets( N2, Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[i] ), i ) ) ), N0N0N0 );
+    pi3 := MapOfFinSets( N2, Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ), N0N0N0 );
     
     ## N2 -> N0 × N0 × N0 -> N0 × N0
     pi312 := PreCompose( pi3, p312 );
@@ -1471,9 +1471,9 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                   N2,
                   List( N2,
                         i -> PreCompose( [
-                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
-                                ProjectionInFactorOfDirectProduct( [ B1[pi312( i )], B1[pi323( i )] ], 1 ),
-                                InjectionOfCofactorOfCoproduct( B1, pi312( i ) ) ] )(1) ),
+                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, 1 + pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
+                                ProjectionInFactorOfDirectProduct( [ B1[1 + pi312( i )], B1[1 + pi323( i )] ], 1 ),
+                                InjectionOfCofactorOfCoproduct( B1, 1 + pi312( i ) ) ] )( 0 ) ),
                   N1 );
     
     ## N2 -> N1
@@ -1481,42 +1481,42 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                   N2,
                   List( N2,
                         i -> PreCompose( [
-                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
-                                ProjectionInFactorOfDirectProduct( [ B1[pi312( i )], B1[pi323( i )] ], 2 ),
-                                InjectionOfCofactorOfCoproduct( B1, pi323( i ) ) ] )(1) ),
+                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, 1 + pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
+                                ProjectionInFactorOfDirectProduct( [ B1[1 + pi312( i )], B1[1 + pi323( i )] ], 2 ),
+                                InjectionOfCofactorOfCoproduct( B1, 1 + pi323( i ) ) ] )( 0 ) ),
                   N1 );
     
     mus := List( N0N0N0,
-                 i -> List( B2[i],
-                         j -> [ MapOfFinSets( T, [ ProjectionInFactorOfDirectProduct( [ B1[p312( i )], B1[p323( i )] ], 1 )(j) ], B1[p312( i )] ),
-                                MapOfFinSets( T, [ ProjectionInFactorOfDirectProduct( [ B1[p312( i )], B1[p323( i )] ], 2 )(j) ], B1[p323( i )] ) ] ) );
+                 i -> List( B2[1 + i],
+                         j -> [ MapOfFinSets( T, [ ProjectionInFactorOfDirectProduct( [ B1[1 + p312( i )], B1[1 + p323( i )] ], 1 )(j) ], B1[1 + p312( i )] ),
+                                MapOfFinSets( T, [ ProjectionInFactorOfDirectProduct( [ B1[1 + p312( i )], B1[1 + p323( i )] ], 2 )(j) ], B1[1 + p323( i )] ) ] ) );
     
     Assert( 0, Length( Concatenation( mus ) ) = Length( N2 ) );
     
     Assert( 0, ForAll( mus, mu -> ForAll( mu, m -> IsWellDefined( m[1] ) and IsWellDefined( m[2] ) ) ) );
     
     mus := List( N0N0N0,
-                 i -> List( B2[i],
+                 i -> List( B2[1 + i],
                          j -> PreCompose(
-                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B0[p31( i )], B0[p32( i )], mus[i][j][1] ),
-                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B0[p32( i )], B0[p33( i )], mus[i][j][2] ) ) ) );
+                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B0[1 + p31( i )], B0[1 + p32( i )], mus[1 + i][1 + j][1] ),
+                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B0[1 + p32( i )], B0[1 + p33( i )], mus[1 + i][1 + j][2] ) ) ) );
     
     mus := List( N0N0N0,
-                 i -> List( B2[i],
+                 i -> List( B2[1 + i],
                          function( j )
                            local phi;
                            
-                           phi := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mus[i][j] );
+                           phi := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mus[1 + i][1 + j] );
                            
                            IsWellDefined( phi );
                            
-                           Assert( 0, Range( phi ) = B1[p313( i )] );
+                           Assert( 0, Range( phi ) = B1[1 + p313( i )] );
                            
                            return phi;
                            
                        end ) );
     
-    mus := List( N0N0N0, i -> UniversalMorphismFromCoproductWithGivenCoproduct( H, List( mus[i], Source ), B1[p313( i )], mus[i], B2[i] ) );
+    mus := List( N0N0N0, i -> UniversalMorphismFromCoproductWithGivenCoproduct( H, List( mus[1 + i], Source ), B1[1 + p313( i )], mus[1 + i], B2[1 + i] ) );
     
     Assert( 0, ForAll( [ 1 .. Length( N0N0N0 ) ], i -> Source( mus[i] ) = B2[i] ) );
     
@@ -1525,9 +1525,9 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
                   N2,
                   List( N2,
                         i -> PreCompose( [
-                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
-                                mus[pi3( i )],
-                                InjectionOfCofactorOfCoproduct( B1, pi313( i ) ) ] )(1) ),
+                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, 1 + pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
+                                mus[1 + pi3( i )],
+                                InjectionOfCofactorOfCoproduct( B1, 1 + pi313( i ) ) ] )( 0 ) ),
                   N1 );
     
     Nerve_ValuesOnAllObjects := rec( C0 := N0, C1 := N1, C2 := N2 );
@@ -1637,7 +1637,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
                           
                           ## reinterpret the composition m as a morphism D → Hom(a, c),
                           ## then get its number as an element in Hom(a, c):
-                          return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( m )( 1 );
+                          return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( m )( 0 );
                           
                       end ),
                   Hom2[c, a] ); # = Hom(a, c)
@@ -1826,7 +1826,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                                                                                   MapOfFinSets( D, [ i ], power ) ) )
                                                                   ], 1 ),
                                                         ## μ_c: Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
-                                                        mu_c ) ) ) )( 1 ) ),
+                                                        mu_c ) ) ) )( 0 ) ),
                   power ); ## Hom(Hom(-, c), Ω)
         
         ## The sieves on c are the fixed points of the above action on Hom(Hom(-, c), Ω),
