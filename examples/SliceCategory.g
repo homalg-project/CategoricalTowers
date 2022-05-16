@@ -3,15 +3,15 @@
 LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
-LoadPackage( "FinSetsForCAP" );
+LoadPackage( "FinSetsForCAP", ">= 2022.05-01" );
 #! true
 B := FinSet( 2 );
 #! <An object in SkeletalFinSets>
-o0 := AsSliceCategoryCell( MapOfFinSets( B, [ 2, 2 ], B ) );
+o0 := AsSliceCategoryCell( MapOfFinSets( B, [ 1, 1 ], B ) );
 #! An object in the slice category given by: <A morphism in SkeletalFinSets>
-o1 := AsSliceCategoryCell( MapOfFinSets( FinSet( 3 ), [ 1, 2, 1 ], B ) );
+o1 := AsSliceCategoryCell( MapOfFinSets( FinSet( 3 ), [ 0, 1, 0 ], B ) );
 #! An object in the slice category given by: <A morphism in SkeletalFinSets>
-o2 := AsSliceCategoryCell( MapOfFinSets( FinSet( 4 ), [ 2, 1, 2, 1 ], B ) );
+o2 := AsSliceCategoryCell( MapOfFinSets( FinSet( 4 ), [ 1, 0, 1, 0 ], B ) );
 #! An object in the slice category given by: <A morphism in SkeletalFinSets>
 IsWellDefined( o0 );
 #! true
@@ -38,12 +38,12 @@ IsInitial( Source( iota ) );
 tau := UniversalMorphismIntoTerminalObject( o2 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
 Display( tau );
-#! [ 4, [ 2, 1, 2, 1 ], 2 ]
+#! [ 4, [ 1, 0, 1, 0 ], 2 ]
 #! 
 #! A morphism in the slice category given by the above data
 IsTerminal( Range( tau ) );
 #! true
-n := MapOfFinSets( FinSet( 3 ), [ 3, 1, 4 ], FinSet( 4 ) );
+n := MapOfFinSets( FinSet( 3 ), [ 2, 0, 3 ], FinSet( 4 ) );
 #! <A morphism in SkeletalFinSets>
 IsWellDefined( n );
 #! true
@@ -51,7 +51,7 @@ n := AsSliceCategoryCell( o1, n, o2 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
 IsWellDefined( n );
 #! false
-m1 := MapOfFinSets( FinSet( 3 ), [ 2, 1, 4 ], FinSet( 4 ) );
+m1 := MapOfFinSets( FinSet( 3 ), [ 1, 0, 3 ], FinSet( 4 ) );
 #! <A morphism in SkeletalFinSets>
 m1 := AsSliceCategoryCell( o1, m1, o2 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
@@ -59,7 +59,7 @@ IsWellDefined( m1 );
 #! true
 IsSplitEpimorphism( m1 );
 #! false
-m2 := MapOfFinSets( FinSet( 4 ), [ 2, 3, 2, 1 ], FinSet( 3 ) );
+m2 := MapOfFinSets( FinSet( 4 ), [ 1, 2, 1, 0 ], FinSet( 3 ) );
 #! <A morphism in SkeletalFinSets>
 m2 := AsSliceCategoryCell( o2, m2, o1 );
 #! A morphism in the slice category given by: <A morphism in SkeletalFinSets>
