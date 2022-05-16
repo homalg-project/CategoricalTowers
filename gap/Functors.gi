@@ -341,15 +341,15 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     Y := Source( s );
     
     ## Truth values of Ω
-    truth_values := [ TruthMorphismOfTrue( H )( 1 ), TruthMorphismOfFalse( H )( 1 ) ];
+    truth_values := [ TruthMorphismOfFalse( H )( 0 ), TruthMorphismOfTrue( H )( 0 ) ];
     
-    ## true ↦ 1, false ↦ 2
+    ## false ↦ 0, true ↦ 1
     into_OmegaH :=
       function ( b )
         if b then
-            return truth_values[1];
-        else
             return truth_values[2];
+        else
+            return truth_values[1];
         fi;
     end;
     
@@ -371,8 +371,8 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                     LiftAlongMonomorphism(
                             InjectionOfCofactorOfCoproduct(
                                     List( B_0, a -> HomStructure( a, c_in_B ) ),
-                                    s_c( f ) ),
-                            MapOfFinSets( D, [ f ], hom_c ) )(1) );
+                                    1 + s_c( f ) ),
+                            MapOfFinSets( D, [ f ], hom_c ) )(0) );
         
         ## Sieves(c) ↪ Hom(Hom(-, c), Ω)
         emb_c := emb( c );
@@ -390,7 +390,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                                                ## Is x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f)?
                                                IsLiftableAlongMonomorphism(
                                                        ## ι_a: Q(a) ↪ P(a):
-                                                       iota( Bop_0[s_c( f )] ), ## = a
+                                                       iota( Bop_0[1 + s_c( f )] ), ## = a
                                                        ## x P(f) ∈ P(a), where a = Source(f):
                                                        PreCompose(
                                                                ## x ∈ P(c):
@@ -400,13 +400,13 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                                                                  ## f: a → c in B, where a = Source(f):
                                                                  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                                                                          c,
-                                                                         Bop_0[s_c( f )], ## = a
+                                                                         Bop_0[1 + s_c( f )], ## = a
                                                                          MapOfFinSets(
                                                                                  D,
-                                                                                 [ pr[ f ] ],
-                                                                                 HomStructure( c, Bop_0[s_c( f )] ) ) ) ) ) ) ),
+                                                                                 [ pr[1 + f] ],
+                                                                                 HomStructure( c, Bop_0[1 + s_c( f )] ) ) ) ) ) ) ),
                                              into_OmegaH ),
-                                       OmegaH ) ) )(1);
+                                       OmegaH ) ) )(0);
         
     end;
     
