@@ -479,7 +479,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
            alpha_ij := alpha[i][j];
            delta_ij := delta[i][j];
            
-          if IsEndomorphism( delta_ij ) and not IsIdenticalToZeroMorphism( alpha_ij ) then
+          if IsEndomorphism( delta_ij ) and not IsEqualToZeroMorphism( alpha_ij ) then
               return IdentityMorphism( Source( delta_ij ) );
           fi;
           
@@ -494,7 +494,7 @@ InstallMethod( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
           alpha_ij := alpha[i][j];
           delta_ij := delta[i][j];
           
-          if IsEndomorphism( alpha_ij ) and not IsIdenticalToZeroMorphism( delta_ij ) then
+          if IsEndomorphism( alpha_ij ) and not IsEqualToZeroMorphism( delta_ij ) then
               return IdentityMorphism( Source( alpha_ij ) );
           fi;
           
