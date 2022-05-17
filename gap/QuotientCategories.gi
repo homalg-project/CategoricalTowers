@@ -30,8 +30,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_QUOTIENT_CATEGORY,
    "AdditiveInverseForMorphisms",
    "IdentityMorphism",
    "IsEndomorphism",
-   "IsIdenticalToIdentityMorphism",
-   "IsIdenticalToZeroMorphism",
+   "IsEqualToIdentityMorphism",
+   "IsEqualToZeroMorphism",
    "MultiplyWithElementOfCommutativeRingForMorphisms",
    "PostCompose",
    "PreCompose",
@@ -371,7 +371,7 @@ InstallMethod( IsIsomorphism,
     
     cat := UnderlyingCategory( CapCategory( quotient_alpha ) );
     
-    if IsIdenticalToIdentityMorphism( quotient_alpha ) then
+    if IsEqualToIdentityMorphism( quotient_alpha ) then
       return true;
     fi;
     
@@ -398,7 +398,7 @@ InstallMethod( InverseForMorphisms,
     
     cat := UnderlyingCategory( CapCategory( quotient_alpha ) );
     
-    if IsIdenticalToIdentityMorphism( quotient_alpha ) then
+    if IsEqualToIdentityMorphism( quotient_alpha ) then
       return quotient_alpha;
     fi;
     
