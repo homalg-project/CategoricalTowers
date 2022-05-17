@@ -77,8 +77,8 @@ InstallMethod( CategoryConstructor,
               "ObjectDatum",
               "MorphismConstructor",
               "MorphismDatum",
-              "IsIdenticalToIdentityMorphism",    ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
-              "IsIdenticalToZeroMorphism",        ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
+              "IsEqualToIdentityMorphism",    ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
+              "IsEqualToZeroMorphism",        ## the CAP specification depends on IsEqualForMorphisms which might be different in the resulting category
               ];
     
     properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] );
