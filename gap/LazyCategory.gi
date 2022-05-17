@@ -560,21 +560,21 @@ InstallMethod( LazyCategory,
           function( D, phi, psi )
             local composition;
             
-            if IsIdenticalToIdentityMorphism( D, psi ) then
+            if IsEqualToIdentityMorphism( D, psi ) then
                 
                 return phi;
                 
             fi;
             
-            if IsIdenticalToIdentityMorphism( D, phi ) then
+            if IsEqualToIdentityMorphism( D, phi ) then
                 
                 return psi;
                 
             fi;
             
-            if CanCompute( D, "IsIdenticalToZeroMorphism" ) then
+            if CanCompute( D, "IsEqualToZeroMorphism" ) then
                 
-                if IsIdenticalToZeroMorphism( D, phi ) or IsIdenticalToZeroMorphism( D, psi ) then
+                if IsEqualToZeroMorphism( D, phi ) or IsEqualToZeroMorphism( D, psi ) then
                     
                     return ZeroMorphism( D, Source( phi ), Range( psi ) );
                     
@@ -607,7 +607,7 @@ InstallMethod( LazyCategory,
               function( D, diagram )
                 local ess;
                 
-                ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
+                ess := Filtered( diagram, m -> not IsEqualToIdentityMorphism( D, m ) );
                 
                 if IsEmpty( ess ) then
                     ess := [ diagram[1] ];
@@ -629,7 +629,7 @@ InstallMethod( LazyCategory,
               function( D, diagram, k, P )
                 local pos, mor;
                 
-                pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
+                pos := PositionsProperty( diagram, m -> not IsEqualToIdentityMorphism( D, m ) );
                 
                 if IsEmpty( pos ) then
                     pos := [ 1 ];
@@ -659,7 +659,7 @@ InstallMethod( LazyCategory,
              function( D, diagram )
                 local ess;
                 
-                ess := Filtered( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
+                ess := Filtered( diagram, m -> not IsEqualToIdentityMorphism( D, m ) );
                 
                 if IsEmpty( ess ) then
                     ess := [ diagram[1] ];
@@ -681,7 +681,7 @@ InstallMethod( LazyCategory,
               function( D, diagram, k, I )
                 local pos, mor;
                 
-                pos := PositionsProperty( diagram, m -> not IsIdenticalToIdentityMorphism( D, m ) );
+                pos := PositionsProperty( diagram, m -> not IsEqualToIdentityMorphism( D, m ) );
                 
                 if IsEmpty( pos ) then
                     pos := [ 1 ];
