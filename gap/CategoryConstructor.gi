@@ -475,6 +475,7 @@ InstallMethod( CategoryConstructor,
             func := ReplacedStringViaRecord( func, rec(
                 operation_name := name,
                 input_arguments := info.input_arguments_names,
+                number_of_arguments := String( Length( info.input_arguments_names ) ),
             ) );
             
             if underlying_category_getter_string <> fail and underlying_object_getter_string <> fail and underlying_morphism_getter_string <> fail then
