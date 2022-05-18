@@ -1586,6 +1586,7 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     if CheckConstructivenessOfCategory( C, "IsElementaryTopos" ) = [ ] and
+       HasRangeCategoryOfHomomorphismStructure( Hom ) and
        ## in the following we require (1) that the range category C of the functor category
        ## is itself the range category of the homomorphism structure of the functor category:
        IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( Hom ) ) then
