@@ -107,7 +107,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         T := TerminalObject( UnderlyingCategory( D ) );
         I := InitialObject( UnderlyingCategory( D ) );
         
-        return ObjectConstructor( D, [ T, I ] );
+        return ObjectConstructor( D, Pair( T, I ) );
         
     end );
     
@@ -118,7 +118,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         
         I := InitialObject( UnderlyingCategory( D ) );
         
-        return ObjectConstructor( D, [ I, I ] );
+        return ObjectConstructor( D, Pair( I, I ) );
         
     end );
     
@@ -145,7 +145,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         T := DirectProduct( C, List( L_pairs, a -> a[1] ) );
         S := Coproduct( C, List( L_pairs, a -> a[2] ) );
         
-        return ObjectConstructor( D, [ T, S ] );
+        return ObjectConstructor( D, Pair( T, S ) );
         
     end );
     
@@ -171,7 +171,7 @@ InstallMethod( \-,
     
     D := MeetSemilatticeOfDifferences( H );
     
-    return ObjectConstructor( D, [ A, B ] );
+    return ObjectConstructor( D, Pair( A, B ) );
     
 end );
 
