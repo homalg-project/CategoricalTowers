@@ -40,16 +40,16 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     mor_pair :=
       function ( i )
         
-        return [ [ Position( objs, Source( mors[i] ) ),
+        return [ Triple( SafePosition( objs, Source( mors[i] ) ),
                    HomomorphismStructureOnMorphisms( range_category, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(s(m)), G(t(m)) )
                            IdentityMorphism( range_category, Source( F_m[i] ) ),
                            G_m[i] ),
-                   nr_o + i ],
-                 [ Position( objs, Range( mors[i] ) ),
+                   nr_o + i ),
+                 Triple( SafePosition( objs, Range( mors[i] ) ),
                    HomomorphismStructureOnMorphisms( range_category, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(s(m)), G(t(m)) )
                            F_m[i],
                            IdentityMorphism( range_category, Range( G_m[i] ) ) ),
-                   nr_o + i ] ];
+                   nr_o + i ) ];
         
     end;
     
@@ -57,7 +57,7 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     
     objects := Concatenation( [ sources, List( morphisms, m -> Range( m[1][2] ) ) ] );
     
-    return [ objects, Concatenation( morphisms ) ];
+    return Pair( objects, Concatenation( morphisms ) );
     
 end );
 
