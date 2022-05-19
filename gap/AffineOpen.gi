@@ -285,6 +285,8 @@ InstallMethod( ZariskiFrameOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiFrame := CreateCapCategory( name );
     
+    SetFilterObj( ZariskiFrame, IsZariskiFrameOfAnAffineVariety );
+    
     ZariskiFrame!.category_as_first_argument := true;
     
     SetUnderlyingRing( ZariskiFrame, R );
