@@ -9,6 +9,12 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of Zariski frames.
+#! @Arguments object
+DeclareCategory( "IsZariskiFrame",
+        IsCapCategory and IsThinCategory );
+
+#! @Description
 #!  The &GAP; category of objects in a Zariski frame.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiFrame",

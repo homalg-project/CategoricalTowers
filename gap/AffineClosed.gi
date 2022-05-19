@@ -374,10 +374,12 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ZariskiCoframe := CreateCapCategory( name );
     
+    SetFilterObj( ZariskiCoframe, IsZariskiCoframeOfAnAffineVariety );
+    
     ZariskiCoframe!.category_as_first_argument := true;
     
     SetUnderlyingRing( ZariskiCoframe, R );
-
+    
     if not IsBound( R!.CategoryOfRows ) then
         R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
     fi;

@@ -9,6 +9,12 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of Zariski coframes of an affine variety.
+#! @Arguments object
+DeclareCategory( "IsZariskiCoframeOfAnAffineVariety",
+        IsZariskiCoframe );
+
+#! @Description
 #!  The &GAP; category of objects in a Zariski coframe of an affine variety.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiCoframeOfAnAffineVariety",
