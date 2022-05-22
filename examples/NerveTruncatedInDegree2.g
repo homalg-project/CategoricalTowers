@@ -23,8 +23,8 @@ N := NerveTruncatedInDegree2( Delta2 );
 #! <An object in FunctorCategory( FreeCategory( RightQuiver(
 #!   "Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,
 #!                       is:C1->C2,it:C1->C2,
-#!                       ps:C2->C1,pt:C2->C1,mu:C2->C1]" ) ) / relations
-#!  -> SkeletalFinSets )>
+#!                       ps:C2->C1,pt:C2->C1,mu:C2->C1]" ) ) / relations,
+#!  SkeletalFinSets )>
 IsWellDefined( N );
 #! true
 N.C0;
@@ -49,8 +49,8 @@ IntCat := CategoryOfInternalCategories(
 #! FunctorCategory( FreeCategory( RightQuiver(
 #!   "Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,
 #!                       is:C1->C2,it:C1->C2,
-#!                       ps:C2->C1,pt:C2->C1,mu:C2->C1]" ) ) / relations
-#!  -> SkeletalFinSets ), ObjectMembershipFunction )
+#!                       ps:C2->C1,pt:C2->C1,mu:C2->C1]" ) ) / relations,
+#! SkeletalFinSets ), ObjectMembershipFunction )
 IsWellDefined( N / IntCat );
 #! true
 #! @EndExample
