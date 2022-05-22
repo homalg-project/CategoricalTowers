@@ -25,3 +25,14 @@ InstallOtherMethod( CanCompute,
     return CanCompute( C, ConvertJuliaToGAP( oper ) );
     
 end );
+
+##
+InstallOtherMethod( MorphismFromFiberProductToSink,
+        "for a julia object",
+        [ IsJuliaObject ],
+        
+  function( D )
+    
+    return MorphismFromFiberProductToSink( ConvertJuliaToGAP( D ) );
+    
+end );
