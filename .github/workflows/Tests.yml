@@ -45,6 +45,7 @@ jobs:
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
           [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
+          [ -d "CAP_project/CompilerForCAP" ] && make -C "CAP_project/CompilerForCAP" doc
           [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
           [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
           [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
@@ -55,7 +56,7 @@ jobs:
           TERM=dumb make -C CatReps -j $(nproc) --output-sync ci-test
           cp ./FunctorCategories/.codecov.yml ./
           (cd FunctorCategories && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
-          [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./FunctorCategories/upload_codecov.sh
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./FunctorCategories/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd FunctorCategories
