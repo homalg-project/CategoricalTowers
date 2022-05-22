@@ -23,24 +23,24 @@ Ypt := YonedaProjection( Delta2 );
 #! <An epimorphism in FunctorCategory( FreeCategory( RightQuiver(
 #!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
-#!  -> SkeletalFinSets )>
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
+#!  SkeletalFinSets )>
 IsWellDefined( Ypt );
 #! true
 Ymu := YonedaComposition( Delta2 );
 #! <An epimorphism in FunctorCategory( FreeCategory( RightQuiver(
 #!    "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
-#!  -> SkeletalFinSets )>
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
+#!  SkeletalFinSets )>
 IsWellDefined( Ymu );
 #! true
 Ys := YonedaFibration( Delta2 );
 #! <A morphism in FunctorCategory( FreeCategory( RightQuiver(
 #!    "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
-#!  -> SkeletalFinSets )>
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
+#!  SkeletalFinSets )>
 IsWellDefined( Ys );
 #! true
 Display( Ys );
@@ -56,7 +56,7 @@ Display( Ys );
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver(
 #!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
-#!  -> SkeletalFinSets ) given by the above data
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
+#! SkeletalFinSets ) given by the above data
 #! @EndExample
 #! @EndChunk
