@@ -5,6 +5,28 @@
 #
 
 ##
+InstallMethod( Subobject,
+        "for a morphism in a category",
+        [ IsCapCategoryMorphism ],
+        
+  function( mor )
+    
+    if not CanCompute( CapCategory( mor ), "ImageEmbedding" ) then
+        TryNextMethod( );
+    fi;
+    
+    return ImageEmbedding( mor );
+    
+end );
+
+##
+InstallMethod( Subobject,
+        "for a morphism in a category",
+        [ IsCapCategoryMorphism and IsMonomorphism ],
+        
+  IdFunc );
+
+##
 InstallGlobalFunction( RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   function( cat, morphism_1, morphism_2, morphism_3, arg... )
     local current_value;
