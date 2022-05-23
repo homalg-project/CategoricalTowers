@@ -12,9 +12,6 @@ ReadPackage( "CategoryConstructor", "gap/CreateMonoidalCategories.gi" );
 ReadPackage( "CategoryConstructor", "gap/CreateClosedMonoidalCategories.gi" );
 ReadPackage( "CategoryConstructor", "gap/CreateCoclosedMonoidalCategories.gi" );
 
-## TerminalCategory
-ReadPackage( "CategoryConstructor", "gap/TerminalCategory.gi" );
-
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "CategoryConstructor", "gap/Julia.gi" );
 fi;
