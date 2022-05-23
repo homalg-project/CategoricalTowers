@@ -42,3 +42,14 @@ InstallOtherMethod( ClosedSubsetOfSpecByStandardMorphism,
     return ClosedSubsetOfSpecByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
     
 end );
+
+##
+InstallOtherMethod( Subobject,
+        "for a Julia object and a homalg ring",
+        [ IsObjectInZariskiFrameOrCoframe, IsJuliaObject ],
+        
+  function( V, str )
+    
+    return Subobject( V, JuliaToGAP( IsString, str ) );
+    
+end );

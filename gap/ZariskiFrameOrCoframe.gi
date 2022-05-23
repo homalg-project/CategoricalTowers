@@ -7,6 +7,22 @@
 SetInfoLevel( InfoZariskiFrames, 1 );
 
 ##
+InstallOtherMethod( Subobject,
+        "for an object in a Zariski (co)frame and a string",
+        [ IsObjectInZariskiFrameOrCoframe, IsString ],
+
+  function( V, str )
+    local Z, U;
+    
+    Z := CapCategory( V );
+    
+    U := DirectProduct( V, Z!.Constructor( str, UnderlyingRing( Z ) ) );
+    
+    return UniqueMorphism( U, V );
+    
+end );
+
+##
 InstallGlobalFunction( ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
   function( L )
     local biased_weak_fiber_product;
