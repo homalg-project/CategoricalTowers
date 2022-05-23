@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( Subobject,
+InstallOtherMethod( Subobject,
         "for a morphism in a category",
         [ IsCapCategoryMorphism ],
         
@@ -20,7 +20,7 @@ InstallMethod( Subobject,
 end );
 
 ##
-InstallMethod( Subobject,
+InstallOtherMethod( Subobject,
         "for a morphism in a category",
         [ IsCapCategoryMorphism and IsMonomorphism ],
         
