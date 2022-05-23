@@ -133,14 +133,13 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
     
     morphism_datum := { cat, morphism } -> fail;
     
-    T := CategoryConstructor( :
+    T := CategoryConstructor( rec(
                  name := "TerminalCategoryWithMultipleObjects",
                  category_filter := IsTerminalCategory and IsTerminalCategoryWithMultipleObjects,
                  category_object_filter := IsCapTerminalCategoryObjectRep,
                  category_morphism_filter := IsCapTerminalCategoryMorphismRep,
-                 commutative_ring := HomalgRingOfIntegers( ),
+                 commutative_ring_of_linear_category := HomalgRingOfIntegers( ),
                  properties := properties,
-                 is_monoidal := true,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
                  create_func_object := create_func_object,
@@ -149,9 +148,8 @@ InstallGlobalFunction( TerminalCategoryWithMultipleObjects,
                  object_constructor := object_constructor,
                  object_datum := object_datum,
                  morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum,
-                 category_as_first_argument := true
-                 );
+                 morphism_datum := morphism_datum
+                 ) );
     
     ##
     AddIsWellDefinedForObjects( T,
