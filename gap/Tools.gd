@@ -434,3 +434,7 @@ DeclareOperation( "UniversalMorphismIntoLimit",
 #! @Arguments objects, decorated_morphisms, T, tau, P
 DeclareOperation( "UniversalMorphismIntoLimitWithGivenLimit",
                   [ IsList, IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+##
+DeclareOperation( "Subobject",
+        [ IsCapCategoryMorphism ] );
