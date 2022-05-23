@@ -22,10 +22,10 @@ Omega0 := SubobjectClassifier( PShM0 );
 #!  / [ a*a*a = 1 ], SkeletalFinSets )>
 Display( Omega0 );
 #! Image of <(1)>:
-#! 2
+#! { 0, 1 }
 #! 
 #! Image of (1)-[(a)]->(1):
-#! [ 2, [ 0, 1 ], 2 ]
+#! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
 #! 
 #! An object in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = 1 ], SkeletalFinSets )
@@ -35,10 +35,10 @@ e := Exponential( Omega0, Omega0 );
 #!  / [ a*a*a = 1 ], SkeletalFinSets )>
 Display( e );
 #! Image of <(1)>:
-#! 4
+#! { 0,..., 3 }
 #! 
 #! Image of (1)-[(a)]->(1):
-#! [ 4, [ 0, 1, 2, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! An object in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = 1 ], SkeletalFinSets )
@@ -48,7 +48,7 @@ ev0 := CartesianEvaluationMorphism( Omega0, Omega0 );
 #!  / [ a*a*a = 1 ], SkeletalFinSets )>
 Display( ev0 );
 #! Image of <(1)>:
-#! [ 8, [ 0, 0, 0, 1, 1, 0, 1, 1 ], 2 ]
+#! { 0,..., 7 } ⱶ[ 0, 0, 0, 1, 1, 0, 1, 1 ]→ { 0, 1 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = 1 ], SkeletalFinSets )
@@ -63,10 +63,10 @@ Omega1 := SubobjectClassifier( PShM1 );
 #!  / [ a*a*a = a ], SkeletalFinSets )>
 Display( Omega1 );
 #! Image of <(1)>:
-#! 3
+#! { 0, 1, 2 }
 #! 
 #! Image of (1)-[(a)]->(1):
-#! [ 3, [ 0, 2, 2 ], 3 ]
+#! { 0, 1, 2 } ⱶ[ 0, 2, 2 ]→ { 0, 1, 2 }
 #! 
 #! An object in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a ], SkeletalFinSets )
@@ -81,10 +81,10 @@ Omega2 := SubobjectClassifier( PShM2 );
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( Omega2 );
 #! Image of <(1)>:
-#! 4
+#! { 0,..., 3 }
 #! 
 #! Image of (1)-[(a)]->(1):
-#! [ 4, [ 0, 2, 3, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! An object in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -94,7 +94,7 @@ true2 := TruthMorphismOfTrue( PShM2 );
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( true2 );
 #! Image of <(1)>:
-#! [ 1, [ 3 ], 4 ]
+#! { 0 } ⱶ[ 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -104,7 +104,7 @@ false2 := TruthMorphismOfFalse( PShM2 );
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( false2 );
 #! Image of <(1)>:
-#! [ 1, [ 0 ], 4 ]
+#! { 0 } ⱶ[ 0 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -114,7 +114,7 @@ iota := AsMorphismInFunctorCategory( EmbeddingOfSieveFunctor( M2 ) );
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( iota );
 #! Image of <(1)>:
-#! [ 4, [ 0, 1, 3, 7 ], 8 ]
+#! { 0,..., 3 } ⱶ[ 0, 1, 3, 7 ]→ { 0,..., 7 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -124,10 +124,10 @@ Range( iota );
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( Range( iota ) );
 #! Image of <(1)>:
-#! 8
+#! { 0,..., 7 }
 #! 
 #! Image of (1)-[(a)]->(1):
-#! [ 8, [ 0, 3, 4, 7, 0, 3, 4, 7 ], 8 ]
+#! { 0,..., 7 } ⱶ[ 0, 3, 4, 7, 0, 3, 4, 7 ]→ { 0,..., 7 }
 #! 
 #! An object in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -137,7 +137,7 @@ t2 := SubobjectOfClassifyingMorphism( true2 );
 #!  RightQuiver( "q_op(1)[a:1->1]" ) ) / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( t2 );
 #! Image of <(1)>:
-#! [ 1, [ 0 ], 1 ]
+#! { 0 } ⱶ[ 0 ]→ { 0 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -147,17 +147,17 @@ f2 := SubobjectOfClassifyingMorphism( false2 );
 #!  RightQuiver( "q_op(1)[a:1->1]" ) ) / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( f2 );
 #! Image of <(1)>:
-#! [ 0, [  ], 1 ]
+#! ∅ ⱶ[  ]→ { 0 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 H := HomStructure( Omega2, Omega2 );
-#! <An object in SkeletalFinSets>
+#! |8|
 Display( H );
-#! 8
+#! { 0,..., 7 }
 T2 := DistinguishedObjectOfHomomorphismStructure( PShM2 );
-#! <An object in SkeletalFinSets>
+#! |1|
 L := List( H, i ->
        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                Omega2, Omega2, MapOfFinSets( T2, [ i ], H ) ) );;
@@ -165,49 +165,49 @@ Length( L );
 #! 8
 Perform( L, Display );
 #! Image of <(1)>:
-#! [ 4, [ 0, 0, 0, 0 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 0, 0, 0, 0 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 0, 1, 2, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 0, 2, 3, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 0, 3, 3, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 0, 3, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 3, 0, 0, 0 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 3, 0, 0, 0 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 3, 1, 2, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 3, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 3, 2, 3, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 3, 2, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
-#! [ 4, [ 3, 3, 3, 3 ], 4 ]
+#! { 0,..., 3 } ⱶ[ 3, 3, 3, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in FunctorCategory( FreeCategory( RightQuiver( "q_op(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )

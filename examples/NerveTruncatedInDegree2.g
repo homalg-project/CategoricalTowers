@@ -28,21 +28,21 @@ N := NerveTruncatedInDegree2( Delta2 );
 IsWellDefined( N );
 #! true
 N.C0;
-#! <An object in SkeletalFinSets>
+#! |3|
 Display( N.C0 );
-#! 3
+#! { 0, 1, 2 }
 N.C1;
-#! <An object in SkeletalFinSets>
+#! |31|
 Display( N.C1 );
-#! 31
+#! { 0,..., 30 }
 N.C2;
-#! <An object in SkeletalFinSets>
+#! |393|
 Display( N.C2 );
-#! 393
+#! { 0,..., 392 }
 N.id;
-#! <A morphism in SkeletalFinSets>
+#! |3| → |31|
 Display( N.id );
-#! [ 3, [ 0, 7, 21 ], 31 ]
+#! { 0, 1, 2 } ⱶ[ 0, 7, 21 ]→ { 0,..., 30 }
 IntCat := CategoryOfInternalCategories(
                   RangeCategoryOfHomomorphismStructure( Delta2 ) );
 #! FullSubcategoryByObjectMembershipFunction(
