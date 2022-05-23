@@ -107,8 +107,8 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           #"MonoidalPreComposeMorphismWithGivenObjects",
           "MorphismBetweenDirectSumsWithGivenDirectSums",
           "MorphismFromBidualWithGivenBidual",
-          "MorphismFromFiberProductToSink",
-          "MorphismFromFiberProductToSinkWithGivenFiberProduct",
+          #"MorphismFromFiberProductToSink", # use their derivation
+          #"MorphismFromFiberProductToSinkWithGivenFiberProduct", # use their derivation
           "MorphismFromSourceToPushout",
           "MorphismFromSourceToPushoutWithGivenPushout",
           "MorphismToBidualWithGivenBidual",
