@@ -447,6 +447,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     if IsIdenticalObj( stable, true ) then
         if CanCompute( C, "InternalHomOnObjects" ) then
             
+            P!.do_not_use_cartesian_closed_structure_as_homomorphism_structure := true;
+            
             ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( P );
             
             ##
