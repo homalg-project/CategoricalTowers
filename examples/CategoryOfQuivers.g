@@ -22,8 +22,8 @@ Display( V );
 #! Image of (A)-[(t)]->(V):
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -43,8 +43,8 @@ Display( A );
 #! Image of (A)-[(t)]->(V):
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -64,8 +64,8 @@ Display( T );
 #! Image of (A)-[(t)]->(V):
 #! { 0 } ⱶ[ 0 ]→ { 0 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -85,8 +85,8 @@ Display( G );
 #! Image of (A)-[(t)]->(V):
 #! { 0,..., 4 } ⱶ[ 1, 1, 2, 1, 2 ]→ { 0, 1, 2 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -110,8 +110,8 @@ Display( discrete );
 #! Image of (A)-[(t)]->(V):
 #! ∅ ⱶ[  ]→ { 0, 1, 2 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -135,8 +135,8 @@ Display( complete );
 #! Image of (A)-[(t)]->(V):
 #! { 0,..., 8 } ⱶ[ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -160,8 +160,8 @@ Display( GA );
 #! Image of (A)-[(t)]->(V):
 #! { 0,..., 4 } ⱶ[ 3, 3, 5, 3, 5 ]→ { 0,..., 5 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -189,8 +189,8 @@ Display( arrows );
 #!                  4, 7, 7, 2, 5, 8, 2, 5, 8, 2, 5, 8, 1, 2, 4,
 #!                  5, 7, 8, 1, 2, 4, 5, 7, 8, 1, 2, 4, 5, 7, 8 ]→ { 0,..., 8 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -208,8 +208,8 @@ Display( prjG );
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0,..., 4 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -225,8 +225,8 @@ Display( prj_discrete );
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ ∅
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -246,8 +246,8 @@ Display( Exponential( T, G ) );
 #! Image of (A)-[(t)]->(V):
 #! { 0,..., 4 } ⱶ[ 1, 1, 2, 1, 2 ]→ { 0, 1, 2 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -261,8 +261,8 @@ Display( t );
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -276,8 +276,8 @@ Display( embG );
 #! Image of <(A)>:
 #! { 0,..., 4 } ⱶ[ 1, 1, 5, 7, 8 ]→ { 0,..., 8 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -293,8 +293,8 @@ Display( emb_complete );
 #! Image of <(A)>:
 #! { 0,..., 8 } ⱶ[ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]→ { 0,..., 8 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -310,8 +310,8 @@ Display( s );
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -325,8 +325,8 @@ Display( t );
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! A morphism in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -346,8 +346,8 @@ Display( omega );
 #! Image of (A)-[(t)]->(V):
 #! { 0,..., 4 } ⱶ[ 0, 1, 0, 1, 1 ]→ { 0, 1 }
 #! 
-#! An object in FunctorCategory( FreeCategory(
-#! RightQuiver( "q_op(V,A)[s:A->V,t:A->V]" ) ), SkeletalFinSets )
+#! An object in PreSheaves( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )

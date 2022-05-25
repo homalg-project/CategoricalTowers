@@ -20,10 +20,10 @@ RelationsOfFpCategory( Delta2 );
 Size( Delta2 );
 #! 31
 N := NerveTruncatedInDegree2( Delta2 );
-#! <An object in FunctorCategory( FreeCategory( RightQuiver(
-#!   "Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,
-#!                       is:C1->C2,it:C1->C2,
-#!                       ps:C2->C1,pt:C2->C1,mu:C2->C1]" ) ) / relations,
+#! <An object in PreSheaves( FreeCategory( RightQuiver(
+#!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
+#!                    is:C2->C1,it:C2->C1,
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
 #!  SkeletalFinSets )>
 IsWellDefined( N );
 #! true
@@ -46,10 +46,10 @@ Display( N.id );
 IntCat := CategoryOfInternalCategories(
                   RangeCategoryOfHomomorphismStructure( Delta2 ) );
 #! FullSubcategoryByObjectMembershipFunction(
-#! FunctorCategory( FreeCategory( RightQuiver(
-#!   "Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,
-#!                       is:C1->C2,it:C1->C2,
-#!                       ps:C2->C1,pt:C2->C1,mu:C2->C1]" ) ) / relations,
+#! PreSheaves( FreeCategory( RightQuiver(
+#!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
+#!                    is:C2->C1,it:C2->C1,
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
 #! SkeletalFinSets ), ObjectMembershipFunction )
 IsWellDefined( N / IntCat );
 #! true

@@ -198,8 +198,11 @@ InstallMethod( NerveTruncatedInDegree2,
         [ IsFpCategory ],
         
   function ( B )
+    local nerve;
     
-    return AsObjectInFunctorCategory( NerveTruncatedInDegree2AsFunctor( B ) );
+    nerve := NerveTruncatedInDegree2AsFunctor( B );
+    
+    return AsObjectInFunctorCategory( PreSheaves( OppositeFpCategory( AsCapCategory( Source( nerve ) ) ), AsCapCategory( Range( nerve ) ) ), nerve );
     
 end );
 
