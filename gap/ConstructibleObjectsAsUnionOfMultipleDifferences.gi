@@ -56,6 +56,9 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
+        object_filter := IsConstructibleObjectAsUnionOfMultipleDifferences,
+        morphism_filter := IsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences,
     );
     
     SetFilterObj( C, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences );

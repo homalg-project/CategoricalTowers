@@ -107,7 +107,7 @@ CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryObjectInPosetOfACategor
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     
-    return rec( filter := AmbientCategory( input_types[1].category )!.object_representation, category := AmbientCategory( input_types[1].category ) );
+    return CapJitDataTypeOfObjectOfCategory( AmbientCategory( input_types[1].category ) );
     
 end );
 
@@ -115,7 +115,7 @@ CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInPosetOfACateg
     
     Assert( 0, IsProsetOrPosetOfCapCategory( input_types[1].category ) );
     
-    return rec( filter := AmbientCategory( input_types[1].category )!.morphism_representation, category := AmbientCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
     
 end );
 
