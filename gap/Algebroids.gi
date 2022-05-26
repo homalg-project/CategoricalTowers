@@ -1206,6 +1206,9 @@ InstallMethod( Algebroid,
              "BasisPathsByVertexIndex",
              "HomStructureOnBasisPaths",
              ],
+        category_filter := IsAlgebroid,
+        object_filter := IsObjectInAlgebroid,
+        morphism_filter := IsMorphismInAlgebroid,
         # EXPERIMENTAL
         precompiled_towers := [
             rec(

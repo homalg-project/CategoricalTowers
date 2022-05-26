@@ -116,9 +116,8 @@ CapJitAddTypeSignature( "SetOfObjects", [ IsCapCategory ],
     Assert( 0, IsFpCategory( input_types[1].category ) );
     
     return rec( filter := IsList,
-                element_type :=
-                rec( filter := input_types[1].category!.object_representation,
-                     category := input_types[1].category ) );
+                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
 end );
 
 #! @Description
@@ -141,9 +140,8 @@ CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCapCategory ],
     Assert( 0, IsFpCategory( input_types[1].category ) );
     
     return rec( filter := IsList,
-                element_type :=
-                rec( filter := input_types[1].category!.morphism_representation,
-                     category := input_types[1].category ) );
+                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    
 end );
 
 #! @Description
