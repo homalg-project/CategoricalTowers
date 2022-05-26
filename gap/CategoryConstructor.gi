@@ -48,16 +48,25 @@ InstallMethod( CategoryConstructor,
         CC!.category_as_first_argument := true;
     fi;
     
+    CC!.compiler_hints := rec( );
+    
     category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsCapCategoryObject );
     category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsCapCategoryMorphism );
     
     AddObjectRepresentation( CC, category_object_filter );
     AddMorphismRepresentation( CC, category_morphism_filter );
     
+    CC!.compiler_hints.object_filter := category_object_filter;
+    CC!.compiler_hints.morphism_filter := category_morphism_filter;
+    
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_filter", fail );
     
     if not category_filter = fail then
+        
         SetFilterObj( CC, category_filter );
+        
+        CC!.compiler_hints.category_filter := category_filter;
+        
     fi;
     
     commutative_ring := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "commutative_ring", fail );
