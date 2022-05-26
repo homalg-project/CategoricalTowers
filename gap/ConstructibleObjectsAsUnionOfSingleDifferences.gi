@@ -53,6 +53,9 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences,
+        object_filter := IsConstructibleObjectAsUnionOfSingleDifferences,
+        morphism_filter := IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences,
     );
     
     SetFilterObj( C, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences );
