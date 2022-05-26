@@ -16,7 +16,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    "IsAutomorphism",
    "IsColiftableAlongEpimorphism",
    "IsCongruentForMorphisms",
-   "IsEqualToIdentityMorphism",
+   #"IsEqualToIdentityMorphism",
    #"IsEqualToZeroMorphism",
    "IsInitial",
    "IsIsomorphism",
@@ -161,7 +161,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
     
-    S := CategoryConstructor( :
+    S := CategoryConstructor( rec(
                  name := name,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
@@ -174,15 +174,12 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                  underlying_category_getter_string := "AmbientCategory",
                  underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
                  underlying_morphism_getter_string := "({ cat, mor } -> UnderlyingCell( mor ))",
-                 category_as_first_argument := true
-                 );
+                 ) );
     
-    S!.compiler_hints := rec(
-        category_attribute_names := [
-            "AmbientCategory",
-            "BaseObject",
-        ],
-    );
+    S!.compiler_hints.category_attribute_names := [
+        "AmbientCategory",
+        "BaseObject",
+    ];
     
     SetAmbientCategory( S, C );
     

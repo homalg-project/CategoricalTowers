@@ -99,7 +99,7 @@ CapJitAddTypeSignature( "UnderlyingMorphism", [ IsCapCategoryObjectInASliceCateg
     
     Assert( 0, IsCapSliceCategory( input_types[1].category ) );
     
-    return rec( filter := AmbientCategory( input_types[1].category )!.morphism_representation, category := AmbientCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
     
 end );
 
@@ -114,7 +114,7 @@ CapJitAddTypeSignature( "UnderlyingCell", [ IsCapCategoryMorphismInASliceCategor
     
     Assert( 0, IsCapSliceCategory( input_types[1].category ) );
     
-    return rec( filter := AmbientCategory( input_types[1].category )!.morphism_representation, category := AmbientCategory( input_types[1].category ) );
+    return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
     
 end );
 
