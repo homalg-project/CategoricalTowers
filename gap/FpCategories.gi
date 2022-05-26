@@ -524,13 +524,15 @@ InstallMethodWithCache( Category,
     
     C!.relations := relations;
     
-    C!.compiler_hints :=
-      rec(
-          category_attribute_names :=
-          [ "SetOfObjects",
+    C!.compiler_hints := rec(
+        category_attribute_names := [
+            "SetOfObjects",
             "SetOfGeneratingMorphisms",
-            ]
-          );
+        ],
+        category_filter := IsFpCategory,
+        object_filter := IsObjectInFpCategory,
+        morphism_filter := IsMorphismInFpCategory,
+    );
     
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
