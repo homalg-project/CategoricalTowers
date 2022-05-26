@@ -162,7 +162,7 @@ InstallMethod( Subcategory,
         Add( properties, [ "IsAdditiveCategory", true ] );
     fi;
     
-    D := CategoryConstructor( :
+    D := CategoryConstructor( rec(
                  name := name,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
@@ -177,14 +177,11 @@ InstallMethod( Subcategory,
                  underlying_category_getter_string := "AmbientCategory",
                  underlying_object_getter_string := "( { cat, object } -> UnderlyingCell( object ) )",
                  underlying_morphism_getter_string := "( { cat, morphism } -> UnderlyingCell( morphism ) )",
-                 category_as_first_argument := true
-                 );
+                 ) );
     
-    D!.compiler_hints := rec(
-        category_attribute_names := [
-            "AmbientCategory",
-        ],
-    );
+    D!.compiler_hints.category_attribute_names := [
+        "AmbientCategory",
+    ];
     
     SetAmbientCategory( D, C );
     
