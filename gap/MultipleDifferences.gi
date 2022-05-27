@@ -20,6 +20,15 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     D!.category_as_first_argument := true;
     
+    D!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+        category_filter := IsMeetSemilatticeOfMultipleDifferences,
+        object_filter := IsObjectInMeetSemilatticeOfMultipleDifferences,
+        morphism_filter := IsMorphismInMeetSemilatticeOfMultipleDifferences,
+    );
+    
     SetFilterObj( D, IsMeetSemilatticeOfMultipleDifferences );
     
     SetUnderlyingCategory( D, P );

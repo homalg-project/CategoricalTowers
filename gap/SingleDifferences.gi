@@ -28,6 +28,9 @@ InstallMethod( MeetSemilatticeOfDifferences,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
+        category_filter := IsMeetSemilatticeOfSingleDifferences,
+        object_filter := IsObjectInMeetSemilatticeOfSingleDifferences,
+        morphism_filter := IsMorphismInMeetSemilatticeOfSingleDifferences,
     );
     
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfSingleDifferences );
