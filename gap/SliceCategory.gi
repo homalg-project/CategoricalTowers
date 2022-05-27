@@ -159,8 +159,6 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
-    
     S := CategoryConstructor( rec(
                  name := name,
                  category_filter := category_filter,
