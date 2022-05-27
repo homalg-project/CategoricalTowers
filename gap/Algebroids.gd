@@ -380,6 +380,9 @@ DeclareAttribute( "Algebroid",
 # this must remain an attribute to be able to compose functors,
 # which is need for Bialgebroid.g to work!!!
 
+DeclareOperation( "Algebroid",
+        [ IsQuiverAlgebra, IsList, IsBool ] );
+
 #! @Arguments Rq, L
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
