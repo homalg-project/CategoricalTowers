@@ -83,9 +83,9 @@ InstallMethod( AddAntipode,
     local vertices, S_images_of_objects, S_functor, a;
     
     if IsAlgebraAsCategory(B) then
-        B!.Name := Concatenation( "Hopf algebra", B!.Name{[ 10 .. Length( B!.Name ) ]} );
+        B!.Name := Concatenation( "HopfAlgebra", B!.Name{[ 10 .. Length( B!.Name ) ]} );
     else
-        B!.Name := Concatenation( "Hopf algebroid", B!.Name{[ 10 .. Length( B!.Name ) ]} );
+        B!.Name := Concatenation( "HopfAlgebroid", B!.Name{[ 10 .. Length( B!.Name ) ]} );
     fi;
     
     vertices := List( Vertices( UnderlyingQuiver( B ) ), String );
