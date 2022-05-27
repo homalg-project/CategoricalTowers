@@ -732,10 +732,19 @@ InstallMethodWithCache( FunctorCategory,
         Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
     fi;
     
-    if HasName( B ) and HasName( C ) then
-        name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( C ), " )" );
+    ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
+    if IsCapCategory( ValueOption( "PreSheaves" ) ) then
+        if HasName( ValueOption( "PreSheaves" ) ) and HasName( C ) then
+            name := Concatenation( "PreSheaves( ", Name( ValueOption( "PreSheaves" ) ), ", ", Name( C ), " )" );
+        else
+            name := Concatenation( "PreSheaves( ..., ... )" );
+        fi;
     else
-        name := Concatenation( "FunctorCategory( ..., ... )" );
+        if HasName( B ) and HasName( C ) then
+            name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( C ), " )" );
+        else
+            name := Concatenation( "FunctorCategory( ..., ... )" );
+        fi;
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
@@ -2221,7 +2230,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, C )
     
-    return FunctorCategory( OppositeFpCategory( B : FinalizeCategory := true ), C );
+    return FunctorCategory( OppositeFpCategory( B : FinalizeCategory := true ), C : PreSheaves := B );
     
 end );
 
@@ -2232,7 +2241,7 @@ InstallMethodWithCache( PreSheaves,
         
   function ( B, A )
     
-    return FunctorCategory( OppositeAlgebroid( B : FinalizeCategory := true ), A );
+    return FunctorCategory( OppositeAlgebroid( B : FinalizeCategory := true ), A : PreSheaves := B );
     
 end );
 
