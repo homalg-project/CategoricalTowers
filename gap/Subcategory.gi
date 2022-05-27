@@ -169,10 +169,8 @@ InstallMethod( Subcategory,
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
-    
     if IsIdenticalObj( is_additive, true ) then
-        Add( properties, [ "IsAdditiveCategory", true ] );
+        Add( properties, "IsAdditiveCategory" );
     fi;
     
     category_constructor_options.properties := properties;
