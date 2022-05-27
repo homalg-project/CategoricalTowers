@@ -99,9 +99,20 @@ InstallMethod( Subcategory,
         [ IsCapCategory, IsString ],
         
   function( C, name )
-    local list_of_operations_to_install, is_full, is_additive, skip, func, pos, commutative_ring,
-          category_object_filter, category_morphism_filter, category_filter, properties, D;
+    local category_constructor_options, list_of_operations_to_install, is_full, is_additive, skip, func, pos, properties, D;
     
+    category_constructor_options := rec(
+         name := name,
+         create_func_bool := "default",
+         create_func_object := "default",
+         create_func_morphism := "default",
+         create_func_morphism_or_fail := "default",
+         underlying_category_getter_string := "AmbientCategory",
+         underlying_object_getter_string := "( { cat, object } -> UnderlyingCell( object ) )",
+         underlying_morphism_getter_string := "( { cat, morphism } -> UnderlyingCell( morphism ) )",
+    );
+    
+    ## list_of_operations_to_install
     list_of_operations_to_install := CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY;
     
     is_full := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_full", false );
@@ -130,24 +141,26 @@ InstallMethod( Subcategory,
         
     od;
     
+    category_constructor_options.list_of_operations_to_install := list_of_operations_to_install;
+    
+    ## commutative_ring_of_linear_category
     if HasCommutativeRingOfLinearCategory( C ) then
-        commutative_ring := CommutativeRingOfLinearCategory( C );
-    else
-        commutative_ring := fail;
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
     fi;
     
+    ## filters and properties
     if is_full then
-        category_object_filter := IsCapCategoryObjectInAFullSubcategory;
-        category_morphism_filter := IsCapCategoryMorphismInAFullSubcategory;
-        category_filter := IsCapFullSubcategory;
+        category_constructor_options.category_filter := IsCapFullSubcategory;
+        category_constructor_options.category_object_filter := IsCapCategoryObjectInAFullSubcategory;
+        category_constructor_options.category_morphism_filter := IsCapCategoryMorphismInAFullSubcategory;
         properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                         "IsAbCategory",
                         "IsLinearCategoryOverCommutativeRing"
                         ];
     else
-        category_object_filter := IsCapCategoryObjectInASubcategory;
-        category_morphism_filter := IsCapCategoryMorphismInASubcategory;
-        category_filter := IsCapSubcategory;
+        category_constructor_options.category_filter := IsCapSubcategory;
+        category_constructor_options.category_object_filter := IsCapCategoryObjectInASubcategory;
+        category_constructor_options.category_morphism_filter := IsCapCategoryMorphismInASubcategory;
         properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                         #"IsAbCategory", cannot be inherited
                         #"IsLinearCategoryOverCommutativeRing", cannot be inherited
@@ -162,22 +175,9 @@ InstallMethod( Subcategory,
         Add( properties, [ "IsAdditiveCategory", true ] );
     fi;
     
-    D := CategoryConstructor( rec(
-                 name := name,
-                 category_object_filter := category_object_filter,
-                 category_morphism_filter := category_morphism_filter,
-                 category_filter := category_filter,
-                 commutative_ring := commutative_ring,
-                 properties := properties,
-                 list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := "default",
-                 create_func_object := "default",
-                 create_func_morphism := "default",
-                 create_func_morphism_or_fail := "default",
-                 underlying_category_getter_string := "AmbientCategory",
-                 underlying_object_getter_string := "( { cat, object } -> UnderlyingCell( object ) )",
-                 underlying_morphism_getter_string := "( { cat, morphism } -> UnderlyingCell( morphism ) )",
-                 ) );
+    category_constructor_options.properties := properties;
+    
+    D := CategoryConstructor( category_constructor_options );
     
     D!.compiler_hints.category_attribute_names := [
         "AmbientCategory",
