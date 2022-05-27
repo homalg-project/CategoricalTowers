@@ -950,9 +950,9 @@ InstallMethod( POW,
         if not IsBound( C!.powers.0 ) then
             
             if IsRightQuiverAlgebra( Qq ) then
-                parity := "right";
+                parity := "Right";
             else
-                parity := "left";
+                parity := "Reft";
             fi;
             
             C!.powers.0 := TrivialCategory( parity );
@@ -988,12 +988,12 @@ InstallMethod( TrivialCategory,
   function( parity )
     local trivial_quiver;
    
-    if parity = "right" then
+    if parity = "Right" then
         trivial_quiver := RightQuiver( "*(1)[]" );
-    elif parity = "left" then
+    elif parity = "Left" then
         trivial_quiver := LeftQuiver( "*(1)[]" );
     else
-        Error( "parity must be either \"left\" or \"right\"" );
+        Error( "parity must be either \"Left\" or \"Right\"" );
     fi;
     
     return FreeCategory( trivial_quiver );
