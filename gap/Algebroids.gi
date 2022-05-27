@@ -1264,10 +1264,10 @@ end );
 
 ##
 InstallMethod( Algebroid,
-        "for a QPA path algebra and a list",
-        [ IsQuiverAlgebra, IsList ],
+        "for a QPA path algebra, a list, and a boolean",
+        [ IsQuiverAlgebra, IsList, IsBool ],
         
-  function( Rq, L )
+  function( Rq, L, over_Z )
     local path;
     
     for path in L do
@@ -1278,7 +1278,18 @@ InstallMethod( Algebroid,
     
     L := Filtered( L, r -> not IsZero( r ) );
     
-    return Algebroid( Rq / Ideal( Rq, L ) );
+    return Algebroid( Rq / Ideal( Rq, L ), over_Z );
+    
+end );
+
+##
+InstallMethod( Algebroid,
+        "for a QPA path algebra and a list",
+        [ IsQuiverAlgebra, IsList ],
+        
+  function( Rq, L )
+    
+    return Algebroid( Rq, L, false );
     
 end );
 
@@ -1346,7 +1357,7 @@ InstallMethod( \/,
 
   function( A, relations )
     
-    return Algebroid( UnderlyingQuiverAlgebra( A ), List( relations, UnderlyingQuiverAlgebraElement ) );
+    return Algebroid( UnderlyingQuiverAlgebra( A ), List( relations, UnderlyingQuiverAlgebraElement ), A!.over_Z );
     
 end );
 
