@@ -323,23 +323,6 @@ end : CategoryFilter := IsCodistributiveCocartesianCategory,
   Description := "RightCocartesianCodistributivityFactoringWithGivenObjects using RightCocartesianCodistributivityExpandingWithGivenObjects" );
 
 ##
-AddDerivationToCAP( MorphismsOfExternalHom,
-  function( cat, A, B )
-    local hom_A_B, D;
-    
-    hom_A_B := HomomorphismStructureOnObjects( cat, A, B );
-    
-    D := DistinguishedObjectOfHomomorphismStructure( cat );
-    
-    return List( hom_A_B,
-                 i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-                         A,
-                         B,
-                         ValueGlobal( "MapOfFinSets" )( D, [ i ], hom_A_B ) ) );
-    
-end );
-
-##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
