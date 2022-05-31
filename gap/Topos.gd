@@ -10,67 +10,6 @@
 ##
 ####################################
 
-DeclareOperation( "BinaryDirectProduct",
-        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
-
-## For internal use only:
-## we need an operation name different from `Coproduct`, since CompilerForCAP
-## seems to be unable to compile the CAP operation `Coproduct`
-## if declared in a way different from that in the method record
-DeclareOperation( "BinaryCoproduct",
-        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#!  The property of the category <A>C</A> being bicartesian.
-#! @Arguments C
-AddCategoricalProperty( [ "IsBicartesianCategory", "IsBicartesianCategory" ] );
-
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianCategory :=
-  SortedList(
-          Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
-
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianClosedCategory :=
-  SortedList(
-          Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
-
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianCoclosedCategory :=
-  SortedList(
-          Concatenation(
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );
-
-#! @Description
-#!  The property of the category <A>C</A> being finite complete.
-#! @Arguments C
-AddCategoricalProperty( [ "IsFiniteCompleteCategory", "IsFiniteCocompleteCategory" ] );
-
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory :=
-  SortedList(
-          Concatenation( [
-                  "Equalizer",
-                  "EmbeddingOfEqualizerWithGivenEqualizer",
-                  "UniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  ],
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );
-
-#! @Description
-#!  The property of the category <A>C</A> being finite cocomplete.
-#! @Arguments C
-AddCategoricalProperty( [ "IsFiniteCocompleteCategory", "IsFiniteCompleteCategory" ] );
-
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
-  SortedList(
-          Concatenation( [
-                  "Coequalizer",
-                  "ProjectionOntoCoequalizerWithGivenCoequalizer",
-                  "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  ],
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
-
 ####################################
 ##
 #! @Section Morphisms of external Hom
