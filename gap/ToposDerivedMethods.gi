@@ -308,21 +308,6 @@ AddDerivationToCAP( RelativePseudoComplementSubobject,
 end );
 
 ##
-AddDerivationToCAP( ListOfSubobjects,
-  function( cat, A )
-    local Omega, chis;
-    
-    Omega := SubobjectClassifier( cat );
-    
-    chis := MorphismsOfExternalHom( cat, A, Omega );
-    
-    return List( chis,
-                 chi -> SubobjectOfClassifyingMorphism( cat, chi ) );
-    
-end );
-
-
-##
 AddDerivationToCAP( MorphismsOfExternalHom,
                     [ [ HomomorphismStructureOnObjects, 1 ],
                       [ DistinguishedObjectOfHomomorphismStructure, 1 ],
@@ -368,6 +353,20 @@ end :
     
   end,
   Description := "MorphismsOfExternalHom using MorphismsOfExternalHom in RangeCategoryOfHomomorphismStructure" );
+
+##
+AddDerivationToCAP( ListOfSubobjects,
+  function( cat, A )
+    local Omega, chis;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    chis := MorphismsOfExternalHom( cat, A, Omega );
+    
+    return List( chis,
+                 chi -> SubobjectOfClassifyingMorphism( cat, chi ) );
+    
+end );
 
 ## Final derivations
 
