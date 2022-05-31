@@ -1,16 +1,18 @@
 ## LazyCategories
 
+### Construct an equivalent lazy category out of a CAP category
+
 This directory contains a collection of
 [Jupyter](https://jupyter.org/) notebooks demonstrating the
-functionality the [GAP](https://www.gap-system.org/) package
-[LazyCategories](https://github.com/homalg-project/LazyCategories),
+functionality of the [GAP](https://www.gap-system.org/) package
+[LazyCategories](https://homalg-project.github.io/pkg/LazyCategories),
 which is based on the
 
-* [homalg project](https://github.com/homalg-project/homalg_project/),
-* [CAP project](https://github.com/homalg-project/CAP_project/).
+* [homalg project](https://homalg-project.github.io/prj/homalg_project),
+* [CAP project](https://homalg-project.github.io/prj/CAP_project).
 
 These notebooks use the [Julia](https://julialang.org/) package
 [CapAndHomalg](https://github.com/homalg-project/CapAndHomalg.jl).
 
-The notebooks are best viewed on the [jupyter nbviewer page](https://nbviewer.jupyter.org/github/homalg-project/LazyCategories/tree/master/examples/julia/notebooks/).
-There you can also interactively run the notebooks online by clicking on `Binder`'s three-circle-logo (tooltip `Execute on Binder`) at the top-right corner.
+You can click on a notebook to view a read-only version right here on GitHub.
+From there, you can run an interactive version in your browser via the `launch binder` button at the top of the notebook.
