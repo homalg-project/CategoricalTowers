@@ -48,6 +48,7 @@ jobs:
           [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
           [ -d "CAP_project/CompilerForCAP" ] && make -C "CAP_project/CompilerForCAP" doc
           [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
+          [ -d "CAP_project/CartesianCategories" ] && make -C "CAP_project/CartesianCategories" doc
           [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
           [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
           [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
