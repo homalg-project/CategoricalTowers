@@ -639,6 +639,54 @@ AddDerivationToCAP( ListOfSubobjects,
     
 end );
 
+
+##
+AddDerivationToCAP( MorphismsOfExternalHom,
+                    [ [ HomomorphismStructureOnObjects, 1 ],
+                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ] ],
+  function ( cat, A, B )
+    local hom_A_B, D, morphisms;
+    
+    hom_A_B := HomomorphismStructureOnObjects( cat, A, B );
+    
+    D := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    morphisms := MorphismsOfExternalHom( RangeCategoryOfHomomorphismStructure( cat ),
+                         D, hom_A_B );
+    
+    return List( morphisms,
+                 phi -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                         A,
+                         B,
+                         phi ) );
+    
+end :
+  ConditionsListComplete := true,
+  CategoryFilter := function( cat )
+    local B, conditions;
+    
+    if HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        B := RangeCategoryOfHomomorphismStructure( cat );
+        
+        conditions := [
+          "MorphismsOfExternalHom",
+        ];
+        
+        if ForAll( conditions, c -> CanCompute( B, c ) ) then
+            
+            return true;
+            
+        fi;
+        
+    fi;
+    
+    return false;
+    
+  end,
+  Description := "MorphismsOfExternalHom using MorphismsOfExternalHom in RangeCategoryOfHomomorphismStructure" );
+
 ## Final derivations
 
 ##
