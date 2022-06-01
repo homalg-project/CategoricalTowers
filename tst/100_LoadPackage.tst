@@ -7,9 +7,13 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "CategoryConstructor", false );
+true
 gap> LoadPackage( "Toposes", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "CategoryConstructor" );
+true
 gap> LoadPackage( "Toposes" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
