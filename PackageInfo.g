@@ -115,6 +115,7 @@ Dependencies := rec(
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2022.03-06" ],
                    [ "CartesianCategories", ">= 2022.05-04" ],
+                   [ "CategoryConstructor", ">= 2022.05-08" ],
                    ],
   SuggestedOtherPackages := [
                    [ "MonoidalCategories", ">= 2022.05-03" ],
