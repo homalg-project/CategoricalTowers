@@ -73,6 +73,6 @@ iota2 := EmbeddingOfSieveFunctor( M2 );
 iota2( M2op.1 );
 #! |4| ↪ |8|
 Display( iota2( M2op.1 ) );
-#! { 0,..., 3 } ⱶ[ 0, 1, 3, 7 ]→ { 0,..., 7 }
+#! { 0,..., 3 } ⱶ[ 0, 4, 6, 7 ]→ { 0,..., 7 }
 #! @EndExample
 #! @EndChunk
