@@ -45,6 +45,6 @@ Display( N( Delta2op.C2 ) );
 N( Delta2op.id );
 #! |3| → |31|
 Display( N( Delta2op.id ) );
-#! { 0, 1, 2 } ⱶ[ 0, 7, 21 ]→ { 0,..., 30 }
+#! { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
 #! @EndExample
 #! @EndChunk
