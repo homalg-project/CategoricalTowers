@@ -48,7 +48,7 @@ ev0 := CartesianEvaluationMorphism( Omega0, Omega0 );
 #!  / [ a*a*a = 1 ], SkeletalFinSets )>
 Display( ev0 );
 #! Image of <(1)>:
-#! { 0,..., 7 } ⱶ[ 0, 0, 0, 1, 1, 0, 1, 1 ]→ { 0, 1 }
+#! { 0,..., 7 } ⱶ[ 0, 1, 0, 1, 0, 0, 1, 1 ]→ { 0, 1 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = 1 ], SkeletalFinSets )
@@ -114,7 +114,7 @@ iota := AsMorphismInFunctorCategory( EmbeddingOfSieveFunctor( M2 ) );
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( iota );
 #! Image of <(1)>:
-#! { 0,..., 3 } ⱶ[ 0, 1, 3, 7 ]→ { 0,..., 7 }
+#! { 0,..., 3 } ⱶ[ 0, 4, 6, 7 ]→ { 0,..., 7 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -127,7 +127,7 @@ Display( Range( iota ) );
 #! { 0,..., 7 }
 #! 
 #! Image of (1)-[(a)]->(1):
-#! { 0,..., 7 } ⱶ[ 0, 3, 4, 7, 0, 3, 4, 7 ]→ { 0,..., 7 }
+#! { 0,..., 7 } ⱶ[ 0, 0, 1, 1, 6, 6, 7, 7 ]→ { 0,..., 7 }
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -171,7 +171,19 @@ Perform( L, Display );
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
 #! Image of <(1)>:
+#! { 0,..., 3 } ⱶ[ 3, 0, 0, 0 ]→ { 0,..., 3 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
+#! / [ a*a*a = a*a ], SkeletalFinSets )
+#! given by the above data
+#! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
+#! 
+#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
+#! / [ a*a*a = a*a ], SkeletalFinSets )
+#! given by the above data
+#! Image of <(1)>:
+#! { 0,..., 3 } ⱶ[ 3, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
@@ -184,18 +196,6 @@ Perform( L, Display );
 #! given by the above data
 #! Image of <(1)>:
 #! { 0,..., 3 } ⱶ[ 0, 3, 3, 3 ]→ { 0,..., 3 }
-#! 
-#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
-#! Image of <(1)>:
-#! { 0,..., 3 } ⱶ[ 3, 0, 0, 0 ]→ { 0,..., 3 }
-#! 
-#! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
-#! / [ a*a*a = a*a ], SkeletalFinSets )
-#! given by the above data
-#! Image of <(1)>:
-#! { 0,..., 3 } ⱶ[ 3, 1, 2, 3 ]→ { 0,..., 3 }
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
