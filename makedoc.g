@@ -27,8 +27,6 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{21AA}{\ensuremath{\!\!\hookrightarrow\!}}
                 \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
-                \DeclareUnicodeCharacter{211A}{\ensuremath{\mathbb{Q}}}
-                \DeclareUnicodeCharacter{2124}{\ensuremath{\mathbb{Z}}}
             """,
         ),
     ),
