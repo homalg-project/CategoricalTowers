@@ -42,7 +42,7 @@ Display( N.C2 );
 N.id;
 #! |3| → |31|
 Display( N.id );
-#! { 0, 1, 2 } ⱶ[ 0, 7, 21 ]→ { 0,..., 30 }
+#! { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
 IntCat := CategoryOfInternalCategories(
                   RangeCategoryOfHomomorphismStructure( Delta2 ) );
 #! FullSubcategoryByObjectMembershipFunction(
