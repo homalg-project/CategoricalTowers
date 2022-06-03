@@ -59,8 +59,9 @@ DeclareOperation( "IsHomSetInhabitedWithTypeCast",
 #! @Section Constructors
 
 #! @Description
-#!  Construct the meet-semilattice of multiple differences from the lattice <A>L</A>.
-#! @Arguments L
+#!  Construct the Boolean algebra of constructible objects
+#!  as union of objects in the poset <A>D</A> of single differences.
+#! @Arguments D
 #! @Returns a &CAP; category
 DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences",
         IsCapCategory );
