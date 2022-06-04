@@ -1214,6 +1214,8 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
+    SetOppositeOfSource( Hom, B_op );
+    
     ## setting the cache comparison to IsIdenticalObj
     ## boosts the performance considerably
     AddIsEqualForCacheForObjects( Hom, { Hom, F, G } -> IsIdenticalObj( F, G ) );

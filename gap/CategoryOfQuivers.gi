@@ -43,6 +43,8 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                             category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInCategoryOfQuivers,
                             only_primitive_operations := true ) );
     
+    SetOppositeOfSource( Quivers, F );
+    
     return Quivers;
     
 end );
