@@ -712,7 +712,8 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
-    local kq, A, relations, name, create_func_bool, create_func_object, create_func_morphism,
+    local kq, A, relations, B_op, source, name,
+          create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, doc, prop, Hom, vertices, arrows;
     
@@ -732,19 +733,29 @@ InstallMethodWithCache( FunctorCategory,
         Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
     fi;
     
-    ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
-    if IsCapCategory( ValueOption( "PreSheaves" ) ) then
-        if HasName( ValueOption( "PreSheaves" ) ) and HasName( C ) then
-            name := Concatenation( "PreSheaves( ", Name( ValueOption( "PreSheaves" ) ), ", ", Name( C ), " )" );
-        else
-            name := Concatenation( "PreSheaves( ..., ... )" );
-        fi;
+    if IsFpCategory( B ) then
+        B_op := OppositeFpCategory( B );
+    elif IsAlgebroid( B ) then
+        B_op := OppositeAlgebroid( B );
     else
-        if HasName( B ) and HasName( C ) then
-            name := Concatenation( "FunctorCategory( ", Name( B ), ", ", Name( C ), " )" );
-        else
-            name := Concatenation( "FunctorCategory( ..., ... )" );
-        fi;
+        B_op := Opposite( B );
+    fi;
+    
+    ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
+    source := ValueOption( "PreSheaves" );
+    
+    if IsCapCategory( source ) then
+        Assert( 0, IsIdenticalObj( B_op, source ) );
+        name := "PreSheaves( ";
+    else
+        source := B;
+        name := "FunctorCategory( ";
+    fi;
+    
+    if HasName( source ) and HasName( C ) then
+        name := Concatenation( name, Name( source ), ", ", Name( C ), " )" );
+    else
+        name := Concatenation( name, "..., ... )" );
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
