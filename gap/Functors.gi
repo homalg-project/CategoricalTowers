@@ -262,6 +262,17 @@ InstallMethod( YonedaEmbedding,
 end );
 
 ##
+InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
+        "for a functor category",
+        [ IsFunctorCategory ],
+        
+  function( Hom )
+    
+    return YonedaEmbedding( OppositeFpCategory( Source( Hom ) ) );
+    
+end );
+
+##
 InstallMethod( YonedaProjection,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
