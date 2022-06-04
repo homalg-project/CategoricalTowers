@@ -160,16 +160,16 @@ InstallMethod( Subobject,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfSourceCategory,
+InstallOtherMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
         "for a category of quivers",
         [ IsCategoryOfQuivers ],
         
   function( category_of_quivers )
-    local F;
+    local Y;
     
-    F := OppositeFpCategory( Source( UnderlyingCategory( category_of_quivers ) ) );
+    Y := YonedaEmbeddingOfOppositeOfSourceCategory( UnderlyingCategory( category_of_quivers ) );
     
-    return PreCompose( YonedaEmbedding( F ), WrappingFunctor( category_of_quivers ) );
+    return PreCompose( Y, WrappingFunctor( category_of_quivers ) );
     
 end );
 
@@ -185,7 +185,7 @@ InstallMethod( \.,
     
     F := OppositeFpCategory( Source( UnderlyingCategory( category_of_quivers ) ) );
     
-    Y := YonedaEmbeddingOfSourceCategory( category_of_quivers );
+    Y := YonedaEmbeddingOfOppositeOfSourceCategory( category_of_quivers );
     
     Yc := Y( F.(name) );
     

@@ -52,6 +52,10 @@ DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 
+##
+DeclareAttribute( "YonedaEmbeddingOfOppositeOfSourceCategory",
+        IsFunctorCategory );
+
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
 #!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).

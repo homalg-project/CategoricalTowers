@@ -76,10 +76,6 @@ DeclareOperation( "DotVertexLabelledDigraph",
 #
 ####################################
 
-##
-DeclareOperation( "YonedaEmbeddingOfSourceCategory",
-        [ IsCategoryOfQuivers ] );
-
 #! @Description
 #!  Construct the category of quivers.
 #! @Returns a &CAP; category
