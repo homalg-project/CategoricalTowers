@@ -14,6 +14,10 @@ DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
 
+##
+DeclareOperation( "Subobject",
+        [ IsCapCategoryMorphism ] );
+
 ###################################
 ##
 #! @Section ImageObjectFunctorial
@@ -434,7 +438,3 @@ DeclareOperation( "UniversalMorphismIntoLimit",
 #! @Arguments objects, decorated_morphisms, T, tau, P
 DeclareOperation( "UniversalMorphismIntoLimitWithGivenLimit",
                   [ IsList, IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
-
-##
-DeclareOperation( "Subobject",
-        [ IsCapCategoryMorphism ] );
