@@ -36,3 +36,14 @@ InstallOtherMethod( MorphismFromFiberProductToSink,
     return MorphismFromFiberProductToSink( ConvertJuliaToGAP( D ) );
     
 end );
+
+##
+InstallOtherMethod( Limit,
+        "for a julia object",
+        [ IsJuliaObject, IsJuliaObject ],
+        
+  function( D1, D2 )
+    
+    return Limit( ConvertJuliaToGAP( D1 ), ConvertJuliaToGAP( D2 ) );
+    
+end );
