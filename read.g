@@ -12,6 +12,7 @@ ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
+ReadPackage( "FunctorCategories", "gap/AbelianClosure.gi");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "FunctorCategories", "gap/Julia.gi" );
