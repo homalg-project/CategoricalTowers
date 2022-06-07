@@ -224,20 +224,20 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     str := "//dot\n";
     
     Append( str, "digraph hgn{\n" );
-    Append( str, "node [shape=circle]\n" );
+    Append( str, "node [shape=circle, fontname=\"DejaVu Serif,serif\"]\n" );
     
     for i in AsList( quiver.V ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( i ) );
-        Append( str, "\"]\n" );
+        Append( str, "\", fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
     arrows := Arrows( quiver );
     
     for i in AsList( quiver.A ) do
         ## https://graphviz.org/docs/attrs/fontsize/
-        Append( str, Concatenation( String( arrows[1 + i][1] ), " -> ", String( arrows[1 + i][2] ), " [label=\"", String( i ), "\" fontsize = 10]\n" ) );
+        Append( str, Concatenation( String( arrows[1 + i][1] ), " -> ", String( arrows[1 + i][2] ), " [label=\"", String( i ), "\" fontsize=10, fontname=\"DejaVu Serif,serif\"]\n" ) );
     od;
     
     Append( str, "}\n" );
@@ -263,7 +263,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     str := "//dot\n";
     
     Append( str, "digraph hgn{\n" );
-    Append( str, "node [shape=circle]\n" );
+    Append( str, "node [shape=circle, fontname=\"DejaVu Serif,serif\"]\n" );
     
     for i in AsList( quiver.V ) do
         Append( str, String( i ) );
@@ -275,19 +275,19 @@ InstallOtherMethod( DotVertexLabelledDigraph,
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
-        Append( str, "]\n" );
+        Append( str, ", fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
     arrows_as_pairs := Arrows( quiver );
     
     for i in AsList( quiver.A ) do
         ## https://graphviz.org/docs/attrs/fontsize/
-        Append( str, Concatenation( String( arrows_as_pairs[1 + i][1] ), " -> ", String( arrows_as_pairs[1 + i][2] ), " [label=\"", String( i ), "\" fontsize = 10" ) );
+        Append( str, Concatenation( String( arrows_as_pairs[1 + i][1] ), " -> ", String( arrows_as_pairs[1 + i][2] ), " [label=\"", String( i ), "\" fontsize=10" ) );
         if not i in arrows then
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
-        Append( str, " ]\n" );
+        Append( str, ", fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
     Append( str, "}\n" );
