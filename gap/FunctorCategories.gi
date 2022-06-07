@@ -734,11 +734,11 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     if IsFpCategory( B ) then
-        B_op := OppositeFpCategory( B );
+        B_op := OppositeFpCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
-        B_op := OppositeAlgebroid( B );
+        B_op := OppositeAlgebroid( B : FinalizeCategory := true );
     else
-        B_op := Opposite( B );
+        B_op := Opposite( B : FinalizeCategory := true );
     fi;
     
     ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
