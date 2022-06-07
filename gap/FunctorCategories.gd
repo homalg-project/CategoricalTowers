@@ -78,7 +78,7 @@ DeclareAttribute( "Range",
 #! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeOfSource",
-        IsObjectInFunctorCategory );
+        IsFunctorCategory );
 
 #! @Description
 #!  The functor underlying the functor object <A>F</A>.
