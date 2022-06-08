@@ -111,6 +111,14 @@ DeclareOperation( "SubobjectOfClassifyingMorphism",
 DeclareOperation( "ListOfSubobjects",
                   [ IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is an object <A>A</A>.
+#! The output is the poset of all subobjects of <A>A</A>.
+#! @Returns a list of monomorphism
+#! @Arguments A
+DeclareOperation( "DigraphOfSubobjects",
+                  [ IsCapCategoryObject ] );
+
 ####################################
 ##
 #! @Section Truth Morphisms
