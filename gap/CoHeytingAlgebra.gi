@@ -66,7 +66,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCocartesianPreCoComposeMorphismWithGivenObjects( coheyting_algebra,
-      function( cat, Coex_A_C, A, B, C, Coex_A_BxCoex_B_C );
+      function( cat, Coex_A_C, A, B, C, Coex_A_BxCoex_B_C )
         
         return UniqueMorphism( cat, Coex_A_C, Coex_A_BxCoex_B_C );
         
@@ -74,7 +74,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     
     ##
     AddCocartesianPostCoComposeMorphismWithGivenObjects( coheyting_algebra,
-      function( cat, Coex_A_C, A, B, C, Coex_B_CxCoex_A_B );
+      function( cat, Coex_A_C, A, B, C, Coex_B_CxCoex_A_B )
         
         return UniqueMorphism( cat, Coex_A_C, Coex_B_CxCoex_A_B );
         
