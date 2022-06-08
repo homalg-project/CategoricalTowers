@@ -94,7 +94,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         L := List( L, List );
         
-        ## an advantage of this this specific data structure for formal multiple differences
+        ## an advantage of this specific data structure for formal multiple differences
         return CallFuncList( AsMultipleDifference, Concatenation( L ) );
         
     end );

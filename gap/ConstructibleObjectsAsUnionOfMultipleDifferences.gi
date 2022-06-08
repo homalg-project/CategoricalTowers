@@ -152,7 +152,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
         L := List( L, List );
         
-        ## an advantage of this this specific data structure for constructible objects
+        ## an advantage of this specific data structure for constructible objects
         return CallFuncList( UnionOfMultipleDifferences, Concatenation( L ) );
         
     end );

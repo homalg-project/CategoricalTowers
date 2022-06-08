@@ -147,10 +147,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     AddCoproduct( C,
       function( cat, L )
         
-        L := List( L, List );
-        
-        ## an advantage of this this specific data structure for constructible objects
-        return CallFuncList( UnionOfDifferences, Concatenation( L ) );
+        ## an advantage of this specific data structure for constructible objects
+        return CallFuncList( UnionOfDifferences, Concatenation( List( L, List ) ) );
         
     end );
     

@@ -38,6 +38,17 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
         IsConstructibleObjectAsUnionOfSingleDifferences );
 
+CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifferences ], function ( input_types )
+    
+    Assert( 0, IsBooleanAlgebraOfConstructibleObjects( input_types[1].category ) );
+    
+    return rec( filter := IsList,
+                element_type :=
+                rec( filter := input_types[1].category!.MeetSemilatticeOfDifferences!.object_representation,
+                     category := input_types[1].category!.MeetSemilatticeOfDifferences ) );
+    
+end );
+
 #! @Section Operations
 
 #! @Description
