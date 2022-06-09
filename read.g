@@ -12,3 +12,6 @@ ReadPackage( "Toposes", "gap/ToposDerivedMethods.gi" );
 
 ## Category of relations
 ReadPackage( "Toposes", "gap/CategoryOfRelations.gi");
+
+## Tools
+ReadPackage( "Toposes", "gap/Tools.gi");

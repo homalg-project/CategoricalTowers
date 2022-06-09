@@ -10,3 +10,6 @@ ReadPackage( "Toposes", "gap/Topos.autogen.gd");
 
 ## Category of relations
 ReadPackage( "Toposes", "gap/CategoryOfRelations.gd");
+
+## Tools
+ReadPackage( "Toposes", "gap/Tools.gd");

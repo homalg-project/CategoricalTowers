@@ -98,6 +98,6 @@ DeclareAttribute( "HonestRepresentative",
 #!  The input is a morphsm $\rho$ in the category of relations.
 #!  The output is <C>true</C> if the domain of $\rho$ is an isomorphism.
 #! @Arguments rho
-#! @Returns CapFullSubcategory
+#! @Returns true or false
 DeclareProperty( "IsHonest",
         IsMorphismInCategoryOfRelations );
