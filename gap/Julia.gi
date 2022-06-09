@@ -47,3 +47,14 @@ InstallOtherMethod( Limit,
     return Limit( ConvertJuliaToGAP( D1 ), ConvertJuliaToGAP( D2 ) );
     
 end );
+
+##
+InstallOtherMethod( Colimit,
+        "for a julia object",
+        [ IsJuliaObject, IsJuliaObject ],
+        
+  function( D1, D2 )
+    
+    return Colimit( ConvertJuliaToGAP( D1 ), ConvertJuliaToGAP( D2 ) );
+    
+end );

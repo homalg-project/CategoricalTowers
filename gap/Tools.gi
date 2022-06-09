@@ -324,7 +324,7 @@ ProjectionInFactorOfLimitWithGivenLimit := rec(
   #  fi;
   #  
   #end,
-  #dual_operation := "InjectionOfCofactorOfColimitWithColimit",
+  #dual_operation := "InjectionOfCofactorOfColimitWithGivenColimit",
   ),
 
 UniversalMorphismIntoLimit := rec(
@@ -370,6 +370,102 @@ UniversalMorphismIntoLimitWithGivenLimit := rec(
   #  
   #end,
   #dual_operation := "UniversalMorphismFromColimitWithGivenColimit",
+  ),
+
+Colimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList ],
+  input_arguments_names := [ "cat", "objects", "decorated_morphisms" ],
+  return_type := "object",
+  
+  #pre_function := function( cat, objects, decorated_morphisms )
+  #  local base, current_morphism, current_value;
+  #  
+  #  if IsEmpty( objects ) then
+  #      
+  #      return [ true ];
+  #      
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "Limit",
+  ),
+
+InjectionOfCofactorOfColimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, IsInt ],
+  io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "objects_k", "P" ] ],
+  with_given_object_position := "Range",
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, injection_number )
+  #  local base, current_morphism, current_value;
+  #  
+  #  if injection_number < 1 or injection_number > Length( objects ) then
+  #      return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "ProjectionInFactorOfLimit",
+  ),
+
+InjectionOfCofactorOfColimitWithGivenColimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, IsInt, "object" ],
+  io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "objects_k", "P" ] ],
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, injection_number, limit )
+  #  local base, current_morphism, current_value;
+  #  
+  #  if injection_number < 1 or injection_number > Length( objects ) then
+  #      return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "ProjectionInFactorOfLimitWithGivenLimit",
+  ),
+
+UniversalMorphismFromColimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms" ],
+  io_type := [ [ "objects", "decorated_morphisms", "T", "tau" ], [ "P", "T" ] ],
+  with_given_object_position := "Source",
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, test_object, source )
+  #  local base, current_morphism, current_value, current_morphism_position;
+  #  
+  #  if Length( objects ) <> Length( source ) then
+  #      return [ false, "fiber product diagram and test diagram must have equal length" ];
+  #  fi;
+  #  
+  #  if IsEmpty( objects ) then
+  #      
+  #      return [ true ];
+  #      
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "UniversalMorphismIntoLimit",
+  ),
+
+UniversalMorphismFromColimitWithGivenColimit := rec(
+  filter_list := [ "category", "list_of_objects", IsList, "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "objects", "decorated_morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
+  return_type := "morphism",
+  
+  #pre_function := function( cat, objects, decorated_morphisms, test_object, source, limit )
+  #  local base, current_morphism, current_value, current_morphism_position;
+  #  
+  #  if Length( objects ) <> Length( source ) then
+  #      return [ false, "fiber product diagram and test diagram must have equal length" ];
+  #  fi;
+  #  
+  #  if IsEmpty( objects ) then
+  #      
+  #      return [ true ];
+  #      
+  #  fi;
+  #  
+  #end,
+  #dual_operation := "UniversalMorphismIntoLimitWithGivenLimit",
   ),
 
 ) );
@@ -1040,3 +1136,65 @@ AddFinalDerivation( Limit,
   end
 ]
 : Description := "Limit using DirectProduct and Equalizer" );
+
+##
+InstallMethodForCompilerForCAP( ColimitPair,
+        "for a catgory and two lists",
+        [ IsCapCategory, IsList, IsList ],
+
+  function( cat, objects, decorated_morphisms )
+    
+    return List( LimitPair( Opposite( cat ),
+                   List( objects, Opposite ),
+                   List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ),
+                 Opposite );
+    
+end );
+
+##
+AddFinalDerivation( Colimit,
+        ## FIXME: remove the following list and add it to CategoryFilter;
+        ## problem: Input category must be finalized to create opposite category
+        [ [ Limit, 1 ],
+          [ ProjectionInFactorOfLimitWithGivenLimit, 1 ],
+          [ UniversalMorphismIntoLimitWithGivenLimit,1 ] ],
+        [ Colimit,
+          InjectionOfCofactorOfColimit,
+          InjectionOfCofactorOfColimitWithGivenColimit,
+          UniversalMorphismFromColimit,
+          UniversalMorphismFromColimitWithGivenColimit,
+          ],
+        
+    function( cat, objects, decorated_morphisms )
+      
+      return Opposite( Limit( Opposite( cat ),
+                     List( objects, Opposite ),
+                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ) );
+      
+  end,
+[
+  InjectionOfCofactorOfColimitWithGivenColimit,
+    function( cat, objects, decorated_morphisms, k, colimit )
+      
+      return Opposite( ProjectionInFactorOfLimitWithGivenLimit( Opposite( cat ),
+                     List( objects, Opposite ),
+                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ),
+                     k,
+                     Opposite( colimit ) );
+      
+  end
+],
+[
+  UniversalMorphismFromColimitWithGivenColimit,
+    function( cat, objects, decorated_morphisms, T, tau, colimit )
+      
+      return Opposite( UniversalMorphismIntoLimitWithGivenLimit( Opposite( cat ),
+                     List( objects, Opposite ),
+                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ),
+                     Opposite( T ),
+                     List( tau, Opposite ),
+                     Opposite( colimit ) );
+      
+  end
+]
+: Description := "Colimit using limit in the opposite category" );
