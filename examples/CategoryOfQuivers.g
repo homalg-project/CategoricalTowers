@@ -2,12 +2,12 @@
 
 LoadPackage( "FunctorCategories" );
 
-#! In the following we construct the category of quivers:
+#! In the following we construct the category of finite quivers:
 
 #! @Example
-Quivers;
+FinQuivers;
 #! CategoryOfQuiversEnrichedOver( SkeletalFinSets )
-V := Quivers.V;
+V := FinQuivers.V;
 #! <A projective object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( V );
 #! Image of <(V)>:
@@ -28,7 +28,7 @@ Display( V );
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
-A := Quivers.A;
+A := FinQuivers.A;
 #! <A projective object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( A );
 #! Image of <(V)>:
@@ -49,7 +49,7 @@ Display( A );
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
-T := TerminalObject( Quivers );
+T := TerminalObject( FinQuivers );
 #! <An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( T );
 #! Image of <(V)>:
@@ -305,7 +305,7 @@ Display( emb_complete );
 #! given by the above data
 IsEpimorphism( emb_complete );
 #! true
-s := Quivers.s;
+s := FinQuivers.s;
 #! <A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( s );
 #! Image of <(V)>:
@@ -320,7 +320,7 @@ Display( s );
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
-t := Quivers.t;
+t := FinQuivers.t;
 #! <A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( t );
 #! Image of <(V)>:
@@ -335,7 +335,7 @@ Display( t );
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
-omega := SubobjectClassifier( Quivers );
+omega := SubobjectClassifier( FinQuivers );
 #! <An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( omega );
 #! Image of <(V)>:
