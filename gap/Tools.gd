@@ -14,6 +14,10 @@ DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
 
+##
+DeclareOperation( "Subobject",
+        [ IsCapCategoryMorphism ] );
+
 ###################################
 ##
 #! @Section ImageObjectFunctorial
@@ -435,6 +439,100 @@ DeclareOperation( "UniversalMorphismIntoLimit",
 DeclareOperation( "UniversalMorphismIntoLimitWithGivenLimit",
                   [ IsList, IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
+
+###################################
 ##
-DeclareOperation( "Subobject",
-        [ IsCapCategoryMorphism ] );
+#! @Section Colimit
+##
+###################################
+
+#! @Description
+#!  The input is
+#!  * a category <A>cat</A> and
+#!  * a finite diagram (or subquiver) in <A>cat</A> given by
+#!      - a list <A>objs</A> of objects in <A>cat</A>, and
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>.
+#!
+#!  The output is a pair of parallel morphisms in <A>cat</A>,
+#!  the binary coequalizer of which is the colimit of the diagram.
+#! @Arguments cat, objs, decorated_mors
+#! @Returns a pair of morphisms
+DeclareOperation( "ColimitPair",
+        [ IsCapCategory, IsList, IsList ] );
+
+#! @Description
+#!  The input is a finite diagram (or subquiver) <A>D</A> (in a category <A>cat</A>)
+#!  consisting of
+#!  * a list <A>objs</A> of objects in <A>cat</A> and
+#!  * a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!    where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>.
+#!
+#!  The output is the colimit object $\mathrm{Colimit}$(<A>D</A>) of the diagram <A>D</A>.
+#! @Arguments objs, decorated_mors
+#! @Returns an object
+DeclareOperation( "Colimit",
+        [ IsList, IsList ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <A>D</A> (in a category <A>cat</A>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <A>cat</A>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>, and
+#!  * a positive integer <A>k</A>.
+#!  
+#!  The output is the injection of the <A>k</A>-th objects $P_k =$<A>objs</A>[<A>k</A>]
+#!  into the colimit object $P := \mathrm{Colimit}$(<A>D</A>) of the diagram <A>D</A>.
+#! @Arguments objects, decorated_morphisms, k
+#! @Returns a morphism in $\mathrm{Hom}( P_k, P )$
+DeclareOperation( "InjectionOfCofactorOfColimit",
+                  [ IsList, IsList, IsInt ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <M>D</M> (in a category <A>cat</A>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <A>cat</A>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>,
+#!  * a positive integer <A>k</A>, and
+#!  * an object <A>P</A>$= \mathrm{Colimit}(D)$.
+#!  
+#!  The output is the projection of $P_k =$<A>objs</A>[<A>k</A>] into the colimit object <A>P</A> $:=\mathrm{Colimit}(D)$.
+#! @Returns a morphism in $\mathrm{Hom}( P_k, P )$
+#! @Arguments objects, decorated_morphisms, k, P
+DeclareOperation( "InjectionOfCofactorOfColimitWithGivenColimit",
+                  [ IsList, IsList, IsInt, IsCapCategoryObject ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <M>D</M> (in a category <M>cat</M>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <M>cat</M>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <M>cat</M>,
+#!  * a test object <A>T</A>, and
+#!  * a list of morphisms $\tau = ( \tau_i: P_i \rightarrow T )$ in <M>cat</M> defining a cocone over $D$.
+#!  
+#!  The output is the morphism $u( \tau ): \mathrm{Colimit}(D) \rightarrow T$
+#!  given by the universal property of the colimit.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Colimit}(D), T )$
+#! @Arguments objects, decorated_morphisms, T, tau
+DeclareOperation( "UniversalMorphismFromColimit",
+                  [ IsList, IsList, IsCapCategoryObject, IsList ] );
+
+#! @Description
+#!  The input is
+#!  * a finite diagram (or subquiver) <M>D</M> (in a category <M>cat</M>) consisting of
+#!      - a list <A>objs</A> = $(P_i)_{i = 1 \dots n}$ of objects in <M>cat</M>,
+#!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
+#!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <M>cat</M>,
+#!  * a test object <A>T</A>,
+#!  * a list of morphisms $\tau = ( \tau_i: P_i \rightarrow T )$ in <M>cat</M> defining a cocone over $D$, and
+#!  * an object <A>P</A>$= \mathrm{Colimit}(D)$.
+#!  
+#!  The output is the morphism $u( \tau ): P = \mathrm{Colimit}(D) \rightarrow T$
+#!  given by the universal property of the colimit.
+#! @Returns a morphism in $\mathrm{Hom}( P, T )$
+#! @Arguments objects, decorated_morphisms, T, tau, P
+DeclareOperation( "UniversalMorphismFromColimitWithGivenColimit",
+                  [ IsList, IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );

@@ -107,6 +107,25 @@ DeclareOperation( "AddCoimageObjectFunctorialWithGivenCoimageObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `Colimit`.
+#! $F: ( objects, decorated_morphisms ) \mapsto \mathtt{Colimit}(objects, decorated_morphisms)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddColimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddColimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddColimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddColimit",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfSumOfImagesOfAllMorphisms`.
 #! $F: ( a, b ) \mapsto \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)$.
 #! @Returns nothing
@@ -159,6 +178,44 @@ DeclareOperation( "AddImageObjectFunctorialWithGivenImageObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddImageObjectFunctorialWithGivenImageObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InjectionOfCofactorOfColimit`.
+#! $F: ( objects, decorated_morphisms, k ) \mapsto \mathtt{InjectionOfCofactorOfColimit}(objects, decorated_morphisms, k)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectionOfCofactorOfColimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfColimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfColimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfColimit",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InjectionOfCofactorOfColimitWithGivenColimit`.
+#! $F: ( objects, decorated_morphisms, k, P ) \mapsto \mathtt{InjectionOfCofactorOfColimitWithGivenColimit}(objects, decorated_morphisms, k, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectionOfCofactorOfColimitWithGivenColimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfColimitWithGivenColimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfColimitWithGivenColimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectionOfCofactorOfColimitWithGivenColimit",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -425,6 +482,44 @@ DeclareOperation( "AddSumOfImagesOfAllMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddSumOfImagesOfAllMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalMorphismFromColimit`.
+#! $F: ( objects, decorated_morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms, T, tau)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromColimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromColimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromColimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromColimit",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UniversalMorphismFromColimitWithGivenColimit`.
+#! $F: ( objects, decorated_morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismFromColimitWithGivenColimit}(objects, decorated_morphisms, T, tau, P)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUniversalMorphismFromColimitWithGivenColimit",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUniversalMorphismFromColimitWithGivenColimit",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromColimitWithGivenColimit",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUniversalMorphismFromColimitWithGivenColimit",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
