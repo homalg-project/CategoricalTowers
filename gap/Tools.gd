@@ -23,3 +23,5 @@
 #! @Arguments A
 DeclareOperation( "DigraphOfSubobjects",
                   [ IsCapCategoryObject ] );
+
+DeclareFilter( "IsDigraphOfSubobjects" );
