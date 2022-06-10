@@ -152,6 +152,8 @@ InstallMethod( MeetSemilatticeOfDifferences,
         
     end );
     
+    HandlePrecompiledTowers( D, P, "MeetSemilatticeOfDifferences" );
+    
     Finalize( D );
     
     return D;

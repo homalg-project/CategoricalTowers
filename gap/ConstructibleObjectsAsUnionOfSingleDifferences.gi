@@ -160,6 +160,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
     fi;
     
+    HandlePrecompiledTowers( C, P, "BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences" );
+    
     Finalize( C );
     
     return C;
