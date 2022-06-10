@@ -32,7 +32,8 @@ InstallOtherMethod( DotVertexLabelledDigraph,
 
   function( D )
     local out, str, i, j;
-
+    
+    # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
     out   := OutNeighbours( D );
     str   := "//dot\n";
     
