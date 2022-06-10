@@ -41,15 +41,19 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
     end );
     
     ##
-    AddCoproductToCoexponentialAdjunctionMap( coheyting_algebra,
-      function( cat, B, C, g )
-        local A;
+    if CanCompute( coheyting_algebra, "CoexponentialOnObjects" ) then
         
-        A := Source( g );
+        AddCoproductToCoexponentialAdjunctionMap( coheyting_algebra,
+          function( cat, C, B, g )
+            local A;
+            
+            A := Source( g );
+            
+            return UniqueMorphism( cat, CoexponentialOnObjects( cat, A, B ), C );
+            
+        end );
         
-        return UniqueMorphism( cat, CoexponentialOnObjects( cat, A, B ), C );
-        
-    end );
+    fi;
     
     ##
     AddCoexponentialToCoproductAdjunctionMap( coheyting_algebra,

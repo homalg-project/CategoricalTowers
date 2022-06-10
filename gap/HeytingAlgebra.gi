@@ -41,15 +41,19 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     end );
     
     ##
-    AddDirectProductToExponentialAdjunctionMap( heyting_algebra,
-      function( cat, A, B, f )
-        local L;
+    if CanCompute( heyting_algebra, "ExponentialOnObjects" ) then
         
-        L := Range( f );
+        AddDirectProductToExponentialAdjunctionMap( heyting_algebra,
+          function( cat, A, B, f )
+            local C;
+            
+            C := Range( f );
+            
+            return UniqueMorphism( cat, A, ExponentialOnObjects( cat, B, C ) );
+            
+        end );
         
-        return UniqueMorphism( cat, A, ExponentialOnObjects( cat, B, L ) );
-        
-    end );
+    fi;
     
     ##
     AddExponentialToDirectProductAdjunctionMap( heyting_algebra,
