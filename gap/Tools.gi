@@ -37,7 +37,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     out   := OutNeighbours( D );
     str   := "//dot\n";
     
-    Append( str, "digraph subquiver{\n" );
+    Append( str, "digraph subobject_lattice{\n" );
     Append( str, "rankdir=\"TB\"\n" );
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
