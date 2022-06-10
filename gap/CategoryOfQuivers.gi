@@ -50,7 +50,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
 end );
 
 ##
-BindGlobal( "Quivers",
+BindGlobal( "FinQuivers",
          CategoryOfQuiversEnrichedOver( SkeletalFinSets ) );
 
 ##
@@ -87,7 +87,7 @@ InstallMethod( CreateQuiver,
         
   function( n, arrows )
     
-    return CreateQuiver( Quivers, n, arrows );
+    return CreateQuiver( FinQuivers, n, arrows );
     
 end );
 
