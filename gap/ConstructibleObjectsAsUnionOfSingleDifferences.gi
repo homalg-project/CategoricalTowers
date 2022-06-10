@@ -121,6 +121,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     BinaryDirectProduct := function( A, B )
         local L, l, I, U;
         
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
         L := [ List( A ), List( B ) ];
         
         l := [ 1, 2 ];
