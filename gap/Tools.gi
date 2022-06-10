@@ -42,20 +42,20 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
     
-    for i in DigraphVertices(D) do
-        Append(str, String(i));
-        Append(str, " [label=\"");
-        Append(str, String(DigraphVertexLabel(D, i)));
-        Append(str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n");
+    for i in DigraphVertices( D ) do
+        Append( str, String( i ) );
+        Append( str, " [label=\"" );
+        Append( str, String( DigraphVertexLabel( D, i ) ) );
+        Append( str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
-  for i in DigraphVertices(D) do
+  for i in DigraphVertices( D ) do
       for j in out[i] do
-          Append(str, Concatenation(String(i), " -> ", String(j), " [arrowsize=0.5]\n"));
+          Append( str, Concatenation( String( i ), " -> ", String( j ), " [arrowsize=0.5]\n" ) );
       od;
   od;
   
-  Append(str, "}\n");
+  Append( str, "}\n" );
   
   return str;
   
