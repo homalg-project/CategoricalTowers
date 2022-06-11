@@ -14,7 +14,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         [ IsCapCategory ],
         
   function( category_of_finsets )
-    local F, PSh, object_constructor, morphism_constructor, Quivers, Y;
+    local F, PSh, object_constructor, morphism_constructor, Quivers;
     
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
     
