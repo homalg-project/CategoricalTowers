@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2022.06-16",
+Version := "2022.06-17",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -88,7 +88,7 @@ Dependencies := rec(
   GAP := ">= 4.11.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2022.05-07" ],
+                   [ "CAP", ">= 2022.06-02" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
                    [ "Algebroids", ">= 2022.05-05" ],
                    [ "RingsForHomalg", ">= 2020.02.04" ],

@@ -74,7 +74,7 @@ InstallMethod( CreateQuiver,
     s := MapOfFinSets( A, List( arr, a -> a[1] ), V );
     t := MapOfFinSets( A, List( arr, a -> a[2] ), V );
     
-    presheaf := AsObjectInFunctorCategory( Source( UnderlyingCategory( category_of_quivers ) ), [ V, A ], [ s, t ] );
+    presheaf := AsObjectInFunctorCategory( Source( ModelingCategory( category_of_quivers ) ), [ V, A ], [ s, t ] );
     
     return ObjectConstructor( category_of_quivers, presheaf );
     
@@ -167,7 +167,7 @@ InstallOtherMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
   function ( category_of_quivers )
     local Y;
     
-    Y := YonedaEmbeddingOfOppositeOfSourceCategory( UnderlyingCategory( category_of_quivers ) );
+    Y := YonedaEmbeddingOfOppositeOfSourceCategory( ModelingCategory( category_of_quivers ) );
     
     return PreCompose( Y, WrappingFunctor( category_of_quivers ) );
     
@@ -183,7 +183,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    F := OppositeFpCategory( Source( UnderlyingCategory( category_of_quivers ) ) );
+    F := OppositeFpCategory( Source( ModelingCategory( category_of_quivers ) ) );
     
     Y := YonedaEmbeddingOfOppositeOfSourceCategory( category_of_quivers );
     
