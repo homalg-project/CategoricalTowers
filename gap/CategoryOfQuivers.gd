@@ -16,7 +16,7 @@
 #!  The &GAP; category of the category of quivers.
 #! @Arguments category
 DeclareCategory( "IsCategoryOfQuivers",
-        IsFunctorCategory );
+        IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in the category of quivers.
