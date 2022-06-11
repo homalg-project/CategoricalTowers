@@ -61,7 +61,7 @@ DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
 #! @Description
 #!  Construct a finite cocompletion category.
 #! @Returns a &CAP; category
-#! @Arguments B, C
+#! @Arguments B
 #! @Group FunctorCategory
 DeclareOperation( "FiniteCocompletion",
         [ IsCapCategory ] );
