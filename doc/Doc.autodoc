@@ -22,6 +22,18 @@
 
 @InsertChunk SubobjectClassifier
 
+@Chapter Finite cocompletion of a finitely presented category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
 @Chapter The category of finite quivers
 
 @Section Constructors
