@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Category of quivers
+#! @Chapter The category of finite quivers
 
 ####################################
 #

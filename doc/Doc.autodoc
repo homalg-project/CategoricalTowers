@@ -22,9 +22,7 @@
 
 @InsertChunk SubobjectClassifier
 
-@Subsection The category of quivers
-
-@InsertChunk CategoryOfQuivers
+@Chapter The category of finite quivers
 
 @Section Constructors
 
@@ -33,5 +31,9 @@
 @Section Operations
 
 @Section Global variables
+
+@Section Example
+
+@InsertChunk CategoryOfQuivers
 
 @Section &GAP; Categories
