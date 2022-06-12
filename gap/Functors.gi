@@ -235,15 +235,15 @@ InstallMethod( YonedaEmbedding,
     
     AddObjectFunction( Yoneda,
       function ( obj )
-        local Yo;
+        local Yobj;
         
-        Yo := AsObjectInFunctorCategory( B_op,
-                      List( objs, o -> HomStructure( o, obj ) ),
-                      List( mors, m -> HomStructure( m, obj ) ) );
+        Yobj := AsObjectInFunctorCategory( B_op,
+                        List( objs, o -> HomStructure( o, obj ) ),
+                        List( mors, m -> HomStructure( m, obj ) ) );
         
-        SetIsProjective( Yo, true );
+        SetIsProjective( Yobj, true );
         
-        return Yo;
+        return Yobj;
         
     end );
     
