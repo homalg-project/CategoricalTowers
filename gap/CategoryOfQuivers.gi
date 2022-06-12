@@ -13,7 +13,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( category_of_finsets )
+  function ( category_of_finsets )
     local F, PSh, object_constructor, morphism_constructor, Quivers;
     
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
@@ -21,14 +21,14 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     PSh := PreSheaves( F, category_of_finsets : FinalizeCategory := true );
     
     object_constructor :=
-      function( Quivers, objP )
+      function ( Quivers, objP )
         
         return AsObjectInWrapperCategory( Quivers, objP );
         
     end;
     
     morphism_constructor :=
-      function( Quivers, source, morP, range )
+      function ( Quivers, source, morP, range )
         
         return AsMorphismInWrapperCategory( Quivers, source, morP, range );
         
@@ -58,7 +58,7 @@ InstallMethod( CreateQuiver,
         "for a category of quivers, an integers, and a list of pairs of integers",
         [ IsCategoryOfQuivers, IsInt, IsList ],
         
-  function( category_of_quivers, n, arrows )
+  function ( category_of_quivers, n, arrows )
     local V, arr, A, s, t, presheaf;
     
     V := FinSet( n );
@@ -85,7 +85,7 @@ InstallMethod( CreateQuiver,
         "for an integers, and a list of pairs of integers",
         [ IsInt, IsList ],
         
-  function( n, arrows )
+  function ( n, arrows )
     
     return CreateQuiver( FinQuivers, n, arrows );
     
@@ -96,7 +96,7 @@ InstallMethod( Arrows,
         "for an object in a category of quivers",
         [ IsObjectInCategoryOfQuivers ],
         
-  function( quiver )
+  function ( quiver )
     
     return ListN( AsList( quiver.s ), AsList( quiver.t ), { s, t } -> [ s, t ] );
     
@@ -107,7 +107,7 @@ InstallMethod( CreateQuiverMorphism,
         "for two objects in a category of quivers and two lists",
         [ IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers ],
         
-  function( source, images_of_vertices, images_of_arrows, range )
+  function ( source, images_of_vertices, images_of_arrows, range )
     local S, T, natural_transformation;
     
     S := ObjectDatum( source );
@@ -128,7 +128,7 @@ InstallMethod( Subobject,
         "for an object in a category of quivers and two lists",
         [ IsObjectInCategoryOfQuivers, IsList, IsList ],
         
-  function( quiver, images_of_vertices, images_of_arrows )
+  function ( quiver, images_of_vertices, images_of_arrows )
     local arrows, arrows_as_pairs, vertices, source, subquiver;
     
     arrows := Set( images_of_arrows );
@@ -153,7 +153,7 @@ InstallMethod( Subobject,
         "for an object in a category of quivers and a list",
         [ IsObjectInCategoryOfQuivers, IsList ],
         
-  function( quiver, images_of_arrows )
+  function ( quiver, images_of_arrows )
     
     return Subobject( quiver, [ ], images_of_arrows );
     
@@ -164,7 +164,7 @@ InstallOtherMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
         "for a category of quivers",
         [ IsCategoryOfQuivers ],
         
-  function( category_of_quivers )
+  function ( category_of_quivers )
     local Y;
     
     Y := YonedaEmbeddingOfOppositeOfSourceCategory( UnderlyingCategory( category_of_quivers ) );
@@ -178,7 +178,7 @@ InstallMethod( \.,
         "for a category of quivers and a positive integer",
         [ IsCategoryOfQuivers, IsPosInt ],
         
-  function( category_of_quivers, string_as_int )
+  function ( category_of_quivers, string_as_int )
     local name, F, Y, Yc;
     
     name := NameRNam( string_as_int );
@@ -202,7 +202,7 @@ InstallMethod( \.,
         "for a cell in a category of quivers and a positive integer",
         [ IsCellInCategoryOfQuivers, IsPosInt ],
         
-  function( cell, string_as_int )
+  function ( cell, string_as_int )
     
     return UnderlyingCell( cell ).(NameRNam( string_as_int ));
     
@@ -217,7 +217,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         "for an object in a category of quivers",
         [ IsObjectInCategoryOfQuivers ],
         
-  function( quiver )
+  function ( quiver )
     local str, arrows, i;
     
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
@@ -260,7 +260,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         "for a morphism in a category of quivers",
         [ IsMorphismInCategoryOfQuivers and IsMonomorphism ],
         
-  function( monomorphism )
+  function ( monomorphism )
     local quiver, vertices, arrows, str, arrows_as_pairs, i;
     
     quiver := Range( monomorphism );
@@ -319,7 +319,7 @@ InstallMethod( SvgString,
         "for a cell in a category of quivers",
         [ IsCellInCategoryOfQuivers ],
         
-  function( cell )
+  function ( cell )
     
     return DotToSVG( DotVertexLabelledDigraph( cell ) );
     

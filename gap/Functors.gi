@@ -266,7 +266,7 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
         "for a functor category",
         [ IsFunctorCategory ],
         
-  function( Hom )
+  function ( Hom )
     
     return YonedaEmbedding( OppositeFpCategory( Source( Hom ) ) );
     
