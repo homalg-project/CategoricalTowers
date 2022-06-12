@@ -27,6 +27,28 @@ InstallOtherMethod( CanCompute,
 end );
 
 ##
+InstallOtherMethod( ProjectionInFactorOfFiberProduct,
+        "for a julia object and an integer",
+        [ IsJuliaObject, IsInt ],
+        
+  function( D, k )
+    
+    return ProjectionInFactorOfFiberProduct( ConvertJuliaToGAP( D ), k );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoFiberProduct,
+        "for two julia objects",
+        [ IsJuliaObject, IsJuliaObject ],
+        
+  function( D, tau )
+    
+    return UniversalMorphismIntoFiberProduct( ConvertJuliaToGAP( D ), ConvertJuliaToGAP( tau ) );
+    
+end );
+
+##
 InstallOtherMethod( MorphismFromFiberProductToSink,
         "for a julia object",
         [ IsJuliaObject ],
@@ -34,6 +56,39 @@ InstallOtherMethod( MorphismFromFiberProductToSink,
   function( D )
     
     return MorphismFromFiberProductToSink( ConvertJuliaToGAP( D ) );
+    
+end );
+
+##
+InstallOtherMethod( InjectionOfCofactorOfPushout,
+        "for a julia object and an integer",
+        [ IsJuliaObject, IsInt ],
+        
+  function( D, k )
+    
+    return InjectionOfCofactorOfPushout( ConvertJuliaToGAP( D ), k );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromPushout,
+        "for two julia objects",
+        [ IsJuliaObject, IsJuliaObject ],
+        
+  function( D, tau )
+    
+    return UniversalMorphismFromPushout( ConvertJuliaToGAP( D ), ConvertJuliaToGAP( tau ) );
+    
+end );
+
+##
+InstallOtherMethod( MorphismFromSourceToPushout,
+        "for a julia object",
+        [ IsJuliaObject ],
+        
+  function( D )
+    
+    return MorphismFromSourceToPushout( ConvertJuliaToGAP( D ) );
     
 end );
 
