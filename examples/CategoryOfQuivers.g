@@ -306,7 +306,7 @@ Display( emb_complete );
 IsEpimorphism( emb_complete );
 #! true
 s := FinQuivers.s;
-#! <A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
+#! <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( s );
 #! Image of <(V)>:
 #! { 0 } ⱶ[ 0 ]→ { 0, 1 }
@@ -321,7 +321,7 @@ Display( s );
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 t := FinQuivers.t;
-#! <A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
+#! <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( t );
 #! Image of <(V)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }

@@ -190,7 +190,33 @@ InstallMethod( \.,
     Yc := Y( F.(name) );
     
     if IsObjectInCategoryOfQuivers( Yc ) then
+        
         SetIsProjective( Yc, true );
+        
+    elif IsMorphismInCategoryOfQuivers( Yc ) then
+        
+        if CanCompute( category_of_quivers, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( category_of_quivers, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( category_of_quivers, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( category_of_quivers, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( category_of_quivers, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
     fi;
     
     return Yc;
