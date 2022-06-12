@@ -11,6 +11,7 @@ ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gi");
 ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
+ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "FunctorCategories", "gap/Julia.gi" );

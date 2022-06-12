@@ -49,3 +49,15 @@
 @InsertChunk CategoryOfQuivers
 
 @Section &GAP; Categories
+
+@Chapter Finite completion of a finitely presented category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories

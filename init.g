@@ -10,3 +10,4 @@ ReadPackage( "FunctorCategories", "gap/Functors.gd");
 ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gd");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gd");
+ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gd");
