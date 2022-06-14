@@ -14,11 +14,11 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         [ IsCapCategory ],
         
   function ( category_of_finsets )
-    local F, PSh, object_constructor, morphism_constructor, Quivers;
+    local F, F_hat, object_constructor, morphism_constructor, Quivers;
     
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
     
-    PSh := PreSheaves( F, category_of_finsets : FinalizeCategory := true );
+    F_hat := FiniteCocompletion( F, category_of_finsets : FinalizeCategory := true );
     
     object_constructor :=
       function ( Quivers, objP )
@@ -34,7 +34,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    Quivers := WrapperCategory( PSh,
+    Quivers := WrapperCategory( F_hat,
                        rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_finsets ), " )" ),
                             object_constructor := object_constructor,
                             morphism_constructor := morphism_constructor,
@@ -59,7 +59,7 @@ InstallMethod( CreateQuiver,
         [ IsCategoryOfQuivers, IsInt, IsList ],
         
   function ( category_of_quivers, n, arrows )
-    local V, arr, A, s, t, presheaf;
+    local V, arr, A, s, t, finite_cocompletion, PSh, presheaf;
     
     V := FinSet( n );
     
@@ -74,9 +74,14 @@ InstallMethod( CreateQuiver,
     s := MapOfFinSets( A, List( arr, a -> a[1] ), V );
     t := MapOfFinSets( A, List( arr, a -> a[2] ), V );
     
-    presheaf := AsObjectInFunctorCategory( Source( ModelingCategory( category_of_quivers ) ), [ V, A ], [ s, t ] );
+    finite_cocompletion := ModelingCategory( category_of_quivers );
     
-    return ObjectConstructor( category_of_quivers, presheaf );
+    PSh := ModelingCategory( finite_cocompletion );
+    
+    presheaf := AsObjectInFunctorCategory( Source( PSh ), [ V, A ], [ s, t ] );
+    
+    return ObjectConstructor( category_of_quivers,
+                   ObjectConstructor( finite_cocompletion, presheaf ) );
     
 end );
 
@@ -108,10 +113,13 @@ InstallMethod( CreateQuiverMorphism,
         [ IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers ],
         
   function ( source, images_of_vertices, images_of_arrows, range )
-    local S, T, natural_transformation;
+    local s, t, S, T, natural_transformation, category_of_quivers, finite_cocompletion;
     
-    S := ObjectDatum( source );
-    T := ObjectDatum( range );
+    s := ObjectDatum( source );
+    t := ObjectDatum( range );
+    
+    S := ObjectDatum( s );
+    T := ObjectDatum( t );
     
     natural_transformation := AsMorphismInFunctorCategory(
                                       S,
@@ -119,7 +127,17 @@ InstallMethod( CreateQuiverMorphism,
                                         MapOfFinSets( S.A, images_of_arrows, T.A ) ],
                                       T );
     
-    return MorphismConstructor( CapCategory( source ), source, natural_transformation, range );
+    category_of_quivers := CapCategory( source );
+    
+    finite_cocompletion := ModelingCategory( category_of_quivers );
+    
+    return MorphismConstructor( category_of_quivers,
+                   source,
+                   MorphismConstructor( finite_cocompletion,
+                           s,
+                           natural_transformation,
+                           t ),
+                   range );
     
 end );
 
@@ -167,7 +185,7 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
   function ( category_of_quivers )
     local Y;
     
-    Y := YonedaEmbeddingOfOppositeOfSourceCategory( ModelingCategory( category_of_quivers ) );
+    Y := YonedaEmbeddingOfUnderlyingCategory( ModelingCategory( category_of_quivers ) );
     
     return PreCompose( Y, WrappingFunctor( category_of_quivers ) );
     
@@ -183,7 +201,7 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    F := OppositeFpCategory( Source( ModelingCategory( category_of_quivers ) ) );
+    F := UnderlyingCategory( category_of_quivers );
     
     Y := YonedaEmbeddingOfUnderlyingCategory( category_of_quivers );
     

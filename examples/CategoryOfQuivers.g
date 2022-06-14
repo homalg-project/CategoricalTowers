@@ -26,6 +26,10 @@ Display( V );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 A := FinQuivers.A;
@@ -45,6 +49,10 @@ Display( A );
 #! 
 #! An object in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -68,6 +76,10 @@ Display( T );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 G := CreateQuiver( 3, [ 0,1, 0,1, 1,2, 2,1, 2,2 ] );
@@ -87,6 +99,10 @@ Display( G );
 #! 
 #! An object in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -114,6 +130,10 @@ Display( discrete );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 global_discrete := HomStructure( T, discrete );
@@ -139,6 +159,10 @@ Display( complete );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 global_complete := HomStructure( T, complete );
@@ -162,6 +186,10 @@ Display( GA );
 #! 
 #! An object in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -197,6 +225,10 @@ Display( arrows );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 global_arrows := HomStructure( T, arrows );
@@ -216,6 +248,10 @@ Display( prjG );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 IsEpimorphism( prjG );
@@ -231,6 +267,10 @@ Display( prj_discrete );
 #! 
 #! A morphism in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -254,6 +294,10 @@ Display( Exponential( T, G ) );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 t := UniversalMorphismIntoTerminalObject( V );
@@ -269,6 +313,10 @@ Display( t );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 embG := Exponential( t, G );
@@ -282,6 +330,10 @@ Display( embG );
 #! 
 #! A morphism in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -301,6 +353,10 @@ Display( emb_complete );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 IsEpimorphism( emb_complete );
@@ -318,6 +374,10 @@ Display( s );
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
 #! given by the above data
 #! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
+#! given by the above data
+#! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
 #! given by the above data
 t := FinQuivers.t;
@@ -331,6 +391,10 @@ Display( t );
 #! 
 #! A morphism in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! A morphism in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
@@ -352,6 +416,10 @@ Display( omega );
 #! 
 #! An object in PreSheaves( FreeCategory(
 #! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ), SkeletalFinSets )
+#! given by the above data
+#! 
+#! An object in FiniteCocompletion( FreeCategory(
+#! RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ) )
 #! given by the above data
 #! 
 #! An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
