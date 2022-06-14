@@ -58,6 +58,14 @@ fi;
 #
 ####################################
 
+#! @Arguments fin_quivers
+DeclareAttribute( "UnderlyingCategory",
+        IsCategoryOfQuivers );
+
+#! @Arguments fin_quivers
+DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+        IsCategoryOfQuivers );
+
 #! @Arguments quiver
 DeclareAttribute( "Arrows",
         IsObjectInCategoryOfQuivers );

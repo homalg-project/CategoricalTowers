@@ -43,7 +43,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                             category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInCategoryOfQuivers,
                             only_primitive_operations := true ) );
     
-    SetOppositeOfSource( Quivers, F );
+    SetUnderlyingCategory( Quivers, F );
     
     return Quivers;
     
@@ -160,7 +160,7 @@ InstallMethod( Subobject,
 end );
 
 ##
-InstallOtherMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
+InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
         "for a category of quivers",
         [ IsCategoryOfQuivers ],
         
@@ -185,7 +185,7 @@ InstallMethod( \.,
     
     F := OppositeFpCategory( Source( ModelingCategory( category_of_quivers ) ) );
     
-    Y := YonedaEmbeddingOfOppositeOfSourceCategory( category_of_quivers );
+    Y := YonedaEmbeddingOfUnderlyingCategory( category_of_quivers );
     
     Yc := Y( F.(name) );
     
