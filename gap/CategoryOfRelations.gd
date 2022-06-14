@@ -53,6 +53,10 @@ DeclareAttribute( "AsMorphismInCategoryOfRelations",
 ####################################
 
 #!
+DeclareAttribute( "UnderlyingCategory",
+        IsCategoryOfRelations );
+
+#!
 DeclareAttribute( "UnitObjectInCategoryOfRelations",
         IsCategoryOfRelations );
 
