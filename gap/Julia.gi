@@ -13,9 +13,9 @@ InstallOtherMethod( Visualize,
     
     if IsRunningInJupyter( ) then
         
-        Julia.Base.display(
-                Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
-                GAPToJulia( DotToSVG( DotVertexLabelledDigraph( C ) ) ) );
+        return Julia.Base.display(
+                       Julia.Base.MIME( GAPToJulia( "image/svg+xml" ) ),
+                       GAPToJulia( DotToSVG( DotVertexLabelledDigraph( C ) ) ) );
         
     elif IsRunningInPluto( ) then
         
