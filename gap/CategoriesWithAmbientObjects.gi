@@ -411,7 +411,7 @@ InstallMethod( CategoryWithAmbientObjects,
     fi;
     
     ## DualOnObjects with ambient object
-    preconditions := [ "IsomorphismFromDualToInternalHom" ];
+    preconditions := [ "IsomorphismFromDualObjectToInternalHomIntoTensorUnit" ];
     
     if ForAll( preconditions, c -> CanCompute( abelian_category, c ) ) then
         
