@@ -717,9 +717,8 @@ InstallMethodWithCache( FunctorCategory,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, doc, prop, Hom, vertices, arrows;
     
-    kq := UnderlyingQuiverAlgebra( B );
-    
     if IsFpCategory( B ) then
+        kq := UnderlyingQuiverAlgebra( B );
         relations := RelationsOfFpCategory( B );
         A := kq;
         if IsQuotientOfPathAlgebra( A ) then
@@ -727,6 +726,7 @@ InstallMethodWithCache( FunctorCategory,
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
     elif IsAlgebroid( B ) then
+        kq := UnderlyingQuiverAlgebra( B );
         relations := RelationsOfAlgebroid( B );
         relations := List( relations, UnderlyingQuiverAlgebraElement );
     else
