@@ -29,6 +29,13 @@ InstallMethod( SetOfObjects,
   A -> List( Vertices( UnderlyingQuiver( A ) ), o -> A.( String( o ) ) ) );
 
 ##
+InstallOtherMethod( SetOfObjects,
+        "for an initial category",
+        [ IsCapCategory and IsInitialCategory ],
+        
+  A -> [ ] );
+
+##
 InstallMethod( AssignSetOfObjects,
         [ IsFpCategory and HasUnderlyingQuiver, IsString ],
         
@@ -74,6 +81,13 @@ InstallMethod( SetOfGeneratingMorphisms,
         [ IsFpCategory and HasUnderlyingQuiver ],
         
   A -> List( Arrows( UnderlyingQuiver( A ) ), o -> A.(String( o ) ) ) );
+
+##
+InstallOtherMethod( SetOfGeneratingMorphisms,
+        "for an initial category",
+        [ IsCapCategory and IsInitialCategory ],
+        
+  A -> [ ] );
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
