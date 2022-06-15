@@ -14,6 +14,8 @@ InstallGlobalFunction( InitialCategory,
     SetFilterObj( I, IsInitialCapCategory );
     SetFilterObj( I, IsInitialCategory );
     
+    SetRangeCategoryOfHomomorphismStructure( I, I );
+    
     Finalize( I );
     
     return I;
