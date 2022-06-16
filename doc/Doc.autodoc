@@ -60,6 +60,10 @@
 
 @Section Global variables
 
+@Section Examples
+
+@InsertChunk TerminalCategory
+
 @Section &GAP; Categories
 
 @Chapter Free Abelian category of a finitely presented category

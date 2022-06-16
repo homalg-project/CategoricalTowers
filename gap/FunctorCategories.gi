@@ -709,6 +709,150 @@ end );
 ##
 InstallMethodWithCache( FunctorCategory,
         "for two CAP categories",
+        [ IsCapCategory and IsInitialCategory, IsCapCategory ],
+        
+  function ( B, C )
+    local source, B_op, name, category_filter, category_object_filter, category_morphism_filter,
+          create_func_object, create_func_morphism,
+          list_of_operations_to_install, r, skip, func, pos, properties, ignore, T,
+          object_constructor, object_datum, morphism_constructor, morphism_datum;
+    
+    ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
+    source := ValueOption( "PreSheaves" );
+    
+    B_op := Opposite( B );
+    
+    if IsCapCategory( source ) then
+        Assert( 0, IsIdenticalObj( B_op, source ) );
+        name := "PreSheaves( ";
+    else
+        source := B;
+        name := "FunctorCategory( ";
+    fi;
+    
+    if HasName( source ) and HasName( C ) then
+        name := Concatenation( name, Name( source ), ", ", Name( C ), " )" );
+    else
+        name := Concatenation( name, "..., ... )" );
+    fi;
+    
+    category_filter := IsFunctorCategory and IsTerminalCategory;
+    
+    category_object_filter := IsObjectInFunctorCategory;
+    
+    category_morphism_filter := IsMorphismInFunctorCategory;
+    
+    ## e.g., ZeroObject, DirectSum
+    create_func_object :=
+        function( name, T )
+            
+            return """
+                function( input_arguments )
+                    
+                  return ObjectConstructor( cat, [ ] );
+                  
+                end
+            """;
+            
+        end;
+    
+    ## e.g., IdentityMorphism, PreCompose
+    create_func_morphism :=
+        function( name, T )
+            
+            return """
+                function( input_arguments )
+                    
+                    return MorphismConstructor( cat, top_source, [ ], top_range );
+                    
+                end
+            """;
+            
+        end;
+    
+    ##
+    object_constructor := function( cat, input )
+        
+        return AsObjectInFunctorCategory( cat, CapFunctor( "", Source( cat ), Range( cat ) ) );
+        
+    end;
+    
+    object_datum := { cat, object } -> UnderlyingCapTwoCategoryCell( object );
+    
+    morphism_constructor := function( cat, source, input, range )
+        
+        return AsMorphismInFunctorCategory( cat, NaturalTransformation( UnderlyingCapTwoCategoryCell( source ), UnderlyingCapTwoCategoryCell( range ) ) );
+        
+    end;
+    
+    morphism_datum := { cat, morphism } -> UnderlyingCapTwoCategoryCell( morphism );
+    
+    T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
+                 name := name,
+                 category_filter := category_filter,
+                 category_object_filter := category_object_filter,
+                 category_morphism_filter := category_morphism_filter,
+                 create_func_object := create_func_object,
+                 create_func_morphism := create_func_morphism,
+                 create_func_morphism_or_fail := create_func_morphism,
+                 object_constructor := object_constructor,
+                 object_datum := object_datum,
+                 morphism_constructor := morphism_constructor,
+                 morphism_datum := morphism_datum
+                 ) );
+    
+    SetSource( T, B );
+    SetRange( T, C );
+
+    ##
+    AddIsWellDefinedForObjects( T,
+      function( T, object )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( T,
+      function( T, morphism )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsEqualForObjects( T,
+      function( T, object1, object2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsEqualForMorphisms( T,
+      function( T, morphism1, morphism2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsCongruentForMorphisms( T,
+      function( T, morphism1, morphism2 )
+        
+        return true;
+        
+    end );
+    
+    Finalize( T );
+    
+    return T;
+    
+end );
+
+##
+InstallMethodWithCache( FunctorCategory,
+        "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
@@ -2235,6 +2379,17 @@ InstallMethod( Hom,
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
   FunctorCategory );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for ",
+        [ IsCapCategory and IsInitialCategory, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return FunctorCategory( Opposite( B : FinalizeCategory := true ), C : PreSheaves := B );
+    
+end );
 
 ##
 InstallMethodWithCache( PreSheaves,
