@@ -10,11 +10,11 @@ LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
 T := TerminalCategoryWithMultipleObjects( );
-#! TerminalCategoryWithMultipleObjects
+#! TerminalCategoryWithMultipleObjects( )
 L := LazyCategory( T : primitive_operations := true, optimize := 0 );
-#! LazyCategory( TerminalCategoryWithMultipleObjects )
+#! LazyCategory( TerminalCategoryWithMultipleObjects( ) )
 a := "a" / T / L;
-#! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects )>
+#! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( a );
 #! a
 #! 
@@ -22,7 +22,7 @@ Display( a );
 IsWellDefined( a );
 #! true
 aa := ObjectConstructor( T, "a" ) / L;
-#! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects )>
+#! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( aa );
 #! a
 #! 
@@ -30,7 +30,7 @@ Display( aa );
 a = aa;
 #! true
 b := "b" / T / L;
-#! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects )>
+#! <An evaluated object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( b );
 #! b
 #! 
@@ -38,20 +38,20 @@ Display( b );
 a = b;
 #! false
 t := TensorProduct( a, b );
-#! <An object in LazyCategory( TerminalCategoryWithMultipleObjects )>
+#! <An object in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( t );
 #! TensorProductOnObjects(
 #! <An evaluated object in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )>,
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )>,
 #! <An evaluated object in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )> )
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )> )
 a = t;
 #! false
 TensorProduct( a, a ) = t;
 #! false
 m := MorphismConstructor( EvaluatedCell( a ), "m", EvaluatedCell( b ) ) / L;
 #! <An evaluated morphism in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )>
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( m );
 #! a
 #! |
@@ -64,7 +64,7 @@ IsWellDefined( m );
 #! true
 n := MorphismConstructor( EvaluatedCell( a ), "n", EvaluatedCell( b ) ) / L;
 #! <An evaluated morphism in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )>
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( n );
 #! a
 #! |
@@ -81,22 +81,22 @@ m = n;
 #! true
 id := IdentityMorphism( a );
 #! <An identity morphism in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )>
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( id );
 #! IdentityMorphism( <An evaluated object in
-#! LazyCategory( TerminalCategoryWithMultipleObjects )> )
+#! LazyCategory( TerminalCategoryWithMultipleObjects( ) )> )
 m = id;
 #! false
 id = MorphismConstructor( EvaluatedCell( a ), "xy", EvaluatedCell( a ) ) / L;
 #! true
 z := ZeroMorphism( a, a );
-#! <A zero morphism in LazyCategory( TerminalCategoryWithMultipleObjects )>
+#! <A zero morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 Display( z );
 #! ZeroMorphism(
 #! <An evaluated object in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )>,
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )>,
 #! <An evaluated object in
-#!  LazyCategory( TerminalCategoryWithMultipleObjects )> )
+#!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )> )
 id = z;
 #! true
 #! @EndExample
