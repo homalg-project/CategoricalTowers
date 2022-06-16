@@ -9,7 +9,7 @@ InstallGlobalFunction( InitialCategory,
   function(  )
     local I;
     
-    I := CreateCapCategory( "InitialCategory" );
+    I := CreateCapCategory( "InitialCategory( )" );
     
     SetFilterObj( I, IsInitialCapCategory );
     SetFilterObj( I, IsInitialCategory );
