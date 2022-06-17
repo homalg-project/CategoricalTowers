@@ -17,3 +17,6 @@ ReadPackage( "Toposes", "gap/CategoryOfRelations.gi");
 ReadPackage( "Toposes", "gap/Tools.gi");
 
 ReadPackage( "Toposes", "gap/InitialCategory.gi");
+
+## DPO
+ReadPackage( "Toposes", "gap/DPO.gi");

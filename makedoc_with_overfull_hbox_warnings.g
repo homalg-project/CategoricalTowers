@@ -19,6 +19,12 @@ AutoDoc( rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
                 \usepackage{mathtools}
+                \DeclareUnicodeCharacter{2205}{\ensuremath{\emptyset}}
+                \DeclareUnicodeCharacter{2C76}{\ensuremath{\vdash}\!\!}
+                \DeclareUnicodeCharacter{2192}{\ensuremath{\!\!\rightarrow\!}}
+                \DeclareUnicodeCharacter{21AA}{\ensuremath{\!\!\hookrightarrow\!}}
+                \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
+                \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
                 % Many thanks to https://tex.stackexchange.com/questions/22466/how-to-convince-fancyvrb-to-give-overfull-warnings/534486#534486
                 \makeatletter
                 \def\FV@ListProcessLine#1{%

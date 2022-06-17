@@ -197,6 +197,51 @@ EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication := rec(
   io_type := [ [ "iota1", "iota2", "implication" ] , [ "implication" , "iota1_range" ] ],
   return_type := "morphism" ),
 
+HasPushoutComplement := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  return_type := "bool",
+  pre_function := function( cat, l, m )
+    local value;
+    
+    value := IsEqualForObjects( Range( l ), Source( m ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms are composable" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must be composable" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
+),
+
+PushoutComplement := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  io_type := [ [ "l", "m" ], [ "l_source", "D" ] ],
+  return_type := "morphism",
+  pre_function := function( cat, l, m )
+    local value;
+    
+    value := IsEqualForObjects( Range( l ), Source( m ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms are composable" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must be composable" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
+),
+
  ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( TOPOS_METHOD_NAME_RECORD );

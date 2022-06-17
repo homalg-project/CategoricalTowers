@@ -341,3 +341,32 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+
+###################################
+##
+#! @Section Pushout complements
+##
+###################################
+
+#! @Description
+#!  The arguments are two composable morphisms $l: K \rightarrow L$, $m: L \rightarrow G$.
+#!  The output is <C>true</C> if there exists a morphism $d: K \rightarrow D$ and a morphism $g: D \rightarrow G$
+#!  such that the four morphisms $l,d,m,g$ form a pushout diagram, i.e., such that
+#!  $m$=<C>InjectionOfCofactorOfPushoutWithGivenPushout</C>([$l,d$], 1) and
+#!  $g$=<C>InjectionOfCofactorOfPushoutWithGivenPushout</C>([$l,d$], 2).
+#!  Otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments l, m
+DeclareOperation( "HasPushoutComplement",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  The arguments are two composable morphisms $l: K \rightarrow L$, $m: L \rightarrow G$.
+#!  The output is a morphism $d: K \rightarrow D$ such that there exists a morphism $g: D \rightarrow G$
+#!  turing the four morphisms $l,d,m,g$ into a pushout diagram, i.e., such that
+#!  $m$=<C>InjectionOfCofactorOfPushoutWithGivenPushout</C>([$l,d$], 1) and
+#!  $g$=<C>InjectionOfCofactorOfPushoutWithGivenPushout</C>([$l,d$], 2).
+#! @Returns a morphism
+#! @Arguments l, m
+DeclareOperation( "PushoutComplement",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );

@@ -14,6 +14,18 @@ variations are implemented in the CAP-based package `CartesianCategories`.
 
 @Section Heyting Algebra of Subobjects
 
+@Section Pushout complements
+
+@Subsection Example in FinSets
+
+@InsertChunk PushoutComplement_FinSets
+
+@Subsection Example in SkeletalFinSets
+
+@InsertChunk PushoutComplement_SkeletalFinSets
+
+@Section Double-pushout rewriting
+
 @Section Add-methods
 
 @Chapter Category of relations
