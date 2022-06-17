@@ -221,6 +221,25 @@ DeclareOperation( "AddEmbeddingOfUnionSubobjectWithGivenUnion",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `HasPushoutComplement`.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddHasPushoutComplement",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHasPushoutComplement",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHasPushoutComplement",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHasPushoutComplement",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IntersectionSubobject`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)$.
 #! @Returns nothing
@@ -292,6 +311,25 @@ DeclareOperation( "AddPseudoComplementSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPseudoComplementSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PushoutComplement`.
+#! $F: ( l, m ) \mapsto \mathtt{PushoutComplement}(l, m)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPushoutComplement",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPushoutComplement",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPushoutComplement",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPushoutComplement",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
