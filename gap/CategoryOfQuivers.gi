@@ -149,7 +149,7 @@ InstallMethod( Subobject,
   function ( quiver, images_of_vertices, images_of_arrows )
     local arrows, arrows_as_pairs, vertices, source, subquiver;
     
-    arrows := Set( images_of_arrows );
+    arrows := DuplicateFreeList( images_of_arrows );
     
     arrows_as_pairs := Arrows( quiver ){1 + arrows};
     
