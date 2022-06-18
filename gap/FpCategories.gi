@@ -483,6 +483,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
     end );
     
+    SetIsEquippedWithHomomorphismStructure( fpcategory, true );
+    
 end );
 
 ##
