@@ -141,7 +141,7 @@ InstallMethod( CategoryOfRelations,
         [ IsCapCategory and IsCartesianCategory ],
         
   function( C )
-    local RelC, finalize;
+    local RelC;
 
     ##
     RelC := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ) );
