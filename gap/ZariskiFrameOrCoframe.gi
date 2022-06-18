@@ -693,7 +693,7 @@ InstallMethod( Pullback,
     
     B := List( A, a -> Pullback( phi, a ) );
     
-    B := CallFuncList( UnionOfDifferences, B );
+    B := UnionOfDifferences( B );
     
     if HasParametrizedObject( A ) then
         SetParametrizedObject( B, Pullback( RingEpimorphismOntoResidueClassRingOfClosedSuperset( B ), Pullback( phi, ParametrizedObject( A ) ) ) );
