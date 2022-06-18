@@ -52,6 +52,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     C!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",
+            "UnderlyingMeetSemilatticeOfDifferences",
         ],
         category_filter := IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences,
         object_filter := IsConstructibleObjectAsUnionOfSingleDifferences,
@@ -64,7 +65,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
     
     SetUnderlyingCategory( C, P );
-    C!.MeetSemilatticeOfDifferences := MeetSemilatticeOfDifferences( P );
+    SetUnderlyingMeetSemilatticeOfDifferences( C, MeetSemilatticeOfDifferences( P ) );
     
     AddObjectRepresentation( C, IsConstructibleObjectAsUnionOfSingleDifferences );
     
@@ -93,7 +94,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat )
         local T;
         
-        T := TerminalObject( C!.MeetSemilatticeOfDifferences );
+        T := TerminalObject( UnderlyingMeetSemilatticeOfDifferences( C ) );
         
         return UnionOfDifferences( T );
         
@@ -104,7 +105,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat )
         local I;
         
-        I := InitialObject( C!.MeetSemilatticeOfDifferences );
+        I := InitialObject( UnderlyingMeetSemilatticeOfDifferences( C ) );
         
         return UnionOfDifferences( I );
         
@@ -119,9 +120,11 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     end );
     
     BinaryDirectProduct := function( A, B )
-        local L, l, I, U;
-        
+        local D, L, l, I, U;
+
         #% CAP_JIT_RESOLVE_FUNCTION
+        
+        D := UnderlyingMeetSemilatticeOfDifferences( CapCategory( A ) );
         
         L := [ List( A ), List( B ) ];
         
@@ -131,7 +134,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         I := Cartesian( List( L, a -> [ 1 .. Length( a ) ] ) );
         
         ## the distributive law
-        U := List( I, i -> DirectProduct( List( l, j -> L[j][i[j]] ) ) );
+        U := List( I, i -> DirectProduct( D, List( l, j -> L[j][i[j]] ) ) );
         
         return CallFuncList( UnionOfDifferences, U );
         
