@@ -142,10 +142,10 @@ InstallMethod( CategoryOfRelations,
         
   function( C )
     local RelC;
-
+    
     ##
     RelC := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ) );
-
+    
     ## In order to have composition in RelC we need C to have fiber products
     ## In order to replace the span with a single morphism in C we need C to have products
     ## In order to replace this single morphism in C by a monomorphism in C we need C to have images
@@ -155,14 +155,14 @@ InstallMethod( CategoryOfRelations,
     
     ##
     SetFilterObj( RelC, IsCategoryOfRelations );
-
+    
     ##
     RelC!.category_as_first_argument := true;
     
     ##
     AddObjectRepresentation( RelC, IsObjectInCategoryOfRelations );
     AddMorphismRepresentation( RelC, IsMorphismInCategoryOfRelations );
-
+    
     ## "the objects of RelC are the objects of C"
     ## here: object is an object in C
     AddObjectConstructor( RelC,
@@ -204,7 +204,7 @@ InstallMethod( CategoryOfRelations,
     ##
     AddIsWellDefinedForObjects( RelC,
       function( RelC, object )
-
+        
         if not IsIdenticalObj( CapCategory( ObjectDatum( object ) ), UnderlyingCategory( RelC ) ) then
             ## the underlying object does not belong to the underlying category
             return false;
@@ -258,7 +258,7 @@ InstallMethod( CategoryOfRelations,
     AddIsCongruentForMorphisms( RelC,
       function( RelC, relation1, relation2 )
         local emb1, emb2;
-
+        
         ## the embeddings in the underlying category of the direct product
         ## of the underlying objects of the common source and common target
         emb1 := EmbeddingOfRelationInDirectProduct( relation1 );
@@ -301,7 +301,7 @@ InstallMethod( CategoryOfRelations,
                        Range( post_relation ) );
         
     end );
-
+    
     ##    A
     ##   / \
     ##  v   v
@@ -319,13 +319,13 @@ InstallMethod( CategoryOfRelations,
                        object );
         
     end );
-
+    
     if CanCompute( C, "SubobjectClassifier" ) and
        CanCompute( C, "HomomorphismStructureOnObjects" ) and
        CanCompute( C, "DirectProduct" ) and
        HasRangeCategoryOfHomomorphismStructure( C ) then
        ##IsCategoryOfFinSets( RangeCategoryOfHomomorphismStructure( C ) ) then
-
+        
         ##
         AddHomomorphismStructureOnObjects( RelC,
           function( RelC, object1, object2 )
