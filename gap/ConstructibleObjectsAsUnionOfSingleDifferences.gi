@@ -96,7 +96,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         T := TerminalObject( UnderlyingMeetSemilatticeOfDifferences( C ) );
         
-        return UnionOfDifferences( T );
+        return UnionOfDifferences( [ T ] );
         
     end );
     
@@ -107,7 +107,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         I := InitialObject( UnderlyingMeetSemilatticeOfDifferences( C ) );
         
-        return UnionOfDifferences( I );
+        return UnionOfDifferences( [ I ] );
         
     end );
     
@@ -136,7 +136,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         ## the distributive law
         U := List( I, i -> DirectProduct( D, List( l, j -> L[j][i[j]] ) ) );
         
-        return CallFuncList( UnionOfDifferences, U );
+        return UnionOfDifferences( U );
         
     end;
     
@@ -153,7 +153,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, L )
         
         ## an advantage of this specific data structure for constructible objects
-        return CallFuncList( UnionOfDifferences, Concatenation( List( L, List ) ) );
+        return UnionOfDifferences( Concatenation( List( L, List ) ) );
         
     end );
     
@@ -173,12 +173,12 @@ end );
 
 ##
 InstallGlobalFunction( UnionOfDifferences,
-  function( arg )
-    local A, arg1, C;
+  function( L )
+    local A, ars, ars1, C;
     
     A := rec( );
     
-    arg := List( arg,
+    ars := List( L,
                  function( A )
                    local D;
                    if IsConstructibleObjectAsUnionOfSingleDifferences( A ) then
@@ -196,21 +196,21 @@ InstallGlobalFunction( UnionOfDifferences,
                    fi;
                end );
     
-    arg := Flat( arg );
+    ars := Flat( ars );
     
-    arg1 := arg[1];
+    ars1 := ars[1];
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences(
-                 CapCategory( PairInUnderlyingLattice( arg1 )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ars1 )[1] ) );
     
-    arg := Filtered( arg, D -> not IsInitial( D ) );
+    ars := Filtered( ars, D -> not IsInitial( D ) );
     
-    if arg = [ ] then
-        arg := [ arg1 ];
+    if ars = [ ] then
+        ars := [ ars1 ];
     fi;
     
     ObjectifyObjectForCAPWithAttributes( A, C,
-            ListOfPreObjectsInMeetSemilatticeOfDifferences, arg
+            ListOfPreObjectsInMeetSemilatticeOfDifferences, ars
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -224,28 +224,44 @@ InstallMethod( \+,
         "for an object in a meet-semilattice of formal single differences and an object in a thin category",
         [ IsObjectInMeetSemilatticeOfSingleDifferences, IsObjectInThinCategory ],
         
-  UnionOfDifferences );
+ function( D, A )
+    
+    return UnionOfDifferences( [ D, A ] );
+    
+end );
 
 ##
 InstallMethod( \+,
         "for an object in a thin category and an object in a meet-semilattice of formal single differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfSingleDifferences ],
         
-  UnionOfDifferences );
+ function( A, D )
+    
+    return UnionOfDifferences( [ A, D ] );
+    
+end );
 
 ##
 InstallMethod( \+,
         "for a constructible object as a union of formal single differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfSingleDifferences, IsObjectInThinCategory ],
         
-  UnionOfDifferences );
+ function( C, A )
+    
+    return UnionOfDifferences( [ C, A ] );
+    
+end );
 
 ##
 InstallMethod( \+,
         "for an object in a thin category and a constructible object as a union of formal single differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfSingleDifferences ],
         
-  UnionOfDifferences );
+ function( A, C )
+    
+    return UnionOfDifferences( [ A, C ] );
+    
+end );
 
 ##
 InstallMethod( \+,
@@ -293,16 +309,16 @@ end );
 
 ##
 InstallGlobalFunction( UnionOfDifferencesOfNormalizedObjects,
-  function( arg )
+  function( L )
     local A, C;
     
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( arg[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( L[1] )[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, C,
-            ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg
+            ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, L
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -422,7 +438,7 @@ InstallMethod( NormalizedObject,
         return InitialObject( CapCategory( A ) );
     fi;
     
-    return CallFuncList( UnionOfDifferences, L );
+    return UnionOfDifferences( L );
     
 end );
 
@@ -440,7 +456,7 @@ InstallMethod( StandardizedObject,
         return InitialObject( CapCategory( A ) );
     fi;
     
-    return CallFuncList( UnionOfDifferences, L );
+    return UnionOfDifferences( L );
     
 end );
 
@@ -479,7 +495,7 @@ InstallMethod( \-,
     
     A := ListOfObjectsInMeetSemilatticeOfDifferences( A );
     
-    return CallFuncList( UnionOfDifferences, List( A, a -> a - B ) );
+    return UnionOfDifferences( List( A, a -> a - B ) );
     
 end );
 
@@ -490,7 +506,7 @@ InstallMethod( AdditiveInverseMutable,
         
   function( A )
     
-    return -UnionOfDifferences( A );
+    return -UnionOfDifferences( [ A ] );
     
 end );
 
