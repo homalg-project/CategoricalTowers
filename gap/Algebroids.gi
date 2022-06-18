@@ -996,6 +996,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
     end );
     
+    SetIsEquippedWithHomomorphismStructure( algebroid, true );
+    
 end );
 
 ##
