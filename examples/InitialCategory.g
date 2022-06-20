@@ -8,11 +8,11 @@ I := InitialCategory( );
 IsInitialCategory( I );
 #! true
 InfoOfInstalledOperationsOfCategory( I );
-#! 0 primitive operations were used to derive 5 operations for this category
+#! 5 primitive operations were used to derive 11 operations for this category
 OI := Opposite( I );
 #! Opposite of InitialCategory( )
 IsInitialCategory( OI );
 #! true
 InfoOfInstalledOperationsOfCategory( OI );
-#! 9 primitive operations were used to derive 9 operations for this category
+#! 15 primitive operations were used to derive 15 operations for this category
 #! @EndExample
