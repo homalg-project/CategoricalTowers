@@ -49,7 +49,7 @@ if false then
 DeclareGlobalVariable( "QuiverOfCategoryOfQuivers" );
 
 #! The category of quivers as a category of presheaves with values in <C>SkeletalFinSets</C>.
-DeclareGlobalVariable( "Quivers" );
+DeclareGlobalVariable( "FinQuivers" );
 fi;
 
 ####################################
