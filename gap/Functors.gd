@@ -11,8 +11,9 @@
 #
 ####################################
 
-DeclareAttribute( "ConvertToCellInFunctorCategory", IsQuiverRepresentation );
-DeclareAttribute( "ConvertToCellInFunctorCategory", IsQuiverRepresentationHomomorphism );
+DeclareOperation( "ConvertToCellInFunctorCategory", [ IsQuiverRepresentation, IsFunctorCategory ] );
+DeclareOperation( "ConvertToCellInFunctorCategory", [ IsObjectInFunctorCategory, IsQuiverRepresentationHomomorphism, IsObjectInFunctorCategory ] );
+
 DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsObjectInFunctorCategory );
 DeclareAttribute( "ConvertToCellInCategoryOfQuiverRepresentations", IsMorphismInFunctorCategory );
 
