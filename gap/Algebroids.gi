@@ -2239,7 +2239,7 @@ InstallMethod( ViewObj,
 end );
 
 ##
-InstallMethod( LaTeXStringOp,
+InstallMethod( LaTeXOutput,
           [ IsObjectInAlgebroid ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
@@ -2247,13 +2247,6 @@ InstallMethod( LaTeXStringOp,
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsObjectInAlgebroid ],
-          
-  LaTeXStringOp
-);
-
-##
-InstallMethod( LaTeXStringOp,
           [ IsMorphismInAlgebroid ],
           
   function( m )
@@ -2276,10 +2269,3 @@ InstallMethod( LaTeXStringOp,
     fi;
     
 end );
-
-##
-InstallMethod( LaTeXOutput,
-          [ IsMorphismInAlgebroid ],
-          
-  LaTeXStringOp
-);
