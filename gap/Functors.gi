@@ -8,49 +8,37 @@ BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ##
 InstallMethod( ConvertToCellInFunctorCategory,
-    [ IsQuiverRepresentation ],
+    [ IsQuiverRepresentation, IsFunctorCategory ],
     
-  function ( rep )
-    local reps, A, A_oid, k, dims, matrices, F;
+  function ( rep, Hom )
+    local A, k_mat, k, dims, maps;
     
-    reps := CapCategory( rep );
+    A := Source( Hom );
     
-    A := AlgebraOfCategory( reps );
-    
-    A_oid := Algebroid( A );
-    
-    k := CommutativeRingOfLinearCategory( A_oid );
+    k := UnderlyingRing( Range( Hom ) );
     
     dims := DimensionVector( rep );
     
-    matrices := List( MatricesOfRepresentation( rep ),
+    maps := List( MatricesOfRepresentation( rep ),
       mat -> HomalgMatrix(
                 RowsOfMatrix( mat ),
                   DimensionsMat( mat )[ 1 ],
                     DimensionsMat( mat )[ 2 ], k ) );
     
-    F := AsObjectInFunctorCategory( A_oid, dims, matrices );
-    
-    SetConvertToCellInCategoryOfQuiverRepresentations( F, rep );
-    
-    return F;
+    return AsObjectInFunctorCategory( A, dims, maps );
     
 end );
 
 ##
 InstallMethod( ConvertToCellInFunctorCategory,
-          [ IsQuiverRepresentationHomomorphism ],
-          
-  function ( phi )
-    local reps, A, A_oid, k, e, F, G, eta;
+          [ IsObjectInFunctorCategory, IsQuiverRepresentationHomomorphism, IsObjectInFunctorCategory ],
+
+  function ( F, phi, G )
+    local A, k, e;
     
-    reps := CapCategory( phi );
+    A := Source( CapCategory( F ) );
     
-    A := AlgebraOfCategory( reps );
-    
-    A_oid := Algebroid( A );
-    
-    k := CommutativeRingOfLinearCategory( A_oid );
+    k := UnderlyingRing( Range( CapCategory( F ) ) );
     
     e := List( MatricesOfRepresentationHomomorphism( phi ),
           mat -> HomalgMatrix(
@@ -58,14 +46,7 @@ InstallMethod( ConvertToCellInFunctorCategory,
                       DimensionsMat( mat )[ 1 ],
                         DimensionsMat( mat )[ 2 ], k ) );
     
-    F := ConvertToCellInFunctorCategory( Source( phi ) );
-    G := ConvertToCellInFunctorCategory( Range( phi ) );
-    
-    eta := AsMorphismInFunctorCategory( F, e, G );
-    
-    SetConvertToCellInCategoryOfQuiverRepresentations( eta, phi );
-    
-    return eta;
+    return AsMorphismInFunctorCategory( F, e, G );
     
 end );
 
@@ -86,13 +67,9 @@ InstallMethod( IsomorphismFromCategoryOfQuiverRepresentations,
     
     I := CapFunctor( name, reps, functors );
     
-    AddObjectFunction( I,
-      rep -> ConvertToCellInFunctorCategory( rep )
-    );
+    AddObjectFunction( I, F -> ConvertToCellInFunctorCategory( F, functors ) );
     
-    AddMorphismFunction( I,
-      { S, phi, R } -> ConvertToCellInFunctorCategory( phi )
-    );
+    AddMorphismFunction( I, { F, phi, G } -> ConvertToCellInFunctorCategory( F, phi, G ) );
     
     return I;
     
@@ -103,7 +80,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
           [ IsObjectInFunctorCategory ],
           
   function ( F )
-    local B, A, k, dims, matrices, rep;
+    local B, A, k, dims, matrices;
     
     B := Source( F );
     
@@ -122,11 +99,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
                                       )
                     );
     
-    rep := QuiverRepresentation( A, dims, matrices );
-    
-    SetConvertToCellInFunctorCategory( rep, F );
-    
-    return rep;
+    return QuiverRepresentation( A, dims, matrices );
     
 end );
 
@@ -135,7 +108,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
           [ IsMorphismInFunctorCategory ],
           
   function ( eta )
-    local B, A, k, matrices, S, R, phi;
+    local B, A, k, matrices, S, R;
     
     B := Source( CapCategory( eta ) );
     
@@ -156,11 +129,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
     
     R := ConvertToCellInCategoryOfQuiverRepresentations( Range( eta ) );
     
-    phi := QuiverRepresentationHomomorphism( S, R, matrices );
-    
-    SetConvertToCellInFunctorCategory( phi, eta );
-    
-    return phi;
+    return QuiverRepresentationHomomorphism( S, R, matrices );
     
 end );
 

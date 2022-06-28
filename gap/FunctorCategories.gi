@@ -2102,54 +2102,73 @@ InstallMethodWithCache( FunctorCategory,
        IsAdmissibleQuiverAlgebra( kq ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
-      
       SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
       
       AddIsProjective( Hom,
-        { Hom, F } -> IsProjectiveRepresentation( Hom,
+        { Hom, F } -> IsProjectiveRepresentation(
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                       )
       );
       
       AddIsInjective( Hom,
-        { Hom, F } -> IsInjectiveRepresentation( Hom,
+        { Hom, F } -> IsInjectiveRepresentation(
                           ConvertToCellInCategoryOfQuiverRepresentations( F )
                       )
       );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
-        { Hom, F } -> ConvertToCellInFunctorCategory(
-                        EpimorphismFromSomeProjectiveObject( Hom,
-                          ConvertToCellInCategoryOfQuiverRepresentations( F )
-                        )
-                      )
-      );
-      
+        function( Hom, F )
+          local reps, R, epi, PR;
+          
+          reps := CategoryOfQuiverRepresentations( kq );
+          
+          R := ConvertToCellInCategoryOfQuiverRepresentations( F );
+          
+          epi := EpimorphismFromSomeProjectiveObject( reps, R );
+          
+          PR := ConvertToCellInFunctorCategory( Source( epi ), Hom );
+          
+          return ConvertToCellInFunctorCategory( PR, epi, F );
+          
+      end );
+
       AddMonomorphismIntoSomeInjectiveObject( Hom,
-        { Hom, F } -> ConvertToCellInFunctorCategory(
-                        MonomorphismIntoSomeInjectiveObject( Hom,
-                          ConvertToCellInCategoryOfQuiverRepresentations( F )
-                        )
-                      )
-      );
+        function( Hom, F )
+          local reps, R, mo, IR;
+          
+          reps := CategoryOfQuiverRepresentations( kq );
+          
+          R := ConvertToCellInCategoryOfQuiverRepresentations( F );
+          
+          mo := MonomorphismIntoSomeInjectiveObject( reps, R );
+          
+          IR := ConvertToCellInFunctorCategory( Range( mo ), Hom );
+          
+          return ConvertToCellInFunctorCategory( F, mo, IR );
+          
+      end );
       
       AddProjectiveLift( Hom,
         { Hom, alpha, epi } ->
             ConvertToCellInFunctorCategory(
-            ProjectiveLift( Hom,
-              ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
-              ConvertToCellInCategoryOfQuiverRepresentations( epi )
-            )
+              Source( alpha ),
+              ProjectiveLift(
+                CategoryOfQuiverRepresentations( kq ),
+                ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
+                ConvertToCellInCategoryOfQuiverRepresentations( epi ) ),
+              Source( epi )
           )
       );
       
       AddInjectiveColift( Hom,
         { Hom, mono, alpha } ->
             ConvertToCellInFunctorCategory(
-            InjectiveColift( Hom,
-              ConvertToCellInCategoryOfQuiverRepresentations( mono ),
-              ConvertToCellInCategoryOfQuiverRepresentations( alpha )
-            )
+              Range( mono ),
+              InjectiveColift(
+                CategoryOfQuiverRepresentations( kq ),
+                ConvertToCellInCategoryOfQuiverRepresentations( mono ),
+                ConvertToCellInCategoryOfQuiverRepresentations( alpha ) ),
+              Range( alpha )
           )
       );
     
@@ -2506,7 +2525,7 @@ InstallMethod( IndecProjectiveObjects,
       
     fi;
     
-    return List( IndecProjRepresentations( A ), ConvertToCellInFunctorCategory );
+    return List( IndecProjRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
     
 end );
 
@@ -2525,7 +2544,7 @@ InstallMethod( IndecInjectiveObjects,
       
     fi;
     
-    return List( IndecInjRepresentations( A ), ConvertToCellInFunctorCategory );
+    return List( IndecInjRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
     
 end );
 
@@ -2544,7 +2563,7 @@ InstallMethod( SimpleObjects,
       
     fi;
     
-    return List( SimpleRepresentations( A ), ConvertToCellInFunctorCategory );
+    return List( SimpleRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
     
 end );
 
