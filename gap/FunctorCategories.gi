@@ -2569,7 +2569,7 @@ end );
 
 ####################################
 #
-# View, Print, and Display methods:
+# View, Print, Display and LaTeX methods:
 #
 ####################################
 
@@ -2710,5 +2710,97 @@ InstallMethod( Display,
     od;
     
     Print( "A morphism in ", Name( CapCategory( eta ) ), " given by the above data\n" );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+          [ IsObjectInFunctorCategory ],
+          
+  function( F )
+    local objs, v_objs, mors, v_mors, s, i;
+    
+    objs := SetOfObjects( F );
+    v_objs := ValuesOnAllObjects( F );
+    
+    mors := SetOfGeneratingMorphisms( F );
+    v_mors := ValuesOnAllGeneratingMorphisms( F );
+    
+    s := "\\begin{array}{ccc}\n ";
+    
+    for i in [ 1 .. Length( objs ) ] do
+      
+      s := Concatenation(
+              s,
+              LaTeXOutput( objs[ i ] ),
+              " & \\mapsto & ",
+              LaTeXOutput( v_objs[ i ] ),
+              " \\\\ "
+            );
+      
+    od;
+    
+    s := Concatenation( s, "\\hline & & \\\\" );
+    
+    for i in [ 1 .. Length( mors ) ] do
+      
+      s := Concatenation(
+              s,
+              LaTeXOutput( mors[ i ] : OnlyDatum := true ),
+              " & \\mapsto & ",
+              LaTeXOutput( v_mors[ i ] : OnlyDatum := false ),
+              " \\\\ & & \\\\"
+            );
+    od;
+    
+    s := Concatenation( s, "\\end{array}" );
+    
+    return s;
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+          [ IsMorphismInFunctorCategory ],
+          
+  function( eta )
+    local only_datum, objs, v_objs, i, datum;
+    
+    only_datum := ValueOption( "OnlyDatum" );
+    
+    objs := SetOfObjects( eta );
+    
+    v_objs := ValuesOnAllObjects( eta );
+    
+    datum := "\\begin{array}{ccc}\n";
+    
+    for i in [ 1 .. Length( objs ) ] do
+      
+      datum := Concatenation(
+                  datum,
+                  LaTeXOutput( objs[ i ] ),
+                  " & \\mapsto & ",
+                  LaTeXOutput( v_objs[ i ] : OnlyDatum := false ),
+                  " \\\\ & & \\\\" );
+    
+    od;
+    
+    datum := Concatenation( datum, "\\end{array}" );
+    
+    if only_datum = true then
+      
+      return datum;
+      
+    else
+      
+      return Concatenation(
+                LaTeXOutput( Source( eta ) ),
+                "\\xrightarrow{",
+                datum,
+                "}",
+                LaTeXOutput( Range( eta ) )
+              );
+    
+    fi;
     
 end );
