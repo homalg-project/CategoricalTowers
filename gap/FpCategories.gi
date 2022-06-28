@@ -2022,7 +2022,7 @@ InstallMethod( ViewObj,
 end );
 
 ##
-InstallMethod( LaTeXStringOp,
+InstallMethod( LaTeXOutput,
           [ IsObjectInFpCategory ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
@@ -2030,13 +2030,6 @@ InstallMethod( LaTeXStringOp,
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsObjectInFpCategory ],
-          
-  LaTeXStringOp
-);
-
-##
-InstallMethod( LaTeXStringOp,
           [ IsMorphismInFpCategory ],
           
   function( m )
@@ -2059,10 +2052,3 @@ InstallMethod( LaTeXStringOp,
     fi;
     
 end );
-
-##
-InstallMethod( LaTeXOutput,
-          [ IsMorphismInFpCategory ],
-          
-  LaTeXStringOp
-);

@@ -347,18 +347,6 @@ DeclareOperation( "ElementaryTensor",
 DeclareOperation( "ElementaryTensor",
         [ IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory ] );
 
-#! @Description
-#! The ouput is the LaTeX string of the object <A>o</A>.
-#! @Arguments o
-#! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsObjectInFpCategory ] );
-
-#! @Description
-#! The ouput is the LaTeX string of the morphism <A>m</A>.
-#! @Arguments m
-#! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsMorphismInFpCategory ] );
-
 ####################################
 #
 #! @Section Constructors

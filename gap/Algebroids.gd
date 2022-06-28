@@ -342,18 +342,6 @@ DeclareOperation( "ElementaryTensor",
 DeclareOperation( "ElementaryTensor",
         [ IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ] );
 
-#! @Description
-#! The ouput is the LaTeX string of the object <A>o</A>.
-#! @Arguments o
-#! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsObjectInAlgebroid ] );
-
-#! @Description
-#! The ouput is the LaTeX string of the morphism <A>m</A>.
-#! @Arguments m
-#! Returns a string
-DeclareOperation( "LaTeXStringOp", [ IsMorphismInAlgebroid ] );
-
 ####################################
 #
 #! @Section Constructors
