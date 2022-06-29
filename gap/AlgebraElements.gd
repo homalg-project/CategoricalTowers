@@ -144,5 +144,5 @@ DeclareOperation( "[]",
         [ IsElementInInternalAlgebraOrModule, IsInt ] );
 
 #
-DeclareOperation( "LaTeXStringOp",
+DeclareOperation( "LaTeXOutput",
         [ IsElementInInternalAlgebraOrModule ] );

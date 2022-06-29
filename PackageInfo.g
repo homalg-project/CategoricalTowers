@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
 Version := Maximum( [
-  "2022.06-01", ## Mohamed's version
+  "2022.06-02", ## Mohamed's version
   ## this line prevents merge conflicts
   "2020.09-04", ## Fabian's version
 ] ),
@@ -92,7 +92,7 @@ Dependencies := rec(
                            [ "GradedCategories", ">= 2020.08.24" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
                            [ "RingsForHomalg", ">= 2020.09.02" ],
-                           [ "MatricesForHomalg", ">= 2020.09.03" ],
+                           [ "MatricesForHomalg", ">= 2022.06-01" ],
                            [ "ToolsForHomalg", ">= 2020.09.01" ],
                          ],
   SuggestedOtherPackages := [ ],
