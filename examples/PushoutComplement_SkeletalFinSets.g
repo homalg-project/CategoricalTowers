@@ -11,7 +11,7 @@
 #! Define two composable monos $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$ in `SkeletalFinSets`:
 
 #! @Example
-LoadPackage( "FinSetsForCAP" );
+LoadPackage( "FinSetsForCAP", ">= 2022.06-02" );
 #! true
 K := FinSet( 3 );
 #! |3|
@@ -39,7 +39,7 @@ HasPushoutComplement( l, m );
 #! true
 n := PushoutComplement( l, m );;
 g := n[2];
-#! |5| ↪ |8|
+#! |5| → |8|
 n := n[1];
 #! |3| → |5|
 Display( g );
