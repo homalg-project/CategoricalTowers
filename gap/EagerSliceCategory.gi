@@ -188,11 +188,6 @@ InstallMethod( SliceCategory,
            function( cat, L )
             local C, L2, biased_weak_fiber_product;
             
-            ## this should be handled somewhere else globally
-            if Length( L ) = 1 then
-                return L[1];
-            fi;
-            
             C := AmbientCategory( cat );
             
             L2 := List( L, UnderlyingMorphism );
@@ -213,11 +208,6 @@ InstallMethod( SliceCategory,
         ##
         AddDirectProduct( S,
           function( cat, L )
-            
-            ## this should be handled somewhere else globally
-            if Length( L ) = 1 then
-                return L[1];
-            fi;
             
             return ObjectConstructor( cat,
                            MorphismFromFiberProductToSink( AmbientCategory( cat ),
@@ -265,11 +255,6 @@ InstallMethod( SliceCategory,
         AddCoproduct( S,
           function( cat, L )
             local L2;
-            
-            ## this should be handled somewhere else globally
-            if Length( L ) = 1 then
-                return L[1];
-            fi;
             
             L2 := List( L, UnderlyingMorphism );
             
