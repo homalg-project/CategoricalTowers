@@ -67,7 +67,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
     
     SetUnderlyingCategory( C, P );
-    C!.MeetSemilatticeOfMultipleDifferences := MeetSemilatticeOfMultipleDifferences( P );
+    SetUnderlyingMeetSemilatticeOfMultipleDifferences( C, MeetSemilatticeOfMultipleDifferences( P ) );
     
     AddObjectRepresentation( C, IsConstructibleObjectAsUnionOfMultipleDifferences );
     
@@ -96,7 +96,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
       function( cat )
         local T;
         
-        T := TerminalObject( C!.MeetSemilatticeOfMultipleDifferences );
+        T := TerminalObject( UnderlyingMeetSemilatticeOfMultipleDifferences( C ) );
         
         return UnionOfMultipleDifferences( [ T ] );
         
@@ -107,7 +107,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
       function( cat )
         local I;
         
-        I := InitialObject( C!.MeetSemilatticeOfMultipleDifferences );
+        I := InitialObject( UnderlyingMeetSemilatticeOfMultipleDifferences( C ) );
         
         return UnionOfMultipleDifferences( [ I ] );
         
@@ -122,7 +122,11 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     end );
     
     BinaryDirectProduct := function( A, B )
-        local L, l, I, U;
+        local D, L, l, I, U;
+        
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        D := UnderlyingMeetSemilatticeOfMultipleDifferences( CapCategory( A ) );
         
         L := [ List( A ), List( B ) ];
         
@@ -132,7 +136,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         I := Cartesian( List( L, a -> [ 1 .. Length( a ) ] ) );
         
         ## the distributive law
-        U := List( I, i -> DirectProduct( List( l, j -> L[j][i[j]] ) ) );
+        U := List( I, i -> DirectProduct( D, List( l, j -> L[j][i[j]] ) ) );
         
         return UnionOfMultipleDifferences( U );
         

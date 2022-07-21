@@ -52,9 +52,6 @@ DeclareProperty( "IsLocallyClosed",
 DeclareAttribute( "UnderlyingCategory",
         IsBooleanAlgebraOfConstructibleObjects );
 
-DeclareAttribute( "UnderlyingMeetSemilatticeOfDifferences",
-        IsBooleanAlgebraOfConstructibleObjects );
-
 #! @Arguments A
 DeclareAttribute( "LocallyClosedPart",
         IsConstructibleObject );
