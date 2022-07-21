@@ -96,9 +96,9 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
       function( cat )
         local T;
         
-        T := TerminalObject( UnderlyingMeetSemilatticeOfMultipleDifferences( C ) );
+        T := TerminalObject( UnderlyingMeetSemilatticeOfMultipleDifferences( cat ) );
         
-        return UnionOfMultipleDifferences( [ T ] );
+        return UnionOfListOfMultipleDifferences( cat, [ T ] );
         
     end );
     
@@ -107,9 +107,9 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
       function( cat )
         local I;
         
-        I := InitialObject( UnderlyingMeetSemilatticeOfMultipleDifferences( C ) );
+        I := InitialObject( UnderlyingMeetSemilatticeOfMultipleDifferences( cat ) );
         
-        return UnionOfMultipleDifferences( [ I ] );
+        return UnionOfListOfMultipleDifferences( cat, [ I ] );
         
     end );
     
@@ -121,7 +121,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
     end );
     
-    BinaryDirectProduct := function( A, B )
+    BinaryDirectProduct := function( cat, A, B )
         local D, L, l, I, U;
         
         #% CAP_JIT_RESOLVE_FUNCTION
@@ -138,7 +138,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         ## the distributive law
         U := List( I, i -> DirectProduct( D, List( l, j -> L[j][i[j]] ) ) );
         
-        return UnionOfMultipleDifferences( U );
+        return UnionOfListOfMultipleDifferences( cat, U );
         
     end;
     
@@ -146,7 +146,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddDirectProduct( C,
       function( cat, L )
         
-        return Iterated( L, BinaryDirectProduct );
+        return Iterated( L, { A, B } -> BinaryDirectProduct( cat, A, B ) );
         
     end );
     
@@ -157,7 +157,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         L := List( L, List );
         
         ## an advantage of this specific data structure for constructible objects
-        return UnionOfMultipleDifferences( Concatenation( L ) );
+        return UnionOfListOfMultipleDifferences( cat, Concatenation( L ) );
         
     end );
     
@@ -174,11 +174,22 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( UnionOfListOfMultipleDifferences,
+        "for a Boolean algebra of constructible objects and a list",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences, IsList ],
+        
+  function( C, L )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                   C,
+                   ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, L );
+    
+end );
+
+##
 InstallGlobalFunction( UnionOfMultipleDifferences,
   function( L )
-    local A, ars, ars1, C;
-    
-    A := rec( );
+    local ars, ars1, C, A;
     
     ars := List( L,
                  function( A )
@@ -215,9 +226,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
         ars := [ ars1 ];
     fi;
     
-    ObjectifyObjectForCAPWithAttributes( A, C,
-            ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, ars
-            );
+    A := UnionOfListOfMultipleDifferences( C, ars );
     
     Assert( 4, IsWellDefined( A ) );
     
