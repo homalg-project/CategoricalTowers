@@ -36,6 +36,9 @@ DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences
 DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences",
         IsConstructibleObjectAsUnionOfMultipleDifferences );
 
+DeclareAttribute( "UnderlyingMeetSemilatticeOfMultipleDifferences",
+        IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences );
+
 #! @Section Operations
 
 #! @Description
