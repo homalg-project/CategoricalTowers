@@ -43,7 +43,7 @@ DeclareAttribute( "UnderlyingMeetSemilatticeOfDifferences",
 
 CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifferences ], function ( input_types )
     
-    Assert( 0, IsBooleanAlgebraOfConstructibleObjects( input_types[1].category ) );
+    Assert( 0, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences( input_types[1].category ) );
     
     return rec( filter := IsList,
                 element_type :=
