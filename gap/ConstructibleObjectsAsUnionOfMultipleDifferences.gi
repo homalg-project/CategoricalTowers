@@ -98,7 +98,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
         T := TerminalObject( C!.MeetSemilatticeOfMultipleDifferences );
         
-        return UnionOfMultipleDifferences( T );
+        return UnionOfMultipleDifferences( [ T ] );
         
     end );
     
@@ -109,7 +109,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
         I := InitialObject( C!.MeetSemilatticeOfMultipleDifferences );
         
-        return UnionOfMultipleDifferences( I );
+        return UnionOfMultipleDifferences( [ I ] );
         
     end );
     
@@ -134,7 +134,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         ## the distributive law
         U := List( I, i -> DirectProduct( List( l, j -> L[j][i[j]] ) ) );
         
-        return CallFuncList( UnionOfMultipleDifferences, U );
+        return UnionOfMultipleDifferences( U );
         
     end;
     
@@ -153,7 +153,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         L := List( L, List );
         
         ## an advantage of this specific data structure for constructible objects
-        return CallFuncList( UnionOfMultipleDifferences, Concatenation( L ) );
+        return UnionOfMultipleDifferences( Concatenation( L ) );
         
     end );
     
@@ -171,12 +171,12 @@ end );
 
 ##
 InstallGlobalFunction( UnionOfMultipleDifferences,
-  function( arg )
-    local A, arg1, C;
+  function( L )
+    local A, ars, ars1, C;
     
     A := rec( );
     
-    arg := List( arg,
+    ars := List( L,
                  function( A )
                    local D;
                    if IsConstructibleObjectAsUnionOfMultipleDifferences( A ) then
@@ -198,21 +198,21 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
                    fi;
                end );
     
-    arg := Flat( arg );
+    ars := Flat( ars );
     
-    arg1 := arg[1];
+    ars1 := ars[1];
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( List( arg1 )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( List( ars1 )[1] )[1] ) );
     
-    arg := Filtered( arg, D -> not IsInitial( D ) );
+    ars := Filtered( ars, D -> not IsInitial( D ) );
     
-    if arg = [ ] then
-        arg := [ arg1 ];
+    if ars = [ ] then
+        ars := [ ars1 ];
     fi;
     
     ObjectifyObjectForCAPWithAttributes( A, C,
-            ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, arg
+            ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, ars
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -226,28 +226,44 @@ InstallMethod( \+,
         "for an object in a meet-semilattice of formal multiple differences and an object in a thin category",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInThinCategory ],
         
-  UnionOfMultipleDifferences );
+  function( D, A )
+    
+    return UnionOfMultipleDifferences( [ D, A ] );
+    
+end );
 
 ##
 InstallMethod( \+,
         "for an object in a thin category and an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInThinCategory, IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
-  UnionOfMultipleDifferences );
+  function( A, D )
+    
+    return UnionOfMultipleDifferences( [ A, D ] );
+    
+end );
 
 ##
 InstallMethod( \+,
         "for a constructible object as a union of formal multiple differences and an object in a thin category",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsObjectInThinCategory ],
         
-  UnionOfMultipleDifferences );
+  function( C, A )
+    
+    return UnionOfMultipleDifferences( [ C, A ] );
+    
+end );
 
 ##
 InstallMethod( \+,
         "for an object in a thin category and a constructible object as a union of formal multiple differences",
         [ IsObjectInThinCategory, IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
-  UnionOfMultipleDifferences );
+  function( A, C )
+    
+    return UnionOfMultipleDifferences( [ A, C ] );
+    
+end );
 
 ##
 InstallMethod( \+,
@@ -273,16 +289,16 @@ end );
 
 ##
 InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
-  function( arg )
+  function( L )
     local A, C;
     
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( arg[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( L[1] )[1] )[1] ) );
     
     ObjectifyObjectForCAPWithAttributes( A, C,
-            ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, arg
+            ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, L
             );
     
     Assert( 4, IsWellDefined( A ) );
@@ -355,7 +371,7 @@ InstallMethod( NormalizedObject,
         return InitialObject( CapCategory( A ) );
     fi;
     
-    return CallFuncList( UnionOfMultipleDifferences, L );
+    return UnionOfMultipleDifferences( L );
     
 end );
 
@@ -373,7 +389,7 @@ InstallMethod( StandardizedObject,
         return InitialObject( CapCategory( A ) );
     fi;
     
-    return CallFuncList( UnionOfMultipleDifferences, L );
+    return UnionOfMultipleDifferences( L );
     
 end );
 
@@ -389,7 +405,7 @@ InstallMethod( \-,
     
     L := Concatenation( [ A - B[1].I ], List( List( B, D -> D.J ), Bi -> A * Bi ) );
     
-    return CallFuncList( UnionOfMultipleDifferences, L );
+    return UnionOfMultipleDifferences( L );
     
 end );
 
@@ -411,7 +427,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    return CallFuncList( UnionOfMultipleDifferences, List( A, a -> a - B ) );
+    return UnionOfMultipleDifferences( List( A, a -> a - B ) );
     
 end );
 
@@ -422,7 +438,7 @@ InstallMethod( AdditiveInverseMutable,
         
   function( A )
     
-    return -UnionOfMultipleDifferences( A );
+    return -UnionOfMultipleDifferences( [ A ] );
     
 end );
 
@@ -451,7 +467,7 @@ InstallMethod( ClosureAsConstructibleObject,
         
   function( A )
     
-    return UnionOfMultipleDifferences( Closure( A ) - 0 );
+    return UnionOfMultipleDifferences( [ Closure( A ) - 0 ] );
     
 end );
 
@@ -462,7 +478,7 @@ InstallMethod( \*,
 
   function( A, B )
     
-    return A * UnionOfMultipleDifferences( B );
+    return A * UnionOfMultipleDifferences( [ B ] );
     
 end );
 
@@ -473,7 +489,7 @@ InstallMethod( \*,
 
   function( A, B )
     
-    return UnionOfMultipleDifferences( A ) * B;
+    return UnionOfMultipleDifferences( [ A ] ) * B;
     
 end );
 
@@ -488,7 +504,7 @@ InstallMethod( \=,
         TryNextMethod( );
     fi;
     
-    return UnionOfMultipleDifferences( A ) = B;
+    return UnionOfMultipleDifferences( [ A ] ) = B;
     
 end );
 
@@ -503,6 +519,6 @@ InstallMethod( \=,
         TryNextMethod( );
     fi;
     
-    return A = UnionOfMultipleDifferences( B );
+    return A = UnionOfMultipleDifferences( [ B ] );
     
 end );
