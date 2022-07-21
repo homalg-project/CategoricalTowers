@@ -449,7 +449,7 @@ InstallMethod( ConstructibleProjection,
     
     initial := InitialObject( CapCategory( B ) );
     
-    initial := UnionOfMultipleDifferences( initial - initial );
+    initial := UnionOfMultipleDifferences( [ initial - initial ] );
     
     C := DatastructureForConstructibleObject( );
     
