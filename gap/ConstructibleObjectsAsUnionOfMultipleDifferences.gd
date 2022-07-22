@@ -75,6 +75,8 @@ DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferen
 #! @Group UnionOfMultipleDifferences_group
 DeclareGlobalFunction( "UnionOfMultipleDifferences" );
 
+DeclareOperation( "UnionOfListOfMultipleDifferences", [ IsList ] );
+
 #! @Description
 #!  <C>AsMultipleDifferenceOfNormalizedMorphisms</C> assumes that the input is normalized.
 #! @Arguments D1, D2, ...
