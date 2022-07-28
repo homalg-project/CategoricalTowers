@@ -1,0 +1,24 @@
+@Chapter Finite coproduct cocompletion
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+
+@Chapter SkeletalFinSets
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+@Section Skeletal Examples
+
+@Subsection Skeletal WellDefined
+@InsertChunk SkeletalWellDefined
+
+@Subsection Skeletal PreCompose
+@InsertChunk SkeletalPreCompose
+
+@Subsection Skeletal Initial and Terminal Objects
+@InsertChunk SkeletalInitialTerminal
+
+@Subsection Skeletal Coproduct
+@InsertChunk SkeletalCoproduct
