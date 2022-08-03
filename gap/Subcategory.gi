@@ -107,9 +107,13 @@ InstallMethod( Subcategory,
          create_func_object := "default",
          create_func_morphism := "default",
          create_func_morphism_or_fail := "default",
+         object_constructor := { cat, obj } -> AsSubcategoryCell( cat, obj ),
+         object_datum := { cat, obj } -> UnderlyingCell( obj ),
+         morphism_constructor := { cat, source, mor, range } -> AsSubcategoryCell( source, mor, range ),
+         morphism_datum := { cat, mor } -> UnderlyingCell( mor ),
          underlying_category_getter_string := "AmbientCategory",
-         underlying_object_getter_string := "( { cat, object } -> UnderlyingCell( object ) )",
-         underlying_morphism_getter_string := "( { cat, morphism } -> UnderlyingCell( morphism ) )",
+         underlying_object_getter_string := "ObjectDatum",
+         underlying_morphism_getter_string := "MorphismDatum",
     );
     
     ## list_of_operations_to_install
@@ -182,20 +186,6 @@ InstallMethod( Subcategory,
     ];
     
     SetAmbientCategory( D, C );
-    
-    AddObjectConstructor( D,
-      function( cat, obj )
-        
-        return AsSubcategoryCell( cat, obj );
-        
-    end );
-    
-    AddMorphismConstructor( D,
-      function( cat, source, mor, range )
-        
-        return AsSubcategoryCell( source, mor, range );
-        
-    end );
     
     Finalize( D );
     

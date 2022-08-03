@@ -137,6 +137,9 @@ InstallMethod( LazySliceCategory,
     
     S := CAP_INTERNAL_SLICE_CATEGORY( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter );
     
+    # MorphismConstructor and MorphismDatum are set in CAP_INTERNAL_SLICE_CATEGORY
+    # ObjectConstructor and ObjectDatum have to take the lazy/eager structure into account
+    
     ##
     AddObjectConstructor( S, function( cat, underlying_morphism_list )
         
@@ -164,38 +167,6 @@ InstallMethod( LazySliceCategory,
     AddObjectDatum( S, function( cat, object )
         
         return UnderlyingMorphismList( object );
-        
-    end );
-    
-    ##
-    AddMorphismConstructor( S, function( cat, source, underlying_morphism, range )
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
-        
-        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
-            
-            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
-            
-        fi;
-        
-        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
-            
-            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
-            
-        fi;
-        
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                source,
-                range,
-                UnderlyingCell, underlying_morphism );
-        
-    end );
-    
-    ##
-    AddMorphismDatum( S, function( cat, morphism )
-        
-        return UnderlyingCell( morphism );
         
     end );
     
