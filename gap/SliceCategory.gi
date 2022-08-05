@@ -132,7 +132,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
   function( B, over_tensor_unit, name, category_filter, category_object_filter, category_morphism_filter )
-    local C, list_of_operations_to_install, skip, func, pos, properties, S;
+    local C, list_of_operations_to_install, skip, func, pos, properties, morphism_constructor, morphism_datum, S;
     
     C := CapCategory( B );
     
@@ -159,19 +159,52 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
+    morphism_constructor := function( cat, source, underlying_morphism, range )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
+            
+            Error( "the source of the morphism datum must be equal to <UnderlyingCell( source )>" );
+            
+        fi;
+        
+        if IsEqualForObjects( AmbientCategory( cat ), Range( underlying_morphism ), UnderlyingCell( range ) ) = false then
+            
+            Error( "the range of the morphism datum must be equal to <UnderlyingCell( range )>" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                source,
+                range,
+                UnderlyingCell, underlying_morphism );
+        
+    end;
+    
+    morphism_datum := function( cat, morphism )
+        
+        return UnderlyingCell( morphism );
+        
+    end;
+    
     S := CategoryConstructor( rec(
                  name := name,
                  category_filter := category_filter,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
                  properties := properties,
+                 morphism_constructor := morphism_constructor,
+                 morphism_datum := morphism_datum,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := "default",
                  create_func_morphism := "default",
                  create_func_morphism_or_fail := "default",
                  underlying_category_getter_string := "AmbientCategory",
+                 # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
                  underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
-                 underlying_morphism_getter_string := "({ cat, mor } -> UnderlyingCell( mor ))",
+                 underlying_morphism_getter_string := "MorphismDatum",
                  ) );
     
     S!.compiler_hints.category_attribute_names := [
