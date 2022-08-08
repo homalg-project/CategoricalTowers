@@ -14,7 +14,5 @@ ReadPackage( "Toposes", "gap/CategoryOfRelations.gd");
 ## Tools
 ReadPackage( "Toposes", "gap/Tools.gd");
 
-ReadPackage( "Toposes", "gap/InitialCategory.gd");
-
 ## DPO
 ReadPackage( "Toposes", "gap/DPO.gd");
