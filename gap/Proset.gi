@@ -27,14 +27,6 @@ InstallOtherMethodForCompilerForCAP( UniqueMorphism,
     
 end );
 
-CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
-        [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
-  function ( input_type )
-
-    return rec( filter := input_type[2].category!.morphism_representation, category := input_type[2].category );
-
-end );
-
 ##
 InstallMethod( UniqueMorphism,
         "for two objects in a thin category",
