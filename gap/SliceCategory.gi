@@ -205,6 +205,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                  # UnderlyingMorphism is an attribute in the eager case but a proper operation in the lazy case
                  underlying_object_getter_string := "({ cat, obj } -> Source( UnderlyingMorphism( obj ) ))",
                  underlying_morphism_getter_string := "MorphismDatum",
+                 top_object_getter_string := "ObjectConstructor",
+                 top_morphism_getter_string := "MorphismConstructor",
                  ) );
     
     S!.compiler_hints.category_attribute_names := [
