@@ -10,36 +10,64 @@ InstallMethodWithCache( AbelianClosure,
         [ IsAlgebroid, IsCapCategory and IsAbCategory ],
         
   function( algebroid, range_category_of_hom_structure )
-    local L, A, object_constructor, morphism_constructor, abelian_closure;
+    local L, A,
+          object_constructor, modeling_tower_object_constructor,
+          object_datum, modeling_tower_object_datum,
+          morphism_constructor, modeling_tower_morphism_constructor,
+          morphism_datum, modeling_tower_morphism_datum,
+          abelian_closure;
     
     L := FiniteCompletion( algebroid, range_category_of_hom_structure : FinalizeCategory := true );
     
     A := FreydCategory( L : FinalizeCategory := true );
     
-    object_constructor :=
-      function( abelian_closure, objA )
-        
-        return AsObjectInWrapperCategory( abelian_closure, objA );
-        
-    end;
+    ##
+    object_constructor := AsObjectInWrapperCategory;
     
-    morphism_constructor :=
-      function( abelian_closure, source, morA, range )
-        
-        return AsMorphismInWrapperCategory( abelian_closure, source, morA, range );
-        
-    end;
+    ##
+    modeling_tower_object_constructor := { cat, obj } -> obj;
     
-    abelian_closure := WrapperCategory( A,
-                               rec( name := Concatenation( "AbelianClosure( ", Name( algebroid ), " )" ),
-                                    object_constructor := object_constructor,
-                                    morphism_constructor := morphism_constructor,
-                                    category_filter := IsWrapperCapCategory and IsAbelianClosure,
-                                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInAbelianClosure,
-                                    category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInAbelianClosure,
-                                    only_primitive_operations := true ) );
+    ##
+    object_datum := { cat, o } -> UnderlyingCell( o );
+    
+    ##
+    modeling_tower_object_datum := { cat, obj } -> obj;
+    
+    ##
+    morphism_constructor := AsMorphismInWrapperCategory;
+    
+    ##
+    modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor;
+    
+    ##
+    morphism_datum := { cat, m } -> UnderlyingCell( m );
+    
+    ##
+    modeling_tower_morphism_datum := { cat, mor } -> mor;
+    
+    abelian_closure :=
+      WrapperCategory( A,
+              rec( name := Concatenation( "AbelianClosure( ", Name( algebroid ), " )" ),
+                   category_filter := IsWrapperCapCategory and IsAbelianClosure,
+                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInAbelianClosure,
+                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInAbelianClosure,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_datum := morphism_datum,
+                   morphism_constructor := morphism_constructor,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true ) );
     
     SetUnderlyingCategory( abelian_closure, algebroid );
+    
+    abelian_closure!.compiler_hints :=
+      rec( category_filter := IsAbelianClosure,
+           object_filter := IsObjectInAbelianClosure,
+           morphism_filter := IsMorphismInAbelianClosure,
+           );
     
     return abelian_closure;
     
