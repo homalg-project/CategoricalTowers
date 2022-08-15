@@ -114,6 +114,8 @@ InstallMethod( Subcategory,
          underlying_category_getter_string := "AmbientCategory",
          underlying_object_getter_string := "ObjectDatum",
          underlying_morphism_getter_string := "MorphismDatum",
+         top_object_getter_string := "ObjectConstructor",
+         top_morphism_getter_string := "MorphismConstructor",
     );
     
     ## list_of_operations_to_install
