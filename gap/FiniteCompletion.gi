@@ -10,11 +10,11 @@ InstallMethodWithCache( FiniteCompletion,
         [ IsCapCategory, IsCapCategory ],
         
   function( fp_category, range_category_of_hom_structure )
-    local PSh, O, object_constructor, morphism_constructor, finite_completion;
+    local F, O, object_constructor, morphism_constructor, finite_completion;
     
-    PSh := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
+    F := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
     
-    O := Opposite( PSh : FinalizeCategory := true );
+    O := Opposite( F : FinalizeCategory := true );
     
     object_constructor :=
       function( finite_completion, objO )
