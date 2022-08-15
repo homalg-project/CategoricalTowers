@@ -10,36 +10,64 @@ InstallMethodWithCache( FiniteCompletion,
         [ IsCapCategory, IsCapCategory ],
         
   function( fp_category, range_category_of_hom_structure )
-    local PSh, O, object_constructor, morphism_constructor, finite_completion;
+    local F, O,
+          object_constructor, modeling_tower_object_constructor,
+          object_datum, modeling_tower_object_datum,
+          morphism_constructor, modeling_tower_morphism_constructor,
+          morphism_datum, modeling_tower_morphism_datum,
+          finite_completion;
     
-    PSh := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
+    F := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
     
-    O := Opposite( PSh : FinalizeCategory := true );
+    O := Opposite( F : FinalizeCategory := true );
     
-    object_constructor :=
-      function( finite_completion, objO )
-        
-        return AsObjectInWrapperCategory( finite_completion, objO );
-        
-    end;
+    ##
+    object_constructor := AsObjectInWrapperCategory;
     
-    morphism_constructor :=
-      function( finite_completion, source, morO, range )
-        
-        return AsMorphismInWrapperCategory( finite_completion, source, morO, range );
-        
-    end;
+    ##
+    modeling_tower_object_constructor := { cat, obj } -> obj;
     
-    finite_completion := WrapperCategory( O,
-                                 rec( name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" ),
-                                      object_constructor := object_constructor,
-                                      morphism_constructor := morphism_constructor,
-                                      category_filter := IsWrapperCapCategory and IsFiniteCompletion,
-                                      category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCompletion,
-                                      category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCompletion,
-                                      only_primitive_operations := true ) );
+    ##
+    object_datum := { cat, o } -> UnderlyingCell( o );
+    
+    ##
+    modeling_tower_object_datum := { cat, obj } -> obj;
+    
+    ##
+    morphism_constructor := AsMorphismInWrapperCategory;
+    
+    ##
+    modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor;
+    
+    ##
+    morphism_datum := { cat, m } -> UnderlyingCell( m );
+    
+    ##
+    modeling_tower_morphism_datum := { cat, mor } -> mor;
+    
+    finite_completion :=
+      WrapperCategory( O,
+              rec( name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" ),
+                   category_filter := IsWrapperCapCategory and IsFiniteCompletion,
+                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCompletion,
+                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCompletion,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_datum := morphism_datum,
+                   morphism_constructor := morphism_constructor,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true ) );
     
     SetUnderlyingCategory( finite_completion, fp_category );
+    
+    finite_completion!.compiler_hints :=
+      rec( category_filter := IsFiniteCompletion,
+           object_filter := IsObjectInFiniteCompletion,
+           morphism_filter := IsMorphismInFiniteCompletion,
+           );
     
     return finite_completion;
     

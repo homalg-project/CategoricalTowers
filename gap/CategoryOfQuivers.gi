@@ -14,36 +14,64 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         [ IsCapCategory ],
         
   function ( category_of_finsets )
-    local F, F_hat, object_constructor, morphism_constructor, Quivers;
+    local F, F_hat,
+          object_constructor, modeling_tower_object_constructor,
+          object_datum, modeling_tower_object_datum,
+          morphism_constructor, modeling_tower_morphism_constructor,
+          morphism_datum, modeling_tower_morphism_datum,
+          Quivers;
     
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_finsets : FinalizeCategory := true );
     
-    object_constructor :=
-      function ( Quivers, objP )
-        
-        return AsObjectInWrapperCategory( Quivers, objP );
-        
-    end;
+    ##
+    object_constructor := AsObjectInWrapperCategory;
     
-    morphism_constructor :=
-      function ( Quivers, source, morP, range )
-        
-        return AsMorphismInWrapperCategory( Quivers, source, morP, range );
-        
-    end;
+    ##
+    modeling_tower_object_constructor := { cat, obj } -> obj;
     
-    Quivers := WrapperCategory( F_hat,
-                       rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_finsets ), " )" ),
-                            object_constructor := object_constructor,
-                            morphism_constructor := morphism_constructor,
-                            category_filter := IsWrapperCapCategory and IsCategoryOfQuivers,
-                            category_object_filter := IsWrapperCapCategoryObject and IsObjectInCategoryOfQuivers,
-                            category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInCategoryOfQuivers,
-                            only_primitive_operations := true ) );
+    ##
+    object_datum := { cat, o } -> UnderlyingCell( o );
+    
+    ##
+    modeling_tower_object_datum := { cat, obj } -> obj;
+    
+    ##
+    morphism_constructor := AsMorphismInWrapperCategory;
+    
+    ##
+    modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor;
+    
+    ##
+    morphism_datum := { cat, m } -> UnderlyingCell( m );
+    
+    ##
+    modeling_tower_morphism_datum := { cat, mor } -> mor;
+    
+    Quivers :=
+      WrapperCategory( F_hat,
+              rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_finsets ), " )" ),
+                   category_filter := IsWrapperCapCategory and IsCategoryOfQuivers,
+                   category_object_filter := IsWrapperCapCategoryObject and IsObjectInCategoryOfQuivers,
+                   category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInCategoryOfQuivers,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_datum := morphism_datum,
+                   morphism_constructor := morphism_constructor,
+                   modeling_tower_object_constructor := modeling_tower_object_constructor,
+                   modeling_tower_object_datum := modeling_tower_object_datum,
+                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+                   only_primitive_operations := true ) );
     
     SetUnderlyingCategory( Quivers, F );
+    
+    Quivers!.compiler_hints :=
+      rec( category_filter := IsCategoryOfQuivers,
+           object_filter := IsObjectInCategoryOfQuivers,
+           morphism_filter := IsMorphismInCategoryOfQuivers,
+           );
     
     return Quivers;
     
