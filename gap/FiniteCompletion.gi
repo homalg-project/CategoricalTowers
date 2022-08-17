@@ -21,44 +21,12 @@ InstallMethodWithCache( FiniteCompletion,
     
     O := Opposite( F : FinalizeCategory := true );
     
-    ##
-    object_constructor := AsObjectInWrapperCategory;
-    
-    ##
-    modeling_tower_object_constructor := { cat, obj } -> obj;
-    
-    ##
-    object_datum := { cat, o } -> UnderlyingCell( o );
-    
-    ##
-    modeling_tower_object_datum := { cat, obj } -> obj;
-    
-    ##
-    morphism_constructor := AsMorphismInWrapperCategory;
-    
-    ##
-    modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor;
-    
-    ##
-    morphism_datum := { cat, m } -> UnderlyingCell( m );
-    
-    ##
-    modeling_tower_morphism_datum := { cat, mor } -> mor;
-    
     finite_completion :=
       WrapperCategory( O,
               rec( name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" ),
                    category_filter := IsWrapperCapCategory and IsFiniteCompletion,
                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCompletion,
                    category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCompletion,
-                   object_constructor := object_constructor,
-                   object_datum := object_datum,
-                   morphism_datum := morphism_datum,
-                   morphism_constructor := morphism_constructor,
-                   modeling_tower_object_constructor := modeling_tower_object_constructor,
-                   modeling_tower_object_datum := modeling_tower_object_datum,
-                   modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
-                   modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true ) );
     
     SetUnderlyingCategory( finite_completion, fp_category );
