@@ -5,15 +5,15 @@ LoadPackage( "ZariskiFrames" );
 #! @Example
 R := HomalgFieldOfRationalsInSingular( ) * "x,y";
 #! Q[x,y]
-ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+ZC := ZariskiCoframeOfAffineSpectrum( R );
 #! The coframe of Zariski closed subsets of the affine spectrum of Q[x,y]
-A := ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( "[ x ]", 1, 1, R ) );
+A := ClosedSubsetOfSpecByReducedColumn( HomalgMatrix( "[ x ]", 1, 1, R ) );
 #! V_{Q[x,y]}( <...> )
 B := ClosedSubsetOfSpec( "[ x^2 ]", R );
 #! V_{Q[x,y]}( <...> )
 A = B;
 #! true
-C := ClosedSubsetOfSpecByReducedMorphism( "[ y ]", R );
+C := ClosedSubsetOfSpecByReducedColumn( "[ y ]", R );
 #! V_{Q[x,y]}( <...> )
 D := ClosedSubsetOfSpec( "[ x^2*y^3 ]", R );
 #! V_{Q[x,y]}( <...> )

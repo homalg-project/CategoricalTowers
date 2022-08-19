@@ -15,14 +15,14 @@ InstallMethod( PointsAtInfinityOfFiberwiseProjectiveClosure,
     R := UnderlyingRing( Gamma );
     
     if HasIsFieldForHomalg( R ) and IsFieldForHomalg( R ) then
-        return InitialObject( ZariskiCoframeOfProjUsingCategoryOfRows( GradedRing( R ) ) );
+        return InitialObject( ZariskiCoframeOfProj( GradedRing( R ) ) );
     elif HasIsIntegersForHomalg( R ) and IsIntegersForHomalg( R ) then
-        return InitialObject( ZariskiCoframeOfProjUsingCategoryOfRows( GradedRing( R ) ) );
+        return InitialObject( ZariskiCoframeOfProj( GradedRing( R ) ) );
     fi;
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
-    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( Gamma ) );
+    gamma := BestUnderlyingColumn( Gamma );
     
     if not IsIdenticalObj( R, R_elim ) then
         gamma := R_elim * gamma;
@@ -64,22 +64,18 @@ InstallMethod( FunctorClosedProjectionBetweenZariskiCoframes,
     
     R := UnderlyingRing( S );
     
-    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( UnderlyingNonGradedRing( R ) ) );
+    T := ZariskiCoframeOfAffineSpectrum( BaseRing( UnderlyingNonGradedRing( R ) ) );
     
     pi := CapFunctor( "Functor describing the closed projection between a relative projective Zariski coframe and its base coframe", S, T );
     
     AddObjectFunction( pi,
       function( obj )
         
-        obj := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( obj );
-        
-        obj := List( obj, UnderlyingMatrix );
+        obj := ListOfSaturatedUnderlyingColumns( obj );
         
         obj := List( obj, PolynomialsWithoutRelativeIndeterminates );
         
-        obj := List( obj, AsMorphismInCategoryOfRows );
-        
-        return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( obj );
+        return ClosedSubsetOfSpecByListOfColumns( obj );
         
     end );
     

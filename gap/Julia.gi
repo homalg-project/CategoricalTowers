@@ -18,7 +18,7 @@ InstallOtherMethod( ClosedSubsetOfSpec,
 end );
 
 ##
-InstallOtherMethod( ClosedSubsetOfSpecByReducedMorphism,
+InstallOtherMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a Julia object and a homalg ring",
         [ IsJuliaObject, IsHomalgRing ],
 
@@ -26,12 +26,12 @@ InstallOtherMethod( ClosedSubsetOfSpecByReducedMorphism,
     
     str := JuliaToGAP( IsString, str );
     
-    return ClosedSubsetOfSpecByReducedMorphism( StringToHomalgColumnMatrix( str, R ) );
+    return ClosedSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
 ##
-InstallOtherMethod( ClosedSubsetOfSpecByStandardMorphism,
+InstallOtherMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a Julia object and a homalg ring",
         [ IsJuliaObject, IsHomalgRing ],
 
@@ -39,7 +39,7 @@ InstallOtherMethod( ClosedSubsetOfSpecByStandardMorphism,
     
     str := JuliaToGAP( IsString, str );
     
-    return ClosedSubsetOfSpecByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
+    return ClosedSubsetOfSpecByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 

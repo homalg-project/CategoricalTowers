@@ -5,26 +5,22 @@
 #
 
 ##
-InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+InstallMethod( ListOfReducedColumns,
         "for an object in a Zariski frame or coframe of an affine variety",
         [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
 
   function( A )
     local L;
     
-    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    L := List( L, UnderlyingMatrix );
+    L := ListOfUnderlyingColumns( A );
     
     L := List( L, RadicalSubobjectOp );
     
-    L := List( L, AsMorphismInCategoryOfRows );
-    
     L := DuplicateFreeList( L );
     
-    L := MaximalObjects( L, {a,b} -> IsLiftable( b, a ) );
+    L := MaximalObjects( L, {a,b} -> IsZero( DecideZeroRows( b, a ) ) );
     
-    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    A!.ListOfUnderlyingColumns := L;
     
     return L;
     

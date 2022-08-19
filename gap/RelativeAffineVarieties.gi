@@ -14,7 +14,7 @@ InstallMethod( GraphOfRingMorphism,
     
     Gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
     
-    return ClosedSubsetOfSpecByReducedMorphism( Gamma );
+    return ClosedSubsetOfSpecByReducedColumn( Gamma );
     
 end );
 
@@ -28,7 +28,7 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
     
     R := UnderlyingRing( S );
     
-    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) );
+    T := ZariskiCoframeOfAffineSpectrum( BaseRing( R ) );
     
     pi := CapFunctor( "Functor describing the closure of the projection between an relative affine Zariski coframe and its base coframe", S, T );
     
@@ -40,16 +40,14 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         
         R_elim := PolynomialRingWithProductOrdering( R );
         
-        if HasListOfReducedMorphismsOfUnderlyingCategory( A ) or
-           HasReducedMorphismOfUnderlyingCategory( A ) then
+        if HasListOfReducedColumns( A ) or
+           HasReducedUnderlyingColumn( A ) then
             known_to_be_reduced := true;
         else
             known_to_be_reduced := false;
         fi;
         
-        I := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-        
-        I := List( I, UnderlyingMatrix );
+        I := ListOfUnderlyingColumns( A );
         
         if not IsIdenticalObj( R, R_elim ) then
             Info( InfoZariskiFrames, 1, "!! The underlying ring of A and the associated ring equipped with the elimination order do not coincide !!\n" );
@@ -66,14 +64,12 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         
         I := List( I, PolynomialsWithoutRelativeIndeterminates );
         
-        I := List( I, AsMorphismInCategoryOfRows );
-        
         ## scheme-theoretic images of reduced schemes are reduced
         if known_to_be_reduced then
-            return ClosedSubsetOfSpecByListOfReducedMorphisms( I );
+            return ClosedSubsetOfSpecByListOfReducedColumns( I );
         fi;
         
-        return ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( I );
+        return ClosedSubsetOfSpecByListOfColumns( I );
         
     end );
     
@@ -126,32 +122,28 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
     
     R := UnderlyingRing( T );
     
-    S := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) );
+    S := ZariskiCoframeOfAffineSpectrum( BaseRing( R ) );
     
     pi_ := CapFunctor( "Functor describing the preimage of the projection between an relative affine Zariski coframe and its base coframe", S, T );
     
-    Constructor := T!.ConstructorByListOfMorphismsOfRank1Range;
+    Constructor := T!.ConstructorByListOfColumns;
     
     AddObjectFunction( pi_,
       function( obj )
         local L, fib;
         
-        L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( obj );
-        
-        L := List( L, UnderlyingMatrix );
+        L := ListOfUnderlyingColumns( obj );
         
         L := List( L, mat -> R * mat );
         
-        L := List( L, AsMorphismInCategoryOfRows );
-        
         fib := Constructor( L );
         
-        if HasListOfReducedMorphismsOfUnderlyingCategory( obj ) then
-            SetListOfReducedMorphismsOfUnderlyingCategory( fib, L );
+        if HasListOfReducedColumns( obj ) then
+            SetListOfReducedColumns( fib, L );
         fi;
         
-        if HasListOfStandardMorphismsOfUnderlyingCategory( obj ) then
-            SetListOfStandardMorphismsOfUnderlyingCategory( fib, L );
+        if HasListOfStandardColumns( obj ) then
+            SetListOfStandardColumns( fib, L );
         fi;
         
         AddToToDoList( ToDoListEntry( [ [ obj, "HasIsInitial" ] ],
@@ -189,7 +181,7 @@ InstallMethod( PreimageOfProjection,
   function( R, beta )
     local T, pi_;
     
-    T := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    T := ZariskiCoframeOfAffineSpectrum( R );
     
     pi_ := FunctorPreimageOfProjectionBetweenZariskiCoframes( T );
     
@@ -271,9 +263,9 @@ InstallMethod( TangentSpaceOfFiberAtPoint,
     
     T := TangentSpaceAtPoint( fiber, p_fiber );
     
-    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    T := BestUnderlyingColumn( T );
     
-    return ClosedSubsetOfSpecByReducedMorphism( T );
+    return ClosedSubsetOfSpecByReducedColumn( T );
     
 end );
 
@@ -386,7 +378,7 @@ InstallMethod( EmbeddedComplementOfTangentSpaceOfFiberAtPoint,
     
     C := C * ( var - R * p_fiber );
     
-    return ClosedSubsetOfSpecByReducedMorphism( C );
+    return ClosedSubsetOfSpecByReducedColumn( C );
     
 end );
 
@@ -435,7 +427,7 @@ InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty,
   function( Gamma )
     local gamma, R, R_elim;
 
-    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( Gamma ) );
+    gamma := BestUnderlyingColumn( Gamma );
     
     R := UnderlyingRing( Gamma );
     
@@ -468,7 +460,7 @@ InstallMethod( ClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty,
     gamma := Set( gamma );
     
     if gamma = [ ] then
-        return InitialObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( BaseRing( R ) ) );
+        return InitialObject( ZariskiCoframeOfAffineSpectrum( BaseRing( R ) ) );
     fi;
     
     gamma := List( gamma, ClosedSubsetOfSpec );

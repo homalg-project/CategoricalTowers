@@ -95,7 +95,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
             fi;
 
             # A hyperplane of codimension 1
-            H := ClosedSubsetOfSpecByReducedMorphism( H );
+            H := ClosedSubsetOfSpecByReducedColumn( H );
             L := L * H;
 
             # This is only a candidate at this point
@@ -114,13 +114,13 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                     n := n - 1;
                     fiber_dim := fiber_dim - 1;
                     nrFails := 0;
-                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " works <= dim(fiber) = ", fiber_dim );
+                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingColumn( H ) ), " works <= dim(fiber) = ", fiber_dim );
                     Assert( 4, fiber_dim=0 or ImageOfProjection( PointsAtInfinityOfFiberwiseProjectiveClosure( Gamma0 ) ) = projection_closure );
 
 
                 else
 
-                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not retain projection" );
+                    Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingColumn( H ) ), " does not retain projection" );
 
                     # This case is intended to split of cases with components of high fiber dimension, but low image dimension
                     # Do not do it too early or often, since it is (a) expensive and (b) tends to produce irrelevant components
@@ -218,7 +218,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
             else
 
-                Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( H ) ) ), " does not decrease dimension of fiber" );
+                Info( InfoConstructibleImage, 8, step, counter, " in ZDF: hyperplane ", EntriesOfHomalgMatrix( UnderlyingColumn( H ) ), " does not decrease dimension of fiber" );
                 i := i + 1;
                 nrFails := nrFails + 1;
 
@@ -337,7 +337,7 @@ InstallMethod( LocallyClosedApproximationOfProjection,
 
     ## the followin line will trigger ideal intersection
     Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ",
-          EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+          EntriesOfHomalgMatrix( UnderlyingColumn( relative_boundary_hull ) ) );
     
     smaller_relative_boundary_hull := ValueOption( "smaller_rbhull" );
     
@@ -348,10 +348,10 @@ InstallMethod( LocallyClosedApproximationOfProjection,
                 l := PointsAtInfinityOfFiberwiseProjectiveClosure( l[1] );
                 l := ImageOfProjection( l );
                 relative_boundary_hull := relative_boundary_hull * l;
-                MorphismOfUnderlyingCategory( relative_boundary_hull );
+                BestUnderlyingColumn( relative_boundary_hull );
                 ## the followin line will trigger ideal intersection
                 Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ",
-                      EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+                      EntriesOfHomalgMatrix( UnderlyingColumn( relative_boundary_hull ) ) );
             else
                 Info( InfoConstructibleImage, 4, step, counter, " in LCA: break" );
                 break;
@@ -413,7 +413,7 @@ InstallMethod( LocallyClosedApproximationOfProjectionViaGenericFreeness,
     
     ## the followin line will trigger ideal intersection
     Info( InfoConstructibleImage, 10, step, counter, " in LCA: relative boundary hull: ",
-          EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ) );
+          EntriesOfHomalgMatrix( UnderlyingColumn( relative_boundary_hull ) ) );
     
     return [ projection_closure - relative_boundary_hull, [ ] ];
     
@@ -591,7 +591,7 @@ InstallMethod( ConstructibleProjection,
         Info( InfoConstructibleImage, 2, step, counter, " in CPR: need to treat ", Length( C!.pre_nodes ), " remaining component(s)" );
         
         ## the followin line will trigger ideal intersection
-        Info( InfoConstructibleImage, 10, step, counter, " in CPR: image: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( projection_closure ) ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( relative_boundary_hull ) ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( f ) ) ) ), ")" );
+        Info( InfoConstructibleImage, 10, step, counter, " in CPR: image: ", EntriesOfHomalgMatrix( UnderlyingColumn( projection_closure ) ), " relative boundary hull: ", EntriesOfHomalgMatrix( UnderlyingColumn( relative_boundary_hull ) ), " (", List( relative_boundary_hull_decomp, f -> EntriesOfHomalgMatrix( UnderlyingColumn( f ) ) ), ")" );
         
         if not ( squash_layers = false or squash = false ) and MinimalLevelOfPreNodes( C ) > level then
             Squash( C : level := level );
@@ -660,7 +660,7 @@ InstallMethod( CharacteristicSetAsList,
     if IsTerminal( Cc ) then
         Cc := 0;
     else
-        Cc := Int( String( MatElm( UnderlyingMatrix( MorphismOfUnderlyingCategory( Cc ) ), 1, 1 ) ) );
+        Cc := Int( String( MatElm( BestUnderlyingColumn( Cc ), 1, 1 ) ) );
     fi;
     
     Cc := Factors( Cc );
@@ -670,7 +670,7 @@ InstallMethod( CharacteristicSetAsList,
     else
         Cs := List( C, a -> a.J );
         
-        Cs := List( Cs, a -> Int( String( MatElm( UnderlyingMatrix( MorphismOfUnderlyingCategory( a ) ), 1, 1 ) ) ) );
+        Cs := List( Cs, a -> Int( String( MatElm( BestUnderlyingColumn( a ), 1, 1 ) ) ) );
         
         Cs := Concatenation( List( Cs, Factors ) );
         

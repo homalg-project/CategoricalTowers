@@ -6,20 +6,20 @@
 
 ##
 InstallMethod( OpenSubsetOfProj,
-        "for a CAP category morphism",
-        [ IsCapCategoryMorphism ],
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
 
   function( I )
     local R, A, ZF;
     
-    R := UnderlyingRing( CapCategory( I ) );
+    R := HomalgRing( I );
     
     A := rec( );
     
-    ZF := ZariskiFrameOfProjUsingCategoryOfRows( R );
+    ZF := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZF,
-            PreMorphismOfUnderlyingCategory, I,
+            PreUnderlyingMatrix, I,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -31,32 +31,21 @@ InstallMethod( OpenSubsetOfProj,
 end );
 
 ##
-InstallMethod( OpenSubsetOfProj,
+InstallMethod( OpenSubsetOfProjByReducedColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
-  function( mat )
-    
-    return OpenSubsetOfProj( AsMorphismInCategoryOfRows( mat ) );
-    
-end );
-
-##
-InstallMethod( OpenSubsetOfProjByReducedMorphism,
-        "for a CAP category morphism",
-        [ IsCapCategoryMorphism ],
 
   function( I )
     local R, A, ZC;
     
-    R := UnderlyingRing( CapCategory( I ) );
+    R := HomalgRing( I );
     
     A := rec( );
     
-    ZC := ZariskiFrameOfProjUsingCategoryOfRows( R );
+    ZC := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ReducedMorphismOfUnderlyingCategory, I,
+            ReducedUnderlyingColumn, I,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -68,32 +57,21 @@ InstallMethod( OpenSubsetOfProjByReducedMorphism,
 end );
 
 ##
-InstallMethod( OpenSubsetOfProjByReducedMorphism,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
-
-  function( mat )
-    
-    return OpenSubsetOfProjByReducedMorphism( AsMorphismInCategoryOfRows( mat ) );
-    
-end );
-
-##
-InstallMethod( OpenSubsetOfProjByListOfMorphismsOfRank1Range,
+InstallMethod( OpenSubsetOfProjByListOfColumns,
         "for a list",
         [ IsList ],
 
   function( L )
     local R, A, ZF;
     
-    R := UnderlyingRing( CapCategory( L[1] ) );
+    R := HomalgRing( L[1] );
     
     A := rec( );
     
-    ZF := ZariskiFrameOfProjUsingCategoryOfRows( R );
+    ZF := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZF,
-            ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+            ListOfUnderlyingColumns, L,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -105,21 +83,21 @@ InstallMethod( OpenSubsetOfProjByListOfMorphismsOfRank1Range,
 end );
 
 ##
-InstallMethod( OpenSubsetOfProjByStandardMorphism,
-        "for a CAP category morphism",
-        [ IsCapCategoryMorphism ],
+InstallMethod( OpenSubsetOfProjByStandardColumn,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
 
   function( I )
     local R, A, ZC;
     
-    R := UnderlyingRing( CapCategory( I ) );
+    R := HomalgRing( I );
     
     A := rec( );
     
-    ZC := ZariskiFrameOfProjUsingCategoryOfRows( R );
+    ZC := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            StandardMorphismOfUnderlyingCategory, I,
+            StandardUnderlyingColumn, I,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -127,17 +105,6 @@ InstallMethod( OpenSubsetOfProjByStandardMorphism,
     Assert( 4, IsWellDefined( A ) );
     
     return A;
-    
-end );
-
-##
-InstallMethod( OpenSubsetOfProjByStandardMorphism,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
-
-  function( mat )
-    
-    return OpenSubsetOfProjByStandardMorphism( AsMorphismInCategoryOfRows( mat ) );
     
 end );
 
@@ -153,29 +120,29 @@ InstallMethod( OpenSubsetOfProj,
 end );
 
 ##
-InstallMethod( OpenSubsetOfProjByReducedMorphism,
+InstallMethod( OpenSubsetOfProjByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
 
   function( str, R )
     
-    return OpenSubsetOfProjByReducedMorphism( StringToHomalgColumnMatrix( str, R ) );
+    return OpenSubsetOfProjByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
 ##
-InstallMethod( OpenSubsetOfProjByStandardMorphism,
+InstallMethod( OpenSubsetOfProjByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
 
   function( str, R )
     
-    return OpenSubsetOfProjByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
+    return OpenSubsetOfProjByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
 ##
-InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
+InstallMethod( ZariskiFrameOfProj,
         "for a homalg ring",
         [ IsHomalgRing ],
         
@@ -192,16 +159,10 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     SetUnderlyingRing( ZariskiFrame, R );
     
-    if not IsBound( R!.CategoryOfRows ) then
-        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
-    fi;
-    
-    ZariskiFrame!.UnderlyingCategory := R!.CategoryOfRows;
-    
     ZariskiFrame!.Constructor := OpenSubsetOfProj;
-    ZariskiFrame!.ConstructorByListOfMorphismsOfRank1Range := OpenSubsetOfProjByListOfMorphismsOfRank1Range;
-    ZariskiFrame!.ConstructorByReducedMorphism := OpenSubsetOfProjByReducedMorphism;
-    ZariskiFrame!.ConstructorByStandardMorphism := OpenSubsetOfProjByStandardMorphism;
+    ZariskiFrame!.ConstructorByListOfColumns := OpenSubsetOfProjByListOfColumns;
+    ZariskiFrame!.ConstructorByReducedColumn := OpenSubsetOfProjByReducedColumn;
+    ZariskiFrame!.ConstructorByStandardColumn := OpenSubsetOfProjByStandardColumn;
     
     AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAProjectiveVariety );
     
@@ -209,11 +170,11 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
     
-    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiFrame );
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES( ZariskiFrame );
     
     ##
     AddIsHomSetInhabited( ZariskiFrame,
-      { cat, S, T } -> IsHomSetInhabitedForFramesUsingCategoryOfRows( S, T ) );
+      { cat, S, T } -> IsHomSetInhabitedForFrames( S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
@@ -222,8 +183,8 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiFrame,
           function( cat, S, T )
             
-            S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
-            T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+            S := BestUnderlyingColumn( S );
+            T := BestUnderlyingColumn( T );
             
             return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
             
@@ -248,7 +209,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
       function( cat )
         local T;
         
-        T := OpenSubsetOfProjByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
+        T := OpenSubsetOfProjByStandardColumn( HomalgIdentityMatrix( 1, R ) );
         
         SetIsTerminal( T, true );
         
@@ -261,7 +222,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
       function( cat )
         local I;
         
-        I := OpenSubsetOfProjByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
+        I := OpenSubsetOfProjByStandardColumn( HomalgZeroMatrix( 0, 1, R ) );
         
         SetIsInitial( I, true );
         
@@ -272,11 +233,15 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     ##
     AddIsTerminal( ZariskiFrame,
       function( cat, A )
-        local mor;
+        local R, id, mats;
         
-        mor := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+        R := UnderlyingRing( cat );
         
-        return ForAll( mor, IsSplitEpimorphism );
+        id := HomalgIdentityMatrix( 1, R );
+        
+        mats := ListOfSaturatedUnderlyingColumns( A );
+        
+        return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
     end );
     
@@ -284,7 +249,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     AddIsInitial( ZariskiFrame,
       function( cat, A )
         
-        return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+        return IsZero( UnderlyingColumn( A ) );
         
     end );
     
@@ -312,17 +277,17 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
+        L := List( L, UnderlyingColumn );
         
         L := DuplicateFreeList( L );
         
         ## examples show that the GB computations of the entries of L
-        ## (needed to check IsLiftable) might be immensely more expensive
-        ## than the GB of the resulting UniversalMorphismFromDirectSum( L ),
+        ## (needed to check IsZero @ DecideZeroRows) might be immensely more expensive
+        ## than the GB of the resulting UnionOfRows( L ),
         ## so never execute the next line:
-        #L := MaximalObjects( L, IsLiftable );
+        #L := MaximalObjects( L, { a, b } -> IsZero( DecideZeroRows( a, b ) ) );
         
-        l := UniversalMorphismFromDirectSum( L );
+        l := UnionOfRows( L );
         
         l := OpenSubsetOfProj( l );
         
@@ -351,11 +316,11 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
+        L := List( L, ListOfUnderlyingColumns );
         
         L := Concatenation( L );
         
-        l := OpenSubsetOfProjByListOfMorphismsOfRank1Range( L );
+        l := OpenSubsetOfProjByListOfColumns( L );
         
         SetIsTerminal( l, false );
         
@@ -368,20 +333,17 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
       function( cat, A, B )
         local L;
         
-        A := MorphismOfUnderlyingCategory( A );
+        A := BestUnderlyingColumn( A );
         
         if IsZero( A ) then
             return TerminalObject( CapCategory( B ) );
         fi;
         
-        B := MorphismOfUnderlyingCategory( B );
-        
-        A := UnderlyingMatrix( A );
-        B := UnderlyingMatrix( B );
+        B := BestUnderlyingColumn( B );
         
         L := List( [ 1 .. NrRows( A ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( A, [ r ] ), B ) );
         
-        L := List( L, OpenSubsetOfProjByReducedMorphism );
+        L := List( L, OpenSubsetOfProjByReducedColumn );
         
         return DirectProduct( L );
         
@@ -389,7 +351,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     Finalize( ZariskiFrame );
     
-    ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfProjUsingCategoryOfRows( R );
+    ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfProj( R );
     
     return ZariskiFrame;
     
@@ -414,9 +376,7 @@ InstallMethod( DimensionOfComplement,
   function( A )
     local dim;
     
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    A := List( A, UnderlyingMatrix );
+    A := ListOfUnderlyingColumns( A );
     
     dim := Maximum( List( A, AffineDimension ) );
     
@@ -435,6 +395,6 @@ InstallMethod( DegreeOfComplement,
         
   function( A )
     
-    return ProjectiveDegree( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    return ProjectiveDegree( BestUnderlyingColumn( A ) );
     
 end );

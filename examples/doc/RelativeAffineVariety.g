@@ -7,9 +7,9 @@ R := HomalgFieldOfRationalsInSingular( ) * "x";
 #! Q[x]
 S := R * "y";
 #! Q[x][y]
-ZCR := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+ZCR := ZariskiCoframeOfAffineSpectrum( R );
 #! The coframe of Zariski closed subsets of the affine spectrum of Q[x]
-ZCS := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( S );
+ZCS := ZariskiCoframeOfAffineSpectrum( S );
 #! The coframe of Zariski closed subsets of the affine spectrum of Q[x][y]
 Vx := ClosedSubsetOfSpec( HomalgMatrix( "[ x ]", 1, 1, R ) );
 #! V_{Q[x]}( <...> )

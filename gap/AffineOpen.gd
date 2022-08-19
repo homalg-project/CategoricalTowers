@@ -35,23 +35,17 @@ DeclareCategory( "IsMorphismInZariskiFrameOfAnAffineVariety",
 #!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns a &CAP; category
-DeclareAttribute( "ZariskiFrameOfAffineSpectrumUsingCategoryOfRows",
+DeclareAttribute( "ZariskiFrameOfAffineSpectrum",
         IsHomalgRing );
 
 #! @Description
 #!  Construct a Zariski open subset (as an object in the Zariski frame
-#!  of open subsets in an affine variety) from a morphism
-#!  <A>I</A>=<C>AsMorphismInCategoryOfRows</C>( <A>mat</A> ) in the category of rows.
+#!  of open subsets in an affine variety) from a matrix <A>mat</A>.
 #!  The result is the non-support of the module-theoretic cokernel <M>M</M>
-#!  of the morphism <A>I</A> in the associated Freyd category,
+#!  of <A>mat</A> viewed as a morphism in the Freyd category of the associated category of rows,
 #!  i.e., the result is the complement of the vanishing locus of the annihilator of <M>M</M>.
-#! @Arguments I
-#! @Returns a &CAP; object
-#! @Group OpenSubsetOfSpec
-DeclareOperation( "OpenSubsetOfSpec",
-        [ IsCapCategoryMorphism ] );
-
 #! @Arguments mat
+#! @Returns a &CAP; object
 #! @Group OpenSubsetOfSpec
 DeclareOperation( "OpenSubsetOfSpec",
         [ IsHomalgMatrix ] );
@@ -63,39 +57,29 @@ DeclareOperation( "OpenSubsetOfSpec",
 #! @InsertChunk OpenSubsetOfSpecZ
 
 #! @Description
-#!  <C>OpenSubsetOfSpecByReducedMorphism</C> assumes that the image is a radical ideal.
+#!  <C>OpenSubsetOfSpecByReducedColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group OpenSubsetOfSpecByReducedMorphism
-DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
-        [ IsCapCategoryMorphism ] );
-
-#! @Arguments mat
-#! @Group OpenSubsetOfSpecByReducedMorphism
-DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
+#! @Group OpenSubsetOfSpecByReducedColumn
+DeclareOperation( "OpenSubsetOfSpecByReducedColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group OpenSubsetOfSpecByReducedMorphism
-DeclareOperation( "OpenSubsetOfSpecByReducedMorphism",
+#! @Group OpenSubsetOfSpecByReducedColumn
+DeclareOperation( "OpenSubsetOfSpecByReducedColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments L
-DeclareOperation( "OpenSubsetOfSpecByListOfMorphismsOfRank1Range",
+DeclareOperation( "OpenSubsetOfSpecByListOfColumns",
         [ IsList ] );
 
 #! @Description
-#!  <C>OpenSubsetOfSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
+#!  <C>OpenSubsetOfSpecByStandardColumn</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
-#! @Group OpenSubsetOfSpecByStandardMorphism
-DeclareOperation( "OpenSubsetOfSpecByStandardMorphism",
-        [ IsCapCategoryMorphism ] );
-
-#! @Arguments mat
-#! @Group OpenSubsetOfSpecByStandardMorphism
-DeclareOperation( "OpenSubsetOfSpecByStandardMorphism",
+#! @Group OpenSubsetOfSpecByStandardColumn
+DeclareOperation( "OpenSubsetOfSpecByStandardColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group OpenSubsetOfSpecByStandardMorphism
-DeclareOperation( "OpenSubsetOfSpecByStandardMorphism",
+#! @Group OpenSubsetOfSpecByStandardColumn
+DeclareOperation( "OpenSubsetOfSpecByStandardColumn",
         [ IsString, IsHomalgRing ] );

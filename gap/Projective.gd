@@ -21,9 +21,9 @@ DeclareCategory( "IsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety",
         IsMorphismInZariskiFrameOrCoframe );
 
 #!
-DeclareAttribute( "ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory",
+DeclareAttribute( "ListOfSaturatedUnderlyingColumns",
         IsObjectInZariskiFrameOrCoframe );
 
 #!
-DeclareAttribute( "SaturatedMorphismOfRank1RangeOfUnderlyingCategory",
+DeclareAttribute( "SaturatedUnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
