@@ -11,51 +11,7 @@ InstallMethod( BaseOfFibration,
         
   function( A )
     
-    return TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( UnderlyingRing( A ) ) );
-    
-end );
-
-##
-InstallMethod( ClosedSubsetOfSpec,
-        "for a CAP category morphism",
-        [ IsCapCategoryMorphism ],
-
-  function( I )
-    local R, R_elim, A, ZC, B;
-    
-    R := UnderlyingRing( CapCategory( I ) );
-    
-    R_elim := PolynomialRingWithProductOrdering( R );
-    
-    if not IsIdenticalObj( R_elim, R ) then
-        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
-        R := R_elim;
-    fi;
-    
-    A := rec( );
-    
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
-    
-    B := BaseRing( R );
-    
-    if not IsIdenticalObj( R, B ) then
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                PreMorphismOfUnderlyingCategory, I,
-                UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
-                IsClosedSubobject, true
-                );
-    else
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                PreMorphismOfUnderlyingCategory, I,
-                UnderlyingRing, R,
-                IsClosedSubobject, true
-                );
-    fi;
-    
-    Assert( 4, IsWellDefined( A ) );
-    
-    return A;
+    return TerminalObject( ZariskiCoframeOfAffineSpectrum( UnderlyingRing( A ) ) );
     
 end );
 
@@ -64,9 +20,42 @@ InstallMethod( ClosedSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
 
-  function( mat )
+  function( I )
+    local R, R_elim, A, ZC, B;
     
-    return ClosedSubsetOfSpec( AsMorphismInCategoryOfRows( mat ) );
+    R := HomalgRing( I );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        I := R_elim * I;
+        R := R_elim;
+    fi;
+    
+    A := rec( );
+    
+    ZC := ZariskiCoframeOfAffineSpectrum( R );
+    
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                PreUnderlyingMatrix, I,
+                UnderlyingRing, R,
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
+                IsClosedSubobject, true
+                );
+    else
+        ObjectifyObjectForCAPWithAttributes( A, ZC,
+                PreUnderlyingMatrix, I,
+                UnderlyingRing, R,
+                IsClosedSubobject, true
+                );
+    fi;
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
     
 end );
 
@@ -80,40 +69,40 @@ InstallMethod( ClosedSubsetOfSpec,
     return ClosedSubsetOfSpec( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
 
 end );
-    
-##
-InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
-        "for a CAP category morphism",
-        [ IsCapCategoryMorphism ],
 
+##
+InstallMethod( ClosedSubsetOfSpecByReducedColumn,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
+        
   function( I )
     local R, R_elim, A, ZC, B;
     
-    R := UnderlyingRing( CapCategory( I ) );
+    R := HomalgRing( I );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
+        I := R_elim * I;
         R := R_elim;
     fi;
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    ZC := ZariskiCoframeOfAffineSpectrum( R );
     
     B := BaseRing( R );
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ReducedMorphismOfUnderlyingCategory, I,
+                ReducedUnderlyingColumn, I,
                 UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ReducedMorphismOfUnderlyingCategory, I,
+                ReducedUnderlyingColumn, I,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -126,29 +115,18 @@ InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
-
-  function( mat )
-    
-    return ClosedSubsetOfSpecByReducedMorphism( AsMorphismInCategoryOfRows( mat ) );
-    
-end );
-
-##
-InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
+InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
 
   function( r )
     
-    return ClosedSubsetOfSpecByReducedMorphism( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+    return ClosedSubsetOfSpecByReducedColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
 
 end );
     
 ##
-InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
+InstallMethod( ClosedSubsetOfSpecByListOfColumns,
         "for a list",
         [ IsList ],
 
@@ -159,7 +137,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
     
     l := L[1];
     
-    L := Filtered( L, l -> not ( IsEndomorphism( l ) and IsOne( l ) ) );
+    L := Filtered( L, l -> not IsOne( l ) );
     
     if L = [ ] then
         L := [ l ];
@@ -167,31 +145,31 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
     
     L := DuplicateFreeList( L );
     
-    R := UnderlyingRing( CapCategory( l ) );
+    R := HomalgRing( l );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        L := List( L, I -> AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) ) );
+        L := List( L, I -> R_elim * I );
         R := R_elim;
     fi;
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    ZC := ZariskiCoframeOfAffineSpectrum( R );
     
     B := BaseRing( R );
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+                ListOfUnderlyingColumns, L,
                 UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfMorphismsOfRank1RangeOfUnderlyingCategory, L,
+                ListOfUnderlyingColumns, L,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -204,7 +182,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfMorphismsOfRank1Range,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
+InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
         "for a list",
         [ IsList ],
 
@@ -215,7 +193,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
     
     l := L[1];
     
-    L := Filtered( L, l -> not ( IsEndomorphism( l ) and IsOne( l ) ) );
+    L := Filtered( L, l -> not IsOne( l ) );
     
     if L = [ ] then
         L := [ l ];
@@ -223,31 +201,31 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
     
     L := DuplicateFreeList( L );
     
-    R := UnderlyingRing( CapCategory( l ) );
+    R := HomalgRing( l );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        L := List( L, I -> AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) ) );
+        L := List( L, I -> R_elim * I );
         R := R_elim;
     fi;
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    ZC := ZariskiCoframeOfAffineSpectrum( R );
     
     B := BaseRing( R );
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfReducedMorphismsOfUnderlyingCategory, L,
+                ListOfReducedColumns, L,
                 UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfReducedMorphismsOfUnderlyingCategory, L,
+                ListOfReducedColumns, L,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -260,38 +238,38 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedMorphisms,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
-        "for a CAP category morphism",
-        [ IsCapCategoryMorphism ],
+InstallMethod( ClosedSubsetOfSpecByStandardColumn,
+        "for a homalg matrix",
+        [ IsHomalgMatrix ],
 
   function( I )
     local R, R_elim, A, ZC, B;
     
-    R := UnderlyingRing( CapCategory( I ) );
+    R := HomalgRing( I );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
     if not IsIdenticalObj( R_elim, R ) then
-        I := AsMorphismInCategoryOfRows( R_elim * UnderlyingMatrix( I ) );
+        I := R_elim * I;
         R := R_elim;
     fi;
     
     A := rec( );
     
-    ZC := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R );
+    ZC := ZariskiCoframeOfAffineSpectrum( R );
     
     B := BaseRing( R );
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                StandardMorphismOfUnderlyingCategory, I,
+                StandardUnderlyingColumn, I,
                 UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( B ) ),
+                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                StandardMorphismOfUnderlyingCategory, I,
+                StandardUnderlyingColumn, I,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -304,24 +282,13 @@ InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
-
-  function( mat )
-    
-    return ClosedSubsetOfSpecByStandardMorphism( AsMorphismInCategoryOfRows( mat ) );
-    
-end );
-
-##
-InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
+InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
 
   function( r )
     
-    return ClosedSubsetOfSpecByStandardMorphism( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+    return ClosedSubsetOfSpecByStandardColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
 
 end );
     
@@ -337,29 +304,29 @@ InstallMethod( ClosedSubsetOfSpec,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByReducedMorphism,
+InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
 
   function( str, R )
     
-    return ClosedSubsetOfSpecByReducedMorphism( StringToHomalgColumnMatrix( str, R ) );
+    return ClosedSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByStandardMorphism,
+InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
 
   function( str, R )
     
-    return ClosedSubsetOfSpecByStandardMorphism( StringToHomalgColumnMatrix( str, R ) );
+    return ClosedSubsetOfSpecByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
 ##
-InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
+InstallMethod( ZariskiCoframeOfAffineSpectrum,
         "for a homalg ring",
         [ IsHomalgRing ],
         
@@ -380,16 +347,10 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     SetUnderlyingRing( ZariskiCoframe, R );
     
-    if not IsBound( R!.CategoryOfRows ) then
-        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
-    fi;
-    
-    ZariskiCoframe!.UnderlyingCategory := R!.CategoryOfRows;
-    
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
-    ZariskiCoframe!.ConstructorByListOfMorphismsOfRank1Range := ClosedSubsetOfSpecByListOfMorphismsOfRank1Range;
-    ZariskiCoframe!.ConstructorByReducedMorphism := ClosedSubsetOfSpecByReducedMorphism;
-    ZariskiCoframe!.ConstructorByStandardMorphism := ClosedSubsetOfSpecByStandardMorphism;
+    ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfSpecByListOfColumns;
+    ZariskiCoframe!.ConstructorByReducedColumn := ClosedSubsetOfSpecByReducedColumn;
+    ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfSpecByStandardColumn;
     
     AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
     
@@ -397,18 +358,18 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
-    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows( ZariskiCoframe );
+    ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES( ZariskiCoframe );
     
     ##
     AddIsHomSetInhabited( ZariskiCoframe,
-      { cat, S, T } -> IsHomSetInhabitedForCoframesUsingCategoryOfRows( S, T ) );
+      { cat, S, T } -> IsHomSetInhabitedForCoframes( S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiCoframe,
-          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows( A, B ) );
+          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForCoframes( A, B ) );
         
     fi;
     
@@ -429,7 +390,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
       function( cat )
         local T;
         
-        T := ClosedSubsetOfSpecByStandardMorphism( HomalgZeroMatrix( 0, 1, R ) );
+        T := ClosedSubsetOfSpecByStandardColumn( HomalgZeroMatrix( 0, 1, R ) );
         
         SetIsTerminal( T, true );
         
@@ -442,7 +403,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
       function( cat )
         local I;
         
-        I := ClosedSubsetOfSpecByStandardMorphism( HomalgIdentityMatrix( 1, R ) );
+        I := ClosedSubsetOfSpecByStandardColumn( HomalgIdentityMatrix( 1, R ) );
         
         SetIsInitial( I, true );
         
@@ -454,18 +415,22 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     AddIsTerminal( ZariskiCoframe,
       function( cat, A )
         
-        return IsZero( MorphismOfRank1RangeOfUnderlyingCategory( A ) );
+        return IsZero( UnderlyingColumn( A ) );
         
     end );
     
     ##
     AddIsInitial( ZariskiCoframe,
       function( cat, A )
-        local mor;
+        local R, id, mats;
         
-        mor := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+        R := UnderlyingRing( cat );
         
-        return ForAll( mor, IsSplitEpimorphism );
+        id := HomalgIdentityMatrix( 1, R );
+        
+        mats := ListOfUnderlyingColumns( A );
+        
+        return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
     end );
     
@@ -488,11 +453,11 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, ListOfMorphismsOfRank1RangeOfUnderlyingCategory );
+        L := List( L, ListOfUnderlyingColumns );
         
         L := Concatenation( L );
         
-        l := ClosedSubsetOfSpecByListOfMorphismsOfRank1Range( L );
+        l := ClosedSubsetOfSpecByListOfColumns( L );
         
         SetIsInitial( l, false );
         
@@ -524,17 +489,17 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
             return L[1];
         fi;
         
-        L := List( L, MorphismOfRank1RangeOfUnderlyingCategory );
+        L := List( L, UnderlyingColumn );
         
         L := DuplicateFreeList( L );
         
         ## examples show that the GB computations of the entries of L
-        ## (needed to check IsLiftable) might be immensely more expensive
-        ## than the GB of the resulting UniversalMorphismFromDirectSum( L ),
+        ## (needed to check IsZero @ DecideZeroRows) might be immensely more expensive
+        ## than the GB of the resulting UnionOfRows( L ),
         ## so never execute the next line:
-        #L := MaximalObjects( L, IsLiftable );
+        #L := MaximalObjects( L, { a, b } -> IsZero( DecideZeroRows( a, b ) ) );
         
-        l := UniversalMorphismFromDirectSum( L );
+        l := UnionOfRows( L );
         
         l := ClosedSubsetOfSpec( l );
         
@@ -549,20 +514,17 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
       function( cat, A, B )
         local L;
         
-        B := MorphismOfUnderlyingCategory( B );
+        B := BestUnderlyingColumn( B );
         
         if IsZero( B ) then
             return InitialObject( CapCategory( A ) );
         fi;
         
-        A := MorphismOfUnderlyingCategory( A );
-        
-        A := UnderlyingMatrix( A );
-        B := UnderlyingMatrix( B );
+        A := BestUnderlyingColumn( A );
         
         L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
         
-        L := List( L, ClosedSubsetOfSpecByReducedMorphism );
+        L := List( L, ClosedSubsetOfSpecByReducedColumn );
         
         return Coproduct( L );
         
@@ -570,7 +532,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows,
     
     Finalize( ZariskiCoframe );
     
-    SetZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( R, ZariskiCoframe );
+    SetZariskiCoframeOfAffineSpectrum( R, ZariskiCoframe );
     
     return ZariskiCoframe;
     
@@ -594,9 +556,7 @@ InstallMethod( Dimension,
         
   function( A )
     
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    A := List( A, UnderlyingMatrix );
+    A := ListOfUnderlyingColumns( A );
     
     return Maximum( List( A, AffineDimension ) );
     
@@ -609,7 +569,7 @@ InstallMethod( DegreeAttr,
 
   function( A )
     
-    return AffineDegree( UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) ) );
+    return AffineDegree( BestUnderlyingColumn( A ) );
     
 end );
 
@@ -627,11 +587,11 @@ InstallMethod( AClosedSingleton,
     
     C := CapCategory( A );
     
-    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    A := StandardUnderlyingColumn( A );
     
     A := AMaximalIdealContaining( A );
     
-    A := C!.ConstructorByReducedMorphism( A );
+    A := C!.ConstructorByReducedColumn( A );
     
     return A;
     
@@ -648,15 +608,13 @@ InstallMethod( RabinowitschCover,
     A := StandardizeObject( A );
     
     Ap := A.J;
-    Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
+    Ap := BestUnderlyingColumn( Ap );
     
     A := A.I;
     
-    A := MorphismOfUnderlyingCategory( A );
+    A := BestUnderlyingColumn( A );
     
-    R := UnderlyingRing( CapCategory( A ) );
-    
-    A := UnderlyingMatrix( A );
+    R := HomalgRing( A );
     
     Ap := DecideZeroRows( Ap, A );
     Ap := CertainRows( Ap, NonZeroRows( Ap ) );
@@ -679,7 +637,7 @@ InstallMethod( RabinowitschCover,
     Ap := List( Ap, p -> HomalgMatrix( [ p ], 1, 1, S ) );
     A := List( Ap, p -> UnionOfRows( A, p ) );
     
-    A := List( A, ClosedSubsetOfSpecByReducedMorphism );
+    A := List( A, ClosedSubsetOfSpecByReducedColumn );
     
     return Sum( A );
     
@@ -695,7 +653,7 @@ InstallMethod( TangentSpaceAtPoint,
     
     R := UnderlyingRing( gamma );
     
-    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
+    gamma := BestUnderlyingColumn( gamma );
     
     T := TangentSpaceByEquationsAtPoint( gamma, point );
     
@@ -703,7 +661,7 @@ InstallMethod( TangentSpaceAtPoint,
     
     T := ( R * T ) * HomalgMatrix( var, Length( var ), 1, R );
     
-    return ClosedSubsetOfSpecByReducedMorphism( T );
+    return ClosedSubsetOfSpecByReducedColumn( T );
     
 end );
 
@@ -735,7 +693,7 @@ InstallMethod( ComplementOfTangentSpaceAtPoint,
     
     R := UnderlyingRing( gamma );
     
-    gamma := UnderlyingMatrix( MorphismOfUnderlyingCategory( gamma ) );
+    gamma := BestUnderlyingColumn( gamma );
     
     T := TangentSpaceByEquationsAtPoint( gamma, point );
     

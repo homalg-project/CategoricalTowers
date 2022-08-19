@@ -52,6 +52,6 @@ DeclareAttribute( "AsDifferenceOfClosed",
         IsObjectInZariskiFrame );
 
 # Tools
-DeclareGlobalFunction( "IsHomSetInhabitedForFramesUsingCategoryOfRows" );
+DeclareGlobalFunction( "IsHomSetInhabitedForFrames" );
 
-DeclareGlobalFunction( "IsEqualForObjectsIfIsHomSetInhabitedForFramesUsingCategoryOfRows" );
+DeclareGlobalFunction( "IsEqualForObjectsIfIsHomSetInhabitedForFrames" );

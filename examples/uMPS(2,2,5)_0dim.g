@@ -25,4 +25,4 @@ SetIsMorphism( phi, true );
 
 #Display( TimeToString( homalgTime( Q ) ) );
 
-#Assert( 0, Collected( List( EntriesOfHomalgMatrix( ReducedBasisOfRowModule( UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( im[1].I ) ) ) ), Degree ) ) = [ [ 4, 3 ], [ 6, 27 ] ] );
+#Assert( 0, Collected( List( EntriesOfHomalgMatrix( ReducedBasisOfRowModule( UnderlyingColumn( im[1].I ) ) ), Degree ) ) = [ [ 4, 3 ], [ 6, 27 ] ] );

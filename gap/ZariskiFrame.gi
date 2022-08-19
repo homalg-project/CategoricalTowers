@@ -5,7 +5,7 @@
 #
 
 ##
-InstallGlobalFunction( IsHomSetInhabitedForFramesUsingCategoryOfRows,
+InstallGlobalFunction( IsHomSetInhabitedForFrames,
   function( S, T )
     
     if HasDimensionOfComplement( S ) and HasDimensionOfComplement( T ) and
@@ -13,19 +13,19 @@ InstallGlobalFunction( IsHomSetInhabitedForFramesUsingCategoryOfRows,
         return false;
     fi;
     
-    S := MorphismOfUnderlyingCategory( S );
-    T := MorphismOfUnderlyingCategory( T );
+    S := BestUnderlyingColumn( S );
+    T := BestUnderlyingColumn( T );
     
-    return IsLiftable( S, T );
+    return IsZero( DecideZeroRows( S, T ) );
     
 end );
 
 ##
-InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForFramesUsingCategoryOfRows,
+InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForFrames,
   function( S, T )
     
-    S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
-    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    S := BestUnderlyingColumn( S );
+    T := BestUnderlyingColumn( T );
     
     return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
     
@@ -41,20 +41,20 @@ InstallMethod( ComplementAsClosedSubset,
     
     C := CapCategory( A )!.ZariskiCoframe;
     
-    if HasStandardMorphismOfUnderlyingCategory( A ) then
-        A := StandardMorphismOfUnderlyingCategory( A );
-        return C!.ConstructorByStandardMorphism( A );
-    elif HasReducedMorphismOfUnderlyingCategory( A ) then
-        A := ReducedMorphismOfUnderlyingCategory( A );
-        return C!.ConstructorByReducedMorphism( A );
-    elif HasListOfMorphismsOfRank1RangeOfUnderlyingCategory( A ) then
-        A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-        return C!.ConstructorByListOfMorphismsOfRank1Range( A );
-    elif HasListOfReducedMorphismsOfUnderlyingCategory( A ) then
-        A := ListOfReducedMorphismsOfUnderlyingCategory( A );
-        return C!.ConstructorByListOfMorphismsOfRank1Range( A );
+    if HasStandardUnderlyingColumn( A ) then
+        A := StandardUnderlyingColumn( A );
+        return C!.ConstructorByStandardColumn( A );
+    elif HasReducedUnderlyingColumn( A ) then
+        A := ReducedUnderlyingColumn( A );
+        return C!.ConstructorByReducedColumn( A );
+    elif HasListOfUnderlyingColumns( A ) then
+        A := ListOfUnderlyingColumns( A );
+        return C!.ConstructorByListOfColumns( A );
+    elif HasListOfReducedColumns( A ) then
+        A := ListOfReducedColumns( A );
+        return C!.ConstructorByListOfColumns( A );
     else
-        A := PreMorphismOfUnderlyingCategory( A );
+        A := PreUnderlyingMatrix( A );
     fi;
     
     return C!.Constructor( A );
@@ -211,7 +211,7 @@ InstallMethod( DisplayString,
   function( A )
     local L, str, l, C;
     
-    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    L := ListOfUnderlyingColumns( A );
     
     str := "";
     
@@ -222,13 +222,13 @@ InstallMethod( DisplayString,
     fi;
     
     Append( str, "D( <" );
-    Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( L[1] ) ), String ) ) );
+    Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( L[1] ), String ) ) );
     Append( str, "> )" );
     
     for C in L{[ 2 .. l ]} do
         Append( str, " ∩ " );
         Append( str, "D( <" );
-        Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( C ) ), String ) ) );
+        Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( C ), String ) ) );
         Append( str, "> )" );
     od;
     

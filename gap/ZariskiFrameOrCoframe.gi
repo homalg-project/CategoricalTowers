@@ -10,7 +10,7 @@ SetInfoLevel( InfoZariskiFrames, 1 );
 InstallOtherMethod( Subobject,
         "for an object in a Zariski (co)frame and a string",
         [ IsObjectInZariskiFrameOrCoframe, IsString ],
-
+        
   function( V, str )
     local Z, U;
     
@@ -23,7 +23,7 @@ InstallOtherMethod( Subobject,
 end );
 
 ##
-InstallGlobalFunction( ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
+InstallGlobalFunction( ITERATED_INTERSECTION_OF_IDEALS,
   function( L )
     local biased_weak_fiber_product;
     
@@ -32,7 +32,7 @@ InstallGlobalFunction( ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
     fi;
     
     biased_weak_fiber_product := function( I, J )
-        return PreCompose( ProjectionOfBiasedWeakFiberProduct( I, J ), I );
+        return ReducedSyzygiesOfRows( I, J ) * I;
     end;
     
     return Iterated( L, biased_weak_fiber_product );
@@ -40,7 +40,7 @@ InstallGlobalFunction( ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
 end );
 
 ##
-InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
+InstallGlobalFunction( INTERSECTION_OF_IDEALS,
   function( L )
     local id;
     
@@ -48,173 +48,141 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS_USING_CategoryOfRows,
         return L[1];
     fi;
     
-    id := IdentityMorphism( Range( L[1] ) );
+    id := HomalgIdentityMatrix( 1, HomalgRing( L[1] ) );
     
     id := ListWithIdenticalEntries( Length( L ), id );
     
-    id := UniversalMorphismIntoDirectSum( id );
+    id := UnionOfColumns( id );
     
-    L := DirectSumFunctorial( L );
+    L := DiagMat( L );
     
-    return ProjectionOfBiasedWeakFiberProduct( id, L );
-    
-end );
-
-##
-InstallMethod( AsMorphismInCategoryOfRows,
-        "for a homalg matrix",
-        [ IsHomalgMatrix ],
-
-  function( mat )
-    local R;
-    
-    R := HomalgRing( mat );
-    
-    if not IsBound( R!.CategoryOfRows ) then
-        R!.CategoryOfRows := CategoryOfRows( R : overhead := false );
-    fi;
-    
-    return AsCategoryOfRowsMorphism( mat, R!.CategoryOfRows );
+    return ReducedSyzygiesOfRows( id, L );
     
 end );
 
 ##
-InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfUnderlyingColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasPreMorphismOfUnderlyingCategory ],
-
+        [ IsObjectInZariskiFrameOrCoframe and HasPreUnderlyingMatrix ],
+        
   function( A )
-    local g, R, C, D;
+    local g;
     
-    A := PreMorphismOfUnderlyingCategory( A );
+    A := PreUnderlyingMatrix( A );
     
-    g := RankOfObject( Range( A ) );
-    
-    R := CategoryOfRowsObject( 1, CapCategory( A ) );
+    g := NrColumns( A );
     
     if g = 0 then
-        return [ IdentityMorphism( R ) ];
+        return [ HomalgIdentityMatrix( 1, HomalgRing( A ) ) ];
     elif g = 1 then
         return [ A ];
     fi;
     
-    D := ListWithIdenticalEntries( g, R );
-    
-    A := List( [ 1 .. g ], i -> PreCompose( A, ProjectionInFactorOfDirectSum( D, i ) ) );
-    
-    A := DuplicateFreeList( A );
-    
-    return A;
+    return DuplicateFreeList( List( [ 1 .. g ], i -> CertainColumns( A, [ i ] ) ) );
     
 end );
 
 ##
-InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
-
+        
   function( A )
     
-    A := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    return ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
+    return ITERATED_INTERSECTION_OF_IDEALS( ListOfUnderlyingColumns( A ) );
     
 end );
 
 ##
-InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasReducedMorphismOfUnderlyingCategory ],
-
-  ReducedMorphismOfUnderlyingCategory );
+        [ IsObjectInZariskiFrameOrCoframe and HasReducedUnderlyingColumn ],
+        
+  ReducedUnderlyingColumn );
 
 ##
-InstallMethod( MorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
-
-  StandardMorphismOfUnderlyingCategory );
+        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        
+  StandardUnderlyingColumn );
 
 ##
-InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfUnderlyingColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasReducedMorphismOfUnderlyingCategory ],
-
+        [ IsObjectInZariskiFrameOrCoframe and HasReducedUnderlyingColumn ],
+        
   function( A )
     
-    return [ ReducedMorphismOfUnderlyingCategory( A ) ];
+    return [ ReducedUnderlyingColumn( A ) ];
     
 end );
 
 ##
-InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfUnderlyingColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
-
+        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        
   function( A )
     
-    return [ StandardMorphismOfUnderlyingCategory( A ) ];
+    return [ StandardUnderlyingColumn( A ) ];
     
 end );
 
 ##
-InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfUnderlyingColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasListOfReducedMorphismsOfUnderlyingCategory ],
-
-  ListOfReducedMorphismsOfUnderlyingCategory );
+        [ IsObjectInZariskiFrameOrCoframe and HasListOfReducedColumns ],
+        
+  ListOfReducedColumns );
 
 ##
-InstallMethod( ListOfMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfUnderlyingColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasListOfStandardMorphismsOfUnderlyingCategory ],
-
-  ListOfStandardMorphismsOfUnderlyingCategory );
+        [ IsObjectInZariskiFrameOrCoframe and HasListOfStandardColumns ],
+        
+  ListOfStandardColumns );
 
 ##
-InstallMethod( ListOfStandardMorphismsOfUnderlyingCategory,
+InstallMethod( ListOfStandardColumns,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
   function( A )
     local L;
     
-    L := ListOfReducedMorphismsOfUnderlyingCategory( A );
-    
-    L := List( L, UnderlyingMatrix );
+    L := ListOfReducedColumns( A );
     
     L := List( L, BasisOfRows );
     
-    L := List( L, AsMorphismInCategoryOfRows );
-    
-    if HasListOfMorphismsOfRank1RangeOfUnderlyingCategory( A ) then
-        A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    if HasListOfUnderlyingColumns( A ) then
+        A!.ListOfUnderlyingColumns := L;
     else
-        SetListOfMorphismsOfRank1RangeOfUnderlyingCategory( A, L );
+        SetListOfUnderlyingColumns( A, L );
     fi;
     
-    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    A!.ListOfUnderlyingColumns := L;
     
     return L;
     
 end );
 
 ##
-InstallMethod( ReducedMorphismOfUnderlyingCategory,
+InstallMethod( ReducedUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
-
+        
   function( A )
     local L;
     
-    L := ListOfReducedMorphismsOfUnderlyingCategory( A );
+    L := ListOfReducedColumns( A );
     
-    L := ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( L );
+    L := ITERATED_INTERSECTION_OF_IDEALS( L );
     
-    if HasMorphismOfRank1RangeOfUnderlyingCategory( A ) then
-        A!.MorphismOfRank1RangeOfUnderlyingCategory := L;
+    if HasUnderlyingColumn( A ) then
+        A!.UnderlyingColumn := L;
     else
-        SetMorphismOfRank1RangeOfUnderlyingCategory( A, L );
+        SetUnderlyingColumn( A, L );
     fi;
     
     return L;
@@ -222,65 +190,59 @@ InstallMethod( ReducedMorphismOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( ReducedMorphismOfUnderlyingCategory,
+InstallMethod( ReducedUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
-
-  StandardMorphismOfUnderlyingCategory );
+        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        
+  StandardUnderlyingColumn );
 
 ##
-InstallMethod( MorphismOfUnderlyingCategory,
+InstallMethod( BestUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
-
-  ReducedMorphismOfUnderlyingCategory );
+        
+  ReducedUnderlyingColumn );
 
 ##
-InstallMethod( StandardMorphismOfUnderlyingCategory,
+InstallMethod( StandardUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
-
+        
   function( A )
     local mor;
     
-    mor := ReducedMorphismOfUnderlyingCategory( A );
-    
-    mor := UnderlyingMatrix( mor );
+    mor := ReducedUnderlyingColumn( A );
     
     mor := BasisOfRows( mor );
     
-    mor := AsMorphismInCategoryOfRows( mor );
-    
-    if HasMorphismOfRank1RangeOfUnderlyingCategory( A ) then
-        A!.MorphismOfRank1RangeOfUnderlyingCategory := mor;
+    if HasUnderlyingColumn( A ) then
+        A!.UnderlyingColumn := mor;
     else
-        SetMorphismOfRank1RangeOfUnderlyingCategory( A, mor );
+        SetUnderlyingColumn( A, mor );
     fi;
     
-    A!.ReducedMorphismOfUnderlyingCategory := mor;
+    A!.ReducedUnderlyingColumn := mor;
     
     return mor;
     
 end );
 
 ##
-InstallMethod( MorphismOfUnderlyingCategory,
+InstallMethod( BestUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardMorphismOfUnderlyingCategory ],
-
-  StandardMorphismOfUnderlyingCategory );
+        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        
+  StandardUnderlyingColumn );
 
 ##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows,
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES,
   function( zariski_frame_or_coframe )
     
     ##
     AddIsWellDefinedForObjects( zariski_frame_or_coframe,
       function( cat, A )
         
-        A := MorphismOfUnderlyingCategory( A );
-        
-        return IsWellDefined( A );
+        return true;
         
     end );
     
@@ -289,7 +251,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
       function( cat, A )
         
         ## IsEqualForObjectsIfIsHomSetInhabited would trigger
-        ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
+        ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/Coframes
         ## which is for this context unnecessary and expensive
         return IsHomSetInhabited( TerminalObject( CapCategory( A ) ), A );
         
@@ -300,7 +262,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_
       function( cat, A )
         
         ## IsEqualForObjectsIfIsHomSetInhabited would trigger
-        ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/CoframesUsingCategoryOfRows
+        ## IsEqualForObjectsIfIsHomSetInhabitedForFrames/Coframes
         ## which is for this context unnecessary and expensive
         return IsHomSetInhabited( A, InitialObject( CapCategory( A ) ) );
         
@@ -389,7 +351,7 @@ InstallMethod( NormalizeObject,
         
   function( A )
     
-    ListOfReducedMorphismsOfUnderlyingCategory( A );
+    ListOfReducedColumns( A );
     
     IsInitial( A );
     IsTerminal( A );
@@ -405,7 +367,7 @@ InstallMethod( StandardizeObject,
         
   function( A )
     
-    ListOfStandardMorphismsOfUnderlyingCategory( A );
+    ListOfStandardColumns( A );
     
     IsInitial( A );
     IsTerminal( A );
@@ -453,7 +415,7 @@ InstallMethod( AffineApproximation,
     
     R := UnderlyingRing( Ap );
     
-    Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
+    Ap := BestUnderlyingColumn( Ap );
     
     Ap := Ap[ 1, 1 ];
     
@@ -472,13 +434,13 @@ InstallMethod( AffineApproximation,
     
     C := CapCategory( A );
     
-    A := UnderlyingMatrix( MorphismOfUnderlyingCategory( A ) );
+    A := BestUnderlyingColumn( A );
     
     A := R_f * A;
     
     A := UnionOfRows( A, HomalgMatrix( [ Ap * t - 1 ], 1, 1, R_f ) );
     
-    A := ClosedSubsetOfSpecByReducedMorphism( A );
+    A := ClosedSubsetOfSpecByReducedColumn( A );
     
     A!.auxiliary_indeterminate := t;
     
@@ -553,7 +515,7 @@ InstallMethod( RingEpimorphismOntoResidueClassRingOfClosedSuperset,
     
     R := UnderlyingRing( A );
     
-    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    A := StandardUnderlyingColumn( A );
     
     T := R / A;
     
@@ -601,29 +563,29 @@ InstallMethod( Pullback,
     
     if IsObjectInZariskiCoframe( A ) then
         if IsObjectInZariskiCoframeOfAProjectiveVariety( A ) and IsHomalgGradedRing( T ) then
-            C := ZariskiCoframeOfProjUsingCategoryOfRows( T );
-        elif HasZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( Source( phi ) ) then
-            C := ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows( T );
+            C := ZariskiCoframeOfProj( T );
+        elif HasZariskiCoframeOfAffineSpectrum( Source( phi ) ) then
+            C := ZariskiCoframeOfAffineSpectrum( T );
         else
             C := CapCategory( A );
         fi;
     else
         if IsObjectInZariskiFrameOfAProjectiveVariety( A ) and IsHomalgGradedRing( T ) then
-            C := ZariskiFrameOfProjUsingCategoryOfRows( T );
-        elif HasZariskiFrameOfAffineSpectrumUsingCategoryOfRows( Source( phi ) ) then
-            C := ZariskiFrameOfAffineSpectrumUsingCategoryOfRows( T );
+            C := ZariskiFrameOfProj( T );
+        elif HasZariskiFrameOfAffineSpectrum( Source( phi ) ) then
+            C := ZariskiFrameOfAffineSpectrum( T );
         else
             C := CapCategory( A );
         fi;
     fi;
     
-    B := Pullback( phi, UnderlyingMatrix( MorphismOfRank1RangeOfUnderlyingCategory( A ) ) );
+    B := Pullback( phi, UnderlyingColumn( A ) );
     
     if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
-        if HasStandardMorphismOfUnderlyingCategory( A ) then
-            return C!.ConstructorByStandardMorphism( B );
-        elif HasReducedMorphismOfUnderlyingCategory( A ) then
-            return C!.ConstructorByReducedMorphism( B );
+        if HasStandardUnderlyingColumn( A ) then
+            return C!.ConstructorByStandardColumn( B );
+        elif HasReducedUnderlyingColumn( A ) then
+            return C!.ConstructorByReducedColumn( B );
         fi;
     fi;
     
@@ -876,7 +838,7 @@ InstallMethod( RingEpimorphismOfAClosedPoint,
     
     R := UnderlyingRing( A );
     
-    A := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
+    A := StandardUnderlyingColumn( A );
     
     S := Range( map );
     

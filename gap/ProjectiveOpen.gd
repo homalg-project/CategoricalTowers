@@ -29,15 +29,14 @@ DeclareCategory( "IsMorphismInZariskiFrameOfAProjectiveVariety",
 #!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns a &CAP; category
-DeclareAttribute( "ZariskiFrameOfProjUsingCategoryOfRows",
+DeclareAttribute( "ZariskiFrameOfProj",
         IsHomalgRing );
 
 #! @Description
 #!  Construct a Zariski open subset (as an object in the Zariski frame
-#!  of open subsets in a projective variety) from a morphism
-#!  <A>I</A>=<C>AsMorphismInCategoryOfRows</C>( <A>mat</A> ) in the category of (graded) rows.
+#!  of open subsets in a projective variety) from the homogeneous matrix <A>mat</A>.
 #!  The result is the projective non-support of the module-theoretic cokernel <M>M</M>
-#!  of the morphism <A>I</A> in the associated Freyd category,
+#!  of the matrix <A>mat</A> viewed as a morphism in the Freyd category of the associated category of graded rows,
 #!  i.e., the result is the complement of the projective vanishing locus
 #!  of the (homogeneous) annihilator of <M>M</M>.
 #! @Arguments I
@@ -58,39 +57,39 @@ DeclareOperation( "OpenSubsetOfProj",
 #! @InsertChunk OpenSubsetOfProj
 
 #! @Description
-#!  <C>OpenSubsetOfProjByReducedMorphism</C> assumes that the image is a radical ideal.
+#!  <C>OpenSubsetOfProjByReducedColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group OpenSubsetOfProjByReducedMorphism
-DeclareOperation( "OpenSubsetOfProjByReducedMorphism",
+#! @Group OpenSubsetOfProjByReducedColumn
+DeclareOperation( "OpenSubsetOfProjByReducedColumn",
         [ IsCapCategoryMorphism ] );
 
 #! @Arguments mat
-#! @Group OpenSubsetOfProjByReducedMorphism
-DeclareOperation( "OpenSubsetOfProjByReducedMorphism",
+#! @Group OpenSubsetOfProjByReducedColumn
+DeclareOperation( "OpenSubsetOfProjByReducedColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group OpenSubsetOfProjByReducedMorphism
-DeclareOperation( "OpenSubsetOfProjByReducedMorphism",
+#! @Group OpenSubsetOfProjByReducedColumn
+DeclareOperation( "OpenSubsetOfProjByReducedColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments L
-DeclareOperation( "OpenSubsetOfProjByListOfMorphismsOfRank1Range",
+DeclareOperation( "OpenSubsetOfProjByListOfColumns",
         [ IsList ] );
 
 #! @Description
-#!  <C>OpenSubsetOfProjByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
+#!  <C>OpenSubsetOfProjByStandardColumn</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
-#! @Group OpenSubsetOfProjByStandardMorphism
-DeclareOperation( "OpenSubsetOfProjByStandardMorphism",
+#! @Group OpenSubsetOfProjByStandardColumn
+DeclareOperation( "OpenSubsetOfProjByStandardColumn",
         [ IsCapCategoryMorphism ] );
 
 #! @Arguments mat
-#! @Group OpenSubsetOfProjByStandardMorphism
-DeclareOperation( "OpenSubsetOfProjByStandardMorphism",
+#! @Group OpenSubsetOfProjByStandardColumn
+DeclareOperation( "OpenSubsetOfProjByStandardColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group OpenSubsetOfProjByStandardMorphism
-DeclareOperation( "OpenSubsetOfProjByStandardMorphism",
+#! @Group OpenSubsetOfProjByStandardColumn
+DeclareOperation( "OpenSubsetOfProjByStandardColumn",
         [ IsString, IsHomalgRing ] );

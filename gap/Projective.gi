@@ -5,16 +5,14 @@
 #
 
 ##
-InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfSaturatedUnderlyingColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
     local L, S, B;
     
-    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    L := List( L, UnderlyingMatrix );
+    L := ListOfUnderlyingColumns( A );
     
     S := UnderlyingRing( A );
     
@@ -26,77 +24,73 @@ InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
     
     L := Concatenation( L );
     
-    L := List( L, AsMorphismInCategoryOfRows );
-    
-    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    A!.ListOfUnderlyingColumns := L;
     
     return L;
     
 end );
 
 ##
-InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfSaturatedUnderlyingColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasListOfReducedMorphismsOfUnderlyingCategory ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasListOfReducedColumns ],
 
-  ListOfReducedMorphismsOfUnderlyingCategory );
+  ListOfReducedColumns );
 
 ##
-InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfSaturatedUnderlyingColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedMorphismOfUnderlyingCategory ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedUnderlyingColumn ],
 
-  ListOfReducedMorphismsOfUnderlyingCategory );
+  ListOfReducedColumns );
 
 ##
-InstallMethod( ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory,
+InstallMethod( ListOfSaturatedUnderlyingColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardMorphismOfUnderlyingCategory ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardUnderlyingColumn ],
 
   function( A )
     
-    return [ StandardMorphismOfUnderlyingCategory( A ) ];
+    return [ StandardUnderlyingColumn( A ) ];
     
 end );
 
 ##
-InstallMethod( SaturatedMorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( SaturatedUnderlyingColumn,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
     
-    A := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    A := ListOfSaturatedUnderlyingColumns( A );
     
-    return ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows( A );
+    return ITERATED_INTERSECTION_OF_IDEALS( A );
     
 end );
 
 ##
-InstallMethod( SaturatedMorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( SaturatedUnderlyingColumn,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedMorphismOfUnderlyingCategory ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedUnderlyingColumn ],
 
-  ReducedMorphismOfUnderlyingCategory );
+  ReducedUnderlyingColumn );
 
 ##
-InstallMethod( SaturatedMorphismOfRank1RangeOfUnderlyingCategory,
+InstallMethod( SaturatedUnderlyingColumn,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardMorphismOfUnderlyingCategory ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardUnderlyingColumn ],
 
-  StandardMorphismOfUnderlyingCategory );
+  StandardUnderlyingColumn );
 
 ##
-InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
+InstallMethod( ListOfReducedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
     local L, S, B;
     
-    L := ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    L := List( L, UnderlyingMatrix );
+    L := ListOfSaturatedUnderlyingColumns( A );
     
     L := List( L, UnderlyingMatrixOverNonGradedRing );
     
@@ -106,9 +100,7 @@ InstallMethod( ListOfReducedMorphismsOfUnderlyingCategory,
     
     L := List( L, mat -> S * mat );
     
-    L := List( L, AsMorphismInCategoryOfRows );
-    
-    A!.ListOfSaturatedMorphismsOfRank1RangeOfUnderlyingCategory := L;
+    A!.ListOfSaturatedUnderlyingColumns := L;
     
     return L;
     

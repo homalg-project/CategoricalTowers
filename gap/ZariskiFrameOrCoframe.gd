@@ -43,29 +43,25 @@ DeclareOperation( "IsClosed",
 DeclareAttribute( "BaseOfFibration",
         IsObjectInZariskiFrameOrCoframe );
 
-#!
-DeclareAttribute( "AsMorphismInCategoryOfRows",
-        IsHomalgMatrix );
-
-DeclareAttribute( "PreMorphismOfUnderlyingCategory",
+DeclareAttribute( "PreUnderlyingMatrix",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfMorphismsOfRank1RangeOfUnderlyingCategory",
+DeclareAttribute( "ListOfUnderlyingColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfReducedMorphismsOfUnderlyingCategory",
+DeclareAttribute( "ListOfReducedColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfStandardMorphismsOfUnderlyingCategory",
+DeclareAttribute( "ListOfStandardColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "MorphismOfRank1RangeOfUnderlyingCategory",
+DeclareAttribute( "UnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ReducedMorphismOfUnderlyingCategory",
+DeclareAttribute( "ReducedUnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "StandardMorphismOfUnderlyingCategory",
+DeclareAttribute( "StandardUnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Description
@@ -137,11 +133,10 @@ DeclareOperation( "AClosedSuperset",
         [ IsObjectInThinCategory ] );
 
 #! @Description
-#!  The morphism in the category of rows the module-theoretic image
-#!  of which is the vanishing ideal of <A>A</A>.
+#!  The column matrix of generators of the defining ideal of <A>A</A>.
 #! @Arguments A
-#! @Returns a &CAP; morphism
-DeclareOperation( "MorphismOfUnderlyingCategory",
+#! @Returns a &homalg; matrix
+DeclareOperation( "BestUnderlyingColumn",
         [ IsObjectInZariskiFrameOrCoframe ] );
 
 #! @Arguments A
@@ -248,8 +243,8 @@ DeclareOperation( "PseudoIteratorOfClosedPoints",
 #! @InsertChunk PseudoIteratorOfClosedPoints
 
 # Tools
-DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES_DEFINED_USING_CategoryOfRows" );
+DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES" );
 
-DeclareGlobalFunction( "ITERATED_INTERSECTION_OF_IDEALS_USING_CategoryOfRows" );
+DeclareGlobalFunction( "ITERATED_INTERSECTION_OF_IDEALS" );
 
-DeclareGlobalFunction( "INTERSECTION_OF_IDEALS_USING_CategoryOfRows" );
+DeclareGlobalFunction( "INTERSECTION_OF_IDEALS" );

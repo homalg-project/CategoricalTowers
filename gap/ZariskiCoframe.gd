@@ -88,6 +88,6 @@ DeclareOperation( "KnownFactors",
         [ IsObjectInZariskiCoframe ] );
 
 # Tools
-DeclareGlobalFunction( "IsHomSetInhabitedForCoframesUsingCategoryOfRows" );
+DeclareGlobalFunction( "IsHomSetInhabitedForCoframes" );
 
-DeclareGlobalFunction( "IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows" );
+DeclareGlobalFunction( "IsEqualForObjectsIfIsHomSetInhabitedForCoframes" );

@@ -5,7 +5,7 @@
 #
 
 ##
-InstallGlobalFunction( IsHomSetInhabitedForCoframesUsingCategoryOfRows,
+InstallGlobalFunction( IsHomSetInhabitedForCoframes,
   function( S, T )
     local irrS, irrT;
     
@@ -28,19 +28,19 @@ InstallGlobalFunction( IsHomSetInhabitedForCoframesUsingCategoryOfRows,
         fi;
     fi;
     
-    S := MorphismOfUnderlyingCategory( S );
-    T := MorphismOfUnderlyingCategory( T );
+    S := BestUnderlyingColumn( S );
+    T := BestUnderlyingColumn( T );
     
-    return IsLiftable( T, S );
+    return IsZero( DecideZeroRows( T, S ) );
     
 end );
 
 ##
-InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframesUsingCategoryOfRows,
+InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframes,
   function( S, T )
     
-    S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
-    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    S := BestUnderlyingColumn( S );
+    T := BestUnderlyingColumn( T );
     
     return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
     
@@ -62,11 +62,11 @@ InstallMethod( NormalizedDistinguishedSubtrahend,
     
     C := CapCategory( T );
     
-    T := UnderlyingMatrix( MorphismOfUnderlyingCategory( T ) );
+    T := BestUnderlyingColumn( T );
     
     S := PreDistinguishedSubtrahend( A );
     
-    S := UnderlyingMatrix( MorphismOfUnderlyingCategory( S ) );
+    S := BestUnderlyingColumn( S );
     
     S := DecideZeroRows( S, T );
     
@@ -132,8 +132,8 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     C := CapCategory( A );
     
-    a := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( A ) );
-    Ap := UnderlyingMatrix( MorphismOfUnderlyingCategory( Ap ) );
+    a := StandardUnderlyingColumn( A );
+    Ap := BestUnderlyingColumn( Ap );
     
     Ap := DecideZeroRows( Ap, a );
     
@@ -147,7 +147,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     Ap := CertainRows( Ap, nonzero_rows );
     
-    A := A - C!.ConstructorByReducedMorphism( Ap );
+    A := A - C!.ConstructorByReducedColumn( Ap );
     
     if IsBound( param ) then
         SetParametrizedObject( A, param );
@@ -183,7 +183,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     C := CapCategory( Ac );
     
-    Ac := UnderlyingMatrix( StandardMorphismOfUnderlyingCategory( Ac ) );
+    Ac := StandardUnderlyingColumn( Ac );
     
     d := [ ];
     
@@ -197,7 +197,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
             D := D.J;
         fi;
         
-        D := UnderlyingMatrix( MorphismOfUnderlyingCategory( D ) );
+        D := BestUnderlyingColumn( D );
         
         D := DecideZeroRows( D, Ac );
         
@@ -221,7 +221,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     d := Set( d );
     
-    d := List( d, C!.ConstructorByReducedMorphism );
+    d := List( d, C!.ConstructorByReducedColumn );
     
     d := DuplicateFreeList( d );
     
@@ -250,9 +250,7 @@ InstallMethod( IrreducibleComponents,
   function ( A )
     local components, ZC;
     
-    components := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
-    
-    components := List( components, UnderlyingMatrix );
+    components := ListOfUnderlyingColumns( A );
     
     components := List( components, RadicalDecompositionOp );
     
@@ -262,7 +260,7 @@ InstallMethod( IrreducibleComponents,
     
     ZC := CapCategory( A );
     
-    components := List( components, ZC!.ConstructorByReducedMorphism );
+    components := List( components, ZC!.ConstructorByReducedColumn );
     
     components := MaximalObjects( components, IsHomSetInhabited );
     
@@ -271,8 +269,8 @@ InstallMethod( IrreducibleComponents,
     Perform( components, function( C ) SetIsIrreducibleObjectInZariskiCoframe( C, true ); end );
     
     if Length( components ) = 1 then
-        if not HasReducedMorphismOfUnderlyingCategory( A ) then
-            SetReducedMorphismOfUnderlyingCategory( A, ReducedMorphismOfUnderlyingCategory( components[1] ) );
+        if not HasReducedUnderlyingColumn( A ) then
+            SetReducedUnderlyingColumn( A, ReducedUnderlyingColumn( components[1] ) );
         fi;
         return [ A ];
     fi;
@@ -356,19 +354,19 @@ InstallMethod( KnownFactors,
   function ( A )
     local components, ZC;
     
-    components := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    components := ListOfUnderlyingColumns( A );
     
     ## FIXME: this is a hack which has to be replaced by the proper inclusion
-    components := MaximalObjects( components, {a,b} -> IsLiftable( b, a ) );
-    A!.ListOfMorphismsOfRank1RangeOfUnderlyingCategory := components;
+    components := MaximalObjects( components, {a,b} -> IsZero( DecideZeroRows( b, a ) ) );
+    A!.ListOfUnderlyingColumns := components;
     ## FIXME
     
     ZC := CapCategory( A );
     
-    if HasListOfStandardMorphismsOfUnderlyingCategory( A ) then
-        components := List( components, ZC!.ConstructorByStandardMorphism );
-    elif HasListOfReducedMorphismsOfUnderlyingCategory( A ) then
-        components := List( components, ZC!.ConstructorByReducedMorphism );
+    if HasListOfStandardColumns( A ) then
+        components := List( components, ZC!.ConstructorByStandardColumn );
+    elif HasListOfReducedColumns( A ) then
+        components := List( components, ZC!.ConstructorByReducedColumn );
     else
         components := List( components, ZC!.Constructor );
     fi;
@@ -468,7 +466,7 @@ InstallMethod( DisplayString,
   function( A )
     local L, str, l, C;
     
-    L := ListOfMorphismsOfRank1RangeOfUnderlyingCategory( A );
+    L := ListOfUnderlyingColumns( A );
     
     str := "";
     
@@ -479,13 +477,13 @@ InstallMethod( DisplayString,
     fi;
     
     Append( str, "V( <" );
-    Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( L[1] ) ), String ) ) );
+    Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( L[1] ), String ) ) );
     Append( str, "> )" );
     
     for C in L{[ 2 .. l ]} do
         Append( str, " ∪ " );
         Append( str, "V( <" );
-        Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( UnderlyingMatrix( C ) ), String ) ) );
+        Append( str, JoinStringsWithSeparator( List( EntriesOfHomalgMatrix( C ), String ) ) );
         Append( str, "> )" );
     od;
     

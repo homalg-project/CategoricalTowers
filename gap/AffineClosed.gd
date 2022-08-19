@@ -35,23 +35,17 @@ DeclareCategory( "IsMorphismInZariskiCoframeOfAnAffineVariety",
 #!  vanishing loci of (radical) ideals of a &homalg; ring <A>R</A>.
 #! @Arguments R
 #! @Returns a &CAP; category
-DeclareAttribute( "ZariskiCoframeOfAffineSpectrumUsingCategoryOfRows",
+DeclareAttribute( "ZariskiCoframeOfAffineSpectrum",
         IsHomalgRing );
 
 #! @Description
 #!  Construct a Zariski closed subset (as an object in the Zariski coframe
-#!  of closed subsets in an affine variety) from a morphism
-#!  <A>I</A>=<C>AsMorphismInCategoryOfRows</C>( <A>mat</A> ) in the category of rows.
+#!  of closed subsets in an affine variety) from a matrix <A>mat</A>.
 #!  The result is the support of the module-theoretic cokernel <M>M</M>
-#!  of the morphism <A>I</A> in the associated Freyd category,
+#!  of <A>mat</A> viewed as a morphism in the Freyd category of the associated category of rows,
 #!  i.e., the result is the vanishing locus of the annihilator of <M>M</M>.
-#! @Arguments I
-#! @Returns a &CAP; object
-#! @Group ClosedSubsetOfSpec
-DeclareOperation( "ClosedSubsetOfSpec",
-        [ IsCapCategoryMorphism ] );
-
 #! @Arguments mat
+#! @Returns a &CAP; object
 #! @Group ClosedSubsetOfSpec
 DeclareOperation( "ClosedSubsetOfSpec",
         [ IsHomalgMatrix ] );
@@ -68,55 +62,45 @@ DeclareOperation( "ClosedSubsetOfSpec",
 #! @InsertChunk ClosedSubsetOfSpecZ
 
 #! @Description
-#!  <C>ClosedSubsetOfSpecByReducedMorphism</C> assumes that the image is a radical ideal.
+#!  <C>ClosedSubsetOfSpecByReducedColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group ClosedSubsetOfSpecByReducedMorphism
-DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
-        [ IsCapCategoryMorphism ] );
-
-#! @Arguments mat
-#! @Group ClosedSubsetOfSpecByReducedMorphism
-DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
+#! @Group ClosedSubsetOfSpecByReducedColumn
+DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group ClosedSubsetOfSpecByReducedMorphism
-DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
+#! @Group ClosedSubsetOfSpecByReducedColumn
+DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments r
-#! @Group ClosedSubsetOfSpecByReducedMorphism
-DeclareOperation( "ClosedSubsetOfSpecByReducedMorphism",
+#! @Group ClosedSubsetOfSpecByReducedColumn
+DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
         [ IsHomalgRingElement ] );
 
 #! @Arguments L
-DeclareOperation( "ClosedSubsetOfSpecByListOfMorphismsOfRank1Range",
+DeclareOperation( "ClosedSubsetOfSpecByListOfColumns",
         [ IsList ] );
 
 #! @Arguments L
-DeclareOperation( "ClosedSubsetOfSpecByListOfReducedMorphisms",
+DeclareOperation( "ClosedSubsetOfSpecByListOfReducedColumns",
         [ IsList ] );
 
 #! @Description
-#!  <C>ClosedSubsetOfSpecByStandardMorphism</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
+#!  <C>ClosedSubsetOfSpecByStandardColumn</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
 #! @Arguments I
-#! @Group ClosedSubsetOfSpecByStandardMorphism
-DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
-        [ IsCapCategoryMorphism ] );
-
-#! @Arguments mat
-#! @Group ClosedSubsetOfSpecByStandardMorphism
-DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
+#! @Group ClosedSubsetOfSpecByStandardColumn
+DeclareOperation( "ClosedSubsetOfSpecByStandardColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group ClosedSubsetOfSpecByStandardMorphism
-DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
+#! @Group ClosedSubsetOfSpecByStandardColumn
+DeclareOperation( "ClosedSubsetOfSpecByStandardColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments r
-#! @Group ClosedSubsetOfSpecByStandardMorphism
-DeclareOperation( "ClosedSubsetOfSpecByStandardMorphism",
+#! @Group ClosedSubsetOfSpecByStandardColumn
+DeclareOperation( "ClosedSubsetOfSpecByStandardColumn",
         [ IsHomalgRingElement ] );
 
 #! @Description
