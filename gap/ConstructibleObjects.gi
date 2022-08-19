@@ -173,7 +173,7 @@ InstallMethod( FactorizeObject,
     
     A := List( A, FactorizeObject );
     
-    A := CallFuncList( UnionOfMultipleDifferences, A );
+    A := UnionOfMultipleDifferences( A );
     
     SetFactorizeObject( A, A );
     
