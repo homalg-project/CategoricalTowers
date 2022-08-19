@@ -61,28 +61,6 @@ InstallGlobalFunction( INTERSECTION_OF_IDEALS,
 end );
 
 ##
-InstallMethod( ListOfUnderlyingColumns,
-        "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasPreUnderlyingMatrix ],
-        
-  function( A )
-    local g;
-    
-    A := PreUnderlyingMatrix( A );
-    
-    g := NrColumns( A );
-    
-    if g = 0 then
-        return [ HomalgIdentityMatrix( 1, HomalgRing( A ) ) ];
-    elif g = 1 then
-        return [ A ];
-    fi;
-    
-    return DuplicateFreeList( List( [ 1 .. g ], i -> CertainColumns( A, [ i ] ) ) );
-    
-end );
-
-##
 InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
@@ -106,6 +84,28 @@ InstallMethod( UnderlyingColumn,
         [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
         
   StandardUnderlyingColumn );
+
+##
+InstallMethod( ListOfUnderlyingColumns,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe and HasPreUnderlyingMatrix ],
+        
+  function( A )
+    local g;
+    
+    A := PreUnderlyingMatrix( A );
+    
+    g := NrColumns( A );
+    
+    if g = 0 then
+        return [ HomalgIdentityMatrix( 1, HomalgRing( A ) ) ];
+    elif g = 1 then
+        return [ A ];
+    fi;
+    
+    return DuplicateFreeList( List( [ 1 .. g ], i -> CertainColumns( A, [ i ] ) ) );
+    
+end );
 
 ##
 InstallMethod( ListOfUnderlyingColumns,
