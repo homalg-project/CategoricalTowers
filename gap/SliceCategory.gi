@@ -220,12 +220,14 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     AddIsWellDefinedForObjects( S,
       function( cat, a )
-        local m;
+        local C, m;
+        
+        C := AmbientCategory( cat );
         
         m := UnderlyingMorphism( a );
         
-        return IsIdenticalObj( Range( m ), BaseObject( cat ) ) and
-               IsWellDefinedForMorphisms( AmbientCategory( cat ), m );
+        return IsEqualForObjects( C, Range( m ), BaseObject( cat ) ) and
+               IsWellDefinedForMorphisms( C, m );
         
     end );
     
