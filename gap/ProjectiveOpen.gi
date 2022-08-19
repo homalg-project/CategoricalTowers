@@ -213,14 +213,7 @@ InstallMethod( ZariskiFrameOfProjUsingCategoryOfRows,
     
     ##
     AddIsHomSetInhabited( ZariskiFrame,
-      function( cat, S, T )
-        
-        S := MorphismOfUnderlyingCategory( S );
-        T := MorphismOfUnderlyingCategory( T );
-        
-        return IsLiftable( S, T );
-        
-    end );
+      { cat, S, T } -> IsHomSetInhabitedForFramesUsingCategoryOfRows( S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
