@@ -69,7 +69,7 @@ InstallMethod( Closure,
   function( A )
     local H;
     
-    H := CapCategory( A )!.UnderlyingCategory;
+    H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) then
         return ComplementAsClosedSubset( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
