@@ -293,21 +293,15 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     
     AddInitialObject( S,
       function( cat )
-        local B;
         
-        B := BaseObject( cat );
-        
-        return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), B ) );
+        return ObjectConstructor( cat, UniversalMorphismFromInitialObject( AmbientCategory( cat ), BaseObject( cat ) ) );
         
     end );
     
     AddTerminalObject( S,
       function( cat )
-        local B;
         
-        B := BaseObject( cat );
-        
-        return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), B ) );
+        return ObjectConstructor( cat, IdentityMorphism( AmbientCategory( cat ), BaseObject( cat ) ) );
         
     end );
     
