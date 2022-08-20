@@ -1,6 +1,3 @@
 codecov:
   disable_default_path_fixes: true
-fixes:
-  - "/home/gap/.gap/pkg/ZariskiFrames/::"
-ignore:
-  - "home/"
+  require_ci_to_pass: false

@@ -36,21 +36,27 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/CategoryConstructor.git
           git clone --depth 1 https://github.com/homalg-project/Locales.git
+          git clone --depth 1 https://github.com/homalg-project/ArangoDBInterface.git
+          git clone --depth 1 https://github.com/homalg-project/ParallelizedIterators.git
+          git clone --depth 1 https://github.com/homalg-project/alcove.git
+          git clone --depth 1 https://github.com/homalg-project/MatroidGeneration.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
           [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
           [ -d "CAP_project/CompilerForCAP" ] && make -C "CAP_project/CompilerForCAP" doc
-          [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
           [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
+          [ -d "CAP_project/CartesianCategories" ] && make -C "CAP_project/CartesianCategories" doc
+          [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
           [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
           [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
           [ -d "Toposes" ] && make -C "Toposes" doc
           TERM=dumb make -C ZariskiFrames -j $(nproc) --output-sync ci-test
+          TERM=dumb make -C MatroidGeneration -j $(nproc) --output-sync ci-test
           cp ./ZariskiFrames/.codecov.yml ./
-          (cd ZariskiFrames && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
-          [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./ZariskiFrames/upload_codecov.sh
+          (cd ZariskiFrames && LANG=C.UTF-8 python3 process_coverage.py)
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./ZariskiFrames/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd ZariskiFrames
