@@ -698,6 +698,29 @@ end
     , 100 );
     
     ##
+    AddMorphismConstructor( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1, arg4_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, arg2_1, arg4_1, MorphismMatrix, arg3_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMorphismDatum( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return MorphismMatrix( arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
         
 ########
@@ -714,6 +737,29 @@ function ( cat_1, r_1, a_1 )
                              ), hoisted_1_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, r_1 * UnderlyingQuiverAlgebraElement( deduped_1_3 ) );
                   end );
           end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddObjectConstructor( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, ObjectList, arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddObjectDatum( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return ObjectList( arg2_1 );
 end
 ########
         
