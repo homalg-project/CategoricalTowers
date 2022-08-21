@@ -82,21 +82,21 @@ InstallMethod( Degree,
   DegreeAttr );
 
 ##
-InstallMethod( Closure,
+InstallOtherMethod( Closure,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
   IdFunc );
 
 ##
-InstallMethod( LocallyClosedPart,
+InstallOtherMethod( LocallyClosedPart,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
   StandardizeObject );
 
 ##
-InstallMethod( DistinguishedLocallyClosedPart,
+InstallOtherMethod( DistinguishedLocallyClosedPart,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
@@ -132,7 +132,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     C := CapCategory( A );
     
-    a := StandardUnderlyingColumn( A );
+    a := UnderlyingStandardColumn( A );
     Ap := BestUnderlyingColumn( Ap );
     
     Ap := DecideZeroRows( Ap, a );
@@ -183,7 +183,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     C := CapCategory( Ac );
     
-    Ac := StandardUnderlyingColumn( Ac );
+    Ac := UnderlyingStandardColumn( Ac );
     
     d := [ ];
     
@@ -250,7 +250,7 @@ InstallMethod( IrreducibleComponents,
   function ( A )
     local components, ZC;
     
-    components := ListOfUnderlyingColumns( A );
+    components := UnderlyingListOfColumns( A );
     
     components := List( components, RadicalDecompositionOp );
     
@@ -269,8 +269,8 @@ InstallMethod( IrreducibleComponents,
     Perform( components, function( C ) SetIsIrreducibleObjectInZariskiCoframe( C, true ); end );
     
     if Length( components ) = 1 then
-        if not HasReducedUnderlyingColumn( A ) then
-            SetReducedUnderlyingColumn( A, ReducedUnderlyingColumn( components[1] ) );
+        if not HasUnderlyingReducedColumn( A ) then
+            SetUnderlyingReducedColumn( A, UnderlyingReducedColumn( components[1] ) );
         fi;
         return [ A ];
     fi;
@@ -316,7 +316,7 @@ InstallMethod( Factors,
   IrreducibleComponents );
 
 ##
-InstallMethod( FactorizeObject,
+InstallOtherMethod( FactorizeObject,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
 
@@ -354,18 +354,18 @@ InstallMethod( KnownFactors,
   function ( A )
     local components, ZC;
     
-    components := ListOfUnderlyingColumns( A );
+    components := UnderlyingListOfColumns( A );
     
     ## FIXME: this is a hack which has to be replaced by the proper inclusion
     components := MaximalObjects( components, {a,b} -> IsZero( DecideZeroRows( b, a ) ) );
-    A!.ListOfUnderlyingColumns := components;
+    A!.UnderlyingListOfColumns := components;
     ## FIXME
     
     ZC := CapCategory( A );
     
-    if HasListOfStandardColumns( A ) then
+    if HasUnderlyingListOfStandardColumns( A ) then
         components := List( components, ZC!.ConstructorByStandardColumn );
-    elif HasListOfReducedColumns( A ) then
+    elif HasUnderlyingListOfReducedColumns( A ) then
         components := List( components, ZC!.ConstructorByReducedColumn );
     else
         components := List( components, ZC!.Constructor );
@@ -466,7 +466,7 @@ InstallMethod( DisplayString,
   function( A )
     local L, str, l, C;
     
-    L := ListOfUnderlyingColumns( A );
+    L := UnderlyingListOfColumns( A );
     
     str := "";
     
@@ -523,5 +523,16 @@ InstallMethod( DisplayString,
     Append( str, " }" );
     
     return str;
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for an object in a Zariski coframe",
+        [ IsObjectInZariskiCoframe and IsInitial ],
+        
+  function( A )
+    
+    return "∅";
     
 end );

@@ -71,7 +71,7 @@ InstallMethod( FunctorClosedProjectionBetweenZariskiCoframes,
     AddObjectFunction( pi,
       function( obj )
         
-        obj := ListOfSaturatedUnderlyingColumns( obj );
+        obj := UnderlyingListOfSaturatedColumns( obj );
         
         obj := List( obj, PolynomialsWithoutRelativeIndeterminates );
         

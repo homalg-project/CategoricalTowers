@@ -56,6 +56,17 @@ DeclareOperation( "OpenSubsetOfSpec",
         [ IsString, IsHomalgRing ] );
 #! @InsertChunk OpenSubsetOfSpecZ
 
+#! @Arguments r
+#! @Group OpenSubsetOfSpec
+DeclareOperation( "OpenSubsetOfSpec",
+        [ IsHomalgRingElement ] );
+#! @InsertChunk OpenSubsetOfSpecZ
+
+#! @Arguments L
+#! @Group OpenSubsetOfSpec
+DeclareOperation( "OpenSubsetOfSpecByListOfColumns",
+        [ IsList ] );
+
 #! @Description
 #!  <C>OpenSubsetOfSpecByReducedColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
@@ -68,8 +79,14 @@ DeclareOperation( "OpenSubsetOfSpecByReducedColumn",
 DeclareOperation( "OpenSubsetOfSpecByReducedColumn",
         [ IsString, IsHomalgRing ] );
 
+#! @Arguments r
+#! @Group OpenSubsetOfSpecByReducedColumn
+DeclareOperation( "OpenSubsetOfSpecByReducedColumn",
+        [ IsHomalgRingElement ] );
+
 #! @Arguments L
-DeclareOperation( "OpenSubsetOfSpecByListOfColumns",
+#! @Group OpenSubsetOfSpecByReducedColumn
+DeclareOperation( "OpenSubsetOfSpecByListOfReducedColumns",
         [ IsList ] );
 
 #! @Description
@@ -83,3 +100,8 @@ DeclareOperation( "OpenSubsetOfSpecByStandardColumn",
 #! @Group OpenSubsetOfSpecByStandardColumn
 DeclareOperation( "OpenSubsetOfSpecByStandardColumn",
         [ IsString, IsHomalgRing ] );
+
+#! @Arguments r
+#! @Group OpenSubsetOfSpecByStandardColumn
+DeclareOperation( "OpenSubsetOfSpecByStandardColumn",
+        [ IsHomalgRingElement ] );

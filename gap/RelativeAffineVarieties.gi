@@ -40,14 +40,14 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         
         R_elim := PolynomialRingWithProductOrdering( R );
         
-        if HasListOfReducedColumns( A ) or
-           HasReducedUnderlyingColumn( A ) then
+        if HasUnderlyingListOfReducedColumns( A ) or
+           HasUnderlyingReducedColumn( A ) then
             known_to_be_reduced := true;
         else
             known_to_be_reduced := false;
         fi;
         
-        I := ListOfUnderlyingColumns( A );
+        I := UnderlyingListOfColumns( A );
         
         if not IsIdenticalObj( R, R_elim ) then
             Info( InfoZariskiFrames, 1, "!! The underlying ring of A and the associated ring equipped with the elimination order do not coincide !!\n" );
@@ -132,18 +132,18 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
       function( obj )
         local L, fib;
         
-        L := ListOfUnderlyingColumns( obj );
+        L := UnderlyingListOfColumns( obj );
         
         L := List( L, mat -> R * mat );
         
         fib := Constructor( L );
         
-        if HasListOfReducedColumns( obj ) then
-            SetListOfReducedColumns( fib, L );
+        if HasUnderlyingListOfReducedColumns( obj ) then
+            SetUnderlyingListOfReducedColumns( fib, L );
         fi;
         
-        if HasListOfStandardColumns( obj ) then
-            SetListOfStandardColumns( fib, L );
+        if HasUnderlyingListOfStandardColumns( obj ) then
+            SetUnderlyingListOfStandardColumns( fib, L );
         fi;
         
         AddToToDoList( ToDoListEntry( [ [ obj, "HasIsInitial" ] ],

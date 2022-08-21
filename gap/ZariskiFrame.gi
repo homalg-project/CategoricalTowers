@@ -41,17 +41,17 @@ InstallMethod( ComplementAsClosedSubset,
     
     C := CapCategory( A )!.ZariskiCoframe;
     
-    if HasStandardUnderlyingColumn( A ) then
-        A := StandardUnderlyingColumn( A );
+    if HasUnderlyingStandardColumn( A ) then
+        A := UnderlyingStandardColumn( A );
         return C!.ConstructorByStandardColumn( A );
-    elif HasReducedUnderlyingColumn( A ) then
-        A := ReducedUnderlyingColumn( A );
+    elif HasUnderlyingReducedColumn( A ) then
+        A := UnderlyingReducedColumn( A );
         return C!.ConstructorByReducedColumn( A );
-    elif HasListOfUnderlyingColumns( A ) then
-        A := ListOfUnderlyingColumns( A );
+    elif HasUnderlyingListOfColumns( A ) then
+        A := UnderlyingListOfColumns( A );
         return C!.ConstructorByListOfColumns( A );
-    elif HasListOfReducedColumns( A ) then
-        A := ListOfReducedColumns( A );
+    elif HasUnderlyingListOfReducedColumns( A ) then
+        A := UnderlyingListOfReducedColumns( A );
         return C!.ConstructorByListOfColumns( A );
     else
         A := PreUnderlyingMatrix( A );
@@ -113,7 +113,7 @@ InstallMethod( \-,
 end );
 
 ##
-InstallMethod( Closure,
+InstallOtherMethod( Closure,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
@@ -124,7 +124,7 @@ InstallMethod( Closure,
 end );
 
 ##
-InstallMethod( LocallyClosedPart,
+InstallOtherMethod( LocallyClosedPart,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
@@ -137,7 +137,7 @@ InstallMethod( LocallyClosedPart,
 end );
 
 ##
-InstallMethod( DistinguishedLocallyClosedPart,
+InstallOtherMethod( DistinguishedLocallyClosedPart,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
@@ -211,7 +211,7 @@ InstallMethod( DisplayString,
   function( A )
     local L, str, l, C;
     
-    L := ListOfUnderlyingColumns( A );
+    L := UnderlyingListOfColumns( A );
     
     str := "";
     
@@ -237,5 +237,16 @@ InstallMethod( DisplayString,
     fi;
     
     return str;
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame and IsInitial ],
+        
+  function( A )
+    
+    return "∅";
     
 end );

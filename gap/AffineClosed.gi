@@ -4,24 +4,13 @@
 # Implementations
 #
 
-## fallback method
-InstallMethod( BaseOfFibration,
-        "for an object in a Zariski coframe of an affine variety",
-        [ IsObjectInZariskiCoframe and IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
-        
-  function( A )
-    
-    return TerminalObject( ZariskiCoframeOfAffineSpectrum( UnderlyingRing( A ) ) );
-    
-end );
-
 ##
 InstallMethod( ClosedSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
-    local R, R_elim, A, ZC, B;
+    local R, R_elim, ZC, A;
     
     R := HomalgRing( I );
     
@@ -32,26 +21,9 @@ InstallMethod( ClosedSubsetOfSpec,
         R := R_elim;
     fi;
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    B := BaseRing( R );
-    
-    if not IsIdenticalObj( R, B ) then
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                PreUnderlyingMatrix, I,
-                UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
-                IsClosedSubobject, true
-                );
-    else
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                PreUnderlyingMatrix, I,
-                UnderlyingRing, R,
-                IsClosedSubobject, true
-                );
-    fi;
+    A := ObjectInZariskiFrameOrCoframe( ZC, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -63,7 +35,7 @@ end );
 InstallMethod( ClosedSubsetOfSpec,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
-
+        
   function( r )
     
     return ClosedSubsetOfSpec( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
@@ -76,7 +48,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, R_elim, A, ZC, B;
+    local R, R_elim, ZC, A;
     
     R := HomalgRing( I );
     
@@ -87,26 +59,9 @@ InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         R := R_elim;
     fi;
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    B := BaseRing( R );
-    
-    if not IsIdenticalObj( R, B ) then
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ReducedUnderlyingColumn, I,
-                UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
-                IsClosedSubobject, true
-                );
-    else
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ReducedUnderlyingColumn, I,
-                UnderlyingRing, R,
-                IsClosedSubobject, true
-                );
-    fi;
+    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZC, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -118,7 +73,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
-
+        
   function( r )
     
     return ClosedSubsetOfSpecByReducedColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
@@ -129,23 +84,11 @@ end );
 InstallMethod( ClosedSubsetOfSpecByListOfColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
-    local l, R, R_elim, A, ZC, B;
+    local R, R_elim, ZC, A;
     
-    List( L, IsZero );
-    
-    l := L[1];
-    
-    L := Filtered( L, l -> not IsOne( l ) );
-    
-    if L = [ ] then
-        L := [ l ];
-    fi;
-    
-    L := DuplicateFreeList( L );
-    
-    R := HomalgRing( l );
+    R := HomalgRing( L[1] );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
@@ -154,26 +97,9 @@ InstallMethod( ClosedSubsetOfSpecByListOfColumns,
         R := R_elim;
     fi;
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    B := BaseRing( R );
-    
-    if not IsIdenticalObj( R, B ) then
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfUnderlyingColumns, L,
-                UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
-                IsClosedSubobject, true
-                );
-    else
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfUnderlyingColumns, L,
-                UnderlyingRing, R,
-                IsClosedSubobject, true
-                );
-    fi;
+    A := ObjectInZariskiFrameOrCoframeByListOfColumns( ZC, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -185,23 +111,11 @@ end );
 InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
-    local l, R, R_elim, A, ZC, B;
+    local R, R_elim, ZC, A;
     
-    List( L, IsZero );
-    
-    l := L[1];
-    
-    L := Filtered( L, l -> not IsOne( l ) );
-    
-    if L = [ ] then
-        L := [ l ];
-    fi;
-    
-    L := DuplicateFreeList( L );
-    
-    R := HomalgRing( l );
+    R := HomalgRing( L[1] );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
@@ -210,26 +124,9 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
         R := R_elim;
     fi;
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    B := BaseRing( R );
-    
-    if not IsIdenticalObj( R, B ) then
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfReducedColumns, L,
-                UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
-                IsClosedSubobject, true
-                );
-    else
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfReducedColumns, L,
-                UnderlyingRing, R,
-                IsClosedSubobject, true
-                );
-    fi;
+    A := ObjectInZariskiFrameOrCoframeByListOfReducedColumns( ZC, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -241,9 +138,9 @@ end );
 InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
-    local R, R_elim, A, ZC, B;
+    local R, R_elim, ZC, A;
     
     R := HomalgRing( I );
     
@@ -254,26 +151,9 @@ InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         R := R_elim;
     fi;
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    B := BaseRing( R );
-    
-    if not IsIdenticalObj( R, B ) then
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                StandardUnderlyingColumn, I,
-                UnderlyingRing, R,
-                BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
-                IsClosedSubobject, true
-                );
-    else
-        ObjectifyObjectForCAPWithAttributes( A, ZC,
-                StandardUnderlyingColumn, I,
-                UnderlyingRing, R,
-                IsClosedSubobject, true
-                );
-    fi;
+    A := ObjectInZariskiFrameOrCoframeByStandardColumn( ZC, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -285,7 +165,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
-
+        
   function( r )
     
     return ClosedSubsetOfSpecByStandardColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
@@ -296,7 +176,7 @@ end );
 InstallMethod( ClosedSubsetOfSpec,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfSpec( StringToHomalgColumnMatrix( str, R ) );
@@ -307,7 +187,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -318,7 +198,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfSpecByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -331,7 +211,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
         [ IsHomalgRing ],
         
   function( R )
-    local name, ZariskiCoframe;
+    local name, ZariskiCoframe, B;
     
     R := PolynomialRingWithProductOrdering( R );
     
@@ -343,18 +223,18 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     
     SetFilterObj( ZariskiCoframe, IsZariskiCoframeOfAnAffineVariety );
     
-    ZariskiCoframe!.category_as_first_argument := true;
+    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
     
-    SetUnderlyingRing( ZariskiCoframe, R );
+    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
+    
+    ZariskiCoframe!.category_as_first_argument := true;
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
     ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfSpecByListOfColumns;
     ZariskiCoframe!.ConstructorByReducedColumn := ClosedSubsetOfSpecByReducedColumn;
     ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfSpecByStandardColumn;
     
-    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
-    
-    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
+    SetUnderlyingRing( ZariskiCoframe, R );
     
     ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
@@ -428,7 +308,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
         
         id := HomalgIdentityMatrix( 1, R );
         
-        mats := ListOfUnderlyingColumns( A );
+        mats := UnderlyingListOfColumns( A );
         
         return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
@@ -453,7 +333,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
             return L[1];
         fi;
         
-        L := List( L, ListOfUnderlyingColumns );
+        L := List( L, UnderlyingListOfColumns );
         
         L := Concatenation( L );
         
@@ -534,15 +414,23 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     
     SetZariskiCoframeOfAffineSpectrum( R, ZariskiCoframe );
     
+    B := BaseRing( R );
+    
+    if not IsIdenticalObj( R, B ) then
+        SetBaseOfFibration( ZariskiCoframe, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ) );
+    else
+        SetBaseOfFibration( ZariskiCoframe, TerminalObject( ZariskiCoframe ) );
+    fi;
+    
     return ZariskiCoframe;
     
 end );
 
 ##
-InstallMethod( IsOpen,
+InstallOtherMethod( IsOpen,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-
+        
   function( A )
     
     return IsClosed( -A );
@@ -550,23 +438,23 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( Dimension,
+InstallOtherMethod( Dimension,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
   function( A )
     
-    A := ListOfUnderlyingColumns( A );
+    A := UnderlyingListOfColumns( A );
     
     return Maximum( List( A, AffineDimension ) );
     
 end );
 
 ##
-InstallMethod( DegreeAttr,
+InstallOtherMethod( DegreeAttr,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-
+        
   function( A )
     
     return AffineDegree( BestUnderlyingColumn( A ) );
@@ -587,7 +475,7 @@ InstallMethod( AClosedSingleton,
     
     C := CapCategory( A );
     
-    A := StandardUnderlyingColumn( A );
+    A := UnderlyingStandardColumn( A );
     
     A := AMaximalIdealContaining( A );
     

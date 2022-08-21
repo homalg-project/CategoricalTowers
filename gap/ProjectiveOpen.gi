@@ -8,21 +8,15 @@
 InstallMethod( OpenSubsetOfProj,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
-    local R, A, ZF;
+    local R, ZF, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
-    
     ZF := ZariskiFrameOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZF,
-            PreUnderlyingMatrix, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectInZariskiFrameOrCoframe( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -34,21 +28,15 @@ end );
 InstallMethod( OpenSubsetOfProjByReducedColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
-    local R, A, ZC;
+    local R, ZF, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
+    ZF := ZariskiFrameOfProj( R );
     
-    ZC := ZariskiFrameOfProj( R );
-    
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ReducedUnderlyingColumn, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -60,21 +48,15 @@ end );
 InstallMethod( OpenSubsetOfProjByListOfColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
-    local R, A, ZF;
+    local R, ZF, A;
     
     R := HomalgRing( L[1] );
     
-    A := rec( );
-    
     ZF := ZariskiFrameOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZF,
-            ListOfUnderlyingColumns, L,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectInZariskiFrameOrCoframeByListOfColumns( ZF, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -86,21 +68,15 @@ end );
 InstallMethod( OpenSubsetOfProjByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
-    local R, A, ZC;
+    local R, ZF, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
+    ZF := ZariskiFrameOfProj( R );
     
-    ZC := ZariskiFrameOfProj( R );
-    
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            StandardUnderlyingColumn, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectInZariskiFrameOrCoframeByStandardColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -112,7 +88,7 @@ end );
 InstallMethod( OpenSubsetOfProj,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfProj( StringToHomalgColumnMatrix( str, R ) );
@@ -123,7 +99,7 @@ end );
 InstallMethod( OpenSubsetOfProjByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfProjByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -134,7 +110,7 @@ end );
 InstallMethod( OpenSubsetOfProjByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfProjByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -155,18 +131,20 @@ InstallMethod( ZariskiFrameOfProj,
     
     ZariskiFrame := CreateCapCategory( name );
     
-    ZariskiFrame!.category_as_first_argument := true;
+    SetFilterObj( ZariskiFrame, IsZariskiFrameOfAProjectiveVariety );
     
-    SetUnderlyingRing( ZariskiFrame, R );
+    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAProjectiveVariety );
+    
+    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAProjectiveVariety );
+    
+    ZariskiFrame!.category_as_first_argument := true;
     
     ZariskiFrame!.Constructor := OpenSubsetOfProj;
     ZariskiFrame!.ConstructorByListOfColumns := OpenSubsetOfProjByListOfColumns;
     ZariskiFrame!.ConstructorByReducedColumn := OpenSubsetOfProjByReducedColumn;
     ZariskiFrame!.ConstructorByStandardColumn := OpenSubsetOfProjByStandardColumn;
     
-    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAProjectiveVariety );
-    
-    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAProjectiveVariety );
+    SetUnderlyingRing( ZariskiFrame, R );
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
     
@@ -239,7 +217,7 @@ InstallMethod( ZariskiFrameOfProj,
         
         id := HomalgIdentityMatrix( 1, R );
         
-        mats := ListOfSaturatedUnderlyingColumns( A );
+        mats := UnderlyingListOfSaturatedColumns( A );
         
         return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
@@ -316,7 +294,7 @@ InstallMethod( ZariskiFrameOfProj,
             return L[1];
         fi;
         
-        L := List( L, ListOfUnderlyingColumns );
+        L := List( L, UnderlyingListOfColumns );
         
         L := Concatenation( L );
         
@@ -358,10 +336,10 @@ InstallMethod( ZariskiFrameOfProj,
 end );
 
 ##
-InstallMethod( IsClosedSubobject,
+InstallOtherMethod( IsClosedSubobject,
         "for an object in a Zariski frame of a projective variety",
         [ IsObjectInZariskiFrameOfAProjectiveVariety ],
-
+        
   function( A )
     
     return IsOpen( -A );
@@ -376,7 +354,7 @@ InstallMethod( DimensionOfComplement,
   function( A )
     local dim;
     
-    A := ListOfUnderlyingColumns( A );
+    A := UnderlyingListOfColumns( A );
     
     dim := Maximum( List( A, AffineDimension ) );
     

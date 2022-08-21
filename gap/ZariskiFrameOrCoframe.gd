@@ -14,6 +14,12 @@ DeclareInfoClass( "InfoZariskiFrames" );
 #! @Description
 #!  The &GAP; category of objects in a Zariski frame or coframe.
 #! @Arguments object
+DeclareCategory( "IsZariskiFrameOrCoframe",
+        IsCapCategory and IsThinCategory );
+
+#! @Description
+#!  The &GAP; category of objects in a Zariski frame or coframe.
+#! @Arguments object
 DeclareCategory( "IsObjectInZariskiFrameOrCoframe",
         IsObjectInThinCategory );
 
@@ -46,22 +52,22 @@ DeclareAttribute( "BaseOfFibration",
 DeclareAttribute( "PreUnderlyingMatrix",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfUnderlyingColumns",
+DeclareAttribute( "UnderlyingListOfColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfReducedColumns",
+DeclareAttribute( "UnderlyingListOfReducedColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfStandardColumns",
+DeclareAttribute( "UnderlyingListOfStandardColumns",
         IsObjectInZariskiFrameOrCoframe );
 
 DeclareAttribute( "UnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ReducedUnderlyingColumn",
+DeclareAttribute( "UnderlyingReducedColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "StandardUnderlyingColumn",
+DeclareAttribute( "UnderlyingStandardColumn",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Description
@@ -119,6 +125,23 @@ DeclareAttribute( "RabinowitschCover",
 DeclareOperation( "RabinowitschCover",
         [ IsObjectInMeetSemilatticeOfSingleDifferences,
           IsObjectInZariskiFrameOrCoframe ] );
+
+#! @Section Constructors
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframe",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByReducedColumn",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByStandardColumn",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfColumns",
+        [ IsZariskiFrameOrCoframe, IsList ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfReducedColumns",
+        [ IsZariskiFrameOrCoframe, IsList ] );
 
 #! @Section Operations
 
