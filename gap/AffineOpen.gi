@@ -19,7 +19,7 @@ end );
 InstallMethod( OpenSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, R_elim, A, ZF, B;
     
@@ -63,7 +63,7 @@ end );
 InstallMethod( OpenSubsetOfSpecByReducedColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, R_elim, A, ZF, B;
     
@@ -107,7 +107,7 @@ end );
 InstallMethod( OpenSubsetOfSpecByListOfColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
     local l, R, R_elim, A, ZF, B;
     
@@ -163,7 +163,7 @@ end );
 InstallMethod( OpenSubsetOfSpecByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, R_elim, A, ZF, B;
     
@@ -207,7 +207,7 @@ end );
 InstallMethod( OpenSubsetOfSpec,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfSpec( StringToHomalgColumnMatrix( str, R ) );
@@ -218,7 +218,7 @@ end );
 InstallMethod( OpenSubsetOfSpecByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -229,7 +229,7 @@ end );
 InstallMethod( OpenSubsetOfSpecByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfSpecByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -455,7 +455,7 @@ end );
 InstallMethod( IsClosedSubobject,
         "for an object in a Zariski frame of an affine variety",
         [ IsObjectInZariskiFrameOfAnAffineVariety ],
-
+        
   function( A )
     
     return IsClosed( AsDifferenceOfClosed( A ) );
@@ -479,7 +479,7 @@ end );
 InstallMethod( DegreeOfComplement,
         "for an object in a Zariski frame of an affine variety",
         [ IsObjectInZariskiFrameOfAnAffineVariety ],
-
+        
   function( A )
     
     return AffineDegree( BestUnderlyingColumn( A ) );

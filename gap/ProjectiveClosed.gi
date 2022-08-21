@@ -8,7 +8,7 @@
 InstallMethod( ClosedSubsetOfProj,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, A, ZC;
     
@@ -34,7 +34,7 @@ end );
 InstallMethod( ClosedSubsetOfProjByReducedColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, A, ZC;
     
@@ -60,7 +60,7 @@ end );
 InstallMethod( ClosedSubsetOfProjByListOfColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
     local R, A, ZC;
     
@@ -86,7 +86,7 @@ end );
 InstallMethod( ClosedSubsetOfProjByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, A, ZC;
     
@@ -112,7 +112,7 @@ end );
 InstallMethod( ClosedSubsetOfProj,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfProj( StringToHomalgColumnMatrix( str, R ) );
@@ -123,7 +123,7 @@ end );
 InstallMethod( ClosedSubsetOfProjByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfProjByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -134,7 +134,7 @@ end );
 InstallMethod( ClosedSubsetOfProjByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfProjByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -359,7 +359,7 @@ end );
 InstallMethod( IsOpen,
         "for an object in a Zariski coframe of a projective variety",
         [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
-
+        
   function( A )
     
     return IsClosed( -A );
@@ -390,7 +390,7 @@ end );
 InstallMethod( DegreeAttr,
         "for an object in a Zariski coframe of a projective variety",
         [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
-
+        
   function( A )
     
     return ProjectiveDegree( BestUnderlyingColumn( A ) );

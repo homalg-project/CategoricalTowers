@@ -8,7 +8,7 @@
 InstallMethod( OpenSubsetOfProj,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, A, ZF;
     
@@ -34,7 +34,7 @@ end );
 InstallMethod( OpenSubsetOfProjByReducedColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, A, ZC;
     
@@ -60,7 +60,7 @@ end );
 InstallMethod( OpenSubsetOfProjByListOfColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
     local R, A, ZF;
     
@@ -86,7 +86,7 @@ end );
 InstallMethod( OpenSubsetOfProjByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, A, ZC;
     
@@ -112,7 +112,7 @@ end );
 InstallMethod( OpenSubsetOfProj,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfProj( StringToHomalgColumnMatrix( str, R ) );
@@ -123,7 +123,7 @@ end );
 InstallMethod( OpenSubsetOfProjByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfProjByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -134,7 +134,7 @@ end );
 InstallMethod( OpenSubsetOfProjByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return OpenSubsetOfProjByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -361,7 +361,7 @@ end );
 InstallMethod( IsClosedSubobject,
         "for an object in a Zariski frame of a projective variety",
         [ IsObjectInZariskiFrameOfAProjectiveVariety ],
-
+        
   function( A )
     
     return IsOpen( -A );

@@ -19,7 +19,7 @@ end );
 InstallMethod( ClosedSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, R_elim, A, ZC, B;
     
@@ -63,7 +63,7 @@ end );
 InstallMethod( ClosedSubsetOfSpec,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
-
+        
   function( r )
     
     return ClosedSubsetOfSpec( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
@@ -118,7 +118,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
-
+        
   function( r )
     
     return ClosedSubsetOfSpecByReducedColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
@@ -129,7 +129,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByListOfColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
     local l, R, R_elim, A, ZC, B;
     
@@ -185,7 +185,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
         "for a list",
         [ IsList ],
-
+        
   function( L )
     local l, R, R_elim, A, ZC, B;
     
@@ -241,7 +241,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
-
+        
   function( I )
     local R, R_elim, A, ZC, B;
     
@@ -285,7 +285,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
-
+        
   function( r )
     
     return ClosedSubsetOfSpecByStandardColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
@@ -296,7 +296,7 @@ end );
 InstallMethod( ClosedSubsetOfSpec,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfSpec( StringToHomalgColumnMatrix( str, R ) );
@@ -307,7 +307,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByReducedColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -318,7 +318,7 @@ end );
 InstallMethod( ClosedSubsetOfSpecByStandardColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
-
+        
   function( str, R )
     
     return ClosedSubsetOfSpecByStandardColumn( StringToHomalgColumnMatrix( str, R ) );
@@ -542,7 +542,7 @@ end );
 InstallMethod( IsOpen,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-
+        
   function( A )
     
     return IsClosed( -A );
@@ -566,7 +566,7 @@ end );
 InstallMethod( DegreeAttr,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
-
+        
   function( A )
     
     return AffineDegree( BestUnderlyingColumn( A ) );
