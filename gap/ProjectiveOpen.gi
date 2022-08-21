@@ -45,7 +45,7 @@ InstallMethod( OpenSubsetOfProjByReducedColumn,
     ZC := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            ReducedUnderlyingColumn, I,
+            UnderlyingReducedColumn, I,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -71,7 +71,7 @@ InstallMethod( OpenSubsetOfProjByListOfColumns,
     ZF := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZF,
-            ListOfUnderlyingColumns, L,
+            UnderlyingListOfColumns, L,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -97,7 +97,7 @@ InstallMethod( OpenSubsetOfProjByStandardColumn,
     ZC := ZariskiFrameOfProj( R );
     
     ObjectifyObjectForCAPWithAttributes( A, ZC,
-            StandardUnderlyingColumn, I,
+            UnderlyingStandardColumn, I,
             UnderlyingRing, R,
             IsOpen, true
             );
@@ -239,7 +239,7 @@ InstallMethod( ZariskiFrameOfProj,
         
         id := HomalgIdentityMatrix( 1, R );
         
-        mats := ListOfSaturatedUnderlyingColumns( A );
+        mats := UnderlyingListOfSaturatedColumns( A );
         
         return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
@@ -316,7 +316,7 @@ InstallMethod( ZariskiFrameOfProj,
             return L[1];
         fi;
         
-        L := List( L, ListOfUnderlyingColumns );
+        L := List( L, UnderlyingListOfColumns );
         
         L := Concatenation( L );
         
@@ -376,7 +376,7 @@ InstallMethod( DimensionOfComplement,
   function( A )
     local dim;
     
-    A := ListOfUnderlyingColumns( A );
+    A := UnderlyingListOfColumns( A );
     
     dim := Maximum( List( A, AffineDimension ) );
     

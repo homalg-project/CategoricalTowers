@@ -84,14 +84,14 @@ InstallMethod( OpenSubsetOfSpecByReducedColumn,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZF,
-                ReducedUnderlyingColumn, I,
+                UnderlyingReducedColumn, I,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrum( B ) ),
                 IsOpen, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZF,
-                ReducedUnderlyingColumn, I,
+                UnderlyingReducedColumn, I,
                 UnderlyingRing, R,
                 IsOpen, true
                 );
@@ -140,14 +140,14 @@ InstallMethod( OpenSubsetOfSpecByListOfColumns,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZF,
-                ListOfUnderlyingColumns, L,
+                UnderlyingListOfColumns, L,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrum( B ) ),
                 IsOpen, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZF,
-                ListOfUnderlyingColumns, L,
+                UnderlyingListOfColumns, L,
                 UnderlyingRing, R,
                 IsOpen, true
                 );
@@ -184,14 +184,14 @@ InstallMethod( OpenSubsetOfSpecByStandardColumn,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZF,
-                StandardUnderlyingColumn, I,
+                UnderlyingStandardColumn, I,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiFrameOfAffineSpectrum( B ) ),
                 IsOpen, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZF,
-                StandardUnderlyingColumn, I,
+                UnderlyingStandardColumn, I,
                 UnderlyingRing, R,
                 IsOpen, true
                 );
@@ -331,7 +331,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
         
         id := HomalgIdentityMatrix( 1, R );
         
-        mats := ListOfUnderlyingColumns( A );
+        mats := UnderlyingListOfColumns( A );
         
         return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
@@ -408,7 +408,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
             return L[1];
         fi;
         
-        L := List( L, ListOfUnderlyingColumns );
+        L := List( L, UnderlyingListOfColumns );
         
         L := Concatenation( L );
         
@@ -469,7 +469,7 @@ InstallMethod( DimensionOfComplement,
         
   function( A )
     
-    A := ListOfUnderlyingColumns( A );
+    A := UnderlyingListOfColumns( A );
     
     return Maximum( List( A, AffineDimension ) );
     

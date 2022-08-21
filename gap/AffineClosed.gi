@@ -95,14 +95,14 @@ InstallMethod( ClosedSubsetOfSpecByReducedColumn,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ReducedUnderlyingColumn, I,
+                UnderlyingReducedColumn, I,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ReducedUnderlyingColumn, I,
+                UnderlyingReducedColumn, I,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -162,14 +162,14 @@ InstallMethod( ClosedSubsetOfSpecByListOfColumns,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfUnderlyingColumns, L,
+                UnderlyingListOfColumns, L,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfUnderlyingColumns, L,
+                UnderlyingListOfColumns, L,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -218,14 +218,14 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfReducedColumns, L,
+                UnderlyingListOfReducedColumns, L,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                ListOfReducedColumns, L,
+                UnderlyingListOfReducedColumns, L,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -262,14 +262,14 @@ InstallMethod( ClosedSubsetOfSpecByStandardColumn,
     
     if not IsIdenticalObj( R, B ) then
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                StandardUnderlyingColumn, I,
+                UnderlyingStandardColumn, I,
                 UnderlyingRing, R,
                 BaseOfFibration, TerminalObject( ZariskiCoframeOfAffineSpectrum( B ) ),
                 IsClosedSubobject, true
                 );
     else
         ObjectifyObjectForCAPWithAttributes( A, ZC,
-                StandardUnderlyingColumn, I,
+                UnderlyingStandardColumn, I,
                 UnderlyingRing, R,
                 IsClosedSubobject, true
                 );
@@ -428,7 +428,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
         
         id := HomalgIdentityMatrix( 1, R );
         
-        mats := ListOfUnderlyingColumns( A );
+        mats := UnderlyingListOfColumns( A );
         
         return ForAll( mats, mat -> IsZero( DecideZeroRows( id, mat ) ) );
         
@@ -453,7 +453,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
             return L[1];
         fi;
         
-        L := List( L, ListOfUnderlyingColumns );
+        L := List( L, UnderlyingListOfColumns );
         
         L := Concatenation( L );
         
@@ -556,7 +556,7 @@ InstallMethod( Dimension,
         
   function( A )
     
-    A := ListOfUnderlyingColumns( A );
+    A := UnderlyingListOfColumns( A );
     
     return Maximum( List( A, AffineDimension ) );
     
@@ -587,7 +587,7 @@ InstallMethod( AClosedSingleton,
     
     C := CapCategory( A );
     
-    A := StandardUnderlyingColumn( A );
+    A := UnderlyingStandardColumn( A );
     
     A := AMaximalIdealContaining( A );
     

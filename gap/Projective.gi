@@ -5,14 +5,14 @@
 #
 
 ##
-InstallMethod( ListOfSaturatedUnderlyingColumns,
+InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
     local L, S, B;
     
-    L := ListOfUnderlyingColumns( A );
+    L := UnderlyingListOfColumns( A );
     
     S := UnderlyingRing( A );
     
@@ -24,34 +24,34 @@ InstallMethod( ListOfSaturatedUnderlyingColumns,
     
     L := Concatenation( L );
     
-    A!.ListOfUnderlyingColumns := L;
+    A!.UnderlyingListOfColumns := L;
     
     return L;
     
 end );
 
 ##
-InstallMethod( ListOfSaturatedUnderlyingColumns,
+InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasListOfReducedColumns ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingListOfReducedColumns ],
 
-  ListOfReducedColumns );
+  UnderlyingListOfReducedColumns );
 
 ##
-InstallMethod( ListOfSaturatedUnderlyingColumns,
+InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingReducedColumn ],
 
-  ListOfReducedColumns );
+  UnderlyingListOfReducedColumns );
 
 ##
-InstallMethod( ListOfSaturatedUnderlyingColumns,
+InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingStandardColumn ],
 
   function( A )
     
-    return [ StandardUnderlyingColumn( A ) ];
+    return [ UnderlyingStandardColumn( A ) ];
     
 end );
 
@@ -62,7 +62,7 @@ InstallMethod( SaturatedUnderlyingColumn,
 
   function( A )
     
-    A := ListOfSaturatedUnderlyingColumns( A );
+    A := UnderlyingListOfSaturatedColumns( A );
     
     return ITERATED_INTERSECTION_OF_IDEALS( A );
     
@@ -71,26 +71,26 @@ end );
 ##
 InstallMethod( SaturatedUnderlyingColumn,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasReducedUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingReducedColumn ],
 
-  ReducedUnderlyingColumn );
+  UnderlyingReducedColumn );
 
 ##
 InstallMethod( SaturatedUnderlyingColumn,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasStandardUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingStandardColumn ],
 
-  StandardUnderlyingColumn );
+  UnderlyingStandardColumn );
 
 ##
-InstallMethod( ListOfReducedColumns,
+InstallMethod( UnderlyingListOfReducedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
 
   function( A )
     local L, S, B;
     
-    L := ListOfSaturatedUnderlyingColumns( A );
+    L := UnderlyingListOfSaturatedColumns( A );
     
     L := List( L, UnderlyingMatrixOverNonGradedRing );
     
@@ -100,7 +100,7 @@ InstallMethod( ListOfReducedColumns,
     
     L := List( L, mat -> S * mat );
     
-    A!.ListOfSaturatedUnderlyingColumns := L;
+    A!.UnderlyingListOfSaturatedColumns := L;
     
     return L;
     

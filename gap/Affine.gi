@@ -5,14 +5,14 @@
 #
 
 ##
-InstallMethod( ListOfReducedColumns,
+InstallMethod( UnderlyingListOfReducedColumns,
         "for an object in a Zariski frame or coframe of an affine variety",
         [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
 
   function( A )
     local L;
     
-    L := ListOfUnderlyingColumns( A );
+    L := UnderlyingListOfColumns( A );
     
     L := List( L, RadicalSubobjectOp );
     
@@ -20,7 +20,7 @@ InstallMethod( ListOfReducedColumns,
     
     L := MaximalObjects( L, {a,b} -> IsZero( DecideZeroRows( b, a ) ) );
     
-    A!.ListOfUnderlyingColumns := L;
+    A!.UnderlyingListOfColumns := L;
     
     return L;
     

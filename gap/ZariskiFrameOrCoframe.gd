@@ -46,22 +46,22 @@ DeclareAttribute( "BaseOfFibration",
 DeclareAttribute( "PreUnderlyingMatrix",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfUnderlyingColumns",
+DeclareAttribute( "UnderlyingListOfColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfReducedColumns",
+DeclareAttribute( "UnderlyingListOfReducedColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ListOfStandardColumns",
+DeclareAttribute( "UnderlyingListOfStandardColumns",
         IsObjectInZariskiFrameOrCoframe );
 
 DeclareAttribute( "UnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "ReducedUnderlyingColumn",
+DeclareAttribute( "UnderlyingReducedColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "StandardUnderlyingColumn",
+DeclareAttribute( "UnderlyingStandardColumn",
         IsObjectInZariskiFrameOrCoframe );
 
 #! @Description

@@ -67,26 +67,26 @@ InstallMethod( UnderlyingColumn,
         
   function( A )
     
-    return ITERATED_INTERSECTION_OF_IDEALS( ListOfUnderlyingColumns( A ) );
+    return ITERATED_INTERSECTION_OF_IDEALS( UnderlyingListOfColumns( A ) );
     
 end );
 
 ##
 InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasReducedUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingReducedColumn ],
         
-  ReducedUnderlyingColumn );
+  UnderlyingReducedColumn );
 
 ##
 InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingStandardColumn ],
         
-  StandardUnderlyingColumn );
+  UnderlyingStandardColumn );
 
 ##
-InstallMethod( ListOfUnderlyingColumns,
+InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasPreUnderlyingMatrix ],
         
@@ -108,74 +108,74 @@ InstallMethod( ListOfUnderlyingColumns,
 end );
 
 ##
-InstallMethod( ListOfUnderlyingColumns,
+InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasReducedUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingReducedColumn ],
         
   function( A )
     
-    return [ ReducedUnderlyingColumn( A ) ];
+    return [ UnderlyingReducedColumn( A ) ];
     
 end );
 
 ##
-InstallMethod( ListOfUnderlyingColumns,
+InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingStandardColumn ],
         
   function( A )
     
-    return [ StandardUnderlyingColumn( A ) ];
+    return [ UnderlyingStandardColumn( A ) ];
     
 end );
 
 ##
-InstallMethod( ListOfUnderlyingColumns,
+InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasListOfReducedColumns ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingListOfReducedColumns ],
         
-  ListOfReducedColumns );
+  UnderlyingListOfReducedColumns );
 
 ##
-InstallMethod( ListOfUnderlyingColumns,
+InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasListOfStandardColumns ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingListOfStandardColumns ],
         
-  ListOfStandardColumns );
+  UnderlyingListOfStandardColumns );
 
 ##
-InstallMethod( ListOfStandardColumns,
+InstallMethod( UnderlyingListOfStandardColumns,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
   function( A )
     local L;
     
-    L := ListOfReducedColumns( A );
+    L := UnderlyingListOfReducedColumns( A );
     
     L := List( L, BasisOfRows );
     
-    if HasListOfUnderlyingColumns( A ) then
-        A!.ListOfUnderlyingColumns := L;
+    if HasUnderlyingListOfColumns( A ) then
+        A!.UnderlyingListOfColumns := L;
     else
-        SetListOfUnderlyingColumns( A, L );
+        SetUnderlyingListOfColumns( A, L );
     fi;
     
-    A!.ListOfUnderlyingColumns := L;
+    A!.UnderlyingListOfColumns := L;
     
     return L;
     
 end );
 
 ##
-InstallMethod( ReducedUnderlyingColumn,
+InstallMethod( UnderlyingReducedColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
   function( A )
     local L;
     
-    L := ListOfReducedColumns( A );
+    L := UnderlyingListOfReducedColumns( A );
     
     L := ITERATED_INTERSECTION_OF_IDEALS( L );
     
@@ -190,28 +190,28 @@ InstallMethod( ReducedUnderlyingColumn,
 end );
 
 ##
-InstallMethod( ReducedUnderlyingColumn,
+InstallMethod( UnderlyingReducedColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingStandardColumn ],
         
-  StandardUnderlyingColumn );
+  UnderlyingStandardColumn );
 
 ##
 InstallMethod( BestUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
-  ReducedUnderlyingColumn );
+  UnderlyingReducedColumn );
 
 ##
-InstallMethod( StandardUnderlyingColumn,
+InstallMethod( UnderlyingStandardColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
   function( A )
     local mor;
     
-    mor := ReducedUnderlyingColumn( A );
+    mor := UnderlyingReducedColumn( A );
     
     mor := BasisOfRows( mor );
     
@@ -221,7 +221,7 @@ InstallMethod( StandardUnderlyingColumn,
         SetUnderlyingColumn( A, mor );
     fi;
     
-    A!.ReducedUnderlyingColumn := mor;
+    A!.UnderlyingReducedColumn := mor;
     
     return mor;
     
@@ -230,9 +230,9 @@ end );
 ##
 InstallMethod( BestUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasStandardUnderlyingColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingStandardColumn ],
         
-  StandardUnderlyingColumn );
+  UnderlyingStandardColumn );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES,
@@ -351,7 +351,7 @@ InstallMethod( NormalizeObject,
         
   function( A )
     
-    ListOfReducedColumns( A );
+    UnderlyingListOfReducedColumns( A );
     
     IsInitial( A );
     IsTerminal( A );
@@ -367,7 +367,7 @@ InstallMethod( StandardizeObject,
         
   function( A )
     
-    ListOfStandardColumns( A );
+    UnderlyingListOfStandardColumns( A );
     
     IsInitial( A );
     IsTerminal( A );
@@ -515,7 +515,7 @@ InstallMethod( RingEpimorphismOntoResidueClassRingOfClosedSuperset,
     
     R := UnderlyingRing( A );
     
-    A := StandardUnderlyingColumn( A );
+    A := UnderlyingStandardColumn( A );
     
     T := R / A;
     
@@ -582,9 +582,9 @@ InstallMethod( Pullback,
     B := Pullback( phi, UnderlyingColumn( A ) );
     
     if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
-        if HasStandardUnderlyingColumn( A ) then
+        if HasUnderlyingStandardColumn( A ) then
             return C!.ConstructorByStandardColumn( B );
-        elif HasReducedUnderlyingColumn( A ) then
+        elif HasUnderlyingReducedColumn( A ) then
             return C!.ConstructorByReducedColumn( B );
         fi;
     fi;
@@ -838,7 +838,7 @@ InstallMethod( RingEpimorphismOfAClosedPoint,
     
     R := UnderlyingRing( A );
     
-    A := StandardUnderlyingColumn( A );
+    A := UnderlyingStandardColumn( A );
     
     S := Range( map );
     
