@@ -10,19 +10,17 @@ InstallMethod( OpenSubsetOfProj,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, A, ZF;
+    local R, ZF, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
-    
     ZF := ZariskiFrameOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZF,
-            PreUnderlyingMatrix, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
+                 PreUnderlyingMatrix, I,
+                 UnderlyingRing, R,
+                 IsOpen, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -36,19 +34,17 @@ InstallMethod( OpenSubsetOfProjByReducedColumn,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, A, ZC;
+    local R, ZF, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
+    ZF := ZariskiFrameOfProj( R );
     
-    ZC := ZariskiFrameOfProj( R );
-    
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            UnderlyingReducedColumn, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
+                 UnderlyingReducedColumn, I,
+                 UnderlyingRing, R,
+                 IsOpen, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -62,19 +58,17 @@ InstallMethod( OpenSubsetOfProjByListOfColumns,
         [ IsList ],
         
   function( L )
-    local R, A, ZF;
+    local R, ZF, A;
     
     R := HomalgRing( L[1] );
     
-    A := rec( );
-    
     ZF := ZariskiFrameOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZF,
-            UnderlyingListOfColumns, L,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
+                 UnderlyingListOfColumns, L,
+                 UnderlyingRing, R,
+                 IsOpen, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -88,19 +82,17 @@ InstallMethod( OpenSubsetOfProjByStandardColumn,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, A, ZC;
+    local R, ZF, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
+    ZF := ZariskiFrameOfProj( R );
     
-    ZC := ZariskiFrameOfProj( R );
-    
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            UnderlyingStandardColumn, I,
-            UnderlyingRing, R,
-            IsOpen, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
+                 UnderlyingStandardColumn, I,
+                 UnderlyingRing, R,
+                 IsOpen, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     

@@ -10,19 +10,17 @@ InstallMethod( ClosedSubsetOfProj,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, A, ZC;
+    local R, ZC, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            PreUnderlyingMatrix, I,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
+                 PreUnderlyingMatrix, I,
+                 UnderlyingRing, R,
+                 IsClosedSubobject, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -36,19 +34,17 @@ InstallMethod( ClosedSubsetOfProjByReducedColumn,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, A, ZC;
+    local R, ZC, A;
     
     R := HomalgRing( I );
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            UnderlyingReducedColumn, I,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
+                 UnderlyingReducedColumn, I,
+                 UnderlyingRing, R,
+                 IsClosedSubobject, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -62,19 +58,17 @@ InstallMethod( ClosedSubsetOfProjByListOfColumns,
         [ IsList ],
         
   function( L )
-    local R, A, ZC;
+    local R, ZC, A;
     
     R := HomalgRing( L[1] );
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            UnderlyingListOfColumns, L,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
-            );
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
+                 UnderlyingListOfColumns, L,
+                 UnderlyingRing, R,
+                 IsClosedSubobject, true
+                 );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -88,18 +82,16 @@ InstallMethod( ClosedSubsetOfProjByStandardColumn,
         [ IsHomalgMatrix ],
         
   function( I )
-    local R, A, ZC;
+    local R, ZC, A;
     
     R := HomalgMatrix( I );
     
-    A := rec( );
-    
     ZC := ZariskiCoframeOfProj( R );
     
-    ObjectifyObjectForCAPWithAttributes( A, ZC,
-            UnderlyingStandardColumn, I,
-            UnderlyingRing, R,
-            IsClosedSubobject, true
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
+                 UnderlyingStandardColumn, I,
+                 UnderlyingRing, R,
+                 IsClosedSubobject, true
             );
     
     Assert( 4, IsWellDefined( A ) );

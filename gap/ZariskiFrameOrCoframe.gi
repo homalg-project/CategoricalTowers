@@ -7,6 +7,16 @@
 SetInfoLevel( InfoZariskiFrames, 1 );
 
 ##
+InstallMethod( BaseOfFibration,
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    return BaseOfFibration( CapCategory( A ) );
+    
+end );
+
+##
 InstallOtherMethod( Subobject,
         "for an object in a Zariski (co)frame and a string",
         [ IsObjectInZariskiFrameOrCoframe, IsString ],
