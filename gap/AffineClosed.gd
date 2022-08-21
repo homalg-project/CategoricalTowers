@@ -61,6 +61,11 @@ DeclareOperation( "ClosedSubsetOfSpec",
         [ IsHomalgRingElement ] );
 #! @InsertChunk ClosedSubsetOfSpecZ
 
+#! @Arguments L
+#! @Group ClosedSubsetOfSpec
+DeclareOperation( "ClosedSubsetOfSpecByListOfColumns",
+        [ IsList ] );
+
 #! @Description
 #!  <C>ClosedSubsetOfSpecByReducedColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
@@ -79,10 +84,7 @@ DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
         [ IsHomalgRingElement ] );
 
 #! @Arguments L
-DeclareOperation( "ClosedSubsetOfSpecByListOfColumns",
-        [ IsList ] );
-
-#! @Arguments L
+#! @Group ClosedSubsetOfSpec
 DeclareOperation( "ClosedSubsetOfSpecByListOfReducedColumns",
         [ IsList ] );
 

@@ -62,6 +62,11 @@ DeclareOperation( "ClosedSubsetOfProj",
         [ IsString, IsHomalgRing ] );
 #! @InsertChunk ClosedSubsetOfProj
 
+#! @Arguments L
+#! @Group ClosedSubsetOfProj
+DeclareOperation( "ClosedSubsetOfProjByListOfColumns",
+        [ IsList ] );
+
 #! @Description
 #!  <C>ClosedSubsetOfProjByReducedColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
@@ -73,10 +78,6 @@ DeclareOperation( "ClosedSubsetOfProjByReducedColumn",
 #! @Group ClosedSubsetOfProjByReducedColumn
 DeclareOperation( "ClosedSubsetOfProjByReducedColumn",
         [ IsString, IsHomalgRing ] );
-
-#! @Arguments L
-DeclareOperation( "ClosedSubsetOfProjByListOfColumns",
-        [ IsList ] );
 
 #! @Description
 #!  <C>ClosedSubsetOfProjByStandardColumn</C> assumes that the image is a radical ideal given by some sort of a <Q>standard</Q> basis.
