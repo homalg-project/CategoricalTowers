@@ -23,9 +23,7 @@ InstallMethod( OpenSubsetOfSpec,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 PreUnderlyingMatrix, I,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframe( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -52,9 +50,7 @@ InstallMethod( OpenSubsetOfSpecByReducedColumn,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingReducedColumn, I,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -68,21 +64,9 @@ InstallMethod( OpenSubsetOfSpecByListOfColumns,
         [ IsList ],
         
   function( L )
-    local l, R, R_elim, ZF, A;
+    local R, R_elim, ZF, A;
     
-    List( L, IsZero );
-    
-    l := L[1];
-    
-    L := Filtered( L, l -> not IsOne( l ) );
-    
-    if L = [ ] then
-        L := [ l ];
-    fi;
-    
-    L := DuplicateFreeList( L );
-    
-    R := HomalgRing( l );
+    R := HomalgRing( L[1] );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
@@ -93,9 +77,7 @@ InstallMethod( OpenSubsetOfSpecByListOfColumns,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingListOfColumns, L,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByListOfColumns( ZF, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -109,21 +91,9 @@ InstallMethod( OpenSubsetOfSpecByListOfReducedColumns,
         [ IsList ],
         
   function( L )
-    local l, R, R_elim, ZF, A;
+    local R, R_elim, ZF, A;
     
-    List( L, IsZero );
-    
-    l := L[1];
-    
-    L := Filtered( L, l -> not IsOne( l ) );
-    
-    if L = [ ] then
-        L := [ l ];
-    fi;
-    
-    L := DuplicateFreeList( L );
-    
-    R := HomalgRing( l );
+    R := HomalgRing( L[1] );
     
     R_elim := PolynomialRingWithProductOrdering( R );
     
@@ -134,9 +104,7 @@ InstallMethod( OpenSubsetOfSpecByListOfReducedColumns,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingListOfReducedColumns, L,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByListOfReducedColumns( ZF, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -163,9 +131,7 @@ InstallMethod( OpenSubsetOfSpecByStandardColumn,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingStandardColumn, I,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByStandardColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     

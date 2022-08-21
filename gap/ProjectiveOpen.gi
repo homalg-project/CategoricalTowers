@@ -16,9 +16,7 @@ InstallMethod( OpenSubsetOfProj,
     
     ZF := ZariskiFrameOfProj( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 PreUnderlyingMatrix, I,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframe( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -38,9 +36,7 @@ InstallMethod( OpenSubsetOfProjByReducedColumn,
     
     ZF := ZariskiFrameOfProj( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingReducedColumn, I,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -60,9 +56,7 @@ InstallMethod( OpenSubsetOfProjByListOfColumns,
     
     ZF := ZariskiFrameOfProj( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingListOfColumns, L,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByListOfColumns( ZF, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -82,9 +76,7 @@ InstallMethod( OpenSubsetOfProjByStandardColumn,
     
     ZF := ZariskiFrameOfProj( R );
     
-    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
-                 UnderlyingStandardColumn, I,
-                 UnderlyingRing, R );
+    A := ObjectInZariskiFrameOrCoframeByStandardColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     

@@ -126,6 +126,23 @@ DeclareOperation( "RabinowitschCover",
         [ IsObjectInMeetSemilatticeOfSingleDifferences,
           IsObjectInZariskiFrameOrCoframe ] );
 
+#! @Section Constructors
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframe",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByReducedColumn",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByStandardColumn",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfColumns",
+        [ IsZariskiFrameOrCoframe, IsList ] );
+
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfReducedColumns",
+        [ IsZariskiFrameOrCoframe, IsList ] );
+
 #! @Section Operations
 
 #! @Description

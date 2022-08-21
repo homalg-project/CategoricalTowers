@@ -17,6 +17,97 @@ InstallMethod( BaseOfFibration,
 end );
 
 ##
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframe,
+        "for a Zariksi frame or coframe and a homalg matrix",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ],
+        
+  function( Z, I )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+                   PreUnderlyingMatrix, I,
+                   UnderlyingRing, UnderlyingRing( Z ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByReducedColumn,
+        "for a Zariksi frame or coframe and a homalg matrix",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ],
+        
+  function( Z, I )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+                   UnderlyingReducedColumn, I,
+                   UnderlyingRing, UnderlyingRing( Z ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByStandardColumn,
+        "for a Zariksi frame or coframe and a homalg matrix",
+        [ IsZariskiFrameOrCoframe, IsHomalgMatrix ],
+        
+  function( Z, I )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+                   UnderlyingStandardColumn, I,
+                   UnderlyingRing, UnderlyingRing( Z ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfColumns,
+        "for a Zariski frame or coframe and a list",
+        [ IsZariskiFrameOrCoframe, IsList ],
+        
+  function( Z, L )
+    local l;
+    
+    List( L, IsZero );
+    
+    l := L[1];
+    
+    L := Filtered( L, l -> not IsOne( l ) );
+    
+    if L = [ ] then
+        L := [ l ];
+    fi;
+    
+    L := DuplicateFreeList( L );
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+                   UnderlyingListOfColumns, L,
+                   UnderlyingRing, UnderlyingRing( Z ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfReducedColumns,
+        "for a Zariski frame or coframe and a list",
+        [ IsZariskiFrameOrCoframe, IsList ],
+        
+  function( Z, L )
+    local l;
+    
+    List( L, IsZero );
+    
+    l := L[1];
+    
+    L := Filtered( L, l -> not IsOne( l ) );
+    
+    if L = [ ] then
+        L := [ l ];
+    fi;
+    
+    L := DuplicateFreeList( L );
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+                   UnderlyingListOfReducedColumns, L,
+                   UnderlyingRing, UnderlyingRing( Z ) );
+    
+end );
+
+##
 InstallOtherMethod( Subobject,
         "for an object in a Zariski (co)frame and a string",
         [ IsObjectInZariskiFrameOrCoframe, IsString ],
