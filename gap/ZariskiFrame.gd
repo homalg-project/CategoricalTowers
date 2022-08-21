@@ -12,7 +12,7 @@
 #!  The &GAP; category of Zariski frames.
 #! @Arguments object
 DeclareCategory( "IsZariskiFrame",
-        IsCapCategory and IsThinCategory );
+        IsZariskiFrameOrCoframe );
 
 #! @Description
 #!  The &GAP; category of objects in a Zariski frame.
