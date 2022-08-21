@@ -254,18 +254,18 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     SetFilterObj( ZariskiFrame, IsZariskiFrameOfAnAffineVariety );
     
-    ZariskiFrame!.category_as_first_argument := true;
+    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAnAffineVariety );
     
-    SetUnderlyingRing( ZariskiFrame, R );
+    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAnAffineVariety );
+    
+    ZariskiFrame!.category_as_first_argument := true;
     
     ZariskiFrame!.Constructor := OpenSubsetOfSpec;
     ZariskiFrame!.ConstructorByListOfColumns := OpenSubsetOfSpecByListOfColumns;
     ZariskiFrame!.ConstructorByReducedColumn := OpenSubsetOfSpecByReducedColumn;
     ZariskiFrame!.ConstructorByStandardColumn := OpenSubsetOfSpecByStandardColumn;
     
-    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAnAffineVariety );
-    
-    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAnAffineVariety );
+    SetUnderlyingRing( ZariskiFrame, R );
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
     
@@ -443,9 +443,9 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     Finalize( ZariskiFrame );
     
-    ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfAffineSpectrum( R );
-    
     SetZariskiFrameOfAffineSpectrum( R, ZariskiFrame );
+    
+    ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfAffineSpectrum( R );
     
     return ZariskiFrame;
     

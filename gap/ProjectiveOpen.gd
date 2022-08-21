@@ -9,6 +9,12 @@
 #! @Section GAP Categories
 
 #! @Description
+#!  The &GAP; category of Zariski frames of a projective variety.
+#! @Arguments object
+DeclareCategory( "IsZariskiFrameOfAProjectiveVariety",
+        IsZariskiFrame );
+
+#! @Description
 #!  The &GAP; category of objects in a Zariski frame of a projective variety.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiFrameOfAProjectiveVariety",

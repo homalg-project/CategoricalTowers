@@ -155,18 +155,20 @@ InstallMethod( ZariskiFrameOfProj,
     
     ZariskiFrame := CreateCapCategory( name );
     
-    ZariskiFrame!.category_as_first_argument := true;
+    SetFilterObj( ZariskiFrame, IsZariskiFrameOfAProjectiveVariety );
     
-    SetUnderlyingRing( ZariskiFrame, R );
+    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAProjectiveVariety );
+    
+    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAProjectiveVariety );
+    
+    ZariskiFrame!.category_as_first_argument := true;
     
     ZariskiFrame!.Constructor := OpenSubsetOfProj;
     ZariskiFrame!.ConstructorByListOfColumns := OpenSubsetOfProjByListOfColumns;
     ZariskiFrame!.ConstructorByReducedColumn := OpenSubsetOfProjByReducedColumn;
     ZariskiFrame!.ConstructorByStandardColumn := OpenSubsetOfProjByStandardColumn;
     
-    AddObjectRepresentation( ZariskiFrame, IsObjectInZariskiFrameOfAProjectiveVariety );
-    
-    AddMorphismRepresentation( ZariskiFrame, IsMorphismInZariskiFrameOfAProjectiveVariety );
+    SetUnderlyingRing( ZariskiFrame, R );
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( ZariskiFrame );
     

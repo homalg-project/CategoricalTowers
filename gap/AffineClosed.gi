@@ -343,18 +343,18 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     
     SetFilterObj( ZariskiCoframe, IsZariskiCoframeOfAnAffineVariety );
     
-    ZariskiCoframe!.category_as_first_argument := true;
+    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
     
-    SetUnderlyingRing( ZariskiCoframe, R );
+    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
+    
+    ZariskiCoframe!.category_as_first_argument := true;
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
     ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfSpecByListOfColumns;
     ZariskiCoframe!.ConstructorByReducedColumn := ClosedSubsetOfSpecByReducedColumn;
     ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfSpecByStandardColumn;
     
-    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
-    
-    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
+    SetUnderlyingRing( ZariskiCoframe, R );
     
     ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
