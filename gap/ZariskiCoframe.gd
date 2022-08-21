@@ -18,7 +18,7 @@ DeclareCategory( "IsZariskiCoframe",
 #!  The &GAP; category of objects in a Zariski coframe.
 #! @Arguments object
 DeclareCategory( "IsObjectInZariskiCoframe",
-        IsObjectInZariskiFrameOrCoframe );
+        IsObjectInZariskiFrameOrCoframe and IsClosedSubobject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Zariski coframe.

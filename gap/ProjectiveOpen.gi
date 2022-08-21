@@ -18,9 +18,7 @@ InstallMethod( OpenSubsetOfProj,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  PreUnderlyingMatrix, I,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -42,9 +40,7 @@ InstallMethod( OpenSubsetOfProjByReducedColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingReducedColumn, I,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -66,9 +62,7 @@ InstallMethod( OpenSubsetOfProjByListOfColumns,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingListOfColumns, L,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -90,9 +84,7 @@ InstallMethod( OpenSubsetOfProjByStandardColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingStandardColumn, I,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -352,7 +344,7 @@ InstallMethod( ZariskiFrameOfProj,
 end );
 
 ##
-InstallMethod( IsClosedSubobject,
+InstallOtherMethod( IsClosedSubobject,
         "for an object in a Zariski frame of a projective variety",
         [ IsObjectInZariskiFrameOfAProjectiveVariety ],
         

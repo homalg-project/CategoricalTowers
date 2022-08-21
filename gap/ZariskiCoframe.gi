@@ -82,21 +82,21 @@ InstallMethod( Degree,
   DegreeAttr );
 
 ##
-InstallMethod( Closure,
+InstallOtherMethod( Closure,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
   IdFunc );
 
 ##
-InstallMethod( LocallyClosedPart,
+InstallOtherMethod( LocallyClosedPart,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
   StandardizeObject );
 
 ##
-InstallMethod( DistinguishedLocallyClosedPart,
+InstallOtherMethod( DistinguishedLocallyClosedPart,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
         
@@ -316,7 +316,7 @@ InstallMethod( Factors,
   IrreducibleComponents );
 
 ##
-InstallMethod( FactorizeObject,
+InstallOtherMethod( FactorizeObject,
         "for an object in a Zariski coframe",
         [ IsObjectInZariskiCoframe ],
 

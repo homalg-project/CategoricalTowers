@@ -25,9 +25,7 @@ InstallMethod( OpenSubsetOfSpec,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  PreUnderlyingMatrix, I,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -56,9 +54,7 @@ InstallMethod( OpenSubsetOfSpecByReducedColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingReducedColumn, I,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -99,9 +95,7 @@ InstallMethod( OpenSubsetOfSpecByListOfColumns,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingListOfColumns, L,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -142,9 +136,7 @@ InstallMethod( OpenSubsetOfSpecByListOfReducedColumns,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingListOfReducedColumns, L,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -173,9 +165,7 @@ InstallMethod( OpenSubsetOfSpecByStandardColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
                  UnderlyingStandardColumn, I,
-                 UnderlyingRing, R,
-                 IsOpen, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -473,7 +463,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
 end );
 
 ##
-InstallMethod( IsClosedSubobject,
+InstallOtherMethod( IsClosedSubobject,
         "for an object in a Zariski frame of an affine variety",
         [ IsObjectInZariskiFrameOfAnAffineVariety ],
         

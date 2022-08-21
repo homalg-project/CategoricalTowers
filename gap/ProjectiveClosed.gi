@@ -18,9 +18,7 @@ InstallMethod( ClosedSubsetOfProj,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  PreUnderlyingMatrix, I,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -42,9 +40,7 @@ InstallMethod( ClosedSubsetOfProjByReducedColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingReducedColumn, I,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -66,9 +62,7 @@ InstallMethod( ClosedSubsetOfProjByListOfColumns,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingListOfColumns, L,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -90,9 +84,7 @@ InstallMethod( ClosedSubsetOfProjByStandardColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingStandardColumn, I,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-            );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -350,7 +342,7 @@ InstallMethod( ZariskiCoframeOfProj,
 end );
 
 ##
-InstallMethod( IsOpen,
+InstallOtherMethod( IsOpen,
         "for an object in a Zariski coframe of a projective variety",
         [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
         
@@ -361,7 +353,7 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( Dimension,
+InstallOtherMethod( Dimension,
         "for an object in a Zariski coframe of a projective variety",
         [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
         
@@ -381,7 +373,7 @@ InstallMethod( Dimension,
 end );
 
 ##
-InstallMethod( DegreeAttr,
+InstallOtherMethod( DegreeAttr,
         "for an object in a Zariski coframe of a projective variety",
         [ IsObjectInZariskiCoframeOfAProjectiveVariety ],
         

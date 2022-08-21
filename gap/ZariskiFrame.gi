@@ -113,7 +113,7 @@ InstallMethod( \-,
 end );
 
 ##
-InstallMethod( Closure,
+InstallOtherMethod( Closure,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
@@ -124,7 +124,7 @@ InstallMethod( Closure,
 end );
 
 ##
-InstallMethod( LocallyClosedPart,
+InstallOtherMethod( LocallyClosedPart,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         
@@ -137,7 +137,7 @@ InstallMethod( LocallyClosedPart,
 end );
 
 ##
-InstallMethod( DistinguishedLocallyClosedPart,
+InstallOtherMethod( DistinguishedLocallyClosedPart,
         "for an object in a Zariski frame",
         [ IsObjectInZariskiFrame ],
         

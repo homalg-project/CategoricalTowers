@@ -25,9 +25,7 @@ InstallMethod( ClosedSubsetOfSpec,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  PreUnderlyingMatrix, I,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -67,9 +65,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingReducedColumn, I,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -121,9 +117,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfColumns,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingListOfColumns, L,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -164,9 +158,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingListOfReducedColumns, L,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-                 );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -195,9 +187,7 @@ InstallMethod( ClosedSubsetOfSpecByStandardColumn,
     
     A := ObjectifyObjectForCAPWithAttributes( rec( ), ZC,
                  UnderlyingStandardColumn, I,
-                 UnderlyingRing, R,
-                 IsClosedSubobject, true
-            );
+                 UnderlyingRing, R );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -471,7 +461,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
 end );
 
 ##
-InstallMethod( IsOpen,
+InstallOtherMethod( IsOpen,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
@@ -482,7 +472,7 @@ InstallMethod( IsOpen,
 end );
 
 ##
-InstallMethod( Dimension,
+InstallOtherMethod( Dimension,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
@@ -495,7 +485,7 @@ InstallMethod( Dimension,
 end );
 
 ##
-InstallMethod( DegreeAttr,
+InstallOtherMethod( DegreeAttr,
         "for an object in a Zariski coframe of an affine variety",
         [ IsObjectInZariskiCoframeOfAnAffineVariety ],
         
