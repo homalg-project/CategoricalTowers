@@ -41,8 +41,12 @@ InstallMethod( UnderlyingListOfSaturatedColumns,
 InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingReducedColumn ],
-
-  UnderlyingListOfReducedColumns );
+        
+  function( A )
+    
+    return [ UnderlyingReducedColumn( A ) ];
+    
+end );
 
 ##
 InstallMethod( UnderlyingListOfSaturatedColumns,
