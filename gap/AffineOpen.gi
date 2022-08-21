@@ -110,6 +110,49 @@ InstallMethod( OpenSubsetOfSpecByListOfColumns,
 end );
 
 ##
+InstallMethod( OpenSubsetOfSpecByListOfReducedColumns,
+        "for a list",
+        [ IsList ],
+        
+  function( L )
+    local l, R, R_elim, ZF, A;
+    
+    List( L, IsZero );
+    
+    l := L[1];
+    
+    L := Filtered( L, l -> not IsOne( l ) );
+    
+    if L = [ ] then
+        L := [ l ];
+    fi;
+    
+    L := DuplicateFreeList( L );
+    
+    R := HomalgRing( l );
+    
+    R_elim := PolynomialRingWithProductOrdering( R );
+    
+    if not IsIdenticalObj( R_elim, R ) then
+        L := List( L, I -> R_elim * I );
+        R := R_elim;
+    fi;
+    
+    ZF := ZariskiFrameOfAffineSpectrum( R );
+    
+    A := ObjectifyObjectForCAPWithAttributes( rec( ), ZF,
+                 UnderlyingListOfReducedColumns, L,
+                 UnderlyingRing, R,
+                 IsOpen, true
+                 );
+    
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( OpenSubsetOfSpecByStandardColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
