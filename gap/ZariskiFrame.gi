@@ -239,3 +239,14 @@ InstallMethod( DisplayString,
     return str;
     
 end );
+
+##
+InstallMethod( DisplayString,
+        "for an object in a Zariski frame",
+        [ IsObjectInZariskiFrame and IsInitial ],
+        
+  function( A )
+    
+    return "∅";
+    
+end );
