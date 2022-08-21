@@ -142,6 +142,39 @@ end );
 
 ##
 InstallMethod( OpenSubsetOfSpec,
+        "for a homalg ring element",
+        [ IsHomalgRingElement ],
+        
+  function( r )
+    
+    return OpenSubsetOfSpec( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+
+end );
+
+##
+InstallMethod( OpenSubsetOfSpecByReducedColumn,
+        "for a homalg ring element",
+        [ IsHomalgRingElement ],
+        
+  function( r )
+    
+    return OpenSubsetOfSpecByReducedColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+
+end );
+    
+##
+InstallMethod( OpenSubsetOfSpecByStandardColumn,
+        "for a homalg ring element",
+        [ IsHomalgRingElement ],
+        
+  function( r )
+    
+    return OpenSubsetOfSpecByStandardColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+
+end );
+    
+##
+InstallMethod( OpenSubsetOfSpec,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
         
