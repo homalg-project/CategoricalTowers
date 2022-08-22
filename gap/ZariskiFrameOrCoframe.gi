@@ -7,6 +7,17 @@
 SetInfoLevel( InfoZariskiFrames, 1 );
 
 ##
+InstallMethod( UnderlyingRing,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    return UnderlyingRing( CapCategory( A ) );
+    
+end );
+
+##
 InstallMethod( BaseOfFibration,
         [ IsObjectInZariskiFrameOrCoframe ],
         
@@ -24,8 +35,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframe,
   function( Z, I )
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   PreUnderlyingMatrix, I,
-                   UnderlyingRing, UnderlyingRing( Z ) );
+                   PreUnderlyingMatrix, I );
     
 end );
 
@@ -37,8 +47,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByReducedColumn,
   function( Z, I )
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   UnderlyingReducedColumn, I,
-                   UnderlyingRing, UnderlyingRing( Z ) );
+                   UnderlyingReducedColumn, I );
     
 end );
 
@@ -50,8 +59,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByStandardColumn,
   function( Z, I )
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   UnderlyingStandardColumn, I,
-                   UnderlyingRing, UnderlyingRing( Z ) );
+                   UnderlyingStandardColumn, I );
     
 end );
 
@@ -76,8 +84,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfColumns,
     L := DuplicateFreeList( L );
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   UnderlyingListOfColumns, L,
-                   UnderlyingRing, UnderlyingRing( Z ) );
+                   UnderlyingListOfColumns, L );
     
 end );
 
@@ -102,8 +109,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfReducedColu
     L := DuplicateFreeList( L );
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   UnderlyingListOfReducedColumns, L,
-                   UnderlyingRing, UnderlyingRing( Z ) );
+                   UnderlyingListOfReducedColumns, L );
     
 end );
 
