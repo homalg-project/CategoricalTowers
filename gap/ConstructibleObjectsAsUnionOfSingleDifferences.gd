@@ -50,6 +50,8 @@ CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifference
     
 end );
 
+CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfSingleDifferences ], IsInt );
+
 #! @Section Operations
 
 #! @Description
