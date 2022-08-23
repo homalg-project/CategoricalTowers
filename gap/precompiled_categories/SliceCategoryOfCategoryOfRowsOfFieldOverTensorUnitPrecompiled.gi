@@ -185,11 +185,12 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_3_1, deduped_4_1, deduped_5_1;
-    deduped_5_1 := UnderlyingCell( arg2_1 );
-    deduped_4_1 := UnderlyingMatrix( deduped_5_1 );
-    deduped_3_1 := RowRankOfMatrix( deduped_4_1 );
-    return RankOfObject( Source( deduped_5_1 ) ) = RankOfObject( Range( deduped_5_1 ) ) and (NumberRows( deduped_4_1 ) - deduped_3_1 = 0 and NumberColumns( deduped_4_1 ) - deduped_3_1 = 0);
+    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := UnderlyingCell( arg2_1 );
+    deduped_5_1 := RowRankOfMatrix( UnderlyingMatrix( deduped_6_1 ) );
+    deduped_4_1 := RankOfObject( Range( deduped_6_1 ) );
+    deduped_3_1 := RankOfObject( Source( deduped_6_1 ) );
+    return deduped_3_1 = deduped_4_1 and (deduped_3_1 - deduped_5_1 = 0 and deduped_4_1 - deduped_5_1 = 0);
 end
 ########
         
@@ -270,9 +271,9 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_3_1, deduped_4_1;
-    deduped_4_1 := UnderlyingMatrix( UnderlyingCell( arg2_1 ) );
-    deduped_3_1 := RowRankOfMatrix( deduped_4_1 );
-    return NumberRows( deduped_4_1 ) - deduped_3_1 = 0 and NumberColumns( deduped_4_1 ) - deduped_3_1 = 0;
+    deduped_4_1 := UnderlyingCell( arg2_1 );
+    deduped_3_1 := RowRankOfMatrix( UnderlyingMatrix( deduped_4_1 ) );
+    return RankOfObject( Source( deduped_4_1 ) ) - deduped_3_1 = 0 and RankOfObject( Range( deduped_4_1 ) ) - deduped_3_1 = 0;
 end
 ########
         
@@ -332,9 +333,9 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( UnderlyingMorphism( arg2_1 ) );
-    deduped_1_1 := RowRankOfMatrix( deduped_2_1 );
-    return NumberRows( deduped_2_1 ) - deduped_1_1 = 0 and NumberColumns( deduped_2_1 ) - deduped_1_1 = 0;
+    deduped_2_1 := UnderlyingMorphism( arg2_1 );
+    deduped_1_1 := RowRankOfMatrix( UnderlyingMatrix( deduped_2_1 ) );
+    return RankOfObject( Source( deduped_2_1 ) ) - deduped_1_1 = 0 and RankOfObject( Range( deduped_2_1 ) ) - deduped_1_1 = 0;
 end
 ########
         
