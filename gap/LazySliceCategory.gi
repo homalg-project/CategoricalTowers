@@ -32,13 +32,6 @@ InstallMethod( AsSliceCategoryCell,
 end );
 
 ##
-InstallMethod( \/,
-        "for a CAP morphism and a CAP lazy slice category",
-        [ IsCapCategoryMorphism, IsCapLazySliceCategory ],
-        
-  AsSliceCategoryCell );
-
-##
 InstallMethod( AsSliceCategoryCell,
         "for two CAP objects in a lazy slice category and a CAP morphism",
         [ IsCapCategoryObjectInALazySliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInALazySliceCategory ],
