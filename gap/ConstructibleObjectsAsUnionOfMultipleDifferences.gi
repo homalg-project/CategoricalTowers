@@ -126,7 +126,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        D := UnderlyingMeetSemilatticeOfMultipleDifferences( CapCategory( A ) );
+        D := UnderlyingMeetSemilatticeOfMultipleDifferences( cat );
         
         L := [ List( A ), List( B ) ];
         
