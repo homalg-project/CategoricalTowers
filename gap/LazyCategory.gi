@@ -333,7 +333,7 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a CAP category object and a lazy CAP category",
          [ IsCapCategoryObject, IsLazyCapCategory ],
         
@@ -348,7 +348,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a CAP category morphism and a lazy CAP category",
         [ IsCapCategoryMorphism, IsLazyCapCategory ],
         
