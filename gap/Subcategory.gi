@@ -89,6 +89,11 @@ InstallMethod( AsSubcategoryCell,
 end );
 
 ##
+InstallOtherMethod( \/, [ IsCapCategoryCell, IsCapSubcategory ],
+  { cell, cat } -> AsSubcategoryCell( cat, cell )
+);
+
+##
 InstallMethod( Subcategory,
         "for a CAP category and a string",
         [ IsCapCategory, IsString ],
