@@ -61,8 +61,8 @@ CapJitAddTypeSignature( "UniqueMorphism",
     
     Assert( 0, IsThinCategory( input_types[1].category ) );
     
-    return rec( filter := input_types[1].category!.morphism_representation,
-                category := input_types[1].category );
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
 end );
 
 # @Section Tools

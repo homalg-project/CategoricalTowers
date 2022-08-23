@@ -55,7 +55,9 @@ DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences, IsFunction ] );
 
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+        [ IsMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ] );
+
+CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfMultipleDifferences ], IsInt );
 
 #! @Section Constructors
 

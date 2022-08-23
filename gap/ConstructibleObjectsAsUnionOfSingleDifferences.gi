@@ -5,31 +5,34 @@
 #
 
 ##
-InstallMethod( IsHomSetInhabitedWithTypeCast,
-        "for an object in a meet-semilattice of formal single differences and a constructible object as a union of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ],
+InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
+        "for a meet-semilattice of formal single differences, an object in that meet-semilattice of formal single differences, and a constructible object as a union of formal single differences",
+        [ IsMeetSemilatticeOfSingleDifferences, IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ],
         
-  function( A, B )
-    local Ap, Bp, b;
+  function( D, A, B )
+    local C, Apair, a, ap, Bpairs, b, bp, l;
     
-    A := PairInUnderlyingLattice( A );
+    C := UnderlyingCategory( D );
     
-    Ap := A[2];
-    A := A[1];
+    Apair := PairInUnderlyingLattice( A );
     
-    B := List( B, PairInUnderlyingLattice );
+    ap := Apair[2];
+    a := Apair[1];
     
-    Bp := List( B, a -> a[2] );
-    B := List( B, a -> a[1] );
+    Bpairs := List( B, PairInUnderlyingLattice );
     
-    b := Length( B );
+    bp := List( Bpairs, a -> a[2] );
+    b := List( Bpairs, a -> a[1] );
     
-    ## TODO: remove List( iterator ) once GAP supports List with an iterator as 1st argument
-    return ForAll( [ 0 .. b ],
-                   i -> ForAll( List( IteratorOfCombinations( [ 1 .. b ], i ) ),
-                           I -> IsHomSetInhabited(
-                                   DirectProduct( Concatenation( [ A ], Bp{I} ) ),
-                                   Coproduct( Concatenation( [ Ap ], B{Difference( [ 1 .. b ], I )} ) ) ) ) );
+    l := Length( b );
+    
+    ## TODO: use IteratorOfCombinations once GAP supports ForAll with an iterator as 1st argument
+    return ForAll( [ 0 .. l ],
+                   #i -> ForAll( IteratorOfCombinations( [ 1 .. l ], i ),
+                   i -> ForAll( Combinations( [ 1 .. l ], i ),
+                           I -> IsHomSetInhabited( C,
+                                   DirectProduct( C, Concatenation( [ a ], bp{I} ) ),
+                                   Coproduct( C, Concatenation( [ ap ], b{Difference( [ 1 .. l ], I )} ) ) ) ) );
     
 end );
 
@@ -76,16 +79,22 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     ##
     AddIsWellDefinedForObjects( C,
       function( cat, A )
+        local D;
         
-        return ForAll( A, IsWellDefinedForObjects );
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        
+        return ForAll( List( A ), M -> IsWellDefinedForObjects( D, M ) );
         
     end );
     
     ##
     AddIsHomSetInhabited( C,
       function( cat, A, B )
+        local D;
         
-        return ForAll( A, M -> IsHomSetInhabitedWithTypeCast( M, B ) );
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        
+        return ForAll( List( A ), M -> IsHomSetInhabitedWithTypeCast( D, M, B ) );
         
     end );
     
@@ -114,17 +123,20 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     ##
     AddIsInitial( C,
       function( cat, A )
+        local D;
         
-        return ForAll( A, IsInitial );
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
+        
+        return ForAll( List( A ), M -> IsInitial( D, M ) );
         
     end );
     
     BinaryDirectProduct := function( cat, A, B )
         local D, L, l, I, U;
-
+        
         #% CAP_JIT_RESOLVE_FUNCTION
         
-        D := UnderlyingMeetSemilatticeOfDifferences( CapCategory( A ) );
+        D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
         L := [ List( A ), List( B ) ];
         
