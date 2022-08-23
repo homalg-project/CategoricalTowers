@@ -5,34 +5,34 @@
 #
 
 ##
-InstallMethod( IsHomSetInhabitedWithTypeCast,
-        "for an object in a meet-semilattice of formal multiple differences and a constructible object as a union of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
+InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
+        "for a meet-semilattice of formal multiple differences, an object in this meet-semilattice of formal multiple differences, and a constructible object as a union of formal multiple differences",
+        [ IsMeetSemilatticeOfMultipleDifferences, IsObjectInMeetSemilatticeOfMultipleDifferences, IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
-  function( A, B )
-    local Ap, Bp, b;
+  function( D, A, B )
+    local C, Apair, a, ap, Bpairs, b, bp, l;
     
-    A := AsSingleDifference( A );
-    A := PairInUnderlyingLattice( A );
+    C := UnderlyingCategory( D );
     
-    Ap := A[2];
-    A := A[1];
+    Apair := PairInUnderlyingLattice( AsSingleDifference( A ) );
     
-    B := List( B, AsSingleDifference );
+    ap := Apair[2];
+    a := Apair[1];
     
-    B := List( B, PairInUnderlyingLattice );
+    Bpairs := List( List( B, AsSingleDifference ), PairInUnderlyingLattice );
     
-    Bp := List( B, a -> a[2] );
-    B := List( B, a -> a[1] );
+    bp := List( Bpairs, a -> a[2] );
+    b := List( Bpairs, a -> a[1] );
     
-    b := Length( B );
+    l := Length( b );
     
-    ## TODO: remove List( iterator ) once GAP supports List with an iterator as 1st argument
-    return ForAll( [ 0 .. b ],
-                   i -> ForAll( List( IteratorOfCombinations( [ 1 .. b ], i ) ),
-                           I -> IsHomSetInhabited(
-                                   DirectProduct( Concatenation( [ A ], Bp{I} ) ),
-                                   Coproduct( Concatenation( [ Ap ], B{Difference( [ 1 .. b ], I )} ) ) ) ) );
+    ## TODO: remove List( iterator ) once GAP supports ForAll with an iterator as 1st argument
+    return ForAll( [ 0 .. l ],
+                   #i -> ForAll( IteratorOfCombinations( [ 1 .. l ], i ),
+                   i -> ForAll( Combinations( [ 1 .. l ], i ),
+                           I -> IsHomSetInhabited( C,
+                                   DirectProduct( C, Concatenation( [ a ], bp{I} ) ),
+                                   Coproduct( C, Concatenation( [ ap ], b{Difference( [ 1 .. l ], I )} ) ) ) ) );
     
 end );
 
