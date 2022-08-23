@@ -55,7 +55,7 @@ jobs:
           [ -d "Toposes" ] && make -C "Toposes" doc
           TERM=dumb make -C CatReps -j $(nproc) --output-sync ci-test
           cp ./CatReps/.codecov.yml ./
-          (cd CatReps && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
+          (cd CatReps && LANG=C.UTF-8 python3 process_coverage.py)
           [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CatReps/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
