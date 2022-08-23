@@ -67,6 +67,26 @@ DeclareOperation( "ListOp",
 DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfSingleDifferences, IsFunction ] );
 
+CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifferences, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES(
+                      args.2,
+                      [ CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( args.1.data_type.category ) ) ],
+                      func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type.signature[2] ) );
+    
+end );
+
 DeclareOperation( "IsHomSetInhabitedWithTypeCast",
         [ IsObjectInMeetSemilatticeOfSingleDifferences, IsConstructibleObjectAsUnionOfSingleDifferences ] );
 
