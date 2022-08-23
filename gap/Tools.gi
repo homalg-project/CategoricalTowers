@@ -11,7 +11,7 @@
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for an object in a category of rows and a category of rows",
         [ IsCategoryOfRowsObject, IsCategoryOfRows ],
         
@@ -22,7 +22,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a morphism in a category of rows and a category of rows",
         [ IsCategoryOfRowsMorphism, IsCategoryOfRows ],
         
@@ -33,7 +33,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for an object in a category of columns and a category of columns",
         [ IsCategoryOfColumnsObject, IsCategoryOfColumns ],
         
@@ -44,7 +44,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a morphism in a category of columns and a category of columns",
         [ IsCategoryOfColumnsMorphism, IsCategoryOfColumns ],
         
