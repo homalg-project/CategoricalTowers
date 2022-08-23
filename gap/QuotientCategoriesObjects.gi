@@ -27,7 +27,7 @@ InstallMethod( QuotientCategoryObject,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
           [ IsCapCategoryObject, IsQuotientCategory ],
   function( a, quotient_category )
     

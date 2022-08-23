@@ -45,7 +45,7 @@ InstallMethod( QuotientCategoryMorphism,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
           [ IsCapCategoryMorphism, IsQuotientCategory ],
   function( alpha, quotient_category )
     
