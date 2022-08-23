@@ -121,7 +121,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     BinaryDirectProduct := function( cat, A, B )
         local D, L, l, I, U;
-
+        
         #% CAP_JIT_RESOLVE_FUNCTION
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
