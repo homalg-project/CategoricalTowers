@@ -1475,13 +1475,6 @@ InstallMethod( ObjectInAlgebroid,
 end );
 
 ##
-InstallMethod( \/,
-        [ IsQuiverVertex, IsAlgebroid ],
-        
-  { v, A } -> ObjectInAlgebroid( A, v )
-);
-
-##
 InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
                                      "for an algebroid, two objects in this algebroid and an element of the quiver algebra",
                                      [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
@@ -1599,7 +1592,7 @@ InstallMethod( MorphismInAlgebroid,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         [ IsPathAlgebraElement, IsAlgebroid ],
         
   function( path, A )
@@ -1632,7 +1625,7 @@ InstallMethod( MorphismInAlgebroid,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         [ IsQuotientOfPathAlgebraElement, IsAlgebroid ],
         
   function( path, A )
