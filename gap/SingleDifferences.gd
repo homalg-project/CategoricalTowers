@@ -42,10 +42,8 @@ CapJitAddTypeSignature( "PrePairInUnderlyingLattice", [ IsObjectInMeetSemilattic
     
     return rec( filter := IsNTuple,
                 element_types :=
-                [ rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation,
-                       category := UnderlyingCategory( input_types[1].category ) ),
-                  rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation,
-                       category := UnderlyingCategory( input_types[1].category ) ) ] );
+                [ CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                  CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
     
 end );
 
@@ -69,9 +67,7 @@ CapJitAddTypeSignature( "PairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOf
     Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
     
     return rec( filter := IsList,
-                element_type :=
-                rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation,
-                     category := UnderlyingCategory( input_types[1].category ) ) );
+                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 

@@ -46,9 +46,7 @@ CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifference
     Assert( 0, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences( input_types[1].category ) );
     
     return rec( filter := IsList,
-                element_type :=
-                rec( filter := UnderlyingMeetSemilatticeOfDifferences( input_types[1].category )!.object_representation,
-                     category := UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
+                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
     
 end );
 
