@@ -780,7 +780,7 @@ InstallMethod( ObjectInFpCategory,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         [ IsQuiverVertex, IsFpCategory ],
         
   { v, C } -> ObjectInFpCategory( C, v )
@@ -932,7 +932,7 @@ InstallMethod( MorphismInFpCategory,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         [ IsPath, IsFpCategory ],
         
   function( path, C )
