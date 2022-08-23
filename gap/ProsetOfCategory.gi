@@ -183,18 +183,7 @@ InstallMethod( AsCellOfStablePoset,
 end );
 
 ##
-InstallMethod( \/,
-        "for a CAP object",
-        [ IsCapCategoryObject, IsProsetOrPosetOfCapCategory ],
-        
-  function( object, P )
-    
-    return ObjectConstructor( P, object );
-    
-end );
-
-##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a CAP morphism",
         [ IsCapCategoryMorphism, IsProsetOrPosetOfCapCategory ],
         
