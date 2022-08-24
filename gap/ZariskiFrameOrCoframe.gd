@@ -46,6 +46,10 @@ DeclareOperation( "IsClosed",
 #! @Section Attributes
 
 #!
+DeclareAttribute( "UnderlyingRing",
+        IsObjectInZariskiFrameOrCoframe );
+
+#!
 DeclareAttribute( "BaseOfFibration",
         IsObjectInZariskiFrameOrCoframe );
 

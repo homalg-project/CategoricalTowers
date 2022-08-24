@@ -8,7 +8,7 @@
 InstallMethod( UnderlyingListOfReducedColumns,
         "for an object in a Zariski frame or coframe of an affine variety",
         [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
-
+        
   function( A )
     local L;
     
@@ -59,7 +59,7 @@ end );
 InstallMethod( DistinguishedQuasiAffineSet,
         "for two lists",
         [ IsList, IsList ],
-
+        
   function( eqs, ineqs )
     local R;
     
@@ -79,7 +79,7 @@ end );
 InstallMethod( DistinguishedQuasiAffineSet,
         "for two lists, a homalg ring, and an object",
         [ IsList, IsList, IsHomalgRing, IsObject ],
-
+        
   function( eqs, ineqs, R, obj )
     local V;
     
@@ -95,7 +95,7 @@ end );
 InstallMethod( DistinguishedQuasiAffineSet,
         "for two lists and an object",
         [ IsList, IsList, IsObject ],
-
+        
   function( eqs, ineqs, obj )
     local V;
     
@@ -111,7 +111,7 @@ end );
 InstallMethod( DistinguishedQuasiAffineSet,
         "for a list",
         [ IsList ],
-
+        
   function( eqs_ineqs )
     
     return CallFuncList( DistinguishedQuasiAffineSet, eqs_ineqs );
