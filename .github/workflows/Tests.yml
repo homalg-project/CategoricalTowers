@@ -57,7 +57,7 @@ jobs:
           TERM=dumb make -C CatReps -j $(nproc) --output-sync ci-test
           TERM=dumb make -C HigherHomologicalAlgebra -j $(nproc) --output-sync ci-test
           cp ./FunctorCategories/.codecov.yml ./
-          (cd FunctorCategories && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
+          (cd FunctorCategories && LANG=C.UTF-8 python3 process_coverage.py)
           [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./FunctorCategories/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
