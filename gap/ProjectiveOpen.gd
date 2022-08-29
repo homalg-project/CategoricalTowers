@@ -62,15 +62,15 @@ DeclareOperation( "OpenSubsetOfProjByListOfColumns",
         [ IsList ] );
 
 #! @Description
-#!  <C>OpenSubsetOfProjByReducedColumn</C> assumes that the image is a radical ideal.
+#!  <C>OpenSubsetOfProjByRadicalColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group OpenSubsetOfProjByReducedColumn
-DeclareOperation( "OpenSubsetOfProjByReducedColumn",
+#! @Group OpenSubsetOfProjByRadicalColumn
+DeclareOperation( "OpenSubsetOfProjByRadicalColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group OpenSubsetOfProjByReducedColumn
-DeclareOperation( "OpenSubsetOfProjByReducedColumn",
+#! @Group OpenSubsetOfProjByRadicalColumn
+DeclareOperation( "OpenSubsetOfProjByRadicalColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Description

@@ -67,25 +67,25 @@ DeclareOperation( "ClosedSubsetOfSpecByListOfColumns",
         [ IsList ] );
 
 #! @Description
-#!  <C>ClosedSubsetOfSpecByReducedColumn</C> assumes that the image is a radical ideal.
+#!  <C>ClosedSubsetOfSpecByRadicalColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group ClosedSubsetOfSpecByReducedColumn
-DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
+#! @Group ClosedSubsetOfSpecByRadicalColumn
+DeclareOperation( "ClosedSubsetOfSpecByRadicalColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group ClosedSubsetOfSpecByReducedColumn
-DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
+#! @Group ClosedSubsetOfSpecByRadicalColumn
+DeclareOperation( "ClosedSubsetOfSpecByRadicalColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Arguments r
-#! @Group ClosedSubsetOfSpecByReducedColumn
-DeclareOperation( "ClosedSubsetOfSpecByReducedColumn",
+#! @Group ClosedSubsetOfSpecByRadicalColumn
+DeclareOperation( "ClosedSubsetOfSpecByRadicalColumn",
         [ IsHomalgRingElement ] );
 
 #! @Arguments L
 #! @Group ClosedSubsetOfSpec
-DeclareOperation( "ClosedSubsetOfSpecByListOfReducedColumns",
+DeclareOperation( "ClosedSubsetOfSpecByListOfRadicalColumns",
         [ IsList ] );
 
 #! @Description

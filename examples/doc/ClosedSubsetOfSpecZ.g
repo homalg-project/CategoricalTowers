@@ -13,7 +13,7 @@ Display( A );
 #! V( <4> )
 B := ClosedSubsetOfSpec( "[ 12, 20 ]", ZZ );
 #! V_{Z}( <...> )
-C := ClosedSubsetOfSpecByReducedColumn( "[ 3 ]", ZZ );
+C := ClosedSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );
 #! V_{Z}( <...> )
 D := ClosedSubsetOfSpec( "[ 12 ]", ZZ );
 #! V_{Z}( <...> )

@@ -147,7 +147,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     Ap := CertainRows( Ap, nonzero_rows );
     
-    A := A - C!.ConstructorByReducedColumn( Ap );
+    A := A - C!.ConstructorByRadicalColumn( Ap );
     
     if IsBound( param ) then
         SetParametrizedObject( A, param );
@@ -221,7 +221,7 @@ InstallMethod( DistinguishedLocallyClosedPart,
     
     d := Set( d );
     
-    d := List( d, C!.ConstructorByReducedColumn );
+    d := List( d, C!.ConstructorByRadicalColumn );
     
     d := DuplicateFreeList( d );
     
@@ -260,7 +260,7 @@ InstallMethod( IrreducibleComponents,
     
     ZC := CapCategory( A );
     
-    components := List( components, ZC!.ConstructorByReducedColumn );
+    components := List( components, ZC!.ConstructorByRadicalColumn );
     
     components := MaximalObjects( components, IsHomSetInhabited );
     
@@ -269,8 +269,8 @@ InstallMethod( IrreducibleComponents,
     Perform( components, function( C ) SetIsIrreducibleObjectInZariskiCoframe( C, true ); end );
     
     if Length( components ) = 1 then
-        if not HasUnderlyingReducedColumn( A ) then
-            SetUnderlyingReducedColumn( A, UnderlyingReducedColumn( components[1] ) );
+        if not HasUnderlyingRadicalColumn( A ) then
+            SetUnderlyingRadicalColumn( A, UnderlyingRadicalColumn( components[1] ) );
         fi;
         return [ A ];
     fi;
@@ -365,8 +365,8 @@ InstallMethod( KnownFactors,
     
     if HasUnderlyingListOfStandardColumns( A ) then
         components := List( components, ZC!.ConstructorByStandardColumn );
-    elif HasUnderlyingListOfReducedColumns( A ) then
-        components := List( components, ZC!.ConstructorByReducedColumn );
+    elif HasUnderlyingListOfRadicalColumns( A ) then
+        components := List( components, ZC!.ConstructorByRadicalColumn );
     else
         components := List( components, ZC!.Constructor );
     fi;

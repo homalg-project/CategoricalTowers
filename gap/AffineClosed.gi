@@ -43,7 +43,7 @@ InstallMethod( ClosedSubsetOfSpec,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByReducedColumn,
+InstallMethod( ClosedSubsetOfSpecByRadicalColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
         
@@ -61,7 +61,7 @@ InstallMethod( ClosedSubsetOfSpecByReducedColumn,
     
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZC, I );
+    A := ObjectInZariskiFrameOrCoframeByRadicalColumn( ZC, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -70,13 +70,13 @@ InstallMethod( ClosedSubsetOfSpecByReducedColumn,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByReducedColumn,
+InstallMethod( ClosedSubsetOfSpecByRadicalColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
         
   function( r )
     
-    return ClosedSubsetOfSpecByReducedColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+    return ClosedSubsetOfSpecByRadicalColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
 
 end );
     
@@ -108,7 +108,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfColumns,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
+InstallMethod( ClosedSubsetOfSpecByListOfRadicalColumns,
         "for a list",
         [ IsList ],
         
@@ -126,7 +126,7 @@ InstallMethod( ClosedSubsetOfSpecByListOfReducedColumns,
     
     ZC := ZariskiCoframeOfAffineSpectrum( R );
     
-    A := ObjectInZariskiFrameOrCoframeByListOfReducedColumns( ZC, L );
+    A := ObjectInZariskiFrameOrCoframeByListOfRadicalColumns( ZC, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -184,13 +184,13 @@ InstallMethod( ClosedSubsetOfSpec,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfSpecByReducedColumn,
+InstallMethod( ClosedSubsetOfSpecByRadicalColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
         
   function( str, R )
     
-    return ClosedSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
+    return ClosedSubsetOfSpecByRadicalColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
@@ -231,7 +231,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
     ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfSpecByListOfColumns;
-    ZariskiCoframe!.ConstructorByReducedColumn := ClosedSubsetOfSpecByReducedColumn;
+    ZariskiCoframe!.ConstructorByRadicalColumn := ClosedSubsetOfSpecByRadicalColumn;
     ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfSpecByStandardColumn;
     
     SetUnderlyingRing( ZariskiCoframe, R );
@@ -404,7 +404,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
         
         L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
         
-        L := List( L, ClosedSubsetOfSpecByReducedColumn );
+        L := List( L, ClosedSubsetOfSpecByRadicalColumn );
         
         return Coproduct( L );
         
@@ -479,7 +479,7 @@ InstallMethod( AClosedSingleton,
     
     A := AMaximalIdealContaining( A );
     
-    A := C!.ConstructorByReducedColumn( A );
+    A := C!.ConstructorByRadicalColumn( A );
     
     return A;
     
@@ -525,7 +525,7 @@ InstallMethod( RabinowitschCover,
     Ap := List( Ap, p -> HomalgMatrix( [ p ], 1, 1, S ) );
     A := List( Ap, p -> UnionOfRows( A, p ) );
     
-    A := List( A, ClosedSubsetOfSpecByReducedColumn );
+    A := List( A, ClosedSubsetOfSpecByRadicalColumn );
     
     return Sum( A );
     
@@ -549,7 +549,7 @@ InstallMethod( TangentSpaceAtPoint,
     
     T := ( R * T ) * HomalgMatrix( var, Length( var ), 1, R );
     
-    return ClosedSubsetOfSpecByReducedColumn( T );
+    return ClosedSubsetOfSpecByRadicalColumn( T );
     
 end );
 

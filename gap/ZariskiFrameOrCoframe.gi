@@ -40,14 +40,14 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframe,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByReducedColumn,
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByRadicalColumn,
         "for a Zariksi frame or coframe and a homalg matrix",
         [ IsZariskiFrameOrCoframe, IsHomalgMatrix ],
         
   function( Z, I )
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   UnderlyingReducedColumn, I );
+                   UnderlyingRadicalColumn, I );
     
 end );
 
@@ -89,7 +89,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfColumns,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfReducedColumns,
+InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfRadicalColumns,
         "for a Zariski frame or coframe and a list",
         [ IsZariskiFrameOrCoframe, IsList ],
         
@@ -109,7 +109,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfReducedColu
     L := DuplicateFreeList( L );
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
-                   UnderlyingListOfReducedColumns, L );
+                   UnderlyingListOfRadicalColumns, L );
     
 end );
 
@@ -181,9 +181,9 @@ end );
 ##
 InstallMethod( UnderlyingColumn,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingReducedColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingRadicalColumn ],
         
-  UnderlyingReducedColumn );
+  UnderlyingRadicalColumn );
 
 ##
 InstallMethod( UnderlyingColumn,
@@ -217,11 +217,11 @@ end );
 ##
 InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingReducedColumn ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingRadicalColumn ],
         
   function( A )
     
-    return [ UnderlyingReducedColumn( A ) ];
+    return [ UnderlyingRadicalColumn( A ) ];
     
 end );
 
@@ -239,9 +239,9 @@ end );
 ##
 InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
-        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingListOfReducedColumns ],
+        [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingListOfRadicalColumns ],
         
-  UnderlyingListOfReducedColumns );
+  UnderlyingListOfRadicalColumns );
 
 ##
 InstallMethod( UnderlyingListOfColumns,
@@ -258,7 +258,7 @@ InstallMethod( UnderlyingListOfStandardColumns,
   function( A )
     local L;
     
-    L := UnderlyingListOfReducedColumns( A );
+    L := UnderlyingListOfRadicalColumns( A );
     
     L := List( L, BasisOfRows );
     
@@ -275,14 +275,14 @@ InstallMethod( UnderlyingListOfStandardColumns,
 end );
 
 ##
-InstallMethod( UnderlyingReducedColumn,
+InstallMethod( UnderlyingRadicalColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
   function( A )
     local L;
     
-    L := UnderlyingListOfReducedColumns( A );
+    L := UnderlyingListOfRadicalColumns( A );
     
     L := ITERATED_INTERSECTION_OF_IDEALS( L );
     
@@ -297,7 +297,7 @@ InstallMethod( UnderlyingReducedColumn,
 end );
 
 ##
-InstallMethod( UnderlyingReducedColumn,
+InstallMethod( UnderlyingRadicalColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasUnderlyingStandardColumn ],
         
@@ -308,7 +308,7 @@ InstallMethod( BestUnderlyingColumn,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe ],
         
-  UnderlyingReducedColumn );
+  UnderlyingRadicalColumn );
 
 ##
 InstallMethod( UnderlyingStandardColumn,
@@ -318,7 +318,7 @@ InstallMethod( UnderlyingStandardColumn,
   function( A )
     local mor;
     
-    mor := UnderlyingReducedColumn( A );
+    mor := UnderlyingRadicalColumn( A );
     
     mor := BasisOfRows( mor );
     
@@ -328,7 +328,7 @@ InstallMethod( UnderlyingStandardColumn,
         SetUnderlyingColumn( A, mor );
     fi;
     
-    A!.UnderlyingReducedColumn := mor;
+    A!.UnderlyingRadicalColumn := mor;
     
     return mor;
     
@@ -458,7 +458,7 @@ InstallMethod( NormalizeObject,
         
   function( A )
     
-    UnderlyingListOfReducedColumns( A );
+    UnderlyingListOfRadicalColumns( A );
     
     IsInitial( A );
     IsTerminal( A );
@@ -547,7 +547,7 @@ InstallMethod( AffineApproximation,
     
     A := UnionOfRows( A, HomalgMatrix( [ Ap * t - 1 ], 1, 1, R_f ) );
     
-    A := ClosedSubsetOfSpecByReducedColumn( A );
+    A := ClosedSubsetOfSpecByRadicalColumn( A );
     
     A!.auxiliary_indeterminate := t;
     
@@ -691,8 +691,8 @@ InstallMethod( Pullback,
     if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
         if HasUnderlyingStandardColumn( A ) then
             return C!.ConstructorByStandardColumn( B );
-        elif HasUnderlyingReducedColumn( A ) then
-            return C!.ConstructorByReducedColumn( B );
+        elif HasUnderlyingRadicalColumn( A ) then
+            return C!.ConstructorByRadicalColumn( B );
         fi;
     fi;
     
