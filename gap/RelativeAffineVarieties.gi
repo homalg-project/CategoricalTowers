@@ -14,7 +14,7 @@ InstallMethod( GraphOfRingMorphism,
     
     Gamma := MatrixOfRelations( CoordinateRingOfGraph( phi ) );
     
-    return ClosedSubsetOfSpecByReducedColumn( Gamma );
+    return ClosedSubsetOfSpecByRadicalColumn( Gamma );
     
 end );
 
@@ -40,8 +40,8 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         
         R_elim := PolynomialRingWithProductOrdering( R );
         
-        if HasUnderlyingListOfReducedColumns( A ) or
-           HasUnderlyingReducedColumn( A ) then
+        if HasUnderlyingListOfRadicalColumns( A ) or
+           HasUnderlyingRadicalColumn( A ) then
             known_to_be_reduced := true;
         else
             known_to_be_reduced := false;
@@ -66,7 +66,7 @@ InstallMethod( FunctorClosureOfProjectionBetweenZariskiCoframes,
         
         ## scheme-theoretic images of reduced schemes are reduced
         if known_to_be_reduced then
-            return ClosedSubsetOfSpecByListOfReducedColumns( I );
+            return ClosedSubsetOfSpecByListOfRadicalColumns( I );
         fi;
         
         return ClosedSubsetOfSpecByListOfColumns( I );
@@ -138,8 +138,8 @@ InstallMethod( FunctorPreimageOfProjectionBetweenZariskiCoframes,
         
         fib := Constructor( L );
         
-        if HasUnderlyingListOfReducedColumns( obj ) then
-            SetUnderlyingListOfReducedColumns( fib, L );
+        if HasUnderlyingListOfRadicalColumns( obj ) then
+            SetUnderlyingListOfRadicalColumns( fib, L );
         fi;
         
         if HasUnderlyingListOfStandardColumns( obj ) then
@@ -265,7 +265,7 @@ InstallMethod( TangentSpaceOfFiberAtPoint,
     
     T := BestUnderlyingColumn( T );
     
-    return ClosedSubsetOfSpecByReducedColumn( T );
+    return ClosedSubsetOfSpecByRadicalColumn( T );
     
 end );
 
@@ -378,7 +378,7 @@ InstallMethod( EmbeddedComplementOfTangentSpaceOfFiberAtPoint,
     
     C := C * ( var - R * p_fiber );
     
-    return ClosedSubsetOfSpecByReducedColumn( C );
+    return ClosedSubsetOfSpecByRadicalColumn( C );
     
 end );
 

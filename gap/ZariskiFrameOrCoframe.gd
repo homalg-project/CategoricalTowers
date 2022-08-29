@@ -59,7 +59,7 @@ DeclareAttribute( "PreUnderlyingMatrix",
 DeclareAttribute( "UnderlyingListOfColumns",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "UnderlyingListOfReducedColumns",
+DeclareAttribute( "UnderlyingListOfRadicalColumns",
         IsObjectInZariskiFrameOrCoframe );
 
 DeclareAttribute( "UnderlyingListOfStandardColumns",
@@ -68,7 +68,7 @@ DeclareAttribute( "UnderlyingListOfStandardColumns",
 DeclareAttribute( "UnderlyingColumn",
         IsObjectInZariskiFrameOrCoframe );
 
-DeclareAttribute( "UnderlyingReducedColumn",
+DeclareAttribute( "UnderlyingRadicalColumn",
         IsObjectInZariskiFrameOrCoframe );
 
 DeclareAttribute( "UnderlyingStandardColumn",
@@ -135,7 +135,7 @@ DeclareOperation( "RabinowitschCover",
 DeclareOperation( "ObjectInZariskiFrameOrCoframe",
         [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
 
-DeclareOperation( "ObjectInZariskiFrameOrCoframeByReducedColumn",
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByRadicalColumn",
         [ IsZariskiFrameOrCoframe, IsHomalgMatrix ] );
 
 DeclareOperation( "ObjectInZariskiFrameOrCoframeByStandardColumn",
@@ -144,7 +144,7 @@ DeclareOperation( "ObjectInZariskiFrameOrCoframeByStandardColumn",
 DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfColumns",
         [ IsZariskiFrameOrCoframe, IsList ] );
 
-DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfReducedColumns",
+DeclareOperation( "ObjectInZariskiFrameOrCoframeByListOfRadicalColumns",
         [ IsZariskiFrameOrCoframe, IsList ] );
 
 #! @Section Operations

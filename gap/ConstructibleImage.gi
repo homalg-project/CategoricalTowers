@@ -95,7 +95,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
             fi;
 
             # A hyperplane of codimension 1
-            H := ClosedSubsetOfSpecByReducedColumn( H );
+            H := ClosedSubsetOfSpecByRadicalColumn( H );
             L := L * H;
 
             # This is only a candidate at this point

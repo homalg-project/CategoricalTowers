@@ -32,7 +32,7 @@ InstallMethod( OpenSubsetOfSpec,
 end );
 
 ##
-InstallMethod( OpenSubsetOfSpecByReducedColumn,
+InstallMethod( OpenSubsetOfSpecByRadicalColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
         
@@ -50,7 +50,7 @@ InstallMethod( OpenSubsetOfSpecByReducedColumn,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZF, I );
+    A := ObjectInZariskiFrameOrCoframeByRadicalColumn( ZF, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -86,7 +86,7 @@ InstallMethod( OpenSubsetOfSpecByListOfColumns,
 end );
 
 ##
-InstallMethod( OpenSubsetOfSpecByListOfReducedColumns,
+InstallMethod( OpenSubsetOfSpecByListOfRadicalColumns,
         "for a list",
         [ IsList ],
         
@@ -104,7 +104,7 @@ InstallMethod( OpenSubsetOfSpecByListOfReducedColumns,
     
     ZF := ZariskiFrameOfAffineSpectrum( R );
     
-    A := ObjectInZariskiFrameOrCoframeByListOfReducedColumns( ZF, L );
+    A := ObjectInZariskiFrameOrCoframeByListOfRadicalColumns( ZF, L );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -151,13 +151,13 @@ InstallMethod( OpenSubsetOfSpec,
 end );
 
 ##
-InstallMethod( OpenSubsetOfSpecByReducedColumn,
+InstallMethod( OpenSubsetOfSpecByRadicalColumn,
         "for a homalg ring element",
         [ IsHomalgRingElement ],
         
   function( r )
     
-    return OpenSubsetOfSpecByReducedColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
+    return OpenSubsetOfSpecByRadicalColumn( HomalgMatrix( [ r ], 1, 1, HomalgRing( r ) ) );
 
 end );
     
@@ -184,13 +184,13 @@ InstallMethod( OpenSubsetOfSpec,
 end );
 
 ##
-InstallMethod( OpenSubsetOfSpecByReducedColumn,
+InstallMethod( OpenSubsetOfSpecByRadicalColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
         
   function( str, R )
     
-    return OpenSubsetOfSpecByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
+    return OpenSubsetOfSpecByRadicalColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
@@ -231,7 +231,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     ZariskiFrame!.Constructor := OpenSubsetOfSpec;
     ZariskiFrame!.ConstructorByListOfColumns := OpenSubsetOfSpecByListOfColumns;
-    ZariskiFrame!.ConstructorByReducedColumn := OpenSubsetOfSpecByReducedColumn;
+    ZariskiFrame!.ConstructorByRadicalColumn := OpenSubsetOfSpecByRadicalColumn;
     ZariskiFrame!.ConstructorByStandardColumn := OpenSubsetOfSpecByStandardColumn;
     
     SetUnderlyingRing( ZariskiFrame, R );
@@ -404,7 +404,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
         
         L := List( [ 1 .. NrRows( A ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( A, [ r ] ), B ) );
         
-        L := List( L, OpenSubsetOfSpecByReducedColumn );
+        L := List( L, OpenSubsetOfSpecByRadicalColumn );
         
         return DirectProduct( L );
         

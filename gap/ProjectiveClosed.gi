@@ -25,7 +25,7 @@ InstallMethod( ClosedSubsetOfProj,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfProjByReducedColumn,
+InstallMethod( ClosedSubsetOfProjByRadicalColumn,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
         
@@ -36,7 +36,7 @@ InstallMethod( ClosedSubsetOfProjByReducedColumn,
     
     ZC := ZariskiCoframeOfProj( R );
     
-    A := ObjectInZariskiFrameOrCoframeByReducedColumn( ZC, I );
+    A := ObjectInZariskiFrameOrCoframeByRadicalColumn( ZC, I );
     
     Assert( 4, IsWellDefined( A ) );
     
@@ -96,13 +96,13 @@ InstallMethod( ClosedSubsetOfProj,
 end );
 
 ##
-InstallMethod( ClosedSubsetOfProjByReducedColumn,
+InstallMethod( ClosedSubsetOfProjByRadicalColumn,
         "for a string and a homalg ring",
         [ IsString, IsHomalgRing ],
         
   function( str, R )
     
-    return ClosedSubsetOfProjByReducedColumn( StringToHomalgColumnMatrix( str, R ) );
+    return ClosedSubsetOfProjByRadicalColumn( StringToHomalgColumnMatrix( str, R ) );
     
 end );
 
@@ -141,7 +141,7 @@ InstallMethod( ZariskiCoframeOfProj,
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfProj;
     ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfProjByListOfColumns;
-    ZariskiCoframe!.ConstructorByReducedColumn := ClosedSubsetOfProjByReducedColumn;
+    ZariskiCoframe!.ConstructorByRadicalColumn := ClosedSubsetOfProjByRadicalColumn;
     ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfProjByStandardColumn;
     
     SetUnderlyingRing( ZariskiCoframe, R );
@@ -321,7 +321,7 @@ InstallMethod( ZariskiCoframeOfProj,
         
         L := List( [ 1 .. NrRows( B ) ], r -> SyzygiesGeneratorsOfRows( CertainRows( B, [ r ] ), A ) );
         
-        L := List( L, ClosedSubsetOfProjByReducedColumn );
+        L := List( L, ClosedSubsetOfProjByRadicalColumn );
         
         return Coproduct( L );
         

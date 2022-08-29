@@ -44,14 +44,14 @@ InstallMethod( ComplementAsClosedSubset,
     if HasUnderlyingStandardColumn( A ) then
         A := UnderlyingStandardColumn( A );
         return C!.ConstructorByStandardColumn( A );
-    elif HasUnderlyingReducedColumn( A ) then
-        A := UnderlyingReducedColumn( A );
-        return C!.ConstructorByReducedColumn( A );
+    elif HasUnderlyingRadicalColumn( A ) then
+        A := UnderlyingRadicalColumn( A );
+        return C!.ConstructorByRadicalColumn( A );
     elif HasUnderlyingListOfColumns( A ) then
         A := UnderlyingListOfColumns( A );
         return C!.ConstructorByListOfColumns( A );
-    elif HasUnderlyingListOfReducedColumns( A ) then
-        A := UnderlyingListOfReducedColumns( A );
+    elif HasUnderlyingListOfRadicalColumns( A ) then
+        A := UnderlyingListOfRadicalColumns( A );
         return C!.ConstructorByListOfColumns( A );
     else
         A := PreUnderlyingMatrix( A );

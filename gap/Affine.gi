@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( UnderlyingListOfReducedColumns,
+InstallMethod( UnderlyingListOfRadicalColumns,
         "for an object in a Zariski frame or coframe of an affine variety",
         [ IsObjectInZariskiFrameOrCoframeOfAnAffineVariety ],
         

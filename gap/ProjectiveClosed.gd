@@ -68,15 +68,15 @@ DeclareOperation( "ClosedSubsetOfProjByListOfColumns",
         [ IsList ] );
 
 #! @Description
-#!  <C>ClosedSubsetOfProjByReducedColumn</C> assumes that the image is a radical ideal.
+#!  <C>ClosedSubsetOfProjByRadicalColumn</C> assumes that the image is a radical ideal.
 #! @Arguments I
-#! @Group ClosedSubsetOfProjByReducedColumn
-DeclareOperation( "ClosedSubsetOfProjByReducedColumn",
+#! @Group ClosedSubsetOfProjByRadicalColumn
+DeclareOperation( "ClosedSubsetOfProjByRadicalColumn",
         [ IsHomalgMatrix ] );
 
 #! @Arguments str, R
-#! @Group ClosedSubsetOfProjByReducedColumn
-DeclareOperation( "ClosedSubsetOfProjByReducedColumn",
+#! @Group ClosedSubsetOfProjByRadicalColumn
+DeclareOperation( "ClosedSubsetOfProjByRadicalColumn",
         [ IsString, IsHomalgRing ] );
 
 #! @Description

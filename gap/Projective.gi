@@ -33,18 +33,18 @@ end );
 ##
 InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingListOfReducedColumns ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingListOfRadicalColumns ],
         
-  UnderlyingListOfReducedColumns );
+  UnderlyingListOfRadicalColumns );
 
 ##
 InstallMethod( UnderlyingListOfSaturatedColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingReducedColumn ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingRadicalColumn ],
         
   function( A )
     
-    return [ UnderlyingReducedColumn( A ) ];
+    return [ UnderlyingRadicalColumn( A ) ];
     
 end );
 
@@ -75,9 +75,9 @@ end );
 ##
 InstallMethod( SaturatedUnderlyingColumn,
         "for an object in a Zariski frame or coframe of a projective variety",
-        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingReducedColumn ],
+        [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety and HasUnderlyingRadicalColumn ],
         
-  UnderlyingReducedColumn );
+  UnderlyingRadicalColumn );
 
 ##
 InstallMethod( SaturatedUnderlyingColumn,
@@ -87,7 +87,7 @@ InstallMethod( SaturatedUnderlyingColumn,
   UnderlyingStandardColumn );
 
 ##
-InstallMethod( UnderlyingListOfReducedColumns,
+InstallMethod( UnderlyingListOfRadicalColumns,
         "for an object in a Zariski frame or coframe of a projective variety",
         [ IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety ],
         

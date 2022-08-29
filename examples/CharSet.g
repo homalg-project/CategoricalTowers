@@ -7,7 +7,7 @@ ZZ := HomalgRingOfIntegersInSingular( );
 #! Z
 R := ZZ * "x";
 #! Z[x]
-gamma := ClosedSubsetOfSpecByReducedColumn( "[2*x+1]", R );
+gamma := ClosedSubsetOfSpecByRadicalColumn( "[2*x+1]", R );
 #! V_{Z[x]}( <...> )
 im := ConstructibleProjection( gamma );
 #! ( V_{Z}( I1 ) \ V_{Z}( J1_1 ) )
