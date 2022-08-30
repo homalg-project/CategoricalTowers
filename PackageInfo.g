@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2022.08-01",
+Version := "2022.08-02",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
