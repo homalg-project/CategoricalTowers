@@ -1367,7 +1367,7 @@ InstallMethodWithCache( FunctorCategory,
     
     SetSource( Hom, B );
     SetRange( Hom, C );
-
+    
     if CanCompute( C, "IsLiftableAlongMonomorphism" ) then
         
         ##
