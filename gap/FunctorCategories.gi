@@ -508,18 +508,18 @@ InstallMethod( AsObjectInFunctorCategory,
         "for a CAP category and a CAP functor",
         [ IsCapCategory, IsCapFunctor ],
         
-  function ( H, F )
+  function ( Hom, F )
     local B, obj;
     
-    B := Source( H );
+    B := Source( Hom );
     
     obj := rec( ValuesOnAllObjects := [ 1 .. Length( SetOfObjects( B ) ) ],
                 ValuesOnAllGeneratingMorphisms := [ 1 .. Length( SetOfGeneratingMorphisms( B ) ) ] );
     
-    return ObjectifyObjectForCAPWithAttributes( obj, H,
+    return ObjectifyObjectForCAPWithAttributes( obj, Hom,
                    UnderlyingCapTwoCategoryCell, F,
                    Source, B,
-                   Range, Range( H ),
+                   Range, Range( Hom ),
                    SetOfObjects, SetOfObjects( B ),
                    SetOfGeneratingMorphisms, SetOfGeneratingMorphisms( B ) );
     
@@ -531,11 +531,11 @@ InstallMethod( AsObjectInFunctorCategory,
         [ IsCapFunctor ],
         
   function ( F )
-    local H;
+    local Hom;
     
-    H := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    Hom := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
-    return AsObjectInFunctorCategory( H, F );
+    return AsObjectInFunctorCategory( Hom, F );
     
 end );
 
@@ -627,14 +627,14 @@ InstallMethod( AsMorphismInFunctorCategory,
         "for a CAP category and a CAP natural transformation",
         [ IsCapCategory, IsCapNaturalTransformation ],
         
-  function ( H, eta )
+  function ( Hom, eta )
     local B, mor;
     
-    B := Source( H );
+    B := Source( Hom );
     
     mor := rec( ValuesOnAllObjects := [ 1 .. Length( SetOfObjects( B ) ) ] );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, H,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( mor, Hom,
             AsObjectInFunctorCategory( Source( eta ) ),
             AsObjectInFunctorCategory( Range( eta ) ),
             UnderlyingCapTwoCategoryCell, eta,
@@ -651,13 +651,13 @@ InstallMethod( AsMorphismInFunctorCategory,
         [ IsCapNaturalTransformation ],
         
   function ( eta )
-    local F, H;
+    local F, Hom;
     
     F := Source( eta );
     
-    H := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    Hom := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
     
-    return AsMorphismInFunctorCategory( H, eta );
+    return AsMorphismInFunctorCategory( Hom, eta );
     
 end );
 
