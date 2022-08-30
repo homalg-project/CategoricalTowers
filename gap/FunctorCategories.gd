@@ -244,8 +244,8 @@ DeclareAttribute( "CategoryOfInternalCategories",
         IsCapCategory );
 
 #! @Description
-#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>H</A> := Hom( <A>B</A>, C )</C>.
-#! @Arguments H, F
+#!  Turn the functor <C><A>F</A>:<A>B</A></C> $\to$ <C>C</C> into an object in the category of functors <C><A>Hom</A> := Hom( <A>B</A>, C )</C>.
+#! @Arguments Hom, F
 #! @Returns an object in a &CAP; category
 #! @Group AsObjectInFunctorCategory
 DeclareOperation( "AsObjectInFunctorCategory",
@@ -281,9 +281,9 @@ DeclareOperation( "AsObjectInFunctorCategory",
 #! @Description
 #!  Turn the natrual transformation <A>eta</A>:$F \to G$ into a morphism
 #!  <C><A>U</A> := AsObjectInFunctorCategory( F )</C> $\to$ <C><A>V</A> := AsObjectInFunctorCategory( G )</C>
-#!  in the category of functors <C><A>H</A> := Hom( B, C )</C>, where
+#!  in the category of functors <C><A>Hom</A> := Hom( B, C )</C>, where
 #!  <C>B := Source( F ) = Source( G )</C> and <C>C := Range( F ) = Range( G )</C>.
-#! @Arguments H, eta
+#! @Arguments Hom, eta
 #! @Returns a morphism in a &CAP; category
 #! @Group AsMorphismInFunctorCategory
 DeclareOperation( "AsMorphismInFunctorCategory",
