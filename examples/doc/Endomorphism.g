@@ -23,8 +23,16 @@ Qq := PathAlgebra( Q, q );
 #! Out of this path algebra construct the algebroid (actually the algebra) $B$ that
 #! is obtained as the quotient of the path algebra modulo the ideal $(t^3 - 1)$.
 
+#! Let $A$ be the category of matrices as a skeletal model for the category of finite dimensional vector spaces over $\mathbb{Q}$.
+#! Its objects are non-negative integers and its morphisms are matrices with coefficients in $\mathbb{Q}$.
+
 #! @Example
-B := Algebroid( Qq, [ Qq.t^3 - Qq.1 ] );
+A := MatrixCategory( Q : overhead := false );
+#! Category of matrices over Q
+#! @EndExample
+
+#! @Example
+B := Algebroid( Qq, [ Qq.t^3 - Qq.1 ] : range_of_HomStructure := A );
 #! Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations
 RelationsOfAlgebroid( B );
 #! [ (1)-[1*(t*t*t) - 1*(1)]->(1) ]
@@ -112,14 +120,6 @@ ApplyFunctor( antipode, B.t );
 #! (1)-[{ 1*(t*t) }]->(1)
 #! @EndExample
 
-#! Let $A$ be the category of matrices as a skeletal model for the category of finite dimensional vector spaces over $\mathbb{Q}$.
-#! Its objects are non-negative integers and its morphisms are matrices with coefficients in $\mathbb{Q}$.
-
-#! @Example
-A := MatrixCategory( Q );
-#! Category of matrices over Q
-#! @EndExample
-
 #! Construct the category $H$ of functors from $B$ to $A$.
 #! An object in this category is a pair consisting of a
 #! finite-dimensional vector space, specified by its dimension,
@@ -149,7 +149,7 @@ z.t = z( B.t );
 idz := IdentityMorphism( z );
 #! <(1)->0x0>
 idz( B.1 );
-#! <A zero, identity morphism in Category of matrices over Q>
+#! <A morphism in Category of matrices over Q>
 idz.1 = idz( B.1 );
 #! true
 DirectSum( z, z );
