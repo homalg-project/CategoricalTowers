@@ -53,6 +53,12 @@ DeclareCategory( "IsMorphismInFunctorCategory",
 #!
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY" );
 
+#!
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY" );
+
+#!
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY_WITH_DUALS" );
+
 ####################################
 #
 #! @Section Attributes

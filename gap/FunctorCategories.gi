@@ -12,19 +12,13 @@
 
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
-        [
+        [ 
           "AdditionForMorphisms",
           "AdditiveInverseForMorphisms",
-          "AssociatorLeftToRightWithGivenTensorProducts",
-          "AssociatorRightToLeftWithGivenTensorProducts",
-          "BraidingInverseWithGivenTensorProducts",
-          "BraidingWithGivenTensorProducts",
           "CoastrictionToImage",
           "CoastrictionToImageWithGivenImageObject",
           "Coequalizer",
           "CoequalizerFunctorialWithGivenCoequalizers",
-          "CoevaluationForDualWithGivenTensorProduct",
-          #"CoevaluationMorphismWithGivenRange",
           "CokernelColift",
           "CokernelColiftWithGivenCokernelObject",
           "CokernelObject",
@@ -43,20 +37,14 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "DirectSumDiagonalDifference",
           "DirectSumFunctorialWithGivenDirectSums",
           "DirectSumProjectionInPushout",
-          "DualOnMorphismsWithGivenDuals",
           "EmbeddingOfEqualizer",
           "EmbeddingOfEqualizerWithGivenEqualizer",
           "Equalizer",
           "EqualizerFunctorialWithGivenEqualizers",
-          "EvaluationForDualWithGivenTensorProduct",
-          #"EvaluationMorphismWithGivenSource",
           "FiberProduct",
           "FiberProductEmbeddingInDirectSum",
           "FiberProductFunctorialWithGivenFiberProducts",
-          "HorizontalPostCompose",
-          "HorizontalPreCompose",
           "IdentityMorphism",
-          "IdentityTwoCell",
           "ImageEmbedding",
           "ImageEmbeddingWithGivenImageObject",
           "ImageObject",
@@ -96,22 +84,12 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "KernelLiftWithGivenKernelObject",
           "KernelObject",
           "KernelObjectFunctorialWithGivenKernelObjects",
-          "LambdaElimination",
-          "LambdaIntroduction",
-          "LeftDistributivityExpandingWithGivenObjects",
-          "LeftDistributivityFactoringWithGivenObjects",
-          "LeftUnitorInverseWithGivenTensorProduct",
-          "LeftUnitorWithGivenTensorProduct",
           "LiftAlongMonomorphism",
-          #"MonoidalPostComposeMorphismWithGivenObjects",
-          #"MonoidalPreComposeMorphismWithGivenObjects",
           "MorphismBetweenDirectSumsWithGivenDirectSums",
-          "MorphismFromBidualWithGivenBidual",
           #"MorphismFromFiberProductToSink", # use their derivation
           #"MorphismFromFiberProductToSinkWithGivenFiberProduct", # use their derivation
           "MorphismFromSourceToPushout",
           "MorphismFromSourceToPushoutWithGivenPushout",
-          "MorphismToBidualWithGivenBidual",
           "MultiplyWithElementOfCommutativeRingForMorphisms",
           "PostCompose",
           "PreCompose",
@@ -125,17 +103,9 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "ProjectionOntoCoequalizerWithGivenCoequalizer",
           "Pushout",
           "PushoutFunctorialWithGivenPushouts",
-          "RankMorphism",
-          "RightDistributivityExpandingWithGivenObjects",
-          "RightDistributivityFactoringWithGivenObjects",
-          "RightUnitorInverseWithGivenTensorProduct",
-          "RightUnitorWithGivenTensorProduct",
           "SubtractionForMorphisms",
-          #"TensorProductDualityCompatibilityMorphismWithGivenObjects",
-          "TensorProductOnMorphismsWithGivenTensorProducts",
           "TerminalObject",
           "TerminalObjectFunctorial",
-          "TraceMap",
           "UniversalMorphismFromCoequalizer",
           "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
           "UniversalMorphismFromCoproduct",
@@ -162,12 +132,48 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY,
           "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
           "UniversalMorphismIntoZeroObject",
           "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
-          "UniversalPropertyOfDual",
-          "VerticalPostCompose",
-          "VerticalPreCompose",
           "ZeroMorphism",
           "ZeroObject",
-          "ZeroObjectFunctorial" ] );
+          "ZeroObjectFunctorial",
+         ] );
+
+##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY,
+        [ 
+          "AssociatorLeftToRightWithGivenTensorProducts",
+          "AssociatorRightToLeftWithGivenTensorProducts",
+          "BraidingInverseWithGivenTensorProducts",
+          "BraidingWithGivenTensorProducts",
+          "LeftDistributivityExpandingWithGivenObjects",
+          "LeftDistributivityFactoringWithGivenObjects",
+          "LeftUnitorInverseWithGivenTensorProduct",
+          "LeftUnitorWithGivenTensorProduct",
+          "RightDistributivityExpandingWithGivenObjects",
+          "RightDistributivityFactoringWithGivenObjects",
+          "RightUnitorInverseWithGivenTensorProduct",
+          "RightUnitorWithGivenTensorProduct",
+          "TensorProductOnMorphismsWithGivenTensorProducts",
+         ] );
+
+##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY_WITH_DUALS,
+        [ 
+          "CoevaluationForDualWithGivenTensorProduct",
+          "DualOnMorphismsWithGivenDuals",
+          #"CoevaluationMorphismWithGivenRange",
+          "EvaluationForDualWithGivenTensorProduct",
+          #"EvaluationMorphismWithGivenSource",
+          "LambdaElimination",
+          "LambdaIntroduction",
+          #"MonoidalPostComposeMorphismWithGivenObjects",
+          #"MonoidalPreComposeMorphismWithGivenObjects",
+          "MorphismFromBidualWithGivenBidual",
+          "MorphismToBidualWithGivenBidual",
+          "RankMorphism",
+          #"TensorProductDualityCompatibilityMorphismWithGivenObjects",
+          "TraceMap",
+          "UniversalPropertyOfDual",
+         ] );
 
 ####################################
 #
@@ -856,7 +862,7 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
-    local kq, A, relations, B_op, source, name,
+    local kq, A, relations, B_op, source, name, list_of_operations,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, doc, prop, Hom, vertices, arrows, H;
@@ -900,6 +906,23 @@ InstallMethodWithCache( FunctorCategory,
         name := Concatenation( name, Name( source ), ", ", Name( C ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
+    fi;
+    
+    list_of_operations := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
+    
+    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
+        
+        if HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+            
+            Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY );
+            
+        elif HasCounit( B ) and HasComultiplication( B ) then
+            
+            Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY );
+            Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY_WITH_DUALS );
+            
+        fi;
+        
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
@@ -1285,7 +1308,7 @@ InstallMethodWithCache( FunctorCategory,
     
     ## we cannot use ListPrimitivelyInstalledOperationsOfCategory since the unique lifts/colifts might be missing
     list_of_operations_to_install := ShallowCopy( ListInstalledOperationsOfCategory( C ) );
-    list_of_operations_to_install := Intersection( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY );
+    list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
              ];
