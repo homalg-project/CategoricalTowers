@@ -1373,11 +1373,11 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddIsLiftableAlongMonomorphism( Hom,
           function ( Hom, eta, rho )
-            local range_category;
+            local C;
             
-            range_category := Range( Hom );
+            C := Range( Hom );
             
-            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsLiftableAlongMonomorphism( range_category, eta( object ), rho( object ) ) );
+            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsLiftableAlongMonomorphism( C, eta( object ), rho( object ) ) );
             
         end );
         
@@ -1388,11 +1388,11 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddIsColiftableAlongEpimorphism( Hom,
           function ( Hom, eta, rho )
-            local range_category;
+            local C;
             
-            range_category := Range( Hom );
+            C := Range( Hom );
             
-            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsColiftableAlongEpimorphism( range_category, eta( object ), rho( object ) ) );
+            return ForAll( SetOfObjects( Source( Hom ) ), object -> IsColiftableAlongEpimorphism( C, eta( object ), rho( object ) ) );
             
         end );
         
@@ -1611,15 +1611,15 @@ InstallMethodWithCache( FunctorCategory,
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom,
               function ( Hom, eta )
-                local range_category, H, mors, mor, hom_diagram, hom, prjs, emb;
+                local C, H, mors, mor, hom_diagram, hom, prjs, emb;
                 
-                range_category := Range( Hom );
+                C := Range( Hom );
                 
                 H := RangeCategoryOfHomomorphismStructure( Hom );
                 
                 ## the component eta_o defines a morphism DistinguishedObjectOfHomomorphismStructure( Hom ) -> Hom( o, o ), for o in objects:
                 mors := List( ValuesOnAllObjects( eta ),
-                              m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( range_category, m ) );
+                              m -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, m ) );
                 
                 mor := UniversalMorphismIntoDirectProduct( H,
                                List( mors, Range ),
@@ -1652,9 +1652,9 @@ InstallMethodWithCache( FunctorCategory,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
               function ( Hom, F, G, iota )
-                local range_category, H, F_o_vals, G_o_vals, hom_diagram, o, etas;
+                local C, H, F_o_vals, G_o_vals, hom_diagram, o, etas;
                 
-                range_category := Range( Hom );
+                C := Range( Hom );
                 
                 H := RangeCategoryOfHomomorphismStructure( Hom );
                 
@@ -1677,7 +1677,7 @@ InstallMethodWithCache( FunctorCategory,
                 return AsMorphismInFunctorCategory(
                                F,
                                List( [ 1 .. o ],
-                                     i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( range_category,
+                                     i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
                                              F_o_vals[i],
                                              G_o_vals[i],
                                              etas[i] ) ),
@@ -1688,10 +1688,10 @@ InstallMethodWithCache( FunctorCategory,
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
               function ( Hom, s, eta, rho, r )
-                local range_category, H, o, hom_diagram_source, hom_source, prjs_source, emb_source,
+                local C, H, o, hom_diagram_source, hom_source, prjs_source, emb_source,
                       hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor;
                 
-                range_category := Range( Hom );
+                C := Range( Hom );
                 
                 H := RangeCategoryOfHomomorphismStructure( Hom );
                 
@@ -1732,7 +1732,7 @@ InstallMethodWithCache( FunctorCategory,
                                      prjs_range );
                 
                 mors := ListN( ValuesOnAllObjects( eta ), ValuesOnAllObjects( rho ),
-                               { eta_o, rho_o } -> HomomorphismStructureOnMorphisms( range_category, eta_o, rho_o ) );
+                               { eta_o, rho_o } -> HomomorphismStructureOnMorphisms( C, eta_o, rho_o ) );
                 
                 mor := DirectProductFunctorial( H,
                                mors );
