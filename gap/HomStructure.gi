@@ -15,18 +15,18 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
           [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ],
           
   function ( Hom, F, G )
-    local source_category, C, objs, nr_o, F_o, G_o, mors, nr_m, F_m, G_m,
+    local B, C, objs, nr_o, F_o, G_o, mors, nr_m, F_m, G_m,
           sources, mor_pair, morphisms, objects;
     
-    source_category := Source( Hom );
+    B := Source( Hom );
     C := Range( Hom );
     
-    objs := SetOfObjects( source_category );
+    objs := SetOfObjects( B );
     nr_o := Length( objs );
     F_o := ValuesOnAllObjects( F );
     G_o := ValuesOnAllObjects( G );
     
-    mors := SetOfGeneratingMorphisms( source_category );
+    mors := SetOfGeneratingMorphisms( B );
     nr_m := Length( mors );
     
     F_m := ValuesOnAllGeneratingMorphisms( F );
