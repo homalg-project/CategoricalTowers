@@ -67,7 +67,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
         
   function ( Hom, S, R )
     local algebroid, range_category, objs, nr_o, S_o_vals, R_o_vals, mors, nr_m, S_m_vals, R_m_vals,
-          source_summands, range_summands, range_category_of_hom_structure, map, i, j;
+          source_summands, range_summands, H, map, i, j;
     
     algebroid := Source( Hom );
     
@@ -93,14 +93,14 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
                                     Source( S_m_vals[i] ),
                                     Range( R_m_vals[i] ) ) );
     
-    range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( range_category );
+    H := RangeCategoryOfHomomorphismStructure( range_category );
     
     map :=
       function( i, j )
         
         if objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
             
-            return SubtractionForMorphisms( range_category_of_hom_structure,
+            return SubtractionForMorphisms( H,
                            HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
                                    source_summands[i],
                                    S_m_vals[j],
@@ -115,7 +115,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
             
         elif objs[i] = Source( mors[j] ) and not objs[i] = Range( mors[j] ) then
             
-            return AdditiveInverseForMorphisms( range_category_of_hom_structure,
+            return AdditiveInverseForMorphisms( H,
                            HomomorphismStructureOnMorphismsWithGivenObjects( range_category,
                                    source_summands[i],
                                    IdentityMorphism( range_category, S_o_vals[i] ),
@@ -133,7 +133,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
             
         else
             
-            return ZeroMorphism( range_category_of_hom_structure,
+            return ZeroMorphism( H,
                            source_summands[i],
                            range_summands[j] );
             
@@ -141,12 +141,12 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
         
     end;
     
-    return MorphismBetweenDirectSumsWithGivenDirectSums( range_category_of_hom_structure,
-                   DirectSum( range_category_of_hom_structure, source_summands ),
+    return MorphismBetweenDirectSumsWithGivenDirectSums( H,
+                   DirectSum( H, source_summands ),
                    source_summands,
                    List( [ 1 .. nr_o ], i -> List( [ 1 .. nr_m ], j -> map( i, j ) ) ),
                    range_summands,
-                   DirectSum( range_category_of_hom_structure, range_summands ) );
+                   DirectSum( H, range_summands ) );
     
 end );
 
@@ -154,7 +154,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY,
   
   function ( Hom )
-    local range_category, range_category_of_hom_structure;
+    local range_category, H;
     
     range_category := Range( Hom );
     
@@ -164,9 +164,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
       
     fi;
     
-    range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( range_category );
+    H := RangeCategoryOfHomomorphismStructure( range_category );
     
-    if not (HasIsAbelianCategory( range_category_of_hom_structure ) and IsAbelianCategory( range_category_of_hom_structure )) then
+    if not (HasIsAbelianCategory( H ) and IsAbelianCategory( H )) then
         return;
     fi;
     
@@ -175,7 +175,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
             RangeCategoryOfHomomorphismStructure( Range( Hom ) ) );
     
     ## Be sure the above assignment succeeded:
-    Assert( 0, IsIdenticalObj( range_category_of_hom_structure, RangeCategoryOfHomomorphismStructure( Hom ) ) );
+    Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( Hom ) ) );
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( Hom,
@@ -193,11 +193,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom,
       function ( Hom, eta )
-        local range_category, range_category_of_hom_structure, D, tau, diagram;
+        local range_category, H, D, tau, diagram;
         
         range_category := Range( Hom );
         
-        range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+        H := RangeCategoryOfHomomorphismStructure( Hom );
         
         D := DistinguishedObjectOfHomomorphismStructure( Hom );
         
@@ -206,12 +206,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         diagram := List( tau, Source );
 
-        return KernelLift( range_category_of_hom_structure,
+        return KernelLift( H,
                        AuxiliaryMorphism( Hom,
                                Source( eta ),
                                Range( eta ) ),
                        D,
-                       UniversalMorphismIntoDirectSum( range_category_of_hom_structure,
+                       UniversalMorphismIntoDirectSum( H,
                                diagram,
                                D,
                                tau ) );
@@ -221,11 +221,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
       function ( Hom, S, R, iota )
-        local range_category, range_category_of_hom_structure, S_o_vals, R_o_vals, map, cmp, o, summands, cmps;
+        local range_category, H, S_o_vals, R_o_vals, map, cmp, o, summands, cmps;
         
         range_category := Range( Hom );
         
-        range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+        H := RangeCategoryOfHomomorphismStructure( Hom );
         
         S_o_vals := ValuesOnAllObjects( S );
         
@@ -233,9 +233,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         map := AuxiliaryMorphism( Hom, S, R );
         
-        cmp := PreCompose( range_category_of_hom_structure,
+        cmp := PreCompose( H,
                         iota,
-                        KernelEmbedding( range_category_of_hom_structure,
+                        KernelEmbedding( H,
                                 map ) );
         
         o := Length( SetOfObjects( Source( Hom ) ) );
@@ -246,9 +246,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
                                   R_o_vals[i] ) );
         
         cmps := List( [ 1 .. o ],
-                      i -> PreCompose( range_category_of_hom_structure,
+                      i -> PreCompose( H,
                               cmp,
-                              ProjectionInFactorOfDirectSum( range_category_of_hom_structure,
+                              ProjectionInFactorOfDirectSum( H,
                                       summands,
                                       i ) )
                       );
@@ -267,11 +267,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
       function ( Hom, s, eta, mu, r )
-        local range_category, range_category_of_hom_structure, eta_vals, mu_vals, o, m;
+        local range_category, H, eta_vals, mu_vals, o, m;
         
         range_category := Range( Hom );
         
-        range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+        H := RangeCategoryOfHomomorphismStructure( Hom );
         
         eta_vals := ValuesOnAllObjects( eta );
         mu_vals := ValuesOnAllObjects( mu );
@@ -283,27 +283,27 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
                            eta_vals[i],
                            mu_vals[i] ) );
         
-        return KernelObjectFunctorialWithGivenKernelObjects( range_category_of_hom_structure,
+        return KernelObjectFunctorialWithGivenKernelObjects( H,
                        s,
                        AuxiliaryMorphism( Hom, Range( eta ), Source( mu ) ),
-                       DirectSumFunctorial( range_category_of_hom_structure, m ),
+                       DirectSumFunctorial( H, m ),
                        AuxiliaryMorphism( Hom, Source( eta ), Range( mu ) ),
                        r );
         
     end );
     
-    if CanCompute( range_category_of_hom_structure, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
+    if CanCompute( H, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
       
       ##
       AddBasisOfExternalHom( Hom,
         function ( Hom, S, R )
-          local range_category, range_category_of_hom_structure, iota, D, S_o_vals, R_o_vals, nr_o, summands, direct_sum, prjs, cmps, iotas, basis;
+          local range_category, H, iota, D, S_o_vals, R_o_vals, nr_o, summands, direct_sum, prjs, cmps, iotas, basis;
           
           range_category := Range( Hom );
           
-          range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+          H := RangeCategoryOfHomomorphismStructure( Hom );
           
-          iota := KernelEmbedding( range_category_of_hom_structure,
+          iota := KernelEmbedding( H,
                           AuxiliaryMorphism( Hom, S, R ) );
           
           D := DistinguishedObjectOfHomomorphismStructure( Hom );
@@ -322,23 +322,23 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
           direct_sum := Range( iota ); # is equal to DirectSum( summands )
           
           prjs := List( [ 1 .. Length( S_o_vals ) ],
-                        i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( range_category_of_hom_structure,
+                        i -> ProjectionInFactorOfDirectSumWithGivenDirectSum( H,
                                 summands,
                                 i,
                                 direct_sum ) );
           
           cmps := List( prjs,
-                        s -> PreCompose( range_category_of_hom_structure,
+                        s -> PreCompose( H,
                                 iota,
                                 s ) );
           
-          basis := BasisOfExternalHom( range_category_of_hom_structure,
+          basis := BasisOfExternalHom( H,
                            D,
                            Source( iota ) );
           
           iotas := List( cmps,
                          iota -> List( basis,
-                                 b -> PreCompose( range_category_of_hom_structure,
+                                 b -> PreCompose( H,
                                          b,
                                          iota ) ) );
           
@@ -358,15 +358,15 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
       ##
       AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
         function( Hom, eta, B )
-          local iota, range_category_of_hom_structure;
+          local iota, H;
           
           iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom, eta );
           
-          range_category_of_hom_structure := RangeCategoryOfHomomorphismStructure( Hom );
+          H := RangeCategoryOfHomomorphismStructure( Hom );
           
-          return CoefficientsOfMorphismWithGivenBasisOfExternalHom( range_category_of_hom_structure,
+          return CoefficientsOfMorphismWithGivenBasisOfExternalHom( H,
                          iota,
-                         BasisOfExternalHom( range_category_of_hom_structure,
+                         BasisOfExternalHom( H,
                                  Source( iota ),
                                  Range( iota ) ) );
           
