@@ -859,7 +859,7 @@ InstallMethodWithCache( FunctorCategory,
     local kq, A, relations, B_op, source, name,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, preinstall, doc, prop, Hom, vertices, arrows;
+          properties, preinstall, doc, prop, Hom, vertices, arrows, H;
     
     if IsFpCategory( B ) then
         kq := UnderlyingQuiverAlgebra( B );
@@ -1576,18 +1576,19 @@ InstallMethodWithCache( FunctorCategory,
           
     fi;
     
-    if IsFiniteDimensional( kq ) then
+    if HasRangeCategoryOfHomomorphismStructure( C ) and
+       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
         
-        if CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
-           CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
+        H := RangeCategoryOfHomomorphismStructure( C );
+        
+        if CheckConstructivenessOfCategory( H, "IsFiniteCompleteCategory" ) = [ ] then
             
             ## Set the range category of the homomorphism structure of the functor category to be
             ## the range category of the homomorphism structure of the range category C of the functor category:
-            SetRangeCategoryOfHomomorphismStructure( Hom,
-                    RangeCategoryOfHomomorphismStructure( Range( Hom ) ) );
+            SetRangeCategoryOfHomomorphismStructure( Hom, H );
             
             ## Be sure the above assignment succeeded:
-            Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( Hom ), RangeCategoryOfHomomorphismStructure( Range( Hom ) ) ) );
+            Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( Hom ), H ) );
             
             SetIsEquippedWithHomomorphismStructure( Hom, true );
             
@@ -1747,7 +1748,12 @@ InstallMethodWithCache( FunctorCategory,
             
         fi;
         
-        ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY( Hom );
+        ## for an Abelian H install cheaper methods
+        if HasIsAbelianCategory( H ) and IsAbelianCategory( H ) then
+            
+            ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY( Hom );
+            
+        fi;
         
     fi;
     

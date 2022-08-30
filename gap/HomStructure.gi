@@ -172,6 +172,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     
     ##
     SetRangeCategoryOfHomomorphismStructure( Hom, H );
+
+    ##
+    SetIsEquippedWithHomomorphismStructure( Hom, true );
     
     ## Be sure the above assignment succeeded:
     Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( Hom ) ) );
