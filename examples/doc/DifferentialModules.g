@@ -19,6 +19,11 @@ Qq := PathAlgebra( Q, q );
 #! Q * q
 #! @EndExample
 
+#! @Example
+A := MatrixCategory( Q : overhead := false );
+#! Category of matrices over Q
+#! @EndExample
+
 #! Consider $\mathbb{Q}q$ as an algebroid $B$ with one object $1$ and morphisms given by $\mathbb{Q}q$.
 
 #! @Example
@@ -127,11 +132,6 @@ ApplyFunctor( antipode, B.t );
 #! Let $A$ be the category with objects the natural numbers and morphisms the matrices with coefficients in $\mathbb{Q}$.
 #! We use it as a skeletal model of the category of finite dimension vector spaces.
 
-#! @Example
-A := MatrixCategory( Q );
-#! Category of matrices over Q
-#! @EndExample
-
 #! Let $H$ be the category of functors from $B$ to $A$.
 
 #! @Example
@@ -158,7 +158,7 @@ z( B.t );
 idz := IdentityMorphism( z );
 #! <(1)->0x0>
 idz( B.1 );
-#! <A zero, identity morphism in Category of matrices over Q>
+#! <A morphism in Category of matrices over Q>
 DirectSum( z, z );
 #! <(1)->0; (t)->0x0>
 z = DirectSum(z,z);
