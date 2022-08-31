@@ -14,7 +14,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         [ IsCapCategory ],
         
   function ( category_of_finsets )
-    local F, F_hat,
+    local F, F_hat, F_op,
           object_constructor, object_datum,
           morphism_constructor, morphism_datum,
           modeling_tower_object_constructor, modeling_tower_object_datum,
@@ -24,36 +24,111 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_finsets : FinalizeCategory := true );
+
+    F_op := OppositeFpCategory( F );
     
     ##
-    object_constructor := AsObjectInWrapperCategory;
+    object_constructor := { Quivers, quadruple } -> CreateQuiver( Quivers, quadruple );
     
     ##
-    object_datum := { cat, o } -> UnderlyingCell( o );
+    object_datum := { Quivers, o } -> DefiningQuadrupleOfQuiver( o );
     
     ##
-    morphism_constructor := AsMorphismInWrapperCategory;
+    morphism_constructor := CreateQuiverMorphism;
     
     ##
-    morphism_datum := { cat, m } -> UnderlyingCell( m );
+    morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphism( m );
     
     ##
-    modeling_tower_object_constructor := { cat, obj } -> obj;
+    modeling_tower_object_constructor :=
+      function( Quivers, quadruple )
+        local F_hat, PSh, sFinSets, V, A, s, t;
+        
+        F_hat := ModelingCategory( Quivers );
+        
+        PSh := ModelingCategory( F_hat );
+        
+        sFinSets := Range( PSh );
+        
+        V := FinSet( sFinSets, quadruple[1] );
+        
+        A := FinSet( sFinSets, quadruple[2] );
+        
+        s := MapOfFinSets( sFinSets, A, quadruple[3], V );
+        
+        t := MapOfFinSets( sFinSets, A, quadruple[4], V );
+        
+        return ObjectConstructor( F_hat,
+                       AsObjectInFunctorCategoryByValues( PSh, [ V, A ], [ s, t ] ) );
+        
+    end;
     
     ##
-    modeling_tower_object_datum := { cat, obj } -> obj;
+    modeling_tower_object_datum :=
+      function( Quivers, obj )
+        local F_hat, F, values_of_all_objects, values_of_all_generating_morphisms;
+        
+        F_hat := ModelingCategory( Quivers );
+        
+        F := ObjectDatum( F_hat, obj );
+        
+        values_of_all_objects := ValuesOnAllObjects( F );
+        values_of_all_generating_morphisms := ValuesOnAllGeneratingMorphisms( F );
+        
+        return NTuple( 4,
+                       Length( values_of_all_objects[1] ), Length( values_of_all_objects[2] ),
+                       AsList( values_of_all_generating_morphisms[1] ), AsList( values_of_all_generating_morphisms[2] ) );
+        
+    end;
     
     ##
-    modeling_tower_morphism_constructor := { cat, source, mor, range } -> mor;
+    modeling_tower_morphism_constructor :=
+      function( Quivers, source, images, range )
+        local F_hat, PSh, sFinSets, S, T, Sobj, Tobj;
+        
+        F_hat := ModelingCategory( Quivers );
+        
+        PSh := ModelingCategory( F_hat );
+        
+        sFinSets := Range( PSh );
+        
+        S := ObjectDatum( F_hat, source );
+        T := ObjectDatum( F_hat, range );
+        
+        Sobj := ValuesOnAllObjects( S );
+        Tobj := ValuesOnAllObjects( T );
+        
+        return MorphismConstructor( F_hat,
+                       source,
+                       AsMorphismInFunctorCategoryByValues( PSh,
+                               S,
+                               [ MapOfFinSets( sFinSets, Sobj[1], images[1], Tobj[1] ),
+                                 MapOfFinSets( sFinSets, Sobj[2], images[2], Tobj[2] ) ],
+                               T ),
+                       range );
+        
+    end;
     
     ##
-    modeling_tower_morphism_datum := { cat, mor } -> mor;
+    modeling_tower_morphism_datum :=
+      function( Quivers, mor )
+        local F_hat, eta, values_of_all_objects;
+        
+        F_hat := ModelingCategory( Quivers );
+        
+        eta := MorphismDatum( F_hat, mor );
+        
+        values_of_all_objects := ValuesOnAllObjects( eta );
+        
+        return Pair( AsList( values_of_all_objects[1] ), AsList( values_of_all_objects[2] ) );
+        
+    end;
     
     Quivers := WrapperCategory( F_hat,
                        rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_finsets ), " )" ),
-                            category_filter := IsWrapperCapCategory and IsCategoryOfQuivers,
-                            category_object_filter := IsWrapperCapCategoryObject and IsObjectInCategoryOfQuivers,
-                            category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInCategoryOfQuivers,
+                            category_filter := IsCategoryOfQuivers,
+                            category_object_filter := IsObjectInCategoryOfQuivers,
+                            category_morphism_filter := IsMorphismInCategoryOfQuivers,
                             object_constructor := object_constructor,
                             object_datum := object_datum,
                             morphism_datum := morphism_datum,
@@ -62,15 +137,30 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                             modeling_tower_object_datum := modeling_tower_object_datum,
                             modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                             modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true ) );
+                            only_primitive_operations := true ) : FinalizeCategory := false );
     
     SetUnderlyingCategory( Quivers, F );
+    SetSetOfObjects( Quivers, SetOfObjects( F_op ) );
+    SetSetOfGeneratingMorphisms( Quivers, SetOfGeneratingMorphisms( F_op ) );
+    SetDefiningPairOfUnderlyingQuiver( Quivers, DefiningPairOfAQuiver( UnderlyingQuiver( F_op ) ) );
     
     Quivers!.compiler_hints :=
       rec( category_filter := IsCategoryOfQuivers,
            object_filter := IsObjectInCategoryOfQuivers,
            morphism_filter := IsMorphismInCategoryOfQuivers,
+           category_attribute_names :=
+           [ "ModelingCategory",
+             "SetOfObjects",
+             "SetOfGeneratingMorphisms",
+             "DefiningPairOfUnderlyingQuiver",
+            ],
            );
+    
+    if ValueOption( "no_precompiled_code" ) <> true then
+        ADD_FUNCTIONS_FOR_FinQuiversPrecompiled( Quivers );
+    fi;
+    
+    Finalize( Quivers );
     
     return Quivers;
     
@@ -81,14 +171,24 @@ BindGlobal( "FinQuivers",
          CategoryOfQuiversEnrichedOver( SkeletalFinSets ) );
 
 ##
+InstallOtherMethodForCompilerForCAP( CreateQuiver,
+        "for a category of quivers and a quadruple",
+        [ IsCategoryOfQuivers, IsList ],
+        
+  function ( category_of_quivers, quadruple )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category_of_quivers,
+                   DefiningQuadrupleOfQuiver, quadruple );
+    
+end );
+
+##
 InstallMethod( CreateQuiver,
         "for a category of quivers, an integers, and a list of pairs of integers",
         [ IsCategoryOfQuivers, IsInt, IsList ],
         
   function ( category_of_quivers, n, arrows )
-    local V, arr, A, s, t, finite_cocompletion, PSh, presheaf;
-    
-    V := FinSet( n );
+    local arr, A, s, t;
     
     if ForAll( arrows, IsInt ) then
         arr := List( [ 1 .. Length( arrows ) / 2 ], i -> [ arrows[2 * i - 1], arrows[2 * i] ] );
@@ -96,19 +196,10 @@ InstallMethod( CreateQuiver,
         arr := arrows;
     fi;
     
-    A := FinSet( Length( arr ) );
-    
-    s := MapOfFinSets( A, List( arr, a -> a[1] ), V );
-    t := MapOfFinSets( A, List( arr, a -> a[2] ), V );
-    
-    finite_cocompletion := ModelingCategory( category_of_quivers );
-    
-    PSh := ModelingCategory( finite_cocompletion );
-    
-    presheaf := AsObjectInFunctorCategoryByValues( PSh, [ V, A ], [ s, t ] );
-    
-    return ObjectConstructor( category_of_quivers,
-                   ObjectConstructor( finite_cocompletion, presheaf ) );
+    return CreateQuiver( category_of_quivers,
+                   NTuple( 4,
+                           n, Length( arr ),
+                           List( arr, a -> a[1] ), List( arr, a -> a[2] ) ) );
     
 end );
 
@@ -129,8 +220,25 @@ InstallMethod( Arrows,
         [ IsObjectInCategoryOfQuivers ],
         
   function ( quiver )
+    local datum;
     
-    return ListN( AsList( quiver.s ), AsList( quiver.t ), { s, t } -> [ s, t ] );
+    datum := ObjectDatum( quiver );
+    
+    return TransposedMat( [ datum[3], datum[4] ] );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
+        "for a category of quivers, two objects in a category of quivers, and a pair",
+        [ IsCategoryOfQuivers, IsObjectInCategoryOfQuivers, IsList, IsObjectInCategoryOfQuivers ],
+        
+  function ( category_of_quivers, source, images, range )
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category_of_quivers,
+                   source,
+                   range,
+                   DefiningPairOfQuiverMorphism, images );
     
 end );
 
@@ -140,31 +248,8 @@ InstallMethod( CreateQuiverMorphism,
         [ IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers ],
         
   function ( source, images_of_vertices, images_of_arrows, range )
-    local s, t, S, T, natural_transformation, category_of_quivers, finite_cocompletion;
     
-    s := ObjectDatum( source );
-    t := ObjectDatum( range );
-    
-    S := ObjectDatum( s );
-    T := ObjectDatum( t );
-    
-    natural_transformation := AsMorphismInFunctorCategory(
-                                      S,
-                                      [ MapOfFinSets( S.V, images_of_vertices, T.V ),
-                                        MapOfFinSets( S.A, images_of_arrows, T.A ) ],
-                                      T );
-    
-    category_of_quivers := CapCategory( source );
-    
-    finite_cocompletion := ModelingCategory( category_of_quivers );
-    
-    return MorphismConstructor( category_of_quivers,
-                   source,
-                   MorphismConstructor( finite_cocompletion,
-                           s,
-                           natural_transformation,
-                           t ),
-                   range );
+    return CreateQuiverMorphism( CapCategory( source ), source, Pair( images_of_vertices, images_of_arrows ), range );
     
 end );
 
@@ -182,7 +267,9 @@ InstallMethod( Subobject,
     
     vertices := AsList( quiver.V ){1 + Set( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
     
-    source := CreateQuiver( CapCategory( quiver ), Length( vertices ), List( arrows_as_pairs, a -> -1 + [ Position( vertices, a[1] ), Position( vertices, a[2] ) ] ) );
+    source := CreateQuiver( CapCategory( quiver ),
+                      Length( vertices ),
+                      List( arrows_as_pairs, a -> -1 + [ SafePosition( vertices, a[1] ), SafePosition( vertices, a[2] ) ] ) );
     
     subquiver := CreateQuiverMorphism( source, vertices, arrows, quiver );
     
@@ -210,11 +297,17 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
         [ IsCategoryOfQuivers ],
         
   function ( category_of_quivers )
-    local Y;
+    local Y, U;
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( ModelingCategory( category_of_quivers ) );
+    Y := YonedaEmbedding( UnderlyingCategory( category_of_quivers ) );
     
-    return PreCompose( Y, WrappingFunctor( category_of_quivers ) );
+    U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_quivers );
+    
+    AddObjectFunction( U, F -> CreateQuiver( category_of_quivers, NTuple( 4, Length( F.V ), Length( F.A ), AsList( F.s ), AsList( F.t ) ) ) );
+    
+    AddMorphismFunction( U, { source, eta, range } -> CreateQuiverMorphism( category_of_quivers, source, Pair( AsList( eta.V ), AsList( eta.A ) ), range ) );
+    
+    return PreCompose( Y, U );
     
 end );
 
@@ -270,12 +363,49 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a cell in a category of quivers and a positive integer",
-        [ IsCellInCategoryOfQuivers, IsPosInt ],
+        "for an object in a category of quivers and a positive integer",
+        [ IsObjectInCategoryOfQuivers, IsPosInt ],
         
-  function ( cell, string_as_int )
+  function ( quiver, string_as_int )
+    local datum, name;
     
-    return UnderlyingCell( cell ).(NameRNam( string_as_int ));
+    datum := ObjectDatum( quiver );
+    
+    name := NameRNam( string_as_int );
+    
+    if name = "V" then
+        return FinSet( datum[1] );
+    elif name = "A" then
+        return FinSet( datum[2] );
+    elif name = "s" then
+        return MapOfFinSets( FinSet( datum[2] ), datum[3], FinSet( datum[1] ) );
+    elif name = "t" then
+        return MapOfFinSets( FinSet( datum[2] ), datum[4], FinSet( datum[1] ) );
+    fi;
+    
+    Error( "the quiver has no component with the name \"", name, "\"\n" );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a morphism in a category of quivers and a positive integer",
+        [ IsMorphismInCategoryOfQuivers, IsPosInt ],
+        
+  function ( mor, string_as_int )
+    local datum, name;
+    
+    datum := MorphismDatum( mor );
+    
+    name := NameRNam( string_as_int );
+    
+    if name = "V" then
+        return MapOfFinSets( Source( mor ).V, datum[1], Range( mor ).V );
+    elif name = "A" then
+        return MapOfFinSets( Source( mor ).A, datum[2], Range( mor ).A );
+    fi;
+    
+    Error( "the quiver morphism has no component with the name \"", name, "\"\n" );
     
 end );
 
@@ -393,5 +523,42 @@ InstallMethod( SvgString,
   function ( cell )
     
     return DotToSVG( DotVertexLabelledDigraph( cell ) );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for an object in a category of quivers",
+        [ IsObjectInCategoryOfQuivers ],
+        
+  function ( quiver )
+    local datum, arrows;
+    
+    datum := ObjectDatum( quiver );
+
+    arrows := TransposedMat( [ datum[3], datum[4] ] );
+    
+    Print( "( ", StringPrint( FinSet( datum[1] ) ), ", {",
+           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ) ), " } )\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a category of quivers",
+        [ IsMorphismInCategoryOfQuivers ],
+        
+  function ( mor )
+    local objs;
+    
+    objs := SetOfObjects( CapCategory( mor ) );
+    
+    Print( "Image of ", StringView( objs[1] ), ":\n" );
+    Display( mor.V );
+    
+    Print( "\nImage of ", StringView( objs[2] ), ":\n" );
+    Display( mor.A );
+    
+    Print( "\nA morphism in ", Name( CategoryOfQuiversEnrichedOver( SkeletalFinSets ) ), " given by the above data\n" );
     
 end );
