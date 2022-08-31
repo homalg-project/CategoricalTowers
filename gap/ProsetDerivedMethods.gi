@@ -128,7 +128,7 @@ AddDerivationToCAP( Lift,
 
 ##
 AddDerivationToCAP( Colift,
-        [ [ LiftAlongMonomorphism, 1 ] ],
+        [ [ ColiftAlongEpimorphism, 1 ] ],
         
   { cat, alpha, beta } -> ColiftAlongEpimorphism( cat, alpha, beta ) :
       Description := "Colift using ColiftAlongEpimorphism",
