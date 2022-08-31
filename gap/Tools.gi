@@ -1079,10 +1079,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 ##
 AddFinalDerivation( Limit,
         [ [ DirectProduct, 2 ],
+          [ Equalizer, 1 ],
           [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## called in List
           [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ],
           [ PreCompose, 3 ], ## called in List
-          [ EmbeddingOfEqualizerWithGivenEqualizer, 2 ],
+          [ EmbeddingOfEqualizerWithGivenEqualizer, 1 ],
           [ ProjectionInFactorOfDirectProduct, 1 ],
           [ UniversalMorphismIntoDirectProduct, 1 ],
           [ LiftAlongMonomorphism, 1 ],
