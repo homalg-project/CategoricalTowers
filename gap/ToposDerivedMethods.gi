@@ -6,8 +6,6 @@
 
 ##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
-                    [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
-                      [ ProjectionInFactorOfFiberProduct , 1 ] ],
   function( cat, mor )
     local truth, subobject;
     
