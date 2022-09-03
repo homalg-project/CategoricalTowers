@@ -756,14 +756,21 @@ end : Description := "SumOfImagesOfAllMorphisms as Source of EmbeddingOfSumOfIma
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
-        [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-          [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
-          [ HomomorphismStructureOnObjects, 1 ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ]
-          ],
+        [ [ HomomorphismStructureOnMorphisms, 4 ],
+          [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+          [ HomomorphismStructureOnObjects, 2 ],
+          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
+          [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+          [ PreCompose, 6, RangeCategoryOfHomomorphismStructure ],
+          [ KernelEmbedding, 1, RangeCategoryOfHomomorphismStructure ],
+          [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+          [ ProjectionInFactorOfDirectSum, 4, RangeCategoryOfHomomorphismStructure ],
+        ],
         
   function( cat, left_coefficients, right_coefficients )
-    local m, n, list, H, B, summands;
+    local range_cat, m, n, list, H, B, summands;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
     m := Size( left_coefficients );
     
@@ -774,13 +781,13 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
-    H := MorphismBetweenDirectSums( list );
+    H := MorphismBetweenDirectSums( range_cat, list );
     
-    H := KernelEmbedding( RangeCategoryOfHomomorphismStructure( cat ), H );
+    H := KernelEmbedding( range_cat, H );
     
-    B := BasisOfExternalHom( RangeCategoryOfHomomorphismStructure( cat ), DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
+    B := BasisOfExternalHom( range_cat, DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
     
-    B := List( B, m -> PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, H ) );
+    B := List( B, m -> PreCompose( range_cat, m, H ) );
     
     summands := List( [ 1 .. n ],
                   j -> HomomorphismStructureOnObjects( cat,
@@ -795,55 +802,35 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
             Range( left_coefficients[1][j] ),
             Source( right_coefficients[1][j] ),
-            PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, ProjectionInFactorOfDirectSum( RangeCategoryOfHomomorphismStructure( cat ), summands, j ) )
+            PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, summands, j ) )
           )
         )
       );
       
   end :
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+  CategoryFilter := IsLinearCategoryOverCommutativeRing and HasRangeCategoryOfHomomorphismStructure,
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsLinearCategoryOverCommutativeRing( cat ) and
-        IsLinearCategoryOverCommutativeRing( cat ) and
-          HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
-          "PreCompose",
-          "KernelEmbedding",
-          "BasisOfExternalHom"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
   Description := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory using the homomorphism structure"
 );
 
 ##
 AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory,
-        [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-          [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
-          [ HomomorphismStructureOnObjects, 1 ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ],
-          [ DistinguishedObjectOfHomomorphismStructure, 1 ]
+        [ [ HomomorphismStructureOnMorphisms, 8 ],
+          [ HomomorphismStructureOnObjects, 2 ],
+          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 4 ],
+          [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+          [ MorphismBetweenDirectSums, 2, RangeCategoryOfHomomorphismStructure ],
+          [ PreCompose, 6, RangeCategoryOfHomomorphismStructure ],
+          [ KernelEmbedding, 1, RangeCategoryOfHomomorphismStructure ],
+          [ BasisOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
+          [ ProjectionInFactorOfDirectSum, 4, RangeCategoryOfHomomorphismStructure ],
           ],
         
   function( cat, alpha, beta, gamma, delta )
-    local m, n, list_1, H_1, list_2, H_2, H, B, summands;
+    local range_cat, m, n, list_1, H_1, list_2, H_2, H, B, summands;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
     m := Size( alpha );
     
@@ -854,20 +841,20 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, alpha[i][j], beta[i][j] ) )
     );
     
-    H_1 := MorphismBetweenDirectSums( list_1 );
+    H_1 := MorphismBetweenDirectSums( range_cat, list_1 );
     
     list_2 :=
       List( [ 1 .. n ],
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, gamma[i][j], delta[i][j] ) )
     );
     
-    H_2 := MorphismBetweenDirectSums( list_2 );
+    H_2 := MorphismBetweenDirectSums( range_cat, list_2 );
     
-    H := KernelEmbedding( RangeCategoryOfHomomorphismStructure( cat ), H_1 - H_2 );
+    H := KernelEmbedding( range_cat, H_1 - H_2 );
     
-    B := BasisOfExternalHom( RangeCategoryOfHomomorphismStructure( cat ), DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
+    B := BasisOfExternalHom( range_cat, DistinguishedObjectOfHomomorphismStructure( cat ), Source( H ) );
     
-    B := List( B, m -> PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, H ) );
+    B := List( B, m -> PreCompose( range_cat, m, H ) );
     
     summands := List( [ 1 .. n ],
                   j -> HomomorphismStructureOnObjects( cat,
@@ -882,54 +869,32 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
             Range( alpha[1][j] ),
             Source( beta[1][j] ),
-            PreCompose( RangeCategoryOfHomomorphismStructure( cat ), m, ProjectionInFactorOfDirectSum( RangeCategoryOfHomomorphismStructure( cat ), summands, j ) )
+            PreCompose( range_cat, m, ProjectionInFactorOfDirectSum( range_cat, summands, j ) )
           )
         )
       );
       
   end :
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsLinearCategoryOverCommutativeRing( cat ) and
-        IsLinearCategoryOverCommutativeRing( cat ) and
-          HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
-          "PreCompose",
-          "KernelEmbedding",
-          "BasisOfExternalHom"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
+  CategoryFilter := IsLinearCategoryOverCommutativeRing and HasRangeCategoryOfHomomorphismStructure,
   Description := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory using the homomorphism structure"
 );
 
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
-        [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
-          [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
-          [ HomomorphismStructureOnObjects, 1 ],
-          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ]
+        [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 2 ],
+          [ HomomorphismStructureOnMorphisms, 4 ],
+          [ UniversalMorphismIntoDirectSum, 1, RangeCategoryOfHomomorphismStructure ],
+          [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+          [ IsLiftable, 1, RangeCategoryOfHomomorphismStructure ],
+          [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ],
           ],
         
   function( cat, left_coefficients, right_coefficients, right_side )
-    local m, n, nu, list, H;
+    local range_cat, m, n, nu, list, H;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
     m := Size( left_coefficients );
     
@@ -938,7 +903,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     ## create lift diagram
     
     nu :=
-      UniversalMorphismIntoDirectSum( RangeCategoryOfHomomorphismStructure( cat ),
+      UniversalMorphismIntoDirectSum( range_cat,
         List( [ 1 .. m ],
         i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) )
     );
@@ -948,47 +913,29 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
-    H := MorphismBetweenDirectSums( list );
+    H := MorphismBetweenDirectSums( range_cat, list );
     
-    return IsLiftable( RangeCategoryOfHomomorphismStructure( cat ), nu, H ) and IsMonomorphism( RangeCategoryOfHomomorphismStructure( cat ), H );
+    return IsLiftable( range_cat, nu, H ) and IsMonomorphism( range_cat, H );
     
   end :
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
-          "IsLiftable",
-          "IsMonomorphism"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
+  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
 
 ##
 AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory,
-        [ [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ]
-          ],
+        [
+          [ HomomorphismStructureOnMorphisms, 4 ],
+          [ MorphismBetweenDirectSums, 1, RangeCategoryOfHomomorphismStructure ],
+          [ IsMonomorphism, 1, RangeCategoryOfHomomorphismStructure ],
+        ],
         
   function( cat, left_coefficients, right_coefficients )
-    local m, n, list, H;
+    local range_cat, m, n, list, H;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
     m := Size( left_coefficients );
     
@@ -999,35 +946,14 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( cat, left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
-    H := MorphismBetweenDirectSums( list );
+    H := MorphismBetweenDirectSums( range_cat, list );
     
-    return IsMonomorphism( RangeCategoryOfHomomorphismStructure( cat ), H );
+    return IsMonomorphism( range_cat, H );
     
   end :
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   ConditionsListComplete := true,
-  CategoryFilter := function( cat )
-    local B, conditions;
-    
-    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
-        
-        B := RangeCategoryOfHomomorphismStructure( cat );
-        
-        conditions := [
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
-          "IsMonomorphism"
-        ];
-        
-        if ForAll( conditions, c -> CanCompute( B, c ) ) then
-            
-            return true;
-            
-        fi;
-        
-    fi;
-    
-    return false;
-    
-  end,
+  CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory using the homomorphism structure"
 );
 
