@@ -82,6 +82,7 @@ AddDerivationToCAP( Equalizer,
     return Source( D[1] );
     
 end : Description := "Equalizer using Source",
+      ConditionsListComplete := true,
       CategoryFilter := IsThinCategory );
 
 ##
@@ -104,6 +105,7 @@ AddDerivationToCAP( Coequalizer,
     return Range( D[1] );
     
 end : Description := "Coequalizer using Range",
+      ConditionsListComplete := true,
       CategoryFilter := IsThinCategory );
 
 ##
