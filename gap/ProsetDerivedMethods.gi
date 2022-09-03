@@ -79,10 +79,11 @@ AddDerivationToCAP( Equalizer,
         
   function( cat, D )
     
+    Info( DerivationInfo, 1000, "Currently derivations without preconditions are not supported, so we have to simulate a function call here: IsHomSetInhabited( cat, obj1, obj2 )." );
+    
     return Source( D[1] );
     
 end : Description := "Equalizer using Source",
-      ConditionsListComplete := true,
       CategoryFilter := IsThinCategory );
 
 ##
@@ -102,10 +103,11 @@ AddDerivationToCAP( Coequalizer,
         
   function( cat, D )
     
+    Info( DerivationInfo, 1000, "Currently derivations without preconditions are not supported, so we have to simulate a function call here: IsHomSetInhabited( cat, obj1, obj2 )." );
+    
     return Range( D[1] );
     
 end : Description := "Coequalizer using Range",
-      ConditionsListComplete := true,
       CategoryFilter := IsThinCategory );
 
 ##
