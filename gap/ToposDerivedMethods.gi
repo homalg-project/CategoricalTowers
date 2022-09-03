@@ -331,7 +331,6 @@ AddDerivationToCAP( MorphismsOfExternalHom,
                          phi ) );
     
 end :
-  ConditionsListComplete := true,
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := HasRangeCategoryOfHomomorphismStructure,
   Description := "MorphismsOfExternalHom using MorphismsOfExternalHom in RangeCategoryOfHomomorphismStructure" );
