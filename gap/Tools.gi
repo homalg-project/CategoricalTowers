@@ -810,7 +810,6 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory,
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
   CategoryFilter := IsLinearCategoryOverCommutativeRing and HasRangeCategoryOfHomomorphismStructure,
-  ConditionsListComplete := true,
   Description := "BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory using the homomorphism structure"
 );
 
@@ -876,7 +875,6 @@ AddDerivationToCAP( BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCateg
       
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  ConditionsListComplete := true,
   CategoryFilter := IsLinearCategoryOverCommutativeRing and HasRangeCategoryOfHomomorphismStructure,
   Description := "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory using the homomorphism structure"
 );
@@ -919,7 +917,6 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory,
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  ConditionsListComplete := true,
   CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
@@ -952,7 +949,6 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
     
   end :
   CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
-  ConditionsListComplete := true,
   CategoryFilter := IsAbCategory and HasRangeCategoryOfHomomorphismStructure,
   Description := "MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory using the homomorphism structure"
 );
