@@ -29,8 +29,9 @@ InstallGlobalFunction( IsHomSetInhabitedForCoframes,
     fi;
     
     S := BestUnderlyingColumn( S );
-    T := BestUnderlyingColumn( T );
+    T := UnderlyingColumn( T );
     
+    ## since S is now guaranteed to be radical:
     return IsZero( DecideZeroRows( T, S ) );
     
 end );
