@@ -105,7 +105,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
 
                 Gamma0_projection := ClosureOfProjection( Gamma0_test );
 
-                if IsSubset( Gamma0_projection, projection_closure ) then # Check, whether the closure of the projection remains the same
+                if IsEqualForObjectsIfIsHomSetInhabited( Gamma0_projection, projection_closure ) then # Check, whether the closure of the projection remains the same
 
                     # We are in the good case, where intersecting with H reduced the codimension in the fiber and does not change the closure of the projection.
                     # Hence we permanently incorporate H in Gamma0
@@ -131,7 +131,7 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                         Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done" );
 
                         Info( InfoConstructibleImage, 8, step, counter, " in ZDF: check split base..." );
-                        if not IsSubset( Gamma0_projection_test, projection_closure ) and not IsInitial( Gamma0_projection_test ) then
+                        if not IsEqualForObjectsIfIsHomSetInhabited( Gamma0_projection_test, projection_closure ) and not IsInitial( Gamma0_projection_test ) then
                             Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done (yes)" );
 
                             Info( InfoConstructibleImage, 8, step, counter, " in ZDF: use split in base to induce split of components in the fiber..." );
@@ -163,9 +163,9 @@ InstallMethod( DecreaseCodimensionByFixingVariables,
                                     Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done" );
 
                                     Info( InfoConstructibleImage, 8, step, counter, " in ZDF: check split fiber..." );
-                                    if not IsSubset( Gamma1, Gamma ) then
+                                    if not IsEqualForObjectsIfIsHomSetInhabited( Gamma1, Gamma ) then
                                         Gamma2 := CoexponentialOnObjects( Gamma, Gamma1 );
-                                        if not IsSubset( Gamma2, Gamma ) then
+                                        if not IsEqualForObjectsIfIsHomSetInhabited( Gamma2, Gamma ) then
                                             Info( InfoConstructibleImage, 8, step, counter, " in ZDF: ...done (yes)" );
                                             Assert( 4, Gamma = Gamma1 + Gamma2 );
                                             Gamma0 := Gamma1;

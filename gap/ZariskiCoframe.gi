@@ -29,8 +29,9 @@ InstallGlobalFunction( IsHomSetInhabitedForCoframes,
     fi;
     
     S := BestUnderlyingColumn( S );
-    T := BestUnderlyingColumn( T );
+    T := UnderlyingColumn( T );
     
+    ## since S is now guaranteed to be radical:
     return IsZero( DecideZeroRows( T, S ) );
     
 end );
@@ -38,6 +39,10 @@ end );
 ##
 InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframes,
   function( S, T )
+    
+    if Dimension( S ) < Dimension( T ) then
+        return false;
+    fi;
     
     S := BestUnderlyingColumn( S );
     T := BestUnderlyingColumn( T );
