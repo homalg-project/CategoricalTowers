@@ -865,7 +865,7 @@ InstallMethodWithCache( FunctorCategory,
     local kq, A, relations, B_op, source, name, list_of_operations,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
-          properties, preinstall, doc, prop, Hom, vertices, arrows, H;
+          properties, preinstall, supports_empty_limits, doc, prop, Hom, vertices, arrows, H;
     
     if IsFpCategory( B ) then
         kq := UnderlyingQuiverAlgebra( B );
@@ -1355,9 +1355,16 @@ InstallMethodWithCache( FunctorCategory,
     CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
     CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
     
+    if IsBound( C!.supports_empty_limits ) then
+        supports_empty_limits := C!.supports_empty_limits;
+    else
+        supports_empty_limits := false;
+    fi;
+    
     Hom := CategoryConstructor( :
                    name := name,
                    category_as_first_argument := true,
+                   supports_empty_limits := true,
                    category_object_filter := IsObjectInFunctorCategory,
                    category_morphism_filter := IsMorphismInFunctorCategory,
                    category_filter := IsFunctorCategory,
@@ -1374,12 +1381,6 @@ InstallMethodWithCache( FunctorCategory,
                    underlying_object_getter_string := "( { cat, F } -> UnderlyingCapTwoCategoryCell( F ) )",
                    underlying_morphism_getter_string := "( { cat, eta } -> UnderlyingCapTwoCategoryCell( eta ) )"
                    );
-    
-    if IsBound( C!.supports_empty_limits ) then
-        
-        Hom!.supports_empty_limits := C!.supports_empty_limits;
-        
-    fi;
     
     SetOppositeOfSource( Hom, B_op );
     
