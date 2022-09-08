@@ -81,7 +81,7 @@ AddDerivationToCAP( Equalizer,
     return Source( D[1] );
     
 end : Description := "Equalizer using Source",
-      CategoryFilter := IsThinCategory );
+      CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
 
 ##
 AddDerivationToCAP( EmbeddingOfEqualizerWithGivenEqualizer,
@@ -102,7 +102,7 @@ AddDerivationToCAP( Coequalizer,
     return Range( D[1] );
     
 end : Description := "Coequalizer using Range",
-      CategoryFilter := IsThinCategory );
+      CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
 
 ##
 AddDerivationToCAP( ProjectionOntoCoequalizerWithGivenCoequalizer,
