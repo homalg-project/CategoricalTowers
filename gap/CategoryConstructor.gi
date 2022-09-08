@@ -44,8 +44,12 @@ InstallMethod( CategoryConstructor,
     
     CC := CreateCapCategory( name );
     
-    if IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_as_first_argument", false ), true ) then
+    if CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_as_first_argument", false ) = true then
         CC!.category_as_first_argument := true;
+    fi;
+    
+    if CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "supports_empty_limits", false ) = true then
+        CC!.supports_empty_limits := true;
     fi;
     
     CC!.compiler_hints := rec( );
