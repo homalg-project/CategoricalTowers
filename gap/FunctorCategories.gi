@@ -1364,7 +1364,7 @@ InstallMethodWithCache( FunctorCategory,
     Hom := CategoryConstructor( :
                    name := name,
                    category_as_first_argument := true,
-                   supports_empty_limits := true,
+                   supports_empty_limits := supports_empty_limits,
                    category_object_filter := IsObjectInFunctorCategory,
                    category_morphism_filter := IsMorphismInFunctorCategory,
                    category_filter := IsFunctorCategory,
