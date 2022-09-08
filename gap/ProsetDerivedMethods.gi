@@ -75,11 +75,8 @@ end : Description := "IsCodominating using IsHomSetInhabited applied to the rang
 
 ##
 AddDerivationToCAP( Equalizer,
-        [ [ IsHomSetInhabited, 1 ] ], ## FIXME: this should be obsolete, there is a bug in CAP
         
   function( cat, D )
-    
-    Info( DerivationInfo, 1000, "Currently derivations without preconditions are not supported, so we have to simulate a function call here: IsHomSetInhabited( cat, obj1, obj2 )." );
     
     return Source( D[1] );
     
@@ -99,11 +96,8 @@ end : Description := "EmbeddingOfEqualizerWithGivenEqualizer using IdentityMorph
 
 ##
 AddDerivationToCAP( Coequalizer,
-        [ [ IsHomSetInhabited, 1 ] ], ## FIXME: this should be obsolete, there is a bug in CAP
         
   function( cat, D )
-    
-    Info( DerivationInfo, 1000, "Currently derivations without preconditions are not supported, so we have to simulate a function call here: IsHomSetInhabited( cat, obj1, obj2 )." );
     
     return Range( D[1] );
     
