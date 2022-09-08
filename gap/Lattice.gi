@@ -15,9 +15,9 @@ InstallMethod( Factors,
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
   function( cartesian_proset )
     
-    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cartesian_proset );
-    
     SetIsCartesianCategory( cartesian_proset, true );
+    
+    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cartesian_proset );
     
     ##
     AddProjectionInFactorOfDirectProductWithGivenDirectProduct( cartesian_proset,
@@ -113,11 +113,13 @@ end );
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES,
   function( meet_semilattice )
     
+    SetIsSkeletalCategory( meet_semilattice, true );
+    
+    SetIsStrictCartesianCategory( meet_semilattice, true );
+    
     ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS( meet_semilattice );
     
     ADD_COMMON_METHODS_FOR_POSETS( meet_semilattice );
-    
-    SetIsStrictCartesianCategory( meet_semilattice, true );
     
 end );
 
@@ -125,9 +127,9 @@ end );
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
   function( cocartesian_proset )
     
-    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cocartesian_proset );
-    
     SetIsCocartesianCategory( cocartesian_proset, true );
+    
+    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cocartesian_proset );
     
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cocartesian_proset,
@@ -223,11 +225,13 @@ end );
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
   function( join_semilattice )
     
+    SetIsSkeletalCategory( join_semilattice, true );
+    
+    SetIsStrictCocartesianCategory( join_semilattice, true );
+    
     ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS( join_semilattice );
     
     ADD_COMMON_METHODS_FOR_POSETS( join_semilattice );
-    
-    SetIsStrictCocartesianCategory( join_semilattice, true );
     
 end );
 
@@ -296,6 +300,10 @@ end );
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
   function( lattice )
+    
+    SetIsStrictCartesianCategory( lattice, true );
+    
+    SetIsStrictCocartesianCategory( lattice, true );
     
     ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( lattice );
     
