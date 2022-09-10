@@ -15,41 +15,44 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
           [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ],
           
   function ( Hom, F, G )
-    local B, C, objs, nr_o, F_o, G_o, mors, nr_m, F_m, G_m,
-          sources, mor_pair, morphisms, objects;
+    local defining_pair, nr_o, F_o, G_o, C, sources,
+          mors, nr_m, F_m, G_m, mor_pair, morphisms, objects;
     
-    B := Source( Hom );
-    C := Range( Hom );
+    defining_pair := DefiningPairOfUnderlyingQuiver( Hom );
     
-    objs := SetOfObjects( B );
-    nr_o := Length( objs );
+    nr_o := defining_pair[1];
+    
     F_o := ValuesOnAllObjects( F );
     G_o := ValuesOnAllObjects( G );
     
-    mors := SetOfGeneratingMorphisms( B );
-    nr_m := Length( mors );
-    
-    F_m := ValuesOnAllGeneratingMorphisms( F );
-    G_m := ValuesOnAllGeneratingMorphisms( G );
+    C := Range( Hom );
     
     sources := List( [ 1 .. nr_o ],
                      i -> HomomorphismStructureOnObjects( C,
                              F_o[i],
                              G_o[i] ) );
     
+    mors := defining_pair[2];
+    nr_m := Length( mors );
+    
+    F_m := ValuesOnAllGeneratingMorphisms( F );
+    G_m := ValuesOnAllGeneratingMorphisms( G );
+    
     mor_pair :=
       function ( i )
         
-        return [ Triple( SafePosition( objs, Source( mors[i] ) ),
-                   HomomorphismStructureOnMorphisms( C, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(s(m)), G(t(m)) )
+        return [ Triple(
+                       mors[i][1],
+                       HomomorphismStructureOnMorphisms( C, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(s(m)), G(t(m)) )
                            IdentityMorphism( C, Source( F_m[i] ) ),
                            G_m[i] ),
-                   nr_o + i ),
-                 Triple( SafePosition( objs, Range( mors[i] ) ),
-                   HomomorphismStructureOnMorphisms( C, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(s(m)), G(t(m)) )
-                           F_m[i],
-                           IdentityMorphism( C, Range( G_m[i] ) ) ),
-                   nr_o + i ) ];
+                       nr_o + i ),
+                 Triple(
+                        mors[i][2],
+                        HomomorphismStructureOnMorphisms( C, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(s(m)), G(t(m)) )
+                                F_m[i],
+                                IdentityMorphism( C, Range( G_m[i] ) ) ),
+                        nr_o + i ) ];
         
     end;
     
@@ -77,7 +80,7 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
     nr_o := Length( objs );
     S_o_vals := ValuesOnAllObjects( S );
     R_o_vals := ValuesOnAllObjects( R );
-
+    
     mors := SetOfGeneratingMorphisms( algebroid );
     nr_m := Length( mors );
     S_m_vals := ValuesOnAllGeneratingMorphisms( S );
@@ -203,11 +206,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         D := DistinguishedObjectOfHomomorphismStructure( Hom );
         
-        tau := List( ValuesOnAllObjects( eta ),
-                     eta_o -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, eta_o ) );
+        tau := ListOfValues( List( ValuesOnAllObjects( eta ),
+                       eta_o -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, eta_o ) ) );
         
         diagram := List( tau, Source );
-
+        
         return KernelLift( H,
                        AuxiliaryMorphism( Hom,
                                Source( eta ),
@@ -255,9 +258,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
                                       i ) )
                       );
         
-        return AsMorphismInFunctorCategory(
+        return AsMorphismInFunctorCategoryByValues( Hom,
                        S,
-                       List( [ 1 .. o ],
+                       LazyHList( [ 1 .. o ],
                              i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
                                      S_o_vals[i],
                                      R_o_vals[i],
@@ -345,9 +348,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
                                          iota ) ) );
           
           return List( [ 1 .. Length( basis ) ],
-                       j -> AsMorphismInFunctorCategory(
+                       j -> AsMorphismInFunctorCategoryByValues( Hom,
                                S,
-                               List( [ 1 .. nr_o ],
+                               LazyHList( [ 1 .. nr_o ],
                                      i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
                                              S_o_vals[i],
                                              R_o_vals[i],

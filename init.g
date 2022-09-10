@@ -12,3 +12,4 @@ ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gd");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gd");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gd");
+ReadPackage( "FunctorCategories", "gap/Tools.gd");

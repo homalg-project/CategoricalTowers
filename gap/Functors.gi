@@ -180,7 +180,7 @@ InstallMethod( YonedaEmbedding,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, PSh, B_op, objs, mors, name, Yoneda;
+    local A, PSh, objs, mors, name, Yoneda;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -191,8 +191,6 @@ InstallMethod( YonedaEmbedding,
     fi;
     
     PSh := PreSheaves( B );
-    
-    B_op := Source( PSh );
     
     objs := SetOfObjects( B );
     
@@ -206,7 +204,7 @@ InstallMethod( YonedaEmbedding,
       function ( obj )
         local Yobj;
         
-        Yobj := AsObjectInFunctorCategory( B_op,
+        Yobj := AsObjectInFunctorCategoryByValues( PSh,
                         List( objs, o -> HomStructure( o, obj ) ),
                         List( mors, m -> HomStructure( m, obj ) ) );
         
@@ -219,7 +217,7 @@ InstallMethod( YonedaEmbedding,
     AddMorphismFunction( Yoneda,
       function ( s, mor, r )
         
-        return AsMorphismInFunctorCategory(
+        return AsMorphismInFunctorCategoryByValues( PSh,
                        s,
                        List( objs, o -> HomStructure( o, mor ) ),
                        r );
@@ -235,7 +233,7 @@ InstallMethod( YonedaEmbeddingOpposite,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, B_op, functor_category_op, objs, mors, name, Yoneda;
+    local A, B_op, functor_category, functor_category_op, objs, mors, name, Yoneda;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -253,7 +251,9 @@ InstallMethod( YonedaEmbeddingOpposite,
         B_op := Opposite( B );
     fi;
     
-    functor_category_op := Opposite( FunctorCategory( B, RangeCategoryOfHomomorphismStructure( B ) ) );
+    functor_category := FunctorCategory( B, RangeCategoryOfHomomorphismStructure( B ) );
+    
+    functor_category_op := Opposite( functor_category );
     
     objs := SetOfObjects( B );
     
@@ -268,7 +268,7 @@ InstallMethod( YonedaEmbeddingOpposite,
         local Yobj;
         
         Yobj := ObjectConstructor( functor_category_op,
-                        AsObjectInFunctorCategory( B,
+                        AsObjectInFunctorCategoryByValues( functor_category,
                                 List( objs, o -> HomStructure( obj, o ) ),
                                 List( mors, m -> HomStructure( obj, m ) ) ) );
         

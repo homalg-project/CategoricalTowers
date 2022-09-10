@@ -105,7 +105,7 @@ InstallMethod( CreateQuiver,
     
     PSh := ModelingCategory( finite_cocompletion );
     
-    presheaf := AsObjectInFunctorCategory( Source( PSh ), [ V, A ], [ s, t ] );
+    presheaf := AsObjectInFunctorCategoryByValues( PSh, [ V, A ], [ s, t ] );
     
     return ObjectConstructor( category_of_quivers,
                    ObjectConstructor( finite_cocompletion, presheaf ) );
