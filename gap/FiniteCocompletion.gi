@@ -30,6 +30,9 @@ InstallMethodWithCache( FiniteCocompletion,
       rec( category_filter := IsFiniteCocompletion,
            object_filter := IsObjectInFiniteCocompletion,
            morphism_filter := IsMorphismInFiniteCocompletion,
+           category_attribute_names :=
+           [ "ModelingCategory",
+             ],
            );
     
     return finite_cocompletion;
