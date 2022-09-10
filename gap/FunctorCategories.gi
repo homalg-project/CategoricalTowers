@@ -2207,24 +2207,6 @@ InstallMethodWithCache( FunctorCategory,
     fi;
     
     AddToToDoList( ToDoListEntry( [ [ Hom, "IsFinalized", true ] ], function ( ) IdentityFunctor( Hom )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
-
-    if false then
-    #if ValueOption( "no_precompiled_code" ) <> true then
-        
-        if IsFpCategory( B ) then
-            ADD_FUNCTIONS_FOR_PreSheavesPrecompiled( Hom );
-            ADD_FUNCTIONS_FOR_PreSheavesPrecompiled_rest( Hom );
-        elif IsAlgebroid( B ) then
-            if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
-               ( HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
-                 HasCounit( B ) and HasComultiplication( B ) ) then
-                ADD_FUNCTIONS_FOR_FunctorCategoryOfAlgebroidWithRelationsInMatrixCategoryPrecompiled( Hom );
-            else
-                ADD_FUNCTIONS_FOR_FunctorCategoryOfFreeAlgebroidInMatrixCategoryPrecompiled( Hom );
-            fi;
-        fi;
-        
-    fi;
     
     Finalize( Hom );
     
