@@ -10,22 +10,10 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinQuiversPrecompiled", function ( cat )
         
 ########
 function ( cat_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
-    deduped_7_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_6_1 := DefiningPairOfUnderlyingQuiver( cat_1 );
-    deduped_5_1 := ObjectifyObjectForCAPWithAttributes( rec(
-           ), deduped_7_1, Length, 0 );
-    hoisted_1_1 := deduped_5_1;
-    deduped_4_1 := LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
-            return hoisted_1_1;
-        end );
-    hoisted_2_1 := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), deduped_7_1, deduped_5_1, deduped_5_1, AsList, [  ] );
-    deduped_3_1 := LazyHList( [ 1 .. Length( deduped_6_1[2] ) ], function ( m_2 )
-            return hoisted_2_1;
-        end );
+    local deduped_1_1;
+    deduped_1_1 := [  ];
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, Length( deduped_4_1[1] ), Length( deduped_4_1[2] ), AsList( deduped_3_1[1] ), AsList( deduped_3_1[2] ) ) );
+           ), cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, 0, 0, deduped_1_1, deduped_1_1 ) );
 end
 ########
         
