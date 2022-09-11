@@ -52,6 +52,24 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsFiniteCocompletion );
 
+##
+CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInFiniteCocompletion ], function ( input_types )
+    
+    Assert( 0, IsFiniteCocompletion( input_types[1].category ) );
+    
+    return CapJitDataTypeOfObjectOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
+##
+CapJitAddTypeSignature( "UnderlyingCell", [ IsMorphismInFiniteCocompletion ], function ( input_types )
+    
+    Assert( 0, IsFiniteCocompletion( input_types[1].category ) );
+    
+    return CapJitDataTypeOfMorphismOfCategory( ModelingCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
