@@ -209,7 +209,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         tau := ListOfValues( List( ValuesOnAllObjects( eta ),
                        eta_o -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, eta_o ) ) );
         
-        diagram := List( tau, Source );
+        diagram := List( tau, Range );
         
         return KernelLift( H,
                        AuxiliaryMorphism( Hom,
