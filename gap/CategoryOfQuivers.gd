@@ -66,6 +66,36 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
 
+DeclareAttribute( "DefiningQuadrupleOfQuiver",
+        IsObjectInCategoryOfQuivers );
+
+CapJitAddTypeSignature( "DefiningQuadrupleOfQuiver", [ IsObjectInCategoryOfQuivers ], function ( input_types )
+    
+    Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types := [
+                        rec( filter := IsInt ),
+                        rec( filter := IsInt ),
+                        rec( filter := IsList, element_type := rec( filter := IsInt ) ),
+                        rec( filter := IsList, element_type := rec( filter := IsInt ) ) ] );
+    
+end );
+
+DeclareAttribute( "DefiningPairOfQuiverMorphism",
+        IsObjectInCategoryOfQuivers );
+
+CapJitAddTypeSignature( "DefiningPairOfQuiverMorphism", [ IsMorphismInCategoryOfQuivers ], function ( input_types )
+    
+    Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types := [
+                        rec( filter := IsList, element_type := rec( filter := IsInt ) ),
+                        rec( filter := IsList, element_type := rec( filter := IsInt ) ) ] );
+    
+end );
+
 #! @Arguments quiver
 DeclareAttribute( "Arrows",
         IsObjectInCategoryOfQuivers );
