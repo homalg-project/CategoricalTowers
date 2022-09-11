@@ -14,19 +14,17 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         [ IsCapCategory ],
         
   function ( category_of_finsets )
-    local F, F_hat, F_op,
+    local F, F_hat,
           object_constructor, object_datum,
           morphism_constructor, morphism_datum,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          Quivers;
+          Quivers, F_op;
     
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_finsets : FinalizeCategory := true );
 
-    F_op := OppositeFpCategory( F );
-    
     ##
     object_constructor := { Quivers, quadruple } -> CreateQuiver( Quivers, quadruple );
     
@@ -140,6 +138,9 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                             only_primitive_operations := true ) : FinalizeCategory := false );
     
     SetUnderlyingCategory( Quivers, F );
+    
+    F_op := OppositeFpCategory( F );
+    
     SetSetOfObjects( Quivers, SetOfObjects( F_op ) );
     SetSetOfGeneratingMorphisms( Quivers, SetOfGeneratingMorphisms( F_op ) );
     SetDefiningPairOfUnderlyingQuiver( Quivers, DefiningPairOfAQuiver( UnderlyingQuiver( F_op ) ) );
