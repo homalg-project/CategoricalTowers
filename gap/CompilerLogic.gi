@@ -235,3 +235,11 @@ CapJitAddLogicTemplate(
         dst_template := "func( index )",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "constant", "index" ],
+        src_template := "LazyHList( list, i -> constant )[index]",
+        dst_template := "constant",
+    )
+);
