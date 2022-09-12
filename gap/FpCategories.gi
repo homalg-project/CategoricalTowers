@@ -1573,7 +1573,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, objs, mors, o, m, H, D, precompose, Hom2, hom3, Hom3, sum3, emb3, iso3, inv3,
+    local A, H, objs, mors, o, m, D, precompose, Hom2, hom3, Hom3, sum3, emb3, iso3, inv3,
           N0, N1, N2, pt, mu, s;
     
     A := UnderlyingQuiverAlgebra( B );
@@ -1584,6 +1584,8 @@ InstallMethod( YonedaNaturalEpimorphisms,
         
     fi;
     
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
     objs := SetOfObjects( B );
     mors := SetOfGeneratingMorphisms( B );
     
@@ -1593,7 +1595,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
     ## [ [ Hom(a, c) ]_{a ∈ B} ]_{c ∈ B}:
     Hom2 := List( objs,
                   c -> List( objs,
-                          a -> HomomorphismStructureOnObjects( a, c ) ) );
+                          a -> HomomorphismStructureOnObjects( B, a, c ) ) );
     
     ## [ [ [ ( Hom(a, b), Hom(b, c) ) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
     hom3 := List( [ 1 .. o ],
@@ -1605,23 +1607,24 @@ InstallMethod( YonedaNaturalEpimorphisms,
     Hom3 := List( [ 1 .. o ],
                   c -> List( [ 1 .. o ],
                           a -> List( [ 1 .. o ],
-                                  b -> DirectProduct( hom3[c][a, b] ) ) ) );
+                                  b -> DirectProduct( H, hom3[c][a, b] ) ) ) );
     
     ## [ [ Hom(a, b) × Hom(b, c) ]_{a, b ∈ B} ]_{c ∈ B}:
     sum3 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
     
     ## The embeddings into the double coproducts
     ## [ [ [ Hom(a, b) × Hom(b, c) ↪ ⊔_{a' ∈ B} ⊔_{b' ∈ B} Hom(a', b') × Hom(b', c) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
-    emb3 := List( [ 1 .. o ],
-                  c -> List( [ 1 .. o ],
-                          a -> List( [ 1 .. o ],
-                                  b -> InjectionOfCofactorOfCoproduct( sum3[c], o * ( b - 1 ) + a ) ) ) );
+    emb3 := List( [ 1 .. o ], c ->
+                  List( [ 1 .. o ], a ->
+                        List( [ 1 .. o ], b ->
+                              InjectionOfCofactorOfCoproduct( H,
+                                      sum3[c], o * ( b - 1 ) + a ) ) ) );
     
     ## The isomorphisms
     ## [ ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ]_{c ∈ B}:
-    iso3 := List( emb3, emb -> UniversalMorphismFromCoproduct( Concatenation( emb ) ) );
-    
-    H := RangeCategoryOfHomomorphismStructure( B );
+    iso3 := List( emb3, emb ->
+                  UniversalMorphismFromCoproduct( H,
+                          Concatenation( emb ) ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );
     
@@ -1629,33 +1632,33 @@ InstallMethod( YonedaNaturalEpimorphisms,
     precompose :=
       function ( a, b, c )
         return
-          MapOfFinSets(
+          MapOfFinSets( H,
                   Hom3[c][a, b], # = Hom(a, b) × Hom(b, c)
                   List( Hom3[c][a, b],
                         function ( i )
                           local d, d_ab, d_bc, m_ab, m_bc, m;
                           
                           ## D → Hom(a, b) × Hom(b, c):
-                          d := MapOfFinSets( D, [ i ], Hom3[c][a, b] );
+                          d := MapOfFinSets( H, D, [ i ], Hom3[c][a, b] );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
-                          d_ab := PreCompose( d, ProjectionInFactorOfDirectProduct( hom3[c][a, b], 1 ) );
+                          d_ab := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 1 ) );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(b, c):
-                          d_bc := PreCompose( d, ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) );
+                          d_bc := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 2 ) );
                           
                           ## the map a → b corresponding to d_ab:
-                          m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( objs[a], objs[b], d_ab );
+                          m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[a], objs[b], d_ab );
                           
                           ## the map b → c corresponding to d_bc:
-                          m_bc := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( objs[b], objs[c], d_bc );
+                          m_bc := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[b], objs[c], d_bc );
                           
                           ## the composition a → b → c:
-                          m := PreCompose( m_ab, m_bc );
+                          m := PreCompose( B, m_ab, m_bc );
                           
                           ## reinterpret the composition m as a morphism D → Hom(a, c),
                           ## then get its number as an element in Hom(a, c):
-                          return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( m )( 0 );
+                          return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0];
                           
                       end ),
                   Hom2[c, a] ); # = Hom(a, c)
@@ -1671,11 +1674,13 @@ InstallMethod( YonedaNaturalEpimorphisms,
                   B,
                   List( [ 1 .. o ], c ->
                         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c):
-                        Coproduct( Hom2[c] ) ),
+                        Coproduct( H, Hom2[c] ) ),
                   List( mors, psi ->
                         ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-                        CoproductFunctorial(
-                                List( objs, a -> HomStructure( a, psi ) ) ) ),
+                        CoproductFunctorial( H,
+                                List( objs, a ->
+                                      HomomorphismStructureOnMorphisms( B,
+                                              IdentityMorphism( B, a ), psi ) ) ) ),
                   H );
     
     ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
@@ -1685,17 +1690,20 @@ InstallMethod( YonedaNaturalEpimorphisms,
                   B,
                   List( [ 1 .. o ], c ->
                         ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c):
-                        Coproduct( Concatenation( Hom3[c] ) ) ),
+                        Coproduct( H,
+                                Concatenation( Hom3[c] ) ) ),
                   List( mors, psi ->
                         ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
-                        CoproductFunctorial(
+                        CoproductFunctorial( H,
                                 Concatenation(
                                         List( objs, a ->
                                               List( objs, b ->
                                                     ## Hom(id_a, id_b) × Hom(id_b, ψ):
-                                                    DirectProductFunctorial(
-                                                              [ HomStructure( IdentityMorphism( a ), IdentityMorphism( b ) ),
-                                                                HomStructure( IdentityMorphism( b ), psi ) ] ) ) ) ) ) ),
+                                                    DirectProductFunctorial( H,
+                                                            [ HomomorphismStructureOnMorphisms( B,
+                                                                    IdentityMorphism( B, a ), IdentityMorphism( B, b ) ),
+                                                              HomomorphismStructureOnMorphisms( B,
+                                                                      IdentityMorphism( B, b ), psi ) ] ) ) ) ) ) ),
                   H );
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
@@ -1704,17 +1712,18 @@ InstallMethod( YonedaNaturalEpimorphisms,
                   N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
                   List( [ 1 .. o ], c ->
                         ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
-                        PreCompose(
+                        PreCompose( H,
                                 ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c):
                                 iso3[c],
                                 ## ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
-                                CoproductFunctorial(
+                                CoproductFunctorial( H,
                                         List( [ 1 .. o ], b ->
                                               ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
-                                              UniversalMorphismFromCoproduct(
+                                              UniversalMorphismFromCoproduct( H,
                                                       List( [ 1 .. o ], a ->
                                                             ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
-                                                            ProjectionInFactorOfDirectProduct( hom3[c][a, b], 2 ) ) ) ) ) ) ),
+                                                            ProjectionInFactorOfDirectProduct( H,
+                                                                    hom3[c][a, b], 2 ) ) ) ) ) ) ),
                   N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
     SetIsEpimorphism( pt, true );
@@ -1725,10 +1734,10 @@ InstallMethod( YonedaNaturalEpimorphisms,
                   N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
                   List( [ 1 .. o ], c ->
                         ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{a ∈ B} Hom(a, c):
-                        CoproductFunctorial(
+                        CoproductFunctorial( H,
                                 List( [ 1 .. o ], a ->
                                       ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
-                                      UniversalMorphismFromCoproduct(
+                                      UniversalMorphismFromCoproduct( H,
                                               List( [ 1 .. o ], b ->
                                                     ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
                                                     precompose( a, b, c ) ) ) ) ) ),
@@ -1742,10 +1751,11 @@ InstallMethod( YonedaNaturalEpimorphisms,
                  N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
                  List( [ 1 .. o ], c ->
                        ## ⊔_{a ∈ B} Hom(a, c) → B_0, ϕ ↦ Source(ϕ)
-                       CoproductFunctorial(
+                       CoproductFunctorial( H,
                                List( [ 1 .. o ], a ->
                                      ## Hom(a, c) → {a}, ϕ ↦ a
-                                     UniversalMorphismIntoTerminalObject( Hom2[c, a] ) ) ) ),
+                                     UniversalMorphismIntoTerminalObject( H,
+                                             Hom2[c, a] ) ) ) ),
                  N0 ); ## The constant functor of 0-cells
     
     return [ pt, mu, s ];
