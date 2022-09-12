@@ -238,6 +238,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "end_pos", "func", "index" ],
+        src_template := "LazyHList( [ 1 .. end_pos ], func )[index]",
+        dst_template := "func( index )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "entry1", "entry2", "func", "index" ],
 #        variable_filters := [ IsObject, IsObject, IsFunction, IsInt ],
         src_template := "func( [ entry1, entry2 ][index] )",
@@ -250,6 +258,40 @@ CapJitAddLogicTemplate(
         variable_names := [ "list1", "list2", "func", "index" ],
         src_template := "func( Concatenation( list1, list2 )[index] )",
         dst_template := "List( Concatenation( list1, list2 ), func )[index]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func1", "func2", "index" ],
+        src_template := "func1( LazyHList( list, func2 )[index] )",
+        dst_template := "List( LazyHList( list, func2 ), func1 )[index]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func1", "func2" ],
+        src_template := "List( LazyHList( list, func2 ), func1 )",
+        dst_template := "LazyHList( list, x -> func1( func2( x ) ) )",
+        new_funcs := [ [ "x" ] ],
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "func1", "func2" ],
+        src_template := "Sum( List( list, func2 ), func1 )",
+        dst_template := "Sum( list, x -> func1( func2( x ) ) )",
+        new_funcs := [ [ "x" ] ],
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "number", "func" ],
+        src_template := "Sum( list{[ 1 .. number ]}, func )",
+        dst_template := "Sum( List( list, func ){[ 1 .. number ]} )",
     )
 );
 

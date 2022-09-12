@@ -24,75 +24,42 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
-    deduped_9_1 := DefiningPairOfUnderlyingQuiver( cat_1 );
-    deduped_8_1 := deduped_9_1[2];
-    hoisted_3_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_7_1 := LazyHList( [ 1 .. deduped_9_1[1] ], function ( o_2 )
-            return ObjectifyObjectForCAPWithAttributes( rec(
-                   ), hoisted_3_1, Length, Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                        local deduped_1_3;
-                        deduped_1_3 := DefiningQuadrupleOfQuiver( logic_new_func_x_3 );
-                        return [ ObjectifyObjectForCAPWithAttributes( rec(
-                                     ), hoisted_3_1, Length, deduped_1_3[1] ), ObjectifyObjectForCAPWithAttributes( rec(
-                                     ), hoisted_3_1, Length, deduped_1_3[2] ) ][o_2];
-                    end ), Length ) );
+    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1;
+    deduped_7_1 := [ 1 .. Length( arg2_1 ) ];
+    hoisted_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
+            return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[4];
         end );
-    hoisted_5_1 := [ 1 .. Length( arg2_1 ) ];
-    hoisted_4_1 := deduped_8_1;
-    deduped_6_1 := LazyHList( [ 1 .. Length( deduped_8_1 ) ], function ( m_2 )
-            local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2;
-            deduped_7_2 := hoisted_4_1[m_2];
-            hoisted_6_2 := List( arg2_1, function ( logic_new_func_x_3 )
-                    local deduped_1_3;
-                    deduped_1_3 := DefiningQuadrupleOfQuiver( logic_new_func_x_3 );
-                    return [ deduped_1_3[3], deduped_1_3[4] ][m_2];
-                end );
-            hoisted_5_2 := List( arg2_1, function ( logic_new_func_x_3 )
-                    local deduped_1_3;
-                    deduped_1_3 := DefiningQuadrupleOfQuiver( logic_new_func_x_3 )[1];
-                    return [ deduped_1_3, deduped_1_3 ][m_2];
-                end );
-            hoisted_4_2 := List( arg2_1, function ( logic_new_func_x_3 )
-                    local deduped_1_3;
-                    deduped_1_3 := ObjectifyObjectForCAPWithAttributes( rec(
-                           ), hoisted_3_1, Length, DefiningQuadrupleOfQuiver( logic_new_func_x_3 )[1] );
-                    return [ deduped_1_3, deduped_1_3 ][m_2];
-                end );
-            hoisted_3_2 := List( arg2_1, function ( logic_new_func_x_3 )
-                    local deduped_1_3;
-                    deduped_1_3 := DefiningQuadrupleOfQuiver( logic_new_func_x_3 )[2];
-                    return [ deduped_1_3, deduped_1_3 ][m_2];
-                end );
-            hoisted_2_2 := deduped_7_2[2];
-            hoisted_1_2 := deduped_7_2[1];
-            return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), hoisted_3_1, ObjectifyObjectForCAPWithAttributes( rec(
-                     ), hoisted_3_1, Length, Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := DefiningQuadrupleOfQuiver( logic_new_func_x_3 );
-                          return [ ObjectifyObjectForCAPWithAttributes( rec(
-                                       ), hoisted_3_1, Length, deduped_1_3[1] ), ObjectifyObjectForCAPWithAttributes( rec(
-                                       ), hoisted_3_1, Length, deduped_1_3[2] ) ][hoisted_1_2];
-                      end ), Length ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                     ), hoisted_3_1, Length, Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := DefiningQuadrupleOfQuiver( logic_new_func_x_3 );
-                          return [ ObjectifyObjectForCAPWithAttributes( rec(
-                                       ), hoisted_3_1, Length, deduped_1_3[1] ), ObjectifyObjectForCAPWithAttributes( rec(
-                                       ), hoisted_3_1, Length, deduped_1_3[2] ) ][hoisted_2_2];
-                      end ), Length ) ), AsList, Concatenation( List( hoisted_5_1, function ( logic_new_func_x_3 )
-                        local hoisted_1_3, hoisted_2_3, deduped_3_3;
-                        deduped_3_3 := Sum( hoisted_4_2{[ 1 .. logic_new_func_x_3 - 1 ]}, Length );
-                        hoisted_2_3 := [ deduped_3_3 .. deduped_3_3 + hoisted_5_2[logic_new_func_x_3] - 1 ];
-                        hoisted_1_3 := hoisted_6_2[logic_new_func_x_3];
-                        return List( [ 1 .. hoisted_3_2[logic_new_func_x_3] ], function ( i_4 )
-                                return hoisted_2_3[1 + hoisted_1_3[i_4]];
-                            end );
-                    end ) ) );
+    hoisted_5_1 := List( arg2_1, function ( logic_new_func_x_2 )
+            return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[3];
+        end );
+    hoisted_4_1 := List( arg2_1, function ( logic_new_func_x_2 )
+            return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[1];
+        end );
+    hoisted_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
+            return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[2];
         end );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, Length( deduped_7_1[1] ), Length( deduped_7_1[2] ), AsList( deduped_6_1[1] ), AsList( deduped_6_1[2] ) ) );
+           ), cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, Sum( arg2_1, function ( logic_new_func_x_2 )
+                return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[1];
+            end ), Sum( arg2_1, function ( logic_new_func_x_2 )
+                return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[2];
+            end ), Concatenation( List( deduped_7_1, function ( logic_new_func_x_2 )
+                  local hoisted_1_2, hoisted_2_2, deduped_3_2;
+                  deduped_3_2 := Sum( hoisted_4_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                  hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_4_1[logic_new_func_x_2] - 1 ];
+                  hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
+                  return List( [ 1 .. hoisted_3_1[logic_new_func_x_2] ], function ( i_3 )
+                          return hoisted_2_2[1 + hoisted_1_2[i_3]];
+                      end );
+              end ) ), Concatenation( List( deduped_7_1, function ( logic_new_func_x_2 )
+                  local hoisted_1_2, hoisted_2_2, deduped_3_2;
+                  deduped_3_2 := Sum( hoisted_4_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                  hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_4_1[logic_new_func_x_2] - 1 ];
+                  hoisted_1_2 := hoisted_6_1[logic_new_func_x_2];
+                  return List( [ 1 .. hoisted_3_1[logic_new_func_x_2] ], function ( i_3 )
+                          return hoisted_2_2[1 + hoisted_1_2[i_3]];
+                      end );
+              end ) ) ) );
 end
 ########
         
