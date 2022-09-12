@@ -88,9 +88,9 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
     
     k := LeftActingDomain( A );
     
-    dims := List( ValuesOnAllObjects( F ), Dimension );
+    dims := List( AsList( ValuesOnAllObjects( F ) ), Dimension );
     
-    matrices := List( ValuesOnAllGeneratingMorphisms( F ), UnderlyingMatrix );
+    matrices := List( AsList( ValuesOnAllGeneratingMorphisms( F ) ), UnderlyingMatrix );
     
     matrices := List( matrices, m -> MatrixByRows(
                                         k,
@@ -116,7 +116,7 @@ InstallMethod( ConvertToCellInCategoryOfQuiverRepresentations,
     
     k := LeftActingDomain( A );
     
-    matrices := List( ValuesOnAllObjects( eta ), UnderlyingMatrix );
+    matrices := List( AsList( ValuesOnAllObjects( eta ) ), UnderlyingMatrix );
     
     matrices := List( matrices, m -> MatrixByRows(
                                         k,
