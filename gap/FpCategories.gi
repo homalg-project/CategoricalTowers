@@ -1826,51 +1826,52 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         hom_c := Range( mu_c );
         
         ## Hom(Hom(-, c), Ω) := Hom(⊔_{a ∈ B} Hom(a, c), Ω)
-        power := HomStructure( hom_c, Omega );
+        power := HomomorphismStructureOnObjects( H, hom_c, Omega );
         
         ## define the action as an endomorphism on Hom(Hom(-, c), Ω)
         action :=
           MapOfFinSets(
+                  H,
                   power, ## Hom(Hom(-, c), Ω)
                   List( power, i ->
                         ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
-                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                        AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
                                 ## interpreted as a classifying morphism χ_{s'}: Hom(-, c) → Ω
-                                ClassifyingMorphismOfSubobject(
+                                ClassifyingMorphismOfSubobject( H,
                                         ## s' ↪ Hom(-, c)
-                                        ImageEmbedding(
+                                        ImageEmbedding( H,
                                                 ## Hom(-, -) × s → Hom(-, c)
-                                                PreCompose(
+                                                PreCompose( H,
                                                         ## Hom(-, -) × s ↪ Hom(-, -) × Hom(-, c)
-                                                        ProjectionInFactorOfFiberProduct(
+                                                        ProjectionInFactorOfFiberProduct( H,
                                                                 [ pt_c,
                                                                   ## interpreted as a subobject s ↪ Hom(-, c)
-                                                                  SubobjectOfClassifyingMorphism(
+                                                                  SubobjectOfClassifyingMorphism( H,
                                                                           ## interpreted as a  classifying morphism χ_s: Hom(-, c) → Ω
-                                                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( H,
                                                                                   hom_c,
                                                                                   Omega,
                                                                                   ## an "element" D → Hom(Hom(-, c), Ω)
-                                                                                  MapOfFinSets( D, [ i ], power ) ) )
+                                                                                  MapOfFinSets( H, D, [ i ], power ) ) )
                                                                   ], 1 ),
                                                         ## μ_c: Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
-                                                        mu_c ) ) ) )( 0 ) ),
+                                                        mu_c ) ) ) ) )[1 + 0] ),
                   power ); ## Hom(Hom(-, c), Ω)
         
         ## The sieves on c are the fixed points of the above action on Hom(Hom(-, c), Ω),
         ## resulting in the embedding Sieves(c) ↪ Hom(Hom(-, c), Ω):
-        emb := EmbeddingOfEqualizer( [ action, IdentityMorphism( power ) ] );
+        emb := EmbeddingOfEqualizer( H, [ action, IdentityMorphism( H, power ) ] );
         
         ## the "element" D → Sieves(c) corresponding to the maximal sieve:
-        maximal := LiftAlongMonomorphism(
+        maximal := LiftAlongMonomorphism( H,
                            ## Sieves(c) ↪ Hom(Hom(-, c), Ω):
                            emb,
                            ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
-                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                           InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
                                    ## the corresponding classifying morphism χ: Hom(-, c) → Ω
-                                   ClassifyingMorphismOfSubobject(
+                                   ClassifyingMorphismOfSubobject( H,
                                            ## id: Hom(-, c) → Hom(-, c)
-                                           IdentityMorphism( hom_c ) ) ) );
+                                           IdentityMorphism( H, hom_c ) ) ) );
         
         return [ emb, maximal ];
         
@@ -1879,7 +1880,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     actions := rec( );
     
     for psi in SetOfGeneratingMorphisms( B ) do
-        actions.(StringView( psi )) := HomStructure( Range( Ypt )( psi ), Omega );
+        actions.(StringView( psi )) := HomomorphismStructureOnMorphisms( H, Range( Ypt )( psi ), IdentityMorphism( H, Omega ) );
     od;
     
     Sieves := rec( );
@@ -1897,10 +1898,10 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
             c -> Source( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
     
     Sieves_morphisms :=
-      List( SetOfGeneratingMorphisms( B ),
-            psi -> LiftAlongMonomorphism(
+      List( SetOfGeneratingMorphisms( B ), psi ->
+            LiftAlongMonomorphism( H,
                     Sieves_emb.(String( UnderlyingVertex( Source( psi ) ) )),
-                    PreCompose(
+                    PreCompose( H,
                             Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
                             actions.(StringView( psi )) ) ) );
     
