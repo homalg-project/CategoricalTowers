@@ -1898,12 +1898,12 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     ## Hom(Hom(-, c), Ω)
     HomHomOmega_objects :=
-      List( SetOfObjects( B ),
-            c -> Range( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
+      List( SetOfObjects( B ), c ->
+            Range( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
     
     HomHomOmega_morphisms :=
-      List( SetOfGeneratingMorphisms( B ),
-            psi -> actions.(StringView( psi )) );
+      List( SetOfGeneratingMorphisms( B ), psi ->
+            actions.(StringView( psi )) );
     
     HomHomOmega_functor := CapFunctor( Bop, HomHomOmega_objects, HomHomOmega_morphisms, H );
     
