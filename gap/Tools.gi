@@ -1101,9 +1101,9 @@ AddFinalDerivation( Colimit,
       
       return Opposite( ProjectionInFactorOfLimitWithGivenLimit( Opposite( cat ),
                      List( objects, Opposite ),
-                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ),
+                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ),
                      k,
-                     Opposite( colimit ) );
+                     Opposite( colimit ) ) );
       
   end
 ],
@@ -1113,10 +1113,10 @@ AddFinalDerivation( Colimit,
       
       return Opposite( UniversalMorphismIntoLimitWithGivenLimit( Opposite( cat ),
                      List( objects, Opposite ),
-                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ),
+                     List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ),
                      Opposite( T ),
                      List( tau, Opposite ),
-                     Opposite( colimit ) );
+                     Opposite( colimit ) ) );
       
   end
 ]
