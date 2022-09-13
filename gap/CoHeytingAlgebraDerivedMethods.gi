@@ -47,4 +47,4 @@ AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
     return CoexponentialOnMorphismsWithGivenCoexponentials( cat, B_, IdentityMorphism( cat, TerminalObject( cat ) ), u, A_ );
     
 end : Description := "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
-      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCocartesianCoclosedCategory );
+      CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory and IsCartesianCategory );
