@@ -565,6 +565,6 @@ InstallMethod( Display,
     Print( "\nImage of ", StringView( objs[2] ), ":\n" );
     Display( mor.A );
     
-    Print( "\nA morphism in ", Name( CategoryOfQuiversEnrichedOver( SkeletalFinSets ) ), " given by the above data\n" );
+    Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
 end );
