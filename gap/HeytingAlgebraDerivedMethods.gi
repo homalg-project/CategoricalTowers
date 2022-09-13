@@ -46,4 +46,4 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
     return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
     
 end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
-      CategoryFilter := IsThinCategory and IsCartesianCategory and IsCocartesianCategory and IsCartesianClosedCategory );
+      CategoryFilter := IsThinCategory and IsCartesianClosedCategory and IsCocartesianCategory );
