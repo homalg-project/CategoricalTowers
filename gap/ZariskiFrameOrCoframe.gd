@@ -15,7 +15,7 @@ DeclareInfoClass( "InfoZariskiFrames" );
 #!  The &GAP; category of objects in a Zariski frame or coframe.
 #! @Arguments object
 DeclareCategory( "IsZariskiFrameOrCoframe",
-        IsCapCategory and IsThinCategory );
+        IsCapCategory and IsDistributiveLattice );
 
 #! @Description
 #!  The &GAP; category of objects in a Zariski frame or coframe.
