@@ -37,7 +37,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfSingleDifferences );
     
-    SetIsStrictCartesianCategory( D, true );
+    SetIsMeetSemiLattice( D, true );
     
     ##
     AddObjectConstructor( D,

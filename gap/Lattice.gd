@@ -8,6 +8,79 @@
 
 #! Lattices are finite complete, finite cocomplete, skeletal, thin categories.
 
+#! @Section Properties
+
+#! @Description
+#!  The property of <A>C</A> being a meet semi-lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsMeetSemiLattice", "IsJoinSemiLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a join semi-lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsJoinSemiLattice", "IsMeetSemiLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsLattice", "IsLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice ) );
+
+#! @Description
+#!  The property of <A>C</A> being a distributive (and automatically codistributive) lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsDistributiveLattice", "IsDistributiveLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCartesianCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCocartesianCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a monoidal lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsMonoidalLattice", "IsMonoidalLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a closed monoidal lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsClosedMonoidalLattice", "IsCoclosedMonoidalLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a coclosed monoidal lattice.
+#! @Arguments C
+AddCategoricalProperty( [ "IsCoclosedMonoidalLattice", "IsClosedMonoidalLattice" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalLattice :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
+
 #! @Section Attributes
 
 #! @Description

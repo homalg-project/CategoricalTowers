@@ -8,6 +8,19 @@
 
 #! Posets are skeletal, thin categories.
 
+#! @Section Properties
+
+#! @Description
+#!  The property of <A>C</A> being a poset (category).
+#! @Arguments C
+AddCategoricalProperty( [ "IsPosetCategory", "IsPosetCategory" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory :=
+  DuplicateFreeList( Concatenation( [
+          "IsEqualForObjectsIfIsHomSetInhabited",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory ) );
+
 #! @Section Operations
 
 #! @Description

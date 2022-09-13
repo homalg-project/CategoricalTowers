@@ -27,3 +27,47 @@ AddDerivationToCAP( IsHomSetInhabited,
     
 end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and Coproduct",
       CategoryFilter := IsThinCategory and IsCocartesianCategory );
+
+##
+AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
+        [ ],
+        
+  function( cat, s, a, L, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
+      CategoryFilter := IsThinCategory and IsDistributiveCartesianCategory );
+
+##
+AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
+        [ ],
+        
+  function( cat, s, L, a, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
+      CategoryFilter := IsThinCategory and IsDistributiveCartesianCategory );
+
+##
+AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
+        [ ],
+        
+  function( cat, s, a, L, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
+      CategoryFilter := IsThinCategory and IsCodistributiveCocartesianCategory );
+
+##
+AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
+        [ ],
+        
+  function( cat, s, L, a, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "RightCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
+      CategoryFilter := IsThinCategory and IsCodistributiveCocartesianCategory );

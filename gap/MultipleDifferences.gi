@@ -38,7 +38,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfMultipleDifferences );
     
-    SetIsStrictCartesianCategory( D, true );
+    SetIsMeetSemiLattice( D, true );
     
     ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( D );
     

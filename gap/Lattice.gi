@@ -4,6 +4,35 @@
 # Implementations
 #
 
+InstallTrueMethod( IsMeetSemiLattice, IsPosetCategory and IsStrictCartesianCategory );
+InstallTrueMethod( IsPosetCategory, IsMeetSemiLattice );
+InstallTrueMethod( IsStrictCartesianCategory, IsMeetSemiLattice );
+
+InstallTrueMethod( IsJoinSemiLattice, IsPosetCategory and IsStrictCocartesianCategory );
+InstallTrueMethod( IsPosetCategory, IsJoinSemiLattice );
+InstallTrueMethod( IsStrictCocartesianCategory, IsJoinSemiLattice );
+
+InstallTrueMethod( IsLattice, IsMeetSemiLattice and IsJoinSemiLattice );
+InstallTrueMethod( IsMeetSemiLattice, IsLattice );
+InstallTrueMethod( IsJoinSemiLattice, IsLattice );
+
+InstallTrueMethod( IsDistributiveLattice, IsLattice and IsDistributiveCartesianCategory and IsCodistributiveCocartesianCategory );
+InstallTrueMethod( IsLattice, IsDistributiveLattice );
+InstallTrueMethod( IsDistributiveCartesianCategory, IsDistributiveLattice );
+InstallTrueMethod( IsCodistributiveCocartesianCategory, IsDistributiveLattice );
+
+InstallTrueMethod( IsMonoidalLattice, IsLattice and IsStrictMonoidalCategory );
+InstallTrueMethod( IsLattice, IsMonoidalLattice );
+InstallTrueMethod( IsStrictMonoidalCategory, IsMonoidalLattice );
+
+InstallTrueMethod( IsClosedMonoidalLattice, IsMonoidalLattice and IsClosedMonoidalCategory );
+InstallTrueMethod( IsMonoidalLattice, IsClosedMonoidalLattice );
+InstallTrueMethod( IsClosedMonoidalCategory, IsClosedMonoidalLattice );
+
+InstallTrueMethod( IsCoclosedMonoidalLattice, IsMonoidalLattice and IsCoclosedMonoidalCategory );
+InstallTrueMethod( IsMonoidalLattice, IsCoclosedMonoidalLattice );
+InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalLattice );
+
 ##
 InstallMethod( Factors,
         "for an object in a thin category",

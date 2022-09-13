@@ -4,13 +4,17 @@
 # Implementations
 #
 
+InstallTrueMethod( IsBiHeytingAlgebra, IsHeytingAlgebra and IsCoHeytingAlgebra );
+InstallTrueMethod( IsHeytingAlgebra, IsBiHeytingAlgebra );
+InstallTrueMethod( IsCoHeytingAlgebra, IsBiHeytingAlgebra );
+
+InstallTrueMethod( IsBiHeytingAlgebra, IsBooleanAlgebra );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
   function( boolean_algebra )
     
-    SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( boolean_algebra, true );
-    
-    SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( boolean_algebra, true );
+    SetIsBooleanAlgebra( boolean_algebra, true );
     
     ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( boolean_algebra );
     

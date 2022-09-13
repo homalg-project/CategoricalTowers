@@ -4,6 +4,10 @@
 # Implementations
 #
 
+InstallTrueMethod( IsHeytingAlgebra, IsLattice and IsCartesianClosedCategory );
+InstallTrueMethod( IsDistributiveLattice, IsHeytingAlgebra );
+InstallTrueMethod( IsCartesianClosedCategory, IsHeytingAlgebra );
+
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
   function( heyting_algebra )

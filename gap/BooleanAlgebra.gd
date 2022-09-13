@@ -8,15 +8,29 @@
 
 #! @Section GAP Properties
 
-#! @Description
-#!  The property of <A>C</A> being a cartesian closed &CAP; category with isomorphic double negations.
-#! @Arguments C
-AddCategoricalProperty( [ "IsCartesianClosedCategoryWithIsomorphicDoubleNegations", "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations" ] );
+#! @Section Properties
 
 #! @Description
-#!  The property of <A>C</A> being a cocartesian coclosed &CAP; category with isomorphic double conegations.
+#!  The property of <A>C</A> being a bi-Heyting algebra.
 #! @Arguments C
-AddCategoricalProperty( [ "IsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations", "IsCartesianClosedCategoryWithIsomorphicDoubleNegations" ] );
+AddCategoricalProperty( [ "IsBiHeytingAlgebra", "IsBiHeytingAlgebra" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebra,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebra ) );
+
+#! @Description
+#!  The property of <A>C</A> being a Boolean algebra.
+#! @Arguments C
+AddCategoricalProperty( [ "IsBooleanAlgebra", "IsBooleanAlgebra" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebra :=
+  DuplicateFreeList( Concatenation( [
+          "MorphismFromDoubleNegationWithGivenDoubleNegation",
+          "MorphismToDoubleConegationWithGivenDoubleConegation",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra ) );
 
 #! @Section Operations
 

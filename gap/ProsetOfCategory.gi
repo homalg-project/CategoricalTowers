@@ -309,6 +309,12 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     if IsIdenticalObj( stable, true ) then
         Add( properties, [ "IsStableProset", true ] );
+        if CanCompute( C, "InternalHomOnObjects" ) then
+            Add( properties, [ "IsCartesianClosedCategory", true ] );
+        fi;
+        if CanCompute( C, "InternalCoHomOnObjects" ) then
+            Add( properties, [ "IsCocartesianCoclosedCategory", true ] );
+        fi;
     fi;
     
     if IsIdenticalObj( skeletal, true ) then
