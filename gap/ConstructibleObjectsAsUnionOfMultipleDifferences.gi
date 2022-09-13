@@ -63,8 +63,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     
     SetFilterObj( C, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences );
     
-    SetIsCartesianClosedCategoryWithIsomorphicDoubleNegations( C, true );
-    SetIsCocartesianCoclosedCategoryWithIsomorphicDoubleConegations( C, true );
+    SetIsBooleanAlgebra( C, true );
     
     SetUnderlyingCategory( C, P );
     SetUnderlyingMeetSemilatticeOfMultipleDifferences( C, MeetSemilatticeOfMultipleDifferences( P ) );

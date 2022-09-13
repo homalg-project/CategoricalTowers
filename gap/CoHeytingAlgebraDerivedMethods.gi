@@ -34,7 +34,7 @@ AddDerivationToCAP( ConegationOnObjects,
     return CoexponentialOnObjects( cat, TerminalObject( cat ), A );
     
 end : Description := "ConegationOnObjects using CoexponentialOnObjects and TerminalObject",
-      CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory );
+      CategoryFilter := IsCoHeytingAlgebra );
 
 ##
 AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
@@ -47,4 +47,15 @@ AddDerivationToCAP( ConegationOnMorphismsWithGivenConegations,
     return CoexponentialOnMorphismsWithGivenCoexponentials( cat, B_, IdentityMorphism( cat, TerminalObject( cat ) ), u, A_ );
     
 end : Description := "ConegationOnMorphismsWithGivenConegations using CoexponentialOnMorphismsWithGivenCoexponentials and IdentityMorphism and TerminalObject",
-      CategoryFilter := IsThinCategory and IsCocartesianCoclosedCategory and IsCartesianCategory );
+      CategoryFilter := IsCoHeytingAlgebra );
+
+##
+AddDerivationToCAP( MorphismFromDoubleConegation,
+        [ [ ConegationOnObjects, 2 ] ],
+        
+  function( cat, A )
+    
+    return UniqueMorphism( cat, ConegationOnObjects( cat, ConegationOnObjects( cat, A ) ), A );
+    
+end : Description := "MorphismFromDoubleConegationWithGivenDoubleConegation as the unique morphism from the double-conegation",
+      CategoryFilter := IsCoHeytingAlgebra );

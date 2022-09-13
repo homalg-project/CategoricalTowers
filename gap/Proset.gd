@@ -32,6 +32,12 @@ DeclareCategory( "IsMorphismInThinCategory",
 #! @Arguments C
 AddCategoricalProperty( [ "IsThinCategory", "IsThinCategory" ] );
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory :=
+  DuplicateFreeList( Concatenation( [
+          "AreIsomorphicForObjectsIfIsHomSetInhabited",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory ) );
+
 #! @Section Operations
 
 #! @Description

@@ -6,6 +6,21 @@
 
 #! @Chapter Co-Heyting algebras
 
+#! @Section Properties
+
+#! @Description
+#!  The property of <A>C</A> being a co-Heyting algebra.
+#! @Arguments C
+AddCategoricalProperty( [ "IsCoHeytingAlgebra", "IsHeytingAlgebra" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebra :=
+  DuplicateFreeList( Concatenation( [
+          "ConegationOnObjects",
+          "ConegationOnMorphismsWithGivenConegations",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory ) );
+
 #! @Section Operations
 
 ##

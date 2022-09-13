@@ -6,6 +6,20 @@
 
 #! @Chapter Heyting algebras
 
+#! @Section Properties
+
+#! @Description
+#!  The property of <A>C</A> being a Heyting algebra.
+#! @Arguments C
+AddCategoricalProperty( [ "IsHeytingAlgebra", "IsCoHeytingAlgebra" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebra :=
+  DuplicateFreeList( Concatenation( [
+          "NegationOnObjects",
+          "NegationOnMorphismsWithGivenNegations" ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory ) );
+
 #! @Section Operations
 
 ##
