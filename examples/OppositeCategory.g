@@ -12,7 +12,7 @@ op := Opposite( SkeletalFinSets );;
 ListKnownCategoricalProperties( op );
 #! [ "IsBicartesianCategory", "IsBicartesianCoclosedCategory",
 #!   "IsCartesianCategory", "IsCocartesianCategory",
-#!   "IsCocartesianCoclosedCategory", "IsCodistributiveCocartesianCategory",
+#!   "IsCocartesianCoclosedCategory", "IsCodistributiveCategory",
 #!   "IsEquippedWithHomomorphismStructure", "IsFiniteCocompleteCategory",
 #!   "IsFiniteCompleteCategory", "IsSkeletalCategory" ]
 #! @EndExample
