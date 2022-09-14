@@ -16,10 +16,10 @@ InstallTrueMethod( IsLattice, IsMeetSemiLattice and IsJoinSemiLattice );
 InstallTrueMethod( IsMeetSemiLattice, IsLattice );
 InstallTrueMethod( IsJoinSemiLattice, IsLattice );
 
-InstallTrueMethod( IsDistributiveLattice, IsLattice and IsDistributiveCartesianCategory and IsCodistributiveCocartesianCategory );
+InstallTrueMethod( IsDistributiveLattice, IsLattice and IsDistributiveCategory and IsCodistributiveCategory );
 InstallTrueMethod( IsLattice, IsDistributiveLattice );
-InstallTrueMethod( IsDistributiveCartesianCategory, IsDistributiveLattice );
-InstallTrueMethod( IsCodistributiveCocartesianCategory, IsDistributiveLattice );
+InstallTrueMethod( IsDistributiveCategory, IsDistributiveLattice );
+InstallTrueMethod( IsCodistributiveCategory, IsDistributiveLattice );
 
 InstallTrueMethod( IsMonoidalLattice, IsLattice and IsStrictMonoidalCategory );
 InstallTrueMethod( IsLattice, IsMonoidalLattice );
