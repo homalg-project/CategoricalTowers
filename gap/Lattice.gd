@@ -48,8 +48,8 @@ AddCategoricalProperty( [ "IsDistributiveLattice", "IsDistributiveLattice" ] );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice :=
   DuplicateFreeList( Concatenation(
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCartesianCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCocartesianCategory ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory ) );
 
 #! @Description
 #!  The property of <A>C</A> being a monoidal lattice.
