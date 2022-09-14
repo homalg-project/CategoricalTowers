@@ -30,44 +30,44 @@ end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetI
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
-        [ ],
+        [ [ IdentityMorphism, 1 ] ],
         
   function( cat, s, a, L, r )
     
-    return UniqueMorphism( cat, s, r );
+    return IdentityMorphism( cat, s );
     
 end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
-      CategoryFilter := IsThinCategory and IsDistributiveCartesianCategory );
+      CategoryFilter := IsDistributiveLattice );
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
-        [ ],
+        [ [ IdentityMorphism, 1 ] ],
         
   function( cat, s, L, a, r )
     
-    return UniqueMorphism( cat, s, r );
+    return IdentityMorphism( cat, s );
     
 end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
-      CategoryFilter := IsThinCategory and IsDistributiveCartesianCategory );
+      CategoryFilter := IsDistributiveLattice );
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
-        [ ],
+        [ [ IdentityMorphism, 1 ] ],
         
   function( cat, s, a, L, r )
     
-    return UniqueMorphism( cat, s, r );
+    return IdentityMorphism( cat, s );
     
 end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
-      CategoryFilter := IsThinCategory and IsCodistributiveCocartesianCategory );
+      CategoryFilter := IsDistributiveLattice );
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
-        [ ],
+        [ [ IdentityMorphism, 1 ] ],
         
   function( cat, s, L, a, r )
     
-    return UniqueMorphism( cat, s, r );
+    return IdentityMorphism( cat, s );
     
 end : Description := "RightCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
-      CategoryFilter := IsThinCategory and IsCodistributiveCocartesianCategory );
+      CategoryFilter := IsDistributiveLattice );
