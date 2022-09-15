@@ -12,8 +12,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinQuiversPrecompiled", function ( cat )
 function ( cat_1 )
     local deduped_1_1;
     deduped_1_1 := [  ];
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, 0, 0, deduped_1_1, deduped_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, 0, 0, deduped_1_1, deduped_1_1 ) );
 end
 ########
         
@@ -38,8 +37,7 @@ function ( cat_1, arg2_1 )
     hoisted_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[2];
         end );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, Sum( arg2_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfQuiver, NTuple( 4, Sum( arg2_1, function ( logic_new_func_x_2 )
                 return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[1];
             end ), Sum( arg2_1, function ( logic_new_func_x_2 )
                 return DefiningQuadrupleOfQuiver( logic_new_func_x_2 )[2];
@@ -172,8 +170,7 @@ function ( cat_1, arg2_1, arg3_1 )
                   end );
               return [ deduped_3_2, deduped_3_2 ];
           end ) );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Length( Filtered( deduped_19_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Length( Filtered( deduped_19_1, function ( x_2 )
                 local hoisted_1_2;
                 hoisted_1_2 := 1 + x_2;
                 return Sum( hoisted_11_1, function ( j_3 )
@@ -344,8 +341,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
             return REM_INT( i_2, hoisted_22_1 );
         end );
     hoisted_23_1 := [ 0 .. deduped_50_1 - 1 ];
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( [ 1 .. deduped_50_1 ], function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( [ 1 .. deduped_50_1 ], function ( i_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + hoisted_23_1[i_2];
                 return hoisted_30_1[1 + (hoisted_27_1[1 + hoisted_26_1[(1 + hoisted_25_1[(1 + hoisted_24_1[deduped_1_2])])]] + hoisted_23_1[(1 + hoisted_29_1[deduped_1_2])] * hoisted_7_1)];
@@ -521,8 +517,7 @@ function ( cat_1, arg2_1, arg3_1 )
             deduped_3_2 := 1 + hoisted_24_1[(1 + hoisted_23_1[(1 + logic_new_func_x_2)])];
             hoisted_2_2 := hoisted_34_1[deduped_3_2];
             hoisted_1_2 := hoisted_25_1[deduped_3_2];
-            return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( hoisted_30_1, function ( i_3 )
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( hoisted_30_1, function ( i_3 )
                         return hoisted_29_1[1 + (hoisted_1_2 + hoisted_27_1[(1 + hoisted_28_1[(1 + hoisted_27_1[i_3])])] * hoisted_21_1)];
                     end ), List( hoisted_39_1, function ( i_3 )
                         return hoisted_38_1[1 + (hoisted_2_2 + hoisted_36_1[(1 + hoisted_37_1[(1 + hoisted_36_1[i_3])])] * hoisted_33_1)];
