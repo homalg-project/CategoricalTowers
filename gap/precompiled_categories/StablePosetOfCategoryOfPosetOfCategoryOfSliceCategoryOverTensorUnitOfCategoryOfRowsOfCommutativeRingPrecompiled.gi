@@ -31,13 +31,7 @@ function ( cat_1, a_1, b_1 )
         end, function ( x_2 )
             return ReducedSyzygiesOfRows( hoisted_4_1, DiagMat( hoisted_3_1, ListWithIdenticalEntries( hoisted_2_1, x_2 ) ) );
         end, UnderlyingMatrix( UnderlyingMorphism( UnderlyingCell( UnderlyingCell( b_1 ) ) ) ) );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_11_1, UnderlyingCell, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_10_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                 ), deduped_8_1, ObjectifyObjectForCAPWithAttributes( rec(
-                   ), deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                   ), deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingCell, CreateCapCategoryObjectWithAttributes( deduped_11_1, UnderlyingCell, CreateCapCategoryObjectWithAttributes( deduped_10_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_8_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_8_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) ) ) );
 end
 ########
         
