@@ -13,9 +13,7 @@ function ( cat_1, a_1, b_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( b_1 );
     deduped_1_1 := UnderlyingCell( a_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( deduped_2_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( deduped_2_1 ) ) );
 end
 ########
         
@@ -28,9 +26,7 @@ end
 function ( cat_1, a_1 )
     local deduped_1_1;
     deduped_1_1 := UnderlyingCell( a_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, - UnderlyingMatrix( deduped_1_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, - UnderlyingMatrix( deduped_1_1 ) ) );
 end
 ########
         
@@ -44,9 +40,7 @@ function ( cat_1, epsilon_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( tau_1 );
     deduped_1_1 := UnderlyingCell( epsilon_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( epsilon_1 ), Range( tau_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( epsilon_1 ), Range( tau_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -63,10 +57,7 @@ function ( cat_1, arg2_1 )
     morphism_attr_1_1 := UnionOfRows( UnderlyingRing( deduped_2_1 ), RankOfObject( deduped_3_1 ), List( arg2_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingMorphism( logic_new_func_x_2 ) );
           end ) );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -84,11 +75,7 @@ function ( cat_1, arg2_1 )
           end ), function ( I_2, J_2 )
             return ReducedSyzygiesOfRows( I_2, J_2 ) * I_2;
         end );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -102,9 +89,7 @@ function ( cat_1, a_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := AmbientCategory( cat_1 );
     deduped_1_1 := Source( UnderlyingMorphism( a_1 ) );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, a_1, a_1, UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_2_1, deduped_1_1, deduped_1_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_1_1 ), UnderlyingRing( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_2_1, deduped_1_1, deduped_1_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_1_1 ), UnderlyingRing( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -119,10 +104,7 @@ function ( cat_1 )
     deduped_3_1 := BaseObject( cat_1 );
     deduped_2_1 := AmbientCategory( cat_1 );
     morphism_attr_1_1 := HomalgZeroMatrix( 0, RankOfObject( deduped_3_1 ), UnderlyingRing( deduped_2_1 ) );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, RankOfObject, 0 ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_2_1, CreateCapCategoryObjectWithAttributes( deduped_2_1, RankOfObject, 0 ), deduped_3_1, UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -152,12 +134,9 @@ function ( cat_1, objects_1, k_1, P_1 )
                 fi;
                 return;
             end ) ) * HomalgIdentityMatrix( Sum( deduped_7_1 ), deduped_8_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, objects_1[k_1], P_1, UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_9_1, List( objects_1, function ( Li_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_9_1, List( objects_1, function ( Li_2 )
                   return Source( UnderlyingMorphism( Li_2 ) );
-              end )[k_1], ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_9_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+              end )[k_1], CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -172,9 +151,7 @@ function ( cat_1, alpha_1 )
     deduped_3_1 := UnderlyingCell( alpha_1 );
     deduped_2_1 := AmbientCategory( cat_1 );
     deduped_1_1 := Range( deduped_3_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( alpha_1 ), Source( alpha_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_2_1, deduped_1_1, Source( deduped_3_1 ), UnderlyingMatrix, RightDivide( HomalgIdentityMatrix( RankOfObject( deduped_1_1 ), UnderlyingRing( deduped_2_1 ) ), UnderlyingMatrix( deduped_3_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Source( alpha_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_2_1, deduped_1_1, Source( deduped_3_1 ), UnderlyingMatrix, RightDivide( HomalgIdentityMatrix( RankOfObject( deduped_1_1 ), UnderlyingRing( deduped_2_1 ) ), UnderlyingMatrix( deduped_3_1 ) ) ) );
 end
 ########
         
@@ -412,9 +389,7 @@ function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( beta_1 );
     deduped_1_1 := UnderlyingCell( alpha_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( alpha_1 ), Source( beta_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Source( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -428,9 +403,7 @@ function ( cat_1, iota_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( iota_1 );
     deduped_1_1 := UnderlyingCell( tau_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( tau_1 ), Source( iota_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), Source( iota_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -441,8 +414,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg4_1, UnderlyingCell, arg3_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg4_1, UnderlyingCell, arg3_1 );
 end
 ########
         
@@ -464,8 +436,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, UnderlyingMorphism, arg2_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, arg2_1 );
 end
 ########
         
@@ -490,9 +461,7 @@ function ( cat_1, beta_1, alpha_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( beta_1 );
     deduped_1_1 := UnderlyingCell( alpha_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
 end
 ########
         
@@ -506,9 +475,7 @@ function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( beta_1 );
     deduped_1_1 := UnderlyingCell( alpha_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
 end
 ########
         
@@ -522,9 +489,7 @@ function ( cat_1, a_1, b_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( b_1 );
     deduped_1_1 := UnderlyingCell( a_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + (- UnderlyingMatrix( deduped_2_1 )) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + (- UnderlyingMatrix( deduped_2_1 )) ) );
 end
 ########
         
@@ -538,9 +503,7 @@ function ( cat_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := BaseObject( cat_1 );
     deduped_1_1 := AmbientCategory( cat_1 );
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
 end
 ########
         
@@ -557,10 +520,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     morphism_attr_1_1 := UnionOfRows( UnderlyingRing( deduped_3_1 ), RankOfObject( deduped_2_1 ), List( tau_1, function ( logic_new_func_x_2 )
               return UnderlyingMatrix( UnderlyingCell( logic_new_func_x_2 ) );
           end ) );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, T_1, P_1, UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_3_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_3_1, CreateCapCategoryObjectWithAttributes( deduped_3_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), deduped_2_1, UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -575,9 +535,7 @@ function ( cat_1, T_1, P_1 )
     deduped_3_1 := AmbientCategory( cat_1 );
     deduped_2_1 := Source( UnderlyingMorphism( T_1 ) );
     deduped_1_1 := Source( UnderlyingMorphism( P_1 ) );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, T_1, UnderlyingCell, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_3_1, deduped_1_1, deduped_2_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( deduped_1_1 ), RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_3_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_3_1, deduped_1_1, deduped_2_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( deduped_1_1 ), RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_3_1 ) ) ) );
 end
 ########
         
@@ -591,10 +549,7 @@ function ( cat_1, T_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := BaseObject( cat_1 );
     deduped_1_1 := AmbientCategory( cat_1 );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, T_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, UnderlyingMorphism, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) ), UnderlyingCell, UnderlyingMorphism( T_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) ), UnderlyingCell, UnderlyingMorphism( T_1 ) );
 end
 ########
         
