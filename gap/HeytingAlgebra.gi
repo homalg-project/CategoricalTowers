@@ -62,13 +62,11 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
     ##
     AddExponentialToDirectProductAdjunctionMap( heyting_algebra,
       function( cat, B, C, g )
-        local A, AB;
+        local A;
         
         A := Source( g );
         
-        AB := DirectProduct( cat, [ A, B ] );
-        
-        return UniqueMorphism( cat, AB, C );
+        return UniqueMorphism( cat, DirectProduct( cat, [ A, B ] ), C );
         
     end );
     
