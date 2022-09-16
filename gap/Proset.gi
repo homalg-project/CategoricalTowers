@@ -45,14 +45,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     SetIsThinCategory( preordered_set, true );
     
     ##
-    AddIsWellDefinedForMorphisms( preordered_set,
-      function( cat, u )
-        
-        return IsHomSetInhabited( cat, Source( u ), Range( u ) );
-        
-    end );
-    
-    ##
     AddIdentityMorphism( preordered_set,
       function( cat, A )
         
