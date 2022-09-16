@@ -58,25 +58,6 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     end );
     
     ##
-    AddIsHomSetInhabited( D,
-      function( cat, A, B )
-        
-        return IsInitial( cat, A - B.I ) and ForAll( ListOfObjectsOfDifferences( B ), d -> IsInitial( cat, A * d.J ) );
-        
-    end );
-    
-    ##
-    AddTerminalObject( D,
-      function( cat )
-        local T;
-        
-        T := TerminalObject( UnderlyingCategoryOfSingleDifferences( D ) );
-        
-        return AsMultipleDifference( T );
-        
-    end );
-    
-    ##
     AddInitialObject( D,
       function( cat )
         local I;
@@ -92,6 +73,25 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
       function( cat, A )
         
         return IsInitial( UnderlyingCategoryOfSingleDifferences( cat ), AsSingleDifference( A ) );
+        
+    end );
+    
+    ##
+    AddIsHomSetInhabited( D,
+      function( cat, A, B )
+        
+        return IsInitial( cat, A - B.I ) and ForAll( ListOfObjectsOfDifferences( B ), d -> IsInitial( cat, A * d.J ) );
+        
+    end );
+    
+    ##
+    AddTerminalObject( D,
+      function( cat )
+        local T;
+        
+        T := TerminalObject( UnderlyingCategoryOfSingleDifferences( D ) );
+        
+        return AsMultipleDifference( T );
         
     end );
     
