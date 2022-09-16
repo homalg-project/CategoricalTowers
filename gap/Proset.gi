@@ -76,28 +76,17 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddIsEpimorphism( preordered_set,
       { cat, alpha } -> true );
     
-    ##
+    ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
     AddLiftAlongMonomorphism( preordered_set,
       function( cat, u1, u2 )
-        
-
-        ## WARNING: when installing primitive methods use primitively installed methhods
-        if not IsDominating( cat, u1, u2 ) then
-            return fail;
-        fi;
         
         return UniqueMorphism( cat, Source( u1 ), Source( u2 ) );
         
     end );
     
-    ##
+    ## the behavior of ColiftAlongEpimorphism is unspecified on input violating the specification
     AddColiftAlongEpimorphism( preordered_set,
       function( cat, u1, u2 )
-        
-        ## WARNING: when installing primitive methods use primitively installed methhods
-        if not IsCodominating( cat, u2, u1 ) then
-            return fail;
-        fi;
         
         return UniqueMorphism( cat, Range( u1 ), Range( u2 ) );
         
