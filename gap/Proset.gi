@@ -45,14 +45,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     SetIsThinCategory( preordered_set, true );
     
     ##
-    AddIsWellDefinedForMorphisms( preordered_set,
-      function( cat, u )
-        
-        return IsHomSetInhabited( cat, Source( u ), Range( u ) );
-        
-    end );
-    
-    ##
     AddIdentityMorphism( preordered_set,
       function( cat, A )
         
@@ -76,32 +68,17 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddIsEpimorphism( preordered_set,
       { cat, alpha } -> true );
     
-    ##
-    AddIsOne( preordered_set,
-      { cat, alpha } -> IsAutomorphism( cat, alpha ) );
-    
-    ##
+    ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
     AddLiftAlongMonomorphism( preordered_set,
       function( cat, u1, u2 )
-        
-
-        ## WARNING: when installing primitive methods use primitively installed methhods
-        if not IsDominating( cat, u1, u2 ) then
-            return fail;
-        fi;
         
         return UniqueMorphism( cat, Source( u1 ), Source( u2 ) );
         
     end );
     
-    ##
+    ## the behavior of ColiftAlongEpimorphism is unspecified on input violating the specification
     AddColiftAlongEpimorphism( preordered_set,
       function( cat, u1, u2 )
-        
-        ## WARNING: when installing primitive methods use primitively installed methhods
-        if not IsCodominating( cat, u2, u1 ) then
-            return fail;
-        fi;
         
         return UniqueMorphism( cat, Range( u1 ), Range( u2 ) );
         

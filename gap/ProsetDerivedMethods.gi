@@ -4,6 +4,17 @@
 # Implementations
 #
 
+## FIXME: CategoryFilter := C -> HasIsThinCategory( C ) and IsThinCategory( C ) and CanCompute( C, "UniqueMorphism" )
+AddDerivationToCAP( IsWellDefinedForMorphisms,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( cat, u )
+    
+    return IsHomSetInhabited( cat, Source( u ), Range( u ) );
+        
+end : Description := "IsWellDefinedForMorphisms checking the inhabitedness of the homset",
+      CategoryFilter := IsThinCategory );
+
 ##
 AddDerivationToCAP( IsEqualForMorphisms,
         [ [ IsEqualForObjects, 2 ] ],

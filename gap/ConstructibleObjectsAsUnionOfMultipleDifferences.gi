@@ -162,7 +162,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddCoproduct( C,
       function( cat, L )
         
-        L := List( L, List );
+        L := List( L, ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
         
         ## an advantage of this specific data structure for constructible objects
         return UnionOfListOfMultipleDifferences( cat, Concatenation( L ) );

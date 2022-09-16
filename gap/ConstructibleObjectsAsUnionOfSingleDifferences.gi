@@ -164,7 +164,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
       function( cat, L )
         
         ## an advantage of this specific data structure for constructible objects
-        return UnionOfListOfDifferences( cat, Concatenation( List( L, List ) ) );
+        return UnionOfListOfDifferences( cat, Concatenation( List( L, ListOfObjectsInMeetSemilatticeOfDifferences ) ) );
         
     end );
     
