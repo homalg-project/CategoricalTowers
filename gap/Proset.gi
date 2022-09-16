@@ -21,9 +21,7 @@ InstallOtherMethodForCompilerForCAP( UniqueMorphism,
         Error( "the second object belong to different category\n" );
     fi;
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), C,
-                   A,
-                   B );
+    return CreateCapCategoryMorphismWithAttributes( C, A, B );
     
 end );
 
