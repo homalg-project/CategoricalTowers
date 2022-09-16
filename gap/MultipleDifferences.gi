@@ -48,8 +48,12 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     ##
     AddIsWellDefinedForObjects( D,
       function( cat, A )
+        local S;
         
-        return ForAll( A, IsObjectInMeetSemilatticeOfSingleDifferences ) and ForAll( A, IsWellDefinedForObjects );
+        S := UnderlyingCategoryOfSingleDifferences( cat );
+        
+        return ForAll( ListOfObjectsOfDifferences( A ), IsObjectInMeetSemilatticeOfSingleDifferences ) and
+               ForAll( ListOfObjectsOfDifferences( A ), d -> IsWellDefinedForObjects( S, d ) );
         
     end );
     
@@ -57,7 +61,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddIsHomSetInhabited( D,
       function( cat, A, B )
         
-        return IsInitial( A - B.I ) and ForAll( B, d -> IsInitial( A * d.J ) );
+        return IsInitial( cat, A - B.I ) and ForAll( ListOfObjectsOfDifferences( B ), d -> IsInitial( cat, A * d.J ) );
         
     end );
     
@@ -87,7 +91,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddIsInitial( D,
       function( cat, A )
         
-        return IsInitial( AsSingleDifference( A ) );
+        return IsInitial( UnderlyingCategoryOfSingleDifferences( cat ), AsSingleDifference( A ) );
         
     end );
     
