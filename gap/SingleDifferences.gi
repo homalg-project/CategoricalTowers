@@ -44,7 +44,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, AB )
         local C;
         
-        C := ObjectifyObjectForCAPWithAttributes( rec( ), D,
+        C := CreateCapCategoryObjectWithAttributes( D,
                      PrePairInUnderlyingLattice, AB,
                      IsLocallyClosed, true );
         
@@ -232,16 +232,13 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
   function( A, B )
-    local C, D;
+    local D, C;
     
-    C := rec( );
-
     D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
-    ObjectifyObjectForCAPWithAttributes( C, D,
-            NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra, [ A, B ],
-            IsLocallyClosed, true
-            );
+    C := CreateCapCategoryObjectWithAttributes( D,
+                 NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra, [ A, B ],
+                 IsLocallyClosed, true );
     
     Assert( 4, IsWellDefined( C ) );
     

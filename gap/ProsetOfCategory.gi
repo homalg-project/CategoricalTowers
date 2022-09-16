@@ -353,8 +353,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    UnderlyingCell, underlying_object );
+        return CreateCapCategoryObjectWithAttributes( cat, UnderlyingCell, underlying_object );
         
     end;
     
@@ -377,10 +376,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
         fi;
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                                                                        source,
-                                                                        range,
-                                                                        UnderlyingCell, underlying_morphism );
+        return CreateCapCategoryMorphismWithAttributes( cat, source, range, UnderlyingCell, underlying_morphism );
         
     end;
     

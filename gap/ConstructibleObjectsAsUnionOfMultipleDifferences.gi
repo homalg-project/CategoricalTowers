@@ -188,8 +188,7 @@ InstallOtherMethodForCompilerForCAP( UnionOfListOfMultipleDifferences,
         
   function( C, L )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ),
-                   C,
+    return CreateCapCategoryObjectWithAttributes( C,
                    ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, L );
     
 end );
@@ -311,16 +310,15 @@ end );
 ##
 InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
   function( L )
-    local A, C;
+    local C, A;
     
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
                  CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( L[1] )[1] )[1] ) );
     
-    ObjectifyObjectForCAPWithAttributes( A, C,
-            ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, L
-            );
+    A := CreateCapCategoryObjectWithAttributes( C,
+                 ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, L );
     
     Assert( 4, IsWellDefined( A ) );
     
