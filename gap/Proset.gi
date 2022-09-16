@@ -77,10 +77,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
       { cat, alpha } -> true );
     
     ##
-    AddIsOne( preordered_set,
-      { cat, alpha } -> IsAutomorphism( cat, alpha ) );
-    
-    ##
     AddLiftAlongMonomorphism( preordered_set,
       function( cat, u1, u2 )
         
