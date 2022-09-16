@@ -86,6 +86,9 @@ DeclareOperation( "\[\]",
 DeclareAttribute( "MeetSemilatticeOfMultipleDifferences",
         IsCapCategory );
 
+DeclareOperation( "MultipleDifference",
+        [ IsList ] );
+
 #! @Description
 #!  If <A>D1</A>=<M>A1-B1</M>, <A>D2</A>=<M>A2-B2</M>, ..., then
 #!  the output is <C>DirectProduct</C><M>(A1,A2,...)</M> - <C>Coproduct</C><M>(B1,B2,...)</M>.

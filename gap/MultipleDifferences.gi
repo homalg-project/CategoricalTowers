@@ -64,7 +64,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         I := InitialObject( UnderlyingCategoryOfSingleDifferences( D ) );
         
-        return AsMultipleDifference( I );
+        return MultipleDifference( cat, [ I ] );
         
     end );
     
@@ -91,7 +91,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         T := TerminalObject( UnderlyingCategoryOfSingleDifferences( D ) );
         
-        return AsMultipleDifference( T );
+        return MultipleDifference( cat, [ T ] );
         
     end );
     
@@ -102,13 +102,30 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         L := List( L, List );
         
         ## an advantage of this specific data structure for formal multiple differences
-        return CallFuncList( AsMultipleDifference, Concatenation( L ) );
+        return MultipleDifference( cat, Concatenation( L ) );
         
     end );
     
     Finalize( D );
     
     return D;
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( MultipleDifference,
+        [ IsMeetSemilatticeOfMultipleDifferences, IsList ],
+        
+  function( D, L )
+    local A;
+    
+    A := CreateCapCategoryObjectWithAttributes( D,
+                 ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
     
 end );
 
@@ -130,9 +147,7 @@ InstallGlobalFunction( AsMultipleDifference,
     
     D := MeetSemilatticeOfMultipleDifferences( H );
     
-    A := CreateCapCategoryObjectWithAttributes( D,
-                 ListOfPreObjectsInMeetSemilatticeOfDifferences, arg,
-                 IsLocallyClosed, true );
+    A := MultipleDifference( D, arg );
     
     Assert( 4, IsWellDefined( A ) );
     
