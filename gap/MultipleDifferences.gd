@@ -27,6 +27,9 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfMultipleDifferences",
 
 #! @Section Attributes
 
+DeclareAttribute( "UnderlyingCategoryOfSingleDifferences",
+        IsMeetSemilatticeOfMultipleDifferences );
+
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 

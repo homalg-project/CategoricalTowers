@@ -20,19 +20,22 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     D!.category_as_first_argument := true;
     
-    D!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingCategory",
-        ],
-        category_filter := IsMeetSemilatticeOfMultipleDifferences,
-        object_filter := IsObjectInMeetSemilatticeOfMultipleDifferences,
-        morphism_filter := IsMorphismInMeetSemilatticeOfMultipleDifferences,
-    );
+    D!.compiler_hints :=
+      rec(
+          category_attribute_names := [
+                  "UnderlyingCategory",
+                  "UnderlyingCategoryOfSingleDifferences",
+                  ],
+          category_filter := IsMeetSemilatticeOfMultipleDifferences,
+          object_filter := IsObjectInMeetSemilatticeOfMultipleDifferences,
+          morphism_filter := IsMorphismInMeetSemilatticeOfMultipleDifferences,
+          );
     
     SetFilterObj( D, IsMeetSemilatticeOfMultipleDifferences );
     
     SetUnderlyingCategory( D, P );
-    D!.MeetSemilatticeOfDifferences := MeetSemilatticeOfDifferences( P );
+    
+    SetUnderlyingCategoryOfSingleDifferences( D, MeetSemilatticeOfDifferences( P ) );
     
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfMultipleDifferences );
     
@@ -63,7 +66,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
       function( cat )
         local T;
         
-        T := TerminalObject( D!.MeetSemilatticeOfDifferences );
+        T := TerminalObject( UnderlyingCategoryOfSingleDifferences( D ) );
         
         return AsMultipleDifference( T );
         
@@ -74,7 +77,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
       function( cat )
         local I;
         
-        I := InitialObject( D!.MeetSemilatticeOfDifferences );
+        I := InitialObject( UnderlyingCategoryOfSingleDifferences( D ) );
         
         return AsMultipleDifference( I );
         
