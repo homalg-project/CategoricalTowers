@@ -120,7 +120,8 @@ InstallOtherMethodForCompilerForCAP( MultipleDifference,
     local A;
     
     A := CreateCapCategoryObjectWithAttributes( D,
-                 ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
+                 ListOfPreObjectsInMeetSemilatticeOfDifferences, L,
+                 IsLocallyClosed, true );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 4, IsWellDefined( A ) );
