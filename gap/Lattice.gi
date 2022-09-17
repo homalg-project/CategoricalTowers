@@ -60,7 +60,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( cartesian_proset,
       function( cat, D, test_object, tau, P )
         
-        return UniqueMorphism( cat, Source( tau[1] ), P );
+        return UniqueMorphism( cat, test_object, P );
         
     end );
     
@@ -172,7 +172,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     AddUniversalMorphismFromCoproductWithGivenCoproduct( cocartesian_proset,
       function( cat, D, test_object, tau, I )
         
-        return UniqueMorphism( cat, I, Range( tau[1] ) );
+        return UniqueMorphism( cat, I, test_object );
         
     end );
     
