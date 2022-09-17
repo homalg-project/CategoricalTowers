@@ -6,6 +6,12 @@
 
 InstallValue( PREORDERED_SET_METHOD_NAME_RECORD,
         rec(
+            UniqueMorphism := rec(
+                                     filter_list := [ "category", "object", "object" ],
+                                     return_type := "morphism",
+                                     compatible_with_congruence_of_morphisms := true,
+                                    ),
+            
             AreIsomorphicForObjectsIfIsHomSetInhabited := rec(
                                      filter_list := [ "category", "object", "object" ],
                                      return_type := "bool",

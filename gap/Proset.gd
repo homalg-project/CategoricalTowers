@@ -56,20 +56,7 @@ DeclareOperation( "AreIsomorphicForObjectsIfIsHomSetInhabited",
 #! @Arguments A, B
 #! @Returns a &CAP; morphism
 DeclareOperation( "UniqueMorphism",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ] );
-
-##
-CapJitAddTypeSignature( "UniqueMorphism",
-        [ IsCapCategory,
-          IsObjectInThinCategory,
-          IsObjectInThinCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsThinCategory( input_types[1].category ) );
-    
-    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
-    
-end );
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 # @Section Tools
 

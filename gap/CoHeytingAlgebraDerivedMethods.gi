@@ -51,7 +51,8 @@ end : Description := "ConegationOnMorphismsWithGivenConegations using Coexponent
 
 ##
 AddDerivationToCAP( MorphismFromDoubleConegation,
-        [ [ ConegationOnObjects, 2 ] ],
+        [ [ ConegationOnObjects, 2 ],
+          [ UniqueMorphism, 1 ] ],
         
   function( cat, A )
     

@@ -50,7 +50,8 @@ end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnM
 
 ##
 AddDerivationToCAP( MorphismToDoubleNegation,
-        [ [ NegationOnObjects, 2 ] ],
+        [ [ NegationOnObjects, 2 ],
+          [ UniqueMorphism, 1 ] ],
         
   function( cat, A )
     
