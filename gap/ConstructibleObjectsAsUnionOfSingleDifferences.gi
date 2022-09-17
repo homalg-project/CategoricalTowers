@@ -82,7 +82,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
-        return ForAll( List( A ), M -> IsWellDefinedForObjects( D, M ) );
+        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsWellDefinedForObjects( D, M ) );
         
     end );
     
@@ -93,7 +93,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
-        return ForAll( List( A ), M -> IsHomSetInhabitedWithTypeCast( D, M, B ) );
+        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsHomSetInhabitedWithTypeCast( D, M, B ) );
         
     end );
     
@@ -126,7 +126,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
-        return ForAll( List( A ), M -> IsInitial( D, M ) );
+        return ForAll( ListOfObjectsInMeetSemilatticeOfDifferences( A ), M -> IsInitial( D, M ) );
         
     end );
     
@@ -137,7 +137,8 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
         
         D := UnderlyingMeetSemilatticeOfDifferences( cat );
         
-        L := [ List( A ), List( B ) ];
+        L := [ ListOfObjectsInMeetSemilatticeOfDifferences( A ),
+               ListOfObjectsInMeetSemilatticeOfDifferences( B ) ];
         
         l := [ 1, 2 ];
         

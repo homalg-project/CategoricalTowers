@@ -41,15 +41,6 @@ DeclareAttribute( "ListOfStandardObjectsInMeetSemilatticeOfDifferences",
 DeclareAttribute( "UnderlyingMeetSemilatticeOfDifferences",
         IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences );
 
-CapJitAddTypeSignature( "List", [ IsConstructibleObjectAsUnionOfSingleDifferences ], function ( input_types )
-    
-    Assert( 0, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences( input_types[1].category ) );
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
-    
-end );
-
 CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfSingleDifferences ], IsInt );
 
 #! @Section Operations
@@ -60,6 +51,15 @@ CapJitAddTypeSignature( "Length", [ IsConstructibleObjectAsUnionOfSingleDifferen
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsInMeetSemilatticeOfDifferences",
         [ IsConstructibleObjectAsUnionOfSingleDifferences ] );
+
+CapJitAddTypeSignature( "ListOfObjectsInMeetSemilatticeOfDifferences", [ IsConstructibleObjectAsUnionOfSingleDifferences ], function ( input_types )
+    
+    Assert( 0, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences( input_types[1].category ) );
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingMeetSemilatticeOfDifferences( input_types[1].category ) ) );
+    
+end );
 
 DeclareOperation( "ListOp",
         [ IsConstructibleObjectAsUnionOfSingleDifferences ] );
