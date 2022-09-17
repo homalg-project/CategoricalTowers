@@ -7,40 +7,24 @@
 SetInfoLevel( InfoLocales, 1 );
 
 ##
-InstallOtherMethodForCompilerForCAP( UniqueMorphism,
-        "for a thin category and two objects in a thin category",
-        [ IsCapCategory and IsThinCategory, IsObjectInThinCategory, IsObjectInThinCategory ],
-        
-  function( C, A, B )
-    
-    if not IsIdenticalObj( C, CapCategory( A ) ) then
-        Error( "the first object belong to different category\n" );
-    fi;
-    
-    if not IsIdenticalObj( C, CapCategory( B ) ) then
-        Error( "the second object belong to different category\n" );
-    fi;
-    
-    return CreateCapCategoryMorphismWithAttributes( C, A, B );
-    
-end );
-
-##
-InstallMethod( UniqueMorphism,
-        "for two objects in a thin category",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ],
-
-  function( A, B )
-    
-    return UniqueMorphism( CapCategory( A ), A, B );
-    
-end );
-
-##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
   function( preordered_set )
     
     SetIsThinCategory( preordered_set, true );
+    
+    ##
+    AddUniqueMorphism( preordered_set,
+      function( cat, A, B )
+        
+        if not IsIdenticalObj( cat, CapCategory( A ) ) then
+            Error( "the first object belong to different category\n" );
+        elif not IsIdenticalObj( cat, CapCategory( B ) ) then
+            Error( "the second object belong to different category\n" );
+        fi;
+        
+        return CreateCapCategoryMorphismWithAttributes( cat, A, B );
+        
+    end );
     
     ##
     AddIdentityMorphism( preordered_set,
@@ -57,14 +41,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
         return UniqueMorphism( cat, Source( u1 ), Range( u2 ) );
         
     end );
-    
-    ##
-    AddIsMonomorphism( preordered_set,
-      { cat, alpha } -> true );
-    
-    ##
-    AddIsEpimorphism( preordered_set,
-      { cat, alpha } -> true );
     
     ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
     AddLiftAlongMonomorphism( preordered_set,
