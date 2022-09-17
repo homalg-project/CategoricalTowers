@@ -154,9 +154,9 @@ end : Description := "IsEpimorphism is always true in a thin category",
 AddDerivationToCAP( Lift,
         [ [ LiftAlongMonomorphism, 1 ] ],
         
-  ## Caution with the order of the arguments!
   function( cat, alpha, beta )
     
+    ## Caution with the order of the arguments!
     return LiftAlongMonomorphism( cat, beta, alpha );
     
 end : Description := "Lift using LiftAlongMonomorphism",
