@@ -131,28 +131,42 @@ AddDerivationToCAP( Lift,
         [ [ LiftAlongMonomorphism, 1 ] ],
         
   ## Caution with the order of the arguments!
-  { cat, alpha, beta } -> LiftAlongMonomorphism( cat, beta, alpha ) :
-      Description := "Lift using LiftAlongMonomorphism",
+  function( cat, alpha, beta )
+    
+    return LiftAlongMonomorphism( cat, beta, alpha );
+
+end : Description := "Lift using LiftAlongMonomorphism",
       CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( Colift,
         [ [ ColiftAlongEpimorphism, 1 ] ],
         
-  { cat, alpha, beta } -> ColiftAlongEpimorphism( cat, alpha, beta ) :
-      Description := "Colift using ColiftAlongEpimorphism",
+  function( cat, alpha, beta )
+
+    return ColiftAlongEpimorphism( cat, alpha, beta );
+
+end : Description := "Colift using ColiftAlongEpimorphism",
       CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( IsMonomorphism,
         
-  { cat, alpha } -> true : Description := "IsMonomorphism is always true",
+  function( cat, alpha )
+    
+    return true;
+    
+end : Description := "IsMonomorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( IsEpimorphism,
         
-  { cat, alpha } -> true : Description := "IsEpimorphism is always true",
+  function( cat, alpha )
+    
+    return true;
+    
+end : Description := "IsEpimorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
@@ -170,5 +184,9 @@ end : Description := "IsIsomorphism using IsHomSetInhabited",
 AddDerivationToCAP( IsOne,
         [ [ IsAutomorphism, 1 ] ],
         
-  { cat, mor } -> IsAutomorphism( cat, mor ) : Description := "IsOne using IsAutomorphism",
+  function( cat, mor )
+    
+    return IsAutomorphism( cat, mor );
+    
+end : Description := "IsOne using IsAutomorphism",
       CategoryFilter := IsThinCategory );
