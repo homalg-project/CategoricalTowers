@@ -151,6 +151,40 @@ end : Description := "IsEpimorphism is always true in a thin category",
       CategoryFilter := IsThinCategory );
 
 ##
+AddDerivationToCAP( IsLiftableAlongMonomorphism,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( cat, u1, u2 )
+    
+    return IsHomSetInhabited( cat, Source( u1 ), Source( u2 ) );
+    
+end : Description := "IsLiftableAlongMonomorphism using IsHomSetInhabited",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsColiftableAlongEpimorphism,
+        [ [ IsHomSetInhabited, 1 ] ],
+        
+  function( cat, u1, u2 )
+    
+    return IsHomSetInhabited( cat, Range( u1 ), Range( u2 ) );
+    
+end : Description := "IsColiftableAlongEpimorphism using IsHomSetInhabited",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsLiftable,
+        [ [ IsLiftableAlongMonomorphism, 1 ] ],
+        
+  function( cat, alpha, beta )
+    
+    ## Caution with the order of the arguments!
+    return IsLiftableAlongMonomorphism( cat, beta, alpha );
+    
+end : Description := "IsLiftable using IsLiftableAlongMonomorphism",
+      CategoryFilter := IsThinCategory );
+
+##
 AddDerivationToCAP( Lift,
         [ [ LiftAlongMonomorphism, 1 ] ],
         
@@ -160,6 +194,17 @@ AddDerivationToCAP( Lift,
     return LiftAlongMonomorphism( cat, beta, alpha );
     
 end : Description := "Lift using LiftAlongMonomorphism",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsColiftable,
+        [ [ IsColiftableAlongEpimorphism, 1 ] ],
+        
+  function( cat, alpha, beta )
+    
+    return IsColiftableAlongEpimorphism( cat, alpha, beta );
+    
+end : Description := "IsColiftable using IsColiftableAlongEpimorphism",
       CategoryFilter := IsThinCategory );
 
 ##
