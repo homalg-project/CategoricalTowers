@@ -91,26 +91,10 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     end );
     
     ##
-    AddEqualizerFunctorialWithGivenEqualizers( preordered_set,
-      function( cat, s, L1, m, L3, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
     AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( preordered_set,
       function( cat, D, test_object, tau, C )
         
         return UniqueMorphism( cat, C, Range( tau ) );
-        
-    end );
-    
-    ##
-    AddCoequalizerFunctorialWithGivenCoequalizers( preordered_set,
-      function( cat, s, L1, m, L3, r )
-        
-        return UniqueMorphism( cat, s, r );
         
     end );
     
