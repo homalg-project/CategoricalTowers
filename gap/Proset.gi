@@ -58,14 +58,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
         
     end );
     
-    ##
-    AddIsMonomorphism( preordered_set,
-      { cat, alpha } -> true );
-    
-    ##
-    AddIsEpimorphism( preordered_set,
-      { cat, alpha } -> true );
-    
     ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
     AddLiftAlongMonomorphism( preordered_set,
       function( cat, u1, u2 )
