@@ -127,6 +127,28 @@ end : Description := "ProjectionOntoCoequalizerWithGivenCoequalizer using Identi
       CategoryFilter := IsThinCategory );
     
 ##
+AddDerivationToCAP( IsMonomorphism,
+        [ ],
+        
+  function( cat, alpha )
+    
+    return true;
+    
+end : Description := "IsMonomorphism is always true",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( IsEpimorphism,
+        [ ],
+        
+  function( cat, alpha )
+    
+    return true;
+    
+end : Description := "IsEpimorphism is always true",
+      CategoryFilter := IsThinCategory );
+
+##
 AddDerivationToCAP( Lift,
         [ [ LiftAlongMonomorphism, 1 ] ],
         
@@ -147,26 +169,6 @@ AddDerivationToCAP( Colift,
     return ColiftAlongEpimorphism( cat, alpha, beta );
 
 end : Description := "Colift using ColiftAlongEpimorphism",
-      CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( IsMonomorphism,
-        
-  function( cat, alpha )
-    
-    return true;
-    
-end : Description := "IsMonomorphism is always true",
-      CategoryFilter := IsThinCategory );
-
-##
-AddDerivationToCAP( IsEpimorphism,
-        
-  function( cat, alpha )
-    
-    return true;
-    
-end : Description := "IsEpimorphism is always true",
       CategoryFilter := IsThinCategory );
 
 ##
