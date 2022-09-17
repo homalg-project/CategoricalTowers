@@ -156,7 +156,7 @@ AddDerivationToCAP( Lift,
   function( cat, alpha, beta )
     
     return LiftAlongMonomorphism( cat, beta, alpha );
-
+    
 end : Description := "Lift using LiftAlongMonomorphism",
       CategoryFilter := IsThinCategory );
 
@@ -165,9 +165,9 @@ AddDerivationToCAP( Colift,
         [ [ ColiftAlongEpimorphism, 1 ] ],
         
   function( cat, alpha, beta )
-
+    
     return ColiftAlongEpimorphism( cat, alpha, beta );
-
+    
 end : Description := "Colift using ColiftAlongEpimorphism",
       CategoryFilter := IsThinCategory );
 
