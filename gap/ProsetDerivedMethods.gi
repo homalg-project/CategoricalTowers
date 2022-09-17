@@ -134,7 +134,7 @@ AddDerivationToCAP( IsMonomorphism,
     
     return true;
     
-end : Description := "IsMonomorphism is always true",
+end : Description := "IsMonomorphism is always true in a thin category",
       CategoryFilter := IsThinCategory );
 
 ##
@@ -145,7 +145,7 @@ AddDerivationToCAP( IsEpimorphism,
     
     return true;
     
-end : Description := "IsEpimorphism is always true",
+end : Description := "IsEpimorphism is always true in a thin category",
       CategoryFilter := IsThinCategory );
 
 ##
