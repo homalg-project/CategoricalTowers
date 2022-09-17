@@ -86,6 +86,7 @@ end : Description := "IsCodominating using IsHomSetInhabited applied to the rang
 
 ##
 AddDerivationToCAP( Equalizer,
+        [ ],
         
   function( cat, D )
     
@@ -107,6 +108,7 @@ end : Description := "EmbeddingOfEqualizerWithGivenEqualizer using IdentityMorph
 
 ##
 AddDerivationToCAP( Coequalizer,
+        [ ],
         
   function( cat, D )
     
