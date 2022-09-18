@@ -10,10 +10,10 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
 
 ##
 InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
-        "for a CAP category",
-        [ IsCapCategory ],
+        "for a category of sekelal finite sets",
+        [ IsCategoryOfSkeletalFinSets ],
         
-  function ( category_of_finsets )
+  function ( category_of_skeletal_finsets )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
           F, F_hat,
@@ -34,9 +34,9 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphism( m );
 
     ## building the categorical tower
-    F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_finsets, FinalizeCategory := true );
+    F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
-    F_hat := FiniteCocompletion( F, category_of_finsets : FinalizeCategory := true );
+    F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
 
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
@@ -128,7 +128,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     Quivers := WrapperCategory( F_hat,
-                       rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_finsets ), " )" ),
+                       rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
                             category_filter := IsCategoryOfQuivers,
                             category_object_filter := IsObjectInCategoryOfQuivers,
                             category_morphism_filter := IsMorphismInCategoryOfQuivers,
