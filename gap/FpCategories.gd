@@ -210,6 +210,12 @@ DeclareAttribute( "UnderlyingVertex",
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInFpCategory );
 
+##
+DeclareAttribute( "BasisPathOfPathAlgebraBasisElement",
+       IsQuiverAlgebraElement );
+
+CapJitAddTypeSignature( "BasisPathOfPathAlgebraBasisElement", [ IsQuiverAlgebraElement ], IsPath );
+
 #! @Description
 #!  The underlying algebra of the finitely presented category <A>C</A>.
 #! @Arguments C

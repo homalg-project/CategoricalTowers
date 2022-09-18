@@ -354,6 +354,22 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
 end );
 
 ##
+InstallMethod( BasisPathOfPathAlgebraBasisElement,
+        "for a quiver algebra element",
+        [ IsQuiverAlgebraElement ],
+        
+  function( primitive_path )
+    local paths;
+    
+    paths := Paths( primitive_path );
+    
+    Assert( 0, Length( paths ) = 1 );
+    
+    return paths[1];
+    
+end );
+
+##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
   function( fpcategory )
     local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, representative_func, path, range_category_of_HomStructure;
@@ -440,7 +456,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
-        entries := List( basis_a_b, phi -> -1 + Position( basis_ap_bp, Paths( elem_alpha * phi * elem_beta )[1] ) );
+        entries := List( basis_a_b, phi -> -1 + Position( basis_ap_bp, BasisPathOfPathAlgebraBasisElement( elem_alpha * phi * elem_beta ) ) );
         
         return MorphismConstructor( range_category_of_HomStructure, source, entries, range );
         
@@ -473,7 +489,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         return MorphismConstructor(
                 range_category_of_HomStructure,
                 source,
-                [ -1 + Position( basis_elements, Paths( element )[1] ) ],
+                [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
                 range
               );
         
