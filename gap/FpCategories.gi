@@ -1683,21 +1683,21 @@ InstallMethod( YonedaNaturalEpimorphisms,
     m := Length( mors );
     
     ## [ [ Hom(a, c) ]_{a ∈ B} ]_{c ∈ B}:
-    Hom2 := List( objs,
-                  c -> List( objs,
-                          a -> HomomorphismStructureOnObjects( B, a, c ) ) );
+    Hom2 := List( objs, c ->
+                  List( objs, a ->
+                        HomomorphismStructureOnObjects( B, a, c ) ) );
     
     ## [ [ [ ( Hom(a, b), Hom(b, c) ) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
-    hom3 := List( [ 1 .. o ],
-                  c -> List( [ 1 .. o ],
-                          a -> List( [ 1 .. o ],
-                                  b -> [ Hom2[b, a], Hom2[c, b] ] ) ) );
+    hom3 := List( [ 1 .. o ], c ->
+                  List( [ 1 .. o ], a ->
+                        List( [ 1 .. o ], b ->
+                              [ Hom2[b, a], Hom2[c, b] ] ) ) );
     
     ## [ [ [ Hom(a, b) × Hom(b, c) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
-    Hom3 := List( [ 1 .. o ],
-                  c -> List( [ 1 .. o ],
-                          a -> List( [ 1 .. o ],
-                                  b -> DirectProduct( H, hom3[c][a, b] ) ) ) );
+    Hom3 := List( [ 1 .. o ], c ->
+                  List( [ 1 .. o ], a ->
+                        List( [ 1 .. o ], b ->
+                              DirectProduct( H, hom3[c][a, b] ) ) ) );
     
     ## [ [ Hom(a, b) × Hom(b, c) ]_{a, b ∈ B} ]_{c ∈ B}:
     sum3 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
