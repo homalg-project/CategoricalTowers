@@ -58,25 +58,24 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         t := MapOfFinSets( sFinSets, A, quadruple[4], V );
         
         return ObjectConstructor( F_hat,
-                       AsObjectInFunctorCategoryByValues( PSh, [ V, A ], [ s, t ] ) );
+                       AsObjectInFunctorCategoryByValues( PSh, Pair( [ V, A ], [ s, t ] ) ) );
         
     end;
     
     ## from the object in the highest stage of the tower to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
-        local F_hat, F, values_of_all_objects, values_of_all_generating_morphisms;
+        local F_hat, F, values_of_functor;
         
         F_hat := ModelingCategory( Quivers );
         
         F := ObjectDatum( F_hat, obj );
         
-        values_of_all_objects := ValuesOnAllObjects( F );
-        values_of_all_generating_morphisms := ValuesOnAllGeneratingMorphisms( F );
+        values_of_functor := ValuesOfFunctor( F );
         
         return NTuple( 4,
-                       Length( values_of_all_objects[1] ), Length( values_of_all_objects[2] ),
-                       AsList( values_of_all_generating_morphisms[1] ), AsList( values_of_all_generating_morphisms[2] ) );
+                       Length( values_of_functor[1][1] ), Length( values_of_functor[1][2] ),
+                       AsList( values_of_functor[2][1] ), AsList( values_of_functor[2][2] ) );
         
     end;
     
@@ -94,8 +93,8 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         S := ObjectDatum( F_hat, source );
         T := ObjectDatum( F_hat, range );
         
-        Sobj := ValuesOnAllObjects( S );
-        Tobj := ValuesOnAllObjects( T );
+        Sobj := ValuesOfFunctor( S )[1];
+        Tobj := ValuesOfFunctor( T )[1];
         
         return MorphismConstructor( F_hat,
                        source,
@@ -111,15 +110,15 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## from the morphism in the highest stage of the tower to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
-        local F_hat, eta, values_of_all_objects;
+        local F_hat, eta, values_on_all_objects;
         
         F_hat := ModelingCategory( Quivers );
         
         eta := MorphismDatum( F_hat, mor );
         
-        values_of_all_objects := ValuesOnAllObjects( eta );
+        values_on_all_objects := ValuesOnAllObjects( eta );
         
-        return Pair( AsList( values_of_all_objects[1] ), AsList( values_of_all_objects[2] ) );
+        return Pair( AsList( values_on_all_objects[1] ), AsList( values_on_all_objects[2] ) );
         
     end;
 

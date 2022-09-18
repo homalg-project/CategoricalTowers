@@ -12,7 +12,7 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
   function ( F )
     local d, endbas, k, n, random, b, alpha, i, alpha2, keremb;
     
-    d := Maximum( List( ValuesOnAllObjects( F ), Dimension ) );
+    d := Maximum( List( ValuesOfFunctor( F )[1], Dimension ) );
     
     if d = 0 then
         return fail;
