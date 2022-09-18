@@ -100,6 +100,23 @@ DeclareAttribute( "Size",
         IsFpCategory );
 
 #! @Description
+#!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>,
+#!  indexed by the vertex indices of source and target of the path.
+#! @Arguments C
+#! @Returns a matrix of basis paths of a &QPA; path algebra
+DeclareAttribute( "BasisPathsByVertexIndex",
+        IsFpCategory );
+
+#! @Description
+#!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>:
+#!  `HomStructureOnBasisPaths( `<A>A</A>` )[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]`
+#!  for `basis_path_1: v' -> v` and `basis_path_2: w -> w'`.
+#! @Arguments C
+#! @Returns a six-dimensional matrix of matrices
+DeclareAttribute( "HomStructureOnBasisPaths",
+        IsFpCategory );
+
+#! @Description
 #!  The finite set of objects of the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a list
@@ -203,12 +220,34 @@ DeclareAttribute( "Antipode",
 DeclareAttribute( "UnderlyingVertex",
         IsObjectInFpCategory );
 
+CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInFpCategory ], IsQuiverVertex );
+
 #! @Description
 #!  The quiver algebra element underlying the morphism <A>mor</A> in a finitely presented category.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInFpCategory );
+
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpCategory ], function ( input_types )
+    
+    Assert( 0, IsFpCategory( input_types[1].category ) );
+    
+    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
+        
+        return rec( filter := IsPathAlgebraElement );
+        
+    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
+        
+        return rec( filter := IsQuotientOfPathAlgebraElement );
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+    
+end );
 
 ##
 DeclareAttribute( "BasisPathOfPathAlgebraBasisElement",
