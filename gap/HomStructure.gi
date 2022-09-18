@@ -22,8 +22,8 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     
     nr_o := defining_pair[1];
     
-    F_o := ValuesOnAllObjects( F );
-    G_o := ValuesOnAllObjects( G );
+    F_o := ValuesOfFunctor( F )[1];
+    G_o := ValuesOfFunctor( G )[1];
     
     C := Range( Hom );
     
@@ -35,8 +35,8 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     mors := defining_pair[2];
     nr_m := Length( mors );
     
-    F_m := ValuesOnAllGeneratingMorphisms( F );
-    G_m := ValuesOnAllGeneratingMorphisms( G );
+    F_m := ValuesOfFunctor( F )[2];
+    G_m := ValuesOfFunctor( G )[2];
     
     mor_pair :=
       function ( i )
@@ -78,13 +78,13 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
     
     objs := SetOfObjects( algebroid );
     nr_o := Length( objs );
-    S_o_vals := ValuesOnAllObjects( S );
-    R_o_vals := ValuesOnAllObjects( R );
+    S_o_vals := ValuesOfFunctor( S )[1];
+    R_o_vals := ValuesOfFunctor( R )[1];
     
     mors := SetOfGeneratingMorphisms( algebroid );
     nr_m := Length( mors );
-    S_m_vals := ValuesOnAllGeneratingMorphisms( S );
-    R_m_vals := ValuesOnAllGeneratingMorphisms( R );
+    S_m_vals := ValuesOfFunctor( S )[2];
+    R_m_vals := ValuesOfFunctor( R )[2];
     
     source_summands := List( [ 1 .. nr_o ],
                              i -> HomomorphismStructureOnObjects( C,
@@ -232,9 +232,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         H := RangeCategoryOfHomomorphismStructure( Hom );
         
-        S_o_vals := ValuesOnAllObjects( S );
+        S_o_vals := ValuesOfFunctor( S )[1];
         
-        R_o_vals := ValuesOnAllObjects( R );
+        R_o_vals := ValuesOfFunctor( R )[1];
         
         map := AuxiliaryMorphism( Hom, S, R );
         
@@ -313,9 +313,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
           
           D := DistinguishedObjectOfHomomorphismStructure( Hom );
           
-          S_o_vals := ValuesOnAllObjects( S );
+          S_o_vals := ValuesOfFunctor( S )[1];
           
-          R_o_vals := ValuesOnAllObjects( R );
+          R_o_vals := ValuesOfFunctor( R )[1];
           
           nr_o := Length( SetOfObjects( Source( Hom ) ) );
           

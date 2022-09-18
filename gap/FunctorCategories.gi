@@ -269,7 +269,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToObject,
     
     pos := SafePosition( SetOfObjects( Source( Hom ) ), objB );
     
-    return ValuesOnAllObjects( F )[pos];
+    return ValuesOfFunctor( F )[1][pos];
     
 end );
 
@@ -279,8 +279,11 @@ InstallOtherMethod( UnderlyingCapTwoCategoryCell,
         [ IsFunctorCategory, IsObjectInFunctorCategory ],
         
   function ( Hom, F )
+    local values;
     
-    return CapFunctor( Source( Hom ), ValuesOnAllObjects( F ), ValuesOnAllGeneratingMorphisms( F ), Range( Hom ) );
+    values := ValuesOfFunctor( F );
+    
+    return CapFunctor( Source( Hom ), values[1], values[2], Range( Hom ) );
     
 end );
 
@@ -308,7 +311,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToMorphism,
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsInt( pos ) then
-        return ValuesOnAllGeneratingMorphisms( F )[pos];
+        return ValuesOfFunctor( F )[2][pos];
     fi;
     
     return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( Hom, F ) )(
@@ -402,17 +405,28 @@ end );
 ####################################
 
 ##
+InstallOtherMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
+        "for a functor category and two lists",
+        [ IsFunctorCategory, IsList ],
+        
+  function ( Hom, values_of_functor )
+    
+    return CreateCapCategoryObjectWithAttributes( Hom,
+                   Source, Source( Hom ),
+                   Range, Range( Hom ),
+                   ValuesOfFunctor, values_of_functor );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
         "for a functor category and two lists",
         [ IsFunctorCategory, IsList, IsList ],
         
   function ( Hom, values_of_all_objects, values_of_all_generating_morphisms )
     
-    return CreateCapCategoryObjectWithAttributes( Hom,
-                   Source, Source( Hom ),
-                   Range, Range( Hom ),
-                   ValuesOnAllObjects, values_of_all_objects,
-                   ValuesOnAllGeneratingMorphisms, values_of_all_generating_morphisms );
+    return AsObjectInFunctorCategoryByValues( Hom,
+                   Pair( values_of_all_objects, values_of_all_generating_morphisms ) );
     
 end );
 
@@ -575,8 +589,8 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategory,
     
     nr_objs := DefiningPairOfUnderlyingQuiver( Hom )[1];
     
-    source_values := ValuesOnAllObjects( source );
-    range_values := ValuesOnAllObjects( range );
+    source_values := ValuesOfFunctor( source )[1];
+    range_values := ValuesOfFunctor( range )[1];
     
     values_on_all_objects := LazyHList( [ 1 .. nr_objs ],
                                      o -> natural_transformation_on_objects( source_values[o], o, range_values[o] ) );
@@ -890,7 +904,7 @@ InstallMethodWithCache( FunctorCategory,
                 ## the result is not saved if operation_name is called with Range( cat ) as first argument
                 
                 if IsObjectInFunctorCategory( L[2] ) then
-                    return ForAll( ValuesOnAllObjects( L[2] ), object -> operation_name( object ) );
+                    return ForAll( ValuesOfFunctor( L[2] )[1], object -> operation_name( object ) );
                 else
                     return ForAll( ValuesOnAllObjects( L[2] ), object -> operation_name( object ) );
                 fi;
@@ -982,7 +996,7 @@ InstallMethodWithCache( FunctorCategory,
                 
                 etas := i_arg[2];
                 
-                functor_on_objects := objB_index -> operation_name( C, List( etas, F -> ValuesOnAllObjects( F )[objB_index] ) );
+                functor_on_objects := objB_index -> operation_name( C, List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
                 
                 mors := DefiningPairOfUnderlyingQuiver( cat )[2];
                 
@@ -992,8 +1006,8 @@ InstallMethodWithCache( FunctorCategory,
                     
                     l := List( etas, eta ->
                                [ ValuesOnAllObjects( eta )[mors[morB_index][1]],              ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Source( morB ) )
-                                 ValuesOnAllGeneratingMorphisms( Source( eta ) )[morB_index], ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
-                                 ValuesOnAllGeneratingMorphisms( Range( eta ) )[morB_index],  ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
+                                 ValuesOfFunctor( Source( eta ) )[2][morB_index],             ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
+                                 ValuesOfFunctor( Range( eta ) )[2][morB_index],              ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
                                  ValuesOnAllObjects( eta )[mors[morB_index][2]]               ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Range( morB ) )
                                  ] );
                     
@@ -1024,12 +1038,12 @@ InstallMethodWithCache( FunctorCategory,
                 Fs := i_arg[2];
                 
                 functor_on_objects := objB_index ->
-                                      operation_name( C, List( Fs, F -> ValuesOnAllObjects( F )[objB_index] ) );
+                                      operation_name( C, List( Fs, F -> ValuesOfFunctor( F )[1][objB_index] ) );
                 
                 functor_on_morphisms := { new_source, morB_index, new_range } ->
                                         functorial( C,
                                                 new_source,
-                                                List( Fs, F -> ValuesOnAllGeneratingMorphisms( F )[morB_index] ),
+                                                List( Fs, F -> ValuesOfFunctor( F )[2][morB_index] ),
                                                 new_range );
                 
                 return AsObjectInFunctorCategoryByFunctions( cat, functor_on_objects, functor_on_morphisms );
@@ -1061,8 +1075,8 @@ InstallMethodWithCache( FunctorCategory,
                     local L;
                     
                     L := [ ValuesOnAllObjects( eta )[mors[morB_index][1]],              ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Source( morB ) )
-                           ValuesOnAllGeneratingMorphisms( Source( eta ) )[morB_index], ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
-                           ValuesOnAllGeneratingMorphisms( Range( eta ) )[morB_index],  ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
+                           ValuesOfFunctor( Source( eta ) )[2][morB_index],             ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
+                           ValuesOfFunctor( Range( eta ) )[2][morB_index],              ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
                            ValuesOnAllObjects( eta )[mors[morB_index][2]]               ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Range( morB ) )
                            ];
                     
@@ -1122,11 +1136,11 @@ InstallMethodWithCache( FunctorCategory,
                      if type = IsInt then
                          return Concatenation( "i_arg[", String( i ), "]" );
                      elif type = "object" then
-                         return Concatenation( "ValuesOnAllObjects( i_arg[", String( i ), "] )[objB_index]" );
+                         return Concatenation( "ValuesOfFunctor( i_arg[", String( i ), "] )[1][objB_index]" );
                      elif type = "morphism" then
                          return Concatenation( "ValuesOnAllObjects( i_arg[", String( i ), "] )[objB_index]" );
                      elif type = "list_of_objects" then
-                         return Concatenation( "List( i_arg[", String( i ), "], F -> ValuesOnAllObjects( F )[objB_index] )" );
+                         return Concatenation( "List( i_arg[", String( i ), "], F -> ValuesOfFunctor( F )[1][objB_index] )" );
                      elif type = "list_of_morphisms" then
                          return Concatenation( "List( i_arg[", String( i ), "], eta -> ValuesOnAllObjects( eta )[objB_index] )" );
                      else
@@ -1275,8 +1289,8 @@ InstallMethodWithCache( FunctorCategory,
             B := Source( Hom );
             C := Range( Hom );
             
-            S_o_vals := ValuesOnAllObjects( S );
-            T_o_vals := ValuesOnAllObjects( T );
+            S_o_vals := ValuesOfFunctor( S )[1];
+            T_o_vals := ValuesOfFunctor( T )[1];
             
             natural_transformation_on_objects :=
               function ( source, objB_index, range )
@@ -1284,9 +1298,9 @@ InstallMethodWithCache( FunctorCategory,
                 return MorphismBetweenDirectSumsWithGivenDirectSums(
                                C,
                                S_o_vals[objB_index],
-                               List( diagram_S, Si -> ValuesOnAllObjects( Si )[objB_index] ),
+                               List( diagram_S, Si -> ValuesOfFunctor( Si )[1][objB_index] ),
                                List( M, row -> List( row, m -> ValuesOnAllObjects( m )[objB_index] ) ),
-                               List( diagram_T, Ti -> ValuesOnAllObjects( Ti )[objB_index] ),
+                               List( diagram_T, Ti -> ValuesOfFunctor( Ti )[1][objB_index] ),
                                T_o_vals[objB_index] );
                 
             end;
@@ -1515,9 +1529,9 @@ InstallMethodWithCache( FunctorCategory,
                 
                 H := RangeCategoryOfHomomorphismStructure( Hom );
                 
-                F_o_vals := ValuesOnAllObjects( F );
+                F_o_vals := ValuesOfFunctor( F )[1];
                 
-                G_o_vals := ValuesOnAllObjects( G );
+                G_o_vals := ValuesOfFunctor( G )[1];
                 
                 hom_diagram := ExternalHomDiagram( Hom, F, G );
                 
@@ -1737,10 +1751,10 @@ InstallMethodWithCache( FunctorCategory,
                     expFG := ExponentialOnObjects( Hom, F, G );
                     
                     ## G^F(b) := Hom(Y(b) × F, G) ∈ Obj(C):
-                    expFG_b := ValuesOnAllObjects( expFG )[objB_index];
+                    expFG_b := ValuesOfFunctor( expFG )[1][objB_index];
                     
                     ## Fb := F(b) ∈ Obj(C):
-                    Fb := ValuesOnAllObjects( F )[objB_index];
+                    Fb := ValuesOfFunctor( F )[1][objB_index];
                     
                     ## G^F(b) × F(b) ↠ G^F(b) ∈ Mor(C):
                     prj1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( C,
@@ -2090,8 +2104,8 @@ InstallMethodWithCache( FunctorCategory,
             B := Source( Hom );
             C := Range( Hom );
             
-            F_o_vals := ValuesOnAllObjects( F );
-            G_o_vals := ValuesOnAllObjects( G );
+            F_o_vals := ValuesOfFunctor( F )[1];
+            G_o_vals := ValuesOfFunctor( G )[1];
             
             functor_on_objects := objB_index -> TensorProductOnObjects( C, F_o_vals[objB_index], G_o_vals[objB_index] );
             
@@ -2124,7 +2138,7 @@ InstallMethodWithCache( FunctorCategory,
             B := Source( Hom );
             C := Range( Hom );
             
-            F_o_vals := ValuesOnAllObjects( F );
+            F_o_vals := ValuesOfFunctor( F )[1];
             
             functor_on_objects := objB_index -> DualOnObjects( C, F_o_vals[objB_index] );
             
@@ -2190,13 +2204,13 @@ InstallMethodWithCache( FunctorCategory,
             
             C := Range( Hom );
             
-            F_o_vals := ValuesOnAllObjects( F );
-            G_o_vals := ValuesOnAllObjects( G );
+            F_o_vals := ValuesOfFunctor( F )[1];
+            G_o_vals := ValuesOfFunctor( G )[1];
             
             functor_on_objects := objB_index -> TensorProductOnObjects( C, F_o_vals[objB_index], G_o_vals[objB_index] );
             
-            F_m_vals := ValuesOnAllGeneratingMorphisms( F );
-            G_m_vals := ValuesOnAllGeneratingMorphisms( G );
+            F_m_vals := ValuesOfFunctor( F )[2];
+            G_m_vals := ValuesOfFunctor( G )[2];
             
             functor_on_morphisms := { new_source, morB_index, new_range } -> TensorProductOnMorphisms( C, F_m_vals[morB_index], G_m_vals[morB_index] );
             
@@ -2438,7 +2452,7 @@ InstallMethod( ViewObj,
     
     vertices := List( SetOfObjects( algebroid ), UnderlyingVertex );
     
-    v_dim := List( ValuesOnAllObjects( F ), Dimension );
+    v_dim := List( ValuesOfFunctor( F )[1], Dimension );
     
     v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
     
@@ -2456,7 +2470,7 @@ InstallMethod( ViewObj,
       
     fi;
     
-    a_dim := List( ValuesOnAllGeneratingMorphisms( F ), m -> [ Dimension( Source( m ) ), Dimension( Range( m ) ) ] );
+    a_dim := List( ValuesOfFunctor( F )[2], m -> [ Dimension( Source( m ) ), Dimension( Range( m ) ) ] );
     
     a_string := ListN( arrows, a_dim,
                   { arrow, dim } -> Concatenation(
@@ -2479,7 +2493,7 @@ InstallMethod( Display,
     
     objects := SetOfObjects( Source( F ) );
     
-    images_of_objects := ValuesOnAllObjects( F );
+    images_of_objects := ValuesOfFunctor( F )[1];
 
     for i in [ 1 .. Length( objects ) ] do
       
@@ -2493,7 +2507,7 @@ InstallMethod( Display,
     
     morphisms := SetOfGeneratingMorphisms( Source( F ) );
     
-    images_of_morphisms := ValuesOnAllGeneratingMorphisms( F );
+    images_of_morphisms := ValuesOfFunctor( F )[2];
     
     for i in [ 1 .. Length( morphisms ) ] do
        
@@ -2524,9 +2538,9 @@ InstallMethod( ViewObj,
     
     vertices := List( SetOfObjects( Source( Source( eta ) ) ), UnderlyingVertex );
      
-    s_dim := List( ValuesOnAllObjects( Source( eta ) ), Dimension );
+    s_dim := List( ValuesOfFunctor( Source( eta ) )[1], Dimension );
     
-    r_dim := List( ValuesOnAllObjects( Range( eta ) ), Dimension );
+    r_dim := List( ValuesOfFunctor( Range( eta ) )[1], Dimension );
    
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
@@ -2570,10 +2584,10 @@ InstallMethod( LaTeXOutput,
     local objs, v_objs, mors, v_mors, s, i;
     
     objs := SetOfObjects( F );
-    v_objs := ValuesOnAllObjects( F );
+    v_objs := ValuesOfFunctor( F )[1];
     
     mors := SetOfGeneratingMorphisms( F );
-    v_mors := ValuesOnAllGeneratingMorphisms( F );
+    v_mors := ValuesOfFunctor( F )[2];
     
     s := "\\begin{array}{ccc}\n ";
     

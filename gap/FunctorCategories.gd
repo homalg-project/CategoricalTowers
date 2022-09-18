@@ -225,38 +225,24 @@ DeclareOperation( "ApplyMorphismInFunctorCategoryToObject",
         [ IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject ] );
 
 #! @Description
-#!  Returns the values of the functor <A>F</A> in a functor category <A>Hom</A>
-#!  on all objects of the source category of <A>Hom</A>.
+#!  The input is functor <A>F</A> in a functor category <A>Hom</A>.
+#!  The output is pair of lists.
+#!  The first is the list of values of the functor <A>F</A> on all objects of the source category of <A>Hom</A>.
+#!  The second is the list of values of the functor <A>F</A> on all *generating* morphisms of the source category of <A>Hom</A>.
 #! @Arguments F
-#! @Returns a list
-DeclareAttribute( "ValuesOnAllObjects",
+#! @Returns a pair of lists
+DeclareAttribute( "ValuesOfFunctor",
         IsObjectInFunctorCategory );
 
-CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsObjectInFunctorCategory ],
+CapJitAddTypeSignature( "ValuesOfFunctor", [ IsObjectInFunctorCategory ],
   function ( input_types )
     
     Assert( 0, IsFunctorCategory( input_types[1].category ) );
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) );
-    
-end );
-
-#! @Description
-#!  Returns the values of the functor <A>F</A> in a functor category <A>Hom</A>
-#!  on all morphisms of the source category.
-#! @Arguments F
-#! @Returns a list
-DeclareAttribute( "ValuesOnAllGeneratingMorphisms",
-        IsObjectInFunctorCategory );
-
-CapJitAddTypeSignature( "ValuesOnAllGeneratingMorphisms", [ IsObjectInFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
+                  rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) ] );
     
 end );
 
@@ -340,18 +326,6 @@ DeclareAttribute( "CategoryOfInternalCategories",
         IsCapCategory );
 
 DeclareOperation( "AsObjectInFunctorCategoryByValues", [ IsFunctorCategory, IsList, IsList ] );
-
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes",
-        [ IsRecord, IsCapCategory,
-          IsFunction, IsCapCategory,
-          IsFunction, IsCapCategory,
-          IsFunction, IsList,
-          IsFunction, IsList ],
-  function ( input_type )
-    
-    return CapJitDataTypeOfObjectOfCategory( input_type[2].category );
-    
-end );
 
 DeclareOperation( "AsObjectInFunctorCategoryByFunctions", [ IsFunctorCategory, IsFunction, IsFunction ] );
 
