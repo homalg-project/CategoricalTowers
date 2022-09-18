@@ -111,15 +111,15 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## from the morphism in the highest stage of the tower to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
-        local F_hat, eta, values_of_all_objects;
+        local F_hat, eta, values_on_all_objects;
         
         F_hat := ModelingCategory( Quivers );
         
         eta := MorphismDatum( F_hat, mor );
         
-        values_of_all_objects := ValuesOnAllObjects( eta );
+        values_on_all_objects := ValuesOnAllObjects( eta );
         
-        return Pair( AsList( values_of_all_objects[1] ), AsList( values_of_all_objects[2] ) );
+        return Pair( AsList( values_on_all_objects[1] ), AsList( values_on_all_objects[2] ) );
         
     end;
 
