@@ -1184,8 +1184,6 @@ InstallMethod( CapFunctor,
     DeactivateCachingObject( ObjectCache( functor ) );
     DeactivateCachingObject( MorphismCache( functor ) );
     
-    SetFilterObj( functor, IsFpCategoryMorphism );
-    
     AddObjectFunction( functor,
       function( obj )
         local i;

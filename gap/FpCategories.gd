@@ -37,11 +37,6 @@ DeclareCategory( "IsFpCategory",
 DeclareCategory( "IsMonoidAsCategory",
         IsFpCategory );
 
-#! @Description
-#!  The &GAP; category of morphisms of finitely presented categories.
-DeclareCategory( "IsFpCategoryMorphism",
-        IsCapFunctor );
-
 ####################################
 #
 #! @Section Properties
