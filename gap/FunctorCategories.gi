@@ -408,7 +408,7 @@ InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
         
   function ( Hom, values_of_all_objects, values_of_all_generating_morphisms )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), Hom,
+    return CreateCapCategoryObjectWithAttributes( Hom,
                    Source, Source( Hom ),
                    Range, Range( Hom ),
                    ValuesOnAllObjects, values_of_all_objects,
@@ -558,7 +558,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategoryByValues,
         
   function ( Hom, source, values_on_all_objects, range )
     
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), Hom,
+    return CreateCapCategoryMorphismWithAttributes( Hom,
                    source,
                    range,
                    ValuesOnAllObjects, values_on_all_objects );
