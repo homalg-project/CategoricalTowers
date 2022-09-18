@@ -195,7 +195,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
-        return MorphismInFpCategory( source, m, range );
+        return MorphismInFpCategory( category, source, m, range );
         
     end );
     
@@ -302,7 +302,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
         
-        return MorphismInFpCategory(
+        return MorphismInFpCategory( category,
                        object,
                        id,
                        object );
@@ -317,7 +317,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         AddPreCompose( category,
           function( category, morphism_1, morphism_2 )
             
-            return MorphismInFpCategory(
+            return MorphismInFpCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
                            Range( morphism_2 ) );
@@ -329,7 +329,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         AddPreCompose( category,
           function( category, morphism_1, morphism_2 )
             
-            return MorphismInFpCategory(
+            return MorphismInFpCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
                            Range( morphism_2 ) );
@@ -504,7 +504,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
         
-        return MorphismInFpCategory( a, element, b );
+        return MorphismInFpCategory( fpcategory, a, element, b );
         
     end );
     
@@ -812,12 +812,12 @@ InstallOtherMethod( \/,
 );
 
 ##
-InstallMethod( MorphismInFpCategory,
-        "for two objects in a f.p. category and an element of the quiver algebra",
-        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
+InstallOtherMethodForCompilerForCAP( MorphismInFpCategory,
+        "for a f.p. category, two objects in a f.p. category, and an element of the quiver algebra",
+        [ IsFpCategory, IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
         
-  function( S, path, T )
-    local l, mor, C;
+  function( B, S, path, T )
+    local l;
     
     if IsZero( path ) then
         Error( "the quiver algebra element ", path, " is zero\n" );
@@ -827,6 +827,7 @@ InstallMethod( MorphismInFpCategory,
         Error( "the quiver algebra element ", path, " is neither zero nor uniform\n" );
     fi;
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsPathAlgebraElement( path ) then
         l := LeadingPath( path );
         
@@ -839,22 +840,25 @@ InstallMethod( MorphismInFpCategory,
         fi;
     fi;
     
-    mor := rec( );
-    
     if not IsIdenticalObj( CapCategory(S), CapCategory(T) ) then
         Error( "source and target do not belong to the same category");
     fi;
     
-    C := CapCategory( S );
+    return CreateCapCategoryMorphismWithAttributes( B,
+                   S,
+                   T,
+                   UnderlyingQuiverAlgebraElement, path );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-            mor, C,
-            S,
-            T,
-            UnderlyingQuiverAlgebraElement, path
-            );
+end );
+
+##
+InstallMethod( MorphismInFpCategory,
+        "for two objects in a f.p. category and an element of the quiver algebra",
+        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
+        
+  function( S, path, T )
     
-    return mor;
+    return MorphismInFpCategory( CapCategory( S ), S, path, T );
     
 end );
 
@@ -879,7 +883,7 @@ InstallMethod( MorphismInFpCategory,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInFpCategory( C.(S), path, C.(T) );
+    return MorphismInFpCategory( C, C.(S), path, C.(T) );
     
 end );
 
@@ -939,7 +943,7 @@ InstallMethod( MorphismInFpCategory,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInFpCategory( A.(S), path, A.(T) );
+    return MorphismInFpCategory( A, A.(S), path, A.(T) );
     
 end );
 
