@@ -221,6 +221,7 @@ DeclareAttribute( "Antipode",
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
         IsObjectInAlgebroid );
+
 CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInAlgebroid ], IsQuiverVertex );
 
 #! @Description

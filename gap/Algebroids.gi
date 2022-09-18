@@ -660,7 +660,10 @@ end );
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
   function( algebroid, over_Z )
-    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths, representative_func, ring, default_range_of_HomStructure, range_category, object_constructor, object_datum, morphism_constructor, morphism_datum, path;
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, path,
+          MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths,
+          representative_func, ring, default_range_of_HomStructure, range_category,
+          object_constructor, object_datum, morphism_constructor, morphism_datum;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
     
@@ -881,7 +884,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
             return ZeroMorphism( range_category, source, range );
             
         else
-
+            
             ## These two lines need QPA in a dynamic way
             coeffs_alpha := CoefficientsOfPaths( basis_ap_a, elem_alpha );
             coeffs_beta := CoefficientsOfPaths( basis_b_bp, elem_beta );

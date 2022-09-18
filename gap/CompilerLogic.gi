@@ -242,3 +242,11 @@ CapJitAddLogicTemplate(
         dst_template := "entry",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "quiver_algebra", "primitive_path" ],
+        src_template := "BasisPathOfPathAlgebraBasisElement( PathAsAlgebraElement( quiver_algebra, primitive_path ) )",
+        dst_template := "primitive_path",
+    )
+);

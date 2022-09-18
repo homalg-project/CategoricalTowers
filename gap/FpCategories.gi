@@ -173,6 +173,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
   
   function( category )
+    local quiver;
     
     ##
     AddObjectConstructor( category,
@@ -194,7 +195,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
-        return MorphismInFpCategory( source, m, range );
+        return MorphismInFpCategory( category, source, m, range );
         
     end );
     
@@ -301,33 +302,41 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
         
-        return MorphismInFpCategory(
+        return MorphismInFpCategory( category,
                        object,
                        id,
                        object );
         
     end );
     
-    ##
-    AddPreCompose( category,
-      function( category, morphism_1, morphism_2 )
-        local quiver;
+    quiver := UnderlyingQuiver( category );
+    
+    if IsRightQuiver( quiver ) then
         
-        quiver := UnderlyingQuiver( category );
-        
-        if IsRightQuiver( quiver ) then
-            return MorphismInFpCategory(
+        ##
+        AddPreCompose( category,
+          function( category, morphism_1, morphism_2 )
+            
+            return MorphismInFpCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
                            Range( morphism_2 ) );
-        else
-            return MorphismInFpCategory(
+        end );
+        
+    else
+        
+        ##
+        AddPreCompose( category,
+          function( category, morphism_1, morphism_2 )
+            
+            return MorphismInFpCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
                            Range( morphism_2 ) );
-        fi;
+            
+        end );
         
-    end );
+    fi;
     
     ## only create the Hom-structure for finite dimensional quiver algebras
     if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
@@ -345,9 +354,27 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
 end );
 
 ##
+InstallMethod( BasisPathOfPathAlgebraBasisElement,
+        "for a quiver algebra element",
+        [ IsQuiverAlgebraElement ],
+        
+  function( primitive_path )
+    local paths;
+    
+    paths := Paths( primitive_path );
+    
+    Assert( 0, Length( paths ) = 1 );
+    
+    return paths[1];
+    
+end );
+
+##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
   function( fpcategory )
-    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, representative_func, path, range_category_of_HomStructure;
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, path,
+          MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths,
+          representative_func, range_category_of_HomStructure;
     
     quiver_algebra := UnderlyingQuiverAlgebra( fpcategory );
     
@@ -382,6 +409,60 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     
     Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( fpcategory ) ) );
     
+    ## precomputing matrices for the hom structure
+    ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
+    ## [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
+    ## for basis_path_1: v' -> v and basis_path_2: w -> w'
+    
+    MATRIX_FOR_HOMSTRUCTURE := function( v, w, vp, wp, path_1, path_2 )
+        local hom_v_w, hom_vp_wp, alpha, beta;
+        
+        hom_v_w := basis_paths_by_vertex_index[ VertexIndex( v ) ][ VertexIndex( w ) ];
+        
+        if IsEmpty( hom_v_w ) then
+            
+            return [  ];
+            
+        fi;
+        
+        hom_vp_wp := basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( wp ) ];
+        
+        if IsEmpty( hom_vp_wp ) then
+            
+            return [  ];
+            
+        fi;
+        
+        alpha := PathAsAlgebraElement( quiver_algebra, path_1 );
+        
+        beta := PathAsAlgebraElement( quiver_algebra, path_2 );
+        
+        return List( hom_v_w, path -> -1 + SafePosition( hom_vp_wp, Paths( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta )[1] ) );
+        
+    end;
+    
+    hom_structure_on_basis_paths :=
+        List( vertices, v ->
+            List( vertices, w ->
+                List( vertices, vp ->
+                    List( vertices, wp ->
+                        List( basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( v ) ], basis_path_1 ->
+                            List( basis_paths_by_vertex_index[ VertexIndex( w ) ][ VertexIndex( wp ) ], basis_path_2 ->
+                                MATRIX_FOR_HOMSTRUCTURE( v, w, vp, wp, basis_path_1, basis_path_2 )
+                            )
+                        )
+                    )
+                )
+            )
+        );
+    
+    # if `hom_structure_on_basis_paths` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `hom_structure_on_basis_paths` anymore
+    MakeImmutable( hom_structure_on_basis_paths );
+    
+    SetHomStructureOnBasisPaths( fpcategory, hom_structure_on_basis_paths );
+    
+    Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( fpcategory ) ) );
+    
     ##
     if IsQuotientOfPathAlgebra( quiver_algebra ) then
         
@@ -413,27 +494,32 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
       function( fpcategory, source, alpha, beta, range )
-        local a, b, basis_a_b, ap, bp, basis_ap_bp, elem_alpha, elem_beta, entries;
+        local a, b, ap, bp, basis_ap_a, basis_b_bp, elem_alpha, elem_beta, alpha_index, beta_index, map;
         
         a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
         b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
         
-        basis_a_b := basis_paths_by_vertex_index[a][b];
-        
         ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
         bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
         
-        basis_ap_bp := basis_paths_by_vertex_index[ap][bp];
+        basis_ap_a := basis_paths_by_vertex_index[ap][a];
+        
+        basis_b_bp := basis_paths_by_vertex_index[b][bp];
         
         elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
         
         elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
-        entries := List( basis_a_b, phi -> -1 + Position( basis_ap_bp, Paths( elem_alpha * phi * elem_beta )[1] ) );
+        alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
         
-        return MorphismConstructor( range_category_of_HomStructure, source, entries, range );
+        beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
+        
+        map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
+                     hom_structure_on_basis_paths[a][b][ap][bp][alpha_index][beta_index][phi_index] );
+        
+        return MorphismConstructor( range_category_of_HomStructure, source, map, range );
         
     end );
     
@@ -464,7 +550,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         return MorphismConstructor(
                 range_category_of_HomStructure,
                 source,
-                [ -1 + Position( basis_elements, Paths( element )[1] ) ],
+                [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
                 range
               );
         
@@ -477,9 +563,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
-        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{1 + [ AsList( morphism )[1] ]} );
+        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
         
-        return MorphismInFpCategory( a, element, b );
+        return MorphismInFpCategory( fpcategory, a, element, b );
         
     end );
     
@@ -540,15 +626,17 @@ InstallMethodWithCache( Category,
     
     C!.relations := relations;
     
-    C!.compiler_hints := rec(
-        category_attribute_names := [
-            "SetOfObjects",
-            "SetOfGeneratingMorphisms",
-        ],
-        category_filter := IsFpCategory,
-        object_filter := IsObjectInFpCategory,
-        morphism_filter := IsMorphismInFpCategory,
-    );
+    C!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "SetOfObjects",
+             "SetOfGeneratingMorphisms",
+             "BasisPathsByVertexIndex",
+             "HomStructureOnBasisPaths",
+             ],
+           category_filter := IsFpCategory,
+           object_filter := IsObjectInFpCategory,
+           morphism_filter := IsMorphismInFpCategory,
+           );
     
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
@@ -787,12 +875,12 @@ InstallOtherMethod( \/,
 );
 
 ##
-InstallMethod( MorphismInFpCategory,
-        "for two objects in a f.p. category and an element of the quiver algebra",
-        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
+InstallOtherMethodForCompilerForCAP( MorphismInFpCategory,
+        "for a f.p. category, two objects in a f.p. category, and an element of the quiver algebra",
+        [ IsFpCategory, IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
         
-  function( S, path, T )
-    local l, mor, C;
+  function( B, S, path, T )
+    local l;
     
     if IsZero( path ) then
         Error( "the quiver algebra element ", path, " is zero\n" );
@@ -802,6 +890,7 @@ InstallMethod( MorphismInFpCategory,
         Error( "the quiver algebra element ", path, " is neither zero nor uniform\n" );
     fi;
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsPathAlgebraElement( path ) then
         l := LeadingPath( path );
         
@@ -814,22 +903,25 @@ InstallMethod( MorphismInFpCategory,
         fi;
     fi;
     
-    mor := rec( );
-    
     if not IsIdenticalObj( CapCategory(S), CapCategory(T) ) then
         Error( "source and target do not belong to the same category");
     fi;
     
-    C := CapCategory( S );
+    return CreateCapCategoryMorphismWithAttributes( B,
+                   S,
+                   T,
+                   UnderlyingQuiverAlgebraElement, path );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-            mor, C,
-            S,
-            T,
-            UnderlyingQuiverAlgebraElement, path
-            );
+end );
+
+##
+InstallMethod( MorphismInFpCategory,
+        "for two objects in a f.p. category and an element of the quiver algebra",
+        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
+        
+  function( S, path, T )
     
-    return mor;
+    return MorphismInFpCategory( CapCategory( S ), S, path, T );
     
 end );
 
@@ -854,7 +946,7 @@ InstallMethod( MorphismInFpCategory,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInFpCategory( C.(S), path, C.(T) );
+    return MorphismInFpCategory( C, C.(S), path, C.(T) );
     
 end );
 
@@ -914,7 +1006,7 @@ InstallMethod( MorphismInFpCategory,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInFpCategory( A.(S), path, A.(T) );
+    return MorphismInFpCategory( A, A.(S), path, A.(T) );
     
 end );
 
@@ -1174,8 +1266,6 @@ InstallMethod( CapFunctor,
     
     DeactivateCachingObject( ObjectCache( functor ) );
     DeactivateCachingObject( MorphismCache( functor ) );
-    
-    SetFilterObj( functor, IsFpCategoryMorphism );
     
     AddObjectFunction( functor,
       function( obj )
