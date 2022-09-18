@@ -1663,7 +1663,7 @@ InstallMethod( YonedaNaturalEpimorphisms,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, H, objs, mors, o, m, D, precompose, Hom2, hom3, Hom3, sum3, emb3, iso3, inv3,
+    local A, H, objs, mors, o, m, D, precompose, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
           N0, N1, N2, pt, mu, s;
     
     A := UnderlyingQuiverAlgebra( B );
@@ -1700,21 +1700,28 @@ InstallMethod( YonedaNaturalEpimorphisms,
                               DirectProduct( H, hom3[c][a, b] ) ) ) );
     
     ## [ [ Hom(a, b) × Hom(b, c) ]_{a, b ∈ B} ]_{c ∈ B}:
-    sum3 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
+    tum2 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
     
     ## The embeddings into the double coproducts
-    ## [ [ [ Hom(a, b) × Hom(b, c) ↪ ⊔_{a' ∈ B} ⊔_{b' ∈ B} Hom(a', b') × Hom(b', c) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
-    emb3 := List( [ 1 .. o ], c ->
-                  List( [ 1 .. o ], a ->
-                        List( [ 1 .. o ], b ->
-                              InjectionOfCofactorOfCoproduct( H,
-                                      sum3[c], o * ( b - 1 ) + a ) ) ) );
+    ## [ [ Hom(a, b) × Hom(b, c) ↪ ⊔_{a' ∈ B} ⊔_{b' ∈ B} Hom(a', b') × Hom(b', c) ]_{a ∈ B, b ∈ B} ]_{c ∈ B}:
+    emb2 := List( [ 1 .. o ], c ->
+                  Concatenation(
+                          List( [ 1 .. o ], a ->
+                                List( [ 1 .. o ], b ->
+                                      InjectionOfCofactorOfCoproduct( H,
+                                              tum2[c], o * ( b - 1 ) + a ) ) ) ) );
+    
+    ## [ [ Hom(a, b) × Hom(b, c) ]_{b, a ∈ B} ]_{c ∈ B}:
+    sum2 := List( Hom3, L -> Concatenation( L ) );
     
     ## The isomorphisms
     ## [ ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ]_{c ∈ B}:
-    iso3 := List( emb3, emb ->
+    iso2 := List( [ 1 .. o ], c ->
                   UniversalMorphismFromCoproduct( H,
-                          Concatenation( emb ) ) );
+                          sum2[c],
+                          Coproduct( H,
+                                  tum2[c] ),
+                          emb2[c] ) );
     
     D := DistinguishedObjectOfHomomorphismStructure( B );
     
@@ -1804,12 +1811,14 @@ InstallMethod( YonedaNaturalEpimorphisms,
                         ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
                         PreCompose( H,
                                 ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c):
-                                iso3[c],
+                                iso2[c],
                                 ## ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
                                 CoproductFunctorial( H,
                                         List( [ 1 .. o ], b ->
                                               ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
                                               UniversalMorphismFromCoproduct( H,
+                                                      List( [ 1 .. o ], a -> Hom3[c][a,b] ),
+                                                      Hom2[c][b],
                                                       List( [ 1 .. o ], a ->
                                                             ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
                                                             ProjectionInFactorOfDirectProduct( H,
@@ -1828,6 +1837,8 @@ InstallMethod( YonedaNaturalEpimorphisms,
                                 List( [ 1 .. o ], a ->
                                       ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
                                       UniversalMorphismFromCoproduct( H,
+                                              List( [ 1 .. o ], b -> Hom3[c][a,b] ),
+                                              Hom2[c][a],
                                               List( [ 1 .. o ], b ->
                                                     ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
                                                     precompose( a, b, c ) ) ) ) ) ),
