@@ -173,6 +173,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
   
   function( category )
+    local quiver;
     
     ##
     AddObjectConstructor( category,
@@ -308,26 +309,34 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
     end );
     
-    ##
-    AddPreCompose( category,
-      function( category, morphism_1, morphism_2 )
-        local quiver;
+    quiver := UnderlyingQuiver( category );
+    
+    if IsRightQuiver( quiver ) then
         
-        quiver := UnderlyingQuiver( category );
-        
-        if IsRightQuiver( quiver ) then
+        ##
+        AddPreCompose( category,
+          function( category, morphism_1, morphism_2 )
+            
             return MorphismInFpCategory(
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
                            Range( morphism_2 ) );
-        else
+        end );
+        
+    else
+        
+        ##
+        AddPreCompose( category,
+          function( category, morphism_1, morphism_2 )
+            
             return MorphismInFpCategory(
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
                            Range( morphism_2 ) );
-        fi;
+            
+        end );
         
-    end );
+    fi;
     
     ## only create the Hom-structure for finite dimensional quiver algebras
     if IsFiniteDimensional( UnderlyingQuiverAlgebra( category ) ) then
