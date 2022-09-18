@@ -1271,7 +1271,7 @@ InstallMethod( CapFunctor,
       function( obj )
         local i;
         
-        i := Position( vertices, UnderlyingVertex( obj ) );
+        i := SafePosition( vertices, UnderlyingVertex( obj ) );
         
         if IsInt( i ) then
             return images_of_objects[i];
@@ -1281,8 +1281,8 @@ InstallMethod( CapFunctor,
         
     end );
     
-    func_obj := o -> images_of_objects[ Position( vertices, o ) ];
-    func_mor := a -> images_of_generating_morphisms[ Position( arrows, a ) ];
+    func_obj := o -> images_of_objects[SafePosition( vertices, o )];
+    func_mor := a -> images_of_generating_morphisms[SafePosition( arrows, a )];
     
     if covariant then
         
