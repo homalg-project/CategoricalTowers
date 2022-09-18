@@ -502,7 +502,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
-        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{1 + [ AsList( morphism )[1] ]} );
+        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
         
         return MorphismInFpCategory( a, element, b );
         
