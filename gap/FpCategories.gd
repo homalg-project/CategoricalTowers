@@ -91,6 +91,23 @@ DeclareAttribute( "UnderlyingQuiver",
 DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsFpCategory );
 
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpCategory ], function ( input_types )
+    
+    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
+        
+        return rec( filter := IsPathAlgebra );
+        
+    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
+        
+        return rec( filter := IsQuotientOfPathAlgebra );
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+    
+end );
 
 #! @Description
 #!  The number of morphisms in the finitely presented category <A>C</A>.
@@ -107,6 +124,12 @@ DeclareAttribute( "Size",
 DeclareAttribute( "BasisPathsByVertexIndex",
         IsFpCategory );
 
+CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFpCategory ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsPath ) ) ) );
+    
+end );
+
 #! @Description
 #!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>:
 #!  `HomStructureOnBasisPaths( `<A>A</A>` )[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]`
@@ -115,6 +138,12 @@ DeclareAttribute( "BasisPathsByVertexIndex",
 #! @Returns a six-dimensional matrix of matrices
 DeclareAttribute( "HomStructureOnBasisPaths",
         IsFpCategory );
+
+CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpCategory ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := IsInt ) ) ) ) ) ) );
+    
+end );
 
 #! @Description
 #!  The finite set of objects of the finitely presented category <A>C</A>.
