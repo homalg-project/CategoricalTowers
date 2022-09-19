@@ -96,6 +96,12 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATE
 DeclareAttribute( "AmbientCategory",
         IsProsetOrPosetOfCapCategory );
 
+CapJitAddTypeSignature( "AmbientCategory", [ IsProsetOrPosetOfCapCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  The cell in the ambient category underlying <A>cell</A>.
 #! @Arguments cell
