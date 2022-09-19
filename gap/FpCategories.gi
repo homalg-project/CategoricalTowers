@@ -1271,7 +1271,7 @@ InstallMethod( CapFunctor,
       function( obj )
         local i;
         
-        i := Position( vertices, UnderlyingVertex( obj ) );
+        i := SafePosition( vertices, UnderlyingVertex( obj ) );
         
         if IsInt( i ) then
             return images_of_objects[i];
@@ -1280,9 +1280,9 @@ InstallMethod( CapFunctor,
         Error( "vertex UnderlyingVertex( obj ) = ", UnderlyingVertex( obj ), " not found in the list ", vertices, " of vertices\n" );
         
     end );
-    
-    func_obj := o -> images_of_objects[ Position( vertices, o ) ];
-    func_mor := a -> images_of_generating_morphisms[ Position( arrows, a ) ];
+
+    func_obj := o -> images_of_objects[SafePosition( vertices, o )];
+    func_mor := a -> images_of_generating_morphisms[SafePosition( arrows, a )];
     
     if covariant then
         
@@ -1659,12 +1659,12 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
 end );
 
 ##
-InstallMethod( YonedaNaturalEpimorphisms,
+InstallMethodForCompilerForCAP( YonedaData,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     local A, H, objs, mors, o, m, D, precompose, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
-          N0, N1, N2, pt, mu, s;
+          B0, N0, N1, N2, pt, mu, s;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -1762,101 +1762,142 @@ InstallMethod( YonedaNaturalEpimorphisms,
     end;
     
     ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
-    N0 := CapFunctor( B, FinSet( H, o ) );
+    B0 := FinSet( H, o );
+    
+    N0 := Pair( ListWithIdenticalEntries( o, B0 ),
+                ListWithIdenticalEntries( m, IdentityMorphism( H, B0 ) ) );
     
     ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-    N1 := CapFunctor(
-                  B,
-                  List( [ 1 .. o ], c ->
-                        ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c):
-                        Coproduct( H, Hom2[c] ) ),
-                  List( mors, psi ->
-                        ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-                        CoproductFunctorial( H,
-                                List( objs, a ->
-                                      HomomorphismStructureOnMorphisms( B,
-                                              IdentityMorphism( B, a ), psi ) ) ) ),
-                  H );
+    N1 := Pair(
+               List( [ 1 .. o ], c ->
+                     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c):
+                     Coproduct( H, Hom2[c] ) ),
+               List( mors, psi ->
+                     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+                     CoproductFunctorial( H,
+                             List( objs, a ->
+                                   HomomorphismStructureOnMorphisms( B,
+                                           IdentityMorphism( B, a ), psi ) ) ) ) );
     
     ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
     ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
     ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
-    N2 := CapFunctor(
-                  B,
-                  List( [ 1 .. o ], c ->
-                        ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c):
-                        Coproduct( H,
-                                Concatenation( Hom3[c] ) ) ),
-                  List( mors, psi ->
-                        ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+    N2 := Pair(
+               List( [ 1 .. o ], c ->
+                     ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c):
+                     Coproduct( H,
+                             Concatenation( Hom3[c] ) ) ),
+               List( mors, psi ->
+                     ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+                     CoproductFunctorial( H,
+                             Concatenation(
+                                     List( objs, a ->
+                                           List( objs, b ->
+                                                 ## Hom(id_a, id_b) × Hom(id_b, ψ):
+                                                 DirectProductFunctorial( H,
+                                                         [ HomomorphismStructureOnMorphisms( B,
+                                                                 IdentityMorphism( B, a ), IdentityMorphism( B, b ) ),
+                                                           HomomorphismStructureOnMorphisms( B,
+                                                                   IdentityMorphism( B, b ), psi ) ] ) ) ) ) ) ) );
+    
+    ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+    pt := List( [ 1 .. o ], c ->
+                ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
+                PreCompose( H,
+                        ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c):
+                        iso2[c],
+                        ## ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
                         CoproductFunctorial( H,
-                                Concatenation(
-                                        List( objs, a ->
-                                              List( objs, b ->
-                                                    ## Hom(id_a, id_b) × Hom(id_b, ψ):
-                                                    DirectProductFunctorial( H,
-                                                            [ HomomorphismStructureOnMorphisms( B,
-                                                                    IdentityMorphism( B, a ), IdentityMorphism( B, b ) ),
-                                                              HomomorphismStructureOnMorphisms( B,
-                                                                      IdentityMorphism( B, b ), psi ) ] ) ) ) ) ) ),
-                  H );
+                                List( [ 1 .. o ], b ->
+                                      ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
+                                      UniversalMorphismFromCoproduct( H,
+                                              List( [ 1 .. o ], a -> Hom3[c][a,b] ),
+                                              Hom2[c][b],
+                                              List( [ 1 .. o ], a ->
+                                                    ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
+                                                    ProjectionInFactorOfDirectProduct( H,
+                                                            hom3[c][a, b], 2 ) ) ) ) ) ) );
+    
+    ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
+    mu := List( [ 1 .. o ], c ->
+                ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{a ∈ B} Hom(a, c):
+                CoproductFunctorial( H,
+                        List( [ 1 .. o ], a ->
+                              ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
+                              UniversalMorphismFromCoproduct( H,
+                                      List( [ 1 .. o ], b -> Hom3[c][a,b] ),
+                                      Hom2[c][a],
+                                      List( [ 1 .. o ], b ->
+                                            ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
+                                            precompose( a, b, c ) ) ) ) ) );
+    
+    ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
+    ## Hom(-, c) → B_0:
+    s := List( [ 1 .. o ], c ->
+               ## ⊔_{a ∈ B} Hom(a, c) → B_0, ϕ ↦ Source(ϕ)
+               CoproductFunctorial( H,
+                       List( [ 1 .. o ], a ->
+                             ## Hom(a, c) → {a}, ϕ ↦ a
+                             UniversalMorphismIntoTerminalObject( H,
+                                     Hom2[c, a] ) ) ) );
+    
+    return [ N0, N1, N2, pt, mu, s ];
+    
+end );
+
+##
+InstallMethod( YonedaNaturalEpimorphisms,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local H, YD, N0, N1, N2, pt, mu, s;
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    YD := YonedaData( B );
+    
+    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
+    N0 := CapFunctor( B, YD[1][1], YD[1][2], H );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    N1 := CapFunctor( B, YD[2][1], YD[2][2], H );
+    
+    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
+    ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+    N2 := CapFunctor( B, YD[3][1], YD[3][2], H );
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
     pt := NaturalTransformation(
-                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
-                  List( [ 1 .. o ], c ->
-                        ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
-                        PreCompose( H,
-                                ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) → ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c):
-                                iso2[c],
-                                ## ⊔_{b ∈ B} ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{b ∈ B} Hom(b, c):
-                                CoproductFunctorial( H,
-                                        List( [ 1 .. o ], b ->
-                                              ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
-                                              UniversalMorphismFromCoproduct( H,
-                                                      List( [ 1 .. o ], a -> Hom3[c][a,b] ),
-                                                      Hom2[c][b],
-                                                      List( [ 1 .. o ], a ->
-                                                            ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
-                                                            ProjectionInFactorOfDirectProduct( H,
-                                                                    hom3[c][a, b], 2 ) ) ) ) ) ) ),
+                  N2,   ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  YD[4],
                   N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsEpimorphism( pt, true );
     
     ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
     mu := NaturalTransformation(
                   N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
-                  List( [ 1 .. o ], c ->
-                        ## ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ ⊔_{a ∈ B} Hom(a, c):
-                        CoproductFunctorial( H,
-                                List( [ 1 .. o ], a ->
-                                      ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
-                                      UniversalMorphismFromCoproduct( H,
-                                              List( [ 1 .. o ], b -> Hom3[c][a,b] ),
-                                              Hom2[c][a],
-                                              List( [ 1 .. o ], b ->
-                                                    ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
-                                                    precompose( a, b, c ) ) ) ) ) ),
+                  YD[5],
                   N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsEpimorphism( mu, true );
     
     ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
     ## Hom(-, c) → B_0:
     s := NaturalTransformation(
                  N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
-                 List( [ 1 .. o ], c ->
-                       ## ⊔_{a ∈ B} Hom(a, c) → B_0, ϕ ↦ Source(ϕ)
-                       CoproductFunctorial( H,
-                               List( [ 1 .. o ], a ->
-                                     ## Hom(a, c) → {a}, ϕ ↦ a
-                                     UniversalMorphismIntoTerminalObject( H,
-                                             Hom2[c, a] ) ) ) ),
+                 YD[6],
                  N0 ); ## The constant functor of 0-cells
     
     return [ pt, mu, s ];
