@@ -74,12 +74,24 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY" );
 DeclareAttribute( "AmbientCategory",
         IsCapSliceCategory );
 
+CapJitAddTypeSignature( "AmbientCategory", [ IsCapSliceCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  The base object of the slice category <A>S</A>.
 #! @Arguments S
 #! @Returns a &CAP; object
 DeclareAttribute( "BaseObject",
         IsCapSliceCategory );
+
+CapJitAddTypeSignature( "BaseObject", [ IsCapSliceCategory ], function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
 
 #! @Description
 #!  The base object underlying <A>cell</A>.
