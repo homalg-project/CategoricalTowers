@@ -608,19 +608,6 @@ InstallMethod( ConstructibleProjection,
 end );
 
 ##
-InstallMethod( ConstructibleProjection,
-        "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
-        
-  function( A )
-    
-    A := AsMultipleDifference( A );
-    
-    return ConstructibleProjection( A );
-    
-end );
-
-##
 InstallMethod( ConstructibleImage,
         "for a homalg ring map",
         [ IsHomalgRingMap ],
