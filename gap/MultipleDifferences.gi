@@ -104,6 +104,8 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
     end );
     
+    HandlePrecompiledTowers( D, P, "MeetSemilatticeOfMultipleDifferences" );
+    
     Finalize( D );
     
     return D;

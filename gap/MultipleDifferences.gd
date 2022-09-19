@@ -49,6 +49,14 @@ DeclareAttribute( "EquivalenceToMeetSemilatticeOfDifferences",
 DeclareAttribute( "AsSingleDifference",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
+CapJitAddTypeSignature( "AsSingleDifference", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+    
+    Assert( 0, IsMeetSemilatticeOfMultipleDifferences( input_types[1].category ) );
+    
+    return CapJitDataTypeOfObjectOfCategory( UnderlyingCategoryOfSingleDifferences( input_types[1].category ) );
+    
+end );
+
 #! @Section Operations
 
 #! @Description
@@ -57,6 +65,15 @@ DeclareAttribute( "AsSingleDifference",
 #! @Returns a list of &CAP; morphism
 DeclareOperation( "ListOfObjectsOfDifferences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
+
+CapJitAddTypeSignature( "ListOfObjectsOfDifferences", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+    
+    Assert( 0, IsMeetSemilatticeOfMultipleDifferences( input_types[1].category ) );
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategoryOfSingleDifferences( input_types[1].category ) ) );
+    
+end );
 
 DeclareOperation( "ListOp",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
