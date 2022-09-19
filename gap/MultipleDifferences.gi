@@ -99,12 +99,12 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddDirectProduct( D,
       function( cat, L )
         
-        L := List( L, List );
-        
         ## an advantage of this specific data structure for formal multiple differences
-        return MultipleDifference( cat, Concatenation( L ) );
+        return MultipleDifference( cat, Concatenation( List( L, ListOfObjectsOfDifferences ) ) );
         
     end );
+    
+    HandlePrecompiledTowers( D, P, "MeetSemilatticeOfMultipleDifferences" );
     
     Finalize( D );
     
