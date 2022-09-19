@@ -1659,7 +1659,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
 end );
 
 ##
-InstallMethodForCompilerForCAP( YonedaData,
+InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
@@ -1850,67 +1850,37 @@ InstallMethodForCompilerForCAP( YonedaData,
 end );
 
 ##
-InstallMethod( YonedaNaturalEpimorphisms,
+InstallMethod( YonedaProjectionAsNaturalEpimorphism,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local H, YD, N0, N1, N2, pt, mu, s;
+    local Yepis, H, N1, N2, pt;
+    
+    Yepis := YonedaNaturalEpimorphisms( B );
     
     H := RangeCategoryOfHomomorphismStructure( B );
-    
-    YD := YonedaData( B );
-    
-    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
-    N0 := CapFunctor( B, YD[1][1], YD[1][2], H );
     
     ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
     ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
-    N1 := CapFunctor( B, YD[2][1], YD[2][2], H );
+    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], H );
     
     ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
     ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
     ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
-    N2 := CapFunctor( B, YD[3][1], YD[3][2], H );
+    N2 := CapFunctor( B, Yepis[3][1], Yepis[3][2], H );
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
     pt := NaturalTransformation(
                   N2,   ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
-                  YD[4],
+                  Yepis[4],
                   N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsEpimorphism( pt, true );
     
-    ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
-    ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
-    mu := NaturalTransformation(
-                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
-                  YD[5],
-                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetIsEpimorphism( mu, true );
-    
-    ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
-    ## Hom(-, c) → B_0:
-    s := NaturalTransformation(
-                 N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
-                 YD[6],
-                 N0 ); ## The constant functor of 0-cells
-    
-    return [ pt, mu, s ];
-    
-end );
-
-##
-InstallMethod( YonedaProjectionAsNaturalEpimorphism,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( B )
-    
-    return YonedaNaturalEpimorphisms( B )[1];
+    return pt;
     
 end );
 
@@ -1919,8 +1889,33 @@ InstallMethod( YonedaCompositionAsNaturalEpimorphism,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
+    local Yepis, H, N1, N2, mu;
     
-    return YonedaNaturalEpimorphisms( B )[2];
+    Yepis := YonedaNaturalEpimorphisms( B );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], H );
+    
+    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
+    ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+    N2 := CapFunctor( B, Yepis[3][1], Yepis[3][2], H );
+    
+    ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
+    mu := NaturalTransformation(
+                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  Yepis[5],
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsEpimorphism( mu, true );
+    
+    return mu;
     
 end );
 
@@ -1929,8 +1924,26 @@ InstallMethod( YonedaFibrationAsNaturalTransformation,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
+    local Yepis, H, N0, N1;
     
-    return YonedaNaturalEpimorphisms( B )[3];
+    Yepis := YonedaNaturalEpimorphisms( B );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
+    N0 := CapFunctor( B, Yepis[1][1], Yepis[1][2], H );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    N1 := CapFunctor( B, Yepis[2][1], Yepis[2][2], H );
+    
+    ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
+    ## Hom(-, c) → B_0:
+    return NaturalTransformation(
+                   N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+                   Yepis[6],
+                   N0 ); ## The constant functor of 0-cells
     
 end );
 
