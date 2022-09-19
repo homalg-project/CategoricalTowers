@@ -64,6 +64,17 @@ end
     , 100 );
     
     ##
+    AddDistinguishedObjectOfHomomorphismStructure( cat,
+        
+########
+function ( cat_1 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, 1 );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddHomomorphismStructureOnObjects( cat,
         
 ########

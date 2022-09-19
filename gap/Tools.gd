@@ -8,15 +8,6 @@
 
 #! @Section Tools for quivers
 
-#! @Description
-#!  Return a pair consisting of the number of vertices of the quiver <A>q</A>
-#!  and a list of pairs of integers encoding the arrows of <A>q</A>.
-#! @Arguments q
-#! @Returns a pair
-DeclareAttribute( "DefiningPairOfAQuiver",
-        IsQuiver );
-#! @InsertChunk DefiningPairOfAQuiver
-
 ##
 DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
         IsFunctorCategory );
