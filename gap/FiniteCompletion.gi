@@ -31,15 +31,6 @@ InstallMethodWithCache( FiniteCompletion,
     
     SetUnderlyingCategory( finite_completion, fp_category );
     
-    finite_completion!.compiler_hints :=
-      rec( category_filter := IsFiniteCompletion,
-           object_filter := IsObjectInFiniteCompletion,
-           morphism_filter := IsMorphismInFiniteCompletion,
-           category_attribute_names :=
-           [ "ModelingCategory",
-             ],
-           );
-    
     return finite_completion;
     
 end );

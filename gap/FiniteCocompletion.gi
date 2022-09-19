@@ -26,15 +26,6 @@ InstallMethodWithCache( FiniteCocompletion,
     
     SetUnderlyingCategory( finite_cocompletion, fp_category );
     
-    finite_cocompletion!.compiler_hints :=
-      rec( category_filter := IsFiniteCocompletion,
-           object_filter := IsObjectInFiniteCocompletion,
-           morphism_filter := IsMorphismInFiniteCocompletion,
-           category_attribute_names :=
-           [ "ModelingCategory",
-             ],
-           );
-    
     return finite_cocompletion;
     
 end );

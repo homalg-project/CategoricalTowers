@@ -149,17 +149,12 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     SetSetOfGeneratingMorphisms( Quivers, SetOfGeneratingMorphisms( F_op ) );
     SetDefiningPairOfUnderlyingQuiver( Quivers, DefiningPairOfAQuiver( UnderlyingQuiver( F_op ) ) );
     
-    Quivers!.compiler_hints :=
-      rec( category_filter := IsCategoryOfQuivers,
-           object_filter := IsObjectInCategoryOfQuivers,
-           morphism_filter := IsMorphismInCategoryOfQuivers,
-           category_attribute_names :=
+    Quivers!.compiler_hints.category_attribute_names :=
            [ "ModelingCategory",
              "SetOfObjects",
              "SetOfGeneratingMorphisms",
              "DefiningPairOfUnderlyingQuiver",
-            ],
-           );
+            ];
     
     if ValueOption( "no_precompiled_code" ) <> true then
         ADD_FUNCTIONS_FOR_FinQuiversPrecompiled( Quivers );

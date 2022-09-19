@@ -1,8 +1,8 @@
-# @Chapter Precompilation
+#! @Chapter Precompilation
 
-# @Section Precompiling the category of finite quivers
+#! @Section Precompiling the category of finite quivers
 
-# @Example
+#! @Example
 
 LoadPackage( "FunctorCategories", false );
 #! true
@@ -57,4 +57,4 @@ argument_name := NamesLocalVariablesFunction(
     (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");
 #! true
 
-# @EndExample
+#! @EndExample
