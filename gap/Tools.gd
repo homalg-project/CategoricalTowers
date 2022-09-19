@@ -23,7 +23,6 @@ DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
 
 CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsFunctorCategory ],
   function ( input_types )
-    Error( );
     
     Assert( 0, IsFunctorCategory( input_types[1].category ) );
     

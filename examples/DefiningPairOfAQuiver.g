@@ -1,6 +1,6 @@
 #! @BeginChunk DefiningPairOfAQuiver
 
-LoadPackage( "Algebroids" );
+LoadPackage( "FunctorCategories" );
 
 #! @Example
 q := RightQuiver( "q(5)[a:1->1,s:1->2,t:1->2,m:4->1]" );
