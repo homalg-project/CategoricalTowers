@@ -9,6 +9,8 @@ InstallValue( PREORDERED_SET_METHOD_NAME_RECORD,
             UniqueMorphism := rec(
                                      filter_list := [ "category", "object", "object" ],
                                      return_type := "morphism",
+                                     dual_operation := "UniqueMorphism",
+                                     dual_arguments_reversed := true,
                                      compatible_with_congruence_of_morphisms := true,
                                     ),
             
