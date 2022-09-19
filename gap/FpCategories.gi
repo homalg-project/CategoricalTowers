@@ -626,12 +626,15 @@ InstallMethodWithCache( Category,
     
     C!.relations := relations;
     
+    SetDefiningPairOfUnderlyingQuiver( C, DefiningPairOfAQuiver( quiver ) );
+    
     C!.compiler_hints :=
       rec( category_attribute_names :=
            [ "SetOfObjects",
              "SetOfGeneratingMorphisms",
              "BasisPathsByVertexIndex",
              "HomStructureOnBasisPaths",
+             "DefiningPairOfUnderlyingQuiver",
              ],
            category_filter := IsFpCategory,
            object_filter := IsObjectInFpCategory,
