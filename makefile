@@ -31,6 +31,10 @@ test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
+test-with-coverage-without-precompiled-code: doc
+	gap --quitonbreak --cover stats_no_precompiled_code tst/testall_no_precompiled_code.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_no_precompiled_code", "coverage_no_precompiled_code.json");'
+
 test-spacing:
 	grep -R "[^ [\"]  " gap/*.gi && echo "Duplicate spaces found" && exit 1 || exit 0
 	grep -RE '[^ ] +$$' gap/* && echo "Trailing whitespace found" && exit 1 || exit 0
@@ -54,4 +58,4 @@ test-spacing:
 	rm spacing_diff
 	rm spacing_diff_no_blanks
 
-ci-test: test-basic-spacing test-with-coverage
+ci-test: test-basic-spacing test-with-coverage test-with-coverage-without-precompiled-code
