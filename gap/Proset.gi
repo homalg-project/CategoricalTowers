@@ -16,6 +16,7 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
     AddUniqueMorphism( preordered_set,
       function( cat, A, B )
         
+        #% CAP_JIT_DROP_NEXT_STATEMENT
         if not IsIdenticalObj( cat, CapCategory( A ) ) then
             Error( "the first object belong to different category\n" );
         elif not IsIdenticalObj( cat, CapCategory( B ) ) then
