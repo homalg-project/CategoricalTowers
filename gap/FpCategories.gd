@@ -318,8 +318,6 @@ DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
         IsFpCategory );
 #! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
-DeclareAttribute( "YonedaData", IsFpCategory );
-
 DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
 
 #! @Description
