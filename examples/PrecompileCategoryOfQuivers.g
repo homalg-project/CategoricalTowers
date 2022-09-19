@@ -33,6 +33,7 @@ CapJitPrecompileCategoryAndCompareResult(
                      #"UniversalMorphismFromCoproductWithGivenCoproduct",
                      #"CoproductOnMorphismsWithGivenCoproducts", # <- derived and leads to an error
                      #"CoproductFunctorialWithGivenCoproducts", # <- derived
+                     "DistinguishedObjectOfHomomorphismStructure",
                      "HomomorphismStructureOnObjects",
                      #"HomomorphismStructureOnMorphismsWithGivenObjects",
                      "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
