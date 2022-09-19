@@ -1951,15 +1951,14 @@ InstallMethod( YonedaFibrationAsNaturalTransformation,
 end );
 
 ##
-InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
+InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, D, Omega, Ymu, Ypt, sieves, actions, psi,
-          Sieves, Sieves_emb, Sieves_maximal, c, Sieves_objects, Sieves_morphisms, Sieves_functor,
-          HomHomOmega_objects, HomHomOmega_morphisms, HomHomOmega_functor;
-    
-    Bop := OppositeFpCategory( B );
+    local Bop, H, D, Omega, Yepis, Ymu, Ypt, sieves, arrows, lobjs, lmors, id, N1,
+          Sieves, Sieves_emb, Sieves_maximal,
+          HomHomOmega_objects, HomHomOmega_morphisms, Sieves_objects, Sieves_morphisms,
+          Constant_functor, Sieves_functor, HomHomOmega_functor;
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1967,18 +1966,20 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     
     Omega := SubobjectClassifier( H );
     
-    Ypt := YonedaProjectionAsNaturalEpimorphism( B );
-    Ymu := YonedaCompositionAsNaturalEpimorphism( B );
+    Yepis := YonedaNaturalEpimorphisms( B );
+    
+    Ypt := Yepis[4]; # YonedaProjectionAsNaturalEpimorphism( B );
+    Ymu := Yepis[5]; # YonedaCompositionAsNaturalEpimorphism( B );
     
     sieves :=
       function ( c )
         local pt_c, mu_c, hom_c, power, action, maximal, emb;
         
         ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
-        pt_c := Ypt( c );
+        pt_c := Ypt[c];
         
         ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c)
-        mu_c := Ymu( c );
+        mu_c := Ymu[c];
         
         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
         hom_c := Range( mu_c );
@@ -2035,70 +2036,42 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         
     end;
     
-    actions := rec( );
+    arrows := DefiningPairOfUnderlyingQuiver( B )[2];
     
-    for psi in SetOfGeneratingMorphisms( B ) do
-        actions.(StringView( psi )) := HomomorphismStructureOnMorphisms( H, Range( Ypt )( psi ), IdentityMorphism( H, Omega ) );
-    od;
+    lobjs := Length( SetOfObjects( B ) );
+    lmors := Length( SetOfGeneratingMorphisms( B ) );
     
-    Sieves := rec( );
-    Sieves_emb := rec( );
-    Sieves_maximal := rec( );
+    id := IdentityMorphism( H, Omega );
     
-    for c in SetOfObjects( B ) do
-        Sieves.(String( UnderlyingVertex( c ) )) := sieves( c );
-        Sieves_emb.(String( UnderlyingVertex( c ) )) := Sieves.(String( UnderlyingVertex( c ) ))[1];
-        Sieves_maximal.(String( UnderlyingVertex( c ) )) := Sieves.(String( UnderlyingVertex( c ) ))[2];
-    od;
+    N1 := Yepis[2]; # Range( Ypt );
     
-    Sieves_objects :=
-      List( SetOfObjects( B ),
-            c -> Source( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
-    
-    Sieves_morphisms :=
-      List( SetOfGeneratingMorphisms( B ), psi ->
-            LiftAlongMonomorphism( H,
-                    Sieves_emb.(String( UnderlyingVertex( Source( psi ) ) )),
-                    PreCompose( H,
-                            Sieves_emb.(String( UnderlyingVertex( Range( psi ) ) )),
-                            actions.(StringView( psi )) ) ) );
-    
-    Sieves_functor := CapFunctor( Bop, Sieves_objects, Sieves_morphisms, H );
+    Sieves := List( [ 1 .. lobjs ], o -> sieves( o ) );
+    Sieves_emb := List( Sieves, s -> s[1] );
+    Sieves_maximal := List( Sieves, s -> s[2] );
     
     ## Hom(Hom(-, c), Ω)
-    HomHomOmega_objects :=
-      List( SetOfObjects( B ), c ->
-            Range( Sieves_emb.(String( UnderlyingVertex( c ) )) ) );
+    HomHomOmega_objects := List( Sieves_emb, Range );
+    HomHomOmega_morphisms := List( [ 1 .. lmors ], m ->
+                                   HomomorphismStructureOnMorphisms( H,
+                                           N1[2][m], # N1( m )
+                                           id ) );
     
-    HomHomOmega_morphisms :=
-      List( SetOfGeneratingMorphisms( B ), psi ->
-            actions.(StringView( psi )) );
+    Sieves_objects := List( Sieves_emb, Source );
+    Sieves_morphisms := List( [ 1 .. lmors ], m ->
+                              LiftAlongMonomorphism( H,
+                                      Sieves_emb[arrows[m][1]], # Source( m )
+                                      PreCompose( H,
+                                              Sieves_emb[arrows[m][2]], # Range( m )
+                                              HomHomOmega_morphisms[m] ) ) );
     
-    HomHomOmega_functor := CapFunctor( Bop, HomHomOmega_objects, HomHomOmega_morphisms, H );
-    
-    return [ ## T → Sieves, c ↦ ( T(c) = {*} → Sieves(c), * ↦ maximal_sieve(c) := Hom(-, c) )
-             NaturalTransformation(
-                   Sieves_maximal,
-                   CapFunctor( Bop,
-                           ListWithIdenticalEntries( Length( SetOfObjects( B ) ), D ),
-                           ListWithIdenticalEntries( Length( SetOfGeneratingMorphisms( B ) ), IdentityMorphism( D ) ),
-                           H ),
-                   Sieves_functor ),
-             ## Sieves → Hom(Hom(-, c), Ω), c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω), s ↦ s )
-             NaturalTransformation(
-                     Sieves_emb,
-                     Sieves_functor,
-                     HomHomOmega_functor ) ];
-    
-end );
-
-##
-InstallMethod( TruthMorphismOfTrueToSieveFunctor,
-        [ IsFpCategory ],
-        
-  function ( B )
-    
-    return TruthMorphismOfTrueToSieveFunctorAndEmbedding( B )[1];
+    return [ Pair( Sieves_objects,
+                   Sieves_morphisms ),
+             Pair( ListWithIdenticalEntries( lobjs, D ),
+                   ListWithIdenticalEntries( lmors, IdentityMorphism( H, D ) ) ),
+             Pair( HomHomOmega_objects,
+                   HomHomOmega_morphisms ),
+             Sieves_maximal,
+             Sieves_emb  ];
     
 end );
 
@@ -2107,8 +2080,40 @@ InstallMethod( SieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
+    local Bop, H, Sieves;
     
-    return Range( TruthMorphismOfTrueToSieveFunctor( B ) );
+    Bop := OppositeFpCategory( B );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
+    
+    return CapFunctor( Bop, Sieves[1][1], Sieves[1][2], H );
+    
+end );
+
+##
+InstallMethod( TruthMorphismOfTrueToSieveFunctor,
+        [ IsFpCategory ],
+        
+  function ( B )
+    local Bop, H, Sieves, Constant_functor, Sieves_maximal, Sieves_functor;
+    
+    Bop := OppositeFpCategory( B );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
+    
+    Constant_functor := CapFunctor( Bop, Sieves[2][1], Sieves[2][2], H );
+    Sieves_maximal := Sieves[4];
+    Sieves_functor := SieveFunctor( B );
+    
+    ## T → Sieves, c ↦ ( T(c) = {*} → Sieves(c), * ↦ maximal_sieve(c) := Hom(-, c) )
+    return NaturalTransformation(
+                   Constant_functor,
+                   Sieves_maximal,
+                   Sieves_functor );
     
 end );
 
@@ -2117,8 +2122,23 @@ InstallMethod( EmbeddingOfSieveFunctor,
         [ IsFpCategory ],
         
   function ( B )
+    local Bop, H, Sieves, Sieves_functor, Sieves_emb, HomHomOmega_functor;
     
-    return TruthMorphismOfTrueToSieveFunctorAndEmbedding( B )[2];
+    Bop := OppositeFpCategory( B );
+    
+    H := RangeCategoryOfHomomorphismStructure( B );
+    
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
+    
+    Sieves_functor := SieveFunctor( B );
+    Sieves_emb := Sieves[5];
+    HomHomOmega_functor := CapFunctor( Bop, Sieves[3][1], Sieves[3][2], H );
+    
+    ## Sieves → Hom(Hom(-, c), Ω), c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω), s ↦ s )
+    return NaturalTransformation(
+                   Sieves_functor,
+                   Sieves_emb,
+                   HomHomOmega_functor );
     
 end );
 
