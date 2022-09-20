@@ -302,3 +302,11 @@ CapJitAddLogicTemplate(
         dst_template := "constant",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry", "index" ],
+        src_template := "[ entry, entry ][index]",
+        dst_template := "entry",
+    )
+);
