@@ -628,19 +628,6 @@ InstallMethodWithCache( Category,
     
     SetDefiningPairOfUnderlyingQuiver( C, DefiningPairOfAQuiver( quiver ) );
     
-    C!.compiler_hints :=
-      rec( category_attribute_names :=
-           [ "SetOfObjects",
-             "SetOfGeneratingMorphisms",
-             "BasisPathsByVertexIndex",
-             "HomStructureOnBasisPaths",
-             "DefiningPairOfUnderlyingQuiver",
-             ],
-           category_filter := IsFpCategory,
-           object_filter := IsObjectInFpCategory,
-           morphism_filter := IsMorphismInFpCategory,
-           );
-    
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
@@ -670,6 +657,20 @@ InstallMethodWithCache( Category,
         SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
         
     fi;
+    
+    C!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "SetOfObjects",
+             "SetOfGeneratingMorphisms",
+             "UnderlyingQuiverAlgebra",
+             "BasisPathsByVertexIndex",
+             "HomStructureOnBasisPaths",
+             "DefiningPairOfUnderlyingQuiver",
+             ],
+           category_filter := IsFpCategory,
+           object_filter := IsObjectInFpCategory,
+           morphism_filter := IsMorphismInFpCategory,
+           );
     
     return ADD_FUNCTIONS_FOR_FP_CATEGORY( C );
     
@@ -1848,7 +1849,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                              UniversalMorphismIntoTerminalObject( H,
                                      Hom2[c, a] ) ) ) );
     
-    return [ N0, N1, N2, pt, mu, s ];
+    return NTuple( 6, N0, N1, N2, pt, mu, s );
     
 end );
 
@@ -2032,7 +2033,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                                            ## id: Hom(-, c) → Hom(-, c)
                                            IdentityMorphism( H, hom_c ) ) ) );
         
-        return [ emb, maximal ];
+        return Pair( emb, maximal );
         
     end;
     
@@ -2064,14 +2065,15 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
                                               Sieves_emb[arrows[m][2]], # Range( m )
                                               HomHomOmega_morphisms[m] ) ) );
     
-    return [ Pair( Sieves_objects,
-                   Sieves_morphisms ),
-             Pair( ListWithIdenticalEntries( lobjs, D ),
-                   ListWithIdenticalEntries( lmors, IdentityMorphism( H, D ) ) ),
-             Pair( HomHomOmega_objects,
-                   HomHomOmega_morphisms ),
-             Sieves_maximal,
-             Sieves_emb  ];
+    return NTuple( 5,
+                   Pair( Sieves_objects,
+                         Sieves_morphisms ),
+                   Pair( ListWithIdenticalEntries( lobjs, D ),
+                         ListWithIdenticalEntries( lmors, IdentityMorphism( H, D ) ) ),
+                   Pair( HomHomOmega_objects,
+                         HomHomOmega_morphisms ),
+                   Sieves_maximal,
+                   Sieves_emb  );
     
 end );
 
