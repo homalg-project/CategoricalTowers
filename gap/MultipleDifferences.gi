@@ -52,8 +52,8 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         S := UnderlyingCategoryOfSingleDifferences( cat );
         
-        return ForAll( ListOfObjectsOfDifferences( A ), IsObjectInMeetSemilatticeOfSingleDifferences ) and
-               ForAll( ListOfObjectsOfDifferences( A ), d -> IsWellDefinedForObjects( S, d ) );
+        return ForAll( ListOfSingleDifferences( A ), IsObjectInMeetSemilatticeOfSingleDifferences ) and
+               ForAll( ListOfSingleDifferences( A ), d -> IsWellDefinedForObjects( S, d ) );
         
     end );
     
@@ -80,7 +80,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     AddIsHomSetInhabited( D,
       function( cat, A, B )
         
-        return IsInitial( cat, A - B.I ) and ForAll( ListOfObjectsOfDifferences( B ), d -> IsInitial( cat, A * d.J ) );
+        return IsInitial( cat, A - B.I ) and ForAll( ListOfSingleDifferences( B ), d -> IsInitial( cat, A * d.J ) );
         
     end );
     
@@ -100,7 +100,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
       function( cat, L )
         
         ## an advantage of this specific data structure for formal multiple differences
-        return MultipleDifference( cat, Concatenation( List( L, ListOfObjectsOfDifferences ) ) );
+        return MultipleDifference( cat, Concatenation( List( L, ListOfSingleDifferences ) ) );
         
     end );
     
@@ -317,28 +317,28 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
 end );
 
 ##
-InstallMethod( ListOfObjectsOfDifferences,
+InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfDifferences,
+InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfDifferences,
+InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
         
   ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsOfDifferences,
+InstallMethod( ListOfSingleDifferences,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
@@ -615,7 +615,7 @@ InstallMethod( ListOp,
         "for an object in a meet-semilattice of formal multiple differences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
-   ListOfObjectsOfDifferences );
+   ListOfSingleDifferences );
 
 ##
 InstallMethod( ListOp,

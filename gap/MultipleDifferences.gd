@@ -63,10 +63,10 @@ end );
 #!  A list of formal single differences in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
-DeclareOperation( "ListOfObjectsOfDifferences",
+DeclareOperation( "ListOfSingleDifferences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 
-CapJitAddTypeSignature( "ListOfObjectsOfDifferences", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+CapJitAddTypeSignature( "ListOfSingleDifferences", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
     
     Assert( 0, IsMeetSemilatticeOfMultipleDifferences( input_types[1].category ) );
     
