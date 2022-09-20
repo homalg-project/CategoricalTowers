@@ -41,18 +41,18 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     ##
     AddObjectConstructor( D,
-      function( D, AB )
+      function( D, A_B )
         local C;
         
         C := CreateCapCategoryObjectWithAttributes( D,
-                     PrePairInUnderlyingLattice, AB,
+                     PrePairInUnderlyingLattice, A_B,
                      IsLocallyClosed, true );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 4, IsWellDefinedForObjects( C ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        if HasIsInitial( AB[1] ) and IsInitial( AB[1] ) then
+        if HasIsInitial( A_B[1] ) and IsInitial( A_B[1] ) then
             SetIsInitial( C, true );
         fi;
         
