@@ -628,19 +628,6 @@ InstallMethodWithCache( Category,
     
     SetDefiningPairOfUnderlyingQuiver( C, DefiningPairOfAQuiver( quiver ) );
     
-    C!.compiler_hints :=
-      rec( category_attribute_names :=
-           [ "SetOfObjects",
-             "SetOfGeneratingMorphisms",
-             "BasisPathsByVertexIndex",
-             "HomStructureOnBasisPaths",
-             "DefiningPairOfUnderlyingQuiver",
-             ],
-           category_filter := IsFpCategory,
-           object_filter := IsObjectInFpCategory,
-           morphism_filter := IsMorphismInFpCategory,
-           );
-    
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
@@ -670,6 +657,19 @@ InstallMethodWithCache( Category,
         SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
         
     fi;
+    
+    C!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "SetOfObjects",
+             "SetOfGeneratingMorphisms",
+             "BasisPathsByVertexIndex",
+             "HomStructureOnBasisPaths",
+             "DefiningPairOfUnderlyingQuiver",
+             ],
+           category_filter := IsFpCategory,
+           object_filter := IsObjectInFpCategory,
+           morphism_filter := IsMorphismInFpCategory,
+           );
     
     return ADD_FUNCTIONS_FOR_FP_CATEGORY( C );
     
