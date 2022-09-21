@@ -48,9 +48,6 @@ end );
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
-DeclareAttribute( "ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
-
 DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 

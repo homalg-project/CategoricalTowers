@@ -79,8 +79,28 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     ##
     AddIsHomSetInhabited( D,
       function( cat, A, B )
+        local B1, BI, S, H, mBI;
         
-        return IsInitial( cat, A - B.I ) and ForAll( ListOfSingleDifferences( B ), d -> IsInitial( cat, A * d.J ) );
+        B1 := ListOfSingleDifferences( B )[1];
+        
+        ## the minuend B.I of B
+        BI := PairInUnderlyingLattice( B1 )[1];
+        
+        ## the meet semi-lattice of single differences
+        S := UnderlyingCategoryOfSingleDifferences( cat );
+        
+        H := UnderlyingCategory( cat );
+        
+        ## the complement -B.I of the minuend B.I of B as a multiple difference
+        mBI := MultipleDifference( cat, [ SingleDifference( S, Pair( TerminalObject( H ), BI ) ) ] );
+        
+        return IsInitial( cat, DirectProduct( cat, [ A, mBI ] ) ) and ## A - B.I
+               ForAll( ListOfSingleDifferences( B ), s ->
+                       IsInitial( cat,
+                               DirectProduct( cat,  # A * s.J
+                                       [ A,
+                                         MultipleDifference( cat, [ SingleDifference( S, Pair( PairInUnderlyingLattice( s )[2], InitialObject( H ) ) ) ] ) # s.J - ∅
+                                         ] ) ) );
         
     end );
     
@@ -98,9 +118,37 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     ##
     AddDirectProduct( D,
       function( cat, L )
+        local H, l, SD, A, A_N;
         
-        ## an advantage of this specific data structure for formal multiple differences
-        return MultipleDifference( cat, Concatenation( List( L, ListOfSingleDifferences ) ) );
+        H := UnderlyingCategory( cat );
+        
+        l := List( L, ListOfSingleDifferences );
+        
+        ## start unifying the minuend
+        A := DirectProduct( H, List( l, ls -> PairInUnderlyingLattice( ls[1] )[1] ) );
+        
+        ## the meet semi-lattice of single differences
+        SD := UnderlyingCategoryOfSingleDifferences( cat );
+        
+        ## make all single differences have the same minuend
+        A_N := List( Concatenation( l ),
+          function( s )
+            local S;
+            
+            S := SingleDifference( SD, Pair( A, PairInUnderlyingLattice( s )[2] ) ); # A - s.J
+            
+            #% CAP_JIT_DROP_NEXT_STATEMENT
+            if HasNormalizedDistinguishedSubtrahend( s ) then
+                SetNormalizedDistinguishedSubtrahend( S, NormalizedDistinguishedSubtrahend( s ) );
+            elif HasPreDistinguishedSubtrahend( s ) then
+                SetPreDistinguishedSubtrahend( S, PreDistinguishedSubtrahend( s ) );
+            fi;
+            
+            return S;
+            
+        end );
+        
+        return MultipleDifference( cat, A_N );
         
     end );
     
@@ -133,26 +181,23 @@ end );
 ##
 InstallGlobalFunction( AsMultipleDifference,
   function( arg )
-    local H, D, A;
+    local S, D, A_N;
     
-    H := CapCategory( arg[1] );
+    S := CapCategory( arg[1] );
     
     if not ForAll( arg, IsObjectInMeetSemilatticeOfSingleDifferences ) then
         Error( "not all arguments are formal single differences\n" );
-    elif not ForAll( arg{[ 2.. Length( arg ) ]},
-            d -> IsIdenticalObj( CapCategory( d ), H ) ) then
+    elif not ForAll( arg{[ 2.. Length( arg ) ]}, d -> IsIdenticalObj( CapCategory( d ), S ) ) then
         Error( "not all arguments lie in the same category\n" );
     fi;
     
-    H := CapCategory( PairInUnderlyingLattice( arg[1] )[1] );
+    D := MeetSemilatticeOfMultipleDifferences( UnderlyingCategory( S ) );
     
-    D := MeetSemilatticeOfMultipleDifferences( H );
+    A_N := DirectProduct( D, List( arg, s -> MultipleDifference( D, [ s ] ) ) );
     
-    A := MultipleDifference( D, arg );
+    Assert( 4, IsWellDefined( A_N ) );
     
-    Assert( 4, IsWellDefined( A ) );
-    
-    return A;
+    return A_N;
     
 end );
 
@@ -211,50 +256,6 @@ end );
 #    return AsMultipleDifference( A ) - B;
 #    
 #end );
-
-##
-InstallMethod( ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
-        
-  function( A )
-    local T, pos;
-    
-    T := DirectProduct( List( A, a -> a.I ) );
-    
-    A := List( A,
-      function( d )
-        local D;
-        
-        D := T - d.J;
-        
-        if HasNormalizedDistinguishedSubtrahend( d ) then
-            SetNormalizedDistinguishedSubtrahend( D, NormalizedDistinguishedSubtrahend( d ) );
-        elif HasPreDistinguishedSubtrahend( d ) then
-            SetPreDistinguishedSubtrahend( D, PreDistinguishedSubtrahend( d ) );
-        fi;
-        
-        return D;
-        
-    end );
-    
-    return A;
-    
-end );
-
-##
-InstallMethod( ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
-        
-  ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
-
-##
-InstallMethod( ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
-        
-  ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
@@ -322,13 +323,6 @@ InstallMethod( ListOfSingleDifferences,
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ],
         
   ListOfPreObjectsInMeetSemilatticeOfDifferences );
-
-##
-InstallMethod( ListOfSingleDifferences,
-        "for an object in a meet-semilattice of formal multiple differences",
-        [ IsObjectInMeetSemilatticeOfMultipleDifferences and HasListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences ],
-        
-  ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOfSingleDifferences,
@@ -679,8 +673,6 @@ InstallMethod( \.,
     name := NameRNam( string_as_int );
     
     if name[1] = 'I' then
-        ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences( A );
-        List( A );
         return A[1].I;
     elif name[1] = 'J' then
         return A[EvalString( name{[ 2 .. Length( name ) ]} )].J;
