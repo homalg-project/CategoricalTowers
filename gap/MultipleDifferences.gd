@@ -39,6 +39,12 @@ end );
 DeclareAttribute( "UnderlyingCategoryOfSingleDifferences",
         IsMeetSemilatticeOfMultipleDifferences );
 
+CapJitAddTypeSignature( "UnderlyingCategoryOfSingleDifferences", [ IsMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategoryOfSingleDifferences( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
