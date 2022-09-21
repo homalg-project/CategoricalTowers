@@ -115,28 +115,27 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
-    deduped_9_1 := AmbientCategory( cat_1 );
-    deduped_8_1 := UnderlyingRing( deduped_9_1 );
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := AmbientCategory( cat_1 );
+    deduped_9_1 := objects_1[k_1];
+    deduped_8_1 := UnderlyingRing( deduped_10_1 );
     deduped_7_1 := List( objects_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
         end );
     deduped_6_1 := deduped_7_1[k_1];
-    hoisted_5_1 := deduped_8_1;
-    hoisted_4_1 := deduped_6_1;
-    hoisted_3_1 := deduped_7_1;
-    hoisted_2_1 := HomalgIdentityMatrix( deduped_6_1, deduped_8_1 );
-    morphism_attr_1_1 := UnionOfColumns( deduped_8_1, deduped_6_1, List( [ 1 .. Length( objects_1 ) ], function ( logic_new_func_x_2 )
+    hoisted_4_1 := deduped_8_1;
+    hoisted_3_1 := deduped_6_1;
+    hoisted_2_1 := deduped_7_1;
+    hoisted_1_1 := HomalgIdentityMatrix( deduped_6_1, deduped_8_1 );
+    deduped_5_1 := UnionOfColumns( deduped_8_1, deduped_6_1, List( [ 1 .. Length( objects_1 ) ], function ( logic_new_func_x_2 )
                 if (logic_new_func_x_2 = k_1) then
-                    return hoisted_2_1;
+                    return hoisted_1_1;
                 else
-                    return HomalgZeroMatrix( hoisted_4_1, hoisted_3_1[logic_new_func_x_2], hoisted_5_1 );
+                    return HomalgZeroMatrix( hoisted_3_1, hoisted_2_1[logic_new_func_x_2], hoisted_4_1 );
                 fi;
                 return;
             end ) ) * HomalgIdentityMatrix( Sum( deduped_7_1 ), deduped_8_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, objects_1[k_1], P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_9_1, List( objects_1, function ( Li_2 )
-                  return Source( UnderlyingMorphism( Li_2 ) );
-              end )[k_1], CreateCapCategoryObjectWithAttributes( deduped_9_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_9_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_10_1, Source( UnderlyingMorphism( deduped_9_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_10_1, RankOfObject, NumberColumns( deduped_5_1 ) ), UnderlyingMatrix, deduped_5_1 ) );
 end
 ########
         
