@@ -12,7 +12,6 @@ InfoOfInstalledOperationsOfCategory( T );
 #! which constructively
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
-#! * IsCodistributiveCategory
 #! * IsBicartesianClosedCategory
 #! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
