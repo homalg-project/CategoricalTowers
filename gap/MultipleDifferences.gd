@@ -27,6 +27,15 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfMultipleDifferences",
 
 #! @Section Attributes
 
+DeclareAttribute( "UnderlyingCategory",
+        IsMeetSemilatticeOfMultipleDifferences );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "UnderlyingCategoryOfSingleDifferences",
         IsMeetSemilatticeOfMultipleDifferences );
 

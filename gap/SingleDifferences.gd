@@ -27,6 +27,15 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfSingleDifferences",
 
 #! @Section Attributes
 
+DeclareAttribute( "UnderlyingCategory",
+        IsMeetSemilatticeOfSingleDifferences );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsMeetSemilatticeOfSingleDifferences ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "PreDistinguishedSubtrahend",
         IsObjectInMeetSemilatticeOfSingleDifferences );
 
