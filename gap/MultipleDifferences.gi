@@ -71,8 +71,17 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     ##
     AddIsInitial( D,
       function( cat, A )
+        local L, AI, AJ, S;
         
-        return IsInitial( UnderlyingCategoryOfSingleDifferences( cat ), AsSingleDifference( A ) );
+        L := ListOfSingleDifferences( A );
+        
+        AI := PairInUnderlyingLattice( L[1] )[1];
+        
+        AJ := Coproduct( UnderlyingCategory( cat ), List( L, d -> PairInUnderlyingLattice( d )[2] ) );
+        
+        S := UnderlyingCategoryOfSingleDifferences( cat );
+        
+        return IsInitial( S, SingleDifference( S, Pair( AI, AJ ) ) );
         
     end );
     
