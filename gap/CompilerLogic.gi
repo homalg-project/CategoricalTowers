@@ -231,33 +231,8 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "end_pos", "func", "index" ],
-        src_template := "List( [ 1 .. end_pos ], func )[index]",
-        dst_template := "func( index )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "end_pos", "func", "index" ],
         src_template := "LazyHList( [ 1 .. end_pos ], func )[index]",
         dst_template := "func( index )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "entry1", "entry2", "func", "index" ],
-#        variable_filters := [ IsObject, IsObject, IsFunction, IsInt ],
-        src_template := "func( [ entry1, entry2 ][index] )",
-        dst_template := "List( [ entry1, entry2 ], func )[index]",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list1", "list2", "func", "index" ],
-        src_template := "func( Concatenation( list1, list2 )[index] )",
-        dst_template := "List( Concatenation( list1, list2 ), func )[index]",
     )
 );
 
