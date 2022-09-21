@@ -9,16 +9,27 @@
 #! @Section Properties
 
 #! @Description
+#!  The property of <A>C</A> being a Heyting algebroid.
+#! @Arguments C
+AddCategoricalProperty( [ "IsHeytingAlgebroid", "IsCoHeytingAlgebroid" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid :=
+  DuplicateFreeList( Concatenation( [
+          "NegationOnObjects",
+          "NegationOnMorphismsWithGivenNegations"
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory ) );
+
+#! @Description
 #!  The property of <A>C</A> being a Heyting algebra.
 #! @Arguments C
 AddCategoricalProperty( [ "IsHeytingAlgebra", "IsCoHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebra :=
-  DuplicateFreeList( Concatenation( [
-          "NegationOnObjects",
-          "NegationOnMorphismsWithGivenNegations" ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory ) );
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
 
 #! @Section Operations
 

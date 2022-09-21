@@ -4,9 +4,17 @@
 # Implementations
 #
 
-InstallTrueMethod( IsCoHeytingAlgebra, IsLattice and IsCocartesianCoclosedCategory );
-InstallTrueMethod( IsDistributiveLattice, IsCoHeytingAlgebra );
-InstallTrueMethod( IsCocartesianCoclosedCategory, IsCoHeytingAlgebra );
+## thin
+
+InstallTrueMethod( IsCoHeytingAlgebroid, IsBicartesianProset and IsCocartesianCoclosedCategory );
+InstallTrueMethod( IsBicartesianProset, IsCoHeytingAlgebroid );
+InstallTrueMethod( IsCocartesianCoclosedCategory, IsCoHeytingAlgebroid );
+
+## thin & skeletal
+
+InstallTrueMethod( IsCoHeytingAlgebra, IsCoHeytingAlgebroid and IsSkeletalCategory );
+InstallTrueMethod( IsCoHeytingAlgebroid, IsCoHeytingAlgebra );
+InstallTrueMethod( IsSkeletalCategory, IsCoHeytingAlgebra );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,

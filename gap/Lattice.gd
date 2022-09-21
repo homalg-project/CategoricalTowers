@@ -6,9 +6,19 @@
 
 #! @Chapter Lattices
 
-#! Lattices are finite complete, finite cocomplete, skeletal, thin categories.
+#! Lattices are thin, finite cartesian (and hence finite complete), finite cocartesian (and hence finite cocomplete), skeletal categories.
 
 #! @Section Properties
+
+#! @Description
+#!  The property of <A>C</A> being a cartesian proset.
+#! @Arguments C
+AddCategoricalProperty( [ "IsCartesianProset", "IsCocartesianProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );
 
 #! @Description
 #!  The property of <A>C</A> being a meet semi-lattice.
@@ -17,8 +27,18 @@ AddCategoricalProperty( [ "IsMeetSemiLattice", "IsJoinSemiLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a finite cocomplete proset.
+#! @Arguments C
+AddCategoricalProperty( [ "IsCocartesianProset", "IsCartesianProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
 
 #! @Description
 #!  The property of <A>C</A> being a join semi-lattice.
@@ -27,8 +47,18 @@ AddCategoricalProperty( [ "IsJoinSemiLattice", "IsMeetSemiLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a finite complete and cocomplete proset.
+#! @Arguments C
+AddCategoricalProperty( [ "IsBicartesianProset", "IsBicartesianProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset ) );
 
 #! @Description
 #!  The property of <A>C</A> being a lattice.
@@ -39,6 +69,17 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice :=
   DuplicateFreeList( Concatenation(
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice,
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice ) );
+
+#! @Description
+#!  The property of <A>C</A> being a distributive (and automatically codistributive) bicartesian proset.
+#! @Arguments C
+AddCategoricalProperty( [ "IsDistributiveBicartesianProset", "IsDistributiveBicartesianProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCategory ) );
 
 #! @Description
 #!  The property of <A>C</A> being a distributive (and automatically codistributive) lattice.
