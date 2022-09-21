@@ -36,17 +36,6 @@ DeclareAttribute( "NormalizedDistinguishedSubtrahend",
 DeclareAttribute( "PrePairInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
-CapJitAddTypeSignature( "PrePairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
-    
-    Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                  CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
-    
-end );
-
 DeclareAttribute( "NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
