@@ -4,6 +4,29 @@
 # Implementations
 #
 
+InstallOtherMethodForCompilerForCAP( SingleDifference,
+        "for a meet semi-lattice of single differences and a pair",
+        [ IsMeetSemilatticeOfSingleDifferences, IsList ],
+
+  function( D, A_B )
+    local C;
+    
+    C := CreateCapCategoryObjectWithAttributes( D,
+                 PrePairInUnderlyingLattice, A_B,
+                 IsLocallyClosed, true );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsWellDefinedForObjects( C ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if HasIsInitial( A_B[1] ) and IsInitial( A_B[1] ) then
+        SetIsInitial( C, true );
+    fi;
+    
+    return C;
+    
+end );
+
 ##
 InstallMethod( MeetSemilatticeOfDifferences,
         "for a CAP category",
@@ -41,22 +64,9 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     ##
     AddObjectConstructor( D,
-      function( D, AB )
-        local C;
+      function( D, A_B )
         
-        C := CreateCapCategoryObjectWithAttributes( D,
-                     PrePairInUnderlyingLattice, AB,
-                     IsLocallyClosed, true );
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 4, IsWellDefinedForObjects( C ) );
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        if HasIsInitial( AB[1] ) and IsInitial( AB[1] ) then
-            SetIsInitial( C, true );
-        fi;
-        
-        return C;
+        return SingleDifference( D, A_B );
         
     end );
     
@@ -83,8 +93,8 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A, B )
         local A_pair, B_pair, C;
         
-        A_pair := PrePairInUnderlyingLattice( A );
-        B_pair := PrePairInUnderlyingLattice( B );
+        A_pair := PairInUnderlyingLattice( A );
+        B_pair := PairInUnderlyingLattice( B );
         
         C := UnderlyingCategory( D );
         
@@ -110,7 +120,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         T := TerminalObject( UnderlyingCategory( D ) );
         I := InitialObject( UnderlyingCategory( D ) );
         
-        return ObjectConstructor( D, Pair( T, I ) );
+        return SingleDifference( D, Pair( T, I ) );
         
     end );
     
@@ -121,7 +131,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
         
         I := InitialObject( UnderlyingCategory( D ) );
         
-        return ObjectConstructor( D, Pair( I, I ) );
+        return SingleDifference( D, Pair( I, I ) );
         
     end );
     
@@ -130,7 +140,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A )
         local pair;
         
-        pair := PrePairInUnderlyingLattice( A );
+        pair := PairInUnderlyingLattice( A );
         
         return IsHomSetInhabited( UnderlyingCategory( D ), pair[1], pair[2] );
         
@@ -141,14 +151,14 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, L )
         local L_pairs, C, T, S;
         
-        L_pairs := List( L, PrePairInUnderlyingLattice );
+        L_pairs := List( L, PairInUnderlyingLattice );
         
         C := UnderlyingCategory( D );
         
         T := DirectProduct( C, List( L_pairs, a -> a[1] ) );
         S := Coproduct( C, List( L_pairs, a -> a[2] ) );
         
-        return ObjectConstructor( D, Pair( T, S ) );
+        return SingleDifference( D, Pair( T, S ) );
         
     end );
     
@@ -176,7 +186,7 @@ InstallMethod( \-,
     
     D := MeetSemilatticeOfDifferences( H );
     
-    return ObjectConstructor( D, Pair( A, B ) );
+    return SingleDifference( D, Pair( A, B ) );
     
 end );
 

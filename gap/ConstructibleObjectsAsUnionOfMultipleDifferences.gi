@@ -315,7 +315,7 @@ InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
     A := rec( );
 
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsOfDifferences( L[1] )[1] )[1] ) );
+                 CapCategory( PairInUnderlyingLattice( ListOfSingleDifferences( L[1] )[1] )[1] ) );
     
     A := CreateCapCategoryObjectWithAttributes( C,
                  ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, L );

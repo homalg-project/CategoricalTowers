@@ -27,6 +27,15 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfSingleDifferences",
 
 #! @Section Attributes
 
+DeclareAttribute( "UnderlyingCategory",
+        IsMeetSemilatticeOfSingleDifferences );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsMeetSemilatticeOfSingleDifferences ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "PreDistinguishedSubtrahend",
         IsObjectInMeetSemilatticeOfSingleDifferences );
 
@@ -35,17 +44,6 @@ DeclareAttribute( "NormalizedDistinguishedSubtrahend",
 
 DeclareAttribute( "PrePairInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
-
-CapJitAddTypeSignature( "PrePairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
-    
-    Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ),
-                  CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
-    
-end );
 
 DeclareAttribute( "NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
@@ -56,7 +54,7 @@ DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
 #! @Section Operations
 
 #! @Description
-#!  A morphism in the underlying lattice representing the formal single difference <A>A</A>.
+#!  A pair in the underlying lattice representing the formal single difference <A>A</A>.
 #! @Arguments A
 #! @Returns a pair of objects in a thin category
 DeclareOperation( "PairInUnderlyingLattice",
@@ -66,8 +64,10 @@ CapJitAddTypeSignature( "PairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOf
     
     Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
     
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ),
+                  CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) ] );
     
 end );
 
@@ -91,6 +91,9 @@ DeclareOperation( "DistinguishedSubtrahend",
 #! @Returns a &CAP; category
 DeclareAttribute( "MeetSemilatticeOfDifferences",
         IsCapCategory );
+
+DeclareOperation( "SingleDifference",
+        [ IsList ] );
 
 #! @Description
 #!  Form the formal single difference object <A>A</A> - <A>B</A>.

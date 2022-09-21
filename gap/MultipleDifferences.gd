@@ -27,13 +27,25 @@ DeclareCategory( "IsMorphismInMeetSemilatticeOfMultipleDifferences",
 
 #! @Section Attributes
 
+DeclareAttribute( "UnderlyingCategory",
+        IsMeetSemilatticeOfMultipleDifferences );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 DeclareAttribute( "UnderlyingCategoryOfSingleDifferences",
         IsMeetSemilatticeOfMultipleDifferences );
 
-DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
-        IsObjectInMeetSemilatticeOfMultipleDifferences );
+CapJitAddTypeSignature( "UnderlyingCategoryOfSingleDifferences", [ IsMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategoryOfSingleDifferences( input_types[1].category ) );
+    
+end );
 
-DeclareAttribute( "ListOfPreNormalizedObjectsInMeetSemilatticeOfDifferences",
+DeclareAttribute( "ListOfPreObjectsInMeetSemilatticeOfDifferences",
         IsObjectInMeetSemilatticeOfMultipleDifferences );
 
 DeclareAttribute( "ListOfNormalizedObjectsInMeetSemilatticeOfDifferences",
@@ -63,10 +75,10 @@ end );
 #!  A list of formal single differences in the underlying lattice representing the formal multiple difference <A>A</A>.
 #! @Arguments A
 #! @Returns a list of &CAP; morphism
-DeclareOperation( "ListOfObjectsOfDifferences",
+DeclareOperation( "ListOfSingleDifferences",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences ] );
 
-CapJitAddTypeSignature( "ListOfObjectsOfDifferences", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
+CapJitAddTypeSignature( "ListOfSingleDifferences", [ IsObjectInMeetSemilatticeOfMultipleDifferences ], function ( input_types )
     
     Assert( 0, IsMeetSemilatticeOfMultipleDifferences( input_types[1].category ) );
     
