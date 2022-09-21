@@ -1993,7 +1993,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
           MapOfFinSets(
                   H,
                   power, ## Hom(Hom(-, c), Ω)
-                  List( power, i ->
+                  List( [ 0 .. Length( power ) - 1 ], i ->
                         ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
                         AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
                                 ## interpreted as a classifying morphism χ_{s'}: Hom(-, c) → Ω
