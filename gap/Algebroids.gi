@@ -1212,7 +1212,6 @@ InstallMethod( Algebroid,
         category_filter := IsAlgebroid,
         object_filter := IsObjectInAlgebroid,
         morphism_filter := IsMorphismInAlgebroid,
-        # EXPERIMENTAL
         precompiled_towers := [
             rec(
                 remaining_constructors_in_tower := [ "AdditiveClosure" ],
