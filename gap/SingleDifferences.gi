@@ -83,8 +83,8 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A, B )
         local A_pair, B_pair, C;
         
-        A_pair := PrePairInUnderlyingLattice( A );
-        B_pair := PrePairInUnderlyingLattice( B );
+        A_pair := PairInUnderlyingLattice( A );
+        B_pair := PairInUnderlyingLattice( B );
         
         C := UnderlyingCategory( D );
         
@@ -130,7 +130,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A )
         local pair;
         
-        pair := PrePairInUnderlyingLattice( A );
+        pair := PairInUnderlyingLattice( A );
         
         return IsHomSetInhabited( UnderlyingCategory( D ), pair[1], pair[2] );
         
@@ -141,7 +141,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, L )
         local L_pairs, C, T, S;
         
-        L_pairs := List( L, PrePairInUnderlyingLattice );
+        L_pairs := List( L, PairInUnderlyingLattice );
         
         C := UnderlyingCategory( D );
         
