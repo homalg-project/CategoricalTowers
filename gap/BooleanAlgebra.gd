@@ -11,14 +11,36 @@
 #! @Section Properties
 
 #! @Description
+#!  The property of <A>C</A> being a bi-Heyting algebroid.
+#! @Arguments C
+AddCategoricalProperty( [ "IsBiHeytingAlgebroid", "IsBiHeytingAlgebroid" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebroid ) );
+
+#! @Description
 #!  The property of <A>C</A> being a bi-Heyting algebra.
 #! @Arguments C
 AddCategoricalProperty( [ "IsBiHeytingAlgebra", "IsBiHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
   DuplicateFreeList( Concatenation(
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebra,
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebra ) );
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a Boolean algebroid.
+#! @Arguments C
+AddCategoricalProperty( [ "IsBooleanAlgebroid", "IsBooleanAlgebroid" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid :=
+  DuplicateFreeList( Concatenation( [
+          "MorphismFromDoubleNegationWithGivenDoubleNegation",
+          "MorphismToDoubleConegationWithGivenDoubleConegation",
+          ],
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid ) );
 
 #! @Description
 #!  The property of <A>C</A> being a Boolean algebra.
@@ -26,11 +48,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
 AddCategoricalProperty( [ "IsBooleanAlgebra", "IsBooleanAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebra :=
-  DuplicateFreeList( Concatenation( [
-          "MorphismFromDoubleNegationWithGivenDoubleNegation",
-          "MorphismToDoubleConegationWithGivenDoubleConegation",
-          ],
-          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra ) );
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory ) );
 
 #! @Section Operations
 

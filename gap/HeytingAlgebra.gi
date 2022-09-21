@@ -4,9 +4,17 @@
 # Implementations
 #
 
-InstallTrueMethod( IsHeytingAlgebra, IsLattice and IsCartesianClosedCategory );
-InstallTrueMethod( IsDistributiveLattice, IsHeytingAlgebra );
-InstallTrueMethod( IsCartesianClosedCategory, IsHeytingAlgebra );
+## thin
+
+InstallTrueMethod( IsHeytingAlgebroid, IsBicartesianProset and IsCartesianClosedCategory );
+InstallTrueMethod( IsBicartesianProset, IsHeytingAlgebroid );
+InstallTrueMethod( IsCartesianClosedCategory, IsHeytingAlgebroid );
+
+## thin & skeletal
+
+InstallTrueMethod( IsHeytingAlgebra, IsHeytingAlgebroid and IsSkeletalCategory );
+InstallTrueMethod( IsHeytingAlgebroid, IsHeytingAlgebra );
+InstallTrueMethod( IsSkeletalCategory, IsHeytingAlgebra );
 
 ##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,

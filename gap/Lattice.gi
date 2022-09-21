@@ -4,22 +4,48 @@
 # Implementations
 #
 
-InstallTrueMethod( IsMeetSemiLattice, IsPosetCategory and IsStrictCartesianCategory );
-InstallTrueMethod( IsPosetCategory, IsMeetSemiLattice );
-InstallTrueMethod( IsStrictCartesianCategory, IsMeetSemiLattice );
+## thin
 
-InstallTrueMethod( IsJoinSemiLattice, IsPosetCategory and IsStrictCocartesianCategory );
-InstallTrueMethod( IsPosetCategory, IsJoinSemiLattice );
-InstallTrueMethod( IsStrictCocartesianCategory, IsJoinSemiLattice );
+InstallTrueMethod( IsCartesianProset, IsThinCategory and IsCartesianCategory );
+InstallTrueMethod( IsThinCategory, IsCartesianProset );
+InstallTrueMethod( IsCartesianCategory, IsCartesianProset );
+InstallTrueMethod( IsFiniteCompleteCategory, IsCartesianProset );
+
+InstallTrueMethod( IsCocartesianProset, IsThinCategory and IsCocartesianCategory );
+InstallTrueMethod( IsThinCategory, IsCocartesianProset );
+InstallTrueMethod( IsCocartesianCategory, IsCocartesianProset );
+InstallTrueMethod( IsFiniteCocompleteCategory, IsCocartesianProset );
+
+InstallTrueMethod( IsBicartesianProset, IsCartesianProset and IsCocartesianProset );
+InstallTrueMethod( IsCartesianProset, IsBicartesianProset );
+InstallTrueMethod( IsCocartesianProset, IsBicartesianProset );
+
+InstallTrueMethod( IsDistributiveBicartesianProset, IsBicartesianProset and IsDistributiveCategory );
+InstallTrueMethod( IsDistributiveBicartesianProset, IsBicartesianProset and IsCodistributiveCategory );
+InstallTrueMethod( IsBicartesianProset, IsDistributiveBicartesianProset );
+InstallTrueMethod( IsDistributiveCategory, IsDistributiveBicartesianProset );
+InstallTrueMethod( IsCodistributiveCategory, IsDistributiveBicartesianProset );
+
+## thin & skeletal
+
+InstallTrueMethod( IsStrictCartesianCategory, IsPosetCategory and IsCartesianCategory );
+InstallTrueMethod( IsStrictCocartesianCategory, IsPosetCategory and IsCocartesianCategory );
+
+InstallTrueMethod( IsMeetSemiLattice, IsCartesianProset and IsSkeletalCategory );
+InstallTrueMethod( IsCartesianCategory, IsMeetSemiLattice );
+InstallTrueMethod( IsSkeletalCategory, IsMeetSemiLattice );
+
+InstallTrueMethod( IsJoinSemiLattice, IsCocartesianProset and IsSkeletalCategory );
+InstallTrueMethod( IsCocartesianProset, IsJoinSemiLattice );
+InstallTrueMethod( IsSkeletalCategory, IsJoinSemiLattice );
 
 InstallTrueMethod( IsLattice, IsMeetSemiLattice and IsJoinSemiLattice );
 InstallTrueMethod( IsMeetSemiLattice, IsLattice );
 InstallTrueMethod( IsJoinSemiLattice, IsLattice );
 
-InstallTrueMethod( IsDistributiveLattice, IsLattice and IsDistributiveCategory and IsCodistributiveCategory );
-InstallTrueMethod( IsLattice, IsDistributiveLattice );
-InstallTrueMethod( IsDistributiveCategory, IsDistributiveLattice );
-InstallTrueMethod( IsCodistributiveCategory, IsDistributiveLattice );
+InstallTrueMethod( IsDistributiveLattice, IsDistributiveBicartesianProset and IsSkeletalCategory );
+InstallTrueMethod( IsDistributiveBicartesianProset, IsDistributiveLattice );
+InstallTrueMethod( IsSkeletalCategory, IsDistributiveLattice );
 
 InstallTrueMethod( IsMonoidalLattice, IsLattice and IsStrictMonoidalCategory );
 InstallTrueMethod( IsLattice, IsMonoidalLattice );
