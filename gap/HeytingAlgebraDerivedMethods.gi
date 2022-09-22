@@ -33,7 +33,7 @@ AddDerivationToCAP( NegationOnObjects,
     return ExponentialOnObjects( cat, A, InitialObject( cat ) );
     
 end : Description := "NegationOnObjects using ExponentialOnObjects and InitialObject",
-      CategoryFilter := IsHeytingAlgebra );
+      CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
@@ -46,7 +46,7 @@ AddDerivationToCAP( NegationOnMorphismsWithGivenNegations,
     return ExponentialOnMorphismsWithGivenExponentials( cat, B_, u, IdentityMorphism( cat, InitialObject( cat ) ), A_ );
     
 end : Description := "NegationOnMorphismsWithGivenNegations using ExponentialOnMorphismsWithGivenExponentials and IdentityMorphism and InitialObject",
-      CategoryFilter := IsHeytingAlgebra );
+      CategoryFilter := IsHeytingAlgebroid );
 
 ##
 AddDerivationToCAP( MorphismToDoubleNegation,
@@ -58,4 +58,4 @@ AddDerivationToCAP( MorphismToDoubleNegation,
     return UniqueMorphism( cat, A, NegationOnObjects( cat, NegationOnObjects( cat, A ) ) );
     
 end : Description := "MorphismToDoubleNegationWithGivenDoubleNegation as the unique morphism into the double-negation",
-      CategoryFilter := IsHeytingAlgebra );
+      CategoryFilter := IsHeytingAlgebroid );
