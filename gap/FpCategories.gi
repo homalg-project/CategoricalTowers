@@ -1667,8 +1667,8 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, H, objs, mors, o, m, D, precompose, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
-          B0, N0, N1, N2, pt, mu, s;
+    local A, H, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
+          B0, N0, N1, N2, D, precompose, pt, mu, s;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -1727,44 +1727,6 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                                   tum2[c] ),
                           emb2[c] ) );
     
-    D := DistinguishedObjectOfHomomorphismStructure( B );
-    
-    ## mu_{a,b,c}: Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
-    precompose :=
-      function ( a, b, c )
-        return
-          MapOfFinSets( H,
-                  Hom3[c][a, b], # = Hom(a, b) × Hom(b, c)
-                  List( Hom3[c][a, b],
-                        function ( i )
-                          local d, d_ab, d_bc, m_ab, m_bc, m;
-                          
-                          ## D → Hom(a, b) × Hom(b, c):
-                          d := MapOfFinSets( H, D, [ i ], Hom3[c][a, b] );
-                          
-                          ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
-                          d_ab := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 1 ) );
-                          
-                          ## D → Hom(a, b) × Hom(b, c) → Hom(b, c):
-                          d_bc := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 2 ) );
-                          
-                          ## the map a → b corresponding to d_ab:
-                          m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[a], objs[b], d_ab );
-                          
-                          ## the map b → c corresponding to d_bc:
-                          m_bc := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[b], objs[c], d_bc );
-                          
-                          ## the composition a → b → c:
-                          m := PreCompose( B, m_ab, m_bc );
-                          
-                          ## reinterpret the composition m as a morphism D → Hom(a, c),
-                          ## then get its number as an element in Hom(a, c):
-                          return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0];
-                          
-                      end ),
-                  Hom2[c, a] ); # = Hom(a, c)
-    end;
-    
     ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
     B0 := FinSet( H, o );
     
@@ -1805,6 +1767,44 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                                                                  IdentityMorphism( B, a ), IdentityMorphism( B, b ) ),
                                                            HomomorphismStructureOnMorphisms( B,
                                                                    IdentityMorphism( B, b ), psi ) ] ) ) ) ) ) ) );
+    
+    D := DistinguishedObjectOfHomomorphismStructure( B );
+    
+    ## mu_{a,b,c}: Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
+    precompose :=
+      function ( a, b, c )
+        return
+          MapOfFinSets( H,
+                  Hom3[c][a, b], # = Hom(a, b) × Hom(b, c)
+                  List( Hom3[c][a, b],
+                        function ( i )
+                          local d, d_ab, d_bc, m_ab, m_bc, m;
+                          
+                          ## D → Hom(a, b) × Hom(b, c):
+                          d := MapOfFinSets( H, D, [ i ], Hom3[c][a, b] );
+                          
+                          ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
+                          d_ab := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 1 ) );
+                          
+                          ## D → Hom(a, b) × Hom(b, c) → Hom(b, c):
+                          d_bc := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 2 ) );
+                          
+                          ## the map a → b corresponding to d_ab:
+                          m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[a], objs[b], d_ab );
+                          
+                          ## the map b → c corresponding to d_bc:
+                          m_bc := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[b], objs[c], d_bc );
+                          
+                          ## the composition a → b → c:
+                          m := PreCompose( B, m_ab, m_bc );
+                          
+                          ## reinterpret the composition m as a morphism D → Hom(a, c),
+                          ## then get its number as an element in Hom(a, c):
+                          return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0];
+                          
+                      end ),
+                  Hom2[c, a] ); # = Hom(a, c)
+    end;
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
