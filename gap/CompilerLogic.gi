@@ -268,3 +268,35 @@ CapJitAddLogicTemplate(
         dst_template := "primitive_path",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "number in [ number ]",
+        dst_template := "true",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry1", "entry2" ],
+        src_template := "[ entry1, entry2 ]{[ 2 ]}",
+        dst_template := "[ entry2 ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry", "func" ],
+        src_template := "ForAll( [ entry ], func )",
+        dst_template := "func( entry )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "Length( Concatenation( list ) )",
+        dst_template := "Sum( List( list, Length ) )",
+    )
+);
