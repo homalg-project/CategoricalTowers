@@ -37,4 +37,4 @@ AddDerivationToCAP( IsEqualForObjects,
            AreIsomorphicForObjectsIfIsHomSetInhabited( cat, A, B );
     
 end : Description := "",
-      CategoryFilter := IsThinCategory and IsSkeletalCategory );
+      CategoryFilter := IsPosetCategory );

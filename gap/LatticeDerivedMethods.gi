@@ -14,7 +14,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, DirectProduct( cat, S, T ), S );
     
 end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and DirectProduct",
-      CategoryFilter := IsThinCategory and IsCartesianCategory );
+      CategoryFilter := IsCartesianProset );
 
 ##
 AddDerivationToCAP( IsHomSetInhabited,
@@ -26,7 +26,7 @@ AddDerivationToCAP( IsHomSetInhabited,
     return AreIsomorphicForObjectsIfIsHomSetInhabited( cat, T, Coproduct( cat, S, T ) );
     
 end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetInhabited and Coproduct",
-      CategoryFilter := IsThinCategory and IsCocartesianCategory );
+      CategoryFilter := IsCocartesianProset );
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
