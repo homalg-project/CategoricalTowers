@@ -36,7 +36,7 @@ AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
     
     return IdentityMorphism( cat, s );
     
-end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
+end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as the identity morphism",
       CategoryFilter := IsDistributiveLattice );
 
 ##
@@ -47,7 +47,7 @@ AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
     
     return IdentityMorphism( cat, s );
     
-end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
+end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as the identity morphism",
       CategoryFilter := IsDistributiveLattice );
 
 ##
@@ -58,7 +58,7 @@ AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
     
     return IdentityMorphism( cat, s );
     
-end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
+end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects as the identity morphism",
       CategoryFilter := IsDistributiveLattice );
 
 ##
@@ -69,5 +69,5 @@ AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
     
     return IdentityMorphism( cat, s );
     
-end : Description := "RightCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
+end : Description := "RightCocartesianCodistributivityFactoringWithGivenObjects as the identity morphism",
       CategoryFilter := IsDistributiveLattice );
