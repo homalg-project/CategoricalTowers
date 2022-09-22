@@ -1695,16 +1695,21 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
     hom3 := List( [ 1 .. o ], c ->
                   List( [ 1 .. o ], a ->
                         List( [ 1 .. o ], b ->
-                              [ Hom2[b, a], Hom2[c, b] ] ) ) );
+                              [ Hom2[b][a], Hom2[c][b] ] ) ) );
     
     ## [ [ [ Hom(a, b) × Hom(b, c) ]_{b ∈ B} ]_{a ∈ B} ]_{c ∈ B}:
     Hom3 := List( [ 1 .. o ], c ->
                   List( [ 1 .. o ], a ->
                         List( [ 1 .. o ], b ->
-                              DirectProduct( H, hom3[c][a, b] ) ) ) );
+                              DirectProduct( H, hom3[c][a][b] ) ) ) );
     
     ## [ [ Hom(a, b) × Hom(b, c) ]_{a, b ∈ B} ]_{c ∈ B}:
-    tum2 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
+    ## tum2 := List( Hom3, L -> Concatenation( TransposedMat( L ) ) );
+    tum2 := List( [ 1 .. o ], c ->
+                  Concatenation(
+                          List( [ 1 .. o ], b ->
+                                List( [ 1 .. o ], a ->
+                                      Hom3[c][a][b] ) ) ) );
     
     ## The embeddings into the double coproducts
     ## [ [ Hom(a, b) × Hom(b, c) ↪ ⊔_{a' ∈ B} ⊔_{b' ∈ B} Hom(a', b') × Hom(b', c) ]_{a ∈ B, b ∈ B} ]_{c ∈ B}:
@@ -1775,19 +1780,19 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
       function ( a, b, c )
         return
           MapOfFinSets( H,
-                  Hom3[c][a, b], # = Hom(a, b) × Hom(b, c)
-                  List( Hom3[c][a, b],
+                  Hom3[c][a][b], # = Hom(a, b) × Hom(b, c)
+                  List( [ 0 .. Length( Hom3[c][a][b] ) - 1 ],
                         function ( i )
                           local d, d_ab, d_bc, m_ab, m_bc, m;
                           
                           ## D → Hom(a, b) × Hom(b, c):
-                          d := MapOfFinSets( H, D, [ i ], Hom3[c][a, b] );
+                          d := MapOfFinSets( H, D, [ i ], Hom3[c][a][b] );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(a, b):
-                          d_ab := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 1 ) );
+                          d_ab := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a][b], 1 ) );
                           
                           ## D → Hom(a, b) × Hom(b, c) → Hom(b, c):
-                          d_bc := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a, b], 2 ) );
+                          d_bc := PreCompose( H, d, ProjectionInFactorOfDirectProduct( H, hom3[c][a][b], 2 ) );
                           
                           ## the map a → b corresponding to d_ab:
                           m_ab := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B, objs[a], objs[b], d_ab );
@@ -1803,7 +1808,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                           return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B, m ) )[1 + 0];
                           
                       end ),
-                  Hom2[c, a] ); # = Hom(a, c)
+                  Hom2[c][a] ); # = Hom(a, c)
     end;
     
     ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
@@ -1818,12 +1823,12 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                                 List( [ 1 .. o ], b ->
                                       ## ⊔_{a ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
                                       UniversalMorphismFromCoproduct( H,
-                                              List( [ 1 .. o ], a -> Hom3[c][a,b] ),
+                                              List( [ 1 .. o ], a -> Hom3[c][a][b] ),
                                               Hom2[c][b],
                                               List( [ 1 .. o ], a ->
                                                     ## Hom(a, b) × Hom(b, c) ↠ Hom(b, c):
                                                     ProjectionInFactorOfDirectProduct( H,
-                                                            hom3[c][a, b], 2 ) ) ) ) ) ) );
+                                                            hom3[c][a][b], 2 ) ) ) ) ) ) );
     
     ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
     ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
@@ -1833,7 +1838,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                         List( [ 1 .. o ], a ->
                               ## ⊔_{b ∈ B} Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
                               UniversalMorphismFromCoproduct( H,
-                                      List( [ 1 .. o ], b -> Hom3[c][a,b] ),
+                                      List( [ 1 .. o ], b -> Hom3[c][a][b] ),
                                       Hom2[c][a],
                                       List( [ 1 .. o ], b ->
                                             ## Hom(a, b) × Hom(b, c) ↠ Hom(a, c):
@@ -1847,7 +1852,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
                        List( [ 1 .. o ], a ->
                              ## Hom(a, c) → {a}, ϕ ↦ a
                              UniversalMorphismIntoTerminalObject( H,
-                                     Hom2[c, a] ) ) ) );
+                                     Hom2[c][a] ) ) ) );
     
     return NTuple( 6, N0, N1, N2, pt, mu, s );
     
