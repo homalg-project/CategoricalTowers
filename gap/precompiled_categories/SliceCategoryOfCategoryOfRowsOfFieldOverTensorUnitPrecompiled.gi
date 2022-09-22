@@ -135,7 +135,7 @@ function ( cat_1, objects_1, k_1, P_1 )
                 fi;
                 return;
             end ) ) * HomalgIdentityMatrix( Sum( deduped_7_1 ), deduped_8_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_9_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_10_1, Source( UnderlyingMorphism( deduped_9_1 ) ), CreateCapCategoryObjectWithAttributes( deduped_10_1, RankOfObject, NumberColumns( deduped_5_1 ) ), UnderlyingMatrix, deduped_5_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_9_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_10_1, Source( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( deduped_9_1 ) ) ), CreateCapCategoryObjectWithAttributes( deduped_10_1, RankOfObject, NumberColumns( deduped_5_1 ) ), UnderlyingMatrix, deduped_5_1 ) );
 end
 ########
         
