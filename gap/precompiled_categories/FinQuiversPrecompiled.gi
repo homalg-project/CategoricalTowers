@@ -520,7 +520,7 @@ function ( cat_1, arg2_1, arg3_1 )
         end );
     return List( deduped_29_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2;
-            hoisted_1_2 := hoisted_4_1[1 + hoisted_26_1[(1 + hoisted_25_1[(1 + hoisted_24_1[(1 + logic_new_func_x_2)])])]];
+            hoisted_1_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_4_1[1 + hoisted_26_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( hoisted_25_1[(1 + hoisted_24_1[(1 + logic_new_func_x_2)])] ))]] );
             hoisted_2_2 := List( hoisted_27_1, function ( logic_new_func_x_3 )
                     return ListWithIdenticalEntries( 1, REM_INT( QUO_INT( hoisted_1_2, Product( hoisted_3_1{[ 1 .. logic_new_func_x_3 - 1 ]} ) ), hoisted_3_1[logic_new_func_x_3] ) );
                 end );
