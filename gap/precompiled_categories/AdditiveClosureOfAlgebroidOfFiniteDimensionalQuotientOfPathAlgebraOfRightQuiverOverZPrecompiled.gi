@@ -777,7 +777,7 @@ function ( cat_1, alpha_1, beta_1 )
         deduped_23_1 := MorphismMatrix( alpha_1 );
         deduped_22_1 := MorphismMatrix( beta_1 );
         deduped_16_1 := [ 1 .. deduped_17_1 ];
-        deduped_14_1 := deduped_16_1[1];
+        deduped_14_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_16_1[1] );
         hoisted_13_1 := deduped_16_1;
         hoisted_12_1 := List( deduped_22_1, function ( logic_new_func_list_2 )
                 return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
@@ -785,7 +785,7 @@ function ( cat_1, alpha_1, beta_1 )
         hoisted_11_1 := List( deduped_23_1, function ( logic_new_func_list_2 )
                 return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
             end );
-        hoisted_10_1 := List( deduped_22_1[deduped_14_1], Range );
+        hoisted_10_1 := List( CAP_JIT_INCOMPLETE_LOGIC( deduped_22_1[deduped_14_1] ), Range );
         hoisted_9_1 := deduped_14_1;
         hoisted_8_1 := List( deduped_23_1, function ( logic_new_func_list_2 )
                 return List( logic_new_func_list_2, Source );

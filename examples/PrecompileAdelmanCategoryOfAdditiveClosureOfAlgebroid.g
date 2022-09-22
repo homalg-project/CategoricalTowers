@@ -24,8 +24,8 @@ if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJ
 precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid := function( Rq, over_Z, path_algebra, ring )
     CapJitPrecompileCategoryAndCompareResult(
         EvalString( ReplacedString( """Rq -> AdelmanCategory( AdditiveClosure( Algebroid(
-            Rq, over_Z : FinalizeCategory := true, no_precompiled_code := false
-        ) : FinalizeCategory := true, no_precompiled_code := false ) )""", "over_Z", String( over_Z ) ) ),
+            Rq, over_Z : FinalizeCategory := true
+        ) : FinalizeCategory := true ) )""", "over_Z", String( over_Z ) ) ),
         [ Rq ],
         "Algebroids",
         Concatenation(
