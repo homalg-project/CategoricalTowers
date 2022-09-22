@@ -30,6 +30,17 @@ end : Description := "IsHomSetInhabited using AreIsomorphicForObjectsIfIsHomSetI
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, a, L, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
+      CategoryFilter := IsDistributiveBicartesianProset );
+
+##
+AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
         [ [ IdentityMorphism, 1 ] ],
         
   function( cat, s, a, L, r )
@@ -38,6 +49,17 @@ AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
     
 end : Description := "LeftCartesianDistributivityExpandingWithGivenObjects as the identity morphism",
       CategoryFilter := IsDistributiveLattice );
+
+##
+AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, L, a, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as the unique morphism",
+      CategoryFilter := IsDistributiveBicartesianProset );
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
@@ -52,6 +74,17 @@ end : Description := "RightCartesianDistributivityExpandingWithGivenObjects as t
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, a, L, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
+      CategoryFilter := IsDistributiveBicartesianProset );
+
+##
+AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
         [ [ IdentityMorphism, 1 ] ],
         
   function( cat, s, a, L, r )
@@ -60,6 +93,17 @@ AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
     
 end : Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects as the identity morphism",
       CategoryFilter := IsDistributiveLattice );
+
+##
+AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, L, a, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "RightCocartesianCodistributivityFactoringWithGivenObjects as the unique morphism",
+      CategoryFilter := IsDistributiveBicartesianProset );
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
