@@ -877,6 +877,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         basis_paths_by_vertex_index := BasisPathsByVertexIndex( algebroid );
         
         basis_ap_a := basis_paths_by_vertex_index[ap][a];
+        
         basis_b_bp := basis_paths_by_vertex_index[b][bp];
         
         # getting the sizes from `source` and `range` is more efficient for the compiler

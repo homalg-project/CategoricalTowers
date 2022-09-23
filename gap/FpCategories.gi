@@ -494,8 +494,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
       function( fpcategory, source, alpha, beta, range )
-        local a, b, ap, bp, basis_paths_by_vertex_index, basis_ap_a, basis_b_bp,
-              elem_alpha, elem_beta, alpha_index, beta_index, hom_structure_on_basis_paths, map;
+        local elem_alpha, elem_beta, a, b, ap, bp, basis_paths_by_vertex_index,
+              basis_ap_a, basis_b_bp, alpha_index, beta_index, hom_structure_on_basis_paths, map;
+        
+        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
+        
+        elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
         a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
@@ -510,10 +514,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         basis_ap_a := basis_paths_by_vertex_index[ap][a];
         
         basis_b_bp := basis_paths_by_vertex_index[b][bp];
-        
-        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
-        
-        elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
         alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
         
