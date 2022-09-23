@@ -150,30 +150,6 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "list" ],
-        src_template := "Length( Concatenation( list ) )",
-        dst_template := "Sum( List( list, Length ) )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list", "func" ],
-        src_template := "Product( list, func )",
-        dst_template := "Product( List( list, func ) )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "entry", "func" ],
-        src_template := "ForAll( [ entry ], func )",
-        dst_template := "func( entry )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
         variable_names := [ "entry1", "entry2", "func" ],
         src_template := "ForAll( [ entry1, entry2 ], func )",
         dst_template := "func( entry1 ) and func( entry2 )",
@@ -250,23 +226,6 @@ CapJitAddLogicTemplate(
         src_template := "List( LazyHList( list, func2 ), func1 )",
         dst_template := "LazyHList( list, x -> func1( func2( x ) ) )",
         new_funcs := [ [ "x" ] ],
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list", "func1", "func2" ],
-        src_template := "Sum( List( list, func2 ), func1 )",
-        dst_template := "Sum( list, x -> func1( func2( x ) ) )",
-        new_funcs := [ [ "x" ] ],
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list", "number", "func" ],
-        src_template := "Sum( list{[ 1 .. number ]}, func )",
-        dst_template := "Sum( List( list, func ){[ 1 .. number ]} )",
     )
 );
 

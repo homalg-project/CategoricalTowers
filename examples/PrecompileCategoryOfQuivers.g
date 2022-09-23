@@ -13,6 +13,9 @@ LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
 ReadPackage( "FinSetsForCAP", "gap/CompilerLogic.gi" );
 #! true
 
+ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
+#! true
+
 ReadPackage( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
