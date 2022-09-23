@@ -839,6 +839,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     SetRangeCategoryOfHomomorphismStructure( algebroid, range_category );
     
+    Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( algebroid ), range_category ) );
+    
     ##
     AddHomomorphismStructureOnObjects( algebroid,
       function( algebroid, object_1, object_2 )
