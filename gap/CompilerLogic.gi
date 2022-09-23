@@ -292,11 +292,3 @@ CapJitAddLogicTemplate(
         dst_template := "func( entry )",
     )
 );
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list" ],
-        src_template := "Length( Concatenation( list ) )",
-        dst_template := "Sum( List( list, Length ) )",
-    )
-);
