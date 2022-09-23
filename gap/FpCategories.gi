@@ -358,10 +358,10 @@ InstallMethod( BasisPathOfPathAlgebraBasisElement,
         "for a quiver algebra element",
         [ IsQuiverAlgebraElement ],
         
-  function( primitive_path )
+  function( basis_element )
     local paths;
     
-    paths := Paths( primitive_path );
+    paths := Paths( basis_element );
     
     Assert( 0, Length( paths ) = 1 );
     
