@@ -1939,18 +1939,27 @@ InstallMethodWithCache( FunctorCategory,
         
         AddSubobjectClassifier( Hom,
           function ( Hom )
-            local sieve_functor;
+            local Sieves;
             
-            sieve_functor := SieveFunctor( OppositeFpCategory( Source( Hom ) ) );
+            Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( OppositeFpCategory( Source( Hom ) ) );
             
-            return AsObjectInFunctorCategory( Hom, sieve_functor );
+            ## the sieves functor
+            return AsObjectInFunctorCategoryByValues( Hom, Sieves[1][1], Sieves[1][2] );
             
         end );
         
         AddTruthMorphismOfTrueWithGivenObjects( Hom,
           function ( Hom, T, Omega )
+            local Sieves;
             
-            return AsMorphismInFunctorCategory( Hom, TruthMorphismOfTrueToSieveFunctor( OppositeFpCategory( Source( Hom ) ) ) );
+            Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( OppositeFpCategory( Source( Hom ) ) );
+            
+            ## T → Sieves, c ↦ ( T(c) = {*} → Sieves(c), * ↦ maximal_sieve(c) := Hom(-, c) )
+            return AsMorphismInFunctorCategoryByValues( Hom,
+                           AsObjectInFunctorCategoryByValues( Hom, ## constant functor
+                                   Sieves[2][1], Sieves[2][2] ),
+                           Sieves[4], ## maximal sieve
+                           Omega );
             
         end );
         

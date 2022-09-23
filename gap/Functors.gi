@@ -353,7 +353,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
         [ IsFunctorCategory, IsMorphismInFunctorCategory ],
         
   function ( Hom, iota ) ## ι: Q ↪ P
-    local Q, P, Bop, Bop_0, B, B_0, H, D, emb, Omega, OmegaH, s, Y,
+    local Q, P, Bop, Bop_0, B, B_0, H, D, Sieves, emb, Omega, OmegaH, s, Y,
           truth_values, into_OmegaH, paths_to_truth;
     
     ## B^op
@@ -372,8 +372,14 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     
     D := DistinguishedObjectOfHomomorphismStructure( B );
     
+    Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
+    
     ## The natural transformation c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω) )
-    emb := AsMorphismInFunctorCategory( EmbeddingOfSieveFunctor( B ) );
+    emb := AsMorphismInFunctorCategoryByValues( Hom,
+                   SubobjectClassifier( Hom ), ## the sieves functor
+                   Sieves[5], ## maximal sieve
+                   AsObjectInFunctorCategoryByValues( Hom, ## Hom(Hom(-, c), Ω) functor
+                           Sieves[3][1], Sieves[3][2] ) );
     
     Omega := Source( emb );
     
