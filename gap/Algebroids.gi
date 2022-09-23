@@ -662,7 +662,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
   function( algebroid, over_Z )
     local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, path,
           MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths,
-          representative_func, ring, default_range_of_HomStructure, range_category,
+          ring, default_range_of_HomStructure, range_category,
           object_constructor, object_datum, morphism_constructor, morphism_datum;
     
     quiver_algebra := UnderlyingQuiverAlgebra( algebroid );
@@ -728,27 +728,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         beta := PathAsAlgebraElement( quiver_algebra, path_2 );
         
-        if IsQuotientOfPathAlgebra( quiver_algebra ) then
+        for path in hom_v_w do
             
-            for path in hom_v_w do
-                
-                Add( mat,
-                  CoefficientsOfPaths( hom_vp_wp, Representative( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) )
-                );
-                
-            od;
+            Add( mat,
+                 CoefficientsOfPaths( hom_vp_wp, alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta )
+                 );
             
-        else
-            
-            for path in hom_v_w do
-                
-                Add( mat,
-                  CoefficientsOfPaths( hom_vp_wp, ( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) )
-                );
-                
-            od;
-            
-        fi;
+        od;
         
         return mat;
         
@@ -775,17 +761,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     SetHomStructureOnBasisPaths( algebroid, hom_structure_on_basis_paths );
     
     Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( algebroid ) ) );
-    
-    ##
-    if IsQuotientOfPathAlgebra( quiver_algebra ) then
-        
-        representative_func := Representative;
-        
-    else
-        
-        representative_func := IdFunc;
-        
-    fi;
     
     ring := CommutativeRingOfLinearCategory( algebroid );
     
@@ -947,7 +922,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         return morphism_constructor(
                 range_category,
                 source,
-                HomalgMatrixListList( [ CoefficientsOfPaths( basis_elements, representative_func( element ) ) ], 1, size_basis, ring ),
+                HomalgMatrixListList( [ CoefficientsOfPaths( basis_elements, element ) ], 1, size_basis, ring ),
                 range
               );
         
@@ -1001,7 +976,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         element := UnderlyingQuiverAlgebraElement( morphism );
         
-        return CoefficientsOfPaths( BasisPathsByVertexIndex( algebroid )[nr_source][nr_range], representative_func( element ) );
+        return CoefficientsOfPaths( BasisPathsByVertexIndex( algebroid )[nr_source][nr_range], element );
         
     end );
     
