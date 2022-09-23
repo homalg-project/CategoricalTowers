@@ -1127,6 +1127,43 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function 
     
 end );
 
+BindGlobal( "ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidPrecompiled", function ( cat )
+  local Add, A, Rq, is_finite_dimensional, is_path_algebra, is_right_quiver, over_field;
+    
+    Assert( 0, IsAdelmanCategory( cat ) );
+    
+    Add := UnderlyingCategory( cat );
+    
+    Assert( 0, IsAdditiveClosureCategory( Add ) );
+    
+    A := UnderlyingCategory( Add );
+    
+    Assert( 0, IsAlgebroid( A ) );
+    
+    Rq := UnderlyingQuiverAlgebra( A );
+    
+    is_finite_dimensional := IsFiniteDimensional( Rq );
+    
+    is_path_algebra := IsPathAlgebra( Rq );
+    
+    is_right_quiver := IsRightQuiver( QuiverOfAlgebra( Rq ) );
+    
+    over_field := not A!.over_Z;
+    
+    if is_finite_dimensional and is_path_algebra and is_right_quiver and not over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
+        
+        ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled( cat );
+        
+        return true;
+        
+    else
+        
+        return false;
+        
+    fi;
+    
+end );
+
 ##
 InstallMethod( Algebroid,
         "for a QPA quiver algebra and a boolean",
@@ -1216,6 +1253,10 @@ InstallMethod( Algebroid,
             rec(
                 remaining_constructors_in_tower := [ "AdditiveClosure" ],
                 precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled
+            ),
+            rec(
+                remaining_constructors_in_tower := [ "AdditiveClosure", "AdelmanCategory" ],
+                precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidPrecompiled
             ),
         ],
     );

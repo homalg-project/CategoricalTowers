@@ -234,12 +234,30 @@ CapJitAddLogicTemplate(
     )
 );
 
-# UnionOfColumns for a single matrix
+# UnionOfColumnsListList for a single matrix
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "ring", "nr_rows", "entry" ],
-        src_template := "UnionOfColumns( ring, nr_rows, [ entry ] )",
+        variable_names := [ "nr_rows", "entry" ],
+        src_template := "UnionOfColumnsListList( nr_rows, [ entry ] )",
         dst_template := "entry",
+    )
+);
+
+# Sum of a list with a single entry
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry" ],
+        src_template := "Sum( [ entry ] )",
+        dst_template := "entry",
+    )
+);
+
+# Sum of a list with a single entry
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "nr_cols", "list1", "list2" ],
+        src_template := "UnionOfRowsListList( nr_cols, [ UnionOfRowsListList( nr_cols, list1 ), UnionOfRowsListList( nr_cols, list2 ) ] )",
+        dst_template := "UnionOfRowsListList( nr_cols, Concatenation( list1, list2 ) )",
     )
 );
 
