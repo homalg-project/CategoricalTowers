@@ -358,10 +358,10 @@ InstallMethod( BasisPathOfPathAlgebraBasisElement,
         "for a quiver algebra element",
         [ IsQuiverAlgebraElement ],
         
-  function( primitive_path )
+  function( basis_element )
     local paths;
     
-    paths := Paths( primitive_path );
+    paths := Paths( basis_element );
     
     Assert( 0, Length( paths ) = 1 );
     
@@ -437,7 +437,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         beta := PathAsAlgebraElement( quiver_algebra, path_2 );
         
-        return List( hom_v_w, path -> -1 + SafePosition( hom_vp_wp, Paths( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta )[1] ) );
+        return List( hom_v_w, path -> -1 + SafePosition( hom_vp_wp, BasisPathOfPathAlgebraBasisElement( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) ) );
         
     end;
     
@@ -485,7 +485,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
         
-        basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
+        basis_elements := BasisPathsByVertexIndex( fpcategory )[nr_source][nr_range];
         
         return ObjectConstructor( range_category_of_HomStructure, Length( basis_elements ) );
         
@@ -494,7 +494,12 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
       function( fpcategory, source, alpha, beta, range )
-        local a, b, ap, bp, basis_ap_a, basis_b_bp, elem_alpha, elem_beta, alpha_index, beta_index, map;
+        local elem_alpha, elem_beta, a, b, ap, bp, basis_paths_by_vertex_index,
+              basis_ap_a, basis_b_bp, alpha_index, beta_index, hom_structure_on_basis_paths, map;
+        
+        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
+        
+        elem_beta := UnderlyingQuiverAlgebraElement( beta );
         
         a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
@@ -504,17 +509,17 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
         
+        basis_paths_by_vertex_index := BasisPathsByVertexIndex( fpcategory );
+        
         basis_ap_a := basis_paths_by_vertex_index[ap][a];
         
         basis_b_bp := basis_paths_by_vertex_index[b][bp];
         
-        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
-        
-        elem_beta := UnderlyingQuiverAlgebraElement( beta );
-        
         alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
         
         beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
+        
+        hom_structure_on_basis_paths := HomStructureOnBasisPaths( fpcategory );
         
         map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
                      hom_structure_on_basis_paths[a][b][ap][bp][alpha_index][beta_index][phi_index] );
@@ -545,7 +550,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
-        basis_elements := basis_paths_by_vertex_index[a][b];
+        basis_elements := BasisPathsByVertexIndex( fpcategory )[a][b];
         
         return MorphismConstructor(
                 range_category_of_HomStructure,
@@ -561,7 +566,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
       function( fpcategory, a, b, morphism )
         local basis, element;
         
-        basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
+        basis := BasisPathsByVertexIndex( fpcategory )[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
         element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
         
