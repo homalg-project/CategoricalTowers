@@ -412,6 +412,11 @@ DeclareOperation( "Algebroid",
 DeclareOperation( "Algebroid",
         [ IsHomalgRing, IsQuiver ] );
 
+#! @Arguments C, H
+#! @Group Algebroid
+DeclareOperation( "Algebroid",
+        [ IsFpCategory, IsCapCategory ] );
+
 #! @Arguments R, C
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
