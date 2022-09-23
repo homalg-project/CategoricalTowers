@@ -485,7 +485,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
         
-        basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
+        basis_elements := BasisPathsByVertexIndex( fpcategory )[nr_source][nr_range];
         
         return ObjectConstructor( range_category_of_HomStructure, Length( basis_elements ) );
         
@@ -494,7 +494,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
       function( fpcategory, source, alpha, beta, range )
-        local a, b, ap, bp, basis_ap_a, basis_b_bp, elem_alpha, elem_beta, alpha_index, beta_index, map;
+        local a, b, ap, bp, basis_paths_by_vertex_index, basis_ap_a, basis_b_bp,
+              elem_alpha, elem_beta, alpha_index, beta_index, hom_structure_on_basis_paths, map;
         
         a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
@@ -503,6 +504,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
         bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
+        
+        basis_paths_by_vertex_index := BasisPathsByVertexIndex( fpcategory );
         
         basis_ap_a := basis_paths_by_vertex_index[ap][a];
         
@@ -515,6 +518,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
         
         beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
+        
+        hom_structure_on_basis_paths := HomStructureOnBasisPaths( fpcategory );
         
         map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
                      hom_structure_on_basis_paths[a][b][ap][bp][alpha_index][beta_index][phi_index] );
@@ -545,7 +550,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
-        basis_elements := basis_paths_by_vertex_index[a][b];
+        basis_elements := BasisPathsByVertexIndex( fpcategory )[a][b];
         
         return MorphismConstructor(
                 range_category_of_HomStructure,
@@ -561,7 +566,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
       function( fpcategory, a, b, morphism )
         local basis, element;
         
-        basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
+        basis := BasisPathsByVertexIndex( fpcategory )[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
         element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
         

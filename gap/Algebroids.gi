@@ -850,7 +850,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
         
-        basis_elements := basis_paths_by_vertex_index[nr_source][nr_range];
+        basis_elements := BasisPathsByVertexIndex( algebroid )[nr_source][nr_range];
         
         return object_constructor( range_category, Length( basis_elements ) );
         
@@ -859,7 +859,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( algebroid,
       function( algebroid, source, alpha, beta, range )
-        local elem_alpha, elem_beta, a, b, ap, bp, basis_ap_a, basis_b_bp, size_source, size_range, coeffs_alpha, coeffs_beta, entries;
+        local elem_alpha, elem_beta, a, b, ap, bp, basis_paths_by_vertex_index,
+              basis_ap_a, basis_b_bp, size_source, size_range, coeffs_alpha, coeffs_beta, entries;
         
         elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
         
@@ -872,6 +873,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
         bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
+        
+        basis_paths_by_vertex_index := BasisPathsByVertexIndex( algebroid );
         
         basis_ap_a := basis_paths_by_vertex_index[ap][a];
         basis_b_bp := basis_paths_by_vertex_index[b][bp];
@@ -925,7 +928,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
-        basis_elements := basis_paths_by_vertex_index[a][b];
+        basis_elements := BasisPathsByVertexIndex( algebroid )[a][b];
         
         size_basis := Length( basis_elements );
         
@@ -956,7 +959,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         coefficients := EntriesOfHomalgMatrixAsListList( morphism_datum( morphism ) )[1];
         
-        basis := basis_paths_by_vertex_index[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
+        basis := BasisPathsByVertexIndex( algebroid )[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
         
         element := QuiverAlgebraElement( quiver_algebra, coefficients, basis );
         
@@ -997,7 +1000,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         
         element := UnderlyingQuiverAlgebraElement( morphism );
         
-        return CoefficientsOfPaths( basis_paths_by_vertex_index[nr_source][nr_range], representative_func( element ) );
+        return CoefficientsOfPaths( BasisPathsByVertexIndex( algebroid )[nr_source][nr_range], representative_func( element ) );
         
     end );
     
