@@ -166,9 +166,9 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "list1", "list2" ],
-        src_template := "Length( Concatenation( list1, list2 ) )",
-        dst_template := "Length( list1 ) + Length( list2 )",
+        variable_names := [ "value1", "value2" ],
+        src_template := "Sum( [ value1, value2 ] )",
+        dst_template := "value1 + value2",
     )
 );
 
