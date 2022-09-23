@@ -363,7 +363,25 @@ InstallMethod( BasisPathOfPathAlgebraBasisElement,
     
     paths := Paths( basis_element );
     
-    Assert( 0, Length( paths ) = 1 );
+    Assert( 0, Length( paths ) = 1 and Coefficients( basis_element ) = [ 1 ] );
+    
+    return paths[1];
+    
+end );
+
+##
+InstallMethod( BasisPathOfPathAlgebraBasisElement,
+        "for an element in a quotient of a path algebra",
+        [ IsQuotientOfPathAlgebraElement ],
+        
+  function( basis_element )
+    local representative, paths;
+    
+    representative := Representative( basis_element );
+    
+    paths := Paths( representative );
+    
+    Assert( 0, Length( paths ) = 1 and Coefficients( representative ) = [ 1 ] );
     
     return paths[1];
     
@@ -753,7 +771,7 @@ InstallMethod( \/,
         if IsObjectInFpCategory( p ) then
             return UnderlyingVertex( p );
         fi;
-        return Paths( UnderlyingQuiverAlgebraElement( p ) )[1];
+        return BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( p ) );
     end;
     
     Append( relations, List( L, a -> List( a, f ) ) );
@@ -1146,19 +1164,7 @@ InstallMethod( ElementaryTensor,
     
     morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
     
-    if IsQuotientOfPathAlgebraElement( morphism_as_quiver_algebra_element ) then
-        
-        morphism_as_quiver_algebra_element := Representative( morphism_as_quiver_algebra_element );
-        
-    fi;
-    
-    path := Paths( morphism_as_quiver_algebra_element );
-    
-    if not ( Length( path ) = 1 and Coefficients( morphism_as_quiver_algebra_element ) = [ 1 ] ) then
-        Error( "the morphism ", morphism, " is not well defined\n" );
-    fi;
-
-    path := path[1];
+    path := BasisPathOfPathAlgebraBasisElement( morphism_as_quiver_algebra_element );
     
     object_underlying_vertex := UnderlyingVertex( object );
     object_string := String( object_underlying_vertex );
@@ -1200,19 +1206,7 @@ InstallMethod( ElementaryTensor,
     
     morphism_as_quiver_algebra_element := UnderlyingQuiverAlgebraElement( morphism );
     
-    if IsQuotientOfPathAlgebraElement( morphism_as_quiver_algebra_element ) then
-        
-        morphism_as_quiver_algebra_element := Representative( morphism_as_quiver_algebra_element );
-        
-    fi;
-
-    path := Paths( morphism_as_quiver_algebra_element );
-    
-    if not ( Length( path ) = 1 and Coefficients( morphism_as_quiver_algebra_element ) = [ 1 ] ) then
-        Error( "the morphism ", morphism, " is not well defined\n" );
-    fi;
-    
-    path := path[1];
+    path := BasisPathOfPathAlgebraBasisElement( morphism_as_quiver_algebra_element );
     
     object_underlying_vertex := UnderlyingVertex( object );
     object_string := String( object_underlying_vertex );
@@ -2209,13 +2203,13 @@ InstallMethod( ViewObj,
     if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
         ViewObj( UnderlyingVertex( Source( o ) ) );
         Print( "-[" );
-        ViewObj( Paths( UnderlyingQuiverAlgebraElement( o ) )[1] );
+        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( o ) ) );
         Print( "]->" );
         ViewObj( UnderlyingVertex( Range( o ) ) );
     else
         ViewObj( UnderlyingVertex( Range( o ) ) );
         Print( "<-[" );
-        ViewObj( Paths( UnderlyingQuiverAlgebraElement( o ) )[1] );
+        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( o ) ) );
         Print( "]-" );
         ViewObj( UnderlyingVertex( Source( o ) ) );
     fi;
