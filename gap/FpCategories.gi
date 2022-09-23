@@ -437,7 +437,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         beta := PathAsAlgebraElement( quiver_algebra, path_2 );
         
-        return List( hom_v_w, path -> -1 + SafePosition( hom_vp_wp, Paths( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta )[1] ) );
+        return List( hom_v_w, path -> -1 + SafePosition( hom_vp_wp, BasisPathOfPathAlgebraBasisElement( alpha * PathAsAlgebraElement( quiver_algebra, path ) * beta ) ) );
         
     end;
     
