@@ -1357,6 +1357,45 @@ end );
 
 ##
 InstallMethodWithCache( Algebroid,
+        "for a homalg ring and a finitely presented category",
+        [ IsHomalgRing, IsFpCategory ],
+        
+  function( k, C )
+    local relations, kq, A, over_Z;
+    
+    relations := C!.relations;
+    
+    if relations = [ ] and not IsPathAlgebra( UnderlyingQuiverAlgebra( C ) ) then
+        Error( "the underlying quiver algebra is not a path algebra, nevertheless the list of relations is empty\n" );
+    fi;
+    
+    if HasIsIntegersForHomalg( k ) and IsIntegersForHomalg( k ) then
+        k := HomalgFieldOfRationals( );
+        over_Z := true;
+    else
+        over_Z := false;
+    fi;
+    
+    kq := PathAlgebra( k, UnderlyingQuiver( C ) );
+    
+    relations := List( relations, a -> PathAsAlgebraElement( kq, a[1] ) - PathAsAlgebraElement( kq, a[2] ) );
+    
+    A := kq / Ideal( kq, relations );
+    
+    A := kq / GroebnerBasis( IdealOfQuotient( A ) );
+    
+    A := Algebroid( A, over_Z ); ## do not call the single argument method Algebroid as it is an attribute
+    
+    SetUnderlyingCategory( A, C );
+    
+    SetIsLinearClosureOfACategory( A, true );
+    
+    return A;
+    
+end );
+
+##
+InstallMethodWithCache( Algebroid,
         "for a finitely presented category and a category",
         [ IsFpCategory, IsCapCategory ],
         
@@ -1393,17 +1432,6 @@ InstallMethodWithCache( Algebroid,
     SetIsLinearClosureOfACategory( A, true );
     
     return A;
-    
-end );
-
-##
-InstallMethodWithCache( Algebroid,
-        "for a homalg ring and a finitely presented category",
-        [ IsHomalgRing, IsFpCategory ],
-        
-  function( k, C )
-    
-    return Algebroid( C, MatrixCategory( k ) );
     
 end );
 
