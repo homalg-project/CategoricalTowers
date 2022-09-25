@@ -381,14 +381,6 @@ DeclareAttribute( "SieveFunctor", IsFpCategory );
 #
 ####################################
 
-#! @Description
-#!  Return the cell <A>c</A> in a finitely presented category <M>C</M> = <C>CapCategory</C>(<A>c</A>)
-#!  interpreted as a cell in <C>OppositeFpCategory</C>(<M>C</M>).
-#! @Arguments C, c
-#! @Returns a cell in a finitely presented category
-DeclareOperation( "Opposite",
-        [ IsFpCategory, IsCellInFpCategory ] );
-
 #! @Arguments str
 DeclareOperation( "TrivialCategory",
         [ IsString ] );
