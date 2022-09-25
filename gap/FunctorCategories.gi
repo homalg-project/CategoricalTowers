@@ -1641,14 +1641,16 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddExponentialOnObjects ( Hom,
           function ( Hom, F, G )
-            local B, objs, C, Yoneda, functor_on_objects, mors, functor_on_morphisms;
+            local B, B_op, objs_op, Yoneda, mors_op, functor_on_objects, functor_on_morphisms;
             
             B := Source( Hom );
             
-            objs := SetOfObjects( B );
+            B_op := OppositeFpCategory( B );
             
-            ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
-            Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
+            objs_op := SetOfObjects( B_op );
+            
+            ## the Yoneda embedding: B^op ↪ Hom
+            Yoneda := YonedaEmbeddingData( B_op );
             
             functor_on_objects :=
               function ( objB_index )
@@ -1657,25 +1659,24 @@ InstallMethodWithCache( FunctorCategory,
                 ## but should live in the range category C of the functor category (necessitating requirement (1) above):
                 return HomomorphismStructureOnObjects( Hom,
                                DirectProduct( Hom,
-                                       [ ApplyFunctor( Yoneda, Opposite( B, objs[objB_index] ) ),
+                                       [ Yoneda[1]( objs_op[objB_index] ),
                                          F ] ),
                                G );
                 
             end;
             
-            mors := SetOfGeneratingMorphisms( B );
+            mors_op := SetOfGeneratingMorphisms( B_op );
             
             functor_on_morphisms :=
               function ( new_source, morB_index, new_range )
+                local mor;
                 
-                #if IsOne( morB ) then
-                #    return IdentityMorphism( new_source );
-                #fi;
+                mor := mors_op[morB_index];
                 
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                new_source,
                                DirectProductFunctorial( Hom,
-                                       [ ApplyFunctor( Yoneda, Opposite( B, mors[morB_index] ) ),
+                                       [ Yoneda[2]( Yoneda[1]( Source( mor ) ), mor, Yoneda[1]( Range( mor ) ) ),
                                          IdentityMorphism( Hom, F ) ] ),
                                IdentityMorphism( Hom, G ),
                                new_range );
@@ -1689,14 +1690,16 @@ InstallMethodWithCache( FunctorCategory,
         ##
         AddExponentialOnMorphismsWithGivenExponentials( Hom,
           function( Hom, source, eta, rho, range )
-            local B, objs, Yoneda, natural_transformation_on_objects;
+            local B, B_op, objs_op, Yoneda, natural_transformation_on_objects;
             
             B := Source( Hom );
             
-            objs := SetOfObjects( B );
+            B_op := OppositeFpCategory( B );
             
-            ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
-            Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
+            objs_op := SetOfObjects( B_op );
+            
+            ## the Yoneda embedding: B^op ↪ Hom
+            Yoneda := YonedaEmbeddingData( B_op );
             
             natural_transformation_on_objects :=
               function ( source, objB_index, range )
@@ -1704,7 +1707,7 @@ InstallMethodWithCache( FunctorCategory,
                 return HomomorphismStructureOnMorphismsWithGivenObjects( Hom,
                                source,
                                DirectProductFunctorial( Hom,
-                                       [ IdentityMorphism( Hom, ApplyFunctor( Yoneda, Opposite( B, objs[objB_index] ) ) ),
+                                       [ IdentityMorphism( Hom, Yoneda[1]( objs_op[objB_index] ) ),
                                          eta ] ),
                                rho,
                                range );
@@ -1724,19 +1727,23 @@ InstallMethodWithCache( FunctorCategory,
             ## G^F × F → G
             AddCartesianEvaluationMorphismWithGivenSource( Hom,
               function( Hom, F, G, exp )
-                local B, C, objs, Yoneda, T, natural_transformation_on_objects;
+                local B, C, objs, T, B_op, objs_op, Yoneda, natural_transformation_on_objects;
                 
                 B := Source( Hom );
                 C := Range( Hom );
                 
                 objs := SetOfObjects( B );
                 
-                ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
-                Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
-                
                 ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the functor category,
                 ## and once as the distinguished object of the homomorphism structure of the functor category itself, which both coincide by the above assumption:
                 T := DistinguishedObjectOfHomomorphismStructure( B );
+                
+                B_op := OppositeFpCategory( B );
+                
+                objs_op := SetOfObjects( B_op );
+                
+                ## the Yoneda embedding: B^op ↪ Hom
+                Yoneda := YonedaEmbeddingData( B_op );
                 
                 natural_transformation_on_objects :=
                   function ( source, objB_index, range )
@@ -1802,7 +1809,7 @@ InstallMethodWithCache( FunctorCategory,
                         ## reinterpret t: 1 → G^F(b) := Hom(Y(b) × F, G) ∈ Mor(C) as a natural transformation theta: Y(b) × F → G;
                         theta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
                                          DirectProduct( Hom,
-                                                 [ ApplyFunctor( Yoneda, Opposite( B, b ) ),
+                                                 [ Yoneda[1]( objs_op[objB_index] ),
                                                    F ] ),
                                          G,
                                          ## here we need that the range category C of the functor category coincides with
@@ -1844,19 +1851,23 @@ InstallMethodWithCache( FunctorCategory,
             ## F → (F × G)^G
             AddCartesianCoevaluationMorphismWithGivenRange( Hom,
               function( Hom, F, G, exp )
-                local B, C, objs, Yoneda, T, natural_transformation_on_objects;
+                local B, C, objs, T, B_op, objs_op, Yoneda, natural_transformation_on_objects;
                 
                 B := Source( Hom );
                 C := Range( Hom );
                 
                 objs := SetOfObjects( B );
                 
-                ## the Yoneda embedding: OppositeFpCategory( B ) ↪ Hom
-                Yoneda := YonedaEmbedding( OppositeFpCategory( B ) );
-                
                 ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the functor category,
                 ## and once as the distinguished object of the homomorphism structure of the functor category itself, which both coincide by the above assumption:
                 T := DistinguishedObjectOfHomomorphismStructure( B );
+                
+                B_op := OppositeFpCategory( B );
+                
+                objs_op := SetOfObjects( B_op );
+                
+                ## the Yoneda embedding: B^op ↪ Hom
+                Yoneda := YonedaEmbeddingData( B_op );
                 
                 natural_transformation_on_objects :=
                   function ( source, objB_index, range )
@@ -1867,7 +1878,7 @@ InstallMethodWithCache( FunctorCategory,
                     ## source = F(b)
                     ## range  = ((F × G)^G)(b)
                     
-                    Yb := ApplyFunctor( Yoneda, Opposite( B, b ) );
+                    Yb := Yoneda[1]( objs_op[objB_index] );
                     
                     YbxG := DirectProduct( Hom, [ Yb, G ] );
                     FxG := DirectProduct( Hom, [ F, G ] );

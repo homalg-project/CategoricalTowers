@@ -176,11 +176,11 @@ InstallMethod( NerveTruncatedInDegree2,
 end );
 
 ##
-InstallMethod( YonedaEmbedding,
+InstallMethodForCompilerForCAP( YonedaEmbeddingData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, PSh, objs, mors, name, Yoneda;
+    local A, PSh, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -196,11 +196,7 @@ InstallMethod( YonedaEmbedding,
     
     mors := SetOfGeneratingMorphisms( B );
     
-    name := "Yoneda embedding functor";
-    
-    Yoneda := CapFunctor( name, B, PSh );
-    
-    AddObjectFunction( Yoneda,
+    Yoneda_on_objs :=
       function ( obj )
         local Yobj;
         
@@ -208,13 +204,14 @@ InstallMethod( YonedaEmbedding,
                         List( objs, o -> HomStructure( o, obj ) ),
                         List( mors, m -> HomStructure( m, obj ) ) );
         
+        #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsProjective( Yobj, true );
         
         return Yobj;
         
-    end );
+    end;
     
-    AddMorphismFunction( Yoneda,
+    Yoneda_on_mors :=
       function ( s, mor, r )
         
         return AsMorphismInFunctorCategoryByValues( PSh,
@@ -222,7 +219,36 @@ InstallMethod( YonedaEmbedding,
                        List( objs, o -> HomStructure( o, mor ) ),
                        r );
         
-    end );
+    end;
+    
+    return Pair( Yoneda_on_objs, Yoneda_on_mors );
+    
+end );
+
+##
+InstallMethod( YonedaEmbedding,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local A, PSh, Yoneda, Yoneda_data;
+    
+    A := UnderlyingQuiverAlgebra( B );
+    
+    if not IsFiniteDimensional( A ) then
+        
+        Error( "The underlying quiver algebra should be finite dimensional!\n" );
+        
+    fi;
+    
+    PSh := PreSheaves( B );
+    
+    Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
+    
+    Yoneda_data := YonedaEmbeddingData( B );
+    
+    AddObjectFunction( Yoneda, Yoneda_data[1] );
+    
+    AddMorphismFunction( Yoneda,  Yoneda_data[2] );
     
     return Yoneda;
     

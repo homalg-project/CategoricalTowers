@@ -45,6 +45,8 @@ DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsFunctorCat
 DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #! @InsertChunk NerveTruncatedInDegree2
 
+DeclareAttribute( "YonedaEmbeddingData", IsCapCategory );
+
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is the Yoneda embedding functor from
 #!  <A>B</A> into the functors category <C>Hom</C>( <C>OppositeAlgebroid</C>(<A>B</A>),$H$), where
