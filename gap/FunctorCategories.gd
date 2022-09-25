@@ -344,6 +344,8 @@ DeclareOperationWithCache( "PreSheaves",
 DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory ] );
 
+CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsFunctorCategory );
+
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
 #!  The output the full subcategory of the subcategory of functors from the
