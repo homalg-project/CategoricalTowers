@@ -229,6 +229,8 @@ DeclareAttribute( "RelationsOfFpCategory",
 DeclareAttribute( "OppositeFpCategory",
         IsFpCategory );
 
+CapJitAddTypeSignature( "OppositeFpCategory", [ IsFpCategory ], IsFpCategory );
+
 DeclareAttribute( "Multiplication",
         IsMonoidAsCategory );
 
