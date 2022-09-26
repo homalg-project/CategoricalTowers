@@ -201,8 +201,8 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingData,
         local Yobj;
         
         Yobj := AsObjectInFunctorCategoryByValues( PSh,
-                        List( objs, o -> HomStructure( o, obj ) ),
-                        List( mors, m -> HomStructure( m, obj ) ) );
+                        List( objs, o -> HomomorphismStructureOnObjects( B, o, obj ) ),
+                        List( mors, m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsProjective( Yobj, true );
@@ -216,7 +216,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingData,
         
         return AsMorphismInFunctorCategoryByValues( PSh,
                        s,
-                       List( objs, o -> HomStructure( o, mor ) ),
+                       List( objs, o -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), mor ) ),
                        r );
         
     end;
