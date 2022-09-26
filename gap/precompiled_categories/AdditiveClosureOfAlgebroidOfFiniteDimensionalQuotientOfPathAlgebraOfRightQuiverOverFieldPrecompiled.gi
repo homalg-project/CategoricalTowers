@@ -367,10 +367,8 @@ function ( cat_1, source_1, alpha_1, range_1 )
     deduped_8_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     hoisted_7_1 := deduped_10_1;
     hoisted_6_1 := [ 1 .. Length( ObjectList( Range( alpha_1 ) ) ) ];
-    hoisted_5_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
-            return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
-                    return Representative( UnderlyingQuiverAlgebraElement( logic_new_func_x_3 ) );
-                end );
+    hoisted_5_1 := List( deduped_11_1, function ( logic_new_func_list_2 )
+            return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
     hoisted_4_1 := deduped_8_1;
     hoisted_3_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
