@@ -1215,6 +1215,7 @@ InstallMethod( Algebroid,
     CapCategorySwitchLogicOff( A );
     DisableSanityChecks( A );
     
+    SetFilterObj( A, IsAlgebroid );
     AddObjectRepresentation( A, IsObjectInAlgebroid );
     AddMorphismRepresentation( A, IsMorphismInAlgebroid );
     
@@ -1234,7 +1235,6 @@ InstallMethod( Algebroid,
     A!.over_Z := over_Z;
     
     SetUnderlyingQuiverAlgebra( A, Rq );
-    SetFilterObj( A, IsAlgebroid );
     if Length( Vertices( quiver ) ) = 1 then
         SetFilterObj( A, IsAlgebraAsCategory );
     fi;

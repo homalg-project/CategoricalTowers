@@ -644,6 +644,7 @@ InstallMethodWithCache( Category,
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
     
+    SetFilterObj( C, IsFpCategory );
     AddObjectRepresentation( C, IsObjectInFpCategory );
     AddMorphismRepresentation( C, IsMorphismInFpCategory );
     
@@ -653,7 +654,6 @@ InstallMethodWithCache( Category,
     SetParity( C, parity );
     
     SetUnderlyingQuiverAlgebra( C, A );
-    SetFilterObj( C, IsFpCategory );
     if Length( Vertices( quiver ) ) = 1 then
         SetFilterObj( C, IsMonoidAsCategory );
         if Length( Arrows( quiver ) ) <= 1 then
