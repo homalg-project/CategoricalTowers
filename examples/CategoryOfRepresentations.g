@@ -34,11 +34,14 @@ CatReps := FunctorCategory( A, GF3 );
 #! Category of matrices over GF(3) )
 InfoOfInstalledOperationsOfCategory( CatReps );
 #! 92 primitive operations were used to derive 313 operations for this category
-#! which constructively
+#! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsSymmetricMonoidalCategory
 #! * IsAbelianCategory
+#! and furthermore mathematically
+#! * IsFiniteCocompleteCategory (but not yet algorithmically)
+#! * IsFiniteCompleteCategory (but not yet algorithmically)
 CommutativeRingOfLinearCategory( CatReps );
 #! GF(3)
 zero := ZeroObject( CatReps );
