@@ -91,23 +91,7 @@ DeclareAttribute( "UnderlyingQuiver",
 DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsFpCategory );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpCategory ], function ( input_types )
-    
-    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsPathAlgebra );
-        
-    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsQuotientOfPathAlgebra );
-        
-    else
-        
-        Error( "this should never happen" );
-        
-    fi;
-    
-end );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpCategory ], IsQuiverAlgebra );
 
 #! @Description
 #!  The number of morphisms in the finitely presented category <A>C</A>.
@@ -260,25 +244,7 @@ CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInFpCategory ], IsQuiverVe
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInFpCategory );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpCategory ], function ( input_types )
-    
-    Assert( 0, IsFpCategory( input_types[1].category ) );
-    
-    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsPathAlgebraElement );
-        
-    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsQuotientOfPathAlgebraElement );
-        
-    else
-        
-        Error( "this should never happen" );
-        
-    fi;
-    
-end );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpCategory ], IsQuiverAlgebraElement );
 
 ##
 DeclareAttribute( "BasisPathOfPathAlgebraBasisElement",

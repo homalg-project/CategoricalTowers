@@ -1022,7 +1022,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RANDOM_METHODS_OF_ALGEBROID,
 end );
 
 BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function ( cat )
-  local A, Rq, is_finite_dimensional, is_path_algebra, is_right_quiver, over_field;
+  local A, Rq, is_finite_dimensional, is_right_quiver, over_field;
     
     Assert( 0, IsAdditiveClosureCategory( cat ) );
     
@@ -1034,37 +1034,19 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function 
     
     is_finite_dimensional := IsFiniteDimensional( Rq );
     
-    is_path_algebra := IsPathAlgebra( Rq );
-    
     is_right_quiver := IsRightQuiver( QuiverOfAlgebra( Rq ) );
     
     over_field := not A!.over_Z;
     
-    if is_finite_dimensional and is_path_algebra and is_right_quiver and over_field and IsMatrixCategory( RangeCategoryOfHomomorphismStructure( A ) ) then
+    if is_finite_dimensional and is_right_quiver and over_field and IsMatrixCategory( RangeCategoryOfHomomorphismStructure( A ) ) then
         
-        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
-        
-        return true;
-        
-    elif is_finite_dimensional and not is_path_algebra and is_right_quiver and over_field and IsMatrixCategory( RangeCategoryOfHomomorphismStructure( A ) ) then
-        
-        Assert( 0, IsQuotientOfPathAlgebra( Rq ) );
-        
-        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( cat );
         
         return true;
         
-    elif is_finite_dimensional and is_path_algebra and is_right_quiver and not over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
+    elif is_finite_dimensional and is_right_quiver and not over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
         
-        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled( cat );
-        
-        return true;
-        
-    elif is_finite_dimensional and not is_path_algebra and is_right_quiver and not over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
-        
-        Assert( 0, IsQuotientOfPathAlgebra( Rq ) );
-        
-        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled( cat );
+        ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled( cat );
         
         return true;
         
@@ -1077,7 +1059,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function 
 end );
 
 BindGlobal( "ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidPrecompiled", function ( cat )
-  local Add, A, Rq, is_finite_dimensional, is_path_algebra, is_right_quiver, over_field;
+  local Add, A, Rq, is_finite_dimensional, is_right_quiver, over_field;
     
     Assert( 0, IsAdelmanCategory( cat ) );
     
@@ -1093,15 +1075,19 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidPrecom
     
     is_finite_dimensional := IsFiniteDimensional( Rq );
     
-    is_path_algebra := IsPathAlgebra( Rq );
-    
     is_right_quiver := IsRightQuiver( QuiverOfAlgebra( Rq ) );
     
     over_field := not A!.over_Z;
     
-    if is_finite_dimensional and is_path_algebra and is_right_quiver and not over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
+    if is_finite_dimensional and is_right_quiver and over_field and IsMatrixCategory( RangeCategoryOfHomomorphismStructure( A ) ) then
         
-        ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverZPrecompiled( cat );
+        ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( cat );
+        
+        return true;
+        
+    elif is_finite_dimensional and is_right_quiver and not over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
+        
+        ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled( cat );
         
         return true;
         
