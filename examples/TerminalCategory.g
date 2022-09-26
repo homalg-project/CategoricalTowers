@@ -9,7 +9,7 @@ IsTerminalCategory( T );
 #! true
 InfoOfInstalledOperationsOfCategory( T );
 #! 488 primitive operations were used to derive 520 operations for this category
-#! which constructively
+#! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsBicartesianClosedCategory
@@ -18,6 +18,17 @@ InfoOfInstalledOperationsOfCategory( T );
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! and furthermore mathematically
+#! * IsFinitelyPresentedCategory
+#! * IsFinitelyPresentedLinearCategory
+#! * IsLinearClosureOfACategory
+#! * IsLocallyOfFiniteInjectiveDimension
+#! * IsLocallyOfFiniteProjectiveDimension
+#! * IsSkeletalCategory
+#! * IsStrictCartesianCategory
+#! * IsStrictCocartesianCategory
+#! * IsStrictMonoidalCategory
+#! * IsTerminalCategory
 i := InitialObject( T );
 #! <An object in FiniteCompletion( InitialCategory( ) )>
 t := TerminalObject( T );
