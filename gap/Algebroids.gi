@@ -541,7 +541,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         quiver_algebra := UnderlyingQuiverAlgebra( category );
         
-        id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
+        id := PathAsAlgebraElement( quiver_algebra, QuiverVertexAsIdentityPath( UnderlyingVertex( object ) ) );
         
         return MorphismInAlgebroid( category,
                        object,

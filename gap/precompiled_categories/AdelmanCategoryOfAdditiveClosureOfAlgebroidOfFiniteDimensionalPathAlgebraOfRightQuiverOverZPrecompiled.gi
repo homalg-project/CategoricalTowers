@@ -46,7 +46,9 @@ function ( cat_1, arg2_1 )
             end ) ) );
     hoisted_45_1 := deduped_52_1;
     hoisted_44_1 := deduped_48_1;
-    hoisted_36_1 := List( deduped_61_1, UnderlyingVertex );
+    hoisted_36_1 := List( deduped_61_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_14_1 := deduped_58_1;
     hoisted_6_1 := deduped_50_1;
     hoisted_43_1 := List( deduped_50_1, function ( logic_new_func_x_2 )
@@ -145,7 +147,9 @@ function ( cat_1, arg2_1 )
             return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
         end );
     hoisted_15_1 := deduped_49_1;
-    hoisted_13_1 := List( deduped_56_1, UnderlyingVertex );
+    hoisted_13_1 := List( deduped_56_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_26_1 := List( deduped_49_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := PathAsAlgebraElement( hoisted_14_1, hoisted_13_1[logic_new_func_x_2] );
@@ -453,7 +457,9 @@ function ( cat_1, alpha_1 )
     deduped_35_1 := [ 1 .. deduped_36_1 ];
     deduped_34_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_40_1[1] );
     deduped_33_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_39_1[1] );
-    hoisted_25_1 := List( deduped_49_1, UnderlyingVertex );
+    hoisted_25_1 := List( deduped_49_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_15_1 := deduped_55_1;
     hoisted_5_1 := deduped_40_1;
     deduped_32_1 := List( deduped_40_1, function ( logic_new_func_x_2 )
@@ -470,7 +476,9 @@ function ( cat_1, alpha_1 )
         end );
     deduped_31_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_40_1[deduped_34_1] );
     hoisted_30_1 := deduped_38_1;
-    hoisted_29_1 := List( deduped_48_1, UnderlyingVertex );
+    hoisted_29_1 := List( deduped_48_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_28_1 := deduped_48_1;
     hoisted_27_1 := deduped_32_1;
     hoisted_4_1 := deduped_52_1;
@@ -512,7 +520,9 @@ function ( cat_1, alpha_1 )
     hoisted_16_1 := List( deduped_39_1, function ( logic_new_func_x_2 )
             return hoisted_4_1;
         end );
-    hoisted_14_1 := List( deduped_50_1, UnderlyingVertex );
+    hoisted_14_1 := List( deduped_50_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_10_1 := deduped_39_1;
     hoisted_17_1 := UnionOfRowsListList( deduped_45_1, [ List( deduped_39_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2;
@@ -663,7 +673,9 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_84_1 := List( deduped_94_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_83_1 := List( deduped_91_1, UnderlyingVertex );
+    deduped_83_1 := List( deduped_91_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     deduped_82_1 := Length( deduped_92_1 );
     deduped_81_1 := List( deduped_92_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
@@ -697,7 +709,9 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_69_1 := deduped_95_1;
     hoisted_68_1 := deduped_94_1;
     hoisted_67_1 := deduped_78_1;
-    hoisted_59_1 := Concatenation( deduped_83_1, List( deduped_92_1, UnderlyingVertex ) );
+    hoisted_59_1 := Concatenation( deduped_83_1, List( deduped_92_1, function ( logic_new_func_x_2 )
+              return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+          end ) );
     hoisted_27_1 := deduped_100_1;
     hoisted_4_1 := deduped_71_1;
     hoisted_66_1 := List( deduped_71_1, function ( logic_new_func_x_2 )
@@ -804,7 +818,9 @@ function ( cat_1, arg2_1, arg3_1 )
                         return List( logic_new_func_new_row_2, UnderlyingQuiverAlgebraElement );
                     end ) ] ) ] );
     hoisted_38_1 := deduped_87_1;
-    hoisted_37_1 := List( deduped_97_1, UnderlyingVertex );
+    hoisted_37_1 := List( deduped_97_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_50_1 := List( deduped_87_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_37_1[logic_new_func_x_2] );
@@ -1277,14 +1293,18 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_167_1 := List( deduped_187_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_166_1 := List( deduped_179_1, UnderlyingVertex );
+    deduped_166_1 := List( deduped_179_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     deduped_165_1 := List( deduped_177_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
     deduped_164_1 := List( deduped_179_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    deduped_163_1 := List( deduped_180_1, UnderlyingVertex );
+    deduped_163_1 := List( deduped_180_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     deduped_162_1 := Length( deduped_185_1 );
     deduped_161_1 := List( deduped_185_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
@@ -1380,7 +1400,9 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_129_1 := deduped_182_1;
     hoisted_128_1 := deduped_181_1;
     hoisted_127_1 := deduped_149_1;
-    hoisted_119_1 := Concatenation( deduped_163_1, List( deduped_176_1, UnderlyingVertex ) );
+    hoisted_119_1 := Concatenation( deduped_163_1, List( deduped_176_1, function ( logic_new_func_x_2 )
+              return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+          end ) );
     hoisted_71_1 := deduped_132_1;
     hoisted_27_1 := deduped_194_1;
     hoisted_126_1 := List( deduped_132_1, function ( logic_new_func_x_2 )
@@ -1464,7 +1486,9 @@ function ( cat_1, arg2_1, arg3_1 )
                         return hoisted_90_1;
                     end ) ] ), UnionOfColumnsListList( deduped_159_1, [ deduped_195_1, deduped_184_1 ] ) ] );
     hoisted_100_1 := deduped_173_1;
-    hoisted_99_1 := List( deduped_191_1, UnderlyingVertex );
+    hoisted_99_1 := List( deduped_191_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_112_1 := List( deduped_173_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_99_1[logic_new_func_x_2] );
@@ -1658,7 +1682,9 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_69_1 := deduped_185_1;
     hoisted_68_1 := deduped_187_1;
     hoisted_67_1 := deduped_152_1;
-    hoisted_59_1 := Concatenation( deduped_166_1, List( deduped_177_1, UnderlyingVertex ) );
+    hoisted_59_1 := Concatenation( deduped_166_1, List( deduped_177_1, function ( logic_new_func_x_2 )
+              return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+          end ) );
     hoisted_4_1 := deduped_133_1;
     hoisted_66_1 := List( deduped_133_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
@@ -1740,7 +1766,9 @@ function ( cat_1, arg2_1, arg3_1 )
                         return hoisted_28_1;
                     end ) ] ), UnionOfColumnsListList( deduped_162_1, [ deduped_199_1, deduped_186_1 ] ) ] );
     hoisted_38_1 := deduped_172_1;
-    hoisted_37_1 := List( deduped_189_1, UnderlyingVertex );
+    hoisted_37_1 := List( deduped_189_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_50_1 := List( deduped_172_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := PathAsAlgebraElement( hoisted_27_1, hoisted_37_1[logic_new_func_x_2] );

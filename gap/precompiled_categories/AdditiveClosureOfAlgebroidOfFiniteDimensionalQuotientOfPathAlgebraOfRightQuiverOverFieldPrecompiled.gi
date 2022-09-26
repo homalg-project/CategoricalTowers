@@ -334,7 +334,9 @@ function ( cat_1, a_1 )
     hoisted_5_1 := ZeroImmutable( deduped_8_1 );
     hoisted_4_1 := deduped_10_1;
     hoisted_3_1 := deduped_8_1;
-    hoisted_2_1 := List( deduped_9_1, UnderlyingVertex );
+    hoisted_2_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
+            return QuiverVertexAsIdentityPath( UnderlyingVertex( logic_new_func_x_2 ) );
+        end );
     hoisted_1_1 := deduped_9_1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, MorphismMatrix, List( deduped_7_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;

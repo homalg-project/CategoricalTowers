@@ -410,6 +410,15 @@ DeclareOperation( "ElementaryTensor",
 DeclareOperation( "ElementaryTensor",
         [ IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory ] );
 
+#! @Description
+#!   Simply returns <A>vertex</A>, but with the semantics of being an identity path.
+#! @Arguments vertex
+#! @Returns a path
+DeclareOperation( "QuiverVertexAsIdentityPath",
+        [ IsQuiverVertex ] );
+
+CapJitAddTypeSignature( "QuiverVertexAsIdentityPath", [ IsQuiverVertex ], IsPath );
+
 ####################################
 #
 #! @Section Constructors
