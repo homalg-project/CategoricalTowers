@@ -141,7 +141,7 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 
 CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpCategory ], function ( input_types )
     
-    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := IsInt ) ) ) ) ) ) );
+    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) ) ) ) ) );
     
 end );
 
