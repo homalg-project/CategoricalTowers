@@ -10,18 +10,16 @@ LoadPackage( "CompilerForCAP", false );
 QQ := HomalgFieldOfRationals( );;
 snake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;
 A := PathAlgebra( QQ, snake_quiver );;
-A_bar := QuotientOfPathAlgebra( A, [ A.abc ] );;
 
 ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
 # only valid for the construction above
 # FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP
-CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsPathAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
-CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuotientOfPathAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
 
 precompile_AdditiveClosureOfAlgebroid :=
-  function( Rq, over_Z, path_algebra, ring )
+  function( Rq, over_Z, ring )
     CapJitPrecompileCategoryAndCompareResult(
         EvalString( ReplacedString( """Rq -> AdditiveClosure( Algebroid(
             Rq, over_Z : FinalizeCategory := true
@@ -29,25 +27,17 @@ precompile_AdditiveClosureOfAlgebroid :=
         [ Rq ],
         "Algebroids",
         Concatenation(
-            "AdditiveClosureOfAlgebroidOfFiniteDimensional",
-            path_algebra,
-            "OfRightQuiverOver",
+            "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOver",
             ring,
             "Precompiled"
         ) :
         operations := "primitive"
     ); end;;
 
-precompile_AdditiveClosureOfAlgebroid(
-        A, false, "PathAlgebra", "Field" );
-precompile_AdditiveClosureOfAlgebroid(
-        A_bar, false, "QuotientOfPathAlgebra", "Field" );
-precompile_AdditiveClosureOfAlgebroid(
-        A, true, "PathAlgebra", "Z" );
-precompile_AdditiveClosureOfAlgebroid(
-        A_bar, true, "QuotientOfPathAlgebra", "Z" );
+precompile_AdditiveClosureOfAlgebroid( A, false, "Field" );
+precompile_AdditiveClosureOfAlgebroid( A, true, "Z" );
 
-AdditiveClosureOfAlgebroidOfFiniteDimensionalPathAlgebraOfRightQuiverOverFieldPrecompiled( A );
+AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( A );
 #! Additive closure( Algebroid( Q, FreeCategory( RightQuiver(
 #! "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) )
 
@@ -67,23 +57,7 @@ argument_name := NamesLocalVariablesFunction(
   ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
 #! true
 
-cat := AdditiveClosure( Algebroid( A_bar, false ) );;
-argument_name := NamesLocalVariablesFunction(
-                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
-
-( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
-  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
-#! true
-
 cat := AdditiveClosure( Algebroid( A, true ) );;
-argument_name := NamesLocalVariablesFunction(
-                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
-
-( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
-  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
-#! true
-
-cat := AdditiveClosure( Algebroid( A_bar, true ) );;
 argument_name := NamesLocalVariablesFunction(
                          Last( cat!.added_functions.ZeroObject )[1] )[1];;
 

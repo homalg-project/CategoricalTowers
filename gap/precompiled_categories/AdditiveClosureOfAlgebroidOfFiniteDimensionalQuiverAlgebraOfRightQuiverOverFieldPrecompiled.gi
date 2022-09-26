@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -128,7 +128,7 @@ end
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, 1 );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Dimension, 1 );
 end
 ########
         
@@ -143,7 +143,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     deduped_33_1 := UnderlyingCategory( cat_1 );
     deduped_32_1 := MorphismMatrix( alpha_1 );
     deduped_31_1 := MorphismMatrix( beta_1 );
-    deduped_30_1 := RankOfObject( range_1 );
+    deduped_30_1 := Dimension( range_1 );
     deduped_29_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_28_1 := ObjectList( Range( beta_1 ) );
     deduped_27_1 := ObjectList( Source( beta_1 ) );
@@ -292,7 +292,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
                             fi;
                             return;
                         end ) );
-              end ) ), RankOfObject( source_1 ), deduped_30_1, UnderlyingRing( deduped_29_1 ) ) );
+              end ) ), Dimension( source_1 ), deduped_30_1, UnderlyingRing( deduped_29_1 ) ) );
 end
 ########
         
@@ -308,7 +308,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_3_1 := List( BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) ), function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Length );
         end );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Dimension, Sum( Concatenation( List( ObjectList( arg2_1 ), function ( logic_new_func_x_2 )
                   local hoisted_1_2;
                   hoisted_1_2 := hoisted_3_1[VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) )];
                   return List( hoisted_4_1, function ( logic_new_func_x_3 )
@@ -364,7 +364,7 @@ end
 function ( cat_1, source_1, alpha_1, range_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
     deduped_11_1 := MorphismMatrix( alpha_1 );
-    deduped_10_1 := RankOfObject( source_1 );
+    deduped_10_1 := Dimension( source_1 );
     deduped_9_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_8_1 := BasisPathsByVertexIndex( UnderlyingCategory( cat_1 ) );
     hoisted_7_1 := deduped_10_1;
@@ -403,7 +403,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
                             fi;
                             return;
                         end ) );
-              end ) ), deduped_10_1, RankOfObject( range_1 ), UnderlyingRing( deduped_9_1 ) ) );
+              end ) ), deduped_10_1, Dimension( range_1 ), UnderlyingRing( deduped_9_1 ) ) );
 end
 ########
         
@@ -914,21 +914,21 @@ end
     
 end );
 
-BindGlobal( "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled", function ( Rq )
+BindGlobal( "AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled", function ( Rq )
   local category_constructor, cat;
     
     category_constructor :=
         
         
         function ( Rq )
-    return AdditiveClosure( Algebroid( Rq, true : FinalizeCategory := true ) );
+    return AdditiveClosure( Algebroid( Rq, false : FinalizeCategory := true ) );
 end;
         
         
     
     cat := category_constructor( Rq : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuotientOfPathAlgebraOfRightQuiverOverZPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( cat );
     
     Finalize( cat );
     

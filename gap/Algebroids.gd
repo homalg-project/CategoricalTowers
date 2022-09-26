@@ -114,23 +114,7 @@ CapJitAddTypeSignature( "UnderlyingQuiver", [ IsAlgebroid ], IsQuiver );
 DeclareAttribute( "UnderlyingQuiverAlgebra",
         IsAlgebroid );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsAlgebroid ], function ( input_types )
-    
-    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsPathAlgebra );
-        
-    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsQuotientOfPathAlgebra );
-        
-    else
-        
-        Error( "this should never happen" );
-        
-    fi;
-    
-end );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsAlgebroid ], IsQuiverAlgebra );
 
 #! @Description
 #!  The dimension of the underlying quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
@@ -263,25 +247,7 @@ CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInAlgebroid ], IsQuiverVer
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
         IsMorphismInAlgebroid );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], function ( input_types )
-    
-    Assert( 0, IsAlgebroid( input_types[1].category ) );
-    
-    if IsPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsPathAlgebraElement );
-        
-    elif IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( input_types[1].category ) ) then
-        
-        return rec( filter := IsQuotientOfPathAlgebraElement );
-        
-    else
-        
-        Error( "this should never happen" );
-        
-    fi;
-    
-end );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], IsQuiverAlgebraElement );
 
 #! @Description
 #!  The underlying algebra of an algebroid.
