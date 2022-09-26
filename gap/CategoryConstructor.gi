@@ -302,9 +302,9 @@ InstallMethod( CategoryConstructor,
                 func := create_func_bool( name, CC );
             elif create_func_bool = "default" then
                 func := """
-                    function( input_arguments )
+                    function( input_arguments... )
                         
-                        return operation_name( underlying_arguments );
+                        return operation_name( underlying_arguments... );
                         
                     end
                 """;
@@ -321,10 +321,10 @@ InstallMethod( CategoryConstructor,
                 func := create_func_object( name, CC );
             elif create_func_object = "default" then
                 func := """
-                    function( input_arguments )
+                    function( input_arguments... )
                       local result;
                         
-                        result := operation_name( underlying_arguments );
+                        result := operation_name( underlying_arguments... );
                         
                         return ObjectConstructor( cat, result );
                         
@@ -343,10 +343,10 @@ InstallMethod( CategoryConstructor,
                 func := create_func_object_or_fail( name, CC );
             elif create_func_object_or_fail = "default" then
                 func := """
-                    function( input_arguments )
+                    function( input_arguments... )
                       local result;
                         
-                        result := operation_name( underlying_arguments );
+                        result := operation_name( underlying_arguments... );
                         
                         if result = fail then
                             
@@ -387,10 +387,10 @@ InstallMethod( CategoryConstructor,
                 func := create_func_morphism_or_fail( name, CC );
             elif create_func_morphism_or_fail = "default" then
                 func := """
-                    function( input_arguments )
+                    function( input_arguments... )
                       local result;
                         
-                        result := operation_name( underlying_arguments );
+                        result := operation_name( underlying_arguments... );
                         
                         if result = fail then
                             
@@ -440,10 +440,10 @@ InstallMethod( CategoryConstructor,
                     func := create_func_universal_morphism( name, CC );
                 elif create_func_universal_morphism = "default" then
                     func := """
-                        function( input_arguments )
+                        function( input_arguments... )
                           local result;
                             
-                            result := operation_name( underlying_arguments );
+                            result := operation_name( underlying_arguments... );
                             
                             return MorphismConstructor( cat, top_source, result, top_range );
                             
@@ -457,10 +457,10 @@ InstallMethod( CategoryConstructor,
                     func := create_func_morphism( name, CC );
                 elif create_func_morphism = "default" then
                     func := """
-                        function( input_arguments )
+                        function( input_arguments... )
                           local result;
                             
-                            result := operation_name( underlying_arguments );
+                            result := operation_name( underlying_arguments... );
                             
                             return MorphismConstructor( cat, top_source, result, top_range );
                             
