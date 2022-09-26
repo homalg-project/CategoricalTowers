@@ -64,6 +64,9 @@ which constructively
 * IsLinearCategoryOverCommutativeRing
 * IsSymmetricMonoidalCategory
 * IsAbelianCategory
+and furthermore mathematically
+* IsFiniteCocompleteCategory (but not yet algorithmically)
+* IsFiniteCompleteCategory (but not yet algorithmically)
 gap> CommutativeRingOfLinearCategory( CatReps );
 Q
 ```
