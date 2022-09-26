@@ -712,7 +712,7 @@ InstallMethodWithCache( FunctorCategory,
         function( name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                   return ObjectConstructor( cat, [ ] );
                   
@@ -726,7 +726,7 @@ InstallMethodWithCache( FunctorCategory,
         function( name, T )
             
             return """
-                function( input_arguments )
+                function( input_arguments... )
                     
                     return MorphismConstructor( cat, top_source, [ ], top_range );
                     
@@ -895,10 +895,10 @@ InstallMethodWithCache( FunctorCategory,
           function ( name, Hom )
             return
               """
-              function( input_arguments )
+              function( input_arguments... )
                 local L;
                 
-                L := NTuple( number_of_arguments, input_arguments );
+                L := NTuple( number_of_arguments, input_arguments... );
                 
                 ## due to issue https://github.com/homalg-project/CAP_project/issues/802
                 ## the result is not saved if operation_name is called with Range( cat ) as first argument
@@ -963,7 +963,7 @@ InstallMethodWithCache( FunctorCategory,
             return ## a constructor for universal objects: TerminalObject
               ReplacedStringViaRecord(
               """
-              function ( input_arguments )
+              function ( input_arguments... )
                 local C, objC, morC, functor_on_objects, functor_on_morphisms;
                 
                 C := Range( cat );
@@ -987,12 +987,12 @@ InstallMethodWithCache( FunctorCategory,
             return ## a constructor for universal objects: FiberProduct
               ReplacedStringViaRecord(
               """
-              function ( input_arguments )
+              function ( input_arguments... )
                 local C, i_arg, etas, functor_on_objects, mors, functor_on_morphisms;
                 
                 C := Range( cat );
                 
-                i_arg := NTuple( number_of_arguments, input_arguments );
+                i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 etas := i_arg[2];
                 
@@ -1028,12 +1028,12 @@ InstallMethodWithCache( FunctorCategory,
             return ## a constructor for universal objects: DirectSum
               ReplacedStringViaRecord(
               """
-              function ( input_arguments )
+              function ( input_arguments... )
                 local C, i_arg, Fs, functor_on_objects, functor_on_morphisms;
                 
                 C := Range( cat );
                 
-                i_arg := NTuple( number_of_arguments, input_arguments );
+                i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 Fs := i_arg[2];
                 
@@ -1057,12 +1057,12 @@ InstallMethodWithCache( FunctorCategory,
             return ## a constructor for universal objects: KernelObject
               ReplacedStringViaRecord(
               """
-              function ( input_arguments )
+              function ( input_arguments... )
                 local C, i_arg, eta, functor_on_objects, mors, functor_on_morphisms;
                 
                 C := Range( cat );
                 
-                i_arg := NTuple( number_of_arguments, input_arguments );
+                i_arg := NTuple( number_of_arguments, input_arguments... );
                 
                 eta := i_arg[2];
                 
@@ -1107,18 +1107,18 @@ InstallMethodWithCache( FunctorCategory,
         return
           ReplacedStringViaRecord(
           """
-          function ( input_arguments )
+          function ( input_arguments... )
             local B, C, i_arg, natural_transformation_on_objects;
             
             B := Source( cat );
             C := Range( cat );
             
-            i_arg := NTuple( number_of_arguments, input_arguments );
+            i_arg := NTuple( number_of_arguments, input_arguments... );
             
             natural_transformation_on_objects :=
               function ( source, objB_index, range )
                 
-                return operation_name( C, sequence_of_arguments_objB );
+                return operation_name( C, sequence_of_arguments_objB... );
                 
             end;
             
