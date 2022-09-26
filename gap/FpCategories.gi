@@ -289,7 +289,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         quiver_algebra := UnderlyingQuiverAlgebra( category );
         
-        id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
+        id := PathAsAlgebraElement( quiver_algebra, QuiverVertexAsIdentityPath( UnderlyingVertex( object ) ) );
         
         return MorphismInFpCategory( category,
                        object,
@@ -1220,6 +1220,17 @@ InstallMethod( ElementaryTensor,
     fi;
     
     return PreCompose( mors );
+    
+end );
+
+##
+InstallMethod( QuiverVertexAsIdentityPath,
+        [ IsQuiverVertex ],
+        
+  function( vertex )
+    
+    # interpreted as its identity path
+    return vertex;
     
 end );
 

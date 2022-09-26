@@ -105,6 +105,8 @@ DeclareProperty( "IsCoassociative",
 DeclareAttribute( "UnderlyingQuiver",
         IsAlgebroid );
 
+CapJitAddTypeSignature( "UnderlyingQuiver", [ IsAlgebroid ], IsQuiver );
+
 #! @Description
 #!  The quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
 #! @Arguments A

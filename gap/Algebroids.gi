@@ -451,17 +451,18 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
     ##
     AddIsWellDefinedForObjects( category,
       function( category, o )
+        local v;
         
-        o := UnderlyingVertex( o );
+        v := UnderlyingVertex( o );
         
-        return IsQuiverVertex( o ) and IsIdenticalObj( QuiverOfPath( o ), UnderlyingQuiver( category ) );
+        return IsQuiverVertex( v ) and IsIdenticalObj( QuiverOfPath( v ), UnderlyingQuiver( category ) );
         
     end );
     
     ##
     AddIsWellDefinedForMorphisms( category,
       function( category, alpha )
-        local m, v, w;
+        local m;
         
         m := UnderlyingQuiverAlgebraElement( alpha );
         
@@ -469,37 +470,15 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
             
             return false;
             
-        fi;
-        
-        if IsZero( m ) then
+        elif IsZero( m ) then
             
             return true;
             
-        fi;
-        
-        if not IsUniform( m ) then
+        elif not ForAll( Paths( m ), p -> UnderlyingVertex( Source( alpha ) ) = Source( p ) ) then
             
             return false;
             
-        fi;
-        
-        if IsQuotientOfPathAlgebraElement( m ) then
-            
-            m := Representative( m );
-            
-        fi;
-        
-        v := Source( LeadingPath( m ) );
-        
-        if not ( UnderlyingVertex( Source( alpha ) ) = v ) then
-            
-            return false;
-            
-        fi;
-        
-        w := Target( LeadingPath( m ) );
-        
-        if not ( UnderlyingVertex( Range( alpha ) ) = w ) then
+        elif not ForAll( Paths( m ), p -> UnderlyingVertex( Range( alpha ) ) = Target( p ) ) then
             
             return false;
             
@@ -541,7 +520,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ALGEBROID,
         
         quiver_algebra := UnderlyingQuiverAlgebra( category );
         
-        id := PathAsAlgebraElement( quiver_algebra, UnderlyingVertex( object ) );
+        id := PathAsAlgebraElement( quiver_algebra, QuiverVertexAsIdentityPath( UnderlyingVertex( object ) ) );
         
         return MorphismInAlgebroid( category,
                        object,
@@ -1212,6 +1191,7 @@ InstallMethod( Algebroid,
       rec( category_attribute_names :=
            [ "SetOfObjects",
              "SetOfGeneratingMorphisms",
+             "UnderlyingQuiver",
              "UnderlyingQuiverAlgebra",
              "BasisPathsByVertexIndex",
              "HomStructureOnBasisPaths",
