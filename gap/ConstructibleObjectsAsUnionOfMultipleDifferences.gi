@@ -308,25 +308,6 @@ InstallMethod( \+,
 end );
 
 ##
-InstallGlobalFunction( UnionOfMultipleDifferencesOfNormalizedObjects,
-  function( L )
-    local C, A;
-    
-    A := rec( );
-
-    C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfSingleDifferences( L[1] )[1] )[1] ) );
-    
-    A := CreateCapCategoryObjectWithAttributes( C,
-                 ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences, L );
-    
-    Assert( 4, IsWellDefined( A ) );
-    
-    return A;
-    
-end );
-
-##
 InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
