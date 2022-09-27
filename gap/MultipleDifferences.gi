@@ -211,23 +211,6 @@ InstallGlobalFunction( AsMultipleDifference,
 end );
 
 ##
-InstallGlobalFunction( AsMultipleDifferenceOfNormalizedObjects,
-  function( arg )
-    local D, A;
-    
-    D := MeetSemilatticeOfMultipleDifferences( CapCategory( PairInUnderlyingLattice( arg[1] )[1] ) );
-    
-    A := CreateCapCategoryObjectWithAttributes( D,
-                 ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, arg,
-                 IsLocallyClosed, true );
-    
-    Assert( 4, IsWellDefined( A ) );
-    
-    return A;
-    
-end );
-
-##
 InstallMethod( \-,
         "for an object in a meet-semilattice of formal multiple differences and an object in a thin category",
         [ IsObjectInMeetSemilatticeOfMultipleDifferences, IsObjectInThinCategory ],
