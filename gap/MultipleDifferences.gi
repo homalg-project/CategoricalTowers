@@ -58,6 +58,17 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     end );
     
     ##
+    AddTerminalObject( D,
+      function( cat )
+        local T;
+        
+        T := TerminalObject( UnderlyingCategoryOfSingleDifferences( D ) );
+        
+        return MultipleDifference( cat, [ T ] );
+        
+    end );
+    
+    ##
     AddInitialObject( D,
       function( cat )
         local I;
@@ -82,45 +93,6 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         S := UnderlyingCategoryOfSingleDifferences( cat );
         
         return IsInitial( S, SingleDifference( S, Pair( AI, AJ ) ) );
-        
-    end );
-    
-    ##
-    AddIsHomSetInhabited( D,
-      function( cat, A, B )
-        local B1, BI, S, H, mBI;
-        
-        B1 := ListOfSingleDifferences( B )[1];
-        
-        ## the minuend B.I of B
-        BI := PairInUnderlyingLattice( B1 )[1];
-        
-        ## the meet semi-lattice of single differences
-        S := UnderlyingCategoryOfSingleDifferences( cat );
-        
-        H := UnderlyingCategory( cat );
-        
-        ## the complement -B.I of the minuend B.I of B as a multiple difference
-        mBI := MultipleDifference( cat, [ SingleDifference( S, Pair( TerminalObject( H ), BI ) ) ] );
-        
-        return IsInitial( cat, DirectProduct( cat, [ A, mBI ] ) ) and ## A - B.I
-               ForAll( ListOfSingleDifferences( B ), s ->
-                       IsInitial( cat,
-                               DirectProduct( cat,  # A * s.J
-                                       [ A,
-                                         MultipleDifference( cat, [ SingleDifference( S, Pair( PairInUnderlyingLattice( s )[2], InitialObject( H ) ) ) ] ) # s.J - ∅
-                                         ] ) ) );
-        
-    end );
-    
-    ##
-    AddTerminalObject( D,
-      function( cat )
-        local T;
-        
-        T := TerminalObject( UnderlyingCategoryOfSingleDifferences( D ) );
-        
-        return MultipleDifference( cat, [ T ] );
         
     end );
     
@@ -158,6 +130,34 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         end );
         
         return MultipleDifference( cat, A_N );
+        
+    end );
+    
+    ##
+    AddIsHomSetInhabited( D,
+      function( cat, A, B )
+        local B1, BI, S, H, mBI;
+        
+        B1 := ListOfSingleDifferences( B )[1];
+        
+        ## the minuend B.I of B
+        BI := PairInUnderlyingLattice( B1 )[1];
+        
+        ## the meet semi-lattice of single differences
+        S := UnderlyingCategoryOfSingleDifferences( cat );
+        
+        H := UnderlyingCategory( cat );
+        
+        ## the complement -B.I of the minuend B.I of B as a multiple difference
+        mBI := MultipleDifference( cat, [ SingleDifference( S, Pair( TerminalObject( H ), BI ) ) ] );
+        
+        return IsInitial( cat, DirectProduct( cat, [ A, mBI ] ) ) and ## A - B.I
+               ForAll( ListOfSingleDifferences( B ), s ->
+                       IsInitial( cat,
+                               DirectProduct( cat,  # A * s.J
+                                       [ A,
+                                         MultipleDifference( cat, [ SingleDifference( S, Pair( PairInUnderlyingLattice( s )[2], InitialObject( H ) ) ) ] ) # s.J - ∅
+                                         ] ) ) );
         
     end );
     
