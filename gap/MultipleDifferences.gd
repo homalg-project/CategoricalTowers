@@ -125,9 +125,3 @@ DeclareOperation( "MultipleDifference",
 #! @Returns an object in a &CAP; category
 #! @Group AsMultipleDifference_group
 DeclareGlobalFunction( "AsMultipleDifference" );
-
-#! @Description
-#!  <C>AsMultipleDifferenceOfNormalizedMorphisms</C> assumes that the input is normalized.
-#! @Arguments D1, D2, ...
-#! @Group AsMultipleDifference_group
-DeclareGlobalFunction( "AsMultipleDifferenceOfNormalizedObjects" );
