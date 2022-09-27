@@ -19,6 +19,9 @@ ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
 # this might already have been added by PrecompileAdditiveClosureOfAlgebroid.g
 if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) ); fi;
 
+# EXPERIMENTAL
+Add( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );
+
 precompile_AdelmanCategoryOfAdditiveClosureOfAlgebroid := function( Rq, over_Z, ring )
     CapJitPrecompileCategoryAndCompareResult(
         EvalString( ReplacedString( """Rq -> AdelmanCategory( AdditiveClosure( Algebroid(

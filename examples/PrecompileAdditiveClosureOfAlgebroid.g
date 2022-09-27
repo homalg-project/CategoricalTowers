@@ -18,6 +18,9 @@ ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
 # FIXME: IsInt should be IsRat, but specializations of types are not yet supported by CompilerForCAP
 CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
 
+# EXPERIMENTAL
+Add( CAP_JIT_EXPENSIVE_FUNCTION_NAMES, "CoefficientsOfPaths" );
+
 precompile_AdditiveClosureOfAlgebroid :=
   function( Rq, over_Z, ring )
     CapJitPrecompileCategoryAndCompareResult(
