@@ -1,47 +1,40 @@
 LoadPackage( "FunctorCategories" );
 
-field := HomalgFieldOfRationals( );
+k := HomalgFieldOfRationals( );
 
-quiver := RightQuiver( 
+q := RightQuiver(
   "q(4)[x0:1->2,x1:1->2,x2:1->2,x3:1->2,y0:2->3,y1:2->3,y2:2->3,y3:2->3,z0:3->4,z1:3->4,z2:3->4,z3:3->4]" 
     );;
 
-Qq := PathAlgebra( field, quiver );;
+F := FreeCategory( q );
 
-A := QuotientOfPathAlgebra(
-  Qq,
-  [ 
-    Qq.x0 * Qq.y0 , Qq.y0 * Qq.z0,
-    Qq.x1 * Qq.y1 , Qq.y1 * Qq.z1,
-    Qq.x2 * Qq.y2 , Qq.y2 * Qq.z2,
-    Qq.x3 * Qq.y3 , Qq.y3 * Qq.z3,
-    Qq.x0 * Qq.y1 + Qq.x1 * Qq.y0,
-    Qq.x0 * Qq.y2 + Qq.x2 * Qq.y0,
-    Qq.x0 * Qq.y3 + Qq.x3 * Qq.y0,
-    Qq.x1 * Qq.y2 + Qq.x2 * Qq.y1,
-    Qq.x1 * Qq.y3 + Qq.x3 * Qq.y1,
-    Qq.x2 * Qq.y3 + Qq.x3 * Qq.y2,
-    Qq.y0 * Qq.z1 + Qq.y1 * Qq.z0,
-    Qq.y0 * Qq.z2 + Qq.y2 * Qq.z0,
-    Qq.y0 * Qq.z3 + Qq.y3 * Qq.z0,
-    Qq.y1 * Qq.z2 + Qq.y2 * Qq.z1,
-    Qq.y1 * Qq.z3 + Qq.y3 * Qq.z1,
-    Qq.y2 * Qq.z3 + Qq.y3 * Qq.z2
-  ]
-);;
+kF := k[F];
 
-algebroid := Algebroid( A );
+B := kF / [
+            kF.x0 * kF.y0 , kF.y0 * kF.z0,
+            kF.x1 * kF.y1 , kF.y1 * kF.z1,
+            kF.x2 * kF.y2 , kF.y2 * kF.z2,
+            kF.x3 * kF.y3 , kF.y3 * kF.z3,
+            kF.x0 * kF.y1 + kF.x1 * kF.y0,
+            kF.x0 * kF.y2 + kF.x2 * kF.y0,
+            kF.x0 * kF.y3 + kF.x3 * kF.y0,
+            kF.x1 * kF.y2 + kF.x2 * kF.y1,
+            kF.x1 * kF.y3 + kF.x3 * kF.y1,
+            kF.x2 * kF.y3 + kF.x3 * kF.y2,
+            kF.y0 * kF.z1 + kF.y1 * kF.z0,
+            kF.y0 * kF.z2 + kF.y2 * kF.z0,
+            kF.y0 * kF.z3 + kF.y3 * kF.z0,
+            kF.y1 * kF.z2 + kF.y2 * kF.z1,
+            kF.y1 * kF.z3 + kF.y3 * kF.z1,
+            kF.y2 * kF.z3 + kF.y3 * kF.z2
+          ];;
 
-matrix_cat := MatrixCategory( field );
+kmat := MatrixCategory( k );
 
-H := FunctorCategory( algebroid, matrix_cat );
+H := FunctorCategory( B, kmat );
 
-indec_projs := IndecProjectiveObjects( H );
+indec := Shuffle( Concatenation( IndecProjectiveObjects( H ), IndecInjectiveObjects( H ) ) );
 
-a := DirectSum( List( [ 1 .. 4 ], i -> Random( indec_projs ) ) );
+F := DirectSum( List( [ 1 .. 15 ], i -> Random( indec ) ) );
 
-b := DirectSum( List( [ 1 .. 4 ], i -> Random( indec_projs ) ) );
-
-Hom_a_b := HomStructure( a, b );
-
-B := BasisOfExternalHom( a, b );
+G := DirectSum( List( [ 1 .. 20 ], i -> Random( indec ) ) );
