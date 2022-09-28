@@ -11,6 +11,7 @@ ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gi");
 ReadPackage( "FunctorCategories", "gap/Functors.gi");
 ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gi");
+ReadPackage( "FunctorCategories", "gap/HomologicalMethods.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");

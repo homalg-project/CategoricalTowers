@@ -511,3 +511,30 @@ InstallMethod( SievesOfPathsToTruth,
     return SievesOfPathsToTruth( CapCategory( iota ), iota );
     
 end );
+
+##
+InstallMethod( RadicalFunctorAttr,
+        [ IsFunctorCategory ],
+        
+  function( Hom )
+    local rad;
+    
+    rad := CapFunctor( "Radical endofunctor", Hom, Hom );
+    
+    AddObjectFunction( rad,
+      F -> Source( RadicalInclusion( F ) )
+    );
+    
+    AddMorphismFunction( rad,
+      { s, eta, r } -> LiftAlongMonomorphism(
+                          PreCompose( RadicalInclusion( Source( eta ) ), eta ),
+                          RadicalInclusion( Range( eta ) )
+                        )
+    );
+    
+    return rad;
+    
+end );
+
+##
+InstallMethod( RadicalFunctor, [ IsFunctorCategory ], RadicalFunctorAttr );

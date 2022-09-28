@@ -115,3 +115,13 @@ DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInFunctorCategory );
 #! @Group SievesOfPathsToTruth
 DeclareOperation( "SievesOfPathsToTruth",
         [ IsFunctorCategory, IsMorphismInFunctorCategory ] );
+
+DeclareAttribute( "RadicalFunctorAttr", IsFunctorCategory );
+
+#! @Description
+#!  The input is a Hom-category <A>H</A><C>:=Hom(B,C)</C>, where <C>B</C> is a f.p. algebroid and
+#!  <C>C</C> is a matrix category over some homalg field <C>K</C>.
+#!  The output is the radical endofunctor on <A>H</A>.
+#! @Arguments H
+#! @Returns a &CAP; functor
+DeclareOperation( "RadicalFunctor", [ IsFunctorCategory ] );

@@ -1991,73 +1991,17 @@ InstallMethodWithCache( FunctorCategory,
       SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
       
       AddIsProjective( Hom,
-        { Hom, F } -> IsProjectiveRepresentation(
-                          ConvertToCellInCategoryOfQuiverRepresentations( F )
-                      )
-      );
+        { Hom, F } -> IsSplitEpimorphism( ProjectiveCover( F ) ) );
       
       AddIsInjective( Hom,
-        { Hom, F } -> IsInjectiveRepresentation(
-                          ConvertToCellInCategoryOfQuiverRepresentations( F )
-                      )
-      );
+        { Hom, F } -> IsSplitMonomorphism( InjectiveEnvelope( F ) ) );
       
       AddEpimorphismFromSomeProjectiveObject( Hom,
-        function( Hom, F )
-          local reps, R, epi, PR;
-          
-          reps := CategoryOfQuiverRepresentations( kq );
-          
-          R := ConvertToCellInCategoryOfQuiverRepresentations( F );
-          
-          epi := EpimorphismFromSomeProjectiveObject( reps, R );
-          
-          PR := ConvertToCellInFunctorCategory( Source( epi ), Hom );
-          
-          return ConvertToCellInFunctorCategory( PR, epi, F );
-          
-      end );
-
+        { Hom, F } -> ProjectiveCover( F ) );
+      
       AddMonomorphismIntoSomeInjectiveObject( Hom,
-        function( Hom, F )
-          local reps, R, mo, IR;
-          
-          reps := CategoryOfQuiverRepresentations( kq );
-          
-          R := ConvertToCellInCategoryOfQuiverRepresentations( F );
-          
-          mo := MonomorphismIntoSomeInjectiveObject( reps, R );
-          
-          IR := ConvertToCellInFunctorCategory( Range( mo ), Hom );
-          
-          return ConvertToCellInFunctorCategory( F, mo, IR );
-          
-      end );
+        { Hom, F } -> InjectiveEnvelope( F ) );
       
-      AddProjectiveLift( Hom,
-        { Hom, alpha, epi } ->
-            ConvertToCellInFunctorCategory(
-              Source( alpha ),
-              ProjectiveLift(
-                CategoryOfQuiverRepresentations( kq ),
-                ConvertToCellInCategoryOfQuiverRepresentations( alpha ),
-                ConvertToCellInCategoryOfQuiverRepresentations( epi ) ),
-              Source( epi )
-          )
-      );
-      
-      AddInjectiveColift( Hom,
-        { Hom, mono, alpha } ->
-            ConvertToCellInFunctorCategory(
-              Range( mono ),
-              InjectiveColift(
-                CategoryOfQuiverRepresentations( kq ),
-                ConvertToCellInCategoryOfQuiverRepresentations( mono ),
-                ConvertToCellInCategoryOfQuiverRepresentations( alpha ) ),
-              Range( alpha )
-          )
-      );
-    
     fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
@@ -2398,17 +2342,21 @@ InstallMethod( IndecProjectiveObjects,
         [ IsFunctorCategory ],
         
   function ( Hom )
-    local A;
+    local A, A_oid_op, Y;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
     if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
       
-      TryNextMethod();
+      TryNextMethod( );
       
     fi;
     
-    return List( IndecProjRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
+    A_oid_op := OppositeAlgebroid( Source( Hom ) );
+    
+    Y := YonedaEmbedding( A_oid_op );
+    
+    return List( SetOfObjects( A_oid_op ), o -> ApplyFunctor( Y, o ) );
     
 end );
 
@@ -2417,17 +2365,23 @@ InstallMethod( IndecInjectiveObjects,
         [ IsFunctorCategory ],
         
   function ( Hom )
-    local A;
+    local A, A_oid_op, Hom_op, indec_proj;
     
     A := UnderlyingQuiverAlgebra( Source( Hom ) );
     
     if not (IsMatrixCategory( Range( Hom ) ) and IsAdmissibleQuiverAlgebra( A )) then
-      
-      TryNextMethod();
+        
+        TryNextMethod( );
       
     fi;
     
-    return List( IndecInjRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
+    A_oid_op := OppositeAlgebroid( Source( Hom ) );
+    
+    Hom_op := FunctorCategory( A_oid_op, Range( Hom ) );
+    
+    indec_proj := IndecProjectiveObjects( Hom_op );
+    
+    return List( indec_proj, DualOfObjectInFunctorCategory );
     
 end );
 
@@ -2603,10 +2557,10 @@ InstallMethod( LaTeXOutput,
   function( F )
     local objs, v_objs, mors, v_mors, s, i;
     
-    objs := SetOfObjects( F );
+    objs := SetOfObjects( Source( F ) );
     v_objs := ValuesOfFunctor( F )[1];
     
-    mors := SetOfGeneratingMorphisms( F );
+    mors := SetOfGeneratingMorphisms( Source( F ) );
     v_mors := ValuesOfFunctor( F )[2];
     
     s := "\\begin{array}{ccc}\n ";
@@ -2651,7 +2605,7 @@ InstallMethod( LaTeXOutput,
     
     only_datum := ValueOption( "OnlyDatum" );
     
-    objs := SetOfObjects( eta );
+    objs := SetOfObjects( Source( Source( eta ) ) );
     
     v_objs := ValuesOnAllObjects( eta );
     
