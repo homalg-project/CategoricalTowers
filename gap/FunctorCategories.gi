@@ -2557,10 +2557,10 @@ InstallMethod( LaTeXOutput,
   function( F )
     local objs, v_objs, mors, v_mors, s, i;
     
-    objs := SetOfObjects( F );
+    objs := SetOfObjects( Source( F ) );
     v_objs := ValuesOfFunctor( F )[1];
     
-    mors := SetOfGeneratingMorphisms( F );
+    mors := SetOfGeneratingMorphisms( Source( F ) );
     v_mors := ValuesOfFunctor( F )[2];
     
     s := "\\begin{array}{ccc}\n ";
@@ -2605,7 +2605,7 @@ InstallMethod( LaTeXOutput,
     
     only_datum := ValueOption( "OnlyDatum" );
     
-    objs := SetOfObjects( eta );
+    objs := SetOfObjects( Source( Source( eta ) ) );
     
     v_objs := ValuesOnAllObjects( eta );
     
