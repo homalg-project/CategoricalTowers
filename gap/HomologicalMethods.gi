@@ -59,6 +59,9 @@ InstallMethod( RadicalInclusion,
     
 end );
 
+
+##
+## See Lemma 2.83 at http://dx.doi.org/10.25819/ubsi/10144
 ##
 InstallMethod( CoverElementByProjectiveObject,
         [ IsObjectInFunctorCategory, IsCapCategoryMorphism, IsInt ],
@@ -129,9 +132,9 @@ InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
           return List( iotas, iota -> CoverElementByProjectiveObject( F, iota, i ) );
           
         end );
-    
+        
         return Concatenation( dec );
-    
+        
 end );
 
 ##
@@ -241,12 +244,13 @@ InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
 
 ##
 InstallMethod( DirectSumDecompositionOfInjectiveObject,
-        [ IsObjectInFunctorCategory ],
+        [ IsObjectInFunctorCategory ], # and is injective
         
-  F -> List( DirectSumDecompositionOfProjectiveObject( DualOfObjectInFunctorCategory( F ) ), DualOfMorphismInFunctorCategory ) );
+  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
 
 ##
 InstallMethod( InjectiveEnvelope,
         [ IsObjectInFunctorCategory ],
         
   F -> DualOfMorphismInFunctorCategory( ProjectiveCover( DualOfObjectInFunctorCategory( F ) ) ) );
+
