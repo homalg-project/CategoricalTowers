@@ -46,7 +46,7 @@
 
 @Section Example
 
-@InsertChunk CategoryOfQuivers
+@InsertChunk FinQuivers
 
 @Section &GAP; Categories
 
