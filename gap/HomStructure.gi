@@ -206,8 +206,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         D := DistinguishedObjectOfHomomorphismStructure( Hom );
         
-        tau := ListOfValues( List( ValuesOnAllObjects( eta ),
-                       eta_o -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, eta_o ) ) );
+        tau := List( ListOfValues( ValuesOnAllObjects( eta ) ),
+                     eta_o -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, eta_o ) );
         
         diagram := List( tau, Range );
         
