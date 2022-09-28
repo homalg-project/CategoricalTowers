@@ -135,10 +135,9 @@ end );
 #! @Returns a list
 DeclareAttribute( "SetOfObjects",
         IsFpCategory );
-CapJitAddTypeSignature( "SetOfObjects", [ IsCapCategory ],
+
+CapJitAddTypeSignature( "SetOfObjects", [ IsFpCategory ],
   function ( input_types )
-    
-    Assert( 0, IsFpCategory( input_types[1].category ) );
     
     return rec( filter := IsList,
                 element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
@@ -159,10 +158,9 @@ DeclareOperation( "AssignSetOfObjects",
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsFpCategory );
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCapCategory ],
+
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsFpCategory ],
   function ( input_types )
-    
-    Assert( 0, IsFpCategory( input_types[1].category ) );
     
     return rec( filter := IsList,
                 element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
