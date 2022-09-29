@@ -67,28 +67,32 @@ InstallMethod( CoverElementByProjectiveObject,
         [ IsObjectInFunctorCategory, IsCapCategoryMorphism, IsInt ],
         
   function ( F, l, n )
-    local Hom, algebroid, C, vertices, v, P_v, val_objs;
+    local Hom, B, B_op, C, vertices, v, P_v, val_objs;
     
     Hom := CapCategory( F );
     
-    algebroid := Source( Hom );
-    
     C := Range( Hom );
     
-    vertices := SetOfObjects( algebroid );
-     
+    B := Source( Hom );
+    
+    B_op := OppositeAlgebroid( B );
+    
+    vertices := SetOfObjects( B_op );
+    
     v := vertices[ n ];
-     
+    
     P_v := IndecProjectiveObjects( Hom )[ n ];
     
-    val_objs := List( vertices, u -> List( BasisOfExternalHom( v, u ), m -> PreCompose( l, F( m ) ) ) );
+    val_objs := List( vertices, u ->
+                  List( BasisOfExternalHom( u, v ), m ->
+                    PreCompose( l, F( OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / B ) ) ) );
     
     val_objs := ListN(
                   ValuesOfFunctor( P_v )[1],
                   val_objs,
                   ValuesOfFunctor( F )[1],
                   { s, tau, r } -> UniversalMorphismFromDirectSumWithGivenDirectSum( C, List( tau, Source ), r, tau, s ) );
-                
+    
     return AsMorphismInFunctorCategoryByValues( Hom, P_v, val_objs, F );
     
 end );
@@ -228,7 +232,7 @@ InstallMethod( DualOfMorphismInFunctorCategory,
     
     images_of_objects := List( ValuesOnAllObjects( eta ), v -> TransposedMatrix( UnderlyingMatrix( v ) ) / kvec );
     
-    D_eta := AsMorphismInFunctorCategoryByValues( Hom, G, images_of_objects, F );
+    D_eta := AsMorphismInFunctorCategoryByValues( Hom_op, G, images_of_objects, F );
     
     SetDualOfMorphismInFunctorCategory( D_eta, eta );
     
