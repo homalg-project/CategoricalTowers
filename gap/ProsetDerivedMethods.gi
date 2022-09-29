@@ -135,34 +135,33 @@ end : Description := "IsCodominating using IsHomSetInhabited applied to the rang
 AddDerivationToCAP( Equalizer,
         [ ],
         
-  function( cat, D )
+  function( cat, A, D )
     
-    return Source( D[1] );
+    return A;
     
 end : Description := "Equalizer using Source",
-      CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+      CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( EmbeddingOfEqualizer,
         [ [ Equalizer, 1 ],
           [ UniqueMorphism, 1 ] ],
         
-  function( cat, D )
+  function( cat, A, D )
     
-    ## FIXME: We need an elaborate version of EmbeddingOfEqualizer which gets the source of the diagram as seperate input
-    return UniqueMorphism( cat, Equalizer( cat, D ), Source( D[1] ) );
+    return UniqueMorphism( cat, Equalizer( cat, A, D ), A );
     
 end : Description := "EmbeddingOfEqualizer using the unique morphism into source of the diagram",
-      CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+      CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoEqualizer,
         [ [ Equalizer, 1 ],
           [ UniqueMorphism, 1 ] ],
         
-  function( cat, D, test_object, tau )
+  function( cat, A, D, test_object, tau )
     
-    return UniqueMorphism( cat, test_object, Equalizer( cat, D ) );
+    return UniqueMorphism( cat, test_object, Equalizer( cat, A, D ) );
     
 end : Description := "UniversalMorphismIntoEqualizer using the unique morphism from the test object",
       CategoryFilter := IsThinCategory );
@@ -171,34 +170,33 @@ end : Description := "UniversalMorphismIntoEqualizer using the unique morphism f
 AddDerivationToCAP( Coequalizer,
         [ ],
         
-  function( cat, D )
+  function( cat, A, D )
     
-    return Range( D[1] );
+    return A;
     
 end : Description := "Coequalizer using Range",
-      CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+      CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( ProjectionOntoCoequalizer,
         [ [ Coequalizer, 1 ],
           [ UniqueMorphism, 1 ] ],
         
-  function( cat, D )
+  function( cat, A, D )
     
-    ## FIXME: We need an elaborate version of ProjectionOntoCoequalizer which gets the range of the diagram as seperate input
-    return UniqueMorphism( cat, Range( D[1] ), Coequalizer( cat, D ) );
+    return UniqueMorphism( cat, A, Coequalizer( cat, A, D ) );
     
 end : Description := "ProjectionOntoCoequalizer using the unique morphism from range of the diagram",
-      CategoryFilter := cat -> HasIsThinCategory( cat ) and IsThinCategory( cat ) and not ( IsBound( cat!.supports_empty_limits ) and cat!.supports_empty_limits = true ) );
+      CategoryFilter := IsThinCategory );
 
 ##
 AddDerivationToCAP( UniversalMorphismFromCoequalizer,
         [ [ Coequalizer, 1 ],
           [ UniqueMorphism, 1 ] ],
         
-  function( cat, D, test_object, tau )
+  function( cat, A, D, test_object, tau )
     
-    return UniqueMorphism( cat, Coequalizer( cat, D ), test_object );
+    return UniqueMorphism( cat, Coequalizer( cat, A, D ), test_object );
     
 end : Description := "UniversalMorphismIntoEqualizer using the unique morphism into the test object",
       CategoryFilter := IsThinCategory );
