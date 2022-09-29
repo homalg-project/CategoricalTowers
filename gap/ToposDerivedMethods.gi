@@ -147,6 +147,7 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
                    cat,
                    EmbeddingOfEqualizer(
                            cat,
+                           Omega2,
                            [ TruthMorphismOfAndWithGivenObjects( cat, Omega2, Omega ),
                              ProjectionInFactorOfDirectProductWithGivenDirectProduct(
                                      cat,
