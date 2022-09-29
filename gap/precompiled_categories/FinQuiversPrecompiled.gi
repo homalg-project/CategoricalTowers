@@ -187,7 +187,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_7_1[j_3][hoisted_1_2] * hoisted_9_1[j_3];
                 end );
         end );
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Length( Filtered( [ 0 .. Length( deduped_23_1 ) - 1 ], function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Length( Filtered( deduped_23_1, function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := 1 + x_2;
                 return hoisted_11_1[deduped_1_2] = hoisted_22_1[deduped_1_2];
@@ -314,7 +314,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
                     return hoisted_8_1[j_3][hoisted_1_2] * hoisted_10_1[j_3];
                 end );
         end );
-    deduped_30_1 := Filtered( [ 0 .. Length( deduped_32_1 ) - 1 ], function ( x_2 )
+    deduped_30_1 := Filtered( deduped_32_1, function ( x_2 )
             local deduped_1_2;
             deduped_1_2 := 1 + x_2;
             return hoisted_12_1[deduped_1_2] = hoisted_23_1[deduped_1_2];
@@ -501,7 +501,7 @@ function ( cat_1, arg2_1, arg3_1 )
                     return hoisted_7_1[j_3][hoisted_1_2] * hoisted_9_1[j_3];
                 end );
         end );
-    deduped_31_1 := Filtered( [ 0 .. Length( deduped_32_1 ) - 1 ], function ( x_2 )
+    deduped_31_1 := Filtered( deduped_32_1, function ( x_2 )
             local deduped_1_2;
             deduped_1_2 := 1 + x_2;
             return hoisted_11_1[deduped_1_2] = hoisted_22_1[deduped_1_2];
