@@ -983,7 +983,7 @@ InstallMethodForCompilerForCAP( LimitPair,
     mor2 := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
                     diagram, source, compositions, range );
     
-    return [ mor1, mor2 ];
+    return Pair( source, [ mor1, mor2 ] );
     
 end );
 
@@ -1018,22 +1018,28 @@ AddFinalDerivation( Limit,
           ],
         
     function( cat, objects, decorated_morphisms )
+      local pair;
       
-      return Equalizer( cat,
-                     LimitPair( cat,
-                             objects,
-                             decorated_morphisms ) );
+      pair := LimitPair( cat,
+                        objects,
+                        decorated_morphisms );
+      
+      return Equalizer( cat, pair[1], pair[2] );
       
   end,
 [
   ProjectionInFactorOfLimitWithGivenLimit,
     function( cat, objects, decorated_morphisms, k, limit )
+      local pair;
+      
+      pair := LimitPair( cat,
+                        objects,
+                        decorated_morphisms );
       
       return PreCompose( cat,
                      EmbeddingOfEqualizerWithGivenEqualizer( cat,
-                             LimitPair( cat,
-                                     objects,
-                                     decorated_morphisms ),
+                             pair[1],
+                             pair[2],
                              limit ),
                      ProjectionInFactorOfDirectProduct( cat,
                              objects,
@@ -1044,12 +1050,16 @@ AddFinalDerivation( Limit,
 [
   UniversalMorphismIntoLimitWithGivenLimit,
     function( cat, objects, decorated_morphisms, T, tau, limit )
+      local pair;
+      
+      pair := LimitPair( cat,
+                        objects,
+                        decorated_morphisms );
       
       return LiftAlongMonomorphism( cat,
                      EmbeddingOfEqualizerWithGivenEqualizer( cat,
-                             LimitPair( cat,
-                                     objects,
-                                     decorated_morphisms ),
+                             pair[1],
+                             pair[2],
                              limit ),
                      UniversalMorphismIntoDirectProduct( cat,
                              objects,
@@ -1066,11 +1076,13 @@ InstallMethodForCompilerForCAP( ColimitPair,
         [ IsCapCategory, IsList, IsList ],
 
   function( cat, objects, decorated_morphisms )
+    local pair;
     
-    return List( LimitPair( Opposite( cat ),
-                   List( objects, Opposite ),
-                   List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ),
-                 Opposite );
+    pair := LimitPair( Opposite( cat ),
+                    List( objects, Opposite ),
+                    List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) );
+    
+    return Pair( Opposite( pair[1] ), List( pair[2], Opposite ) );
     
 end );
 
