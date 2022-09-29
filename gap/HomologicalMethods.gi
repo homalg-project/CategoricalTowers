@@ -232,7 +232,7 @@ InstallMethod( DualOfMorphismInFunctorCategory,
     
     images_of_objects := List( ValuesOnAllObjects( eta ), v -> TransposedMatrix( UnderlyingMatrix( v ) ) / kvec );
     
-    D_eta := AsMorphismInFunctorCategoryByValues( Hom, G, images_of_objects, F );
+    D_eta := AsMorphismInFunctorCategoryByValues( Hom_op, G, images_of_objects, F );
     
     SetDualOfMorphismInFunctorCategory( D_eta, eta );
     
