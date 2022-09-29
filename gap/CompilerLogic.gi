@@ -47,6 +47,14 @@ end );
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
+        src_template := "1 + 1",
+        dst_template := "2",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ ],
         src_template := "[ 0 .. 0 - 1 ]",
         dst_template := "[ ]",
     )
