@@ -60,107 +60,12 @@ InstallTrueMethod( IsMonoidalLattice, IsCoclosedMonoidalLattice );
 InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalLattice );
 
 ##
-InstallMethod( Factors,
-        "for an object in a thin category",
-        [ IsObjectInThinCategory ],
-        
-  FactorsAttr );
-
-##
 InstallGlobalFunction( ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS,
   function( cartesian_proset )
     
     SetIsCartesianCategory( cartesian_proset, true );
     
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cartesian_proset );
-    
-    ##
-    AddProjectionInFactorOfDirectProductWithGivenDirectProduct( cartesian_proset,
-      function( cat, D, k, P )
-        
-        return UniqueMorphism( cat, P, D[k] );
-        
-    end );
-    
-    ##
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( cartesian_proset,
-      function( cat, D, test_object, tau, P )
-        
-        return UniqueMorphism( cat, test_object, P );
-        
-    end );
-    
-    ##
-    AddDirectProductFunctorialWithGivenDirectProducts( cartesian_proset,
-      function( cat, s, source_diagram, L, range_diagram, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
-    AddCartesianAssociatorRightToLeftWithGivenDirectProducts( cartesian_proset,
-      function( cat, s, a, b, c, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
-    AddCartesianAssociatorLeftToRightWithGivenDirectProducts( cartesian_proset,
-      function( cat, s, a, b, c, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
-    AddCartesianLeftUnitorWithGivenDirectProduct( cartesian_proset,
-      function( cat, M, TM )
-        
-        return UniqueMorphism( cat, TM, M );
-        
-    end );
-    
-    ##
-    AddCartesianLeftUnitorInverseWithGivenDirectProduct( cartesian_proset,
-      function( cat, M, TM )
-        
-        return UniqueMorphism( cat, M, TM );
-        
-    end );
-    
-    ##
-    AddCartesianRightUnitorWithGivenDirectProduct( cartesian_proset,
-      function( cat, M, MT )
-        
-        return UniqueMorphism( cat, MT, M );
-        
-    end );
-    
-    ##
-    AddCartesianRightUnitorInverseWithGivenDirectProduct( cartesian_proset,
-      function( cat, M, MT )
-        
-        return UniqueMorphism( cat, M, MT );
-        
-    end );
-    
-    ##
-    AddCartesianBraidingWithGivenDirectProducts( cartesian_proset,
-      function( cat, MN, M, N, NM )
-        
-        return UniqueMorphism( cat, MN, NM );
-        
-    end );
-    
-    ##
-    AddCartesianBraidingInverseWithGivenDirectProducts( cartesian_proset,
-      function( cat, NM, M, N, MN )
-        
-        return UniqueMorphism( cat, NM, MN );
-        
-    end );
     
 end );
 
@@ -186,94 +91,6 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS,
     
     ADD_COMMON_METHODS_FOR_PREORDERED_SETS( cocartesian_proset );
     
-    ##
-    AddInjectionOfCofactorOfCoproductWithGivenCoproduct( cocartesian_proset,
-      function( cat, D, k, I )
-        
-        return UniqueMorphism( cat, D[k], I );
-        
-    end );
-    
-    ##
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( cocartesian_proset,
-      function( cat, D, test_object, tau, I )
-        
-        return UniqueMorphism( cat, I, test_object );
-        
-    end );
-    
-    ##
-    AddCoproductFunctorialWithGivenCoproducts( cocartesian_proset,
-      function( cat, s, source_diagram, L, range_diagram, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
-    AddCocartesianAssociatorRightToLeftWithGivenCoproducts( cocartesian_proset,
-      function( cat, s, a, b, c, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
-    AddCocartesianAssociatorLeftToRightWithGivenCoproducts( cocartesian_proset,
-      function( cat, s, a, b, c, r )
-        
-        return UniqueMorphism( cat, s, r );
-        
-    end );
-    
-    ##
-    AddCocartesianLeftUnitorWithGivenCoproduct( cocartesian_proset,
-      function( cat, M, TM )
-        
-        return UniqueMorphism( cat, TM, M );
-        
-    end );
-    
-    ##
-    AddCocartesianLeftUnitorInverseWithGivenCoproduct( cocartesian_proset,
-      function( cat, M, TM )
-        
-        return UniqueMorphism( cat, M, TM );
-        
-    end );
-    
-    ##
-    AddCocartesianRightUnitorWithGivenCoproduct( cocartesian_proset,
-      function( cat, M, MT )
-        
-        return UniqueMorphism( cat, MT, M );
-        
-    end );
-    
-    ##
-    AddCocartesianRightUnitorInverseWithGivenCoproduct( cocartesian_proset,
-      function( cat, M, MT )
-        
-        return UniqueMorphism( cat, M, MT );
-        
-    end );
-    
-    ##
-    AddCocartesianBraidingWithGivenCoproducts( cocartesian_proset,
-      function( cat, MN, M, N, NM )
-        
-        return UniqueMorphism( cat, MN, NM );
-        
-    end );
-    
-    ##
-    AddCocartesianBraidingInverseWithGivenCoproducts( cocartesian_proset,
-      function( cat, NM, M, N, MN )
-        
-        return UniqueMorphism( cat, NM, MN );
-        
-    end );
-    
 end );
 
 ##
@@ -289,6 +106,27 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES,
     ADD_COMMON_METHODS_FOR_POSETS( join_semilattice );
     
 end );
+
+##
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
+  function( lattice )
+    
+    SetIsStrictCartesianCategory( lattice, true );
+    
+    SetIsStrictCocartesianCategory( lattice, true );
+    
+    ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( lattice );
+    
+    ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES( lattice );
+    
+end );
+
+##
+InstallMethod( Factors,
+        "for an object in a thin category",
+        [ IsObjectInThinCategory ],
+        
+  FactorsAttr );
 
 ##
 InstallMethod( \*,
@@ -349,19 +187,5 @@ InstallMethod( \=,
   function( I, A )
     
     return A = I;
-    
-end );
-
-##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_LATTICES,
-  function( lattice )
-    
-    SetIsStrictCartesianCategory( lattice, true );
-    
-    SetIsStrictCocartesianCategory( lattice, true );
-    
-    ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( lattice );
-    
-    ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES( lattice );
     
 end );
