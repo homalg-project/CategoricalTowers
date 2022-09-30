@@ -51,7 +51,6 @@ BindGlobal( "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnit
     S := SliceCategoryOverTensorUnit( F : FinalizeCategory := true );
     P := PosetOfCategory( S : FinalizeCategory := true );
     L := StablePosetOfCategory( P );
-    SetIsCocartesianCoclosedCategory( L, true );
     return L;
 end;
         
