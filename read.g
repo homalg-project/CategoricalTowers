@@ -26,6 +26,7 @@ ReadPackage( "Locales", "gap/CoHeytingAlgebraDerivedMethods.gi");
 
 ReadPackage( "Locales", "gap/BooleanAlgebraMethodRecord.gi");
 ReadPackage( "Locales", "gap/BooleanAlgebra.gi");
+ReadPackage( "Locales", "gap/BooleanAlgebraDerivedMethods.gi");
 
 ReadPackage( "Locales", "gap/Tools.gi");
 
