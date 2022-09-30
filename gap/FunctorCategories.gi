@@ -922,7 +922,7 @@ InstallMethodWithCache( FunctorCategory,
     ## e.g., DirectSum, KernelObject
     create_func_object :=
       function ( name, Hom )
-        local info, functorial, diagram;
+        local info, functorial;
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
@@ -932,33 +932,7 @@ InstallMethodWithCache( FunctorCategory,
         
         functorial := CAP_INTERNAL_METHOD_NAME_RECORD.(info.functorial);
         
-        if not IsBound( functorial.filter_list ) then
-            Error( "the filter_list of method record entry ", name, ".functorial is not set\n" );
-        fi;
-        
-        if not IsDenseList( functorial.filter_list ) then
-            Error( "the filter list of method record entry ", name, ".functorial is not a dense list\n" );
-        fi;
-        
-        if not Length( functorial.filter_list ) in [ 1, 4 ] then
-            Error( "the length of the filter list of method record entry ", name, ".functorial is not 1 or 4, FunctorCategories cannot handle this\n" );
-        fi;
-        
-        Assert( 0, functorial.filter_list[1] = "category" );
-        
-        if Length( functorial.filter_list ) = 1 then
-            diagram := "empty diagram";
-        elif functorial.filter_list[2] = "list_of_morphisms" then
-            diagram := "multiple arrows";
-        elif functorial.filter_list[2] = "list_of_objects" then
-            diagram := "multiple objects";
-        elif functorial.filter_list[2] = "morphism" then
-            diagram := "single arrow";
-        else
-            Error( "FunctorCategories cannot determine the diagram type of method record entry ", name, ".functorial\n" );
-        fi;
-        
-        if diagram = "empty diagram" then
+        if name in [ "TerminalObject", "InitialObject", "ZeroObject" ] then
             
             return ## a constructor for universal objects: TerminalObject
               ReplacedStringViaRecord(
@@ -982,7 +956,7 @@ InstallMethodWithCache( FunctorCategory,
             """,
             rec( functorial := info.functorial ) );
             
-        elif diagram = "multiple arrows" then
+        elif name in [ "FiberProduct", "Pushout" ] then
             
             return ## a constructor for universal objects: FiberProduct
               ReplacedStringViaRecord(
@@ -1023,7 +997,48 @@ InstallMethodWithCache( FunctorCategory,
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
-        elif diagram = "multiple objects" then
+        elif name in [ "Equalizer", "Coequalizer" ] then
+            
+            return ## a constructor for universal objects: FiberProduct
+              ReplacedStringViaRecord(
+              """
+              function ( input_arguments... )
+                local C, i_arg, etas, functor_on_objects, mors, functor_on_morphisms;
+                
+                C := Range( cat );
+                
+                i_arg := NTuple( number_of_arguments, input_arguments... );
+                
+                etas := i_arg[3];
+                
+                functor_on_objects := objB_index -> operation_name( C, List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
+                
+                mors := DefiningPairOfUnderlyingQuiver( cat )[2];
+                
+                functor_on_morphisms :=
+                  function ( new_source, morB_index, new_range )
+                    local l, L;
+                    
+                    l := List( etas, eta ->
+                               [ ValuesOnAllObjects( eta )[mors[morB_index][1]],              ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Source( morB ) )
+                                 ValuesOfFunctor( Source( eta ) )[2][morB_index],             ## ApplyObjectInFunctorCategoryToMorphism( Hom, Source( eta ), morB )
+                                 ValuesOfFunctor( Range( eta ) )[2][morB_index],              ## ApplyObjectInFunctorCategoryToMorphism( Hom, Range( eta ), morB )
+                                 ValuesOnAllObjects( eta )[mors[morB_index][2]]               ## ApplyMorphismInFunctorCategoryToObject( Hom, eta, Range( morB ) )
+                                 ] );
+                    
+                    L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
+                    
+                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
+                    
+                end;
+                
+                return AsObjectInFunctorCategoryByFunctions( cat, functor_on_objects, functor_on_morphisms );
+                
+            end
+            """,
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
+            
+        elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
             
             return ## a constructor for universal objects: DirectSum
               ReplacedStringViaRecord(
@@ -1052,7 +1067,7 @@ InstallMethodWithCache( FunctorCategory,
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
-        elif diagram = "single arrow" then
+        elif name in [ "KernelObject", "CokernelObject", "ImageObject", "CoimageObject" ] then
             
             return ## a constructor for universal objects: KernelObject
               ReplacedStringViaRecord(
@@ -1092,6 +1107,10 @@ InstallMethodWithCache( FunctorCategory,
             end
             """,
             rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
+            
+        else
+            
+            Error( "FunctorCategories cannot deal with ", name, " yet\n" );
             
         fi;
         
