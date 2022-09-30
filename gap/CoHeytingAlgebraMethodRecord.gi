@@ -24,7 +24,8 @@ ConegationOnMorphismsWithGivenConegations := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "NegationOnMorphismsWithGivenNegations" ),
+  dual_operation := "NegationOnMorphismsWithGivenNegations",
+  dual_arguments_reversed := true ),
 
 MorphismFromDoubleConegation := rec(
   filter_list := [ "category", "object" ],
@@ -37,11 +38,12 @@ MorphismFromDoubleConegation := rec(
 
 MorphismFromDoubleConegationWithGivenDoubleConegation := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "a", "r" ], [ "r", "a" ] ],
+  io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   return_type := "morphism",
-  dual_operation := "MorphismToDoubleNegationWithGivenDoubleNegation" ),
+  dual_operation := "MorphismToDoubleNegationWithGivenDoubleNegation",
+  dual_arguments_reversed := false ),
 
-            ) );
+) );
 
 BindGlobal( "HEYTING_ALGEBRA_AND_COHEYTING_ALGEBRA_METHOD_NAME_RECORD", rec( ) );
 
