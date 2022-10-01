@@ -252,3 +252,11 @@ CapJitAddLogicTemplate(
         dst_template := "entry",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "func" ],
+        src_template := "ListN( [ ], [ ], func )",
+        dst_template := "[ ]",
+    )
+);

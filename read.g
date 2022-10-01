@@ -6,6 +6,7 @@
 
 ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversPrecompiled.gi");
+ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversAsCCCPrecompiled.gi");
 
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gi");
