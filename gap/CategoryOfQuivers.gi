@@ -82,7 +82,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
           Quivers, F_op;
     
     ##
-    object_constructor := { Quivers, pair } -> CreateQuiver( Quivers, pair );
+    object_constructor := CreateQuiver;
     
     ##
     object_datum := { Quivers, o } -> DefiningPairOfQuiver( o );
