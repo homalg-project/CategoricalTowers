@@ -216,6 +216,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     
     if ValueOption( "no_precompiled_code" ) <> true then
         ADD_FUNCTIONS_FOR_FinQuiversPrecompiled( Quivers );
+        ADD_FUNCTIONS_FOR_FinQuiversAsCCCPrecompiled( Quivers );
     fi;
     
     Finalize( Quivers );
