@@ -662,7 +662,11 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     # if `basis_paths_by_vertex_index` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `basis_paths_by_vertex_index` anymore
     MakeImmutable( basis_paths_by_vertex_index );
     
+    MakeImmutable( maps );
+    
     SetBasisPathsByVertexIndex( algebroid, basis_paths_by_vertex_index );
+    
+    SetBasisMorphismsByVertexIndex( algebroid, maps );
     
     Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( algebroid ) ) );
     
@@ -920,8 +924,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
         nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
         
         nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
-         
-        return maps[nr_source][nr_range];
+        
+        return BasisMorphismsByVertexIndex( algebroid )[nr_source][nr_range];
         
     end );
     
@@ -1180,6 +1184,7 @@ InstallMethod( Algebroid,
              "UnderlyingQuiver",
              "UnderlyingQuiverAlgebra",
              "BasisPathsByVertexIndex",
+             "BasisMorphismsByVertexIndex",
              "HomStructureOnBasisPaths",
              ],
         category_filter := IsAlgebroid,
