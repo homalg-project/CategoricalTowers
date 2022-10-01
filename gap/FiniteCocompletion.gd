@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Finite cocompletion of a finitely presented category
+#! @Chapter Finite cocompletion of a finitely presented (linear) category
 
 ####################################
 #

@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Free Abelian category of a finitely presented category
+#! @Chapter Free Abelian category of a finitely presented linear category
 
 ####################################
 #
