@@ -1242,8 +1242,6 @@ InstallMethodWithCache( FunctorCategory,
                    create_func_object := create_func_object,
                    create_func_morphism := create_func_morphism,
                    underlying_category_getter_string := "Range"
-                   #underlying_object_getter_string := "( { cat, F } -> UnderlyingCapTwoCategoryCell( F ) )",
-                   #underlying_morphism_getter_string := "( { cat, eta } -> UnderlyingCapTwoCategoryCell( eta ) )"
                    );
     
     
