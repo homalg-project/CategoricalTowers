@@ -80,20 +80,6 @@ CapJitAddTypeSignature( "Source", [ IsFunctorCategory ],
 end );
 
 #! @Description
-#!  The source of the functor underlying functor object <A>F</A>.
-#! @Arguments F
-#! @Returns a &CAP; category
-DeclareAttribute( "Source",
-        IsObjectInFunctorCategory );
-
-CapJitAddTypeSignature( "Source", [ IsObjectInFunctorCategory ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( Source( input_types[1].category ) );
-    
-end );
-
-#! @Description
 #!  The range category of the functor category <A>cat</A>.
 #! @Arguments cat
 #! @Returns a &CAP; category
@@ -104,6 +90,20 @@ CapJitAddTypeSignature( "Range", [ IsFunctorCategory ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( Range( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The source of the functor underlying functor object <A>F</A>.
+#! @Arguments F
+#! @Returns a &CAP; category
+DeclareAttribute( "Source",
+        IsObjectInFunctorCategory );
+
+CapJitAddTypeSignature( "Source", [ IsObjectInFunctorCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( Source( input_types[1].category ) );
     
 end );
 
@@ -133,76 +133,6 @@ DeclareAttribute( "OppositeOfSource",
 #! @Returns a &CAP; functor or natural transformation
 DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInFunctorCategory );
-
-CapJitAddTypeSignature( "UnderlyingCapTwoCategoryCell", [ IsCapCategory, IsObjectInFunctorCategory ],
-  function ( input_types )
-    
-    return rec( filter := IsCapFunctor,
-                source_category := Source( input_types[1].category ),
-                range_category := Range( input_types[1].category ) );
-    
-end );
-
-CapJitAddTypeSignature( "UnderlyingCapTwoCategoryCell", [ IsCapCategory, IsMorphismInFunctorCategory ],
-  function ( input_types )
-    
-    return rec( filter := IsCapNaturalTransformation,
-                source_category := Source( input_types[1].category ),
-                range_category := Range( input_types[1].category ) );
-    
-end );
-
-##
-DeclareAttribute( "FunctorOnObjects",
-        IsObjectInFunctorCategory );
-
-CapJitAddTypeSignature( "FunctorOnObjects", [ IsObjectInFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsFunction,
-                signature :=
-                [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
-                  CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] );
-    
-end );
-
-##
-DeclareAttribute( "FunctorOnMorphisms",
-        IsObjectInFunctorCategory );
-
-CapJitAddTypeSignature( "FunctorOnMorphisms", [ IsObjectInFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsFunction,
-                signature :=
-                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
-                    CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
-                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
-    
-end );
-
-##
-DeclareAttribute( "NaturalTransformationOnObjects",
-        IsMorphismInFunctorCategory );
-
-CapJitAddTypeSignature( "NaturalTransformationOnObjects", [ IsMorphismInFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsFunction,
-                signature :=
-                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
-                    CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ),
-                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
-                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
-    
-end );
 
 #! @Description
 #!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
