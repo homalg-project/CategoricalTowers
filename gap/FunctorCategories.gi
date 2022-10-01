@@ -822,6 +822,7 @@ InstallMethodWithCache( FunctorCategory,
         
   function ( B, C )
     local defining_pair, nr_obj, kq, A, relations, B_op, source, name, list_of_operations,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, supports_empty_limits, doc, prop, Hom, vertices, arrows, H;
@@ -888,6 +889,24 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
+    ##
+    object_constructor := function( cat, pair )
+        
+        return AsObjectInFunctorCategoryByValues( cat, pair );
+        
+    end;
+    
+    object_datum := { cat, object } -> ValuesOfFunctor( object );
+    
+    morphism_constructor := function( cat, source, list, range )
+        
+        return AsMorphismInFunctorCategoryByValues( cat, source, list, range );
+        
+    end;
+    
+    morphism_datum := { cat, morphism } -> ValuesOnAllObjects( morphism );
+    
+    ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
@@ -1238,6 +1257,10 @@ InstallMethodWithCache( FunctorCategory,
                    ## the option doctrines can be passed from higher code
                    is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
                    create_func_bool := create_func_bool,
                    create_func_object := create_func_object,
                    create_func_morphism := create_func_morphism,
