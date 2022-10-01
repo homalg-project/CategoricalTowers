@@ -9,6 +9,64 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
         RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
 
 ##
+InstallOtherMethodForCompilerForCAP( CreateQuiver,
+        "for a category of quivers and a quadruple",
+        [ IsCategoryOfQuivers, IsList ],
+        
+  function ( category_of_quivers, quadruple )
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category_of_quivers,
+                   DefiningQuadrupleOfQuiver, quadruple );
+    
+end );
+
+##
+InstallMethod( CreateQuiver,
+        "for a category of quivers, an integers, and a list of pairs of integers",
+        [ IsCategoryOfQuivers, IsInt, IsList ],
+        
+  function ( category_of_quivers, n, arrows )
+    local arr, A, s, t;
+    
+    if ForAll( arrows, IsInt ) then
+        arr := List( [ 1 .. Length( arrows ) / 2 ], i -> [ arrows[2 * i - 1], arrows[2 * i] ] );
+    else
+        arr := arrows;
+    fi;
+    
+    return CreateQuiver( category_of_quivers,
+                   NTuple( 4,
+                           n, Length( arr ),
+                           List( arr, a -> a[1] ), List( arr, a -> a[2] ) ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
+        "for a category of quivers, two objects in a category of quivers, and a pair",
+        [ IsCategoryOfQuivers, IsObjectInCategoryOfQuivers, IsList, IsObjectInCategoryOfQuivers ],
+        
+  function ( category_of_quivers, source, images, range )
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category_of_quivers,
+                   source,
+                   range,
+                   DefiningPairOfQuiverMorphism, images );
+    
+end );
+
+##
+InstallMethod( CreateQuiverMorphism,
+        "for two objects in a category of quivers and two lists",
+        [ IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers ],
+        
+  function ( source, images_of_vertices, images_of_arrows, range )
+    
+    return CreateQuiverMorphism( CapCategory( source ), source, Pair( images_of_vertices, images_of_arrows ), range );
+    
+end );
+
+##
 InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
@@ -171,39 +229,6 @@ BindGlobal( "FinQuivers",
          CategoryOfQuiversEnrichedOver( SkeletalFinSets ) );
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateQuiver,
-        "for a category of quivers and a quadruple",
-        [ IsCategoryOfQuivers, IsList ],
-        
-  function ( category_of_quivers, quadruple )
-    
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category_of_quivers,
-                   DefiningQuadrupleOfQuiver, quadruple );
-    
-end );
-
-##
-InstallMethod( CreateQuiver,
-        "for a category of quivers, an integers, and a list of pairs of integers",
-        [ IsCategoryOfQuivers, IsInt, IsList ],
-        
-  function ( category_of_quivers, n, arrows )
-    local arr, A, s, t;
-    
-    if ForAll( arrows, IsInt ) then
-        arr := List( [ 1 .. Length( arrows ) / 2 ], i -> [ arrows[2 * i - 1], arrows[2 * i] ] );
-    else
-        arr := arrows;
-    fi;
-    
-    return CreateQuiver( category_of_quivers,
-                   NTuple( 4,
-                           n, Length( arr ),
-                           List( arr, a -> a[1] ), List( arr, a -> a[2] ) ) );
-    
-end );
-
-##
 InstallMethod( CreateQuiver,
         "for an integers, and a list of pairs of integers",
         [ IsInt, IsList ],
@@ -225,31 +250,6 @@ InstallMethod( Arrows,
     datum := ObjectDatum( quiver );
     
     return TransposedMat( [ datum[3], datum[4] ] );
-    
-end );
-
-##
-InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
-        "for a category of quivers, two objects in a category of quivers, and a pair",
-        [ IsCategoryOfQuivers, IsObjectInCategoryOfQuivers, IsList, IsObjectInCategoryOfQuivers ],
-        
-  function ( category_of_quivers, source, images, range )
-    
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category_of_quivers,
-                   source,
-                   range,
-                   DefiningPairOfQuiverMorphism, images );
-    
-end );
-
-##
-InstallMethod( CreateQuiverMorphism,
-        "for two objects in a category of quivers and two lists",
-        [ IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers ],
-        
-  function ( source, images_of_vertices, images_of_arrows, range )
-    
-    return CreateQuiverMorphism( CapCategory( source ), source, Pair( images_of_vertices, images_of_arrows ), range );
     
 end );
 
