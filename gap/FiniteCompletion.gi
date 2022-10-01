@@ -11,10 +11,6 @@ InstallMethodWithCache( FiniteCompletion,
         
   function( fp_category, range_category_of_hom_structure )
     local F, O,
-          object_constructor, modeling_tower_object_constructor,
-          object_datum, modeling_tower_object_datum,
-          morphism_constructor, modeling_tower_morphism_constructor,
-          morphism_datum, modeling_tower_morphism_datum,
           finite_completion;
     
     F := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
