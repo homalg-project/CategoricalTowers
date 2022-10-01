@@ -26,8 +26,8 @@ Display( Y( F.A ) );
 
 D := DistinguishedObjectOfHomomorphismStructure( Fop );
 
-ss := MapOfFinSets( D, [ 1 ], HomStructure( Fop.A, Fop.V ) );
-tt := MapOfFinSets( D, [ 2 ], HomStructure( Fop.A, Fop.V ) );
+ss := MapOfFinSets( D, [ 0 ], HomStructure( Fop.A, Fop.V ) );
+tt := MapOfFinSets( D, [ 1 ], HomStructure( Fop.A, Fop.V ) );
 
 s := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Fop, Fop.A, Fop.V, ss );
 t := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Fop, Fop.A, Fop.V, tt );
