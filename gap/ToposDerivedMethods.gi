@@ -9,8 +9,7 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
   function( cat, mor )
     local truth, subobject;
     
-    truth := TruthMorphismOfTrueWithGivenObjects(
-                     cat,
+    truth := TruthMorphismOfTrueWithGivenObjects( cat,
                      TerminalObject( cat ),
                      SubobjectClassifier( cat ) );
     
@@ -41,8 +40,7 @@ end );
 AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
   function( cat, T, Omega )
     
-    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
-                   cat,
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
                    IdentityMorphism( cat, T ),
                    Omega );
     
@@ -53,8 +51,7 @@ end );
 AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
   function( cat, T, Omega )
     
-    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
-                   cat,
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
                    UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, InitialObject( cat ), T ),
                    Omega );
     
@@ -68,8 +65,7 @@ AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
     
     T := TerminalObject( cat );
     
-    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
-                   cat,
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
                    TruthMorphismOfFalseWithGivenObjects( cat, T, Omega ),
                    Omega );
     
@@ -85,10 +81,8 @@ AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
     
     t := TruthMorphismOfTrueWithGivenObjects( cat, T, Omega );
     
-    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
-                   cat,
-                   UniversalMorphismIntoDirectProductWithGivenDirectProduct(
-                           cat,
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
+                   UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
                            [ Omega, Omega ],
                            T,
                            [ t, t ],
@@ -107,31 +101,26 @@ AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
     
     ## ⊤_Ω: Ω → 𝟙 → Ω is the morphism classifying the full subobject of Ω, i.e.,
     ## ⊤_Ω = ClassifyingMorphismOfSubobject( IdentityMorphism( Omega ) )
-    t := PreCompose(
-                 cat,
+    t := PreCompose( cat,
                  UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
                  TruthMorphismOfTrueWithGivenObjects( cat, T, Omega ) );
     
     id := IdentityMorphism( cat, Omega );
     
-    left := UniversalMorphismIntoDirectProductWithGivenDirectProduct(
-                    cat,
+    left := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
                     [ Omega, Omega ],
                     Omega,
                     [ t, id ],
                     Omega2 );
     
-    right := UniversalMorphismIntoDirectProductWithGivenDirectProduct(
-                     cat,
+    right := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
                      [ Omega, Omega ],
                      Omega,
                      [ id, t ],
                      Omega2 );
     
-    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
-                   cat,
-                   UniversalMorphismFromCoproduct(
-                           cat,
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( cat,
+                   UniversalMorphismFromCoproduct( cat,
                            [ Omega, Omega ],
                            Omega2,
                            [ left, right ] ),
@@ -145,16 +134,15 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
                    cat,
-                   EmbeddingOfEqualizer(
-                           cat,
+                   EmbeddingOfEqualizer( cat,
                            Omega2,
-                           [ TruthMorphismOfAndWithGivenObjects( cat, Omega2, Omega ),
-                             ProjectionInFactorOfDirectProductWithGivenDirectProduct(
-                                     cat,
+                           [ TruthMorphismOfAndWithGivenObjects( cat,
+                                   Omega2,
+                                   Omega ),
+                             ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
                                      [ Omega, Omega ],
                                      1,
-                                     Omega2
-                                     ) ] ),
+                                     Omega2 ) ] ),
                    Omega );
     
 end );
@@ -170,11 +158,9 @@ AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
     
     return SubobjectOfClassifyingMorphism( ## -ι: (S - M) ↪ M
                    cat,
-                   PreCompose(
-                           cat,
+                   PreCompose( cat,
                            ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: M → Ω
-                           TruthMorphismOfNot( cat ) ## ¬: Ω → Ω
-                           ) );
+                           TruthMorphismOfNot( cat ) ) ); ## ¬: Ω → Ω
     
 end );
 
@@ -203,8 +189,7 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
                                    Range( iota1 ),
                                    [ ClassifyingMorphismOfSubobject( cat, iota1 ), ## χ_ι1
                                      ClassifyingMorphismOfSubobject( cat, iota2 ) ] ), ## χ_ι2
-                           TruthMorphismOfAnd( cat ) ## ∧: Ω × Ω → Ω
-                           ) );
+                           TruthMorphismOfAnd( cat ) ) ); ## ∧: Ω × Ω → Ω
     
 end );
 
@@ -240,8 +225,7 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
     
     Omega := SubobjectClassifier( cat );
     
-    return SubobjectOfClassifyingMorphism( ## -ι
-                   cat,
+    return SubobjectOfClassifyingMorphism( cat, ## -ι
                    PreCompose(
                            UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
@@ -249,8 +233,7 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
                                    Range( iota1 ),
                                    [ ClassifyingMorphismOfSubobject( cat, iota1 ), ## χ_ι1
                                      ClassifyingMorphismOfSubobject( cat, iota2 ) ] ), ## χ_ι2
-                           TruthMorphismOfOr( cat ) ## ∨: Ω × Ω → Ω
-                           ) );
+                           TruthMorphismOfOr( cat ) ) ); ## ∨: Ω × Ω → Ω
     
 end );
 
@@ -258,10 +241,8 @@ end );
 AddDerivationToCAP( EmbeddingOfUnionSubobject,
   function( cat, iota1, iota2 )
     
-    return ImageEmbedding(
-                   cat,
-                   UniversalMorphismFromCoproduct(
-                           cat,
+    return ImageEmbedding( cat,
+                   UniversalMorphismFromCoproduct( cat,
                            [ Source( iota1 ), Source( iota2 ) ],
                            Range( iota1 ),
                            [ iota1, iota2 ] ) );  ## [ ι1, ι2 ] : Source( ι1 ) ⊔ Source( ι2 ) → Range( ι1 )
@@ -283,18 +264,14 @@ AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSubobject,
     
     Omega := SubobjectClassifier( cat );
     
-    return SubobjectOfClassifyingMorphism( ## -ι
-                   cat,
-                   PreCompose(
-                           cat,
-                           UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
-                                   cat,
+    return SubobjectOfClassifyingMorphism( cat, ## -ι
+                   PreCompose( cat,
+                           UniversalMorphismIntoDirectProduct( cat, ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    [ Omega, Omega ],
                                    Range( iota1 ),
                                    [ ClassifyingMorphismOfSubobject( cat, iota1 ), ## χ_ι1
                                      ClassifyingMorphismOfSubobject( cat, iota2 ) ] ), ## χ_ι2
-                           TruthMorphismOfImplies( cat ) ## ⇒: Ω × Ω → Ω
-                           ) );
+                           TruthMorphismOfImplies( cat ) ) ); ## ⇒: Ω × Ω → Ω
     
 end );
 
@@ -403,8 +380,7 @@ AddDerivationToCAP( HasPushoutComplement,
                    EmbeddingOfRelationInDirectProduct( PreCompose( xx, x_i ) ),
                    EmbeddingOfUnionSubobject( ## already exists in categories with coproducts
                            EmbeddingOfRelationInDirectProduct( AsMorphismInCategoryOfRelations( IdentityMorphism( A ) ) ),
-                           EmbeddingOfRelationInDirectProduct( PreCompose( [ f_i, Omega_X, PseudoInverse( Omega_X ), ff ] ) )
-                           ) );
+                           EmbeddingOfRelationInDirectProduct( PreCompose( [ f_i, Omega_X, PseudoInverse( Omega_X ), ff ] ) ) ) );
     
     return PC2;
     
