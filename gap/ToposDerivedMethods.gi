@@ -226,7 +226,7 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
     Omega := SubobjectClassifier( cat );
     
     return SubobjectOfClassifyingMorphism( cat, ## -ι
-                   PreCompose(
+                   PreCompose( cat,
                            UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
                                    [ Omega, Omega ],
