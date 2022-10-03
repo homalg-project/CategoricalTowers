@@ -11,6 +11,7 @@ ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversAsCCCPre
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gi");
 ReadPackage( "FunctorCategories", "gap/Functors.gi");
+ReadPackage( "FunctorCategories", "gap/PreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/CoPreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");

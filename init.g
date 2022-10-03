@@ -7,6 +7,7 @@
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gd");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gd");
 ReadPackage( "FunctorCategories", "gap/Functors.gd");
+ReadPackage( "FunctorCategories", "gap/PreSheaves.gd");
 ReadPackage( "FunctorCategories", "gap/CoPreSheaves.gd");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gd");

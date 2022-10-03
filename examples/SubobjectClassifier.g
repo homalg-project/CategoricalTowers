@@ -109,7 +109,7 @@ Display( false2 );
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
-iota := AsMorphismInFunctorCategory( EmbeddingOfSieveFunctor( M2 ) );
+iota := CreatePreSheafMorphism( EmbeddingOfSieveFunctor( M2 ) );
 #! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a*a = a*a ], SkeletalFinSets )>
 Display( iota );
