@@ -49,7 +49,7 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
   function( finite_cocompletion )
     local Y;
     
-    Y := YonedaEmbeddingOfOppositeOfSourceCategory( ModelingCategory( finite_cocompletion ) );
+    Y := YonedaEmbeddingOfSourceCategory( ModelingCategory( finite_cocompletion ) );
     
     return PreCompose( Y, WrappingFunctor( finite_cocompletion ) );
     

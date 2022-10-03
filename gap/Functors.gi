@@ -163,19 +163,6 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
 end );
 
 ##
-InstallMethod( NerveTruncatedInDegree2,
-        [ IsFpCategory ],
-        
-  function ( B )
-    local nerve;
-    
-    nerve := NerveTruncatedInDegree2AsFunctor( B );
-    
-    return AsObjectInFunctorCategory( PreSheaves( OppositeFpCategory( AsCapCategory( Source( nerve ) ) ), AsCapCategory( Range( nerve ) ) ), nerve );
-    
-end );
-
-##
 InstallMethodForCompilerForCAP( YonedaEmbeddingData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
@@ -190,7 +177,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingData,
         
     fi;
     
-    PSh := PreSheaves( B );
+    PSh := ModelingCategory( PreSheaves( B ) );
     
     objs := SetOfObjects( B );
     
@@ -240,7 +227,7 @@ InstallMethod( YonedaEmbedding,
         
     fi;
     
-    PSh := PreSheaves( B );
+    PSh := ModelingCategory( PreSheaves( B ) );
     
     Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
     
@@ -251,17 +238,6 @@ InstallMethod( YonedaEmbedding,
     AddMorphismFunction( Yoneda,  Yoneda_data[2] );
     
     return Yoneda;
-    
-end );
-
-##
-InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
-        "for a functor category",
-        [ IsFunctorCategory ],
-        
-  function ( Hom )
-    
-    return YonedaEmbedding( OppositeFpCategory( Source( Hom ) ) );
     
 end );
 

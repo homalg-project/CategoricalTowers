@@ -677,26 +677,15 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
   function ( B, C )
-    local source, B_op, name, category_filter, category_object_filter, category_morphism_filter,
+    local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
           list_of_operations_to_install, r, skip, func, pos, properties, ignore, T;
     
-    ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
-    source := ValueOption( "PreSheaves" );
+    name := "FunctorCategory( ";
     
-    B_op := Opposite( B );
-    
-    if IsCapCategory( source ) then
-        Assert( 0, IsIdenticalObj( B_op, source ) );
-        name := "PreSheaves( ";
-    else
-        source := B;
-        name := "FunctorCategory( ";
-    fi;
-    
-    if HasName( source ) and HasName( C ) then
-        name := Concatenation( name, Name( source ), ", ", Name( C ), " )" );
+    if HasName( B ) and HasName( C ) then
+        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
@@ -821,7 +810,7 @@ InstallMethodWithCache( FunctorCategory,
         [ IsCapCategory, IsCapCategory ],
         
   function ( B, C )
-    local defining_pair, nr_obj, kq, A, relations, B_op, source, name, list_of_operations,
+    local defining_pair, nr_obj, kq, A, relations, B_op, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
@@ -855,19 +844,10 @@ InstallMethodWithCache( FunctorCategory,
         B_op := Opposite( B : FinalizeCategory := true );
     fi;
     
-    ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
-    source := ValueOption( "PreSheaves" );
+    name := "FunctorCategory( ";
     
-    if IsCapCategory( source ) then
-        Assert( 0, IsIdenticalObj( B_op, source ) );
-        name := "PreSheaves( ";
-    else
-        source := B;
-        name := "FunctorCategory( ";
-    fi;
-    
-    if HasName( source ) and HasName( C ) then
-        name := Concatenation( name, Name( source ), ", ", Name( C ), " )" );
+    if HasName( B ) and HasName( C ) then
+        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
     else
         name := Concatenation( name, "..., ... )" );
     fi;
@@ -2265,50 +2245,6 @@ InstallMethod( Hom,
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
   FunctorCategory );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for ",
-        [ IsCapCategory and IsInitialCategory, IsCapCategory ],
-        
-  function ( B, C )
-    
-    return FunctorCategory( Opposite( B : FinalizeCategory := true ), C : PreSheaves := B );
-    
-end );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for a f.p. category and a CAP category",
-        [ IsFpCategory, IsCapCategory ],
-        
-  function ( B, C )
-    
-    return FunctorCategory( OppositeFpCategory( B : FinalizeCategory := true ), C : PreSheaves := B );
-    
-end );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for an algebroid and a CAP category",
-        [ IsAlgebroid, IsCapCategory and IsAbCategory ],
-        
-  function ( B, A )
-    
-    return FunctorCategory( OppositeAlgebroid( B : FinalizeCategory := true ), A : PreSheaves := B );
-    
-end );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( B )
-    
-    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
-    
-end );
 
 ##
 InstallMethod( CategoryOfInternalCategories,

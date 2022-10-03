@@ -34,17 +34,6 @@ DeclareAttribute( "IsomorphismOntoCategoryOfQuiverRepresentations", IsFunctorCat
 #! @Returns a &CAP; functor
 DeclareAttribute( "IsomorphismFromCategoryOfQuiverRepresentations", IsFunctorCategory );
 
-#! @Description
-#!  The input is a category <A>B</A> with finitely many objects equipped with
-#!  a homomorphism structure with values in a finite complete and finite cocomplete category <A>H</A>.
-#!  The output is the nerve of <A>B</A> truncated in degree $2$,
-#!  as an object in the category of presheaves on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
-#!  with values in <A>H</A>.
-#! @Arguments B
-#! @Returns a &CAP; functor
-DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
-#! @InsertChunk NerveTruncatedInDegree2
-
 DeclareAttribute( "YonedaEmbeddingData", IsCapCategory );
 
 #! @Description
@@ -55,10 +44,6 @@ DeclareAttribute( "YonedaEmbeddingData", IsCapCategory );
 #! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 CapJitAddTypeSignature( "YonedaEmbedding", [ IsCapCategory ], IsCapFunctor );
-
-##
-DeclareAttribute( "YonedaEmbeddingOfOppositeOfSourceCategory",
-        IsFunctorCategory );
 
 #! @Description
 #!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
