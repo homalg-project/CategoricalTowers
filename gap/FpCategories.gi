@@ -866,19 +866,20 @@ InstallMethod( ObjectInFpCategory,
         [ IsFpCategory, IsQuiverVertex ],
         
   function( C, v )
-    local o, name;
-    
-    o := rec( );
+    local name, o;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, IsIdenticalObj( UnderlyingQuiver( C ), QuiverOfPath( v ) ) );
     
     name := String( v );
     
-    ObjectifyObjectForCAPWithAttributes(
-            o, C,
-            UnderlyingVertex, v,
-            Label, name );
+    if IsBound( C!.Vertices.(name) ) then
+        return C!.Vertices.(name);
+    fi;
+    
+    o := CreateCapCategoryObjectWithAttributes( C,
+                 UnderlyingVertex, v,
+                 Label, name );
     
     C!.Vertices.(name) := o;
     
