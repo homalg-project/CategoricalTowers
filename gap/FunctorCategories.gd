@@ -65,6 +65,22 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEG
 #
 ####################################
 
+##
+DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
+        IsFunctorCategory );
+
+CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsFunctorCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsFunctorCategory( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsInt ),
+                  rec( filter := IsList, element_type := rec( filter := IsNTuple, element_types := [ rec( filter := IsInt ), rec( filter := IsInt ) ] ) ) ] );
+    
+end );
+
 #! @Description
 #!  The source category of the functor category <A>cat</A>.
 #! @Arguments cat
