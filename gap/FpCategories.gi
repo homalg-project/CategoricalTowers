@@ -866,16 +866,20 @@ InstallMethod( ObjectInFpCategory,
         [ IsFpCategory, IsQuiverVertex ],
         
   function( C, v )
-    local o, name;
+    local name, o;
     
-    o := rec( );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( UnderlyingQuiver( C ), QuiverOfPath( v ) ) );
     
     name := String( v );
     
-    ObjectifyObjectForCAPWithAttributes(
-            o, C,
-            UnderlyingVertex, v,
-            Label, name );
+    if IsBound( C!.Vertices.(name) ) then
+        return C!.Vertices.(name);
+    fi;
+    
+    o := CreateCapCategoryObjectWithAttributes( C,
+                 UnderlyingVertex, v,
+                 Label, name );
     
     C!.Vertices.(name) := o;
     
@@ -897,6 +901,9 @@ InstallOtherMethodForCompilerForCAP( MorphismInFpCategory,
         
   function( B, S, path, T )
     local l;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( UnderlyingQuiver( B ), QuiverOfAlgebra( AlgebraOfElement( path ) ) ) );
     
     if IsZero( path ) then
         Error( "the quiver algebra element ", path, " is zero\n" );
