@@ -678,9 +678,9 @@ InstallMethodWithCache( FunctorCategory,
         
   function ( B, C )
     local source, B_op, name, category_filter, category_object_filter, category_morphism_filter,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
-          list_of_operations_to_install, r, skip, func, pos, properties, ignore, T,
-          object_constructor, object_datum, morphism_constructor, morphism_datum;
+          list_of_operations_to_install, r, skip, func, pos, properties, ignore, T;
     
     ## due to InstallMethodWithCache( FunctorCategory, ... ) only the first call will be executed, it will check the option and determine the name
     source := ValueOption( "PreSheaves" );
@@ -707,6 +707,23 @@ InstallMethodWithCache( FunctorCategory,
     
     category_morphism_filter := IsMorphismInFunctorCategory;
     
+    ##
+    object_constructor := function( cat, pair )
+        
+        return AsObjectInFunctorCategoryByValues( cat, pair );
+        
+    end;
+    
+    object_datum := { cat, object } -> ValuesOfFunctor( object );
+    
+    morphism_constructor := function( cat, source, list, range )
+        
+        return AsMorphismInFunctorCategoryByValues( cat, source, list, range );
+        
+    end;
+    
+    morphism_datum := { cat, morphism } -> ValuesOnAllObjects( morphism );
+    
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
         function( name, T )
@@ -714,7 +731,7 @@ InstallMethodWithCache( FunctorCategory,
             return """
                 function( input_arguments... )
                     
-                  return ObjectConstructor( cat, [ ] );
+                  return ObjectConstructor( cat, Pair( [ ], [ ] ) );
                   
                 end
             """;
@@ -734,23 +751,6 @@ InstallMethodWithCache( FunctorCategory,
             """;
             
         end;
-    
-    ##
-    object_constructor := function( cat, input )
-        
-        return AsObjectInFunctorCategoryByValues( cat, [ ], [ ] );
-        
-    end;
-    
-    object_datum := { cat, object } -> UnderlyingCapTwoCategoryCell( object );
-    
-    morphism_constructor := function( cat, source, input, range )
-        
-        return AsMorphismInFunctorCategoryByValues( cat, source, [ ], range );
-        
-    end;
-    
-    morphism_datum := { cat, morphism } -> UnderlyingCapTwoCategoryCell( morphism );
     
     T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
                  name := name,
@@ -822,6 +822,7 @@ InstallMethodWithCache( FunctorCategory,
         
   function ( B, C )
     local defining_pair, nr_obj, kq, A, relations, B_op, source, name, list_of_operations,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, func, pos, commutative_ring,
           properties, preinstall, supports_empty_limits, doc, prop, Hom, vertices, arrows, H;
@@ -888,6 +889,24 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
+    ##
+    object_constructor := function( cat, pair )
+        
+        return AsObjectInFunctorCategoryByValues( cat, pair );
+        
+    end;
+    
+    object_datum := { cat, object } -> ValuesOfFunctor( object );
+    
+    morphism_constructor := function( cat, source, list, range )
+        
+        return AsMorphismInFunctorCategoryByValues( cat, source, list, range );
+        
+    end;
+    
+    morphism_datum := { cat, morphism } -> ValuesOnAllObjects( morphism );
+    
+    ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
@@ -1238,12 +1257,14 @@ InstallMethodWithCache( FunctorCategory,
                    ## the option doctrines can be passed from higher code
                    is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
+                   object_constructor := object_constructor,
+                   object_datum := object_datum,
+                   morphism_constructor := morphism_constructor,
+                   morphism_datum := morphism_datum,
                    create_func_bool := create_func_bool,
                    create_func_object := create_func_object,
                    create_func_morphism := create_func_morphism,
                    underlying_category_getter_string := "Range"
-                   #underlying_object_getter_string := "( { cat, F } -> UnderlyingCapTwoCategoryCell( F ) )",
-                   #underlying_morphism_getter_string := "( { cat, eta } -> UnderlyingCapTwoCategoryCell( eta ) )"
                    );
     
     

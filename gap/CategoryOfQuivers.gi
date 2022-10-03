@@ -111,29 +111,31 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
         arrows := pair[2];
         
-        V := FinSet( sFinSets, pair[1] );
+        V := ObjectConstructor( sFinSets, pair[1] );
         
-        A := FinSet( sFinSets, Length( arrows ) );
+        A := ObjectConstructor( sFinSets, Length( arrows ) );
         
-        s := MapOfFinSets( sFinSets, A, List( arrows, a -> a[1] ), V );
+        s := MorphismConstructor( sFinSets, A, List( arrows, a -> a[1] ), V );
         
-        t := MapOfFinSets( sFinSets, A, List( arrows, a -> a[2] ), V );
+        t := MorphismConstructor( sFinSets, A, List( arrows, a -> a[2] ), V );
         
         return ObjectConstructor( F_hat,
-                       AsObjectInFunctorCategoryByValues( PSh, Pair( [ V, A ], [ s, t ] ) ) );
+                       ObjectConstructor( PSh, Pair( [ V, A ], [ s, t ] ) ) );
         
     end;
     
     ## from the object in the highest stage of the tower to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
-        local F_hat, F, values_of_functor;
+        local F_hat, PSh, F, values_of_functor;
         
         F_hat := ModelingCategory( Quivers );
         
+        PSh := ModelingCategory( F_hat );
+        
         F := ObjectDatum( F_hat, obj );
         
-        values_of_functor := ValuesOfFunctor( F );
+        values_of_functor := ObjectDatum( PSh, F );
         
         return Pair( Length( values_of_functor[1][1] ),
                      ListN( AsList( values_of_functor[2][1] ), AsList( values_of_functor[2][2] ), { s, t } -> Pair( s, t ) ) );
@@ -154,15 +156,15 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         S := ObjectDatum( F_hat, source );
         T := ObjectDatum( F_hat, range );
         
-        Sobj := ValuesOfFunctor( S )[1];
-        Tobj := ValuesOfFunctor( T )[1];
+        Sobj := ObjectDatum( PSh, S )[1];
+        Tobj := ObjectDatum( PSh, T )[1];
         
         return MorphismConstructor( F_hat,
                        source,
-                       AsMorphismInFunctorCategoryByValues( PSh,
+                       MorphismConstructor( PSh,
                                S,
-                               [ MapOfFinSets( sFinSets, Sobj[1], images[1], Tobj[1] ),
-                                 MapOfFinSets( sFinSets, Sobj[2], images[2], Tobj[2] ) ],
+                               [ MorphismConstructor( sFinSets, Sobj[1], images[1], Tobj[1] ),
+                                 MorphismConstructor( sFinSets, Sobj[2], images[2], Tobj[2] ) ],
                                T ),
                        range );
         
@@ -171,18 +173,20 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## from the morphism in the highest stage of the tower to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
-        local F_hat, eta, values_on_all_objects;
+        local F_hat, PSh, eta, values_on_all_objects;
         
         F_hat := ModelingCategory( Quivers );
         
+        PSh := ModelingCategory( F_hat );
+        
         eta := MorphismDatum( F_hat, mor );
         
-        values_on_all_objects := ValuesOnAllObjects( eta );
+        values_on_all_objects := MorphismDatum( PSh, eta );
         
         return Pair( AsList( values_on_all_objects[1] ), AsList( values_on_all_objects[2] ) );
         
     end;
-
+    
     ## the wrapper category interacts with the user through the raw data but uses
     ## the tower to derive the algorithms turing the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower

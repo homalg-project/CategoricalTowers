@@ -8,22 +8,6 @@
 
 #! @Section Tools for quivers
 
-##
-DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
-        IsFunctorCategory );
-
-CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsInt ),
-                  rec( filter := IsList, element_type := rec( filter := IsNTuple, element_types := [ rec( filter := IsInt ), rec( filter := IsInt ) ] ) ) ] );
-    
-end );
-
 CapJitAddTypeSignature( "Source", [ IsCapNaturalTransformation ],
   function ( input_types )
     return rec( filter := IsCapFunctor,
