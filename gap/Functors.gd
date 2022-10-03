@@ -56,7 +56,7 @@ DeclareAttribute( "YonedaEmbeddingData", IsCapCategory );
 DeclareAttribute( "YonedaEmbedding", IsCapCategory );
 CapJitAddTypeSignature( "YonedaEmbedding", [ IsCapCategory ], IsCapFunctor );
 
-DeclareAttribute( "YonedaEmbeddingOpposite", IsCapCategory );
+DeclareAttribute( "CoYonedaEmbedding", IsCapCategory );
 
 ##
 DeclareAttribute( "YonedaEmbeddingOfOppositeOfSourceCategory",

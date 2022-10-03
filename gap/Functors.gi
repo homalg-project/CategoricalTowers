@@ -255,7 +255,7 @@ InstallMethod( YonedaEmbedding,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOpposite,
+InstallMethod( CoYonedaEmbedding,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
