@@ -870,6 +870,9 @@ InstallMethod( ObjectInFpCategory,
     
     o := rec( );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( UnderlyingQuiver( C ), QuiverOfPath( v ) ) );
+    
     name := String( v );
     
     ObjectifyObjectForCAPWithAttributes(
@@ -897,6 +900,9 @@ InstallOtherMethodForCompilerForCAP( MorphismInFpCategory,
         
   function( B, S, path, T )
     local l;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( UnderlyingQuiver( B ), QuiverOfAlgebra( AlgebraOfElement( path ) ) ) );
     
     if IsZero( path ) then
         Error( "the quiver algebra element ", path, " is zero\n" );
