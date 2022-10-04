@@ -22,6 +22,14 @@
 
 @InsertChunk SubobjectClassifier
 
+@Chapter Category of presheaves of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section &GAP; Categories
+
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
 @Section Constructors

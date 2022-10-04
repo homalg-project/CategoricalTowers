@@ -271,28 +271,6 @@ DeclareOperation( "Hom",
         [ IsCapCategory, IsHomalgRing ] );
 
 #! @Description
-#!  Construct the category <C>Hom( <A>B</A>^op, <A>C</A> )</C> of
-#!  functors from the opposite of the small category <A>B</A> to the category <A>C</A> as objects
-#!  and their natural transformations as morphisms.
-#! @Arguments B, C
-#! @Returns a &CAP; category
-#! @Group PreSheaves
-DeclareOperationWithCache( "PreSheaves",
-        [ IsCapCategory, IsCapCategory ] );
-
-#! @Arguments B, k
-#! @Group PreSheaves
-DeclareOperationWithCache( "PreSheaves",
-        [ IsCapCategory, IsHomalgRing ] );
-
-#! @Arguments B
-#! @Group PreSheaves
-DeclareOperationWithCache( "PreSheaves",
-        [ IsCapCategory ] );
-
-CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsFunctorCategory );
-
-#! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
 #!  The output the full subcategory of the subcategory of functors from the
 #!  <C>SimplicialCategoryTruncatedInDegree</C>(2) into <A>C</A>
