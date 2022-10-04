@@ -32,20 +32,4 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
     
     ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( boolean_algebra );
     
-    ##
-    AddMorphismFromDoubleNegationWithGivenDoubleNegation( boolean_algebra,
-      function( cat, A, B )
-        
-        return UniqueMorphism( cat, B, A );
-        
-    end );
-    
-    ##
-    AddMorphismToDoubleConegationWithGivenDoubleConegation( boolean_algebra,
-      function( cat, A, B )
-        
-        return UniqueMorphism( cat, A, B );
-        
-    end );
-    
 end );

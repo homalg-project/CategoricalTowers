@@ -14,10 +14,7 @@
 AddCategoricalProperty( [ "IsHeytingAlgebroid", "IsCoHeytingAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsHeytingAlgebroid :=
-  DuplicateFreeList( Concatenation( [
-          "NegationOnObjects",
-          "NegationOnMorphismsWithGivenNegations"
-          ],
+  DuplicateFreeList( Concatenation(
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset,
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory ) );
 
