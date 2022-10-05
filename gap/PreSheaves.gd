@@ -196,6 +196,31 @@ DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #
 ####################################
 
+#! @Description
+#!  Construct the category <C>Hom( <A>B</A>^op, <A>C</A> )</C> of
+#!  functors from the opposite of the small category <A>B</A> to the category <A>C</A> as objects
+#!  and their natural transformations as morphisms.
+#! @Arguments B, C
+#! @Returns a &CAP; category
+#! @Group PreSheaves
+DeclareOperationWithCache( "PreSheaves",
+        [ IsCapCategory, IsCapCategory ] );
+
+
+CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
+
+#! @Arguments B, k
+#! @Group PreSheaves
+DeclareOperationWithCache( "PreSheaves",
+        [ IsCapCategory, IsHomalgRing ] );
+
+#! @Arguments B
+#! @Group PreSheaves
+DeclareOperationWithCache( "PreSheaves",
+        [ IsCapCategory ] );
+
+CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
+
 DeclareOperation( "CreatePreSheafByValues", [ IsPreSheafCategory, IsList, IsList ] );
 
 DeclareOperation( "CreatePreSheafByFunctions", [ IsPreSheafCategory, IsFunction, IsFunction ] );
@@ -268,14 +293,3 @@ DeclareOperation( "CreatePreSheafMorphism",
 #! @Group CreatePreSheafMorphism
 DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
-
-#! @Description
-#!  Construct a presheaf category.
-#! @Returns a &CAP; category
-#! @Arguments B
-#! @Group PreSheafCategory
-DeclareOperation( "PreSheafCategory",
-        [ IsCapCategory ] );
-
-DeclareOperationWithCache( "PreSheafCategory",
-        [ IsCapCategory, IsCapCategory ] );
