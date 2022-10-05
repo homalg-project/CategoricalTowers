@@ -163,92 +163,13 @@ InstallMethod( IsomorphismOntoCategoryOfQuiverRepresentations,
 end );
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( B )
-    local A, PSh, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
-    
-    A := UnderlyingQuiverAlgebra( B );
-    
-    if not IsFiniteDimensional( A ) then
-        
-        Error( "The underlying quiver algebra should be finite dimensional!\n" );
-        
-    fi;
-    
-    PSh := ModelingCategory( PreSheaves( B ) );
-    
-    objs := SetOfObjects( B );
-    
-    mors := SetOfGeneratingMorphisms( B );
-    
-    Yoneda_on_objs :=
-      function ( obj )
-        local Yobj;
-        
-        Yobj := AsObjectInFunctorCategoryByValues( PSh,
-                        List( objs, o -> HomomorphismStructureOnObjects( B, o, obj ) ),
-                        List( mors, m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
-        
-        #% CAP_JIT_DROP_NEXT_STATEMENT
-        SetIsProjective( Yobj, true );
-        
-        return Yobj;
-        
-    end;
-    
-    Yoneda_on_mors :=
-      function ( s, mor, r )
-        
-        return AsMorphismInFunctorCategoryByValues( PSh,
-                       s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), mor ) ),
-                       r );
-        
-    end;
-    
-    return Pair( Yoneda_on_objs, Yoneda_on_mors );
-    
-end );
-
-##
-InstallMethod( YonedaEmbedding,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
-        
-  function ( B )
-    local A, PSh, Yoneda, Yoneda_data;
-    
-    A := UnderlyingQuiverAlgebra( B );
-    
-    if not IsFiniteDimensional( A ) then
-        
-        Error( "The underlying quiver algebra should be finite dimensional!\n" );
-        
-    fi;
-    
-    PSh := ModelingCategory( PreSheaves( B ) );
-    
-    Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
-    
-    Yoneda_data := YonedaEmbeddingData( B );
-    
-    AddObjectFunction( Yoneda, Yoneda_data[1] );
-    
-    AddMorphismFunction( Yoneda,  Yoneda_data[2] );
-    
-    return Yoneda;
-    
-end );
-
-##
 InstallMethod( YonedaProjection,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     local mu;
     
-    mu := AsMorphismInFunctorCategory( YonedaProjectionAsNaturalEpimorphism( B ) );
+    mu := CreatePreSheafMorphism( YonedaProjectionAsNaturalEpimorphism( OppositeFpCategory( B ) ) );
     
     Assert( 3, IsEpimorphism( mu ) );
     SetIsEpimorphism( mu, true );
@@ -264,7 +185,7 @@ InstallMethod( YonedaComposition,
   function ( B )
     local mu;
     
-    mu := AsMorphismInFunctorCategory( YonedaCompositionAsNaturalEpimorphism( B ) );
+    mu := CreatePreSheafMorphism( YonedaCompositionAsNaturalEpimorphism( OppositeFpCategory( B ) ) );
     
     Assert( 3, IsEpimorphism( mu ) );
     SetIsEpimorphism( mu, true );
@@ -279,28 +200,22 @@ InstallMethod( YonedaFibration,
         
   function ( B )
     
-    return AsMorphismInFunctorCategory( YonedaFibrationAsNaturalTransformation( B ) );
+    return CreatePreSheafMorphism( YonedaFibrationAsNaturalTransformation( OppositeFpCategory( B ) ) );
     
 end );
 
 ##
 InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
-        [ IsFunctorCategory, IsMorphismInFunctorCategory ],
+        [ IsPreSheafCategory, IsMorphismInPreSheafCategory ],
         
-  function ( Hom, iota ) ## ι: Q ↪ P
-    local Q, P, Bop, Bop_0, B, B_0, H, D, Sieves, emb, Omega, OmegaH, s, Y,
+  function ( PSh, iota ) ## ι: Q ↪ P
+    local Q, P, B, B_0, H, D, Sieves, emb, Omega, OmegaH, Bop, Bop_0, s, Y,
           truth_values, into_OmegaH, paths_to_truth;
     
-    ## B^op
-    Bop := Source( Hom );
-    
-    Bop_0 := SetOfObjects( Bop );
-    
-    ## B^op → H
     Q := Source( iota );
     P := Range( iota );
     
-    B := OppositeFpCategory( Bop );
+    B := Source( PSh );
     B_0 := SetOfObjects( B );
     
     H := RangeCategoryOfHomomorphismStructure( B );
@@ -310,19 +225,21 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
     ## The natural transformation c ↦ ( Sieves(c) ↪ Hom(Hom(-, c), Ω) )
-    emb := AsMorphismInFunctorCategoryByValues( Hom,
-                   SubobjectClassifier( Hom ), ## the sieves functor
+    emb := CreatePreSheafMorphismByValues( PSh,
+                   SubobjectClassifier( PSh ), ## the sieves presheaf
                    Sieves[5], ## maximal sieve
-                   AsObjectInFunctorCategoryByValues( Hom, ## Hom(Hom(-, c), Ω) functor
-                           Sieves[3][1], Sieves[3][2] ) );
+                   CreatePreSheafByValues( PSh, Sieves[3][1], Sieves[3][2] ) ); ## Hom(Hom(-, c), Ω) presheaf
     
     Omega := Source( emb );
     
     OmegaH := SubobjectClassifier( H );
     
+    Bop := OppositeFpCategory( B );
+    Bop_0 := SetOfObjects( Bop );
+    
     ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
     ## Hom(-, c) → B_0:
-    s := YonedaFibration( B );
+    s := YonedaFibration( Bop );
     
     ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
@@ -345,21 +262,21 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     ## the sieve of all f ∈ Hom(-, c), such that x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f):
     paths_to_truth :=
       function ( c, x )
-        local c_in_B, hom_c, s_c, pr, emb_c, sieve;
+        local c_in_Bop, hom_c, s_c, pr, emb_c, sieve;
         
-        ## c in B
-        c_in_B := OppositePath( UnderlyingVertex( c ) ) / B;
+        ## c in Bop
+        c_in_Bop := OppositePath( UnderlyingVertex( c ) ) / Bop;
         
         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
-        hom_c := Y( c_in_B );
+        hom_c := Y( c_in_Bop );
         
         ## Hom(-, c) → B_0
-        s_c := s( c_in_B );
+        s_c := s( c_in_Bop );
         
         pr := List( hom_c, f ->
                     LiftAlongMonomorphism(
                             InjectionOfCofactorOfCoproduct(
-                                    List( B_0, a -> HomStructure( a, c_in_B ) ),
+                                    List( B_0, a -> HomStructure( a, c ) ),
                                     1 + s_c( f ) ),
                             MapOfFinSets( D, [ f ], hom_c ) )(0) );
         
@@ -379,7 +296,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                                                ## Is x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f)?
                                                IsLiftableAlongMonomorphism(
                                                        ## ι_a: Q(a) ↪ P(a):
-                                                       iota( Bop_0[1 + s_c( f )] ), ## = a
+                                                       iota( B_0[1 + s_c( f )] ), ## = a
                                                        ## x P(f) ∈ P(a), where a = Source(f):
                                                        PreCompose(
                                                                ## x ∈ P(c):
@@ -388,21 +305,21 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                                                                P(
                                                                  ## f: a → c in B, where a = Source(f):
                                                                  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                                         B_0[1 + s_c( f )], ## = a
                                                                          c,
-                                                                         Bop_0[1 + s_c( f )], ## = a
                                                                          MapOfFinSets(
                                                                                  D,
                                                                                  [ pr[1 + f] ],
-                                                                                 HomStructure( c, Bop_0[1 + s_c( f )] ) ) ) ) ) ) ),
+                                                                                 HomStructure( B_0[1 + s_c( f )], c ) ) ) ) ) ) ),
                                              into_OmegaH ),
                                        OmegaH ) ) )(0);
         
     end;
     
     ## χ: P → Ω
-    return AsMorphismInFunctorCategory(
+    return CreatePreSheafMorphism(
                    P,
-                   List( Bop_0,
+                   List( B_0,
                          c -> MapOfFinSets(
                                  P( c ),
                                  List( P( c ), x -> paths_to_truth( c, MapOfFinSets( D, [ x ], P( c ) ) ) ),
@@ -413,7 +330,7 @@ end );
 
 ##
 InstallMethod( SievesOfPathsToTruth,
-        [ IsMorphismInFunctorCategory and IsMonomorphism ],
+        [ IsMorphismInPreSheafCategory and IsMonomorphism ],
         
   function ( iota )
     

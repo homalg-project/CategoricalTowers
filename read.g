@@ -8,10 +8,10 @@ ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversAsCCCPrecompiled.gi");
 
-ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
+ReadPackage( "FunctorCategories", "gap/PreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gi");
 ReadPackage( "FunctorCategories", "gap/Functors.gi");
-ReadPackage( "FunctorCategories", "gap/PreSheaves.gi");
+ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
 ReadPackage( "FunctorCategories", "gap/CoPreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
