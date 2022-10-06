@@ -15,9 +15,9 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    "TensorUnit",
    "TensorProductOnObjects",
    "InternalHomOnObjects",
-   "InternalHomOnMorphismsWithGivenInternalHoms",
+   #"InternalHomOnMorphismsWithGivenInternalHoms",
    "InternalCoHomOnObjects",
-   "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
+   #"InternalCoHomOnMorphismsWithGivenInternalCoHoms",
    # P admits the same (co)limits as C,
    # in fact, a weak (co)limit in C becomes a (co)limit in P.
    # However, we must not automatically detect these (co)limits via `universal_type`,
@@ -26,28 +26,28 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY,
    # mentioned above.
    # DirectProduct
    "DirectProduct",
-   "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-   "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
+   #"ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+   #"UniversalMorphismIntoDirectProductWithGivenDirectProduct",
    # Coproduct
    "Coproduct",
-   "InjectionOfCofactorOfCoproductWithGivenCoproduct",
-   "UniversalMorphismFromCoproductWithGivenCoproduct",
+   #"InjectionOfCofactorOfCoproductWithGivenCoproduct",
+   #"UniversalMorphismFromCoproductWithGivenCoproduct",
    # DirectSum
    "DirectSum",
-   "ProjectionInFactorOfDirectSumWithGivenDirectSum",
-   "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
-   "UniversalMorphismIntoDirectSumWithGivenDirectSum",
-   "UniversalMorphismFromDirectSumWithGivenDirectSum",
+   #"ProjectionInFactorOfDirectSumWithGivenDirectSum",
+   #"InjectionOfCofactorOfDirectSumWithGivenDirectSum",
+   #"UniversalMorphismIntoDirectSumWithGivenDirectSum",
+   #"UniversalMorphismFromDirectSumWithGivenDirectSum",
    # TerminalObject
    "TerminalObject",
-   "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
+   #"UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
    # InitialObject
    "InitialObject",
-   "UniversalMorphismFromInitialObjectWithGivenInitialObject",
+   #"UniversalMorphismFromInitialObjectWithGivenInitialObject",
    # ZeroObject
    "ZeroObject",
-   "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
-   "UniversalMorphismFromZeroObjectWithGivenZeroObject",
+   #"UniversalMorphismIntoZeroObjectWithGivenZeroObject",
+   #"UniversalMorphismFromZeroObjectWithGivenZeroObject",
    ] );
 
 ##
@@ -455,10 +455,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             AddExponentialOnObjects( P,
               { cat, S, T } -> InternalHomOnObjects( cat, S, T ) );
             
-            ##
-            AddExponentialOnMorphismsWithGivenExponentials( P,
-              { cat, S, alpha, beta, T } -> InternalHomOnMorphismsWithGivenInternalHoms( cat, S, alpha, beta, T ) );
-            
         fi;
         
         if CanCompute( C, "InternalCoHomOnObjects" ) then
@@ -479,10 +475,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             ##
             AddCoexponentialOnObjects( P,
               { cat, S, T } -> InternalCoHomOnObjects( cat, S, T ) );
-            
-            ##
-            AddCoexponentialOnMorphismsWithGivenCoexponentials( P,
-              { cat, S, alpha, beta, T } -> InternalCoHomOnMorphismsWithGivenInternalCoHoms( cat, S, alpha, beta, T ) );
             
         fi;
         

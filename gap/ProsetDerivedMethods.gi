@@ -347,3 +347,27 @@ AddDerivationToCAP( IsOne,
     
 end : Description := "IsOne using IsAutomorphism",
       CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( InternalHomOnMorphisms,
+        [ [ InternalHomOnObjects, 2 ],
+          [ UniqueMorphism, 1 ] ],
+        
+  function( cat, alpha, beta )
+        
+    return UniqueMorphism( cat, InternalHomOnObjects( cat, Range( alpha ), Source( beta ) ), InternalHomOnObjects( cat, Source( alpha ), Range( beta ) ) );
+    
+end : Description := "InternalHomOnMorphisms as the unique morphism",
+      CategoryFilter := IsThinCategory );
+
+##
+AddDerivationToCAP( InternalCoHomOnMorphisms,
+        [ [ InternalCoHomOnObjects, 2 ],
+          [ UniqueMorphism, 1 ] ],
+        
+  function( cat, alpha, beta )
+        
+    return UniqueMorphism( cat, InternalCoHomOnObjects( cat, Source( alpha ), Range( beta ) ), InternalCoHomOnObjects( cat, Range( alpha ), Source( beta ) ) );
+    
+end : Description := "InternalCoHomOnMorphisms as the unique morphism",
+      CategoryFilter := IsThinCategory );
