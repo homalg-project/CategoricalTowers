@@ -35,9 +35,9 @@ m := EmbeddingOfFinSets( L, G );
 HasPushoutComplement( l, m );
 #! true
 n := PushoutComplement( l, m );;
-g := n[2];
+g := n[2][2];
 #! <A monomorphism in FinSets>
-n := n[1];
+n := n[2][1];
 #! <A morphism in FinSets>
 D := Range( n );;
 Display( D );

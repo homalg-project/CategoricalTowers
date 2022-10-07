@@ -338,101 +338,109 @@ end );
 ##
 AddDerivationToCAP( HasPushoutComplement,
   function( cat, f, x )
-    local xx, x_i, Rel, A, Omega_A, ff, f_i, Omega_X, x_i_Omega_A, rpc, Omega_D, PC1, PC2;
+    local Rel, xx, x_i, A, Omega_A, ff, f_i, Omega_X, x_i_Omega_A, rpc, Omega_D, PC1, PC2;
     
     ## Implement condition (PC.1) in [Kawahara 90, Theorem 3.6]
     
-    xx := AsMorphismInCategoryOfRelations( x );
+    Rel := CategoryOfRelations( cat );
     
-    x_i := PseudoInverse( xx );
+    xx := AsMorphismInCategoryOfRelations( Rel, x );
     
-    Rel := CapCategory( x_i );
+    x_i := PseudoInverse( Rel, xx );
     
     A := Source( x );
     
-    Omega_A := MaximalRelationIntoTerminalObject( A / Rel );
+    Omega_A := MaximalRelationIntoTerminalObject( Rel, ObjectConstructor( Rel, A ) );
     
-    ff := AsMorphismInCategoryOfRelations( f );
+    ff := AsMorphismInCategoryOfRelations( Rel, f );
     
-    f_i := PseudoInverse( ff );
+    f_i := PseudoInverse( Rel, ff );
     
-    Omega_X := MaximalRelationIntoTerminalObject( Source( f ) / Rel );
+    Omega_X := MaximalRelationIntoTerminalObject( Rel, ObjectConstructor( Rel, Source( f ) ) );
     
-    x_i_Omega_A := PreCompose( x_i, Omega_A );
+    x_i_Omega_A := PreCompose( Rel, x_i, Omega_A );
     
-    rpc := EmbeddingOfRelativePseudoComplementSubobject( ## this is the only line in which we need relativ pseudo-complements
-                      EmbeddingOfRelationInDirectProduct( x_i_Omega_A ),
-                      EmbeddingOfRelationInDirectProduct( PreCompose( [ x_i, f_i, Omega_X ] ) ) );
+    rpc := EmbeddingOfRelativePseudoComplementSubobject( cat, ## this is the only line in which we need relativ pseudo-complements
+                      EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ),
+                      EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, [ x_i, f_i, Omega_X ] ) ) );
     
-    Omega_D := MaximalRelationIntoTerminalObject( Range( x ) / Rel );
+    Omega_D := MaximalRelationIntoTerminalObject( Rel, ObjectConstructor( Rel, Range( x ) ) );
     
     PC1 :=
-      IsEqualAsSubobjects(
-              EmbeddingOfUnionSubobject( ## already exists in categories with coproducts
-                      EmbeddingOfRelationInDirectProduct( x_i_Omega_A ), rpc ),
-              EmbeddingOfRelationInDirectProduct( Omega_D ) );
+      IsEqualAsSubobjects( cat,
+              EmbeddingOfUnionSubobject( cat, ## already exists in categories with coproducts
+                      EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ), rpc ),
+              EmbeddingOfRelationInDirectProduct( Rel, Omega_D ) );
     
     if PC1 = false then
         return false;
     fi;
     
-    PC2 := IsDominating(
-                   EmbeddingOfRelationInDirectProduct( PreCompose( xx, x_i ) ),
-                   EmbeddingOfUnionSubobject( ## already exists in categories with coproducts
-                           EmbeddingOfRelationInDirectProduct( AsMorphismInCategoryOfRelations( IdentityMorphism( A ) ) ),
-                           EmbeddingOfRelationInDirectProduct( PreCompose( [ f_i, Omega_X, PseudoInverse( Omega_X ), ff ] ) ) ) );
+    PC2 := IsDominating( cat,
+                   EmbeddingOfRelationInDirectProduct( Rel, PreCompose( Rel, xx, x_i ) ),
+                   EmbeddingOfUnionSubobject( cat, ## already exists in categories with coproducts
+                           EmbeddingOfRelationInDirectProduct( Rel, AsMorphismInCategoryOfRelations( Rel, IdentityMorphism( cat, A ) ) ),
+                           EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, [ f_i, Omega_X, PseudoInverse( Rel, Omega_X ), ff ] ) ) ) );
     
     return PC2;
     
 end );
 
 ##
+
+#  A <--f-- X
+#  |        |
+#  x        g
+#  |        |
+#  v        v
+#  D <--y-- B
 AddDerivationToCAP( PushoutComplement,
   function( cat, f, x )
-    local xx, x_i, Rel, A, Omega_A, ff, f_i, Omega_X, x_i_Omega_A, rpc, y, g;
+    local Rel, xx, x_i, A, Omega_A, x_i_Omega_A, ff, f_i, Omega_X, rpc, i, y, g;
+    
+    Rel := CategoryOfRelations( cat );
     
     ## Construct the pushout-complement as in [Kawahara 90, Theorem 3.6]
     
-    xx := AsMorphismInCategoryOfRelations( x );
+    xx := AsMorphismInCategoryOfRelations( Rel, x );
     
-    x_i := PseudoInverse( xx );
-    
-    Rel := CapCategory( x_i );
+    x_i := PseudoInverse( Rel, xx );
     
     A := Source( x );
     
-    Omega_A := MaximalRelationIntoTerminalObject( A / Rel );
+    Omega_A := MaximalRelationIntoTerminalObject( Rel, ObjectConstructor( Rel, A ) );
     
-    ff := AsMorphismInCategoryOfRelations( f );
+    x_i_Omega_A := PreCompose( Rel, x_i, Omega_A );
+     
+    ff := AsMorphismInCategoryOfRelations( Rel, f );
     
-    f_i := PseudoInverse( ff );
+    f_i := PseudoInverse( Rel, ff );
     
-    Omega_X := MaximalRelationIntoTerminalObject( Source( f ) / Rel );
+    Omega_X := MaximalRelationIntoTerminalObject( Rel, ObjectConstructor( Rel, Source( f ) ) );
     
-    x_i_Omega_A := PreCompose( x_i, Omega_A );
+    rpc := EmbeddingOfRelativePseudoComplementSubobject( cat, ## this is the only line in which we need relative pseudo-complements
+                   EmbeddingOfRelationInDirectProduct( Rel, x_i_Omega_A ),
+                   EmbeddingOfRelationInDirectProduct( Rel, PreComposeList( Rel, [ x_i, f_i, Omega_X ] ) ) );
     
-    rpc := EmbeddingOfRelativePseudoComplementSubobject( ## this is the only line in which we need relativ pseudo-complements
-                   EmbeddingOfRelationInDirectProduct( x_i_Omega_A ),
-                   EmbeddingOfRelationInDirectProduct( PreCompose( [ x_i, f_i, Omega_X ] ) ) );
-    
-    y := PreCompose(
+    i := PreCompose( cat,
                  rpc,
-                 ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+                 ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat,
                          [ Range( x ), TerminalObject( cat ) ],
                          1,
                          Range( rpc ) ) );
     
-    ## Debug
-    Assert( 0, IsMonomorphism( y ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsMonomorphism( cat, i ) );
     
-    y := ImageEmbedding( y );
+    y := ImageEmbedding( cat, i );
     
-    g := PreCompose( [ ff, xx, PseudoInverse( y ) ] );
+    g := PreComposeList( Rel, [ ff, xx, PseudoInverseOfHonestMorphism( Rel, y ) ] );
     
-    ## Debug
-    Assert( 0, IsHonest( g ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsHonest( Rel, g ) );
     
-    return [ HonestRepresentative( g ), y ];
+    return Pair( Source( y ),
+                 Pair( HonestRepresentative( Rel, g ), y ) );
     
 end );
 

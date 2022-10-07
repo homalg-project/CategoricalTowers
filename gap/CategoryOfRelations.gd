@@ -42,6 +42,13 @@ DeclareCategory( "IsMorphismInCategoryOfRelations",
 DeclareAttribute( "CategoryOfRelations",
         IsCapCategory );
 
+CapJitAddTypeSignature( "CategoryOfRelations", [ IsCapCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( CategoryOfRelations( input_types[1].category ) );
+    
+end );
+
 #!
 DeclareAttribute( "AsMorphismInCategoryOfRelations",
         IsCapCategoryMorphism );
@@ -56,9 +63,51 @@ DeclareAttribute( "AsMorphismInCategoryOfRelations",
 DeclareAttribute( "UnderlyingCategory",
         IsCategoryOfRelations );
 
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsCategoryOfRelations ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 #!
 DeclareAttribute( "UnitObjectInCategoryOfRelations",
         IsCategoryOfRelations );
+
+#!
+DeclareAttribute( "UnderlyingCell",
+        IsObjectInCategoryOfRelations );
+
+CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInCategoryOfRelations ],
+  function ( input_types )
+    
+    Assert( 0, IsCategoryOfRelations( input_types[1].category ) );
+    
+    return CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#!
+DeclareAttribute( "UnderlyingSpan",
+        IsMorphismInCategoryOfRelations );
+
+CapJitAddTypeSignature( "UnderlyingSpan", [ IsMorphismInCategoryOfRelations ],
+  function ( input_types )
+    local C;
+    
+    Assert( 0, IsCategoryOfRelations( input_types[1].category ) );
+    
+    C := UnderlyingCategory( input_types[1].category );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ CapJitDataTypeOfObjectOfCategory( C ),
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ CapJitDataTypeOfMorphismOfCategory( C ),
+                         CapJitDataTypeOfMorphismOfCategory( C ) ] ) ] );
+    
+end );
 
 #!
 DeclareAttribute( "MaximalRelationIntoTerminalObject",
@@ -67,6 +116,10 @@ DeclareAttribute( "MaximalRelationIntoTerminalObject",
 #!
 DeclareAttribute( "PseudoInverse",
         IsMorphismInCategoryOfRelations );
+
+#!
+DeclareAttribute( "PseudoInverseOfHonestMorphism",
+        IsCapCategoryMorphism );
 
 #!
 DeclareAttribute( "EmbeddingOfRelationInDirectProduct",
