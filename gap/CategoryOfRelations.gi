@@ -299,7 +299,7 @@ InstallMethod( CategoryOfRelations,
                IsEqualForMorphisms( C, span1[2][2], span2[2][2] );
         
     end );
-
+    
     ##
     AddIsCongruentForMorphisms( Rel,
       function( Rel, relation1, relation2 )
@@ -315,38 +315,43 @@ InstallMethod( CategoryOfRelations,
         
     end );
     
-    ## Composition here means taking the pullback of the adjacent legs of the spans
-    ##
-    ##      K
-    ##     / \
-    ##    v   v
-    ##    I   J
-    ##   / \ / \
-    ##  v   v   v
-    ## S    U   T
-    ##
-    AddPreCompose( Rel,
-      function( Rel, pre_relation, post_relation )
-        local C, diagram, K;
+    if CanCompute( C, "FiberProduct" ) and
+       CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) then
         
-        C := UnderlyingCategory( Rel );
+        ## Composition here means taking the pullback of the adjacent legs of the spans
+        ##
+        ##      K
+        ##     / \
+        ##    v   v
+        ##    I   J
+        ##   / \ / \
+        ##  v   v   v
+        ## S    U   T
+        ##
+        AddPreCompose( Rel,
+          function( Rel, pre_relation, post_relation )
+            local C, diagram, K;
+            
+            C := UnderlyingCategory( Rel );
+            
+            diagram := [ MorphismDatum( Rel, pre_relation )[2][2], MorphismDatum( Rel, post_relation )[2][1] ];
+            
+            K := FiberProduct( C, diagram );
+            
+            return MorphismConstructor( Rel,
+                           Source( pre_relation ),
+                           Pair( K,
+                                 Pair( PreCompose( C,
+                                         ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 1, K ),
+                                         MorphismDatum( Rel, pre_relation )[2][1] ),
+                                       PreCompose( C,
+                                         ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 2, K ),
+                                         MorphismDatum( Rel, post_relation )[2][2] ) ) ),
+                           Range( post_relation ) );
+            
+        end );
         
-        diagram := [ MorphismDatum( Rel, pre_relation )[2][2], MorphismDatum( Rel, post_relation )[2][1] ];
-        
-        K := FiberProduct( C, diagram );
-        
-        return MorphismConstructor( Rel,
-                       Source( pre_relation ),
-                       Pair( K,
-                             Pair( PreCompose( C,
-                                     ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 1, K ),
-                                     MorphismDatum( Rel, pre_relation )[2][1] ),
-                                   PreCompose( C,
-                                     ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 2, K ),
-                                     MorphismDatum( Rel, post_relation )[2][2] ) ) ),
-                       Range( post_relation ) );
-        
-    end );
+    fi;
     
     ##    A
     ##   / \
