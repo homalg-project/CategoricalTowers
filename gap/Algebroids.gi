@@ -2110,6 +2110,10 @@ InstallMethod( OppositeAlgebroid,
     
     SetOppositeAlgebroid( A_op, A );
     
+    if HasIsLinearClosureOfACategory( A ) then
+        SetIsLinearClosureOfACategory( A_op, IsLinearClosureOfACategory( A ) );
+    fi;
+    
     return A_op;
     
 end );
