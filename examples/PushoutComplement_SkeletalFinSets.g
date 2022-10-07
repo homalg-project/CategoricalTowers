@@ -38,9 +38,9 @@ Display( m );
 HasPushoutComplement( l, m );
 #! true
 n := PushoutComplement( l, m );;
-g := n[2];
+g := n[2][2];
 #! |5| → |8|
-n := n[1];
+n := n[2][1];
 #! |3| → |5|
 Display( g );
 #! { 0,..., 4 } ⱶ[ 2, 3, 4, 5, 7 ]→ { 0,..., 7 }

@@ -12,100 +12,120 @@
 ## S   T
 
 ##
-InstallOtherMethod( PseudoInverse,
-        "for a morphism in any CAP category",
-        [ IsCapCategoryMorphism ],
+InstallOtherMethodForCompilerForCAP( PseudoInverse,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
         
-  function( morphism )
-    
-    return PseudoInverse( AsMorphismInCategoryOfRelations( morphism ) );
-    
-end );
-
-##
-InstallMethod( PseudoInverse,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-        
-  function( relation )
-    
-    ## switch the source leg and the range leg
-    return MorphismConstructor( Range( relation ), Reversed( MorphismDatum( relation ) ), Source( relation ) );
-    
-end );
-
-##
-InstallMethod( EmbeddingOfRelationInDirectProduct,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-
-  function( relation )
+  function( Rel, relation )
     local span;
     
-    span := MorphismDatum( relation ); ## [ I → S, I → T ]
+    ## Pair( R, Pair( R → S, R → T ) );
+    span := MorphismDatum( Rel, relation );
     
-    return ImageEmbedding( ## the mono R ↪ S × T of the epi-mono factorization of I → S × T
-                   UniversalMorphismIntoDirectProduct( ## I → S × T
-                           List( span, Range ),
-                           Source( span[1] ), span ) );
+    ## switch the source leg and the range leg of the span
+    return MorphismConstructor( Rel,
+                   Range( relation ),
+                   Pair( span[1],
+                         Pair( span[2][2], span[2][1] ) ),
+                   Source( relation ) );
     
 end );
 
 ##
-InstallMethod( SourceProjection,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-
-  function( relation )
-    local emb, ST;
+InstallOtherMethodForCompilerForCAP( PseudoInverseOfHonestMorphism,
+        "for a category of relations and a morphism in the underlying category",
+        [ IsCategoryOfRelations, IsCapCategoryMorphism ],
+        
+  function( Rel, morphism )
     
-    emb := EmbeddingOfRelationInDirectProduct( relation ); ## R ↪ S × T
+    return PseudoInverse( Rel, AsMorphismInCategoryOfRelations( Rel, morphism ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( EmbeddingOfRelationInDirectProduct,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+        
+  function( Rel, relation )
+    local C, span;
+    
+    C := UnderlyingCategory( Rel );
+    
+    span := MorphismDatum( Rel, relation ); ## Pair( I, Pair( I → S, I → T ) )
+    
+    return ImageEmbedding( C, ## the mono R ↪ S × T of the epi-mono factorization of I → S × T
+                   UniversalMorphismIntoDirectProduct( C, ## I → S × T
+                           [ Range( span[2][1] ), Range( span[2][2] ) ],
+                           span[1],
+                           span[2] ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( SourceProjection,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+        
+  function( Rel, relation )
+    local C, emb, ST;
+    
+    C := UnderlyingCategory( Rel );
+    
+    emb := EmbeddingOfRelationInDirectProduct( Rel, relation ); ## R ↪ S × T
     
     ## [ S, T ]
-    ST := List( [ Source( relation ), Range( relation ) ], ObjectDatum );
+    ST := [ ObjectDatum( Rel, Source( relation ) ), ObjectDatum( Rel, Range( relation ) ) ];
     
     ## R ↪ S × T → S
-    return PreCompose( emb, ProjectionInFactorOfDirectProduct( ST, 1 ) );
+    return PreCompose( C, emb, ProjectionInFactorOfDirectProduct( C, ST, 1 ) );
     
 end );
 
 ##
-InstallMethod( RangeProjection,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-
-  function( relation )
-    local emb, ST;
+InstallOtherMethodForCompilerForCAP( RangeProjection,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+        
+  function( Rel, relation )
+    local C, emb, ST;
     
-    emb := EmbeddingOfRelationInDirectProduct( relation ); ## R ↪ S × T
+    C := UnderlyingCategory( Rel );
+    
+    emb := EmbeddingOfRelationInDirectProduct( Rel, relation ); ## R ↪ S × T
     
     ## [ S, T ]
-    ST := List( [ Source( relation ), Range( relation ) ], ObjectDatum );
+    ST := [ ObjectDatum( Rel, Source( relation ) ), ObjectDatum( Rel, Range( relation ) ) ];
     
     ## R ↪ S × T → T
-    return PreCompose( emb, ProjectionInFactorOfDirectProduct( ST, 2 ) );
+    return PreCompose( C, emb, ProjectionInFactorOfDirectProduct( C, ST, 2 ) );
     
 end );
 
 ##
-InstallMethod( StandardizedSpan,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-
-  function( relation )
+InstallOtherMethodForCompilerForCAP( StandardizedSpan,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+        
+  function( Rel, relation )
     
-    return [ SourceProjection( relation ), RangeProjection( relation ) ];
+    return Pair( Source( EmbeddingOfRelationInDirectProduct( Rel, relation ) ),
+                 Pair( SourceProjection( Rel, relation ),
+                       RangeProjection( Rel, relation ) ) );
     
 end );
 
 ##
-InstallMethod( MorphismByStandardizedSpan,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-
-  function( relation )
+InstallOtherMethodForCompilerForCAP( MorphismByStandardizedSpan,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+        
+  function( Rel, relation )
     
-    return MorphismConstructor( Source( relation ), StandardizedSpan( relation ), Range( relation ) );
+    return MorphismConstructor( Rel,
+                   Source( relation ),
+                   StandardizedSpan( Rel, relation ),
+                   Range( relation ) );
     
 end );
 
@@ -114,24 +134,27 @@ end );
 ## this is equivalent to saying that the domain of the morphism
 ## (=source leg of the standardized span) is an isomorphism in C
 ##
-InstallMethod( IsHonest,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
-
-  function( relation )
+InstallOtherMethodForCompilerForCAP( IsHonest,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+        
+  function( Rel, relation )
     
-    return IsIsomorphism( SourceProjection( relation ) );
+    return IsIsomorphism( UnderlyingCategory( Rel ), SourceProjection( Rel, relation ) );
     
 end );
 
 ##
-InstallMethod( HonestRepresentative,
-        "for a morphism in the category of relations",
-        [ IsMorphismInCategoryOfRelations ],
+InstallOtherMethodForCompilerForCAP( HonestRepresentative,
+        "for a category of relations and a morphism in the category of relations",
+        [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
 
-  function( relation )
+  function( Rel, relation )
+    local C;
     
-    return PreCompose( Inverse( SourceProjection( relation ) ), RangeProjection( relation ) );
+    C := UnderlyingCategory( Rel );
+    
+    return PreCompose( C, InverseForMorphisms( C, SourceProjection( Rel, relation ) ), RangeProjection( Rel, relation ) );
     
 end );
 
@@ -141,74 +164,87 @@ InstallMethod( CategoryOfRelations,
         [ IsCapCategory and IsCartesianCategory ],
         
   function( C )
-    local RelC;
+    local Rel;
     
     ##
-    RelC := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ) );
+    Rel := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ) );
     
-    ## In order to have composition in RelC we need C to have fiber products
+    ## In order to have composition in Rel we need C to have fiber products
     ## In order to replace the span with a single morphism in C we need C to have products
     ## In order to replace this single morphism in C by a monomorphism in C we need C to have images
     
     ##
-    SetUnderlyingCategory( RelC, C );
+    SetUnderlyingCategory( Rel, C );
     
     ##
-    SetFilterObj( RelC, IsCategoryOfRelations );
+    SetFilterObj( Rel, IsCategoryOfRelations );
     
     ##
-    RelC!.category_as_first_argument := true;
+    AddObjectRepresentation( Rel, IsObjectInCategoryOfRelations );
+    AddMorphismRepresentation( Rel, IsMorphismInCategoryOfRelations );
     
     ##
-    AddObjectRepresentation( RelC, IsObjectInCategoryOfRelations );
-    AddMorphismRepresentation( RelC, IsMorphismInCategoryOfRelations );
+    Rel!.category_as_first_argument := true;
     
-    ## "the objects of RelC are the objects of C"
+    ##
+    Rel!.compiler_hints :=
+      rec( category_attribute_names :=
+           [ "UnderlyingCategory",
+             ],
+           category_filter := IsCategoryOfRelations,
+           object_filter := IsObjectInCategoryOfRelations,
+           morphism_filter := IsMorphismInCategoryOfRelations,
+           );
+    
+    ## "the objects of Rel are the objects of C"
     ## here: object is an object in C
-    AddObjectConstructor( RelC,
-      function( RelC, object )
+    AddObjectConstructor( Rel,
+      function( Rel, object )
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), RelC,
-                       ObjectDatum, object );
+        return CreateCapCategoryObjectWithAttributes( Rel,
+                       UnderlyingCell, object );
         
     end );
     
     ##
-    AddObjectDatum( RelC,
-      function( RelC, object )
+    AddObjectDatum( Rel,
+      function( Rel, object )
         
-        return ObjectDatum( object );
+        return UnderlyingCell( object );
         
     end );
     
-    ## "a morphism in RelC is a span in C"
-    ## here: morphisms is a pair of morphisms from some object in C to ObjectDatum( S ) and ObjectDatum( T )
-    AddMorphismConstructor( RelC,
-      function( RelC, S, morphisms, T )
+    ## "a morphism in Rel is a span in C"
+    ## here span is a Pair( I, Pair( I → ObjectDatum( S ), I → ObjectDatum( T ) ) ) in C
+    AddMorphismConstructor( Rel,
+      function( Rel, S, span, T )
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), RelC,
+        return CreateCapCategoryMorphismWithAttributes( Rel,
                        S,
                        T,
-                       MorphismDatum, morphisms );
+                       UnderlyingSpan, span );
         
     end );
     
     ##
-    AddMorphismDatum( RelC,
-      function( RelC, relation )
+    AddMorphismDatum( Rel,
+      function( Rel, relation )
         
-        return MorphismDatum( relation );
+        return UnderlyingSpan( relation );
         
     end );
     
     ##
-    AddIsWellDefinedForObjects( RelC,
-      function( RelC, object )
+    AddIsWellDefinedForObjects( Rel,
+      function( Rel, object )
+        local C;
         
-        if not IsIdenticalObj( CapCategory( ObjectDatum( object ) ), UnderlyingCategory( RelC ) ) then
+        C := UnderlyingCategory( Rel );
+        
+        if not IsIdenticalObj( CapCategory( ObjectDatum( Rel, object ) ), C ) then
             ## the underlying object does not belong to the underlying category
             return false;
-        elif not IsWellDefinedForObjects( ObjectDatum( object ) ) then
+        elif not IsWellDefinedForObjects( C, ObjectDatum( Rel, object ) ) then
             ## the underlying object well-defined as an object in the underlying category
             return false;
         fi;
@@ -218,13 +254,20 @@ InstallMethod( CategoryOfRelations,
     end );
     
     ##
-    AddIsWellDefinedForMorphisms( RelC,
-      function( RelC, relation )
+    AddIsWellDefinedForMorphisms( Rel,
+      function( Rel, relation )
+        local C, span;
         
-        if not ForAll( MorphismDatum( relation ), m -> IsIdenticalObj( CapCategory( m ), UnderlyingCategory( RelC ) ) ) then
+        C := UnderlyingCategory( Rel );
+        
+        span := MorphismDatum( Rel, relation );
+        
+        if not ForAll( span, m -> IsIdenticalObj( CapCategory( m ), UnderlyingCategory( Rel ) ) ) then
             ## at least one of two defining morphisms do not belong to the underlying category
             return false;
-        elif not ForAll( MorphismDatum( relation ), IsWellDefinedForMorphisms ) then
+        elif not IsWellDefinedForObjects( C, span[1] ) then
+            return false;
+        elif not ( IsWellDefinedForMorphisms( C, span[2][1] ) and IsWellDefinedForMorphisms( C, span[2][2] ) ) then
             ## at least one of the two defining morphisms is not well-defined as a morphism in the underlying category
             return false;
         fi;
@@ -234,38 +277,41 @@ InstallMethod( CategoryOfRelations,
     end );
     
     ##
-    AddIsEqualForObjects( RelC,
-      function( RelC, object1, object2 )
+    AddIsEqualForObjects( Rel,
+      function( Rel, object1, object2 )
         
-        return IsEqualForObjects( UnderlyingCategory( RelC ), ObjectDatum( object1 ), ObjectDatum( object2 ) );
+        return IsEqualForObjects( UnderlyingCategory( Rel ), ObjectDatum( Rel, object1 ), ObjectDatum( Rel, object2 ) );
         
     end );
     
     ##
-    AddIsEqualForMorphisms( RelC,
-      function( RelC, relation1, relation2 )
-        local span1, span2;
+    AddIsEqualForMorphisms( Rel,
+      function( Rel, relation1, relation2 )
+        local C, span1, span2;
         
-        span1 := MorphismDatum( relation1 );
-        span2 := MorphismDatum( relation2 );
+        C := UnderlyingCategory( Rel );
         
-        return IsEqualForMorphisms( UnderlyingCategory( RelC ), span1[1], span2[1] ) and
-               IsEqualForMorphisms( UnderlyingCategory( RelC ), span1[2], span2[2] );
+        span1 := MorphismDatum( Rel, relation1 );
+        span2 := MorphismDatum( Rel, relation2 );
+        
+        return IsEqualForObjects( C, span1[1], span2[1] ) and
+               IsEqualForMorphisms( C, span1[2][1], span2[2][1] ) and
+               IsEqualForMorphisms( C, span1[2][2], span2[2][2] );
         
     end );
 
     ##
-    AddIsCongruentForMorphisms( RelC,
-      function( RelC, relation1, relation2 )
+    AddIsCongruentForMorphisms( Rel,
+      function( Rel, relation1, relation2 )
         local emb1, emb2;
         
         ## the embeddings in the underlying category of the direct product
         ## of the underlying objects of the common source and common target
-        emb1 := EmbeddingOfRelationInDirectProduct( relation1 );
-        emb2 := EmbeddingOfRelationInDirectProduct( relation2 );
+        emb1 := EmbeddingOfRelationInDirectProduct( Rel, relation1 );
+        emb2 := EmbeddingOfRelationInDirectProduct( Rel, relation2 );
         
         ## do the embeddings emb1 and emb2 define the same subobject of the direct product
-        return IsEqualAsSubobjects( UnderlyingCategory( RelC ), emb1, emb2 );
+        return IsEqualAsSubobjects( UnderlyingCategory( Rel ), emb1, emb2 );
         
     end );
     
@@ -279,25 +325,25 @@ InstallMethod( CategoryOfRelations,
     ##  v   v   v
     ## S    U   T
     ##
-    AddPreCompose( RelC,
-      function( RelC, pre_relation, post_relation )
+    AddPreCompose( Rel,
+      function( Rel, pre_relation, post_relation )
         local C, diagram, K;
         
-        C := UnderlyingCategory( RelC );
+        C := UnderlyingCategory( Rel );
         
-        diagram := [ MorphismDatum( pre_relation )[2], MorphismDatum( post_relation )[1] ];
+        diagram := [ MorphismDatum( Rel, pre_relation )[2][2], MorphismDatum( Rel, post_relation )[2][1] ];
         
         K := FiberProduct( C, diagram );
         
-        return MorphismConstructor(
+        return MorphismConstructor( Rel,
                        Source( pre_relation ),
-                       [ PreCompose(
-                               C,
-                               ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 1, K ),
-                               MorphismDatum( pre_relation )[1] ),
-                         PreCompose(
-                                 ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 2, K ),
-                                 MorphismDatum( post_relation )[2] ) ],
+                       Pair( K,
+                             Pair( PreCompose( C,
+                                     ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 1, K ),
+                                     MorphismDatum( Rel, pre_relation )[2][1] ),
+                                   PreCompose( C,
+                                     ProjectionInFactorOfFiberProductWithGivenFiberProduct( C, diagram, 2, K ),
+                                     MorphismDatum( Rel, post_relation )[2][2] ) ) ),
                        Range( post_relation ) );
         
     end );
@@ -307,15 +353,18 @@ InstallMethod( CategoryOfRelations,
     ##  v   v
     ##  A   A
     ##
-    AddIdentityMorphism( RelC,
-      function( RelC, object )
-        local id;
+    AddIdentityMorphism( Rel,
+      function( Rel, object )
+        local A, id;
         
-        id := IdentityMorphism( UnderlyingCategory( RelC ), ObjectDatum( object ) );
+        A := ObjectDatum( Rel, object );
         
-        return MorphismConstructor(
+        id := IdentityMorphism( UnderlyingCategory( Rel ), A );
+        
+        return MorphismConstructor( Rel,
                        object,
-                       [ id, id ],
+                       Pair( A,
+                             Pair( id, id ) ),
                        object );
         
     end );
@@ -327,64 +376,60 @@ InstallMethod( CategoryOfRelations,
        ##IsCategoryOfFinSets( RangeCategoryOfHomomorphismStructure( C ) ) then
         
         ##
-        AddHomomorphismStructureOnObjects( RelC,
-          function( RelC, object1, object2 )
+        AddHomomorphismStructureOnObjects( Rel,
+          function( Rel, object1, object2 )
             local C;
             
-            C := UnderlyingCategory( RelC );
+            C := UnderlyingCategory( Rel );
             
-            return HomomorphismStructureOnObjects(
-                           C,
-                           DirectProduct( C, ObjectDatum( object1 ), ObjectDatum( object2 ) ),
+            return HomomorphismStructureOnObjects( C,
+                           DirectProduct( C, ObjectDatum( Rel, object1 ), ObjectDatum( Rel, object2 ) ),
                            SubobjectClassifier( C ) );
             
         end );
         
     fi;
     
-    Finalize( RelC );
+    Finalize( Rel );
     
-    return RelC;
+    return Rel;
     
 end );
 
 ##
 InstallOtherMethod( \/,
+        "for an object in the underlying category and a category of relations",
         [ IsCapCategoryObject, IsCategoryOfRelations ],
         
   function( M, Rel )
+    
+    Assert( 0, IsIdenticalObj( CapCategory( M ), UnderlyingCategory( Rel ) ) );
     
     return ObjectConstructor( Rel, M );
     
 end );
 
 ##
-InstallMethod( UnitObjectInCategoryOfRelations,
-        [ IsCategoryOfRelations ],
+InstallOtherMethodForCompilerForCAP( AsMorphismInCategoryOfRelations,
+        "for a category of relations and a morphism in the underlying category",
+        [ IsCategoryOfRelations, IsCapCategoryMorphism ],
         
-  function( Rel )
+  function( Rel, morphism )
+    local C, S, T, rel;
     
-    return TerminalObject( UnderlyingCategory( Rel ) ) / Rel;
-    
-end );
-
-##
-InstallMethod( AsMorphismInCategoryOfRelations,
-        [ IsCapCategoryMorphism ],
-        
-  function( morphism )
-    local C, Rel, S, T, rel;
-    
-    C := CapCategory( morphism );
-    
-    Rel := CategoryOfRelations( C );
+    C := UnderlyingCategory( Rel );
     
     S := Source( morphism );
     
     T := Range( morphism );
     
-    rel := MorphismConstructor( S / Rel, [ IdentityMorphism( S ), morphism ], T / Rel );
+    rel := MorphismConstructor( Rel,
+                   ObjectConstructor( Rel, S ),
+                   Pair( S,
+                         Pair( IdentityMorphism( C, S ), morphism ) ),
+                   ObjectConstructor( Rel, T ) );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsHonest( rel, true );
     
     return rel;
@@ -392,15 +437,34 @@ InstallMethod( AsMorphismInCategoryOfRelations,
 end );
 
 ##
-InstallMethod( MaximalRelationIntoTerminalObject,
-        [ IsObjectInCategoryOfRelations ],
+InstallOtherMethodForCompilerForCAP( UnitObjectInCategoryOfRelations,
+        "for a category of relations",
+        [ IsCategoryOfRelations ],
         
-  function( object )
-    return MorphismConstructor(
+  function( Rel )
+    
+    return ObjectConstructor( Rel, TerminalObject( UnderlyingCategory( Rel ) ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( MaximalRelationIntoTerminalObject,
+        "for a category of relations and for an object in the underlying category",
+        [ IsCategoryOfRelations, IsObjectInCategoryOfRelations ],
+        
+  function( Rel, object )
+    local C, datum;
+    
+    C := UnderlyingCategory( Rel );
+    
+    datum := ObjectDatum( Rel, object );
+    
+    return MorphismConstructor( Rel,
                    object,
-                   [ IdentityMorphism( ObjectDatum( object ) ),
-                     UniversalMorphismIntoTerminalObject( ObjectDatum( object ) ) ],
-                   UnitObjectInCategoryOfRelations( CapCategory( object ) ) );
+                   Pair( datum,
+                         Pair( IdentityMorphism( C, datum ),
+                               UniversalMorphismIntoTerminalObject( C, datum ) ) ),
+                   UnitObjectInCategoryOfRelations( Rel ) );
     
 end );
 

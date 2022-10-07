@@ -11,7 +11,7 @@ InstallMethod( DPO,
   function( m, l, r )
     local n, H, DPO;
     
-    n := PushoutComplement( l, m )[1];
+    n := PushoutComplement( l, m )[2][1];
     
     H := Pushout( [ n, r ] );
     
