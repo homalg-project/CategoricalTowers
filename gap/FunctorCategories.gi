@@ -682,6 +682,10 @@ InstallMethodWithCache( FunctorCategory,
           create_func_object, create_func_morphism,
           list_of_operations_to_install, r, skip, func, pos, properties, ignore, T;
     
+    if HasRangeCategoryOfHomomorphismStructure( B ) then
+        Assert( 0, IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( B ) ) );
+    fi;
+    
     name := "FunctorCategory( ";
     
     if HasName( B ) and HasName( C ) then
@@ -856,14 +860,14 @@ InstallMethodWithCache( FunctorCategory,
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
         
-        if HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
-            
-            Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY );
-            
-        elif HasCounit( B ) and HasComultiplication( B ) then
+        if HasCounit( B ) and HasComultiplication( B ) then
             
             Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY );
             Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY_WITH_DUALS );
+            
+        elif HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+            
+            Append( list_of_operations, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY );
             
         fi;
         

@@ -1,7 +1,5 @@
 LoadPackage( "FunctorCategories" );
 
-field := HomalgFieldOfRationals( );
-
 #  x    a
 #    1 ---> 2
 #    |      |
@@ -12,15 +10,15 @@ field := HomalgFieldOfRationals( );
 #
 quiver := RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" );
 
-A := PathAlgebra( field, quiver );;
+F := FreeCategory( quiver );
 
-A := A / [ A.x^3, A.y^2 ];
+Q := HomalgFieldOfRationals( );
 
-algebroid := Algebroid( A );
+QF := Q[F];
 
-matrix_cat := MatrixCategory( field );
+A := QF / [ QF.x^3, QF.y^2 ];
 
-H := FunctorCategory( algebroid, matrix_cat );
+H := FunctorCategory( A );
 
 indec_projs := IndecProjectiveObjects( H );
 
