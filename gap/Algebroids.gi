@@ -1177,6 +1177,8 @@ InstallMethod( Algebroid,
     
     A!.category_as_first_argument := true;
     
+    SetDefiningPairOfUnderlyingQuiver( A, DefiningPairOfAQuiver( quiver ) );
+    
     A!.compiler_hints :=
       rec( category_attribute_names :=
            [ "SetOfObjects",
