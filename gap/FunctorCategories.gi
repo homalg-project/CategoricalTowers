@@ -1297,40 +1297,6 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
-    ## this code should become obsolete with following feature request:
-    ## https://github.com/homalg-project/CAP_project/issues/801
-    if CanCompute( C, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
-        
-        ##
-        AddMorphismBetweenDirectSumsWithGivenDirectSums( Hom,
-          function ( Hom, S, diagram_S, M, diagram_T, T )
-            local B, C, S_o_vals, T_o_vals, natural_transformation_on_objects;
-            
-            B := Source( Hom );
-            C := Range( Hom );
-            
-            S_o_vals := ValuesOfFunctor( S )[1];
-            T_o_vals := ValuesOfFunctor( T )[1];
-            
-            natural_transformation_on_objects :=
-              function ( source, objB_index, range )
-                
-                return MorphismBetweenDirectSumsWithGivenDirectSums(
-                               C,
-                               S_o_vals[objB_index],
-                               List( diagram_S, Si -> ValuesOfFunctor( Si )[1][objB_index] ),
-                               List( M, row -> List( row, m -> ValuesOnAllObjects( m )[objB_index] ) ),
-                               List( diagram_T, Ti -> ValuesOfFunctor( Ti )[1][objB_index] ),
-                               T_o_vals[objB_index] );
-                
-            end;
-            
-            return AsMorphismInFunctorCategory( Hom, S, natural_transformation_on_objects, T );
-            
-        end );
-        
-    fi;
-    
     if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
         
         ##
