@@ -40,6 +40,21 @@ DeclareCategory( "IsMorphismInPreSheafCategory",
 
 ####################################
 #
+#! @Section Global variables
+#
+####################################
+
+#!
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY" );
+
+#!
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY" );
+
+#!
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS" );
+
+####################################
+#
 #! @Section Attributes
 #
 ####################################
@@ -110,30 +125,6 @@ CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
     
 end );
 
-#! @Description
-#!  Apply the functor <A>F</A> (as an object in the corresponding Hom-category) to the cell <A>c</A>.
-#!  The shorthand is <A>F</A>(<A>c</A>).
-#! @Arguments F, c
-#! @Returns a &CAP; cell
-DeclareOperation( "ApplyObjectInPreSheafCategoryToObject",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ] );
-
-DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
-
-#!  The 2-cell underlying the functor object <A>F_or_eta</A>.
-#! @Arguments F_or_eta
-#! @Returns a &CAP; functor or natural transformation
-DeclareAttribute( "UnderlyingCapTwoCategoryCell",
-        IsCellInPreSheafCategory );
-
-#! @Description
-#!  Apply the natural transformation <A>eta</A> (as an object in the corresponding Hom-category) to the object <A>o</A>.
-#!  The shorthand is <A>eta</A>(<A>o</A>).
-#! @Arguments eta, o
-DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
-        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ] );
-
 ##
 DeclareAttribute( "ValuesOfPreSheaf",
         IsObjectInPreSheafCategory );
@@ -167,6 +158,12 @@ CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInPreSheafCategory ],
     
 end );
 
+#!  The 2-cell underlying the functor object <A>F_or_eta</A>.
+#! @Arguments F_or_eta
+#! @Returns a &CAP; functor or natural transformation
+DeclareAttribute( "UnderlyingCapTwoCategoryCell",
+        IsCellInPreSheafCategory );
+
 ##
 DeclareAttribute( "YonedaEmbeddingDataInPreSheafCategory",
         IsCapCategory );
@@ -186,9 +183,51 @@ DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
 #!  as an object in the category of presheaves on <C>SimplicialCategoryTruncatedInDegree</C>($2$)
 #!  with values in <A>H</A>.
 #! @Arguments B
-#! @Returns a &CAP; functor
+#! @Returns a presheaf
 DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #! @InsertChunk NerveTruncatedInDegree2
+
+#! @Description
+#!  The input is a monomorphism <A>iota</A>:$Q \to P$ in the category of
+#!  presheaves with values in <C>RangeCategoryOfHomomorphismStructure</C>($C$)
+#!  on the finitely presented category
+#!  $C:=$(<C>Source</C>($P$)) with finite $\mathrm{Hom}$-sets.
+#!  The output is the morphism from $P$ to
+#!  the <C>SieveFunctor</C>($C$) mapping for each $c \in C$ the element $x \in P(c)$
+#!  to its <Q>paths to truth</Q> $f: a \to c$ translating $x$ into $f(x) \in Q(a) \subseteq P(a)$.
+#! @Returns a monomorphisms in a Hom-category of functors
+#! @Arguments iota
+#! @Group SievesOfPathsToTruth
+DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInPreSheafCategory );
+
+#! @Arguments Hom, iota
+#! @Group SievesOfPathsToTruth
+DeclareOperation( "SievesOfPathsToTruth",
+        [ IsPreSheafCategory, IsMorphismInPreSheafCategory ] );
+
+####################################
+#
+#! @Section Operations
+#
+####################################
+
+#! @Description
+#!  Apply the functor <A>F</A> (as an object in the corresponding Hom-category) to the cell <A>c</A>.
+#!  The shorthand is <A>F</A>(<A>c</A>).
+#! @Arguments F, c
+#! @Returns a &CAP; cell
+DeclareOperation( "ApplyObjectInPreSheafCategoryToObject",
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ] );
+
+DeclareOperation( "ApplyObjectInPreSheafCategoryToMorphism",
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ] );
+
+#! @Description
+#!  Apply the natural transformation <A>eta</A> (as an object in the corresponding Hom-category) to the object <A>o</A>.
+#!  The shorthand is <A>eta</A>(<A>o</A>).
+#! @Arguments eta, o
+DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
+        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ] );
 
 ####################################
 #

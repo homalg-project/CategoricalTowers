@@ -20,7 +20,7 @@ RelationsOfFpCategory( Delta2 );
 Size( Delta2 );
 #! 31
 Ypt := YonedaProjection( Delta2 );
-#! <An epimorphism in FunctorCategory( FreeCategory( RightQuiver(
+#! <An epimorphism in PreSheaves( FreeCategory( RightQuiver(
 #!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
 #!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
@@ -28,7 +28,7 @@ Ypt := YonedaProjection( Delta2 );
 IsWellDefined( Ypt );
 #! true
 Ymu := YonedaComposition( Delta2 );
-#! <An epimorphism in FunctorCategory( FreeCategory( RightQuiver(
+#! <An epimorphism in PreSheaves( FreeCategory( RightQuiver(
 #!    "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
 #!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
@@ -36,7 +36,7 @@ Ymu := YonedaComposition( Delta2 );
 IsWellDefined( Ymu );
 #! true
 Ys := YonedaFibration( Delta2 );
-#! <A morphism in FunctorCategory( FreeCategory( RightQuiver(
+#! <A morphism in PreSheaves( FreeCategory( RightQuiver(
 #!    "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
 #!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
@@ -45,16 +45,15 @@ IsWellDefined( Ys );
 #! true
 Display( Ys );
 #! Image of <(C0)>:
-#! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
+#! { 0,..., 5 } ⱶ[ 0, 1, 1, 2, 2, 2 ]→ { 0, 1, 2 }
 #! 
 #! Image of <(C1)>:
-#! { 0,..., 8 } ⱶ[ 0, 0, 1, 1, 1, 2, 2, 2, 2 ]→ { 0, 1, 2 }
+#! { 0,..., 9 } ⱶ[ 0, 1, 1, 1, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }
 #! 
 #! Image of <(C2)>:
-#! { 0,..., 18 } ⱶ[ 0, 0, 0, 1, 1, 1, 1, 1, 1,
-#!                  2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }
+#! { 0,..., 14 } ⱶ[ 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in FunctorCategory( FreeCategory( RightQuiver(
+#! A morphism in PreSheaves( FreeCategory( RightQuiver(
 #!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
 #!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,

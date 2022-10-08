@@ -5,9 +5,9 @@
 #
 
 DeclareOperation( "ExternalHomDiagram",
-    [ IsCapCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ] );
+    [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 
 DeclareOperation( "AuxiliaryMorphism",
-    [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ] );
+    [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ] );
 
-DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY" );
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATEGORY" );

@@ -20,15 +20,13 @@ SetInfoLevel( InfoFunctorCategories, 1 );
 #!  The &GAP; category of Hom-categories of functors between two fixed categories.
 #! @Arguments category
 DeclareCategory( "IsFunctorCategory",
-        IsCapCategory and
-        IsAttributeStoringRep );
+        IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a Hom-category of functors between two fixed categories.
 #! @Arguments cell
 DeclareCategory( "IsCellInFunctorCategory",
-        IsCapCategoryCell and
-        IsAttributeStoringRep );
+        IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a Hom-category of functors between two fixed categories.
@@ -43,21 +41,6 @@ DeclareCategory( "IsObjectInFunctorCategory",
 DeclareCategory( "IsMorphismInFunctorCategory",
         IsCellInFunctorCategory and
         IsCapCategoryMorphism );
-
-####################################
-#
-#! @Section Global variables
-#
-####################################
-
-#!
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_FUNCTOR_CATEGORY" );
-
-#!
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY" );
-
-#!
-DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_FUNCTOR_CATEGORY_WITH_DUALS" );
 
 ####################################
 #
@@ -144,11 +127,99 @@ end );
 DeclareAttribute( "OppositeOfSource",
         IsFunctorCategory );
 
+#! @Description
+#!  The input is functor <A>F</A> in a functor category <A>Hom</A>.
+#!  The output is pair of lists.
+#!  The first is the list of values of the functor <A>F</A> on all objects of the source category of <A>Hom</A>.
+#!  The second is the list of values of the functor <A>F</A> on all *generating* morphisms of the source category of <A>Hom</A>.
+#! @Arguments F
+#! @Returns a pair of lists
+DeclareAttribute( "ValuesOfFunctor",
+        IsObjectInFunctorCategory );
+
+CapJitAddTypeSignature( "ValuesOfFunctor", [ IsObjectInFunctorCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsFunctorCategory( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
+                  rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) ] );
+    
+end );
+
+#! @Description
+#!  Returns the values of the natural transformation <A>eta</A> in a functor category <A>Hom</A>
+#!  on all objects of the source category of <A>Hom</A>.
+#! @Arguments eta
+#! @Returns a list
+DeclareAttribute( "ValuesOnAllObjects",
+        IsMorphismInFunctorCategory );
+
+CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInFunctorCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsFunctorCategory( input_types[1].category ) );
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
+    
+end );
+
 #!  The 2-cell underlying the functor object <A>F_or_eta</A>.
 #! @Arguments F_or_eta
 #! @Returns a &CAP; functor or natural transformation
 DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInFunctorCategory );
+
+##
+DeclareAttribute( "YonedaEmbeddingData",
+        IsCapCategory );
+
+##
+DeclareAttribute( "YonedaEmbedding",
+        IsCapCategory );
+
+##
+DeclareAttribute( "YonedaEmbeddingOfOppositeOfSourceCategory",
+        IsFunctorCategory );
+
+#! @Description
+#!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
+#!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#!  Its source is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#!  Its targe is the constant functor of $0$-cells
+#!  $B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}$.
+#! @Arguments B
+#! @Returns a morphism in a &CAP; category
+DeclareAttribute( "YonedaFibration", IsCapCategory );
+
+#! @Description
+#!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
+#!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#!  Its source is the functor
+#!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
+#!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
+#!  Its target is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#! @Arguments B
+#! @Returns a morphism in a &CAP; category
+DeclareAttribute( "YonedaProjection", IsCapCategory );
+
+#! @Description
+#!  The input is a finitely presented category <A>B</A>. The output is an epimorphism in the category
+#!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
+#!  Its source is the functor
+#!  $B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c),
+#!  \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)$.
+#!  Its target is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
+#!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
+#! @Arguments B
+#! @Returns a morphism in a &CAP; category
+DeclareAttribute( "YonedaComposition", IsCapCategory );
+#! @InsertChunk YonedaComposition
 
 #! @Description
 #!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
@@ -198,51 +269,16 @@ DeclareOperation( "ApplyObjectInFunctorCategoryToMorphism",
 DeclareOperation( "ApplyMorphismInFunctorCategoryToObject",
         [ IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject ] );
 
-#! @Description
-#!  The input is functor <A>F</A> in a functor category <A>Hom</A>.
-#!  The output is pair of lists.
-#!  The first is the list of values of the functor <A>F</A> on all objects of the source category of <A>Hom</A>.
-#!  The second is the list of values of the functor <A>F</A> on all *generating* morphisms of the source category of <A>Hom</A>.
-#! @Arguments F
-#! @Returns a pair of lists
-DeclareAttribute( "ValuesOfFunctor",
-        IsObjectInFunctorCategory );
-
-CapJitAddTypeSignature( "ValuesOfFunctor", [ IsObjectInFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ),
-                  rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) ] );
-    
-end );
-
-#! @Description
-#!  Returns the values of the natural transformation <A>eta</A> in a functor category <A>Hom</A>
-#!  on all objects of the source category of <A>Hom</A>.
-#! @Arguments eta
-#! @Returns a list
-DeclareAttribute( "ValuesOnAllObjects",
-        IsMorphismInFunctorCategory );
-
-CapJitAddTypeSignature( "ValuesOnAllObjects", [ IsMorphismInFunctorCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsFunctorCategory( input_types[1].category ) );
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) );
-    
-end );
-
 ####################################
 #
 #! @Section Constructors
 #
 ####################################
+
+#! @Arguments B
+#! @Group FunctorCategory
+DeclareAttribute( "FunctorCategory",
+        IsCapCategory );
 
 #! @Description
 #!  Construct the category <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)</C>=

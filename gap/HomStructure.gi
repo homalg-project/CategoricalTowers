@@ -4,28 +4,22 @@
 # Implementations
 #
 
-#          F(s(m)) --F(m)-> F(t(m))
-#             |                |
-#  eta_{s(m)} |                | eta_{t(m)}
-#             v                v
-#          G(s(m)) --G(m)-> G(t(m))
-
 ##
 InstallMethodForCompilerForCAP( ExternalHomDiagram,
-          [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ],
+          [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
           
-  function ( Hom, F, G )
+  function ( PSh, F, G )
     local defining_pair, nr_o, F_o, G_o, C, sources,
           mors, nr_m, F_m, G_m, mor_pair, morphisms, objects;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Hom );
+    defining_pair := DefiningPairOfUnderlyingQuiver( PSh );
     
     nr_o := defining_pair[1];
     
-    F_o := ValuesOfFunctor( F )[1];
-    G_o := ValuesOfFunctor( G )[1];
+    F_o := ValuesOfPreSheaf( F )[1];
+    G_o := ValuesOfPreSheaf( G )[1];
     
-    C := Range( Hom );
+    C := Range( PSh );
     
     sources := List( [ 1 .. nr_o ],
                      i -> HomomorphismStructureOnObjects( C,
@@ -35,24 +29,28 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     mors := defining_pair[2];
     nr_m := Length( mors );
     
-    F_m := ValuesOfFunctor( F )[2];
-    G_m := ValuesOfFunctor( G )[2];
+    F_m := ValuesOfPreSheaf( F )[2];
+    G_m := ValuesOfPreSheaf( G )[2];
+    
+    #          F(t(m)) --F(m)-> F(s(m))
+    #             |                |
+    #  eta_{t(m)} |                | eta_{s(m)}
+    #             v                v
+    #          G(t(m)) --G(m)-> G(s(m))
     
     mor_pair :=
       function ( i )
         
-        return [ Triple(
-                       mors[i][1],
-                       HomomorphismStructureOnMorphisms( C, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(s(m)), G(t(m)) )
-                           IdentityMorphism( C, Source( F_m[i] ) ),
-                           G_m[i] ),
-                       nr_o + i ),
-                 Triple(
-                        mors[i][2],
-                        HomomorphismStructureOnMorphisms( C, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(s(m)), G(t(m)) )
-                                F_m[i],
-                                IdentityMorphism( C, Range( G_m[i] ) ) ),
-                        nr_o + i ) ];
+        return [ Triple( mors[i][1],
+                         HomomorphismStructureOnMorphisms( C, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(t(m)), G(s(m)) )
+                                 F_m[i],
+                                 IdentityMorphism( C, Range( G_m[i] ) ) ),
+                         nr_o + i ),
+                 Triple( mors[i][2],
+                         HomomorphismStructureOnMorphisms( C, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(t(m)), G(s(m)) )
+                                 IdentityMorphism( C, Source( F_m[i] ) ),
+                                 G_m[i] ),
+                         nr_o + i ) ];
         
     end;
     
@@ -66,25 +64,27 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( AuxiliaryMorphism,
-        [ IsFunctorCategory, IsObjectInFunctorCategory, IsObjectInFunctorCategory ],
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
         
-  function ( Hom, S, R )
-    local algebroid, C, objs, nr_o, S_o_vals, R_o_vals, mors, nr_m, S_m_vals, R_m_vals,
+  function ( PSh, S, R )
+    local B, B_op, C, objs, nr_o, S_o_vals, R_o_vals, mors, nr_m, S_m_vals, R_m_vals,
           source_summands, range_summands, H, map, i, j;
     
-    algebroid := Source( Hom );
+    B := Source( PSh );
     
-    C := Range( Hom );
+    B_op := OppositeAlgebroid( B );
     
-    objs := SetOfObjects( algebroid );
+    C := Range( PSh );
+    
+    objs := SetOfObjects( B_op );
     nr_o := Length( objs );
-    S_o_vals := ValuesOfFunctor( S )[1];
-    R_o_vals := ValuesOfFunctor( R )[1];
+    S_o_vals := ValuesOfPreSheaf( S )[1];
+    R_o_vals := ValuesOfPreSheaf( R )[1];
     
-    mors := SetOfGeneratingMorphisms( algebroid );
+    mors := SetOfGeneratingMorphisms( B_op );
     nr_m := Length( mors );
-    S_m_vals := ValuesOfFunctor( S )[2];
-    R_m_vals := ValuesOfFunctor( R )[2];
+    S_m_vals := ValuesOfPreSheaf( S )[2];
+    R_m_vals := ValuesOfPreSheaf( R )[2];
     
     source_summands := List( [ 1 .. nr_o ],
                              i -> HomomorphismStructureOnObjects( C,
@@ -154,12 +154,12 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
 end );
 
 ##
-InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEGORY,
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATEGORY,
   
-  function ( Hom )
+  function ( PSh )
     local C, H;
     
-    C := Range( Hom );
+    C := Range( PSh );
     
     if not HasRangeCategoryOfHomomorphismStructure( C ) then
       
@@ -174,37 +174,37 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     fi;
     
     ##
-    SetRangeCategoryOfHomomorphismStructure( Hom, H );
+    SetRangeCategoryOfHomomorphismStructure( PSh, H );
 
     ##
-    SetIsEquippedWithHomomorphismStructure( Hom, true );
+    SetIsEquippedWithHomomorphismStructure( PSh, true );
     
     ## Be sure the above assignment succeeded:
-    Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( Hom ) ) );
+    Assert( 0, IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( PSh ) ) );
     
     ##
-    AddDistinguishedObjectOfHomomorphismStructure( Hom,
-            { Hom } -> DistinguishedObjectOfHomomorphismStructure( Range( Hom ) ) );
+    AddDistinguishedObjectOfHomomorphismStructure( PSh,
+            { PSh } -> DistinguishedObjectOfHomomorphismStructure( Range( PSh ) ) );
     
     ##
-    AddHomomorphismStructureOnObjects( Hom,
-      function ( Hom, S, R )
+    AddHomomorphismStructureOnObjects( PSh,
+      function ( PSh, S, R )
         
-        return KernelObject( RangeCategoryOfHomomorphismStructure( Hom ),
-                       AuxiliaryMorphism( Hom, S, R ) );
+        return KernelObject( RangeCategoryOfHomomorphismStructure( PSh ),
+                       AuxiliaryMorphism( PSh, S, R ) );
         
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom,
-      function ( Hom, eta )
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh,
+      function ( PSh, eta )
         local C, H, D, tau, diagram;
         
-        C := Range( Hom );
+        C := Range( PSh );
         
-        H := RangeCategoryOfHomomorphismStructure( Hom );
+        H := RangeCategoryOfHomomorphismStructure( PSh );
         
-        D := DistinguishedObjectOfHomomorphismStructure( Hom );
+        D := DistinguishedObjectOfHomomorphismStructure( PSh );
         
         tau := List( ListOfValues( ValuesOnAllObjects( eta ) ),
                      eta_o -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, eta_o ) );
@@ -212,7 +212,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         diagram := List( tau, Range );
         
         return KernelLift( H,
-                       AuxiliaryMorphism( Hom,
+                       AuxiliaryMorphism( PSh,
                                Source( eta ),
                                Range( eta ) ),
                        D,
@@ -224,26 +224,26 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     end );
     
     ##
-    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Hom,
-      function ( Hom, S, R, iota )
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
+      function ( PSh, S, R, iota )
         local C, H, S_o_vals, R_o_vals, map, cmp, o, summands, cmps;
         
-        C := Range( Hom );
+        C := Range( PSh );
         
-        H := RangeCategoryOfHomomorphismStructure( Hom );
+        H := RangeCategoryOfHomomorphismStructure( PSh );
         
-        S_o_vals := ValuesOfFunctor( S )[1];
+        S_o_vals := ValuesOfPreSheaf( S )[1];
         
-        R_o_vals := ValuesOfFunctor( R )[1];
+        R_o_vals := ValuesOfPreSheaf( R )[1];
         
-        map := AuxiliaryMorphism( Hom, S, R );
+        map := AuxiliaryMorphism( PSh, S, R );
         
         cmp := PreCompose( H,
                         iota,
                         KernelEmbedding( H,
                                 map ) );
         
-        o := Length( SetOfObjects( Source( Hom ) ) );
+        o := Length( SetOfObjects( Source( PSh ) ) );
         
         summands := List( [ 1 .. o ],
                           i -> HomomorphismStructureOnObjects( C,
@@ -258,7 +258,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
                                       i ) )
                       );
         
-        return AsMorphismInFunctorCategoryByValues( Hom,
+        return CreatePreSheafMorphismByValues( PSh,
                        S,
                        LazyHList( [ 1 .. o ],
                              i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
@@ -270,18 +270,18 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     end );
     
     ##
-    AddHomomorphismStructureOnMorphismsWithGivenObjects( Hom,
-      function ( Hom, s, eta, mu, r )
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh,
+      function ( PSh, s, eta, mu, r )
         local C, H, eta_vals, mu_vals, o, m;
         
-        C := Range( Hom );
+        C := Range( PSh );
         
-        H := RangeCategoryOfHomomorphismStructure( Hom );
+        H := RangeCategoryOfHomomorphismStructure( PSh );
         
         eta_vals := ValuesOnAllObjects( eta );
         mu_vals := ValuesOnAllObjects( mu );
         
-        o := Length( SetOfObjects( Source( Hom ) ) );
+        o := Length( SetOfObjects( Source( PSh ) ) );
         
         m := List( [ 1 .. o ],
                    i -> HomomorphismStructureOnMorphisms( C,
@@ -290,9 +290,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
         
         return KernelObjectFunctorialWithGivenKernelObjects( H,
                        s,
-                       AuxiliaryMorphism( Hom, Range( eta ), Source( mu ) ),
+                       AuxiliaryMorphism( PSh, Range( eta ), Source( mu ) ),
                        DirectSumFunctorial( H, m ),
-                       AuxiliaryMorphism( Hom, Source( eta ), Range( mu ) ),
+                       AuxiliaryMorphism( PSh, Source( eta ), Range( mu ) ),
                        r );
         
     end );
@@ -300,24 +300,24 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
     if CanCompute( H, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
       
       ##
-      AddBasisOfExternalHom( Hom,
-        function ( Hom, S, R )
+      AddBasisOfExternalHom( PSh,
+        function ( PSh, S, R )
           local C, H, iota, D, S_o_vals, R_o_vals, nr_o, summands, direct_sum, prjs, cmps, iotas, basis;
           
-          C := Range( Hom );
+          C := Range( PSh );
           
-          H := RangeCategoryOfHomomorphismStructure( Hom );
+          H := RangeCategoryOfHomomorphismStructure( PSh );
           
           iota := KernelEmbedding( H,
-                          AuxiliaryMorphism( Hom, S, R ) );
+                          AuxiliaryMorphism( PSh, S, R ) );
           
-          D := DistinguishedObjectOfHomomorphismStructure( Hom );
+          D := DistinguishedObjectOfHomomorphismStructure( PSh );
           
-          S_o_vals := ValuesOfFunctor( S )[1];
+          S_o_vals := ValuesOfPreSheaf( S )[1];
           
-          R_o_vals := ValuesOfFunctor( R )[1];
+          R_o_vals := ValuesOfPreSheaf( R )[1];
           
-          nr_o := Length( SetOfObjects( Source( Hom ) ) );
+          nr_o := Length( SetOfObjects( Source( PSh ) ) );
           
           summands := List( [ 1 .. nr_o ],
                             i -> HomomorphismStructureOnObjects( C,
@@ -348,7 +348,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
                                          iota ) ) );
           
           return List( [ 1 .. Length( basis ) ],
-                       j -> AsMorphismInFunctorCategoryByValues( Hom,
+                       j -> CreatePreSheafMorphismByValues( PSh,
                                S,
                                LazyHList( [ 1 .. nr_o ],
                                      i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
@@ -361,13 +361,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_FUNCTOR_CATEG
       end );
       
       ##
-      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( Hom,
-        function( Hom, eta, B )
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( PSh,
+        function( PSh, eta, B )
           local iota, H;
           
-          iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Hom, eta );
+          iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh, eta );
           
-          H := RangeCategoryOfHomomorphismStructure( Hom );
+          H := RangeCategoryOfHomomorphismStructure( PSh );
           
           return CoefficientsOfMorphismWithGivenBasisOfExternalHom( H,
                          iota,
