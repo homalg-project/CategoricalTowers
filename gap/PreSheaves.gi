@@ -697,11 +697,6 @@ InstallMethodWithCache( PreSheaves,
           properties, preinstall, supports_empty_limits, prop,
           PSh, objects, generating_morphisms, H;
     
-    if HasRangeCategoryOfHomomorphismStructure( B ) then
-        ## this is necessary for the Yoneda embedding to make sense
-        Assert( 0, IsIdenticalObj( C, RangeCategoryOfHomomorphismStructure( B ) ) );
-    fi;
-    
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
         kq := UnderlyingQuiverAlgebra( B_op );
