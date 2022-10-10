@@ -1,8 +1,8 @@
 #! @Chunk TerminalCategory
 
-LoadPackage( "FunctorCategories" );
-
 #! @Example
+LoadPackage( "FunctorCategories", false );
+#! true
 T := FiniteCompletion( InitialCategory( ) );
 #! FiniteCompletion( InitialCategory( ) )
 IsTerminalCategory( T );
