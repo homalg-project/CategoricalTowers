@@ -3,10 +3,10 @@
 ##  L <-l-- K
 ##  |       |
 ##  |       |
-##  m       n
+##  m       ?
 ##  |       |
 ##  v       v
-##  G <-g-- D
+##  G <-c-- D
 
 #! Define two composable monos $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$ in `FinSets`:
 
@@ -28,18 +28,15 @@ m := EmbeddingOfFinSets( L, G );
 #! <A monomorphism in FinSets>
 #! @EndExample
 
-#! Now we compute the pushout complement $K \xrightarrow{n} D \stackrel{g}{\hookrightarrow} G$
-#! of $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$.
+#! Now we compute the pushout complement $D \stackrel{c}{\hookrightarrow} G$
+#! of $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$:
 
 #! @Example
 HasPushoutComplement( l, m );
 #! true
-n := PushoutComplement( l, m );;
-g := n[2][2];
+c := PushoutComplement( l, m );
 #! <A monomorphism in FinSets>
-n := n[2][1];
-#! <A morphism in FinSets>
-D := Range( n );;
+D := Source( c );;
 Display( D );
 #! [ 2, 3, 4, 5, 10 ]
 #! @EndExample

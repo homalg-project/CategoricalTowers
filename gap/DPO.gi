@@ -9,18 +9,22 @@ InstallMethod( DPO,
         [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
         
   function( m, l, r )
-    local n, H, DPO;
+    local C, y, n, H, dpo;
     
-    n := PushoutComplement( l, m )[2][1];
+    C := CapCategory( m );
     
-    H := Pushout( [ n, r ] );
+    y := PushoutComplement( C, l, m );
     
-    DPO := [ InjectionOfCofactorOfPushoutWithGivenPushout( [ n, r ], 1, H ),
+    n := LiftAlongMonomorphism( C, y, PreCompose( C, l, m ) );
+    
+    H := Pushout( C, [ n, r ] );
+    
+    dpo := [ InjectionOfCofactorOfPushoutWithGivenPushout( [ n, r ], 1, H ),
              InjectionOfCofactorOfPushoutWithGivenPushout( [ n, r ], 2, H ) ];
-
-    IsMonomorphism( DPO[1] );
-    IsMonomorphism( DPO[2] );
     
-    return DPO;
+    IsMonomorphism( dpo[1] );
+    IsMonomorphism( dpo[2] );
+    
+    return dpo;
     
 end );
