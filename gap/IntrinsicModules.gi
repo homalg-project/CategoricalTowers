@@ -214,6 +214,11 @@ BindGlobal( "CATEGORY_OF_HOMALG_MODULES",
     
     Finalize( A : FinalizeCategory := true );
     
+    if HasRangeCategoryOfHomomorphismStructure( A ) and
+       not IsFinalized( RangeCategoryOfHomomorphismStructure( A ) ) then
+        Finalize( RangeCategoryOfHomomorphismStructure( A ) : FinalizeCategory := true );
+    fi;
+
     A := CategoryWithAmbientObjects( A );
     
     A := IntrinsicCategory( A :
