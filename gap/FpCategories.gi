@@ -2031,7 +2031,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         
         ## The sieves on c are the fixed points of the above action on Hom(Hom(-, c), Ω),
         ## resulting in the embedding Sieves(c) ↪ Hom(Hom(-, c), Ω):
-        emb := EmbeddingOfEqualizer( H, [ action, IdentityMorphism( H, power ) ] );
+        emb := EmbeddingOfEqualizer( H, power, [ action, IdentityMorphism( H, power ) ] );
         
         ## the "element" D → Sieves(c) corresponding to the maximal sieve:
         maximal := LiftAlongMonomorphism( H,
