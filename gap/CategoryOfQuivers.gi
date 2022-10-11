@@ -10,16 +10,16 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
 
 ##
 InstallOtherMethodForCompilerForCAP( CreateQuiver,
-        "for a category of quivers and a pair",
+        "for a category of quivers and a triple",
         [ IsCategoryOfQuivers, IsList ],
         
-  function ( category_of_quivers, pair )
+  function ( category_of_quivers, triple )
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, Length( pair ) = 2 and IsList( pair[2] ) and ForAll( pair[2], IsList ) );
+    Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsList ) );
     
     return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningPairOfQuiver, pair );
+                   DefiningTripleOfQuiver, triple );
     
 end );
 
@@ -39,7 +39,7 @@ InstallMethod( CreateQuiver,
     fi;
     
     return CreateQuiver( category_of_quivers,
-                   Pair( n, arr ) );
+                   Triple( n, Length( arr ), arr ) );
     
 end );
 
@@ -85,7 +85,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     object_constructor := CreateQuiver;
     
     ##
-    object_datum := { Quivers, o } -> DefiningPairOfQuiver( o );
+    object_datum := { Quivers, o } -> DefiningTripleOfQuiver( o );
     
     ##
     morphism_constructor := CreateQuiverMorphism;
@@ -100,8 +100,8 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
-      function( Quivers, pair )
-        local F_hat, PSh, sFinSets, arrows, V, A, s, t;
+      function( Quivers, triple )
+        local F_hat, PSh, sFinSets, V, A, arrows, s, t;
         
         F_hat := ModelingCategory( Quivers );
         
@@ -109,11 +109,11 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
         sFinSets := Range( PSh );
         
-        arrows := pair[2];
+        V := ObjectConstructor( sFinSets, triple[1] );
         
-        V := ObjectConstructor( sFinSets, pair[1] );
+        A := ObjectConstructor( sFinSets, triple[2] );
         
-        A := ObjectConstructor( sFinSets, Length( arrows ) );
+        arrows := triple[3];
         
         s := MorphismConstructor( sFinSets, A, List( arrows, a -> a[1] ), V );
         
@@ -137,8 +137,9 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
         values_of_functor := ObjectDatum( PSh, F );
         
-        return Pair( Length( values_of_functor[1][1] ),
-                     ListN( AsList( values_of_functor[2][1] ), AsList( values_of_functor[2][2] ), { s, t } -> Pair( s, t ) ) );
+        return Triple( Length( values_of_functor[1][1] ),
+                       Length( values_of_functor[1][2] ),
+                       ListN( AsList( values_of_functor[2][1] ), AsList( values_of_functor[2][2] ), { s, t } -> Pair( s, t ) ) );
         
     end;
     
@@ -254,7 +255,7 @@ InstallMethod( Arrows,
         
   function ( quiver )
     
-    return ObjectDatum( quiver )[2];
+    return ObjectDatum( quiver )[3];
     
 end );
 
@@ -308,9 +309,11 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
     
     U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_quivers );
     
-    AddObjectFunction( U, F -> CreateQuiver( category_of_quivers, Pair( Length( F.V ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
+    AddObjectFunction( U,
+            F -> CreateQuiver( category_of_quivers, Triple( Length( F.V ), Length( F.A ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
     
-    AddMorphismFunction( U, { source, eta, range } -> CreateQuiverMorphism( category_of_quivers, source, Pair( AsList( eta.V ), AsList( eta.A ) ), range ) );
+    AddMorphismFunction( U,
+            { source, eta, range } -> CreateQuiverMorphism( category_of_quivers, source, Pair( AsList( eta.V ), AsList( eta.A ) ), range ) );
     
     return PreCompose( Y, U );
     
@@ -372,7 +375,7 @@ InstallMethod( \.,
         [ IsObjectInCategoryOfQuivers, IsPosInt ],
         
   function ( quiver, string_as_int )
-    local datum, n, arrows, m, name;
+    local datum, n, m, arrows, name;
     
     datum := ObjectDatum( quiver );
     
@@ -380,9 +383,9 @@ InstallMethod( \.,
     
     n := datum[1];
     
-    arrows := datum[2];
+    m := datum[2];
     
-    m := Length( arrows );
+    arrows := datum[3];
     
     if name = "V" then
         return FinSet( n );
@@ -547,10 +550,10 @@ InstallMethod( Display,
     
     datum := ObjectDatum( quiver );
     
-    arrows := datum[2];
+    arrows := datum[3];
     
     Print( "( ", StringPrint( FinSet( datum[1] ) ), ", {",
-           JoinStringsWithSeparator( List( [ 1 .. Length( arrows ) ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ) ), " } )\n" );
+           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ) ), " } )\n" );
     
 end );
 
