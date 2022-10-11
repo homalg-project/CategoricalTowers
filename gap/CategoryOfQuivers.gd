@@ -66,15 +66,16 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
 
-DeclareAttribute( "DefiningPairOfQuiver",
+DeclareAttribute( "DefiningTripleOfQuiver",
         IsObjectInCategoryOfQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfQuiver", [ IsObjectInCategoryOfQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningTripleOfQuiver", [ IsObjectInCategoryOfQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types := [
+                        rec( filter := IsInt ),
                         rec( filter := IsInt ),
                         rec( filter := IsList,
                              element_type := rec(
