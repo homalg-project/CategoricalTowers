@@ -221,7 +221,7 @@ HasPushoutComplement := rec(
 
 PushoutComplement := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "l", "m" ], [ "l_source", "D" ] ],
+  io_type := [ [ "l", "m" ], [ "D", "m_range" ] ],
   return_type := "morphism",
   pre_function := function( cat, l, m )
     local value;

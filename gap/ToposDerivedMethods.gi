@@ -396,7 +396,7 @@ end );
 #  D <--y-- B
 AddDerivationToCAP( PushoutComplement,
   function( cat, f, x )
-    local Rel, xx, x_i, A, Omega_A, x_i_Omega_A, ff, f_i, Omega_X, rpc, i, y, g;
+    local Rel, xx, x_i, A, Omega_A, x_i_Omega_A, ff, f_i, Omega_X, rpc, i, y;
     
     Rel := CategoryOfRelations( cat );
     
@@ -434,13 +434,7 @@ AddDerivationToCAP( PushoutComplement,
     
     y := ImageEmbedding( cat, i );
     
-    g := PreComposeList( Rel, [ ff, xx, PseudoInverseOfHonestMorphism( Rel, y ) ] );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsHonest( Rel, g ) );
-    
-    return Pair( Source( y ),
-                 Pair( HonestRepresentative( Rel, g ), y ) );
+    return y;
     
 end );
 

@@ -3,15 +3,15 @@
 ##  L <-l-- K
 ##  |       |
 ##  |       |
-##  m       n
+##  m       ?
 ##  |       |
 ##  v       v
-##  G <-g-- D
+##  G <-c-- D
 
 #! Define two composable monos $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$ in `SkeletalFinSets`:
 
 #! @Example
-LoadPackage( "FinSetsForCAP", ">= 2022.06-02" );
+LoadPackage( "FinSetsForCAP" );
 #! true
 K := FinSet( 3 );
 #! |3|
@@ -31,17 +31,14 @@ Display( m );
 #! { 0,..., 5 } ⱶ[ 0, 1, 2, 3, 5, 6 ]→ { 0,..., 7 }
 #! @EndExample
 
-#! Now we compute the pushout complement $K \xrightarrow{n} D \stackrel{g}{\hookrightarrow} G$
-#! of $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$
+#! Now we compute the pushout complement $D \stackrel{c}{\hookrightarrow} G$
+#! of $K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G$:
 
 #! @Example
 HasPushoutComplement( l, m );
 #! true
-n := PushoutComplement( l, m );;
-g := n[2][2];
+c := PushoutComplement( l, m );
 #! |5| → |8|
-n := n[2][1];
-#! |3| → |5|
-Display( g );
+Display( c );
 #! { 0,..., 4 } ⱶ[ 2, 3, 4, 5, 7 ]→ { 0,..., 7 }
 #! @EndExample
