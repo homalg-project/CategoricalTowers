@@ -58,7 +58,7 @@ InstallOtherMethodForCompilerForCAP( EmbeddingOfRelationInDirectProduct,
                    UniversalMorphismIntoDirectProduct( C, ## I → S × T
                            [ Range( span[2][1] ), Range( span[2][2] ) ],
                            span[1],
-                           span[2] ) );
+                           [ span[2][1], span[2][2] ] ) );
     
 end );
 
