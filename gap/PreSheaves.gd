@@ -292,7 +292,7 @@ if false then
 #!  <A>images_of_morphisms</A> is a list of matrices, and
 #!  $k:=$ <C>CommutativeRingOfLinearCategory</C>( B ) is a field
 #!  then the two lists are interpreted as objects and morphisms
-#!  in <C>MatrixCategory</C>( $k$ ), respectively.
+#!  in a matrix category or a category of rows over $k$, respectively.
 #! @Arguments B, images_of_objects, images_of_morphisms
 #! @Group CreatePreSheaf
 DeclareOperation( "CreatePreSheaf",

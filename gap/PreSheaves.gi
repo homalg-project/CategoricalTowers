@@ -406,7 +406,17 @@ InstallOtherMethod( CreatePreSheaf,
         TryNextMethod();
     fi;
     
-    kmat := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "MatrixCategory", MatrixCategory( k ) );
+    if HasRangeCategoryOfHomomorphismStructure( kq ) then
+        
+        kmat := RangeCategoryOfHomomorphismStructure( kq );
+        
+    else
+        
+        kmat := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "MatrixCategory", MatrixCategory( k ) );
+        
+    fi;
+    
+    Assert( 0, IsMatrixCategory( kmat ) or IsCategoryOfRows( kmat ) );
     
     objects := List( dims, dim -> dim / kmat );
     
@@ -1953,7 +1963,17 @@ InstallMethodWithCache( PreSheaves,
   function ( B, k )
     local kmat, PSh;
     
-    kmat := MatrixCategory( k : overhead := false );
+    if HasRangeCategoryOfHomomorphismStructure( B ) then
+        
+        kmat := RangeCategoryOfHomomorphismStructure( B );
+        
+    else
+        
+        kmat := MatrixCategory( k : overhead := false );
+        
+    fi;
+    
+    Assert( 0, IsMatrixCategory( kmat ) or IsCategoryOfRows( kmat ) );
     
     CapCategorySwitchLogicOn( kmat );
     
@@ -2332,7 +2352,7 @@ InstallMethod( ViewObj,
   function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
-    if not IsMatrixCategory( Range( F ) ) then
+    if not (IsMatrixCategory( Range( F ) ) or IsCategoryOfRows( Range( F ) )) then
       
       TryNextMethod();
       
@@ -2342,7 +2362,7 @@ InstallMethod( ViewObj,
     
     vertices := List( SetOfObjects( algebroid ), UnderlyingVertex );
     
-    v_dim := List( ValuesOfPreSheaf( F )[1], Dimension );
+    v_dim := List( ValuesOfPreSheaf( F )[1], ObjectDatum );
     
     v_string := ListN( vertices, v_dim, { vertex, dim } -> Concatenation( "(", String( vertex ), ")->", String( dim ) ) );
     
@@ -2360,7 +2380,7 @@ InstallMethod( ViewObj,
       
     fi;
     
-    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ Dimension( Source( m ) ), Dimension( Range( m ) ) ] );
+    a_dim := List( ValuesOfPreSheaf( F )[2], m -> [ ObjectDatum( Source( m ) ), ObjectDatum( Range( m ) ) ] );
     
     a_string := ListN( arrows, a_dim,
                   { arrow, dim } -> Concatenation(
@@ -2420,7 +2440,7 @@ InstallMethod( ViewObj,
   function ( eta )
     local vertices, s_dim, r_dim, string;
     
-    if not IsMatrixCategory( Range( CapCategory( eta ) ) ) then
+    if not (IsMatrixCategory( Range( CapCategory( eta ) ) ) or IsCategoryOfRows( Range( CapCategory( eta ) ) )) then
       
       TryNextMethod();
       
@@ -2428,9 +2448,9 @@ InstallMethod( ViewObj,
     
     vertices := List( SetOfObjects( Source( Source( eta ) ) ), UnderlyingVertex );
      
-    s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], Dimension );
+    s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], ObjectDatum );
     
-    r_dim := List( ValuesOfPreSheaf( Range( eta ) )[1], Dimension );
+    r_dim := List( ValuesOfPreSheaf( Range( eta ) )[1], ObjectDatum );
    
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
