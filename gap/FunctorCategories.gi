@@ -471,6 +471,9 @@ InstallMethodWithCache( FunctorCategory,
     ## from the object in the highest stage of the tower to the raw object data
     modeling_tower_object_datum :=
       function( Hom, obj )
+        local PSh;
+        
+        PSh := ModelingCategory( Hom );
         
         return ObjectDatum( PSh, obj );
         
@@ -490,6 +493,9 @@ InstallMethodWithCache( FunctorCategory,
     ## from the morphism in the highest stage of the tower to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Hom, mor )
+        local PSh;
+        
+        PSh := ModelingCategory( Hom );
         
         return MorphismDatum( PSh, mor );
         
