@@ -282,6 +282,7 @@ DeclareAttribute( "CreatePreSheaf",
 DeclareOperation( "CreatePreSheaf",
         [ IsCapCategory, IsRecord, IsRecord ] );
 
+if false then
 #! @Description
 #!  Another alternative input is the source category <A>B</A> and two defining lists <A>images_of_objects</A> and <A>images_of_morphisms</A> of <A>F</A>.
 #!  The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.
@@ -294,7 +295,6 @@ DeclareOperation( "CreatePreSheaf",
 #!  in <C>MatrixCategory</C>( $k$ ), respectively.
 #! @Arguments B, images_of_objects, images_of_morphisms
 #! @Group CreatePreSheaf
-if false then
 DeclareOperation( "CreatePreSheaf",
         [ IsCapCategory, IsList, IsList ] );
 fi;
