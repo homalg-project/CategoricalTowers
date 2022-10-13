@@ -380,8 +380,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
   function( fpcategory )
     local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, path,
-          MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths,
-          representative_func, range_category_of_HomStructure;
+          MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths;
     
     quiver_algebra := UnderlyingQuiverAlgebra( fpcategory );
     
@@ -471,19 +470,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( fpcategory ) ) );
     
     ##
-    if IsQuotientOfPathAlgebra( quiver_algebra ) then
-        
-        representative_func := Representative;
-        
-    else
-        
-        representative_func := IdFunc;
-        
-    fi;
-    
-    range_category_of_HomStructure := RangeCategoryOfHomomorphismStructure( fpcategory );
-    
-    ##
     AddHomomorphismStructureOnObjects( fpcategory,
       function( fpcategory, object_1, object_2 )
         local nr_source, nr_range, basis_elements;
@@ -494,7 +480,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         basis_elements := BasisPathsByVertexIndex( fpcategory )[nr_source][nr_range];
         
-        return ObjectConstructor( range_category_of_HomStructure, Length( basis_elements ) );
+        return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), Length( basis_elements ) );
         
     end );
     
@@ -531,7 +517,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
                      hom_structure_on_basis_paths[a][b][ap][bp][alpha_index][beta_index][phi_index] );
         
-        return MorphismConstructor( range_category_of_HomStructure, source, map, range );
+        return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), source, map, range );
         
     end );
     
@@ -539,7 +525,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     AddDistinguishedObjectOfHomomorphismStructure( fpcategory,
       function( fpcategory )
         
-        return ObjectConstructor( range_category_of_HomStructure, 1 );
+        return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), 1 );
         
     end );
     
@@ -559,12 +545,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         basis_elements := BasisPathsByVertexIndex( fpcategory )[a][b];
         
-        return MorphismConstructor(
-                range_category_of_HomStructure,
-                source,
-                [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
-                range
-              );
+        return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ),
+                       source,
+                       [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
+                       range );
         
     end );
     
