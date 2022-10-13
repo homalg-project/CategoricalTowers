@@ -736,29 +736,13 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     ring := CommutativeRingOfLinearCategory( algebroid );
     
-    if over_Z then
+    if ValueOption( "no_precompiled_code" ) = true then
         
-        if ValueOption( "no_precompiled_code" ) = true then
-            
-            default_range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( ring );
-            
-        else
-            
-            default_range_of_HomStructure := CategoryOfRows( ring );
-            
-        fi;
+        default_range_of_HomStructure := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( ring );
         
     else
         
-        if ValueOption( "no_precompiled_code" ) = true then
-            
-            default_range_of_HomStructure := MatrixCategoryAsAdditiveClosureOfRingAsCategory( ring );
-            
-        else
-            
-            default_range_of_HomStructure := MatrixCategory( ring );
-            
-        fi;
+        default_range_of_HomStructure := CategoryOfRows( ring );
         
     fi;
     
@@ -1042,7 +1026,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function 
     
     over_field := not A!.over_Z;
     
-    if is_finite_dimensional and is_right_quiver and over_field and IsMatrixCategory( RangeCategoryOfHomomorphismStructure( A ) ) then
+    if is_finite_dimensional and is_right_quiver and over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
         
         ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( cat );
         
@@ -1083,7 +1067,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidPrecom
     
     over_field := not A!.over_Z;
     
-    if is_finite_dimensional and is_right_quiver and over_field and IsMatrixCategory( RangeCategoryOfHomomorphismStructure( A ) ) then
+    if is_finite_dimensional and is_right_quiver and over_field and IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( A ) ) then
         
         ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled( cat );
         
