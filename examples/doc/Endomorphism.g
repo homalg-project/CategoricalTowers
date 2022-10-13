@@ -26,8 +26,10 @@ QF := Q[F];
 #! is obtained as the quotient modulo the ideal $\langle t^3 - 1 \rangle$.
 
 #! @Example
+PushOptions( rec( range_of_HomStructure := MatrixCategory( Q ) ) );
 B := QF / [ QF.t^3 - IdentityMorphism( QF.1 ) ];
 #! Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations
+PopOptions( );
 RelationsOfAlgebroid( B );
 #! [ (1)-[1*(t*t*t) - 1*(1)]->(1) ]
 #! @EndExample
