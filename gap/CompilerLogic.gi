@@ -47,15 +47,7 @@ end );
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
-        src_template := "1 + 1",
-        dst_template := "2",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ ],
-        src_template := "[ 0 .. 0 - 1 ]",
+        src_template := "[ 0 .. - 1 ]",
         dst_template := "[ ]",
     )
 );
@@ -63,7 +55,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
-        src_template := "[ 2 + 1 .. 2 ]",
+        src_template := "[ 3 .. 2 ]",
         dst_template := "[ ]",
     )
 );
@@ -71,7 +63,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
-        src_template := "[ 1 + 1 .. 2 ]",
+        src_template := "[ 2 .. 2 ]",
         dst_template := "[ 2 ]",
     )
 );
@@ -111,48 +103,8 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "a" ],
-        src_template := "QUO_INT( a, 1 )",
-        dst_template := "a",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "a" ],
         src_template := "REM_INT( a, 1 )",
         dst_template := "0",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "name", "source", "range", "functor_on_objects", "functor_on_morphisms" ],
-        src_template := "FunctorObjectOperation( CapFunctor( name, source, range, functor_on_objects, functor_on_morphisms ) )",
-        dst_template := "functor_on_objects",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "name", "source", "range", "functor_on_objects", "functor_on_morphisms" ],
-        src_template := "FunctorMorphismOperation( CapFunctor( name, source, range, functor_on_objects, functor_on_morphisms ) )",
-        dst_template := "functor_on_morphisms",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "source", "natural_transformation_on_objects", "range" ],
-        src_template := "Source( NaturalTransformation( source, natural_transformation_on_objects, range ) )",
-        dst_template := "source",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "source", "natural_transformation_on_objects", "range" ],
-        src_template := "Range( NaturalTransformation( source, natural_transformation_on_objects, range ) )",
-        dst_template := "range",
     )
 );
 
@@ -166,25 +118,9 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "entry1", "entry2", "entry3", "func" ],
-        src_template := "List( NTuple( 3, entry1, entry2, entry3 ), func )[2]",
-        dst_template := "func( entry2 )",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
         variable_names := [ "value1", "value2" ],
         src_template := "Sum( [ value1, value2 ] )",
         dst_template := "value1 + value2",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "number" ],
-        src_template := "number + 0",
-        dst_template := "number",
     )
 );
 
