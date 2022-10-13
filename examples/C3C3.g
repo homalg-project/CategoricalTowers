@@ -10,9 +10,11 @@ C3C3 := Category( q, [ [ q.a^3, q.1 ], [ q.ab, q.bc ], [ q.c^3, q.2 ] ] );
 #!   "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / [ a*a*a = 1, a*b = b*c, c*c*c = 2 ]
 GF3 := HomalgRingOfIntegers( 3 );
 #! GF(3)
+PushOptions( rec( range_of_HomStructure := MatrixCategory( GF3 ) ) );
 A := GF3[C3C3];
 #! Algebroid( GF(3), FreeCategory(
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations
+PopOptions( );
 #! @EndExample
 
 #! A representation of the category C3C3 is another way to encode
