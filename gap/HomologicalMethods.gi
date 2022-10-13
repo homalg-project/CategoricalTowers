@@ -127,7 +127,7 @@ InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
         function( pre_image, i )
           local m, n, D, iotas;
           
-          n := Dimension( Source( pre_image ) );
+          n := ObjectDatum( Source( pre_image ) );
           
           D := ListWithIdenticalEntries( n, k );
           
@@ -193,9 +193,9 @@ InstallMethod( DualOfObjectInFunctorCategory,
     
     kvec := Range( Hom );
     
-    if not IsMatrixCategory( kvec ) then
+    if not IsMatrixCategory( kvec ) and not IsCategoryOfRows( kvec ) then
         
-        Error( "The range category should be a category of matrices" );
+        Error( "The range category should be a category of matrices or rows" );
         
     fi;
     
