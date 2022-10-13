@@ -512,6 +512,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
         
+        ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
+        ## [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
+        ## for basis_path_1: v' -> v and basis_path_2: w -> w'
         hom_structure_on_basis_paths := HomStructureOnBasisPaths( fpcategory );
         
         map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
