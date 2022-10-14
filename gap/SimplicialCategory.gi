@@ -21,23 +21,23 @@ InstallGlobalFunction( SimplicialCategoryTruncatedInDegree,
     elif n = 1 then
         F := FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) );
         return F /
-               [ [ F.s * F.id, IdentityMorphism( F.C0 ) ],
-                 [ F.t * F.id, IdentityMorphism( F.C0 ) ] ];
+               [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
+                 [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ] ];
     elif n = 2 then
         F := FreeCategory( RightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) );
         return F /
-               [ [ F.s * F.id, IdentityMorphism( F.C0 ) ],
-                 [ F.t * F.id, IdentityMorphism( F.C0 ) ],
-                 [ F.ps * F.is, IdentityMorphism( F.C1 ) ],
-                 [ F.pt * F.it, IdentityMorphism( F.C1 ) ],
-                 [ F.is * F.id, F.it * F.id ], ## s(1_M) = M = t(1_M)
-                 [ F.pt * F.is, F.id * F.t ],
-                 [ F.ps * F.it, F.id * F.s ],
-                 [ F.s * F.pt, F.t * F.ps ],
-                 [ F.s * F.mu, F.s * F.ps ],
-                 [ F.t * F.mu, F.t * F.pt ],
-                 [ F.mu * F.is, IdentityMorphism( F.C1 ) ],
-                 [ F.mu * F.it, IdentityMorphism( F.C1 ) ] ];
+               [ [ PreCompose( F.s, F.id ), IdentityMorphism( F.C0 ) ],
+                 [ PreCompose( F.t, F.id ), IdentityMorphism( F.C0 ) ],
+                 [ PreCompose( F.ps, F.is ), IdentityMorphism( F.C1 ) ],
+                 [ PreCompose( F.pt, F.it ), IdentityMorphism( F.C1 ) ],
+                 [ PreCompose( F.is, F.id ), PreCompose( F.it, F.id ) ], ## s(1_M) = M = t(1_M)
+                 [ PreCompose( F.pt, F.is ), PreCompose( F.id, F.t ) ],
+                 [ PreCompose( F.ps, F.it ), PreCompose( F.id, F.s ) ],
+                 [ PreCompose( F.s, F.pt ), PreCompose( F.t, F.ps ) ],
+                 [ PreCompose( F.s, F.mu ), PreCompose( F.s, F.ps ) ],
+                 [ PreCompose( F.t, F.mu ), PreCompose( F.t, F.pt ) ],
+                 [ PreCompose( F.mu, F.is ), IdentityMorphism( F.C1 ) ],
+                 [ PreCompose( F.mu, F.it ), IdentityMorphism( F.C1 ) ] ];
     fi;
     
     Error( "the case n > 2 is not implemented yet\n" );
