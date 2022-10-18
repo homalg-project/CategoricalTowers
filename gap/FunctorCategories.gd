@@ -221,30 +221,6 @@ DeclareAttribute( "YonedaProjection", IsCapCategory );
 DeclareAttribute( "YonedaComposition", IsCapCategory );
 #! @InsertChunk YonedaComposition
 
-#! @Description
-#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
-#!  The output is the list of indecomposable projective objects in <A>Hom</A> up to isomorphism.
-#! @Arguments Hom
-#! @Returns a list
-DeclareAttribute( "IndecProjectiveObjects",
-        IsFunctorCategory );
-
-#! @Description
-#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
-#!  The output is the list of indecomposable injective objects in <A>Hom</A> up to isomorphism.
-#! @Arguments Hom
-#! @Returns a list
-DeclareAttribute( "IndecInjectiveObjects",
-        IsFunctorCategory );
-
-#! @Description
-#!  The argument is a category of functors <A>Hom</A> into some matrix category of a homalg field.
-#!  The output is the list of simple objects in <A>Hom</A>.
-#! @Arguments Hom
-#! @Returns a list
-DeclareAttribute( "SimpleObjects",
-        IsFunctorCategory );
-
 ####################################
 #
 #! @Section Operations

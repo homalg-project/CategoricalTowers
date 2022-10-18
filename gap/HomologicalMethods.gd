@@ -4,22 +4,22 @@
 # Declarations
 #
 
-DeclareAttribute( "RadicalInclusion", IsObjectInFunctorCategory );
+DeclareAttribute( "RadicalInclusion", IsObjectInPreSheafCategory );
 
-DeclareOperation( "CoverElementByProjectiveObject", [ IsObjectInFunctorCategory, IsCapCategoryMorphism, IsInt ] );
+DeclareOperation( "CoverElementByProjectiveObject", [ IsObjectInPreSheafCategory, IsCapCategoryMorphism, IsInt ] );
 
-DeclareAttribute( "MorphismsFromDirectSumDecompositionOfProjectiveCover", IsObjectInFunctorCategory );
+DeclareAttribute( "MorphismsFromDirectSumDecompositionOfProjectiveCover", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "DirectSumDecompositionOfProjectiveObject", IsObjectInFunctorCategory );
+DeclareAttribute( "DirectSumDecompositionOfProjectiveObject", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "ProjectiveCover", IsObjectInFunctorCategory );
+DeclareAttribute( "ProjectiveCover", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "DualOfObjectInFunctorCategory", IsObjectInFunctorCategory );
+DeclareAttribute( "DualOfObjectInPreSheafCategory", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "DualOfMorphismInFunctorCategory", IsMorphismInFunctorCategory );
+DeclareAttribute( "DualOfMorphismInPreSheafCategory", IsMorphismInPreSheafCategory );
 
-DeclareAttribute( "MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope", IsObjectInFunctorCategory );
+DeclareAttribute( "MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "DirectSumDecompositionOfInjectiveObject", IsObjectInFunctorCategory );
+DeclareAttribute( "DirectSumDecompositionOfInjectiveObject", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "InjectiveEnvelope", IsObjectInFunctorCategory );
+DeclareAttribute( "InjectiveEnvelope", IsObjectInPreSheafCategory );

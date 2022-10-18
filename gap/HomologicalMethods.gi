@@ -6,255 +6,273 @@
 
 ##
 InstallMethod( RadicalInclusion,
-          [ IsObjectInFunctorCategory ],
+          [ IsObjectInPreSheafCategory ],
+
+  F -> RadicalInclusion( CapCategory( F ), F ) );
+
+##
+InstallOtherMethodForCompilerForCAP( RadicalInclusion,
+          [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
           
-  function ( F )
-    local Hom, algebroid, objs, mors, val_objs, val_mors, pos, im, RF, embedding_of_radical;
+  function ( PSh, F )
+    local C, vals_F, def_pair, pos, im, val_objs, val_mors, RF, rF;
     
-    Hom := CapCategory( F );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if HasRadicalInclusion( F ) then
+        return RadicalInclusion( F );
+    fi;
     
-    algebroid := Source( Hom );
+    C := Range( PSh );
     
-    objs := SetOfObjects( algebroid );
+    vals_F := ValuesOfPreSheaf( F );
     
-    mors := SetOfGeneratingMorphisms( algebroid );
+    def_pair := DefiningPairOfUnderlyingQuiver( PSh );
     
-    val_objs := ValuesOfFunctor( F )[1];
+    pos := List( [ 1 .. def_pair[1] ], i -> Positions( List( def_pair[2], r -> r[1] ), i ) );
     
-    val_mors := ListOfValues( ValuesOfFunctor( F )[2] );
+    im := List( pos, p -> ListOfValues( vals_F[2] ){ p } );
     
-    pos := List( objs, o -> PositionsProperty( mors, m -> IsEqualForObjects( o, Range( m ) ) ) );
+    im := ListN( im, vals_F[1], { tau, T } -> ImageEmbedding( C, UniversalMorphismFromDirectSum( C, T, tau ) ) );
     
-    im := List( pos, p -> val_mors{ p } );
-    
-    im :=
-      ListN( im, val_objs,
-        function( l, o )
-          if IsEmpty( l ) then
-            return UniversalMorphismFromZeroObject( o );
-          else
-            return ImageEmbedding( MorphismBetweenDirectSums( TransposedMat( [ l ] ) ) );
-          fi;
-        end );
-      
     val_objs := List( im, Source );
     
-    val_mors :=
-      ListN( mors, val_mors,
-        function( m, vm )
-          local s, r;
-          s := Position( objs, Source( m ) );
-          r := Position( objs, Range( m ) );
-          return LiftAlongMonomorphism( im[ r ], PreCompose( im[ s ], vm ) );
-        end );
+    val_mors := ListN( def_pair[2], vals_F[2], { m, vm } -> LiftAlongMonomorphism( C, im[ m[1] ], PreCompose( C, im[ m[2] ], vm ) ) );
     
-    RF := AsObjectInFunctorCategoryByValues( Hom, val_objs, val_mors );
+    RF := CreatePreSheafByValues( PSh, val_objs, val_mors );
     
-    embedding_of_radical := AsMorphismInFunctorCategoryByValues( Hom, RF, im, F );
+    rF := CreatePreSheafMorphismByValues( PSh, RF, im, F );
     
-    Assert( 4, IsMonomorphism( embedding_of_radical ) );
-    SetIsMonomorphism( embedding_of_radical, true );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsMonomorphism( rF ) );
     
-    return embedding_of_radical;
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsMonomorphism( rF, true );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetRadicalInclusion( F, rF );
+    
+    return rF;
     
 end );
-
 
 ##
 ## See Lemma 2.83 at http://dx.doi.org/10.25819/ubsi/10144
 ##
 InstallMethod( CoverElementByProjectiveObject,
-        [ IsObjectInFunctorCategory, IsCapCategoryMorphism, IsInt ],
+        [ IsObjectInPreSheafCategory, IsCapCategoryMorphism, IsInt ],
         
-  function ( F, l, n )
-    local Hom, B, B_op, C, vertices, v, P_v, val_objs;
+  function ( F, ell, j )
+    local PSh, A, C, vals_F, P, vals_P, N, basis_paths, vals_eta, tau, delta;
     
-    Hom := CapCategory( F );
+    PSh := CapCategory( F );
     
-    C := Range( Hom );
+    A := Source( PSh );
+    C := Range(  PSh );
     
-    B := Source( Hom );
+    vals_F := List( ValuesOfPreSheaf( F ), ListOfValues );
     
-    B_op := OppositeAlgebroid( B );
+    P := IndecomposableProjectiveObjects( PSh )[j];
+    vals_P := ValuesOfPreSheaf( P );
     
-    vertices := SetOfObjects( B_op );
+    N := Length( vals_F[1] );
     
-    v := vertices[ n ];
+    basis_paths := BasisPathsByVertexIndex( A );
     
-    P_v := IndecProjectiveObjects( Hom )[ n ];
+    delta := List( [ 1 .. N ], i -> ListWithIdenticalEntries( Length( basis_paths[i][j] ), Source( ell) ) );
     
-    val_objs := List( vertices, u ->
-                  List( BasisOfExternalHom( u, v ), m ->
-                    PreCompose( l, F( OppositeAlgebraElement( UnderlyingQuiverAlgebraElement( m ) ) / B ) ) ) );
+    tau := List( basis_paths, u -> List( u[j], p -> PostComposeList( C, Concatenation( vals_F[2]{List( ArrowList( p ), ArrowIndex )}, [ ell ] ) ) ) );
     
-    val_objs := ListN(
-                  ValuesOfFunctor( P_v )[1],
-                  val_objs,
-                  ValuesOfFunctor( F )[1],
-                  { s, tau, r } -> UniversalMorphismFromDirectSumWithGivenDirectSum( C, List( tau, Source ), r, tau, s ) );
+    vals_eta := ListN( vals_P[1], delta, tau, vals_F[1], { s, D, t, r } -> UniversalMorphismFromDirectSumWithGivenDirectSum( C, D, r, t, s ) );
     
-    return AsMorphismInFunctorCategoryByValues( Hom, P_v, val_objs, F );
+    return CreatePreSheafMorphismByValues( PSh, P, vals_eta, F );
     
 end );
 
 ##
 InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
-        [ IsObjectInFunctorCategory ],
+          [ IsObjectInPreSheafCategory ],
+
+  F -> MorphismsFromDirectSumDecompositionOfProjectiveCover( CapCategory( F ), F ) );
+
+##
+InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjectiveCover,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
-  function ( F )
-    local Hom, matrix_cat, k, i_F, pi_i_F, pre_images, dec;
+  function ( PSh, F )
+    local C, matrix_cat, k, rF, coker_rF, pre_images, dec;
     
-    Hom := CapCategory( F );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if HasMorphismsFromDirectSumDecompositionOfProjectiveCover( F ) then
+        return MorphismsFromDirectSumDecompositionOfProjectiveCover( F );
+    fi;
     
-    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( Hom ) ) ) then
+    C := Range( PSh );
+    
+    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( PSh ) ) ) then
       
       TryNextMethod( );
       
     fi;
     
-    matrix_cat := Range( Hom );
+    k := TensorUnit( Range( PSh ) );
     
-    k := 1 / matrix_cat;
+    rF := RadicalInclusion( PSh, F );
     
-    i_F := RadicalInclusion( F );
+    coker_rF := CokernelProjection( PSh, rF );
     
-    pi_i_F := CokernelProjection( i_F );
+    pre_images := List( ValuesOnAllObjects( coker_rF ), m -> PreInverse( C, m ) );
     
-    pre_images := List( ValuesOnAllObjects( pi_i_F ), m -> Lift( IdentityMorphism( Range( m ) ), m ) );
+    dec := Concatenation(
+              ListN( pre_images, [ 1 .. Length( pre_images ) ],
+                function( pre_image, j )
+                  local m, n, D, iotas;
+                  
+                  n := ObjectDatum( Source( pre_image ) );
+                  
+                  D := ListWithIdenticalEntries( n, k );
+                  
+                  iotas := List( [ 1 .. n ], i -> PreCompose( C, InjectionOfCofactorOfDirectSum( C, D, i ), pre_image ) );
+                  
+                  return List( iotas, ell -> CoverElementByProjectiveObject( F, ell, j ) );
+                  
+                end ) );
     
-    dec :=
-      ListN( pre_images, [ 1 .. Length( pre_images ) ],
-        function( pre_image, i )
-          local m, n, D, iotas;
-          
-          n := ObjectDatum( Source( pre_image ) );
-          
-          D := ListWithIdenticalEntries( n, k );
-          
-          iotas := List( [ 1 .. n ], j -> PreCompose( InjectionOfCofactorOfDirectSum( D, j ), pre_image ) );
-          
-          return List( iotas, iota -> CoverElementByProjectiveObject( F, iota, i ) );
-          
-        end );
-        
-        return Concatenation( dec );
-        
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetMorphismsFromDirectSumDecompositionOfProjectiveCover( F, dec );
+    
+    return dec;
+    
 end );
 
 ##
 InstallMethod( DirectSumDecompositionOfProjectiveObject,
-        [ IsObjectInFunctorCategory ], # and IsProjective
+        [ IsObjectInPreSheafCategory ], # and IsProjective
         
   MorphismsFromDirectSumDecompositionOfProjectiveCover );
 
+
 ##
 InstallMethod( ProjectiveCover,
-        [ IsObjectInFunctorCategory ],
+        [ IsObjectInPreSheafCategory ],
+
+  F -> ProjectiveCover( CapCategory( F ), F ) );
+
+##
+InstallOtherMethodForCompilerForCAP( ProjectiveCover,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
-  function ( F )
-    local Hom, dec, sources, D, m;
+  function ( PSh, F )
+    local C, dec, objs, D, m, pF;
     
-    Hom := CapCategory( F );
-    
-    dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( F );
-    
-    sources := List( dec, Source );
-    
-    if IsEmpty( sources ) then
-        
-        D := ZeroObject( Hom );
-        
-        m := [ ];
-        
-    else
-        
-        D := DirectSum( sources );
-        
-        m := List( [ 1 .. Size( sources ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( sources, i, D ) );
-        
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if HasProjectiveCover( F ) then
+        return ProjectiveCover( F );
     fi;
     
+    C := Range( PSh );
+    
+    dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( PSh, F );
+    
+    objs := List( dec, Source );
+    
+    D := DirectSum( PSh, objs );
+    
+    m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( objs, i, D ) );
+    
+    pF := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
     
-    return UniversalMorphismFromDirectSumWithGivenDirectSum( Hom, List( dec, Source ), F, dec, D );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetProjectiveCover( F, pF );
+    
+    return pF;
     
 end );
 
 ##
-InstallMethod( DualOfObjectInFunctorCategory,
-          [ IsObjectInFunctorCategory ],
+InstallMethod( DualOfObjectInPreSheafCategory,
+          [ IsObjectInPreSheafCategory ],
           
   function ( F )
-    local Hom, B, kvec, Hom_op, images_of_morphisms, D_F;
+    local A, PSh, morphism_vals, dual_F;
     
-    Hom := CapCategory( F );
+    A := Source( CapCategory( F ) );
     
-    B := Source( Hom );
+    PSh := PreSheaves( OppositeAlgebroid( A ) );
     
-    kvec := Range( Hom );
+    morphism_vals := List( ValuesOfPreSheaf( F )[2], DualOnMorphisms );
     
-    if not IsMatrixCategory( kvec ) and not IsCategoryOfRows( kvec ) then
-        
-        Error( "The range category should be a category of matrices or rows" );
-        
-    fi;
+    dual_F := CreatePreSheafByValues( PSh, ValuesOfPreSheaf( F )[1], morphism_vals );
     
-    Hom_op := FunctorCategory( OppositeAlgebroid( B ), kvec );
+    SetDualOfObjectInPreSheafCategory( dual_F, F );
     
-    images_of_morphisms := List( ValuesOfFunctor( F )[2], v -> TransposedMatrix( UnderlyingMatrix( v ) ) / kvec );
-    
-    D_F := AsObjectInFunctorCategoryByValues( Hom_op, ValuesOfFunctor( F )[1], images_of_morphisms );
-    
-    SetDualOfObjectInFunctorCategory( D_F, F );
-    
-    return D_F;
+    return dual_F;
     
 end );
 
 ##
-InstallMethod( DualOfMorphismInFunctorCategory,
-        [ IsMorphismInFunctorCategory ],
+InstallMethod( DualOfMorphismInPreSheafCategory,
+        [ IsMorphismInPreSheafCategory ],
         
   function ( eta )
-    local Hom, F, G, Hom_op, B_op, kvec, images_of_objects, D_eta;
+    local F, G, PSh, object_vals, dual_eta;
     
-    Hom := CapCategory( eta );
+    F := DualOfObjectInPreSheafCategory( Source( eta ) );
     
-    F := DualOfObjectInFunctorCategory( Source( eta ) );
+    G := DualOfObjectInPreSheafCategory( Range( eta ) );
     
-    G := DualOfObjectInFunctorCategory( Range( eta ) );
+    PSh := CapCategory( F );
     
-    Hom_op := CapCategory( F );
+    object_vals := List( ValuesOnAllObjects( eta ), DualOnMorphisms );
     
-    B_op := Source( Hom_op );
+    dual_eta := CreatePreSheafMorphismByValues( PSh, G, object_vals, F );
     
-    kvec := Range( Hom_op );
+    SetDualOfMorphismInPreSheafCategory( dual_eta, eta );
     
-    images_of_objects := List( ValuesOnAllObjects( eta ), v -> TransposedMatrix( UnderlyingMatrix( v ) ) / kvec );
-    
-    D_eta := AsMorphismInFunctorCategoryByValues( Hom_op, G, images_of_objects, F );
-    
-    SetDualOfMorphismInFunctorCategory( D_eta, eta );
-    
-    return D_eta;
+    return dual_eta;
     
 end );
 
 ##
 InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
-        [ IsObjectInFunctorCategory ],
+        [ IsObjectInPreSheafCategory ],
         
-  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInFunctorCategory( F ) ), DualOfMorphismInFunctorCategory ) );
+  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
 
 ##
 InstallMethod( DirectSumDecompositionOfInjectiveObject,
-        [ IsObjectInFunctorCategory ], # and is injective
+        [ IsObjectInPreSheafCategory ], # and is injective
         
   MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
 
 ##
 InstallMethod( InjectiveEnvelope,
-        [ IsObjectInFunctorCategory ],
+        [ IsObjectInPreSheafCategory ],
+
+  F -> InjectiveEnvelope( CapCategory( F ), F ) );
+
+##
+InstallOtherMethodForCompilerForCAP( InjectiveEnvelope,
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
-  F -> DualOfMorphismInFunctorCategory( ProjectiveCover( DualOfObjectInFunctorCategory( F ) ) ) );
+  function( PSh, F )
+    local iF;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if HasInjectiveEnvelope( F ) then
+        return InjectiveEnvelope( F );
+    fi;
+    
+    PSh := PreSheaves( OppositeAlgebroid( Source( PSh ) ) );
+    
+    iF := DualOfMorphismInPreSheafCategory( ProjectiveCover(  PSh, DualOfObjectInPreSheafCategory( F ) ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetInjectiveEnvelope( F, iF );
+    
+    return iF;
+    
+end );
 

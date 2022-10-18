@@ -652,28 +652,6 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
-    if (IsMatrixCategory( C ) or IsCategoryOfRows( C )) and
-       HasUnderlyingQuiverAlgebra( B ) and
-       IsFiniteDimensional( UnderlyingQuiverAlgebra( B ) ) and
-       IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-      
-      SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
-      SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
-      
-      AddIsProjective( Hom,
-        { Hom, F } -> IsSplitEpimorphism( ProjectiveCover( F ) ) );
-      
-      AddIsInjective( Hom,
-        { Hom, F } -> IsSplitMonomorphism( InjectiveEnvelope( F ) ) );
-      
-      AddEpimorphismFromSomeProjectiveObject( Hom,
-        { Hom, F } -> ProjectiveCover( F ) );
-      
-      AddMonomorphismIntoSomeInjectiveObject( Hom,
-        { Hom, F } -> InjectiveEnvelope( F ) );
-      
-    fi;
-    
     SetSource( Hom, B );
     SetRange( Hom, C );
     
@@ -848,73 +826,6 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
   function ( Hom )
     
     return YonedaEmbedding( OppositeOfSource( Hom ) );
-    
-end );
-
-##
-InstallMethod( IndecProjectiveObjects,
-        [ IsFunctorCategory ],
-        
-  function ( Hom )
-    local A, A_oid_op, Y;
-    
-    A := UnderlyingQuiverAlgebra( Source( Hom ) );
-    
-    if not ((IsMatrixCategory( Range( Hom ) ) or IsCategoryOfRows( Range( Hom ) )) and IsAdmissibleQuiverAlgebra( A )) then
-      
-      TryNextMethod( );
-      
-    fi;
-    
-    A_oid_op := OppositeAlgebroid( Source( Hom ) );
-    
-    Y := YonedaEmbedding( A_oid_op );
-    
-    return List( SetOfObjects( A_oid_op ), o -> ApplyFunctor( Y, o ) );
-    
-end );
-
-##
-InstallMethod( IndecInjectiveObjects,
-        [ IsFunctorCategory ],
-        
-  function ( Hom )
-    local A, A_oid_op, Hom_op, indec_proj;
-    
-    A := UnderlyingQuiverAlgebra( Source( Hom ) );
-    
-    if not ((IsMatrixCategory( Range( Hom ) ) or IsCategoryOfRows( Range( Hom ) )) and IsAdmissibleQuiverAlgebra( A )) then
-        
-        TryNextMethod( );
-      
-    fi;
-    
-    A_oid_op := OppositeAlgebroid( Source( Hom ) );
-    
-    Hom_op := FunctorCategory( A_oid_op, Range( Hom ) );
-    
-    indec_proj := IndecProjectiveObjects( Hom_op );
-    
-    return List( indec_proj, DualOfObjectInFunctorCategory );
-    
-end );
-
-##
-InstallMethod( SimpleObjects,
-        [ IsFunctorCategory ],
-        
-  function ( Hom )
-    local A;
-    
-    A := UnderlyingQuiverAlgebra( Source( Hom ) );
-    
-    if not ((IsMatrixCategory( Range( Hom ) ) or IsCategoryOfRows( Range( Hom ) )) and IsAdmissibleQuiverAlgebra( A )) then
-      
-      TryNextMethod();
-      
-    fi;
-    
-    return List( SimpleRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
     
 end );
 
