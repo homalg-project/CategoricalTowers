@@ -13,6 +13,8 @@ InstallMethodWithCache( FiniteCompletion,
     local F, O,
           finite_completion;
     
+    ## building the categorical tower
+    
     F := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
     
     O := Opposite( F : FinalizeCategory := true );
