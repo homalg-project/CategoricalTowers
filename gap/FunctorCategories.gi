@@ -652,28 +652,6 @@ InstallMethodWithCache( FunctorCategory,
         
     fi;
     
-    if (IsMatrixCategory( C ) or IsCategoryOfRows( C )) and
-       HasUnderlyingQuiverAlgebra( B ) and
-       IsFiniteDimensional( UnderlyingQuiverAlgebra( B ) ) and
-       IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-      
-      SetIsAbelianCategoryWithEnoughProjectives( Hom, true );
-      SetIsAbelianCategoryWithEnoughInjectives( Hom, true );
-      
-      AddIsProjective( Hom,
-        { Hom, F } -> IsSplitEpimorphism( ProjectiveCover( F ) ) );
-      
-      AddIsInjective( Hom,
-        { Hom, F } -> IsSplitMonomorphism( InjectiveEnvelope( F ) ) );
-      
-      AddEpimorphismFromSomeProjectiveObject( Hom,
-        { Hom, F } -> ProjectiveCover( F ) );
-      
-      AddMonomorphismIntoSomeInjectiveObject( Hom,
-        { Hom, F } -> InjectiveEnvelope( F ) );
-      
-    fi;
-    
     SetSource( Hom, B );
     SetRange( Hom, C );
     

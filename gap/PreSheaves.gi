@@ -1145,7 +1145,7 @@ InstallMethodWithCache( PreSheaves,
     
     objects := SetOfObjects( B );
     generating_morphisms := SetOfGeneratingMorphisms( B );
-        
+    
     SetSetOfObjects( PSh, objects );
     SetSetOfGeneratingMorphisms( PSh, generating_morphisms );
     
@@ -1947,6 +1947,99 @@ InstallMethodWithCache( PreSheaves,
         
     fi;
     
+    if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
+      
+      SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
+      SetIsAbelianCategoryWithEnoughInjectives( PSh, true );
+      
+      AddIsProjective( PSh,
+        { PSh, F } -> IsIsomorphism( PSh, ProjectiveCover( PSh, F ) ) );
+      
+      AddIsInjective( PSh,
+        { PSh, F } -> IsIsomorphism( PSh, InjectiveEnvelope( PSh, F ) ) );
+      
+      AddEpimorphismFromSomeProjectiveObject( PSh,
+        { PSh, F } -> ProjectiveCover( PSh, F ) );
+      
+      AddMonomorphismIntoSomeInjectiveObject( PSh,
+        { PSh, F } -> InjectiveEnvelope( PSh, F ) );
+      
+      #
+      #  rad(P) >--> P -->> top(P)
+      #              |
+      #              | eta
+      #              v
+      #  G ------->> F
+      #     epi
+      #
+      #  computes a morphism from P to G which lifts eta along epi
+      #
+      AddProjectiveLift( PSh,
+        function ( PSh, eta, epi )
+          local A, C, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, indices, mu, nu, delta;
+          
+          A := Source( PSh );
+          C := Range( PSh );
+          
+          vals_eta := ValuesOnAllObjects( eta );
+          vals_epi := ValuesOnAllObjects( epi );
+          
+          N := Length( vals_eta );
+          
+          P := Source( eta );
+          G := Source( epi );
+          
+          tP := CokernelProjection( PSh, RadicalInclusion( PSh, P ) );
+          vals_tP := ValuesOnAllObjects( tP );
+          
+          gens := List( vals_tP, m -> PreInverse( C, m ) );
+          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( C, [ p, q, PreInverse( r ) ] ) );
+          
+          vals_P := ValuesOfPreSheaf( P );
+          vals_G := ValuesOfPreSheaf( G );
+          
+          indices := List( BasisPathsByVertexIndex( A ), u -> List( u, b -> List( b, p -> List( ArrowList( p ), ArrowIndex ) ) ) );
+          
+          mu := List( [ 1 .. N ], i -> Concatenation(
+                  List( [ 1 .. N ], j ->
+                    List( [ 1 .. Length( indices[i,j] ) ], s ->
+                      PostComposeList( C, Concatenation( List( indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
+          
+          nu := List( [ 1 .. N ], i -> Concatenation(
+                  List( [ 1 .. N ], j ->
+                    List( [ 1 .. Length( indices[i,j] ) ], s ->
+                      PostComposeList( C, Concatenation( List( indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
+          
+          delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( indices[i][j] ), Range( vals_tP[j] ) ) ) ) );
+          
+          ells := ListN( [ 1 .. N ], delta, mu, nu, { i, D, m, n } ->
+                    PreCompose( C, PreInverse( C, UniversalMorphismFromDirectSum( C, D, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( C, D, vals_G[1][i], n ) ) );
+          
+          return CreatePreSheafMorphismByValues( PSh, P, ells, G );
+          
+      end );
+      
+      #         mono
+      #     F >-----> G
+      # eta |
+      #     |
+      #     v
+      #     I
+      #
+      AddInjectiveColift( PSh,
+        function ( PSh, mono, eta )
+          local epi;
+          
+          eta := DualOfMorphismInPreSheafCategory( eta );
+          
+          epi := DualOfMorphismInPreSheafCategory( mono );
+          
+          return DualOfMorphismInPreSheafCategory( ProjectiveLift( CapCategory( eta ), eta, epi ) );
+          
+      end );
+    
+    fi;
+    
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
     
     Finalize( PSh );
@@ -2376,7 +2469,7 @@ InstallMethod( IndecomposableInjectiveObjects,
     
     PSh := PreSheaves( Aop );
     
-    return List( IndecomposableProjectiveObjects( PSh ), DualOfObjectInFunctorCategory );
+    return List( IndecomposableProjectiveObjects( PSh ), DualOfObjectInPreSheafCategory );
     
 end );
 
@@ -2516,11 +2609,11 @@ InstallMethod( ViewObj,
     fi;
     
     vertices := List( SetOfObjects( Source( Source( eta ) ) ), UnderlyingVertex );
-     
+    
     s_dim := List( ValuesOfPreSheaf( Source( eta ) )[1], ObjectDatum );
     
     r_dim := List( ValuesOfPreSheaf( Range( eta ) )[1], ObjectDatum );
-   
+    
     string := ListN( vertices, s_dim, r_dim,
                 { vertex, s, r } ->
                     Concatenation( "(", String( vertex ), ")->", String( s ), "x", String( r ) ) );
@@ -2546,7 +2639,7 @@ InstallMethod( Display,
       Print( "Image of " ); ViewObj( objects[i] ); Print( ":\n" );
       
       Display( images_of_objects[i] );
-
+      
       Print( "\n" );
       
     od;

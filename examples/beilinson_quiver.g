@@ -10,7 +10,7 @@ F := FreeCategory( q );
 
 kF := k[F];
 
-B := kF / [
+A := kF / [
             kF.x0 * kF.y0 , kF.y0 * kF.z0,
             kF.x1 * kF.y1 , kF.y1 * kF.z1,
             kF.x2 * kF.y2 , kF.y2 * kF.z2,
@@ -29,12 +29,10 @@ B := kF / [
             kF.y2 * kF.z3 + kF.y3 * kF.z2
           ];;
 
-kmat := MatrixCategory( k );
+PSh := PreSheaves( A );
 
-H := FunctorCategory( B, kmat );
+indec := Shuffle( Concatenation( IndecomposableProjectiveObjects( PSh ), IndecomposableInjectiveObjects( PSh ) ) );
 
-indec := Shuffle( Concatenation( IndecProjectiveObjects( H ), IndecInjectiveObjects( H ) ) );
+F := DirectSum( List( [ 1 .. 5 ], i -> Random( indec ) ) );
 
-F := DirectSum( List( [ 1 .. 15 ], i -> Random( indec ) ) );
-
-G := DirectSum( List( [ 1 .. 20 ], i -> Random( indec ) ) );
+G := DirectSum( List( [ 1 .. 4 ], i -> Random( indec ) ) );

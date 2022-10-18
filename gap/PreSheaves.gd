@@ -359,3 +359,5 @@ DeclareAttribute( "IndecomposableInjectiveObjects", IsPreSheafCategory );
 #! @Arguments PSh
 #! @Returns a list of objects
 DeclareAttribute( "SimpleObjects", IsPreSheafCategory );
+
+#! @InsertChunk ProjectiveResolution
