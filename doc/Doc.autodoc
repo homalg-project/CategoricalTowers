@@ -30,15 +30,13 @@
 
 @Section &GAP; Categories
 
+@Section &GAP; Categories
+
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
 @Section Constructors
 
 @Section Attributes
-
-@Section Operations
-
-@Section Global variables
 
 @Section &GAP; Categories
 
@@ -58,15 +56,17 @@
 
 @Section &GAP; Categories
 
-@Chapter Finite completion of a finitely presented (linear) category
+@Chapter Category of copresheaves of a finitely presented (linear) category
 
 @Section Constructors
 
 @Section Attributes
 
-@Section Operations
+@Chapter Finite completion of a finitely presented (linear) category
 
-@Section Global variables
+@Section Constructors
+
+@Section Attributes
 
 @Section Examples
 
@@ -79,9 +79,5 @@
 @Section Constructors
 
 @Section Attributes
-
-@Section Operations
-
-@Section Global variables
 
 @Section &GAP; Categories

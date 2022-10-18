@@ -10,15 +10,15 @@ InstallMethodWithCache( FiniteCompletion,
         [ IsCapCategory, IsCapCategory ],
         
   function( fp_category, range_category_of_hom_structure )
-    local F, O,
+    local coPSh,
           finite_completion;
     
-    F := FunctorCategory( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
+    ## building the categorical tower
     
-    O := Opposite( F : FinalizeCategory := true );
+    coPSh := CoPreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
     
     finite_completion :=
-      WrapperCategory( O,
+      WrapperCategory( coPSh,
               rec( name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" ),
                    category_filter := IsWrapperCapCategory and IsFiniteCompletion,
                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCompletion,

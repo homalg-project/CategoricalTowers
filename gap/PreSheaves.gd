@@ -71,7 +71,12 @@ CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsPreSheafCategory ]
     return rec( filter := IsNTuple,
                 element_types :=
                 [ rec( filter := IsInt ),
-                  rec( filter := IsList, element_type := rec( filter := IsNTuple, element_types := [ rec( filter := IsInt ), rec( filter := IsInt ) ] ) ) ] );
+                  rec( filter := IsList,
+                       element_type :=
+                       rec( filter := IsNTuple,
+                            element_types :=
+                            [ rec( filter := IsInt ),
+                              rec( filter := IsInt ) ] ) ) ] );
     
 end );
 
