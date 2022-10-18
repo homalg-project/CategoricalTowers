@@ -36,10 +36,6 @@
 
 @Section Attributes
 
-@Section Operations
-
-@Section Global variables
-
 @Section &GAP; Categories
 
 @Chapter The category of finite quivers
@@ -64,10 +60,6 @@
 
 @Section Attributes
 
-@Section Operations
-
-@Section Global variables
-
 @Section Examples
 
 @InsertChunk TerminalCategory
@@ -79,9 +71,5 @@
 @Section Constructors
 
 @Section Attributes
-
-@Section Operations
-
-@Section Global variables
 
 @Section &GAP; Categories
