@@ -661,6 +661,7 @@ InstallMethodWithCache( Category,
       rec( category_attribute_names :=
            [ "SetOfObjects",
              "SetOfGeneratingMorphisms",
+             "UnderlyingQuiver",
              "UnderlyingQuiverAlgebra",
              "BasisPathsByVertexIndex",
              "HomStructureOnBasisPaths",
