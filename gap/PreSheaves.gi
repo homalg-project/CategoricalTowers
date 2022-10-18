@@ -2340,6 +2340,75 @@ InstallMethod( NerveTruncatedInDegree2,
     
 end );
 
+##
+InstallMethod( IndecomposableProjectiveObjects,
+        [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local A, Gamma, Y;
+    
+    A := Source( PSh );
+    
+    Gamma := UnderlyingQuiverAlgebra( A );
+    
+    if not IsAdmissibleQuiverAlgebra( Gamma ) then
+      Error( "The underlying quiver algebra must be admissible\n" );
+    fi;
+    
+    Y := YonedaEmbeddingOfSourceCategory( PSh );
+    
+    if not IsIdenticalObj( RangeOfFunctor( Y ), PSh ) then
+      Error( "The range category must be identical to the range category of the Hom-Structure of the source category\n" );
+    fi;
+    
+    return List( SetOfObjects( A ), o -> ApplyFunctor( Y, o ) );
+    
+end );
+
+##
+InstallMethod( IndecomposableInjectiveObjects,
+        [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local Aop;
+    
+    Aop := OppositeAlgebroid( Source( PSh ) );
+    
+    PSh := PreSheaves( Aop );
+    
+    return List( IndecomposableProjectiveObjects( PSh ), DualOfObjectInFunctorCategory );
+    
+end );
+
+##
+InstallMethod( SimpleObjects,
+        [ IsPreSheafCategory ],
+  function ( PSh )
+    local B, C, def_pair, obj_vals, mor_vals, simple_objs, i;
+    
+    B := Source( PSh );
+    C := Range( PSh );
+    
+    def_pair := DefiningPairOfAQuiver( UnderlyingQuiver( B ) );
+    
+    simple_objs := [ ];
+    
+    for i in [ 1 .. def_pair[1] ] do
+      
+      obj_vals := ListWithIdenticalEntries( def_pair[1], ZeroObject( C ) );
+      
+      obj_vals[i] := TensorUnit( C );
+      
+      mor_vals := List( def_pair[2], r -> ZeroMorphism( C, obj_vals[r[2]], obj_vals[r[1]] ) );
+      
+      simple_objs[i] := CreatePreSheafByValues( PSh, obj_vals, mor_vals );
+      
+    od;
+    
+    return simple_objs;
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:

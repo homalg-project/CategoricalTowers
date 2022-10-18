@@ -81,7 +81,7 @@ InstallMethod( CoverElementByProjectiveObject,
     
     v := vertices[ n ];
     
-    P_v := IndecProjectiveObjects( Hom )[ n ];
+    P_v := IndecomposableProjectiveObjects( Hom )[ n ];
     
     val_objs := List( vertices, u ->
                   List( BasisOfExternalHom( u, v ), m ->
