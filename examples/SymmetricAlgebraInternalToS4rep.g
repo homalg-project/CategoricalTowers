@@ -5,6 +5,14 @@ LoadPackage( "InternalModules" );
 #! @Example
 srepG := RepresentationCategory( SymmetricGroup( 4 ) );
 #! The representation category of SymmetricGroup( [ 1 .. 4 ] )
+InfoOfInstalledOperationsOfCategory( srepG );
+#! 46 primitive operations were used to derive 247 operations for
+#! this category which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsAbelianCategory
+#! * IsRigidSymmetricClosedMonoidalCategory
+#! and furthermore mathematically
+#! * IsSkeletalCategory
 G := UnderlyingGroupForRepresentationCategory( srepG );
 #! Sym( [ 1 .. 4 ] )
 irr := Irr( G );;
