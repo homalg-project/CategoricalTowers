@@ -628,7 +628,8 @@ end );
 ##
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
   function( algebroid, over_Z )
-    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index, maps, path,
+    local quiver_algebra, quiver, vertices, basis, basis_paths_by_vertex_index,
+          basis_morphisms_by_vertex_index, path,
           MATRIX_FOR_HOMSTRUCTURE, hom_structure_on_basis_paths,
           ring, default_range_of_HomStructure, range_category,
           object_constructor, object_datum, morphism_constructor, morphism_datum;
@@ -649,26 +650,29 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     
     basis_paths_by_vertex_index := List( vertices, i -> List( vertices, i -> [ ] ) );
     
-    maps := List( vertices, i -> List( vertices, i -> [ ] ) );
+    basis_morphisms_by_vertex_index := List( vertices, i -> List( vertices, i -> [ ] ) );
     
     for path in basis do
         
         Add( basis_paths_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
         
-        Add( maps[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInAlgebroid( algebroid, PathAsAlgebraElement( quiver_algebra, path ) ) );
+        Add( basis_morphisms_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInAlgebroid( algebroid, PathAsAlgebraElement( quiver_algebra, path ) ) );
         
     od;
     
-    # if `basis_paths_by_vertex_index` would be mutable, setting the attribute below would create an (immuatable) copy, which would not be identical to `basis_paths_by_vertex_index` anymore
+    # if `basis_paths_by_vertex_index` would be mutable, setting the attribute below would create an (immuatable) copy,
+    # which would not be identical to `basis_paths_by_vertex_index` anymore
     MakeImmutable( basis_paths_by_vertex_index );
-    
-    MakeImmutable( maps );
     
     SetBasisPathsByVertexIndex( algebroid, basis_paths_by_vertex_index );
     
-    SetBasisMorphismsByVertexIndex( algebroid, maps );
-    
     Assert( 0, IsIdenticalObj( basis_paths_by_vertex_index, BasisPathsByVertexIndex( algebroid ) ) );
+    
+    MakeImmutable( basis_morphisms_by_vertex_index );
+    
+    SetBasisMorphismsByVertexIndex( algebroid, basis_morphisms_by_vertex_index );
+    
+    Assert( 0, IsIdenticalObj( basis_morphisms_by_vertex_index, BasisMorphismsByVertexIndex( algebroid ) ) );
     
     ## precomputing matrices for the hom structure
     ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
