@@ -36,29 +36,17 @@ t := TerminalObject( T );
 z := ZeroObject( T );
 #! <A zero object in FiniteCompletion( InitialCategory( ) )>
 Display( i );
-#! An object in FunctorCategory( InitialCategory( ), InitialCategory( ) )
-#! given by the above data
-#! 
-#! An object in Opposite of
-#! FunctorCategory( InitialCategory( ), InitialCategory( ) )
+#! An object in CoPreSheaves( InitialCategory( ), InitialCategory( ) )
 #! given by the above data
 #! 
 #! An object in FiniteCompletion( InitialCategory( ) ) given by the above data
 Display( t );
-#! An object in FunctorCategory( InitialCategory( ), InitialCategory( ) )
-#! given by the above data
-#! 
-#! An object in Opposite of
-#! FunctorCategory( InitialCategory( ), InitialCategory( ) )
+#! An object in CoPreSheaves( InitialCategory( ), InitialCategory( ) )
 #! given by the above data
 #! 
 #! An object in FiniteCompletion( InitialCategory( ) ) given by the above data
 Display( z );
-#! An object in FunctorCategory( InitialCategory( ), InitialCategory( ) )
-#! given by the above data
-#! 
-#! An object in Opposite of
-#! FunctorCategory( InitialCategory( ), InitialCategory( ) )
+#! An object in CoPreSheaves( InitialCategory( ), InitialCategory( ) )
 #! given by the above data
 #! 
 #! An object in FiniteCompletion( InitialCategory( ) ) given by the above data

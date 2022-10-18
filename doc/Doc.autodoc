@@ -30,6 +30,8 @@
 
 @Section &GAP; Categories
 
+@Section &GAP; Categories
+
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
 @Section Constructors
@@ -53,6 +55,12 @@
 @InsertChunk FinQuivers
 
 @Section &GAP; Categories
+
+@Chapter Category of copresheaves of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
 
 @Chapter Finite completion of a finitely presented (linear) category
 
