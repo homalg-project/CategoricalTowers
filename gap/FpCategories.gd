@@ -115,6 +115,25 @@ CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFpCategory ], function ( 
 end );
 
 #! @Description
+#!  The matrix of basis morphisms of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>,
+#!  indexed by the vertex indices of source and target of the morphism.
+#! @Arguments A
+#! @Returns a matrix of basis morphisms
+DeclareAttribute( "BasisMorphismsByVertexIndex",
+        IsFpCategory );
+
+CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsFpCategory ], function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := rec(
+                        filter := IsList,
+                        element_type := rec(
+                                filter := IsList,
+                                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) ) ) );
+    
+end );
+
+#! @Description
 #!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>:
 #!  `HomStructureOnBasisPaths( `<A>A</A>` )[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]`
 #!  for `basis_path_1: v' -> v` and `basis_path_2: w -> w'`.
