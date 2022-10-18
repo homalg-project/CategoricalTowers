@@ -899,25 +899,6 @@ InstallMethod( IndecInjectiveObjects,
     
 end );
 
-##
-InstallMethod( SimpleObjects,
-        [ IsFunctorCategory ],
-        
-  function ( Hom )
-    local A;
-    
-    A := UnderlyingQuiverAlgebra( Source( Hom ) );
-    
-    if not ((IsMatrixCategory( Range( Hom ) ) or IsCategoryOfRows( Range( Hom ) )) and IsAdmissibleQuiverAlgebra( A )) then
-      
-      TryNextMethod();
-      
-    fi;
-    
-    return List( SimpleRepresentations( A ), o -> ConvertToCellInFunctorCategory( o, Hom ) );
-    
-end );
-
 ####################################
 #
 # View, Print, Display and LaTeX methods:
