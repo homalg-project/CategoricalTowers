@@ -16,6 +16,6 @@ InstallMethod( DefiningPairOfAQuiver,
     
     return Immutable(
                    Pair( Length( vertices ),
-                         List( Arrows( q ), m -> Pair( SafePosition( vertices, Source( m ) ), SafePosition( vertices, Range( m ) ) ) ) ) );
+                         List( Arrows( q ), m -> Pair( -1 + SafePosition( vertices, Source( m ) ), -1 + SafePosition( vertices, Range( m ) ) ) ) ) );
     
 end );
