@@ -1422,7 +1422,7 @@ InstallMethodWithCache( PreSheaves,
                               hom_diagram[1],
                               hom_diagram[2] );
                 
-                prjs := List( [ 1 .. Length( SetOfObjects( PSh ) ) ],
+                prjs := List( [ 0 .. Length( SetOfObjects( PSh ) ) - 1 ],
                               i -> ProjectionInFactorOfLimit( H,
                                       hom_diagram[1],
                                       hom_diagram[2],
@@ -1456,7 +1456,7 @@ InstallMethodWithCache( PreSheaves,
                 
                 o := Length( SetOfObjects( Source( PSh ) ) );
                 
-                etas := List( [ 1 .. o ],
+                etas := List( [ 0 .. o - 1 ],
                               i -> PreCompose( H,
                                       iota,
                                       ProjectionInFactorOfLimit( H,
@@ -1493,7 +1493,7 @@ InstallMethodWithCache( PreSheaves,
                                      hom_diagram_source[1],
                                      hom_diagram_source[2] );
                 
-                prjs_source := List( [ 1 .. o ],
+                prjs_source := List( [ 0 .. o - 1 ],
                                      i -> ProjectionInFactorOfLimit( H,
                                              hom_diagram_source[1],
                                              hom_diagram_source[2],
@@ -1510,7 +1510,7 @@ InstallMethodWithCache( PreSheaves,
                                     hom_diagram_range[1],
                                     hom_diagram_range[2] );
                 
-                prjs_range := List( [ 1 .. o ],
+                prjs_range := List( [ 0 .. o - 1 ],
                                     i -> ProjectionInFactorOfLimit( H,
                                             hom_diagram_range[1],
                                             hom_diagram_range[2],
