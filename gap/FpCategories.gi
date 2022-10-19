@@ -1449,14 +1449,13 @@ InstallMethod( OppositeFpCategory,
 end );
 
 ##
-InstallMethod( NerveTruncatedInDegree2AsFunctor,
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
         [ IsFpCategory ],
         
   function ( B )
-    local A, Delta2, H, Delta2op, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
+    local A, H, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
           D000, N0N0N0, p31, p32, p33, B2, N2, T, ds, is, dt, it,
-          p312, p323, p313, pi3, pi312, pi323, pi313, ps, pt, mus, mu,
-          Nerve_ValuesOnAllObjects, Nerve_ValuesOnAllGeneratingMorphisms, name;
+          p312, p323, p313, pi3, pi312, pi323, pi313, ps, pt, mus, mus1, mus2, mus3, mu;
     
     A := UnderlyingQuiverAlgebra( B );
     
@@ -1466,202 +1465,325 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
         
     fi;
     
-    Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
-    
     H := RangeCategoryOfHomomorphismStructure( B );
-    
-    ## Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,is:C1->C2,it:C1->C2,ps:C2->C1,pt:C2->C1,mu:C2->C1]
-    Delta2op := OppositeFpCategory( Delta2 );
     
     B0 := SetOfObjects( B );
     N0 := FinSet( H, Length( B0 ) );
     
     ## N0 × N0
     D00 := [ N0, N0 ];
-    N0N0 := DirectProduct( D00 );
+    N0N0 := DirectProduct( H, D00 );
     
     ## N0 × N0 -> N0
-    p21 := ProjectionInFactorOfDirectProduct( D00, 1 );
-    p22 := ProjectionInFactorOfDirectProduct( D00, 2 );
+    p21 := ProjectionInFactorOfDirectProduct( H, D00, 1 );
+    p22 := ProjectionInFactorOfDirectProduct( H, D00, 2 );
     
-    B1 := List( N0N0,
-                i -> HomomorphismStructureOnObjects( B0[1 + p21( i )], B0[1 + p22( i )] ) );
+    B1 := List( [ 0 .. Length( N0N0 ) - 1 ], i ->
+                HomomorphismStructureOnObjects( B,
+                        B0[1 + AsList( p21 )[1 + i]],
+                        B0[1 + AsList( p22 )[1 + i]] ) );
     
-    N1 := Coproduct( B1 );
+    N1 := Coproduct( H, B1 );
     
     ## N0 -> N0 × N0
-    d := EmbeddingOfEqualizer( [ p21, p22 ] );
-    Assert( 0, d = UniversalMorphismIntoDirectProduct( D00, N0, [ IdentityMorphism( N0 ), IdentityMorphism( N0 ) ] ) );
+    d := EmbeddingOfEqualizer( H,
+                 N0N0,
+                 [ p21, p22 ] );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, d = UniversalMorphismIntoDirectProduct( H, D00, N0, [ IdentityMorphism( H, N0 ), IdentityMorphism( H, N0 ) ] ) );
     
     ## N0 -> N1
-    id := MapOfFinSets(
+    id := MapOfFinSets( H,
                   N0,
-                  List( N0,
-                        i -> PreCompose(
-                                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[1 + i] ) ),
-                                InjectionOfCofactorOfCoproduct( B1, 1 + d( i ) ) )( 0 ) ),
+                  List( [ 0 .. Length( N0 ) - 1 ], i ->
+                        AsList(
+                               PreCompose( H,
+                                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
+                                               IdentityMorphism( B,
+                                                       B0[1 + i] ) ),
+                                       InjectionOfCofactorOfCoproduct( H,
+                                               B1,
+                                               1 + AsList( d )[1 + i] ) ) )[1 + 0] ),
                   N1 );
     
     ## N1 -> N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N1 in SkeletalFinSets is taken over the index set N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
-    pi2 := MapOfFinSets( N1, Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ), N0N0 );
+    pi2 := MapOfFinSets( H,
+                   N1,
+                   Concatenation( List( [ 0 .. Length( N0N0 ) - 1 ], i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ),
+                   N0N0 );
     
     ## N1 -> N0 × N0 -> N0
-    s := PreCompose( pi2, p21 );
+    s := PreCompose( H, pi2, p21 );
     
     ## N1 -> N0 × N0 -> N0
-    t := PreCompose( pi2, p22 );
+    t := PreCompose( H, pi2, p22 );
     
     ## N0 × N0 × N0
     D000 := [ N0, N0, N0 ];
-    N0N0N0 := DirectProduct( D000 );
+    N0N0N0 := DirectProduct( H, D000 );
     
     ## N0 × N0 × N0 -> N0
-    p31 := ProjectionInFactorOfDirectProduct( D000, 1 );
-    p32 := ProjectionInFactorOfDirectProduct( D000, 2 );
-    p33 := ProjectionInFactorOfDirectProduct( D000, 3 );
+    p31 := ProjectionInFactorOfDirectProduct( H, D000, 1 );
+    p32 := ProjectionInFactorOfDirectProduct( H, D000, 2 );
+    p33 := ProjectionInFactorOfDirectProduct( H, D000, 3 );
     
-    B2 := List( N0N0N0,
-                i -> DirectProduct(
-                        HomomorphismStructureOnObjects( B0[1 + p31( i )], B0[1 + p32( i )] ),
-                        HomomorphismStructureOnObjects( B0[1 + p32( i )], B0[1 + p33( i )] ) ) );
+    B2 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+                DirectProduct( H,
+                        [ HomomorphismStructureOnObjects( B,
+                                B0[1 + AsList( p31 )[1 + i]],
+                                B0[1 + AsList( p32 )[1 + i]] ),
+                          HomomorphismStructureOnObjects( B,
+                                  B0[1 + AsList( p32 )[1 + i]],
+                                  B0[1 + AsList( p33 )[1 + i]] ) ] ) );
     
-    N2 := Coproduct( B2 );
+    N2 := Coproduct( H, B2 );
     
     T := TerminalObject( H );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
-    ds := PreCompose( pi2, EmbeddingOfEqualizer( [ p32, p33 ] ) );
+    ds := PreCompose( H,
+                  pi2,
+                  EmbeddingOfEqualizer( H,
+                          N0N0N0,
+                          [ p32, p33 ] ) );
     
     ## N1 -> N2
-    is := MapOfFinSets(
+    is := MapOfFinSets( H,
                   N1,
-                  List( N1,
-                        i -> PreCompose(
-                                DirectProductFunctorial(
-                                        [ LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B1, 1 + pi2( i ) ), MapOfFinSets( T, [ i ], N1 ) ),
-                                          InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[1 + t( i )] ) ) ] ),
-                                InjectionOfCofactorOfCoproduct( B2, 1 + ds( i ) ) )( 0 ) ),
+                  List( [ 0 .. Length( N1 ) - 1 ], i ->
+                        AsList(
+                               PreCompose( H,
+                                       DirectProductFunctorial( H,
+                                               [ LiftAlongMonomorphism( H,
+                                                       InjectionOfCofactorOfCoproduct( H,
+                                                               B1,
+                                                               1 + AsList( pi2 )[1 + i] ),
+                                                       MapOfFinSets( H,
+                                                               T,
+                                                               [ i ],
+                                                               N1 ) ),
+                                                 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
+                                                         IdentityMorphism( B,
+                                                                 B0[1 + AsList( t )[1 + i]] ) ) ] ),
+                                       InjectionOfCofactorOfCoproduct( H,
+                                               B2,
+                                               1 + AsList( ds )[1 + i] ) ) )[1 + 0] ),
                   N2 );
     
     ## N1 -> N0 × N0 -> N0 × N0 × N0
     ## this is elegant but needs a justification:
-    dt := PreCompose( pi2, EmbeddingOfEqualizer( [ p31, p32 ] ) );
+    dt := PreCompose( H,
+                  pi2,
+                  EmbeddingOfEqualizer( H,
+                          N0N0N0,
+                          [ p31, p32 ] ) );
     
     ## N1 -> N2
-    it := MapOfFinSets(
+    it := MapOfFinSets( H,
                   N1,
-                  List( N1,
-                        i -> PreCompose(
-                                DirectProductFunctorial(
-                                        [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( IdentityMorphism( B0[1 + s( i )] ) ),
-                                          LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B1, 1 + pi2( i ) ), MapOfFinSets( T, [ i ], N1 ) ) ] ),
-                                InjectionOfCofactorOfCoproduct( B2, 1 + dt( i ) ) )( 0 ) ),
+                  List( [ 0 .. Length( N1 ) - 1 ], i ->
+                        AsList(
+                               PreCompose( H,
+                                       DirectProductFunctorial( H,
+                                               [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
+                                                       IdentityMorphism( B,
+                                                               B0[1 + AsList( s )[1 + i]] ) ),
+                                                 LiftAlongMonomorphism( H,
+                                                         InjectionOfCofactorOfCoproduct( H,
+                                                                 B1,
+                                                                 1 + AsList( pi2 )[1 + i] ),
+                                                         MapOfFinSets( H,
+                                                                 T,
+                                                                 [ i ],
+                                                                 N1 ) ) ] ),
+                                       InjectionOfCofactorOfCoproduct( H,
+                                               B2,
+                                               1 + AsList( dt )[1 + i] ) ) )[1 + 0] ),
                   N2 );
-
-    ## N0 × N0 × N0 -> N0 × N0
-    p312 := UniversalMorphismIntoDirectProduct( [ p31, p32 ] );
-    p323 := UniversalMorphismIntoDirectProduct( [ p32, p33 ] );
-    p313 := UniversalMorphismIntoDirectProduct( [ p31, p33 ] );
     
-    Assert( 0, p312 = ProjectionInFactorOfDirectProduct( [ N0N0, N0 ], 1 ) );
-    Assert( 0, p323 = ProjectionInFactorOfDirectProduct( [ N0, N0N0 ], 2 ) );
+    ## N0 × N0 × N0 -> N0 × N0
+    p312 := UniversalMorphismIntoDirectProduct( H, D00, N0N0N0, [ p31, p32 ] );
+    p323 := UniversalMorphismIntoDirectProduct( H, D00, N0N0N0, [ p32, p33 ] );
+    p313 := UniversalMorphismIntoDirectProduct( H, D00, N0N0N0, [ p31, p33 ] );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, p312 = ProjectionInFactorOfDirectProduct( H, [ N0N0, N0 ], 1 ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, p323 = ProjectionInFactorOfDirectProduct( H, [ N0, N0N0 ], 2 ) );
     
     ## N2 -> N0 × N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N2 in SkeletalFinSets is taken over the index set N0N0N0 (here also realized as an object in SkeletalFinSets),
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
-    pi3 := MapOfFinSets( N2, Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ), N0N0N0 );
+    pi3 := MapOfFinSets( H,
+                   N2,
+                   Concatenation( List( [ 0 .. Length( N0N0N0 ) - 1 ], i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ),
+                   N0N0N0 );
     
     ## N2 -> N0 × N0 × N0 -> N0 × N0
-    pi312 := PreCompose( pi3, p312 );
-    pi323 := PreCompose( pi3, p323 );
-    pi313 := PreCompose( pi3, p313 );
+    pi312 := PreCompose( H, pi3, p312 );
+    pi323 := PreCompose( H, pi3, p323 );
+    pi313 := PreCompose( H, pi3, p313 );
     
     ## N2 -> N1
-    ps := MapOfFinSets(
+    ps := MapOfFinSets( H,
                   N2,
-                  List( N2,
-                        i -> PreCompose( [
-                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, 1 + pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
-                                ProjectionInFactorOfDirectProduct( [ B1[1 + pi312( i )], B1[1 + pi323( i )] ], 1 ),
-                                InjectionOfCofactorOfCoproduct( B1, 1 + pi312( i ) ) ] )( 0 ) ),
+                  List( [ 0 .. Length( N2 ) - 1 ], i ->
+                        AsList(
+                               PreComposeList( H,
+                                       [ LiftAlongMonomorphism( H,
+                                               InjectionOfCofactorOfCoproduct( H,
+                                                       B2, 1 + AsList( pi3 )[1 + i] ),
+                                               MapOfFinSets( H,
+                                                       T,
+                                                       [ i ],
+                                                       N2 ) ),
+                                         ProjectionInFactorOfDirectProduct( H,
+                                                 [ B1[1 + AsList( pi312 )[1 + i]],
+                                                   B1[1 + AsList( pi323 )[1 + i]] ],
+                                                 1 ),
+                                         InjectionOfCofactorOfCoproduct( H,
+                                                 B1,
+                                                 1 + AsList( pi312 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
     
     ## N2 -> N1
-    pt := MapOfFinSets(
+    pt := MapOfFinSets( H,
                   N2,
-                  List( N2,
-                        i -> PreCompose( [
-                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, 1 + pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
-                                ProjectionInFactorOfDirectProduct( [ B1[1 + pi312( i )], B1[1 + pi323( i )] ], 2 ),
-                                InjectionOfCofactorOfCoproduct( B1, 1 + pi323( i ) ) ] )( 0 ) ),
+                  List( [ 0 .. Length( N2 ) - 1 ], i ->
+                        AsList(
+                               PreComposeList( H,
+                                       [ LiftAlongMonomorphism( H,
+                                               InjectionOfCofactorOfCoproduct( H,
+                                                       B2,
+                                                       1 + AsList( pi3 )[ 1 + i] ),
+                                               MapOfFinSets( H,
+                                                       T,
+                                                       [ i ],
+                                                       N2 ) ),
+                                         ProjectionInFactorOfDirectProduct( H,
+                                                 [ B1[1 + AsList( pi312 )[1 + i]],
+                                                   B1[1 + AsList( pi323 )[1 + i]] ],
+                                                 2 ),
+                                         InjectionOfCofactorOfCoproduct( H,
+                                                 B1,
+                                                 1 + AsList( pi323 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
     
-    mus := List( N0N0N0,
-                 i -> List( B2[1 + i],
-                         j -> [ MapOfFinSets( T, [ ProjectionInFactorOfDirectProduct( [ B1[1 + p312( i )], B1[1 + p323( i )] ], 1 )(j) ], B1[1 + p312( i )] ),
-                                MapOfFinSets( T, [ ProjectionInFactorOfDirectProduct( [ B1[1 + p312( i )], B1[1 + p323( i )] ], 2 )(j) ], B1[1 + p323( i )] ) ] ) );
+    mus := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+                 List( [ 0 .. Length( B2[1 + i] ) - 1 ], j ->
+                       [ MapOfFinSets( H,
+                               T,
+                               [ AsList(
+                                       ProjectionInFactorOfDirectProduct( H,
+                                               [ B1[1 + AsList( p312 )[1 + i]],
+                                                 B1[1 + AsList( p323 )[1 + i]] ],
+                                               1 ) )[1 + j] ],
+                               B1[1 + AsList( p312 )[1 + i]] ),
+                         MapOfFinSets( H,
+                                 T,
+                                 [ AsList(
+                                         ProjectionInFactorOfDirectProduct( H,
+                                                 [ B1[1 + AsList( p312 )[1 + i]],
+                                                   B1[1 + AsList( p323 )[1 + i]] ],
+                                                 2 ) )[1 + j] ],
+                                 B1[1 + AsList( p323 )[1 + i]] ) ] ) );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, Length( Concatenation( mus ) ) = Length( N2 ) );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, ForAll( mus, mu -> ForAll( mu, m -> IsWellDefined( m[1] ) and IsWellDefined( m[2] ) ) ) );
     
-    mus := List( N0N0N0,
-                 i -> List( B2[1 + i],
-                         j -> PreCompose(
-                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B0[1 + p31( i )], B0[1 + p32( i )], mus[1 + i][1 + j][1] ),
-                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B0[1 + p32( i )], B0[1 + p33( i )], mus[1 + i][1 + j][2] ) ) ) );
+    mus1 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+                  List( [ 0 .. Length( B2[1 + i] ) - 1 ], j ->
+                        PreCompose( B,
+                                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
+                                        B0[1 + AsList( p31 )[1 + i]],
+                                        B0[1 + AsList( p32 )[1 + i]],
+                                        mus[1 + i][1 + j][1] ),
+                                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
+                                        B0[1 + AsList( p32 )[1 + i]],
+                                        B0[1 + AsList( p33 )[1 + i]],
+                                        mus[1 + i][1 + j][2] ) ) ) );
     
-    mus := List( N0N0N0,
-                 i -> List( B2[1 + i],
-                         function( j )
-                           local phi;
-                           
-                           phi := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mus[1 + i][1 + j] );
-                           
-                           IsWellDefined( phi );
-                           
-                           Assert( 0, Range( phi ) = B1[1 + p313( i )] );
-                           
-                           return phi;
-                           
-                       end ) );
+    mus2 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+                  List( [ 0 .. Length( B2[1 + i] ) - 1 ], j ->
+                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
+                                mus1[1 + i][1 + j] ) ) );
     
-    mus := List( N0N0N0, i -> UniversalMorphismFromCoproductWithGivenCoproduct( H, List( mus[1 + i], Source ), B1[1 + p313( i )], mus[1 + i], B2[1 + i] ) );
+    mus3 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+                  UniversalMorphismFromCoproductWithGivenCoproduct( H,
+                          List( mus2[1 + i], Source ),
+                          B1[1 + AsList( p313 )[1 + i]],
+                          mus2[1 + i],
+                          B2[1 + i] ) );
     
-    Assert( 0, ForAll( [ 1 .. Length( N0N0N0 ) ], i -> Source( mus[i] ) = B2[i] ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( [ 1 .. Length( N0N0N0 ) ], i -> Source( mus3[i] ) = B2[i] ) );
     
     ## N2 -> N1
-    mu := MapOfFinSets(
+    mu := MapOfFinSets( H,
                   N2,
-                  List( N2,
-                        i -> PreCompose( [
-                                LiftAlongMonomorphism( InjectionOfCofactorOfCoproduct( B2, 1 + pi3( i ) ), MapOfFinSets( T, [ i ], N2 ) ),
-                                mus[1 + pi3( i )],
-                                InjectionOfCofactorOfCoproduct( B1, 1 + pi313( i ) ) ] )( 0 ) ),
+                  List( [ 0 .. Length( N2 ) - 1 ], i ->
+                        AsList(
+                               PreComposeList( H,
+                                       [ LiftAlongMonomorphism( H,
+                                               InjectionOfCofactorOfCoproduct( H,
+                                                       B2,
+                                                       1 + AsList( pi3 )[1 + i] ),
+                                               MapOfFinSets( H,
+                                                       T,
+                                                       [ i ],
+                                                       N2 ) ),
+                                         mus3[1 + AsList( pi3 )[1 + i]],
+                                         InjectionOfCofactorOfCoproduct( H,
+                                                 B1,
+                                                 1 + AsList( pi313 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
     
-    Nerve_ValuesOnAllObjects := rec( C0 := N0, C1 := N1, C2 := N2 );
+    return Pair( Triple( N0, N1, N2 ),
+                 NTuple( 8, id, s, t, is, it, ps, pt, mu ) );
     
-    Nerve_ValuesOnAllGeneratingMorphisms :=
+end );
+
+##
+InstallMethod( NerveTruncatedInDegree2AsFunctor,
+        [ IsFpCategory ],
+        
+  function ( B )
+    local nerve, nerve_ValuesOnAllObjects, nerve_ValuesOnAllGeneratingMorphisms, name, Delta2, Delta2op;
+    
+    nerve := NerveTruncatedInDegree2Data( B );
+    
+    nerve_ValuesOnAllObjects := rec( C0 := nerve[1][1], C1 := nerve[1][2], C2 := nerve[1][3] );
+    
+    nerve_ValuesOnAllGeneratingMorphisms :=
       rec(
-          id := id,
-          s := s,
-          t := t,
-          is := is,
-          it := it,
-          ps := ps,
-          pt := pt,
-          mu := mu
-          );
+          id := nerve[2][1],
+          s := nerve[2][2],
+          t := nerve[2][3],
+          is := nerve[2][4],
+          it := nerve[2][5],
+          ps := nerve[2][6],
+          pt := nerve[2][7],
+          mu := nerve[2][8] );
     
     name := Concatenation( "Nerve of ", Name( B ) );
     
-    return CapFunctor( Delta2op, Nerve_ValuesOnAllObjects, Nerve_ValuesOnAllGeneratingMorphisms );
+    ## Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]
+    Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
+    
+    ## Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,is:C1->C2,it:C1->C2,ps:C2->C1,pt:C2->C1,mu:C2->C1]
+    Delta2op := OppositeFpCategory( Delta2 );
+    
+    return CapFunctor( Delta2op, nerve_ValuesOnAllObjects, nerve_ValuesOnAllGeneratingMorphisms );
     
 end );
 
