@@ -87,7 +87,7 @@ function ( cat_1, a_1, b_1 )
               return hoisted_1_1[logic_new_func_x_2] ^ (hoisted_53_1[logic_new_func_x_2] * hoisted_9_1[logic_new_func_x_2]);
           end ), List( deduped_172_1, function ( logic_new_func_x_2 )
               local deduped_1_2;
-              deduped_1_2 := hoisted_10_1[logic_new_func_x_2][2];
+              deduped_1_2 := 1 + hoisted_10_1[logic_new_func_x_2][2];
               return hoisted_11_1 ^ (hoisted_53_1[deduped_1_2] * hoisted_9_1[deduped_1_2]);
           end ) );
     hoisted_100_1 := deduped_165_1;
@@ -98,21 +98,21 @@ function ( cat_1, a_1, b_1 )
               return hoisted_1_1[logic_new_func_x_2] ^ (hoisted_101_1[logic_new_func_x_2] * hoisted_9_1[logic_new_func_x_2]);
           end ), List( deduped_172_1, function ( logic_new_func_x_2 )
               local deduped_1_2;
-              deduped_1_2 := hoisted_10_1[logic_new_func_x_2][2];
+              deduped_1_2 := 1 + hoisted_10_1[logic_new_func_x_2][2];
               return hoisted_11_1 ^ (hoisted_101_1[deduped_1_2] * hoisted_9_1[deduped_1_2]);
           end ) );
     deduped_156_1 := Concatenation( List( deduped_179_1, function ( logic_new_func_x_2 )
               return hoisted_1_1[logic_new_func_x_2] ^ (hoisted_88_1[logic_new_func_x_2] * hoisted_9_1[logic_new_func_x_2]);
           end ), List( deduped_172_1, function ( logic_new_func_x_2 )
               local deduped_1_2;
-              deduped_1_2 := hoisted_10_1[logic_new_func_x_2][2];
+              deduped_1_2 := 1 + hoisted_10_1[logic_new_func_x_2][2];
               return hoisted_11_1 ^ (hoisted_88_1[deduped_1_2] * hoisted_9_1[deduped_1_2]);
           end ) );
     deduped_155_1 := Concatenation( List( deduped_179_1, function ( logic_new_func_x_2 )
               return hoisted_1_1[logic_new_func_x_2] ^ (hoisted_40_1[logic_new_func_x_2] * hoisted_9_1[logic_new_func_x_2]);
           end ), List( deduped_172_1, function ( logic_new_func_x_2 )
               local deduped_1_2;
-              deduped_1_2 := hoisted_10_1[logic_new_func_x_2][2];
+              deduped_1_2 := 1 + hoisted_10_1[logic_new_func_x_2][2];
               return hoisted_11_1 ^ (hoisted_40_1[deduped_1_2] * hoisted_9_1[deduped_1_2]);
           end ) );
     hoisted_7_1 := deduped_187_1;
@@ -120,7 +120,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_5_1 := HomStructureOnBasisPaths( deduped_189_1 );
     hoisted_4_1 := deduped_188_1;
     hoisted_3_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_138_1 := List( deduped_188_1, function ( logic_new_func_x_2 )
+    deduped_142_1 := List( deduped_188_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2;
             deduped_4_2 := UnderlyingVertex( logic_new_func_x_2 );
             deduped_3_2 := VertexIndex( deduped_4_2 );
@@ -139,22 +139,22 @@ function ( cat_1, a_1, b_1 )
                             end ) );
                   end ) );
         end );
-    deduped_137_1 := deduped_138_1[2];
+    deduped_137_1 := deduped_142_1[2];
     hoisted_28_1 := List( deduped_137_1[1], Length );
     deduped_154_1 := Concatenation( List( deduped_179_1, function ( logic_new_func_x_2 )
               return hoisted_1_1[logic_new_func_x_2] ^ (hoisted_28_1[logic_new_func_x_2] * hoisted_9_1[logic_new_func_x_2]);
           end ), List( deduped_172_1, function ( logic_new_func_x_2 )
               local deduped_1_2;
-              deduped_1_2 := hoisted_10_1[logic_new_func_x_2][2];
+              deduped_1_2 := 1 + hoisted_10_1[logic_new_func_x_2][2];
               return hoisted_11_1 ^ (hoisted_28_1[deduped_1_2] * hoisted_9_1[deduped_1_2]);
           end ) );
-    deduped_136_1 := deduped_138_1[1];
+    deduped_136_1 := deduped_142_1[1];
     hoisted_8_1 := List( deduped_136_1[1], Length );
     deduped_153_1 := Concatenation( List( deduped_179_1, function ( logic_new_func_x_2 )
               return hoisted_1_1[logic_new_func_x_2] ^ (hoisted_8_1[logic_new_func_x_2] * hoisted_9_1[logic_new_func_x_2]);
           end ), List( deduped_172_1, function ( logic_new_func_x_2 )
               local deduped_1_2;
-              deduped_1_2 := hoisted_10_1[logic_new_func_x_2][2];
+              deduped_1_2 := 1 + hoisted_10_1[logic_new_func_x_2][2];
               return hoisted_11_1 ^ (hoisted_8_1[deduped_1_2] * hoisted_9_1[deduped_1_2]);
           end ) );
     deduped_152_1 := [ 0 .. Product( deduped_158_1 ) - 1 ];
@@ -204,8 +204,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_64_1 := Concatenation( List( deduped_172_1, function ( logic_new_func_x_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
               deduped_19_2 := hoisted_10_1[logic_new_func_x_2];
-              deduped_18_2 := deduped_19_2[2];
-              deduped_17_2 := deduped_19_2[1];
+              deduped_18_2 := 1 + deduped_19_2[2];
+              deduped_17_2 := 1 + deduped_19_2[1];
               deduped_16_2 := hoisted_53_1[deduped_18_2] * hoisted_9_1[deduped_18_2];
               deduped_15_2 := hoisted_53_1[deduped_17_2] * hoisted_9_1[deduped_17_2];
               deduped_14_2 := [ 0 .. deduped_16_2 - 1 ];
@@ -306,8 +306,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_112_1 := Concatenation( List( deduped_172_1, function ( logic_new_func_x_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
               deduped_19_2 := hoisted_10_1[logic_new_func_x_2];
-              deduped_18_2 := deduped_19_2[2];
-              deduped_17_2 := deduped_19_2[1];
+              deduped_18_2 := 1 + deduped_19_2[2];
+              deduped_17_2 := 1 + deduped_19_2[1];
               deduped_16_2 := hoisted_101_1[deduped_18_2] * hoisted_9_1[deduped_18_2];
               deduped_15_2 := hoisted_101_1[deduped_17_2] * hoisted_9_1[deduped_17_2];
               deduped_14_2 := [ 0 .. deduped_16_2 - 1 ];
@@ -406,8 +406,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_99_1 := Concatenation( List( deduped_172_1, function ( logic_new_func_x_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
               deduped_19_2 := hoisted_10_1[logic_new_func_x_2];
-              deduped_18_2 := deduped_19_2[2];
-              deduped_17_2 := deduped_19_2[1];
+              deduped_18_2 := 1 + deduped_19_2[2];
+              deduped_17_2 := 1 + deduped_19_2[1];
               deduped_16_2 := hoisted_88_1[deduped_18_2] * hoisted_9_1[deduped_18_2];
               deduped_15_2 := hoisted_88_1[deduped_17_2] * hoisted_9_1[deduped_17_2];
               deduped_14_2 := [ 0 .. deduped_16_2 - 1 ];
@@ -506,8 +506,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_51_1 := Concatenation( List( deduped_172_1, function ( logic_new_func_x_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
               deduped_19_2 := hoisted_10_1[logic_new_func_x_2];
-              deduped_18_2 := deduped_19_2[2];
-              deduped_17_2 := deduped_19_2[1];
+              deduped_18_2 := 1 + deduped_19_2[2];
+              deduped_17_2 := 1 + deduped_19_2[1];
               deduped_16_2 := hoisted_40_1[deduped_18_2] * hoisted_9_1[deduped_18_2];
               deduped_15_2 := hoisted_40_1[deduped_17_2] * hoisted_9_1[deduped_17_2];
               deduped_14_2 := [ 0 .. deduped_16_2 - 1 ];
@@ -577,10 +577,10 @@ function ( cat_1, a_1, b_1 )
                       return hoisted_51_1[j_3][hoisted_1_2] * hoisted_46_1[j_3];
                   end );
         end );
-    deduped_142_1 := [ 0 .. Length( deduped_146_1 ) - 1 ];
-    deduped_141_1 := [ 0 .. Length( deduped_145_1 ) - 1 ];
-    deduped_140_1 := [ 0 .. Length( deduped_144_1 ) - 1 ];
-    deduped_139_1 := [ 0 .. Length( deduped_143_1 ) - 1 ];
+    deduped_141_1 := [ 0 .. Length( deduped_146_1 ) - 1 ];
+    deduped_140_1 := [ 0 .. Length( deduped_145_1 ) - 1 ];
+    deduped_139_1 := [ 0 .. Length( deduped_144_1 ) - 1 ];
+    deduped_138_1 := [ 0 .. Length( deduped_143_1 ) - 1 ];
     deduped_135_1 := deduped_137_1[2];
     deduped_134_1 := deduped_136_1[2];
     hoisted_116_1 := List( deduped_180_1, function ( logic_new_func_x_2 )
@@ -589,7 +589,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_117_1 := List( deduped_173_1, function ( j_2 )
             return Product( hoisted_116_1{[ 1 .. j_2 ]} );
         end );
-    hoisted_114_1 := deduped_141_1;
+    hoisted_114_1 := deduped_140_1;
     hoisted_113_1 := deduped_145_1;
     hoisted_115_1 := List( deduped_180_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
@@ -603,7 +603,7 @@ function ( cat_1, a_1, b_1 )
                 end );
         end );
     hoisted_70_1 := deduped_180_1;
-    hoisted_133_1 := List( deduped_141_1, function ( i_2 )
+    hoisted_133_1 := List( deduped_140_1, function ( i_2 )
             local hoisted_1_2;
             hoisted_1_2 := 1 + i_2;
             return Sum( hoisted_70_1, function ( j_3 )
@@ -686,7 +686,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_130_1 := List( deduped_173_1, function ( j_2 )
             return Product( hoisted_129_1{[ 1 .. j_2 ]} );
         end );
-    hoisted_127_1 := deduped_140_1;
+    hoisted_127_1 := deduped_139_1;
     hoisted_126_1 := deduped_144_1;
     hoisted_128_1 := List( deduped_180_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
@@ -699,7 +699,7 @@ function ( cat_1, a_1, b_1 )
                     return hoisted_3_2[1 + hoisted_126_1[(1 + i_3)]];
                 end );
         end );
-    hoisted_132_1 := List( deduped_140_1, function ( logic_new_func_x_2 )
+    hoisted_132_1 := List( deduped_139_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := 1 + logic_new_func_x_2;
             return hoisted_131_1[1 + Sum( hoisted_70_1, function ( j_3 )
@@ -712,7 +712,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_69_1 := List( deduped_173_1, function ( j_2 )
             return Product( hoisted_68_1{[ 1 .. j_2 ]} );
         end );
-    hoisted_66_1 := deduped_142_1;
+    hoisted_66_1 := deduped_141_1;
     hoisted_65_1 := deduped_146_1;
     hoisted_67_1 := List( deduped_180_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
@@ -725,7 +725,7 @@ function ( cat_1, a_1, b_1 )
                     return hoisted_3_2[1 + hoisted_65_1[(1 + i_3)]];
                 end );
         end );
-    hoisted_86_1 := List( deduped_142_1, function ( i_2 )
+    hoisted_86_1 := List( deduped_141_1, function ( i_2 )
             local hoisted_1_2;
             hoisted_1_2 := 1 + i_2;
             return Sum( hoisted_70_1, function ( j_3 )
@@ -808,7 +808,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_83_1 := List( deduped_173_1, function ( j_2 )
             return Product( hoisted_82_1{[ 1 .. j_2 ]} );
         end );
-    hoisted_80_1 := deduped_139_1;
+    hoisted_80_1 := deduped_138_1;
     hoisted_79_1 := deduped_143_1;
     hoisted_81_1 := List( deduped_180_1, function ( logic_new_func_x_2 )
             local hoisted_1_2, hoisted_2_2, hoisted_3_2;
@@ -821,7 +821,7 @@ function ( cat_1, a_1, b_1 )
                     return hoisted_3_2[1 + hoisted_79_1[(1 + i_3)]];
                 end );
         end );
-    hoisted_85_1 := List( deduped_139_1, function ( logic_new_func_x_2 )
+    hoisted_85_1 := List( deduped_138_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
             hoisted_1_2 := 1 + logic_new_func_x_2;
             return hoisted_84_1[1 + Sum( hoisted_70_1, function ( j_3 )
@@ -848,8 +848,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_38_1 := Concatenation( List( deduped_172_1, function ( logic_new_func_x_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, hoisted_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2, deduped_20_2;
               deduped_20_2 := hoisted_10_1[logic_new_func_x_2];
-              deduped_19_2 := deduped_20_2[2];
-              deduped_18_2 := deduped_20_2[1];
+              deduped_19_2 := 1 + deduped_20_2[2];
+              deduped_18_2 := 1 + deduped_20_2[1];
               deduped_17_2 := hoisted_28_1[deduped_19_2] * hoisted_9_1[deduped_19_2];
               deduped_16_2 := hoisted_28_1[deduped_18_2] * hoisted_9_1[deduped_18_2];
               deduped_15_2 := [ 0 .. deduped_17_2 - 1 ];
@@ -933,8 +933,8 @@ function ( cat_1, a_1, b_1 )
     hoisted_27_1 := Concatenation( List( deduped_172_1, function ( logic_new_func_x_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, hoisted_9_2, hoisted_10_2, hoisted_11_2, hoisted_12_2, hoisted_13_2, hoisted_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2, deduped_20_2;
               deduped_20_2 := hoisted_10_1[logic_new_func_x_2];
-              deduped_19_2 := deduped_20_2[2];
-              deduped_18_2 := deduped_20_2[1];
+              deduped_19_2 := 1 + deduped_20_2[2];
+              deduped_18_2 := 1 + deduped_20_2[1];
               deduped_17_2 := hoisted_8_1[deduped_19_2] * hoisted_9_1[deduped_19_2];
               deduped_16_2 := hoisted_8_1[deduped_18_2] * hoisted_9_1[deduped_18_2];
               deduped_15_2 := [ 0 .. deduped_17_2 - 1 ];
@@ -1014,9 +1014,9 @@ function ( cat_1, a_1, b_1 )
                         end ) = Sum( hoisted_19_1, function ( j_3 )
                             return hoisted_38_1[j_3][hoisted_1_2] * hoisted_34_1[j_3];
                         end );
-              end ) ), ListN( List( deduped_139_1, function ( x_2 )
+              end ) ), ListN( List( deduped_138_1, function ( x_2 )
                   return -1 + SafePosition( hoisted_86_1, hoisted_85_1[(1 + x_2)] );
-              end ), List( deduped_140_1, function ( x_2 )
+              end ), List( deduped_139_1, function ( x_2 )
                   return -1 + SafePosition( hoisted_133_1, hoisted_132_1[(1 + x_2)] );
               end ), function ( s_2, t_2 )
                 return NTuple( 2, s_2, t_2 );

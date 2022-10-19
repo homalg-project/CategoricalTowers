@@ -300,9 +300,9 @@ InstallMethodForCompilerForCAP( CreatePreSheafByFunctions,
     
     values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> presheaf_on_objects( o ) );
     values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> presheaf_on_generating_morphisms(
-                                                  presheaf_on_objects( mors[m][2] ),
+                                                  presheaf_on_objects( 1 + mors[m][2] ),
                                                   m,
-                                                  presheaf_on_objects( mors[m][1] ) ) );
+                                                  presheaf_on_objects( 1 + mors[m][1] ) ) );
     
     return CreatePreSheafByValues( PSh, values_of_all_objects, values_of_all_generating_morphisms );
     
@@ -865,10 +865,10 @@ InstallMethodWithCache( PreSheaves,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[mors[morB_index][2]],              ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
                                  ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
                                  ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 ValuesOnAllObjects( eta )[mors[morB_index][1]]               ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
@@ -912,10 +912,10 @@ InstallMethodWithCache( PreSheaves,
                     #          R(t(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
-                               [ ValuesOnAllObjects( eta )[mors[morB_index][2]],              ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                               [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
                                  ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
                                  ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 ValuesOnAllObjects( eta )[mors[morB_index][1]]               ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                                 ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                                  ] );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
@@ -987,10 +987,10 @@ InstallMethodWithCache( PreSheaves,
                     #             v                v
                     #          R(t(m)) --R(m)-> R(s(m))
                     
-                    L := [ ValuesOnAllObjects( eta )[mors[morB_index][2]],              ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                    L := [ ValuesOnAllObjects( eta )[1 + mors[morB_index][2]],          ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
                            ValuesOfPreSheaf( Source( eta ) )[2][morB_index],            ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
                            ValuesOfPreSheaf( Range( eta ) )[2][morB_index],             ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                           ValuesOnAllObjects( eta )[mors[morB_index][1]]               ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                           ValuesOnAllObjects( eta )[1 + mors[morB_index][1]]           ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
                     return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
@@ -1422,7 +1422,7 @@ InstallMethodWithCache( PreSheaves,
                               hom_diagram[1],
                               hom_diagram[2] );
                 
-                prjs := List( [ 1 .. Length( SetOfObjects( Source( PSh ) ) ) ],
+                prjs := List( [ 1 .. Length( SetOfObjects( PSh ) ) ],
                               i -> ProjectionInFactorOfLimit( H,
                                       hom_diagram[1],
                                       hom_diagram[2],
