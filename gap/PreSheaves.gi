@@ -2421,15 +2421,12 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( NerveTruncatedInDegree2,
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
         [ IsFpCategory ],
         
   function ( B )
-    local nerve;
     
-    nerve := NerveTruncatedInDegree2AsFunctor( B );
-    
-    return CreatePreSheaf( nerve );
+    return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree( 2 ) ), NerveTruncatedInDegree2Data( B ) );
     
 end );
 
