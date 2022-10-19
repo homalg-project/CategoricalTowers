@@ -41,16 +41,16 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     mor_pair :=
       function ( i )
         
-        return [ Triple( 1 + mors[i][1],
+        return [ Triple( mors[i][1],
                          HomomorphismStructureOnMorphisms( C, ## Hom( F(s(m)), G(s(m)) ) -> Hom( F(t(m)), G(s(m)) )
                                  F_m[i],
                                  IdentityMorphism( C, Range( G_m[i] ) ) ),
-                         nr_o + i ),
-                 Triple( 1 + mors[i][2],
+                         nr_o - 1 + i ),
+                 Triple( mors[i][2],
                          HomomorphismStructureOnMorphisms( C, ## Hom( F(t(m)), G(t(m)) ) -> Hom( F(t(m)), G(s(m)) )
                                  IdentityMorphism( C, Source( F_m[i] ) ),
                                  G_m[i] ),
-                         nr_o + i ) ];
+                         nr_o - 1 + i ) ];
         
     end;
     
