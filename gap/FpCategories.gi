@@ -2068,9 +2068,9 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
     Sieves_objects := List( Sieves_emb, Source );
     Sieves_morphisms := List( [ 1 .. lmors ], m ->
                               LiftAlongMonomorphism( H,
-                                      Sieves_emb[arrows[m][1]], # Source( m )
+                                      Sieves_emb[1 + arrows[m][1]], # Source( m )
                                       PreCompose( H,
-                                              Sieves_emb[arrows[m][2]], # Range( m )
+                                              Sieves_emb[1 + arrows[m][2]], # Range( m )
                                               HomHomOmega_morphisms[m] ) ) );
     
     return NTuple( 5,

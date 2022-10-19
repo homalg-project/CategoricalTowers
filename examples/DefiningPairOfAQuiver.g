@@ -3,10 +3,10 @@
 LoadPackage( "FunctorCategories" );
 
 #! @Example
-q := RightQuiver( "q(5)[a:1->1,s:1->2,t:1->2,m:4->1]" );
-#! q(5)[a:1->1,s:1->2,t:1->2,m:4->1]
+q := RightQuiver( "q(0..4)[a:0->0,s:0->1,t:0->1,m:3->0]" );
+#! q(0,1,2,3,4)[a:0->0,s:0->1,t:0->1,m:3->0]
 DefiningPairOfAQuiver( q );
-#! [ 5, [ [ 1, 1 ], [ 1, 2 ], [ 1, 2 ], [ 4, 1 ] ] ]
+#! [ 5, [ [ 0, 0 ], [ 0, 1 ], [ 0, 1 ], [ 3, 0 ] ] ]
 #! @EndExample
 
 #! @EndChunk
