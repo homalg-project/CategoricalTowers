@@ -21,40 +21,40 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
-    deduped_9_1 := [ 1 .. Length( arg2_1 ) ];
-    deduped_8_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := [ 1 .. Length( arg2_1 ) ];
+    deduped_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return DefiningTripleOfQuiver( logic_new_func_x_2 )[2];
         end );
-    deduped_7_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    deduped_5_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return DefiningTripleOfQuiver( logic_new_func_x_2 )[1];
         end );
-    hoisted_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    hoisted_4_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return List( DefiningTripleOfQuiver( logic_new_func_x_2 )[3], function ( a_3 )
                     return a_3[2];
                 end );
         end );
-    hoisted_5_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    hoisted_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return List( DefiningTripleOfQuiver( logic_new_func_x_2 )[3], function ( a_3 )
                     return a_3[1];
                 end );
         end );
-    hoisted_4_1 := deduped_7_1;
-    hoisted_3_1 := deduped_8_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiver, NTuple( 3, Sum( deduped_7_1 ), Sum( deduped_8_1 ), ListN( Concatenation( List( deduped_9_1, function ( logic_new_func_x_2 )
+    hoisted_2_1 := deduped_5_1;
+    hoisted_1_1 := deduped_6_1;
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiver, NTuple( 3, Sum( deduped_5_1 ), Sum( deduped_6_1 ), ListN( Concatenation( List( deduped_7_1, function ( logic_new_func_x_2 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
-                    deduped_3_2 := Sum( hoisted_4_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
-                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_4_1[logic_new_func_x_2] - 1 ];
-                    hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
-                    return List( [ 0 .. hoisted_3_1[logic_new_func_x_2] - 1 ], function ( i_3 )
+                    deduped_3_2 := Sum( hoisted_2_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_2_1[logic_new_func_x_2] - 1 ];
+                    hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
+                    return List( [ 0 .. hoisted_1_1[logic_new_func_x_2] - 1 ], function ( i_3 )
                             return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                         end );
-                end ) ), Concatenation( List( deduped_9_1, function ( logic_new_func_x_2 )
+                end ) ), Concatenation( List( deduped_7_1, function ( logic_new_func_x_2 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
-                    deduped_3_2 := Sum( hoisted_4_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
-                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_4_1[logic_new_func_x_2] - 1 ];
-                    hoisted_1_2 := hoisted_6_1[logic_new_func_x_2];
-                    return List( [ 0 .. hoisted_3_1[logic_new_func_x_2] - 1 ], function ( i_3 )
+                    deduped_3_2 := Sum( hoisted_2_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_2_1[logic_new_func_x_2] - 1 ];
+                    hoisted_1_2 := hoisted_4_1[logic_new_func_x_2];
+                    return List( [ 0 .. hoisted_1_1[logic_new_func_x_2] - 1 ], function ( i_3 )
                             return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                         end );
                 end ) ), function ( s_2, t_2 )
