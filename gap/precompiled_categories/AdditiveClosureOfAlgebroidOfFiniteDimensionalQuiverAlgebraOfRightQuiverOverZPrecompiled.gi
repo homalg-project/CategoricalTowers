@@ -842,9 +842,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, MorphismMatrix, UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, function ( tau_2 )
-                return MorphismMatrix( tau_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, MorphismMatrix, UnionOfRowsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) );
 end
 ########
         
@@ -855,9 +853,7 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, MorphismMatrix, UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, function ( tau_2 )
-                return MorphismMatrix( tau_2 );
-            end ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, MorphismMatrix, UnionOfColumnsListList( Length( ObjectList( T_1 ) ), List( tau_1, MorphismMatrix ) ) );
 end
 ########
         
