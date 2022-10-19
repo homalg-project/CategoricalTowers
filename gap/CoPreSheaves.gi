@@ -191,9 +191,9 @@ InstallMethodForCompilerForCAP( CreateCoPreSheafByFunctions,
     
     values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> copresheaf_on_objects( o ) );
     values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> copresheaf_on_generating_morphisms(
-                                                  copresheaf_on_objects( mors[m][1] ),
+                                                  copresheaf_on_objects( 1 + mors[m][1] ),
                                                   m,
-                                                  copresheaf_on_objects( mors[m][2] ) ) );
+                                                  copresheaf_on_objects( 1 + mors[m][2] ) ) );
     
     return CreateCoPreSheafByValues( coPSh, values_of_all_objects, values_of_all_generating_morphisms );
     

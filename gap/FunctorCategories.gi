@@ -191,9 +191,9 @@ InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByFunctions,
     
     values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> functor_on_objects( o ) );
     values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> functor_on_generating_morphisms(
-                                                  functor_on_objects( mors[m][1] ),
+                                                  functor_on_objects( 1 + mors[m][1] ),
                                                   m,
-                                                  functor_on_objects( mors[m][2] ) ) );
+                                                  functor_on_objects( 1 + mors[m][2] ) ) );
     
     return AsObjectInFunctorCategoryByValues( Hom, values_of_all_objects, values_of_all_generating_morphisms );
     

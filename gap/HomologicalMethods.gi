@@ -28,7 +28,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusion,
     
     def_pair := DefiningPairOfUnderlyingQuiver( PSh );
     
-    pos := List( [ 1 .. def_pair[1] ], i -> Positions( List( def_pair[2], r -> r[1] ), i ) );
+    pos := List( [ 0 .. def_pair[1] - 1 ], i -> Positions( List( def_pair[2], r -> r[1] ), i ) );
     
     im := List( pos, p -> ListOfValues( vals_F[2] ){ p } );
     
@@ -36,7 +36,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusion,
     
     val_objs := List( im, Source );
     
-    val_mors := ListN( def_pair[2], vals_F[2], { m, vm } -> LiftAlongMonomorphism( C, im[ m[1] ], PreCompose( C, im[ m[2] ], vm ) ) );
+    val_mors := ListN( def_pair[2], vals_F[2], { m, vm } -> LiftAlongMonomorphism( C, im[1 + m[1]], PreCompose( C, im[1 + m[2]], vm ) ) );
     
     RF := CreatePreSheafByValues( PSh, val_objs, val_mors );
     
