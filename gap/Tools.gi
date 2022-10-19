@@ -957,7 +957,7 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
 InstallMethodForCompilerForCAP( LimitPair,
         "for a catgory and two lists",
         [ IsCapCategory, IsList, IsList ],
-
+        
   function( cat, objects, decorated_morphisms )
     local source, projections, diagram, tau, range, mor1, compositions, mor2;
     
@@ -966,9 +966,9 @@ InstallMethodForCompilerForCAP( LimitPair,
     projections := List( [ 1 .. Length( objects ) ],
                          i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, objects, i, source ) );
     
-    diagram := List( decorated_morphisms, m -> objects[m[3]] );
+    diagram := List( decorated_morphisms, m -> objects[1 + m[3]] );
     
-    tau := List( decorated_morphisms, m -> projections[m[3]] );
+    tau := List( decorated_morphisms, m -> projections[1 + m[3]] );
     
     range := DirectProduct( cat, diagram );
     
@@ -977,7 +977,7 @@ InstallMethodForCompilerForCAP( LimitPair,
     
     compositions := List( decorated_morphisms,
                           m -> PreCompose( cat,
-                                  projections[m[1]],
+                                  projections[1 + m[1]],
                                   m[2] ) );
     
     mor2 := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
@@ -1043,7 +1043,7 @@ AddFinalDerivation( Limit,
                              limit ),
                      ProjectionInFactorOfDirectProduct( cat,
                              objects,
-                             k ) );
+                             1 + k ) );
       
   end
 ],
