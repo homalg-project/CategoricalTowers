@@ -7,8 +7,7 @@
 ##
 InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
   [
-   "AdditionForMorphisms",
-   "AdditiveInverseForMorphisms",
+   # no pre-additive structure: "AdditionForMorphisms", "AdditiveInverseForMorphisms", "SubtractionForMorphisms", "ZeroMorphism", "IsZeroForMorphisms"
    # "Colift" cannot be derived from the ambient category
    "ColiftAlongEpimorphism",
    "IdentityMorphism",
@@ -26,17 +25,14 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY,
    "IsSplitEpimorphism", ## this is a special case of Lift
    # "IsSplitMonomorphism" cannot be derived from the ambient category, a special case of Colift
    # "IsTerminal": no natural underlying morphism from terminal object to base, and even if = IsInitial then the universal morphism into terminal is not well-defined (i.g.)
-   # "IsZeroForMorphisms" does not make sense, since a zero object only becomes an initial object (unless the category is terminal)
-   # "IsZeroForObjects"
+   # "IsZeroForObjects" does not make sense, since the morphism from the zero object in the ambient category only becomes an initial object (unless the category is terminal)
    "Lift",
    "LiftAlongMonomorphism",
    #"MultiplyWithElementOfCommutativeRingForMorphisms", violates the commutativity of the defining triangle of morphisms
    "PostCompose",
    "PreCompose",
-   "SubtractionForMorphisms",
    "UniversalMorphismFromInitialObject",
    "UniversalMorphismFromInitialObjectWithGivenInitialObject",
-   #"ZeroMorphism"
    ] );
 
 ##################################

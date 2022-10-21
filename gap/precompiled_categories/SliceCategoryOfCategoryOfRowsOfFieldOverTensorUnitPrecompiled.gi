@@ -6,33 +6,6 @@
 BindGlobal( "ADD_FUNCTIONS_FOR_SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled", function ( cat )
     
     ##
-    AddAdditionForMorphisms( cat,
-        
-########
-function ( cat_1, a_1, b_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingCell( b_1 );
-    deduped_1_1 := UnderlyingCell( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( deduped_2_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddAdditiveInverseForMorphisms( cat,
-        
-########
-function ( cat_1, a_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingCell( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, - UnderlyingMatrix( deduped_1_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddColiftAlongEpimorphism( cat,
         
 ########
@@ -475,20 +448,6 @@ function ( cat_1, alpha_1, beta_1 )
     deduped_2_1 := UnderlyingCell( beta_1 );
     deduped_1_1 := UnderlyingCell( alpha_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddSubtractionForMorphisms( cat,
-        
-########
-function ( cat_1, a_1, b_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingCell( b_1 );
-    deduped_1_1 := UnderlyingCell( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + (- UnderlyingMatrix( deduped_2_1 )) ) );
 end
 ########
         
