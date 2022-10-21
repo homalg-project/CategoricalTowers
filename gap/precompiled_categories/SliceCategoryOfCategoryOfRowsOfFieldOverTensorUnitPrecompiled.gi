@@ -6,33 +6,6 @@
 BindGlobal( "ADD_FUNCTIONS_FOR_SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled", function ( cat )
     
     ##
-    AddAdditionForMorphisms( cat,
-        
-########
-function ( cat_1, a_1, b_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingCell( b_1 );
-    deduped_1_1 := UnderlyingCell( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( deduped_2_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddAdditiveInverseForMorphisms( cat,
-        
-########
-function ( cat_1, a_1 )
-    local deduped_1_1;
-    deduped_1_1 := UnderlyingCell( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, - UnderlyingMatrix( deduped_1_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddColiftAlongEpimorphism( cat,
         
 ########
@@ -115,27 +88,16 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := AmbientCategory( cat_1 );
-    deduped_9_1 := objects_1[k_1];
-    deduped_8_1 := UnderlyingRing( deduped_10_1 );
-    deduped_7_1 := List( objects_1, function ( logic_new_func_x_2 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := AmbientCategory( cat_1 );
+    deduped_5_1 := objects_1[k_1];
+    deduped_4_1 := UnderlyingRing( deduped_6_1 );
+    deduped_3_1 := List( objects_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( UnderlyingMorphism( logic_new_func_x_2 ) ) );
         end );
-    deduped_6_1 := deduped_7_1[k_1];
-    hoisted_4_1 := deduped_8_1;
-    hoisted_3_1 := deduped_6_1;
-    hoisted_2_1 := deduped_7_1;
-    hoisted_1_1 := HomalgIdentityMatrix( deduped_6_1, deduped_8_1 );
-    deduped_5_1 := UnionOfColumns( deduped_8_1, deduped_6_1, List( [ 1 .. Length( objects_1 ) ], function ( logic_new_func_x_2 )
-                if (logic_new_func_x_2 = k_1) then
-                    return hoisted_1_1;
-                else
-                    return HomalgZeroMatrix( hoisted_3_1, hoisted_2_1[logic_new_func_x_2], hoisted_4_1 );
-                fi;
-                return;
-            end ) ) * HomalgIdentityMatrix( Sum( deduped_7_1 ), deduped_8_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_9_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_10_1, Source( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( deduped_9_1 ) ) ), CreateCapCategoryObjectWithAttributes( deduped_10_1, RankOfObject, NumberColumns( deduped_5_1 ) ), UnderlyingMatrix, deduped_5_1 ) );
+    deduped_2_1 := deduped_3_1[k_1];
+    deduped_1_1 := UnionOfColumns( HomalgZeroMatrix( deduped_2_1, Sum( deduped_3_1{[ 1 .. (k_1 - 1) ]} ), deduped_4_1 ), HomalgIdentityMatrix( deduped_2_1, deduped_4_1 ), HomalgZeroMatrix( deduped_2_1, Sum( deduped_3_1{[ (k_1 + 1) .. Length( objects_1 ) ]} ), deduped_4_1 ) ) * HomalgIdentityMatrix( Sum( deduped_3_1 ), deduped_4_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_5_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_6_1, Source( UnderlyingMorphism( CAP_JIT_INCOMPLETE_LOGIC( deduped_5_1 ) ) ), CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, NumberColumns( deduped_1_1 ) ), UnderlyingMatrix, deduped_1_1 ) );
 end
 ########
         
@@ -475,20 +437,6 @@ function ( cat_1, alpha_1, beta_1 )
     deduped_2_1 := UnderlyingCell( beta_1 );
     deduped_1_1 := UnderlyingCell( alpha_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddSubtractionForMorphisms( cat,
-        
-########
-function ( cat_1, a_1, b_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingCell( b_1 );
-    deduped_1_1 := UnderlyingCell( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + (- UnderlyingMatrix( deduped_2_1 )) ) );
 end
 ########
         
