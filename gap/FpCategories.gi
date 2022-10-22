@@ -477,106 +477,110 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
     
     Assert( 0, IsIdenticalObj( hom_structure_on_basis_paths, HomStructureOnBasisPaths( fpcategory ) ) );
     
-    ##
-    AddHomomorphismStructureOnObjects( fpcategory,
-      function( fpcategory, object_1, object_2 )
-        local nr_source, nr_range, basis_elements;
+    if IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( fpcategory ) ) then
         
-        nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
+        ##
+        AddHomomorphismStructureOnObjects( fpcategory,
+          function( fpcategory, object_1, object_2 )
+            local nr_source, nr_range, basis_elements;
+            
+            nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
+            
+            nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
+            
+            basis_elements := BasisPathsByVertexIndex( fpcategory )[nr_source][nr_range];
+            
+            return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), Length( basis_elements ) );
+            
+        end );
         
-        nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
+        ##
+        AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
+          function( fpcategory, source, alpha, beta, range )
+            local elem_alpha, elem_beta, a, b, ap, bp, basis_paths_by_vertex_index,
+                  basis_ap_a, basis_b_bp, alpha_index, beta_index, hom_structure_on_basis_paths, map;
+            
+            elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
+            
+            elem_beta := UnderlyingQuiverAlgebraElement( beta );
+            
+            a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+            
+            b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
+            
+            ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
+            
+            bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
+            
+            basis_paths_by_vertex_index := BasisPathsByVertexIndex( fpcategory );
+            
+            basis_ap_a := basis_paths_by_vertex_index[ap][a];
+            
+            basis_b_bp := basis_paths_by_vertex_index[b][bp];
+            
+            alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
+            
+            beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
+            
+            ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
+            ## [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
+            ## for basis_path_1: v' -> v and basis_path_2: w -> w'
+            hom_structure_on_basis_paths := HomStructureOnBasisPaths( fpcategory );
+            
+            map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
+                         hom_structure_on_basis_paths[a][b][ap][bp][alpha_index][beta_index][phi_index] );
+            
+            return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), source, map, range );
+            
+        end );
         
-        basis_elements := BasisPathsByVertexIndex( fpcategory )[nr_source][nr_range];
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( fpcategory,
+          function( fpcategory )
+            
+            return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), 1 );
+            
+        end );
         
-        return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), Length( basis_elements ) );
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( fpcategory,
+          function( fpcategory, alpha )
+            local source, range, element, a, b, basis_elements;
+            
+            source := DistinguishedObjectOfHomomorphismStructure( fpcategory );
+            range := HomomorphismStructureOnObjects( fpcategory, Source( alpha ), Range( alpha ) );
+            
+            element := UnderlyingQuiverAlgebraElement( alpha );
+            
+            a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
+            
+            b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
+            
+            basis_elements := BasisPathsByVertexIndex( fpcategory )[a][b];
+            
+            return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ),
+                           source,
+                           [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
+                           range );
+            
+        end );
         
-    end );
-    
-    ##
-    AddHomomorphismStructureOnMorphismsWithGivenObjects( fpcategory,
-      function( fpcategory, source, alpha, beta, range )
-        local elem_alpha, elem_beta, a, b, ap, bp, basis_paths_by_vertex_index,
-              basis_ap_a, basis_b_bp, alpha_index, beta_index, hom_structure_on_basis_paths, map;
+        ##
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( fpcategory,
+          function( fpcategory, a, b, morphism )
+            local basis, element;
+            
+            basis := BasisPathsByVertexIndex( fpcategory )[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
+            
+            element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
+            
+            return MorphismInFpCategory( fpcategory, a, element, b );
+            
+        end );
         
-        elem_alpha := UnderlyingQuiverAlgebraElement( alpha );
+        SetIsEquippedWithHomomorphismStructure( fpcategory, true );
         
-        elem_beta := UnderlyingQuiverAlgebraElement( beta );
-        
-        a := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
-        
-        b := VertexIndex( UnderlyingVertex( Source( beta ) ) );
-        
-        ap := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
-        
-        bp := VertexIndex( UnderlyingVertex( Range( beta ) ) );
-        
-        basis_paths_by_vertex_index := BasisPathsByVertexIndex( fpcategory );
-        
-        basis_ap_a := basis_paths_by_vertex_index[ap][a];
-        
-        basis_b_bp := basis_paths_by_vertex_index[b][bp];
-        
-        alpha_index := SafePosition( basis_ap_a, BasisPathOfPathAlgebraBasisElement( elem_alpha ) );
-        
-        beta_index := SafePosition( basis_b_bp, BasisPathOfPathAlgebraBasisElement( elem_beta ) );
-        
-        ## hom_structure_on_basis_paths[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] =
-        ## [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]
-        ## for basis_path_1: v' -> v and basis_path_2: w -> w'
-        hom_structure_on_basis_paths := HomStructureOnBasisPaths( fpcategory );
-        
-        map := List( [ 1 .. Length( basis_paths_by_vertex_index[a][b] ) ], phi_index ->
-                     hom_structure_on_basis_paths[a][b][ap][bp][alpha_index][beta_index][phi_index] );
-        
-        return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), source, map, range );
-        
-    end );
-    
-    ##
-    AddDistinguishedObjectOfHomomorphismStructure( fpcategory,
-      function( fpcategory )
-        
-        return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), 1 );
-        
-    end );
-    
-    ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( fpcategory,
-      function( fpcategory, alpha )
-        local source, range, element, a, b, basis_elements;
-        
-        source := DistinguishedObjectOfHomomorphismStructure( fpcategory );
-        range := HomomorphismStructureOnObjects( fpcategory, Source( alpha ), Range( alpha ) );
-        
-        element := UnderlyingQuiverAlgebraElement( alpha );
-        
-        a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
-        
-        b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
-        
-        basis_elements := BasisPathsByVertexIndex( fpcategory )[a][b];
-        
-        return MorphismConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ),
-                       source,
-                       [ -1 + SafePosition( basis_elements, BasisPathOfPathAlgebraBasisElement( element ) ) ],
-                       range );
-        
-    end );
-    
-    ##
-    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( fpcategory,
-      function( fpcategory, a, b, morphism )
-        local basis, element;
-        
-        basis := BasisPathsByVertexIndex( fpcategory )[VertexIndex( UnderlyingVertex( a ) )][VertexIndex( UnderlyingVertex( b ) )];
-        
-        element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
-        
-        return MorphismInFpCategory( fpcategory, a, element, b );
-        
-    end );
-    
-    SetIsEquippedWithHomomorphismStructure( fpcategory, true );
+    fi;
     
 end );
 
