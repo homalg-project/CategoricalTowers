@@ -609,53 +609,63 @@ end );
 ####################################
 
 ##
-InstallMethod( CoYonedaEmbedding,
+InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local A, coPSh, Hom, objs, mors, name, coYoneda;
+    local coPSh, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
     
-    A := UnderlyingQuiverAlgebra( B );
-    
-    if not IsFiniteDimensional( A ) then
-        
-        Error( "The underlying quiver algebra should be finite dimensional!\n" );
-        
-    fi;
-    
-    coPSh := CoPreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
+    coPSh := CoPreSheaves( B );
     
     objs := SetOfObjects( B );
     
     mors := SetOfGeneratingMorphisms( B );
     
-    name := "co-Yoneda embedding functor";
-    
-    coYoneda := CapFunctor( name, B, coPSh );
-    
-    AddObjectFunction( coYoneda,
+    coYoneda_on_objs :=
       function ( obj )
         local Yobj;
         
-        Yobj := ObjectConstructor( coPSh,
-                        Pair( List( objs, o -> HomStructure( obj, o ) ),
-                              List( mors, m -> HomStructure( obj, m ) ) ) );
+        Yobj := CreateCoPreSheafByValues( coPSh,
+                        Pair( List( objs, o -> HomomorphismStructureOnObjects( B, obj, o ) ),
+                              List( mors, m -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, obj ), m ) ) ) );
         
+        #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsInjective( Yobj, true );
         
         return Yobj;
         
-    end );
+    end;
     
-    AddMorphismFunction( coYoneda,
+    coYoneda_on_mors :=
       function ( s, mor, r )
         
-        return MorphismConstructor( coPSh,
+        return CreateCoPreSheafMorphismByValues( coPSh,
                        s,
-                       List( objs, o -> HomStructure( mor, o ) ),
+                       List( objs, o -> HomomorphismStructureOnMorphisms( B, mor, IdentityMorphism( B, o ) ) ),
                        r );
         
-    end );
+    end;
+    
+    return Pair( coYoneda_on_objs, coYoneda_on_mors );
+    
+end );
+
+##
+InstallMethod( CoYonedaEmbedding,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local coPSh, coYoneda, coYoneda_data;
+    
+    coPSh := CoPreSheaves( B );
+    
+    coYoneda := CapFunctor( "co-Yoneda embedding functor", B, coPSh );
+    
+    coYoneda_data := CoYonedaEmbeddingData( B );
+    
+    AddObjectFunction( coYoneda, coYoneda_data[1] );
+    
+    AddMorphismFunction( coYoneda,  coYoneda_data[2] );
     
     return coYoneda;
     
