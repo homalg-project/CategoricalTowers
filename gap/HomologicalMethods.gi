@@ -32,7 +32,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusion,
     
     im := List( pos, p -> ListOfValues( vals_F[2] ){ p } );
     
-    im := ListN( im, vals_F[1], { tau, T } -> ImageEmbedding( C, UniversalMorphismFromDirectSum( C, T, tau ) ) );
+    im := ListN( im, vals_F[1], { tau, T } -> ImageEmbedding( C, UniversalMorphismFromDirectSum( C, List( tau, Source ), T, tau ) ) );
     
     val_objs := List( im, Source );
     
@@ -108,10 +108,9 @@ InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjec
     
     C := Range( PSh );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( PSh ) ) ) then
-      
-      TryNextMethod( );
-      
+        TryNextMethod( );
     fi;
     
     k := TensorUnit( Range( PSh ) );
@@ -127,7 +126,7 @@ InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjec
                 function( pre_image, j )
                   local m, n, D, iotas;
                   
-                  n := ObjectDatum( Source( pre_image ) );
+                  n := ObjectDatum( C, Source( pre_image ) );
                   
                   D := ListWithIdenticalEntries( n, k );
                   
@@ -177,7 +176,7 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCover,
     
     D := DirectSum( PSh, objs );
     
-    m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( objs, i, D ) );
+    m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) );
     
     pF := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
     
