@@ -492,7 +492,7 @@ Display( s1 );
 Aop := OppositeAlgebroid( A );
 #! Algebroid( GF(3), FreeCategory(
 #! RightQuiver( "q_op(2)[a:1->1,b:2->1,c:2->2]" ) ) ) / relations
-Yop := YonedaEmbedding( Aop );
+Yop := YonedaEmbeddingInFunctorCategory( Aop );
 #! Yoneda embedding functor
 Display( Yop );
 #! Yoneda embedding functor:
