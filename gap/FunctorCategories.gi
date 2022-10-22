@@ -741,7 +741,7 @@ InstallMethod( Hom,
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B_op )
@@ -791,7 +791,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingData,
 end );
 
 ##
-InstallMethod( YonedaEmbedding,
+InstallMethod( YonedaEmbeddingInFunctorCategory,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B_op )
@@ -809,7 +809,7 @@ InstallMethod( YonedaEmbedding,
     
     Yoneda := CapFunctor( "Yoneda embedding functor", B_op, Hom );
     
-    Yoneda_data := YonedaEmbeddingData( B_op );
+    Yoneda_data := YonedaEmbeddingDataInFunctorCategory( B_op );
     
     AddObjectFunction( Yoneda, Yoneda_data[1] );
     
@@ -826,7 +826,7 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
         
   function ( Hom )
     
-    return YonedaEmbedding( OppositeOfSource( Hom ) );
+    return YonedaEmbeddingInFunctorCategory( OppositeOfSource( Hom ) );
     
 end );
 

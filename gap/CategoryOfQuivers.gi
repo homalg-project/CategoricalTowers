@@ -305,7 +305,7 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
   function ( category_of_quivers )
     local Y, U;
     
-    Y := YonedaEmbeddingInPreSheafCategory( UnderlyingCategory( category_of_quivers ) );
+    Y := YonedaEmbedding( UnderlyingCategory( category_of_quivers ) );
     
     U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_quivers );
     

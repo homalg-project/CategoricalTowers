@@ -1567,7 +1567,7 @@ InstallMethodWithCache( PreSheaves,
             objs := SetOfObjects( B );
             
             ## the Yoneda embedding: B ↪ PSh( B )
-            Yoneda := YonedaEmbeddingDataInPreSheafCategory( B );
+            Yoneda := YonedaEmbeddingData( B );
             
             presheaf_on_objects :=
               function ( objB_index )
@@ -1614,7 +1614,7 @@ InstallMethodWithCache( PreSheaves,
             objs := SetOfObjects( B );
             
             ## the Yoneda embedding: B ↪ PSh( B )
-            Yoneda := YonedaEmbeddingDataInPreSheafCategory( B );
+            Yoneda := YonedaEmbeddingData( B );
             
             presheaf_morphism_on_objects :=
               function ( source, objB_index, range )
@@ -1654,7 +1654,7 @@ InstallMethodWithCache( PreSheaves,
                 T := DistinguishedObjectOfHomomorphismStructure( B );
                 
                 ## the Yoneda embedding: B ↪ PSh( B )
-                Yoneda := YonedaEmbeddingDataInPreSheafCategory( B );
+                Yoneda := YonedaEmbeddingData( B );
                 
                 presheaf_morphism_on_objects :=
                   function ( source, objB_index, range )
@@ -1774,7 +1774,7 @@ InstallMethodWithCache( PreSheaves,
                 T := DistinguishedObjectOfHomomorphismStructure( B );
                 
                 ## the Yoneda embedding: B ↪ PSh( B )
-                Yoneda := YonedaEmbeddingDataInPreSheafCategory( B );
+                Yoneda := YonedaEmbeddingData( B );
                 
                 presheaf_morphism_on_objects :=
                   function ( source, objB_index, range )
@@ -2157,7 +2157,7 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingDataInPreSheafCategory,
+InstallMethodForCompilerForCAP( YonedaEmbeddingData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
@@ -2199,7 +2199,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInPreSheafCategory,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingInPreSheafCategory,
+InstallMethod( YonedaEmbedding,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
@@ -2209,7 +2209,7 @@ InstallMethod( YonedaEmbeddingInPreSheafCategory,
     
     Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
     
-    Yoneda_data := YonedaEmbeddingDataInPreSheafCategory( B );
+    Yoneda_data := YonedaEmbeddingData( B );
     
     AddObjectFunction( Yoneda, Yoneda_data[1] );
     
@@ -2226,7 +2226,7 @@ InstallMethod( YonedaEmbeddingOfSourceCategory,
         
   function ( PSh )
     
-    return YonedaEmbeddingInPreSheafCategory( Source( PSh ) );
+    return YonedaEmbedding( Source( PSh ) );
     
 end );
 
