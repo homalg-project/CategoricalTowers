@@ -173,13 +173,38 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
 DeclareAttribute( "YonedaEmbeddingDataInPreSheafCategory",
         IsCapCategory );
 
-##
+#! @Arguments B
+#! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingInPreSheafCategory",
         IsCapCategory );
 
-##
+#! @Arguments PSh
+#! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
         IsPreSheafCategory );
+
+#! @Description
+#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
+#!  The output is the list of indecomposable projective objects in <A>PSh</A> up to isomorphism.
+#! @Arguments PSh
+#! @Returns a list of objects
+DeclareAttribute( "IndecomposableProjectiveObjects", IsPreSheafCategory );
+
+#! @Description
+#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
+#!  The output is the list of indecomposable injective objects in <A>PSh</A> up to isomorphism.
+#! @Arguments PSh
+#! @Returns a list of objects
+DeclareAttribute( "IndecomposableInjectiveObjects", IsPreSheafCategory );
+
+#! @Description
+#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
+#!  The output is the list of simple objects in <A>PSh</A>.
+#! @Arguments PSh
+#! @Returns a list of objects
+DeclareAttribute( "SimpleObjects", IsPreSheafCategory );
+
+#! @InsertChunk ProjectiveResolution
 
 #! @Description
 #!  The input is a category <A>B</A> with finitely many objects equipped with
@@ -337,32 +362,3 @@ DeclareOperation( "CreatePreSheafMorphism",
 #! @Group CreatePreSheafMorphism
 DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
-
-####################################
-#
-#! @Section Projective and Injective Resolutions
-#
-####################################
-
-#! @Description
-#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
-#!  The output is the list of indecomposable projective objects in <A>PSh</A> up to isomorphism.
-#! @Arguments PSh
-#! @Returns a list of objects
-DeclareAttribute( "IndecomposableProjectiveObjects", IsPreSheafCategory );
-
-#! @Description
-#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
-#!  The output is the list of indecomposable injective objects in <A>PSh</A> up to isomorphism.
-#! @Arguments PSh
-#! @Returns a list of objects
-DeclareAttribute( "IndecomposableInjectiveObjects", IsPreSheafCategory );
-
-#! @Description
-#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
-#!  The output is the list of simple objects in <A>PSh</A>.
-#! @Arguments PSh
-#! @Returns a list of objects
-DeclareAttribute( "SimpleObjects", IsPreSheafCategory );
-
-#! @InsertChunk ProjectiveResolution

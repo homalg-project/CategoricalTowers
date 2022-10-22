@@ -174,11 +174,13 @@ end );
 DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInCoPreSheafCategory );
 
-##
+#! @Arguments B
+#! @Returns a &CAP; functor
 DeclareAttribute( "CoYonedaEmbedding",
         IsCapCategory );
 
-##
+#! @Arguments coPSh
+#! @Returns a &CAP; functor
 DeclareAttribute( "CoYonedaEmbeddingOfSourceCategory",
         IsCoPreSheafCategory );
 

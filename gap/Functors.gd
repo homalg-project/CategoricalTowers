@@ -3,3 +3,7 @@
 #
 # Declarations
 #
+
+# our info class:
+DeclareInfoClass( "InfoFunctorCategories" );
+SetInfoLevel( InfoFunctorCategories, 1 );

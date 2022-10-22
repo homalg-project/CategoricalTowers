@@ -2,7 +2,7 @@
 
 LoadPackage( "FunctorCategories" );
 
-#! We compute the nerve of the full subcategory of the simplicial category $\Delta$ on the objects $[0], [1], [2]$.
+#! We compute part of the nerve of the full subcategory of the simplicial category $\Delta$ on the objects $[0], [1], [2]$.
 
 #! @Example
 Delta2 := SimplicialCategoryTruncatedInDegree( 2 );

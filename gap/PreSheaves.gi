@@ -2435,7 +2435,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
         [ IsPreSheafCategory, IsMorphismInPreSheafCategory ],
         
   function ( PSh, iota ) ## ι: Q ↪ P
-    local Q, P, B, B_0, H, D, Sieves, emb, Omega, OmegaH, Bop, Bop_0, s, Y,
+    local Q, P, B, B_0, H, D, Sieves, emb, Omega, OmegaH, s, Y,
           truth_values, into_OmegaH, paths_to_truth;
     
     Q := Source( iota );
@@ -2460,12 +2460,9 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     
     OmegaH := SubobjectClassifier( H );
     
-    Bop := OppositeFpCategory( B );
-    Bop_0 := SetOfObjects( Bop );
-    
     ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
     ## Hom(-, c) → B_0:
-    s := YonedaFibration( Bop );
+    s := YonedaFibration( B );
     
     ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
     ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
@@ -2488,16 +2485,13 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
     ## the sieve of all f ∈ Hom(-, c), such that x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f):
     paths_to_truth :=
       function ( c, x )
-        local c_in_Bop, hom_c, s_c, pr, emb_c, sieve;
-        
-        ## c in Bop
-        c_in_Bop := OppositePath( UnderlyingVertex( c ) ) / Bop;
+        local hom_c, s_c, pr, emb_c, sieve;
         
         ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c)
-        hom_c := Y( c_in_Bop );
+        hom_c := Y( c );
         
         ## Hom(-, c) → B_0
-        s_c := s( c_in_Bop );
+        s_c := s( c );
         
         pr := List( hom_c, f ->
                     LiftAlongMonomorphism(

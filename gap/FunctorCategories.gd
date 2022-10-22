@@ -4,11 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Categories of functors
-
-# our info class:
-DeclareInfoClass( "InfoFunctorCategories" );
-SetInfoLevel( InfoFunctorCategories, 1 );
+#! @Chapter Category of functors of a finitely presented (linear) category
 
 ####################################
 #
@@ -71,7 +67,7 @@ end );
 
 #! @Description
 #!  The source category of the functor category <A>cat</A>.
-#! @Arguments cat
+#! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "Source",
         IsFunctorCategory );
@@ -85,7 +81,7 @@ end );
 
 #! @Description
 #!  The range category of the functor category <A>cat</A>.
-#! @Arguments cat
+#! @Arguments Hom
 #! @Returns a &CAP; category
 DeclareAttribute( "Range",
         IsFunctorCategory );
@@ -182,11 +178,13 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
 DeclareAttribute( "YonedaEmbeddingData",
         IsCapCategory );
 
-##
+#! @Arguments B
+#! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbedding",
         IsCapCategory );
 
-##
+#! @Arguments Hom
+#! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfOppositeOfSourceCategory",
         IsFunctorCategory );
 
@@ -256,11 +254,6 @@ DeclareOperation( "ApplyMorphismInFunctorCategoryToObject",
 #
 ####################################
 
-#! @Arguments B
-#! @Group FunctorCategory
-DeclareAttribute( "FunctorCategory",
-        IsCapCategory );
-
 #! @Description
 #!  Construct the category <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)</C>=
 #!  <C>Hom(</C> <A>B</A>, <A>C</A> <C>)</C> of functors from the small category
@@ -276,6 +269,11 @@ DeclareOperationWithCache( "FunctorCategory",
 #! @Group FunctorCategory
 DeclareOperationWithCache( "FunctorCategory",
         [ IsCapCategory, IsHomalgRing ] );
+
+#! @Arguments B
+#! @Group FunctorCategory
+DeclareOperationWithCache( "FunctorCategory",
+        [ IsCapCategory ] );
 
 #! @Arguments B, C
 #! @Group FunctorCategory
