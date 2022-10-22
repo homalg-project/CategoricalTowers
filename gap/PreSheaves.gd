@@ -275,7 +275,6 @@ DeclareOperation( "ApplyMorphismInPreSheafCategoryToObject",
 DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory, IsCapCategory ] );
 
-
 CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
 
 #! @Arguments B, k
