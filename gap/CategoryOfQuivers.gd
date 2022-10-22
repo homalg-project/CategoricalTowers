@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter The category of finite quivers
+#! @Chapter The elementary topos of finite quivers
 
 ####################################
 #
@@ -120,7 +120,6 @@ DeclareOperation( "DotVertexLabelledDigraph",
 #!  Construct the category of quivers.
 #! @Returns a &CAP; category
 #! @Arguments B, C
-#! @Group FunctorCategory
 DeclareOperationWithCache( "CategoryOfQuiversEnrichedOver",
         [ IsCapCategory ] );
 

@@ -44,11 +44,12 @@ DeclareCategory( "IsMorphismInAbelianClosure",
 #
 ####################################
 
-#! @Arguments finite_cocompletion
+#! @Arguments abelian_closure
 DeclareAttribute( "UnderlyingCategory",
         IsAbelianClosure );
 
-#! @Arguments finite_cocompletion
+#! @Arguments abelian_closure
+#! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsAbelianClosure );
 
@@ -62,7 +63,7 @@ DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
 #!  Construct an Abelian closure category.
 #! @Returns a &CAP; category
 #! @Arguments B
-#! @Group FunctorCategory
+#! @Group AbelianClosure
 DeclareOperation( "AbelianClosure",
         [ IsAlgebroid ] );
 

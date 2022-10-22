@@ -1,6 +1,14 @@
-@Chapter Categories of functors
+@Chapter Category of functors of a finitely presented (linear) category
 
-@Section Introduction and examples
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section &GAP; Categories
+
+@Section Examples
 
 @Subsection Representations of the cyclic groups of order 3 as a category of functors
 
@@ -14,23 +22,23 @@
 
 @InsertChunk C3C3
 
-@Subsection Proof of the snake lemma in a free Abelian category
-
-@InsertChunk SnakeInFreeAbelian
-
-@Subsection The subobject classifier
-
-@InsertChunk SubobjectClassifier
-
 @Chapter Category of presheaves of a finitely presented (linear) category
 
 @Section Constructors
 
 @Section Attributes
 
-@Section &GAP; Categories
+@Section Operations
 
 @Section &GAP; Categories
+
+@Section Global variables
+
+@Section Examples
+
+@Subsection The subobject classifier
+
+@InsertChunk SubobjectClassifier
 
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
@@ -40,7 +48,7 @@
 
 @Section &GAP; Categories
 
-@Chapter The category of finite quivers
+@Chapter The elementary topos of finite quivers
 
 @Section Constructors
 
@@ -50,11 +58,14 @@
 
 @Section Global variables
 
+@Section &GAP; Categories
+
 @Section Example
+
+@Subsection Topos operations
 
 @InsertChunk FinQuivers
 
-@Section &GAP; Categories
 
 @Chapter Category of copresheaves of a finitely presented (linear) category
 
@@ -62,13 +73,21 @@
 
 @Section Attributes
 
+@Section Operations
+
+@Section &GAP; Categories
+
 @Chapter Finite completion of a finitely presented (linear) category
 
 @Section Constructors
 
 @Section Attributes
 
+@Section &GAP; Categories
+
 @Section Examples
+
+@Subsection The terminal category as a finite completion of the initial category
 
 @InsertChunk TerminalCategory
 
@@ -81,3 +100,9 @@
 @Section Attributes
 
 @Section &GAP; Categories
+
+@Section Examples
+
+@Subsection Proof of the snake lemma in a free Abelian category
+
+@InsertChunk SnakeInFreeAbelian

@@ -4,8 +4,7 @@
 # Declarations
 #
 
-
-#! @Chapter Categories of functors
+#! @Chapter Category of functors of a finitely presented (linear) category
 
 ####################################
 #

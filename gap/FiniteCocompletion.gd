@@ -49,6 +49,7 @@ DeclareAttribute( "UnderlyingCategory",
         IsFiniteCocompletion );
 
 #! @Arguments finite_cocompletion
+#! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsFiniteCocompletion );
 
@@ -62,9 +63,11 @@ DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
 #!  Construct a finite cocompletion category.
 #! @Returns a &CAP; category
 #! @Arguments B
-#! @Group FunctorCategory
+#! @Group FiniteCocompletion
 DeclareOperation( "FiniteCocompletion",
         [ IsCapCategory ] );
 
+#! @Arguments B, H
+#! @Group FiniteCocompletion
 DeclareOperationWithCache( "FiniteCocompletion",
         [ IsCapCategory, IsCapCategory ] );

@@ -186,34 +186,39 @@ Perform( subsA, Display );
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets ) given by the above data
+#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+#! given by the above data
 #! Image of <(V)>:
 #! { 0 } ⱶ[ 0 ]→ { 0, 1 }
 #! 
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets ) given by the above data
+#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+#! given by the above data
 #! Image of <(V)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }
 #! 
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets ) given by the above data
+#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+#! given by the above data
 #! Image of <(V)>:
 #! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
 #! 
 #! Image of <(A)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets ) given by the above data
+#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+#! given by the above data
 #! Image of <(V)>:
 #! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
 #! 
 #! Image of <(A)>:
 #! { 0 } ⱶ[ 0 ]→ { 0 }
 #! 
-#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets ) given by the above data
+#! A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+#! given by the above data
 #! @EndExample
 #! @EndChunk
