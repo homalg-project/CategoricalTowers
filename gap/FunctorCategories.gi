@@ -830,6 +830,104 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
     
 end );
 
+##
+InstallMethodForCompilerForCAP( YonedaProjection,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local Hom, Yepis, N1, N2, pt;
+    
+    Hom := FunctorCategory( B );
+    
+    Yepis := YonedaNaturalEpimorphisms( B );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    N1 := AsObjectInFunctorCategoryByValues( Hom, Yepis[2][1], Yepis[2][2] );
+    
+    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
+    ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+    N2 := AsObjectInFunctorCategoryByValues( Hom, Yepis[3][1], Yepis[3][2] );
+    
+    ## The Yoneda projection is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+    pt := AsMorphismInFunctorCategoryByValues( Hom,
+                  N2,   ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  Yepis[4],
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsEpimorphism( pt, true );
+    
+    return pt;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( YonedaComposition,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local Hom, Yepis, H, N1, N2, mu;
+    
+    Hom := FunctorCategory( B );
+    
+    Yepis := YonedaNaturalEpimorphisms( B );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    N1 := AsObjectInFunctorCategoryByValues( Hom, Yepis[2][1], Yepis[2][2] );
+    
+    ## The 2-Yoneda functor B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ), where
+    ## Hom(-, -) × Hom(-, c) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(a, b) × Hom(b, c),
+    ## Hom(-, -) × Hom(-, ψ) := ⊔_{a ∈ B} ⊔_{b ∈ B} Hom(id_a, id_b) × Hom(id_b, ψ):
+    N2 := AsObjectInFunctorCategoryByValues( Hom, Yepis[3][1], Yepis[3][2] );
+    
+    ## The Yoneda composition is a natrual epimorphism from the 2-Yoneda functor to the Yoneda functor
+    ## Hom(-, -) × Hom(-, c) ↠ Hom(-, c):
+    mu := AsMorphismInFunctorCategoryByValues( Hom,
+                  N2, ## The 2-Yoneda functor: B → H, c ↦ Hom(-, -) × Hom(-, c) and ψ ↦ Hom(-, -) × Hom(-, ψ)
+                  Yepis[5],
+                  N1 ); ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsEpimorphism( mu, true );
+    
+    return mu;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( YonedaFibration,
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local Hom, Yepis, H, N0, N1;
+    
+    Hom := FunctorCategory( B );
+    
+    Yepis := YonedaNaturalEpimorphisms( B );
+    
+    ## The constant functor of 0-cells B → H, c ↦ B_0, ψ ↦ id_{B_0}
+    N0 := AsObjectInFunctorCategoryByValues( Hom, Yepis[1][1], Yepis[1][2] );
+    
+    ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ), where
+    ## Hom(-, c) := ⊔_{a ∈ B} Hom(a, c),
+    ## Hom(-, ψ) := ⊔_{a ∈ B} Hom(id_a, ψ):
+    N1 := AsObjectInFunctorCategoryByValues( Hom, Yepis[2][1], Yepis[2][2] );
+    
+    ## The source fibration is a natrual morphism from the Yoneda functor to the constant functor of 0-cells
+    ## Hom(-, c) → B_0:
+    return AsMorphismInFunctorCategoryByValues( Hom,
+                   N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
+                   Yepis[6],
+                   N0 ); ## The constant functor of 0-cells
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
