@@ -174,6 +174,10 @@ end );
 DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInCoPreSheafCategory );
 
+##
+DeclareAttribute( "CoYonedaEmbeddingData",
+        IsCapCategory );
+
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "CoYonedaEmbedding",
@@ -214,11 +218,6 @@ DeclareOperation( "ApplyMorphismInCoPreSheafCategoryToObject",
 #
 ####################################
 
-#! @Arguments B
-#! @Group CoPreSheaves
-DeclareAttribute( "CoPreSheaves",
-        IsCapCategory );
-
 #! @Description
 #!  Construct the category <C>CoPreSheaves(</C> <A>B</A>, <A>C</A> <C>)</C>=
 #!  <C>FunctorCategory(</C> <A>B</A>, <A>C</A> <C>)^op</C> of copresheaves
@@ -230,10 +229,19 @@ DeclareAttribute( "CoPreSheaves",
 DeclareOperationWithCache( "CoPreSheaves",
         [ IsCapCategory, IsCapCategory ] );
 
+CapJitAddTypeSignature( "CoPreSheaves", [ IsCapCategory, IsCapCategory ], IsCoPreSheafCategory );
+
 #! @Arguments B, k
 #! @Group CoPreSheaves
 DeclareOperationWithCache( "CoPreSheaves",
         [ IsCapCategory, IsHomalgRing ] );
+
+#! @Arguments B
+#! @Group CoPreSheaves
+DeclareOperationWithCache( "CoPreSheaves",
+        [ IsCapCategory ] );
+
+CapJitAddTypeSignature( "CoPreSheaves", [ IsCapCategory ], IsCoPreSheafCategory );
 
 DeclareOperation( "CreateCoPreSheafByValues", [ IsCoPreSheafCategory, IsList, IsList ] );
 
