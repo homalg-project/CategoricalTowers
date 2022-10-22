@@ -111,3 +111,7 @@
 @InsertChunk SnakeInFreeAbelian
 
 @Chapter Functors between the various categories
+
+@Subsection The reflexive completion of the one object category $C_2$
+
+@InsertChunk C2

@@ -37,3 +37,32 @@ DeclareAttribute( "NakayamaRightAdjointData",
 #! @Returns a &CAP; functor
 DeclareAttribute( "NakayamaRightAdjoint",
         IsAlgebroid );
+
+##
+DeclareAttribute( "IsbellLeftAdjointData",
+        IsCapCategory );
+
+#! @Description
+#!  Returns the Isbell left adjoint functor from <C>PreSheaves</C>( <A>B</A> ) $\to$ <C>CoPreSheaves</C>( <A>B</A> ).
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "IsbellLeftAdjoint",
+        IsCapCategory );
+
+##
+DeclareAttribute( "IsbellRightAdjointData",
+        IsCapCategory );
+
+#! @Description
+#!  Returns the Isbell right adjoint functor from <C>CoPreSheaves</C>( <A>B</A> ) $\to$ <C>PreSheaves</C>( <A>B</A> ).
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "IsbellRightAdjoint",
+        IsCapCategory );
+
+#! @Description
+#!  Returns the Isbell adjunction monad on <C>PreSheaves</C>( <A>B</A> ).
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "IsbellAdjunctionMonad",
+        IsCapCategory );
