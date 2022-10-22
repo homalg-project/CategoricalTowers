@@ -195,7 +195,7 @@ DeclareAttribute( "YonedaEmbeddingOfOppositeOfSourceCategory",
 #!  of functors from <A>B</A> into $H :=$<C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #!  Its source is the functor $B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c),
 #!  \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)$.
-#!  Its targe is the constant functor of $0$-cells
+#!  Its target is the constant functor of $0$-cells
 #!  $B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}$.
 #! @Arguments B
 #! @Returns a morphism in a &CAP; category
