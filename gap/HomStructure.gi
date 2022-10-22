@@ -67,32 +67,32 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, S, R )
-    local B, B_op, C, objs, nr_o, S_o_vals, R_o_vals, mors, nr_m, S_m_vals, R_m_vals,
+    local B, C, objs, nr_o, S_o_vals, R_o_vals, mors, nr_m, S_m_vals, R_m_vals,
           source_summands, range_summands, H, map, i, j;
     
     B := Source( PSh );
     
-    B_op := OppositeAlgebroid( B );
-    
     C := Range( PSh );
     
-    objs := SetOfObjects( B_op );
+    objs := SetOfObjects( B );
     nr_o := Length( objs );
+    
     S_o_vals := ValuesOfPreSheaf( S )[1];
     R_o_vals := ValuesOfPreSheaf( R )[1];
     
-    mors := SetOfGeneratingMorphisms( B_op );
+    mors := SetOfGeneratingMorphisms( B );
     nr_m := Length( mors );
+    
     S_m_vals := ValuesOfPreSheaf( S )[2];
     R_m_vals := ValuesOfPreSheaf( R )[2];
     
-    source_summands := List( [ 1 .. nr_o ],
-                             i -> HomomorphismStructureOnObjects( C,
+    source_summands := List( [ 1 .. nr_o ], i ->
+                             HomomorphismStructureOnObjects( C,
                                      S_o_vals[i],
                                      R_o_vals[i] ) );
     
-    range_summands := List( [ 1 .. nr_m ],
-                            i -> HomomorphismStructureOnObjects( C,
+    range_summands := List( [ 1 .. nr_m ], i ->
+                            HomomorphismStructureOnObjects( C,
                                     Source( S_m_vals[i] ),
                                     Range( R_m_vals[i] ) ) );
     
@@ -113,20 +113,18 @@ InstallMethodForCompilerForCAP( AuxiliaryMorphism,
                                    source_summands[i],
                                    IdentityMorphism( C, S_o_vals[i] ),
                                    R_m_vals[j],
-                                   range_summands[j] )
-                           );
+                                   range_summands[j] ) );
             
-        elif objs[i] = Source( mors[j] ) and not objs[i] = Range( mors[j] ) then
+        elif not objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
             
             return AdditiveInverseForMorphisms( H,
                            HomomorphismStructureOnMorphismsWithGivenObjects( C,
                                    source_summands[i],
                                    IdentityMorphism( C, S_o_vals[i] ),
                                    R_m_vals[j],
-                                   range_summands[j] )
-                           );
+                                   range_summands[j] ) );
             
-        elif not objs[i] = Source( mors[j] ) and objs[i] = Range( mors[j] ) then
+        elif objs[i] = Source( mors[j] ) and not objs[i] = Range( mors[j] ) then
             
             return HomomorphismStructureOnMorphismsWithGivenObjects( C,
                            source_summands[i],
