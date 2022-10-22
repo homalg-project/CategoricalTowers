@@ -23,4 +23,45 @@ Y := YonedaEmbedding( QS3 );
 #! Yoneda embedding functor
 Y1 := Y( QS3.1 );
 #! <(1)->6; (a)->6x6, (b)->6x6>
+Display( Y1 );
+#! Image of <(1)>:
+#! A row module over Q of rank 6
+#! 
+#! Image of (1)-[{ 1*(a) }]->(1):
+#! Source:
+#! A row module over Q of rank 6
+#! 
+#! Matrix:
+#! [ [  0,  1,  0,  0,  0,  0 ],
+#!   [  1,  0,  0,  0,  0,  0 ],
+#!   [  0,  0,  0,  1,  0,  0 ],
+#!   [  0,  0,  1,  0,  0,  0 ],
+#!   [  0,  0,  0,  0,  0,  1 ],
+#!   [  0,  0,  0,  0,  1,  0 ] ]
+#! 
+#! Range:
+#! A row module over Q of rank 6
+#! 
+#! A morphism in Rows( Q )
+#! 
+#! Image of (1)-[{ 1*(b) }]->(1):
+#! Source:
+#! A row module over Q of rank 6
+#! 
+#! Matrix:
+#! [ [  0,  0,  1,  0,  0,  0 ],
+#!   [  0,  0,  0,  0,  1,  0 ],
+#!   [  0,  0,  0,  0,  0,  1 ],
+#!   [  0,  1,  0,  0,  0,  0 ],
+#!   [  0,  0,  0,  1,  0,  0 ],
+#!   [  1,  0,  0,  0,  0,  0 ] ]
+#! 
+#! Range:
+#! A row module over Q of rank 6
+#! 
+#! A morphism in Rows( Q )
+#! 
+#! An object in PreSheaves( Algebra( Q, FreeCategory(
+#! RightQuiver( "q(1)[a:1->1,b:1->1]" ) ) ) / relations, Rows( Q ) )
+#! given by the above data
 #! @EndExample

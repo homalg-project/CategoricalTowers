@@ -170,12 +170,12 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInPreSheafCategory );
 
 ##
-DeclareAttribute( "YonedaEmbeddingDataInPreSheafCategory",
+DeclareAttribute( "YonedaEmbeddingData",
         IsCapCategory );
 
 #! @Arguments B
 #! @Returns a &CAP; functor
-DeclareAttribute( "YonedaEmbeddingInPreSheafCategory",
+DeclareAttribute( "YonedaEmbedding",
         IsCapCategory );
 
 #! @Arguments PSh
