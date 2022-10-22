@@ -2161,7 +2161,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInPreSheafCategory,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local PSh, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
+    local PSh, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
     
     PSh := PreSheaves( B );
     
