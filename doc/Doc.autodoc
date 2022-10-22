@@ -66,6 +66,9 @@
 
 @InsertChunk FinQuivers
 
+@Subsection Double-pushout rewriting
+
+@InsertChunk DPO_Quivers
 
 @Chapter Category of copresheaves of a finitely presented (linear) category
 
