@@ -57,6 +57,50 @@ AddDerivationToCAP( PostInverse,
 end : Description := "PostInverse using IdentityMorphism of Source and Colift" );
 
 ##
+AddDerivationToCAP( ProjectiveCoverObject,
+                    [ [ EpimorphismFromProjectiveCoverObject, 1 ] ],
+                    
+  function( cat, obj )
+    
+    return Source( EpimorphismFromProjectiveCoverObject( cat, obj ) );
+    
+end : Description := "ProjectiveCoverObject as the source of EpimorphismFromProjectiveCoverObject" );
+
+##
+AddDerivationToCAP( InjectiveEnvelopeObject,
+                    [ [ MonomorphismIntoInjectiveEnvelopeObject, 1 ] ],
+                    
+  function( cat, obj )
+    
+    return Range( MonomorphismIntoInjectiveEnvelopeObject( cat, obj ) );
+    
+end : Description := "InjectiveEnvelopeObject as the range of MonomorphismIntoInjectiveEnvelopeObject" );
+
+##
+AddDerivationToCAP( IsProjective,
+        [ [ EpimorphismFromProjectiveCoverObject, 1 ],
+          [ IsIsomorphism, 1 ],
+          ],
+        
+  function( cat, alpha )
+    
+    return IsIsomorphism( cat, EpimorphismFromProjectiveCoverObject( cat, alpha ) );
+    
+end );
+
+##
+AddDerivationToCAP( IsInjective,
+        [ [ MonomorphismIntoInjectiveEnvelopeObject, 1 ],
+          [ IsIsomorphism, 1 ],
+          ],
+        
+  function( cat, alpha )
+    
+    return IsIsomorphism( cat, MonomorphismIntoInjectiveEnvelopeObject( cat, alpha ) );
+    
+end );
+
+##
 AddDerivationToCAP( BiasedRelativeWeakFiberProduct,
         
   function( cat, alpha, beta, gamma )
@@ -500,3 +544,53 @@ AddFinalDerivation( Colimit,
   end
 ]
 : Description := "Colimit using limit in the opposite category" );
+
+##
+AddFinalDerivation( SomeProjectiveObject,
+        [ [ ProjectiveCoverObject, 1 ],
+          [ EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject, 1 ],
+          ],
+        [ SomeProjectiveObject,
+          EpimorphismFromSomeProjectiveObject,
+          EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject,
+          ],
+        
+  function( cat, F )
+    
+    return ProjectiveCoverObject( cat, F );
+    
+end,
+[
+  EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject,
+  function( cat, F, P )
+    
+    return EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject( cat, F, P );
+    
+end
+]
+: Description := "SomeProjectiveObject from ProjectiveCoverObject" );
+
+##
+AddFinalDerivation( SomeInjectiveObject,
+        [ [ InjectiveEnvelopeObject, 1 ],
+          [ MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject, 1 ],
+          ],
+        [ SomeInjectiveObject,
+          MonomorphismIntoSomeInjectiveObject,
+          MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject,
+          ],
+        
+  function( cat, F )
+    
+    return InjectiveEnvelopeObject( cat, F );
+    
+end,
+[
+  MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject,
+  function( cat, F, P )
+    
+    return MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject( cat, F, P );
+    
+end
+]
+: Description := "SomeInjectiveObject from InjectiveEnvelopeObject" );
