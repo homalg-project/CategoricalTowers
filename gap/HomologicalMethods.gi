@@ -5,12 +5,6 @@
 #
 
 ##
-InstallMethod( RadicalInclusion,
-          [ IsObjectInPreSheafCategory ],
-
-  F -> RadicalInclusion( CapCategory( F ), F ) );
-
-##
 InstallOtherMethodForCompilerForCAP( RadicalInclusion,
           [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
           
@@ -56,6 +50,12 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusion,
 end );
 
 ##
+InstallMethod( RadicalInclusion,
+          [ IsObjectInPreSheafCategory ],
+
+  F -> RadicalInclusion( CapCategory( F ), F ) );
+
+##
 ## See Lemma 2.83 at http://dx.doi.org/10.25819/ubsi/10144
 ##
 InstallMethod( CoverElementByProjectiveObject,
@@ -87,12 +87,6 @@ InstallMethod( CoverElementByProjectiveObject,
     return CreatePreSheafMorphismByValues( PSh, P, vals_eta, F );
     
 end );
-
-##
-InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
-          [ IsObjectInPreSheafCategory ],
-
-  F -> MorphismsFromDirectSumDecompositionOfProjectiveCover( CapCategory( F ), F ) );
 
 ##
 InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjectiveCover,
@@ -144,17 +138,17 @@ InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjec
 end );
 
 ##
+InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
+          [ IsObjectInPreSheafCategory ],
+
+  F -> MorphismsFromDirectSumDecompositionOfProjectiveCover( CapCategory( F ), F ) );
+
+##
 InstallMethod( DirectSumDecompositionOfProjectiveObject,
         [ IsObjectInPreSheafCategory ], # and IsProjective
         
   MorphismsFromDirectSumDecompositionOfProjectiveCover );
 
-
-##
-InstallMethod( ProjectiveCover,
-        [ IsObjectInPreSheafCategory ],
-
-  F -> ProjectiveCover( CapCategory( F ), F ) );
 
 ##
 InstallOtherMethodForCompilerForCAP( ProjectiveCover,
@@ -189,6 +183,12 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCover,
     return pF;
     
 end );
+
+##
+InstallMethod( ProjectiveCover,
+        [ IsObjectInPreSheafCategory ],
+
+  F -> ProjectiveCover( CapCategory( F ), F ) );
 
 ##
 InstallMethod( DualOfObjectInPreSheafCategory,
@@ -247,12 +247,6 @@ InstallMethod( DirectSumDecompositionOfInjectiveObject,
   MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
 
 ##
-InstallMethod( InjectiveEnvelope,
-        [ IsObjectInPreSheafCategory ],
-
-  F -> InjectiveEnvelope( CapCategory( F ), F ) );
-
-##
 InstallOtherMethodForCompilerForCAP( InjectiveEnvelope,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
@@ -275,3 +269,8 @@ InstallOtherMethodForCompilerForCAP( InjectiveEnvelope,
     
 end );
 
+##
+InstallMethod( InjectiveEnvelope,
+        [ IsObjectInPreSheafCategory ],
+
+  F -> InjectiveEnvelope( CapCategory( F ), F ) );
