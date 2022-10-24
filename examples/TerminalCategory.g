@@ -8,7 +8,7 @@ T := FiniteCompletion( InitialCategory( ) );
 IsTerminalCategory( T );
 #! true
 InfoOfInstalledOperationsOfCategory( T );
-#! 489 primitive operations were used to derive 520 operations for this category
+#! 495 primitive operations were used to derive 526 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing

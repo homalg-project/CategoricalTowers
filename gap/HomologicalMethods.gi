@@ -5,12 +5,6 @@
 #
 
 ##
-InstallMethod( RadicalInclusion,
-          [ IsObjectInPreSheafCategory ],
-
-  F -> RadicalInclusion( CapCategory( F ), F ) );
-
-##
 InstallOtherMethodForCompilerForCAP( RadicalInclusion,
           [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
           
@@ -56,6 +50,12 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusion,
 end );
 
 ##
+InstallMethod( RadicalInclusion,
+          [ IsObjectInPreSheafCategory ],
+
+  F -> RadicalInclusion( CapCategory( F ), F ) );
+
+##
 ## See Lemma 2.83 at http://dx.doi.org/10.25819/ubsi/10144
 ##
 InstallMethod( CoverElementByProjectiveObject,
@@ -87,12 +87,6 @@ InstallMethod( CoverElementByProjectiveObject,
     return CreatePreSheafMorphismByValues( PSh, P, vals_eta, F );
     
 end );
-
-##
-InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
-          [ IsObjectInPreSheafCategory ],
-
-  F -> MorphismsFromDirectSumDecompositionOfProjectiveCover( CapCategory( F ), F ) );
 
 ##
 InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjectiveCover,
@@ -144,6 +138,12 @@ InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjec
 end );
 
 ##
+InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
+          [ IsObjectInPreSheafCategory ],
+
+  F -> MorphismsFromDirectSumDecompositionOfProjectiveCover( CapCategory( F ), F ) );
+
+##
 InstallMethod( DirectSumDecompositionOfProjectiveObject,
         [ IsObjectInPreSheafCategory ], # and IsProjective
         
@@ -154,124 +154,22 @@ InstallMethod( DirectSumDecompositionOfProjectiveObject,
 InstallMethod( ProjectiveCover,
         [ IsObjectInPreSheafCategory ],
 
-  F -> ProjectiveCover( CapCategory( F ), F ) );
+  EpimorphismFromSomeProjectiveObject );
 
 ##
-InstallOtherMethodForCompilerForCAP( ProjectiveCover,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function ( PSh, F )
-    local C, dec, objs, D, m, pF;
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasProjectiveCover( F ) then
-        return ProjectiveCover( F );
-    fi;
-    
-    C := Range( PSh );
-    
-    dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( PSh, F );
-    
-    objs := List( dec, Source );
-    
-    D := DirectSum( PSh, objs );
-    
-    m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) );
-    
-    pF := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetProjectiveCover( F, pF );
-    
-    return pF;
-    
-end );
+#InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
+#        [ IsObjectInPreSheafCategory ],
+#        
+#  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
 
 ##
-InstallMethod( DualOfObjectInPreSheafCategory,
-          [ IsObjectInPreSheafCategory ],
-          
-  function ( F )
-    local A, PSh, morphism_vals, dual_F;
-    
-    A := Source( CapCategory( F ) );
-    
-    PSh := PreSheaves( OppositeAlgebroid( A ) );
-    
-    morphism_vals := List( ValuesOfPreSheaf( F )[2], DualOnMorphisms );
-    
-    dual_F := CreatePreSheafByValues( PSh, ValuesOfPreSheaf( F )[1], morphism_vals );
-    
-    SetDualOfObjectInPreSheafCategory( dual_F, F );
-    
-    return dual_F;
-    
-end );
-
-##
-InstallMethod( DualOfMorphismInPreSheafCategory,
-        [ IsMorphismInPreSheafCategory ],
-        
-  function ( eta )
-    local F, G, PSh, object_vals, dual_eta;
-    
-    F := DualOfObjectInPreSheafCategory( Source( eta ) );
-    
-    G := DualOfObjectInPreSheafCategory( Range( eta ) );
-    
-    PSh := CapCategory( F );
-    
-    object_vals := List( ValuesOnAllObjects( eta ), DualOnMorphisms );
-    
-    dual_eta := CreatePreSheafMorphismByValues( PSh, G, object_vals, F );
-    
-    SetDualOfMorphismInPreSheafCategory( dual_eta, eta );
-    
-    return dual_eta;
-    
-end );
-
-##
-InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
-        [ IsObjectInPreSheafCategory ],
-        
-  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
-
-##
-InstallMethod( DirectSumDecompositionOfInjectiveObject,
-        [ IsObjectInPreSheafCategory ], # and is injective
-        
-  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
+#InstallMethod( DirectSumDecompositionOfInjectiveObject,
+#        [ IsObjectInPreSheafCategory ], # and is injective
+#        
+#  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
 
 ##
 InstallMethod( InjectiveEnvelope,
         [ IsObjectInPreSheafCategory ],
 
-  F -> InjectiveEnvelope( CapCategory( F ), F ) );
-
-##
-InstallOtherMethodForCompilerForCAP( InjectiveEnvelope,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function( PSh, F )
-    local iF;
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasInjectiveEnvelope( F ) then
-        return InjectiveEnvelope( F );
-    fi;
-    
-    PSh := PreSheaves( OppositeAlgebroid( Source( PSh ) ) );
-    
-    iF := DualOfMorphismInPreSheafCategory( ProjectiveCover(  PSh, DualOfObjectInPreSheafCategory( F ) ) );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetInjectiveEnvelope( F, iF );
-    
-    return iF;
-    
-end );
-
+  MonomorphismIntoInjectiveEnvelopeObject );
