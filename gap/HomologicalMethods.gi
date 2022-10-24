@@ -235,16 +235,16 @@ InstallMethod( DualOfMorphismInPreSheafCategory,
 end );
 
 ##
-InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
-        [ IsObjectInPreSheafCategory ],
-        
-  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
+#InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
+#        [ IsObjectInPreSheafCategory ],
+#        
+#  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
 
 ##
-InstallMethod( DirectSumDecompositionOfInjectiveObject,
-        [ IsObjectInPreSheafCategory ], # and is injective
-        
-  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
+#InstallMethod( DirectSumDecompositionOfInjectiveObject,
+#        [ IsObjectInPreSheafCategory ], # and is injective
+#        
+#  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
 
 ##
 InstallOtherMethodForCompilerForCAP( InjectiveEnvelope,
