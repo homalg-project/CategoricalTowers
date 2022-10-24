@@ -1952,17 +1952,68 @@ InstallMethodWithCache( PreSheaves,
       SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
       SetIsAbelianCategoryWithEnoughInjectives( PSh, true );
       
-      AddIsProjective( PSh,
-        { PSh, F } -> IsIsomorphism( PSh, ProjectiveCover( PSh, F ) ) );
+      AddEpimorphismFromProjectiveCoverObject( PSh,
+        function( PSh, F )
+          local C, dec, objs, D, m, epi;
+          
+          #% CAP_JIT_DROP_NEXT_STATEMENT
+          if HasEpimorphismFromProjectiveCoverObject( F ) then
+              return EpimorphismFromProjectiveCoverObject( F );
+          fi;
+          
+          C := Range( PSh );
+          
+          dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( PSh, F );
+          
+          objs := List( dec, Source );
+          
+          D := DirectSum( PSh, objs );
+          
+          m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) );
+          
+          epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
+          
+          #% CAP_JIT_DROP_NEXT_STATEMENT
+          SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
+          
+          #% CAP_JIT_DROP_NEXT_STATEMENT
+          SetEpimorphismFromProjectiveCoverObject( F, epi );
+          
+          return epi;
+          
+      end );
       
-      AddIsInjective( PSh,
-        { PSh, F } -> IsIsomorphism( PSh, InjectiveEnvelope( PSh, F ) ) );
-      
-      AddEpimorphismFromSomeProjectiveObject( PSh,
-        { PSh, F } -> ProjectiveCover( PSh, F ) );
-      
-      AddMonomorphismIntoSomeInjectiveObject( PSh,
-        { PSh, F } -> InjectiveEnvelope( PSh, F ) );
+      AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
+        function( PSh, F )
+          local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
+          
+          #% CAP_JIT_DROP_NEXT_STATEMENT
+          if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
+              return MonomorphismIntoInjectiveEnvelopeObject( F );
+          fi;
+          
+          B := Source( PSh );
+          
+          coPSh := CoPreSheaves( B );
+          
+          NL := NakayamaLeftAdjointData( B )[1];
+          
+          NR := NakayamaRightAdjointData( B );
+          
+          NR_on_objs := NR[1];
+          
+          NR_on_mors := NR[2];
+          
+          mono_coPSh := MonomorphismIntoInjectiveEnvelopeObject( coPSh, NL( F ) );
+          
+          mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Range( mono_coPSh ) ) );
+          
+          #% CAP_JIT_DROP_NEXT_STATEMENT
+          SetMonomorphismIntoInjectiveEnvelopeObject( F, mono );
+          
+          return mono;
+          
+      end );
       
       #
       #  rad(P) >--> P -->> top(P)
@@ -2028,13 +2079,32 @@ InstallMethodWithCache( PreSheaves,
       #
       AddInjectiveColift( PSh,
         function ( PSh, mono, eta )
-          local epi;
+          local B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
+                mono_coPSh, eta_coPSh, colift_coPSh;
           
-          eta := DualOfMorphismInPreSheafCategory( eta );
+          B := Source( PSh );
           
-          epi := DualOfMorphismInPreSheafCategory( mono );
+          coPSh := CoPreSheaves( B );
           
-          return DualOfMorphismInPreSheafCategory( ProjectiveLift( CapCategory( eta ), eta, epi ) );
+          NL := NakayamaLeftAdjointData( B );
+          
+          NL_on_objs := NL[1];
+          
+          NL_on_mors := NL[2];
+          
+          NR := NakayamaRightAdjointData( B );
+          
+          NR_on_objs := NR[1];
+          
+          NR_on_mors := NR[2];
+          
+          mono_coPSh := NL_on_mors( NL_on_objs( Source( mono ) ), mono, NL_on_objs( Range( mono ) ) );
+          
+          eta_coPSh := NL_on_mors( NL_on_objs( Source( eta ) ), eta, NL_on_objs( Range( eta ) ) );
+          
+          colift_coPSh := InjectiveColift( coPSh, mono_coPSh, eta_coPSh );
+          
+          return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Range( colift_coPSh ) ) );
           
       end );
     

@@ -151,44 +151,10 @@ InstallMethod( DirectSumDecompositionOfProjectiveObject,
 
 
 ##
-InstallOtherMethodForCompilerForCAP( ProjectiveCover,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function ( PSh, F )
-    local C, dec, objs, D, m, pF;
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasProjectiveCover( F ) then
-        return ProjectiveCover( F );
-    fi;
-    
-    C := Range( PSh );
-    
-    dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( PSh, F );
-    
-    objs := List( dec, Source );
-    
-    D := DirectSum( PSh, objs );
-    
-    m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) );
-    
-    pF := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetProjectiveCover( F, pF );
-    
-    return pF;
-    
-end );
-
-##
 InstallMethod( ProjectiveCover,
         [ IsObjectInPreSheafCategory ],
 
-  F -> ProjectiveCover( CapCategory( F ), F ) );
+  EpimorphismFromSomeProjectiveObject );
 
 ##
 #InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
@@ -203,30 +169,7 @@ InstallMethod( ProjectiveCover,
 #  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
 
 ##
-InstallOtherMethodForCompilerForCAP( InjectiveEnvelope,
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
-        
-  function( PSh, F )
-    local iF;
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasInjectiveEnvelope( F ) then
-        return InjectiveEnvelope( F );
-    fi;
-    
-    PSh := PreSheaves( OppositeAlgebroid( Source( PSh ) ) );
-    
-    iF := DualOfMorphismInPreSheafCategory( ProjectiveCover(  PSh, DualOfObjectInPreSheafCategory( F ) ) );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetInjectiveEnvelope( F, iF );
-    
-    return iF;
-    
-end );
-
-##
 InstallMethod( InjectiveEnvelope,
         [ IsObjectInPreSheafCategory ],
 
-  F -> InjectiveEnvelope( CapCategory( F ), F ) );
+  MonomorphismIntoInjectiveEnvelopeObject );
