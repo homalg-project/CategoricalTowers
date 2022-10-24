@@ -10,13 +10,13 @@ ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversAsCCCPre
 
 ReadPackage( "FunctorCategories", "gap/PreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gi");
-ReadPackage( "FunctorCategories", "gap/Functors.gi");
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
 ReadPackage( "FunctorCategories", "gap/CoPreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gi");
+ReadPackage( "FunctorCategories", "gap/Functors.gi");
 ReadPackage( "FunctorCategories", "gap/DirectSumDecomposition.gi");
 ReadPackage( "FunctorCategories", "gap/HomologicalMethods.gi");
 
