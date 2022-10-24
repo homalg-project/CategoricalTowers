@@ -90,7 +90,6 @@ DeclareOperation( "CoimageObjectFunctorialWithGivenCoimageObjects",
 #!  The output is the preinverse $\iota: B \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(B,A)$
 #! @Arguments alpha
-#! @Returns a morphism
 DeclareOperation( "PostInverse",
         [ IsCapCategoryMorphism ] );
 
@@ -99,7 +98,6 @@ DeclareOperation( "PostInverse",
 #!  The output is the postinverse $\iota: B \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(B,A)$
 #! @Arguments alpha
-#! @Returns a morphism
 DeclareOperation( "PreInverse",
         [ IsCapCategoryMorphism ] );
 
