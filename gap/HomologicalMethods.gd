@@ -14,10 +14,6 @@ DeclareAttribute( "DirectSumDecompositionOfProjectiveObject", IsObjectInPreSheaf
 
 DeclareAttribute( "ProjectiveCover", IsObjectInPreSheafCategory );
 
-DeclareAttribute( "DualOfObjectInPreSheafCategory", IsObjectInPreSheafCategory );
-
-DeclareAttribute( "DualOfMorphismInPreSheafCategory", IsMorphismInPreSheafCategory );
-
 #DeclareAttribute( "MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope", IsObjectInPreSheafCategory );
 
 #DeclareAttribute( "DirectSumDecompositionOfInjectiveObject", IsObjectInPreSheafCategory );

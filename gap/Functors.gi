@@ -137,3 +137,47 @@ InstallMethod( NakayamaRightAdjoint,
     return Nakayama_functor;
     
 end );
+
+##
+InstallMethod( DualOfObjectInPreSheafCategory,
+          [ IsObjectInPreSheafCategory ],
+          
+  function ( F )
+    local A, PSh, morphism_vals, dual_F;
+    
+    A := Source( CapCategory( F ) );
+    
+    PSh := PreSheaves( OppositeAlgebroid( A ) );
+    
+    morphism_vals := List( ValuesOfPreSheaf( F )[2], DualOnMorphisms );
+    
+    dual_F := CreatePreSheafByValues( PSh, ValuesOfPreSheaf( F )[1], morphism_vals );
+    
+    SetDualOfObjectInPreSheafCategory( dual_F, F );
+    
+    return dual_F;
+    
+end );
+
+##
+InstallMethod( DualOfMorphismInPreSheafCategory,
+        [ IsMorphismInPreSheafCategory ],
+        
+  function ( eta )
+    local F, G, PSh, object_vals, dual_eta;
+    
+    F := DualOfObjectInPreSheafCategory( Source( eta ) );
+    
+    G := DualOfObjectInPreSheafCategory( Range( eta ) );
+    
+    PSh := CapCategory( F );
+    
+    object_vals := List( ValuesOnAllObjects( eta ), DualOnMorphisms );
+    
+    dual_eta := CreatePreSheafMorphismByValues( PSh, G, object_vals, F );
+    
+    SetDualOfMorphismInPreSheafCategory( dual_eta, eta );
+    
+    return dual_eta;
+    
+end );
