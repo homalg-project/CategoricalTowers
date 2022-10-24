@@ -2582,13 +2582,19 @@ InstallMethod( IndecomposableInjectiveObjects,
         [ IsPreSheafCategory ],
         
   function ( PSh )
-    local Aop;
+    local B, Y, NR;
     
-    Aop := OppositeAlgebroid( Source( PSh ) );
+    B := Source( PSh );
     
-    PSh := PreSheaves( Aop );
+    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
+        Error( "the underlying quiver algebra must be admissible\n" );
+    fi;
     
-    return List( IndecomposableProjectiveObjects( PSh ), DualOfObjectInPreSheafCategory );
+    Y := CoYonedaEmbeddingData( B )[1];
+    
+    NR := NakayamaRightAdjointData( B )[1];
+    
+    return List( SetOfObjects( B ), b -> NR( Y( b ) ) );
     
 end );
 
