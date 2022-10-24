@@ -2559,27 +2559,19 @@ InstallMethod( SievesOfPathsToTruth,
 end );
 
 ##
-InstallMethod( IndecomposableProjectiveObjects,
+InstallMethodForCompilerForCAP( IndecomposableProjectiveObjects,
         [ IsPreSheafCategory ],
         
   function ( PSh )
-    local A, Gamma, Y;
+    local B;
     
-    A := Source( PSh );
+    B := Source( PSh );
     
-    Gamma := UnderlyingQuiverAlgebra( A );
-    
-    if not IsAdmissibleQuiverAlgebra( Gamma ) then
-      Error( "The underlying quiver algebra must be admissible\n" );
+    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
+        Error( "The underlying quiver algebra must be admissible\n" );
     fi;
     
-    Y := YonedaEmbeddingOfSourceCategory( PSh );
-    
-    if not IsIdenticalObj( RangeOfFunctor( Y ), PSh ) then
-      Error( "The range category must be identical to the range category of the Hom-Structure of the source category\n" );
-    fi;
-    
-    return List( SetOfObjects( A ), o -> ApplyFunctor( Y, o ) );
+    return List( SetOfObjects( B ), YonedaEmbeddingData( B )[1] );
     
 end );
 
