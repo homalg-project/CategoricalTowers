@@ -1993,7 +1993,7 @@ InstallMethodWithCache( PreSheaves,
           vals_tP := ValuesOnAllObjects( tP );
           
           gens := List( vals_tP, m -> PreInverse( C, m ) );
-          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( C, [ p, q, PreInverse( r ) ] ) );
+          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( C, [ p, q, PreInverse( C, r ) ] ) );
           
           vals_P := ValuesOfPreSheaf( P );
           vals_G := ValuesOfPreSheaf( G );
