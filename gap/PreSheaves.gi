@@ -2563,15 +2563,17 @@ InstallMethodForCompilerForCAP( IndecomposableProjectiveObjects,
         [ IsPreSheafCategory ],
         
   function ( PSh )
-    local B;
+    local B, Y;
     
     B := Source( PSh );
     
     if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-        Error( "The underlying quiver algebra must be admissible\n" );
+        Error( "the underlying quiver algebra must be admissible\n" );
     fi;
     
-    return List( SetOfObjects( B ), YonedaEmbeddingData( B )[1] );
+    Y := YonedaEmbeddingData( B )[1];
+    
+    return List( SetOfObjects( B ), Y );
     
 end );
 
