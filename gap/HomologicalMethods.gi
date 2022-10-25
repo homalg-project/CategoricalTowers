@@ -143,20 +143,3 @@ InstallMethod( ProjectiveCoverObjectDataOfPreSheaf,
 
   F -> ProjectiveCoverObjectDataOfPreSheaf( CapCategory( F ), F ) );
 
-##
-#InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
-#        [ IsObjectInPreSheafCategory ],
-#        
-#  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
-
-##
-#InstallMethod( DirectSumDecompositionOfInjectiveObject,
-#        [ IsObjectInPreSheafCategory ], # and is injective
-#        
-#  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
-
-##
-InstallMethod( InjectiveEnvelope,
-        [ IsObjectInPreSheafCategory ],
-
-  MonomorphismIntoInjectiveEnvelopeObject );
