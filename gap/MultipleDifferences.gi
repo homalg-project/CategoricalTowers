@@ -5,6 +5,24 @@
 #
 
 ##
+InstallOtherMethodForCompilerForCAP( MultipleDifference,
+        [ IsMeetSemilatticeOfMultipleDifferences, IsList ],
+        
+  function( D, L )
+    local A;
+    
+    A := CreateCapCategoryObjectWithAttributes( D,
+                 ListOfPreObjectsInMeetSemilatticeOfDifferences, L,
+                 IsLocallyClosed, true );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 4, IsWellDefined( A ) );
+    
+    return A;
+    
+end );
+
+##
 InstallMethod( MeetSemilatticeOfMultipleDifferences,
         "for a CAP category",
         [ IsCapCategory and IsThinCategory ],
@@ -166,24 +184,6 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     Finalize( D );
     
     return D;
-    
-end );
-
-##
-InstallOtherMethodForCompilerForCAP( MultipleDifference,
-        [ IsMeetSemilatticeOfMultipleDifferences, IsList ],
-        
-  function( D, L )
-    local A;
-    
-    A := CreateCapCategoryObjectWithAttributes( D,
-                 ListOfPreObjectsInMeetSemilatticeOfDifferences, L,
-                 IsLocallyClosed, true );
-    
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 4, IsWellDefined( A ) );
-    
-    return A;
     
 end );
 
