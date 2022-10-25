@@ -9,18 +9,18 @@ InstallOtherMethodForCompilerForCAP( SingleDifference,
         "for a meet semi-lattice of single differences and a pair",
         [ IsMeetSemilatticeOfSingleDifferences, IsList ],
 
-  function( D, A_B )
+  function( D, minuend_subtrahend_pair )
     local C;
     
     C := CreateCapCategoryObjectWithAttributes( D,
-                 PreMinuendAndSubtrahendInUnderlyingLattice, A_B,
+                 PreMinuendAndSubtrahendInUnderlyingLattice, minuend_subtrahend_pair,
                  IsLocallyClosed, true );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 4, IsWellDefinedForObjects( C ) );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasIsInitial( A_B[1] ) and IsInitial( A_B[1] ) then
+    if HasIsInitial( minuend_subtrahend_pair[1] ) and IsInitial( minuend_subtrahend_pair[1] ) then
         SetIsInitial( C, true );
     fi;
     
@@ -65,9 +65,9 @@ InstallMethod( MeetSemilatticeOfDifferences,
     
     ##
     AddObjectConstructor( D,
-      function( D, A_B )
+      function( D, minuend_subtrahend_pair )
         
-        return SingleDifference( D, A_B );
+        return SingleDifference( D, minuend_subtrahend_pair );
         
     end );
     
