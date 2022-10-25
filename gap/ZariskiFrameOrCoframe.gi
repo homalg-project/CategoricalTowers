@@ -714,7 +714,7 @@ InstallMethod( Pullback,
   function( phi, A )
     local B;
     
-    B := List( PairInUnderlyingLattice( A ), a -> Pullback( phi, a ) );
+    B := List( MinuendAndSubtrahendInUnderlyingLattice( A ), a -> Pullback( phi, a ) );
     
     B := B[1] - B[2];
     
@@ -1058,13 +1058,13 @@ InstallMethod( CanonicalObject,
   LocallyClosedPart );
 
 ##
-InstallMethod( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra,
+InstallMethod( StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     
-    A := NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A );
+    A := NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A );
     
     List( A, StandardizeObject );
     
