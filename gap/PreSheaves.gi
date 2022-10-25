@@ -1950,6 +1950,7 @@ InstallMethodWithCache( PreSheaves,
     if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
+      
       SetIsAbelianCategoryWithEnoughInjectives( PSh, true );
       
       AddEpimorphismFromProjectiveCoverObject( PSh,
@@ -1963,7 +1964,7 @@ InstallMethodWithCache( PreSheaves,
           
           C := Range( PSh );
           
-          dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( PSh, F );
+          dec := ProjectiveCoverObjectDataOfPreSheaf( PSh, F );
           
           objs := List( dec, Source );
           
@@ -1974,7 +1975,7 @@ InstallMethodWithCache( PreSheaves,
           epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
-          SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
+          SetProjectiveCoverObjectDataOfPreSheaf( D, List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) ) );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           SetEpimorphismFromProjectiveCoverObject( F, epi );
@@ -2040,7 +2041,7 @@ InstallMethodWithCache( PreSheaves,
           P := Source( eta );
           G := Source( epi );
           
-          tP := CokernelProjection( PSh, RadicalInclusion( PSh, P ) );
+          tP := CokernelProjection( PSh, RadicalInclusionOfPreSheaf( PSh, P ) );
           vals_tP := ValuesOnAllObjects( tP );
           
           gens := List( vals_tP, m -> PreInverse( C, m ) );
