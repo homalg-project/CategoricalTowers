@@ -4,6 +4,7 @@
 # Implementations
 #
 
+##
 InstallOtherMethodForCompilerForCAP( SingleDifference,
         "for a meet semi-lattice of single differences and a pair",
         [ IsMeetSemilatticeOfSingleDifferences, IsList ],
@@ -257,17 +258,12 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
 end );
 
 ##
-InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
+InstallOtherMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
-  function( A )
-    local S, T, L, H;
-    
-    A := MinuendAndSubtrahendInUnderlyingLattice( A );
-    
-    S := A[2];
-    T := A[1];
+  function( S, T )
+    local L, H;
     
     L := CapCategory( S );
     
@@ -290,6 +286,23 @@ InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgeb
     fi;
     
     TryNextMethod( );
+    
+end );
+
+##
+InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
+        "for an object in a meet-semilattice of formal single differences",
+        [ IsObjectInMeetSemilatticeOfSingleDifferences ],
+        
+  function( A )
+    local S, T;
+    
+    A := MinuendAndSubtrahendInUnderlyingLattice( A );
+    
+    S := A[2];
+    T := A[1];
+    
+    return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( S, T );
     
 end );
 
