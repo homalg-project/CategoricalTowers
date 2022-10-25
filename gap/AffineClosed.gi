@@ -242,14 +242,14 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     
     ##
     AddIsHomSetInhabited( ZariskiCoframe,
-      { cat, S, T } -> IsHomSetInhabitedForCoframes( S, T ) );
+      { cat, S, T } -> IsHomSetInhabitedForCoframes( cat, S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiCoframe,
-          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForCoframes( A, B ) );
+          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForCoframes( cat, A, B ) );
         
     fi;
     
@@ -261,7 +261,7 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
             return false;
         fi;
         
-        return IsHomSetInhabited( A, B ) and IsEqualForObjectsIfIsHomSetInhabited( A, B );
+        return IsHomSetInhabited( cat, A, B ) and IsEqualForObjectsIfIsHomSetInhabited( cat, A, B );
         
     end );
     

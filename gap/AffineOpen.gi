@@ -242,14 +242,14 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     ##
     AddIsHomSetInhabited( ZariskiFrame,
-      { cat, S, T } -> IsHomSetInhabitedForFrames( S, T ) );
+      { cat, S, T } -> IsHomSetInhabitedForFrames( cat, S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiFrame,
-          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForFrames( A, B ) );
+          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForFrames( cat, A, B ) );
         
     fi;
     
@@ -261,7 +261,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
             return false;
         fi;
         
-        return IsHomSetInhabited( A, B ) and IsEqualForObjectsIfIsHomSetInhabited( A, B );
+        return IsHomSetInhabited( cat, A, B ) and IsEqualForObjectsIfIsHomSetInhabited( cat, A, B );
         
     end );
     

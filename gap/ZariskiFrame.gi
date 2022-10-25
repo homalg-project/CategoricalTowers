@@ -6,7 +6,7 @@
 
 ##
 InstallGlobalFunction( IsHomSetInhabitedForFrames,
-  function( S, T )
+  function( cat, S, T )
     
     if HasDimensionOfComplement( S ) and HasDimensionOfComplement( T ) and
        DimensionOfComplement( S ) < DimensionOfComplement( T ) then
@@ -23,7 +23,7 @@ end );
 
 ##
 InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForFrames,
-  function( S, T )
+  function( cat, S, T )
     
     S := BestUnderlyingColumn( S );
     T := BestUnderlyingColumn( T );
