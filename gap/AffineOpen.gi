@@ -5,6 +5,17 @@
 #
 
 ##
+InstallMethod( BaseOfFibration,
+        "for a Zariski frame of an affine variety",
+        [ IsZariskiFrameOfAnAffineVariety ],
+        
+  function( ZF )
+    
+    return TerminalObject( ZF );
+    
+end );
+
+##
 InstallMethod( OpenSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
@@ -242,14 +253,14 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     ##
     AddIsHomSetInhabited( ZariskiFrame,
-      { cat, S, T } -> IsHomSetInhabitedForFrames( S, T ) );
+      { cat, S, T } -> IsHomSetInhabitedForFrames( cat, S, T ) );
     
     ##
     if IsBound( homalgTable( R )!.CoefficientsOfUnreducedNumeratorOfWeightedHilbertPoincareSeries ) then
         
         ##
         AddIsEqualForObjectsIfIsHomSetInhabited( ZariskiFrame,
-          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForFrames( A, B ) );
+          { cat, A, B } -> IsEqualForObjectsIfIsHomSetInhabitedForFrames( cat, A, B ) );
         
     fi;
     
@@ -261,7 +272,7 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
             return false;
         fi;
         
-        return IsHomSetInhabited( A, B ) and IsEqualForObjectsIfIsHomSetInhabited( A, B );
+        return IsHomSetInhabited( cat, A, B ) and IsEqualForObjectsIfIsHomSetInhabited( cat, A, B );
         
     end );
     
@@ -418,8 +429,6 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     if not IsIdenticalObj( R, B ) then
         SetBaseOfFibration( ZariskiFrame, TerminalObject( ZariskiFrameOfAffineSpectrum( B ) ) );
-    else
-        SetBaseOfFibration( ZariskiFrame, TerminalObject( ZariskiFrame ) );
     fi;
     
     ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfAffineSpectrum( R );

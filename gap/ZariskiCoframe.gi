@@ -6,7 +6,7 @@
 
 ##
 InstallGlobalFunction( IsHomSetInhabitedForCoframes,
-  function( S, T )
+  function( cat, S, T )
     local irrS, irrT;
     
     if Dimension( S ) > Dimension( T ) then
@@ -16,7 +16,7 @@ InstallGlobalFunction( IsHomSetInhabitedForCoframes,
     if HasIrreducibleComponents( S ) then
         irrS := IrreducibleComponents( S );
         if Length( irrS ) > 1 then
-            return ForAll( irrS, C -> IsHomSetInhabited( C, T ) );
+            return ForAll( irrS, C -> IsHomSetInhabited( cat, C, T ) );
         fi;
     fi;
     
@@ -24,7 +24,7 @@ InstallGlobalFunction( IsHomSetInhabitedForCoframes,
        HasIsIrreducibleObjectInZariskiCoframe( S ) and IsIrreducibleObjectInZariskiCoframe( S ) then
         irrT := IrreducibleComponents( T );
         if Length( irrT ) > 1 then
-            return ForAny( irrT, C -> IsHomSetInhabited( S, C ) );
+            return ForAny( irrT, C -> IsHomSetInhabited( cat, S, C ) );
         fi;
     fi;
     
@@ -38,7 +38,7 @@ end );
 
 ##
 InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframes,
-  function( S, T )
+  function( cat, S, T )
     
     if Dimension( S ) < Dimension( T ) then
         return false;
@@ -47,6 +47,7 @@ InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframes,
     S := BestUnderlyingColumn( S );
     T := BestUnderlyingColumn( T );
     
+    ## needs S, T to be radical
     return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
     
 end );
