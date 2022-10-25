@@ -74,7 +74,7 @@ InstallMethod( Closure,
     H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) then
-        return ComplementAsClosedSubset( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
+        return ComplementAsClosedSubset( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
     fi;
     
     TryNextMethod( );
