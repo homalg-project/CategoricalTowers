@@ -14,12 +14,12 @@ InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
     
     C := UnderlyingCategory( D );
     
-    Apair := PairInUnderlyingLattice( AsSingleDifference( A ) );
+    Apair := MinuendAndSubtrahendInUnderlyingLattice( AsSingleDifference( A ) );
     
     ap := Apair[2];
     a := Apair[1];
     
-    Bpairs := List( List( B, AsSingleDifference ), PairInUnderlyingLattice );
+    Bpairs := List( List( B, AsSingleDifference ), MinuendAndSubtrahendInUnderlyingLattice );
     
     bp := List( Bpairs, a -> a[2] );
     b := List( Bpairs, a -> a[1] );
@@ -225,7 +225,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
     ars1 := ars[1];
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences(
-                 CapCategory( PairInUnderlyingLattice( List( ars1 )[1] )[1] ) );
+                 CapCategory( MinuendAndSubtrahendInUnderlyingLattice( List( ars1 )[1] )[1] ) );
     
     ars := Filtered( ars, D -> not IsInitial( D ) );
     

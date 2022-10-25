@@ -86,9 +86,9 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         
         L := ListOfSingleDifferences( A );
         
-        AI := PairInUnderlyingLattice( L[1] )[1];
+        AI := MinuendAndSubtrahendInUnderlyingLattice( L[1] )[1];
         
-        AJ := Coproduct( UnderlyingCategory( cat ), List( L, d -> PairInUnderlyingLattice( d )[2] ) );
+        AJ := Coproduct( UnderlyingCategory( cat ), List( L, d -> MinuendAndSubtrahendInUnderlyingLattice( d )[2] ) );
         
         S := UnderlyingCategoryOfSingleDifferences( cat );
         
@@ -106,7 +106,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         l := List( L, ListOfSingleDifferences );
         
         ## start unifying the minuend
-        A := DirectProduct( H, List( l, ls -> PairInUnderlyingLattice( ls[1] )[1] ) );
+        A := DirectProduct( H, List( l, ls -> MinuendAndSubtrahendInUnderlyingLattice( ls[1] )[1] ) );
         
         ## the meet semi-lattice of single differences
         SD := UnderlyingCategoryOfSingleDifferences( cat );
@@ -116,7 +116,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
           function( s )
             local S;
             
-            S := SingleDifference( SD, Pair( A, PairInUnderlyingLattice( s )[2] ) ); # A - s.J
+            S := SingleDifference( SD, Pair( A, MinuendAndSubtrahendInUnderlyingLattice( s )[2] ) ); # A - s.J
             
             #% CAP_JIT_DROP_NEXT_STATEMENT
             if HasNormalizedDistinguishedSubtrahend( s ) then
@@ -141,7 +141,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
         B1 := ListOfSingleDifferences( B )[1];
         
         ## the minuend B.I of B
-        BI := PairInUnderlyingLattice( B1 )[1];
+        BI := MinuendAndSubtrahendInUnderlyingLattice( B1 )[1];
         
         ## the meet semi-lattice of single differences
         S := UnderlyingCategoryOfSingleDifferences( cat );
@@ -156,7 +156,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
                        IsInitial( cat,
                                DirectProduct( cat,  # A * s.J
                                        [ A,
-                                         MultipleDifference( cat, [ SingleDifference( S, Pair( PairInUnderlyingLattice( s )[2], InitialObject( H ) ) ) ] ) # s.J - ∅
+                                         MultipleDifference( cat, [ SingleDifference( S, Pair( MinuendAndSubtrahendInUnderlyingLattice( s )[2], InitialObject( H ) ) ) ] ) # s.J - ∅
                                          ] ) ) );
         
     end );
@@ -272,7 +272,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
             
             D := T - d.J;
             
-            NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( D );
+            NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( D );
             
             if HasNormalizedDistinguishedSubtrahend( d ) then
                 SetNormalizedDistinguishedSubtrahend( D, NormalizedDistinguishedSubtrahend( d ) );
@@ -303,7 +303,7 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
     
     A := ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A );
     
-    List( A, StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
+    List( A, StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra );
     
     return A;
     
@@ -347,7 +347,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
       function( obj )
         local U, T, S;
         
-        U := List( obj, PairInUnderlyingLattice );
+        U := List( obj, MinuendAndSubtrahendInUnderlyingLattice );
         
         T := DirectProduct( List( U, a -> a[1] ) );
         S := Coproduct( List( U, a -> a[2] ) );

@@ -42,13 +42,13 @@ DeclareAttribute( "PreDistinguishedSubtrahend",
 DeclareAttribute( "NormalizedDistinguishedSubtrahend",
         IsObjectInMeetSemilatticeOfSingleDifferences );
 
-DeclareAttribute( "PrePairInUnderlyingLattice",
+DeclareAttribute( "PreMinuendAndSubtrahendInUnderlyingLattice",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
-DeclareAttribute( "NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra",
+DeclareAttribute( "NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
-DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
+DeclareAttribute( "StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra",
         IsObjectInMeetSemilatticeOfSingleDifferences, "mutable" );
 
 #! @Section Operations
@@ -57,10 +57,10 @@ DeclareAttribute( "StandardPairInUnderlyingHeytingOrCoHeytingAlgebra",
 #!  A pair in the underlying lattice representing the formal single difference <A>A</A>.
 #! @Arguments A
 #! @Returns a pair of objects in a thin category
-DeclareOperation( "PairInUnderlyingLattice",
+DeclareOperation( "MinuendAndSubtrahendInUnderlyingLattice",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ] );
 
-CapJitAddTypeSignature( "PairInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
+CapJitAddTypeSignature( "MinuendAndSubtrahendInUnderlyingLattice", [ IsObjectInMeetSemilatticeOfSingleDifferences ], function ( input_types )
     
     Assert( 0, IsMeetSemilatticeOfSingleDifferences( input_types[1].category ) );
     
