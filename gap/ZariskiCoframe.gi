@@ -47,6 +47,7 @@ InstallGlobalFunction( IsEqualForObjectsIfIsHomSetInhabitedForCoframes,
     S := BestUnderlyingColumn( S );
     T := BestUnderlyingColumn( T );
     
+    ## needs S, T to be radical
     return HilbertPoincareSeries( S ) = HilbertPoincareSeries( T );
     
 end );
