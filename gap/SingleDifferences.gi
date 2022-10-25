@@ -262,7 +262,7 @@ InstallOtherMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeyting
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],
         
-  function( S, T )
+  function( T, S )
     local L, H;
     
     L := CapCategory( S );
@@ -302,7 +302,7 @@ InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgeb
     S := A[2];
     T := A[1];
     
-    return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( S, T );
+    return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( T, S );
     
 end );
 
