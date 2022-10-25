@@ -34,7 +34,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframe,
         
   function( Z, I )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+    return CreateCapCategoryObjectWithAttributes( Z,
                    PreUnderlyingMatrix, I );
     
 end );
@@ -46,7 +46,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByRadicalColumn,
         
   function( Z, I )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+    return CreateCapCategoryObjectWithAttributes( Z,
                    UnderlyingRadicalColumn, I );
     
 end );
@@ -58,7 +58,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByStandardColumn,
         
   function( Z, I )
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+    return CreateCapCategoryObjectWithAttributes( Z,
                    UnderlyingStandardColumn, I );
     
 end );
@@ -83,7 +83,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfColumns,
     
     L := DuplicateFreeList( L );
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+    return CreateCapCategoryObjectWithAttributes( Z,
                    UnderlyingListOfColumns, L );
     
 end );
@@ -108,7 +108,7 @@ InstallMethodForCompilerForCAP( ObjectInZariskiFrameOrCoframeByListOfRadicalColu
     
     L := DuplicateFreeList( L );
     
-    return ObjectifyObjectForCAPWithAttributes( rec( ), Z,
+    return CreateCapCategoryObjectWithAttributes( Z,
                    UnderlyingListOfRadicalColumns, L );
     
 end );
