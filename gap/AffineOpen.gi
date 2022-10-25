@@ -5,6 +5,17 @@
 #
 
 ##
+InstallMethod( BaseOfFibration,
+        "for a Zariski frame of an affine variety",
+        [ IsZariskiFrameOfAnAffineVariety ],
+        
+  function( ZF )
+    
+    return TerminalObject( ZF );
+    
+end );
+
+##
 InstallMethod( OpenSubsetOfSpec,
         "for a homalg matrix",
         [ IsHomalgMatrix ],
@@ -418,8 +429,6 @@ InstallMethod( ZariskiFrameOfAffineSpectrum,
     
     if not IsIdenticalObj( R, B ) then
         SetBaseOfFibration( ZariskiFrame, TerminalObject( ZariskiFrameOfAffineSpectrum( B ) ) );
-    else
-        SetBaseOfFibration( ZariskiFrame, TerminalObject( ZariskiFrame ) );
     fi;
     
     ZariskiFrame!.ZariskiCoframe := ZariskiCoframeOfAffineSpectrum( R );

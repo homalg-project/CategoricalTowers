@@ -51,6 +51,10 @@ DeclareAttribute( "UnderlyingRing",
 
 #!
 DeclareAttribute( "BaseOfFibration",
+        IsZariskiFrameOrCoframe );
+
+#!
+DeclareAttribute( "BaseOfFibration",
         IsObjectInZariskiFrameOrCoframe );
 
 DeclareAttribute( "PreUnderlyingMatrix",
