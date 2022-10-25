@@ -196,3 +196,27 @@ CapJitAddLogicTemplate(
         dst_template := "[ ]",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "func" ],
+        src_template := "Sum( [ 1, 2, 3, 4 ], func )",
+        dst_template := "func( 1 ) + func( 2 ) + func( 3 ) + func( 4 )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry1", "entry2", "entry3", "entry4" ],
+        src_template := "[ entry1, entry2, entry3, entry4 ]{[ 1, 2 ]}",
+        dst_template := "[ entry1, entry2 ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry1", "entry2", "entry3", "entry4" ],
+        src_template := "[ entry1, entry2, entry3, entry4 ]{[ 1, 2, 3 ]}",
+        dst_template := "[ entry1, entry2, entry3 ]",
+    )
+);
