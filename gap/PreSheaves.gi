@@ -2108,7 +2108,29 @@ InstallMethodWithCache( PreSheaves,
           return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Range( colift_coPSh ) ) );
           
       end );
-    
+      
+      AddIndecomposableProjectiveObjects( PSh,
+        function ( PSh )
+          local B;
+          
+          B := Source( PSh );
+          
+          return List( SetOfObjects( B ), YonedaEmbeddingData( B )[1] );
+      
+      end );
+      
+      AddIndecomposableInjectiveObjects( PSh,
+        function( PSh )
+          local B, CoPSh;
+          
+          B := Source( PSh );
+          
+          CoPSh := CoPreSheaves( B );
+          
+          return List( IndecomposableInjectiveObjects( CoPSh ), NakayamaRightAdjointData( B )[1] );
+          
+      end );
+      
     fi;
     
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
@@ -2626,46 +2648,6 @@ InstallMethod( SievesOfPathsToTruth,
   function ( iota )
     
     return SievesOfPathsToTruth( CapCategory( iota ), iota );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( IndecomposableProjectiveObjects,
-        [ IsPreSheafCategory ],
-        
-  function ( PSh )
-    local B, Y;
-    
-    B := Source( PSh );
-    
-    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-        Error( "the underlying quiver algebra must be admissible\n" );
-    fi;
-    
-    Y := YonedaEmbeddingData( B )[1];
-    
-    return List( SetOfObjects( B ), Y );
-    
-end );
-
-##
-InstallMethod( IndecomposableInjectiveObjects,
-        [ IsPreSheafCategory ],
-        
-  function ( PSh )
-    local B, Y, NR;
-    
-    B := Source( PSh );
-    
-    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-        Error( "the underlying quiver algebra must be admissible\n" );
-    fi;
-    
-    Y := CoYonedaEmbeddingData( B )[1];
-    
-    NR := NakayamaRightAdjointData( B )[1];
-    
-    return List( SetOfObjects( B ), b -> NR( Y( b ) ) );
     
 end );
 
