@@ -7,7 +7,7 @@
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "cat", "pair" ],
-        src_template := "PairInUnderlyingLattice( CreateCapCategoryObjectWithAttributes( cat, PrePairInUnderlyingLattice, pair, IsLocallyClosed, true ) )",
+        src_template := "MinuendAndSubtrahendInUnderlyingLattice( CreateCapCategoryObjectWithAttributes( cat, PreMinuendAndSubtrahendInUnderlyingLattice, pair, IsLocallyClosed, true ) )",
         dst_template := "pair",
     )
 );

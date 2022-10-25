@@ -14,12 +14,12 @@ InstallMethodForCompilerForCAP( IsHomSetInhabitedWithTypeCast,
     
     C := UnderlyingCategory( D );
     
-    Apair := PairInUnderlyingLattice( A );
+    Apair := MinuendAndSubtrahendInUnderlyingLattice( A );
     
     ap := Apair[2];
     a := Apair[1];
     
-    Bpairs := List( B, PairInUnderlyingLattice );
+    Bpairs := List( B, MinuendAndSubtrahendInUnderlyingLattice );
     
     bp := List( Bpairs, a -> a[2] );
     b := List( Bpairs, a -> a[1] );
@@ -223,7 +223,7 @@ InstallGlobalFunction( UnionOfDifferences,
     ars1 := ars[1];
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences(
-                 CapCategory( PairInUnderlyingLattice( ars1 )[1] ) );
+                 CapCategory( MinuendAndSubtrahendInUnderlyingLattice( ars1 )[1] ) );
     
     ars := Filtered( ars, D -> not IsInitial( D ) );
     
@@ -333,7 +333,7 @@ InstallGlobalFunction( UnionOfDifferencesOfNormalizedObjects,
     local C, A;
     
     C := BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences(
-                 CapCategory( PairInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( L[1] )[1] )[1] ) );
+                 CapCategory( MinuendAndSubtrahendInUnderlyingLattice( ListOfObjectsInMeetSemilatticeOfDifferences( L[1] )[1] )[1] ) );
     
     A := CreateCapCategoryObjectWithAttributes( C,
                  ListOfNormalizedObjectsInMeetSemilatticeOfDifferences, L );
@@ -484,7 +484,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    B := PairInUnderlyingLattice( B );
+    B := MinuendAndSubtrahendInUnderlyingLattice( B );
     
     return ( A - B[1] ) + A * B[2];
     

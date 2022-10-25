@@ -12,7 +12,7 @@ InstallOtherMethodForCompilerForCAP( SingleDifference,
     local C;
     
     C := CreateCapCategoryObjectWithAttributes( D,
-                 PrePairInUnderlyingLattice, A_B,
+                 PreMinuendAndSubtrahendInUnderlyingLattice, A_B,
                  IsLocallyClosed, true );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -77,7 +77,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A )
         local pair, C;
         
-        pair := PairInUnderlyingLattice( A );
+        pair := MinuendAndSubtrahendInUnderlyingLattice( A );
         
         C := UnderlyingCategory( D );
         
@@ -93,8 +93,8 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A, B )
         local A_pair, B_pair, C;
         
-        A_pair := PairInUnderlyingLattice( A );
-        B_pair := PairInUnderlyingLattice( B );
+        A_pair := MinuendAndSubtrahendInUnderlyingLattice( A );
+        B_pair := MinuendAndSubtrahendInUnderlyingLattice( B );
         
         C := UnderlyingCategory( D );
         
@@ -140,7 +140,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, A )
         local pair;
         
-        pair := PairInUnderlyingLattice( A );
+        pair := MinuendAndSubtrahendInUnderlyingLattice( A );
         
         return IsHomSetInhabited( UnderlyingCategory( D ), pair[1], pair[2] );
         
@@ -151,7 +151,7 @@ InstallMethod( MeetSemilatticeOfDifferences,
       function( D, L )
         local L_pairs, C, T, S;
         
-        L_pairs := List( L, PairInUnderlyingLattice );
+        L_pairs := List( L, MinuendAndSubtrahendInUnderlyingLattice );
         
         C := UnderlyingCategory( D );
         
@@ -197,7 +197,7 @@ InstallMethod( \-,
         
   function( A, B )
     
-    A := PairInUnderlyingLattice( A );
+    A := MinuendAndSubtrahendInUnderlyingLattice( A );
     
     return A[1] - ( A[2] + B );
     
@@ -247,7 +247,7 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
     D := MeetSemilatticeOfDifferences( CapCategory( A ) );
     
     C := CreateCapCategoryObjectWithAttributes( D,
-                 NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra, [ A, B ],
+                 NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra, [ A, B ],
                  IsLocallyClosed, true );
     
     Assert( 4, IsWellDefined( C ) );
@@ -257,14 +257,14 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
 end );
 
 ##
-InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
+InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
     local S, T, L, H;
     
-    A := PairInUnderlyingLattice( A );
+    A := MinuendAndSubtrahendInUnderlyingLattice( A );
     
     S := A[2];
     T := A[1];
@@ -300,7 +300,7 @@ InstallMethod( NormalizeObject,
         
   function( A )
     
-    List( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
+    List( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
     
     return A;
     
@@ -313,7 +313,7 @@ InstallMethod( StandardizeObject,
         
   function( A )
     
-    List( StandardPairInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
+    List( StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A ), IsInitial );
     
     return A;
     
@@ -350,32 +350,32 @@ InstallMethod( FactorsAttr,
 end );
 
 ##
-InstallMethod( PairInUnderlyingLattice,
+InstallMethod( MinuendAndSubtrahendInUnderlyingLattice,
         "for an object in a meet-semilattice of formal single differences",
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
-  PrePairInUnderlyingLattice );
+  PreMinuendAndSubtrahendInUnderlyingLattice );
 
 ##
-InstallMethod( PairInUnderlyingLattice,
+InstallMethod( MinuendAndSubtrahendInUnderlyingLattice,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasNormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasNormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra ],
         
-  NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra );
+  NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
-InstallMethod( PairInUnderlyingLattice,
+InstallMethod( MinuendAndSubtrahendInUnderlyingLattice,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra ],
         
-  StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
+  StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
-InstallMethod( NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra,
+InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
         "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardPairInUnderlyingHeytingOrCoHeytingAlgebra ],
+        [ IsObjectInMeetSemilatticeOfSingleDifferences and HasStandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra ],
         
-  StandardPairInUnderlyingHeytingOrCoHeytingAlgebra );
+  StandardMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra );
 
 ##
 InstallMethod( DistinguishedSubtrahend,
@@ -402,9 +402,9 @@ InstallMethod( IsClosedSubobject,
     H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return IsInitial( H, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
+        return IsInitial( H, NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A )[2] );
     elif HasIsCartesianClosedCategory( H ) and IsCartesianClosedCategory( H ) then
-        return IsTerminal( H, NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[1] );
+        return IsTerminal( H, NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A )[1] );
     fi;
     
     TryNextMethod( );
@@ -422,7 +422,7 @@ InstallMethod( Closure,
     H := UnderlyingCategory( CapCategory( A ) );
     
     if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return NormalizedPairInUnderlyingHeytingOrCoHeytingAlgebra( A )[1];
+        return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( A )[1];
     fi;
     
     TryNextMethod( );
@@ -497,7 +497,7 @@ InstallMethod( \.,
   function( A, string_as_int )
     local name;
     
-    A := PairInUnderlyingLattice( A );
+    A := MinuendAndSubtrahendInUnderlyingLattice( A );
     
     name := NameRNam( string_as_int );
     
@@ -519,7 +519,7 @@ InstallMethod( ViewString,
   function( A )
     local n, str;
     
-    A := PairInUnderlyingLattice( A );
+    A := MinuendAndSubtrahendInUnderlyingLattice( A );
     
     n := ValueOption( "Locales_number" );
     
@@ -560,7 +560,7 @@ InstallMethod( DisplayString,
         
   function( A )
     
-    A := PairInUnderlyingLattice( A );
+    A := MinuendAndSubtrahendInUnderlyingLattice( A );
     
     return Concatenation(
                    DisplayString( A[1] ),
