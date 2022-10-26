@@ -1950,11 +1950,12 @@ InstallMethodWithCache( PreSheaves,
     if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
+      
       SetIsAbelianCategoryWithEnoughInjectives( PSh, true );
       
       AddEpimorphismFromProjectiveCoverObject( PSh,
         function( PSh, F )
-          local C, dec, objs, D, m, epi;
+          local C, dec, objs, D, epi;
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           if HasEpimorphismFromProjectiveCoverObject( F ) then
@@ -1963,18 +1964,16 @@ InstallMethodWithCache( PreSheaves,
           
           C := Range( PSh );
           
-          dec := MorphismsFromDirectSumDecompositionOfProjectiveCover( PSh, F );
+          dec := ProjectiveCoverObjectDataOfPreSheaf( PSh, F );
           
           objs := List( dec, Source );
           
           D := DirectSum( PSh, objs );
           
-          m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) );
-          
           epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
-          SetMorphismsFromDirectSumDecompositionOfProjectiveCover( D, m );
+          SetProjectiveCoverObjectDataOfPreSheaf( D, List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) ) );
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           SetEpimorphismFromProjectiveCoverObject( F, epi );
@@ -2015,7 +2014,6 @@ InstallMethodWithCache( PreSheaves,
           
       end );
       
-      #
       #  rad(P) >--> P -->> top(P)
       #              |
       #              | eta
@@ -2040,7 +2038,7 @@ InstallMethodWithCache( PreSheaves,
           P := Source( eta );
           G := Source( epi );
           
-          tP := CokernelProjection( PSh, RadicalInclusion( PSh, P ) );
+          tP := CokernelProjection( PSh, RadicalInclusionOfPreSheaf( PSh, P ) );
           vals_tP := ValuesOnAllObjects( tP );
           
           gens := List( vals_tP, m -> PreInverse( C, m ) );
@@ -2072,8 +2070,8 @@ InstallMethodWithCache( PreSheaves,
       
       #         mono
       #     F >-----> G
-      # eta |
       #     |
+      # eta |
       #     v
       #     I
       #
@@ -2107,7 +2105,29 @@ InstallMethodWithCache( PreSheaves,
           return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Range( colift_coPSh ) ) );
           
       end );
-    
+      
+      AddIndecomposableProjectiveObjects( PSh,
+        function ( PSh )
+          local B;
+          
+          B := Source( PSh );
+          
+          return List( SetOfObjects( B ), YonedaEmbeddingData( B )[1] );
+      
+      end );
+      
+      AddIndecomposableInjectiveObjects( PSh,
+        function( PSh )
+          local B, CoPSh;
+          
+          B := Source( PSh );
+          
+          CoPSh := CoPreSheaves( B );
+          
+          return List( IndecomposableInjectiveObjects( CoPSh ), NakayamaRightAdjointData( B )[1] );
+          
+      end );
+      
     fi;
     
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
@@ -2625,46 +2645,6 @@ InstallMethod( SievesOfPathsToTruth,
   function ( iota )
     
     return SievesOfPathsToTruth( CapCategory( iota ), iota );
-    
-end );
-
-##
-InstallMethodForCompilerForCAP( IndecomposableProjectiveObjects,
-        [ IsPreSheafCategory ],
-        
-  function ( PSh )
-    local B, Y;
-    
-    B := Source( PSh );
-    
-    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-        Error( "the underlying quiver algebra must be admissible\n" );
-    fi;
-    
-    Y := YonedaEmbeddingData( B )[1];
-    
-    return List( SetOfObjects( B ), Y );
-    
-end );
-
-##
-InstallMethod( IndecomposableInjectiveObjects,
-        [ IsPreSheafCategory ],
-        
-  function ( PSh )
-    local B, Y, NR;
-    
-    B := Source( PSh );
-    
-    if not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
-        Error( "the underlying quiver algebra must be admissible\n" );
-    fi;
-    
-    Y := CoYonedaEmbeddingData( B )[1];
-    
-    NR := NakayamaRightAdjointData( B )[1];
-    
-    return List( SetOfObjects( B ), b -> NR( Y( b ) ) );
     
 end );
 

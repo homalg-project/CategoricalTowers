@@ -37,7 +37,3 @@ DeclareAttribute( "NakayamaRightAdjointData",
 #! @Returns a &CAP; functor
 DeclareAttribute( "NakayamaRightAdjoint",
         IsAlgebroid );
-
-DeclareAttribute( "DualOfObjectInPreSheafCategory", IsObjectInPreSheafCategory );
-
-DeclareAttribute( "DualOfMorphismInPreSheafCategory", IsMorphismInPreSheafCategory );

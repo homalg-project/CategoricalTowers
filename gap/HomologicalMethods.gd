@@ -4,15 +4,11 @@
 # Declarations
 #
 
-DeclareAttribute( "RadicalInclusion", IsObjectInPreSheafCategory );
+DeclareAttribute( "RadicalInclusionOfPreSheaf", IsObjectInPreSheafCategory );
 
-DeclareOperation( "CoverElementByProjectiveObject", [ IsObjectInPreSheafCategory, IsCapCategoryMorphism, IsInt ] );
+DeclareOperation( "CoverElementByIndecomposableProjectivePreSheaf", [ IsObjectInPreSheafCategory, IsCapCategoryMorphism, IsInt ] );
 
-DeclareAttribute( "MorphismsFromDirectSumDecompositionOfProjectiveCover", IsObjectInPreSheafCategory );
-
-DeclareAttribute( "DirectSumDecompositionOfProjectiveObject", IsObjectInPreSheafCategory );
-
-DeclareAttribute( "ProjectiveCover", IsObjectInPreSheafCategory );
+DeclareAttribute( "ProjectiveCoverObjectDataOfPreSheaf", IsObjectInPreSheafCategory );
 
 #DeclareAttribute( "MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope", IsObjectInPreSheafCategory );
 

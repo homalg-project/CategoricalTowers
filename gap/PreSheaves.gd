@@ -185,20 +185,6 @@ DeclareAttribute( "YonedaEmbeddingOfSourceCategory",
 
 #! @Description
 #!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
-#!  The output is the list of indecomposable projective objects in <A>PSh</A> up to isomorphism.
-#! @Arguments PSh
-#! @Returns a list of objects
-DeclareAttribute( "IndecomposableProjectiveObjects", IsPreSheafCategory );
-
-#! @Description
-#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
-#!  The output is the list of indecomposable injective objects in <A>PSh</A> up to isomorphism.
-#! @Arguments PSh
-#! @Returns a list of objects
-DeclareAttribute( "IndecomposableInjectiveObjects", IsPreSheafCategory );
-
-#! @Description
-#!  The input is a category of presheaves <A>PSh</A> of an admissible $k$-algebroid for some field $k$.
 #!  The output is the list of simple objects in <A>PSh</A>.
 #! @Arguments PSh
 #! @Returns a list of objects

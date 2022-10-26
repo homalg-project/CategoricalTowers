@@ -5,15 +5,15 @@
 #
 
 ##
-InstallOtherMethodForCompilerForCAP( RadicalInclusion,
+InstallOtherMethodForCompilerForCAP( RadicalInclusionOfPreSheaf,
           [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
           
   function ( PSh, F )
     local C, vals_F, def_pair, pos, im, val_objs, val_mors, RF, rF;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasRadicalInclusion( F ) then
-        return RadicalInclusion( F );
+    if HasRadicalInclusionOfPreSheaf( F ) then
+        return RadicalInclusionOfPreSheaf( F );
     fi;
     
     C := Range( PSh );
@@ -43,22 +43,22 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusion,
     SetIsMonomorphism( rF, true );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetRadicalInclusion( F, rF );
+    SetRadicalInclusionOfPreSheaf( F, rF );
     
     return rF;
     
 end );
 
 ##
-InstallMethod( RadicalInclusion,
+InstallMethod( RadicalInclusionOfPreSheaf,
           [ IsObjectInPreSheafCategory ],
 
-  F -> RadicalInclusion( CapCategory( F ), F ) );
+  F -> RadicalInclusionOfPreSheaf( CapCategory( F ), F ) );
 
 ##
 ## See Lemma 2.83 at http://dx.doi.org/10.25819/ubsi/10144
 ##
-InstallMethod( CoverElementByProjectiveObject,
+InstallMethod( CoverElementByIndecomposableProjectivePreSheaf,
         [ IsObjectInPreSheafCategory, IsCapCategoryMorphism, IsInt ],
         
   function ( F, ell, j )
@@ -89,15 +89,15 @@ InstallMethod( CoverElementByProjectiveObject,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjectiveCover,
+InstallOtherMethodForCompilerForCAP( ProjectiveCoverObjectDataOfPreSheaf,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
     local C, matrix_cat, k, rF, coker_rF, pre_images, dec;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if HasMorphismsFromDirectSumDecompositionOfProjectiveCover( F ) then
-        return MorphismsFromDirectSumDecompositionOfProjectiveCover( F );
+    if HasProjectiveCoverObjectDataOfPreSheaf( F ) then
+        return ProjectiveCoverObjectDataOfPreSheaf( F );
     fi;
     
     C := Range( PSh );
@@ -109,7 +109,7 @@ InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjec
     
     k := TensorUnit( Range( PSh ) );
     
-    rF := RadicalInclusion( PSh, F );
+    rF := RadicalInclusionOfPreSheaf( PSh, F );
     
     coker_rF := CokernelProjection( PSh, rF );
     
@@ -126,50 +126,20 @@ InstallOtherMethodForCompilerForCAP( MorphismsFromDirectSumDecompositionOfProjec
                   
                   iotas := List( [ 1 .. n ], i -> PreCompose( C, InjectionOfCofactorOfDirectSum( C, D, i ), pre_image ) );
                   
-                  return List( iotas, ell -> CoverElementByProjectiveObject( F, ell, j ) );
+                  return List( iotas, ell -> CoverElementByIndecomposableProjectivePreSheaf( F, ell, j ) );
                   
                 end ) );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    SetMorphismsFromDirectSumDecompositionOfProjectiveCover( F, dec );
+    SetProjectiveCoverObjectDataOfPreSheaf( F, dec );
     
     return dec;
     
 end );
 
 ##
-InstallMethod( MorphismsFromDirectSumDecompositionOfProjectiveCover,
+InstallMethod( ProjectiveCoverObjectDataOfPreSheaf,
           [ IsObjectInPreSheafCategory ],
 
-  F -> MorphismsFromDirectSumDecompositionOfProjectiveCover( CapCategory( F ), F ) );
+  F -> ProjectiveCoverObjectDataOfPreSheaf( CapCategory( F ), F ) );
 
-##
-InstallMethod( DirectSumDecompositionOfProjectiveObject,
-        [ IsObjectInPreSheafCategory ], # and IsProjective
-        
-  MorphismsFromDirectSumDecompositionOfProjectiveCover );
-
-
-##
-InstallMethod( ProjectiveCover,
-        [ IsObjectInPreSheafCategory ],
-
-  EpimorphismFromSomeProjectiveObject );
-
-##
-#InstallMethod( MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope,
-#        [ IsObjectInPreSheafCategory ],
-#        
-#  F -> List( MorphismsFromDirectSumDecompositionOfProjectiveCover( DualOfObjectInPreSheafCategory( F ) ), DualOfMorphismInPreSheafCategory ) );
-
-##
-#InstallMethod( DirectSumDecompositionOfInjectiveObject,
-#        [ IsObjectInPreSheafCategory ], # and is injective
-#        
-#  MorphismsIntoDirectSumDecompositionOfInjectiveEnvelope );
-
-##
-InstallMethod( InjectiveEnvelope,
-        [ IsObjectInPreSheafCategory ],
-
-  MonomorphismIntoInjectiveEnvelopeObject );
