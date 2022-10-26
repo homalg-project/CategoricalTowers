@@ -1955,7 +1955,7 @@ InstallMethodWithCache( PreSheaves,
       
       AddEpimorphismFromProjectiveCoverObject( PSh,
         function( PSh, F )
-          local C, dec, objs, D, m, epi;
+          local C, dec, objs, D, epi;
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           if HasEpimorphismFromProjectiveCoverObject( F ) then
@@ -1969,8 +1969,6 @@ InstallMethodWithCache( PreSheaves,
           objs := List( dec, Source );
           
           D := DirectSum( PSh, objs );
-          
-          m := List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, D ) );
           
           epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, D );
           
@@ -2016,7 +2014,6 @@ InstallMethodWithCache( PreSheaves,
           
       end );
       
-      #
       #  rad(P) >--> P -->> top(P)
       #              |
       #              | eta
@@ -2073,8 +2070,8 @@ InstallMethodWithCache( PreSheaves,
       
       #         mono
       #     F >-----> G
-      # eta |
       #     |
+      # eta |
       #     v
       #     I
       #
