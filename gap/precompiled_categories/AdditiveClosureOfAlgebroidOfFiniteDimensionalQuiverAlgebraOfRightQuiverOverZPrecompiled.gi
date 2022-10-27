@@ -766,10 +766,10 @@ function ( cat_1, r_1, a_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), MorphismMatrix, List( [ 1 .. NumberRows( a_1 ) ], function ( i_2 )
               return List( hoisted_2_1, function ( j_3 )
                       local deduped_1_3;
-                      deduped_1_3 := a_1[i_2, j_3];
-                    return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, r_1 * UnderlyingQuiverAlgebraElement( deduped_1_3 ) );
-                end );
-        end ) );
+                      deduped_1_3 := \[\,\]( a_1, i_2, j_3 );
+                      return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, Source( deduped_1_3 ), Range( deduped_1_3 ), UnderlyingQuiverAlgebraElement, r_1 * UnderlyingQuiverAlgebraElement( deduped_1_3 ) );
+                  end );
+          end ) );
 end
 ########
         
