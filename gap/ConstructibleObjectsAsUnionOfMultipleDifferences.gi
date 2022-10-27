@@ -162,7 +162,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
     AddCoproduct( C,
       function( cat, L )
         
-        L := List( L, ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
+        L := List( L, ListOfObjectsInMeetSemilatticeOfDifferences );
         
         ## an advantage of this specific data structure for constructible objects
         return UnionOfListOfMultipleDifferences( cat, Concatenation( L ) );
@@ -189,7 +189,7 @@ InstallOtherMethodForCompilerForCAP( UnionOfListOfMultipleDifferences,
   function( C, L )
     
     return CreateCapCategoryObjectWithAttributes( C,
-                   ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences, L );
+                   ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
     
 end );
 
@@ -308,7 +308,7 @@ InstallMethod( \+,
 end );
 
 ##
-InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
@@ -319,7 +319,7 @@ InstallMethod( ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences,
 end );
 
 ##
-InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
@@ -330,32 +330,32 @@ InstallMethod( ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences,
 end );
 
 ##
-InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
-  ListOfPreObjectsInMeetSemilatticeOfMultipleDifferences );
+  ListOfPreObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences ],
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfNormalizedObjectsInMeetSemilatticeOfDifferences ],
         
-  ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences );
+  ListOfNormalizedObjectsInMeetSemilatticeOfDifferences );
 
 ##
-InstallMethod( ListOfObjectsInMeetSemilatticeOfMultipleDifferences,
+InstallMethod( ListOfObjectsInMeetSemilatticeOfDifferences,
         "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences ],
+        [ IsConstructibleObjectAsUnionOfMultipleDifferences and HasListOfStandardObjectsInMeetSemilatticeOfDifferences ],
         
-  ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences );
+  ListOfStandardObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( ListOp,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
         
-  ListOfObjectsInMeetSemilatticeOfMultipleDifferences );
+  ListOfObjectsInMeetSemilatticeOfDifferences );
 
 ##
 InstallMethod( NormalizedObject,
@@ -365,7 +365,7 @@ InstallMethod( NormalizedObject,
   function( A )
     local L;
     
-    L := Filtered( ListOfNormalizedObjectsInMeetSemilatticeOfMultipleDifferences( A ), m -> not IsInitial( m ) );
+    L := Filtered( ListOfNormalizedObjectsInMeetSemilatticeOfDifferences( A ), m -> not IsInitial( m ) );
     
     if L = [ ] then
         return InitialObject( CapCategory( A ) );
@@ -383,7 +383,7 @@ InstallMethod( StandardizedObject,
   function( A )
     local L;
     
-    L := Filtered( ListOfStandardObjectsInMeetSemilatticeOfMultipleDifferences( A ), m -> not IsInitial( m ) );
+    L := Filtered( ListOfStandardObjectsInMeetSemilatticeOfDifferences( A ), m -> not IsInitial( m ) );
     
     if L = [ ] then
         return InitialObject( CapCategory( A ) );
