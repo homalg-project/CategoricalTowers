@@ -184,7 +184,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( UnionOfListOfDifferences,
+InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
         "for a Boolean algebra of constructible objects and a list",
         [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ],
         

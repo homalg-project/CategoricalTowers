@@ -103,7 +103,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
         T := TerminalObject( UnderlyingMeetSemilatticeOfDifferences( cat ) );
         
-        return UnionOfListOfMultipleDifferences( cat, [ T ] );
+        return UnionOfListOfDifferences( cat, [ T ] );
         
     end );
     
@@ -114,7 +114,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         
         I := InitialObject( UnderlyingMeetSemilatticeOfDifferences( cat ) );
         
-        return UnionOfListOfMultipleDifferences( cat, [ I ] );
+        return UnionOfListOfDifferences( cat, [ I ] );
         
     end );
     
@@ -146,7 +146,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         ## the distributive law
         U := List( I, i -> DirectProduct( D, List( l, j -> L[j][i[j]] ) ) );
         
-        return UnionOfListOfMultipleDifferences( cat, U );
+        return UnionOfListOfDifferences( cat, U );
         
     end;
     
@@ -165,7 +165,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         L := List( L, ListOfObjectsInMeetSemilatticeOfDifferences );
         
         ## an advantage of this specific data structure for constructible objects
-        return UnionOfListOfMultipleDifferences( cat, Concatenation( L ) );
+        return UnionOfListOfDifferences( cat, Concatenation( L ) );
         
     end );
     
@@ -182,7 +182,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( UnionOfListOfMultipleDifferences,
+InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
         "for a Boolean algebra of constructible objects and a list",
         [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences, IsList ],
         
@@ -233,7 +233,7 @@ InstallGlobalFunction( UnionOfMultipleDifferences,
         ars := [ ars1 ];
     fi;
     
-    A := UnionOfListOfMultipleDifferences( C, ars );
+    A := UnionOfListOfDifferences( C, ars );
     
     Assert( 4, IsWellDefined( A ) );
     

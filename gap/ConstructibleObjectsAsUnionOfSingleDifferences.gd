@@ -108,7 +108,8 @@ DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences",
 #! @Group AsFormalDifference_group
 DeclareGlobalFunction( "UnionOfDifferences" );
 
-DeclareOperation( "UnionOfListOfDifferences", [ IsList ] );
+DeclareOperation( "UnionOfListOfDifferences",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences, IsList ] );
 
 DeclareOperation( "\+",
         [ IsObjectInThinCategory, IsInt ] );
