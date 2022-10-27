@@ -15,13 +15,10 @@
 @InsertChunk SnakeInFreeAbelianPrimitive
 
 @Subsection Disassembling the snake in an underlying additive category
-@InsertChunk SnakeInAdditive
+@InsertChunk SnakeInAdditiveClosureOfAlgebroid
 
 @Subsection Disassembling the snake in an underlying additive category (only lift primitve operations)
-@InsertChunk SnakeInAdditivePrimitive
-
-@Subsection Disassembling the snake in an underlying additive category (different model)
-@InsertChunk SnakeInAdditiveClosureOfAlgebroid
+@InsertChunk SnakeInAdditiveClosureOfAlgebroidPrimitive
 
 @Subsection Lazy terminal category with multiple objects
 @InsertChunk LazyTerminalCategory
