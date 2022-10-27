@@ -77,4 +77,5 @@ DeclareAttribute( "BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferen
 #! @Group UnionOfMultipleDifferences_group
 DeclareGlobalFunction( "UnionOfMultipleDifferences" );
 
-DeclareOperation( "UnionOfListOfMultipleDifferences", [ IsList ] );
+DeclareOperation( "UnionOfListOfDifferences",
+        [ IsBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences, IsList ] );
