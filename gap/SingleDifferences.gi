@@ -258,34 +258,34 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
 end );
 
 ##
-InstallOtherMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
-        "for an object in a meet-semilattice of formal single differences",
-        [ IsObjectInThinCategory, IsObjectInThinCategory ],
+InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
+        "for a Heyting algebroid and two objects in it",
+        [ IsCapCategory and IsHeytingAlgebroid, IsObjectInThinCategory, IsObjectInThinCategory ],
         
-  function( T, S )
-    local L, H;
+  function( L, minuend, subtrahend )
+    local H;
     
-    L := CapCategory( S );
+    # H := ExponentialOnObjects( minuend, subtrahend );
+    # the following line performed better than the previous one
+    H := ExponentialOnObjects( Coproduct( minuend, subtrahend ), subtrahend );
     
-    if HasIsCartesianClosedCategory( L ) and IsCartesianClosedCategory( L ) then
-        
-        # H := ExponentialOnObjects( T, S );
-        # the following line performed better than the previous one
-        H := ExponentialOnObjects( Coproduct( T, S ), S );
-        
-        return [ Coproduct( H, T ), H ];
-        
-    elif HasIsCocartesianCoclosedCategory( L ) and IsCocartesianCoclosedCategory( L ) then
-        
-        # H := CoexponentialOnObjects( T, S );
-        # the following line performed better than the previous one
-        H := CoexponentialOnObjects( T, DirectProduct( S, T ) );
-        
-        return [ H, DirectProduct( S, H ) ];
-        
-    fi;
+    return [ Coproduct( H, minuend ), H ];
     
-    TryNextMethod( );
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra,
+        "for a co-Heyting algebroid and two objects in it",
+        [ IsCapCategory and IsCoHeytingAlgebroid, IsObjectInThinCategory, IsObjectInThinCategory ],
+        
+  function( L, minuend, subtrahend )
+    local H;
+    
+    # H := CoexponentialOnObjects( minuend, subtrahend );
+    # the following line performed better than the previous one
+    H := CoexponentialOnObjects( minuend, DirectProduct( subtrahend, minuend ) );
+    
+    return [ H, DirectProduct( subtrahend, H ) ];
     
 end );
 
@@ -295,14 +295,16 @@ InstallMethod( NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgeb
         [ IsObjectInMeetSemilatticeOfSingleDifferences ],
         
   function( A )
-    local S, T;
+    local minuend_subtrahend_pair, minuend, subtrahend, L;
     
-    A := MinuendAndSubtrahendInUnderlyingLattice( A );
+    minuend_subtrahend_pair := MinuendAndSubtrahendInUnderlyingLattice( A );
     
-    S := A[2];
-    T := A[1];
+    minuend := minuend_subtrahend_pair[1];
+    subtrahend := minuend_subtrahend_pair[2];
     
-    return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( T, S );
+    L := CapCategory( minuend );
+    
+    return NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra( L, minuend, subtrahend );
     
 end );
 
