@@ -265,9 +265,9 @@ InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingH
   function( L, minuend, subtrahend )
     local H;
     
-    # H := ExponentialOnObjects( minuend, subtrahend );
+    # H := ExponentialOnObjects( L, minuend, subtrahend );
     # the following line performed better than the previous one
-    H := ExponentialOnObjects( Coproduct( minuend, subtrahend ), subtrahend );
+    H := ExponentialOnObjects( L, Coproduct( minuend, subtrahend ), subtrahend );
     
     return [ Coproduct( H, minuend ), H ];
     
@@ -281,9 +281,9 @@ InstallOtherMethodForCompilerForCAP( NormalizedMinuendAndSubtrahendInUnderlyingH
   function( L, minuend, subtrahend )
     local H;
     
-    # H := CoexponentialOnObjects( minuend, subtrahend );
+    # H := CoexponentialOnObjects( L, minuend, subtrahend );
     # the following line performed better than the previous one
-    H := CoexponentialOnObjects( minuend, DirectProduct( subtrahend, minuend ) );
+    H := CoexponentialOnObjects( L, minuend, DirectProduct( subtrahend, minuend ) );
     
     return [ H, DirectProduct( subtrahend, H ) ];
     
