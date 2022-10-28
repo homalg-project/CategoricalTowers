@@ -32,10 +32,9 @@ DeclareOperation( "MorphismsOfExternalHom",
 
 DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 
-#! @Section Subobject Classifier
 
 #! @Description
-#!  The property of <A>C</A> being an elementary topos.
+#!  The property of the category <A>C</A> being an elementary topos.
 #! @Arguments C
 AddCategoricalProperty( [ "IsElementaryTopos", fail ] );
 
@@ -70,7 +69,7 @@ DeclareAttribute( "SubobjectClassifier",
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is  cartesian square of a subobject classifier object $\Omega$ of $C$.
+#! The output is cartesian square of a subobject classifier object $\Omega$ of $C$.
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
@@ -276,8 +275,8 @@ DeclareOperation( "IntersectionSubobject",
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
 #!  The output is the embedding <C>IntersectionSubobject</C>($\iota$) $\hookrightarrow A$ of their intersection subobject.
-#! @Returns an object
-#! @Arguments iota
+#! @Returns a monomorphism
+#! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
 
@@ -285,8 +284,8 @@ DeclareOperation( "EmbeddingOfIntersectionSubobject",
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
 #!  <C>IsEqualForObjects</C>($T$, <C>IntersectionSubobject</C>($\iota$)).
 #!  The output the embedding $T \hookrightarrow A$ of their intersection subobject $T$.
-#! @Returns an object
-#! @Arguments iota
+#! @Returns a monomorphism
+#! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
 
@@ -302,8 +301,8 @@ DeclareOperation( "UnionSubobject",
 #! @Description
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
 #!  The output is the embedding <C>UnionSubobject</C>($\iota$) $\hookrightarrow A$ of their union subobject.
-#! @Returns an object
-#! @Arguments iota
+#! @Returns a monomorphism
+#! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
 
@@ -311,8 +310,8 @@ DeclareOperation( "EmbeddingOfUnionSubobject",
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
 #!  <C>IsEqualForObjects</C>($T$, <C>UnionSubobject</C>($\iota$)).
 #!  The output is the embedding $T \hookrightarrow A$ of their union subobject $T$.
-#! @Returns an object
-#! @Arguments iota
+#! @Returns a monomorphism
+#! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
 
@@ -328,8 +327,8 @@ DeclareOperation( "RelativePseudoComplementSubobject",
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
 #!  The output is the embedding <C>RelativePseudoComplementSubobject</C>($\iota$) $\hookrightarrow A$
 #!  of their relative pseudo-complement into $A$.
-#! @Returns an object
-#! @Arguments iota
+#! @Returns a monomorphism
+#! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
 
@@ -337,8 +336,8 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobject",
 #!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
 #!  <C>IsEqualForObjects</C>($T$, <C>RelativePseudoComplementSubobject</C>($\iota$)).
 #!  The output is the embedding $T \hookrightarrow A$ of their relative pseudo-complement $T$ into $A$.
-#! @Returns an object
-#! @Arguments iota
+#! @Returns a monomorphism
+#! @Arguments iota1, iota2
 DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
 
