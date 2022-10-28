@@ -441,7 +441,7 @@ end );
 ## Final derivations
 
 ##
-AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
+AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
                     [ [ ImageObject, 1 ],
                       [ IdentityMorphism, 1 ] ],
                     [ CanonicalIdentificationFromCoimageToImageObject,
@@ -455,12 +455,14 @@ AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
                       UniversalMorphismIntoCoimageWithGivenCoimageObject,
                       IsomorphismFromCoimageToCokernelOfKernel,
                       IsomorphismFromCokernelOfKernelToCoimage ],
-                    
-  function( cat, mor )
-    
-    return IdentityMorphism( cat, ImageObject( cat, mor ) );
-    
-  end,
+  [
+    CanonicalIdentificationFromImageObjectToCoimage,
+    function( cat, mor )
+      
+      return IdentityMorphism( cat, ImageObject( cat, mor ) );
+      
+    end
+  ],
   [
     CanonicalIdentificationFromCoimageToImageObject,
     function( cat, mor )
