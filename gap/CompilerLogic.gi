@@ -220,3 +220,19 @@ CapJitAddLogicTemplate(
         dst_template := "[ entry1, entry2, entry3 ]",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "entry1", "entry2", "entry3", "entry4", "func", "index" ],
+        src_template := "List( [ 0 .. Product( [ entry1, entry2, entry3, entry4 ] ) - 1 ], func )[index]",
+        dst_template := "func( -1 + index )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "-1 + (1 + number)",
+        dst_template := "number",
+    )
+);
