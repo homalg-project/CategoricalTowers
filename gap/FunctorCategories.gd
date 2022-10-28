@@ -331,9 +331,6 @@ DeclareOperation( "AsObjectInFunctorCategory",
 DeclareOperation( "AsObjectInFunctorCategory",
         [ IsCapCategory, IsList, IsList ] );
 
-DeclareOperation( "AsObjectInFunctorCategory",
-        [ IsCapCategory, IsFunction, IsFunction ] );
-
 #! @Description
 #! @Returns a morphism in a &CAP; category
 #! @Group AsMorphismInFunctorCategory

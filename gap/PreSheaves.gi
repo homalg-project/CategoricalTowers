@@ -385,42 +385,30 @@ InstallOtherMethod( CreatePreSheaf,
 end );
 
 ##
-InstallOtherMethod( CreatePreSheaf,
-        "for an algebroid and two lists",
-        [ IsAlgebroid, IsList, IsList ], 10001,
+InstallMethod( CreatePreSheaf,
+        "for a presheaf category and two lists",
+        [ IsPreSheafCategory and HasRangeCategoryOfHomomorphismStructure, IsList, IsList ],
         
-  function ( kq, dims, matrices )
-    local k, kmat, objects, morphisms, mat;
+  function ( PSh, dims, matrices )
+    local kmat, objects, morphisms, k, mat;
     
     if dims = [ ] then
         Error( "the list of dimensions is empty\n" );
+    elif not IsInt( dims[1] ) then
+        Error( "expecting a list of integers as the second argument but received ", dims, "\n" );
     fi;
     
-    if not IsInt( dims[1] ) then
-        TryNextMethod();
+    kmat := RangeCategoryOfHomomorphismStructure( PSh );
+    
+    if not ( IsMatrixCategory( kmat ) or IsCategoryOfRows( kmat ) ) then
+        TryNextMethod( );
     fi;
-    
-    k := CommutativeRingOfLinearCategory( kq );
-    
-    if not (HasIsFieldForHomalg( k ) and IsFieldForHomalg( k )) then
-        TryNextMethod();
-    fi;
-    
-    if HasRangeCategoryOfHomomorphismStructure( kq ) then
-        
-        kmat := RangeCategoryOfHomomorphismStructure( kq );
-        
-    else
-        
-        kmat := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "MatrixCategory", MatrixCategory( k ) );
-        
-    fi;
-    
-    Assert( 0, IsMatrixCategory( kmat ) or IsCategoryOfRows( kmat ) );
     
     objects := List( dims, dim -> dim / kmat );
     
-    morphisms := SetOfGeneratingMorphisms( kq );
+    morphisms := SetOfGeneratingMorphisms( Source( PSh ) );
+    
+    k := CommutativeRingOfLinearCategory( kmat );
     
     mat :=
       function ( m )
@@ -441,7 +429,7 @@ InstallOtherMethod( CreatePreSheaf,
     
     morphisms := List( [ 1 .. Length( morphisms ) ], mat );
     
-    return CreatePreSheafByValues( PreSheaves( kq, kmat ), objects, morphisms );
+    return CreatePreSheafByValues( PSh, objects, morphisms );
     
 end );
 
@@ -2154,7 +2142,7 @@ InstallMethodWithCache( PreSheaves,
         
     else
         
-        kmat := MatrixCategory( k : overhead := false );
+        kmat := CategoryOfRows( k );
         
     fi;
     
@@ -2162,7 +2150,7 @@ InstallMethodWithCache( PreSheaves,
     
     CapCategorySwitchLogicOn( kmat );
     
-    PSh := PreSheaves( B, kmat : overhead := false );
+    PSh := PreSheaves( B, kmat );
     
     CapCategorySwitchLogicOn( PSh );
     
