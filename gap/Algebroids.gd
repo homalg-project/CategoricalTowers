@@ -423,6 +423,12 @@ DeclareOperation( "[]",
         [ IsHomalgRing, IsFpCategory ] );
 
 #! @Arguments A, L
+#! @Group Algebroid
+DeclareOperation( "QuotientCategory",
+        [ IsAlgebroid, IsList ] );
+
+#! @Arguments A, L
+#! @Group Algebroid
 DeclareOperation( "/",
         [ IsAlgebroid, IsList ] );
 

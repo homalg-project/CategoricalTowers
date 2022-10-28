@@ -443,6 +443,11 @@ DeclareOperation( "Category",
 
 #! @Arguments C, L
 #! @Group FpCategory
+DeclareOperation( "QuotientCategory",
+        [ IsFpCategory, IsList ] );
+
+#! @Arguments C, L
+#! @Group FpCategory
 DeclareOperation( "/",
         [ IsFpCategory, IsList ] );
 

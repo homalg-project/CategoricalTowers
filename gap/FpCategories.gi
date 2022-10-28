@@ -743,7 +743,7 @@ InstallMethod( Category,
 end );
 
 ##
-InstallMethod( \/,
+InstallMethod( QuotientCategory,
         "for a f.p. category and a list",
         [ IsFpCategory and HasUnderlyingQuiver, IsList ],
         
@@ -767,6 +767,17 @@ InstallMethod( \/,
     Append( relations, List( L, a -> List( a, f ) ) );
     
     return Category( UnderlyingQuiver( C ), relations );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for a f.p. category and a list",
+        [ IsFpCategory and HasUnderlyingQuiver, IsList ],
+        
+  function( C, L )
+    
+    return QuotientCategory( C, L );
     
 end );
 
