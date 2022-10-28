@@ -1401,7 +1401,7 @@ InstallMethodWithCache( PreSheaves,
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh,
               function ( PSh, eta )
-                local C, H, mors, mor, hom_diagram, hom, prjs, emb;
+                local C, H, mors, mor, hom_diagram, hom, nr_objs, prjs, emb;
                 
                 C := Range( PSh );
                 
@@ -1422,7 +1422,9 @@ InstallMethodWithCache( PreSheaves,
                               hom_diagram[1],
                               hom_diagram[2] );
                 
-                prjs := List( [ 0 .. Length( SetOfObjects( PSh ) ) - 1 ],
+                nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
+                
+                prjs := List( [ 0 .. nr_objs - 1 ],
                               i -> ProjectionInFactorOfLimit( H,
                                       hom_diagram[1],
                                       hom_diagram[2],
@@ -1442,7 +1444,7 @@ InstallMethodWithCache( PreSheaves,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
               function ( PSh, F, G, iota )
-                local C, H, F_o_vals, G_o_vals, hom_diagram, o, etas;
+                local C, H, F_o_vals, G_o_vals, hom_diagram, nr_objs, etas;
                 
                 C := Range( PSh );
                 
@@ -1454,9 +1456,9 @@ InstallMethodWithCache( PreSheaves,
                 
                 hom_diagram := ExternalHomDiagram( PSh, F, G );
                 
-                o := Length( SetOfObjects( Source( PSh ) ) );
+                nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
                 
-                etas := List( [ 0 .. o - 1 ],
+                etas := List( [ 0 .. nr_objs - 1 ],
                               i -> PreCompose( H,
                                       iota,
                                       ProjectionInFactorOfLimit( H,
@@ -1466,7 +1468,7 @@ InstallMethodWithCache( PreSheaves,
                 
                 return CreatePreSheafMorphismByValues( PSh,
                                F,
-                               List( [ 1 .. o ],
+                               List( [ 1 .. nr_objs ],
                                      i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
                                              F_o_vals[i],
                                              G_o_vals[i],
@@ -1478,14 +1480,14 @@ InstallMethodWithCache( PreSheaves,
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh,
               function ( PSh, s, eta, rho, r )
-                local C, H, o, hom_diagram_source, hom_source, prjs_source, emb_source,
+                local C, H, nr_objs, hom_diagram_source, hom_source, prjs_source, emb_source,
                       hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor, eta_vals, rho_vals;
                 
                 C := Range( PSh );
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
-                o := Length( SetOfObjects( Source( PSh ) ) );
+                nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
                 
                 hom_diagram_source := ExternalHomDiagram( PSh, Range( eta ), Source( rho ) );
                 
@@ -1493,7 +1495,7 @@ InstallMethodWithCache( PreSheaves,
                                      hom_diagram_source[1],
                                      hom_diagram_source[2] );
                 
-                prjs_source := List( [ 0 .. o - 1 ],
+                prjs_source := List( [ 0 .. nr_objs - 1 ],
                                      i -> ProjectionInFactorOfLimit( H,
                                              hom_diagram_source[1],
                                              hom_diagram_source[2],
@@ -1510,7 +1512,7 @@ InstallMethodWithCache( PreSheaves,
                                     hom_diagram_range[1],
                                     hom_diagram_range[2] );
                 
-                prjs_range := List( [ 0 .. o - 1 ],
+                prjs_range := List( [ 0 .. nr_objs - 1 ],
                                     i -> ProjectionInFactorOfLimit( H,
                                             hom_diagram_range[1],
                                             hom_diagram_range[2],
@@ -1524,7 +1526,7 @@ InstallMethodWithCache( PreSheaves,
                 eta_vals := ValuesOnAllObjects( eta );
                 rho_vals := ValuesOnAllObjects( rho );
                 
-                mors := List( [ 1 .. o ],
+                mors := List( [ 1 .. nr_objs ],
                               i -> HomomorphismStructureOnMorphisms( C,
                                       eta_vals[i],
                                       rho_vals[i] ) );
