@@ -280,9 +280,6 @@ DeclareOperation( "CreateCoPreSheaf",
 DeclareOperation( "CreateCoPreSheaf",
         [ IsCapCategory, IsList, IsList ] );
 
-DeclareOperation( "CreateCoPreSheaf",
-        [ IsCapCategory, IsFunction, IsFunction ] );
-
 #! @Description
 #! @Returns a morphism in a &CAP; category
 #! @Group CreateCoPreSheafMorphism
