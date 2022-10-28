@@ -168,7 +168,7 @@ DirectSum( z, z ) = z;
 #! To this end we need a finite dimensional vector space $V_0$
 
 #! @Example
-V0 := VectorSpaceObject( 3, Q );
+V0 := 3 / A;
 #! <A vector space object over Q of dimension 3>
 #! @EndExample
 
@@ -179,7 +179,7 @@ phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );
 #! <A 3 x 3 matrix over an internal ring>
 V_obj := rec( 1 := V0 );
 #! rec( 1 := <A vector space object over Q of dimension 3> )
-V_mor := rec( t := VectorSpaceMorphism( V0, phi, V0 ) );
+V_mor := rec( t := phi / A );
 #! rec( t := <A morphism in Category of matrices over Q> )
 V := AsObjectInFunctorCategory( B, V_obj, V_mor );
 #! <(1)->3; (t)->3x3>
@@ -199,7 +199,7 @@ psi := HomalgMatrix( [ 1, 0, 0,  0, 0, 1,  0, 1, 0 ], 3, 3, Q );
 #! <A 3 x 3 matrix over an internal ring>
 W_obj := rec( 1 := V0 );
 #! rec( 1 := <A vector space object over Q of dimension 3> )
-W_mor := rec( t := VectorSpaceMorphism( V0, psi, V0 ) );
+W_mor := rec( t := psi / A );
 #! rec( t := <A morphism in Category of matrices over Q> )
 W := AsObjectInFunctorCategory( B, W_obj, W_mor );
 #! <(1)->3; (t)->3x3>
@@ -299,11 +299,11 @@ pi1 = pi2;
 #! @Example
 psi := HomalgMatrix( [ 0, 1,  -1, -1 ], 2, 2, Q );
 #! <A 2 x 2 matrix over an internal ring>
-U := VectorSpaceObject( 2, Q );
+U := 2 / A;
 #! <A vector space object over Q of dimension 2>
 U_obj := rec( 1 := U );
 #! rec( 1 := <A vector space object over Q of dimension 2> )
-U_mor := rec( t := VectorSpaceMorphism( U, psi, U ) );
+U_mor := rec( t := psi / A );
 #! rec( t := <A morphism in Category of matrices over Q> )
 U := CapFunctor( B, U_obj, U_mor );
 #! Functor from
@@ -339,7 +339,7 @@ eta := HomalgMatrix( [ 1, 0,  0, 1,  -1, -1 ], 3, 2, Q );
 #! induced by the above matrix is the component of $\eta$ at this object.
 
 #! @Example
-eta := rec( 1 := VectorSpaceMorphism( V( B.1 ), eta, U( B.1 ) ) );
+eta := rec( 1 := eta / A );
 #! rec( 1 := <A morphism in Category of matrices over Q> )
 #! @EndExample
 
