@@ -2657,7 +2657,7 @@ InstallMethod( SimpleObjects,
     B := Source( PSh );
     C := Range( PSh );
     
-    def_pair := DefiningPairOfAQuiver( UnderlyingQuiver( B ) );
+    def_pair := DefiningPairOfUnderlyingQuiver( PSh );
     
     simple_objs := [ ];
     
