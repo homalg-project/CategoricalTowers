@@ -1368,13 +1368,24 @@ InstallMethod( \[\],
   Algebroid );
 
 ##
-InstallMethod( \/,
+InstallMethod( QuotientCategory,
         "for an algebroid and a list",
         [ IsAlgebroid, IsList ],
 
   function( A, relations )
     
     return Algebroid( UnderlyingQuiverAlgebra( A ), List( relations, UnderlyingQuiverAlgebraElement ), A!.over_Z );
+    
+end );
+
+##
+InstallMethod( \/,
+        "for an algebroid and a list",
+        [ IsAlgebroid, IsList ],
+
+  function( A, relations )
+    
+    return QuotientCategory( A, relations );
     
 end );
 
