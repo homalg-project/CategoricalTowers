@@ -410,7 +410,7 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
 );
 
 ##
-AddFinalDerivation( Limit,
+AddFinalDerivationBundle( # Limit
         [ [ DirectProduct, 2 ],
           [ Equalizer, 1 ],
           [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 2 ], ## called in List
@@ -427,7 +427,8 @@ AddFinalDerivation( Limit,
           UniversalMorphismIntoLimit,
           UniversalMorphismIntoLimitWithGivenLimit,
           ],
-        
+[
+  Limit,
     function( cat, objects, decorated_morphisms )
       local pair;
       
@@ -437,7 +438,8 @@ AddFinalDerivation( Limit,
       
       return Equalizer( cat, pair[1], pair[2] );
       
-  end,
+  end
+],
 [
   ProjectionInFactorOfLimitWithGivenLimit,
     function( cat, objects, decorated_morphisms, k, limit )
@@ -498,7 +500,7 @@ InstallMethodForCompilerForCAP( ColimitPair,
 end );
 
 ##
-AddFinalDerivation( Colimit,
+AddFinalDerivationBundle( # Colimit
         ## FIXME: remove the following list and add it to CategoryFilter;
         ## problem: Input category must be finalized to create opposite category
         [ [ Limit, 1 ],
@@ -510,14 +512,16 @@ AddFinalDerivation( Colimit,
           UniversalMorphismFromColimit,
           UniversalMorphismFromColimitWithGivenColimit,
           ],
-        
+[
+  Colimit,
     function( cat, objects, decorated_morphisms )
       
       return Opposite( Limit( Opposite( cat ),
                      List( objects, Opposite ),
                      List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) ) );
       
-  end,
+  end
+],
 [
   InjectionOfCofactorOfColimitWithGivenColimit,
     function( cat, objects, decorated_morphisms, k, colimit )
@@ -546,7 +550,7 @@ AddFinalDerivation( Colimit,
 : Description := "Colimit using limit in the opposite category" );
 
 ##
-AddFinalDerivation( SomeProjectiveObject,
+AddFinalDerivationBundle( # SomeProjectiveObject
         [ [ ProjectiveCoverObject, 1 ],
           [ EpimorphismFromProjectiveCoverObjectWithGivenProjectiveCoverObject, 1 ],
           ],
@@ -554,12 +558,14 @@ AddFinalDerivation( SomeProjectiveObject,
           EpimorphismFromSomeProjectiveObject,
           EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject,
           ],
-        
+[
+  SomeProjectiveObject,
   function( cat, F )
     
     return ProjectiveCoverObject( cat, F );
     
-end,
+end
+],
 [
   EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject,
   function( cat, F, P )
@@ -571,7 +577,7 @@ end
 : Description := "SomeProjectiveObject from ProjectiveCoverObject" );
 
 ##
-AddFinalDerivation( SomeInjectiveObject,
+AddFinalDerivationBundle( # SomeInjectiveObject
         [ [ InjectiveEnvelopeObject, 1 ],
           [ MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject, 1 ],
           ],
@@ -579,12 +585,14 @@ AddFinalDerivation( SomeInjectiveObject,
           MonomorphismIntoSomeInjectiveObject,
           MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject,
           ],
-        
+[
+  SomeInjectiveObject,
   function( cat, F )
     
     return InjectiveEnvelopeObject( cat, F );
     
-end,
+end
+],
 [
   MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject,
   function( cat, F, P )
