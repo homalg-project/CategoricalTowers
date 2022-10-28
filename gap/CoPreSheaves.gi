@@ -227,7 +227,7 @@ InstallMethod( CreateCoPreSheaf,
   function ( F )
     local coPSh;
     
-    coPSh := CoPreSheaves( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    coPSh := CoPreSheaves( SourceOfFunctor( F ), RangeOfFunctor( F ) );
     
     return CreateCoPreSheaf( coPSh, F );
     

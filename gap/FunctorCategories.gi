@@ -227,7 +227,7 @@ InstallMethod( AsObjectInFunctorCategory,
   function ( F )
     local Hom;
     
-    Hom := FunctorCategory( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    Hom := FunctorCategory( SourceOfFunctor( F ), RangeOfFunctor( F ) );
     
     return AsObjectInFunctorCategory( Hom, F );
     
