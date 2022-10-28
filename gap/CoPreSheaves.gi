@@ -261,41 +261,29 @@ end );
 
 ##
 InstallMethod( CreateCoPreSheaf,
-        "for an algebroid and two lists",
-        [ IsAlgebroid, IsList, IsList ], 10001,
+        "for a copresheaf category and two lists",
+        [ IsCoPreSheafCategory and HasRangeCategoryOfHomomorphismStructure, IsList, IsList ],
         
-  function ( kq, dims, matrices )
-    local k, kmat, objects, morphisms, mat;
+  function ( coPSh, dims, matrices )
+    local kmat, objects, morphisms, k, mat;
     
     if dims = [ ] then
         Error( "the list of dimensions is empty\n" );
+    elif not IsInt( dims[1] ) then
+        Error( "expecting a list of integers as the second argument but received ", dims, "\n" );
     fi;
     
-    if not IsInt( dims[1] ) then
-        TryNextMethod();
+    kmat := RangeCategoryOfHomomorphismStructure( coPSh );
+        
+    if not ( IsMatrixCategory( kmat ) or IsCategoryOfRows( kmat ) ) then
+        TryNextMethod( );
     fi;
-    
-    k := CommutativeRingOfLinearCategory( kq );
-    
-    if not (HasIsFieldForHomalg( k ) and IsFieldForHomalg( k )) then
-        TryNextMethod();
-    fi;
-    
-    if HasRangeCategoryOfHomomorphismStructure( kq ) then
-        
-        kmat := RangeCategoryOfHomomorphismStructure( kq );
-        
-    else
-        
-        kmat := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "MatrixCategory", MatrixCategory( k ) );
-        
-    fi;
-    
-    Assert( 0, IsMatrixCategory( kmat ) or IsCategoryOfRows( kmat ) );
     
     objects := List( dims, dim -> dim / kmat );
     
-    morphisms := SetOfGeneratingMorphisms( kq );
+    morphisms := SetOfGeneratingMorphisms( Source( coPSh ) );
+    
+    k := CommutativeRingOfLinearCategory( kmat );
     
     mat :=
       function ( m )
@@ -316,7 +304,7 @@ InstallMethod( CreateCoPreSheaf,
     
     morphisms := List( [ 1 .. Length( morphisms ) ], mat );
     
-    return CreateCoPreSheafByValues( CoPreSheaves( kq, kmat ), objects, morphisms );
+    return CreateCoPreSheafByValues( coPSh, objects, morphisms );
     
 end );
 
@@ -383,7 +371,7 @@ InstallMethod( CreateCoPreSheafMorphism,
     
     F := Source( eta );
     
-    coPSh := CoPreSheaves( AsCapCategory( Source( F ) ), AsCapCategory( Range( F ) ) );
+    coPSh := CoPreSheaves( SourceOfFunctor( F ), RangeOfFunctor( F ) );
     
     return CreateCoPreSheafMorphism( coPSh, eta );
     
@@ -575,7 +563,7 @@ InstallMethodWithCache( CoPreSheaves,
         
     else
         
-        kmat := MatrixCategory( k : overhead := false );
+        kmat := CategoryOfRows( k );
         
     fi;
     
@@ -583,7 +571,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     CapCategorySwitchLogicOn( kmat );
     
-    coPSh := CoPreSheaves( B, kmat : overhead := false );
+    coPSh := CoPreSheaves( B, kmat );
     
     CapCategorySwitchLogicOn( coPSh );
     

@@ -172,7 +172,7 @@ phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );
 #! We call this functor again $V$.
 
 #! @Example
-V := AsObjectInFunctorCategory( B, [ 3 ], [ phi ] );
+V := AsObjectInFunctorCategory( H, [ 3 ], [ phi ] );
 #! <(1)->3; (t)->3x3>
 #! @EndExample
 
