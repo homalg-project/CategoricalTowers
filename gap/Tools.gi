@@ -26,6 +26,43 @@ InstallOtherMethod( Subobject,
         
   IdFunc );
 
+
+##
+InstallMethodForCompilerForCAP( GlobalSectionFunctorData,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( C )
+    local T, idT, on_objs, on_mors;
+    
+    T := TerminalObject( C );
+    idT := IdentityMorphism( C, T );
+    
+    on_objs := obj -> HomomorphismStructureOnObjects( C, T, obj );
+    on_mors := { source, mor, range } -> HomomorphismStructureOnMorphismsWithGivenObjects( C, source, idT, mor, range );
+    
+    return Pair( on_objs, on_mors );
+    
+end );
+
+##
+InstallMethod( GlobalSectionFunctor,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( C )
+    local data, Hom1;
+    
+    data := GlobalSectionFunctorData( C );
+    
+    Hom1 := CapFunctor( "Global section functor", C, RangeCategoryOfHomomorphismStructure( C ) );
+    
+    AddObjectFunction( Hom1, data[1] );
+    
+    AddMorphismFunction( Hom1, data[2] );
+    
+    return Hom1;
+    
+end );
+
 ##
 InstallGlobalFunction( RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION,
   function( cat, morphism_1, morphism_2, morphism_3, arg... )
