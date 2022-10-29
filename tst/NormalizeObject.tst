@@ -22,7 +22,7 @@ gap> Oy := OpenSubsetOfSpec( "x" / R );
 D_{Q[x,y]}( <...> )
 gap> Oxy := OpenSubsetOfSpec( "x*y" / R );
 D_{Q[x,y]}( <...> )
-gap> SD := MeetSemilatticeOfDifferences( CapCategory( Oy ) );;
+gap> SD := MeetSemilatticeOfSingleDifferences( CapCategory( Oy ) );;
 gap> OD := SingleDifference( SD, Pair( Oy, Oxy ) );
 D_{Q[x,y]}( I ) \ D_{Q[x,y]}( J )
 gap> Display( OD );

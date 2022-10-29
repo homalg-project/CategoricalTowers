@@ -29,14 +29,14 @@ InstallOtherMethodForCompilerForCAP( SingleDifference,
 end );
 
 ##
-InstallMethod( MeetSemilatticeOfDifferences,
+InstallMethod( MeetSemilatticeOfSingleDifferences,
         "for a CAP category",
         [ IsCapCategory and IsThinCategory ],
         
   function( P )
     local name, D, L;
     
-    name := "The meet-semilattice of differences of ";
+    name := "The meet-semilattice of single differences of ";
     
     name := Concatenation( name, Name( P ) );
     
@@ -185,7 +185,7 @@ InstallMethod( \-,
         Error( "the arguments A and B are in different categories\n" );
     fi;
     
-    D := MeetSemilatticeOfDifferences( H );
+    D := MeetSemilatticeOfSingleDifferences( H );
     
     return SingleDifference( D, Pair( A, B ) );
     
@@ -245,7 +245,7 @@ InstallMethod( FormalDifferenceOfNormalizedObjects,
   function( A, B )
     local D, C;
     
-    D := MeetSemilatticeOfDifferences( CapCategory( A ) );
+    D := MeetSemilatticeOfSingleDifferences( CapCategory( A ) );
     
     C := CreateCapCategoryObjectWithAttributes( D,
                  NormalizedMinuendAndSubtrahendInUnderlyingHeytingOrCoHeytingAlgebra, [ A, B ],

@@ -67,7 +67,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     SetIsBooleanAlgebra( C, true );
     
     SetUnderlyingCategory( C, P );
-    SetUnderlyingMeetSemilatticeOfDifferences( C, MeetSemilatticeOfDifferences( P ) );
+    SetUnderlyingMeetSemilatticeOfDifferences( C, MeetSemilatticeOfSingleDifferences( P ) );
     
     AddObjectRepresentation( C, IsConstructibleObjectAsUnionOfSingleDifferences );
     
