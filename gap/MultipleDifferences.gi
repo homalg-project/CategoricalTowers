@@ -53,7 +53,7 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     SetUnderlyingCategory( D, P );
     
-    SetUnderlyingCategoryOfSingleDifferences( D, MeetSemilatticeOfDifferences( P ) );
+    SetUnderlyingCategoryOfSingleDifferences( D, MeetSemilatticeOfSingleDifferences( P ) );
     
     AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfMultipleDifferences );
     
@@ -339,7 +339,7 @@ InstallMethod( EquivalenceToMeetSemilatticeOfDifferences,
     local S, T, squash;
     
     S := MeetSemilatticeOfMultipleDifferences( P );
-    T := MeetSemilatticeOfDifferences( P );
+    T := MeetSemilatticeOfSingleDifferences( P );
     
     squash := CapFunctor( "Equivalence from the meet-semilattice of formal multiple differences to the meet-semilattice of formal single differences", S, T );
     

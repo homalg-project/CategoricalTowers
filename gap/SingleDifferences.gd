@@ -89,7 +89,7 @@ DeclareOperation( "DistinguishedSubtrahend",
 #!  Construct the meet-semilattice of differences from the lattice <A>L</A>.
 #! @Arguments L
 #! @Returns a &CAP; category
-DeclareAttribute( "MeetSemilatticeOfDifferences",
+DeclareAttribute( "MeetSemilatticeOfSingleDifferences",
         IsCapCategory );
 
 DeclareOperation( "SingleDifference",
