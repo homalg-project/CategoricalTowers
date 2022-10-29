@@ -188,6 +188,9 @@ InstallMethodForCompilerForCAP( UnionOfListOfDifferences,
         
   function( C, L )
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, ForAll( L, IsObjectInMeetSemilatticeOfMultipleDifferences ) );
+    
     return CreateCapCategoryObjectWithAttributes( C,
                    ListOfPreObjectsInMeetSemilatticeOfDifferences, L );
     
