@@ -18,6 +18,18 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODU
 DeclareOperation( "Subobject",
         [ IsCapCategoryMorphism ] );
 
+
+DeclareAttribute( "GlobalSectionFunctorData",
+        IsCapCategory );
+
+#! @Description
+#!  Returns the global section functor $\mathrm{Hom}(1,-)$ from the category <A>C</A>
+#!  with terminal object $1$ to <C>RangeCategoryOfHomomorphismStructure</C>( <A>C</A> ).
+#! @Arguments C
+#! @Returns a &CAP; functor
+DeclareAttribute( "GlobalSectionFunctor",
+        IsCapCategory );
+
 ###################################
 ##
 #! @Section ImageObjectFunctorial
