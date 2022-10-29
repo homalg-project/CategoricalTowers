@@ -123,7 +123,7 @@ InstallMethod( CanonicalObjectOp,
         [ IsConstructibleObject ],
         
   function( A )
-    local C;
+    local C, LCP;
     
     if IsInitial( A ) then
         return InitialObject( CapCategory( A ) );
@@ -139,9 +139,11 @@ InstallMethod( CanonicalObjectOp,
     
     while not IsInitial( A ) do
         
-        C := C + LocallyClosedPart( A );
+        LCP := LocallyClosedPart( A );
         
-        A := A - C;
+        C := C + LCP;
+        
+        A := A - LCP;
         
     od;
     
