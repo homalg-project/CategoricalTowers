@@ -26,21 +26,53 @@ InstallOtherMethod( Subobject,
         
   IdFunc );
 
+##
+InstallMethodForCompilerForCAP( CovariantHomFunctorData,
+        [ IsCapCategory, IsCapCategoryObject ],
+        
+  function ( C, o )
+    local id_o, on_objs, on_mors;
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( C, CapCategory( o ) ) );
+    
+    id_o := IdentityMorphism( C, o );
+    
+    on_objs := obj -> HomomorphismStructureOnObjects( C, o, obj );
+    on_mors := { source, mor, range } -> HomomorphismStructureOnMorphismsWithGivenObjects( C, source, id_o, mor, range );
+    
+    return Pair( on_objs, on_mors );
+    
+end );
+
+##
+InstallMethod( CovariantHomFunctor,
+        [ IsCapCategoryObject ],
+        
+  function ( o )
+    local C, data, Hom;
+    
+    C := CapCategory( o );
+    
+    data := CovariantHomFunctorData( C, o );
+    
+    Hom := CapFunctor( "A covariant Hom functor", C, RangeCategoryOfHomomorphismStructure( C ) );
+    
+    AddObjectFunction( Hom, data[1] );
+    
+    AddMorphismFunction( Hom, data[2] );
+    
+    return Hom;
+    
+end );
 
 ##
 InstallMethodForCompilerForCAP( GlobalSectionFunctorData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( C )
-    local T, idT, on_objs, on_mors;
     
-    T := TerminalObject( C );
-    idT := IdentityMorphism( C, T );
-    
-    on_objs := obj -> HomomorphismStructureOnObjects( C, T, obj );
-    on_mors := { source, mor, range } -> HomomorphismStructureOnMorphismsWithGivenObjects( C, source, idT, mor, range );
-    
-    return Pair( on_objs, on_mors );
+    return CovariantHomFunctorData( C, TerminalObject( C ) );
     
 end );
 
