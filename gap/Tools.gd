@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Futher CAP operations
+#! @Chapter Tools
 
 DeclareGlobalVariable( "CATEGORY_CONSTRUCTOR_METHOD_NAME_RECORD" );
 
@@ -13,6 +13,12 @@ DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_CATEGORY_CONSTRUCTOR" );
 DeclareGlobalFunction( "RELATIVE_WEAK_BI_FIBER_PRODUCT_PREFUNCTION" );
 
 DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODUCT_PREFUNCTION" );
+
+###################################
+##
+#! @Section Functors
+##
+###################################
 
 ##
 DeclareOperation( "Subobject",
@@ -29,6 +35,8 @@ DeclareAttribute( "GlobalSectionFunctorData",
 #! @Returns a &CAP; functor
 DeclareAttribute( "GlobalSectionFunctor",
         IsCapCategory );
+
+#! @Chapter Futher CAP operations
 
 ###################################
 ##
