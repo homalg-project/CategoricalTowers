@@ -24,6 +24,17 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_INTO_BIASED_RELATIVE_WEAK_FIBER_PRODU
 DeclareOperation( "Subobject",
         [ IsCapCategoryMorphism ] );
 
+DeclareOperationWithCache( "CovariantHomFunctorData",
+        [ IsCapCategory, IsCapCategoryObject ] );
+
+#! @Description
+#!  The input is an object <A>o</A> in a category $C$.
+#!  The output is the covariant Hom functor $\mathrm{Hom}$(<A>o</A>,-)
+#!  from the category $C$ to <C>RangeCategoryOfHomomorphismStructure</C>( <A>C</A> ).
+#! @Arguments o
+#! @Returns a &CAP; functor
+DeclareAttribute( "CovariantHomFunctor",
+        IsCapCategoryObject );
 
 DeclareAttribute( "GlobalSectionFunctorData",
         IsCapCategory );
