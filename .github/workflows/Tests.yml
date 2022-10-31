@@ -22,9 +22,6 @@ jobs:
     steps:
       # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
       - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
-      # checkout needs access to temporary directory
-      - run: sudo chmod 1777 $RUNNER_TEMP
-      - run: sudo chown gap:gap $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
       - run: cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - run: |
@@ -54,7 +51,7 @@ jobs:
           [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
           [ -d "Toposes" ] && make -C "Toposes" doc
-          TERM=dumb make -C FunctorCategories -j $(nproc) --output-sync ci-test
+          make -C FunctorCategories -j $(nproc) --output-sync ci-test
           cp ./FunctorCategories/.codecov.yml ./
           (cd FunctorCategories && LANG=C.UTF-8 python3 process_coverage.py)
           [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./FunctorCategories/upload_codecov.sh
