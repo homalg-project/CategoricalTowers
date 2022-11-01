@@ -162,11 +162,11 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
         
         return CreateCoPreSheafByValues( coPSh,
                        List( objs, o ->
-                             HomomorphismStructureOnObjects( PSh,
+                             HomomorphismStructureOnObjects( PSh, # PSh( F, B( -, o ) )
                                      F,
                                      Yoneda_on_obj( o ) ) ),
                        List( mors, m ->
-                             HomomorphismStructureOnMorphisms( PSh,
+                             HomomorphismStructureOnMorphisms( PSh, # PSh( F, B( -, m ) )
                                      IdentityMorphism( PSh, F ),
                                      Yoneda_on_mor( Yoneda_on_obj( Source( m ) ), m, Yoneda_on_obj( Range( m ) ) ) ) ) );
         
@@ -177,7 +177,10 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
         
         return CreateCoPreSheafMorphismByValues( coPSh,
                        s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( PSh, eta, Yoneda_on_obj( o ) ) ),
+                       List( objs, o ->
+                             HomomorphismStructureOnMorphisms( PSh, # PSh( eta, B( -, o ) )
+                                     eta,
+                                     Yoneda_on_obj( o ) ) ),
                        r );
         
     end;
@@ -233,11 +236,11 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
         
         return CreatePreSheafByValues( PSh,
                        List( objs, o ->
-                             HomomorphismStructureOnObjects( coPSh,
+                             HomomorphismStructureOnObjects( coPSh, # coPSh( B( o, - ), G )
                                      coYoneda_on_obj( o ),
                                      G ) ),
                        List( mors, m ->
-                             HomomorphismStructureOnMorphisms( coPSh,
+                             HomomorphismStructureOnMorphisms( coPSh, # coPSh( B( m, - ), G )
                                      coYoneda_on_mor( coYoneda_on_obj( Source( m ) ), m, coYoneda_on_obj( Range( m ) ) ),
                                      IdentityMorphism( coPSh, G ) ) ) );
         
@@ -248,7 +251,10 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
         
         return CreatePreSheafMorphismByValues( PSh,
                        s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( coPSh, coYoneda_on_obj( o ), rho ) ),
+                       List( objs, o ->
+                             HomomorphismStructureOnMorphisms( coPSh, # coPSh( B( o, - ), rho )
+                                     coYoneda_on_obj( o ),
+                                     rho ) ),
                        r );
         
     end;
