@@ -300,7 +300,7 @@ end );
 ## Tom Avery and Tom Leinster
 ## Isbell conjugacy and the reflexive completion
 InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     local PSh, coPSh, H, T, objs, nr_objs, O, Spec, Yoneda, coYoneda;
