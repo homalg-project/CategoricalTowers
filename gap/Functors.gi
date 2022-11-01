@@ -296,7 +296,9 @@ InstallMethod( IsbellAdjunctionMonad,
     
 end );
 
-##
+## See Remark 4.10 in https://arxiv.org/abs/2102.08290
+## Tom Avery and Tom Leinster
+## Isbell conjugacy and the reflexive completion
 InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
