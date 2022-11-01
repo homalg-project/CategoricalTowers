@@ -162,11 +162,11 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
         
         return CreateCoPreSheafByValues( coPSh,
                        List( objs, o ->
-                             HomomorphismStructureOnObjects( PSh,
+                             HomomorphismStructureOnObjects( PSh, # PSh( F, B( -, o ) )
                                      F,
                                      Yoneda_on_obj( o ) ) ),
                        List( mors, m ->
-                             HomomorphismStructureOnMorphisms( PSh,
+                             HomomorphismStructureOnMorphisms( PSh, # PSh( F, B( -, m ) )
                                      IdentityMorphism( PSh, F ),
                                      Yoneda_on_mor( Yoneda_on_obj( Source( m ) ), m, Yoneda_on_obj( Range( m ) ) ) ) ) );
         
@@ -177,7 +177,10 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
         
         return CreateCoPreSheafMorphismByValues( coPSh,
                        s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( PSh, eta, Yoneda_on_obj( o ) ) ),
+                       List( objs, o ->
+                             HomomorphismStructureOnMorphisms( PSh, # PSh( eta, B( -, o ) )
+                                     eta,
+                                     Yoneda_on_obj( o ) ) ),
                        r );
         
     end;
@@ -233,11 +236,11 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
         
         return CreatePreSheafByValues( PSh,
                        List( objs, o ->
-                             HomomorphismStructureOnObjects( coPSh,
+                             HomomorphismStructureOnObjects( coPSh, # coPSh( B( o, - ), G )
                                      coYoneda_on_obj( o ),
                                      G ) ),
                        List( mors, m ->
-                             HomomorphismStructureOnMorphisms( coPSh,
+                             HomomorphismStructureOnMorphisms( coPSh, # coPSh( B( m, - ), G )
                                      coYoneda_on_mor( coYoneda_on_obj( Source( m ) ), m, coYoneda_on_obj( Range( m ) ) ),
                                      IdentityMorphism( coPSh, G ) ) ) );
         
@@ -248,7 +251,10 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
         
         return CreatePreSheafMorphismByValues( PSh,
                        s,
-                       List( objs, o -> HomomorphismStructureOnMorphisms( coPSh, coYoneda_on_obj( o ), rho ) ),
+                       List( objs, o ->
+                             HomomorphismStructureOnMorphisms( coPSh, # coPSh( B( o, - ), rho )
+                                     coYoneda_on_obj( o ),
+                                     rho ) ),
                        r );
         
     end;
@@ -287,5 +293,93 @@ InstallMethod( IsbellAdjunctionMonad,
   function ( B )
     
     return PreCompose( IsbellLeftAdjoint( B ), IsbellRightAdjoint( B ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local PSh, coPSh, H, T, objs, nr_objs, O, Spec, Yoneda, coYoneda;
+    
+    PSh := PreSheaves( B );
+    coPSh := CoPreSheaves( B );
+    
+    H := Range( PSh );
+    
+    T := DistinguishedObjectOfHomomorphismStructure( PSh );
+    
+    objs := SetOfObjects( B );
+    nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
+    
+    O := IsbellLeftAdjointData( B )[1];
+    
+    Yoneda := YonedaEmbeddingData( B )[1];
+    coYoneda := CoYonedaEmbeddingData( B )[1];
+    
+    return
+      function( IdPShF, F, Fvv )
+        local Fv, unit;
+        
+        Fv := O( F );
+        
+        unit :=
+          function( a_index )
+            local a;
+            
+            a := objs[a_index];
+            
+            return MorphismConstructor( H,
+                           F( a ), # := PSh( F, B( -, a ) )
+                           List( [ 0 .. Length( F( a ) ) - 1 ], x ->
+                                 AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coPSh,
+                                         CreateCoPreSheafMorphismByValues( coPSh, # ∈ coPSh( B( a, - ), Fv )
+                                                 coYoneda( a ), # := B( a, - )
+                                                 List( objs, b ->
+                                                       MorphismConstructor( H, # Fv( b ) := PSh( F, B( -, b ) ) → B( a, b )
+                                                               Fv( b ), # := PSh( F, B( -, b ) )
+                                                               List( [ 0 .. Length( Fv( b ) ) - 1 ], eta ->
+                                                                     AsList( # eta_a(x), where
+                                                                            ValuesOnAllObjects( # eta_a, where
+                                                                             # eta: F → B( -, b )
+                                                                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
+                                                                                     F,
+                                                                                     Yoneda( b ), # := B( -, b )
+                                                                                     MorphismConstructor( H,
+                                                                                             T,
+                                                                                             [ eta ],
+                                                                                             Fv( b ) ) ) )[a_index] )[1 + x] ), # eta_a(x)
+                                                               coYoneda( a )( b ) ) ), # := B( a, b )
+                                                 Fv ) ) )[1 + 0] ),
+                           Fvv( a ) ); # := coPSh( B( a, - ), Fv )
+            
+        end;
+        
+        return CreatePreSheafMorphismByValues( PSh,
+                       F,
+                       List( [ 1 .. nr_objs ], unit ),
+                       Fvv );
+        
+    end;
+    
+end );
+
+##
+InstallMethod( UnitOfIsbellAdjunction,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    local Id, vv, Isbell_unit;
+    
+    Id := IdentityFunctor( PreSheaves( B ) );
+    
+    vv := PreCompose( IsbellLeftAdjoint( B ), IsbellRightAdjoint( B ) );
+    
+    Isbell_unit := NaturalTransformation( Id, vv );
+    
+    AddNaturalTransformationFunction( Isbell_unit, UnitOfIsbellAdjunctionData( B ) );
+    
+    return Isbell_unit;
     
 end );

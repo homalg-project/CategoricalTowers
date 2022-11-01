@@ -66,3 +66,13 @@ DeclareAttribute( "IsbellRightAdjoint",
 #! @Returns a &CAP; functor
 DeclareAttribute( "IsbellAdjunctionMonad",
         IsCapCategory );
+
+DeclareAttribute( "UnitOfIsbellAdjunctionData",
+        IsCapCategory );
+
+#! @Description
+#!  Returns the unit of the Isbell adjunction on <C>PreSheaves</C>( <A>B</A> ).
+#! @Arguments B
+#! @Returns a &CAP; functor
+DeclareAttribute( "UnitOfIsbellAdjunction",
+        IsCapCategory );
