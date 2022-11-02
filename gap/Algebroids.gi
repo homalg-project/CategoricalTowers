@@ -892,36 +892,28 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_ALGEBROID,
     ##
     AddBasisOfExternalHom( algebroid,
       function( algebroid, object_1, object_2 )
-        local nr_source, nr_range;
+        local a, b;
         
-        nr_source := VertexIndex( UnderlyingVertex( object_1 ) );
+        a := VertexIndex( UnderlyingVertex( object_1 ) );
         
-        nr_range := VertexIndex( UnderlyingVertex( object_2 ) );
+        b := VertexIndex( UnderlyingVertex( object_2 ) );
         
-        return BasisMorphismsByVertexIndex( algebroid )[nr_source][nr_range];
+        return BasisMorphismsByVertexIndex( algebroid )[a][b];
         
     end );
     
     ##
-    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( algebroid,
-    
-      { algebroid, morphism, basis } -> CoefficientsOfMorphism( morphism )
-    );
-    
-    ##
-    InstallMethod( CoefficientsOfMorphism,
-              [ IsMorphismInAlgebroid and MorphismFilter( algebroid ) ],
-              
-      function( morphism )
-        local nr_source, nr_range, element;
-       
-        nr_source := VertexIndex( UnderlyingVertex( Source( morphism ) ) );
+    AddCoefficientsOfMorphism( algebroid,
+      function( algebroid, alpha )
+        local a, b, element;
         
-        nr_range := VertexIndex( UnderlyingVertex( Range( morphism ) ) );
+        a := VertexIndex( UnderlyingVertex( Source( alpha ) ) );
         
-        element := UnderlyingQuiverAlgebraElement( morphism );
+        b := VertexIndex( UnderlyingVertex( Range( alpha ) ) );
         
-        return CoefficientsOfPaths( BasisPathsByVertexIndex( algebroid )[nr_source][nr_range], element );
+        element := UnderlyingQuiverAlgebraElement( alpha );
+        
+        return CoefficientsOfPaths( BasisPathsByVertexIndex( algebroid )[a][b], element );
         
     end );
     
