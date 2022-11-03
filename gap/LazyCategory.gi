@@ -804,7 +804,7 @@ InstallMethod( LazyCategory,
         if print then
             list := [
                      "BasisOfExternalHom",
-                     "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                     "CoefficientsOfMorphism",
                      "DistinguishedObjectOfHomomorphismStructure",
                      "HomomorphismStructureOnObjects",
                      "HomomorphismStructureOnMorphismsWithGivenObjects",
@@ -851,9 +851,9 @@ InstallMethod( LazyCategory,
             end );
         fi;
         
-        if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
-            AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
-              function( D, alpha, L )
+        if CanCompute( C, "CoefficientsOfMorphism" ) then
+            AddCoefficientsOfMorphism( D,
+              function( D, alpha )
                 local show, count, result;
                 
                 show := D!.show_evaluation;
@@ -863,20 +863,19 @@ InstallMethod( LazyCategory,
                 D!.evaluations := count;
                 
                 if show then
-                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "CoefficientsOfMorphism", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "-> evaluating in ", D!.shortname, ": ", "CoefficientsOfMorphism" );
                 fi;
                 
-                result := CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                result := CoefficientsOfMorphism(
                                   UnderlyingCategory( D ),
-                                  EvaluatedCell( alpha ),
-                                  List( L, EvaluatedCell ) );
+                                  EvaluatedCell( alpha ) );
                 
                 if show then
-                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom", "\n" );
+                    Print( count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "CoefficientsOfMorphism", "\n" );
                 else
-                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "CoefficientsOfMorphismWithGivenBasisOfExternalHom" );
+                    Info( InfoLazyCategory, 2, count, ".", FillWithCharacterAfterDecimalNumber( count, ' ', 7 ), ListWithIdenticalEntries( Log2Int( count ), ' ' ), "<- evaluated in ", D!.shortname, ": ", "CoefficientsOfMorphism" );
                 fi;
                 
                 return result;
