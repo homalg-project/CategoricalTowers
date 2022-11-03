@@ -84,13 +84,11 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.11.1",
   NeededOtherPackages := [
-                   [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2022.05-04" ],
                    [ "InfiniteLists", ">= 2017.08.01" ],
                    [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "IO_ForHomalg", ">= 2019.01.01" ],
                    ],
   ExternalConditions := [ ],
 ),
