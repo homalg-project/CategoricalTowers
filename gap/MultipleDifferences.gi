@@ -6,6 +6,7 @@
 
 ##
 InstallOtherMethodForCompilerForCAP( MultipleDifference,
+        "for a meet semi-lattice of multiple differences and a list",
         [ IsMeetSemilatticeOfMultipleDifferences, IsList ],
         
   function( D, L )
