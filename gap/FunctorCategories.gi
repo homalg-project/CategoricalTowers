@@ -819,6 +819,56 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
 end );
 
 ##
+InstallMethod( \.,
+        "for a functor category and a positive integer",
+        [ IsFunctorCategory, IsPosInt ],
+        
+  function( Hom, string_as_int )
+    local name, opY, F, opYc;
+    
+    name := NameRNam( string_as_int );
+    
+    opY := YonedaEmbeddingOfOppositeOfSourceCategory( Hom );
+    
+    F := SourceOfFunctor( opY );
+    
+    opYc := opY( F.(name) );
+    
+    if IsObjectInPreSheafCategory( opYc ) then
+        
+        SetIsProjective( opYc, true );
+        
+    elif IsMorphismInPreSheafCategory( opYc ) then
+        
+        if CanCompute( Hom, "IsMonomorphism" ) then
+            IsMonomorphism( opYc );
+        fi;
+        
+        if CanCompute( Hom, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( opYc );
+        fi;
+        
+        if CanCompute( Hom, "IsEpimorphism" ) then
+            IsEpimorphism( opYc );
+        fi;
+        
+        if CanCompute( Hom, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( opYc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( Hom, "IsIsomorphism" ) then
+            IsIsomorphism( opYc );
+        fi;
+        
+    fi;
+    
+    return opYc;
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( YonedaProjection,
         [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
         
