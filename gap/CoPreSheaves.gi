@@ -670,6 +670,56 @@ InstallMethod( CoYonedaEmbeddingOfSourceCategory,
     
 end );
 
+##
+InstallMethod( \.,
+        "for a copresheaf category and a positive integer",
+        [ IsCoPreSheafCategory, IsPosInt ],
+        
+  function( coPSh, string_as_int )
+    local name, F, coY, coYc;
+    
+    name := NameRNam( string_as_int );
+    
+    F := Source( coPSh );
+    
+    coY := CoYonedaEmbeddingOfSourceCategory( coPSh );
+    
+    coYc := coY( F.(name) );
+    
+    if IsObjectInPreSheafCategory( coYc ) then
+        
+        SetIsProjective( coYc, true );
+        
+    elif IsMorphismInPreSheafCategory( coYc ) then
+        
+        if CanCompute( coPSh, "IsMonomorphism" ) then
+            IsMonomorphism( coYc );
+        fi;
+        
+        if CanCompute( coPSh, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( coYc );
+        fi;
+        
+        if CanCompute( coPSh, "IsEpimorphism" ) then
+            IsEpimorphism( coYc );
+        fi;
+        
+        if CanCompute( coPSh, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( coYc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( coPSh, "IsIsomorphism" ) then
+            IsIsomorphism( coYc );
+        fi;
+        
+    fi;
+    
+    return coYc;
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
