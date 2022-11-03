@@ -23,4 +23,4 @@ shasum -a 256 -c codecov.SHA256SUM
 
 # execute
 chmod +x codecov
-./codecov -Z || ./codecov -Z || ./codecov -Z
+./codecov -Z || (sleep 30; ./codecov -Z || (sleep 30; ./codecov -Z))
