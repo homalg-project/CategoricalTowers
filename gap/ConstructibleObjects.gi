@@ -53,6 +53,24 @@ InstallMethod( StandardizeObject,
 end );
 
 ##
+InstallMethod( Closure,
+        "for a constructible object",
+        [ IsConstructibleObject ],
+        
+  function( A )
+    local H;
+    
+    H := UnderlyingCategory( CapCategory( A ) );
+    
+    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
+        return Coproduct( List( A, Closure ) );
+    fi;
+    
+    TryNextMethod( );
+    
+end );
+
+##
 InstallMethod( IsClosedSubobject,
         "for a constructible object",
         [ IsConstructibleObject ],

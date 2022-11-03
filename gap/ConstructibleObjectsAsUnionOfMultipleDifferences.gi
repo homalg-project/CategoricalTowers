@@ -446,24 +446,6 @@ InstallMethod( AdditiveInverseMutable,
 end );
 
 ##
-InstallMethod( Closure,
-        "for a constructible object as a union of formal multiple differences",
-        [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
-        
-  function( A )
-    local H;
-    
-    H := UnderlyingCategory( CapCategory( A ) );
-    
-    if HasIsCocartesianCoclosedCategory( H ) and IsCocartesianCoclosedCategory( H ) then
-        return Coproduct( List( A, Closure ) );
-    fi;
-    
-    TryNextMethod( );
-    
-end );
-
-##
 InstallMethod( ClosureAsConstructibleObject,
         "for a constructible object as a union of formal multiple differences",
         [ IsConstructibleObjectAsUnionOfMultipleDifferences ],
