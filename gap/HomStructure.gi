@@ -295,7 +295,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
         
     end );
     
-    if CanCompute( H, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
+    if CanCompute( H, "BasisOfExternalHom" ) and CanCompute( H, "CoefficientsOfMorphism" ) then
       
       ##
       AddBasisOfExternalHom( PSh,
@@ -359,22 +359,19 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOMOMORPHISM_STRUCTURE_TO_PRESHEAF_CATE
       end );
       
       ##
-      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( PSh,
-        function( PSh, eta, B )
+      AddCoefficientsOfMorphism( PSh,
+        function( PSh, eta )
           local iota, H;
           
           iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh, eta );
           
           H := RangeCategoryOfHomomorphismStructure( PSh );
           
-          return CoefficientsOfMorphismWithGivenBasisOfExternalHom( H,
-                         iota,
-                         BasisOfExternalHom( H,
-                                 Source( iota ),
-                                 Range( iota ) ) );
+          return CoefficientsOfMorphism( H, iota );
           
       end );
       
     fi;
     
 end );
+
