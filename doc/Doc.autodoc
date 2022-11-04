@@ -26,10 +26,16 @@
 @Section Constructors
 
 @Section Examples
+
 @Subsection SliceCategory
 @InsertChunk SliceCategory
+
 @Subsection IteratedInternalHom
 @InsertChunk IteratedInternalHom
+
+@Subsection Double pushout rewriting
+@InsertChunk DPO
+
 @Subsection Precompilation
 @InsertChunk SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled
 
@@ -40,5 +46,6 @@
 @Section Constructors
 
 @Section Examples
+
 @Subsection LazySliceCategory
 @InsertChunk LazySliceCategory

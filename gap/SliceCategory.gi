@@ -151,6 +151,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                     #"IsAbCategory", cannot be inherited
                     #"IsLinearCategoryOverCommutativeRing", cannot be inherited
+                    "IsElementaryTopos",
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
@@ -530,6 +531,55 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                            im,
                            emb,
                            range );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "SubobjectClassifier" ) and
+       CanCompute( C, "ProjectionInFactorOfDirectProduct" ) then
+        
+        ##
+        AddSubobjectClassifier( S,
+          function( cat )
+            local C;
+            
+            C := AmbientCategory( cat );
+            
+            return ObjectConstructor( cat,
+                           ProjectionInFactorOfDirectProduct( C,
+                                   [ BaseObject( cat ), SubobjectClassifier( C ) ],
+                                   1 ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "SubobjectClassifier" ) and
+       CanCompute( C, "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier" ) and
+       CanCompute( C, "UniversalMorphismIntoDirectProductWithGivenDirectProduct" ) then
+        
+        ##
+        AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( S,
+          function( cat, mono, Omega )
+            local C, mono_C, Omega_C, chi_C;
+            
+            C := AmbientCategory( cat );
+            
+            mono_C := UnderlyingCell( mono );
+            
+            Omega_C := SubobjectClassifier( C );
+            
+            chi_C := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( mono_C, Omega_C );
+            
+            return MorphismConstructor( cat,
+                           Range( mono ),
+                           UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
+                                   [ BaseObject( cat ), Omega_C ],
+                                   Range( mono_C ),
+                                   [ UnderlyingMorphism( Range( mono ) ), chi_C ],
+                                   Source( UnderlyingMorphism( Omega ) ) ),
+                           Omega );
             
         end );
         
