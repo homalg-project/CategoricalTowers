@@ -151,6 +151,7 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     properties := [ #"IsEnrichedOverCommutativeRegularSemigroup", cannot be inherited
                     #"IsAbCategory", cannot be inherited
                     #"IsLinearCategoryOverCommutativeRing", cannot be inherited
+                    "IsElementaryTopos",
                     ];
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
@@ -332,6 +333,253 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
           function( cat, A, B )
             
             return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
+       CanCompute( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) then
+        
+        SetIsCartesianCategory( S, true );
+        
+        ##
+        AddProjectionInFactorOfDirectProductWithGivenDirectProduct( S,
+          function( cat, L, k, P )
+            
+            return MorphismConstructor( cat,
+                           P,
+                           ProjectionInFactorOfFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   k,
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           L[k] );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( S,
+          function( cat, L, T, tau, P )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismIntoFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           P );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "InjectionOfCofactorOfCoproductWithGivenCoproduct" ) and
+       CanCompute( C, "UniversalMorphismFromCoproductWithGivenCoproduct" ) then
+        
+        SetIsCocartesianCategory( S, true );
+        
+        ##
+        AddInjectionOfCofactorOfCoproductWithGivenCoproduct( S,
+          function( cat, L, k, I )
+            
+            return MorphismConstructor( cat,
+                           L[k],
+                           InjectionOfCofactorOfCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   k,
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismFromCoproductWithGivenCoproduct( S,
+          function( cat, L, T, tau, I )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "EmbeddingOfEqualizer" ) then
+        
+        ##
+        AddEmbeddingOfEqualizer( S,
+          function( cat, A, L )
+            local C, A_mor, emb, E;
+            
+            C := AmbientCategory( cat );
+            
+            A_mor := UnderlyingMorphism( A );
+            
+            emb := EmbeddingOfEqualizer( C,
+                           Source( A_mor ),
+                           List( L, UnderlyingCell ) );
+            
+            E := ObjectConstructor( cat,
+                         PreCompose( C,
+                                 emb,
+                                 A_mor ) );
+            
+            return MorphismConstructor( cat,
+                           E,
+                           emb,
+                           A );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) then
+        
+        ##
+        AddUniversalMorphismIntoEqualizerWithGivenEqualizer( S,
+          function( cat, A, L, T, tau, E )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismIntoEqualizerWithGivenEqualizer( AmbientCategory( cat ),
+                                   Source( UnderlyingMorphism( A ) ),
+                                   List( L, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   UnderlyingCell( tau ),
+                                   Source( UnderlyingMorphism( E ) ) ),
+                           E );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "ProjectionOntoCoequalizer" ) then
+        
+        ##
+        AddProjectionOntoCoequalizer( S,
+          function( cat, A, L )
+            local C, A_mor, prj, E;
+            
+            C := AmbientCategory( cat );
+            
+            A_mor := UnderlyingMorphism( A );
+            
+            prj := ProjectionOntoCoequalizer( C,
+                           Source( A_mor ),
+                           List( L, UnderlyingCell ) );
+            
+            E := ObjectConstructor( cat,
+                         ColiftAlongEpimorphism( C,
+                                 prj,
+                                 A_mor ) );
+            
+            return MorphismConstructor( cat,
+                           A,
+                           prj,
+                           E );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ) then
+        
+        ##
+        AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( S,
+          function( cat, A, L, T, tau, E )
+            
+            return MorphismConstructor( cat,
+                           E,
+                           UniversalMorphismFromCoequalizerWithGivenCoequalizer( AmbientCategory( cat ),
+                                   Source( UnderlyingMorphism( A ) ),
+                                   List( L, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   UnderlyingCell( tau ),
+                                   Source( UnderlyingMorphism( E ) ) ),
+                           T );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "ImageEmbedding" ) then
+        
+        ##
+        AddImageEmbedding( S,
+          function( cat, phi )
+            local C, emb, range, im;
+            
+            C := AmbientCategory( cat );
+            
+            emb := ImageEmbedding( C,
+                           UnderlyingCell( phi ) );
+            
+            range := Range( phi );
+            
+            im := ObjectConstructor( cat,
+                          PreCompose( C,
+                                  emb,
+                                  UnderlyingMorphism( range ) ) );
+            
+            return MorphismConstructor( cat,
+                           im,
+                           emb,
+                           range );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "SubobjectClassifier" ) and
+       CanCompute( C, "ProjectionInFactorOfDirectProduct" ) then
+        
+        ##
+        AddSubobjectClassifier( S,
+          function( cat )
+            local C;
+            
+            C := AmbientCategory( cat );
+            
+            return ObjectConstructor( cat,
+                           ProjectionInFactorOfDirectProduct( C,
+                                   [ BaseObject( cat ), SubobjectClassifier( C ) ],
+                                   1 ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "SubobjectClassifier" ) and
+       CanCompute( C, "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier" ) and
+       CanCompute( C, "UniversalMorphismIntoDirectProductWithGivenDirectProduct" ) then
+        
+        ##
+        AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( S,
+          function( cat, mono, Omega )
+            local C, mono_C, Omega_C, chi_C;
+            
+            C := AmbientCategory( cat );
+            
+            mono_C := UnderlyingCell( mono );
+            
+            Omega_C := SubobjectClassifier( C );
+            
+            chi_C := ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( mono_C, Omega_C );
+            
+            return MorphismConstructor( cat,
+                           Range( mono ),
+                           UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
+                                   [ BaseObject( cat ), Omega_C ],
+                                   Range( mono_C ),
+                                   [ UnderlyingMorphism( Range( mono ) ), chi_C ],
+                                   Source( UnderlyingMorphism( Omega ) ) ),
+                           Omega );
             
         end );
         

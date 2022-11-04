@@ -41,7 +41,7 @@ CapJitPrecompileCategoryAndCompareResult(
     number_of_objectified_objects_in_data_structure_of_object := 3,
     number_of_objectified_morphisms_in_data_structure_of_object := 1,
     number_of_objectified_objects_in_data_structure_of_morphism := 6,
-    number_of_objectified_morphisms_in_data_structure_of_morphism := 2
+    number_of_objectified_morphisms_in_data_structure_of_morphism := 3
 );
 
 #! @EndExample
