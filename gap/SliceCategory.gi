@@ -337,6 +337,78 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
+    if CanCompute( C, "ProjectionInFactorOfFiberProductWithGivenFiberProduct" ) and
+       CanCompute( C, "UniversalMorphismIntoFiberProductWithGivenFiberProduct" ) then
+        
+        SetIsCartesianCategory( S, true );
+        
+        ##
+        AddProjectionInFactorOfDirectProductWithGivenDirectProduct( S,
+          function( cat, L, k, P )
+            
+            return MorphismConstructor( cat,
+                           P,
+                           ProjectionInFactorOfFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   k,
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           L[k] );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( S,
+          function( cat, L, T, tau, P )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismIntoFiberProductWithGivenFiberProduct( AmbientCategory( cat ),
+                                   List( L, UnderlyingMorphism ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( P ) ) ),
+                           P );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "InjectionOfCofactorOfCoproductWithGivenCoproduct" ) and
+       CanCompute( C, "UniversalMorphismFromCoproductWithGivenCoproduct" ) then
+        
+        SetIsCocartesianCategory( S, true );
+        
+        ##
+        AddInjectionOfCofactorOfCoproductWithGivenCoproduct( S,
+          function( cat, L, k, I )
+            
+            return MorphismConstructor( cat,
+                           L[k],
+                           InjectionOfCofactorOfCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   k,
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
+            
+        end );
+        
+        ##
+        AddUniversalMorphismFromCoproductWithGivenCoproduct( S,
+          function( cat, L, T, tau, I )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismFromCoproductWithGivenCoproduct( AmbientCategory( cat ),
+                                   List( L, Li -> Source( UnderlyingMorphism( Li ) ) ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   List( tau, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( I ) ) ),
+                           I );
+            
+        end );
+        
+    fi;
+    
     if IsIdenticalObj( over_tensor_unit, true ) then
         
         SetIsMonoidalCategory( S, true );
