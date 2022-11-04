@@ -458,6 +458,55 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
+    if CanCompute( C, "ProjectionOntoCoequalizer" ) then
+        
+        ##
+        AddProjectionOntoCoequalizer( S,
+          function( cat, A, L )
+            local C, A_mor, prj, E;
+            
+            C := AmbientCategory( cat );
+            
+            A_mor := UnderlyingMorphism( A );
+            
+            prj := ProjectionOntoCoequalizer( C,
+                           Source( A_mor ),
+                           List( L, UnderlyingCell ) );
+            
+            E := ObjectConstructor( cat,
+                         ColiftAlongEpimorphism( C,
+                                 prj,
+                                 A_mor ) );
+            
+            return MorphismConstructor( cat,
+                           A,
+                           prj,
+                           E );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ) then
+        
+        ##
+        AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( S,
+          function( cat, A, L, T, tau, E )
+            
+            return MorphismConstructor( cat,
+                           E,
+                           UniversalMorphismFromCoequalizerWithGivenCoequalizer( AmbientCategory( cat ),
+                                   Source( UnderlyingMorphism( A ) ),
+                                   List( L, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   UnderlyingCell( tau ),
+                                   Source( UnderlyingMorphism( E ) ) ),
+                           T );
+            
+        end );
+        
+    fi;
+    
     if CanCompute( C, "ImageEmbedding" ) then
         
         ##
