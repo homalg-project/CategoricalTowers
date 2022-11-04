@@ -2316,13 +2316,13 @@ InstallMethod( \.,
         [ IsPreSheafCategory, IsPosInt ],
         
   function( PSh, string_as_int )
-    local name, F, Y, Yc;
+    local name, Y, F, Yc;
     
     name := NameRNam( string_as_int );
     
-    F := Source( PSh );
-    
     Y := YonedaEmbeddingOfSourceCategory( PSh );
+    
+    F := SourceOfFunctor( Y );
     
     Yc := Y( F.(name) );
     

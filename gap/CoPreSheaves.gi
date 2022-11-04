@@ -676,13 +676,13 @@ InstallMethod( \.,
         [ IsCoPreSheafCategory, IsPosInt ],
         
   function( coPSh, string_as_int )
-    local name, F, coY, coYc;
+    local name, coY, F, coYc;
     
     name := NameRNam( string_as_int );
     
-    F := Source( coPSh );
-    
     coY := CoYonedaEmbeddingOfSourceCategory( coPSh );
+    
+    F := SourceOfFunctor( coY );
     
     coYc := coY( F.(name) );
     
