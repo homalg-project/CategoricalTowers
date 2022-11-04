@@ -409,6 +409,55 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
+    if CanCompute( C, "EmbeddingOfEqualizer" ) then
+        
+        ##
+        AddEmbeddingOfEqualizer( S,
+          function( cat, A, L )
+            local C, A_mor, emb, E;
+            
+            C := AmbientCategory( cat );
+            
+            A_mor := UnderlyingMorphism( A );
+            
+            emb := EmbeddingOfEqualizer( C,
+                           Source( A_mor ),
+                           List( L, UnderlyingCell ) );
+            
+            E := ObjectConstructor( cat,
+                         PreCompose( C,
+                                 emb,
+                                 A_mor ) );
+            
+            return MorphismConstructor( cat,
+                           E,
+                           emb,
+                           A );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( C, "UniversalMorphismIntoEqualizerWithGivenEqualizer" ) then
+        
+        ##
+        AddUniversalMorphismIntoEqualizerWithGivenEqualizer( S,
+          function( cat, A, L, T, tau, E )
+            
+            return MorphismConstructor( cat,
+                           T,
+                           UniversalMorphismIntoEqualizerWithGivenEqualizer( AmbientCategory( cat ),
+                                   Source( UnderlyingMorphism( A ) ),
+                                   List( L, UnderlyingCell ),
+                                   Source( UnderlyingMorphism( T ) ),
+                                   UnderlyingCell( tau ),
+                                   Source( UnderlyingMorphism( E ) ) ),
+                           E );
+            
+        end );
+        
+    fi;
+    
     if CanCompute( C, "ImageEmbedding" ) then
         
         ##
