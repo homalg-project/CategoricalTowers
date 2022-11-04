@@ -69,6 +69,25 @@ end
     , 100 );
     
     ##
+    AddImageEmbedding( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local morphism_attr_1_1, morphism_attr_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := UnderlyingCell( alpha_1 );
+    deduped_6_1 := Range( alpha_1 );
+    deduped_5_1 := AmbientCategory( cat_1 );
+    deduped_4_1 := UnderlyingMorphism( deduped_6_1 );
+    deduped_3_1 := SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( deduped_7_1 ) ) );
+    morphism_attr_2_1 := deduped_3_1;
+    morphism_attr_1_1 := deduped_3_1 * UnderlyingMatrix( deduped_4_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, UnderlyingMorphism, CreateCapCategoryMorphismWithAttributes( deduped_5_1, CreateCapCategoryObjectWithAttributes( deduped_5_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), Range( deduped_4_1 ), UnderlyingMatrix, morphism_attr_1_1 ) ), deduped_6_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_5_1, CreateCapCategoryObjectWithAttributes( deduped_5_1, RankOfObject, NumberRows( morphism_attr_2_1 ) ), Range( deduped_7_1 ), UnderlyingMatrix, morphism_attr_2_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddInitialObject( cat,
         
 ########

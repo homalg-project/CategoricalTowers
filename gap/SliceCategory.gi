@@ -409,6 +409,34 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
+    if CanCompute( C, "ImageEmbedding" ) then
+        
+        ##
+        AddImageEmbedding( S,
+          function( cat, phi )
+            local C, emb, range, im;
+            
+            C := AmbientCategory( cat );
+            
+            emb := ImageEmbedding( C,
+                           UnderlyingCell( phi ) );
+            
+            range := Range( phi );
+            
+            im := ObjectConstructor( cat,
+                          PreCompose( C,
+                                  emb,
+                                  UnderlyingMorphism( range ) ) );
+            
+            return MorphismConstructor( cat,
+                           im,
+                           emb,
+                           range );
+            
+        end );
+        
+    fi;
+    
     if IsIdenticalObj( over_tensor_unit, true ) then
         
         SetIsMonoidalCategory( S, true );
