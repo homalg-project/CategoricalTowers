@@ -1870,8 +1870,8 @@ InstallMethodWithCache( PreSheaves,
             
         end );
         
-        AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier( PSh,
-          function ( PSh, iota, Omega )
+        AddClassifyingMorphismOfSubobject( PSh,
+          function ( PSh, iota )
             
             return SievesOfPathsToTruth( PSh, iota );
             
@@ -2574,53 +2574,56 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
         s_c := s( c );
         
         pr := List( hom_c, f ->
-                    LiftAlongMonomorphism(
-                            InjectionOfCofactorOfCoproduct(
+                    AsList( LiftAlongMonomorphism( H,
+                            InjectionOfCofactorOfCoproduct( H,
                                     List( B_0, a -> HomStructure( a, c ) ),
                                     1 + s_c( f ) ),
-                            MapOfFinSets( D, [ f ], hom_c ) )(0) );
+                            MapOfFinSets( H,
+                                    D,
+                                    [ f ],
+                                    hom_c ) ) )[1 + 0] );
         
         ## Sieves(c) ↪ Hom(Hom(-, c), Ω)
         emb_c := emb( c );
         
         ## Sieve(x) ↪ Hom(-, c) as an "element" D → Sieves(c):
-        return LiftAlongMonomorphism(
+        return AsList( LiftAlongMonomorphism( H,
                        ## Sieves(c) ↪ Hom(Hom(-, c), Ω)
                        emb_c,
                        ## Sieve(x) ↪ Hom(-, c) as an "element" D → Hom(Hom(-, c), Ω):
-                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(
+                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
                                ## χ: Hom(-, c) → Ω:
-                               MapOfFinSets(
+                               MapOfFinSets( H,
                                        hom_c,
                                        List( List( hom_c, f ->
                                                ## Is x P(f) ∈ Q(a) ⊆ P(a), where a = Source(f)?
-                                               IsLiftableAlongMonomorphism(
+                                               IsLiftableAlongMonomorphism( H,
                                                        ## ι_a: Q(a) ↪ P(a):
                                                        iota( B_0[1 + s_c( f )] ), ## = a
                                                        ## x P(f) ∈ P(a), where a = Source(f):
-                                                       PreCompose(
+                                                       PreCompose( H,
                                                                ## x ∈ P(c):
                                                                x,
                                                                ## P(f): P(c) → P(a):
                                                                P(
                                                                  ## f: a → c in B, where a = Source(f):
-                                                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                                                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
                                                                          B_0[1 + s_c( f )], ## = a
                                                                          c,
-                                                                         MapOfFinSets(
+                                                                         MapOfFinSets( H,
                                                                                  D,
                                                                                  [ pr[1 + f] ],
                                                                                  HomStructure( B_0[1 + s_c( f )], c ) ) ) ) ) ) ),
                                              into_OmegaH ),
-                                       OmegaH ) ) )(0);
+                                       OmegaH ) ) ) )[1 + 0];
         
     end;
     
     ## χ: P → Ω
-    return CreatePreSheafMorphism(
+    return CreatePreSheafMorphismByValues( PSh,
                    P,
                    List( B_0,
-                         c -> MapOfFinSets(
+                         c -> MapOfFinSets( H,
                                  P( c ),
                                  List( P( c ), x -> paths_to_truth( c, MapOfFinSets( D, [ x ], P( c ) ) ) ),
                                  Omega( c ) ) ),
