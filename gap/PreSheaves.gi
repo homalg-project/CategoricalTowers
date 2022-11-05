@@ -2625,7 +2625,7 @@ InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
                    List( B_0,
                          c -> MapOfFinSets( H,
                                  P( c ),
-                                 List( P( c ), x -> paths_to_truth( c, MapOfFinSets( D, [ x ], P( c ) ) ) ),
+                                 List( P( c ), x -> paths_to_truth( c, MapOfFinSets( H, D, [ x ], P( c ) ) ) ),
                                  Omega( c ) ) ),
                    Omega );
     
