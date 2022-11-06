@@ -33,7 +33,7 @@ CatReps := FunctorCategory( A, GF3 );
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) )
 InfoOfInstalledOperationsOfCategory( CatReps );
-#! 95 primitive operations were used to derive 318 operations for this category
+#! 95 primitive operations were used to derive 316 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
