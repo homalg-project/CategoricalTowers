@@ -2108,13 +2108,13 @@ InstallMethodWithCache( PreSheaves,
       
       AddIndecomposableInjectiveObjects( PSh,
         function( PSh )
-          local B, CoPSh;
+          local B, coPSh;
           
           B := Source( PSh );
           
-          CoPSh := CoPreSheaves( B );
+          coPSh := CoPreSheaves( B );
           
-          return List( IndecomposableInjectiveObjects( CoPSh ), NakayamaRightAdjointData( B )[1] );
+          return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( B )[1] );
           
       end );
       
