@@ -285,15 +285,6 @@ DeclareOperation( "Hom",
 DeclareOperation( "Hom",
         [ IsCapCategory, IsHomalgRing ] );
 
-#! @Description
-#!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
-#!  The output the full subcategory of the subcategory of functors from the
-#!  <C>SimplicialCategoryTruncatedInDegree</C>(2) into <A>C</A>
-#!  for which each such functor is the nerve truncated in degree $2$ of a category internal to <A>C</A>.
-#! @Arguments C
-DeclareAttribute( "CategoryOfInternalCategories",
-        IsCapCategory );
-
 DeclareOperation( "AsObjectInFunctorCategoryByValues", [ IsFunctorCategory, IsList, IsList ] );
 
 DeclareOperation( "AsObjectInFunctorCategoryByFunctions", [ IsFunctorCategory, IsFunction, IsFunction ] );
