@@ -113,7 +113,7 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCoverObjectDataOfPreSheaf,
     
     coker_rF := CokernelProjection( PSh, rF );
     
-    pre_images := List( ValuesOnAllObjects( coker_rF ), m -> PreInverse( C, m ) );
+    pre_images := List( ValuesOnAllObjects( coker_rF ), m -> PreInverseForMorphisms( C, m ) );
     
     dec := Concatenation(
               ListN( pre_images, [ 1 .. Length( pre_images ) ],

@@ -2031,8 +2031,8 @@ InstallMethodWithCache( PreSheaves,
           tP := CokernelProjection( PSh, RadicalInclusionOfPreSheaf( PSh, P ) );
           vals_tP := ValuesOnAllObjects( tP );
           
-          gens := List( vals_tP, m -> PreInverse( C, m ) );
-          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( C, [ p, q, PreInverse( C, r ) ] ) );
+          gens := List( vals_tP, m -> PreInverseForMorphisms( C, m ) );
+          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( C, [ p, q, PreInverseForMorphisms( C, r ) ] ) );
           
           vals_P := ValuesOfPreSheaf( P );
           vals_G := ValuesOfPreSheaf( G );
@@ -2052,7 +2052,7 @@ InstallMethodWithCache( PreSheaves,
           delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( indices[i][j] ), Range( vals_tP[j] ) ) ) ) );
           
           ells := ListN( [ 1 .. N ], delta, mu, nu, { i, D, m, n } ->
-                    PreCompose( C, PreInverse( C, UniversalMorphismFromDirectSum( C, D, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( C, D, vals_G[1][i], n ) ) );
+                    PreCompose( C, PreInverseForMorphisms( C, UniversalMorphismFromDirectSum( C, D, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( C, D, vals_G[1][i], n ) ) );
           
           return CreatePreSheafMorphismByValues( PSh, P, ells, G );
           
