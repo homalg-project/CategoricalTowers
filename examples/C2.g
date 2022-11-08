@@ -13,9 +13,9 @@ PSh := PreSheaves( C2 );
 #! PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )/ [ a*a = 1 ],
 #! SkeletalFinSets )
 iota := UnitOfIsbellAdjunction( C2 );
-#! A Natural transformation from Identity functor of PreSheaves(
+#! A natural transformation from Identity functor of PreSheaves(
 #! FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )
-#! to Composition of Isbell left adjoint functor and Isbell right adjoint functor
+#! to Precomposition of Isbell left adjoint functor and Isbell right adjoint functor
 IsIsomorphism( iota( TerminalObject( PSh ) ) );
 #! true
 IsIsomorphism( iota( InitialObject( PSh ) ) );
