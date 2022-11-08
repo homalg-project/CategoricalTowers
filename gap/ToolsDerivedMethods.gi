@@ -33,30 +33,6 @@ AddDerivationToCAP( CoimageObjectFunctorialWithGivenCoimageObjects,
 end : Description := "CoimageObjectFunctorialWithGivenCoimageObjects using the universality" );
 
 ##
-AddDerivationToCAP( PreInverse,
-        [ [ IdentityMorphism, 1 ],
-          [ Lift, 1 ],
-          ],
-        
-  function( cat, alpha )
-    
-    return Lift( cat, IdentityMorphism( cat, Range( alpha ) ), alpha );
-    
-end : Description := "PreInverse using IdentityMorphism of Range and Lift" );
-
-##
-AddDerivationToCAP( PostInverse,
-        [ [ IdentityMorphism, 1 ],
-          [ Colift, 1 ],
-          ],
-        
-  function( cat, alpha )
-    
-    return Colift( cat, alpha, IdentityMorphism( cat, Source( alpha ) ) );
-    
-end : Description := "PostInverse using IdentityMorphism of Source and Colift" );
-
-##
 AddDerivationToCAP( ProjectiveCoverObject,
                     [ [ EpimorphismFromProjectiveCoverObject, 1 ] ],
                     

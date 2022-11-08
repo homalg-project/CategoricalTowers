@@ -430,44 +430,6 @@ DeclareOperation( "AddMorphismOntoSumOfImagesOfAllMorphisms",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `PostInverse`.
-#! $F: ( alpha ) \mapsto \mathtt{PostInverse}(alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPostInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPostInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPostInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPostInverse",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `PreInverse`.
-#! $F: ( alpha ) \mapsto \mathtt{PreInverse}(alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPreInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPreInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPreInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPreInverse",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
 #! to the category for the basic operation `ProjectionInFactorOfLimit`.
 #! $F: ( objects, decorated_morphisms, k ) \mapsto \mathtt{ProjectionInFactorOfLimit}(objects, decorated_morphisms, k)$.
 #! @Returns nothing

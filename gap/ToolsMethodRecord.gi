@@ -44,22 +44,6 @@ CoimageObjectFunctorialWithGivenCoimageObjects := rec(
   dual_arguments_reversed := true,
 ),
 
-PreInverse := rec(
-  filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-  return_type := "morphism",
-  dual_operation := "PostInverse",
-  is_merely_set_theoretic := true
-),
-
-PostInverse := rec(
-  filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-  return_type := "morphism",
-  dual_operation := "PreInverse",
-  is_merely_set_theoretic := true
-),
-
 ProjectiveCoverObject := rec(
   filter_list := [ "category", "object" ],
   return_type := "object",
