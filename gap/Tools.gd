@@ -112,7 +112,7 @@ DeclareOperation( "CoimageObjectFunctorialWithGivenCoimageObjects",
 
 ###################################
 ##
-#! @Section PreInverse and PostInverse
+#! @Section Projective covers and injective envelopes
 ##
 ###################################
 
