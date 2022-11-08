@@ -112,7 +112,7 @@ DeclareOperation( "CoimageObjectFunctorialWithGivenCoimageObjects",
 
 ###################################
 ##
-#! @Section PreInverse and PostInverse
+#! @Section Projective covers and injective envelopes
 ##
 ###################################
 
@@ -163,28 +163,6 @@ DeclareAttribute( "MonomorphismIntoInjectiveEnvelopeObject",
 #! @Returns a monomorphism
 DeclareOperation( "MonomorphismIntoInjectiveEnvelopeObjectWithGivenInjectiveEnvelopeObject",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-###################################
-##
-#! @Section PreInverse and PostInverse
-##
-###################################
-
-#! @Description
-#!  The argument is a morphism $\alpha: A \rightarrow B$.
-#!  The output is the preinverse $\iota: B \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(B,A)$
-#! @Arguments alpha
-DeclareOperation( "PostInverse",
-        [ IsCapCategoryMorphism ] );
-
-#! @Description
-#!  The argument is a morphism $\alpha: A \rightarrow B$.
-#!  The output is the postinverse $\iota: B \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(B,A)$
-#! @Arguments alpha
-DeclareOperation( "PreInverse",
-        [ IsCapCategoryMorphism ] );
 
 ###################################
 ##
