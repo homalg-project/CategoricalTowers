@@ -54,8 +54,10 @@ function ( cat_1, a_1 )
     deduped_6_1 := Source( a_1 );
     hoisted_5_1 := [ 1 .. Length( ObjectList( deduped_7_1 ) ) ];
     hoisted_4_1 := UnderlyingCategory( cat_1 );
-    hoisted_3_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
-            return List( logic_new_func_list_2, UnderlyingQuiverAlgebraElement );
+    hoisted_3_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
+            return List( logic_new_func_x_2, function ( logic_new_func_x_3 )
+                    return - UnderlyingQuiverAlgebraElement( logic_new_func_x_3 );
+                end );
         end );
     hoisted_2_1 := List( deduped_8_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Range );
@@ -69,7 +71,7 @@ function ( cat_1, a_1 )
               hoisted_2_2 := hoisted_2_1[i_2];
               hoisted_1_2 := hoisted_1_1[i_2];
               return List( hoisted_5_1, function ( j_3 )
-                      return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_2[j_3], hoisted_2_2[j_3], UnderlyingQuiverAlgebraElement, - hoisted_3_2[j_3] );
+                      return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_2[j_3], hoisted_2_2[j_3], UnderlyingQuiverAlgebraElement, hoisted_3_2[j_3] );
                   end );
           end ) );
 end
