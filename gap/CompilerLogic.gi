@@ -200,8 +200,8 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "func" ],
-        src_template := "Sum( [ 1, 2, 3, 4 ], func )",
-        dst_template := "func( 1 ) + func( 2 ) + func( 3 ) + func( 4 )",
+        src_template := "Sum( [ 0, 1, 2, 3 ], func )",
+        dst_template := "func( 0 ) + func( 1 ) + func( 2 ) + func( 3 )",
     )
 );
 
