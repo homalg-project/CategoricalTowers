@@ -1493,7 +1493,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     p21 := ProjectionInFactorOfDirectProduct( H, D00, 1 );
     p22 := ProjectionInFactorOfDirectProduct( H, D00, 2 );
     
-    B1 := List( [ 0 .. Length( N0N0 ) - 1 ], i ->
+    B1 := List( N0N0, i ->
                 HomomorphismStructureOnObjects( B,
                         B0[1 + AsList( p21 )[1 + i]],
                         B0[1 + AsList( p22 )[1 + i]] ) );
@@ -1511,7 +1511,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N0 -> N1
     id := MapOfFinSets( H,
                   N0,
-                  List( [ 0 .. Length( N0 ) - 1 ], i ->
+                  List( N0, i ->
                         AsList(
                                PreCompose( H,
                                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
@@ -1528,7 +1528,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
     pi2 := MapOfFinSets( H,
                    N1,
-                   Concatenation( List( [ 0 .. Length( N0N0 ) - 1 ], i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ),
+                   Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ),
                    N0N0 );
     
     ## N1 -> N0 × N0 -> N0
@@ -1546,7 +1546,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     p32 := ProjectionInFactorOfDirectProduct( H, D000, 2 );
     p33 := ProjectionInFactorOfDirectProduct( H, D000, 3 );
     
-    B2 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+    B2 := List( N0N0N0, i ->
                 DirectProduct( H,
                         [ HomomorphismStructureOnObjects( B,
                                 B0[1 + AsList( p31 )[1 + i]],
@@ -1570,7 +1570,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N1 -> N2
     is := MapOfFinSets( H,
                   N1,
-                  List( [ 0 .. Length( N1 ) - 1 ], i ->
+                  List( N1, i ->
                         AsList(
                                PreCompose( H,
                                        DirectProductFunctorial( H,
@@ -1601,7 +1601,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N1 -> N2
     it := MapOfFinSets( H,
                   N1,
-                  List( [ 0 .. Length( N1 ) - 1 ], i ->
+                  List( N1, i ->
                         AsList(
                                PreCompose( H,
                                        DirectProductFunctorial( H,
@@ -1638,7 +1638,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
     pi3 := MapOfFinSets( H,
                    N2,
-                   Concatenation( List( [ 0 .. Length( N0N0N0 ) - 1 ], i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ),
+                   Concatenation( List( N0N0N0, i -> ListWithIdenticalEntries( Length( B2[1 + i] ), i ) ) ),
                    N0N0N0 );
     
     ## N2 -> N0 × N0 × N0 -> N0 × N0
@@ -1649,7 +1649,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N2 -> N1
     ps := MapOfFinSets( H,
                   N2,
-                  List( [ 0 .. Length( N2 ) - 1 ], i ->
+                  List( N2, i ->
                         AsList(
                                PreComposeList( H,
                                        [ LiftAlongMonomorphism( H,
@@ -1671,7 +1671,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N2 -> N1
     pt := MapOfFinSets( H,
                   N2,
-                  List( [ 0 .. Length( N2 ) - 1 ], i ->
+                  List( N2, i ->
                         AsList(
                                PreComposeList( H,
                                        [ LiftAlongMonomorphism( H,
@@ -1691,8 +1691,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                                  1 + AsList( pi323 )[1 + i] ) ] ) )[1 + 0] ),
                   N1 );
     
-    mus := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
-                 List( [ 0 .. Length( B2[1 + i] ) - 1 ], j ->
+    mus := List( N0N0N0, i ->
+                 List( B2[1 + i], j ->
                        [ MapOfFinSets( H,
                                T,
                                [ AsList(
@@ -1716,8 +1716,8 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, ForAll( mus, mu -> ForAll( mu, m -> IsWellDefined( m[1] ) and IsWellDefined( m[2] ) ) ) );
     
-    mus1 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
-                  List( [ 0 .. Length( B2[1 + i] ) - 1 ], j ->
+    mus1 := List( N0N0N0, i ->
+                  List( B2[1 + i], j ->
                         PreCompose( B,
                                 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
                                         B0[1 + AsList( p31 )[1 + i]],
@@ -1728,12 +1728,12 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
                                         B0[1 + AsList( p33 )[1 + i]],
                                         mus[1 + i][1 + j][2] ) ) ) );
     
-    mus2 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
-                  List( [ 0 .. Length( B2[1 + i] ) - 1 ], j ->
+    mus2 := List( N0N0N0, i ->
+                  List( B2[1 + i], j ->
                         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( B,
                                 mus1[1 + i][1 + j] ) ) );
     
-    mus3 := List( [ 0 .. Length( N0N0N0 ) - 1 ], i ->
+    mus3 := List( N0N0N0, i ->
                   UniversalMorphismFromCoproductWithGivenCoproduct( H,
                           List( mus2[1 + i], Source ),
                           B1[1 + AsList( p313 )[1 + i]],
@@ -1746,7 +1746,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N2 -> N1
     mu := MapOfFinSets( H,
                   N2,
-                  List( [ 0 .. Length( N2 ) - 1 ], i ->
+                  List( N2, i ->
                         AsList(
                                PreComposeList( H,
                                        [ LiftAlongMonomorphism( H,
@@ -1921,7 +1921,7 @@ InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
         return
           MapOfFinSets( H,
                   Hom3[c][a][b], # = Hom(a, b) × Hom(b, c)
-                  List( [ 0 .. Length( Hom3[c][a][b] ) - 1 ],
+                  List( Hom3[c][a][b],
                         function ( i )
                           local d, d_ab, d_bc, m_ab, m_bc, m;
                           
@@ -2138,7 +2138,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
           MapOfFinSets(
                   H,
                   power, ## Hom(Hom(-, c), Ω)
-                  List( [ 0 .. Length( power ) - 1 ], i ->
+                  List( power, i ->
                         ## interpreted as an "element" D → Hom(Hom(-, c), Ω)
                         AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( H,
                                 ## interpreted as a classifying morphism χ_{s'}: Hom(-, c) → Ω
