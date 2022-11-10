@@ -343,15 +343,15 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
                                                                Fv( b ), # := PSh( F, B( -, b ) )
                                                                List( [ 0 .. Length( Fv( b ) ) - 1 ], eta ->
                                                                      AsList( # eta_a(x), where
-                                                                            ValuesOnAllObjects( # eta_a, where
-                                                                             # eta: F → B( -, b )
-                                                                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
-                                                                                     F,
-                                                                                     Yoneda( b ), # := B( -, b )
-                                                                                     MorphismConstructor( H,
-                                                                                             T,
-                                                                                             [ eta ],
-                                                                                             Fv( b ) ) ) )[a_index] )[1 + x] ), # eta_a(x)
+                                                                             ValuesOnAllObjects( # eta_a, where
+                                                                                     # eta: F → B( -, b )
+                                                                                     InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
+                                                                                             F,
+                                                                                             Yoneda( b ), # := B( -, b )
+                                                                                             MorphismConstructor( H,
+                                                                                                     T,
+                                                                                                     [ eta ],
+                                                                                                     Fv( b ) ) ) )[a_index] )[1 + x] ), # eta_a(x)
                                                                coYoneda( a )( b ) ) ), # := B( a, b )
                                                  Fv ) ) )[1 + 0] ),
                            Fvv( a ) ); # := coPSh( B( a, - ), Fv )
