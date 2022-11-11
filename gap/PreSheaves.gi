@@ -2511,7 +2511,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
 end );
 
 ##
-InstallMethodForCompilerForCAP( SievesOfPathsToTruth,
+InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
         [ IsPreSheafCategory, IsMorphismInPreSheafCategory ],
         
   function ( PSh, iota ) ## ι: Q ↪ P

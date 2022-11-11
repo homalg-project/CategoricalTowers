@@ -213,13 +213,7 @@ DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #!  to its <Q>paths to truth</Q> $f: a \to c$ translating $x$ into $f(x) \in Q(a) \subseteq P(a)$.
 #! @Returns a monomorphisms in a Hom-category of functors
 #! @Arguments iota
-#! @Group SievesOfPathsToTruth
 DeclareAttribute( "SievesOfPathsToTruth", IsMorphismInPreSheafCategory );
-
-#! @Arguments Hom, iota
-#! @Group SievesOfPathsToTruth
-DeclareOperation( "SievesOfPathsToTruth",
-        [ IsPreSheafCategory, IsMorphismInPreSheafCategory ] );
 
 ####################################
 #
