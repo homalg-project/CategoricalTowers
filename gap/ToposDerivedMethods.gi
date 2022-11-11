@@ -327,6 +327,73 @@ AddDerivationToCAP( ListOfSubobjects,
     
 end );
 
+##
+AddDerivationToCAP( LawvereTierneyLocalModalityOperators,
+        [ [ DirectProductFunctorial, 1 ],
+          [ IsEqualForMorphisms, 3 ],
+          [ MorphismsOfExternalHom, 1 ],
+          [ PreCompose, 4 ],
+          [ SubobjectClassifier, 1 ],
+          [ TruthMorphismOfAnd, 1 ],
+          [ TruthMorphismOfTrue, 1 ] ],
+        
+  function ( cat )
+    local Omega, endos, idemp, t, jtrue, a;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    endos := MorphismsOfExternalHom( cat, Omega, Omega );
+    
+    idemp := Filtered( endos, j -> IsEqualForMorphisms( cat, j, PreCompose( cat, j, j ) ) ); # j^2 = j
+    
+    ## ⊤: 𝟙 ↪ Ω
+    t := TruthMorphismOfTrue( cat );
+    
+    jtrue := Filtered( idemp, j -> IsEqualForMorphisms( cat, t, PreCompose( cat, t, j ) ) ); # true ⋅ j = j
+    
+    ## ∧: Ω × Ω → Ω
+    a := TruthMorphismOfAnd( cat );
+    
+    return Filtered( jtrue, j ->
+                   IsEqualForMorphisms( cat,
+                           PreCompose( cat, a, j ), # ∧ ⋅ j
+                           PreCompose( cat, # ( j × j ) ⋅ ∧
+                                   DirectProductFunctorial( cat, # j × j
+                                           [ Omega, Omega ],
+                                           [ j, j ],
+                                           [ Omega, Omega ] ),
+                                   a ) ) );
+    
+end );
+
+##
+AddDerivationToCAP( LawvereTierneySubobjects,
+        [ [ LawvereTierneyLocalModalityOperators, 1 ],
+          [ SubobjectOfClassifyingMorphism, 2 ] ],
+        
+  function ( cat )
+    local LT;
+    
+    LT := LawvereTierneyLocalModalityOperators( cat );
+    
+    return List( LT, j -> SubobjectOfClassifyingMorphism( cat, j ) );
+    
+end );
+
+##
+AddDerivationToCAP( LawvereTierneyEmbeddingsOfSubobjectClassifiers,
+        [ [ LawvereTierneyLocalModalityOperators, 1 ],
+          [ ImageEmbedding, 2 ] ],
+        
+  function ( cat )
+    local LT;
+    
+    LT := LawvereTierneyLocalModalityOperators( cat );
+    
+    return List( LT, j -> ImageEmbedding( cat, j ) );
+    
+end );
+
 ##  A <-f-- X
 ##  |       |
 ##  |       |
