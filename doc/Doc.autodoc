@@ -14,6 +14,10 @@ variations are implemented in the CAP-based package `CartesianCategories`.
 
 @Section Heyting Algebra of Subobjects
 
+@Section Lawvere-Tierney topologies
+
+@InsertChunk LawvereTierney
+
 @Section Pushout complements
 
 @Subsection Example in FinSets

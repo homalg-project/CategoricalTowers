@@ -259,6 +259,63 @@ DeclareOperation( "AddIntersectionSubobject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `LawvereTierneyEmbeddingsOfSubobjectClassifiers`.
+#! $F: (  ) \mapsto \mathtt{LawvereTierneyEmbeddingsOfSubobjectClassifiers}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLawvereTierneyEmbeddingsOfSubobjectClassifiers",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLawvereTierneyEmbeddingsOfSubobjectClassifiers",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLawvereTierneyEmbeddingsOfSubobjectClassifiers",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLawvereTierneyEmbeddingsOfSubobjectClassifiers",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LawvereTierneyLocalModalityOperators`.
+#! $F: (  ) \mapsto \mathtt{LawvereTierneyLocalModalityOperators}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLawvereTierneyLocalModalityOperators",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLawvereTierneyLocalModalityOperators",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLawvereTierneyLocalModalityOperators",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLawvereTierneyLocalModalityOperators",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `LawvereTierneySubobjects`.
+#! $F: (  ) \mapsto \mathtt{LawvereTierneySubobjects}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddLawvereTierneySubobjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddLawvereTierneySubobjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddLawvereTierneySubobjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddLawvereTierneySubobjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ListOfSubobjects`.
 #! $F: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)$.
 #! @Returns nothing

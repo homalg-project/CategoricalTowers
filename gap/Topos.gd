@@ -343,6 +343,37 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplicat
 
 ###################################
 ##
+#! @Section Lawvere-Tierney topologies
+##
+###################################
+
+#! @Description
+#!  The input is an elementary topos <A>T</A>.
+#!  The output is the list of Lawvere-Tierney idempotents of the subobject classifier of the topos <A>T</A>.
+#! @Returns a list
+#! @Arguments T
+DeclareAttribute( "LawvereTierneyLocalModalityOperators",
+        IsCapCategory );
+
+#! @Description
+#!  The input is an elementary topos <A>T</A>.
+#!  The output is the list of Lawvere-Tierney subobjects of the subobject classifier of the topos <A>T</A>.
+#! @Returns a list
+#! @Arguments T
+DeclareAttribute( "LawvereTierneySubobjects",
+        IsCapCategory );
+
+#! @Description
+#!  The input is an elementary topos <A>T</A>.
+#!  The output is the list of embeddings of the subobject classifiers of full sheaf subtoposes
+#!  (with respect to the Lawvere-Tierney topologies of the topos <A>T</A>) into the subobject classifier of <A>T</A>.
+#! @Returns a list
+#! @Arguments T
+DeclareAttribute( "LawvereTierneyEmbeddingsOfSubobjectClassifiers",
+        IsCapCategory );
+
+###################################
+##
 #! @Section Pushout complements
 ##
 ###################################
