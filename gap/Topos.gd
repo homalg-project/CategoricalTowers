@@ -65,7 +65,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "SubobjectClassifier",
-                  IsCapCategory );
+        IsCapCategory );
 
 #! @Description
 #! The argument is a category $C$.
@@ -73,7 +73,7 @@ DeclareAttribute( "SubobjectClassifier",
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
-                  IsCapCategory );
+        IsCapCategory );
 
 #! @Description
 #! The argument is a monomorphism $m : A \rightarrow S$.
@@ -91,7 +91,7 @@ DeclareOperation( "ClassifyingMorphismOfSubobject",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m, omega
 DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+        [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a classifying morphism $\chi : S \rightarrow \Omega$.
@@ -133,7 +133,7 @@ DeclareOperation( "TruthMorphismOfTrue",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -152,7 +152,7 @@ DeclareOperation( "TruthMorphismOfFalse",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -170,7 +170,7 @@ DeclareOperation( "TruthMorphismOfNot",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
 #! @Arguments Omega, Omega
 DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -208,7 +208,7 @@ DeclareOperation( "TruthMorphismOfOr",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -227,7 +227,7 @@ DeclareOperation( "TruthMorphismOfImplies",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 ####################################
 ##
@@ -357,7 +357,7 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplicat
 #! @Returns a boolean
 #! @Arguments l, m
 DeclareOperation( "HasPushoutComplement",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two composable morphisms $l: K \rightarrow L$, $m: L \rightarrow G$.
@@ -368,4 +368,4 @@ DeclareOperation( "HasPushoutComplement",
 #! @Returns a morphism
 #! @Arguments l, m
 DeclareOperation( "PushoutComplement",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
