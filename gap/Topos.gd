@@ -81,8 +81,8 @@ DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
 #! $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m
-DeclareOperation( "ClassifyingMorphismOfSubobject",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "ClassifyingMorphismOfSubobject",
+        IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a monomorphism $m : A \rightarrow S$ and
@@ -99,16 +99,16 @@ DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
 #! $m : A \rightarrow S$.
 #! @Returns a monomorphism in $\mathrm{Hom}( A, S )$
 #! @Arguments chi
-DeclareOperation( "SubobjectOfClassifyingMorphism",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "SubobjectOfClassifyingMorphism",
+        IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is an object <A>A</A>.
 #! The output is a list of all subobjects of <A>A</A>.
 #! @Returns a list of monomorphism
 #! @Arguments A
-DeclareOperation( "ListOfSubobjects",
-                  [ IsCapCategoryObject ] );
+DeclareAttribute( "ListOfSubobjects",
+        IsCapCategoryObject );
 
 ####################################
 ##
@@ -122,8 +122,8 @@ DeclareOperation( "ListOfSubobjects",
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfTrue",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfTrue",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a terminal object of the category and
@@ -141,8 +141,8 @@ DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
 #! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfFalse",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfFalse",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a terminal object of the category and
@@ -160,8 +160,8 @@ DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
 #! $\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{SubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfNot",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfNot",
+        IsCapCategory );
 
 #! @Description
 #! The argument is a subobject classifier.
@@ -178,8 +178,8 @@ DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
 #! $\mathrm{and}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfAnd",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfAnd",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
@@ -197,8 +197,8 @@ DeclareOperation( "TruthMorphismOfAndWithGivenObjects",
 #! $\mathrm{or}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfOr",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfOr",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
@@ -216,8 +216,8 @@ DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
 #! $\mathrm{implies}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfImplies",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfImplies",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
