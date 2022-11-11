@@ -285,11 +285,11 @@ end );
 
 ##
 AddDerivationToCAP( MorphismsOfExternalHom,
-                    [ [ HomomorphismStructureOnObjects, 1 ],
-                      [ DistinguishedObjectOfHomomorphismStructure, 1 ],
-                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
-                      [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
-                    ],
+        [ [ HomomorphismStructureOnObjects, 1 ],
+          [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
+          [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
   function ( cat, A, B )
     local range_cat, hom_A_B, D, morphisms;
     

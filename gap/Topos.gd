@@ -65,7 +65,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "SubobjectClassifier",
-                  IsCapCategory );
+        IsCapCategory );
 
 #! @Description
 #! The argument is a category $C$.
@@ -73,7 +73,7 @@ DeclareAttribute( "SubobjectClassifier",
 #! @Returns an object
 #! @Arguments C
 DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
-                  IsCapCategory );
+        IsCapCategory );
 
 #! @Description
 #! The argument is a monomorphism $m : A \rightarrow S$.
@@ -81,8 +81,8 @@ DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
 #! $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m
-DeclareOperation( "ClassifyingMorphismOfSubobject",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "ClassifyingMorphismOfSubobject",
+        IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a monomorphism $m : A \rightarrow S$ and
@@ -91,7 +91,7 @@ DeclareOperation( "ClassifyingMorphismOfSubobject",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )$
 #! @Arguments m, omega
 DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+        [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a classifying morphism $\chi : S \rightarrow \Omega$.
@@ -99,16 +99,16 @@ DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
 #! $m : A \rightarrow S$.
 #! @Returns a monomorphism in $\mathrm{Hom}( A, S )$
 #! @Arguments chi
-DeclareOperation( "SubobjectOfClassifyingMorphism",
-                  [ IsCapCategoryMorphism ] );
+DeclareAttribute( "SubobjectOfClassifyingMorphism",
+        IsCapCategoryMorphism );
 
 #! @Description
 #! The argument is an object <A>A</A>.
 #! The output is a list of all subobjects of <A>A</A>.
 #! @Returns a list of monomorphism
 #! @Arguments A
-DeclareOperation( "ListOfSubobjects",
-                  [ IsCapCategoryObject ] );
+DeclareAttribute( "ListOfSubobjects",
+        IsCapCategoryObject );
 
 ####################################
 ##
@@ -122,8 +122,8 @@ DeclareOperation( "ListOfSubobjects",
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfTrue",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfTrue",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a terminal object of the category and
@@ -133,7 +133,7 @@ DeclareOperation( "TruthMorphismOfTrue",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -141,8 +141,8 @@ DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
 #! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfFalse",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfFalse",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a terminal object of the category and
@@ -152,7 +152,7 @@ DeclareOperation( "TruthMorphismOfFalse",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
 #! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -160,8 +160,8 @@ DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
 #! $\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{SubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfNot",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfNot",
+        IsCapCategory );
 
 #! @Description
 #! The argument is a subobject classifier.
@@ -170,7 +170,7 @@ DeclareOperation( "TruthMorphismOfNot",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
 #! @Arguments Omega, Omega
 DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -178,8 +178,8 @@ DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
 #! $\mathrm{and}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfAnd",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfAnd",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
@@ -197,8 +197,8 @@ DeclareOperation( "TruthMorphismOfAndWithGivenObjects",
 #! $\mathrm{or}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfOr",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfOr",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
@@ -208,7 +208,7 @@ DeclareOperation( "TruthMorphismOfOr",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 #! @Description
 #! The argument is a category $C$.
@@ -216,8 +216,8 @@ DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
 #! $\mathrm{implies}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismOfImplies",
-                  [ IsCapCategory ] );
+DeclareAttribute( "TruthMorphismOfImplies",
+        IsCapCategory );
 
 #! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
@@ -227,7 +227,7 @@ DeclareOperation( "TruthMorphismOfImplies",
 #! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
 #! @Arguments Omega2, Omega
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+        [ IsCapCategoryObject, IsCapCategoryObject ]);
 
 ####################################
 ##
@@ -357,7 +357,7 @@ DeclareOperation( "EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplicat
 #! @Returns a boolean
 #! @Arguments l, m
 DeclareOperation( "HasPushoutComplement",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  The arguments are two composable morphisms $l: K \rightarrow L$, $m: L \rightarrow G$.
@@ -368,4 +368,4 @@ DeclareOperation( "HasPushoutComplement",
 #! @Returns a morphism
 #! @Arguments l, m
 DeclareOperation( "PushoutComplement",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
