@@ -6,8 +6,6 @@
 
 @Section IsWeakTerminal and IsWeakInitial
 
-@Section ExactCoverWithGlobalElements
-
 @Section RelativeLift/RelativeColift
 
 @Section Biased relative weak fiber product

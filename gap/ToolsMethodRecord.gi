@@ -100,12 +100,6 @@ IsWeakInitial := rec(
   dual_operation := "IsWeakTerminal",
   property_of := "object" ),
 
-ExactCoverWithGlobalElements := rec(
-  filter_list := [ "category", "object" ],
-  return_type := "list_of_morphisms",
-  is_merely_set_theoretic := true
-),
-
 RelativeLift := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
   io_type := [ [ "beta", "alpha", "nu" ], [ "beta_source", "alpha_source" ] ],
