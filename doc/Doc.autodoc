@@ -6,6 +6,8 @@
 
 @Section IsWeakTerminal and IsWeakInitial
 
+@Section ExactCoverWithGlobalElements
+
 @Section RelativeLift/RelativeColift
 
 @Section Biased relative weak fiber product
@@ -15,6 +17,12 @@
 @Section Systems of homogeneous linear equations in linear categories
 
 @Section Limit
+
+@Section Colimit
+
+@Section ImageObjectFunctorial
+
+@Section CoimageObjectFunctorial
 
 @Section Add-methods
 
