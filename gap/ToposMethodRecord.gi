@@ -11,6 +11,10 @@ MorphismsOfExternalHom := rec(
   filter_list := [ "category", "object", "object" ],
   return_type := "list_of_morphisms" ),
 
+ExactCoverWithGlobalElements := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "list_of_morphisms" ),
+
 SubobjectClassifier := rec(
   filter_list := [ "category" ],
   return_type := "object" ),

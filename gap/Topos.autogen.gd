@@ -221,6 +221,25 @@ DeclareOperation( "AddEmbeddingOfUnionSubobjectWithGivenUnion",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ExactCoverWithGlobalElements`.
+#! $F: ( arg2 ) \mapsto \mathtt{ExactCoverWithGlobalElements}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddExactCoverWithGlobalElements",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddExactCoverWithGlobalElements",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddExactCoverWithGlobalElements",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddExactCoverWithGlobalElements",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `HasPushoutComplement`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)$.
 #! @Returns nothing
