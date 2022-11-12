@@ -1263,6 +1263,8 @@ InstallMethodWithCache( PreSheaves,
               ForAll( generating_morphisms,
                       function ( m )
                          return
+                           IsEqualForObjects( C, Range( S( m ) ), Source( eta( Source( m ) ) ) ) and
+                           IsEqualForObjects( C, Range( eta( Range( m ) ) ), Source( T( m ) ) ) and
                            IsEqualForMorphisms( C,
                                    PreCompose( C, S( m ), eta( Source( m ) ) ),
                                    PreCompose( C, eta( Range( m ) ), T( m ) ) );
