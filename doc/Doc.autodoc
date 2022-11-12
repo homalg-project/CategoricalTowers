@@ -16,6 +16,12 @@
 
 @Section Limit
 
+@Section Colimit
+
+@Section ImageObjectFunctorial
+
+@Section CoimageObjectFunctorial
+
 @Section Add-methods
 
 @Chapter Tools
