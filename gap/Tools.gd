@@ -190,23 +190,6 @@ DeclareProperty( "IsWeakInitial",
 
 ###################################
 ##
-#! @Section ExactCoverWithGlobalElements
-##
-###################################
-
-#! @Description
-#!  The argument is an object <A>a</A> of a category $\mathbf{C}$.
-#!  The output is a list $D$ of global elements of <A>a</A> (i.e.,
-#!  morphisms from the terminal object $t$ of $\mathbf{C}$ to <A>a</A>),
-#!  such that <C>UniversalMorphismFromCoproduct</C>(<A>a</A>, $D$)
-#!  is an isomorphism.
-#! @Returns a list of morphisms in $\mathrm{Hom}(t,a)$.
-#! @Arguments a
-DeclareAttribute( "ExactCoverWithGlobalElements",
-        IsCapCategoryObject );
-
-###################################
-##
 #! @Section RelativeLift/RelativeColift
 ##
 ###################################
