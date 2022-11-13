@@ -8,15 +8,19 @@ BindGlobal( "FUNCTOR_CATEGORIES", rec( QQ := HomalgFieldOfRationals( ) ) );
 
 ## Hom(-,k): PreSheaves( B ) → CoPreSheaves( B )
 InstallMethodForCompilerForCAP( NakayamaLeftAdjointData,
-        "for a f.p. algebroid",
-        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        "for a category of copresheaves of a f.p. algebroid with a Hom-structure",
+        [ IsCoPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, H, Nakayama, Nakayama_on_obj, Nakayama_on_mor, objs, mors,
+  function ( coPSh )
+    local B, H, Nakayama, Nakayama_on_obj, Nakayama_on_mor, objs, mors,
           Nakayama_functor_on_objs, Nakayama_functor_on_mors;
     
-    PSh := PreSheaves( B );
-    coPSh := CoPreSheaves( B );
+    B := Source( coPSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not ( IsAlgebroid( B ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+        TryNextMethod( );
+    fi;
     
     H := Range( coPSh );
     
@@ -50,19 +54,18 @@ end );
 
 ##
 InstallMethod( NakayamaLeftAdjoint,
-        "for a f.p. algebroid",
-        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        "for categories of presheaves and copresheaves of a f.p. algebroid with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, Nakayama_functor, Nakayama_functor_data;
+  function ( PSh, coPSh )
+    local Nakayama_functor, Nakayama_functor_data;
     
-    PSh := PreSheaves( B );
-    
-    coPSh := CoPreSheaves( B );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( Source( PSh ), Source( coPSh ) ) );
     
     Nakayama_functor := CapFunctor( "Nakayama left adjoint", PSh, coPSh );
     
-    Nakayama_functor_data := NakayamaLeftAdjointData( B );
+    Nakayama_functor_data := NakayamaLeftAdjointData( PSh, coPSh );
     
     AddObjectFunction( Nakayama_functor, Nakayama_functor_data[1] );
     
@@ -72,19 +75,34 @@ InstallMethod( NakayamaLeftAdjoint,
     
 end );
 
-## Hom(-,k): CoPreSheaves( B ) → PreSheaves( B )
-InstallMethodForCompilerForCAP( NakayamaRightAdjointData,
-        "for a f.p. algebroid",
+##
+InstallMethod( NakayamaLeftAdjoint,
+        "for a f.p. algebroid with a Hom-structure",
         [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local PSh, coPSh, H, Nakayama, Nakayama_on_obj, Nakayama_on_mor, objs, mors,
+    
+    return NakayamaLeftAdjoint( PreSheaves( B ), CoPreSheaves( B ) );
+    
+end );
+
+## Hom(-,k): CoPreSheaves( B ) → PreSheaves( B )
+InstallMethodForCompilerForCAP( NakayamaRightAdjointData,
+        "for a category of presheaves a f.p. algebroid with a Hom-structure",
+        [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local B, H, Nakayama, Nakayama_on_obj, Nakayama_on_mor, objs, mors,
           Nakayama_functor_on_objs, Nakayama_functor_on_mors;
     
-    PSh := PreSheaves( B );
-    coPSh := CoPreSheaves( B );
+    B := Source( PSh );
     
-    H := Range( coPSh );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not ( IsAlgebroid( B ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+        TryNextMethod( );
+    fi;
+    
+    H := Range( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if not CanCompute( H, "DualOnMorphisms" ) then
@@ -116,25 +134,35 @@ end );
 
 ##
 InstallMethod( NakayamaRightAdjoint,
-        "for a f.p. algebroid",
-        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        "for categories of copresheaves and presheaves of a f.p. algebroid with a Hom-structure",
+        [ IsCoPreSheafCategory, IsPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, Nakayama_functor, Nakayama_functor_data;
+  function ( PSh, coPSh )
+    local Nakayama_functor, Nakayama_functor_data;
     
-    PSh := PreSheaves( B );
-    
-    coPSh := CoPreSheaves( B );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( Source( coPSh ), Source( PSh ) ) );
     
     Nakayama_functor := CapFunctor( "Nakayama right adjoint", coPSh, PSh );
     
-    Nakayama_functor_data := NakayamaRightAdjointData( B );
+    Nakayama_functor_data := NakayamaRightAdjointData( coPSh, PSh );
     
     AddObjectFunction( Nakayama_functor, Nakayama_functor_data[1] );
     
     AddMorphismFunction( Nakayama_functor,  Nakayama_functor_data[2] );
     
     return Nakayama_functor;
+    
+end );
+
+##
+InstallMethod( NakayamaRightAdjoint,
+        "for a f.p. algebroid with a Hom-structure",
+        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    
+    return NakayamaRightAdjoint( CoPreSheaves( B ), PreSheaves( B ) );
     
 end );
 

@@ -18,23 +18,35 @@ SetInfoLevel( InfoFunctorCategories, 1 );
 
 ##
 DeclareAttribute( "NakayamaLeftAdjointData",
-        IsAlgebroid );
+        IsCoPreSheafCategory );
 
 #! @Description
-#!  Returns the Nakayama left adjoint functor from <C>PreSheaves</C>( <A>B</A> ) $\to$ <C>CoPreSheaves</C>( <A>B</A> ).
-#! @Arguments B
+#!  Returns the Nakayama left adjoint functor from <A>PSh</A> = <C>PreSheaves</C>( <A>B</A> ) $\to$ <A>coPSh</A> = <C>CoPreSheaves</C>( <A>B</A> ).
+#! @Arguments PSh, coPSh
 #! @Returns a &CAP; functor
+#! @Group NakayamaLeftAdjoint
+DeclareOperation( "NakayamaLeftAdjoint",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ] );
+
+#! @Arguments B
+#! @Group NakayamaLeftAdjoint
 DeclareAttribute( "NakayamaLeftAdjoint",
         IsAlgebroid );
 
 ##
 DeclareAttribute( "NakayamaRightAdjointData",
-        IsAlgebroid );
+        IsPreSheafCategory );
 
 #! @Description
-#!  Returns the Nakayama right adjoint functor from <C>CoPreSheaves</C>( <A>B</A> ) $\to$ <C>PreSheaves</C>( <A>B</A> ).
-#! @Arguments B
+#!  Returns the Nakayama right adjoint functor from <A>coPSh</A> = <C>CoPreSheaves</C>( <A>B</A> ) $\to$ <A>PSh</A> = <C>PreSheaves</C>( <A>B</A> ).
+#! @Arguments coPSh, PSh
 #! @Returns a &CAP; functor
+#! @Group NakayamaRightAdjoint
+DeclareOperation( "NakayamaRightAdjoint",
+        [ IsCoPreSheafCategory, IsPreSheafCategory ] );
+
+#! @Arguments B
+#! @Group NakayamaRightAdjoint
 DeclareAttribute( "NakayamaRightAdjoint",
         IsAlgebroid );
 
