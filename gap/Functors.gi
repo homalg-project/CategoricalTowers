@@ -168,14 +168,17 @@ end );
 
 ## O: PreSheaves( B ) → CoPreSheaves( B )
 InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        "for categories of presheaves and copresheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, Yoneda, Yoneda_on_obj, Yoneda_on_mor, objs, mors,
+  function ( PSh, coPSh )
+    local B, Yoneda, Yoneda_on_obj, Yoneda_on_mor, objs, mors,
           IsbellLeftAdjoint_on_objs, IsbellLeftAdjoint_on_mors;
     
-    PSh := PreSheaves( B );
-    coPSh := CoPreSheaves( B );
+    B := Source( PSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( B, Source( coPSh ) ) );
     
     Yoneda := YonedaEmbeddingData( PSh );
     Yoneda_on_obj := Yoneda[1];
@@ -219,18 +222,15 @@ end );
 
 ##
 InstallMethod( IsbellLeftAdjoint,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        "for categories of presheaves and copresheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, IsbellLeftAdjoint, IsbellLeftAdjoint_data;
-    
-    PSh := PreSheaves( B );
-    
-    coPSh := CoPreSheaves( B );
+  function ( PSh, coPSh )
+    local IsbellLeftAdjoint, IsbellLeftAdjoint_data;
     
     IsbellLeftAdjoint := CapFunctor( "Isbell left adjoint functor", PSh, coPSh );
     
-    IsbellLeftAdjoint_data := IsbellLeftAdjointData( B );
+    IsbellLeftAdjoint_data := IsbellLeftAdjointData( PSh, coPSh );
     
     AddObjectFunction( IsbellLeftAdjoint, IsbellLeftAdjoint_data[1] );
     
@@ -240,16 +240,30 @@ InstallMethod( IsbellLeftAdjoint,
     
 end );
 
-## Spec: CoPreSheaves( B ) → PreSheaves( B )
-InstallMethodForCompilerForCAP( IsbellRightAdjointData,
+##
+InstallMethod( IsbellLeftAdjoint,
+        "for a f.p. category or algebroid with a Hom-structure",
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
-    local PSh, coPSh, coYoneda, coYoneda_on_obj, coYoneda_on_mor, objs, mors,
+    
+    return IsbellLeftAdjoint( PreSheaves( B ), CoPreSheaves( B ) );
+    
+end );
+
+## Spec: CoPreSheaves( B ) → PreSheaves( B )
+InstallMethodForCompilerForCAP( IsbellRightAdjointData,
+        "for categories of copresheaves and presheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsCoPreSheafCategory, IsPreSheafCategory ],
+        
+  function ( coPSh, PSh )
+    local B, coYoneda, coYoneda_on_obj, coYoneda_on_mor, objs, mors,
           IsbellRightAdjoint_on_objs, IsbellRightAdjoint_on_mors;
     
-    PSh := PreSheaves( B );
-    coPSh := CoPreSheaves( B );
+    B := Source( coPSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
     
     coYoneda := CoYonedaEmbeddingData( coPSh );
     coYoneda_on_obj := coYoneda[1];
@@ -293,18 +307,15 @@ end );
 
 ##
 InstallMethod( IsbellRightAdjoint,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        "for categories of copresheaves and presheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsCoPreSheafCategory, IsPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, IsbellRightAdjoint, IsbellRightAdjoint_data;
-    
-    PSh := PreSheaves( B );
-    
-    coPSh := CoPreSheaves( B );
+  function ( coPSh, PSh )
+    local IsbellRightAdjoint, IsbellRightAdjoint_data;
     
     IsbellRightAdjoint := CapFunctor( "Isbell right adjoint functor", coPSh, PSh );
     
-    IsbellRightAdjoint_data := IsbellRightAdjointData( B );
+    IsbellRightAdjoint_data := IsbellRightAdjointData( coPSh, PSh );
     
     AddObjectFunction( IsbellRightAdjoint, IsbellRightAdjoint_data[1] );
     
@@ -315,12 +326,46 @@ InstallMethod( IsbellRightAdjoint,
 end );
 
 ##
-InstallMethod( IsbellAdjunctionMonad,
+InstallMethod( IsbellRightAdjoint,
+        "for a f.p. category or algebroid with a Hom-structure",
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     
-    return PreCompose( IsbellLeftAdjoint( B ), IsbellRightAdjoint( B ) );
+    return IsbellRightAdjoint( CoPreSheaves( B ), PreSheaves( B ) );
+    
+end );
+
+##
+InstallMethod( IsbellAdjunctionMonad,
+        "for categories of presheaves and copresheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
+        
+  function ( PSh, coPSh )
+    
+    return PreCompose( IsbellLeftAdjoint( PSh, coPSh ), IsbellRightAdjoint( coPSh, PSh ) );
+    
+end );
+
+##
+InstallMethod( IsbellAdjunctionMonad,
+        "for categories of presheaves and copresheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
+        
+  function ( PSh, coPSh )
+    
+    return PreCompose( IsbellLeftAdjoint( PSh, coPSh ), IsbellRightAdjoint( coPSh, PSh ) );
+    
+end );
+
+##
+InstallMethod( IsbellAdjunctionMonad,
+        "for a f.p. category or algebroid with a Hom-structure",
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function ( B )
+    
+    return IsbellAdjunctionMonad( PreSheaves( B ), CoPreSheaves( B ) );
     
 end );
 
@@ -328,13 +373,21 @@ end );
 ## Tom Avery and Tom Leinster
 ## Isbell conjugacy and the reflexive completion
 InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        "for categories of presheaves and copresheaves of a f.p. category with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
         
-  function ( B )
-    local PSh, coPSh, H, T, objs, nr_objs, O, Spec, Yoneda, coYoneda;
+  function ( PSh, coPSh )
+    local B, H, T, objs, nr_objs, O, Spec, Yoneda, coYoneda;
     
-    PSh := PreSheaves( B );
-    coPSh := CoPreSheaves( B );
+    B := Source( PSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( B, Source( coPSh ) ) );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not ( IsFpCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+        TryNextMethod( );
+    fi;
     
     H := Range( PSh );
     
@@ -343,7 +396,7 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
     objs := SetOfObjects( B );
     nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
     
-    O := IsbellLeftAdjointData( B )[1];
+    O := IsbellLeftAdjointData( PSh, coPSh )[1];
     
     Yoneda := YonedaEmbeddingData( PSh )[1];
     coYoneda := CoYonedaEmbeddingData( coPSh )[1];
@@ -392,20 +445,39 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
 end );
 
 ##
-InstallMethod( UnitOfIsbellAdjunction,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+InstallOtherMethodForCompilerForCAP( UnitOfIsbellAdjunction,
+        "for categories of presheaves and copresheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ],
         
-  function ( B )
+  function ( PSh, coPSh )
     local Id, vv, Isbell_unit;
     
-    Id := IdentityFunctor( PreSheaves( B ) );
+    Id := IdentityFunctor( PSh );
     
-    vv := PreCompose( IsbellLeftAdjoint( B ), IsbellRightAdjoint( B ) );
+    vv := IsbellAdjunctionMonad( PSh, coPSh );
     
     Isbell_unit := NaturalTransformation( Id, vv );
     
-    AddNaturalTransformationFunction( Isbell_unit, UnitOfIsbellAdjunctionData( B ) );
+    AddNaturalTransformationFunction( Isbell_unit, UnitOfIsbellAdjunctionData( PSh, coPSh ) );
     
     return Isbell_unit;
+    
+end );
+
+##
+InstallMethod( UnitOfIsbellAdjunction,
+        "for categories of presheaves of a f.p. category or algebroid with a Hom-structure",
+        [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local B, H, coPSh;
+    
+    B := Source( PSh );
+    
+    H := Range( PSh );
+    
+    coPSh := CoPreSheaves( B, H );
+    
+    return UnitOfIsbellAdjunction( PSh, coPSh );
     
 end );
