@@ -1976,7 +1976,7 @@ InstallMethodWithCache( PreSheaves,
       
       AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
         function( PSh, F )
-          local B, H, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
+          local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
@@ -1985,9 +1985,7 @@ InstallMethodWithCache( PreSheaves,
           
           B := Source( PSh );
           
-          H := RangeCategoryOfHomomorphismStructure( PSh );
-          
-          coPSh := CoPreSheaves( B, H );
+          coPSh := CoPreSheaves( B, Range( PSh ) );
           
           NL := NakayamaLeftAdjointData( coPSh )[1];
           
@@ -2071,14 +2069,12 @@ InstallMethodWithCache( PreSheaves,
       #
       AddInjectiveColift( PSh,
         function ( PSh, mono, eta )
-          local H, B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
+          local B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
                 mono_coPSh, eta_coPSh, colift_coPSh;
           
           B := Source( PSh );
           
-          H := RangeCategoryOfHomomorphismStructure( PSh );
-          
-          coPSh := CoPreSheaves( B, H );
+          coPSh := CoPreSheaves( B, Range( PSh ) );
           
           NL := NakayamaLeftAdjointData( coPSh );
           
@@ -2118,7 +2114,7 @@ InstallMethodWithCache( PreSheaves,
           
           B := Source( PSh );
           
-          coPSh := CoPreSheaves( B );
+          coPSh := CoPreSheaves( B, Range( PSh ) );
           
           return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
           
