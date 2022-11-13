@@ -1939,6 +1939,21 @@ InstallMethodWithCache( PreSheaves,
         
     fi;
     
+    if IsFpCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B ) then
+        
+        ##
+        AddIsReflexive( PSh,
+          function( PSh, F )
+            local unit;
+            
+            unit := UnitOfIsbellAdjunction( PSh );
+            
+            return IsIsomorphism( PSh, unit( F ) );
+            
+        end );
+        
+    fi;
+    
     if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( C ) ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) then
       
       SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
