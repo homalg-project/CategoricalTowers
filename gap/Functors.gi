@@ -177,7 +177,7 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
     PSh := PreSheaves( B );
     coPSh := CoPreSheaves( B );
     
-    Yoneda := YonedaEmbeddingData( B );
+    Yoneda := YonedaEmbeddingData( PSh );
     Yoneda_on_obj := Yoneda[1];
     Yoneda_on_mor := Yoneda[2];
     
@@ -251,7 +251,7 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
     PSh := PreSheaves( B );
     coPSh := CoPreSheaves( B );
     
-    coYoneda := CoYonedaEmbeddingData( B );
+    coYoneda := CoYonedaEmbeddingData( coPSh );
     coYoneda_on_obj := coYoneda[1];
     coYoneda_on_mor := coYoneda[2];
     
@@ -345,8 +345,8 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
     
     O := IsbellLeftAdjointData( B )[1];
     
-    Yoneda := YonedaEmbeddingData( B )[1];
-    coYoneda := CoYonedaEmbeddingData( B )[1];
+    Yoneda := YonedaEmbeddingData( PSh )[1];
+    coYoneda := CoYonedaEmbeddingData( coPSh )[1];
     
     return
       function( IdPShF, F, Fvv )
