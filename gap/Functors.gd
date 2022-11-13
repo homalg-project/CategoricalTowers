@@ -51,40 +51,58 @@ DeclareAttribute( "NakayamaRightAdjoint",
         IsAlgebroid );
 
 ##
-DeclareAttribute( "IsbellLeftAdjointData",
-        IsCapCategory );
+DeclareOperation( "IsbellLeftAdjointData",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ] );
 
 #! @Description
-#!  Returns the Isbell left adjoint functor from <C>PreSheaves</C>( <A>B</A> ) $\to$ <C>CoPreSheaves</C>( <A>B</A> ).
-#! @Arguments B
+#!  Returns the Isbell left adjoint functor from <A>PSh</A> = <C>PreSheaves</C>( <A>B</A> ) $\to$ <A>coPSh</A> = <C>CoPreSheaves</C>( <A>B</A> ).
+#! @Arguments PSh, coPSh
 #! @Returns a &CAP; functor
+#! @Group IsbellLeftAdjoint
+DeclareOperation( "IsbellLeftAdjoint",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ] );
+
+#! @Arguments B
+#! @Group IsbellLeftAdjoint
 DeclareAttribute( "IsbellLeftAdjoint",
         IsCapCategory );
 
 ##
-DeclareAttribute( "IsbellRightAdjointData",
-        IsCapCategory );
+DeclareOperation( "IsbellRightAdjointData",
+        [ IsCoPreSheafCategory, IsPreSheafCategory ] );
 
 #! @Description
-#!  Returns the Isbell right adjoint functor from <C>CoPreSheaves</C>( <A>B</A> ) $\to$ <C>PreSheaves</C>( <A>B</A> ).
-#! @Arguments B
+#!  Returns the Isbell right adjoint functor from <A>coPSh</A> = <C>CoPreSheaves</C>( <A>B</A> ) $\to$ <A>PSh</A> = <C>PreSheaves</C>( <A>B</A> ).
+#! @Arguments coPSh, PSh
 #! @Returns a &CAP; functor
+#! @Group IsbellRightAdjoint
+DeclareOperation( "IsbellRightAdjoint",
+        [ IsCoPreSheafCategory, IsPreSheafCategory ] );
+
+#! @Arguments B
+#! @Group IsbellRightAdjoint
 DeclareAttribute( "IsbellRightAdjoint",
         IsCapCategory );
 
 #! @Description
-#!  Returns the Isbell adjunction monad on <C>PreSheaves</C>( <A>B</A> ).
-#! @Arguments B
+#!  Returns the Isbell adjunction monad on the presheaf category <A>PSh</A>.
+#! @Arguments PSh, coPSh
 #! @Returns a &CAP; functor
+#! @Group IsbellAdjunctionMonad
+DeclareOperation( "IsbellAdjunctionMonad",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ] );
+
+#! @Arguments B
+#! @Group IsbellAdjunctionMonad
 DeclareAttribute( "IsbellAdjunctionMonad",
         IsCapCategory );
 
-DeclareAttribute( "UnitOfIsbellAdjunctionData",
-        IsCapCategory );
+DeclareOperation( "UnitOfIsbellAdjunctionData",
+        [ IsPreSheafCategory, IsCoPreSheafCategory ] );
 
 #! @Description
-#!  Returns the unit of the Isbell adjunction on <C>PreSheaves</C>( <A>B</A> ).
-#! @Arguments B
+#!  Returns the unit of the Isbell adjunction on the presheaf category <A>PSh</A>.
+#! @Arguments PSh
 #! @Returns a &CAP; functor
 DeclareAttribute( "UnitOfIsbellAdjunction",
-        IsCapCategory );
+        IsPreSheafCategory );

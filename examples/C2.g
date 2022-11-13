@@ -12,7 +12,7 @@ C2 := Category( q, [ [ q.a^2, q.1 ] ] );
 PSh := PreSheaves( C2 );
 #! PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )/ [ a*a = 1 ],
 #! SkeletalFinSets )
-iota := UnitOfIsbellAdjunction( C2 );
+iota := UnitOfIsbellAdjunction( PSh );
 #! A natural transformation from Identity functor of PreSheaves(
 #! FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )
 #! to Precomposition of Isbell left adjoint functor and Isbell right adjoint functor
