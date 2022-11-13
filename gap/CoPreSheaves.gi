@@ -598,12 +598,17 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCoPreSheafCategory ],
         
-  function ( B )
-    local coPSh, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
+  function ( coPSh )
+    local B, objs, mors, coYoneda_on_objs, coYoneda_on_mors;
     
-    coPSh := CoPreSheaves( B );
+    B := Source( coPSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     objs := SetOfObjects( B );
     
@@ -639,17 +644,18 @@ InstallMethodForCompilerForCAP( CoYonedaEmbeddingData,
 end );
 
 ##
-InstallMethod( CoYonedaEmbedding,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+InstallMethod( CoYonedaEmbeddingOfSourceCategory,
+        "for a copresheaf category",
+        [ IsCoPreSheafCategory ],
         
-  function ( B )
-    local coPSh, coYoneda, coYoneda_data;
+  function ( coPSh )
+    local B, coYoneda, coYoneda_data;
     
-    coPSh := CoPreSheaves( B );
+    B := Source( coPSh );
     
     coYoneda := CapFunctor( "co-Yoneda embedding functor", B, coPSh );
     
-    coYoneda_data := CoYonedaEmbeddingData( B );
+    coYoneda_data := CoYonedaEmbeddingData( coPSh );
     
     AddObjectFunction( coYoneda, coYoneda_data[1] );
     
@@ -660,13 +666,12 @@ InstallMethod( CoYonedaEmbedding,
 end );
 
 ##
-InstallMethod( CoYonedaEmbeddingOfSourceCategory,
-        "for a copresheaf category",
-        [ IsCoPreSheafCategory ],
+InstallMethod( CoYonedaEmbedding,
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
-  function ( coPSh )
+  function ( B )
     
-    return CoYonedaEmbedding( Source( coPSh ) );
+    return CoYonedaEmbeddingOfSourceCategory( CoPreSheaves( B ) );
     
 end );
 
