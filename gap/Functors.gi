@@ -377,7 +377,7 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
         [ IsPreSheafCategory, IsCoPreSheafCategory ],
         
   function ( PSh, coPSh )
-    local B, H, T, objs, nr_objs, O, Spec, Yoneda, coYoneda;
+    local B, H, objs, nr_objs, O, Spec, Yoneda, coYoneda;
     
     B := Source( PSh );
     
@@ -385,13 +385,11 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
     Assert( 0, IsIdenticalObj( B, Source( coPSh ) ) );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not ( IsFpCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
         TryNextMethod( );
     fi;
     
     H := Range( PSh );
-    
-    T := DistinguishedObjectOfHomomorphismStructure( PSh );
     
     objs := SetOfObjects( B );
     nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
@@ -415,14 +413,14 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
             
             return UniversalMorphismFromCoproduct( H,
                            Fvv( a ), # := coPSh( B( a, - ), Fv )
-                           List( MorphismsOfExternalHom( T, F( a ) ), x ->
+                           List( ExactCoverWithGlobalElements( H, F( a ) ), x ->
                                  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coPSh,
                                          CreateCoPreSheafMorphismByValues( coPSh, # ∈ coPSh( B( a, - ), Fv )
                                                  coYoneda( a ), # := B( a, - )
                                                  List( objs, b ->
                                                        UniversalMorphismFromCoproduct( H, # Fv( b ) := PSh( F, B( -, b ) ) → B( a, b )
                                                                coYoneda( a )( b ), # := B( a, b )
-                                                               List( MorphismsOfExternalHom( T, Fv( b ) ), eta ->
+                                                               List( ExactCoverWithGlobalElements( H, Fv( b ) ), eta ->
                                                                      PreCompose( H,
                                                                              x, # eta_a(x), where
                                                                              ValuesOnAllObjects( # eta_a, where

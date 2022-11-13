@@ -2434,7 +2434,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if IsFpCategory( B ) and HasRangeCategoryOfHomomorphismStructure( B ) then
+    if HasRangeCategoryOfHomomorphismStructure( B ) then
         
         ##
         AddIsReflexive( PSh,
