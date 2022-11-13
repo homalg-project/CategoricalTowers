@@ -1976,7 +1976,7 @@ InstallMethodWithCache( PreSheaves,
       
       AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
         function( PSh, F )
-          local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
+          local B, H, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
           
           #% CAP_JIT_DROP_NEXT_STATEMENT
           if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
@@ -1985,11 +1985,13 @@ InstallMethodWithCache( PreSheaves,
           
           B := Source( PSh );
           
-          coPSh := CoPreSheaves( B );
+          H := RangeCategoryOfHomomorphismStructure( PSh );
           
-          NL := NakayamaLeftAdjointData( B )[1];
+          coPSh := CoPreSheaves( B, H );
           
-          NR := NakayamaRightAdjointData( B );
+          NL := NakayamaLeftAdjointData( coPSh )[1];
+          
+          NR := NakayamaRightAdjointData( PSh );
           
           NR_on_objs := NR[1];
           
@@ -2069,20 +2071,22 @@ InstallMethodWithCache( PreSheaves,
       #
       AddInjectiveColift( PSh,
         function ( PSh, mono, eta )
-          local B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
+          local H, B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
                 mono_coPSh, eta_coPSh, colift_coPSh;
           
           B := Source( PSh );
           
-          coPSh := CoPreSheaves( B );
+          H := RangeCategoryOfHomomorphismStructure( PSh );
           
-          NL := NakayamaLeftAdjointData( B );
+          coPSh := CoPreSheaves( B, H );
+          
+          NL := NakayamaLeftAdjointData( coPSh );
           
           NL_on_objs := NL[1];
           
           NL_on_mors := NL[2];
           
-          NR := NakayamaRightAdjointData( B );
+          NR := NakayamaRightAdjointData( PSh );
           
           NR_on_objs := NR[1];
           
@@ -2116,7 +2120,7 @@ InstallMethodWithCache( PreSheaves,
           
           coPSh := CoPreSheaves( B );
           
-          return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( B )[1] );
+          return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
           
       end );
       
