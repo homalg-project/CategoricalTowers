@@ -12,22 +12,24 @@ C2 := Category( q, [ [ q.a^2, q.1 ] ] );
 PSh := PreSheaves( C2 );
 #! PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )/ [ a*a = 1 ],
 #! SkeletalFinSets )
-iota := UnitOfIsbellAdjunction( PSh );
-#! A natural transformation from Identity functor of PreSheaves(
-#! FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )
-#! to Precomposition of Isbell left adjoint functor and Isbell right adjoint functor
-IsIsomorphism( iota( TerminalObject( PSh ) ) );
+IsReflexive( TerminalObject( PSh ) );
 #! true
-IsIsomorphism( iota( InitialObject( PSh ) ) );
+IsReflexive( InitialObject( PSh ) );
 #! true
 L := PSh.1;
 #! <A projective object in PreSheaves( FreeCategory(
 #!  RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>
-IsIsomorphism( iota( L ) );
+IsReflexive( L );
 #! true
 P := DirectProduct( L, L );
 #! <An object in PreSheaves( FreeCategory(
 #!  RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>
+IsReflexive( P );
+#! true
+iota := UnitOfIsbellAdjunction( PSh );
+#! A natural transformation from Identity functor of PreSheaves(
+#! FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )
+#! to Precomposition of Isbell left adjoint functor and Isbell right adjoint functor
 iotaP := iota( P );
 #! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a = 1 ], SkeletalFinSets )>
@@ -42,6 +44,8 @@ IsOne( iotaP );
 C := Coproduct( L, L );
 #! <An object in PreSheaves( FreeCategory(
 #!  RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>
+IsReflexive( C );
+#! true
 iotaC := iota( C );
 #! <A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #!  / [ a*a = 1 ], SkeletalFinSets )>
@@ -57,6 +61,6 @@ Source( iotaC ) = C;
 #! true
 Range( iotaC ) = P;
 #! true
-IsIsomorphism( iota( Coproduct( L, L, L ) ) );
+IsReflexive( Coproduct( L, L, L ) );
 #! false
 #! @EndExample

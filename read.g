@@ -4,9 +4,12 @@
 # Reading the implementation part of the package.
 #
 
-ReadPackage( "FunctorCategories", "gap/Tools.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversAsCCCPrecompiled.gi");
+
+ReadPackage( "FunctorCategories", "gap/Tools.gi");
+ReadPackage( "FunctorCategories", "gap/ToolsMethodRecord.gi");
+ReadPackage( "FunctorCategories", "gap/ToolsDerivedMethods.gi");
 
 ReadPackage( "FunctorCategories", "gap/PreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/HomStructure.gi");

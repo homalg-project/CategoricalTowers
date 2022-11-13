@@ -6,6 +6,8 @@
 
 #! @Chapter Tools
 
+DeclareGlobalVariable( "FUNCTOR_CATEGORIES_METHOD_NAME_RECORD" );
+
 #! @Section Tools for quivers
 
 CapJitAddTypeSignature( "Source", [ IsCapNaturalTransformation ],
@@ -54,3 +56,19 @@ CapJitAddTypeSignature( "NaturalTransformationOperation", [ IsCapNaturalTransfor
                     CapJitDataTypeOfObjectOfCategory( input_types[1].range_category ) ],
                   CapJitDataTypeOfMorphismOfCategory( input_types[1].range_category ) ] );
 end );
+
+###################################
+##
+#! @Section Properties
+##
+###################################
+
+#! @Description
+#!  The argument is a (co)presheaf <A>F</A>.
+#!  The output is <C>true</C> if <A>F</A> is reflexive,
+#!  i.e., the <A>F</A>-component of the (co)unit of the Isbell adjunction monad is an isomorphism,
+#!  otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments F
+DeclareProperty( "IsReflexive",
+        IsCapCategoryObject );
