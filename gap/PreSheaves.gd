@@ -157,6 +157,10 @@ CapJitAddTypeSignature( "Range", [ IsObjectInPreSheafCategory ],
 end );
 
 ##
+DeclareAttribute( "PairOfFunctionsOfPreSheaf",
+        IsObjectInPreSheafCategory );
+
+##
 DeclareAttribute( "ValuesOfPreSheaf",
         IsObjectInPreSheafCategory );
 
@@ -171,6 +175,9 @@ CapJitAddTypeSignature( "ValuesOfPreSheaf", [ IsObjectInPreSheafCategory ],
                   rec( filter := IsList, element_type := CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ) ] );
     
 end );
+
+DeclareAttribute( "FunctionOfPreSheafMorphism",
+        IsMorphismInPreSheafCategory );
 
 #! @Description
 #!  Returns the values of the presheaf morphism <A>eta</A> on all objects of the source category of presheaf category <A>PSh</A>.
@@ -294,6 +301,11 @@ DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
+
+DeclareOperationWithCache( "PreSheavesOfEnrichedCategory",
+        [ IsCapCategory, IsCapCategory ] );
+
+CapJitAddTypeSignature( "PreSheavesOfEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
 
 DeclareOperationWithCache( "PreSheavesOfFpEnrichedCategory",
         [ IsCapCategory, IsCapCategory ] );
