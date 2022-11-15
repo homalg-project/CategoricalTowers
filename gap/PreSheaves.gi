@@ -568,11 +568,11 @@ InstallMethodWithCache( PreSheaves,
         name := Concatenation( name, "..., ... )" );
     fi;
     
-    category_filter := IsPreSheafCategory and IsTerminalCategory;
+    category_filter := IsPreSheafCategoryOfFpEnrichedCategory and IsTerminalCategory;
     
-    category_object_filter := IsObjectInPreSheafCategory;
+    category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory;
     
-    category_morphism_filter := IsMorphismInPreSheafCategory;
+    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory;
     
     ##
     object_constructor := function( cat, pair )
@@ -1105,9 +1105,9 @@ InstallMethodWithCache( PreSheaves,
                    name := name,
                    category_as_first_argument := true,
                    supports_empty_limits := supports_empty_limits,
-                   category_filter := IsPreSheafCategory,
-                   category_object_filter := IsObjectInPreSheafCategory,
-                   category_morphism_filter := IsMorphismInPreSheafCategory,
+                   category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
+                   category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
+                   category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
                    preinstall := preinstall,
@@ -2693,7 +2693,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-          [ IsObjectInPreSheafCategory ],
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
   function ( F )
     local algebroid, vertices, arrows, v_dim, v_string, a_dim, a_string, string;
     
@@ -2742,7 +2743,8 @@ end );
 
 ##
 InstallMethod( Display,
-          [ IsObjectInPreSheafCategory ],
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
   function ( F )
     local objects, images_of_objects, morphisms, images_of_morphisms, i;
     
@@ -2781,7 +2783,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-          [ IsMorphismInPreSheafCategory ],
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
   function ( eta )
     local vertices, s_dim, r_dim, string;
     
@@ -2809,7 +2812,8 @@ end );
 
 ##
 InstallMethod( Display,
-          [ IsMorphismInPreSheafCategory ],
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
   function ( eta )
     local objects, images_of_objects, i;
     
@@ -2833,8 +2837,8 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsObjectInPreSheafCategory ],
-          
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
   function( F )
     local objs, v_objs, mors, v_mors, s, i;
     
@@ -2879,8 +2883,8 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsMorphismInPreSheafCategory ],
-          
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
   function( eta )
     local only_datum, objs, v_objs, i, datum;
     

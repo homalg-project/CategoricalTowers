@@ -38,6 +38,32 @@ DeclareCategory( "IsMorphismInPreSheafCategory",
         IsCellInPreSheafCategory and
         IsCapCategoryMorphism );
 
+#! @Description
+#!  The &GAP; category of a presheaf category of a finitely presented enriched category.
+#! @Arguments category
+DeclareCategory( "IsPreSheafCategoryOfFpEnrichedCategory",
+        IsPreSheafCategory );
+
+#! @Description
+#!  The &GAP; category of cells in a presheaf category of a finitely presented enriched category.
+#! @Arguments cell
+DeclareCategory( "IsCellInPreSheafCategoryOfFpEnrichedCategory",
+        IsCellInPreSheafCategory );
+
+#! @Description
+#!  The &GAP; category of objects in a presheaf category of a finitely presented enriched category.
+#! @Arguments obj
+DeclareCategory( "IsObjectInPreSheafCategoryOfFpEnrichedCategory",
+        IsCellInPreSheafCategoryOfFpEnrichedCategory and
+        IsObjectInPreSheafCategory );
+
+#! @Description
+#!  The &GAP; category of morphisms in a presheaf category of a finitely presented enriched category.
+#! @Arguments mor
+DeclareCategory( "IsMorphismInPreSheafCategoryOfFpEnrichedCategory",
+        IsCellInPreSheafCategoryOfFpEnrichedCategory and
+        IsMorphismInPreSheafCategory );
+
 ####################################
 #
 #! @Section Global variables
