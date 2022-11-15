@@ -2101,7 +2101,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         [ IsFpCategory ],
         
   function ( B )
-    local Bop, H, D, Omega, Yepis, Ymu, Ypt, sieves, arrows, lobjs, lmors, id, N1,
+    local H, D, Omega, Yepis, Ymu, Ypt, sieves, arrows, lobjs, lmors, id, N1,
           Sieves, Sieves_emb, Sieves_maximal,
           HomHomOmega_objects, HomHomOmega_morphisms, Sieves_objects, Sieves_morphisms,
           Constant_functor, Sieves_functor, HomHomOmega_functor;
