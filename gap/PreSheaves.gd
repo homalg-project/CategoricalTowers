@@ -295,6 +295,11 @@ DeclareOperationWithCache( "PreSheaves",
 
 CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
 
+DeclareOperationWithCache( "PreSheavesOfFpEnrichedCategory",
+        [ IsCapCategory, IsCapCategory ] );
+
+CapJitAddTypeSignature( "PreSheavesOfFpEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategoryOfFpEnrichedCategory );
+
 DeclareOperation( "CreatePreSheafByValues", [ IsPreSheafCategory, IsList, IsList ] );
 
 DeclareOperation( "CreatePreSheafByFunctions", [ IsPreSheafCategory, IsFunction, IsFunction ] );

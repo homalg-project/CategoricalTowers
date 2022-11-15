@@ -551,6 +551,28 @@ end );
 
 ##
 InstallMethodWithCache( PreSheaves,
+        "for a f.p. category and a category",
+        [ IsFpCategory, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for an algebroid and a category",
+        [ IsAlgebroid, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
@@ -683,7 +705,7 @@ InstallMethodWithCache( PreSheaves,
 end );
 
 ##
-InstallMethodWithCache( PreSheaves,
+InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
