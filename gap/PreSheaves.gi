@@ -558,7 +558,7 @@ InstallMethodWithCache( PreSheaves,
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
-          list_of_operations_to_install, r, skip, func, pos, properties, ignore, T;
+          T;
     
     name := "PreSheaves( ";
     
