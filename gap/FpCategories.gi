@@ -1525,7 +1525,7 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
     ## N1 -> N0 × N0
     ## this morphism is mixing two levels and is not a CAP operation:
     ## the coproduct N1 in SkeletalFinSets is taken over the index set N0N0 (here also realized as an object in SkeletalFinSets),
-    ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to objects in the same category:
+    ## so this morphism is a fibration of a coproduct over its "index set" which are both assumed to be objects in the same category:
     pi2 := MapOfFinSets( H,
                    N1,
                    Concatenation( List( N0N0, i -> ListWithIdenticalEntries( Length( B1[1 + i] ), i ) ) ),
