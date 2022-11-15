@@ -691,7 +691,7 @@ InstallMethodWithCache( PreSheaves,
     local B_op, kq, A, relations, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, skip, func, pos, commutative_ring,
+          list_of_operations_to_install, skip, commutative_ring,
           properties, preinstall, supports_empty_limits, prop,
           PSh, objects, generating_morphisms, H;
     
@@ -1060,14 +1060,7 @@ InstallMethodWithCache( PreSheaves,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
              ];
     
-    for func in skip do
-        
-        pos := Position( list_of_operations_to_install, func );
-        if IsInt( pos ) then
-            Remove( list_of_operations_to_install, pos );
-        fi;
-        
-    od;
+    list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
     if HasCommutativeRingOfLinearCategory( C ) then
         commutative_ring := CommutativeRingOfLinearCategory( C );
