@@ -203,8 +203,12 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInPreSheafCategory );
 
 ##
-DeclareAttribute( "YonedaEmbeddingData",
+DeclareAttribute( "YonedaEmbeddingFunctionalData",
         IsPreSheafCategory );
+
+##
+DeclareAttribute( "YonedaEmbeddingData",
+        IsPreSheafCategoryOfFpEnrichedCategory );
 
 #! @Arguments B
 #! @Returns a &CAP; functor

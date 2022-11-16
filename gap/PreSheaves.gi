@@ -2738,8 +2738,73 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
         [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local B, Yoneda_on_objs, Yoneda_on_mors;
+    
+    B := Source( PSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
+    
+    Yoneda_on_objs :=
+      function ( obj )
+        local Yobj;
+        
+        Yobj := ObjectConstructor( PSh,
+                        Pair( o -> HomomorphismStructureOnObjects( B, o, obj ),
+                              m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetIsProjective( Yobj, true );
+        
+        return Yobj;
+        
+    end;
+    
+    Yoneda_on_mors :=
+      function ( s, mor, r )
+        
+        return MorphismConstructor( PSh,
+                       s,
+                       o -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), mor ),
+                       r );
+        
+    end;
+    
+    return Pair( Yoneda_on_objs, Yoneda_on_mors );
+    
+end );
+
+##
+InstallMethod( YonedaEmbeddingOfSourceCategory,
+        "for a presheaf category",
+        [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local B, Yoneda, Yoneda_data;
+    
+    B := Source( PSh );
+    
+    Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
+    
+    Yoneda_data := YonedaEmbeddingFunctionalData( PSh );
+    
+    AddObjectFunction( Yoneda, Yoneda_data[1] );
+    
+    AddMorphismFunction( Yoneda,  Yoneda_data[2] );
+    
+    return Yoneda;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh )
     local B, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
