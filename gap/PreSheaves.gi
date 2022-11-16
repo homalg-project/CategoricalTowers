@@ -2366,7 +2366,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
-      HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+       HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
         
         properties := [ "IsMonoidalCategory",
                         "IsBraidedMonoidalCategory",
