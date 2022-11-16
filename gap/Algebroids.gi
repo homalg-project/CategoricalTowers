@@ -2126,7 +2126,7 @@ end );
 ##
 InstallMethod( NaturalTransformation,
         "for a list and two CAP functors",
-        [ IsCapFunctorRep, IsList, IsCapFunctorRep ],
+        [ IsCapFunctor, IsList, IsCapFunctor ],
         
   function( F, images, G )
     local eta, vertices;
@@ -2158,7 +2158,7 @@ end );
 ##
 InstallMethod( NaturalTransformation,
         "for a record and two CAP functors",
-        [ IsRecord, IsCapFunctorRep, IsCapFunctorRep ],
+        [ IsRecord, IsCapFunctor, IsCapFunctor ],
         
   function( eta, F, G )
     local vertices, images;
