@@ -2787,7 +2787,7 @@ end );
 ##
 InstallMethod( YonedaEmbeddingOfSourceCategory,
         "for a presheaf category",
-        [ IsPreSheafCategory ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh )
     local B, Yoneda, Yoneda_data;
@@ -2869,7 +2869,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
         "for an object in a presheaf category and a CAP object",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
         
   function ( PSh, F, objB )
     local pos;
@@ -2908,7 +2908,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
         "for an object in a presheaf category and a CAP morphism",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
     local pos, B_op, morB_op;
@@ -2938,7 +2938,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
         "for a morphism in a presheaf category and a CAP object",
-        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
         
   function ( PSh, eta, objB )
     local pos;
