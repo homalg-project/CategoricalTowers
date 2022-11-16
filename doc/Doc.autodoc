@@ -40,6 +40,10 @@
 
 @InsertChunk SubobjectClassifier
 
+@Subsection PreSheaves of non-f.p. categories (experimental)
+
+@InsertChunk PreSheavesOfSkeletalFinSets
+
 @Chapter Finite cocompletion of a finitely presented (linear) category
 
 @Section Constructors
