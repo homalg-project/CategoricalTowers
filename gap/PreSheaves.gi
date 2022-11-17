@@ -2196,7 +2196,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                         ## reinterpret t: 1 → G^F(b) := Hom(Y(b) × F, G) ∈ Mor(C) as a natural transformation theta: Y(b) × F → G;
                         theta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
                                          DirectProduct( PSh,
-                                                 [ Yoneda[1]( objs[objB_index] ),
+                                                 [ Yoneda[1]( b ),
                                                    F ] ),
                                          G,
                                          ## here we need that the range category C of the presheaf category coincides with
@@ -2261,7 +2261,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     ## source = F(b)
                     ## range  = ((F × G)^G)(b)
                     
-                    Yb := Yoneda[1]( objs[objB_index] );
+                    Yb := Yoneda[1]( b );
                     
                     YbxG := DirectProduct( PSh, [ Yb, G ] );
                     FxG := DirectProduct( PSh, [ F, G ] );
