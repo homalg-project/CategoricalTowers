@@ -211,7 +211,7 @@ InstallMethodForCompilerForCAP( IsbellLeftAdjointData,
                        List( objs, o ->
                              HomomorphismStructureOnMorphisms( PSh, # PSh( eta, B( -, o ) )
                                      eta,
-                                     Yoneda_on_obj( o ) ) ),
+                                     IdentityMorphism( PSh, Yoneda_on_obj( o ) ) ) ),
                        r );
         
     end;
@@ -295,7 +295,7 @@ InstallMethodForCompilerForCAP( IsbellRightAdjointData,
                        s,
                        List( objs, o ->
                              HomomorphismStructureOnMorphisms( coPSh, # coPSh( B( o, - ), rho )
-                                     coYoneda_on_obj( o ),
+                                     IdentityMorphism( coPSh, coYoneda_on_obj( o ) ),
                                      rho ) ),
                        r );
         
