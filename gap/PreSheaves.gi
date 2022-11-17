@@ -2186,7 +2186,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                         ## i.e., it corresponds to a pair (t, f) ∈ G^F(b) × F(b), the entries of which we will construct below:
                         
                         ## interpret the integer i as a morphsim 1 → G^F(b) × F(b):
-                        ii := MapOfFinSets( T, [ i ], source ); ## T plays here the role of the terminal object of the range category C of the presheaf category
+                        ii := MapOfFinSets( C,
+                                      T, ## T plays here the role of the terminal object of the range category C of the presheaf category
+                                      [ i ],
+                                      source );
                         
                         ## the 1st projection 1 → G^F(b) ∈ Mor(C) corresponds to the 1st entry t ∈ G^F(b) of the pair (t, f):
                         t := PreCompose( C,
@@ -2227,7 +2230,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     end;
                     
                     ## ev_b: G^F(b) × F(b) → G(b)
-                    return MapOfFinSets( source, List( source, ev_b ), range );
+                    return MapOfFinSets( C,
+                                   source,
+                                   List( source, ev_b ),
+                                   range );
                     
                 end;
                 
@@ -2293,10 +2299,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                             Fphi -> Fphi( f ) ); ## F(φ)(f) ∈ F(b')
                             
                             ## Y(b)(b') = Hom_B(b, b') → F(b'), (φ: b → b') ↦ (F(φ)(f): F(b) → F(b'))
-                            factor1 := MapOfFinSets( Yb( b_ ), images, F( b_ ) );
+                            factor1 := MapOfFinSets( C,
+                                               Yb( b_ ),
+                                               images,
+                                               F( b_ ) );
                             
                             ## (Y(b) × G)(b') = Y(b)(b') × G(b') → F(b') × G(b') = (F × G)(b')
-                            return DirectProductOnMorphisms( factor1, IdentityMorphism( G( b_ ) ) );
+                            return DirectProductOnMorphisms( C,
+                                           factor1,
+                                           IdentityMorphism( C, G( b_ ) ) );
                             
                         end;
                         
@@ -2307,12 +2318,15 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                             FxG );
                         
                         ## 1 → Hom(Y(b) × G, F × G)
-                        return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coev_b_f ) )[1 + 0];
+                        return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh, coev_b_f ) )[1 + 0];
                         
                     end;
                     
                     ## coev_b: F(b) → ((F × G)^G)(b)
-                    return MapOfFinSets( source, List( source, coev_b ), range );
+                    return MapOfFinSets( C,
+                                   source,
+                                   List( source, coev_b ),
+                                   range );
                     
                 end;
                 
