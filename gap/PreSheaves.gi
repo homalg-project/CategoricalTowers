@@ -2283,17 +2283,14 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
                                                   b,
                                                   b_,
-                                                  MapOfFinSets( T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b, b')
-                                                  ) ## φ: b → b'
-                                          );
+                                                  MapOfFinSets( C, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b, b')
+                                                  ) ); ## φ: b → b'
                             
                             Fphis := List( phis,
-                                           phi -> F( phi ) ## F(φ): F(b) → F(b')
-                                           );
+                                           phi -> F( phi ) ); ## F(φ): F(b) → F(b')
                             
                             images := List( Fphis,
-                                            Fphi -> Fphi( f ) ## F(φ)(f) ∈ F(b')
-                                            );
+                                            Fphi -> Fphi( f ) ); ## F(φ)(f) ∈ F(b')
                             
                             ## Y(b)(b') = Hom_B(b, b') → F(b'), (φ: b → b') ↦ (F(φ)(f): F(b) → F(b'))
                             factor1 := MapOfFinSets( Yb( b_ ), images, F( b_ ) );
@@ -2305,9 +2302,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                         
                         ## coev_b_f: (Y(b) × G) → F × G
                         coev_b_f := CreatePreSheafMorphismByValues( PSh,
-                                           YbxG,
-                                           List( objs, b_ -> component( b_ ) ),
-                                           FxG );
+                                            YbxG,
+                                            List( objs, b_ -> component( b_ ) ),
+                                            FxG );
                         
                         ## 1 → Hom(Y(b) × G, F × G)
                         return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( coev_b_f ) )[1 + 0];
