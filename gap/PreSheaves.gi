@@ -2366,7 +2366,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
-      HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+       HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
         
         properties := [ "IsMonoidalCategory",
                         "IsBraidedMonoidalCategory",
@@ -2738,8 +2738,73 @@ end );
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
         [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local B, Yoneda_on_objs, Yoneda_on_mors;
+    
+    B := Source( PSh );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
+    
+    Yoneda_on_objs :=
+      function ( obj )
+        local Yobj;
+        
+        Yobj := ObjectConstructor( PSh,
+                        Pair( o -> HomomorphismStructureOnObjects( B, o, obj ),
+                              m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetIsProjective( Yobj, true );
+        
+        return Yobj;
+        
+    end;
+    
+    Yoneda_on_mors :=
+      function ( s, mor, r )
+        
+        return MorphismConstructor( PSh,
+                       s,
+                       o -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), mor ),
+                       r );
+        
+    end;
+    
+    return Pair( Yoneda_on_objs, Yoneda_on_mors );
+    
+end );
+
+##
+InstallMethod( YonedaEmbeddingOfSourceCategory,
+        "for a presheaf category",
+        [ IsPreSheafCategory ],
+        
+  function ( PSh )
+    local B, Yoneda, Yoneda_data;
+    
+    B := Source( PSh );
+    
+    Yoneda := CapFunctor( "Yoneda embedding functor", B, PSh );
+    
+    Yoneda_data := YonedaEmbeddingFunctionalData( PSh );
+    
+    AddObjectFunction( Yoneda, Yoneda_data[1] );
+    
+    AddMorphismFunction( Yoneda,  Yoneda_data[2] );
+    
+    return Yoneda;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( YonedaEmbeddingData,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh )
     local B, objs, mors, Yoneda_on_objs, Yoneda_on_mors;
@@ -2787,7 +2852,7 @@ end );
 ##
 InstallMethod( YonedaEmbeddingOfSourceCategory,
         "for a presheaf category",
-        [ IsPreSheafCategory ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh )
     local B, Yoneda, Yoneda_data;
@@ -2869,7 +2934,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
         "for an object in a presheaf category and a CAP object",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
         
   function ( PSh, F, objB )
     local pos;
@@ -2908,7 +2973,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
         "for an object in a presheaf category and a CAP morphism",
-        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
     local pos, B_op, morB_op;
@@ -2938,7 +3003,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
         "for a morphism in a presheaf category and a CAP object",
-        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
         
   function ( PSh, eta, objB )
     local pos;
