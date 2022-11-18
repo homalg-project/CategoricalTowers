@@ -151,15 +151,16 @@ end );
 ## * but id_Ω ≜ ⊤_Ω ∈ Sub(Ω) does not correspond to id_Ω ∈ End(Ω) but to ⊤_Ω: Ω → 𝟙 → Ω ∈ End(Ω), which is generally not an iso
 ## * and id_Ω ∈ End(Ω) corresponds to ⊤: 𝟙 → Ω
 
-## -ι is an operation Sub(Ω) → Sub(Ω) induced by ¬: Ω → Ω
-## Theorem: -ι = ( ι ⇒ ⊥_Sub(Ω) )
+## -ι is an operation Sub(X) → Sub(X) induced by ¬: Ω → Ω
+## Thm: For ι ∈ Sub(Ω): -ι = ( ι ⇒ ⊥_Sub(Ω) )
+## Cor: For ι ∈ Sub(X): -ι = ( ι ⇒ ⊥_Sub(X) )
 AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
-  function( cat, iota ) # ι: S ↪ M
+  function( cat, iota ) # ι: S ↪ X
     
-    return SubobjectOfClassifyingMorphism( ## -ι: (S - M) ↪ M
+    return SubobjectOfClassifyingMorphism( ## -ι: (S - X) ↪ X
                    cat,
                    PreCompose( cat,
-                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: M → Ω
+                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: X → Ω
                            TruthMorphismOfNot( cat ) ) ); ## ¬: Ω → Ω
     
 end );
@@ -172,7 +173,7 @@ AddDerivationToCAP( PseudoComplementSubobject,
     
 end );
 
-## ι1 ∧ ι2 is an operation Sub(Ω) × Sub(Ω) → Sub(Ω) induced by ∧: Ω × Ω → Ω,
+## ι1 ∧ ι2 is an operation Sub(X) × Sub(X) → Sub(X) induced by ∧: Ω × Ω → Ω,
 ## however, we instead use the finite completeness and finite cocompletenss of the topos (see next method)
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
   function( cat, iota1, iota2 )
@@ -180,10 +181,10 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
     
     Omega := SubobjectClassifier( cat );
     
-    return SubobjectOfClassifyingMorphism( ## -ι
+    return SubobjectOfClassifyingMorphism( ## ι1 ∧ ι2
                    cat,
                    PreCompose(
-                           UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
+                           UniversalMorphismIntoDirectProduct( ## X = Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
                                    [ Omega, Omega ],
                                    Range( iota1 ),
@@ -217,7 +218,7 @@ AddDerivationToCAP( IntersectionSubobject,
     
 end );
 
-## ι1 ∨ ι2 is an operation Sub(Ω) × Sub(Ω) → Sub(Ω) induced by ∨: Ω × Ω → Ω
+## ι1 ∨ ι2 is an operation Sub(X) × Sub(X) → Sub(X) induced by ∨: Ω × Ω → Ω
 ## however, we instead use the finite completeness and finite cocompletenss of the topos (see next method)
 AddDerivationToCAP( EmbeddingOfUnionSubobject,
   function( cat, iota1, iota2 )
@@ -225,9 +226,9 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
     
     Omega := SubobjectClassifier( cat );
     
-    return SubobjectOfClassifyingMorphism( cat, ## -ι
+    return SubobjectOfClassifyingMorphism( cat, ## ι1 ∨ ι2
                    PreCompose( cat,
-                           UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
+                           UniversalMorphismIntoDirectProduct( ## X = Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
                                    [ Omega, Omega ],
                                    Range( iota1 ),
@@ -257,16 +258,16 @@ AddDerivationToCAP( UnionSubobject,
     
 end );
 
-## ι1 ⇒ ι2 is an operation Sub(Ω) × Sub(Ω) → Sub(Ω) induced by ⇒: Ω × Ω → Ω
+## ι1 ⇒ ι2 is an operation Sub(X) × Sub(X) → Sub(X) induced by ⇒: Ω × Ω → Ω
 AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSubobject,
   function( cat, iota1, iota2 )
     local Omega;
     
     Omega := SubobjectClassifier( cat );
     
-    return SubobjectOfClassifyingMorphism( cat, ## -ι
+    return SubobjectOfClassifyingMorphism( cat, ## ι1 ⇒ ι2
                    PreCompose( cat,
-                           UniversalMorphismIntoDirectProduct( cat, ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
+                           UniversalMorphismIntoDirectProduct( cat, ## X = Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    [ Omega, Omega ],
                                    Range( iota1 ),
                                    [ ClassifyingMorphismOfSubobject( cat, iota1 ), ## χ_ι1
