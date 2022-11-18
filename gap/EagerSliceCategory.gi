@@ -120,8 +120,8 @@ InstallMethod( SliceCategory,
             
         fi;
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    UnderlyingMorphism, underlying_morphism );
+        return CreateCapCategoryObjectWithAttributes( cat,
+                       UnderlyingMorphism, underlying_morphism );
         
     end );
     

@@ -158,8 +158,8 @@ InstallMethod( LazySliceCategory,
             
         fi;
         
-        return ObjectifyObjectForCAPWithAttributes( rec( ), S,
-                UnderlyingMorphismList, underlying_morphism_list );
+        return CreateCapCategoryObjectWithAttributes( S,
+                       UnderlyingMorphismList, underlying_morphism_list );
         
     end );
     
