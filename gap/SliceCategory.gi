@@ -330,9 +330,9 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     if CanCompute( C, "IsLiftable" ) then
         
         AddIsHomSetInhabited( S,
-          function( cat, A, B )
+          function( cat, M, N )
             
-            return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( A ), UnderlyingMorphism( B ) );
+            return IsLiftable( AmbientCategory( cat ), UnderlyingMorphism( M ), UnderlyingMorphism( N ) );
             
         end );
         
