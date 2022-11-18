@@ -3083,6 +3083,65 @@ InstallMethod( \.,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( SomeDiagramOfGeneratingGenericFigures,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local B, defining_pair, nr_objs, objs, mors, shifts, objects, morphisms, triples;
+    
+    B := Source( PSh );
+    
+    defining_pair := DefiningPairOfUnderlyingQuiver( B );
+    nr_objs := defining_pair[1];
+    
+    objs := SetOfObjects( B );
+    mors := SetOfGeneratingMorphisms( B );
+    
+    shifts := List( [ 1 .. nr_objs ], i -> Sum( [ 1 .. i - 1 ], j -> -1 + Length( F( objs[j] ) ) ) );
+    
+    objects := List( [ 1 .. nr_objs ], i -> ListWithIdenticalEntries( Length( F( objs[i] ) ), objs[i] ) );
+    
+    triples :=
+      function( j )
+        local m, mor;
+          m := defining_pair[2][j];
+          mor := AsList( F( mors[j] ) );
+          return List( [ 1 .. Length( mor ) ], i -> [ mor[i] + shifts[1 + m[1]], mors[j], i + shifts[1 + m[2]] ] );
+      end;
+    
+    morphisms := List( [ 1 .. Length( defining_pair[2] ) ], triples );
+    
+    return Pair( Concatenation( objects ), Concatenation( morphisms ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local Yoneda, diagram;
+    
+    Yoneda := YonedaEmbeddingData( PSh );
+    
+    diagram := SomeDiagramOfGeneratingGenericFigures( PSh, F );
+    
+    return Pair( List( diagram[1], Yoneda[1] ),
+                 List( diagram[2], m -> [ m[1], Yoneda[2]( Yoneda[1]( Source( m[2] ) ), m[2], Yoneda[1]( Range( m[2] ) ) ), m[3] ] ) );
+    
+end );
+
+##
+InstallMethod( SomeDiagramOfRepresentables,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return SomeDiagramOfRepresentables( CapCategory( F ), F );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
         [ IsFpCategory ],
         

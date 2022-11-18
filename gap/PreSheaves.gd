@@ -387,6 +387,14 @@ DeclareOperation( "CreatePreSheafMorphism",
 DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
 
+#! @Arguments F
+DeclareAttribute( "SomeDiagramOfGeneratingGenericFigures",
+        IsObjectInPreSheafCategory );
+
+#! @Arguments F
+DeclareAttribute( "SomeDiagramOfRepresentables",
+        IsObjectInPreSheafCategory );
+
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
 #!  The output the full subcategory of the subcategory of functors from the
