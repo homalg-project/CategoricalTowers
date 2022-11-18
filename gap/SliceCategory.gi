@@ -173,10 +173,10 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
             
         fi;
         
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
-                source,
-                range,
-                UnderlyingCell, underlying_morphism );
+        return CreateCapCategoryMorphismWithAttributes( cat,
+                       source,
+                       range,
+                       UnderlyingCell, underlying_morphism );
         
     end;
     
