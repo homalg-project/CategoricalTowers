@@ -539,3 +539,103 @@ AddFinalDerivationBundle( # CanonicalIdentificationFromImageObjectToCoimage
     
     end
   ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
+
+##
+AddFinalDerivationBundle(
+                    [ [ TerminalObject, 1 ],
+                      [ MorphismsOfExternalHom, 2 ],
+                      [ ObjectConstructor, 1 ],
+                      [ PreComposeList, 2 ],
+                      [ MorphismConstructor, 1 ],
+                      ],
+                    [ DistinguishedObjectOfHomomorphismStructure,
+                      HomomorphismStructureOnObjects,
+                      HomomorphismStructureOnMorphisms,
+                      HomomorphismStructureOnMorphismsWithGivenObjects,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+                    ],
+[
+  DistinguishedObjectOfHomomorphismStructure,
+  function ( cat )
+    
+    return TerminalObject( RangeCategoryOfHomomorphismStructure( cat ) );
+    
+end
+],
+[
+  HomomorphismStructureOnObjects,
+  function ( cat, a, b )
+    local H;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return ObjectConstructor( H,
+                   Length( MorphismsOfExternalHom( cat, a, b ) ) );
+    
+end
+],
+[
+  HomomorphismStructureOnMorphismsWithGivenObjects,
+  function ( cat, s, alpha, beta, r )
+    local H, s_mors, r_mors, images;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    # r_mor = alpha s_mor beta = Source( alpha ) --alpha-> Range( alpha ) --s_mor-> Source( beta ) --beta-> Range( beta )
+    
+    s_mors := MorphismsOfExternalHom( cat, Range( alpha ), Source( beta ) );
+    r_mors := MorphismsOfExternalHom( cat, Source( alpha ), Range( beta ) );
+    
+    images := List( s_mors, s_mor -> -1 + SafePosition( r_mors, PreComposeList( cat, [ alpha, s_mor, beta ] ) ) );
+    
+    return MorphismConstructor( H,
+                   s,
+                   images,
+                   r );
+    
+end
+],
+[
+  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects,
+  function( cat, t, alpha, r )
+    local H, mors;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    mors := MorphismsOfExternalHom( cat, Source( alpha ), Range( alpha ) );
+    
+    return MorphismConstructor( H,
+                   t,
+                   [ -1 + SafePosition( mors, alpha ) ],
+                   r );
+    
+  end
+],
+[
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  function ( cat, a, b, iota )
+    local H, mors_H, pos;
+    
+    H := RangeCategoryOfHomomorphismStructure( cat );
+    
+    # 1_H -> Hom( a, b )
+    mors_H := MorphismsOfExternalHom( H, Source( iota ), Range( iota ) );
+    
+    pos := SafePosition( mors_H, iota );
+    
+    return MorphismsOfExternalHom( cat, a, b )[pos];
+    
+  end
+] : CategoryFilter := function( cat )
+      return HasRangeCategoryOfHomomorphismStructure( cat ) and
+             IsBoundGlobal( "IsCategoryOfSkeletalFinSets" ) and
+             ValueGlobal( "IsCategoryOfSkeletalFinSets" )( RangeCategoryOfHomomorphismStructure( cat ) );
+    end,
+    FunctionCalledBeforeInstallation :=
+      function( cat )
+        SetIsEquippedWithHomomorphismStructure( cat, true );
+    end,
+    Description := "adding the homomorphism structure using MorphismsOfExternalHom"
+);
