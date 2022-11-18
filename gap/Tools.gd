@@ -417,7 +417,7 @@ DeclareOperation( "BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCatego
 #!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
 #!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>.
 #!
-#!  The output is a pair of an object in <A>cat</A> and two parallel morphisms having this object as source,
+#!  The output is a pair consisting of an object in <A>cat</A> and two parallel morphisms having this object as source,
 #!  such that the binary equalizer of the two morphisms is the limit of the diagram.
 #! @Arguments cat, objs, decorated_mors
 #! @Returns a pair of morphisms
@@ -515,7 +515,7 @@ DeclareOperation( "UniversalMorphismIntoLimitWithGivenLimit",
 #!      - a list <A>decorated_mors</A> of triples <A>[ i, mor, j ]</A>,
 #!        where <A>mor</A>:<A>objs</A>[<A>i</A>] $\to$ <A>objs</A>[<A>j</A>] is a morphism in <A>cat</A>.
 #!
-#!  The output is a pair of an object in <A>cat</A> and two parallel morphisms having this object as range,
+#!  The output is a pair consisting of an object in <A>cat</A> and two parallel morphisms having this object as range,
 #!  such that the binary coequalizer of the two morphisms is the colimit of the diagram.
 #! @Arguments cat, objs, decorated_mors
 #! @Returns a pair of morphisms

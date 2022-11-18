@@ -341,40 +341,6 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
 );
 
 ##
-InstallMethodForCompilerForCAP( LimitPair,
-        "for a catgory and two lists",
-        [ IsCapCategory, IsList, IsList ],
-        
-  function( cat, objects, decorated_morphisms )
-    local source, projections, diagram, tau, range, mor1, compositions, mor2;
-    
-    source := DirectProduct( cat, objects );
-    
-    projections := List( [ 1 .. Length( objects ) ],
-                         i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, objects, i, source ) );
-    
-    diagram := List( decorated_morphisms, m -> objects[1 + m[3]] );
-    
-    tau := List( decorated_morphisms, m -> projections[1 + m[3]] );
-    
-    range := DirectProduct( cat, diagram );
-    
-    mor1 := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
-                    diagram, source, tau, range );
-    
-    compositions := List( decorated_morphisms,
-                          m -> PreCompose( cat,
-                                  projections[1 + m[1]],
-                                  m[2] ) );
-    
-    mor2 := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
-                    diagram, source, compositions, range );
-    
-    return Pair( source, [ mor1, mor2 ] );
-    
-end );
-
-##
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
         rec(
             LimitPair :=
@@ -458,22 +424,6 @@ AddFinalDerivationBundle( # Limit
   end
 ]
 : Description := "Limit using DirectProduct and Equalizer" );
-
-##
-InstallMethodForCompilerForCAP( ColimitPair,
-        "for a catgory and two lists",
-        [ IsCapCategory, IsList, IsList ],
-
-  function( cat, objects, decorated_morphisms )
-    local pair;
-    
-    pair := LimitPair( Opposite( cat ),
-                    List( objects, Opposite ),
-                    List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) );
-    
-    return Pair( Opposite( pair[1] ), List( pair[2], Opposite ) );
-    
-end );
 
 ##
 AddFinalDerivationBundle( # Colimit
