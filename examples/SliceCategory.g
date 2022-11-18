@@ -5,13 +5,15 @@ LoadPackage( "SubcategoriesForCAP" );
 #! @Example
 LoadPackage( "FinSetsForCAP", ">= 2022.05-01" );
 #! true
-B := FinSet( 2 );
+B := SubobjectClassifier( SkeletalFinSets );
 #! |2|
-o0 := AsSliceCategoryCell( MapOfFinSets( B, [ 1, 1 ], B ) );
+S := SliceCategory( B );
+#! A slice category of SkeletalFinSets
+o0 := MapOfFinSets( B, [ 1, 1 ], B ) / S;
 #! An object in the slice category given by: |2| → |2|
-o1 := AsSliceCategoryCell( MapOfFinSets( FinSet( 3 ), [ 0, 1, 0 ], B ) );
+o1 := MapOfFinSets( FinSet( 3 ), [ 0, 1, 0 ], B ) / S;
 #! An object in the slice category given by: |3| → |2|
-o2 := AsSliceCategoryCell( MapOfFinSets( FinSet( 4 ), [ 1, 0, 1, 0 ], B ) );
+o2 := MapOfFinSets( FinSet( 4 ), [ 1, 0, 1, 0 ], B ) / S;
 #! An object in the slice category given by: |4| → |2|
 IsWellDefined( o0 );
 #! true
@@ -83,4 +85,21 @@ IsWellDefined( m5 );
 #! true
 IsOne( m5 );
 #! false
+t := DistinguishedObjectOfHomomorphismStructure( S );
+#! |1|
+H := MorphismsOfExternalHom( o1, o2 );;
+Length( H );
+#! 8
+h := HomStructure( o1, o2 );
+#! |8|
+HomStructure( m1, m2 );
+#! |16| → |4|
+th := MorphismsOfExternalHom( t, h );
+#! [ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,
+#!   |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ]
+th = List( H, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure );
+#! true
+H = List( th, m ->
+        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( o1, o2, m ) );
+#! true
 #! @EndExample

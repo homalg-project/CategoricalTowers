@@ -536,6 +536,49 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
     fi;
     
+    if CanCompute( C, "MorphismsOfExternalHom" ) and
+       HasRangeCategoryOfHomomorphismStructure( C ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( S, RangeCategoryOfHomomorphismStructure( C ) );
+        
+        #     M ---m--> N
+        #      \       /
+        # M_mor \     / N_mor
+        #        \   /
+        #          v
+        #          B
+        
+        ##
+        AddMorphismsOfExternalHom( S,
+          function( cat, M, N )
+            local C, M_mor, N_mor, mors, mors_slice;
+            
+            C := AmbientCategory( S );
+            
+            M_mor := UnderlyingMorphism( M );
+            N_mor := UnderlyingMorphism( N );
+            
+            mors := MorphismsOfExternalHom( C,
+                            Source( M_mor ),
+                            Source( N_mor ) );
+            
+            mors_slice := Filtered( mors, m ->
+                                  IsEqualForMorphisms( C,
+                                          PreCompose( C,
+                                                  m,
+                                                  N_mor ),
+                                          M_mor ) );
+            
+            return List( mors_slice, mor ->
+                         MorphismConstructor( cat,
+                                 M,
+                                 mor,
+                                 N ) );
+            
+        end );
+        
+    fi;
+    
     if CanCompute( C, "SubobjectClassifier" ) and
        CanCompute( C, "ProjectionInFactorOfDirectProduct" ) then
         
