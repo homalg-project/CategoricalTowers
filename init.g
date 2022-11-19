@@ -5,5 +5,3 @@
 #
 
 ReadPackage( "QuotientCategories", "gap/QuotientCategories.gd");
-ReadPackage( "QuotientCategories", "gap/QuotientCategoriesObjects.gd");
-ReadPackage( "QuotientCategories", "gap/QuotientCategoriesMorphisms.gd");
