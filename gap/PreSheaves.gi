@@ -2634,6 +2634,35 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( C ); end ) );
     
+    #if false then
+    if ValueOption( "no_precompiled_code" ) <> true then
+        
+        if IsFpCategory( B ) then
+            
+            ADD_FUNCTIONS_FOR_PreSheavesInSkeletalFinSetsPrecompiled( PSh );
+            
+        elif IsAlgebroid( B ) then
+            
+            if IsCategoryOfRows( C ) then
+                
+                if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
+                   ( HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+                     HasCounit( B ) and HasComultiplication( B ) ) then
+                    
+                    ADD_FUNCTIONS_FOR_PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( PSh );
+                    
+                else
+                    
+                    ADD_FUNCTIONS_FOR_PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( PSh );
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+    fi;
+    
     Finalize( PSh );
     
     return PSh;
