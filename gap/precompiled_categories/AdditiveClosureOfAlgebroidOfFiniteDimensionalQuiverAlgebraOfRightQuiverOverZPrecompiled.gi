@@ -635,24 +635,24 @@ function ( cat_1, arg2_1 )
                          deduped_3_3 := hoisted_5_2[j_3];
                          hoisted_2_3 := hoisted_7_2[j_3];
                          hoisted_1_3 := hoisted_6_2[j_3];
-                         return (hoisted_1_2[j_3] and IS_IDENTICAL_OBJ( hoisted_3_1, hoisted_2_2[j_3] ) and function (  )
-                                   if not IS_IDENTICAL_OBJ( hoisted_3_2[j_3], hoisted_5_1 ) then
-                                       return false;
-                                   elif hoisted_4_2[j_3] then
-                                       return true;
-                                   elif not ForAll( deduped_3_3, function ( p_5 )
-                                                return hoisted_1_3 = Source( p_5 );
-                                            end ) then
-                                       return false;
-                                   elif not ForAll( deduped_3_3, function ( p_5 )
-                                                return hoisted_2_3 = Target( p_5 );
-                                            end ) then
-                                       return false;
-                                   else
-                                       return true;
-                                   fi;
-                                   return;
-                               end(  ));
+                         return (hoisted_1_2[j_3] and IS_IDENTICAL_OBJ( hoisted_3_1, hoisted_2_2[j_3] ) and IdFunc( function (  )
+                                     if not IS_IDENTICAL_OBJ( hoisted_3_2[j_3], hoisted_5_1 ) then
+                                         return false;
+                                     elif hoisted_4_2[j_3] then
+                                         return true;
+                                     elif not ForAll( deduped_3_3, function ( p_5 )
+                                                  return hoisted_1_3 = Source( p_5 );
+                                              end ) then
+                                         return false;
+                                     elif not ForAll( deduped_3_3, function ( p_5 )
+                                                  return hoisted_2_3 = Target( p_5 );
+                                              end ) then
+                                         return false;
+                                     else
+                                         return true;
+                                     fi;
+                                     return;
+                                 end )(  ));
                      end );
              end ) then
         return false;
