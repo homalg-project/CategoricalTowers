@@ -1873,6 +1873,71 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             end );
             
             ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh,
+              function ( PSh, s, eta, rho, r )
+                local C, H, nr_objs, hom_diagram_source, hom_source, prjs_source, emb_source,
+                      hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor, eta_vals, rho_vals;
+                
+                C := Range( PSh );
+                
+                H := RangeCategoryOfHomomorphismStructure( PSh );
+                
+                nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
+                
+                hom_diagram_source := ExternalHomDiagram( PSh, Range( eta ), Source( rho ) );
+                
+                hom_source := Limit( H,
+                                     hom_diagram_source[1],
+                                     hom_diagram_source[2] );
+                
+                prjs_source := List( [ 0 .. nr_objs - 1 ],
+                                     i -> ProjectionInFactorOfLimit( H,
+                                             hom_diagram_source[1],
+                                             hom_diagram_source[2],
+                                             i ) );
+                
+                emb_source := UniversalMorphismIntoDirectProduct( H,
+                                      List( prjs_source, Range ),
+                                      hom_source,
+                                      prjs_source );
+                
+                hom_diagram_range := ExternalHomDiagram( PSh, Source( eta ), Range( rho ) );
+                
+                hom_range := Limit( H,
+                                    hom_diagram_range[1],
+                                    hom_diagram_range[2] );
+                
+                prjs_range := List( [ 0 .. nr_objs - 1 ],
+                                    i -> ProjectionInFactorOfLimit( H,
+                                            hom_diagram_range[1],
+                                            hom_diagram_range[2],
+                                            i ) );
+                
+                emb_range := UniversalMorphismIntoDirectProduct( H,
+                                     List( prjs_range, Range ),
+                                     hom_range,
+                                     prjs_range );
+                
+                eta_vals := ValuesOnAllObjects( eta );
+                rho_vals := ValuesOnAllObjects( rho );
+                
+                mors := List( [ 1 .. nr_objs ],
+                              i -> HomomorphismStructureOnMorphisms( C,
+                                      eta_vals[i],
+                                      rho_vals[i] ) );
+                
+                mor := DirectProductFunctorial( H,
+                               mors );
+                
+                return LiftAlongMonomorphism( H,
+                               emb_range,
+                               PreCompose( H,
+                                       emb_source,
+                                       mor ) );
+                
+            end );
+            
+            ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh,
               function ( PSh, eta )
                 local C, H, mors, mor, hom_diagram, hom, nr_objs, prjs, emb;
@@ -1948,71 +2013,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                              G_o_vals[i],
                                              etas[i] ) ),
                                G );
-                
-            end );
-            
-            ##
-            AddHomomorphismStructureOnMorphismsWithGivenObjects( PSh,
-              function ( PSh, s, eta, rho, r )
-                local C, H, nr_objs, hom_diagram_source, hom_source, prjs_source, emb_source,
-                      hom_diagram_range, hom_range, prjs_range, emb_range, mors, mor, eta_vals, rho_vals;
-                
-                C := Range( PSh );
-                
-                H := RangeCategoryOfHomomorphismStructure( PSh );
-                
-                nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
-                
-                hom_diagram_source := ExternalHomDiagram( PSh, Range( eta ), Source( rho ) );
-                
-                hom_source := Limit( H,
-                                     hom_diagram_source[1],
-                                     hom_diagram_source[2] );
-                
-                prjs_source := List( [ 0 .. nr_objs - 1 ],
-                                     i -> ProjectionInFactorOfLimit( H,
-                                             hom_diagram_source[1],
-                                             hom_diagram_source[2],
-                                             i ) );
-                
-                emb_source := UniversalMorphismIntoDirectProduct( H,
-                                      List( prjs_source, Range ),
-                                      hom_source,
-                                      prjs_source );
-                
-                hom_diagram_range := ExternalHomDiagram( PSh, Source( eta ), Range( rho ) );
-                
-                hom_range := Limit( H,
-                                    hom_diagram_range[1],
-                                    hom_diagram_range[2] );
-                
-                prjs_range := List( [ 0 .. nr_objs - 1 ],
-                                    i -> ProjectionInFactorOfLimit( H,
-                                            hom_diagram_range[1],
-                                            hom_diagram_range[2],
-                                            i ) );
-                
-                emb_range := UniversalMorphismIntoDirectProduct( H,
-                                     List( prjs_range, Range ),
-                                     hom_range,
-                                     prjs_range );
-                
-                eta_vals := ValuesOnAllObjects( eta );
-                rho_vals := ValuesOnAllObjects( rho );
-                
-                mors := List( [ 1 .. nr_objs ],
-                              i -> HomomorphismStructureOnMorphisms( C,
-                                      eta_vals[i],
-                                      rho_vals[i] ) );
-                
-                mor := DirectProductFunctorial( H,
-                               mors );
-                
-                return LiftAlongMonomorphism( H,
-                               emb_range,
-                               PreCompose( H,
-                                       emb_source,
-                                       mor ) );
                 
             end );
             
