@@ -3112,7 +3112,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( SomeDiagramOfGeneratingGenericFigures,
+InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
@@ -3153,7 +3153,7 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
     
     Yoneda := YonedaEmbeddingData( PSh );
     
-    diagram := SomeDiagramOfGeneratingGenericFigures( PSh, F );
+    diagram := CoYonedaLemma( PSh, F );
     
     return Pair( List( diagram[1], Yoneda[1] ),
                  List( diagram[2], m -> [ m[1], Yoneda[2]( Yoneda[1]( Source( m[2] ) ), m[2], Yoneda[1]( Range( m[2] ) ) ), m[3] ] ) );

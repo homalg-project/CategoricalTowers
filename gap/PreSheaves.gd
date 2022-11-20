@@ -388,7 +388,7 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
-DeclareAttribute( "SomeDiagramOfGeneratingGenericFigures",
+DeclareAttribute( "CoYonedaLemma",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
