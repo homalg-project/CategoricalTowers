@@ -341,17 +341,6 @@ AddDerivationToCAP( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCa
 );
 
 ##
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
-        rec(
-            LimitPair :=
-            [ [ "DirectProduct", 2 ],
-              [ "ProjectionInFactorOfDirectProductWithGivenDirectProduct", 2 ], ## called in List
-              [ "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 ],
-              [ "PreCompose", 2 ] ] ## called in List
-            )
-);
-
-##
 AddFinalDerivationBundle( # Limit
         [ [ DirectProduct, 2 ],
           [ Equalizer, 1 ],
