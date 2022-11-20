@@ -237,13 +237,6 @@ DeclareAttribute( "YonedaComposition", IsCapCategory );
 #
 ####################################
 
-CapJitAddTypeSignature( "ListOfValues", [ IsList ],
-  function ( input_types )
-    
-    return input_types[1];
-    
-end );
-
 #! @Description
 #!  Apply the functor <A>F</A> (as an object in the corresponding Hom-category) to the cell <A>c</A>.
 #!  The shorthand is <A>F</A>(<A>c</A>).
