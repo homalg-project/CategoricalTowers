@@ -309,6 +309,17 @@ InstallMethod( MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategor
 end );
 
 ##
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+        rec(
+            LimitPair :=
+            [ [ "DirectProduct", 2 ],
+              [ "ProjectionInFactorOfDirectProductWithGivenDirectProduct", 2 ], ## called in List
+              [ "UniversalMorphismIntoDirectProductWithGivenDirectProduct", 2 ],
+              [ "PreCompose", 2 ] ] ## called in List
+            )
+);
+
+##
 InstallMethodForCompilerForCAP( LimitPair,
         "for a catgory and two lists",
         [ IsCapCategory, IsList, IsList ],
