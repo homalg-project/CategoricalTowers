@@ -119,3 +119,5 @@
 @Subsection The reflexive completion of the one object category $C_2$
 
 @InsertChunk C2
+
+@InsertChunk ReflexiveModules
