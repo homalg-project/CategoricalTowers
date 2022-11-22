@@ -1,8 +1,8 @@
 #! @Chunk TerminalCategory_as_FiniteProductCompletion
 
-LoadPackage( "FiniteCocompletion" );
-
 #! @Example
+LoadPackage( "FiniteCocompletion" );
+#! true
 T := FiniteProductCompletion( InitialCategory( ) );
 #! FiniteProductCompletion( InitialCategory( ) )
 InfoOfInstalledOperationsOfCategory( T );
