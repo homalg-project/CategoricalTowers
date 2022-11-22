@@ -152,6 +152,9 @@ GeneratePackageYML:=function(pkg)
         AppendTo(stream, "\n");
     fi;
 
+    AppendTo(stream, "pdf: ", pkg.ArchiveURL, ".pdf\n");
+    AppendTo(stream, "\n");
+
     AppendTo(stream, "abstract: |\n");
     for tmp in SplitString(pkg.AbstractHTML,"\n") do
         AppendTo(stream, "    ", tmp, "\n");
