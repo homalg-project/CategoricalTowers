@@ -2,8 +2,11 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 1
+  after_n_builds: 2
 flags:
   FiniteCocompletion:
     paths:
       - "FiniteCocompletion/"
+  PreSheaves:
+    paths:
+      - "PreSheaves/"

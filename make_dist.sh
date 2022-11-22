@@ -2,7 +2,7 @@
 
 set -e
 
-packages="FiniteCocompletion "
+packages="FiniteCocompletion PreSheaves "
 
 base_dir="$PWD"
 
