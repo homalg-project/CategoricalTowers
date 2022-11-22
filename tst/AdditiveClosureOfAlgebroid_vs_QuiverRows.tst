@@ -15,13 +15,11 @@ gap> aoid := Algebroid( B, false : overhead := false );;
 gap> add := AdditiveClosure( aoid : overhead := false );;
 
 #
-gap> n := 70;;
+gap> n := 35;;
 
 #
-gap> tmp := RandomObject( add, n );;
-gap> obj1 := RandomObject( add, n );;
-gap> tmp := RandomObject( add, n );;
-gap> obj2 := RandomObject( add, n );;
+gap> obj1 := RandomObject( add, [ [ n ], [ n ] ] );;
+gap> obj2 := RandomObject( add, [ [ n ], [ n ] ] );;
 
 #
 gap> alpha := RandomMorphismWithFixedSourceAndRange( obj1, obj1, n );;
@@ -43,9 +41,9 @@ gap> result_quiver := UnderlyingMatrix( HomomorphismStructureOnMorphisms( alpha_
 gap> runtime_quiver := Runtime( ) - start;;
 
 #
-gap> if runtime >= runtime_quiver * 7 / 20 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
+gap> if runtime >= runtime_quiver * 3 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 true
-gap> if runtime <= runtime_quiver * 9 / 20 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
+gap> if runtime <= runtime_quiver * 4 / 10 then Display( true ); else Display( runtime ); Display( runtime_quiver ); fi;
 true
 
 #
