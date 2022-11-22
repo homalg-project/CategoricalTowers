@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# FiniteCocompletion: Finite (co)product/(co)limit (co)completions
+# PreSheaves: Categories of (co)presheaves
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,8 +8,8 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "FiniteCocompletion",
-Subtitle := "Finite (co)product/(co)limit (co)completions",
+PackageName := "PreSheaves",
+Subtitle := "Categories of (co)presheaves",
 Version := "2022.11-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -38,10 +38,10 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/pkg/FiniteCocompletion",
-PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-", ~.Version, "/FiniteCocompletion-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/PreSheaves",
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/PreSheaves/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/PreSheaves/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-", ~.Version, "/PreSheaves-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -59,12 +59,12 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "FiniteCocompletion",
+  BookName  := "PreSheaves",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Finite (co)product/(co)limit (co)completions",
+  LongTitle := "Categories of (co)presheaves",
 ),
 
 Dependencies := rec(
@@ -74,9 +74,10 @@ Dependencies := rec(
                    [ "CAP", ">= 2022.09-05" ],
                    [ "CartesianCategories", ">= 2022.08-01" ],
                    [ "MonoidalCategories", ">= 2022.06-07" ],
+                   [ "Toposes", ">= 2022.11-05" ],
+                   [ "CategoryConstructor", ">= 2022.11-02" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "CompilerForCAP", ">= 2022.08-01" ],
                    ],
   ExternalConditions := [ ],
 ),
