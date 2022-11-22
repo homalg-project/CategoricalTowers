@@ -1,0 +1,80 @@
+  
+  
+                              [1X FiniteCocompletion [101X
+  
+  
+                 [1X Finite (co)product/(co)limit (co)completions [101X
+  
+  
+                                   2022.06-12
+  
+  
+                                22 November 2022
+  
+  
+                                Mohamed Barakat
+  
+  
+  
+  Mohamed Barakat
+      Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
+      Homepage: [7Xhttps://mohamed-barakat.github.io[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (FiniteCocompletion)[101X
+  
+  1 [33X[0;0YFinite coproduct cocompletion[133X
+    1.1 [33X[0;0YAttributes[133X
+      1.1-1 UnderlyingCategory
+    1.2 [33X[0;0YConstructors[133X
+      1.2-1 FiniteCoproductCocompletion
+      1.2-2 AsList
+      1.2-3 PairOfLists
+    1.3 [33X[0;0YGAP categories[133X
+      1.3-1 IsFiniteCoproductCocompletion
+      1.3-2 IsCellInFiniteCoproductCocompletion
+      1.3-3 IsObjectInFiniteCoproductCocompletion
+      1.3-4 IsMorphismInFiniteCoproductCocompletion
+  2 [33X[0;0YSkeletalFinSets[133X
+    2.1 [33X[0;0YAttributes[133X
+      2.1-1 Length
+      2.1-2 AsList
+      2.1-3 AsList
+    2.2 [33X[0;0YConstructors[133X
+      2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+      2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory
+      2.2-3 FinSetOp
+      2.2-4 MapOfFinSets
+    2.3 [33X[0;0YGAP categories[133X
+      2.3-1 IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+      2.3-2 IsCellSkeletalFinSets
+      2.3-3 IsObjectInSkeletalFinSets
+      2.3-4 IsMorphismInSkeletalFinSets
+    2.4 [33X[0;0YSkeletal Examples[133X
+      2.4-1 [33X[0;0YSkeletal WellDefined[133X
+      2.4-2 [33X[0;0YSkeletal PreCompose[133X
+      2.4-3 [33X[0;0YSkeletal Initial and Terminal Objects[133X
+      2.4-4 [33X[0;0YSkeletal Coproduct[133X
+  3 [33X[0;0YFinite product completion[133X
+    3.1 [33X[0;0YGAP categories[133X
+      3.1-1 IsFiniteProductCompletion
+      3.1-2 IsCellInFiniteProductCompletion
+      3.1-3 IsObjectInFiniteProductCompletion
+      3.1-4 IsMorphismInFiniteProductCompletion
+    3.2 [33X[0;0YAttributes[133X
+      3.2-1 FiniteProductCompletion
+      3.2-2 AsList
+      3.2-3 PairOfLists
+      3.2-4 UnderlyingCategory
+  4 [33X[0;0YPrecompilation[133X
+    4.1 [33X[0;0YPrecompiling SkeletalFinSets[133X
+  
+  
+  [32X

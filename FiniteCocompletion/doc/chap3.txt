@@ -1,0 +1,120 @@
+  
+  [1X3 [33X[0;0YFinite product completion[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YGAP categories[133X[101X
+  
+  [1X3.1-1 IsFiniteProductCompletion[101X
+  
+  [33X[1;0Y[29X[2XIsFiniteProductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of a finite product completion category.[133X
+  
+  [1X3.1-2 IsCellInFiniteProductCompletion[101X
+  
+  [33X[1;0Y[29X[2XIsCellInFiniteProductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a finite product completion category.[133X
+  
+  [1X3.1-3 IsObjectInFiniteProductCompletion[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInFiniteProductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a finite product completion category.[133X
+  
+  [1X3.1-4 IsMorphismInFiniteProductCompletion[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInFiniteProductCompletion[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a finite product completion category.[133X
+  
+  
+  [1X3.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X3.2-1 FiniteProductCompletion[101X
+  
+  [33X[1;0Y[29X[2XFiniteProductCompletion[102X( [3Xcat[103X ) [32X attribute[133X
+  
+  [33X[0;0YReturn the finite product completion of the category [3Xcat[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XT := FiniteProductCompletion( InitialCategory( ) );[127X[104X
+    [4X[28XFiniteProductCompletion( InitialCategory( ) )[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[28X89 primitive operations were used to derive 396 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsBicartesianClosedCategory[128X[104X
+    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
+    [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[28X* IsTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
+    [4X[28X<An object in FiniteProductCompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
+    [4X[28X<An object in FiniteProductCompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
+    [4X[28X<A zero object in FiniteProductCompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( i, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( t, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
+    [4X[28X<A zero, identity morphism in FiniteProductCompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
+    [4X[28X<A zero, isomorphism in FiniteProductCompletion( InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-2 AsList[101X
+  
+  [33X[1;0Y[29X[2XAsList[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X3.2-3 PairOfLists[101X
+  
+  [33X[1;0Y[29X[2XPairOfLists[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X3.2-4 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XUC[103X ) [32X attribute[133X
+  
+  [33X[0;0YReturn  the  category [23XC[123X underlying the finite product completion category [3XUC[103X[10X
+  := FiniteProductCompletion([110X [23XC[123X [10X)[110X).[133X
+  

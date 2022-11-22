@@ -1,0 +1,49 @@
+  
+  [1X4 [33X[0;0YPrecompilation[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YPrecompiling SkeletalFinSets[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "FiniteCocompletion", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := {} -> SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategoryPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FiniteCocompletion";;[127X[104X
+    [4X[25Xgap>[125X [27Xprimitive_operations :=[127X[104X
+    [4X[25X>[125X [27X  ListPrimitivelyInstalledOperationsOfCategory( category_constructor() );;[127X[104X
+    [4X[25Xgap>[125X [27Xlist_of_operations :=[127X[104X
+    [4X[25X>[125X [27X  SortedList( Concatenation( primitive_operations, [[127X[104X
+    [4X[25X>[125X [27X          #"CartesianLambdaIntroduction",[127X[104X
+    [4X[25X>[125X [27X          #"CartesianLambdaElimination",[127X[104X
+    [4X[25X>[125X [27X          ] ) );;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X        category_constructor,[127X[104X
+    [4X[25X>[125X [27X        given_arguments,[127X[104X
+    [4X[25X>[125X [27X        package_name,[127X[104X
+    [4X[25X>[125X [27X        compiled_category_name[127X[104X
+    [4X[25X>[125X [27X        : operations := list_of_operations,[127X[104X
+    [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_object := 1,[127X[104X
+    [4X[25X>[125X [27X        number_of_objectified_morphisms_in_data_structure_of_object := 0,[127X[104X
+    [4X[25X>[125X [27X        number_of_objectified_objects_in_data_structure_of_morphism := 2,[127X[104X
+    [4X[25X>[125X [27X        number_of_objectified_morphisms_in_data_structure_of_morphism := 1[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategoryPrecompiled( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xcat := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27X# Now we check whether the compiled code is loaded automatically.[127X[104X
+    [4X[25X>[125X [27X# For this we use the name of the argument of `InitialObject`;[127X[104X
+    [4X[25Xgap>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1":[127X[104X
+    [4X[25X>[125X [27Xargument_name := NamesLocalVariablesFunction([127X[104X
+    [4X[25X>[125X [27X    Last( cat!.added_functions.InitialObject )[1] )[1];;[127X[104X
+    [4X[25Xgap>[125X [27X(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or[127X[104X
+    [4X[25X>[125X [27X    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FiniteCocompletion) - Chapter 2: SkeletalFinSets</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X79D9465278E31286" name="X79D9465278E31286"></a></p>
+<div class="ChapSects"><a href="chap2.html#X79D9465278E31286">2 <span class="Heading">SkeletalFinSets</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C701DBF7BAE649A">2.1 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ADEF9E5795B3C0D">2.1-1 Length</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X87AC7A697D2F5B41">2.1-2 AsList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F0DA648803F587A">2.1-3 AsList</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86EC0F0A78ECBC10">2.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DF5EB197D49C8D2">2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X838CE44578BEE5C7">2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79CF3ACD8448CDA7">2.2-3 FinSetOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8674CEF7841C111D">2.2-4 MapOfFinSets</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7D03633A7D98026B">2.3 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C6F19598550A05D">2.3-1 IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80A3DF7F859CB24B">2.3-2 IsCellSkeletalFinSets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78B82CBB7B21C133">2.3-3 IsObjectInSkeletalFinSets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78EED9BB879FC441">2.3-4 IsMorphismInSkeletalFinSets</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7A95C44F85102748">2.4 <span class="Heading">Skeletal Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X786A58C886916831">2.4-1 <span class="Heading">Skeletal WellDefined</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86100A35872E3E9F">2.4-2 <span class="Heading">Skeletal PreCompose</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8671AA4181FFF519">2.4-3 <span class="Heading">Skeletal Initial and Terminal Objects</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ADD1E46831BEED2">2.4-4 <span class="Heading">Skeletal Coproduct</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">SkeletalFinSets</span></h3>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>2.1 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7ADEF9E5795B3C0D" name="X7ADEF9E5795B3C0D"></a></p>
+
+<h5>2.1-1 Length</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Length</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The integer defining the skeletal finite set <var class="Arg">M</var>, i.e., <code class="code">Length( FinSet( n ) ) = n</code>.</p>
+
+<p><a id="X87AC7A697D2F5B41" name="X87AC7A697D2F5B41"></a></p>
+
+<h5>2.1-2 AsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The list associated to a skeletal finite set, i.e., <code class="code">AsList( FinSet( n ) ) = [ 0 .. n - 1 ]</code>.</p>
+
+<p><a id="X7F0DA648803F587A" name="X7F0DA648803F587A"></a></p>
+
+<h5>2.1-3 AsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">phi</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a lazy array</p>
+
+<p>The lazy array of images between skeletal finite sets.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7DF5EB197D49C8D2" name="X7DF5EB197D49C8D2"></a></p>
+
+<h5>2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct a category of skeletal finite sets as the finite coproduct cocompletion of the terminal category.</p>
+
+<p><a id="X838CE44578BEE5C7" name="X838CE44578BEE5C7"></a></p>
+
+<h5>2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>The default instance of the category of skeletal finite sets. It is automatically created while loading this package.</p>
+
+<p><a id="X79CF3ACD8448CDA7" name="X79CF3ACD8448CDA7"></a></p>
+
+<h5>2.2-3 FinSetOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FinSetOp</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>Construct a skeletal finite set residing in the given category of skeletal finite sets <var class="Arg">C</var> of order given by the nonnegative integer <var class="Arg">n</var>.</p>
+
+<p><a id="X8674CEF7841C111D" name="X8674CEF7841C111D"></a></p>
+
+<h5>2.2-4 MapOfFinSets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MapOfFinSets</code>( <var class="Arg">s</var>, <var class="Arg">G</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Construct a map <span class="Math">\phi:</span><var class="Arg">s</var><span class="Math">\to</span><var class="Arg">t</var> of the skeletal finite sets <var class="Arg">s</var> and <var class="Arg">t</var>, i.e., a morphism in the <strong class="pkg">CAP</strong> category of <var class="Arg">s</var>, where <var class="Arg">G</var> is a list of integers in <var class="Arg">t</var> describing the graph of <span class="Math">\phi</span>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.3 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7C6F19598550A05D" name="X7C6F19598550A05D"></a></p>
+
+<h5>2.3-1 IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a finite coproduct cocompletion category.</p>
+
+<p><a id="X80A3DF7F859CB24B" name="X80A3DF7F859CB24B"></a></p>
+
+<h5>2.3-2 IsCellSkeletalFinSets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellSkeletalFinSets</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in the category of skeletal finsets.</p>
+
+<p><a id="X78B82CBB7B21C133" name="X78B82CBB7B21C133"></a></p>
+
+<h5>2.3-3 IsObjectInSkeletalFinSets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInSkeletalFinSets</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in the category of skeletal finsets.</p>
+
+<p><a id="X78EED9BB879FC441" name="X78EED9BB879FC441"></a></p>
+
+<h5>2.3-4 IsMorphismInSkeletalFinSets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInSkeletalFinSets</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the category of skeletal finsets.</p>
+
+<p><a id="X7A95C44F85102748" name="X7A95C44F85102748"></a></p>
+
+<h4>2.4 <span class="Heading">Skeletal Examples</span></h4>
+
+<p><a id="X786A58C886916831" name="X786A58C886916831"></a></p>
+
+<h5>2.4-1 <span class="Heading">Skeletal WellDefined</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
+SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := FinSetOp( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := FinSetOp( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi:= MapOfFinSets( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );</span>
+|7| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
+true
+</pre></div>
+
+<p><a id="X86100A35872E3E9F" name="X86100A35872E3E9F"></a></p>
+
+<h5>2.4-2 <span class="Heading">Skeletal PreCompose</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
+SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetOp( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetOp( sFinSets, 5 );</span>
+|5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetOp( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( m, [ 1, 4, 2 ], n );</span>
+|3| → |5|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MapOfFinSets( n, [ 0, 3, 5, 5, 2 ], p );</span>
+|5| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := PreCompose( psi, phi );</span>
+|3| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
+{ 0, 1, 2 } ⱶ[ 3, 2, 5 ]→ { 0,..., 6 }
+</pre></div>
+
+<p><a id="X8671AA4181FFF519" name="X8671AA4181FFF519"></a></p>
+
+<h5>2.4-3 <span class="Heading">Skeletal Initial and Terminal Objects</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
+SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetOp( sFinSets, 8 );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( m );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( m );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( sFinSets );</span>
+|0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+∅
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( i );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( i );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( m );</span>
+|0| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( i );</span>
+[  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( sFinSets );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( t );</span>
+[ 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( t );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := UniversalMorphismIntoTerminalObject( m );</span>
+|8| → |1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( Range( pi ), t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );</span>
+|8| → |1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( pi_t );</span>
+[ 0, 0, 0, 0, 0, 0, 0, 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi = pi_t;</span>
+true
+</pre></div>
+
+<p><a id="X7ADD1E46831BEED2" name="X7ADD1E46831BEED2"></a></p>
+
+<h5>2.4-4 <span class="Heading">Skeletal Coproduct</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
+SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetOp( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetOp( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetOp( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := Coproduct( m, n, p );</span>
+|14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( c );</span>
+[ 0 .. 13 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota1 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 1 );</span>
+|7| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota1 );</span>
+{ 0,..., 6 } ⱶ[ 0 .. 6 ]→ { 0,..., 13 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota2 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 2 );</span>
+|3| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota2 );</span>
+{ 0, 1, 2 } ⱶ[ 7 .. 9 ]→ { 0,..., 13 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota3 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 3 );</span>
+|4| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( iota3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota3 );</span>
+{ 0,..., 3 } ⱶ[ 10 .. 13 ]→ { 0,..., 13 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := UniversalMorphismFromCoproduct(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ m, n, p ], [ iota1, iota2, iota3 ] );</span>
+|14| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := IdentityMorphism( Coproduct( [ m, n, p ] ) );</span>
+|14| → |14|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi = id;</span>
+true
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (FiniteCocompletion) - Chapter 1: Finite coproduct cocompletion</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7D531B8F7F7B6DF8" name="X7D531B8F7F7B6DF8"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7D531B8F7F7B6DF8">1 <span class="Heading">Finite coproduct cocompletion</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.1 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78A9C86A7E41624E">1.1-1 UnderlyingCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86DE7AF17F993354">1.2-1 FiniteCoproductCocompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7EF3A4B880E88F7C">1.2-2 AsList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X811BA2038281F393">1.2-3 PairOfLists</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.3 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D5A022786C5969F">1.3-1 IsFiniteCoproductCocompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B53A95F832E9C16">1.3-2 IsCellInFiniteCoproductCocompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7FAC69997C33F799">1.3-3 IsObjectInFiniteCoproductCocompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8547FEDB830A5A18">1.3-4 IsMorphismInFiniteCoproductCocompletion</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Finite coproduct cocompletion</span></h3>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.1 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X78A9C86A7E41624E" name="X78A9C86A7E41624E"></a></p>
+
+<h5>1.1-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="SimpleMath">\(C\)</span> underlying the finite coproduct cocompletion category <var class="Arg">UC</var><code class="code"> := FiniteCoproductCocompletion(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X86DE7AF17F993354" name="X86DE7AF17F993354"></a></p>
+
+<h5>1.2-1 FiniteCoproductCocompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiniteCoproductCocompletion</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the finite coproduct cocompletion of the category <var class="Arg">cat</var>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteCoproductCocompletion( InitialCategory( ) );</span>
+FiniteCoproductCocompletion( InitialCategory( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( T );</span>
+89 primitive operations were used to derive 396 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsLinearCategoryOverCommutativeRing
+* IsBicartesianClosedCategory
+* IsBicartesianCoclosedCategory
+* IsAbelianCategoryWithEnoughInjectives
+* IsAbelianCategoryWithEnoughProjectives
+* IsRigidSymmetricClosedMonoidalCategory
+* IsRigidSymmetricCoclosedMonoidalCategory
+and furthermore mathematically
+* IsLocallyOfFiniteInjectiveDimension
+* IsLocallyOfFiniteProjectiveDimension
+* IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+* IsStrictMonoidalCategory
+* IsTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
+&lt;A zero object in FiniteCoproductCocompletion( InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
+&lt;A zero object in FiniteCoproductCocompletion( InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
+&lt;A zero object in FiniteCoproductCocompletion( InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+[  ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+[  ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+[  ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( i, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( t, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
+&lt;A zero, identity morphism in FiniteCoproductCocompletion( InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
+&lt;A zero, isomorphism in FiniteCoproductCocompletion( InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
+true
+</pre></div>
+
+<p><a id="X7EF3A4B880E88F7C" name="X7EF3A4B880E88F7C"></a></p>
+
+<h5>1.2-2 AsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X811BA2038281F393" name="X811BA2038281F393"></a></p>
+
+<h5>1.2-3 PairOfLists</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfLists</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.3 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7D5A022786C5969F" name="X7D5A022786C5969F"></a></p>
+
+<h5>1.3-1 IsFiniteCoproductCocompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFiniteCoproductCocompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a finite coproduct cocompletion category.</p>
+
+<p><a id="X7B53A95F832E9C16" name="X7B53A95F832E9C16"></a></p>
+
+<h5>1.3-2 IsCellInFiniteCoproductCocompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFiniteCoproductCocompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a finite coproduct cocompletion category.</p>
+
+<p><a id="X7FAC69997C33F799" name="X7FAC69997C33F799"></a></p>
+
+<h5>1.3-3 IsObjectInFiniteCoproductCocompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFiniteCoproductCocompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a finite coproduct cocompletion category.</p>
+
+<p><a id="X8547FEDB830A5A18" name="X8547FEDB830A5A18"></a></p>
+
+<h5>1.3-4 IsMorphismInFiniteCoproductCocompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFiniteCoproductCocompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a finite coproduct cocompletion category.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

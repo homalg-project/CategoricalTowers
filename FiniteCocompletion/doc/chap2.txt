@@ -1,0 +1,243 @@
+  
+  [1X2 [33X[0;0YSkeletalFinSets[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YAttributes[133X[101X
+  
+  [1X2.1-1 Length[101X
+  
+  [33X[1;0Y[29X[2XLength[102X( [3XM[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  integer defining the skeletal finite set [3XM[103X, i.e., [10XLength( FinSet( n ) )
+  = n[110X.[133X
+  
+  [1X2.1-2 AsList[101X
+  
+  [33X[1;0Y[29X[2XAsList[102X( [3XM[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  list associated to a skeletal finite set, i.e., [10XAsList( FinSet( n ) ) =
+  [ 0 .. n - 1 ][110X.[133X
+  
+  [1X2.1-3 AsList[101X
+  
+  [33X[1;0Y[29X[2XAsList[102X( [3Xphi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya lazy array[133X
+  
+  [33X[0;0YThe lazy array of images between skeletal finite sets.[133X
+  
+  
+  [1X2.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[101X
+  
+  [33X[1;0Y[29X[2XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[102X(  ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct  a  category  of  skeletal  finite  sets  as  the finite coproduct
+  cocompletion of the terminal category.[133X
+  
+  [1X2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory[101X
+  
+  [33X[1;0Y[29X[2XSkeletalFinSetsAsFreeElementaryToposOfInitialCategory[102X [32X global variable[133X
+  
+  [33X[0;0YThe  default  instance  of  the  category  of  skeletal  finite  sets. It is
+  automatically created while loading this package.[133X
+  
+  [1X2.2-3 FinSetOp[101X
+  
+  [33X[1;0Y[29X[2XFinSetOp[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YConstruct  a  skeletal finite set residing in the given category of skeletal
+  finite sets [3XC[103X of order given by the nonnegative integer [3Xn[103X.[133X
+  
+  [1X2.2-4 MapOfFinSets[101X
+  
+  [33X[1;0Y[29X[2XMapOfFinSets[102X( [3Xs[103X, [3XG[103X, [3Xt[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YConstruct  a  map  [23X\phi:[123X[3Xs[103X[23X\to[123X[3Xt[103X  of  the skeletal finite sets [3Xs[103X and [3Xt[103X, i.e., a
+  morphism  in  the  [5XCAP[105X  category  of  [3Xs[103X,  where [3XG[103X is a list of integers in [3Xt[103X
+  describing the graph of [23X\phi[123X.[133X
+  
+  
+  [1X2.3 [33X[0;0YGAP categories[133X[101X
+  
+  [1X2.3-1 IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of a finite coproduct cocompletion category.[133X
+  
+  [1X2.3-2 IsCellSkeletalFinSets[101X
+  
+  [33X[1;0Y[29X[2XIsCellSkeletalFinSets[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in the category of skeletal finsets.[133X
+  
+  [1X2.3-3 IsObjectInSkeletalFinSets[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInSkeletalFinSets[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in the category of skeletal finsets.[133X
+  
+  [1X2.3-4 IsMorphismInSkeletalFinSets[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInSkeletalFinSets[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in the category of skeletal finsets.[133X
+  
+  
+  [1X2.4 [33X[0;0YSkeletal Examples[133X[101X
+  
+  
+  [1X2.4-1 [33X[0;0YSkeletal WellDefined[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xs := FinSetOp( sFinSets, 7 );[127X[104X
+    [4X[28X|7|[128X[104X
+    [4X[25Xgap>[125X [27Xt := FinSetOp( sFinSets, 4 );[127X[104X
+    [4X[28X|4|[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );[127X[104X
+    [4X[28X|7| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );[127X[104X
+    [4X[28X|7| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );[127X[104X
+    [4X[28X|7| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xpsi:= MapOfFinSets( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );[127X[104X
+    [4X[28X|7| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.4-2 [33X[0;0YSkeletal PreCompose[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xm := FinSetOp( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xn := FinSetOp( sFinSets, 5 );[127X[104X
+    [4X[28X|5|[128X[104X
+    [4X[25Xgap>[125X [27Xp := FinSetOp( sFinSets, 7 );[127X[104X
+    [4X[28X|7|[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( m, [ 1, 4, 2 ], n );[127X[104X
+    [4X[28X|3| → |5|[128X[104X
+    [4X[25Xgap>[125X [27Xphi := MapOfFinSets( n, [ 0, 3, 5, 5, 2 ], p );[127X[104X
+    [4X[28X|5| → |7|[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := PreCompose( psi, phi );[127X[104X
+    [4X[28X|3| → |7|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 3, 2, 5 ]→ { 0,..., 6 }[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.4-3 [33X[0;0YSkeletal Initial and Terminal Objects[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xm := FinSetOp( sFinSets, 8 );[127X[104X
+    [4X[28X|8|[128X[104X
+    [4X[25Xgap>[125X [27XIsInitial( m );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsTerminal( m );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( sFinSets );[127X[104X
+    [4X[28X|0|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XIsInitial( i );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsTerminal( i );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( m );[127X[104X
+    [4X[28X|0| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XAsList( i );[127X[104X
+    [4X[28X[  ][128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( sFinSets );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27XAsList( t );[127X[104X
+    [4X[28X[ 0 ][128X[104X
+    [4X[25Xgap>[125X [27XIsInitial( t );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsTerminal( t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xpi := UniversalMorphismIntoTerminalObject( m );[127X[104X
+    [4X[28X|8| → |1|[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( Range( pi ), t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xpi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );[127X[104X
+    [4X[28X|8| → |1|[128X[104X
+    [4X[25Xgap>[125X [27XAsList( pi_t );[127X[104X
+    [4X[28X[ 0, 0, 0, 0, 0, 0, 0, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xpi = pi_t;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.4-4 [33X[0;0YSkeletal Coproduct[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xm := FinSetOp( sFinSets, 7 );[127X[104X
+    [4X[28X|7|[128X[104X
+    [4X[25Xgap>[125X [27Xn := FinSetOp( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xp := FinSetOp( sFinSets, 4 );[127X[104X
+    [4X[28X|4|[128X[104X
+    [4X[25Xgap>[125X [27Xc := Coproduct( m, n, p );[127X[104X
+    [4X[28X|14|[128X[104X
+    [4X[25Xgap>[125X [27XAsList( c );[127X[104X
+    [4X[28X[ 0 .. 13 ][128X[104X
+    [4X[25Xgap>[125X [27Xiota1 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 1 );[127X[104X
+    [4X[28X|7| → |14|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iota1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota1 );[127X[104X
+    [4X[28X{ 0,..., 6 } ⱶ[ 0 .. 6 ]→ { 0,..., 13 }[128X[104X
+    [4X[25Xgap>[125X [27Xiota2 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 2 );[127X[104X
+    [4X[28X|3| → |14|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iota2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota2 );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 7 .. 9 ]→ { 0,..., 13 }[128X[104X
+    [4X[25Xgap>[125X [27Xiota3 := InjectionOfCofactorOfCoproduct( [ m, n, p ], 3 );[127X[104X
+    [4X[28X|4| → |14|[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( iota3 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota3 );[127X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 10 .. 13 ]→ { 0,..., 13 }[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := UniversalMorphismFromCoproduct([127X[104X
+    [4X[25X>[125X [27X               [ m, n, p ], [ iota1, iota2, iota3 ] );[127X[104X
+    [4X[28X|14| → |14|[128X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( Coproduct( [ m, n, p ] ) );[127X[104X
+    [4X[28X|14| → |14|[128X[104X
+    [4X[25Xgap>[125X [27Xpsi = id;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
