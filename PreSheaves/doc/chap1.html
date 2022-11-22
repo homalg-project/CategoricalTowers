@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (PreSheaves) - Chapter 1: Category of presheaves of a (linear) category</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X87FD80BA84DC7BA9" name="X87FD80BA84DC7BA9"></a></p>
+<div class="ChapSects"><a href="chap1.html#X87FD80BA84DC7BA9">1 <span class="Heading">Category of presheaves of a (linear) category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7C701DBF7BAE649A">1.1 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B64D74D8667D4E2">1.1-1 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X838E862B7AC83916">1.1-2 Range</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79A122997F8C0837">1.1-3 OppositeOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87E3230F7D81CE6D">1.1-4 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82BBFBE97C63B781">1.1-5 Range</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8441A5F38325BDF0">1.1-6 YonedaEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D850F4D7AECF129">1.1-7 YonedaEmbeddingOfSourceCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X86EC0F0A78ECBC10">1.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86C6EE397F8CFCAA">1.2-1 PreSheaves</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7D03633A7D98026B">1.3 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78BA10757D4A2D61">1.3-1 IsPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87E694A77D44A1F0">1.3-2 IsCellInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X869BBAB986FFB5D6">1.3-3 IsObjectInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8727C26D7CD65307">1.3-4 IsMorphismInPreSheafCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A489A5D79DA9E5C">1.4 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D9777E9849FA261">1.4-1 <span class="Heading">The category of presheaves of <code class="code">SkeletalFinSets</code></span></a>
+</span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Category of presheaves of a (linear) category</span></h3>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.1 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7B64D74D8667D4E2" name="X7B64D74D8667D4E2"></a></p>
+
+<h5>1.1-1 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The source category <span class="Math">C</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>).</p>
+
+<p><a id="X838E862B7AC83916" name="X838E862B7AC83916"></a></p>
+
+<h5>1.1-2 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The source category <span class="Math">V</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>).</p>
+
+<p><a id="X79A122997F8C0837" name="X79A122997F8C0837"></a></p>
+
+<h5>1.1-3 OppositeOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeOfSource</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The opposite <span class="Math">C^\mathrm{op}</span> of the source category <span class="Math">C</span> of the presheaf category <var class="Arg">PSh</var>=<code class="code">PSh</code>(<span class="Math">C,V</span>).</p>
+
+<p><a id="X87E3230F7D81CE6D" name="X87E3230F7D81CE6D"></a></p>
+
+<h5>1.1-4 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The source of the presheaf <var class="Arg">F</var>.</p>
+
+<p><a id="X82BBFBE97C63B781" name="X82BBFBE97C63B781"></a></p>
+
+<h5>1.1-5 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The target of the presheaf <var class="Arg">F</var>.</p>
+
+<p><a id="X8441A5F38325BDF0" name="X8441A5F38325BDF0"></a></p>
+
+<h5>1.1-6 YonedaEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbedding</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p><a id="X7D850F4D7AECF129" name="X7D850F4D7AECF129"></a></p>
+
+<h5>1.1-7 YonedaEmbeddingOfSourceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfSourceCategory</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X86C6EE397F8CFCAA" name="X86C6EE397F8CFCAA"></a></p>
+
+<h5>1.2-1 PreSheaves</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the category <code class="code">Hom( <var class="Arg">B</var>^op, <var class="Arg">C</var> )</code> of functors from the opposite of the small category <var class="Arg">B</var> to the category <var class="Arg">C</var> as objects and their natural transformations as morphisms.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.3 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X78BA10757D4A2D61" name="X78BA10757D4A2D61"></a></p>
+
+<h5>1.3-1 IsPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPreSheafCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a presheaf category.</p>
+
+<p><a id="X87E694A77D44A1F0" name="X87E694A77D44A1F0"></a></p>
+
+<h5>1.3-2 IsCellInPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPreSheafCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a presheaf category.</p>
+
+<p><a id="X869BBAB986FFB5D6" name="X869BBAB986FFB5D6"></a></p>
+
+<h5>1.3-3 IsObjectInPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPreSheafCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a presheaf category.</p>
+
+<p><a id="X8727C26D7CD65307" name="X8727C26D7CD65307"></a></p>
+
+<h5>1.3-4 IsMorphismInPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPreSheafCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a presheaf category.</p>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>1.4 <span class="Heading">Examples</span></h4>
+
+<p><a id="X7D9777E9849FA261" name="X7D9777E9849FA261"></a></p>
+
+<h5>1.4-1 <span class="Heading">The category of presheaves of <code class="code">SkeletalFinSets</code></span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "PreSheaves" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );</span>
+PreSheaves( SkeletalFinSets, SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( PSh );</span>
+45 primitive operations were used to derive 152 operations for this category
+which algorithmically
+* IsFiniteCocompleteCategory
+* IsFiniteCompleteCategory
+* IsDistributiveCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CheckConstructivenessOfCategory( PSh, "IsElementaryTopos" );</span>
+[ "CartesianCoevaluationMorphismWithGivenRange",
+  "CartesianEvaluationMorphismWithGivenSource",
+  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+  "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",
+  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ]
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
