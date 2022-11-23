@@ -8,7 +8,7 @@ T := FiniteCompletion( InitialCategory( ) );
 IsTerminalCategory( T );
 #! true
 InfoOfInstalledOperationsOfCategory( T );
-#! 423 primitive operations were used to derive 446 operations for this category
+#! 89 primitive operations were used to derive 449 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
@@ -63,7 +63,7 @@ IsWellDefined( z );
 id_z := IdentityMorphism( z );
 #! <A zero, identity morphism in FiniteCompletion( InitialCategory( ) )>
 fn_z := ZeroObjectFunctorial( T );
-#! <A morphism in FiniteCompletion( InitialCategory( ) )>
+#! <A zero, isomorphism in FiniteCompletion( InitialCategory( ) )>
 IsWellDefined( fn_z );
 #! true
 IsEqualForMorphisms( id_z, fn_z );

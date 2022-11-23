@@ -443,7 +443,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     Hom := FunctorCategory( B, C : FinalizeCategory := true );
     
-    O := Opposite( Hom : FinalizeCategory := true );
+    O := Opposite( Hom : FinalizeCategory := true, only_primitive_operations := true );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
