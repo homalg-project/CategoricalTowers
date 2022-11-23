@@ -50,6 +50,27 @@
   [33X[1;0Y[29X[2XYonedaEmbeddingOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
+  [1X1.1-8 ApplyObjectInPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
+  
+  [1X1.1-9 ApplyObjectInPreSheafCategoryToMorphism[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
+  
+  [1X1.1-10 ApplyMorphismInPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyMorphismInPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
+  
   
   [1X1.2 [33X[0;0YConstructors[133X[101X
   
@@ -119,5 +140,23 @@
     [4X[28X  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",[128X[104X
     [4X[28X  "ExponentialOnMorphismsWithGivenExponentials", "ExponentialOnObjects",[128X[104X
     [4X[28X  "SubobjectClassifier", "SubobjectOfClassifyingMorphism" ][128X[104X
+    [4X[25Xgap>[125X [27XY := YonedaEmbeddingOfSourceCategory( PSh );[127X[104X
+    [4X[28XYoneda embedding functor[128X[104X
+    [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( SourceOfFunctor( Y ) );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27XM := FinSet( 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XY( omega )( M );[127X[104X
+    [4X[28X|8|[128X[104X
+    [4X[25Xgap>[125X [27Xphi := MapOfFinSets( omega, [ 2, 0 ], M );[127X[104X
+    [4X[28X|2| → |3|[128X[104X
+    [4X[25Xgap>[125X [27Xomega_phi := Y( omega )( phi );[127X[104X
+    [4X[28X|8| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( omega_phi );[127X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 0, 2, 0, 2, 1, 3, 1, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[25Xgap>[125X [27Xphi_omega := Y( phi )( omega );[127X[104X
+    [4X[28X|4| → |9|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( phi_omega );[127X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 8, 6, 2, 0 ]→ { 0,..., 8 }[128X[104X
   [4X[32X[104X
   

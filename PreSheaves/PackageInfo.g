@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "PreSheaves",
 Subtitle := "Categories of (co)presheaves",
-Version := "2022.11-01",
-Date := "22/11/2022",
-Date := "22/11/2022",
+Version := "2022.11-02",
+Date := "23/11/2022",
+Date := "23/11/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -75,7 +75,7 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2022.08-01" ],
                    [ "MonoidalCategories", ">= 2022.06-07" ],
                    [ "Toposes", ">= 2022.11-05" ],
-                   [ "CategoryConstructor", ">= 2022.11-02" ],
+                   [ "CategoryConstructor", ">= 2022.11-06" ],
                    ],
   SuggestedOtherPackages := [
                    ],
