@@ -799,6 +799,74 @@ InstallMethod( YonedaEmbeddingOfSourceCategory,
     
 end );
 
+##
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
+        "for an object in a presheaf category and a CAP object",
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
+        
+  function ( PSh, F, objB )
+    
+    return PairOfFunctionsOfPreSheaf( F )[1]( objB );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
+        "for an object in a presheaf category and a CAP morphism",
+        [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
+        
+  function ( PSh, F, morB )
+    
+    return PairOfFunctionsOfPreSheaf( F )[2]( morB );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
+        "for a morphism in a presheaf category and a CAP object",
+        [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
+        
+  function ( PSh, eta, objB )
+
+    return FunctionOfPreSheafMorphism( eta )( objB );
+    
+end );
+
+##
+InstallMethod( CallFuncList,
+        "for an object in a presheaf category and a list",
+        [ IsObjectInPreSheafCategory, IsList ],
+        
+  function ( F, L )
+    local PSh;
+    
+    PSh := CapCategory( F );
+    
+    if IsCapCategoryObject( L[1] ) then
+        return ApplyObjectInPreSheafCategoryToObject( PSh, F, L[1] );
+    elif IsCapCategoryMorphism( L[1] ) then
+        return ApplyObjectInPreSheafCategoryToMorphism( PSh, F, L[1] );
+    fi;
+    
+    Error( "the argument ", L[1], " is neither an object nor a morphism in ", Source( F ), "\n" );
+    
+end );
+
+##
+InstallMethod( CallFuncList,
+        "for a morphism in a presheaf category and a list",
+        [ IsMorphismInPreSheafCategory, IsList ],
+        
+  function ( eta, L )
+    
+    if IsCapCategoryObject( L[1] ) then
+        return ApplyMorphismInPreSheafCategoryToObject( CapCategory( eta ), eta, L[1] );
+    fi;
+    
+    Error( "the argument ", L[1], " is not an object in ", Source( Source( eta ) ), "\n" );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
