@@ -2987,7 +2987,7 @@ end );
 
 ##
 InstallOtherMethod( UnderlyingCapTwoCategoryCell,
-        "for an object in a functor category",
+        "for an object in a presheaf category",
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
@@ -3001,7 +3001,7 @@ end );
 
 ##
 InstallMethod( UnderlyingCapTwoCategoryCell,
-        "for an object in a functor category",
+        "for an object in a presheaf category",
         [ IsObjectInPreSheafCategory ],
         
   function ( F )
@@ -3056,7 +3056,7 @@ end );
 
 ##
 InstallMethod( CallFuncList,
-        "for an object in a functor category and a list",
+        "for an object in a presheaf category and a list",
         [ IsObjectInPreSheafCategory, IsList ],
         
   function ( F, L )
@@ -3076,7 +3076,7 @@ end );
 
 ##
 InstallMethod( CallFuncList,
-        "for a morphism in a functor category and a list",
+        "for a morphism in a presheaf category and a list",
         [ IsMorphismInPreSheafCategory, IsList ],
         
   function ( eta, L )
