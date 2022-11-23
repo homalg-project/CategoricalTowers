@@ -195,20 +195,26 @@ DeclareAttribute( "CoYonedaEmbeddingOfSourceCategory",
 ####################################
 
 #! @Description
-#!  Apply the functor <A>F</A> (as an object in the corresponding copresheaf category) to the cell <A>c</A>.
-#!  The shorthand is <A>F</A>(<A>c</A>).
-#! @Arguments F, c
-#! @Returns a &CAP; cell
+#!  Apply the presheaf <A>F</A> to the object <A>obj</A>.
+#!  The shorthand is <A>F</A>(<A>obj</A>).
+#! @Arguments F, obj
+#! @Returns a &CAP; object
 DeclareOperation( "ApplyObjectInCoPreSheafCategoryToObject",
         [ IsCoPreSheafCategory, IsObjectInCoPreSheafCategory, IsCapCategoryObject ] );
 
+#! @Description
+#!  Apply the presheaf <A>F</A> to the morphism <A>mor</A>.
+#!  The shorthand is <A>F</A>(<A>mor</A>).
+#! @Arguments F, mor
+#! @Returns a &CAP; morphism
 DeclareOperation( "ApplyObjectInCoPreSheafCategoryToMorphism",
         [ IsCoPreSheafCategory, IsObjectInCoPreSheafCategory, IsCapCategoryMorphism ] );
 
 #! @Description
-#!  Apply the natural transformation <A>eta</A> (as an object in the corresponding copresheaf category) to the object <A>o</A>.
+#!  Apply the presheaf morphism <A>eta</A> to the object <A>obj</A>.
 #!  The shorthand is <A>eta</A>(<A>o</A>).
-#! @Arguments eta, o
+#! @Arguments eta, obj
+#! @Returns a &CAP; morphism
 DeclareOperation( "ApplyMorphismInCoPreSheafCategoryToObject",
         [ IsCoPreSheafCategory, IsMorphismInCoPreSheafCategory, IsCapCategoryObject ] );
 
