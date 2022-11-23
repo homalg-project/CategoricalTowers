@@ -16,15 +16,13 @@ end : Description := "IsWellDefinedForMorphisms checking the inhabitedness of th
       CategoryFilter := IsThinCategory );
 
 ##
-AddDerivationToCAP( IsEqualForMorphisms,
-        [ [ IsEqualForObjects, 2 ] ],
+AddDerivationToCAP( IsCongruentForMorphisms,
         
   function( cat, u1, u2 )
     
-    return IsEqualForObjects( cat, Source( u1 ), Source( u2 ) ) and
-           IsEqualForObjects( cat, Range( u1 ), Range( u2 ) );
+    return true;
         
-end : Description := "IsEqualForMorphisms using IsEqualForObjects applied to sources and ranges",
+end : Description := "two parallel morphisms are always congruent",
       CategoryFilter := IsThinCategory );
 
 ##
