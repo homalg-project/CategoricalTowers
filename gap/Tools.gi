@@ -5,6 +5,18 @@
 #
 
 ##
+InstallMethod( CallFuncList,
+        [ IsCapFunctor, IsList ],
+        
+  { F, a } -> ApplyFunctor( F, a[ 1 ] ) );
+
+##
+InstallMethod( CallFuncList,
+        [ IsCapNaturalTransformation, IsList ],
+        
+  { nat, a } -> ApplyNaturalTransformation( nat, a[ 1 ] ) );
+
+##
 InstallOtherMethod( Subobject,
         "for a morphism in a category",
         [ IsCapCategoryMorphism ],
