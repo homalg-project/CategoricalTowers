@@ -96,6 +96,12 @@ InstallMethod( CategoryConstructor,
     
     properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] );
     
+    for prop in properties do
+        
+        Setter( ValueGlobal( prop ) )( CC, true );
+        
+    od;
+    
     preinstall := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "preinstall", [ ] );
     
     if IsFunction( preinstall ) then
