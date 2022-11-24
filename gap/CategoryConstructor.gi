@@ -31,7 +31,7 @@ InstallMethod( CategoryConstructor,
                
   function( )
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
-          commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
+          commutative_ring, list_of_operations_to_install, skip, properties, prop,
           preinstall, func, pos, object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object0, create_func_morphism0, create_func_object,
           create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
