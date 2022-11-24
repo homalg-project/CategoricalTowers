@@ -13,8 +13,7 @@ InstallMethodWithCache( FiniteCompletion,
     local coPSh,
           finite_completion;
     
-    ## building the categorical tower
-    
+    ## building the categorical tower:
     coPSh := CoPreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
     
     finite_completion :=
