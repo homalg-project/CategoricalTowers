@@ -96,42 +96,6 @@ InstallMethod( CategoryConstructor,
     
     properties := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] );
     
-    doctrines := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "doctrines", [ ] );
-    
-    if not doctrines = [ ] and IsStringRep( doctrines ) then
-        doctrines := [ doctrines ];
-    fi;
-    
-    for doc in properties do
-        if IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) then
-            prop := doc[1];
-        else
-            prop := doc;
-        fi;
-        if not ForAny( doctrines, doc -> ( IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) and doc[1] = prop ) or doc = prop ) then
-            Add( doctrines, doc );
-        fi;
-    od;
-    
-    if not ForAll( doctrines, doc -> IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) or IsStringRep( doc ) ) then
-        Error( "the list of doctrines  ", doctrines, " has a wrong syntax, it should be something like [ [ \"doc1\", bool1 ], \"doc2\", [ \"doc3\", bool3 ] ]\n" );
-    fi;
-    
-    for doc in doctrines do
-        if IsList( doc ) and Length( doc ) = 2 and IsBool( doc[2] ) then
-            name := doc[1];
-            doc := doc[2];
-        else
-            name := doc;
-            doc := true;
-        fi;
-        
-        name := ValueGlobal( name );
-        
-        Setter( name )( CC, doc );
-        
-    od;
-    
     preinstall := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "preinstall", [ ] );
     
     if IsFunction( preinstall ) then
