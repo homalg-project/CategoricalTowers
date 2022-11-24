@@ -287,8 +287,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     object_constructor := function( cat, pair_of_functions_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
-                       Source, Source( PSh ),
-                       Range, Range( PSh ),
+                       Source, Source( cat ),
+                       Range, Range( cat ),
                        PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
@@ -1603,7 +1603,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                    properties := properties,
                    preinstall := preinstall,
                    ## the option doctrines can be passed from higher code
-                   is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
