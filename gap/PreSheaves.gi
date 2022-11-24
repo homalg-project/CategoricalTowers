@@ -1185,7 +1185,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, commutative_ring,
-          properties, preinstall, supports_empty_limits, prop,
+          properties, supports_empty_limits, prop,
           PSh, objects, generating_morphisms, H;
     
     if IsFpCategory( B ) then
@@ -1594,11 +1594,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
-    preinstall :=
-      [ function ( PSh ) SetSource( PSh, B ); end,
-        function ( PSh ) SetRange( PSh, C ); end,
-          ];
-    
     CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
     CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
     
@@ -1617,7 +1612,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
-                   preinstall := preinstall,
                    ## the option doctrines can be passed from higher code
                    list_of_operations_to_install := list_of_operations_to_install,
                    object_constructor := object_constructor,
@@ -1638,6 +1632,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     SetDefiningPairOfUnderlyingQuiver( PSh, DefiningPairOfAQuiver( UnderlyingQuiver( B ) ) );
     
+    SetSource( PSh, B );
+    SetRange( PSh, C );
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=
