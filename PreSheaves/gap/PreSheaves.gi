@@ -306,7 +306,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     
     morphism_datum := { cat, morphism } -> FunctionOfPreSheafMorphism( morphism );
     
-    create_func_bool := "default";
+    create_func_bool := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_bool", "default" );
     
     ## e.g., DirectSum, KernelObject
     create_func_object :=
@@ -575,11 +575,13 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
              ];
     
-    for func in list_of_operations_to_install do
-        if CAP_INTERNAL_METHOD_NAME_RECORD.(func).return_type = "bool" then
-            Add( skip, func );
-        fi;
-    od;
+    if not IsFunction( create_func_bool ) then
+        for func in list_of_operations_to_install do
+            if CAP_INTERNAL_METHOD_NAME_RECORD.(func).return_type = "bool" then
+                Add( skip, func );
+            fi;
+        od;
+    fi;
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
