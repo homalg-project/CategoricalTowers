@@ -287,8 +287,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     object_constructor := function( cat, pair_of_functions_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
-                       Source, Source( PSh ),
-                       Range, Range( PSh ),
+                       Source, Source( cat ),
+                       Range, Range( cat ),
                        PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
