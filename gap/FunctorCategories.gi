@@ -425,7 +425,7 @@ InstallMethodWithCache( FunctorCategory,
           B_op, defining_pair, PSh,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          Hom, properties, name;
+          Hom, properties, doctrines, name;
     
     ##
     object_constructor := AsObjectInFunctorCategoryByValues;
@@ -499,7 +499,7 @@ InstallMethodWithCache( FunctorCategory,
         return MorphismDatum( PSh, mor );
         
     end;
-    
+
     ##
     Hom :=
       WrapperCategory( PSh,
@@ -527,6 +527,14 @@ InstallMethodWithCache( FunctorCategory,
                         #"IsSymmetricClosedMonoidalCategory",
                         #"IsRigidSymmetricClosedMonoidalCategory",
                         ];
+        
+        doctrines := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "doctrines", [ ] );
+        
+        if not doctrines = [ ] and IsStringRep( doctrines ) then
+            doctrines := [ doctrines ];
+        fi;
+        
+        Append( properties, doctrines );
         
         for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
             name := ValueGlobal( name );

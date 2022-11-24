@@ -306,7 +306,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     
     morphism_datum := { cat, morphism } -> FunctionOfPreSheafMorphism( morphism );
     
-    create_func_bool := "default";
+    create_func_bool := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "create_func_bool", "default" );
     
     ## e.g., DirectSum, KernelObject
     create_func_object :=
@@ -575,11 +575,13 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
              ];
     
-    for func in list_of_operations_to_install do
-        if CAP_INTERNAL_METHOD_NAME_RECORD.(func).return_type = "bool" then
-            Add( skip, func );
-        fi;
-    od;
+    if not IsFunction( create_func_bool ) then
+        for func in list_of_operations_to_install do
+            if CAP_INTERNAL_METHOD_NAME_RECORD.(func).return_type = "bool" then
+                Add( skip, func );
+            fi;
+        od;
+    fi;
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
@@ -1183,7 +1185,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, commutative_ring,
-          properties, preinstall, supports_empty_limits, prop,
+          properties, supports_empty_limits, prop,
           PSh, objects, generating_morphisms, H;
     
     if IsFpCategory( B ) then
@@ -1574,14 +1576,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     "IsElementaryTopos",
                     ];
     
+    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+       HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+        
+        Append( properties,
+                [ "IsMonoidalCategory",
+                  "IsBraidedMonoidalCategory",
+                  "IsSymmetricMonoidalCategory",
+                  #"IsClosedMonoidalCategory",
+                  #"IsSymmetricClosedMonoidalCategory",
+                  #"IsRigidSymmetricClosedMonoidalCategory",
+                  ] );
+        
+    fi;
+    
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
-    
-    preinstall :=
-      [ function ( PSh ) SetSource( PSh, B ); end,
-        function ( PSh ) SetRange( PSh, C ); end,
-          ];
+    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
     CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
     CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
@@ -1601,8 +1612,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
-                   preinstall := preinstall,
-                   ## the option doctrines can be passed from higher code
                    list_of_operations_to_install := list_of_operations_to_install,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
@@ -1622,6 +1631,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     SetDefiningPairOfUnderlyingQuiver( PSh, DefiningPairOfAQuiver( UnderlyingQuiver( B ) ) );
     
+    SetSource( PSh, B );
+    SetRange( PSh, C );
     SetOppositeOfSource( PSh, B_op );
     
     PSh!.compiler_hints.category_attribute_names :=
@@ -2377,21 +2388,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
-        
-        properties := [ "IsMonoidalCategory",
-                        "IsBraidedMonoidalCategory",
-                        "IsSymmetricMonoidalCategory",
-                        #"IsClosedMonoidalCategory",
-                        #"IsSymmetricClosedMonoidalCategory",
-                        #"IsRigidSymmetricClosedMonoidalCategory",
-                        ];
-        
-        for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-            name := ValueGlobal( name );
-            
-            Setter( name )( PSh, name( C ) );
-            
-        od;
         
         AddTensorUnit( PSh,
           function ( PSh )
