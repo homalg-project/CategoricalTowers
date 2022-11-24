@@ -119,7 +119,71 @@
   [1X1.4 [33X[0;0YExamples[133X[101X
   
   
-  [1X1.4-1 [33X[0;0YThe category of presheaves of [10XSkeletalFinSets[110X[101X[1X[133X[101X
+  [1X1.4-1 [33X[0;0YThe terminal category[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XT := PreSheaves( InitialCategory( ) );[127X[104X
+    [4X[28XPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
+    [4X[25Xgap>[125X [27XIsTerminalCategory( T );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
+    [4X[28X91 primitive operations were used to derive 442 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
+    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
+    [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[28X* IsStrictCartesianCategory[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[28X* IsStrictMonoidalCategory[128X[104X
+    [4X[28X* IsTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
+    [4X[28X<An object in PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
+    [4X[28X<An object in PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
+    [4X[28X<A zero object in PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
+    [4X[28XAn object in PreSheaves( InitialCategory( ), InitialCategory( ) ).[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28XAn object in PreSheaves( InitialCategory( ), InitialCategory( ) ).[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
+    [4X[28XA zero object in PreSheaves( InitialCategory( ), InitialCategory( ) ).[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( i, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForObjects( t, z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
+    [4X[28X<A zero, identity morphism in[128X[104X
+    [4X[28X PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
+    [4X[28X<A zero, isomorphism in PreSheaves( InitialCategory( ), InitialCategory( ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-2 [33X[0;0YThe category of presheaves of [10XSkeletalFinSets[110X[101X[1X[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "PreSheaves" );[127X[104X

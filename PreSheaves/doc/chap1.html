@@ -52,7 +52,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A489A5D79DA9E5C">1.4 <span class="Heading">Examples</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D9777E9849FA261">1.4-1 <span class="Heading">The category of presheaves of <code class="code">SkeletalFinSets</code></span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81912CE97D5038FC">1.4-1 <span class="Heading">The terminal category</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D9777E9849FA261">1.4-2 <span class="Heading">The category of presheaves of <code class="code">SkeletalFinSets</code></span></a>
 </span>
 </div></div>
 </div>
@@ -207,9 +209,75 @@
 
 <h4>1.4 <span class="Heading">Examples</span></h4>
 
+<p><a id="X81912CE97D5038FC" name="X81912CE97D5038FC"></a></p>
+
+<h5>1.4-1 <span class="Heading">The terminal category</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "PreSheaves" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := PreSheaves( InitialCategory( ) );</span>
+PreSheaves( InitialCategory( ), InitialCategory( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminalCategory( T );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InfoOfInstalledOperationsOfCategory( T );</span>
+91 primitive operations were used to derive 442 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsLinearCategoryOverCommutativeRing
+* IsBicartesianCoclosedCategory
+* IsAbelianCategoryWithEnoughInjectives
+* IsAbelianCategoryWithEnoughProjectives
+* IsRigidSymmetricClosedMonoidalCategory
+* IsRigidSymmetricCoclosedMonoidalCategory
+* IsElementaryTopos
+and furthermore mathematically
+* IsLocallyOfFiniteInjectiveDimension
+* IsLocallyOfFiniteProjectiveDimension
+* IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+* IsStrictMonoidalCategory
+* IsTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( T );</span>
+&lt;An object in PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( T );</span>
+&lt;An object in PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( T );</span>
+&lt;A zero object in PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
+An object in PreSheaves( InitialCategory( ), InitialCategory( ) ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+An object in PreSheaves( InitialCategory( ), InitialCategory( ) ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
+A zero object in PreSheaves( InitialCategory( ), InitialCategory( ) ).
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( t, z );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( i, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( t, z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_z := IdentityMorphism( z );</span>
+&lt;A zero, identity morphism in
+ PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fn_z := ZeroObjectFunctorial( T );</span>
+&lt;A zero, isomorphism in PreSheaves( InitialCategory( ), InitialCategory( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( id_z, fn_z );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
+true
+</pre></div>
+
 <p><a id="X7D9777E9849FA261" name="X7D9777E9849FA261"></a></p>
 
-<h5>1.4-1 <span class="Heading">The category of presheaves of <code class="code">SkeletalFinSets</code></span></h5>
+<h5>1.4-2 <span class="Heading">The category of presheaves of <code class="code">SkeletalFinSets</code></span></h5>
 
 
 <div class="example"><pre>
