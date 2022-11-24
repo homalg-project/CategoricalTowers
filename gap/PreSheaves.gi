@@ -284,23 +284,23 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     list_of_operations := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY );
     
     ##
-    object_constructor := function( cat, pair_of_functions_of_presheaf )
+    object_constructor := function( cat, pair_of_funcs_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
                        Range, Range( cat ),
-                       PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
+                       PairOfFunctionsOfPreSheaf, pair_of_funcs_of_presheaf );
         
     end;
     
     object_datum := { cat, object } -> PairOfFunctionsOfPreSheaf( object );
     
-    morphism_constructor := function( cat, source, function_of_presheaf_morphism, range )
+    morphism_constructor := function( cat, source, func_of_presheaf_morphism, range )
         
         return CreateCapCategoryMorphismWithAttributes( cat,
                        source,
                        range,
-                       FunctionOfPreSheafMorphism, function_of_presheaf_morphism );
+                       FunctionOfPreSheafMorphism, func_of_presheaf_morphism );
         
     end;
     
