@@ -728,6 +728,17 @@ InstallMethodWithCache( PreSheaves,
     
 end );
 
+##
+InstallMethod( PreSheaves,
+        "for a CAP category",
+        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        
+  function( B )
+    
+    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
+    
+end );
+
 ####################################
 #
 # Methods for attributes
