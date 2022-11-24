@@ -1576,9 +1576,23 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                     "IsElementaryTopos",
                     ];
     
+    if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
+       HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
+        
+        Append( properties,
+                [ "IsMonoidalCategory",
+                  "IsBraidedMonoidalCategory",
+                  "IsSymmetricMonoidalCategory",
+                  #"IsClosedMonoidalCategory",
+                  #"IsSymmetricClosedMonoidalCategory",
+                  #"IsRigidSymmetricClosedMonoidalCategory",
+                  ] );
+        
+    fi;
+    
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
     preinstall :=
       [ function ( PSh ) SetSource( PSh, B ); end,
@@ -2379,21 +2393,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
-        
-        properties := [ "IsMonoidalCategory",
-                        "IsBraidedMonoidalCategory",
-                        "IsSymmetricMonoidalCategory",
-                        #"IsClosedMonoidalCategory",
-                        #"IsSymmetricClosedMonoidalCategory",
-                        #"IsRigidSymmetricClosedMonoidalCategory",
-                        ];
-        
-        for name in Intersection( ListKnownCategoricalProperties( C ), properties ) do
-            name := ValueGlobal( name );
-            
-            Setter( name )( PSh, name( C ) );
-            
-        od;
         
         AddTensorUnit( PSh,
           function ( PSh )
