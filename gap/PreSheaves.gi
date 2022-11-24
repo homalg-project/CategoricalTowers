@@ -1612,7 +1612,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
                    commutative_ring := commutative_ring,
                    properties := properties,
-                   ## the option doctrines can be passed from higher code
                    list_of_operations_to_install := list_of_operations_to_install,
                    object_constructor := object_constructor,
                    object_datum := object_datum,

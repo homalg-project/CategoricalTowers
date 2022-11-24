@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2022.11-32",
+Version := "2022.11-33",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -96,7 +96,7 @@ Dependencies := rec(
                    [ "RingsForHomalg", ">= 2020.02.04" ],
                    [ "LinearAlgebraForCAP", ">= 2020.01.10" ],
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
-                   [ "CategoryConstructor", ">= 2022.11-07" ],
+                   [ "CategoryConstructor", ">= 2022.11-08" ],
                    [ "SubcategoriesForCAP", ">= 2021.12-01" ],
                    [ "Toposes", ">= 2022.11-03" ],
                    [ "FinSetsForCAP", ">= 2022.11-05" ],

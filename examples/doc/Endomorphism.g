@@ -133,7 +133,7 @@ A := RangeCategoryOfHomomorphismStructure( B );
 
 #! @Example
 H := FunctorCategory( B, A :
-       doctrines := [ [ "IsRigidSymmetricClosedMonoidalCategory", true ] ] );
+       doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );
 #! FunctorCategory( HopfAlgebra( Q, FreeCategory(
 #! RightQuiver( "q(1)[t:1->1]" ) ) ) / relations, Category of matrices over Q )
 #! @EndExample
