@@ -5,6 +5,10 @@
 @Section GAP categories
 @Section Examples
 
+@Subsection The terminal category
+
+@InsertChunk TerminalCategory
+
 @Subsection The category of presheaves of <C>SkeletalFinSets</C>
 
 @InsertChunk PreSheavesOfSkeletalFinSets
