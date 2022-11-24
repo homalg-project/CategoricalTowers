@@ -1603,7 +1603,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                    properties := properties,
                    preinstall := preinstall,
                    ## the option doctrines can be passed from higher code
-                   is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                    list_of_operations_to_install := list_of_operations_to_install,
                    object_constructor := object_constructor,
                    object_datum := object_datum,
