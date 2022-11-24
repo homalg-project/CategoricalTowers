@@ -1185,7 +1185,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations_to_install, skip, commutative_ring,
-          properties, supports_empty_limits, prop,
+          properties, supports_empty_limits, prop, option_record,
           PSh, objects, generating_morphisms, H;
     
     if IsFpCategory( B ) then
@@ -1603,25 +1603,28 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         supports_empty_limits := false;
     fi;
     
-    PSh := CategoryConstructor( :
-                   name := name,
-                   category_as_first_argument := true,
-                   supports_empty_limits := supports_empty_limits,
-                   category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
-                   category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
-                   category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-                   commutative_ring := commutative_ring,
-                   properties := properties,
-                   list_of_operations_to_install := list_of_operations_to_install,
-                   object_constructor := object_constructor,
-                   object_datum := object_datum,
-                   morphism_constructor := morphism_constructor,
-                   morphism_datum := morphism_datum,
-                   create_func_bool := create_func_bool,
-                   create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism,
-                   underlying_category_getter_string := "Range"
-                   );
+    option_record := rec( name := name,
+                          category_filter := IsPreSheafCategoryOfFpEnrichedCategory,
+                          category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory,
+                          category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
+                          supports_empty_limits := supports_empty_limits,
+                          list_of_operations_to_install := list_of_operations_to_install,
+                          properties := properties,
+                          object_constructor := object_constructor,
+                          object_datum := object_datum,
+                          morphism_constructor := morphism_constructor,
+                          morphism_datum := morphism_datum,
+                          create_func_bool := create_func_bool,
+                          create_func_object := create_func_object,
+                          create_func_morphism := create_func_morphism,
+                          underlying_category_getter_string := "Range"
+                          );
+    
+    if not commutative_ring = fail then
+        option_record.commutative_ring_of_linear_category := commutative_ring;
+    fi;
+    
+    PSh := CategoryConstructor( option_record );
     
     objects := SetOfObjects( B );
     generating_morphisms := SetOfGeneratingMorphisms( B );
