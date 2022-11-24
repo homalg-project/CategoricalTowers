@@ -32,7 +32,7 @@ InstallMethod( CategoryConstructor,
   function( )
     local name, CC, category_object_filter, category_morphism_filter, category_filter,
           commutative_ring, list_of_operations_to_install, skip, properties, doctrines, doc, prop,
-          preinstall, func, is_monoidal, pos, object_constructor, object_datum, morphism_constructor, morphism_datum,
+          preinstall, func, pos, object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object0, create_func_morphism0, create_func_object,
           create_func_morphism, create_func_morphism_or_fail, create_func_universal_morphism,
           create_func_list, create_func_object_or_fail,
@@ -141,19 +141,6 @@ InstallMethod( CategoryConstructor,
     for func in preinstall do
         func( CC );
     od;
-    
-    is_monoidal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_monoidal", false );
-    
-    if is_monoidal = false then
-        Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-        Append( skip, NamesOfComponents( RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ) );
-    fi;
     
     for func in skip do
         
