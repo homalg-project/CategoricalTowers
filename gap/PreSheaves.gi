@@ -282,7 +282,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         name := Concatenation( name, "..., ... )" );
     fi;
     
-    list_of_operations := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY );
+    list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
     
     ##
     object_constructor := function( cat, pair_of_funcs_of_presheaf )
@@ -613,6 +613,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                     "IsFiniteCocompleteCategory",
                     #"IsElementaryTopos",
                     ];
+    
+    Append( properties, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] ) );
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
