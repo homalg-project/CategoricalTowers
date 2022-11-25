@@ -28,12 +28,12 @@ TruthMorphismOfTrue := rec(
   output_source_getter_string := "TerminalObject( cat )",
   output_range_getter_string := "SubobjectClassifier( cat )",
   with_given_object_position := "both",
-  io_type := [ [ ] , [ "T" , "Omega" ] ],
+  io_type := [ [ ] , [ "T", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfTrueWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "T", "Omega" ] , [ "T" , "Omega" ] ],
+  io_type := [ [ "T", "Omega" ] , [ "T", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfFalse := rec(
@@ -41,12 +41,12 @@ TruthMorphismOfFalse := rec(
   output_source_getter_string := "TerminalObject( cat )",
   output_range_getter_string := "SubobjectClassifier( cat )",
   with_given_object_position := "both",
-  io_type := [ [ ] , [ "T" , "Omega" ] ],
+  io_type := [ [ ] , [ "T", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfFalseWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "T", "Omega" ] , [ "T" , "Omega" ] ],
+  io_type := [ [ "T", "Omega" ] , [ "T", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfNot := rec(
@@ -54,12 +54,12 @@ TruthMorphismOfNot := rec(
   output_source_getter_string := "SubobjectClassifier( cat )",
   output_range_getter_string := "SubobjectClassifier( cat )",
   with_given_object_position := "both",
-  io_type := [ [ ] , [ "Omega" , "Omega1" ] ],
+  io_type := [ [ ] , [ "Omega", "Omega1" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfNotWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "Omega", "Omega1" ] , [ "Omega" , "Omega1" ] ],
+  io_type := [ [ "Omega", "Omega1" ] , [ "Omega", "Omega1" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfAnd := rec(
@@ -67,12 +67,12 @@ TruthMorphismOfAnd := rec(
   output_source_getter_string := "CartesianSquareOfSubobjectClassifier( cat )",
   output_range_getter_string := "SubobjectClassifier( cat )",
   with_given_object_position := "both",
-  io_type := [ [ ] , [ "Omega2" , "Omega" ] ],
+  io_type := [ [ ] , [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfAndWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2" , "Omega" ] ],
+  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfOr := rec(
@@ -80,12 +80,12 @@ TruthMorphismOfOr := rec(
   output_source_getter_string := "CartesianSquareOfSubobjectClassifier( cat )",
   output_range_getter_string := "SubobjectClassifier( cat )",
   with_given_object_position := "both",
-  io_type := [ [ ] , [ "Omega2" , "Omega" ] ],
+  io_type := [ [ ] , [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfOrWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2" , "Omega" ] ],
+  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfImplies := rec(
@@ -93,28 +93,28 @@ TruthMorphismOfImplies := rec(
   output_source_getter_string := "CartesianSquareOfSubobjectClassifier( cat )",
   output_range_getter_string := "SubobjectClassifier( cat )",
   with_given_object_position := "both",
-  io_type := [ [ ] , [ "Omega2" , "Omega" ] ],
+  io_type := [ [ ] , [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
 TruthMorphismOfImpliesWithGivenObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2" , "Omega" ] ],
+  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2", "Omega" ] ],
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
-  filter_list := [ "category", "morphism" , "object" ],
-  io_type := [ [ "alpha", "Omega" ] , [ "alpha_range" , "Omega" ] ],
+  filter_list := [ "category", "morphism", "object" ],
+  io_type := [ [ "alpha", "Omega" ] , [ "alpha_range", "Omega" ] ],
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobject := rec(
   filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ] , [ "alpha_range" , "Omega" ] ],
+  io_type := [ [ "alpha" ] , [ "alpha_range", "Omega" ] ],
   with_given_object_position := "Range",
   return_type := "morphism" ),
 
 SubobjectOfClassifyingMorphism := rec(
   filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ] , [ "subobject" , "alpha_source" ] ],
+  io_type := [ [ "alpha" ] , [ "subobject", "alpha_source" ] ],
   return_type := "morphism" ),
 
 ListOfSubobjects := rec(
@@ -150,7 +150,7 @@ EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement := rec(
   input_arguments_names := [ "cat", "iota", "complement" ],
   output_source_getter_string := "complement",
   output_range_getter_string := "Range( iota )",
-  io_type := [ [ "iota", "complement" ] , [ "complement" , "iota_range" ] ],
+  io_type := [ [ "iota", "complement" ] , [ "complement", "iota_range" ] ],
   return_type := "morphism" ),
 
 IntersectionSubobject := rec(
@@ -170,7 +170,7 @@ EmbeddingOfIntersectionSubobjectWithGivenIntersection := rec(
   input_arguments_names := [ "cat", "iota1", "iota2", "intersection" ],
   output_source_getter_string := "intersection",
   output_range_getter_string := "Range( iota1 )",
-  io_type := [ [ "iota1", "iota2", "intersection" ] , [ "intersection" , "iota1_range" ] ],
+  io_type := [ [ "iota1", "iota2", "intersection" ] , [ "intersection", "iota1_range" ] ],
   return_type := "morphism" ),
 
 UnionSubobject := rec(
@@ -190,7 +190,7 @@ EmbeddingOfUnionSubobjectWithGivenUnion := rec(
   input_arguments_names := [ "cat", "iota1", "iota2", "union" ],
   output_source_getter_string := "union",
   output_range_getter_string := "Range( iota1 )",
-  io_type := [ [ "iota1", "iota2", "union" ] , [ "union" , "iota1_range" ] ],
+  io_type := [ [ "iota1", "iota2", "union" ] , [ "union", "iota1_range" ] ],
   return_type := "morphism" ),
 
 RelativePseudoComplementSubobject := rec(
@@ -210,7 +210,7 @@ EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication := rec(
   input_arguments_names := [ "cat", "iota1", "iota2", "implication" ],
   output_source_getter_string := "implication",
   output_range_getter_string := "Range( iota1 )",
-  io_type := [ [ "iota1", "iota2", "implication" ] , [ "implication" , "iota1_range" ] ],
+  io_type := [ [ "iota1", "iota2", "implication" ] , [ "implication", "iota1_range" ] ],
   return_type := "morphism" ),
 
 HasPushoutComplement := rec(
