@@ -22,6 +22,7 @@ ReadPackage( "FunctorCategories", "gap/CoPreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfBouquets.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
+ReadPackage( "FunctorCategories", "gap/CategoryOfDecoratedQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gi");
 ReadPackage( "FunctorCategories", "gap/Functors.gi");
