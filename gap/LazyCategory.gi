@@ -532,7 +532,7 @@ InstallMethod( LazyCategory,
         
     fi;
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
     D := CategoryConstructor( :
                  name := name,
