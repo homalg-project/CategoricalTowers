@@ -2173,13 +2173,13 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                           function( b_ )
                             local phis, Fphis, images, factor1;
                             
-                            phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b, b')
-                                          phi -> ## φ ∈ Hom_B(b, b') as a natural number
+                            phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b', b)
+                                          phi -> ## φ ∈ Hom_B(b', b) as a natural number
                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
-                                                  b,
                                                   b_,
-                                                  MapOfFinSets( C, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b, b')
-                                                  ) ); ## φ: b → b'
+                                                  b,
+                                                  MapOfFinSets( C, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b', b)
+                                                  ) ); ## φ: b' → b
                             
                             Fphis := List( phis,
                                            phi -> F( phi ) ); ## F(φ): F(b) → F(b')
@@ -2187,7 +2187,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                             images := List( Fphis,
                                             Fphi -> Fphi( f ) ); ## F(φ)(f) ∈ F(b')
                             
-                            ## Y(b)(b') = Hom_B(b, b') → F(b'), (φ: b → b') ↦ (F(φ)(f): F(b) → F(b'))
+                            ## Y(b)(b') = Hom_B(b', b) → F(b'), (φ: b' → b) ↦ (F(φ)(f): F(b) → F(b'))
                             factor1 := MapOfFinSets( C,
                                                Yb( b_ ),
                                                images,
