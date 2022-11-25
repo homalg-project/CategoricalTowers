@@ -303,33 +303,33 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
-    Add( properties, [ "IsThinCategory", true ] );
+    Add( properties, "IsThinCategory" );
     
     if IsIdenticalObj( stable, true ) then
-        Add( properties, [ "IsStableProset", true ] );
+        Add( properties, "IsStableProset" );
         if CanCompute( C, "InternalHomOnObjects" ) then
-            Add( properties, [ "IsCartesianClosedCategory", true ] );
+            Add( properties, "IsCartesianClosedCategory" );
         fi;
         if CanCompute( C, "InternalCoHomOnObjects" ) then
-            Add( properties, [ "IsCocartesianCoclosedCategory", true ] );
+            Add( properties, "IsCocartesianCoclosedCategory" );
         fi;
     fi;
     
     if IsIdenticalObj( skeletal, true ) then
         
-        Add( properties, [ "IsSkeletalCategory", true ] );
+        Add( properties, "IsSkeletalCategory" );
         
         preinstall := [ ADD_COMMON_METHODS_FOR_POSETS ];
         
         if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
-            Add( properties, [ "IsStrictCartesianCategory", true ] );
+            Add( properties, "IsStrictCartesianCategory" );
             preinstall := [ ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES ];
         fi;
         
         if HasIsCocartesianCategory( C ) and IsCocartesianCategory( C ) then
-            Add( properties, [ "IsStrictCocartesianCategory", true ] );
+            Add( properties, "IsStrictCocartesianCategory" );
             Add( preinstall, ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES );
         fi;
         
