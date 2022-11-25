@@ -5,7 +5,7 @@ LoadPackage( "LazyCategories" );
 # the following packages introduce more CAP operations
 # which are not used below; still they make the example file
 # useful for further testing
-LoadPackage( "Locales" );
+LoadPackage( "Locales", ">= 2022.11-04" );
 LoadPackage( "SubcategoriesForCAP" );
 
 #! @Example
