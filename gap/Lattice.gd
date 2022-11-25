@@ -13,6 +13,9 @@
 #! @Description
 #!  The property of <A>C</A> being a cartesian proset.
 #! @Arguments C
+DeclareProperty( "IsCartesianProset",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsCartesianProset", "IsCocartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset :=
@@ -23,6 +26,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianProset :=
 #! @Description
 #!  The property of <A>C</A> being a meet semi-lattice.
 #! @Arguments C
+DeclareProperty( "IsMeetSemiLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsMeetSemiLattice", "IsJoinSemiLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice :=
@@ -33,6 +39,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMeetSemiLattice :=
 #! @Description
 #!  The property of <A>C</A> being a finite cocomplete proset.
 #! @Arguments C
+DeclareProperty( "IsCocartesianProset",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsCocartesianProset", "IsCartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset :=
@@ -43,6 +52,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianProset :=
 #! @Description
 #!  The property of <A>C</A> being a join semi-lattice.
 #! @Arguments C
+DeclareProperty( "IsJoinSemiLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsJoinSemiLattice", "IsMeetSemiLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice :=
@@ -53,6 +65,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsJoinSemiLattice :=
 #! @Description
 #!  The property of <A>C</A> being a finite complete and cocomplete proset.
 #! @Arguments C
+DeclareProperty( "IsBicartesianProset",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsBicartesianProset", "IsBicartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianProset :=
@@ -63,6 +78,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBicartesianProset :=
 #! @Description
 #!  The property of <A>C</A> being a lattice.
 #! @Arguments C
+DeclareProperty( "IsLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsLattice", "IsLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice :=
@@ -73,6 +91,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsLattice :=
 #! @Description
 #!  The property of <A>C</A> being a distributive (and automatically codistributive) bicartesian proset.
 #! @Arguments C
+DeclareProperty( "IsDistributiveBicartesianProset",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsDistributiveBicartesianProset", "IsDistributiveBicartesianProset" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset :=
@@ -84,6 +105,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveBicartesianProset :=
 #! @Description
 #!  The property of <A>C</A> being a distributive (and automatically codistributive) lattice.
 #! @Arguments C
+DeclareProperty( "IsDistributiveLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsDistributiveLattice", "IsDistributiveLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice :=
@@ -95,6 +119,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveLattice :=
 #! @Description
 #!  The property of <A>C</A> being a monoidal lattice.
 #! @Arguments C
+DeclareProperty( "IsMonoidalLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsMonoidalLattice", "IsMonoidalLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice :=
@@ -105,6 +132,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalLattice :=
 #! @Description
 #!  The property of <A>C</A> being a closed monoidal lattice.
 #! @Arguments C
+DeclareProperty( "IsClosedMonoidalLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsClosedMonoidalLattice", "IsCoclosedMonoidalLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalLattice :=
@@ -115,6 +145,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalLattice :=
 #! @Description
 #!  The property of <A>C</A> being a coclosed monoidal lattice.
 #! @Arguments C
+DeclareProperty( "IsCoclosedMonoidalLattice",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsCoclosedMonoidalLattice", "IsClosedMonoidalLattice" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalLattice :=

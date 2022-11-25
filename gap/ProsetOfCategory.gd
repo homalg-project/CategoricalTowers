@@ -72,6 +72,9 @@ DeclareCategory( "IsCapCategoryObjectInPosetOfACategory",
 DeclareCategory( "IsCapCategoryMorphismInPosetOfACategory",
         IsCapCategoryCellInPosetOfACategory and IsMorphismInThinCategory );
 
+DeclareProperty( "IsStableProset",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsStableProset", fail ] );
 
 ####################################

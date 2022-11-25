@@ -13,6 +13,9 @@
 #! @Description
 #!  The property of <A>C</A> being a bi-Heyting algebroid.
 #! @Arguments C
+DeclareProperty( "IsBiHeytingAlgebroid",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsBiHeytingAlgebroid", "IsBiHeytingAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid :=
@@ -23,6 +26,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebroid :=
 #! @Description
 #!  The property of <A>C</A> being a bi-Heyting algebra.
 #! @Arguments C
+DeclareProperty( "IsBiHeytingAlgebra",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsBiHeytingAlgebra", "IsBiHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
@@ -33,6 +39,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBiHeytingAlgebra :=
 #! @Description
 #!  The property of <A>C</A> being a Boolean algebroid.
 #! @Arguments C
+DeclareProperty( "IsBooleanAlgebroid",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsBooleanAlgebroid", "IsBooleanAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid :=
@@ -45,6 +54,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebroid :=
 #! @Description
 #!  The property of <A>C</A> being a Boolean algebra.
 #! @Arguments C
+DeclareProperty( "IsBooleanAlgebra",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsBooleanAlgebra", "IsBooleanAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBooleanAlgebra :=
