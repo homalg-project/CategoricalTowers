@@ -30,6 +30,9 @@ DeclareCategory( "IsMorphismInThinCategory",
 #! @Description
 #!  The property of <A>C</A> being a thin &CAP; category.
 #! @Arguments C
+DeclareProperty( "IsThinCategory",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsThinCategory", "IsThinCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory :=

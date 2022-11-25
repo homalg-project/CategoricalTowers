@@ -13,6 +13,9 @@
 #! @Description
 #!  The property of <A>C</A> being a poset (category).
 #! @Arguments C
+DeclareProperty( "IsPosetCategory",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsPosetCategory", "IsPosetCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory :=

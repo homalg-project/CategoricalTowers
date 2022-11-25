@@ -11,6 +11,9 @@
 #! @Description
 #!  The property of <A>C</A> being a co-Heyting algebroid.
 #! @Arguments C
+DeclareProperty( "IsCoHeytingAlgebroid",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsCoHeytingAlgebroid", "IsHeytingAlgebroid" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebroid :=
@@ -21,6 +24,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebroid :=
 #! @Description
 #!  The property of <A>C</A> being a co-Heyting algebra.
 #! @Arguments C
+DeclareProperty( "IsCoHeytingAlgebra",
+        IsCapCategory );
+
 AddCategoricalProperty( [ "IsCoHeytingAlgebra", "IsHeytingAlgebra" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoHeytingAlgebra :=
