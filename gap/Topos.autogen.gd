@@ -373,6 +373,25 @@ DeclareOperation( "AddMorphismsOfExternalHom",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `PowerObject`.
+#! $F: ( arg2 ) \mapsto \mathtt{PowerObject}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPowerObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPowerObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPowerObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPowerObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PseudoComplementSubobject`.
 #! $F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)$.
 #! @Returns nothing
@@ -425,6 +444,44 @@ DeclareOperation( "AddRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddRelativePseudoComplementSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `SingletonMorphism`.
+#! $F: ( object ) \mapsto \mathtt{SingletonMorphism}(object)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSingletonMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSingletonMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSingletonMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSingletonMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `SingletonMorphismWithGivenPowerObject`.
+#! $F: ( object, power_object ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(object, power_object)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSingletonMorphismWithGivenPowerObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

@@ -147,6 +147,43 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
     
 end );
 
+##
+AddDerivationToCAP( PowerObject,
+  function( cat, obj )
+    
+    return ExponentialOnObjects( cat, obj, SubobjectClassifier( cat ) );
+    
+end );
+
+##
+AddDerivationToCAP( SingletonMorphismWithGivenPowerObject,
+  function( cat, obj, power_object )
+    local Delta, delta, singleton_morphism;
+    
+    ## Δ: obj → obj × obj
+    Delta := CartesianDiagonal( cat, obj, 2 );
+    
+    ## δ: obj × obj → Ω
+    delta := ClassifyingMorphismOfSubobject( cat, Delta );
+    
+    ## {}: obj → Ω^obj
+    singleton_morphism := DirectProductToExponentialAdjunctionMapWithGivenExponential( cat, obj, obj, delta, power_object );
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetIsMonomorphism( singleton_morphism, true );
+    
+    return singleton_morphism;
+    
+end );
+
+##
+AddDerivationToCAP( SingletonMorphism,
+  function( cat, obj )
+    
+    return SingletonMorphismWithGivenPowerObject( cat, obj, PowerObject( cat, obj ) );
+    
+end );
+
 ## Note that |Sub(Ω)| = |End(Ω)|
 ## * but id_Ω ≜ ⊤_Ω ∈ Sub(Ω) does not correspond to id_Ω ∈ End(Ω) but to ⊤_Ω: Ω → 𝟙 → Ω ∈ End(Ω), which is generally not an iso
 ## * and id_Ω ∈ End(Ω) corresponds to ⊤: 𝟙 → Ω
