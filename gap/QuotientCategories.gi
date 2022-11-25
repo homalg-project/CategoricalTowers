@@ -260,7 +260,7 @@ InstallMethod( QuotientCategory,
     
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
     preinstall :=
       [ function( D ) SetUnderlyingCategory( D, C ); end,
