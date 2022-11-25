@@ -93,7 +93,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ##
     morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphism( m );
     
-    ## building the categorical tower
+    ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
@@ -254,7 +254,8 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                             modeling_tower_object_datum := modeling_tower_object_datum,
                             modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                             modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                            only_primitive_operations := true ) : FinalizeCategory := false );
+                            only_primitive_operations := true )
+                       : FinalizeCategory := false );
     
     SetUnderlyingCategory( Quivers, F );
     

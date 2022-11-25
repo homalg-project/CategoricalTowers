@@ -268,7 +268,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     local B_op, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, skip, func, supports_empty_limits, properties,
+          list_of_operations_to_install, skip, func,
+          supports_empty_limits, properties, category_constructor_options,
           PSh;
     
     B_op := Opposite( B : FinalizeCategory := true );
@@ -281,26 +282,26 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         name := Concatenation( name, "..., ... )" );
     fi;
     
-    list_of_operations := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY );
+    list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
     
     ##
-    object_constructor := function( cat, pair_of_functions_of_presheaf )
+    object_constructor := function( cat, pair_of_funcs_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
                        Range, Range( cat ),
-                       PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
+                       PairOfFunctionsOfPreSheaf, pair_of_funcs_of_presheaf );
         
     end;
     
     object_datum := { cat, object } -> PairOfFunctionsOfPreSheaf( object );
     
-    morphism_constructor := function( cat, source, function_of_presheaf_morphism, range )
+    morphism_constructor := function( cat, source, func_of_presheaf_morphism, range )
         
         return CreateCapCategoryMorphismWithAttributes( cat,
                        source,
                        range,
-                       FunctionOfPreSheafMorphism, function_of_presheaf_morphism );
+                       FunctionOfPreSheafMorphism, func_of_presheaf_morphism );
         
     end;
     
@@ -613,26 +614,34 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                     #"IsElementaryTopos",
                     ];
     
+    Append( properties, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] ) );
+    
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
-    PSh := CategoryConstructor( rec(
-                   name := name,
-                   category_filter := IsPreSheafCategory,
-                   category_object_filter := IsObjectInPreSheafCategory,
-                   category_morphism_filter := IsMorphismInPreSheafCategory,
-                   supports_empty_limits := supports_empty_limits,
-                   list_of_operations_to_install := list_of_operations_to_install,
-                   properties := properties,
-                   object_constructor := object_constructor,
-                   object_datum := object_datum,
-                   morphism_constructor := morphism_constructor,
-                   morphism_datum := morphism_datum,
-                   create_func_bool := create_func_bool,
-                   create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism,
-                   ) );
+    category_constructor_options :=
+      rec( name := name,
+           category_filter := IsPreSheafCategory,
+           category_object_filter := IsObjectInPreSheafCategory,
+           category_morphism_filter := IsMorphismInPreSheafCategory,
+           supports_empty_limits := supports_empty_limits,
+           list_of_operations_to_install := list_of_operations_to_install,
+           properties := properties,
+           object_constructor := object_constructor,
+           object_datum := object_datum,
+           morphism_constructor := morphism_constructor,
+           morphism_datum := morphism_datum,
+           create_func_bool := create_func_bool,
+           create_func_object := create_func_object,
+           create_func_morphism := create_func_morphism,
+           );
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    fi;
+    
+    PSh := CategoryConstructor( category_constructor_options );
     
     SetSource( PSh, B );
     SetRange( PSh, C );
@@ -1039,139 +1048,6 @@ InstallMethodWithCache( PreSheaves,
   function ( B, C )
     
     return PreSheavesOfFpEnrichedCategory( B, C );
-    
-end );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for two CAP categories",
-        [ IsCapCategory and IsInitialCategory, IsCapCategory ],
-        
-  function ( B, C )
-    local name, category_filter, category_object_filter, category_morphism_filter,
-          object_constructor, object_datum, morphism_constructor, morphism_datum,
-          create_func_object, create_func_morphism,
-          T;
-    
-    name := "PreSheaves( ";
-    
-    if HasName( B ) and HasName( C ) then
-        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
-    else
-        name := Concatenation( name, "..., ... )" );
-    fi;
-    
-    category_filter := IsPreSheafCategoryOfFpEnrichedCategory and IsTerminalCategory;
-    
-    category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory;
-    
-    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory;
-    
-    ##
-    object_constructor := function( cat, pair )
-        
-        return CreatePreSheafByValues( cat, pair );
-        
-    end;
-    
-    object_datum := { cat, object } -> ValuesOfPreSheaf( object );
-    
-    morphism_constructor := function( cat, source, list, range )
-        
-        return CreatePreSheafMorphismByValues( cat, source, list, range );
-        
-    end;
-    
-    morphism_datum := { cat, morphism } -> ValuesOnAllObjects( morphism );
-    
-    ## e.g., ZeroObject, DirectSum
-    create_func_object :=
-        function( name, T )
-            
-            return """
-                function( input_arguments... )
-                    
-                  return ObjectConstructor( cat, Pair( [ ], [ ] ) );
-                  
-                end
-            """;
-            
-        end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-        function( name, T )
-            
-            return """
-                function( input_arguments... )
-                    
-                    return MorphismConstructor( cat, top_source, [ ], top_range );
-                    
-                end
-            """;
-            
-        end;
-    
-    T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
-                 name := name,
-                 category_filter := category_filter,
-                 category_object_filter := category_object_filter,
-                 category_morphism_filter := category_morphism_filter,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
-                 create_func_morphism_or_fail := create_func_morphism,
-                 object_constructor := object_constructor,
-                 object_datum := object_datum,
-                 morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum
-                 ) );
-    
-    SetSource( T, B );
-    SetRange( T, C );
-    
-    ##
-    AddIsWellDefinedForObjects( T,
-      function( T, object )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsWellDefinedForMorphisms( T,
-      function( T, morphism )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsEqualForObjects( T,
-      function( T, object1, object2 )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsEqualForMorphisms( T,
-      function( T, morphism1, morphism2 )
-        
-        return true;
-        
-    end );
-    
-    ##
-    AddIsCongruentForMorphisms( T,
-      function( T, morphism1, morphism2 )
-        
-        return true;
-        
-    end );
-    
-    Finalize( T );
-    
-    return T;
     
 end );
 
@@ -2694,6 +2570,139 @@ InstallMethodWithCache( PreSheaves,
     CapCategorySwitchLogicOn( PSh );
     
     return PSh;
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for two CAP categories",
+        [ IsCapCategory and IsInitialCategory, IsCapCategory ],
+        
+  function ( B, C )
+    local name, category_filter, category_object_filter, category_morphism_filter,
+          object_constructor, object_datum, morphism_constructor, morphism_datum,
+          create_func_object, create_func_morphism,
+          T;
+    
+    name := "PreSheaves( ";
+    
+    if HasName( B ) and HasName( C ) then
+        name := Concatenation( name, Name( B ), ", ", Name( C ), " )" );
+    else
+        name := Concatenation( name, "..., ... )" );
+    fi;
+    
+    category_filter := IsPreSheafCategoryOfFpEnrichedCategory and IsTerminalCategory;
+    
+    category_object_filter := IsObjectInPreSheafCategoryOfFpEnrichedCategory;
+    
+    category_morphism_filter := IsMorphismInPreSheafCategoryOfFpEnrichedCategory;
+    
+    ##
+    object_constructor := function( cat, pair )
+        
+        return CreatePreSheafByValues( cat, pair );
+        
+    end;
+    
+    object_datum := { cat, object } -> ValuesOfPreSheaf( object );
+    
+    morphism_constructor := function( cat, source, list, range )
+        
+        return CreatePreSheafMorphismByValues( cat, source, list, range );
+        
+    end;
+    
+    morphism_datum := { cat, morphism } -> ValuesOnAllObjects( morphism );
+    
+    ## e.g., ZeroObject, DirectSum
+    create_func_object :=
+        function( name, T )
+            
+            return """
+                function( input_arguments... )
+                    
+                  return ObjectConstructor( cat, Pair( [ ], [ ] ) );
+                  
+                end
+            """;
+            
+        end;
+    
+    ## e.g., IdentityMorphism, PreCompose
+    create_func_morphism :=
+        function( name, T )
+            
+            return """
+                function( input_arguments... )
+                    
+                    return MorphismConstructor( cat, top_source, [ ], top_range );
+                    
+                end
+            """;
+            
+        end;
+    
+    T := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
+                 name := name,
+                 category_filter := category_filter,
+                 category_object_filter := category_object_filter,
+                 category_morphism_filter := category_morphism_filter,
+                 create_func_object := create_func_object,
+                 create_func_morphism := create_func_morphism,
+                 create_func_morphism_or_fail := create_func_morphism,
+                 object_constructor := object_constructor,
+                 object_datum := object_datum,
+                 morphism_constructor := morphism_constructor,
+                 morphism_datum := morphism_datum
+                 ) );
+    
+    SetSource( T, B );
+    SetRange( T, C );
+    
+    ##
+    AddIsWellDefinedForObjects( T,
+      function( T, object )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsWellDefinedForMorphisms( T,
+      function( T, morphism )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsEqualForObjects( T,
+      function( T, object1, object2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsEqualForMorphisms( T,
+      function( T, morphism1, morphism2 )
+        
+        return true;
+        
+    end );
+    
+    ##
+    AddIsCongruentForMorphisms( T,
+      function( T, morphism1, morphism2 )
+        
+        return true;
+        
+    end );
+    
+    Finalize( T );
+    
+    return T;
     
 end );
 
