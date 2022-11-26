@@ -8,8 +8,10 @@ T := PreSheaves( InitialCategory( ) );
 IsTerminalCategory( T );
 #! true
 InfoOfInstalledOperationsOfCategory( T );
-#! 91 primitive operations were used to derive 442 operations for this category
+#! 93 primitive operations were used to derive 463 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsBicartesianCoclosedCategory

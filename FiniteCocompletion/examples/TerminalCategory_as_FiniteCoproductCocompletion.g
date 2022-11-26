@@ -6,8 +6,10 @@ LoadPackage( "FiniteCocompletion" );
 T := FiniteCoproductCocompletion( InitialCategory( ) );
 #! FiniteCoproductCocompletion( InitialCategory( ) )
 InfoOfInstalledOperationsOfCategory( T );
-#! 89 primitive operations were used to derive 396 operations for this category
+#! 91 primitive operations were used to derive 416 operations for this category
 #! which algorithmically
+#! * IsCategoryWithDecidableColifts
+#! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsBicartesianClosedCategory
