@@ -538,7 +538,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         AddDistinguishedObjectOfHomomorphismStructure( fpcategory,
           function( fpcategory )
             
-            return ObjectConstructor( RangeCategoryOfHomomorphismStructure( fpcategory ), 1 );
+            return TerminalObject( RangeCategoryOfHomomorphismStructure( fpcategory ) );
             
         end );
         

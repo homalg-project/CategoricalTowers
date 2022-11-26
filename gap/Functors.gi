@@ -3,6 +3,7 @@
 #
 # Implementations
 #
+
 ##
 InstallMethod( IsomorphismFromQuiverRowsIntoAdditiveClosureOfAlgebroid,
           [ IsQuiverRowsCategory, IsAdditiveClosureCategory ],

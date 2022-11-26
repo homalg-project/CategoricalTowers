@@ -6,6 +6,8 @@ LoadPackage( "Algebroids", false );
 #! true
 LoadPackage( "CompilerForCAP", false );
 #! true
+ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
+#! true
 
 QQ := HomalgFieldOfRationals( );;
 snake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;

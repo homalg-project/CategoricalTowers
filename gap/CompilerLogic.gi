@@ -194,6 +194,22 @@ CapJitAddLogicTemplate(
     )
 );
 
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "constant" ],
+        src_template := "List( list, i -> constant )",
+        dst_template := "ListWithIdenticalEntries( Length( list ), constant )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "length", "constant", "pos" ],
+        src_template := "ListWithIdenticalEntries( length, constant )[pos]",
+        dst_template := "constant",
+    )
+);
+
 # List( L, x -> x ) => L
 CapJitAddLogicTemplate(
     rec(
