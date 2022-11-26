@@ -1,4 +1,4 @@
-#! @BeginChunk PrecompileCategoryFromNerveData
+#! @BeginChunk PrecompileCategoryFromNerveDataHomStructureOnMorphisms
 
 #! @Example
 
@@ -18,7 +18,7 @@ category_constructor :=
     local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ) ); end;;
 
 given_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;
-compiled_category_name := "CategoryFromNerveDataPrecompiled";;
+compiled_category_name := "CategoryFromNerveDataHomStructureOnMorphismsPrecompiled";;
 package_name := "Algebroids";;
 
 CapJitPrecompileCategoryAndCompareResult(
@@ -26,10 +26,10 @@ CapJitPrecompileCategoryAndCompareResult(
     given_arguments,
     package_name,
     compiled_category_name
-        : operations := Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( given_arguments[1] : no_precompiled_code := true ) ),
-                                [ "HomomorphismStructureOnMorphismsWithGivenObjects" ] ) );;
+   : operations := [ "HomomorphismStructureOnMorphismsWithGivenObjects" ]
+);;
 
-CategoryFromNerveDataPrecompiled( given_arguments[1] );
+CategoryFromNerveDataHomStructureOnMorphismsPrecompiled( given_arguments[1] );
 #! CategoryFromNerveData
 
 #! @EndExample

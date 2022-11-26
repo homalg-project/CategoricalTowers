@@ -6,6 +6,70 @@
 BindGlobal( "ADD_FUNCTIONS_FOR_CategoryFromNerveDataPrecompiled", function ( cat )
     
     ##
+    AddDistinguishedObjectOfHomomorphismStructure( cat,
+        
+########
+function ( cat_1 )
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, 1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddHomomorphismStructureOnObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1;
+    deduped_33_1 := MapOfObject( arg3_1 );
+    deduped_32_1 := MapOfObject( arg2_1 );
+    deduped_31_1 := NerveData( cat_1 )[2];
+    deduped_30_1 := Length( Source( deduped_33_1 ) );
+    deduped_29_1 := deduped_31_1[3];
+    deduped_28_1 := Length( Source( deduped_32_1 ) );
+    deduped_27_1 := deduped_31_1[2];
+    deduped_26_1 := Length( Source( deduped_29_1 ) );
+    deduped_25_1 := Length( Source( deduped_27_1 ) );
+    deduped_24_1 := [ 0 .. deduped_26_1 * deduped_30_1 - 1 ];
+    deduped_23_1 := [ 0 .. deduped_25_1 * deduped_28_1 - 1 ];
+    hoisted_10_1 := AsList( deduped_33_1 );
+    hoisted_9_1 := deduped_30_1;
+    hoisted_8_1 := AsList( deduped_29_1 );
+    hoisted_7_1 := deduped_26_1;
+    deduped_22_1 := Filtered( deduped_24_1, function ( x_2 )
+            return hoisted_8_1[1 + REM_INT( x_2, hoisted_7_1 )] = hoisted_10_1[1 + REM_INT( QUO_INT( x_2, hoisted_7_1 ), hoisted_9_1 )];
+        end );
+    hoisted_6_1 := AsList( deduped_32_1 );
+    hoisted_5_1 := deduped_28_1;
+    hoisted_4_1 := AsList( deduped_27_1 );
+    hoisted_3_1 := deduped_25_1;
+    deduped_21_1 := Filtered( deduped_23_1, function ( x_2 )
+            return hoisted_4_1[1 + REM_INT( x_2, hoisted_3_1 )] = hoisted_6_1[1 + REM_INT( QUO_INT( x_2, hoisted_3_1 ), hoisted_5_1 )];
+        end );
+    deduped_20_1 := Length( deduped_22_1 );
+    deduped_19_1 := Length( deduped_21_1 );
+    hoisted_16_1 := deduped_24_1;
+    hoisted_15_1 := deduped_22_1;
+    hoisted_18_1 := List( [ 0 .. deduped_20_1 - 1 ], function ( i_2 )
+            return REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_16_1[1 + hoisted_15_1[(1 + i_2)]] ), hoisted_7_1 );
+        end );
+    hoisted_17_1 := deduped_20_1;
+    hoisted_12_1 := deduped_23_1;
+    hoisted_11_1 := deduped_21_1;
+    hoisted_14_1 := List( [ 0 .. deduped_19_1 - 1 ], function ( i_2 )
+            return REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_12_1[1 + hoisted_11_1[(1 + i_2)]] ), hoisted_3_1 );
+        end );
+    hoisted_13_1 := deduped_19_1;
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Length( Filtered( [ 0 .. deduped_19_1 * deduped_20_1 - 1 ], function ( x_2 )
+                return hoisted_14_1[1 + REM_INT( x_2, hoisted_13_1 )] = hoisted_18_1[1 + REM_INT( QUO_INT( x_2, hoisted_13_1 ), hoisted_17_1 )];
+            end ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIdentityMorphism( cat,
         
 ########
@@ -18,6 +82,138 @@ function ( cat_1, a_1 )
     hoisted_1_1 := AsList( deduped_5_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, MapOfMorphism, CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), deduped_4_1, Range( deduped_3_1 ), AsList, List( [ 0 .. Length( deduped_4_1 ) - 1 ], function ( i_2 )
                 return hoisted_2_1[1 + hoisted_1_1[(1 + i_2)]];
+            end ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
+        
+########
+function ( cat_1, alpha_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1;
+    deduped_41_1 := MapOfMorphism( alpha_1 );
+    deduped_40_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_39_1 := MapOfObject( Range( alpha_1 ) );
+    deduped_38_1 := MapOfObject( Source( alpha_1 ) );
+    deduped_37_1 := NerveData( cat_1 )[2];
+    deduped_36_1 := Source( deduped_41_1 );
+    deduped_35_1 := deduped_37_1[3];
+    deduped_34_1 := deduped_37_1[2];
+    deduped_33_1 := Length( Source( deduped_39_1 ) );
+    deduped_32_1 := Length( Source( deduped_38_1 ) );
+    deduped_31_1 := Length( Source( deduped_35_1 ) );
+    deduped_30_1 := Length( Source( deduped_34_1 ) );
+    deduped_29_1 := [ 0 .. deduped_31_1 * deduped_33_1 - 1 ];
+    deduped_28_1 := [ 0 .. deduped_30_1 * deduped_32_1 - 1 ];
+    hoisted_8_1 := AsList( deduped_39_1 );
+    hoisted_7_1 := deduped_33_1;
+    hoisted_6_1 := AsList( deduped_35_1 );
+    hoisted_5_1 := deduped_31_1;
+    deduped_27_1 := Filtered( deduped_29_1, function ( x_2 )
+            return hoisted_6_1[1 + REM_INT( x_2, hoisted_5_1 )] = hoisted_8_1[1 + REM_INT( QUO_INT( x_2, hoisted_5_1 ), hoisted_7_1 )];
+        end );
+    hoisted_4_1 := AsList( deduped_38_1 );
+    hoisted_3_1 := deduped_32_1;
+    hoisted_2_1 := AsList( deduped_34_1 );
+    hoisted_1_1 := deduped_30_1;
+    deduped_26_1 := Filtered( deduped_28_1, function ( x_2 )
+            return hoisted_2_1[1 + REM_INT( x_2, hoisted_1_1 )] = hoisted_4_1[1 + REM_INT( QUO_INT( x_2, hoisted_1_1 ), hoisted_3_1 )];
+        end );
+    deduped_25_1 := Length( deduped_27_1 );
+    deduped_24_1 := Length( deduped_26_1 );
+    deduped_23_1 := [ 0 .. deduped_24_1 * deduped_25_1 - 1 ];
+    hoisted_14_1 := deduped_29_1;
+    hoisted_13_1 := deduped_27_1;
+    hoisted_16_1 := List( [ 0 .. deduped_25_1 - 1 ], function ( i_2 )
+            return REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_14_1[1 + hoisted_13_1[(1 + i_2)]] ), hoisted_5_1 );
+        end );
+    hoisted_15_1 := deduped_25_1;
+    hoisted_10_1 := deduped_28_1;
+    hoisted_9_1 := deduped_26_1;
+    hoisted_12_1 := List( [ 0 .. deduped_24_1 - 1 ], function ( i_2 )
+            return REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_10_1[1 + hoisted_9_1[(1 + i_2)]] ), hoisted_1_1 );
+        end );
+    hoisted_11_1 := deduped_24_1;
+    deduped_22_1 := Filtered( deduped_23_1, function ( x_2 )
+            return hoisted_12_1[1 + REM_INT( x_2, hoisted_11_1 )] = hoisted_16_1[1 + REM_INT( QUO_INT( x_2, hoisted_11_1 ), hoisted_15_1 )];
+        end );
+    deduped_21_1 := Length( deduped_22_1 );
+    hoisted_18_1 := deduped_23_1;
+    hoisted_17_1 := deduped_22_1;
+    hoisted_20_1 := List( [ 0 .. deduped_21_1 - 1 ], function ( logic_new_func_x_2 )
+            return hoisted_12_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_18_1[(1 + hoisted_17_1[(1 + logic_new_func_x_2)])] ), hoisted_11_1 )];
+        end );
+    hoisted_19_1 := AsList( deduped_41_1 );
+    return CreateCapCategoryMorphismWithAttributes( deduped_40_1, deduped_36_1, CreateCapCategoryObjectWithAttributes( deduped_40_1, Length, deduped_21_1 ), AsList, List( [ 0 .. Length( deduped_36_1 ) - 1 ], function ( x_2 )
+              return -1 + SafePosition( hoisted_20_1, hoisted_19_1[(1 + x_2)] );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1, arg4_1 )
+    local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1;
+    deduped_41_1 := MapOfObject( arg3_1 );
+    deduped_40_1 := MapOfObject( arg2_1 );
+    deduped_39_1 := Source( arg4_1 );
+    deduped_38_1 := NerveData( cat_1 )[2];
+    deduped_37_1 := Length( Source( deduped_41_1 ) );
+    deduped_36_1 := deduped_38_1[3];
+    deduped_35_1 := Length( Source( deduped_40_1 ) );
+    deduped_34_1 := deduped_38_1[2];
+    deduped_33_1 := Source( deduped_34_1 );
+    deduped_32_1 := Length( Source( deduped_36_1 ) );
+    deduped_31_1 := Length( deduped_33_1 );
+    deduped_30_1 := [ 0 .. deduped_32_1 * deduped_37_1 - 1 ];
+    deduped_29_1 := [ 0 .. deduped_31_1 * deduped_35_1 - 1 ];
+    hoisted_10_1 := AsList( deduped_41_1 );
+    hoisted_9_1 := deduped_37_1;
+    hoisted_8_1 := AsList( deduped_36_1 );
+    hoisted_7_1 := deduped_32_1;
+    deduped_28_1 := Filtered( deduped_30_1, function ( x_2 )
+            return hoisted_8_1[1 + REM_INT( x_2, hoisted_7_1 )] = hoisted_10_1[1 + REM_INT( QUO_INT( x_2, hoisted_7_1 ), hoisted_9_1 )];
+        end );
+    hoisted_6_1 := AsList( deduped_40_1 );
+    hoisted_5_1 := deduped_35_1;
+    hoisted_4_1 := AsList( deduped_34_1 );
+    hoisted_3_1 := deduped_31_1;
+    deduped_27_1 := Filtered( deduped_29_1, function ( x_2 )
+            return hoisted_4_1[1 + REM_INT( x_2, hoisted_3_1 )] = hoisted_6_1[1 + REM_INT( QUO_INT( x_2, hoisted_3_1 ), hoisted_5_1 )];
+        end );
+    deduped_26_1 := Length( deduped_28_1 );
+    deduped_25_1 := Length( deduped_27_1 );
+    deduped_24_1 := [ 0 .. deduped_25_1 * deduped_26_1 - 1 ];
+    hoisted_16_1 := deduped_30_1;
+    hoisted_15_1 := deduped_28_1;
+    hoisted_18_1 := List( [ 0 .. deduped_26_1 - 1 ], function ( i_2 )
+            return REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_16_1[1 + hoisted_15_1[(1 + i_2)]] ), hoisted_7_1 );
+        end );
+    hoisted_17_1 := deduped_26_1;
+    hoisted_12_1 := deduped_29_1;
+    hoisted_11_1 := deduped_27_1;
+    hoisted_14_1 := List( [ 0 .. deduped_25_1 - 1 ], function ( i_2 )
+            return REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_12_1[1 + hoisted_11_1[(1 + i_2)]] ), hoisted_3_1 );
+        end );
+    hoisted_13_1 := deduped_25_1;
+    deduped_23_1 := Filtered( deduped_24_1, function ( x_2 )
+            return hoisted_14_1[1 + REM_INT( x_2, hoisted_13_1 )] = hoisted_18_1[1 + REM_INT( QUO_INT( x_2, hoisted_13_1 ), hoisted_17_1 )];
+        end );
+    hoisted_20_1 := deduped_24_1;
+    hoisted_19_1 := deduped_23_1;
+    hoisted_22_1 := List( [ 0 .. Length( deduped_23_1 ) - 1 ], function ( logic_new_func_x_2 )
+            return hoisted_14_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_20_1[(1 + hoisted_19_1[(1 + logic_new_func_x_2)])] ), hoisted_13_1 )];
+        end );
+    hoisted_21_1 := AsList( arg4_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, MapOfMorphism, CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), deduped_39_1, deduped_33_1, AsList, List( [ 0 .. Length( deduped_39_1 ) - 1 ], function ( i_2 )
+                return hoisted_22_1[1 + hoisted_21_1[(1 + i_2)]];
             end ) ) );
 end
 ########

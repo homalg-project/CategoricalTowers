@@ -20,6 +20,7 @@ InstallMethod( CategoryFromNerveData,
     
     V := CapCategory( nerve_data[1][1] );
     
+    SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
     SetNerveData( C, nerve_data );
     
@@ -213,10 +214,229 @@ InstallMethod( CategoryFromNerveData,
         
     end );
     
+    Assert( 0, IsIdenticalObj( V, RangeCategoryOfHomomorphismStructure( V ) ) );
+    
+    ##
+    AddDistinguishedObjectOfHomomorphismStructure( C,
+      function( C )
+        
+        return DistinguishedObjectOfHomomorphismStructure( RangeCategoryOfHomomorphismStructure( C ) );
+        
+    end );
+    
+    ##
+    AddHomomorphismStructureOnObjects( C,
+      function( C, obj_1, obj_2 )
+        local V, s, t, Hom_o1_C, Hom_C_o2;
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
+        
+        s := NerveData( C )[2][2];
+        t := NerveData( C )[2][3];
+        
+        Hom_o1_C := ProjectionInFactorOfFiberProduct( V,
+                            [ s, ObjectDatum( C, obj_1 ) ],
+                            1 );
+        
+        Hom_C_o2 := ProjectionInFactorOfFiberProduct( V,
+                            [ t, ObjectDatum( C, obj_2 ) ],
+                            1 );
+        
+        return FiberProduct( V,
+                       [ Hom_o1_C, Hom_C_o2 ] );
+        
+    end );
+    
+    ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( C,
+      function( C, source, phi_1, phi_2, range )
+        local V, C2, s, t, ps, pt, mu, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2,
+              DC3, C3, p12, p23, pss, ptt, mux1, mumu, Hom_r1_s2, Hom_s1_r2,
+              phi_1xC2, C2xphi_2, iota;
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
+        
+        ## C₂
+        C2 := NerveData( C )[1][3];
+        
+        ## s: C₁ → C₀
+        s := NerveData( C )[2][2];
+        
+        ## t: C₁ → C₀
+        t := NerveData( C )[2][3];
+        
+        ## pₛ: C₂ → C₁
+        ps := NerveData( C )[2][6];
+        
+        ## pₜ: C₂ → C₁
+        pt := NerveData( C )[2][7];
+        
+        ## pₜ: C₂ → C₁
+        mu := NerveData( C )[2][8];
+        
+        DC1xC1 := [ t, s ];
+        
+        ## C₁ ×ₜₛ C₁
+        C1xC1 := FiberProduct( V,
+                         DC1xC1 );
+        
+        ## C₂ → C₁ ×ₜₛ C₁
+        C2_C1xC1 := UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                            DC1xC1,
+                            C2,
+                            [ ps, pt ],
+                            C1xC1 );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsIsomorphism( V, C2_C1xC1 ) ); # the first condition for the simplicial set to be the nerve of a category
+        
+        ## C₁ ×ₜₛ C₁ → C₂
+        C1xC1_C2 := InverseForMorphisms( V,
+                            C2_C1xC1 );
+        
+        ## (pₜ, pₛ)
+        DC3 := [ pt, ps ];
+        
+        ## C₃
+        C3 := FiberProduct( V,
+                      DC3 );
+        
+        ## p₁₂: C₃ → C₂
+        p12 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( V,
+                       DC3,
+                       1,
+                       C3 );
+        
+        ## p₂₃: C₃ → C₂
+        p23 := ProjectionInFactorOfFiberProductWithGivenFiberProduct( V,
+                       DC3,
+                       2,
+                       C3 );
+        
+        ## pₛₛ: C₃ → C₂
+        pss := PreCompose( V, p12, ps );
+        
+        ## pₜₜ: C₃ → C₂
+        ptt := PreCompose( V, p23, pt );
+        
+        ## μ × 1: C₃ →  C₁ ×ₜₛ C₁ → C₂
+        mux1 := PreCompose( V,
+                        UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                                DC1xC1,
+                                C3,
+                                [ PreCompose( V, p12, mu ),
+                                  ptt ],
+                                C1xC1 ),
+                        C1xC1_C2 );
+        
+        ## μμ: C₃ → C₁
+        mumu := PreCompose( V, mux1, mu );
+        
+        ## Hom(r₁,s₂) ↪ C₁
+        Hom_r1_s2 := MorphismFromFiberProductToSinkWithGivenFiberProduct( V,
+                             [ ProjectionInFactorOfFiberProduct( V,
+                                     [ s, ObjectDatum( C, Range( phi_1 ) ) ],
+                                     1 ),
+                               ProjectionInFactorOfFiberProduct( V,
+                                     [ t, ObjectDatum( C, Source( phi_2 ) ) ],
+                                       1 ) ],
+                             source );
+        
+        ## Hom(s₁,r₂) ↪ C₁
+        Hom_s1_r2 := MorphismFromFiberProductToSinkWithGivenFiberProduct( V,
+                             [ ProjectionInFactorOfFiberProduct( V,
+                                     [ s, ObjectDatum( C, Source( phi_1 ) ) ],
+                                     1 ),
+                               ProjectionInFactorOfFiberProduct( V,
+                                     [ t, ObjectDatum( C, Range( phi_2 ) ) ],
+                                     1 ) ],
+                             range );
+        
+        ## {φ₁} ×ₜₛ Hom(r₁,-) ×ₜₛ Hom(-,-) ↪ C₃
+        phi_1xC2 := ProjectionInFactorOfFiberProduct( V,
+                            [ pss, MorphismDatum( C, phi_1 ) ],
+                            1 );
+        
+        ## Hom(-,-) ×ₜₛ Hom(-,s₂) ×ₜₛ {φ₂} ↪ C₃
+        C2xphi_2 := ProjectionInFactorOfFiberProduct( V,
+                            [ ptt, MorphismDatum( C, phi_2 ) ],
+                            1 );
+        
+        ## ι: {φ₁} ×ₜₛ Hom(r₁,s₂) ×ₜₛ {φ₂} ↪ C₃ → C₁
+        iota := PreCompose( V,
+                        MorphismFromFiberProductToSink( V,
+                                [ phi_1xC2, C2xphi_2 ] ),
+                        mumu );
+        
+        ## {φ₁} ×ₜₛ Hom(r₁,s₂) ×ₜₛ {φ₂} → Hom(s₁,r₂)
+        return LiftAlongMonomorphism( V,
+                       Hom_s1_r2,
+                       iota );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
+      function( C, mor )
+        local V, s, t, Hom_o1_C, Hom_C_o2, Hom_o1_o2;
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
+        
+        s := NerveData( C )[2][2];
+        t := NerveData( C )[2][3];
+        
+        Hom_o1_C := ProjectionInFactorOfFiberProduct( V,
+                            [ s, ObjectDatum( C, Source( mor ) ) ],
+                            1 );
+        
+        Hom_C_o2 := ProjectionInFactorOfFiberProduct( V,
+                            [ t, ObjectDatum( C, Range( mor ) ) ],
+                            1 );
+        
+        Hom_o1_o2 :=  MorphismFromFiberProductToSink( V,
+                              [ Hom_o1_C, Hom_C_o2 ] );
+        
+        return LiftAlongMonomorphism( V,
+                       Hom_o1_o2,
+                       MorphismDatum( C, mor ) );
+        
+    end );
+    
+    ##
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
+      function( C, obj_1, obj_2, mor )
+        local V, s, t, Hom_o1_C, Hom_C_o2, Hom_o1_o2;
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
+        
+        s := NerveData( C )[2][2];
+        t := NerveData( C )[2][3];
+        
+        Hom_o1_C := ProjectionInFactorOfFiberProduct( V,
+                            [ s, ObjectDatum( C, obj_1 ) ],
+                            1 );
+        
+        Hom_C_o2 := ProjectionInFactorOfFiberProduct( V,
+                            [ t, ObjectDatum( C, obj_2 ) ],
+                            1 );
+        
+        Hom_o1_o2 :=  MorphismFromFiberProductToSink( V,
+                              [ Hom_o1_C, Hom_C_o2 ] );
+        
+        return MorphismConstructor( C,
+                       obj_1,
+                       PreCompose( V,
+                               mor,
+                               Hom_o1_o2 ),
+                       obj_2 );
+        
+    end );
+    
     #if false then
     if ValueOption( "no_precompiled_code" ) <> true then
         
         ADD_FUNCTIONS_FOR_CategoryFromNerveDataPrecompiled( C );
+        ADD_FUNCTIONS_FOR_CategoryFromNerveDataHomStructureOnMorphismsPrecompiled( C );
         
     fi;
     
