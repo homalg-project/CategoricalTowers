@@ -77,3 +77,4 @@
 @Chapter Precompilation
 @InsertChunk PrecompileAdditiveClosureOfAlgebroid
 @InsertChunk PrecompileAdelmanCategoryOfAdditiveClosureOfAlgebroid
+@InsertChunk PrecompileCategoryFromNerveData
