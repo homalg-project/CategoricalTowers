@@ -968,8 +968,11 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
+    local pairs;
     
-    return PairOfFunctionsOfPreSheaf( F )[2]( morB );
+    pairs := PairOfFunctionsOfPreSheaf( F );
+    
+    return pairs[2]( pairs[1]( Range( morB ) ), morB, pairs[1]( Source( morB ) ) );
     
 end );
 
