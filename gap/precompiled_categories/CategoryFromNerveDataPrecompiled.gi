@@ -62,24 +62,28 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := MapOfMorphism( arg2_1 );
-    deduped_2_1 := AsList( deduped_3_1 );
-    hoisted_1_1 := Length( Range( deduped_3_1 ) );
-    if not ForAll( deduped_2_1, function ( a_2 )
-                 return (IsInt( a_2 ) and a_2 >= 0);
-             end ) then
-        return false;
-    elif Length( Source( deduped_3_1 ) ) <> Length( deduped_2_1 ) then
-        return false;
-    elif not ForAll( deduped_2_1, function ( a_2 )
-                 return a_2 < hoisted_1_1;
-             end ) then
-        return false;
-    else
-        return true;
-    fi;
-    return;
+    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := MapOfMorphism( arg2_1 );
+    deduped_4_1 := AsList( deduped_5_1 );
+    deduped_3_1 := Length( Range( deduped_5_1 ) );
+    deduped_2_1 := Length( Source( deduped_5_1 ) );
+    hoisted_1_1 := deduped_3_1;
+    return IdFunc( function (  )
+                  if not ForAll( deduped_4_1, function ( a_3 )
+                               return (IsInt( a_3 ) and a_3 >= 0);
+                           end ) then
+                      return false;
+                  elif deduped_2_1 <> Length( deduped_4_1 ) then
+                      return false;
+                  elif not ForAll( deduped_4_1, function ( a_3 )
+                               return a_3 < hoisted_1_1;
+                           end ) then
+                      return false;
+                  else
+                      return true;
+                  fi;
+                  return;
+              end )(  ) and deduped_2_1 = 1 and Length( NerveData( cat_1 )[1][2] ) = deduped_3_1;
 end
 ########
         
@@ -90,24 +94,28 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := MapOfObject( arg2_1 );
-    deduped_2_1 := AsList( deduped_3_1 );
-    hoisted_1_1 := Length( Range( deduped_3_1 ) );
-    if not ForAll( deduped_2_1, function ( a_2 )
-                 return (IsInt( a_2 ) and a_2 >= 0);
-             end ) then
-        return false;
-    elif Length( Source( deduped_3_1 ) ) <> Length( deduped_2_1 ) then
-        return false;
-    elif not ForAll( deduped_2_1, function ( a_2 )
-                 return a_2 < hoisted_1_1;
-             end ) then
-        return false;
-    else
-        return true;
-    fi;
-    return;
+    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := MapOfObject( arg2_1 );
+    deduped_4_1 := AsList( deduped_5_1 );
+    deduped_3_1 := Length( Range( deduped_5_1 ) );
+    deduped_2_1 := Length( Source( deduped_5_1 ) );
+    hoisted_1_1 := deduped_3_1;
+    return IdFunc( function (  )
+                  if not ForAll( deduped_4_1, function ( a_3 )
+                               return (IsInt( a_3 ) and a_3 >= 0);
+                           end ) then
+                      return false;
+                  elif deduped_2_1 <> Length( deduped_4_1 ) then
+                      return false;
+                  elif not ForAll( deduped_4_1, function ( a_3 )
+                               return a_3 < hoisted_1_1;
+                           end ) then
+                      return false;
+                  else
+                      return true;
+                  fi;
+                  return;
+              end )(  ) and deduped_2_1 = 1 and Length( NerveData( cat_1 )[1][1] ) = deduped_3_1;
 end
 ########
         

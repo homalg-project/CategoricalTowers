@@ -72,22 +72,34 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddIsWellDefinedForObjects( C,
       function( C, obj )
-        local V;
+        local V, C0, obj_map;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        return IsWellDefinedForMorphisms( V, ObjectDatum( C, obj ) );
+        C0 := NerveData( C )[1][1];
+        
+        obj_map := ObjectDatum( C, obj );
+        
+        return IsWellDefinedForMorphisms( V, obj_map ) and
+               IsTerminal( V, Source( obj_map ) ) and
+               IsEqualForObjects( V, C0, Range( obj_map ) );
         
     end );
     
     ##
     AddIsWellDefinedForMorphisms( C,
       function( C, mor )
-        local V;
+        local V, C1, mor_map;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        return IsWellDefinedForMorphisms( V, MorphismDatum( C, mor ) );
+        C1 := NerveData( C )[1][2];
+        
+        mor_map := MorphismDatum( C, mor );
+        
+        return IsWellDefinedForMorphisms( V, mor_map ) and
+               IsTerminal( V, Source( mor_map ) ) and
+               IsEqualForObjects( V, C1, Range( mor_map ) );
         
     end );
     
