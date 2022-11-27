@@ -308,3 +308,12 @@ CapJitAddLogicTemplate(
         dst_template := "func( entry )",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        variable_filters := [ IsInt ],
+        src_template := "1 + (-1 + number)",
+        dst_template := "number",
+    )
+);
