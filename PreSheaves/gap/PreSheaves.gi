@@ -268,7 +268,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     local B_op, name, list_of_operations,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
-          list_of_operations_to_install, skip, func, supports_empty_limits, properties,
+          list_of_operations_to_install, skip, func,
+          supports_empty_limits, properties, category_constructor_options,
           PSh;
     
     B_op := Opposite( B : FinalizeCategory := true );
@@ -281,26 +282,26 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         name := Concatenation( name, "..., ... )" );
     fi;
     
-    list_of_operations := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY );
+    list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
     
     ##
-    object_constructor := function( cat, pair_of_functions_of_presheaf )
+    object_constructor := function( cat, pair_of_funcs_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
                        Range, Range( cat ),
-                       PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
+                       PairOfFunctionsOfPreSheaf, pair_of_funcs_of_presheaf );
         
     end;
     
     object_datum := { cat, object } -> PairOfFunctionsOfPreSheaf( object );
     
-    morphism_constructor := function( cat, source, function_of_presheaf_morphism, range )
+    morphism_constructor := function( cat, source, func_of_presheaf_morphism, range )
         
         return CreateCapCategoryMorphismWithAttributes( cat,
                        source,
                        range,
-                       FunctionOfPreSheafMorphism, function_of_presheaf_morphism );
+                       FunctionOfPreSheafMorphism, func_of_presheaf_morphism );
         
     end;
     
@@ -613,26 +614,34 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                     #"IsElementaryTopos",
                     ];
     
+    Append( properties, CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "properties", [ ] ) );
+    
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
     
-    PSh := CategoryConstructor( rec(
-                   name := name,
-                   category_filter := IsPreSheafCategory,
-                   category_object_filter := IsObjectInPreSheafCategory,
-                   category_morphism_filter := IsMorphismInPreSheafCategory,
-                   supports_empty_limits := supports_empty_limits,
-                   list_of_operations_to_install := list_of_operations_to_install,
-                   properties := properties,
-                   object_constructor := object_constructor,
-                   object_datum := object_datum,
-                   morphism_constructor := morphism_constructor,
-                   morphism_datum := morphism_datum,
-                   create_func_bool := create_func_bool,
-                   create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism,
-                   ) );
+    category_constructor_options :=
+      rec( name := name,
+           category_filter := IsPreSheafCategory,
+           category_object_filter := IsObjectInPreSheafCategory,
+           category_morphism_filter := IsMorphismInPreSheafCategory,
+           supports_empty_limits := supports_empty_limits,
+           list_of_operations_to_install := list_of_operations_to_install,
+           properties := properties,
+           object_constructor := object_constructor,
+           object_datum := object_datum,
+           morphism_constructor := morphism_constructor,
+           morphism_datum := morphism_datum,
+           create_func_bool := create_func_bool,
+           create_func_object := create_func_object,
+           create_func_morphism := create_func_morphism,
+           );
+    
+    if HasCommutativeRingOfLinearCategory( C ) then
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+    fi;
+    
+    PSh := CategoryConstructor( category_constructor_options );
     
     SetSource( PSh, B );
     SetRange( PSh, C );
