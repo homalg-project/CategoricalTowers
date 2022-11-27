@@ -1,7 +1,7 @@
 name: PreSheaves
-version: "2022.11-05"
+version: "2022.11-07"
 license: "GPL-2.0-or-later"
-date: 2022-11-26
+date: 2022-11-27
 description: |
     Categories of (co)presheaves
 
@@ -41,11 +41,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/PreSheaves/Packa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2022.11-05/PreSheaves-2022.11-05.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2022.11-07/PreSheaves-2022.11-07.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2022.11-05/PreSheaves-2022.11-05.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2022.11-07/PreSheaves-2022.11-07.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2022.11-05/PreSheaves-2022.11-05.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PreSheaves-2022.11-07/PreSheaves-2022.11-07.pdf
 
 abstract: |
 
@@ -58,7 +58,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar22</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>PreSheaves, Categories of (co)presheaves,
-             Version 2022.11-05</i>
+             Version 2022.11-07</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/PreSheaves">https://homalg-project.github.io/pkg/PreSheaves</a></span>.
@@ -66,10 +66,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ PreSheaves2022.11-05,
+    @misc{ PreSheaves2022.11-07,
       author =           {Barakat, M.},
       title =            {{PreSheaves},  Categories of (co)presheaves, {V}ersion
-                          2022.11-05},
+                          2022.11-07},
       month =            {Nov},
       year =             {2022},
       note =             {GAP package},
