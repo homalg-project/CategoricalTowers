@@ -143,22 +143,56 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddPreCompose( C,
       function( C, mor_1, mor_2 )
-        local V, C2, s, t, mor_12, mu;
+        local V, C2, s, t, ps, pt, mu, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2, mor_12;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
+        ## C₂
         C2 := NerveData( C )[1][3];
         
+        ## s: C₁ → C₀
         s := NerveData( C )[2][2];
+        
+        ## t: C₁ → C₀
         t := NerveData( C )[2][3];
         
-        mor_12 := UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
-                          [ t, s ],
-                          TerminalObject( V ),
-                          [ MorphismDatum( C, mor_1 ), MorphismDatum( C, mor_2 ) ],
-                          C2 );
+        ## pₛ: C₂ → C₁
+        ps := NerveData( C )[2][6];
         
+        ## pₜ: C₂ → C₁
+        pt := NerveData( C )[2][7];
+        
+        ## pₜ: C₂ → C₁
         mu := NerveData( C )[2][8];
+        
+        DC1xC1 := [ t, s ];
+        
+        ## C₁ ×ₜₛ C₁
+        C1xC1 := FiberProduct( V,
+                         DC1xC1 );
+        
+        ## C₂ → C₁ ×ₜₛ C₁
+        C2_C1xC1 := UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                            DC1xC1,
+                            C2,
+                            [ ps, pt ],
+                            C1xC1 );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Assert( 0, IsIsomorphism( V, C2_C1xC1 ) ); # the first condition for the simplicial set to be the nerve of a category
+        
+        ## C₁ ×ₜₛ C₁ → C₂
+        C1xC1_C2 := InverseForMorphisms( V,
+                            C2_C1xC1 );
+        
+        ## 1 → C₁ ×ₜₛ C₁ → C₂
+        mor_12 := PreCompose( V,
+                          UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                                  DC1xC1,
+                                  TerminalObject( V ),
+                                  [ MorphismDatum( C, mor_1 ), MorphismDatum( C, mor_2 ) ],
+                                  C1xC1 ),
+                          C1xC1_C2 );
         
         return MorphismConstructor( C,
                        Source( mor_1 ),

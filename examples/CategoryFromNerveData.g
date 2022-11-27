@@ -52,9 +52,13 @@ IsOne( tau );
 #! false
 IsWellDefined( CreateMorphism( C1, 7, C1 ) );
 #! false
-IsOne( PreCompose( s, id ) );
+PreCompose( s, id ) = idC0;
 #! true
-IsOne( PreCompose( t, id ) );
+PreCompose( t, id ) = idC0;
+#! true
+PreCompose( id, s ) = sigma;
+#! true
+PreCompose( id, t ) = tau;
 #! true
 #! @EndExample
 #! @EndChunk
