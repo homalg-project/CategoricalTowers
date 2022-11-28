@@ -5,6 +5,7 @@
 #
 
 ReadPackage( "Algebroids", "gap/precompiled_categories/CategoryFromNerveDataPrecompiled.gi" );
+ReadPackage( "Algebroids", "gap/precompiled_categories/CategoryFromNerveDataHomStructureOnMorphismsPrecompiled.gi" );
 
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverFieldPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverZPrecompiled.gi" );
