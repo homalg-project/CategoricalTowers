@@ -1,7 +1,7 @@
 name: FiniteCocompletion
-version: "2022.11-02"
+version: "2022.11-03"
 license: "GPL-2.0-or-later"
-date: 2022-11-26
+date: 2022-11-29
 description: |
     Finite (co)product/(co)limit (co)completions
 
@@ -20,7 +20,7 @@ needed-pkgs:
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
-      version: ">= 2022.11-22"
+      version: ">= 2022.11-27"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "CartesianCategories"
       version: ">= 2022.08-01"
@@ -40,11 +40,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2022.11-02/FiniteCocompletion-2022.11-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2022.11-03/FiniteCocompletion-2022.11-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2022.11-02/FiniteCocompletion-2022.11-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2022.11-03/FiniteCocompletion-2022.11-03.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2022.11-02/FiniteCocompletion-2022.11-02.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2022.11-03/FiniteCocompletion-2022.11-03.pdf
 
 abstract: |
 
@@ -57,7 +57,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar22</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletion, Finite (co)product/(co)limit (co)completions,
-             Version 2022.11-02</i>
+             Version 2022.11-03</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletion">https://homalg-project.github.io/pkg/FiniteCocompletion</a></span>.
@@ -65,10 +65,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FiniteCocompletion2022.11-02,
+    @misc{ FiniteCocompletion2022.11-03,
       author =           {Barakat, M.},
       title =            {{FiniteCocompletion},   Finite   (co)product/(co)limit
-                          (co)completions, {V}ersion 2022.11-02},
+                          (co)completions, {V}ersion 2022.11-03},
       month =            {Nov},
       year =             {2022},
       note =             {GAP package},
