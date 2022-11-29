@@ -129,7 +129,7 @@
     [4X[25Xgap>[125X [27XIsTerminalCategory( T );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( T );[127X[104X
-    [4X[28X93 primitive operations were used to derive 463 operations for this category[128X[104X
+    [4X[28X93 primitive operations were used to derive 451 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
@@ -195,7 +195,7 @@
     [4X[25Xgap>[125X [27XPSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );[127X[104X
     [4X[28XPreSheaves( SkeletalFinSets, SkeletalFinSets )[128X[104X
     [4X[25Xgap>[125X [27XInfoOfInstalledOperationsOfCategory( PSh );[127X[104X
-    [4X[28X45 primitive operations were used to derive 152 operations for this category[128X[104X
+    [4X[28X45 primitive operations were used to derive 142 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsFiniteCompleteCategory[128X[104X

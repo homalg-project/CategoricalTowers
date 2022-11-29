@@ -18,8 +18,7 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 
 |    | Repository | git URL |
 |--- | ---------- | ------- |
-| 1. | [**Toposes**](https://github.com/homalg-project/Toposes#readme) | https://github.com/homalg-project/Toposes.git |
-| 2. | [**CategoryConstructor**](https://github.com/homalg-project/CategoryConstructor#readme) | https://github.com/homalg-project/CategoryConstructor.git |
+| 1. | [**CAP_project**](https://github.com/homalg-project/CAP_project#readme) | https://github.com/homalg-project/CAP_project.git |
 
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/CategoricalTowers/PreSheaves/doc/chap0_mj.html
