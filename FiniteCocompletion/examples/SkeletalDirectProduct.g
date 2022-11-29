@@ -1,7 +1,5 @@
 #! @Chunk SkeletalDirectProduct
 
-LoadPackage( "FinSetsForCAP" );
-
 #! @Example
 LoadPackage( "FiniteCocompletion" );
 #! true
