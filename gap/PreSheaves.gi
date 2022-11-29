@@ -500,7 +500,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                     return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
-
+                
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
             end
