@@ -526,9 +526,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
           ReplacedStringViaRecord(
           """
           function ( input_arguments... )
-            local B, C, i_arg, natural_transformation_on_objects;
+            local C, i_arg, natural_transformation_on_objects;
             
-            B := Source( cat );
             C := Range( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
@@ -697,9 +696,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
           function ( PSh, r, eta )
-            local B, C, eta_o, natural_transformation_on_objects;
+            local C, eta_o, natural_transformation_on_objects;
             
-            B := Source( PSh );
             C := Range( PSh );
             
             eta_o := FunctionOfPreSheafMorphism( eta );
