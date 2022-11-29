@@ -366,11 +366,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                   function ( new_source, morB, new_range )
                     local l, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
                                [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
@@ -411,11 +411,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                   function ( new_source, morB, new_range )
                     local l, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
                                [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
@@ -485,11 +485,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                   function ( new_source, morB, new_range )
                     local L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
                     L := [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
                            PairOfFunctionsOfPreSheaf( Source( eta ) )[2]( morB ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
