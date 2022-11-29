@@ -137,44 +137,6 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
           "ZeroObjectFunctorial",
          ] );
 
-##
-InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY,
-        [ 
-          "AssociatorLeftToRightWithGivenTensorProducts",
-          "AssociatorRightToLeftWithGivenTensorProducts",
-          "BraidingInverseWithGivenTensorProducts",
-          "BraidingWithGivenTensorProducts",
-          "LeftDistributivityExpandingWithGivenObjects",
-          "LeftDistributivityFactoringWithGivenObjects",
-          "LeftUnitorInverseWithGivenTensorProduct",
-          "LeftUnitorWithGivenTensorProduct",
-          "RightDistributivityExpandingWithGivenObjects",
-          "RightDistributivityFactoringWithGivenObjects",
-          "RightUnitorInverseWithGivenTensorProduct",
-          "RightUnitorWithGivenTensorProduct",
-          "TensorProductOnMorphismsWithGivenTensorProducts",
-         ] );
-
-##
-InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS,
-        [ 
-          "CoevaluationForDualWithGivenTensorProduct",
-          "DualOnMorphismsWithGivenDuals",
-          #"CoevaluationMorphismWithGivenRange",
-          "EvaluationForDualWithGivenTensorProduct",
-          #"EvaluationMorphismWithGivenSource",
-          "LambdaElimination",
-          "LambdaIntroduction",
-          #"MonoidalPostComposeMorphismWithGivenObjects",
-          #"MonoidalPreComposeMorphismWithGivenObjects",
-          "MorphismFromBidualWithGivenBidual",
-          "MorphismToBidualWithGivenBidual",
-          "RankMorphism",
-          #"TensorProductDualityCompatibilityMorphismWithGivenObjects",
-          "TraceMap",
-          "UniversalPropertyOfDual",
-         ] );
-
 ####################################
 #
 # compatibility methods for "multiple arrows"-case below:
@@ -578,9 +540,6 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     fi;
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
-    
-    CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
-    CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
     
     if IsBound( C!.supports_empty_limits ) then
         supports_empty_limits := C!.supports_empty_limits;
@@ -1016,6 +975,18 @@ InstallMethod( CallFuncList,
     Error( "the argument ", L[1], " is not an object in ", Source( Source( eta ) ), "\n" );
     
 end );
+
+##
+InstallMethod( CallFuncList,
+        [ IsCapFunctor, IsList ],
+        
+  { F, a } -> ApplyFunctor( F, a[ 1 ] ) );
+
+##
+InstallMethod( CallFuncList,
+        [ IsCapNaturalTransformation, IsList ],
+        
+  { nat, a } -> ApplyNaturalTransformation( nat, a[ 1 ] ) );
 
 ####################################
 #

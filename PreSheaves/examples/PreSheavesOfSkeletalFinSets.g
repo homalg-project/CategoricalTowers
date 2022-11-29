@@ -8,7 +8,7 @@ LoadPackage( "FinSetsForCAP" );
 PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 #! PreSheaves( SkeletalFinSets, SkeletalFinSets )
 InfoOfInstalledOperationsOfCategory( PSh );
-#! 45 primitive operations were used to derive 152 operations for this category
+#! 45 primitive operations were used to derive 142 operations for this category
 #! which algorithmically
 #! * IsFiniteCocompleteCategory
 #! * IsFiniteCompleteCategory
