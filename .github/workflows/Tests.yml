@@ -10,6 +10,12 @@ on:
     - cron: "0 4 * * *" # after gap-docker(-master) is rebuilt
   workflow_dispatch:
 
+# cancel runs for pull requests on force push
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-using-a-fallback-value
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: true
+
 jobs:
   test:
     strategy:
@@ -33,8 +39,8 @@ jobs:
           cd /home/gap/.gap/pkg/
           cp ./CategoricalTowers/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
-          git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
+          git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           git clone --depth 1 https://github.com/homalg-project/Toposes.git
           git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
