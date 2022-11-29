@@ -117,9 +117,6 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2022.09-03" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "CategoryConstructor", ">= 2022.06-02" ],
-                   [ "MonoidalCategories", ">= 2022.05-03" ],
-                   [ "Digraphs", ">= 1.3.1" ],
                    ],
   ExternalConditions := [ ],
 ),
