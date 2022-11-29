@@ -31,10 +31,6 @@ test-with-coverage: doc
 	gap --quitonbreak --cover stats tst/testall.g
 	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
-test-with-coverage-without-precompiled-code: doc
-	gap --quitonbreak --cover stats_no_precompiled_code tst/testall_no_precompiled_code.g
-	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats_no_precompiled_code", "coverage_no_precompiled_code.json");'
-
 test-notebooks:
 	cd examples/notebooks/; \
 	for filename in *.ipynb; do \
@@ -70,4 +66,4 @@ test-spacing:
 	rm spacing_diff
 	rm spacing_diff_no_blanks
 
-ci-test: test-basic-spacing test-with-coverage test-with-coverage-without-precompiled-code test-notebooks
+ci-test: test-basic-spacing test-with-coverage test-notebooks

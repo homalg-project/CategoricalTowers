@@ -586,9 +586,6 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
-    CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
-    CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
-    
     if IsBound( C!.supports_empty_limits ) then
         supports_empty_limits := C!.supports_empty_limits;
     else
@@ -1469,9 +1466,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
     properties := Filtered( properties, p -> ValueGlobal( p )( C ) );
-    
-    CAP_INTERNAL_METHOD_NAME_RECORD.ImageObject.functorial := "ImageObjectFunctorial";
-    CAP_INTERNAL_METHOD_NAME_RECORD.CoimageObject.functorial := "CoimageObjectFunctorial";
     
     if IsBound( C!.supports_empty_limits ) then
         supports_empty_limits := C!.supports_empty_limits;
