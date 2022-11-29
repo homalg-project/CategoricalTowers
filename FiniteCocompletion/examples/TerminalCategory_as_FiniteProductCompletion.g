@@ -6,7 +6,7 @@ LoadPackage( "FiniteCocompletion" );
 T := FiniteProductCompletion( InitialCategory( ) );
 #! FiniteProductCompletion( InitialCategory( ) )
 InfoOfInstalledOperationsOfCategory( T );
-#! 91 primitive operations were used to derive 416 operations for this category
+#! 91 primitive operations were used to derive 420 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
