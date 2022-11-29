@@ -661,7 +661,9 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         ##
         AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
           function ( PSh, S, diagram_S, M, diagram_T, T )
-            local S_o, T_o, natural_transformation_on_objects;
+            local C, S_o, T_o, natural_transformation_on_objects;
+            
+            C := Range( PSh );
             
             S_o := PairOfFunctionsOfPreSheaf( S )[1];
             T_o := PairOfFunctionsOfPreSheaf( T )[1];
