@@ -366,11 +366,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                   function ( new_source, morB, new_range )
                     local l, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
                                [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
@@ -411,11 +411,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                   function ( new_source, morB, new_range )
                     local l, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
                     l := List( etas, eta ->
                                [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
@@ -485,11 +485,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                   function ( new_source, morB, new_range )
                     local L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
                     L := [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
                            PairOfFunctionsOfPreSheaf( Source( eta ) )[2]( morB ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
@@ -526,9 +526,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
           ReplacedStringViaRecord(
           """
           function ( input_arguments... )
-            local B, C, i_arg, natural_transformation_on_objects;
+            local C, i_arg, natural_transformation_on_objects;
             
-            B := Source( cat );
             C := Range( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
@@ -662,7 +661,9 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         ##
         AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
           function ( PSh, S, diagram_S, M, diagram_T, T )
-            local S_o, T_o, natural_transformation_on_objects;
+            local C, S_o, T_o, natural_transformation_on_objects;
+            
+            C := Range( PSh );
             
             S_o := PairOfFunctionsOfPreSheaf( S )[1];
             T_o := PairOfFunctionsOfPreSheaf( T )[1];
@@ -697,9 +698,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
           function ( PSh, r, eta )
-            local B, C, eta_o, natural_transformation_on_objects;
+            local C, eta_o, natural_transformation_on_objects;
             
-            B := Source( PSh );
             C := Range( PSh );
             
             eta_o := FunctionOfPreSheafMorphism( eta );
