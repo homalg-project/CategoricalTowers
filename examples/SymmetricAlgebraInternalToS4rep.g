@@ -6,7 +6,7 @@ LoadPackage( "InternalModules" : OnlyNeeded );
 srepG := RepresentationCategory( SymmetricGroup( 4 ) );
 #! The representation category of SymmetricGroup( [ 1 .. 4 ] )
 InfoOfInstalledOperationsOfCategory( srepG );
-#! 46 primitive operations were used to derive 250 operations for
+#! 46 primitive operations were used to derive 254 operations for
 #! this category which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsAbelianCategory
