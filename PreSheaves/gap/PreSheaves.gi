@@ -144,74 +144,74 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
 ####################################
 
 ##
-BindGlobal( "EqualizerFunctorial_helper",
-  function ( cat, Lsource, LmorS, LmorT, Ltarget )
+BindGlobal( "EqualizerFunctorialWithGivenEqualizers_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
 
     #% CAP_JIT_RESOLVE_FUNCTION
-    return EqualizerFunctorial( cat, Lsource, LmorS[1], Ltarget );
+    return EqualizerFunctorialWithGivenEqualizers( cat, source, Lsource, LmorS[1], Ltarget, target );
     
 end );
 
 ##
-BindGlobal( "CoequalizerFunctorial_helper",
-  function ( cat, Lsource, LmorS, LmorT, Ltarget )
+BindGlobal( "CoequalizerFunctorialWithGivenCoequalizers_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return CoequalizerFunctorial( cat, Lsource, LmorT[1], Ltarget );
+    return CoequalizerFunctorialWithGivenCoequalizers( cat, source, Lsource, LmorT[1], Ltarget, target );
     
 end );
 
 ##
-BindGlobal( "FiberProductFunctorial_helper",
-  function ( cat, Lsource, LmorS, LmorT, Ltarget )
+BindGlobal( "FiberProductFunctorialWithGivenFiberProducts_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return FiberProductFunctorial( cat, Lsource, LmorS, Ltarget );
+    return FiberProductFunctorialWithGivenFiberProducts( cat, source, Lsource, LmorS, Ltarget, target );
     
 end );
 
 ##
-BindGlobal( "PushoutFunctorial_helper",
-  function ( cat, Lsource, LmorS, LmorT, Ltarget )
+BindGlobal( "PushoutFunctorialWithGivenPushouts_helper",
+  function ( cat, source, Lsource, LmorS, LmorT, Ltarget, target )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return PushoutFunctorial( cat, Lsource, LmorT, Ltarget );
+    return PushoutFunctorialWithGivenPushouts( cat, source, Lsource, LmorT, Ltarget, target );
     
 end );
 
 ##
-BindGlobal( "KernelObjectFunctorial_helper",
-  function ( cat, alpha, mu, nu, alpha_prime )
+BindGlobal( "KernelObjectFunctorialWithGivenKernelObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return KernelObjectFunctorial( cat, alpha, mu, alpha_prime );
+    return KernelObjectFunctorialWithGivenKernelObjects( cat, s, alpha, mu, alpha_prime, r );
     
 end );
 
 ##
-BindGlobal( "CokernelObjectFunctorial_helper",
-  function ( cat, alpha, mu, nu, alpha_prime )
+BindGlobal( "CokernelObjectFunctorialWithGivenCokernelObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return CokernelObjectFunctorial( cat, alpha, nu, alpha_prime );
+    return CokernelObjectFunctorialWithGivenCokernelObjects( cat, s, alpha, nu, alpha_prime, r );
     
 end );
 
 ##
-BindGlobal( "ImageObjectFunctorial_helper",
-  function ( cat, alpha, mu, nu, alpha_prime )
+BindGlobal( "ImageObjectFunctorialWithGivenImageObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return ImageObjectFunctorial( cat, alpha, nu, alpha_prime );
+    return ImageObjectFunctorialWithGivenImageObjects( cat, s, alpha, nu, alpha_prime, r );
     
 end );
 
 ##
-BindGlobal( "CoimageObjectFunctorial_helper",
-  function ( cat, alpha, mu, nu, alpha_prime )
+BindGlobal( "CoimageObjectFunctorialWithGivenCoimageObjects_helper",
+  function ( cat, s, alpha, mu, nu, alpha_prime, r )
     
     #% CAP_JIT_RESOLVE_FUNCTION
-    return CoimageObjectFunctorial( cat, alpha, mu, alpha_prime );
+    return CoimageObjectFunctorialWithGivenCoimageObjects( cat, s, alpha, mu, alpha_prime, r );
     
 end );
 
@@ -300,7 +300,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
                 morC := functorial( C );
                 
-                presheaf_on_morphisms := morB -> morC;
+                presheaf_on_morphisms := { new_source, morB, new_range } -> morC;
                 
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
@@ -314,7 +314,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
+                local C, i_arg, etas, func_obj, presheaf_on_objects, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
@@ -322,28 +322,61 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
                 etas := i_arg[2];
                 
-                presheaf_on_objects := objB -> operation_name( C, List( etas, eta -> FunctionOfPreSheafMorphism( eta )( objB ) ) );
+                presheaf_on_objects :=
+                  function( objB )
+                    local func_obj;
+                    
+                    func_obj :=
+                      function( eta )
+                        
+                        return FunctionOfPreSheafMorphism( eta )(
+                                       PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
+                                       objB,
+                                       PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) );
+                        
+                    end;
+                    
+                    return operation_name( C, List( etas, func_obj ) );
+                    
+                end;
                 
                 presheaf_on_morphisms :=
-                  function ( morB )
-                    local l, L;
+                  function ( new_source, morB, new_range )
+                    local func_mor, l, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
-                    l := List( etas, eta ->
-                               [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                                 PairOfFunctionsOfPreSheaf( Source( eta ) )[2]( morB ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                                 PairOfFunctionsOfPreSheaf( Range( eta ) )[2]( morB ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 FunctionOfPreSheafMorphism( eta )( Source( morB ) )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
-                                 ] );
+                    func_mor :=
+                      function( eta )
+                        local source_eta, range_eta, eta_func, Srm, Rrm, Ssm, Rsm;
+                        
+                        source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) );
+                        range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) );
+                        eta_func := FunctionOfPreSheafMorphism( eta );
+                        
+                        Srm := source_eta[1]( Range( morB ) );
+                        Rrm := range_eta[1]( Range( morB ) );
+                        Ssm := source_eta[1]( Source( morB ) );
+                        Rsm := range_eta[1]( Source( morB ) );
+                        
+                        return
+                          [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                            source_eta[2]( Srm, morB, Ssm ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                            range_eta[2]( Rrm, morB, Rsm ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                            ];
+                        
+                    end;
+                    
+                    l := List( etas, func_mor );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    return functorial_helper( C, L[1], L[2], L[3], L[4] );
+                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -351,7 +384,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[1] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
@@ -367,28 +400,61 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
                 etas := i_arg[3];
                 
-                presheaf_on_objects := objB -> operation_name( C, List( etas, eta -> FunctionOfPreSheafMorphism( eta )( objB ) ) );
+                presheaf_on_objects :=
+                  function( objB )
+                    local func_obj;
+                    
+                    func_obj :=
+                      function( eta )
+                        
+                        return FunctionOfPreSheafMorphism( eta )(
+                                       PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
+                                       objB,
+                                       PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) );
+                        
+                    end;
+                    
+                    return operation_name( C, List( etas, func_obj ) );
+                    
+                end;
                 
                 presheaf_on_morphisms :=
-                  function ( morB )
-                    local l, L;
+                  function ( new_source, morB, new_range )
+                    local func_mor, l, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
-                    l := List( etas, eta ->
-                               [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                                 PairOfFunctionsOfPreSheaf( Source( eta ) )[2]( morB ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                                 PairOfFunctionsOfPreSheaf( Range( eta ) )[2]( morB ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                                 FunctionOfPreSheafMorphism( eta )( Source( morB ) )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
-                                 ] );
+                    func_mor :=
+                      function( eta )
+                        local source_eta, range_eta, eta_func, Srm, Rrm, Ssm, Rsm;
+                        
+                        source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) );
+                        range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) );
+                        eta_func := FunctionOfPreSheafMorphism( eta );
+                        
+                        Srm := source_eta[1]( Range( morB ) );
+                        Rrm := range_eta[1]( Range( morB ) );
+                        Ssm := source_eta[1]( Source( morB ) );
+                        Rsm := range_eta[1]( Source( morB ) );
+                        
+                        return
+                          [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                            source_eta[2]( Srm, morB, Ssm ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                            range_eta[2]( Rrm, morB, Rsm ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                            ];
+                        
+                    end;
+                    
+                    l := List( etas, func_mor );
                     
                     L := List( [ 1 .. 4 ], i -> List( l, mor -> mor[i] ) );
                     
-                    return functorial_helper( C, L[1], L[2], L[3], L[4] );
+                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
                 
@@ -396,7 +462,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[1] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
             
@@ -415,15 +481,21 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 presheaf_on_objects := objB ->
                                        operation_name( C, List( Fs, F -> PairOfFunctionsOfPreSheaf( F )[1]( objB ) ) );
                 
-                presheaf_on_morphisms := morB ->
+                presheaf_on_morphisms := { new_source, morB, new_range } ->
                                          functorial( C,
-                                                 List( Fs, F -> PairOfFunctionsOfPreSheaf( F )[2]( morB ) ) );
+                                                 new_source,
+                                                 List( Fs, F ->
+                                                       PairOfFunctionsOfPreSheaf( F )[2](
+                                                               PairOfFunctionsOfPreSheaf( F )[1]( Range( morB ) ),
+                                                               morB,
+                                                               PairOfFunctionsOfPreSheaf( F )[1]( Source( morB ) ) ) ),
+                                                 new_range );
                 
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[1] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "KernelObject", "CokernelObject", "ImageObject", "CoimageObject" ] then
             
@@ -439,33 +511,51 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
                 eta := i_arg[2];
                 
-                presheaf_on_objects := objB -> operation_name( C, FunctionOfPreSheafMorphism( eta )( objB ) );
+                presheaf_on_objects :=
+                  function( objB )
+                    
+                    return operation_name( C,
+                                   FunctionOfPreSheafMorphism( eta )(
+                                           PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ),
+                                           objB,
+                                           PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) ) );
+                    
+                end;
                 
                 presheaf_on_morphisms :=
                   function ( new_source, morB, new_range )
-                    local L;
+                    local source_eta, range_eta, eta_func, Srm, Rrm, Ssm, Rsm, L;
                     
-                    #          S(t(m)) --S(m)-> S(s(m))
+                    #          S(r(m)) --S(m)-> S(s(m))
                     #             |                |
                     #  eta_{t(m)} |                | eta_{s(m)}
                     #             v                v
-                    #          R(t(m)) --R(m)-> R(s(m))
+                    #          R(r(m)) --R(m)-> R(s(m))
                     
-                    L := [ FunctionOfPreSheafMorphism( eta )( Range( morB ) ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                           PairOfFunctionsOfPreSheaf( Source( eta ) )[2]( morB ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                           PairOfFunctionsOfPreSheaf( Range( eta ) )[2]( morB ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
-                           FunctionOfPreSheafMorphism( eta )( Source( morB ) )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
+                    source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) );
+                    range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) );
+                    eta_func := FunctionOfPreSheafMorphism( eta );
+                    
+                    Srm := source_eta[1]( Range( morB ) );
+                    Rrm := range_eta[1]( Range( morB ) );
+                    Ssm := source_eta[1]( Source( morB ) );
+                    Rsm := range_eta[1]( Source( morB ) );
+                    
+                    L := [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
+                           source_eta[2]( Srm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                           range_eta[2]( Rrm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                           eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                            ];
                     
-                    return functorial_helper( C, L[1], L[2], L[3], L[4] );
+                    return functorial_helper( C, new_source, L[1], L[2], L[3], L[4], new_range );
                     
                 end;
-
+                
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
             end
             """,
-            rec( functorial := functorial.with_given_without_given_name_pair[1] ) );
+            rec( functorial := functorial.with_given_without_given_name_pair[2] ) );
             
         else
             
@@ -486,14 +576,18 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
           ReplacedStringViaRecord(
           """
           function ( input_arguments... )
-            local B, C, i_arg, natural_transformation_on_objects;
+            local C, i_arg, natural_transformation_on_objects;
             
-            B := Source( cat );
             C := Range( cat );
             
             i_arg := NTuple( number_of_arguments, input_arguments... );
             
-            natural_transformation_on_objects := objB -> operation_name( C, sequence_of_arguments_objB... );
+            natural_transformation_on_objects :=
+              function ( source, objB, range )
+                
+                return operation_name( C, sequence_of_arguments_objB... );
+                
+            end;
             
             return MorphismConstructor( cat, top_source, natural_transformation_on_objects, top_range );
             
@@ -511,11 +605,11 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                      elif type = "object" then
                          return Concatenation( "PairOfFunctionsOfPreSheaf( i_arg[", String( i ), "] )[1]( objB )" );
                      elif type = "morphism" then
-                         return Concatenation( "FunctionOfPreSheafMorphism( i_arg[", String( i ), "] )( objB )" );
+                         return Concatenation( "FunctionOfPreSheafMorphism( i_arg[", String( i ), "] )( PairOfFunctionsOfPreSheaf( Source( i_arg[", String( i ), "] ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( i_arg[", String( i ), "] ) )[1]( objB ) )" );
                      elif type = "list_of_objects" then
                          return Concatenation( "List( i_arg[", String( i ), "], F -> PairOfFunctionsOfPreSheaf( F )[1]( objB ) )" );
                      elif type = "list_of_morphisms" then
-                         return Concatenation( "List( i_arg[", String( i ), "], eta -> FunctionOfPreSheafMorphism( eta )( objB ) )" );
+                         return Concatenation( "List( i_arg[", String( i ), "], eta -> FunctionOfPreSheafMorphism( eta )( PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) ) )" );
                      else
                          Error( "can only deal with IsInt, \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                      fi;
@@ -617,20 +711,31 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         ##
         AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
           function ( PSh, S, diagram_S, M, diagram_T, T )
-            local S_o, T_o, natural_transformation_on_objects;
+            local C, S_o, T_o, natural_transformation_on_objects;
+            
+            C := Range( PSh );
             
             S_o := PairOfFunctionsOfPreSheaf( S )[1];
             T_o := PairOfFunctionsOfPreSheaf( T )[1];
             
             natural_transformation_on_objects :=
-              function ( objB )
+              function ( source, objB, range )
+                local S_list, T_list;
+                
+                S_list := List( diagram_S, Si -> PairOfFunctionsOfPreSheaf( Si )[1]( objB ) );
+                T_list := List( diagram_T, Ti -> PairOfFunctionsOfPreSheaf( Ti )[1]( objB ) );
                 
                 return MorphismBetweenDirectSumsWithGivenDirectSums(
                                C,
                                S_o( objB ),
-                               List( diagram_S, Si -> PairOfFunctionsOfPreSheaf( Si )[1]( objB ) ),
-                               List( M, row -> List( row, m -> FunctionOfPreSheafMorphism( m )( objB ) ) ),
-                               List( diagram_T, Ti -> PairOfFunctionsOfPreSheaf( Ti )[1]( objB ) ),
+                               S_list,
+                               List( [ 1 .. Length( S_list ) ], i->
+                                     List( [ 1 .. Length( T_list ) ], j ->
+                                           FunctionOfPreSheafMorphism( M[i][j] )(
+                                                   S_list[i],
+                                                   objB,
+                                                   T_list[j] ) ) ),
+                               T_list,
                                T_o( objB ) );
                 
             end;
@@ -652,15 +757,24 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( PSh,
           function ( PSh, r, eta )
-            local B, C, eta_o, natural_transformation_on_objects;
+            local C, source_eta, range_eta, eta_func, natural_transformation_on_objects;
             
-            B := Source( PSh );
             C := Range( PSh );
             
-            eta_o := FunctionOfPreSheafMorphism( eta );
+            source_eta := PairOfFunctionsOfPreSheaf( Source( eta ) )[1];
+            range_eta := PairOfFunctionsOfPreSheaf( Range( eta ) )[1];
+            eta_func := FunctionOfPreSheafMorphism( eta );
             
             natural_transformation_on_objects :=
-              objB -> MultiplyWithElementOfCommutativeRingForMorphisms( C, r, eta_o( objB ) );
+              function ( source, objB, range )
+                
+                return MultiplyWithElementOfCommutativeRingForMorphisms( C, r,
+                               eta_func(
+                                       source_eta( objB ),
+                                       objB,
+                                       range_eta( objB ) ) );
+                
+            end;
             
             return MorphismConstructor( PSh, Source( eta ), natural_transformation_on_objects, Range( eta ) );
             
