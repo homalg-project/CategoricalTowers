@@ -10,7 +10,7 @@ InstallMethod( CategoryFromNerveData,
         [ IsStringRep, IsList ],
         
   function( name, nerve_data )
-    local C, V;
+    local C, objs, V;
     
     C := CreateCapCategory( name,
                  IsCategoryFromNerveData,
@@ -18,7 +18,9 @@ InstallMethod( CategoryFromNerveData,
                  IsMorphismInCategoryFromNerveData,
                  IsCapCategoryTwoCell );
     
-    V := CapCategory( nerve_data[1][1] );
+    objs := nerve_data[1][1];
+    
+    V := CapCategory( objs );
     
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
