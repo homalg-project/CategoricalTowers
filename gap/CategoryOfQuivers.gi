@@ -79,7 +79,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
           F, F_hat,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          Quivers, F_op;
+          Quivers;
     
     ##
     object_constructor := CreateQuiver;
@@ -259,16 +259,8 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     
     SetUnderlyingCategory( Quivers, F );
     
-    F_op := OppositeFpCategory( F );
-    
-    SetSetOfObjects( Quivers, SetOfObjects( F_op ) );
-    SetSetOfGeneratingMorphisms( Quivers, SetOfGeneratingMorphisms( F_op ) );
-    SetDefiningPairOfUnderlyingQuiver( Quivers, DefiningPairOfAQuiver( UnderlyingQuiver( F_op ) ) );
-    
     Quivers!.compiler_hints.category_attribute_names :=
            [ "ModelingCategory",
-             "SetOfObjects",
-             "SetOfGeneratingMorphisms",
             ];
     
     if ValueOption( "no_precompiled_code" ) <> true then
@@ -612,14 +604,14 @@ InstallMethod( Display,
         [ IsMorphismInCategoryOfQuivers ],
         
   function ( mor )
-    local objs;
+    local F;
+
+    F := UnderlyingCategory( CapCategory( mor ) );
     
-    objs := SetOfObjects( CapCategory( mor ) );
-    
-    Print( "Image of ", StringView( objs[1] ), ":\n" );
+    Print( "Image of ", StringView( F.V ), ":\n" );
     Display( mor.V );
     
-    Print( "\nImage of ", StringView( objs[2] ), ":\n" );
+    Print( "\nImage of ", StringView( F.A ), ":\n" );
     Display( mor.A );
     
     Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
