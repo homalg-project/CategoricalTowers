@@ -660,14 +660,15 @@ InstallMethodWithCache( Category,
         fi;
     fi;
     
-    C!.Vertices := rec( );
-    C!.Arrows := rec( );
     
     if IsFiniteDimensional( A ) then
         
         SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
         
     fi;
+    
+    C!.Vertices := rec( );
+    C!.Arrows := rec( );
     
     C!.compiler_hints :=
       rec( category_attribute_names :=
