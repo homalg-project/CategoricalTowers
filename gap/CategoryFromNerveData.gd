@@ -72,6 +72,36 @@ CapJitAddTypeSignature( "NerveData", [ IsCategoryFromNerveData ],
     
 end );
 
+#! @Description
+#!  The finite set of objects of the category <A>C</A> created from nerve data.
+#! @Arguments C
+#! @Returns a list
+DeclareAttribute( "SetOfObjects",
+        IsCategoryFromNerveData );
+
+CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
+#!  The finite set of morphisms generating the category <A>C</A> created from nerve data.
+#! @Arguments C
+#! @Returns a list
+DeclareAttribute( "SetOfGeneratingMorphisms",
+        IsCategoryFromNerveData );
+
+CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+    
+end );
+
 ##
 DeclareAttribute( "MapOfObject",
         IsObjectInCategoryFromNerveData );

@@ -527,6 +527,28 @@ InstallMethod( CreateMorphism,
     
 end );
 
+##
+InstallOtherMethod( SetOfObjects,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
+    
+end );
+
+##
+InstallOtherMethod( SetOfGeneratingMorphisms,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return List( C!.pos_of_generating_mors, i -> CreateMorphism( C, i ) );
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:
