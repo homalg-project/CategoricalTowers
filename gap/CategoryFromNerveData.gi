@@ -10,7 +10,7 @@ InstallMethod( CategoryFromNerveData,
         [ IsStringRep, IsList, IsList, IsList ],
         
   function( name, nerve_data, indices_of_generating_morphisms, labels )
-    local C, objs, V;
+    local C, objs, s, t, V;
     
     C := CreateCapCategory( name,
                  IsCategoryFromNerveData,
@@ -19,6 +19,8 @@ InstallMethod( CategoryFromNerveData,
                  IsCapCategoryTwoCell );
     
     objs := nerve_data[1][1];
+    s := nerve_data[2][2];
+    t := nerve_data[2][3];
     
     V := CapCategory( objs );
     
@@ -26,6 +28,7 @@ InstallMethod( CategoryFromNerveData,
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
     SetNerveData( C, nerve_data );
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( objs ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
     
     C!.labels := labels;
     C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
