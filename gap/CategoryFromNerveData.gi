@@ -22,6 +22,7 @@ InstallMethod( CategoryFromNerveData,
     
     V := CapCategory( objs );
     
+    SetIsFinite( C, true );
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
     SetNerveData( C, nerve_data );

@@ -660,11 +660,10 @@ InstallMethodWithCache( Category,
         fi;
     fi;
     
+    SetIsFinite( C, IsFiniteDimensional( A ) );
     
-    if IsFiniteDimensional( A ) then
-        
+    if IsFinite( C ) then
         SetRangeCategoryOfHomomorphismStructure( C, range_category_of_HomStructure );
-        
     fi;
     
     C!.Vertices := rec( );
@@ -1466,20 +1465,12 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
-        [ IsFpCategory ],
+        [ IsFpCategory and IsFinite ],
         
   function ( B )
     local A, H, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
           D000, N0N0N0, p31, p32, p33, B2, N2, T, ds, is, dt, it,
           p312, p323, p313, pi3, pi312, pi323, pi313, ps, pt, mus, mus1, mus2, mus3, mu;
-    
-    A := UnderlyingQuiverAlgebra( B );
-    
-    if not IsFiniteDimensional( A ) then
-        
-        Error( "The underlying quiver algebra A is not finite dimensional\n" );
-        
-    fi;
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1805,19 +1796,11 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory and IsFinite ],
         
   function ( B )
-    local A, H, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
+    local H, objs, mors, o, m, Hom2, hom3, Hom3, tum2, emb2, sum2, iso2,
           B0, N0, N1, N2, D, precompose, pt, mu, s;
-    
-    A := UnderlyingQuiverAlgebra( B );
-    
-    if not IsFiniteDimensional( A ) then
-        
-        Error( "The underlying quiver algebra should be finite dimensional!\n" );
-        
-    fi;
     
     H := RangeCategoryOfHomomorphismStructure( B );
     
@@ -2099,7 +2082,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
-        [ IsFpCategory ],
+        [ IsCapCategory and IsFinite ],
         
   function ( B )
     local H, D, Omega, Yepis, Ymu, Ypt, sieves, arrows, lobjs, lmors, id, N1,
