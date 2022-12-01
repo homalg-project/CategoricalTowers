@@ -15,9 +15,9 @@ free_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ) ); end;;
+    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] ); end;;
 
-given_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;
+given_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromNerveDataPrecompiled";;
 package_name := "Algebroids";;
 
@@ -40,7 +40,7 @@ CategoryFromNerveDataPrecompiled( given_arguments[1] );
 
 #! @Example
 
-cat := CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( given_arguments[1] ) ) );;
+cat := CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( given_arguments[1] ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );;
 argument_name := NamesLocalVariablesFunction(
     Last( cat!.added_functions.PreCompose )[1] )[1];;
 

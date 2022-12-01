@@ -142,10 +142,10 @@ end );
 
 #! @Description
 #!  Construct a category with name <A>str</A> from the given <A>nerve_data</A>.
-#! @Arguments str, nerve_data
+#! @Arguments str, nerve_data, indices_of_generating_morphisms, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromNerveData",
-        [ IsStringRep, IsList ] );
+        [ IsStringRep, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromNerveData
 
 #! @Description

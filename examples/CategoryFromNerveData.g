@@ -9,7 +9,8 @@ Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 N1 := NerveTruncatedInDegree2Data( Delta1 );;
 N1[1];
 #! [ |2|, |7|, |26| ]
-C := CategoryFromNerveData( Name( Delta1 ), N1 );
+C := CategoryFromNerveData( Name( Delta1 ), N1,
+             [ 1, 2, 3 ], [ [ "C0", "C1" ], [ "id", "s", "t" ] ] );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
 InfoOfInstalledOperationsOfCategory( C );
@@ -17,39 +18,39 @@ InfoOfInstalledOperationsOfCategory( C );
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 C0 := CreateObject( C, 0 );
-#! (0)
+#! <(C0)>
 IsWellDefined( C0 );
 #! true
 C1 := 1 / C;
-#! (1)
+#! <(C1)>
 IsWellDefined( C1 );
 #! true
 IsWellDefined( 2 / C );
 #! false
 idC0 := CreateMorphism( C0, 0, C0 );
-#! (0)-[0]->(0)
+#! (C0)-[(0)]->(C0)
 CreateMorphism( C, 0 ) = idC0;
 #! true
 IsOne( idC0 );
 #! true
 id := CreateMorphism( C, 1 );
-#! (1)-[1]->(0)
+#! (C1)-[(id)]->(C0)
 s := CreateMorphism( C, 2 );
-#! (0)-[2]->(1)
+#! (C0)-[(s)]->(C1)
 t := CreateMorphism( C, 3 );
-#! (0)-[3]->(1)
+#! (C0)-[(t)]->(C1)
 idC1 := CreateMorphism( C, 4 );
-#! (1)-[4]->(1)
+#! (C1)-[(4)]->(C1)
 IsOne( idC1 );
 #! true
 sigma := CreateMorphism( C, 5 );
-#! (1)-[5]->(1)
+#! (C1)-[(5)]->(C1)
 IsEndomorphism( sigma );
 #! true
 IsOne( sigma );
 #! false
 tau := CreateMorphism( C, 6 );
-#! (1)-[6]->(1)
+#! (C1)-[(6)]->(C1)
 IsEndomorphism( tau );
 #! true
 IsOne( tau );
