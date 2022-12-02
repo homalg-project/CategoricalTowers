@@ -11,7 +11,7 @@
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInCoPreSheafCategoryToObject,
+InstallMethod( ApplyObjectInCoPreSheafCategoryToObject,
         "for an object in a copresheaf category and a CAP object",
         [ IsCoPreSheafCategory, IsObjectInCoPreSheafCategory, IsCapCategoryObject ],
         
@@ -50,7 +50,7 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInCoPreSheafCategoryToMorphism,
+InstallMethod( ApplyObjectInCoPreSheafCategoryToMorphism,
         "for an object in a copresheaf category and a CAP morphism",
         [ IsCoPreSheafCategory, IsObjectInCoPreSheafCategory, IsCapCategoryMorphism ],
         
@@ -73,7 +73,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInCoPreSheafCategoryToMorphism,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyMorphismInCoPreSheafCategoryToObject,
+InstallMethod( ApplyMorphismInCoPreSheafCategoryToObject,
         "for a morphism in a copresheaf category and a CAP object",
         [ IsCoPreSheafCategory, IsMorphismInCoPreSheafCategory, IsCapCategoryObject ],
         

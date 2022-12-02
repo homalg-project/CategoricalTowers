@@ -11,7 +11,7 @@
 ####################################
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToObject,
+InstallMethod( ApplyObjectInFunctorCategoryToObject,
         "for an object in a Hom-category and a CAP object",
         [ IsFunctorCategory, IsObjectInFunctorCategory, IsCapCategoryObject ],
         
@@ -50,7 +50,7 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToMorphism,
+InstallMethod( ApplyObjectInFunctorCategoryToMorphism,
         "for an object in a Hom-category and a CAP morphism",
         [ IsFunctorCategory, IsObjectInFunctorCategory, IsCapCategoryMorphism ],
         
@@ -73,7 +73,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInFunctorCategoryToMorphism,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyMorphismInFunctorCategoryToObject,
+InstallMethod( ApplyMorphismInFunctorCategoryToObject,
         "for a morphism in a Hom-category and a CAP object",
         [ IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject ],
         

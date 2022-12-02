@@ -2973,7 +2973,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
+InstallMethod( ApplyObjectInPreSheafCategoryToObject,
         "for an object in a presheaf category and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
         
@@ -3012,7 +3012,7 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
+InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
         "for an object in a presheaf category and a CAP morphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
@@ -3042,7 +3042,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
+InstallMethod( ApplyMorphismInPreSheafCategoryToObject,
         "for a morphism in a presheaf category and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
         
