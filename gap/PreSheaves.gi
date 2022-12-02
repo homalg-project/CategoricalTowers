@@ -1027,28 +1027,6 @@ InstallMethod( CreatePreSheafMorphism,
 end );
 
 ##
-InstallMethodWithCache( PreSheaves,
-        "for a f.p. category and a category",
-        [ IsFpCategory, IsCapCategory ],
-        
-  function ( B, C )
-    
-    return PreSheavesOfFpEnrichedCategory( B, C );
-    
-end );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for an algebroid and a category",
-        [ IsAlgebroid, IsCapCategory ],
-        
-  function ( B, C )
-    
-    return PreSheavesOfFpEnrichedCategory( B, C );
-    
-end );
-
-##
 InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
@@ -1070,6 +1048,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             A := PathAlgebra( A );
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
+    elif IsCategoryFromNerveData( B ) then
+        B_op := Opposite( B );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         kq := UnderlyingQuiverAlgebra( B_op );
@@ -1123,6 +1103,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       IsCategoryFromNerveData( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         create_func_bool :=
@@ -1502,7 +1483,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     SetSetOfObjects( PSh, objects );
     SetSetOfGeneratingMorphisms( PSh, generating_morphisms );
     
-    SetDefiningPairOfUnderlyingQuiver( PSh, DefiningPairOfAQuiver( UnderlyingQuiver( B ) ) );
+    SetDefiningPairOfUnderlyingQuiver( PSh, DefiningPairOfUnderlyingQuiver( B ) );
     
     SetSource( PSh, B );
     SetRange( PSh, C );
@@ -1609,6 +1590,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       IsCategoryFromNerveData( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         AddIsWellDefinedForMorphisms( PSh,
@@ -2539,6 +2521,39 @@ end );
 
 ##
 InstallMethodWithCache( PreSheaves,
+        "for a f.p. category and a category",
+        [ IsFpCategory, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for an algebroid and a category",
+        [ IsAlgebroid, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for a category form nerve data and a category",
+        [ IsCategoryFromNerveData, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
         "for a CAP category and a homalg field",
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
@@ -2973,7 +2988,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
+InstallMethod( ApplyObjectInPreSheafCategoryToObject,
         "for an object in a presheaf category and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
         
@@ -3012,7 +3027,7 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
+InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
         "for an object in a presheaf category and a CAP morphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
@@ -3042,7 +3057,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
+InstallMethod( ApplyMorphismInPreSheafCategoryToObject,
         "for a morphism in a presheaf category and a CAP object",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
         
