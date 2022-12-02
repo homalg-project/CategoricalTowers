@@ -18,23 +18,28 @@ InstallMethod( CategoryFromNerveData,
                  IsMorphismInCategoryFromNerveData,
                  IsCapCategoryTwoCell );
     
-    C0 := nerve_data[1][1];
-    
-    V := CapCategory( C0 );
-    
-    s := nerve_data[2][2];
-    t := nerve_data[2][3];
-    
-    SetIsFinite( C, true );
-    SetIsEquippedWithHomomorphismStructure( C, true );
-    SetRangeCategoryOfHomomorphismStructure( C, V );
-    SetNerveData( C, nerve_data );
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
+    C!.category_as_first_argument := true;
     
     C!.labels := labels;
     C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
     
-    C!.category_as_first_argument := true;
+    SetIsFinite( C, true );
+    
+    C0 := nerve_data[1][1];
+    
+    V := CapCategory( C0 );
+    
+    SetIsEquippedWithHomomorphismStructure( C, true );
+    SetRangeCategoryOfHomomorphismStructure( C, V );
+    SetNerveData( C, nerve_data );
+    
+    ## s: C₁ → C₀
+    s := nerve_data[2][2];
+    
+    ## t: C₁ → C₀
+    t := nerve_data[2][3];
+    
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
     
     C!.compiler_hints :=
       rec( category_filter := IsCategoryFromNerveData,
