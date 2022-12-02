@@ -1480,7 +1480,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     SetSetOfObjects( PSh, objects );
     SetSetOfGeneratingMorphisms( PSh, generating_morphisms );
     
-    SetDefiningPairOfUnderlyingQuiver( PSh, DefiningPairOfAQuiver( UnderlyingQuiver( B ) ) );
+    SetDefiningPairOfUnderlyingQuiver( PSh, DefiningPairOfUnderlyingQuiver( B ) );
     
     SetSource( PSh, B );
     SetRange( PSh, C );
