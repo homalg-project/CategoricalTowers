@@ -38,7 +38,10 @@ DeclareCategory( "IsMorphismInCategoryFromNerveData",
 #
 ####################################
 
-##
+#! @Description
+#!  The nerve data used to create the category <A>C</A>.
+#! @Arguments C
+#! @Returns a pair of lists
 DeclareAttribute( "NerveData",
         IsCategoryFromNerveData );
 
