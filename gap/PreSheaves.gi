@@ -1048,6 +1048,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             A := PathAlgebra( A );
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
+    elif IsCategoryFromNerveData( B ) then
+        B_op := Opposite( B );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         kq := UnderlyingQuiverAlgebra( B_op );
@@ -1101,6 +1103,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       IsCategoryFromNerveData( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         create_func_bool :=
@@ -1587,6 +1590,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+       IsCategoryFromNerveData( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         AddIsWellDefinedForMorphisms( PSh,
@@ -2530,6 +2534,17 @@ end );
 InstallMethodWithCache( PreSheaves,
         "for an algebroid and a category",
         [ IsAlgebroid, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
+        "for a category form nerve data and a category",
+        [ IsCategoryFromNerveData, IsCapCategory ],
         
   function ( B, C )
     
