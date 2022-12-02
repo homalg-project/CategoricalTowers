@@ -1049,7 +1049,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
     elif IsCategoryFromNerveData( B ) then
-        B_op := Opposite( B );
+        B_op := Opposite( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         kq := UnderlyingQuiverAlgebra( B_op );
