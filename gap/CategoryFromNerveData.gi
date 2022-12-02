@@ -7,10 +7,10 @@
 ##
 InstallMethod( CategoryFromNerveData,
         "for a string and a list",
-        [ IsStringRep, IsList ],
+        [ IsStringRep, IsList, IsList, IsList ],
         
-  function( name, nerve_data )
-    local C, V;
+  function( name, nerve_data, indices_of_generating_morphisms, labels )
+    local C, objs, s, t, V;
     
     C := CreateCapCategory( name,
                  IsCategoryFromNerveData,
@@ -18,11 +18,20 @@ InstallMethod( CategoryFromNerveData,
                  IsMorphismInCategoryFromNerveData,
                  IsCapCategoryTwoCell );
     
-    V := CapCategory( nerve_data[1][1] );
+    objs := nerve_data[1][1];
+    s := nerve_data[2][2];
+    t := nerve_data[2][3];
     
+    V := CapCategory( objs );
+    
+    SetIsFinite( C, true );
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
     SetNerveData( C, nerve_data );
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( objs ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
+    
+    C!.labels := labels;
+    C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
     
     C!.category_as_first_argument := true;
     
@@ -524,6 +533,50 @@ InstallMethod( CreateMorphism,
     
 end );
 
+##
+InstallMethod( \.,
+        "for a category from nerve data and a positive integer",
+        [ IsCategoryFromNerveData, IsPosInt ],
+        
+  function( C, string_as_int )
+    local name;
+    
+    name := NameRNam( string_as_int );
+    
+    if name in C!.labels[1] then
+        return CreateObject( C, -1 + SafePosition( C!.labels[1], name ) );
+    elif name in C!.labels[2] then
+        return CreateMorphism( C, C!.indices_of_generating_morphisms[SafePosition( C!.labels[2], name )] );
+    elif name[1] in [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ] then
+        return CreateMorphism( C, Int( name ) );
+    fi;
+    
+    Error( "no object or morphism of name ", name, "\n" );
+    
+end );
+
+##
+InstallOtherMethod( SetOfObjects,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
+    
+end );
+
+##
+InstallOtherMethod( SetOfGeneratingMorphisms,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return List( C!.indices_of_generating_morphisms, i -> CreateMorphism( C, i ) );
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:
@@ -537,7 +590,7 @@ InstallMethod( ViewObj,
         
   function( obj )
     
-    Print( "(", String( MapOfObject( obj )( 0 ) ), ")" );
+    Print( "<(", CapCategory( obj )!.labels[1][1 + MapOfObject( obj )( 0 )], ")>" );
     
 end );
 
@@ -547,12 +600,22 @@ InstallMethod( ViewObj,
         [ IsMorphismInCategoryFromNerveData ],
         
   function( mor )
+    local C, i, pos;
     
-    ViewObj( Source( mor ) );
-    Print( "-[" );
-    ViewObj( MapOfMorphism( mor )( 0 ) );
-    Print( "]->" );
-    ViewObj( Range( mor ) );
+    C := CapCategory( mor );
+    
+    i := MapOfMorphism( mor )( 0 );
+    pos := Position( C!.indices_of_generating_morphisms, i);
+    
+    Print( "(", C!.labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
+    Print( "-[(" );
+    if pos = fail then
+        Print( i );
+    else
+        Print( C!.labels[2][pos] );
+    fi;
+    Print( ")]->" );
+    Print( "(", C!.labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
     
 end );
 

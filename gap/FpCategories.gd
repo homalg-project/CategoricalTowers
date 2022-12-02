@@ -344,7 +344,7 @@ DeclareAttribute( "YonedaProjectionAsNaturalEpimorphism", IsCapCategory );
 DeclareAttribute( "YonedaCompositionAsNaturalEpimorphism", IsCapCategory );
 #! @InsertChunk YonedaCompositionAsNaturalEpimorphism
 
-DeclareAttribute( "TruthMorphismOfTrueToSieveFunctorAndEmbedding", IsFpCategory );
+DeclareAttribute( "TruthMorphismOfTrueToSieveFunctorAndEmbedding", IsCapCategory );
 DeclareAttribute( "EmbeddingOfSieveFunctor", IsFpCategory );
 
 #! @Description
