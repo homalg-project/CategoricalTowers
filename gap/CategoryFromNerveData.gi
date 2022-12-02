@@ -10,7 +10,7 @@ InstallMethod( CategoryFromNerveData,
         [ IsStringRep, IsList, IsList, IsList ],
         
   function( name, nerve_data, indices_of_generating_morphisms, labels )
-    local C, objs, s, t, V;
+    local C, C0, V, s, t;
     
     C := CreateCapCategory( name,
                  IsCategoryFromNerveData,
@@ -18,22 +18,28 @@ InstallMethod( CategoryFromNerveData,
                  IsMorphismInCategoryFromNerveData,
                  IsCapCategoryTwoCell );
     
-    objs := nerve_data[1][1];
-    s := nerve_data[2][2];
-    t := nerve_data[2][3];
-    
-    V := CapCategory( objs );
-    
-    SetIsFinite( C, true );
-    SetIsEquippedWithHomomorphismStructure( C, true );
-    SetRangeCategoryOfHomomorphismStructure( C, V );
-    SetNerveData( C, nerve_data );
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( objs ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
+    C!.category_as_first_argument := true;
     
     C!.labels := labels;
     C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
     
-    C!.category_as_first_argument := true;
+    SetIsFinite( C, true );
+    
+    C0 := nerve_data[1][1];
+    
+    V := CapCategory( C0 );
+    
+    SetIsEquippedWithHomomorphismStructure( C, true );
+    SetRangeCategoryOfHomomorphismStructure( C, V );
+    SetNerveData( C, nerve_data );
+    
+    ## s: C₁ → C₀
+    s := nerve_data[2][2];
+    
+    ## t: C₁ → C₀
+    t := nerve_data[2][3];
+    
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
     
     C!.compiler_hints :=
       rec( category_filter := IsCategoryFromNerveData,
@@ -461,16 +467,16 @@ InstallMethod( CreateObject,
         [ IsCategoryFromNerveData, IsInt ],
         
   function( C, o )
-    local V, objs, obj_map;
+    local V, C0, obj_map;
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    objs := NerveData( C )[1][1];
+    C0 := NerveData( C )[1][1];
     
     obj_map := MorphismConstructor( V,
                        TerminalObject( V ),
                        [ o ],
-                       objs );
+                       C0 );
     
     return ObjectConstructor( C, obj_map );
     
