@@ -562,7 +562,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallOtherMethod( SetOfObjects,
+InstallMethod( SetOfObjects,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
@@ -573,7 +573,7 @@ InstallOtherMethod( SetOfObjects,
 end );
 
 ##
-InstallOtherMethod( SetOfGeneratingMorphisms,
+InstallMethod( SetOfGeneratingMorphisms,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
