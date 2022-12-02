@@ -10,7 +10,7 @@ InstallMethod( CategoryFromNerveData,
         [ IsStringRep, IsList, IsList, IsList ],
         
   function( name, nerve_data, indices_of_generating_morphisms, labels )
-    local C, C0, s, t, V;
+    local C, C0, V, s, t;
     
     C := CreateCapCategory( name,
                  IsCategoryFromNerveData,
@@ -19,10 +19,11 @@ InstallMethod( CategoryFromNerveData,
                  IsCapCategoryTwoCell );
     
     C0 := nerve_data[1][1];
-    s := nerve_data[2][2];
-    t := nerve_data[2][3];
     
     V := CapCategory( C0 );
+    
+    s := nerve_data[2][2];
+    t := nerve_data[2][3];
     
     SetIsFinite( C, true );
     SetIsEquippedWithHomomorphismStructure( C, true );
