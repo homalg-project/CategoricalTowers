@@ -386,7 +386,7 @@ InstallMethodForCompilerForCAP( SetOfMorphisms,
 end );
 
 ##
-InstallMethod( SetOfGeneratingMorphisms,
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         
