@@ -952,7 +952,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaFibration,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory and IsFinite ],
         
   function ( B )
     local Hom, Yepis, H, N0, N1;
