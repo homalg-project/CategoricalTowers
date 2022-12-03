@@ -13,7 +13,7 @@ free_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromDataTables( "CategoryFromDataTables", DataTablesOfCategory( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] ); end;;
+    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromDataTables( "CategoryFromDataTables", sFinSets, DataTablesOfCategory( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] ); end;;
 
 given_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromDataTablesPrecompiled";;
@@ -37,7 +37,7 @@ CategoryFromDataTablesPrecompiled( given_arguments[1] );
 
 #! @Example
 
-cat := CategoryFromDataTables( "CategoryFromDataTables", DataTablesOfCategory( FreeCategory( given_arguments[1] ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );;
+cat := CategoryFromDataTables( "CategoryFromDataTables", SkeletalFinSets, DataTablesOfCategory( FreeCategory( given_arguments[1] ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );;
 argument_name := NamesLocalVariablesFunction(
     Last( cat!.added_functions.PreCompose )[1] )[1];;
 

@@ -6,11 +6,11 @@
 
 ##
 InstallMethod( CategoryFromDataTables,
-        "for a string and a list",
-        [ IsString, IsList, IsList, IsList ],
+        "for a string, a category, and three lists",
+        [ IsString, IsCapCategory, IsList, IsList, IsList ],
         
-  function( name, data_tables, indices_of_generating_morphisms, labels )
-    local C, C0, V, C1, s, t;
+  function( name, V, data_tables, indices_of_generating_morphisms, labels )
+    local C, C0, C1, s, t;
     
     C := CreateCapCategory( name,
                  IsCategoryFromDataTables,
@@ -25,14 +25,12 @@ InstallMethod( CategoryFromDataTables,
     
     SetIsFinite( C, true );
     
+    SetIsEquippedWithHomomorphismStructure( C, true );
+    SetRangeCategoryOfHomomorphismStructure( C, V );
+    
     SetDataTablesOfCategory( C, data_tables );
     
     C0 := data_tables[1][1];
-    
-    V := CapCategory( C0 );
-    
-    SetIsEquippedWithHomomorphismStructure( C, true );
-    SetRangeCategoryOfHomomorphismStructure( C, V );
     
     ## s: C₁ → C₀
     s := data_tables[2][2];
