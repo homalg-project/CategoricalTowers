@@ -20,8 +20,8 @@ InstallMethod( CategoryFromDataTables,
     
     C!.category_as_first_argument := true;
     
-    C!.labels := labels;
     C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
+    C!.labels := labels;
     
     SetIsFinite( C, true );
     
