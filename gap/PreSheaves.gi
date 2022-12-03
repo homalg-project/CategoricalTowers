@@ -3047,12 +3047,15 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
   function ( PSh, F, morB )
     local pos, B_op, morB_op;
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
     pos := Position( SetOfGeneratingMorphisms( Source( PSh ) ), morB );
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
+    fi;
+    
+    if IsOne( morB ) then
+        return IdentityMorphism( Range( PSh ),
+                       ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
     B_op := OppositeOfSource( PSh );
