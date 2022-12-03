@@ -288,18 +288,18 @@ InstallMethod( CreateMorphism,
         [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
         
   function( source, m, range )
-    local C, V, mors, mor_map;
+    local C, V, C1, mor_map;
     
     C := CapCategory( source );
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    mors := DataTablesOfCategory( C )[1][2];
+    C1 := DataTablesOfCategory( C )[1][2];
     
     mor_map := MorphismConstructor( V,
                        TerminalObject( V ),
                        [ m ],
-                       mors );
+                       C1 );
     
     return MorphismConstructor( C,
                    source,
