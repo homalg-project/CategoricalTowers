@@ -8,6 +8,54 @@
 BindGlobal( "QuiverOfCategoryOfQuivers",
         RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
 
+# Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE )
+BindGlobal( "DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
+        rec( args :=
+             rec(
+                 1 := rec(
+                         type := "EXPR_INT",
+                         value := 2 ),
+                 2 := rec(
+                         list := rec(
+                                 1 := rec(
+                                         args := rec(
+                                                 1 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 0 ),
+                                                 2 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 1 ),
+                                                 length := 2,
+                                                 type := "SYNTAX_TREE_LIST" ),
+                                         funcref := rec(
+                                                 gvar := "Pair",
+                                                 type := "EXPR_REF_GVAR" ),
+                                         type := "EXPR_FUNCCALL" ),
+                                 2 := rec(
+                                         args := rec(
+                                                 1 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 0 ),
+                                                 2 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 1 ),
+                                                 length := 2,
+                                                 type := "SYNTAX_TREE_LIST" ),
+                                         funcref := rec(
+                                                 gvar := "Pair",
+                                                 type := "EXPR_REF_GVAR" ),
+                                         type := "EXPR_FUNCCALL" ),
+                                 length := 2,
+                                 type := "SYNTAX_TREE_LIST" ),
+                         type := "EXPR_LIST" ),
+                 length := 2,
+                 type := "SYNTAX_TREE_LIST" ),
+             funcref := rec(
+                     gvar := "Pair",
+                     type := "EXPR_REF_GVAR" ),
+             type := "EXPR_FUNCCALL" )
+             );
+
 ##
 InstallOtherMethodForCompilerForCAP( CreateQuiver,
         "for a category of quivers and a triple",
@@ -98,54 +146,8 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     
     F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
     
-    ModelingCategory( F_hat )!.compiler_hints.category_attribute_resolving_functions := rec(
-        DefiningPairOfUnderlyingQuiver := { } ->
-            # Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE )
-            rec(
-                args := rec(
-                            1 := rec(
-                                    type := "EXPR_INT",
-                                    value := 2 ),
-                            2 := rec(
-                                    list := rec(
-                                            1 := rec(
-                                                    args := rec(
-                                                            1 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 0 ),
-                                                            2 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 1 ),
-                                                            length := 2,
-                                                            type := "SYNTAX_TREE_LIST" ),
-                                                    funcref := rec(
-                                                            gvar := "Pair",
-                                                            type := "EXPR_REF_GVAR" ),
-                                                    type := "EXPR_FUNCCALL" ),
-                                            2 := rec(
-                                                    args := rec(
-                                                            1 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 0 ),
-                                                            2 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 1 ),
-                                                            length := 2,
-                                                            type := "SYNTAX_TREE_LIST" ),
-                                                    funcref := rec(
-                                                            gvar := "Pair",
-                                                            type := "EXPR_REF_GVAR" ),
-                                                    type := "EXPR_FUNCCALL" ),
-                                            length := 2,
-                                            type := "SYNTAX_TREE_LIST" ),
-                                    type := "EXPR_LIST" ),
-                            length := 2,
-                            type := "SYNTAX_TREE_LIST" ),
-                        funcref := rec(
-                                gvar := "Pair",
-                                type := "EXPR_REF_GVAR" ),
-                        type := "EXPR_FUNCCALL" ),
-    );
+    ModelingCategory( F_hat )!.compiler_hints.category_attribute_resolving_functions :=
+      rec( DefiningPairOfUnderlyingQuiver := { } -> DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
