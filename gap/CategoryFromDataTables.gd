@@ -181,7 +181,7 @@ end );
 #! @Arguments str, data_tables, indices_of_generating_morphisms, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromDataTables",
-        [ IsStringRep, IsList, IsList, IsList ] );
+        [ IsString, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromDataTables
 
 #! @Description

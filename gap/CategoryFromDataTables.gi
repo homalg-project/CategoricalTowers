@@ -74,7 +74,7 @@ end );
 ##
 InstallMethod( CategoryFromDataTables,
         "for a string and a list",
-        [ IsStringRep, IsList, IsList, IsList ],
+        [ IsString, IsList, IsList, IsList ],
         
   function( name, data_tables, indices_of_generating_morphisms, labels )
     local C, C0, V, C1, s, t;
