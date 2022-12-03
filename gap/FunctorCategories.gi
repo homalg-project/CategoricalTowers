@@ -444,6 +444,10 @@ InstallMethodWithCache( FunctorCategory,
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
         defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
+    elif IsCategoryFromNerveData( B ) or IsCategoryFromDataTables( B ) then
+        B_op := Opposite( B : FinalizeCategory := true );
+        defining_pair := DefiningPairOfUnderlyingQuiver( B );
+        defining_pair := [ defining_pair[1], List( defining_pair[2], a -> Pair( a[2], a[1] ) ) ];
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
@@ -451,7 +455,7 @@ InstallMethodWithCache( FunctorCategory,
         B_op := Opposite( B : FinalizeCategory := true );
         defining_pair := [ 0, [ ] ];
     else
-        Error( "the first argument must either be an IsFpCategory, an IsAlgebroid, or an IsInitialCategory\n" );
+        Error( "the first argument must either be an IsFpCategory, an IsAlgebroid, an IsCategoryFromNerveData, an IsCategoryFromDataTables or an IsInitialCategory\n" );
     fi;
     
     PSh := PreSheaves( B_op, C : FinalizeCategory := true );
@@ -948,7 +952,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaFibration,
-        [ IsFpCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory and IsFinite ],
         
   function ( B )
     local Hom, Yepis, H, N0, N1;

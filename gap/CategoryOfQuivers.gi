@@ -8,6 +8,482 @@
 BindGlobal( "QuiverOfCategoryOfQuivers",
         RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
 
+# Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
+        rec( args :=
+             rec(
+                 1 := rec(
+                         type := "EXPR_INT",
+                         value := 2 ),
+                 2 := rec(
+                         list := rec(
+                                 1 := rec(
+                                         args := rec(
+                                                 1 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 0 ),
+                                                 2 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 1 ),
+                                                 length := 2,
+                                                 type := "SYNTAX_TREE_LIST" ),
+                                         funcref := rec(
+                                                 gvar := "Pair",
+                                                 type := "EXPR_REF_GVAR" ),
+                                         type := "EXPR_FUNCCALL" ),
+                                 2 := rec(
+                                         args := rec(
+                                                 1 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 0 ),
+                                                 2 := rec(
+                                                         type := "EXPR_INT",
+                                                         value := 1 ),
+                                                 length := 2,
+                                                 type := "SYNTAX_TREE_LIST" ),
+                                         funcref := rec(
+                                                 gvar := "Pair",
+                                                 type := "EXPR_REF_GVAR" ),
+                                         type := "EXPR_FUNCCALL" ),
+                                 length := 2,
+                                 type := "SYNTAX_TREE_LIST" ),
+                         type := "EXPR_LIST" ),
+                 length := 2,
+                 type := "SYNTAX_TREE_LIST" ),
+             funcref := rec(
+                     gvar := "Pair",
+                     type := "EXPR_REF_GVAR" ),
+             type := "EXPR_FUNCCALL" )
+             );
+
+# Display( ENHANCED_SYNTAX_TREE( x ->
+#         Pair( Pair(  2, 4  ),
+#               NTuple( 8,
+#                       [ 0, 3 ],
+#                       [ 0, 0, 0, 1 ],
+#                       [ 0, 1, 1, 1 ],
+#                       [ [ 0, 1, 2, fail ],
+#                         [ fail, fail, fail, 1 ],
+#                         [ fail, fail, fail, 2 ],
+#                         [ fail, fail, fail, 3 ] ],
+#                       [ [ 1, 2 ],
+#                         [ 0, 1 ] ],
+#                       [ [ [ 0 ], [ 0 ], [ 1 ], [ 0, 1 ] ],
+#                         [ [  ], [  ], [  ], [ 0 ] ],
+#                         [ [  ], [  ], [  ], [ 1 ] ],
+#                         [ [  ], [  ], [  ], [ 0 ] ] ],
+#                       [ [ 0 ], [ 0 ], [ 1 ], [ 0 ] ],
+#                       [ [ [ 0 ], [ 1, 2 ] ],
+#                         [ [  ], [ 3 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "DataTablesOfCategoryOfQuivers",
+rec(
+  args := rec(
+      1 := rec(
+          args := rec(
+              1 := rec(
+                  type := "EXPR_INT",
+                  value := 2 ),
+              2 := rec(
+                  type := "EXPR_INT",
+                  value := 4 ),
+              length := 2,
+              type := "SYNTAX_TREE_LIST" ),
+          funcref := rec(
+              gvar := "Pair",
+              type := "EXPR_REF_GVAR" ),
+          type := "EXPR_FUNCCALL" ),
+      2 := rec(
+          args := rec(
+              1 := rec(
+                  type := "EXPR_INT",
+                  value := 8 ),
+              2 := rec(
+                  list := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 3 ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              3 := rec(
+                  list := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      3 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      4 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 4,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              4 := rec(
+                  list := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      3 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      4 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 4,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              5 := rec(
+                  list := rec(
+                      1 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 0 ),
+                              2 := rec(
+                                  type := "EXPR_INT",
+                                  value := 1 ),
+                              3 := rec(
+                                  type := "EXPR_INT",
+                                  value := 2 ),
+                              4 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      2 := rec(
+                          list := rec(
+                              1 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              2 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              3 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              4 := rec(
+                                  type := "EXPR_INT",
+                                  value := 1 ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      3 := rec(
+                          list := rec(
+                              1 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              2 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              3 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              4 := rec(
+                                  type := "EXPR_INT",
+                                  value := 2 ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      4 := rec(
+                          list := rec(
+                              1 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              2 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              3 := rec(
+                                  gvar := "fail",
+                                  type := "EXPR_REF_GVAR" ),
+                              4 := rec(
+                                  type := "EXPR_INT",
+                                  value := 3 ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      length := 4,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              6 := rec(
+                  list := rec(
+                      1 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 1 ),
+                              2 := rec(
+                                  type := "EXPR_INT",
+                                  value := 2 ),
+                              length := 2,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      2 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 0 ),
+                              2 := rec(
+                                  type := "EXPR_INT",
+                                  value := 1 ),
+                              length := 2,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              7 := rec(
+                  list := rec(
+                      1 := rec(
+                          list := rec(
+                              1 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 0 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              2 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 0 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              3 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 1 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              4 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 0 ),
+                                      2 := rec(
+                                          type := "EXPR_INT",
+                                          value := 1 ),
+                                      length := 2,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      2 := rec(
+                          list := rec(
+                              1 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              2 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              3 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              4 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 0 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      3 := rec(
+                          list := rec(
+                              1 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              2 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              3 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              4 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 1 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      4 := rec(
+                          list := rec(
+                              1 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              2 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              3 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              4 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 0 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              length := 4,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      length := 4,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              8 := rec(
+                  list := rec(
+                      1 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 0 ),
+                              length := 1,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      2 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 0 ),
+                              length := 1,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      3 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 1 ),
+                              length := 1,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      4 := rec(
+                          list := rec(
+                              1 := rec(
+                                  type := "EXPR_INT",
+                                  value := 0 ),
+                              length := 1,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      length := 4,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              9 := rec(
+                  list := rec(
+                      1 := rec(
+                          list := rec(
+                              1 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 0 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              2 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 1 ),
+                                      2 := rec(
+                                          type := "EXPR_INT",
+                                          value := 2 ),
+                                      length := 2,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              length := 2,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      2 := rec(
+                          list := rec(
+                              1 := rec(
+                                  list := rec(
+                                      length := 0,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              2 := rec(
+                                  list := rec(
+                                      1 := rec(
+                                          type := "EXPR_INT",
+                                          value := 3 ),
+                                      length := 1,
+                                      type := "SYNTAX_TREE_LIST" ),
+                                  type := "EXPR_LIST" ),
+                              length := 2,
+                              type := "SYNTAX_TREE_LIST" ),
+                          type := "EXPR_LIST" ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  type := "EXPR_LIST" ),
+              length := 9,
+              type := "SYNTAX_TREE_LIST" ),
+          funcref := rec(
+              gvar := "NTuple",
+              type := "EXPR_REF_GVAR" ),
+          type := "EXPR_FUNCCALL" ),
+      length := 2,
+      type := "SYNTAX_TREE_LIST" ),
+  funcref := rec(
+      gvar := "Pair",
+      type := "EXPR_REF_GVAR" ),
+  type := "EXPR_FUNCCALL" )
+);
+
+# Display( ENHANCED_SYNTAX_TREE( x -> [ 1, 2 ] ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "IndicesOfGeneratingMorphismsOfCategoryOfQuivers",
+rec(
+  list := rec(
+      1 := rec(
+          type := "EXPR_INT",
+          value := 1 ),
+      2 := rec(
+          type := "EXPR_INT",
+          value := 2 ),
+      length := 2,
+      type := "SYNTAX_TREE_LIST" ),
+  type := "EXPR_LIST" )
+);
+
 ##
 InstallOtherMethodForCompilerForCAP( CreateQuiver,
         "for a category of quivers and a triple",
@@ -96,56 +572,20 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
+    F := CategoryFromDataTables( Name( F ),
+                 category_of_skeletal_finsets,
+                 DataTablesOfCategory( F : FinalizeCategory := true ), ## this command creates CategoryFromNerveData in the background, hence the option
+                 [ 1, 2 ], # indices_of_generating_morphisms
+                 [ List( SetOfObjects( F ), Label ),
+                   List( SetOfGeneratingMorphisms( F ), Label ) ]
+                 : FinalizeCategory := true );
+    
     F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
     
-    ModelingCategory( F_hat )!.compiler_hints.category_attribute_resolving_functions := rec(
-        DefiningPairOfUnderlyingQuiver := { } ->
-            # Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE )
-            rec(
-                args := rec(
-                            1 := rec(
-                                    type := "EXPR_INT",
-                                    value := 2 ),
-                            2 := rec(
-                                    list := rec(
-                                            1 := rec(
-                                                    args := rec(
-                                                            1 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 0 ),
-                                                            2 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 1 ),
-                                                            length := 2,
-                                                            type := "SYNTAX_TREE_LIST" ),
-                                                    funcref := rec(
-                                                            gvar := "Pair",
-                                                            type := "EXPR_REF_GVAR" ),
-                                                    type := "EXPR_FUNCCALL" ),
-                                            2 := rec(
-                                                    args := rec(
-                                                            1 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 0 ),
-                                                            2 := rec(
-                                                                    type := "EXPR_INT",
-                                                                    value := 1 ),
-                                                            length := 2,
-                                                            type := "SYNTAX_TREE_LIST" ),
-                                                    funcref := rec(
-                                                            gvar := "Pair",
-                                                            type := "EXPR_REF_GVAR" ),
-                                                    type := "EXPR_FUNCCALL" ),
-                                            length := 2,
-                                            type := "SYNTAX_TREE_LIST" ),
-                                    type := "EXPR_LIST" ),
-                            length := 2,
-                            type := "SYNTAX_TREE_LIST" ),
-                        funcref := rec(
-                                gvar := "Pair",
-                                type := "EXPR_REF_GVAR" ),
-                        type := "EXPR_FUNCCALL" ),
-    );
+    ModelingCategory( F_hat )!.compiler_hints.category_attribute_resolving_functions :=
+      rec( DefiningPairOfUnderlyingQuiver := { } -> DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers,
+           DataTablesOfCategory := { } -> DataTablesOfCategoryOfQuivers,
+           IndicesOfGeneratingMorphisms := { } -> IndicesOfGeneratingMorphismsOfCategoryOfQuivers );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=

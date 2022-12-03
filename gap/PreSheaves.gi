@@ -1048,7 +1048,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             A := PathAlgebra( A );
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
-    elif IsCategoryFromNerveData( B ) then
+    elif IsCategoryFromNerveData( B ) or IsCategoryFromDataTables( B ) then
         B_op := Opposite( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
@@ -1056,7 +1056,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         relations := RelationsOfAlgebroid( B_op );
         relations := List( relations, UnderlyingQuiverAlgebraElement );
     else
-        Error( "the first argument must either be an IsFpCategory or an IsAlgebroid\n" );
+        Error( "the first argument must either be an IsFpCategory, an IsAlgebroid, an IsCategoryFromNerveData, an IsCategoryFromDataTables or an IsInitialCategory\n" );
     fi;
     
     name := "PreSheaves( ";
@@ -1104,6 +1104,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
+       IsCategoryFromDataTables( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         create_func_bool :=
@@ -1591,6 +1592,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
+       IsCategoryFromDataTables( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) then
         
         AddIsWellDefinedForMorphisms( PSh,
@@ -2554,6 +2556,17 @@ end );
 
 ##
 InstallMethodWithCache( PreSheaves,
+        "for a category form data tables and a category",
+        [ IsCategoryFromDataTables, IsCapCategory ],
+        
+  function ( B, C )
+    
+    return PreSheavesOfFpEnrichedCategory( B, C );
+    
+end );
+
+##
+InstallMethodWithCache( PreSheaves,
         "for a CAP category and a homalg field",
         [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
         
@@ -3034,12 +3047,15 @@ InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
   function ( PSh, F, morB )
     local pos, B_op, morB_op;
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
     pos := Position( SetOfGeneratingMorphisms( Source( PSh ) ), morB );
     
-    #% CAP_JIT_DROP_NEXT_STATEMENT
     if IsInt( pos ) then
         return ValuesOfPreSheaf( F )[2][pos];
+    fi;
+    
+    if IsOne( morB ) then
+        return IdentityMorphism( Range( PSh ),
+                       ApplyObjectInPreSheafCategoryToObject( PSh, F, Source( morB ) ) );
     fi;
     
     B_op := OppositeOfSource( PSh );
