@@ -251,7 +251,7 @@ InstallMethod( CategoryFromDataTables,
 end );
 
 ##
-InstallMethod( CreateObject,
+InstallMethodForCompilerForCAP( CreateObject,
         "for a category from data tables and an integer",
         [ IsCategoryFromDataTables, IsInt ],
         
@@ -283,14 +283,12 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( CreateMorphism,
-        "for two objects in a category from data tables and an integer",
-        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+InstallOtherMethodForCompilerForCAP( CreateMorphism,
+        "for a category from data tables, two objects therein, and an integer",
+        [ IsCategoryFromDataTables, IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
         
-  function( source, m, range )
-    local C, V, C1, mor_map;
-    
-    C := CapCategory( source );
+  function( C, source, m, range )
+    local V, C1, mor_map;
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
@@ -310,6 +308,17 @@ end );
 
 ##
 InstallMethod( CreateMorphism,
+        "for two objects in a category from data tables and an integer",
+        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+        
+  function( source, m, range )
+    
+    return CreateMorphism( CapCategory( source ), source, m, range );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( CreateMorphism,
         "for a category from data tables and an integer",
         [ IsCategoryFromDataTables, IsInt ],
         
@@ -321,7 +330,7 @@ InstallMethod( CreateMorphism,
     s := data_tables[2][2];
     t := data_tables[2][3];
     
-    return CreateMorphism(
+    return CreateMorphism( C,
                    CreateObject( C, s( m ) ),
                    m,
                    CreateObject( C, t( m ) ) );
@@ -351,7 +360,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( SetOfObjects,
+InstallMethodForCompilerForCAP( SetOfObjects,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         
@@ -365,7 +374,7 @@ InstallMethod( SetOfObjects,
 end );
 
 ##
-InstallMethod( SetOfMorphisms,
+InstallMethodForCompilerForCAP( SetOfMorphisms,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         
