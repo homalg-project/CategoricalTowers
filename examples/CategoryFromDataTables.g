@@ -6,16 +6,7 @@ LoadPackage( "Algebroids" );
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
-N1 := NerveTruncatedInDegree2Data( Delta1 );;
-N1[1];
-#! [ |2|, |7|, |26| ]
-C := CategoryFromNerveData( Name( Delta1 ), N1,
-             [ 1, 2, 3 ], [ [ "C0", "C1" ], [ "id", "s", "t" ] ] );
-#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
-#! / [ s*id = C0, t*id = C0 ]
-T1 := DataTablesOfCategory( C );; T1[1];
-#! [ |2|, |7| ]
-C := CategoryFromDataTables( Name( Delta1 ), T1,
+C := CategoryFromDataTables( Name( Delta1 ), DataTablesOfCategory( Delta1 ),
              [ 1, 2, 3 ], [ [ "C0", "C1" ], [ "id", "s", "t" ] ] );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]

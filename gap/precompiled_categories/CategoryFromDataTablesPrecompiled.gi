@@ -243,8 +243,8 @@ BindGlobal( "CategoryFromDataTablesPrecompiled", function ( quiver )
         function ( quiver )
     local sFinSets;
     sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true );
-    return CategoryFromDataTables( "CategoryFromDataTables", NerveTruncatedInDegree2Data( FreeCategory( quiver : range_of_HomStructure := sFinSets,
-            FinalizeCategory := true ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );
+    return CategoryFromDataTables( "CategoryFromDataTables", DataTablesOfCategory( FreeCategory( quiver : range_of_HomStructure := sFinSets,
+            FinalizeCategory := true ) : FinalizeCategory := true ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );
 end;
         
         
