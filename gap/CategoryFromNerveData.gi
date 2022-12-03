@@ -562,7 +562,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallOtherMethod( SetOfObjects,
+InstallMethod( SetOfObjects,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
@@ -573,13 +573,132 @@ InstallOtherMethod( SetOfObjects,
 end );
 
 ##
-InstallOtherMethod( SetOfGeneratingMorphisms,
+InstallMethod( SetOfGeneratingMorphisms,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
   function( C )
     
     return List( C!.indices_of_generating_morphisms, i -> CreateMorphism( C, i ) );
+    
+end );
+
+##
+InstallMethod( DataTablesOfCategory,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    local C0, C1, V, T, s, t,
+          identity_data,
+          precompose, precompose_data,
+          hom_on_objs, hom_on_objs_data,
+          hom_on_mors, hom_on_mors_data,
+          introduction, introduction_data,
+          elimination, elimination_data;
+    
+    C0 := NerveData( C )[1][1];
+    C1 := NerveData( C )[1][2];
+
+    V := CapCategory( C0 );
+    T := DistinguishedObjectOfHomomorphismStructure( C );
+    
+    s := NerveData( C )[2][2];
+    t := NerveData( C )[2][3];
+    
+    identity_data := AsList( NerveData( C )[2][1] );
+    
+    precompose :=
+      function( i, j )
+        
+        if not t( i ) = s( j ) then
+            return fail;
+        fi;
+        
+        return MorphismDatum( C,
+                       PreCompose( C,
+                               CreateMorphism( C, i ),
+                               CreateMorphism( C, j ) ) )( 0 );
+        
+    end;
+    
+    precompose_data :=
+      List( [ 0 .. Length( C1 ) - 1 ], i ->
+            List( [ 0 .. Length( C1 ) - 1 ], j ->
+                  precompose( i, j ) ) );
+    
+    hom_on_objs :=
+      function( i, j )
+        
+        return HomomorphismStructureOnObjects( C,
+                       CreateObject( C, i ),
+                       CreateObject( C, j ) );
+        
+    end;
+    
+    hom_on_objs_data :=
+      List( [ 0 .. Length( C0 ) - 1 ], i ->
+            List( [ 0 .. Length( C0 ) - 1 ], j ->
+                  hom_on_objs( i, j ) ) );
+    
+    hom_on_mors :=
+      function( i, j )
+        
+        return HomomorphismStructureOnMorphisms( C,
+                       CreateMorphism( C, i ),
+                       CreateMorphism( C, j ) );
+        
+    end;
+    
+    hom_on_mors_data :=
+      List( [ 0 .. Length( C1 ) - 1 ], i ->
+            List( [ 0 .. Length( C1 ) - 1 ], j ->
+                  hom_on_mors( i, j ) ) );
+    
+    introduction :=
+      function( i )
+        
+        return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
+                       CreateMorphism( C, i ) );
+        
+    end;
+    
+    introduction_data :=
+      List( [ 0 .. Length( C1 ) - 1 ], i ->
+            introduction( i ) );
+    
+    elimination :=
+      function( i, j, k )
+        
+        return MorphismDatum( C,
+                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
+                               CreateObject( C, i ),
+                               CreateObject( C, j ),
+                               MorphismConstructor( V,
+                                       T,
+                                       [ k ],
+                                       ObjectConstructor( V, Length( hom_on_objs( i, j ) ) ) ) ) )( 0 );
+        
+    end;
+    
+    elimination_data :=
+      List( [ 0 .. Length( C0 ) - 1 ], i ->
+            List( [ 0 .. Length( C0 ) - 1 ], j ->
+                  List( [ 0 .. Length( hom_on_objs( i, j ) ) - 1 ], k ->
+                  elimination( i, j, k ) ) ) );
+    
+    return Pair( Pair(
+                   C0,
+                   C1 ),
+                 NTuple( 8,
+                         identity_data,
+                         s,
+                         t,
+                         precompose_data,
+                         hom_on_objs_data,
+                         hom_on_mors_data,
+                         introduction_data,
+                         elimination_data ) );
     
 end );
 

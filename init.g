@@ -8,6 +8,7 @@ ReadPackage( "Algebroids", "gap/FpCategories.gd");
 ReadPackage( "Algebroids", "gap/Algebroids.gd");
 ReadPackage( "Algebroids", "gap/Functors.gd");
 ReadPackage( "Algebroids", "gap/CategoryFromNerveData.gd");
+ReadPackage( "Algebroids", "gap/CategoryFromDataTables.gd");
 ReadPackage( "Algebroids", "gap/CategoryOfAlgebroids.gd");
 ReadPackage( "Algebroids", "gap/Bialgebroids.gd");
 ReadPackage( "Algebroids", "gap/SimplicialCategory.gd");
