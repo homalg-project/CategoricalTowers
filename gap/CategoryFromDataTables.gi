@@ -47,6 +47,7 @@ InstallMethod( CategoryFromDataTables,
            morphism_filter := IsMorphismInCategoryFromDataTables and HasMapOfMorphism,
            category_attribute_names :=
            [ "DataTablesOfCategory",
+             "IndicesOfGeneratingMorphisms",
              ] );
     
     ##
