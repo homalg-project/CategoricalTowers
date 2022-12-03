@@ -107,6 +107,10 @@ end );
 DeclareAttribute( "SetOfObjects",
         IsCategoryFromDataTables );
 
+#! @Description
+#!  The finite set of morphisms of the category <A>C</A> created from data tables.
+#! @Arguments C
+#! @Returns a list
 DeclareAttribute( "SetOfMorphisms",
         IsCategoryFromDataTables );
 
