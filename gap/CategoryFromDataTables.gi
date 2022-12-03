@@ -6,11 +6,11 @@
 
 ##
 InstallMethod( CategoryFromDataTables,
-        "for a string and a list",
-        [ IsString, IsList, IsList, IsList ],
+        "for a string, a category, and three lists",
+        [ IsString, IsCapCategory, IsList, IsList, IsList ],
         
-  function( name, data_tables, indices_of_generating_morphisms, labels )
-    local C, C0, V, C1, s, t;
+  function( name, V, data_tables, indices_of_generating_morphisms, labels )
+    local C, C0, C1, s, t;
     
     C := CreateCapCategory( name,
                  IsCategoryFromDataTables,
@@ -20,19 +20,17 @@ InstallMethod( CategoryFromDataTables,
     
     C!.category_as_first_argument := true;
     
-    C!.labels := labels;
     C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
+    C!.labels := labels;
     
     SetIsFinite( C, true );
+    
+    SetIsEquippedWithHomomorphismStructure( C, true );
+    SetRangeCategoryOfHomomorphismStructure( C, V );
     
     SetDataTablesOfCategory( C, data_tables );
     
     C0 := data_tables[1][1];
-    
-    V := CapCategory( C0 );
-    
-    SetIsEquippedWithHomomorphismStructure( C, true );
-    SetRangeCategoryOfHomomorphismStructure( C, V );
     
     ## s: C₁ → C₀
     s := data_tables[2][2];
@@ -251,7 +249,7 @@ InstallMethod( CategoryFromDataTables,
 end );
 
 ##
-InstallMethod( CreateObject,
+InstallMethodForCompilerForCAP( CreateObject,
         "for a category from data tables and an integer",
         [ IsCategoryFromDataTables, IsInt ],
         
@@ -283,23 +281,21 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( CreateMorphism,
-        "for two objects in a category from data tables and an integer",
-        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+InstallOtherMethodForCompilerForCAP( CreateMorphism,
+        "for a category from data tables, two objects therein, and an integer",
+        [ IsCategoryFromDataTables, IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
         
-  function( source, m, range )
-    local C, V, mors, mor_map;
-    
-    C := CapCategory( source );
+  function( C, source, m, range )
+    local V, C1, mor_map;
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    mors := DataTablesOfCategory( C )[1][2];
+    C1 := DataTablesOfCategory( C )[1][2];
     
     mor_map := MorphismConstructor( V,
                        TerminalObject( V ),
                        [ m ],
-                       mors );
+                       C1 );
     
     return MorphismConstructor( C,
                    source,
@@ -310,6 +306,17 @@ end );
 
 ##
 InstallMethod( CreateMorphism,
+        "for two objects in a category from data tables and an integer",
+        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+        
+  function( source, m, range )
+    
+    return CreateMorphism( CapCategory( source ), source, m, range );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( CreateMorphism,
         "for a category from data tables and an integer",
         [ IsCategoryFromDataTables, IsInt ],
         
@@ -321,7 +328,7 @@ InstallMethod( CreateMorphism,
     s := data_tables[2][2];
     t := data_tables[2][3];
     
-    return CreateMorphism(
+    return CreateMorphism( C,
                    CreateObject( C, s( m ) ),
                    m,
                    CreateObject( C, t( m ) ) );
@@ -351,7 +358,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( SetOfObjects,
+InstallMethodForCompilerForCAP( SetOfObjects,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         
@@ -365,7 +372,7 @@ InstallMethod( SetOfObjects,
 end );
 
 ##
-InstallMethod( SetOfMorphisms,
+InstallMethodForCompilerForCAP( SetOfMorphisms,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         

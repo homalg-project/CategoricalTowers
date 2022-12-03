@@ -177,11 +177,11 @@ end );
 ####################################
 
 #! @Description
-#!  Construct a category with name <A>str</A> from the given <A>data_tables</A>.
-#! @Arguments str, data_tables, indices_of_generating_morphisms, labels
+#!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A>.
+#! @Arguments str, V, data_tables, indices_of_generating_morphisms, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromDataTables",
-        [ IsString, IsList, IsList, IsList ] );
+        [ IsString, IsCapCategory, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromDataTables
 
 #! @Description
