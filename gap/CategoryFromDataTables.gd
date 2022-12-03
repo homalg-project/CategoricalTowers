@@ -47,27 +47,26 @@ DeclareAttribute( "DataTablesOfCategory",
 
 CapJitAddTypeSignature( "DataTablesOfCategory", [ IsCategoryFromDataTables ],
   function ( input_types )
-    local V;
-    
-    V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
     
     return rec( filter := IsNTuple,
                 element_types :=
                 [ rec( filter := IsNTuple,
                        element_types :=
                        [ # C0
-                         CapJitDataTypeOfObjectOfCategory( V ),
+                         rec( filter := IsInt ),
                          # C1
-                         CapJitDataTypeOfObjectOfCategory( V ) ] ),
+                         rec( filter := IsInt ) ] ),
                   rec( filter := IsNTuple,
                        element_types :=
                        [ # identity
                          rec( filter := IsList,
                               element_type := rec( filter := IsInt ) ),
                          # s
-                         CapJitDataTypeOfMorphismOfCategory( V ),
+                         rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
                          # t
-                         CapJitDataTypeOfMorphismOfCategory( V ),
+                         rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
                          # precompose
                          rec( filter := IsList,
                               element_type :=
@@ -77,15 +76,19 @@ CapJitAddTypeSignature( "DataTablesOfCategory", [ IsCategoryFromDataTables ],
                          rec( filter := IsList,
                               element_type :=
                               rec( filter := IsList,
-                                   element_type := CapJitDataTypeOfObjectOfCategory( V ) ) ),
+                                   element_type := rec( filter := IsInt ) ) ),
                          # hom_on_mors
                          rec( filter := IsList,
                               element_type :=
                               rec( filter := IsList,
-                                   element_type := CapJitDataTypeOfMorphismOfCategory( V ) ) ),
+                                   element_type :=
+                                   rec( filter := IsList,
+                                        element_type := rec( filter := IsInt ) ) ) ),
                          # introduction
                          rec( filter := IsList,
-                              element_type := CapJitDataTypeOfMorphismOfCategory( V ) ),
+                              element_type :=
+                              rec( filter := IsList,
+                                   element_type := rec( filter := IsInt ) ) ),
                          # elimination
                          rec( filter := IsList,
                               element_type :=
