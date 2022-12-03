@@ -107,22 +107,21 @@ end );
 DeclareAttribute( "SetOfObjects",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfObjectOfCategory( input_types[1].category ) );
-    
-end );
-
+#! @Description
+#!  The finite set of morphisms of the category <A>C</A> created from data tables.
+#! @Arguments C
+#! @Returns a list
 DeclareAttribute( "SetOfMorphisms",
         IsCategoryFromDataTables );
 
-CapJitAddTypeSignature( "SetOfMorphisms", [ IsCategoryFromDataTables ],
+DeclareAttribute( "IndicesOfGeneratingMorphisms",
+        IsCategoryFromDataTables );
+
+CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTables ],
   function ( input_types )
     
     return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
+                element_type := rec( filter := IsInt ) );
     
 end );
 
@@ -132,14 +131,6 @@ end );
 #! @Returns a list
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsCategoryFromDataTables );
-
-CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return rec( filter := IsList,
-                element_type := CapJitDataTypeOfMorphismOfCategory( input_types[1].category ) );
-    
-end );
 
 ##
 DeclareAttribute( "MapOfObject",

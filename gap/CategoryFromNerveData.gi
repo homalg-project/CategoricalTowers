@@ -20,8 +20,9 @@ InstallMethod( CategoryFromNerveData,
     
     C!.category_as_first_argument := true;
     
+    SetIndicesOfGeneratingMorphisms( C, indices_of_generating_morphisms );
+    
     C!.labels := labels;
-    C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
     
     SetIsFinite( C, true );
     
@@ -545,14 +546,16 @@ InstallMethod( \.,
         [ IsCategoryFromNerveData, IsPosInt ],
         
   function( C, string_as_int )
-    local name;
+    local name, labels;
     
     name := NameRNam( string_as_int );
     
-    if name in C!.labels[1] then
-        return CreateObject( C, -1 + SafePosition( C!.labels[1], name ) );
-    elif name in C!.labels[2] then
-        return CreateMorphism( C, C!.indices_of_generating_morphisms[SafePosition( C!.labels[2], name )] );
+    labels := C!.labels;
+    
+    if name in labels[1] then
+        return CreateObject( C, -1 + SafePosition( labels[1], name ) );
+    elif name in labels[2] then
+        return CreateMorphism( C, IndicesOfGeneratingMorphisms( C )[SafePosition( labels[2], name )] );
     elif name[1] in [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ] then
         return CreateMorphism( C, Int( name ) );
     fi;
@@ -579,7 +582,7 @@ InstallMethod( SetOfGeneratingMorphisms,
         
   function( C )
     
-    return List( C!.indices_of_generating_morphisms, i -> CreateMorphism( C, i ) );
+    return List( IndicesOfGeneratingMorphisms( C ), i -> CreateMorphism( C, i ) );
     
 end );
 
@@ -749,22 +752,24 @@ InstallMethod( ViewObj,
         [ IsMorphismInCategoryFromNerveData ],
         
   function( mor )
-    local C, i, pos;
+    local C, labels, i, pos;
     
     C := CapCategory( mor );
     
-    i := MapOfMorphism( mor )( 0 );
-    pos := Position( C!.indices_of_generating_morphisms, i);
+    labels := C!.labels;
     
-    Print( "(", C!.labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
+    i := MapOfMorphism( mor )( 0 );
+    pos := Position( IndicesOfGeneratingMorphisms( C ), i );
+    
+    Print( "(", labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
     Print( "-[(" );
     if pos = fail then
         Print( i );
     else
-        Print( C!.labels[2][pos] );
+        Print( labels[2][pos] );
     fi;
     Print( ")]->" );
-    Print( "(", C!.labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
+    Print( "(", labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
     
 end );
 
