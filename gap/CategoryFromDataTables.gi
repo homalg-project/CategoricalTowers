@@ -5,73 +5,6 @@
 #
 
 ##
-InstallMethod( CreateObject,
-        "for a category from data tables and an integer",
-        [ IsCategoryFromDataTables, IsInt ],
-        
-  function( C, o )
-    local V, C0, obj_map;
-    
-    V := RangeCategoryOfHomomorphismStructure( C );
-    
-    C0 := DataTablesOfCategory( C )[1][1];
-    
-    obj_map := MorphismConstructor( V,
-                       TerminalObject( V ),
-                       [ o ],
-                       C0 );
-    
-    return ObjectConstructor( C, obj_map );
-    
-end );
-
-##
-InstallMethod( CreateMorphism,
-        "for two objects in a category from data tables and an integer",
-        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
-        
-  function( source, m, range )
-    local C, V, mors, mor_map;
-    
-    C := CapCategory( source );
-    
-    V := RangeCategoryOfHomomorphismStructure( C );
-    
-    mors := DataTablesOfCategory( C )[1][2];
-    
-    mor_map := MorphismConstructor( V,
-                       TerminalObject( V ),
-                       [ m ],
-                       mors );
-    
-    return MorphismConstructor( C,
-                   source,
-                   mor_map,
-                   range );
-    
-end );
-
-##
-InstallMethod( CreateMorphism,
-        "for a category from data tables and an integer",
-        [ IsCategoryFromDataTables, IsInt ],
-        
-  function( C, m )
-    local data_tables, s, t;
-    
-    data_tables := DataTablesOfCategory( C );
-    
-    s := data_tables[2][2];
-    t := data_tables[2][3];
-    
-    return CreateMorphism(
-                   CreateObject( C, s( m ) ),
-                   m,
-                   CreateObject( C, t( m ) ) );
-    
-end );
-
-##
 InstallMethod( CategoryFromDataTables,
         "for a string and a list",
         [ IsString, IsList, IsList, IsList ],
@@ -318,6 +251,27 @@ InstallMethod( CategoryFromDataTables,
 end );
 
 ##
+InstallMethod( CreateObject,
+        "for a category from data tables and an integer",
+        [ IsCategoryFromDataTables, IsInt ],
+        
+  function( C, o )
+    local V, C0, obj_map;
+    
+    V := RangeCategoryOfHomomorphismStructure( C );
+    
+    C0 := DataTablesOfCategory( C )[1][1];
+    
+    obj_map := MorphismConstructor( V,
+                       TerminalObject( V ),
+                       [ o ],
+                       C0 );
+    
+    return ObjectConstructor( C, obj_map );
+    
+end );
+
+##
 InstallMethod( \/,
         "for an integer and a category from data tables",
         [ IsInt, IsCategoryFromDataTables ],
@@ -325,6 +279,52 @@ InstallMethod( \/,
   function( o, C )
     
     return CreateObject( C, o );
+    
+end );
+
+##
+InstallMethod( CreateMorphism,
+        "for two objects in a category from data tables and an integer",
+        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+        
+  function( source, m, range )
+    local C, V, mors, mor_map;
+    
+    C := CapCategory( source );
+    
+    V := RangeCategoryOfHomomorphismStructure( C );
+    
+    mors := DataTablesOfCategory( C )[1][2];
+    
+    mor_map := MorphismConstructor( V,
+                       TerminalObject( V ),
+                       [ m ],
+                       mors );
+    
+    return MorphismConstructor( C,
+                   source,
+                   mor_map,
+                   range );
+    
+end );
+
+##
+InstallMethod( CreateMorphism,
+        "for a category from data tables and an integer",
+        [ IsCategoryFromDataTables, IsInt ],
+        
+  function( C, m )
+    local data_tables, s, t;
+    
+    data_tables := DataTablesOfCategory( C );
+    
+    s := data_tables[2][2];
+    t := data_tables[2][3];
+    
+    return CreateMorphism(
+                   CreateObject( C, s( m ) ),
+                   m,
+                   CreateObject( C, t( m ) ) );
     
 end );
 
