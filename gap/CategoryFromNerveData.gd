@@ -90,6 +90,17 @@ CapJitAddTypeSignature( "SetOfObjects", [ IsCategoryFromNerveData ],
     
 end );
 
+DeclareAttribute( "IndicesOfGeneratingMorphisms",
+        IsCategoryFromNerveData );
+
+CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type := rec( filter := IsInt ) );
+    
+end );
+
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from nerve data.
 #! @Arguments C

@@ -20,7 +20,8 @@ InstallMethod( CategoryFromDataTables,
     
     C!.category_as_first_argument := true;
     
-    C!.indices_of_generating_morphisms := indices_of_generating_morphisms;
+    SetIndicesOfGeneratingMorphisms( C, indices_of_generating_morphisms );
+    
     C!.labels := labels;
     
     SetIsFinite( C, true );
@@ -357,7 +358,7 @@ InstallMethod( \.,
     if name in labels[1] then
         return CreateObject( C, -1 + SafePosition( labels[1], name ) );
     elif name in labels[2] then
-        return CreateMorphism( C, C!.indices_of_generating_morphisms[SafePosition( labels[2], name )] );
+        return CreateMorphism( C, IndicesOfGeneratingMorphisms( C )[SafePosition( labels[2], name )] );
     elif name[1] in [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ] then
         return CreateMorphism( C, Int( name ) );
     fi;
@@ -404,7 +405,7 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
     
     mors := SetOfMorphisms( C );
     
-    return List( C!.indices_of_generating_morphisms, i -> mors[1 + i] );
+    return List( IndicesOfGeneratingMorphisms( C ), i -> mors[1 + i] );
     
 end );
 
@@ -438,7 +439,7 @@ InstallMethod( ViewObj,
     labels := C!.labels;
     
     i := MapOfMorphism( mor )( 0 );
-    pos := Position( C!.indices_of_generating_morphisms, i);
+    pos := Position( IndicesOfGeneratingMorphisms( C ), i );
     
     Print( "(", labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
     Print( "-[(" );
