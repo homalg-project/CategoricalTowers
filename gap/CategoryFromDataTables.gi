@@ -348,14 +348,16 @@ InstallMethod( \.,
         [ IsCategoryFromDataTables, IsPosInt ],
         
   function( C, string_as_int )
-    local name;
+    local name, labels;
     
     name := NameRNam( string_as_int );
     
-    if name in C!.labels[1] then
-        return CreateObject( C, -1 + SafePosition( C!.labels[1], name ) );
-    elif name in C!.labels[2] then
-        return CreateMorphism( C, C!.indices_of_generating_morphisms[SafePosition( C!.labels[2], name )] );
+    labels := C!.labels;
+    
+    if name in labels[1] then
+        return CreateObject( C, -1 + SafePosition( labels[1], name ) );
+    elif name in labels[2] then
+        return CreateMorphism( C, C!.indices_of_generating_morphisms[SafePosition( labels[2], name )] );
     elif name[1] in [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ] then
         return CreateMorphism( C, Int( name ) );
     fi;
@@ -429,22 +431,24 @@ InstallMethod( ViewObj,
         [ IsMorphismInCategoryFromDataTables ],
         
   function( mor )
-    local C, i, pos;
+    local C, labels, i, pos;
     
     C := CapCategory( mor );
+    
+    labels := C!.labels;
     
     i := MapOfMorphism( mor )( 0 );
     pos := Position( C!.indices_of_generating_morphisms, i);
     
-    Print( "(", C!.labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
+    Print( "(", labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
     Print( "-[(" );
     if pos = fail then
         Print( i );
     else
-        Print( C!.labels[2][pos] );
+        Print( labels[2][pos] );
     fi;
     Print( ")]->" );
-    Print( "(", C!.labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
+    Print( "(", labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
     
 end );
 
