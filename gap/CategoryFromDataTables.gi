@@ -384,8 +384,11 @@ InstallMethod( SetOfGeneratingMorphisms,
         [ IsCategoryFromDataTables ],
         
   function( C )
+    local mors;
     
-    return List( C!.indices_of_generating_morphisms, i -> CreateMorphism( C, i ) );
+    mors := SetOfMorphisms( C );
+    
+    return List( C!.indices_of_generating_morphisms, i -> mors[1 + i] );
     
 end );
 
