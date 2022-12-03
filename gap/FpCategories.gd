@@ -295,7 +295,7 @@ DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
 DeclareAttribute( "NerveTruncatedInDegree2Data",
-        IsFpCategory );
+        IsCapCategory );
 
 #! @Description
 #!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
@@ -306,7 +306,7 @@ DeclareAttribute( "NerveTruncatedInDegree2Data",
 #! @Arguments C
 #! @Returns a &CAP; functor
 DeclareAttribute( "NerveTruncatedInDegree2AsFunctor",
-        IsFpCategory );
+        IsCapCategory );
 #! @InsertChunk NerveTruncatedInDegree2AsFunctor
 
 DeclareAttribute( "YonedaNaturalEpimorphisms", IsCapCategory );
