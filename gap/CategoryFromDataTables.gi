@@ -38,7 +38,7 @@ InstallMethod( CategoryFromDataTables,
     ## t: C₁ → C₀
     t := data_tables[2][3];
     
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( C0, List( indices_of_generating_morphisms, i -> Pair( s[1 + i], t[1 + i] ) ) ) );
     
     C!.compiler_hints :=
       rec( category_filter := IsCategoryFromDataTables,
@@ -46,8 +46,6 @@ InstallMethod( CategoryFromDataTables,
            morphism_filter := IsMorphismInCategoryFromDataTables and HasMapOfMorphism,
            category_attribute_names :=
            [ "DataTablesOfCategory",
-             "SetOfObjects",
-             "SetOfMorphisms",
              ] );
     
     ##
@@ -99,7 +97,7 @@ InstallMethod( CategoryFromDataTables,
         
         return IsWellDefinedForMorphisms( V, obj_map ) and
                IsTerminal( V, Source( obj_map ) ) and
-               IsEqualForObjects( V, C0, Range( obj_map ) );
+               C0 = ObjectDatum( V, Range( obj_map ) );
         
     end );
     
@@ -116,7 +114,7 @@ InstallMethod( CategoryFromDataTables,
         
         return IsWellDefinedForMorphisms( V, mor_map ) and
                IsTerminal( V, Source( mor_map ) ) and
-               IsEqualForObjects( V, C1, Range( mor_map ) );
+               C1 = ObjectDatum( V, Range( mor_map ) );
         
     end );
     
@@ -189,35 +187,44 @@ InstallMethod( CategoryFromDataTables,
     ##
     AddHomomorphismStructureOnObjects( C,
       function( C, obj_1, obj_2 )
-        local o1, o2;
+        local V, o1, o2;
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
         
         o1 := AsList( ObjectDatum( C, obj_1 ) )[1 + 0];
         o2 := AsList( ObjectDatum( C, obj_2 ) )[1 + 0];
         
-        return DataTablesOfCategory( C )[2][5][1 + o1][1 + o2];
+        return ObjectConstructor( V,
+                       DataTablesOfCategory( C )[2][5][1 + o1][1 + o2] );
         
     end );
     
     ##
-    AddHomomorphismStructureOnMorphisms( C,
-      function( C, mor_1, mor_2 )
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( C,
+      function( C, source, mor_1, mor_2, range )
         local m1, m2;
         
         m1 := AsList( MorphismDatum( C, mor_1 ) )[1 + 0];
         m2 := AsList( MorphismDatum( C, mor_2 ) )[1 + 0];
         
-        return DataTablesOfCategory( C )[2][6][1 + m1][1 + m2];
+        return MorphismConstructor( V,
+                       source,
+                       DataTablesOfCategory( C )[2][6][1 + m1][1 + m2],
+                       range );
         
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
-      function( C, mor )
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( C,
+      function( C, distinguished_object, mor, range )
         local m;
         
         m := AsList( MorphismDatum( C, mor ) )[1 + 0];
         
-        return DataTablesOfCategory( C )[2][7][1 + m];
+        return MorphismConstructor( V,
+                       distinguished_object,
+                       DataTablesOfCategory( C )[2][7][1 + m],
+                       range );
         
     end );
     
@@ -263,7 +270,7 @@ InstallMethodForCompilerForCAP( CreateObject,
     obj_map := MorphismConstructor( V,
                        TerminalObject( V ),
                        [ o ],
-                       C0 );
+                       ObjectConstructor( V, C0 ) );
     
     return ObjectConstructor( C, obj_map );
     
@@ -295,7 +302,7 @@ InstallOtherMethodForCompilerForCAP( CreateMorphism,
     mor_map := MorphismConstructor( V,
                        TerminalObject( V ),
                        [ m ],
-                       C1 );
+                       ObjectConstructor( V, C1 ) );
     
     return MorphismConstructor( C,
                    source,
@@ -329,9 +336,9 @@ InstallMethodForCompilerForCAP( CreateMorphism,
     t := data_tables[2][3];
     
     return CreateMorphism( C,
-                   CreateObject( C, s( m ) ),
+                   CreateObject( C, s[1 + m] ),
                    m,
-                   CreateObject( C, t( m ) ) );
+                   CreateObject( C, t[1 +  m] ) );
     
 end );
 
@@ -367,7 +374,7 @@ InstallMethodForCompilerForCAP( SetOfObjects,
     
     C0 :=  DataTablesOfCategory( C )[1][1];
     
-    return List( [ 0 .. Length( C0 ) - 1 ], i -> CreateObject( C, i ) );
+    return List( [ 0 .. C0 - 1 ], i -> CreateObject( C, i ) );
     
 end );
 
@@ -381,12 +388,12 @@ InstallMethodForCompilerForCAP( SetOfMorphisms,
     
     C1 := DataTablesOfCategory( C )[1][2];
     
-    return List( [ 0 .. Length( C1 ) - 1 ], i -> CreateMorphism( C, i ) );
+    return List( [ 0 .. C1 - 1 ], i -> CreateMorphism( C, i ) );
     
 end );
 
 ##
-InstallMethod( SetOfGeneratingMorphisms,
+InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         

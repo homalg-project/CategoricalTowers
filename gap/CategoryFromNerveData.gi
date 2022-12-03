@@ -630,9 +630,10 @@ InstallMethod( DataTablesOfCategory,
     hom_on_objs :=
       function( i, j )
         
-        return HomomorphismStructureOnObjects( C,
-                       CreateObject( C, i ),
-                       CreateObject( C, j ) );
+        return ObjectDatum( V,
+                       HomomorphismStructureOnObjects( C,
+                               CreateObject( C, i ),
+                               CreateObject( C, j ) ) );
         
     end;
     
@@ -644,9 +645,10 @@ InstallMethod( DataTablesOfCategory,
     hom_on_mors :=
       function( i, j )
         
-        return HomomorphismStructureOnMorphisms( C,
-                       CreateMorphism( C, i ),
-                       CreateMorphism( C, j ) );
+        return MorphismDatum( V,
+                       HomomorphismStructureOnMorphisms( C,
+                               CreateMorphism( C, i ),
+                               CreateMorphism( C, j ) ) );
         
     end;
     
@@ -658,8 +660,9 @@ InstallMethod( DataTablesOfCategory,
     introduction :=
       function( i )
         
-        return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
-                       CreateMorphism( C, i ) );
+        return MorphismDatum( V,
+                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
+                               CreateMorphism( C, i ) ) );
         
     end;
     
@@ -677,23 +680,24 @@ InstallMethod( DataTablesOfCategory,
                                MorphismConstructor( V,
                                        T,
                                        [ k ],
-                                       ObjectConstructor( V, Length( hom_on_objs( i, j ) ) ) ) ) )( 0 );
+                                       ObjectConstructor( V,
+                                               hom_on_objs( i, j ) ) ) ) )( 0 );
         
     end;
     
     elimination_data :=
       List( [ 0 .. Length( C0 ) - 1 ], i ->
             List( [ 0 .. Length( C0 ) - 1 ], j ->
-                  List( [ 0 .. Length( hom_on_objs( i, j ) ) - 1 ], k ->
+                  List( [ 0 .. hom_on_objs( i, j ) - 1 ], k ->
                   elimination( i, j, k ) ) ) );
     
     return Pair( Pair(
-                   C0,
-                   C1 ),
+                   Length( C0 ),
+                   Length( C1 ) ),
                  NTuple( 8,
                          identity_data,
-                         s,
-                         t,
+                         AsList( s ),
+                         AsList( t ),
                          precompose_data,
                          hom_on_objs_data,
                          hom_on_mors_data,
