@@ -13,6 +13,8 @@ C := CategoryFromNerveData( Name( Delta1 ), N1,
              [ 1, 2, 3 ], [ [ "C0", "C1" ], [ "id", "s", "t" ] ] );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
+NerveTruncatedInDegree2Data( C ) = N1;
+#! true
 InfoOfInstalledOperationsOfCategory( C );
 #! 16 primitive operations were used to derive 36 operations for this category
 #! which algorithmically

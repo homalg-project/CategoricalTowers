@@ -1465,7 +1465,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2Data,
-        [ IsFpCategory and IsFinite ],
+        [ IsCapCategory and IsFinite ],
         
   function ( B )
     local A, H, B0, N0, D00, N0N0, p21, p22, B1, N1, d, id, pi2, s, t,
@@ -1762,7 +1762,7 @@ end );
 
 ##
 InstallMethod( NerveTruncatedInDegree2AsFunctor,
-        [ IsFpCategory ],
+        [ IsCapCategory and IsFinite ],
         
   function ( B )
     local nerve, nerve_ValuesOnAllObjects, nerve_ValuesOnAllGeneratingMorphisms, name, Delta2, Delta2op;
