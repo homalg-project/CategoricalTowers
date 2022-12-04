@@ -2951,6 +2951,23 @@ InstallMethod( YonedaEmbedding,
 end );
 
 ##
+InstallMethod( ImageOfYonedaEmbeddingOfSource,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+  
+  function ( PSh )
+    local B, name, Yoneda_data;
+    
+    B := Source( PSh );
+    
+    name := Concatenation( "ImageOfYonedaEmbeddingOfSource( ", Name( PSh ), " )" );
+    
+    Yoneda_data := YonedaEmbeddingData( PSh );
+    
+    return FullSubcategoryGeneratedByListOfObjects( List( SetOfObjects( B ),  Yoneda_data[1] ) : name_of_full_subcategory := name );
+    
+end );
+
+##
 InstallMethod( \.,
         "for a presheaf category and a positive integer",
         [ IsPreSheafCategory, IsPosInt ],

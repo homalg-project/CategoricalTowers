@@ -26,3 +26,7 @@ gap> ForAll( IndecomposableProjectiveObjects( PSh ), o -> IsEqualForObjects( o, 
 true
 gap> ForAll( IndecomposableInjectiveObjects( PSh ), o -> IsEqualForObjects( o, InjectiveEnvelopeObject( o ) ) );
 true
+gap> Y := ExtendFunctorToAdditiveClosures( IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource( PSh ) );;
+gap> U := ExtendFunctorToAdditiveClosures( IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource( PSh ) );;
+gap> m := RandomMorphism( SourceOfFunctor(Y), 30 );; m = ApplyFunctor( U, ApplyFunctor( Y, m ) );
+true

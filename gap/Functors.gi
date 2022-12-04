@@ -479,3 +479,66 @@ InstallMethod( UnitOfIsbellAdjunction,
     return UnitOfIsbellAdjunction( PSh, coPSh );
     
 end );
+
+##
+BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SOURCE",
+  
+  function ( PSh )
+    local B, T, Yoneda_data, obj_func, mor_func, data, Y, U;
+    
+    if not IsCategoryOfRows( Range( PSh ) ) then
+      Error( "the range of presheaves category must be a category of rows" );
+    fi;
+    
+    B := Source( PSh );
+     
+    T := ImageOfYonedaEmbeddingOfSource( PSh );
+    
+    Yoneda_data := YonedaEmbeddingData( PSh );
+    
+    obj_func := o -> AsSubcategoryCell( T, Yoneda_data[1](o) );
+    
+    mor_func := { s, m, r } -> AsSubcategoryCell( T, Yoneda_data[2]( UnderlyingCell( s ), m, UnderlyingCell( r ) ) );
+    
+    data := AdditiveFunctorByTwoFunctionsData( B, T, obj_func , mor_func : full_functor := true, values_on_objects := [ SetOfObjects( B ), SetOfKnownObjects( T ) ] );
+    
+    Y := CapFunctor( "Yoneda isomorphism", B, T );
+    AddObjectFunction( Y, data[1] );
+    AddMorphismFunction( Y,  data[2] );
+    
+    SetIsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource( PSh, Y );
+    
+    U := CapFunctor( "Inverse of Yoneda isomorphism", T, B );
+    AddObjectFunction( U, data[3] );
+    AddMorphismFunction( U, data[4] );
+    
+    SetIsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource( PSh, U );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource,
+        "for a presheaf category",
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+  
+  function ( PSh )
+    
+    SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SOURCE( PSh );
+    
+    return IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource( PSh );
+    
+end );
+
+##
+InstallMethod( IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource,
+        "for a presheaf category",
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+  
+  function ( PSh )
+    
+    SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SOURCE( PSh );
+    
+    return IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource( PSh );
+    
+end );
+
