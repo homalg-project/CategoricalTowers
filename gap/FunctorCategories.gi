@@ -444,10 +444,15 @@ InstallMethodWithCache( FunctorCategory,
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
         defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
-    elif IsCategoryFromNerveData( B ) or IsCategoryFromDataTables( B ) then
-        B_op := Opposite( B : FinalizeCategory := true );
-        defining_pair := DefiningPairOfUnderlyingQuiver( B );
-        defining_pair := Pair( defining_pair[1], List( defining_pair[2], a -> Pair( a[2], a[1] ) ) );
+    elif IsCategoryFromNerveData( B ) then
+        B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
+        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
+    elif IsCategoryFromDataTables( B ) then
+        B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
+        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
+    elif HasIsFinite( B ) and IsFinite( B ) then
+        B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
+        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
@@ -455,7 +460,7 @@ InstallMethodWithCache( FunctorCategory,
         B_op := Opposite( B : FinalizeCategory := true );
         defining_pair := Pair( 0, [ ] );
     else
-        Error( "the first argument must either be an IsFpCategory, an IsAlgebroid, an IsCategoryFromNerveData, an IsCategoryFromDataTables or an IsInitialCategory\n" );
+        Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
     fi;
     
     PSh := PreSheaves( B_op, C : FinalizeCategory := true );
