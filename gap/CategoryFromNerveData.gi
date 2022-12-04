@@ -500,18 +500,18 @@ InstallMethod( CreateMorphism,
         [ IsObjectInCategoryFromNerveData, IsInt, IsObjectInCategoryFromNerveData ],
         
   function( source, m, range )
-    local C, V, mors, mor_map;
+    local C, V, C1, mor_map;
     
     C := CapCategory( source );
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    mors := NerveData( C )[1][2];
+    C1 := NerveData( C )[1][2];
     
     mor_map := MorphismConstructor( V,
                        TerminalObject( V ),
                        [ m ],
-                       mors );
+                       C1 );
     
     return MorphismConstructor( C,
                    source,
