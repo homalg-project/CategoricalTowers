@@ -475,7 +475,7 @@ InstallMethod( CreateObject,
     C0 := NerveData( C )[1][1];
     
     obj_map := MorphismConstructor( V,
-                       TerminalObject( V ),
+                       DistinguishedObjectOfHomomorphismStructure( C ),
                        [ o ],
                        C0 );
     
@@ -509,7 +509,7 @@ InstallMethod( CreateMorphism,
     C1 := NerveData( C )[1][2];
     
     mor_map := MorphismConstructor( V,
-                       TerminalObject( V ),
+                       DistinguishedObjectOfHomomorphismStructure( C ),
                        [ m ],
                        C1 );
     
