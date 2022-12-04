@@ -17,14 +17,15 @@ DeclareAttribute( "DefiningPairOfAQuiver",
         IsQuiver );
 #! @InsertChunk DefiningPairOfAQuiver
 
-##
+#! @Description
+#!  The defining pair of the quiver underlying the finitely presented category <A>C</A>.
+#! @Arguments C
+#! @Returns a pair
 DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
-        IsFpCategory );
+        IsCapCategory );
 
-CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsFpCategory ],
+CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsCapCategory ],
   function ( input_types )
-    
-    Assert( 0, IsFpCategory( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types :=
