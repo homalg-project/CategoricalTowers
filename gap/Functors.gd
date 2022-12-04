@@ -106,3 +106,16 @@ DeclareOperation( "UnitOfIsbellAdjunctionData",
 #! @Returns a &CAP; functor
 DeclareAttribute( "UnitOfIsbellAdjunction",
         IsPreSheafCategory );
+
+#! @Description
+#!  Returns the isomorphism functor from <C>Source</C>(<A>PSh</A>) to <C>ImageOfYonedaEmbeddingOfSource</C>(<A>PSh</A>) induced by the Yoneda embedding.
+#! @Arguments PSh
+#! @Returns a &CAP; functor
+DeclareAttribute( "IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource", IsPreSheafCategory );
+
+#! @Description
+#!  Returns the isomorphism functor from <C>ImageOfYonedaEmbeddingOfSource</C>(<A>PSh</A>) to <C>Source</C>(<A>PSh</A>) induced by the Yoneda embedding.
+#! @Arguments PSh
+#! @Returns a &CAP; functor
+DeclareAttribute( "IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource", IsPreSheafCategory );
+
