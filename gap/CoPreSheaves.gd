@@ -44,27 +44,6 @@ DeclareCategory( "IsMorphismInCoPreSheafCategory",
 #
 ####################################
 
-##
-DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
-        IsCoPreSheafCategory );
-
-CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsCoPreSheafCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsCoPreSheafCategory( input_types[1].category ) );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsInt ),
-                  rec( filter := IsList,
-                       element_type :=
-                       rec( filter := IsNTuple,
-                            element_types :=
-                            [ rec( filter := IsInt ),
-                              rec( filter := IsInt ) ] ) ) ] );
-    
-end );
-
 #! @Description
 #!  The source category of the copresheaf category <A>cat</A>.
 #! @Arguments cat

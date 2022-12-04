@@ -85,27 +85,6 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATE
 #
 ####################################
 
-##
-DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
-        IsPreSheafCategory );
-
-CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsPreSheafCategory ],
-  function ( input_types )
-    
-    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsInt ),
-                  rec( filter := IsList,
-                       element_type :=
-                       rec( filter := IsNTuple,
-                            element_types :=
-                            [ rec( filter := IsInt ),
-                              rec( filter := IsInt ) ] ) ) ] );
-    
-end );
-
 #! @Arguments PSh
 DeclareAttribute( "Source",
         IsPreSheafCategory );
