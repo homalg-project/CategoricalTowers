@@ -301,9 +301,6 @@ DeclareAttribute( "Parity",
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
 
-DeclareAttribute( "NerveTruncatedInDegree2Data",
-        IsCapCategory );
-
 #! @Description
 #!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure
 #!  with values in the skeletal category <C>SkeletalFinSets</C> of finite sets.

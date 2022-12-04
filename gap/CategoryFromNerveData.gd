@@ -39,40 +39,6 @@ DeclareCategory( "IsMorphismInCategoryFromNerveData",
 ####################################
 
 #! @Description
-#!  The nerve data used to create the category <A>C</A>.
-#! @Arguments C
-#! @Returns a pair of lists
-DeclareAttribute( "NerveData",
-        IsCategoryFromNerveData );
-
-CapJitAddTypeSignature( "NerveData", [ IsCategoryFromNerveData ],
-  function ( input_types )
-    local V;
-    
-    V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsNTuple,
-                       element_types :=
-                       [ CapJitDataTypeOfObjectOfCategory( V ),      # C0
-                         CapJitDataTypeOfObjectOfCategory( V ),      # C1
-                         CapJitDataTypeOfObjectOfCategory( V ) ] ),  # C2
-                  rec( filter := IsNTuple,
-                       element_types :=
-                       [ CapJitDataTypeOfMorphismOfCategory( V ),    # id
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # s
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # t
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # is
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # it
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # ps
-                         CapJitDataTypeOfMorphismOfCategory( V ),    # pt
-                         CapJitDataTypeOfMorphismOfCategory( V ) ] ) # mu
-                  ] );
-    
-end );
-
-#! @Description
 #!  The data tables of the category <A>C</A> create from nerve data.
 #! @Arguments C
 #! @Returns a pair of lists

@@ -39,3 +39,41 @@ CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsCapCategory ],
     
 end );
 
+#! @Section Tools for categories
+
+#! @Description
+#!  The nerve data of the finite category <A>C</A>.
+#! @Arguments C
+#! @Returns a pair of lists
+DeclareAttribute( "NerveTruncatedInDegree2Data",
+        IsCapCategory );
+
+CapJitAddTypeSignature( "NerveTruncatedInDegree2Data", [ IsCapCategory ],
+  function ( input_types )
+    local V;
+    
+    Assert( 0, IsFinite( input_types[1].category ) );
+    
+    V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsNTuple,
+                       element_types :=
+                       [ CapJitDataTypeOfObjectOfCategory( V ),      # C0
+                         CapJitDataTypeOfObjectOfCategory( V ),      # C1
+                         CapJitDataTypeOfObjectOfCategory( V ) ] ),  # C2
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ CapJitDataTypeOfMorphismOfCategory( V ),    # id
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # s
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # t
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # is
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # it
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # ps
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # pt
+                         CapJitDataTypeOfMorphismOfCategory( V ) ] ) # mu
+                  ] );
+    
+end );
+

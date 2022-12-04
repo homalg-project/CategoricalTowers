@@ -32,7 +32,7 @@ InstallMethod( CategoryFromNerveData,
     
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
-    SetNerveData( C, nerve_data );
+    SetNerveTruncatedInDegree2Data( C, nerve_data );
     
     ## s: C₁ → C₀
     s := nerve_data[2][2];
@@ -47,7 +47,7 @@ InstallMethod( CategoryFromNerveData,
            object_filter := IsObjectInCategoryFromNerveData and HasMapOfObject,
            morphism_filter := IsMorphismInCategoryFromNerveData and HasMapOfMorphism,
            category_attribute_names :=
-           [ "NerveData",
+           [ "NerveTruncatedInDegree2Data",
              ] );
     
     ##
@@ -93,7 +93,7 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        C0 := NerveData( C )[1][1];
+        C0 := NerveTruncatedInDegree2Data( C )[1][1];
         
         obj_map := ObjectDatum( C, obj );
         
@@ -110,7 +110,7 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        C1 := NerveData( C )[1][2];
+        C1 := NerveTruncatedInDegree2Data( C )[1][2];
         
         mor_map := MorphismDatum( C, mor );
         
@@ -160,7 +160,7 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        id := NerveData( C )[2][1];
+        id := NerveTruncatedInDegree2Data( C )[2][1];
         
         return MorphismConstructor( C,
                        obj,
@@ -176,8 +176,8 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        objs := NerveData( C )[1];
-        mors := NerveData( C )[2];
+        objs := NerveTruncatedInDegree2Data( C )[1];
+        mors := NerveTruncatedInDegree2Data( C )[2];
         
         ## C₂
         C2 := objs[3];
@@ -250,7 +250,7 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        mors := NerveData( C )[2];
+        mors := NerveTruncatedInDegree2Data( C )[2];
         
         s := mors[2];
         t := mors[3];
@@ -277,8 +277,8 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        objs := NerveData( C )[1];
-        mors := NerveData( C )[2];
+        objs := NerveTruncatedInDegree2Data( C )[1];
+        mors := NerveTruncatedInDegree2Data( C )[2];
         
         ## C₂
         C2 := objs[3];
@@ -406,7 +406,7 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        mors := NerveData( C )[2];
+        mors := NerveTruncatedInDegree2Data( C )[2];
         
         s := mors[2];
         t := mors[3];
@@ -435,7 +435,7 @@ InstallMethod( CategoryFromNerveData,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        mors := NerveData( C )[2];
+        mors := NerveTruncatedInDegree2Data( C )[2];
         
         s := mors[2];
         t := mors[3];
@@ -484,7 +484,7 @@ InstallMethod( CreateObject,
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    C0 := NerveData( C )[1][1];
+    C0 := NerveTruncatedInDegree2Data( C )[1][1];
     
     obj_map := MorphismConstructor( V,
                        DistinguishedObjectOfHomomorphismStructure( C ),
@@ -518,7 +518,7 @@ InstallMethod( CreateMorphism,
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    C1 := NerveData( C )[1][2];
+    C1 := NerveTruncatedInDegree2Data( C )[1][2];
     
     mor_map := MorphismConstructor( V,
                        DistinguishedObjectOfHomomorphismStructure( C ),
@@ -540,7 +540,7 @@ InstallMethod( CreateMorphism,
   function( C, m )
     local mors, s, t;
     
-    mors := NerveData( C )[2];
+    mors := NerveTruncatedInDegree2Data( C )[2];
     
     s := mors[2];
     t := mors[3];
@@ -583,7 +583,7 @@ InstallMethod( SetOfObjects,
         
   function( C )
     
-    return List( [ 0 .. Length( NerveData( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
+    return List( [ 0 .. Length( NerveTruncatedInDegree2Data( C )[1][1] ) - 1 ], i -> CreateObject( C, i ) );
     
 end );
 
@@ -612,16 +612,16 @@ InstallMethod( DataTablesOfCategory,
           introduction, introduction_data,
           elimination, elimination_data;
     
-    C0 := NerveData( C )[1][1];
-    C1 := NerveData( C )[1][2];
+    C0 := NerveTruncatedInDegree2Data( C )[1][1];
+    C1 := NerveTruncatedInDegree2Data( C )[1][2];
 
     V := CapCategory( C0 );
     T := DistinguishedObjectOfHomomorphismStructure( C );
     
-    s := NerveData( C )[2][2];
-    t := NerveData( C )[2][3];
+    s := NerveTruncatedInDegree2Data( C )[2][2];
+    t := NerveTruncatedInDegree2Data( C )[2][3];
     
-    identity_data := AsList( NerveData( C )[2][1] );
+    identity_data := AsList( NerveTruncatedInDegree2Data( C )[2][1] );
     
     precompose :=
       function( i, j )
