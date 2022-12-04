@@ -172,27 +172,30 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddPreCompose( C,
       function( C, mor_1, mor_2 )
-        local V, C2, s, t, ps, pt, mu, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2, mor_12;
+        local V, objs, mors, C2, s, t, ps, pt, mu, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2, mor_12;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
+        objs := NerveData( C )[1];
+        mors := NerveData( C )[2];
+        
         ## C₂
-        C2 := NerveData( C )[1][3];
+        C2 := objs[3];
         
         ## s: C₁ → C₀
-        s := NerveData( C )[2][2];
+        s := mors[2];
         
         ## t: C₁ → C₀
-        t := NerveData( C )[2][3];
+        t := mors[3];
         
         ## pₛ: C₂ → C₁
-        ps := NerveData( C )[2][6];
+        ps := mors[6];
         
         ## pₜ: C₂ → C₁
-        pt := NerveData( C )[2][7];
+        pt := mors[7];
         
         ## μ: C₂ → C₁
-        mu := NerveData( C )[2][8];
+        mu := mors[8];
         
         DC1xC1 := [ t, s ];
         
@@ -243,12 +246,14 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddHomomorphismStructureOnObjects( C,
       function( C, obj_1, obj_2 )
-        local V, s, t, Hom_o1_C, Hom_C_o2;
+        local V, mors, s, t, Hom_o1_C, Hom_C_o2;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        s := NerveData( C )[2][2];
-        t := NerveData( C )[2][3];
+        mors := NerveData( C )[2];
+        
+        s := mors[2];
+        t := mors[3];
         
         Hom_o1_C := ProjectionInFactorOfFiberProduct( V,
                             [ s, ObjectDatum( C, obj_1 ) ],
@@ -266,29 +271,32 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( C,
       function( C, source, phi_1, phi_2, range )
-        local V, C2, s, t, ps, pt, mu, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2,
+        local V, objs, mors, C2, s, t, ps, pt, mu, DC1xC1, C1xC1, C2_C1xC1, C1xC1_C2,
               DC3, C3, p12, p23, pss, ptt, mux1, mumu, Hom_r1_s2, Hom_s1_r2,
               phi_1xC2, C2xphi_2, iota;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
+        objs := NerveData( C )[1];
+        mors := NerveData( C )[2];
+        
         ## C₂
-        C2 := NerveData( C )[1][3];
+        C2 := objs[3];
         
         ## s: C₁ → C₀
-        s := NerveData( C )[2][2];
+        s := mors[2];
         
         ## t: C₁ → C₀
-        t := NerveData( C )[2][3];
+        t := mors[3];
         
         ## pₛ: C₂ → C₁
-        ps := NerveData( C )[2][6];
+        ps := mors[6];
         
         ## pₜ: C₂ → C₁
-        pt := NerveData( C )[2][7];
+        pt := mors[7];
         
         ## μ: C₂ → C₁
-        mu := NerveData( C )[2][8];
+        mu := mors[8];
         
         DC1xC1 := [ t, s ];
         
@@ -394,12 +402,14 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
       function( C, mor )
-        local V, s, t, Hom_o1_C, Hom_C_o2, Hom_o1_o2;
+        local V, mors, s, t, Hom_o1_C, Hom_C_o2, Hom_o1_o2;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        s := NerveData( C )[2][2];
-        t := NerveData( C )[2][3];
+        mors := NerveData( C )[2];
+        
+        s := mors[2];
+        t := mors[3];
         
         Hom_o1_C := ProjectionInFactorOfFiberProduct( V,
                             [ s, ObjectDatum( C, Source( mor ) ) ],
@@ -421,12 +431,14 @@ InstallMethod( CategoryFromNerveData,
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
       function( C, obj_1, obj_2, mor )
-        local V, s, t, Hom_o1_C, Hom_C_o2, Hom_o1_o2;
+        local V, mors, s, t, Hom_o1_C, Hom_C_o2, Hom_o1_o2;
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        s := NerveData( C )[2][2];
-        t := NerveData( C )[2][3];
+        mors := NerveData( C )[2];
+        
+        s := mors[2];
+        t := mors[3];
         
         Hom_o1_C := ProjectionInFactorOfFiberProduct( V,
                             [ s, ObjectDatum( C, obj_1 ) ],
@@ -526,12 +538,12 @@ InstallMethod( CreateMorphism,
         [ IsCategoryFromNerveData, IsInt ],
         
   function( C, m )
-    local nerve_data, s, t;
+    local mors, s, t;
     
-    nerve_data := NerveData( C );
+    mors := NerveData( C )[2];
     
-    s := nerve_data[2][2];
-    t := nerve_data[2][3];
+    s := mors[2];
+    t := mors[3];
     
     return CreateMorphism(
                    CreateObject( C, s( m ) ),
