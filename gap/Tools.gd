@@ -140,3 +140,11 @@ CapJitAddTypeSignature( "DataTablesOfCategory", [ IsCapCategory ],
                   ] );
     
 end );
+#! @Section Tools for categories
+
+#! @Description
+#!  The opposite category of a finite category <A>C</A>.
+#! @Arguments C
+#! @Returns a &CAP; category
+DeclareAttribute( "OppositeFiniteCategory",
+        IsCapCategory );
