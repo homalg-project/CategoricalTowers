@@ -191,7 +191,7 @@ InstallMethod( CategoryFromNerveData,
         ## pₜ: C₂ → C₁
         pt := NerveData( C )[2][7];
         
-        ## pₜ: C₂ → C₁
+        ## μ: C₂ → C₁
         mu := NerveData( C )[2][8];
         
         DC1xC1 := [ t, s ];
@@ -287,7 +287,7 @@ InstallMethod( CategoryFromNerveData,
         ## pₜ: C₂ → C₁
         pt := NerveData( C )[2][7];
         
-        ## pₜ: C₂ → C₁
+        ## μ: C₂ → C₁
         mu := NerveData( C )[2][8];
         
         DC1xC1 := [ t, s ];
