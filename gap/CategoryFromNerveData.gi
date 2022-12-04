@@ -599,6 +599,123 @@ InstallMethod( SetOfGeneratingMorphisms,
 end );
 
 ##
+InstallMethod( OppositeNerveData,
+        "for a list",
+        [ IsList ],
+        
+  function( nerve_data )
+    local objs, mors, C2, V,
+          id, s, t, is, it, ps, pt, mu,
+          DC1_sxt_C1, C1_sxt_C1, pi_s, pi_t, C2_C1_sxt_C1,
+          DC1_txs_C1, C1_txs_C1, C2_C1_txs_C1,
+          C1_sxt_C1_C1_txs_C1, C1_txs_C1_C2, mu_op;
+    
+    objs := nerve_data[1];
+    mors := nerve_data[2];
+    
+    C2 := objs[3];
+    
+    V := CapCategory( C2 );
+    
+    id := mors[1];
+    s := mors[2];
+    t := mors[3];
+    is := mors[4];
+    it := mors[5];
+    ps := mors[6];
+    pt := mors[7];
+    mu := mors[8];
+    
+    DC1_sxt_C1 := [ s, t ];
+    
+    ## C₁ ×ₛₜ C₁
+    C1_sxt_C1 := FiberProduct( V,
+                         DC1_sxt_C1 );
+    
+    ## C₂ → C₁ ×ₛₜ C₁
+    C2_C1_sxt_C1 := UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                            DC1_sxt_C1,
+                            C2,
+                            [ pt, ps ],
+                            C1_sxt_C1 );
+    
+    ## πₛ: C₁ ×ₛₜ C₁ → C₁
+    pi_s := ProjectionInFactorOfFiberProductWithGivenFiberProduct( V,
+                    DC1_sxt_C1,
+                    1,
+                    C1_sxt_C1 );
+    
+    ## πₜ: C₁ ×ₛₜ C₁ → C₁
+    pi_t := ProjectionInFactorOfFiberProductWithGivenFiberProduct( V,
+                    DC1_sxt_C1,
+                    2,
+                    C1_sxt_C1 );
+    
+    DC1_txs_C1 := [ t, s ];
+    
+    ## C₁ ×ₜₛ C₁
+    C1_txs_C1 := FiberProduct( V,
+                         DC1_txs_C1 );
+    
+    ## C₁ ×ₛₜ C₁ → C₁ ×ₜₛ C₁
+    C1_sxt_C1_C1_txs_C1 := UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                                   DC1_txs_C1,
+                                   C1_sxt_C1,
+                                   [ pi_t, pi_s ],
+                                   C1_txs_C1 );
+    
+    ## C₂ → C₁ ×ₜₛ C₁
+    C2_C1_txs_C1 := UniversalMorphismIntoFiberProductWithGivenFiberProduct( V,
+                            DC1_txs_C1,
+                            C2,
+                            [ ps, pt ],
+                            C1_txs_C1 );
+    
+    ## C₁ ×ₜₛ C₁ → C₂
+    C1_txs_C1_C2 := InverseForMorphisms( V,
+                            C2_C1_txs_C1 );
+    
+    ## C₂ → C₁ ×ₛₜ C₁ → C₁ ×ₜₛ C₁ → C₂ → C₁
+    mu_op := PreComposeList( V,
+                     [ C2_C1_sxt_C1,
+                       C1_sxt_C1_C1_txs_C1,
+                       C1_txs_C1_C2,
+                       mu ] );
+    
+    return Pair( objs,
+                 NTuple( 8,
+                         id,
+                         t,
+                         s,
+                         it,
+                         is,
+                         pt,
+                         ps,
+                         mu_op ) );
+    
+end );
+
+##
+InstallMethod( OppositeCategoryFromNerveData,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    local C_op;
+    
+    C_op := CategoryFromNerveData(
+                    Concatenation( "Opposite( ", Name( C ), " )" ),
+                    OppositeNerveData( NerveTruncatedInDegree2Data( C ) ),
+                    IndicesOfGeneratingMorphisms( C ),
+                    C!.labels );
+    
+    SetOppositeCategoryFromNerveData( C_op, C );
+    
+    return C_op;
+    
+end );
+
+##
 InstallMethod( DataTablesOfCategory,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],

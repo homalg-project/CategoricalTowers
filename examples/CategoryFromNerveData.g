@@ -103,5 +103,11 @@ Display( HomStructure( tau, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 2, 1, 2 ]→ { 0, 1, 2 }
 Display( HomStructure( idC1, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
+C_op := OppositeCategoryFromNerveData( C );
+#! Opposite(
+#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
+#! / [ s*id = C0, t*id = C0 ] )
+IsIdenticalObj( OppositeCategoryFromNerveData( C_op ), C );
+#! true
 #! @EndExample
 #! @EndChunk
