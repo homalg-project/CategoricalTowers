@@ -447,13 +447,13 @@ InstallMethodWithCache( FunctorCategory,
     elif IsCategoryFromNerveData( B ) or IsCategoryFromDataTables( B ) then
         B_op := Opposite( B : FinalizeCategory := true );
         defining_pair := DefiningPairOfUnderlyingQuiver( B );
-        defining_pair := [ defining_pair[1], List( defining_pair[2], a -> Pair( a[2], a[1] ) ) ];
+        defining_pair := Pair( defining_pair[1], List( defining_pair[2], a -> Pair( a[2], a[1] ) ) );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         B_op := Opposite( B : FinalizeCategory := true );
-        defining_pair := [ 0, [ ] ];
+        defining_pair := Pair( 0, [ ] );
     else
         Error( "the first argument must either be an IsFpCategory, an IsAlgebroid, an IsCategoryFromNerveData, an IsCategoryFromDataTables or an IsInitialCategory\n" );
     fi;
