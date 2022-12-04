@@ -39,68 +39,6 @@ DeclareCategory( "IsMorphismInCategoryFromDataTables",
 ####################################
 
 #! @Description
-#!  The data tables used to create the category <A>C</A>.
-#! @Arguments C
-#! @Returns a pair of lists
-DeclareAttribute( "DataTablesOfCategory",
-        IsCategoryFromDataTables );
-
-CapJitAddTypeSignature( "DataTablesOfCategory", [ IsCategoryFromDataTables ],
-  function ( input_types )
-    
-    return rec( filter := IsNTuple,
-                element_types :=
-                [ rec( filter := IsNTuple,
-                       element_types :=
-                       [ # C0
-                         rec( filter := IsInt ),
-                         # C1
-                         rec( filter := IsInt ) ] ),
-                  rec( filter := IsNTuple,
-                       element_types :=
-                       [ # identity
-                         rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         # s
-                         rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         # t
-                         rec( filter := IsList,
-                              element_type := rec( filter := IsInt ) ),
-                         # precompose
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type := rec( filter := IsInt ) ) ),
-                         # hom_on_objs
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type := rec( filter := IsInt ) ) ),
-                         # hom_on_mors
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type :=
-                                   rec( filter := IsList,
-                                        element_type := rec( filter := IsInt ) ) ) ),
-                         # introduction
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type := rec( filter := IsInt ) ) ),
-                         # elimination
-                         rec( filter := IsList,
-                              element_type :=
-                              rec( filter := IsList,
-                                   element_type :=
-                                   rec( filter := IsList,
-                                        element_type := rec( filter := IsInt ) ) ) ) ] )
-                  ] );
-    
-end );
-
-#! @Description
 #!  The finite set of objects of the category <A>C</A> created from data tables.
 #! @Arguments C
 #! @Returns a list
@@ -163,6 +101,13 @@ CapJitAddTypeSignature( "MapOfMorphism", [ IsMorphismInCategoryFromDataTables ],
     return CapJitDataTypeOfMorphismOfCategory( V );
     
 end );
+
+#! @Description
+#!  The opposite category of the category <A>C</A> defined by nerve data.
+#! @Arguments C
+#! @Returns a &CAP; category
+DeclareAttribute( "OppositeCategoryFromDataTables",
+        IsCategoryFromDataTables );
 
 ####################################
 #

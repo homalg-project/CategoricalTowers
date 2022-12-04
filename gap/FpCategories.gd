@@ -235,13 +235,6 @@ DeclareAttribute( "OppositeFpCategory",
 
 CapJitAddTypeSignature( "OppositeFpCategory", [ IsFpCategory ], IsFpCategory );
 
-#! @Description
-#!  The data tables of the category <A>C</A>, provided it is finite.
-#! @Arguments C
-#! @Returns a pair of lists
-DeclareAttribute( "DataTablesOfCategory",
-        IsFpCategory );
-
 DeclareAttribute( "Multiplication",
         IsMonoidAsCategory );
 
@@ -300,9 +293,6 @@ DeclareAttribute( "Parity",
 #! @Returns a &CAP; category
 DeclareOperation( "POW",
         [ IsFpCategory, IsInt ] );
-
-DeclareAttribute( "NerveTruncatedInDegree2Data",
-        IsCapCategory );
 
 #! @Description
 #!  The input is a finitely presented category <A>C</A> equipped with a homomorphism structure

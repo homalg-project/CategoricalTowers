@@ -19,3 +19,31 @@ InstallMethod( DefiningPairOfAQuiver,
                          List( Arrows( q ), m -> Pair( -1 + SafePosition( vertices, Source( m ) ), -1 + SafePosition( vertices, Range( m ) ) ) ) ) );
     
 end );
+
+##
+InstallMethod( OppositeFiniteCategory,
+        "for a finite category",
+        [ IsCapCategory and IsFinite ],
+        
+  function( C )
+    local C_op, defining_pair;
+    
+    C_op := Opposite( C );
+    
+    SetIsFinite( C_op, true );
+    
+    SetSetOfObjects( C_op,
+            List( SetOfObjects( C ), Opposite ) );
+    
+    SetSetOfGeneratingMorphisms( C_op,
+            List( SetOfGeneratingMorphisms( C ), Opposite ) );
+    
+    defining_pair := DefiningPairOfUnderlyingQuiver( C );
+    
+    defining_pair := Pair( defining_pair[1], List( defining_pair[2], a -> Pair( a[2], a[1] ) ) );
+    
+    SetDefiningPairOfUnderlyingQuiver( C_op, defining_pair );
+    
+    return C_op;
+    
+end );
