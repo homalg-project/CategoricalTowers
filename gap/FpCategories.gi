@@ -152,6 +152,26 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
     
 end );
 
+##
+InstallMethod( DataTablesOfCategory,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( C )
+    local N;
+    
+    N := NerveTruncatedInDegree2Data( C );
+    
+    return DataTablesOfCategory(
+                   CategoryFromNerveData(
+                           "CategoryFromNerveData",
+                           N,
+                           [ 0 .. Length( N[1][2] ) - 1 ],
+                           [ List( SetOfObjects( C ), Label ),
+                             List( SetOfGeneratingMorphisms( C ), Label ) ] ) );
+    
+end );
+
 ####################################
 #
 # methods for constructors:

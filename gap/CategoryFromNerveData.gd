@@ -72,8 +72,12 @@ CapJitAddTypeSignature( "NerveData", [ IsCategoryFromNerveData ],
     
 end );
 
+#! @Description
+#!  The data tables of the category <A>C</A> create from nerve data.
+#! @Arguments C
+#! @Returns a pair of lists
 DeclareAttribute( "DataTablesOfCategory",
-        IsCapCategory );
+        IsCategoryFromNerveData );
 
 #! @Description
 #!  The finite set of objects of the category <A>C</A> created from nerve data.
