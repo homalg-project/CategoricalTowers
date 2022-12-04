@@ -1048,15 +1048,19 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             A := PathAlgebra( A );
         fi;
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
-    elif IsCategoryFromNerveData( B ) or IsCategoryFromDataTables( B ) then
-        B_op := Opposite( B : FinalizeCategory := true );
+    elif IsCategoryFromNerveData( B ) then
+        B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
+    elif IsCategoryFromDataTables( B ) then
+        B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
+    elif HasIsFinite( B ) and IsFinite( B ) then
+        B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
         kq := UnderlyingQuiverAlgebra( B_op );
         relations := RelationsOfAlgebroid( B_op );
         relations := List( relations, UnderlyingQuiverAlgebraElement );
     else
-        Error( "the first argument must either be an IsFpCategory, an IsAlgebroid, an IsCategoryFromNerveData, an IsCategoryFromDataTables or an IsInitialCategory\n" );
+        Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
     fi;
     
     name := "PreSheaves( ";
