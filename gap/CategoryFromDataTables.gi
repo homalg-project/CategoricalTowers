@@ -410,6 +410,35 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
     
 end );
 
+##
+InstallMethod( OppositeCategoryFromDataTables,
+        "for a category from data tables",
+        [ IsCategoryFromDataTables ],
+        
+  function( C )
+    local C_from_nerve, Cop, C_op;
+    
+    C_from_nerve := CategoryFromNerveData(
+                            Name( C ),
+                            NerveTruncatedInDegree2Data( C ),
+                            IndicesOfGeneratingMorphisms( C ),
+                            C!.labels );
+    
+    Cop := OppositeCategoryFromNerveData( C_from_nerve );
+    
+    C_op := CategoryFromDataTables(
+                    Name( Cop ),
+                    RangeCategoryOfHomomorphismStructure( Cop ),
+                    DataTablesOfCategory( Cop ),
+                    IndicesOfGeneratingMorphisms( Cop ),
+                    Cop!.labels );
+    
+    SetOppositeCategoryFromDataTables( C_op, C );
+    
+    return C_op;
+    
+end );
+
 ####################################
 #
 # View, Print, and Display methods:

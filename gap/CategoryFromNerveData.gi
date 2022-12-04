@@ -705,6 +705,7 @@ InstallMethod( OppositeCategoryFromNerveData,
     
     C_op := CategoryFromNerveData(
                     Concatenation( "Opposite( ", Name( C ), " )" ),
+                    ## the following nerve data is not normalized, as it is not the result of general the method NerveTruncatedInDegree2Data:
                     OppositeNerveData( NerveTruncatedInDegree2Data( C ) ),
                     IndicesOfGeneratingMorphisms( C ),
                     C!.labels );
