@@ -235,13 +235,6 @@ DeclareAttribute( "OppositeFpCategory",
 
 CapJitAddTypeSignature( "OppositeFpCategory", [ IsFpCategory ], IsFpCategory );
 
-#! @Description
-#!  The data tables of the category <A>C</A>, provided it is finite.
-#! @Arguments C
-#! @Returns a pair of lists
-DeclareAttribute( "DataTablesOfCategory",
-        IsFpCategory );
-
 DeclareAttribute( "Multiplication",
         IsMonoidAsCategory );
 

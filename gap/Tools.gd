@@ -77,3 +77,66 @@ CapJitAddTypeSignature( "NerveTruncatedInDegree2Data", [ IsCapCategory ],
     
 end );
 
+#! @Description
+#!  The data tables of the category <A>C</A>, provided it is finite.
+#! @Arguments C
+#! @Returns a pair of lists
+DeclareAttribute( "DataTablesOfCategory",
+        IsCapCategory );
+
+CapJitAddTypeSignature( "DataTablesOfCategory", [ IsCapCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsFinite( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsNTuple,
+                       element_types :=
+                       [ # C0
+                         rec( filter := IsInt ),
+                         # C1
+                         rec( filter := IsInt ) ] ),
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ # identity
+                         rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
+                         # s
+                         rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
+                         # t
+                         rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
+                         # precompose
+                         rec( filter := IsList,
+                              element_type :=
+                              rec( filter := IsList,
+                                   element_type := rec( filter := IsInt ) ) ),
+                         # hom_on_objs
+                         rec( filter := IsList,
+                              element_type :=
+                              rec( filter := IsList,
+                                   element_type := rec( filter := IsInt ) ) ),
+                         # hom_on_mors
+                         rec( filter := IsList,
+                              element_type :=
+                              rec( filter := IsList,
+                                   element_type :=
+                                   rec( filter := IsList,
+                                        element_type := rec( filter := IsInt ) ) ) ),
+                         # introduction
+                         rec( filter := IsList,
+                              element_type :=
+                              rec( filter := IsList,
+                                   element_type := rec( filter := IsInt ) ) ),
+                         # elimination
+                         rec( filter := IsList,
+                              element_type :=
+                              rec( filter := IsList,
+                                   element_type :=
+                                   rec( filter := IsList,
+                                        element_type := rec( filter := IsInt ) ) ) ) ] )
+                  ] );
+    
+end );
