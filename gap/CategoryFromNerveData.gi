@@ -48,6 +48,8 @@ InstallMethod( CategoryFromNerveData,
            morphism_filter := IsMorphismInCategoryFromNerveData and HasMapOfMorphism,
            category_attribute_names :=
            [ "NerveTruncatedInDegree2Data",
+             "IndicesOfGeneratingMorphisms",
+             "DefiningPairOfUnderlyingQuiver",
              ] );
     
     ##
