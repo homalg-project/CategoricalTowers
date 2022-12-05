@@ -422,11 +422,11 @@ end
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1, arg4_1 )
+function ( cat_1, source_1, range_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1;
     deduped_19_1 := UnderlyingCategory( cat_1 );
-    deduped_18_1 := ObjectList( arg3_1 );
-    deduped_17_1 := ObjectList( arg2_1 );
+    deduped_18_1 := ObjectList( range_1 );
+    deduped_17_1 := ObjectList( source_1 );
     deduped_16_1 := Length( deduped_18_1 );
     deduped_15_1 := BasisPathsByVertexIndex( deduped_19_1 );
     deduped_14_1 := [ 1 .. Length( deduped_17_1 ) ];
@@ -439,7 +439,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
     hoisted_9_1 := List( deduped_17_1, function ( logic_new_func_x_2 )
             return VertexIndex( UnderlyingVertex( logic_new_func_x_2 ) );
         end );
-    hoisted_8_1 := CAP_JIT_INCOMPLETE_LOGIC( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( arg4_1 ) )[1] );
+    hoisted_8_1 := CAP_JIT_INCOMPLETE_LOGIC( EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( alpha_1 ) )[1] );
     hoisted_3_1 := List( deduped_15_1, function ( logic_new_func_list_2 )
             return List( logic_new_func_list_2, Length );
         end );
@@ -455,7 +455,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
     hoisted_5_1 := deduped_16_1;
     hoisted_4_1 := deduped_14_1;
     hoisted_1_1 := deduped_17_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, MorphismMatrix, List( deduped_14_1, function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MorphismMatrix, List( deduped_14_1, function ( i_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2;
               hoisted_3_2 := hoisted_1_1[i_2];
               hoisted_2_2 := hoisted_10_1[hoisted_9_1[i_2]];

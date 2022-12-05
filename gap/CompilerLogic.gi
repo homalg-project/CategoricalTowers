@@ -125,7 +125,7 @@ CapJitAddLogicTemplate(
                 else
                     return value;
                 fi;
-            end ) );
+            end ) )
         """,
         dst_template := """
             CAP_JIT_INTERNAL_EXPR_CASE(
@@ -155,7 +155,7 @@ CapJitAddLogicTemplate(
                 else
                     return value;
                 fi;
-            end ) );
+            end ) )
         """,
         dst_template := """
             CAP_JIT_INTERNAL_EXPR_CASE(
