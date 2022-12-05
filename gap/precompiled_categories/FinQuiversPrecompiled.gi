@@ -166,11 +166,11 @@ end
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1, arg4_1 )
+function ( cat_1, source_1, range_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, hoisted_34_1, hoisted_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1, deduped_43_1, deduped_44_1, deduped_45_1, deduped_46_1, deduped_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1;
-    deduped_57_1 := DefiningTripleOfQuiver( arg3_1 );
-    deduped_56_1 := DefiningTripleOfQuiver( arg2_1 );
-    deduped_55_1 := Length( Source( arg4_1 ) );
+    deduped_57_1 := DefiningTripleOfQuiver( range_1 );
+    deduped_56_1 := DefiningTripleOfQuiver( source_1 );
+    deduped_55_1 := Length( Source( alpha_1 ) );
     deduped_54_1 := deduped_57_1[3];
     deduped_53_1 := deduped_56_1[3];
     deduped_52_1 := deduped_57_1[2];
@@ -258,7 +258,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
     hoisted_30_1 := List( deduped_36_1, function ( i_2 )
             return REM_INT( QUO_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_3_1[1 + hoisted_21_1[(1 + i_2)]] ), hoisted_1_1 ), hoisted_15_1 );
         end );
-    hoisted_22_1 := AsList( arg4_1 );
+    hoisted_22_1 := AsList( alpha_1 );
     hoisted_32_1 := List( deduped_45_1, function ( i_2 )
             return hoisted_30_1[1 + hoisted_22_1[(1 + i_2)]];
         end );
@@ -285,7 +285,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
             deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_24_1[1 + logic_new_func_x_2] );
             return hoisted_28_1[1 + (hoisted_26_1[1 + REM_INT( deduped_1_2, hoisted_25_1 )] + REM_INT( QUO_INT( deduped_1_2, hoisted_25_1 ), hoisted_27_1 ) * hoisted_1_1)];
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( deduped_43_1, function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( deduped_43_1, function ( i_2 )
                 return hoisted_29_1[1 + i_2];
             end ), List( deduped_44_1, function ( i_2 )
                 return hoisted_35_1[1 + i_2];
