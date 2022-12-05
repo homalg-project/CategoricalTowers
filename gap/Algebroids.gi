@@ -1154,10 +1154,10 @@ InstallMethod( Algebroid,
              "BasisMorphismsByVertexIndex",
              "HomStructureOnBasisPaths",
              ],
-        category_filter := IsAlgebroid,
-        object_filter := IsObjectInAlgebroid,
-        morphism_filter := IsMorphismInAlgebroid,
-        precompiled_towers := [
+           category_filter := IsAlgebroid,
+           object_filter := IsObjectInAlgebroid,
+           morphism_filter := IsMorphismInAlgebroid,
+           precompiled_towers := [
             rec(
                 remaining_constructors_in_tower := [ "AdditiveClosure" ],
                 precompiled_functions_adder := ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled
