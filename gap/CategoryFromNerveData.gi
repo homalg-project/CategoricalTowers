@@ -745,7 +745,7 @@ InstallMethod( DataTablesOfCategory,
       function( i, j )
         
         if not t( i ) = s( j ) then
-            return fail;
+            return -1;
         fi;
         
         return MorphismDatum( C,
