@@ -183,7 +183,7 @@ InstallMethodForCompilerForCAP( CreateCoPreSheafByFunctions,
   function ( coPSh, copresheaf_on_objects, copresheaf_on_generating_morphisms )
     local defining_pair, nr_objs, mors, nr_mors, values_of_all_objects, values_of_all_generating_morphisms;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( coPSh );
+    defining_pair := DefiningPairOfUnderlyingQuiver( Source( coPSh ) );
     
     nr_objs := defining_pair[1];
     mors := defining_pair[2];
@@ -330,7 +330,7 @@ InstallOtherMethodForCompilerForCAP( CreateCoPreSheafMorphism,
   function ( coPSh, source, natural_transformation_on_objects, range )
     local nr_objs, source_values, range_values, values_on_all_objects;
     
-    nr_objs := DefiningPairOfUnderlyingQuiver( coPSh )[1];
+    nr_objs := DefiningPairOfUnderlyingQuiver( Source( coPSh ) )[1];
     
     source_values := ValuesOfCoPreSheaf( source )[1];
     range_values := ValuesOfCoPreSheaf( range )[1];
@@ -422,7 +422,7 @@ InstallMethodWithCache( CoPreSheaves,
   function( B, C )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
-          defining_pair, Hom, O,
+          Hom, O,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           coPSh, properties, name;
@@ -532,15 +532,12 @@ InstallMethodWithCache( CoPreSheaves,
     SetSetOfObjects( coPSh, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( coPSh, SetOfGeneratingMorphisms( B ) );
     
-    SetDefiningPairOfUnderlyingQuiver( coPSh, DefiningPairOfUnderlyingQuiver( Hom ) );
-    
     coPSh!.compiler_hints.category_attribute_names :=
       [ "ModelingCategory",
         "Source",
         "Range",
         "SetOfObjects",
         "SetOfGeneratingMorphisms",
-        "DefiningPairOfUnderlyingQuiver",
         ];
     
     Finalize( coPSh );

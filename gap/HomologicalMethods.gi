@@ -20,7 +20,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusionOfPreSheaf,
     
     vals_F := ValuesOfPreSheaf( F );
     
-    def_pair := DefiningPairOfUnderlyingQuiver( PSh );
+    def_pair := DefiningPairOfUnderlyingQuiver( Source( PSh ) );
     
     pos := List( [ 0 .. def_pair[1] - 1 ], i -> Positions( List( def_pair[2], r -> r[1] ), i ) );
     

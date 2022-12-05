@@ -9,7 +9,7 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
         RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
 
 # Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
+BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
         rec( args :=
              rec(
                  1 := rec(
@@ -75,7 +75,7 @@ BindGlobal( "DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
 #                       [ [ 0 ], [ 0 ], [ 1 ], [ 0 ] ],
 #                       [ [ [ 0 ], [ 1, 2 ] ],
 #                         [ [  ], [ 3 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "DataTablesOfCategoryOfQuivers",
+BindGlobal( "ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers",
 rec(
   args := rec(
       1 := rec(
@@ -470,7 +470,7 @@ rec(
 );
 
 # Display( ENHANCED_SYNTAX_TREE( x -> [ 1, 2 ] ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "IndicesOfGeneratingMorphismsOfCategoryOfQuivers",
+BindGlobal( "ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers",
 rec(
   list := rec(
       1 := rec(
@@ -581,11 +581,13 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                  : FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
-    
-    ModelingCategory( F_hat )!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningPairOfUnderlyingQuiver := { } -> DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers,
-           DataTablesOfCategory := { } -> DataTablesOfCategoryOfQuivers,
-           IndicesOfGeneratingMorphisms := { } -> IndicesOfGeneratingMorphismsOfCategoryOfQuivers );
+
+    ## specify the attributes the compiler should fully resolve during compilation
+    F!.compiler_hints.category_attribute_resolving_functions :=
+      rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers,
+           DataTablesOfCategory := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers,
+           IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
+           );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=

@@ -12,7 +12,7 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
     local defining_pair, nr_o, F_o, G_o, C, sources,
           mors, nr_m, F_m, G_m, mor_pair, morphisms, objects;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( PSh );
+    defining_pair := DefiningPairOfUnderlyingQuiver( Source( PSh ) );
     
     nr_o := defining_pair[1];
     
