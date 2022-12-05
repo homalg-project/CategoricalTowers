@@ -62,10 +62,10 @@ BindGlobal( "DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
 #                       [ 0, 3 ],
 #                       [ 0, 0, 0, 1 ],
 #                       [ 0, 1, 1, 1 ],
-#                       [ [ 0, 1, 2, fail ],
-#                         [ fail, fail, fail, 1 ],
-#                         [ fail, fail, fail, 2 ],
-#                         [ fail, fail, fail, 3 ] ],
+#                       [ [ 0, 1, 2, -1 ],
+#                         [ -1, -1, -1, 1 ],
+#                         [ -1, -1, -1, 2 ],
+#                         [ -1, -1, -1, 3 ] ],
 #                       [ [ 1, 2 ],
 #                         [ 0, 1 ] ],
 #                       [ [ [ 0 ], [ 0 ], [ 1 ], [ 0, 1 ] ],
@@ -156,22 +156,22 @@ rec(
                                   type := "EXPR_INT",
                                   value := 2 ),
                               4 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               length := 4,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
                       2 := rec(
                           list := rec(
                               1 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               2 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               3 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               4 := rec(
                                   type := "EXPR_INT",
                                   value := 1 ),
@@ -181,14 +181,14 @@ rec(
                       3 := rec(
                           list := rec(
                               1 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               2 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               3 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               4 := rec(
                                   type := "EXPR_INT",
                                   value := 2 ),
@@ -198,14 +198,14 @@ rec(
                       4 := rec(
                           list := rec(
                               1 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               2 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               3 := rec(
-                                  gvar := "fail",
-                                  type := "EXPR_REF_GVAR" ),
+                                  type := "EXPR_INT",
+                                  value := -1 ),
                               4 := rec(
                                   type := "EXPR_INT",
                                   value := 3 ),
