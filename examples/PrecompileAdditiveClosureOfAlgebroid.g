@@ -13,7 +13,7 @@ QQ := HomalgFieldOfRationals( );;
 snake_quiver := RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" );;
 A := PathAlgebra( QQ, snake_quiver );;
 
-ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 
 # only valid for the construction above
