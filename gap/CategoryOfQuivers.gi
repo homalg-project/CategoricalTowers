@@ -585,7 +585,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## specify the attributes the compiler should fully resolve during compilation
     F!.compiler_hints.category_attribute_resolving_functions :=
       rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers,
-           DataTablesOfCategory := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers,
+           DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers,
            IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
            );
     
