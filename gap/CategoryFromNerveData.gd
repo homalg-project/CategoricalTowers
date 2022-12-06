@@ -39,6 +39,44 @@ DeclareCategory( "IsMorphismInCategoryFromNerveData",
 ####################################
 
 #! @Description
+#!  The nerve data used to create the category <A>C</A>.
+#!  It might differ from the <Q>normalized</Q> output of
+#!  <C>NerveTruncatedInDegree2Data</C>( <A>C</A> ).
+#! @Arguments C
+#! @Returns a pair consisting of a triple and an 8-tuple
+DeclareAttribute( "NerveData",
+        IsCategoryFromNerveData );
+
+CapJitAddTypeSignature( "NerveData", [ IsCapCategory ],
+  function ( input_types )
+    local V;
+    
+    Assert( 0, IsFinite( input_types[1].category ) );
+    
+    V := RangeCategoryOfHomomorphismStructure( input_types[1].category );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsNTuple,
+                       element_types :=
+                       [ CapJitDataTypeOfObjectOfCategory( V ),      # C0
+                         CapJitDataTypeOfObjectOfCategory( V ),      # C1
+                         CapJitDataTypeOfObjectOfCategory( V ) ] ),  # C2
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ CapJitDataTypeOfMorphismOfCategory( V ),    # id
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # s
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # t
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # is
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # it
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # ps
+                         CapJitDataTypeOfMorphismOfCategory( V ),    # pt
+                         CapJitDataTypeOfMorphismOfCategory( V ) ] ) # mu
+                  ] );
+    
+end );
+
+#! @Description
 #!  The finite set of objects of the category <A>C</A> created from nerve data.
 #! @Arguments C
 #! @Returns a list

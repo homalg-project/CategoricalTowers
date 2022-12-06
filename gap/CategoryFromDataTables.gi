@@ -29,7 +29,7 @@ InstallMethod( CategoryFromDataTables,
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
     
-    SetDataTablesOfCategory( C, data_tables );
+    SetDataTables( C, data_tables );
     
     C0 := data_tables[1][1];
     
@@ -46,7 +46,7 @@ InstallMethod( CategoryFromDataTables,
            object_filter := IsObjectInCategoryFromDataTables and HasMapOfObject,
            morphism_filter := IsMorphismInCategoryFromDataTables and HasMapOfMorphism,
            category_attribute_names :=
-           [ "DataTablesOfCategory",
+           [ "DataTables",
              "IndicesOfGeneratingMorphisms",
              "DefiningPairOfUnderlyingQuiver",
              ] );
@@ -94,7 +94,7 @@ InstallMethod( CategoryFromDataTables,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        C0 := DataTablesOfCategory( C )[1][1];
+        C0 := DataTables( C )[1][1];
         
         obj_map := ObjectDatum( C, obj );
         
@@ -111,7 +111,7 @@ InstallMethod( CategoryFromDataTables,
         
         V := RangeCategoryOfHomomorphismStructure( C );
         
-        C1 := DataTablesOfCategory( C )[1][2];
+        C1 := DataTables( C )[1][2];
         
         mor_map := MorphismDatum( C, mor );
         
@@ -161,7 +161,7 @@ InstallMethod( CategoryFromDataTables,
         
         o := AsList( ObjectDatum( C, obj ) )[1 + 0];
         
-        return SetOfMorphisms( C )[1 + DataTablesOfCategory( C )[2][1][1 + o]];
+        return SetOfMorphisms( C )[1 + DataTables( C )[2][1][1 + o]];
         
     end );
     
@@ -173,7 +173,7 @@ InstallMethod( CategoryFromDataTables,
         m1 := AsList( MorphismDatum( C, mor_1 ) )[1 + 0];
         m2 := AsList( MorphismDatum( C, mor_2 ) )[1 + 0];
         
-        return SetOfMorphisms( C )[1 + DataTablesOfCategory( C )[2][4][1 + m1][1 + m2]];
+        return SetOfMorphisms( C )[1 + DataTables( C )[2][4][1 + m1][1 + m2]];
         
     end );
     
@@ -198,7 +198,7 @@ InstallMethod( CategoryFromDataTables,
         o2 := AsList( ObjectDatum( C, obj_2 ) )[1 + 0];
         
         return ObjectConstructor( V,
-                       DataTablesOfCategory( C )[2][5][1 + o1][1 + o2] );
+                       DataTables( C )[2][5][1 + o1][1 + o2] );
         
     end );
     
@@ -212,7 +212,7 @@ InstallMethod( CategoryFromDataTables,
         
         return MorphismConstructor( V,
                        source,
-                       DataTablesOfCategory( C )[2][6][1 + m1][1 + m2],
+                       DataTables( C )[2][6][1 + m1][1 + m2],
                        range );
         
     end );
@@ -226,7 +226,7 @@ InstallMethod( CategoryFromDataTables,
         
         return MorphismConstructor( V,
                        distinguished_object,
-                       DataTablesOfCategory( C )[2][7][1 + m],
+                       DataTables( C )[2][7][1 + m],
                        range );
         
     end );
@@ -241,7 +241,7 @@ InstallMethod( CategoryFromDataTables,
         
         m := AsList( mor )[1 + 0];
         
-        return SetOfMorphisms( C )[1 + DataTablesOfCategory( C )[2][8][1 + o1][1 + o2][1 + m]];
+        return SetOfMorphisms( C )[1 + DataTables( C )[2][8][1 + o1][1 + o2][1 + m]];
         
     end );
     
@@ -268,7 +268,7 @@ InstallMethodForCompilerForCAP( CreateObject,
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    C0 := DataTablesOfCategory( C )[1][1];
+    C0 := DataTables( C )[1][1];
     
     obj_map := MorphismConstructor( V,
                        TerminalObject( V ),
@@ -300,7 +300,7 @@ InstallOtherMethodForCompilerForCAP( CreateMorphism,
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    C1 := DataTablesOfCategory( C )[1][2];
+    C1 := DataTables( C )[1][2];
     
     mor_map := MorphismConstructor( V,
                        TerminalObject( V ),
@@ -333,7 +333,7 @@ InstallMethodForCompilerForCAP( CreateMorphism,
   function( C, m )
     local data_tables, s, t;
     
-    data_tables := DataTablesOfCategory( C );
+    data_tables := DataTables( C );
     
     s := data_tables[2][2];
     t := data_tables[2][3];
@@ -377,7 +377,7 @@ InstallMethodForCompilerForCAP( SetOfObjects,
   function( C )
     local C0;
     
-    C0 :=  DataTablesOfCategory( C )[1][1];
+    C0 :=  DataTables( C )[1][1];
     
     return List( [ 0 .. C0 - 1 ], i -> CreateObject( C, i ) );
     
@@ -391,7 +391,7 @@ InstallMethodForCompilerForCAP( SetOfMorphisms,
   function( C )
     local C1;
     
-    C1 := DataTablesOfCategory( C )[1][2];
+    C1 := DataTables( C )[1][2];
     
     return List( [ 0 .. C1 - 1 ], i -> CreateMorphism( C, i ) );
     
