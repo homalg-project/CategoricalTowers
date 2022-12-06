@@ -2,6 +2,8 @@
 
 #! @Example
 
+#! #@if ValueOption( "no_precompiled_code" ) <> true
+
 LoadPackage( "Algebroids", false );
 #! true
 LoadPackage( "CompilerForCAP", false );
@@ -44,29 +46,13 @@ AdditiveClosureOfAlgebroidOfFiniteDimensionalQuiverAlgebraOfRightQuiverOverField
 #! Additive closure( Algebroid( Q, FreeCategory( RightQuiver(
 #! "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) )
 
-#! @EndExample
-
-#! Check that the compiled code is loaded automatically
-#! for this, we use the name of the argument of `ZeroObject`:
-#! for non-compiled code it is "cat", while for compiled code it is "cat_1"
-
-#! @Example
-
-cat := AdditiveClosure( Algebroid( A, false ) );;
-argument_name := NamesLocalVariablesFunction(
-                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
-
-( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
-  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
+AdditiveClosure( Algebroid( A, false ) )!.precompiled_functions_added;
 #! true
 
-cat := AdditiveClosure( Algebroid( A, true ) );;
-argument_name := NamesLocalVariablesFunction(
-                         Last( cat!.added_functions.ZeroObject )[1] )[1];;
-
-( ValueOption( "no_precompiled_code" ) = true and argument_name = "cat" ) or
-  ( ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1" );
+AdditiveClosure( Algebroid( A, true ) )!.precompiled_functions_added;
 #! true
+
+#! #@fi
 
 #! @EndExample
 
