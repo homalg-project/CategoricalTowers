@@ -20,11 +20,10 @@ RelationsOfFpCategory( Delta2 );
 Size( Delta2 );
 #! 31
 Delta2_op := OppositeFiniteCategory( Delta2 );
-#! Opposite of
-#! FreeCategory( RightQuiver(
+#! Opposite( FreeCategory( RightQuiver(
 #!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
 #!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
+#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations )
 IsIdenticalObj( OppositeFiniteCategory( Delta2_op ), Delta2 );
 #! true
 #! @EndExample
