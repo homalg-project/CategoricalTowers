@@ -4,7 +4,7 @@
 
 #! @Example
 
-#! #@if ValueOption( "no_precompiled_code" ) = fail
+#! #@if ValueOption( "no_precompiled_code" ) <> true
 
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
