@@ -8,7 +8,8 @@ LoadPackage( "Toposes", false );
 #! true
 LoadPackage( "FinSetsForCAP", ">= 2021.12-09", false );
 #! true
-op := Opposite( SkeletalFinSets );;
+op := Opposite( SkeletalFinSets );
+#! Opposite( SkeletalFinSets )
 ListKnownCategoricalProperties( op );
 #! [ "IsBicartesianCategory", "IsBicartesianCoclosedCategory",
 #!   "IsCartesianCategory", "IsCocartesianCategory",

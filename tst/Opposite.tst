@@ -7,12 +7,12 @@ true
 gap> Length( ListInstalledOperationsOfCategory( SkeletalFinSets ) );
 277
 gap> BooleanAlgebras := Opposite( SkeletalFinSets );
-Opposite of SkeletalFinSets
+Opposite( SkeletalFinSets )
 gap> Length( ListInstalledOperationsOfCategory( BooleanAlgebras ) );
 247
 gap> Opposite( BooleanAlgebras );
 SkeletalFinSets
 gap> FS := Opposite( WrapperCategory( BooleanAlgebras, rec( ) ) );
-Opposite of WrapperCategory( Opposite of SkeletalFinSets )
+Opposite( WrapperCategory( Opposite( SkeletalFinSets ) ) )
 gap> Length( ListInstalledOperationsOfCategory( FS ) );
 247
