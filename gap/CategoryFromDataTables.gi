@@ -48,6 +48,7 @@ InstallMethod( CategoryFromDataTables,
            category_attribute_names :=
            [ "DataTablesOfCategory",
              "IndicesOfGeneratingMorphisms",
+             "DefiningPairOfUnderlyingQuiver",
              ] );
     
     ##
