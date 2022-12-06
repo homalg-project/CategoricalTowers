@@ -8,9 +8,9 @@ LoadPackage( "Algebroids", false );
 #! true
 LoadPackage( "CompilerForCAP", false );
 #! true
-ReadPackage( "Algebroids", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
-ReadPackage( "FinSetsForCAP", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );
 #! true
 
 free_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;
