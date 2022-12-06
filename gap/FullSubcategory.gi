@@ -269,6 +269,17 @@ InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
         
     end );
     
+    ##
+    AddIsWellDefinedForMorphisms( full,
+      function( cat, alpha )
+        
+        return IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( alpha ) ) and
+               IsWellDefinedForObjects( cat, Source( alpha ) ) and
+               IsWellDefinedForObjects( cat, Range( alpha ) );
+
+        
+    end );
+   
     Finalize( full );
     
     return full;
