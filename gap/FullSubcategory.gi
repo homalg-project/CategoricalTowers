@@ -205,6 +205,41 @@ InstallMethod( \[\],
 );
 
 ##
+InstallMethod( FullSubcategoryOfIndecomposableProjectiveObjects,
+          [ IsCapCategory ],
+  
+  function ( C )
+    local name;
+    
+    if not CanCompute( C, "IndecomposableProjectiveObjects" ) then
+      Error( "the operation 'IndecomposableProjectiveObjects' must be computable in the input category!\n" );
+    fi;
+    
+    name := Concatenation( "FullSubcategoryOfIndecomposableProjectiveObjects( ", Name( C ), " )" );
+    
+    return FullSubcategoryGeneratedByListOfObjects( IndecomposableProjectiveObjects( C ) : name_of_full_subcategory := name );
+    
+end );
+
+##
+InstallMethod( FullSubcategoryOfIndecomposableInjectiveObjects,
+          [ IsCapCategory ],
+  
+  function ( C )
+    local name;
+    
+    if not CanCompute( C, "IndecomposableInjectiveObjects" ) then
+      Error( "the operation 'IndecomposableInjectiveObjects' must be computable in the input category!\n" );
+    fi;
+    
+    name := Concatenation( "FullSubcategoryOfIndecomposableInjectiveObjects( ", Name( C ), " )" );
+    
+    return FullSubcategoryGeneratedByListOfObjects( IndecomposableInjectiveObjects( C ) : name_of_full_subcategory := name );
+    
+end );
+
+
+##
 InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
   function( C, membership_func )
     local name, full;
@@ -234,9 +269,46 @@ InstallGlobalFunction( FullSubcategoryByObjectMembershipFunction,
         
     end );
     
+    ##
+    AddIsWellDefinedForMorphisms( full,
+      function( cat, alpha )
+        
+        return IsWellDefinedForMorphisms( AmbientCategory( cat ), UnderlyingCell( alpha ) ) and
+               IsWellDefinedForObjects( cat, Source( alpha ) ) and
+               IsWellDefinedForObjects( cat, Range( alpha ) );
+
+        
+    end );
+   
     Finalize( full );
     
     return full;
+    
+end );
+
+##
+InstallMethod( FullSubcategoryOfProjectiveObjects,
+          [ IsCapCategory ],
+  
+  function ( C )
+    local name;
+    
+    name := Concatenation( "FullSubcategoryOfProjectiveObjects( ", Name( C ), " )" );
+    
+    return FullSubcategoryByObjectMembershipFunction( C, { cat, o } -> IsProjective( C, UnderlyingCell( o ) ) : name_of_full_subcategory := name );
+    
+end );
+
+##
+InstallMethod( FullSubcategoryOfInjectiveObjects,
+          [ IsCapCategory ],
+  
+  function ( C )
+    local name;
+    
+    name := Concatenation( "FullSubcategoryOfInjectiveObjects( ", Name( C ), " )" );
+    
+    return FullSubcategoryByObjectMembershipFunction( C, { cat, o } -> IsInjective( C, UnderlyingCell( o ) ) : name_of_full_subcategory := name );
     
 end );
 
