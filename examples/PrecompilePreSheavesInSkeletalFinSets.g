@@ -10,10 +10,10 @@ LoadPackage( "FunctorCategories", false );
 LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
 #! true
 
-ReadPackage( "FinSetsForCAP", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );
 #! true
 
-ReadPackage( "FunctorCategories", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
 free_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;
