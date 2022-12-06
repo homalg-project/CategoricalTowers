@@ -21,7 +21,7 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, DataTablesOfCategory( cat_1 )[2][6][1 + AsList( MapOfMorphism( alpha_1 ) )[1]][1 + AsList( MapOfMorphism( beta_1 ) )[1]] );
+    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, DataTables( cat_1 )[2][6][1 + AsList( MapOfMorphism( alpha_1 ) )[1]][1 + AsList( MapOfMorphism( beta_1 ) )[1]] );
 end
 ########
         
@@ -32,7 +32,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, DataTablesOfCategory( cat_1 )[2][5][1 + AsList( MapOfObject( arg2_1 ) )[1]][1 + AsList( MapOfObject( arg3_1 ) )[1]] );
+    return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, DataTables( cat_1 )[2][5][1 + AsList( MapOfObject( arg2_1 ) )[1]][1 + AsList( MapOfObject( arg3_1 ) )[1]] );
 end
 ########
         
@@ -44,7 +44,7 @@ end
 ########
 function ( cat_1, a_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
-    deduped_9_1 := DataTablesOfCategory( cat_1 );
+    deduped_9_1 := DataTables( cat_1 );
     deduped_8_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_7_1 := deduped_9_1[2];
     deduped_6_1 := deduped_9_1[1];
@@ -64,7 +64,7 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, DataTablesOfCategory( cat_1 )[2][7][1 + AsList( MapOfMorphism( alpha_1 ) )[1]] );
+    return CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, range_1, AsList, DataTables( cat_1 )[2][7][1 + AsList( MapOfMorphism( alpha_1 ) )[1]] );
 end
 ########
         
@@ -76,7 +76,7 @@ end
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
     local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := DataTablesOfCategory( cat_1 );
+    deduped_11_1 := DataTables( cat_1 );
     deduped_10_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_9_1 := deduped_11_1[2];
     deduped_8_1 := deduped_11_1[1];
@@ -150,7 +150,7 @@ function ( cat_1, arg2_1 )
                       return true;
                   fi;
                   return;
-              end )(  ) and deduped_2_1 = 1 and DataTablesOfCategory( cat_1 )[1][2] = deduped_3_1;
+              end )(  ) and deduped_2_1 = 1 and DataTables( cat_1 )[1][2] = deduped_3_1;
 end
 ########
         
@@ -182,7 +182,7 @@ function ( cat_1, arg2_1 )
                       return true;
                   fi;
                   return;
-              end )(  ) and deduped_2_1 = 1 and DataTablesOfCategory( cat_1 )[1][1] = deduped_3_1;
+              end )(  ) and deduped_2_1 = 1 and DataTables( cat_1 )[1][1] = deduped_3_1;
 end
 ########
         
@@ -238,7 +238,7 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := DataTablesOfCategory( cat_1 );
+    deduped_11_1 := DataTables( cat_1 );
     deduped_10_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_9_1 := deduped_11_1[2];
     deduped_8_1 := deduped_11_1[1];

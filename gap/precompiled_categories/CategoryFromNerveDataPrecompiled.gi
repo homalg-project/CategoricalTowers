@@ -24,7 +24,7 @@ function ( cat_1, arg2_1, arg3_1 )
     local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1;
     deduped_33_1 := MapOfObject( arg3_1 );
     deduped_32_1 := MapOfObject( arg2_1 );
-    deduped_31_1 := NerveTruncatedInDegree2Data( cat_1 )[2];
+    deduped_31_1 := NerveData( cat_1 )[2];
     deduped_30_1 := Length( Source( deduped_33_1 ) );
     deduped_29_1 := deduped_31_1[3];
     deduped_28_1 := Length( Source( deduped_32_1 ) );
@@ -77,7 +77,7 @@ function ( cat_1, a_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
     deduped_5_1 := MapOfObject( a_1 );
     deduped_4_1 := Source( deduped_5_1 );
-    deduped_3_1 := NerveTruncatedInDegree2Data( cat_1 )[2][1];
+    deduped_3_1 := NerveData( cat_1 )[2][1];
     hoisted_2_1 := AsList( deduped_3_1 );
     hoisted_1_1 := AsList( deduped_5_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, MapOfMorphism, CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), deduped_4_1, Range( deduped_3_1 ), AsList, List( [ 0 .. Length( deduped_4_1 ) - 1 ], function ( i_2 )
@@ -98,7 +98,7 @@ function ( cat_1, alpha_1 )
     deduped_40_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_39_1 := MapOfObject( Range( alpha_1 ) );
     deduped_38_1 := MapOfObject( Source( alpha_1 ) );
-    deduped_37_1 := NerveTruncatedInDegree2Data( cat_1 )[2];
+    deduped_37_1 := NerveData( cat_1 )[2];
     deduped_36_1 := Source( deduped_41_1 );
     deduped_35_1 := deduped_37_1[3];
     deduped_34_1 := deduped_37_1[2];
@@ -159,12 +159,12 @@ end
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1, arg4_1 )
+function ( cat_1, source_1, range_1, alpha_1 )
     local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1;
-    deduped_41_1 := MapOfObject( arg3_1 );
-    deduped_40_1 := MapOfObject( arg2_1 );
-    deduped_39_1 := Source( arg4_1 );
-    deduped_38_1 := NerveTruncatedInDegree2Data( cat_1 )[2];
+    deduped_41_1 := MapOfObject( range_1 );
+    deduped_40_1 := MapOfObject( source_1 );
+    deduped_39_1 := Source( alpha_1 );
+    deduped_38_1 := NerveData( cat_1 )[2];
     deduped_37_1 := Length( Source( deduped_41_1 ) );
     deduped_36_1 := deduped_38_1[3];
     deduped_35_1 := Length( Source( deduped_40_1 ) );
@@ -211,8 +211,8 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
     hoisted_22_1 := List( [ 0 .. Length( deduped_23_1 ) - 1 ], function ( logic_new_func_x_2 )
             return hoisted_14_1[1 + REM_INT( CAP_JIT_INCOMPLETE_LOGIC( hoisted_20_1[(1 + hoisted_19_1[(1 + logic_new_func_x_2)])] ), hoisted_13_1 )];
         end );
-    hoisted_21_1 := AsList( arg4_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, MapOfMorphism, CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), deduped_39_1, deduped_33_1, AsList, List( [ 0 .. Length( deduped_39_1 ) - 1 ], function ( i_2 )
+    hoisted_21_1 := AsList( alpha_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, MapOfMorphism, CreateCapCategoryMorphismWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), deduped_39_1, deduped_33_1, AsList, List( [ 0 .. Length( deduped_39_1 ) - 1 ], function ( i_2 )
                 return hoisted_22_1[1 + hoisted_21_1[(1 + i_2)]];
             end ) ) );
 end
@@ -279,7 +279,7 @@ function ( cat_1, arg2_1 )
                       return true;
                   fi;
                   return;
-              end )(  ) and deduped_2_1 = 1 and Length( NerveTruncatedInDegree2Data( cat_1 )[1][2] ) = deduped_3_1;
+              end )(  ) and deduped_2_1 = 1 and Length( NerveData( cat_1 )[1][2] ) = deduped_3_1;
 end
 ########
         
@@ -311,7 +311,7 @@ function ( cat_1, arg2_1 )
                       return true;
                   fi;
                   return;
-              end )(  ) and deduped_2_1 = 1 and Length( NerveTruncatedInDegree2Data( cat_1 )[1][1] ) = deduped_3_1;
+              end )(  ) and deduped_2_1 = 1 and Length( NerveData( cat_1 )[1][1] ) = deduped_3_1;
 end
 ########
         
@@ -367,7 +367,7 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1;
-    deduped_20_1 := NerveTruncatedInDegree2Data( cat_1 );
+    deduped_20_1 := NerveData( cat_1 );
     deduped_19_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     deduped_18_1 := deduped_20_1[2];
     deduped_17_1 := deduped_18_1[2];
