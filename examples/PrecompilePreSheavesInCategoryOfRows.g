@@ -52,6 +52,7 @@ precompile_PreSheavesInCategoryOfRows :=
                       "MonomorphismIntoInjectiveEnvelopeObject",
                       "IndecomposableProjectiveObjects",
                       "IndecomposableInjectiveObjects",
+                      "IsReflexive",
                       ] ) ); end;;
 
 precompile_PreSheavesInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );

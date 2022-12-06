@@ -392,7 +392,7 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
     H := Range( PSh );
     
     objs := SetOfObjects( B );
-    nr_objs := DefiningPairOfUnderlyingQuiver( PSh )[1];
+    nr_objs := DefiningPairOfUnderlyingQuiver( B )[1];
     
     O := IsbellLeftAdjointData( PSh, coPSh )[1];
     

@@ -87,6 +87,14 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ ],
+        src_template := "Sum( [ ] )",
+        dst_template := "0",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ ],
         src_template := "Product( [ ] )",
         dst_template := "1",
     )
@@ -97,6 +105,38 @@ CapJitAddLogicTemplate(
         variable_names := [ "entry" ],
         src_template := "Product( [ entry ] )",
         dst_template := "entry",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "Product( [ number, 1, 1, 1 ] )",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "Product( [ number, number, number ] )",
+        dst_template := "number ^ 3",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number1", "number2", "number3" ],
+        src_template := "Product( [ number1, number2, number3 ] )",
+        dst_template := "number1 * number2 * number3",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number1", "number2", "number3", "number4" ],
+        src_template := "Product( [ number1, number2, number3, number4 ] )",
+        dst_template := "number1 * number2 * number3 * number4",
     )
 );
 
@@ -121,6 +161,14 @@ CapJitAddLogicTemplate(
         variable_names := [ "value1", "value2" ],
         src_template := "Sum( [ value1, value2 ] )",
         dst_template := "value1 + value2",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "number ^ 0",
+        dst_template := "1",
     )
 );
 

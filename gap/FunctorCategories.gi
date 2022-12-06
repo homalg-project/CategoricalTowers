@@ -183,7 +183,7 @@ InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByFunctions,
   function ( Hom, functor_on_objects, functor_on_generating_morphisms )
     local defining_pair, nr_objs, mors, nr_mors, values_of_all_objects, values_of_all_generating_morphisms;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Hom );
+    defining_pair := DefiningPairOfUnderlyingQuiver( Source( Hom ) );
     
     nr_objs := defining_pair[1];
     mors := defining_pair[2];
@@ -330,7 +330,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategory,
   function ( Hom, source, natural_transformation_on_objects, range )
     local nr_objs, source_values, range_values, values_on_all_objects;
     
-    nr_objs := DefiningPairOfUnderlyingQuiver( Hom )[1];
+    nr_objs := DefiningPairOfUnderlyingQuiver( Source( Hom ) )[1];
     
     source_values := ValuesOfFunctor( source )[1];
     range_values := ValuesOfFunctor( range )[1];
@@ -443,22 +443,16 @@ InstallMethodWithCache( FunctorCategory,
     
     if IsFpCategory( B ) then
         B_op := OppositeFpCategory( B : FinalizeCategory := true );
-        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif IsCategoryFromNerveData( B ) then
         B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
-        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif IsCategoryFromDataTables( B ) then
         B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
-        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif HasIsFinite( B ) and IsFinite( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
-        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif IsAlgebroid( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
-        defining_pair := DefiningPairOfUnderlyingQuiver( B_op );
     elif HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         B_op := Opposite( B : FinalizeCategory := true );
-        defining_pair := Pair( 0, [ ] );
     else
         Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
     fi;
@@ -664,8 +658,6 @@ InstallMethodWithCache( FunctorCategory,
     SetSetOfObjects( Hom, SetOfObjects( B ) );
     SetSetOfGeneratingMorphisms( Hom, SetOfGeneratingMorphisms( B ) );
     
-    SetDefiningPairOfUnderlyingQuiver( Hom, defining_pair );
-    
     SetOppositeOfSource( Hom, B_op );
     
     Hom!.compiler_hints.category_attribute_names :=
@@ -675,7 +667,6 @@ InstallMethodWithCache( FunctorCategory,
         "SetOfObjects",
         "SetOfGeneratingMorphisms",
         "OppositeOfSource",
-        "DefiningPairOfUnderlyingQuiver",
         ];
     
     Finalize( Hom );
