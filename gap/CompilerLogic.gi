@@ -118,14 +118,6 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "number" ],
-        src_template := "Product( [ number, number, number ] )",
-        dst_template := "number ^ 3",
-    )
-);
-
-CapJitAddLogicTemplate(
-    rec(
         variable_names := [ "number1", "number2", "number3" ],
         src_template := "Product( [ number1, number2, number3 ] )",
         dst_template := "number1 * number2 * number3",
