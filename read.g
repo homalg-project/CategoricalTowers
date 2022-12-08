@@ -4,6 +4,7 @@
 # Reading the implementation part of the package.
 #
 
+ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinBouquetsPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinQuiversAsCCCPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesInSkeletalFinSetsPrecompiled.gi");
@@ -19,6 +20,7 @@ ReadPackage( "FunctorCategories", "gap/HomStructure.gi");
 ReadPackage( "FunctorCategories", "gap/FunctorCategories.gi");
 ReadPackage( "FunctorCategories", "gap/CoPreSheaves.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
+ReadPackage( "FunctorCategories", "gap/CategoryOfBouquets.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gi");

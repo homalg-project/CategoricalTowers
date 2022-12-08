@@ -27,6 +27,7 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{21AA}{\ensuremath{\!\!\hookrightarrow\!}}
                 \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
+                \DeclareUnicodeCharacter{21A6}{\ensuremath{\mapsto}}
             """,
         ),
     ),

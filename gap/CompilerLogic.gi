@@ -247,6 +247,14 @@ CapJitAddLogicTemplate(
 
 CapJitAddLogicTemplate(
     rec(
+        variable_names := [ "entry1", "entry2", "entry3" ],
+        src_template := "[ entry1, entry2, entry3 ]{[ 1, 2 ]}",
+        dst_template := "[ entry1, entry2 ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
         variable_names := [ "entry1", "entry2", "entry3", "entry4" ],
         src_template := "[ entry1, entry2, entry3, entry4 ]{[ 1, 2 ]}",
         dst_template := "[ entry1, entry2 ]",

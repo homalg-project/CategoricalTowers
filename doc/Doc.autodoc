@@ -52,6 +52,22 @@
 
 @Section &GAP; Categories
 
+@Chapter The elementary topos of finite bouquets
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk FinBouquets
+
 @Chapter The elementary topos of finite quivers
 
 @Section Constructors
