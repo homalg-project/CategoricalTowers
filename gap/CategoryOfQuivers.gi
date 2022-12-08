@@ -505,7 +505,7 @@ InstallMethod( CreateQuiver,
         [ IsCategoryOfQuivers, IsInt, IsList ],
         
   function ( category_of_quivers, n, arrows )
-    local arr, A, s, t;
+    local arr;
     
     if ForAll( arrows, IsInt ) then
         Assert( 0, IsEvenInt( Length( arrows ) ) );
