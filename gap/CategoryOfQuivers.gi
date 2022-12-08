@@ -501,7 +501,7 @@ end );
 
 ##
 InstallMethod( CreateQuiver,
-        "for a category of quivers, an integers, and a list of pairs of integers",
+        "for a category of quivers, an integer, and a list of pairs of integers",
         [ IsCategoryOfQuivers, IsInt, IsList ],
         
   function ( category_of_quivers, n, arrows )
@@ -716,7 +716,7 @@ BindGlobal( "FinQuivers",
 
 ##
 InstallMethod( CreateQuiver,
-        "for an integers, and a list of pairs of integers",
+        "for an integer, and a list of pairs of integers",
         [ IsInt, IsList ],
         
   function ( n, arrows )
