@@ -137,15 +137,18 @@ Display( P );
 #! An object in PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,
 #! a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) ) / relations, Rows( Q ) ) given by
 #! the above data
-IP := InjectiveCochainResolution( P, true );
-#! <An object in Cochain complexes( PreSheaves( Algebroid( Q, FreeCategory(
-#! RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
-#! / relations, Rows( Q ) ) ) with active lower bound 0 and active upper
-#! bound 1>
-IsWellDefined( IP ) and CohomologySupport( IP ) = [ 0 ];
+CP := CreateComplex( ComplexesCategoryByCochains( PSh ), P, 0 );
+#! <An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
+#! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
+#! / relations, Rows( Q ) ) ) supported in the window [0 ⋅⋅⋅ 0]>
+I_CP := InjectiveResolution( CP, true );
+#! <An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
+#! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
+#! / relations, Rows( Q ) ) ) supported in the window [0 ⋅⋅⋅ 1]>
+IsWellDefined( I_CP ) and CohomologySupport( I_CP ) = [ 0 ];
 #! true
-phi := QuasiIsomorphismFromProjectiveResolution( IP, true );;
-IsWellDefined( phi ) and IsQuasiIsomorphism( phi );
+q := QuasiIsomorphismFromProjectiveResolution( CP, true );;
+IsWellDefined( q ) and IsQuasiIsomorphism( q );
 #! true
 #! @EndExample
 #! @EndChunk
