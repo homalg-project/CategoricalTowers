@@ -147,7 +147,7 @@ ConcreteCategory:=function(arg)
             od;
         od;
         codomains:=SSortedList(codomains);
-        
+
         #Ensures domains/codomains of morphisms in provided objects list
         for dom in domains do
             included:=false;
@@ -175,7 +175,7 @@ ConcreteCategory:=function(arg)
         od;
 
         output.objects:=SSortedList(arg[2]);
-    
+
     elif Length(arg)=1 then
         ObjectsList(output);
     fi;
