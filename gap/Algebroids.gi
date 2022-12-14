@@ -31,8 +31,15 @@ InstallMethod( Dimension,
         [ IsAlgebroid ],
         
   function( A )
+    local kq;
     
-    return Dimension( UnderlyingQuiverAlgebra( A ) );
+    kq := UnderlyingQuiverAlgebra( A );
+    
+    if not IsFiniteDimensional( kq ) then
+        return infinity;
+    fi;
+    
+    return Dimension( kq );
     
 end );
 
