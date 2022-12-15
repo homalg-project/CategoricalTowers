@@ -14,7 +14,7 @@ InstallMethodWithCache( FiniteCompletion,
           finite_completion;
     
     ## building the categorical tower:
-    coPSh := CoPreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
+    coPSh := CoPreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
     
     finite_completion :=
       WrapperCategory( coPSh,

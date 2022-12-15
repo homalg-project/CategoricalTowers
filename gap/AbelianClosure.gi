@@ -13,7 +13,7 @@ InstallMethodWithCache( AbelianClosure,
     local L, A,
           abelian_closure;
     
-    L := FiniteCompletion( algebroid, range_category_of_hom_structure : FinalizeCategory := true );
+    L := FiniteCompletion( algebroid, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
     
     A := FreydCategory( L : FinalizeCategory := true );
     
