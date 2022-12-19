@@ -32,8 +32,13 @@ CatReps := FunctorCategory( A, GF3 );
 #! FunctorCategory( Algebroid( GF(3), FreeCategory(
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) )
-InfoOfInstalledOperationsOfCategory( CatReps );
-#! 96 primitive operations were used to derive 317 operations for this category
+Display( CatReps );
+#! A CAP category with name
+#! FunctorCategory( Algebroid( GF(3), FreeCategory(
+#! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
+#! Category of matrices over GF(3) ):
+#! 
+#! 96 primitive operations were used to derive 323 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
