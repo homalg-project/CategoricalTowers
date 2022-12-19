@@ -17,7 +17,7 @@ C := CategoryFromDataTables( Name( Delta1 ),
 NerveTruncatedInDegree2Data( Delta1 ) = NerveTruncatedInDegree2Data( C );
 #! true
 InfoOfInstalledOperationsOfCategory( C );
-#! 16 primitive operations were used to derive 36 operations for this category
+#! 16 primitive operations were used to derive 50 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 C0 := CreateObject( C, 0 );
