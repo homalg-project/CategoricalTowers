@@ -49,7 +49,6 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/FinSetsForCAP.git
           git clone --depth 1 https://github.com/homalg-project/SubcategoriesForCAP.git
           git clone --depth 1 https://github.com/homalg-project/CatReps.git
-          git clone --depth 1 https://github.com/homalg-project/FreydCategoriesForCAP.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
@@ -63,7 +62,6 @@ jobs:
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
           [ -d "Toposes" ] && make -C "Toposes" doc
           make -C Algebroids -j $(nproc) --output-sync ci-test
-          make -C FreydCategoriesForCAP -j $(nproc) --output-sync ci-test
           make -C FunctorCategories -j $(nproc) --output-sync ci-test
           make -C CatReps -j $(nproc) --output-sync ci-test
           cd Algebroids
