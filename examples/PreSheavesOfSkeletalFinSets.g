@@ -5,8 +5,11 @@ LoadPackage( "FunctorCategories" );
 #! @Example
 PSh := PreSheaves( SkeletalFinSets, SkeletalFinSets );
 #! PreSheaves( SkeletalFinSets, SkeletalFinSets )
-InfoOfInstalledOperationsOfCategory( PSh );
-#! 45 primitive operations were used to derive 152 operations for this category which algorithmically
+Display( PSh );
+#! A CAP category with name PreSheaves( SkeletalFinSets, SkeletalFinSets ):
+#! 
+#! 45 primitive operations were used to derive 152 operations for this category
+#! which algorithmically
 #! * IsFiniteCocompleteCategory
 #! * IsFiniteCompleteCategory
 #! * IsDistributiveCategory
