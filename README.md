@@ -57,7 +57,7 @@ The supported categorical doctrine of the category of representations is
 * (possibly incomplete) direct sum decomposition.
 
 ```gap
-gap> InfoOfInstalledOperationsOfCategory( CatReps );
+gap> Display( CatReps );
 95 primitive operations were used to derive 316 operations for this category
 which constructively
 * IsEquippedWithHomomorphismStructure
