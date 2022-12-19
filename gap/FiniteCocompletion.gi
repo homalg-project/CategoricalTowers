@@ -14,7 +14,7 @@ InstallMethodWithCache( FiniteCocompletion,
           finite_cocompletion;
     
     ## building the categorical tower:
-    PSh := PreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true );
+    PSh := PreSheaves( fp_category, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
     
     ##
     finite_cocompletion :=

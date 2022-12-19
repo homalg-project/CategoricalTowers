@@ -928,7 +928,8 @@ BindGlobal( "PreSheavesInSkeletalFinSetsPrecompiled", function ( quiver )
         
         function ( quiver )
     local sFinSets;
-    sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true );
+    sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true,
+        overhead := true );
     return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets,
           FinalizeCategory := true ), sFinSets );
 end;
