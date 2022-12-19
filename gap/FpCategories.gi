@@ -15,9 +15,16 @@ InstallMethod( Size,
         "for a f.p. category",
         [ IsFpCategory ],
         
-  function( A )
+  function( B )
+    local kq;
     
-    return Dimension( UnderlyingQuiverAlgebra( A ) );
+    kq := UnderlyingQuiverAlgebra( B );
+    
+    if not IsFiniteDimensional( kq ) then
+        return infinity;
+    fi;
+    
+    return Dimension( kq );
     
 end );
 
