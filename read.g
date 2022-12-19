@@ -4,6 +4,11 @@
 # Reading the implementation part of the package.
 #
 
+# temporary hack: use QuiverRows in FreydCategoriesForCAP until it is dropped
+if NumberArgumentsFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS ) = -1 then
+    ReadPackage( "Algebroids", "gap/QuiverRows.gi" );
+fi;
+
 ReadPackage( "Algebroids", "gap/precompiled_categories/CategoryFromNerveDataPrecompiled.gi" );
 ReadPackage( "Algebroids", "gap/precompiled_categories/CategoryFromNerveDataHomStructureOnMorphismsPrecompiled.gi" );
 
