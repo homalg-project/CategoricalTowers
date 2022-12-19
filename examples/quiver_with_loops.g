@@ -140,11 +140,11 @@ Display( P );
 CP := CreateComplex( ComplexesCategoryByCochains( PSh ), P, 0 );
 #! <An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
 #! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
-#! / relations, Rows( Q ) ) ) supported in the window [0 ⋅⋅⋅ 0]>
+#! / relations, Rows( Q ) ) ) supported on the interval [ 0 .. 0 ]>
 I_CP := InjectiveResolution( CP, true );
 #! <An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
 #! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
-#! / relations, Rows( Q ) ) ) supported in the window [0 ⋅⋅⋅ 1]>
+#! / relations, Rows( Q ) ) ) supported on the interval [ 0 .. 1 ]>
 IsWellDefined( I_CP ) and CohomologySupport( I_CP ) = [ 0 ];
 #! true
 q := QuasiIsomorphismFromProjectiveResolution( CP, true );;
