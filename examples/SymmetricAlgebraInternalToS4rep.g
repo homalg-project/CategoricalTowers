@@ -1,13 +1,16 @@
 #! @Chunk SymmetricAlgebraInternalToS4rep
 
-LoadPackage( "InternalModules" : OnlyNeeded );
-
 #! @Example
+LoadPackage( "InternalModules" : OnlyNeeded );
+#! true
 srepG := RepresentationCategory( SymmetricGroup( 4 ) );
 #! The representation category of SymmetricGroup( [ 1 .. 4 ] )
-InfoOfInstalledOperationsOfCategory( srepG );
-#! 46 primitive operations were used to derive 254 operations for
-#! this category which algorithmically
+Display( srepG );
+#! A CAP category with name The representation category
+#! of SymmetricGroup( [ 1 .. 4 ] ):
+#! 
+#! 46 primitive operations were used to derive 260 operations for this category
+#! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsAbelianCategory
 #! * IsRigidSymmetricClosedMonoidalCategory
