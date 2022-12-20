@@ -5,8 +5,10 @@ LoadPackage( "FiniteCocompletion" );
 #! true
 T := FiniteProductCompletion( InitialCategory( ) );
 #! FiniteProductCompletion( InitialCategory( ) )
-InfoOfInstalledOperationsOfCategory( T );
-#! 91 primitive operations were used to derive 420 operations for this category
+Display( T );
+#! A CAP category with name FiniteProductCompletion( InitialCategory( ) ):
+#! 
+#! 91 primitive operations were used to derive 422 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts

@@ -7,8 +7,10 @@ T := PreSheaves( InitialCategory( ) );
 #! PreSheaves( InitialCategory( ), InitialCategory( ) )
 IsTerminalCategory( T );
 #! true
-InfoOfInstalledOperationsOfCategory( T );
-#! 93 primitive operations were used to derive 451 operations for this category
+Display( T );
+#! A CAP category with name PreSheaves( InitialCategory( ), InitialCategory( ) ):
+#! 
+#! 93 primitive operations were used to derive 453 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
