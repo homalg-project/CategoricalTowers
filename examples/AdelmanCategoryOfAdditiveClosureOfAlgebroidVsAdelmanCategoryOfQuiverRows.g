@@ -11,7 +11,7 @@ LoadPackage( "FreydCategoriesForCAP", false );
 LoadPackage( "Algebroids", false );
 #! true
 
-ReadPackageOnce( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );
+ReadPackageOnce( "Algebroids", "examples/SubobjectLatticeFunctions.g" );
 #! true
 
 quiver := RightQuiver( "Q(5)[a:1->2,b:2->3,c:1->4,d:4->5]" );;

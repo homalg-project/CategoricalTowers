@@ -11,7 +11,6 @@ LoadPackage( "Algebroids", false );
 ReadPackage( "Algebroids", "examples/SubobjectLatticeFunctions.g" );
 #! true
 
-ReadPackage( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );;
 quiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:1->4]" );;
 QQ := HomalgFieldOfRationals();;
 B := PathAlgebra( QQ, quiver );;
