@@ -4,10 +4,7 @@
 # Reading the declaration part of the package.
 #
 
-# temporary hack: use QuiverRows in FreydCategoriesForCAP until it is dropped
-if not IsBoundGlobal( "IsQuiverRowsCategory" ) then
-    ReadPackage( "Algebroids", "gap/QuiverRows.gd" );
-fi;
+ReadPackage( "Algebroids", "gap/QuiverRows.gd" );
 
 ReadPackage( "Algebroids", "gap/FpCategories.gd");
 ReadPackage( "Algebroids", "gap/Algebroids.gd");
