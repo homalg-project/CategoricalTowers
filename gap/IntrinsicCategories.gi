@@ -1288,7 +1288,7 @@ InstallMethod( IntrinsicCategory,
         commutative_ring := fail;
     fi;
     
-    properties := Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST );
+    properties := Set( Filtered( Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ), x -> x <> fail ) );
     
     ## we cannot guarantee skeletality
     properties := Difference( properties, [ fail, "IsSkeletalCategory" ] );
