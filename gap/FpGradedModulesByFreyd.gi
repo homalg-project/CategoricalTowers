@@ -29,7 +29,7 @@ end );
 
 BindGlobal( "FP_GRADED_MODULES",
   function( P, left )
-    local graded_ring, B, weights, Freyd;
+    local graded_ring, B, weights, Freyd, object_constructor, modeling_tower_object_constructor, object_datum, modeling_tower_object_datum, morphism_constructor, modeling_tower_morphism_constructor, morphism_datum, modeling_tower_morphism_datum, category_filter, category_object_filter, category_morphism_filter, wrapper;
     
     graded_ring := UnderlyingGradedRing( P );
     
@@ -50,33 +50,99 @@ BindGlobal( "FP_GRADED_MODULES",
     
     Freyd := FREYD_CATEGORY( P : FinalizeCategory := false );
     
-    if left then
-        
-        SetFilterObj( Freyd, IsFpGradedLeftModules );
-        
-        AddObjectRepresentation( Freyd, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedLeftModulesObject );
-        
-        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedLeftModulesMorphism );
-        
-    else
-         
-        SetFilterObj( Freyd, IsFpGradedRightModules );
-        
-        AddObjectRepresentation( Freyd, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedRightModulesObject );
-        
-        AddMorphismRepresentation( Freyd, IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedRightModulesMorphism );
-        
-    fi;
-    
     INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_FREYD_CATEGORY( Freyd );
     
-    Finalize( Freyd );
+    Finalize( Freyd : FinalizeCategory := true );
     
-    if HasRangeCategoryOfHomomorphismStructure( Freyd ) then
-        Finalize( RangeCategoryOfHomomorphismStructure( Freyd ) );
+    object_constructor := function ( cat, relation_morphism )
+        
+        return CreateCapCategoryObjectWithAttributes( cat, RelationMorphism, relation_morphism );
+        
+    end;
+    
+    modeling_tower_object_constructor := function ( cat, relation_morphism )
+        
+        return CreateCapCategoryObjectWithAttributes( ModelingCategory( cat ), RelationMorphism, relation_morphism );
+        
+    end;
+    
+    object_datum := function ( cat, object )
+        
+        return RelationMorphism( object );
+        
+    end;
+    
+    modeling_tower_object_datum := function ( cat, object )
+        
+        return RelationMorphism( object );
+        
+    end;
+    
+    morphism_constructor := function ( cat, source, underlying_morphism, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( cat, source, range, UnderlyingMorphism, underlying_morphism );
+        
+    end;
+    
+    modeling_tower_morphism_constructor := function ( cat, source, underlying_morphism, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( ModelingCategory( cat ), source, range, UnderlyingMorphism, underlying_morphism );
+        
+    end;
+    
+    morphism_datum := function ( cat, morphism )
+        
+        return UnderlyingMorphism( morphism );
+        
+    end;
+    
+    modeling_tower_morphism_datum := function ( cat, morphism )
+        
+        return UnderlyingMorphism( morphism );
+        
+    end;
+    
+    if left then
+        
+        category_filter := IsFreydCategory and IsFpGradedLeftModules;
+        
+        category_object_filter := IsFreydCategoryObject and HasRelationMorphism and IsFpGradedLeftModulesObject;
+        
+        category_morphism_filter := IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedLeftModulesMorphism;
+        
+    else
+        
+        category_filter := IsFreydCategory and IsFpGradedRightModules;
+        
+        category_object_filter := IsFreydCategoryObject and HasRelationMorphism and IsFpGradedRightModulesObject;
+        
+        category_morphism_filter := IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedRightModulesMorphism;
+        
     fi;
     
-    return Freyd;
+    wrapper := WrapperCategory( Freyd, rec(
+        name := Name( Freyd ),
+        category_filter := category_filter,
+        category_object_filter := category_object_filter,
+        category_morphism_filter := category_morphism_filter,
+        object_constructor := object_constructor,
+        object_datum := object_datum,
+        morphism_constructor := morphism_constructor,
+        morphism_datum := morphism_datum,
+        modeling_tower_object_constructor := modeling_tower_object_constructor,
+        modeling_tower_object_datum := modeling_tower_object_datum,
+        modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
+        modeling_tower_morphism_datum := modeling_tower_morphism_datum,
+        # enforce defaults
+        only_primitive_operations := false,
+        wrap_range_of_hom_structure := false,
+    ) : FinalizeCategory := false );
+    
+    SetUnderlyingCategory( wrapper, P );
+    
+    Finalize( wrapper );
+    
+    return wrapper;
     
 end );
 
