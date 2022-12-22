@@ -393,19 +393,20 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
-            return ## a constructor for universal objects: FiberProduct
+            return ## a constructor for universal objects: Equalizer
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
+                local C, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
+                object := i_arg[2];
                 etas := i_arg[3];
                 
-                presheaf_on_objects := objB -> operation_name( C, List( etas, eta -> FunctionOfPreSheafMorphism( eta )( objB ) ) );
+                presheaf_on_objects := objB -> operation_name( C, PairOfFunctionsOfPreSheaf( object )[1]( objB ), List( etas, eta -> FunctionOfPreSheafMorphism( eta )( objB ) ) );
                 
                 presheaf_on_morphisms :=
                   function ( new_source, morB, new_range )
@@ -1225,19 +1226,20 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
-            return ## a constructor for universal objects: FiberProduct
+            return ## a constructor for universal objects: Equalizer
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
+                local C, i_arg, object, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
+                object := i_arg[2];
                 etas := i_arg[3];
                 
-                presheaf_on_objects := objB_index -> operation_name( C, List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
+                presheaf_on_objects := objB_index -> operation_name( C, ValuesOfPreSheaf( object )[1][objB_index], List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
                 
                 mors := DefiningPairOfUnderlyingQuiver( Source( cat ) )[2];
                 
