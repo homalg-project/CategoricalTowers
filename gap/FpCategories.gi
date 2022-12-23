@@ -160,6 +160,39 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
 end );
 
 ##
+InstallMethod( RelationsOfFpCategoryData,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( C )
+    local relations, objs, mors, func;
+    
+    relations := RelationsOfFpCategory( C );
+    
+    if IsEmpty( relations ) then
+        return [ ];
+    fi;
+    
+    Assert( 0, IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( C ) ) );
+    
+    objs := List( SetOfObjects( C ), UnderlyingVertex );
+    
+    mors := List( SetOfGeneratingMorphisms( C ), p -> BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( p ) ) );
+    
+    func :=
+      function( path )
+        if IsQuiverVertex( path ) then
+            return [ ];
+        fi;
+        
+        return List( ArrowList( path ), g -> 1 + SafePosition( mors, g ) );
+    end;
+    
+    return List( relations, pair -> Pair( func( pair[1] ), func( pair[2] ) ) );
+    
+end );
+
+##
 InstallMethod( DataTablesOfCategory,
         "for a f.p. category",
         [ IsFpCategory ],

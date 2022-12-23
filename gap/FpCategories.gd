@@ -226,6 +226,9 @@ DeclareOperation( "AssignSetOfGeneratingMorphisms",
 DeclareAttribute( "RelationsOfFpCategory",
         IsFpCategory );
 
+DeclareAttribute( "RelationsOfFpCategoryData",
+        IsFpCategory );
+
 #! @Description
 #!  The finitely presented category defined by the opposite of the underlying quiver with relations.
 #! @Arguments C
