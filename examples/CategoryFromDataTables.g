@@ -9,7 +9,7 @@ Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 C := CategoryFromDataTables( Name( Delta1 ),
              RangeCategoryOfHomomorphismStructure( Delta1 ),
              DataTablesOfCategory( Delta1 ),
-             [ 1, 2, 3 ],
+             IndicesOfGeneratingMorphisms( Delta1 ),
              [ [ "C0", "C1" ],
                [ "id", "s", "t" ] ] );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )

@@ -210,6 +210,9 @@ DeclareOperation( "SetOfGeneratingMorphisms",
 DeclareOperation( "SetOfGeneratingMorphisms",
         [ IsFpCategory, IsInt, IsInt ] );
 
+DeclareAttribute( "IndicesOfGeneratingMorphisms",
+        IsFpCategory );
+
 #! @Description
 #!  Assigns the generating morphisms of the finitely presented category <A>C</A> to global variables.
 #!  Names of the variables are the concatenation of <A>label</A> with the names of the defining arrows.

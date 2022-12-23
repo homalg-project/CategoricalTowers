@@ -11,7 +11,7 @@ N1[1];
 #! [ |2|, |7|, |26| ]
 C := CategoryFromNerveData( Name( Delta1 ),
              N1,
-             [ 1, 2, 3 ],
+             IndicesOfGeneratingMorphisms( Delta1 ),
              [ [ "C0", "C1" ],
                [ "id", "s", "t" ] ] );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
