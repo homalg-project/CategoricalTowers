@@ -391,15 +391,8 @@ InstallMethod( BasisPathOfPathAlgebraBasisElement,
         [ IsQuotientOfPathAlgebraElement ],
         
   function( basis_element )
-    local representative, paths;
     
-    representative := Representative( basis_element );
-    
-    paths := Paths( representative );
-    
-    Assert( 0, Length( paths ) = 1 and Coefficients( representative ) = [ 1 ] );
-    
-    return paths[1];
+    return BasisPathOfPathAlgebraBasisElement( Representative( basis_element ) );
     
 end );
 
