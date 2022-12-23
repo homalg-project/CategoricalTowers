@@ -167,12 +167,16 @@ DeclareAttribute( "OppositeCategoryFromNerveData",
 ####################################
 
 #! @Description
-#!  Construct a category with name <A>str</A> from the given <A>nerve_data</A>.
+#!  Construct a category with name <A>str</A> from the given <A>nerve_data</A> (of a f.p. category <A>C</A>).
 #! @Arguments str, nerve_data, indices_of_generating_morphisms, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromNerveData",
         [ IsString, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromNerveData
+
+#! @Arguments C
+DeclareAttribute( "CategoryFromNerveData",
+        IsFpCategory );
 
 #! @Description
 #!  Construct the <A>o</A>-th object in the category <A>C</A> created from nerve data.

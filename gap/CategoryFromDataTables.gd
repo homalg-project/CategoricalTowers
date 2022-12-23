@@ -182,12 +182,16 @@ DeclareAttribute( "OppositeCategoryFromDataTables",
 ####################################
 
 #! @Description
-#!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A>.
+#!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A> (of a f.p. category <A>C</A>).
 #! @Arguments str, V, data_tables, indices_of_generating_morphisms, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromDataTables",
         [ IsString, IsCapCategory, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromDataTables
+
+#! @Arguments C
+DeclareAttribute( "CategoryFromDataTables",
+        IsFpCategory );
 
 #! @Description
 #!  Construct the <A>o</A>-th object in the category <A>C</A> created from data tables.

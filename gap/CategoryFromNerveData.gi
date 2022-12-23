@@ -477,6 +477,21 @@ InstallMethod( CategoryFromNerveData,
 end );
 
 ##
+InstallMethod( CategoryFromNerveData,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( C )
+    
+    return CategoryFromNerveData( Name( C ),
+                   NerveTruncatedInDegree2Data( C ),
+                   IndicesOfGeneratingMorphisms( C ),
+                   [ List( SetOfObjects( C ), Label ),
+                     List( SetOfGeneratingMorphisms( C ), Label ) ] );
+    
+end );
+
+##
 InstallMethod( CreateObject,
         "for a category from nerve data and an integer",
         [ IsCategoryFromNerveData, IsInt ],
