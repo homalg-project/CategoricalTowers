@@ -1600,12 +1600,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         AddIsWellDefinedForMorphisms( PSh,
           function ( PSh, eta )
-            local C, S, T;
+            local C, F, G;
             
             C := Range( PSh );
             
-            S := Source( eta );
-            T := Range( eta );
+            F := Source( eta );
+            G := Range( eta );
             
             return
               ForAll( objects, o -> IsWellDefinedForMorphisms( C, eta( o ) ) ) and
@@ -1617,11 +1617,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
               ForAll( generating_morphisms,
                       function ( m )
                          return
-                           IsEqualForObjects( C, Range( S( m ) ), Source( eta( Source( m ) ) ) ) and
-                           IsEqualForObjects( C, Range( eta( Range( m ) ) ), Source( T( m ) ) ) and
+                           IsEqualForObjects( C, Range( F( m ) ), Source( eta( Source( m ) ) ) ) and
+                           IsEqualForObjects( C, Range( eta( Range( m ) ) ), Source( G( m ) ) ) and
                            IsEqualForMorphisms( C,
-                                   PreCompose( C, S( m ), eta( Source( m ) ) ),
-                                   PreCompose( C, eta( Range( m ) ), T( m ) ) );
+                                   PreCompose( C, F( m ), eta( Source( m ) ) ),
+                                   PreCompose( C, eta( Range( m ) ), G( m ) ) );
                      end );
             
           end );
