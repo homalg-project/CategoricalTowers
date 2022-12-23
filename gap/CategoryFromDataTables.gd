@@ -129,6 +129,23 @@ CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromDataTabl
     
 end );
 
+DeclareAttribute( "RelationsAmongGeneratingMorphisms",
+        IsCategoryFromDataTables );
+
+CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromDataTables ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type :=
+                rec( filter := IsNTuple,
+                     element_types := [
+                             rec( filter := IsList,
+                                  element_type := rec( filter := IsInt ) ),
+                             rec( filter := IsList,
+                                  element_type := rec( filter := IsInt ) ) ] ) );
+    
+end );
+
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from data tables.
 #! @Arguments C
@@ -183,10 +200,10 @@ DeclareAttribute( "OppositeCategoryFromDataTables",
 
 #! @Description
 #!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A> (of a f.p. category <A>C</A>).
-#! @Arguments str, V, data_tables, indices_of_generating_morphisms, labels
+#! @Arguments str, V, data_tables, indices_of_generating_morphisms, relations, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromDataTables",
-        [ IsString, IsCapCategory, IsList, IsList, IsList ] );
+        [ IsString, IsCapCategory, IsList, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromDataTables
 
 #! @Arguments C

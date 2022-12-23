@@ -13,11 +13,9 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );
 #! true
 
-free_category_of_quiver := { quiver, sFinSets } -> FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true );;
-
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] ); end;;
+    local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true ); return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
 
 given_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromNerveDataHomStructureOnMorphismsPrecompiled";;
@@ -32,9 +30,9 @@ CapJitPrecompileCategoryAndCompareResult(
 );;
 
 CategoryFromNerveDataHomStructureOnMorphismsPrecompiled( given_arguments[1] );
-#! CategoryFromNerveData
+#! FreeCategory( RightQuiver( "q(a,b)[m:a->b]" ) )
 
-CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( given_arguments[1] ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] )!.precompiled_functions_added;
+CategoryFromNerveData( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;
 #! true
 
 #! #@fi

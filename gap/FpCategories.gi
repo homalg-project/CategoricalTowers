@@ -239,17 +239,16 @@ InstallMethod( DataTablesOfCategory,
         [ IsFpCategory ],
         
   function( C )
-    local N;
-    
-    N := NerveTruncatedInDegree2Data( C );
     
     return DataTablesOfCategory(
                    CategoryFromNerveData(
-                           "CategoryFromNerveData",
-                           N,
-                           [ 0 .. Length( N[1][2] ) - 1 ],
+                           Name( C ),
+                           NerveTruncatedInDegree2Data( C ),
+                           IndicesOfGeneratingMorphisms( C ),
+                           RelationsAmongGeneratingMorphisms( C ),
                            [ List( SetOfObjects( C ), Label ),
-                             List( SetOfGeneratingMorphisms( C ), Label ) ] ) );
+                             List( SetOfGeneratingMorphisms( C ), Label ) ]
+                           : FinalizeCategory := true ) );
     
 end );
 

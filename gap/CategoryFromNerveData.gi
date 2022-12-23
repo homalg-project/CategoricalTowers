@@ -6,10 +6,10 @@
 
 ##
 InstallMethod( CategoryFromNerveData,
-        "for a string and a list",
-        [ IsString, IsList, IsList, IsList ],
+        "for a string and four lists",
+        [ IsString, IsList, IsList, IsList, IsList ],
         
-  function( name, nerve_data, indices_of_generating_morphisms, labels )
+  function( name, nerve_data, indices_of_generating_morphisms, relations, labels )
     local C, C0, V, s, t;
     
     C := CreateCapCategory( name,
@@ -21,6 +21,7 @@ InstallMethod( CategoryFromNerveData,
     C!.category_as_first_argument := true;
     
     SetIndicesOfGeneratingMorphisms( C, indices_of_generating_morphisms );
+    SetRelationsAmongGeneratingMorphisms( C, relations );
     
     C!.labels := labels;
     
@@ -49,6 +50,7 @@ InstallMethod( CategoryFromNerveData,
            category_attribute_names :=
            [ "NerveData",
              "IndicesOfGeneratingMorphisms",
+             "RelationsAmongGeneratingMorphisms",
              "DefiningPairOfUnderlyingQuiver",
              ] );
     
@@ -486,6 +488,7 @@ InstallMethod( CategoryFromNerveData,
     return CategoryFromNerveData( Name( C ),
                    NerveTruncatedInDegree2Data( C ),
                    IndicesOfGeneratingMorphisms( C ),
+                   RelationsAmongGeneratingMorphisms( C ),
                    [ List( SetOfObjects( C ), Label ),
                      List( SetOfGeneratingMorphisms( C ), Label ) ] );
     
@@ -725,6 +728,8 @@ InstallMethod( OppositeCategoryFromNerveData,
                    ## the following nerve data is not "normalized", as it is not the result of the method NerveTruncatedInDegree2Data:
                    OppositeNerveData( NerveData( C ) ),
                    IndicesOfGeneratingMorphisms( C ),
+                   List( RelationsAmongGeneratingMorphisms( C ),
+                         pair -> Pair( Reversed( pair[1] ), Reversed( pair[2] ) ) ),
                    C!.labels );
     
     ## now construct the "normalized" opposite category
@@ -733,6 +738,7 @@ InstallMethod( OppositeCategoryFromNerveData,
                     ## now the "normalized" data tables
                     NerveTruncatedInDegree2Data( Cop ),
                     IndicesOfGeneratingMorphisms( Cop ),
+                    RelationsAmongGeneratingMorphisms( Cop ),
                     Cop!.labels );
     
     SetOppositeCategoryFromNerveData( C_op, C );
