@@ -259,6 +259,22 @@ InstallMethod( CategoryFromDataTables,
 end );
 
 ##
+InstallMethod( CategoryFromDataTables,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( C )
+    
+    return CategoryFromDataTables( Name( C ),
+                   RangeCategoryOfHomomorphismStructure( C ),
+                   DataTablesOfCategory( C ),
+                   IndicesOfGeneratingMorphisms( C ),
+                   [ List( SetOfObjects( C ), Label ),
+                     List( SetOfGeneratingMorphisms( C ), Label ) ] );
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( CreateObject,
         "for a category from data tables and an integer",
         [ IsCategoryFromDataTables, IsInt ],

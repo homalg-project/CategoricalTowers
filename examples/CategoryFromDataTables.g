@@ -6,17 +6,16 @@ LoadPackage( "Algebroids" );
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
-C := CategoryFromDataTables( Name( Delta1 ),
-             RangeCategoryOfHomomorphismStructure( Delta1 ),
-             DataTablesOfCategory( Delta1 ),
-             [ 1, 2, 3 ],
-             [ [ "C0", "C1" ],
-               [ "id", "s", "t" ] ] );
+C := CategoryFromDataTables( Delta1 );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
 NerveTruncatedInDegree2Data( Delta1 ) = NerveTruncatedInDegree2Data( C );
 #! true
-InfoOfInstalledOperationsOfCategory( C );
+Display( C );
+#! A CAP category with name
+#! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
+#! / [ s*id = C0, t*id = C0 ]:
+#! 
 #! 16 primitive operations were used to derive 50 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
