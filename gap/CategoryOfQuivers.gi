@@ -572,16 +572,10 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
-    F := CategoryFromDataTables( Name( F ),
-                 category_of_skeletal_finsets,
-                 DataTablesOfCategory( F : FinalizeCategory := true ), ## this command creates CategoryFromNerveData in the background, hence the option
-                 [ 1, 2 ], # indices_of_generating_morphisms
-                 [ List( SetOfObjects( F ), Label ),
-                   List( SetOfGeneratingMorphisms( F ), Label ) ]
-                 : FinalizeCategory := true );
+    F := CategoryFromDataTables( F : FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
-
+    
     ## specify the attributes the compiler should fully resolve during compilation
     F!.compiler_hints.category_attribute_resolving_functions :=
       rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers,
