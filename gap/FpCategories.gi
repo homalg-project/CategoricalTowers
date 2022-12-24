@@ -160,7 +160,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( RelationsOfFpCategoryData,
+InstallMethod( RelationsAmongGeneratingMorphisms,
         "for a f.p. category",
         [ IsFpCategory ],
         
@@ -185,7 +185,7 @@ InstallMethod( RelationsOfFpCategoryData,
             return [ ];
         fi;
         
-        return List( ArrowList( path ), g -> 1 + SafePosition( mors, g ) );
+        return List( ArrowList( path ), g -> -1 + SafePosition( mors, g ) );
     end;
     
     return List( relations, pair -> Pair( func( pair[1] ), func( pair[2] ) ) );
@@ -239,17 +239,16 @@ InstallMethod( DataTablesOfCategory,
         [ IsFpCategory ],
         
   function( C )
-    local N;
-    
-    N := NerveTruncatedInDegree2Data( C );
     
     return DataTablesOfCategory(
                    CategoryFromNerveData(
-                           "CategoryFromNerveData",
-                           N,
-                           [ 0 .. Length( N[1][2] ) - 1 ],
+                           Name( C ),
+                           NerveTruncatedInDegree2Data( C ),
+                           IndicesOfGeneratingMorphisms( C ),
+                           RelationsAmongGeneratingMorphisms( C ),
                            [ List( SetOfObjects( C ), Label ),
-                             List( SetOfGeneratingMorphisms( C ), Label ) ] ) );
+                             List( SetOfGeneratingMorphisms( C ), Label ) ]
+                           : FinalizeCategory := true ) );
     
 end );
 

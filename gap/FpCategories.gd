@@ -229,7 +229,7 @@ DeclareOperation( "AssignSetOfGeneratingMorphisms",
 DeclareAttribute( "RelationsOfFpCategory",
         IsFpCategory );
 
-DeclareAttribute( "RelationsOfFpCategoryData",
+DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsFpCategory );
 
 #! @Description

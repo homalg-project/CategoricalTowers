@@ -273,8 +273,8 @@ BindGlobal( "CategoryFromDataTablesPrecompiled", function ( quiver )
         function ( quiver )
     local sFinSets;
     sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true );
-    return CategoryFromDataTables( "CategoryFromDataTables", sFinSets, DataTablesOfCategory( FreeCategory( quiver : range_of_HomStructure := sFinSets,
-            FinalizeCategory := true ) : FinalizeCategory := true ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );
+    return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets,
+          FinalizeCategory := true ) );
 end;
         
         

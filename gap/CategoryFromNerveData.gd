@@ -102,6 +102,23 @@ CapJitAddTypeSignature( "IndicesOfGeneratingMorphisms", [ IsCategoryFromNerveDat
     
 end );
 
+DeclareAttribute( "RelationsAmongGeneratingMorphisms",
+        IsCategoryFromNerveData );
+
+CapJitAddTypeSignature( "RelationsAmongGeneratingMorphisms", [ IsCategoryFromNerveData ],
+  function ( input_types )
+    
+    return rec( filter := IsList,
+                element_type :=
+                rec( filter := IsNTuple,
+                     element_types := [
+                             rec( filter := IsList,
+                                  element_type := rec( filter := IsInt ) ),
+                             rec( filter := IsList,
+                                  element_type := rec( filter := IsInt ) ) ] ) );
+    
+end );
+
 #! @Description
 #!  The finite set of morphisms generating the category <A>C</A> created from nerve data.
 #! @Arguments C
@@ -168,10 +185,10 @@ DeclareAttribute( "OppositeCategoryFromNerveData",
 
 #! @Description
 #!  Construct a category with name <A>str</A> from the given <A>nerve_data</A> (of a f.p. category <A>C</A>).
-#! @Arguments str, nerve_data, indices_of_generating_morphisms, labels
+#! @Arguments str, nerve_data, indices_of_generating_morphisms, relations, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromNerveData",
-        [ IsString, IsList, IsList, IsList ] );
+        [ IsString, IsList, IsList, IsList, IsList ] );
 #! @InsertChunk CategoryFromNerveData
 
 #! @Arguments C

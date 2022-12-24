@@ -6,10 +6,10 @@
 
 ##
 InstallMethod( CategoryFromDataTables,
-        "for a string, a category, and three lists",
-        [ IsString, IsCapCategory, IsList, IsList, IsList ],
+        "for a string, a category, and four lists",
+        [ IsString, IsCapCategory, IsList, IsList, IsList, IsList ],
         
-  function( name, V, data_tables, indices_of_generating_morphisms, labels )
+  function( name, V, data_tables, indices_of_generating_morphisms, relations, labels )
     local C, C0, C1, s, t;
     
     C := CreateCapCategory( name,
@@ -21,6 +21,7 @@ InstallMethod( CategoryFromDataTables,
     C!.category_as_first_argument := true;
     
     SetIndicesOfGeneratingMorphisms( C, indices_of_generating_morphisms );
+    SetRelationsAmongGeneratingMorphisms( C, relations );
     
     C!.labels := labels;
     
@@ -48,6 +49,7 @@ InstallMethod( CategoryFromDataTables,
            category_attribute_names :=
            [ "DataTables",
              "IndicesOfGeneratingMorphisms",
+             "RelationsAmongGeneratingMorphisms",
              "DefiningPairOfUnderlyingQuiver",
              ] );
     
@@ -269,6 +271,7 @@ InstallMethod( CategoryFromDataTables,
                    RangeCategoryOfHomomorphismStructure( C ),
                    DataTablesOfCategory( C ),
                    IndicesOfGeneratingMorphisms( C ),
+                   RelationsAmongGeneratingMorphisms( C ),
                    [ List( SetOfObjects( C ), Label ),
                      List( SetOfGeneratingMorphisms( C ), Label ) ] );
     
@@ -439,6 +442,7 @@ InstallMethod( OppositeCategoryFromDataTables,
                             Name( C ),
                             NerveTruncatedInDegree2Data( C ),
                             IndicesOfGeneratingMorphisms( C ),
+                            RelationsAmongGeneratingMorphisms( C ),
                             C!.labels );
     
     Cop := OppositeCategoryFromNerveData( C_from_nerve );
@@ -448,6 +452,7 @@ InstallMethod( OppositeCategoryFromDataTables,
                     RangeCategoryOfHomomorphismStructure( Cop ),
                     DataTablesOfCategory( Cop ),
                     IndicesOfGeneratingMorphisms( Cop ),
+                    RelationsAmongGeneratingMorphisms( Cop ),
                     Cop!.labels );
     
     SetOppositeCategoryFromDataTables( C_op, C );

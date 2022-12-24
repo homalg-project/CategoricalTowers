@@ -173,8 +173,8 @@ BindGlobal( "CategoryFromNerveDataHomStructureOnMorphismsPrecompiled", function 
         function ( quiver )
     local sFinSets;
     sFinSets := CategoryOfSkeletalFinSets(  : FinalizeCategory := true );
-    return CategoryFromNerveData( "CategoryFromNerveData", NerveTruncatedInDegree2Data( FreeCategory( quiver : range_of_HomStructure := sFinSets,
-            FinalizeCategory := true ) ), [ 0 ], [ [ "a", "b" ], [ "m" ] ] );
+    return CategoryFromNerveData( FreeCategory( quiver : range_of_HomStructure := sFinSets,
+          FinalizeCategory := true ) );
 end;
         
         
