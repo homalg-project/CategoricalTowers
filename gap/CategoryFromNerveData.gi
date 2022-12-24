@@ -495,6 +495,17 @@ InstallMethod( CategoryFromNerveData,
 end );
 
 ##
+InstallMethod( Size,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return Length( NerveData( C )[1][2] );
+    
+end );
+
+##
 InstallMethod( CreateObject,
         "for a category from nerve data and an integer",
         [ IsCategoryFromNerveData, IsInt ],

@@ -153,6 +153,13 @@ end );
 DeclareAttribute( "SetOfGeneratingMorphisms",
         IsCategoryFromDataTables );
 
+#! @Description
+#!  The number of morphisms in the category <A>C</A> created from data tables.
+#! @Arguments C
+#! @Returns a nonnegative integer
+DeclareAttribute( "Size",
+        IsCategoryFromDataTables );
+
 ##
 DeclareAttribute( "MapOfObject",
         IsObjectInCategoryFromDataTables );

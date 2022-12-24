@@ -6,13 +6,14 @@ LoadPackage( "Algebroids" );
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
-N1 := NerveTruncatedInDegree2Data( Delta1 );;
-N1[1];
-#! [ |2|, |7|, |26| ]
+Size( Delta1 );
+#! 7
 C := CategoryFromNerveData( Delta1 );
 #! FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) )
 #! / [ s*id = C0, t*id = C0 ]
-NerveTruncatedInDegree2Data( C ) = N1;
+Size( C );
+#! 7
+NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );
 #! true
 Display( C );
 #! A CAP category with name
