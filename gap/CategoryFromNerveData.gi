@@ -495,6 +495,22 @@ InstallMethod( CategoryFromNerveData,
 end );
 
 ##
+InstallOtherMethod( CategoryFromNerveData,
+        "for a category from data tables",
+        [ IsCategoryFromDataTables ],
+        
+  function( C )
+    
+    return CategoryFromNerveData(
+                   Name( C ),
+                   NerveTruncatedInDegree2Data( C ),
+                   IndicesOfGeneratingMorphisms( C ),
+                   RelationsAmongGeneratingMorphisms( C ),
+                   C!.labels );
+    
+end );
+
+##
 InstallMethod( Size,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
