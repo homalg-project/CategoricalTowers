@@ -1674,6 +1674,53 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                   
               end );
               
+          elif IsCategoryFromNerveData( B ) or
+            IsCategoryFromDataTables( B ) then
+              
+              AddIsWellDefinedForObjects( PSh,
+                function ( PSh, F )
+                  local V, objects, generating_morphisms, relations, on_mors, is_equal;
+                  
+                  V := Range( PSh );
+                  
+                  objects := SetOfObjects( B );
+                  generating_morphisms := SetOfGeneratingMorphisms( B );
+                  
+                  if not ForAll( objects, o -> IsWellDefinedForObjects( V, F( o ) ) ) then
+                      return false;
+                  elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( V, F( m ) ) ) then
+                      return false;
+                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Range( m ) ), Source( F( m ) ) ) ) then
+                      return false;
+                  elif not ForAll( generating_morphisms, m -> IsEqualForObjects( V, F( Source( m ) ), Range( F( m ) ) ) ) then
+                      return false;
+                  fi;
+                  
+                  relations := RelationsAmongGeneratingMorphisms( B );
+                  
+                  on_mors := ValuesOfPreSheaf( F )[2];
+                  
+                  is_equal :=
+                    function( pair )
+                      
+                      if IsEmpty( pair[1] ) and IsEmpty( pair[2] ) then
+                          Error( "both lists in the relation are empty\n" );
+                      elif IsEmpty( pair[2] ) then
+                          return IsOne( PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
+                      elif IsEmpty( pair[1] ) then
+                          return IsOne( PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                      fi;
+                      
+                      return IsCongruentForMorphisms( V,
+                                     PreComposeList( V, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
+                                     PreComposeList( V, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                      
+                  end;
+                  
+                  return ForAll( relations, is_equal );
+                  
+              end );
+              
         fi;
         
         AddIsEqualForObjects( PSh,
@@ -3229,6 +3276,26 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
   function ( B )
     
     return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree( 2 ) ), NerveTruncatedInDegree2Data( B ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
+        [ IsCategoryFromNerveData ],
+        
+  function ( B )
+    
+    return CreatePreSheafByValues( PreSheaves( CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) ) ), NerveTruncatedInDegree2Data( B ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
+        [ IsCategoryFromDataTables ],
+        
+  function ( B )
+    
+    return CreatePreSheafByValues( PreSheaves( CategoryFromDataTables( SimplicialCategoryTruncatedInDegree( 2 ) ) ), NerveTruncatedInDegree2Data( B ) );
     
 end );
 

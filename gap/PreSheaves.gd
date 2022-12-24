@@ -224,6 +224,7 @@ DeclareAttribute( "SimpleObjects", IsPreSheafCategory );
 #! @Returns a presheaf
 DeclareAttribute( "NerveTruncatedInDegree2", IsCapCategory );
 #! @InsertChunk NerveTruncatedInDegree2
+#! @InsertChunk CategoryFromNerveData
 
 #! @Description
 #!  The input is a monomorphism <A>iota</A>:$Q \to P$ in the category of
