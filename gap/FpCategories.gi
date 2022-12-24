@@ -160,7 +160,7 @@ InstallOtherMethod( AssignSetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( RelationsOfFpCategoryData,
+InstallMethod( RelationsAmongGeneratingMorphisms,
         "for a f.p. category",
         [ IsFpCategory ],
         
@@ -185,7 +185,7 @@ InstallMethod( RelationsOfFpCategoryData,
             return [ ];
         fi;
         
-        return List( ArrowList( path ), g -> 1 + SafePosition( mors, g ) );
+        return List( ArrowList( path ), g -> -1 + SafePosition( mors, g ) );
     end;
     
     return List( relations, pair -> Pair( func( pair[1] ), func( pair[2] ) ) );
