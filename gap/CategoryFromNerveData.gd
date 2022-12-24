@@ -134,6 +134,13 @@ CapJitAddTypeSignature( "SetOfGeneratingMorphisms", [ IsCategoryFromNerveData ],
     
 end );
 
+#! @Description
+#!  The number of morphisms in the category <A>C</A> created from nerve data.
+#! @Arguments C
+#! @Returns a nonnegative integer
+DeclareAttribute( "Size",
+        IsCategoryFromNerveData );
+
 ##
 DeclareAttribute( "MapOfObject",
         IsObjectInCategoryFromNerveData );

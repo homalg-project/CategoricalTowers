@@ -278,6 +278,17 @@ InstallMethod( CategoryFromDataTables,
 end );
 
 ##
+InstallMethod( Size,
+        "for a category from data tables",
+        [ IsCategoryFromDataTables ],
+        
+  function( C )
+    
+    return DataTables( C )[1][2];
+    
+end );
+
+##
 InstallMethodForCompilerForCAP( CreateObject,
         "for a category from data tables and an integer",
         [ IsCategoryFromDataTables, IsInt ],
