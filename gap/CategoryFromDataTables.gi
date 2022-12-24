@@ -278,6 +278,22 @@ InstallMethod( CategoryFromDataTables,
 end );
 
 ##
+InstallMethod( CategoryFromDataTables,
+        "for a category from nerve data",
+        [ IsCategoryFromNerveData ],
+        
+  function( C )
+    
+    return CategoryFromDataTables( Name( C ),
+                   RangeCategoryOfHomomorphismStructure( C ),
+                   DataTablesOfCategory( C ),
+                   IndicesOfGeneratingMorphisms( C ),
+                   RelationsAmongGeneratingMorphisms( C ),
+                   C!.labels );
+    
+end );
+
+##
 InstallMethod( Size,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
@@ -458,13 +474,7 @@ InstallMethod( OppositeCategoryFromDataTables,
     
     Cop := OppositeCategoryFromNerveData( C_from_nerve );
     
-    C_op := CategoryFromDataTables(
-                    Name( Cop ),
-                    RangeCategoryOfHomomorphismStructure( Cop ),
-                    DataTablesOfCategory( Cop ),
-                    IndicesOfGeneratingMorphisms( Cop ),
-                    RelationsAmongGeneratingMorphisms( Cop ),
-                    Cop!.labels );
+    C_op := CategoryFromDataTables( Cop );
     
     SetOppositeCategoryFromDataTables( C_op, C );
     
