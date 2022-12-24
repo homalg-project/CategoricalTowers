@@ -3233,6 +3233,26 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
 end );
 
 ##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
+        [ IsCategoryFromNerveData ],
+        
+  function ( B )
+    
+    return CreatePreSheafByValues( PreSheaves( CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) ) ), NerveTruncatedInDegree2Data( B ) );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
+        [ IsCategoryFromDataTables ],
+        
+  function ( B )
+    
+    return CreatePreSheafByValues( PreSheaves( CategoryFromDataTables( SimplicialCategoryTruncatedInDegree( 2 ) ) ), NerveTruncatedInDegree2Data( B ) );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( SievesOfPathsToTruth,
         [ IsPreSheafCategory, IsMorphismInPreSheafCategory ],
         
