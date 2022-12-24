@@ -206,7 +206,8 @@ DeclareAttribute( "OppositeCategoryFromDataTables",
 ####################################
 
 #! @Description
-#!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A> (of a f.p. category <A>C</A>).
+#!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A>
+#! (of a f.p. category <A>C</A> or a category <A>C</A> created from nerve data).
 #! @Arguments str, V, data_tables, indices_of_generating_morphisms, relations, labels
 #! @Returns a &CAP; category
 DeclareOperation( "CategoryFromDataTables",
@@ -216,6 +217,10 @@ DeclareOperation( "CategoryFromDataTables",
 #! @Arguments C
 DeclareAttribute( "CategoryFromDataTables",
         IsFpCategory );
+
+#! @Arguments C
+DeclareAttribute( "CategoryFromDataTables",
+        IsCategoryFromNerveData );
 
 #! @Description
 #!  Construct the <A>o</A>-th object in the category <A>C</A> created from data tables.
