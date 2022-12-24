@@ -465,12 +465,7 @@ InstallMethod( OppositeCategoryFromDataTables,
   function( C )
     local C_from_nerve, Cop, C_op;
     
-    C_from_nerve := CategoryFromNerveData(
-                            Name( C ),
-                            NerveTruncatedInDegree2Data( C ),
-                            IndicesOfGeneratingMorphisms( C ),
-                            RelationsAmongGeneratingMorphisms( C ),
-                            C!.labels );
+    C_from_nerve := CategoryFromNerveData( C );
     
     Cop := OppositeCategoryFromNerveData( C_from_nerve );
     
