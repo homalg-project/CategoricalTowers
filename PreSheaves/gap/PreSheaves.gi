@@ -365,8 +365,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                         
                         return
                           [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                            source_eta[2]( Srm, morB, Ssm ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rrm, morB, Rsm ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            source_eta[2]( Srm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                            range_eta[2]( Rrm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
                             eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                             ];
                         
@@ -443,8 +443,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                         
                         return
                           [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                            source_eta[2]( Srm, morB, Ssm ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rrm, morB, Rsm ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            source_eta[2]( Srm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                            range_eta[2]( Rrm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
                             eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                             ];
                         
