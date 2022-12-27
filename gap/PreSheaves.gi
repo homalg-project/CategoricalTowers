@@ -3069,8 +3069,8 @@ end );
 
 ##
 InstallMethod( ApplyObjectInPreSheafCategoryToObject,
-        "for an object in a presheaf category and a CAP object",
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryObject ],
+        "for a presheaf category, an object in it, and a CAP object",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
   function ( PSh, F, objB )
     local pos;
@@ -3108,8 +3108,8 @@ end );
 
 ##
 InstallMethod( ApplyObjectInPreSheafCategoryToMorphism,
-        "for an object in a presheaf category and a CAP morphism",
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
+        "for a presheaf category, an object in it, and a CAP morphism",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
     local pos, B_op, morB_op;
@@ -3141,8 +3141,8 @@ end );
 
 ##
 InstallMethod( ApplyMorphismInPreSheafCategoryToObject,
-        "for a morphism in a presheaf category and a CAP object",
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
+        "for a presheaf category, a morphism in it, and a CAP object",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject ],
         
   function ( PSh, eta, objB )
     local pos;
