@@ -386,16 +386,17 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
-            return ## a constructor for universal objects: FiberProduct
+            return ## a constructor for universal objects: Equalizer
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
+                local C, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
+                object := i_arg[2];
                 etas := i_arg[3];
                 
                 presheaf_on_objects :=
@@ -412,7 +413,9 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                         
                     end;
                     
-                    return operation_name( C, List( etas, func_obj ) );
+                    return operation_name( C,
+                                   PairOfFunctionsOfPreSheaf( object )[1]( objB ),
+                                   List( etas, func_obj ) );
                     
                 end;
                 
