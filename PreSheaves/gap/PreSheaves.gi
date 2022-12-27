@@ -247,12 +247,12 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
     
     ##
-    object_constructor := function( cat, pair_of_funcs_of_presheaf )
+    object_constructor := function( cat, pair_of_functions_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
                        Range, Range( cat ),
-                       PairOfFunctionsOfPreSheaf, pair_of_funcs_of_presheaf );
+                       PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
     
