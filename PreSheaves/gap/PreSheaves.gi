@@ -977,7 +977,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
         
         Yobj := ObjectConstructor( PSh,
                         Pair( o -> HomomorphismStructureOnObjects( B, o, obj ),
-                              m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
+                              { s, m, r } -> HomomorphismStructureOnMorphismsWithGivenObjects( B, s, m, IdentityMorphism( B, obj ), r ) ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsProjective( Yobj, true );
@@ -1039,8 +1039,14 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
+    local pair_of_functions_of_presheaf;
     
-    return PairOfFunctionsOfPreSheaf( F )[2]( morB );
+    pair_of_functions_of_presheaf := PairOfFunctionsOfPreSheaf( F );
+    
+    return pair_of_functions_of_presheaf[2](
+                   pair_of_functions_of_presheaf[1]( Range( morB ) ),
+                   morB,
+                   pair_of_functions_of_presheaf[1]( Source( morB ) ) );
     
 end );
 
