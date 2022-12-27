@@ -123,9 +123,43 @@ end );
 DeclareAttribute( "PairOfFunctionsOfPreSheaf",
         IsObjectInPreSheafCategory );
 
+CapJitAddTypeSignature( "PairOfFunctionsOfPreSheaf", [ IsObjectInPreSheafCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
+    
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsFunction,
+                       signature :=
+                       [ [ CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ) ],
+                         CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ] ),
+                  rec( filter := IsFunction,
+                       signature :=
+                       [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+                           CapJitDataTypeOfMorphismOfCategory( Source( input_types[1].category ) ),
+                           CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
+                         CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] ) ] );
+    
+end );
+
 ##
 DeclareAttribute( "FunctionOfPreSheafMorphism",
         IsMorphismInPreSheafCategory );
+
+CapJitAddTypeSignature( "FunctionOfPreSheafMorphism", [ IsMorphismInPreSheafCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsPreSheafCategory( input_types[1].category ) );
+    
+    return rec( filter := IsFunction,
+                signature :=
+                [ [ CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ),
+                    CapJitDataTypeOfObjectOfCategory( Source( input_types[1].category ) ),
+                    CapJitDataTypeOfObjectOfCategory( Range( input_types[1].category ) ) ],
+                  CapJitDataTypeOfMorphismOfCategory( Range( input_types[1].category ) ) ] );
+    
+end );
 
 ##
 DeclareAttribute( "YonedaEmbeddingFunctionalData",

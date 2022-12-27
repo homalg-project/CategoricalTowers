@@ -247,12 +247,12 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     list_of_operations := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "list_of_operations", ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY ) );
     
     ##
-    object_constructor := function( cat, pair_of_funcs_of_presheaf )
+    object_constructor := function( cat, pair_of_functions_of_presheaf )
         
         return CreateCapCategoryObjectWithAttributes( cat,
                        Source, Source( cat ),
                        Range, Range( cat ),
-                       PairOfFunctionsOfPreSheaf, pair_of_funcs_of_presheaf );
+                       PairOfFunctionsOfPreSheaf, pair_of_functions_of_presheaf );
         
     end;
     
@@ -290,7 +290,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, objC, morC, presheaf_on_objects, presheaf_on_morphisms;
+                local C, objC, presheaf_on_objects, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
@@ -298,15 +298,13 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
                 presheaf_on_objects := objB -> objC;
                 
-                morC := functorial( C );
-                
-                presheaf_on_morphisms := { new_source, morB, new_range } -> morC;
+                presheaf_on_morphisms := { new_source, morB, new_range } -> functorial_with_given_objects( C, new_source, new_range );
                 
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
             end
             """,
-            rec( functorial := info.functorial ) );
+            rec( functorial_with_given_objects := functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "FiberProduct", "Pushout" ] then
             
@@ -365,8 +363,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                         
                         return
                           [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                            source_eta[2]( Srm, morB, Ssm ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rrm, morB, Rsm ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            source_eta[2]( Srm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                            range_eta[2]( Rrm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
                             eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                             ];
                         
@@ -388,16 +386,17 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
-            return ## a constructor for universal objects: FiberProduct
+            return ## a constructor for universal objects: Equalizer
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, i_arg, etas, presheaf_on_objects, presheaf_on_morphisms;
+                local C, i_arg, object, etas, presheaf_on_objects, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
                 i_arg := NTuple( number_of_arguments, input_arguments... );
                 
+                object := i_arg[2];
                 etas := i_arg[3];
                 
                 presheaf_on_objects :=
@@ -414,7 +413,9 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                         
                     end;
                     
-                    return operation_name( C, List( etas, func_obj ) );
+                    return operation_name( C,
+                                   PairOfFunctionsOfPreSheaf( object )[1]( objB ),
+                                   List( etas, func_obj ) );
                     
                 end;
                 
@@ -443,8 +444,8 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                         
                         return
                           [ eta_func( Srm, Range( morB ), Rrm ),     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Range( morB ) )
-                            source_eta[2]( Srm, morB, Ssm ),  ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
-                            range_eta[2]( Rrm, morB, Rsm ),   ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
+                            source_eta[2]( Srm, morB, Ssm ),         ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Source( eta ), morB )
+                            range_eta[2]( Rrm, morB, Rsm ),          ## ApplyObjectInPreSheafCategoryToMorphism( PSh, Range( eta ), morB )
                             eta_func( Ssm, Source( morB ), Rsm )     ## ApplyMorphismInPreSheafCategoryToObject( PSh, eta, Source( morB ) )
                             ];
                         
@@ -977,7 +978,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
         
         Yobj := ObjectConstructor( PSh,
                         Pair( o -> HomomorphismStructureOnObjects( B, o, obj ),
-                              m -> HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, obj ) ) ) );
+                              { s, m, r } -> HomomorphismStructureOnMorphismsWithGivenObjects( B, s, m, IdentityMorphism( B, obj ), r ) ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         SetIsProjective( Yobj, true );
@@ -1039,8 +1040,14 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToMorphism,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsCapCategoryMorphism ],
         
   function ( PSh, F, morB )
+    local pair_of_functions_of_presheaf;
     
-    return PairOfFunctionsOfPreSheaf( F )[2]( morB );
+    pair_of_functions_of_presheaf := PairOfFunctionsOfPreSheaf( F );
+    
+    return pair_of_functions_of_presheaf[2](
+                   pair_of_functions_of_presheaf[1]( Range( morB ) ),
+                   morB,
+                   pair_of_functions_of_presheaf[1]( Source( morB ) ) );
     
 end );
 
