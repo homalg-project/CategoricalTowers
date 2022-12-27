@@ -290,7 +290,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
               ReplacedStringViaRecord(
               """
               function ( input_arguments... )
-                local C, objC, morC, presheaf_on_objects, presheaf_on_morphisms;
+                local C, objC, presheaf_on_objects, presheaf_on_morphisms;
                 
                 C := Range( cat );
                 
@@ -298,15 +298,13 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                 
                 presheaf_on_objects := objB -> objC;
                 
-                morC := functorial( C );
-                
-                presheaf_on_morphisms := { new_source, morB, new_range } -> morC;
+                presheaf_on_morphisms := { new_source, morB, new_range } -> functorial_with_given_objects( C, new_source, new_range );
                 
                 return ObjectConstructor( cat, Pair( presheaf_on_objects, presheaf_on_morphisms ) );
                 
             end
             """,
-            rec( functorial := info.functorial ) );
+            rec( functorial_with_given_objects := functorial.with_given_without_given_name_pair[2] ) );
             
         elif name in [ "FiberProduct", "Pushout" ] then
             
