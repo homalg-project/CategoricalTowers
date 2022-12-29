@@ -25,6 +25,7 @@ AutoDoc( rec(
                 \DeclareUnicodeCharacter{21AA}{\ensuremath{\!\!\hookrightarrow\!}}
                 \DeclareUnicodeCharacter{21A0}{\ensuremath{\!\!\twoheadrightarrow\!}}
                 \DeclareUnicodeCharacter{2B47}{\ensuremath{\!\!\xrightarrow{\sim}\!}}
+                \DeclareUnicodeCharacter{21A6}{\ensuremath{\mapsto}}
                 % Many thanks to https://tex.stackexchange.com/questions/22466/how-to-convince-fancyvrb-to-give-overfull-warnings/534486#534486
                 \makeatletter
                 \def\FV@ListProcessLine#1{%

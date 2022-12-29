@@ -52,6 +52,22 @@
 
 @Section &GAP; Categories
 
+@Chapter The elementary topos of finite bouquets
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk FinBouquets
+
 @Chapter The elementary topos of finite quivers
 
 @Section Constructors
@@ -66,11 +82,11 @@
 
 @Section Example
 
-@Subsection Topos operations
-
 @InsertChunk FinQuivers
 
-@Subsection Double-pushout rewriting
+@Chapter Topos operations
+
+@Section Double-pushout rewriting
 
 @InsertChunk DPO_Quivers
 

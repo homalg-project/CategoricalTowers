@@ -73,3 +73,53 @@ InstallOtherMethod( Subobject,
     return Subobject( quiver, ConvertJuliaToGAP( images_of_arrows ) );
     
 end );
+
+##
+InstallOtherMethod( Subobject,
+        [ IsObjectInCategoryOfBouquets, IsJuliaObject, IsJuliaObject ],
+        
+  function ( quiver, images_of_vertices, images_of_arrows )
+    
+    return Subobject( quiver, ConvertJuliaToGAP( images_of_vertices ), ConvertJuliaToGAP( images_of_arrows ) );
+    
+end );
+
+##
+InstallOtherMethod( Subobject,
+        [ IsObjectInCategoryOfBouquets, IsJuliaObject ],
+        
+  function ( quiver, images_of_arrows )
+    
+    return Subobject( quiver, ConvertJuliaToGAP( images_of_arrows ) );
+    
+end );
+
+##
+InstallOtherMethod( CreateBouquet,
+        [ IsCategoryOfQuivers, IsInt, IsJuliaObject ],
+        
+  function ( category_of_quivers, n, loops )
+    
+    return CreateBouquet( category_of_quivers, n, ConvertJuliaToGAP( loops ) );
+    
+end );
+
+##
+InstallOtherMethod( CreateBouquet,
+        [ IsInt, IsJuliaObject ],
+        
+  function ( n, loops )
+    
+    return CreateBouquet( n, ConvertJuliaToGAP( loops ) );
+    
+end );
+
+##
+InstallOtherMethod( CreateBouquetMorphism,
+        [ IsObjectInCategoryOfBouquets, IsJuliaObject, IsJuliaObject, IsObjectInCategoryOfBouquets ],
+        
+  function ( source, images_of_vertices, images_of_loops, range )
+    
+    return CreateBouquetMorphism( source, ConvertJuliaToGAP( images_of_vertices ), ConvertJuliaToGAP( images_of_loops ), range );
+    
+end );

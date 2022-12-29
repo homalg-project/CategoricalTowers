@@ -5,77 +5,61 @@
 #
 
 ##
-BindGlobal( "QuiverOfCategoryOfQuivers",
-        RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) );
+BindGlobal( "QuiverOfCategoryOfBouquets",
+        RightQuiver( "q(V,L)[b:V->L]" ) );
 
-# Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
-        rec( args :=
-             rec(
-                 1 := rec(
-                         type := "EXPR_INT",
-                         value := 2 ),
-                 2 := rec(
-                         list := rec(
-                                 1 := rec(
-                                         args := rec(
-                                                 1 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 0 ),
-                                                 2 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 1 ),
-                                                 length := 2,
-                                                 type := "SYNTAX_TREE_LIST" ),
-                                         funcref := rec(
-                                                 gvar := "Pair",
-                                                 type := "EXPR_REF_GVAR" ),
-                                         type := "EXPR_FUNCCALL" ),
-                                 2 := rec(
-                                         args := rec(
-                                                 1 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 0 ),
-                                                 2 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 1 ),
-                                                 length := 2,
-                                                 type := "SYNTAX_TREE_LIST" ),
-                                         funcref := rec(
-                                                 gvar := "Pair",
-                                                 type := "EXPR_REF_GVAR" ),
-                                         type := "EXPR_FUNCCALL" ),
-                                 length := 2,
-                                 type := "SYNTAX_TREE_LIST" ),
-                         type := "EXPR_LIST" ),
-                 length := 2,
-                 type := "SYNTAX_TREE_LIST" ),
-             funcref := rec(
-                     gvar := "Pair",
-                     type := "EXPR_REF_GVAR" ),
-             type := "EXPR_FUNCCALL" )
-             );
+# Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfBouquets",
+rec(
+  args := rec(
+      1 := rec(
+          type := "EXPR_INT",
+          value := 2 ),
+      2 := rec(
+          list := rec(
+              1 := rec(
+                  args := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  funcref := rec(
+                      gvar := "Pair",
+                      type := "EXPR_REF_GVAR" ),
+                  type := "EXPR_FUNCCALL" ),
+              length := 1,
+              type := "SYNTAX_TREE_LIST" ),
+          type := "EXPR_LIST" ),
+      length := 2,
+      type := "SYNTAX_TREE_LIST" ),
+  funcref := rec(
+      gvar := "Pair",
+      type := "EXPR_REF_GVAR" ),
+  type := "EXPR_FUNCCALL" )
+);
 
 # Display( ENHANCED_SYNTAX_TREE( x ->
-#         Pair( Pair(  2, 4  ),
+#         Pair( Pair( 2, 3 ),
 #               NTuple( 8,
-#                       [ 0, 3 ],
-#                       [ 0, 0, 0, 1 ],
-#                       [ 0, 1, 1, 1 ],
-#                       [ [ 0, 1, 2, -1 ],
-#                         [ -1, -1, -1, 1 ],
-#                         [ -1, -1, -1, 2 ],
-#                         [ -1, -1, -1, 3 ] ],
-#                       [ [ 1, 2 ],
+#                       [ 0, 2 ],
+#                       [ 0, 0, 1 ],
+#                       [ 0, 1, 1 ],
+#                       [ [ 0, 1, -1 ],
+#                         [ -1, -1, 1 ],
+#                         [ -1, -1, 2 ] ],
+#                       [ [ 1, 1 ],
 #                         [ 0, 1 ] ],
-#                       [ [ [ 0 ], [ 0 ], [ 1 ], [ 0, 1 ] ],
-#                         [ [  ], [  ], [  ], [ 0 ] ],
-#                         [ [  ], [  ], [  ], [ 1 ] ],
-#                         [ [  ], [  ], [  ], [ 0 ] ] ],
-#                       [ [ 0 ], [ 0 ], [ 1 ], [ 0 ] ],
-#                       [ [ [ 0 ], [ 1, 2 ] ],
-#                         [ [  ], [ 3 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers",
+#                       [ [ [ 0 ], [ 0 ], [ 0 ] ],
+#                         [ [  ], [  ], [ 0 ] ],
+#                         [ [  ], [  ], [ 0 ] ] ],
+#                       [ [ 0 ], [ 0 ], [ 0 ] ],
+#                       [ [ [ 0 ], [ 1 ] ],
+#                         [ [  ], [ 2 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfBouquets",
 rec(
   args := rec(
       1 := rec(
@@ -85,7 +69,7 @@ rec(
                   value := 2 ),
               2 := rec(
                   type := "EXPR_INT",
-                  value := 4 ),
+                  value := 3 ),
               length := 2,
               type := "SYNTAX_TREE_LIST" ),
           funcref := rec(
@@ -104,7 +88,7 @@ rec(
                           value := 0 ),
                       2 := rec(
                           type := "EXPR_INT",
-                          value := 3 ),
+                          value := 2 ),
                       length := 2,
                       type := "SYNTAX_TREE_LIST" ),
                   type := "EXPR_LIST" ),
@@ -118,11 +102,8 @@ rec(
                           value := 0 ),
                       3 := rec(
                           type := "EXPR_INT",
-                          value := 0 ),
-                      4 := rec(
-                          type := "EXPR_INT",
                           value := 1 ),
-                      length := 4,
+                      length := 3,
                       type := "SYNTAX_TREE_LIST" ),
                   type := "EXPR_LIST" ),
               4 := rec(
@@ -136,10 +117,7 @@ rec(
                       3 := rec(
                           type := "EXPR_INT",
                           value := 1 ),
-                      4 := rec(
-                          type := "EXPR_INT",
-                          value := 1 ),
-                      length := 4,
+                      length := 3,
                       type := "SYNTAX_TREE_LIST" ),
                   type := "EXPR_LIST" ),
               5 := rec(
@@ -154,11 +132,8 @@ rec(
                                   value := 1 ),
                               3 := rec(
                                   type := "EXPR_INT",
-                                  value := 2 ),
-                              4 := rec(
-                                  type := "EXPR_INT",
                                   value := -1 ),
-                              length := 4,
+                              length := 3,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
                       2 := rec(
@@ -171,11 +146,8 @@ rec(
                                   value := -1 ),
                               3 := rec(
                                   type := "EXPR_INT",
-                                  value := -1 ),
-                              4 := rec(
-                                  type := "EXPR_INT",
                                   value := 1 ),
-                              length := 4,
+                              length := 3,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
                       3 := rec(
@@ -188,31 +160,11 @@ rec(
                                   value := -1 ),
                               3 := rec(
                                   type := "EXPR_INT",
-                                  value := -1 ),
-                              4 := rec(
-                                  type := "EXPR_INT",
                                   value := 2 ),
-                              length := 4,
+                              length := 3,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
-                      4 := rec(
-                          list := rec(
-                              1 := rec(
-                                  type := "EXPR_INT",
-                                  value := -1 ),
-                              2 := rec(
-                                  type := "EXPR_INT",
-                                  value := -1 ),
-                              3 := rec(
-                                  type := "EXPR_INT",
-                                  value := -1 ),
-                              4 := rec(
-                                  type := "EXPR_INT",
-                                  value := 3 ),
-                              length := 4,
-                              type := "SYNTAX_TREE_LIST" ),
-                          type := "EXPR_LIST" ),
-                      length := 4,
+                      length := 3,
                       type := "SYNTAX_TREE_LIST" ),
                   type := "EXPR_LIST" ),
               6 := rec(
@@ -224,7 +176,7 @@ rec(
                                   value := 1 ),
                               2 := rec(
                                   type := "EXPR_INT",
-                                  value := 2 ),
+                                  value := 1 ),
                               length := 2,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
@@ -266,22 +218,11 @@ rec(
                                   list := rec(
                                       1 := rec(
                                           type := "EXPR_INT",
-                                          value := 1 ),
+                                          value := 0 ),
                                       length := 1,
                                       type := "SYNTAX_TREE_LIST" ),
                                   type := "EXPR_LIST" ),
-                              4 := rec(
-                                  list := rec(
-                                      1 := rec(
-                                          type := "EXPR_INT",
-                                          value := 0 ),
-                                      2 := rec(
-                                          type := "EXPR_INT",
-                                          value := 1 ),
-                                      length := 2,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              length := 4,
+                              length := 3,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
                       2 := rec(
@@ -298,18 +239,13 @@ rec(
                                   type := "EXPR_LIST" ),
                               3 := rec(
                                   list := rec(
-                                      length := 0,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              4 := rec(
-                                  list := rec(
                                       1 := rec(
                                           type := "EXPR_INT",
                                           value := 0 ),
                                       length := 1,
                                       type := "SYNTAX_TREE_LIST" ),
                                   type := "EXPR_LIST" ),
-                              length := 4,
+                              length := 3,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
                       3 := rec(
@@ -326,49 +262,16 @@ rec(
                                   type := "EXPR_LIST" ),
                               3 := rec(
                                   list := rec(
-                                      length := 0,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              4 := rec(
-                                  list := rec(
-                                      1 := rec(
-                                          type := "EXPR_INT",
-                                          value := 1 ),
-                                      length := 1,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              length := 4,
-                              type := "SYNTAX_TREE_LIST" ),
-                          type := "EXPR_LIST" ),
-                      4 := rec(
-                          list := rec(
-                              1 := rec(
-                                  list := rec(
-                                      length := 0,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              2 := rec(
-                                  list := rec(
-                                      length := 0,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              3 := rec(
-                                  list := rec(
-                                      length := 0,
-                                      type := "SYNTAX_TREE_LIST" ),
-                                  type := "EXPR_LIST" ),
-                              4 := rec(
-                                  list := rec(
                                       1 := rec(
                                           type := "EXPR_INT",
                                           value := 0 ),
                                       length := 1,
                                       type := "SYNTAX_TREE_LIST" ),
                                   type := "EXPR_LIST" ),
-                              length := 4,
+                              length := 3,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
-                      length := 4,
+                      length := 3,
                       type := "SYNTAX_TREE_LIST" ),
                   type := "EXPR_LIST" ),
               8 := rec(
@@ -393,19 +296,11 @@ rec(
                           list := rec(
                               1 := rec(
                                   type := "EXPR_INT",
-                                  value := 1 ),
-                              length := 1,
-                              type := "SYNTAX_TREE_LIST" ),
-                          type := "EXPR_LIST" ),
-                      4 := rec(
-                          list := rec(
-                              1 := rec(
-                                  type := "EXPR_INT",
                                   value := 0 ),
                               length := 1,
                               type := "SYNTAX_TREE_LIST" ),
                           type := "EXPR_LIST" ),
-                      length := 4,
+                      length := 3,
                       type := "SYNTAX_TREE_LIST" ),
                   type := "EXPR_LIST" ),
               9 := rec(
@@ -425,10 +320,7 @@ rec(
                                       1 := rec(
                                           type := "EXPR_INT",
                                           value := 1 ),
-                                      2 := rec(
-                                          type := "EXPR_INT",
-                                          value := 2 ),
-                                      length := 2,
+                                      length := 1,
                                       type := "SYNTAX_TREE_LIST" ),
                                   type := "EXPR_LIST" ),
                               length := 2,
@@ -445,7 +337,7 @@ rec(
                                   list := rec(
                                       1 := rec(
                                           type := "EXPR_INT",
-                                          value := 3 ),
+                                          value := 2 ),
                                       length := 1,
                                       type := "SYNTAX_TREE_LIST" ),
                                   type := "EXPR_LIST" ),
@@ -469,83 +361,72 @@ rec(
   type := "EXPR_FUNCCALL" )
 );
 
-# Display( ENHANCED_SYNTAX_TREE( x -> [ 1, 2 ] ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers",
+# Display( ENHANCED_SYNTAX_TREE( x -> [ 1 ] ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfBouquets",
 rec(
   list := rec(
       1 := rec(
           type := "EXPR_INT",
           value := 1 ),
-      2 := rec(
-          type := "EXPR_INT",
-          value := 2 ),
-      length := 2,
+      length := 1,
       type := "SYNTAX_TREE_LIST" ),
   type := "EXPR_LIST" )
 );
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateQuiver,
-        "for a category of quivers and a triple",
-        [ IsCategoryOfQuivers, IsList ],
+InstallOtherMethodForCompilerForCAP( CreateBouquet,
+        "for a category of bouquets and a triple",
+        [ IsCategoryOfBouquets, IsList ],
         
-  function ( category_of_quivers, triple )
+  function ( category_of_bouquets, triple )
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsList ) );
+    Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsInt ) );
     
-    return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningTripleOfQuiver, triple );
-    
-end );
-
-##
-InstallMethod( CreateQuiver,
-        "for a category of quivers, an integer, and a list of pairs of integers",
-        [ IsCategoryOfQuivers, IsInt, IsList ],
-        
-  function ( category_of_quivers, n, arrows )
-    local arr;
-    
-    if ForAll( arrows, IsInt ) then
-        Assert( 0, IsEvenInt( Length( arrows ) ) );
-        arr := List( [ 1 .. Length( arrows ) / 2 ], i -> Pair( arrows[2 * i - 1], arrows[2 * i] ) );
-    else
-        arr := arrows;
-    fi;
-    
-    return CreateQuiver( category_of_quivers,
-                   Triple( n, Length( arr ), arr ) );
+    return CreateCapCategoryObjectWithAttributes( category_of_bouquets,
+                   DefiningTripleOfBouquet, triple );
     
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
-        "for a category of quivers, two objects in a category of quivers, and a pair",
-        [ IsCategoryOfQuivers, IsObjectInCategoryOfQuivers, IsList, IsObjectInCategoryOfQuivers ],
+InstallMethod( CreateBouquet,
+        "for a category of bouquets, an integer, and a list of integers",
+        [ IsCategoryOfBouquets, IsInt, IsList ],
         
-  function ( category_of_quivers, source, images, range )
+  function ( category_of_bouquets, n, loops )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
+    return CreateBouquet( category_of_bouquets,
+                   Triple( n, Length( loops ), loops ) );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CreateBouquetMorphism,
+        "for a category of bouquets, two objects in a category of bouquets, and a pair",
+        [ IsCategoryOfBouquets, IsObjectInCategoryOfBouquets, IsList, IsObjectInCategoryOfBouquets ],
+        
+  function ( category_of_bouquets, source, images, range )
+    
+    return CreateCapCategoryMorphismWithAttributes( category_of_bouquets,
                    source,
                    range,
-                   DefiningPairOfQuiverMorphism, images );
+                   DefiningPairOfBouquetMorphism, images );
     
 end );
 
 ##
-InstallMethod( CreateQuiverMorphism,
-        "for two objects in a category of quivers and two lists",
-        [ IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers ],
+InstallMethod( CreateBouquetMorphism,
+        "for two objects in a category of bouquets and two lists",
+        [ IsObjectInCategoryOfBouquets, IsList, IsList, IsObjectInCategoryOfBouquets ],
         
-  function ( source, images_of_vertices, images_of_arrows, range )
+  function ( source, images_of_vertices, images_of_loops, range )
     
-    return CreateQuiverMorphism( CapCategory( source ), source, Pair( images_of_vertices, images_of_arrows ), range );
+    return CreateBouquetMorphism( CapCategory( source ), source, Pair( images_of_vertices, images_of_loops ), range );
     
 end );
 
 ##
-InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
+InstallMethodWithCache( CategoryOfBouquetsEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
         
@@ -555,40 +436,40 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
           F, F_hat,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          Quivers;
+          Bouquets;
     
     ##
-    object_constructor := CreateQuiver;
+    object_constructor := CreateBouquet;
     
     ##
-    object_datum := { Quivers, o } -> DefiningTripleOfQuiver( o );
+    object_datum := { Bouquets, o } -> DefiningTripleOfBouquet( o );
     
     ##
-    morphism_constructor := CreateQuiverMorphism;
+    morphism_constructor := CreateBouquetMorphism;
     
     ##
-    morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphism( m );
+    morphism_datum := { Bouquets, m } -> DefiningPairOfBouquetMorphism( m );
     
     ## building the categorical tower:
-    F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
+    F := FreeCategory( QuiverOfCategoryOfBouquets : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
     F := CategoryFromDataTables( F : FinalizeCategory := true );
     
     F_hat := FiniteCocompletion( F, category_of_skeletal_finsets : FinalizeCategory := true );
-    
+
     ## specify the attributes the compiler should fully resolve during compilation
     F!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers,
-           DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers,
-           IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
+      rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfBouquets,
+           DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfBouquets,
+           IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfBouquets,
            );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
-      function( Quivers, triple )
-        local F_hat, PSh, sFinSets, V, A, arrows, s, t;
+      function( Bouquets, triple )
+        local F_hat, PSh, sFinSets, V, L, loops, b;
         
-        F_hat := ModelingCategory( Quivers );
+        F_hat := ModelingCategory( Bouquets );
         
         PSh := ModelingCategory( F_hat );
         
@@ -596,25 +477,23 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
         V := ObjectConstructor( sFinSets, triple[1] );
         
-        A := ObjectConstructor( sFinSets, triple[2] );
+        L := ObjectConstructor( sFinSets, triple[2] );
         
-        arrows := triple[3];
+        loops := triple[3];
         
-        s := MorphismConstructor( sFinSets, A, List( arrows, a -> a[1] ), V );
-        
-        t := MorphismConstructor( sFinSets, A, List( arrows, a -> a[2] ), V );
+        b := MorphismConstructor( sFinSets, L, loops, V );
         
         return ObjectConstructor( F_hat,
-                       ObjectConstructor( PSh, Pair( [ V, A ], [ s, t ] ) ) );
+                       ObjectConstructor( PSh, Pair( [ V, L ], [ b ] ) ) );
         
     end;
     
     ## from the object in the highest stage of the tower to the raw object data
     modeling_tower_object_datum :=
-      function( Quivers, obj )
+      function( Bouquets, obj )
         local F_hat, PSh, F, values_of_functor;
         
-        F_hat := ModelingCategory( Quivers );
+        F_hat := ModelingCategory( Bouquets );
         
         PSh := ModelingCategory( F_hat );
         
@@ -624,16 +503,16 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
         return Triple( Length( values_of_functor[1][1] ),
                        Length( values_of_functor[1][2] ),
-                       ListN( AsList( values_of_functor[2][1] ), AsList( values_of_functor[2][2] ), { s, t } -> Pair( s, t ) ) );
+                       AsList( values_of_functor[2][1] ) );
         
     end;
     
     ## from the raw morphism data to the morphism in the highest stage of the tower
     modeling_tower_morphism_constructor :=
-      function( Quivers, source, images, range )
+      function( Bouquets, source, images, range )
         local F_hat, PSh, sFinSets, S, T, Sobj, Tobj;
         
-        F_hat := ModelingCategory( Quivers );
+        F_hat := ModelingCategory( Bouquets );
         
         PSh := ModelingCategory( F_hat );
         
@@ -658,10 +537,10 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     
     ## from the morphism in the highest stage of the tower to the raw morphism data
     modeling_tower_morphism_datum :=
-      function( Quivers, mor )
+      function( Bouquets, mor )
         local F_hat, PSh, eta, values_on_all_objects;
         
-        F_hat := ModelingCategory( Quivers );
+        F_hat := ModelingCategory( Bouquets );
         
         PSh := ModelingCategory( F_hat );
         
@@ -677,11 +556,11 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     ## the tower to derive the algorithms turing the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Quivers := WrapperCategory( F_hat,
-                       rec( name := Concatenation( "CategoryOfQuiversEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
-                            category_filter := IsCategoryOfQuivers,
-                            category_object_filter := IsObjectInCategoryOfQuivers,
-                            category_morphism_filter := IsMorphismInCategoryOfQuivers,
+    Bouquets := WrapperCategory( F_hat,
+                       rec( name := Concatenation( "CategoryOfBouquetsEnrichedOver( ", Name( category_of_skeletal_finsets ), " )" ),
+                            category_filter := IsCategoryOfBouquets,
+                            category_object_filter := IsObjectInCategoryOfBouquets,
+                            category_morphism_filter := IsMorphismInCategoryOfBouquets,
                             object_constructor := object_constructor,
                             object_datum := object_datum,
                             morphism_datum := morphism_datum,
@@ -693,104 +572,104 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
                             only_primitive_operations := true )
                        : FinalizeCategory := false );
     
-    SetUnderlyingCategory( Quivers, F );
+    SetUnderlyingCategory( Bouquets, F );
     
-    Quivers!.compiler_hints.category_attribute_names :=
+    Bouquets!.compiler_hints.category_attribute_names :=
            [ "ModelingCategory",
             ];
     
     if ValueOption( "no_precompiled_code" ) <> true then
-        ADD_FUNCTIONS_FOR_FinQuiversPrecompiled( Quivers );
-        ADD_FUNCTIONS_FOR_FinQuiversAsCCCPrecompiled( Quivers );
+        ADD_FUNCTIONS_FOR_FinBouquetsPrecompiled( Bouquets );
+        #ADD_FUNCTIONS_FOR_FinBouquetsAsCCCPrecompiled( Bouquets );
     fi;
     
-    Finalize( Quivers );
+    Finalize( Bouquets );
     
-    return Quivers;
+    return Bouquets;
     
 end );
 
 ##
-BindGlobal( "FinQuivers",
-         CategoryOfQuiversEnrichedOver( SkeletalFinSets ) );
+BindGlobal( "FinBouquets",
+         CategoryOfBouquetsEnrichedOver( SkeletalFinSets ) );
 
 ##
-InstallMethod( CreateQuiver,
+InstallMethod( CreateBouquet,
         "for an integer, and a list of pairs of integers",
         [ IsInt, IsList ],
         
-  function ( n, arrows )
+  function ( n, loops )
     
-    return CreateQuiver( FinQuivers, n, arrows );
+    return CreateBouquet( FinBouquets, n, loops );
     
 end );
 
 ##
-InstallMethod( Arrows,
-        "for an object in a category of quivers",
-        [ IsObjectInCategoryOfQuivers ],
+InstallMethod( Loops,
+        "for an object in a category of bouquets",
+        [ IsObjectInCategoryOfBouquets ],
         
-  function ( quiver )
+  function ( bouquet )
     
-    return ObjectDatum( quiver )[3];
+    return ObjectDatum( bouquet )[3];
     
 end );
 
 ##
 InstallMethod( Subobject,
-        "for an object in a category of quivers and two lists",
-        [ IsObjectInCategoryOfQuivers, IsList, IsList ],
+        "for an object in a category of bouquets and two lists",
+        [ IsObjectInCategoryOfBouquets, IsList, IsList ],
         
-  function ( quiver, images_of_vertices, images_of_arrows )
-    local arrows, arrows_as_pairs, vertices, source, subquiver;
+  function ( bouquet, images_of_vertices, images_of_loops )
+    local loops, vertices_of_loops, vertices, source, subbouquet;
     
-    arrows := DuplicateFreeList( images_of_arrows );
+    loops := DuplicateFreeList( images_of_loops );
     
-    arrows_as_pairs := Arrows( quiver ){1 + arrows};
+    vertices_of_loops := Loops( bouquet ){1 + loops};
     
-    vertices := AsList( quiver.V ){1 + Set( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
+    vertices := AsList( bouquet.V ){1 + Set( Concatenation( images_of_vertices, vertices_of_loops ) )};
     
-    source := CreateQuiver( CapCategory( quiver ),
+    source := CreateBouquet( CapCategory( bouquet ),
                       Length( vertices ),
-                      List( arrows_as_pairs, a -> -1 + [ SafePosition( vertices, a[1] ), SafePosition( vertices, a[2] ) ] ) );
+                      List( vertices_of_loops, a -> -1 + SafePosition( vertices, a ) ) );
     
-    subquiver := CreateQuiverMorphism( source, vertices, arrows, quiver );
+    subbouquet := CreateBouquetMorphism( source, vertices, loops, bouquet );
     
-    Assert( 2, IsMonomorphism( subquiver ) );
-    SetIsMonomorphism( subquiver, true );
+    Assert( 2, IsMonomorphism( subbouquet ) );
+    SetIsMonomorphism( subbouquet, true );
     
-    return subquiver;
+    return subbouquet;
     
 end );
 
 ##
 InstallMethod( Subobject,
-        "for an object in a category of quivers and a list",
-        [ IsObjectInCategoryOfQuivers, IsList ],
+        "for an object in a category of bouquets and a list",
+        [ IsObjectInCategoryOfBouquets, IsList ],
         
-  function ( quiver, images_of_arrows )
+  function ( bouquet, images_of_loops )
     
-    return Subobject( quiver, [ ], images_of_arrows );
+    return Subobject( bouquet, [ ], images_of_loops );
     
 end );
 
 ##
 InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
-        "for a category of quivers",
-        [ IsCategoryOfQuivers ],
+        "for a category of bouquets",
+        [ IsCategoryOfBouquets ],
         
-  function ( category_of_quivers )
+  function ( category_of_bouquets )
     local Y, U;
     
-    Y := YonedaEmbedding( UnderlyingCategory( category_of_quivers ) );
+    Y := YonedaEmbedding( UnderlyingCategory( category_of_bouquets ) );
     
-    U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_quivers );
+    U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_bouquets );
     
     AddObjectFunction( U,
-            F -> CreateQuiver( category_of_quivers, Triple( Length( F.V ), Length( F.A ), ListN( AsList( F.s ), AsList( F.t ), { s, t } -> Pair( s, t ) ) ) ) );
+            F -> CreateBouquet( category_of_bouquets, Triple( Length( F.V ), Length( F.L ), AsList( F.b ) ) ) );
     
     AddMorphismFunction( U,
-            { source, eta, range } -> CreateQuiverMorphism( category_of_quivers, source, Pair( AsList( eta.V ), AsList( eta.A ) ), range ) );
+            { source, eta, range } -> CreateBouquetMorphism( category_of_bouquets, source, Pair( AsList( eta.V ), AsList( eta.L ) ), range ) );
     
     return PreCompose( Y, U );
     
@@ -798,45 +677,45 @@ end );
 
 ##
 InstallMethod( \.,
-        "for a category of quivers and a positive integer",
-        [ IsCategoryOfQuivers, IsPosInt ],
+        "for a category of bouquets and a positive integer",
+        [ IsCategoryOfBouquets, IsPosInt ],
         
-  function ( category_of_quivers, string_as_int )
+  function ( category_of_bouquets, string_as_int )
     local name, F, Y, Yc;
     
     name := NameRNam( string_as_int );
     
-    F := UnderlyingCategory( category_of_quivers );
+    F := UnderlyingCategory( category_of_bouquets );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( category_of_quivers );
+    Y := YonedaEmbeddingOfUnderlyingCategory( category_of_bouquets );
     
     Yc := Y( F.(name) );
     
-    if IsObjectInCategoryOfQuivers( Yc ) then
+    if IsObjectInCategoryOfBouquets( Yc ) then
         
         SetIsProjective( Yc, true );
         
-    elif IsMorphismInCategoryOfQuivers( Yc ) then
+    elif IsMorphismInCategoryOfBouquets( Yc ) then
         
-        if CanCompute( category_of_quivers, "IsMonomorphism" ) then
+        if CanCompute( category_of_bouquets, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
         fi;
         
-        if CanCompute( category_of_quivers, "IsSplitMonomorphism" ) then
+        if CanCompute( category_of_bouquets, "IsSplitMonomorphism" ) then
             IsSplitMonomorphism( Yc );
         fi;
         
-        if CanCompute( category_of_quivers, "IsEpimorphism" ) then
+        if CanCompute( category_of_bouquets, "IsEpimorphism" ) then
             IsEpimorphism( Yc );
         fi;
         
-        if CanCompute( category_of_quivers, "IsSplitEpimorphism" ) then
+        if CanCompute( category_of_bouquets, "IsSplitEpimorphism" ) then
             IsSplitEpimorphism( Yc );
         fi;
         
         ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
         ## we add this here in case the logic is deactivated
-        if CanCompute( category_of_quivers, "IsIsomorphism" ) then
+        if CanCompute( category_of_bouquets, "IsIsomorphism" ) then
             IsIsomorphism( Yc );
         fi;
         
@@ -848,13 +727,13 @@ end );
 
 ##
 InstallMethod( \.,
-        "for an object in a category of quivers and a positive integer",
-        [ IsObjectInCategoryOfQuivers, IsPosInt ],
+        "for an object in a category of bouquets and a positive integer",
+        [ IsObjectInCategoryOfBouquets, IsPosInt ],
         
-  function ( quiver, string_as_int )
-    local datum, n, m, arrows, name;
+  function ( bouquet, string_as_int )
+    local datum, n, m, loops, name;
     
-    datum := ObjectDatum( quiver );
+    datum := ObjectDatum( bouquet );
     
     name := NameRNam( string_as_int );
     
@@ -862,26 +741,24 @@ InstallMethod( \.,
     
     m := datum[2];
     
-    arrows := datum[3];
+    loops := datum[3];
     
     if name = "V" then
         return FinSet( n );
-    elif name = "A" then
-        return FinSet( Length( arrows ) );
-    elif name = "s" then
-        return MapOfFinSets( FinSet( m ), List( arrows, a -> a[1] ), FinSet( n ) );
-    elif name = "t" then
-        return MapOfFinSets( FinSet( m ), List( arrows, a -> a[2] ), FinSet( n ) );
+    elif name = "L" then
+        return FinSet( Length( loops ) );
+    elif name = "b" then
+        return MapOfFinSets( FinSet( m ), loops, FinSet( n ) );
     fi;
     
-    Error( "the quiver has no component with the name \"", name, "\"\n" );
+    Error( "the bouquet has no component with the name \"", name, "\"\n" );
     
 end );
 
 ##
 InstallMethod( \.,
-        "for a morphism in a category of quivers and a positive integer",
-        [ IsMorphismInCategoryOfQuivers, IsPosInt ],
+        "for a morphism in a category of bouquets and a positive integer",
+        [ IsMorphismInCategoryOfBouquets, IsPosInt ],
         
   function ( mor, string_as_int )
     local datum, name;
@@ -892,25 +769,25 @@ InstallMethod( \.,
     
     if name = "V" then
         return MapOfFinSets( Source( mor ).V, datum[1], Range( mor ).V );
-    elif name = "A" then
-        return MapOfFinSets( Source( mor ).A, datum[2], Range( mor ).A );
+    elif name = "L" then
+        return MapOfFinSets( Source( mor ).L, datum[2], Range( mor ).L );
     fi;
     
-    Error( "the quiver morphism has no component with the name \"", name, "\"\n" );
+    Error( "the bouquet morphism has no component with the name \"", name, "\"\n" );
     
 end );
 
 ##
-MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfQuivers );
-MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfQuivers and IsMonomorphism );
+MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfBouquets );
+MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfBouquets and IsMonomorphism );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for an object in a category of quivers",
-        [ IsObjectInCategoryOfQuivers ],
+        "for an object in a category of bouquets",
+        [ IsObjectInCategoryOfBouquets ],
         
-  function ( quiver )
-    local str, arrows, i;
+  function ( bouquet )
+    local str, loops, i;
     
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
     str := "//dot\n";
@@ -920,25 +797,25 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
     
-    for i in AsList( quiver.V ) do
+    for i in AsList( bouquet.V ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( i ) );
         Append( str, "\" fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
-    arrows := Arrows( quiver );
+    loops := Loops( bouquet );
     
-    for i in AsList( quiver.A ) do
+    for i in AsList( bouquet.L ) do
         ## https://graphviz.org/docs/attrs/fontsize/
         Append( str,
                 Concatenation(
-                        String( arrows[1 + i][1] ),
+                        String( loops[1 + i] ),
                         " -> ",
-                        String( arrows[1 + i][2] ),
+                        String( loops[1 + i] ),
                         " [label=\"",
                         String( i ),
-                        "\" arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" ) );
+                        "\" arrowhead=none arrowsize=0.5 fontsize=10 fontname=\"DejaVu Serif,serif\"]\n" ) );
     od;
     
     Append( str, "}\n" );
@@ -949,26 +826,26 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of quivers",
-        [ IsMorphismInCategoryOfQuivers and IsMonomorphism ],
+        "for a morphism in a category of bouquets",
+        [ IsMorphismInCategoryOfBouquets and IsMonomorphism ],
         
   function ( monomorphism )
-    local quiver, vertices, arrows, str, arrows_as_pairs, i;
+    local bouquet, vertices, loops, str, vertices_of_loops, i;
     
-    quiver := Range( monomorphism );
+    bouquet := Range( monomorphism );
     
     vertices := AsList( monomorphism.V );
-    arrows := AsList( monomorphism.A );
+    loops := AsList( monomorphism.L );
     
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
     str := "//dot\n";
     
-    Append( str, "digraph subquiver{\n" );
+    Append( str, "digraph subbouquet{\n" );
     Append( str, "rankdir=\"LR\"\n" );
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
     
-    for i in AsList( quiver.V ) do
+    for i in AsList( bouquet.V ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( i ) );
@@ -981,19 +858,19 @@ InstallOtherMethod( DotVertexLabelledDigraph,
         Append( str, " fontsize=12 margin=0.01 fontname=\"DejaVu Serif,serif\"]\n" );
     od;
     
-    arrows_as_pairs := Arrows( quiver );
+    vertices_of_loops := Loops( bouquet );
     
-    for i in AsList( quiver.A ) do
+    for i in AsList( bouquet.L ) do
         ## https://graphviz.org/docs/attrs/fontsize/
         Append( str,
                 Concatenation(
-                        String( arrows_as_pairs[1 + i][1] ),
+                        String( vertices_of_loops[1 + i] ),
                         " -> ",
-                        String( arrows_as_pairs[1 + i][2] ),
+                        String( vertices_of_loops[1 + i] ),
                         " [label=\"",
                         String( i ),
-                        "\" arrowsize=0.5 fontsize=10" ) );
-        if not i in arrows then
+                        "\" arrowhead=none arrowsize=0.5 fontsize=10" ) );
+        if not i in loops then
             Append( str, " fontcolor=\"azure3\"" );
             Append( str, " color=\"azure3\"" );
         fi;
@@ -1008,8 +885,8 @@ end );
 
 ##
 InstallMethod( SvgString,
-        "for a cell in a category of quivers",
-        [ IsCellInCategoryOfQuivers ],
+        "for a cell in a category of bouquets",
+        [ IsCellInCategoryOfBouquets ],
         
   function ( cell )
     
@@ -1019,25 +896,25 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a category of quivers",
-        [ IsObjectInCategoryOfQuivers ],
+        "for an object in a category of bouquets",
+        [ IsObjectInCategoryOfBouquets ],
         
-  function ( quiver )
-    local datum, arrows;
+  function ( bouquet )
+    local datum, loops;
     
-    datum := ObjectDatum( quiver );
+    datum := ObjectDatum( bouquet );
     
-    arrows := datum[3];
+    loops := datum[3];
     
     Print( "( ", StringPrint( FinSet( datum[1] ) ), ", {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ) ), " } )\n" );
+           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " ↦ ", String( loops[i] ) ) ) ), " } )\n" );
     
 end );
 
 ##
 InstallMethod( Display,
-        "for a morphism in a category of quivers",
-        [ IsMorphismInCategoryOfQuivers ],
+        "for a morphism in a category of bouquets",
+        [ IsMorphismInCategoryOfBouquets ],
         
   function ( mor )
     local F;
@@ -1047,8 +924,8 @@ InstallMethod( Display,
     Print( "Image of ", StringView( F.V ), ":\n" );
     Display( mor.V );
     
-    Print( "\nImage of ", StringView( F.A ), ":\n" );
-    Display( mor.A );
+    Print( "\nImage of ", StringView( F.L ), ":\n" );
+    Display( mor.L );
     
     Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
