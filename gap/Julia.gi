@@ -123,3 +123,43 @@ InstallOtherMethod( CreateBouquetMorphism,
     return CreateBouquetMorphism( source, ConvertJuliaToGAP( images_of_vertices ), ConvertJuliaToGAP( images_of_loops ), range );
     
 end );
+
+##
+InstallOtherMethod( CategoryOfDecoratedQuiversEnrichedOver,
+        [ IsObjectInCategoryOfQuivers, IsJuliaObject, IsJuliaObject ],
+        
+  function ( decorating_quiver, decoration_of_vertices, decoration_of_arrows )
+    
+    return CategoryOfDecoratedQuiversEnrichedOver( decorating_quiver, ConvertJuliaToGAP( decoration_of_vertices ), ConvertJuliaToGAP( decoration_of_arrows ) );
+    
+end );
+
+##
+InstallOtherMethod( CreateDecoratedQuiver,
+        [ IsCategoryOfDecoratedQuivers, IsJuliaObject, IsJuliaObject ],
+        
+  function ( decorating_quiver, decoration_of_vertices, arrows_with_decoration )
+    
+    return CreateDecoratedQuiver( decorating_quiver, ConvertJuliaToGAP( decoration_of_vertices ), ConvertJuliaToGAP( arrows_with_decoration ) );
+    
+end );
+
+##
+InstallOtherMethod( Subobject,
+        [ IsObjectInCategoryOfDecoratedQuivers, IsJuliaObject, IsJuliaObject ],
+        
+  function ( decorated_quiver, images_of_vertices, images_of_arrows )
+    
+    return Subobject( decorated_quiver, ConvertJuliaToGAP( images_of_vertices ), ConvertJuliaToGAP( images_of_arrows ) );
+    
+end );
+
+##
+InstallOtherMethod( Subobject,
+        [ IsObjectInCategoryOfDecoratedQuivers, IsJuliaObject ],
+        
+  function ( decorated_quiver, images_of_arrows )
+    
+    return Subobject( decorated_quiver, ConvertJuliaToGAP( images_of_arrows ) );
+    
+end );
