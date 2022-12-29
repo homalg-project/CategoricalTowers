@@ -66,11 +66,11 @@
 
 @Section Example
 
-@Subsection Topos operations
-
 @InsertChunk FinQuivers
 
-@Subsection Double-pushout rewriting
+@Chapter Topos operations
+
+@Section Double-pushout rewriting
 
 @InsertChunk DPO_Quivers
 
