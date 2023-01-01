@@ -10,6 +10,12 @@ on:
     - cron: "0 4 * * *" # after gap-docker(-master) is rebuilt
   workflow_dispatch:
 
+# cancel runs for pull requests on force push
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-using-a-fallback-value
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: true
+
 jobs:
   test:
     strategy:
@@ -23,6 +29,10 @@ jobs:
       # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
       - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
       - uses: actions/checkout@v3
+        with:
+          # the persisted token interferes with the subsplit token used below
+          persist-credentials: false
+          fetch-depth: 0
       - run: cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - run: |
           export HOME="/home/gap"
@@ -52,12 +62,11 @@ jobs:
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
           [ -d "Toposes" ] && make -C "Toposes" doc
           make -C CatReps -j $(nproc) --output-sync ci-test
-          cp ./CatReps/.codecov.yml ./
-          (cd CatReps && LANG=C.UTF-8 python3 process_coverage.py)
-          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CatReps/upload_codecov.sh
+          cd CatReps
+          LANG=C.UTF-8 python3 process_coverage.py
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
-          cd CatReps
           CUR_SHA=$(git rev-parse --verify HEAD)
           if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git fetch origin gh-pages; \
