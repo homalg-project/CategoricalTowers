@@ -515,7 +515,7 @@ InstallMethod( FiniteCoproductCocompletion,
             
             C := UnderlyingCategory( UC );
             
-            return ObjectConstructor( UC, List( Cartesian( List( D, AsList ) ), L -> DirectProduct( C, L ) ) );
+            return ObjectConstructor( UC, List( List( Cartesian( List( D, AsList ) ), Reversed ), L -> DirectProduct( C, L ) ) );
             
         end );
         
@@ -604,14 +604,16 @@ InstallMethod( FiniteCoproductCocompletion,
     
     install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
     
-    if install_hom_structure and
-       ( HasIsEquippedWithHomomorphismStructure( C ) and IsEquippedWithHomomorphismStructure( C ) ) and
-       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
-       HasRangeCategoryOfHomomorphismStructure( C ) and
-       ( HasIsCartesianCategory and IsCartesianCategory )( RangeCategoryOfHomomorphismStructure( C ) ) and
-       CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
-        
+    if HasRangeCategoryOfHomomorphismStructure( C ) then
         V := RangeCategoryOfHomomorphismStructure( C );
+    fi;
+    
+    if install_hom_structure and
+       ( HasIsEquippedWithHomomorphismStructure and IsEquippedWithHomomorphismStructure )( C ) and
+       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
+       IsBound( V ) and
+       ( HasIsCartesianCategory and IsCartesianCategory )( V ) and
+       CheckConstructivenessOfCategory( V, "IsCartesianCategory" ) = [ ] then
         
         if ( HasIsTerminalCategory and IsTerminalCategory )( V ) or
            not ( HasIsCocartesianCategory and IsCocartesianCategory )( V ) then
