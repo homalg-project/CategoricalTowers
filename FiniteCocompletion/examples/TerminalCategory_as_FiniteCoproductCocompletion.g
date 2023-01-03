@@ -8,19 +8,22 @@ T := FiniteCoproductCocompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteCoproductCocompletion( InitialCategory( ) ):
 #! 
-#! 91 primitive operations were used to derive 422 operations for this category
+#! 93 primitive operations were used to derive 489 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
-#! * IsBicartesianClosedCategory
 #! * IsBicartesianCoclosedCategory
 #! * IsAbelianCategoryWithEnoughInjectives
 #! * IsAbelianCategoryWithEnoughProjectives
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
+#! * IsElementaryTopos
 #! and furthermore mathematically
+#! * IsFinitelyPresentedCategory
+#! * IsFinitelyPresentedLinearCategory
+#! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
 #! * IsSkeletalCategory

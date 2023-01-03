@@ -3,6 +3,10 @@
 @Section Attributes
 @Section Constructors
 @Section GAP categories
+@Section Examples
+
+@Subsection Cocartesian braiding
+@InsertChunk CocartesianBraiding
 
 @Chapter SkeletalFinSets
 
