@@ -77,7 +77,7 @@ CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], rec( filter :
 #!  Construct a category of skeletal finite sets
 #!  as the finite coproduct cocompletion of the terminal category.
 #! @Returns a &CAP; category
-DeclareOperation( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory", [ ] );
+DeclareGlobalFunction( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory" );
 
 #! @Description
 #!  The default instance of the category of skeletal finite sets.

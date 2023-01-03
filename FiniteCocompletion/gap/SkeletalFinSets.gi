@@ -52,9 +52,7 @@ InstallOtherMethod( MapOfFinSets,
 end );
 
 ##
-InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
-        [ ],
-        
+InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
   function( )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
