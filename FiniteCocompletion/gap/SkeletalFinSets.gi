@@ -82,7 +82,7 @@ InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
     
     ##
     morphism_datum := { sFinSets, phi } -> AsList( phi );
-
+    
     ## building the categorical tower:
     
     ## the initial category in the doctrine of categories
