@@ -601,6 +601,85 @@ InstallMethod( FiniteCoproductCocompletion,
     
 end );
 
+##
+InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+        "for a finite coproduct cocompletion category",
+        [ IsFiniteCoproductCocompletion ],
+        
+  function( UC )
+    local Y;
+    
+    Y := CapFunctor( "Yoneda embedding functor", UnderlyingCategory( UC ), UC );
+    
+    AddObjectFunction( Y, objC -> ObjectConstructor( UC, [ objC ] ) );
+    
+    AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( UC, source, Pair( [ 0 ], [ morC ] ), range ) );
+    
+    return Y;
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a finite coproduct cocompletion category and a positive integer",
+        [ IsFiniteCoproductCocompletion, IsPosInt ],
+        
+  function( UC, string_as_int )
+    local name, F, Y, Yc;
+    
+    name := NameRNam( string_as_int );
+    
+    F := UnderlyingCategory( UC );
+    
+    Y := YonedaEmbeddingOfUnderlyingCategory( UC );
+    
+    Yc := Y( F.(name) );
+    
+    if IsObjectInFiniteCoproductCocompletion( Yc ) then
+
+        SetIsProjective( Yc, true );
+        
+    elif IsMorphismInFiniteCoproductCocompletion( Yc ) then
+        
+        if CanCompute( UC, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( UC, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( UC, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( UC, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( UC, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
+    fi;
+    
+    return Yc;
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a cell in a finite coproduct cocompletion category and a positive integer",
+        [ IsCellInFiniteCoproductCocompletion, IsPosInt ],
+        
+  function( cell, string_as_int )
+    
+    return UnderlyingCell( cell ).(NameRNam( string_as_int ));
+    
+end );
+
 ##################################
 ##
 ## View & Display
