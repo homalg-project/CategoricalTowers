@@ -515,7 +515,7 @@ InstallMethod( FiniteCoproductCocompletion,
             
             C := UnderlyingCategory( UC );
             
-            return ObjectConstructor( UC, List( Cartesian( List( D, AsList ) ), L -> DirectProduct( C, L ) ) );
+            return ObjectConstructor( UC, List( List( Cartesian( List( D, AsList ) ), Reversed ), L -> DirectProduct( C, L ) ) );
             
         end );
         
