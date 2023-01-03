@@ -153,6 +153,10 @@ InstallMethod( FiniteCoproductCocompletion,
     ##
     UC!.category_as_first_argument := true;
     
+    if IsBound( C!.supports_empty_limits ) and C!.supports_empty_limits then
+        UC!.supports_empty_limits := true;
+    fi;
+    
     ##
     UC!.compiler_hints :=
       rec( category_attribute_names :=
