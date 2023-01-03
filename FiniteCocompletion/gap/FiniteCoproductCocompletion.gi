@@ -141,14 +141,20 @@ InstallMethod( FiniteCoproductCocompletion,
     local UC;
     
     ##
-    UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
-    
-    ##
-    SetFilterObj( UC, IsFiniteCoproductCocompletion );
-    
-    ##
-    AddObjectRepresentation( UC, IsObjectInFiniteCoproductCocompletion );
-    AddMorphismRepresentation( UC, IsMorphismInFiniteCoproductCocompletion );
+    UC := CreateCapCategoryWithDataTypes(
+                  Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ),
+                  IsFiniteCoproductCocompletion,
+                  IsObjectInFiniteCoproductCocompletion,
+                  IsMorphismInFiniteCoproductCocompletion,
+                  IsCapCategoryTwoCell,
+                  rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( C ) ),
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
+                         rec( filter := IsList,
+                              element_type := CapJitDataTypeOfMorphismOfCategory( C ) ) ] ),
+                  fail );
     
     ##
     UC!.category_as_first_argument := true;
