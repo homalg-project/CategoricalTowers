@@ -717,11 +717,11 @@ InstallMethod( FiniteCoproductCocompletion,
             s := Length( LS );
             
             return Coproduct( V,
-                           List( List( Tuples( [ 1 .. Length( LT ) ], s ), Reversed ), f ->
+                           List( List( Tuples( [ 1 .. Length( LT ) ], s ), Reversed ), map ->
                                  DirectProduct( V,
                                          List( [ 1 .. s ], i ->
                                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
-                                                       LS[i], LT[f[i]] ) ) ) ) );
+                                                       LS[i], LT[map[i]] ) ) ) ) );
             
         end );
         
