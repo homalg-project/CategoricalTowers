@@ -8,6 +8,9 @@
 @Subsection Cocartesian braiding
 @InsertChunk CocartesianBraiding
 
+@Subsection Cocartesian associator
+@InsertChunk CocartesianAssociator
+
 @Chapter SkeletalFinSets
 
 @Section Attributes

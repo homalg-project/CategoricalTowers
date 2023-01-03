@@ -363,7 +363,7 @@ InstallMethod( FiniteCoproductCocompletion,
         mors_pre := pair_of_lists_pre[2];
         mors_post := pair_of_lists_post[2];
         
-        mors_cmp := List( s, i -> PreCompose( C, mors_pre[1 + i], mors_post[1 + imgs_pre[i]] ) );
+        mors_cmp := List( s, i -> PreCompose( C, mors_pre[1 + i], mors_post[1 + imgs_pre[1 + i]] ) );
         
         return MorphismConstructor( UC, S, Pair( imgs_cmp, mors_cmp ), T );
         
