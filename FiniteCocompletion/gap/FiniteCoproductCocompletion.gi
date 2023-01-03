@@ -649,12 +649,15 @@ InstallMethod( FiniteCoproductCocompletion,
             end;
             
             object_function_inverse := function ( C, V, object )
+                local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, Length( ObjectDatum( object ) ) = 1 );
+                datum := AsList( object );
                 
-                return ObjectDatum( object )[1];
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, Length( datum ) = 1 );
+                
+                return datum[1];
                 
             end;
             
