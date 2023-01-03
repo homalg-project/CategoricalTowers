@@ -630,14 +630,14 @@ InstallMethod( FiniteCoproductCocompletion,
             fi;
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
-            object_function := function ( category, V, object )
+            object_function := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return ObjectConstructor( V, [ object ] );
                 
             end;
             
-            morphism_function := function ( category, V, source, morphism, range )
+            morphism_function := function ( C, V, source, morphism, range )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return MorphismConstructor( V,
@@ -648,7 +648,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            object_function_inverse := function ( category, V, object )
+            object_function_inverse := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -658,7 +658,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            morphism_function_inverse := function ( category, V, source, pair_of_lists, range )
+            morphism_function_inverse := function ( C, V, source, pair_of_lists, range )
                 local morphism;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -668,7 +668,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 morphism := pair_of_lists[2][1];
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, IsCapCategoryMorphism( morphism ) and IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( category ) ) );
+                Assert( 0, IsCapCategoryMorphism( morphism ) and IsIdenticalObj( CapCategory( morphism ), C ) );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, IsEqualForObjects( source, Source( pair_of_lists[2][1] ) ) );
