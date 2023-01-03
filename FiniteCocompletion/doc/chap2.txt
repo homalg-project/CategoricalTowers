@@ -45,9 +45,9 @@
   [33X[0;0YThe  default  instance  of  the  category  of  skeletal  finite  sets. It is
   automatically created while loading this package.[133X
   
-  [1X2.2-3 FinSetOp[101X
+  [1X2.2-3 FinSetConstructor[101X
   
-  [33X[1;0Y[29X[2XFinSetOp[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XFinSetConstructor[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
   
   [33X[0;0YConstruct  a  skeletal finite set residing in the given category of skeletal
@@ -104,9 +104,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xs := FinSetOp( sFinSets, 7 );[127X[104X
+    [4X[25Xgap>[125X [27Xs := FinSetConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
-    [4X[25Xgap>[125X [27Xt := FinSetOp( sFinSets, 4 );[127X[104X
+    [4X[25Xgap>[125X [27Xt := FinSetConstructor( sFinSets, 4 );[127X[104X
     [4X[28X|4|[128X[104X
     [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
@@ -134,11 +134,11 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xm := FinSetOp( sFinSets, 3 );[127X[104X
+    [4X[25Xgap>[125X [27Xm := FinSetConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X
-    [4X[25Xgap>[125X [27Xn := FinSetOp( sFinSets, 5 );[127X[104X
+    [4X[25Xgap>[125X [27Xn := FinSetConstructor( sFinSets, 5 );[127X[104X
     [4X[28X|5|[128X[104X
-    [4X[25Xgap>[125X [27Xp := FinSetOp( sFinSets, 7 );[127X[104X
+    [4X[25Xgap>[125X [27Xp := FinSetConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
     [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( m, [ 1, 4, 2 ], n );[127X[104X
     [4X[28X|3| → |5|[128X[104X
@@ -158,7 +158,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xm := FinSetOp( sFinSets, 8 );[127X[104X
+    [4X[25Xgap>[125X [27Xm := FinSetConstructor( sFinSets, 8 );[127X[104X
     [4X[28X|8|[128X[104X
     [4X[25Xgap>[125X [27XIsInitial( m );[127X[104X
     [4X[28Xfalse[128X[104X
@@ -204,11 +204,11 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xm := FinSetOp( sFinSets, 7 );[127X[104X
+    [4X[25Xgap>[125X [27Xm := FinSetConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
-    [4X[25Xgap>[125X [27Xn := FinSetOp( sFinSets, 3 );[127X[104X
+    [4X[25Xgap>[125X [27Xn := FinSetConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X
-    [4X[25Xgap>[125X [27Xp := FinSetOp( sFinSets, 4 );[127X[104X
+    [4X[25Xgap>[125X [27Xp := FinSetConstructor( sFinSets, 4 );[127X[104X
     [4X[28X|4|[128X[104X
     [4X[25Xgap>[125X [27Xc := Coproduct( m, n, p );[127X[104X
     [4X[28X|14|[128X[104X

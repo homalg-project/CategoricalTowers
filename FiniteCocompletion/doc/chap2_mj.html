@@ -37,7 +37,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DF5EB197D49C8D2">2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X838CE44578BEE5C7">2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79CF3ACD8448CDA7">2.2-3 FinSetOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82A0C3997C5BB78B">2.2-3 FinSetConstructor</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8674CEF7841C111D">2.2-4 MapOfFinSets</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.3 <span class="Heading">GAP categories</span></a>
@@ -115,11 +115,11 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
 <p>The default instance of the category of skeletal finite sets. It is automatically created while loading this package.</p>
 
-<p><a id="X79CF3ACD8448CDA7" name="X79CF3ACD8448CDA7"></a></p>
+<p><a id="X82A0C3997C5BB78B" name="X82A0C3997C5BB78B"></a></p>
 
-<h5>2.2-3 FinSetOp</h5>
+<h5>2.2-3 FinSetConstructor</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FinSetOp</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FinSetConstructor</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> object</p>
 
 <p>Construct a skeletal finite set residing in the given category of skeletal finite sets <var class="Arg">C</var> of order given by the nonnegative integer <var class="Arg">n</var>.</p>
@@ -187,9 +187,9 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := FinSetOp( sFinSets, 7 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := FinSetConstructor( sFinSets, 7 );</span>
 |7|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := FinSetOp( sFinSets, 4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := FinSetConstructor( sFinSets, 4 );</span>
 |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );</span>
 |7| → |4|
@@ -219,11 +219,11 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetOp( sFinSets, 3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetConstructor( sFinSets, 3 );</span>
 |3|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetOp( sFinSets, 5 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetConstructor( sFinSets, 5 );</span>
 |5|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetOp( sFinSets, 7 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetConstructor( sFinSets, 7 );</span>
 |7|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( m, [ 1, 4, 2 ], n );</span>
 |3| → |5|
@@ -245,7 +245,7 @@ SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetOp( sFinSets, 8 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetConstructor( sFinSets, 8 );</span>
 |8|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( m );</span>
 false
@@ -293,11 +293,11 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetOp( sFinSets, 7 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetConstructor( sFinSets, 7 );</span>
 |7|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetOp( sFinSets, 3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetConstructor( sFinSets, 3 );</span>
 |3|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetOp( sFinSets, 4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetConstructor( sFinSets, 4 );</span>
 |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := Coproduct( m, n, p );</span>
 |14|

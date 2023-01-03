@@ -42,6 +42,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7FAC69997C33F799">1.3-3 IsObjectInFiniteCoproductCocompletion</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8547FEDB830A5A18">1.3-4 IsMorphismInFiniteCoproductCocompletion</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A489A5D79DA9E5C">1.4 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7AC9EAFE7BD39817">1.4-1 <span class="Heading">Cocartesian braiding</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A76626D80672536">1.4-2 <span class="Heading">Cocartesian associator</span></a>
+</span>
+</div></div>
 </div>
 
 <h3>1 <span class="Heading">Finite coproduct cocompletion</span></h3>
@@ -77,19 +85,22 @@ FiniteCoproductCocompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteCoproductCocompletion( InitialCategory( ) ):
 
-91 primitive operations were used to derive 422 operations for this category
+93 primitive operations were used to derive 489 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRing
-* IsBicartesianClosedCategory
 * IsBicartesianCoclosedCategory
 * IsAbelianCategoryWithEnoughInjectives
 * IsAbelianCategoryWithEnoughProjectives
 * IsRigidSymmetricClosedMonoidalCategory
 * IsRigidSymmetricCoclosedMonoidalCategory
+* IsElementaryTopos
 and furthermore mathematically
+* IsFinitelyPresentedCategory
+* IsFinitelyPresentedLinearCategory
+* IsLinearClosureOfACategory
 * IsLocallyOfFiniteInjectiveDimension
 * IsLocallyOfFiniteProjectiveDimension
 * IsSkeletalCategory
@@ -186,6 +197,71 @@ true
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of morphisms in a finite coproduct cocompletion category.</p>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>1.4 <span class="Heading">Examples</span></h4>
+
+<p><a id="X7AC9EAFE7BD39817" name="X7AC9EAFE7BD39817"></a></p>
+
+<h5>1.4-1 <span class="Heading">Cocartesian braiding</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(A,B)[]" );</span>
+Q(A,B)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FQ := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(A,B)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( FQ );</span>
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ FQ.A ] / Fam;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := [ FQ.B ] / Fam;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CocartesianBraiding( A, B );</span>
+&lt;A morphism
+ in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfLists( gamma )[1];</span>
+[ 1, 0 ]
+</pre></div>
+
+<p><a id="X7A76626D80672536" name="X7A76626D80672536"></a></p>
+
+<h5>1.4-2 <span class="Heading">Cocartesian associator</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(A,B,C)[]" );</span>
+Q(A,B,C)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FQ := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(A,B,C)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( FQ );</span>
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ FQ.A ] / Fam;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := [ FQ.B ] / Fam;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := [ FQ.C ] / Fam;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CocartesianAssociatorLeftToRight( A, B, C );</span>
+&lt;A morphism in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
+true
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>

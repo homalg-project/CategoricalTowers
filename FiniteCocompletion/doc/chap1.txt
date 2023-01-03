@@ -28,19 +28,22 @@
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28XA CAP category with name FiniteCoproductCocompletion( InitialCategory( ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X91 primitive operations were used to derive 422 operations for this category[128X[104X
+    [4X[28X93 primitive operations were used to derive 489 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCategoryWithDecidableColifts[128X[104X
     [4X[28X* IsCategoryWithDecidableLifts[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
     [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
-    [4X[28X* IsBicartesianClosedCategory[128X[104X
     [4X[28X* IsBicartesianCoclosedCategory[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
     [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
     [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
     [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
+    [4X[28X* IsElementaryTopos[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsFinitelyPresentedCategory[128X[104X
+    [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
+    [4X[28X* IsLinearClosureOfACategory[128X[104X
     [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
     [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
     [4X[28X* IsSkeletalCategory[128X[104X
@@ -126,4 +129,64 @@
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in a finite coproduct cocompletion category.[133X
+  
+  
+  [1X1.4 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X1.4-1 [33X[0;0YCocartesian braiding[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(A,B)[]" );[127X[104X
+    [4X[28XQ(A,B)[][128X[104X
+    [4X[25Xgap>[125X [27XFQ := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( FQ );[127X[104X
+    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA := [ FQ.A ] / Fam;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XB := [ FQ.B ] / Fam;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := CocartesianBraiding( A, B );[127X[104X
+    [4X[28X<A morphism[128X[104X
+    [4X[28X in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XPairOfLists( gamma )[1];[127X[104X
+    [4X[28X[ 1, 0 ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-2 [33X[0;0YCocartesian associator[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(A,B,C)[]" );[127X[104X
+    [4X[28XQ(A,B,C)[][128X[104X
+    [4X[25Xgap>[125X [27XFQ := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(A,B,C)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( FQ );[127X[104X
+    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA := [ FQ.A ] / Fam;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XB := [ FQ.B ] / Fam;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XC := [ FQ.C ] / Fam;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := CocartesianAssociatorLeftToRight( A, B, C );[127X[104X
+    [4X[28X<A morphism in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
   
