@@ -172,6 +172,10 @@ InstallMethod( FiniteCoproductCocompletion,
     
     SetIsCocartesianCategory( UC, true );
     
+    if ( HasIsCartesianCategory and IsCartesianCategory )( C ) then
+        SetIsCartesianCategory( UC, true );
+    fi;
+    
     ##
     AddObjectConstructor( UC,
       function ( UC, L )
