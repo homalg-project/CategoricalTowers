@@ -5,11 +5,11 @@ LoadPackage( "FiniteCocompletion" );
 #! true
 sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );
 #! SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-m := FinSetOp( sFinSets, 7 );
+m := FinSetConstructor( sFinSets, 7 );
 #! |7|
-n := FinSetOp( sFinSets, 3 );
+n := FinSetConstructor( sFinSets, 3 );
 #! |3|
-p := FinSetOp( sFinSets, 4 );
+p := FinSetConstructor( sFinSets, 4 );
 #! |4|
 c := Coproduct( m, n, p );
 #! |14|

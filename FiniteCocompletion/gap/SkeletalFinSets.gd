@@ -90,7 +90,7 @@ DeclareOperation( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategor
 #!  of order given by the nonnegative integer <A>n</A>.
 #! @Arguments C, n
 #! @Returns a &CAP; object
-DeclareOperation( "FinSetOp",
+DeclareOperation( "FinSetConstructor",
         [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt ] );
 
 #KeyDependentOperation( "FinSet", IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt, ReturnTrue );

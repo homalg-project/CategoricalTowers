@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethodForCompilerForCAP( FinSetOp,
+InstallMethodForCompilerForCAP( FinSetConstructor,
         [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt ],
         
   function ( sFinSets, n )
@@ -64,7 +64,7 @@ InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
           sFinSets;
     
     ##
-    object_constructor := { sFinSets, cardinality } -> FinSetOp( sFinSets, cardinality );
+    object_constructor := { sFinSets, cardinality } -> FinSetConstructor( sFinSets, cardinality );
     
     ##
     object_datum := { sFinSets, M } -> Length( M );
@@ -82,7 +82,7 @@ InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
     
     ##
     morphism_datum := { sFinSets, phi } -> AsList( phi );
-
+    
     ## building the categorical tower:
     
     ## the initial category in the doctrine of categories

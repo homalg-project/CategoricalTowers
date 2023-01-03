@@ -7,9 +7,13 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
+gap> LoadPackage( "Algebroids", false );
+true
 gap> LoadPackage( "FiniteCocompletion", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
+gap> LoadPackage( "Algebroids" );
+true
 gap> LoadPackage( "FiniteCocompletion" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;

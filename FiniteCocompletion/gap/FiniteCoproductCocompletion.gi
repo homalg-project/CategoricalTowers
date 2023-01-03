@@ -153,6 +153,10 @@ InstallMethod( FiniteCoproductCocompletion,
     ##
     UC!.category_as_first_argument := true;
     
+    if IsBound( C!.supports_empty_limits ) and C!.supports_empty_limits then
+        UC!.supports_empty_limits := true;
+    fi;
+    
     ##
     UC!.compiler_hints :=
       rec( category_attribute_names :=
@@ -359,7 +363,7 @@ InstallMethod( FiniteCoproductCocompletion,
         mors_pre := pair_of_lists_pre[2];
         mors_post := pair_of_lists_post[2];
         
-        mors_cmp := List( s, i -> PreCompose( C, mors_pre[1 + i], mors_post[1 + imgs_pre[i]] ) );
+        mors_cmp := List( s, i -> PreCompose( C, mors_pre[1 + i], mors_post[1 + imgs_pre[1 + i]] ) );
         
         return MorphismConstructor( UC, S, Pair( imgs_cmp, mors_cmp ), T );
         
@@ -623,7 +627,7 @@ InstallMethod( Display,
     local print, lazy;
     
     Print( PrintString( Source( phi ) ) );
-    Print( " ⱶ", AsList( phi ), "→ " );
+    Print( " ⱶ", AsList( PairOfLists( phi )[1] ), "→ " );
     Print( PrintString( Range( phi ) ), "\n\n" );
     
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );

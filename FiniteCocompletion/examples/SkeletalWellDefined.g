@@ -5,9 +5,9 @@ LoadPackage( "FiniteCocompletion" );
 #! true
 sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );
 #! SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-s := FinSetOp( sFinSets, 7 );
+s := FinSetConstructor( sFinSets, 7 );
 #! |7|
-t := FinSetOp( sFinSets, 4 );
+t := FinSetConstructor( sFinSets, 4 );
 #! |4|
 psi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );
 #! |7| → |4|
