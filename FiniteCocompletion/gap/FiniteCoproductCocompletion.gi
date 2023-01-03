@@ -706,7 +706,7 @@ InstallMethod( FiniteCoproductCocompletion,
         ##
         AddHomomorphismStructureOnObjects( UC,
           function( UC, S, T )
-            local C, V, LS, LT;
+            local C, V, LS, LT, s;
             
             C := UnderlyingCategory( UC );
             V := RangeCategoryOfHomomorphismStructure( UC );
@@ -714,10 +714,12 @@ InstallMethod( FiniteCoproductCocompletion,
             LS := AsList( S );
             LT := AsList( T );
             
+            s := Length( LS );
+            
             return Coproduct( V,
-                           List( List( Tuples( [ 1 .. Length( LT ) ], Length( LS ) ), Reversed ), f ->
+                           List( List( Tuples( [ 1 .. Length( LT ) ], s ), Reversed ), f ->
                                  DirectProduct( V,
-                                         List( [ 1 .. Length( LS ) ], i ->
+                                         List( [ 1 .. s ], i ->
                                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
                                                        LS[i], LT[f[i]] ) ) ) ) );
             
