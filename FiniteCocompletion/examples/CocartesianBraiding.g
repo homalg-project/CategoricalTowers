@@ -11,11 +11,11 @@ FQ := FreeCategory( Q );
 #! FreeCategory( RightQuiver( "Q(A,B)[]" ) )
 Fam := FiniteCoproductCocompletion( FQ );
 #! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )
-A := [ FQ.A ] / Fam;
-#! <An object in
+A := Fam.A;
+#! <A projective object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>
-B := [ FQ.B ] / Fam;
-#! <An object in
+B := Fam.B;
+#! <A projective object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>
 gamma := CocartesianBraiding( A, B );
 #! <A morphism

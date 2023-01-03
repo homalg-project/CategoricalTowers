@@ -95,3 +95,11 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteCoproductCocompletion ],
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
 
 end );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the finite coproduct cocompletion <A>UC</A> into <A>UC</A>.
+#! @Arguments UC
+#! @Returns a &CAP; functor
+DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
+        IsFiniteCoproductCocompletion );

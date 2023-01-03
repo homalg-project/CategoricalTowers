@@ -77,29 +77,11 @@ CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalFinSets ], rec( filter :
 #!  Construct a category of skeletal finite sets
 #!  as the finite coproduct cocompletion of the terminal category.
 #! @Returns a &CAP; category
-DeclareOperation( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory", [ ] );
+DeclareGlobalFunction( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory" );
 
 #! @Description
 #!  The default instance of the category of skeletal finite sets.
 #!  It is automatically created while loading this package.
 # DeclareGlobalVariable( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory" );
 
-#! @Description
-#!  Construct a skeletal finite set residing in
-#!  the given category of skeletal finite sets <A>C</A>
-#!  of order given by the nonnegative integer <A>n</A>.
-#! @Arguments C, n
-#! @Returns a &CAP; object
-DeclareOperation( "FinSetConstructor",
-        [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt ] );
-
 #KeyDependentOperation( "FinSet", IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt, ReturnTrue );
-
-#! @Description
-#!  Construct a map $\phi:$<A>s</A>$\to$<A>t</A> of the skeletal finite sets <A>s</A> and <A>t</A>,
-#!  i.e., a morphism in the &CAP; category of <A>s</A>, where <A>G</A>
-#!  is a list of integers in <A>t</A> describing the graph of $\phi$.
-#! @Arguments s, G, t
-#! @Returns a &CAP; morphism
-DeclareOperation( "MapOfFinSets",
-        [ IsObjectInSkeletalFinSets, IsList, IsObjectInSkeletalFinSets ] );

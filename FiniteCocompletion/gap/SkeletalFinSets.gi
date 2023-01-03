@@ -5,17 +5,6 @@
 #
 
 ##
-InstallMethodForCompilerForCAP( FinSetConstructor,
-        [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt ],
-        
-  function ( sFinSets, n )
-    
-    return CreateCapCategoryObjectWithAttributes( sFinSets,
-                   Length, n );
-    
-end );
-
-##
 InstallMethod( AsList,
         "for a skeletal finite set",
         [ IsObjectInSkeletalFinSets ],
@@ -27,34 +16,7 @@ InstallMethod( AsList,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( MapOfFinSets,
-        "for a category of skeletal finite sets, two skeletal finite sets and a list",
-        [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsObjectInSkeletalFinSets, IsList, IsObjectInSkeletalFinSets ],
-        
-  function ( sFinSets, S, imgs, T )
-    
-    return CreateCapCategoryMorphismWithAttributes( sFinSets,
-                   S,
-                   T,
-                   AsList, imgs );
-    
-end );
-
-##
-InstallOtherMethod( MapOfFinSets,
-        "for a category of skeletal finite sets, two skeletal finite sets and a list",
-        [ IsObjectInSkeletalFinSets, IsList, IsObjectInSkeletalFinSets ],
-        
-  function ( S, imgs, T )
-    
-    return MapOfFinSets( CapCategory( S ), S, imgs, T );
-    
-end );
-
-##
-InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
-        [ ],
-        
+InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
   function( )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
@@ -64,19 +26,21 @@ InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
           sFinSets;
     
     ##
-    object_constructor := { sFinSets, cardinality } -> FinSetConstructor( sFinSets, cardinality );
+    object_constructor := { sFinSets, cardinality } ->
+                          CreateCapCategoryObjectWithAttributes( sFinSets,
+                                  Length, cardinality );
     
     ##
     object_datum := { sFinSets, M } -> Length( M );
     
     ##
     morphism_constructor :=
-      function( sFinSets, source, map, range )
+      function( sFinSets, source, images, range )
         
-        return MapOfFinSets( sFinSets,
-                       source,
-                       map,
-                       range );
+        return CreateCapCategoryMorphismWithAttributes( sFinSets,
+                   source,
+                   range,
+                   AsList, images );
         
     end;
     
