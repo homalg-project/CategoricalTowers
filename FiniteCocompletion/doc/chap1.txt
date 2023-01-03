@@ -11,6 +11,14 @@
   [33X[0;0YReturn  the category [23XC[123X underlying the finite coproduct cocompletion category
   [3XUC[103X[10X := FiniteCoproductCocompletion([110X [23XC[123X [10X)[110X).[133X
   
+  [1X1.1-2 YonedaEmbeddingOfUnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XYonedaEmbeddingOfUnderlyingCategory[102X( [3XUC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe  full  embedding  functor  from  the  category  [23XC[123X  underlying the finite
+  coproduct cocompletion [3XUC[103X into [3XUC[103X.[133X
+  
   
   [1X1.2 [33X[0;0YConstructors[133X[101X
   
@@ -147,11 +155,11 @@
     [4X[28XFreeCategory( RightQuiver( "Q(A,B)[]" ) )[128X[104X
     [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( FQ );[127X[104X
     [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := [ FQ.A ] / Fam;[127X[104X
-    [4X[28X<An object in[128X[104X
+    [4X[25Xgap>[125X [27XA := Fam.A;[127X[104X
+    [4X[28X<A projective object in[128X[104X
     [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XB := [ FQ.B ] / Fam;[127X[104X
-    [4X[28X<An object in[128X[104X
+    [4X[25Xgap>[125X [27XB := Fam.B;[127X[104X
+    [4X[28X<A projective object in[128X[104X
     [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xgamma := CocartesianBraiding( A, B );[127X[104X
     [4X[28X<A morphism[128X[104X
@@ -174,14 +182,14 @@
     [4X[28XFreeCategory( RightQuiver( "Q(A,B,C)[]" ) )[128X[104X
     [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( FQ );[127X[104X
     [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := [ FQ.A ] / Fam;[127X[104X
-    [4X[28X<An object in[128X[104X
+    [4X[25Xgap>[125X [27XA := Fam.A;[127X[104X
+    [4X[28X<A projective object in[128X[104X
     [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XB := [ FQ.B ] / Fam;[127X[104X
-    [4X[28X<An object in[128X[104X
+    [4X[25Xgap>[125X [27XB := Fam.B;[127X[104X
+    [4X[28X<A projective object in[128X[104X
     [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XC := [ FQ.C ] / Fam;[127X[104X
-    [4X[28X<An object in[128X[104X
+    [4X[25Xgap>[125X [27XC := Fam.C;[127X[104X
+    [4X[28X<A projective object in[128X[104X
     [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xalpha := CocartesianAssociatorLeftToRight( A, B, C );[127X[104X
     [4X[28X<A morphism in[128X[104X

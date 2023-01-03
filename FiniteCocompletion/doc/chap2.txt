@@ -32,7 +32,7 @@
   
   [1X2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[102X(  ) [32X operation[133X
+  [33X[1;0Y[29X[2XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YConstruct  a  category  of  skeletal  finite  sets  as  the finite coproduct
@@ -44,23 +44,6 @@
   
   [33X[0;0YThe  default  instance  of  the  category  of  skeletal  finite  sets. It is
   automatically created while loading this package.[133X
-  
-  [1X2.2-3 FinSetConstructor[101X
-  
-  [33X[1;0Y[29X[2XFinSetConstructor[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
-  
-  [33X[0;0YConstruct  a  skeletal finite set residing in the given category of skeletal
-  finite sets [3XC[103X of order given by the nonnegative integer [3Xn[103X.[133X
-  
-  [1X2.2-4 MapOfFinSets[101X
-  
-  [33X[1;0Y[29X[2XMapOfFinSets[102X( [3Xs[103X, [3XG[103X, [3Xt[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
-  
-  [33X[0;0YConstruct  a  map  [23X\phi:[123X[3Xs[103X[23X\to[123X[3Xt[103X  of  the skeletal finite sets [3Xs[103X and [3Xt[103X, i.e., a
-  morphism  in  the  [5XCAP[105X  category  of  [3Xs[103X,  where [3XG[103X is a list of integers in [3Xt[103X
-  describing the graph of [23X\phi[123X.[133X
   
   
   [1X2.3 [33X[0;0YGAP categories[133X[101X
@@ -104,23 +87,23 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xs := FinSetConstructor( sFinSets, 7 );[127X[104X
+    [4X[25Xgap>[125X [27Xs := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
-    [4X[25Xgap>[125X [27Xt := FinSetConstructor( sFinSets, 4 );[127X[104X
+    [4X[25Xgap>[125X [27Xt := ObjectConstructor( sFinSets, 4 );[127X[104X
     [4X[28X|4|[128X[104X
-    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );[127X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );[127X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );[127X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xpsi:= MapOfFinSets( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );[127X[104X
+    [4X[25Xgap>[125X [27Xpsi:= MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -134,15 +117,15 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xm := FinSetConstructor( sFinSets, 3 );[127X[104X
+    [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X
-    [4X[25Xgap>[125X [27Xn := FinSetConstructor( sFinSets, 5 );[127X[104X
+    [4X[25Xgap>[125X [27Xn := ObjectConstructor( sFinSets, 5 );[127X[104X
     [4X[28X|5|[128X[104X
-    [4X[25Xgap>[125X [27Xp := FinSetConstructor( sFinSets, 7 );[127X[104X
+    [4X[25Xgap>[125X [27Xp := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
-    [4X[25Xgap>[125X [27Xpsi := MapOfFinSets( m, [ 1, 4, 2 ], n );[127X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( m, [ 1, 4, 2 ], n );[127X[104X
     [4X[28X|3| → |5|[128X[104X
-    [4X[25Xgap>[125X [27Xphi := MapOfFinSets( n, [ 0, 3, 5, 5, 2 ], p );[127X[104X
+    [4X[25Xgap>[125X [27Xphi := MorphismConstructor( n, [ 0, 3, 5, 5, 2 ], p );[127X[104X
     [4X[28X|5| → |7|[128X[104X
     [4X[25Xgap>[125X [27Xalpha := PreCompose( psi, phi );[127X[104X
     [4X[28X|3| → |7|[128X[104X
@@ -158,7 +141,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xm := FinSetConstructor( sFinSets, 8 );[127X[104X
+    [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 8 );[127X[104X
     [4X[28X|8|[128X[104X
     [4X[25Xgap>[125X [27XIsInitial( m );[127X[104X
     [4X[28Xfalse[128X[104X
@@ -204,11 +187,11 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xm := FinSetConstructor( sFinSets, 7 );[127X[104X
+    [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
-    [4X[25Xgap>[125X [27Xn := FinSetConstructor( sFinSets, 3 );[127X[104X
+    [4X[25Xgap>[125X [27Xn := ObjectConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X
-    [4X[25Xgap>[125X [27Xp := FinSetConstructor( sFinSets, 4 );[127X[104X
+    [4X[25Xgap>[125X [27Xp := ObjectConstructor( sFinSets, 4 );[127X[104X
     [4X[28X|4|[128X[104X
     [4X[25Xgap>[125X [27Xc := Coproduct( m, n, p );[127X[104X
     [4X[28X|14|[128X[104X

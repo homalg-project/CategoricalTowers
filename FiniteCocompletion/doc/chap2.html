@@ -34,8 +34,6 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DF5EB197D49C8D2">2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X838CE44578BEE5C7">2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82A0C3997C5BB78B">2.2-3 FinSetConstructor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8674CEF7841C111D">2.2-4 MapOfFinSets</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7D03633A7D98026B">2.3 <span class="Heading">GAP categories</span></a>
 </span>
@@ -100,7 +98,7 @@
 
 <h5>2.2-1 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>Construct a category of skeletal finite sets as the finite coproduct cocompletion of the terminal category.</p>
@@ -111,24 +109,6 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
 <p>The default instance of the category of skeletal finite sets. It is automatically created while loading this package.</p>
-
-<p><a id="X82A0C3997C5BB78B" name="X82A0C3997C5BB78B"></a></p>
-
-<h5>2.2-3 FinSetConstructor</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FinSetConstructor</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> object</p>
-
-<p>Construct a skeletal finite set residing in the given category of skeletal finite sets <var class="Arg">C</var> of order given by the nonnegative integer <var class="Arg">n</var>.</p>
-
-<p><a id="X8674CEF7841C111D" name="X8674CEF7841C111D"></a></p>
-
-<h5>2.2-4 MapOfFinSets</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MapOfFinSets</code>( <var class="Arg">s</var>, <var class="Arg">G</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
-
-<p>Construct a map <span class="Math">\phi:</span><var class="Arg">s</var><span class="Math">\to</span><var class="Arg">t</var> of the skeletal finite sets <var class="Arg">s</var> and <var class="Arg">t</var>, i.e., a morphism in the <strong class="pkg">CAP</strong> category of <var class="Arg">s</var>, where <var class="Arg">G</var> is a list of integers in <var class="Arg">t</var> describing the graph of <span class="Math">\phi</span>.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
@@ -184,23 +164,23 @@
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := FinSetConstructor( sFinSets, 7 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := ObjectConstructor( sFinSets, 7 );</span>
 |7|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := FinSetConstructor( sFinSets, 4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ObjectConstructor( sFinSets, 4 );</span>
 |4|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3 ], t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3 ], t );</span>
 |7| → |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3, -2 ], t );</span>
 |7| → |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );</span>
 |7| → |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
 false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi:= MapOfFinSets( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi:= MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );</span>
 |7| → |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
 true
@@ -216,15 +196,15 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetConstructor( sFinSets, 3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 3 );</span>
 |3|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetConstructor( sFinSets, 5 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 5 );</span>
 |5|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetConstructor( sFinSets, 7 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ObjectConstructor( sFinSets, 7 );</span>
 |7|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MapOfFinSets( m, [ 1, 4, 2 ], n );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( m, [ 1, 4, 2 ], n );</span>
 |3| → |5|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MapOfFinSets( n, [ 0, 3, 5, 5, 2 ], p );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := MorphismConstructor( n, [ 0, 3, 5, 5, 2 ], p );</span>
 |5| → |7|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := PreCompose( psi, phi );</span>
 |3| → |7|
@@ -242,7 +222,7 @@ SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetConstructor( sFinSets, 8 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 8 );</span>
 |8|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( m );</span>
 false
@@ -290,11 +270,11 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := FinSetConstructor( sFinSets, 7 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 7 );</span>
 |7|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := FinSetConstructor( sFinSets, 3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 3 );</span>
 |3|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := FinSetConstructor( sFinSets, 4 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ObjectConstructor( sFinSets, 4 );</span>
 |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := Coproduct( m, n, p );</span>
 |14|

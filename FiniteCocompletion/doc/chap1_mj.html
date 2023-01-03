@@ -29,6 +29,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78A9C86A7E41624E">1.1-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7940A0067BF4BDE0">1.1-2 YonedaEmbeddingOfUnderlyingCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.2 <span class="Heading">Constructors</span></a>
 </span>
@@ -67,6 +68,15 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Return the category <span class="SimpleMath">\(C\)</span> underlying the finite coproduct cocompletion category <var class="Arg">UC</var><code class="code"> := FiniteCoproductCocompletion(</code> <span class="SimpleMath">\(C\)</span> <code class="code">)</code>).</p>
+
+<p><a id="X7940A0067BF4BDE0" name="X7940A0067BF4BDE0"></a></p>
+
+<h5>1.1-2 YonedaEmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="SimpleMath">\(C\)</span> underlying the finite coproduct cocompletion <var class="Arg">UC</var> into <var class="Arg">UC</var>.</p>
 
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
@@ -221,11 +231,11 @@ Q(A,B)[]
 FreeCategory( RightQuiver( "Q(A,B)[]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( FQ );</span>
 FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ FQ.A ] / Fam;</span>
-&lt;An object in
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Fam.A;</span>
+&lt;A projective object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := [ FQ.B ] / Fam;</span>
-&lt;An object in
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Fam.B;</span>
+&lt;A projective object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CocartesianBraiding( A, B );</span>
 &lt;A morphism
@@ -250,14 +260,14 @@ Q(A,B,C)[]
 FreeCategory( RightQuiver( "Q(A,B,C)[]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( FQ );</span>
 FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ FQ.A ] / Fam;</span>
-&lt;An object in
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Fam.A;</span>
+&lt;A projective object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := [ FQ.B ] / Fam;</span>
-&lt;An object in
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Fam.B;</span>
+&lt;A projective object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := [ FQ.C ] / Fam;</span>
-&lt;An object in
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := Fam.C;</span>
+&lt;A projective object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CocartesianAssociatorLeftToRight( A, B, C );</span>
 &lt;A morphism in
