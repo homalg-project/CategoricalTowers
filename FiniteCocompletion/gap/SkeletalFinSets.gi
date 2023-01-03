@@ -82,7 +82,7 @@ InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
     
     ##
     morphism_datum := { sFinSets, phi } -> AsList( phi );
-
+    
     ## building the categorical tower:
     
     ## the initial category in the doctrine of categories
@@ -92,7 +92,7 @@ InstallMethod( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
     T := FiniteProductCompletion( I : FinalizeCategory := true );
     
     ##
-    UT := FiniteCoproductCocompletion( T : FinalizeCategory := true );
+    UT := FiniteCoproductCocompletion( T : FinalizeCategory := true, install_hom_structure := false );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=

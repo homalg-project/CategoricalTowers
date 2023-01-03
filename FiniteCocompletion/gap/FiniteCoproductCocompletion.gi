@@ -138,7 +138,7 @@ InstallMethod( FiniteCoproductCocompletion,
         [ IsCapCategory ],
         
   function ( C )
-    local UC;
+    local UC, install_hom_structure, V;
     
     ##
     UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
@@ -592,6 +592,35 @@ InstallMethod( FiniteCoproductCocompletion,
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
         end );
+        
+    fi;
+    
+    install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
+    
+    if install_hom_structure and
+       IsEquippedWithHomomorphismStructure( C ) and
+       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] then
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
+        
+        SetRangeCategoryOfHomomorphismStructure( UC, V );
+        
+        if CanCompute( V, "Coproduct" ) and
+           CanCompute( V, "DirectProduct" ) then
+            
+            AddHomomorphismStructureOnObjects( UC,
+              function( UC, S, T )
+                
+                return DirectProduct( V,
+                               List( AsList( S ), S_i ->
+                                     Coproduct( V,
+                                             List( AsList( T ), T_j ->
+                                                   HomomorphismStructureOnObjects( C,
+                                                           S_i, T_j ) ) ) ) );
+                
+            end );
+            
+        fi;
         
     fi;
     
