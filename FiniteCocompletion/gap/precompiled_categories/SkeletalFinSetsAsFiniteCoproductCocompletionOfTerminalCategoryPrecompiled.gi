@@ -28,6 +28,28 @@ end
     , 100 );
     
     ##
+    AddDistinguishedObjectOfHomomorphismStructure( cat,
+        
+########
+function ( cat_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, 1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddHomomorphismStructureOnObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Length( arg3_1 ) ^ Length( arg2_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIdentityMorphism( cat,
         
 ########
@@ -284,12 +306,12 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
             return Product( hoisted_2_1{[ 1 .. j_2 ]} );
         end );
     hoisted_1_1 := List( tau_1, AsList );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( k_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, AsList, List( [ 0 .. Length( T_1 ) - 1 ], function ( i_2 )
               local hoisted_1_2;
-              hoisted_1_2 := 1 + k_2;
-              return Sum( hoisted_4_1, function ( i_3 )
+              hoisted_1_2 := 1 + i_2;
+              return Sum( hoisted_4_1, function ( j_3 )
                       local deduped_1_3;
-                      deduped_1_3 := 1 + i_3;
+                      deduped_1_3 := 1 + j_3;
                       return hoisted_1_1[deduped_1_3][hoisted_1_2] * hoisted_3_1[deduped_1_3];
                   end );
           end ) );
