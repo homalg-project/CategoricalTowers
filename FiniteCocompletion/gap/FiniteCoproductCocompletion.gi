@@ -170,6 +170,8 @@ InstallMethod( FiniteCoproductCocompletion,
     ##
     SetUnderlyingCategory( UC, C );
     
+    SetIsCocartesianCategory( UC, true );
+    
     ##
     AddObjectConstructor( UC,
       function ( UC, L )
