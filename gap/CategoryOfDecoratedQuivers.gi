@@ -32,7 +32,7 @@ InstallOtherMethodForCompilerForCAP( CreateDecoratedQuiverMorphism,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfDecoratedQuiversEnrichedOver,
+InstallMethodWithCache( CategoryOfDecoratedQuivers,
         "for a quiver and two lists of decorations",
         [ IsObjectInCategoryOfQuivers, IsList, IsList ],
         
@@ -133,7 +133,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuiversEnrichedOver,
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     DecoratedQuivers := WrapperCategory( Slice,
-                       rec( name := "CategoryOfDecoratedQuiversEnrichedOver( decorating_quiver )",
+                       rec( name := "CategoryOfDecoratedQuivers( decorating_quiver )",
                             category_filter := IsCategoryOfDecoratedQuivers,
                             category_object_filter := IsObjectInCategoryOfDecoratedQuivers,
                             category_morphism_filter := IsMorphismInCategoryOfDecoratedQuivers,

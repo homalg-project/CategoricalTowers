@@ -125,12 +125,12 @@ InstallOtherMethod( CreateBouquetMorphism,
 end );
 
 ##
-InstallOtherMethod( CategoryOfDecoratedQuiversEnrichedOver,
+InstallOtherMethod( CategoryOfDecoratedQuivers,
         [ IsObjectInCategoryOfQuivers, IsJuliaObject, IsJuliaObject ],
         
   function ( decorating_quiver, decoration_of_vertices, decoration_of_arrows )
     
-    return CategoryOfDecoratedQuiversEnrichedOver( decorating_quiver, ConvertJuliaToGAP( decoration_of_vertices ), ConvertJuliaToGAP( decoration_of_arrows ) );
+    return CategoryOfDecoratedQuivers( decorating_quiver, ConvertJuliaToGAP( decoration_of_vertices ), ConvertJuliaToGAP( decoration_of_arrows ) );
     
 end );
 
