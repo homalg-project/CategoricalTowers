@@ -115,7 +115,7 @@ DeclareOperation( "DotVertexLabelledDigraph",
 #!  and the two lists of colors <A>decoration_of_vertices</A> and <A>decoration_of_arrows</A>.
 #! @Returns a &CAP; category
 #! @Arguments quiver, decoration_of_vertices, decoration_of_arrows
-DeclareOperationWithCache( "CategoryOfDecoratedQuiversEnrichedOver",
+DeclareOperationWithCache( "CategoryOfDecoratedQuivers",
         [ IsObjectInCategoryOfQuivers, IsList, IsList ] );
 
 #!
