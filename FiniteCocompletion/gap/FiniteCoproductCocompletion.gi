@@ -571,7 +571,7 @@ InstallMethod( FiniteCoproductCocompletion,
             
             m := [ 0 .. Length( uT ) - 1 ];
             
-            map := List( m, k -> Sum( [ 0 .. l - 1 ], i -> tau_maps[1 + i][1 + k] * dd[1 + i] ) );
+            map := List( m, i -> Sum( [ 0 .. l - 1 ], j -> tau_maps[1 + j][1 + i] * dd[1 + j] ) );
             
             ## FiniteCoproductCocompletion code:
             C := UnderlyingCategory( UC );
@@ -583,11 +583,11 @@ InstallMethod( FiniteCoproductCocompletion,
             uP := AsList( P );
             
             mor := List( m,
-                         k -> UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
-                                 cartesian[map[1 + k]],
-                                 uT[1 + k],
-                                 List( [ 1 .. l ], i -> tau_mors[i][1 + k] ),
-                                 uP[map[1 + k]] ) );
+                         i -> UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
+                                 cartesian[map[1 + i]],
+                                 uT[1 + i],
+                                 List( [ 1 .. l ], j -> tau_mors[j][1 + i] ),
+                                 uP[map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
