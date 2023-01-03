@@ -84,15 +84,6 @@ DeclareGlobalFunction( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCa
 #!  It is automatically created while loading this package.
 # DeclareGlobalVariable( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory" );
 
-#! @Description
-#!  Construct a skeletal finite set residing in
-#!  the given category of skeletal finite sets <A>C</A>
-#!  of order given by the nonnegative integer <A>n</A>.
-#! @Arguments C, n
-#! @Returns a &CAP; object
-DeclareOperation( "FinSetConstructor",
-        [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt ] );
-
 #KeyDependentOperation( "FinSet", IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt, ReturnTrue );
 
 #! @Description

@@ -5,17 +5,6 @@
 #
 
 ##
-InstallMethodForCompilerForCAP( FinSetConstructor,
-        [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt ],
-        
-  function ( sFinSets, n )
-    
-    return CreateCapCategoryObjectWithAttributes( sFinSets,
-                   Length, n );
-    
-end );
-
-##
 InstallMethod( AsList,
         "for a skeletal finite set",
         [ IsObjectInSkeletalFinSets ],
@@ -62,7 +51,9 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
           sFinSets;
     
     ##
-    object_constructor := { sFinSets, cardinality } -> FinSetConstructor( sFinSets, cardinality );
+    object_constructor := { sFinSets, cardinality } ->
+                          CreateCapCategoryObjectWithAttributes( sFinSets,
+                                  Length, cardinality );
     
     ##
     object_datum := { sFinSets, M } -> Length( M );
