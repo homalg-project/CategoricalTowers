@@ -8,7 +8,7 @@ T := FiniteProductCompletion( InitialCategory( ) );
 Display( T );
 #! A CAP category with name FiniteProductCompletion( InitialCategory( ) ):
 #! 
-#! 91 primitive operations were used to derive 422 operations for this category
+#! 91 primitive operations were used to derive 464 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
@@ -21,6 +21,9 @@ Display( T );
 #! * IsRigidSymmetricClosedMonoidalCategory
 #! * IsRigidSymmetricCoclosedMonoidalCategory
 #! and furthermore mathematically
+#! * IsFinitelyPresentedCategory
+#! * IsFinitelyPresentedLinearCategory
+#! * IsLinearClosureOfACategory
 #! * IsLocallyOfFiniteInjectiveDimension
 #! * IsLocallyOfFiniteProjectiveDimension
 #! * IsSkeletalCategory
