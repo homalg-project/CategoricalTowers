@@ -16,31 +16,6 @@ InstallMethod( AsList,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( MapOfFinSets,
-        "for a category of skeletal finite sets, two skeletal finite sets and a list",
-        [ IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsObjectInSkeletalFinSets, IsList, IsObjectInSkeletalFinSets ],
-        
-  function ( sFinSets, S, imgs, T )
-    
-    return CreateCapCategoryMorphismWithAttributes( sFinSets,
-                   S,
-                   T,
-                   AsList, imgs );
-    
-end );
-
-##
-InstallOtherMethod( MapOfFinSets,
-        "for a category of skeletal finite sets, two skeletal finite sets and a list",
-        [ IsObjectInSkeletalFinSets, IsList, IsObjectInSkeletalFinSets ],
-        
-  function ( S, imgs, T )
-    
-    return MapOfFinSets( CapCategory( S ), S, imgs, T );
-    
-end );
-
-##
 InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
   function( )
     local object_constructor, object_datum,
@@ -60,12 +35,12 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
     
     ##
     morphism_constructor :=
-      function( sFinSets, source, map, range )
+      function( sFinSets, source, images, range )
         
-        return MapOfFinSets( sFinSets,
-                       source,
-                       map,
-                       range );
+        return CreateCapCategoryMorphismWithAttributes( sFinSets,
+                   source,
+                   range,
+                   AsList, images );
         
     end;
     

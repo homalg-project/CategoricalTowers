@@ -11,9 +11,9 @@ n := ObjectConstructor( sFinSets, 5 );
 #! |5|
 p := ObjectConstructor( sFinSets, 7 );
 #! |7|
-psi := MapOfFinSets( m, [ 1, 4, 2 ], n );
+psi := MorphismConstructor( m, [ 1, 4, 2 ], n );
 #! |3| → |5|
-phi := MapOfFinSets( n, [ 0, 3, 5, 5, 2 ], p );
+phi := MorphismConstructor( n, [ 0, 3, 5, 5, 2 ], p );
 #! |5| → |7|
 alpha := PreCompose( psi, phi );
 #! |3| → |7|

@@ -85,12 +85,3 @@ DeclareGlobalFunction( "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCa
 # DeclareGlobalVariable( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory" );
 
 #KeyDependentOperation( "FinSet", IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory, IsInt, ReturnTrue );
-
-#! @Description
-#!  Construct a map $\phi:$<A>s</A>$\to$<A>t</A> of the skeletal finite sets <A>s</A> and <A>t</A>,
-#!  i.e., a morphism in the &CAP; category of <A>s</A>, where <A>G</A>
-#!  is a list of integers in <A>t</A> describing the graph of $\phi$.
-#! @Arguments s, G, t
-#! @Returns a &CAP; morphism
-DeclareOperation( "MapOfFinSets",
-        [ IsObjectInSkeletalFinSets, IsList, IsObjectInSkeletalFinSets ] );
