@@ -138,7 +138,8 @@ InstallMethod( FiniteCoproductCocompletion,
         [ IsCapCategory ],
         
   function ( C )
-    local UC;
+    local UC, install_hom_structure, V,
+          object_function, morphism_function, object_function_inverse, morphism_function_inverse;
     
     ##
     UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
@@ -596,6 +597,127 @@ InstallMethod( FiniteCoproductCocompletion,
                                  uP[map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
+            
+        end );
+        
+    fi;
+    
+    install_hom_structure := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "install_hom_structure", true );
+    
+    if install_hom_structure and
+       ( HasIsEquippedWithHomomorphismStructure( C ) and IsEquippedWithHomomorphismStructure( C ) ) and
+       CheckConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
+       HasRangeCategoryOfHomomorphismStructure( C ) and
+       ( HasIsCartesianCategory and IsCartesianCategory )( RangeCategoryOfHomomorphismStructure( C ) ) and
+       CheckConstructivenessOfCategory( RangeCategoryOfHomomorphismStructure( C ), "IsCartesianCategory" ) = [ ] then
+        
+        V := RangeCategoryOfHomomorphismStructure( C );
+        
+        if ( HasIsTerminalCategory and IsTerminalCategory )( V ) or
+           not ( HasIsCocartesianCategory and IsCocartesianCategory )( V ) then
+            
+            if IsIdenticalObj( C, V ) then
+                
+                # prevent infinite recursion
+                V := UC;
+                
+            else
+                
+                V := FiniteCoproductCocompletion( V );
+                
+            fi;
+            
+            # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
+            object_function := function ( category, V, object )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return ObjectConstructor( V, [ object ] );
+                
+            end;
+            
+            morphism_function := function ( category, V, source, morphism, range )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return MorphismConstructor( V,
+                    source,
+                    Pair( [ 0 ], [ morphism ] ),
+                    range
+                );
+                
+            end;
+            
+            object_function_inverse := function ( category, V, object )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, Length( ObjectDatum( object ) ) = 1 );
+                
+                return ObjectDatum( object )[1];
+                
+            end;
+            
+            morphism_function_inverse := function ( category, V, source, pair_of_lists, range )
+                local morphism;
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, pair_of_lists[1] = [ 0 ] and Length( pair_of_lists[2] ) = 1 );
+                
+                morphism := pair_of_lists[2][1];
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsCapCategoryMorphism( morphism ) and IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( category ) ) );
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsEqualForObjects( source, Source( pair_of_lists[2][1] ) ) );
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsEqualForObjects( range, Range( pair_of_lists[2][1] ) ) );
+                
+                return pair_of_lists[2][1];
+                
+            end;
+            
+            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_function, morphism_function, object_function_inverse, morphism_function_inverse );
+            
+        else
+            
+            ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( C );
+            
+        fi;
+        
+        SetRangeCategoryOfHomomorphismStructure( UC, V );
+        
+        SetIsEquippedWithHomomorphismStructure( UC, true );
+        
+        ##
+        AddDistinguishedObjectOfHomomorphismStructure( UC,
+          function( UC )
+            local V;
+            
+            V := RangeCategoryOfHomomorphismStructure( UC );
+            
+            return DistinguishedObjectOfHomomorphismStructureExtendedByFullEmbedding( UnderlyingCategory( UC ), V );
+            
+        end );
+        
+        ##
+        AddHomomorphismStructureOnObjects( UC,
+          function( UC, S, T )
+            local C, V, LS, LT;
+            
+            C := UnderlyingCategory( UC );
+            V := RangeCategoryOfHomomorphismStructure( UC );
+            
+            LS := AsList( S );
+            LT := AsList( T );
+            
+            return Coproduct( V,
+                           List( List( Tuples( [ 1 .. Length( LT ) ], Length( LS ) ), Reversed ), f ->
+                                 DirectProduct( V,
+                                         List( [ 1 .. Length( LS ) ], i ->
+                                               HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
+                                                       LS[i], LT[f[i]] ) ) ) ) );
             
         end );
         

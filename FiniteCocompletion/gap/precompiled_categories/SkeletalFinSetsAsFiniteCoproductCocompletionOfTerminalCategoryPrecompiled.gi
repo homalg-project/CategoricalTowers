@@ -28,6 +28,28 @@ end
     , 100 );
     
     ##
+    AddDistinguishedObjectOfHomomorphismStructure( cat,
+        
+########
+function ( cat_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, 1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddHomomorphismStructureOnObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Length, Length( arg3_1 ) ^ Length( arg2_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIdentityMorphism( cat,
         
 ########

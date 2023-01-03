@@ -106,6 +106,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
                              category_filter := IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
                              category_object_filter := IsObjectInSkeletalFinSets and HasLength,
                              category_morphism_filter := IsMorphismInSkeletalFinSets and HasAsList,
+                             wrap_range_of_hom_structure := true,
                              only_primitive_operations := true ) : FinalizeCategory := false );
     
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj

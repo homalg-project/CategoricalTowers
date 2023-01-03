@@ -123,3 +123,27 @@ CapJitAddLogicTemplate(
         dst_template := "Product( List( list, Length ) )",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "Product( List( [ 1 .. number ], x -> 1 ) )",
+        dst_template := "1",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list" ],
+        src_template := "Sum( List( list, x -> 1 ) )",
+        dst_template := "Length( list )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number1", "number2" ],
+        src_template := "Length( Tuples( [ 1 .. number1 ], number2 ) )",
+        dst_template := "number1 ^ number2",
+    )
+);
