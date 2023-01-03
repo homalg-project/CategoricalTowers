@@ -20,6 +20,8 @@ B := Fam.B;
 gamma := CocartesianBraiding( A, B );
 #! <A morphism
 #!  in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>
+IsWellDefined( gamma );
+#! true
 PairOfLists( gamma )[1];
 #! [ 1, 0 ]
 HomStructure( Coproduct( A, B ), Coproduct( B, A ) );

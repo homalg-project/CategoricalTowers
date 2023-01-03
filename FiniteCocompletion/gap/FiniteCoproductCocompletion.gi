@@ -267,7 +267,7 @@ InstallMethod( FiniteCoproductCocompletion,
                            IsCapCategoryMorphism( mors[i] ) and
                            IsIdenticalObj( CapCategory( mors[i] ), C ) and
                            IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
-                           IsEqualForObjects( C, Range( mors[i] ), T[1 + imgs[-1 + i]] ) );
+                           IsEqualForObjects( C, Range( mors[i] ), T[1 + imgs[i]] ) );
         fi;
         
     end );
