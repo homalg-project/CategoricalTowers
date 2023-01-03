@@ -627,7 +627,7 @@ InstallMethod( Display,
     local print, lazy;
     
     Print( PrintString( Source( phi ) ) );
-    Print( " ⱶ", AsList( phi ), "→ " );
+    Print( " ⱶ", AsList( PairOfLists( phi )[1] ), "→ " );
     Print( PrintString( Range( phi ) ), "\n\n" );
     
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );
