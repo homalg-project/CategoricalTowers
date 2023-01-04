@@ -139,7 +139,7 @@ InstallMethod( FiniteCoproductCocompletion,
         
   function ( C )
     local UC, install_hom_structure, V,
-          object_function, morphism_function, object_function_inverse, morphism_function_inverse;
+          object_func, morphism_func, object_func_inverse, morphism_func_inverse;
     
     ##
     UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
@@ -591,10 +591,10 @@ InstallMethod( FiniteCoproductCocompletion,
             
             mor := List( m,
                          i -> UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
-                                 cartesian[map[1 + i]],
+                                 cartesian[1 + map[1 + i]],
                                  uT[1 + i],
                                  List( [ 1 .. l ], j -> tau_mors[j][1 + i] ),
-                                 uP[map[1 + i]] ) );
+                                 uP[1 + map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
@@ -630,14 +630,14 @@ InstallMethod( FiniteCoproductCocompletion,
             fi;
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
-            object_function := function ( category, V, object )
+            object_func := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return ObjectConstructor( V, [ object ] );
                 
             end;
             
-            morphism_function := function ( category, V, source, morphism, range )
+            morphism_func := function ( C, V, source, morphism, range )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return MorphismConstructor( V,
@@ -648,17 +648,20 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            object_function_inverse := function ( category, V, object )
+            object_func_inverse := function ( C, V, object )
+                local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, Length( ObjectDatum( object ) ) = 1 );
+                datum := AsList( object );
                 
-                return ObjectDatum( object )[1];
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, Length( datum ) = 1 );
+                
+                return datum[1];
                 
             end;
             
-            morphism_function_inverse := function ( category, V, source, pair_of_lists, range )
+            morphism_func_inverse := function ( C, V, source, pair_of_lists, range )
                 local morphism;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -668,7 +671,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 morphism := pair_of_lists[2][1];
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, IsCapCategoryMorphism( morphism ) and IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( category ) ) );
+                Assert( 0, IsCapCategoryMorphism( morphism ) and IsIdenticalObj( CapCategory( morphism ), C ) );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, IsEqualForObjects( source, Source( pair_of_lists[2][1] ) ) );
@@ -680,7 +683,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_function, morphism_function, object_function_inverse, morphism_function_inverse );
+            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_func, morphism_func, object_func_inverse, morphism_func_inverse );
             
         else
             
@@ -706,7 +709,7 @@ InstallMethod( FiniteCoproductCocompletion,
         ##
         AddHomomorphismStructureOnObjects( UC,
           function( UC, S, T )
-            local C, V, LS, LT;
+            local C, V, LS, LT, s;
             
             C := UnderlyingCategory( UC );
             V := RangeCategoryOfHomomorphismStructure( UC );
@@ -714,12 +717,14 @@ InstallMethod( FiniteCoproductCocompletion,
             LS := AsList( S );
             LT := AsList( T );
             
+            s := Length( LS );
+            
             return Coproduct( V,
-                           List( List( Tuples( [ 1 .. Length( LT ) ], Length( LS ) ), Reversed ), f ->
+                           List( List( Tuples( [ 1 .. Length( LT ) ], s ), Reversed ), map ->
                                  DirectProduct( V,
-                                         List( [ 1 .. Length( LS ) ], i ->
+                                         List( [ 1 .. s ], i ->
                                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
-                                                       LS[i], LT[f[i]] ) ) ) ) );
+                                                       LS[i], LT[map[i]] ) ) ) ) );
             
         end );
         
@@ -825,6 +830,29 @@ InstallMethod( Display,
     Display( AsList( a ) );
     
     Display( "\nAn object in the finite coproduct cocompletion category given by the above data" );
+    
+end );
+
+##
+InstallMethod( PrintString,
+        [ IsObjectInFiniteCoproductCocompletion ],
+        
+  function ( a )
+    local l, string;
+    
+    l := Length( AsList( a ) );
+    
+    if l = 0 then
+        return "∅";
+    elif l = 1 then
+        return "{ 0 }";
+    elif l = 2 then
+        return "{ 0, 1 }";
+    elif l = 3 then
+        return "{ 0, 1, 2 }";
+    fi;
+    
+    return Concatenation( "{ 0,..., ", String( l - 1 ), " }" );
     
 end );
 
