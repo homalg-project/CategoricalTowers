@@ -5,41 +5,41 @@ LoadPackage( "FiniteCocompletion" );
 #! true
 LoadPackage( "Algebroids" );
 #! true
-Q := RightQuiver( "Q(A,B)[]" );
-#! Q(A,B)[]
-FQ := FreeCategory( Q );
-#! FreeCategory( RightQuiver( "Q(A,B)[]" ) )
-SetName( FQ.A, "FQ.A" ); SetName( FQ.B, "FQ.B" );
-Fam := FiniteCoproductCocompletion( FQ );
-#! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )
-A := Fam.A;
+Q := RightQuiver( "Q(a,b)[]" );
+#! Q(a,b)[]
+C := FreeCategory( Q );
+#! FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+SetName( C.a, "C.a" ); SetName( C.b, "C.b" );
+Fam := FiniteCoproductCocompletion( C );
+#! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+a := Fam.a;
 #! <A projective object in
-#!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>
-B := Fam.B;
+#!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
+b := Fam.b;
 #! <A projective object in
-#!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>
-gamma := CocartesianBraiding( A, B );
+#!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
+gamma := CocartesianBraiding( a, b );
 #! <A morphism
-#!  in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>
+#!  in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 IsWellDefined( gamma );
 #! true
 Display( gamma );
 #! { 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }
 #! 
 #! A morphism in
-#! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )
+#! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 #! with the above associated map
 Display( Source( gamma ) );
-#! [ FQ.A, FQ.B ]
+#! [ C.a, C.b ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 Display( Range( gamma ) );
-#! [ FQ.B, FQ.A ]
+#! [ C.b, C.a ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
-Source( gamma ) = Coproduct( A, B );
+Source( gamma ) = Coproduct( a, b );
 #! true
-Range( gamma ) = Coproduct( B, A );
+Range( gamma ) = Coproduct( b, a );
 #! true
 HomStructure( Source( gamma ), Range( gamma ) );
 #! |1|
