@@ -834,6 +834,29 @@ InstallMethod( Display,
 end );
 
 ##
+InstallMethod( PrintString,
+        [ IsObjectInFiniteCoproductCocompletion ],
+        
+  function ( a )
+    local l, string;
+    
+    l := Length( AsList( a ) );
+    
+    if l = 0 then
+        return "∅";
+    elif l = 1 then
+        return "{ 0 }";
+    elif l = 2 then
+        return "{ 0, 1 }";
+    elif l = 3 then
+        return "{ 0, 1, 2 }";
+    fi;
+    
+    return Concatenation( "{ 0,..., ", String( l - 1 ), " }" );
+    
+end );
+
+##
 InstallMethod( Display,
         [ IsMorphismInFiniteCoproductCocompletion ],
         
