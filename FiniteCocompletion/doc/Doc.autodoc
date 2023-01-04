@@ -11,6 +11,9 @@
 @Subsection Cocartesian associator
 @InsertChunk CocartesianAssociator
 
+@Subsection Homomorphism structure
+@InsertChunk HomStructure
+
 @Chapter SkeletalFinSets
 
 @Section Attributes

@@ -139,7 +139,7 @@ InstallMethod( FiniteCoproductCocompletion,
         
   function ( C )
     local UC, install_hom_structure, V,
-          object_func, morphism_func, object_func_inverse, morphism_func_inverse;
+          object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
     UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
@@ -683,9 +683,13 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
+            extended := true;
+            
             ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_func, morphism_func, object_func_inverse, morphism_func_inverse );
             
         else
+            
+            extended := false;
             
             ExtendRangeOfHomomorphismStructureByIdentityAsFullEmbedding( C );
             
@@ -727,6 +731,107 @@ InstallMethod( FiniteCoproductCocompletion,
                                                        LS[i], LT[map[i]] ) ) ) ) );
             
         end );
+        
+        ##
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UC,
+          function( UC, distinguished_object, phi, range )
+            local C, V, LS, LT, s, t, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
+            
+            C := UnderlyingCategory( UC );
+            V := RangeCategoryOfHomomorphismStructure( UC );
+            
+            LS := AsList( Source( phi ) );
+            LT := AsList( Range( phi ) );
+            
+            s := Length( LS );
+            t := Length( LT );
+            
+            Homs := List( List( Tuples( [ 1 .. t ], s ), Reversed ), map ->
+                          List( [ 1 .. s ], i ->
+                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
+                                        LS[i], LT[map[i]] ) ) );
+            
+            homs := List( Homs, L -> DirectProduct( V, L ) );
+            
+            pair_of_lists := PairOfLists( phi );
+            
+            map := pair_of_lists[1];
+            mor := pair_of_lists[2];
+
+            ## map -> number
+            number := Sum( [ 0 .. s - 1 ], i -> map[1 + i] * t^i );
+            
+            intros := List( [ 1 .. s ], i ->
+                            InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, V,
+                                    distinguished_object, mor[i], Homs[1 + number][i] ) );
+            
+            intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
+                             Homs[1 + number],
+                             distinguished_object,
+                             intros,
+                             homs[1 + number] );
+            
+            return PreCompose( V,
+                           intro,
+                           InjectionOfCofactorOfCoproductWithGivenCoproduct( V,
+                                   homs,
+                                   1 + number,
+                                   range ) );
+            
+        end );
+        
+        if extended then
+            
+            ##
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
+              function( UC, S, T, morphism )
+                local C, UV, V, LS, LT, s, t, Homs, homs, pair_of_lists, number, map, m, mor;
+                
+                C := UnderlyingCategory( UC );
+                UV := RangeCategoryOfHomomorphismStructure( UC );
+                V := UnderlyingCategory( UV );
+                
+                LS := AsList( S );
+                LT := AsList( T );
+                
+                s := Length( LS );
+                t := Length( LT );
+                
+                Homs := List( List( Tuples( [ 1 .. t ], s ), Reversed ), map ->
+                              List( [ 1 .. s ], i ->
+                                    HomomorphismStructureOnObjects( C,
+                                            LS[i], LT[map[i]] ) ) );
+                
+                homs := List( Homs, L -> DirectProduct( V, L ) );
+                
+                pair_of_lists := PairOfLists( morphism );
+                
+                number := pair_of_lists[1][1];
+                
+                ## number -> map
+                map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
+                
+                m := pair_of_lists[2][1];
+                
+                mor := List( [ 1 .. s ], i ->
+                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
+                                     LS[i],
+                                     LT[1 + map[i]],
+                                     PreCompose( V,
+                                             m,
+                                             ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
+                                                     Homs[1 + number],
+                                                     i,
+                                                     homs[1 + number] ) ) ) );
+                
+                return MorphismConstructor( UC,
+                               S,
+                               Pair( map, mor ),
+                               T );
+                
+            end );
+            
+        fi;
         
     fi;
     

@@ -86,6 +86,41 @@ end
     , 100 );
     
     ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+        
+########
+function ( cat_1, source_1, alpha_1, range_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1;
+    hoisted_2_1 := Length( Range( alpha_1 ) );
+    hoisted_1_1 := AsList( alpha_1 );
+    hoisted_3_1 := Sum( [ 0 .. Length( Source( alpha_1 ) ) - 1 ], function ( i_2 )
+            return hoisted_1_1[(1 + i_2)] * hoisted_2_1 ^ i_2;
+        end );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
+              return hoisted_3_1;
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+        
+########
+function ( cat_1, source_1, range_1, alpha_1 )
+    local hoisted_1_1, hoisted_2_1;
+    hoisted_2_1 := AsList( alpha_1 )[1];
+    hoisted_1_1 := Length( range_1 );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( i_2 )
+              return REM_INT( QUO_INT( hoisted_2_1, hoisted_1_1 ^ i_2 ), hoisted_1_1 );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddIsCongruentForMorphisms( cat,
         
 ########
