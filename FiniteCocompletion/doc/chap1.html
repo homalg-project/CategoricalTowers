@@ -50,6 +50,8 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A76626D80672536">1.4-2 <span class="Heading">Cocartesian associator</span></a>
 </span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86A2AE6E7C297595">1.4-3 <span class="Heading">Homomorphism structure</span></a>
+</span>
 </div></div>
 </div>
 
@@ -274,6 +276,88 @@ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )
 &lt;A morphism in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
+true
+</pre></div>
+
+<p><a id="X86A2AE6E7C297595" name="X86A2AE6E7C297595"></a></p>
+
+<h5>1.4-3 <span class="Heading">Homomorphism structure</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalCategoryWithMultipleObjects( );</span>
+TerminalCategoryWithMultipleObjects( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := FiniteCoproductCocompletion( T );</span>
+FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
+[ A0, A1, A2 ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := [ "B0" / T, "B1" / T ] / sFinSets;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( B );</span>
+[ B0, B1 ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomStructure( sFinSets );</span>
+&lt;An object in
+ FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I );</span>
+[ TerminalObject ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := AsList( I )[1];</span>
+&lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( U );</span>
+TerminalObject
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomAB := HomStructure( A, B );</span>
+&lt;An object in
+ FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := AsList( HomAB );</span>
+[ &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt;,
+  &lt;A zero object in TerminalCategoryWithMultipleObjects( )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( L );</span>
+8
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homAB := List( [ 0 .. Length( L ) - 1 ], i -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               MorphismConstructor( sFinSets,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       I,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       Pair( [ i ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                             [ MorphismConstructor( T,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                     U,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                     String( i ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                     L[1 + i] ) ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       HomAB ) );</span>
+[ &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
+  &lt;A morphism in
+   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, IsWellDefined );</span>
+[ true, true, true, true, true, true, true, true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, m -&gt; HomStructure( HomStructure( A, B, m ) ) ) = homAB;</span>
 true
 </pre></div>
 
