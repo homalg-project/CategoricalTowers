@@ -13,10 +13,10 @@ SetName( C.a, "C.a" ); SetName( C.b, "C.b" );
 FamC := FiniteCoproductCocompletion( C );
 #! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 a := FamC.a;
-#! <A projective object in
+#! <An object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 b := FamC.b;
-#! <A projective object in
+#! <An object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 gamma := CocartesianBraiding( a, b );
 #! <A morphism

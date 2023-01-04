@@ -880,7 +880,8 @@ InstallMethod( \.,
     
     if IsObjectInFiniteCoproductCocompletion( Yc ) then
 
-        SetIsProjective( Yc, true );
+        #TODO: is this true?
+        #SetIsProjective( Yc, true );
         
     elif IsMorphismInFiniteCoproductCocompletion( Yc ) then
         
