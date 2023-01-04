@@ -322,47 +322,6 @@ InstallMethod( AsMorphismInLazyCategory,
 end );
 
 ##
-InstallOtherMethod( \/,
-        "for an object and a lazy CAP category",
-        [ IsObject, IsLazyCapCategory ],
-        
-  function( data, C )
-    
-    return ( data / UnderlyingCategory( C ) ) / C;
-    
-end );
-
-##
-InstallOtherMethod( \/,
-        "for a CAP category object and a lazy CAP category",
-         [ IsCapCategoryObject, IsLazyCapCategory ],
-        
-  function( object, cat )
-    
-    if not IsIdenticalObj( CapCategory( object ), UnderlyingCategory( cat ) ) then
-        TryNextMethod( );
-    fi;
-    
-    return AsObjectInLazyCategory( cat, object );
-    
-end );
-
-##
-InstallOtherMethod( \/,
-        "for a CAP category morphism and a lazy CAP category",
-        [ IsCapCategoryMorphism, IsLazyCapCategory ],
-        
-  function( morphism, cat )
-    
-    if not IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( cat ) ) then
-        TryNextMethod( );
-    fi;
-    
-    return AsMorphismInLazyCategory( cat, morphism );
-    
-end );
-
-##
 InstallMethod( LazyCategory,
         "for a CAP category",
         [ IsCapCategory ],
@@ -997,6 +956,63 @@ InstallMethod( LazyCategory,
     Finalize( D );
     
     return D;
+    
+end );
+
+##
+InstallOtherMethod( \/,
+        "for an object and a lazy CAP category",
+        [ IsObject, IsLazyCapCategory ],
+        
+  function( data, C )
+    
+    return ( data / UnderlyingCategory( C ) ) / C;
+    
+end );
+
+##
+InstallOtherMethod( \/,
+        "for a CAP category object and a lazy CAP category",
+         [ IsCapCategoryObject, IsLazyCapCategory ],
+        
+  function( object, cat )
+    
+    if not IsIdenticalObj( CapCategory( object ), UnderlyingCategory( cat ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return AsObjectInLazyCategory( cat, object );
+    
+end );
+
+##
+InstallOtherMethod( \/,
+        "for a CAP category morphism and a lazy CAP category",
+        [ IsCapCategoryMorphism, IsLazyCapCategory ],
+        
+  function( morphism, cat )
+    
+    if not IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( cat ) ) then
+        TryNextMethod( );
+    fi;
+    
+    return AsMorphismInLazyCategory( cat, morphism );
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a lazy category and a positive integer",
+        [ IsLazyCapCategory, IsPosInt ],
+        
+  function( lazy_cat, string_as_int )
+    local name, C;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( lazy_cat );
+    
+    return C.(name) / lazy_cat;
     
 end );
 
