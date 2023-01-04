@@ -139,7 +139,7 @@ InstallMethod( FiniteCoproductCocompletion,
         
   function ( C )
     local UC, install_hom_structure, V,
-          object_function, morphism_function, object_function_inverse, morphism_function_inverse;
+          object_func, morphism_func, object_func_inverse, morphism_func_inverse;
     
     ##
     UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
@@ -630,14 +630,14 @@ InstallMethod( FiniteCoproductCocompletion,
             fi;
             
             # prepare for ExtendRangeOfHomomorphismStructureByFullEmbedding
-            object_function := function ( C, V, object )
+            object_func := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return ObjectConstructor( V, [ object ] );
                 
             end;
             
-            morphism_function := function ( C, V, source, morphism, range )
+            morphism_func := function ( C, V, source, morphism, range )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
                 return MorphismConstructor( V,
@@ -648,7 +648,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            object_function_inverse := function ( C, V, object )
+            object_func_inverse := function ( C, V, object )
                 local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -661,7 +661,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            morphism_function_inverse := function ( C, V, source, pair_of_lists, range )
+            morphism_func_inverse := function ( C, V, source, pair_of_lists, range )
                 local morphism;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
@@ -683,7 +683,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             end;
             
-            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_function, morphism_function, object_function_inverse, morphism_function_inverse );
+            ExtendRangeOfHomomorphismStructureByFullEmbedding( C, V, object_func, morphism_func, object_func_inverse, morphism_func_inverse );
             
         else
             
