@@ -111,13 +111,6 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
     
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );
-    
-    ##
-    sFinSets!.compiler_hints :=
-      rec( category_filter := IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
-           object_filter := IsObjectInSkeletalFinSets,
-           morphism_filter := IsMorphismInSkeletalFinSets,
-           );
 
     if ValueOption( "no_precompiled_code" ) <> true then
         
