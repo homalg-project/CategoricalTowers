@@ -591,10 +591,10 @@ InstallMethod( FiniteCoproductCocompletion,
             
             mor := List( m,
                          i -> UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
-                                 cartesian[map[1 + i]],
+                                 cartesian[1 + map[1 + i]],
                                  uT[1 + i],
                                  List( [ 1 .. l ], j -> tau_mors[j][1 + i] ),
-                                 uP[map[1 + i]] ) );
+                                 uP[1 + map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
