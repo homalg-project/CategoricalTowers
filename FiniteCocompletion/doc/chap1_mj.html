@@ -227,26 +227,43 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(A,B)[]" );</span>
-Q(A,B)[]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FQ := FreeCategory( Q );</span>
-FreeCategory( RightQuiver( "Q(A,B)[]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( FQ );</span>
-FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Fam.A;</span>
-&lt;A projective object in
- FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Fam.B;</span>
-&lt;A projective object in
- FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CocartesianBraiding( A, B );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b)[]" );</span>
+Q(a,b)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" ); SetName( C.b, "C.b" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FamC := FiniteCoproductCocompletion( C );</span>
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FamC.a;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FamC.b;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CocartesianBraiding( a, b );</span>
 &lt;A morphism
- in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )&gt;
+ in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( gamma );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PairOfLists( gamma )[1];</span>
-[ 1, 0 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( Coproduct( A, B ), Coproduct( B, A ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
+{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }
+
+A morphism in
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+with the above associated map
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( gamma ) );</span>
+[ C.a, C.b ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( gamma ) );</span>
+[ C.b, C.a ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( gamma ) = Coproduct( a, b );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( gamma ) = Coproduct( b, a );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( Source( gamma ), Range( gamma ) );</span>
 |1|
 </pre></div>
 
@@ -260,24 +277,24 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(A,B,C)[]" );</span>
-Q(A,B,C)[]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FQ := FreeCategory( Q );</span>
-FreeCategory( RightQuiver( "Q(A,B,C)[]" ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( FQ );</span>
-FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := Fam.A;</span>
-&lt;A projective object in
- FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Fam.B;</span>
-&lt;A projective object in
- FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := Fam.C;</span>
-&lt;A projective object in
- FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CocartesianAssociatorLeftToRight( A, B, C );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b,c)[]" );</span>
+Q(a,b,c)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( C );</span>
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := Fam.a;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := Fam.b;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := Fam.c;</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CocartesianAssociatorLeftToRight( a, b, c );</span>
 &lt;A morphism in
- FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )&gt;
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
 true
 </pre></div>
@@ -294,6 +311,14 @@ true
 TerminalCategoryWithMultipleObjects( )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := FiniteCoproductCocompletion( T );</span>
 FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( TerminalObject( sFinSets ) );</span>
+[ TerminalObject ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( InitialObject( sFinSets ) );</span>
+[  ]
+
+An object in the finite coproduct cocompletion category given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;</span>
 &lt;An object in
  FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
@@ -358,6 +383,30 @@ TerminalObject
    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;,
   &lt;A morphism in
    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, IsWellDefined );</span>
+[ true, true, true, true, true, true, true, true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, m -&gt; HomStructure( HomStructure( A, B, m ) ) ) = homAB;</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );</span>
+SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := ObjectConstructor( sFinSets, 2 );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomAB := HomStructure( A, B );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomStructure( sFinSets );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homAB := List( [ 0 .. Length( L ) - 1 ], i -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               MorphismConstructor( I, [ i ], HomAB ) );</span>
+[ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,
+  |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, IsWellDefined );</span>
 [ true, true, true, true, true, true, true, true ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, m -&gt; HomStructure( HomStructure( A, B, m ) ) ) = homAB;</span>

@@ -149,26 +149,43 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(A,B)[]" );[127X[104X
-    [4X[28XQ(A,B)[][128X[104X
-    [4X[25Xgap>[125X [27XFQ := FreeCategory( Q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "Q(A,B)[]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( FQ );[127X[104X
-    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := Fam.A;[127X[104X
-    [4X[28X<A projective object in[128X[104X
-    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XB := Fam.B;[127X[104X
-    [4X[28X<A projective object in[128X[104X
-    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xgamma := CocartesianBraiding( A, B );[127X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a,b)[]" );[127X[104X
+    [4X[28XQ(a,b)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XSetName( C.a, "C.a" ); SetName( C.b, "C.b" );[127X[104X
+    [4X[25Xgap>[125X [27XFamC := FiniteCoproductCocompletion( C );[127X[104X
+    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := FamC.a;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := FamC.b;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := CocartesianBraiding( a, b );[127X[104X
     [4X[28X<A morphism[128X[104X
-    [4X[28X in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B)[]" ) ) )>[128X[104X
+    [4X[28X in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( gamma );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XPairOfLists( gamma )[1];[127X[104X
-    [4X[28X[ 1, 0 ][128X[104X
-    [4X[25Xgap>[125X [27XHomStructure( Coproduct( A, B ), Coproduct( B, A ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xwith the above associated map[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( gamma ) );[127X[104X
+    [4X[28X[ C.a, C.b ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Range( gamma ) );[127X[104X
+    [4X[28X[ C.b, C.a ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XSource( gamma ) = Coproduct( a, b );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange( gamma ) = Coproduct( b, a );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( Source( gamma ), Range( gamma ) );[127X[104X
     [4X[28X|1|[128X[104X
   [4X[32X[104X
   
@@ -180,24 +197,24 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(A,B,C)[]" );[127X[104X
-    [4X[28XQ(A,B,C)[][128X[104X
-    [4X[25Xgap>[125X [27XFQ := FreeCategory( Q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "Q(A,B,C)[]" ) )[128X[104X
-    [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( FQ );[127X[104X
-    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := Fam.A;[127X[104X
-    [4X[28X<A projective object in[128X[104X
-    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XB := Fam.B;[127X[104X
-    [4X[28X<A projective object in[128X[104X
-    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27XC := Fam.C;[127X[104X
-    [4X[28X<A projective object in[128X[104X
-    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xalpha := CocartesianAssociatorLeftToRight( A, B, C );[127X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a,b,c)[]" );[127X[104X
+    [4X[28XQ(a,b,c)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b,c)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XFam := FiniteCoproductCocompletion( C );[127X[104X
+    [4X[28XFiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := Fam.a;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := Fam.b;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xc := Fam.c;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := CocartesianAssociatorLeftToRight( a, b, c );[127X[104X
     [4X[28X<A morphism in[128X[104X
-    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(A,B,C)[]" ) ) )>[128X[104X
+    [4X[28X FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XIsOne( alpha );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
@@ -212,6 +229,14 @@
     [4X[28XTerminalCategoryWithMultipleObjects( )[128X[104X
     [4X[25Xgap>[125X [27XsFinSets := FiniteCoproductCocompletion( T );[127X[104X
     [4X[28XFiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( TerminalObject( sFinSets ) );[127X[104X
+    [4X[28X[ TerminalObject ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( InitialObject( sFinSets ) );[127X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XA := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;[127X[104X
     [4X[28X<An object in[128X[104X
     [4X[28X FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
@@ -276,6 +301,29 @@
     [4X[28X   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
     [4X[28X  <A morphism in[128X[104X
     [4X[28X   FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )> ][128X[104X
+    [4X[25Xgap>[125X [27XList( homAB, IsWellDefined );[127X[104X
+    [4X[28X[ true, true, true, true, true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27XList( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27XA := ObjectConstructor( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XB := ObjectConstructor( sFinSets, 2 );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27XHomAB := HomStructure( A, B );[127X[104X
+    [4X[28X|8|[128X[104X
+    [4X[25Xgap>[125X [27XI := HomStructure( sFinSets );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27XhomAB := List( [ 0 .. Length( L ) - 1 ], i ->[127X[104X
+    [4X[25X>[125X [27X               MorphismConstructor( I, [ i ], HomAB ) );[127X[104X
+    [4X[28X[ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,[128X[104X
+    [4X[28X  |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ][128X[104X
     [4X[25Xgap>[125X [27XList( homAB, IsWellDefined );[127X[104X
     [4X[28X[ true, true, true, true, true, true, true, true ][128X[104X
     [4X[25Xgap>[125X [27XList( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;[127X[104X
