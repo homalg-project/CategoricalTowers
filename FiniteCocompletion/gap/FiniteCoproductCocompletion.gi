@@ -868,15 +868,15 @@ InstallMethod( \.,
         [ IsFiniteCoproductCocompletion, IsPosInt ],
         
   function( UC, string_as_int )
-    local name, F, Y, Yc;
+    local name, C, Y, Yc;
     
     name := NameRNam( string_as_int );
     
-    F := UnderlyingCategory( UC );
+    C := UnderlyingCategory( UC );
     
     Y := YonedaEmbeddingOfUnderlyingCategory( UC );
     
-    Yc := Y( F.(name) );
+    Yc := Y( C.(name) );
     
     if IsObjectInFiniteCoproductCocompletion( Yc ) then
 
