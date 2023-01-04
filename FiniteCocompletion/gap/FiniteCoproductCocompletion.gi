@@ -912,17 +912,6 @@ InstallMethod( \.,
     
 end );
 
-##
-InstallMethod( \.,
-        "for a cell in a finite coproduct cocompletion category and a positive integer",
-        [ IsCellInFiniteCoproductCocompletion, IsPosInt ],
-        
-  function( cell, string_as_int )
-    
-    return UnderlyingCell( cell ).(NameRNam( string_as_int ));
-    
-end );
-
 ##################################
 ##
 ## View & Display
