@@ -7,6 +7,14 @@ T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
 sFinSets := FiniteCoproductCocompletion( T );
 #! FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
+Display( TerminalObject( sFinSets ) );
+#! [ TerminalObject ]
+#! 
+#! An object in the finite coproduct cocompletion category given by the above data
+Display( InitialObject( sFinSets ) );
+#! [  ]
+#! 
+#! An object in the finite coproduct cocompletion category given by the above data
 A := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;
 #! <An object in
 #!  FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
