@@ -12,13 +12,13 @@ C := FreeCategory( Q );
 Fam := FiniteCoproductCocompletion( C );
 #! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
 a := Fam.a;
-#! <A projective object in
+#! <An object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 b := Fam.b;
-#! <A projective object in
+#! <An object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 c := Fam.c;
-#! <A projective object in
+#! <An object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 alpha := CocartesianAssociatorLeftToRight( a, b, c );
 #! <A morphism in
