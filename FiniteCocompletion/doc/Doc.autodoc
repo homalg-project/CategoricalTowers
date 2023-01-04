@@ -13,6 +13,7 @@
 
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
+@InsertChunk SkeletalHomStructure
 
 @Chapter SkeletalFinSets
 
