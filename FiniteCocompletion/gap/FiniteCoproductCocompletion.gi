@@ -806,6 +806,9 @@ InstallMethod( FiniteCoproductCocompletion,
                 
                 pair_of_lists := PairOfLists( morphism );
                 
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, Length( pair_of_lists[1] ) = 1 );
+                
                 number := pair_of_lists[1][1];
                 
                 ## number -> map
