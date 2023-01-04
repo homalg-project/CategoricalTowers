@@ -10,12 +10,12 @@ Q := RightQuiver( "Q(a,b)[]" );
 C := FreeCategory( Q );
 #! FreeCategory( RightQuiver( "Q(a,b)[]" ) )
 SetName( C.a, "C.a" ); SetName( C.b, "C.b" );
-Fam := FiniteCoproductCocompletion( C );
+FamC := FiniteCoproductCocompletion( C );
 #! FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
-a := Fam.a;
+a := FamC.a;
 #! <A projective object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
-b := Fam.b;
+b := FamC.b;
 #! <A projective object in
 #!  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 gamma := CocartesianBraiding( a, b );
