@@ -1000,6 +1000,22 @@ InstallOtherMethod( \/,
     
 end );
 
+##
+InstallMethod( \.,
+        "for a lazy category and a positive integer",
+        [ IsLazyCapCategory, IsPosInt ],
+        
+  function( lazy_cat, string_as_int )
+    local name, C;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( lazy_cat );
+    
+    return C.(name) / lazy_cat;
+    
+end );
+
 ##################################
 ##
 ## Visualize
