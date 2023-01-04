@@ -147,3 +147,59 @@ CapJitAddLogicTemplate(
         dst_template := "number1 ^ number2",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number1", "number2" ],
+        src_template := "List( Tuples( [ 1 .. number1 ], number2 ), x -> 1 )",
+        dst_template := "ListWithIdenticalEntries( number1 ^ number2, 1 )",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number", "index" ],
+        src_template := "[ number ][index]",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "0 * number",
+        dst_template := "0",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "number + 1 - 1",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "1 + number - 1",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
+        src_template := "[ number .. number ]",
+        dst_template := "[ number ]",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number1", "number2" ],
+        src_template := "Sum( ListWithIdenticalEntries( number1, 1 ){[ 1 .. number2 ]} )",
+        dst_template := "number2",
+    )
+);
