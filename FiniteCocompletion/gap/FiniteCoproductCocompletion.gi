@@ -868,15 +868,15 @@ InstallMethod( \.,
         [ IsFiniteCoproductCocompletion, IsPosInt ],
         
   function( UC, string_as_int )
-    local name, F, Y, Yc;
+    local name, C, Y, Yc;
     
     name := NameRNam( string_as_int );
     
-    F := UnderlyingCategory( UC );
+    C := UnderlyingCategory( UC );
     
     Y := YonedaEmbeddingOfUnderlyingCategory( UC );
     
-    Yc := Y( F.(name) );
+    Yc := Y( C.(name) );
     
     if IsObjectInFiniteCoproductCocompletion( Yc ) then
 
@@ -909,17 +909,6 @@ InstallMethod( \.,
     fi;
     
     return Yc;
-    
-end );
-
-##
-InstallMethod( \.,
-        "for a cell in a finite coproduct cocompletion category and a positive integer",
-        [ IsCellInFiniteCoproductCocompletion, IsPosInt ],
-        
-  function( cell, string_as_int )
-    
-    return UnderlyingCell( cell ).(NameRNam( string_as_int ));
     
 end );
 
