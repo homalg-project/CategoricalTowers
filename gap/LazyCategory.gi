@@ -997,6 +997,24 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallMethod( EmbeddingFunctorOfUnderlyingCategory,
+        "for a lazy category",
+        [ IsLazyCapCategory ],
+        
+  function( lazy_cat )
+    local E;
+    
+    E := CapFunctor( "Embedding functor into lazy category", UnderlyingCategory( lazy_cat ), lazy_cat );
+    
+    AddObjectFunction( E, objC -> AsObjectInLazyCategory( lazy_cat, objC ) );
+    
+    AddMorphismFunction( E, { source, morC, range } -> AsMorphismInLazyCategory( source, morC, range ) );
+    
+    return E;
+    
+end );
+
 ##################################
 ##
 ## Visualize
