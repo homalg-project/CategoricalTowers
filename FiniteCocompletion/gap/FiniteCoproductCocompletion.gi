@@ -913,6 +913,76 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallMethod( ExtendFunctorToFiniteCoproductCocompletion,
+        "for a functor",
+        [ IsCapFunctor ],
+        
+  function( F )
+    local C, D, UC, UF;
+    
+    C := SourceOfFunctor( F );
+    D := RangeOfFunctor( F );
+    
+    UC := FiniteCoproductCocompletion( C );
+    
+    UF := CapFunctor( Concatenation( "Extension to FiniteCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
+    
+    ## the code below contains the entire coproduct semantics
+    
+    AddObjectFunction( UF,
+      function( objUC )
+        local L;
+        
+        L := AsList( objUC );
+        
+        return Coproduct( D, List( L, objC -> ApplyFunctor( F, objC ) ) );
+        
+    end );
+    
+    AddMorphismFunction( UF,
+      function( source, morUC, range )
+        local pair_of_lists, map, mor, Fmor, S, T, LS, LT, FLS, FLT, inj, cmp;
+        
+        pair_of_lists := PairOfLists( morUC );
+        
+        map := pair_of_lists[1];
+        mor := pair_of_lists[2];
+        
+        Fmor := List( mor, m -> ApplyFunctor( F, m ) );
+        
+        S := Source( morUC );
+        T := Range( morUC );
+        
+        LS := AsList( S );
+        LT := AsList( T );
+        
+        FLS := List( LS, S_i -> ApplyFunctor( F, S_i ) );
+        FLT := List( LT, T_i -> ApplyFunctor( F, T_i ) );
+        
+        inj := List( map, i ->
+                     InjectionOfCofactorOfCoproductWithGivenCoproduct( D,
+                             FLT,
+                             1 + i,
+                             range ) );
+        
+        cmp := List( [ 1 .. Length( LS ) ], i ->
+                     PreCompose( D,
+                             Fmor[i],
+                             inj[i] ) );
+        
+        return UniversalMorphismFromCoproductWithGivenCoproduct( D,
+                       FLS,
+                       range,
+                       cmp,
+                       source );
+        
+    end );
+    
+    return UF;
+    
+end );
+
 ##################################
 ##
 ## View & Display
