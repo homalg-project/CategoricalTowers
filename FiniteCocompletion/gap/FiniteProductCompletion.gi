@@ -132,12 +132,6 @@ InstallMethod( FiniteProductCompletion,
     
     SetUnderlyingCategory( PC, C );
     
-    PC!.compiler_hints :=
-      rec( category_filter := IsFiniteCoproductCocompletion,
-           object_filter := IsObjectInFiniteCoproductCocompletion,
-           morphism_filter := IsMorphismInFiniteCoproductCocompletion,
-           );
-    
     Finalize( PC );
     
     return PC;
