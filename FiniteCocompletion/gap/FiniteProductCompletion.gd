@@ -96,3 +96,11 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteProductCompletion ],
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
 
 end );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the finite product completion <A>PC</A> into <A>PC</A>.
+#! @Arguments PC
+#! @Returns a &CAP; functor
+DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategory",
+        IsFiniteProductCompletion );
