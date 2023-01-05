@@ -39,7 +39,8 @@ DeclareCategory( "IsMorphismInFiniteProductCompletion",
 ####################################
 
 #! @Description
-#!  Return the finite product completion of the category <A>cat</A>.
+#!  Return the finite product completion of the category <A>cat</A>
+#!  in which the cartesian associators are given by identities.
 #! @Arguments cat
 DeclareAttribute( "FiniteProductCompletion",
         IsCapCategory );
