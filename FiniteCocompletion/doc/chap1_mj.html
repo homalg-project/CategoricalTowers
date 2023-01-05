@@ -54,9 +54,11 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D4582397CD2E4D7">1.4-2 <span class="Heading">Cartesian braiding</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A76626D80672536">1.4-3 <span class="Heading">Cocartesian associator</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80ADA08878BD2857">1.4-3 <span class="Heading">Cartesian diagonal</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86A2AE6E7C297595">1.4-4 <span class="Heading">Homomorphism structure</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A76626D80672536">1.4-4 <span class="Heading">Cocartesian associator</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86A2AE6E7C297595">1.4-5 <span class="Heading">Homomorphism structure</span></a>
 </span>
 </div></div>
 </div>
@@ -377,11 +379,121 @@ with the above associated map
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( gamma ) = ba;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LPC := LazyCategory( PC );</span>
+LazyCategory(
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LPC );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteProductCompletion( F );</span>
+Extension to FiniteProductCompletion( Source(
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ggamma := G( gamma );</span>
+&lt;A morphism in LazyCategory(
+ FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ggamma );</span>
+true
+</pre></div>
+
+<p><a id="X80ADA08878BD2857" name="X80ADA08878BD2857"></a></p>
+
+<h5>1.4-3 <span class="Heading">Cartesian diagonal</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a)[]" );</span>
+Q(a)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PC := FiniteProductCompletion( C );</span>
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := PC.a;</span>
+&lt;An object in
+ FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := DirectProduct( a, a );</span>
+&lt;An object in
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
+[ C.a, C.a ]
+
+An object in the finite product completion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( aa, a );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( a, aa );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
+(a)-[(a)]-&gt;(a)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );</span>
+&lt;A morphism in
+ FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LPC := LazyCategory( PC );</span>
+LazyCategory(
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LPC );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteProductCompletion( F );</span>
+Extension to FiniteProductCompletion( Source(
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gdelta := G( delta );</span>
+&lt;A morphism in LazyCategory(
+ FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Gdelta );</span>
+true
 </pre></div>
 
 <p><a id="X7A76626D80672536" name="X7A76626D80672536"></a></p>
 
-<h5>1.4-3 <span class="Heading">Cocartesian associator</span></h5>
+<h5>1.4-4 <span class="Heading">Cocartesian associator</span></h5>
 
 
 <div class="example"><pre>
@@ -463,7 +575,7 @@ true
 
 <p><a id="X86A2AE6E7C297595" name="X86A2AE6E7C297595"></a></p>
 
-<h5>1.4-4 <span class="Heading">Homomorphism structure</span></h5>
+<h5>1.4-5 <span class="Heading">Homomorphism structure</span></h5>
 
 
 <div class="example"><pre>
