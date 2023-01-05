@@ -42,7 +42,7 @@ InstallMethod( FiniteCompletion,
 end );
 
 ##
-InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
+InstallMethod( CoYonedaEmbeddingOfUnderlyingCategory,
         "for a finite completion category",
         [ IsFiniteCompletion ],
         
@@ -67,7 +67,7 @@ InstallMethod( \.,
     
     F := UnderlyingCategory( finite_completion );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( finite_completion );
+    Y := CoYonedaEmbeddingOfUnderlyingCategory( finite_completion );
     
     Yc := Y( F.(name) );
     
