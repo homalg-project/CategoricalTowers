@@ -103,3 +103,11 @@ end );
 #! @Returns a &CAP; functor
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsFiniteCoproductCocompletion );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the finite coproduct cocompletion <A>UC</A> into <A>UC</A>.
+#! @Arguments UC
+#! @Returns a &CAP; functor
+DeclareAttribute( "ExtendFunctorToFiniteCoproductCocompletion",
+        IsCapFunctor );
