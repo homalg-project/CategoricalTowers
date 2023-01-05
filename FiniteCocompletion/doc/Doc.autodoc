@@ -8,6 +8,9 @@
 @Subsection Cocartesian braiding
 @InsertChunk CocartesianBraiding
 
+@Subsection Cartesian braiding
+@InsertChunk CartesianBraiding
+
 @Subsection Cocartesian associator
 @InsertChunk CocartesianAssociator
 

@@ -138,6 +138,75 @@ InstallMethod( FiniteProductCompletion,
     
 end );
 
+##
+InstallMethod( CoYonedaEmbeddingOfUnderlyingCategory,
+        "for a finite coproduct cocompletion category",
+        [ IsFiniteProductCompletion ],
+        
+  function( PC )
+    local Y;
+    
+    Y := CapFunctor( "CoYoneda embedding functor", UnderlyingCategory( PC ), PC );
+    
+    AddObjectFunction( Y, objC -> ObjectConstructor( PC, [ objC ] ) );
+    
+    AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range ) );
+    
+    return Y;
+    
+end );
+
+##
+InstallMethod( \.,
+        "for a finite product completion category and a positive integer",
+        [ IsFiniteProductCompletion, IsPosInt ],
+        
+  function( PC, string_as_int )
+    local name, C, Y, Yc;
+    
+    name := NameRNam( string_as_int );
+    
+    C := UnderlyingCategory( PC );
+    
+    Y := CoYonedaEmbeddingOfUnderlyingCategory( PC );
+    
+    Yc := Y( C.(name) );
+    
+    if IsObjectInFiniteProductCompletion( Yc ) then
+
+        #TODO: is this true?
+        #SetIsInjective( Yc, true );
+        
+    elif IsMorphismInFiniteProductCompletion( Yc ) then
+        
+        if CanCompute( PC, "IsMonomorphism" ) then
+            IsMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( PC, "IsSplitMonomorphism" ) then
+            IsSplitMonomorphism( Yc );
+        fi;
+        
+        if CanCompute( PC, "IsEpimorphism" ) then
+            IsEpimorphism( Yc );
+        fi;
+        
+        if CanCompute( PC, "IsSplitEpimorphism" ) then
+            IsSplitEpimorphism( Yc );
+        fi;
+        
+        ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
+        ## we add this here in case the logic is deactivated
+        if CanCompute( PC, "IsIsomorphism" ) then
+            IsIsomorphism( Yc );
+        fi;
+        
+    fi;
+    
+    return Yc;
+    
+end );
+
 ##################################
 ##
 ## View & Display
