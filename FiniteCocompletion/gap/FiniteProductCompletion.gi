@@ -127,7 +127,8 @@ InstallMethod( FiniteProductCompletion,
                        category_filter := IsFiniteCoproductCocompletion,
                        category_object_filter := IsObjectInFiniteProductCompletion and HasAsList,
                        category_morphism_filter := IsMorphismInFiniteProductCompletion and HasPairOfLists,
-                       only_primitive_operations := true ) : FinalizeCategory := false );
+                       only_primitive_operations := true )
+                  : FinalizeCategory := false );
     
     SetUnderlyingCategory( PC, C );
     
