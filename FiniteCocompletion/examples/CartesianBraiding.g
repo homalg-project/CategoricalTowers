@@ -51,4 +51,38 @@ Source( gamma ) = ab;
 #! true
 Range( gamma ) = ba;
 #! true
+LPC := LazyCategory( PC );
+#! LazyCategory(
+#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+Emb := EmbeddingFunctorOfUnderlyingCategory( LPC );
+#! Embedding functor into lazy category
+Display( Emb );
+#! Embedding functor into lazy category:
+#! 
+#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+#!   |
+#!   V
+#! LazyCategory(
+#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );
+#! Precomposition of CoYoneda embedding functor and
+#! Embedding functor into lazy category
+Display( F );
+#! Precomposition of CoYoneda embedding functor and
+#! Embedding functor into lazy category:
+#! 
+#! FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+#!   |
+#!   V
+#! LazyCategory(
+#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+G := ExtendFunctorToFiniteProductCompletion( F );
+#! Extension to FiniteProductCompletion( Source(
+#! Precomposition of CoYoneda embedding functor and
+#! Embedding functor into lazy category ) )
+Ggamma := G( gamma );
+#! <A morphism in LazyCategory(
+#!  FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )>
+IsWellDefined( Ggamma );
+#! true
 #! @EndExample

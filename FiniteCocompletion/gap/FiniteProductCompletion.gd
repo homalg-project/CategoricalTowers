@@ -104,3 +104,11 @@ end );
 #! @Returns a &CAP; functor
 DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategory",
         IsFiniteProductCompletion );
+
+#! @Description
+#!  The full embedding functor from the category $C$ underlying
+#!  the finite product completion <A>UC</A> into <A>UC</A>.
+#! @Arguments PC
+#! @Returns a &CAP; functor
+DeclareAttribute( "ExtendFunctorToFiniteProductCompletion",
+        IsCapFunctor );
