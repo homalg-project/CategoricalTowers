@@ -128,3 +128,11 @@
   [33X[0;0YReturn  the  category [23XC[123X underlying the finite product completion category [3XUC[103X[10X
   := FiniteProductCompletion([110X [23XC[123X [10X)[110X).[133X
   
+  [1X3.2-5 CoYonedaEmbeddingOfUnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XCoYonedaEmbeddingOfUnderlyingCategory[102X( [3XPC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe full embedding functor from the category [23XC[123X underlying the finite product
+  completion [3XPC[103X into [3XPC[103X.[133X
+  

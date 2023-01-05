@@ -241,7 +241,63 @@
   [4X[32X[104X
   
   
-  [1X1.4-2 [33X[0;0YCocartesian associator[133X[101X
+  [1X1.4-2 [33X[0;0YCartesian braiding[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2023.01-02" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := RightQuiver( "Q(a,b)[]" );[127X[104X
+    [4X[28XQ(a,b)[][128X[104X
+    [4X[25Xgap>[125X [27XC := FreeCategory( Q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "Q(a,b)[]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XSetName( C.a, "C.a" ); SetName( C.b, "C.b" );[127X[104X
+    [4X[25Xgap>[125X [27XPC := FiniteProductCompletion( C );[127X[104X
+    [4X[28XFiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xa := PC.a;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xb := PC.b;[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28X FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27Xab := DirectProduct( a, b );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28XFiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ab );[127X[104X
+    [4X[28X[ C.a, C.b ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xba := DirectProduct( b, a );[127X[104X
+    [4X[28X<An object in[128X[104X
+    [4X[28XFiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ba );[127X[104X
+    [4X[28X[ C.b, C.a ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( ab, ba );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := CartesianBraiding( a, b );[127X[104X
+    [4X[28X<A morphism[128X[104X
+    [4X[28X in FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in[128X[104X
+    [4X[28XFiniteProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xwith the above associated map[128X[104X
+    [4X[25Xgap>[125X [27XSource( gamma ) = ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange( gamma ) = ba;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4-3 [33X[0;0YCocartesian associator[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
@@ -321,7 +377,7 @@
   [4X[32X[104X
   
   
-  [1X1.4-3 [33X[0;0YHomomorphism structure[133X[101X
+  [1X1.4-4 [33X[0;0YHomomorphism structure[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
