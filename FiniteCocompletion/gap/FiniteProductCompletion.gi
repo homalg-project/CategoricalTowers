@@ -124,7 +124,7 @@ InstallMethod( FiniteProductCompletion,
                        modeling_tower_object_datum := modeling_tower_object_datum,
                        modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                        modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                       category_filter := IsFiniteCoproductCocompletion,
+                       category_filter := IsFiniteProductCompletion,
                        category_object_filter := IsObjectInFiniteProductCompletion and HasAsList,
                        category_morphism_filter := IsMorphismInFiniteProductCompletion and HasPairOfLists,
                        only_primitive_operations := true )
