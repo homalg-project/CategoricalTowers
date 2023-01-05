@@ -6,6 +6,7 @@
       for IsObjectInFiniteCoproductCocompletion 1.2-2 
       for IsObjectInFiniteProductCompletion 3.2-2 
       for IsObjectInSkeletalFinSets 2.1-2 
+  [2XExtendFunctorToFiniteCoproductCocompletion[102X, for IsCapFunctor 1.1-3 
   [2XFiniteCoproductCocompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteProductCompletion[102X, for IsCapCategory 3.2-1 
   [2XIsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory[102X, for IsCapCategory 2.3-1 

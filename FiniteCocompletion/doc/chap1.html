@@ -27,6 +27,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78A9C86A7E41624E">1.1-1 UnderlyingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7940A0067BF4BDE0">1.1-2 YonedaEmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81903CEA794A2D3D">1.1-3 ExtendFunctorToFiniteCoproductCocompletion</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X86EC0F0A78ECBC10">1.2 <span class="Heading">Constructors</span></a>
 </span>
@@ -77,6 +78,15 @@
 
 <p>The full embedding functor from the category <span class="Math">C</span> underlying the finite coproduct cocompletion <var class="Arg">UC</var> into <var class="Arg">UC</var>.</p>
 
+<p><a id="X81903CEA794A2D3D" name="X81903CEA794A2D3D"></a></p>
+
+<h5>1.1-3 ExtendFunctorToFiniteCoproductCocompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFiniteCoproductCocompletion</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the finite coproduct cocompletion <var class="Arg">UC</var> into <var class="Arg">UC</var>.</p>
+
 <p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
 
 <h4>1.2 <span class="Heading">Constructors</span></h4>
@@ -97,7 +107,7 @@ FiniteCoproductCocompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteCoproductCocompletion( InitialCategory( ) ):
 
-93 primitive operations were used to derive 489 operations for this category
+93 primitive operations were used to derive 501 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -224,19 +234,37 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b)[]" );</span>
 Q(a,b)[]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
 FreeCategory( RightQuiver( "Q(a,b)[]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" ); SetName( C.b, "C.b" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FamC := FiniteCoproductCocompletion( C );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fam := FiniteCoproductCocompletion( C );</span>
 FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FamC.a;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := Fam.a;</span>
 &lt;An object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FamC.b;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := Fam.b;</span>
 &lt;An object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ab := Coproduct( a, b );</span>
+&lt;An object in
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ab );</span>
+[ C.a, C.b ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ba := Coproduct( b, a );</span>
+&lt;An object in
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ba );</span>
+[ C.b, C.a ]
+
+An object in the finite coproduct cocompletion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( ab, ba );</span>
+|1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CocartesianBraiding( a, b );</span>
 &lt;A morphism
  in FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
@@ -248,20 +276,44 @@ true
 A morphism in
 FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 with the above associated map
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( gamma ) );</span>
-[ C.a, C.b ]
-
-An object in the finite coproduct cocompletion category given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( gamma ) );</span>
-[ C.b, C.a ]
-
-An object in the finite coproduct cocompletion category given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( gamma ) = Coproduct( a, b );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( gamma ) = ab;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( gamma ) = Coproduct( b, a );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( gamma ) = ba;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( Source( gamma ), Range( gamma ) );</span>
-|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LFam := LazyCategory( Fam );</span>
+LazyCategory(
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LFam );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( Fam ), Emb );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteCoproductCocompletion( F );</span>
+Extension to FiniteCoproductCocompletion( Source(
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ggamma := G( gamma );</span>
+&lt;A morphism in LazyCategory(
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ggamma );</span>
+true
 </pre></div>
 
 <p><a id="X7A76626D80672536" name="X7A76626D80672536"></a></p>
@@ -273,6 +325,8 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b,c)[]" );</span>
 Q(a,b,c)[]
@@ -289,10 +343,58 @@ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := Fam.c;</span>
 &lt;An object in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ab_c := Coproduct( Coproduct( a, b ), c );</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a_bc := Coproduct( a, Coproduct( b, c ) );</span>
+&lt;An object in
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ab_c = a_bc;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( ab_c, a_bc );</span>
+|1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := CocartesianAssociatorLeftToRight( a, b, c );</span>
 &lt;A morphism in
  FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( alpha ) = ab_c;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( alpha ) = a_bc;</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LFam := LazyCategory( Fam );</span>
+LazyCategory(
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LFam );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( Fam ), Emb );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteCoproductCocompletion( F );</span>
+Extension to FiniteCoproductCocompletion( Source(
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Galpha := G( alpha );</span>
+&lt;A morphism in LazyCategory(
+ FiniteCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Galpha );</span>
 true
 </pre></div>
 
