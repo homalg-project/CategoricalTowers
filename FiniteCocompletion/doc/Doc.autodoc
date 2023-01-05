@@ -11,6 +11,9 @@
 @Subsection Cartesian braiding
 @InsertChunk CartesianBraiding
 
+@Subsection Cartesian diagonal
+@InsertChunk CartesianDiagonal
+
 @Subsection Cocartesian associator
 @InsertChunk CocartesianAssociator
 

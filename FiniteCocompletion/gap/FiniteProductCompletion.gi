@@ -207,6 +207,76 @@ InstallMethod( \.,
     
 end );
 
+##
+InstallMethod( ExtendFunctorToFiniteProductCompletion,
+        "for a functor",
+        [ IsCapFunctor ],
+        
+  function( F )
+    local C, D, PC, PF;
+    
+    C := SourceOfFunctor( F );
+    D := RangeOfFunctor( F );
+    
+    PC := FiniteProductCompletion( C );
+    
+    PF := CapFunctor( Concatenation( "Extension to FiniteProductCompletion( Source( ", Name( F ), " ) )" ), PC, D );
+    
+    ## the code below contains the entire coproduct semantics
+    
+    AddObjectFunction( PF,
+      function( objPC )
+        local L;
+        
+        L := AsList( objPC );
+        
+        return DirectProduct( D, List( L, objC -> ApplyFunctor( F, objC ) ) );
+        
+    end );
+    
+    AddMorphismFunction( PF,
+      function( source, morPC, range )
+        local pair_of_lists, map, mor, Fmor, S, T, LS, LT, FLS, FLT, prj, cmp;
+        
+        pair_of_lists := PairOfLists( morPC );
+        
+        map := pair_of_lists[1];
+        mor := pair_of_lists[2];
+        
+        Fmor := List( mor, m -> ApplyFunctor( F, m ) );
+        
+        S := Source( morPC );
+        T := Range( morPC );
+        
+        LS := AsList( S );
+        LT := AsList( T );
+        
+        FLS := List( LS, S_i -> ApplyFunctor( F, S_i ) );
+        FLT := List( LT, T_i -> ApplyFunctor( F, T_i ) );
+        
+        prj := List( map, i ->
+                     ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
+                             FLS,
+                             1 + i,
+                             source ) );
+        
+        cmp := List( [ 1 .. Length( LT ) ], i ->
+                     PreCompose( D,
+                             prj[i],
+                             Fmor[i] ) );
+        
+        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D,
+                       FLT,
+                       source,
+                       cmp,
+                       range );
+        
+    end );
+    
+    return PF;
+    
+end );
+
 ##################################
 ##
 ## View & Display
@@ -247,9 +317,9 @@ InstallMethod( Display,
         return Concatenation( "{ 0,..., ", String( l - 1 ), " }" );
     end;
     
-    Print( print( Length( AsList( Source( phi ) ) ) ) );
+    Print( print( Length( AsList( Range( phi ) ) ) ) );
     Print( " ⱶ", PairOfLists( phi )[1], "→ " );
-    Print( print( Length( AsList( Range( phi ) ) ) ), "\n\n" );
+    Print( print( Length( AsList( Source( phi ) ) ) ), "\n\n" );
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );
     
 end );
