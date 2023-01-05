@@ -58,7 +58,7 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
     
     Freyd := ModelingCategory( abelian_closure );
     
-    Y := YonedaEmbeddingOfUnderlyingCategory( UnderlyingCategory( Freyd ) );
+    Y := CoYonedaEmbeddingOfUnderlyingCategory( UnderlyingCategory( Freyd ) );
     
     return PreCompose(
                    PreCompose( Y, EmbeddingFunctorIntoFreydCategory( UnderlyingCategory( Freyd ) ) ),
