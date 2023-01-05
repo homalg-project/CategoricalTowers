@@ -7,7 +7,7 @@
 ##
 InstallMethod( FiniteProductCompletion,
         "for a CAP category",
-        [ IsCapCategory and IsInitialCategory ],
+        [ IsCapCategory ],
         
   function( C )
     local object_constructor, object_datum,
