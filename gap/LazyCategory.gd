@@ -106,6 +106,10 @@ DeclareOperation( "\/",
 DeclareOperation( "LazyCategory",
                   [ IsCapCategory ] );
 
+#!
+DeclareOperation( "EmbeddingFunctorOfUnderlyingCategory",
+                  [ IsCapCategory ] );
+
 ####################################
 #
 #! @Section Operations

@@ -222,7 +222,6 @@ InstallMethodWithCache( AsObjectInLazyCategory,
         [ IsLazyCapCategory, IsCapCategoryObject ],
         
   function( D, object )
-    local o;
     
     if not IsIdenticalObj( CapCategory( object ), UnderlyingCategory( D ) ) then
         
@@ -230,12 +229,8 @@ InstallMethodWithCache( AsObjectInLazyCategory,
         
     fi;
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, D,
-            EvaluatedCell, object );
-    
-    return o;
+    return CreateCapCategoryObjectWithAttributes( D,
+                   EvaluatedCell, object );
     
 end );
 
@@ -245,15 +240,10 @@ InstallMethod( AsObjectInLazyCategory,
         [ IsLazyCapCategory, IsString and IsStringRep, IsList ],
         
   function( D, name_of_operation, L )
-    local o;
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, D,
-            GenesisOfCellOperation, name_of_operation,
-            GenesisOfCellArguments, L );
-    
-    return o;
+    return CreateCapCategoryObjectWithAttributes( D,
+                   GenesisOfCellOperation, name_of_operation,
+                   GenesisOfCellArguments, L );
     
 end );
 
@@ -263,7 +253,7 @@ InstallMethod( AsMorphismInLazyCategory,
         [ IsLazyCapCategoryObject, IsCapCategoryMorphism, IsLazyCapCategoryObject ],
         
   function( source, morphism, range )
-    local D, m;
+    local D;
     
     D := CapCategory( source );
     
@@ -273,14 +263,10 @@ InstallMethod( AsMorphismInLazyCategory,
         
     fi;
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
-            source,
-            range,
-            EvaluatedCell, morphism );
-    
-    return m;
+    return CreateCapCategoryMorphismWithAttributes( D,
+                   source,
+                   range,
+                   EvaluatedCell, morphism );
     
 end );
 
@@ -294,8 +280,7 @@ InstallMethodWithCache( AsMorphismInLazyCategory,
     return AsMorphismInLazyCategory(
                    AsObjectInLazyCategory( D, Source( morphism ) ),
                    morphism,
-                   AsObjectInLazyCategory( D, Range( morphism ) )
-                   );
+                   AsObjectInLazyCategory( D, Range( morphism ) ) );
     
 end );
 
@@ -305,19 +290,15 @@ InstallMethod( AsMorphismInLazyCategory,
         [ IsLazyCapCategoryObject, IsString and IsStringRep, IsList, IsLazyCapCategoryObject ],
         
   function( source, name_of_operation, L, range )
-    local D, m;
+    local D;
     
     D := CapCategory( source );
     
-    m := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
-            source,
-            range,
-            GenesisOfCellOperation, name_of_operation,
-            GenesisOfCellArguments, L );
-    
-    return m;
+    return CreateCapCategoryMorphismWithAttributes( D,
+                   source,
+                   range,
+                   GenesisOfCellOperation, name_of_operation,
+                   GenesisOfCellArguments, L );
     
 end );
 
@@ -1013,6 +994,24 @@ InstallMethod( \.,
     C := UnderlyingCategory( lazy_cat );
     
     return C.(name) / lazy_cat;
+    
+end );
+
+##
+InstallMethod( EmbeddingFunctorOfUnderlyingCategory,
+        "for a lazy category",
+        [ IsLazyCapCategory ],
+        
+  function( lazy_cat )
+    local E;
+    
+    E := CapFunctor( "Embedding functor into lazy category", UnderlyingCategory( lazy_cat ), lazy_cat );
+    
+    AddObjectFunction( E, objC -> AsObjectInLazyCategory( lazy_cat, objC ) );
+    
+    AddMorphismFunction( E, { source, morC, range } -> AsMorphismInLazyCategory( source, morC, range ) );
+    
+    return E;
     
 end );
 
