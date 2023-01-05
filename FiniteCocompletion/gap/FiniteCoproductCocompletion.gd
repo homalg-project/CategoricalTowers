@@ -39,7 +39,8 @@ DeclareCategory( "IsMorphismInFiniteCoproductCocompletion",
 ####################################
 
 #! @Description
-#!  Return the finite coproduct cocompletion of the category <A>cat</A>.
+#!  Return the finite coproduct cocompletion of the category <A>cat</A>
+#!  in which the cocartesian associators are given by identities.
 #! @Arguments cat
 DeclareAttribute( "FiniteCoproductCocompletion",
         IsCapCategory );
