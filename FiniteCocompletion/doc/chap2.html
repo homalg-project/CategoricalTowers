@@ -52,9 +52,11 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8671AA4181FFF519">2.4-3 <span class="Heading">Skeletal Initial and Terminal Objects</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ADD1E46831BEED2">2.4-4 <span class="Heading">Skeletal Coproduct</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F312766810A2F89">2.4-4 <span class="Heading">Skeletal direct product</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FAC0A93866676CE">2.4-5 <span class="Heading">Skeletal homomorphism structre</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ADD1E46831BEED2">2.4-5 <span class="Heading">Skeletal Coproduct</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FAC0A93866676CE">2.4-6 <span class="Heading">Skeletal homomorphism structre</span></a>
 </span>
 </div></div>
 </div>
@@ -169,8 +171,12 @@ true
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := ObjectConstructor( sFinSets, 7 );</span>
 |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectDatum( s );</span>
+7
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ObjectConstructor( sFinSets, 4 );</span>
 |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectDatum( t );</span>
+4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3 ], t );</span>
 |7| → |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
@@ -187,6 +193,10 @@ false
 |7| → |4|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( psi );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( psi );</span>
+{ 0,..., 6 } ⱶ[ 0, 2, 1, 3, 2, 1, 3 ]→ { 0,..., 3 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( psi );</span>
+[ 0, 2, 1, 3, 2, 1, 3 ]
 </pre></div>
 
 <p><a id="X86100A35872E3E9F" name="X86100A35872E3E9F"></a></p>
@@ -235,6 +245,8 @@ false
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( sFinSets );</span>
 |0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( i );</span>
+[  ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
 ∅
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( i );</span>
@@ -243,12 +255,18 @@ true
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( m );</span>
 |0| → |8|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( i );</span>
-[  ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := InitialObjectFunctorial( sFinSets );</span>
+|0| → |0|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ii );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii;</span>
+|0| ⭇ |0|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( sFinSets );</span>
 |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( t );</span>
 [ 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
+{ 0 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( t );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( t );</span>
@@ -259,15 +277,69 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );</span>
 |8| → |1|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( pi_t );</span>
-[ 0, 0, 0, 0, 0, 0, 0, 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi_t );</span>
+{ 0,..., 7 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0 ]→ { 0 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi = pi_t;</span>
+true
+</pre></div>
+
+<p><a id="X7F312766810A2F89" name="X7F312766810A2F89"></a></p>
+
+<h5>2.4-4 <span class="Heading">Skeletal direct product</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := ObjectConstructor( sFinSets, 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := ObjectConstructor( sFinSets, 4 );</span>
+|4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DirectProduct( [ m, n, p ] );</span>
+|84|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsList( d );</span>
+[ 0 .. 83 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 1 );</span>
+|84| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi1 );</span>
+{ 0,..., 83 } ⱶ[ 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,
+                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6 ]→ { 0,..., 6 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 2 );</span>
+|84| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi2 );</span>
+{ 0,..., 83 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,
+                 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,
+                 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,
+                 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 3 );</span>
+|84| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi3 );</span>
+{ 0,..., 83 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3,
+                 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ]→ { 0,..., 3 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := UniversalMorphismIntoDirectProduct( [ m, n, p ], [ pi1, pi2, pi3 ] );</span>
+|84| → |84|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi = IdentityMorphism( d );</span>
 true
 </pre></div>
 
 <p><a id="X7ADD1E46831BEED2" name="X7ADD1E46831BEED2"></a></p>
 
-<h5>2.4-4 <span class="Heading">Skeletal Coproduct</span></h5>
+<h5>2.4-5 <span class="Heading">Skeletal Coproduct</span></h5>
 
 
 <div class="example"><pre>
@@ -315,7 +387,7 @@ true
 
 <p><a id="X7FAC0A93866676CE" name="X7FAC0A93866676CE"></a></p>
 
-<h5>2.4-5 <span class="Heading">Skeletal homomorphism structre</span></h5>
+<h5>2.4-6 <span class="Heading">Skeletal homomorphism structre</span></h5>
 
 
 <div class="example"><pre>
@@ -326,8 +398,14 @@ true
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ObjectConstructor( sFinSets, 3 );</span>
 |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
+{ 0, 1, 2 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := ObjectConstructor( sFinSets, 2 );</span>
 |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A = B;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( B );</span>
+{ 0, 1 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomAB := HomStructure( A, B );</span>
 |8|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomStructure( sFinSets );</span>

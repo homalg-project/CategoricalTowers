@@ -1,5 +1,5 @@
 name: FiniteCocompletion
-version: "2023.01-16"
+version: "2023.01-17"
 license: "GPL-2.0-or-later"
 date: 2023-01-06
 description: |
@@ -40,11 +40,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-16/FiniteCocompletion-2023.01-16.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-17/FiniteCocompletion-2023.01-17.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-16/FiniteCocompletion-2023.01-16.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-17/FiniteCocompletion-2023.01-17.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-16/FiniteCocompletion-2023.01-16.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-17/FiniteCocompletion-2023.01-17.pdf
 
 abstract: |
 
@@ -57,7 +57,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletion, Finite (co)product/(co)limit (co)completions,
-             Version 2023.01-16</i>
+             Version 2023.01-17</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletion">https://homalg-project.github.io/pkg/FiniteCocompletion</a></span>.
@@ -65,10 +65,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FiniteCocompletion2023.01-16,
+    @misc{ FiniteCocompletion2023.01-17,
       author =           {Barakat, M.},
       title =            {{FiniteCocompletion},   Finite   (co)product/(co)limit
-                          (co)completions, {V}ersion 2023.01-16},
+                          (co)completions, {V}ersion 2023.01-17},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},

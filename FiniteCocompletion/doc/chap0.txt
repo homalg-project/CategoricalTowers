@@ -6,7 +6,7 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.01-16
+                                   2023.01-17
   
   
                                  6 January 2023
@@ -67,8 +67,9 @@
       2.4-1 [33X[0;0YSkeletal WellDefined[133X
       2.4-2 [33X[0;0YSkeletal PreCompose[133X
       2.4-3 [33X[0;0YSkeletal Initial and Terminal Objects[133X
-      2.4-4 [33X[0;0YSkeletal Coproduct[133X
-      2.4-5 [33X[0;0YSkeletal homomorphism structre[133X
+      2.4-4 [33X[0;0YSkeletal direct product[133X
+      2.4-5 [33X[0;0YSkeletal Coproduct[133X
+      2.4-6 [33X[0;0YSkeletal homomorphism structre[133X
   3 [33X[0;0YFinite product completion[133X
     3.1 [33X[0;0YGAP categories[133X
       3.1-1 IsFiniteStrictProductCompletion

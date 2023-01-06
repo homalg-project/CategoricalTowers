@@ -90,8 +90,12 @@
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xs := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
+    [4X[25Xgap>[125X [27XObjectDatum( s );[127X[104X
+    [4X[28X7[128X[104X
     [4X[25Xgap>[125X [27Xt := ObjectConstructor( sFinSets, 4 );[127X[104X
     [4X[28X|4|[128X[104X
+    [4X[25Xgap>[125X [27XObjectDatum( t );[127X[104X
+    [4X[28X4[128X[104X
     [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
@@ -108,6 +112,10 @@
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( psi );[127X[104X
+    [4X[28X{ 0,..., 6 } ⱶ[ 0, 2, 1, 3, 2, 1, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[25Xgap>[125X [27XMorphismDatum( psi );[127X[104X
+    [4X[28X[ 0, 2, 1, 3, 2, 1, 3 ][128X[104X
   [4X[32X[104X
   
   
@@ -152,6 +160,8 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xi := InitialObject( sFinSets );[127X[104X
     [4X[28X|0|[128X[104X
+    [4X[25Xgap>[125X [27XAsList( i );[127X[104X
+    [4X[28X[  ][128X[104X
     [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
     [4X[28X∅[128X[104X
     [4X[25Xgap>[125X [27XIsInitial( i );[127X[104X
@@ -160,12 +170,18 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( m );[127X[104X
     [4X[28X|0| → |8|[128X[104X
-    [4X[25Xgap>[125X [27XAsList( i );[127X[104X
-    [4X[28X[  ][128X[104X
+    [4X[25Xgap>[125X [27Xii := InitialObjectFunctorial( sFinSets );[127X[104X
+    [4X[28X|0| → |0|[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ii );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xii;[127X[104X
+    [4X[28X|0| ⭇ |0|[128X[104X
     [4X[25Xgap>[125X [27Xt := TerminalObject( sFinSets );[127X[104X
     [4X[28X|1|[128X[104X
     [4X[25Xgap>[125X [27XAsList( t );[127X[104X
     [4X[28X[ 0 ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
+    [4X[28X{ 0 }[128X[104X
     [4X[25Xgap>[125X [27XIsInitial( t );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsTerminal( t );[127X[104X
@@ -176,14 +192,66 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xpi_t := UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( m, t );[127X[104X
     [4X[28X|8| → |1|[128X[104X
-    [4X[25Xgap>[125X [27XAsList( pi_t );[127X[104X
-    [4X[28X[ 0, 0, 0, 0, 0, 0, 0, 0 ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( pi_t );[127X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0 ]→ { 0 }[128X[104X
     [4X[25Xgap>[125X [27Xpi = pi_t;[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   
-  [1X2.4-4 [33X[0;0YSkeletal Coproduct[133X[101X
+  [1X2.4-4 [33X[0;0YSkeletal direct product[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
+    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 7 );[127X[104X
+    [4X[28X|7|[128X[104X
+    [4X[25Xgap>[125X [27Xn := ObjectConstructor( sFinSets, 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27Xp := ObjectConstructor( sFinSets, 4 );[127X[104X
+    [4X[28X|4|[128X[104X
+    [4X[25Xgap>[125X [27Xd := DirectProduct( [ m, n, p ] );[127X[104X
+    [4X[28X|84|[128X[104X
+    [4X[25Xgap>[125X [27XAsList( d );[127X[104X
+    [4X[28X[ 0 .. 83 ][128X[104X
+    [4X[25Xgap>[125X [27Xpi1 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 1 );[127X[104X
+    [4X[28X|84| → |7|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( pi1 );[127X[104X
+    [4X[28X{ 0,..., 83 } ⱶ[ 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,[128X[104X
+    [4X[28X                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,[128X[104X
+    [4X[28X                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,[128X[104X
+    [4X[28X                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,[128X[104X
+    [4X[28X                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6,[128X[104X
+    [4X[28X                 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6 ]→ { 0,..., 6 }[128X[104X
+    [4X[25Xgap>[125X [27Xpi2 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 2 );[127X[104X
+    [4X[28X|84| → |3|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( pi2 );[127X[104X
+    [4X[28X{ 0,..., 83 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,[128X[104X
+    [4X[28X                 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,[128X[104X
+    [4X[28X                 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,[128X[104X
+    [4X[28X                 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,[128X[104X
+    [4X[28X                 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,[128X[104X
+    [4X[28X                 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27Xpi3 := ProjectionInFactorOfDirectProduct( [ m, n, p ], 3 );[127X[104X
+    [4X[28X|84| → |4|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( pi3 );[127X[104X
+    [4X[28X{ 0,..., 83 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,[128X[104X
+    [4X[28X                 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,[128X[104X
+    [4X[28X                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,[128X[104X
+    [4X[28X                 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,[128X[104X
+    [4X[28X                 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3,[128X[104X
+    [4X[28X                 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := UniversalMorphismIntoDirectProduct( [ m, n, p ], [ pi1, pi2, pi3 ] );[127X[104X
+    [4X[28X|84| → |84|[128X[104X
+    [4X[25Xgap>[125X [27Xpsi = IdentityMorphism( d );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.4-5 [33X[0;0YSkeletal Coproduct[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
@@ -229,7 +297,7 @@
   [4X[32X[104X
   
   
-  [1X2.4-5 [33X[0;0YSkeletal homomorphism structre[133X[101X
+  [1X2.4-6 [33X[0;0YSkeletal homomorphism structre[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
@@ -239,8 +307,14 @@
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27XA := ObjectConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28X{ 0, 1, 2 }[128X[104X
     [4X[25Xgap>[125X [27XB := ObjectConstructor( sFinSets, 2 );[127X[104X
     [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( B );[127X[104X
+    [4X[28X{ 0, 1 }[128X[104X
     [4X[25Xgap>[125X [27XHomAB := HomStructure( A, B );[127X[104X
     [4X[28X|8|[128X[104X
     [4X[25Xgap>[125X [27XI := HomStructure( sFinSets );[127X[104X
