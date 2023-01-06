@@ -928,7 +928,7 @@ InstallMethod( ExtendFunctorToFiniteCoproductCocompletion,
     
     UF := CapFunctor( Concatenation( "Extension to FiniteCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
     
-    ## the code below contains the entire coproduct semantics
+    ## the code below is the doctrine-specific ur-algorithm for cocartesian (monoidal) categories
     
     AddObjectFunction( UF,
       function( objUC )
