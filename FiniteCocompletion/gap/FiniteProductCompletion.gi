@@ -222,7 +222,7 @@ InstallMethod( ExtendFunctorToFiniteProductCompletion,
     
     PF := CapFunctor( Concatenation( "Extension to FiniteProductCompletion( Source( ", Name( F ), " ) )" ), PC, D );
     
-    ## the code below contains the entire coproduct semantics
+    ## the code below is the doctrine-specific ur-algorithm for cartesian (monoidal) categories
     
     AddObjectFunction( PF,
       function( objPC )

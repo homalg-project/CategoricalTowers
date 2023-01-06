@@ -35,6 +35,8 @@ id_a := IdentityMorphism( C.a );
 delta := MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );
 #! <A morphism in
 #!  FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+IsWellDefined( delta );
+#! true
 LPC := LazyCategory( PC );
 #! LazyCategory(
 #! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
