@@ -1,12 +1,12 @@
-#! @Chunk TerminalCategory_as_FiniteCoproductCocompletion
+#! @Chunk TerminalCategory_as_FiniteStrictCoproductCocompletion
 
 #! @Example
 LoadPackage( "FiniteCocompletion" );
 #! true
-T := FiniteCoproductCocompletion( InitialCategory( ) );
-#! FiniteCoproductCocompletion( InitialCategory( ) )
+T := FiniteStrictCoproductCocompletion( InitialCategory( ) );
+#! FiniteStrictCoproductCocompletion( InitialCategory( ) )
 Display( T );
-#! A CAP category with name FiniteCoproductCocompletion( InitialCategory( ) ):
+#! A CAP category with name FiniteStrictCoproductCocompletion( InitialCategory( ) ):
 #! 
 #! 93 primitive operations were used to derive 501 operations for this category
 #! which algorithmically
@@ -32,11 +32,11 @@ Display( T );
 #! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
 i := InitialObject( T );
-#! <A zero object in FiniteCoproductCocompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
 t := TerminalObject( T );
-#! <A zero object in FiniteCoproductCocompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
 z := ZeroObject( T );
-#! <A zero object in FiniteCoproductCocompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
 Display( i );
 #! [  ]
 #! 
@@ -60,9 +60,10 @@ IsIdenticalObj( t, z );
 IsWellDefined( z );
 #! true
 id_z := IdentityMorphism( z );
-#! <A zero, identity morphism in FiniteCoproductCocompletion( InitialCategory( ) )>
+#! <A zero, identity morphism in
+#!  FiniteStrictCoproductCocompletion( InitialCategory( ) )>
 fn_z := ZeroObjectFunctorial( T );
-#! <A zero, isomorphism in FiniteCoproductCocompletion( InitialCategory( ) )>
+#! <A zero, isomorphism in FiniteStrictCoproductCocompletion( InitialCategory( ) )>
 IsWellDefined( fn_z );
 #! true
 IsEqualForMorphisms( id_z, fn_z );

@@ -12,14 +12,14 @@ Q := RightQuiver( "Q(a)[]" );
 C := FreeCategory( Q );
 #! FreeCategory( RightQuiver( "Q(a)[]" ) )
 SetName( C.a, "C.a" );
-PC := FiniteProductCompletion( C );
-#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+PC := FiniteStrictProductCompletion( C );
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
 a := PC.a;
 #! <An object in
-#!  FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 aa := DirectProduct( a, a );
 #! <An object in
-#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 Display( aa );
 #! [ C.a, C.a ]
 #! 
@@ -34,22 +34,22 @@ id_a := IdentityMorphism( C.a );
 #! (a)-[(a)]->(a)
 delta := MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );
 #! <A morphism in
-#!  FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 IsWellDefined( delta );
 #! true
 LPC := LazyCategory( PC );
 #! LazyCategory(
-#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
 Emb := EmbeddingFunctorOfUnderlyingCategory( LPC );
 #! Embedding functor into lazy category
 Display( Emb );
 #! Embedding functor into lazy category:
 #! 
-#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
 #!   |
 #!   V
 #! LazyCategory(
-#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
 F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );
 #! Precomposition of CoYoneda embedding functor and
 #! Embedding functor into lazy category
@@ -61,14 +61,14 @@ Display( F );
 #!   |
 #!   V
 #! LazyCategory(
-#! FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
-G := ExtendFunctorToFiniteProductCompletion( F );
-#! Extension to FiniteProductCompletion( Source(
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+G := ExtendFunctorToFiniteStrictProductCompletion( F );
+#! Extension to FiniteStrictProductCompletion( Source(
 #! Precomposition of CoYoneda embedding functor and
 #! Embedding functor into lazy category ) )
 Gdelta := G( delta );
 #! <A morphism in LazyCategory(
-#!  FiniteProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )>
+#!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )>
 IsWellDefined( Gdelta );
 #! true
 #! @EndExample

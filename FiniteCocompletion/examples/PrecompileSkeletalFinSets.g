@@ -13,9 +13,11 @@ LoadPackage( "CompilerForCAP", false );
 ReadPackage( "FiniteCocompletion", "gap/CompilerLogic.gi" );
 #! true
 
-category_constructor := {} -> SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );;
+category_constructor :=
+  {} -> SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );;
 given_arguments := [ ];;
-compiled_category_name := "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategoryPrecompiled";;
+compiled_category_name :=
+  "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled";;
 package_name := "FiniteCocompletion";;
 primitive_operations :=
   ListPrimitivelyInstalledOperationsOfCategory( category_constructor() );;
@@ -37,11 +39,11 @@ CapJitPrecompileCategoryAndCompareResult(
         number_of_objectified_morphisms_in_data_structure_of_morphism := 1
 );;
 
-SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategoryPrecompiled( );
-#! SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( );
+#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 
-cat := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );
-#! SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+cat := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );
+#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 
 # Now we check whether the compiled code is loaded automatically.
 # For this we use the name of the argument of `InitialObject`;

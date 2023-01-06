@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( FiniteProductCompletion,
+InstallMethod( FiniteStrictProductCompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
@@ -50,7 +50,7 @@ InstallMethod( FiniteProductCompletion,
     
     opC := Opposite( C : only_primitive_operations := true, FinalizeCategory := true );
     
-    UopC := FiniteCoproductCocompletion( opC : FinalizeCategory := true );
+    UopC := FiniteStrictCoproductCocompletion( opC : FinalizeCategory := true );
     
     opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := true );
     
@@ -115,7 +115,7 @@ InstallMethod( FiniteProductCompletion,
     
     ##
     PC := WrapperCategory( opUopC,
-                  rec( name := Concatenation( "FiniteProductCompletion( ", Name( C ), " )" ),
+                  rec( name := Concatenation( "FiniteStrictProductCompletion( ", Name( C ), " )" ),
                        object_constructor := object_constructor,
                        object_datum := object_datum,
                        morphism_constructor := morphism_constructor,
@@ -124,9 +124,9 @@ InstallMethod( FiniteProductCompletion,
                        modeling_tower_object_datum := modeling_tower_object_datum,
                        modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                        modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                       category_filter := IsFiniteProductCompletion,
-                       category_object_filter := IsObjectInFiniteProductCompletion and HasAsList,
-                       category_morphism_filter := IsMorphismInFiniteProductCompletion and HasPairOfLists,
+                       category_filter := IsFiniteStrictProductCompletion,
+                       category_object_filter := IsObjectInFiniteStrictProductCompletion and HasAsList,
+                       category_morphism_filter := IsMorphismInFiniteStrictProductCompletion and HasPairOfLists,
                        only_primitive_operations := true )
                   : FinalizeCategory := false );
     
@@ -141,7 +141,7 @@ end );
 ##
 InstallMethod( CoYonedaEmbeddingOfUnderlyingCategory,
         "for a finite coproduct cocompletion category",
-        [ IsFiniteProductCompletion ],
+        [ IsFiniteStrictProductCompletion ],
         
   function( PC )
     local Y;
@@ -159,7 +159,7 @@ end );
 ##
 InstallMethod( \.,
         "for a finite product completion category and a positive integer",
-        [ IsFiniteProductCompletion, IsPosInt ],
+        [ IsFiniteStrictProductCompletion, IsPosInt ],
         
   function( PC, string_as_int )
     local name, C, Y, Yc;
@@ -172,12 +172,12 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInFiniteProductCompletion( Yc ) then
+    if IsObjectInFiniteStrictProductCompletion( Yc ) then
 
         #TODO: is this true?
         #SetIsInjective( Yc, true );
         
-    elif IsMorphismInFiniteProductCompletion( Yc ) then
+    elif IsMorphismInFiniteStrictProductCompletion( Yc ) then
         
         if CanCompute( PC, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -208,7 +208,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ExtendFunctorToFiniteProductCompletion,
+InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
         "for a functor",
         [ IsCapFunctor ],
         
@@ -218,11 +218,11 @@ InstallMethod( ExtendFunctorToFiniteProductCompletion,
     C := SourceOfFunctor( F );
     D := RangeOfFunctor( F );
     
-    PC := FiniteProductCompletion( C );
+    PC := FiniteStrictProductCompletion( C );
     
-    PF := CapFunctor( Concatenation( "Extension to FiniteProductCompletion( Source( ", Name( F ), " ) )" ), PC, D );
+    PF := CapFunctor( Concatenation( "Extension to FiniteStrictProductCompletion( Source( ", Name( F ), " ) )" ), PC, D );
     
-    ## the code below is the doctrine-specific ur-algorithm for cartesian (monoidal) categories
+    ## the code below is the doctrine-specific ur-algorithm for strict cartesian (monoidal) categories
     
     AddObjectFunction( PF,
       function( objPC )
@@ -285,7 +285,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsObjectInFiniteProductCompletion ],
+        [ IsObjectInFiniteStrictProductCompletion ],
         
   function ( a )
     
@@ -297,7 +297,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsMorphismInFiniteProductCompletion ],
+        [ IsMorphismInFiniteStrictProductCompletion ],
         
   function ( phi )
     local print;

@@ -5,8 +5,8 @@ LoadPackage( "FiniteCocompletion" );
 #! true
 T := TerminalCategoryWithMultipleObjects( );
 #! TerminalCategoryWithMultipleObjects( )
-sFinSets := FiniteCoproductCocompletion( T );
-#! FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
+sFinSets := FiniteStrictCoproductCocompletion( T );
+#! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 Display( TerminalObject( sFinSets ) );
 #! [ TerminalObject ]
 #! 
@@ -17,21 +17,21 @@ Display( InitialObject( sFinSets ) );
 #! An object in the finite coproduct cocompletion category given by the above data
 A := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;
 #! <An object in
-#!  FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( A );
 #! [ A0, A1, A2 ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 B := [ "B0" / T, "B1" / T ] / sFinSets;
 #! <An object in
-#!  FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( B );
 #! [ B0, B1 ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 I := HomStructure( sFinSets );
 #! <An object in
-#!  FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( I );
 #! [ TerminalObject ]
 #! 
@@ -42,7 +42,7 @@ Display( U );
 #! TerminalObject
 HomAB := HomStructure( A, B );
 #! <An object in
-#!  FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 L := AsList( HomAB );
 #! [ <A zero object in TerminalCategoryWithMultipleObjects( )>,
 #!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
@@ -64,21 +64,21 @@ homAB := List( [ 0 .. Length( L ) - 1 ], i ->
                                      L[1 + i] ) ] ),
                        HomAB ) );
 #! [ <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,
 #!   <A morphism in
-#!    FiniteCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )> ]
+#!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )> ]
 List( homAB, IsWellDefined );
 #! [ true, true, true, true, true, true, true, true ]
 List( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;

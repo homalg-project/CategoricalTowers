@@ -3,8 +3,9 @@
 #! @Example
 LoadPackage( "FiniteCocompletion" );
 #! true
-sFinSets := SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( );
-#! SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory
+sFinSets :=
+  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );
+#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 m := ObjectConstructor( sFinSets, 3 );
 #! |3|
 n := ObjectConstructor( sFinSets, 5 );
