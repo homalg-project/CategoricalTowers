@@ -14,23 +14,23 @@
 
 #! @Description
 #!  The &GAP; category of a finite product completion category.
-DeclareCategory( "IsFiniteProductCompletion",
+DeclareCategory( "IsFiniteStrictProductCompletion",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a finite product completion category.
-DeclareCategory( "IsCellInFiniteProductCompletion",
+DeclareCategory( "IsCellInFiniteStrictProductCompletion",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a finite product completion category.
-DeclareCategory( "IsObjectInFiniteProductCompletion",
-        IsCellInFiniteProductCompletion and IsCapCategoryObject  );
+DeclareCategory( "IsObjectInFiniteStrictProductCompletion",
+        IsCellInFiniteStrictProductCompletion and IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite product completion category.
-DeclareCategory( "IsMorphismInFiniteProductCompletion",
-        IsCellInFiniteProductCompletion and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInFiniteStrictProductCompletion",
+        IsCellInFiniteStrictProductCompletion and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -42,18 +42,18 @@ DeclareCategory( "IsMorphismInFiniteProductCompletion",
 #!  Return the finite product completion of the category <A>cat</A>
 #!  in which the cartesian associators are given by identities.
 #! @Arguments cat
-DeclareAttribute( "FiniteProductCompletion",
+DeclareAttribute( "FiniteStrictProductCompletion",
         IsCapCategory );
-#! @InsertChunk TerminalCategory_as_FiniteProductCompletion
+#! @InsertChunk TerminalCategory_as_FiniteStrictProductCompletion
 
 #!
 DeclareAttribute( "AsList",
-        IsObjectInFiniteProductCompletion );
+        IsObjectInFiniteStrictProductCompletion );
 
-CapJitAddTypeSignature( "AsList", [ IsObjectInFiniteProductCompletion ],
+CapJitAddTypeSignature( "AsList", [ IsObjectInFiniteStrictProductCompletion ],
  function ( input_types )
 
-    Assert( 0, IsFiniteProductCompletion( input_types[1].category ) );
+    Assert( 0, IsFiniteStrictProductCompletion( input_types[1].category ) );
     
     return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
@@ -61,12 +61,12 @@ end );
 
 #!
 DeclareAttribute( "PairOfLists",
-        IsMorphismInFiniteProductCompletion );
+        IsMorphismInFiniteStrictProductCompletion );
 
-CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteProductCompletion ],
+CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictProductCompletion ],
  function ( input_types )
 
-    Assert( 0, IsFiniteProductCompletion( input_types[1].category ) );
+    Assert( 0, IsFiniteStrictProductCompletion( input_types[1].category ) );
     
     return rec( filter := IsNTuple,
                 element_types :=
@@ -85,12 +85,12 @@ end );
 
 #! @Description
 #!  Return the category $C$ underlying the finite product completion
-#!  category <A>UC</A><C> := FiniteProductCompletion(</C> $C$ <C>)</C>).
+#!  category <A>UC</A><C> := FiniteStrictProductCompletion(</C> $C$ <C>)</C>).
 #! @Arguments UC
 DeclareAttribute( "UnderlyingCategory",
-        IsFiniteProductCompletion );
+        IsFiniteStrictProductCompletion );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteProductCompletion ],
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictProductCompletion ],
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
@@ -103,12 +103,12 @@ end );
 #! @Arguments PC
 #! @Returns a &CAP; functor
 DeclareAttribute( "CoYonedaEmbeddingOfUnderlyingCategory",
-        IsFiniteProductCompletion );
+        IsFiniteStrictProductCompletion );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
 #!  the finite product completion <A>UC</A> into <A>UC</A>.
 #! @Arguments PC
 #! @Returns a &CAP; functor
-DeclareAttribute( "ExtendFunctorToFiniteProductCompletion",
+DeclareAttribute( "ExtendFunctorToFiniteStrictProductCompletion",
         IsCapFunctor );

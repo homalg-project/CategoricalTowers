@@ -1,12 +1,12 @@
-#! @Chunk TerminalCategory_as_FiniteProductCompletion
+#! @Chunk TerminalCategory_as_FiniteStrictProductCompletion
 
 #! @Example
 LoadPackage( "FiniteCocompletion" );
 #! true
-T := FiniteProductCompletion( InitialCategory( ) );
-#! FiniteProductCompletion( InitialCategory( ) )
+T := FiniteStrictProductCompletion( InitialCategory( ) );
+#! FiniteStrictProductCompletion( InitialCategory( ) )
 Display( T );
-#! A CAP category with name FiniteProductCompletion( InitialCategory( ) ):
+#! A CAP category with name FiniteStrictProductCompletion( InitialCategory( ) ):
 #! 
 #! 91 primitive operations were used to derive 476 operations for this category
 #! which algorithmically
@@ -32,11 +32,11 @@ Display( T );
 #! * IsStrictMonoidalCategory
 #! * IsTerminalCategory
 i := InitialObject( T );
-#! <An object in FiniteProductCompletion( InitialCategory( ) )>
+#! <An object in FiniteStrictProductCompletion( InitialCategory( ) )>
 t := TerminalObject( T );
-#! <An object in FiniteProductCompletion( InitialCategory( ) )>
+#! <An object in FiniteStrictProductCompletion( InitialCategory( ) )>
 z := ZeroObject( T );
-#! <A zero object in FiniteProductCompletion( InitialCategory( ) )>
+#! <A zero object in FiniteStrictProductCompletion( InitialCategory( ) )>
 Display( i );
 #! [  ]
 #! 
@@ -60,9 +60,10 @@ IsIdenticalObj( t, z );
 IsWellDefined( z );
 #! true
 id_z := IdentityMorphism( z );
-#! <A zero, identity morphism in FiniteProductCompletion( InitialCategory( ) )>
+#! <A zero, identity morphism in
+#!  FiniteStrictProductCompletion( InitialCategory( ) )>
 fn_z := ZeroObjectFunctorial( T );
-#! <A zero, isomorphism in FiniteProductCompletion( InitialCategory( ) )>
+#! <A zero, isomorphism in FiniteStrictProductCompletion( InitialCategory( ) )>
 IsWellDefined( fn_z );
 #! true
 IsEqualForMorphisms( id_z, fn_z );

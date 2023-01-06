@@ -19,7 +19,6 @@
 
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
-@InsertChunk SkeletalHomStructure
 
 @Chapter SkeletalFinSets
 
@@ -39,3 +38,6 @@
 
 @Subsection Skeletal Coproduct
 @InsertChunk SkeletalCoproduct
+
+@Subsection Skeletal homomorphism structre
+@InsertChunk SkeletalHomStructure

@@ -16,7 +16,7 @@ InstallMethod( AsList,
 end );
 
 ##
-InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
+InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
   function( )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
@@ -53,10 +53,10 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
     I := InitialCategory( : FinalizeCategory := true );
     
     ## the terminal category in the doctrine of categories
-    T := FiniteProductCompletion( I : FinalizeCategory := true );
+    T := FiniteStrictProductCompletion( I : FinalizeCategory := true );
     
     ##
-    UT := FiniteCoproductCocompletion( T : FinalizeCategory := true );
+    UT := FiniteStrictCoproductCocompletion( T : FinalizeCategory := true );
     
     ## from the raw object data to the object in the highest stage of the tower
     modeling_tower_object_constructor :=
@@ -94,7 +94,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
     
     ##
     sFinSets := WrapperCategory( UT,
-                        rec( name := "SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory",
+                        rec( name := "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
                              object_constructor := object_constructor,
                              object_datum := object_datum,
                              morphism_constructor := morphism_constructor,
@@ -103,7 +103,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
                              modeling_tower_object_datum := modeling_tower_object_datum,
                              modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                              modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                             category_filter := IsCategoryOfSkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory,
+                             category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
                              category_object_filter := IsObjectInSkeletalFinSets and HasLength,
                              category_morphism_filter := IsMorphismInSkeletalFinSets and HasAsList,
                              wrap_range_of_hom_structure := true,
@@ -114,7 +114,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCat
 
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        ADD_FUNCTIONS_FOR_SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategoryPrecompiled( sFinSets );
+        ADD_FUNCTIONS_FOR_SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( sFinSets );
         
     fi;
     
@@ -216,4 +216,4 @@ InstallMethod( Display,
 end );
 
 ##
-BindGlobal( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory", SkeletalFinSetsAsFiniteCoproductCocompletionOfTerminalCategory( ) );
+BindGlobal( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory", SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( ) );

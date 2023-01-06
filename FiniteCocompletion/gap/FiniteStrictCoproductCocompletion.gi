@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( FiniteCoproductCocompletion,
+InstallMethod( FiniteStrictCoproductCocompletion,
         "for a CAP category",
         [ IsCapCategory and IsInitialCategory ],
         
@@ -15,13 +15,13 @@ InstallMethod( FiniteCoproductCocompletion,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           properties, UI;
     
-    name := Concatenation( "FiniteCoproductCocompletion( ", Name( I ), " )" );
+    name := Concatenation( "FiniteStrictCoproductCocompletion( ", Name( I ), " )" );
     
-    category_filter := IsFiniteCoproductCocompletion;
+    category_filter := IsFiniteStrictCoproductCocompletion;
     
-    category_object_filter := IsObjectInFiniteCoproductCocompletion and HasIsZeroForObjects and IsZeroForObjects;
+    category_object_filter := IsObjectInFiniteStrictCoproductCocompletion and HasIsZeroForObjects and IsZeroForObjects;
     
-    category_morphism_filter := IsMorphismInFiniteCoproductCocompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    category_morphism_filter := IsMorphismInFiniteStrictCoproductCocompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -133,7 +133,7 @@ InstallMethod( FiniteCoproductCocompletion,
 end );
 
 ##
-InstallMethod( FiniteCoproductCocompletion,
+InstallMethod( FiniteStrictCoproductCocompletion,
         "for a CAP category",
         [ IsCapCategory ],
         
@@ -142,14 +142,14 @@ InstallMethod( FiniteCoproductCocompletion,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
-    UC := CreateCapCategory( Concatenation( "FiniteCoproductCocompletion( ", Name( C ), " )" ) );
+    UC := CreateCapCategory( Concatenation( "FiniteStrictCoproductCocompletion( ", Name( C ), " )" ) );
     
     ##
-    SetFilterObj( UC, IsFiniteCoproductCocompletion );
+    SetFilterObj( UC, IsFiniteStrictCoproductCocompletion );
     
     ##
-    AddObjectRepresentation( UC, IsObjectInFiniteCoproductCocompletion );
-    AddMorphismRepresentation( UC, IsMorphismInFiniteCoproductCocompletion );
+    AddObjectRepresentation( UC, IsObjectInFiniteStrictCoproductCocompletion );
+    AddMorphismRepresentation( UC, IsMorphismInFiniteStrictCoproductCocompletion );
     
     ##
     UC!.category_as_first_argument := true;
@@ -163,15 +163,17 @@ InstallMethod( FiniteCoproductCocompletion,
       rec( category_attribute_names :=
            [ "UnderlyingCategory",
              ],
-           category_filter := IsFiniteCoproductCocompletion,
-           object_filter := IsObjectInFiniteCoproductCocompletion,
-           morphism_filter := IsMorphismInFiniteCoproductCocompletion,
+           category_filter := IsFiniteStrictCoproductCocompletion,
+           object_filter := IsObjectInFiniteStrictCoproductCocompletion,
+           morphism_filter := IsMorphismInFiniteStrictCoproductCocompletion,
            );
     
     ##
     SetUnderlyingCategory( UC, C );
     
     SetIsCocartesianCategory( UC, true );
+    
+    SetIsStrictCocartesianCategory( UC, true );
     
     if ( HasIsCartesianCategory and IsCartesianCategory )( C ) then
         SetIsCartesianCategory( UC, true );
@@ -335,7 +337,7 @@ InstallMethod( FiniteCoproductCocompletion,
         ## SkeletalFinSets code:
         map := [ 0 .. Length( L ) - 1 ];
         
-        ## FiniteCoproductCocompletion code:
+        ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
         mor := List( L, obj -> IdentityMorphism( C, obj ) );
@@ -364,7 +366,7 @@ InstallMethod( FiniteCoproductCocompletion,
         
         imgs_cmp := List( s, i -> imgs_post[1 + imgs_pre[1 + i]] );
         
-        ## FiniteCoproductCocompletion code:
+        ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
         mors_pre := pair_of_lists_pre[2];
@@ -412,7 +414,7 @@ InstallMethod( FiniteCoproductCocompletion,
             L := AsList( object );
             
             return Length( L ) = 1 and ## SkeletalFinSets code
-                   IsTerminal( C, L[1] ); ## FiniteCoproductCocompletion code
+                   IsTerminal( C, L[1] ); ## FiniteStrictCoproductCocompletion code
             
         end );
         
@@ -445,7 +447,7 @@ InstallMethod( FiniteCoproductCocompletion,
             ## SkeletalFinSets code:
             map := ListWithIdenticalEntries( Length( L ), 0 );
             
-            ## FiniteCoproductCocompletion code:
+            ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
             t := TerminalObject( C );
@@ -482,7 +484,7 @@ InstallMethod( FiniteCoproductCocompletion,
         
         map := [ sum .. sum + lk - 1 ];
         
-        ## FiniteCoproductCocompletion code:
+        ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
         mor := List( AsList( Dk ), obj -> IdentityMorphism( C, obj ) );
@@ -499,7 +501,7 @@ InstallMethod( FiniteCoproductCocompletion,
         ## SkeletalFinSets code:
         map := Concatenation( List( tau, t -> PairOfLists( t )[1] ) );
         
-        ## FiniteCoproductCocompletion code:
+        ## FiniteStrictCoproductCocompletion code:
         mor := Concatenation( List( tau, t -> PairOfLists( t )[2] ) );
         
         return MorphismConstructor( UC, S, Pair( map, mor ), test_object );
@@ -543,7 +545,7 @@ InstallMethod( FiniteCoproductCocompletion,
             
             map := List( [ 0 .. p - 1 ], i -> RemInt( QuoInt( i, pk ), dk ) );
             
-            ## FiniteCoproductCocompletion code:
+            ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
             cartesian := List( Cartesian( List( D, AsList ) ), Reversed );
@@ -580,7 +582,7 @@ InstallMethod( FiniteCoproductCocompletion,
             
             map := List( m, i -> Sum( [ 0 .. l - 1 ], j -> tau_maps[1 + j][1 + i] * dd[1 + j] ) );
             
-            ## FiniteCoproductCocompletion code:
+            ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
             cartesian := List( Cartesian( uD ), Reversed );
@@ -625,7 +627,7 @@ InstallMethod( FiniteCoproductCocompletion,
                 
             else
                 
-                V := FiniteCoproductCocompletion( V );
+                V := FiniteStrictCoproductCocompletion( V );
                 
             fi;
             
@@ -847,7 +849,7 @@ end );
 ##
 InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
         "for a finite coproduct cocompletion category",
-        [ IsFiniteCoproductCocompletion ],
+        [ IsFiniteStrictCoproductCocompletion ],
         
   function( UC )
     local Y;
@@ -865,7 +867,7 @@ end );
 ##
 InstallMethod( \.,
         "for a finite coproduct cocompletion category and a positive integer",
-        [ IsFiniteCoproductCocompletion, IsPosInt ],
+        [ IsFiniteStrictCoproductCocompletion, IsPosInt ],
         
   function( UC, string_as_int )
     local name, C, Y, Yc;
@@ -878,12 +880,12 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInFiniteCoproductCocompletion( Yc ) then
+    if IsObjectInFiniteStrictCoproductCocompletion( Yc ) then
 
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsMorphismInFiniteCoproductCocompletion( Yc ) then
+    elif IsMorphismInFiniteStrictCoproductCocompletion( Yc ) then
         
         if CanCompute( UC, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -914,7 +916,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( ExtendFunctorToFiniteCoproductCocompletion,
+InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
         "for a functor",
         [ IsCapFunctor ],
         
@@ -924,11 +926,11 @@ InstallMethod( ExtendFunctorToFiniteCoproductCocompletion,
     C := SourceOfFunctor( F );
     D := RangeOfFunctor( F );
     
-    UC := FiniteCoproductCocompletion( C );
+    UC := FiniteStrictCoproductCocompletion( C );
     
-    UF := CapFunctor( Concatenation( "Extension to FiniteCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
+    UF := CapFunctor( Concatenation( "Extension to FiniteStrictCoproductCocompletion( Source( ", Name( F ), " ) )" ), UC, D );
     
-    ## the code below is the doctrine-specific ur-algorithm for cocartesian (monoidal) categories
+    ## the code below is the doctrine-specific ur-algorithm for strict cocartesian (monoidal) categories
     
     AddObjectFunction( UF,
       function( objUC )
@@ -991,7 +993,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsObjectInFiniteCoproductCocompletion ],
+        [ IsObjectInFiniteStrictCoproductCocompletion ],
         
   function ( a )
     
@@ -1003,7 +1005,7 @@ end );
 
 ##
 InstallMethod( PrintString,
-        [ IsObjectInFiniteCoproductCocompletion ],
+        [ IsObjectInFiniteStrictCoproductCocompletion ],
         
   function ( a )
     local l, string;
@@ -1026,7 +1028,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsMorphismInFiniteCoproductCocompletion ],
+        [ IsMorphismInFiniteStrictCoproductCocompletion ],
         
   function ( phi )
     local print, lazy;
