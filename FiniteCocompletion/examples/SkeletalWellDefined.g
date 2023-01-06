@@ -8,8 +8,12 @@ sFinSets :=
 #! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 s := ObjectConstructor( sFinSets, 7 );
 #! |7|
+ObjectDatum( s );
+#! 7
 t := ObjectConstructor( sFinSets, 4 );
 #! |4|
+ObjectDatum( t );
+#! 4
 psi := MorphismConstructor( s, [ 0, 2, 1, 2, 1, 3 ], t );
 #! |7| → |4|
 IsWellDefined( psi );
@@ -26,4 +30,8 @@ psi:= MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );
 #! |7| → |4|
 IsWellDefined( psi );
 #! true
+Display( psi );
+#! { 0,..., 6 } ⱶ[ 0, 2, 1, 3, 2, 1, 3 ]→ { 0,..., 3 }
+MorphismDatum( psi );
+#! [ 0, 2, 1, 3, 2, 1, 3 ]
 #! @EndExample

@@ -8,8 +8,14 @@ sFinSets :=
 #! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 A := ObjectConstructor( sFinSets, 3 );
 #! |3|
+Display( A );
+#! { 0, 1, 2 }
 B := ObjectConstructor( sFinSets, 2 );
 #! |2|
+A = B;
+#! false
+Display( B );
+#! { 0, 1 }
 HomAB := HomStructure( A, B );
 #! |8|
 I := HomStructure( sFinSets );
