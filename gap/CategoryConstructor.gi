@@ -450,7 +450,7 @@ InstallMethod( CategoryConstructor,
             
             if underlying_category_getter_string <> fail and underlying_object_getter_string <> fail and underlying_morphism_getter_string <> fail then
                 
-                if not ForAll( info.filter_list, filter -> filter in [ "category", "object", "morphism", IsInt, IsRingElement, IsCyclotomic, "list_of_objects", "list_of_morphisms" ] ) then
+                if not ForAll( info.filter_list, filter -> filter in [ "category", "object", "morphism", "integer", IsRingElement, "nonneg_integer_or_infinity", "list_of_objects", "list_of_morphisms" ] ) then
                     
                     continue;
                     
@@ -474,7 +474,7 @@ InstallMethod( CategoryConstructor,
                         
                         return Concatenation( underlying_morphism_getter_string, "( cat, ", argument_name, " )" );
                         
-                    elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
+                    elif filter = "integer" or filter = IsRingElement or filter = "nonneg_integer_or_infinity" then
                         
                         return argument_name;
                         

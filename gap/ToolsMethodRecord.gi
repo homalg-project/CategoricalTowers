@@ -159,7 +159,7 @@ Limit := rec(
   ),
 
 ProjectionInFactorOfLimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, IsInt ],
+  filter_list := [ "category", "list_of_objects", IsList, "integer" ],
   io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "P", "objects_k" ] ],
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -176,7 +176,7 @@ ProjectionInFactorOfLimit := rec(
   ),
 
 ProjectionInFactorOfLimitWithGivenLimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, IsInt, "object" ],
+  filter_list := [ "category", "list_of_objects", IsList, "integer", "object" ],
   io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "P", "objects_k" ] ],
   return_type := "morphism",
   
@@ -255,7 +255,7 @@ Colimit := rec(
   ),
 
 InjectionOfCofactorOfColimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, IsInt ],
+  filter_list := [ "category", "list_of_objects", IsList, "integer" ],
   io_type := [ [ "objects", "decorated_morphisms", "k" ], [ "objects_k", "P" ] ],
   with_given_object_position := "Range",
   return_type := "morphism",
@@ -272,7 +272,7 @@ InjectionOfCofactorOfColimit := rec(
   ),
 
 InjectionOfCofactorOfColimitWithGivenColimit := rec(
-  filter_list := [ "category", "list_of_objects", IsList, IsInt, "object" ],
+  filter_list := [ "category", "list_of_objects", IsList, "integer", "object" ],
   io_type := [ [ "objects", "decorated_morphisms", "k", "P" ], [ "objects_k", "P" ] ],
   return_type := "morphism",
   
