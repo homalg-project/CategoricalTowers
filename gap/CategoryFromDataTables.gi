@@ -44,8 +44,8 @@ InstallMethod( CategoryFromDataTables,
     
     C!.compiler_hints :=
       rec( category_filter := IsCategoryFromDataTables,
-           object_filter := IsObjectInCategoryFromDataTables and HasMapOfObject,
-           morphism_filter := IsMorphismInCategoryFromDataTables and HasMapOfMorphism,
+           object_filter := IsObjectInCategoryFromDataTables,
+           morphism_filter := IsMorphismInCategoryFromDataTables,
            category_attribute_names :=
            [ "DataTables",
              "IndicesOfGeneratingMorphisms",
