@@ -45,8 +45,8 @@ InstallMethod( CategoryFromNerveData,
     
     C!.compiler_hints :=
       rec( category_filter := IsCategoryFromNerveData,
-           object_filter := IsObjectInCategoryFromNerveData and HasMapOfObject,
-           morphism_filter := IsMorphismInCategoryFromNerveData and HasMapOfMorphism,
+           object_filter := IsObjectInCategoryFromNerveData,
+           morphism_filter := IsMorphismInCategoryFromNerveData,
            category_attribute_names :=
            [ "NerveData",
              "IndicesOfGeneratingMorphisms",
