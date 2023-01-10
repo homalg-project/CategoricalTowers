@@ -210,14 +210,14 @@ InstallMethod( QuotientCategory,
                      
                      type := info.filter_list[j];
                      
-                     if type = IsInt then
+                     if type = "integer" then
                          return Concatenation( "i_arg[", String( j ), "]" );
                      elif type in [ "object", "morphism" ] then
                          return Concatenation( "UnderlyingCell( i_arg[", String( j ), "] )" );
                      elif type in [ "list_of_objects", "list_of_morphisms" ] then
                          return Concatenation( "List( i_arg[", String( j ), "], UnderlyingCell )" );
                      else
-                         Error( "can only deal with IsInt, \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
+                         Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                      fi;
                      
                   end ) ) );
