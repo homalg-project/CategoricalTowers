@@ -6,10 +6,10 @@
                  [1X Finite (co)product/(co)limit (co)completions [101X
   
   
-                                   2023.01-17
+                                   2023.01-21
   
   
-                                 6 January 2023
+                                10 January 2023
   
   
                                 Mohamed Barakat
@@ -45,10 +45,10 @@
       1.3-3 IsObjectInFiniteStrictCoproductCocompletion
       1.3-4 IsMorphismInFiniteStrictCoproductCocompletion
     1.4 [33X[0;0YExamples[133X
-      1.4-1 [33X[0;0YCocartesian braiding[133X
-      1.4-2 [33X[0;0YCartesian braiding[133X
-      1.4-3 [33X[0;0YCartesian diagonal[133X
-      1.4-4 [33X[0;0YCocartesian associator[133X
+      1.4-1 [33X[0;0YCocartesian associator[133X
+      1.4-2 [33X[0;0YCocartesian braiding[133X
+      1.4-3 [33X[0;0YCartesian braiding[133X
+      1.4-4 [33X[0;0YCartesian diagonal[133X
       1.4-5 [33X[0;0YHomomorphism structure[133X
   2 [33X[0;0YSkeletalFinSets[133X
     2.1 [33X[0;0YAttributes[133X
