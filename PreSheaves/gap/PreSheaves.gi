@@ -601,7 +601,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                      
                      type := info.filter_list[i];
                      
-                     if type = IsInt then
+                     if type = "integer" then
                          return Concatenation( "i_arg[", String( i ), "]" );
                      elif type = "object" then
                          return Concatenation( "PairOfFunctionsOfPreSheaf( i_arg[", String( i ), "] )[1]( objB )" );
@@ -612,7 +612,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
                      elif type = "list_of_morphisms" then
                          return Concatenation( "List( i_arg[", String( i ), "], eta -> FunctionOfPreSheafMorphism( eta )( PairOfFunctionsOfPreSheaf( Source( eta ) )[1]( objB ), objB, PairOfFunctionsOfPreSheaf( Range( eta ) )[1]( objB ) ) )" );
                      else
-                         Error( "can only deal with IsInt, \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
+                         Error( "can only deal with \"integer\", \"object\", \"morphism\", \"list_of_objects\", \"list_of_morphisms\"" );
                      fi;
                      
                   end ) ) );
