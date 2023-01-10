@@ -39,7 +39,11 @@ IsOne( g[1] );
 alpha := HomStructure( ab_c, a_bc, g[1] );
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
+Source( alpha ) = ab_c;
+#! true
 IsOne( alpha );
+#! true
+IsWellDefined( alpha );
 #! true
 alpha = CocartesianAssociatorLeftToRight( a, b, c );
 #! true
@@ -72,6 +76,16 @@ G := ExtendFunctorToFiniteStrictCoproductCocompletion( F );
 #! Extension to FiniteStrictCoproductCocompletion( Source(
 #! Precomposition of Yoneda embedding functor and
 #! Embedding functor into lazy category ) )
+Display( G );
+#! Extension to FiniteStrictCoproductCocompletion( Source(
+#! Precomposition of Yoneda embedding functor and
+#! Embedding functor into lazy category ) ):
+#! 
+#! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
+#!   |
+#!   V
+#! LazyCategory( FiniteStrictCoproductCocompletion(
+#! FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
 Galpha := G( alpha );
 #! <A morphism in LazyCategory( FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>

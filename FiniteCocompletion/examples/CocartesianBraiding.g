@@ -43,6 +43,10 @@ IsOne( g[1] );
 gamma := CocartesianBraiding( a, b );
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
+Source( gamma ) = ab;
+#! true
+Range( gamma ) = ba;
+#! true
 IsWellDefined( gamma );
 #! true
 Display( gamma );
@@ -51,10 +55,6 @@ Display( gamma );
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 #! with the above associated map
-Source( gamma ) = ab;
-#! true
-Range( gamma ) = ba;
-#! true
 LFam := LazyCategory( Fam );
 #! LazyCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
@@ -84,6 +84,16 @@ G := ExtendFunctorToFiniteStrictCoproductCocompletion( F );
 #! Extension to FiniteStrictCoproductCocompletion( Source(
 #! Precomposition of Yoneda embedding functor and
 #! Embedding functor into lazy category ) )
+Display( G );
+#! Extension to FiniteStrictCoproductCocompletion( Source(
+#! Precomposition of Yoneda embedding functor and
+#! Embedding functor into lazy category ) ):
+#! 
+#! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+#!   |
+#!   V
+#! LazyCategory( FiniteStrictCoproductCocompletion(
+#! FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
 Ggamma := G( gamma );
 #! <A morphism in LazyCategory(
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )>
