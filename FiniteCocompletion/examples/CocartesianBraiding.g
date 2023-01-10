@@ -34,8 +34,12 @@ Display( ba );
 #! [ C.b, C.a ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
-HomStructure( ab, ba );
+hom := HomStructure( ab, ba );
 #! |1|
+g := ExactCoverWithGlobalElements( hom );
+#! [ |1| → |1| ]
+IsOne( g[1] );
+#! true
 gamma := CocartesianBraiding( a, b );
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>

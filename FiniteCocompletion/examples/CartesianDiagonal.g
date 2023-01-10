@@ -26,16 +26,26 @@ Display( aa );
 #! An object in the finite product completion category given by the above data
 a = aa;
 #! false
-HomStructure( aa, a );
+hom_aa_a := HomStructure( aa, a );
 #! |2|
-HomStructure( a, aa );
+hom_a_aa := HomStructure( a, aa );
 #! |1|
-id_a := IdentityMorphism( C.a );
-#! (a)-[(a)]->(a)
-delta := MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );
+g := ExactCoverWithGlobalElements( hom_a_aa );
+#! [ |1| → |1| ]
+IsOne( g[1] );
+#! true
+delta := HomStructure( a, aa, g[1] );
 #! <A morphism in
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
-IsWellDefined( delta );
+Display( delta );
+#! { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
+#! 
+#! A morphism in
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! with the above associated map
+id_a := IdentityMorphism( C.a );
+#! (a)-[(a)]->(a)
+delta = MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );
 #! true
 LPC := LazyCategory( PC );
 #! LazyCategory(

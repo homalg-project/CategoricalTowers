@@ -846,6 +846,58 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
             end );
             
+        elif ( IsBound( IsCategoryOfSkeletalFinSets ) and ValueGlobal( "IsCategoryOfSkeletalFinSets" )( V ) ) or
+          IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( V ) then
+            
+            ##
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
+              function( UC, S, T, morphism )
+                local C, UV, V, LS, LT, s, t, maps, Homs, homs, value, number, map, m, mor;
+                
+                C := UnderlyingCategory( UC );
+                V := RangeCategoryOfHomomorphismStructure( UC );
+                
+                LS := AsList( S );
+                LT := AsList( T );
+                
+                s := Length( LS );
+                t := Length( LT );
+                
+                maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                Homs := List( maps, map ->
+                              List( [ 0 .. s - 1 ], i ->
+                                    HomomorphismStructureOnObjects( C,
+                                            LS[1 + i], LT[1 + map[1 + i]] ) ) );
+                
+                homs := List( Homs, L -> DirectProduct( V, L ) );
+                
+                value := MorphismDatum( morphism )[1];
+                
+                number := First( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
+                
+                ## number -> map
+                map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
+                
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, map = maps[1 + number] );
+                
+                mor := List( [ 0 .. s - 1 ], i ->
+                             InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
+                                     LS[1 + i],
+                                     LT[1 + map[1 + i]],
+                                     ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
+                                             Homs[1 + number],
+                                             1 + i,
+                                             homs[1 + number] ) ) );
+                
+                return MorphismConstructor( UC,
+                               S,
+                               Pair( map, mor ),
+                               T );
+                
+            end );
+            
         fi;
         
     fi;
