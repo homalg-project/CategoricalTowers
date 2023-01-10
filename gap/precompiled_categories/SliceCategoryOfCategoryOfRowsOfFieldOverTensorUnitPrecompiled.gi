@@ -13,7 +13,7 @@ function ( cat_1, epsilon_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( tau_1 );
     deduped_1_1 := UnderlyingCell( epsilon_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( epsilon_1 ), Range( tau_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( epsilon_1 ), Range( tau_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UniqueLeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -131,7 +131,7 @@ function ( cat_1, alpha_1 )
     deduped_3_1 := UnderlyingCell( alpha_1 );
     deduped_2_1 := AmbientCategory( cat_1 );
     deduped_1_1 := Range( deduped_3_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Source( alpha_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_2_1, deduped_1_1, Source( deduped_3_1 ), UnderlyingMatrix, RightDivide( HomalgIdentityMatrix( RankOfObject( deduped_1_1 ), UnderlyingRing( deduped_2_1 ) ), UnderlyingMatrix( deduped_3_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Source( alpha_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_2_1, deduped_1_1, Source( deduped_3_1 ), UnderlyingMatrix, UniqueRightDivide( HomalgIdentityMatrix( RankOfObject( deduped_1_1 ), UnderlyingRing( deduped_2_1 ) ), UnderlyingMatrix( deduped_3_1 ) ) ) );
 end
 ########
         
@@ -369,7 +369,7 @@ function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( beta_1 );
     deduped_1_1 := UnderlyingCell( alpha_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Source( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Source( beta_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, SafeRightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -383,7 +383,7 @@ function ( cat_1, iota_1, tau_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingCell( iota_1 );
     deduped_1_1 := UnderlyingCell( tau_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), Source( iota_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), Source( iota_1 ), UnderlyingCell, CreateCapCategoryMorphismWithAttributes( AmbientCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, UniqueRightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
 end
 ########
         
@@ -566,7 +566,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
             return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_2_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_2, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_2_1{[ (logic_new_func_x_2 + 1) .. hoisted_4_1 ]} ), deduped_1_2, hoisted_3_1 ) ) * hoisted_5_1[logic_new_func_x_2];
         end );
     deduped_6_1 := UnionOfColumns( deduped_11_1, deduped_8_1, deduped_7_1{[ 1 .. deduped_13_1 - 1 ]} ) + (- UnionOfColumns( deduped_11_1, deduped_8_1, deduped_7_1{[ 2 .. deduped_13_1 ]} ));
-    morphism_attr_1_1 := RightDivide( UnionOfColumns( deduped_11_1, RankOfObject( deduped_10_1 ), List( tau_1, function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := UniqueRightDivide( UnionOfColumns( deduped_11_1, RankOfObject( deduped_10_1 ), List( tau_1, function ( logic_new_func_x_2 )
                   return UnderlyingMatrix( UnderlyingCell( logic_new_func_x_2 ) );
               end ) ), SyzygiesOfRows( deduped_6_1 ) ) * HomalgIdentityMatrix( (deduped_8_1 - RowRankOfMatrix( deduped_6_1 )), deduped_11_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, UnderlyingCell, CreateCapCategoryMorphismWithAttributes( deduped_12_1, deduped_10_1, CreateCapCategoryObjectWithAttributes( deduped_12_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
