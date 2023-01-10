@@ -5,7 +5,7 @@
 This directory contains a collection of
 [Jupyter](https://jupyter.org/) notebooks demonstrating the
 functionality of the [GAP](https://www.gap-system.org/) package
-[FunctorCategories](https://homalg-project.github.io/pkg/FunctorCategories),
+[FiniteCocompletion](https://homalg-project.github.io/pkg/FiniteCocompletion/),
 which is based on the
 
 * [homalg project](https://homalg-project.github.io/prj/homalg_project),
