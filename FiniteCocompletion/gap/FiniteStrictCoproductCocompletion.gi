@@ -715,7 +715,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddHomomorphismStructureOnObjects( UC,
           function( UC, S, T )
-            local C, V, LS, LT, s;
+            local C, V, LS, LT, s, t, maps;
             
             C := UnderlyingCategory( UC );
             V := RangeCategoryOfHomomorphismStructure( UC );
@@ -724,20 +724,23 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             LT := AsList( T );
             
             s := Length( LS );
+            t := Length( LT );
+            
+            maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
             
             return Coproduct( V,
-                           List( List( Tuples( [ 1 .. Length( LT ) ], s ), Reversed ), map ->
+                           List( maps, map ->
                                  DirectProduct( V,
-                                         List( [ 1 .. s ], i ->
+                                         List( [ 0 .. s - 1 ], i ->
                                                HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
-                                                       LS[i], LT[map[i]] ) ) ) ) );
+                                                       LS[1 + i], LT[1 + map[1 + i]] ) ) ) ) );
             
         end );
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UC,
           function( UC, distinguished_object, phi, range )
-            local C, V, LS, LT, s, t, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
+            local C, V, LS, LT, s, t, maps, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
             
             C := UnderlyingCategory( UC );
             V := RangeCategoryOfHomomorphismStructure( UC );
@@ -748,10 +751,12 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             s := Length( LS );
             t := Length( LT );
             
-            Homs := List( List( Tuples( [ 1 .. t ], s ), Reversed ), map ->
-                          List( [ 1 .. s ], i ->
+            maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+            
+            Homs := List( maps, map ->
+                          List( [ 0 .. s - 1 ], i ->
                                 HomomorphismStructureOnObjectsExtendedByFullEmbedding( C, V,
-                                        LS[i], LT[map[i]] ) ) );
+                                        LS[1 + i], LT[1 + map[1 + i]] ) ) );
             
             homs := List( Homs, L -> DirectProduct( V, L ) );
             
@@ -759,13 +764,13 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             map := pair_of_lists[1];
             mor := pair_of_lists[2];
-
+            
             ## map -> number
             number := Sum( [ 0 .. s - 1 ], i -> map[1 + i] * t^i );
             
-            intros := List( [ 1 .. s ], i ->
+            intros := List( [ 0 .. s - 1 ], i ->
                             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, V,
-                                    distinguished_object, mor[i], Homs[1 + number][i] ) );
+                                    distinguished_object, mor[1 + i], Homs[1 + number][1 + i] ) );
             
             intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
                              Homs[1 + number],
@@ -787,7 +792,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, V, LS, LT, s, t, Homs, homs, pair_of_lists, number, map, m, mor;
+                local C, UV, V, LS, LT, s, t, maps, Homs, homs, pair_of_lists, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
                 UV := RangeCategoryOfHomomorphismStructure( UC );
@@ -799,10 +804,12 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 s := Length( LS );
                 t := Length( LT );
                 
-                Homs := List( List( Tuples( [ 1 .. t ], s ), Reversed ), map ->
-                              List( [ 1 .. s ], i ->
+                maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                Homs := List( maps, map ->
+                              List( [ 0 .. s - 1 ], i ->
                                     HomomorphismStructureOnObjects( C,
-                                            LS[i], LT[map[i]] ) ) );
+                                            LS[1 + i], LT[1 + map[1 + i]] ) ) );
                 
                 homs := List( Homs, L -> DirectProduct( V, L ) );
                 
@@ -818,15 +825,15 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
                 m := pair_of_lists[2][1];
                 
-                mor := List( [ 1 .. s ], i ->
+                mor := List( [ 0 .. s - 1 ], i ->
                              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
-                                     LS[i],
-                                     LT[1 + map[i]],
+                                     LS[1 + i],
+                                     LT[1 + map[1 + i]],
                                      PreCompose( V,
                                              m,
                                              ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
                                                      Homs[1 + number],
-                                                     i,
+                                                     1 + i,
                                                      homs[1 + number] ) ) ) );
                 
                 return MorphismConstructor( UC,
