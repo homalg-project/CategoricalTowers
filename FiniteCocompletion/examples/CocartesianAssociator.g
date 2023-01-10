@@ -30,16 +30,18 @@ a_bc := Coproduct( a, Coproduct( b, c ) );
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 ab_c = a_bc;
 #! true
-HomStructure( ab_c, a_bc );
+hom := HomStructure( ab_c, a_bc );
 #! |1|
-alpha := CocartesianAssociatorLeftToRight( a, b, c );
-#! <An identity morphism in
+g := ExactCoverWithGlobalElements( hom );
+#! [ |1| → |1| ]
+IsOne( g[1] );
+#! true
+alpha := HomStructure( ab_c, a_bc, g[1] );
+#! <A morphism in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
-Source( alpha ) = ab_c;
-#! true
-Range( alpha ) = a_bc;
-#! true
 IsOne( alpha );
+#! true
+alpha = CocartesianAssociatorLeftToRight( a, b, c );
 #! true
 LFam := LazyCategory( Fam );
 #! LazyCategory(

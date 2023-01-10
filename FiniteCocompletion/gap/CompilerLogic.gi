@@ -127,7 +127,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number" ],
-        src_template := "Product( List( [ 1 .. number ], x -> 1 ) )",
+        src_template := "Product( List( [ 0 .. number - 1 ], x -> 1 ) )",
         dst_template := "1",
     )
 );
@@ -143,7 +143,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number1", "number2" ],
-        src_template := "Length( Tuples( [ 1 .. number1 ], number2 ) )",
+        src_template := "Length( Tuples( [ 0 .. number1 - 1 ], number2 ) )",
         dst_template := "number1 ^ number2",
     )
 );
@@ -151,7 +151,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number1", "number2" ],
-        src_template := "List( Tuples( [ 1 .. number1 ], number2 ), x -> 1 )",
+        src_template := "List( Tuples( [ 0 .. number1 - 1 ], number2 ), x -> 1 )",
         dst_template := "ListWithIdenticalEntries( number1 ^ number2, 1 )",
     )
 );

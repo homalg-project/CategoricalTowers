@@ -34,9 +34,13 @@ Display( ba );
 #! [ C.b, C.a ]
 #! 
 #! An object in the finite product completion category given by the above data
-HomStructure( ab, ba );
+hom := HomStructure( ab, ba );
 #! |1|
-gamma := CartesianBraiding( a, b );
+g := ExactCoverWithGlobalElements( hom );
+#! [ |1| → |1| ]
+IsOne( g[1] );
+#! true
+gamma := HomStructure( ab, ba, g[1] );
 #! <A morphism in
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 IsWellDefined( gamma );
@@ -50,6 +54,8 @@ Display( gamma );
 Source( gamma ) = ab;
 #! true
 Range( gamma ) = ba;
+#! true
+gamma = CartesianBraiding( a, b );
 #! true
 LPC := LazyCategory( PC );
 #! LazyCategory(
