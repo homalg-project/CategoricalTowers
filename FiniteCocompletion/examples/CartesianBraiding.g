@@ -14,6 +14,9 @@ C := FreeCategory( Q );
 SetName( C.a, "C.a" ); SetName( C.b, "C.b" );
 PC := FiniteStrictProductCompletion( C );
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+ModelingCategory( PC );
+#! Opposite( FiniteStrictCoproductCocompletion( Opposite(
+#! FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) ) )
 a := PC.a;
 #! <An object in
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
@@ -43,6 +46,10 @@ IsOne( g[1] );
 gamma := HomStructure( ab, ba, g[1] );
 #! <A morphism in
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
+Source( gamma ) = ab;
+#! true
+Range( gamma ) = ba;
+#! true
 IsWellDefined( gamma );
 #! true
 Display( gamma );
@@ -51,10 +58,6 @@ Display( gamma );
 #! A morphism in
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 #! with the above associated map
-Source( gamma ) = ab;
-#! true
-Range( gamma ) = ba;
-#! true
 gamma = CartesianBraiding( a, b );
 #! true
 LPC := LazyCategory( PC );
@@ -86,6 +89,16 @@ G := ExtendFunctorToFiniteStrictProductCompletion( F );
 #! Extension to FiniteStrictProductCompletion( Source(
 #! Precomposition of CoYoneda embedding functor and
 #! Embedding functor into lazy category ) )
+Display( G );
+#! Extension to FiniteStrictProductCompletion( Source(
+#! Precomposition of CoYoneda embedding functor and
+#! Embedding functor into lazy category ) ):
+#! 
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+#!   |
+#!   V
+#! LazyCategory(
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
 Ggamma := G( gamma );
 #! <A morphism in LazyCategory(
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )>

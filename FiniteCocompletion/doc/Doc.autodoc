@@ -5,6 +5,9 @@
 @Section GAP categories
 @Section Examples
 
+@Subsection Cocartesian associator
+@InsertChunk CocartesianAssociator
+
 @Subsection Cocartesian braiding
 @InsertChunk CocartesianBraiding
 
@@ -13,9 +16,6 @@
 
 @Subsection Cartesian diagonal
 @InsertChunk CartesianDiagonal
-
-@Subsection Cocartesian associator
-@InsertChunk CocartesianAssociator
 
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
