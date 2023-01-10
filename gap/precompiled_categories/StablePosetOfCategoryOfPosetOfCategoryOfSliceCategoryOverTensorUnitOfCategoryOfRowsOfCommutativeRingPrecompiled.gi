@@ -23,7 +23,7 @@ function ( cat_1, a_1, b_1 )
                       deduped_1_2 := (i_2 - 1);
                       return (REM_INT( deduped_1_2, 1 ) * 1 + QUO_INT( deduped_1_2, 1 ) + 1);
                   end ) ), deduped_12_1 ), deduped_12_1, deduped_12_1, deduped_7_1 ) * DiagMat( deduped_7_1, ListWithIdenticalEntries( 1, ConvertMatrixToColumn( deduped_6_1 ) ) );
-    hoisted_4_1 := RightDivide( HomalgIdentityMatrix( NumberColumns( deduped_5_1 ), deduped_7_1 ), deduped_5_1 ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
+    hoisted_4_1 := UniqueRightDivide( HomalgIdentityMatrix( NumberColumns( deduped_5_1 ), deduped_7_1 ), deduped_5_1 ) * TransposedMatrix( UnderlyingMatrix( deduped_9_1 ) );
     hoisted_3_1 := deduped_7_1;
     hoisted_2_1 := RankOfObject( Source( deduped_9_1 ) );
     morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )
