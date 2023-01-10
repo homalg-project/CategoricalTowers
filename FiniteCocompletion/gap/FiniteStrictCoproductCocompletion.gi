@@ -823,6 +823,9 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 ## number -> map
                 map := List( [ 0 .. s - 1 ], i -> RemInt( QuoInt( number, t^i ), t ) );
                 
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, map = maps[1 + number] );
+                
                 m := pair_of_lists[2][1];
                 
                 mor := List( [ 0 .. s - 1 ], i ->
