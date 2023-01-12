@@ -815,7 +815,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
                 homs := List( Homs, L -> DirectProduct( V, L ) );
                 
-                pair_of_lists := PairOfLists( morphism );
+                pair_of_lists := MorphismDatum( UV, morphism );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, Length( pair_of_lists[1] ) = 1 );
@@ -874,7 +874,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
                 homs := List( Homs, L -> DirectProduct( V, L ) );
                 
-                value := MorphismDatum( morphism )[1];
+                value := MorphismDatum( V, morphism )[1];
                 
                 number := First( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
                 
