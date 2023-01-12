@@ -506,6 +506,38 @@ AddDerivationToCAP( PushoutComplement,
     
 end );
 
+##
+AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
+        [ [ DistinguishedObjectOfHomomorphismStructure, 1 ],
+          [ ExactCoverWithGlobalElements, 1, RangeCategoryOfHomomorphismStructure ],
+          [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 2 ],
+          [ PreComposeList, 2 ],
+          [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 2 ],
+          [ UniversalMorphismFromCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
+        
+  function ( cat, s, alpha, beta, r )
+    local range_cat, distinguished_object, Ls;
+    
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    Ls := ExactCoverWithGlobalElements( range_cat, s );
+    
+    return UniversalMorphismFromCoproduct( range_cat,
+                   List( Ls, mor ->
+                         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+                                 distinguished_object,
+                                 PreComposeList( cat,
+                                         [ alpha,
+                                           InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                                                   Range( alpha ),
+                                                   Source( beta ),
+                                                   mor ),
+                                           beta ] ),
+                                 r ) ) );
+    
+end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ) );
+
 ## Final derivations
 
 ##
