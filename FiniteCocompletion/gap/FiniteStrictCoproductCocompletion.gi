@@ -770,7 +770,9 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             intros := List( [ 0 .. s - 1 ], i ->
                             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, V,
-                                    distinguished_object, mor[1 + i], Homs[1 + number][1 + i] ) );
+                                    distinguished_object,
+                                    mor[1 + i], ## ∈ C₀
+                                    Homs[1 + number][1 + i] ) );
             
             intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
                              Homs[1 + number],
