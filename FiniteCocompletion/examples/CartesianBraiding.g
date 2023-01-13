@@ -37,13 +37,12 @@ Display( ba );
 #! [ C.b, C.a ]
 #! 
 #! An object in the finite product completion category given by the above data
-hom := HomStructure( ab, ba );
+HomStructure( ab, ba );
 #! |1|
-g := ExactCoverWithGlobalElements( hom );
-#! [ |1| → |1| ]
-IsOne( g[1] );
-#! true
-gamma := HomStructure( ab, ba, g[1] );
+hom := MorphismsOfExternalHom( ab, ba );
+#! [ <A morphism in
+#!    FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )> ]
+gamma := hom[1];
 #! <A morphism in
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 Source( gamma ) = ab;

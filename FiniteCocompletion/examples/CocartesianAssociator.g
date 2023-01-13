@@ -30,13 +30,12 @@ a_bc := Coproduct( a, Coproduct( b, c ) );
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 ab_c = a_bc;
 #! true
-hom := HomStructure( ab_c, a_bc );
+HomStructure( ab_c, a_bc );
 #! |1|
-g := ExactCoverWithGlobalElements( hom );
-#! [ |1| → |1| ]
-IsOne( g[1] );
-#! true
-alpha := HomStructure( ab_c, a_bc, g[1] );
+hom := MorphismsOfExternalHom( ab_c, a_bc );
+#! [ <A morphism in FiniteStrictCoproductCocompletion(
+#!    FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )> ]
+alpha := hom[1];
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 Source( alpha ) = ab_c;
