@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Finite coproduct cocompletion
+#! @Chapter Finite strict coproduct cocompletion
 
 ####################################
 #
@@ -46,6 +46,12 @@ DeclareAttribute( "FiniteStrictCoproductCocompletion",
         IsCapCategory );
 #! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCocompletion
 
+####################################
+#
+#! @Section Attributes
+#
+####################################
+
 #!
 DeclareAttribute( "AsList",
         IsObjectInFiniteStrictCoproductCocompletion );
@@ -76,12 +82,6 @@ CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCocomp
                        element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
     
 end );
-
-####################################
-#
-#! @Section Attributes
-#
-####################################
 
 #! @Description
 #!  Return the category $C$ underlying the finite coproduct cocompletion

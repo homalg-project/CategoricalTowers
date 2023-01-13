@@ -1,4 +1,4 @@
-@Chapter Finite coproduct cocompletion
+@Chapter Finite strict coproduct cocompletion
 
 @Section Attributes
 @Section Constructors
@@ -10,12 +10,6 @@
 
 @Subsection Cocartesian braiding
 @InsertChunk CocartesianBraiding
-
-@Subsection Cartesian braiding
-@InsertChunk CartesianBraiding
-
-@Subsection Cartesian diagonal
-@InsertChunk CartesianDiagonal
 
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
@@ -44,3 +38,16 @@
 
 @Subsection Skeletal homomorphism structre
 @InsertChunk SkeletalHomStructure
+
+@Chapter Finite strict product completion
+
+@Section Attributes
+@Section Constructors
+@Section GAP categories
+@Section Examples
+
+@Subsection Cartesian braiding
+@InsertChunk CartesianBraiding
+
+@Subsection Cartesian diagonal
+@InsertChunk CartesianDiagonal
