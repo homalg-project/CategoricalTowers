@@ -3,34 +3,34 @@
   [1XIndex[101X
   
   [2XAsList[102X, for IsMorphismInSkeletalFinSets 2.1-3 
-      for IsObjectInFiniteStrictCoproductCocompletion 1.2-2 
-      for IsObjectInFiniteStrictProductCompletion 3.2-2 
+      for IsObjectInFiniteStrictCoproductCocompletion 1.1-1 
+      for IsObjectInFiniteStrictProductCompletion 3.1-1 
       for IsObjectInSkeletalFinSets 2.1-2 
-  [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictProductCompletion 3.2-5 
-  [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-3 
-  [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 3.2-6 
+  [2XCoYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictProductCompletion 3.1-4 
+  [2XExtendFunctorToFiniteStrictCoproductCocompletion[102X, for IsCapFunctor 1.1-5 
+  [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 3.1-5 
   [2XFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.2-1 
   [2XFiniteStrictProductCompletion[102X, for IsCapCategory 3.2-1 
   [2XIsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X, for IsCapCategory 2.3-1 
   [2XIsCellInFiniteStrictCoproductCocompletion[102X, for IsCapCategoryCell 1.3-2 
-  [2XIsCellInFiniteStrictProductCompletion[102X, for IsCapCategoryCell 3.1-2 
+  [2XIsCellInFiniteStrictProductCompletion[102X, for IsCapCategoryCell 3.3-2 
   [2XIsCellSkeletalFinSets[102X, for IsCapCategoryCell 2.3-2 
   [2XIsFiniteStrictCoproductCocompletion[102X, for IsCapCategory 1.3-1 
-  [2XIsFiniteStrictProductCompletion[102X, for IsCapCategory 3.1-1 
+  [2XIsFiniteStrictProductCompletion[102X, for IsCapCategory 3.3-1 
   [2XIsMorphismInFiniteStrictCoproductCocompletion[102X, for IsCellInFiniteStrictCoproductCocompletion and IsCapCategoryMorphism 1.3-4 
-  [2XIsMorphismInFiniteStrictProductCompletion[102X, for IsCellInFiniteStrictProductCompletion and IsCapCategoryMorphism 3.1-4 
+  [2XIsMorphismInFiniteStrictProductCompletion[102X, for IsCellInFiniteStrictProductCompletion and IsCapCategoryMorphism 3.3-4 
   [2XIsMorphismInSkeletalFinSets[102X, for IsCellSkeletalFinSets and IsCapCategoryMorphism 2.3-4 
   [2XIsObjectInFiniteStrictCoproductCocompletion[102X, for IsCellInFiniteStrictCoproductCocompletion and IsCapCategoryObject 1.3-3 
-  [2XIsObjectInFiniteStrictProductCompletion[102X, for IsCellInFiniteStrictProductCompletion and IsCapCategoryObject 3.1-3 
+  [2XIsObjectInFiniteStrictProductCompletion[102X, for IsCellInFiniteStrictProductCompletion and IsCapCategoryObject 3.3-3 
   [2XIsObjectInSkeletalFinSets[102X, for IsCellSkeletalFinSets and IsCapCategoryObject 2.3-3 
   [2XLength[102X, for IsObjectInSkeletalFinSets 2.1-1 
-  [2XPairOfLists[102X, for IsMorphismInFiniteStrictCoproductCocompletion 1.2-3 
-      for IsMorphismInFiniteStrictProductCompletion 3.2-3 
+  [2XPairOfLists[102X, for IsMorphismInFiniteStrictCoproductCocompletion 1.1-2 
+      for IsMorphismInFiniteStrictProductCompletion 3.1-2 
   [2XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X 2.2-1 
   [2XSkeletalFinSetsAsFreeElementaryToposOfInitialCategory[102X 2.2-2 
-  [2XUnderlyingCategory[102X, for IsFiniteStrictCoproductCocompletion 1.1-1 
-      for IsFiniteStrictProductCompletion 3.2-4 
-  [2XYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictCoproductCocompletion 1.1-2 
+  [2XUnderlyingCategory[102X, for IsFiniteStrictCoproductCocompletion 1.1-3 
+      for IsFiniteStrictProductCompletion 3.1-3 
+  [2XYonedaEmbeddingOfUnderlyingCategory[102X, for IsFiniteStrictCoproductCocompletion 1.1-4 
   
   
   -------------------------------------------------------

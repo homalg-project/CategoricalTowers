@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (FiniteCocompletion) - Chapter 3: Finite product completion</title>
+<title>GAP (FiniteCocompletion) - Chapter 3: Finite strict product completion</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -20,73 +20,84 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
-<p><a id="X846AB0407DC421F3" name="X846AB0407DC421F3"></a></p>
-<div class="ChapSects"><a href="chap3.html#X846AB0407DC421F3">3 <span class="Heading">Finite product completion</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.1 <span class="Heading">GAP categories</span></a>
+<p><a id="X86DB6D0E819FA591" name="X86DB6D0E819FA591"></a></p>
+<div class="ChapSects"><a href="chap3.html#X86DB6D0E819FA591">3 <span class="Heading">Finite strict product completion</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C701DBF7BAE649A">3.1 <span class="Heading">Attributes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85A2FA1C7A8DF8B0">3.1-1 IsFiniteStrictProductCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C58CDAA87425E6B">3.1-2 IsCellInFiniteStrictProductCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F1175D1834265B7">3.1-3 IsObjectInFiniteStrictProductCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X807ECF148202A522">3.1-4 IsMorphismInFiniteStrictProductCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X843DAEC87BC4E055">3.1-1 AsList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FAE718A7DB3B29A">3.1-2 PairOfLists</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D07FCA482AD18F1">3.1-3 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8079AC6185A1F859">3.1-4 CoYonedaEmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X874A12677A2C5833">3.1-5 ExtendFunctorToFiniteStrictProductCompletion</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C701DBF7BAE649A">3.2 <span class="Heading">Attributes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8640207B7E9F0CB4">3.2-1 FiniteStrictProductCompletion</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X843DAEC87BC4E055">3.2-2 AsList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FAE718A7DB3B29A">3.2-3 PairOfLists</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D07FCA482AD18F1">3.2-4 UnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8079AC6185A1F859">3.2-5 CoYonedaEmbeddingOfUnderlyingCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X874A12677A2C5833">3.2-6 ExtendFunctorToFiniteStrictProductCompletion</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D03633A7D98026B">3.3 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85A2FA1C7A8DF8B0">3.3-1 IsFiniteStrictProductCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C58CDAA87425E6B">3.3-2 IsCellInFiniteStrictProductCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F1175D1834265B7">3.3-3 IsObjectInFiniteStrictProductCompletion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X807ECF148202A522">3.3-4 IsMorphismInFiniteStrictProductCompletion</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7A489A5D79DA9E5C">3.4 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D4582397CD2E4D7">3.4-1 <span class="Heading">Cartesian braiding</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80ADA08878BD2857">3.4-2 <span class="Heading">Cartesian diagonal</span></a>
+</span>
 </div></div>
 </div>
 
-<h3>3 <span class="Heading">Finite product completion</span></h3>
-
-<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
-
-<h4>3.1 <span class="Heading">GAP categories</span></h4>
-
-<p><a id="X85A2FA1C7A8DF8B0" name="X85A2FA1C7A8DF8B0"></a></p>
-
-<h5>3.1-1 IsFiniteStrictProductCompletion</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of a finite product completion category.</p>
-
-<p><a id="X7C58CDAA87425E6B" name="X7C58CDAA87425E6B"></a></p>
-
-<h5>3.1-2 IsCellInFiniteStrictProductCompletion</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of cells in a finite product completion category.</p>
-
-<p><a id="X7F1175D1834265B7" name="X7F1175D1834265B7"></a></p>
-
-<h5>3.1-3 IsObjectInFiniteStrictProductCompletion</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of objects in a finite product completion category.</p>
-
-<p><a id="X807ECF148202A522" name="X807ECF148202A522"></a></p>
-
-<h5>3.1-4 IsMorphismInFiniteStrictProductCompletion</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
-
-<p>The <strong class="pkg">GAP</strong> category of morphisms in a finite product completion category.</p>
+<h3>3 <span class="Heading">Finite strict product completion</span></h3>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
-<h4>3.2 <span class="Heading">Attributes</span></h4>
+<h4>3.1 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X843DAEC87BC4E055" name="X843DAEC87BC4E055"></a></p>
+
+<h5>3.1-1 AsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7FAE718A7DB3B29A" name="X7FAE718A7DB3B29A"></a></p>
+
+<h5>3.1-2 PairOfLists</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfLists</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7D07FCA482AD18F1" name="X7D07FCA482AD18F1"></a></p>
+
+<h5>3.1-3 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the category <span class="Math">C</span> underlying the finite product completion category <var class="Arg">UC</var><code class="code"> := FiniteStrictProductCompletion(</code> <span class="Math">C</span> <code class="code">)</code>).</p>
+
+<p><a id="X8079AC6185A1F859" name="X8079AC6185A1F859"></a></p>
+
+<h5>3.1-4 CoYonedaEmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoYonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the finite product completion <var class="Arg">PC</var> into <var class="Arg">PC</var>.</p>
+
+<p><a id="X874A12677A2C5833" name="X874A12677A2C5833"></a></p>
+
+<h5>3.1-5 ExtendFunctorToFiniteStrictProductCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFiniteStrictProductCompletion</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>The full embedding functor from the category <span class="Math">C</span> underlying the finite product completion <var class="Arg">UC</var> into <var class="Arg">UC</var>.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>3.2 <span class="Heading">Constructors</span></h4>
 
 <p><a id="X8640207B7E9F0CB4" name="X8640207B7E9F0CB4"></a></p>
 
@@ -168,40 +179,265 @@ true
 true
 </pre></div>
 
-<p><a id="X843DAEC87BC4E055" name="X843DAEC87BC4E055"></a></p>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h5>3.2-2 AsList</h5>
+<h4>3.3 <span class="Heading">GAP categories</span></h4>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsList</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7FAE718A7DB3B29A" name="X7FAE718A7DB3B29A"></a></p>
+<p><a id="X85A2FA1C7A8DF8B0" name="X85A2FA1C7A8DF8B0"></a></p>
 
-<h5>3.2-3 PairOfLists</h5>
+<h5>3.3-1 IsFiniteStrictProductCompletion</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfLists</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7D07FCA482AD18F1" name="X7D07FCA482AD18F1"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<h5>3.2-4 UnderlyingCategory</h5>
+<p>The <strong class="pkg">GAP</strong> category of a finite product completion category.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">UC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the category <span class="Math">C</span> underlying the finite product completion category <var class="Arg">UC</var><code class="code"> := FiniteStrictProductCompletion(</code> <span class="Math">C</span> <code class="code">)</code>).</p>
+<p><a id="X7C58CDAA87425E6B" name="X7C58CDAA87425E6B"></a></p>
 
-<p><a id="X8079AC6185A1F859" name="X8079AC6185A1F859"></a></p>
+<h5>3.3-2 IsCellInFiniteStrictProductCompletion</h5>
 
-<h5>3.2-5 CoYonedaEmbeddingOfUnderlyingCategory</h5>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoYonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+<p>The <strong class="pkg">GAP</strong> category of cells in a finite product completion category.</p>
 
-<p>The full embedding functor from the category <span class="Math">C</span> underlying the finite product completion <var class="Arg">PC</var> into <var class="Arg">PC</var>.</p>
+<p><a id="X7F1175D1834265B7" name="X7F1175D1834265B7"></a></p>
 
-<p><a id="X874A12677A2C5833" name="X874A12677A2C5833"></a></p>
+<h5>3.3-3 IsObjectInFiniteStrictProductCompletion</h5>
 
-<h5>3.2-6 ExtendFunctorToFiniteStrictProductCompletion</h5>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToFiniteStrictProductCompletion</code>( <var class="Arg">PC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+<p>The <strong class="pkg">GAP</strong> category of objects in a finite product completion category.</p>
 
-<p>The full embedding functor from the category <span class="Math">C</span> underlying the finite product completion <var class="Arg">UC</var> into <var class="Arg">UC</var>.</p>
+<p><a id="X807ECF148202A522" name="X807ECF148202A522"></a></p>
+
+<h5>3.3-4 IsMorphismInFiniteStrictProductCompletion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFiniteStrictProductCompletion</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a finite product completion category.</p>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>3.4 <span class="Heading">Examples</span></h4>
+
+<p><a id="X7D4582397CD2E4D7" name="X7D4582397CD2E4D7"></a></p>
+
+<h5>3.4-1 <span class="Heading">Cartesian braiding</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a,b)[]" );</span>
+Q(a,b)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" ); SetName( C.b, "C.b" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PC := FiniteStrictProductCompletion( C );</span>
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModelingCategory( PC );</span>
+Opposite( FiniteStrictCoproductCocompletion( Opposite(
+FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := PC.a;</span>
+&lt;An object in
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := PC.b;</span>
+&lt;An object in
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ab := DirectProduct( a, b );</span>
+&lt;An object in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ab );</span>
+[ C.a, C.b ]
+
+An object in the finite product completion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ba := DirectProduct( b, a );</span>
+&lt;An object in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ba );</span>
+[ C.b, C.a ]
+
+An object in the finite product completion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( ab, ba );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := MorphismsOfExternalHom( ab, ba );</span>
+[ &lt;A morphism in
+   FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := hom[1];</span>
+&lt;A morphism in
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( gamma ) = ab;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( gamma ) = ba;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( gamma );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
+{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }
+
+A morphism in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+with the above associated map
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma = CartesianBraiding( a, b );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LPC := LazyCategory( PC );</span>
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LPC );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a,b)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictProductCompletion( F );</span>
+Extension to FiniteStrictProductCompletion( Source(
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Extension to FiniteStrictProductCompletion( Source(
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category ) ):
+
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ggamma := G( gamma );</span>
+&lt;A morphism in LazyCategory(
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ggamma );</span>
+true
+</pre></div>
+
+<p><a id="X80ADA08878BD2857" name="X80ADA08878BD2857"></a></p>
+
+<h5>3.4-2 <span class="Heading">Cartesian diagonal</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a)[]" );</span>
+Q(a)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PC := FiniteStrictProductCompletion( C );</span>
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModelingCategory( PC );</span>
+Opposite( FiniteStrictCoproductCocompletion( Opposite(
+FreeCategory( RightQuiver( "Q(a)[]" ) ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := PC.a;</span>
+&lt;An object in
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := DirectProduct( a, a );</span>
+&lt;An object in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
+[ C.a, C.a ]
+
+An object in the finite product completion category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( aa, a );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( a, aa );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa := MorphismsOfExternalHom( a, aa );</span>
+[ &lt;A morphism in
+   FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := hom_a_aa[1];</span>
+&lt;A morphism in
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( delta ) = a;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = aa;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( delta );</span>
+{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
+
+A morphism in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+with the above associated map
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
+(a)-[(a)]-&gt;(a)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LPC := LazyCategory( PC );</span>
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LPC );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( CoYonedaEmbeddingOfUnderlyingCategory( PC ), Emb );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictProductCompletion( F );</span>
+Extension to FiniteStrictProductCompletion( Source(
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Extension to FiniteStrictProductCompletion( Source(
+Precomposition of CoYoneda embedding functor and
+Embedding functor into lazy category ) ):
+
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gdelta := G( delta );</span>
+&lt;A morphism in LazyCategory(
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Gdelta );</span>
+true
+</pre></div>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4.html">[Next Chapter]</a>&nbsp;  </div>
