@@ -11,15 +11,15 @@ Q := RightQuiver( "Q(a,b,c)[]" );
 #! Q(a,b,c)[]
 C := FreeCategory( Q );
 #! FreeCategory( RightQuiver( "Q(a,b,c)[]" ) )
-Fam := FiniteStrictCoproductCocompletion( C );
+UC := FiniteStrictCoproductCocompletion( C );
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )
-a := Fam.a;
+a := UC.a;
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
-b := Fam.b;
+b := UC.b;
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
-c := Fam.c;
+c := UC.c;
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 ab_c := Coproduct( Coproduct( a, b ), c );
@@ -30,13 +30,12 @@ a_bc := Coproduct( a, Coproduct( b, c ) );
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 ab_c = a_bc;
 #! true
-hom := HomStructure( ab_c, a_bc );
+HomStructure( ab_c, a_bc );
 #! |1|
-g := ExactCoverWithGlobalElements( hom );
-#! [ |1| → |1| ]
-IsOne( g[1] );
-#! true
-alpha := HomStructure( ab_c, a_bc, g[1] );
+hom := MorphismsOfExternalHom( ab_c, a_bc );
+#! [ <A morphism in FiniteStrictCoproductCocompletion(
+#!    FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )> ]
+alpha := hom[1];
 #! <A morphism in
 #!  FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) )>
 Source( alpha ) = ab_c;
@@ -47,10 +46,10 @@ IsWellDefined( alpha );
 #! true
 alpha = CocartesianAssociatorLeftToRight( a, b, c );
 #! true
-LFam := LazyCategory( Fam );
+LUC := LazyCategory( UC );
 #! LazyCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
-Emb := EmbeddingFunctorOfUnderlyingCategory( LFam );
+Emb := EmbeddingFunctorOfUnderlyingCategory( LUC );
 #! Embedding functor into lazy category
 Display( Emb );
 #! Embedding functor into lazy category:
@@ -60,7 +59,7 @@ Display( Emb );
 #!   V
 #! LazyCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )
-F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( Fam ), Emb );
+F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );
 #! Precomposition of Yoneda embedding functor and
 #! Embedding functor into lazy category
 Display( F );

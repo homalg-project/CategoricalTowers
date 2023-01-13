@@ -4,7 +4,7 @@
 # Declarations
 #
 
-#! @Chapter Finite product completion
+#! @Chapter Finite strict product completion
 
 ####################################
 #
@@ -34,7 +34,7 @@ DeclareCategory( "IsMorphismInFiniteStrictProductCompletion",
 
 ####################################
 #
-#! @Section Attributes
+#! @Section Constructors
 #
 ####################################
 
@@ -45,6 +45,12 @@ DeclareCategory( "IsMorphismInFiniteStrictProductCompletion",
 DeclareAttribute( "FiniteStrictProductCompletion",
         IsCapCategory );
 #! @InsertChunk TerminalCategory_as_FiniteStrictProductCompletion
+
+####################################
+#
+#! @Section Attributes
+#
+####################################
 
 #!
 DeclareAttribute( "AsList",
@@ -76,12 +82,6 @@ CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictProductCompleti
                        element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
     
 end );
-
-####################################
-#
-#! @Section Attributes
-#
-####################################
 
 #! @Description
 #!  Return the category $C$ underlying the finite product completion

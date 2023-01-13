@@ -29,15 +29,14 @@ Display( aa );
 #! An object in the finite product completion category given by the above data
 a = aa;
 #! false
-hom_aa_a := HomStructure( aa, a );
+HomStructure( aa, a );
 #! |2|
-hom_a_aa := HomStructure( a, aa );
+HomStructure( a, aa );
 #! |1|
-g := ExactCoverWithGlobalElements( hom_a_aa );
-#! [ |1| → |1| ]
-IsOne( g[1] );
-#! true
-delta := HomStructure( a, aa, g[1] );
+hom_a_aa := MorphismsOfExternalHom( a, aa );
+#! [ <A morphism in
+#!    FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )> ]
+delta := hom_a_aa[1];
 #! <A morphism in
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 Source( delta ) = a;

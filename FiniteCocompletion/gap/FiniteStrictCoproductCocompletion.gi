@@ -770,7 +770,9 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             intros := List( [ 0 .. s - 1 ], i ->
                             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjectsExtendedByFullEmbedding( C, V,
-                                    distinguished_object, mor[1 + i], Homs[1 + number][1 + i] ) );
+                                    distinguished_object,
+                                    mor[1 + i], ## ∈ C₀
+                                    Homs[1 + number][1 + i] ) );
             
             intro := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
                              Homs[1 + number],
@@ -813,7 +815,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
                 homs := List( Homs, L -> DirectProduct( V, L ) );
                 
-                pair_of_lists := PairOfLists( morphism );
+                pair_of_lists := MorphismDatum( UV, morphism );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
                 Assert( 0, Length( pair_of_lists[1] ) = 1 );
@@ -872,7 +874,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 
                 homs := List( Homs, L -> DirectProduct( V, L ) );
                 
-                value := MorphismDatum( morphism )[1];
+                value := MorphismDatum( V, morphism )[1];
                 
                 number := First( [ 0 .. t ^ s - 1 ], i -> Sum( List( homs{[ 1 .. 1 + i ]}, Length ) ) > value );
                 
