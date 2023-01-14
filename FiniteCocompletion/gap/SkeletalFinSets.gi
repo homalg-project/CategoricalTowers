@@ -58,7 +58,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
     ##
     UT := FiniteStrictCoproductCocompletion( T : FinalizeCategory := true );
     
-    ## from the raw object data to the object in the highest stage of the tower
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( sFinSets, cardinality )
         local UT;
@@ -70,10 +70,10 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
         
     end;
     
-    ## from the object in the highest stage of the tower to the raw object data
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum := { sFinSets, U } -> Length( AsList( U ) );
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( sFinSets, source, map, range )
         local UT, T;
@@ -89,7 +89,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
         
     end;
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_datum := { sFinSets, mor } -> PairOfLists( mor )[1];
     
     ##
