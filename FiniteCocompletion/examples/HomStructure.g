@@ -8,60 +8,58 @@ T := TerminalCategoryWithMultipleObjects( );
 sFinSets := FiniteStrictCoproductCocompletion( T );
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 Display( TerminalObject( sFinSets ) );
-#! [ TerminalObject ]
+#! [ 1, [ TerminalObject ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 Display( InitialObject( sFinSets ) );
-#! [  ]
+#! [ 0, [  ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
-A := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;
+A := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( A );
-#! [ A0, A1, A2 ]
+#! [ 3, [ A0, A1, A2 ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
-B := [ "B0" / T, "B1" / T ] / sFinSets;
+B := [ 2, [ "B0" / T, "B1" / T ] ] / sFinSets;
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( B );
-#! [ B0, B1 ]
+#! [ 2, [ B0, B1 ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 I := HomStructure( sFinSets );
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( I );
-#! [ TerminalObject ]
+#! [ 1, [ TerminalObject ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
-U := AsList( I )[1];
+U := ObjectDatum( I )[2][1];
 #! <A zero object in TerminalCategoryWithMultipleObjects( )>
 Display( U );
 #! TerminalObject
 HomAB := HomStructure( A, B );
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
-L := AsList( HomAB );
-#! [ <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )>,
-#!   <A zero object in TerminalCategoryWithMultipleObjects( )> ]
-Length( L );
-#! 8
-homAB := List( [ 0 .. Length( L ) - 1 ], i ->
+L := ObjectDatum( HomAB );
+#! [ 8, [ <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )>,
+#!        <A zero object in TerminalCategoryWithMultipleObjects( )> ] ]
+homAB := List( [ 0 .. L[1] - 1 ], i ->
                MorphismConstructor( sFinSets,
                        I,
                        Pair( [ i ],
                              [ MorphismConstructor( T,
                                      U,
                                      String( i ),
-                                     L[1 + i] ) ] ),
+                                     L[2][1 + i] ) ] ),
                        HomAB ) );
 #! [ <A morphism in
 #!    FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,

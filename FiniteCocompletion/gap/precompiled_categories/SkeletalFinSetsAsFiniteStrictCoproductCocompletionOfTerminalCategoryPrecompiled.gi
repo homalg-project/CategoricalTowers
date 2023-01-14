@@ -125,7 +125,12 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return AsList( arg2_1 ) = AsList( arg3_1 );
+    if not AsList( arg2_1 ) = AsList( arg3_1 ) then
+        return false;
+    else
+        return true;
+    fi;
+    return;
 end
 ########
         
@@ -136,7 +141,12 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return AsList( arg2_1 ) = AsList( arg3_1 );
+    if not AsList( arg2_1 ) = AsList( arg3_1 ) then
+        return false;
+    else
+        return true;
+    fi;
+    return;
 end
 ########
         
@@ -147,7 +157,12 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return Length( arg2_1 ) = Length( arg3_1 );
+    if not Length( arg2_1 ) = Length( arg3_1 ) then
+        return false;
+    else
+        return true;
+    fi;
+    return;
 end
 ########
         
@@ -182,20 +197,20 @@ end
 function ( cat_1, arg2_1 )
     local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := AsList( arg2_1 );
-    deduped_3_1 := Length( Source( arg2_1 ) );
-    deduped_2_1 := Length( deduped_4_1 );
+    deduped_3_1 := Length( deduped_4_1 );
+    deduped_2_1 := Length( Source( arg2_1 ) );
     hoisted_1_1 := Length( Range( arg2_1 ) );
-    if not deduped_2_1 = deduped_3_1 then
-        return false;
-    elif not ForAll( deduped_4_1, function ( a_2 )
+    if not ForAll( deduped_4_1, function ( a_2 )
                  return (IsInt( a_2 ) and a_2 >= 0);
              end ) then
         return false;
-    elif not deduped_3_1 = deduped_2_1 then
+    elif not deduped_2_1 = deduped_3_1 then
         return false;
     elif not ForAll( deduped_4_1, function ( a_2 )
                  return a_2 < hoisted_1_1;
              end ) then
+        return false;
+    elif not deduped_3_1 = deduped_2_1 then
         return false;
     else
         return true;
@@ -211,7 +226,9 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return true;
+    local deduped_1_1;
+    deduped_1_1 := Length( arg2_1 );
+    return IsInt( deduped_1_1 ) and deduped_1_1 >= 0;
 end
 ########
         

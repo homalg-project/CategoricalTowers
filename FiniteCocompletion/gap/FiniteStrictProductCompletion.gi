@@ -19,15 +19,15 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ##
     object_constructor :=
-      function( PC, L )
+      function( PC, pair_of_int_and_list )
         
         return CreateCapCategoryObjectWithAttributes( PC,
-                       AsList, L );
+                       PairOfIntAndList, pair_of_int_and_list );
         
     end;
     
     ##
-    object_datum := { PC, M } -> AsList( M );
+    object_datum := { PC, P } -> PairOfIntAndList( P );
     
     ##
     morphism_constructor :=
@@ -56,7 +56,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
-      function( PC, L )
+      function( PC, pair_of_int_and_list )
         local opUopC, UopC, opC;
         
         opUopC := ModelingCategory( PC );
@@ -67,15 +67,16 @@ InstallMethod( FiniteStrictProductCompletion,
         
         return ObjectConstructor( opUopC,
                        ObjectConstructor( UopC,
-                               List( L, objC ->
-                                     ObjectConstructor( opC, objC ) ) ) );
+                               Pair( pair_of_int_and_list[1],
+                                     List( pair_of_int_and_list[2], objC ->
+                                           ObjectConstructor( opC, objC ) ) ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( PC, P )
-        local opUopC, UopC, opC;
+        local opUopC, UopC, opC, pair;
         
         opUopC := ModelingCategory( PC );
         
@@ -83,7 +84,9 @@ InstallMethod( FiniteStrictProductCompletion,
         
         opC := UnderlyingCategory( UopC );
         
-        return List( ObjectDatum( UopC, ObjectDatum( opUopC, P ) ), obj -> ObjectDatum( opC, obj ) );
+        pair := ObjectDatum( UopC, ObjectDatum( opUopC, P ) );
+        
+        return Pair( pair[1], List( pair[2], obj -> ObjectDatum( opC, obj ) ) );
         
     end;
     
@@ -144,8 +147,8 @@ InstallMethod( FiniteStrictProductCompletion,
                        modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                        modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                        category_filter := IsFiniteStrictProductCompletion,
-                       category_object_filter := IsObjectInFiniteStrictProductCompletion and HasAsList,
-                       category_morphism_filter := IsMorphismInFiniteStrictProductCompletion and HasPairOfLists,
+                       category_object_filter := IsObjectInFiniteStrictProductCompletion,
+                       category_morphism_filter := IsMorphismInFiniteStrictProductCompletion,
                        only_primitive_operations := true )
                   : FinalizeCategory := false );
     
@@ -167,7 +170,7 @@ InstallMethod( CoYonedaEmbeddingOfUnderlyingCategory,
     
     Y := CapFunctor( "CoYoneda embedding functor", UnderlyingCategory( PC ), PC );
     
-    AddObjectFunction( Y, objC -> ObjectConstructor( PC, [ objC ] ) );
+    AddObjectFunction( Y, objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) ) );
     
     AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), range ) );
     
@@ -247,7 +250,7 @@ InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
       function( objPC )
         local L;
         
-        L := AsList( objPC );
+        L := ObjectDatum( objPC )[2];
         
         return DirectProduct( D, List( L, objC -> ApplyFunctor( F, objC ) ) );
         
@@ -255,23 +258,20 @@ InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
     
     AddMorphismFunction( PF,
       function( source, morPC, range )
-        local pair_of_lists, map, mor, Fmor, S, T, LS, LT, FLS, FLT, prj, cmp;
+        local pair_of_lists, map, mor, Fmor, pairS, pairT, FLS, FLT, prj, cmp;
         
-        pair_of_lists := PairOfLists( morPC );
+        pair_of_lists := MorphismDatum( morPC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
         Fmor := List( mor, m -> ApplyFunctor( F, m ) );
         
-        S := Source( morPC );
-        T := Range( morPC );
+        pairS := ObjectDatum( Source( morPC ) );
+        pairT := ObjectDatum( Range( morPC ) );
         
-        LS := AsList( S );
-        LT := AsList( T );
-        
-        FLS := List( LS, S_i -> ApplyFunctor( F, S_i ) );
-        FLT := List( LT, T_i -> ApplyFunctor( F, T_i ) );
+        FLS := List( pairS[2], S_i -> ApplyFunctor( F, S_i ) );
+        FLT := List( pairT[2], T_i -> ApplyFunctor( F, T_i ) );
         
         prj := List( map, i ->
                      ProjectionInFactorOfDirectProductWithGivenDirectProduct( D,
@@ -279,10 +279,10 @@ InstallMethod( ExtendFunctorToFiniteStrictProductCompletion,
                              1 + i,
                              source ) );
         
-        cmp := List( [ 1 .. Length( LT ) ], i ->
+        cmp := List( [ 0 .. pairT[1] - 1 ], i ->
                      PreCompose( D,
-                             prj[i],
-                             Fmor[i] ) );
+                             prj[1 + i],
+                             Fmor[1 + i] ) );
         
         return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D,
                        FLT,
@@ -308,7 +308,7 @@ InstallMethod( Display,
         
   function ( a )
     
-    Display( AsList( a ) );
+    Display( PairOfIntAndList( a ) );
     
     Display( "\nAn object in the finite product completion category given by the above data" );
     
@@ -336,9 +336,9 @@ InstallMethod( Display,
         return Concatenation( "{ 0,..., ", String( l - 1 ), " }" );
     end;
     
-    Print( print( Length( AsList( Range( phi ) ) ) ) );
+    Print( print( PairOfIntAndList( Range( phi ) )[1] ) );
     Print( " ⱶ", PairOfLists( phi )[1], "→ " );
-    Print( print( Length( AsList( Source( phi ) ) ) ), "\n\n" );
+    Print( print( PairOfIntAndList( Source( phi ) )[1] ), "\n\n" );
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );
     
 end );

@@ -24,7 +24,7 @@ aa := DirectProduct( a, a );
 #! <An object in
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 Display( aa );
-#! [ C.a, C.a ]
+#! [ 2, [ C.a, C.a ] ]
 #! 
 #! An object in the finite product completion category given by the above data
 a = aa;
