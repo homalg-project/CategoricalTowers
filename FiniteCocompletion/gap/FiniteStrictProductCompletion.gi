@@ -67,13 +67,25 @@ InstallMethod( FiniteStrictProductCompletion,
         
         return ObjectConstructor( opUopC,
                        ObjectConstructor( UopC,
-                               List( L,
-                                     obj -> ObjectConstructor( opC, obj ) ) ) );
+                               List( L, objC ->
+                                     ObjectConstructor( opC, objC ) ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
-    modeling_tower_object_datum := { PC, P } -> List( AsList( Opposite( P ) ), Opposite );
+    modeling_tower_object_datum :=
+      function( PC, P )
+        local opUopC, UopC, opC;
+        
+        opUopC := ModelingCategory( PC );
+        
+        UopC := OppositeCategory( opUopC );
+        
+        opC := UnderlyingCategory( UopC );
+        
+        return List( ObjectDatum( UopC, ObjectDatum( opUopC, P ) ), obj -> ObjectDatum( opC, obj ) );
+        
+    end;
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
@@ -89,27 +101,34 @@ InstallMethod( FiniteStrictProductCompletion,
         return MorphismConstructor( opUopC,
                        source,
                        MorphismConstructor( UopC,
-                               Opposite( range ),
+                               ObjectDatum( opUopC, range ),
                                Pair( pair_of_lists[1],
-                                     List( pair_of_lists[2],
-                                           mor -> MorphismConstructor( opC,
-                                                   Opposite( Range( mor ) ),
-                                                   mor,
-                                                   Opposite( Source( mor ) ) ) )
-                                     ),
-                               Opposite( source ) ),
+                                     List( pair_of_lists[2], morC ->
+                                           MorphismConstructor( opC,
+                                                   ObjectConstructor( opC, Range( morC ) ),
+                                                   morC,
+                                                   ObjectConstructor( opC, Source( morC ) ) ) ) ),
+                               ObjectDatum( opUopC, source ) ),
                        range );
     end;
     
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
-      function( opUopC, mor )
-        local pair_of_lists;
+      function( PC, phi )
+        local opUopC, UopC, opC, pair_of_lists;
         
-        pair_of_lists := PairOfLists( Opposite( mor ) );
+        opUopC := ModelingCategory( PC );
+        
+        UopC := OppositeCategory( opUopC );
+        
+        opC := UnderlyingCategory( UopC );
+        
+        pair_of_lists := MorphismDatum( UopC,
+                                 MorphismDatum( opUopC, phi ) );
         
         return [ pair_of_lists[1],
-                 List( pair_of_lists[2], Opposite ) ];
+                 List( pair_of_lists[2], mor ->
+                       MorphismDatum( opC, mor ) ) ];
         
     end;
     
