@@ -66,12 +66,14 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
         UT := ModelingCategory( sFinSets );
         
         return ObjectConstructor( UT,
-                       ListWithIdenticalEntries( cardinality, TerminalObject( UnderlyingCategory( UT ) ) ) );
+                       Pair( cardinality,
+                             ListWithIdenticalEntries( cardinality,
+                                     TerminalObject( UnderlyingCategory( UT ) ) ) ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
-    modeling_tower_object_datum := { sFinSets, U } -> Length( AsList( U ) );
+    modeling_tower_object_datum := { sFinSets, U } -> ObjectDatum( ModelingCategory( sFinSets ), U )[1];
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
@@ -84,13 +86,15 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
         
         return MorphismConstructor( UT,
                        source,
-                       Pair( map, ListWithIdenticalEntries( Length( AsList( source ) ), IdentityMorphism( T, TerminalObject( T ) ) ) ),
+                       Pair( map,
+                             ListWithIdenticalEntries( ObjectDatum( UT, source )[1],
+                                     IdentityMorphism( T, TerminalObject( T ) ) ) ),
                        range );
         
     end;
     
     ## from the raw morphism data to the morphism in the modeling category
-    modeling_tower_morphism_datum := { sFinSets, mor } -> PairOfLists( mor )[1];
+    modeling_tower_morphism_datum := { sFinSets, mor } -> MorphismDatum( ModelingCategory( sFinSets ), mor )[1];
     
     ##
     sFinSets := WrapperCategory( UT,
@@ -104,8 +108,8 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
                              modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                              modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                              category_filter := IsCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
-                             category_object_filter := IsObjectInSkeletalFinSets and HasLength,
-                             category_morphism_filter := IsMorphismInSkeletalFinSets and HasAsList,
+                             category_object_filter := IsObjectInSkeletalFinSets,
+                             category_morphism_filter := IsMorphismInSkeletalFinSets,
                              wrap_range_of_hom_structure := true,
                              only_primitive_operations := true ) : FinalizeCategory := false );
     

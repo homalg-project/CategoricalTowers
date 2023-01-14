@@ -24,14 +24,14 @@ ab := Coproduct( a, b );
 #! <An object in
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 Display( ab );
-#! [ C.a, C.b ]
+#! [ 2, [ C.a, C.b ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 ba := Coproduct( b, a );
 #! <An object in
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 Display( ba );
-#! [ C.b, C.a ]
+#! [ 2, [ C.b, C.a ] ]
 #! 
 #! An object in the finite coproduct cocompletion category given by the above data
 HomStructure( ab, ba );

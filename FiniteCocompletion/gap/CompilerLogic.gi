@@ -6,9 +6,9 @@
 
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "x", "y" ],
-        src_template := "x = y and true",
-        dst_template := "x = y",
+        variable_names := [ "statement" ],
+        src_template := "statement and true",
+        dst_template := "statement",
     )
 );
 
@@ -39,7 +39,7 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "cat", "list" ],
-        src_template := "IsCapCategoryObject( CreateCapCategoryObjectWithAttributes( cat, AsList, list ) )",
+        src_template := "IsCapCategoryObject( CreateCapCategoryObjectWithAttributes( cat, PairOfIntAndList, list ) )",
         dst_template := "true",
     )
 );

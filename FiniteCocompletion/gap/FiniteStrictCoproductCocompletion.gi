@@ -30,7 +30,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             return """
                 function( input_arguments... )
                     
-                    return ObjectConstructor( cat, [ ] );
+                    return ObjectConstructor( cat, Pair( 0, [ ] ) );
                     
                 end
             """;
@@ -53,14 +53,14 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     
     ##
     object_constructor :=
-      function ( UI, L )
+      function ( UI, pair_of_int_and_list )
         
         return CreateCapCategoryObjectWithAttributes( UI,
-                       AsList, L );
+                       PairOfIntAndList, pair_of_int_and_list );
         
     end;
     
-    object_datum := { UI, object } -> AsList( object );
+    object_datum := { UI, object } -> PairOfIntAndList( object );
     
     morphism_constructor :=
       function ( UI, S, pair_of_lists, T )
@@ -175,10 +175,10 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     
     ##
     AddObjectConstructor( UC,
-      function ( UC, L )
+      function ( UC, pair_of_int_and_list )
         
         return CreateCapCategoryObjectWithAttributes( UC,
-                       AsList, L );
+                       PairOfIntAndList, pair_of_int_and_list );
         
     end );
     
@@ -186,7 +186,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     AddObjectDatum( UC,
       function ( UC, object )
         
-        return AsList( object );
+        return PairOfIntAndList( object );
         
     end );
     
@@ -218,11 +218,19 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     ##
     AddIsWellDefinedForObjects( UC,
       function ( UC, object )
-        local C;
+        local pair, C;
+        
+        pair := ObjectDatum( UC, object );
         
         C := UnderlyingCategory( UC );
         
-        return ForAll( AsList( object ),
+        return #IsList( pair ) and
+               #Length( pair ) = 2 and
+               IsInt( pair[1] ) and
+               pair[1] >= 0 and
+               #IsList( pair[2] ) and
+               Length( pair[2] ) = pair[1] and
+               ForAll( pair[2],
                        obj ->
                        IsCapCategoryObject( obj ) and
                        IsIdenticalObj( CapCategory( obj ), C ) );
@@ -232,30 +240,34 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     ##
     AddIsWellDefinedForMorphisms( UC,
       function ( UC, morphism )
-        local S, T, s, t, pair_of_lists, imgs, mors, C;
+        local pairS, pairT, pair_of_lists, s, t, map, S, T, mors, C;
         
-        S := AsList( Source( morphism ) );
+        pairS := ObjectDatum( UC, Source( morphism ) );
+        pairT := ObjectDatum( UC, Range( morphism ) );
         
-        T := AsList( Range( morphism ) );
+        pair_of_lists := MorphismDatum( UC, morphism );
         
-        s := Length( S );
+        ## SkeletalFinSets code:
+        s := pairS[1];
+        t := pairT[1];
         
-        t := Length( T );
+        map := pair_of_lists[1];
         
-        pair_of_lists := PairOfLists( morphism );
-        
-        imgs := pair_of_lists[1];
-        mors := pair_of_lists[2];
-        
+        ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
-        if not ( Length( imgs ) = Length( mors ) ) then
+        S := pairS[2];
+        T := pairT[2];
+        
+        mors := pair_of_lists[2];
+        
+        if not ForAll( map, a -> IsInt( a ) and a >= 0 ) then
             return false;
-        elif not ForAll( imgs, a -> IsInt( a ) and a >= 0 ) then
+        elif not s = Length( map ) then
             return false;
-        elif not s = Length( imgs ) then
+        elif not ForAll( map, a -> a < t ) then
             return false;
-        elif not ForAll( imgs, a -> a < t ) then
+        elif not ( Length( map ) = Length( mors ) ) then
             return false;
         else
             return ForAll( [ 1 .. Length( mors ) ],
@@ -263,7 +275,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                            IsCapCategoryMorphism( mors[i] ) and
                            IsIdenticalObj( CapCategory( mors[i] ), C ) and
                            IsEqualForObjects( C, Source( mors[i] ), S[i] ) and
-                           IsEqualForObjects( C, Range( mors[i] ), T[1 + imgs[i]] ) );
+                           IsEqualForObjects( C, Range( mors[i] ), T[1 + map[i]] ) );
         fi;
         
     end );
@@ -271,70 +283,86 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     ##
     AddIsEqualForObjects( UC,
       function ( UC, object1, object2 )
-        local l, L1, L2, C;
+        local pair1, pair2, C, L1, L2;
         
-        L1 := AsList( object1 );
-        L2 := AsList( object2 );
+        pair1 := ObjectDatum( UC, object1 );
+        pair2 := ObjectDatum( UC, object2 );
         
-        l := Length( L1 );
+        ## SkeletalFinSets code:
+        if not pair1[1] = pair2[1] then
+            return false;
+        fi;
         
+        ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
-        return l = Length( L2 ) and
-               ForAll( [ 1 .. l ], i -> IsEqualForObjects( C, L1[i], L2[i] ) );
+        L1 := pair1[2];
+        L2 := pair2[2];
+        
+        return ForAll( [ 1 .. pair1[1] ], i -> IsEqualForObjects( C, L1[i], L2[i] ) );
         
     end );
     
     ##
     AddIsEqualForMorphisms( UC,
       function ( UC, morphism1, morphism2 )
-        local pair_of_lists1, pair_of_lists2, m1, m2, C;
+        local pair_of_lists1, pair_of_lists2, C, m1, m2;
         
-        pair_of_lists1 := PairOfLists( morphism1 );
-        pair_of_lists2 := PairOfLists( morphism2 );
+        pair_of_lists1 := MorphismDatum( UC, morphism1 );
+        pair_of_lists2 := MorphismDatum( UC, morphism2 );
+        
+        ## SkeletalFinSets code:
+        if not pair_of_lists1[1] = pair_of_lists2[1] then
+            return false;
+        fi;
+        
+        ## FiniteStrictCoproductCocompletion code:
+        C := UnderlyingCategory( UC );
         
         m1 := pair_of_lists1[2];
         m2 := pair_of_lists2[2];
         
-        C := UnderlyingCategory( UC );
-        
-        return pair_of_lists1[1] = pair_of_lists2[1] and
-               ForAll( [ 1 .. Length( pair_of_lists1[2] ) ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
+        return ForAll( [ 1 .. Length( m1 ) ], i -> IsEqualForMorphisms( C, m1[i], m2[i] ) );
         
     end );
     
     ##
     AddIsCongruentForMorphisms( UC,
       function ( UC, morphism1, morphism2 )
-        local pair_of_lists1, pair_of_lists2, m1, m2, C;
+        local pair_of_lists1, pair_of_lists2, C, m1, m2;
         
-        pair_of_lists1 := PairOfLists( morphism1 );
-        pair_of_lists2 := PairOfLists( morphism2 );
+        pair_of_lists1 := MorphismDatum( UC, morphism1 );
+        pair_of_lists2 := MorphismDatum( UC, morphism2 );
+        
+        ## SkeletalFinSets code:
+        if not pair_of_lists1[1] = pair_of_lists2[1] then
+            return false;
+        fi;
+        
+        ## FiniteStrictCoproductCocompletion code:
+        C := UnderlyingCategory( UC );
         
         m1 := pair_of_lists1[2];
         m2 := pair_of_lists2[2];
         
-        C := UnderlyingCategory( UC );
-        
-        return pair_of_lists1[1] = pair_of_lists2[1] and
-               ForAll( [ 1 .. Length( pair_of_lists1[2] ) ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
+        return ForAll( [ 1 .. Length( m1 ) ], i -> IsCongruentForMorphisms( C, m1[i], m2[i] ) );
         
     end );
     
     ##
     AddIdentityMorphism( UC,
       function ( UC, object )
-        local L, map, C, mor;
+        local pair, map, C, mor;
         
-        L := AsList( object );
+        pair := ObjectDatum( UC, object );
         
         ## SkeletalFinSets code:
-        map := [ 0 .. Length( L ) - 1 ];
+        map := [ 0 .. pair[1] - 1 ];
         
         ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
-        mor := List( L, obj -> IdentityMorphism( C, obj ) );
+        mor := List( pair[2], objC -> IdentityMorphism( C, objC ) );
         
         return MorphismConstructor( UC, object, Pair( map, mor ), object );
         
@@ -344,21 +372,23 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     AddPreCompose( UC,
       function ( UC, pre_morphism, post_morphism )
         local S, T, pair_of_lists_pre, pair_of_lists_post,
-              imgs_pre, imgs_post, s, imgs_cmp, C, mors_pre, mors_post, mors_cmp;
+              maps_pre, maps_post, s, maps_cmp,
+              C, mors_pre, mors_post, mors_cmp;
         
         S := Source( pre_morphism );
         T := Range( post_morphism );
         
-        pair_of_lists_pre := PairOfLists( pre_morphism );
-        pair_of_lists_post := PairOfLists( post_morphism );
+        pair_of_lists_pre := MorphismDatum( UC, pre_morphism );
+        pair_of_lists_post := MorphismDatum( UC, post_morphism );
         
         ## SkeletalFinSets code:
-        imgs_pre := pair_of_lists_pre[1];
-        imgs_post := pair_of_lists_post[1];
+        maps_pre := pair_of_lists_pre[1];
+        maps_post := pair_of_lists_post[1];
         
-        s := [ 0 .. Length( AsList( S ) ) - 1 ];
+        s := [ 0 .. ObjectDatum( UC, S )[1] - 1 ];
         
-        imgs_cmp := List( s, i -> imgs_post[1 + imgs_pre[1 + i]] );
+        maps_cmp := List( s, i ->
+                          maps_post[1 + maps_pre[1 + i]] );
         
         ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
@@ -366,9 +396,12 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         mors_pre := pair_of_lists_pre[2];
         mors_post := pair_of_lists_post[2];
         
-        mors_cmp := List( s, i -> PreCompose( C, mors_pre[1 + i], mors_post[1 + imgs_pre[1 + i]] ) );
+        mors_cmp := List( s, i ->
+                          PreCompose( C,
+                                  mors_pre[1 + i],
+                                  mors_post[1 + maps_pre[1 + i]] ) );
         
-        return MorphismConstructor( UC, S, Pair( imgs_cmp, mors_cmp ), T );
+        return MorphismConstructor( UC, S, Pair( maps_cmp, mors_cmp ), T );
         
     end );
     
@@ -376,7 +409,8 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     AddIsInitial( UC,
       function ( UC, object )
         
-        return Length( AsList( object ) ) = 0;
+        ## SkeletalFinSets code:
+        return ObjectDatum( UC, object )[1] = 0;
         
     end );
     
@@ -384,7 +418,11 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     AddInitialObject( UC,
       function ( UC )
         
-        return ObjectConstructor( UC, [ ] );
+        return ObjectConstructor( UC,
+                       Pair( ## SkeletalFinSets code:
+                             0,
+                             ## FiniteStrictCoproductCocompletion code:
+                             [ ] ) );
         
     end );
     
@@ -401,14 +439,12 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddIsTerminal( UC,
           function ( UC, object )
-            local C, L;
+            local pair;
             
-            C := UnderlyingCategory( UC );
+            pair := ObjectDatum( UC, object );
             
-            L := AsList( object );
-            
-            return Length( L ) = 1 and ## SkeletalFinSets code
-                   IsTerminal( C, L[1] ); ## FiniteStrictCoproductCocompletion code
+            return pair[1] = 1 and ## SkeletalFinSets code
+                   IsTerminal( UnderlyingCategory( UC ), pair[2][1] ); ## FiniteStrictCoproductCocompletion code
             
         end );
         
@@ -419,11 +455,12 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ## the terminal object of UC is that of C
         AddTerminalObject( UC,
           function ( UC )
-            local C;
             
-            C := UnderlyingCategory( UC );
-            
-            return ObjectConstructor( UC, [ TerminalObject( C ) ] );
+            return ObjectConstructor( UC,
+                           Pair( ## SkeletalFinSets code
+                                 1,
+                                 ## FiniteStrictCoproductCocompletion code
+                                 [ TerminalObject( UnderlyingCategory( UC ) ) ] ) );
             
         end );
         
@@ -434,19 +471,20 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject( UC,
           function ( UC, object, T )
-            local L, map, C, t, mor;
+            local pair, L, map, C, t, mor;
             
-            L := AsList( object );
+            pair := ObjectDatum( UC, object );
             
             ## SkeletalFinSets code:
-            map := ListWithIdenticalEntries( Length( L ), 0 );
+            map := ListWithIdenticalEntries( pair[1], 0 );
             
             ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
             t := TerminalObject( C );
             
-            mor := List( L, obj -> UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( C, obj, t ) );
+            mor := List( pair[2], objC ->
+                         UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( C, objC, t ) );
             
             return MorphismConstructor( UC, object, Pair( map, mor ), T );
             
@@ -457,33 +495,40 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     ##
     AddCoproduct( UC,
       function ( UC, D )
+        local data;
         
-        return ObjectConstructor( UC, Concatenation( List( D, obj -> AsList( obj ) ) ) );
+        data := List( D, Di -> ObjectDatum( UC, Di ) );
+        
+        return ObjectConstructor( UC,
+                       Pair( ## SkeletalFinSets code:
+                             Sum( List( data, datum -> datum[1] ) ),
+                             ## FiniteStrictCoproductCocompletion code:
+                             Concatenation( List( data, datum -> datum[2] ) ) ) );
         
     end );
     
     ##
     AddInjectionOfCofactorOfCoproductWithGivenCoproduct( UC,
       function ( UC, D, k, coproduct )
-        local O, sum, Dk, lk, map, C, mor;
+        local data, lengths, sum, pair, lk, map, C, mor;
+        
+        data := List( D, Di -> ObjectDatum( UC, Di ) );
         
         ## SkeletalFinSets code:
-        O := D{[ 1 .. k - 1 ]};
+        lengths := List( data, datum -> datum[1] );
         
-        sum := Sum( List( O, x -> Length( AsList( x ) ) ) );
+        sum := Sum( lengths{[ 1 .. k - 1 ]} );
         
-        Dk := D[k];
-        
-        lk := Length( AsList( Dk ) );
+        lk := lengths[k];
         
         map := [ sum .. sum + lk - 1 ];
         
         ## FiniteStrictCoproductCocompletion code:
         C := UnderlyingCategory( UC );
         
-        mor := List( AsList( Dk ), obj -> IdentityMorphism( C, obj ) );
+        mor := List( data[k][2], objC -> IdentityMorphism( C, objC ) );
         
-        return MorphismConstructor( UC, Dk, Pair( map, mor ), coproduct );
+        return MorphismConstructor( UC, D[k], Pair( map, mor ), coproduct );
         
     end );
     
@@ -493,10 +538,10 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         local map, mor;
         
         ## SkeletalFinSets code:
-        map := Concatenation( List( tau, t -> PairOfLists( t )[1] ) );
+        map := Concatenation( List( tau, t -> MorphismDatum( UC, t )[1] ) );
         
         ## FiniteStrictCoproductCocompletion code:
-        mor := Concatenation( List( tau, t -> PairOfLists( t )[2] ) );
+        mor := Concatenation( List( tau, t -> MorphismDatum( UC, t )[2] ) );
         
         return MorphismConstructor( UC, S, Pair( map, mor ), test_object );
         
@@ -507,11 +552,17 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddDirectProduct( UC,
           function ( UC, D )
-            local C;
+            local C, data, cartesian;
             
             C := UnderlyingCategory( UC );
             
-            return ObjectConstructor( UC, List( List( Cartesian( List( D, AsList ) ), Reversed ), L -> DirectProduct( C, L ) ) );
+            data := List( D, Di -> ObjectDatum( UC, Di ) );
+            
+            cartesian := List( Cartesian( List( data, datum -> datum[2] ) ), Reversed );
+            
+            return ObjectConstructor( UC,
+                           Pair( Product( List( data, datum -> datum[1] ) ), ## SkeletalFinSets code
+                                 List( cartesian, L -> DirectProduct( C, L ) ) ) ); ## FiniteStrictCoproductCocompletion code
             
         end );
         
@@ -522,29 +573,31 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddProjectionInFactorOfDirectProductWithGivenDirectProduct( UC,
           function ( UC, D, k, P )
-            local uD, d, pk, dk, uP, p, map, C, cartesian, mor;
+            local data, pair, d, pk, dk, p, map, C, LP, cartesian, mor;
+            
+            data := List( D, Di -> ObjectDatum( UC, Di ) );
+            
+            pair := ObjectDatum( UC, P );
             
             ## SkeletalFinSets code:
-            uD := List( D, AsList );
-            
-            d := List( uD, Length );
+            d := List( data, datum -> datum[1] );
             
             pk := Product( d{[ 1 .. k - 1 ]} );
             
             dk := d[k];
             
-            uP := AsList( P );
-            
-            p := Length( uP );
+            p := pair[1];
             
             map := List( [ 0 .. p - 1 ], i -> RemInt( QuoInt( i, pk ), dk ) );
             
             ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
-            cartesian := List( Cartesian( List( D, AsList ) ), Reversed );
+            LP := pair[2];
             
-            mor := List( [ 0 .. p - 1 ], i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( C, cartesian[1 + i], k, uP[1 + i] ) );
+            cartesian := List( Cartesian( List( data, datum -> datum[2] ) ), Reversed );
+            
+            mor := List( [ 0 .. p - 1 ], i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( C, cartesian[1 + i], k, LP[1 + i] ) );
             
             return MorphismConstructor( UC, P, Pair( map, mor ), D[k] );
             
@@ -557,40 +610,44 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( UC,
           function ( UC, D, T, tau, P )
-            local l, uD, d, dd, tau_maps, uT, m, map, C, cartesian, tau_mors, uP, mor;
+            local data, pairT, pairP, l, d, dd, tau_maps, m, map, C, cartesian, tau_mors, LT, LP, mor;
+            
+            data := List( D, Di -> ObjectDatum( UC, Di ) );
+            
+            pairT := ObjectDatum( UC, T );
+            
+            pairP := ObjectDatum( UC, P );
             
             ## SkeletalFinSets code:
             l := Length( D );
             
-            uD := List( D, AsList );
-            
-            d := List( uD, Length );
+            d := List( data, datum -> datum[1] );
             
             dd := List( [ 0 .. l - 1 ], j -> Product( d{[ 1 .. j ]} ) );
             
-            tau_maps := List( tau, t -> PairOfLists( t )[1] );
+            tau_maps := List( tau, t -> MorphismDatum( UC, t )[1] );
             
-            uT := AsList( T );
-            
-            m := [ 0 .. Length( uT ) - 1 ];
+            m := [ 0 .. pairT[1] - 1 ];
             
             map := List( m, i -> Sum( [ 0 .. l - 1 ], j -> tau_maps[1 + j][1 + i] * dd[1 + j] ) );
             
             ## FiniteStrictCoproductCocompletion code:
             C := UnderlyingCategory( UC );
             
-            cartesian := List( Cartesian( uD ), Reversed );
+            cartesian := List( Cartesian( List( data, datum -> datum[2] ) ), Reversed );
             
-            tau_mors := List( tau, t -> PairOfLists( t )[2] );
+            tau_mors := List( tau, t -> MorphismDatum( UC, t )[2] );
             
-            uP := AsList( P );
+            LT := pairT[2];
+            
+            LP := pairP[2];
             
             mor := List( m,
                          i -> UniversalMorphismIntoDirectProductWithGivenDirectProduct( C,
                                  cartesian[1 + map[1 + i]],
-                                 uT[1 + i],
+                                 LT[1 + i],
                                  List( [ 1 .. l ], j -> tau_mors[j][1 + i] ),
-                                 uP[1 + map[1 + i]] ) );
+                                 LP[1 + map[1 + i]] ) );
             
             return MorphismConstructor( UC, T, Pair( map, mor ), P );
             
@@ -629,7 +686,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             object_func := function ( C, V, object )
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                return ObjectConstructor( V, [ object ] );
+                return ObjectConstructor( V, Pair( 1, [ object ] ) );
                 
             end;
             
@@ -648,12 +705,12 @@ InstallMethod( FiniteStrictCoproductCocompletion,
                 local datum;
                 #% CAP_JIT_RESOLVE_FUNCTION
                 
-                datum := AsList( object );
+                datum := ObjectDatum( UC, object );
                 
                 #% CAP_JIT_DROP_NEXT_STATEMENT
-                Assert( 0, Length( datum ) = 1 );
+                Assert( 0, Length( datum ) = 2 and IsInt( datum[1] ) and Length( datum[2] ) = datum[1] );
                 
-                return datum[1];
+                return datum[2][1];
                 
             end;
             
@@ -709,16 +766,19 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddHomomorphismStructureOnObjects( UC,
           function( UC, S, T )
-            local C, V, LS, LT, s, t, maps;
+            local C, V, pairS, pairT, LS, LT, s, t, maps;
             
             C := UnderlyingCategory( UC );
             V := RangeCategoryOfHomomorphismStructure( UC );
             
-            LS := AsList( S );
-            LT := AsList( T );
+            pairS := ObjectDatum( UC, S );
+            pairT := ObjectDatum( UC, T );
             
-            s := Length( LS );
-            t := Length( LT );
+            s := pairS[1];
+            t := pairT[1];
+            
+            LS := pairS[2];
+            LT := pairT[2];
             
             maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
             
@@ -734,18 +794,21 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UC,
           function( UC, distinguished_object, phi, range )
-            local C, V, LS, LT, s, t, maps, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
+            local C, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, map, mor, number, intros, intro;
             
             C := UnderlyingCategory( UC );
             V := RangeCategoryOfHomomorphismStructure( UC );
             
-            LS := AsList( Source( phi ) );
-            LT := AsList( Range( phi ) );
+            pairS := ObjectDatum( UC, Source( phi ) );
+            pairT := ObjectDatum( UC, Range( phi ) );
             
-            s := Length( LS );
-            t := Length( LT );
+            s := pairS[1];
+            t := pairT[1];
             
             maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+            
+            LS := pairS[2];
+            LT := pairT[2];
             
             Homs := List( maps, map ->
                           List( [ 0 .. s - 1 ], i ->
@@ -754,7 +817,7 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             
             homs := List( Homs, L -> DirectProduct( V, L ) );
             
-            pair_of_lists := PairOfLists( phi );
+            pair_of_lists := MorphismDatum( UC, phi );
             
             map := pair_of_lists[1];
             mor := pair_of_lists[2];
@@ -788,19 +851,22 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, V, LS, LT, s, t, maps, Homs, homs, pair_of_lists, number, map, m, mor;
+                local C, UV, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
                 UV := RangeCategoryOfHomomorphismStructure( UC );
                 V := UnderlyingCategory( UV );
                 
-                LS := AsList( S );
-                LT := AsList( T );
+                pairS := ObjectDatum( UC, S );
+                pairT := ObjectDatum( UC, T );
                 
-                s := Length( LS );
-                t := Length( LT );
-                
+                s := pairS[1];
+                t := pairT[1];
+
                 maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                LS := pairS[2];
+                LT := pairT[2];
                 
                 Homs := List( maps, map ->
                               List( [ 0 .. s - 1 ], i ->
@@ -848,18 +914,21 @@ InstallMethod( FiniteStrictCoproductCocompletion,
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
-                local C, UV, V, LS, LT, s, t, maps, Homs, homs, value, number, map, m, mor;
+                local C, UV, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, value, number, map, m, mor;
                 
                 C := UnderlyingCategory( UC );
                 V := RangeCategoryOfHomomorphismStructure( UC );
                 
-                LS := AsList( S );
-                LT := AsList( T );
+                pairS := ObjectDatum( UC, S );
+                pairT := ObjectDatum( UC, T );
                 
-                s := Length( LS );
-                t := Length( LT );
-                
+                s := pairS[1];
+                t := pairT[1];
+
                 maps := List( Tuples( [ 0 .. t - 1 ], s ), Reversed );
+                
+                LS := pairS[2];
+                LT := pairT[2];
                 
                 Homs := List( maps, map ->
                               List( [ 0 .. s - 1 ], i ->
@@ -914,7 +983,7 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
     
     Y := CapFunctor( "Yoneda embedding functor", UnderlyingCategory( UC ), UC );
     
-    AddObjectFunction( Y, objC -> ObjectConstructor( UC, [ objC ] ) );
+    AddObjectFunction( Y, objC -> ObjectConstructor( UC, Pair( 1, [ objC ] ) ) );
     
     AddMorphismFunction( Y, { source, morC, range } -> MorphismConstructor( UC, source, Pair( [ 0 ], [ morC ] ), range ) );
     
@@ -994,7 +1063,7 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
       function( objUC )
         local L;
         
-        L := AsList( objUC );
+        L := ObjectDatum( objUC )[2];
         
         return Coproduct( D, List( L, objC -> ApplyFunctor( F, objC ) ) );
         
@@ -1002,23 +1071,20 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
     
     AddMorphismFunction( UF,
       function( source, morUC, range )
-        local pair_of_lists, map, mor, Fmor, S, T, LS, LT, FLS, FLT, inj, cmp;
+        local pair_of_lists, map, mor, Fmor, pairS, pairT, FLS, FLT, inj, cmp;
         
-        pair_of_lists := PairOfLists( morUC );
+        pair_of_lists := MorphismDatum( morUC );
         
         map := pair_of_lists[1];
         mor := pair_of_lists[2];
         
         Fmor := List( mor, m -> ApplyFunctor( F, m ) );
         
-        S := Source( morUC );
-        T := Range( morUC );
+        pairS := ObjectDatum( Source( morUC ) );
+        pairT := ObjectDatum( Range( morUC ) );
         
-        LS := AsList( S );
-        LT := AsList( T );
-        
-        FLS := List( LS, S_i -> ApplyFunctor( F, S_i ) );
-        FLT := List( LT, T_i -> ApplyFunctor( F, T_i ) );
+        FLS := List( pairS[2], S_i -> ApplyFunctor( F, S_i ) );
+        FLT := List( pairT[2], T_i -> ApplyFunctor( F, T_i ) );
         
         inj := List( map, i ->
                      InjectionOfCofactorOfCoproductWithGivenCoproduct( D,
@@ -1026,10 +1092,10 @@ InstallMethod( ExtendFunctorToFiniteStrictCoproductCocompletion,
                              1 + i,
                              range ) );
         
-        cmp := List( [ 1 .. Length( LS ) ], i ->
+        cmp := List( [ 0 .. pairS[1] - 1 ], i ->
                      PreCompose( D,
-                             Fmor[i],
-                             inj[i] ) );
+                             Fmor[1 + i],
+                             inj[1 + i] ) );
         
         return UniversalMorphismFromCoproductWithGivenCoproduct( D,
                        FLS,
@@ -1055,7 +1121,7 @@ InstallMethod( Display,
         
   function ( a )
     
-    Display( AsList( a ) );
+    Display( ObjectDatum( a ) );
     
     Display( "\nAn object in the finite coproduct cocompletion category given by the above data" );
     
@@ -1068,7 +1134,7 @@ InstallMethod( PrintString,
   function ( a )
     local l, string;
     
-    l := Length( AsList( a ) );
+    l := Length( ObjectDatum( a ) );
     
     if l = 0 then
         return "∅";
@@ -1092,7 +1158,7 @@ InstallMethod( Display,
     local print, lazy;
     
     Print( PrintString( Source( phi ) ) );
-    Print( " ⱶ", AsList( PairOfLists( phi )[1] ), "→ " );
+    Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
     Print( PrintString( Range( phi ) ), "\n\n" );
     
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );

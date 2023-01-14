@@ -53,15 +53,19 @@ DeclareAttribute( "FiniteStrictCoproductCocompletion",
 ####################################
 
 #!
-DeclareAttribute( "AsList",
+DeclareAttribute( "PairOfIntAndList",
         IsObjectInFiniteStrictCoproductCocompletion );
 
-CapJitAddTypeSignature( "AsList", [ IsObjectInFiniteStrictCoproductCocompletion ],
+CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCocompletion ],
  function ( input_types )
 
     Assert( 0, IsFiniteStrictCoproductCocompletion( input_types[1].category ) );
     
-    return rec( filter := IsList, element_type := CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
+    return rec( filter := IsNTuple,
+                element_types :=
+                [ rec( filter := IsInt ),
+                  rec( filter := IsList,
+                       element_type := CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) ] );
     
 end );
 
