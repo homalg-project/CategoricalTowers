@@ -142,14 +142,11 @@ InstallMethod( FiniteStrictCoproductCocompletion,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
-    UC := CreateCapCategory( Concatenation( "FiniteStrictCoproductCocompletion( ", Name( C ), " )" ) );
-    
-    ##
-    SetFilterObj( UC, IsFiniteStrictCoproductCocompletion );
-    
-    ##
-    AddObjectRepresentation( UC, IsObjectInFiniteStrictCoproductCocompletion );
-    AddMorphismRepresentation( UC, IsMorphismInFiniteStrictCoproductCocompletion );
+    UC := CreateCapCategory( Concatenation( "FiniteStrictCoproductCocompletion( ", Name( C ), " )" ),
+                  IsFiniteStrictCoproductCocompletion,
+                  IsObjectInFiniteStrictCoproductCocompletion,
+                  IsMorphismInFiniteStrictCoproductCocompletion,
+                  IsCapCategoryTwoCell );
     
     ##
     UC!.category_as_first_argument := true;
@@ -163,9 +160,6 @@ InstallMethod( FiniteStrictCoproductCocompletion,
       rec( category_attribute_names :=
            [ "UnderlyingCategory",
              ],
-           category_filter := IsFiniteStrictCoproductCocompletion,
-           object_filter := IsObjectInFiniteStrictCoproductCocompletion,
-           morphism_filter := IsMorphismInFiniteStrictCoproductCocompletion,
            );
     
     ##
