@@ -515,7 +515,7 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
           [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects, 2 ],
           [ UniversalMorphismFromCoproduct, 1, RangeCategoryOfHomomorphismStructure ] ],
         
-  function ( cat, s, alpha, beta, r )
+  function ( cat, s, alpha, gamma, r )
     local range_cat, distinguished_object, Ls;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
@@ -531,9 +531,9 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
                                          [ alpha,
                                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
                                                    Range( alpha ),
-                                                   Source( beta ),
+                                                   Source( gamma ),
                                                    mor ),
-                                           beta ] ),
+                                           gamma ] ),
                                  r ) ) );
     
 end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ) );
@@ -610,17 +610,17 @@ end
 ],
 [
   HomomorphismStructureOnMorphismsWithGivenObjects,
-  function ( cat, s, alpha, beta, r )
+  function ( cat, s, alpha, gamma, r )
     local H, s_mors, r_mors, images;
     
     H := RangeCategoryOfHomomorphismStructure( cat );
     
-    # r_mor = alpha s_mor beta = Source( alpha ) --alpha-> Range( alpha ) --s_mor-> Source( beta ) --beta-> Range( beta )
+    # r_mor = alpha s_mor gamma = Source( alpha ) --alpha-> Range( alpha ) --s_mor-> Source( gamma ) --gamma-> Range( gamma )
     
-    s_mors := MorphismsOfExternalHom( cat, Range( alpha ), Source( beta ) );
-    r_mors := MorphismsOfExternalHom( cat, Source( alpha ), Range( beta ) );
+    s_mors := MorphismsOfExternalHom( cat, Range( alpha ), Source( gamma ) );
+    r_mors := MorphismsOfExternalHom( cat, Source( alpha ), Range( gamma ) );
     
-    images := List( s_mors, s_mor -> -1 + SafePosition( r_mors, PreComposeList( cat, [ alpha, s_mor, beta ] ) ) );
+    images := List( s_mors, s_mor -> -1 + SafePosition( r_mors, PreComposeList( cat, [ alpha, s_mor, gamma ] ) ) );
     
     return MorphismConstructor( H,
                    s,
