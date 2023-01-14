@@ -4,9 +4,9 @@
   
   [1X1.1 [33X[0;0YAttributes[133X[101X
   
-  [1X1.1-1 AsList[101X
+  [1X1.1-1 PairOfIntAndList[101X
   
-  [33X[1;0Y[29X[2XAsList[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XPairOfIntAndList[102X( [3Xarg[103X ) [32X attribute[133X
   
   [1X1.1-2 PairOfLists[101X
   
@@ -83,15 +83,15 @@
     [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
     [4X[28X<A zero object in FiniteStrictCoproductCocompletion( InitialCategory( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
-    [4X[28X[  ][128X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
-    [4X[28X[  ][128X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
-    [4X[28X[  ][128X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForObjects( i, z );[127X[104X
@@ -273,14 +273,14 @@
     [4X[28X<An object in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ab );[127X[104X
-    [4X[28X[ C.a, C.b ][128X[104X
+    [4X[28X[ 2, [ C.a, C.b ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27Xba := Coproduct( b, a );[127X[104X
     [4X[28X<An object in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ba );[127X[104X
-    [4X[28X[ C.b, C.a ][128X[104X
+    [4X[28X[ 2, [ C.b, C.a ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( ab, ba );[127X[104X
@@ -360,60 +360,58 @@
     [4X[25Xgap>[125X [27XsFinSets := FiniteStrictCoproductCocompletion( T );[127X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[25Xgap>[125X [27XDisplay( TerminalObject( sFinSets ) );[127X[104X
-    [4X[28X[ TerminalObject ][128X[104X
+    [4X[28X[ 1, [ TerminalObject ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( InitialObject( sFinSets ) );[127X[104X
-    [4X[28X[  ][128X[104X
+    [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XA := [ "A0" / T, "A1" / T, "A2" / T ] / sFinSets;[127X[104X
+    [4X[25Xgap>[125X [27XA := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;[127X[104X
     [4X[28X<An object in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
-    [4X[28X[ A0, A1, A2 ][128X[104X
+    [4X[28X[ 3, [ A0, A1, A2 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XB := [ "B0" / T, "B1" / T ] / sFinSets;[127X[104X
+    [4X[25Xgap>[125X [27XB := [ 2, [ "B0" / T, "B1" / T ] ] / sFinSets;[127X[104X
     [4X[28X<An object in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( B );[127X[104X
-    [4X[28X[ B0, B1 ][128X[104X
+    [4X[28X[ 2, [ B0, B1 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
     [4X[25Xgap>[125X [27XI := HomStructure( sFinSets );[127X[104X
     [4X[28X<An object in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
-    [4X[28X[ TerminalObject ][128X[104X
+    [4X[28X[ 1, [ TerminalObject ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in the finite coproduct cocompletion category given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XU := AsList( I )[1];[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectDatum( I )[2][1];[127X[104X
     [4X[28X<A zero object in TerminalCategoryWithMultipleObjects( )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( U );[127X[104X
     [4X[28XTerminalObject[128X[104X
     [4X[25Xgap>[125X [27XHomAB := HomStructure( A, B );[127X[104X
     [4X[28X<An object in[128X[104X
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
-    [4X[25Xgap>[125X [27XL := AsList( HomAB );[127X[104X
-    [4X[28X[ <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
-    [4X[28X  <A zero object in TerminalCategoryWithMultipleObjects( )> ][128X[104X
-    [4X[25Xgap>[125X [27XLength( L );[127X[104X
-    [4X[28X8[128X[104X
-    [4X[25Xgap>[125X [27XhomAB := List( [ 0 .. Length( L ) - 1 ], i ->[127X[104X
+    [4X[25Xgap>[125X [27XL := ObjectDatum( HomAB );[127X[104X
+    [4X[28X[ 8, [ <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )>,[128X[104X
+    [4X[28X       <A zero object in TerminalCategoryWithMultipleObjects( )> ] ][128X[104X
+    [4X[25Xgap>[125X [27XhomAB := List( [ 0 .. L[1] - 1 ], i ->[127X[104X
     [4X[25X>[125X [27X               MorphismConstructor( sFinSets,[127X[104X
     [4X[25X>[125X [27X                       I,[127X[104X
     [4X[25X>[125X [27X                       Pair( [ i ],[127X[104X
     [4X[25X>[125X [27X                             [ MorphismConstructor( T,[127X[104X
     [4X[25X>[125X [27X                                     U,[127X[104X
     [4X[25X>[125X [27X                                     String( i ),[127X[104X
-    [4X[25X>[125X [27X                                     L[1 + i] ) ] ),[127X[104X
+    [4X[25X>[125X [27X                                     L[2][1 + i] ) ] ),[127X[104X
     [4X[25X>[125X [27X                       HomAB ) );[127X[104X
     [4X[28X[ <A morphism in[128X[104X
     [4X[28X   FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>,[128X[104X
