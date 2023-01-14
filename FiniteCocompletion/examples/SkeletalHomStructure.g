@@ -20,7 +20,7 @@ HomAB := HomStructure( A, B );
 #! |8|
 I := HomStructure( sFinSets );
 #! |1|
-homAB := List( [ 0 .. Length( L ) - 1 ], i ->
+homAB := List( [ 0 .. Length( HomAB ) - 1 ], i ->
                MorphismConstructor( I, [ i ], HomAB ) );
 #! [ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,
 #!   |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ]
