@@ -54,7 +54,7 @@ InstallMethod( FiniteStrictProductCompletion,
     
     opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := true );
     
-    ## from the raw object data to the object in the highest stage of the tower
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( PC, L )
         local opUopC, UopC, opC;
@@ -72,10 +72,10 @@ InstallMethod( FiniteStrictProductCompletion,
         
     end;
     
-    ## from the object in the highest stage of the tower to the raw object data
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum := { PC, P } -> List( AsList( Opposite( P ) ), Opposite );
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( PC, source, pair_of_lists, range )
         local opUopC, UopC, opC;
@@ -101,7 +101,7 @@ InstallMethod( FiniteStrictProductCompletion,
                        range );
     end;
     
-    ## from the morphism in the highest stage of the tower to the raw morphism data
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( opUopC, mor )
         local pair_of_lists;
