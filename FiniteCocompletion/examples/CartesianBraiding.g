@@ -29,14 +29,18 @@ ab := DirectProduct( a, b );
 Display( ab );
 #! [ 2, [ C.a, C.b ] ]
 #! 
-#! An object in the finite product completion category given by the above data
+#! An object in
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+#! given by the above data
 ba := DirectProduct( b, a );
 #! <An object in
-#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
+#!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>
 Display( ba );
 #! [ 2, [ C.b, C.a ] ]
 #! 
-#! An object in the finite product completion category given by the above data
+#! An object in
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+#! given by the above data
 HomStructure( ab, ba );
 #! |1|
 hom := MorphismsOfExternalHom( ab, ba );

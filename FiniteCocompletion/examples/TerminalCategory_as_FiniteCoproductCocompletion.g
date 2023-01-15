@@ -40,15 +40,18 @@ z := ZeroObject( T );
 Display( i );
 #! [ 0, [  ] ]
 #! 
-#! An object in the finite coproduct cocompletion category given by the above data
+#! An object in FiniteStrictCoproductCocompletion( InitialCategory( ) )
+#! given by the above data
 Display( t );
 #! [ 0, [  ] ]
 #! 
-#! An object in the finite coproduct cocompletion category given by the above data
+#! An object in FiniteStrictCoproductCocompletion( InitialCategory( ) )
+#! given by the above data
 Display( z );
 #! [ 0, [  ] ]
 #! 
-#! An object in the finite coproduct cocompletion category given by the above data
+#! An object in FiniteStrictCoproductCocompletion( InitialCategory( ) )
+#! given by the above data
 IsEqualForObjects( i, z );
 #! true
 IsIdenticalObj( i, z );
