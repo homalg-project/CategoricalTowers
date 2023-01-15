@@ -22,11 +22,13 @@ a := PC.a;
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 aa := DirectProduct( a, a );
 #! <An object in
-#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
+#!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>
 Display( aa );
 #! [ 2, [ C.a, C.a ] ]
 #! 
-#! An object in the finite product completion category given by the above data
+#! An object in
+#! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+#! given by the above data
 a = aa;
 #! false
 HomStructure( aa, a );

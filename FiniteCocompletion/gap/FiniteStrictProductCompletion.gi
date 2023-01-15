@@ -310,7 +310,7 @@ InstallMethod( Display,
     
     Display( ObjectDatum( a ) );
     
-    Display( "\nAn object in the finite product completion category given by the above data" );
+    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
