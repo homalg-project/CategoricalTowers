@@ -169,6 +169,16 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sFinSets );</span>
+A CAP category with name
+SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory:
+
+28 primitive operations were used to derive 92 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsBicartesianCategory
+and furthermore mathematically
+* IsStrictCocartesianCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := ObjectConstructor( sFinSets, 7 );</span>
 |7|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ObjectDatum( s );</span>
@@ -417,6 +427,20 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, IsWellDefined );</span>
 [ true, true, true, true, true, true, true, true ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List( homAB, m -&gt; HomStructure( HomStructure( A, B, m ) ) ) = homAB;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := HomStructure( A, B, homAB[6] );</span>
+|3| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( alpha );</span>
+{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := HomStructure( A, B, homAB[2] );</span>
+|3| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
+{ 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_alpha_gamma := HomStructure( alpha, gamma );</span>
+|9| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( hom_alpha_gamma );</span>
+{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( hom_alpha_gamma );</span>
 true
 </pre></div>
 

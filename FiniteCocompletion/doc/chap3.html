@@ -147,15 +147,18 @@ and furthermore mathematically
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
 [ 0, [  ] ]
 
-An object in the finite product completion category given by the above data
+An object in FiniteStrictProductCompletion( InitialCategory( ) )
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
 [ 0, [  ] ]
 
-An object in the finite product completion category given by the above data
+An object in FiniteStrictProductCompletion( InitialCategory( ) )
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( z );</span>
 [ 0, [  ] ]
 
-An object in the finite product completion category given by the above data
+An object in FiniteStrictProductCompletion( InitialCategory( ) )
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( i, z );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( i, z );</span>
@@ -257,14 +260,18 @@ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ab );</span>
 [ 2, [ C.a, C.b ] ]
 
-An object in the finite product completion category given by the above data
+An object in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ba := DirectProduct( b, a );</span>
 &lt;An object in
-FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ba );</span>
 [ 2, [ C.b, C.a ] ]
 
-An object in the finite product completion category given by the above data
+An object in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( ab, ba );</span>
 |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := MorphismsOfExternalHom( ab, ba );</span>
@@ -360,11 +367,13 @@ FreeCategory( RightQuiver( "Q(a)[]" ) ) ) ) )
  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := DirectProduct( a, a );</span>
 &lt;An object in
-FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
 [ 2, [ C.a, C.a ] ]
 
-An object in the finite product completion category given by the above data
+An object in
+FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( aa, a );</span>

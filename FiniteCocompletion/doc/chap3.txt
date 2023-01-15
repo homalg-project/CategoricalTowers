@@ -85,15 +85,18 @@
     [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
     [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[28XAn object in FiniteStrictProductCompletion( InitialCategory( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
     [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[28XAn object in FiniteStrictProductCompletion( InitialCategory( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
     [4X[28X[ 0, [  ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[28XAn object in FiniteStrictProductCompletion( InitialCategory( ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForObjects( i, z );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
@@ -183,14 +186,18 @@
     [4X[25Xgap>[125X [27XDisplay( ab );[127X[104X
     [4X[28X[ 2, [ C.a, C.b ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xba := DirectProduct( b, a );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
+    [4X[28X FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( ba );[127X[104X
     [4X[28X[ 2, [ C.b, C.a ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( ab, ba );[127X[104X
     [4X[28X|1|[128X[104X
     [4X[25Xgap>[125X [27Xhom := MorphismsOfExternalHom( ab, ba );[127X[104X
@@ -284,11 +291,13 @@
     [4X[28X FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27Xaa := DirectProduct( a, a );[127X[104X
     [4X[28X<An object in[128X[104X
-    [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
+    [4X[28X FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( aa );[127X[104X
     [4X[28X[ 2, [ C.a, C.a ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XAn object in the finite product completion category given by the above data[128X[104X
+    [4X[28XAn object in[128X[104X
+    [4X[28XFiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xa = aa;[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( aa, a );[127X[104X

@@ -88,6 +88,16 @@
     [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
     [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X28 primitive operations were used to derive 92 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsBicartesianCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsStrictCocartesianCategory[128X[104X
     [4X[25Xgap>[125X [27Xs := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
     [4X[25Xgap>[125X [27XObjectDatum( s );[127X[104X
@@ -326,6 +336,20 @@
     [4X[25Xgap>[125X [27XList( homAB, IsWellDefined );[127X[104X
     [4X[28X[ true, true, true, true, true, true, true, true ][128X[104X
     [4X[25Xgap>[125X [27XList( homAB, m -> HomStructure( HomStructure( A, B, m ) ) ) = homAB;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := HomStructure( A, B, homAB[6] );[127X[104X
+    [4X[28X|3| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := HomStructure( A, B, homAB[2] );[127X[104X
+    [4X[28X|3| → |2|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27Xhom_alpha_gamma := HomStructure( alpha, gamma );[127X[104X
+    [4X[28X|9| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( hom_alpha_gamma );[127X[104X
+    [4X[28X{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( hom_alpha_gamma );[127X[104X
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
