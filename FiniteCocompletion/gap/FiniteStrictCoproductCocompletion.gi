@@ -1132,7 +1132,7 @@ InstallMethod( PrintString,
         [ IsObjectInFiniteStrictCoproductCocompletion ],
         
   function ( a )
-    local l, string;
+    local l;
     
     l := ObjectDatum( a )[1];
     
@@ -1155,7 +1155,6 @@ InstallMethod( Display,
         [ IsMorphismInFiniteStrictCoproductCocompletion ],
         
   function ( phi )
-    local print, lazy;
     
     Print( PrintString( Source( phi ) ) );
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
