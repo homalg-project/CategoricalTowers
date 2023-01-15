@@ -1134,7 +1134,7 @@ InstallMethod( PrintString,
   function ( a )
     local l, string;
     
-    l := Length( ObjectDatum( a ) );
+    l := ObjectDatum( a )[1];
     
     if l = 0 then
         return "∅";
