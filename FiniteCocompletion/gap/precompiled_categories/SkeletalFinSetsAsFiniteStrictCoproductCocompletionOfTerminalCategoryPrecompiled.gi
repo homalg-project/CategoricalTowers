@@ -39,6 +39,32 @@ end
     , 100 );
     
     ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
+        
+########
+function ( cat_1, source_1, alpha_1, beta_1, range_1 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1;
+    hoisted_6_1 := Length( Range( beta_1 ) );
+    hoisted_5_1 := AsList( beta_1 );
+    hoisted_4_1 := AsList( alpha_1 );
+    hoisted_3_1 := [ 0 .. Length( Source( alpha_1 ) ) - 1 ];
+    hoisted_2_1 := [ 0 .. Length( Range( alpha_1 ) ) - 1 ];
+    hoisted_1_1 := Length( Source( beta_1 ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, AsList, List( [ 0 .. Length( source_1 ) - 1 ], function ( logic_new_func_x_2 )
+              local hoisted_1_2;
+              hoisted_1_2 := List( hoisted_2_1, function ( i_3 )
+                      return REM_INT( QUO_INT( logic_new_func_x_2, hoisted_1_1 ^ i_3 ), hoisted_1_1 );
+                  end );
+              return Sum( hoisted_3_1, function ( i_3 )
+                      return hoisted_5_1[(1 + hoisted_1_2[(1 + hoisted_4_1[(1 + CAP_JIT_INCOMPLETE_LOGIC( hoisted_3_1[(1 + i_3)] ))])])] * hoisted_6_1 ^ i_3;
+                  end );
+          end ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddHomomorphismStructureOnObjects( cat,
         
 ########

@@ -6,6 +6,16 @@ LoadPackage( "FiniteCocompletion" );
 sFinSets :=
   SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );
 #! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
+Display( sFinSets );
+#! A CAP category with name
+#! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory:
+#! 
+#! 28 primitive operations were used to derive 92 operations for this category
+#! which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsBicartesianCategory
+#! and furthermore mathematically
+#! * IsStrictCocartesianCategory
 s := ObjectConstructor( sFinSets, 7 );
 #! |7|
 ObjectDatum( s );

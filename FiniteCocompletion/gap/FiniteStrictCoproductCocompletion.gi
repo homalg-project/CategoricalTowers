@@ -849,6 +849,99 @@ InstallMethod( FiniteStrictCoproductCocompletion,
         if extended then
             
             ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( UC,
+              function ( UC, s, alpha, gamma, r )
+                local C, UV, V, source_alpha, range_alpha, source_gamma, range_gamma,
+                      source_alpha_length, range_alpha_length, source_gamma_length, range_gamma_length,
+                      Hom_range_alpha_source_gamma, Hom_source_alpha_range_gamma,
+                      alpha_datum, gamma_datum, f, h, alpha_mor, gamma_mor, cmp_maps_and_mors, map_and_mor;
+                
+                C := UnderlyingCategory( UC );
+                UV := RangeCategoryOfHomomorphismStructure( UC );
+                V := UnderlyingCategory( UV );
+                
+                source_alpha := ObjectDatum( UC, Source( alpha ) );
+                range_alpha := ObjectDatum( UC, Range( alpha ) );
+                
+                source_gamma := ObjectDatum( UC, Source( gamma ) );
+                range_gamma := ObjectDatum( UC, Range( gamma ) );
+                
+                source_alpha_length := source_alpha[1];
+                range_alpha_length := range_alpha[1];
+                
+                source_gamma_length := source_gamma[1];
+                range_gamma_length := range_gamma[1];
+                
+                Hom_range_alpha_source_gamma := ObjectDatum( UV, s );
+                Hom_source_alpha_range_gamma := ObjectDatum( UV, r );
+                
+                alpha_datum := MorphismDatum( UC, alpha );
+                gamma_datum := MorphismDatum( UC, gamma );
+                
+                f := alpha_datum[1];
+                h := gamma_datum[1];
+                
+                alpha_mor := alpha_datum[2];
+                gamma_mor := gamma_datum[2];
+                
+                cmp_maps_and_mors :=
+                  function( gg )
+                    local g, cmp_f_g_h, map_value,
+                          Hom_range_alpha_source_gamma_g, Hom_source_alpha_range_gamma_fgh,
+                          Hom_range_alpha_source_gamma_g_factors, Hom_source_alpha_range_gamma_fgh_factors,
+                          mor_value;
+                    
+                    g := List( [ 0 .. range_alpha_length - 1 ], i -> RemInt( QuoInt( gg, source_gamma_length ^ i ), source_gamma_length ) );
+                    
+                    cmp_f_g_h := List( [ 0 .. source_alpha_length - 1 ], j -> h[1 + g[1 + f[1 + j]]] );
+                    
+                    map_value := Sum( [ 0 .. source_alpha_length - 1 ], i -> cmp_f_g_h[1 + i] * range_gamma_length ^ i );
+                    
+                    Hom_range_alpha_source_gamma_g := Hom_range_alpha_source_gamma[2][1 + gg];
+
+                    Hom_source_alpha_range_gamma_fgh := Hom_source_alpha_range_gamma[2][1 + map_value];
+                    
+                    Hom_range_alpha_source_gamma_g_factors := List( [ 0 .. range_alpha_length - 1 ], j ->
+                                                                    HomomorphismStructureOnObjects( C,
+                                                                            range_alpha[2][1 + j],
+                                                                            source_gamma[2][1 + g[1 + j]] ) );
+                    
+                    Hom_source_alpha_range_gamma_fgh_factors := List( [ 0 .. source_alpha_length - 1 ], i ->
+                                                                      HomomorphismStructureOnObjects( C,
+                                                                              source_alpha[2][1 + i],
+                                                                              range_gamma[2][1 + cmp_f_g_h[1 + i]] ) );
+                    
+                    mor_value := UniversalMorphismIntoDirectProductWithGivenDirectProduct( V,
+                                         Hom_source_alpha_range_gamma_fgh_factors,
+                                         Hom_range_alpha_source_gamma_g,
+                                         List( [ 0 .. source_alpha_length - 1 ], i ->
+                                               PreCompose( V,
+                                                       ProjectionInFactorOfDirectProductWithGivenDirectProduct( V,
+                                                               Hom_range_alpha_source_gamma_g_factors,
+                                                               1 + f[1 + i],
+                                                               Hom_range_alpha_source_gamma_g ),
+                                                       HomomorphismStructureOnMorphismsWithGivenObjects( C,
+                                                               Hom_range_alpha_source_gamma_g_factors[1 + f[1 + i]],
+                                                               alpha_mor[1 + i],
+                                                               gamma_mor[1 + g[1 + f[1 + i]]],
+                                                               Hom_source_alpha_range_gamma_fgh_factors[1 + i] ) ) ),
+                                         Hom_source_alpha_range_gamma_fgh );
+                    
+                    return Pair( map_value, mor_value );
+                    
+                end;
+                
+                map_and_mor := List( [ 0 .. Hom_range_alpha_source_gamma[1] - 1 ], cmp_maps_and_mors );
+                
+                return MorphismConstructor( UV,
+                               s,
+                               Pair( List( map_and_mor, a -> a[1] ),
+                                     List( map_and_mor, a -> a[2] ) ),
+                               r );
+                
+            end );
+            
+            ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UC,
               function( UC, S, T, morphism )
                 local C, UV, V, pairS, pairT, s, t, maps, LS, LT, Homs, homs, pair_of_lists, number, map, m, mor;
