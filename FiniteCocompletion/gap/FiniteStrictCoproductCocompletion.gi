@@ -142,11 +142,24 @@ InstallMethod( FiniteStrictCoproductCocompletion,
           object_func, morphism_func, object_func_inverse, morphism_func_inverse, extended;
     
     ##
-    UC := CreateCapCategory( Concatenation( "FiniteStrictCoproductCocompletion( ", Name( C ), " )" ),
+    UC := CreateCapCategoryWithDataTypes(
+                  Concatenation( "FiniteStrictCoproductCocompletion( ", Name( C ), " )" ),
                   IsFiniteStrictCoproductCocompletion,
                   IsObjectInFiniteStrictCoproductCocompletion,
                   IsMorphismInFiniteStrictCoproductCocompletion,
-                  IsCapCategoryTwoCell );
+                  IsCapCategoryTwoCell,
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ rec( filter := IsInt ),
+                         rec( filter := IsList,
+                              element_type := CapJitDataTypeOfObjectOfCategory( C ) ) ] ),
+                  rec( filter := IsNTuple,
+                       element_types :=
+                       [ rec( filter := IsList,
+                              element_type := rec( filter := IsInt ) ),
+                         rec( filter := IsList,
+                              element_type := CapJitDataTypeOfMorphismOfCategory( C ) ) ] ),
+                  fail );
     
     ##
     UC!.category_as_first_argument := true;
