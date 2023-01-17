@@ -53,6 +53,13 @@ end );
 DeclareAttribute( "AsMorphismInCategoryOfRelations",
         IsCapCategoryMorphism );
 
+CapJitAddTypeSignature( "AsMorphismInCategoryOfRelations", [ IsCategoryOfRelations, IsCapCategoryMorphism ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 ####################################
 #
 #! @Section Attributes
@@ -113,9 +120,23 @@ end );
 DeclareAttribute( "MaximalRelationIntoTerminalObject",
         IsObjectInCategoryOfRelations );
 
+CapJitAddTypeSignature( "MaximalRelationIntoTerminalObject", [ IsCategoryOfRelations, IsObjectInCategoryOfRelations ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 #!
 DeclareAttribute( "PseudoInverse",
         IsMorphismInCategoryOfRelations );
+
+CapJitAddTypeSignature( "PseudoInverse", [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 #!
 DeclareAttribute( "PseudoInverseOfHonestMorphism",
@@ -124,6 +145,13 @@ DeclareAttribute( "PseudoInverseOfHonestMorphism",
 #!
 DeclareAttribute( "EmbeddingOfRelationInDirectProduct",
         IsMorphismInCategoryOfRelations );
+
+CapJitAddTypeSignature( "EmbeddingOfRelationInDirectProduct", [ IsCategoryOfRelations, IsMorphismInCategoryOfRelations ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
 
 #!
 DeclareAttribute( "SourceProjection",
