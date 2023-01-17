@@ -91,6 +91,13 @@ DeclareOperation( "MorphismToDoubleNegationWithGivenDoubleNegation",
 DeclareOperation( "StableInternalHom",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+CapJitAddTypeSignature( "StableInternalHom", [ IsCapCategory, IsObjectInThinCategory, IsObjectInThinCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
 # @Section Tools
 
 DeclareGlobalVariable( "HEYTING_ALGEBRA_METHOD_NAME_RECORD" );
