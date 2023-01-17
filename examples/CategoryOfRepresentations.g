@@ -38,15 +38,12 @@ Display( CatReps );
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) ):
 #! 
-#! 96 primitive operations were used to derive 323 operations for this category
+#! 104 primitive operations were used to derive 347 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
 #! * IsLinearCategoryOverCommutativeRing
 #! * IsSymmetricMonoidalCategory
 #! * IsAbelianCategory
-#! and furthermore mathematically
-#! * IsFiniteCocompleteCategory (but not yet algorithmically)
-#! * IsFiniteCompleteCategory (but not yet algorithmically)
 CommutativeRingOfLinearCategory( CatReps );
 #! GF(3)
 zero := ZeroObject( CatReps );
