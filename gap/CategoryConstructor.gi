@@ -41,8 +41,15 @@ InstallMethod( CategoryConstructor,
           underlying_category_getter_string, underlying_object_getter_string, underlying_morphism_getter_string, underlying_arguments;
     
     name := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "name", "new category" );
+    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_filter", IsCapCategory );
+    category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsCapCategoryObject );
+    category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsCapCategoryMorphism );
     
-    CC := CreateCapCategory( name );
+    CC := CreateCapCategory( name,
+                  category_filter,
+                  category_object_filter,
+                  category_morphism_filter,
+                  IsCapCategoryTwoCell );
     
     if CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_as_first_argument", false ) = true then
         CC!.category_as_first_argument := true;
@@ -53,25 +60,6 @@ InstallMethod( CategoryConstructor,
     fi;
     
     CC!.compiler_hints := rec( );
-    
-    category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsCapCategoryObject );
-    category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsCapCategoryMorphism );
-    
-    AddObjectRepresentation( CC, category_object_filter );
-    AddMorphismRepresentation( CC, category_morphism_filter );
-    
-    CC!.compiler_hints.object_filter := category_object_filter;
-    CC!.compiler_hints.morphism_filter := category_morphism_filter;
-    
-    category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_filter", fail );
-    
-    if not category_filter = fail then
-        
-        SetFilterObj( CC, category_filter );
-        
-        CC!.compiler_hints.category_filter := category_filter;
-        
-    fi;
     
     commutative_ring := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "commutative_ring", fail );
     
