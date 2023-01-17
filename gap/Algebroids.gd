@@ -540,6 +540,12 @@ DeclareOperation( "\/", [ IsQuiverVertex, IsAlgebroid ] );
 DeclareOperation( "MorphismInAlgebroid",
         [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ] );
 
+CapJitAddTypeSignature( "MorphismInAlgebroid", [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 #! @Arguments A, path
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
