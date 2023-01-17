@@ -140,6 +140,12 @@ DeclareAttribute( "InclusionFunctor",
 DeclareAttribute( "DualOverTensorUnit",
         IsCapCategoryMorphism );
 
+CapJitAddTypeSignature( "DualOverTensorUnit", [ IsCapCategory, IsCapCategoryMorphism ], function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
 ####################################
 #
 #! @Section Operations
