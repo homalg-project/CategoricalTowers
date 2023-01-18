@@ -456,13 +456,27 @@ which algorithmically
 * IsBicartesianCategory
 and furthermore mathematically
 * IsStrictCocartesianCategory
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( TerminalObject( sFinSets ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TerminalObject( sFinSets );</span>
+&lt;An object in
+ FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( t );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
 [ 1, [ TerminalObject ] ]
 
 An object in
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( InitialObject( sFinSets ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i := InitialObject( sFinSets );</span>
+&lt;An object in
+ FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( i );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( i );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i );</span>
 [ 0, [  ] ]
 
 An object in
