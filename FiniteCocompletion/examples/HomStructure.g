@@ -17,13 +17,27 @@ Display( sFinSets );
 #! * IsBicartesianCategory
 #! and furthermore mathematically
 #! * IsStrictCocartesianCategory
-Display( TerminalObject( sFinSets ) );
+t := TerminalObject( sFinSets );
+#! <An object in
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+IsTerminal( t );
+#! true
+IsInitial( t );
+#! false
+Display( t );
 #! [ 1, [ TerminalObject ] ]
 #! 
 #! An object in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! given by the above data
-Display( InitialObject( sFinSets ) );
+i := InitialObject( sFinSets );
+#! <An object in
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+IsTerminal( i );
+#! false
+IsInitial( i );
+#! true
+Display( i );
 #! [ 0, [  ] ]
 #! 
 #! An object in
