@@ -129,9 +129,9 @@ InstallMethod( FiniteStrictProductCompletion,
         pair_of_lists := MorphismDatum( UopC,
                                  MorphismDatum( opUopC, phi ) );
         
-        return [ pair_of_lists[1],
-                 List( pair_of_lists[2], mor ->
-                       MorphismDatum( opC, mor ) ) ];
+        return Pair( pair_of_lists[1],
+                     List( pair_of_lists[2], mor ->
+                           MorphismDatum( opC, mor ) ) );
         
     end;
     
