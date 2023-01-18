@@ -78,18 +78,17 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     morphism_datum := { UI, morphism } -> PairOfLists( morphism );
     
     UI := CAP_INTERNAL_CONSTRUCTOR_FOR_TERMINAL_CATEGORY( rec(
-                 name := name,
-                 category_filter := category_filter,
-                 category_object_filter := category_object_filter,
-                 category_morphism_filter := category_morphism_filter,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
-                 create_func_morphism_or_fail := create_func_morphism,
-                 object_constructor := object_constructor,
-                 object_datum := object_datum,
-                 morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum
-                 ) );
+                  name := name,
+                  category_filter := category_filter,
+                  category_object_filter := category_object_filter,
+                  category_morphism_filter := category_morphism_filter,
+                  create_func_object := create_func_object,
+                  create_func_morphism := create_func_morphism,
+                  create_func_morphism_or_fail := create_func_morphism,
+                  object_constructor := object_constructor,
+                  object_datum := object_datum,
+                  morphism_constructor := morphism_constructor,
+                  morphism_datum := morphism_datum ) );
     
     ##
     SetUnderlyingCategory( UI, I );
