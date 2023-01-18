@@ -63,6 +63,26 @@ Display( B );
 #! An object in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! given by the above data
+piA := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
+#! <A morphism in
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+Display( piA );
+#! { 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }
+#! 
+#! A morphism in
+#! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
+#! with the above associated map
+piB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
+#! <A morphism in
+#!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
+Display( piB );
+#! { 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }
+#! 
+#! A morphism in
+#! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
+#! with the above associated map
+IsOne( UniversalMorphismIntoDirectProduct( [ piA, piB ] ) );
+#! true
 I := HomStructure( sFinSets );
 #! <An object in
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
