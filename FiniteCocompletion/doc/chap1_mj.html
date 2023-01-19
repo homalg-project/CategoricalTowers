@@ -54,7 +54,9 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AC9EAFE7BD39817">1.4-2 <span class="Heading">Cocartesian braiding</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86A2AE6E7C297595">1.4-3 <span class="Heading">Homomorphism structure</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79BD31497F9AE176">1.4-3 <span class="Heading">Cocartesian codiagonal</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86A2AE6E7C297595">1.4-4 <span class="Heading">Homomorphism structure</span></a>
 </span>
 </div></div>
 </div>
@@ -120,7 +122,7 @@ FiniteStrictCoproductCocompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteStrictCoproductCocompletion( InitialCategory( ) ):
 
-93 primitive operations were used to derive 501 operations for this category
+93 primitive operations were used to derive 505 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -437,9 +439,127 @@ FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )
 true
 </pre></div>
 
+<p><a id="X79BD31497F9AE176" name="X79BD31497F9AE176"></a></p>
+
+<h5>1.4-3 <span class="Heading">Cocartesian codiagonal</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(a)[]" );</span>
+Q(a)[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(a)[]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.a, "C.a" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UC := FiniteStrictCoproductCocompletion( C );</span>
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := UC.a;</span>
+&lt;An object in
+ FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">aa := Coproduct( a, a );</span>
+&lt;An object in
+ FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( aa );</span>
+[ 2, [ C.a, C.a ] ]
+
+An object in
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a = aa;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( a, aa );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa := MorphismsOfExternalHom( a, aa );</span>
+[ &lt;A morphism in
+   FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;,
+  &lt;A morphism in
+   FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa[1] = InjectionOfCofactorOfCoproduct( [ a, a ], 1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa[2] = InjectionOfCofactorOfCoproduct( [ a, a ], 2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( aa, a );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_aa_a := MorphismsOfExternalHom( aa, a );</span>
+[ &lt;A morphism in
+   FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := hom_aa_a[1];</span>
+&lt;A morphism in
+ FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( delta ) = aa;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = a;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( InjectionOfCofactorOfCoproduct( [ a, a ], 1 ), delta ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( InjectionOfCofactorOfCoproduct( [ a, a ], 2 ), delta ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( delta );</span>
+{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
+
+A morphism in
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+with the above associated map
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
+(a)-[(a)]-&gt;(a)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = CocartesianCodiagonal( a, 2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LUC := LazyCategory( UC );</span>
+LazyCategory(
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LUC );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(a)[]" ) )
+  |
+  V
+LazyCategory(
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictCoproductCocompletion( F );</span>
+Extension to FiniteStrictCoproductCocompletion( Source(
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Extension to FiniteStrictCoproductCocompletion( Source(
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category ) ):
+
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
+  |
+  V
+LazyCategory(
+FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gdelta := G( delta );</span>
+&lt;A morphism in LazyCategory(
+ FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Gdelta );</span>
+true
+</pre></div>
+
 <p><a id="X86A2AE6E7C297595" name="X86A2AE6E7C297595"></a></p>
 
-<h5>1.4-3 <span class="Heading">Homomorphism structure</span></h5>
+<h5>1.4-4 <span class="Heading">Homomorphism structure</span></h5>
 
 
 <div class="example"><pre>
@@ -453,7 +573,7 @@ FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 A CAP category with name
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) ):
 
-28 primitive operations were used to derive 92 operations for this category
+28 primitive operations were used to derive 96 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsBicartesianCategory

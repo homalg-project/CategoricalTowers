@@ -118,7 +118,7 @@ FiniteStrictProductCompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteStrictProductCompletion( InitialCategory( ) ):
 
-91 primitive operations were used to derive 476 operations for this category
+91 primitive operations were used to derive 480 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -381,6 +381,15 @@ given by the above data
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( aa, a );</span>
 |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_aa_a := MorphismsOfExternalHom( aa, a );</span>
+[ &lt;A morphism in
+   FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt;,
+  &lt;A morphism in
+   FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_aa_a[1] = ProjectionInFactorOfDirectProduct( [ a, a ], 1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_aa_a[2] = ProjectionInFactorOfDirectProduct( [ a, a ], 2 );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( a, aa );</span>
 |1|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom_a_aa := MorphismsOfExternalHom( a, aa );</span>
@@ -393,6 +402,10 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = aa;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 1 ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 2 ) ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( delta );</span>
@@ -403,7 +416,7 @@ FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )
 with the above associated map
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_a := IdentityMorphism( C.a );</span>
 (a)-[(a)]-&gt;(a)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta = CartesianDiagonal( a, 2 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LPC := LazyCategory( PC );</span>
 LazyCategory(
