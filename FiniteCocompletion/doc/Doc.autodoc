@@ -11,6 +11,9 @@
 @Subsection Cocartesian braiding
 @InsertChunk CocartesianBraiding
 
+@Subsection Cocartesian codiagonal
+@InsertChunk CocartesianCodiagonal
+
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
 
