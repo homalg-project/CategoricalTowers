@@ -33,6 +33,15 @@ a = aa;
 #! false
 HomStructure( aa, a );
 #! |2|
+hom_aa_a := MorphismsOfExternalHom( aa, a );
+#! [ <A morphism in
+#!    FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )>,
+#!   <A morphism in
+#!    FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )> ]
+hom_aa_a[1] = ProjectionInFactorOfDirectProduct( [ a, a ], 1 );
+#! true
+hom_aa_a[2] = ProjectionInFactorOfDirectProduct( [ a, a ], 2 );
+#! true
 HomStructure( a, aa );
 #! |1|
 hom_a_aa := MorphismsOfExternalHom( a, aa );
@@ -45,6 +54,10 @@ Source( delta ) = a;
 #! true
 Range( delta ) = aa;
 #! true
+IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 1 ) ) );
+#! true
+IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 2 ) ) );
+#! true
 IsWellDefined( delta );
 #! true
 Display( delta );
@@ -55,7 +68,7 @@ Display( delta );
 #! with the above associated map
 id_a := IdentityMorphism( C.a );
 #! (a)-[(a)]->(a)
-delta = MorphismConstructor( a, Pair( [ 0, 0 ], [ id_a, id_a ] ), aa );
+delta = CartesianDiagonal( a, 2 );
 #! true
 LPC := LazyCategory( PC );
 #! LazyCategory(
