@@ -10,7 +10,7 @@ IsTerminalCategory( T );
 Display( T );
 #! A CAP category with name FiniteCompletion( InitialCategory( ) ):
 #! 
-#! 91 primitive operations were used to derive 476 operations for this category
+#! 91 primitive operations were used to derive 480 operations for this category
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
