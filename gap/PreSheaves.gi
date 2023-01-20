@@ -1366,7 +1366,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                                       rho_vals[i] ) );
                 
                 mor := DirectProductFunctorial( H,
-                               mors );
+                               List( mors, Source ),
+                               mors,
+                               List( mors, Range ) );
                 
                 return LiftAlongMonomorphism( H,
                                emb_range,
