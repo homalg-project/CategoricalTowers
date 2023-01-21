@@ -58,7 +58,8 @@ rec(
 #                         [ [  ], [  ], [ 0 ] ] ],
 #                       [ [ 0 ], [ 0 ], [ 0 ] ],
 #                       [ [ [ 0 ], [ 1 ] ],
-#                         [ [  ], [ 2 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
+#                         [ [  ], [ 2 ] ] ] ) )
+# ).bindings.BINDING_RETURN_VALUE );
 BindGlobal( "ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfBouquets",
 rec(
   args := rec(

@@ -10,51 +10,51 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
 
 # Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
 BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
-        rec( args :=
-             rec(
-                 1 := rec(
-                         type := "EXPR_INT",
-                         value := 2 ),
-                 2 := rec(
-                         list := rec(
-                                 1 := rec(
-                                         args := rec(
-                                                 1 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 0 ),
-                                                 2 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 1 ),
-                                                 length := 2,
-                                                 type := "SYNTAX_TREE_LIST" ),
-                                         funcref := rec(
-                                                 gvar := "Pair",
-                                                 type := "EXPR_REF_GVAR" ),
-                                         type := "EXPR_FUNCCALL" ),
-                                 2 := rec(
-                                         args := rec(
-                                                 1 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 0 ),
-                                                 2 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 1 ),
-                                                 length := 2,
-                                                 type := "SYNTAX_TREE_LIST" ),
-                                         funcref := rec(
-                                                 gvar := "Pair",
-                                                 type := "EXPR_REF_GVAR" ),
-                                         type := "EXPR_FUNCCALL" ),
-                                 length := 2,
-                                 type := "SYNTAX_TREE_LIST" ),
-                         type := "EXPR_LIST" ),
-                 length := 2,
-                 type := "SYNTAX_TREE_LIST" ),
-             funcref := rec(
-                     gvar := "Pair",
-                     type := "EXPR_REF_GVAR" ),
-             type := "EXPR_FUNCCALL" )
-             );
+rec(
+  args := rec(
+      1 := rec(
+          type := "EXPR_INT",
+          value := 2 ),
+      2 := rec(
+          list := rec(
+              1 := rec(
+                  args := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  funcref := rec(
+                      gvar := "Pair",
+                      type := "EXPR_REF_GVAR" ),
+                  type := "EXPR_FUNCCALL" ),
+              2 := rec(
+                  args := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  funcref := rec(
+                      gvar := "Pair",
+                      type := "EXPR_REF_GVAR" ),
+                  type := "EXPR_FUNCCALL" ),
+              length := 2,
+              type := "SYNTAX_TREE_LIST" ),
+          type := "EXPR_LIST" ),
+      length := 2,
+      type := "SYNTAX_TREE_LIST" ),
+  funcref := rec(
+      gvar := "Pair",
+      type := "EXPR_REF_GVAR" ),
+  type := "EXPR_FUNCCALL" )
+);
 
 # Display( ENHANCED_SYNTAX_TREE( x ->
 #         Pair( Pair(  2, 4  ),
@@ -74,7 +74,8 @@ BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuiv
 #                         [ [  ], [  ], [  ], [ 0 ] ] ],
 #                       [ [ 0 ], [ 0 ], [ 1 ], [ 0 ] ],
 #                       [ [ [ 0 ], [ 1, 2 ] ],
-#                         [ [  ], [ 3 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
+#                         [ [  ], [ 3 ] ] ] ) )
+# ).bindings.BINDING_RETURN_VALUE );
 BindGlobal( "ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers",
 rec(
   args := rec(
