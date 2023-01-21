@@ -90,6 +90,22 @@
 
 @InsertChunk DPO_Quivers
 
+@Chapter The elementary topos of finite reflexive quivers
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk FinReflexiveQuivers
+
 @Chapter The elementary topos of decorated finite quivers
 
 @Section Constructors

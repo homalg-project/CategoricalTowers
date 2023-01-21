@@ -62,7 +62,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     
     Slice := SliceCategory( decorating_quiver );
     
-    ## from the raw object data to the object in the highest stage of the tower
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( DecoratedQuivers, pair ) ## pair = ( ( nr_vertices, nr_arrows, arrows ), ( decoration_of_vertices, decoration_of_arrows ) )
         local Slice, Quivers;
@@ -79,7 +79,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
         
     end;
     
-    ## from the object in the highest stage of the tower to the raw object data
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( DecoratedQuivers, obj )
         local Slice, Quivers, morphism;
@@ -95,7 +95,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
         
     end;
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( DecoratedQuivers, source, images, range ) ## images = ( images_of_vertices, images_of_arrows )
         local Slice, Quivers, sFinSets, S, T, Sobj, Tobj;
@@ -114,7 +114,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
         
     end;
     
-    ## from the morphism in the highest stage of the tower to the raw morphism data
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( DecoratedQuivers, mor )
         local Slice, Quivers;
@@ -129,7 +129,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     end;
     
     ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turing the category into a constructive topos;
+    ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     DecoratedQuivers := WrapperCategory( Slice,

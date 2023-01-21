@@ -10,51 +10,51 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
 
 # Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
 BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuivers",
-        rec( args :=
-             rec(
-                 1 := rec(
-                         type := "EXPR_INT",
-                         value := 2 ),
-                 2 := rec(
-                         list := rec(
-                                 1 := rec(
-                                         args := rec(
-                                                 1 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 0 ),
-                                                 2 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 1 ),
-                                                 length := 2,
-                                                 type := "SYNTAX_TREE_LIST" ),
-                                         funcref := rec(
-                                                 gvar := "Pair",
-                                                 type := "EXPR_REF_GVAR" ),
-                                         type := "EXPR_FUNCCALL" ),
-                                 2 := rec(
-                                         args := rec(
-                                                 1 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 0 ),
-                                                 2 := rec(
-                                                         type := "EXPR_INT",
-                                                         value := 1 ),
-                                                 length := 2,
-                                                 type := "SYNTAX_TREE_LIST" ),
-                                         funcref := rec(
-                                                 gvar := "Pair",
-                                                 type := "EXPR_REF_GVAR" ),
-                                         type := "EXPR_FUNCCALL" ),
-                                 length := 2,
-                                 type := "SYNTAX_TREE_LIST" ),
-                         type := "EXPR_LIST" ),
-                 length := 2,
-                 type := "SYNTAX_TREE_LIST" ),
-             funcref := rec(
-                     gvar := "Pair",
-                     type := "EXPR_REF_GVAR" ),
-             type := "EXPR_FUNCCALL" )
-             );
+rec(
+  args := rec(
+      1 := rec(
+          type := "EXPR_INT",
+          value := 2 ),
+      2 := rec(
+          list := rec(
+              1 := rec(
+                  args := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  funcref := rec(
+                      gvar := "Pair",
+                      type := "EXPR_REF_GVAR" ),
+                  type := "EXPR_FUNCCALL" ),
+              2 := rec(
+                  args := rec(
+                      1 := rec(
+                          type := "EXPR_INT",
+                          value := 0 ),
+                      2 := rec(
+                          type := "EXPR_INT",
+                          value := 1 ),
+                      length := 2,
+                      type := "SYNTAX_TREE_LIST" ),
+                  funcref := rec(
+                      gvar := "Pair",
+                      type := "EXPR_REF_GVAR" ),
+                  type := "EXPR_FUNCCALL" ),
+              length := 2,
+              type := "SYNTAX_TREE_LIST" ),
+          type := "EXPR_LIST" ),
+      length := 2,
+      type := "SYNTAX_TREE_LIST" ),
+  funcref := rec(
+      gvar := "Pair",
+      type := "EXPR_REF_GVAR" ),
+  type := "EXPR_FUNCCALL" )
+);
 
 # Display( ENHANCED_SYNTAX_TREE( x ->
 #         Pair( Pair(  2, 4  ),
@@ -74,7 +74,8 @@ BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfQuiv
 #                         [ [  ], [  ], [  ], [ 0 ] ] ],
 #                       [ [ 0 ], [ 0 ], [ 1 ], [ 0 ] ],
 #                       [ [ [ 0 ], [ 1, 2 ] ],
-#                         [ [  ], [ 3 ] ] ] ) ) ).bindings.BINDING_RETURN_VALUE );
+#                         [ [  ], [ 3 ] ] ] ) )
+# ).bindings.BINDING_RETURN_VALUE );
 BindGlobal( "ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers",
 rec(
   args := rec(
@@ -583,7 +584,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
            IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
            );
     
-    ## from the raw object data to the object in the highest stage of the tower
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( Quivers, triple )
         local F_hat, PSh, sFinSets, V, A, arrows, s, t;
@@ -609,7 +610,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    ## from the object in the highest stage of the tower to the raw object data
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
         local F_hat, PSh, F, values_of_functor;
@@ -628,7 +629,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( Quivers, source, images, range )
         local F_hat, PSh, sFinSets, S, T, Sobj, Tobj;
@@ -656,7 +657,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    ## from the morphism in the highest stage of the tower to the raw morphism data
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
         local F_hat, PSh, eta, values_on_all_objects;
@@ -674,7 +675,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
     end;
     
     ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turing the category into a constructive topos;
+    ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     Quivers := WrapperCategory( F_hat,
