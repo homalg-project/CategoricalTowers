@@ -459,7 +459,7 @@ InstallMethodWithCache( FunctorCategory,
     
     PSh := PreSheaves( B_op, C : FinalizeCategory := true );
     
-    ## from the raw object data to the object in the highest stage of the tower
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( Hom, pair )
         local PSh;
@@ -470,7 +470,7 @@ InstallMethodWithCache( FunctorCategory,
         
     end;
     
-    ## from the object in the highest stage of the tower to the raw object data
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( Hom, obj )
         local PSh;
@@ -481,7 +481,7 @@ InstallMethodWithCache( FunctorCategory,
         
     end;
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( Hom, source, images, range )
         local PSh;
@@ -492,7 +492,7 @@ InstallMethodWithCache( FunctorCategory,
         
     end;
     
-    ## from the morphism in the highest stage of the tower to the raw morphism data
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Hom, mor )
         local PSh;

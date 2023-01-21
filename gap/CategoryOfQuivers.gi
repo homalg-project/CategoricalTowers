@@ -584,7 +584,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
            IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
            );
     
-    ## from the raw object data to the object in the highest stage of the tower
+    ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( Quivers, triple )
         local F_hat, PSh, sFinSets, V, A, arrows, s, t;
@@ -610,7 +610,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    ## from the object in the highest stage of the tower to the raw object data
+    ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
         local F_hat, PSh, F, values_of_functor;
@@ -629,7 +629,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    ## from the raw morphism data to the morphism in the highest stage of the tower
+    ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( Quivers, source, images, range )
         local F_hat, PSh, sFinSets, S, T, Sobj, Tobj;
@@ -657,7 +657,7 @@ InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
         
     end;
     
-    ## from the morphism in the highest stage of the tower to the raw morphism data
+    ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
         local F_hat, PSh, eta, values_on_all_objects;
