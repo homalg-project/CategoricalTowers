@@ -129,7 +129,7 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     end;
     
     ## the wrapper category interacts with the user through the raw data but uses
-    ## the tower to derive the algorithms turing the category into a constructive topos;
+    ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     DecoratedQuivers := WrapperCategory( Slice,
