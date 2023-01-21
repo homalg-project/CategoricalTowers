@@ -19,6 +19,8 @@ T := TerminalObject( FinQuivers );
 #! <An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( T );
 #! ( { 0 }, { 0 := [ 0, 0 ] } )
+T = V;
+#! false
 G := CreateQuiver( 3, [ 0,1, 0,1, 1,2, 2,1, 2,2 ] );
 #! <An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
 Display( G );
