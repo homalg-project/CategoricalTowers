@@ -17,6 +17,9 @@
 @Subsection Homomorphism structure
 @InsertChunk HomStructure
 
+@Subsection Reflexive pair
+@InsertChunk ReflexivePair
+
 @Chapter SkeletalFinSets
 
 @Section Attributes
