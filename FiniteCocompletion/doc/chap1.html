@@ -55,6 +55,8 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86A2AE6E7C297595">1.4-4 <span class="Heading">Homomorphism structure</span></a>
 </span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X799DF66F85E6EB13">1.4-5 <span class="Heading">Reflexive pair</span></a>
+</span>
 </div></div>
 </div>
 
@@ -725,6 +727,162 @@ FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 with the above associated map
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( hom_alpha_gamma );</span>
 true
+</pre></div>
+
+<p><a id="X799DF66F85E6EB13" name="X799DF66F85E6EB13"></a></p>
+
+<h5>1.4-5 <span class="Heading">Reflexive pair</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LazyCategories", "&gt;= 2023.01-02" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" );</span>
+Q(A,B)[f:A-&gt;B,g:A-&gt;B]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := FreeCategory( Q );</span>
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetName( C.A, "C.A" ); SetName( C.B, "C.B" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UC := FiniteStrictCoproductCocompletion( C );</span>
+FiniteStrictCoproductCocompletion(
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := UC.A;</span>
+&lt;An object in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := UC.B;</span>
+&lt;An object in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
+[ 1, [ C.A ] ]
+
+An object in FiniteStrictCoproductCocompletion(
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( B );</span>
+[ 1, [ C.B ] ]
+
+An object in FiniteStrictCoproductCocompletion(
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := UC.f;</span>
+&lt;A morphism in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := UC.g;</span>
+&lt;A morphism in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( f );</span>
+[ [ 0 ], [ (A)-[(f)]-&gt;(B) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( g );</span>
+[ [ 0 ], [ (A)-[(g)]-&gt;(B) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( f );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( g );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AuB := Coproduct( A, B );</span>
+&lt;An object in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( AuB );</span>
+[ 2, [ C.A, C.B ] ]
+
+An object in FiniteStrictCoproductCocompletion(
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( AuB, B );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hom := MorphismsOfExternalHom( AuB, B );</span>
+[ &lt;A morphism in FiniteStrictCoproductCocompletion(
+   FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;,
+  &lt;A morphism in FiniteStrictCoproductCocompletion(
+   FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := hom[1];</span>
+&lt;A morphism in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gg := hom[2];</span>
+&lt;A morphism in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff = gg;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( ff );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( gg );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( ff );</span>
+[ [ 0, 0 ], [ (A)-[(f)]-&gt;(B), (B)-[(B)]-&gt;(B) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( gg );</span>
+[ [ 0, 0 ], [ (A)-[(g)]-&gt;(B), (B)-[(B)]-&gt;(B) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( B, AuB );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii := MorphismsOfExternalHom( B, AuB )[1];</span>
+&lt;A morphism in FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii = InjectionOfCofactorOfCoproduct( [ A, B ], 2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( ii, ff ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( ii, gg ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f = PreCompose( InjectionOfCofactorOfCoproduct( [ A, B ], 1 ), ff );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g = PreCompose( InjectionOfCofactorOfCoproduct( [ A, B ], 1 ), gg );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LUC := LazyCategory( UC );</span>
+LazyCategory( FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Emb := EmbeddingFunctorOfUnderlyingCategory( LUC );</span>
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Emb );</span>
+Embedding functor into lazy category:
+
+FiniteStrictCoproductCocompletion(
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )
+  |
+  V
+LazyCategory( FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := PreCompose( YonedaEmbeddingOfUnderlyingCategory( UC ), Emb );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( F );</span>
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category:
+
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) )
+  |
+  V
+LazyCategory( FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := ExtendFunctorToFiniteStrictCoproductCocompletion( F );</span>
+Extension to FiniteStrictCoproductCocompletion( Source(
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+Extension to FiniteStrictCoproductCocompletion( Source(
+Precomposition of Yoneda embedding functor and
+Embedding functor into lazy category ) ):
+
+FiniteStrictCoproductCocompletion(
+FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )
+  |
+  V
+LazyCategory( FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Gff := G( ff );</span>
+&lt;A morphism in LazyCategory( FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Gff );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ggg := G( gg );</span>
+&lt;A morphism in LazyCategory( FiniteStrictCoproductCocompletion(
+ FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) ) )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ggg );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( EvaluatedCell( Gff ) );</span>
+[ [ 0, 0 ], [ (A)-[(f)]-&gt;(B), (B)-[(B)]-&gt;(B) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( EvaluatedCell( Ggg ) );</span>
+[ [ 0, 0 ], [ (A)-[(g)]-&gt;(B), (B)-[(B)]-&gt;(B) ] ]
 </pre></div>
 
 
