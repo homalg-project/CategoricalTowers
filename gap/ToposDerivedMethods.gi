@@ -524,6 +524,7 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
     Ls := ExactCoverWithGlobalElements( range_cat, s );
     
     return UniversalMorphismFromCoproduct( range_cat,
+                   r,
                    List( Ls, mor ->
                          InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
                                  distinguished_object,
