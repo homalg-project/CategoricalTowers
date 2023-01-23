@@ -2069,6 +2069,10 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
+        elif IsCategoryFromDataTables( B ) then
+            
+            ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
+            
         elif IsAlgebroid( B ) then
             
             if IsCategoryOfRows( C ) then

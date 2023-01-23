@@ -11,6 +11,7 @@ ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinReflexiveQuiver
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/FinReflexiveQuiversAsCCCPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled.gi");
+ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled.gi");
 ReadPackage( "FunctorCategories", "gap/precompiled_categories/PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled.gi");
 
