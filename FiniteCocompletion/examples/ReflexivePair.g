@@ -86,13 +86,13 @@ ii := MorphismsOfExternalHom( B, AuB )[1];
 #!  FreeCategory( RightQuiver( "Q(A,B)[f:A->B,g:A->B]" ) ) )>
 ii = InjectionOfCofactorOfCoproduct( [ A, B ], 2 );
 #! true
-IsOne( PreCompose( ii, ff ) );
+f = ComponentOfMorphismFromCoproduct( ff, [ A, B ], 1 );
 #! true
-IsOne( PreCompose( ii, gg ) );
+IsOne( ComponentOfMorphismFromCoproduct( ff, [ A, B ], 2 ) );
 #! true
-f = PreCompose( InjectionOfCofactorOfCoproduct( [ A, B ], 1 ), ff );
+g = ComponentOfMorphismFromCoproduct( gg, [ A, B ], 1  );
 #! true
-g = PreCompose( InjectionOfCofactorOfCoproduct( [ A, B ], 1 ), gg );
+IsOne( ComponentOfMorphismFromCoproduct( gg, [ A, B ], 2 ) );
 #! true
 LUC := LazyCategory( UC );
 #! LazyCategory( FiniteStrictCoproductCocompletion(
