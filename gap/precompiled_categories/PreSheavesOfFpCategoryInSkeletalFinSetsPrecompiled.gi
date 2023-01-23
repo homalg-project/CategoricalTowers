@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesInSkeletalFinSetsPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled", function ( cat )
     
     ##
     AddInitialObject( cat,
@@ -920,7 +920,7 @@ end
     
 end );
 
-BindGlobal( "PreSheavesInSkeletalFinSetsPrecompiled", function ( quiver )
+BindGlobal( "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled", function ( quiver )
   local category_constructor, cat;
     
     category_constructor :=
@@ -938,7 +938,7 @@ end;
     
     cat := category_constructor( quiver : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_PreSheavesInSkeletalFinSetsPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( cat );
     
     Finalize( cat );
     

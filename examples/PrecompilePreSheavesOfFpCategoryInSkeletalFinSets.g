@@ -23,7 +23,7 @@ category_constructor :=
     local sFinSets; sFinSets := CategoryOfSkeletalFinSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;
 
 given_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;
-compiled_category_name := "PreSheavesInSkeletalFinSetsPrecompiled";;
+compiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled";;
 package_name := "FunctorCategories";;
 
 CapJitPrecompileCategoryAndCompareResult(
@@ -45,7 +45,7 @@ CapJitPrecompileCategoryAndCompareResult(
                      ]
 );;
 
-PreSheavesInSkeletalFinSetsPrecompiled( given_arguments[1] );
+PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( given_arguments[1] );
 #! PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )
 
 cat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );
