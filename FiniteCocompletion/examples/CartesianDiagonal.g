@@ -54,9 +54,9 @@ Source( delta ) = a;
 #! true
 Range( delta ) = aa;
 #! true
-IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 1 ) ) );
+IsOne( ComponentOfMorphismIntoDirectProduct( delta, [ a, a ], 1 ) );
 #! true
-IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 2 ) ) );
+IsOne( ComponentOfMorphismIntoDirectProduct( delta, [ a, a ], 2 ) );
 #! true
 IsWellDefined( delta );
 #! true

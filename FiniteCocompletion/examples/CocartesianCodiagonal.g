@@ -51,9 +51,9 @@ Source( delta ) = aa;
 #! true
 Range( delta ) = a;
 #! true
-IsOne( PreCompose( InjectionOfCofactorOfCoproduct( [ a, a ], 1 ), delta ) );
+IsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 1 ) );
 #! true
-IsOne( PreCompose( InjectionOfCofactorOfCoproduct( [ a, a ], 2 ), delta ) );
+IsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 2 ) );
 #! true
 IsWellDefined( delta );
 #! true
