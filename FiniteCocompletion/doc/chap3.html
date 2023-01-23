@@ -115,7 +115,7 @@ FiniteStrictProductCompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteStrictProductCompletion( InitialCategory( ) ):
 
-91 primitive operations were used to derive 480 operations for this category
+91 primitive operations were used to derive 482 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -399,9 +399,9 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = aa;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 1 ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectProduct( delta, [ a, a ], 1 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( delta, ProjectionInFactorOfDirectProduct( [ a, a ], 2 ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectProduct( delta, [ a, a ], 2 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
 true

@@ -121,7 +121,7 @@ FiniteStrictCoproductCocompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 A CAP category with name FiniteStrictCoproductCocompletion( InitialCategory( ) ):
 
-93 primitive operations were used to derive 505 operations for this category
+93 primitive operations were used to derive 507 operations for this category
 which algorithmically
 * IsCategoryWithDecidableColifts
 * IsCategoryWithDecidableLifts
@@ -494,9 +494,9 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( delta ) = a;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( InjectionOfCofactorOfCoproduct( [ a, a ], 1 ), delta ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 1 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( InjectionOfCofactorOfCoproduct( [ a, a ], 2 ), delta ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( delta, [ a, a ], 2 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( delta );</span>
 true
@@ -572,7 +572,7 @@ FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 A CAP category with name
 FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) ):
 
-28 primitive operations were used to derive 96 operations for this category
+28 primitive operations were used to derive 98 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
 * IsBicartesianCategory
@@ -820,13 +820,13 @@ true
  FreeCategory( RightQuiver( "Q(A,B)[f:A-&gt;B,g:A-&gt;B]" ) ) )&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ii = InjectionOfCofactorOfCoproduct( [ A, B ], 2 );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( ii, ff ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f = ComponentOfMorphismFromCoproduct( ff, [ A, B ], 1 );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( ii, gg ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( ff, [ A, B ], 2 ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f = PreCompose( InjectionOfCofactorOfCoproduct( [ A, B ], 1 ), ff );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g = ComponentOfMorphismFromCoproduct( gg, [ A, B ], 1  );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g = PreCompose( InjectionOfCofactorOfCoproduct( [ A, B ], 1 ), gg );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromCoproduct( gg, [ A, B ], 2 ) );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LUC := LazyCategory( UC );</span>
 LazyCategory( FiniteStrictCoproductCocompletion(
