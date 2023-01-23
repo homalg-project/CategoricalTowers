@@ -2065,7 +2065,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         if IsFpCategory( B ) then
             
-            ADD_FUNCTIONS_FOR_PreSheavesInSkeletalFinSetsPrecompiled( PSh );
+            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( PSh );
             
         elif IsAlgebroid( B ) then
             
