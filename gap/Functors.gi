@@ -491,7 +491,7 @@ BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SO
     fi;
     
     B := Source( PSh );
-     
+    
     T := ImageOfYonedaEmbeddingOfSource( PSh );
     
     Yoneda_data := YonedaEmbeddingData( PSh );
