@@ -30,3 +30,6 @@ gap> Y := ExtendFunctorToAdditiveClosures( IsomorphismFromSourceIntoImageOfYoned
 gap> U := ExtendFunctorToAdditiveClosures( IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource( PSh ) );;
 gap> m := RandomMorphism( SourceOfFunctor(Y), 30 );; m = ApplyFunctor( U, ApplyFunctor( Y, m ) );
 true
+gap> D := EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource( PSh );;
+gap> IsIsomorphism( ApplyFunctor( D, EpimorphismFromSomeProjectiveObject( P ) / SourceOfFunctor( D ) ) );
+true

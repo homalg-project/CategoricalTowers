@@ -481,6 +481,53 @@ InstallMethod( UnitOfIsbellAdjunction,
 end );
 
 ##
+InstallMethod( EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource,
+          [ IsPreSheafCategory ],
+  function ( PSh )
+    local proj_cat, add_closure_cat, D, J, y_image;
+    
+    proj_cat := FullSubcategoryOfProjectiveObjects( PSh );
+    
+    add_closure_cat := AdditiveClosure( Source( PSh ) );
+    
+    D := CapFunctor( "Equivalence functor from full subcategory of projective objects to source category", proj_cat, add_closure_cat );
+    
+    J := IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource( PSh );
+    
+    y_image := SourceOfFunctor( J );
+    
+    AddObjectFunction( D,
+      F -> AdditiveClosureObject(
+              add_closure_cat,
+              List( ProjectiveCoverObjectDataOfPreSheaf( UnderlyingCell( F ) ), m -> ApplyFunctor( J, AsSubcategoryCell( y_image, Source( m ) ) ) ) )
+    );
+    
+    AddMorphismFunction( D,
+      function ( S, phi, R )
+        local F, G, injections, eta, summands, projections, mat;
+        
+        F := UnderlyingCell( Source( phi ) );
+        G := UnderlyingCell( Range( phi ) );
+        
+        injections := ProjectiveCoverObjectDataOfPreSheaf( F );
+        
+        eta := PreCompose( PSh, UnderlyingCell( phi ), InverseForMorphisms( EpimorphismFromProjectiveCoverObject( G ) ) );
+        
+        summands := List( ProjectiveCoverObjectDataOfPreSheaf( G ), Source );
+        
+        projections := List( [ 1 .. Length( summands ) ], k -> ProjectionInFactorOfDirectSumWithGivenDirectSum( PSh, summands, k, Range( eta ) ) );
+        
+        mat := List( injections, i -> List( projections, p -> ApplyFunctor( J, AsSubcategoryCell( y_image, PreComposeList( PSh, [ i, eta, p ] ) ) ) ) );
+        
+        return AdditiveClosureMorphism( S, mat, R );
+        
+    end );
+    
+    return D;
+    
+end );
+
+##
 BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SOURCE",
   
   function ( PSh )

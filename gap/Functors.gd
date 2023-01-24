@@ -119,3 +119,9 @@ DeclareAttribute( "IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource", IsP
 #! @Returns a &CAP; functor
 DeclareAttribute( "IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource", IsPreSheafCategory );
 
+#! @Description
+#!  Returns the equivalence functor from <C>FullSubcategoryOfProjectiveObjects</C>(<A>PSh</A>) to the additive closure category of <C>Source</C>(<A>PSh</A>).
+#! @Arguments PSh
+#! @Returns a &CAP; functor
+DeclareAttribute( "EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource", IsPreSheafCategory );
+
