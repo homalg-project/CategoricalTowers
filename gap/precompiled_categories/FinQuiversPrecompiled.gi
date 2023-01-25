@@ -153,7 +153,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_1_1 := deduped_21_1;
     return CreateCapCategoryObjectWithAttributes( RangeCategoryOfHomomorphismStructure( cat_1 ), Length, Length( Filtered( deduped_21_1, function ( x_2 )
                 local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-                deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[1 + x_2] );
+                deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[1 + CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[(1 + x_2)] )] );
                 deduped_4_2 := 1 + REM_INT( deduped_5_2, hoisted_11_1 );
                 deduped_3_2 := REM_INT( QUO_INT( deduped_5_2, hoisted_4_1 ), hoisted_3_1 );
                 deduped_2_2 := REM_INT( QUO_INT( deduped_5_2, hoisted_2_1 ), hoisted_3_1 );
@@ -248,7 +248,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
     hoisted_1_1 := deduped_49_1;
     deduped_37_1 := Filtered( deduped_38_1, function ( x_2 )
             local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-            deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_3_1[1 + x_2] );
+            deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_3_1[1 + CAP_JIT_INCOMPLETE_LOGIC( hoisted_3_1[(1 + x_2)] )] );
             deduped_4_2 := 1 + REM_INT( deduped_5_2, hoisted_1_1 );
             deduped_3_2 := REM_INT( QUO_INT( deduped_5_2, hoisted_6_1 ), hoisted_5_1 );
             deduped_2_2 := REM_INT( QUO_INT( deduped_5_2, hoisted_4_1 ), hoisted_5_1 );
@@ -380,7 +380,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_1_1 := deduped_33_1;
     deduped_32_1 := Filtered( deduped_33_1, function ( x_2 )
             local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-            deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[1 + x_2] );
+            deduped_5_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[1 + CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[(1 + x_2)] )] );
             deduped_4_2 := 1 + REM_INT( deduped_5_2, hoisted_11_1 );
             deduped_3_2 := REM_INT( QUO_INT( deduped_5_2, hoisted_4_1 ), hoisted_3_1 );
             deduped_2_2 := REM_INT( QUO_INT( deduped_5_2, hoisted_2_1 ), hoisted_3_1 );

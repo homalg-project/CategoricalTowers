@@ -99,7 +99,7 @@ Dependencies := rec(
                    [ "CategoryConstructor", ">= 2022.11-11" ],
                    [ "SubcategoriesForCAP", ">= 2021.12-01" ],
                    [ "Toposes", ">= 2022.11-03" ],
-                   [ "FinSetsForCAP", ">= 2022.11-05" ],
+                   [ "FinSetsForCAP", ">= 2023.01-02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
