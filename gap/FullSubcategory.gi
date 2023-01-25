@@ -127,6 +127,24 @@ InstallMethod( FullSubcategory,
             end );
         fi;
         
+        if CanCompute( C, "BasisOfExternalHom" ) and CanCompute( C, "CoefficientsOfMorphism" ) then
+            
+            AddBasisOfExternalHom( D,
+              function( cat, a, b )
+                
+                return List( BasisOfExternalHom( AmbientCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) ), m -> AsSubcategoryCell( cat, m ) );
+                
+            end );
+            
+            AddCoefficientsOfMorphism( D,
+              function( cat, alpha )
+                
+                return CoefficientsOfMorphism( AmbientCategory( cat ), UnderlyingCell( alpha ) );
+                
+            end );
+            
+        fi;
+        
     fi;
     
     Finalize( D );
