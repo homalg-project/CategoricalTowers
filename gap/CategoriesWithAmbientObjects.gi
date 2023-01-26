@@ -216,6 +216,8 @@ InstallMethod( CategoryWithAmbientObjects,
     
     category_with_ambient_objects := CreateCapCategory( Concatenation( "CategoryWithAmbientObjects( ", Name( abelian_category ), " )" ) );
     
+    category_with_ambient_objects!.category_as_first_argument := false;
+    
     SetFilterObj( category_with_ambient_objects, IsCapCategoryWithAmbientObjects );
     
     for prop in ListKnownCategoricalProperties( abelian_category ) do
