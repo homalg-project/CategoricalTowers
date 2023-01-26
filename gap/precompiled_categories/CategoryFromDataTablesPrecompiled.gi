@@ -43,17 +43,16 @@ end
         
 ########
 function ( cat_1, a_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
-    deduped_9_1 := DataTables( cat_1 );
-    deduped_8_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_7_1 := deduped_9_1[2];
-    deduped_6_1 := deduped_9_1[1];
-    deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_8_1, Length, 1 );
-    deduped_4_1 := deduped_6_1[2];
-    deduped_3_1 := CreateCapCategoryObjectWithAttributes( deduped_8_1, Length, deduped_6_1[1] );
-    deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. deduped_4_1 - 1 ][1 + deduped_7_1[1][(1 + AsList( MapOfObject( a_1 ) )[1])]] );
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := DataTables( cat_1 );
+    deduped_7_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_6_1 := deduped_8_1[2];
+    deduped_5_1 := deduped_8_1[1];
+    deduped_4_1 := CreateCapCategoryObjectWithAttributes( deduped_7_1, Length, 1 );
+    deduped_3_1 := CreateCapCategoryObjectWithAttributes( deduped_7_1, Length, deduped_5_1[1] );
+    deduped_2_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1[1][1 + AsList( MapOfObject( a_1 ) )[1]] );
     deduped_1_1 := 1 + deduped_2_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_8_1, deduped_5_1, deduped_3_1, AsList, [ deduped_7_1[2][deduped_1_1] ] ) ), CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_8_1, deduped_5_1, deduped_3_1, AsList, [ deduped_7_1[3][deduped_1_1] ] ) ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_8_1, deduped_5_1, CreateCapCategoryObjectWithAttributes( deduped_8_1, Length, deduped_4_1 ), AsList, [ deduped_2_1 ] ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_7_1, deduped_4_1, deduped_3_1, AsList, [ deduped_6_1[2][deduped_1_1] ] ) ), CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_7_1, deduped_4_1, deduped_3_1, AsList, [ deduped_6_1[3][deduped_1_1] ] ) ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_7_1, deduped_4_1, CreateCapCategoryObjectWithAttributes( deduped_7_1, Length, deduped_5_1[2] ), AsList, [ deduped_2_1 ] ) );
 end
 ########
         
@@ -75,17 +74,16 @@ end
         
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
-    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := DataTables( cat_1 );
-    deduped_10_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_9_1 := deduped_11_1[2];
-    deduped_8_1 := deduped_11_1[1];
-    deduped_7_1 := CreateCapCategoryObjectWithAttributes( deduped_10_1, Length, 1 );
-    deduped_6_1 := deduped_8_1[2];
-    deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_10_1, Length, deduped_8_1[1] );
-    deduped_4_1 := CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. deduped_6_1 - 1 ][1 + deduped_9_1[8][(1 + AsList( MapOfObject( source_1 ) )[1])][(1 + AsList( MapOfObject( range_1 ) )[1])][(1 + AsList( alpha_1 )[1])]] );
+    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := DataTables( cat_1 );
+    deduped_9_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_8_1 := deduped_10_1[2];
+    deduped_7_1 := deduped_10_1[1];
+    deduped_6_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, 1 );
+    deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, deduped_7_1[1] );
+    deduped_4_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_8_1[8][1 + AsList( MapOfObject( source_1 ) )[1]][1 + AsList( MapOfObject( range_1 ) )[1]][1 + AsList( alpha_1 )[1]] );
     deduped_3_1 := 1 + deduped_4_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_10_1, deduped_7_1, deduped_5_1, AsList, [ deduped_9_1[2][deduped_3_1] ] ) ), CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_10_1, deduped_7_1, deduped_5_1, AsList, [ deduped_9_1[3][deduped_3_1] ] ) ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_10_1, deduped_7_1, CreateCapCategoryObjectWithAttributes( deduped_10_1, Length, deduped_6_1 ), AsList, [ deduped_4_1 ] ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_6_1, deduped_5_1, AsList, [ deduped_8_1[2][deduped_3_1] ] ) ), CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_6_1, deduped_5_1, AsList, [ deduped_8_1[3][deduped_3_1] ] ) ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, deduped_7_1[2] ), AsList, [ deduped_4_1 ] ) );
 end
 ########
         
@@ -237,17 +235,16 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := DataTables( cat_1 );
-    deduped_10_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    deduped_9_1 := deduped_11_1[2];
-    deduped_8_1 := deduped_11_1[1];
-    deduped_7_1 := CreateCapCategoryObjectWithAttributes( deduped_10_1, Length, 1 );
-    deduped_6_1 := deduped_8_1[2];
-    deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_10_1, Length, deduped_8_1[1] );
-    deduped_4_1 := CAP_JIT_INCOMPLETE_LOGIC( [ 0 .. deduped_6_1 - 1 ][1 + deduped_9_1[4][(1 + AsList( MapOfMorphism( alpha_1 ) )[1])][(1 + AsList( MapOfMorphism( beta_1 ) )[1])]] );
+    local deduped_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := DataTables( cat_1 );
+    deduped_9_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    deduped_8_1 := deduped_10_1[2];
+    deduped_7_1 := deduped_10_1[1];
+    deduped_6_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, 1 );
+    deduped_5_1 := CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, deduped_7_1[1] );
+    deduped_4_1 := CAP_JIT_INCOMPLETE_LOGIC( deduped_8_1[4][1 + AsList( MapOfMorphism( alpha_1 ) )[1]][1 + AsList( MapOfMorphism( beta_1 ) )[1]] );
     deduped_3_1 := 1 + deduped_4_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_10_1, deduped_7_1, deduped_5_1, AsList, [ deduped_9_1[2][deduped_3_1] ] ) ), CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_10_1, deduped_7_1, deduped_5_1, AsList, [ deduped_9_1[3][deduped_3_1] ] ) ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_10_1, deduped_7_1, CreateCapCategoryObjectWithAttributes( deduped_10_1, Length, deduped_6_1 ), AsList, [ deduped_4_1 ] ) );
+    return CreateCapCategoryMorphismWithAttributes( cat_1, CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_6_1, deduped_5_1, AsList, [ deduped_8_1[2][deduped_3_1] ] ) ), CreateCapCategoryObjectWithAttributes( cat_1, MapOfObject, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_6_1, deduped_5_1, AsList, [ deduped_8_1[3][deduped_3_1] ] ) ), MapOfMorphism, CreateCapCategoryMorphismWithAttributes( deduped_9_1, deduped_6_1, CreateCapCategoryObjectWithAttributes( deduped_9_1, Length, deduped_7_1[2] ), AsList, [ deduped_4_1 ] ) );
 end
 ########
         
