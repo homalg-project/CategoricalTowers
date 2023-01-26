@@ -34,7 +34,10 @@ InstallMethod( FiniteStrictProductCompletion,
       function ( PC, S, pair_of_lists, T )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, IsList( pair_of_lists ) and Length( pair_of_lists ) = 2 );
+        Assert( 0, IsList( pair_of_lists ) and
+                Length( pair_of_lists ) = 2 and
+                IsList( pair_of_lists[1] ) and
+                IsList( pair_of_lists[2] ) );
         
         return CreateCapCategoryMorphismWithAttributes( PC,
                        S,
