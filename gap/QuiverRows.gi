@@ -104,6 +104,8 @@ InstallMethod( QuiverRows,
     
     category := CreateCapCategory( category_name );
     
+    category!.category_as_first_argument := false;
+    
     DeactivateCachingOfCategory( category );
     
     CapCategorySwitchLogicOff( category );

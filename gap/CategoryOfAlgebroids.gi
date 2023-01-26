@@ -248,6 +248,8 @@ InstallMethodWithCache( CategoryOfAlgebroids,
     
     category := CreateCapCategory( Concatenation( "(", parity, ") Algebroids( ", RingName( homalg_ring )," )" ) );
     
+    category!.category_as_first_argument := false;
+    
     SetFilterObj( category, IsCategoryOfAlgebroids );
     
     SetUnderlyingRing( category, homalg_ring );
