@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FiniteCocompletion",
 Subtitle := "Finite (co)product/(co)limit (co)completions",
-Version := "2023.01-39",
+Version := "2023.01-40",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
@@ -76,7 +76,7 @@ Dependencies := rec(
                    [ "MonoidalCategories", ">= 2022.06-07" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "CompilerForCAP", ">= 2022.08-01" ],
+                   [ "CompilerForCAP", ">= 2023.01-06" ],
                    ],
   ExternalConditions := [ ],
 ),
