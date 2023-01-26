@@ -914,6 +914,8 @@ InstallMethod( PositivelyZGradedCategory,
     
     ZC := CreateCapCategory( name : is_computable := false );
     
+    ZC!.category_as_first_argument := false;
+    
     ZC!.IsPositivelyZGradedCategory := true;
     
     ZC!.UnderlyingCategory := C;
