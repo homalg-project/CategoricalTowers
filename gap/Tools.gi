@@ -341,8 +341,8 @@ InstallMethodForCompilerForCAP( LimitPair,
     
     source := DirectProduct( cat, objects );
     
-    projections := List( [ 1 .. Length( objects ) ],
-                         i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, objects, i, source ) );
+    projections := List( [ 0 .. Length( objects ) - 1 ],
+                         i -> ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, objects, 1 + i, source ) );
     
     diagram := List( decorated_morphisms, m -> objects[1 + m[3]] );
     
