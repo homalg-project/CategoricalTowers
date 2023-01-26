@@ -1,7 +1,7 @@
 name: FiniteCocompletion
-version: "2023.01-39"
+version: "2023.01-40"
 license: "GPL-2.0-or-later"
-date: 2023-01-23
+date: 2023-01-26
 description: |
     Finite (co)product/(co)limit (co)completions
 
@@ -31,7 +31,7 @@ needed-pkgs:
 
 suggested-pkgs:
     - name: "CompilerForCAP"
-      version: ">= 2022.08-01"
+      version: ">= 2023.01-06"
       url: "https://homalg-project.github.io/pkg/CompilerForCAP"
 
 www: https://homalg-project.github.io/pkg/FiniteCocompletion
@@ -40,11 +40,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-39/FiniteCocompletion-2023.01-39.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-40/FiniteCocompletion-2023.01-40.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-39/FiniteCocompletion-2023.01-39.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-40/FiniteCocompletion-2023.01-40.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-39/FiniteCocompletion-2023.01-39.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletion-2023.01-40/FiniteCocompletion-2023.01-40.pdf
 
 abstract: |
 
@@ -57,7 +57,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>FiniteCocompletion, Finite (co)product/(co)limit (co)completions,
-             Version 2023.01-39</i>
+             Version 2023.01-40</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletion">https://homalg-project.github.io/pkg/FiniteCocompletion</a></span>.
@@ -65,10 +65,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FiniteCocompletion2023.01-39,
+    @misc{ FiniteCocompletion2023.01-40,
       author =           {Barakat, M.},
       title =            {{FiniteCocompletion},   Finite   (co)product/(co)limit
-                          (co)completions, {V}ersion 2023.01-39},
+                          (co)completions, {V}ersion 2023.01-40},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},
