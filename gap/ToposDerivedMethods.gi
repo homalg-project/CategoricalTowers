@@ -4,6 +4,19 @@
 # Implementations
 #
 
+## Page 20 in Peter Freyd, Aspect of topoi, Bull. Austral. Math. Soc, 7 (1972)
+AddDerivationToCAP( ImageEmbedding,
+  function( cat, mor )
+    local D;
+    
+    D := [ mor, mor ];
+    
+    return EmbeddingOfEqualizer( cat,
+                   [ InjectionOfCofactorOfPushout( cat, D, 1 ),
+                     InjectionOfCofactorOfPushout( cat, D, 2 ) ] );
+    
+end : Description := "the (regular) image as the equalizer of the cokernel-pair" );
+
 ##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
   function( cat, mor )
