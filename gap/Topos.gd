@@ -249,6 +249,30 @@ DeclareAttribute( "TruthMorphismOfImplies",
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
         [ IsCapCategoryObject, IsCapCategoryObject ]);
 
+#! @Description
+#! The argument is an object $a$.
+#! The output is the power object of $a$.
+#! @Arguments a
+#! @Returns an object
+DeclareAttribute( "PowerObject",
+        IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $a$.
+#! The output is the singleton morphism from $a$ to the power object $\mathrm{PowerObject}(a)$.
+#! @Arguments a
+#! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{PowerObject}(a) )$
+DeclareAttribute( "SingletonMorphism",
+        IsCapCategoryObject );
+
+#! @Description
+#! The arguments are an object $a$ and object $b$ which is equal to the power object $\mathrm{PowerObject}(a)$.
+#! The output is the singleton morphism from $a$ to $b$.
+#! @Arguments a, b
+#! @Returns a morphism in $\mathrm{Hom}( a, b )$
+DeclareOperation( "SingletonMorphismWithGivenPowerObject",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 ####################################
 ##
 #! @Section Heyting Algebra of Subobjects
