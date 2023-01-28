@@ -24,6 +24,7 @@
 | [CategoriesWithAmbientObjects](CategoriesWithAmbientObjects#readme) | Categories with objects having ambient objects | [![HTML stable documentation][html-CategoriesWithAmbientObjects-img]][html-CategoriesWithAmbientObjects-url] [![PDF stable documentation][pdf-CategoriesWithAmbientObjects-img]][pdf-CategoriesWithAmbientObjects-url] |
 | [IntrinsicModules](IntrinsicModules#readme) | Finitely presented modules over computable rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicModules-img]][html-IntrinsicModules-url] [![PDF stable documentation][pdf-IntrinsicModules-img]][pdf-IntrinsicModules-url] |
 | [ExteriorPowersCategories](ExteriorPowersCategories#readme) | The graded category of exterior powers of objects of a given Ab-category | [![HTML stable documentation][html-ExteriorPowersCategories-img]][html-ExteriorPowersCategories-url] [![PDF stable documentation][pdf-ExteriorPowersCategories-img]][pdf-ExteriorPowersCategories-url] |
+| [IntrinsicGradedModules](IntrinsicGradedModules#readme) | Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicGradedModules-img]][html-IntrinsicGradedModules-url] [![PDF stable documentation][pdf-IntrinsicGradedModules-img]][pdf-IntrinsicGradedModules-url] |
 
 [html-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/doc/chap0_mj.html
@@ -107,6 +108,13 @@
 
 [pdf-ExteriorPowersCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ExteriorPowersCategories-url]: https://homalg-project.github.io/CategoricalTowers/ExteriorPowersCategories/download_pdf.html
+
+
+[html-IntrinsicGradedModules-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-IntrinsicGradedModules-url]: https://homalg-project.github.io/CategoricalTowers/IntrinsicGradedModules/doc/chap0_mj.html
+
+[pdf-IntrinsicGradedModules-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-IntrinsicGradedModules-url]: https://homalg-project.github.io/CategoricalTowers/IntrinsicGradedModules/download_pdf.html
 
 
 [tests-img]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml/badge.svg?branch=master

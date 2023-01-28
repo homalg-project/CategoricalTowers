@@ -35,3 +35,4 @@ chmod +x codecov
 ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 30; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 30; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects))
 ./codecov -Z -v -s ../ -F IntrinsicModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicModules))
 ./codecov -Z -v -s ../ -F ExteriorPowersCategories || (sleep 30; ./codecov -Z -v -s ../ -F ExteriorPowersCategories || (sleep 30; ./codecov -Z -v -s ../ -F ExteriorPowersCategories))
+./codecov -Z -v -s ../ -F IntrinsicGradedModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicGradedModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicGradedModules))
