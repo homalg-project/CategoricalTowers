@@ -1,0 +1,126 @@
+  
+  [1X4 [33X[0;0YHeyting algebras[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YOperations[133X[101X
+  
+  [1X4.1-1 NegationOnObjects[101X
+  
+  [33X[1;0Y[29X[2XNegationOnObjects[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X. The output is its negated object [23X\neg a[123X.[133X
+  
+  [1X4.1-2 NegationOnMorphisms[101X
+  
+  [33X[1;0Y[29X[2XNegationOnMorphisms[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \neg b, \neg a )[123X.[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a  \rightarrow b[123X. The output is its
+  negated morphism [23X\neg \alpha: \neg b \rightarrow \neg a[123X.[133X
+  
+  [1X4.1-3 NegationOnMorphismsWithGivenNegations[101X
+  
+  [33X[1;0Y[29X[2XNegationOnMorphismsWithGivenNegations[102X( [3Xs[103X, [3Xalpha[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \neg b, \neg a )[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an object [23Xs = \neg b[123X, a morphism [23X\alpha: a \rightarrow b[123X,
+  and  an  object  [23Xr = \neg a[123X. The output is the negated morphism [23X\neg \alpha:
+  \neg b \rightarrow \neg a[123X.[133X
+  
+  [1X4.1-4 MorphismToDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismToDoubleNegation[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \neg\neg a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is the morphism to the double
+  negation [23Xa \rightarrow \neg\neg a[123X.[133X
+  
+  [1X4.1-5 MorphismToDoubleNegationWithGivenDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismToDoubleNegationWithGivenDoubleNegation[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \neg\neg a)[123X.[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X, and an object [23Xr = \neg\neg a[123X. The output is
+  the morphism to the double negation [23Xa \rightarrow \neg\neg a[123X.[133X
+  
+  
+  [1X4.2 [33X[0;0YStable internal Hom[133X[101X
+  
+  [1X4.2-1 StableInternalHom[101X
+  
+  [33X[1;0Y[29X[2XStableInternalHom[102X( [3XJ[103X, [3XI[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YReturn             the            stable            internal            Hom:
+  [23X\mathrm{\underline{Hom}}(J,\mathrm{\underline{Hom}}(J,...\mathrm{\underline{Hom}}(J,I)...))[123X.[133X
+  
+  
+  [1X4.3 [33X[0;0YAdd-methods[133X[101X
+  
+  [1X4.3-1 AddMorphismToDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismToDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToDoubleNegation[110X.        [23XF:        (        a        )       \mapsto
+  \mathtt{MorphismToDoubleNegation}(a)[123X.[133X
+  
+  [1X4.3-2 AddMorphismToDoubleNegationWithGivenDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismToDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToDoubleNegationWithGivenDoubleNegation[110X.   [23XF:   (  a,  r  )  \mapsto
+  \mathtt{MorphismToDoubleNegationWithGivenDoubleNegation}(a, r)[123X.[133X
+  
+  [1X4.3-3 AddNegationOnMorphisms[101X
+  
+  [33X[1;0Y[29X[2XAddNegationOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XNegationOnMorphisms[110X.        [23XF:        (        alpha        )        \mapsto
+  \mathtt{NegationOnMorphisms}(alpha)[123X.[133X
+  
+  [1X4.3-4 AddNegationOnMorphismsWithGivenNegations[101X
+  
+  [33X[1;0Y[29X[2XAddNegationOnMorphismsWithGivenNegations[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XNegationOnMorphismsWithGivenNegations[110X.   [23XF:   (   s,   alpha,  r  )  \mapsto
+  \mathtt{NegationOnMorphismsWithGivenNegations}(s, alpha, r)[123X.[133X
+  
+  [1X4.3-5 AddNegationOnObjects[101X
+  
+  [33X[1;0Y[29X[2XAddNegationOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XNegationOnObjects[110X.
+  [23XF: ( arg2 ) \mapsto \mathtt{NegationOnObjects}(arg2)[123X.[133X
+  
+  
+  [1X4.4 [33X[0;0YProperties[133X[101X
+  
+  [1X4.4-1 IsHeytingAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsHeytingAlgebroid[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a Heyting algebroid.[133X
+  
+  [1X4.4-2 IsHeytingAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsHeytingAlgebra[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a Heyting algebra.[133X
+  

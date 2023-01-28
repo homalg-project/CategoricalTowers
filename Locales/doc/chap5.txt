@@ -1,0 +1,128 @@
+  
+  [1X5 [33X[0;0YCo-Heyting algebras[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YOperations[133X[101X
+  
+  [1X5.1-1 ConegationOnObjects[101X
+  
+  [33X[1;0Y[29X[2XConegationOnObjects[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument  is an object [23Xa[123X. The output is its co-negated object [23X\ulcorner
+  a[123X.[133X
+  
+  [1X5.1-2 ConegationOnMorphisms[101X
+  
+  [33X[1;0Y[29X[2XConegationOnMorphisms[102X( [3Xalpha[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \ulcorner b, \ulcorner a )[123X.[133X
+  
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a  \rightarrow b[123X. The output is its
+  negated morphism [23X\ulcorner \alpha: \ulcorner b \rightarrow \ulcorner a[123X.[133X
+  
+  [1X5.1-3 ConegationOnMorphismsWithGivenConegations[101X
+  
+  [33X[1;0Y[29X[2XConegationOnMorphismsWithGivenConegations[102X( [3Xs[103X, [3Xalpha[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \ulcorner b, \ulcorner a )[123X.[133X
+  
+  [33X[0;0YThe  argument is an object [23Xs = \ulcorner b[123X, a morphism [23X\alpha: a \rightarrow
+  b[123X,  and  an  object  [23Xr  =  \ulcorner  a[123X.  The output is the negated morphism
+  [23X\ulcorner \alpha: \ulcorner b \rightarrow \ulcorner a[123X.[133X
+  
+  [1X5.1-4 MorphismFromDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromDoubleConegation[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\ulcorner\ulcorner a, a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X. The output is the morphism from the double
+  conegation [23X\ulcorner\ulcorner a \rightarrow a[123X.[133X
+  
+  [1X5.1-5 MorphismFromDoubleConegationWithGivenDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromDoubleConegationWithGivenDoubleConegation[102X( [3Xa[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\ulcorner\ulcorner a, a)[123X.[133X
+  
+  [33X[0;0YThe  arguments  are an object [23Xa[123X, and an object [23Xr = \ulcorner\ulcorner a[123X. The
+  output  is  the  morphism  from  the  double conegation [23X\ulcorner\ulcorner a
+  \rightarrow a[123X.[133X
+  
+  
+  [1X5.2 [33X[0;0YStable internal coHom[133X[101X
+  
+  [1X5.2-1 StableInternalCoHom[101X
+  
+  [33X[1;0Y[29X[2XStableInternalCoHom[102X( [3XV[103X, [3XW[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YReturn            the            stable            internal           coHom:
+  [23X\mathrm{\underline{coHom}}(\mathrm{\underline{coHom}}(...\mathrm{\underline{coHom}}(V,W)...,W),W)[123X.[133X
+  
+  
+  [1X5.3 [33X[0;0YAdd-methods[133X[101X
+  
+  [1X5.3-1 AddConegationOnMorphisms[101X
+  
+  [33X[1;0Y[29X[2XAddConegationOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XConegationOnMorphisms[110X.        [23XF:        (        alpha       )       \mapsto
+  \mathtt{ConegationOnMorphisms}(alpha)[123X.[133X
+  
+  [1X5.3-2 AddConegationOnMorphismsWithGivenConegations[101X
+  
+  [33X[1;0Y[29X[2XAddConegationOnMorphismsWithGivenConegations[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XConegationOnMorphismsWithGivenConegations[110X.  [23XF:  (  s,  alpha,  r  )  \mapsto
+  \mathtt{ConegationOnMorphismsWithGivenConegations}(s, alpha, r)[123X.[133X
+  
+  [1X5.3-3 AddConegationOnObjects[101X
+  
+  [33X[1;0Y[29X[2XAddConegationOnObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XConegationOnObjects[110X. [23XF: ( arg2 ) \mapsto \mathtt{ConegationOnObjects}(arg2)[123X.[133X
+  
+  [1X5.3-4 AddMorphismFromDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromDoubleConegation[110X.       [23XF:       (       a       )       \mapsto
+  \mathtt{MorphismFromDoubleConegation}(a)[123X.[133X
+  
+  [1X5.3-5 AddMorphismFromDoubleConegationWithGivenDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromDoubleConegationWithGivenDoubleConegation[110X.  [23XF:  ( a, s ) \mapsto
+  \mathtt{MorphismFromDoubleConegationWithGivenDoubleConegation}(a, s)[123X.[133X
+  
+  
+  [1X5.4 [33X[0;0YProperties[133X[101X
+  
+  [1X5.4-1 IsCoHeytingAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsCoHeytingAlgebroid[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a co-Heyting algebroid.[133X
+  
+  [1X5.4-2 IsCoHeytingAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsCoHeytingAlgebra[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a co-Heyting algebra.[133X
+  

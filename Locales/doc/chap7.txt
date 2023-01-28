@@ -1,0 +1,113 @@
+  
+  [1X7 [33X[0;0YBoolean algebras[133X[101X
+  
+  
+  [1X7.1 [33X[0;0YOperations[133X[101X
+  
+  [1X7.1-1 MorphismFromDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromDoubleNegation[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\neg\neg a, a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is  the  inverse  [23X\neg\neg a
+  \rightarrow a[123X of the morphism to the double negation.[133X
+  
+  [1X7.1-2 MorphismFromDoubleNegationWithGivenDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromDoubleNegationWithGivenDoubleNegation[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\neg\neg a, a)[123X.[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X, and an object [23Xs = \neg\neg a[123X. The output is the
+  inverse [23X\neg\neg a \rightarrow a[123X of the morphism to the double negation.[133X
+  
+  [1X7.1-3 MorphismToDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismToDoubleConegation[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \ulcorner\ulcorner a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is the inverse [23Xa \rightarrow
+  \ulcorner\ulcorner a[123X of the morphism from the double conegation.[133X
+  
+  [1X7.1-4 MorphismToDoubleConegationWithGivenDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XMorphismToDoubleConegationWithGivenDoubleConegation[102X( [3Xa[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, \ulcorner\ulcorner a)[123X.[133X
+  
+  [33X[0;0YThe  argument  is  an  object [23Xa[123X, and an object [23Xr = \ulcorner\ulcorner a[123X. The
+  output  is  the  inverse  [23Xa \rightarrow \ulcorner\ulcorner a[123X of the morphism
+  from the double conegation.[133X
+  
+  
+  [1X7.2 [33X[0;0YAdd-methods[133X[101X
+  
+  [1X7.2-1 AddMorphismFromDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromDoubleNegation[110X.        [23XF:        (       a       )       \mapsto
+  \mathtt{MorphismFromDoubleNegation}(a)[123X.[133X
+  
+  [1X7.2-2 AddMorphismFromDoubleNegationWithGivenDoubleNegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismFromDoubleNegationWithGivenDoubleNegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismFromDoubleNegationWithGivenDoubleNegation[110X.  [23XF:  (  a,  s  )  \mapsto
+  \mathtt{MorphismFromDoubleNegationWithGivenDoubleNegation}(a, s)[123X.[133X
+  
+  [1X7.2-3 AddMorphismToDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismToDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToDoubleConegation[110X.        [23XF:        (       a       )       \mapsto
+  \mathtt{MorphismToDoubleConegation}(a)[123X.[133X
+  
+  [1X7.2-4 AddMorphismToDoubleConegationWithGivenDoubleConegation[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismToDoubleConegationWithGivenDoubleConegation[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismToDoubleConegationWithGivenDoubleConegation[110X.  [23XF:  (  a,  r ) \mapsto
+  \mathtt{MorphismToDoubleConegationWithGivenDoubleConegation}(a, r)[123X.[133X
+  
+  
+  [1X7.3 [33X[0;0YProperties[133X[101X
+  
+  [1X7.3-1 IsBiHeytingAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsBiHeytingAlgebroid[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a bi-Heyting algebroid.[133X
+  
+  [1X7.3-2 IsBiHeytingAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsBiHeytingAlgebra[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a bi-Heyting algebra.[133X
+  
+  [1X7.3-3 IsBooleanAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsBooleanAlgebroid[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a Boolean algebroid.[133X
+  
+  [1X7.3-4 IsBooleanAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsBooleanAlgebra[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a Boolean algebra.[133X
+  

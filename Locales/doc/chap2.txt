@@ -1,0 +1,40 @@
+  
+  [1X2 [33X[0;0YPosets (partially ordered sets)[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YOperations[133X[101X
+  
+  [1X2.1-1 IsEqualForObjectsIfIsHomSetInhabited[101X
+  
+  [33X[1;0Y[29X[2XIsEqualForObjectsIfIsHomSetInhabited[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YCheck  if  [3XA[103X is equal to [3XB[103X under the assumption that there exists a morphism
+  from [3XA[103X to [3XB[103X, i.e., if [3XA[103X is known to be less or equal to [3XB[103X w.r.t. the partial
+  order.[133X
+  
+  
+  [1X2.2 [33X[0;0YAdd-methods[133X[101X
+  
+  [1X2.2-1 AddIsEqualForObjectsIfIsHomSetInhabited[101X
+  
+  [33X[1;0Y[29X[2XAddIsEqualForObjectsIfIsHomSetInhabited[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsEqualForObjectsIfIsHomSetInhabited[110X.    [23XF:   (   arg2,   arg3   )   \mapsto
+  \mathtt{IsEqualForObjectsIfIsHomSetInhabited}(arg2, arg3)[123X.[133X
+  
+  [33X[0;0YPosets are skeletal, thin categories.[133X
+  
+  
+  [1X2.3 [33X[0;0YProperties[133X[101X
+  
+  [1X2.3-1 IsPosetCategory[101X
+  
+  [33X[1;0Y[29X[2XIsPosetCategory[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a poset (category).[133X
+  

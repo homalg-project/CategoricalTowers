@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (Locales) - Chapter 12: Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap12"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap12_mj.html">[MathJax on]</a></p>
+<p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
+<div class="ChapSects"><a href="chap12.html#X7A810CDA83F2897F">12 <span class="Heading">Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7D03633A7D98026B">12.1 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap12.html#X7D7026828261C26B">12.1-1 <span class="Heading">Precompilation</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>12 <span class="Heading">Tests</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>12.1 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
+
+<h5>12.1-1 <span class="Heading">Precompilation</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", "&gt;= 2021.10-03", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># HomalgIdentityMatrix( size, ring ) * matrix -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># matrix * HomalgIdentityMatrix( size, ring ) -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "matrix * HomalgIdentityMatrix( size, ring )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) ) -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># TransposedMatrix( HomalgIdentityMatrix( size, ring ) ) -&gt; HomalgIdentityMatrix( size, ring )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "TransposedMatrix( HomalgIdentityMatrix( size, ring ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "HomalgIdentityMatrix( size, ring )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "DiagMat( ring, ListWithIdenticalEntries( size, matrix ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := EvalString( ReplacedString( """function( R )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local F, S, P, L@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    F := CategoryOfRows( R : FinalizeCategory := true )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    S := SliceCategoryOverTensorUnit( F : FinalizeCategory := true )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    P := PosetOfCategory( S : FinalizeCategory := true )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    L := StablePosetOfCategory( P )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return L@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ ZZ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "Locales";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := [ "ExponentialOnObjects" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 5,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap11.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap13.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,89 @@
+  
+  [1X12 [33X[0;0YTests[133X[101X
+  
+  
+  [1X12.1 [33X[0;0YGAP Categories[133X[101X
+  
+  
+  [1X12.1-1 [33X[0;0YPrecompilation[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Locales", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", ">= 2021.10-03", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
+    [4X[25Xgap>[125X [27X# HomalgIdentityMatrix( size, ring ) * matrix -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# matrix * HomalgIdentityMatrix( size, ring ) -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "matrix * HomalgIdentityMatrix( size, ring )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) ) -> matrix[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "KroneckerMat( matrix, HomalgIdentityMatrix( 1, ring ) )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# TransposedMatrix( HomalgIdentityMatrix( size, ring ) ) -> HomalgIdentityMatrix( size, ring )[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "TransposedMatrix( HomalgIdentityMatrix( size, ring ) )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "HomalgIdentityMatrix( size, ring )",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "size", "ring", "matrix" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "KroneckerMat( HomalgIdentityMatrix( size, ring ), matrix )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "DiagMat( ring, ListWithIdenticalEntries( size, matrix ) )",[127X[104X
+    [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xcategory_constructor := EvalString( ReplacedString( """function( R )[127X[104X
+    [4X[25X>[125X [27X  local F, S, P, L@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    F := CategoryOfRows( R : FinalizeCategory := true )@[127X[104X
+    [4X[25X>[125X [27X    S := SliceCategoryOverTensorUnit( F : FinalizeCategory := true )@[127X[104X
+    [4X[25X>[125X [27X    P := PosetOfCategory( S : FinalizeCategory := true )@[127X[104X
+    [4X[25X>[125X [27X    L := StablePosetOfCategory( P )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return L@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ ZZ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "StablePosetOfCategoryOfPosetOfCategoryOfSliceCategoryOverTensorUnitOfCategoryOfRowsOfCommutativeRingPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "Locales";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
+    [4X[25X>[125X [27X    operations := [ "ExponentialOnObjects" ],[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_objects_in_data_structure_of_object := 5,[127X[104X
+    [4X[25X>[125X [27X    number_of_objectified_morphisms_in_data_structure_of_object := 1[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+  [4X[32X[104X
+  

@@ -1,0 +1,99 @@
+name: Locales
+version: "2023.01-02"
+license: "GPL-2.0-or-later"
+date: 2023-01-28
+description: |
+    Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
+
+authors:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Markus Lange-Hegermann
+      url: https://www.th-owl.de/eecs/fachbereich/team/markus-lange-hegermann/
+    - name: Tom Kuhmichel
+      url: https://github.com/TKuh
+
+maintainers:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Tom Kuhmichel
+      url: https://github.com/TKuh
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "ToolsForHomalg"
+      version: ">= 2021.12-02"
+      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
+    - name: "CAP"
+      version: ">= 2022.09-23"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "CompilerForCAP"
+      version: ">= 2022.08-10"
+      url: "https://homalg-project.github.io/pkg/CompilerForCAP"
+    - name: "CategoryConstructor"
+      version: ">= 2022.11-10"
+      url: "https://homalg-project.github.io/pkg/CategoryConstructor"
+    - name: "MonoidalCategories"
+      version: ">= 2022.09-03"
+      url: "https://homalg-project.github.io/pkg/MonoidalCategories"
+    - name: "CartesianCategories"
+      version: ">= 2022.09-04"
+      url: "https://homalg-project.github.io/pkg/CartesianCategories"
+    - name: "Toposes"
+      version: ">= 2022.11-06"
+      url: "https://homalg-project.github.io/pkg/Toposes"
+    - name: "Digraphs"
+      version: ">= 0.12.1"
+      url: "https://digraphs.github.io/Digraphs"
+
+www: https://homalg-project.github.io/pkg/Locales
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/Locales/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.01-02/Locales-2023.01-02.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.01-02/Locales-2023.01-02.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-2023.01-02/Locales-2023.01-02.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+keywords: |
+    locale, frame, coframe, locally closed, constructible.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>BLK23</span>]   <b class='BibAuthor'>Barakat, M., Lange-Hegermann, M. and Kuhmichel, T.</b>,
+     <i class='BibTitle'>Locales, Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets,
+             Version 2023.01-02</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/Locales">https://homalg-project.github.io/pkg/Locales</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ Locales2023.01-02,
+      author =           {Barakat, M. and Lange-Hegermann, M. and Kuhmichel, T.},
+      title =            {{Locales},    Locales,    frames,    coframes,    meet
+                          semi-lattices  of  locally closed subsets, and Boolean
+                          algebras of constructible sets, {V}ersion 2023.01-02},
+      month =            {Jan},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href   {https://homalg-project.github.io/pkg/Locales}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{Locales}}},
+      keywords =         {locale, frame, coframe, locally closed, constructible},
+      printedkey =       {BLK23}
+    }
+

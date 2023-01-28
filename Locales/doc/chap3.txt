@@ -1,0 +1,120 @@
+  
+  [1X3 [33X[0;0YLattices[133X[101X
+  
+  [33X[0;0YLattices  are  thin,  finite  cartesian  (and hence finite complete), finite
+  cocartesian (and hence finite cocomplete), skeletal categories.[133X
+  
+  
+  [1X3.1 [33X[0;0YProperties[133X[101X
+  
+  [1X3.1-1 IsCartesianProset[101X
+  
+  [33X[1;0Y[29X[2XIsCartesianProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a cartesian proset.[133X
+  
+  [1X3.1-2 IsMeetSemiLattice[101X
+  
+  [33X[1;0Y[29X[2XIsMeetSemiLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a meet semi-lattice.[133X
+  
+  [1X3.1-3 IsCocartesianProset[101X
+  
+  [33X[1;0Y[29X[2XIsCocartesianProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a finite cocomplete proset.[133X
+  
+  [1X3.1-4 IsJoinSemiLattice[101X
+  
+  [33X[1;0Y[29X[2XIsJoinSemiLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a join semi-lattice.[133X
+  
+  [1X3.1-5 IsBicartesianProset[101X
+  
+  [33X[1;0Y[29X[2XIsBicartesianProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a finite complete and cocomplete proset.[133X
+  
+  [1X3.1-6 IsLattice[101X
+  
+  [33X[1;0Y[29X[2XIsLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a lattice.[133X
+  
+  [1X3.1-7 IsDistributiveBicartesianProset[101X
+  
+  [33X[1;0Y[29X[2XIsDistributiveBicartesianProset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  [3XC[103X being a distributive (and automatically codistributive)
+  bicartesian proset.[133X
+  
+  [1X3.1-8 IsDistributiveLattice[101X
+  
+  [33X[1;0Y[29X[2XIsDistributiveLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  property  of  [3XC[103X being a distributive (and automatically codistributive)
+  lattice.[133X
+  
+  [1X3.1-9 IsMonoidalLattice[101X
+  
+  [33X[1;0Y[29X[2XIsMonoidalLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a monoidal lattice.[133X
+  
+  [1X3.1-10 IsClosedMonoidalLattice[101X
+  
+  [33X[1;0Y[29X[2XIsClosedMonoidalLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a closed monoidal lattice.[133X
+  
+  [1X3.1-11 IsCoclosedMonoidalLattice[101X
+  
+  [33X[1;0Y[29X[2XIsCoclosedMonoidalLattice[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a coclosed monoidal lattice.[133X
+  
+  
+  [1X3.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X3.2-1 Factors[101X
+  
+  [33X[1;0Y[29X[2XFactors[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YCompute  the  [21Xfactors[121X  of [3XA[103X. This is a list [3XC[103X with the minimum specification
+  that [10XDirectProduct[110X([10XL[110X)=[3XA[103X.[133X
+  
+  [1X3.2-2 FactorsAttr[101X
+  
+  [33X[1;0Y[29X[2XFactorsAttr[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  
+  [1X3.3 [33X[0;0YOperations[133X[101X
+  
+  [1X3.3-1 \*[101X
+  
+  [33X[1;0Y[29X[2X\*[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a meet semilattice[133X
+  
+  [33X[0;0YThe meet [10XDirectProduct[110X([3XA[103X, [3XB[103X) of [3XA[103X and [3XB[103X.[133X
+  
+  [1X3.3-2 \+[101X
+  
+  [33X[1;0Y[29X[2X\+[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a join semilattice[133X
+  
+  [33X[0;0YThe join [10XCoproduct[110X([3XA[103X, [3XB[103X) of [3XA[103X and [3XB[103X.[133X
+  

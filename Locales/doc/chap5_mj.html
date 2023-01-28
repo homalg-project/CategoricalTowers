@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (Locales) - Chapter 5: Co-Heyting algebras</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap5"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap5.html">[MathJax off]</a></p>
+<p><a id="X841FB27B7D19CE56" name="X841FB27B7D19CE56"></a></p>
+<div class="ChapSects"><a href="chap5_mj.html#X841FB27B7D19CE56">5 <span class="Heading">Co-Heyting algebras</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7DE8E16C7C2D387B">5.1 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7AED89B8833F66E0">5.1-1 ConegationOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7FD8013481144E8D">5.1-2 ConegationOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X84D8FCF8827D062B">5.1-3 ConegationOnMorphismsWithGivenConegations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X82AF31A17EE43AE2">5.1-4 MorphismFromDoubleConegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X84B953AF7E69CC82">5.1-5 MorphismFromDoubleConegationWithGivenDoubleConegation</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7C1948228493BE23">5.2 <span class="Heading">Stable internal coHom</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7C594CDF7ADE1FE4">5.2-1 StableInternalCoHom</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X85C8C80F785AEB5E">5.3 <span class="Heading">Add-methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X83C0ECED79C23EFD">5.3-1 AddConegationOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X872C777F797B8F46">5.3-2 AddConegationOnMorphismsWithGivenConegations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X853FE0C17E1A4D02">5.3-3 AddConegationOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X818D51D17F01B42C">5.3-4 AddMorphismFromDoubleConegation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7E8E6D08825D2212">5.3-5 AddMorphismFromDoubleConegationWithGivenDoubleConegation</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X871597447BB998A1">5.4 <span class="Heading">Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7F4B61BB86D3AFB5">5.4-1 IsCoHeytingAlgebroid</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5_mj.html#X7A085BA77BB94E62">5.4-2 IsCoHeytingAlgebra</a></span>
+</div></div>
+</div>
+
+<h3>5 <span class="Heading">Co-Heyting algebras</span></h3>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>5.1 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7AED89B8833F66E0" name="X7AED89B8833F66E0"></a></p>
+
+<h5>5.1-1 ConegationOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConegationOnObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is its co-negated object <span class="SimpleMath">\(\ulcorner a\)</span>.</p>
+
+<p><a id="X7FD8013481144E8D" name="X7FD8013481144E8D"></a></p>
+
+<h5>5.1-2 ConegationOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConegationOnMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \ulcorner b, \ulcorner a )\)</span>.</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its negated morphism <span class="SimpleMath">\(\ulcorner \alpha: \ulcorner b \rightarrow \ulcorner a\)</span>.</p>
+
+<p><a id="X84D8FCF8827D062B" name="X84D8FCF8827D062B"></a></p>
+
+<h5>5.1-3 ConegationOnMorphismsWithGivenConegations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConegationOnMorphismsWithGivenConegations</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \ulcorner b, \ulcorner a )\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(s = \ulcorner b\)</span>, a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>, and an object <span class="SimpleMath">\(r = \ulcorner a\)</span>. The output is the negated morphism <span class="SimpleMath">\(\ulcorner \alpha: \ulcorner b \rightarrow \ulcorner a\)</span>.</p>
+
+<p><a id="X82AF31A17EE43AE2" name="X82AF31A17EE43AE2"></a></p>
+
+<h5>5.1-4 MorphismFromDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDoubleConegation</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\ulcorner\ulcorner a, a)\)</span>.</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is the morphism from the double conegation <span class="SimpleMath">\(\ulcorner\ulcorner a \rightarrow a\)</span>.</p>
+
+<p><a id="X84B953AF7E69CC82" name="X84B953AF7E69CC82"></a></p>
+
+<h5>5.1-5 MorphismFromDoubleConegationWithGivenDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromDoubleConegationWithGivenDoubleConegation</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(\ulcorner\ulcorner a, a)\)</span>.</p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span>, and an object <span class="SimpleMath">\(r = \ulcorner\ulcorner a\)</span>. The output is the morphism from the double conegation <span class="SimpleMath">\(\ulcorner\ulcorner a \rightarrow a\)</span>.</p>
+
+<p><a id="X7C1948228493BE23" name="X7C1948228493BE23"></a></p>
+
+<h4>5.2 <span class="Heading">Stable internal coHom</span></h4>
+
+<p><a id="X7C594CDF7ADE1FE4" name="X7C594CDF7ADE1FE4"></a></p>
+
+<h5>5.2-1 StableInternalCoHom</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StableInternalCoHom</code>( <var class="Arg">V</var>, <var class="Arg">W</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>Return the stable internal coHom: <span class="SimpleMath">\(\mathrm{\underline{coHom}}(\mathrm{\underline{coHom}}(...\mathrm{\underline{coHom}}(V,W)...,W),W)\)</span>.</p>
+
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>5.3 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X83C0ECED79C23EFD" name="X83C0ECED79C23EFD"></a></p>
+
+<h5>5.3-1 AddConegationOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddConegationOnMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ConegationOnMorphisms</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{ConegationOnMorphisms}(alpha)\)</span>.</p>
+
+<p><a id="X872C777F797B8F46" name="X872C777F797B8F46"></a></p>
+
+<h5>5.3-2 AddConegationOnMorphismsWithGivenConegations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddConegationOnMorphismsWithGivenConegations</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ConegationOnMorphismsWithGivenConegations</code>. <span class="SimpleMath">\(F: ( s, alpha, r ) \mapsto \mathtt{ConegationOnMorphismsWithGivenConegations}(s, alpha, r)\)</span>.</p>
+
+<p><a id="X853FE0C17E1A4D02" name="X853FE0C17E1A4D02"></a></p>
+
+<h5>5.3-3 AddConegationOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddConegationOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ConegationOnObjects</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{ConegationOnObjects}(arg2)\)</span>.</p>
+
+<p><a id="X818D51D17F01B42C" name="X818D51D17F01B42C"></a></p>
+
+<h5>5.3-4 AddMorphismFromDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromDoubleConegation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismFromDoubleConegation</code>. <span class="SimpleMath">\(F: ( a ) \mapsto \mathtt{MorphismFromDoubleConegation}(a)\)</span>.</p>
+
+<p><a id="X7E8E6D08825D2212" name="X7E8E6D08825D2212"></a></p>
+
+<h5>5.3-5 AddMorphismFromDoubleConegationWithGivenDoubleConegation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromDoubleConegationWithGivenDoubleConegation</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismFromDoubleConegationWithGivenDoubleConegation</code>. <span class="SimpleMath">\(F: ( a, s ) \mapsto \mathtt{MorphismFromDoubleConegationWithGivenDoubleConegation}(a, s)\)</span>.</p>
+
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+
+<h4>5.4 <span class="Heading">Properties</span></h4>
+
+<p><a id="X7F4B61BB86D3AFB5" name="X7F4B61BB86D3AFB5"></a></p>
+
+<h5>5.4-1 IsCoHeytingAlgebroid</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoHeytingAlgebroid</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of <var class="Arg">C</var> being a co-Heyting algebroid.</p>
+
+<p><a id="X7A085BA77BB94E62" name="X7A085BA77BB94E62"></a></p>
+
+<h5>5.4-2 IsCoHeytingAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCoHeytingAlgebra</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of <var class="Arg">C</var> being a co-Heyting algebra.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

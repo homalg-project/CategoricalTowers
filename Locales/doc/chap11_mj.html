@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (Locales) - Chapter 11: Tools</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap11"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap11.html">[MathJax off]</a></p>
+<p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
+<div class="ChapSects"><a href="chap11_mj.html#X8508AEF8845565A1">11 <span class="Heading">Tools</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7EBFC26F83EB9F72">11.1 <span class="Heading">Info Class</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7DD3A04E7CFC52CF">11.1-1 InfoSquashDatastructureForConstructibleObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X86EC0F0A78ECBC10">11.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X85B819697CDE6C1D">11.2-1 DatastructureForConstructibleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7C08230B788464A7">11.2-2 NodeInDatastructureOfConstructibleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D8C14BB7BAD0AA1">11.2-3 Attach</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7DE8E16C7C2D387B">11.3 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7E83EF3281B014F1">11.3-1 IsDone</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X829CC5B87CB152A5">11.3-2 MinimalLevelOfPreNodes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X818B104883E8517C">11.3-3 Pop</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7EDF57CF7EAB1448">11.3-4 IsHomSetInhabited</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7E4C4A4380758AAC">11.3-5 Remove</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X81ED6C2480A558E5">11.3-6 SquashOnce</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X82BB373F82206C80">11.3-7 RemoveObsoleteSubtrahends</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7D93D83380D802A7">11.3-8 Squash</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7F0D216779AA047E">11.3-9 AsUnionOfMultipleDifferences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X84EBC55A7D387CBD">11.3-10 DigraphOfParents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X8464FDE37F2C3384">11.3-11 DigraphOfChildren</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X812A4C8883A2D9B9">11.3-12 Visualize</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11_mj.html#X7D03633A7D98026B">11.4 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7A398A1778957741">11.4-1 IsDatastructureForConstructibleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap11_mj.html#X7A86A1037E358EE4">11.4-2 IsNodeInDatastructureOfConstructibleObjects</a></span>
+</div></div>
+</div>
+
+<h3>11 <span class="Heading">Tools</span></h3>
+
+<p><a id="X7EBFC26F83EB9F72" name="X7EBFC26F83EB9F72"></a></p>
+
+<h4>11.1 <span class="Heading">Info Class</span></h4>
+
+<p><a id="X7DD3A04E7CFC52CF" name="X7DD3A04E7CFC52CF"></a></p>
+
+<h5>11.1-1 InfoSquashDatastructureForConstructibleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InfoSquashDatastructureForConstructibleObjects</code></td><td class="tdright">(&nbsp;info class&nbsp;)</td></tr></table></div>
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>11.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X85B819697CDE6C1D" name="X85B819697CDE6C1D"></a></p>
+
+<h5>11.2-1 DatastructureForConstructibleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DatastructureForConstructibleObject</code>( <var class="Arg">none</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an empty datastructure of a constructible object</p>
+
+<p>Construct a datastructure of a constructible object.</p>
+
+<p><a id="X7C08230B788464A7" name="X7C08230B788464A7"></a></p>
+
+<h5>11.2-2 NodeInDatastructureOfConstructibleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NodeInDatastructureOfConstructibleObject</code>( <var class="Arg">C</var>, <var class="Arg">A</var>, <var class="Arg">d</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a datastructure of a node in a constructible object</p>
+
+<p>Construct a node of parity <var class="Arg">b</var> in a the datastructure <var class="Arg">C</var> of a constructible object given an object <var class="Arg">A</var> in a thin category.</p>
+
+<p><a id="X7D8C14BB7BAD0AA1" name="X7D8C14BB7BAD0AA1"></a></p>
+
+<h5>11.2-3 Attach</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Attach</code>( <var class="Arg">N</var>, <var class="Arg">pos_node</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Use <code class="code">NodeInDatastructureOfConstructibleObject</code> to attach to the datastructure <code class="code">C</code> of a constructible object</p>
+
+
+<ul>
+<li><p>at the parents of the pre-node <var class="Arg">N</var> the object <var class="Arg">pos_node</var> as a new positive node,</p>
+
+</li>
+<li><p>at the resulting positive node the entries of <var class="Arg">L</var> as new negative nodes,</p>
+
+</li>
+<li><p>at the resulting positive node the entries of <var class="Arg">L</var> as new pre-nodes, and return a list containing the list of these pre-nodes as the first entry and the resulting positive node as the second.</p>
+
+</li>
+</ul>
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>11.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7E83EF3281B014F1" name="X7E83EF3281B014F1"></a></p>
+
+<h5>11.3-1 IsDone</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDone</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X829CC5B87CB152A5" name="X829CC5B87CB152A5"></a></p>
+
+<h5>11.3-2 MinimalLevelOfPreNodes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MinimalLevelOfPreNodes</code>( <var class="Arg">pos_node</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p><a id="X818B104883E8517C" name="X818B104883E8517C"></a></p>
+
+<h5>11.3-3 Pop</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Pop</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a datastructure of a node in a constructible object</p>
+
+<p><a id="X7EDF57CF7EAB1448" name="X7EDF57CF7EAB1448"></a></p>
+
+<h5>11.3-4 IsHomSetInhabited</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHomSetInhabited</code>( <var class="Arg">node1</var>, <var class="Arg">node2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>Check if the object underlying <var class="Arg">node1</var> is contained in the object underlying <var class="Arg">node2</var>.</p>
+
+<p><a id="X7E4C4A4380758AAC" name="X7E4C4A4380758AAC"></a></p>
+
+<h5>11.3-5 Remove</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Remove</code>( <var class="Arg">pos_node</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p><a id="X81ED6C2480A558E5" name="X81ED6C2480A558E5"></a></p>
+
+<h5>11.3-6 SquashOnce</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SquashOnce</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a datastructure of a node in a constructible object</p>
+
+<p><a id="X82BB373F82206C80" name="X82BB373F82206C80"></a></p>
+
+<h5>11.3-7 RemoveObsoleteSubtrahends</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RemoveObsoleteSubtrahends</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a datastructure of a node in a constructible object</p>
+
+<p><a id="X7D93D83380D802A7" name="X7D93D83380D802A7"></a></p>
+
+<h5>11.3-8 Squash</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Squash</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a datastructure of a node in a constructible object</p>
+
+<p><a id="X7F0D216779AA047E" name="X7F0D216779AA047E"></a></p>
+
+<h5>11.3-9 AsUnionOfMultipleDifferences</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsUnionOfMultipleDifferences</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a constructible object</p>
+
+<p><a id="X84EBC55A7D387CBD" name="X84EBC55A7D387CBD"></a></p>
+
+<h5>11.3-10 DigraphOfParents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DigraphOfParents</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a digraph</p>
+
+<p><a id="X8464FDE37F2C3384" name="X8464FDE37F2C3384"></a></p>
+
+<h5>11.3-11 DigraphOfChildren</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DigraphOfChildren</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a digraph</p>
+
+<p><a id="X812A4C8883A2D9B9" name="X812A4C8883A2D9B9"></a></p>
+
+<h5>11.3-12 Visualize</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Visualize</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>Opens a PDF with the graph of the datastructure of a constructible object <var class="Arg">A</var>.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>11.4 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X7A398A1778957741" name="X7A398A1778957741"></a></p>
+
+<h5>11.4-1 IsDatastructureForConstructibleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDatastructureForConstructibleObjects</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of datastructures for constructible objects.</p>
+
+<p><a id="X7A86A1037E358EE4" name="X7A86A1037E358EE4"></a></p>
+
+<h5>11.4-2 IsNodeInDatastructureOfConstructibleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsNodeInDatastructureOfConstructibleObjects</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of nodes in datastructures of constructibe objects.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap12_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
