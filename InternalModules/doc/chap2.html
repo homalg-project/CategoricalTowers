@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (InternalModules) - Chapter 2: Internal algebra elements</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X823A61F6846F7447" name="X823A61F6846F7447"></a></p>
+<div class="ChapSects"><a href="chap2.html#X823A61F6846F7447">2 <span class="Heading">Internal algebra elements</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7D03633A7D98026B">2.1 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E0946487C4BB511">2.1-1 IsInternalAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X787C3BB17D83563D">2.1-2 IsElementInInternalAlgebraOrModule</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D7B1249804C2A5A">2.1-3 IsElementInInternalAlgebra</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86EC0F0A78ECBC10">2.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8196FDA287F1E4D6">2.2-1 InternalElement</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C701DBF7BAE649A">2.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B1F31937BE61BFA">2.3-1 UnderlyingEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82C4AC6A86B5EF50">2.3-2 NonZeroDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A49930579D70842">2.3-3 NonZeroParts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X819C96E587D924E8">2.3-4 NonZeroPartsWithDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8617AB6381190138">2.3-5 SupportWithDegrees</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X798F883F834BDC41">2.3-6 AdditiveInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C7723CC80FA8C19">2.3-7 UniversalMorphismFromFreeModule</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE8E16C7C2D387B">2.4 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CBB6D7185195195">2.4-1 InternalPreAddition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8165AD0A8290D8C5">2.4-2 +</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8720F4B27C06E296">2.4-3 -</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86F70BE283B09E60">2.4-4 InternalPreMultiplication</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82B0CCA682029213">2.4-5 *</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F137EC78412FEF4">2.4-6 BraidedMultiplication</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E2DF9947A448931">2.4-7 []</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Internal algebra elements</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.1 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X7E0946487C4BB511" name="X7E0946487C4BB511"></a></p>
+
+<h5>2.1-1 IsInternalAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInternalAlgebra</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p><a id="X787C3BB17D83563D" name="X787C3BB17D83563D"></a></p>
+
+<h5>2.1-2 IsElementInInternalAlgebraOrModule</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementInInternalAlgebraOrModule</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p><a id="X7D7B1249804C2A5A" name="X7D7B1249804C2A5A"></a></p>
+
+<h5>2.1-3 IsElementInInternalAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementInInternalAlgebra</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X8196FDA287F1E4D6" name="X8196FDA287F1E4D6"></a></p>
+
+<h5>2.2-1 InternalElement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalElement</code>( <var class="Arg">M</var>, <var class="Arg">phi</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalElement</code>( <var class="Arg">SV</var>, <var class="Arg">chi</var>, <var class="Arg">degree</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalElement</code>( <var class="Arg">SV</var>, <var class="Arg">chi</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalElement</code>( <var class="Arg">phi</var>, <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalElement</code>( <var class="Arg">M</var>, <var class="Arg">chi</var>, <var class="Arg">degree</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalElement</code>( <var class="Arg">M</var>, <var class="Arg">chi</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>2.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7B1F31937BE61BFA" name="X7B1F31937BE61BFA"></a></p>
+
+<h5>2.3-1 UnderlyingEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingEmbedding</code>( <var class="Arg">p</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP; category morphism in the filter <code class="code">IsMorphismInPositivelyZGradedCategory</code></p>
+
+<p><a id="X82C4AC6A86B5EF50" name="X82C4AC6A86B5EF50"></a></p>
+
+<h5>2.3-2 NonZeroDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroDegrees</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p><a id="X7A49930579D70842" name="X7A49930579D70842"></a></p>
+
+<h5>2.3-3 NonZeroParts</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroParts</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p><a id="X819C96E587D924E8" name="X819C96E587D924E8"></a></p>
+
+<h5>2.3-4 NonZeroPartsWithDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NonZeroPartsWithDegrees</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p><a id="X8617AB6381190138" name="X8617AB6381190138"></a></p>
+
+<h5>2.3-5 SupportWithDegrees</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SupportWithDegrees</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p><a id="X798F883F834BDC41" name="X798F883F834BDC41"></a></p>
+
+<h5>2.3-6 AdditiveInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverse</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an element of an internal algebra or module</p>
+
+<p><a id="X7C7723CC80FA8C19" name="X7C7723CC80FA8C19"></a></p>
+
+<h5>2.3-7 UniversalMorphismFromFreeModule</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromFreeModule</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>2.4 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7CBB6D7185195195" name="X7CBB6D7185195195"></a></p>
+
+<h5>2.4-1 InternalPreAddition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalPreAddition</code>( <var class="Arg">e1</var>, <var class="Arg">e2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a positively Z-graded category</p>
+
+<p><a id="X8165AD0A8290D8C5" name="X8165AD0A8290D8C5"></a></p>
+
+<h5>2.4-2 +</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; +</code>( <var class="Arg">e1</var>, <var class="Arg">e2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an element of an internal algebra or module</p>
+
+<p><a id="X8720F4B27C06E296" name="X8720F4B27C06E296"></a></p>
+
+<h5>2.4-3 -</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; -</code>( <var class="Arg">e1</var>, <var class="Arg">e2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an element of an internal algebra or module</p>
+
+<p><a id="X86F70BE283B09E60" name="X86F70BE283B09E60"></a></p>
+
+<h5>2.4-4 InternalPreMultiplication</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalPreMultiplication</code>( <var class="Arg">a</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a positively Z-graded category</p>
+
+<p><a id="X82B0CCA682029213" name="X82B0CCA682029213"></a></p>
+
+<h5>2.4-5 *</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; *</code>( <var class="Arg">a</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a ring element and an element of an internal algebra or module</p>
+
+<p><a id="X7F137EC78412FEF4" name="X7F137EC78412FEF4"></a></p>
+
+<h5>2.4-6 BraidedMultiplication</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidedMultiplication</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an element of an internal algebra</p>
+
+<p><a id="X7E2DF9947A448931" name="X7E2DF9947A448931"></a></p>
+
+<h5>2.4-7 []</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; []</code>( <var class="Arg">e</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an element of an internal algebra or module</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

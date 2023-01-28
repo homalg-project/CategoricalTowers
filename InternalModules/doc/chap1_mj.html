@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (InternalModules) - Chapter 1: Introduction</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7DFB63A97E67C0A1">1 <span class="Heading">Introduction</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7A489A5D79DA9E5C">1.1 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AC0A5A5870D94BD">1.1-1 <span class="Heading">The tensor category of finite dimensional GF(2)-vector spaces</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X847A2BDC7A6A7151">1.1-2 <span class="Heading">The tensor category of finite dimensional Q-vector spaces</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8562DE1483C70890">1.1-3 <span class="Heading">The tensor category of finite dimensional Q-representations of the symmetric group Sym(4).</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7809AD4E7B8F755A">1.1-4 <span class="Heading">The tensor category of finite dimensional Z-graded Q-representations of the symmetric group Sym(4).</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85FE51788368C0F3">1.1-5 <span class="Heading">Futher computations in the symmetric algebra</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Introduction</span></h3>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>1.1 <span class="Heading">Examples</span></h4>
+
+<p>The following examples demonstrate the internalization of the symmetric algera and its modules in the positively graded closure of various tensor categories.</p>
+
+<p><a id="X7AC0A5A5870D94BD" name="X7AC0A5A5870D94BD"></a></p>
+
+<h5>1.1-1 <span class="Heading">The tensor category of finite dimensional GF(2)-vector spaces</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2 := HomalgRingOfIntegers( 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F2vec := MatrixCategory( F2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, F2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZF2vec := PositivelyZGradedCategory( F2vec );</span>
+The positively graded category of Category of matrices over GF(2)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
+Abelian category of left modules over the internal symmetric algebra of
+A vector space object over GF(2) of dimension 3
+with undecidable (mathematical) equality of morphisms and
+uncomputable lifts and colifts
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
+&lt;An object in The positively graded category of Category of matrices over GF(2)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of
+ A vector space object over GF(2) of dimension 3
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, F2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of
+ A vector space object over GF(2) of dimension 3
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModSV );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInPositivelyZGradedCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInPositivelyZGradedCategory( SV[0], 3 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              VectorSpaceMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  SV[0],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  CertainRows( HomalgIdentityMatrix( 10, F2 ), [ 1 ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  SV[3]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              3,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              SV );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := InternalElement( e1 );</span>
+degree: 3
+
+ 1 . . . . . . . . .
+
+A morphism in Category of matrices over GF(2)
+</pre></div>
+
+<p><a id="X847A2BDC7A6A7151" name="X847A2BDC7A6A7151"></a></p>
+
+<h5>1.1-2 <span class="Heading">The tensor category of finite dimensional Q-vector spaces</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qvec := MatrixCategory( Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZQvec := PositivelyZGradedCategory( Qvec );</span>
+The positively graded category of Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
+Abelian category of left modules over the internal symmetric algebra of
+A vector space object over Q of dimension 3
+with undecidable (mathematical) equality of morphisms and
+uncomputable lifts and colifts
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
+&lt;An object in The positively graded category of Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of
+ A vector space object over Q of dimension 3
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := VectorSpaceObject( 3, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of
+ A vector space object over Q of dimension 3
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModSV );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := MorphismInPositivelyZGradedCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ObjectInPositivelyZGradedCategory( SV[0], 3 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              VectorSpaceMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  SV[0],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  CertainRows( HomalgIdentityMatrix( 10, Q ), [ 1 ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  SV[3]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              3,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">              SV );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := InternalElement( e1 );</span>
+degree: 3
+
+[ [  1,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p><a id="X8562DE1483C70890" name="X8562DE1483C70890"></a></p>
+
+<h5>1.1-3 <span class="Heading">The tensor category of finite dimensional Q-representations of the symmetric group Sym(4).</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 4 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RepG := RepresentationCategory( G );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">irr := Irr( G );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := RepresentationCategoryObject( irr[5], RepG, "1" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := RepresentationCategoryObject( irr[1], RepG, "sigma" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rho := RepresentationCategoryObject( irr[3], RepG, "rho" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu := RepresentationCategoryObject( irr[4], RepG, "nu" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := RepresentationCategoryObject( irr[2], RepG, "chi" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := chi;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZRepG := PositivelyZGradedCategory( RepG );</span>
+The positively graded category of The representation category of
+SymmetricGroup( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
+Abelian category of left modules over the internal symmetric algebra of
+1*(chi)
+with undecidable (mathematical) equality of morphisms and
+uncomputable lifts and colifts
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
+&lt;An object in The positively graded category of
+ The representation category of SymmetricGroup( [ 1 .. 4 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of 1*(chi)
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := chi;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of 1*(chi)
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModSV );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c2 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := 2 * c1 - 3 * c2;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c[6] );</span>
+Component: (nu)
+
+2,-3,0,0
+
+A morphism in Category of matrices over Q
+
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := InternalElement( SV, Support( SV[1] )[1], 1, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := InternalElement( SV, Support( SV[2] )[1], 2, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := InternalElement( SV, Support( SV[2] )[2], 2, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := InternalElement( SV, Support( SV[3] )[3], 3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cc := UniversalMorphismFromFreeModule( c );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := UniversalMorphismFromFreeModule( d );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pp := ProjectionInFactorOfFiberProduct( [ cc, dd ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qq := ProjectionInFactorOfFiberProduct( [ cc, dd ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := PreCompose( pp, cc ) - PreCompose( qq, dd );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Set( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );</span>
+[ true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := UniversalMorphismIntoDirectSum( [ pp, -qq ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tt := UniversalMorphismFromDirectSum( [ cc, dd ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homology := HomologyObject( ss, tt );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Set( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );</span>
+[ true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := InternalElement( SV, sigma, 3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e2 := InternalElement( SV, chi, 3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e3 := InternalElement( SV, chi, 3, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e4 := InternalElement( SV, nu, 3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := e1 + 2 * e2 - 1/3 * e3 + e4;</span>
+degree: 3
+
+Component: (sigma)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (chi)
+
+2,-1/3
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (nu)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e2 * e3 = BraidedMultiplication( e3, e2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 := InternalElement( F, nu, 6, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m2 := InternalElement( F, nu, 6, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := 2 * m1 - 1/3 * m2;</span>
+degree: 6
+
+Component: (nu)
+
+2,-1/3,0,0
+
+A morphism in Category of matrices over Q
+
+------------------------
+</pre></div>
+
+<p><a id="X7809AD4E7B8F755A" name="X7809AD4E7B8F755A"></a></p>
+
+<h5>1.1-4 <span class="Heading">The tensor category of finite dimensional Z-graded Q-representations of the symmetric group Sym(4).</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 4 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RepG := RepresentationCategoryZGraded( G );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">irr := Irr( G );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZRepG := PositivelyZGradedCategory( RepG );</span>
+The positively graded category of The skeletal Z-graded representation category
+of SymmetricGroup( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := ObjectInPositivelyZGradedCategory( v );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SVMod := CategoryOfLeftSModules( v );</span>
+Abelian category of left modules over the internal symmetric algebra of
+1*(x_[1, 2])
+with undecidable (mathematical) equality of morphisms and
+uncomputable lifts and colifts
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModSV := CategoryOfRightSModules( v );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SV := UnderlyingActingObject( SVMod );</span>
+&lt;An object in The positively graded category of
+ The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SymmetricAlgebraAsLeftModule( v );</span>
+&lt;An object in Abelian category of
+ left modules over the internal symmetric algebra of 1*(x_[1, 2])
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := RepresentationCategoryZGradedObject( 3, irr[2], RepG );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := ObjectInPositivelyZGradedCategory( u );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeInternalModule( U, SVMod );</span>
+&lt;An object in Abelian category
+ of left modules over the internal symmetric algebra of 1*(x_[1, 2])
+ with undecidable (mathematical) equality of morphisms and
+ uncomputable lifts and colifts&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FreeInternalModule( U, ModSV );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu6 := Support( F[6] )[4];</span>
+&lt;x_[6, 4]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c1 := UniversalMorphismFromFreeModule( F, nu6, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c2 := UniversalMorphismFromFreeModule( F, nu6, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := 2 * c1 - 3 * c2;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c[6] );</span>
+Component: (x_[6, 4])
+
+2,-3,0,0
+
+A morphism in Category of matrices over Q
+
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := InternalElement( SV, Support( SV[1] )[1], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := InternalElement( SV, Support( SV[2] )[1], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := InternalElement( SV, Support( SV[2] )[2], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := InternalElement( SV, Support( SV[3] )[3], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cc := UniversalMorphismFromFreeModule( c );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dd := UniversalMorphismFromFreeModule( d );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pp := ProjectionInFactorOfFiberProduct( [ cc, dd ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">qq := ProjectionInFactorOfFiberProduct( [ cc, dd ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ff := PreCompose( pp, cc ) - PreCompose( qq, dd );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Set( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );</span>
+[ true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ss := UniversalMorphismIntoDirectSum( [ pp, -qq ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tt := UniversalMorphismFromDirectSum( [ cc, dd ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">homology := HomologyObject( ss, tt );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Set( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );</span>
+[ true ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma3 := Support( SV[3] )[1];</span>
+&lt;x_[3, 1]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi3 := Support( SV[3] )[2];</span>
+&lt;x_[3, 2]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu3 := Support( SV[3] )[3];</span>
+&lt;x_[3, 4]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e1 := InternalElement( SV, sigma3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e2 := InternalElement( SV, chi3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e3 := InternalElement( SV, chi3, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e4 := InternalElement( SV, nu3, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := e1 + 2 * e2 - 1/3 * e3 + e4;</span>
+degree: 3
+
+Component: (x_[3, 1])
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (x_[3, 2])
+
+2,-1/3
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (x_[3, 4])
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e2 * e3 = BraidedMultiplication( e3, e2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 := InternalElement( F, nu6, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m2 := InternalElement( F, nu6, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := 2 * m1 - 1/3 * m2;</span>
+degree: 6
+
+Component: (x_[6, 4])
+
+2,-1/3,0,0
+
+A morphism in Category of matrices over Q
+
+------------------------
+</pre></div>
+
+<p><a id="X85FE51788368C0F3" name="X85FE51788368C0F3"></a></p>
+
+<h5>1.1-5 <span class="Heading">Futher computations in the symmetric algebra</span></h5>
+
+<p>This is an example for explicit computations in the symmetric algebra <span class="SimpleMath">\(\mathrm{S}W\)</span> internal to the positively graded closure <span class="SimpleMath">\(\mathrm{srep}_k(G)_+\)</span> of the tensor category <span class="SimpleMath">\(\mathrm{srep}_k(G)\)</span>, where <span class="SimpleMath">\(G := S_4\)</span> is the symmetric group on four points and <span class="SimpleMath">\(k = \mathbb{Q}\)</span>, its minimal splitting field.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "InternalModules" : OnlyNeeded );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">srepG := RepresentationCategory( SymmetricGroup( 4 ) );</span>
+The representation category of SymmetricGroup( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( srepG );</span>
+A CAP category with name The representation category
+of SymmetricGroup( [ 1 .. 4 ] ):
+
+46 primitive operations were used to derive 280 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsAbelianCategory
+* IsRigidSymmetricClosedMonoidalCategory
+and furthermore mathematically
+* IsSkeletalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := UnderlyingGroupForRepresentationCategory( srepG );</span>
+Sym( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">irr := Irr( G );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := RepresentationCategoryObject( irr[5], srepG, "𝟙" );</span>
+1*(𝟙)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := RepresentationCategoryObject( irr[1], srepG, "σ" );</span>
+1*(σ)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rho := RepresentationCategoryObject( irr[3], srepG, "ρ" );</span>
+1*(ρ)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu := RepresentationCategoryObject( irr[4], srepG, "ν" );</span>
+1*(ν)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi := RepresentationCategoryObject( irr[2], srepG, "χ" );</span>
+1*(χ)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProduct( rho, sigma, rho );</span>
+1*(σ) + 1*(ρ) + 1*(𝟙)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorProduct( rho, rho );</span>
+1*(σ) + 1*(ρ) + 1*(𝟙)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( AssociatorRightToLeft( rho, sigma, rho ) );</span>
+Component: (σ)
+
+-1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+-1
+
+A morphism in Category of matrices over Q
+
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Braiding( rho, rho ) );</span>
+Component: (σ)
+
+-1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := chi;</span>
+1*(χ)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GradedCategories" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZsrepG := PositivelyZGradedCategory( srepG );</span>
+The positively graded category of The representation category of
+SymmetricGroup( [ 1 .. 4 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "InternalModules" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SWMod := CategoryOfLeftSModules( W );</span>
+Abelian category of left modules over the internal symmetric algebra of 1*(χ)
+with undecidable (mathematical) equality of morphisms
+and uncomputable lifts and colifts
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW := UnderlyingActingObject( SWMod );</span>
+&lt;An object in The positively graded category of The representation category
+ of SymmetricGroup( [ 1 .. 4 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[0];</span>
+1*(𝟙)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[1];</span>
+1*(χ)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[2];</span>
+1*(ρ) + 1*(ν) + 1*(𝟙)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[3];</span>
+1*(σ) + 2*(χ) + 1*(ν)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SW[4];</span>
+1*(χ) + 2*(ρ) + 2*(ν) + 2*(𝟙)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 := InternalElement( SW, chi, 1, 1 );</span>
+degree: 1
+
+Component: (χ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rho2 := InternalElement( SW, rho, 2, 1 );</span>
+degree: 2
+
+Component: (ρ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu2 := InternalElement( SW, nu, 2, 1 );</span>
+degree: 2
+
+Component: (ν)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu3 := InternalElement( SW, nu, 3, 1 );</span>
+degree: 3
+
+Component: (ν)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * chi1;</span>
+degree: 2
+
+Component: (ρ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * (chi1 * chi1);</span>
+degree: 3
+
+Component: (σ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (χ)
+
+5,3
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+3
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * (chi1 * chi1) = (chi1 * chi1) * chi1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * rho2;</span>
+degree: 3
+
+Component: (χ)
+
+0,2
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * rho2 = rho2 * chi1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * nu2;</span>
+degree: 3
+
+Component: (σ)
+
+1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (χ)
+
+8,0
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+2
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * nu2 = nu2 * chi1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * (chi1 * (chi1 * chi1));</span>
+degree: 4
+
+Component: (χ)
+
+-2
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+3,-31
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+5,6
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+5,3
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(chi1 * chi1) * (chi1 * chi1);</span>
+degree: 4
+
+Component: (χ)
+
+8
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+9/4,43/4
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+-16,-6
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+-7,9/8
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">((chi1 * chi1) * chi1) * chi1;</span>
+degree: 4
+
+Component: (χ)
+
+26
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+3,-31
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+5,6
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+5,3
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(chi1 * chi1) * rho2;</span>
+degree: 4
+
+Component: (χ)
+
+4
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+5/4,-9/4
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+-4,-4
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+0,1/8
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * (chi1 * rho2);</span>
+degree: 4
+
+Component: (χ)
+
+-2
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+2,-12
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+-1,-1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+0,2
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(chi1 * chi1) * nu2;</span>
+degree: 4
+
+Component: (χ)
+
+4
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+0,16
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+-8,-1
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (𝟙)
+
+-4,0
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * nu3;</span>
+degree: 4
+
+Component: (χ)
+
+4
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ρ)
+
+0,-12
+
+A morphism in Category of matrices over Q
+
+------------------------
+Component: (ν)
+
+1,1
+
+A morphism in Category of matrices over Q
+
+------------------------
+
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * nu3 = nu3 * chi1;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">chi1 * (chi1 * (chi1 * chi1)) &lt;&gt; ((chi1 * chi1) * chi1) * chi1;</span>
+true
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

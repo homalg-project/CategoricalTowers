@@ -1,0 +1,812 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YExamples[133X[101X
+  
+  [33X[0;0YThe  following  examples  demonstrate  the  internalization of the symmetric
+  algera  and  its  modules in the positively graded closure of various tensor
+  categories.[133X
+  
+  
+  [1X1.1-1 [33X[0;0YThe tensor category of finite dimensional GF(2)-vector spaces[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegers( 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XF2vec := MatrixCategory( F2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, F2 );;[127X[104X
+    [4X[25Xgap>[125X [27XZF2vec := PositivelyZGradedCategory( F2vec );[127X[104X
+    [4X[28XThe positively graded category of Category of matrices over GF(2)[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
+    [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
+    [4X[28XA vector space object over GF(2) of dimension 3[128X[104X
+    [4X[28Xwith undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28Xuncomputable lifts and colifts[128X[104X
+    [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
+    [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
+    [4X[28X<An object in The positively graded category of Category of matrices over GF(2)>[128X[104X
+    [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of[128X[104X
+    [4X[28X A vector space object over GF(2) of dimension 3[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, F2 );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of[128X[104X
+    [4X[28X A vector space object over GF(2) of dimension 3[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModSV );;[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := MorphismInPositivelyZGradedCategory([127X[104X
+    [4X[25X>[125X [27X              ObjectInPositivelyZGradedCategory( SV[0], 3 ),[127X[104X
+    [4X[25X>[125X [27X              VectorSpaceMorphism([127X[104X
+    [4X[25X>[125X [27X                  SV[0],[127X[104X
+    [4X[25X>[125X [27X                  CertainRows( HomalgIdentityMatrix( 10, F2 ), [ 1 ] ),[127X[104X
+    [4X[25X>[125X [27X                  SV[3][127X[104X
+    [4X[25X>[125X [27X              ),[127X[104X
+    [4X[25X>[125X [27X              3,[127X[104X
+    [4X[25X>[125X [27X              SV );;[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := InternalElement( e1 );[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X 1 . . . . . . . . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(2)[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.1-2 [33X[0;0YThe tensor category of finite dimensional Q-vector spaces[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XQvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XZQvec := PositivelyZGradedCategory( Qvec );[127X[104X
+    [4X[28XThe positively graded category of Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
+    [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
+    [4X[28XA vector space object over Q of dimension 3[128X[104X
+    [4X[28Xwith undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28Xuncomputable lifts and colifts[128X[104X
+    [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
+    [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
+    [4X[28X<An object in The positively graded category of Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of[128X[104X
+    [4X[28X A vector space object over Q of dimension 3[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27Xu := VectorSpaceObject( 3, Q );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of[128X[104X
+    [4X[28X A vector space object over Q of dimension 3[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModSV );;[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := MorphismInPositivelyZGradedCategory([127X[104X
+    [4X[25X>[125X [27X              ObjectInPositivelyZGradedCategory( SV[0], 3 ),[127X[104X
+    [4X[25X>[125X [27X              VectorSpaceMorphism([127X[104X
+    [4X[25X>[125X [27X                  SV[0],[127X[104X
+    [4X[25X>[125X [27X                  CertainRows( HomalgIdentityMatrix( 10, Q ), [ 1 ] ),[127X[104X
+    [4X[25X>[125X [27X                  SV[3][127X[104X
+    [4X[25X>[125X [27X              ),[127X[104X
+    [4X[25X>[125X [27X              3,[127X[104X
+    [4X[25X>[125X [27X              SV );;[127X[104X
+    [4X[25Xgap>[125X [27Xe1 := InternalElement( e1 );[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ [  1,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.1-3  [33X[0;0YThe  tensor  category  of finite dimensional Q-representations of the[101X
+  [1Xsymmetric group Sym(4).[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XG := SymmetricGroup( 4 );;[127X[104X
+    [4X[25Xgap>[125X [27XRepG := RepresentationCategory( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xirr := Irr( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xone := RepresentationCategoryObject( irr[5], RepG, "1" );;[127X[104X
+    [4X[25Xgap>[125X [27Xsigma := RepresentationCategoryObject( irr[1], RepG, "sigma" );;[127X[104X
+    [4X[25Xgap>[125X [27Xrho := RepresentationCategoryObject( irr[3], RepG, "rho" );;[127X[104X
+    [4X[25Xgap>[125X [27Xnu := RepresentationCategoryObject( irr[4], RepG, "nu" );;[127X[104X
+    [4X[25Xgap>[125X [27Xchi := RepresentationCategoryObject( irr[2], RepG, "chi" );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := chi;;[127X[104X
+    [4X[25Xgap>[125X [27XZRepG := PositivelyZGradedCategory( RepG );[127X[104X
+    [4X[28XThe positively graded category of The representation category of[128X[104X
+    [4X[28XSymmetricGroup( [ 1 .. 4 ] )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
+    [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
+    [4X[28X1*(chi)[128X[104X
+    [4X[28Xwith undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28Xuncomputable lifts and colifts[128X[104X
+    [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
+    [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
+    [4X[28X<An object in The positively graded category of[128X[104X
+    [4X[28X The representation category of SymmetricGroup( [ 1 .. 4 ] )>[128X[104X
+    [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of 1*(chi)[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27Xu := chi;;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u, 3 );;[127X[104X
+    [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of 1*(chi)[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModSV );;[127X[104X
+    [4X[25Xgap>[125X [27Xc1 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xc2 := UniversalMorphismFromFreeModule( F, Support( F[6] )[4], 6, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xc := 2 * c1 - 3 * c2;;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( c[6] );[127X[104X
+    [4X[28XComponent: (nu)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-3,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27Xa := InternalElement( SV, Support( SV[1] )[1], 1, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xb := InternalElement( SV, Support( SV[2] )[1], 2, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xc := InternalElement( SV, Support( SV[2] )[2], 2, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xd := InternalElement( SV, Support( SV[3] )[3], 3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcc := UniversalMorphismFromFreeModule( c );;[127X[104X
+    [4X[25Xgap>[125X [27Xdd := UniversalMorphismFromFreeModule( d );;[127X[104X
+    [4X[25Xgap>[125X [27Xpp := ProjectionInFactorOfFiberProduct( [ cc, dd ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xqq := ProjectionInFactorOfFiberProduct( [ cc, dd ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xff := PreCompose( pp, cc ) - PreCompose( qq, dd );;[127X[104X
+    [4X[25Xgap>[125X [27XSet( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );[127X[104X
+    [4X[28X[ true ][128X[104X
+    [4X[25Xgap>[125X [27Xss := UniversalMorphismIntoDirectSum( [ pp, -qq ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtt := UniversalMorphismFromDirectSum( [ cc, dd ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xhomology := HomologyObject( ss, tt );;[127X[104X
+    [4X[25Xgap>[125X [27XSet( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );[127X[104X
+    [4X[28X[ true ][128X[104X
+    [4X[25Xgap>[125X [27Xe1 := InternalElement( SV, sigma, 3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe2 := InternalElement( SV, chi, 3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe3 := InternalElement( SV, chi, 3, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe4 := InternalElement( SV, nu, 3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe := e1 + 2 * e2 - 1/3 * e3 + e4;[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (sigma)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (chi)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-1/3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (nu)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27Xe2 * e3 = BraidedMultiplication( e3, e2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm1 := InternalElement( F, nu, 6, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xm2 := InternalElement( F, nu, 6, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xm := 2 * m1 - 1/3 * m2;[127X[104X
+    [4X[28Xdegree: 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (nu)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-1/3,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.1-4  [33X[0;0YThe  tensor category of finite dimensional Z-graded Q-representations[101X
+  [1Xof the symmetric group Sym(4).[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XG := SymmetricGroup( 4 );;[127X[104X
+    [4X[25Xgap>[125X [27XRepG := RepresentationCategoryZGraded( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xirr := Irr( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xv := RepresentationCategoryZGradedObject( 1, irr[2], RepG );;[127X[104X
+    [4X[25Xgap>[125X [27XZRepG := PositivelyZGradedCategory( RepG );[127X[104X
+    [4X[28XThe positively graded category of The skeletal Z-graded representation category[128X[104X
+    [4X[28Xof SymmetricGroup( [ 1 .. 4 ] )[128X[104X
+    [4X[25Xgap>[125X [27XV := ObjectInPositivelyZGradedCategory( v );;[127X[104X
+    [4X[25Xgap>[125X [27XSVMod := CategoryOfLeftSModules( v );[127X[104X
+    [4X[28XAbelian category of left modules over the internal symmetric algebra of[128X[104X
+    [4X[28X1*(x_[1, 2])[128X[104X
+    [4X[28Xwith undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28Xuncomputable lifts and colifts[128X[104X
+    [4X[25Xgap>[125X [27XModSV := CategoryOfRightSModules( v );;[127X[104X
+    [4X[25Xgap>[125X [27XSV := UnderlyingActingObject( SVMod );[127X[104X
+    [4X[28X<An object in The positively graded category of[128X[104X
+    [4X[28X The skeletal Z-graded representation category of SymmetricGroup( [ 1 .. 4 ] )>[128X[104X
+    [4X[25Xgap>[125X [27XS := SymmetricAlgebraAsLeftModule( v );[127X[104X
+    [4X[28X<An object in Abelian category of[128X[104X
+    [4X[28X left modules over the internal symmetric algebra of 1*(x_[1, 2])[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27Xu := RepresentationCategoryZGradedObject( 3, irr[2], RepG );;[127X[104X
+    [4X[25Xgap>[125X [27XU := ObjectInPositivelyZGradedCategory( u );;[127X[104X
+    [4X[25Xgap>[125X [27XF := FreeInternalModule( U, SVMod );[127X[104X
+    [4X[28X<An object in Abelian category[128X[104X
+    [4X[28X of left modules over the internal symmetric algebra of 1*(x_[1, 2])[128X[104X
+    [4X[28X with undecidable (mathematical) equality of morphisms and[128X[104X
+    [4X[28X uncomputable lifts and colifts>[128X[104X
+    [4X[25Xgap>[125X [27XH := FreeInternalModule( U, ModSV );;[127X[104X
+    [4X[25Xgap>[125X [27Xnu6 := Support( F[6] )[4];[127X[104X
+    [4X[28X<x_[6, 4]>[128X[104X
+    [4X[25Xgap>[125X [27Xc1 := UniversalMorphismFromFreeModule( F, nu6, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xc2 := UniversalMorphismFromFreeModule( F, nu6, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xc := 2 * c1 - 3 * c2;;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( c[6] );[127X[104X
+    [4X[28XComponent: (x_[6, 4])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-3,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27Xa := InternalElement( SV, Support( SV[1] )[1], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xb := InternalElement( SV, Support( SV[2] )[1], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xc := InternalElement( SV, Support( SV[2] )[2], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xd := InternalElement( SV, Support( SV[3] )[3], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcc := UniversalMorphismFromFreeModule( c );;[127X[104X
+    [4X[25Xgap>[125X [27Xdd := UniversalMorphismFromFreeModule( d );;[127X[104X
+    [4X[25Xgap>[125X [27Xpp := ProjectionInFactorOfFiberProduct( [ cc, dd ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xqq := ProjectionInFactorOfFiberProduct( [ cc, dd ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xff := PreCompose( pp, cc ) - PreCompose( qq, dd );;[127X[104X
+    [4X[25Xgap>[125X [27XSet( List( Sublist( ff, [ 0 .. 5 ] ), IsZero ) );[127X[104X
+    [4X[28X[ true ][128X[104X
+    [4X[25Xgap>[125X [27Xss := UniversalMorphismIntoDirectSum( [ pp, -qq ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtt := UniversalMorphismFromDirectSum( [ cc, dd ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xhomology := HomologyObject( ss, tt );;[127X[104X
+    [4X[25Xgap>[125X [27XSet( List( Sublist( homology, [ 0 .. 5 ] ), IsZero ) );[127X[104X
+    [4X[28X[ true ][128X[104X
+    [4X[25Xgap>[125X [27Xsigma3 := Support( SV[3] )[1];[127X[104X
+    [4X[28X<x_[3, 1]>[128X[104X
+    [4X[25Xgap>[125X [27Xchi3 := Support( SV[3] )[2];[127X[104X
+    [4X[28X<x_[3, 2]>[128X[104X
+    [4X[25Xgap>[125X [27Xnu3 := Support( SV[3] )[3];[127X[104X
+    [4X[28X<x_[3, 4]>[128X[104X
+    [4X[25Xgap>[125X [27Xe1 := InternalElement( SV, sigma3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe2 := InternalElement( SV, chi3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe3 := InternalElement( SV, chi3, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe4 := InternalElement( SV, nu3, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xe := e1 + 2 * e2 - 1/3 * e3 + e4;[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (x_[3, 1])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (x_[3, 2])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-1/3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (x_[3, 4])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27Xe2 * e3 = BraidedMultiplication( e3, e2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm1 := InternalElement( F, nu6, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xm2 := InternalElement( F, nu6, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xm := 2 * m1 - 1/3 * m2;[127X[104X
+    [4X[28Xdegree: 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (x_[6, 4])[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-1/3,0,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.1-5 [33X[0;0YFuther computations in the symmetric algebra[133X[101X
+  
+  [33X[0;0YThis  is  an  example  for  explicit  computations  in the symmetric algebra
+  [23X\mathrm{S}W[123X  internal  to the positively graded closure [23X\mathrm{srep}_k(G)_+[123X
+  of  the  tensor category [23X\mathrm{srep}_k(G)[123X, where [23XG := S_4[123X is the symmetric
+  group on four points and [23Xk = \mathbb{Q}[123X, its minimal splitting field.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "InternalModules" : OnlyNeeded );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XsrepG := RepresentationCategory( SymmetricGroup( 4 ) );[127X[104X
+    [4X[28XThe representation category of SymmetricGroup( [ 1 .. 4 ] )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( srepG );[127X[104X
+    [4X[28XA CAP category with name The representation category[128X[104X
+    [4X[28Xof SymmetricGroup( [ 1 .. 4 ] ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X46 primitive operations were used to derive 280 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsAbelianCategory[128X[104X
+    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsSkeletalCategory[128X[104X
+    [4X[25Xgap>[125X [27XG := UnderlyingGroupForRepresentationCategory( srepG );[127X[104X
+    [4X[28XSym( [ 1 .. 4 ] )[128X[104X
+    [4X[25Xgap>[125X [27Xirr := Irr( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xone := RepresentationCategoryObject( irr[5], srepG, "𝟙" );[127X[104X
+    [4X[28X1*(𝟙)[128X[104X
+    [4X[25Xgap>[125X [27Xsigma := RepresentationCategoryObject( irr[1], srepG, "σ" );[127X[104X
+    [4X[28X1*(σ)[128X[104X
+    [4X[25Xgap>[125X [27Xrho := RepresentationCategoryObject( irr[3], srepG, "ρ" );[127X[104X
+    [4X[28X1*(ρ)[128X[104X
+    [4X[25Xgap>[125X [27Xnu := RepresentationCategoryObject( irr[4], srepG, "ν" );[127X[104X
+    [4X[28X1*(ν)[128X[104X
+    [4X[25Xgap>[125X [27Xchi := RepresentationCategoryObject( irr[2], srepG, "χ" );[127X[104X
+    [4X[28X1*(χ)[128X[104X
+    [4X[25Xgap>[125X [27XTensorProduct( rho, sigma, rho );[127X[104X
+    [4X[28X1*(σ) + 1*(ρ) + 1*(𝟙)[128X[104X
+    [4X[25Xgap>[125X [27XTensorProduct( rho, rho );[127X[104X
+    [4X[28X1*(σ) + 1*(ρ) + 1*(𝟙)[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AssociatorRightToLeft( rho, sigma, rho ) );[127X[104X
+    [4X[28XComponent: (σ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Braiding( rho, rho ) );[127X[104X
+    [4X[28XComponent: (σ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27XW := chi;[127X[104X
+    [4X[28X1*(χ)[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GradedCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZsrepG := PositivelyZGradedCategory( srepG );[127X[104X
+    [4X[28XThe positively graded category of The representation category of[128X[104X
+    [4X[28XSymmetricGroup( [ 1 .. 4 ] )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "InternalModules" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XSWMod := CategoryOfLeftSModules( W );[127X[104X
+    [4X[28XAbelian category of left modules over the internal symmetric algebra of 1*(χ)[128X[104X
+    [4X[28Xwith undecidable (mathematical) equality of morphisms[128X[104X
+    [4X[28Xand uncomputable lifts and colifts[128X[104X
+    [4X[25Xgap>[125X [27XSW := UnderlyingActingObject( SWMod );[127X[104X
+    [4X[28X<An object in The positively graded category of The representation category[128X[104X
+    [4X[28X of SymmetricGroup( [ 1 .. 4 ] )>[128X[104X
+    [4X[25Xgap>[125X [27XSW[0];[127X[104X
+    [4X[28X1*(𝟙)[128X[104X
+    [4X[25Xgap>[125X [27XSW[1];[127X[104X
+    [4X[28X1*(χ)[128X[104X
+    [4X[25Xgap>[125X [27XSW[2];[127X[104X
+    [4X[28X1*(ρ) + 1*(ν) + 1*(𝟙)[128X[104X
+    [4X[25Xgap>[125X [27XSW[3];[127X[104X
+    [4X[28X1*(σ) + 2*(χ) + 1*(ν)[128X[104X
+    [4X[25Xgap>[125X [27XSW[4];[127X[104X
+    [4X[28X1*(χ) + 2*(ρ) + 2*(ν) + 2*(𝟙)[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 := InternalElement( SW, chi, 1, 1 );[127X[104X
+    [4X[28Xdegree: 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xrho2 := InternalElement( SW, rho, 2, 1 );[127X[104X
+    [4X[28Xdegree: 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xnu2 := InternalElement( SW, nu, 2, 1 );[127X[104X
+    [4X[28Xdegree: 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xnu3 := InternalElement( SW, nu, 3, 1 );[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * chi1;[127X[104X
+    [4X[28Xdegree: 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * (chi1 * chi1);[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (σ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X5,3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * (chi1 * chi1) = (chi1 * chi1) * chi1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * rho2;[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * rho2 = rho2 * chi1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * nu2;[127X[104X
+    [4X[28Xdegree: 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (σ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X8,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * nu2 = nu2 * chi1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * (chi1 * (chi1 * chi1));[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X3,-31[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X5,6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X5,3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27X(chi1 * chi1) * (chi1 * chi1);[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X8[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X9/4,43/4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-16,-6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-7,9/8[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27X((chi1 * chi1) * chi1) * chi1;[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X26[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X3,-31[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X5,6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X5,3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27X(chi1 * chi1) * rho2;[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X5/4,-9/4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-4,-4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,1/8[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * (chi1 * rho2);[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X2,-12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-1,-1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27X(chi1 * chi1) * nu2;[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-8,-1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (𝟙)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-4,0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * nu3;[127X[104X
+    [4X[28Xdegree: 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XComponent: (χ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ρ)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X0,-12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (ν)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * nu3 = nu3 * chi1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xchi1 * (chi1 * (chi1 * chi1)) <> ((chi1 * chi1) * chi1) * chi1;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
