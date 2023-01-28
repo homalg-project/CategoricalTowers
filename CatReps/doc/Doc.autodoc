@@ -1,0 +1,19 @@
+@Chapter Finite concrete categories
+
+@Section Example
+
+@Subsection A category of module homomorphisms
+@InsertChunk CategoryOfRepresentations
+
+@Subsection One step in the direct sum decomposition
+@InsertChunk DecomposeOnce
+
+@Subsection Another category of module homomorphisms
+@InsertChunk RepresentingC4C4
+
+@Section GAP categories
+@Section Global variables
+@Section Attributes
+@Section Constructors
+@Section Operations
+@Section Tools
