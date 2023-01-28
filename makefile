@@ -3,13 +3,16 @@ all: doc test
 .PHONY: test
 
 # BEGIN PACKAGE JANITOR
-doc: doc_FiniteCocompletion doc_PreSheaves
+doc: doc_FiniteCocompletion doc_PreSheaves doc_CategoryConstructor
 
 doc_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion doc
 
 doc_PreSheaves:
 	$(MAKE) -C PreSheaves doc
+
+doc_CategoryConstructor:
+	$(MAKE) -C CategoryConstructor doc
 
 # END PACKAGE JANITOR
 

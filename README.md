@@ -14,6 +14,7 @@
 | ---- | ----------- | ------------- |
 | [FiniteCocompletion](FiniteCocompletion#readme) | Finite (co)product/(co)limit (co)completions | [![HTML stable documentation][html-FiniteCocompletion-img]][html-FiniteCocompletion-url] [![PDF stable documentation][pdf-FiniteCocompletion-img]][pdf-FiniteCocompletion-url] |
 | [PreSheaves](PreSheaves#readme) | Categories of (co)presheaves | [![HTML stable documentation][html-PreSheaves-img]][html-PreSheaves-url] [![PDF stable documentation][pdf-PreSheaves-img]][pdf-PreSheaves-url] |
+| [CategoryConstructor](CategoryConstructor#readme) | Construct categories out of given ones | [![HTML stable documentation][html-CategoryConstructor-img]][html-CategoryConstructor-url] [![PDF stable documentation][pdf-CategoryConstructor-img]][pdf-CategoryConstructor-url] |
 
 [html-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/doc/chap0_mj.html
@@ -27,6 +28,13 @@
 
 [pdf-PreSheaves-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-PreSheaves-url]: https://homalg-project.github.io/CategoricalTowers/PreSheaves/download_pdf.html
+
+
+[html-CategoryConstructor-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-CategoryConstructor-url]: https://homalg-project.github.io/CategoricalTowers/CategoryConstructor/doc/chap0_mj.html
+
+[pdf-CategoryConstructor-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-CategoryConstructor-url]: https://homalg-project.github.io/CategoricalTowers/CategoryConstructor/download_pdf.html
 
 
 [tests-img]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml/badge.svg?branch=master

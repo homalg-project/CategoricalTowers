@@ -36,13 +36,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/CategoryConstructor",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/CategoryConstructor",
-PackageInfoURL  := "https://homalg-project.github.io/CategoryConstructor/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CategoryConstructor/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoryConstructor/releases/download/v", ~.Version, "/CategoryConstructor-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/CategoryConstructor/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/CategoryConstructor/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-", ~.Version, "/CategoryConstructor-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -69,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "CAP", ">= 2023.01-03" ],
                    [ "MonoidalCategories", ">= 2022.06-03" ],

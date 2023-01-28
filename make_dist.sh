@@ -2,7 +2,7 @@
 
 set -e
 
-packages="FiniteCocompletion PreSheaves "
+packages="FiniteCocompletion PreSheaves CategoryConstructor "
 
 base_dir="$PWD"
 

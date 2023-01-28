@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 2
+  after_n_builds: 3
 flags:
   FiniteCocompletion:
     paths:
@@ -10,3 +10,6 @@ flags:
   PreSheaves:
     paths:
       - "PreSheaves/"
+  CategoryConstructor:
+    paths:
+      - "CategoryConstructor/"

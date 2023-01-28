@@ -25,3 +25,4 @@ shasum -a 256 -c codecov.SHA256SUM
 chmod +x codecov
 ./codecov -Z -v -s ../ -F FiniteCocompletion || (sleep 30; ./codecov -Z -v -s ../ -F FiniteCocompletion || (sleep 30; ./codecov -Z -v -s ../ -F FiniteCocompletion))
 ./codecov -Z -v -s ../ -F PreSheaves || (sleep 30; ./codecov -Z -v -s ../ -F PreSheaves || (sleep 30; ./codecov -Z -v -s ../ -F PreSheaves))
+./codecov -Z -v -s ../ -F CategoryConstructor || (sleep 30; ./codecov -Z -v -s ../ -F CategoryConstructor || (sleep 30; ./codecov -Z -v -s ../ -F CategoryConstructor))
