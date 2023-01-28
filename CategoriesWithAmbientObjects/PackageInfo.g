@@ -52,13 +52,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/CategoriesWithAmbientObjects",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects",
-PackageInfoURL  := "https://homalg-project.github.io/CategoriesWithAmbientObjects/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CategoriesWithAmbientObjects/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoriesWithAmbientObjects/releases/download/v", ~.Version, "/CategoriesWithAmbientObjects-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/CategoriesWithAmbientObjects/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/CategoriesWithAmbientObjects/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-", ~.Version, "/CategoriesWithAmbientObjects-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -85,7 +85,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2013.12.04" ],
                    [ "AttributeCategoryForCAP", ">= 2016.09.14" ],

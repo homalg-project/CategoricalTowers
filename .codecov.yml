@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 9
+  after_n_builds: 10
 flags:
   FiniteCocompletion:
     paths:
@@ -31,3 +31,6 @@ flags:
   IntrinsicCategories:
     paths:
       - "IntrinsicCategories/"
+  CategoriesWithAmbientObjects:
+    paths:
+      - "CategoriesWithAmbientObjects/"

@@ -32,3 +32,4 @@ chmod +x codecov
 ./codecov -Z -v -s ../ -F LazyCategories || (sleep 30; ./codecov -Z -v -s ../ -F LazyCategories || (sleep 30; ./codecov -Z -v -s ../ -F LazyCategories))
 ./codecov -Z -v -s ../ -F ZariskiFrames || (sleep 30; ./codecov -Z -v -s ../ -F ZariskiFrames || (sleep 30; ./codecov -Z -v -s ../ -F ZariskiFrames))
 ./codecov -Z -v -s ../ -F IntrinsicCategories || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicCategories || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicCategories))
+./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 30; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 30; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects))

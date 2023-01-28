@@ -21,6 +21,7 @@
 | [LazyCategories](LazyCategories#readme) | Construct an equivalent lazy category out of a CAP category | [![HTML stable documentation][html-LazyCategories-img]][html-LazyCategories-url] [![PDF stable documentation][pdf-LazyCategories-img]][pdf-LazyCategories-url] |
 | [ZariskiFrames](ZariskiFrames#readme) | (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties | [![HTML stable documentation][html-ZariskiFrames-img]][html-ZariskiFrames-url] [![PDF stable documentation][pdf-ZariskiFrames-img]][pdf-ZariskiFrames-url] |
 | [IntrinsicCategories](IntrinsicCategories#readme) | Intrinsic categories for CAP | [![HTML stable documentation][html-IntrinsicCategories-img]][html-IntrinsicCategories-url] [![PDF stable documentation][pdf-IntrinsicCategories-img]][pdf-IntrinsicCategories-url] |
+| [CategoriesWithAmbientObjects](CategoriesWithAmbientObjects#readme) | Categories with objects having ambient objects | [![HTML stable documentation][html-CategoriesWithAmbientObjects-img]][html-CategoriesWithAmbientObjects-url] [![PDF stable documentation][pdf-CategoriesWithAmbientObjects-img]][pdf-CategoriesWithAmbientObjects-url] |
 
 [html-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/doc/chap0_mj.html
@@ -83,6 +84,13 @@
 
 [pdf-IntrinsicCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-IntrinsicCategories-url]: https://homalg-project.github.io/CategoricalTowers/IntrinsicCategories/download_pdf.html
+
+
+[html-CategoriesWithAmbientObjects-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-CategoriesWithAmbientObjects-url]: https://homalg-project.github.io/CategoricalTowers/CategoriesWithAmbientObjects/doc/chap0_mj.html
+
+[pdf-CategoriesWithAmbientObjects-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-CategoriesWithAmbientObjects-url]: https://homalg-project.github.io/CategoricalTowers/CategoriesWithAmbientObjects/download_pdf.html
 
 
 [tests-img]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml/badge.svg?branch=master
