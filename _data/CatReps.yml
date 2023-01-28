@@ -1,0 +1,107 @@
+name: CatReps
+version: "2023.01-04"
+license: "GPL-2.0-or-later"
+date: 2023-01-28
+description: |
+    Representations and cohomology of finite categories
+
+authors:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Tibor Grün
+      url: https://github.com/Tschitschibor
+    - name: Peter Webb
+      url: https://www-users.math.umn.edu/~webb
+
+maintainers:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io
+    - name: Tibor Grün
+      url: https://github.com/Tschitschibor
+    - name: Peter Webb
+      url: https://www-users.math.umn.edu/~webb
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "CAP"
+      version: ">= 2023.01-09"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "MonoidalCategories"
+      version: ">= 2021.08-01"
+      url: "https://homalg-project.github.io/pkg/MonoidalCategories"
+    - name: "LinearAlgebraForCAP"
+      version: ">= 2021.07-01"
+      url: "https://homalg-project.github.io/pkg/LinearAlgebraForCAP"
+    - name: "FinSetsForCAP"
+      version: ">= 2022.05-07"
+      url: "https://homalg-project.github.io/pkg/FinSetsForCAP"
+    - name: "CategoryConstructor"
+      version: ">= 2023.01-01"
+      url: "https://homalg-project.github.io/pkg/CategoryConstructor"
+    - name: "SubcategoriesForCAP"
+      version: ">= 2020.06-01"
+      url: "https://homalg-project.github.io/pkg/SubcategoriesForCAP"
+    - name: "MatricesForHomalg"
+      version: ">= 2020.02.02"
+      url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
+    - name: "Toposes"
+      version: ">= 2022.05-07"
+      url: "https://homalg-project.github.io/pkg/Toposes"
+    - name: "Algebroids"
+      version: ">= 2022.05-05"
+      url: "https://homalg-project.github.io/pkg/Algebroids"
+    - name: "FunctorCategories"
+      version: ">= 2022.11-28"
+      url: "https://homalg-project.github.io/pkg/FunctorCategories"
+
+www: https://homalg-project.github.io/pkg/CatReps
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/CatReps/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2023.01-04/CatReps-2023.01-04.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2023.01-04/CatReps-2023.01-04.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-2023.01-04/CatReps-2023.01-04.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+keywords: |
+    finite categories, concrete categories, representations of categories.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>BGW23</span>]   <b class='BibAuthor'>Barakat, M., Grün, T. and Webb, P.</b>,
+     <i class='BibTitle'>CatReps, Representations and cohomology of finite categories,
+             Version 2023.01-04</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CatReps">https://homalg-project.github.io/pkg/CatReps</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ CatReps2023.01-04,
+      author =           {Barakat, M. and Gr{\"u}n, T. and Webb, P.},
+      title =            {{CatReps},  Representations  and  cohomology of finite
+                          categories, {V}ersion 2023.01-04},
+      month =            {Jan},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href   {https://homalg-project.github.io/pkg/CatReps}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{CatReps}}},
+      keywords =         {finite      categories,      concrete      categories,
+                          representations of categories},
+      printedkey =       {BGW23}
+    }
+

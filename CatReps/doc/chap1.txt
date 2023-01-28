@@ -1,0 +1,1401 @@
+  
+  [1X1 [33X[0;0YFinite concrete categories[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YExample[133X[101X
+  
+  
+  [1X1.1-1 [33X[0;0YA category of module homomorphisms[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xc3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27XAsFpCategory( c3c3 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( AsFpCategory( c3c3 ) );[127X[104X
+    [4X[28X(Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(b*c) - 1*(a*b) ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA  representation  of  the  category  AsFpCategory( c3c3 ) is another way to
+  encode  a  module homomorphism between two modules over the cyclic group [23XC_3[123X
+  of order [23X3[123X: The vector space underlying the first module is the given by the
+  value of (1). The action of [23XC_3[123X on the first module is given by the value of
+  (a). The vector space underlying the second module is the given by the value
+  of  (2).  The  action on the second module is given by the value of (c). The
+  above  relation  of  the  quiver  states  that  the value of (b) is a module
+  homomorphism from the first to the second [23XC_3[123X-module.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XGF3 := HomalgRingOfIntegers( 3 );[127X[104X
+    [4X[28XGF(3)[128X[104X
+    [4X[25Xgap>[125X [27XA := GF3[c3c3];[127X[104X
+    [4X[28XAlgebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsLinearClosureOfACategory( A );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCatReps := FunctorCategory( A, GF3 );[127X[104X
+    [4X[28XFunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CatReps );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XFunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X104 primitive operations were used to derive 353 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
+    [4X[28X* IsAbelianCategory[128X[104X
+    [4X[25Xgap>[125X [27XCommutativeRingOfLinearCategory( CatReps );[127X[104X
+    [4X[28XGF(3)[128X[104X
+    [4X[25Xgap>[125X [27Xzero := ZeroObject( CatReps );[127X[104X
+    [4X[28X<(1)->0, (2)->0; (a)->0x0, (b)->0x0, (c)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( zero );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xunit := TensorUnit( CatReps );[127X[104X
+    [4X[28X<(1)->1, (2)->1; (a)->1x1, (b)->1x1, (c)->1x1>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( unit );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn identity morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn identity morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn identity morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xd := [[1,1,0,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,0,1,1],[0,0,0,0,1]];;[127X[104X
+    [4X[25Xgap>[125X [27Xe := [[0,1,0,0],[0,0,1,0],[0,0,0,0],[0,1,0,1],[0,0,1,0]];;[127X[104X
+    [4X[25Xgap>[125X [27Xf := [[1,1,0,0],[0,1,1,0],[0,0,1,0],[0,0,0,1]];;[127X[104X
+    [4X[25Xgap>[125X [27Xnine := AsObjectInFunctorCategory( CatReps, [ 5, 4 ], [ d, e, f ] );[127X[104X
+    [4X[28X<(1)->5, (2)->4; (a)->5x5, (b)->5x4, (c)->4x4>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( nine );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 5[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 4[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 . . .[128X[104X
+    [4X[28X . 1 1 . .[128X[104X
+    [4X[28X . . 1 . .[128X[104X
+    [4X[28X . . . 1 1[128X[104X
+    [4X[28X . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . 1 . .[128X[104X
+    [4X[28X . . 1 .[128X[104X
+    [4X[28X . . . .[128X[104X
+    [4X[28X . 1 . 1[128X[104X
+    [4X[28X . . 1 .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 1 . .[128X[104X
+    [4X[28X . 1 1 .[128X[104X
+    [4X[28X . . 1 .[128X[104X
+    [4X[28X . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xnine( A.1 );[127X[104X
+    [4X[28X<A vector space object over GF(3) of dimension 5>[128X[104X
+    [4X[25Xgap>[125X [27Xnine( A.2 );[127X[104X
+    [4X[28X<A vector space object over GF(3) of dimension 4>[128X[104X
+    [4X[25Xgap>[125X [27Xnine( A.b );[127X[104X
+    [4X[28X<A morphism in Category of matrices over GF(3)>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( nine( A.b ) );[127X[104X
+    [4X[28X . 1 . .[128X[104X
+    [4X[28X . . 1 .[128X[104X
+    [4X[28X . . . .[128X[104X
+    [4X[28X . 1 . 1[128X[104X
+    [4X[28X . . 1 .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( nine );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLength( WeakDirectSumDecomposition( nine ) );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27Xfortyone := TensorProductOnObjects( nine, nine );[127X[104X
+    [4X[28X<(1)->25, (2)->16; (a)->25x25, (b)->25x16, (c)->16x16>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( fortyone );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfortyone( A.1 );[127X[104X
+    [4X[28X<A vector space object over GF(3) of dimension 25>[128X[104X
+    [4X[25Xgap>[125X [27Xfortyone( A.2 );[127X[104X
+    [4X[28X<A vector space object over GF(3) of dimension 16>[128X[104X
+    [4X[25Xgap>[125X [27Xfortyone( A.a ) = TensorProductOnMorphisms( nine( A.a ), nine( A.a ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfortyone( A.b ) = TensorProductOnMorphisms( nine( A.b ), nine( A.b ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfortyone( A.c ) = TensorProductOnMorphisms( nine( A.c ), nine( A.c ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( fortyone );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 25[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 . . . 1 1 . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . . 1 1 . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . 1 . . . . 1 . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 1 . . . 1 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 . . . . 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 1 . . . 1 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 1 . . . 1 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 1 . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1 1 . . . 1 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . 1 1 . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . 1 . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . 1 1 . . . 1 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . 1 . . . . 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . 1 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . 1 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . . . . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . 1 . . . . . 1 . 1[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 1 . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . 1 1 . . . . . . . . .[128X[104X
+    [4X[28X . . 1 . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 . . . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 1 . . 1 1 . . . . . .[128X[104X
+    [4X[28X . . . . . 1 1 . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xetas := WeakDirectSumDecomposition( fortyone : random := false );;[127X[104X
+    [4X[25Xgap>[125X [27Xdec := List( etas, eta -> List( SetOfObjects( A ),[127X[104X
+    [4X[25X>[125X [27X             o -> Dimension( Source( eta( o ) ) ) ) );[127X[104X
+    [4X[28X[ [ 3, 0 ], [ 3, 0 ], [ 3, 0 ], [ 3, 0 ], [ 0, 3 ],[128X[104X
+    [4X[28X  [ 1, 3 ], [ 3, 3 ], [ 3, 3 ], [ 3, 3 ], [ 3, 1 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xiso := UniversalMorphismFromDirectSum( etas );[127X[104X
+    [4X[28X<(1)->25x25, (2)->16x16>[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( iso );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( iso ) );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 25[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 . . . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . 1 . . . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X 1 1 1 . . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 1 . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 1 . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 2 2 . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . 1 . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 2 . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 2 . 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . 1 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . 1 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . 1 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . 1 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . 1 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 . 2 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . 2 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 2 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . 2 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 2 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 2 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 2 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X 1 . 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . 2 . 2 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 1 2 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 2 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X . . 1 . . . 2 1 . 1 1 . . 2 . . . 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . 1 . .[128X[104X
+    [4X[28X . 1 2 . 2 1 1 2 2 2 1 . . 2 . . 1 . . 2 2 . . 1 .[128X[104X
+    [4X[28X . . . . . . . 2 . . . 1 1 . . . . . . . . . 2 . .[128X[104X
+    [4X[28X . . 1 . . . 1 1 . 1 . 2 . 2 . . . 1 . . . 1 1 . .[128X[104X
+    [4X[28X . 1 2 . 2 . 1 2 2 2 1 . . 2 . . 1 . . 2 . . . 1 .[128X[104X
+    [4X[28X . . 1 . . . 1 1 . 1 . . 2 2 . . . 1 . . . 1 1 . .[128X[104X
+    [4X[28X . . 1 . . . 1 . . 1 . 1 1 2 . . . 1 . . . 1 . . .[128X[104X
+    [4X[28X . 1 1 . 2 . 2 . 2 1 1 . . . . . 1 . . 2 . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . 1 . 2 . 1 1 . . 2 . . . 2 2 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . 1 . . . . . . . 2 . .[128X[104X
+    [4X[28X . . . . . . . . 2 . 1 . . . . . 1 . . 2 . . . 1 .[128X[104X
+    [4X[28X . . 2 . . . 1 2 . 2 2 . . 1 . . . 2 . 2 . 1 . 1 .[128X[104X
+    [4X[28X 2 . 1 1 . 1 2 1 2 . . . . 1 . 1 . . . 1 1 . . 2 .[128X[104X
+    [4X[28X . 2 . . 1 2 . . 1 . 1 . . 2 . . 1 . . . 1 2 . . .[128X[104X
+    [4X[28X . . 2 . . . 1 2 . 2 2 . . 1 . . . 1 . . . 2 . . .[128X[104X
+    [4X[28X 2 . . 1 . 1 . . 2 2 2 . . 2 . . . 2 . . . 1 . . .[128X[104X
+    [4X[28X . 2 . . 1 2 . . 1 . 1 . . 2 . . . . . . . . . . .[128X[104X
+    [4X[28X . . 2 . . . 1 2 . 2 2 . . 1 . . . . . . . . . . .[128X[104X
+    [4X[28X 1 . . . 2 2 . . 2 . 1 . . 1 . 2 2 1 . 2 1 . . 1 .[128X[104X
+    [4X[28X . 1 . . . 1 . . . 1 2 . . 2 . . 2 2 . . 2 2 . . .[128X[104X
+    [4X[28X . . 1 . . . 2 1 . . 1 . . . . . . 2 . . . 1 . . .[128X[104X
+    [4X[28X 1 . . 2 . 2 . . 1 . 1 . . 2 . 2 2 . 1 1 1 1 . 2 2[128X[104X
+    [4X[28X . 1 . . 2 1 . . 2 . 2 . . 1 . . 2 2 . 1 2 2 . 1 1[128X[104X
+    [4X[28X . . 1 . . . 2 1 . 1 1 . . 2 . . . 2 . . . 1 . . 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28X . . 2 . . 1 . . 2 2 1 . . . . .[128X[104X
+    [4X[28X 2 1 . . . . . . . . . . . 1 . .[128X[104X
+    [4X[28X . 2 1 . 2 . 1 . . . . . . . 1 .[128X[104X
+    [4X[28X . . 2 . . 2 . 2 . . . 1 . 1 . .[128X[104X
+    [4X[28X . 2 . 2 . 2 . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . 2 . . 2 1 2 . 2 2 . . 1 1 .[128X[104X
+    [4X[28X . . . . . 1 1 1 . . . 1 . 1 1 .[128X[104X
+    [4X[28X . . . . . . 1 . . 1 . 1 . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn isomorphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xeta := etas[9];[127X[104X
+    [4X[28X<(1)->3x25, (2)->3x16>[128X[104X
+    [4X[25Xgap>[125X [27XTensorProductOnMorphisms( eta, eta );[127X[104X
+    [4X[28X<(1)->9x625, (2)->9x256>[128X[104X
+    [4X[25Xgap>[125X [27Xsix := Source( eta );[127X[104X
+    [4X[28X<(1)->3, (2)->3; (a)->3x3, (b)->3x3, (c)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( six );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . 2 1[128X[104X
+    [4X[28X . . 2[128X[104X
+    [4X[28X . . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xemb := EmbeddingOfSumOfImagesOfAllMorphisms( unit, six );[127X[104X
+    [4X[28X<(1)->1x3, (2)->0x3>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( emb );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28X(an empty 0 x 3 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xs1 := Source( emb );[127X[104X
+    [4X[28X<(1)->1, (2)->0; (a)->1x1, (b)->1x0, (c)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( s1 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X(an empty 1 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XAop := OppositeAlgebroid( A );[127X[104X
+    [4X[28XAlgebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q_op(2)[a:1->1,b:2->1,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XYop := YonedaEmbeddingInFunctorCategory( Aop );[127X[104X
+    [4X[28XYoneda embedding functor[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Yop );[127X[104X
+    [4X[28XYoneda embedding functor:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAlgebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q_op(2)[a:1->1,b:2->1,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[28X  |[128X[104X
+    [4X[28X  V[128X[104X
+    [4X[28XFunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) )[128X[104X
+    [4X[25Xgap>[125X [27Xproj1 := Yop( Aop.1 );[127X[104X
+    [4X[28X<(1)->3, (2)->3; (a)->3x3, (b)->3x3, (c)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( proj1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( proj1 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X . 1 .[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X 1 . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X 1 . .[128X[104X
+    [4X[28X . 1 .[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X . 1 .[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X 1 . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xe1 := EmbeddingOfSumOfImagesOfAllMorphisms( unit, proj1 );[127X[104X
+    [4X[28X<(1)->1x3, (2)->1x3>[128X[104X
+    [4X[25Xgap>[125X [27XSource( e1 );[127X[104X
+    [4X[28X<(1)->1, (2)->1; (a)->1x1, (b)->1x1, (c)->1x1>[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( EmbeddingOfSumOfImagesOfAllMorphisms( proj1, six ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xfive := CokernelObject( emb );[127X[104X
+    [4X[28X<(1)->2, (2)->3; (a)->2x2, (b)->2x3, (c)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( five );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1[128X[104X
+    [4X[28X . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . 2 1[128X[104X
+    [4X[28X . . 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  next  calculation  shows  that  the [23X3[123X-dimensional representation of [23XC_3[123X
+  associated  to  object  [23X1[123X  is a single copy of the regular representation of
+  [23XC_3[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSumOfImagesOfAllMorphisms( s1, six );[127X[104X
+    [4X[28X<(1)->1, (2)->0; (a)->1x1, (b)->1x0, (c)->0x0>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  next  calculation  shows that the quotient representation [10Xfive[110X maps its
+  module  at  object  [23X1[123X  monomorphically to the module at object [23X2[123X, which must
+  either  be  indecomposable  of  dimension  [23X3[123X,  or  else  the  direct  sum of
+  indecomposables of dimension [23X2[123X and [23X1[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSumOfImagesOfAllMorphisms( s1, five );[127X[104X
+    [4X[28X<(1)->0, (2)->0; (a)->0x0, (b)->0x0, (c)->0x0>[128X[104X
+    [4X[25Xgap>[125X [27XSumOfImagesOfAllMorphisms( unit, five );[127X[104X
+    [4X[28X<(1)->1, (2)->1; (a)->1x1, (b)->1x1, (c)->1x1>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  next  calculation  shows  that  the  module  at  object  [23X2[123X  for  [10Xsix[110X is
+  indecomposable  of  dimension  [23X3[123X.  We  now  have  sufficient  information to
+  describe [10Xsix[110X completely.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSumOfImagesOfAllMorphisms( six, unit );[127X[104X
+    [4X[28X<(1)->0, (2)->1; (a)->0x0, (b)->0x1, (c)->1x1>[128X[104X
+    [4X[25Xgap>[125X [27Xproj2 := Yop( Aop.2 );[127X[104X
+    [4X[28X<(1)->0, (2)->3; (a)->0x0, (b)->0x3, (c)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( proj2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( proj2 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 0[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA zero morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X(an empty 0 x 3 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA zero morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X . 1 .[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X 1 . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.1-2 [33X[0;0YOne step in the direct sum decomposition[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xc3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27XAsFpCategory( c3c3 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XGF3 := HomalgRingOfIntegers( 3 );[127X[104X
+    [4X[28XGF(3)[128X[104X
+    [4X[25Xgap>[125X [27XA := GF3[c3c3];[127X[104X
+    [4X[28XAlgebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsLinearClosureOfACategory( A );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCatReps := FunctorCategory( A, GF3 );[127X[104X
+    [4X[28XFunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) )[128X[104X
+    [4X[25Xgap>[125X [27Xd := [[1,1,0,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,0,1,1],[0,0,0,0,1]];;[127X[104X
+    [4X[25Xgap>[125X [27Xe := [[0,1,0,0],[0,0,1,0],[0,0,0,0],[0,1,0,1],[0,0,1,0]];;[127X[104X
+    [4X[25Xgap>[125X [27Xf := [[1,1,0,0],[0,1,1,0],[0,0,1,0],[0,0,0,1]];;[127X[104X
+    [4X[25Xgap>[125X [27Xnine := AsObjectInFunctorCategory( CatReps, [ 5, 4 ], [ d, e, f ] );[127X[104X
+    [4X[28X<(1)->5, (2)->4; (a)->5x5, (b)->5x4, (c)->4x4>[128X[104X
+    [4X[25Xgap>[125X [27XDecomposeOnceByRandomEndomorphism( nine );[127X[104X
+    [4X[28Xfail[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  above shows that our representation [10Xnine[110X is indecomposable (with a high
+  probability).  We  use the tensor product to generate another representation
+  [10Xfortyone[110X,  that  is  hopefully  decomposable,  and inspect the two resulting
+  embeddings [10Xiota[110X and [10Xkappa[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfortyone := TensorProductOnObjects( nine, nine );[127X[104X
+    [4X[28X<(1)->25, (2)->16; (a)->25x25, (b)->25x16, (c)->16x16>[128X[104X
+    [4X[25Xgap>[125X [27Xresult := DecomposeOnceByRandomEndomorphism( fortyone );[127X[104X
+    [4X[28X[ <(1)->3x25, (2)->1x16>, <(1)->22x25, (2)->15x16> ][128X[104X
+    [4X[25Xgap>[125X [27Xiota := result[1];[127X[104X
+    [4X[28X<(1)->3x25, (2)->1x16>[128X[104X
+    [4X[25Xgap>[125X [27Xkappa := result[2];[127X[104X
+    [4X[28X<(1)->22x25, (2)->15x16>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( fortyone );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 25[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 . . . 1 1 . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . . 1 1 . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . 1 . . . . 1 . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 1 . . . 1 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 . . . . 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 1 . . . 1 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 1 . . . 1 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 1 . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 1 . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1 1 . . . 1 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . 1 1 . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . 1 . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . 1 1 . . . 1 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . 1 . . . . 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . 1 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . 1 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . . . . . 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . . . . . . . 1 . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . 1 . . . . . 1 . 1[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 1 . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . 1 1 . . . . . . . . .[128X[104X
+    [4X[28X . . 1 . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 . . . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 1 . . 1 1 . . . . . .[128X[104X
+    [4X[28X . . . . . 1 1 . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 1 . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XS := DirectSum( [ Source( iota ), Source( kappa ) ] );[127X[104X
+    [4X[28X<(1)->25, (2)->16; (a)->25x25, (b)->25x16, (c)->16x16>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( S );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 25[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 16[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 . . . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . 1 . . . . . . . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . 1 1 . . . 1 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 1 . . . 1 1 . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 . . . . 1 . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 1 . . . 1 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . 1 . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 1 . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 1 . . . 1 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 1 . . . 1 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . . . . 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . 1 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . 1 1 . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . 1 1 . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . 1 . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . 1 1 . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . 1 . . . . . . . 1 .[128X[104X
+    [4X[28X . . . . . . . 1 . . . . . . . 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . . . . . . . 2 . . 1 . 1 . . 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1 . . . . . . . . . . . . . . .[128X[104X
+    [4X[28X . 1 1 . . 1 1 . . . . . . . . .[128X[104X
+    [4X[28X . . 1 1 . . 1 1 . . . . . . . .[128X[104X
+    [4X[28X . . . 1 . . . 1 . . . . . . . .[128X[104X
+    [4X[28X . . . . 1 . . . 1 . . . . . . .[128X[104X
+    [4X[28X . . . . . 1 1 . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . 1 1 . . 1 1 . . . .[128X[104X
+    [4X[28X . . . . . . . 1 . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . 1 . . . 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . 1 1 . . . . .[128X[104X
+    [4X[28X . . . . . . . . . . 1 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . 1 . . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . 1 . . .[128X[104X
+    [4X[28X . . . . . . . . . . . . . 1 1 .[128X[104X
+    [4X[28X . . . . . . . . . . . . . . 1 1[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YComparing  the  matrices  of  [10Xfortyone[110X  with  those  of [10XS[110X, we see that after
+  decomposing  once,  we  have  separated  one small matrix on the diagonal: A
+  [23X3\times  3[123X-matrix from [10XS(A.a)[110X, a [23X3 \times 1[123X-matrix from [10XS(A.b)[110X and a [23X1\times
+  1[123X-matrix from [10XS(A.c)[110X. This matches with the source of the embedding [10Xiota[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X 1 . . 2 . 2 . . 1 . 1 . . 2 . 2 2 . 1 1 1 1 . 2 2[128X[104X
+    [4X[28X . 1 . . 2 1 . . 2 . 2 . . 1 . . 2 2 . 1 2 2 . 1 1[128X[104X
+    [4X[28X . . 1 . . . 2 1 . 1 1 . . 2 . . . 2 . . . 1 . . 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28X . . . . . . . . . . . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( iota ) );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 1 .[128X[104X
+    [4X[28X . 1 1[128X[104X
+    [4X[28X . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X 1[128X[104X
+    [4X[28X .[128X[104X
+    [4X[28X .[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe  can  then  look  at the other embedding of the direct sum decomposition,
+  [10Xkappa[110X.  The  iteration of [10XWeakDirectSumDecomposition[110X will continue then with
+  [10XSource(  kappa  )[110X.  Each  time  the  random  endomorphism will decompose the
+  representation, lowering the dimensions of each object at most by [23X3[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSource( kappa );[127X[104X
+    [4X[28X<(1)->22, (2)->15; (a)->22x22, (b)->22x15, (c)->15x15>[128X[104X
+    [4X[25Xgap>[125X [27Xresult2 := DecomposeOnceByRandomEndomorphism( Source( kappa ) );[127X[104X
+    [4X[28X[ <(1)->3x22, (2)->3x15>, <(1)->19x22, (2)->12x15> ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.1-3 [33X[0;0YAnother category of module homomorphisms[133X[101X
+  
+  [33X[0;0YIn  order  to understand the choices in the above example, we made a similar
+  example to compare the results.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xc4c4 := ConcreteCategoryForCAP( [ [2,3,4,1], [5,6,7,8], [,,,,6,7,8,5] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27XAsFpCategory( c4c4 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( AsFpCategory( c4c4 ) );[127X[104X
+    [4X[28X(Q * q) / [ 1*(a*a*a*a) - 1*(1), 1*(c*c*c*c) - 1*(2), 1*(b*c) - 1*(a*b) ][128X[104X
+    [4X[25Xgap>[125X [27XGF3 := HomalgRingOfIntegers( 3 );[127X[104X
+    [4X[28XGF(3)[128X[104X
+    [4X[25Xgap>[125X [27XA := GF3[c4c4];[127X[104X
+    [4X[28XAlgebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XSetIsLinearClosureOfACategory( A, true );[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIn  order  to  find representations of our concrete category [23XC4C4[123X we need to
+  find  matrices  [23Xa, b, c[123X that satisfy the relations of the algebroid. Here we
+  choose  permutation  matrices corresponding to the two permutations [23Xa, c[123X. We
+  view   the   permutations  on  [23X4[123X  points  in  [23X\mathrm{S}_4[123X  as  elements  of
+  [23X\mathrm{Stab}_{\mathrm{S}_6}(5,6)[123X  or of [23X\mathrm{Stab}_{\mathrm{S}_5}(5)[123X. As
+  permutation  matrices,  they  are  block  diagonal matrices with the smaller
+  permutation  matrix on [23X4[123X elements complemented with a [23X2 \times 2[123X or [23X1 \times
+  1[123X  identity  matrix  on the diagonal. This gives us two different dimensions
+  for  our  target matrix category, [23X6[123X and [23X5[123X respectively, and makes the choice
+  of the matrix for b less trivial.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XCatReps := FunctorCategory( A, GF3 );[127X[104X
+    [4X[28XFunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) )[128X[104X
+    [4X[25Xgap>[125X [27Xamat := HomalgMatrix( One( GF3 ) *[127X[104X
+    [4X[25X>[125X [27X[ [ 0,0,0,1,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 1,0,0,0,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,1,0,0,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,0,1,0,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,0,0,0,1,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,0,0,0,0,1 ] ], 6, 6, GF3 );[127X[104X
+    [4X[28X<A 6 x 6 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xcmat := HomalgMatrix( One(GF3) *[127X[104X
+    [4X[25X>[125X [27X[ [ 0,0,0,1,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 1,0,0,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,1,0,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,0,1,0,0 ], [127X[104X
+    [4X[25X>[125X [27X  [ 0,0,0,0,1 ] ], 5, 5, GF3 );[127X[104X
+    [4X[28X<A 5 x 5 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( amat^4 );[127X[104X
+    [4X[28X 1 . . . . .[128X[104X
+    [4X[28X . 1 . . . .[128X[104X
+    [4X[28X . . 1 . . .[128X[104X
+    [4X[28X . . . 1 . .[128X[104X
+    [4X[28X . . . . 1 .[128X[104X
+    [4X[28X . . . . . 1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( cmat^4 );[127X[104X
+    [4X[28X 1 . . . .[128X[104X
+    [4X[28X . 1 . . .[128X[104X
+    [4X[28X . . 1 . .[128X[104X
+    [4X[28X . . . 1 .[128X[104X
+    [4X[28X . . . . 1[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YGiven  the  matrices  [23Xa[123X  and [23Xc[123X above one can now solve the homogenous linear
+  system  [23Xa*b  =  b*c[123X  in  the  [23X30[123X unknowns [23Xb_{11},...,b_{65}[123X. The following [23X9[123X
+  variables are free variables:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xb11 := 0;; b12 := 1;; b13 := 0;; b21 := 1;;[127X[104X
+    [4X[25Xgap>[125X [27Xb15 := 0;; b51 := 1;; b55 := 0;; b61 := 1;; b65 := 1;;[127X[104X
+    [4X[25Xgap>[125X [27Xbmat := HomalgMatrix( One( GF3 ) *[127X[104X
+    [4X[25X>[125X [27X[ [b11,b12,b13,b21,b15], [127X[104X
+    [4X[25X>[125X [27X  [b21,b11,b12,b13,b15], [127X[104X
+    [4X[25X>[125X [27X  [b13,b21,b11,b12,b15], [127X[104X
+    [4X[25X>[125X [27X  [b12,b13,b21,b11,b15], [127X[104X
+    [4X[25X>[125X [27X  [b51,b51,b51,b51,b55], [127X[104X
+    [4X[25X>[125X [27X  [b61,b61,b61,b61,b65] ], 6, 5, GF3 );[127X[104X
+    [4X[28X<A 6 x 5 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( bmat );[127X[104X
+    [4X[28X . 1 . 1 .[128X[104X
+    [4X[28X 1 . 1 . .[128X[104X
+    [4X[28X . 1 . 1 .[128X[104X
+    [4X[28X 1 . 1 . .[128X[104X
+    [4X[28X 1 1 1 1 .[128X[104X
+    [4X[28X 1 1 1 1 1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( amat * bmat );[127X[104X
+    [4X[28X 1 . 1 . .[128X[104X
+    [4X[28X . 1 . 1 .[128X[104X
+    [4X[28X 1 . 1 . .[128X[104X
+    [4X[28X . 1 . 1 .[128X[104X
+    [4X[28X 1 1 1 1 .[128X[104X
+    [4X[28X 1 1 1 1 1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( bmat * cmat );[127X[104X
+    [4X[28X 1 . 1 . .[128X[104X
+    [4X[28X . 1 . 1 .[128X[104X
+    [4X[28X 1 . 1 . .[128X[104X
+    [4X[28X . 1 . 1 .[128X[104X
+    [4X[28X 1 1 1 1 .[128X[104X
+    [4X[28X 1 1 1 1 1[128X[104X
+    [4X[25Xgap>[125X [27Xamat * bmat = bmat * cmat;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YSo  the  three  relations  in  our  algebroid  should  be satisfied by these
+  matrices,  therefore  they  should  provide a well-defined representation of
+  C4C4.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xeleven := AsObjectInFunctorCategory( CatReps, [ 6, 5 ], [ amat, bmat, cmat ] );[127X[104X
+    [4X[28X<(1)->6, (2)->5; (a)->6x6, (b)->6x5, (c)->5x5>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( eleven );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( eleven );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 5[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X. . . 1 . .[128X[104X
+    [4X[28X1 . . . . .[128X[104X
+    [4X[28X. 1 . . . .[128X[104X
+    [4X[28X. . 1 . . .[128X[104X
+    [4X[28X. . . . 1 .[128X[104X
+    [4X[28X. . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X. 1 . 1 .[128X[104X
+    [4X[28X1 . 1 . .[128X[104X
+    [4X[28X. 1 . 1 .[128X[104X
+    [4X[28X1 . 1 . .[128X[104X
+    [4X[28X1 1 1 1 .[128X[104X
+    [4X[28X1 1 1 1 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X. . . 1 .[128X[104X
+    [4X[28X1 . . . .[128X[104X
+    [4X[28X. 1 . . .[128X[104X
+    [4X[28X. . 1 . .[128X[104X
+    [4X[28X. . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xgammas := WeakDirectSumDecomposition( eleven );[127X[104X
+    [4X[28X[ <(1)->1x6, (2)->0x5>, <(1)->1x6, (2)->1x5>, <(1)->1x6, (2)->1x5>,[128X[104X
+    [4X[28X  <(1)->0x6, (2)->2x5>, <(1)->2x6, (2)->0x5>, <(1)->1x6, (2)->1x5> ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YAs  opposed  to  nine  in the previous example, eleven itself can already be
+  decomposed.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay( Source( UniversalMorphismFromDirectSum( gammas ) ) );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA vector space object over GF(3) of dimension 5[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(a) }]->(1):[128X[104X
+    [4X[28X 1 . . . . .[128X[104X
+    [4X[28X . 2 . . . .[128X[104X
+    [4X[28X . . 1 . . .[128X[104X
+    [4X[28X . . . . 2 .[128X[104X
+    [4X[28X . . . 1 . .[128X[104X
+    [4X[28X . . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ Z(3)^0*(b) }]->(2):[128X[104X
+    [4X[28X . . . . .[128X[104X
+    [4X[28X 1 . . . .[128X[104X
+    [4X[28X . 2 . . .[128X[104X
+    [4X[28X . . . . .[128X[104X
+    [4X[28X . . . . .[128X[104X
+    [4X[28X . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ Z(3)^0*(c) }]->(2):[128X[104X
+    [4X[28X 2 . . . .[128X[104X
+    [4X[28X . 1 . . .[128X[104X
+    [4X[28X . . . 2 .[128X[104X
+    [4X[28X . . 1 . .[128X[104X
+    [4X[28X . . . . 1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over GF(3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in FunctorCategory( Algebroid( GF(3), FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over GF(3) ) given by the above data[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2 [33X[0;0YGAP categories[133X[101X
+  
+  [1X1.2-1 IsFiniteConcreteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of a finite concrete category[133X
+  
+  [1X1.2-2 IsCellInAFiniteConcreteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCellInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of cell in a finite concrete category[133X
+  
+  [1X1.2-3 IsObjectInAFiniteConcreteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of objects in a finite concrete category[133X
+  
+  [1X1.2-4 IsMorphismInAFiniteConcreteCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInAFiniteConcreteCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe GAP category of morphisms in a finite concrete category[133X
+  
+  
+  [1X1.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.3-1 SetOfObjects[101X
+  
+  [33X[1;0Y[29X[2XSetOfObjects[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe set of objects of the concrete category [3XC[103X.[133X
+  
+  [1X1.3-2 SetOfGeneratingMorphisms[101X
+  
+  [33X[1;0Y[29X[2XSetOfGeneratingMorphisms[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe set of generating morphisms of the concrete category [3XC[103X.[133X
+  
+  [1X1.3-3 SetOfMorphisms[101X
+  
+  [33X[1;0Y[29X[2XSetOfMorphisms[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe set of morphisms of the concrete category [3XC[103X.[133X
+  
+  [1X1.3-4 RightQuiverFromConcreteCategory[101X
+  
+  [33X[1;0Y[29X[2XRightQuiverFromConcreteCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya right quiver[133X
+  
+  [33X[0;0YReturn the right quiver [3Xq(n)[103X from the concrete category [3XC[103X with [23Xn[123X objects.[133X
+  
+  
+  [1X1.4 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.4-1 ConcreteCategoryForCAP[101X
+  
+  [33X[1;0Y[29X[2XConcreteCategoryForCAP[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YConstruct  finite  concrete category out of the list [3XL[103X of morphisms given by
+  images.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xc3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27Xobjects := SetOfObjects( c3c3 );[127X[104X
+    [4X[28X[ An object in subcategory given by: <An object in FinSets>,[128X[104X
+    [4X[28X  An object in subcategory given by: <An object in FinSets> ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( objects, Display );[127X[104X
+    [4X[28XAn object in subcategory given by: [ 1, 2, 3 ][128X[104X
+    [4X[28XAn object in subcategory given by: [ 4, 5, 6 ][128X[104X
+    [4X[25Xgap>[125X [27Xgmorphisms := SetOfGeneratingMorphisms( c3c3 );[127X[104X
+    [4X[28X[ A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets> ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( gmorphisms, Display );[127X[104X
+    [4X[28XA morphism in subcategory given by:[128X[104X
+    [4X[28X[ [ 1, 2, 3 ], [ [ 1, 2 ], [ 2, 3 ], [ 3, 1 ] ], [ 1, 2, 3 ] ][128X[104X
+    [4X[28XA morphism in subcategory given by:[128X[104X
+    [4X[28X[ [ 1, 2, 3 ], [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ], [ 4, 5, 6 ] ][128X[104X
+    [4X[28XA morphism in subcategory given by:[128X[104X
+    [4X[28X[ [ 4, 5, 6 ], [ [ 4, 5 ], [ 5, 6 ], [ 6, 4 ] ], [ 4, 5, 6 ] ][128X[104X
+  [4X[32X[104X
+  
+  [1X1.4-2 AsFpCategory[101X
+  
+  [33X[1;0Y[29X[2XAsFpCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya finitely presented category[133X
+  
+  [33X[0;0YReturn a finitely presented category isomorphic to the finite category [3XC[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xc3c3c3 := ConcreteCategoryForCAP([127X[104X
+    [4X[25X>[125X [27X                  [ [2,3,1], [4,5,6], [,,,5,6,4],[127X[104X
+    [4X[25X>[125X [27X                    [,,,7,8,9], [,,,,,,8,9,7], [7,8,9] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27Xobjects := SetOfObjects( c3c3c3 );[127X[104X
+    [4X[28X[ An object in subcategory given by: <An object in FinSets>,[128X[104X
+    [4X[28X  An object in subcategory given by: <An object in FinSets>,[128X[104X
+    [4X[28X  An object in subcategory given by: <An object in FinSets> ][128X[104X
+    [4X[25Xgap>[125X [27Xgmorphisms := SetOfGeneratingMorphisms( c3c3c3 );[127X[104X
+    [4X[28X[ A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets>,[128X[104X
+    [4X[28X  A morphism in subcategory given by: <A morphism in FinSets> ][128X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiverFromConcreteCategory( c3c3c3 );[127X[104X
+    [4X[28Xq(3)[a:1->1,b:1->2,c:2->2,d:2->3,e:3->3,f:1->3][128X[104X
+    [4X[25Xgap>[125X [27XrelEndo := RelationsOfEndomorphisms( c3c3c3 );[127X[104X
+    [4X[28X[ [ (a*a*a), (1) ], [ (c*c*c), (2) ], [ (e*e*e), (3) ] ][128X[104X
+    [4X[25Xgap>[125X [27XC := AsFpCategory( c3c3c3 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver([128X[104X
+    [4X[28X  "q(3)[a:1->1,b:1->2,c:2->2,d:2->3,e:3->3,f:1->3]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XA := UnderlyingQuiverAlgebra( C );[127X[104X
+    [4X[28X(Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(e*e*e) - 1*(3),[128X[104X
+    [4X[28X1*(b*c) - 1*(a*b), 1*(b*d) - 1*(f), 1*(f*e) - 1*(a*f), 1*(d*e) - 1*(c*d) ][128X[104X
+    [4X[25Xgap>[125X [27Xunit := A.1 + A.2 + A.3;[127X[104X
+    [4X[28X{ 1*(3) + 1*(2) + 1*(1) }[128X[104X
+    [4X[25Xgap>[125X [27Xunit * A.a = A.a;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA.f * unit = A.f;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YReturn the [3Xk[103X-linear closure of the category [3XC[103X over the commutative ring [3Xk[103X.[133X
+  
+  [1X1.4-3 Algebroid[101X
+  
+  [33X[1;0Y[29X[2XAlgebroid[102X( [3Xk[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X[][102X( [3Xk[103X, [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya k-linear category[133X
+  
+  [33X[0;0YWe can also create finite concrete categories with objects not starting with
+  [23X1[123X,  to  demonstrate  that  [10XConcreteCategoryForCAP[110X( [ [,,,5,6,4], [,,,7,8,9],
+  [,,,,,,8,9,7] ] ) and [10XConcreteCategoryForCAP[110X( [ [2,3,1], [4,5,6], [,,,5,6,4]
+  ] ) yield even identical categories, in particular, their underlying quivers
+  are  identical,  inducing  identical algebroids, and identical categories of
+  representations.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xccat1 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27Xccat2 := ConcreteCategoryForCAP( [ [,,,5,6,4], [,,,7,8,9], [,,,,,,8,9,7] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XA1 := Q[ccat1];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XA2 := Q[ccat2];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( A1, A2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingCategory( A1 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingCategory( A2 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( UnderlyingCategory( A1 ), UnderlyingCategory( A2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCatReps1 := FunctorCategory( A1, Q );[127X[104X
+    [4X[28XFunctorCategory( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27XCatReps2 := FunctorCategory( A2, Q );[127X[104X
+    [4X[28XFunctorCategory( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,[128X[104X
+    [4X[28XCategory of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( CatReps1, CatReps2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X1.4-4 RelationsOfEndomorphisms[101X
+  
+  [33X[1;0Y[29X[2XRelationsOfEndomorphisms[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ylist of relations as generators of ideal.[133X
+  
+  [33X[0;0YReturn the endomorphism relations of the category [3XC[103X.[133X
+  
+  [33X[0;0YThe  two  examples below test [10XRelationsOfEndomorphisms[110X on endomorphisms that
+  are  not  bijective.  The  first generating morphism of the first example is
+  constant, and hence an idempotent.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xccat := ConcreteCategoryForCAP( [ [1,1,1], [4,5,6], [,,,5,6,4] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27XrelEndo := RelationsOfEndomorphisms( ccat );[127X[104X
+    [4X[28X[ [ (a*a), (a) ], [ (c*c*c), (2) ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  next example is a single permutation defined by the companion matrix of
+  [23Xa^8-a^3[123X, hence neither [23Xa^5-a^0[123X, [23Xa^6-a^1[123X, nor [23Xa^7-a^2[123X are zero:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xccat := ConcreteCategoryForCAP( [ [2,3,4,5,6,7,8,4] ] );[127X[104X
+    [4X[28XA finite concrete category[128X[104X
+    [4X[25Xgap>[125X [27XrelEndo := RelationsOfEndomorphisms( ccat );[127X[104X
+    [4X[28X[ [ (a*a*a*a*a*a*a*a), (a*a*a) ] ][128X[104X
+  [4X[32X[104X
+  
+  [1X1.4-5 EmbeddingOfSubRepresentation[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfSubRepresentation[102X( [3Xeta[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan morphism in a Hom-category[133X
+  
+  [33X[0;0YConcstruct  the  embedding  of  a  subrepresentation [23XS[123X of [3XF[103X by a list [3Xeta[103X of
+  morphisms,  where  the  image  embeddings  thereof are the components of the
+  natural monomorphism from [23XS[123X into [3XF[103X.[133X
+  
+  
+  [1X1.5 [33X[0;0YTools[133X[101X
+  
+  [1X1.5-1 ConvertToMapOfFinSets[101X
+  
+  [33X[1;0Y[29X[2XConvertToMapOfFinSets[102X( [3Xobjects_list[103X, [3Xgenerator[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism of finite sets[133X
+  
+  [33X[0;0YConstruct  the map of finite sets corresponding to the list of images in the
+  convention of catreps.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xc3c3 := ConcreteCategory([[2,3,1],[4,5,6],[,,,5,6,4]]);[127X[104X
+    [4X[28Xrec( codomain := [ 1, 2, 2 ], domain := [ 1, 1, 2 ],[128X[104X
+    [4X[28X     generators := [ [ 2, 3, 1 ], [ 4, 5, 6 ], [ ,,, 5, 6, 4 ] ],[128X[104X
+    [4X[28X     objects := [ [ 1, 2, 3 ], [ 4, 5, 6 ] ], operations := rec(  ) )[128X[104X
+    [4X[25Xgap>[125X [27Xobjects := List( c3c3.objects, FinSet );[127X[104X
+    [4X[28X[ <An object in FinSets>, <An object in FinSets> ][128X[104X
+    [4X[25Xgap>[125X [27Xg1 := ConvertToMapOfFinSets( objects, c3c3.generators[1] );[127X[104X
+    [4X[28X<A morphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( g1 );[127X[104X
+    [4X[28X[ [ 1, 2, 3 ], [ [ 1, 2 ], [ 2, 3 ], [ 3, 1 ] ], [ 1, 2, 3 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xg2 := ConvertToMapOfFinSets( objects, c3c3.generators[2] );[127X[104X
+    [4X[28X<A morphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( g2 );[127X[104X
+    [4X[28X[ [ 1, 2, 3 ], [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ], [ 4, 5, 6 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xg3 := ConvertToMapOfFinSets( objects, c3c3.generators[3] );[127X[104X
+    [4X[28X<A morphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( g3 );[127X[104X
+    [4X[28X[ [ 4, 5, 6 ], [ [ 4, 5 ], [ 5, 6 ], [ 6, 4 ] ], [ 4, 5, 6 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xg := ConvertToMapOfFinSets( objects, [,,,1,1,1] );[127X[104X
+    [4X[28X<A morphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( g );[127X[104X
+    [4X[28X[ [ 4, 5, 6 ], [ [ 4, 1 ], [ 5, 1 ], [ 6, 1 ] ], [ 1, 2, 3 ] ][128X[104X
+  [4X[32X[104X
+  
