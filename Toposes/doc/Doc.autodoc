@@ -1,0 +1,45 @@
+@Chapter Toposes
+
+An elementary topos is a finite complete, cartesian closed category with a subobject classifier.
+It follows that an elementary topos is also a finitely cocomplete Heyting category.
+
+The doctrines of (co)cartesian (co)closed categories and their
+variations are implemented in the CAP-based package `CartesianCategories`.
+
+@Section Morphisms of external Hom
+
+@Section Exact cover with global elements
+
+@Section Subobject Classifier
+
+@Section Truth Morphisms
+
+@Section Heyting Algebra of Subobjects
+
+@Section Lawvere-Tierney topologies
+
+@InsertChunk LawvereTierney
+
+@Section Pushout complements
+
+@Subsection Example in FinSets
+
+@InsertChunk PushoutComplement_FinSets
+
+@Subsection Example in SkeletalFinSets
+
+@InsertChunk PushoutComplement_SkeletalFinSets
+
+@Section Double-pushout rewriting
+
+@Section Add-methods
+
+@Chapter Category of relations
+
+@Chapter Tools
+
+@Chapter The initial category
+
+@Section &GAP; Categories
+
+@Section Constructor
