@@ -1,0 +1,15 @@
+@Chapter Categories of finitely presented graded modules
+
+@Section Constructors
+
+@Section Functors
+
+@Section Natural transformations
+
+@Section Examples
+
+@InsertChunk PresentationWithDegrees
+
+@Section Supported CAP operations
+
+@Section GAP categories
