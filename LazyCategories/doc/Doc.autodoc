@@ -1,0 +1,30 @@
+@Chapter Lazy categories
+
+@Section Examples
+
+@Subsection Disassembling the snake in the Abelian category
+@InsertChunk SnakeInAbelian
+
+@Subsection Disassembling the snake in the Abelian category (only lift primitve operations)
+@InsertChunk SnakeInAbelianPrimitive
+
+@Subsection Disassembling the snake in the free Abelian category
+@InsertChunk SnakeInFreeAbelian
+
+@Subsection Disassembling the snake in the free Abelian category (only lift primitve operations)
+@InsertChunk SnakeInFreeAbelianPrimitive
+
+@Subsection Disassembling the snake in an underlying additive category
+@InsertChunk SnakeInAdditiveClosureOfAlgebroid
+
+@Subsection Disassembling the snake in an underlying additive category (only lift primitve operations)
+@InsertChunk SnakeInAdditiveClosureOfAlgebroidPrimitive
+
+@Subsection Lazy terminal category with multiple objects
+@InsertChunk LazyTerminalCategory
+
+@Section GAP categories
+@Section Global variables
+@Section Attributes
+@Section Constructors
+@Section Functors
