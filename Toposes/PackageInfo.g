@@ -77,13 +77,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/Toposes",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/Toposes",
-PackageInfoURL  := "https://homalg-project.github.io/Toposes/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/Toposes/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/Toposes/releases/download/v", ~.Version, "/Toposes-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/Toposes/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/Toposes/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/Toposes-", ~.Version, "/Toposes-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
