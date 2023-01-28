@@ -1,0 +1,29 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XCategoryWithAmbientObjects[102X, for IsCapCategory 1.3-7 
+  [2XCreateLazyGeneralizedEmbeddingInAmbientObject[102X, for IsCapCategoryObject, IsFunction, IsList 1.3-1 
+  [2XDisplayEmbeddingInAmbientObject[102X, for IsCapCategoryObjectWithAmbientObject 1.3-8 
+  [2XEmbeddingInAmbientObject[102X, for IsCapCategoryObjectWithAmbientObject 1.2-4 
+      for IsLazyGeneralizedEmbeddingInAmbientObject 1.2-3 
+  [2XEvaluatedGeneralizedEmbeddingInAmbientObject[102X, for IsLazyGeneralizedEmbeddingInAmbientObject 1.2-1 
+  [2XGeneralizedEmbeddingInAmbientObject[102X, for IsCapCategoryObjectWithAmbientObject 1.2-2 
+  [2XIsCapCategoryMorphismWithAmbientObject[102X, for IsCapCategoryMorphism 1.1-4 
+  [2XIsCapCategoryObjectWithAmbientObject[102X, for IsCapCategoryObject 1.1-3 
+  [2XIsCapCategoryWithAmbientObjects[102X, for IsCapCategory 1.1-1 
+  [2XIsLazyGeneralizedEmbeddingInAmbientObject[102X, for IsAttributeStoringRep 1.1-2 
+  [2XLazyGeneralizedEmbeddingInAmbientObject[102X, for IsCapCategoryObjectWithAmbientObject 1.3-2 
+  [2XMorphismWithAmbientObject[102X, for IsCapCategoryObjectWithAmbientObject, IsCapCategoryMorphism, IsCapCategoryObjectWithAmbientObject 1.3-6 
+  [2XObjectWithAmbientObject[102X, for IsCapCategoryObject, IsCapCategory 1.3-4 
+      for IsGeneralizedMorphismByCospan, IsCapCategory 1.3-3 
+  [2XObjectWithAmbientObjectFromLazyGeneralizedEmbedding[102X, for IsLazyGeneralizedEmbeddingInAmbientObject, IsCapCategory 1.3-5 
+  [2XWithAmbientObject[102X, for IsCapFunctor, IsCapCategory 1.3-9 
+      for IsCapFunctor, IsCapCategory, IsCapCategory 1.3-9 
+      for IsCapFunctor, IsString, IsCapCategory 1.3-9 
+      for IsCapFunctor, IsString, IsCapCategory, IsCapCategory 1.3-9 
+      for IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor 1.3-10 
+      for IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor 1.3-10 
+  
+  
+  -------------------------------------------------------
