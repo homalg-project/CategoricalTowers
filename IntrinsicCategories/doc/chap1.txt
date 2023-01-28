@@ -1,0 +1,239 @@
+  
+  [1X1 [33X[0;0YIntrinsic Categories[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YCategories[133X[101X
+  
+  [1X1.1-1 IsIntrinsicCategory[101X
+  
+  [33X[1;0Y[29X[2XIsIntrinsicCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of an intrinsic CAP category.[133X
+  
+  [1X1.1-2 IsCapCategoryIntrinsicCell[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryIntrinsicCell[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of intrinsic cells in an intrinsic [5XCAP[105X category.[133X
+  
+  [1X1.1-3 IsCapCategoryIntrinsicObject[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryIntrinsicObject[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of intrinsic objects in an intrinsic [5XCAP[105X category.[133X
+  
+  [1X1.1-4 IsCapCategoryIntrinsicMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryIntrinsicMorphism[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of intrinsic morphisms in an intrinsic [5XCAP[105X category.[133X
+  
+  
+  [1X1.2 [33X[0;0YTechnical stuff[133X[101X
+  
+  [1X1.2-1 CanonicalizeIfZero[101X
+  
+  [33X[1;0Y[29X[2XCanonicalizeIfZero[102X [32X filter[133X
+  
+  [1X1.2-2 IsSafeForSideEffects[101X
+  
+  [33X[1;0Y[29X[2XIsSafeForSideEffects[102X( [3Xarg[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [1X1.2-3 CanonicalizedToZero[101X
+  
+  [33X[1;0Y[29X[2XCanonicalizedToZero[102X( [3Xarg[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  
+  [1X1.3 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.3-1 IntrinsifyObject[101X
+  
+  [33X[1;0Y[29X[2XIntrinsifyObject[102X( [3XC[103X, [3Xo[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a CAP-category[133X
+  
+  [33X[0;0YCreate an intrinsic object out of the object [3Xo[103X.[133X
+  
+  [1X1.3-2 Intrinsify[101X
+  
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3XC[103X, [3Xo[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a CAP-category[133X
+  
+  [33X[0;0YThe  default  method  is  [10XIntrinsifyObject[110X.  This  is the method to overload
+  depending on the context.[133X
+  
+  [1X1.3-3 Intrinsify[101X
+  
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3Xm[103X, [3Xs[103X, [3Xi[103X, [3Xt[103X, [3Xj[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3XC[103X, [3Xm[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a CAP-category[133X
+  
+  [33X[0;0YCreate   out   of   the   morphism  [3Xm[103X  an  intrinsic  morphism  with  source
+  [10XCertainCell[110X([3Xs[103X,[3Xi[103X)  and  target  [10XCertainCell[110X([3Xt[103X,[3Xj[103X). In the two argument version
+  create  an  intrinsic morphism out of the morphism [3Xm[103X after intrinsifying its
+  source and target.[133X
+  
+  [1X1.3-4 Intrinsify[101X
+  
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3XF[103X, [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3XF[103X, [3XA[103X, [3XB[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3XF[103X, [3Xname[103X, [3XA[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3XF[103X, [3XA[103X ) [32X operation[133X
+  
+  [33X[0;0YIntrinsify  a functor ... Intrinsify a functor ... Intrinsify an endofunctor
+  ... Intrinsify an endofunctor ...[133X
+  
+  [1X1.3-5 Intrinsify[101X
+  
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3Xeta[103X, [3Xname[103X, [3XA[103X, [3XB[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIntrinsify[102X( [3Xeta[103X, [3XA[103X, [3XB[103X ) [32X operation[133X
+  
+  [33X[0;0YIntrinsify a natural transformation Intrinsify a natural transformation[133X
+  
+  [1X1.3-6 TurnAutoequivalenceIntoIdentityFunctor[101X
+  
+  [33X[1;0Y[29X[2XTurnAutoequivalenceIntoIdentityFunctor[102X( [3Xeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YTurn  the range of the natural isomorphism [3Xeta[103X into the identity functor and
+  turn [3Xeta[103X into the identity natural transformation.[133X
+  
+  [1X1.3-7 CanonicalizeZeroObjectsAsIdentityFunctor[101X
+  
+  [33X[1;0Y[29X[2XCanonicalizeZeroObjectsAsIdentityFunctor[102X( [3Xcategory[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YTurn [10XFunctorCanonicalizeZeroObjects[110X([3Xcategory[103X) into the identity functor.[133X
+  
+  [1X1.3-8 CanonicalizeZeroMorphismsAsIdentityFunctor[101X
+  
+  [33X[1;0Y[29X[2XCanonicalizeZeroMorphismsAsIdentityFunctor[102X( [3Xcategory[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YTurn [10XFunctorCanonicalizeZeroMorphisms[110X([3Xcategory[103X) into the identity functor.[133X
+  
+  [1X1.3-9 IntrinsicCategory[101X
+  
+  [33X[1;0Y[29X[2XIntrinsicCategory[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YCreate  in  the  sense  explained  below  an  [21Xintrinsic[121X  category out of the
+  category [3XC[103X. The procedure understands five options:[133X
+  
+  [30X    [33X[0;6Y[10Xstrict[110X ([10Xtrue[110X or [10Xfalse[110X);[133X
+  
+  [30X    [33X[0;6Y[10Xfilter_obj[110X (a filter used to define the type of intrinsified objects);[133X
+  
+  [30X    [33X[0;6Y[10Xfilter_mor[110X   (a  filter  used  to  define  the  type  of  intrinsified
+        morphisms);[133X
+  
+  [30X    [33X[0;6Y[10Xfilter_end[110X   (a  filter  used  to  define  the  type  of  intrinsified
+        endomorphisms);[133X
+  
+  [30X    [33X[0;6Y[10Xtodo_func[110X (a function which does not need to return anything).[133X
+  
+  [33X[0;0YIf  [10Xstrict[110X=[10Xtrue[110X  then  the  [5XCAP[105X's  congruence relation on the [22XHom[122X-setoids is
+  divided  out.  The argument [10Xtodo_func[110X is a function which will be applied in
+  all  [5XCAP[105X constructions [10XCAP_oper[110X producing a morphism to the argument list of
+  [10XCAP_oper[110X  (as  first  argument)  and  the  output  of  [10XCAP_oper[110X  (as  second
+  argument).  If  the  option  [10Xstrict[110X is not specified it defaults to [10Xtrue[110X. If
+  [3Xfilter_obj[103X  is not specified it defaults to [10XIsCapCategoryIntrinsicObject[110X. If
+  [3Xfilter_mor[103X  is  not specified it defaults to [10XIsCapCategoryIntrinsicMorphism[110X.
+  If      [3Xfilter_end[103X      is      not     specified     it     defaults     to
+  [10XIsCapCategoryIntrinsicMorphism[110X.  If  [3Xtodo[103X  is  not  specified it defaults to
+  [10XReturnNothing[110X.[133X
+  
+  
+  [1X1.4 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.4-1 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XC[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe category underlying the intrinsic category [3XC[103X.[133X
+  
+  
+  [1X1.5 [33X[0;0YOperations[133X[101X
+  
+  [1X1.5-1 IsLockedObject[101X
+  
+  [33X[1;0Y[29X[2XIsLockedObject[102X( [3Xc[103X ) [32X operation[133X
+  
+  [33X[0;0YCheck whether the intrinsic object [3Xc[103X is locked or not.[133X
+  
+  [1X1.5-2 PositionOfLastStoredCell[101X
+  
+  [33X[1;0Y[29X[2XPositionOfLastStoredCell[102X( [3Xc[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn the position of the last stored cell underlying the intrinsic cell [3Xc[103X.[133X
+  
+  [1X1.5-3 CertainCell[101X
+  
+  [33X[1;0Y[29X[2XCertainCell[102X( [3Xo[103X, [3Xi[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn the [3Xi[103X-th object underlying the intrinsic object [3Xo[103X.[133X
+  
+  [1X1.5-4 CertainCell[101X
+  
+  [33X[1;0Y[29X[2XCertainCell[102X( [3Xm[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn the [3X(i,j,k)[103X-th morphism underlying the intrinsic cell [3Xm[103X.[133X
+  
+  [1X1.5-5 CertainCell[101X
+  
+  [33X[1;0Y[29X[2XCertainCell[102X( [3Xm[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn the [3X(i,j)[103X-th morphism underlying the intrinsic cell [3Xm[103X.[133X
+  
+  [1X1.5-6 PositionOfActiveCell[101X
+  
+  [33X[1;0Y[29X[2XPositionOfActiveCell[102X( [3Xc[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn the position of the active cell underlying the intrinsic cell [3Xc[103X.[133X
+  
+  [1X1.5-7 SetPositionOfActiveCell[101X
+  
+  [33X[1;0Y[29X[2XSetPositionOfActiveCell[102X( [3Xc[103X, [3Xp[103X ) [32X operation[133X
+  
+  [33X[0;0YSet the position of the active cell underlying the intrinsic cell [3Xc[103X using [3Xp[103X.[133X
+  
+  [1X1.5-8 ActiveCell[101X
+  
+  [33X[1;0Y[29X[2XActiveCell[102X( [3Xc[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn the active cell underlying the intrinsic cell [3Xc[103X.[133X
+  
+  [1X1.5-9 AddTransitionIsomorphism[101X
+  
+  [33X[1;0Y[29X[2XAddTransitionIsomorphism[102X( [3Xo[103X, [3Xs[103X, [3Xeta[103X ) [32X operation[133X
+  
+  [33X[0;0YAdd  the  isomorphism  [3Xeta[103X to the record of transition isomorphisms. [10XSource[110X(
+  [3Xeta[103X ) must be equal to [10XCertainCell[110X( [3Xo[103X, [3Xs[103X ).[133X
+  
+  [1X1.5-10 AddTransitionIsomorphism[101X
+  
+  [33X[1;0Y[29X[2XAddTransitionIsomorphism[102X( [3Xo[103X, [3Xeta[103X, [3Xt[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddTransitionIsomorphism[102X( [3Xo[103X, [3Xs[103X, [3Xeta[103X, [3Xt[103X ) [32X operation[133X
+  
+  [33X[0;0YIn the second version the [10XRange[110X( [3Xeta[103X ) must be equal to [10XCertainCell[110X( [3Xo[103X, [3Xt[103X ).
+  In  the  third version the [10XRange[110X( [3Xeta[103X ) must be equal to [10XCertainCell[110X( [3Xo[103X, [3Xt[103X )
+  and the [10XSource[110X( [3Xeta[103X ) must be equal to [10XCertainCell[110X( [3Xo[103X, [3Xs[103X ).[133X
+  
+  [1X1.5-11 TransitionIsomorphism[101X
+  
+  [33X[1;0Y[29X[2XTransitionIsomorphism[102X( [3Xo[103X, [3Xs[103X, [3Xt[103X ) [32X operation[133X
+  
+  [33X[0;0YReturn  the  transition  isomorphism  of  the intrinsic object [3Xo[103X at position
+  ([3Xs[103X,[3Xt[103X).[133X
+  
+  [1X1.5-12 AddToIntrinsicMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddToIntrinsicMorphism[102X( [3Xmor[103X, [3Xm[103X, [3Xs[103X, [3Xt[103X ) [32X operation[133X
+  
+  [33X[0;0YAdd the morphism [3Xm[103X to the intrinsic morphism [3Xmor[103X at position [ [3Xs[103X, [3Xt[103X, ? ].[133X
+  

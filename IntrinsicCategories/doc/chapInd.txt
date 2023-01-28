@@ -1,0 +1,42 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XActiveCell[102X, for IsObject 1.5-8 
+  [2XAddToIntrinsicMorphism[102X, for IsCapCategoryIntrinsicMorphism, IsCapCategoryMorphism, IsInt, IsInt 1.5-12 
+  [2XAddTransitionIsomorphism[102X, for IsCapCategoryIntrinsicObject, IsCapCategoryMorphism, IsInt 1.5-10 
+      for IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism 1.5-9 
+      for IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryMorphism, IsInt 1.5-10 
+  [2XCanonicalizedToZero[102X, for IsCapCategoryIntrinsicCell 1.2-3 
+  [2XCanonicalizeIfZero[102X 1.2-1 
+  [2XCanonicalizeZeroMorphismsAsIdentityFunctor[102X, for IsCapCategory 1.3-8 
+  [2XCanonicalizeZeroObjectsAsIdentityFunctor[102X, for IsCapCategory 1.3-7 
+  [2XCertainCell[102X, for IsCapCategoryIntrinsicMorphism, IsInt, IsInt 1.5-5 
+      for IsCapCategoryIntrinsicMorphism, IsInt, IsInt, IsInt 1.5-4 
+      for IsCapCategoryIntrinsicObject, IsInt 1.5-3 
+  [2XIntrinsicCategory[102X, for IsCapCategory 1.3-9 
+  [2XIntrinsify[102X, for IsCapCategory, IsCapCategoryMorphism 1.3-3 
+      for IsCapCategory, IsCapCategoryObject 1.3-2 
+      for IsCapCategoryMorphism, IsCapCategoryIntrinsicObject, IsInt, IsCapCategoryIntrinsicObject, IsInt 1.3-3 
+      for IsCapFunctor, IsCapCategory 1.3-4 
+      for IsCapFunctor, IsCapCategory, IsCapCategory 1.3-4 
+      for IsCapFunctor, IsString, IsCapCategory 1.3-4 
+      for IsCapFunctor, IsString, IsCapCategory, IsCapCategory 1.3-4 
+      for IsCapNaturalTransformation, IsCapFunctor, IsCapFunctor 1.3-5 
+      for IsCapNaturalTransformation, IsString, IsCapFunctor, IsCapFunctor 1.3-5 
+  [2XIntrinsifyObject[102X, for IsCapCategory, IsCapCategoryObject 1.3-1 
+  [2XIsCapCategoryIntrinsicCell[102X, for IsCapCategoryCell andIsAttributeStoringRep 1.1-2 
+  [2XIsCapCategoryIntrinsicMorphism[102X, for IsCapCategoryIntrinsicCell andIsCapCategoryMorphism 1.1-4 
+  [2XIsCapCategoryIntrinsicObject[102X, for IsCapCategoryIntrinsicCell andIsCapCategoryObject 1.1-3 
+  [2XIsIntrinsicCategory[102X, for IsCapCategory 1.1-1 
+  [2XIsLockedObject[102X, for IsCapCategoryIntrinsicObject 1.5-1 
+  [2XIsSafeForSideEffects[102X, for IsCapCategoryCell 1.2-2 
+  [2XPositionOfActiveCell[102X, for IsObject 1.5-6 
+  [2XPositionOfLastStoredCell[102X, for IsCapCategoryIntrinsicObject 1.5-2 
+  [2XSetPositionOfActiveCell[102X, for IsObject, IsObject 1.5-7 
+  [2XTransitionIsomorphism[102X, for IsCapCategoryIntrinsicObject, IsInt, IsInt 1.5-11 
+  [2XTurnAutoequivalenceIntoIdentityFunctor[102X, for IsCapNaturalTransformation 1.3-6 
+  [2XUnderlyingCategory[102X, for IsCapCategory 1.4-1 
+  
+  
+  -------------------------------------------------------

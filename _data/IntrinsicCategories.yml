@@ -1,0 +1,81 @@
+name: IntrinsicCategories
+version: "2022.12-01"
+license: "GPL-2.0-or-later"
+date: 2023-01-28
+description: |
+    Intrinsic categories for CAP
+
+authors:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+
+maintainers:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "AutoDoc"
+      version: ">= 2016.02.16"
+      url: "https://gap-packages.github.io/AutoDoc"
+    - name: "CAP"
+      version: ">= 2021.10-01"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "ToolsForHomalg"
+      version: ">= 2015.09.23"
+      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
+    - name: "CategoryConstructor"
+      version: ">= 2022.11-10"
+      url: "https://homalg-project.github.io/pkg/CategoryConstructor"
+    - name: "GAPDoc"
+      version: ">= 1.1"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+
+www: https://homalg-project.github.io/pkg/IntrinsicCategories
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicCategories/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2022.12-01/IntrinsicCategories-2022.12-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2022.12-01/IntrinsicCategories-2022.12-01.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2022.12-01/IntrinsicCategories-2022.12-01.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+keywords: |
+    categories, intrinsic categories.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+     <i class='BibTitle'>IntrinsicCategories, Intrinsic categories for CAP,
+             Version 2022.12-01</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicCategories">https://homalg-project.github.io/pkg/IntrinsicCategories</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ IntrinsicCategories2022.12-01,
+      author =           {Barakat, M.},
+      title =            {{IntrinsicCategories},  Intrinsic  categories for CAP,
+                          {V}ersion 2022.12-01},
+      month =            {Jan},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/IntrinsicCategories}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{IntrinsicCategories}}},
+      keywords =         {categories; intrinsic categories},
+      printedkey =       {Bar23}
+    }
+

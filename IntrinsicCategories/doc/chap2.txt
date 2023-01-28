@@ -1,0 +1,319 @@
+  
+  [1X2 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YIsZero[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XR := QQ * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xcategory := IntrinsicCategory( LeftPresentations( R ) );[127X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27XM := AsLeftPresentation( HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := CoverByFreeModule( M );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XM := Intrinsify( category, M );[127X[104X
+    [4X[28X<an intrinsic object on active cell: <An object in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XF := Intrinsify( category, Source( phi ) );[127X[104X
+    [4X[28X<an intrinsic object on active cell:[128X[104X
+    [4X[28X <A projective object in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := Intrinsify( phi, F, 1, M, 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( phi );[127X[104X
+    [4X[28X1,0,[128X[104X
+    [4X[28X0,1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xm1 := MorphismFromZeroObject( M );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A zero, split monomorphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xm2 := MorphismIntoZeroObject( M );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A zero, split epimorphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( M );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XActiveCell( m1 );[127X[104X
+    [4X[28X<A zero, isomorphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XActiveCell( m2 );[127X[104X
+    [4X[28X<A zero, isomorphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( phi );[127X[104X
+    [4X[28X(an empty 2 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA zero, split epimorphism in Category of left presentations of Q[x,y][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YTurnAutoequivalenceIntoIdentityFunctor[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XR := QQ * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xcategory := IntrinsicCategory( LeftPresentations( R ) );[127X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27XM := AsLeftPresentation( HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := CoverByFreeModule( M );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XM := Intrinsify( category, M );[127X[104X
+    [4X[28X<an intrinsic object on active cell: <An object in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XF := Intrinsify( category, Source( phi ) );[127X[104X
+    [4X[28X<an intrinsic object on active cell:[128X[104X
+    [4X[28X <A projective object in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := Intrinsify( phi, F, 1, M, 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XPositionOfActiveCell( phi );[127X[104X
+    [4X[28X[ 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XId := IdentityFunctor( category );[127X[104X
+    [4X[28XIdentity functor of[128X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27Xlg := FunctorLessGeneratorsLeft( R );[127X[104X
+    [4X[28XLess generators for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XLG := Intrinsify( lg, category );[127X[104X
+    [4X[28XIntrinsic version of Less generators[128X[104X
+    [4X[28Xfor Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XetaLG := Intrinsify([127X[104X
+    [4X[25X>[125X [27X  NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R ), Id, LG );[127X[104X
+    [4X[28XIntrinsic version of Natural isomorphism[128X[104X
+    [4X[28Xfrom Id to Less generators for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XIdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );[127X[104X
+    [4X[28XIntrinsic version of Less generators for[128X[104X
+    [4X[28XCategory of left presentations of Q[x,y] as identity functor with side effects[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( IdLG, phi );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XPositionOfActiveCell( phi );[127X[104X
+    [4X[28X[ 1, 2, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( IdLG, phi );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XPositionOfActiveCell( phi );[127X[104X
+    [4X[28X[ 1, 2, 1 ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XR := QQ * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xcategory := IntrinsicCategory( LeftPresentations( R ) );[127X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27XM := AsLeftPresentation( HomalgMatrix( "[ 1, x, 0, 1 ]", 2, 2, R ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := CoverByFreeModule( M );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XM := Intrinsify( category, M );[127X[104X
+    [4X[28X<an intrinsic object on active cell: <An object in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XF := Intrinsify( category, Source( phi ) );[127X[104X
+    [4X[28X<an intrinsic object on active cell:[128X[104X
+    [4X[28X <A projective object in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := Intrinsify( phi, F, 1, M, 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XPositionOfActiveCell( phi );[127X[104X
+    [4X[28X[ 1, 1, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XId := IdentityFunctor( category );[127X[104X
+    [4X[28XIdentity functor of[128X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27Xsm := FunctorStandardModuleLeft( R );[127X[104X
+    [4X[28XStandard module for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XSM := Intrinsify( sm, category );[127X[104X
+    [4X[28XIntrinsic version of Standard module[128X[104X
+    [4X[28Xfor Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XetaSM := Intrinsify([127X[104X
+    [4X[25X>[125X [27X  NaturalIsomorphismFromIdentityToStandardModuleLeft( R ), Id, SM );[127X[104X
+    [4X[28XIntrinsic version of Natural isomorphism[128X[104X
+    [4X[28Xfrom Id to Standard module for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XIdSM := TurnAutoequivalenceIntoIdentityFunctor( etaSM );[127X[104X
+    [4X[28XIntrinsic version of Standard module for[128X[104X
+    [4X[28XCategory of left presentations of Q[x,y] as identity functor with side effects[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( IdSM, phi );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XPositionOfActiveCell( phi );[127X[104X
+    [4X[28X[ 1, 2, 1 ][128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( IdSM, phi );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell:[128X[104X
+    [4X[28X <A morphism in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XPositionOfActiveCell( phi );[127X[104X
+    [4X[28X[ 1, 2, 1 ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.3 [33X[0;0YSpectral Sequences[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XR := QQ * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xcategory := IntrinsicCategory( LeftPresentations( R ) );[127X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27XS := Intrinsify( category, FreeLeftPresentation( 1, R ) );[127X[104X
+    [4X[28X<an intrinsic object on active cell:[128X[104X
+    [4X[28X <A projective object in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xobject_func := function( i ) return S; end;[127X[104X
+    [4X[28Xfunction( i ) ... end[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_func := function( i ) return IdentityMorphism( S ); end;[127X[104X
+    [4X[28Xfunction( i ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XC0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 0, 4 );[127X[104X
+    [4X[28X<An object in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XS2 := Intrinsify( category, FreeLeftPresentation( 2, R ) );[127X[104X
+    [4X[28X<an intrinsic object on active cell:[128X[104X
+    [4X[28X <A projective object in Category of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );[127X[104X
+    [4X[28X<An object in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );[127X[104X
+    [4X[28X<An object in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S, S ], 1 ) ], 3 );[127X[104X
+    [4X[28X<An object in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );[127X[104X
+    [4X[28X<An object in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_3 := PresentationMorphism( ActiveCell( C1[3] ), HomalgMatrix( [ [ "x^2" ], [ "xy" ], [ "y^3"] ], 3, 1, R ), ActiveCell( C0[3] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_3 := Intrinsify( delta_1_3, C1[3], 1, C0[3], 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell: <A morphism in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_2 := PresentationMorphism( ActiveCell( C1[2] ), HomalgMatrix( [ [ "x^2" ], [ "xy" ] ], 2, 1, R ), ActiveCell( C0[2] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_2 := Intrinsify( delta_1_2, C1[2], 1, C0[2], 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell: <A morphism in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := ZFunctorMorphism( C1, [ UniversalMorphismFromInitialObject( C0[1] ), UniversalMorphismFromInitialObject( C0[1] ), delta_1_2, delta_1_3 ], 0, C0 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := ZFunctorMorphismExtendedByInitialAndIdentity( delta1, 0, 3 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := AsAscendingFilteredMorphism( delta1 );[127X[104X
+    [4X[28X<A morphism in Ascending filtered object category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_3 := PresentationMorphism( ActiveCell( C2[3] ), HomalgMatrix( [ [ "y", "-x", "0" ] ], 1, 3, R ), ActiveCell( C1[3] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_3 := Intrinsify( delta_2_3, C2[3], 1, C1[3], 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell: <A morphism in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_4 := PresentationMorphism( ActiveCell( C2[4] ), HomalgMatrix( [ [ "y", "-x", "0" ], [ "0", "y^2", "-x" ] ], 2, 3, R ), ActiveCell( C1[4] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_4 := Intrinsify( delta_2_4, C2[4], 1, C1[4], 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell: <A morphism in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := ZFunctorMorphism( C2, [  UniversalMorphismFromInitialObject( C1[2] ), delta_2_3, delta_2_4 ], 2, C1 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := ZFunctorMorphismExtendedByInitialAndIdentity( delta2, 2, 4 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := AsAscendingFilteredMorphism( delta2 );[127X[104X
+    [4X[28X<A morphism in Ascending filtered object category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XSetIsAdditiveCategory( CategoryOfAscendingFilteredObjects( category ), true );[127X[104X
+    [4X[25Xgap>[125X [27Xcomplex := ZFunctorObjectFromMorphismList( [ delta2, delta1 ], -2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Ascending filtered object category[128X[104X
+    [4X[28X of IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xcomplex := AsComplex( complex );[127X[104X
+    [4X[28X<An object in Complex category of Ascending filtered object category[128X[104X
+    [4X[28X of IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( R );[127X[104X
+    [4X[28XLess generators for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XId := IdentityFunctor( category );[127X[104X
+    [4X[28XIdentity functor of[128X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27XLessGenFunctor := Intrinsify( LessGenFunctor, category );[127X[104X
+    [4X[28XIntrinsic version of Less generators[128X[104X
+    [4X[28Xfor Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XetaLG := Intrinsify([127X[104X
+    [4X[25X>[125X [27X  NaturalIsomorphismFromIdentityToLessGeneratorsLeft( R ), Id, LessGenFunctor );[127X[104X
+    [4X[28XIntrinsic version of Natural isomorphism[128X[104X
+    [4X[28Xfrom Id to Less generators for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XIdLG := TurnAutoequivalenceIntoIdentityFunctor( etaLG );[127X[104X
+    [4X[28XIntrinsic version of Less generators for[128X[104X
+    [4X[28XCategory of left presentations of Q[x,y] as identity functor with side effects[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2,[128X[104X
+    [4X[28Xy^3[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2,[128X[104X
+    [4X[28Xy^3[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell: <A morphism in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, s ) ) ) );[127X[104X
+    [4X[28Xy^3[128X[104X
+    [4X[25Xgap>[125X [27XAscToDescFunctor := AscendingToDescendingFilteredObjectFunctor( category );[127X[104X
+    [4X[28XAscending to descending filtered object functor of[128X[104X
+    [4X[28XIntrinsicCategory( Category of left presentations of Q[x,y] )[128X[104X
+    [4X[25Xgap>[125X [27Xcocomplex := ZFunctorObjectFromMorphismList( [ ApplyFunctor( AscToDescFunctor, delta2 ), ApplyFunctor( AscToDescFunctor, delta1 ) ], -2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Descending filtered object category[128X[104X
+    [4X[28X of IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XSetIsAdditiveCategory( CategoryOfDescendingFilteredObjects( category ), true );[127X[104X
+    [4X[25Xgap>[125X [27Xcocomplex := AsCocomplex( cocomplex );[127X[104X
+    [4X[28X<An object in Cocomplex category of Descending filtered object category[128X[104X
+    [4X[28X of IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 0, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 2 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 1, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 2 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28Xx,-y[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of[128X[104X
+    [4X[28X IntrinsicCategory( Category of left presentations of Q[x,y] )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );[127X[104X
+    [4X[28X<an intrinsic morphism on active cell: <A morphism in Category[128X[104X
+    [4X[28X of left presentations of Q[x,y]>>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ActiveCell( ApplyFunctor( LessGenFunctor, s ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2[128X[104X
+  [4X[32X[104X
+  
