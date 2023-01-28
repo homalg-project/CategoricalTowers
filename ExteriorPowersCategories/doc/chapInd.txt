@@ -1,0 +1,18 @@
+  
+  
+  [1XIndex[101X
+  
+  [2X*[102X, for IsHomalgRing, IsCellInExteriorPowersCategory 1.3-3 
+  [2XDegreeOfMorphism[102X, for IsMorphismInExteriorPowersCategory 1.2-3 
+  [2XDegreeOfObject[102X, for IsObjectInExteriorPowersCategory 1.2-2 
+  [2XExteriorPowersCategory[102X, for IsInt, IsCapCategory 1.3-1 
+  [2XIsCellInExteriorPowersCategory[102X, for IsCapCategoryCell 1.1-2 
+  [2XIsExteriorPowersCategory[102X, for IsCapCategory 1.1-1 
+  [2XIsMorphismInExteriorPowersCategory[102X, for IsCellInExteriorPowersCategory andIsCapCategoryMorphism 1.1-4 
+  [2XIsObjectInExteriorPowersCategory[102X, for IsCellInExteriorPowersCategory andIsCapCategoryObject 1.1-3 
+  [2XMorphismInExteriorPowersCategory[102X, for IsObjectInExteriorPowersCategory, IsList, IsObjectInExteriorPowersCategory 1.3-4 
+  [2XObjectInExteriorPowersCategory[102X, for IsCapCategoryObject, IsInt, IsExteriorPowersCategory 1.3-2 
+  [2XUnderlyingCell[102X, for IsCellInExteriorPowersCategory 1.2-1 
+  
+  
+  -------------------------------------------------------
