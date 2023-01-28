@@ -18,6 +18,7 @@
 | [Toposes](Toposes#readme) | Elementary toposes | [![HTML stable documentation][html-Toposes-img]][html-Toposes-url] [![PDF stable documentation][pdf-Toposes-img]][pdf-Toposes-url] |
 | [Locales](Locales#readme) | Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets | [![HTML stable documentation][html-Locales-img]][html-Locales-url] [![PDF stable documentation][pdf-Locales-img]][pdf-Locales-url] |
 | [SubcategoriesForCAP](SubcategoriesForCAP#readme) | Subcategory and other related constructors for CAP categories | [![HTML stable documentation][html-SubcategoriesForCAP-img]][html-SubcategoriesForCAP-url] [![PDF stable documentation][pdf-SubcategoriesForCAP-img]][pdf-SubcategoriesForCAP-url] |
+| [LazyCategories](LazyCategories#readme) | Construct an equivalent lazy category out of a CAP category | [![HTML stable documentation][html-LazyCategories-img]][html-LazyCategories-url] [![PDF stable documentation][pdf-LazyCategories-img]][pdf-LazyCategories-url] |
 
 [html-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/doc/chap0_mj.html
@@ -59,6 +60,13 @@
 
 [pdf-SubcategoriesForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-SubcategoriesForCAP-url]: https://homalg-project.github.io/CategoricalTowers/SubcategoriesForCAP/download_pdf.html
+
+
+[html-LazyCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-LazyCategories-url]: https://homalg-project.github.io/CategoricalTowers/LazyCategories/doc/chap0_mj.html
+
+[pdf-LazyCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-LazyCategories-url]: https://homalg-project.github.io/CategoricalTowers/LazyCategories/download_pdf.html
 
 
 [tests-img]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml/badge.svg?branch=master

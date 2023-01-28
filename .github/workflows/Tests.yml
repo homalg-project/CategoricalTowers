@@ -46,7 +46,6 @@ jobs:
           git clone --depth 1 -vv https://github.com/homalg-project/Algebroids.git
           git clone --depth 1 -vv https://github.com/homalg-project/FinSetsForCAP.git
           git clone --depth 1 -vv https://github.com/homalg-project/ZariskiFrames.git
-          git clone --depth 1 -vv https://github.com/homalg-project/LazyCategories.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`

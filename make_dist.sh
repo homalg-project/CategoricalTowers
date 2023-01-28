@@ -2,7 +2,7 @@
 
 set -e
 
-packages="FiniteCocompletion PreSheaves CategoryConstructor Toposes Locales SubcategoriesForCAP "
+packages="FiniteCocompletion PreSheaves CategoryConstructor Toposes Locales SubcategoriesForCAP LazyCategories "
 
 base_dir="$PWD"
 

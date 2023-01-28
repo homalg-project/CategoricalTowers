@@ -35,13 +35,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/LazyCategories",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/LazyCategories",
-PackageInfoURL  := "https://homalg-project.github.io/LazyCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/LazyCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/LazyCategories/releases/download/v", ~.Version, "/LazyCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/LazyCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/LazyCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/LazyCategories-", ~.Version, "/LazyCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -68,7 +68,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2021.12-02" ],
