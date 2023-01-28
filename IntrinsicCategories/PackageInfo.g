@@ -35,13 +35,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/IntrinsicCategories",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/IntrinsicCategories",
-PackageInfoURL  := "https://homalg-project.github.io/IntrinsicCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/IntrinsicCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/IntrinsicCategories/releases/download/v", ~.Version, "/IntrinsicCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/IntrinsicCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/IntrinsicCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-", ~.Version, "/IntrinsicCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -68,7 +68,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "AutoDoc", ">= 2016.02.16" ],
                    [ "CAP", ">= 2021.10-01" ],

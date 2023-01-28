@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 8
+  after_n_builds: 9
 flags:
   FiniteCocompletion:
     paths:
@@ -28,3 +28,6 @@ flags:
   ZariskiFrames:
     paths:
       - "ZariskiFrames/"
+  IntrinsicCategories:
+    paths:
+      - "IntrinsicCategories/"
