@@ -3,7 +3,7 @@ all: doc test
 .PHONY: test
 
 # BEGIN PACKAGE JANITOR
-doc: doc_Algebroids doc_CategoriesWithAmbientObjects doc_CategoryConstructor doc_CatReps doc_ExteriorPowersCategories doc_FiniteCocompletion doc_FunctorCategories doc_IntrinsicCategories doc_IntrinsicGradedModules doc_IntrinsicModules doc_LazyCategories doc_Locales doc_PreSheaves doc_SubcategoriesForCAP doc_Toposes doc_ZariskiFrames
+doc: doc_Algebroids doc_CategoriesWithAmbientObjects doc_CategoryConstructor doc_CatReps doc_ExteriorPowersCategories doc_FiniteCocompletion doc_FunctorCategories doc_GradedCategories doc_IntrinsicCategories doc_IntrinsicGradedModules doc_IntrinsicModules doc_LazyCategories doc_Locales doc_PreSheaves doc_SubcategoriesForCAP doc_Toposes doc_ZariskiFrames
 
 doc_Algebroids:
 	$(MAKE) -C Algebroids doc
@@ -25,6 +25,9 @@ doc_FiniteCocompletion:
 
 doc_FunctorCategories:
 	$(MAKE) -C FunctorCategories doc
+
+doc_GradedCategories:
+	$(MAKE) -C GradedCategories doc
 
 doc_IntrinsicCategories:
 	$(MAKE) -C IntrinsicCategories doc

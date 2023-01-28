@@ -49,13 +49,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/GradedCategories",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/GradedCategories",
-PackageInfoURL  := "https://homalg-project.github.io/GradedCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/GradedCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/GradedCategories/releases/download/v", ~.Version, "/GradedCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/GradedCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/GradedCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/GradedCategories-", ~.Version, "/GradedCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",

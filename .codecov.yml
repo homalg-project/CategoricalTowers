@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 16
+  after_n_builds: 17
 flags:
   Algebroids:
     paths:
@@ -25,6 +25,9 @@ flags:
   FunctorCategories:
     paths:
       - "FunctorCategories/"
+  GradedCategories:
+    paths:
+      - "GradedCategories/"
   IntrinsicCategories:
     paths:
       - "IntrinsicCategories/"
