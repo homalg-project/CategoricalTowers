@@ -37,3 +37,4 @@ chmod +x codecov
 ./codecov -Z -v -s ../ -F ExteriorPowersCategories || (sleep 30; ./codecov -Z -v -s ../ -F ExteriorPowersCategories || (sleep 30; ./codecov -Z -v -s ../ -F ExteriorPowersCategories))
 ./codecov -Z -v -s ../ -F IntrinsicGradedModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicGradedModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicGradedModules))
 ./codecov -Z -v -s ../ -F Algebroids || (sleep 30; ./codecov -Z -v -s ../ -F Algebroids || (sleep 30; ./codecov -Z -v -s ../ -F Algebroids))
+./codecov -Z -v -s ../ -F FunctorCategories || (sleep 30; ./codecov -Z -v -s ../ -F FunctorCategories || (sleep 30; ./codecov -Z -v -s ../ -F FunctorCategories))

@@ -52,13 +52,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/FunctorCategories",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/FunctorCategories",
-PackageInfoURL  := "https://homalg-project.github.io/FunctorCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/FunctorCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/FunctorCategories/releases/download/v", ~.Version, "/FunctorCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/FunctorCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/FunctorCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-", ~.Version, "/FunctorCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
