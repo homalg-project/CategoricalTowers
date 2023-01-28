@@ -33,3 +33,4 @@ chmod +x codecov
 ./codecov -Z -v -s ../ -F ZariskiFrames || (sleep 30; ./codecov -Z -v -s ../ -F ZariskiFrames || (sleep 30; ./codecov -Z -v -s ../ -F ZariskiFrames))
 ./codecov -Z -v -s ../ -F IntrinsicCategories || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicCategories || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicCategories))
 ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 30; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 30; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects))
+./codecov -Z -v -s ../ -F IntrinsicModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicModules || (sleep 30; ./codecov -Z -v -s ../ -F IntrinsicModules))

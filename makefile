@@ -3,7 +3,7 @@ all: doc test
 .PHONY: test
 
 # BEGIN PACKAGE JANITOR
-doc: doc_FiniteCocompletion doc_PreSheaves doc_CategoryConstructor doc_Toposes doc_Locales doc_SubcategoriesForCAP doc_LazyCategories doc_ZariskiFrames doc_IntrinsicCategories doc_CategoriesWithAmbientObjects
+doc: doc_FiniteCocompletion doc_PreSheaves doc_CategoryConstructor doc_Toposes doc_Locales doc_SubcategoriesForCAP doc_LazyCategories doc_ZariskiFrames doc_IntrinsicCategories doc_CategoriesWithAmbientObjects doc_IntrinsicModules
 
 doc_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion doc
@@ -34,6 +34,9 @@ doc_IntrinsicCategories:
 
 doc_CategoriesWithAmbientObjects:
 	$(MAKE) -C CategoriesWithAmbientObjects doc
+
+doc_IntrinsicModules:
+	$(MAKE) -C IntrinsicModules doc
 
 # END PACKAGE JANITOR
 

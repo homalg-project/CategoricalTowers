@@ -50,13 +50,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/IntrinsicModules",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/IntrinsicModules",
-PackageInfoURL  := "https://homalg-project.github.io/IntrinsicModules/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/IntrinsicModules/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/IntrinsicModules/releases/download/v", ~.Version, "/IntrinsicModules-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/IntrinsicModules/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/IntrinsicModules/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-", ~.Version, "/IntrinsicModules-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -83,7 +83,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2021.03-01" ],
                    [ "Modules", ">= 2021.04-01" ],

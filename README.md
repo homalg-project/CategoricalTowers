@@ -22,6 +22,7 @@
 | [ZariskiFrames](ZariskiFrames#readme) | (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties | [![HTML stable documentation][html-ZariskiFrames-img]][html-ZariskiFrames-url] [![PDF stable documentation][pdf-ZariskiFrames-img]][pdf-ZariskiFrames-url] |
 | [IntrinsicCategories](IntrinsicCategories#readme) | Intrinsic categories for CAP | [![HTML stable documentation][html-IntrinsicCategories-img]][html-IntrinsicCategories-url] [![PDF stable documentation][pdf-IntrinsicCategories-img]][pdf-IntrinsicCategories-url] |
 | [CategoriesWithAmbientObjects](CategoriesWithAmbientObjects#readme) | Categories with objects having ambient objects | [![HTML stable documentation][html-CategoriesWithAmbientObjects-img]][html-CategoriesWithAmbientObjects-url] [![PDF stable documentation][pdf-CategoriesWithAmbientObjects-img]][pdf-CategoriesWithAmbientObjects-url] |
+| [IntrinsicModules](IntrinsicModules#readme) | Finitely presented modules over computable rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicModules-img]][html-IntrinsicModules-url] [![PDF stable documentation][pdf-IntrinsicModules-img]][pdf-IntrinsicModules-url] |
 
 [html-FiniteCocompletion-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-FiniteCocompletion-url]: https://homalg-project.github.io/CategoricalTowers/FiniteCocompletion/doc/chap0_mj.html
@@ -91,6 +92,13 @@
 
 [pdf-CategoriesWithAmbientObjects-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-CategoriesWithAmbientObjects-url]: https://homalg-project.github.io/CategoricalTowers/CategoriesWithAmbientObjects/download_pdf.html
+
+
+[html-IntrinsicModules-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-IntrinsicModules-url]: https://homalg-project.github.io/CategoricalTowers/IntrinsicModules/doc/chap0_mj.html
+
+[pdf-IntrinsicModules-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-IntrinsicModules-url]: https://homalg-project.github.io/CategoricalTowers/IntrinsicModules/download_pdf.html
 
 
 [tests-img]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml/badge.svg?branch=master
