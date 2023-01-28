@@ -1,0 +1,171 @@
+@Chapter Category of functors of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section &GAP; Categories
+
+@Section Examples
+
+@Subsection Representations of the cyclic groups of order 3 as a category of functors
+
+@InsertChunk Endomorphism
+
+@Subsection Differential modules as a category of functors
+
+@InsertChunk DifferentialModules
+
+@Subsection The category of equivariant maps as a category of functors
+
+@InsertChunk C3C3
+
+@Chapter Category of presheaves of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section &GAP; Categories
+
+@Section Global variables
+
+@Section Examples
+
+@Subsection The subobject classifier
+
+@InsertChunk SubobjectClassifier
+
+@Subsection PreSheaves of non-f.p. categories (experimental)
+
+@InsertChunk PreSheavesOfSkeletalFinSets
+
+@Chapter Finite cocompletion of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section &GAP; Categories
+
+@Chapter The elementary topos of finite bouquets
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk FinBouquets
+
+@Chapter The elementary topos of finite quivers
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk FinQuivers
+
+@Chapter Topos operations
+
+@Section Double-pushout rewriting
+
+@InsertChunk DPO_Quivers
+
+@Chapter The elementary topos of finite reflexive quivers
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk FinReflexiveQuivers
+
+@Chapter The elementary topos of decorated finite quivers
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section Global variables
+
+@Section &GAP; Categories
+
+@Section Example
+
+@InsertChunk DecoratedFinQuivers
+
+@Chapter Category of copresheaves of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section Operations
+
+@Section &GAP; Categories
+
+@Chapter Finite completion of a finitely presented (linear) category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section &GAP; Categories
+
+@Section Examples
+
+@Subsection The terminal category as a finite completion of the initial category
+
+@InsertChunk TerminalCategory
+
+@Section &GAP; Categories
+
+@Chapter Free Abelian category of a finitely presented linear category
+
+@Section Constructors
+
+@Section Attributes
+
+@Section &GAP; Categories
+
+@Section Examples
+
+@Subsection Proof of the snake lemma in a free Abelian category
+
+@InsertChunk SnakeInFreeAbelian
+
+@Chapter Functors between the various categories
+
+@Subsection The reflexive completion of the one object category $C_2$
+
+@InsertChunk C2
+
+@InsertChunk ReflexiveModules
