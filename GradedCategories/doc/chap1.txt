@@ -1,0 +1,201 @@
+  
+  [1X1 [33X[0;0YThe positively Z-graded closure of a category[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X1.1-1 IsCellInPositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCellInPositivelyZGradedCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a positively Z-graded category[133X
+  
+  [1X1.1-2 IsObjectInPositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInPositivelyZGradedCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a positively Z-graded category[133X
+  
+  [1X1.1-3 IsMorphismInPositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInPositivelyZGradedCategory[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a positively Z-graded category[133X
+  
+  
+  [1X1.2 [33X[0;0YGlobal variables[133X[101X
+  
+  [1X1.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY[102X [32X global variable[133X
+  
+  
+  [1X1.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.3-1 UnderlyingInfiniteList[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingInfiniteList[102X( [3Xc[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe infinite list underlying the cell (=object or morphism) [3Xc[103X.[133X
+  
+  [1X1.3-2 NonZeroParts[101X
+  
+  [33X[1;0Y[29X[2XNonZeroParts[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe support of the object [3Xc[103X.[133X
+  
+  [1X1.3-3 NonZeroDegrees[101X
+  
+  [33X[1;0Y[29X[2XNonZeroDegrees[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe list of degrees of the support of the object [3Xc[103X.[133X
+  
+  [1X1.3-4 NonZeroDegreesHull[101X
+  
+  [33X[1;0Y[29X[2XNonZeroDegreesHull[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YA  list  of  integers  containing  the list of degrees of the support of the
+  object [3Xc[103X.[133X
+  
+  [1X1.3-5 NonZeroPartsWithDegrees[101X
+  
+  [33X[1;0Y[29X[2XNonZeroPartsWithDegrees[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [1X1.3-6 SupportWithDegrees[101X
+  
+  [33X[1;0Y[29X[2XSupportWithDegrees[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [1X1.3-7 SupportWithDegreesWithGivenDegrees[101X
+  
+  [33X[1;0Y[29X[2XSupportWithDegreesWithGivenDegrees[102X( [3Xobject[103X, [3XL[103X ) [32X operation[133X
+  
+  [33X[0;0YLike SupportWithDegrees but only considers the degrees in the given list [3XL[103X.[133X
+  
+  
+  [1X1.4 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.4-1 PositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XPositivelyZGradedCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct the positively [23XZ[123X-graded closure of the category [3XC[103X.[133X
+  
+  [1X1.4-2 ObjectInPositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XL[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3Xf[103X, [3Xlower_bound[103X, [3Xupper_bound[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XM[103X, [3Xdegree[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XM[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XL[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YConstruct an object in a positively [23XZ[123X-graded category.[133X
+  
+  [1X1.4-3 MorphismInPositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XMorphismInPositivelyZGradedCategory[102X( [3XS[103X, [3XL[103X, [3XT[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismInPositivelyZGradedCategory[102X( [3XS[103X, [3Xf[103X, [3XT[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMorphismInPositivelyZGradedCategory[102X( [3XS[103X, [3Xphi[103X, [3Xdegree[103X, [3XT[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YConstruct a morphism in a positively [23XZ[123X-graded category.[133X
+  
+  [1X1.4-4 ComponentInclusionMorphism[101X
+  
+  [33X[1;0Y[29X[2XComponentInclusionMorphism[102X( [3XM[103X, [3Xchi[103X, [3Xdegree[103X, [3Xi[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XComponentInclusionMorphism[102X( [3XM[103X, [3Xchi[103X, [3Xi[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XComponentInclusionMorphism[102X( [3XM[103X, [3Xdegree[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [1X1.4-5 DiagonalEmbeddingWithGivenDegrees[101X
+  
+  [33X[1;0Y[29X[2XDiagonalEmbeddingWithGivenDegrees[102X( [3XM[103X, [3Xdegrees[103X ) [32X operation[133X
+  
+  [1X1.4-6 DiagonalEmbedding[101X
+  
+  [33X[1;0Y[29X[2XDiagonalEmbedding[102X( [3XM[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDiagonalEmbedding[102X( [3XS[103X, [3XM[103X ) [32X operation[133X
+  
+  
+  [1X1.5 [33X[0;0YOperations[133X[101X
+  
+  [1X1.5-1 ActiveLowerBound[101X
+  
+  [33X[1;0Y[29X[2XActiveLowerBound[102X( [3Xc[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer or infinity[133X
+  
+  [33X[0;0YThe active lower bound of the cell (=object or morphism) [3Xc[103X.[133X
+  
+  [1X1.5-2 SetActiveLowerBound[101X
+  
+  [33X[1;0Y[29X[2XSetActiveLowerBound[102X( [3Xc[103X, [3Xlower_bound[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer or infinity[133X
+  
+  [33X[0;0YSet  the  active  lower  bound  of  the  cell  (=object  or  morphism)  [3Xc[103X to
+  [3Xlower_bound[103X if it is greater than the active lower bound, and return it.[133X
+  
+  [1X1.5-3 ActiveUpperBound[101X
+  
+  [33X[1;0Y[29X[2XActiveUpperBound[102X( [3Xc[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer or infinity[133X
+  
+  [33X[0;0YThe active upper bound of the cell (=object or morphism) [3Xc[103X.[133X
+  
+  [1X1.5-4 SetActiveUpperBound[101X
+  
+  [33X[1;0Y[29X[2XSetActiveUpperBound[102X( [3Xc[103X, [3Xupper_bound[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer or infinity[133X
+  
+  [33X[0;0YSet  the  active  upper  bound  of  the  cell  (=object  or  morphism)  [3Xc[103X to
+  [3Xupper_bound[103X if it is less than the active upper bound, and return it.[133X
+  
+  [1X1.5-5 TensorProductIndices[101X
+  
+  [33X[1;0Y[29X[2XTensorProductIndices[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya function[133X
+  
+  [33X[0;0YReturns   the   function   f:   n  |->  [  [10XActiveLowerBound[110X(  A  )  ..  n  -
+  [10XActiveLowerBound[110X(  B ) ] over which to run the tensor product summation [3XA[103X[i]
+  [23X\otimes[123X [3XB[103X[n - i] ([23Xi \in f(n)[123X) for ([3XA[103X [23X\otimes[123X [3XB[103X)[n].[133X
+  
+  [1X1.5-6 TensorProductIndices[101X
+  
+  [33X[1;0Y[29X[2XTensorProductIndices[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya pair of functions[133X
+  
+  [33X[0;0YReturns  two functions over which to run the tensor product summation for ([3XA[103X
+  [23X\otimes[123X ([3XB[103X [23X\otimes[123X [3XC[103X))[n] resp. for (([3XA[103X [23X\otimes[123X [3XB[103X) [23X\otimes[123X [3XC[103X)[n].[133X
+  
+  [1X1.5-7 [][101X
+  
+  [33X[1;0Y[29X[2X[][102X( [3Xc[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe  [3Xi[103X-th  object  of  the  infinite  list  underlying  the cell (=object or
+  morphism) [3Xc[103X.[133X
+  
+  [1X1.5-8 CertainDegreePart[101X
+  
+  [33X[1;0Y[29X[2XCertainDegreePart[102X( [3Xc[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe [3Xi[103X-th object of the infinite list(s) underlying the cell resp. list [3Xc[103X.[133X
+  
+  [1X1.5-9 Sublist[101X
+  
+  [33X[1;0Y[29X[2XSublist[102X( [3Xc[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe  [3XL[103X-th  sublist  of  the  infinite  list  underlying the cell (=object or
+  morphism) [3Xc[103X.[133X
+  
