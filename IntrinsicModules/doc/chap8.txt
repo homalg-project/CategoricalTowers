@@ -1,0 +1,531 @@
+  
+  [1X8 [33X[0;0YExamples[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgFreeLeftModule( 1, ZZ );[127X[104X
+    [4X[28X<A free left module of rank 1 on a free generator>[128X[104X
+    [4X[25Xgap>[125X [27X1 * ZZ;[127X[104X
+    [4X[28X<The free left module of rank 1 on a free generator>[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgFreeLeftModule( 2, ZZ );[127X[104X
+    [4X[28X<A free left module of rank 2 on free generators>[128X[104X
+    [4X[25Xgap>[125X [27X2 * ZZ;[127X[104X
+    [4X[28X<A free left module of rank 2 on free generators>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgFreeRightModule( 1, ZZ );[127X[104X
+    [4X[28X<A free right module of rank 1 on a free generator>[128X[104X
+    [4X[25Xgap>[125X [27XZZ * 1;[127X[104X
+    [4X[28X<The free right module of rank 1 on a free generator>[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgFreeRightModule( 2, ZZ );[127X[104X
+    [4X[28X<A free right module of rank 2 on free generators>[128X[104X
+    [4X[25Xgap>[125X [27XZZ * 2;[127X[104X
+    [4X[28X<A free right module of rank 2 on free generators>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgZeroLeftModule( ZZ );[127X[104X
+    [4X[28X<A zero left module>[128X[104X
+    [4X[25Xgap>[125X [27X0 * ZZ;[127X[104X
+    [4X[28X<The zero left module>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgZeroRightModule( ZZ );[127X[104X
+    [4X[28X<A zero right module>[128X[104X
+    [4X[25Xgap>[125X [27XZZ * 0;[127X[104X
+    [4X[28X<The zero right module>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(1x2) --> Z^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27XBasisOfModule( M );[127X[104X
+    [4X[28X<A set of 2 relations for 3 generators of a homalg left module>[128X[104X
+    [4X[25Xgap>[125X [27XM;[127X[104X
+    [4X[28X<A rank 1 left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [   1,   0,  -1 ],[128X[104X
+    [4X[28X  [   0,   3,   6 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(1x2) --> Z^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := RightPresentation( M );[127X[104X
+    [4X[28X<A right module on 2 generators satisfying 3 relations>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(3x1) --> Z^(2x1),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27XBasisOfModule( M );[127X[104X
+    [4X[28X<A set of 2 relations for 2 generators of a homalg right module>[128X[104X
+    [4X[25Xgap>[125X [27XM;[127X[104X
+    [4X[28X<A torsion right module on 2 generators satisfying 2 relations>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  1,  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(2x1) --> Z^(2x1),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ZZ );[127X[104X
+    [4X[28X<An internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XZ4 := ZZ / 4;[127X[104X
+    [4X[28XZ/( 4 )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Z4 );[127X[104X
+    [4X[28X<A residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgDiagonalMatrix( [ 2 .. 4 ], ZZ );[127X[104X
+    [4X[28X<An unevaluated diagonal 3 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A torsion left module presented by 3 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28XZ/< 2 > + Z/< 3 > + Z/< 4 >[128X[104X
+    [4X[25Xgap>[125X [27XM;[127X[104X
+    [4X[28X<A torsion left module presented by 3 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XN := Z4 * M; ## or N := M * Z4;[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XByASmallerPresentation( N );[127X[104X
+    [4X[28X<A non-torsion left module presented by 1 relation for 2 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N );[127X[104X
+    [4X[28XZ/( 4 )/< |[ 2 ]| > + Z/( 4 )^(1 x 1)[128X[104X
+    [4X[25Xgap>[125X [27XN;[127X[104X
+    [4X[28X<A non-torsion left module presented by 1 relation for 2 generators>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XZ4 := ZZ / 4;[127X[104X
+    [4X[28XZ/( 4 )[128X[104X
+    [4X[25Xgap>[125X [27XM4 := Z4 * M;[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M4 );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ 4 ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ/( 4 )^(1x2) --> Z/( 4 )^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(1x2) --> Z^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27XByASmallerPresentation( M );[127X[104X
+    [4X[28X<A rank 1 left module presented by 1 relation for 2 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28XZ/< 3 > + Z^(1 x 1)[128X[104X
+    [4X[25Xgap>[125X [27XM;[127X[104X
+    [4X[28X<A rank 1 left module presented by 1 relation for 2 generators>[128X[104X
+    [4X[25Xgap>[125X [27XSetPositionOfTheDefaultPresentation( M, 1 );[127X[104X
+    [4X[25Xgap>[125X [27XM;[127X[104X
+    [4X[28X<A rank 1 left module presented by 2 relations for 3 generators>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(1x2) --> Z^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27XdM := Resolution( M );[127X[104X
+    [4X[28X<A non-zero right acyclic complex containing a single morphism of left modules[128X[104X
+    [4X[28X at degrees [ 0 .. 1 ]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( dM );[127X[104X
+    [4X[28X-------------------------[128X[104X
+    [4X[28Xat homology degree: 1[128X[104X
+    [4X[28XZ^(1 x 2)[128X[104X
+    [4X[28X-------------------------[128X[104X
+    [4X[28X[ [   1,   0,  -1 ],[128X[104X
+    [4X[28X  [   0,   3,   6 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 2 x 3 matrix[128X[104X
+    [4X[28X------------v------------[128X[104X
+    [4X[28Xat homology degree: 0[128X[104X
+    [4X[28XZ^(1 x 3)[128X[104X
+    [4X[28X-------------------------[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XZ4 := ZZ / 4;[127X[104X
+    [4X[28XZ/( 4 )[128X[104X
+    [4X[25Xgap>[125X [27XM4 := Z4 * M;[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M4 );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ 4 ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ/( 4 )^(1x2) --> Z/( 4 )^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27Xd := Resolution( 2, M4 );[127X[104X
+    [4X[28X<A right acyclic complex containing 2 morphisms of left modules at degrees[128X[104X
+    [4X[28X [ 0 .. 2 ]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( d );[127X[104X
+    [4X[28X-------------------------[128X[104X
+    [4X[28Xat homology degree: 2[128X[104X
+    [4X[28X0[128X[104X
+    [4X[28X-------------------------[128X[104X
+    [4X[28X(an empty 0 x 2 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 0 x 2 matrix[128X[104X
+    [4X[28X------------v------------[128X[104X
+    [4X[28Xat homology degree: 1[128X[104X
+    [4X[28XZ/( 4 )^(1 x 2)[128X[104X
+    [4X[28X-------------------------[128X[104X
+    [4X[28X[ [  1,  0,  3 ],[128X[104X
+    [4X[28X  [  0,  1,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ 4 ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 2 x 3 matrix[128X[104X
+    [4X[28X------------v------------[128X[104X
+    [4X[28Xat homology degree: 0[128X[104X
+    [4X[28XZ/( 4 )^(1 x 3)[128X[104X
+    [4X[28X-------------------------[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27Xmat := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X0, 1, 0, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7, \[127X[104X
+    [4X[25X>[125X [27X4, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 3, 3, ZZ );[127X[104X
+    [4X[28X<A 3 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( mat );[127X[104X
+    [4X[28X<A left module presented by 3 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  0,  1,  0 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ],[128X[104X
+    [4X[28X  [  4,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(1x3) --> Z^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27XGetRidOfZeroGenerators( M );[127X[104X
+    [4X[28X<A cyclic torsion left module presented by 2 relations[128X[104X
+    [4X[28X for a cyclic generator>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28XZ/< 7, 7 >[128X[104X
+    [4X[25Xgap>[125X [27XN := RightPresentation( Involution( mat ) );[127X[104X
+    [4X[28X<A right module on 3 generators satisfying 3 relations>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N );[127X[104X
+    [4X[28X[ [  0,  5,  4 ],[128X[104X
+    [4X[28X  [  1,  6,  6 ],[128X[104X
+    [4X[28X  [  0,  7,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(3x1) --> Z^(3x1),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27XGetRidOfZeroGenerators( N );[127X[104X
+    [4X[28X<A cyclic torsion right module on a cyclic generator[128X[104X
+    [4X[28X satisfying 2 relations>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N );[127X[104X
+    [4X[28XZ/< 7, 7 >[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XN := HomalgMatrix( "[ 2, 3, 4, 5,   6, 7, 8, 9 ]", 2, 4, ZZ );[127X[104X
+    [4X[28X<A 2 x 4 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XN := LeftPresentation( N );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 4 generators>[128X[104X
+    [4X[25Xgap>[125X [27Xmat := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X1, 0, -2, -4, \[127X[104X
+    [4X[25X>[125X [27X0, 1,  4,  7, \[127X[104X
+    [4X[25X>[125X [27X1, 0, -2, -4  \[127X[104X
+    [4X[25X>[125X [27X]", 3, 4, ZZ );[127X[104X
+    [4X[28X<A 3 x 4 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xphi := HomalgMap( mat, M, N );[127X[104X
+    [4X[28X<A "homomorphism" of left modules>[128X[104X
+    [4X[25Xgap>[125X [27X0 * phi;[127X[104X
+    [4X[28X<The zero morphism of left modules>[128X[104X
+    [4X[25Xgap>[125X [27Xnu := -phi;[127X[104X
+    [4X[28X<A "homomorphism" of left modules>[128X[104X
+    [4X[25Xgap>[125X [27Xpsi := HomalgMap( mat, M, N );[127X[104X
+    [4X[28X<A "homomorphism" of left modules>[128X[104X
+    [4X[25Xgap>[125X [27Xchi := phi + psi;[127X[104X
+    [4X[28X<A "homomorphism" of left modules>[128X[104X
+    [4X[25Xgap>[125X [27Xeta := phi - psi;[127X[104X
+    [4X[28X<The zero morphism of left modules>[128X[104X
+    [4X[25Xgap>[125X [27XIsMorphism( phi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xphi;[127X[104X
+    [4X[28X<A homomorphism of left modules>[128X[104X
+    [4X[25Xgap>[125X [27Xnu;[127X[104X
+    [4X[28X<A homomorphism of left modules>[128X[104X
+    [4X[25Xgap>[125X [27XIsMorphism( psi );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xchi;[127X[104X
+    [4X[28X<A homomorphism of left modules>[128X[104X
+    [4X[25Xgap>[125X [27Xlambda := HomalgMap( CertainColumns( mat, [ 1, 2, 4 ] ), M, M );[127X[104X
+    [4X[28X<An endo"morphism" of a left module>[128X[104X
+    [4X[25Xgap>[125X [27XIsMorphism( lambda );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xlambda;[127X[104X
+    [4X[28X<A non-well-defined self-map of a left module>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInExternalGAP( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XN := End( M );[127X[104X
+    [4X[28X<A non-torsion right module on 5 generators satisfying 4 relations>[128X[104X
+    [4X[25Xgap>[125X [27Xe := End( N );[127X[104X
+    [4X[28X<A non-torsion left module presented by 20 relations for 21 generators>[128X[104X
+    [4X[25Xgap>[125X [27XByASmallerPresentation( e );[127X[104X
+    [4X[28X<A non-torsion left module presented by 6 relations for 7 generators>[128X[104X
+    [4X[25Xgap>[125X [27Xg := GetGenerators( e );[127X[104X
+    [4X[28X[ <An endomorphism of a right module>, <An endomorphism of a right module>,[128X[104X
+    [4X[28X  <An endomorphism of a right module>, <An endomorphism of a right module>,[128X[104X
+    [4X[28X  <An endomorphism of a right module>, <An endomorphism of a right module>,[128X[104X
+    [4X[28X  <An endomorphism of a right module> ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( g, Display );[127X[104X
+    [4X[28X[ [  -22,    0,    0,    0,    0 ],[128X[104X
+    [4X[28X  [  -17,   -4,    2,    8,    4 ],[128X[104X
+    [4X[28X  [   -4,    6,    0,   -8,   -2 ],[128X[104X
+    [4X[28X  [    1,    2,    2,    2,    0 ],[128X[104X
+    [4X[28X  [  -20,  -16,    2,   24,    8 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[28X[ [  -12,    0,    0,    0,    0 ],[128X[104X
+    [4X[28X  [   -8,   -2,    2,    6,    1 ],[128X[104X
+    [4X[28X  [   -3,    4,    0,   -4,    0 ],[128X[104X
+    [4X[28X  [    0,    0,    0,    1,    0 ],[128X[104X
+    [4X[28X  [   -8,  -10,    2,   14,    1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[28X[ [  -54,    0,    0,    0,    0 ],[128X[104X
+    [4X[28X  [  -52,  -22,    0,   31,    1 ],[128X[104X
+    [4X[28X  [    0,   23,    1,  -30,   -1 ],[128X[104X
+    [4X[28X  [    2,    1,    1,    1,    1 ],[128X[104X
+    [4X[28X  [  -79,  -68,   -2,   91,    3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[28X[ [  -6,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [  -1,   0,   2,   2,   2 ],[128X[104X
+    [4X[28X  [  -4,   2,   0,  -1,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   2,   0 ],[128X[104X
+    [4X[28X  [   4,  -4,   2,   4,   2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[28X[ [  -56,    0,    0,    0,    0 ],[128X[104X
+    [4X[28X  [  -57,  -23,   -1,   32,    2 ],[128X[104X
+    [4X[28X  [    1,   23,    1,  -31,   -2 ],[128X[104X
+    [4X[28X  [    1,    2,    2,    2,    1 ],[128X[104X
+    [4X[28X  [  -87,  -69,   -3,   94,    6 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[28X[ [  -4,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [  -2,  -2,   0,   2,   2 ],[128X[104X
+    [4X[28X  [  -2,   2,   0,  -2,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   2,   0 ],[128X[104X
+    [4X[28X  [   0,  -6,   0,   6,   2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[28X[ [  -3,   0,   0,   0,   0 ],[128X[104X
+    [4X[28X  [  -2,  -1,   1,   3,   1 ],[128X[104X
+    [4X[28X  [  -2,   2,   0,  -1,   0 ],[128X[104X
+    [4X[28X  [   0,   0,   0,   1,   0 ],[128X[104X
+    [4X[28X  [   1,  -4,  -1,   5,   0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 5 x 5 matrix[128X[104X
+    [4X[25Xgap>[125X [27XByASmallerPresentation( N );[127X[104X
+    [4X[28X<A non-torsion right module on 3 generators satisfying 2 relations>[128X[104X
+    [4X[25Xgap>[125X [27XPerform( g, Display );[127X[104X
+    [4X[28X[ [   -68,  -170,   -90 ],[128X[104X
+    [4X[28X  [    12,    92,    40 ],[128X[104X
+    [4X[28X  [     0,     0,     0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [   -51,  -168,   -82 ],[128X[104X
+    [4X[28X  [    28,   118,    54 ],[128X[104X
+    [4X[28X  [     0,     0,     0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  -158,  -473,  -239 ],[128X[104X
+    [4X[28X  [   131,   628,   281 ],[128X[104X
+    [4X[28X  [     0,     0,     0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [   -46,  -158,   -77 ],[128X[104X
+    [4X[28X  [    24,    88,    42 ],[128X[104X
+    [4X[28X  [     0,     0,     0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  -138,  -384,  -199 ],[128X[104X
+    [4X[28X  [   107,   563,   249 ],[128X[104X
+    [4X[28X  [     0,     0,     0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [   -34,  -108,   -54 ],[128X[104X
+    [4X[28X  [    24,    98,    46 ],[128X[104X
+    [4X[28X  [     0,     0,     0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  -26,  -85,  -42 ],[128X[104X
+    [4X[28X  [   21,   80,   37 ],[128X[104X
+    [4X[28X  [    0,    0,   -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[25Xgap>[125X [27XPerform( g, DecideZero );[127X[104X
+    [4X[25Xgap>[125X [27XPerform( g, Display );[127X[104X
+    [4X[28X[ [  1,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  2,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  0,  0,  2 ],[128X[104X
+    [4X[28X  [  1,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  1,  1,  1 ],[128X[104X
+    [4X[28X  [  2,  1,  2 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  2,  1,  1 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  0,  0,  2 ],[128X[104X
+    [4X[28X  [  2,  2,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [  2,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  2,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+    [4X[28X[ [   1,   2,   0 ],[128X[104X
+    [4X[28X  [   0,   2,   1 ],[128X[104X
+    [4X[28X  [   0,   0,  -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xthe map is currently represented by the above 3 x 3 matrix[128X[104X
+  [4X[32X[104X
+  

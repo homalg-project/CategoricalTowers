@@ -1,0 +1,60 @@
+  
+  [1X6 [33X[0;0YFunctors[133X[101X
+  
+  
+  [1X6.1 [33X[0;0YEndofunctors of finitely presented modules[133X[101X
+  
+  [1X6.1-1 FunctorStandardPresentationOfFpLeftModule[101X
+  
+  [33X[1;0Y[29X[2XFunctorStandardPresentationOfFpLeftModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  an  additve closure category [23XA[123X of a ring. The output is a
+  functor  which  takes  a  graded left presentation as input and computes its
+  standard presentation.[133X
+  
+  [1X6.1-2 FunctorStandardPresentationOfFpRightModule[101X
+  
+  [33X[1;0Y[29X[2XFunctorStandardPresentationOfFpRightModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  an  additve closure category [23XA[123X of a ring. The output is a
+  functor  which  takes  a graded right presentation as input and computes its
+  standard presentation.[133X
+  
+  [1X6.1-3 FunctorGetRidOfZeroGeneratorsOfFpLeftModule[101X
+  
+  [33X[1;0Y[29X[2XFunctorGetRidOfZeroGeneratorsOfFpLeftModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  an  additve closure category [23XA[123X of a ring. The output is a
+  functor  which takes a graded left presentation as input and gets rid of the
+  zero generators.[133X
+  
+  [1X6.1-4 FunctorGetRidOfZeroGeneratorsOfFpRightModule[101X
+  
+  [33X[1;0Y[29X[2XFunctorGetRidOfZeroGeneratorsOfFpRightModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  an  additve closure category [23XA[123X of a ring. The output is a
+  functor which takes a graded right presentation as input and gets rid of the
+  zero generators.[133X
+  
+  [1X6.1-5 FunctorLessGeneratorsOfLeftFpModule[101X
+  
+  [33X[1;0Y[29X[2XFunctorLessGeneratorsOfLeftFpModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  an  additve  closure  category [23XA[123X of a ring. The output is
+  functor  which  takes  a  graded  left  presentation as input and computes a
+  presentation having less generators.[133X
+  
+  [1X6.1-6 FunctorLessGeneratorsOfRightFpModule[101X
+  
+  [33X[1;0Y[29X[2XFunctorLessGeneratorsOfRightFpModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  argument  is  an  additve  closure  category [23XA[123X of a ring. The output is
+  functor  which  takes  a  graded  right presentation as input and computes a
+  presentation having less generators.[133X
+  

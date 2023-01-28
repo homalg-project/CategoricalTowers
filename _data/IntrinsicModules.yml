@@ -1,0 +1,101 @@
+name: IntrinsicModules
+version: "2022.10-02"
+license: "GPL-2.0-or-later"
+date: 2023-01-28
+description: |
+    Finitely presented modules over computable rings allowing multiple presentations and the notion of elements
+
+authors:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+    - name: Kamal Saleh
+      url: https://github.com/kamalsaleh/
+
+maintainers:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+    - name: Kamal Saleh
+      url: https://github.com/kamalsaleh/
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "MatricesForHomalg"
+      version: ">= 2021.03-01"
+      url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
+    - name: "Modules"
+      version: ">= 2021.04-01"
+      url: "https://homalg-project.github.io/pkg/Modules"
+    - name: "GeneralizedMorphismsForCAP"
+      version: ">= 2020.10-01"
+      url: "https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP"
+    - name: "CAP"
+      version: ">= 2021.10-04"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "FreydCategoriesForCAP"
+      version: ">= 2021.03-01"
+      url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
+    - name: "ModulePresentationsForCAP"
+      version: ">= 2020.10-01"
+      url: "https://homalg-project.github.io/pkg/ModulePresentationsForCAP"
+    - name: "CategoryConstructor"
+      version: ">= 2021.10-04"
+      url: "https://homalg-project.github.io/pkg/CategoryConstructor"
+    - name: "IntrinsicCategories"
+      version: ">= 2021.10-02"
+      url: "https://homalg-project.github.io/pkg/IntrinsicCategories"
+    - name: "CategoriesWithAmbientObjects"
+      version: ">= 2021.03-07"
+      url: "https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects"
+
+www: https://homalg-project.github.io/pkg/IntrinsicModules
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicModules/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2022.10-02/IntrinsicModules-2022.10-02.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2022.10-02/IntrinsicModules-2022.10-02.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicModules-2022.10-02/IntrinsicModules-2022.10-02.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+keywords: |
+    module, finite presentation, computable ring.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>BS23</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+     <i class='BibTitle'>IntrinsicModules, Finitely presented modules over computable rings allowing multiple presentations and the notion of elements,
+             Version 2022.10-02</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicModules">https://homalg-project.github.io/pkg/IntrinsicModules</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ IntrinsicModules2022.10-02,
+      author =           {Barakat, M. and Saleh, K.},
+      title =            {{IntrinsicModules},  Finitely  presented  modules over
+                          computable  rings  allowing multiple presentations and
+                          the notion of elements, {V}ersion 2022.10-02},
+      month =            {Jan},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/IntrinsicModules}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{IntrinsicModules}}},
+      keywords =         {module; finite presentation; computable ring},
+      printedkey =       {BS23}
+    }
+

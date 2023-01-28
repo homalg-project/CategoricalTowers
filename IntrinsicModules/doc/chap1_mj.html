@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (IntrinsicModules) - Chapter 1: Categories of finitely presented modules</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X85E1827B832AEFB0" name="X85E1827B832AEFB0"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X85E1827B832AEFB0">1 <span class="Heading">Categories of finitely presented modules</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CFEC2307ADF264F">1.1-1 TurnAutoequivalenceIntoIdentityFunctorForHomalg</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AD3BAA17CA22492">1.1-2 CategoryOfHomalgFinitelyPresentedLeftModules</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79A465D787B9090E">1.1-3 CategoryOfHomalgFinitelyPresentedRightModules</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DA5FC5379955E0E">1.2 <span class="Heading">Supported CAP operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81114EBA7902027C">1.2-1 <span class="Heading">Category of finitely presented modules</span></a>
+</span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C8B260F7B95B432">1.3 <span class="Heading">Operations and global functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B35EBF7804AEC6A">1.3-1 ImageEmbeddingForFpLeftModulesByFreyd</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78E722D082561C26">1.3-2 ImageEmbeddingForFpRightModulesByFreyd</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87DF1D328193788C">1.3-3 ImageEmbeddingForFpLeftModulesByPresentations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78AEC95C786C05B5">1.3-4 ImageEmbeddingForFpRightModulesByPresentations</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.4 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DE4B04078385D9A">1.4-1 IsCategoryOfHomalgModules</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Categories of finitely presented modules</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7CFEC2307ADF264F" name="X7CFEC2307ADF264F"></a></p>
+
+<h5>1.1-1 TurnAutoequivalenceIntoIdentityFunctorForHomalg</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TurnAutoequivalenceIntoIdentityFunctorForHomalg</code>( <var class="Arg">natiso</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p>Turn a natural isomorphism from the identity functor to and endo-equivalence on the underlying <strong class="pkg">CAP</strong> category into an identity rewriting functor on the <strong class="pkg">homalg</strong> category.</p>
+
+<p><a id="X7AD3BAA17CA22492" name="X7AD3BAA17CA22492"></a></p>
+
+<h5>1.1-2 CategoryOfHomalgFinitelyPresentedLeftModules</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfHomalgFinitelyPresentedLeftModules</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an intrinsic cateogry of left modules</p>
+
+<p>Construct the category of finitely presented left <strong class="pkg">homalg</strong> modules over the computable <strong class="pkg">homalg</strong> ring <var class="Arg">R</var>.</p>
+
+<p><a id="X79A465D787B9090E" name="X79A465D787B9090E"></a></p>
+
+<h5>1.1-3 CategoryOfHomalgFinitelyPresentedRightModules</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfHomalgFinitelyPresentedRightModules</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an intrinsic cateogry of right modules</p>
+
+<p>Construct the category of finitely presented right <strong class="pkg">homalg</strong> modules over the computable <strong class="pkg">homalg</strong> ring <var class="Arg">R</var>.</p>
+
+<p><a id="X7DA5FC5379955E0E" name="X7DA5FC5379955E0E"></a></p>
+
+<h4>1.2 <span class="Heading">Supported CAP operations</span></h4>
+
+<p><a id="X81114EBA7902027C" name="X81114EBA7902027C"></a></p>
+
+<h5>1.2-1 <span class="Heading">Category of finitely presented modules</span></h5>
+
+<p>The following CAP operations are supported:</p>
+
+
+<ul>
+<li><p><code class="func">AdditionForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X83B77FBB85927F14"><span class="RefLink">CAP: AdditionForMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">AdditiveInverseForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X83177713785DCFFC"><span class="RefLink">CAP: AdditiveInverseForMorphisms for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">AssociatorLeftToRight</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7C5A064C7E1995F1"><span class="RefLink">MonoidalCategories: AssociatorLeftToRight for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">AssociatorLeftToRightWithGivenTensorProducts</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7C59D73F8389E389"><span class="RefLink">MonoidalCategories: AssociatorLeftToRightWithGivenTensorProducts for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">AssociatorRightToLeft</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X84C2FAEA7B9678AA"><span class="RefLink">MonoidalCategories: AssociatorRightToLeft for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">AssociatorRightToLeftWithGivenTensorProducts</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X85645C4D86060ED2"><span class="RefLink">MonoidalCategories: AssociatorRightToLeftWithGivenTensorProducts for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">AstrictionToCoimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X805108BF8047357E"><span class="RefLink">CAP: AstrictionToCoimage for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">AstrictionToCoimageWithGivenCoimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78AC1C7384A60A5E"><span class="RefLink">CAP: AstrictionToCoimageWithGivenCoimageObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">BiasedWeakFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X80C509F582A13FBE"><span class="RefLink">FreydCategoriesForCAP: BiasedWeakFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">BiasedWeakPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X84109D6383E9340C"><span class="RefLink">FreydCategoriesForCAP: BiasedWeakPushout for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">Braiding</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7C6ADBFE7A8DD1E3"><span class="RefLink">MonoidalCategories: Braiding for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">BraidingInverse</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X8195EC5279D3E8D0"><span class="RefLink">MonoidalCategories: BraidingInverse for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">BraidingInverseWithGivenTensorProducts</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X854AFBC67C836769"><span class="RefLink">MonoidalCategories: BraidingInverseWithGivenTensorProducts for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">BraidingWithGivenTensorProducts</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7F4B09A87B2500C0"><span class="RefLink">MonoidalCategories: BraidingWithGivenTensorProducts for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoastrictionToImage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8144201987A27661"><span class="RefLink">CAP: CoastrictionToImage for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoastrictionToImageWithGivenImageObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78BE36EA83BEF493"><span class="RefLink">CAP: CoastrictionToImageWithGivenImageObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoevaluationMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X79E277047AB3E909"><span class="RefLink">MonoidalCategories: CoevaluationMorphism for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoevaluationMorphismWithGivenRange</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7E8123AD8567A5C0"><span class="RefLink">MonoidalCategories: CoevaluationMorphismWithGivenRange for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">Coimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7EB02EC487B586E5"><span class="RefLink">CAP: Coimage</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoimageProjection</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X788E717C7CCC6645"><span class="RefLink">CAP: CoimageProjection for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoimageProjectionWithGivenCoimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X836301DF80A22C5C"><span class="RefLink">CAP: CoimageProjectionWithGivenCoimageObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelColift</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8735262382CE2560"><span class="RefLink">CAP: CokernelColift for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelColiftWithGivenCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X86DB5CD27C0EB7D2"><span class="RefLink">CAP: CokernelColiftWithGivenCokernelObject for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X82803DBC80F40EFC"><span class="RefLink">CAP: CokernelObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelObjectFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78E421227FB90A70"><span class="RefLink">CAP: CokernelObjectFunctorial for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelObjectFunctorialWithGivenCokernelObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7BA172F07A431626"><span class="RefLink">CAP: CokernelObjectFunctorialWithGivenCokernelObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelProjection</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78948D7A7B52AB31"><span class="RefLink">CAP: CokernelProjection for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">CokernelProjectionWithGivenCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X845DC9377A05BE7B"><span class="RefLink">CAP: CokernelProjectionWithGivenCokernelObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">Colift</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7BA38B0F797AFE20"><span class="RefLink">CAP: Colift for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ColiftAlongEpimorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X79AA9F638487EE32"><span class="RefLink">CAP: ColiftAlongEpimorphism for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ComponentOfMorphismFromDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7B71C4F4799263E6"><span class="RefLink">CAP: ComponentOfMorphismFromDirectSum for IsCapCategoryMorphism, IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">ComponentOfMorphismIntoDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7A3400D485D0C438"><span class="RefLink">CAP: ComponentOfMorphismIntoDirectSum for IsCapCategoryMorphism, IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">Coproduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7E8036DF7AC65994"><span class="RefLink">CAP: Coproduct</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoproductFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7FDE92577EFB6866"><span class="RefLink">CAP: CoproductFunctorial for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">CoproductFunctorialWithGivenCoproducts</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X85FFAD9E7FAFF9D4"><span class="RefLink">CAP: CoproductFunctorialWithGivenCoproducts for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X861BA02C7902A4F4"><span class="RefLink">CAP: DirectProduct</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectProductFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X79EB76507C8AB4A4"><span class="RefLink">CAP: DirectProductFunctorial for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectProductFunctorialWithGivenDirectProducts</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7DD930FE78492D58"><span class="RefLink">CAP: DirectProductFunctorialWithGivenDirectProducts for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X82AD6F187B550060"><span class="RefLink">CAP: DirectSum</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSumCodiagonalDifference</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X81DC4C1778CF1FD3"><span class="RefLink">CAP: DirectSumCodiagonalDifference for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSumDiagonalDifference</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7E17BF518268C33A"><span class="RefLink">CAP: DirectSumDiagonalDifference for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSumFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X784D53A47F683192"><span class="RefLink">CAP: DirectSumFunctorial for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSumFunctorialWithGivenDirectSums</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78B24593868483EE"><span class="RefLink">CAP: DirectSumFunctorialWithGivenDirectSums for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSumMorphismToWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7A7B32688119E5B2"><span class="RefLink">FreydCategoriesForCAP: DirectSumMorphismToWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">DirectSumProjectionInPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78450AD684E5746A"><span class="RefLink">CAP: DirectSumProjectionInPushout for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">DistinguishedObjectOfHomomorphismStructure</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7999CCFF82DA16D7"><span class="RefLink">CAP: DistinguishedObjectOfHomomorphismStructure for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">DualOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X815C0BC47D000819"><span class="RefLink">MonoidalCategories: DualOnMorphisms for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">DualOnMorphismsWithGivenDuals</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7DCC0F468386AA46"><span class="RefLink">MonoidalCategories: DualOnMorphismsWithGivenDuals for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">DualOnObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X80FFC71D7E57DD53"><span class="RefLink">MonoidalCategories: DualOnObjects for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">EpimorphismFromSomeProjectiveObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X7D5951AA7EBD7750"><span class="RefLink">CAP: EpimorphismFromSomeProjectiveObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X81F04D8186B94570"><span class="RefLink">CAP: EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">EvaluationForDual</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X86D42C7587F03A68"><span class="RefLink">MonoidalCategories: EvaluationForDual for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">EvaluationForDualWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7B588B1B8472834E"><span class="RefLink">MonoidalCategories: EvaluationForDualWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">EvaluationMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X809226D2878DD662"><span class="RefLink">MonoidalCategories: EvaluationMorphism for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">EvaluationMorphismWithGivenSource</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7E42359B7A888F61"><span class="RefLink">MonoidalCategories: EvaluationMorphismWithGivenSource for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">FiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap14_mj.html#X7DE20941803BFBD9"><span class="RefLink">CAP: FiberProduct</span></a>)</p>
+
+</li>
+<li><p><code class="func">FiberProductEmbeddingInDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7919AF7486FA42C5"><span class="RefLink">CAP: FiberProductEmbeddingInDirectSum for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">FiberProductFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X791F33AB7EAF6A2A"><span class="RefLink">CAP: FiberProductFunctorial for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">FiberProductFunctorialWithGivenFiberProducts</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X83A9F01A82894F65"><span class="RefLink">CAP: FiberProductFunctorialWithGivenFiberProducts for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomologyObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8713652D7B7E1418"><span class="RefLink">CAP: HomologyObject for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomologyObjectFunctorialWithGivenHomologyObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X81012CC0845DE717"><span class="RefLink">CAP: HomologyObjectFunctorialWithGivenHomologyObjects for IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomomorphismStructureOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8257E3787865C5E0"><span class="RefLink">CAP: HomomorphismStructureOnMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomomorphismStructureOnMorphismsWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7FBC94B983CBA64F"><span class="RefLink">CAP: HomomorphismStructureOnMorphismsWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">HomomorphismStructureOnObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81BC29A679416C45"><span class="RefLink">CAP: HomomorphismStructureOnObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IdentityMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7C9F3D8086238443"><span class="RefLink">CAP: IdentityMorphism for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ImageEmbedding</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X86CEE2D1876EC2B9"><span class="RefLink">CAP: ImageEmbedding for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ImageEmbeddingWithGivenImageObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X82991FA17B460744"><span class="RefLink">CAP: ImageEmbeddingWithGivenImageObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ImageObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X83B457FF79AC5AC6"><span class="RefLink">CAP: ImageObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InitialObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7A70384E7F182B00"><span class="RefLink">CAP: InitialObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">InitialObjectFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X87B1C71179F798C8"><span class="RefLink">CAP: InitialObjectFunctorial for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">InitialObjectFunctorialWithGivenInitialObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7CE9BBC27F70F3BD"><span class="RefLink">CAP: InitialObjectFunctorialWithGivenInitialObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfBiasedWeakPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X8446E6F07D760DB6"><span class="RefLink">FreydCategoriesForCAP: InjectionOfBiasedWeakPushout for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7D42CD317E769BF8"><span class="RefLink">FreydCategoriesForCAP: InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfCofactorOfCoproduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X82D87B52862BB55C"><span class="RefLink">CAP: InjectionOfCofactorOfCoproduct for IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfCofactorOfCoproductWithGivenCoproduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X83687CD9789CAB9C"><span class="RefLink">CAP: InjectionOfCofactorOfCoproductWithGivenCoproduct for IsList, IsInt, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfCofactorOfDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X842743E97E2F28CD"><span class="RefLink">CAP: InjectionOfCofactorOfDirectSum for IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfCofactorOfDirectSumWithGivenDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X876493497F824480"><span class="RefLink">CAP: InjectionOfCofactorOfDirectSumWithGivenDirectSum for IsList, IsInt, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfCofactorOfPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7CF12E527805752F"><span class="RefLink">CAP: InjectionOfCofactorOfPushout for IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfCofactorOfPushoutWithGivenPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7E54DB957B5F9157"><span class="RefLink">CAP: InjectionOfCofactorOfPushoutWithGivenPushout for IsList, IsInt, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfFirstCofactorOfWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X859D48648330DDFA"><span class="RefLink">FreydCategoriesForCAP: InjectionOfFirstCofactorOfWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X801E5B217AC3D643"><span class="RefLink">FreydCategoriesForCAP: InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfSecondCofactorOfWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X82BCEF3179CDACB2"><span class="RefLink">FreydCategoriesForCAP: InjectionOfSecondCofactorOfWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X81A0DEDE86291E0E"><span class="RefLink">FreydCategoriesForCAP: InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InjectiveColift</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X7CCBB0A384F37EC6"><span class="RefLink">CAP: InjectiveColift for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InternalHomOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7C0191A483A72F98"><span class="RefLink">MonoidalCategories: InternalHomOnMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InternalHomOnMorphismsWithGivenInternalHoms</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X861226B47B5CB713"><span class="RefLink">MonoidalCategories: InternalHomOnMorphismsWithGivenInternalHoms for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InternalHomOnObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X78AA83E77B380D68"><span class="RefLink">MonoidalCategories: InternalHomOnObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InternalHomToTensorProductAdjunctionMap</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7A48DA157CCFB0B9"><span class="RefLink">MonoidalCategories: InternalHomToTensorProductAdjunctionMap for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81F1237C7DBF7603"><span class="RefLink">CAP: InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7A5A05C682EB033D"><span class="RefLink">CAP: InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8760D39C865239E8"><span class="RefLink">CAP: InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InverseForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8371BF227B4C32EF"><span class="RefLink">CAP: InverseForMorphisms for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">InverseMorphismFromCoimageToImageWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X83C4E6FF7D1F1A9C"><span class="RefLink">CAP: InverseMorphismFromCoimageToImageWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsAutomorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X84E5DE257F241830"><span class="RefLink">CAP: IsAutomorphism for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsCodominating</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7C77E9D479C8D502"><span class="RefLink">CAP: IsCodominating for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsCongruentForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7FABCFBF865F4179"><span class="RefLink">CAP: IsCongruentForMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsDominating</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7C21531C7EE65C72"><span class="RefLink">CAP: IsDominating for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEndomorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X81057B3E812B06CC"><span class="RefLink">CAP: IsEndomorphism for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEpimorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7E85E0A67BA11091"><span class="RefLink">CAP: IsEpimorphism for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEqualAsFactorobjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X79389FBF86CF87A4"><span class="RefLink">CAP: IsEqualAsFactorobjects for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEqualAsSubobjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7E99DAA884674DE2"><span class="RefLink">CAP: IsEqualAsSubobjects for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEqualForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8004F1DA7D9BFA8B"><span class="RefLink">CAP: IsEqualForMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEqualForMorphismsOnMor</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8589E5A4814C3DA5"><span class="RefLink">CAP: IsEqualForMorphismsOnMor for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsEqualForObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X8337569D81C0BBEC"><span class="RefLink">CAP: IsEqualForObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsIdempotent</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7BA4290882AFFCA3"><span class="RefLink">CAP: IsIdempotent for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsIdenticalToIdentityMorphism</code> (<span class="RefLink">???</span>)</p>
+
+</li>
+<li><p><code class="func">IsIdenticalToZeroMorphism</code> (<span class="RefLink">???</span>)</p>
+
+</li>
+<li><p><code class="func">IsInitial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X83F6095A80DCCDC3"><span class="RefLink">CAP: IsInitial for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsIsomorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7F29CF0282EFEAA3"><span class="RefLink">CAP: IsIsomorphism for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsMonomorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7A6F64027EEAF42B"><span class="RefLink">CAP: IsMonomorphism for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsOne</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7FA10AFB7F441434"><span class="RefLink">CAP: IsOne for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsTerminal</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X7D3542EE7A8448A7"><span class="RefLink">CAP: IsTerminal for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsWellDefinedForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7968A871832877B8"><span class="RefLink">CAP: IsWellDefinedForMorphisms for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsWellDefinedForObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X7F9A38A187D9ABFA"><span class="RefLink">CAP: IsWellDefinedForObjects for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsZeroForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X844684AD86DCC2DC"><span class="RefLink">CAP: IsZeroForMorphisms for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsZeroForObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X856FA5E084753312"><span class="RefLink">CAP: IsZeroForObjects for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromCoimageToCokernelOfKernel</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7C594E227D8DB0ED"><span class="RefLink">CAP: IsomorphismFromCoimageToCokernelOfKernel for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromCokernelOfDiagonalDifferenceToPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7D9E5AEA7E6F0092"><span class="RefLink">CAP: IsomorphismFromCokernelOfDiagonalDifferenceToPushout for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromCokernelOfKernelToCoimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7CF7E7E47A460E56"><span class="RefLink">CAP: IsomorphismFromCokernelOfKernelToCoimage for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromCoproductToDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7CACFBCA7B9A4E19"><span class="RefLink">CAP: IsomorphismFromCoproductToDirectSum for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromDirectProductToDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7E87C9257A1BFFEE"><span class="RefLink">CAP: IsomorphismFromDirectProductToDirectSum for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromDirectSumToCoproduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X85599FEC812FD591"><span class="RefLink">CAP: IsomorphismFromDirectSumToCoproduct for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromDirectSumToDirectProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7AB9D34882B5EDDF"><span class="RefLink">CAP: IsomorphismFromDirectSumToDirectProduct for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromDualToInternalHom</code> (<span class="RefLink">???</span>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromFiberProductToKernelOfDiagonalDifference</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X79C946837899FDBF"><span class="RefLink">CAP: IsomorphismFromFiberProductToKernelOfDiagonalDifference for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8799E88E79EFE007"><span class="RefLink">CAP: IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromImageObjectToKernelOfCokernel</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X80490BD785CA695A"><span class="RefLink">CAP: IsomorphismFromImageObjectToKernelOfCokernel for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromInitialObjectToZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X86FF82B284B8E2EB"><span class="RefLink">CAP: IsomorphismFromInitialObjectToZeroObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromInternalHomToDual</code> (<span class="RefLink">???</span>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromInternalHomToObject</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X831CF4E1824FA178"><span class="RefLink">MonoidalCategories: IsomorphismFromInternalHomToObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromInternalHomToObjectWithGivenInternalHom</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7988DC7C79BED3B2"><span class="RefLink">MonoidalCategories: IsomorphismFromInternalHomToObjectWithGivenInternalHom for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X828E94BA7CF6FB71"><span class="RefLink">CAP: IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromKernelOfCokernelToImageObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7CAA3342865B456B"><span class="RefLink">CAP: IsomorphismFromKernelOfCokernelToImageObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X848F0B52844D782B"><span class="RefLink">CAP: IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromObjectToInternalHom</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X8726BA888787D53D"><span class="RefLink">MonoidalCategories: IsomorphismFromObjectToInternalHom for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromObjectToInternalHomWithGivenInternalHom</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X87F91EF37C76A7F7"><span class="RefLink">MonoidalCategories: IsomorphismFromObjectToInternalHomWithGivenInternalHom for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromPushoutToCokernelOfDiagonalDifference</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7DB5F4937D3FFB15"><span class="RefLink">CAP: IsomorphismFromPushoutToCokernelOfDiagonalDifference for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromTerminalObjectToZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X83E84FC187EE2445"><span class="RefLink">CAP: IsomorphismFromTerminalObjectToZeroObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromZeroObjectToInitialObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8711ABE9811C7CCF"><span class="RefLink">CAP: IsomorphismFromZeroObjectToInitialObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">IsomorphismFromZeroObjectToTerminalObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78C501A179BB6CBB"><span class="RefLink">CAP: IsomorphismFromZeroObjectToTerminalObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelEmbedding</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8430666980D732FB"><span class="RefLink">CAP: KernelEmbedding for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelEmbeddingWithGivenKernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7CBE1D0C84F5A47E"><span class="RefLink">CAP: KernelEmbeddingWithGivenKernelObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelLift</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X87920AC67A5802BC"><span class="RefLink">CAP: KernelLift for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelLiftWithGivenKernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X83D439A07AD29D05"><span class="RefLink">CAP: KernelLiftWithGivenKernelObject for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X82EAD3357C9FE4C8"><span class="RefLink">CAP: KernelObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelObjectFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78D5B94A7EF4D4F0"><span class="RefLink">CAP: KernelObjectFunctorial for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">KernelObjectFunctorialWithGivenKernelObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7F61FE0B82AF4CDB"><span class="RefLink">CAP: KernelObjectFunctorialWithGivenKernelObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">LambdaElimination</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X79EC44077F661E80"><span class="RefLink">MonoidalCategories: LambdaElimination for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">LambdaIntroduction</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X80F3F2287B9E55E3"><span class="RefLink">MonoidalCategories: LambdaIntroduction for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftDistributivityExpanding</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7ACF268E7D82B0C9"><span class="RefLink">MonoidalCategories: LeftDistributivityExpanding for IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftDistributivityExpandingWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7CA18968862D2285"><span class="RefLink">MonoidalCategories: LeftDistributivityExpandingWithGivenObjects for IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftDistributivityFactoring</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X780322FE7E5A626D"><span class="RefLink">MonoidalCategories: LeftDistributivityFactoring for IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftDistributivityFactoringWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X784D8CD685F5F021"><span class="RefLink">MonoidalCategories: LeftDistributivityFactoringWithGivenObjects for IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftUnitor</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7EBCAFDD81BDB655"><span class="RefLink">MonoidalCategories: LeftUnitor for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftUnitorInverse</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X79A274078147A9F7"><span class="RefLink">MonoidalCategories: LeftUnitorInverse for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftUnitorInverseWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X849609447CAE996B"><span class="RefLink">MonoidalCategories: LeftUnitorInverseWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">LeftUnitorWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7ED284DF7BA21774"><span class="RefLink">MonoidalCategories: LeftUnitorWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">Lift</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X87C471D583C1CD9E"><span class="RefLink">CAP: Lift for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">LiftAlongMonomorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X83CDF65582CD9921"><span class="RefLink">CAP: LiftAlongMonomorphism for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">MonoidalPostComposeMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X79F4FCE781385829"><span class="RefLink">MonoidalCategories: MonoidalPostComposeMorphism for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MonoidalPostComposeMorphismWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7E6933B8816EE4E3"><span class="RefLink">MonoidalCategories: MonoidalPostComposeMorphismWithGivenObjects for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MonoidalPreComposeMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X86E4E97C82BFB45C"><span class="RefLink">MonoidalCategories: MonoidalPreComposeMorphism for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MonoidalPreComposeMorphismWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7FE4A52284060F20"><span class="RefLink">MonoidalCategories: MonoidalPreComposeMorphismWithGivenObjects for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismBetweenDirectSums</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X847C8B7E8646DF61"><span class="RefLink">CAP: MorphismBetweenDirectSums for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismBetweenDirectSumsWithGivenDirectSums</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7E020D2783A62178"><span class="RefLink">CAP: MorphismBetweenDirectSumsWithGivenDirectSums for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromCoimageToImageWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8025749B78E12A2B"><span class="RefLink">CAP: MorphismFromCoimageToImageWithGivenObjects for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromFiberProductToSink</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7C6EF50085D13D12"><span class="RefLink">CAP: MorphismFromFiberProductToSink for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromFiberProductToSinkWithGivenFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X866ED61786F4C76C"><span class="RefLink">CAP: MorphismFromFiberProductToSinkWithGivenFiberProduct for IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromKernelObjectToSink</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78140AF884DE0736"><span class="RefLink">CAP: MorphismFromKernelObjectToSink for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromKernelObjectToSinkWithGivenKernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7BF5A3A57E23C795"><span class="RefLink">CAP: MorphismFromKernelObjectToSinkWithGivenKernelObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromSourceToCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X872E26C57F195D50"><span class="RefLink">CAP: MorphismFromSourceToCokernelObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromSourceToCokernelObjectWithGivenCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X876648527E75AA04"><span class="RefLink">CAP: MorphismFromSourceToCokernelObjectWithGivenCokernelObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromSourceToPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap14_mj.html#X8218390A785F1EDB"><span class="RefLink">CAP: MorphismFromSourceToPushout and MorphismFromFiberProductToSink</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromSourceToPushoutWithGivenPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7D3DAF80816918A4"><span class="RefLink">CAP: MorphismFromSourceToPushoutWithGivenPushout for IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromTensorProductToInternalHom</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X8439BFF57BFE390F"><span class="RefLink">MonoidalCategories: MorphismFromTensorProductToInternalHom for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismFromTensorProductToInternalHomWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X8473D28B7F3A5E20"><span class="RefLink">MonoidalCategories: MorphismFromTensorProductToInternalHomWithGivenObjects for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismToBidual</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7F68B55781C1DFB1"><span class="RefLink">MonoidalCategories: MorphismToBidual for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MorphismToBidualWithGivenBidual</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X79260E5680F1E741"><span class="RefLink">MonoidalCategories: MorphismToBidualWithGivenBidual for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">MultiplyWithElementOfCommutativeRingForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8187CAF17EB5D6D0"><span class="RefLink">CAP: MultiplyWithElementOfCommutativeRingForMorphisms for IsRingElement, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">PostCompose</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X84293B8381256A08"><span class="RefLink">CAP: PostCompose for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">PreCompose</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X8244F7A0868BE27D"><span class="RefLink">CAP: PreCompose for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFactorOfDirectProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7FFBE9EC7BEE7673"><span class="RefLink">CAP: ProjectionInFactorOfDirectProduct for IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFactorOfDirectProductWithGivenDirectProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8288ABA984EF9DED"><span class="RefLink">CAP: ProjectionInFactorOfDirectProductWithGivenDirectProduct for IsList, IsInt, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFactorOfDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X78E4506F7BBA7A9A"><span class="RefLink">CAP: ProjectionInFactorOfDirectSum for IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFactorOfDirectSumWithGivenDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X832F2E577B7B70BB"><span class="RefLink">CAP: ProjectionInFactorOfDirectSumWithGivenDirectSum for IsList, IsInt, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFactorOfFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8104B3717D3B646F"><span class="RefLink">CAP: ProjectionInFactorOfFiberProduct for IsList, IsInt</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFactorOfFiberProductWithGivenFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8085606A7B09071F"><span class="RefLink">CAP: ProjectionInFactorOfFiberProductWithGivenFiberProduct for IsList, IsInt, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFirstFactorOfWeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7AB5D7717E47EBAA"><span class="RefLink">FreydCategoriesForCAP: ProjectionInFirstFactorOfWeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X81A44E0378CCA38C"><span class="RefLink">FreydCategoriesForCAP: ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInSecondFactorOfWeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7B1D4A348122C2E4"><span class="RefLink">FreydCategoriesForCAP: ProjectionInSecondFactorOfWeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X8220190C7B1F89AB"><span class="RefLink">FreydCategoriesForCAP: ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionOfBiasedWeakFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X81EE20F38513FA49"><span class="RefLink">FreydCategoriesForCAP: ProjectionOfBiasedWeakFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X84D705708422CFAD"><span class="RefLink">FreydCategoriesForCAP: ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ProjectiveLift</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X7BFFD7FE82DCB5F6"><span class="RefLink">CAP: ProjectiveLift for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">Pushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X81A2D49D85923894"><span class="RefLink">CAP: Pushout</span></a>)</p>
+
+</li>
+<li><p><code class="func">PushoutFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X80494AF087F5DE4B"><span class="RefLink">CAP: PushoutFunctorial for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">PushoutFunctorialWithGivenPushouts</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7DAF60808113D76B"><span class="RefLink">CAP: PushoutFunctorialWithGivenPushouts for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightDistributivityExpanding</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X8409C74778A4313A"><span class="RefLink">MonoidalCategories: RightDistributivityExpanding for IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightDistributivityExpandingWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7DBE629F811DEADC"><span class="RefLink">MonoidalCategories: RightDistributivityExpandingWithGivenObjects for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightDistributivityFactoring</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X86C5C33786C1DC28"><span class="RefLink">MonoidalCategories: RightDistributivityFactoring for IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightDistributivityFactoringWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X795267217F7807CE"><span class="RefLink">MonoidalCategories: RightDistributivityFactoringWithGivenObjects for IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightUnitor</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X82F758CB7A23468A"><span class="RefLink">MonoidalCategories: RightUnitor for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightUnitorInverse</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X82DC825480E87301"><span class="RefLink">MonoidalCategories: RightUnitorInverse for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightUnitorInverseWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X85A8A87C87B33008"><span class="RefLink">MonoidalCategories: RightUnitorInverseWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">RightUnitorWithGivenTensorProduct</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X84C8F97F7BF2282D"><span class="RefLink">MonoidalCategories: RightUnitorWithGivenTensorProduct for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">SolveLinearSystemInAbCategory</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7BE5E2687FC110AC"><span class="RefLink">CAP: SolveLinearSystemInAbCategory for IsList, IsList, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">SomeProjectiveObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap2_mj.html#X7FED5E898784C314"><span class="RefLink">CAP: SomeProjectiveObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">SubtractionForMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X7B6461F5873F3F9D"><span class="RefLink">CAP: SubtractionForMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductDualityCompatibilityMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7D173DB08132E40A"><span class="RefLink">MonoidalCategories: TensorProductDualityCompatibilityMorphism for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductDualityCompatibilityMorphismWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X794ED97782B8DF76"><span class="RefLink">MonoidalCategories: TensorProductDualityCompatibilityMorphismWithGivenObjects for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductInternalHomCompatibilityMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X80CDA0CB821E08EE"><span class="RefLink">MonoidalCategories: TensorProductInternalHomCompatibilityMorphism for IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductInternalHomCompatibilityMorphismWithGivenObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7B0194A07AB73486"><span class="RefLink">MonoidalCategories: TensorProductInternalHomCompatibilityMorphismWithGivenObjects for IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductOnMorphisms</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X84997A1E8188D6BE"><span class="RefLink">MonoidalCategories: TensorProductOnMorphisms for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductOnMorphismsWithGivenTensorProducts</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X85008BF07C2C0386"><span class="RefLink">MonoidalCategories: TensorProductOnMorphismsWithGivenTensorProducts for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductOnObjects</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X797034F17AA47EE0"><span class="RefLink">MonoidalCategories: TensorProductOnObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorProductToInternalHomAdjunctionMap</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X809E6A3182D62DCB"><span class="RefLink">MonoidalCategories: TensorProductToInternalHomAdjunctionMap for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">TensorUnit</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7BF7FFDF8789474A"><span class="RefLink">MonoidalCategories: TensorUnit for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">TerminalObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7DC837217946D22D"><span class="RefLink">CAP: TerminalObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">TerminalObjectFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7C616CD287760D2F"><span class="RefLink">CAP: TerminalObjectFunctorial for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">TerminalObjectFunctorialWithGivenTerminalObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8511229882130F93"><span class="RefLink">CAP: TerminalObjectFunctorialWithGivenTerminalObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromBiasedWeakPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7F2F3FAD87205D0A"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismFromBiasedWeakPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X81047F4D7B007D05"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromCoproduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7D002C7B82B26908"><span class="RefLink">CAP: UniversalMorphismFromCoproduct for IsList, IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromCoproductWithGivenCoproduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X85F392E5865012C7"><span class="RefLink">CAP: UniversalMorphismFromCoproductWithGivenCoproduct for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X812D12CF7AB6F499"><span class="RefLink">CAP: UniversalMorphismFromDirectSum for IsList, IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromDirectSumWithGivenDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7B64A051814EFDDB"><span class="RefLink">CAP: UniversalMorphismFromDirectSumWithGivenDirectSum for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromImage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7989B1FB811D2033"><span class="RefLink">CAP: UniversalMorphismFromImage for IsCapCategoryMorphism, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromImageWithGivenImageObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X86E557097CFB4430"><span class="RefLink">CAP: UniversalMorphismFromImageWithGivenImageObject for IsCapCategoryMorphism, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromInitialObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X873FC2B087004DC3"><span class="RefLink">CAP: UniversalMorphismFromInitialObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromInitialObjectWithGivenInitialObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7F7177F585576F6B"><span class="RefLink">CAP: UniversalMorphismFromInitialObjectWithGivenInitialObject for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X84F299F47BFB39F8"><span class="RefLink">CAP: UniversalMorphismFromPushout for IsList, IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromPushoutWithGivenPushout</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7E3C69767F1C3B30"><span class="RefLink">CAP: UniversalMorphismFromPushoutWithGivenPushout for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X8647B1F787E7A634"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismFromWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X797E6E3B79DA17DD"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7A0BF1118777C8A3"><span class="RefLink">CAP: UniversalMorphismFromZeroObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismFromZeroObjectWithGivenZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X80327B2387F38FE8"><span class="RefLink">CAP: UniversalMorphismFromZeroObjectWithGivenZeroObject for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoBiasedWeakFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7833716B83FCE291"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismIntoBiasedWeakFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7D54F6007FA31C19"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoCoimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7D051DDF7A68BFFB"><span class="RefLink">CAP: UniversalMorphismIntoCoimage for IsCapCategoryMorphism, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoCoimageWithGivenCoimage</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X87AACC0083B6D49F"><span class="RefLink">CAP: UniversalMorphismIntoCoimageWithGivenCoimageObject for IsCapCategoryMorphism, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoDirectProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X872189E4848F6863"><span class="RefLink">CAP: UniversalMorphismIntoDirectProduct for IsList, IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoDirectProductWithGivenDirectProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X81A27DC180D751B8"><span class="RefLink">CAP: UniversalMorphismIntoDirectProductWithGivenDirectProduct for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X84FCF65E798EBF7B"><span class="RefLink">CAP: UniversalMorphismIntoDirectSum for IsList, IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoDirectSumWithGivenDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X79EFDADB8276B639"><span class="RefLink">CAP: UniversalMorphismIntoDirectSumWithGivenDirectSum for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8441CF7F8140E8C2"><span class="RefLink">CAP: UniversalMorphismIntoFiberProduct for IsList, IsCapCategoryObject, IsList</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoFiberProductWithGivenFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7A6A890D85F01977"><span class="RefLink">CAP: UniversalMorphismIntoFiberProductWithGivenFiberProduct for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoTerminalObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X7BEA5AF67D63F4A5"><span class="RefLink">CAP: UniversalMorphismIntoTerminalObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoTerminalObjectWithGivenTerminalObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X8707AD1784DCBBFF"><span class="RefLink">CAP: UniversalMorphismIntoTerminalObjectWithGivenTerminalObject for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoWeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7D26BC9A7CCD1C4B"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismIntoWeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X810F526178E2DB8C"><span class="RefLink">FreydCategoriesForCAP: UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X86003308844F8341"><span class="RefLink">CAP: UniversalMorphismIntoZeroObject for IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalMorphismIntoZeroObjectWithGivenZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X866104CA84CBC40A"><span class="RefLink">CAP: UniversalMorphismIntoZeroObjectWithGivenZeroObject for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">UniversalPropertyOfDual</code> (<a href="https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap1_mj.html#X7AF8F68887146C20"><span class="RefLink">MonoidalCategories: UniversalPropertyOfDual for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakBiFiberProduct</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X78718E5782F3720E"><span class="RefLink">FreydCategoriesForCAP: WeakBiFiberProduct for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakBiFiberProductMorphismToDirectSum</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7B79748686524A91"><span class="RefLink">FreydCategoriesForCAP: WeakBiFiberProductMorphismToDirectSum for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakBiPushout</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X87390E608145CE89"><span class="RefLink">FreydCategoriesForCAP: WeakBiPushout for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakCokernelColift</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X8620586083B3AE47"><span class="RefLink">FreydCategoriesForCAP: WeakCokernelColift for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakCokernelColiftWithGivenWeakCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X85A9E11C7919653E"><span class="RefLink">FreydCategoriesForCAP: WeakCokernelColiftWithGivenWeakCokernelObject for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7AB2AE1087F50E60"><span class="RefLink">FreydCategoriesForCAP: WeakCokernelObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakCokernelProjection</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X806D163A7880451F"><span class="RefLink">FreydCategoriesForCAP: WeakCokernelProjection for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakCokernelProjectionWithGivenWeakCokernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7DF9B3477B5A1D67"><span class="RefLink">FreydCategoriesForCAP: WeakCokernelProjectionWithGivenWeakCokernelObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakKernelEmbedding</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X83F59A01848A453C"><span class="RefLink">FreydCategoriesForCAP: WeakKernelEmbedding for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakKernelEmbeddingWithGivenWeakKernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X806F77C3782F3905"><span class="RefLink">FreydCategoriesForCAP: WeakKernelEmbeddingWithGivenWeakKernelObject for IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakKernelLift</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X7C2C92CC86D2A301"><span class="RefLink">FreydCategoriesForCAP: WeakKernelLift for IsCapCategoryMorphism, IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakKernelLiftWithGivenWeakKernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X8308E8F28404A2C9"><span class="RefLink">FreydCategoriesForCAP: WeakKernelLiftWithGivenWeakKernelObject for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">WeakKernelObject</code> (<a href="https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap1_mj.html#X79E994747B8592EE"><span class="RefLink">FreydCategoriesForCAP: WeakKernelObject for IsCapCategoryMorphism</span></a>)</p>
+
+</li>
+<li><p><code class="func">ZeroMorphism</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap3_mj.html#X873412DB7BD0FBD3"><span class="RefLink">CAP: ZeroMorphism for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+<li><p><code class="func">ZeroObject</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X790C4FA87CADB93E"><span class="RefLink">CAP: ZeroObject for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">ZeroObjectFunctorial</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X79CEAF827DDED44B"><span class="RefLink">CAP: ZeroObjectFunctorial for IsCapCategory</span></a>)</p>
+
+</li>
+<li><p><code class="func">ZeroObjectFunctorialWithGivenZeroObjects</code> (<a href="https://homalg-project.github.io/CAP_project/CAP/doc/chap6_mj.html#X82D7BF1F85268B0A"><span class="RefLink">CAP: ZeroObjectFunctorialWithGivenZeroObjects for IsCapCategoryObject, IsCapCategoryObject</span></a>)</p>
+
+</li>
+</ul>
+<p><a id="X7C8B260F7B95B432" name="X7C8B260F7B95B432"></a></p>
+
+<h4>1.3 <span class="Heading">Operations and global functions</span></h4>
+
+<p><a id="X7B35EBF7804AEC6A" name="X7B35EBF7804AEC6A"></a></p>
+
+<h5>1.3-1 ImageEmbeddingForFpLeftModulesByFreyd</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageEmbeddingForFpLeftModulesByFreyd</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a left <strong class="pkg">homalg</strong> module map</p>
+
+<p>The image-embedding method used for <strong class="pkg">homalg</strong> left modules.</p>
+
+<p><a id="X78E722D082561C26" name="X78E722D082561C26"></a></p>
+
+<h5>1.3-2 ImageEmbeddingForFpRightModulesByFreyd</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageEmbeddingForFpRightModulesByFreyd</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a right <strong class="pkg">homalg</strong> module map</p>
+
+<p>The image-embedding method used for <strong class="pkg">homalg</strong> right modules.</p>
+
+<p><a id="X87DF1D328193788C" name="X87DF1D328193788C"></a></p>
+
+<h5>1.3-3 ImageEmbeddingForFpLeftModulesByPresentations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageEmbeddingForFpLeftModulesByPresentations</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a left <strong class="pkg">homalg</strong> module map</p>
+
+<p>The image-embedding method used for <strong class="pkg">homalg</strong> left modules.</p>
+
+<p><a id="X78AEC95C786C05B5" name="X78AEC95C786C05B5"></a></p>
+
+<h5>1.3-4 ImageEmbeddingForFpRightModulesByPresentations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageEmbeddingForFpRightModulesByPresentations</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a right <strong class="pkg">homalg</strong> module map</p>
+
+<p>The image-embedding method used for <strong class="pkg">homalg</strong> right modules.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.4 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7DE4B04078385D9A" name="X7DE4B04078385D9A"></a></p>
+
+<h5>1.4-1 IsCategoryOfHomalgModules</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfHomalgModules</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

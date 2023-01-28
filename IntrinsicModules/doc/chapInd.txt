@@ -1,0 +1,36 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XCategoryOfHomalgFinitelyPresentedLeftModules[102X, for IsHomalgRing 1.1-2 
+  [2XCategoryOfHomalgFinitelyPresentedRightModules[102X, for IsHomalgRing 1.1-3 
+  [2XFunctorGetRidOfZeroGeneratorsOfFpLeftModule[102X, for IsCapCategory 6.1-3 
+  [2XFunctorGetRidOfZeroGeneratorsOfFpRightModule[102X, for IsCapCategory 6.1-4 
+  [2XFunctorLessGeneratorsOfLeftFpModule[102X, for IsCapCategory 6.1-5 
+  [2XFunctorLessGeneratorsOfRightFpModule[102X, for IsCapCategory 6.1-6 
+  [2XFunctorStandardPresentationOfFpLeftModule[102X, for IsCapCategory 6.1-1 
+  [2XFunctorStandardPresentationOfFpRightModule[102X, for IsCapCategory 6.1-2 
+  [2XHomalgGeneratorsForModule[102X, for IsLazyGeneralizedEmbeddingInAmbientObject, IsHomalgModule 3.1-1 
+  [2XHomalgMap[102X, for IsHomalgMatrix, IsHomalgModule, IsHomalgModule 5.1-1 
+  [2XHomalgRelationsForModule[102X, for IsCategoryOfColumnsObject 2.1-1 
+      for IsCategoryOfRowsObject 2.1-1 
+      for IsFreydCategoryObject 2.1-1 
+      for IsLeftOrRightPresentation 2.1-2 
+  [2XImageEmbeddingForFpLeftModulesByFreyd[102X 1.3-1 
+  [2XImageEmbeddingForFpLeftModulesByPresentations[102X 1.3-3 
+  [2XImageEmbeddingForFpRightModulesByFreyd[102X 1.3-2 
+  [2XImageEmbeddingForFpRightModulesByPresentations[102X 1.3-4 
+  [2XIsCategoryOfHomalgModules[102X, for IsCapCategory 1.4-1 
+  [2XLeftPresentation[102X, for IsHomalgMatrix 4.1-1 
+  [2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpLeftModule[102X, for IsCapCategory 7.1-3 
+  [2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpRightModule[102X, for IsCapCategory 7.1-4 
+  [2XNaturalIsomorphismFromIdentityToLessGeneratorsOfFpLeftModule[102X, for IsCapCategory 7.1-5 
+  [2XNaturalIsomorphismFromIdentityToLessGeneratorsOfFpRightModule[102X, for IsCapCategory 7.1-6 
+  [2XNaturalIsomorphismFromIdentityToStandardPresentationOfFpLeftModule[102X, for IsCapCategory 7.1-1 
+  [2XNaturalIsomorphismFromIdentityToStandardPresentationOfFpRightModule[102X, for IsCapCategory 7.1-2 
+  [2XRightPresentation[102X, for IsHomalgMatrix 4.1-2 
+  [2XTurnAutoequivalenceIntoIdentityFunctorForHomalg[102X, for IsCapNaturalTransformation, IsCapCategory 1.1-1 
+  [2XUpdateHomalgGenerators[102X, for IsObject, IsHomalgGenerators 3.2-1 
+  
+  
+  -------------------------------------------------------

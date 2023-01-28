@@ -1,0 +1,66 @@
+  
+  [1X7 [33X[0;0YNatural transformations[133X[101X
+  
+  
+  [1X7.1 [33X[0;0YNatural isomorphisms from identity functor[133X[101X
+  
+  [1X7.1-1 NaturalIsomorphismFromIdentityToStandardPresentationOfFpLeftModule[101X
+  
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToStandardPresentationOfFpLeftModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{StandardPresentationOfFpLeftModule}[123X[133X
+  
+  [33X[0;0YThe  argument  is an additve closure category [23XA[123X of a ring. The output is the
+  natural  isomorphism  from  the identity functor to the left standard module
+  functor.[133X
+  
+  [1X7.1-2 NaturalIsomorphismFromIdentityToStandardPresentationOfFpRightModule[101X
+  
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToStandardPresentationOfFpRightModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{StandardPresentationOfFpRightModule}[123X[133X
+  
+  [33X[0;0YThe  argument  is an additve closure category [23XA[123X of a ring. The output is the
+  natural  isomorphism  from the identity functor to the right standard module
+  functor.[133X
+  
+  [1X7.1-3 NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpLeftModule[101X
+  
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpLeftModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{GetRidOfZeroGeneratorsOfFpLeftModule}[123X[133X
+  
+  [33X[0;0YThe  argument  is an additve closure category [23XA[123X of a ring. The output is the
+  natural  isomorphism  from the identity functor to the functor that gets rid
+  of zero generators of left modules.[133X
+  
+  [1X7.1-4 NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpRightModule[101X
+  
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsOfFpRightModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{GetRidOfZeroGeneratorsOfFpRightModule}[123X[133X
+  
+  [33X[0;0YThe  argument  is an additve closure category [23XA[123X of a ring. The output is the
+  natural  isomorphism  from the identity functor to the functor that gets rid
+  of zero generators of right modules.[133X
+  
+  [1X7.1-5 NaturalIsomorphismFromIdentityToLessGeneratorsOfFpLeftModule[101X
+  
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToLessGeneratorsOfFpLeftModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{LessGeneratorsOfFpLeftModule}[123X[133X
+  
+  [33X[0;0YThe  argument  is an additve closure category [23XA[123X of a ring. The output is the
+  natural  morphism  from  the  identity  functor  to the left less generators
+  functor.[133X
+  
+  [1X7.1-6 NaturalIsomorphismFromIdentityToLessGeneratorsOfFpRightModule[101X
+  
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToLessGeneratorsOfFpRightModule[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
+            \mathrm{LessGeneratorsOfFpRightModule}[123X[133X
+  
+  [33X[0;0YThe  argument  is an additve closure category [23XA[123X of a ring. The output is the
+  natural  morphism  from  the  identity  functor  to the right less generator
+  functor.[133X
+  

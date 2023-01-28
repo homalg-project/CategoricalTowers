@@ -1,0 +1,122 @@
+  
+  [1X4 [33X[0;0YModules[133X[101X
+  
+  [33X[0;0YA  [5Xhomalg[105X  module  is  a  data  structure for a finitely presented module. A
+  presentation  is  given  by a set of generators and a set of relations among
+  these  generators.  The  data  structure for modules in [5Xhomalg[105X has two novel
+  features:[133X
+  
+  [30X    [33X[0;6YThe  data structure allows several presentations linked with so-called
+        transition matrices. One of the presentations is marked as the default
+        presentation,  which is usually the last added one. A new presentation
+        can  always be added provided it is linked to the default presentation
+        by  a  transition  matrix.  If  needed, the user can reset the default
+        presentation  by  choosing one of the other presentations saved in the
+        data  structure  of  the  [5Xhomalg[105X module. Effectively, a module is then
+        given   by  [21Xall[121X  its  presentations  (as  [21Xcoordinates[121X)  together  with
+        isomorphisms  between  them  (as  [21Xcoordinate  changes[121X).  Being able to
+        [21Xchange  coordinates[121X  makes  the  realization  of  a  module  in [5Xhomalg[105X
+        [13Xintrinsic[113X (or [21Xcoordinate free[121X).[133X
+  
+  [30X    [33X[0;6YTo  present  a  left/right  module  it suffices to take a matrix [3XM[103X and
+        interpret  its  rows/columns as relations among [22Xn[122X [13Xabstract[113X generators,
+        where  [22Xn[122X  is the number of columns/rows of [3XM[103X. Only that these abstract
+        generators  are useless when it comes to specific modules like modules
+        of  homomorphisms, where one expects the generators to be maps between
+        modules.  For  this reason a presentation of a module in [5Xhomalg[105X is not
+        merely a matrix of relations, but together with a set of generators.[133X
+  
+  
+  [1X4.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X4.1-1 LeftPresentation[101X
+  
+  [33X[1;0Y[29X[2XLeftPresentation[102X( [3Xmat[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5Xhomalg[105X left module[133X
+  
+  [33X[0;0YThis  constructor  returns the finitely presented left module with relations
+  given by the rows of the [5Xhomalg[105X matrix [3Xmat[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := LeftPresentation( M );[127X[104X
+    [4X[28X<A non-torsion left module presented by 2 relations for 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(1x2) --> Z^(1x3),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27Xrels := RelationsOfModule( M );[127X[104X
+    [4X[28X<A set of 2 relations for 3 generators of a homalg left module>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfRelations( M );[127X[104X
+    [4X[28X<A non-zero 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfRelations( rels );[127X[104X
+    [4X[28X<A non-zero 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xgens := GeneratorsOfModule( M );[127X[104X
+    [4X[28X<A set of 3 generators of a homalg left module>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfGenerators( M );[127X[104X
+    [4X[28X<An unevaluated 3 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfGenerators( gens );[127X[104X
+    [4X[28X<An unevaluated 3 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XByASmallerPresentation( M );[127X[104X
+    [4X[28X<A rank 1 left module presented by 1 relation for 2 generators>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28XZ/< 3 > + Z^(1 x 1)[128X[104X
+  [4X[32X[104X
+  
+  [1X4.1-2 RightPresentation[101X
+  
+  [33X[1;0Y[29X[2XRightPresentation[102X( [3Xmat[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5Xhomalg[105X right module[133X
+  
+  [33X[0;0YThis  constructor returns the finitely presented right module with relations
+  given by the columns of the [5Xhomalg[105X matrix [3Xmat[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XM := HomalgMatrix( "[ \[127X[104X
+    [4X[25X>[125X [27X2, 3, 4, \[127X[104X
+    [4X[25X>[125X [27X5, 6, 7  \[127X[104X
+    [4X[25X>[125X [27X]", 2, 3, ZZ );[127X[104X
+    [4X[28X<A 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XM := RightPresentation( M );[127X[104X
+    [4X[28X<A right module on 2 generators satisfying 3 relations>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28X[ [  2,  3,  4 ],[128X[104X
+    [4X[28X  [  5,  6,  7 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XCokernel of the map[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XZ^(3x1) --> Z^(2x1),[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xcurrently represented by the above matrix[128X[104X
+    [4X[25Xgap>[125X [27Xrels := RelationsOfModule( M );[127X[104X
+    [4X[28X<A set of 3 relations for 2 generators of a homalg right module>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfRelations( M );[127X[104X
+    [4X[28X<A non-zero 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfRelations( rels );[127X[104X
+    [4X[28X<A non-zero 2 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27Xgens := GeneratorsOfModule( M );[127X[104X
+    [4X[28X<A set of 2 generators of a homalg right module>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfGenerators( M );[127X[104X
+    [4X[28X<An unevaluated 2 x 2 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XMatrixOfGenerators( gens );[127X[104X
+    [4X[28X<An unevaluated 2 x 2 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27XByASmallerPresentation( M );[127X[104X
+    [4X[28X<A non-zero cyclic torsion right module on a cyclic generator[128X[104X
+    [4X[28X satisfying 1 relation>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
+    [4X[28XZ/< 3 >[128X[104X
+  [4X[32X[104X
+  
