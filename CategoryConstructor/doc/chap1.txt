@@ -1,0 +1,45 @@
+  
+  [1X1 [33X[0;0YThe category constructor[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X1.1-1 CategoryConstructor[101X
+  
+  [33X[1;0Y[29X[2XCategoryConstructor[102X( [3Xnothing[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe function takes no arguments but various options:[133X
+  
+  [30X    [33X[0;6Yname[133X
+  
+  [30X    [33X[0;6Ycategory_object_filter[133X
+  
+  [30X    [33X[0;6Ycategory_morphism_filter[133X
+  
+  [30X    [33X[0;6Ycommutative_ring[133X
+  
+  [30X    [33X[0;6Ylist_of_operations_to_install[133X
+  
+  [30X    [33X[0;6Yis_monoidal[133X
+  
+  [30X    [33X[0;6Ycreate_func_bool[133X
+  
+  [30X    [33X[0;6Ycreate_func_object0[133X
+  
+  [30X    [33X[0;6Ycreate_func_morphism0[133X
+  
+  [30X    [33X[0;6Ycreate_func_object[133X
+  
+  [30X    [33X[0;6Ycreate_func_morphism[133X
+  
+  [30X    [33X[0;6Ycreate_func_morphism_or_fail[133X
+  
+  [30X    [33X[0;6Ycreate_func_list[133X
+  
+  [30X    [33X[0;6Ycreate_func_object_or_fail[133X
+  
+  [30X    [33X[0;6Ycreate_func_other_object[133X
+  
+  [30X    [33X[0;6Ycreate_func_other_morphism[133X
+  

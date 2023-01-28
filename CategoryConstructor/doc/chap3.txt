@@ -1,0 +1,23 @@
+  
+  [1X3 [33X[0;0YTools[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YFunctors[133X[101X
+  
+  [1X3.1-1 CovariantHomFunctor[101X
+  
+  [33X[1;0Y[29X[2XCovariantHomFunctor[102X( [3Xo[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YThe  input  is  an object [3Xo[103X in a category [23XC[123X. The output is the covariant Hom
+  functor      [23X\mathrm{Hom}[123X([3Xo[103X,-)      from      the      category     [23XC[123X     to
+  [10XRangeCategoryOfHomomorphismStructure[110X( [3XC[103X ).[133X
+  
+  [1X3.1-2 GlobalSectionFunctor[101X
+  
+  [33X[1;0Y[29X[2XGlobalSectionFunctor[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns  the  global  section  functor [23X\mathrm{Hom}(1,-)[123X from the category [3XC[103X
+  with terminal object [23X1[123X to [10XRangeCategoryOfHomomorphismStructure[110X( [3XC[103X ).[133X
+  

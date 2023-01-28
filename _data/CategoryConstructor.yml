@@ -1,0 +1,75 @@
+name: CategoryConstructor
+version: "2023.01-03"
+license: "GPL-2.0-or-later"
+date: 2023-01-28
+description: |
+    Construct categories out of given ones
+
+authors:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+
+maintainers:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "CAP"
+      version: ">= 2023.01-03"
+      url: "https://homalg-project.github.io/pkg/CAP"
+    - name: "MonoidalCategories"
+      version: ">= 2022.06-03"
+      url: "https://homalg-project.github.io/pkg/MonoidalCategories"
+    - name: "ToolsForHomalg"
+      version: ">= 2021.11-01"
+      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
+
+www: https://homalg-project.github.io/pkg/CategoryConstructor
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/CategoryConstructor/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.01-03/CategoryConstructor-2023.01-03.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.01-03/CategoryConstructor-2023.01-03.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoryConstructor-2023.01-03/CategoryConstructor-2023.01-03.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+keywords: |
+    Category constructor.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+     <i class='BibTitle'>CategoryConstructor, Construct categories out of given ones,
+             Version 2023.01-03</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CategoryConstructor">https://homalg-project.github.io/pkg/CategoryConstructor</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ CategoryConstructor2023.01-03,
+      author =           {Barakat, M.},
+      title =            {{CategoryConstructor},  Construct  categories  out  of
+                          given ones, {V}ersion 2023.01-03},
+      month =            {Jan},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/CategoryConstructor}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{CategoryConstructor}}},
+      keywords =         {Category constructor},
+      printedkey =       {Bar23}
+    }
+

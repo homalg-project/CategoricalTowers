@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CategoryConstructor) - Chapter 2: Futher CAP operations</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
+<p><a id="X7A6423127D9D3FE2" name="X7A6423127D9D3FE2"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X7A6423127D9D3FE2">2 <span class="Heading">Futher CAP operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X81E4AE0B7876230B">2.1 <span class="Heading">Projective covers and injective envelopes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7E8F3D867BB76F9A">2.2 <span class="Heading">IsWeakTerminal and IsWeakInitial</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F7BBC8C79995A93">2.2-1 IsWeakTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8642512586735F67">2.2-2 IsWeakInitial</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X780B0FEE7D6A21CD">2.3 <span class="Heading">RelativeLift/RelativeColift</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79234F8980194879">2.3-1 RelativeLift</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X879CF007832D03F3">2.4 <span class="Heading">Biased relative weak fiber product</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X864473737B086524">2.4-1 BiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FD3AE9D7DBC01F4">2.4-2 ProjectionOfBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X781112B079B0F5F3">2.4-3 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8458574281FFFB01">2.4-4 UniversalMorphismIntoBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81A9161D81520773">2.4-5 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8772B968846FF9D9">2.5 <span class="Heading">EmbeddingOfSumOfImagesOfAllMorphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X844F7372819980CA">2.5-1 MorphismOntoSumOfImagesOfAllMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X806DFC607E27BB36">2.5-2 EmbeddingOfSumOfImagesOfAllMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8024BA5F825B8B1B">2.5-3 SumOfImagesOfAllMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X87C6495985074294">2.6 <span class="Heading">Systems of homogeneous linear equations in linear categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8666962D84B81665">2.6-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E6E1269854E4B94">2.6-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85A7BE3185E58026">2.6-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X798F78CE7EAA7F95">2.6-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X860621FE7C1E6634">2.6-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7C5E6D997861A9D8">2.7 <span class="Heading">Limit</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80FCFACF824AF054">2.7-1 LimitPair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BF67ED87B756595">2.7-2 Limit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X844876FF82707630">2.7-3 ProjectionInFactorOfLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85AA282C7A066AAC">2.7-4 ProjectionInFactorOfLimitWithGivenLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X86AEF8308304E9EA">2.7-5 UniversalMorphismIntoLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X789AAA5E868D7398">2.7-6 UniversalMorphismIntoLimitWithGivenLimit</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X851A90077CCA220E">2.8 <span class="Heading">Colimit</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85AC4D887B6CDD8A">2.8-1 ColimitPair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85B1E92B7FABE81D">2.8-2 Colimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F5199EF7FF469A5">2.8-3 InjectionOfCofactorOfColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A98698C812AD966">2.8-4 InjectionOfCofactorOfColimitWithGivenColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83EB1F678026F370">2.8-5 UniversalMorphismFromColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BF4ED2F7A33C7D4">2.8-6 UniversalMorphismFromColimitWithGivenColimit</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7FB8C0E179A3CF0F">2.9 <span class="Heading">ImageObjectFunctorial</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X84C87141786C4FF5">2.10 <span class="Heading">CoimageObjectFunctorial</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X85C8C80F785AEB5E">2.11 <span class="Heading">Add-methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8452C3617C063298">2.11-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78FCEAFA80D1D71B">2.11-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81AE911F80D91623">2.11-3 AddBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8423EE5B840F42D8">2.11-4 AddColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X816ECC477B2A4889">2.11-5 AddEmbeddingOfSumOfImagesOfAllMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B330E9A7E78DAFD">2.11-6 AddInjectionOfCofactorOfColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87D07D277A16BFD1">2.11-7 AddInjectionOfCofactorOfColimitWithGivenColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X827698197A88B3BA">2.11-8 AddIsWeakInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81CA7B3D86C6F505">2.11-9 AddIsWeakTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CE7D7387A1CD947">2.11-10 AddLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A635EA8808F2EC3">2.11-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C1910B77A78E2B8">2.11-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7ED9FA117AE4541B">2.11-13 AddMorphismOntoSumOfImagesOfAllMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X856B5F1C7F6B5461">2.11-14 AddProjectionInFactorOfLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8180F80E841DE5C1">2.11-15 AddProjectionInFactorOfLimitWithGivenLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X839B0DEF83FD843A">2.11-16 AddProjectionOfBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X838F991C7F040105">2.11-17 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EB1827186E0F720">2.11-18 AddRelativeLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CBC2437861BB234">2.11-19 AddSumOfImagesOfAllMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X861531B98207C048">2.11-20 AddUniversalMorphismFromColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80F992A78669A564">2.11-21 AddUniversalMorphismFromColimitWithGivenColimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8615089884EAF14F">2.11-22 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84D280F87AA473DE">2.11-23 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79CE392E795E5B4A">2.11-24 AddUniversalMorphismIntoLimit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X824251F280C5B8E0">2.11-25 AddUniversalMorphismIntoLimitWithGivenLimit</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Futher CAP operations</span></h3>
+
+<p><a id="X81E4AE0B7876230B" name="X81E4AE0B7876230B"></a></p>
+
+<h4>2.1 <span class="Heading">Projective covers and injective envelopes</span></h4>
+
+<p><a id="X7E8F3D867BB76F9A" name="X7E8F3D867BB76F9A"></a></p>
+
+<h4>2.2 <span class="Heading">IsWeakTerminal and IsWeakInitial</span></h4>
+
+<p><a id="X7F7BBC8C79995A93" name="X7F7BBC8C79995A93"></a></p>
+
+<h5>2.2-1 IsWeakTerminal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWeakTerminal</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> of a category <span class="SimpleMath">\(\mathbf{C}\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a\)</span> is weak terminal <span class="SimpleMath">\(\mathbf{C}\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X8642512586735F67" name="X8642512586735F67"></a></p>
+
+<h5>2.2-2 IsWeakInitial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWeakInitial</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> of a category <span class="SimpleMath">\(\mathbf{C}\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(a\)</span> is weak initial in <span class="SimpleMath">\(\mathbf{C}\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X780B0FEE7D6A21CD" name="X780B0FEE7D6A21CD"></a></p>
+
+<h4>2.3 <span class="Heading">RelativeLift/RelativeColift</span></h4>
+
+<p><a id="X79234F8980194879" name="X79234F8980194879"></a></p>
+
+<h5>2.3-1 RelativeLift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelativeLift</code>( <var class="Arg">beta</var>, <var class="Arg">alpha</var>, <var class="Arg">nu</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(b,a) + \{ \mathtt{fail} \}\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>, <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, and <span class="SimpleMath">\(\nu: d \rightarrow c\)</span> . The output is a relative lift <span class="SimpleMath">\(\beta / \alpha: b \rightarrow a\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> modulo <span class="SimpleMath">\(\nu\)</span>. if such a relative lift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a relative lift <span class="SimpleMath">\(\beta / \alpha: b \rightarrow a\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> modulo <span class="SimpleMath">\(\nu\)</span> is a morphism such that <span class="SimpleMath">\(\alpha \circ (\beta / \alpha) \sim_{b,c} \beta + \chi \nu\)</span>, for some morphism <span class="SimpleMath">\(\chi: b \rightarrow d\)</span>.</p>
+
+<p><a id="X879CF007832D03F3" name="X879CF007832D03F3"></a></p>
+
+<h4>2.4 <span class="Heading">Biased relative weak fiber product</span></h4>
+
+<p>For a given pair of morphisms <span class="SimpleMath">\((\alpha: A \rightarrow B, \beta \colon C \rightarrow B)\)</span>, a biased relative weak fiber product of <span class="SimpleMath">\((\alpha, \beta)\)</span> consists of three parts:</p>
+
+
+<ul>
+<li><p>an object <span class="SimpleMath">\(P\)</span>,</p>
+
+</li>
+<li><p>a morphism <span class="SimpleMath">\(\pi: P \rightarrow A\)</span> such that there exists a morphism <span class="SimpleMath">\(\delta: P \rightarrow C\)</span> such that <span class="SimpleMath">\(\beta \circ \delta \sim_{P,B} \alpha \circ \pi\)</span>,</p>
+
+</li>
+<li><p>a dependent function <span class="SimpleMath">\(u\)</span> mapping each <span class="SimpleMath">\(\tau: T \rightarrow A\)</span>, which admits a morphism <span class="SimpleMath">\(\mu \colon T \rightarrow C\)</span> with <span class="SimpleMath">\(\beta \circ \mu \sim_{T,B} \alpha \circ \tau\)</span>, to a morphism <span class="SimpleMath">\(u(\tau):T \rightarrow P\)</span> such that <span class="SimpleMath">\(\pi \circ u(\tau) \sim_{T,A} \tau\)</span>.</p>
+
+</li>
+</ul>
+<p>The triple <span class="SimpleMath">\(( P, \pi, u )\)</span> is called a <em>biased relative weak fiber product</em> of <span class="SimpleMath">\((\alpha,\beta)\)</span>. We denote the object <span class="SimpleMath">\(P\)</span> of such a triple by <span class="SimpleMath">\(\mathrm{BiasedRelativeWeakFiberProduct}(\alpha,\beta)\)</span>. We say that the morphism <span class="SimpleMath">\(u(\tau)\)</span> is induced by the <em>universal property of the biased relative weak fiber product</em>.</p>
+
+<p><a id="X864473737B086524" name="X864473737B086524"></a></p>
+
+<h5>2.4-1 BiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BiasedRelativeWeakFiberProduct</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">sigma</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\beta: C \rightarrow B\)</span>. The output is the biased relative weak fiber product <span class="SimpleMath">\(P\)</span> of <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span>.</p>
+
+<p><a id="X7FD3AE9D7DBC01F4" name="X7FD3AE9D7DBC01F4"></a></p>
+
+<h5>2.4-2 ProjectionOfBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionOfBiasedRelativeWeakFiberProduct</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">sigma</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P, A )\)</span></p>
+
+<p>The arguments are three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\beta: C \rightarrow B\)</span>, <span class="SimpleMath">\(\sigma: D \rightarrow A\)</span>. The output is the biased relative weak fiber product projection <span class="SimpleMath">\(\pi: P \rightarrow A\)</span>.</p>
+
+<p><a id="X781112B079B0F5F3" name="X781112B079B0F5F3"></a></p>
+
+<h5>2.4-3 ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">sigma</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P, A )\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\beta: C \rightarrow B\)</span>, <span class="SimpleMath">\(\sigma: D \rightarrow A\)</span>, and an object <span class="SimpleMath">\(P = \mathrm{BiasedRelativeWeakFiberProduct}( \alpha, \beta )\)</span>. The output is the biased relative weak fiber product projection <span class="SimpleMath">\(\pi: P \rightarrow A\)</span>.</p>
+
+<p><a id="X8458574281FFFB01" name="X8458574281FFFB01"></a></p>
+
+<h5>2.4-4 UniversalMorphismIntoBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoBiasedRelativeWeakFiberProduct</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">sigma</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( T, P )\)</span></p>
+
+<p>The arguments are three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\beta: C \rightarrow B\)</span>, <span class="SimpleMath">\(\sigma: D \rightarrow A\)</span>, <span class="SimpleMath">\(\tau: T \rightarrow A\)</span>. The output is the morphism <span class="SimpleMath">\(u( \tau )\)</span> induced by the universal property of the biased relative weak fiber product <span class="SimpleMath">\(P\)</span> of <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span>.</p>
+
+<p><a id="X81A9161D81520773" name="X81A9161D81520773"></a></p>
+
+<h5>2.4-5 UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">sigma</var>, <var class="Arg">tau</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( T, P )\)</span></p>
+
+<p>The arguments are three morphisms <span class="SimpleMath">\(\alpha: A \rightarrow B\)</span>, <span class="SimpleMath">\(\beta: C \rightarrow B\)</span>, <span class="SimpleMath">\(\tau: T \rightarrow A\)</span> and an object <span class="SimpleMath">\(P = \mathrm{BiasedRelativeWeakFiberProduct}( \alpha, \beta )\)</span>. The output is the morphism <span class="SimpleMath">\(u( \tau )\)</span> induced by the universal property of the biased relative weak fiber product <span class="SimpleMath">\(P\)</span> of <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span>.</p>
+
+<p><a id="X8772B968846FF9D9" name="X8772B968846FF9D9"></a></p>
+
+<h4>2.5 <span class="Heading">EmbeddingOfSumOfImagesOfAllMorphisms</span></h4>
+
+<p><a id="X844F7372819980CA" name="X844F7372819980CA"></a></p>
+
+<h5>2.5-1 MorphismOntoSumOfImagesOfAllMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismOntoSumOfImagesOfAllMorphisms</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Return a morphism onto the sum of images of all morphisms between <var class="Arg">a</var> and <var class="Arg">b</var>.</p>
+
+<p><a id="X806DFC607E27BB36" name="X806DFC607E27BB36"></a></p>
+
+<h5>2.5-2 EmbeddingOfSumOfImagesOfAllMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfSumOfImagesOfAllMorphisms</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Return the embedding of the sum of images of all morphisms between <var class="Arg">a</var> and <var class="Arg">b</var>.</p>
+
+<p><a id="X8024BA5F825B8B1B" name="X8024BA5F825B8B1B"></a></p>
+
+<h5>2.5-3 SumOfImagesOfAllMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SumOfImagesOfAllMorphisms</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Return the sum of images of all morphisms between <var class="Arg">a</var> and <var class="Arg">b</var>.</p>
+
+<p><a id="X87C6495985074294" name="X87C6495985074294"></a></p>
+
+<h4>2.6 <span class="Heading">Systems of homogeneous linear equations in linear categories</span></h4>
+
+<p><a id="X8666962D84B81665" name="X8666962D84B81665"></a></p>
+
+<h5>2.6-1 MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</code>( <var class="Arg">left_coeffs</var>, <var class="Arg">right_coeffs</var>, <var class="Arg">right_side</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>Like <code class="code">SolveLinearSystemInAbCategory</code>, but the output is simply <code class="code">true</code> if a unique solution exists, and <code class="code">false</code> otherwise.</p>
+
+<p><a id="X7E6E1269854E4B94" name="X7E6E1269854E4B94"></a></p>
+
+<h5>2.6-2 MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</code>( <var class="Arg">left_coeffs</var>, <var class="Arg">right_coeffs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>but the output is <code class="code">true</code> if the homogeneous system has only the trivial solution, and <code class="code">false</code> otherwise.</p>
+
+<p><a id="X85A7BE3185E58026" name="X85A7BE3185E58026"></a></p>
+
+<h5>2.6-3 BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of morphisms <span class="SimpleMath">\([X^1, \dots, X^t]\)</span></p>
+
+<p>The arguments are two lists of lists <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span> of morphisms in some linear category over commutative ring. The first list <span class="SimpleMath">\(\alpha\)</span> (the left coefficients) is a list of list of morphisms <span class="SimpleMath">\(\alpha_{ij}: A_i \rightarrow B_j\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span> for integers <span class="SimpleMath">\(m,n \geq 1\)</span>. The second list <span class="SimpleMath">\(\beta\)</span> (the right coefficients) is a list of list of morphisms <span class="SimpleMath">\(\beta_{ij}: C_j \rightarrow D_i\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span>. The output is either a generating set <span class="SimpleMath">\([X^1,\dots,X^t]\)</span> for the solutions of the homogeneous linear system defined by <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>, i.e., <span class="SimpleMath">\(\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = 0\)</span> for all <span class="SimpleMath">\(i = 1 \dots m\)</span> and all <span class="SimpleMath">\(k = 1 \dots t\)</span> or <span class="SimpleMath">\(\texttt{fail}\)</span> if no such solution exists.</p>
+
+<p><a id="X798F78CE7EAA7F95" name="X798F78CE7EAA7F95"></a></p>
+
+<h5>2.6-4 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of morphisms <span class="SimpleMath">\([X^1, \dots, X^t]\)</span></p>
+
+<p>The arguments are four lists of lists <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>, <span class="SimpleMath">\(\gamma\)</span>, <span class="SimpleMath">\(\delta\)</span> of morphisms in some linear category over commutative ring. Each of <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\gamma\)</span> is a list of list of morphisms <span class="SimpleMath">\(\alpha_{ij}, \gamma_{ij}: A_i \rightarrow B_j\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span> for integers <span class="SimpleMath">\(m,n \geq 1\)</span>. Each of <span class="SimpleMath">\(\beta\)</span> and <span class="SimpleMath">\(\delta\)</span> is also a list of list of morphisms <span class="SimpleMath">\(\beta_{ij}, \delta_{ij}: C_j \rightarrow D_i\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span>. The output is either a generating set <span class="SimpleMath">\([X^1,\dots,X^t]\)</span> for the solutions of the homogeneous linear system defined by <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>, <span class="SimpleMath">\(\gamma\)</span> and <span class="SimpleMath">\(\delta\)</span>, i.e., <span class="SimpleMath">\(\sum_{j = 1}^n \alpha_{ij}\cdot X^{k}_{j} \cdot \beta_{ij} = \sum_{j = 1}^n \gamma_{ij}\cdot X^{k}_{j} \cdot \delta_{ij}\)</span> for all <span class="SimpleMath">\(i = 1 \dots m\)</span> and all <span class="SimpleMath">\(k = 1 \dots t\)</span> or <span class="SimpleMath">\(\texttt{fail}\)</span> if no such solution exists.</p>
+
+<p><a id="X860621FE7C1E6634" name="X860621FE7C1E6634"></a></p>
+
+<h5>2.6-5 BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">delta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of morphisms <span class="SimpleMath">\([X^1, \dots, X^t]\)</span></p>
+
+<p>The arguments are two lists of lists <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\delta\)</span> morphisms in some linear category over commutative ring. <span class="SimpleMath">\(\alpha\)</span> is a list of list of morphisms <span class="SimpleMath">\(\alpha_{ij}:A_i \rightarrow B_j\)</span> and <span class="SimpleMath">\(\delta\)</span> is a list of list of morphisms <span class="SimpleMath">\(\delta_{ij}:C_j \rightarrow D_i\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span> for integers <span class="SimpleMath">\(m,n \geq 1\)</span>. The method delegates to <code class="code">BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code> applied on <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>, <span class="SimpleMath">\(\gamma\)</span>, <span class="SimpleMath">\(\delta\)</span> where <span class="SimpleMath">\(\beta_{ij}\)</span> equals <code class="code">IdentityMorphism</code>(<code class="code">Source</code>(<span class="SimpleMath">\(\delta_{ij}\)</span>)) whenever <span class="SimpleMath">\(\delta_{ij}\)</span> is endomorphism and equals to <span class="SimpleMath">\(0*\delta_{ij}\)</span> otherwise; and <span class="SimpleMath">\(\gamma_{ij}\)</span> equals <code class="code">IdentityMorphism</code>(<code class="code">Source</code>(<span class="SimpleMath">\(\alpha_{ij}\)</span>)) whenever <span class="SimpleMath">\(\alpha_{ij}\)</span> is endomorphism and equals to <span class="SimpleMath">\(0*\alpha_{ij}\)</span> otherwise for all <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span>.</p>
+
+<p><a id="X7C5E6D997861A9D8" name="X7C5E6D997861A9D8"></a></p>
+
+<h4>2.7 <span class="Heading">Limit</span></h4>
+
+<p><a id="X80FCFACF824AF054" name="X80FCFACF824AF054"></a></p>
+
+<h5>2.7-1 LimitPair</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LimitPair</code>( <var class="Arg">cat</var>, <var class="Arg">objs</var>, <var class="Arg">decorated_mors</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a pair of morphisms</p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a category <var class="Arg">cat</var> and</p>
+
+</li>
+<li><p>a finite diagram (or subquiver) in <var class="Arg">cat</var> given by</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> of objects in <var class="Arg">cat</var>, and</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>.</p>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>The output is a pair consisting of an object in <var class="Arg">cat</var> and two parallel morphisms having this object as source, such that the binary equalizer of the two morphisms is the limit of the diagram.</p>
+
+<p><a id="X7BF67ED87B756595" name="X7BF67ED87B756595"></a></p>
+
+<h5>2.7-2 Limit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Limit</code>( <var class="Arg">objs</var>, <var class="Arg">decorated_mors</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The input is a finite diagram (or subquiver) <var class="Arg">D</var> (in a category <var class="Arg">cat</var>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> of objects in <var class="Arg">cat</var> and</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>.</p>
+
+</li>
+</ul>
+<p>The output is the limit object <span class="SimpleMath">\(\mathrm{Limit}\)</span>(<var class="Arg">D</var>) of the diagram <var class="Arg">D</var>.</p>
+
+<p><a id="X844876FF82707630" name="X844876FF82707630"></a></p>
+
+<h5>2.7-3 ProjectionInFactorOfLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionInFactorOfLimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P, P_k )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <var class="Arg">D</var> (in a category <var class="Arg">cat</var>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <var class="Arg">cat</var>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>, and</p>
+
+</li>
+</ul>
+</li>
+<li><p>a positive integer <var class="Arg">k</var>.</p>
+
+</li>
+</ul>
+<p>The output is the projection of the limit object <span class="SimpleMath">\(P := \mathrm{Limit}\)</span>(<var class="Arg">D</var>) of the diagram <var class="Arg">D</var> into the <var class="Arg">k</var>-th objects <span class="SimpleMath">\(P_k =\)</span><var class="Arg">objs</var>[<var class="Arg">k</var>].</p>
+
+<p><a id="X85AA282C7A066AAC" name="X85AA282C7A066AAC"></a></p>
+
+<h5>2.7-4 ProjectionInFactorOfLimitWithGivenLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectionInFactorOfLimitWithGivenLimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">k</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P, P_k )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <span class="SimpleMath">\(D\)</span> (in a category <var class="Arg">cat</var>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <var class="Arg">cat</var>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>,</p>
+
+</li>
+</ul>
+</li>
+<li><p>a positive integer <var class="Arg">k</var>, and</p>
+
+</li>
+<li><p>an object <var class="Arg">P</var><span class="SimpleMath">\(= \mathrm{Limit}(D)\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the projection of the limit object <var class="Arg">P</var> <span class="SimpleMath">\(:=\mathrm{Limit}(D)\)</span> into <span class="SimpleMath">\(P_k =\)</span><var class="Arg">objs</var>[<var class="Arg">k</var>].</p>
+
+<p><a id="X86AEF8308304E9EA" name="X86AEF8308304E9EA"></a></p>
+
+<h5>2.7-5 UniversalMorphismIntoLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoLimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">T</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( T, \mathrm{Limit}(D) )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <span class="SimpleMath">\(D\)</span> (in a category <span class="SimpleMath">\(cat\)</span>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+</ul>
+</li>
+<li><p>a test object <var class="Arg">T</var>, and</p>
+
+</li>
+<li><p>a list of morphisms <span class="SimpleMath">\(\tau = ( \tau_i: T \rightarrow P_i )\)</span> in <span class="SimpleMath">\(cat\)</span> defining a cone over <span class="SimpleMath">\(D\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the morphism <span class="SimpleMath">\(u( \tau ): T \rightarrow \mathrm{Limit}(D)\)</span> given by the universal property of the limit.</p>
+
+<p><a id="X789AAA5E868D7398" name="X789AAA5E868D7398"></a></p>
+
+<h5>2.7-6 UniversalMorphismIntoLimitWithGivenLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoLimitWithGivenLimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">T</var>, <var class="Arg">tau</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( T, P )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <span class="SimpleMath">\(D\)</span> (in a category <span class="SimpleMath">\(cat\)</span>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+</ul>
+</li>
+<li><p>a test object <var class="Arg">T</var>,</p>
+
+</li>
+<li><p>a list of morphisms <span class="SimpleMath">\(\tau = ( \tau_i: T \rightarrow P_i )\)</span> in <span class="SimpleMath">\(cat\)</span> defining a cone over <span class="SimpleMath">\(D\)</span>, and</p>
+
+</li>
+<li><p>an object <var class="Arg">P</var><span class="SimpleMath">\(= \mathrm{Limit}(D)\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the morphism <span class="SimpleMath">\(u( \tau ): T \rightarrow P = \mathrm{Limit}(D)\)</span> given by the universal property of the limit.</p>
+
+<p><a id="X851A90077CCA220E" name="X851A90077CCA220E"></a></p>
+
+<h4>2.8 <span class="Heading">Colimit</span></h4>
+
+<p><a id="X85AC4D887B6CDD8A" name="X85AC4D887B6CDD8A"></a></p>
+
+<h5>2.8-1 ColimitPair</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ColimitPair</code>( <var class="Arg">cat</var>, <var class="Arg">objs</var>, <var class="Arg">decorated_mors</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a pair of morphisms</p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a category <var class="Arg">cat</var> and</p>
+
+</li>
+<li><p>a finite diagram (or subquiver) in <var class="Arg">cat</var> given by</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> of objects in <var class="Arg">cat</var>, and</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>.</p>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>The output is a pair consisting of an object in <var class="Arg">cat</var> and two parallel morphisms having this object as range, such that the binary coequalizer of the two morphisms is the colimit of the diagram.</p>
+
+<p><a id="X85B1E92B7FABE81D" name="X85B1E92B7FABE81D"></a></p>
+
+<h5>2.8-2 Colimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Colimit</code>( <var class="Arg">objs</var>, <var class="Arg">decorated_mors</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The input is a finite diagram (or subquiver) <var class="Arg">D</var> (in a category <var class="Arg">cat</var>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> of objects in <var class="Arg">cat</var> and</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>.</p>
+
+</li>
+</ul>
+<p>The output is the colimit object <span class="SimpleMath">\(\mathrm{Colimit}\)</span>(<var class="Arg">D</var>) of the diagram <var class="Arg">D</var>.</p>
+
+<p><a id="X7F5199EF7FF469A5" name="X7F5199EF7FF469A5"></a></p>
+
+<h5>2.8-3 InjectionOfCofactorOfColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectionOfCofactorOfColimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P_k, P )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <var class="Arg">D</var> (in a category <var class="Arg">cat</var>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <var class="Arg">cat</var>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>, and</p>
+
+</li>
+</ul>
+</li>
+<li><p>a positive integer <var class="Arg">k</var>.</p>
+
+</li>
+</ul>
+<p>The output is the injection of the <var class="Arg">k</var>-th objects <span class="SimpleMath">\(P_k =\)</span><var class="Arg">objs</var>[<var class="Arg">k</var>] into the colimit object <span class="SimpleMath">\(P := \mathrm{Colimit}\)</span>(<var class="Arg">D</var>) of the diagram <var class="Arg">D</var>.</p>
+
+<p><a id="X7A98698C812AD966" name="X7A98698C812AD966"></a></p>
+
+<h5>2.8-4 InjectionOfCofactorOfColimitWithGivenColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectionOfCofactorOfColimitWithGivenColimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">k</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P_k, P )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <span class="SimpleMath">\(D\)</span> (in a category <var class="Arg">cat</var>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <var class="Arg">cat</var>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <var class="Arg">cat</var>,</p>
+
+</li>
+</ul>
+</li>
+<li><p>a positive integer <var class="Arg">k</var>, and</p>
+
+</li>
+<li><p>an object <var class="Arg">P</var><span class="SimpleMath">\(= \mathrm{Colimit}(D)\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the projection of <span class="SimpleMath">\(P_k =\)</span><var class="Arg">objs</var>[<var class="Arg">k</var>] into the colimit object <var class="Arg">P</var> <span class="SimpleMath">\(:=\mathrm{Colimit}(D)\)</span>.</p>
+
+<p><a id="X83EB1F678026F370" name="X83EB1F678026F370"></a></p>
+
+<h5>2.8-5 UniversalMorphismFromColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromColimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">T</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( \mathrm{Colimit}(D), T )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <span class="SimpleMath">\(D\)</span> (in a category <span class="SimpleMath">\(cat\)</span>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+</ul>
+</li>
+<li><p>a test object <var class="Arg">T</var>, and</p>
+
+</li>
+<li><p>a list of morphisms <span class="SimpleMath">\(\tau = ( \tau_i: P_i \rightarrow T )\)</span> in <span class="SimpleMath">\(cat\)</span> defining a cocone over <span class="SimpleMath">\(D\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the morphism <span class="SimpleMath">\(u( \tau ): \mathrm{Colimit}(D) \rightarrow T\)</span> given by the universal property of the colimit.</p>
+
+<p><a id="X7BF4ED2F7A33C7D4" name="X7BF4ED2F7A33C7D4"></a></p>
+
+<h5>2.8-6 UniversalMorphismFromColimitWithGivenColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismFromColimitWithGivenColimit</code>( <var class="Arg">objects</var>, <var class="Arg">decorated_morphisms</var>, <var class="Arg">T</var>, <var class="Arg">tau</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( P, T )\)</span></p>
+
+<p>The input is</p>
+
+
+<ul>
+<li><p>a finite diagram (or subquiver) <span class="SimpleMath">\(D\)</span> (in a category <span class="SimpleMath">\(cat\)</span>) consisting of</p>
+
+
+<ul>
+<li><p>a list <var class="Arg">objs</var> = <span class="SimpleMath">\((P_i)_{i = 1 \dots n}\)</span> of objects in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+<li><p>a list <var class="Arg">decorated_mors</var> of triples <var class="Arg">[ i, mor, j ]</var>, where <var class="Arg">mor</var>:<var class="Arg">objs</var>[<var class="Arg">i</var>] <span class="SimpleMath">\(\to\)</span> <var class="Arg">objs</var>[<var class="Arg">j</var>] is a morphism in <span class="SimpleMath">\(cat\)</span>,</p>
+
+</li>
+</ul>
+</li>
+<li><p>a test object <var class="Arg">T</var>,</p>
+
+</li>
+<li><p>a list of morphisms <span class="SimpleMath">\(\tau = ( \tau_i: P_i \rightarrow T )\)</span> in <span class="SimpleMath">\(cat\)</span> defining a cocone over <span class="SimpleMath">\(D\)</span>, and</p>
+
+</li>
+<li><p>an object <var class="Arg">P</var><span class="SimpleMath">\(= \mathrm{Colimit}(D)\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the morphism <span class="SimpleMath">\(u( \tau ): P = \mathrm{Colimit}(D) \rightarrow T\)</span> given by the universal property of the colimit.</p>
+
+<p><a id="X7FB8C0E179A3CF0F" name="X7FB8C0E179A3CF0F"></a></p>
+
+<h4>2.9 <span class="Heading">ImageObjectFunctorial</span></h4>
+
+<p><a id="X84C87141786C4FF5" name="X84C87141786C4FF5"></a></p>
+
+<h4>2.10 <span class="Heading">CoimageObjectFunctorial</span></h4>
+
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>2.11 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X8452C3617C063298" name="X8452C3617C063298"></a></p>
+
+<h5>2.11-1 AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory</code>. <span class="SimpleMath">\(F: ( arg2, arg3, arg4, arg5 ) \mapsto \mathtt{BasisOfSolutionsOfHomogeneousDoubleLinearSystemInLinearCategory}(arg2, arg3, arg4, arg5)\)</span>.</p>
+
+<p><a id="X78FCEAFA80D1D71B" name="X78FCEAFA80D1D71B"></a></p>
+
+<h5>2.11-2 AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{BasisOfSolutionsOfHomogeneousLinearSystemInLinearCategory}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X81AE911F80D91623" name="X81AE911F80D91623"></a></p>
+
+<h5>2.11-3 AddBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">BiasedRelativeWeakFiberProduct</code>. <span class="SimpleMath">\(F: ( arg2, arg3, arg4 ) \mapsto \mathtt{BiasedRelativeWeakFiberProduct}(arg2, arg3, arg4)\)</span>.</p>
+
+<p><a id="X8423EE5B840F42D8" name="X8423EE5B840F42D8"></a></p>
+
+<h5>2.11-4 AddColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Colimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms ) \mapsto \mathtt{Colimit}(objects, decorated_morphisms)\)</span>.</p>
+
+<p><a id="X816ECC477B2A4889" name="X816ECC477B2A4889"></a></p>
+
+<h5>2.11-5 AddEmbeddingOfSumOfImagesOfAllMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfSumOfImagesOfAllMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">EmbeddingOfSumOfImagesOfAllMorphisms</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{EmbeddingOfSumOfImagesOfAllMorphisms}(a, b)\)</span>.</p>
+
+<p><a id="X7B330E9A7E78DAFD" name="X7B330E9A7E78DAFD"></a></p>
+
+<h5>2.11-6 AddInjectionOfCofactorOfColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCofactorOfColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfCofactorOfColimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, k ) \mapsto \mathtt{InjectionOfCofactorOfColimit}(objects, decorated_morphisms, k)\)</span>.</p>
+
+<p><a id="X87D07D277A16BFD1" name="X87D07D277A16BFD1"></a></p>
+
+<h5>2.11-7 AddInjectionOfCofactorOfColimitWithGivenColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectionOfCofactorOfColimitWithGivenColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InjectionOfCofactorOfColimitWithGivenColimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, k, P ) \mapsto \mathtt{InjectionOfCofactorOfColimitWithGivenColimit}(objects, decorated_morphisms, k, P)\)</span>.</p>
+
+<p><a id="X827698197A88B3BA" name="X827698197A88B3BA"></a></p>
+
+<h5>2.11-8 AddIsWeakInitial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWeakInitial</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsWeakInitial</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{IsWeakInitial}(arg2)\)</span>.</p>
+
+<p><a id="X81CA7B3D86C6F505" name="X81CA7B3D86C6F505"></a></p>
+
+<h5>2.11-9 AddIsWeakTerminal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWeakTerminal</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsWeakTerminal</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{IsWeakTerminal}(arg2)\)</span>.</p>
+
+<p><a id="X7CE7D7387A1CD947" name="X7CE7D7387A1CD947"></a></p>
+
+<h5>2.11-10 AddLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Limit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms ) \mapsto \mathtt{Limit}(objects, decorated_morphisms)\)</span>.</p>
+
+<p><a id="X7A635EA8808F2EC3" name="X7A635EA8808F2EC3"></a></p>
+
+<h5>2.11-11 AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{MereExistenceOfUniqueSolutionOfHomogeneousLinearSystemInAbCategory}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X7C1910B77A78E2B8" name="X7C1910B77A78E2B8"></a></p>
+
+<h5>2.11-12 AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory</code>. <span class="SimpleMath">\(F: ( arg2, arg3, arg4 ) \mapsto \mathtt{MereExistenceOfUniqueSolutionOfLinearSystemInAbCategory}(arg2, arg3, arg4)\)</span>.</p>
+
+<p><a id="X7ED9FA117AE4541B" name="X7ED9FA117AE4541B"></a></p>
+
+<h5>2.11-13 AddMorphismOntoSumOfImagesOfAllMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismOntoSumOfImagesOfAllMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MorphismOntoSumOfImagesOfAllMorphisms</code>. <span class="SimpleMath">\(F: ( a, b ) \mapsto \mathtt{MorphismOntoSumOfImagesOfAllMorphisms}(a, b)\)</span>.</p>
+
+<p><a id="X856B5F1C7F6B5461" name="X856B5F1C7F6B5461"></a></p>
+
+<h5>2.11-14 AddProjectionInFactorOfLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFactorOfLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInFactorOfLimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, k ) \mapsto \mathtt{ProjectionInFactorOfLimit}(objects, decorated_morphisms, k)\)</span>.</p>
+
+<p><a id="X8180F80E841DE5C1" name="X8180F80E841DE5C1"></a></p>
+
+<h5>2.11-15 AddProjectionInFactorOfLimitWithGivenLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionInFactorOfLimitWithGivenLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionInFactorOfLimitWithGivenLimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, k, P ) \mapsto \mathtt{ProjectionInFactorOfLimitWithGivenLimit}(objects, decorated_morphisms, k, P)\)</span>.</p>
+
+<p><a id="X839B0DEF83FD843A" name="X839B0DEF83FD843A"></a></p>
+
+<h5>2.11-16 AddProjectionOfBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOfBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionOfBiasedRelativeWeakFiberProduct</code>. <span class="SimpleMath">\(F: ( a, b, c ) \mapsto \mathtt{ProjectionOfBiasedRelativeWeakFiberProduct}(a, b, c)\)</span>.</p>
+
+<p><a id="X838F991C7F040105" name="X838F991C7F040105"></a></p>
+
+<h5>2.11-17 AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>. <span class="SimpleMath">\(F: ( a, b, c, P ) \mapsto \mathtt{ProjectionOfBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a, b, c, P)\)</span>.</p>
+
+<p><a id="X7EB1827186E0F720" name="X7EB1827186E0F720"></a></p>
+
+<h5>2.11-18 AddRelativeLift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativeLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RelativeLift</code>. <span class="SimpleMath">\(F: ( beta, alpha, nu ) \mapsto \mathtt{RelativeLift}(beta, alpha, nu)\)</span>.</p>
+
+<p><a id="X7CBC2437861BB234" name="X7CBC2437861BB234"></a></p>
+
+<h5>2.11-19 AddSumOfImagesOfAllMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSumOfImagesOfAllMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SumOfImagesOfAllMorphisms</code>. <span class="SimpleMath">\(F: ( arg2, arg3 ) \mapsto \mathtt{SumOfImagesOfAllMorphisms}(arg2, arg3)\)</span>.</p>
+
+<p><a id="X861531B98207C048" name="X861531B98207C048"></a></p>
+
+<h5>2.11-20 AddUniversalMorphismFromColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismFromColimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromColimit}(objects, decorated_morphisms, T, tau)\)</span>.</p>
+
+<p><a id="X80F992A78669A564" name="X80F992A78669A564"></a></p>
+
+<h5>2.11-21 AddUniversalMorphismFromColimitWithGivenColimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismFromColimitWithGivenColimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismFromColimitWithGivenColimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismFromColimitWithGivenColimit}(objects, decorated_morphisms, T, tau, P)\)</span>.</p>
+
+<p><a id="X8615089884EAF14F" name="X8615089884EAF14F"></a></p>
+
+<h5>2.11-22 AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoBiasedRelativeWeakFiberProduct</code>. <span class="SimpleMath">\(F: ( a, b, c, t ) \mapsto \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProduct}(a, b, c, t)\)</span>.</p>
+
+<p><a id="X84D280F87AA473DE" name="X84D280F87AA473DE"></a></p>
+
+<h5>2.11-23 AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct</code>. <span class="SimpleMath">\(F: ( a, b, c, t, P ) \mapsto \mathtt{UniversalMorphismIntoBiasedRelativeWeakFiberProductWithGivenBiasedRelativeWeakFiberProduct}(a, b, c, t, P)\)</span>.</p>
+
+<p><a id="X79CE392E795E5B4A" name="X79CE392E795E5B4A"></a></p>
+
+<h5>2.11-24 AddUniversalMorphismIntoLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoLimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismIntoLimit}(objects, decorated_morphisms, T, tau)\)</span>.</p>
+
+<p><a id="X824251F280C5B8E0" name="X824251F280C5B8E0"></a></p>
+
+<h5>2.11-25 AddUniversalMorphismIntoLimitWithGivenLimit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoLimitWithGivenLimit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoLimitWithGivenLimit</code>. <span class="SimpleMath">\(F: ( objects, decorated_morphisms, T, tau, P ) \mapsto \mathtt{UniversalMorphismIntoLimitWithGivenLimit}(objects, decorated_morphisms, T, tau, P)\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
