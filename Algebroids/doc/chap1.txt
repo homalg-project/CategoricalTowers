@@ -1,0 +1,925 @@
+  
+  [1X1 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YThe natural numbers as a f.g. monoid[133X[101X
+  
+  [33X[0;0YCreate a right quiver [23Xq[123X with a single vertix [23Xo[123X and a single arrow [23Xm[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(o)[m:o->o]" );[127X[104X
+    [4X[28Xq(o)[m:o->o][128X[104X
+    [4X[25Xgap>[125X [27Xo := q.o;[127X[104X
+    [4X[28X(o)[128X[104X
+    [4X[25Xgap>[125X [27Xm := q.m;[127X[104X
+    [4X[28X(m)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate a monoid from [23Xq[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XN := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative( N );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XN.o;[127X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[25Xgap>[125X [27XN.m;[127X[104X
+    [4X[28X(o)-[(m)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( N );[127X[104X
+    [4X[28X[ <(o)> ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( N );[127X[104X
+    [4X[28X[ (o)-[(m)]->(o) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( N, N.o, N.o );[127X[104X
+    [4X[28X[ (o)-[(m)]->(o) ][128X[104X
+    [4X[25Xgap>[125X [27XObjectInFpCategory( N, o ) = N.o;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XN.o = o / N;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIdentityMorphism( N.o );[127X[104X
+    [4X[28X(o)-[(o)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27XMorphismInFpCategory( N, m ) = N.m;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XN.m = m / N;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can compute in the algebroids. For instance we can form compositions.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XPreCompose( N.m, N.m );[127X[104X
+    [4X[28X(o)-[(m*m)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27Xunit := Unit( N );[127X[104X
+    [4X[28XFunctor from FreeCategory( RightQuiver( "*(1)[]" ) ) ->[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27Xmul := Multiplication( N );[127X[104X
+    [4X[28XFunctor from[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "qxq(oo)[om:oo->oo,mo:oo->oo]" ) ) / relations ->[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o]" ) )[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2 [33X[0;0YThe integers as f.g. monoid[133X[101X
+  
+  [33X[0;0YCreate a right quiver [23Xq[123X with a single vertix [23Xo[123X and two arrows [23Xm[123X, [23Xi[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(o)[m:o->o,i:o->o]" );[127X[104X
+    [4X[28Xq(o)[m:o->o,i:o->o][128X[104X
+    [4X[25Xgap>[125X [27Xo := q.o;[127X[104X
+    [4X[28X(o)[128X[104X
+    [4X[25Xgap>[125X [27Xm := q.m;[127X[104X
+    [4X[28X(m)[128X[104X
+    [4X[25Xgap>[125X [27Xi := q.i;[127X[104X
+    [4X[28X(i)[128X[104X
+    [4X[25Xgap>[125X [27XL := [ [ m * i, o ], [ i * m, o ] ];[127X[104X
+    [4X[28X[ [ (m*i), (o) ], [ (i*m), (o) ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate a monoid from [23Xq[123X and the list [23XL[123X of relations.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := Category( q, L );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ][128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative( ZZ );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZ.o;[127X[104X
+    [4X[28X<(o)>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ZZ.o );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xm := ZZ.m;[127X[104X
+    [4X[28X(o)-[(m)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27Xi := ZZ.i;[127X[104X
+    [4X[28X(o)-[(i)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( ZZ );[127X[104X
+    [4X[28X[ <(o)> ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( ZZ );[127X[104X
+    [4X[28X[ (o)-[(m)]->(o), (o)-[(i)]->(o) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( ZZ, ZZ.o, ZZ.o );[127X[104X
+    [4X[28X[ (o)-[(m)]->(o), (o)-[(i)]->(o) ][128X[104X
+    [4X[25Xgap>[125X [27XObjectInFpCategory( ZZ, o ) = ZZ.o;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZ.o = o / ZZ;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIdentityMorphism( ZZ.o );[127X[104X
+    [4X[28X(o)-[(o)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27XMorphismInFpCategory( ZZ, q.m ) = ZZ.m;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XZZ.m = q.m / ZZ;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can compute in the algebroids. For instance we can form compositions.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xm2 := PreCompose( [ m, i, m, m, i, m, i, m ] );[127X[104X
+    [4X[28X(o)-[(m*m)]->(o)[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( m2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xunit := Unit( ZZ );[127X[104X
+    [4X[28XFunctor from FreeCategory( RightQuiver( "*(1)[]" ) ) ->[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ][128X[104X
+    [4X[25Xgap>[125X [27Xmul := Multiplication( ZZ );[127X[104X
+    [4X[28XFunctor from[128X[104X
+    [4X[28XFreeCategory( RightQuiver([128X[104X
+    [4X[28X  "qxq(oo)[om:oo->oo,oi:oo->oo,mo:oo->oo,io:oo->oo]" ) ) / relations ->[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(o)[m:o->o,i:o->o]" ) ) / [ m*i = o, i*m = o ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3 [33X[0;0YA f.p. category[133X[101X
+  
+  [33X[0;0YCreate a left quiver [23Xql[123X with 3 vertices u,v,w and 4 edges a,b,c,d.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xql := LeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );[127X[104X
+    [4X[28Xql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate a right quiver [23Xqr[123X with 3 vertices u,v,w and 4 edges a,b,c,d.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xqr := RightQuiver( "qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );[127X[104X
+    [4X[28Xqr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate f.p. categories from these quivers.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XCl := FreeCategory( ql );[127X[104X
+    [4X[28XFreeCategory( LeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XCr := FreeCategory( qr );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XCl.u;[127X[104X
+    [4X[28X<(u)>[128X[104X
+    [4X[25Xgap>[125X [27XCr.u;[127X[104X
+    [4X[28X<(u)>[128X[104X
+    [4X[25Xgap>[125X [27XCl.a;[127X[104X
+    [4X[28X(v)<-[(a)]-(u)[128X[104X
+    [4X[25Xgap>[125X [27XCr.a;[127X[104X
+    [4X[28X(u)-[(a)]->(v)[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( Cl );[127X[104X
+    [4X[28X[ <(u)>, <(v)>, <(w)> ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Cl );[127X[104X
+    [4X[28X[ (v)<-[(a)]-(u), (u)<-[(b)]-(v), (u)<-[(c)]-(v), (w)<-[(d)]-(v) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Cl, Cl.u, Cl.v );[127X[104X
+    [4X[28X[ (v)<-[(a)]-(u) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( Cr );[127X[104X
+    [4X[28X[ <(u)>, <(v)>, <(w)> ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Cr );[127X[104X
+    [4X[28X[ (u)-[(a)]->(v), (v)-[(b)]->(u), (v)-[(c)]->(u), (v)-[(d)]->(w) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Cr, Cr.u, Cr.v );[127X[104X
+    [4X[28X[ (u)-[(a)]->(v) ][128X[104X
+    [4X[25Xgap>[125X [27XObjectInFpCategory( Cl, ql.u ) = Cl.u;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCl.u = ql.u / Cl;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismInFpCategory( Cl, ql.a ) = Cl.a;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCl.a = ql.a / Cl;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIdentityMorphism( Cl.u );[127X[104X
+    [4X[28X(u)<-[(u)]-(u)[128X[104X
+    [4X[25Xgap>[125X [27XIdentityMorphism( Cr.u );[127X[104X
+    [4X[28X(u)-[(u)]->(u)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can compute in the algebroids. For instance we can form compositions.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XPreCompose( Cl.a, Cl.d );[127X[104X
+    [4X[28X(w)<-[(d*a)]-(u)[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( Cr.a, Cr.d );[127X[104X
+    [4X[28X(u)-[(a*d)]->(w)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can construct quotient categories[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq:= RightQuiver( "q(1)[a:1->1]" );[127X[104X
+    [4X[28Xq(1)[a:1->1][128X[104X
+    [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XC := Fq / [ [ Fq.a^3, Fq.a^2 ] ];[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a*a ][128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( C );[127X[104X
+    [4X[28X(Q * q) / [ 1*(a*a*a) - 1*(a*a) ][128X[104X
+    [4X[25Xgap>[125X [27XSize( C );[127X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XD := C / [ [ C.a^9, C.1 ] ];[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) /[128X[104X
+    [4X[28X[ a*a*a = a*a, a*a = 1 ][128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( D );[127X[104X
+    [4X[28X(Q * q) / [ 1*(a) - 1*(1) ][128X[104X
+    [4X[25Xgap>[125X [27XSize( D );[127X[104X
+    [4X[28X1[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.4 [33X[0;0YThe full subcategory of the simplicial category truncated in degree 2[133X[101X
+  
+  [33X[0;0YThe  full  subcategory of the simplicial category [23X\Delta[123X on the objects [23X[0],
+  [1], [2][123X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XRelationsOfFpCategory( Delta2 );[127X[104X
+    [4X[28X[ [ (s*id), (C0) ], [ (t*id), (C0) ],[128X[104X
+    [4X[28X  [ (ps*is), (C1) ], [ (pt*it), (C1) ],[128X[104X
+    [4X[28X  [ (is*id), (it*id) ], [ (pt*is), (id*t) ],[128X[104X
+    [4X[28X  [ (ps*it), (id*s) ], [ (s*pt), (t*ps) ],[128X[104X
+    [4X[28X  [ (s*mu), (s*ps) ], [ (t*mu), (t*pt) ],[128X[104X
+    [4X[28X  [ (mu*is), (C1) ], [ (mu*it), (C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
+    [4X[28X31[128X[104X
+    [4X[25Xgap>[125X [27XDelta2_op := OppositeFiniteCategory( Delta2 );[127X[104X
+    [4X[28XOpposite( FreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations )[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( OppositeFiniteCategory( Delta2_op ), Delta2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.5 [33X[0;0YAlgebroids[133X[101X
+  
+  [33X[0;0YCreate a left quiver [23Xql[123X with 3 vertices u,v,w and 4 edges a,b,c,d.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xql := LeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );[127X[104X
+    [4X[28Xql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate a right quiver [23Xqr[123X with 3 vertices u,v,w and 4 edges a,b,c,d.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xqr := RightQuiver( "qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );[127X[104X
+    [4X[28Xqr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate algebroids from these quivers over [23X\mathbb{Q}[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XAl := Algebroid( Q, ql );[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory([128X[104X
+    [4X[28XLeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xalgebra_Al := UnderlyingQuiverAlgebra( Al );[127X[104X
+    [4X[28XQ * ql[128X[104X
+    [4X[25Xgap>[125X [27XAr := Algebroid( Q, qr );[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "qr(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xalgebra_Ar := UnderlyingQuiverAlgebra( Ar );[127X[104X
+    [4X[28XQ * qr[128X[104X
+    [4X[25Xgap>[125X [27XAl.u;[127X[104X
+    [4X[28X<(u)>[128X[104X
+    [4X[25Xgap>[125X [27XAr.u;[127X[104X
+    [4X[28X<(u)>[128X[104X
+    [4X[25Xgap>[125X [27XAl.a;[127X[104X
+    [4X[28X(v)<-[1*(a)]-(u)[128X[104X
+    [4X[25Xgap>[125X [27XAr.a;[127X[104X
+    [4X[28X(u)-[1*(a)]->(v)[128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( Al );[127X[104X
+    [4X[28X[ <(u)>, <(v)>, <(w)> ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Al );[127X[104X
+    [4X[28X[ (v)<-[1*(a)]-(u), (u)<-[1*(b)]-(v), (u)<-[1*(c)]-(v), (w)<-[1*(d)]-(v) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Al, Al.u, Al.v );[127X[104X
+    [4X[28X[ (v)<-[1*(a)]-(u) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfObjects( Ar );[127X[104X
+    [4X[28X[ <(u)>, <(v)>, <(w)> ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Ar );[127X[104X
+    [4X[28X[ (u)-[1*(a)]->(v), (v)-[1*(b)]->(u), (v)-[1*(c)]->(u), (v)-[1*(d)]->(w) ][128X[104X
+    [4X[25Xgap>[125X [27XSetOfGeneratingMorphisms( Ar, Ar.u, Ar.v );[127X[104X
+    [4X[28X[ (u)-[1*(a)]->(v) ][128X[104X
+    [4X[25Xgap>[125X [27XCommutativeRingOfLinearCategory( Al ) = Q;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XObjectInAlgebroid( Al, ql.u ) = Al.u;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAl.u = ql.u / Al;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMorphismInAlgebroid( Al, algebra_Al.a ) = Al.a;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAl.a = algebra_Al.a / Al;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIdentityMorphism( Al.u ) = algebra_Al.u / Al;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can compute in the algebroids. For instance we can form compositions.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XPreCompose( Al.a, Al.d );[127X[104X
+    [4X[28X(w)<-[1*(d*a)]-(u)[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( Ar.a, Ar.d );[127X[104X
+    [4X[28X(u)-[1*(a*d)]->(w)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe also have addition and subtraction of morphisms and scalar multiplication
+  with elements from the ground ring [23X\mathbb{Q}[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XAl.b+Al.c;[127X[104X
+    [4X[28X(u)<-[1*(c) + 1*(b)]-(v)[128X[104X
+    [4X[25Xgap>[125X [27XAr.b+Ar.c;[127X[104X
+    [4X[28X(v)-[1*(c) + 1*(b)]->(u)[128X[104X
+    [4X[25Xgap>[125X [27XAl.b-Al.c;[127X[104X
+    [4X[28X(u)<-[-1*(c) + 1*(b)]-(v)[128X[104X
+    [4X[25Xgap>[125X [27XAr.b-Ar.c;[127X[104X
+    [4X[28X(v)-[-1*(c) + 1*(b)]->(u)[128X[104X
+    [4X[25Xgap>[125X [27XAl.d - Al.d;[127X[104X
+    [4X[28X(w)<-[0]-(v)[128X[104X
+    [4X[25Xgap>[125X [27XAr.d - Ar.d;[127X[104X
+    [4X[28X(v)-[0]->(w)[128X[104X
+    [4X[25Xgap>[125X [27X1/2 * Al.d;[127X[104X
+    [4X[28X(w)<-[1/2*(d)]-(v)[128X[104X
+    [4X[25Xgap>[125X [27X1/2 * Ar.d;[127X[104X
+    [4X[28X(v)-[1/2*(d)]->(w)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can construct quotient categories[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq:= RightQuiver( "q(1)[a:1->1]" );[127X[104X
+    [4X[28Xq(1)[a:1->1][128X[104X
+    [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XA := Q[Fq];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( A );[127X[104X
+    [4X[28XQ * q[128X[104X
+    [4X[25Xgap>[125X [27XB := A / [ 2*A.a^3 - A.a^2  ];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( B );[127X[104X
+    [4X[28X(Q * q) / [ 2*(a*a*a) - 1*(a*a) ][128X[104X
+    [4X[25Xgap>[125X [27XDimension( B );[127X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XC := B / [ B.a^2 + 2*B.a ];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( C );[127X[104X
+    [4X[28X(Q * q) / [ 2*(a*a*a) - 1*(a*a), 1*(a*a) + 2*(a) ][128X[104X
+    [4X[25Xgap>[125X [27XDimension( C );[127X[104X
+    [4X[28X1[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.6 [33X[0;0YBialgebroids[133X[101X
+  
+  [33X[0;0YCreate a right quiver [23Xq[123X with two vertices [23Xu[123X and [23Xv[123X and two edges [23Xa[123X and [23Xb[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(u,v)[a:u->v,b:v->u]" );[127X[104X
+    [4X[28Xq(u,v)[a:u->v,b:v->u][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCreate the path algebra [23X\mathbb{Q}q[123X of [23Xq[123X over [23X\mathbb{Q}[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(u,v)[a:u->v,b:v->u]" );[127X[104X
+    [4X[28Xq(u,v)[a:u->v,b:v->u][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );[127X[104X
+    [4X[28XQ * q[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YForm a quotient of [23X\mathbb{Q}q[123X by the relations [23Xab - u[123X and [23Xba - v[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XB := Algebroid( Qq, [ Qq.a * Qq.b - Qq.u, Qq.b * Qq.a - Qq.v ] );[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(u,v)[a:u->v,b:v->u]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27XRelationsOfAlgebroid( B );[127X[104X
+    [4X[28X[ (u)-[1*(a*b) - 1*(u)]->(u), (v)-[1*(b*a) - 1*(v)]->(v) ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsCommutative(B);[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNext  we  want  to  define a counit and a comultiplication on [23XB[123X to make it a
+  bialgebroid. The following record will be used to define the counit of [23XB[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcounit := rec( a := 1, b := 1 );[127X[104X
+    [4X[28Xrec( a := 1, b := 1 )[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe compute the tensor product [23XB \otimes_\mathbb{Q} B[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XB2 := B^2;[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "qxq(uu,uv,vu,vv)[\[128X[104X
+    [4X[28Xua:uu->uv,ub:uv->uu,va:vu->vv,vb:vv->vu,\[128X[104X
+    [4X[28Xau:uu->vu,av:uv->vv,bu:vu->uu,bv:vv->uv]" ) ) ) / relations[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  following  record  will  be used to define the comultiplication [23XB \to B
+  \otimes_{\mathbb{Q}} B[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcomult:= rec( a := PreCompose(B2.au, B2.va), b:= PreCompose(B2.bv, B2.ub) );[127X[104X
+    [4X[28Xrec( a := (uu)-[{ 1*(ua*av) }]->(vv), b := (vv)-[{ 1*(vb*bu) }]->(uu) )[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe use the records counit and comult to equip [23XB[123X with the induced morphisms [23XB
+  \to \mathbb{Q}[123X and [23XB \to B \otimes_{\mathbb{Q}} B[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XAddBialgebroidStructure( B, counit, comult );[127X[104X
+    [4X[28XBialgebroid( Q, FreeCategory( RightQuiver( "q(u,v)[a:u->v,b:v->u]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe extract comultiplication and counit from [23XB[123X. They are now functors.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcounit := Counit( B );[127X[104X
+    [4X[28XFunctor from Bialgebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(u,v)[a:u->v,b:v->u]" ) ) ) / relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcomult := Comultiplication( B );[127X[104X
+    [4X[28XFunctor from Bialgebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(u,v)[a:u->v,b:v->u]" ) ) ) / relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "qxq(uu,uv,vu,vv)[ua:uu->uv,ub:uv->uu,va:vu->vv,vb:vv->vu,\[128X[104X
+    [4X[28Xau:uu->vu,av:uv->vv,bu:vu->uu,bv:vv->uv]" ) ) ) / relations[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YApply comultiplication and counit.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, B.u );[127X[104X
+    [4X[28X<(1)>[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, B.v );[127X[104X
+    [4X[28X<(1)>[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, IdentityMorphism( B.u ) );[127X[104X
+    [4X[28X(1)-[1*(1)]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, IdentityMorphism( B.v ) );[127X[104X
+    [4X[28X(1)-[1*(1)]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, B.a );[127X[104X
+    [4X[28X(1)-[1*(1)]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, B.b );[127X[104X
+    [4X[28X(1)-[1*(1)]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, B.u );[127X[104X
+    [4X[28X<(uu)>[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, B.v );[127X[104X
+    [4X[28X<(vv)>[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, IdentityMorphism( B.u ) );[127X[104X
+    [4X[28X(uu)-[{ 1*(uu) }]->(uu)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, IdentityMorphism( B.v ) );[127X[104X
+    [4X[28X(vv)-[{ 1*(vv) }]->(vv)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, B.a );[127X[104X
+    [4X[28X(uu)-[{ 1*(ua*av) }]->(vv)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, B.b );[127X[104X
+    [4X[28X(vv)-[{ 1*(vb*bu) }]->(uu)[128X[104X
+    [4X[25Xgap>[125X [27XIsCoassociative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCocommutative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.7 [33X[0;0YHopf algebra generated by group-like elements[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[g:1->1,h:1->1]" );[127X[104X
+    [4X[28Xq(1)[g:1->1,h:1->1][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );[127X[104X
+    [4X[28XQ * q[128X[104X
+    [4X[25Xgap>[125X [27XB := Algebroid( Qq, [ Qq.h * Qq.g - Qq.1, Qq.g * Qq.h - Qq.1 ] );[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27XB2 := B^2;[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver([128X[104X
+    [4X[28X"qxq(1x1)[1xg:1x1->1x1,1xh:1x1->1x1,gx1:1x1->1x1,hx1:1x1->1x1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27Xcounit_rec := rec( g := 1, h := 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcomult_rec := rec( g := PreCompose( B2.1xg, B2.gx1 ),[127X[104X
+    [4X[25X>[125X [27X                   h := PreCompose( B2.1xh, B2.hx1 ) );;[127X[104X
+    [4X[25Xgap>[125X [27XAddBialgebroidStructure( B, counit_rec, comult_rec );[127X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27Xcounit := Counit( B );[127X[104X
+    [4X[28XFunctor from[128X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcomult := Comultiplication( B );[127X[104X
+    [4X[28XFunctor from[128X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver([128X[104X
+    [4X[28X"qxq(1x1)[1xg:1x1->1x1,1xh:1x1->1x1,gx1:1x1->1x1,hx1:1x1->1x1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27Xantipode_rec := rec( g := B.h, h := B.g );;[127X[104X
+    [4X[25Xgap>[125X [27XAddAntipode(B, antipode_rec );[127X[104X
+    [4X[25Xgap>[125X [27XB;[127X[104X
+    [4X[28XHopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27XAntipode(B);[127X[104X
+    [4X[28XContravariant functor from[128X[104X
+    [4X[28XHopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XHopfAlgebra( Q, Fr eeCategory( RightQuiver( "q(1)[g:1->1,h:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, B.g );[127X[104X
+    [4X[28X(1)-[1*(1)]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCounitary(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCocommutative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsHopfAlgebroid(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.8 [33X[0;0YHopf algebra generated by a primitive element[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27X# Hopf algebra generated by a primitive element[127X[104X
+    [4X[25X>[125X [27Xq := RightQuiver( "q(1)[t:1->1]" );[127X[104X
+    [4X[28Xq(1)[t:1->1][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );[127X[104X
+    [4X[28XQ * q[128X[104X
+    [4X[25Xgap>[125X [27XB := Algebroid( Qq );[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ = UnderlyingAlgebra( B );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XB2 := B^2;[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XB0 := B^0;[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcounit_rec := rec( t := 0 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcomult_rec := rec( t := B2.1xt + B2.tx1 );;[127X[104X
+    [4X[25Xgap>[125X [27XAddBialgebroidStructure( B, counit_rec, comult_rec );[127X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xantipode_rec := rec( t:= -B.t );;[127X[104X
+    [4X[25Xgap>[125X [27XAddAntipode( B, antipode_rec );[127X[104X
+    [4X[25Xgap>[125X [27Xcounit := Counit( B );[127X[104X
+    [4X[28XFunctor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcomult := Comultiplication( B );[127X[104X
+    [4X[28XFunctor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XidB := IdentityFunctor( B );[127X[104X
+    [4X[28XIdentity functor of Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( comult, B.t );[127X[104X
+    [4X[28X(1x1)-[{ 1*(tx1) + 1*(1xt) }]->(1x1)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( counit, B.t );[127X[104X
+    [4X[28X(1)-[0]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCounitary(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCocommutative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsHopfAlgebroid(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XBB := CategoryOfAlgebroidsObject(B);;[127X[104X
+    [4X[25Xgap>[125X [27XIsCoassociative( BB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCounitary( BB );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.9 [33X[0;0YA non-counitary coalgebra[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[t:1->1]" );[127X[104X
+    [4X[28Xq(1)[t:1->1][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );[127X[104X
+    [4X[28XQ * q[128X[104X
+    [4X[25Xgap>[125X [27XB := Algebroid( Qq );[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XB2 := B^2;[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XB0 := B^0;[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcounit_rec := rec( t := 0 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcomult_rec := rec( t := B2.1xt );;[127X[104X
+    [4X[25Xgap>[125X [27XAddBialgebroidStructure( B, counit_rec, comult_rec );[127X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xantipode_rec := rec( t:= -B.t );;[127X[104X
+    [4X[25Xgap>[125X [27XAddAntipode(B, antipode_rec );[127X[104X
+    [4X[25Xgap>[125X [27Xcounit := Counit( B );[127X[104X
+    [4X[28XFunctor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcomult := Comultiplication( B );[127X[104X
+    [4X[28XFunctor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCoassociative(B);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCounitary(B);[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.10 [33X[0;0YSweedlers 4-dimensional Hopf algebra[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[x:1->1,g:1->1]" );[127X[104X
+    [4X[28Xq(1)[x:1->1,g:1->1][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );[127X[104X
+    [4X[28XQ * q[128X[104X
+    [4X[25Xgap>[125X [27XH := Algebroid( Qq, [ Qq.g * Qq.g - Qq.1,[127X[104X
+    [4X[25X>[125X [27X                    Qq.x * Qq.x,[127X[104X
+    [4X[25X>[125X [27X                    Qq.x * Qq.g + Qq.g * Qq.x,[127X[104X
+    [4X[25X>[125X [27X                    ] );[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[x:1->1,g:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27XH2 := H^2;[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver([128X[104X
+    [4X[28X"qxq(1x1)[1xx:1x1->1x1,1xg:1x1->1x1,xx1:1x1->1x1,gx1:1x1->1x1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27Xcounit_rec := rec( x := 0,[127X[104X
+    [4X[25X>[125X [27X                   g := 1[127X[104X
+    [4X[25X>[125X [27X                 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcomult_rec := rec( g := PreCompose(H2.gx1, H2.1xg),[127X[104X
+    [4X[25X>[125X [27X                   x := H2.1xx + PreCompose(H2.xx1, H2.1xg)[127X[104X
+    [4X[25X>[125X [27X                 );;[127X[104X
+    [4X[25Xgap>[125X [27XAddBialgebroidStructure( H, counit_rec, comult_rec );[127X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[x:1->1,g:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27Xcounit := Counit( H );[127X[104X
+    [4X[28XFunctor from[128X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[x:1->1,g:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcomult := Comultiplication( H );[127X[104X
+    [4X[28XFunctor from[128X[104X
+    [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[x:1->1,g:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver([128X[104X
+    [4X[28X"qxq(1x1)[1xx:1x1->1x1,1xg:1x1->1x1,xx1:1x1->1x1,gx1:1x1->1x1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27Xantipode_rec := rec( g:= H.g,[127X[104X
+    [4X[25X>[125X [27X                     x := - PreCompose( H.x, H.g )[127X[104X
+    [4X[25X>[125X [27X                   );;[127X[104X
+    [4X[25Xgap>[125X [27XAddAntipode(H, antipode_rec );[127X[104X
+    [4X[25Xgap>[125X [27Xantipode := Antipode( H );[127X[104X
+    [4X[28XContravariant functor from[128X[104X
+    [4X[28XHopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[x:1->1,g:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[28X->[128X[104X
+    [4X[28XHopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[x:1->1,g:1->1]" ) ) )[128X[104X
+    [4X[28X/ relations[128X[104X
+    [4X[25Xgap>[125X [27XIsCommutative(H);[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor(antipode, H.g);[127X[104X
+    [4X[28X(1)-[{ 1*(g) }]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor(antipode, H.x);[127X[104X
+    [4X[28X(1)-[{ -1*(x*g) }]->(1)[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms([127X[104X
+    [4X[25X>[125X [27X        ApplyFunctor( antipode, H.x ),[127X[104X
+    [4X[25X>[125X [27X        -PreCompose( H.x, H.g ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YVerify that the antipode of [23XH[123X has order 4.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ApplyFunctor( antipode, H.g ), H.g );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ApplyFunctor( antipode, H.x ), H.x );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ApplyFunctor([127X[104X
+    [4X[25X>[125X [27X    PreCompose( [ antipode, antipode ] ), H.x ), H.x );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ApplyFunctor([127X[104X
+    [4X[25X>[125X [27X    PreCompose( [ antipode, antipode, antipode ] ), H.x ), H.x );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( ApplyFunctor([127X[104X
+    [4X[25X>[125X [27X    PreCompose( [ antipode, antipode, antipode, antipode ] ), H.x ), H.x );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCocommutative(H);[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.11 [33X[0;0YHomomorphism structure[133X[101X
+  
+  [33X[0;0YWe  perform  simple  computations  with  the  Homomorphism  structure of the
+  Beilison quiver of the projective space of dimension 3.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(4)[\[127X[104X
+    [4X[25X>[125X [27Xx0:1->2,x1:1->2,x2:1->2,x3:1->2,\[127X[104X
+    [4X[25X>[125X [27Xy0:2->3,y1:2->3,y2:2->3,y3:2->3,\[127X[104X
+    [4X[25X>[125X [27Xz0:3->4,z1:3->4,z2:3->4,z3:3->4]" );;[127X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( q );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeilinson_P3 := F /[127X[104X
+    [4X[25X>[125X [27X                [ [ PreCompose( F.x0, F.y1 ), PreCompose( F.x1, F.y0 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.x0, F.y2 ), PreCompose( F.x2, F.y0 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.x0, F.y3 ), PreCompose( F.x3, F.y0 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.x1, F.y2 ), PreCompose( F.x2, F.y1 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.x1, F.y3 ), PreCompose( F.x3, F.y1 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.x2, F.y3 ), PreCompose( F.x3, F.y2 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.y0, F.z1 ), PreCompose( F.y1, F.z0 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.y0, F.z2 ), PreCompose( F.y2, F.z0 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.y0, F.z3 ), PreCompose( F.y3, F.z0 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.y1, F.z2 ), PreCompose( F.y2, F.z1 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.y1, F.z3 ), PreCompose( F.y3, F.z1 ) ],[127X[104X
+    [4X[25X>[125X [27X                  [ PreCompose( F.y2, F.z3 ), PreCompose( F.y3, F.z2 ) ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XBeilinson_P3 := Q[beilinson_P3];;[127X[104X
+    [4X[25Xgap>[125X [27Xobjs := SetOfObjects( Beilinson_P3 );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( objs ) = 4;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xmaps := SetOfGeneratingMorphisms( Beilinson_P3.1, Beilinson_P3.2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xmaps = SetOfGeneratingMorphisms( Beilinson_P3, 1, 2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLength( maps ) = 4;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XForAll( [ 0 .. 3 ], k ->[127X[104X
+    [4X[25X>[125X [27X        RankOfObject( HomomorphismStructureOnObjects( objs[1], objs[1 + k] ) )[127X[104X
+    [4X[25X>[125X [27X        = Binomial( 4 + k - 1, k )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := Beilinson_P3.x0;;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := ( Beilinson_P3.z1 + Beilinson_P3.z2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma := PreCompose( [ alpha, (Beilinson_P3.y1 - Beilinson_P3.y3), beta ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xsol := SolveLinearSystemInAbCategory([127X[104X
+    [4X[25X>[125X [27X               [ [ alpha ] ], [ [ beta ] ], [ gamma ] )[1];;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( [ alpha, sol, beta ] ), gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.12 [33X[0;0YAlgebroids over the integers[133X[101X
+  
+  [33X[0;0YWe create an algebroid over [23X\mathbb{Q}[123X and its descent to [23X\mathbb{Z}[123X defined
+  by basis paths.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(4)[a:1->2,b:1->3,c:3->4,d:2->4]" );;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );;[127X[104X
+    [4X[25Xgap>[125X [27XQq := Qq / [ Qq.a * Qq.d - Qq.b * Qq.c];;[127X[104X
+    [4X[25Xgap>[125X [27XA_Q := Algebroid( Qq );;[127X[104X
+    [4X[25Xgap>[125X [27XA_Z := DescentToZDefinedByBasisPaths( A_Q );;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe demonstrate the practical difference between the two algebroids by trying
+  to solve one and the same linear system.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xalpha := 2 * A_Q.a;;[127X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( A_Q.4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma := PreCompose( A_Q.b, A_Q.c );;[127X[104X
+    [4X[25Xgap>[125X [27Xsol := SolveLinearSystemInAbCategory( [ [ alpha ] ], [ [ id ] ], [ gamma ] );[127X[104X
+    [4X[28X[ (2)-[{ 1/2*(d) }]->(4) ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThus, a solution exists over the rationals.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xalpha := 2 * A_Z.a;;[127X[104X
+    [4X[25Xgap>[125X [27Xid := IdentityMorphism( A_Z.4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xgamma := PreCompose( A_Z.b, A_Z.c );;[127X[104X
+    [4X[25Xgap>[125X [27Xsol := MereExistenceOfSolutionOfLinearSystemInAbCategory([127X[104X
+    [4X[25X>[125X [27X               [ [ alpha ] ], [ [ id ] ], [ gamma ] );[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNo solution exists over the integers.[133X
+  
+  
+  [1X1.13 [33X[0;0YUnitors[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := LeftQuiver( "ql(u,v,w)[a:u->v,b:v->u,c:v->u,d:v->w]" );;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XB := Algebroid( Q, q );;[127X[104X
+    [4X[25Xgap>[125X [27XB0 := B^0;;[127X[104X
+    [4X[25Xgap>[125X [27Xlu := LeftUnitorAsFunctor(B);;[127X[104X
+    [4X[25Xgap>[125X [27Xru := RightUnitorAsFunctor(B);;[127X[104X
+    [4X[25Xgap>[125X [27Xlui := LeftUnitorInverseAsFunctor(B);;[127X[104X
+    [4X[25Xgap>[125X [27Xrui := RightUnitorInverseAsFunctor(B);;[127X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Range(lu)) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Range(ru)) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Source(lu)) = TensorProductOnObjects( B0, B );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Source(ru)) = TensorProductOnObjects( B, B0 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Source(lui)) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Source(rui)) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Range(lui)) = TensorProductOnObjects( B0, B );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAsCapCategory(Range(rui)) = TensorProductOnObjects( B, B0 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xl := Concatenation( [[127X[104X
+    [4X[25X>[125X [27X             List( SetOfObjects(B),[127X[104X
+    [4X[25X>[125X [27X                   o -> ApplyFunctor( PreCompose(lui, lu), o) = o and[127X[104X
+    [4X[25X>[125X [27X                   ApplyFunctor( PreCompose(rui, ru), o) = o ),[127X[104X
+    [4X[25X>[125X [27X             List( SetOfGeneratingMorphisms(B),[127X[104X
+    [4X[25X>[125X [27X                   m -> ApplyFunctor( PreCompose(lui, lu), m) = m and[127X[104X
+    [4X[25X>[125X [27X                   ApplyFunctor( PreCompose(rui, ru), m) = m ),[127X[104X
+    [4X[25X>[125X [27X             List( SetOfObjects(B^0 * B),[127X[104X
+    [4X[25X>[125X [27X                   o -> ApplyFunctor( PreCompose(lu, lui), o) = o ),[127X[104X
+    [4X[25X>[125X [27X             List( SetOfGeneratingMorphisms(B^0 * B),[127X[104X
+    [4X[25X>[125X [27X                   m -> ApplyFunctor( PreCompose(lu, lui), m) = m)[127X[104X
+    [4X[25X>[125X [27X ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xand_function := function(x,y) return x and y; end;;[127X[104X
+    [4X[25Xgap>[125X [27XIterated( l, and_function );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# Consider B as an object in the category of algebroids over Q[127X[104X
+    [4X[25X>[125X [27XBB := CategoryOfAlgebroidsObject(B);;[127X[104X
+    [4X[25Xgap>[125X [27XBB2 := TensorProductOnObjects(BB, BB);;[127X[104X
+    [4X[25Xgap>[125X [27XBB0 := TensorUnit( CapCategory( BB ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xru_as_functor := RightUnitor( BB );;[127X[104X
+    [4X[25Xgap>[125X [27Xlu_as_functor := LeftUnitor( BB );;[127X[104X
+    [4X[25Xgap>[125X [27Xrui_as_functor := RightUnitorInverse( BB );;[127X[104X
+    [4X[25Xgap>[125X [27Xlui_as_functor := LeftUnitorInverse( BB );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( ru_as_functor, rui_as_functor ),[127X[104X
+    [4X[25X>[125X [27X        IdentityMorphism( TensorProductOnObjects( BB,  BB0 ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( lu_as_functor, lui_as_functor ),[127X[104X
+    [4X[25X>[125X [27X        IdentityMorphism( TensorProductOnObjects( BB0,  BB ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( rui_as_functor, ru_as_functor ),[127X[104X
+    [4X[25X>[125X [27X        IdentityMorphism( BB ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( lui_as_functor, lu_as_functor ),[127X[104X
+    [4X[25X>[125X [27X        IdentityMorphism( BB ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.14 [33X[0;0YAssociators[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[t:1->1]" );[127X[104X
+    [4X[28Xq(1)[t:1->1][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := PathAlgebra( Q, q );[127X[104X
+    [4X[28XQ * q[128X[104X
+    [4X[25Xgap>[125X [27XB := Algebroid( Qq );[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xass_ltr := AssociatorLeftToRightWithGivenTensorProductsAsFunctor([127X[104X
+    [4X[25X>[125X [27X                   (B*B)*B, B, B, B, B*(B*B) );;[127X[104X
+    [4X[25Xgap>[125X [27Xass_rtl := AssociatorRightToLeftWithGivenTensorProductsAsFunctor([127X[104X
+    [4X[25X>[125X [27X                   B*(B*B), B, B, B, (B*B)*B );;[127X[104X
+    [4X[25Xgap>[125X [27XSource(ass_ltr) = Range(ass_rtl);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange(ass_ltr) = Source(ass_rtl);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# Consider B as an object in the category of algebroids over Q[127X[104X
+    [4X[25X>[125X [27XBB := CategoryOfAlgebroidsObject(B);;[127X[104X
+    [4X[25Xgap>[125X [27XBB2 := TensorProductOnObjects(BB, BB);;[127X[104X
+    [4X[25Xgap>[125X [27XBB0 := TensorUnit( CapCategory( BB ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xass_ltr_as_morphism := AssociatorLeftToRight(BB,BB,BB);;[127X[104X
+    [4X[25Xgap>[125X [27Xass_rtl_as_morphism := AssociatorRightToLeft(BB,BB,BB);;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        PreCompose( ass_ltr_as_morphism, ass_rtl_as_morphism ),[127X[104X
+    [4X[25X>[125X [27X        IdentityMorphism( Source( ass_ltr_as_morphism ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        PreCompose( ass_rtl_as_morphism, ass_ltr_as_morphism ),[127X[104X
+    [4X[25X>[125X [27X        IdentityMorphism( Source( ass_rtl_as_morphism ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  

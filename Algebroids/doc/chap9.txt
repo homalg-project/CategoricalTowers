@@ -1,0 +1,55 @@
+  
+  [1X9 [33X[0;0YTools[133X[101X
+  
+  
+  [1X9.1 [33X[0;0YTools for quivers[133X[101X
+  
+  [1X9.1-1 DefiningPairOfAQuiver[101X
+  
+  [33X[1;0Y[29X[2XDefiningPairOfAQuiver[102X( [3Xq[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair[133X
+  
+  [33X[0;0YReturn  a  pair  consisting  of the number of vertices of the quiver [3Xq[103X and a
+  list of pairs of integers encoding the arrows of [3Xq[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(0..4)[a:0->0,s:0->1,t:0->1,m:3->0]" );[127X[104X
+    [4X[28Xq(0,1,2,3,4)[a:0->0,s:0->1,t:0->1,m:3->0][128X[104X
+    [4X[25Xgap>[125X [27XDefiningPairOfAQuiver( q );[127X[104X
+    [4X[28X[ 5, [ [ 0, 0 ], [ 0, 1 ], [ 0, 1 ], [ 3, 0 ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [1X9.1-2 DefiningPairOfUnderlyingQuiver[101X
+  
+  [33X[1;0Y[29X[2XDefiningPairOfUnderlyingQuiver[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair[133X
+  
+  [33X[0;0YThe  defining  pair of the quiver underlying the finitely presented category
+  [3XC[103X.[133X
+  
+  
+  [1X9.2 [33X[0;0YTools for categories[133X[101X
+  
+  [1X9.2-1 NerveTruncatedInDegree2Data[101X
+  
+  [33X[1;0Y[29X[2XNerveTruncatedInDegree2Data[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair consisting of a triple and an 8-tuple[133X
+  
+  [33X[0;0YThe nerve data of the category [3XC[103X.[133X
+  
+  [1X9.2-2 DataTablesOfCategory[101X
+  
+  [33X[1;0Y[29X[2XDataTablesOfCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair of lists[133X
+  
+  [33X[0;0YThe data tables of the category [3XC[103X.[133X
+  
+  [1X9.2-3 OppositeFiniteCategory[101X
+  
+  [33X[1;0Y[29X[2XOppositeFiniteCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe opposite category of a finite category [3XC[103X.[133X
+  
