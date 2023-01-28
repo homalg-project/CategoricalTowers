@@ -1,0 +1,191 @@
+  
+  
+                                   [1X Toposes [101X
+  
+  
+                              [1X Elementary toposes [101X
+  
+  
+                                   2023.01-09
+  
+  
+                                28 January 2023
+  
+  
+                                Mohamed Barakat
+  
+                                Fabian Zickgraf
+  
+                                  Mario Román
+  
+                                 Tom Kuhmichel
+  
+  
+  
+  Mohamed Barakat
+      Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
+      Homepage: [7Xhttps://mohamed-barakat.github.io[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Fabian Zickgraf
+      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/zickgraf/[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Mario Román
+      Email:    [7Xmailto:mromang08@gmail.com[107X
+      Homepage: [7Xhttps://mroman42.github.io/[107X
+      Address:  [33X[0;14YMathematical Institute[133X
+                [33X[0;14YUniversity of Oxford[133X
+                [33X[0;14YOxford, United Kingdom[133X
+  
+  
+  Tom Kuhmichel
+      Email:    [7Xmailto:tom.kuhmichel@student.uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/TKuh[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (Toposes)[101X
+  
+  1 [33X[0;0YToposes[133X
+    1.1 [33X[0;0YMorphisms of external Hom[133X
+      1.1-1 MorphismsOfExternalHom
+    1.2 [33X[0;0YExact cover with global elements[133X
+      1.2-1 ExactCoverWithGlobalElements
+    1.3 [33X[0;0YSubobject Classifier[133X
+      1.3-1 IsElementaryTopos
+      1.3-2 SubobjectClassifier
+      1.3-3 CartesianSquareOfSubobjectClassifier
+      1.3-4 ClassifyingMorphismOfSubobject
+      1.3-5 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
+      1.3-6 SubobjectOfClassifyingMorphism
+      1.3-7 ListOfSubobjects
+    1.4 [33X[0;0YTruth Morphisms[133X
+      1.4-1 TruthMorphismOfTrue
+      1.4-2 TruthMorphismOfTrueWithGivenObjects
+      1.4-3 TruthMorphismOfFalse
+      1.4-4 TruthMorphismOfFalseWithGivenObjects
+      1.4-5 TruthMorphismOfNot
+      1.4-6 TruthMorphismOfNotWithGivenObjects
+      1.4-7 TruthMorphismOfAnd
+      1.4-8 TruthMorphismOfAndWithGivenObjects
+      1.4-9 TruthMorphismOfOr
+      1.4-10 TruthMorphismOfOrWithGivenObjects
+      1.4-11 TruthMorphismOfImplies
+      1.4-12 TruthMorphismOfImpliesWithGivenObjects
+      1.4-13 PowerObject
+      1.4-14 SingletonMorphism
+      1.4-15 SingletonMorphismWithGivenPowerObject
+    1.5 [33X[0;0YHeyting Algebra of Subobjects[133X
+      1.5-1 PseudoComplementSubobject
+      1.5-2 EmbeddingOfPseudoComplementSubobject
+      1.5-3 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
+      1.5-4 IntersectionSubobject
+      1.5-5 EmbeddingOfIntersectionSubobject
+      1.5-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection
+      1.5-7 UnionSubobject
+      1.5-8 EmbeddingOfUnionSubobject
+      1.5-9 EmbeddingOfUnionSubobjectWithGivenUnion
+      1.5-10 RelativePseudoComplementSubobject
+      1.5-11 EmbeddingOfRelativePseudoComplementSubobject
+      1.5-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication
+    1.6 [33X[0;0YLawvere-Tierney topologies[133X
+      1.6-1 LawvereTierneyLocalModalityOperators
+      1.6-2 LawvereTierneySubobjects
+      1.6-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers
+    1.7 [33X[0;0YPushout complements[133X
+      1.7-1 [33X[0;0YExample in FinSets[133X
+      1.7-2 [33X[0;0YExample in SkeletalFinSets[133X
+      1.7-3 HasPushoutComplement
+      1.7-4 PushoutComplement
+    1.8 [33X[0;0YDouble-pushout rewriting[133X
+      1.8-1 DPO
+    1.9 [33X[0;0YAdd-methods[133X
+      1.9-1 AddCartesianSquareOfSubobjectClassifier
+      1.9-2 AddClassifyingMorphismOfSubobject
+      1.9-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
+      1.9-4 AddEmbeddingOfIntersectionSubobject
+      1.9-5 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection
+      1.9-6 AddEmbeddingOfPseudoComplementSubobject
+      1.9-7 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement
+      1.9-8 AddEmbeddingOfRelativePseudoComplementSubobject
+      1.9-9 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication
+      1.9-10 AddEmbeddingOfUnionSubobject
+      1.9-11 AddEmbeddingOfUnionSubobjectWithGivenUnion
+      1.9-12 AddExactCoverWithGlobalElements
+      1.9-13 AddHasPushoutComplement
+      1.9-14 AddIntersectionSubobject
+      1.9-15 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers
+      1.9-16 AddLawvereTierneyLocalModalityOperators
+      1.9-17 AddLawvereTierneySubobjects
+      1.9-18 AddListOfSubobjects
+      1.9-19 AddMorphismsOfExternalHom
+      1.9-20 AddPowerObject
+      1.9-21 AddPseudoComplementSubobject
+      1.9-22 AddPushoutComplement
+      1.9-23 AddRelativePseudoComplementSubobject
+      1.9-24 AddSingletonMorphism
+      1.9-25 AddSingletonMorphismWithGivenPowerObject
+      1.9-26 AddSubobjectClassifier
+      1.9-27 AddSubobjectOfClassifyingMorphism
+      1.9-28 AddTruthMorphismOfAnd
+      1.9-29 AddTruthMorphismOfAndWithGivenObjects
+      1.9-30 AddTruthMorphismOfFalse
+      1.9-31 AddTruthMorphismOfFalseWithGivenObjects
+      1.9-32 AddTruthMorphismOfImplies
+      1.9-33 AddTruthMorphismOfImpliesWithGivenObjects
+      1.9-34 AddTruthMorphismOfNot
+      1.9-35 AddTruthMorphismOfNotWithGivenObjects
+      1.9-36 AddTruthMorphismOfOr
+      1.9-37 AddTruthMorphismOfOrWithGivenObjects
+      1.9-38 AddTruthMorphismOfTrue
+      1.9-39 AddTruthMorphismOfTrueWithGivenObjects
+      1.9-40 AddUnionSubobject
+  2 [33X[0;0YCategory of relations[133X
+    2.1 [33X[0;0YGAP categories[133X
+      2.1-1 IsCategoryOfRelations
+      2.1-2 IsCellInCategoryOfRelations
+      2.1-3 IsObjectInCategoryOfRelations
+      2.1-4 IsMorphismInCategoryOfRelations
+    2.2 [33X[0;0YConstructors[133X
+      2.2-1 CategoryOfRelations
+      2.2-2 AsMorphismInCategoryOfRelations
+    2.3 [33X[0;0YAttributes[133X
+      2.3-1 UnderlyingCategory
+      2.3-2 UnitObjectInCategoryOfRelations
+      2.3-3 UnderlyingCell
+      2.3-4 UnderlyingSpan
+      2.3-5 MaximalRelationIntoTerminalObject
+      2.3-6 PseudoInverse
+      2.3-7 PseudoInverseOfHonestMorphism
+      2.3-8 EmbeddingOfRelationInDirectProduct
+      2.3-9 SourceProjection
+      2.3-10 RangeProjection
+      2.3-11 StandardizedSpan
+      2.3-12 MorphismByStandardizedSpan
+      2.3-13 HonestRepresentative
+    2.4 [33X[0;0YProperties[133X
+      2.4-1 IsHonest
+  3 [33X[0;0YTools[133X
+    3.1 [33X[0;0YVisualizing posets of subobjects[133X
+      3.1-1 DigraphOfSubobjects
+  4 [33X[0;0YThe initial category[133X
+    4.1 [33X[0;0Y[5XGAP[105X Categories[133X
+  5 [33X[0;0YExamples and Tests[133X
+    5.1 [33X[0;0YOpposite category[133X
+  
+  
+  [32X

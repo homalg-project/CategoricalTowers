@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (Toposes) - Chapter 1: Toposes</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X857C2D3B8129377F" name="X857C2D3B8129377F"></a></p>
+<div class="ChapSects"><a href="chap1.html#X857C2D3B8129377F">1 <span class="Heading">Toposes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X87F287CE873DF50E">1.1 <span class="Heading">Morphisms of external Hom</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8510A7E08672FD73">1.1-1 MorphismsOfExternalHom</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X80B4B4D781D153B6">1.2 <span class="Heading">Exact cover with global elements</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F30C0DE7DBFD3D2">1.2-1 ExactCoverWithGlobalElements</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X87DA77E487F951EF">1.3 <span class="Heading">Subobject Classifier</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82C1680F8759EC73">1.3-1 IsElementaryTopos</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D33F6ED85FC23BC">1.3-2 SubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X795F4E368142FD05">1.3-3 CartesianSquareOfSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E86ACBB830223AC">1.3-4 ClassifyingMorphismOfSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X874A09FD7A8FB706">1.3-5 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85AA59EA7D780BAB">1.3-6 SubobjectOfClassifyingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X829D00417AB42EA0">1.3-7 ListOfSubobjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7E7B5D407DC75E7B">1.4 <span class="Heading">Truth Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B1CCA0E78597D08">1.4-1 TruthMorphismOfTrue</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A07E4A77D332E3C">1.4-2 TruthMorphismOfTrueWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EEF378379770B26">1.4-3 TruthMorphismOfFalse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82A52C137E1FA56C">1.4-4 TruthMorphismOfFalseWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A1822BE85806336">1.4-5 TruthMorphismOfNot</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A40CD3E84EF1505">1.4-6 TruthMorphismOfNotWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79BB2A4887FE9C30">1.4-7 TruthMorphismOfAnd</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82366B718691EA03">1.4-8 TruthMorphismOfAndWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BE2B34C7E54904D">1.4-9 TruthMorphismOfOr</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E48516F87EE5740">1.4-10 TruthMorphismOfOrWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X819AC9D47F7BB3C1">1.4-11 TruthMorphismOfImplies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83CA5BA27D5F683D">1.4-12 TruthMorphismOfImpliesWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C3433AC7D93C109">1.4-13 PowerObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87B4C65E81277DCB">1.4-14 SingletonMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X826931087E3B0D70">1.4-15 SingletonMorphismWithGivenPowerObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7EA0530680810B87">1.5 <span class="Heading">Heyting Algebra of Subobjects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8387C6387B61623A">1.5-1 PseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87DF3AB37EC0F0F5">1.5-2 EmbeddingOfPseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82B0BBC482B35356">1.5-3 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F74000B7CDA90C3">1.5-4 IntersectionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F3D46348576AC59">1.5-5 EmbeddingOfIntersectionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X844BA8B87ED80532">1.5-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8223CFD9815B185D">1.5-7 UnionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X805DA83578B8E4E7">1.5-8 EmbeddingOfUnionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X783CE5AC85B51992">1.5-9 EmbeddingOfUnionSubobjectWithGivenUnion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X854421877A37C521">1.5-10 RelativePseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84A590937EDDA4A4">1.5-11 EmbeddingOfRelativePseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78B11F2F8454DE01">1.5-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A02901E81A8D423">1.6 <span class="Heading">Lawvere-Tierney topologies</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81F5FA127C252FED">1.6-1 LawvereTierneyLocalModalityOperators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X869788578601BE21">1.6-2 LawvereTierneySubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A4989C878169466">1.6-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A3A3D0A87B7A329">1.7 <span class="Heading">Pushout complements</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80E637287D6FA9FA">1.7-1 <span class="Heading">Example in FinSets</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80F960AC81F97C91">1.7-2 <span class="Heading">Example in SkeletalFinSets</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83F9AE7C7AEBE455">1.7-3 HasPushoutComplement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8367C4BA7D985123">1.7-4 PushoutComplement</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X86507536811161A7">1.8 <span class="Heading">Double-pushout rewriting</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80CDC01D82F44AB6">1.8-1 DPO</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X85C8C80F785AEB5E">1.9 <span class="Heading">Add-methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8183FEAA79FD535D">1.9-1 AddCartesianSquareOfSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CB2F66B8022D23C">1.9-2 AddClassifyingMorphismOfSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EA4360E79D92811">1.9-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85AADBAE82CF7236">1.9-4 AddEmbeddingOfIntersectionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8732F76787D06A4C">1.9-5 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E9CBB3581CE9C0E">1.9-6 AddEmbeddingOfPseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7FDD29CF85B64B8A">1.9-7 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E79CCA97E8F35FA">1.9-8 AddEmbeddingOfRelativePseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80F3334F8467F04E">1.9-9 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80995E467B4F8266">1.9-10 AddEmbeddingOfUnionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78843A817F0CA84F">1.9-11 AddEmbeddingOfUnionSubobjectWithGivenUnion</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8433D231788BD541">1.9-12 AddExactCoverWithGlobalElements</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84D738F979FCF1F7">1.9-13 AddHasPushoutComplement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7FB3C59484624E44">1.9-14 AddIntersectionSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87C1567A7E4DC50A">1.9-15 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84AF140B851CD072">1.9-16 AddLawvereTierneyLocalModalityOperators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X836DC3837FDBB6DE">1.9-17 AddLawvereTierneySubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81DF32AC7BB696D4">1.9-18 AddListOfSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C37598A7F7C7413">1.9-19 AddMorphismsOfExternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83FA18FC80B0A98C">1.9-20 AddPowerObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X834E53457F00D41E">1.9-21 AddPseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86E9745A85A060F3">1.9-22 AddPushoutComplement</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X862A4CFB847723DB">1.9-23 AddRelativePseudoComplementSubobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8132FB527C65EB48">1.9-24 AddSingletonMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X834AF15D824C9D4B">1.9-25 AddSingletonMorphismWithGivenPowerObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F91B1417B647CBA">1.9-26 AddSubobjectClassifier</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X814CF88C850C8077">1.9-27 AddSubobjectOfClassifyingMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X878C7A5385273892">1.9-28 AddTruthMorphismOfAnd</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D7EC93980CE4B2E">1.9-29 AddTruthMorphismOfAndWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X811150A6829C8DF3">1.9-30 AddTruthMorphismOfFalse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X868C7D2D7D4A1A30">1.9-31 AddTruthMorphismOfFalseWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X786B746E855FE383">1.9-32 AddTruthMorphismOfImplies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80E40A4F7E13DAC3">1.9-33 AddTruthMorphismOfImpliesWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85D4D57283F6F364">1.9-34 AddTruthMorphismOfNot</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A923DE7861F80D8">1.9-35 AddTruthMorphismOfNotWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X789B8ED08194D48B">1.9-36 AddTruthMorphismOfOr</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80BE48FC8508F89C">1.9-37 AddTruthMorphismOfOrWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D8C4128863D21D8">1.9-38 AddTruthMorphismOfTrue</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87604F3D86857559">1.9-39 AddTruthMorphismOfTrueWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F015BE281A0E121">1.9-40 AddUnionSubobject</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Toposes</span></h3>
+
+<p>An elementary topos is a finite complete, cartesian closed category with a subobject classifier. It follows that an elementary topos is also a finitely cocomplete Heyting category.</p>
+
+<p>The doctrines of (co)cartesian (co)closed categories and their variations are implemented in the CAP-based package <code class="code">CartesianCategories</code>.</p>
+
+<p><a id="X87F287CE873DF50E" name="X87F287CE873DF50E"></a></p>
+
+<h4>1.1 <span class="Heading">Morphisms of external Hom</span></h4>
+
+<p><a id="X8510A7E08672FD73" name="X8510A7E08672FD73"></a></p>
+
+<h5>1.1-1 MorphismsOfExternalHom</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismsOfExternalHom</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of morphism</p>
+
+<p>The argument are two objects <var class="Arg">A</var>, <var class="Arg">B</var>. The output is a list of all morphisms from <var class="Arg">A</var> to <var class="Arg">B</var>.</p>
+
+<p><a id="X80B4B4D781D153B6" name="X80B4B4D781D153B6"></a></p>
+
+<h4>1.2 <span class="Heading">Exact cover with global elements</span></h4>
+
+<p><a id="X7F30C0DE7DBFD3D2" name="X7F30C0DE7DBFD3D2"></a></p>
+
+<h5>1.2-1 ExactCoverWithGlobalElements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExactCoverWithGlobalElements</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of morphisms in <span class="Math">\mathrm{Hom}(t,a)</span>.</p>
+
+<p>The argument is an object <var class="Arg">a</var> of a category <span class="Math">\mathbf{C}</span>. The output is a list <span class="Math">D</span> of global elements of <var class="Arg">a</var> (i.e., morphisms from the terminal object <span class="Math">t</span> of <span class="Math">\mathbf{C}</span> to <var class="Arg">a</var>), such that <code class="code">UniversalMorphismFromCoproduct</code>(<var class="Arg">a</var>, <span class="Math">D</span>) is an isomorphism.</p>
+
+<p><a id="X87DA77E487F951EF" name="X87DA77E487F951EF"></a></p>
+
+<h4>1.3 <span class="Heading">Subobject Classifier</span></h4>
+
+<p><a id="X82C1680F8759EC73" name="X82C1680F8759EC73"></a></p>
+
+<h5>1.3-1 IsElementaryTopos</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementaryTopos</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The property of the category <var class="Arg">C</var> being an elementary topos.</p>
+
+<p>A subobject classifier object consists of three parts:</p>
+
+
+<ul>
+<li><p>an object <span class="Math">\Omega</span>,</p>
+
+</li>
+<li><p>a function <span class="Math">\mathrm{true}</span> providing a morphism <span class="Math">\mathrm{true}: 1 \rightarrow \Omega</span>,</p>
+
+</li>
+<li><p>a function <span class="Math">\chi</span> mapping each monomorphism <span class="Math">i : A \rightarrow S</span> to a morphism <span class="Math">\chi_i : S \to \Omega</span>.</p>
+
+</li>
+</ul>
+<p>The triple <span class="Math">(\Omega,\mathrm{true},\chi)</span> is called a <em>subobject classifier</em> if for each monomorphism <span class="Math">i : A \to S</span>, the morphism <span class="Math">\chi_i : S \to \Omega</span> is the unique morphism such that <span class="Math">\chi_i \circ i = \mathrm{true} \circ \ast</span> determine a pullback diagram.</p>
+
+<p><a id="X7D33F6ED85FC23BC" name="X7D33F6ED85FC23BC"></a></p>
+
+<h5>1.3-2 SubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubobjectClassifier</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is a subobject classifier object <span class="Math">\Omega</span> of <span class="Math">C</span>.</p>
+
+<p><a id="X795F4E368142FD05" name="X795F4E368142FD05"></a></p>
+
+<h5>1.3-3 CartesianSquareOfSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CartesianSquareOfSubobjectClassifier</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is cartesian square of a subobject classifier object <span class="Math">\Omega</span> of <span class="Math">C</span>.</p>
+
+<p><a id="X7E86ACBB830223AC" name="X7E86ACBB830223AC"></a></p>
+
+<h5>1.3-4 ClassifyingMorphismOfSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassifyingMorphismOfSubobject</code>( <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a monomorphism <span class="Math">m : A \rightarrow S</span>. The output is its classifying morphism <span class="Math">\chi_m : S \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X874A09FD7A8FB706" name="X874A09FD7A8FB706"></a></p>
+
+<h5>1.3-5 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">m</var>, <var class="Arg">omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{Range}(m), \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The arguments are a monomorphism <span class="Math">m : A \rightarrow S</span> and a subobject classifier <span class="Math">\Omega</span>. The output is the classifying morphism of the monomorphism <span class="Math">\chi_m : S \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X85AA59EA7D780BAB" name="X85AA59EA7D780BAB"></a></p>
+
+<h5>1.3-6 SubobjectOfClassifyingMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubobjectOfClassifyingMorphism</code>( <var class="Arg">chi</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism in <span class="Math">\mathrm{Hom}( A, S )</span></p>
+
+<p>The argument is a classifying morphism <span class="Math">\chi : S \rightarrow \Omega</span>. The output is the subobject monomorphism of the classifying morphism, <span class="Math">m : A \rightarrow S</span>.</p>
+
+<p><a id="X829D00417AB42EA0" name="X829D00417AB42EA0"></a></p>
+
+<h5>1.3-7 ListOfSubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListOfSubobjects</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of monomorphism</p>
+
+<p>The argument is an object <var class="Arg">A</var>. The output is a list of all subobjects of <var class="Arg">A</var>.</p>
+
+<p><a id="X7E7B5D407DC75E7B" name="X7E7B5D407DC75E7B"></a></p>
+
+<h4>1.4 <span class="Heading">Truth Morphisms</span></h4>
+
+<p><a id="X7B1CCA0E78597D08" name="X7B1CCA0E78597D08"></a></p>
+
+<h5>1.4-1 TruthMorphismOfTrue</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfTrue</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism of true into the subobject classifier <span class="Math">\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X7A07E4A77D332E3C" name="X7A07E4A77D332E3C"></a></p>
+
+<h5>1.4-2 TruthMorphismOfTrueWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">T</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )</span></p>
+
+<p>The arguments are a terminal object of the category and a subobject classifier. The output is the truth morphism of true into the subobject classifier <var class="Arg">Omega</var> <span class="Math">\mathrm{true}: \mathrm{TerminalObject} \rightarrow \Omega</span>.</p>
+
+<p><a id="X7EEF378379770B26" name="X7EEF378379770B26"></a></p>
+
+<h5>1.4-3 TruthMorphismOfFalse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfFalse</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism of false into the subobject classifier <span class="Math">\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X82A52C137E1FA56C" name="X82A52C137E1FA56C"></a></p>
+
+<h5>1.4-4 TruthMorphismOfFalseWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">T</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )</span></p>
+
+<p>The arguments are a terminal object of the category and a subobject classifier. The output is the truth morphism of false into the subobject classifier <var class="Arg">Omega</var> <span class="Math">\mathrm{false}: \mathrm{TerminalObject} \rightarrow \Omega</span>.</p>
+
+<p><a id="X7A1822BE85806336" name="X7A1822BE85806336"></a></p>
+
+<h5>1.4-5 TruthMorphismOfNot</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfNot</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{SubobjectClassifier}, \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism of "not" of the subobject classifier <span class="Math">\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X7A40CD3E84EF1505" name="X7A40CD3E84EF1505"></a></p>
+
+<h5>1.4-6 TruthMorphismOfNotWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">Omega</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Omega, \Omega )</span></p>
+
+<p>The argument is a subobject classifier. The output is the truth endomorphism of "not" of the subobject classifier <var class="Arg">Omega</var> <span class="Math">\mathrm{not}: \Omega \rightarrow \Omega</span>.</p>
+
+<p><a id="X79BB2A4887FE9C30" name="X79BB2A4887FE9C30"></a></p>
+
+<h5>1.4-7 TruthMorphismOfAnd</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfAnd</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism of "and" into the subobject classifier <span class="Math">\mathrm{and}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X82366B718691EA03" name="X82366B718691EA03"></a></p>
+
+<h5>1.4-8 TruthMorphismOfAndWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">Omega2</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Omega^{\times 2}, \Omega )</span></p>
+
+<p>The arguments are a cartesian square of a subobject classifier of the category and a subobject classifier. The output is the truth morphism of "and" into the subobject classifier <var class="Arg">Omega</var> <span class="Math">\mathrm{and}: \Omega^{\times 2} \rightarrow \Omega</span>.</p>
+
+<p><a id="X7BE2B34C7E54904D" name="X7BE2B34C7E54904D"></a></p>
+
+<h5>1.4-9 TruthMorphismOfOr</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfOr</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism of "or" into the subobject classifier <span class="Math">\mathrm{or}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X7E48516F87EE5740" name="X7E48516F87EE5740"></a></p>
+
+<h5>1.4-10 TruthMorphismOfOrWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">Omega2</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Omega^{\times 2}, \Omega )</span></p>
+
+<p>The arguments are a cartesian square of a subobject classifier of the category and a subobject classifier. The output is the truth morphism of "or" into the subobject classifier <var class="Arg">Omega</var> <span class="Math">\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega</span>.</p>
+
+<p><a id="X819AC9D47F7BB3C1" name="X819AC9D47F7BB3C1"></a></p>
+
+<h5>1.4-11 TruthMorphismOfImplies</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfImplies</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )</span></p>
+
+<p>The argument is a category <span class="Math">C</span>. The output is the truth morphism of "implies" into the subobject classifier <span class="Math">\mathrm{implies}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}</span>.</p>
+
+<p><a id="X83CA5BA27D5F683D" name="X83CA5BA27D5F683D"></a></p>
+
+<h5>1.4-12 TruthMorphismOfImpliesWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">Omega2</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \Omega^{\times 2}, \Omega )</span></p>
+
+<p>The arguments are a cartesian square of a subobject classifier of the category and a subobject classifier. The output is the truth morphism of "implies" into the subobject classifier <var class="Arg">Omega</var> <span class="Math">\mathrm{implies}: \Omega^{\times 2} \rightarrow \Omega</span>.</p>
+
+<p><a id="X7C3433AC7D93C109" name="X7C3433AC7D93C109"></a></p>
+
+<h5>1.4-13 PowerObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PowerObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the power object of <span class="Math">a</span>.</p>
+
+<p><a id="X87B4C65E81277DCB" name="X87B4C65E81277DCB"></a></p>
+
+<h5>1.4-14 SingletonMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SingletonMorphism</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{PowerObject}(a) )</span></p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the singleton morphism from <span class="Math">a</span> to the power object <span class="Math">\mathrm{PowerObject}(a)</span>.</p>
+
+<p><a id="X826931087E3B0D70" name="X826931087E3B0D70"></a></p>
+
+<h5>1.4-15 SingletonMorphismWithGivenPowerObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SingletonMorphismWithGivenPowerObject</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, b )</span></p>
+
+<p>The arguments are an object <span class="Math">a</span> and object <span class="Math">b</span> which is equal to the power object <span class="Math">\mathrm{PowerObject}(a)</span>. The output is the singleton morphism from <span class="Math">a</span> to <span class="Math">b</span>.</p>
+
+<p><a id="X7EA0530680810B87" name="X7EA0530680810B87"></a></p>
+
+<h4>1.5 <span class="Heading">Heyting Algebra of Subobjects</span></h4>
+
+<p><a id="X8387C6387B61623A" name="X8387C6387B61623A"></a></p>
+
+<h5>1.5-1 PseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PseudoComplementSubobject</code>( <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a monomorphism <span class="Math">\iota: S \hookrightarrow A</span>. The output is the "pseudo-complement of <span class="Math">S</span> in <span class="Math">A</span>", i.e., the pseudo-complement object of <span class="Math">\iota</span>.</p>
+
+<p><a id="X87DF3AB37EC0F0F5" name="X87DF3AB37EC0F0F5"></a></p>
+
+<h5>1.5-2 EmbeddingOfPseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfPseudoComplementSubobject</code>( <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a monomorphism <span class="Math">\iota: S \hookrightarrow A</span>. The output is the embedding <code class="code">PseudoComplementSubobject</code>(<span class="Math">\iota</span>) <span class="Math">\hookrightarrow A</span> of pseudo-complement object of <span class="Math">\iota</span>.</p>
+
+<p><a id="X82B0BBC482B35356" name="X82B0BBC482B35356"></a></p>
+
+<h5>1.5-3 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>( <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a monomorphism <span class="Math">\iota: S \hookrightarrow A</span> and an object <span class="Math">T</span> with <code class="code">IsEqualForObjects</code>(<span class="Math">T</span>, <code class="code">PseudoComplementSubobject</code>(<span class="Math">\iota</span>)). The output is the embedding of <span class="Math">\iota:T \hookrightarrow A</span> of pseudo-complement object <span class="Math">T</span> of <span class="Math">\iota</span>.</p>
+
+<p><a id="X7F74000B7CDA90C3" name="X7F74000B7CDA90C3"></a></p>
+
+<h5>1.5-4 IntersectionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span>. The output is the "intersection of <span class="Math">S_1</span> and <span class="Math">S_2</span>", which is naturally isomorphic to the pullback of <span class="Math">\iota_1</span> and <span class="Math">\iota_2</span>.</p>
+
+<p><a id="X7F3D46348576AC59" name="X7F3D46348576AC59"></a></p>
+
+<h5>1.5-5 EmbeddingOfIntersectionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfIntersectionSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span>. The output is the embedding <code class="code">IntersectionSubobject</code>(<span class="Math">\iota</span>) <span class="Math">\hookrightarrow A</span> of their intersection subobject.</p>
+
+<p><a id="X844BA8B87ED80532" name="X844BA8B87ED80532"></a></p>
+
+<h5>1.5-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfIntersectionSubobjectWithGivenIntersection</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span> and an object <span class="Math">T</span> with <code class="code">IsEqualForObjects</code>(<span class="Math">T</span>, <code class="code">IntersectionSubobject</code>(<span class="Math">\iota</span>)). The output the embedding <span class="Math">T \hookrightarrow A</span> of their intersection subobject <span class="Math">T</span>.</p>
+
+<p><a id="X8223CFD9815B185D" name="X8223CFD9815B185D"></a></p>
+
+<h5>1.5-7 UnionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnionSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span>. The output is the "union of <span class="Math">S_1</span> and <span class="Math">S_2</span>", which is naturally isomorphic to the image object of the coproduct morphism of <span class="Math">\iota_1</span> and <span class="Math">\iota_2</span>.</p>
+
+<p><a id="X805DA83578B8E4E7" name="X805DA83578B8E4E7"></a></p>
+
+<h5>1.5-8 EmbeddingOfUnionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnionSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span>. The output is the embedding <code class="code">UnionSubobject</code>(<span class="Math">\iota</span>) <span class="Math">\hookrightarrow A</span> of their union subobject.</p>
+
+<p><a id="X783CE5AC85B51992" name="X783CE5AC85B51992"></a></p>
+
+<h5>1.5-9 EmbeddingOfUnionSubobjectWithGivenUnion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfUnionSubobjectWithGivenUnion</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span> and an object <span class="Math">T</span> with <code class="code">IsEqualForObjects</code>(<span class="Math">T</span>, <code class="code">UnionSubobject</code>(<span class="Math">\iota</span>)). The output is the embedding <span class="Math">T \hookrightarrow A</span> of their union subobject <span class="Math">T</span>.</p>
+
+<p><a id="X854421877A37C521" name="X854421877A37C521"></a></p>
+
+<h5>1.5-10 RelativePseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelativePseudoComplementSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span>. The output is the "relative pseudo-complement of <span class="Math">S_1</span> relative to <span class="Math">S_2</span>".</p>
+
+<p><a id="X84A590937EDDA4A4" name="X84A590937EDDA4A4"></a></p>
+
+<h5>1.5-11 EmbeddingOfRelativePseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePseudoComplementSubobject</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span>. The output is the embedding <code class="code">RelativePseudoComplementSubobject</code>(<span class="Math">\iota</span>) <span class="Math">\hookrightarrow A</span> of their relative pseudo-complement into <span class="Math">A</span>.</p>
+
+<p><a id="X78B11F2F8454DE01" name="X78B11F2F8454DE01"></a></p>
+
+<h5>1.5-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>( <var class="Arg">iota1</var>, <var class="Arg">iota2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphism</p>
+
+<p>The arguments are two monomorphisms <span class="Math">\iota_i: S_i \hookrightarrow A</span> for <span class="Math">i=1,2</span> and an object <span class="Math">T</span> with <code class="code">IsEqualForObjects</code>(<span class="Math">T</span>, <code class="code">RelativePseudoComplementSubobject</code>(<span class="Math">\iota</span>)). The output is the embedding <span class="Math">T \hookrightarrow A</span> of their relative pseudo-complement <span class="Math">T</span> into <span class="Math">A</span>.</p>
+
+<p><a id="X7A02901E81A8D423" name="X7A02901E81A8D423"></a></p>
+
+<h4>1.6 <span class="Heading">Lawvere-Tierney topologies</span></h4>
+
+<p>Compute the Lawvere-Tierney topologies of <code class="code">SkeletalFinSets</code>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTI := LawvereTierneyLocalModalityOperators( SkeletalFinSets );</span>
+[ |2| → |2|, |2| → |2| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( LTI, Display );</span>
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+{ 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTS := LawvereTierneySubobjects( SkeletalFinSets );</span>
+[ |1| ↪ |2|, |2| ↪ |2| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( LTS, Display );</span>
+{ 0 } ⱶ[ 1 ]→ { 0, 1 }
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LTC := LawvereTierneyEmbeddingsOfSubobjectClassifiers( SkeletalFinSets );</span>
+[ |2| → |2|, |1| → |2| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( LTC, Display );</span>
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+{ 0 } ⱶ[ 1 ]→ { 0, 1 }
+</pre></div>
+
+<p><a id="X81F5FA127C252FED" name="X81F5FA127C252FED"></a></p>
+
+<h5>1.6-1 LawvereTierneyLocalModalityOperators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LawvereTierneyLocalModalityOperators</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The input is an elementary topos <var class="Arg">T</var>. The output is the list of Lawvere-Tierney idempotents of the subobject classifier of the topos <var class="Arg">T</var>.</p>
+
+<p><a id="X869788578601BE21" name="X869788578601BE21"></a></p>
+
+<h5>1.6-2 LawvereTierneySubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LawvereTierneySubobjects</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The input is an elementary topos <var class="Arg">T</var>. The output is the list of Lawvere-Tierney subobjects of the subobject classifier of the topos <var class="Arg">T</var>.</p>
+
+<p><a id="X7A4989C878169466" name="X7A4989C878169466"></a></p>
+
+<h5>1.6-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LawvereTierneyEmbeddingsOfSubobjectClassifiers</code>( <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The input is an elementary topos <var class="Arg">T</var>. The output is the list of embeddings of the subobject classifiers of full sheaf subtoposes (with respect to the Lawvere-Tierney topologies of the topos <var class="Arg">T</var>) into the subobject classifier of <var class="Arg">T</var>.</p>
+
+<p><a id="X7A3A3D0A87B7A329" name="X7A3A3D0A87B7A329"></a></p>
+
+<h4>1.7 <span class="Heading">Pushout complements</span></h4>
+
+<p><a id="X80E637287D6FA9FA" name="X80E637287D6FA9FA"></a></p>
+
+<h5>1.7-1 <span class="Heading">Example in FinSets</span></h5>
+
+<p>Define two composable monos <span class="Math">K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G</span> in <code class="code">FinSets</code>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := FinSet( [ 2, 3, 5 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K );</span>
+[ 2, 3, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := FinSet( [ 0, 1, 2, 3, 5, 6 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
+[ 0, 1, 2, 3, 5, 6 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := EmbeddingOfFinSets( K, L );</span>
+&lt;A monomorphism in FinSets&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := FinSet( [ 0, 1, 2, 3, 4, 5, 6, 10 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+[ 0, 1, 2, 3, 4, 5, 6, 10 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := EmbeddingOfFinSets( L, G );</span>
+&lt;A monomorphism in FinSets&gt;
+</pre></div>
+
+<p>Now we compute the pushout complement <span class="Math">D \stackrel{c}{\hookrightarrow} G</span> of <span class="Math">K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G</span>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HasPushoutComplement( l, m );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := PushoutComplement( l, m );</span>
+&lt;A monomorphism in FinSets&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := Source( c );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
+[ 2, 3, 4, 5, 10 ]
+</pre></div>
+
+<p><a id="X80F960AC81F97C91" name="X80F960AC81F97C91"></a></p>
+
+<h5>1.7-2 <span class="Heading">Example in SkeletalFinSets</span></h5>
+
+<p>Define two composable monos <span class="Math">K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G</span> in <code class="code">SkeletalFinSets</code>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := FinSet( 3 );</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := FinSet( 6 );</span>
+|6|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := MapOfFinSets( K, [ 2, 3, 4 ], L );; IsMonomorphism( l );; l;</span>
+|3| ↪ |6|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( l );</span>
+{ 0, 1, 2 } ⱶ[ 2, 3, 4 ]→ { 0,..., 5 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := FinSet( 8 );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+{ 0,..., 7 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := MapOfFinSets( L, [ 0, 1, 2, 3, 5, 6 ], G );</span>
+|6| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( m );</span>
+{ 0,..., 5 } ⱶ[ 0, 1, 2, 3, 5, 6 ]→ { 0,..., 7 }
+</pre></div>
+
+<p>Now we compute the pushout complement <span class="Math">D \stackrel{c}{\hookrightarrow} G</span> of <span class="Math">K \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G</span>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HasPushoutComplement( l, m );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := PushoutComplement( l, m );</span>
+|5| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( c );</span>
+{ 0,..., 4 } ⱶ[ 2, 3, 4, 5, 7 ]→ { 0,..., 7 }
+</pre></div>
+
+<p><a id="X83F9AE7C7AEBE455" name="X83F9AE7C7AEBE455"></a></p>
+
+<h5>1.7-3 HasPushoutComplement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HasPushoutComplement</code>( <var class="Arg">l</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two composable morphisms <span class="Math">l: K \rightarrow L</span>, <span class="Math">m: L \rightarrow G</span>. The output is <code class="code">true</code> if there exists a morphism <span class="Math">d: K \rightarrow D</span> and a morphism <span class="Math">g: D \rightarrow G</span> such that the four morphisms <span class="Math">l,d,m,g</span> form a pushout diagram, i.e., such that <span class="Math">m</span>=<code class="code">InjectionOfCofactorOfPushoutWithGivenPushout</code>([<span class="Math">l,d</span>], 1) and <span class="Math">g</span>=<code class="code">InjectionOfCofactorOfPushoutWithGivenPushout</code>([<span class="Math">l,d</span>], 2). Otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X8367C4BA7D985123" name="X8367C4BA7D985123"></a></p>
+
+<h5>1.7-4 PushoutComplement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PushoutComplement</code>( <var class="Arg">l</var>, <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The arguments are two composable morphisms <span class="Math">l: K \rightarrow L</span>, <span class="Math">m: L \rightarrow G</span>. The output is a morphism <span class="Math">d: K \rightarrow D</span> such that there exists a morphism <span class="Math">g: D \rightarrow G</span> turing the four morphisms <span class="Math">l,d,m,g</span> into a pushout diagram, i.e., such that <span class="Math">m</span>=<code class="code">InjectionOfCofactorOfPushoutWithGivenPushout</code>([<span class="Math">l,d</span>], 1) and <span class="Math">g</span>=<code class="code">InjectionOfCofactorOfPushoutWithGivenPushout</code>([<span class="Math">l,d</span>], 2).</p>
+
+<p><a id="X86507536811161A7" name="X86507536811161A7"></a></p>
+
+<h4>1.8 <span class="Heading">Double-pushout rewriting</span></h4>
+
+<p><a id="X80CDC01D82F44AB6" name="X80CDC01D82F44AB6"></a></p>
+
+<h5>1.8-1 DPO</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DPO</code>( <var class="Arg">m</var>, <var class="Arg">l</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a pair of morhpisms</p>
+
+<p>Compute the double-pushout of <var class="Arg">m</var> along the rule given by [ <var class="Arg">l</var>, <var class="Arg">r</var> ].</p>
+
+<p>We start by defining a linear rewriting rule as a span of two monos <span class="Math">L \stackrel{l}{\hookleftarrow} K \stackrel{r}{\hookrightarrow} R</span> in <code class="code">FinSets</code>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := FinSet( [ 2, 3, 5 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( K );</span>
+3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K );</span>
+[ 2, 3, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := FinSet( [ 0, 1, 2, 3, 5, 6 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( L );</span>
+6
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
+[ 0, 1, 2, 3, 5, 6 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := FinSet( [ 2, 3, 4, 5, 7 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( R );</span>
+5
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( R );</span>
+[ 2, 3, 4, 5, 7 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := EmbeddingOfFinSets( K, L );</span>
+&lt;A monomorphism in FinSets&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := EmbeddingOfFinSets( K, R );</span>
+&lt;A monomorphism in FinSets&gt;
+</pre></div>
+
+<p>Then we define an object within the context of the rule and a matching <span class="Math">L \stackrel{m}{\hookrightarrow} G</span>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := FinSet( [ 0, 1, 2, 3, 4, 5, 6, 10 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( G );</span>
+8
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
+[ 0, 1, 2, 3, 4, 5, 6, 10 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := EmbeddingOfFinSets( L, G );</span>
+&lt;A monomorphism in FinSets&gt;
+</pre></div>
+
+<p>The double-pushout rewriting now applies the linear rule <span class="Math">(l,r)</span> to the matriching <span class="Math">m</span>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := DPO( m, l, r );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := p[1];</span>
+&lt;A monomorphism in FinSets&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := p[2];</span>
+&lt;A monomorphism in FinSets&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := Range( p );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( H );</span>
+7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( H );</span>
+[ [ [ 1, 2 ], [ 2, 2 ] ],
+  [ [ 1, 3 ], [ 2, 3 ] ],
+  [ [ 1, 4 ] ],
+  [ [ 1, 5 ], [ 2, 5 ] ],
+  [ [ 1, 10 ] ],
+  [ [ 2, 4 ] ],
+  [ [ 2, 7 ] ] ]
+</pre></div>
+
+<p>This means</p>
+
+
+<ul>
+<li><p><span class="Math">2, 3, 5</span> are in <span class="Math">K</span> and hence in both <span class="Math">G</span> and <span class="Math">R</span>;</p>
+
+</li>
+<li><p><span class="Math">10</span> is only in <span class="Math">G</span>;</p>
+
+</li>
+<li><p><span class="Math">7</span> are only in <span class="Math">R</span>;</p>
+
+</li>
+<li><p><span class="Math">4</span> is in <span class="Math">G</span> but it must be duplicated since it is also in <span class="Math">R</span> but not in <span class="Math">K</span>.</p>
+
+</li>
+</ul>
+<p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
+
+<h4>1.9 <span class="Heading">Add-methods</span></h4>
+
+<p><a id="X8183FEAA79FD535D" name="X8183FEAA79FD535D"></a></p>
+
+<h5>1.9-1 AddCartesianSquareOfSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCartesianSquareOfSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CartesianSquareOfSubobjectClassifier</code>. <span class="Math">F: ( ) \mapsto \mathtt{CartesianSquareOfSubobjectClassifier}()</span>.</p>
+
+<p><a id="X7CB2F66B8022D23C" name="X7CB2F66B8022D23C"></a></p>
+
+<h5>1.9-2 AddClassifyingMorphismOfSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobject</code>. <span class="Math">F: ( alpha ) \mapsto \mathtt{ClassifyingMorphismOfSubobject}(alpha)</span>.</p>
+
+<p><a id="X7EA4360E79D92811" name="X7EA4360E79D92811"></a></p>
+
+<h5>1.9-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier</code>. <span class="Math">F: ( alpha, Omega ) \mapsto \mathtt{ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier}(alpha, Omega)</span>.</p>
+
+<p><a id="X85AADBAE82CF7236" name="X85AADBAE82CF7236"></a></p>
+
+<h5>1.9-4 AddEmbeddingOfIntersectionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfIntersectionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfIntersectionSubobject</code>. <span class="Math">F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)</span>.</p>
+
+<p><a id="X8732F76787D06A4C" name="X8732F76787D06A4C"></a></p>
+
+<h5>1.9-5 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfIntersectionSubobjectWithGivenIntersection</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfIntersectionSubobjectWithGivenIntersection</code>. <span class="Math">F: ( iota1, iota2, intersection ) \mapsto \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2, intersection)</span>.</p>
+
+<p><a id="X7E9CBB3581CE9C0E" name="X7E9CBB3581CE9C0E"></a></p>
+
+<h5>1.9-6 AddEmbeddingOfPseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfPseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfPseudoComplementSubobject</code>. <span class="Math">F: ( iota ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobject}(iota)</span>.</p>
+
+<p><a id="X7FDD29CF85B64B8A" name="X7FDD29CF85B64B8A"></a></p>
+
+<h5>1.9-7 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement</code>. <span class="Math">F: ( iota, complement ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement}(iota, complement)</span>.</p>
+
+<p><a id="X7E79CCA97E8F35FA" name="X7E79CCA97E8F35FA"></a></p>
+
+<h5>1.9-8 AddEmbeddingOfRelativePseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfRelativePseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfRelativePseudoComplementSubobject</code>. <span class="Math">F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobject}(iota1, iota2)</span>.</p>
+
+<p><a id="X80F3334F8467F04E" name="X80F3334F8467F04E"></a></p>
+
+<h5>1.9-9 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication</code>. <span class="Math">F: ( iota1, iota2, implication ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication}(iota1, iota2, implication)</span>.</p>
+
+<p><a id="X80995E467B4F8266" name="X80995E467B4F8266"></a></p>
+
+<h5>1.9-10 AddEmbeddingOfUnionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfUnionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfUnionSubobject</code>. <span class="Math">F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfUnionSubobject}(iota1, iota2)</span>.</p>
+
+<p><a id="X78843A817F0CA84F" name="X78843A817F0CA84F"></a></p>
+
+<h5>1.9-11 AddEmbeddingOfUnionSubobjectWithGivenUnion</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEmbeddingOfUnionSubobjectWithGivenUnion</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EmbeddingOfUnionSubobjectWithGivenUnion</code>. <span class="Math">F: ( iota1, iota2, union ) \mapsto \mathtt{EmbeddingOfUnionSubobjectWithGivenUnion}(iota1, iota2, union)</span>.</p>
+
+<p><a id="X8433D231788BD541" name="X8433D231788BD541"></a></p>
+
+<h5>1.9-12 AddExactCoverWithGlobalElements</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddExactCoverWithGlobalElements</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ExactCoverWithGlobalElements</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{ExactCoverWithGlobalElements}(arg2)</span>.</p>
+
+<p><a id="X84D738F979FCF1F7" name="X84D738F979FCF1F7"></a></p>
+
+<h5>1.9-13 AddHasPushoutComplement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHasPushoutComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">HasPushoutComplement</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{HasPushoutComplement}(arg2, arg3)</span>.</p>
+
+<p><a id="X7FB3C59484624E44" name="X7FB3C59484624E44"></a></p>
+
+<h5>1.9-14 AddIntersectionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIntersectionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IntersectionSubobject</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)</span>.</p>
+
+<p><a id="X87C1567A7E4DC50A" name="X87C1567A7E4DC50A"></a></p>
+
+<h5>1.9-15 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneyEmbeddingsOfSubobjectClassifiers</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LawvereTierneyEmbeddingsOfSubobjectClassifiers</code>. <span class="Math">F: ( ) \mapsto \mathtt{LawvereTierneyEmbeddingsOfSubobjectClassifiers}()</span>.</p>
+
+<p><a id="X84AF140B851CD072" name="X84AF140B851CD072"></a></p>
+
+<h5>1.9-16 AddLawvereTierneyLocalModalityOperators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneyLocalModalityOperators</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LawvereTierneyLocalModalityOperators</code>. <span class="Math">F: ( ) \mapsto \mathtt{LawvereTierneyLocalModalityOperators}()</span>.</p>
+
+<p><a id="X836DC3837FDBB6DE" name="X836DC3837FDBB6DE"></a></p>
+
+<h5>1.9-17 AddLawvereTierneySubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLawvereTierneySubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LawvereTierneySubobjects</code>. <span class="Math">F: ( ) \mapsto \mathtt{LawvereTierneySubobjects}()</span>.</p>
+
+<p><a id="X81DF32AC7BB696D4" name="X81DF32AC7BB696D4"></a></p>
+
+<h5>1.9-18 AddListOfSubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddListOfSubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ListOfSubobjects</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)</span>.</p>
+
+<p><a id="X7C37598A7F7C7413" name="X7C37598A7F7C7413"></a></p>
+
+<h5>1.9-19 AddMorphismsOfExternalHom</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismsOfExternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismsOfExternalHom</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{MorphismsOfExternalHom}(arg2, arg3)</span>.</p>
+
+<p><a id="X83FA18FC80B0A98C" name="X83FA18FC80B0A98C"></a></p>
+
+<h5>1.9-20 AddPowerObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">PowerObject</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{PowerObject}(arg2)</span>.</p>
+
+<p><a id="X834E53457F00D41E" name="X834E53457F00D41E"></a></p>
+
+<h5>1.9-21 AddPseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">PseudoComplementSubobject</code>. <span class="Math">F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)</span>.</p>
+
+<p><a id="X86E9745A85A060F3" name="X86E9745A85A060F3"></a></p>
+
+<h5>1.9-22 AddPushoutComplement</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPushoutComplement</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">PushoutComplement</code>. <span class="Math">F: ( l, m ) \mapsto \mathtt{PushoutComplement}(l, m)</span>.</p>
+
+<p><a id="X862A4CFB847723DB" name="X862A4CFB847723DB"></a></p>
+
+<h5>1.9-23 AddRelativePseudoComplementSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRelativePseudoComplementSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RelativePseudoComplementSubobject</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{RelativePseudoComplementSubobject}(arg2, arg3)</span>.</p>
+
+<p><a id="X8132FB527C65EB48" name="X8132FB527C65EB48"></a></p>
+
+<h5>1.9-24 AddSingletonMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSingletonMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SingletonMorphism</code>. <span class="Math">F: ( object ) \mapsto \mathtt{SingletonMorphism}(object)</span>.</p>
+
+<p><a id="X834AF15D824C9D4B" name="X834AF15D824C9D4B"></a></p>
+
+<h5>1.9-25 AddSingletonMorphismWithGivenPowerObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSingletonMorphismWithGivenPowerObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SingletonMorphismWithGivenPowerObject</code>. <span class="Math">F: ( object, power_object ) \mapsto \mathtt{SingletonMorphismWithGivenPowerObject}(object, power_object)</span>.</p>
+
+<p><a id="X7F91B1417B647CBA" name="X7F91B1417B647CBA"></a></p>
+
+<h5>1.9-26 AddSubobjectClassifier</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectClassifier</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SubobjectClassifier</code>. <span class="Math">F: ( ) \mapsto \mathtt{SubobjectClassifier}()</span>.</p>
+
+<p><a id="X814CF88C850C8077" name="X814CF88C850C8077"></a></p>
+
+<h5>1.9-27 AddSubobjectOfClassifyingMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubobjectOfClassifyingMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SubobjectOfClassifyingMorphism</code>. <span class="Math">F: ( alpha ) \mapsto \mathtt{SubobjectOfClassifyingMorphism}(alpha)</span>.</p>
+
+<p><a id="X878C7A5385273892" name="X878C7A5385273892"></a></p>
+
+<h5>1.9-28 AddTruthMorphismOfAnd</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfAnd</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfAnd</code>. <span class="Math">F: ( ) \mapsto \mathtt{TruthMorphismOfAnd}()</span>.</p>
+
+<p><a id="X7D7EC93980CE4B2E" name="X7D7EC93980CE4B2E"></a></p>
+
+<h5>1.9-29 AddTruthMorphismOfAndWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfAndWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfAndWithGivenObjects</code>. <span class="Math">F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfAndWithGivenObjects}(Omega2, Omega)</span>.</p>
+
+<p><a id="X811150A6829C8DF3" name="X811150A6829C8DF3"></a></p>
+
+<h5>1.9-30 AddTruthMorphismOfFalse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfFalse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfFalse</code>. <span class="Math">F: ( ) \mapsto \mathtt{TruthMorphismOfFalse}()</span>.</p>
+
+<p><a id="X868C7D2D7D4A1A30" name="X868C7D2D7D4A1A30"></a></p>
+
+<h5>1.9-31 AddTruthMorphismOfFalseWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfFalseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfFalseWithGivenObjects</code>. <span class="Math">F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfFalseWithGivenObjects}(T, Omega)</span>.</p>
+
+<p><a id="X786B746E855FE383" name="X786B746E855FE383"></a></p>
+
+<h5>1.9-32 AddTruthMorphismOfImplies</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfImplies</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfImplies</code>. <span class="Math">F: ( ) \mapsto \mathtt{TruthMorphismOfImplies}()</span>.</p>
+
+<p><a id="X80E40A4F7E13DAC3" name="X80E40A4F7E13DAC3"></a></p>
+
+<h5>1.9-33 AddTruthMorphismOfImpliesWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfImpliesWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfImpliesWithGivenObjects</code>. <span class="Math">F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfImpliesWithGivenObjects}(Omega2, Omega)</span>.</p>
+
+<p><a id="X85D4D57283F6F364" name="X85D4D57283F6F364"></a></p>
+
+<h5>1.9-34 AddTruthMorphismOfNot</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfNot</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfNot</code>. <span class="Math">F: ( ) \mapsto \mathtt{TruthMorphismOfNot}()</span>.</p>
+
+<p><a id="X7A923DE7861F80D8" name="X7A923DE7861F80D8"></a></p>
+
+<h5>1.9-35 AddTruthMorphismOfNotWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfNotWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfNotWithGivenObjects</code>. <span class="Math">F: ( Omega, Omega1 ) \mapsto \mathtt{TruthMorphismOfNotWithGivenObjects}(Omega, Omega1)</span>.</p>
+
+<p><a id="X789B8ED08194D48B" name="X789B8ED08194D48B"></a></p>
+
+<h5>1.9-36 AddTruthMorphismOfOr</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfOr</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfOr</code>. <span class="Math">F: ( ) \mapsto \mathtt{TruthMorphismOfOr}()</span>.</p>
+
+<p><a id="X80BE48FC8508F89C" name="X80BE48FC8508F89C"></a></p>
+
+<h5>1.9-37 AddTruthMorphismOfOrWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfOrWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfOrWithGivenObjects</code>. <span class="Math">F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfOrWithGivenObjects}(Omega2, Omega)</span>.</p>
+
+<p><a id="X7D8C4128863D21D8" name="X7D8C4128863D21D8"></a></p>
+
+<h5>1.9-38 AddTruthMorphismOfTrue</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfTrue</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfTrue</code>. <span class="Math">F: ( ) \mapsto \mathtt{TruthMorphismOfTrue}()</span>.</p>
+
+<p><a id="X87604F3D86857559" name="X87604F3D86857559"></a></p>
+
+<h5>1.9-39 AddTruthMorphismOfTrueWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTruthMorphismOfTrueWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TruthMorphismOfTrueWithGivenObjects</code>. <span class="Math">F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfTrueWithGivenObjects}(T, Omega)</span>.</p>
+
+<p><a id="X7F015BE281A0E121" name="X7F015BE281A0E121"></a></p>
+
+<h5>1.9-40 AddUnionSubobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUnionSubobject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UnionSubobject</code>. <span class="Math">F: ( arg2, arg3 ) \mapsto \mathtt{UnionSubobject}(arg2, arg3)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

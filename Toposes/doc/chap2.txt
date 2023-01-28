@@ -1,0 +1,111 @@
+  
+  [1X2 [33X[0;0YCategory of relations[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YGAP categories[133X[101X
+  
+  [1X2.1-1 IsCategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of a category of relations[133X
+  
+  [1X2.1-2 IsCellInCategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XIsCellInCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a category of relations.[133X
+  
+  [1X2.1-3 IsObjectInCategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a category of relations.[133X
+  
+  [1X2.1-4 IsMorphismInCategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfRelations[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a category of relations.[133X
+  
+  
+  [1X2.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X2.2-1 CategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfRelations[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.2-2 AsMorphismInCategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XAsMorphismInCategoryOfRelations[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  
+  [1X2.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X2.3-1 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-2 UnitObjectInCategoryOfRelations[101X
+  
+  [33X[1;0Y[29X[2XUnitObjectInCategoryOfRelations[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-3 UnderlyingCell[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-4 UnderlyingSpan[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingSpan[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-5 MaximalRelationIntoTerminalObject[101X
+  
+  [33X[1;0Y[29X[2XMaximalRelationIntoTerminalObject[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-6 PseudoInverse[101X
+  
+  [33X[1;0Y[29X[2XPseudoInverse[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-7 PseudoInverseOfHonestMorphism[101X
+  
+  [33X[1;0Y[29X[2XPseudoInverseOfHonestMorphism[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-8 EmbeddingOfRelationInDirectProduct[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfRelationInDirectProduct[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-9 SourceProjection[101X
+  
+  [33X[1;0Y[29X[2XSourceProjection[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-10 RangeProjection[101X
+  
+  [33X[1;0Y[29X[2XRangeProjection[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-11 StandardizedSpan[101X
+  
+  [33X[1;0Y[29X[2XStandardizedSpan[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-12 MorphismByStandardizedSpan[101X
+  
+  [33X[1;0Y[29X[2XMorphismByStandardizedSpan[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X2.3-13 HonestRepresentative[101X
+  
+  [33X[1;0Y[29X[2XHonestRepresentative[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  
+  [1X2.4 [33X[0;0YProperties[133X[101X
+  
+  [1X2.4-1 IsHonest[101X
+  
+  [33X[1;0Y[29X[2XIsHonest[102X( [3Xrho[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YThe input is a morphsm [23X\rho[123X in the category of relations. The output is [10Xtrue[110X
+  if the domain of [23X\rho[123X is an isomorphism.[133X
+  

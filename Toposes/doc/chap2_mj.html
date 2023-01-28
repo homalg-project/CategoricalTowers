@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (Toposes) - Chapter 2: Category of relations</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
+<p><a id="X789E61CF843CF960" name="X789E61CF843CF960"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X789E61CF843CF960">2 <span class="Heading">Category of relations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.1 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CADFF907D5AE74F">2.1-1 IsCategoryOfRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BFF307C7B6CC3DC">2.1-2 IsCellInCategoryOfRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79C3ED0E7C57114B">2.1-3 IsObjectInCategoryOfRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C2695477C5483B2">2.1-4 IsMorphismInCategoryOfRelations</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86EC0F0A78ECBC10">2.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80F28CB2854F4D40">2.2-1 CategoryOfRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A5BE8267D48632F">2.2-2 AsMorphismInCategoryOfRelations</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7C701DBF7BAE649A">2.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8770ECBE86B473A9">2.3-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85F97D7881301C60">2.3-2 UnitObjectInCategoryOfRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X833E8C8D7F6169B5">2.3-3 UnderlyingCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82051612817E364B">2.3-4 UnderlyingSpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X852AF40978C2C250">2.3-5 MaximalRelationIntoTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8364F83581DF3057">2.3-6 PseudoInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7ABCA1C47BE6E2A3">2.3-7 PseudoInverseOfHonestMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X809DD05C81A23CD9">2.3-8 EmbeddingOfRelationInDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B111B3781884B0F">2.3-9 SourceProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DAA3F077E401FF6">2.3-10 RangeProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79A78D777CC60E38">2.3-11 StandardizedSpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81997FB97BBDA8DF">2.3-12 MorphismByStandardizedSpan</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85BFEB9D86893A4F">2.3-13 HonestRepresentative</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X871597447BB998A1">2.4 <span class="Heading">Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B9595917EFC385E">2.4-1 IsHonest</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Category of relations</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.1 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X7CADFF907D5AE74F" name="X7CADFF907D5AE74F"></a></p>
+
+<h5>2.1-1 IsCategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a category of relations</p>
+
+<p><a id="X7BFF307C7B6CC3DC" name="X7BFF307C7B6CC3DC"></a></p>
+
+<h5>2.1-2 IsCellInCategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a category of relations.</p>
+
+<p><a id="X79C3ED0E7C57114B" name="X79C3ED0E7C57114B"></a></p>
+
+<h5>2.1-3 IsObjectInCategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a category of relations.</p>
+
+<p><a id="X7C2695477C5483B2" name="X7C2695477C5483B2"></a></p>
+
+<h5>2.1-4 IsMorphismInCategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a category of relations.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X80F28CB2854F4D40" name="X80F28CB2854F4D40"></a></p>
+
+<h5>2.2-1 CategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7A5BE8267D48632F" name="X7A5BE8267D48632F"></a></p>
+
+<h5>2.2-2 AsMorphismInCategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInCategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>2.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X8770ECBE86B473A9" name="X8770ECBE86B473A9"></a></p>
+
+<h5>2.3-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X85F97D7881301C60" name="X85F97D7881301C60"></a></p>
+
+<h5>2.3-2 UnitObjectInCategoryOfRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnitObjectInCategoryOfRelations</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X833E8C8D7F6169B5" name="X833E8C8D7F6169B5"></a></p>
+
+<h5>2.3-3 UnderlyingCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCell</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X82051612817E364B" name="X82051612817E364B"></a></p>
+
+<h5>2.3-4 UnderlyingSpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingSpan</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X852AF40978C2C250" name="X852AF40978C2C250"></a></p>
+
+<h5>2.3-5 MaximalRelationIntoTerminalObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MaximalRelationIntoTerminalObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X8364F83581DF3057" name="X8364F83581DF3057"></a></p>
+
+<h5>2.3-6 PseudoInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PseudoInverse</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7ABCA1C47BE6E2A3" name="X7ABCA1C47BE6E2A3"></a></p>
+
+<h5>2.3-7 PseudoInverseOfHonestMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PseudoInverseOfHonestMorphism</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X809DD05C81A23CD9" name="X809DD05C81A23CD9"></a></p>
+
+<h5>2.3-8 EmbeddingOfRelationInDirectProduct</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfRelationInDirectProduct</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7B111B3781884B0F" name="X7B111B3781884B0F"></a></p>
+
+<h5>2.3-9 SourceProjection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SourceProjection</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7DAA3F077E401FF6" name="X7DAA3F077E401FF6"></a></p>
+
+<h5>2.3-10 RangeProjection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RangeProjection</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X79A78D777CC60E38" name="X79A78D777CC60E38"></a></p>
+
+<h5>2.3-11 StandardizedSpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StandardizedSpan</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X81997FB97BBDA8DF" name="X81997FB97BBDA8DF"></a></p>
+
+<h5>2.3-12 MorphismByStandardizedSpan</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismByStandardizedSpan</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X85BFEB9D86893A4F" name="X85BFEB9D86893A4F"></a></p>
+
+<h5>2.3-13 HonestRepresentative</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HonestRepresentative</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+
+<h4>2.4 <span class="Heading">Properties</span></h4>
+
+<p><a id="X7B9595917EFC385E" name="X7B9595917EFC385E"></a></p>
+
+<h5>2.4-1 IsHonest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHonest</code>( <var class="Arg">rho</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>The input is a morphsm <span class="SimpleMath">\(\rho\)</span> in the category of relations. The output is <code class="code">true</code> if the domain of <span class="SimpleMath">\(\rho\)</span> is an isomorphism.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

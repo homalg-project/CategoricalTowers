@@ -1,0 +1,1008 @@
+  
+  [1X1 [33X[0;0YToposes[133X[101X
+  
+  [33X[0;0YAn  elementary  topos is a finite complete, cartesian closed category with a
+  subobject classifier. It follows that an elementary topos is also a finitely
+  cocomplete Heyting category.[133X
+  
+  [33X[0;0YThe  doctrines  of  (co)cartesian (co)closed categories and their variations
+  are implemented in the CAP-based package [10XCartesianCategories[110X.[133X
+  
+  
+  [1X1.1 [33X[0;0YMorphisms of external Hom[133X[101X
+  
+  [1X1.1-1 MorphismsOfExternalHom[101X
+  
+  [33X[1;0Y[29X[2XMorphismsOfExternalHom[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of morphism[133X
+  
+  [33X[0;0YThe  argument  are  two  objects [3XA[103X, [3XB[103X. The output is a list of all morphisms
+  from [3XA[103X to [3XB[103X.[133X
+  
+  
+  [1X1.2 [33X[0;0YExact cover with global elements[133X[101X
+  
+  [1X1.2-1 ExactCoverWithGlobalElements[101X
+  
+  [33X[1;0Y[29X[2XExactCoverWithGlobalElements[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}(t,a)[123X.[133X
+  
+  [33X[0;0YThe argument is an object [3Xa[103X of a category [23X\mathbf{C}[123X. The output is a list [23XD[123X
+  of  global  elements  of  [3Xa[103X  (i.e.,  morphisms from the terminal object [23Xt[123X of
+  [23X\mathbf{C}[123X  to  [3Xa[103X),  such  that  [10XUniversalMorphismFromCoproduct[110X([3Xa[103X,  [23XD[123X) is an
+  isomorphism.[133X
+  
+  
+  [1X1.3 [33X[0;0YSubobject Classifier[133X[101X
+  
+  [1X1.3-1 IsElementaryTopos[101X
+  
+  [33X[1;0Y[29X[2XIsElementaryTopos[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of the category [3XC[103X being an elementary topos.[133X
+  
+  [33X[0;0YA subobject classifier object consists of three parts:[133X
+  
+  [30X    [33X[0;6Yan object [23X\Omega[123X,[133X
+  
+  [30X    [33X[0;6Ya   function  [23X\mathrm{true}[123X  providing  a  morphism  [23X\mathrm{true}:  1
+        \rightarrow \Omega[123X,[133X
+  
+  [30X    [33X[0;6Ya  function  [23X\chi[123X  mapping  each monomorphism [23Xi : A \rightarrow S[123X to a
+        morphism [23X\chi_i : S \to \Omega[123X.[133X
+  
+  [33X[0;0YThe  triple  [23X(\Omega,\mathrm{true},\chi)[123X is called a [13Xsubobject classifier[113X if
+  for each monomorphism [23Xi : A \to S[123X, the morphism [23X\chi_i : S \to \Omega[123X is the
+  unique  morphism  such  that  [23X\chi_i  \circ  i  =  \mathrm{true}  \circ \ast[123X
+  determine a pullback diagram.[133X
+  
+  [1X1.3-2 SubobjectClassifier[101X
+  
+  [33X[1;0Y[29X[2XSubobjectClassifier[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument  is  a category [23XC[123X. The output is a subobject classifier object
+  [23X\Omega[123X of [23XC[123X.[133X
+  
+  [1X1.3-3 CartesianSquareOfSubobjectClassifier[101X
+  
+  [33X[1;0Y[29X[2XCartesianSquareOfSubobjectClassifier[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument is a category [23XC[123X. The output is cartesian square of a subobject
+  classifier object [23X\Omega[123X of [23XC[123X.[133X
+  
+  [1X1.3-4 ClassifyingMorphismOfSubobject[101X
+  
+  [33X[1;0Y[29X[2XClassifyingMorphismOfSubobject[102X( [3Xm[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya      morphism      in      [23X\mathrm{Hom}(      \mathrm{Range}(m),
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  monomorphism  [23Xm  :  A \rightarrow S[123X. The output is its
+  classifying morphism [23X\chi_m : S \rightarrow \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.3-5 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier[101X
+  
+  [33X[1;0Y[29X[2XClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier[102X( [3Xm[103X, [3Xomega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya      morphism      in      [23X\mathrm{Hom}(      \mathrm{Range}(m),
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  monomorphism  [23Xm  :  A  \rightarrow S[123X and a subobject
+  classifier   [23X\Omega[123X.   The   output  is  the  classifying  morphism  of  the
+  monomorphism [23X\chi_m : S \rightarrow \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.3-6 SubobjectOfClassifyingMorphism[101X
+  
+  [33X[1;0Y[29X[2XSubobjectOfClassifyingMorphism[102X( [3Xchi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism in [23X\mathrm{Hom}( A, S )[123X[133X
+  
+  [33X[0;0YThe  argument  is  a  classifying  morphism [23X\chi : S \rightarrow \Omega[123X. The
+  output  is  the  subobject  monomorphism  of the classifying morphism, [23Xm : A
+  \rightarrow S[123X.[133X
+  
+  [1X1.3-7 ListOfSubobjects[101X
+  
+  [33X[1;0Y[29X[2XListOfSubobjects[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of monomorphism[133X
+  
+  [33X[0;0YThe argument is an object [3XA[103X. The output is a list of all subobjects of [3XA[103X.[133X
+  
+  
+  [1X1.4 [33X[0;0YTruth Morphisms[133X[101X
+  
+  [1X1.4-1 TruthMorphismOfTrue[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfTrue[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    \mathrm{TerminalObject},
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe  argument is a category [23XC[123X. The output is the truth morphism of true into
+  the  subobject classifier [23X\mathrm{true}: \mathrm{TerminalObject} \rightarrow
+  \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.4-2 TruthMorphismOfTrueWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfTrueWithGivenObjects[102X( [3XT[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  terminal  object  of  the  category  and a subobject
+  classifier.  The  output  is  the  truth morphism of true into the subobject
+  classifier [3XOmega[103X [23X\mathrm{true}: \mathrm{TerminalObject} \rightarrow \Omega[123X.[133X
+  
+  [1X1.4-3 TruthMorphismOfFalse[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfFalse[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism     in    [23X\mathrm{Hom}(    \mathrm{TerminalObject},
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X. The output is the truth morphism of false into
+  the subobject classifier [23X\mathrm{false}: \mathrm{TerminalObject} \rightarrow
+  \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.4-4 TruthMorphismOfFalseWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfFalseWithGivenObjects[102X( [3XT[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  terminal  object  of  the  category  and a subobject
+  classifier.  The  output  is  the truth morphism of false into the subobject
+  classifier [3XOmega[103X [23X\mathrm{false}: \mathrm{TerminalObject} \rightarrow \Omega[123X.[133X
+  
+  [1X1.4-5 TruthMorphismOfNot[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfNot[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya    morphism   in   [23X\mathrm{Hom}(   \mathrm{SubobjectClassifier},
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X. The output is the truth morphism of [21Xnot[121X of the
+  subobject  classifier [23X\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow
+  \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.4-6 TruthMorphismOfNotWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfNotWithGivenObjects[102X( [3XOmega[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega, \Omega )[123X[133X
+  
+  [33X[0;0YThe argument is a subobject classifier. The output is the truth endomorphism
+  of  [21Xnot[121X  of  the subobject classifier [3XOmega[103X [23X\mathrm{not}: \Omega \rightarrow
+  \Omega[123X.[133X
+  
+  [1X1.4-7 TruthMorphismOfAnd[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfAnd[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya              morphism              in              [23X\mathrm{Hom}(
+            \mathrm{CartesianSquareOfSubobjectClassifier},
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe  argument  is a category [23XC[123X. The output is the truth morphism of [21Xand[121X into
+  the              subobject              classifier             [23X\mathrm{and}:
+  \mathrm{CartesianSquareOfSubobjectClassifier}                    \rightarrow
+  \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.4-8 TruthMorphismOfAndWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfAndWithGivenObjects[102X( [3XOmega2[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega^{\times 2}, \Omega )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  cartesian  square  of  a subobject classifier of the
+  category and a subobject classifier. The output is the truth morphism of [21Xand[121X
+  into   the   subobject  classifier  [3XOmega[103X  [23X\mathrm{and}:  \Omega^{\times  2}
+  \rightarrow \Omega[123X.[133X
+  
+  [1X1.4-9 TruthMorphismOfOr[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfOr[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya              morphism              in              [23X\mathrm{Hom}(
+            \mathrm{CartesianSquareOfSubobjectClassifier},
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe  argument  is  a category [23XC[123X. The output is the truth morphism of [21Xor[121X into
+  the              subobject              classifier              [23X\mathrm{or}:
+  \mathrm{CartesianSquareOfSubobjectClassifier}                    \rightarrow
+  \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.4-10 TruthMorphismOfOrWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfOrWithGivenObjects[102X( [3XOmega2[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega^{\times 2}, \Omega )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  cartesian  square  of  a subobject classifier of the
+  category  and a subobject classifier. The output is the truth morphism of [21Xor[121X
+  into   the   subobject   classifier  [3XOmega[103X  [23X\mathrm{or}:  \Omega^{\times  2}
+  \rightarrow \Omega[123X.[133X
+  
+  [1X1.4-11 TruthMorphismOfImplies[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfImplies[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya              morphism              in              [23X\mathrm{Hom}(
+            \mathrm{CartesianSquareOfSubobjectClassifier},
+            \mathrm{SubobjectClassifier} )[123X[133X
+  
+  [33X[0;0YThe  argument  is  a category [23XC[123X. The output is the truth morphism of [21Ximplies[121X
+  into         the        subobject        classifier        [23X\mathrm{implies}:
+  \mathrm{CartesianSquareOfSubobjectClassifier}                    \rightarrow
+  \mathrm{SubobjectClassifier}[123X.[133X
+  
+  [1X1.4-12 TruthMorphismOfImpliesWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfImpliesWithGivenObjects[102X( [3XOmega2[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \Omega^{\times 2}, \Omega )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  a  cartesian  square  of  a subobject classifier of the
+  category  and  a  subobject  classifier. The output is the truth morphism of
+  [21Ximplies[121X into the subobject classifier [3XOmega[103X [23X\mathrm{implies}: \Omega^{\times
+  2} \rightarrow \Omega[123X.[133X
+  
+  [1X1.4-13 PowerObject[101X
+  
+  [33X[1;0Y[29X[2XPowerObject[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X. The output is the power object of [23Xa[123X.[133X
+  
+  [1X1.4-14 SingletonMorphism[101X
+  
+  [33X[1;0Y[29X[2XSingletonMorphism[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, \mathrm{PowerObject}(a) )[123X[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X. The output is the singleton morphism from [23Xa[123X to
+  the power object [23X\mathrm{PowerObject}(a)[123X.[133X
+  
+  [1X1.4-15 SingletonMorphismWithGivenPowerObject[101X
+  
+  [33X[1;0Y[29X[2XSingletonMorphismWithGivenPowerObject[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, b )[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23Xa[123X  and object [23Xb[123X which is equal to the power
+  object  [23X\mathrm{PowerObject}(a)[123X. The output is the singleton morphism from [23Xa[123X
+  to [23Xb[123X.[133X
+  
+  
+  [1X1.5 [33X[0;0YHeyting Algebra of Subobjects[133X[101X
+  
+  [1X1.5-1 PseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XPseudoComplementSubobject[102X( [3Xiota[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is a monomorphism [23X\iota: S \hookrightarrow A[123X. The output is the
+  [21Xpseudo-complement of [23XS[123X in [23XA[123X[121X, i.e., the pseudo-complement object of [23X\iota[123X.[133X
+  
+  [1X1.5-2 EmbeddingOfPseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfPseudoComplementSubobject[102X( [3Xiota[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is a monomorphism [23X\iota: S \hookrightarrow A[123X. The output is the
+  embedding     [10XPseudoComplementSubobject[110X([23X\iota[123X)    [23X\hookrightarrow    A[123X    of
+  pseudo-complement object of [23X\iota[123X.[133X
+  
+  [1X1.5-3 EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[102X( [3Xiota[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument  is  a monomorphism [23X\iota: S \hookrightarrow A[123X and an object [23XT[123X
+  with  [10XIsEqualForObjects[110X([23XT[123X,  [10XPseudoComplementSubobject[110X([23X\iota[123X)). The output is
+  the  embedding of [23X\iota:T \hookrightarrow A[123X of pseudo-complement object [23XT[123X of
+  [23X\iota[123X.[133X
+  
+  [1X1.5-4 IntersectionSubobject[101X
+  
+  [33X[1;0Y[29X[2XIntersectionSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
+  [23Xi=1,2[123X.  The  output  is  the [21Xintersection of [23XS_1[123X and [23XS_2[123X[121X, which is naturally
+  isomorphic to the pullback of [23X\iota_1[123X and [23X\iota_2[123X.[133X
+  
+  [1X1.5-5 EmbeddingOfIntersectionSubobject[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfIntersectionSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
+  [23Xi=1,2[123X.    The   output   is   the   embedding   [10XIntersectionSubobject[110X([23X\iota[123X)
+  [23X\hookrightarrow A[123X of their intersection subobject.[133X
+  
+  [1X1.5-6 EmbeddingOfIntersectionSubobjectWithGivenIntersection[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfIntersectionSubobjectWithGivenIntersection[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe arguments are two monomorphisms [23X\iota_i: S_i \hookrightarrow A[123X for [23Xi=1,2[123X
+  and an object [23XT[123X with [10XIsEqualForObjects[110X([23XT[123X, [10XIntersectionSubobject[110X([23X\iota[123X)). The
+  output the embedding [23XT \hookrightarrow A[123X of their intersection subobject [23XT[123X.[133X
+  
+  [1X1.5-7 UnionSubobject[101X
+  
+  [33X[1;0Y[29X[2XUnionSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
+  [23Xi=1,2[123X. The output is the [21Xunion of [23XS_1[123X and [23XS_2[123X[121X, which is naturally isomorphic
+  to the image object of the coproduct morphism of [23X\iota_1[123X and [23X\iota_2[123X.[133X
+  
+  [1X1.5-8 EmbeddingOfUnionSubobject[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfUnionSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
+  [23Xi=1,2[123X.  The  output is the embedding [10XUnionSubobject[110X([23X\iota[123X) [23X\hookrightarrow A[123X
+  of their union subobject.[133X
+  
+  [1X1.5-9 EmbeddingOfUnionSubobjectWithGivenUnion[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfUnionSubobjectWithGivenUnion[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe arguments are two monomorphisms [23X\iota_i: S_i \hookrightarrow A[123X for [23Xi=1,2[123X
+  and an object [23XT[123X with [10XIsEqualForObjects[110X([23XT[123X, [10XUnionSubobject[110X([23X\iota[123X)). The output
+  is the embedding [23XT \hookrightarrow A[123X of their union subobject [23XT[123X.[133X
+  
+  [1X1.5-10 RelativePseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XRelativePseudoComplementSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
+  [23Xi=1,2[123X. The output is the [21Xrelative pseudo-complement of [23XS_1[123X relative to [23XS_2[123X[121X.[133X
+  
+  [1X1.5-11 EmbeddingOfRelativePseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfRelativePseudoComplementSubobject[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe  arguments  are  two  monomorphisms  [23X\iota_i:  S_i \hookrightarrow A[123X for
+  [23Xi=1,2[123X.  The output is the embedding [10XRelativePseudoComplementSubobject[110X([23X\iota[123X)
+  [23X\hookrightarrow A[123X of their relative pseudo-complement into [23XA[123X.[133X
+  
+  [1X1.5-12 EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[102X( [3Xiota1[103X, [3Xiota2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphism[133X
+  
+  [33X[0;0YThe arguments are two monomorphisms [23X\iota_i: S_i \hookrightarrow A[123X for [23Xi=1,2[123X
+  and        an        object        [23XT[123X        with        [10XIsEqualForObjects[110X([23XT[123X,
+  [10XRelativePseudoComplementSubobject[110X([23X\iota[123X)).  The  output  is  the embedding [23XT
+  \hookrightarrow A[123X of their relative pseudo-complement [23XT[123X into [23XA[123X.[133X
+  
+  
+  [1X1.6 [33X[0;0YLawvere-Tierney topologies[133X[101X
+  
+  [33X[0;0YCompute the Lawvere-Tierney topologies of [10XSkeletalFinSets[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLTI := LawvereTierneyLocalModalityOperators( SkeletalFinSets );[127X[104X
+    [4X[28X[ |2| → |2|, |2| → |2| ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( LTI, Display );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XLTS := LawvereTierneySubobjects( SkeletalFinSets );[127X[104X
+    [4X[28X[ |1| ↪ |2|, |2| ↪ |2| ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( LTS, Display );[127X[104X
+    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XLTC := LawvereTierneyEmbeddingsOfSubobjectClassifiers( SkeletalFinSets );[127X[104X
+    [4X[28X[ |2| → |2|, |1| → |2| ][128X[104X
+    [4X[25Xgap>[125X [27XPerform( LTC, Display );[127X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
+  [4X[32X[104X
+  
+  [1X1.6-1 LawvereTierneyLocalModalityOperators[101X
+  
+  [33X[1;0Y[29X[2XLawvereTierneyLocalModalityOperators[102X( [3XT[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
+  Lawvere-Tierney idempotents of the subobject classifier of the topos [3XT[103X.[133X
+  
+  [1X1.6-2 LawvereTierneySubobjects[101X
+  
+  [33X[1;0Y[29X[2XLawvereTierneySubobjects[102X( [3XT[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe   input   is   an  elementary  topos  [3XT[103X.  The  output  is  the  list  of
+  Lawvere-Tierney subobjects of the subobject classifier of the topos [3XT[103X.[133X
+  
+  [1X1.6-3 LawvereTierneyEmbeddingsOfSubobjectClassifiers[101X
+  
+  [33X[1;0Y[29X[2XLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X( [3XT[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  input is an elementary topos [3XT[103X. The output is the list of embeddings of
+  the  subobject  classifiers  of  full  sheaf subtoposes (with respect to the
+  Lawvere-Tierney  topologies of the topos [3XT[103X) into the subobject classifier of
+  [3XT[103X.[133X
+  
+  
+  [1X1.7 [33X[0;0YPushout complements[133X[101X
+  
+  
+  [1X1.7-1 [33X[0;0YExample in FinSets[133X[101X
+  
+  [33X[0;0YDefine    two    composable    monos   [23XK   \stackrel{l}{\hookrightarrow}   L
+  \stackrel{m}{\hookrightarrow} G[123X in [10XFinSets[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XK := FinSet( [ 2, 3, 5 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
+    [4X[28X[ 2, 3, 5 ][128X[104X
+    [4X[25Xgap>[125X [27XL := FinSet( [ 0, 1, 2, 3, 5, 6 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
+    [4X[28X[ 0, 1, 2, 3, 5, 6 ][128X[104X
+    [4X[25Xgap>[125X [27Xl := EmbeddingOfFinSets( K, L );[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XG := FinSet( [ 0, 1, 2, 3, 4, 5, 6, 10 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28X[ 0, 1, 2, 3, 4, 5, 6, 10 ][128X[104X
+    [4X[25Xgap>[125X [27Xm := EmbeddingOfFinSets( L, G );[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNow we compute the pushout complement [23XD \stackrel{c}{\hookrightarrow} G[123X of [23XK
+  \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G[123X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XHasPushoutComplement( l, m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := PushoutComplement( l, m );[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XD := Source( c );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( D );[127X[104X
+    [4X[28X[ 2, 3, 4, 5, 10 ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.7-2 [33X[0;0YExample in SkeletalFinSets[133X[101X
+  
+  [33X[0;0YDefine    two    composable    monos   [23XK   \stackrel{l}{\hookrightarrow}   L
+  \stackrel{m}{\hookrightarrow} G[123X in [10XSkeletalFinSets[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XK := FinSet( 3 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XL := FinSet( 6 );[127X[104X
+    [4X[28X|6|[128X[104X
+    [4X[25Xgap>[125X [27Xl := MapOfFinSets( K, [ 2, 3, 4 ], L );; IsMonomorphism( l );; l;[127X[104X
+    [4X[28X|3| ↪ |6|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( l );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 3, 4 ]→ { 0,..., 5 }[128X[104X
+    [4X[25Xgap>[125X [27XG := FinSet( 8 );[127X[104X
+    [4X[28X|8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28X{ 0,..., 7 }[128X[104X
+    [4X[25Xgap>[125X [27Xm := MapOfFinSets( L, [ 0, 1, 2, 3, 5, 6 ], G );[127X[104X
+    [4X[28X|6| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( m );[127X[104X
+    [4X[28X{ 0,..., 5 } ⱶ[ 0, 1, 2, 3, 5, 6 ]→ { 0,..., 7 }[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNow we compute the pushout complement [23XD \stackrel{c}{\hookrightarrow} G[123X of [23XK
+  \stackrel{l}{\hookrightarrow} L \stackrel{m}{\hookrightarrow} G[123X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XHasPushoutComplement( l, m );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := PushoutComplement( l, m );[127X[104X
+    [4X[28X|5| → |8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( c );[127X[104X
+    [4X[28X{ 0,..., 4 } ⱶ[ 2, 3, 4, 5, 7 ]→ { 0,..., 7 }[128X[104X
+  [4X[32X[104X
+  
+  [1X1.7-3 HasPushoutComplement[101X
+  
+  [33X[1;0Y[29X[2XHasPushoutComplement[102X( [3Xl[103X, [3Xm[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are  two  composable  morphisms  [23Xl:  K  \rightarrow  L[123X, [23Xm: L
+  \rightarrow  G[123X.  The  output  is  [10Xtrue[110X  if  there  exists  a  morphism  [23Xd: K
+  \rightarrow D[123X and a morphism [23Xg: D \rightarrow G[123X such that the four morphisms
+  [23Xl,d,m,g[123X      form     a     pushout     diagram,     i.e.,     such     that
+  [23Xm[123X=[10XInjectionOfCofactorOfPushoutWithGivenPushout[110X([[23Xl,d[123X],         1)         and
+  [23Xg[123X=[10XInjectionOfCofactorOfPushoutWithGivenPushout[110X([[23Xl,d[123X],   2).   Otherwise  the
+  output is [10Xfalse[110X.[133X
+  
+  [1X1.7-4 PushoutComplement[101X
+  
+  [33X[1;0Y[29X[2XPushoutComplement[102X( [3Xl[103X, [3Xm[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  arguments  are  two  composable  morphisms  [23Xl:  K  \rightarrow  L[123X, [23Xm: L
+  \rightarrow  G[123X.  The output is a morphism [23Xd: K \rightarrow D[123X such that there
+  exists  a morphism [23Xg: D \rightarrow G[123X turing the four morphisms [23Xl,d,m,g[123X into
+  a          pushout          diagram,         i.e.,         such         that
+  [23Xm[123X=[10XInjectionOfCofactorOfPushoutWithGivenPushout[110X([[23Xl,d[123X],         1)         and
+  [23Xg[123X=[10XInjectionOfCofactorOfPushoutWithGivenPushout[110X([[23Xl,d[123X], 2).[133X
+  
+  
+  [1X1.8 [33X[0;0YDouble-pushout rewriting[133X[101X
+  
+  [1X1.8-1 DPO[101X
+  
+  [33X[1;0Y[29X[2XDPO[102X( [3Xm[103X, [3Xl[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya pair of morhpisms[133X
+  
+  [33X[0;0YCompute the double-pushout of [3Xm[103X along the rule given by [ [3Xl[103X, [3Xr[103X ].[133X
+  
+  [33X[0;0YWe  start  by  defining  a  linear  rewriting  rule as a span of two monos [23XL
+  \stackrel{l}{\hookleftarrow} K \stackrel{r}{\hookrightarrow} R[123X in [10XFinSets[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FinSetsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XK := FinSet( [ 2, 3, 5 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( K );[127X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
+    [4X[28X[ 2, 3, 5 ][128X[104X
+    [4X[25Xgap>[125X [27XL := FinSet( [ 0, 1, 2, 3, 5, 6 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( L );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
+    [4X[28X[ 0, 1, 2, 3, 5, 6 ][128X[104X
+    [4X[25Xgap>[125X [27XR := FinSet( [ 2, 3, 4, 5, 7 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( R );[127X[104X
+    [4X[28X5[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( R );[127X[104X
+    [4X[28X[ 2, 3, 4, 5, 7 ][128X[104X
+    [4X[25Xgap>[125X [27Xl := EmbeddingOfFinSets( K, L );[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27Xr := EmbeddingOfFinSets( K, R );[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThen  we  define  an  object within the context of the rule and a matching [23XL
+  \stackrel{m}{\hookrightarrow} G[123X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XG := FinSet( [ 0, 1, 2, 3, 4, 5, 6, 10 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( G );[127X[104X
+    [4X[28X8[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
+    [4X[28X[ 0, 1, 2, 3, 4, 5, 6, 10 ][128X[104X
+    [4X[25Xgap>[125X [27Xm := EmbeddingOfFinSets( L, G );[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  double-pushout  rewriting  now  applies  the  linear  rule [23X(l,r)[123X to the
+  matriching [23Xm[123X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xp := DPO( m, l, r );;[127X[104X
+    [4X[25Xgap>[125X [27Xh := p[1];[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27Xp := p[2];[127X[104X
+    [4X[28X<A monomorphism in FinSets>[128X[104X
+    [4X[25Xgap>[125X [27XH := Range( p );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( H );[127X[104X
+    [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( H );[127X[104X
+    [4X[28X[ [ [ 1, 2 ], [ 2, 2 ] ],[128X[104X
+    [4X[28X  [ [ 1, 3 ], [ 2, 3 ] ],[128X[104X
+    [4X[28X  [ [ 1, 4 ] ],[128X[104X
+    [4X[28X  [ [ 1, 5 ], [ 2, 5 ] ],[128X[104X
+    [4X[28X  [ [ 1, 10 ] ],[128X[104X
+    [4X[28X  [ [ 2, 4 ] ],[128X[104X
+    [4X[28X  [ [ 2, 7 ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThis means[133X
+  
+  [30X    [33X[0;6Y[23X2, 3, 5[123X are in [23XK[123X and hence in both [23XG[123X and [23XR[123X;[133X
+  
+  [30X    [33X[0;6Y[23X10[123X is only in [23XG[123X;[133X
+  
+  [30X    [33X[0;6Y[23X7[123X are only in [23XR[123X;[133X
+  
+  [30X    [33X[0;6Y[23X4[123X  is  in [23XG[123X but it must be duplicated since it is also in [23XR[123X but not in
+        [23XK[123X.[133X
+  
+  
+  [1X1.9 [33X[0;0YAdd-methods[133X[101X
+  
+  [1X1.9-1 AddCartesianSquareOfSubobjectClassifier[101X
+  
+  [33X[1;0Y[29X[2XAddCartesianSquareOfSubobjectClassifier[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XCartesianSquareOfSubobjectClassifier[110X.       [23XF:       (       )       \mapsto
+  \mathtt{CartesianSquareOfSubobjectClassifier}()[123X.[133X
+  
+  [1X1.9-2 AddClassifyingMorphismOfSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddClassifyingMorphismOfSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XClassifyingMorphismOfSubobject[110X.      [23XF:      (      alpha      )     \mapsto
+  \mathtt{ClassifyingMorphismOfSubobject}(alpha)[123X.[133X
+  
+  [1X1.9-3 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier[101X
+  
+  [33X[1;0Y[29X[2XAddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier[110X.   [23XF:   (  alpha,
+  Omega                                )                               \mapsto
+  \mathtt{ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier}(alpha,
+  Omega)[123X.[133X
+  
+  [1X1.9-4 AddEmbeddingOfIntersectionSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfIntersectionSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfIntersectionSubobject[110X.    [23XF:    (    iota1,   iota2   )   \mapsto
+  \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)[123X.[133X
+  
+  [1X1.9-5 AddEmbeddingOfIntersectionSubobjectWithGivenIntersection[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfIntersectionSubobjectWithGivenIntersection[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfIntersectionSubobjectWithGivenIntersection[110X.  [23XF:  (  iota1, iota2,
+  intersection                            )                            \mapsto
+  \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2,
+  intersection)[123X.[133X
+  
+  [1X1.9-6 AddEmbeddingOfPseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfPseudoComplementSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfPseudoComplementSubobject[110X.     [23XF:     (     iota     )    \mapsto
+  \mathtt{EmbeddingOfPseudoComplementSubobject}(iota)[123X.[133X
+  
+  [1X1.9-7 AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement[110X.  [23XF:  (  iota,
+  complement                             )                             \mapsto
+  \mathtt{EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement}(iota,
+  complement)[123X.[133X
+  
+  [1X1.9-8 AddEmbeddingOfRelativePseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfRelativePseudoComplementSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfRelativePseudoComplementSubobject[110X.  [23XF:  (  iota1, iota2 ) \mapsto
+  \mathtt{EmbeddingOfRelativePseudoComplementSubobject}(iota1, iota2)[123X.[133X
+  
+  [1X1.9-9 AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication[110X.    [23XF:    (
+  iota1,            iota2,           implication           )           \mapsto
+  \mathtt{EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication}(iota1,
+  iota2, implication)[123X.[133X
+  
+  [1X1.9-10 AddEmbeddingOfUnionSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfUnionSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfUnionSubobject[110X.     [23XF:     (     iota1,     iota2    )    \mapsto
+  \mathtt{EmbeddingOfUnionSubobject}(iota1, iota2)[123X.[133X
+  
+  [1X1.9-11 AddEmbeddingOfUnionSubobjectWithGivenUnion[101X
+  
+  [33X[1;0Y[29X[2XAddEmbeddingOfUnionSubobjectWithGivenUnion[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEmbeddingOfUnionSubobjectWithGivenUnion[110X.  [23XF: ( iota1, iota2, union ) \mapsto
+  \mathtt{EmbeddingOfUnionSubobjectWithGivenUnion}(iota1, iota2, union)[123X.[133X
+  
+  [1X1.9-12 AddExactCoverWithGlobalElements[101X
+  
+  [33X[1;0Y[29X[2XAddExactCoverWithGlobalElements[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XExactCoverWithGlobalElements[110X.       [23XF:       (      arg2      )      \mapsto
+  \mathtt{ExactCoverWithGlobalElements}(arg2)[123X.[133X
+  
+  [1X1.9-13 AddHasPushoutComplement[101X
+  
+  [33X[1;0Y[29X[2XAddHasPushoutComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XHasPushoutComplement[110X.      [23XF:      (      arg2,      arg3      )     \mapsto
+  \mathtt{HasPushoutComplement}(arg2, arg3)[123X.[133X
+  
+  [1X1.9-14 AddIntersectionSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddIntersectionSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIntersectionSubobject[110X.      [23XF:      (      arg2,      arg3     )     \mapsto
+  \mathtt{IntersectionSubobject}(arg2, arg3)[123X.[133X
+  
+  [1X1.9-15 AddLawvereTierneyEmbeddingsOfSubobjectClassifiers[101X
+  
+  [33X[1;0Y[29X[2XAddLawvereTierneyEmbeddingsOfSubobjectClassifiers[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLawvereTierneyEmbeddingsOfSubobjectClassifiers[110X.     [23XF:     (    )    \mapsto
+  \mathtt{LawvereTierneyEmbeddingsOfSubobjectClassifiers}()[123X.[133X
+  
+  [1X1.9-16 AddLawvereTierneyLocalModalityOperators[101X
+  
+  [33X[1;0Y[29X[2XAddLawvereTierneyLocalModalityOperators[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLawvereTierneyLocalModalityOperators[110X.       [23XF:       (       )       \mapsto
+  \mathtt{LawvereTierneyLocalModalityOperators}()[123X.[133X
+  
+  [1X1.9-17 AddLawvereTierneySubobjects[101X
+  
+  [33X[1;0Y[29X[2XAddLawvereTierneySubobjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XLawvereTierneySubobjects[110X.          [23XF:          (          )          \mapsto
+  \mathtt{LawvereTierneySubobjects}()[123X.[133X
+  
+  [1X1.9-18 AddListOfSubobjects[101X
+  
+  [33X[1;0Y[29X[2XAddListOfSubobjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function  [23XF[123X to the category for the basic operation [10XListOfSubobjects[110X.
+  [23XF: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)[123X.[133X
+  
+  [1X1.9-19 AddMorphismsOfExternalHom[101X
+  
+  [33X[1;0Y[29X[2XAddMorphismsOfExternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMorphismsOfExternalHom[110X.      [23XF:      (      arg2,     arg3     )     \mapsto
+  \mathtt{MorphismsOfExternalHom}(arg2, arg3)[123X.[133X
+  
+  [1X1.9-20 AddPowerObject[101X
+  
+  [33X[1;0Y[29X[2XAddPowerObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function  [23XF[123X to the category for the basic operation [10XPowerObject[110X. [23XF: (
+  arg2 ) \mapsto \mathtt{PowerObject}(arg2)[123X.[133X
+  
+  [1X1.9-21 AddPseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddPseudoComplementSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XPseudoComplementSubobject[110X.       [23XF:       (       arg2       )       \mapsto
+  \mathtt{PseudoComplementSubobject}(arg2)[123X.[133X
+  
+  [1X1.9-22 AddPushoutComplement[101X
+  
+  [33X[1;0Y[29X[2XAddPushoutComplement[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XPushoutComplement[110X.
+  [23XF: ( l, m ) \mapsto \mathtt{PushoutComplement}(l, m)[123X.[133X
+  
+  [1X1.9-23 AddRelativePseudoComplementSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddRelativePseudoComplementSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XRelativePseudoComplementSubobject[110X.    [23XF:    (    arg2,    arg3   )   \mapsto
+  \mathtt{RelativePseudoComplementSubobject}(arg2, arg3)[123X.[133X
+  
+  [1X1.9-24 AddSingletonMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddSingletonMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XSingletonMorphism[110X.
+  [23XF: ( object ) \mapsto \mathtt{SingletonMorphism}(object)[123X.[133X
+  
+  [1X1.9-25 AddSingletonMorphismWithGivenPowerObject[101X
+  
+  [33X[1;0Y[29X[2XAddSingletonMorphismWithGivenPowerObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSingletonMorphismWithGivenPowerObject[110X.  [23XF:  ( object, power_object ) \mapsto
+  \mathtt{SingletonMorphismWithGivenPowerObject}(object, power_object)[123X.[133X
+  
+  [1X1.9-26 AddSubobjectClassifier[101X
+  
+  [33X[1;0Y[29X[2XAddSubobjectClassifier[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSubobjectClassifier[110X. [23XF: ( ) \mapsto \mathtt{SubobjectClassifier}()[123X.[133X
+  
+  [1X1.9-27 AddSubobjectOfClassifyingMorphism[101X
+  
+  [33X[1;0Y[29X[2XAddSubobjectOfClassifyingMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSubobjectOfClassifyingMorphism[110X.      [23XF:      (      alpha      )     \mapsto
+  \mathtt{SubobjectOfClassifyingMorphism}(alpha)[123X.[133X
+  
+  [1X1.9-28 AddTruthMorphismOfAnd[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfAnd[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given function [23XF[123X to the category for the basic operation [10XTruthMorphismOfAnd[110X.
+  [23XF: ( ) \mapsto \mathtt{TruthMorphismOfAnd}()[123X.[133X
+  
+  [1X1.9-29 AddTruthMorphismOfAndWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfAndWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfAndWithGivenObjects[110X.   [23XF:   (   Omega2,   Omega   )   \mapsto
+  \mathtt{TruthMorphismOfAndWithGivenObjects}(Omega2, Omega)[123X.[133X
+  
+  [1X1.9-30 AddTruthMorphismOfFalse[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfFalse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfFalse[110X. [23XF: ( ) \mapsto \mathtt{TruthMorphismOfFalse}()[123X.[133X
+  
+  [1X1.9-31 AddTruthMorphismOfFalseWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfFalseWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfFalseWithGivenObjects[110X.    [23XF:    (    T,   Omega   )   \mapsto
+  \mathtt{TruthMorphismOfFalseWithGivenObjects}(T, Omega)[123X.[133X
+  
+  [1X1.9-32 AddTruthMorphismOfImplies[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfImplies[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfImplies[110X. [23XF: ( ) \mapsto \mathtt{TruthMorphismOfImplies}()[123X.[133X
+  
+  [1X1.9-33 AddTruthMorphismOfImpliesWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfImpliesWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfImpliesWithGivenObjects[110X.   [23XF:   (  Omega2,  Omega  )  \mapsto
+  \mathtt{TruthMorphismOfImpliesWithGivenObjects}(Omega2, Omega)[123X.[133X
+  
+  [1X1.9-34 AddTruthMorphismOfNot[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfNot[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given function [23XF[123X to the category for the basic operation [10XTruthMorphismOfNot[110X.
+  [23XF: ( ) \mapsto \mathtt{TruthMorphismOfNot}()[123X.[133X
+  
+  [1X1.9-35 AddTruthMorphismOfNotWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfNotWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfNotWithGivenObjects[110X.   [23XF:   (   Omega,   Omega1   )   \mapsto
+  \mathtt{TruthMorphismOfNotWithGivenObjects}(Omega, Omega1)[123X.[133X
+  
+  [1X1.9-36 AddTruthMorphismOfOr[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfOr[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XTruthMorphismOfOr[110X.
+  [23XF: ( ) \mapsto \mathtt{TruthMorphismOfOr}()[123X.[133X
+  
+  [1X1.9-37 AddTruthMorphismOfOrWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfOrWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfOrWithGivenObjects[110X.    [23XF:   (   Omega2,   Omega   )   \mapsto
+  \mathtt{TruthMorphismOfOrWithGivenObjects}(Omega2, Omega)[123X.[133X
+  
+  [1X1.9-38 AddTruthMorphismOfTrue[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfTrue[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfTrue[110X. [23XF: ( ) \mapsto \mathtt{TruthMorphismOfTrue}()[123X.[133X
+  
+  [1X1.9-39 AddTruthMorphismOfTrueWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddTruthMorphismOfTrueWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XTruthMorphismOfTrueWithGivenObjects[110X.    [23XF:    (    T,    Omega   )   \mapsto
+  \mathtt{TruthMorphismOfTrueWithGivenObjects}(T, Omega)[123X.[133X
+  
+  [1X1.9-40 AddUnionSubobject[101X
+  
+  [33X[1;0Y[29X[2XAddUnionSubobject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XUnionSubobject[110X. [23XF:
+  ( arg2, arg3 ) \mapsto \mathtt{UnionSubobject}(arg2, arg3)[123X.[133X
+  
