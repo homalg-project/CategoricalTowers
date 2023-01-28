@@ -98,7 +98,7 @@ Dependencies := rec(
                    [ "FreydCategoriesForCAP", ">= 2019.11.02" ],
                    [ "CategoryConstructor", ">= 2023.01-03" ],
                    [ "SubcategoriesForCAP", ">= 2021.12-01" ],
-                   [ "Toposes", ">= 2022.11-03" ],
+                   [ "Toposes", ">= 2023.01-08" ],
                    [ "FinSetsForCAP", ">= 2023.01-02" ],
                    ],
   SuggestedOtherPackages := [ ],
