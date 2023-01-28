@@ -20,6 +20,7 @@
 | [FiniteCocompletion](FiniteCocompletion#readme) | Finite (co)product/(co)limit (co)completions | [![HTML stable documentation][html-FiniteCocompletion-img]][html-FiniteCocompletion-url] [![PDF stable documentation][pdf-FiniteCocompletion-img]][pdf-FiniteCocompletion-url] |
 | [FunctorCategories](FunctorCategories#readme) | Categories of functors | [![HTML stable documentation][html-FunctorCategories-img]][html-FunctorCategories-url] [![PDF stable documentation][pdf-FunctorCategories-img]][pdf-FunctorCategories-url] |
 | [GradedCategories](GradedCategories#readme) | Graded closures of categories | [![HTML stable documentation][html-GradedCategories-img]][html-GradedCategories-url] [![PDF stable documentation][pdf-GradedCategories-img]][pdf-GradedCategories-url] |
+| [InternalModules](InternalModules#readme) | Modules over internal algebras | [![HTML stable documentation][html-InternalModules-img]][html-InternalModules-url] [![PDF stable documentation][pdf-InternalModules-img]][pdf-InternalModules-url] |
 | [IntrinsicCategories](IntrinsicCategories#readme) | Intrinsic categories for CAP | [![HTML stable documentation][html-IntrinsicCategories-img]][html-IntrinsicCategories-url] [![PDF stable documentation][pdf-IntrinsicCategories-img]][pdf-IntrinsicCategories-url] |
 | [IntrinsicGradedModules](IntrinsicGradedModules#readme) | Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicGradedModules-img]][html-IntrinsicGradedModules-url] [![PDF stable documentation][pdf-IntrinsicGradedModules-img]][pdf-IntrinsicGradedModules-url] |
 | [IntrinsicModules](IntrinsicModules#readme) | Finitely presented modules over computable rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicModules-img]][html-IntrinsicModules-url] [![PDF stable documentation][pdf-IntrinsicModules-img]][pdf-IntrinsicModules-url] |
@@ -84,6 +85,13 @@
 
 [pdf-GradedCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-GradedCategories-url]: https://homalg-project.github.io/CategoricalTowers/GradedCategories/download_pdf.html
+
+
+[html-InternalModules-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-InternalModules-url]: https://homalg-project.github.io/CategoricalTowers/InternalModules/doc/chap0_mj.html
+
+[pdf-InternalModules-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-InternalModules-url]: https://homalg-project.github.io/CategoricalTowers/InternalModules/download_pdf.html
 
 
 [html-IntrinsicCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

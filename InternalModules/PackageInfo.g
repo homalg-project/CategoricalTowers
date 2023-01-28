@@ -50,13 +50,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/InternalModules",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/InternalModules",
-PackageInfoURL  := "https://homalg-project.github.io/InternalModules/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/InternalModules/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/InternalModules/releases/download/v", ~.Version, "/InternalModules-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/InternalModules/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/InternalModules/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-", ~.Version, "/InternalModules-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
