@@ -1,0 +1,209 @@
+  
+  [1X12 [33X[0;0YConstructible image[133X[101X
+  
+  
+  [1X12.1 [33X[0;0YInfo Class[133X[101X
+  
+  [1X12.1-1 InfoConstructibleImage[101X
+  
+  [33X[1;0Y[29X[2XInfoConstructibleImage[102X [32X info class[133X
+  
+  
+  [1X12.2 [33X[0;0YOperations[133X[101X
+  
+  [1X12.2-1 DecreaseCodimensionByFixingVariables[101X
+  
+  [33X[1;0Y[29X[2XDecreaseCodimensionByFixingVariables[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [1X12.2-2 ClosedSubsetWithGenericallyZeroDimensionalFibersOnComponentOfProjection[101X
+  
+  [33X[1;0Y[29X[2XClosedSubsetWithGenericallyZeroDimensionalFibersOnComponentOfProjection[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [1X12.2-3 LocallyClosedApproximationOfProjection[101X
+  
+  [33X[1;0Y[29X[2XLocallyClosedApproximationOfProjection[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YA  list  consisting  of  two  entries.  The  first entry is a locally closed
+  approximation  of  the projection of [3XA[103X. The second entry is a list of closed
+  subsets  of  [3XA[103X  which  upon  projection  yield  the  remaining  parts of the
+  constructible projection of [3XA[103X.[133X
+  
+  [1X12.2-4 LocallyClosedApproximationOfImage[101X
+  
+  [33X[1;0Y[29X[2XLocallyClosedApproximationOfImage[102X( [3Xphi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YA  list  consisting  of  two  entries.  The  first entry is a locally closed
+  approximation  of  the  image  of  [3Xphi[103X. The second entry is a list of closed
+  subsets  of  the domain of [3Xphi[103X the images of which yield the remaining parts
+  of the constructible image of [3Xphi[103X.[133X
+  
+  [1X12.2-5 LocallyClosedApproximationOfProjectionViaGenericFreeness[101X
+  
+  [33X[1;0Y[29X[2XLocallyClosedApproximationOfProjectionViaGenericFreeness[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YA  list  consisting  of  two  entries.  The  first entry is a locally closed
+  approximation  of  the  projection of [3XA[103X (using generic freeness). The second
+  entry  is  a  list  of  closed  subsets of [3XA[103X which upon projection yield the
+  remaining parts of the constructible projection of [3XA[103X.[133X
+  
+  [1X12.2-6 LocallyClosedApproximationOfImageViaGenericFreeness[101X
+  
+  [33X[1;0Y[29X[2XLocallyClosedApproximationOfImageViaGenericFreeness[102X( [3Xphi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YA  list  consisting  of  two  entries.  The  first entry is a locally closed
+  approximation of the image of [3Xphi[103X (using generic freeness). The second entry
+  is  a  list of closed subsets of the domain of [3Xphi[103X the images of which yield
+  the remaining parts of the constructible image of [3Xphi[103X.[133X
+  
+  [1X12.2-7 ConstructibleProjection[101X
+  
+  [33X[1;0Y[29X[2XConstructibleProjection[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya constructible object as a union of formal multiple differences[133X
+  
+  [33X[0;0YCompute  the projection of [3XA[103X as a constructible subset of [10XBaseOfFibration[110X( [3XA[103X
+  ).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XB := Q * "a,b";[127X[104X
+    [4X[28XQ[a,b][128X[104X
+    [4X[25Xgap>[125X [27XR := B * "x,y";[127X[104X
+    [4X[28XQ[a,b][x,y][128X[104X
+    [4X[25Xgap>[125X [27Xgamma := ClosedSubsetOfSpecByRadicalColumn( "[x-a,x*y-b]", R );[127X[104X
+    [4X[28XV_{Q[a,b][x,y]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xim := ConstructibleProjection( gamma );[127X[104X
+    [4X[28X( V_{Q[a,b]}( I1 ) \ V_{Q[a,b]}( J1_1 ) ) ∪ ( V_{Q[a,b]}( I2 ) \ V_{Q[a,b]}( J2_1 ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcim := CanonicalObject( im );[127X[104X
+    [4X[28X( V_{Q[a,b]}( I1 ) \ V_{Q[a,b]}( J1 ) ) ∪ ( V_{Q[a,b]}( I2 ) \ V_{Q[a,b]}( J2 ) )[128X[104X
+    [4X[25Xgap>[125X [27XIsLocallyClosed( cim );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLength( cim );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XDimension( cim[1].I );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XDimension( cim[1].J );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XDimension( cim[2].I );[127X[104X
+    [4X[28X0[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XR := ZZ * "x";[127X[104X
+    [4X[28XZ[x][128X[104X
+    [4X[25Xgap>[125X [27Xgamma := ClosedSubsetOfSpecByRadicalColumn( "[2*x+1]", R );[127X[104X
+    [4X[28XV_{Z[x]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xim := ConstructibleProjection( gamma );[127X[104X
+    [4X[28X( V_{Z}( I1 ) \ V_{Z}( J1_1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( im );[127X[104X
+    [4X[28XV( <> ) \ V( <2> )[128X[104X
+    [4X[25Xgap>[125X [27Xchar := -im;[127X[104X
+    [4X[28X( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( char );[127X[104X
+    [4X[28XV( <2> ) \ ∅ \ ∅[128X[104X
+    [4X[25Xgap>[125X [27Xchar := CanonicalObject( char );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( char );[127X[104X
+    [4X[28XV( <2> )[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XB := Q * "a";[127X[104X
+    [4X[28XQ[a][128X[104X
+    [4X[25Xgap>[125X [27XR := B * "b";[127X[104X
+    [4X[28XQ[a][b][128X[104X
+    [4X[25Xgap>[125X [27XV1 := -ClosedSubsetOfSpec( "a*b", R );[127X[104X
+    [4X[28XV_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V1 );[127X[104X
+    [4X[28XV( <> ) \ V( <a*b> )[128X[104X
+    [4X[25Xgap>[125X [27XW1 := ConstructibleProjection( V1 );[127X[104X
+    [4X[28X( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W1 );[127X[104X
+    [4X[28XV( <> ) \ V( <a> )[128X[104X
+    [4X[25Xgap>[125X [27XV2 := ClosedSubsetOfSpec( "a", R ) - ClosedSubsetOfSpec( "b", R );[127X[104X
+    [4X[28XV_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V2 );[127X[104X
+    [4X[28XV( <a> ) \ V( <b> )[128X[104X
+    [4X[25Xgap>[125X [27XW2 := ConstructibleProjection( V2 );[127X[104X
+    [4X[28X( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W2 );[127X[104X
+    [4X[28XV( <a> ) \ ∅[128X[104X
+    [4X[25Xgap>[125X [27XV3 := ClosedSubsetOfSpec( "a^2-1", R ) - ClosedSubsetOfSpec( "b", R );[127X[104X
+    [4X[28XV_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V3 );[127X[104X
+    [4X[28XV( <a^2-1> ) \ V( <b> )[128X[104X
+    [4X[25Xgap>[125X [27XW3 := ConstructibleProjection( V3 );[127X[104X
+    [4X[28X( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W3 );[127X[104X
+    [4X[28XV( <a^2-1> ) \ ∅[128X[104X
+    [4X[25Xgap>[125X [27XV4 := ClosedSubsetOfSpec( "b-a^2+1", R ) - ClosedSubsetOfSpec( "a*b", R );[127X[104X
+    [4X[28XV_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V4 );[127X[104X
+    [4X[28XV( <b-a^2+1> ) \ V( <a*b> )[128X[104X
+    [4X[25Xgap>[125X [27XW4 := ConstructibleProjection( V4 );[127X[104X
+    [4X[28X( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) \ .. \ V_{Q[a]}( J1_3 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W4 );[127X[104X
+    [4X[28XV( <> ) \ V( <a> ) \ V( <a-1> ) \ V( <a+1> )[128X[104X
+    [4X[25Xgap>[125X [27XV5 := (ClosedSubsetOfSpec( "b-a^2+1", R ) + ClosedSubsetOfSpec( "a-1", R ))[127X[104X
+    [4X[25X>[125X [27X      - ClosedSubsetOfSpec( "a*b", R );[127X[104X
+    [4X[28XV_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V5 );[127X[104X
+    [4X[28X{ V( <b-a^2+1> ) ∪ V( <a-1> ) } \ V( <a*b> )[128X[104X
+    [4X[25Xgap>[125X [27XW5 := ConstructibleProjection( V5 );[127X[104X
+    [4X[28X( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) \ V_{Q[a]}( J1_2 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W5 );[127X[104X
+    [4X[28XV( <> ) \ V( <a+1> ) \ V( <a> )[128X[104X
+    [4X[25Xgap>[125X [27XV6 := (ClosedSubsetOfSpec( "b-a^2+1", R ) + ClosedSubsetOfSpec( "a^2-1", R ))[127X[104X
+    [4X[25X>[125X [27X      - ClosedSubsetOfSpec( "a*b", R );[127X[104X
+    [4X[28XV_{Q[a][b]}( I ) \ V_{Q[a][b]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V6 );[127X[104X
+    [4X[28X{ V( <b-a^2+1> ) ∪ V( <a^2-1> ) } \ V( <a*b> )[128X[104X
+    [4X[25Xgap>[125X [27XW6 := ConstructibleProjection( V6 );[127X[104X
+    [4X[28X( V_{Q[a]}( I1 ) \ V_{Q[a]}( J1_1 ) ) ∪ ( V_{Q[a]}( I2 ) \ V_{Q[a]}( J2_1 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W6 );[127X[104X
+    [4X[28XV( <> ) \ V( <a> )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X∪[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XV( <a^2-1> ) \ ∅[128X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XS := ZZ * "a";[127X[104X
+    [4X[28XZ[a][128X[104X
+    [4X[25Xgap>[125X [27XV7 := ClosedSubsetOfSpec( "2*a^2-2*a+1", S )[127X[104X
+    [4X[25X>[125X [27X      - ClosedSubsetOfSpec( "3*a-1", S ) - ClosedSubsetOfSpec( "a+1", S );[127X[104X
+    [4X[28XV_{Z[a]}( I ) \ V_{Z[a]}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V7 );[127X[104X
+    [4X[28XV( <2*a^2-2*a+1> ) \ { V( <3*a-1> ) ∪ V( <a+1> ) }[128X[104X
+    [4X[25Xgap>[125X [27XW7 := ConstructibleProjection( V7 );[127X[104X
+    [4X[28X( V_{Z}( I1 ) \ V_{Z}( J1_1 ) \ V_{Z}( J1_2 ) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( W7 );[127X[104X
+    [4X[28XV( <> ) \ V( <2> ) \ V( <5> )[128X[104X
+  [4X[32X[104X
+  
+  [1X12.2-8 ConstructibleImage[101X
+  
+  [33X[1;0Y[29X[2XConstructibleImage[102X( [3Xphi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya constructible object as a union of formal multiple differences[133X
+  
+  [33X[0;0YCompute  the  image  of  the  morphism defined by the morphism [3Xphi[103X of affine
+  rings as a constructible subset.[133X
+  
+  [1X12.2-9 Visualize[101X
+  
+  [33X[1;0Y[29X[2XVisualize[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YOpens  a  PDF  with  the graph of datastructure underlying the constructible
+  object [3XA[103X, provided it was created using [10XAsUnionOfMultipleDifferences[110X.[133X
+  

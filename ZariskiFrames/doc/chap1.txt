@@ -1,0 +1,420 @@
+  
+  [1X1 [33X[0;0Y(Co)frames/Locales of Zariski closed/open subsets[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YInfo Class[133X[101X
+  
+  [1X1.1-1 InfoZariskiFrames[101X
+  
+  [33X[1;0Y[29X[2XInfoZariskiFrames[102X [32X info class[133X
+  
+  
+  [1X1.2 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X1.2-1 IsZariskiFrameOrCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsZariskiFrameOrCoframe[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a Zariski frame or coframe.[133X
+  
+  [1X1.2-2 IsObjectInZariskiFrameOrCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInZariskiFrameOrCoframe[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a Zariski frame or coframe.[133X
+  
+  [1X1.2-3 IsMorphismInZariskiFrameOrCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInZariskiFrameOrCoframe[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a Zariski frame or coframe.[133X
+  
+  
+  [1X1.3 [33X[0;0YProperties[133X[101X
+  
+  [1X1.3-1 IsOpen[101X
+  
+  [33X[1;0Y[29X[2XIsOpen[102X( [3Xarg[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [1X1.3-2 IsClosed[101X
+  
+  [33X[1;0Y[29X[2XIsClosed[102X( [3Xarg[103X ) [32X operation[133X
+  
+  
+  [1X1.4 [33X[0;0YAttributes[133X[101X
+  
+  [1X1.4-1 UnderlyingRing[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingRing[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X1.4-2 BaseOfFibration[101X
+  
+  [33X[1;0Y[29X[2XBaseOfFibration[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X1.4-3 BaseOfFibration[101X
+  
+  [33X[1;0Y[29X[2XBaseOfFibration[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X1.4-4 Closure[101X
+  
+  [33X[1;0Y[29X[2XClosure[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object in the Zariski coframe[133X
+  
+  [33X[0;0YThe closure of [3XA[103X.[133X
+  
+  [1X1.4-5 ParametrizedObject[101X
+  
+  [33X[1;0Y[29X[2XParametrizedObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-6 ParametrizedObject[101X
+  
+  [33X[1;0Y[29X[2XParametrizedObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-7 ParametrizedObject[101X
+  
+  [33X[1;0Y[29X[2XParametrizedObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-8 LocallyClosedPart[101X
+  
+  [33X[1;0Y[29X[2XLocallyClosedPart[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-9 DistinguishedLocallyClosedPart[101X
+  
+  [33X[1;0Y[29X[2XDistinguishedLocallyClosedPart[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-10 DistinguishedLocallyClosedPart[101X
+  
+  [33X[1;0Y[29X[2XDistinguishedLocallyClosedPart[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-11 DistinguishedLocallyClosedPart[101X
+  
+  [33X[1;0Y[29X[2XDistinguishedLocallyClosedPart[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-12 AffineApproximation[101X
+  
+  [33X[1;0Y[29X[2XAffineApproximation[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-13 CanonicalObject[101X
+  
+  [33X[1;0Y[29X[2XCanonicalObject[102X( [3XA[103X ) [32X attribute[133X
+  
+  [1X1.4-14 RabinowitschCover[101X
+  
+  [33X[1;0Y[29X[2XRabinowitschCover[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YThe  argument  [3XA[103X  is  a  locally  closed subset of some ambient space [23XX[123X. The
+  result  is  a closed subset of the ambient space [23XX \times \mathbb{A}^1 \to X[123X
+  which (set-theoretically) projects onto [3XA[103X with finite fibers.[133X
+  
+  
+  [1X1.5 [33X[0;0YOperations[133X[101X
+  
+  [1X1.5-1 AClosedSuperset[101X
+  
+  [33X[1;0Y[29X[2XAClosedSuperset[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in the Zariski coframe[133X
+  
+  [33X[0;0YReturn  a  closed superset of [3XA[103X, i.e., a set which includes [10XClosure[110X( [3XA[103X ). If
+  [10XHasClosure[110X( [3XA[103X ) = [10Xtrue[110X then [10XClosure[110X( [3XA[103X ) is returned.[133X
+  
+  [1X1.5-2 BestUnderlyingColumn[101X
+  
+  [33X[1;0Y[29X[2XBestUnderlyingColumn[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5Xhomalg[105X matrix[133X
+  
+  [33X[0;0YThe column matrix of generators of the defining ideal of [3XA[103X.[133X
+  
+  [1X1.5-3 NormalizeObject[101X
+  
+  [33X[1;0Y[29X[2XNormalizeObject[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe object in the Zariski frame or coframe [3XA[103X[133X
+  
+  [1X1.5-4 StandardizeObject[101X
+  
+  [33X[1;0Y[29X[2XStandardizeObject[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ythe object in the Zariski frame or coframe [3XA[103X[133X
+  
+  [1X1.5-5 IsSubset[101X
+  
+  [33X[1;0Y[29X[2XIsSubset[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YCheck if [3XA[103X is bigger than [3XB[103X w.r.t. inclusion.[133X
+  
+  [1X1.5-6 RingEpimorphismOfClosedSuperset[101X
+  
+  [33X[1;0Y[29X[2XRingEpimorphismOfClosedSuperset[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg ring map[133X
+  
+  [33X[0;0YReturn the ring epimorphism from the coordinate ring of the ambient space of
+  [3XA[103X onto the coordinate ring of the closure of [3XA[103X in its ambient space.[133X
+  
+  [1X1.5-7 RingEpimorphismOfClosure[101X
+  
+  [33X[1;0Y[29X[2XRingEpimorphismOfClosure[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg ring map[133X
+  
+  [33X[0;0YReturn the ring epimorphism from the coordinate ring of the ambient space of
+  [3XA[103X onto the coordinate ring of the closure of [3XA[103X in its ambient space.[133X
+  
+  [1X1.5-8 Pullback[101X
+  
+  [33X[1;0Y[29X[2XPullback[102X( [3Xphi[103X, [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a thin category[133X
+  
+  [33X[0;0YPullback [3XA[103X along the morphism defined by the ring homomorphism [3Xphi[103X.[133X
+  
+  [1X1.5-9 EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset[101X
+  
+  [33X[1;0Y[29X[2XEmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a thin category[133X
+  
+  [33X[0;0YEmbed [3XA[103X by embedding a closed superset of it in a smaller ambient space.[133X
+  
+  [1X1.5-10 EmbedInSmallerAmbientSpace[101X
+  
+  [33X[1;0Y[29X[2XEmbedInSmallerAmbientSpace[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a thin category[133X
+  
+  [33X[0;0YEmbed [3XA[103X by embdeding its closure in a smaller ambient space.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpec( "[ 10, 15 ]", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XV( <10,15> )[128X[104X
+    [4X[25Xgap>[125X [27XStandardizeObject( A );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XV( <5> )[128X[104X
+    [4X[25Xgap>[125X [27XAe := EmbedInSmallerAmbientSpace( A );[127X[104X
+    [4X[28XV_{GF(5)}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Ae );[127X[104X
+    [4X[28XV( <> )[128X[104X
+    [4X[25Xgap>[125X [27XI := ClosedSubsetOfSpec( "[ 1 ]", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28XV( <1> )[128X[104X
+    [4X[25Xgap>[125X [27XIe := EmbedInSmallerAmbientSpace( I );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Ie );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XL := ClosedSubsetOfSpec( "[ 1 ]", Q );[127X[104X
+    [4X[28XV_{Q}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
+    [4X[28XV( <1> )[128X[104X
+    [4X[25Xgap>[125X [27XLe := EmbedInSmallerAmbientSpace( L );[127X[104X
+    [4X[28XV_{Q}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Le );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XR := HomalgRingOfIntegersInSingular( ) * "x";[127X[104X
+    [4X[28XZ[x][128X[104X
+    [4X[25Xgap>[125X [27XB := ClosedSubsetOfSpec( "[ 2, x^2+1 ]", R );[127X[104X
+    [4X[28XV_{Z[x]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( B );[127X[104X
+    [4X[28XV( <2,x^2+1> )[128X[104X
+    [4X[25Xgap>[125X [27XBe := EmbedInSmallerAmbientSpace( B );[127X[104X
+    [4X[28XV_{GF(2)}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Be );[127X[104X
+    [4X[28XV( <> )[128X[104X
+    [4X[25Xgap>[125X [27XC := ClosedSubsetOfSpec( "[ 2, x^2+x+1 ]", R );[127X[104X
+    [4X[28XV_{Z[x]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
+    [4X[28XV( <2,x^2+x+1> )[128X[104X
+    [4X[25Xgap>[125X [27XCe := EmbedInSmallerAmbientSpace( C );[127X[104X
+    [4X[28XV_{GF(2)[x]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Ce );[127X[104X
+    [4X[28XV( <x^2+x+1> )[128X[104X
+  [4X[32X[104X
+  
+  [1X1.5-11 AClosedSingleton[101X
+  
+  [33X[1;0Y[29X[2XAClosedSingleton[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a Zariski coframe[133X
+  
+  [33X[0;0YIf  [10XIsInitial[110X(  [3XA[103X ) = [10Xtrue[110X an error is raised. Otherwise a subset consisting
+  of single closed point of [3XA[103X is returned.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpec( "", Q );[127X[104X
+    [4X[28XV_{Q}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := AClosedSingleton( A );[127X[104X
+    [4X[28XV_{Q}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = p;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[1]", Q );[127X[104X
+    [4X[28XD_{Q}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := AClosedSingleton( A );[127X[104X
+    [4X[28XV_{Q}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = p;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X1.5-12 PseudoIteratorOfClosedSingletons[101X
+  
+  [33X[1;0Y[29X[2XPseudoIteratorOfClosedSingletons[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan iterator[133X
+  
+  [33X[0;0YReturns a pseudo-iterator (without repetition) of closed singletons of [3XA[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XF2 := HomalgRingOfIntegersInSingular( 2 );[127X[104X
+    [4X[28XGF(2)[128X[104X
+    [4X[25Xgap>[125X [27XF2t := F2 * "t";[127X[104X
+    [4X[28XGF(2)[t][128X[104X
+    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpec( "[ 0 ]", F2t );[127X[104X
+    [4X[28XV_{GF(2)[t]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xiter := PseudoIteratorOfClosedSingletons( A );[127X[104X
+    [4X[28X<iterator of closed singletons of V_{GF(2)[t]}( <...> )>[128X[104X
+    [4X[25Xgap>[125X [27Xiter2 := ShallowCopy( iter );[127X[104X
+    [4X[28X<iterator of closed singletons of V_{GF(2)[t]}( <...> )>[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );[127X[104X
+    [4X[28XV_{GF(2)[t]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t> )[128X[104X
+    [4X[25Xgap>[125X [27Xiter;[127X[104X
+    [4X[28X<iterator of closed singletons of V_{GF(2)[t]}( I ) \ V_{GF(2)[t]}( J )>[128X[104X
+    [4X[25Xgap>[125X [27Xiter2;[127X[104X
+    [4X[28X<iterator of closed singletons of V_{GF(2)[t]}( <...> )>[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );[127X[104X
+    [4X[28XV_{GF(2)[t]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );[127X[104X
+    [4X[28XV_{GF(2)[t]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^2+t+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );[127X[104X
+    [4X[28XV_{GF(2)[t]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^4+t+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );;[127X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^4+t^3+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );;[127X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X5[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^5+t^4+t^2+t+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );;[127X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^3+t+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );;[127X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X3[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^3+t^2+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );;[127X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^7+t^6+t^4+t^2+1> )[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );;[127X[104X
+    [4X[25Xgap>[125X [27XDegree( p );[127X[104X
+    [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <t^7+t^5+t^4+t^3+t^2+t+1> )[128X[104X
+    [4X[25Xgap>[125X [27XList( [ 1 .. 20 ], a -> Degree( NextIterator( iter2 ) ) );[127X[104X
+    [4X[28X[ 1, 1, 2, 4, 4, 5, 3, 3, 7, 7, 7, 8, 8, 60, 4, 5, 7, 13, 20, 5 ][128X[104X
+    [4X[25Xgap>[125X [27XList( [ 1 .. 10 ], a -> Degree( NextIterator( iter2 ) ) );[127X[104X
+    [4X[28X[ 43, 5, 6, 5, 8, 9, 73, 12, 8, 14 ][128X[104X
+  [4X[32X[104X
+  
+  [1X1.5-13 RingEpimorphismOfAClosedPoint[101X
+  
+  [33X[1;0Y[29X[2XRingEpimorphismOfAClosedPoint[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg ring map[133X
+  
+  [33X[0;0YReturn  the ring epimorphism from the coordinate ring of the closure of [3XA[103X in
+  its ambient space onto the residue field of a closed point of [3XA[103X.[133X
+  
+  [1X1.5-14 AClosedPoint[101X
+  
+  [33X[1;0Y[29X[2XAClosedPoint[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
+  
+  [33X[0;0YIf [10XIsInitial[110X( [3XA[103X ) = [10Xtrue[110X an error is raised. Otherwise a single closed point
+  of [3XA[103X is returned.[133X
+  
+  [1X1.5-15 PseudoIteratorOfClosedPoints[101X
+  
+  [33X[1;0Y[29X[2XPseudoIteratorOfClosedPoints[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan iterator[133X
+  
+  [33X[0;0YReturns a pseudo-iterator (without repetition) of closed points of [3XA[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XT := ClosedSubsetOfSpec( "", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XV( <> )[128X[104X
+    [4X[25Xgap>[125X [27Xiter := PseudoIteratorOfClosedPoints( T );[127X[104X
+    [4X[28X<iterator of closed points of V_{Z}( <...> )>[128X[104X
+    [4X[25Xgap>[125X [27Xiter2 := ShallowCopy( iter );[127X[104X
+    [4X[28X<iterator of closed points of V_{Z}( <...> )>[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );[127X[104X
+    [4X[28X<An unevaluated 0 x 1 zero matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XHomalgRing( p );[127X[104X
+    [4X[28XGF(2)[128X[104X
+    [4X[25Xgap>[125X [27Xp := NextIterator( iter );; HomalgRing( p );[127X[104X
+    [4X[28XGF(3)[128X[104X
+    [4X[25Xgap>[125X [27Xiter;[127X[104X
+    [4X[28X<iterator of closed points of V_{Z}( I ) \ V_{Z}( J )>[128X[104X
+    [4X[25Xgap>[125X [27XList( [ 1 .. 10 ], i -> HomalgRing( NextIterator( iter2 ) ) );[127X[104X
+    [4X[28X[ GF(2), GF(3), GF(5), GF(7), GF(11), GF(13), GF(17), GF(19), GF(23), GF(29) ][128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XR := Q * "t";[127X[104X
+    [4X[28XQ[t][128X[104X
+    [4X[25Xgap>[125X [27XV := ClosedSubsetOfSpec( "t^2-t", R );[127X[104X
+    [4X[28XV_{Q[t]}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27Xitr := PseudoIteratorOfClosedPoints( V );[127X[104X
+    [4X[28X<iterator of closed points of V_{Q[t]}( <...> )>[128X[104X
+    [4X[25Xgap>[125X [27XIsDoneIterator( itr );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xa := NextIterator( itr );[127X[104X
+    [4X[28X<An unevaluated 1 x 1 zero matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( a );[127X[104X
+    [4X[28X0[128X[104X
+    [4X[25Xgap>[125X [27XHomalgRing( a );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27Xb := NextIterator( itr );[127X[104X
+    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XHomalgRing( b );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XIsDoneIterator( itr );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  

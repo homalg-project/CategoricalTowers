@@ -1,0 +1,78 @@
+  
+  [1X3 [33X[0;0YCoframes of Zariski closed subsets[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X3.1-1 IsZariskiCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsZariskiCoframe[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of Zariski coframes.[133X
+  
+  [1X3.1-2 IsObjectInZariskiCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInZariskiCoframe[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a Zariski coframe.[133X
+  
+  [1X3.1-3 IsMorphismInZariskiCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInZariskiCoframe[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a Zariski coframe.[133X
+  
+  
+  [1X3.2 [33X[0;0YProperties[133X[101X
+  
+  [1X3.2-1 IsIrreducibleObjectInZariskiCoframe[101X
+  
+  [33X[1;0Y[29X[2XIsIrreducibleObjectInZariskiCoframe[102X( [3XA[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCheck if [3XA[103X is irreducible or not. A shorthand ist [10XIsIrreducible[110X( [3XA[103X ).[133X
+  
+  
+  [1X3.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X3.3-1 Dimension[101X
+  
+  [33X[1;0Y[29X[2XDimension[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe dimension of [3XA[103X.[133X
+  
+  [1X3.3-2 FactorizeObject[101X
+  
+  [33X[1;0Y[29X[2XFactorizeObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer an object in a Zariski coframe.[133X
+  
+  [33X[0;0YThe degree of [3XA[103X. The factored object of [3XA[103X.[133X
+  
+  [1X3.3-3 IrreducibleComponents[101X
+  
+  [33X[1;0Y[29X[2XIrreducibleComponents[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe list of irreducible components of [3XA[103X.[133X
+  
+  
+  [1X3.4 [33X[0;0YOperations[133X[101X
+  
+  [1X3.4-1 \[\][101X
+  
+  [33X[1;0Y[29X[2X\[\][102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a Zariski coframe[133X
+  
+  [33X[0;0YThe [3Xi[103X-th irreducible component of [3XA[103X.[133X
+  
+  [1X3.4-2 KnownFactors[101X
+  
+  [33X[1;0Y[29X[2XKnownFactors[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe list of currently known factors of [3XA[103X.[133X
+  

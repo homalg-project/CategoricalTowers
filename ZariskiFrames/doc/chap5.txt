@@ -1,0 +1,388 @@
+  
+  [1X5 [33X[0;0YThe frame of Zariski open subsets in an affine variety[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X5.1-1 IsZariskiFrameOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsZariskiFrameOfAnAffineVariety[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of Zariski frames of an affine variety.[133X
+  
+  [1X5.1-2 IsObjectInZariskiFrameOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInZariskiFrameOfAnAffineVariety[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a Zariski frame of an affine variety.[133X
+  
+  [1X5.1-3 IsMorphismInZariskiFrameOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInZariskiFrameOfAnAffineVariety[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a Zariski frame of an affine variety.[133X
+  
+  
+  [1X5.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X5.2-1 ZariskiFrameOfAffineSpectrum[101X
+  
+  [33X[1;0Y[29X[2XZariskiFrameOfAffineSpectrum[102X( [3XR[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct the Zariski frame of open sets in an affine variety defined as the
+  complements of vanishing loci of (radical) ideals of a [5Xhomalg[105X ring [3XR[103X.[133X
+  
+  [1X5.2-2 OpenSubsetOfSpec[101X
+  
+  [33X[1;0Y[29X[2XOpenSubsetOfSpec[102X( [3Xmat[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpec[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpec[102X( [3Xr[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByListOfColumns[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YConstruct  a  Zariski open subset (as an object in the Zariski frame of open
+  subsets  in  an  affine  variety)  from  a  matrix  [3Xmat[103X.  The  result is the
+  non-support  of  the module-theoretic cokernel [22XM[122X of [3Xmat[103X viewed as a morphism
+  in  the  Freyd category of the associated category of rows, i.e., the result
+  is the complement of the vanishing locus of the annihilator of [22XM[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( ZZ );[127X[104X
+    [4X[28XThe frame of Zariski open subsets of the affine spectrum of Z[128X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XD( <4> )[128X[104X
+    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ 12 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XD( <2> )[128X[104X
+    [4X[25Xgap>[125X [27XA = C;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLCA := LocallyClosedPart( A );[127X[104X
+    [4X[28XV_{Z}( I ) \ V_{Z}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( LCA );[127X[104X
+    [4X[28XV( <> ) \ V( <2> )[128X[104X
+    [4X[25Xgap>[125X [27XembAB := UniqueMorphism( A, B );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( embAB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XembAC := UniqueMorphism( A, C );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAC );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XembDA := UniqueMorphism( D, A );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embDA );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSubset( A, D );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( embDA );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XembAD := UniqueMorphism( A, D );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAD );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSubset( D, A );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( ZF );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XD( <1> )[128X[104X
+    [4X[25Xgap>[125X [27XI := InitialObject( ZF );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[ 4 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XD( <4> )[128X[104X
+    [4X[25Xgap>[125X [27XAvC := Coproduct( A, C );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AvC );[127X[104X
+    [4X[28XD( <4,3> )[128X[104X
+    [4X[25Xgap>[125X [27XAvC = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AvC );[127X[104X
+    [4X[28XD( <1> )[128X[104X
+    [4X[25Xgap>[125X [27XAC := DirectProduct( A, C );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AC );[127X[104X
+    [4X[28X{ D( <4> ) ∩ D( <3> ) }[128X[104X
+    [4X[25Xgap>[125X [27XStandardizeObject( AC );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AC );[127X[104X
+    [4X[28X{ D( <2> ) ∩ D( <3> ) }[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( I, T ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( A, T ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( T, T ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( T, A ) = A;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( T, I ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( A, I ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( I, I ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( D, B ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( B, D ) = C;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( D, C ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( C, D ) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xth := UniqueMorphism( DirectProduct( A, C ), C );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialAdjunctionMap( A, C, th );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( th );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xht := UniqueMorphism( A, ExponentialOnObjects( D, B ) );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductAdjunctionMap( D, B, ht );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( ht );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianPreComposeMorphism( A, C, D ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianPreComposeMorphism( A, C, D ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xp := AClosedSingleton( D );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <5> )[128X[104X
+    [4X[25Xgap>[125X [27Xq := AClosedSingleton( D - p );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( q );[127X[104X
+    [4X[28XV( <7> )[128X[104X
+    [4X[25Xgap>[125X [27Xp + q = D;[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XZF := ZariskiFrameOfAffineSpectrum( ZZ );[127X[104X
+    [4X[28XThe frame of Zariski open subsets of the affine spectrum of Z[128X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XD( <4> )[128X[104X
+    [4X[25Xgap>[125X [27XB := OpenSubsetOfSpec( "[ 12,20 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XC := OpenSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XD := OpenSubsetOfSpec( "[ 12 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XD( <2> )[128X[104X
+    [4X[25Xgap>[125X [27XA = C;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLCA := LocallyClosedPart( A );[127X[104X
+    [4X[28XV_{Z}( I ) \ V_{Z}( J )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( LCA );[127X[104X
+    [4X[28XV( <> ) \ V( <2> )[128X[104X
+    [4X[25Xgap>[125X [27XembAB := UniqueMorphism( A, B );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( embAB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XembAC := UniqueMorphism( A, C );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAC );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XembDA := UniqueMorphism( D, A );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embDA );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSubset( A, D );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( embDA );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XembAD := UniqueMorphism( A, D );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAD );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSubset( D, A );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( ZF );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XD( <1> )[128X[104X
+    [4X[25Xgap>[125X [27XI := InitialObject( ZF );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XA := OpenSubsetOfSpec( "[ 4 ]", ZZ );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XD( <4> )[128X[104X
+    [4X[25Xgap>[125X [27XAvC := Coproduct( A, C );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AvC );[127X[104X
+    [4X[28XD( <4,3> )[128X[104X
+    [4X[25Xgap>[125X [27XAvC = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AvC );[127X[104X
+    [4X[28XD( <1> )[128X[104X
+    [4X[25Xgap>[125X [27XAC := DirectProduct( A, C );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AC );[127X[104X
+    [4X[28X{ D( <4> ) ∩ D( <3> ) }[128X[104X
+    [4X[25Xgap>[125X [27XStandardizeObject( AC );[127X[104X
+    [4X[28XD_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AC );[127X[104X
+    [4X[28X{ D( <2> ) ∩ D( <3> ) }[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( I, T ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( A, T ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( T, T ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( T, A ) = A;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( T, I ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( A, I ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( I, I ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( D, B ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( B, D ) = C;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( D, C ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XExponentialOnObjects( C, D ) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( A, C ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianEvaluationMorphism( C, A ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( A, D ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianCoevaluationMorphism( D, A ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xth := UniqueMorphism( DirectProduct( A, C ), C );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xth := DirectProductToExponentialAdjunctionMap( A, C, th );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( th );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( th );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xht := UniqueMorphism( A, ExponentialOnObjects( D, B ) );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xht := ExponentialToDirectProductAdjunctionMap( D, B, ht );[127X[104X
+    [4X[28X<An epi-, monomorphism in The frame of Zariski open subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( ht );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( ht );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CartesianPreComposeMorphism( A, C, D ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( CartesianPreComposeMorphism( A, C, D ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xp := AClosedSingleton( D );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <5> )[128X[104X
+    [4X[25Xgap>[125X [27Xq := AClosedSingleton( D - p );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( q );[127X[104X
+    [4X[28XV( <7> )[128X[104X
+    [4X[25Xgap>[125X [27Xp + q = D;[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [1X5.2-3 OpenSubsetOfSpecByRadicalColumn[101X
+  
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByRadicalColumn[102X( [3XI[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByRadicalColumn[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByRadicalColumn[102X( [3Xr[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByListOfRadicalColumns[102X( [3XL[103X ) [32X operation[133X
+  
+  [33X[0;0Y[10XOpenSubsetOfSpecByRadicalColumn[110X assumes that the image is a radical ideal.[133X
+  
+  [1X5.2-4 OpenSubsetOfSpecByStandardColumn[101X
+  
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByStandardColumn[102X( [3XI[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByStandardColumn[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XOpenSubsetOfSpecByStandardColumn[102X( [3Xr[103X ) [32X operation[133X
+  
+  [33X[0;0Y[10XOpenSubsetOfSpecByStandardColumn[110X  assumes  that the image is a radical ideal
+  given by some sort of a [21Xstandard[121X basis.[133X
+  

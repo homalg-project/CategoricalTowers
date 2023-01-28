@@ -1,0 +1,155 @@
+  
+  
+  [1XIndex[101X
+  
+  [2X\[\][102X, for IsObjectInZariskiCoframe, IsInt 3.4-1 
+  [2XAClosedPoint[102X, for IsObjectInThinCategory 1.5-14 
+  [2XAClosedSingleton[102X, for IsObjectInThinCategory 1.5-11 
+  [2XAClosedSuperset[102X, for IsObjectInThinCategory 1.5-1 
+  [2XAffineApproximation[102X, for IsObjectInThinCategory 1.4-12 
+  [2XAsDifferenceOfClosed[102X, for IsObjectInZariskiFrame 2.2-4 
+  [2XBaseOfFibration[102X, for IsObjectInZariskiFrameOrCoframe 1.4-3 
+      for IsZariskiFrameOrCoframe 1.4-2 
+  [2XBestUnderlyingColumn[102X, for IsObjectInZariskiFrameOrCoframe 1.5-2 
+  [2XCanonicalObject[102X, for IsObjectInZariskiFrameOrCoframe 1.4-13 
+  [2XClosedSubsetOfBaseWithFreeFibersOverComplement[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 7.2-13 
+  [2XClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 7.2-12 
+  [2XClosedSubsetOfProj[102X, for IsHomalgMatrix 10.3-2 
+      for IsString, IsHomalgRing 10.3-2 
+  [2XClosedSubsetOfProjByListOfColumns[102X, for IsList 10.3-2 
+  [2XClosedSubsetOfProjByRadicalColumn[102X, for IsHomalgMatrix 10.3-3 
+      for IsString, IsHomalgRing 10.3-3 
+  [2XClosedSubsetOfProjByStandardColumn[102X, for IsHomalgMatrix 10.3-4 
+      for IsString, IsHomalgRing 10.3-4 
+  [2XClosedSubsetOfSpec[102X, for IsHomalgMatrix 6.2-2 
+      for IsHomalgRingElement 6.2-2 
+      for IsString, IsHomalgRing 6.2-2 
+  [2XClosedSubsetOfSpecByListOfColumns[102X, for IsList 6.2-2 
+  [2XClosedSubsetOfSpecByListOfRadicalColumns[102X, for IsList 6.2-2 
+  [2XClosedSubsetOfSpecByRadicalColumn[102X, for IsHomalgMatrix 6.2-3 
+      for IsHomalgRingElement 6.2-3 
+      for IsString, IsHomalgRing 6.2-3 
+  [2XClosedSubsetOfSpecByStandardColumn[102X, for IsHomalgMatrix 6.2-4 
+      for IsHomalgRingElement 6.2-4 
+      for IsString, IsHomalgRing 6.2-4 
+  [2XClosedSubsetWithGenericallyZeroDimensionalFibers[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix 7.2-11 
+  [2XClosedSubsetWithGenericallyZeroDimensionalFibersOnComponentOfProjection[102X, for IsObjectInZariskiCoframe 12.2-2 
+  [2XClosure[102X, for IsObjectInZariskiFrameOrCoframe 1.4-4 
+  [2XClosureOfImage[102X, for IsHomalgRingMap 7.1-4 
+  [2XClosureOfProjection[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 7.1-3 
+  [2XComplementAsClosedSubset[102X, for IsObjectInZariskiFrame 2.2-3 
+  [2XConstructibleImage[102X, for IsHomalgRingMap 12.2-8 
+  [2XConstructibleProjection[102X, for IsObjectInThinCategory 12.2-7 
+  [2XDecreaseCodimensionByFixingVariables[102X, for IsObjectInZariskiCoframe 12.2-1 
+  [2XDegreeOfComplement[102X, for IsObjectInZariskiFrame 2.2-2 
+  [2XDimension[102X, for IsObjectInZariskiCoframe 3.3-1 
+  [2XDimensionOfComplement[102X, for IsObjectInZariskiFrame 2.2-1 
+  [2XDimensionsOfFibrationAtClosedPoint[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix 7.2-7 
+      for IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList 7.2-8 
+  [2XDistinguishedLocallyClosedPart[102X, for IsConstructibleObject 1.4-11 
+      for IsObjectInMeetSemilatticeOfDifferences 1.4-10 
+      for IsObjectInZariskiFrameOrCoframe 1.4-9 
+  [2XDistinguishedQuasiAffineSet[102X, for IsList 4.2-1 
+      for IsList, IsList 4.2-1 
+      for IsList, IsList, IsHomalgRing, IsObject 4.2-1 
+      for IsList, IsList, IsObject 4.2-1 
+  [2XEmbeddedComplementOfTangentSpaceOfFiberAtPoint[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix 7.2-9 
+      for IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList 7.2-10 
+  [2XEmbedInSmallerAmbientSpace[102X, for IsObjectInThinCategory 1.5-10 
+  [2XEmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset[102X, for IsObjectInThinCategory 1.5-9 
+  [2XFactorizeObject[102X, for IsObjectInZariskiCoframe 3.3-2 
+  [2XFiberOfProjectionOverBasePoint[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix 7.2-3 
+      for IsObjectInZariskiCoframeOfAnAffineVariety, IsList 7.2-4 
+  [2XFunctorClosedProjectionBetweenZariskiCoframes[102X, for IsCapCategory 11.1-2 
+  [2XFunctorClosureOfProjectionBetweenZariskiCoframes[102X, for IsCapCategory 7.1-2 
+  [2XFunctorPreimageOfProjectionBetweenZariskiCoframes[102X, for IsCapCategory 7.1-5 
+  [2XGraphOfRingMorphism[102X, for IsHomalgRingMap 7.1-1 
+  [2XImageOfProjection[102X, for IsObjectInZariskiCoframeOfAProjectiveVariety 11.1-3 
+  [2XInfoConstructibleImage[102X 12.1-1 
+  [2XInfoZariskiFrames[102X 1.1-1 
+  [2XIrreducibleComponents[102X, for IsObjectInZariskiCoframe 3.3-3 
+  [2XIsClosed[102X, for IsObjectInZariskiFrameOrCoframe 1.3-2 
+  [2XIsIrreducibleObjectInZariskiCoframe[102X, for IsObjectInZariskiCoframe 3.2-1 
+  [2XIsMorphismInZariskiCoframe[102X, for IsMorphismInZariskiFrameOrCoframe 3.1-3 
+  [2XIsMorphismInZariskiCoframeOfAnAffineVariety[102X, for IsMorphismInZariskiCoframe andIsMorphismInZariskiFrameOrCoframeOfAnAffineVariety 6.1-3 
+  [2XIsMorphismInZariskiCoframeOfAProjectiveVariety[102X, for IsMorphismInZariskiCoframe andIsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety 10.1-3 
+  [2XIsMorphismInZariskiFrame[102X, for IsMorphismInZariskiFrameOrCoframe 2.1-3 
+  [2XIsMorphismInZariskiFrameOfAnAffineVariety[102X, for IsMorphismInZariskiFrame andIsMorphismInZariskiFrameOrCoframeOfAnAffineVariety 5.1-3 
+  [2XIsMorphismInZariskiFrameOfAProjectiveVariety[102X, for IsMorphismInZariskiFrame andIsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety 9.1-3 
+  [2XIsMorphismInZariskiFrameOrCoframe[102X, for IsMorphismInThinCategory 1.2-3 
+  [2XIsMorphismInZariskiFrameOrCoframeOfAnAffineVariety[102X, for IsMorphismInZariskiFrameOrCoframe 4.1-2 
+  [2XIsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety[102X, for IsMorphismInZariskiFrameOrCoframe 8.1-2 
+  [2XIsObjectInZariskiCoframe[102X, for IsObjectInZariskiFrameOrCoframe and IsClosedSubobject 3.1-2 
+  [2XIsObjectInZariskiCoframeOfAnAffineVariety[102X, for IsObjectInZariskiCoframe andIsObjectInZariskiFrameOrCoframeOfAnAffineVariety 6.1-2 
+  [2XIsObjectInZariskiCoframeOfAProjectiveVariety[102X, for IsObjectInZariskiCoframe andIsObjectInZariskiFrameOrCoframeOfAProjectiveVariety 10.1-2 
+  [2XIsObjectInZariskiFrame[102X, for IsObjectInZariskiFrameOrCoframe and IsOpen 2.1-2 
+  [2XIsObjectInZariskiFrameOfAnAffineVariety[102X, for IsObjectInZariskiFrame andIsObjectInZariskiFrameOrCoframeOfAnAffineVariety 5.1-2 
+  [2XIsObjectInZariskiFrameOfAProjectiveVariety[102X, for IsObjectInZariskiFrame andIsObjectInZariskiFrameOrCoframeOfAProjectiveVariety 9.1-2 
+  [2XIsObjectInZariskiFrameOrCoframe[102X, for IsObjectInThinCategory 1.2-2 
+  [2XIsObjectInZariskiFrameOrCoframeOfAnAffineVariety[102X, for IsObjectInZariskiFrameOrCoframe 4.1-1 
+  [2XIsObjectInZariskiFrameOrCoframeOfAProjectiveVariety[102X, for IsObjectInZariskiFrameOrCoframe 8.1-1 
+  [2XIsOpen[102X, for IsObjectInZariskiFrameOrCoframe 1.3-1 
+  [2XIsSubset[102X, for IsObjectInZariskiFrameOrCoframe, IsObjectInZariskiFrameOrCoframe 1.5-5 
+  [2XIsZariskiCoframe[102X, for IsZariskiFrameOrCoframe 3.1-1 
+  [2XIsZariskiCoframeOfAnAffineVariety[102X, for IsZariskiCoframe 6.1-1 
+  [2XIsZariskiCoframeOfAProjectiveVariety[102X, for IsZariskiCoframe 10.1-1 
+  [2XIsZariskiFrame[102X, for IsZariskiFrameOrCoframe 2.1-1 
+  [2XIsZariskiFrameOfAnAffineVariety[102X, for IsZariskiFrame 5.1-1 
+  [2XIsZariskiFrameOfAProjectiveVariety[102X, for IsZariskiFrame 9.1-1 
+  [2XIsZariskiFrameOrCoframe[102X, for IsCapCategory and IsDistributiveLattice 1.2-1 
+  [2XKnownFactors[102X, for IsObjectInZariskiCoframe 3.4-2 
+  [2XLocallyClosedApproximationOfImage[102X, for IsHomalgRingMap 12.2-4 
+  [2XLocallyClosedApproximationOfImageViaGenericFreeness[102X, for IsHomalgRingMap 12.2-6 
+  [2XLocallyClosedApproximationOfProjection[102X, for IsObjectInZariskiCoframe 12.2-3 
+  [2XLocallyClosedApproximationOfProjectionViaGenericFreeness[102X, for IsObjectInZariskiCoframe 12.2-5 
+  [2XLocallyClosedPart[102X, for IsObjectInZariskiFrameOrCoframe 1.4-8 
+  [2XNormalizeObject[102X, for IsObjectInZariskiFrameOrCoframe 1.5-3 
+  [2XOpenSubsetOfProj[102X, for IsHomalgMatrix 9.2-2 
+      for IsString, IsHomalgRing 9.2-2 
+  [2XOpenSubsetOfProjByListOfColumns[102X, for IsList 9.2-2 
+  [2XOpenSubsetOfProjByRadicalColumn[102X, for IsHomalgMatrix 9.2-3 
+      for IsString, IsHomalgRing 9.2-3 
+  [2XOpenSubsetOfProjByStandardColumn[102X, for IsHomalgMatrix 9.2-4 
+      for IsString, IsHomalgRing 9.2-4 
+  [2XOpenSubsetOfSpec[102X, for IsHomalgMatrix 5.2-2 
+      for IsHomalgRingElement 5.2-2 
+      for IsString, IsHomalgRing 5.2-2 
+  [2XOpenSubsetOfSpecByListOfColumns[102X, for IsList 5.2-2 
+  [2XOpenSubsetOfSpecByListOfRadicalColumns[102X, for IsList 5.2-3 
+  [2XOpenSubsetOfSpecByRadicalColumn[102X, for IsHomalgMatrix 5.2-3 
+      for IsHomalgRingElement 5.2-3 
+      for IsString, IsHomalgRing 5.2-3 
+  [2XOpenSubsetOfSpecByStandardColumn[102X, for IsHomalgMatrix 5.2-4 
+      for IsHomalgRingElement 5.2-4 
+      for IsString, IsHomalgRing 5.2-4 
+  [2XParametrizedObject[102X, for IsConstructibleObject 1.4-7 
+      for IsObjectInMeetSemilatticeOfDifferences 1.4-6 
+      for IsObjectInZariskiFrameOrCoframe 1.4-5 
+  [2XPointsAtInfinityOfFiberwiseProjectiveClosure[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 11.1-1 
+  [2XPreimageOfProjection[102X, for IsHomalgRing, IsObjectInZariskiCoframeOfAnAffineVariety 7.2-1 
+      for IsObjectInZariskiCoframeOfAnAffineVariety, IsObjectInZariskiCoframeOfAnAffineVariety 7.2-2 
+  [2XProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure[102X, for IsObjectInZariskiCoframeOfAnAffineVariety 11.1-4 
+  [2XPseudoIteratorOfClosedPoints[102X, for IsObjectInThinCategory 1.5-15 
+  [2XPseudoIteratorOfClosedSingletons[102X, for IsObjectInThinCategory 1.5-12 
+  [2XPullback[102X, for IsHomalgRingMap, IsObjectInThinCategory 1.5-8 
+  [2XRabinowitschCover[102X, for IsObjectInMeetSemilatticeOfDifferences 1.4-14 
+  [2XRingEpimorphismOfAClosedPoint[102X, for IsObjectInThinCategory 1.5-13 
+  [2XRingEpimorphismOfClosedSuperset[102X, for IsObjectInThinCategory 1.5-6 
+  [2XRingEpimorphismOfClosure[102X, for IsObjectInThinCategory 1.5-7 
+  [2XSaturatedUnderlyingColumn[102X, for IsObjectInZariskiFrameOrCoframe 8.1-4 
+  [2XStandardizeObject[102X, for IsObjectInZariskiFrameOrCoframe 1.5-4 
+  [2XTangentSpaceAtPoint[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix 6.2-5 
+      for IsObjectInZariskiCoframeOfAnAffineVariety, IsList 6.2-6 
+  [2XTangentSpaceOfFiberAtPoint[102X, for IsObjectInZariskiCoframeOfAnAffineVariety, IsHomalgMatrix, IsHomalgMatrix 7.2-5 
+      for IsObjectInZariskiCoframeOfAnAffineVariety, IsList, IsList 7.2-6 
+  [2XUnderlyingClosedSubsetOfSpec[102X, for IsObjectInZariskiCoframeOfAProjectiveVariety 10.2-1 
+  [2XUnderlyingListOfSaturatedColumns[102X, for IsObjectInZariskiFrameOrCoframe 8.1-3 
+  [2XUnderlyingRing[102X, for IsObjectInZariskiFrameOrCoframe 1.4-1 
+  [2XVisualize[102X, for IsConstructibleObject 12.2-9 
+  [2XZariskiCoframeOfAffineSpectrum[102X, for IsHomalgRing 6.2-1 
+  [2XZariskiCoframeOfProj[102X, for IsHomalgRing 10.3-1 
+  [2XZariskiFrameOfAffineSpectrum[102X, for IsHomalgRing 5.2-1 
+  [2XZariskiFrameOfProj[102X, for IsHomalgRing 9.2-1 
+  
+  
+  -------------------------------------------------------

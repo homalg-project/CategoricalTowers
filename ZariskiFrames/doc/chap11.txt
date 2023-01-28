@@ -1,0 +1,22 @@
+  
+  [1X11 [33X[0;0YRelative projective varieties[133X[101X
+  
+  
+  [1X11.1 [33X[0;0YAttributes[133X[101X
+  
+  [1X11.1-1 PointsAtInfinityOfFiberwiseProjectiveClosure[101X
+  
+  [33X[1;0Y[29X[2XPointsAtInfinityOfFiberwiseProjectiveClosure[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X11.1-2 FunctorClosedProjectionBetweenZariskiCoframes[101X
+  
+  [33X[1;0Y[29X[2XFunctorClosedProjectionBetweenZariskiCoframes[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X11.1-3 ImageOfProjection[101X
+  
+  [33X[1;0Y[29X[2XImageOfProjection[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X11.1-4 ProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure[101X
+  
+  [33X[1;0Y[29X[2XProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure[102X( [3Xarg[103X ) [32X attribute[133X
+  

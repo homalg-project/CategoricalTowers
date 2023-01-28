@@ -1,0 +1,40 @@
+  
+  [1X4 [33X[0;0Y(Co)frames/Locales of Zariski closed/open subsets in affine varieties[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X4.1-1 IsObjectInZariskiFrameOrCoframeOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInZariskiFrameOrCoframeOfAnAffineVariety[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  objects  in  a Zariski frame or coframe of an affine
+  variety.[133X
+  
+  [1X4.1-2 IsMorphismInZariskiFrameOrCoframeOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInZariskiFrameOrCoframeOfAnAffineVariety[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  morphisms in a Zariski frame or coframe of an affine
+  variety.[133X
+  
+  
+  [1X4.2 [33X[0;0YOperatoins[133X[101X
+  
+  [1X4.2-1 DistinguishedQuasiAffineSet[101X
+  
+  [33X[1;0Y[29X[2XDistinguishedQuasiAffineSet[102X( [3Xeqs[103X, [3Xineqs[103X, [3XR[103X, [3Xpoint_emb[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDistinguishedQuasiAffineSet[102X( [3Xeqs[103X, [3Xineqs[103X, [3Xpoint_emb[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDistinguishedQuasiAffineSet[102X( [3Xeqs[103X, [3Xineqs[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDistinguishedQuasiAffineSet[102X( [3Xeqs_ineqs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a meet-semilattice of formal multiple differences[133X
+  
+  [33X[0;0YConstruct  a  distinguished  quasi-affine  set  [10XA[110X  defined by the set [3Xeqs[103X of
+  equations  and the set [3Xineqs[103X of inequations over the commutative unital ring
+  [3XR[103X.  A  quasi-affine  set is called distinguished if it is a difference of an
+  affine  set  and  a  hypersurface  (or,  equivalently,  hypersurfaces).  The
+  optional  object  [3Xpoint_emb[103X  is  an  object  parametrized by [10XA[110X and giving an
+  embedding/realization of the abstract points of [10XA[110X in some context.[133X
+  

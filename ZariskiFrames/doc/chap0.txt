@@ -1,0 +1,220 @@
+  
+  
+                                [1X ZariskiFrames [101X
+  
+  
+  [1X (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or
+                                toric varieties [101X
+  
+  
+                                   2022.10-01
+  
+  
+                                28 January 2023
+  
+  
+                                Mohamed Barakat
+  
+                                 Tom Kuhmichel
+  
+                             Markus Lange-Hegermann
+  
+  
+  
+  Mohamed Barakat
+      Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
+      Homepage: [7Xhttps://mohamed-barakat.github.io[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Tom Kuhmichel
+      Email:    [7Xmailto:tom.kuhmichel@student.uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/TKuh[107X
+      Address:  [33X[0;14YWalter-Flex-Str. 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Markus Lange-Hegermann
+      Email:    [7Xmailto:markus.lange-hegermann@th-owl.de[107X
+      Homepage: [7Xhttps://www.th-owl.de/eecs/fachbereich/team/markus-lange-hegermann/[107X
+      Address:  [33X[0;14YMarkus Lange-Hegermann[133X
+                [33X[0;14YHochschule Ostwestfalen-Lippe[133X
+                [33X[0;14YLiebigstraße 87[133X
+                [33X[0;14Y32657 Lemgo[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (ZariskiFrames)[101X
+  
+  1 [33X[0;0Y(Co)frames/Locales of Zariski closed/open subsets[133X
+    1.1 [33X[0;0YInfo Class[133X
+      1.1-1 InfoZariskiFrames
+    1.2 [33X[0;0YGAP Categories[133X
+      1.2-1 IsZariskiFrameOrCoframe
+      1.2-2 IsObjectInZariskiFrameOrCoframe
+      1.2-3 IsMorphismInZariskiFrameOrCoframe
+    1.3 [33X[0;0YProperties[133X
+      1.3-1 IsOpen
+      1.3-2 IsClosed
+    1.4 [33X[0;0YAttributes[133X
+      1.4-1 UnderlyingRing
+      1.4-2 BaseOfFibration
+      1.4-3 BaseOfFibration
+      1.4-4 Closure
+      1.4-5 ParametrizedObject
+      1.4-6 ParametrizedObject
+      1.4-7 ParametrizedObject
+      1.4-8 LocallyClosedPart
+      1.4-9 DistinguishedLocallyClosedPart
+      1.4-10 DistinguishedLocallyClosedPart
+      1.4-11 DistinguishedLocallyClosedPart
+      1.4-12 AffineApproximation
+      1.4-13 CanonicalObject
+      1.4-14 RabinowitschCover
+    1.5 [33X[0;0YOperations[133X
+      1.5-1 AClosedSuperset
+      1.5-2 BestUnderlyingColumn
+      1.5-3 NormalizeObject
+      1.5-4 StandardizeObject
+      1.5-5 IsSubset
+      1.5-6 RingEpimorphismOfClosedSuperset
+      1.5-7 RingEpimorphismOfClosure
+      1.5-8 Pullback
+      1.5-9 EmbedInSmallerAmbientSpaceByEmbeddingAClosedSuperset
+      1.5-10 EmbedInSmallerAmbientSpace
+      1.5-11 AClosedSingleton
+      1.5-12 PseudoIteratorOfClosedSingletons
+      1.5-13 RingEpimorphismOfAClosedPoint
+      1.5-14 AClosedPoint
+      1.5-15 PseudoIteratorOfClosedPoints
+  2 [33X[0;0YFrames of Zariski open subsets[133X
+    2.1 [33X[0;0YGAP Categories[133X
+      2.1-1 IsZariskiFrame
+      2.1-2 IsObjectInZariskiFrame
+      2.1-3 IsMorphismInZariskiFrame
+    2.2 [33X[0;0YAttributes[133X
+      2.2-1 DimensionOfComplement
+      2.2-2 DegreeOfComplement
+      2.2-3 ComplementAsClosedSubset
+      2.2-4 AsDifferenceOfClosed
+  3 [33X[0;0YCoframes of Zariski closed subsets[133X
+    3.1 [33X[0;0YGAP Categories[133X
+      3.1-1 IsZariskiCoframe
+      3.1-2 IsObjectInZariskiCoframe
+      3.1-3 IsMorphismInZariskiCoframe
+    3.2 [33X[0;0YProperties[133X
+      3.2-1 IsIrreducibleObjectInZariskiCoframe
+    3.3 [33X[0;0YAttributes[133X
+      3.3-1 Dimension
+      3.3-2 FactorizeObject
+      3.3-3 IrreducibleComponents
+    3.4 [33X[0;0YOperations[133X
+      3.4-1 \[\]
+      3.4-2 KnownFactors
+  4 [33X[0;0Y(Co)frames/Locales of Zariski closed/open subsets in affine varieties[133X
+    4.1 [33X[0;0YGAP Categories[133X
+      4.1-1 IsObjectInZariskiFrameOrCoframeOfAnAffineVariety
+      4.1-2 IsMorphismInZariskiFrameOrCoframeOfAnAffineVariety
+    4.2 [33X[0;0YOperatoins[133X
+      4.2-1 DistinguishedQuasiAffineSet
+  5 [33X[0;0YThe frame of Zariski open subsets in an affine variety[133X
+    5.1 [33X[0;0YGAP Categories[133X
+      5.1-1 IsZariskiFrameOfAnAffineVariety
+      5.1-2 IsObjectInZariskiFrameOfAnAffineVariety
+      5.1-3 IsMorphismInZariskiFrameOfAnAffineVariety
+    5.2 [33X[0;0YConstructors[133X
+      5.2-1 ZariskiFrameOfAffineSpectrum
+      5.2-2 OpenSubsetOfSpec
+      5.2-3 OpenSubsetOfSpecByRadicalColumn
+      5.2-4 OpenSubsetOfSpecByStandardColumn
+  6 [33X[0;0YThe coframe of Zariski closed subsets in an affine variety[133X
+    6.1 [33X[0;0YGAP Categories[133X
+      6.1-1 IsZariskiCoframeOfAnAffineVariety
+      6.1-2 IsObjectInZariskiCoframeOfAnAffineVariety
+      6.1-3 IsMorphismInZariskiCoframeOfAnAffineVariety
+    6.2 [33X[0;0YConstructors[133X
+      6.2-1 ZariskiCoframeOfAffineSpectrum
+      6.2-2 ClosedSubsetOfSpec
+      6.2-3 ClosedSubsetOfSpecByRadicalColumn
+      6.2-4 ClosedSubsetOfSpecByStandardColumn
+      6.2-5 TangentSpaceAtPoint
+      6.2-6 TangentSpaceAtPoint
+  7 [33X[0;0YRelative affine varieties[133X
+    7.1 [33X[0;0YAttributes[133X
+      7.1-1 GraphOfRingMorphism
+      7.1-2 FunctorClosureOfProjectionBetweenZariskiCoframes
+      7.1-3 ClosureOfProjection
+      7.1-4 ClosureOfImage
+      7.1-5 FunctorPreimageOfProjectionBetweenZariskiCoframes
+    7.2 [33X[0;0YOperations[133X
+      7.2-1 PreimageOfProjection
+      7.2-2 PreimageOfProjection
+      7.2-3 FiberOfProjectionOverBasePoint
+      7.2-4 FiberOfProjectionOverBasePoint
+      7.2-5 TangentSpaceOfFiberAtPoint
+      7.2-6 TangentSpaceOfFiberAtPoint
+      7.2-7 DimensionsOfFibrationAtClosedPoint
+      7.2-8 DimensionsOfFibrationAtClosedPoint
+      7.2-9 EmbeddedComplementOfTangentSpaceOfFiberAtPoint
+      7.2-10 EmbeddedComplementOfTangentSpaceOfFiberAtPoint
+      7.2-11 ClosedSubsetWithGenericallyZeroDimensionalFibers
+      7.2-12 ClosedSubsetOfBaseWithFreeFibersOverComplementOrEmpty
+      7.2-13 ClosedSubsetOfBaseWithFreeFibersOverComplement
+  8 [33X[0;0Y(Co)frames/Locales of Zariski closed/open subsets in projective varieties[133X
+    8.1 [33X[0;0YGAP Categories[133X
+      8.1-1 IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety
+      8.1-2 IsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety
+      8.1-3 UnderlyingListOfSaturatedColumns
+      8.1-4 SaturatedUnderlyingColumn
+  9 [33X[0;0YThe frame of Zariski open subsets in a projective variety[133X
+    9.1 [33X[0;0YGAP Categories[133X
+      9.1-1 IsZariskiFrameOfAProjectiveVariety
+      9.1-2 IsObjectInZariskiFrameOfAProjectiveVariety
+      9.1-3 IsMorphismInZariskiFrameOfAProjectiveVariety
+    9.2 [33X[0;0YConstructors[133X
+      9.2-1 ZariskiFrameOfProj
+      9.2-2 OpenSubsetOfProj
+      9.2-3 OpenSubsetOfProjByRadicalColumn
+      9.2-4 OpenSubsetOfProjByStandardColumn
+  10 [33X[0;0YThe coframe of Zariski closed subsets in a projective variety[133X
+    10.1 [33X[0;0YGAP Categories[133X
+      10.1-1 IsZariskiCoframeOfAProjectiveVariety
+      10.1-2 IsObjectInZariskiCoframeOfAProjectiveVariety
+      10.1-3 IsMorphismInZariskiCoframeOfAProjectiveVariety
+    10.2 [33X[0;0YAttributes[133X
+      10.2-1 UnderlyingClosedSubsetOfSpec
+    10.3 [33X[0;0YConstructors[133X
+      10.3-1 ZariskiCoframeOfProj
+      10.3-2 ClosedSubsetOfProj
+      10.3-3 ClosedSubsetOfProjByRadicalColumn
+      10.3-4 ClosedSubsetOfProjByStandardColumn
+  11 [33X[0;0YRelative projective varieties[133X
+    11.1 [33X[0;0YAttributes[133X
+      11.1-1 PointsAtInfinityOfFiberwiseProjectiveClosure
+      11.1-2 FunctorClosedProjectionBetweenZariskiCoframes
+      11.1-3 ImageOfProjection
+      11.1-4 ProjectionOfPointsAtInfinityOfFiberwiseProjectiveClosure
+  12 [33X[0;0YConstructible image[133X
+    12.1 [33X[0;0YInfo Class[133X
+      12.1-1 InfoConstructibleImage
+    12.2 [33X[0;0YOperations[133X
+      12.2-1 DecreaseCodimensionByFixingVariables
+      12.2-2 ClosedSubsetWithGenericallyZeroDimensionalFibersOnComponentOfProjection
+      12.2-3 LocallyClosedApproximationOfProjection
+      12.2-4 LocallyClosedApproximationOfImage
+      12.2-5 LocallyClosedApproximationOfProjectionViaGenericFreeness
+      12.2-6 LocallyClosedApproximationOfImageViaGenericFreeness
+      12.2-7 ConstructibleProjection
+      12.2-8 ConstructibleImage
+      12.2-9 Visualize
+  13 [33X[0;0YFurther examples[133X
+  
+  
+  [32X

@@ -1,0 +1,201 @@
+  
+  [1X6 [33X[0;0YThe coframe of Zariski closed subsets in an affine variety[133X[101X
+  
+  
+  [1X6.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X6.1-1 IsZariskiCoframeOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsZariskiCoframeOfAnAffineVariety[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of Zariski coframes of an affine variety.[133X
+  
+  [1X6.1-2 IsObjectInZariskiCoframeOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInZariskiCoframeOfAnAffineVariety[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a Zariski coframe of an affine variety.[133X
+  
+  [1X6.1-3 IsMorphismInZariskiCoframeOfAnAffineVariety[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInZariskiCoframeOfAnAffineVariety[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a Zariski coframe of an affine variety.[133X
+  
+  
+  [1X6.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X6.2-1 ZariskiCoframeOfAffineSpectrum[101X
+  
+  [33X[1;0Y[29X[2XZariskiCoframeOfAffineSpectrum[102X( [3XR[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct the Zariski coframe of closed sets in an affine variety defined as
+  the vanishing loci of (radical) ideals of a [5Xhomalg[105X ring [3XR[103X.[133X
+  
+  [1X6.2-2 ClosedSubsetOfSpec[101X
+  
+  [33X[1;0Y[29X[2XClosedSubsetOfSpec[102X( [3Xmat[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpec[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpec[102X( [3Xr[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByListOfColumns[102X( [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByListOfRadicalColumns[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YConstruct  a  Zariski  closed subset (as an object in the Zariski coframe of
+  closed  subsets  in  an affine variety) from a matrix [3Xmat[103X. The result is the
+  support  of  the  module-theoretic cokernel [22XM[122X of [3Xmat[103X viewed as a morphism in
+  the  Freyd  category of the associated category of rows, i.e., the result is
+  the vanishing locus of the annihilator of [22XM[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XZC := ZariskiCoframeOfAffineSpectrum( ZZ );[127X[104X
+    [4X[28XThe coframe of Zariski closed subsets of the affine spectrum of Z[128X[104X
+    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpec( HomalgMatrix( [ 4 ], 1, 1, ZZ ) );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XV( <4> )[128X[104X
+    [4X[25Xgap>[125X [27XB := ClosedSubsetOfSpec( "[ 12, 20 ]", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XC := ClosedSubsetOfSpecByRadicalColumn( "[ 3 ]", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XD := ClosedSubsetOfSpec( "[ 12 ]", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XA = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XV( <2> )[128X[104X
+    [4X[25Xgap>[125X [27XA = C;[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XLCA := LocallyClosedPart( A );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( LCA );[127X[104X
+    [4X[28XV( <2> )[128X[104X
+    [4X[25Xgap>[125X [27XA = LCA;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XembAB := UniqueMorphism( A, B );[127X[104X
+    [4X[28X<An epi-, monomorphism in The coframe of Zariski closed subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( embAB );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XembAC := UniqueMorphism( A, C );[127X[104X
+    [4X[28X<An epi-, monomorphism in The coframe of Zariski closed subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAC );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XembAD := UniqueMorphism( A, D );[127X[104X
+    [4X[28X<An epi-, monomorphism in The coframe of Zariski closed subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embAD );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSubset( D, A );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( embAD );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XembDA := UniqueMorphism( D, A );[127X[104X
+    [4X[28X<An epi-, monomorphism in The coframe of Zariski closed subsets of the\[128X[104X
+    [4X[28X affine spectrum of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( embDA );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSubset( A, D );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( ZC );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XV( <> )[128X[104X
+    [4X[25Xgap>[125X [27XI := InitialObject( ZC );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XA := ClosedSubsetOfSpec( "[ 4 ]", ZZ );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
+    [4X[28XV( <4> )[128X[104X
+    [4X[25Xgap>[125X [27XAvC := Coproduct( A, C );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AvC );[127X[104X
+    [4X[28X{ V( <4> ) ∪ V( <3> ) }[128X[104X
+    [4X[25Xgap>[125X [27XStandardizeObject( AvC );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AvC );[127X[104X
+    [4X[28X{ V( <2> ) ∪ V( <3> ) }[128X[104X
+    [4X[25Xgap>[125X [27XAC := DirectProduct( A, C );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AC );[127X[104X
+    [4X[28XV( <4,3> )[128X[104X
+    [4X[25Xgap>[125X [27XStandardizeObject( AC );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AC );[127X[104X
+    [4X[28X∅[128X[104X
+    [4X[25Xgap>[125X [27XDirectProduct( A, C ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( I, T ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( I, A ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( I, I ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( A, I ) = A;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( T, I ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( T, A ) = T;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( T, T ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( B, D ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( D, B ) = C;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( C, D ) = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCoexponentialOnObjects( D, C ) = B;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xp := AClosedSingleton( D );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p );[127X[104X
+    [4X[28XV( <2> )[128X[104X
+    [4X[25Xgap>[125X [27Xq := AClosedSingleton( D - p );[127X[104X
+    [4X[28XV_{Z}( <...> )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( q );[127X[104X
+    [4X[28XV( <3> )[128X[104X
+    [4X[25Xgap>[125X [27Xp + q = D;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X6.2-3 ClosedSubsetOfSpecByRadicalColumn[101X
+  
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByRadicalColumn[102X( [3XI[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByRadicalColumn[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByRadicalColumn[102X( [3Xr[103X ) [32X operation[133X
+  
+  [33X[0;0Y[10XClosedSubsetOfSpecByRadicalColumn[110X assumes that the image is a radical ideal.[133X
+  
+  [1X6.2-4 ClosedSubsetOfSpecByStandardColumn[101X
+  
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByStandardColumn[102X( [3XI[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByStandardColumn[102X( [3Xstr[103X, [3XR[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XClosedSubsetOfSpecByStandardColumn[102X( [3Xr[103X ) [32X operation[133X
+  
+  [33X[0;0Y[10XClosedSubsetOfSpecByStandardColumn[110X assumes that the image is a radical ideal
+  given by some sort of a [21Xstandard[121X basis.[133X
+  
+  [1X6.2-5 TangentSpaceAtPoint[101X
+  
+  [33X[1;0Y[29X[2XTangentSpaceAtPoint[102X( [3XV[103X, [3Xp[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a Zariski coframe[133X
+  
+  [33X[0;0YCompute  the  tangent space of [3XV[103X at the closed point [3Xp[103X as an affine subspace
+  of the ambient space of [3XV[103X intersecting [3Xp[103X.[133X
+  
+  [1X6.2-6 TangentSpaceAtPoint[101X
+  
+  [33X[1;0Y[29X[2XTangentSpaceAtPoint[102X( [3XV[103X, [3Xp[103X ) [32X operation[133X
+  

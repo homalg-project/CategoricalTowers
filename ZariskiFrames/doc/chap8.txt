@@ -1,0 +1,30 @@
+  
+  [1X8 [33X[0;0Y(Co)frames/Locales of Zariski closed/open subsets in projective varieties[133X[101X
+  
+  
+  [1X8.1 [33X[0;0YGAP Categories[133X[101X
+  
+  [1X8.1-1 IsObjectInZariskiFrameOrCoframeOfAProjectiveVariety[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInZariskiFrameOrCoframeOfAProjectiveVariety[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of objects in a Zariski frame or coframe of a projective
+  variety.[133X
+  
+  [1X8.1-2 IsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInZariskiFrameOrCoframeOfAProjectiveVariety[102X( [3Xmorphism[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X category of morphisms in a Zariski frame or coframe of a projective
+  variety.[133X
+  
+  [1X8.1-3 UnderlyingListOfSaturatedColumns[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingListOfSaturatedColumns[102X( [3Xarg[103X ) [32X attribute[133X
+  
+  [1X8.1-4 SaturatedUnderlyingColumn[101X
+  
+  [33X[1;0Y[29X[2XSaturatedUnderlyingColumn[102X( [3Xarg[103X ) [32X attribute[133X
+  
