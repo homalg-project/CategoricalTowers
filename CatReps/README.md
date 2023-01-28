@@ -3,7 +3,7 @@
 
 ### Representations and cohomology of finite categories
 
-| Documentation | Latest Release | Build Status | Code Coverage |
+| Documentation | Latest Release | Build Status of [CategoricalTowers](/../../) | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |
 | [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
@@ -92,33 +92,28 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 |--- | ---------- | ------- |
 | 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
 | 2. | [**CAP_project**](https://github.com/homalg-project/CAP_project#readme) | https://github.com/homalg-project/CAP_project.git |
-| 3. | [**CategoryConstructor**](https://github.com/homalg-project/CategoryConstructor#readme) | https://github.com/homalg-project/CategoryConstructor.git |
-| 4. | [**HigherHomologicalAlgebra**](https://github.com/homalg-project/HigherHomologicalAlgebra#readme) | https://github.com/homalg-project/HigherHomologicalAlgebra.git |
-| 5. | [**QPA2**](https://github.com/homalg-project/QPA2#readme) | https://github.com/homalg-project/QPA2.git |
-| 6. | [**Algebroids**](https://github.com/homalg-project/Algebroids#readme) | https://github.com/homalg-project/Algebroids.git |
-| 7. | [**FunctorCategories**](https://github.com/homalg-project/FunctorCategories#readme) | https://github.com/homalg-project/FunctorCategories.git |
-| 8. | [**Toposes**](https://github.com/homalg-project/Toposes#readme) | https://github.com/homalg-project/Toposes.git |
-| 9. | [**FinSetsForCAP**](https://github.com/homalg-project/FinSetsForCAP#readme) | https://github.com/homalg-project/FinSetsForCAP.git |
-| 10. | [**SubcategoriesForCAP**](https://github.com/homalg-project/SubcategoriesForCAP#readme) | https://github.com/homalg-project/SubcategoriesForCAP.git |
+| 3. | [**HigherHomologicalAlgebra**](https://github.com/homalg-project/HigherHomologicalAlgebra#readme) | https://github.com/homalg-project/HigherHomologicalAlgebra.git |
+| 4. | [**QPA2**](https://github.com/homalg-project/QPA2#readme) | https://github.com/homalg-project/QPA2.git |
+| 5. | [**FinSetsForCAP**](https://github.com/homalg-project/FinSetsForCAP#readme) | https://github.com/homalg-project/FinSetsForCAP.git |
 
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
-[html-url]: https://homalg-project.github.io/CatReps/doc/chap0_mj.html
+[html-url]: https://homalg-project.github.io/CategoricalTowers/CatReps/doc/chap0_mj.html
 
 [pdf-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
-[pdf-url]: https://homalg-project.github.io/CatReps/download_pdf.html
+[pdf-url]: https://homalg-project.github.io/CategoricalTowers/CatReps/download_pdf.html
 
-[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CatReps/badge_version.json&label=🔗%20version&color=yellow
-[version-url]: https://homalg-project.github.io/CatReps/view_release.html
+[version-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CategoricalTowers/CatReps/badge_version.json&label=🔗%20version&color=yellow
+[version-url]: https://homalg-project.github.io/CategoricalTowers/CatReps/view_release.html
 
-[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CatReps/badge_date.json&label=🔗%20released%20on&color=yellow
-[date-url]: https://homalg-project.github.io/CatReps/view_release.html
+[date-img]: https://img.shields.io/endpoint?url=https://homalg-project.github.io/CategoricalTowers/CatReps/badge_date.json&label=🔗%20released%20on&color=yellow
+[date-url]: https://homalg-project.github.io/CategoricalTowers/CatReps/view_release.html
 
-[tests-img]: https://github.com/homalg-project/CatReps/actions/workflows/Tests.yml/badge.svg?branch=master
-[tests-url]: https://github.com/homalg-project/CatReps/actions/workflows/Tests.yml?query=branch%3Amaster
+[tests-img]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml/badge.svg?branch=master
+[tests-url]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml?query=branch%3Amaster
 
-[codecov-img]: https://codecov.io/gh/homalg-project/CatReps/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/homalg-project/CatReps
+[codecov-img]: https://codecov.io/gh/homalg-project/CategoricalTowers/branch/master/graph/badge.svg?flag=CatReps
+[codecov-url]: https://codecov.io/gh/homalg-project/CategoricalTowers/tree/master/CatReps
 
 [code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
-[code-url]: https://github.com/homalg-project/CatReps#top
+[code-url]: https://github.com/homalg-project/CategoricalTowers/tree/master/CatReps#top
 <!-- END FOOTER -->

@@ -2,50 +2,53 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 15
+  after_n_builds: 16
 flags:
-  FiniteCocompletion:
-    paths:
-      - "FiniteCocompletion/"
-  PreSheaves:
-    paths:
-      - "PreSheaves/"
-  CategoryConstructor:
-    paths:
-      - "CategoryConstructor/"
-  Toposes:
-    paths:
-      - "Toposes/"
-  Locales:
-    paths:
-      - "Locales/"
-  SubcategoriesForCAP:
-    paths:
-      - "SubcategoriesForCAP/"
-  LazyCategories:
-    paths:
-      - "LazyCategories/"
-  ZariskiFrames:
-    paths:
-      - "ZariskiFrames/"
-  IntrinsicCategories:
-    paths:
-      - "IntrinsicCategories/"
-  CategoriesWithAmbientObjects:
-    paths:
-      - "CategoriesWithAmbientObjects/"
-  IntrinsicModules:
-    paths:
-      - "IntrinsicModules/"
-  ExteriorPowersCategories:
-    paths:
-      - "ExteriorPowersCategories/"
-  IntrinsicGradedModules:
-    paths:
-      - "IntrinsicGradedModules/"
   Algebroids:
     paths:
       - "Algebroids/"
+  CategoriesWithAmbientObjects:
+    paths:
+      - "CategoriesWithAmbientObjects/"
+  CategoryConstructor:
+    paths:
+      - "CategoryConstructor/"
+  CatReps:
+    paths:
+      - "CatReps/"
+  ExteriorPowersCategories:
+    paths:
+      - "ExteriorPowersCategories/"
+  FiniteCocompletion:
+    paths:
+      - "FiniteCocompletion/"
   FunctorCategories:
     paths:
       - "FunctorCategories/"
+  IntrinsicCategories:
+    paths:
+      - "IntrinsicCategories/"
+  IntrinsicGradedModules:
+    paths:
+      - "IntrinsicGradedModules/"
+  IntrinsicModules:
+    paths:
+      - "IntrinsicModules/"
+  LazyCategories:
+    paths:
+      - "LazyCategories/"
+  Locales:
+    paths:
+      - "Locales/"
+  PreSheaves:
+    paths:
+      - "PreSheaves/"
+  SubcategoriesForCAP:
+    paths:
+      - "SubcategoriesForCAP/"
+  Toposes:
+    paths:
+      - "Toposes/"
+  ZariskiFrames:
+    paths:
+      - "ZariskiFrames/"

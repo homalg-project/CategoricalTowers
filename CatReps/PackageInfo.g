@@ -64,13 +64,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/CatReps",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/CatReps",
-PackageInfoURL  := "https://homalg-project.github.io/CatReps/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CatReps/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CatReps/releases/download/v", ~.Version, "/CatReps-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/CatReps/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/CatReps/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/CatReps-", ~.Version, "/CatReps-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",

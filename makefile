@@ -3,52 +3,55 @@ all: doc test
 .PHONY: test
 
 # BEGIN PACKAGE JANITOR
-doc: doc_FiniteCocompletion doc_PreSheaves doc_CategoryConstructor doc_Toposes doc_Locales doc_SubcategoriesForCAP doc_LazyCategories doc_ZariskiFrames doc_IntrinsicCategories doc_CategoriesWithAmbientObjects doc_IntrinsicModules doc_ExteriorPowersCategories doc_IntrinsicGradedModules doc_Algebroids doc_FunctorCategories
-
-doc_FiniteCocompletion:
-	$(MAKE) -C FiniteCocompletion doc
-
-doc_PreSheaves:
-	$(MAKE) -C PreSheaves doc
-
-doc_CategoryConstructor:
-	$(MAKE) -C CategoryConstructor doc
-
-doc_Toposes:
-	$(MAKE) -C Toposes doc
-
-doc_Locales:
-	$(MAKE) -C Locales doc
-
-doc_SubcategoriesForCAP:
-	$(MAKE) -C SubcategoriesForCAP doc
-
-doc_LazyCategories:
-	$(MAKE) -C LazyCategories doc
-
-doc_ZariskiFrames:
-	$(MAKE) -C ZariskiFrames doc
-
-doc_IntrinsicCategories:
-	$(MAKE) -C IntrinsicCategories doc
-
-doc_CategoriesWithAmbientObjects:
-	$(MAKE) -C CategoriesWithAmbientObjects doc
-
-doc_IntrinsicModules:
-	$(MAKE) -C IntrinsicModules doc
-
-doc_ExteriorPowersCategories:
-	$(MAKE) -C ExteriorPowersCategories doc
-
-doc_IntrinsicGradedModules:
-	$(MAKE) -C IntrinsicGradedModules doc
+doc: doc_Algebroids doc_CategoriesWithAmbientObjects doc_CategoryConstructor doc_CatReps doc_ExteriorPowersCategories doc_FiniteCocompletion doc_FunctorCategories doc_IntrinsicCategories doc_IntrinsicGradedModules doc_IntrinsicModules doc_LazyCategories doc_Locales doc_PreSheaves doc_SubcategoriesForCAP doc_Toposes doc_ZariskiFrames
 
 doc_Algebroids:
 	$(MAKE) -C Algebroids doc
 
+doc_CategoriesWithAmbientObjects:
+	$(MAKE) -C CategoriesWithAmbientObjects doc
+
+doc_CategoryConstructor:
+	$(MAKE) -C CategoryConstructor doc
+
+doc_CatReps:
+	$(MAKE) -C CatReps doc
+
+doc_ExteriorPowersCategories:
+	$(MAKE) -C ExteriorPowersCategories doc
+
+doc_FiniteCocompletion:
+	$(MAKE) -C FiniteCocompletion doc
+
 doc_FunctorCategories:
 	$(MAKE) -C FunctorCategories doc
+
+doc_IntrinsicCategories:
+	$(MAKE) -C IntrinsicCategories doc
+
+doc_IntrinsicGradedModules:
+	$(MAKE) -C IntrinsicGradedModules doc
+
+doc_IntrinsicModules:
+	$(MAKE) -C IntrinsicModules doc
+
+doc_LazyCategories:
+	$(MAKE) -C LazyCategories doc
+
+doc_Locales:
+	$(MAKE) -C Locales doc
+
+doc_PreSheaves:
+	$(MAKE) -C PreSheaves doc
+
+doc_SubcategoriesForCAP:
+	$(MAKE) -C SubcategoriesForCAP doc
+
+doc_Toposes:
+	$(MAKE) -C Toposes doc
+
+doc_ZariskiFrames:
+	$(MAKE) -C ZariskiFrames doc
 
 # END PACKAGE JANITOR
 
