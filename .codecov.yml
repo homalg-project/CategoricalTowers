@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 4
+  after_n_builds: 5
 flags:
   FiniteCocompletion:
     paths:
@@ -16,3 +16,6 @@ flags:
   Toposes:
     paths:
       - "Toposes/"
+  Locales:
+    paths:
+      - "Locales/"

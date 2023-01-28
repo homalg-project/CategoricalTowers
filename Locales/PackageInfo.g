@@ -66,13 +66,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/Locales",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/Locales",
-PackageInfoURL  := "https://homalg-project.github.io/Locales/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/Locales/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/Locales/releases/download/v", ~.Version, "/Locales-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/Locales/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/Locales/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-", ~.Version, "/Locales-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -99,7 +99,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2021.12-02" ],
