@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 13
+  after_n_builds: 14
 flags:
   FiniteCocompletion:
     paths:
@@ -43,3 +43,6 @@ flags:
   IntrinsicGradedModules:
     paths:
       - "IntrinsicGradedModules/"
+  Algebroids:
+    paths:
+      - "Algebroids/"

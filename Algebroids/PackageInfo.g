@@ -96,13 +96,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/Algebroids",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/Algebroids",
-PackageInfoURL  := "https://homalg-project.github.io/Algebroids/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/Algebroids/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/Algebroids/releases/download/v", ~.Version, "/Algebroids-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/Algebroids/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/Algebroids/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/Algebroids-", ~.Version, "/Algebroids-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
