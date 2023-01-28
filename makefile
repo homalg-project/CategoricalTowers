@@ -3,7 +3,7 @@ all: doc test
 .PHONY: test
 
 # BEGIN PACKAGE JANITOR
-doc: doc_FiniteCocompletion doc_PreSheaves doc_CategoryConstructor doc_Toposes doc_Locales
+doc: doc_FiniteCocompletion doc_PreSheaves doc_CategoryConstructor doc_Toposes doc_Locales doc_SubcategoriesForCAP
 
 doc_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion doc
@@ -19,6 +19,9 @@ doc_Toposes:
 
 doc_Locales:
 	$(MAKE) -C Locales doc
+
+doc_SubcategoriesForCAP:
+	$(MAKE) -C SubcategoriesForCAP doc
 
 # END PACKAGE JANITOR
 

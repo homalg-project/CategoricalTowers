@@ -62,13 +62,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/SubcategoriesForCAP",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/SubcategoriesForCAP",
-PackageInfoURL  := "https://homalg-project.github.io/SubcategoriesForCAP/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/SubcategoriesForCAP/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/SubcategoriesForCAP/releases/download/v", ~.Version, "/SubcategoriesForCAP-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/SubcategoriesForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/SubcategoriesForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/SubcategoriesForCAP-", ~.Version, "/SubcategoriesForCAP-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -95,7 +95,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2023.01-05" ],
