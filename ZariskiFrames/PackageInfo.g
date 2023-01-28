@@ -65,13 +65,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/ZariskiFrames",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/ZariskiFrames",
-PackageInfoURL  := "https://homalg-project.github.io/ZariskiFrames/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/ZariskiFrames/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/ZariskiFrames/releases/download/v", ~.Version, "/ZariskiFrames-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/ZariskiFrames/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/ZariskiFrames/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-", ~.Version, "/ZariskiFrames-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -98,7 +98,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.01.16" ],

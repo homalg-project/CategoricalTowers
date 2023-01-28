@@ -45,7 +45,10 @@ jobs:
           git clone --depth 1 -vv https://github.com/homalg-project/QPA2.git
           git clone --depth 1 -vv https://github.com/homalg-project/Algebroids.git
           git clone --depth 1 -vv https://github.com/homalg-project/FinSetsForCAP.git
-          git clone --depth 1 -vv https://github.com/homalg-project/ZariskiFrames.git
+          git clone --depth 1 -vv https://github.com/homalg-project/ArangoDBInterface.git
+          git clone --depth 1 -vv https://github.com/homalg-project/ParallelizedIterators.git
+          git clone --depth 1 -vv https://github.com/homalg-project/alcove.git
+          git clone --depth 1 -vv https://github.com/homalg-project/MatroidGeneration.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
@@ -60,7 +63,7 @@ jobs:
           [ -d "Toposes" ] && make -C "Toposes" doc
           make -C CategoricalTowers -j $(nproc) --output-sync ci-test
           make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
-          make -C ZariskiFrames -j $(nproc) --output-sync ci-test
+          make -C MatroidGeneration -j $(nproc) --output-sync ci-test
           cd CategoricalTowers
           LANG=C.UTF-8 python3 process_coverage.py
           [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./upload_codecov.sh

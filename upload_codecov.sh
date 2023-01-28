@@ -30,3 +30,4 @@ chmod +x codecov
 ./codecov -Z -v -s ../ -F Locales || (sleep 30; ./codecov -Z -v -s ../ -F Locales || (sleep 30; ./codecov -Z -v -s ../ -F Locales))
 ./codecov -Z -v -s ../ -F SubcategoriesForCAP || (sleep 30; ./codecov -Z -v -s ../ -F SubcategoriesForCAP || (sleep 30; ./codecov -Z -v -s ../ -F SubcategoriesForCAP))
 ./codecov -Z -v -s ../ -F LazyCategories || (sleep 30; ./codecov -Z -v -s ../ -F LazyCategories || (sleep 30; ./codecov -Z -v -s ../ -F LazyCategories))
+./codecov -Z -v -s ../ -F ZariskiFrames || (sleep 30; ./codecov -Z -v -s ../ -F ZariskiFrames || (sleep 30; ./codecov -Z -v -s ../ -F ZariskiFrames))

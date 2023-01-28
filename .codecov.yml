@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 7
+  after_n_builds: 8
 flags:
   FiniteCocompletion:
     paths:
@@ -25,3 +25,6 @@ flags:
   LazyCategories:
     paths:
       - "LazyCategories/"
+  ZariskiFrames:
+    paths:
+      - "ZariskiFrames/"
