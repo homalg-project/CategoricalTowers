@@ -2,7 +2,7 @@
 
 set -e
 
-packages="FiniteCocompletion PreSheaves CategoryConstructor Toposes Locales SubcategoriesForCAP LazyCategories ZariskiFrames IntrinsicCategories CategoriesWithAmbientObjects IntrinsicModules "
+packages="FiniteCocompletion PreSheaves CategoryConstructor Toposes Locales SubcategoriesForCAP LazyCategories ZariskiFrames IntrinsicCategories CategoriesWithAmbientObjects IntrinsicModules ExteriorPowersCategories "
 
 base_dir="$PWD"
 

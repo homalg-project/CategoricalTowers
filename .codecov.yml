@@ -2,7 +2,7 @@ codecov:
   disable_default_path_fixes: true
   require_ci_to_pass: false
 comment:
-  after_n_builds: 11
+  after_n_builds: 12
 flags:
   FiniteCocompletion:
     paths:
@@ -37,3 +37,6 @@ flags:
   IntrinsicModules:
     paths:
       - "IntrinsicModules/"
+  ExteriorPowersCategories:
+    paths:
+      - "ExteriorPowersCategories/"

@@ -35,13 +35,13 @@ Persons := [
 # BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/homalg-project/ExteriorPowersCategories",
+    URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome  := "https://homalg-project.github.io/pkg/ExteriorPowersCategories",
-PackageInfoURL  := "https://homalg-project.github.io/ExteriorPowersCategories/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/ExteriorPowersCategories/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/ExteriorPowersCategories/releases/download/v", ~.Version, "/ExteriorPowersCategories-", ~.Version ),
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/ExteriorPowersCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/ExteriorPowersCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-", ~.Version, "/ExteriorPowersCategories-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -68,7 +68,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11.1",
+  GAP := ">= 4.12.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "CAP", ">= 2019.10.29" ],
