@@ -1,0 +1,38 @@
+  
+  [1X6 [33X[0;0YTopos operations[133X[101X
+  
+  
+  [1X6.1 [33X[0;0YDouble-pushout rewriting[133X[101X
+  
+  [33X[0;0YWe  compute the double-pushout rewriting of a quiver [23XG[123X, given rewriting span
+  [23Xl, r[123X and the matching [23Xm: L \rightarrow G[123X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XL := CreateQuiver( 3, [ 1,0,  2,0,  2,2 ] );[127X[104X
+    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XR := CreateQuiver( 4, [ 0,1,  2,0,  0,3 ] );[127X[104X
+    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xl := Subobject( L, [ 0, 1 ], [ ] );[127X[104X
+    [4X[28X<A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xr := Subobject( R, [ 0, 1 ], [ ] );[127X[104X
+    [4X[28X<A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XG := CreateQuiver( 4, [ 1,0,  3,0,  3,3,  2,0,  2,1 ] );[127X[104X
+    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27Xm := Subobject( G, [ 3, 1, 2 ] );[127X[104X
+    [4X[28X<A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XSource( m ) = L;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xp := DPO( m, l, r );;[127X[104X
+    [4X[25Xgap>[125X [27Xp[2];[127X[104X
+    [4X[28X<A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( p[2] );[127X[104X
+    [4X[28XImage of <(V)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 2, 3, 4 ]→ { 0,..., 4 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(A)>:[128X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 3, 4 ]→ { 0,..., 4 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+  [4X[32X[104X
+  

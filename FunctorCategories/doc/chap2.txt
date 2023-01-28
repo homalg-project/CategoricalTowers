@@ -1,0 +1,716 @@
+  
+  [1X2 [33X[0;0YCategory of presheaves of a finitely presented (linear) category[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YConstructors[133X[101X
+  
+  [1X2.1-1 PreSheaves[101X
+  
+  [33X[1;0Y[29X[2XPreSheaves[102X( [3XB[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XPreSheaves[102X( [3XB[103X, [3Xk[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XPreSheaves[102X( [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct  the  category [10XHom( [3XB[103X[10X^op, [3XC[103X[10X )[110X of functors from the opposite of the
+  small   category   [3XB[103X  to  the  category  [3XC[103X  as  objects  and  their  natural
+  transformations as morphisms.[133X
+  
+  [1X2.1-2 CreatePreSheaf[101X
+  
+  [33X[1;0Y[29X[2XCreatePreSheaf[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCreatePreSheaf[102X( [3XB[103X, [3Xrec_images_of_objects[103X, [3Xrec_images_of_morphisms[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreatePreSheaf[102X( [3XB[103X, [3Ximages_of_objects[103X, [3Ximages_of_morphisms[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya presheaf[133X
+  
+  [33X[0;0YTurn the functor [10X[3XF[103X[10X:[3XB[103X[10X^op[110X [23X\to[123X [10XC[110X into an object in the category of functors [10X[3XPSh[103X[10X
+  := PreSheaves( [3XB[103X[10X, C )[110X. An alternative input is the source category [3XB[103X and two
+  defining  records  [3Xrec_images_of_objects[103X  and  [3Xrec_images_of_morphisms[103X of [3XF[103X.
+  Another  alternative  input  is the source category [3XB[103X and two defining lists
+  [3Ximages_of_objects[103X  and  [3Ximages_of_morphisms[103X of [3XF[103X. The order of their entries
+  must correspond to that of the vertices and arrows of the underlying quiver.[133X
+  
+  [33X[0;0YFor  the  convenience  of  the  user  the  following input is also valid: If
+  [3Ximages_of_objects[103X  is a list of nonnegative integers, [3Ximages_of_morphisms[103X is
+  a  list of matrices, and [23Xk:=[123X [10XCommutativeRingOfLinearCategory[110X( B ) is a field
+  then  the  two  lists  are  interpreted as objects and morphisms in a matrix
+  category or a category of rows over [23Xk[123X, respectively.[133X
+  
+  [1X2.1-3 CreatePreSheafMorphismByValues[101X
+  
+  [33X[1;0Y[29X[2XCreatePreSheafMorphismByValues[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreatePreSheafMorphism[102X( [3Xeta[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCreatePreSheafMorphism[102X( [3XU[103X, [3Xe[103X, [3XV[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreatePreSheafMorphism[102X( [3XU[103X, [3Xe[103X, [3XV[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreatePreSheafMorphismByFunction[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  
+  [33X[0;0YTurn   the  natrual  transformation  [3Xeta[103X:[23XF  \to  G[123X  into  a  morphism  [10X[3XU[103X[10X  :=
+  AsObjectInFunctorCategory(  F  )[110X  [23X\to[123X [10X[3XV[103X[10X := AsObjectInFunctorCategory( G )[110X in
+  the  category  of  functors  [10X[3XHom[103X[10X  :=  Hom(  B, C )[110X, where [10XB := Source( F ) =
+  Source( G )[110X and [10XC := Range( F ) = Range( G )[110X.[133X
+  
+  [33X[0;0YAn  alternative  input is the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining record
+  of [3Xeta[103X.[133X
+  
+  [33X[0;0YAnother  alternative  input  is  the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining
+  list of [3Xeta[103X.[133X
+  
+  [1X2.1-4 CoYonedaLemma[101X
+  
+  [33X[1;0Y[29X[2XCoYonedaLemma[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-5 SomeDiagramOfRepresentables[101X
+  
+  [33X[1;0Y[29X[2XSomeDiagramOfRepresentables[102X( [3XF[103X ) [32X attribute[133X
+  
+  [1X2.1-6 CategoryOfInternalCategories[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfInternalCategories[102X( [3XC[103X ) [32X attribute[133X
+  
+  [33X[0;0YConstruct  the  category of categories internal to the monoidal or cartesian
+  category  [3XC[103X.  The output the full subcategory of the subcategory of functors
+  from  the  [10XSimplicialCategoryTruncatedInDegree[110X(2) into [3XC[103X for which each such
+  functor is the nerve truncated in degree [23X2[123X of a category internal to [3XC[103X.[133X
+  
+  
+  [1X2.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X2.2-1 Source[101X
+  
+  [33X[1;0Y[29X[2XSource[102X( [3XPSh[103X ) [32X attribute[133X
+  
+  [1X2.2-2 Range[101X
+  
+  [33X[1;0Y[29X[2XRange[102X( [3XPSh[103X ) [32X attribute[133X
+  
+  [1X2.2-3 Source[101X
+  
+  [33X[1;0Y[29X[2XSource[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe source of the presheaf [3XF[103X.[133X
+  
+  [1X2.2-4 Range[101X
+  
+  [33X[1;0Y[29X[2XRange[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe target of the presheaf [3XF[103X.[133X
+  
+  [1X2.2-5 ValuesOnAllObjects[101X
+  
+  [33X[1;0Y[29X[2XValuesOnAllObjects[102X( [3Xeta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns the values of the presheaf morphism [3Xeta[103X on all objects of the source
+  category of presheaf category [3XPSh[103X.[133X
+  
+  [33X[0;0YThe 2-cell underlying the functor object [3XF_or_eta[103X.[133X
+  
+  [1X2.2-6 UnderlyingCapTwoCategoryCell[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCapTwoCategoryCell[102X( [3XF_or_eta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor or natural transformation[133X
+  
+  [1X2.2-7 YonedaEmbedding[101X
+  
+  [33X[1;0Y[29X[2XYonedaEmbedding[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [1X2.2-8 YonedaEmbeddingOfSourceCategory[101X
+  
+  [33X[1;0Y[29X[2XYonedaEmbeddingOfSourceCategory[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [1X2.2-9 ImageOfYonedaEmbeddingOfSource[101X
+  
+  [33X[1;0Y[29X[2XImageOfYonedaEmbeddingOfSource[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YReturns  the  full  subcategory of [3XPSh[103X generated by the values of the Yoneda
+  embedding on the objects of [10XSource[110X([3XPSh[103X).[133X
+  
+  [1X2.2-10 SimpleObjects[101X
+  
+  [33X[1;0Y[29X[2XSimpleObjects[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list of objects[133X
+  
+  [33X[0;0YThe  input  is a category of presheaves [3XPSh[103X of an admissible [23Xk[123X-algebroid for
+  some field [23Xk[123X. The output is the list of simple objects in [3XPSh[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" );[127X[104X
+    [4X[28Xq(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4][128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,[128X[104X
+    [4X[28Xy:4->4]" ) )[128X[104X
+    [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,[128X[104X
+    [4X[28Xc:1->3,d:3->4,y:4->4]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA := kF / [ kF.x^3, kF.y^2 ];[127X[104X
+    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,[128X[104X
+    [4X[28Xc:1->3,d:3->4,y:4->4]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( A );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,[128X[104X
+    [4X[28Xa:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) ) / relations, Rows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XP := PSh.4;[127X[104X
+    [4X[28X<(1)->12, (2)->2, (3)->2, (4)->2; (x)->12x12, (a)->2x12, (b)->2x2,[128X[104X
+    [4X[28X(c)->2x12, (d)->2x2, (y)->2x2>[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( P );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( P );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA row module over Q of rank 12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(2)>:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(3)>:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of <(4)>:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(x) }]->(1):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(a) }]->(2):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (2)-[{ 1*(b) }]->(4):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(c) }]->(3):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 12[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (3)-[{ 1*(d) }]->(4):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (4)-[{ 1*(y) }]->(4):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,[128X[104X
+    [4X[28Xa:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) ) / relations, Rows( Q ) ) given by[128X[104X
+    [4X[28Xthe above data[128X[104X
+    [4X[25Xgap>[125X [27XCP := CreateComplex( ComplexesCategoryByCochains( PSh ), P, 0 );[127X[104X
+    [4X[28X<An object in Complexes category by cochains( PreSheaves( Algebroid( Q,[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) ) ) supported on the interval [ 0 .. 0 ]>[128X[104X
+    [4X[25Xgap>[125X [27XI_CP := InjectiveResolution( CP, true );[127X[104X
+    [4X[28X<An object in Complexes category by cochains( PreSheaves( Algebroid( Q,[128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )[128X[104X
+    [4X[28X/ relations, Rows( Q ) ) ) supported on the interval [ 0 .. 1 ]>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( I_CP ) and CohomologySupport( I_CP ) = [ 0 ];[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq := QuasiIsomorphismFromProjectiveResolution( CP, true );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( q ) and IsQuasiIsomorphism( q );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-11 NerveTruncatedInDegree2[101X
+  
+  [33X[1;0Y[29X[2XNerveTruncatedInDegree2[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya presheaf[133X
+  
+  [33X[0;0YThe  input  is  a  category  [3XB[103X  with  finitely  many objects equipped with a
+  homomorphism   structure  with  values  in  a  finite  complete  and  finite
+  cocomplete  category  [3XH[103X. The output is the nerve of [3XB[103X truncated in degree [23X2[123X,
+  as     an     object     in     the     category     of     presheaves    on
+  [10XSimplicialCategoryTruncatedInDegree[110X([23X2[123X) with values in [3XH[103X.[133X
+  
+  [33X[0;0YWe  compute  the  nerve  of  the full subcategory of the simplicial category
+  [23X\Delta[123X on the objects [23X[0], [1], [2][123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XRelationsOfFpCategory( Delta2 );[127X[104X
+    [4X[28X[ [ (s*id), (C0) ], [ (t*id), (C0) ],[128X[104X
+    [4X[28X  [ (ps*is), (C1) ], [ (pt*it), (C1) ],[128X[104X
+    [4X[28X  [ (is*id), (it*id) ], [ (pt*is), (id*t) ],[128X[104X
+    [4X[28X  [ (ps*it), (id*s) ], [ (s*pt), (t*ps) ],[128X[104X
+    [4X[28X  [ (s*mu), (s*ps) ], [ (t*mu), (t*pt) ],[128X[104X
+    [4X[28X  [ (mu*is), (C1) ], [ (mu*it), (C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
+    [4X[28X31[128X[104X
+    [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28X SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XN.C0;[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.C0 );[127X[104X
+    [4X[28X{ 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XN.C1;[127X[104X
+    [4X[28X|31|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.C1 );[127X[104X
+    [4X[28X{ 0,..., 30 }[128X[104X
+    [4X[25Xgap>[125X [27XN.C2;[127X[104X
+    [4X[28X|393|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.C2 );[127X[104X
+    [4X[28X{ 0,..., 392 }[128X[104X
+    [4X[25Xgap>[125X [27XN.id;[127X[104X
+    [4X[28X|3| → |31|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.id );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
+    [4X[25Xgap>[125X [27XIntCat := CategoryOfInternalCategories([127X[104X
+    [4X[25X>[125X [27X                  RangeCategoryOfHomomorphismStructure( Delta2 ) );[127X[104X
+    [4X[28XFullSubcategoryByObjectMembershipFunction([128X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28XSkeletalFinSets ), ObjectMembershipFunction )[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( N / IntCat );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe  compute  the  nerve  of  the full subcategory of the simplicial category
+  [23X\Delta[123X on the objects [23X[0], [1], [2][123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDelta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );[127X[104X
+    [4X[28XFreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28X SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XN.C0;[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.C0 );[127X[104X
+    [4X[28X{ 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XN.C1;[127X[104X
+    [4X[28X|31|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.C1 );[127X[104X
+    [4X[28X{ 0,..., 30 }[128X[104X
+    [4X[25Xgap>[125X [27XN.C2;[127X[104X
+    [4X[28X|393|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.C2 );[127X[104X
+    [4X[28X{ 0,..., 392 }[128X[104X
+    [4X[25Xgap>[125X [27XN.id;[127X[104X
+    [4X[28X|3| → |31|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( N.id );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-12 SievesOfPathsToTruth[101X
+  
+  [33X[1;0Y[29X[2XSievesOfPathsToTruth[102X( [3Xiota[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya monomorphisms in a Hom-category of functors[133X
+  
+  [33X[0;0YThe  input is a monomorphism [3Xiota[103X:[23XQ \to P[123X in the category of presheaves with
+  values  in [10XRangeCategoryOfHomomorphismStructure[110X([23XC[123X) on the finitely presented
+  category  [23XC:=[123X([10XSource[110X([23XP[123X))  with  finite  [23X\mathrm{Hom}[123X-sets. The output is the
+  morphism  from [23XP[123X to the [10XSieveFunctor[110X([23XC[123X) mapping for each [23Xc \in C[123X the element
+  [23Xx \in P(c)[123X to its [21Xpaths to truth[121X [23Xf: a \to c[123X translating [23Xx[123X into [23Xf(x) \in Q(a)
+  \subseteq P(a)[123X.[133X
+  
+  
+  [1X2.3 [33X[0;0YOperations[133X[101X
+  
+  [1X2.3-1 ApplyObjectInPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
+  
+  [1X2.3-2 ApplyObjectInPreSheafCategoryToMorphism[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
+  
+  [1X2.3-3 ApplyMorphismInPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyMorphismInPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
+  
+  
+  [1X2.4 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
+  
+  [1X2.4-1 IsPreSheafCategory[101X
+  
+  [33X[1;0Y[29X[2XIsPreSheafCategory[102X( [3Xcategory[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of a presheaf category.[133X
+  
+  [1X2.4-2 IsCellInPreSheafCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCellInPreSheafCategory[102X( [3Xcell[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a presheaf category.[133X
+  
+  [1X2.4-3 IsObjectInPreSheafCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInPreSheafCategory[102X( [3Xobj[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a presheaf category.[133X
+  
+  [1X2.4-4 IsMorphismInPreSheafCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInPreSheafCategory[102X( [3Xmor[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a presheaf category.[133X
+  
+  [1X2.4-5 IsPreSheafCategoryOfFpEnrichedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsPreSheafCategoryOfFpEnrichedCategory[102X( [3Xcategory[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  a presheaf category of a finitely presented enriched
+  category.[133X
+  
+  [1X2.4-6 IsCellInPreSheafCategoryOfFpEnrichedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCellInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xcell[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  cells in a presheaf category of a finitely presented
+  enriched category.[133X
+  
+  [1X2.4-7 IsObjectInPreSheafCategoryOfFpEnrichedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xobj[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category of objects in a presheaf category of a finitely presented
+  enriched category.[133X
+  
+  [1X2.4-8 IsMorphismInPreSheafCategoryOfFpEnrichedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInPreSheafCategoryOfFpEnrichedCategory[102X( [3Xmor[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a presheaf category of a finitely presented
+  enriched category.[133X
+  
+  
+  [1X2.5 [33X[0;0YGlobal variables[133X[101X
+  
+  [1X2.5-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY[102X [32X global variable[133X
+  
+  [1X2.5-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY[102X [32X global variable[133X
+  
+  [1X2.5-3 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS[102X [32X global variable[133X
+  
+  
+  [1X2.6 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X2.6-1 [33X[0;0YThe subobject classifier[133X[101X
+  
+  [33X[0;0YThe    subobject    classifier    of    the    [10XPreSheaves[110X[23X(C,    H)[123X,    where
+  [23XH[123X:=[10XRangeCategoryOfHomomorphismStructure[110X([23XC[123X) is the functor of sieves, mapping
+  each   object   [23Xc  \in  C^\mathrm{op}[123X  to  the  set  of  subobjects  of  the
+  representable functor [23X\mathrm{Hom}_C(-,c)[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[a:1->1]" );[127X[104X
+    [4X[28Xq(1)[a:1->1][128X[104X
+    [4X[25Xgap>[125X [27XFq := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XM0 := Fq / [ [ Fq.a^3, Fq.1 ] ];[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = 1 ][128X[104X
+    [4X[25Xgap>[125X [27XPShM0 := PreSheaves( M0 );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = 1 ], SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XOmega0 := SubobjectClassifier( PShM0 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Omega0 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[(a)]->(1):[128X[104X
+    [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = 1 ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xe := Exponential( Omega0, Omega0 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( e );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[(a)]->(1):[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = 1 ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xev0 := CartesianEvaluationMorphism( Omega0, Omega0 );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ev0 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 0, 1, 0, 1, 0, 0, 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = 1 ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XM1 := Fq / [ [ Fq.a^3, Fq.a ] ];[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a ][128X[104X
+    [4X[25Xgap>[125X [27XPShM1 := PreSheaves( M1 );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a ], SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XOmega1 := SubobjectClassifier( PShM1 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Omega1 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[(a)]->(1):[128X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 2, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XM2 := Fq / [ [ Fq.a^3, Fq.a^2 ] ];[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a*a ][128X[104X
+    [4X[25Xgap>[125X [27XPShM2 := PreSheaves( M2 );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XOmega2 := SubobjectClassifier( PShM2 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Omega2 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[(a)]->(1):[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xtrue2 := TruthMorphismOfTrue( PShM2 );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( true2 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0 } ⱶ[ 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xfalse2 := TruthMorphismOfFalse( PShM2 );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( false2 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0 } ⱶ[ 0 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xiota := CreatePreSheafMorphism( EmbeddingOfSieveFunctor( M2 ) );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 4, 6, 7 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XRange( iota );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Range( iota ) );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[(a)]->(1):[128X[104X
+    [4X[28X{ 0,..., 7 } ⱶ[ 0, 0, 1, 1, 6, 6, 7, 7 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xt2 := SubobjectOfClassifyingMorphism( true2 );[127X[104X
+    [4X[28X<A monomorphism in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( t2 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0 } ⱶ[ 0 ]→ { 0 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xf2 := SubobjectOfClassifyingMorphism( false2 );[127X[104X
+    [4X[28X<A monomorphism in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a*a = a*a ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( f2 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[25Xgap>[125X [27XH := HomStructure( Omega2, Omega2 );[127X[104X
+    [4X[28X|8|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( H );[127X[104X
+    [4X[28X{ 0,..., 7 }[128X[104X
+    [4X[25Xgap>[125X [27XT2 := DistinguishedObjectOfHomomorphismStructure( PShM2 );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27XL := List( H, i ->[127X[104X
+    [4X[25X>[125X [27X       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism([127X[104X
+    [4X[25X>[125X [27X               Omega2, Omega2, MapOfFinSets( T2, [ i ], H ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( L );[127X[104X
+    [4X[28X8[128X[104X
+    [4X[25Xgap>[125X [27XPerform( L, Display );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 0, 0, 0 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 3, 0, 0, 0 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 3, 1, 2, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 3, 3, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 3, 2, 3, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 3, 3, 3, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
+    [4X[28Xgiven by the above data[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.6-2 [33X[0;0YPreSheaves of non-f.p. categories (experimental)[133X[101X
+  

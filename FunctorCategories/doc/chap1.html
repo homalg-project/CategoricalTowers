@@ -1,0 +1,1536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FunctorCategories) - Chapter 1: Category of functors of a finitely presented (linear) category</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X7B8D97877D443EB1" name="X7B8D97877D443EB1"></a></p>
+<div class="ChapSects"><a href="chap1.html#X7B8D97877D443EB1">1 <span class="Heading">Category of functors of a finitely presented (linear) category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X86EC0F0A78ECBC10">1.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X838CF4D0878446CD">1.1-1 FunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X847A54648022F937">1.1-2 AsObjectInFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F21687E82C92CEA">1.1-3 AsMorphismInFunctorCategoryByValues</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7C701DBF7BAE649A">1.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F81EFBE8564017C">1.2-1 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E3E7647824259C8">1.2-2 Range</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8500B52D8700ECDD">1.2-3 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D8A31B67B3CF27B">1.2-4 Range</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87EDD3657AE933AA">1.2-5 OppositeOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X823B95D985C7681A">1.2-6 ValuesOfFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X855A9FA27F70E561">1.2-7 ValuesOnAllObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X793D33887EBC5ED9">1.2-8 UnderlyingCapTwoCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D44A7D7812A9AA5">1.2-9 YonedaEmbeddingInFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X860DF3247E4FF4C5">1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81A950BF7D4B9E65">1.2-11 YonedaFibration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B5163DA7DE45534">1.2-12 YonedaProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A16E3987B0DFFA3">1.2-13 YonedaComposition</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7DE8E16C7C2D387B">1.3 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7ACCBA578524E0E8">1.3-1 DecomposeOnceByRandomEndomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87445D137F36B116">1.3-2 WeakDirectSumDecomposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X829E6C6178E2B25F">1.3-3 ApplyObjectInFunctorCategoryToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F4AE1A97DE4F4CD">1.3-4 ApplyObjectInFunctorCategoryToMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85F6BE2285CEA21F">1.3-5 ApplyMorphismInFunctorCategoryToObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7D03633A7D98026B">1.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B839CDF85327324">1.4-1 IsFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X839FD00C86D37D99">1.4-2 IsCellInFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DAC192086708CC8">1.4-3 IsObjectInFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C9DBF387FDEECCF">1.4-4 IsMorphismInFunctorCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A489A5D79DA9E5C">1.5 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F398302794453FE">1.5-1 <span class="Heading">Representations of the cyclic groups of order 3 as a category of functors</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7ACEA7047FD0CB14">1.5-2 <span class="Heading">Differential modules as a category of functors</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85EAC5E17A356218">1.5-3 <span class="Heading">The category of equivariant maps as a category of functors</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Category of functors of a finitely presented (linear) category</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X838CF4D0878446CD" name="X838CF4D0878446CD"></a></p>
+
+<h5>1.1-1 FunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCategory</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCategory</code>( <var class="Arg">B</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Hom</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Hom</code>( <var class="Arg">B</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the category <code class="code">FunctorCategory(</code> <var class="Arg">B</var>, <var class="Arg">C</var> <code class="code">)</code>= <code class="code">Hom(</code> <var class="Arg">B</var>, <var class="Arg">C</var> <code class="code">)</code> of functors from the small category <var class="Arg">B</var> to the category <var class="Arg">C</var> as objects and their natural transformations as morphisms.</p>
+
+<p><a id="X847A54648022F937" name="X847A54648022F937"></a></p>
+
+<h5>1.1-2 AsObjectInFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInFunctorCategory</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInFunctorCategory</code>( <var class="Arg">B</var>, <var class="Arg">rec_images_of_objects</var>, <var class="Arg">rec_images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsObjectInFunctorCategory</code>( <var class="Arg">B</var>, <var class="Arg">images_of_objects</var>, <var class="Arg">images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in a <strong class="pkg">CAP</strong> category</p>
+
+<p>Turn the functor <code class="code"><var class="Arg">F</var>:<var class="Arg">B</var></code> <span class="Math">\to</span> <code class="code">C</code> into an object in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( <var class="Arg">B</var>, C )</code>. An alternative input is the source category <var class="Arg">B</var> and two defining records <var class="Arg">rec_images_of_objects</var> and <var class="Arg">rec_images_of_morphisms</var> of <var class="Arg">F</var>. Another alternative input is the source category <var class="Arg">B</var> and two defining lists <var class="Arg">images_of_objects</var> and <var class="Arg">images_of_morphisms</var> of <var class="Arg">F</var>. The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.</p>
+
+<p>For the convenience of the user the following input is also valid: If <var class="Arg">images_of_objects</var> is a list of nonnegative integers, <var class="Arg">images_of_morphisms</var> is a list of matrices, and <span class="Math">k:=</span> <code class="code">CommutativeRingOfLinearCategory</code>( B ) is a field then the two lists are interpreted as objects and morphisms in a matrix category or a category of rows over <span class="Math">k</span>, respectively.</p>
+
+<p><a id="X7F21687E82C92CEA" name="X7F21687E82C92CEA"></a></p>
+
+<h5>1.1-3 AsMorphismInFunctorCategoryByValues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategoryByValues</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsMorphismInFunctorCategory</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+
+<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="Math">F \to G</span> into a morphism <code class="code"><var class="Arg">U</var> := AsObjectInFunctorCategory( F )</code> <span class="Math">\to</span> <code class="code"><var class="Arg">V</var> := AsObjectInFunctorCategory( G )</code> in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( B, C )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Range( F ) = Range( G )</code>.</p>
+
+<p>An alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining record of <var class="Arg">eta</var>.</p>
+
+<p>Another alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining list of <var class="Arg">eta</var>.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7F81EFBE8564017C" name="X7F81EFBE8564017C"></a></p>
+
+<h5>1.2-1 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The source category of the functor category <var class="Arg">cat</var>.</p>
+
+<p><a id="X7E3E7647824259C8" name="X7E3E7647824259C8"></a></p>
+
+<h5>1.2-2 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The range category of the functor category <var class="Arg">cat</var>.</p>
+
+<p><a id="X8500B52D8700ECDD" name="X8500B52D8700ECDD"></a></p>
+
+<h5>1.2-3 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The source of the functor underlying functor object <var class="Arg">F</var>.</p>
+
+<p><a id="X7D8A31B67B3CF27B" name="X7D8A31B67B3CF27B"></a></p>
+
+<h5>1.2-4 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The target of the functor underlying the functor object <var class="Arg">F</var>.</p>
+
+<p><a id="X87EDD3657AE933AA" name="X87EDD3657AE933AA"></a></p>
+
+<h5>1.2-5 OppositeOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeOfSource</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The opposite of the source category of the functor category <var class="Arg">Hom</var>.</p>
+
+<p><a id="X823B95D985C7681A" name="X823B95D985C7681A"></a></p>
+
+<h5>1.2-6 ValuesOfFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOfFunctor</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a pair of lists</p>
+
+<p>The input is functor <var class="Arg">F</var> in a functor category <var class="Arg">Hom</var>. The output is pair of lists. The first is the list of values of the functor <var class="Arg">F</var> on all objects of the source category of <var class="Arg">Hom</var>. The second is the list of values of the functor <var class="Arg">F</var> on all *generating* morphisms of the source category of <var class="Arg">Hom</var>.</p>
+
+<p><a id="X855A9FA27F70E561" name="X855A9FA27F70E561"></a></p>
+
+<h5>1.2-7 ValuesOnAllObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOnAllObjects</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the values of the natural transformation <var class="Arg">eta</var> in a functor category <var class="Arg">Hom</var> on all objects of the source category of <var class="Arg">Hom</var>.</p>
+
+<p>The 2-cell underlying the functor object <var class="Arg">F_or_eta</var>.</p>
+
+<p><a id="X793D33887EBC5ED9" name="X793D33887EBC5ED9"></a></p>
+
+<h5>1.2-8 UnderlyingCapTwoCategoryCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCapTwoCategoryCell</code>( <var class="Arg">F_or_eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor or natural transformation</p>
+
+<p><a id="X7D44A7D7812A9AA5" name="X7D44A7D7812A9AA5"></a></p>
+
+<h5>1.2-9 YonedaEmbeddingInFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingInFunctorCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p><a id="X860DF3247E4FF4C5" name="X860DF3247E4FF4C5"></a></p>
+
+<h5>1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfOppositeOfSourceCategory</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p><a id="X81A950BF7D4B9E65" name="X81A950BF7D4B9E65"></a></p>
+
+<h5>1.2-11 YonedaFibration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaFibration</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+
+<p>The input is a finitely presented category <var class="Arg">B</var>. The output is an epimorphism in the category of functors from <var class="Arg">B</var> into <span class="Math">H :=</span><code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ). Its source is the functor <span class="Math">B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c), \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)</span>. Its target is the constant functor of <span class="Math">0</span>-cells <span class="Math">B \to H, c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}</span>.</p>
+
+<p><a id="X7B5163DA7DE45534" name="X7B5163DA7DE45534"></a></p>
+
+<h5>1.2-12 YonedaProjection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaProjection</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+
+<p>The input is a finitely presented category <var class="Arg">B</var>. The output is an epimorphism in the category of functors from <var class="Arg">B</var> into <span class="Math">H :=</span><code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ). Its source is the functor <span class="Math">B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c), \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)</span>. Its target is the functor <span class="Math">B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c), \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)</span>.</p>
+
+<p><a id="X7A16E3987B0DFFA3" name="X7A16E3987B0DFFA3"></a></p>
+
+<h5>1.2-13 YonedaComposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaComposition</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+
+<p>The input is a finitely presented category <var class="Arg">B</var>. The output is an epimorphism in the category of functors from <var class="Arg">B</var> into <span class="Math">H :=</span><code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ). Its source is the functor <span class="Math">B \to H, c \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(a,b) \times \mathrm{Hom}(b,c), \psi \mapsto \sqcup_{a,b\in B} \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)</span>. Its target is the functor <span class="Math">B \to H, c \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,c), \psi \mapsto \sqcup_{a\in B} \mathrm{Hom}(a,\psi)</span>.</p>
+
+<p>We compute part of the nerve of the full subcategory of the simplicial category <span class="Math">\Delta</span> on the objects <span class="Math">[0], [1], [2]</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
+FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RelationsOfFpCategory( Delta2 );</span>
+[ [ (s*id), (C0) ], [ (t*id), (C0) ],
+  [ (ps*is), (C1) ], [ (pt*it), (C1) ],
+  [ (is*id), (it*id) ], [ (pt*is), (id*t) ],
+  [ (ps*it), (id*s) ], [ (s*pt), (t*ps) ],
+  [ (s*mu), (s*ps) ], [ (t*mu), (t*pt) ],
+  [ (mu*is), (C1) ], [ (mu*it), (C1) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
+31
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypt := YonedaProjection( Delta2 );</span>
+&lt;An epimorphism in FunctorCategory( FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ypt );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ymu := YonedaComposition( Delta2 );</span>
+&lt;An epimorphism in FunctorCategory( FreeCategory( RightQuiver(
+   "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ymu );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ys := YonedaFibration( Delta2 );</span>
+&lt;A morphism in FunctorCategory( FreeCategory( RightQuiver(
+   "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( Ys );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Ys );</span>
+Image of &lt;(C0)&gt;:
+{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
+
+Image of &lt;(C1)&gt;:
+{ 0,..., 8 } ⱶ[ 0, 0, 1, 1, 1, 2, 2, 2, 2 ]→ { 0, 1, 2 }
+
+Image of &lt;(C2)&gt;:
+{ 0,..., 18 } ⱶ[ 0, 0, 0, 1, 1, 1, 1, 1, 1,
+                 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ]→ { 0, 1, 2 }
+
+A morphism in FunctorCategory( FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+SkeletalFinSets ) given by the above data
+</pre></div>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>1.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7ACCBA578524E0E8" name="X7ACCBA578524E0E8"></a></p>
+
+<h5>1.3-1 DecomposeOnceByRandomEndomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecomposeOnceByRandomEndomorphism</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Return a pair of monomorphisms describing the embeddings of two direct summands of the representation <var class="Arg">F</var>, the direct sum thereof is isomorphic to <var class="Arg">F</var>.</p>
+
+<p><a id="X87445D137F36B116" name="X87445D137F36B116"></a></p>
+
+<h5>1.3-2 WeakDirectSumDecomposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WeakDirectSumDecomposition</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Return a list of monomorphisms describing the embeddings of a list of direct summands of the representation <var class="Arg">F</var>, the direct sum thereof is isomorphic to <var class="Arg">F</var>.</p>
+
+<p><a id="X829E6C6178E2B25F" name="X829E6C6178E2B25F"></a></p>
+
+<h5>1.3-3 ApplyObjectInFunctorCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInFunctorCategoryToObject</code>( <var class="Arg">F</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>Apply the functor <var class="Arg">F</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">obj</var>).</p>
+
+<p><a id="X7F4AE1A97DE4F4CD" name="X7F4AE1A97DE4F4CD"></a></p>
+
+<h5>1.3-4 ApplyObjectInFunctorCategoryToMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInFunctorCategoryToMorphism</code>( <var class="Arg">F</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the functor <var class="Arg">F</var> to the morphism <var class="Arg">mor</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">mor</var>).</p>
+
+<p><a id="X85F6BE2285CEA21F" name="X85F6BE2285CEA21F"></a></p>
+
+<h5>1.3-5 ApplyMorphismInFunctorCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyMorphismInFunctorCategoryToObject</code>( <var class="Arg">eta</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the natural transformation <var class="Arg">eta</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">eta</var>(<var class="Arg">o</var>).</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X7B839CDF85327324" name="X7B839CDF85327324"></a></p>
+
+<h5>1.4-1 IsFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFunctorCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of Hom-categories of functors between two fixed categories.</p>
+
+<p><a id="X839FD00C86D37D99" name="X839FD00C86D37D99"></a></p>
+
+<h5>1.4-2 IsCellInFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInFunctorCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a Hom-category of functors between two fixed categories.</p>
+
+<p><a id="X7DAC192086708CC8" name="X7DAC192086708CC8"></a></p>
+
+<h5>1.4-3 IsObjectInFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFunctorCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a Hom-category of functors between two fixed categories.</p>
+
+<p><a id="X7C9DBF387FDEECCF" name="X7C9DBF387FDEECCF"></a></p>
+
+<h5>1.4-4 IsMorphismInFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFunctorCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a Hom-category of functors between two fixed categories.</p>
+
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>1.5 <span class="Heading">Examples</span></h4>
+
+<p><a id="X7F398302794453FE" name="X7F398302794453FE"></a></p>
+
+<h5>1.5-1 <span class="Heading">Representations of the cyclic groups of order 3 as a category of functors</span></h5>
+
+<p>To illustrate our implementation of the category of functors, we consider the following example. First, create a quiver <span class="Math">q</span> with one vertex 1 and one edge <span class="Math">t</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(1)[t:1-&gt;1]" );</span>
+q(1)[t:1-&gt;1]
+</pre></div>
+
+<p>Construct the free <span class="Math">\mathbb{Q}</span>-algebra <span class="Math">A</span> of <span class="Math">q</span>. It is isomorphic to the polynomial algebra <span class="Math">\mathbb{Q}[t]</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QF := Q[F];</span>
+Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+</pre></div>
+
+<p>Out of this path algebra construct the algebra <span class="Math">B</span> that is obtained as the quotient modulo the ideal <span class="Math">\langle t^3 - 1 \rangle</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := QuotientCategory( QF, [ QF.t^3 - IdentityMorphism( QF.1 ) ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             : range_of_HomStructure := MatrixCategory( Q ) );</span>
+Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RelationsOfAlgebroid( B );</span>
+[ (1)-[1*(t*t*t) - 1*(1)]-&gt;(1) ]
+</pre></div>
+
+<p>We define a record that will be used to construct the <span class="Math">\mathbb{Q}</span>-linear morphism <span class="Math">\epsilon \colon B \to \mathbb{Q}</span> defined by <span class="Math">\epsilon(t)=1</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := rec( t := 1 );</span>
+rec( t := 1 )
+</pre></div>
+
+<p>Next we want to construct the <span class="Math">\mathbb{Q}</span>-linear morphism <span class="Math">\Delta \colon B \to B \otimes_{\mathbb{Q}} B</span> defined by <span class="Math">\Delta(t)= t \otimes t</span>. In order to do so, we first need <span class="Math">B \otimes_\mathbb{Q} B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B2 := B^2;</span>
+Algebra( Q, FreeCategory( RightQuiver(
+"qxq(1x1)[1xt:1x1-&gt;1x1,tx1:1x1-&gt;1x1]" ) ) ) / relations
+</pre></div>
+
+<p>We define a record that will be used to construct <span class="Math">\Delta</span>. Note that we obtain <span class="Math">t \otimes t</span> as the product of the generators <span class="Math">t \otimes 1</span> and <span class="Math">1 \otimes t</span> of <span class="Math">B \otimes_\mathbb{Q} B</span>. The order does not matter.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := rec( t := PreCompose( B2.tx1, B2.1xt ) );</span>
+rec( t := (1x1)-[{ 1*(1xt*tx1) }]-&gt;(1x1) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose(B2.1xt, B2.tx1) = PreCompose(B2.tx1, B2.1xt);</span>
+true
+</pre></div>
+
+<p>Use the records comult and counit to define a bialgebroid (actually a bialgebra) structure on <span class="Math">B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddBialgebroidStructure( B, counit, comult );</span>
+Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+</pre></div>
+
+<p>Extract comultiplication and counit from <span class="Math">B</span>, now as functors.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := Counit( B );</span>
+Functor from
+Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+-&gt;
+Algebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := Comultiplication( B );</span>
+Functor from
+Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+-&gt;
+Algebra( Q, FreeCategory( RightQuiver(
+"qxq(1x1)[1xt:1x1-&gt;1x1,tx1:1x1-&gt;1x1]" ) ) ) / relations
+</pre></div>
+
+<p>We can apply the comultiplication and counit to objects and morphisms of <span class="Math">B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( counit, B.1 );</span>
+&lt;(1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( counit, B.t );</span>
+(1)-[1*(1)]-&gt;(1)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( comult, B.1 );</span>
+&lt;(1x1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( comult, B.t );</span>
+(1x1)-[{ 1*(1xt*tx1) }]-&gt;(1x1)
+</pre></div>
+
+<p>Next we define an antipode on <span class="Math">B</span> as the (anti)endomorphism on <span class="Math">B</span> that sends <span class="Math">t</span> to <span class="Math">t^2</span>. This corresponds to the (anti)endomorphism of the cyclic group of order 3 that sends an element to its inverse.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">antipode := rec( t := PreCompose( B.t, B.t ) );</span>
+rec( t := (1)-[{ 1*(t*t) }]-&gt;(1) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddAntipode( B, antipode );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">antipode := Antipode( B );</span>
+Contravariant functor from
+HopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+-&gt;
+HopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( antipode, B.1 );</span>
+&lt;(1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( antipode, B.t );</span>
+(1)-[{ 1*(t*t) }]-&gt;(1)
+</pre></div>
+
+<p>Let <span class="Math">A</span> be the range category of the homomorphism structure of <span class="Math">B</span>. It is the matrix category over <span class="Math">\mathbb{Q}</span>. Its objects are natural numbers and its morphisms the matrices with coefficients in <span class="Math">\mathbb{Q}</span>. We use it as a skeletal model of the category of finite dimension vector spaces.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := RangeCategoryOfHomomorphismStructure( B );</span>
+Category of matrices over Q
+</pre></div>
+
+<p>Construct the category <span class="Math">H</span> of functors from <span class="Math">B</span> to <span class="Math">A</span>. An object in this category is a pair consisting of a finite-dimensional vector space, specified by its dimension, together with an endomorphism of this vector space, specified by a square matrix.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FunctorCategory( B, A :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );</span>
+FunctorCategory( HopfAlgebra( Q, FreeCategory(
+RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations, Category of matrices over Q )
+</pre></div>
+
+<p>Verify that its zero object <span class="Math">z</span> behaves as expected.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( H );</span>
+&lt;(1)-&gt;0; (t)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z( B.1 );</span>
+&lt;A vector space object over Q of dimension 0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z.1;</span>
+&lt;A vector space object over Q of dimension 0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z.t = z( B.t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idz := IdentityMorphism( z );</span>
+&lt;(1)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idz( B.1 );</span>
+&lt;A zero, identity morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idz.1 = idz( B.1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( z, z );</span>
+&lt;(1)-&gt;0; (t)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( z, z ) = z;</span>
+true
+</pre></div>
+
+<p>Now we construct an object in <span class="Math">H</span>, i.e. a functor from <span class="Math">B</span> to <span class="Math">A</span>. To this end we need a finite dimensional vector space <span class="Math">V_0</span></p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V0 := 3 / A;</span>
+&lt;A vector space object over Q of dimension 3&gt;
+</pre></div>
+
+<p>and an endomorphism <span class="Math">\varphi</span> on <span class="Math">V_0</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );</span>
+&lt;A 3 x 3 matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_obj := rec( 1 := V0 );</span>
+rec( 1 := &lt;A vector space object over Q of dimension 3&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V_mor := rec( t := phi / A );</span>
+rec( t := &lt;A morphism in Category of matrices over Q&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := AsObjectInFunctorCategory( B, V_obj, V_mor );</span>
+&lt;(1)-&gt;3; (t)-&gt;3x3&gt;
+</pre></div>
+
+<p>This functor is indeed well defined.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( V );</span>
+true
+</pre></div>
+
+<p>Let us see how such a functor can fail to be well defined:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := HomalgMatrix( [ 1, 0, 0,  0, 0, 1,  0, 1, 0 ], 3, 3, Q );</span>
+&lt;A 3 x 3 matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_obj := rec( 1 := V0 );</span>
+rec( 1 := &lt;A vector space object over Q of dimension 3&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W_mor := rec( t := psi / A );</span>
+rec( t := &lt;A morphism in Category of matrices over Q&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := AsObjectInFunctorCategory( B, W_obj, W_mor );</span>
+&lt;(1)-&gt;3; (t)-&gt;3x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( W );</span>
+false
+</pre></div>
+
+<p>Display some of the properties of this functor.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V.1;</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V.1 = V( B.1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V.t;</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V.t = V( B.t );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V( B.t ) );</span>
+[ [  0,  1,  0 ],
+  [  0,  0,  1 ],
+  [  1,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( V );</span>
+false
+</pre></div>
+
+<p>Costruct the direct sum of <span class="Math">V</span> with itself.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VoplusV := DirectSum( V, V );</span>
+&lt;(1)-&gt;6; (t)-&gt;6x6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VoplusV( B.1 );</span>
+&lt;A vector space object over Q of dimension 6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VoplusV( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( VoplusV( B.t ) );</span>
+[ [  0,  1,  0,  0,  0,  0 ],
+  [  0,  0,  1,  0,  0,  0 ],
+  [  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  1,  0 ],
+  [  0,  0,  0,  0,  0,  1 ],
+  [  0,  0,  0,  1,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Construct the projection <span class="Math">\pi_1</span> from <span class="Math">V \oplus V</span> to the first summand and study some of its properties.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectSum( [ V, V ], 1 );</span>
+&lt;(1)-&gt;6x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 = -pi1;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1( B.1 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi1( B.1 ) );</span>
+[ [  1,  0,  0 ],
+  [  0,  1,  0 ],
+  [  0,  0,  1 ],
+  [  0,  0,  0 ],
+  [  0,  0,  0 ],
+  [  0,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( pi1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( pi1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( pi1 );</span>
+false
+</pre></div>
+
+<p>Construct the kernel object <span class="Math">V1</span> of <span class="Math">\pi_1</span> and check that it is <span class="Math">V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := KernelObject( pi1 );</span>
+&lt;(1)-&gt;3; (t)-&gt;3x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( V1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 = V;</span>
+true
+</pre></div>
+
+<p>Construct the projection <span class="Math">\pi_2</span> from <span class="Math">V \oplus V</span> to the second summand and check that it is not equal to <span class="Math">\pi_1</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectSum( [ V, V ], 2 );</span>
+&lt;(1)-&gt;6x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 = pi2;</span>
+false
+</pre></div>
+
+<p>Construct another object <span class="Math">U</span> in the category of functors from <span class="Math">B</span> to <span class="Math">A</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi := HomalgMatrix( [ 0, 1,  -1, -1 ], 2, 2, Q );</span>
+&lt;A 2 x 2 matrix over an internal ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := 2 / A;</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U_obj := rec( 1 := U );</span>
+rec( 1 := &lt;A vector space object over Q of dimension 2&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U_mor := rec( t := psi / A );</span>
+rec( t := &lt;A morphism in Category of matrices over Q&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := CapFunctor( B, U_obj, U_mor );</span>
+Functor from
+HopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) ) / relations
+-&gt;
+Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U := AsObjectInFunctorCategory( U );</span>
+&lt;(1)-&gt;2; (t)-&gt;2x2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( U );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U( B.1 );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">U( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( U( B.t ) );</span>
+[ [   0,   1 ],
+  [  -1,  -1 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( U );</span>
+false
+</pre></div>
+
+<p>To construct a morphism <span class="Math">\eta</span> from <span class="Math">V</span> to <span class="Math">U</span> in <span class="Math">H</span> (i.e. a natural transformation from the functor <span class="Math">V</span> to <span class="Math">U</span>), we first define a HomAlg matrix.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta := HomalgMatrix( [ 1, 0,  0, 1,  -1, -1 ], 3, 2, Q );</span>
+&lt;A 3 x 2 matrix over an internal ring&gt;
+</pre></div>
+
+<p>Then we define a record that will be used to define the natural transformation <span class="Math">\eta</span>. Here <code class="code">1</code> is the string representation of the only object of <span class="Math">B</span> and the vector space morphism induced by the above matrix is the component of <span class="Math">\eta</span> at this object.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta := rec( 1 := eta / A );</span>
+rec( 1 := &lt;A morphism in Category of matrices over Q&gt; )
+</pre></div>
+
+<p>Finally we construct the natural transformation <span class="Math">\eta</span> from <span class="Math">V</span> to <span class="Math">U</span> as a morphism in the category of functors from <span class="Math">B</span> to <span class="Math">A</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta := AsMorphismInFunctorCategory( V, eta, U );</span>
+&lt;(1)-&gt;3x2&gt;
+</pre></div>
+
+<p>We check that <span class="Math">\eta</span> is well defined.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( eta );</span>
+true
+</pre></div>
+
+<p>We retrieve the component of <span class="Math">\eta</span> at the object 1 of <span class="Math">B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">eta( B.1 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( eta( B.1 ) );</span>
+[ [   1,   0 ],
+  [   0,   1 ],
+  [  -1,  -1 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>We study some of the properties of <span class="Math">\eta</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( eta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( eta );</span>
+false
+</pre></div>
+
+<p>Construct the kernel object of <span class="Math">\eta</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := KernelObject( eta );</span>
+&lt;(1)-&gt;1; (t)-&gt;1x1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K( B.1 );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( K( B.t ) );</span>
+[ [  1 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := KernelEmbedding( eta );</span>
+&lt;(1)-&gt;1x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := CokernelObject( iota );</span>
+&lt;(1)-&gt;2; (t)-&gt;2x2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C = U;</span>
+true
+</pre></div>
+
+<p>Since <span class="Math">B</span> is a bialgebra, <span class="Math">H</span> becomes a monoidal category. First we obtain the unit object <span class="Math">I</span> of this monoidal category.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := TensorUnit( H );</span>
+&lt;(1)-&gt;1; (t)-&gt;1x1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I( B.1 );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I( B.t ) );</span>
+[ [  1 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>It turns out that <span class="Math">I</span> is equal to <span class="Math">K</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I = K;</span>
+true
+</pre></div>
+
+<p>Construct the tensor product <span class="Math">V \otimes V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VV := TensorProductOnObjects( V, V );</span>
+&lt;(1)-&gt;9; (t)-&gt;9x9&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VV( B.1 );</span>
+&lt;A vector space object over Q of dimension 9&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VV( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( VV( B.t ) );</span>
+[ [  0,  0,  0,  0,  1,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  1,  0,  0,  0 ],
+  [  0,  0,  0,  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  1,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  1 ],
+  [  0,  0,  0,  0,  0,  0,  1,  0,  0 ],
+  [  0,  1,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  1,  0,  0,  0,  0,  0,  0 ],
+  [  1,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Compute the dual object of <span class="Math">U</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Us := DualOnObjects( U );</span>
+&lt;(1)-&gt;2; (t)-&gt;2x2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Us( B.1 );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Us( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Us( B.t ) );</span>
+[ [  -1,   1 ],
+  [  -1,   0 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">epsilon := MorphismToBidual( U );</span>
+&lt;(1)-&gt;2x2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( epsilon ) = U;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( epsilon ) = U;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndU := InternalHom( U, U );</span>
+&lt;(1)-&gt;4; (t)-&gt;4x4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UsU := TensorProductOnObjects( Us, U );</span>
+&lt;(1)-&gt;4; (t)-&gt;4x4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UUs := TensorProductOnObjects( U, Us );</span>
+&lt;(1)-&gt;4; (t)-&gt;4x4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndU = UsU;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndU = UUs;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := Braiding( Us, U );</span>
+&lt;(1)-&gt;4x4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( beta ) = UsU;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( beta ) = UUs;</span>
+true
+</pre></div>
+
+<p><a id="X7ACEA7047FD0CB14" name="X7ACEA7047FD0CB14"></a></p>
+
+<h5>1.5-2 <span class="Heading">Differential modules as a category of functors</span></h5>
+
+<p>We illustrate how the category of functors can be used to model differential modules. First, create a quiver <span class="Math">q</span> with one vertex 1 and one edge <span class="Math">t</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(1)[t:1-&gt;1]" );</span>
+q(1)[t:1-&gt;1]
+</pre></div>
+
+<p>Construct the free <span class="Math">\mathbb{Q}</span>-algebra <span class="Math">B</span> of <span class="Math">q</span>. It is isomorphic to the polynomial algebra <span class="Math">\mathbb{Q}[t]</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := Q[F];</span>
+Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+</pre></div>
+
+<p>Define a record that described the <span class="Math">\mathbb{Q}</span>-linear morphism <span class="Math">\epsilon \colon B \to \mathbb{Q}</span> defined by <span class="Math">\epsilon(t) = 0</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := rec( t := 0 );</span>
+rec( t := 0 )
+</pre></div>
+
+<p>Construct the tensor product <span class="Math">B \otimes_{\mathbb{Q}} B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B2 := B^2;</span>
+Algebra( Q, FreeCategory(
+RightQuiver( "qxq(1x1)[1xt:1x1-&gt;1x1,tx1:1x1-&gt;1x1]" ) ) ) / relations
+</pre></div>
+
+<p>Define a record that describes the <span class="Math">\mathbb{Q}</span>-linear morphism <span class="Math">\Delta \colon B \to B \otimes_{\mathbb{Q}} B</span> defined by <span class="Math">\Delta(t) \coloneqq t \otimes 1 + 1 \otimes t</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := rec( t := B2.tx1 + B2.1xt );</span>
+rec( t := (1x1)-[{ 1*(tx1) + 1*(1xt) }]-&gt;(1x1) )
+</pre></div>
+
+<p>Consider <span class="Math">B</span> as a bialgebroid (which is actually a bialgebra) with respect to the counit <span class="Math">\epsilon</span> and comultiplication <span class="Math">\Delta</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddBialgebroidStructure( B, counit, comult );</span>
+Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+</pre></div>
+
+<p>Retrieve the counit of <span class="Math">B</span> as a functor</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := Counit( B );</span>
+Functor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+-&gt;
+Algebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )
+</pre></div>
+
+<p>Apply the functor counit to the (unique) object 1 of <span class="Math">B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( counit, B.1 );</span>
+&lt;(1)&gt;
+</pre></div>
+
+<p>When we apply the functor counit to the morphism <span class="Math">t</span> of <span class="Math">B</span>, we obtain the zero endomorphism of the object <span class="Math">1</span> of <span class="Math">B^0</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( counit, B.t );</span>
+(1)-[0]-&gt;(1)
+</pre></div>
+
+<p>Retrieve the comultiplication of <span class="Math">B</span> as a functor.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := Comultiplication( B );</span>
+Functor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+-&gt;
+Algebra( Q, FreeCategory(
+RightQuiver( "qxq(1x1)[1xt:1x1-&gt;1x1,tx1:1x1-&gt;1x1]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( comult, B.1 );</span>
+&lt;(1x1)&gt;
+</pre></div>
+
+<p>When we apply the functor comult to the morphism <span class="Math">t</span> of <span class="Math">B</span>, we obtain the endomorphism <span class="Math">t \otimes 1 + 1 \otimes t</span> on the object <span class="Math">1 \times 1</span> of <span class="Math">B^2</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( comult, B.t );</span>
+(1x1)-[{ 1*(tx1) + 1*(1xt) }]-&gt;(1x1)
+</pre></div>
+
+<p>Define the underlying record for the antipode <span class="Math">S \colon B \to B</span>. It sends <span class="Math">t</span> to <span class="Math">-t</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">antipode := rec( t := -B.t );</span>
+rec( t := (1)-[-1*(t)]-&gt;(1) )
+</pre></div>
+
+<p>Add the antipode to <span class="Math">B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddAntipode( B, antipode );</span>
+</pre></div>
+
+<p>Get the antipode back as a contravariant functor from <span class="Math">B</span> to <span class="Math">B</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">antipode := Antipode( B );</span>
+Contravariant functor from
+HopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+-&gt;
+HopfAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1-&gt;1]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( antipode, B.1 );</span>
+&lt;(1)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ApplyFunctor( antipode, B.t );</span>
+(1)-[-1*(t)]-&gt;(1)
+</pre></div>
+
+<p>Let <span class="Math">A</span> be the category with objects the natural numbers and morphisms the matrices with coefficients in <span class="Math">\mathbb{Q}</span>. We use it as a skeletal model of the category of finite dimension vector spaces.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := MatrixCategory( Q );</span>
+Category of matrices over Q
+</pre></div>
+
+<p>Let <span class="Math">H</span> be the category of functors from <span class="Math">B</span> to <span class="Math">A</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := FunctorCategory( B, A :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );</span>
+FunctorCategory( HopfAlgebra( Q, FreeCategory(
+RightQuiver( "q(1)[t:1-&gt;1]" ) ) ), Category of matrices over Q )
+</pre></div>
+
+<p>Let <span class="Math">z</span> be the zero object in <span class="Math">H</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( H );</span>
+&lt;(1)-&gt;0; (t)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z( B.1 );</span>
+&lt;A vector space object over Q of dimension 0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+</pre></div>
+
+<p>Let <span class="Math">id_z</span> be the identity morphism on <span class="Math">z</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idz := IdentityMorphism( z );</span>
+&lt;(1)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idz( B.1 );</span>
+&lt;A zero, identity morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( z, z );</span>
+&lt;(1)-&gt;0; (t)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z = DirectSum(z,z);</span>
+true
+</pre></div>
+
+<p>Define a HomAlg matrix <span class="Math">\varphi</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );</span>
+&lt;A 3 x 3 matrix over an internal ring&gt;
+</pre></div>
+
+<p>Finally construct a functor from <span class="Math">B</span> to <span class="Math">A</span> that sends the unique object <span class="Math">1</span> of <span class="Math">B</span> to the natural number 3 (representing a <span class="Math">\mathbb{Q}</span>-vector space of dimension 3) and the morphism <span class="Math">t</span> in <span class="Math">B</span> to the morphism induced by <span class="Math">\varphi</span>. We call this functor again <span class="Math">V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := AsObjectInFunctorCategory( H, [ 3 ], [ phi ] );</span>
+&lt;(1)-&gt;3; (t)-&gt;3x3&gt;
+</pre></div>
+
+<p>Check whether <span class="Math">V</span> is well-defined.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( V );</span>
+true
+</pre></div>
+
+<p>The image of the object <span class="Math">1</span> is the 3-dimensional <span class="Math">\mathbb{Q}</span>-vector space.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V( B.1 );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+</pre></div>
+
+<p>The image of the morphism <span class="Math">t</span> is the morphism induced by the matrix <span class="Math">\varphi</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V( B.t ) );</span>
+[ [  0,  1,  0 ],
+  [  0,  0,  1 ],
+  [  1,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Verify that <span class="Math">V</span> is not zero.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( V );</span>
+false
+</pre></div>
+
+<p>Compute the direct sum <span class="Math">W \coloneqq V \oplus V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := DirectSum( V, V );</span>
+&lt;(1)-&gt;6; (t)-&gt;6x6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W( B.1 );</span>
+&lt;A vector space object over Q of dimension 6&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( W( B.t ) );</span>
+[ [  0,  1,  0,  0,  0,  0 ],
+  [  0,  0,  1,  0,  0,  0 ],
+  [  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  1,  0 ],
+  [  0,  0,  0,  0,  0,  1 ],
+  [  0,  0,  0,  1,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Compute the projection <span class="Math">\pi_1</span> from <span class="Math">V \oplus V</span> to the first summand.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := ProjectionInFactorOfDirectSum( [ V, V ], 1 );</span>
+&lt;(1)-&gt;6x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 = -pi1;</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1( B.1 );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( pi1( B.1 ) );</span>
+[ [  1,  0,  0 ],
+  [  0,  1,  0 ],
+  [  0,  0,  1 ],
+  [  0,  0,  0 ],
+  [  0,  0,  0 ],
+  [  0,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( pi1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( pi1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( pi1 );</span>
+false
+</pre></div>
+
+<p>Compute the kernel object of the projection of <span class="Math">\pi_1</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := KernelObject( pi1 );</span>
+&lt;(1)-&gt;3; (t)-&gt;3x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( V1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 = V;</span>
+true
+</pre></div>
+
+<p>Compute the projection <span class="Math">\pi_2</span> from <span class="Math">V \oplus V</span> to the second summand.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := ProjectionInFactorOfDirectSum( [ V, V ], 2 );</span>
+&lt;(1)-&gt;6x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 = pi2;</span>
+false
+</pre></div>
+
+<p>Next we consider the monoidal structure on the category of functors from <span class="Math">B</span> to <span class="Math">A</span>. First we compute the unit object of this monoidal structure.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := TensorUnit( H );</span>
+&lt;(1)-&gt;1; (t)-&gt;1x1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I( B.1 );</span>
+&lt;A vector space object over Q of dimension 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( I( B.t ) );</span>
+[ [  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Compute the tensor product <span class="Math">V \otimes V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VV := TensorProductOnObjects( V, V );</span>
+&lt;(1)-&gt;9; (t)-&gt;9x9&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VV( B.1 );</span>
+&lt;A vector space object over Q of dimension 9&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VV( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( VV( B.t ) );</span>
+[ [  0,  1,  0,  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  1,  0,  1,  0,  0,  0,  0 ],
+  [  1,  0,  0,  0,  0,  1,  0,  0,  0 ],
+  [  0,  0,  0,  0,  1,  0,  1,  0,  0 ],
+  [  0,  0,  0,  0,  0,  1,  0,  1,  0 ],
+  [  0,  0,  0,  1,  0,  0,  0,  0,  1 ],
+  [  1,  0,  0,  0,  0,  0,  0,  1,  0 ],
+  [  0,  1,  0,  0,  0,  0,  0,  0,  1 ],
+  [  0,  0,  1,  0,  0,  0,  1,  0,  0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Compute the dual <span class="Math">V^{\ast}</span> of <span class="Math">V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Vs := DualOnObjects( V );</span>
+&lt;(1)-&gt;3; (t)-&gt;3x3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Vs( B.1 );</span>
+&lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Vs( B.t );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Vs( B.t ) );</span>
+[ [   0,   0,  -1 ],
+  [  -1,   0,   0 ],
+  [   0,  -1,   0 ] ]
+
+A morphism in Category of matrices over Q
+</pre></div>
+
+<p>Compute the morphism <span class="Math">V \to V^{\ast\ast}</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">epsilon := MorphismToBidual( V );</span>
+&lt;(1)-&gt;3x3&gt;
+</pre></div>
+
+<p>Clearly the source of this morphism is (isomorphic to) <span class="Math">V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( epsilon ) = V;</span>
+true
+</pre></div>
+
+<p>But its range is also isomorphic to <span class="Math">V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( epsilon ) = V;</span>
+true
+</pre></div>
+
+<p>Compute the internal hom object <span class="Math">\operatorname{Hom}(V,V)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndV := InternalHom( V, V );</span>
+&lt;(1)-&gt;9; (t)-&gt;9x9&gt;
+</pre></div>
+
+<p>Compute <span class="Math">V^{\ast} \otimes V</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VsV := TensorProductOnObjects( Vs, V );</span>
+&lt;(1)-&gt;9; (t)-&gt;9x9&gt;
+</pre></div>
+
+<p>Compute <span class="Math">V \otimes V^{\ast}</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">VVs := TensorProductOnObjects( V, Vs );</span>
+&lt;(1)-&gt;9; (t)-&gt;9x9&gt;
+</pre></div>
+
+<p>We have <span class="Math">\operatorname{Hom}(V,V) = V^{\ast} \otimes V</span>, but not <span class="Math">\operatorname{Hom}(V,V) = V \otimes V^{\ast}</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndV = VsV;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EndV = VVs;</span>
+false
+</pre></div>
+
+<p>Construct an isomorphism <span class="Math">V^{\ast} \otimes V \to V \otimes V^{\ast}</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := Braiding( Vs, V );</span>
+&lt;(1)-&gt;9x9&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( beta ) = VsV;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( beta ) = VVs;</span>
+true
+</pre></div>
+
+<p><a id="X85EAC5E17A356218" name="X85EAC5E17A356218"></a></p>
+
+<h5>1.5-3 <span class="Heading">The category of equivariant maps as a category of functors</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" );</span>
+q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C3C3 := Category( q, [ [ q.a^3, q.1 ], [ q.ab, q.bc ], [ q.c^3, q.2 ] ] );</span>
+FreeCategory( RightQuiver(
+  "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) / [ a*a*a = 1, a*b = b*c, c*c*c = 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GF3 := HomalgRingOfIntegers( 3 );</span>
+GF(3)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PushOptions( rec( range_of_HomStructure := MatrixCategory( GF3 ) ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := GF3[C3C3];</span>
+Algebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PopOptions( );</span>
+</pre></div>
+
+<p>A representation of the category C3C3 is another way to encode a module homomorphism between two modules over the cyclic group <span class="Math">C_3</span> of order <span class="Math">3</span>: The vector space underlying the first module is the given by the value of (1). The action of <span class="Math">C_3</span> on the first module is given by the value of (a). The vector space underlying the second module is the given by the value of (2). The action on the second module is given by the value of (c). The above relation of the quiver states that the value of (b) is a module homomorphism from the first to the second <span class="Math">C_3</span>-module. Now we add the bialgebroid structure:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := rec( a := 1, b := 1, c := 1 );</span>
+rec( a := 1, b := 1, c := 1 )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A2 := A^2;</span>
+Algebroid( GF(3), FreeCategory(
+RightQuiver( "qxq(1x1,1x2,2x1,2x2)[1xa:1x1-&gt;1x1,1xb:1x1-&gt;1x2,1xc:1x2-&gt;1x2,
+2xa:2x1-&gt;2x1,2xb:2x1-&gt;2x2,2xc:2x2-&gt;2x2,ax1:1x1-&gt;1x1,ax2:1x2-&gt;1x2,
+bx1:1x1-&gt;2x1,bx2:1x2-&gt;2x2,cx1:2x1-&gt;2x1,cx2:2x2-&gt;2x2]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( A2.ax1, A2.1xa ) = PreCompose( A2.1xa, A2.ax1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( A2.bx1, A2.2xb ) = PreCompose( A2.1xb, A2.bx2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( A2.cx2, A2.2xc ) = PreCompose( A2.2xc, A2.cx2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := rec( a := PreCompose( A2.ax1, A2.1xa ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               b := PreCompose( A2.1xb, A2.bx2 ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               c := PreCompose( A2.cx2, A2.2xc ) );</span>
+rec( a := (1x1)-[{ Z(3)^0*(1xa*ax1) }]-&gt;(1x1),
+     b := (1x1)-[{ Z(3)^0*(1xb*bx2) }]-&gt;(2x2),
+     c := (2x2)-[{ Z(3)^0*(2xc*cx2) }]-&gt;(2x2) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddBialgebroidStructure( A, counit, comult );</span>
+Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">counit := Counit( A );</span>
+Functor from
+Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations
+-&gt;
+Algebra( GF(3), FreeCategory( RightQuiver( "*(1)[]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comult := Comultiplication( A );</span>
+Functor from
+Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations
+-&gt;
+Algebroid( GF(3), FreeCategory(
+RightQuiver( "qxq(1x1,1x2,2x1,2x2)[1xa:1x1-&gt;1x1,1xb:1x1-&gt;1x2,1xc:1x2-&gt;1x2,
+2xa:2x1-&gt;2x1,2xb:2x1-&gt;2x2,2xc:2x2-&gt;2x2,ax1:1x1-&gt;1x1,ax2:1x2-&gt;1x2,
+bx1:1x1-&gt;2x1,bx2:1x2-&gt;2x2,cx1:2x1-&gt;2x1,cx2:2x2-&gt;2x2]" ) ) ) / relations
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kmat := MatrixCategory( GF3 );</span>
+Category of matrices over GF(3)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FunCat := FunctorCategory( A, kmat );</span>
+FunctorCategory( Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations,
+Category of matrices over GF(3) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CommutativeRingOfLinearCategory( FunCat );</span>
+GF(3)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">zero := ZeroObject( FunCat );</span>
+&lt;(1)-&gt;0, (2)-&gt;0; (a)-&gt;0x0, (b)-&gt;0x0, (c)-&gt;0x0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( zero );</span>
+Image of &lt;(1)&gt;:
+A vector space object over GF(3) of dimension 0
+
+Image of &lt;(2)&gt;:
+A vector space object over GF(3) of dimension 0
+
+Image of (1)-[{ Z(3)^0*(a) }]-&gt;(1):
+(an empty 0 x 0 matrix)
+
+A morphism in Category of matrices over GF(3)
+
+Image of (1)-[{ Z(3)^0*(b) }]-&gt;(2):
+(an empty 0 x 0 matrix)
+
+A morphism in Category of matrices over GF(3)
+
+Image of (2)-[{ Z(3)^0*(c) }]-&gt;(2):
+(an empty 0 x 0 matrix)
+
+A morphism in Category of matrices over GF(3)
+
+An object in FunctorCategory( Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations,
+Category of matrices over GF(3) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">const := TensorUnit( FunCat );</span>
+&lt;(1)-&gt;1, (2)-&gt;1; (a)-&gt;1x1, (b)-&gt;1x1, (c)-&gt;1x1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( const );</span>
+Image of &lt;(1)&gt;:
+A vector space object over GF(3) of dimension 1
+
+Image of &lt;(2)&gt;:
+A vector space object over GF(3) of dimension 1
+
+Image of (1)-[{ Z(3)^0*(a) }]-&gt;(1):
+ 1
+
+A morphism in Category of matrices over GF(3)
+
+Image of (1)-[{ Z(3)^0*(b) }]-&gt;(2):
+ 1
+
+A morphism in Category of matrices over GF(3)
+
+Image of (2)-[{ Z(3)^0*(c) }]-&gt;(2):
+ 1
+
+A morphism in Category of matrices over GF(3)
+
+An object in FunctorCategory( Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations,
+Category of matrices over GF(3) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := [[1,1,0,0,0],[0,1,1,0,0],[0,0,1,0,0],[0,0,0,1,1],[0,0,0,0,1]];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := [[0,1,0,0],[0,0,1,0],[0,0,0,0],[0,1,0,1],[0,0,1,0]];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := [[1,1,0,0],[0,1,1,0],[0,0,1,0],[0,0,0,1]];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nine := AsObjectInFunctorCategory( FunCat, [ 5, 4 ], [ d, e, f ] );</span>
+&lt;(1)-&gt;5, (2)-&gt;4; (a)-&gt;5x5, (b)-&gt;5x4, (c)-&gt;4x4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( nine );</span>
+Image of &lt;(1)&gt;:
+A vector space object over GF(3) of dimension 5
+
+Image of &lt;(2)&gt;:
+A vector space object over GF(3) of dimension 4
+
+Image of (1)-[{ Z(3)^0*(a) }]-&gt;(1):
+ 1 1 . . .
+ . 1 1 . .
+ . . 1 . .
+ . . . 1 1
+ . . . . 1
+
+A morphism in Category of matrices over GF(3)
+
+Image of (1)-[{ Z(3)^0*(b) }]-&gt;(2):
+ . 1 . .
+ . . 1 .
+ . . . .
+ . 1 . 1
+ . . 1 .
+
+A morphism in Category of matrices over GF(3)
+
+Image of (2)-[{ Z(3)^0*(c) }]-&gt;(2):
+ 1 1 . .
+ . 1 1 .
+ . . 1 .
+ . . . 1
+
+A morphism in Category of matrices over GF(3)
+
+An object in FunctorCategory( Bialgebroid( GF(3), FreeCategory(
+RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) ) / relations,
+Category of matrices over GF(3) ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nine(A.1);</span>
+&lt;A vector space object over GF(3) of dimension 5&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nine(A.2);</span>
+&lt;A vector space object over GF(3) of dimension 4&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nine(A.b);</span>
+&lt;A morphism in Category of matrices over GF(3)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( nine(A.b) );</span>
+ . 1 . .
+ . . 1 .
+ . . . .
+ . 1 . 1
+ . . 1 .
+
+A morphism in Category of matrices over GF(3)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( nine );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fortyone := TensorProductOnObjects( nine, nine );</span>
+&lt;(1)-&gt;25, (2)-&gt;16; (a)-&gt;25x25, (b)-&gt;25x16, (c)-&gt;16x16&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( fortyone );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fortyone( A.1 );</span>
+&lt;A vector space object over GF(3) of dimension 25&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fortyone( A.2 );</span>
+&lt;A vector space object over GF(3) of dimension 16&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fortyone(A.a) = TensorProductOnMorphisms( nine(A.a), nine(A.a) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fortyone(A.b) = TensorProductOnMorphisms( nine(A.b), nine(A.b) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fortyone(A.c) = TensorProductOnMorphisms( nine(A.c), nine(A.c) );</span>
+true
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

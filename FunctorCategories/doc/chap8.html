@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FunctorCategories) - Chapter 8: The elementary topos of decorated finite quivers</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap8"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap9.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap8_mj.html">[MathJax on]</a></p>
+<p><a id="X8218044F85522BAA" name="X8218044F85522BAA"></a></p>
+<div class="ChapSects"><a href="chap8.html#X8218044F85522BAA">8 <span class="Heading">The elementary topos of decorated finite quivers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X86EC0F0A78ECBC10">8.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X878660D17E0ED797">8.1-1 CategoryOfDecoratedQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7C66AD0781CDB559">8.1-2 CreateDecoratedQuiver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7AF42667843DED51">8.1-3 CreateDecoratedQuiverMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X84E6BF8F79D8275A">8.1-4 Subobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7C67D8527CAE12B7">8.1-5 Subobject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7C701DBF7BAE649A">8.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F1DFF608247843B">8.2-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DAE0B3E7CF63DCA">8.2-2 DecorationOfVertices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F7D1EA47B4F2F11">8.2-3 DecorationOfArrows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X866AB5A981D47EA6">8.2-4 YonedaEmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8283E51E7A51CAD4">8.2-5 Arrows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X78EEB8207C9BE1BC">8.2-6 SvgString</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X858A48CD862EF593">8.2-7 DotVertexLabelledDigraph</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7DE8E16C7C2D387B">8.3 <span class="Heading">Operations</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7D9044767BEB1523">8.4 <span class="Heading">Global variables</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7D03633A7D98026B">8.5 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E496EF47B578904">8.5-1 IsCategoryOfDecoratedQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8777EF3878EF431E">8.5-2 IsCellInCategoryOfDecoratedQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X802F34AE81D19536">8.5-3 IsObjectInCategoryOfDecoratedQuivers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F430DFE8688DFF3">8.5-4 IsMorphismInCategoryOfDecoratedQuivers</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X85861B017AEEC50B">8.6 <span class="Heading">Example</span></a>
+</span>
+</div>
+</div>
+
+<h3>8 <span class="Heading">The elementary topos of decorated finite quivers</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>8.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X878660D17E0ED797" name="X878660D17E0ED797"></a></p>
+
+<h5>8.1-1 CategoryOfDecoratedQuivers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfDecoratedQuivers</code>( <var class="Arg">quiver</var>, <var class="Arg">decoration_of_vertices</var>, <var class="Arg">decoration_of_arrows</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the category of decorated quivers over the decorating quiver <var class="Arg">quiver</var> and the two lists of colors <var class="Arg">decoration_of_vertices</var> and <var class="Arg">decoration_of_arrows</var>.</p>
+
+<p><a id="X7C66AD0781CDB559" name="X7C66AD0781CDB559"></a></p>
+
+<h5>8.1-2 CreateDecoratedQuiver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateDecoratedQuiver</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7AF42667843DED51" name="X7AF42667843DED51"></a></p>
+
+<h5>8.1-3 CreateDecoratedQuiverMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateDecoratedQuiverMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X84E6BF8F79D8275A" name="X84E6BF8F79D8275A"></a></p>
+
+<h5>8.1-4 Subobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Subobject</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7C67D8527CAE12B7" name="X7C67D8527CAE12B7"></a></p>
+
+<h5>8.1-5 Subobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Subobject</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>8.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7F1DFF608247843B" name="X7F1DFF608247843B"></a></p>
+
+<h5>8.2-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">decorated_fin_quivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7DAE0B3E7CF63DCA" name="X7DAE0B3E7CF63DCA"></a></p>
+
+<h5>8.2-2 DecorationOfVertices</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecorationOfVertices</code>( <var class="Arg">decorated_fin_quivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7F7D1EA47B4F2F11" name="X7F7D1EA47B4F2F11"></a></p>
+
+<h5>8.2-3 DecorationOfArrows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DecorationOfArrows</code>( <var class="Arg">decorated_fin_quivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X866AB5A981D47EA6" name="X866AB5A981D47EA6"></a></p>
+
+<h5>8.2-4 YonedaEmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">decorated_fin_quivers</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X8283E51E7A51CAD4" name="X8283E51E7A51CAD4"></a></p>
+
+<h5>8.2-5 Arrows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Arrows</code>( <var class="Arg">quiver</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X78EEB8207C9BE1BC" name="X78EEB8207C9BE1BC"></a></p>
+
+<h5>8.2-6 SvgString</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SvgString</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X858A48CD862EF593" name="X858A48CD862EF593"></a></p>
+
+<h5>8.2-7 DotVertexLabelledDigraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DotVertexLabelledDigraph</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>8.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
+
+<h4>8.4 <span class="Heading">Global variables</span></h4>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>8.5 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X7E496EF47B578904" name="X7E496EF47B578904"></a></p>
+
+<h5>8.5-1 IsCategoryOfDecoratedQuivers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfDecoratedQuivers</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of the category of quivers.</p>
+
+<p><a id="X8777EF3878EF431E" name="X8777EF3878EF431E"></a></p>
+
+<h5>8.5-2 IsCellInCategoryOfDecoratedQuivers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCategoryOfDecoratedQuivers</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in the category of quivers.</p>
+
+<p><a id="X802F34AE81D19536" name="X802F34AE81D19536"></a></p>
+
+<h5>8.5-3 IsObjectInCategoryOfDecoratedQuivers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfDecoratedQuivers</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in the category of quivers.</p>
+
+<p><a id="X7F430DFE8688DFF3" name="X7F430DFE8688DFF3"></a></p>
+
+<h5>8.5-4 IsMorphismInCategoryOfDecoratedQuivers</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfDecoratedQuivers</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the category of quivers.</p>
+
+<p><a id="X85861B017AEEC50B" name="X85861B017AEEC50B"></a></p>
+
+<h4>8.6 <span class="Heading">Example</span></h4>
+
+<p>In the following we construct the category of decorated finite quivers:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinQuivers;</span>
+CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">decorating_quiver := SubobjectClassifier( FinQuivers );</span>
+&lt;An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( decorating_quiver );</span>
+( { 0, 1 },
+  { 0 := [ 0, 0 ], 1 := [ 1, 0 ], 2 := [ 0, 1 ],
+    3 := [ 1, 1 ], 4 := [ 1, 1 ] } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecoratedFinQuivers :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  CategoryOfDecoratedQuivers( decorating_quiver,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          [ "magenta", "cyan" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          [ "red", "brown", "orange", "blue", "green" ] );</span>
+CategoryOfDecoratedQuivers( decorating_quiver )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := TerminalObject( DecoratedFinQuivers );</span>
+&lt;An object in CategoryOfDecoratedQuivers( decorating_quiver )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( B );</span>
+( { 0 := "magenta", 1 := "cyan" },
+  { 0 := [ 0, 0, "red" ], 1 := [ 1, 0, "brown" ], 2 := [ 0, 1, "orange" ],
+    3 := [ 1, 1, "blue" ], 4 := [ 1, 1, "green" ] } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := Subobject( B, [ 0 ], [ 3, 4 ] );</span>
+&lt;A monomorphism in CategoryOfDecoratedQuivers( decorating_quiver )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+Image of &lt;(V)&gt;:
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+
+Image of &lt;(A)&gt;:
+{ 0, 1 } ⱶ[ 3, 4 ]→ { 0,..., 4 }
+
+A morphism in CategoryOfDecoratedQuivers( decorating_quiver )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dq1 := CreateDecoratedQuiver( DecoratedFinQuivers,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ 0, 1, 1, 1 ], # decoration of [ 0, 1, 2, 3 ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ 0,0,0,  0,1,2,  1,0,1,  1,2,3,  2,3,4,  3,2,3 ] );</span>
+&lt;An object in CategoryOfDecoratedQuivers( decorating_quiver )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( dq1 );</span>
+( { 0 := "magenta", 1 := "cyan", 2 := "cyan", 3 := "cyan" },
+  { 0 := [ 0, 0, "red" ], 1 := [ 0, 1, "orange" ], 2 := [ 1, 0, "brown" ],
+    3 := [ 1, 2, "blue" ], 4 := [ 2, 3, "green" ], 5 := [ 3, 2, "blue" ] } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( dq1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( DecoratedFinQuivers );</span>
+&lt;An object in CategoryOfDecoratedQuivers( decorating_quiver )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( omega );</span>
+( { 0 := "magenta", 1 := "cyan", 2 := "magenta", 3 := "cyan" },
+  { 0 := [ 0, 0, "red" ], 1 := [ 1, 0, "brown" ], 2 := [ 0, 1, "orange" ],
+    3 := [ 1, 1, "blue" ], 4 := [ 1, 1, "green" ], 5 := [ 2, 0, "red" ],
+    6 := [ 3, 0, "brown" ], 7 := [ 2, 1, "orange" ], 8 := [ 3, 1, "blue" ],
+    9 := [ 3, 1, "green" ], 10 := [ 0, 2, "red" ], 11 := [ 1, 2, "brown" ],
+    12 := [ 0, 3, "orange" ], 13 := [ 1, 3, "blue" ], 14 := [ 1, 3, "green" ],
+    15 := [ 2, 2, "red" ], 16 := [ 3, 2, "brown" ], 17 := [ 2, 3, "orange" ],
+    18 := [ 3, 3, "blue" ], 19 := [ 3, 3, "green" ], 20 := [ 2, 2, "red" ],
+    21 := [ 3, 2, "brown" ], 22 := [ 2, 3, "orange" ], 23 := [ 3, 3, "blue" ],
+    24 := [ 3, 3, "green" ] } )
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap9.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

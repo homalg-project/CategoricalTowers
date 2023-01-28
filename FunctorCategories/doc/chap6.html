@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FunctorCategories) - Chapter 6: Topos operations</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap6"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap6_mj.html">[MathJax on]</a></p>
+<p><a id="X7A6ECE687D46C687" name="X7A6ECE687D46C687"></a></p>
+<div class="ChapSects"><a href="chap6.html#X7A6ECE687D46C687">6 <span class="Heading">Topos operations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X86507536811161A7">6.1 <span class="Heading">Double-pushout rewriting</span></a>
+</span>
+</div>
+</div>
+
+<h3>6 <span class="Heading">Topos operations</span></h3>
+
+<p><a id="X86507536811161A7" name="X86507536811161A7"></a></p>
+
+<h4>6.1 <span class="Heading">Double-pushout rewriting</span></h4>
+
+<p>We compute the double-pushout rewriting of a quiver <span class="Math">G</span>, given rewriting span <span class="Math">l, r</span> and the matching <span class="Math">m: L \rightarrow G</span>:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := CreateQuiver( 3, [ 1,0,  2,0,  2,2 ] );</span>
+&lt;An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := CreateQuiver( 4, [ 0,1,  2,0,  0,3 ] );</span>
+&lt;An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := Subobject( L, [ 0, 1 ], [ ] );</span>
+&lt;A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := Subobject( R, [ 0, 1 ], [ ] );</span>
+&lt;A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := CreateQuiver( 4, [ 1,0,  3,0,  3,3,  2,0,  2,1 ] );</span>
+&lt;An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := Subobject( G, [ 3, 1, 2 ] );</span>
+&lt;A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( m ) = L;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p := DPO( m, l, r );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">p[2];</span>
+&lt;A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( p[2] );</span>
+Image of &lt;(V)&gt;:
+{ 0,..., 3 } ⱶ[ 0, 2, 3, 4 ]→ { 0,..., 4 }
+
+Image of &lt;(A)&gt;:
+{ 0, 1, 2 } ⱶ[ 2, 3, 4 ]→ { 0,..., 4 }
+
+A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+given by the above data
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,241 @@
+  
+  [1X12 [33X[0;0YFunctors between the various categories[133X[101X
+  
+  
+  [1X12.1 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X12.1-1 [33X[0;0YThe reflexive completion of the one object category $C 2$[133X[101X
+  
+  [33X[0;0YThe reflexive completion of the one object category [23XC_2[123X has four isomorphism
+  classes of objects:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[a:1->1]" );[127X[104X
+    [4X[28Xq(1)[a:1->1][128X[104X
+    [4X[25Xgap>[125X [27XC2 := Category( q, [ [ q.a^2, q.1 ] ] );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ][128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( C2 );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )/ [ a*a = 1 ],[128X[104X
+    [4X[28XSkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( TerminalObject( PSh ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( InitialObject( PSh ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XL := PSh.1;[127X[104X
+    [4X[28X<A projective object in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( L );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XP := DirectProduct( L, L );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( P );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xiota := UnitOfIsbellAdjunction( PSh );[127X[104X
+    [4X[28XA natural transformation from Identity functor of PreSheaves([128X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )[128X[104X
+    [4X[28Xto Precomposition of Isbell left adjoint functor and Isbell right adjoint functor[128X[104X
+    [4X[25Xgap>[125X [27XiotaP := iota( P );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iotaP );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a = 1 ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( iotaP );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XC := Coproduct( L, L );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "q(1)[a:1->1]" ) ) / [ a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( C );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XiotaC := iota( C );[127X[104X
+    [4X[28X<A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X / [ a*a = 1 ], SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iotaC );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28X{ 0,..., 3 } ⱶ[ 1, 2, 0, 3 ]→ { 0,..., 3 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
+    [4X[28X/ [ a*a = 1 ], SkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsIsomorphism( iotaC );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XSource( iotaC ) = C;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRange( iotaC ) = P;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( Coproduct( L, L, L ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[t:1->1]" );[127X[104X
+    [4X[28Xq(1)[t:1->1][128X[104X
+    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
+    [4X[28XFreeCategory( RightQuiver( "q(1)[t:1->1]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XQq := Q[F];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XA := Qq / [ Qq.t^3 ];[127X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XPSh := PreSheaves( A );[127X[104X
+    [4X[28XPreSheaves([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27XCommutativeRingOfLinearCategory( PSh );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( PSh.1 );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(t) }]->(1):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( PSh.t );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 3[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in PreSheaves([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27Xphi := PreCompose( PSh.t, PSh.t );[127X[104X
+    [4X[28X<(1)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27XV := DirectSum( [ PSh.1, KernelObject( phi ), ImageObject( phi ) ] );[127X[104X
+    [4X[28X<(1)->6; (t)->6x6>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( V );[127X[104X
+    [4X[28XImage of <(1)>:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XImage of (1)-[{ 1*(t) }]->(1):[128X[104X
+    [4X[28XSource:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XMatrix:[128X[104X
+    [4X[28X[ [  0,  1,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  0,  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XRange:[128X[104X
+    [4X[28XA row module over Q of rank 6[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Rows( Q )[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XAn object in PreSheaves([128X[104X
+    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27XIsProjective( V );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsReflexive( V );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X12.2 [33X[0;0YAttributes[133X[101X
+  
+  [1X12.2-1 NakayamaLeftAdjoint[101X
+  
+  [33X[1;0Y[29X[2XNakayamaLeftAdjoint[102X( [3XPSh[103X, [3XcoPSh[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XNakayamaLeftAdjoint[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns  the  Nakayama  left  adjoint functor from [3XPSh[103X = [10XPreSheaves[110X( [3XB[103X ) [23X\to[123X
+  [3XcoPSh[103X = [10XCoPreSheaves[110X( [3XB[103X ).[133X
+  
+  [1X12.2-2 NakayamaRightAdjoint[101X
+  
+  [33X[1;0Y[29X[2XNakayamaRightAdjoint[102X( [3XcoPSh[103X, [3XPSh[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XNakayamaRightAdjoint[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns  the  Nakayama  right adjoint functor from [3XcoPSh[103X = [10XCoPreSheaves[110X( [3XB[103X )
+  [23X\to[123X [3XPSh[103X = [10XPreSheaves[110X( [3XB[103X ).[133X
+  
+  [1X12.2-3 IsbellLeftAdjoint[101X
+  
+  [33X[1;0Y[29X[2XIsbellLeftAdjoint[102X( [3XPSh[103X, [3XcoPSh[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsbellLeftAdjoint[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns the Isbell left adjoint functor from [3XPSh[103X = [10XPreSheaves[110X( [3XB[103X ) [23X\to[123X [3XcoPSh[103X
+  = [10XCoPreSheaves[110X( [3XB[103X ).[133X
+  
+  [1X12.2-4 IsbellRightAdjoint[101X
+  
+  [33X[1;0Y[29X[2XIsbellRightAdjoint[102X( [3XcoPSh[103X, [3XPSh[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsbellRightAdjoint[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns  the Isbell right adjoint functor from [3XcoPSh[103X = [10XCoPreSheaves[110X( [3XB[103X ) [23X\to[123X
+  [3XPSh[103X = [10XPreSheaves[110X( [3XB[103X ).[133X
+  
+  [1X12.2-5 IsbellAdjunctionMonad[101X
+  
+  [33X[1;0Y[29X[2XIsbellAdjunctionMonad[102X( [3XPSh[103X, [3XcoPSh[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIsbellAdjunctionMonad[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns the Isbell adjunction monad on the presheaf category [3XPSh[103X.[133X
+  
+  [1X12.2-6 UnitOfIsbellAdjunction[101X
+  
+  [33X[1;0Y[29X[2XUnitOfIsbellAdjunction[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns the unit of the Isbell adjunction on the presheaf category [3XPSh[103X.[133X
+  
+  [1X12.2-7 IsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns      the     isomorphism     functor     from     [10XSource[110X([3XPSh[103X)     to
+  [10XImageOfYonedaEmbeddingOfSource[110X([3XPSh[103X) induced by the Yoneda embedding.[133X
+  
+  [1X12.2-8 IsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns  the isomorphism functor from [10XImageOfYonedaEmbeddingOfSource[110X([3XPSh[103X) to
+  [10XSource[110X([3XPSh[103X) induced by the Yoneda embedding.[133X
+  
+  [1X12.2-9 EquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource[101X
+  
+  [33X[1;0Y[29X[2XEquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [33X[0;0YReturns the equivalence functor from [10XFullSubcategoryOfProjectiveObjects[110X([3XPSh[103X)
+  to the additive closure category of [10XSource[110X([3XPSh[103X).[133X
+  

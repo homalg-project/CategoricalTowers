@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FunctorCategories) - Chapter 4: The elementary topos of finite bouquets</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4_mj.html">[MathJax on]</a></p>
+<p><a id="X84AAC9047BE83886" name="X84AAC9047BE83886"></a></p>
+<div class="ChapSects"><a href="chap4.html#X84AAC9047BE83886">4 <span class="Heading">The elementary topos of finite bouquets</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X86EC0F0A78ECBC10">4.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X82FE0D8F79221568">4.1-1 CategoryOfBouquetsEnrichedOver</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7FF7CAAB7909E6C4">4.1-2 CreateBouquet</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8112E6E77D1E2218">4.1-3 CreateBouquet</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85F28F9886E50198">4.1-4 CreateBouquetMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X802569DA8766A5D0">4.1-5 Subobject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8270BAB084D96D76">4.1-6 Subobject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7C701DBF7BAE649A">4.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EE9FEA87B4444E3">4.2-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F1D58FD7F03E673">4.2-2 YonedaEmbeddingOfUnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X858CB4C37D2F10F0">4.2-3 Loops</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7BF1ADD085BF8AD3">4.2-4 SvgString</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D13B55679BD1B33">4.2-5 DotVertexLabelledDigraph</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7DE8E16C7C2D387B">4.3 <span class="Heading">Operations</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7D9044767BEB1523">4.4 <span class="Heading">Global variables</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D2B0D1A7C73470A">4.4-1 QuiverOfCategoryOfBouquets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85C55C0181E94C26">4.4-2 FinBouquets</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7D03633A7D98026B">4.5 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C57808984EB76A1">4.5-1 IsCategoryOfBouquets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D0FBAB67BB043ED">4.5-2 IsCellInCategoryOfBouquets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80974A4A81A64100">4.5-3 IsObjectInCategoryOfBouquets</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X868694738088D994">4.5-4 IsMorphismInCategoryOfBouquets</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X85861B017AEEC50B">4.6 <span class="Heading">Example</span></a>
+</span>
+</div>
+</div>
+
+<h3>4 <span class="Heading">The elementary topos of finite bouquets</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>4.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X82FE0D8F79221568" name="X82FE0D8F79221568"></a></p>
+
+<h5>4.1-1 CategoryOfBouquetsEnrichedOver</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfBouquetsEnrichedOver</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the category of bouquets.</p>
+
+<p><a id="X7FF7CAAB7909E6C4" name="X7FF7CAAB7909E6C4"></a></p>
+
+<h5>4.1-2 CreateBouquet</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateBouquet</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X8112E6E77D1E2218" name="X8112E6E77D1E2218"></a></p>
+
+<h5>4.1-3 CreateBouquet</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateBouquet</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X85F28F9886E50198" name="X85F28F9886E50198"></a></p>
+
+<h5>4.1-4 CreateBouquetMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateBouquetMorphism</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X802569DA8766A5D0" name="X802569DA8766A5D0"></a></p>
+
+<h5>4.1-5 Subobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Subobject</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X8270BAB084D96D76" name="X8270BAB084D96D76"></a></p>
+
+<h5>4.1-6 Subobject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Subobject</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>4.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7EE9FEA87B4444E3" name="X7EE9FEA87B4444E3"></a></p>
+
+<h5>4.2-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">fin_bouquets</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7F1D58FD7F03E673" name="X7F1D58FD7F03E673"></a></p>
+
+<h5>4.2-2 YonedaEmbeddingOfUnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfUnderlyingCategory</code>( <var class="Arg">fin_bouquets</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X858CB4C37D2F10F0" name="X858CB4C37D2F10F0"></a></p>
+
+<h5>4.2-3 Loops</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Loops</code>( <var class="Arg">bouquet</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7BF1ADD085BF8AD3" name="X7BF1ADD085BF8AD3"></a></p>
+
+<h5>4.2-4 SvgString</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SvgString</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7D13B55679BD1B33" name="X7D13B55679BD1B33"></a></p>
+
+<h5>4.2-5 DotVertexLabelledDigraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DotVertexLabelledDigraph</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>4.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
+
+<h4>4.4 <span class="Heading">Global variables</span></h4>
+
+<p>The quiver generating the category of bouquets</p>
+
+<p><a id="X7D2B0D1A7C73470A" name="X7D2B0D1A7C73470A"></a></p>
+
+<h5>4.4-1 QuiverOfCategoryOfBouquets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuiverOfCategoryOfBouquets</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>The category of bouquets as a category of presheaves with values in <code class="code">SkeletalFinSets</code>.</p>
+
+<p><a id="X85C55C0181E94C26" name="X85C55C0181E94C26"></a></p>
+
+<h5>4.4-2 FinBouquets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FinBouquets</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>4.5 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X7C57808984EB76A1" name="X7C57808984EB76A1"></a></p>
+
+<h5>4.5-1 IsCategoryOfBouquets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfBouquets</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of the category of bouquets.</p>
+
+<p><a id="X7D0FBAB67BB043ED" name="X7D0FBAB67BB043ED"></a></p>
+
+<h5>4.5-2 IsCellInCategoryOfBouquets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCategoryOfBouquets</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in the category of bouquets.</p>
+
+<p><a id="X80974A4A81A64100" name="X80974A4A81A64100"></a></p>
+
+<h5>4.5-3 IsObjectInCategoryOfBouquets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfBouquets</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in the category of bouquets.</p>
+
+<p><a id="X868694738088D994" name="X868694738088D994"></a></p>
+
+<h5>4.5-4 IsMorphismInCategoryOfBouquets</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfBouquets</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the category of bouquets.</p>
+
+<p><a id="X85861B017AEEC50B" name="X85861B017AEEC50B"></a></p>
+
+<h4>4.6 <span class="Heading">Example</span></h4>
+
+<p>In the following we construct the category of finite bouquets (or finite multisets or finite maps):</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinBouquets;</span>
+CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := UnderlyingCategory( FinBouquets );</span>
+FreeCategory( RightQuiver( "q(V,L)[b:V-&gt;L]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := FinBouquets.V;</span>
+&lt;A projective object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V );</span>
+( { 0 }, { } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := FinBouquets.L;</span>
+&lt;A projective object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
+( { 0 }, { 0 ↦ 0 } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := FinBouquets.b;</span>
+&lt;A monomorphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( b );</span>
+Image of &lt;(V)&gt;:
+{ 0 } ⱶ[ 0 ]→ { 0 }
+
+Image of &lt;(L)&gt;:
+∅ ⱶ[  ]→ { 0 }
+
+A morphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( FinBouquets );</span>
+&lt;An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
+( { 0 }, { 0 ↦ 0 } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T = L;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := CreateBouquet( 3, [ 1, 1, 1, 2 ] );</span>
+&lt;An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( M );</span>
+( { 0, 1, 2 }, { 0 ↦ 1, 1 ↦ 1, 2 ↦ 1, 3 ↦ 2 } )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := Colimit( [ V, V, V, L, L, L, L ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             [ [ 1, b, 3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ 1, b, 4 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ 1, b, 5 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               [ 2, b, 6 ] ] );</span>
+&lt;An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N = M;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LL := Coproduct( L, L );</span>
+&lt;An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L2 := CreateBouquet( 1, [ 0, 0 ] );</span>
+&lt;An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">epsilon := CreateBouquetMorphism( LL, [ 0, 0 ], [ 0, 1 ], L2 );</span>
+&lt;A morphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( epsilon );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( epsilon );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( epsilon );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( FinBouquets );</span>
+&lt;An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( omega );</span>
+( { 0, 1 }, { 0 ↦ 0, 1 ↦ 1, 2 ↦ 1 } )
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (FunctorCategories) - Chapter 2: Category of presheaves of a finitely presented (linear) category</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
+<p><a id="X81D4C147794C661B" name="X81D4C147794C661B"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X81D4C147794C661B">2 <span class="Heading">Category of presheaves of a finitely presented (linear) category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86EC0F0A78ECBC10">2.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X86C6EE397F8CFCAA">2.1-1 PreSheaves</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CEFF80E839359CB">2.1-2 CreatePreSheaf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81EDE6777FFE1488">2.1-3 CreatePreSheafMorphismByValues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C6877007E223FAF">2.1-4 CoYonedaLemma</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87C63BFD7A0A47B7">2.1-5 SomeDiagramOfRepresentables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7838509887AE558D">2.1-6 CategoryOfInternalCategories</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7C701DBF7BAE649A">2.2 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B64D74D8667D4E2">2.2-1 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X838E862B7AC83916">2.2-2 Range</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87E3230F7D81CE6D">2.2-3 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82BBFBE97C63B781">2.2-4 Range</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X853357DD7DA1350B">2.2-5 ValuesOnAllObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X865F04DE869EB218">2.2-6 UnderlyingCapTwoCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8441A5F38325BDF0">2.2-7 YonedaEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D850F4D7AECF129">2.2-8 YonedaEmbeddingOfSourceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8186B25287502757">2.2-9 ImageOfYonedaEmbeddingOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FC3EAA5875031CA">2.2-10 SimpleObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80048E1182551690">2.2-11 NerveTruncatedInDegree2</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87B457D77A0B8836">2.2-12 SievesOfPathsToTruth</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE8E16C7C2D387B">2.3 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DFFAE07828625D2">2.3-1 ApplyObjectInPreSheafCategoryToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EAB49027E44FBF5">2.3-2 ApplyObjectInPreSheafCategoryToMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80E2A00879D8E496">2.3-3 ApplyMorphismInPreSheafCategoryToObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78BA10757D4A2D61">2.4-1 IsPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X87E694A77D44A1F0">2.4-2 IsCellInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X869BBAB986FFB5D6">2.4-3 IsObjectInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8727C26D7CD65307">2.4-4 IsMorphismInPreSheafCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D6A79907FA8C87F">2.4-5 IsPreSheafCategoryOfFpEnrichedCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A0304637E934E63">2.4-6 IsCellInPreSheafCategoryOfFpEnrichedCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X869C3AEE85A01110">2.4-7 IsObjectInPreSheafCategoryOfFpEnrichedCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81AF24BF84DADFA5">2.4-8 IsMorphismInPreSheafCategoryOfFpEnrichedCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D9044767BEB1523">2.5 <span class="Heading">Global variables</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X866DC6A97D26CCEA">2.5-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8266F5147D67C184">2.5-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85C9A6C98385561B">2.5-3 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7A489A5D79DA9E5C">2.6 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84E9E37085A85D7B">2.6-1 <span class="Heading">The subobject classifier</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D24566D80D64552">2.6-2 <span class="Heading">PreSheaves of non-f.p. categories (experimental)</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Category of presheaves of a finitely presented (linear) category</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X86C6EE397F8CFCAA" name="X86C6EE397F8CFCAA"></a></p>
+
+<h5>2.1-1 PreSheaves</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreSheaves</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct the category <code class="code">Hom( <var class="Arg">B</var>^op, <var class="Arg">C</var> )</code> of functors from the opposite of the small category <var class="Arg">B</var> to the category <var class="Arg">C</var> as objects and their natural transformations as morphisms.</p>
+
+<p><a id="X7CEFF80E839359CB" name="X7CEFF80E839359CB"></a></p>
+
+<h5>2.1-2 CreatePreSheaf</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheaf</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheaf</code>( <var class="Arg">B</var>, <var class="Arg">rec_images_of_objects</var>, <var class="Arg">rec_images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheaf</code>( <var class="Arg">B</var>, <var class="Arg">images_of_objects</var>, <var class="Arg">images_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a presheaf</p>
+
+<p>Turn the functor <code class="code"><var class="Arg">F</var>:<var class="Arg">B</var>^op</code> <span class="SimpleMath">\(\to\)</span> <code class="code">C</code> into an object in the category of functors <code class="code"><var class="Arg">PSh</var> := PreSheaves( <var class="Arg">B</var>, C )</code>. An alternative input is the source category <var class="Arg">B</var> and two defining records <var class="Arg">rec_images_of_objects</var> and <var class="Arg">rec_images_of_morphisms</var> of <var class="Arg">F</var>. Another alternative input is the source category <var class="Arg">B</var> and two defining lists <var class="Arg">images_of_objects</var> and <var class="Arg">images_of_morphisms</var> of <var class="Arg">F</var>. The order of their entries must correspond to that of the vertices and arrows of the underlying quiver.</p>
+
+<p>For the convenience of the user the following input is also valid: If <var class="Arg">images_of_objects</var> is a list of nonnegative integers, <var class="Arg">images_of_morphisms</var> is a list of matrices, and <span class="SimpleMath">\(k:=\)</span> <code class="code">CommutativeRingOfLinearCategory</code>( B ) is a field then the two lists are interpreted as objects and morphisms in a matrix category or a category of rows over <span class="SimpleMath">\(k\)</span>, respectively.</p>
+
+<p><a id="X81EDE6777FFE1488" name="X81EDE6777FFE1488"></a></p>
+
+<h5>2.1-3 CreatePreSheafMorphismByValues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheafMorphismByValues</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var>, <var class="Arg">arg4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheafMorphism</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheafMorphism</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheafMorphism</code>( <var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreatePreSheafMorphismByFunction</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in a <strong class="pkg">CAP</strong> category</p>
+
+<p>Turn the natrual transformation <var class="Arg">eta</var>:<span class="SimpleMath">\(F \to G\)</span> into a morphism <code class="code"><var class="Arg">U</var> := AsObjectInFunctorCategory( F )</code> <span class="SimpleMath">\(\to\)</span> <code class="code"><var class="Arg">V</var> := AsObjectInFunctorCategory( G )</code> in the category of functors <code class="code"><var class="Arg">Hom</var> := Hom( B, C )</code>, where <code class="code">B := Source( F ) = Source( G )</code> and <code class="code">C := Range( F ) = Range( G )</code>.</p>
+
+<p>An alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining record of <var class="Arg">eta</var>.</p>
+
+<p>Another alternative input is the triple (<var class="Arg">U</var>, <var class="Arg">e</var>, <var class="Arg">V</var>), where <var class="Arg">e</var> is a defining list of <var class="Arg">eta</var>.</p>
+
+<p><a id="X7C6877007E223FAF" name="X7C6877007E223FAF"></a></p>
+
+<h5>2.1-4 CoYonedaLemma</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoYonedaLemma</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X87C63BFD7A0A47B7" name="X87C63BFD7A0A47B7"></a></p>
+
+<h5>2.1-5 SomeDiagramOfRepresentables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SomeDiagramOfRepresentables</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7838509887AE558D" name="X7838509887AE558D"></a></p>
+
+<h5>2.1-6 CategoryOfInternalCategories</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfInternalCategories</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Construct the category of categories internal to the monoidal or cartesian category <var class="Arg">C</var>. The output the full subcategory of the subcategory of functors from the <code class="code">SimplicialCategoryTruncatedInDegree</code>(2) into <var class="Arg">C</var> for which each such functor is the nerve truncated in degree <span class="SimpleMath">\(2\)</span> of a category internal to <var class="Arg">C</var>.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>2.2 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7B64D74D8667D4E2" name="X7B64D74D8667D4E2"></a></p>
+
+<h5>2.2-1 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X838E862B7AC83916" name="X838E862B7AC83916"></a></p>
+
+<h5>2.2-2 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X87E3230F7D81CE6D" name="X87E3230F7D81CE6D"></a></p>
+
+<h5>2.2-3 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The source of the presheaf <var class="Arg">F</var>.</p>
+
+<p><a id="X82BBFBE97C63B781" name="X82BBFBE97C63B781"></a></p>
+
+<h5>2.2-4 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>The target of the presheaf <var class="Arg">F</var>.</p>
+
+<p><a id="X853357DD7DA1350B" name="X853357DD7DA1350B"></a></p>
+
+<h5>2.2-5 ValuesOnAllObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOnAllObjects</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Returns the values of the presheaf morphism <var class="Arg">eta</var> on all objects of the source category of presheaf category <var class="Arg">PSh</var>.</p>
+
+<p>The 2-cell underlying the functor object <var class="Arg">F_or_eta</var>.</p>
+
+<p><a id="X865F04DE869EB218" name="X865F04DE869EB218"></a></p>
+
+<h5>2.2-6 UnderlyingCapTwoCategoryCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCapTwoCategoryCell</code>( <var class="Arg">F_or_eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor or natural transformation</p>
+
+<p><a id="X8441A5F38325BDF0" name="X8441A5F38325BDF0"></a></p>
+
+<h5>2.2-7 YonedaEmbedding</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbedding</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p><a id="X7D850F4D7AECF129" name="X7D850F4D7AECF129"></a></p>
+
+<h5>2.2-8 YonedaEmbeddingOfSourceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfSourceCategory</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> functor</p>
+
+<p><a id="X8186B25287502757" name="X8186B25287502757"></a></p>
+
+<h5>2.2-9 ImageOfYonedaEmbeddingOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageOfYonedaEmbeddingOfSource</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Returns the full subcategory of <var class="Arg">PSh</var> generated by the values of the Yoneda embedding on the objects of <code class="code">Source</code>(<var class="Arg">PSh</var>).</p>
+
+<p><a id="X7FC3EAA5875031CA" name="X7FC3EAA5875031CA"></a></p>
+
+<h5>2.2-10 SimpleObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimpleObjects</code>( <var class="Arg">PSh</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of objects</p>
+
+<p>The input is a category of presheaves <var class="Arg">PSh</var> of an admissible <span class="SimpleMath">\(k\)</span>-algebroid for some field <span class="SimpleMath">\(k\)</span>. The output is the list of simple objects in <var class="Arg">PSh</var>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" );</span>
+q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,
+y:4-&gt;4]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := HomalgFieldOfRationals( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kF := k[F];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,
+c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kF / [ kF.x^3, kF.y^2 ];</span>
+Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,
+c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( A );</span>
+PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,
+a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) ) / relations, Rows( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PSh.4;</span>
+&lt;(1)-&gt;12, (2)-&gt;2, (3)-&gt;2, (4)-&gt;2; (x)-&gt;12x12, (a)-&gt;2x12, (b)-&gt;2x2,
+(c)-&gt;2x12, (d)-&gt;2x2, (y)-&gt;2x2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( P );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
+Image of &lt;(1)&gt;:
+A row module over Q of rank 12
+
+Image of &lt;(2)&gt;:
+A row module over Q of rank 2
+
+Image of &lt;(3)&gt;:
+A row module over Q of rank 2
+
+Image of &lt;(4)&gt;:
+A row module over Q of rank 2
+
+Image of (1)-[{ 1*(x) }]-&gt;(1):
+Source:
+A row module over Q of rank 12
+
+Matrix:
+[ [  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
+
+Range:
+A row module over Q of rank 12
+
+A morphism in Rows( Q )
+
+Image of (1)-[{ 1*(a) }]-&gt;(2):
+Source:
+A row module over Q of rank 2
+
+Matrix:
+[ [  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0 ] ]
+
+Range:
+A row module over Q of rank 12
+
+A morphism in Rows( Q )
+
+Image of (2)-[{ 1*(b) }]-&gt;(4):
+Source:
+A row module over Q of rank 2
+
+Matrix:
+[ [  1,  0 ],
+  [  0,  1 ] ]
+
+Range:
+A row module over Q of rank 2
+
+A morphism in Rows( Q )
+
+Image of (1)-[{ 1*(c) }]-&gt;(3):
+Source:
+A row module over Q of rank 2
+
+Matrix:
+[ [  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 ],
+  [  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0 ] ]
+
+Range:
+A row module over Q of rank 12
+
+A morphism in Rows( Q )
+
+Image of (3)-[{ 1*(d) }]-&gt;(4):
+Source:
+A row module over Q of rank 2
+
+Matrix:
+[ [  1,  0 ],
+  [  0,  1 ] ]
+
+Range:
+A row module over Q of rank 2
+
+A morphism in Rows( Q )
+
+Image of (4)-[{ 1*(y) }]-&gt;(4):
+Source:
+A row module over Q of rank 2
+
+Matrix:
+[ [  0,  1 ],
+  [  0,  0 ] ]
+
+Range:
+A row module over Q of rank 2
+
+A morphism in Rows( Q )
+
+An object in PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,
+a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) ) / relations, Rows( Q ) ) given by
+the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CP := CreateComplex( ComplexesCategoryByCochains( PSh ), P, 0 );</span>
+&lt;An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
+FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) )
+/ relations, Rows( Q ) ) ) supported on the interval [ 0 .. 0 ]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I_CP := InjectiveResolution( CP, true );</span>
+&lt;An object in Complexes category by cochains( PreSheaves( Algebroid( Q,
+FreeCategory( RightQuiver( "q(4)[x:1-&gt;1,a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) )
+/ relations, Rows( Q ) ) ) supported on the interval [ 0 .. 1 ]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( I_CP ) and CohomologySupport( I_CP ) = [ 0 ];</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := QuasiIsomorphismFromProjectiveResolution( CP, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( q ) and IsQuasiIsomorphism( q );</span>
+true
+</pre></div>
+
+<p><a id="X80048E1182551690" name="X80048E1182551690"></a></p>
+
+<h5>2.2-11 NerveTruncatedInDegree2</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NerveTruncatedInDegree2</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a presheaf</p>
+
+<p>The input is a category <var class="Arg">B</var> with finitely many objects equipped with a homomorphism structure with values in a finite complete and finite cocomplete category <var class="Arg">H</var>. The output is the nerve of <var class="Arg">B</var> truncated in degree <span class="SimpleMath">\(2\)</span>, as an object in the category of presheaves on <code class="code">SimplicialCategoryTruncatedInDegree</code>(<span class="SimpleMath">\(2\)</span>) with values in <var class="Arg">H</var>.</p>
+
+<p>We compute the nerve of the full subcategory of the simplicial category <span class="SimpleMath">\(\Delta\)</span> on the objects <span class="SimpleMath">\([0], [1], [2]\)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
+FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RelationsOfFpCategory( Delta2 );</span>
+[ [ (s*id), (C0) ], [ (t*id), (C0) ],
+  [ (ps*is), (C1) ], [ (pt*it), (C1) ],
+  [ (is*id), (it*id) ], [ (pt*is), (id*t) ],
+  [ (ps*it), (id*s) ], [ (s*pt), (t*ps) ],
+  [ (s*mu), (s*ps) ], [ (t*mu), (t*pt) ],
+  [ (mu*is), (C1) ], [ (mu*it), (C1) ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
+31
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C0;</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C0 );</span>
+{ 0, 1, 2 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C1;</span>
+|31|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C1 );</span>
+{ 0,..., 30 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C2;</span>
+|393|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C2 );</span>
+{ 0,..., 392 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.id;</span>
+|3| → |31|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.id );</span>
+{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IntCat := CategoryOfInternalCategories(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                  RangeCategoryOfHomomorphismStructure( Delta2 ) );</span>
+FullSubcategoryByObjectMembershipFunction(
+PreSheaves( FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+SkeletalFinSets ), ObjectMembershipFunction )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N / IntCat );</span>
+true
+</pre></div>
+
+<p>We compute the nerve of the full subcategory of the simplicial category <span class="SimpleMath">\(\Delta\)</span> on the objects <span class="SimpleMath">\([0], [1], [2]\)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );</span>
+FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := NerveTruncatedInDegree2( Delta2 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver(
+  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
+                   is:C2-&gt;C1,it:C2-&gt;C1,
+                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+ SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C0;</span>
+|3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C0 );</span>
+{ 0, 1, 2 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C1;</span>
+|31|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C1 );</span>
+{ 0,..., 30 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.C2;</span>
+|393|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.C2 );</span>
+{ 0,..., 392 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N.id;</span>
+|3| → |31|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.id );</span>
+{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
+</pre></div>
+
+<p><a id="X87B457D77A0B8836" name="X87B457D77A0B8836"></a></p>
+
+<h5>2.2-12 SievesOfPathsToTruth</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SievesOfPathsToTruth</code>( <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a monomorphisms in a Hom-category of functors</p>
+
+<p>The input is a monomorphism <var class="Arg">iota</var>:<span class="SimpleMath">\(Q \to P\)</span> in the category of presheaves with values in <code class="code">RangeCategoryOfHomomorphismStructure</code>(<span class="SimpleMath">\(C\)</span>) on the finitely presented category <span class="SimpleMath">\(C:=\)</span>(<code class="code">Source</code>(<span class="SimpleMath">\(P\)</span>)) with finite <span class="SimpleMath">\(\mathrm{Hom}\)</span>-sets. The output is the morphism from <span class="SimpleMath">\(P\)</span> to the <code class="code">SieveFunctor</code>(<span class="SimpleMath">\(C\)</span>) mapping for each <span class="SimpleMath">\(c \in C\)</span> the element <span class="SimpleMath">\(x \in P(c)\)</span> to its "paths to truth" <span class="SimpleMath">\(f: a \to c\)</span> translating <span class="SimpleMath">\(x\)</span> into <span class="SimpleMath">\(f(x) \in Q(a) \subseteq P(a)\)</span>.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>2.3 <span class="Heading">Operations</span></h4>
+
+<p><a id="X7DFFAE07828625D2" name="X7DFFAE07828625D2"></a></p>
+
+<h5>2.3-1 ApplyObjectInPreSheafCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInPreSheafCategoryToObject</code>( <var class="Arg">F</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">obj</var>).</p>
+
+<p><a id="X7EAB49027E44FBF5" name="X7EAB49027E44FBF5"></a></p>
+
+<h5>2.3-2 ApplyObjectInPreSheafCategoryToMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyObjectInPreSheafCategoryToMorphism</code>( <var class="Arg">F</var>, <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the presheaf <var class="Arg">F</var> to the morphism <var class="Arg">mor</var>. The shorthand is <var class="Arg">F</var>(<var class="Arg">mor</var>).</p>
+
+<p><a id="X80E2A00879D8E496" name="X80E2A00879D8E496"></a></p>
+
+<h5>2.3-3 ApplyMorphismInPreSheafCategoryToObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyMorphismInPreSheafCategoryToObject</code>( <var class="Arg">eta</var>, <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Apply the presheaf morphism <var class="Arg">eta</var> to the object <var class="Arg">obj</var>. The shorthand is <var class="Arg">eta</var>(<var class="Arg">o</var>).</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.4 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X78BA10757D4A2D61" name="X78BA10757D4A2D61"></a></p>
+
+<h5>2.4-1 IsPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPreSheafCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a presheaf category.</p>
+
+<p><a id="X87E694A77D44A1F0" name="X87E694A77D44A1F0"></a></p>
+
+<h5>2.4-2 IsCellInPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPreSheafCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a presheaf category.</p>
+
+<p><a id="X869BBAB986FFB5D6" name="X869BBAB986FFB5D6"></a></p>
+
+<h5>2.4-3 IsObjectInPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPreSheafCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a presheaf category.</p>
+
+<p><a id="X8727C26D7CD65307" name="X8727C26D7CD65307"></a></p>
+
+<h5>2.4-4 IsMorphismInPreSheafCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPreSheafCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a presheaf category.</p>
+
+<p><a id="X7D6A79907FA8C87F" name="X7D6A79907FA8C87F"></a></p>
+
+<h5>2.4-5 IsPreSheafCategoryOfFpEnrichedCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a presheaf category of a finitely presented enriched category.</p>
+
+<p><a id="X7A0304637E934E63" name="X7A0304637E934E63"></a></p>
+
+<h5>2.4-6 IsCellInPreSheafCategoryOfFpEnrichedCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a presheaf category of a finitely presented enriched category.</p>
+
+<p><a id="X869C3AEE85A01110" name="X869C3AEE85A01110"></a></p>
+
+<h5>2.4-7 IsObjectInPreSheafCategoryOfFpEnrichedCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a presheaf category of a finitely presented enriched category.</p>
+
+<p><a id="X81AF24BF84DADFA5" name="X81AF24BF84DADFA5"></a></p>
+
+<h5>2.4-8 IsMorphismInPreSheafCategoryOfFpEnrichedCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPreSheafCategoryOfFpEnrichedCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a presheaf category of a finitely presented enriched category.</p>
+
+<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
+
+<h4>2.5 <span class="Heading">Global variables</span></h4>
+
+<p><a id="X866DC6A97D26CCEA" name="X866DC6A97D26CCEA"></a></p>
+
+<h5>2.5-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p><a id="X8266F5147D67C184" name="X8266F5147D67C184"></a></p>
+
+<h5>2.5-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p><a id="X85C9A6C98385561B" name="X85C9A6C98385561B"></a></p>
+
+<h5>2.5-3 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>2.6 <span class="Heading">Examples</span></h4>
+
+<p><a id="X84E9E37085A85D7B" name="X84E9E37085A85D7B"></a></p>
+
+<h5>2.6-1 <span class="Heading">The subobject classifier</span></h5>
+
+<p>The subobject classifier of the <code class="code">PreSheaves</code><span class="SimpleMath">\((C, H)\)</span>, where <span class="SimpleMath">\(H\)</span>:=<code class="code">RangeCategoryOfHomomorphismStructure</code>(<span class="SimpleMath">\(C\)</span>) is the functor of sieves, mapping each object <span class="SimpleMath">\(c \in C^\mathrm{op}\)</span> to the set of subobjects of the representable functor <span class="SimpleMath">\(\mathrm{Hom}_C(-,c)\)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := RightQuiver( "q(1)[a:1-&gt;1]" );</span>
+q(1)[a:1-&gt;1]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fq := FreeCategory( q );</span>
+FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M0 := Fq / [ [ Fq.a^3, Fq.1 ] ];</span>
+FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a*a = 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PShM0 := PreSheaves( M0 );</span>
+PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = 1 ], SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Omega0 := SubobjectClassifier( PShM0 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = 1 ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Omega0 );</span>
+Image of &lt;(1)&gt;:
+{ 0, 1 }
+
+Image of (1)-[(a)]-&gt;(1):
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = 1 ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := Exponential( Omega0, Omega0 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = 1 ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( e );</span>
+Image of &lt;(1)&gt;:
+{ 0,..., 3 }
+
+Image of (1)-[(a)]-&gt;(1):
+{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = 1 ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ev0 := CartesianEvaluationMorphism( Omega0, Omega0 );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = 1 ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ev0 );</span>
+Image of &lt;(1)&gt;:
+{ 0,..., 7 } ⱶ[ 0, 1, 0, 1, 0, 0, 1, 1 ]→ { 0, 1 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = 1 ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := Fq / [ [ Fq.a^3, Fq.a ] ];</span>
+FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a*a = a ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PShM1 := PreSheaves( M1 );</span>
+PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a ], SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Omega1 := SubobjectClassifier( PShM1 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Omega1 );</span>
+Image of &lt;(1)&gt;:
+{ 0, 1, 2 }
+
+Image of (1)-[(a)]-&gt;(1):
+{ 0, 1, 2 } ⱶ[ 0, 2, 2 ]→ { 0, 1, 2 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := Fq / [ [ Fq.a^3, Fq.a^2 ] ];</span>
+FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a*a = a*a ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PShM2 := PreSheaves( M2 );</span>
+PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Omega2 := SubobjectClassifier( PShM2 );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Omega2 );</span>
+Image of &lt;(1)&gt;:
+{ 0,..., 3 }
+
+Image of (1)-[(a)]-&gt;(1):
+{ 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">true2 := TruthMorphismOfTrue( PShM2 );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( true2 );</span>
+Image of &lt;(1)&gt;:
+{ 0 } ⱶ[ 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">false2 := TruthMorphismOfFalse( PShM2 );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( false2 );</span>
+Image of &lt;(1)&gt;:
+{ 0 } ⱶ[ 0 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := CreatePreSheafMorphism( EmbeddingOfSieveFunctor( M2 ) );</span>
+&lt;A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 0, 4, 6, 7 ]→ { 0,..., 7 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Range( iota );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+ / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( iota ) );</span>
+Image of &lt;(1)&gt;:
+{ 0,..., 7 }
+
+Image of (1)-[(a)]-&gt;(1):
+{ 0,..., 7 } ⱶ[ 0, 0, 1, 1, 6, 6, 7, 7 ]→ { 0,..., 7 }
+
+An object in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t2 := SubobjectOfClassifyingMorphism( true2 );</span>
+&lt;A monomorphism in PreSheaves( FreeCategory(
+ RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t2 );</span>
+Image of &lt;(1)&gt;:
+{ 0 } ⱶ[ 0 ]→ { 0 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f2 := SubobjectOfClassifyingMorphism( false2 );</span>
+&lt;A monomorphism in PreSheaves( FreeCategory(
+ RightQuiver( "q(1)[a:1-&gt;1]" ) ) / [ a*a*a = a*a ], SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( f2 );</span>
+Image of &lt;(1)&gt;:
+∅ ⱶ[  ]→ { 0 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := HomStructure( Omega2, Omega2 );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( H );</span>
+{ 0,..., 7 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T2 := DistinguishedObjectOfHomomorphismStructure( PShM2 );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := List( H, i -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               Omega2, Omega2, MapOfFinSets( T2, [ i ], H ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( L );</span>
+8
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( L, Display );</span>
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 0, 0, 0, 0 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 3, 0, 0, 0 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 3, 1, 2, 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 0, 2, 3, 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 0, 3, 3, 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 3, 2, 3, 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+Image of &lt;(1)&gt;:
+{ 0,..., 3 } ⱶ[ 3, 3, 3, 3 ]→ { 0,..., 3 }
+
+A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
+/ [ a*a*a = a*a ], SkeletalFinSets )
+given by the above data
+</pre></div>
+
+<p><a id="X7D24566D80D64552" name="X7D24566D80D64552"></a></p>
+
+<h5>2.6-2 <span class="Heading">PreSheaves of non-f.p. categories (experimental)</span></h5>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
