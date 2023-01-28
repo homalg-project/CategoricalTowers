@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (SubcategoriesForCAP) - Chapter 2: Full subcategories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
+<p><a id="X7BDA02D87BED7782" name="X7BDA02D87BED7782"></a></p>
+<div class="ChapSects"><a href="chap2_mj.html#X7BDA02D87BED7782">2 <span class="Heading">Full subcategories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.1 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81D8612E8362F21B">2.1-1 IsCapFullSubcategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CF0FA7B829C4E63">2.1-2 IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X789F564F78ED6878">2.1-3 IsCapFullSubcategoryDefinedByObjectMembershipFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X798F05AA8208D860">2.1-4 IsCapCategoryCellInAFullSubcategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FEA13117ADE4880">2.1-5 IsCapCategoryObjectInAFullSubcategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D6E03AA81A8226B">2.1-6 IsCapCategoryMorphismInAFullSubcategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D9044767BEB1523">2.2 <span class="Heading">Global variables</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81B5E7F57BB75A1E">2.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8410E7297CDAD383">2.2-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86EC0F0A78ECBC10">2.3 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X780404097FABB5BD">2.3-1 FullSubcategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7ACC03F17E5EAAB0">2.3-2 FullSubcategoryGeneratedByListOfObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DFF57507DCF8691">2.3-3 FullSubcategoryOfIndecomposableProjectiveObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78AFBEE57B0043D7">2.3-4 FullSubcategoryOfIndecomposableInjectiveObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E390D8979466B6A">2.3-5 FullSubcategoryByObjectMembershipFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F5394387907A6DE">2.3-6 FullSubcategoryOfProjectiveObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X829E6FEA8642D038">2.3-7 FullSubcategoryOfInjectiveObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X78D1062D78BE08C1">2.4 <span class="Heading">Functors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80340B9A7DDB8A22">2.4-1 InclusionFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D1373A780EC2C7E">2.4-2 RestrictFunctorToFullSubcategoryOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83217538804F4223">2.4-3 RestrictFunctorToFullSubcategoryOfRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X81D2A9D078386E28">2.4-4 RestrictFunctorToFullSubcategories</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Full subcategories</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.1 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X81D8612E8362F21B" name="X81D8612E8362F21B"></a></p>
+
+<h5>2.1-1 IsCapFullSubcategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapFullSubcategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a full subcategory.</p>
+
+<p><a id="X7CF0FA7B829C4E63" name="X7CF0FA7B829C4E63"></a></p>
+
+<h5>2.1-2 IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a full subcategory generated by finite number of objects.</p>
+
+<p><a id="X789F564F78ED6878" name="X789F564F78ED6878"></a></p>
+
+<h5>2.1-3 IsCapFullSubcategoryDefinedByObjectMembershipFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapFullSubcategoryDefinedByObjectMembershipFunction</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of a full subcategory defined by an object-membership function.</p>
+
+<p><a id="X798F05AA8208D860" name="X798F05AA8208D860"></a></p>
+
+<h5>2.1-4 IsCapCategoryCellInAFullSubcategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCellInAFullSubcategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a full subcategory.</p>
+
+<p><a id="X7FEA13117ADE4880" name="X7FEA13117ADE4880"></a></p>
+
+<h5>2.1-5 IsCapCategoryObjectInAFullSubcategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObjectInAFullSubcategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a full subcategory.</p>
+
+<p><a id="X7D6E03AA81A8226B" name="X7D6E03AA81A8226B"></a></p>
+
+<h5>2.1-6 IsCapCategoryMorphismInAFullSubcategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphismInAFullSubcategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a full subcategory.</p>
+
+<p><a id="X7D9044767BEB1523" name="X7D9044767BEB1523"></a></p>
+
+<h4>2.2 <span class="Heading">Global variables</span></h4>
+
+<p><a id="X81B5E7F57BB75A1E" name="X81B5E7F57BB75A1E"></a></p>
+
+<h5>2.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p><a id="X8410E7297CDAD383" name="X8410E7297CDAD383"></a></p>
+
+<h5>2.2-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.3 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X780404097FABB5BD" name="X780404097FABB5BD"></a></p>
+
+<h5>2.3-1 FullSubcategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategory</code>( <var class="Arg">C</var>, <var class="Arg">name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7ACC03F17E5EAAB0" name="X7ACC03F17E5EAAB0"></a></p>
+
+<h5>2.3-2 FullSubcategoryGeneratedByListOfObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategoryGeneratedByListOfObjects</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: CapFullSubcategory</p>
+
+<p>The input is a list of objects <var class="Arg">L</var> in the same category. The output is the full subcategory generated by <var class="Arg">L</var>.</p>
+
+<p><a id="X7DFF57507DCF8691" name="X7DFF57507DCF8691"></a></p>
+
+<h5>2.3-3 FullSubcategoryOfIndecomposableProjectiveObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategoryOfIndecomposableProjectiveObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: CapFullSubcategory</p>
+
+<p>The input is a category <var class="Arg">C</var> in which the operation <code class="code">IndecomposableProjectiveObjects</code> is computable. The output is the full subcategory of <var class="Arg">C</var> generated by the output of <code class="code">IndecomposableProjectiveObjects</code>(<var class="Arg">C</var>).</p>
+
+<p><a id="X78AFBEE57B0043D7" name="X78AFBEE57B0043D7"></a></p>
+
+<h5>2.3-4 FullSubcategoryOfIndecomposableInjectiveObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategoryOfIndecomposableInjectiveObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: CapFullSubcategory</p>
+
+<p>The input is a category <var class="Arg">C</var> in which the operation <code class="code">IndecomposableInjectiveObjects</code> is computable. The output is the full subcategory of <var class="Arg">C</var> generated by the output of <code class="code">IndecomposableInjectiveObjects</code>(<var class="Arg">C</var>).</p>
+
+<p><a id="X7E390D8979466B6A" name="X7E390D8979466B6A"></a></p>
+
+<h5>2.3-5 FullSubcategoryByObjectMembershipFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategoryByObjectMembershipFunction</code>( <var class="Arg">C</var>, <var class="Arg">membership_func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: CapFullSubcategory</p>
+
+<p>The input is a category <var class="Arg">C</var> and an object membership function <var class="Arg">membership_func</var>. The output is the full subcategory of <var class="Arg">C</var> determined by <var class="Arg">membership_func</var>.</p>
+
+<p><a id="X7F5394387907A6DE" name="X7F5394387907A6DE"></a></p>
+
+<h5>2.3-6 FullSubcategoryOfProjectiveObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategoryOfProjectiveObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: CapFullSubcategory</p>
+
+<p>The input is an abelian category <var class="Arg">C</var> with enough projective objects. The output is the full subcategory of <var class="Arg">C</var> generated by the projective objects in <var class="Arg">C</var>.</p>
+
+<p><a id="X829E6FEA8642D038" name="X829E6FEA8642D038"></a></p>
+
+<h5>2.3-7 FullSubcategoryOfInjectiveObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FullSubcategoryOfInjectiveObjects</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: CapFullSubcategory</p>
+
+<p>The input is an abelian category <var class="Arg">C</var> with enough injective objects. The output is the full subcategory of <var class="Arg">C</var> generated by the injective objects in <var class="Arg">C</var>.</p>
+
+<p><a id="X78D1062D78BE08C1" name="X78D1062D78BE08C1"></a></p>
+
+<h4>2.4 <span class="Heading">Functors</span></h4>
+
+<p><a id="X80340B9A7DDB8A22" name="X80340B9A7DDB8A22"></a></p>
+
+<h5>2.4-1 InclusionFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InclusionFunctor</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: CapFunctor</p>
+
+<p>The natural embedding functor from <var class="Arg">A</var> to <var class="Arg">AmbientCategory(A)</var>.</p>
+
+<p><a id="X7D1373A780EC2C7E" name="X7D1373A780EC2C7E"></a></p>
+
+<h5>2.4-2 RestrictFunctorToFullSubcategoryOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RestrictFunctorToFullSubcategoryOfSource</code>( <var class="Arg">F</var>, <var class="Arg">full</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: CapFunctor</p>
+
+<p>The arguments are a functor <var class="Arg">F</var> and a full subcategory <var class="Arg">full</var> of <code class="code">Source</code>(<var class="Arg">F</var>). The output is the restriction functor <span class="SimpleMath">\(F_{full}\)</span>:<var class="Arg">full</var><span class="SimpleMath">\(\to\)</span><code class="code">Range</code>(<var class="Arg">F</var>).</p>
+
+<p><a id="X83217538804F4223" name="X83217538804F4223"></a></p>
+
+<h5>2.4-3 RestrictFunctorToFullSubcategoryOfRange</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RestrictFunctorToFullSubcategoryOfRange</code>( <var class="Arg">F</var>, <var class="Arg">full</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: CapFunctor</p>
+
+<p>The arguments are a functor <var class="Arg">F</var> and a full subcategory <var class="Arg">full</var> of <code class="code">Range</code>(<var class="Arg">F</var>). The output is the restriction functor <span class="SimpleMath">\(F_{full}\)</span>:<code class="code">Source</code>(<var class="Arg">F</var>)<span class="SimpleMath">\(\to\)</span><var class="Arg">full</var>.</p>
+
+<p><a id="X81D2A9D078386E28" name="X81D2A9D078386E28"></a></p>
+
+<h5>2.4-4 RestrictFunctorToFullSubcategories</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RestrictFunctorToFullSubcategories</code>( <var class="Arg">F</var>, <var class="Arg">full_1</var>, <var class="Arg">full_2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: CapFunctor</p>
+
+<p>The arguments are a functor <var class="Arg">F</var> and two full subcategories <var class="Arg">full_1</var> of <code class="code">Source</code>(<var class="Arg">F</var>) and <var class="Arg">full_2</var> of <code class="code">Range</code>(<var class="Arg">F</var>). The output is the restriction functor <span class="SimpleMath">\(F_{full}\)</span>:<var class="Arg">full_1</var><span class="SimpleMath">\(\to\)</span><var class="Arg">full_2</var>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

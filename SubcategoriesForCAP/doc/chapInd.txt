@@ -1,0 +1,82 @@
+  
+  
+  [1XIndex[101X
+  
+  [2X/[102X, for IsCapCategoryMorphism, IsCapSliceCategory 3.4-2 
+  [2X\/[102X, for IsCapCategoryCell, IsCapSubcategory 1.4-4 
+  [2XAmbientCategory[102X, for IsCapSliceCategory 3.3-1 
+      for IsCapSubcategory 1.3-3 
+  [2XAsSliceCategoryCell[102X, for IsCapCategoryMorphism 4.2-3 
+      for IsCapCategoryMorphism, IsCapSliceCategory 3.4-1 
+      for IsCapCategoryObjectInASliceCategory, IsCapCategoryMorphism, IsCapCategoryObjectInASliceCategory 3.4-3 
+      for IsList 5.3-3 
+  [2XAsSubcategoryCell[102X, for IsCapCategoryObjectInASubcategory, IsCapCategoryMorphism, IsCapCategoryObjectInASubcategory 1.4-3 
+      for IsCapSubcategory, IsCapCategoryCell 1.4-2 
+  [2XBaseObject[102X, for IsCapCategoryCellInASliceCategory 3.3-3 
+      for IsCapSliceCategory 3.3-2 
+  [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY[102X 2.2-2 
+  [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_FULL_SUBCATEGORY[102X 2.2-1 
+  [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY[102X 3.2-1 
+  [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY[102X 1.2-1 
+  [2XFullSubcategory[102X, for IsCapCategory, IsString 2.3-1 
+  [2XFullSubcategoryByObjectMembershipFunction[102X 2.3-5 
+  [2XFullSubcategoryGeneratedByListOfObjects[102X 2.3-2 
+  [2XFullSubcategoryOfIndecomposableInjectiveObjects[102X, for IsCapCategory 2.3-4 
+  [2XFullSubcategoryOfIndecomposableProjectiveObjects[102X, for IsCapCategory 2.3-3 
+  [2XFullSubcategoryOfInjectiveObjects[102X, for IsCapCategory 2.3-7 
+  [2XFullSubcategoryOfProjectiveObjects[102X, for IsCapCategory 2.3-6 
+  [2XInclusionFunctor[102X, for IsCapFullSubcategory 2.4-1 
+      for IsCapSliceCategory 3.3-6 
+  [2XIsCapCategoryCellInAFullSubcategory[102X, for IsCapCategoryCellInASubcategory 2.1-4 
+  [2XIsCapCategoryCellInALazySliceCategory[102X, for IsCapCategoryCellInASliceCategory 5.1-2 
+  [2XIsCapCategoryCellInALazySliceCategoryOverTensorUnit[102X, for IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryCellInALazySliceCategory 5.1-6 
+  [2XIsCapCategoryCellInAnEagerSliceCategory[102X, for IsCapCategoryCellInASliceCategory 4.1-2 
+  [2XIsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit[102X, for IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryCellInAnEagerSliceCategory 4.1-6 
+  [2XIsCapCategoryCellInASliceCategory[102X, for IsCapCategoryCell 3.1-2 
+  [2XIsCapCategoryCellInASliceCategoryOverTensorUnit[102X, for IsCapCategoryCellInASliceCategory 3.1-6 
+  [2XIsCapCategoryCellInASubcategory[102X, for IsCapCategoryCell 1.1-3 
+  [2XIsCapCategoryMorphismInAFullSubcategory[102X, for IsCapCategoryCellInAFullSubcategory and IsCapCategoryMorphismInASubcategory 2.1-6 
+  [2XIsCapCategoryMorphismInALazySliceCategory[102X, for IsCapCategoryMorphismInASliceCategory and IsCapCategoryCellInALazySliceCategory 5.1-4 
+  [2XIsCapCategoryMorphismInALazySliceCategoryOverTensorUnit[102X, for IsCapCategoryMorphismInASliceCategoryOverTensorUnit and IsCapCategoryMorphismInALazySliceCategory 5.1-8 
+  [2XIsCapCategoryMorphismInAnEagerSliceCategory[102X, for IsCapCategoryMorphismInASliceCategory and IsCapCategoryCellInAnEagerSliceCategory 4.1-4 
+  [2XIsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit[102X, for IsCapCategoryMorphismInASliceCategoryOverTensorUnit and IsCapCategoryMorphismInAnEagerSliceCategory 4.1-8 
+  [2XIsCapCategoryMorphismInASliceCategory[102X, for IsCapCategoryCellInASliceCategory and IsCapCategoryMorphism 3.1-4 
+  [2XIsCapCategoryMorphismInASliceCategoryOverTensorUnit[102X, for IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryMorphismInASliceCategory 3.1-8 
+  [2XIsCapCategoryMorphismInASubcategory[102X, for IsCapCategoryCellInASubcategory and IsCapCategoryMorphism 1.1-5 
+  [2XIsCapCategoryObjectInAFullSubcategory[102X, for IsCapCategoryCellInAFullSubcategory and IsCapCategoryObjectInASubcategory 2.1-5 
+  [2XIsCapCategoryObjectInALazySliceCategory[102X, for IsCapCategoryObjectInASliceCategory and IsCapCategoryCellInALazySliceCategory 5.1-3 
+  [2XIsCapCategoryObjectInALazySliceCategoryOverTensorUnit[102X, for IsCapCategoryObjectInASliceCategoryOverTensorUnit and IsCapCategoryObjectInALazySliceCategory 5.1-7 
+  [2XIsCapCategoryObjectInAnEagerSliceCategory[102X, for IsCapCategoryObjectInASliceCategory and IsCapCategoryCellInAnEagerSliceCategory 4.1-3 
+  [2XIsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit[102X, for IsCapCategoryObjectInASliceCategoryOverTensorUnit and IsCapCategoryObjectInAnEagerSliceCategory 4.1-7 
+  [2XIsCapCategoryObjectInASliceCategory[102X, for IsCapCategoryCellInASliceCategory and IsCapCategoryObject 3.1-3 
+  [2XIsCapCategoryObjectInASliceCategoryOverTensorUnit[102X, for IsCapCategoryCellInASliceCategoryOverTensorUnit and IsCapCategoryObjectInASliceCategory 3.1-7 
+  [2XIsCapCategoryObjectInASubcategory[102X, for IsCapCategoryCellInASubcategory and IsCapCategoryObject 1.1-4 
+  [2XIsCapEagerSliceCategory[102X, for IsCapSliceCategory 4.1-1 
+  [2XIsCapEagerSliceCategoryOverTensorUnit[102X, for IsCapSliceCategoryOverTensorUnit and IsCapEagerSliceCategory 4.1-5 
+  [2XIsCapFullSubcategory[102X, for IsCapSubcategory 2.1-1 
+  [2XIsCapFullSubcategoryDefinedByObjectMembershipFunction[102X, for IsCapFullSubcategory 2.1-3 
+  [2XIsCapFullSubcategoryGeneratedByFiniteNumberOfObjects[102X, for IsCapFullSubcategory 2.1-2 
+  [2XIsCapLazySliceCategory[102X, for IsCapSliceCategory 5.1-1 
+  [2XIsCapLazySliceCategoryOverTensorUnit[102X, for IsCapSliceCategoryOverTensorUnit and IsCapLazySliceCategory 5.1-5 
+  [2XIsCapSliceCategory[102X, for IsCapCategory 3.1-1 
+  [2XIsCapSliceCategoryOverTensorUnit[102X, for IsCapSliceCategory 3.1-5 
+  [2XIsCapSubcategory[102X, for IsCapCategory 1.1-1 
+  [2XIsCapSubcategoryGeneratedByFiniteNumberOfMorphisms[102X, for IsCapSubcategory 1.1-2 
+  [2XLazySliceCategory[102X, for IsCapCategoryObject 5.3-1 
+  [2XLazySliceCategoryOverTensorUnit[102X, for IsCapCategory 5.3-2 
+  [2XMorphismFromCovariantArgumentOfInternalHom[102X, for IsCapCategoryObjectInASliceCategoryOverTensorUnit, IsCapCategoryObjectInASliceCategoryOverTensorUnit 3.5-1 
+  [2XRestrictFunctorToFullSubcategories[102X, for IsCapFunctor, IsCapFullSubcategory, IsCapFullSubcategory 2.4-4 
+  [2XRestrictFunctorToFullSubcategoryOfRange[102X, for IsCapFunctor, IsCapFullSubcategory 2.4-3 
+  [2XRestrictFunctorToFullSubcategoryOfSource[102X, for IsCapFunctor, IsCapFullSubcategory 2.4-2 
+  [2XSetOfKnownObjects[102X, for IsCapSubcategory 1.3-2 
+  [2XSliceCategory[102X, for IsCapCategoryObject 4.2-1 
+  [2XSliceCategoryOverTensorUnit[102X, for IsCapCategory 4.2-2 
+  [2XSubcategory[102X, for IsCapCategory, IsString 1.4-1 
+  [2XSubcategoryGeneratedByListOfMorphisms[102X 1.4-5 
+  [2XUnderlyingCell[102X, for IsCapCategoryCellInASliceCategory 3.3-5 
+      for IsCapCategoryCellInASubcategory 1.3-1 
+  [2XUnderlyingMorphism[102X, for IsCapCategoryObjectInASliceCategory 3.3-4 
+  [2XUnderlyingMorphismList[102X, for IsCapCategoryObjectInALazySliceCategory 5.2-1 
+  
+  
+  -------------------------------------------------------

@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (SubcategoriesForCAP) - Chapter 4: Slice categories (eager data structure)</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4.html">[MathJax off]</a></p>
+<p><a id="X7DC737F47D03AF72" name="X7DC737F47D03AF72"></a></p>
+<div class="ChapSects"><a href="chap4_mj.html#X7DC737F47D03AF72">4 <span class="Heading">Slice categories (eager data structure)</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7D03633A7D98026B">4.1 <span class="Heading">GAP categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X85E38DAB7F118516">4.1-1 IsCapEagerSliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X809AAC8383BA0EAA">4.1-2 IsCapCategoryCellInAnEagerSliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8022BBDB7ADE580C">4.1-3 IsCapCategoryObjectInAnEagerSliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X80B984F47C937826">4.1-4 IsCapCategoryMorphismInAnEagerSliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7CCBE2C285C0825D">4.1-5 IsCapEagerSliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D07CA948366B13B">4.1-6 IsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8116A7247DE0F24A">4.1-7 IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X82AB857186E1D680">4.1-8 IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X86EC0F0A78ECBC10">4.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X822EEF027B32FBE6">4.2-1 SliceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D2C785C82DC743D">4.2-2 SliceCategoryOverTensorUnit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X87E85C8C80F27186">4.2-3 AsSliceCategoryCell</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7A489A5D79DA9E5C">4.3 <span class="Heading">Examples</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C6EC1D082F1218C">4.3-1 <span class="Heading">SliceCategory</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X782B6A7C868D3F7D">4.3-2 <span class="Heading">IteratedInternalHom</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X796AC9C8870C17BB">4.3-3 <span class="Heading">Double pushout rewriting</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D7026828261C26B">4.3-4 <span class="Heading">Precompilation</span></a>
+</span>
+</div></div>
+</div>
+
+<h3>4 <span class="Heading">Slice categories (eager data structure)</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>4.1 <span class="Heading">GAP categories</span></h4>
+
+<p><a id="X85E38DAB7F118516" name="X85E38DAB7F118516"></a></p>
+
+<h5>4.1-1 IsCapEagerSliceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapEagerSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of an eager slice category.</p>
+
+<p><a id="X809AAC8383BA0EAA" name="X809AAC8383BA0EAA"></a></p>
+
+<h5>4.1-2 IsCapCategoryCellInAnEagerSliceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCellInAnEagerSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in an eager slice category.</p>
+
+<p><a id="X8022BBDB7ADE580C" name="X8022BBDB7ADE580C"></a></p>
+
+<h5>4.1-3 IsCapCategoryObjectInAnEagerSliceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObjectInAnEagerSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in an eager slice category.</p>
+
+<p><a id="X80B984F47C937826" name="X80B984F47C937826"></a></p>
+
+<h5>4.1-4 IsCapCategoryMorphismInAnEagerSliceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphismInAnEagerSliceCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in an eager slice category.</p>
+
+<p><a id="X7CCBE2C285C0825D" name="X7CCBE2C285C0825D"></a></p>
+
+<h5>4.1-5 IsCapEagerSliceCategoryOverTensorUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapEagerSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of an eager slice category over the tensor unit.</p>
+
+<p><a id="X7D07CA948366B13B" name="X7D07CA948366B13B"></a></p>
+
+<h5>4.1-6 IsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCellInAnEagerSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in an eager slice category over the tensor unit.</p>
+
+<p><a id="X8116A7247DE0F24A" name="X8116A7247DE0F24A"></a></p>
+
+<h5>4.1-7 IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObjectInAnEagerSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in an eager slice category over the tensor unit.</p>
+
+<p><a id="X82AB857186E1D680" name="X82AB857186E1D680"></a></p>
+
+<h5>4.1-8 IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphismInAnEagerSliceCategoryOverTensorUnit</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in an eager slice category over the tensor unit.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>4.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X822EEF027B32FBE6" name="X822EEF027B32FBE6"></a></p>
+
+<h5>4.2-1 SliceCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SliceCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7D2C785C82DC743D" name="X7D2C785C82DC743D"></a></p>
+
+<h5>4.2-2 SliceCategoryOverTensorUnit</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SliceCategoryOverTensorUnit</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X87E85C8C80F27186" name="X87E85C8C80F27186"></a></p>
+
+<h5>4.2-3 AsSliceCategoryCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsSliceCategoryCell</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+
+<h4>4.3 <span class="Heading">Examples</span></h4>
+
+<p><a id="X7C6EC1D082F1218C" name="X7C6EC1D082F1218C"></a></p>
+
+<h5>4.3-1 <span class="Heading">SliceCategory</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FinSetsForCAP", "&gt;= 2022.05-01" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := SubobjectClassifier( SkeletalFinSets );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategory( B );</span>
+A slice category of SkeletalFinSets
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o0 := MapOfFinSets( B, [ 1, 1 ], B ) / S;</span>
+An object in the slice category given by: |2| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o1 := MapOfFinSets( FinSet( 3 ), [ 0, 1, 0 ], B ) / S;</span>
+An object in the slice category given by: |3| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o2 := MapOfFinSets( FinSet( 4 ), [ 1, 0, 1, 0 ], B ) / S;</span>
+An object in the slice category given by: |4| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( o0 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( o1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( o2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( o1, o0 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( o0, o1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( o1, o2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHomSetInhabited( o2, o1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := UniversalMorphismFromInitialObject( o1 );</span>
+A morphism in the slice category given by: |0| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+∅ ⱶ[  ]→ { 0, 1, 2 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInitial( Source( iota ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := UniversalMorphismIntoTerminalObject( o2 );</span>
+A morphism in the slice category given by: |4| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( tau );</span>
+{ 0,..., 3 } ⱶ[ 1, 0, 1, 0 ]→ { 0, 1 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsTerminal( Range( tau ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := MapOfFinSets( FinSet( 3 ), [ 2, 0, 3 ], FinSet( 4 ) );</span>
+|3| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( n );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := AsSliceCategoryCell( o1, n, o2 );</span>
+A morphism in the slice category given by: |3| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( n );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 := MapOfFinSets( FinSet( 3 ), [ 1, 0, 3 ], FinSet( 4 ) );</span>
+|3| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m1 := AsSliceCategoryCell( o1, m1, o2 );</span>
+A morphism in the slice category given by: |3| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( m1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m2 := MapOfFinSets( FinSet( 4 ), [ 1, 2, 1, 0 ], FinSet( 3 ) );</span>
+|4| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m2 := AsSliceCategoryCell( o2, m2, o1 );</span>
+A morphism in the slice category given by: |4| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSplitEpimorphism( m2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m3 := PreCompose( m1, m2 );</span>
+A morphism in the slice category given by: |3| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( m3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m4 := Inverse( m3 );</span>
+A morphism in the slice category given by: |3| → |3|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m4 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m5 := PreCompose( m2, m1 );</span>
+A morphism in the slice category given by: |4| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m5 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( m5 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := DistinguishedObjectOfHomomorphismStructure( S );</span>
+|1|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := MorphismsOfExternalHom( o1, o2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( H );</span>
+8
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := HomStructure( o1, o2 );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( m1, m2 );</span>
+|16| → |4|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">th := MorphismsOfExternalHom( t, h );</span>
+[ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,
+  |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">th = List( H, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H = List( th, m -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( o1, o2, m ) );</span>
+true
+</pre></div>
+
+<p><a id="X782B6A7C868D3F7D" name="X782B6A7C868D3F7D"></a></p>
+
+<h5>4.3-2 <span class="Heading">IteratedInternalHom</span></h5>
+
+<p>Iteratively applying <span class="SimpleMath">\(\underline{Hom}(J,-)\)</span> to the universal morphism <span class="SimpleMath">\(\iota: I \to T\)</span>, where <span class="SimpleMath">\(T\)</span> is the terminal object of the slice category, might never become an isomorphism. However, in this example it does.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Locales" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
+Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q["x,y"];</span>
+Q[x,y]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := CategoryOfRows( R );</span>
+Rows( Q[x,y] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategoryOverTensorUnit( P );</span>
+SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x^2, x*y ]", 2, 1, R ) / P / S;</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">J := HomalgMatrix( "[ x ]", 1, 1, R ) / P / S;</span>
+An object in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( UniversalMorphismIntoTerminalObject( J ), I );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+Source:
+A row module over Q[x,y] of rank 2
+
+Matrix:
+x,0,
+0,x
+
+Range:
+A row module over Q[x,y] of rank 2
+
+A morphism in Rows( Q[x,y] )
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( J, iota );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+Source:
+A row module over Q[x,y] of rank 2
+
+Matrix:
+y,
+x
+
+Range:
+A row module over Q[x,y] of rank 1
+
+A morphism in Rows( Q[x,y] )
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InternalHom( J, iota );</span>
+A morphism in the slice category given by: &lt;A morphism in Rows( Q[x,y] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota );</span>
+Source:
+A row module over Q[x,y] of rank 1
+
+Matrix:
+1
+
+Range:
+A row module over Q[x,y] of rank 1
+
+A morphism in Rows( Q[x,y] )
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota = InternalHom( J, iota );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iota );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota ) );</span>
+Source:
+A row module over Q[x,y] of rank 1
+
+Matrix:
+1
+
+Range:
+A row module over Q[x,y] of rank 1
+
+A morphism in Rows( Q[x,y] )
+
+An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Source( iota ) = Range( iota );</span>
+true
+</pre></div>
+
+<p><a id="X796AC9C8870C17BB" name="X796AC9C8870C17BB"></a></p>
+
+<h5>4.3-3 <span class="Heading">Double pushout rewriting</span></h5>
+
+<p>Double pushout in the slice category of <code class="code">SkeletalFinSets</code> over its subobject classifier.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( SkeletalFinSets );</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SliceCategory( omega );</span>
+A slice category of SkeletalFinSets
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := omega;</span>
+|2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := MapOfFinSets( k, [ 1, 0 ], omega ) / S;</span>
+An object in the slice category given by: |2| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := FinSet( 6 );</span>
+|6|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := MapOfFinSets( l, [ 1, 0, 1, 0, 0, 1 ], omega ) / S;</span>
+An object in the slice category given by: |6| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := FinSet( 7 );</span>
+|7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := MapOfFinSets( r, [ 1, 0, 0, 1, 1, 0, 0 ], omega ) / S;</span>
+An object in the slice category given by: |7| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lambda := AsSliceCategoryCell( K, MapOfFinSets( k, [ 0, 1 ], l ), L );</span>
+A morphism in the slice category given by: |2| → |6|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rho := AsSliceCategoryCell( K, MapOfFinSets( k, [ 0, 1 ], r ), R );</span>
+A morphism in the slice category given by: |2| → |7|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">g := FinSet( 8 );</span>
+|8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := MapOfFinSets( g, [ 1, 0, 1, 0, 0, 1, 1, 1 ], omega ) / S;</span>
+An object in the slice category given by: |8| → |2|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mu := AsSliceCategoryCell( L, MapOfFinSets( l, [ 0, 1, 2, 3, 4, 5 ], g ), G );</span>
+A morphism in the slice category given by: |6| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">poc := PushoutComplement( lambda, mu );</span>
+A morphism in the slice category given by: |4| → |8|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( poc );</span>
+{ 0,..., 3 } ⱶ[ 0, 1, 6, 7 ]→ { 0,..., 7 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( poc ) );</span>
+{ 0,..., 3 } ⱶ[ 1, 0, 1, 1 ]→ { 0, 1 }
+
+An object in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dpo := DPO( mu, lambda, rho );</span>
+[ A morphism in the slice category given by: |4| → |9|,
+  A morphism in the slice category given by: |7| → |9| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( dpo[1] );</span>
+{ 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 8 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( dpo[2] );</span>
+{ 0,..., 6 } ⱶ[ 0, 1, 4, 5, 6, 7, 8 ]→ { 0,..., 8 }
+
+A morphism in the slice category given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( dpo[1] ) );</span>
+{ 0,..., 8 } ⱶ[ 1, 0, 1, 1, 0, 1, 1, 0, 0 ]→ { 0, 1 }
+
+An object in the slice category given by the above data
+</pre></div>
+
+<p><a id="X7D7026828261C26B" name="X7D7026828261C26B"></a></p>
+
+<h5>4.3-4 <span class="Heading">Precompilation</span></h5>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># HomalgIdentityMatrix( size, ring ) * matrix -&gt; matrix</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        variable_names := [ "size", "ring", "matrix" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        src_template := "HomalgIdentityMatrix( size, ring ) * matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        dst_template := "matrix",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        needed_packages := [ [ "MatricesForHomalg", "&gt;= 2020.05.19" ] ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we do not use SliceCategoryOverTensorUnit because that installs more operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># which we are not interested in for this simple test</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := field -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SliceCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        TensorUnit(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            CategoryOfRows( field : FinalizeCategory := true )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "SliceCategoryOfCategoryOfRowsOfFieldOverTensorUnitPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "SubcategoriesForCAP";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    : operations := "primitive",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_object := 3,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_object := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_objects_in_data_structure_of_morphism := 6,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    number_of_objectified_morphisms_in_data_structure_of_morphism := 4</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

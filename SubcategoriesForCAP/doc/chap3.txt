@@ -1,0 +1,140 @@
+  
+  [1X3 [33X[0;0YSlice categories[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YGAP categories[133X[101X
+  
+  [1X3.1-1 IsCapSliceCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCapSliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of a slice category.[133X
+  
+  [1X3.1-2 IsCapCategoryCellInASliceCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryCellInASliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a slice category.[133X
+  
+  [1X3.1-3 IsCapCategoryObjectInASliceCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryObjectInASliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a slice category.[133X
+  
+  [1X3.1-4 IsCapCategoryMorphismInASliceCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryMorphismInASliceCategory[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a slice category.[133X
+  
+  [1X3.1-5 IsCapSliceCategoryOverTensorUnit[101X
+  
+  [33X[1;0Y[29X[2XIsCapSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of a slice category over the tensor unit.[133X
+  
+  [1X3.1-6 IsCapCategoryCellInASliceCategoryOverTensorUnit[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryCellInASliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a slice category over the tensor unit.[133X
+  
+  [1X3.1-7 IsCapCategoryObjectInASliceCategoryOverTensorUnit[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryObjectInASliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a slice category over the tensor unit.[133X
+  
+  [1X3.1-8 IsCapCategoryMorphismInASliceCategoryOverTensorUnit[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryMorphismInASliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a slice category over the tensor unit.[133X
+  
+  
+  [1X3.2 [33X[0;0YGlobal variables[133X[101X
+  
+  [1X3.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_SLICE_CATEGORY[102X [32X global variable[133X
+  
+  
+  [1X3.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X3.3-1 AmbientCategory[101X
+  
+  [33X[1;0Y[29X[2XAmbientCategory[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe ambient category of the slice category [3XS[103X.[133X
+  
+  [1X3.3-2 BaseObject[101X
+  
+  [33X[1;0Y[29X[2XBaseObject[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YThe base object of the slice category [3XS[103X.[133X
+  
+  [1X3.3-3 BaseObject[101X
+  
+  [33X[1;0Y[29X[2XBaseObject[102X( [3Xcell[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YThe base object underlying [3Xcell[103X.[133X
+  
+  [1X3.3-4 UnderlyingMorphism[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingMorphism[102X( [3Xobject[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YThe morphism in the ambient category underlying [3Xobject[103X.[133X
+  
+  [1X3.3-5 UnderlyingCell[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCell[102X( [3Xcell[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X cell[133X
+  
+  [33X[0;0YThe cell in the ambient category underlying [3Xcell[103X.[133X
+  
+  [1X3.3-6 InclusionFunctor[101X
+  
+  [33X[1;0Y[29X[2XInclusionFunctor[102X( [3XS[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe natural embedding functor from [3XS[103X to [10XAmbientCategory[110X([3XS[103X).[133X
+  
+  
+  [1X3.4 [33X[0;0YConstructors[133X[101X
+  
+  [1X3.4-1 AsSliceCategoryCell[101X
+  
+  [33X[1;0Y[29X[2XAsSliceCategoryCell[102X( [3Xmor[103X, [3XS[103X ) [32X operation[133X
+  
+  [1X3.4-2 /[101X
+  
+  [33X[1;0Y[29X[2X/[102X( [3Xmor[103X, [3XS[103X ) [32X operation[133X
+  
+  [1X3.4-3 AsSliceCategoryCell[101X
+  
+  [33X[1;0Y[29X[2XAsSliceCategoryCell[102X( [3XA[103X, [3Xmor[103X, [3XB[103X ) [32X operation[133X
+  
+  
+  [1X3.5 [33X[0;0YOperations[133X[101X
+  
+  [1X3.5-1 MorphismFromCovariantArgumentOfInternalHom[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromCovariantArgumentOfInternalHom[102X( [3XJ[103X, [3XI[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
+  
+  [33X[0;0YThe  natural morphism [23XI \to \mathrm{\underline{Hom}}(J,I)[123X, where [3XI[103X and [3XJ[103X are
+  objects in a slice category over the tensor unit.[133X
+  
