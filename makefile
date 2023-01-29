@@ -62,7 +62,7 @@ doc_ZariskiFrames:
 # END PACKAGE JANITOR
 
 ########################################
-test: doc test_Algebroids test_CategoriesWithAmbientObjects test_CategoryConstructor test_CatReps test_ExteriorPowersCategories test_FiniteCocompletion test_GradedCategories test_InternalModules test_IntrinsicCategories test_IntrinsicGradedModules test_IntrinsicModules test_LazyCategories test_Locales test_PreSheaves test_SubcategoriesForCAP test_Toposes test_ZariskiFrames
+test: doc test_Algebroids test_CategoriesWithAmbientObjects test_CategoryConstructor test_CatReps test_ExteriorPowersCategories test_FiniteCocompletion test_FunctorCategories test_GradedCategories test_InternalModules test_IntrinsicCategories test_IntrinsicGradedModules test_IntrinsicModules test_LazyCategories test_Locales test_PreSheaves test_SubcategoriesForCAP test_Toposes test_ZariskiFrames
 
 test_Algebroids:
 	$(MAKE) -C Algebroids test
@@ -81,6 +81,9 @@ test_ExteriorPowersCategories:
 
 test_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion test
+
+test_FunctorCategories:
+	$(MAKE) -C FunctorCategories test
 
 test_GradedCategories:
 	$(MAKE) -C GradedCategories test
@@ -116,7 +119,7 @@ test_ZariskiFrames:
 	$(MAKE) -C ZariskiFrames test
 
 ########################################
-ci-test: doc ci-test_Algebroids ci-test_CategoriesWithAmbientObjects ci-test_CategoryConstructor ci-test_CatReps ci-test_ExteriorPowersCategories ci-test_FiniteCocompletion ci-test_GradedCategories ci-test_InternalModules ci-test_IntrinsicCategories ci-test_IntrinsicGradedModules ci-test_IntrinsicModules ci-test_LazyCategories ci-test_Locales ci-test_PreSheaves ci-test_SubcategoriesForCAP ci-test_Toposes ci-test_ZariskiFrames
+ci-test: doc ci-test_Algebroids ci-test_CategoriesWithAmbientObjects ci-test_CategoryConstructor ci-test_CatReps ci-test_ExteriorPowersCategories ci-test_FiniteCocompletion ci-test_FunctorCategories ci-test_GradedCategories ci-test_InternalModules ci-test_IntrinsicCategories ci-test_IntrinsicGradedModules ci-test_IntrinsicModules ci-test_LazyCategories ci-test_Locales ci-test_PreSheaves ci-test_SubcategoriesForCAP ci-test_Toposes ci-test_ZariskiFrames
 
 ci-test_Algebroids:
 	$(MAKE) -C Algebroids ci-test
@@ -135,6 +138,9 @@ ci-test_ExteriorPowersCategories:
 
 ci-test_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion ci-test
+
+ci-test_FunctorCategories:
+	$(MAKE) -C FunctorCategories ci-test
 
 ci-test_GradedCategories:
 	$(MAKE) -C GradedCategories ci-test
