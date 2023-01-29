@@ -78,21 +78,21 @@ InstallMethod( \.,
         
     elif IsMorphismInFiniteCocompletion( Yc ) then
         
-        if CanCompute( finite_cocompletion, "IsMonomorphism" ) then
-            IsMonomorphism( Yc );
-        fi;
+        #if CanCompute( finite_cocompletion, "IsMonomorphism" ) then
+        #    IsMonomorphism( Yc );
+        #fi;
         
-        if CanCompute( finite_cocompletion, "IsSplitMonomorphism" ) then
-            IsSplitMonomorphism( Yc );
-        fi;
+        #if CanCompute( finite_cocompletion, "IsSplitMonomorphism" ) then
+        #    IsSplitMonomorphism( Yc );
+        #fi;
         
-        if CanCompute( finite_cocompletion, "IsEpimorphism" ) then
-            IsEpimorphism( Yc );
-        fi;
+        #if CanCompute( finite_cocompletion, "IsEpimorphism" ) then
+        #    IsEpimorphism( Yc );
+        #fi;
         
-        if CanCompute( finite_cocompletion, "IsSplitEpimorphism" ) then
-            IsSplitEpimorphism( Yc );
-        fi;
+        #if CanCompute( finite_cocompletion, "IsSplitEpimorphism" ) then
+        #    IsSplitEpimorphism( Yc );
+        #fi;
         
         ## IsIsomorphism = IsSplitMonomorphism and IsSplitEpimorphism
         ## we add this here in case the logic is deactivated
