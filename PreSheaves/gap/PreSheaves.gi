@@ -137,6 +137,44 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY,
           "ZeroObjectFunctorial",
          ] );
 
+##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY,
+        [ 
+          "AssociatorLeftToRightWithGivenTensorProducts",
+          "AssociatorRightToLeftWithGivenTensorProducts",
+          "BraidingInverseWithGivenTensorProducts",
+          "BraidingWithGivenTensorProducts",
+          "LeftDistributivityExpandingWithGivenObjects",
+          "LeftDistributivityFactoringWithGivenObjects",
+          "LeftUnitorInverseWithGivenTensorProduct",
+          "LeftUnitorWithGivenTensorProduct",
+          "RightDistributivityExpandingWithGivenObjects",
+          "RightDistributivityFactoringWithGivenObjects",
+          "RightUnitorInverseWithGivenTensorProduct",
+          "RightUnitorWithGivenTensorProduct",
+          "TensorProductOnMorphismsWithGivenTensorProducts",
+         ] );
+
+##
+InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS,
+        [ 
+          "CoevaluationForDualWithGivenTensorProduct",
+          "DualOnMorphismsWithGivenDuals",
+          #"CoevaluationMorphismWithGivenRange",
+          "EvaluationForDualWithGivenTensorProduct",
+          #"EvaluationMorphismWithGivenSource",
+          "LambdaElimination",
+          "LambdaIntroduction",
+          #"MonoidalPostComposeMorphismWithGivenObjects",
+          #"MonoidalPreComposeMorphismWithGivenObjects",
+          "MorphismFromBidualWithGivenBidual",
+          "MorphismToBidualWithGivenBidual",
+          "RankMorphism",
+          #"TensorProductDualityCompatibilityMorphismWithGivenObjects",
+          "TraceMap",
+          "UniversalPropertyOfDual",
+         ] );
+
 ####################################
 #
 # compatibility methods for "multiple arrows"-case below:
