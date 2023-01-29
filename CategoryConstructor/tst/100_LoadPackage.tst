@@ -21,4 +21,3 @@ true
 gap> LoadPackage( "CategoryConstructor" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
-gap> HOMALG_IO.show_banners := false;;
