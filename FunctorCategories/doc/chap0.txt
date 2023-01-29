@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.01-15
+                                   2023.01-17
   
   
-                                28 January 2023
+                                29 January 2023
   
   
                                 Mohamed Barakat
@@ -86,35 +86,21 @@
       2.1-5 SomeDiagramOfRepresentables
       2.1-6 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
-      2.2-1 Source
-      2.2-2 Range
-      2.2-3 Source
-      2.2-4 Range
-      2.2-5 ValuesOnAllObjects
-      2.2-6 UnderlyingCapTwoCategoryCell
-      2.2-7 YonedaEmbedding
-      2.2-8 YonedaEmbeddingOfSourceCategory
-      2.2-9 ImageOfYonedaEmbeddingOfSource
-      2.2-10 SimpleObjects
-      2.2-11 NerveTruncatedInDegree2
-      2.2-12 SievesOfPathsToTruth
+      2.2-1 ValuesOnAllObjects
+      2.2-2 UnderlyingCapTwoCategoryCell
+      2.2-3 YonedaEmbedding
+      2.2-4 YonedaEmbeddingOfSourceCategory
+      2.2-5 ImageOfYonedaEmbeddingOfSource
+      2.2-6 SimpleObjects
+      2.2-7 NerveTruncatedInDegree2
+      2.2-8 SievesOfPathsToTruth
     2.3 [33X[0;0YOperations[133X
-      2.3-1 ApplyObjectInPreSheafCategoryToObject
-      2.3-2 ApplyObjectInPreSheafCategoryToMorphism
-      2.3-3 ApplyMorphismInPreSheafCategoryToObject
     2.4 [33X[0;0Y[5XGAP[105X Categories[133X
-      2.4-1 IsPreSheafCategory
-      2.4-2 IsCellInPreSheafCategory
-      2.4-3 IsObjectInPreSheafCategory
-      2.4-4 IsMorphismInPreSheafCategory
-      2.4-5 IsPreSheafCategoryOfFpEnrichedCategory
-      2.4-6 IsCellInPreSheafCategoryOfFpEnrichedCategory
-      2.4-7 IsObjectInPreSheafCategoryOfFpEnrichedCategory
-      2.4-8 IsMorphismInPreSheafCategoryOfFpEnrichedCategory
+      2.4-1 IsPreSheafCategoryOfFpEnrichedCategory
+      2.4-2 IsCellInPreSheafCategoryOfFpEnrichedCategory
+      2.4-3 IsObjectInPreSheafCategoryOfFpEnrichedCategory
+      2.4-4 IsMorphismInPreSheafCategoryOfFpEnrichedCategory
     2.5 [33X[0;0YGlobal variables[133X
-      2.5-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_PRESHEAF_CATEGORY
-      2.5-2 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY
-      2.5-3 CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS
     2.6 [33X[0;0YExamples[133X
       2.6-1 [33X[0;0YThe subobject classifier[133X
       2.6-2 [33X[0;0YPreSheaves of non-f.p. categories (experimental)[133X
