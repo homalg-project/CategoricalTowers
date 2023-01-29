@@ -62,19 +62,109 @@ doc_ZariskiFrames:
 # END PACKAGE JANITOR
 
 ########################################
-test: doc test_FiniteCocompletion test_PreSheaves
+test: doc test_Algebroids test_CategoriesWithAmbientObjects test_CategoryConstructor test_CatReps test_ExteriorPowersCategories test_FiniteCocompletion test_GradedCategories test_InternalModules test_IntrinsicCategories test_IntrinsicGradedModules test_IntrinsicModules test_LazyCategories test_Locales test_PreSheaves test_SubcategoriesForCAP test_Toposes test_ZariskiFrames
+
+test_Algebroids:
+	$(MAKE) -C Algebroids test
+
+test_CategoriesWithAmbientObjects:
+	$(MAKE) -C CategoriesWithAmbientObjects test
+
+test_CategoryConstructor:
+	$(MAKE) -C CategoryConstructor test
+
+test_CatReps:
+	$(MAKE) -C CatReps test
+
+test_ExteriorPowersCategories:
+	$(MAKE) -C ExteriorPowersCategories test
 
 test_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion test
 
+test_GradedCategories:
+	$(MAKE) -C GradedCategories test
+
+test_InternalModules:
+	$(MAKE) -C InternalModules test
+
+test_IntrinsicCategories:
+	$(MAKE) -C IntrinsicCategories test
+
+test_IntrinsicGradedModules:
+	$(MAKE) -C IntrinsicGradedModules test
+
+test_IntrinsicModules:
+	$(MAKE) -C IntrinsicModules test
+
+test_LazyCategories:
+	$(MAKE) -C LazyCategories test
+
+test_Locales:
+	$(MAKE) -C Locales test
+
 test_PreSheaves:
 	$(MAKE) -C PreSheaves test
 
+test_SubcategoriesForCAP:
+	$(MAKE) -C SubcategoriesForCAP test
+
+test_Toposes:
+	$(MAKE) -C Toposes test
+
+test_ZariskiFrames:
+	$(MAKE) -C ZariskiFrames test
+
 ########################################
-ci-test: doc ci-test_FiniteCocompletion ci-test_PreSheaves
+ci-test: doc ci-test_Algebroids ci-test_CategoriesWithAmbientObjects ci-test_CategoryConstructor ci-test_CatReps ci-test_ExteriorPowersCategories ci-test_FiniteCocompletion ci-test_GradedCategories ci-test_InternalModules ci-test_IntrinsicCategories ci-test_IntrinsicGradedModules ci-test_IntrinsicModules ci-test_LazyCategories ci-test_Locales ci-test_PreSheaves ci-test_SubcategoriesForCAP ci-test_Toposes ci-test_ZariskiFrames
+
+ci-test_Algebroids:
+	$(MAKE) -C Algebroids ci-test
+
+ci-test_CategoriesWithAmbientObjects:
+	$(MAKE) -C CategoriesWithAmbientObjects ci-test
+
+ci-test_CategoryConstructor:
+	$(MAKE) -C CategoryConstructor ci-test
+
+ci-test_CatReps:
+	$(MAKE) -C CatReps ci-test
+
+ci-test_ExteriorPowersCategories:
+	$(MAKE) -C ExteriorPowersCategories ci-test
 
 ci-test_FiniteCocompletion:
 	$(MAKE) -C FiniteCocompletion ci-test
 
+ci-test_GradedCategories:
+	$(MAKE) -C GradedCategories ci-test
+
+ci-test_InternalModules:
+	$(MAKE) -C InternalModules ci-test
+
+ci-test_IntrinsicCategories:
+	$(MAKE) -C IntrinsicCategories ci-test
+
+ci-test_IntrinsicGradedModules:
+	$(MAKE) -C IntrinsicGradedModules ci-test
+
+ci-test_IntrinsicModules:
+	$(MAKE) -C IntrinsicModules ci-test
+
+ci-test_LazyCategories:
+	$(MAKE) -C LazyCategories ci-test
+
+ci-test_Locales:
+	$(MAKE) -C Locales ci-test
+
 ci-test_PreSheaves:
 	$(MAKE) -C PreSheaves ci-test
+
+ci-test_SubcategoriesForCAP:
+	$(MAKE) -C SubcategoriesForCAP ci-test
+
+ci-test_Toposes:
+	$(MAKE) -C Toposes ci-test
+
+ci-test_ZariskiFrames:
+	$(MAKE) -C ZariskiFrames ci-test
