@@ -1,7 +1,7 @@
 name: CategoriesWithAmbientObjects
-version: "2023.01-01"
+version: "2023.01-02"
 license: "GPL-2.0-or-later"
-date: 2023-01-28
+date: 2023-01-30
 description: |
     Categories with objects having ambient objects
 
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/CategoriesWithAm
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.01-01/CategoriesWithAmbientObjects-2023.01-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.01-02/CategoriesWithAmbientObjects-2023.01-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.01-01/CategoriesWithAmbientObjects-2023.01-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.01-02/CategoriesWithAmbientObjects-2023.01-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.01-01/CategoriesWithAmbientObjects-2023.01-01.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/CategoriesWithAmbientObjects-2023.01-02/CategoriesWithAmbientObjects-2023.01-02.pdf
 
 abstract: |
 
@@ -62,7 +62,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS23</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>CategoriesWithAmbientObjects, Categories with objects having ambient objects,
-             Version 2023.01-01</i>
+             Version 2023.01-02</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects">https://homalg-project.github.io/pkg/CategoriesWithAmbientObjects</a></span>.
@@ -70,10 +70,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CategoriesWithAmbientObjects2023.01-01,
+    @misc{ CategoriesWithAmbientObjects2023.01-02,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{CategoriesWithAmbientObjects},     Categories    with
-                          objects having ambient objects, {V}ersion 2023.01-01},
+                          objects having ambient objects, {V}ersion 2023.01-02},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},
