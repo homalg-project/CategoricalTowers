@@ -76,6 +76,24 @@ jobs:
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
             # publish subsplits
+            git subtree split --prefix=Algebroids -b Algebroids-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Algebroids Algebroids-split:master; \
+            git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbientObjects-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CategoriesWithAmbientObjects CategoriesWithAmbientObjects-split:master; \
+            git subtree split --prefix=CategoryConstructor -b CategoryConstructor-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CategoryConstructor CategoryConstructor-split:master; \
+            git subtree split --prefix=CatReps -b CatReps-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CatReps CatReps-split:master; \
+            git subtree split --prefix=ExteriorPowersCategories -b ExteriorPowersCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/ExteriorPowersCategories ExteriorPowersCategories-split:master; \
+            git subtree split --prefix=FiniteCocompletion -b FiniteCocompletion-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FiniteCocompletion FiniteCocompletion-split:master; \
+            git subtree split --prefix=FunctorCategories -b FunctorCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FunctorCategories FunctorCategories-split:master; \
+            git subtree split --prefix=GradedCategories -b GradedCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/GradedCategories GradedCategories-split:master; \
+            git subtree split --prefix=InternalModules -b InternalModules-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/InternalModules InternalModules-split:master; \
+            git subtree split --prefix=IntrinsicCategories -b IntrinsicCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/IntrinsicCategories IntrinsicCategories-split:master; \
+            git subtree split --prefix=IntrinsicGradedModules -b IntrinsicGradedModules-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/IntrinsicGradedModules IntrinsicGradedModules-split:master; \
+            git subtree split --prefix=IntrinsicModules -b IntrinsicModules-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/IntrinsicModules IntrinsicModules-split:master; \
+            git subtree split --prefix=LazyCategories -b LazyCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/LazyCategories LazyCategories-split:master; \
+            git subtree split --prefix=Locales -b Locales-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Locales Locales-split:master; \
+            git subtree split --prefix=PreSheaves -b PreSheaves-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/PreSheaves PreSheaves-split:master; \
+            git subtree split --prefix=SubcategoriesForCAP -b SubcategoriesForCAP-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/SubcategoriesForCAP SubcategoriesForCAP-split:master; \
+            git subtree split --prefix=Toposes -b Toposes-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Toposes Toposes-split:master; \
+            git subtree split --prefix=ZariskiFrames -b ZariskiFrames-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/ZariskiFrames ZariskiFrames-split:master; \
           else \
             echo "Not making a release."; \
           fi
