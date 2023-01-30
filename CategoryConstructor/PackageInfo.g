@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "CategoryConstructor",
 Subtitle := "Construct categories out of given ones",
-Version := "2023.01-04",
+Version := "2023.01-05",
 
-Date := "29/01/2023",
-Date := "29/01/2023",
+Date := "30/01/2023",
+Date := "30/01/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [
