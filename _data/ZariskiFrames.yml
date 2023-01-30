@@ -1,7 +1,7 @@
 name: ZariskiFrames
-version: "2022.10-01"
+version: "2023.01-01"
 license: "GPL-2.0-or-later"
-date: 2023-01-28
+date: 2023-01-30
 description: |
     (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties
 
@@ -69,11 +69,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/ZariskiFrames/Pa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2022.10-01/ZariskiFrames-2022.10-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2023.01-01/ZariskiFrames-2023.01-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2022.10-01/ZariskiFrames-2022.10-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2023.01-01/ZariskiFrames-2023.01-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2022.10-01/ZariskiFrames-2022.10-01.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ZariskiFrames-2023.01-01/ZariskiFrames-2023.01-01.pdf
 
 abstract: |
 
@@ -86,7 +86,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BKL23</span>]   <b class='BibAuthor'>Barakat, M., Kuhmichel, T. and Lange-Hegermann, M.</b>,
      <i class='BibTitle'>ZariskiFrames, (Co)frames/Locales of Zariski closed/open subsets of affine, projective, or toric varieties,
-             Version 2022.10-01</i>
+             Version 2023.01-01</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ZariskiFrames">https://homalg-project.github.io/pkg/ZariskiFrames</a></span>.
@@ -94,11 +94,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ZariskiFrames2022.10-01,
+    @misc{ ZariskiFrames2023.01-01,
       author =           {Barakat, M. and Kuhmichel, T. and Lange-Hegermann, M.},
       title =            {{ZariskiFrames},    (Co)frames/Locales    of   Zariski
                           closed/open  subsets  of  affine, projective, or toric
-                          varieties, {V}ersion 2022.10-01},
+                          varieties, {V}ersion 2023.01-01},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},
