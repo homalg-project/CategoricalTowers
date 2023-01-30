@@ -1,7 +1,7 @@
 name: IntrinsicCategories
-version: "2022.12-01"
+version: "2023.01-01"
 license: "GPL-2.0-or-later"
-date: 2023-01-28
+date: 2023-01-30
 description: |
     Intrinsic categories for CAP
 
@@ -38,11 +38,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicCategor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2022.12-01/IntrinsicCategories-2022.12-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2023.01-01/IntrinsicCategories-2023.01-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2022.12-01/IntrinsicCategories-2022.12-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2023.01-01/IntrinsicCategories-2023.01-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2022.12-01/IntrinsicCategories-2022.12-01.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2023.01-01/IntrinsicCategories-2023.01-01.pdf
 
 abstract: |
 
@@ -55,7 +55,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>IntrinsicCategories, Intrinsic categories for CAP,
-             Version 2022.12-01</i>
+             Version 2023.01-01</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicCategories">https://homalg-project.github.io/pkg/IntrinsicCategories</a></span>.
@@ -63,10 +63,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ IntrinsicCategories2022.12-01,
+    @misc{ IntrinsicCategories2023.01-01,
       author =           {Barakat, M.},
       title =            {{IntrinsicCategories},  Intrinsic  categories for CAP,
-                          {V}ersion 2022.12-01},
+                          {V}ersion 2023.01-01},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},
