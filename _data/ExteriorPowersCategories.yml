@@ -1,7 +1,7 @@
 name: ExteriorPowersCategories
-version: "2022.07-01"
+version: "2023.01-01"
 license: "GPL-2.0-or-later"
-date: 2023-01-28
+date: 2023-01-30
 description: |
     The graded category of exterior powers of objects of a given Ab-category
 
@@ -38,11 +38,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/ExteriorPowersCa
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-2022.07-01/ExteriorPowersCategories-2022.07-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-2023.01-01/ExteriorPowersCategories-2023.01-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-2022.07-01/ExteriorPowersCategories-2022.07-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-2023.01-01/ExteriorPowersCategories-2023.01-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-2022.07-01/ExteriorPowersCategories-2022.07-01.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/ExteriorPowersCategories-2023.01-01/ExteriorPowersCategories-2023.01-01.pdf
 
 abstract: |
 
@@ -55,7 +55,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>ExteriorPowersCategories, The graded category of exterior powers of objects of a given Ab-category,
-             Version 2022.07-01</i>
+             Version 2023.01-01</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ExteriorPowersCategories">https://homalg-project.github.io/pkg/ExteriorPowersCategories</a></span>.
@@ -63,11 +63,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ExteriorPowersCategories2022.07-01,
+    @misc{ ExteriorPowersCategories2023.01-01,
       author =           {Barakat, M.},
       title =            {{ExteriorPowersCategories},  The  graded  category  of
                           exterior  powers  of  objects  of a given Ab-category,
-                          {V}ersion 2022.07-01},
+                          {V}ersion 2023.01-01},
       month =            {Jan},
       year =             {2023},
       note =             {GAP package},
