@@ -6,14 +6,13 @@
 # manual of the "Example" package as well as the comments in its
 # PackageInfo.g file.
 #
-
 SetPackageInfo( rec(
 
 PackageName := "Locales",
 Subtitle := "Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets",
-Version := "2023.01-02",
-Date := "28/01/2023",
-Date := "28/01/2023",
+Version := "2023.01-03",
+Date := "30/01/2023",
+Date := "30/01/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [
