@@ -21,15 +21,3 @@ InstallTrueMethod( IsSkeletalCategory, IsBiHeytingAlgebra );
 InstallTrueMethod( IsBooleanAlgebra, IsBooleanAlgebroid and IsSkeletalCategory );
 InstallTrueMethod( IsBooleanAlgebroid, IsBooleanAlgebra );
 InstallTrueMethod( IsSkeletalCategory, IsBooleanAlgebra );
-
-##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS,
-  function( boolean_algebra )
-    
-    SetIsBooleanAlgebra( boolean_algebra, true );
-    
-    ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( boolean_algebra );
-    
-    ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( boolean_algebra );
-    
-end );

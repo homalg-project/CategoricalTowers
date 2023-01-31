@@ -17,16 +17,6 @@ InstallTrueMethod( IsHeytingAlgebroid, IsHeytingAlgebra );
 InstallTrueMethod( IsSkeletalCategory, IsHeytingAlgebra );
 
 ##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS,
-  function( heyting_algebra )
-    
-    SetIsCartesianClosedCategory( heyting_algebra, true );
-    
-    ADD_COMMON_METHODS_FOR_LATTICES( heyting_algebra );
-    
-end );
-
-##
 InstallMethod( StableInternalHom,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],

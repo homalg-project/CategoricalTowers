@@ -101,5 +101,3 @@ end );
 # @Section Tools
 
 DeclareGlobalVariable( "HEYTING_ALGEBRA_METHOD_NAME_RECORD" );
-
-DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS" );

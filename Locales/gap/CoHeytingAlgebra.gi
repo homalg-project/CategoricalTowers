@@ -17,16 +17,6 @@ InstallTrueMethod( IsCoHeytingAlgebroid, IsCoHeytingAlgebra );
 InstallTrueMethod( IsSkeletalCategory, IsCoHeytingAlgebra );
 
 ##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS,
-  function( coheyting_algebra )
-    
-    SetIsCocartesianCoclosedCategory( coheyting_algebra, true );
-    
-    ADD_COMMON_METHODS_FOR_LATTICES( coheyting_algebra );
-    
-end );
-
-##
 InstallMethod( StableInternalCoHom,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],

@@ -65,4 +65,4 @@ DeclareOperation( "UniqueMorphism",
 
 DeclareGlobalVariable( "PREORDERED_SET_METHOD_NAME_RECORD" );
 
-DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_PREORDERED_SETS" );
+DeclareGlobalFunction( "ADD_UNIQUE_MORPHISM" );

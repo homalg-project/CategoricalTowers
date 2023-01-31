@@ -129,15 +129,15 @@ InstallMethod( ZariskiCoframeOfProj,
     
     name := Concatenation( name, RingName( R ) );
     
-    ZariskiCoframe := CreateCapCategory( name );
-    
-    SetFilterObj( ZariskiCoframe, IsZariskiCoframeOfAProjectiveVariety );
-    
-    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAProjectiveVariety );
-    
-    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAProjectiveVariety );
+    ZariskiCoframe := CreateCapCategory( name,
+                              IsZariskiCoframeOfAProjectiveVariety,
+                              IsObjectInZariskiCoframeOfAProjectiveVariety,
+                              IsMorphismInZariskiCoframeOfAProjectiveVariety,
+                              IsCapCategoryTwoCell );
     
     ZariskiCoframe!.category_as_first_argument := true;
+    
+    SetIsCoHeytingAlgebra( ZariskiCoframe, true );
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfProj;
     ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfProjByListOfColumns;
@@ -145,8 +145,6 @@ InstallMethod( ZariskiCoframeOfProj,
     ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfProjByStandardColumn;
     
     SetUnderlyingRing( ZariskiCoframe, R );
-    
-    ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
     ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES( ZariskiCoframe );
     

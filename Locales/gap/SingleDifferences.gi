@@ -40,11 +40,15 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
     
     name := Concatenation( name, Name( P ) );
     
-    D := CreateCapCategory( name );
+    D := CreateCapCategory( name,
+                 IsMeetSemilatticeOfSingleDifferences,
+                 IsObjectInMeetSemilatticeOfSingleDifferences,
+                 IsMorphismInMeetSemilatticeOfSingleDifferences,
+                 IsCapCategoryTwoCell );
     
     D!.category_as_first_argument := true;
     
-    SetFilterObj( D, IsMeetSemilatticeOfSingleDifferences );
+    SetIsMeetSemiLattice( D, true );
     
     SetUnderlyingCategory( D, P );
     
@@ -52,16 +56,9 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
-        category_filter := IsMeetSemilatticeOfSingleDifferences,
-        object_filter := IsObjectInMeetSemilatticeOfSingleDifferences,
-        morphism_filter := IsMorphismInMeetSemilatticeOfSingleDifferences,
     );
     
-    AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfSingleDifferences );
-    
-    AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfSingleDifferences );
-    
-    SetIsMeetSemiLattice( D, true );
+    ADD_UNIQUE_MORPHISM( D );
     
     ##
     AddObjectConstructor( D,
@@ -70,8 +67,6 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         return SingleDifference( D, minuend_subtrahend_pair );
         
     end );
-    
-    ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( D );
     
     ##
     AddIsWellDefinedForObjects( D,

@@ -9,16 +9,6 @@ InstallTrueMethod( IsThinCategory, IsPosetCategory );
 InstallTrueMethod( IsSkeletalCategory, IsPosetCategory );
 
 ##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_POSETS,
-  function( poset )
-    
-    SetIsSkeletalCategory( poset, true );
-    
-    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( poset );
-    
-end );
-
-##
 InstallMethod( \<,
         "for two objects in a thin category",
         [ IsObjectInThinCategory, IsObjectInThinCategory ],

@@ -48,32 +48,27 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences,
     
     name := Concatenation( name, Name( P ) );
     
-    C := CreateCapCategory( name );
+    C := CreateCapCategory( name,
+                 IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences,
+                 IsConstructibleObjectAsUnionOfSingleDifferences,
+                 IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences,
+                 IsCapCategoryTwoCell );
     
     C!.category_as_first_argument := true;
-    
-    C!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingCategory",
-            "UnderlyingMeetSemilatticeOfDifferences",
-        ],
-        category_filter := IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences,
-        object_filter := IsConstructibleObjectAsUnionOfSingleDifferences,
-        morphism_filter := IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences,
-    );
-    
-    SetFilterObj( C, IsBooleanAlgebraOfConstructibleObjectsAsUnionOfSingleDifferences );
     
     SetIsBooleanAlgebra( C, true );
     
     SetUnderlyingCategory( C, P );
     SetUnderlyingMeetSemilatticeOfDifferences( C, MeetSemilatticeOfSingleDifferences( P ) );
     
-    AddObjectRepresentation( C, IsConstructibleObjectAsUnionOfSingleDifferences );
+    C!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+            "UnderlyingMeetSemilatticeOfDifferences",
+        ],
+    );
     
-    AddMorphismRepresentation( C, IsMorphismBetweenConstructibleObjectsAsUnionOfDifferences );
-    
-    ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS( C );
+    ADD_UNIQUE_MORPHISM( C );
     
     ##
     AddIsWellDefinedForObjects( C,

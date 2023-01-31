@@ -207,7 +207,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     local skeletal, stable, category_filter, category_object_filter, category_morphism_filter,
           name, create_func_morphism,
           list_of_operations_to_install, skip, func, pos,
-          properties, preinstall, P, object_constructor, object_datum, morphism_constructor, morphism_datum;
+          properties, P, object_constructor, object_datum, morphism_constructor, morphism_datum;
     
     skeletal := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "skeletal", false );
     
@@ -321,28 +321,22 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
         Add( properties, "IsSkeletalCategory" );
         
-        preinstall := [ ADD_COMMON_METHODS_FOR_POSETS ];
-        
         if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
             Add( properties, "IsStrictCartesianCategory" );
-            preinstall := [ ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES ];
         fi;
         
         if HasIsCocartesianCategory( C ) and IsCocartesianCategory( C ) then
             Add( properties, "IsStrictCocartesianCategory" );
-            Add( preinstall, ADD_COMMON_METHODS_FOR_JOIN_SEMILATTICES );
         fi;
         
     else
         
-        preinstall := [ ADD_COMMON_METHODS_FOR_PREORDERED_SETS ];
-        
         if HasIsCartesianCategory( C ) and IsCartesianCategory( C ) then
-            preinstall := [ ADD_COMMON_METHODS_FOR_CARTESIAN_PREORDERED_SETS ];
+            Add( properties, "IsCartesianCategory" );
         fi;
         
         if HasIsCocartesianCategory( C ) and IsCocartesianCategory( C ) then
-            Add( preinstall, ADD_COMMON_METHODS_FOR_COCARTESIAN_PREORDERED_SETS );
+            Add( properties, "IsCocartesianCategory" );
         fi;
         
     fi;
@@ -388,7 +382,6 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_object_filter := category_object_filter,
                  category_morphism_filter := category_morphism_filter,
                  properties := properties,
-                 preinstall := preinstall,
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := "default",
                  create_func_object := "default",
@@ -403,6 +396,8 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  underlying_morphism_getter_string := "MorphismDatum",
                  category_as_first_argument := true
                  );
+    
+    ADD_UNIQUE_MORPHISM( P );
     
     P!.compiler_hints.category_attribute_names := [
         "AmbientCategory",
@@ -437,7 +432,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
             
             P!.do_not_use_cartesian_closed_structure_as_homomorphism_structure := true;
             
-            ADD_COMMON_METHODS_FOR_HEYTING_ALGEBRAS( P );
+            if IsIdenticalObj( skeletal, true ) then
+                SetIsHeytingAlgebra( P, true );
+            else
+                SetIsHeytingAlgebroid( P, true );
+            fi;
             
             ##
             AddInternalHomOnObjects( P,
@@ -458,7 +457,11 @@ InstallMethod( CreateProsetOrPosetOfCategory,
         
         if CanCompute( C, "InternalCoHomOnObjects" ) then
             
-            ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( P );
+            if IsIdenticalObj( skeletal, true ) then
+                SetIsCoHeytingAlgebra( P, true );
+            else
+                SetIsCoHeytingAlgebra( P, true );
+            fi;
             
             ##
             AddInternalCoHomOnObjects( P,
