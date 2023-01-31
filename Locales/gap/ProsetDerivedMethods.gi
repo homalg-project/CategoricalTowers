@@ -4,7 +4,22 @@
 # Implementations
 #
 
-## FIXME: CategoryFilter := C -> HasIsThinCategory( C ) and IsThinCategory( C ) and CanCompute( C, "UniqueMorphism" )
+##
+AddDerivationToCAP( UniqueMorphism,
+  function( cat, A, B )
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    if not IsIdenticalObj( cat, CapCategory( A ) ) then
+        Error( "the first object belong to different category\n" );
+    elif not IsIdenticalObj( cat, CapCategory( B ) ) then
+        Error( "the second object belong to different category\n" );
+    fi;
+    
+    return CreateCapCategoryMorphismWithAttributes( cat, A, B );
+    
+end : CategoryFilter := IsThinCategory );
+
+##
 AddDerivationToCAP( IsWellDefinedForMorphisms,
         [ [ IsHomSetInhabited, 1 ] ],
         
