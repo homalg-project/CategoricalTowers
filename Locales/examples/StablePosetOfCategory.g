@@ -3,7 +3,7 @@
 LoadPackage( "Locales" );
 
 #! @Example
-LoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );
+LoadPackage( "SubcategoriesForCAP", ">= 2023.02-01" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
@@ -15,8 +15,38 @@ S := SliceCategoryOverTensorUnit( F );
 #! SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 P := PosetOfCategory( S );
 #! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+Display( P );
+#! A CAP category with name
+#! Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
+#! 
+#! 16 primitive operations were used to derive 252 operations for this category
+#! which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsClosedMonoidalLattice
+#! * IsSymmetricClosedMonoidalCategory
+#! and furthermore mathematically
+#! * IsSkeletalCategory
+#! * IsStrictCartesianCategory
+#! * IsStrictCocartesianCategory
+#! * IsStrictMonoidalCategory
 L := StablePosetOfCategory( P );
 #! StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
+Display( L );
+#! A CAP category with name
+#! StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
+#! 
+#! 15 primitive operations were used to derive 302 operations for this category
+#! which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsHeytingAlgebra
+#! * IsClosedMonoidalLattice
+#! * IsSymmetricClosedMonoidalCategory
+#! and furthermore mathematically
+#! * IsSkeletalCategory
+#! * IsStableProset
+#! * IsStrictCartesianCategory
+#! * IsStrictCocartesianCategory
+#! * IsStrictMonoidalCategory
 I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;
 #! An object in the stable poset given by:
 #! An object in the poset given by:

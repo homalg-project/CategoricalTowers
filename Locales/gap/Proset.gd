@@ -41,6 +41,45 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory :=
           ],
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory ) );
 
+#! @Description
+#!  The property of <A>C</A> being a monoidal thin category.
+#! @Arguments C
+DeclareProperty( "IsMonoidalProset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsMonoidalProset", "IsMonoidalProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a closed monoidal thin category.
+#! @Arguments C
+DeclareProperty( "IsClosedMonoidalProset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsClosedMonoidalProset", "IsCoclosedMonoidalProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a coclosed monoidal thin category.
+#! @Arguments C
+DeclareProperty( "IsCoclosedMonoidalProset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsCoclosedMonoidalProset", "IsClosedMonoidalProset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalProset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalProset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
+
 #! @Section Operations
 
 #! @Description
