@@ -933,14 +933,24 @@ InstallMethod( ViewObj,
     labels := C!.labels;
     
     i := MapOfMorphism( mor )( 0 );
+    
     pos := Position( IndicesOfGeneratingMorphisms( C ), i );
+    
+    if IsInt( pos ) then
+        pos := labels[2][pos];
+    else
+        pos := Position( AsList( NerveTruncatedInDegree2Data( C )[2][1] ), i );
+        if not pos = fail then
+            pos := labels[1][pos];
+        fi;
+    fi;
     
     Print( "(", labels[1][1 + MapOfObject( Source( mor ) )( 0 )], ")" );
     Print( "-[(" );
     if pos = fail then
         Print( i );
     else
-        Print( labels[2][pos] );
+        Print( pos );
     fi;
     Print( ")]->" );
     Print( "(", labels[1][1 + MapOfObject( Range( mor ) )( 0 )], ")" );
