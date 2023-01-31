@@ -34,7 +34,7 @@ IsWellDefined( C1 );
 IsWellDefined( 2 / C );
 #! false
 idC0 := CreateMorphism( C0, 0, C0 );
-#! (C0)-[(0)]->(C0)
+#! (C0)-[(C0)]->(C0)
 CreateMorphism( C, 0 ) = idC0;
 #! true
 IsOne( idC0 );
@@ -46,7 +46,7 @@ s := CreateMorphism( C, 2 );
 t := CreateMorphism( C, 3 );
 #! (C0)-[(t)]->(C1)
 idC1 := CreateMorphism( C, 4 );
-#! (C1)-[(4)]->(C1)
+#! (C1)-[(C1)]->(C1)
 IsOne( idC1 );
 #! true
 sigma := CreateMorphism( C, 5 );
