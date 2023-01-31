@@ -150,7 +150,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( 2 / C );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idC0 := CreateMorphism( C0, 0, C0 );</span>
-(C0)-[(0)]-&gt;(C0)
+(C0)-[(C0)]-&gt;(C0)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CreateMorphism( C, 0 ) = idC0;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC0 );</span>
@@ -162,7 +162,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := CreateMorphism( C, 3 );</span>
 (C0)-[(t)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">idC1 := CreateMorphism( C, 4 );</span>
-(C1)-[(4)]-&gt;(C1)
+(C1)-[(C1)]-&gt;(C1)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( idC1 );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sigma := CreateMorphism( C, 5 );</span>
