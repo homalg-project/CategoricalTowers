@@ -42,9 +42,9 @@ end : Description := "ExponentialOnMorphismsWithGivenExponentials as the unique 
 AddDerivationToCAP( CartesianEvaluationMorphismWithGivenSource,
         [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, B, Exp_A_BxA )
+  function( cat, A, B, Exp_A_B_xA )
         
-    return UniqueMorphism( cat, Exp_A_BxA, B);
+    return UniqueMorphism( cat, Exp_A_B_xA, B );
     
 end : Description := "CartesianEvaluationMorphismWithGivenSource as the unique morphism",
       CategoryFilter := IsHeytingAlgebroid );

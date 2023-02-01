@@ -43,9 +43,9 @@ end : Description := "CoexponentialOnMorphismsWithGivenCoexponentials as the uni
 AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
         [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, B, Coex_A_BuB )
+  function( cat, A, B, Coex_A_B_uB )
         
-    return UniqueMorphism( cat, A, Coex_A_BuB );
+    return UniqueMorphism( cat, A, Coex_A_B_uB );
     
 end : Description := "CocartesianEvaluationMorphismWithGivenRange as the unique morphism",
       CategoryFilter := IsCoHeytingAlgebroid );
@@ -54,9 +54,9 @@ end : Description := "CocartesianEvaluationMorphismWithGivenRange as the unique 
 AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
         [ [ UniqueMorphism, 1 ] ],
         
-  function( cat, A, B, Coex_AuB_A)
+  function( cat, A, B, Coex_AuB_B )
         
-    return UniqueMorphism( cat, Coex_AuB_A, B );
+    return UniqueMorphism( cat, Coex_AuB_B, A );
     
 end : Description := "CocartesianCoevaluationMorphismWithGivenSource as the unique morphism",
       CategoryFilter := IsCoHeytingAlgebroid );
