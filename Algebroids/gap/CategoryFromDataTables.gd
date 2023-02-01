@@ -206,12 +206,18 @@ DeclareAttribute( "OppositeCategoryFromDataTables",
 ####################################
 
 #! @Description
-#!  Construct a <A>V</A>-enriched category with name <A>str</A> from the given <A>data_tables</A>
-#! (of a f.p. category <A>C</A> or a category <A>C</A> created from nerve data).
-#! @Arguments str, V, data_tables, indices_of_generating_morphisms, relations, labels
+#!  Construct an enriched finite category out of the <A>input_record</A>
+#!  consisting of values to the keys:
+#!  * name
+#!  * nerve_data
+#!  * indices_of_generating_morphisms
+#!  * relations
+#!  * labels
+#!  * properties
+#! @Arguments input_record
 #! @Returns a &CAP; category
-DeclareOperation( "CategoryFromDataTables",
-        [ IsString, IsCapCategory, IsList, IsList, IsList, IsList ] );
+DeclareAttribute( "CategoryFromDataTables",
+        IsRecord );
 #! @InsertChunk CategoryFromDataTables
 
 #! @Arguments C

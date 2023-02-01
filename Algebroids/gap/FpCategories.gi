@@ -240,15 +240,7 @@ InstallMethod( DataTablesOfCategory,
         
   function( C )
     
-    return DataTablesOfCategory(
-                   CategoryFromNerveData(
-                           Name( C ),
-                           NerveTruncatedInDegree2Data( C ),
-                           IndicesOfGeneratingMorphisms( C ),
-                           RelationsAmongGeneratingMorphisms( C ),
-                           [ List( SetOfObjects( C ), Label ),
-                             List( SetOfGeneratingMorphisms( C ), Label ) ]
-                           : FinalizeCategory := true ) );
+    return DataTablesOfCategory( CategoryFromNerveData( C : FinalizeCategory := true ) );
     
 end );
 
