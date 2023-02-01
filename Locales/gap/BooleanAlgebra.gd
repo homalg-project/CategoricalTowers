@@ -105,5 +105,3 @@ DeclareOperation( "MorphismToDoubleConegationWithGivenDoubleConegation",
 # @Section Tools
 
 DeclareGlobalVariable( "BOOLEAN_ALGEBRA_METHOD_NAME_RECORD" );
-
-DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_BOOLEAN_ALGEBRAS" );

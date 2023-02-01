@@ -38,5 +38,3 @@ DeclareOperation( "IsEqualForObjectsIfIsHomSetInhabited",
 # @Section Tools
 
 DeclareGlobalVariable( "POSET_METHOD_NAME_RECORD" );
-
-DeclareGlobalFunction( "ADD_COMMON_METHODS_FOR_POSETS" );

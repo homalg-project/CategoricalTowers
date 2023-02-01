@@ -346,6 +346,9 @@ InstallGlobalFunction( ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES,
   function( zariski_frame_or_coframe )
     
     ##
+    ADD_UNIQUE_MORPHISM( zariski_frame_or_coframe );
+    
+    ##
     AddIsWellDefinedForObjects( zariski_frame_or_coframe,
       function( cat, A )
         

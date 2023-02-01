@@ -35,9 +35,19 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
     
     name := Concatenation( name, Name( P ) );
     
-    D := CreateCapCategory( name );
+    D := CreateCapCategory( name,
+                 IsMeetSemilatticeOfMultipleDifferences,
+                 IsObjectInMeetSemilatticeOfMultipleDifferences,
+                 IsMorphismInMeetSemilatticeOfMultipleDifferences,
+                 IsCapCategoryTwoCell );
     
     D!.category_as_first_argument := true;
+    
+    SetIsMeetSemiLattice( D, true );
+    
+    SetUnderlyingCategory( D, P );
+    
+    SetUnderlyingCategoryOfSingleDifferences( D, MeetSemilatticeOfSingleDifferences( P ) );
     
     D!.compiler_hints :=
       rec(
@@ -45,24 +55,9 @@ InstallMethod( MeetSemilatticeOfMultipleDifferences,
                   "UnderlyingCategory",
                   "UnderlyingCategoryOfSingleDifferences",
                   ],
-          category_filter := IsMeetSemilatticeOfMultipleDifferences,
-          object_filter := IsObjectInMeetSemilatticeOfMultipleDifferences,
-          morphism_filter := IsMorphismInMeetSemilatticeOfMultipleDifferences,
           );
     
-    SetFilterObj( D, IsMeetSemilatticeOfMultipleDifferences );
-    
-    SetUnderlyingCategory( D, P );
-    
-    SetUnderlyingCategoryOfSingleDifferences( D, MeetSemilatticeOfSingleDifferences( P ) );
-    
-    AddObjectRepresentation( D, IsObjectInMeetSemilatticeOfMultipleDifferences );
-    
-    AddMorphismRepresentation( D, IsMorphismInMeetSemilatticeOfMultipleDifferences );
-    
-    SetIsMeetSemiLattice( D, true );
-    
-    ADD_COMMON_METHODS_FOR_MEET_SEMILATTICES( D );
+    ADD_UNIQUE_MORPHISM( D );
     
     ##
     AddIsWellDefinedForObjects( D,

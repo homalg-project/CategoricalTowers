@@ -7,10 +7,8 @@
 SetInfoLevel( InfoLocales, 1 );
 
 ##
-InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
+InstallGlobalFunction( ADD_UNIQUE_MORPHISM,
   function( preordered_set )
-    
-    SetIsThinCategory( preordered_set, true );
     
     ##
     AddUniqueMorphism( preordered_set,

@@ -230,15 +230,15 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     
     name := Concatenation( name, RingName( R ) );
     
-    ZariskiCoframe := CreateCapCategory( name );
-    
-    SetFilterObj( ZariskiCoframe, IsZariskiCoframeOfAnAffineVariety );
-    
-    AddObjectRepresentation( ZariskiCoframe, IsObjectInZariskiCoframeOfAnAffineVariety );
-    
-    AddMorphismRepresentation( ZariskiCoframe, IsMorphismInZariskiCoframeOfAnAffineVariety );
+    ZariskiCoframe := CreateCapCategory( name,
+                              IsZariskiCoframeOfAnAffineVariety,
+                              IsObjectInZariskiCoframeOfAnAffineVariety,
+                              IsMorphismInZariskiCoframeOfAnAffineVariety,
+                              IsCapCategoryTwoCell );
     
     ZariskiCoframe!.category_as_first_argument := true;
+    
+    SetIsCoHeytingAlgebra( ZariskiCoframe, true );
     
     ZariskiCoframe!.Constructor := ClosedSubsetOfSpec;
     ZariskiCoframe!.ConstructorByListOfColumns := ClosedSubsetOfSpecByListOfColumns;
@@ -246,8 +246,6 @@ InstallMethod( ZariskiCoframeOfAffineSpectrum,
     ZariskiCoframe!.ConstructorByStandardColumn := ClosedSubsetOfSpecByStandardColumn;
     
     SetUnderlyingRing( ZariskiCoframe, R );
-    
-    ADD_COMMON_METHODS_FOR_COHEYTING_ALGEBRAS( ZariskiCoframe );
     
     ADD_COMMON_METHODS_FOR_FRAMES_AND_COFRAMES( ZariskiCoframe );
     
