@@ -6,13 +6,44 @@
 
 ##
 InstallMethod( CategoryFromNerveData,
-        "for a string and four lists",
-        [ IsString, IsList, IsList, IsList, IsList ],
+        "for a record",
+        [ IsRecord ],
         
-  function( name, nerve_data, indices_of_generating_morphisms, relations, labels )
-    local C, C0, V, s, t;
+  function( input_record )
+    local known_keys_with_filters, key, filter, C, prop, nerve_data, C0, V, s, t;
     
-    C := CreateCapCategory( name,
+    ## check the keys of the given input record
+    known_keys_with_filters :=
+      rec( name := IsString,
+           nerve_data := IsList,
+           indices_of_generating_morphisms := IsList,
+           relations := IsList,
+           labels := IsList,
+           properties := IsList );
+    
+    for key in RecNames( input_record ) do
+        
+        if IsBound( known_keys_with_filters.(key) ) then
+            
+            filter := known_keys_with_filters.(key);
+            
+            if not filter( input_record.(key) ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "The value of the key `", key, "` must lie in the filter ", filter );
+                
+            fi;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "The following record key is not known to `CategoryFromNerveData`: ", key );
+            
+        fi;
+        
+    od;
+    
+    C := CreateCapCategory( input_record.name,
                  IsCategoryFromNerveData,
                  IsObjectInCategoryFromNerveData,
                  IsMorphismInCategoryFromNerveData,
@@ -20,12 +51,20 @@ InstallMethod( CategoryFromNerveData,
     
     C!.category_as_first_argument := true;
     
-    SetIndicesOfGeneratingMorphisms( C, indices_of_generating_morphisms );
-    SetRelationsAmongGeneratingMorphisms( C, relations );
-    
-    C!.labels := labels;
-    
     SetIsFinite( C, true );
+    
+    for prop in input_record.properties do
+        
+        Setter( ValueGlobal( prop ) )( C, true );
+        
+    od;
+    
+    SetIndicesOfGeneratingMorphisms( C, input_record.indices_of_generating_morphisms );
+    SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
+    
+    C!.labels := input_record.labels;
+    
+    nerve_data := input_record.nerve_data;
     
     C0 := nerve_data[1][1];
     
@@ -41,13 +80,10 @@ InstallMethod( CategoryFromNerveData,
     ## t: C₁ → C₀
     t := nerve_data[2][3];
     
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( input_record.indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
     
     C!.compiler_hints :=
-      rec( category_filter := IsCategoryFromNerveData,
-           object_filter := IsObjectInCategoryFromNerveData,
-           morphism_filter := IsMorphismInCategoryFromNerveData,
-           category_attribute_names :=
+      rec( category_attribute_names :=
            [ "NerveData",
              "IndicesOfGeneratingMorphisms",
              "RelationsAmongGeneratingMorphisms",
@@ -485,12 +521,13 @@ InstallMethod( CategoryFromNerveData,
         
   function( C )
     
-    return CategoryFromNerveData( Name( C ),
-                   NerveTruncatedInDegree2Data( C ),
-                   IndicesOfGeneratingMorphisms( C ),
-                   RelationsAmongGeneratingMorphisms( C ),
-                   [ List( SetOfObjects( C ), Label ),
-                     List( SetOfGeneratingMorphisms( C ), Label ) ] );
+    return CategoryFromNerveData(
+                   rec( name := Name( C ),
+                        nerve_data := NerveTruncatedInDegree2Data( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
     
 end );
 
@@ -502,11 +539,12 @@ InstallOtherMethod( CategoryFromNerveData,
   function( C )
     
     return CategoryFromNerveData(
-                   Name( C ),
-                   NerveTruncatedInDegree2Data( C ),
-                   IndicesOfGeneratingMorphisms( C ),
-                   RelationsAmongGeneratingMorphisms( C ),
-                   C!.labels );
+                   rec( name := Name( C ),
+                        nerve_data := NerveTruncatedInDegree2Data( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := C!.labels,
+                        properties := ListKnownCategoricalProperties( C ) ) );
     
 end );
 
@@ -751,22 +789,23 @@ InstallMethod( OppositeCategoryFromNerveData,
     local Cop, C_op;
     
     Cop := CategoryFromNerveData(
-                   Concatenation( "Opposite( ", Name( C ), " )" ),
-                   ## the following nerve data is not "normalized", as it is not the result of the method NerveTruncatedInDegree2Data:
-                   OppositeNerveData( NerveData( C ) ),
-                   IndicesOfGeneratingMorphisms( C ),
-                   List( RelationsAmongGeneratingMorphisms( C ),
-                         pair -> Pair( Reversed( pair[1] ), Reversed( pair[2] ) ) ),
-                   C!.labels );
+                   rec( name := Concatenation( "Opposite( ", Name( C ), " )" ),
+                        ## the following nerve data is not "normalized", as it is not the result of the method NerveTruncatedInDegree2Data:
+                        nerve_data := OppositeNerveData( NerveData( C ) ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        relations := List( RelationsAmongGeneratingMorphisms( C ), pair -> Pair( Reversed( pair[1] ), Reversed( pair[2] ) ) ),
+                        labels := C!.labels,
+                        properties := ListKnownCategoricalProperties( Opposite( C ) ) ) );
     
     ## now construct the "normalized" opposite category
     C_op := CategoryFromNerveData(
-                    Name( Cop ),
-                    ## now the "normalized" data tables
-                    NerveTruncatedInDegree2Data( Cop ),
-                    IndicesOfGeneratingMorphisms( Cop ),
-                    RelationsAmongGeneratingMorphisms( Cop ),
-                    Cop!.labels );
+                    rec( name := Name( Cop ),
+                         ## now the "normalized" data tables
+                         nerve_data := NerveTruncatedInDegree2Data( Cop ),
+                         indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( Cop ),
+                         relations := RelationsAmongGeneratingMorphisms( Cop ),
+                         labels := Cop!.labels,
+                         properties := ListKnownCategoricalProperties( Cop ) ) );
     
     SetOppositeCategoryFromNerveData( C_op, C );
     

@@ -6,13 +6,45 @@
 
 ##
 InstallMethod( CategoryFromDataTables,
-        "for a string, a category, and four lists",
-        [ IsString, IsCapCategory, IsList, IsList, IsList, IsList ],
+        "for a record",
+        [ IsRecord ],
         
-  function( name, V, data_tables, indices_of_generating_morphisms, relations, labels )
-    local C, C0, C1, s, t;
+  function( input_record )
+    local known_keys_with_filters, key, filter, C, prop, V, data_tables, C0, C1, s, t;
     
-    C := CreateCapCategory( name,
+    ## check the keys of the given input record
+    known_keys_with_filters :=
+      rec( name := IsString,
+           range_of_HomStructure := IsCapCategory,
+           data_tables := IsList,
+           indices_of_generating_morphisms := IsList,
+           relations := IsList,
+           labels := IsList,
+           properties := IsList );
+    
+    for key in RecNames( input_record ) do
+        
+        if IsBound( known_keys_with_filters.(key) ) then
+            
+            filter := known_keys_with_filters.(key);
+            
+            if not filter( input_record.(key) ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "The value of the key `", key, "` must lie in the filter ", filter );
+                
+            fi;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "The following record key is not known to `CategoryFromDataTables`: ", key );
+            
+        fi;
+        
+    od;
+    
+    C := CreateCapCategory( input_record.name,
                  IsCategoryFromDataTables,
                  IsObjectInCategoryFromDataTables,
                  IsMorphismInCategoryFromDataTables,
@@ -20,15 +52,25 @@ InstallMethod( CategoryFromDataTables,
     
     C!.category_as_first_argument := true;
     
-    SetIndicesOfGeneratingMorphisms( C, indices_of_generating_morphisms );
-    SetRelationsAmongGeneratingMorphisms( C, relations );
-    
-    C!.labels := labels;
-    
     SetIsFinite( C, true );
+    
+    for prop in input_record.properties do
+        
+        Setter( ValueGlobal( prop ) )( C, true );
+        
+    od;
+    
+    SetIndicesOfGeneratingMorphisms( C, input_record.indices_of_generating_morphisms );
+    SetRelationsAmongGeneratingMorphisms( C, input_record.relations );
+    
+    C!.labels := input_record.labels;
+    
+    V := input_record.range_of_HomStructure;
     
     SetIsEquippedWithHomomorphismStructure( C, true );
     SetRangeCategoryOfHomomorphismStructure( C, V );
+
+    data_tables := input_record.data_tables;
     
     SetDataTables( C, data_tables );
     
@@ -40,13 +82,10 @@ InstallMethod( CategoryFromDataTables,
     ## t: C₁ → C₀
     t := data_tables[2][3];
     
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( C0, List( indices_of_generating_morphisms, i -> Pair( s[1 + i], t[1 + i] ) ) ) );
+    SetDefiningPairOfUnderlyingQuiver( C, Pair( C0, List( input_record.indices_of_generating_morphisms, i -> Pair( s[1 + i], t[1 + i] ) ) ) );
     
     C!.compiler_hints :=
-      rec( category_filter := IsCategoryFromDataTables,
-           object_filter := IsObjectInCategoryFromDataTables,
-           morphism_filter := IsMorphismInCategoryFromDataTables,
-           category_attribute_names :=
+      rec( category_attribute_names :=
            [ "DataTables",
              "IndicesOfGeneratingMorphisms",
              "RelationsAmongGeneratingMorphisms",
@@ -267,13 +306,14 @@ InstallMethod( CategoryFromDataTables,
         
   function( C )
     
-    return CategoryFromDataTables( Name( C ),
-                   RangeCategoryOfHomomorphismStructure( C ),
-                   DataTablesOfCategory( C ),
-                   IndicesOfGeneratingMorphisms( C ),
-                   RelationsAmongGeneratingMorphisms( C ),
-                   [ List( SetOfObjects( C ), Label ),
-                     List( SetOfGeneratingMorphisms( C ), Label ) ] );
+    return CategoryFromDataTables(
+                   rec( name := Name( C ),
+                        range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
+                        data_tables := DataTablesOfCategory( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
     
 end );
 
@@ -284,12 +324,14 @@ InstallMethod( CategoryFromDataTables,
         
   function( C )
     
-    return CategoryFromDataTables( Name( C ),
-                   RangeCategoryOfHomomorphismStructure( C ),
-                   DataTablesOfCategory( C ),
-                   IndicesOfGeneratingMorphisms( C ),
-                   RelationsAmongGeneratingMorphisms( C ),
-                   C!.labels );
+    return CategoryFromDataTables(
+                   rec( name := Name( C ),
+                        range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
+                        data_tables := DataTablesOfCategory( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphisms( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := C!.labels,
+                        properties := ListKnownCategoricalProperties( C ) ) );
     
 end );
 

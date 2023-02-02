@@ -23,6 +23,8 @@ Display( C );
 #! 16 primitive operations were used to derive 50 operations for this category
 #! which algorithmically
 #! * IsEquippedWithHomomorphismStructure
+#! and furthermore mathematically
+#! * IsFinitelyPresentedCategory
 C0 := CreateObject( C, 0 );
 #! <(C0)>
 IsWellDefined( C0 );

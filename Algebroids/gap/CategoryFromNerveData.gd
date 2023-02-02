@@ -191,11 +191,19 @@ DeclareAttribute( "OppositeCategoryFromNerveData",
 ####################################
 
 #! @Description
-#!  Construct a category with name <A>str</A> from the given <A>nerve_data</A> (of a f.p. category <A>C</A>).
-#! @Arguments str, nerve_data, indices_of_generating_morphisms, relations, labels
+#!  Construct an enriched finite category out of the <A>input_record</A>
+#!  consisting of values to the keys:
+#!  * name
+#!  * range_of_HomStructure
+#!  * data_tables
+#!  * indices_of_generating_morphisms
+#!  * relations
+#!  * labels
+#!  * properties
+#! @Arguments input_record
 #! @Returns a &CAP; category
-DeclareOperation( "CategoryFromNerveData",
-        [ IsString, IsList, IsList, IsList, IsList ] );
+DeclareAttribute( "CategoryFromNerveData",
+        IsRecord );
 #! @InsertChunk CategoryFromNerveData
 
 #! @Arguments C
