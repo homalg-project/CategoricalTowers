@@ -50,7 +50,7 @@
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XUniqueMorphism[110X. [23XF:
-  ( arg2, arg3 ) \mapsto \mathtt{UniqueMorphism}(arg2, arg3)[123X.[133X
+  ( A, B ) \mapsto \mathtt{UniqueMorphism}(A, B)[123X.[133X
   
   
   [1X1.5 [33X[0;0YGAP Categories[133X[101X
