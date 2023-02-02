@@ -58,7 +58,7 @@ InstallMethod( MeetSemilatticeOfSingleDifferences,
         ],
     );
     
-    ADD_UNIQUE_MORPHISM( D );
+    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( D );
     
     ##
     AddObjectConstructor( D,

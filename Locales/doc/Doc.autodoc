@@ -67,6 +67,11 @@
 @Section Operations
 @Section GAP Categories
 
+@Chapter The interval category
+
+@Section Constructors
+@Section GAP Categories
+
 @Chapter Tools
 
 @Section Info Class

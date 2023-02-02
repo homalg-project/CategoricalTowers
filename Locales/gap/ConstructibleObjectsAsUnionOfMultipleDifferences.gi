@@ -68,7 +68,7 @@ InstallMethod( BooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences,
         ],
     );
     
-    ADD_UNIQUE_MORPHISM( C );
+    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( C );
     
     ##
     AddIsWellDefinedForObjects( C,

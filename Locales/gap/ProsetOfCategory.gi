@@ -398,7 +398,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
                  category_as_first_argument := true
                  );
     
-    ADD_UNIQUE_MORPHISM( P );
+    ADD_COMMON_METHODS_FOR_PREORDERED_SETS( P );
     
     P!.compiler_hints.category_attribute_names := [
         "AmbientCategory",
