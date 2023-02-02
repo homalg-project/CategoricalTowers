@@ -239,7 +239,7 @@ AddDerivationToCAP( LiftAlongMonomorphism,
   function( cat, u1, u2 )
     
     ## the behavior of LiftAlongMonomorphism is unspecified on input violating the specification
-    return UniqueMorphism( cat, Source( u1 ), Source( u2 ) );
+    return UniqueMorphism( cat, Source( u2 ), Source( u1 ) );
     
 end : Description := "LiftAlongMonomorphism using the unique morphism from the source of the first argument to the source of the second",
       CategoryFilter := IsThinCategory );

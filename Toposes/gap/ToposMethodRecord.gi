@@ -125,7 +125,7 @@ SingletonMorphism := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "object" ] , [ "object", "power_object" ] ],
   output_source_getter_string := "object",
-  output_range_getter_string := "PowerObject( object )",
+  output_range_getter_string := "PowerObject( cat, object )",
   return_type := "morphism" ),
 
 SingletonMorphismWithGivenPowerObject := rec(
