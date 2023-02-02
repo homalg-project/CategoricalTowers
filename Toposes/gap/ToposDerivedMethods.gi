@@ -233,7 +233,7 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
     
     return SubobjectOfClassifyingMorphism( ## ι1 ∧ ι2
                    cat,
-                   PreCompose(
+                   PreCompose( cat,
                            UniversalMorphismIntoDirectProduct( ## X = Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
                                    [ Omega, Omega ],
