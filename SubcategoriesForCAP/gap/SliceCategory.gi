@@ -154,6 +154,15 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
                     "IsElementaryTopos",
                     ];
     
+    if IsIdenticalObj( over_tensor_unit, true ) then
+        
+        Append( properties,
+                [ "IsMonoidalCategory",
+                  "IsStrictMonoidalCategory",
+                  ] );
+        
+    fi;
+    
     properties := Intersection( ListKnownCategoricalProperties( C ), properties );
     
     morphism_constructor := function( cat, source, underlying_morphism, range )
@@ -629,8 +638,6 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
     fi;
     
     if IsIdenticalObj( over_tensor_unit, true ) then
-        
-        SetIsMonoidalCategory( S, true );
         
         AddTensorUnit( S,
           function( cat )
