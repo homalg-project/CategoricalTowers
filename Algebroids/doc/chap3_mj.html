@@ -37,7 +37,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811FCE967BDB2440">3.2-1 CategoryFromNerveData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84359855851AD698">3.2-1 CategoryFromNerveData</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X877E969678BBE306">3.2-2 CategoryFromNerveData</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A7ED53F78DF5204">3.2-3 CreateObject</a></span>
 </div></div>
@@ -106,15 +106,39 @@
 
 <h4>3.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X811FCE967BDB2440" name="X811FCE967BDB2440"></a></p>
+<p><a id="X84359855851AD698" name="X84359855851AD698"></a></p>
 
 <h5>3.2-1 CategoryFromNerveData</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromNerveData</code>( <var class="Arg">str</var>, <var class="Arg">nerve_data</var>, <var class="Arg">indices_of_generating_morphisms</var>, <var class="Arg">relations</var>, <var class="Arg">labels</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromNerveData</code>( <var class="Arg">input_record</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct a category with name <var class="Arg">str</var> from the given <var class="Arg">nerve_data</var> (of a f.p. category <var class="Arg">C</var>).</p>
+<p>Construct an enriched finite category out of the <var class="Arg">input_record</var> consisting of values to the keys:</p>
 
+
+<ul>
+<li><p>name</p>
+
+</li>
+<li><p>range_of_HomStructure</p>
+
+</li>
+<li><p>data_tables</p>
+
+</li>
+<li><p>indices_of_generating_morphisms</p>
+
+</li>
+<li><p>relations</p>
+
+</li>
+<li><p>labels</p>
+
+</li>
+<li><p>properties</p>
+
+</li>
+</ul>
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
@@ -139,6 +163,8 @@ FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" 
 16 primitive operations were used to derive 50 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
+and furthermore mathematically
+* IsFinitelyPresentedCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C0 := CreateObject( C, 0 );</span>
 &lt;(C0)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( C0 );</span>

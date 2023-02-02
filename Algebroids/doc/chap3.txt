@@ -46,11 +46,25 @@
   
   [1X3.2-1 CategoryFromNerveData[101X
   
-  [33X[1;0Y[29X[2XCategoryFromNerveData[102X( [3Xstr[103X, [3Xnerve_data[103X, [3Xindices_of_generating_morphisms[103X, [3Xrelations[103X, [3Xlabels[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCategoryFromNerveData[102X( [3Xinput_record[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YConstruct  a  category  with  name  [3Xstr[103X from the given [3Xnerve_data[103X (of a f.p.
-  category [3XC[103X).[133X
+  [33X[0;0YConstruct  an enriched finite category out of the [3Xinput_record[103X consisting of
+  values to the keys:[133X
+  
+  [30X    [33X[0;6Yname[133X
+  
+  [30X    [33X[0;6Yrange_of_HomStructure[133X
+  
+  [30X    [33X[0;6Ydata_tables[133X
+  
+  [30X    [33X[0;6Yindices_of_generating_morphisms[133X
+  
+  [30X    [33X[0;6Yrelations[133X
+  
+  [30X    [33X[0;6Ylabels[133X
+  
+  [30X    [33X[0;6Yproperties[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "Algebroids" );[127X[104X
@@ -75,6 +89,8 @@
     [4X[28X16 primitive operations were used to derive 50 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[28Xand furthermore mathematically[128X[104X
+    [4X[28X* IsFinitelyPresentedCategory[128X[104X
     [4X[25Xgap>[125X [27XC0 := CreateObject( C, 0 );[127X[104X
     [4X[28X<(C0)>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( C0 );[127X[104X

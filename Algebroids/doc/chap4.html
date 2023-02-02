@@ -35,7 +35,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X86EC0F0A78ECBC10">4.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83515E9F86889FED">4.2-1 CategoryFromDataTables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79BA47077DAFFF2D">4.2-1 CategoryFromDataTables</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7BFA46AA7E326524">4.2-2 CategoryFromDataTables</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DC53A0D82C4808D">4.2-3 CategoryFromDataTables</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A6157E483CE5156">4.2-4 CreateObject</a></span>
@@ -115,15 +115,36 @@
 
 <h4>4.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X83515E9F86889FED" name="X83515E9F86889FED"></a></p>
+<p><a id="X79BA47077DAFFF2D" name="X79BA47077DAFFF2D"></a></p>
 
 <h5>4.2-1 CategoryFromDataTables</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromDataTables</code>( <var class="Arg">str</var>, <var class="Arg">V</var>, <var class="Arg">data_tables</var>, <var class="Arg">indices_of_generating_morphisms</var>, <var class="Arg">relations</var>, <var class="Arg">labels</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFromDataTables</code>( <var class="Arg">input_record</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct a <var class="Arg">V</var>-enriched category with name <var class="Arg">str</var> from the given <var class="Arg">data_tables</var> (of a f.p. category <var class="Arg">C</var> or a category <var class="Arg">C</var> created from nerve data).</p>
+<p>Construct an enriched finite category out of the <var class="Arg">input_record</var> consisting of values to the keys:</p>
 
+
+<ul>
+<li><p>name</p>
+
+</li>
+<li><p>nerve_data</p>
+
+</li>
+<li><p>indices_of_generating_morphisms</p>
+
+</li>
+<li><p>relations</p>
+
+</li>
+<li><p>labels</p>
+
+</li>
+<li><p>properties</p>
+
+</li>
+</ul>
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids" );</span>
@@ -148,6 +169,8 @@ FreeCategory( RightQuiver( "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" 
 16 primitive operations were used to derive 50 operations for this category
 which algorithmically
 * IsEquippedWithHomomorphismStructure
+and furthermore mathematically
+* IsFinitelyPresentedCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C0 := CreateObject( C, 0 );</span>
 &lt;(C0)&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( C0 );</span>
