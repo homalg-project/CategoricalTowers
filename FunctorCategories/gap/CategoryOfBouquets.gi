@@ -581,7 +581,7 @@ InstallMethodWithCache( CategoryOfBouquetsEnrichedOver,
     
     if ValueOption( "no_precompiled_code" ) <> true then
         ADD_FUNCTIONS_FOR_FinBouquetsPrecompiled( Bouquets );
-        #ADD_FUNCTIONS_FOR_FinBouquetsAsCCCPrecompiled( Bouquets );
+        ADD_FUNCTIONS_FOR_FinBouquetsAsCCCPrecompiled( Bouquets );
     fi;
     
     Finalize( Bouquets );
