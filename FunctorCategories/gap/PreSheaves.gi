@@ -2453,7 +2453,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
       function( j )
         local m, Fmor, imgs, triple;
         m := defining_pair[2][1 + j];
-        Fmor := F( mors[1 + j] );
+        Fmor := F_vals[2][1 + j];
         imgs := AsList( Fmor );
         triple :=
           function( i )
