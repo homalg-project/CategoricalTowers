@@ -159,6 +159,14 @@ CapJitAddLogicTemplate(
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "number" ],
+        src_template := "1 * number",
+        dst_template := "number",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "number" ],
         src_template := "number ^ 0",
         dst_template := "1",
     )
