@@ -181,13 +181,13 @@ InstallMethodForCompilerForCAP( CreateCoPreSheafByFunctions,
         [ IsCoPreSheafCategory, IsFunction, IsFunction ],
         
   function ( coPSh, copresheaf_on_objects, copresheaf_on_generating_morphisms )
-    local defining_pair, nr_objs, mors, nr_mors, values_of_all_objects, values_of_all_generating_morphisms;
+    local defining_triple, nr_objs, nr_mors, mors, values_of_all_objects, values_of_all_generating_morphisms;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Source( coPSh ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( Source( coPSh ) );
     
-    nr_objs := defining_pair[1];
-    mors := defining_pair[2];
-    nr_mors := Length( mors );
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
+    mors := defining_triple[3];
     
     values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> copresheaf_on_objects( o ) );
     values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> copresheaf_on_generating_morphisms(
@@ -330,7 +330,7 @@ InstallOtherMethodForCompilerForCAP( CreateCoPreSheafMorphism,
   function ( coPSh, source, natural_transformation_on_objects, range )
     local nr_objs, source_values, range_values, values_on_all_objects;
     
-    nr_objs := DefiningPairOfUnderlyingQuiver( Source( coPSh ) )[1];
+    nr_objs := DefiningTripleOfUnderlyingQuiver( Source( coPSh ) )[1];
     
     source_values := ValuesOfCoPreSheaf( source )[1];
     range_values := ValuesOfCoPreSheaf( range )[1];

@@ -41,13 +41,13 @@ InstallMethodForCompilerForCAP( CreatePreSheafByFunctions,
         [ IsPreSheafCategory, IsFunction, IsFunction ],
         
   function ( PSh, presheaf_on_objects, presheaf_on_generating_morphisms )
-    local defining_pair, nr_objs, mors, nr_mors, values_of_all_objects, values_of_all_generating_morphisms;
+    local defining_triple, nr_objs, nr_mors, mors, values_of_all_objects, values_of_all_generating_morphisms;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Source( PSh ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( Source( PSh ) );
     
-    nr_objs := defining_pair[1];
-    mors := defining_pair[2];
-    nr_mors := Length( mors );
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
+    mors := defining_triple[3];
     
     values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> presheaf_on_objects( o ) );
     values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> presheaf_on_generating_morphisms(
@@ -206,7 +206,7 @@ InstallOtherMethodForCompilerForCAP( CreatePreSheafMorphismByFunction,
   function ( PSh, source, natural_transformation_on_objects, range )
     local nr_objs, source_values, range_values, values_on_all_objects;
     
-    nr_objs := DefiningPairOfUnderlyingQuiver( Source( PSh ) )[1];
+    nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
     
     source_values := ValuesOfPreSheaf( source )[1];
     range_values := ValuesOfPreSheaf( range )[1];
@@ -466,7 +466,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 presheaf_on_objects := objB_index -> operation_name( C, List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
                 
-                mors := DefiningPairOfUnderlyingQuiver( Source( cat ) )[2];
+                mors := DefiningTripleOfUnderlyingQuiver( Source( cat ) )[3];
                 
                 presheaf_on_morphisms :=
                   function ( new_source, morB_index, new_range )
@@ -514,7 +514,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 presheaf_on_objects := objB_index -> operation_name( C, ValuesOfPreSheaf( object )[1][objB_index], List( etas, eta -> ValuesOnAllObjects( eta )[objB_index] ) );
                 
-                mors := DefiningPairOfUnderlyingQuiver( Source( cat ) )[2];
+                mors := DefiningTripleOfUnderlyingQuiver( Source( cat ) )[3];
                 
                 presheaf_on_morphisms :=
                   function ( new_source, morB_index, new_range )
@@ -590,7 +590,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 presheaf_on_objects := objB_index -> operation_name( C, ValuesOnAllObjects( eta )[objB_index] );
                 
-                mors := DefiningPairOfUnderlyingQuiver( Source( cat ) )[2];
+                mors := DefiningTripleOfUnderlyingQuiver( Source( cat ) )[3];
                 
                 presheaf_on_morphisms :=
                   function ( new_source, morB_index, new_range )
@@ -1072,7 +1072,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 H := RangeCategoryOfHomomorphismStructure( PSh );
                 
-                nr_objs := DefiningPairOfUnderlyingQuiver( Source( PSh ) )[1];
+                nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
                 
                 hom_diagram_source := ExternalHomDiagram( PSh, Range( eta ), Source( rho ) );
                 
@@ -1153,7 +1153,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                               hom_diagram[1],
                               hom_diagram[2] );
                 
-                nr_objs := DefiningPairOfUnderlyingQuiver( Source( PSh ) )[1];
+                nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
                 
                 prjs := List( [ 0 .. nr_objs - 1 ],
                               i -> ProjectionInFactorOfLimit( H,
@@ -1187,7 +1187,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
                 
                 hom_diagram := ExternalHomDiagram( PSh, F, G );
                 
-                nr_objs := DefiningPairOfUnderlyingQuiver( Source( PSh ) )[1];
+                nr_objs := DefiningTripleOfUnderlyingQuiver( Source( PSh ) )[1];
                 
                 etas := List( [ 0 .. nr_objs - 1 ],
                               i -> PreCompose( H,
@@ -2433,12 +2433,13 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local B, defining_pair, nr_objs, objs, mors, F_vals, objects, shifts, morphisms, triples;
+    local B, defining_triple, nr_objs, nr_mors, objs, mors, F_vals, objects, shifts, morphisms, triples;
     
     B := Source( PSh );
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( B );
-    nr_objs := defining_pair[1];
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
     
     objs := SetOfObjects( B );
     mors := SetOfGeneratingMorphisms( B );
@@ -2452,7 +2453,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
     triples :=
       function( j )
         local m, Fmor, imgs, triple;
-        m := defining_pair[2][1 + j];
+        m := defining_triple[3][1 + j];
         Fmor := F_vals[2][1 + j];
         imgs := AsList( Fmor );
         triple :=
@@ -2469,7 +2470,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
         return List( Source( Fmor ), triple );
     end;
     
-    morphisms := Concatenation( List( [ 0 .. Length( defining_pair[2] ) - 1 ], triples ) );
+    morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
     return Pair( objects, morphisms );
     
@@ -2666,21 +2667,21 @@ end );
 InstallMethod( SimpleObjects,
         [ IsPreSheafCategory ],
   function ( PSh )
-    local C, defining_pair, obj_vals, mor_vals, simple_objs, i;
+    local C, defining_triple, obj_vals, mor_vals, simple_objs, i;
     
     C := Range( PSh );
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Source( PSh ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( Source( PSh ) );
     
     simple_objs := [ ];
     
-    for i in [ 1 .. defining_pair[1] ] do
+    for i in [ 1 .. defining_triple[1] ] do
       
-      obj_vals := ListWithIdenticalEntries( defining_pair[1], ZeroObject( C ) );
+      obj_vals := ListWithIdenticalEntries( defining_triple[1], ZeroObject( C ) );
       
       obj_vals[i] := TensorUnit( C );
       
-      mor_vals := List( defining_pair[2], r -> ZeroMorphism( C, obj_vals[r[2]], obj_vals[r[1]] ) );
+      mor_vals := List( defining_triple[3], r -> ZeroMorphism( C, obj_vals[r[2]], obj_vals[r[1]] ) );
       
       simple_objs[i] := CreatePreSheafByValues( PSh, obj_vals, mor_vals );
       

@@ -181,13 +181,13 @@ InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByFunctions,
         [ IsFunctorCategory, IsFunction, IsFunction ],
         
   function ( Hom, functor_on_objects, functor_on_generating_morphisms )
-    local defining_pair, nr_objs, mors, nr_mors, values_of_all_objects, values_of_all_generating_morphisms;
+    local defining_triple, nr_objs, nr_mors, mors, values_of_all_objects, values_of_all_generating_morphisms;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Source( Hom ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( Source( Hom ) );
     
-    nr_objs := defining_pair[1];
-    mors := defining_pair[2];
-    nr_mors := Length( mors );
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
+    mors := defining_triple[3];
     
     values_of_all_objects := LazyHList( [ 1 .. nr_objs ], o -> functor_on_objects( o ) );
     values_of_all_generating_morphisms := LazyHList( [ 1 .. nr_mors ], m -> functor_on_generating_morphisms(
@@ -330,7 +330,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategory,
   function ( Hom, source, natural_transformation_on_objects, range )
     local nr_objs, source_values, range_values, values_on_all_objects;
     
-    nr_objs := DefiningPairOfUnderlyingQuiver( Source( Hom ) )[1];
+    nr_objs := DefiningTripleOfUnderlyingQuiver( Source( Hom ) )[1];
     
     source_values := ValuesOfFunctor( source )[1];
     range_values := ValuesOfFunctor( range )[1];
@@ -422,7 +422,7 @@ InstallMethodWithCache( FunctorCategory,
   function( B, C )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
-          B_op, defining_pair, PSh,
+          B_op, defining_triple, PSh,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Hom, properties, doctrines, name;

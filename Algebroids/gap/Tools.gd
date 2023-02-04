@@ -9,27 +9,29 @@
 #! @Section Tools for quivers
 
 #! @Description
-#!  Return a pair consisting of the number of vertices of the quiver <A>q</A>
-#!  and a list of pairs of integers encoding the arrows of <A>q</A>.
+#!  Return a triple consisting of the number of vertices of the quiver <A>q</A>,
+#!  the number of arrows of the quiver <A>q</A>, and a list of pairs of integers
+#!  encoding the arrows of <A>q</A>.
 #! @Arguments q
-#! @Returns a pair
-DeclareAttribute( "DefiningPairOfAQuiver",
+#! @Returns a triple
+DeclareAttribute( "DefiningTripleOfAQuiver",
         IsQuiver );
-#! @InsertChunk DefiningPairOfAQuiver
+#! @InsertChunk DefiningTripleOfAQuiver
 
 #! @Description
-#!  The defining pair of the quiver underlying the finitely presented category <A>C</A>.
+#!  The defining triple of the quiver underlying the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a pair
-DeclareAttribute( "DefiningPairOfUnderlyingQuiver",
+DeclareAttribute( "DefiningTripleOfUnderlyingQuiver",
         IsCapCategory );
 
-CapJitAddTypeSignature( "DefiningPairOfUnderlyingQuiver", [ IsCapCategory ],
+CapJitAddTypeSignature( "DefiningTripleOfUnderlyingQuiver", [ IsCapCategory ],
   function ( input_types )
     
     return rec( filter := IsNTuple,
                 element_types :=
                 [ rec( filter := IsInt ),
+                  rec( filter := IsInt ),
                   rec( filter := IsList,
                        element_type :=
                        rec( filter := IsNTuple,

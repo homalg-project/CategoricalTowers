@@ -8,14 +8,17 @@
 BindGlobal( "QuiverOfCategoryOfBouquets",
         RightQuiver( "q(V,L)[b:V->L]" ) );
 
-# Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfBouquets",
+# Display( ENHANCED_SYNTAX_TREE( x -> Triple( 2, 1, [ Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfBouquets",
 rec(
   args := rec(
       1 := rec(
           type := "EXPR_INT",
           value := 2 ),
       2 := rec(
+          type := "EXPR_INT",
+          value := 1 ),
+      3 := rec(
           list := rec(
               1 := rec(
                   args := rec(
@@ -34,10 +37,10 @@ rec(
               length := 1,
               type := "SYNTAX_TREE_LIST" ),
           type := "EXPR_LIST" ),
-      length := 2,
+      length := 3,
       type := "SYNTAX_TREE_LIST" ),
   funcref := rec(
-      gvar := "Pair",
+      gvar := "Triple",
       type := "EXPR_REF_GVAR" ),
   type := "EXPR_FUNCCALL" )
 );
@@ -460,7 +463,7 @@ InstallMethodWithCache( CategoryOfBouquetsEnrichedOver,
 
     ## specify the attributes the compiler should fully resolve during compilation
     F!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfBouquets,
+      rec( DefiningTripleOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfBouquets,
            DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfBouquets,
            IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfBouquets,
            );

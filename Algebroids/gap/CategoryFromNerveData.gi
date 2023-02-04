@@ -80,14 +80,17 @@ InstallMethod( CategoryFromNerveData,
     ## t: C₁ → C₀
     t := nerve_data[2][3];
     
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( Length( C0 ), List( input_record.indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
+    SetDefiningTripleOfUnderlyingQuiver( C,
+            Triple( Length( C0 ),
+                    Length( input_record.indices_of_generating_morphisms ),
+                    List( input_record.indices_of_generating_morphisms, i -> Pair( s( i ), t( i ) ) ) ) );
     
     C!.compiler_hints :=
       rec( category_attribute_names :=
            [ "NerveData",
              "IndicesOfGeneratingMorphisms",
              "RelationsAmongGeneratingMorphisms",
-             "DefiningPairOfUnderlyingQuiver",
+             "DefiningTripleOfUnderlyingQuiver",
              ] );
     
     ##

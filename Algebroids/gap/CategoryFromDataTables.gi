@@ -10,7 +10,7 @@ InstallMethod( CategoryFromDataTables,
         [ IsRecord ],
         
   function( input_record )
-    local known_keys_with_filters, key, filter, C, prop, V, data_tables, C0, C1, s, t;
+    local known_keys_with_filters, key, filter, C, prop, V, data_tables, C0, s, t;
     
     ## check the keys of the given input record
     known_keys_with_filters :=
@@ -82,14 +82,17 @@ InstallMethod( CategoryFromDataTables,
     ## t: C₁ → C₀
     t := data_tables[2][3];
     
-    SetDefiningPairOfUnderlyingQuiver( C, Pair( C0, List( input_record.indices_of_generating_morphisms, i -> Pair( s[1 + i], t[1 + i] ) ) ) );
+    SetDefiningTripleOfUnderlyingQuiver( C,
+            Triple( C0,
+                    Length( input_record.indices_of_generating_morphisms ),
+                    List( input_record.indices_of_generating_morphisms, i -> Pair( s[1 + i], t[1 + i] ) ) ) );
     
     C!.compiler_hints :=
       rec( category_attribute_names :=
            [ "DataTables",
              "IndicesOfGeneratingMorphisms",
              "RelationsAmongGeneratingMorphisms",
-             "DefiningPairOfUnderlyingQuiver",
+             "DefiningTripleOfUnderlyingQuiver",
              ] );
     
     ##

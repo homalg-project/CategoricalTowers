@@ -17,7 +17,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_6_1, Range );
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] + hoisted_4_1[o_2] );
           end ) );
 end
@@ -38,7 +38,7 @@ function ( cat_1, a_1 )
         end );
     hoisted_2_1 := List( deduped_5_1, Range );
     hoisted_1_1 := List( deduped_5_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] );
           end ) );
 end
@@ -58,7 +58,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -80,7 +80,7 @@ function ( cat_1, s_1, a_1, b_1, c_1, r_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -205,7 +205,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     hoisted_3_1 := List( deduped_8_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     hoisted_1_1 := deduped_8_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := hoisted_3_1[o_2];
               hoisted_2_2 := hoisted_5_1[o_2];
@@ -236,7 +236,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     hoisted_3_1 := List( deduped_8_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     hoisted_1_1 := deduped_8_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               deduped_3_2 := hoisted_3_1[o_2];
               hoisted_2_2 := hoisted_5_1[o_2];
@@ -266,7 +266,7 @@ function ( cat_1, alpha_1, I_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := ValuesOfPreSheaf( I_1 )[1];
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), I_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), I_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UniqueRightDivide( hoisted_3_1[o_2], hoisted_4_1[o_2] ) );
           end ) );
 end
@@ -349,20 +349,19 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
-    deduped_12_1 := Length( arg3_1 );
-    deduped_11_1 := Range( cat_1 );
-    deduped_10_1 := Source( cat_1 );
-    deduped_9_1 := DefiningPairOfUnderlyingQuiver( deduped_10_1 );
-    deduped_8_1 := deduped_9_1[2];
-    hoisted_7_1 := deduped_8_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
+    deduped_11_1 := Length( arg3_1 );
+    deduped_10_1 := Range( cat_1 );
+    deduped_9_1 := Source( cat_1 );
+    deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
+    hoisted_7_1 := deduped_8_1[3];
     hoisted_6_1 := ValuesOfPreSheaf( Range( CAP_JIT_INCOMPLETE_LOGIC( arg3_1[1] ) ) )[2];
-    hoisted_5_1 := deduped_11_1;
-    hoisted_4_1 := [ 2 .. deduped_12_1 ];
-    hoisted_3_1 := UnderlyingRing( deduped_11_1 );
-    hoisted_2_1 := [ 1 .. deduped_12_1 - 1 ];
+    hoisted_5_1 := deduped_10_1;
+    hoisted_4_1 := [ 2 .. deduped_11_1 ];
+    hoisted_3_1 := UnderlyingRing( deduped_10_1 );
+    hoisted_2_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( arg2_1 )[1], RankOfObject );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_10_1, Range, deduped_11_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_9_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local deduped_1_2, deduped_2_2, deduped_3_2;
                 deduped_3_2 := hoisted_1_1[o_2];
                 deduped_2_2 := List( arg3_1, function ( logic_new_func_x_3 )
@@ -372,7 +371,7 @@ function ( cat_1, arg2_1, arg3_1 )
                         return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                     end );
                 return CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, deduped_3_2 - RowRankOfMatrix( (HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_4_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_4_1} ))) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_8_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2;
                 deduped_13_2 := hoisted_7_1[m_2];
                 deduped_12_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[m_2] );
@@ -425,7 +424,7 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
     hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
               deduped_9_2 := hoisted_7_1[o_2];
               deduped_8_2 := hoisted_1_1[o_2];
@@ -464,7 +463,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
     hoisted_1_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := UniqueLeftDivide( hoisted_1_1[o_2], hoisted_2_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), hoisted_4_1[o_2], UnderlyingMatrix, morphism_attr_1_2 );
@@ -479,27 +478,26 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := ValuesOnAllObjects( arg2_1 );
-    deduped_10_1 := Range( cat_1 );
-    deduped_9_1 := Source( cat_1 );
-    deduped_8_1 := DefiningPairOfUnderlyingQuiver( deduped_9_1 );
-    deduped_7_1 := deduped_8_1[2];
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := ValuesOnAllObjects( arg2_1 );
+    deduped_9_1 := Range( cat_1 );
+    deduped_8_1 := Source( cat_1 );
+    deduped_7_1 := DefiningTripleOfUnderlyingQuiver( deduped_8_1 );
     hoisted_6_1 := List( ValuesOfPreSheaf( Range( arg2_1 ) )[2], UnderlyingMatrix );
-    hoisted_5_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
+    hoisted_5_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_4_1 := deduped_7_1;
-    hoisted_3_1 := deduped_10_1;
-    hoisted_2_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
+    hoisted_4_1 := deduped_7_1[3];
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RowRankOfMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_1_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
+    hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Range( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, hoisted_1_1[o_2] - hoisted_2_1[o_2] );
-            end ), LazyHList( [ 1 .. Length( deduped_7_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_7_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_4_1[m_2];
                 morphism_attr_1_2 := UniqueLeftDivide( hoisted_5_1[1 + deduped_2_2[2]], hoisted_6_1[m_2] * hoisted_5_1[(1 + deduped_2_2[1])] );
@@ -524,7 +522,7 @@ function ( cat_1, P_1, alpha_1, mu_1, alphap_1, Pp_1 )
     hoisted_1_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := UniqueLeftDivide( hoisted_1_1[o_2], hoisted_2_1[o_2] * hoisted_3_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
@@ -546,7 +544,7 @@ function ( cat_1, alpha_1, P_1 )
             return SyzygiesOfColumns( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
     hoisted_1_1 := List( deduped_4_1, Range );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := hoisted_2_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
@@ -569,7 +567,7 @@ function ( cat_1, epsilon_1, tau_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
     hoisted_1_1 := List( deduped_6_1, Range );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( epsilon_1 ), Range( tau_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( epsilon_1 ), Range( tau_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UniqueLeftDivide( hoisted_3_1[o_2], hoisted_4_1[o_2] ) );
           end ) );
 end
@@ -590,7 +588,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
     hoisted_3_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
     hoisted_1_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_6_1, Range( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_6_1, Range( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := List( S_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -616,7 +614,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
     hoisted_3_1 := List( deduped_7_1, UnderlyingMatrix );
     hoisted_2_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
     hoisted_1_1 := List( deduped_7_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_6_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), deduped_6_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := List( S_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -634,22 +632,21 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := Length( arg2_1 );
-    deduped_9_1 := Range( cat_1 );
-    deduped_8_1 := Source( cat_1 );
-    deduped_7_1 := DefiningPairOfUnderlyingQuiver( deduped_8_1 );
-    deduped_6_1 := deduped_7_1[2];
-    hoisted_5_1 := [ 1 .. deduped_10_1 ];
-    hoisted_4_1 := deduped_10_1;
-    hoisted_3_1 := deduped_6_1;
-    hoisted_2_1 := UnderlyingRing( deduped_9_1 );
-    hoisted_1_1 := deduped_9_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := Length( arg2_1 );
+    deduped_8_1 := Range( cat_1 );
+    deduped_7_1 := Source( cat_1 );
+    deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
+    hoisted_5_1 := [ 1 .. deduped_9_1 ];
+    hoisted_4_1 := deduped_9_1;
+    hoisted_3_1 := deduped_6_1[3];
+    hoisted_2_1 := UnderlyingRing( deduped_8_1 );
+    hoisted_1_1 := deduped_8_1;
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_3 )
                             return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                         end ) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_6_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
                 deduped_6_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
@@ -690,7 +687,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     hoisted_3_1 := Length( objectsp_1 );
     hoisted_2_1 := List( deduped_7_1, RankOfObject );
     hoisted_1_1 := UnderlyingRing( deduped_8_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := List( objectsp_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -719,22 +716,21 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := Length( arg2_1 );
-    deduped_9_1 := Range( cat_1 );
-    deduped_8_1 := Source( cat_1 );
-    deduped_7_1 := DefiningPairOfUnderlyingQuiver( deduped_8_1 );
-    deduped_6_1 := deduped_7_1[2];
-    hoisted_5_1 := [ 1 .. deduped_10_1 ];
-    hoisted_4_1 := deduped_10_1;
-    hoisted_3_1 := UnderlyingRing( deduped_9_1 );
-    hoisted_2_1 := deduped_6_1;
-    hoisted_1_1 := deduped_9_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := Length( arg2_1 );
+    deduped_8_1 := Range( cat_1 );
+    deduped_7_1 := Source( cat_1 );
+    deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
+    hoisted_5_1 := [ 1 .. deduped_9_1 ];
+    hoisted_4_1 := deduped_9_1;
+    hoisted_3_1 := UnderlyingRing( deduped_8_1 );
+    hoisted_2_1 := deduped_6_1[3];
+    hoisted_1_1 := deduped_8_1;
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_3 )
                             return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                         end ) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_6_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
                 deduped_6_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
@@ -775,7 +771,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     hoisted_3_1 := UnderlyingRing( deduped_8_1 );
     hoisted_2_1 := List( deduped_7_1, RankOfObject );
     hoisted_1_1 := deduped_7_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := List( objects_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -807,14 +803,14 @@ function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
     deduped_5_1 := Range( cat_1 );
     deduped_4_1 := Source( cat_1 );
-    deduped_3_1 := DefiningPairOfUnderlyingQuiver( deduped_4_1 );
+    deduped_3_1 := DefiningTripleOfUnderlyingQuiver( deduped_4_1 );
     hoisted_2_1 := UnderlyingRing( deduped_5_1 );
     hoisted_1_1 := deduped_5_1;
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_4_1, Range, deduped_5_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_3_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_3 )
                             return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                         end ) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_3_1[2] ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_3_1[2] ], function ( m_2 )
                 local deduped_1_2;
                 deduped_1_2 := DiagMat( hoisted_2_1, List( arg2_1, function ( logic_new_func_x_3 )
                           return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) );
@@ -837,7 +833,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     hoisted_3_1 := UnderlyingRing( deduped_5_1 );
     hoisted_2_1 := ValuesOfPreSheaf( Pp_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, DiagMat( hoisted_3_1, List( L_1, function ( logic_new_func_x_3 )
                           return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                       end ) ) );
@@ -873,7 +869,7 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     hoisted_3_1 := UnderlyingRing( deduped_9_1 );
     hoisted_2_1 := [ 1 .. deduped_8_1 - 1 ];
     hoisted_1_1 := List( deduped_7_1, RankOfObject );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Y_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Y_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := hoisted_1_1[o_2];
               deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
@@ -896,20 +892,19 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
-    deduped_12_1 := Length( arg3_1 );
-    deduped_11_1 := Range( cat_1 );
-    deduped_10_1 := Source( cat_1 );
-    deduped_9_1 := DefiningPairOfUnderlyingQuiver( deduped_10_1 );
-    deduped_8_1 := deduped_9_1[2];
-    hoisted_7_1 := deduped_8_1;
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
+    deduped_11_1 := Length( arg3_1 );
+    deduped_10_1 := Range( cat_1 );
+    deduped_9_1 := Source( cat_1 );
+    deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
+    hoisted_7_1 := deduped_8_1[3];
     hoisted_6_1 := ValuesOfPreSheaf( Source( CAP_JIT_INCOMPLETE_LOGIC( arg3_1[1] ) ) )[2];
-    hoisted_5_1 := deduped_11_1;
-    hoisted_4_1 := [ 2 .. deduped_12_1 ];
-    hoisted_3_1 := UnderlyingRing( deduped_11_1 );
-    hoisted_2_1 := [ 1 .. deduped_12_1 - 1 ];
+    hoisted_5_1 := deduped_10_1;
+    hoisted_4_1 := [ 2 .. deduped_11_1 ];
+    hoisted_3_1 := UnderlyingRing( deduped_10_1 );
+    hoisted_2_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( arg2_1 )[1], RankOfObject );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_10_1, Range, deduped_11_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_9_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local deduped_1_2, deduped_2_2, deduped_3_2;
                 deduped_3_2 := hoisted_1_1[o_2];
                 deduped_2_2 := List( arg3_1, function ( logic_new_func_x_3 )
@@ -919,7 +914,7 @@ function ( cat_1, arg2_1, arg3_1 )
                         return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                     end );
                 return CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, deduped_3_2 - RowRankOfMatrix( (UnionOfColumns( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_2_1} ) * HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_2_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_4_1} ), hoisted_3_1 ))) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_8_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2;
                 deduped_13_2 := hoisted_7_1[m_2];
                 deduped_12_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[m_2] );
@@ -972,7 +967,7 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
     hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
               deduped_9_2 := hoisted_6_1[o_2];
               deduped_8_2 := hoisted_1_1[o_2];
@@ -1003,20 +998,19 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
-    deduped_12_1 := Length( arg2_1 );
-    deduped_11_1 := Range( cat_1 );
-    deduped_10_1 := Source( cat_1 );
-    deduped_9_1 := DefiningPairOfUnderlyingQuiver( deduped_10_1 );
-    deduped_8_1 := deduped_9_1[2];
-    hoisted_7_1 := deduped_8_1;
-    hoisted_6_1 := deduped_11_1;
-    hoisted_5_1 := [ 2 .. deduped_12_1 ];
-    hoisted_4_1 := [ 1 .. deduped_12_1 - 1 ];
-    hoisted_3_1 := [ 1 .. deduped_12_1 ];
-    hoisted_2_1 := deduped_12_1;
-    hoisted_1_1 := UnderlyingRing( deduped_11_1 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_10_1, Range, deduped_11_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_9_1[1] ], function ( o_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
+    deduped_11_1 := Length( arg2_1 );
+    deduped_10_1 := Range( cat_1 );
+    deduped_9_1 := Source( cat_1 );
+    deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
+    hoisted_7_1 := deduped_8_1[3];
+    hoisted_6_1 := deduped_10_1;
+    hoisted_5_1 := [ 2 .. deduped_11_1 ];
+    hoisted_4_1 := [ 1 .. deduped_11_1 - 1 ];
+    hoisted_3_1 := [ 1 .. deduped_11_1 ];
+    hoisted_2_1 := deduped_11_1;
+    hoisted_1_1 := UnderlyingRing( deduped_10_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
                 deduped_5_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -1032,7 +1026,7 @@ function ( cat_1, arg2_1 )
                         return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( Sum( hoisted_1_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), deduped_1_3, hoisted_1_1 ) ) * hoisted_2_2[logic_new_func_x_3];
                     end );
                 return CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, deduped_4_2 - RowRankOfMatrix( (UnionOfColumns( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_5_1} ))) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_8_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
                 deduped_19_2 := hoisted_7_1[m_2];
                 hoisted_6_2 := 1 + deduped_19_2[1];
@@ -1105,7 +1099,7 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
     hoisted_3_1 := UnderlyingRing( deduped_15_1 );
     hoisted_2_1 := List( deduped_14_1, RankOfObject );
     hoisted_1_1 := deduped_14_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2;
               deduped_15_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -1358,7 +1352,7 @@ function ( cat_1, a_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -1381,7 +1375,7 @@ function ( cat_1, alpha_1, I_1 )
         end );
     hoisted_2_1 := List( deduped_5_1, Range );
     hoisted_1_1 := ValuesOfPreSheaf( I_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] );
           end ) );
 end
@@ -1394,24 +1388,23 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := ValuesOnAllObjects( arg2_1 );
-    deduped_9_1 := Range( cat_1 );
-    deduped_8_1 := Source( cat_1 );
-    deduped_7_1 := DefiningPairOfUnderlyingQuiver( deduped_8_1 );
-    deduped_6_1 := deduped_7_1[2];
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1;
+    deduped_9_1 := ValuesOnAllObjects( arg2_1 );
+    deduped_8_1 := Range( cat_1 );
+    deduped_7_1 := Source( cat_1 );
+    deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
     hoisted_5_1 := List( ValuesOfPreSheaf( Range( arg2_1 ) )[2], UnderlyingMatrix );
-    hoisted_4_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
+    hoisted_4_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
             return BasisOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_3_1 := deduped_6_1;
-    hoisted_2_1 := deduped_9_1;
-    hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
+    hoisted_3_1 := deduped_6_1[3];
+    hoisted_2_1 := deduped_8_1;
+    hoisted_1_1 := List( deduped_9_1, function ( logic_new_func_x_2 )
             return RowRankOfMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_2_1, RankOfObject, hoisted_1_1[o_2] );
-            end ), LazyHList( [ 1 .. Length( deduped_6_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_3_1[m_2];
                 morphism_attr_1_2 := UniqueRightDivide( hoisted_4_1[(1 + deduped_2_2[2])] * hoisted_5_1[m_2], hoisted_4_1[1 + deduped_2_2[1]] );
@@ -1430,13 +1423,13 @@ function ( cat_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Range( cat_1 );
     deduped_5_1 := Source( cat_1 );
-    deduped_4_1 := DefiningPairOfUnderlyingQuiver( deduped_5_1 );
+    deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 0, UnderlyingRing( deduped_6_1 ) );
     hoisted_2_1 := deduped_6_1;
     hoisted_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return hoisted_1_1;
-            end ), LazyHList( [ 1 .. Length( deduped_4_1[2] ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
                 morphism_attr_1_2 := hoisted_3_1;
                 return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, hoisted_1_1, hoisted_1_1, UnderlyingMatrix, morphism_attr_1_2 );
@@ -1459,7 +1452,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     hoisted_3_1 := UnderlyingRing( deduped_7_1 );
     hoisted_2_1 := [ 1 .. k_1 - 1 ];
     hoisted_1_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_6_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_6_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2;
               deduped_3_2 := List( objects_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -1487,7 +1480,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1 ) )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_7_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, deduped_7_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := List( objects_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -1517,7 +1510,7 @@ function ( cat_1, morphisms_1, k_1, P_1 )
     hoisted_3_1 := deduped_11_1;
     hoisted_2_1 := UnderlyingRing( deduped_10_1 );
     hoisted_1_1 := ValuesOnAllObjects( deduped_9_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_9_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_9_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2;
               deduped_8_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -1719,7 +1712,7 @@ function ( cat_1, alpha_1 )
         end );
     hoisted_2_1 := List( deduped_7_1, Source );
     hoisted_1_1 := List( deduped_7_1, Range );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Source( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Range( alpha_1 ), Source( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UniqueRightDivide( HomalgIdentityMatrix( hoisted_3_1[o_2], hoisted_4_1 ), hoisted_5_1[o_2] ) );
           end ) );
 end
@@ -1848,7 +1841,7 @@ function ( cat_1, alpha_1, P_1 )
     hoisted_1_1 := List( deduped_4_1, function ( logic_new_func_x_2 )
             return SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Source( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Source( alpha_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, CreateCapCategoryObjectWithAttributes( hoisted_2_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), hoisted_3_1[o_2], UnderlyingMatrix, morphism_attr_1_2 );
@@ -1871,7 +1864,7 @@ function ( cat_1, alpha_1, T_1, tau_1, P_1 )
         end );
     hoisted_2_1 := List( deduped_5_1, UnderlyingMatrix );
     hoisted_1_1 := List( deduped_5_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := UniqueRightDivide( hoisted_2_1[o_2], hoisted_3_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
@@ -1886,27 +1879,26 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
-    deduped_11_1 := ValuesOnAllObjects( arg2_1 );
-    deduped_10_1 := Range( cat_1 );
-    deduped_9_1 := Source( cat_1 );
-    deduped_8_1 := DefiningPairOfUnderlyingQuiver( deduped_9_1 );
-    deduped_7_1 := deduped_8_1[2];
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := ValuesOnAllObjects( arg2_1 );
+    deduped_9_1 := Range( cat_1 );
+    deduped_8_1 := Source( cat_1 );
+    deduped_7_1 := DefiningTripleOfUnderlyingQuiver( deduped_8_1 );
     hoisted_6_1 := List( ValuesOfPreSheaf( Source( arg2_1 ) )[2], UnderlyingMatrix );
-    hoisted_5_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
+    hoisted_5_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_4_1 := deduped_7_1;
-    hoisted_3_1 := deduped_10_1;
-    hoisted_2_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
+    hoisted_4_1 := deduped_7_1[3];
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RowRankOfMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_1_1 := List( deduped_11_1, function ( logic_new_func_x_2 )
+    hoisted_1_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_8_1, Range, deduped_9_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_7_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, hoisted_1_1[o_2] - hoisted_2_1[o_2] );
-            end ), LazyHList( [ 1 .. Length( deduped_7_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_7_1[2] ], function ( m_2 )
                 local morphism_attr_1_2, deduped_2_2;
                 deduped_2_2 := hoisted_4_1[m_2];
                 morphism_attr_1_2 := UniqueRightDivide( hoisted_5_1[(1 + deduped_2_2[2])] * hoisted_6_1[m_2], hoisted_5_1[1 + deduped_2_2[1]] );
@@ -1931,7 +1923,7 @@ function ( cat_1, P_1, alpha_1, mu_1, alphap_1, Pp_1 )
     hoisted_1_1 := List( ValuesOnAllObjects( alpha_1 ), function ( logic_new_func_x_2 )
             return SyzygiesOfRows( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local morphism_attr_1_2;
               morphism_attr_1_2 := UniqueRightDivide( hoisted_1_1[o_2] * hoisted_2_1[o_2], hoisted_3_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
@@ -1957,7 +1949,7 @@ function ( cat_1, s_1, a_1, L_1, r_1 )
     hoisted_3_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
     hoisted_2_1 := List( deduped_8_1, RankOfObject );
     hoisted_1_1 := deduped_8_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               hoisted_2_2 := HomalgIdentityMatrix( hoisted_3_1[o_2], hoisted_4_1 );
               hoisted_1_2 := List( L_1, function ( logic_new_func_x_3 )
@@ -1991,7 +1983,7 @@ function ( cat_1, s_1, a_1, L_1, r_1 )
     hoisted_3_1 := UnderlyingRing( deduped_9_1 );
     hoisted_2_1 := List( ValuesOfPreSheaf( a_1 )[1], RankOfObject );
     hoisted_1_1 := List( deduped_8_1, RankOfObject );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               hoisted_2_2 := HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 );
               hoisted_1_2 := List( L_1, function ( logic_new_func_x_3 )
@@ -2021,7 +2013,7 @@ function ( cat_1, a_1, r_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -2043,7 +2035,7 @@ function ( cat_1, a_1, s_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -2066,7 +2058,7 @@ function ( cat_1, iota_1, tau_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Source );
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), Source( iota_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( tau_1 ), Source( iota_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UniqueRightDivide( hoisted_3_1[o_2], hoisted_4_1[o_2] ) );
           end ) );
 end
@@ -2085,7 +2077,7 @@ function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
     hoisted_3_1 := UnderlyingRing( deduped_5_1 );
     hoisted_2_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( S_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, S_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_2_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], deduped_1_2, UnderlyingMatrix, UnionOfRows( hoisted_3_1, RankOfObject( deduped_1_2 ), ListN( List( source_diagram_1, function ( Si_3 )
@@ -2141,7 +2133,7 @@ function ( cat_1, morphisms_1, P_1 )
     hoisted_3_1 := deduped_10_1;
     hoisted_2_1 := UnderlyingRing( deduped_9_1 );
     hoisted_1_1 := ValuesOnAllObjects( deduped_8_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( deduped_8_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( deduped_8_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2;
               deduped_8_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
@@ -2174,7 +2166,7 @@ function ( cat_1, r_1, a_1 )
     local hoisted_1_1, hoisted_2_1;
     hoisted_2_1 := Range( cat_1 );
     hoisted_1_1 := ValuesOnAllObjects( a_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, Source( deduped_1_2 ), Range( deduped_1_2 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( deduped_1_2 ) );
@@ -2219,7 +2211,7 @@ function ( cat_1, beta_1, alpha_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] * hoisted_4_1[o_2] );
           end ) );
 end
@@ -2240,7 +2232,7 @@ function ( cat_1, alpha_1, beta_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_7_1, Range );
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( alpha_1 ), Range( beta_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] * hoisted_4_1[o_2] );
           end ) );
 end
@@ -2261,7 +2253,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     hoisted_3_1 := [ k_1 + 1 .. Length( objects_1 ) ];
     hoisted_2_1 := [ 1 .. k_1 - 1 ];
     hoisted_1_1 := UnderlyingRing( deduped_7_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_6_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_6_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2;
               deduped_3_2 := List( objects_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -2289,7 +2281,7 @@ function ( cat_1, objects_1, k_1, P_1 )
     hoisted_3_1 := [ 1 .. k_1 - 1 ];
     hoisted_2_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_7_1 ) )[1];
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_7_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_7_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2;
               deduped_2_2 := List( objects_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -2319,7 +2311,7 @@ function ( cat_1, morphisms_1, k_1, P_1 )
     hoisted_3_1 := [ 1 .. deduped_11_1 ];
     hoisted_2_1 := deduped_11_1;
     hoisted_1_1 := UnderlyingRing( deduped_10_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Source( deduped_9_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Source( deduped_9_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2;
               deduped_8_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -2359,7 +2351,7 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     hoisted_3_1 := UnderlyingRing( deduped_9_1 );
     hoisted_2_1 := [ 1 .. deduped_8_1 - 1 ];
     hoisted_1_1 := deduped_7_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Y_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Y_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := hoisted_4_1[o_2];
               deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
@@ -2382,20 +2374,19 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
-    deduped_12_1 := Length( arg2_1 );
-    deduped_11_1 := Range( cat_1 );
-    deduped_10_1 := Source( cat_1 );
-    deduped_9_1 := DefiningPairOfUnderlyingQuiver( deduped_10_1 );
-    deduped_8_1 := deduped_9_1[2];
-    hoisted_7_1 := deduped_8_1;
-    hoisted_6_1 := deduped_11_1;
-    hoisted_5_1 := [ 2 .. deduped_12_1 ];
-    hoisted_4_1 := [ 1 .. deduped_12_1 - 1 ];
-    hoisted_3_1 := [ 1 .. deduped_12_1 ];
-    hoisted_2_1 := deduped_12_1;
-    hoisted_1_1 := UnderlyingRing( deduped_11_1 );
-    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_10_1, Range, deduped_11_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_9_1[1] ], function ( o_2 )
+    local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1;
+    deduped_11_1 := Length( arg2_1 );
+    deduped_10_1 := Range( cat_1 );
+    deduped_9_1 := Source( cat_1 );
+    deduped_8_1 := DefiningTripleOfUnderlyingQuiver( deduped_9_1 );
+    hoisted_7_1 := deduped_8_1[3];
+    hoisted_6_1 := deduped_10_1;
+    hoisted_5_1 := [ 2 .. deduped_11_1 ];
+    hoisted_4_1 := [ 1 .. deduped_11_1 - 1 ];
+    hoisted_3_1 := [ 1 .. deduped_11_1 ];
+    hoisted_2_1 := deduped_11_1;
+    hoisted_1_1 := UnderlyingRing( deduped_10_1 );
+    return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
                 local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
                 deduped_5_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -2411,7 +2402,7 @@ function ( cat_1, arg2_1 )
                         return hoisted_1_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), hoisted_1_1 ) );
                     end );
                 return CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, deduped_4_2 - RowRankOfMatrix( (UnionOfRows( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_5_1} ))) ) );
-            end ), LazyHList( [ 1 .. Length( deduped_8_1 ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
                 deduped_19_2 := hoisted_7_1[m_2];
                 hoisted_4_2 := 1 + deduped_19_2[1];
@@ -2484,7 +2475,7 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
     hoisted_3_1 := [ 1 .. deduped_16_1 ];
     hoisted_2_1 := deduped_16_1;
     hoisted_1_1 := UnderlyingRing( deduped_15_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2;
               deduped_15_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -2546,7 +2537,7 @@ function ( cat_1, s_1, L_1, a_1, r_1 )
     hoisted_3_1 := UnderlyingRing( deduped_9_1 );
     hoisted_2_1 := List( deduped_8_1, RankOfObject );
     hoisted_1_1 := deduped_8_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               hoisted_2_2 := HomalgIdentityMatrix( hoisted_5_1[o_2], hoisted_3_1 );
               hoisted_1_2 := List( L_1, function ( logic_new_func_x_3 )
@@ -2580,7 +2571,7 @@ function ( cat_1, s_1, L_1, a_1, r_1 )
     hoisted_3_1 := deduped_10_1;
     hoisted_2_1 := UnderlyingRing( deduped_9_1 );
     hoisted_1_1 := List( deduped_8_1, RankOfObject );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2;
               hoisted_2_2 := HomalgIdentityMatrix( hoisted_4_1[o_2], hoisted_2_1 );
               hoisted_1_2 := List( L_1, function ( logic_new_func_x_3 )
@@ -2610,7 +2601,7 @@ function ( cat_1, a_1, r_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -2632,7 +2623,7 @@ function ( cat_1, a_1, s_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, a_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := hoisted_1_1[o_2];
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, deduped_1_2, deduped_1_2, UnderlyingMatrix, HomalgIdentityMatrix( hoisted_2_1[o_2], hoisted_3_1 ) );
@@ -2656,7 +2647,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_3_1 := List( deduped_6_1, UnderlyingMatrix );
     hoisted_2_1 := List( deduped_6_1, Range );
     hoisted_1_1 := List( deduped_6_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, Source( a_1 ), Range( a_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, hoisted_3_1[o_2] + hoisted_4_1[o_2] );
           end ) );
 end
@@ -2675,7 +2666,7 @@ function ( cat_1, s_1, alpha_1, beta_1, r_1 )
     hoisted_3_1 := List( ValuesOnAllObjects( alpha_1 ), UnderlyingMatrix );
     hoisted_2_1 := ValuesOfPreSheaf( r_1 )[1];
     hoisted_1_1 := ValuesOfPreSheaf( s_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, s_1, r_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, KroneckerMat( hoisted_3_1[o_2], hoisted_4_1[o_2] ) );
           end ) );
 end
@@ -2693,7 +2684,7 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_9_1 := ValuesOfPreSheaf( arg2_1 );
     deduped_8_1 := Range( cat_1 );
     deduped_7_1 := Source( cat_1 );
-    deduped_6_1 := DefiningPairOfUnderlyingQuiver( deduped_7_1 );
+    deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
     hoisted_5_1 := List( deduped_10_1[2], UnderlyingMatrix );
     hoisted_4_1 := List( deduped_9_1[2], UnderlyingMatrix );
     hoisted_3_1 := deduped_8_1;
@@ -2701,7 +2692,7 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_1_1 := List( deduped_9_1[1], RankOfObject );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, hoisted_1_1[o_2] * hoisted_2_1[o_2] );
-            end ), LazyHList( [ 1 .. Length( deduped_6_1[2] ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
                 morphism_attr_1_2 := KroneckerMat( hoisted_4_1[m_2], hoisted_5_1[m_2] );
                 return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, NumberRows( morphism_attr_1_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, NumberColumns( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
@@ -2719,13 +2710,13 @@ function ( cat_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Range( cat_1 );
     deduped_5_1 := Source( cat_1 );
-    deduped_4_1 := DefiningPairOfUnderlyingQuiver( deduped_5_1 );
+    deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 1, UnderlyingRing( deduped_6_1 ) );
     hoisted_2_1 := deduped_6_1;
     hoisted_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 1 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return hoisted_1_1;
-            end ), LazyHList( [ 1 .. Length( deduped_4_1[2] ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
                 morphism_attr_1_2 := hoisted_3_1;
                 return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, hoisted_1_1, hoisted_1_1, UnderlyingMatrix, morphism_attr_1_2 );
@@ -2743,13 +2734,13 @@ function ( cat_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Range( cat_1 );
     deduped_5_1 := Source( cat_1 );
-    deduped_4_1 := DefiningPairOfUnderlyingQuiver( deduped_5_1 );
+    deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgIdentityMatrix( 0, UnderlyingRing( deduped_6_1 ) );
     hoisted_2_1 := deduped_6_1;
     hoisted_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return hoisted_1_1;
-            end ), LazyHList( [ 1 .. Length( deduped_4_1[2] ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
                 morphism_attr_1_2 := hoisted_3_1;
                 return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, hoisted_1_1, hoisted_1_1, UnderlyingMatrix, morphism_attr_1_2 );
@@ -2775,7 +2766,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_3_1 := UnderlyingRing( deduped_9_1 );
     hoisted_2_1 := [ 1 .. deduped_8_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( Y_1 )[1], RankOfObject );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := hoisted_1_1[o_2];
               deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
@@ -2805,7 +2796,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := UnderlyingRing( deduped_6_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := HomalgIdentityMatrix( Sum( List( objects_1, function ( logic_new_func_x_3 )
                             return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
@@ -2832,7 +2823,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := deduped_6_1;
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UnionOfRows( hoisted_4_1, hoisted_3_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
                           return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                       end ) ) );
@@ -2854,7 +2845,7 @@ function ( cat_1, alpha_1, tau_1, I_1 )
         end );
     hoisted_2_1 := ValuesOnAllObjects( CAP_JIT_INCOMPLETE_LOGIC( tau_1[2] ) );
     hoisted_1_1 := ValuesOfPreSheaf( I_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] ) ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, I_1, Range( CAP_JIT_INCOMPLETE_LOGIC( tau_1[1] ) ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_2_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], Source( deduped_1_2 ), UnderlyingMatrix, UniqueRightDivide( hoisted_3_1[o_2], UnderlyingMatrix( deduped_1_2 ) ) );
@@ -2879,7 +2870,7 @@ function ( cat_1, T_1, P_1 )
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
     hoisted_2_1 := deduped_8_1;
     hoisted_1_1 := deduped_7_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgZeroMatrix( hoisted_3_1[o_2], hoisted_4_1[o_2], hoisted_5_1 ) );
           end ) );
 end
@@ -2904,7 +2895,7 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_3_1 := [ 1 .. deduped_11_1 ];
     hoisted_2_1 := deduped_11_1;
     hoisted_1_1 := UnderlyingRing( deduped_10_1 );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
               deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -2943,7 +2934,7 @@ function ( cat_1, T_1, P_1 )
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := deduped_6_1;
     hoisted_1_1 := ValuesOfPreSheaf( P_1 )[1];
-    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgZeroMatrix( 0, hoisted_3_1[o_2], hoisted_4_1 ) );
           end ) );
 end
@@ -2963,7 +2954,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     hoisted_3_1 := UnderlyingRing( deduped_6_1 );
     hoisted_2_1 := List( deduped_5_1, RankOfObject );
     hoisted_1_1 := deduped_5_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := UnionOfColumns( hoisted_3_1, hoisted_2_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
                           return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
@@ -2990,7 +2981,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     hoisted_1_1 := deduped_6_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, UnionOfColumns( hoisted_4_1, hoisted_3_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
                           return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                       end ) ) );
@@ -3016,7 +3007,7 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_3_1 := List( ValuesOfPreSheaf( Y_1 )[1], RankOfObject );
     hoisted_2_1 := List( deduped_8_1, UnderlyingMatrix );
     hoisted_1_1 := List( deduped_8_1, Source );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
               deduped_5_2 := hoisted_3_1[o_2];
               deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
@@ -3051,7 +3042,7 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_3_1 := UnderlyingRing( deduped_10_1 );
     hoisted_2_1 := List( deduped_9_1, RankOfObject );
     hoisted_1_1 := deduped_9_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
               deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
@@ -3092,7 +3083,7 @@ function ( cat_1, T_1, P_1 )
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
     hoisted_2_1 := deduped_8_1;
     hoisted_1_1 := deduped_7_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgZeroMatrix( hoisted_3_1[o_2], hoisted_4_1[o_2], hoisted_5_1 ) );
           end ) );
 end
@@ -3113,7 +3104,7 @@ function ( cat_1, T_1, P_1 )
     hoisted_3_1 := List( deduped_6_1, RankOfObject );
     hoisted_2_1 := ValuesOfPreSheaf( P_1 )[1];
     hoisted_1_1 := deduped_6_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgZeroMatrix( hoisted_3_1[o_2], 0, hoisted_4_1 ) );
           end ) );
 end
@@ -3136,7 +3127,7 @@ function ( cat_1, a_1, b_1 )
     hoisted_3_1 := List( deduped_7_1, RankOfObject );
     hoisted_2_1 := deduped_8_1;
     hoisted_1_1 := deduped_7_1;
-    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningPairOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, a_1, b_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], hoisted_2_1[o_2], UnderlyingMatrix, HomalgZeroMatrix( hoisted_3_1[o_2], hoisted_4_1[o_2], hoisted_5_1 ) );
           end ) );
 end
@@ -3152,13 +3143,13 @@ function ( cat_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
     deduped_6_1 := Range( cat_1 );
     deduped_5_1 := Source( cat_1 );
-    deduped_4_1 := DefiningPairOfUnderlyingQuiver( deduped_5_1 );
+    deduped_4_1 := DefiningTripleOfUnderlyingQuiver( deduped_5_1 );
     hoisted_3_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( deduped_6_1 ) );
     hoisted_2_1 := deduped_6_1;
     hoisted_1_1 := CreateCapCategoryObjectWithAttributes( deduped_6_1, RankOfObject, 0 );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_5_1, Range, deduped_6_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_4_1[1] ], function ( o_2 )
                 return hoisted_1_1;
-            end ), LazyHList( [ 1 .. Length( deduped_4_1[2] ) ], function ( m_2 )
+            end ), LazyHList( [ 1 .. deduped_4_1[2] ], function ( m_2 )
                 local morphism_attr_1_2;
                 morphism_attr_1_2 := hoisted_3_1;
                 return CreateCapCategoryMorphismWithAttributes( hoisted_2_1, hoisted_1_1, hoisted_1_1, UnderlyingMatrix, morphism_attr_1_2 );
