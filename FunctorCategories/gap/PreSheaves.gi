@@ -2433,7 +2433,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local B, defining_pair, nr_objs, objs, mors, shifts, objects, morphisms, triples;
+    local B, defining_pair, nr_objs, objs, mors, F_vals, objects, shifts, morphisms, triples;
     
     B := Source( PSh );
     
@@ -2443,21 +2443,35 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
     objs := SetOfObjects( B );
     mors := SetOfGeneratingMorphisms( B );
     
-    shifts := List( [ 1 .. nr_objs ], i -> Sum( [ 1 .. i - 1 ], j -> -1 + Length( F( objs[j] ) ) ) );
+    F_vals := ValuesOfPreSheaf( F );
     
-    objects := List( [ 1 .. nr_objs ], i -> ListWithIdenticalEntries( Length( F( objs[i] ) ), objs[i] ) );
+    objects := Concatenation( List( [ 0 .. nr_objs - 1 ], i -> ListWithIdenticalEntries( Length( F_vals[1][1 + i] ), objs[1 + i] ) ) );
+    
+    shifts := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) );
     
     triples :=
       function( j )
-        local m, mor;
-          m := defining_pair[2][j];
-          mor := AsList( F( mors[j] ) );
-          return List( [ 1 .. Length( mor ) ], i -> [ mor[i] + shifts[1 + m[1]], mors[j], i + shifts[1 + m[2]] ] );
-      end;
+        local m, Fmor, imgs, triple;
+        m := defining_pair[2][1 + j];
+        Fmor := F( mors[1 + j] );
+        imgs := AsList( Fmor );
+        triple :=
+          function( i )
+            local s, t;
+            s := imgs[1 + i] + shifts[1 + m[1]];
+            t := i + shifts[1 + m[2]];
+            #% CAP_JIT_DROP_NEXT_STATEMENT
+            Assert( 0, Source( mors[1 + j] ) = objects[1 + s] );
+            #% CAP_JIT_DROP_NEXT_STATEMENT
+            Assert( 0, Range( mors[1 + j] ) = objects[1 + t] );
+            return [ s, mors[1 + j], t ];
+        end;
+        return List( Source( Fmor ), triple );
+    end;
     
-    morphisms := List( [ 1 .. Length( defining_pair[2] ) ], triples );
+    morphisms := Concatenation( List( [ 0 .. Length( defining_pair[2] ) - 1 ], triples ) );
     
-    return Pair( Concatenation( objects ), Concatenation( morphisms ) );
+    return Pair( objects, morphisms );
     
 end );
 
