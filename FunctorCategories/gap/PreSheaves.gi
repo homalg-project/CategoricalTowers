@@ -2429,7 +2429,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
@@ -2477,6 +2477,16 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemma,
 end );
 
 ##
+InstallMethod( CoYonedaLemmaOnObjects,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( F )
+    
+    return CoYonedaLemmaOnObjects( CapCategory( F ), F );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
@@ -2485,7 +2495,7 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
     
     Yoneda := YonedaEmbeddingData( PSh );
     
-    diagram := CoYonedaLemma( PSh, F );
+    diagram := CoYonedaLemmaOnObjects( PSh, F );
     
     triple :=
       function( m )
