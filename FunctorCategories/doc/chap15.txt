@@ -148,3 +148,70 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
+  
+  [1X15.3 [33X[0;0YPrecompiling the presheaf category with values in a category of rows[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", ">= 2022.09-02", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xquiver := RightQuiver( "q(3)[a:1->2,b:2->3]" );;[127X[104X
+    [4X[25Xgap>[125X [27XA := QQ[FreeCategory( quiver )];;[127X[104X
+    [4X[25Xgap>[125X [27XA_bar := A / [ A.ab ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor := A -> PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesInCategoryOfRows :=[127X[104X
+    [4X[25X>[125X [27X  function( A, compiled_category_name )[127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X            category_constructor,[127X[104X
+    [4X[25X>[125X [27X            [ A ],[127X[104X
+    [4X[25X>[125X [27X            "FunctorCategories",[127X[104X
+    [4X[25X>[125X [27X            compiled_category_name[127X[104X
+    [4X[25X>[125X [27X            : operations :=[127X[104X
+    [4X[25X>[125X [27X            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),[127X[104X
+    [4X[25X>[125X [27X                    [ "IsZeroForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsZeroForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsEpimorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsMonomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsIsomorphism",[127X[104X
+    [4X[25X>[125X [27X                      "IsEqualForMorphisms",[127X[104X
+    [4X[25X>[125X [27X                      "IsWellDefinedForObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsProjective",[127X[104X
+    [4X[25X>[125X [27X                      "IsInjective",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromSomeProjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoSomeInjectiveObject",[127X[104X
+    [4X[25X>[125X [27X                      "ProjectiveLift",[127X[104X
+    [4X[25X>[125X [27X                      "InjectiveColift",[127X[104X
+    [4X[25X>[125X [27X                      "EpimorphismFromProjectiveCoverObject",[127X[104X
+    [4X[25X>[125X [27X                      "MonomorphismIntoInjectiveEnvelopeObject",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableProjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IndecomposableInjectiveObjects",[127X[104X
+    [4X[25X>[125X [27X                      "IsReflexive",[127X[104X
+    [4X[25X>[125X [27X                      ] ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_PreSheavesInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );[127X[104X
+    [4X[25Xgap>[125X [27XPreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ),[128X[104X
+    [4X[28XRows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27Xcat := PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( A_bar );[127X[104X
+    [4X[28XPreSheaves( Algebroid( Q, FreeCategory([128X[104X
+    [4X[28XRightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations,[128X[104X
+    [4X[28XRows( Q ) )[128X[104X
+    [4X[25Xgap>[125X [27X# Now we check whether the compiled code is loaded automatically.[127X[104X
+    [4X[25X>[125X [27X# For this we use the name of the argument of `InitialObject`;[127X[104X
+    [4X[25Xgap>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1":[127X[104X
+    [4X[25X>[125X [27Xargument_name := NamesLocalVariablesFunction([127X[104X
+    [4X[25X>[125X [27X    Last( cat!.added_functions.ZeroObject )[1] )[1];;[127X[104X
+    [4X[25Xgap>[125X [27X(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or[127X[104X
+    [4X[25X>[125X [27X    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  

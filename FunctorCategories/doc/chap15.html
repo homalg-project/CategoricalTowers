@@ -28,6 +28,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X7F843BA27D4C7463">15.2 <span class="Heading">Precompiling the category of finite reflexive quivers</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap15.html#X81F9EDD383030BF4">15.3 <span class="Heading">Precompiling the presheaf category with values in a category of rows</span></a>
+</span>
+</div>
 </div>
 
 <h3>15 <span class="Heading">Precompilation</span></h3>
@@ -179,6 +182,75 @@ CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.InitialObject )[1] )[1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
+true
+</pre></div>
+
+<p><a id="X81F9EDD383030BF4" name="X81F9EDD383030BF4"></a></p>
+
+<h4>15.3 <span class="Heading">Precompiling the presheaf category with values in a category of rows</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", "&gt;= 2022.09-02", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QQ[FreeCategory( quiver )];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_bar := A / [ A.ab ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor := A -&gt; PreSheaves( A, CategoryOfRows( CommutativeRingOfLinearCategory( A ) : FinalizeCategory := true, no_precompiled_code := false ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesInCategoryOfRows :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( A, compiled_category_name )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            [ A ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "FunctorCategories",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            compiled_category_name</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            : operations :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            Difference( ListPrimitivelyInstalledOperationsOfCategory( category_constructor( A : no_precompiled_code := true ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    [ "IsZeroForObjects",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsZeroForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEpimorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsMonomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsIsomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsEqualForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsWellDefinedForObjects",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsProjective",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsInjective",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "EpimorphismFromSomeProjectiveObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "MonomorphismIntoSomeInjectiveObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "ProjectiveLift",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "InjectiveColift",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "EpimorphismFromProjectiveCoverObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "MonomorphismIntoInjectiveEnvelopeObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableProjectiveObjects",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IndecomposableInjectiveObjects",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      "IsReflexive",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                      ] ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesInCategoryOfRows( A, "PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_PreSheavesInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );</span>
+PreSheaves( Algebroid( Q, FreeCategory(
+RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ),
+Rows( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( A_bar );</span>
+PreSheaves( Algebroid( Q, FreeCategory(
+RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]" ) ) ) / relations,
+Rows( Q ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Now we check whether the compiled code is loaded automatically.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># For this we use the name of the argument of `InitialObject`;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1":</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">argument_name := NamesLocalVariablesFunction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Last( cat!.added_functions.ZeroObject )[1] )[1];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(ValueOption( "no_precompiled_code" ) = true and argument_name = "cat") or</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");</span>
 true
