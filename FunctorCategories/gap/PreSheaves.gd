@@ -237,7 +237,7 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
         [ IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory ] );
 
 #! @Arguments F
-DeclareAttribute( "CoYonedaLemma",
+DeclareAttribute( "CoYonedaLemmaOnObjects",
         IsObjectInPreSheafCategory );
 
 #! @Arguments F
