@@ -66,6 +66,12 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
 
+DeclareAttribute( "DefiningPairOfQuiverInCategory",
+        IsObjectInCategoryOfQuivers );
+
+DeclareAttribute( "DefiningPairOfQuiverMorphismInCategory",
+        IsObjectInCategoryOfQuivers );
+
 DeclareAttribute( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfQuivers );
 
@@ -115,6 +121,22 @@ DeclareOperation( "DotVertexLabelledDigraph",
 #! @Section Constructors
 #
 ####################################
+
+#! @Description
+#!  Construct the category of quivers over the category <A>C</A>.
+#! @Returns a &CAP; category
+#! @Arguments C
+DeclareAttribute( "CategoryOfQuivers",
+        IsCapCategory );
+#! @InsertChunk CategoryOfQuivers
+
+#!
+DeclareOperation( "CreateQuiverInCategory",
+        [ IsCategoryOfQuivers, IsList ] );
+
+#!
+DeclareOperation( "CreateQuiverMorphismInCategory",
+        [ IsObjectInCategoryOfQuivers, IsList ] );
 
 #! @Description
 #!  Construct the category of quivers enriched over the category <A>V</A>.
