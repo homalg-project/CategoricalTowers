@@ -369,14 +369,32 @@ end );
 InstallMethodForCompilerForCAP( ColimitPair,
         "for a catgory and two lists",
         [ IsCapCategory, IsList, IsList ],
-
+        
   function( cat, objects, decorated_morphisms )
-    local pair;
+    local range, injections, diagram, tau, source, mor1, compositions, mor2;
     
-    pair := LimitPair( Opposite( cat ),
-                    List( objects, Opposite ),
-                    List( decorated_morphisms, m -> [ m[3], Opposite( m[2] ), m[1] ] ) );
+    range := Coproduct( cat, objects );
     
-    return Pair( Opposite( pair[1] ), List( pair[2], Opposite ) );
+    injections := List( [ 0 .. Length( objects ) - 1 ],
+                         i -> InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, objects, 1 + i, range ) );
+    
+    diagram := List( decorated_morphisms, m -> objects[1 + m[1]] );
+    
+    tau := List( decorated_morphisms, m -> injections[1 + m[1]] );
+    
+    source := Coproduct( cat, diagram );
+    
+    mor1 := UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                    diagram, range, tau, source );
+    
+    compositions := List( decorated_morphisms,
+                          m -> PreCompose( cat,
+                                  m[2],
+                                  injections[1 + m[3]] ) );
+    
+    mor2 := UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                    diagram, range, compositions, source );
+    
+    return Pair( range, [ mor1, mor2 ] );
     
 end );
