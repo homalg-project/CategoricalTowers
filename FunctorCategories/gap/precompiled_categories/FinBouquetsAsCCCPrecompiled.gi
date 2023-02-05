@@ -11,8 +11,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinBouquetsAsCCCPrecompiled", function ( cat )
 ########
 function ( cat_1, a_1, b_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1;
-    deduped_34_1 := DefiningTripleOfBouquet( a_1 );
-    deduped_33_1 := DefiningTripleOfBouquet( b_1 );
+    deduped_34_1 := DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( a_1 );
+    deduped_33_1 := DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( b_1 );
     deduped_32_1 := deduped_34_1[2];
     deduped_31_1 := deduped_33_1[2];
     deduped_30_1 := deduped_34_1[1];
@@ -72,7 +72,7 @@ function ( cat_1, a_1, b_1 )
             return hoisted_16_1[1 + REM_INT( logic_new_func_x_2, hoisted_8_1 )];
         end );
     hoisted_17_1 := deduped_21_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfBouquet, NTuple( 3, deduped_22_1, deduped_20_1, List( [ 0 .. deduped_20_1 - 1 ], function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, NTuple( 3, deduped_22_1, deduped_20_1, List( [ 0 .. deduped_20_1 - 1 ], function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_17_1[1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 )] );
                 return -1 + SafePosition( hoisted_19_1, hoisted_18_1[(1 + (REM_INT( deduped_1_2, hoisted_8_1 ) + REM_INT( QUO_INT( deduped_1_2, hoisted_8_1 ), hoisted_12_1 ) * hoisted_8_1))] );

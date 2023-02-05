@@ -499,7 +499,7 @@ InstallOtherMethodForCompilerForCAP( CreateQuiver,
     Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsList ) );
     
     return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningTripleOfQuiver, triple );
+                   DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, triple );
     
 end );
 
@@ -533,7 +533,7 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
     return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
                    source,
                    range,
-                   DefiningPairOfQuiverMorphism, images );
+                   DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, images );
     
 end );
 
@@ -565,13 +565,13 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     object_constructor := CreateQuiver;
     
     ##
-    object_datum := { Quivers, o } -> DefiningTripleOfQuiver( o );
+    object_datum := { Quivers, o } -> DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( o );
     
     ##
     morphism_constructor := CreateQuiverMorphism;
     
     ##
-    morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphism( m );
+    morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );

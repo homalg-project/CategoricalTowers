@@ -66,10 +66,10 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfReflexiveQuivers );
 
-DeclareAttribute( "DefiningQuadrupleOfReflexiveQuiver",
+DeclareAttribute( "DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfReflexiveQuivers );
 
-CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiver", [ IsObjectInCategoryOfReflexiveQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets", [ IsObjectInCategoryOfReflexiveQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfReflexiveQuivers( input_types[1].category ) );
     
@@ -86,10 +86,10 @@ CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiver", [ IsObjectInCatego
     
 end );
 
-DeclareAttribute( "DefiningPairOfReflexiveQuiverMorphism",
+DeclareAttribute( "DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfReflexiveQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfReflexiveQuiverMorphism", [ IsMorphismInCategoryOfReflexiveQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets", [ IsMorphismInCategoryOfReflexiveQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfReflexiveQuivers( input_types[1].category ) );
     

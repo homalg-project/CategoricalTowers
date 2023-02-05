@@ -66,10 +66,10 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
 
-DeclareAttribute( "DefiningTripleOfQuiver",
+DeclareAttribute( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfQuivers );
 
-CapJitAddTypeSignature( "DefiningTripleOfQuiver", [ IsObjectInCategoryOfQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets", [ IsObjectInCategoryOfQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
@@ -84,10 +84,10 @@ CapJitAddTypeSignature( "DefiningTripleOfQuiver", [ IsObjectInCategoryOfQuivers 
     
 end );
 
-DeclareAttribute( "DefiningPairOfQuiverMorphism",
+DeclareAttribute( "DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfQuiverMorphism", [ IsMorphismInCategoryOfQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets", [ IsMorphismInCategoryOfQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
