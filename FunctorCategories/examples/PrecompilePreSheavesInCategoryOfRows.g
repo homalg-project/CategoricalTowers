@@ -1,8 +1,8 @@
-# @Chapter Precompilation
+#! @Chapter Precompilation
 
-# @Section Precompiling the presheaf category with values in a category of rows
+#! @Section Precompiling the presheaf category with values in a category of rows
 
-# @Example
+#! @Example
 
 LoadPackage( "FunctorCategories", false );
 #! true
@@ -10,7 +10,7 @@ LoadPackage( "FunctorCategories", false );
 LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
 #! true
 
-ReadPackageOnce( "FreydCategoriesForCAP", "gap/MatrixCategoryAsCategoryOfRows_CompilerLogic.gi" );
+ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );
 #! true
 
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
@@ -62,12 +62,12 @@ precompile_PreSheavesInCategoryOfRows( A_bar, "PreSheavesOfAlgebroidWithRelation
 PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( A );
 #! PreSheaves( Algebroid( Q, FreeCategory(
 #! RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ),
-#! Category of matrices over Q )
+#! Rows( Q ) )
 
 cat := PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( A_bar );
 #! PreSheaves( Algebroid( Q, FreeCategory(
 #! RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations,
-#! Category of matrices over Q )
+#! Rows( Q ) )
 
 # Now we check whether the compiled code is loaded automatically.
 # For this we use the name of the argument of `InitialObject`;
@@ -79,4 +79,4 @@ argument_name := NamesLocalVariablesFunction(
     (ValueOption( "no_precompiled_code" ) = fail and argument_name = "cat_1");
 #! true
 
-# @EndExample
+#! @EndExample
