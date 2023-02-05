@@ -115,9 +115,9 @@ DeclareOperation( "DotVertexLabelledDigraph",
 ####################################
 
 #! @Description
-#!  Construct the category of bouquets.
+#!  Construct the category of bouquets  enriched over the category <A>V</A>.
 #! @Returns a &CAP; category
-#! @Arguments B, C
+#! @Arguments V
 DeclareOperationWithCache( "CategoryOfBouquetsEnrichedOver",
         [ IsCapCategory ] );
 
