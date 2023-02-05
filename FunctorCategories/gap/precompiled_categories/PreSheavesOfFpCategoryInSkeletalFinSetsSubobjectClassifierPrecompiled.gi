@@ -531,7 +531,7 @@ function ( cat_1 )
                   end ) );
         end );
     hoisted_12_1 := deduped_20_1;
-    hoisted_11_1 := DefiningPairOfUnderlyingQuiver( deduped_26_1 )[2];
+    hoisted_11_1 := DefiningTripleOfUnderlyingQuiver( deduped_26_1 )[3];
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_26_1, Range, deduped_27_1, ValuesOfPreSheaf, NTuple( 2, deduped_20_1, List( [ 1 .. Length( deduped_24_1 ) ], function ( m_2 )
                 local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2;
                 deduped_11_2 := CAP_JIT_INCOMPLETE_LOGIC( m_2 );

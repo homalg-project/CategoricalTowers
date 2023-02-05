@@ -8,14 +8,17 @@
 BindGlobal( "QuiverOfCategoryOfReflexiveQuivers",
         UnderlyingQuiver( SimplicialCategoryTruncatedInDegree( 1 ) ) );
 
-# Display( ENHANCED_SYNTAX_TREE( x -> Pair( 2, [ Pair( 1, 0 ), Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
-BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfReflexiveQuivers",
+# Display( ENHANCED_SYNTAX_TREE( x -> Triple( 2, 3, [ Pair( 1, 0 ), Pair( 0, 1 ), Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
+BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfReflexiveQuivers",
 rec(
   args := rec(
       1 := rec(
           type := "EXPR_INT",
           value := 2 ),
       2 := rec(
+          type := "EXPR_INT",
+          value := 3 ),
+      3 := rec(
           list := rec(
               1 := rec(
                   args := rec(
@@ -62,10 +65,10 @@ rec(
               length := 3,
               type := "SYNTAX_TREE_LIST" ),
           type := "EXPR_LIST" ),
-      length := 2,
+      length := 3,
       type := "SYNTAX_TREE_LIST" ),
   funcref := rec(
-      gvar := "Pair",
+      gvar := "Triple",
       type := "EXPR_REF_GVAR" ),
   type := "EXPR_FUNCCALL" )
 );
@@ -1219,7 +1222,7 @@ InstallMethodWithCache( CategoryOfReflexiveQuiversEnrichedOver,
     
     ## specify the attributes the compiler should fully resolve during compilation
     F!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningPairOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningPairOfUnderlyingQuiverOfCategoryOfReflexiveQuivers,
+      rec( DefiningTripleOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfReflexiveQuivers,
            DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfReflexiveQuivers,
            IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfReflexiveQuivers,
            );

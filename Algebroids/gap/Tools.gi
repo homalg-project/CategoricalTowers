@@ -5,18 +5,20 @@
 #
 
 ##
-InstallMethod( DefiningPairOfAQuiver,
+InstallMethod( DefiningTripleOfAQuiver,
         "for a quiver",
         [ IsQuiver ],
         
   function( q )
-    local vertices;
+    local vertices, arrows;
     
     vertices := Vertices( q );
+    arrows := Arrows( q );
     
     return Immutable(
-                   Pair( Length( vertices ),
-                         List( Arrows( q ), m -> Pair( -1 + SafePosition( vertices, Source( m ) ), -1 + SafePosition( vertices, Range( m ) ) ) ) ) );
+                   Triple( Length( vertices ),
+                           Length( arrows ),
+                           List( arrows, m -> Pair( -1 + SafePosition( vertices, Source( m ) ), -1 + SafePosition( vertices, Range( m ) ) ) ) ) );
     
 end );
 
@@ -26,7 +28,7 @@ InstallMethod( OppositeFiniteCategory,
         [ IsCapCategory and IsFinite ],
         
   function( C )
-    local C_op, defining_pair;
+    local C_op, defining_triple;
     
     C_op := Opposite( C );
     
@@ -38,11 +40,13 @@ InstallMethod( OppositeFiniteCategory,
     SetSetOfGeneratingMorphisms( C_op,
             List( SetOfGeneratingMorphisms( C ), Opposite ) );
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( C );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
     
-    defining_pair := Pair( defining_pair[1], List( defining_pair[2], a -> Pair( a[2], a[1] ) ) );
+    defining_triple := Triple( defining_triple[1],
+                               defining_triple[2],
+                               List( defining_triple[3], a -> Pair( a[2], a[1] ) ) );
     
-    SetDefiningPairOfUnderlyingQuiver( C_op, defining_pair );
+    SetDefiningTripleOfUnderlyingQuiver( C_op, defining_triple );
     
     return C_op;
     

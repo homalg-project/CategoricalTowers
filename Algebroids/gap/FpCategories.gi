@@ -218,7 +218,7 @@ InstallMethod( IndicesOfGeneratingMorphisms,
     
     T := DistinguishedObjectOfHomomorphismStructure( C );
     
-    st := List( DefiningPairOfUnderlyingQuiver( C )[2], pair ->
+    st := List( DefiningTripleOfUnderlyingQuiver( C )[3], pair ->
                 UniversalMorphismIntoDirectProduct( V,
                         D00,
                         T,
@@ -722,7 +722,7 @@ InstallMethodWithCache( Category,
     
     C!.relations := relations;
     
-    SetDefiningPairOfUnderlyingQuiver( C, DefiningPairOfAQuiver( quiver ) );
+    SetDefiningTripleOfUnderlyingQuiver( C, DefiningTripleOfAQuiver( quiver ) );
     
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
@@ -763,7 +763,7 @@ InstallMethodWithCache( Category,
              "BasisPathsByVertexIndex",
              "BasisMorphismsByVertexIndex",
              "HomStructureOnBasisPaths",
-             "DefiningPairOfUnderlyingQuiver",
+             "DefiningTripleOfUnderlyingQuiver",
              ],
            category_filter := IsFpCategory,
            object_filter := IsObjectInFpCategory,
@@ -2170,7 +2170,7 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         [ IsCapCategory and IsFinite ],
         
   function ( B )
-    local H, D, Omega, Yepis, Ymu, Ypt, sieves, arrows, lobjs, lmors, id, N1,
+    local H, D, Omega, Yepis, Ymu, Ypt, sieves, defining_triple, lobjs, lmors, arrows, id, N1,
           Sieves, Sieves_emb, Sieves_maximal,
           HomHomOmega_objects, HomHomOmega_morphisms, Sieves_objects, Sieves_morphisms,
           Constant_functor, Sieves_functor, HomHomOmega_functor;
@@ -2251,10 +2251,12 @@ InstallMethodForCompilerForCAP( TruthMorphismOfTrueToSieveFunctorAndEmbedding,
         
     end;
     
-    arrows := DefiningPairOfUnderlyingQuiver( B )[2];
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
     
-    lobjs := Length( SetOfObjects( B ) );
-    lmors := Length( SetOfGeneratingMorphisms( B ) );
+    lobjs := defining_triple[1];
+    lmors := defining_triple[2];
+    
+    arrows := defining_triple[3];
     
     id := IdentityMorphism( H, Omega );
     

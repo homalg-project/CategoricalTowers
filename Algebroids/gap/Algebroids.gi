@@ -1149,7 +1149,7 @@ InstallMethod( Algebroid,
     
     A!.category_as_first_argument := true;
     
-    SetDefiningPairOfUnderlyingQuiver( A, DefiningPairOfAQuiver( quiver ) );
+    SetDefiningTripleOfUnderlyingQuiver( A, DefiningTripleOfAQuiver( quiver ) );
     
     A!.compiler_hints :=
       rec( category_attribute_names :=
@@ -1160,7 +1160,7 @@ InstallMethod( Algebroid,
              "BasisPathsByVertexIndex",
              "BasisMorphismsByVertexIndex",
              "HomStructureOnBasisPaths",
-             "DefiningPairOfUnderlyingQuiver",
+             "DefiningTripleOfUnderlyingQuiver",
              ],
            category_filter := IsAlgebroid,
            object_filter := IsObjectInAlgebroid,

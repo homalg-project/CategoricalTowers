@@ -9,12 +9,14 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
           [ IsPreSheafCategory, IsObjectInPreSheafCategory, IsObjectInPreSheafCategory ],
           
   function ( PSh, F, G )
-    local defining_pair, nr_o, F_o, G_o, C, sources,
-          mors, nr_m, F_m, G_m, mor_pair, morphisms, objects;
+    local defining_triple, nr_o, nr_m, mors, F_o, G_o, C, sources,
+          F_m, G_m, mor_pair, morphisms, objects;
     
-    defining_pair := DefiningPairOfUnderlyingQuiver( Source( PSh ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( Source( PSh ) );
     
-    nr_o := defining_pair[1];
+    nr_o := defining_triple[1];
+    nr_m := defining_triple[2];
+    mors := defining_triple[3];
     
     F_o := ValuesOfPreSheaf( F )[1];
     G_o := ValuesOfPreSheaf( G )[1];
@@ -25,9 +27,6 @@ InstallMethodForCompilerForCAP( ExternalHomDiagram,
                      i -> HomomorphismStructureOnObjects( C,
                              F_o[i],
                              G_o[i] ) );
-    
-    mors := defining_pair[2];
-    nr_m := Length( mors );
     
     F_m := ValuesOfPreSheaf( F )[2];
     G_m := ValuesOfPreSheaf( G )[2];

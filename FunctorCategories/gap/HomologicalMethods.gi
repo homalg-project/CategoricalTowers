@@ -9,7 +9,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusionOfPreSheaf,
           [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
           
   function ( PSh, F )
-    local C, vals_F, def_pair, pos, im, val_objs, val_mors, RF, rF;
+    local C, vals_F, defining_triple, pos, im, val_objs, val_mors, RF, rF;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if HasRadicalInclusionOfPreSheaf( F ) then
@@ -20,9 +20,9 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusionOfPreSheaf,
     
     vals_F := ValuesOfPreSheaf( F );
     
-    def_pair := DefiningPairOfUnderlyingQuiver( Source( PSh ) );
+    defining_triple := DefiningTripleOfUnderlyingQuiver( Source( PSh ) );
     
-    pos := List( [ 0 .. def_pair[1] - 1 ], i -> Positions( List( def_pair[2], r -> r[1] ), i ) );
+    pos := List( [ 0 .. defining_triple[1] - 1 ], i -> Positions( List( defining_triple[3], r -> r[1] ), i ) );
     
     im := List( pos, p -> ListOfValues( vals_F[2] ){ p } );
     
@@ -30,7 +30,7 @@ InstallOtherMethodForCompilerForCAP( RadicalInclusionOfPreSheaf,
     
     val_objs := List( im, Source );
     
-    val_mors := ListN( def_pair[2], vals_F[2], { m, vm } -> LiftAlongMonomorphism( C, im[1 + m[1]], PreCompose( C, im[1 + m[2]], vm ) ) );
+    val_mors := ListN( defining_triple[3], vals_F[2], { m, vm } -> LiftAlongMonomorphism( C, im[1 + m[1]], PreCompose( C, im[1 + m[2]], vm ) ) );
     
     RF := CreatePreSheafByValues( PSh, val_objs, val_mors );
     
