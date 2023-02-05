@@ -120,8 +120,8 @@ DeclareOperation( "DotVertexLabelledDigraph",
 #!  Construct the category of quivers enriched over the category <A>V</A>.
 #! @Returns a &CAP; category
 #! @Arguments V
-DeclareOperationWithCache( "CategoryOfQuiversEnrichedOver",
-        [ IsCapCategory ] );
+DeclareAttribute( "CategoryOfQuiversEnrichedOver",
+        IsCapCategory );
 
 #!
 DeclareOperation( "CreateQuiver",

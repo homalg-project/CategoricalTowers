@@ -1189,7 +1189,7 @@ InstallMethod( CreateReflexiveQuiverMorphism,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfReflexiveQuiversEnrichedOver,
+InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
         

@@ -549,7 +549,7 @@ InstallMethod( CreateQuiverMorphism,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfQuiversEnrichedOver,
+InstallMethod( CategoryOfQuiversEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
         

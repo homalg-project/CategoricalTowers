@@ -430,7 +430,7 @@ InstallMethod( CreateBouquetMorphism,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfBouquetsEnrichedOver,
+InstallMethod( CategoryOfBouquetsEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
         
