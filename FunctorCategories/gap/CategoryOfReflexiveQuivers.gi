@@ -1361,6 +1361,8 @@ end );
 BindGlobal( "FinReflexiveQuivers",
          CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets ) );
 
+FinReflexiveQuivers!.Name := "FinReflexiveQuivers";
+
 ##
 InstallMethod( CreateReflexiveQuiver,
         "for an integer, a list of integers, and a list of pairs of integers",

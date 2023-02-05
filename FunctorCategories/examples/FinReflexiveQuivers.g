@@ -6,17 +6,17 @@
 LoadPackage( "FunctorCategories" );
 #! true
 FinReflexiveQuivers;
-#! CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! FinReflexiveQuivers
 V := FinReflexiveQuivers.V;
-#! <A projective object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#! <A projective object in FinReflexiveQuivers>
 Display( V );
 #! ( { 0 }, { 0 := [ 0 ] } )
 A := FinReflexiveQuivers.A;
-#! <A projective object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#! <A projective object in FinReflexiveQuivers>
 Display( A );
 #! ( { 0, 1 }, { 0 := [ 0, 1 ], 1 := [ 0 ], 2 := [ 1 ] } )
 T := TerminalObject( FinReflexiveQuivers );
-#! <An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#! <An object in FinReflexiveQuivers>
 Display( T );
 #! ( { 0 }, { 0 := [ 0 ] } )
 T = V;
@@ -24,7 +24,7 @@ T = V;
 G := CreateReflexiveQuiver( 2,
              [ 1, 4 ],
              [ 0,1, 0,0, 0,0, 1,0, 1,1 ] );
-#! <An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#! <An object in FinReflexiveQuivers>
 IsWellDefined( G );
 #! true
 Display( G );
@@ -37,7 +37,7 @@ Display( global_G );
 DirectProduct( G, V ) = G;
 #! true
 iso := CartesianEvaluationMorphism( T, G );
-#! <A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#! <A morphism in FinReflexiveQuivers>
 IsIsomorphism( iso );
 #! true
 Display( iso );
@@ -47,11 +47,11 @@ Display( iso );
 #! Image of <(C1)>:
 #! { 0,..., 4 } ⱶ[ 1, 2, 3, 0, 4 ]→ { 0,..., 4 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 s := FinReflexiveQuivers.s;
 #! <A split monomorphism in
-#!  CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#!  FinReflexiveQuivers>
 Display( s );
 #! Image of <(C0)>:
 #! { 0 } ⱶ[ 0 ]→ { 0, 1 }
@@ -59,11 +59,11 @@ Display( s );
 #! Image of <(C1)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 t := FinReflexiveQuivers.t;
 #! <A split monomorphism in
-#!  CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#!  FinReflexiveQuivers>
 Display( t );
 #! Image of <(C0)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }
@@ -71,11 +71,11 @@ Display( t );
 #! Image of <(C1)>:
 #! { 0 } ⱶ[ 2 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 l := FinReflexiveQuivers.l;
 #! <A split epimorphism in
-#!  CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#!  FinReflexiveQuivers>
 Display( l );
 #! Image of <(C0)>:
 #! { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
@@ -83,10 +83,10 @@ Display( l );
 #! Image of <(C1)>:
 #! { 0, 1, 2 } ⱶ[ 0, 0, 0 ]→ { 0 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 omega := SubobjectClassifier( FinReflexiveQuivers );
-#! <An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>
+#! <An object in FinReflexiveQuivers>
 Display( omega );
 #! ( { 0, 1 },
 #!   { 0 := [ 0 ], 1 := [ 1, 0 ], 2 := [ 0, 1 ],
@@ -94,11 +94,11 @@ Display( omega );
 HomStructure( A, omega );
 #! |5|
 subsA := ListOfSubobjects( A );
-#! [ <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,
-#!   <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,
-#!   <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,
-#!   <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,
-#!   <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )> ]
+#! [ <A monomorphism in FinReflexiveQuivers>,
+#!   <A monomorphism in FinReflexiveQuivers>,
+#!   <A monomorphism in FinReflexiveQuivers>,
+#!   <A monomorphism in FinReflexiveQuivers>,
+#!   <A monomorphism in FinReflexiveQuivers> ]
 Perform( subsA, Display );
 #! Image of <(C0)>:
 #! ∅ ⱶ[  ]→ { 0, 1 }
@@ -106,7 +106,7 @@ Perform( subsA, Display );
 #! Image of <(C1)>:
 #! ∅ ⱶ[  ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 #! Image of <(C0)>:
 #! { 0 } ⱶ[ 0 ]→ { 0, 1 }
@@ -114,7 +114,7 @@ Perform( subsA, Display );
 #! Image of <(C1)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 #! Image of <(C0)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }
@@ -122,7 +122,7 @@ Perform( subsA, Display );
 #! Image of <(C1)>:
 #! { 0 } ⱶ[ 2 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 #! Image of <(C0)>:
 #! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
@@ -130,7 +130,7 @@ Perform( subsA, Display );
 #! Image of <(C1)>:
 #! { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 #! Image of <(C0)>:
 #! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
@@ -138,7 +138,7 @@ Perform( subsA, Display );
 #! Image of <(C1)>:
 #! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
 #! 
-#! A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! A morphism in FinReflexiveQuivers
 #! given by the above data
 #! @EndExample
 #! @EndChunk

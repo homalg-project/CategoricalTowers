@@ -6,9 +6,9 @@
 LoadPackage( "FunctorCategories" );
 #! true
 FinQuivers;
-#! CategoryOfQuiversEnrichedOver( SkeletalFinSets )
+#! FinQuivers
 decorating_quiver := SubobjectClassifier( FinQuivers );
-#! <An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>
+#! <An object in FinQuivers>
 Display( decorating_quiver );
 #! ( { 0, 1 },
 #!   { 0 := [ 0, 0 ], 1 := [ 1, 0 ], 2 := [ 0, 1 ],
