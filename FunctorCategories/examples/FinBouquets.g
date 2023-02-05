@@ -6,19 +6,19 @@ LoadPackage( "FunctorCategories" );
 
 #! @Example
 FinBouquets;
-#! CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
+#! FinBouquets
 C := UnderlyingCategory( FinBouquets );
 #! FreeCategory( RightQuiver( "q(V,L)[b:V->L]" ) )
 V := FinBouquets.V;
-#! <A projective object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <A projective object in FinBouquets>
 Display( V );
 #! ( { 0 }, { } )
 L := FinBouquets.L;
-#! <A projective object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <A projective object in FinBouquets>
 Display( L );
 #! ( { 0 }, { 0 ↦ 0 } )
 b := FinBouquets.b;
-#! <A monomorphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <A monomorphism in FinBouquets>
 Display( b );
 #! Image of <(V)>:
 #! { 0 } ⱶ[ 0 ]→ { 0 }
@@ -26,16 +26,16 @@ Display( b );
 #! Image of <(L)>:
 #! ∅ ⱶ[  ]→ { 0 }
 #! 
-#! A morphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
+#! A morphism in FinBouquets
 #! given by the above data
 T := TerminalObject( FinBouquets );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 Display( T );
 #! ( { 0 }, { 0 ↦ 0 } )
 T = L;
 #! true
 M := CreateBouquet( 3, [ 1, 1, 1, 2 ] );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 Display( M );
 #! ( { 0, 1, 2 }, { 0 ↦ 1, 1 ↦ 1, 2 ↦ 1, 3 ↦ 2 } )
 N := Colimit( [ V, V, V, L, L, L, L ],
@@ -43,15 +43,15 @@ N := Colimit( [ V, V, V, L, L, L, L ],
                [ 1, b, 4 ],
                [ 1, b, 5 ],
                [ 2, b, 6 ] ] );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 N = M;
 #! true
 LL := Coproduct( L, L );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 L2 := CreateBouquet( 1, [ 0, 0 ] );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 epsilon := CreateBouquetMorphism( LL, [ 0, 0 ], [ 0, 1 ], L2 );
-#! <A morphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <A morphism in FinBouquets>
 IsWellDefined( epsilon );
 #! true
 IsEpimorphism( epsilon );
@@ -59,11 +59,11 @@ IsEpimorphism( epsilon );
 IsSplitEpimorphism( epsilon );
 #! false
 omega := SubobjectClassifier( FinBouquets );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 Display( omega );
 #! ( { 0, 1 }, { 0 ↦ 0, 1 ↦ 1, 2 ↦ 1 } )
 PM := PowerObject( M );
-#! <An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>
+#! <An object in FinBouquets>
 Display( PM );
 #! ( { 0,..., 7 },
 #!   { 0 ↦ 0, 1 ↦ 1, 2 ↦ 2, 3 ↦ 3, 4 ↦ 2, 5 ↦ 3,

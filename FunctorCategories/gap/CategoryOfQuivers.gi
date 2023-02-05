@@ -718,6 +718,8 @@ end );
 BindGlobal( "FinQuivers",
          CategoryOfQuiversEnrichedOver( SkeletalFinSets ) );
 
+FinQuivers!.Name := "FinQuivers";
+
 ##
 InstallMethod( CreateQuiver,
         "for an integer, and a list of pairs of integers",

@@ -48,7 +48,7 @@ FinReflexiveQuiversPrecompiled( );
 #! CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
 
 cat := CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets );
-#! CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+#! FinReflexiveQuivers
 
 # Now we check whether the compiled code is loaded automatically.
 # For this we use the name of the argument of `InitialObject`;

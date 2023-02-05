@@ -595,7 +595,9 @@ end );
 
 ##
 BindGlobal( "FinBouquets",
-         CategoryOfBouquetsEnrichedOver( SkeletalFinSets ) );
+        CategoryOfBouquetsEnrichedOver( SkeletalFinSets ) );
+
+FinBouquets!.Name := "FinBouquets";
 
 ##
 InstallMethod( CreateBouquet,

@@ -48,7 +48,7 @@ FinBouquetsPrecompiled( );
 #! CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
 
 cat := CategoryOfBouquetsEnrichedOver( SkeletalFinSets );
-#! CategoryOfBouquetsEnrichedOver( SkeletalFinSets )
+#! FinBouquets
 
 # Now we check whether the compiled code is loaded automatically.
 # For this we use the name of the argument of `InitialObject`;
