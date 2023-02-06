@@ -37,7 +37,7 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
-          cp ./CategoricalTowers/ci_gaprc /home/gap/.gap/gaprc
+          cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/CAP_project.git
@@ -65,8 +65,8 @@ jobs:
           make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
           make -C MatroidGeneration -j $(nproc) --output-sync ci-test
           cd CategoricalTowers
-          LANG=C.UTF-8 python3 process_coverage.py
-          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./upload_codecov.sh
+          LANG=C.UTF-8 python3 dev/process_coverage.py
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./dev/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           CUR_SHA=$(git rev-parse --verify HEAD)
@@ -74,7 +74,7 @@ jobs:
             git fetch origin gh-pages; \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
-            LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
+            LANG=C.UTF-8 ./dev/make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
             # publish subsplits
             git subtree split --prefix=Algebroids -b Algebroids-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Algebroids Algebroids-split:master; \
             git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbientObjects-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CategoriesWithAmbientObjects CategoriesWithAmbientObjects-split:master; \
