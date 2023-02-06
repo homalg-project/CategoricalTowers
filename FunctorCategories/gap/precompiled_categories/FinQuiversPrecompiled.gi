@@ -10,7 +10,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinQuiversPrecompiled", function ( cat )
         
 ########
 function ( cat_1 )
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiver, NTuple( 3, 0, 0, [  ] ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, NTuple( 3, 0, 0, [  ] ) );
 end
 ########
         
@@ -24,24 +24,24 @@ function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
     deduped_7_1 := [ 1 .. Length( arg2_1 ) ];
     deduped_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return DefiningTripleOfQuiver( logic_new_func_x_2 )[2];
+            return DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[2];
         end );
     deduped_5_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return DefiningTripleOfQuiver( logic_new_func_x_2 )[1];
+            return DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[1];
         end );
     hoisted_4_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return List( DefiningTripleOfQuiver( logic_new_func_x_2 )[3], function ( a_3 )
+            return List( DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[3], function ( a_3 )
                     return a_3[2];
                 end );
         end );
     hoisted_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return List( DefiningTripleOfQuiver( logic_new_func_x_2 )[3], function ( a_3 )
+            return List( DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[3], function ( a_3 )
                     return a_3[1];
                 end );
         end );
     hoisted_2_1 := deduped_5_1;
     hoisted_1_1 := deduped_6_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiver, NTuple( 3, Sum( deduped_5_1 ), Sum( deduped_6_1 ), ListN( Concatenation( List( deduped_7_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, NTuple( 3, Sum( deduped_5_1 ), Sum( deduped_6_1 ), ListN( Concatenation( List( deduped_7_1, function ( logic_new_func_x_2 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
                     deduped_3_2 := Sum( hoisted_2_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
                     hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_2_1[logic_new_func_x_2] - 1 ];
@@ -82,8 +82,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1;
-    deduped_35_1 := DefiningTripleOfQuiver( arg2_1 );
-    deduped_34_1 := DefiningTripleOfQuiver( arg3_1 );
+    deduped_35_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( arg2_1 );
+    deduped_34_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( arg3_1 );
     deduped_33_1 := deduped_34_1[3];
     deduped_32_1 := deduped_35_1[3];
     deduped_31_1 := deduped_35_1[2];
@@ -169,8 +169,8 @@ end
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1, deduped_43_1, deduped_44_1, deduped_45_1, deduped_46_1, deduped_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1;
-    deduped_54_1 := DefiningTripleOfQuiver( range_1 );
-    deduped_53_1 := DefiningTripleOfQuiver( source_1 );
+    deduped_54_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( range_1 );
+    deduped_53_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( source_1 );
     deduped_52_1 := Length( Source( alpha_1 ) );
     deduped_51_1 := deduped_54_1[3];
     deduped_50_1 := deduped_53_1[3];
@@ -283,7 +283,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 );
             return hoisted_26_1[1 + (hoisted_24_1[1 + REM_INT( deduped_1_2, hoisted_23_1 )] + REM_INT( QUO_INT( deduped_1_2, hoisted_23_1 ), hoisted_25_1 ) * hoisted_1_1)];
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( deduped_40_1, function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( deduped_40_1, function ( i_2 )
                 return hoisted_27_1[1 + i_2];
             end ), List( deduped_41_1, function ( i_2 )
                 return hoisted_32_1[1 + i_2];
@@ -299,8 +299,8 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1, deduped_43_1, deduped_44_1, deduped_45_1, deduped_46_1, deduped_47_1;
-    deduped_47_1 := DefiningTripleOfQuiver( arg2_1 );
-    deduped_46_1 := DefiningTripleOfQuiver( arg3_1 );
+    deduped_47_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( arg2_1 );
+    deduped_46_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( arg3_1 );
     deduped_45_1 := deduped_46_1[3];
     deduped_44_1 := deduped_47_1[3];
     deduped_43_1 := deduped_47_1[2];
@@ -400,7 +400,7 @@ function ( cat_1, arg2_1, arg3_1 )
             deduped_3_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_21_1[1 + CAP_JIT_INCOMPLETE_LOGIC( REM_INT( QUO_INT( deduped_4_2, hoisted_20_1 ^ QUO_INT( deduped_4_2, hoisted_20_1 ) ), hoisted_20_1 ) )] );
             hoisted_2_2 := REM_INT( QUO_INT( deduped_3_2, hoisted_10_1 ), hoisted_14_1 );
             hoisted_1_2 := REM_INT( deduped_3_2, hoisted_10_1 );
-            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphism, NTuple( 2, List( hoisted_7_1, function ( logic_new_func_x_3 )
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( hoisted_7_1, function ( logic_new_func_x_3 )
                         return hoisted_24_1[1 + (hoisted_1_2 + hoisted_23_1[(1 + logic_new_func_x_3)] * hoisted_10_1)];
                     end ), List( hoisted_9_1, function ( logic_new_func_x_3 )
                         return hoisted_27_1[1 + (hoisted_2_2 + hoisted_26_1[(1 + logic_new_func_x_3)] * hoisted_14_1)];

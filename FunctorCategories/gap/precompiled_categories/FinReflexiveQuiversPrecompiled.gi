@@ -12,7 +12,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinReflexiveQuiversPrecompiled", function ( cat )
 function ( cat_1 )
     local deduped_1_1;
     deduped_1_1 := [  ];
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiver, NTuple( 4, 0, 0, deduped_1_1, deduped_1_1 ) );
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, 0, 0, deduped_1_1, deduped_1_1 ) );
 end
 ########
         
@@ -26,27 +26,27 @@ function ( cat_1, arg2_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
     deduped_8_1 := [ 1 .. Length( arg2_1 ) ];
     deduped_7_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return DefiningQuadrupleOfReflexiveQuiver( logic_new_func_x_2 )[2];
+            return DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[2];
         end );
     deduped_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return DefiningQuadrupleOfReflexiveQuiver( logic_new_func_x_2 )[1];
+            return DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[1];
         end );
     hoisted_5_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return List( DefiningQuadrupleOfReflexiveQuiver( logic_new_func_x_2 )[4], function ( a_3 )
+            return List( DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[4], function ( a_3 )
                     return a_3[2];
                 end );
         end );
     hoisted_4_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return List( DefiningQuadrupleOfReflexiveQuiver( logic_new_func_x_2 )[4], function ( a_3 )
+            return List( DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[4], function ( a_3 )
                     return a_3[1];
                 end );
         end );
     hoisted_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return DefiningQuadrupleOfReflexiveQuiver( logic_new_func_x_2 )[3];
+            return DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[3];
         end );
     hoisted_2_1 := deduped_7_1;
     hoisted_1_1 := deduped_6_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiver, NTuple( 4, Sum( deduped_6_1 ), Sum( deduped_7_1 ), Concatenation( List( deduped_8_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, Sum( deduped_6_1 ), Sum( deduped_7_1 ), Concatenation( List( deduped_8_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2, hoisted_2_2, deduped_3_2;
                   deduped_3_2 := Sum( hoisted_2_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
                   hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + hoisted_2_1[logic_new_func_x_2] - 1 ];
@@ -98,8 +98,8 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_50_1 := [ 1, 2, 3, 4 ];
     deduped_49_1 := [ 1, 2, 3 ];
     deduped_48_1 := [ 1, 2 ];
-    deduped_47_1 := DefiningQuadrupleOfReflexiveQuiver( arg2_1 );
-    deduped_46_1 := DefiningQuadrupleOfReflexiveQuiver( arg3_1 );
+    deduped_47_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( arg2_1 );
+    deduped_46_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( arg3_1 );
     deduped_45_1 := deduped_46_1[4];
     deduped_44_1 := deduped_47_1[4];
     deduped_43_1 := deduped_47_1[2];
@@ -234,8 +234,8 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_69_1 := [ 1, 2, 3, 4 ];
     deduped_68_1 := [ 1, 2, 3 ];
     deduped_67_1 := [ 1, 2 ];
-    deduped_66_1 := DefiningQuadrupleOfReflexiveQuiver( range_1 );
-    deduped_65_1 := DefiningQuadrupleOfReflexiveQuiver( source_1 );
+    deduped_66_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( range_1 );
+    deduped_65_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( source_1 );
     deduped_64_1 := Length( Source( alpha_1 ) );
     deduped_63_1 := deduped_66_1[4];
     deduped_62_1 := deduped_65_1[4];
@@ -394,7 +394,7 @@ function ( cat_1, source_1, range_1, alpha_1 )
             deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 );
             return hoisted_34_1[1 + (hoisted_32_1[1 + REM_INT( deduped_1_2, hoisted_31_1 )] + REM_INT( QUO_INT( deduped_1_2, hoisted_31_1 ), hoisted_33_1 ) * hoisted_1_1)];
         end );
-    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfReflexiveQuiverMorphism, NTuple( 2, List( deduped_51_1, function ( i_2 )
+    return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( deduped_51_1, function ( i_2 )
                 return hoisted_35_1[1 + i_2];
             end ), List( deduped_52_1, function ( i_2 )
                 return hoisted_40_1[1 + i_2];
@@ -413,8 +413,8 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_62_1 := [ 1, 2, 3, 4 ];
     deduped_61_1 := [ 1, 2, 3 ];
     deduped_60_1 := [ 1, 2 ];
-    deduped_59_1 := DefiningQuadrupleOfReflexiveQuiver( arg2_1 );
-    deduped_58_1 := DefiningQuadrupleOfReflexiveQuiver( arg3_1 );
+    deduped_59_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( arg2_1 );
+    deduped_58_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( arg3_1 );
     deduped_57_1 := deduped_58_1[4];
     deduped_56_1 := deduped_59_1[4];
     deduped_55_1 := deduped_59_1[2];
@@ -560,7 +560,7 @@ function ( cat_1, arg2_1, arg3_1 )
             deduped_3_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_29_1[1 + CAP_JIT_INCOMPLETE_LOGIC( REM_INT( QUO_INT( deduped_4_2, hoisted_28_1 ^ QUO_INT( deduped_4_2, hoisted_28_1 ) ), hoisted_28_1 ) )] );
             hoisted_2_2 := REM_INT( QUO_INT( deduped_3_2, hoisted_13_1 ), hoisted_14_1 );
             hoisted_1_2 := REM_INT( deduped_3_2, hoisted_13_1 );
-            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfReflexiveQuiverMorphism, NTuple( 2, List( hoisted_12_1, function ( logic_new_func_x_3 )
+            return CreateCapCategoryMorphismWithAttributes( cat_1, arg2_1, arg3_1, DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets, NTuple( 2, List( hoisted_12_1, function ( logic_new_func_x_3 )
                         return hoisted_32_1[1 + (hoisted_1_2 + hoisted_31_1[(1 + logic_new_func_x_3)] * hoisted_13_1)];
                     end ), List( hoisted_10_1, function ( logic_new_func_x_3 )
                         return hoisted_35_1[1 + (hoisted_2_2 + hoisted_34_1[(1 + logic_new_func_x_3)] * hoisted_14_1)];

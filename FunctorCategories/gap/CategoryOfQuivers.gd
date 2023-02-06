@@ -66,10 +66,16 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
 
-DeclareAttribute( "DefiningTripleOfQuiver",
+DeclareAttribute( "DefiningPairOfQuiverInCategory",
         IsObjectInCategoryOfQuivers );
 
-CapJitAddTypeSignature( "DefiningTripleOfQuiver", [ IsObjectInCategoryOfQuivers ], function ( input_types )
+DeclareAttribute( "DefiningPairOfQuiverMorphismInCategory",
+        IsObjectInCategoryOfQuivers );
+
+DeclareAttribute( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets",
+        IsObjectInCategoryOfQuivers );
+
+CapJitAddTypeSignature( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets", [ IsObjectInCategoryOfQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
@@ -84,10 +90,10 @@ CapJitAddTypeSignature( "DefiningTripleOfQuiver", [ IsObjectInCategoryOfQuivers 
     
 end );
 
-DeclareAttribute( "DefiningPairOfQuiverMorphism",
+DeclareAttribute( "DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfQuiverMorphism", [ IsMorphismInCategoryOfQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets", [ IsMorphismInCategoryOfQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
@@ -117,11 +123,27 @@ DeclareOperation( "DotVertexLabelledDigraph",
 ####################################
 
 #! @Description
-#!  Construct the category of quivers.
+#!  Construct the category of quivers over the category <A>C</A>.
 #! @Returns a &CAP; category
-#! @Arguments B, C
-DeclareOperationWithCache( "CategoryOfQuiversEnrichedOver",
-        [ IsCapCategory ] );
+#! @Arguments C
+DeclareAttribute( "CategoryOfQuivers",
+        IsCapCategory );
+#! @InsertChunk CategoryOfQuivers
+
+#!
+DeclareOperation( "CreateQuiverInCategory",
+        [ IsCategoryOfQuivers, IsList ] );
+
+#!
+DeclareOperation( "CreateQuiverMorphismInCategory",
+        [ IsObjectInCategoryOfQuivers, IsList ] );
+
+#! @Description
+#!  Construct the category of quivers enriched over the category <A>V</A>.
+#! @Returns a &CAP; category
+#! @Arguments V
+DeclareAttribute( "CategoryOfQuiversEnrichedOver",
+        IsCapCategory );
 
 #!
 DeclareOperation( "CreateQuiver",

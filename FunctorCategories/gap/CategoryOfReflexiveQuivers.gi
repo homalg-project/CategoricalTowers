@@ -1139,7 +1139,7 @@ InstallOtherMethodForCompilerForCAP( CreateReflexiveQuiver,
             ForAll( quadruple[4], IsList ) );
     
     return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningQuadrupleOfReflexiveQuiver, quadruple );
+                   DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, quadruple );
     
 end );
 
@@ -1173,7 +1173,7 @@ InstallOtherMethodForCompilerForCAP( CreateReflexiveQuiverMorphism,
     return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
                    source,
                    range,
-                   DefiningPairOfReflexiveQuiverMorphism, images );
+                   DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets, images );
     
 end );
 
@@ -1189,7 +1189,7 @@ InstallMethod( CreateReflexiveQuiverMorphism,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfReflexiveQuiversEnrichedOver,
+InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
         
@@ -1205,13 +1205,13 @@ InstallMethodWithCache( CategoryOfReflexiveQuiversEnrichedOver,
     object_constructor := CreateReflexiveQuiver;
     
     ##
-    object_datum := { Quivers, o } -> DefiningQuadrupleOfReflexiveQuiver( o );
+    object_datum := { Quivers, o } -> DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( o );
     
     ##
     morphism_constructor := CreateReflexiveQuiverMorphism;
     
     ##
-    morphism_datum := { Quivers, m } -> DefiningPairOfReflexiveQuiverMorphism( m );
+    morphism_datum := { Quivers, m } -> DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
     ## building the categorical tower:
     F := SimplicialCategoryTruncatedInDegree( 1 : FinalizeCategory := true );

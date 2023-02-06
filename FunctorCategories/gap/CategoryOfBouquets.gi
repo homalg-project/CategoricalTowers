@@ -388,7 +388,7 @@ InstallOtherMethodForCompilerForCAP( CreateBouquet,
     Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsInt ) );
     
     return CreateCapCategoryObjectWithAttributes( category_of_bouquets,
-                   DefiningTripleOfBouquet, triple );
+                   DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, triple );
     
 end );
 
@@ -414,7 +414,7 @@ InstallOtherMethodForCompilerForCAP( CreateBouquetMorphism,
     return CreateCapCategoryMorphismWithAttributes( category_of_bouquets,
                    source,
                    range,
-                   DefiningPairOfBouquetMorphism, images );
+                   DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets, images );
     
 end );
 
@@ -430,7 +430,7 @@ InstallMethod( CreateBouquetMorphism,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfBouquetsEnrichedOver,
+InstallMethod( CategoryOfBouquetsEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsCategoryOfSkeletalFinSets ],
         
@@ -446,13 +446,13 @@ InstallMethodWithCache( CategoryOfBouquetsEnrichedOver,
     object_constructor := CreateBouquet;
     
     ##
-    object_datum := { Bouquets, o } -> DefiningTripleOfBouquet( o );
+    object_datum := { Bouquets, o } -> DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( o );
     
     ##
     morphism_constructor := CreateBouquetMorphism;
     
     ##
-    morphism_datum := { Bouquets, m } -> DefiningPairOfBouquetMorphism( m );
+    morphism_datum := { Bouquets, m } -> DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets( m );
     
     ## building the categorical tower:
     F := FreeCategory( QuiverOfCategoryOfBouquets : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );

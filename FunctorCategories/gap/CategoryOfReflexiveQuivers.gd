@@ -66,10 +66,10 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfReflexiveQuivers );
 
-DeclareAttribute( "DefiningQuadrupleOfReflexiveQuiver",
+DeclareAttribute( "DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfReflexiveQuivers );
 
-CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiver", [ IsObjectInCategoryOfReflexiveQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets", [ IsObjectInCategoryOfReflexiveQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfReflexiveQuivers( input_types[1].category ) );
     
@@ -86,10 +86,10 @@ CapJitAddTypeSignature( "DefiningQuadrupleOfReflexiveQuiver", [ IsObjectInCatego
     
 end );
 
-DeclareAttribute( "DefiningPairOfReflexiveQuiverMorphism",
+DeclareAttribute( "DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfReflexiveQuivers );
 
-CapJitAddTypeSignature( "DefiningPairOfReflexiveQuiverMorphism", [ IsMorphismInCategoryOfReflexiveQuivers ], function ( input_types )
+CapJitAddTypeSignature( "DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets", [ IsMorphismInCategoryOfReflexiveQuivers ], function ( input_types )
     
     Assert( 0, IsCategoryOfReflexiveQuivers( input_types[1].category ) );
     
@@ -123,11 +123,11 @@ DeclareOperation( "DotVertexLabelledDigraph",
 ####################################
 
 #! @Description
-#!  Construct the category of quivers.
+#!  Construct the category of reflexive quivers enriched over the category <A>V</A>.
 #! @Returns a &CAP; category
-#! @Arguments B, C
-DeclareOperationWithCache( "CategoryOfReflexiveQuiversEnrichedOver",
-        [ IsCapCategory ] );
+#! @Arguments V
+DeclareAttribute( "CategoryOfReflexiveQuiversEnrichedOver",
+        IsCapCategory );
 
 #!
 DeclareOperation( "CreateReflexiveQuiver",

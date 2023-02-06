@@ -26,8 +26,8 @@ function ( cat_1, a_1, b_1 )
     deduped_158_1 := [ 1, 2, 3, 4 ];
     deduped_157_1 := [ 1, 2, 3 ];
     deduped_156_1 := [ 1, 2 ];
-    deduped_155_1 := DefiningQuadrupleOfReflexiveQuiver( a_1 );
-    deduped_154_1 := DefiningQuadrupleOfReflexiveQuiver( b_1 );
+    deduped_155_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( a_1 );
+    deduped_154_1 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( b_1 );
     deduped_153_1 := [ deduped_161_1, deduped_168_1, deduped_161_1, deduped_163_1, [ 1, 0, 1 ], deduped_168_1, deduped_169_1 ];
     deduped_152_1 := [ deduped_161_1, deduped_168_1, deduped_161_1, deduped_163_1, [ 0, 0, 1 ], deduped_168_1, deduped_169_1 ];
     deduped_151_1 := [ deduped_161_1, deduped_162_1, deduped_163_1, deduped_164_1, deduped_156_1, deduped_165_1, [ 2, 2 ] ];
@@ -441,7 +441,7 @@ function ( cat_1, a_1, b_1 )
             deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( i_2 );
             return hoisted_78_1[1 + REM_INT( deduped_1_2, hoisted_19_1 )] + hoisted_82_1[(1 + REM_INT( QUO_INT( deduped_1_2, hoisted_19_1 ), hoisted_20_1 ))] * hoisted_57_1;
         end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiver, NTuple( 4, deduped_101_1, deduped_102_1, List( deduped_99_1, function ( x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, deduped_101_1, deduped_102_1, List( deduped_99_1, function ( x_2 )
                 local deduped_1_2;
                 deduped_1_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_83_1[1 + CAP_JIT_INCOMPLETE_LOGIC( x_2 )] );
                 return -1 + SafePosition( hoisted_85_1, hoisted_84_1[(1 + (REM_INT( deduped_1_2, hoisted_19_1 ) + REM_INT( QUO_INT( deduped_1_2, hoisted_19_1 ), hoisted_20_1 ) * hoisted_19_1))] );

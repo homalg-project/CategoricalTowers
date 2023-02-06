@@ -66,10 +66,10 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfBouquets );
 
-DeclareAttribute( "DefiningTripleOfBouquet",
+DeclareAttribute( "DefiningTripleOfBouquetEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfBouquets );
 
-CapJitAddTypeSignature( "DefiningTripleOfBouquet", [ IsObjectInCategoryOfBouquets ], function ( input_types )
+CapJitAddTypeSignature( "DefiningTripleOfBouquetEnrichedOverSkeletalFinSets", [ IsObjectInCategoryOfBouquets ], function ( input_types )
     
     Assert( 0, IsCategoryOfBouquets( input_types[1].category ) );
     
@@ -82,10 +82,10 @@ CapJitAddTypeSignature( "DefiningTripleOfBouquet", [ IsObjectInCategoryOfBouquet
     
 end );
 
-DeclareAttribute( "DefiningPairOfBouquetMorphism",
+DeclareAttribute( "DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfBouquets );
 
-CapJitAddTypeSignature( "DefiningPairOfBouquetMorphism", [ IsMorphismInCategoryOfBouquets ], function ( input_types )
+CapJitAddTypeSignature( "DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets", [ IsMorphismInCategoryOfBouquets ], function ( input_types )
     
     Assert( 0, IsCategoryOfBouquets( input_types[1].category ) );
     
@@ -115,11 +115,11 @@ DeclareOperation( "DotVertexLabelledDigraph",
 ####################################
 
 #! @Description
-#!  Construct the category of bouquets.
+#!  Construct the category of bouquets  enriched over the category <A>V</A>.
 #! @Returns a &CAP; category
-#! @Arguments B, C
-DeclareOperationWithCache( "CategoryOfBouquetsEnrichedOver",
-        [ IsCapCategory ] );
+#! @Arguments V
+DeclareAttribute( "CategoryOfBouquetsEnrichedOver",
+        IsCapCategory );
 
 #!
 DeclareOperation( "CreateBouquet",

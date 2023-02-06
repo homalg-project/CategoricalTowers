@@ -11,8 +11,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_FinQuiversAsCCCPrecompiled", function ( cat )
 ########
 function ( cat_1, a_1, b_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_11_1, hoisted_12_1, hoisted_13_1, hoisted_14_1, hoisted_15_1, hoisted_16_1, hoisted_17_1, hoisted_18_1, hoisted_19_1, hoisted_20_1, hoisted_21_1, hoisted_22_1, hoisted_23_1, hoisted_24_1, hoisted_25_1, hoisted_26_1, hoisted_27_1, hoisted_28_1, hoisted_29_1, hoisted_30_1, hoisted_31_1, hoisted_32_1, hoisted_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1, deduped_42_1, deduped_43_1, deduped_44_1, deduped_45_1, deduped_46_1, deduped_47_1, deduped_48_1, deduped_49_1, deduped_50_1, deduped_51_1, deduped_52_1, deduped_53_1, deduped_54_1, deduped_55_1, deduped_56_1, deduped_57_1, deduped_58_1;
-    deduped_58_1 := DefiningTripleOfQuiver( a_1 );
-    deduped_57_1 := DefiningTripleOfQuiver( b_1 );
+    deduped_58_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( a_1 );
+    deduped_57_1 := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( b_1 );
     deduped_56_1 := deduped_57_1[3];
     deduped_55_1 := deduped_58_1[3];
     deduped_54_1 := deduped_58_1[2];
@@ -139,7 +139,7 @@ function ( cat_1, a_1, b_1 )
             return hoisted_28_1[1 + REM_INT( logic_new_func_x_2, hoisted_12_1 )];
         end );
     hoisted_29_1 := deduped_35_1;
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiver, NTuple( 3, deduped_36_1, deduped_34_1, List( [ 0 .. deduped_34_1 - 1 ], function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, NTuple( 3, deduped_36_1, deduped_34_1, List( [ 0 .. deduped_34_1 - 1 ], function ( logic_new_func_x_2 )
                 local deduped_1_2, deduped_2_2;
                 deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_29_1[1 + CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 )] );
                 deduped_1_2 := 1 + (REM_INT( deduped_2_2, hoisted_12_1 ) + REM_INT( QUO_INT( deduped_2_2, hoisted_12_1 ), hoisted_16_1 ) * hoisted_12_1);
