@@ -24,7 +24,8 @@
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
   [2XCategoryOfInternalCategories[102X, for IsCapCategory 2.1-6 
-  [2XCategoryOfQuiversEnrichedOver[102X, for IsCapCategory 5.1-1 
+  [2XCategoryOfQuivers[102X, for IsCapCategory 5.1-1 
+  [2XCategoryOfQuiversEnrichedOver[102X, for IsCapCategory 5.1-4 
   [2XCategoryOfReflexiveQuiversEnrichedOver[102X, for IsCapCategory 7.1-1 
   [2XCoPreSheaves[102X, for IsCapCategory 9.1-1 
       for IsCapCategory, IsCapCategory 9.1-1 
@@ -54,9 +55,11 @@
       for IsObjectInPreSheafCategory, IsRecord, IsObjectInPreSheafCategory 2.1-3 
   [2XCreatePreSheafMorphismByFunction[102X, for IsObjectInPreSheafCategory, IsFunction, IsObjectInPreSheafCategory 2.1-3 
   [2XCreatePreSheafMorphismByValues[102X, for IsPreSheafCategory, IsObjectInPreSheafCategory, IsList, IsObjectInPreSheafCategory 2.1-3 
-  [2XCreateQuiver[102X, for IsCategoryOfQuivers, IsInt, IsList 5.1-2 
-      for IsInt, IsList 5.1-3 
-  [2XCreateQuiverMorphism[102X, for IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers 5.1-4 
+  [2XCreateQuiver[102X, for IsCategoryOfQuivers, IsInt, IsList 5.1-5 
+      for IsInt, IsList 5.1-6 
+  [2XCreateQuiverInCategory[102X, for IsCategoryOfQuivers, IsList 5.1-2 
+  [2XCreateQuiverMorphism[102X, for IsObjectInCategoryOfQuivers, IsList, IsList, IsObjectInCategoryOfQuivers 5.1-7 
+  [2XCreateQuiverMorphismInCategory[102X, for IsObjectInCategoryOfQuivers, IsList 5.1-3 
   [2XCreateReflexiveQuiver[102X, for IsCategoryOfReflexiveQuivers, IsInt, IsList, IsList 7.1-2 
       for IsInt, IsList, IsList 7.1-3 
   [2XCreateReflexiveQuiverMorphism[102X, for IsObjectInCategoryOfReflexiveQuivers, IsList, IsList, IsObjectInCategoryOfReflexiveQuivers 7.1-4 
@@ -157,8 +160,8 @@
       for IsObjectInCategoryOfBouquets, IsList, IsList 4.1-5 
       for IsObjectInCategoryOfDecoratedQuivers, IsList 8.1-5 
       for IsObjectInCategoryOfDecoratedQuivers, IsList, IsList 8.1-4 
-      for IsObjectInCategoryOfQuivers, IsList 5.1-6 
-      for IsObjectInCategoryOfQuivers, IsList, IsList 5.1-5 
+      for IsObjectInCategoryOfQuivers, IsList 5.1-9 
+      for IsObjectInCategoryOfQuivers, IsList, IsList 5.1-8 
       for IsObjectInCategoryOfReflexiveQuivers, IsList 7.1-6 
       for IsObjectInCategoryOfReflexiveQuivers, IsList, IsList 7.1-5 
   [2XSvgString[102X, for IsCellInCategoryOfBouquets 4.2-4 

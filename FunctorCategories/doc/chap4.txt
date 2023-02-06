@@ -6,10 +6,10 @@
   
   [1X4.1-1 CategoryOfBouquetsEnrichedOver[101X
   
-  [33X[1;0Y[29X[2XCategoryOfBouquetsEnrichedOver[102X( [3XB[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCategoryOfBouquetsEnrichedOver[102X( [3XV[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YConstruct the category of bouquets.[133X
+  [33X[0;0YConstruct the category of bouquets enriched over the category [3XV[103X.[133X
   
   [1X4.1-2 CreateBouquet[101X
   
@@ -112,19 +112,19 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XFinBouquets;[127X[104X
-    [4X[28XCategoryOfBouquetsEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XFinBouquets[128X[104X
     [4X[25Xgap>[125X [27XC := UnderlyingCategory( FinBouquets );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(V,L)[b:V->L]" ) )[128X[104X
     [4X[25Xgap>[125X [27XV := FinBouquets.V;[127X[104X
-    [4X[28X<A projective object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A projective object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( V );[127X[104X
     [4X[28X( { 0 }, { } )[128X[104X
     [4X[25Xgap>[125X [27XL := FinBouquets.L;[127X[104X
-    [4X[28X<A projective object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A projective object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( L );[127X[104X
     [4X[28X( { 0 }, { 0 ↦ 0 } )[128X[104X
     [4X[25Xgap>[125X [27Xb := FinBouquets.b;[127X[104X
-    [4X[28X<A monomorphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A monomorphism in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( b );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0 }[128X[104X
@@ -132,16 +132,16 @@
     [4X[28XImage of <(L)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinBouquets[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalObject( FinBouquets );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28X( { 0 }, { 0 ↦ 0 } )[128X[104X
     [4X[25Xgap>[125X [27XT = L;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XM := CreateBouquet( 3, [ 1, 1, 1, 2 ] );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( M );[127X[104X
     [4X[28X( { 0, 1, 2 }, { 0 ↦ 1, 1 ↦ 1, 2 ↦ 1, 3 ↦ 2 } )[128X[104X
     [4X[25Xgap>[125X [27XN := Colimit( [ V, V, V, L, L, L, L ],[127X[104X
@@ -149,15 +149,15 @@
     [4X[25X>[125X [27X               [ 1, b, 4 ],[127X[104X
     [4X[25X>[125X [27X               [ 1, b, 5 ],[127X[104X
     [4X[25X>[125X [27X               [ 2, b, 6 ] ] );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XN = M;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLL := Coproduct( L, L );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XL2 := CreateBouquet( 1, [ 0, 0 ] );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27Xepsilon := CreateBouquetMorphism( LL, [ 0, 0 ], [ 0, 1 ], L2 );[127X[104X
-    [4X[28X<A morphism in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( epsilon );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( epsilon );[127X[104X
@@ -165,11 +165,11 @@
     [4X[25Xgap>[125X [27XIsSplitEpimorphism( epsilon );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( FinBouquets );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( omega );[127X[104X
     [4X[28X( { 0, 1 }, { 0 ↦ 0, 1 ↦ 1, 2 ↦ 1 } )[128X[104X
     [4X[25Xgap>[125X [27XPM := PowerObject( M );[127X[104X
-    [4X[28X<An object in CategoryOfBouquetsEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinBouquets>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( PM );[127X[104X
     [4X[28X( { 0,..., 7 },[128X[104X
     [4X[28X  { 0 ↦ 0, 1 ↦ 1, 2 ↦ 2, 3 ↦ 3, 4 ↦ 2, 5 ↦ 3,[128X[104X

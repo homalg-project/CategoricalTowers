@@ -74,10 +74,10 @@
 
 <h5>7.1-1 CategoryOfReflexiveQuiversEnrichedOver</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfReflexiveQuiversEnrichedOver</code>( <var class="Arg">B</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfReflexiveQuiversEnrichedOver</code>( <var class="Arg">V</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct the category of quivers.</p>
+<p>Construct the category of reflexive quivers enriched over the category <var class="Arg">V</var>.</p>
 
 <p><a id="X7A82F98F816AFBDA" name="X7A82F98F816AFBDA"></a></p>
 
@@ -211,17 +211,17 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FinReflexiveQuivers;</span>
-CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+FinReflexiveQuivers
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := FinReflexiveQuivers.V;</span>
-&lt;A projective object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+&lt;A projective object in FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( V );</span>
 ( { 0 }, { 0 := [ 0 ] } )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := FinReflexiveQuivers.A;</span>
-&lt;A projective object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+&lt;A projective object in FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
 ( { 0, 1 }, { 0 := [ 0, 1 ], 1 := [ 0 ], 2 := [ 1 ] } )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TerminalObject( FinReflexiveQuivers );</span>
-&lt;An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+&lt;An object in FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( T );</span>
 ( { 0 }, { 0 := [ 0 ] } )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T = V;</span>
@@ -229,7 +229,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := CreateReflexiveQuiver( 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">             [ 1, 4 ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">             [ 0,1, 0,0, 0,0, 1,0, 1,1 ] );</span>
-&lt;An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+&lt;An object in FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( G );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( G );</span>
@@ -242,7 +242,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectProduct( G, V ) = G;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iso := CartesianEvaluationMorphism( T, G );</span>
-&lt;A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+&lt;A morphism in FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( iso );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iso );</span>
@@ -252,11 +252,11 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0,..., 4 } ⱶ[ 1, 2, 3, 0, 4 ]→ { 0,..., 4 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := FinReflexiveQuivers.s;</span>
 &lt;A split monomorphism in
- CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+ FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( s );</span>
 Image of &lt;(C0)&gt;:
 { 0 } ⱶ[ 0 ]→ { 0, 1 }
@@ -264,11 +264,11 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0 } ⱶ[ 1 ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := FinReflexiveQuivers.t;</span>
 &lt;A split monomorphism in
- CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+ FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( t );</span>
 Image of &lt;(C0)&gt;:
 { 0 } ⱶ[ 1 ]→ { 0, 1 }
@@ -276,11 +276,11 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0 } ⱶ[ 2 ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := FinReflexiveQuivers.l;</span>
 &lt;A split epimorphism in
- CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+ FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( l );</span>
 Image of &lt;(C0)&gt;:
 { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
@@ -288,10 +288,10 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0, 1, 2 } ⱶ[ 0, 0, 0 ]→ { 0 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">omega := SubobjectClassifier( FinReflexiveQuivers );</span>
-&lt;An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;
+&lt;An object in FinReflexiveQuivers&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( omega );</span>
 ( { 0, 1 },
   { 0 := [ 0 ], 1 := [ 1, 0 ], 2 := [ 0, 1 ],
@@ -299,11 +299,11 @@ given by the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A, omega );</span>
 |5|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">subsA := ListOfSubobjects( A );</span>
-[ &lt;A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;,
-  &lt;A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;,
-  &lt;A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;,
-  &lt;A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt;,
-  &lt;A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )&gt; ]
+[ &lt;A monomorphism in FinReflexiveQuivers&gt;,
+  &lt;A monomorphism in FinReflexiveQuivers&gt;,
+  &lt;A monomorphism in FinReflexiveQuivers&gt;,
+  &lt;A monomorphism in FinReflexiveQuivers&gt;,
+  &lt;A monomorphism in FinReflexiveQuivers&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( subsA, Display );</span>
 Image of &lt;(C0)&gt;:
 ∅ ⱶ[  ]→ { 0, 1 }
@@ -311,7 +311,7 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 ∅ ⱶ[  ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 Image of &lt;(C0)&gt;:
 { 0 } ⱶ[ 0 ]→ { 0, 1 }
@@ -319,7 +319,7 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0 } ⱶ[ 1 ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 Image of &lt;(C0)&gt;:
 { 0 } ⱶ[ 1 ]→ { 0, 1 }
@@ -327,7 +327,7 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0 } ⱶ[ 2 ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 Image of &lt;(C0)&gt;:
 { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
@@ -335,7 +335,7 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 Image of &lt;(C0)&gt;:
 { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }
@@ -343,7 +343,7 @@ Image of &lt;(C0)&gt;:
 Image of &lt;(C1)&gt;:
 { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
 
-A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )
+A morphism in FinReflexiveQuivers
 given by the above data
 </pre></div>
 

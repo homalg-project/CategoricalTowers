@@ -40,7 +40,7 @@
     [4X[25Xgap>[125X [27XFinBouquetsPrecompiled( );[127X[104X
     [4X[28XCategoryOfBouquetsEnrichedOver( SkeletalFinSets )[128X[104X
     [4X[25Xgap>[125X [27Xcat := CategoryOfBouquetsEnrichedOver( SkeletalFinSets );[127X[104X
-    [4X[28XCategoryOfBouquetsEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XFinBouquets[128X[104X
     [4X[25Xgap>[125X [27X# Now we check whether the compiled code is loaded automatically.[127X[104X
     [4X[25X>[125X [27X# For this we use the name of the argument of `InitialObject`;[127X[104X
     [4X[25Xgap>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1":[127X[104X
@@ -87,7 +87,7 @@
     [4X[25Xgap>[125X [27XFinQuiversPrecompiled( );[127X[104X
     [4X[28XCategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
     [4X[25Xgap>[125X [27Xcat := CategoryOfQuiversEnrichedOver( SkeletalFinSets );[127X[104X
-    [4X[28XCategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XFinQuivers[128X[104X
     [4X[25Xgap>[125X [27X# Now we check whether the compiled code is loaded automatically.[127X[104X
     [4X[25X>[125X [27X# For this we use the name of the argument of `InitialObject`;[127X[104X
     [4X[25Xgap>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1":[127X[104X
@@ -137,7 +137,7 @@
     [4X[25Xgap>[125X [27XFinReflexiveQuiversPrecompiled( );[127X[104X
     [4X[28XCategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
     [4X[25Xgap>[125X [27Xcat := CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets );[127X[104X
-    [4X[28XCategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XFinReflexiveQuivers[128X[104X
     [4X[25Xgap>[125X [27X# Now we check whether the compiled code is loaded automatically.[127X[104X
     [4X[25X>[125X [27X# For this we use the name of the argument of `InitialObject`;[127X[104X
     [4X[25Xgap>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1":[127X[104X

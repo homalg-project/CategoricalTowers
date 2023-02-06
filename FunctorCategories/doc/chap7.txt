@@ -6,10 +6,10 @@
   
   [1X7.1-1 CategoryOfReflexiveQuiversEnrichedOver[101X
   
-  [33X[1;0Y[29X[2XCategoryOfReflexiveQuiversEnrichedOver[102X( [3XB[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCategoryOfReflexiveQuiversEnrichedOver[102X( [3XV[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YConstruct the category of quivers.[133X
+  [33X[0;0YConstruct the category of reflexive quivers enriched over the category [3XV[103X.[133X
   
   [1X7.1-2 CreateReflexiveQuiver[101X
   
@@ -117,17 +117,17 @@
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XFinReflexiveQuivers;[127X[104X
-    [4X[28XCategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XFinReflexiveQuivers[128X[104X
     [4X[25Xgap>[125X [27XV := FinReflexiveQuivers.V;[127X[104X
-    [4X[28X<A projective object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A projective object in FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( V );[127X[104X
     [4X[28X( { 0 }, { 0 := [ 0 ] } )[128X[104X
     [4X[25Xgap>[125X [27XA := FinReflexiveQuivers.A;[127X[104X
-    [4X[28X<A projective object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A projective object in FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28X( { 0, 1 }, { 0 := [ 0, 1 ], 1 := [ 0 ], 2 := [ 1 ] } )[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalObject( FinReflexiveQuivers );[127X[104X
-    [4X[28X<An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28X( { 0 }, { 0 := [ 0 ] } )[128X[104X
     [4X[25Xgap>[125X [27XT = V;[127X[104X
@@ -135,7 +135,7 @@
     [4X[25Xgap>[125X [27XG := CreateReflexiveQuiver( 2,[127X[104X
     [4X[25X>[125X [27X             [ 1, 4 ],[127X[104X
     [4X[25X>[125X [27X             [ 0,1, 0,0, 0,0, 1,0, 1,1 ] );[127X[104X
-    [4X[28X<An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( G );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
@@ -148,7 +148,7 @@
     [4X[25Xgap>[125X [27XDirectProduct( G, V ) = G;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xiso := CartesianEvaluationMorphism( T, G );[127X[104X
-    [4X[28X<A morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XIsIsomorphism( iso );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( iso );[127X[104X
@@ -158,11 +158,11 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0,..., 4 } ⱶ[ 1, 2, 3, 0, 4 ]→ { 0,..., 4 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xs := FinReflexiveQuivers.s;[127X[104X
     [4X[28X<A split monomorphism in[128X[104X
-    [4X[28X CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( s );[127X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0, 1 }[128X[104X
@@ -170,11 +170,11 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xt := FinReflexiveQuivers.t;[127X[104X
     [4X[28X<A split monomorphism in[128X[104X
-    [4X[28X CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
@@ -182,11 +182,11 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xl := FinReflexiveQuivers.l;[127X[104X
     [4X[28X<A split epimorphism in[128X[104X
-    [4X[28X CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( l );[127X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }[128X[104X
@@ -194,10 +194,10 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 0, 0 ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( FinReflexiveQuivers );[127X[104X
-    [4X[28X<An object in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinReflexiveQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( omega );[127X[104X
     [4X[28X( { 0, 1 },[128X[104X
     [4X[28X  { 0 := [ 0 ], 1 := [ 1, 0 ], 2 := [ 0, 1 ],[128X[104X
@@ -205,11 +205,11 @@
     [4X[25Xgap>[125X [27XHomStructure( A, omega );[127X[104X
     [4X[28X|5|[128X[104X
     [4X[25Xgap>[125X [27XsubsA := ListOfSubobjects( A );[127X[104X
-    [4X[28X[ <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )> ][128X[104X
+    [4X[28X[ <A monomorphism in FinReflexiveQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinReflexiveQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinReflexiveQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinReflexiveQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinReflexiveQuivers> ][128X[104X
     [4X[25Xgap>[125X [27XPerform( subsA, Display );[127X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0, 1 }[128X[104X
@@ -217,7 +217,7 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0, 1 }[128X[104X
@@ -225,7 +225,7 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
@@ -233,7 +233,7 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
@@ -241,7 +241,7 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(C0)>:[128X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
@@ -249,7 +249,7 @@
     [4X[28XImage of <(C1)>:[128X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfReflexiveQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinReflexiveQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
   [4X[32X[104X
   

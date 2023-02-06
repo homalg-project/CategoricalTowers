@@ -4,30 +4,88 @@
   
   [1X5.1 [33X[0;0YConstructors[133X[101X
   
-  [1X5.1-1 CategoryOfQuiversEnrichedOver[101X
+  [1X5.1-1 CategoryOfQuivers[101X
   
-  [33X[1;0Y[29X[2XCategoryOfQuiversEnrichedOver[102X( [3XB[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCategoryOfQuivers[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YConstruct the category of quivers.[133X
+  [33X[0;0YConstruct the category of quivers over the category [3XC[103X.[133X
   
-  [1X5.1-2 CreateQuiver[101X
+  [33X[0;0YWe  compute  the  nerve  of  the full subcategory of the simplicial category
+  [23X\Delta[123X on the objects [23X[0], [1], [2][123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
+    [4X[28XFreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X                   is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
+    [4X[28X31[128X[104X
+    [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
+    [4X[28X<An object in PreSheaves( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) )[128X[104X
+    [4X[28X / relations, SkeletalFinSets )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( N );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPSh := CapCategory( N );[127X[104X
+    [4X[28XPreSheaves( FreeCategory( RightQuiver([128X[104X
+    [4X[28X  "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,is:C2->C1,it:C2->C1,[128X[104X
+    [4X[28X                   ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,[128X[104X
+    [4X[28XSkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XQuiversOverDelta2 := CategoryOfQuivers( Delta2 );[127X[104X
+    [4X[28XCategoryOfQuivers( FreeCategory([128X[104X
+    [4X[28XRightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28Xis:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations )[128X[104X
+    [4X[25Xgap>[125X [27Xdatum0 := CoYonedaLemmaOnObjects( PSh.C0 );[127X[104X
+    [4X[28X[ [ <(C0)>, <(C1)>, <(C2)> ],[128X[104X
+    [4X[28X  [ [ 1, (C1)-[(id)]->(C0), 0 ], [ 0, (C0)-[(s)]->(C1), 1 ],[128X[104X
+    [4X[28X    [ 0, (C0)-[(t)]->(C1), 1 ], [ 2, (C2)-[(is)]->(C1), 1 ],[128X[104X
+    [4X[28X    [ 2, (C2)-[(it)]->(C1), 1 ], [ 1, (C1)-[(ps)]->(C2), 2 ],[128X[104X
+    [4X[28X    [ 1, (C1)-[(pt)]->(C2), 2 ], [ 1, (C1)-[(mu)]->(C2), 2 ] ] ][128X[104X
+    [4X[25Xgap>[125X [27Xq := CreateQuiverInCategory( QuiversOverDelta2, datum0 );[127X[104X
+    [4X[28X<An object in CategoryOfQuivers( FreeCategory([128X[104X
+    [4X[28X RightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,[128X[104X
+    [4X[28X is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( q );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [1X5.1-2 CreateQuiverInCategory[101X
+  
+  [33X[1;0Y[29X[2XCreateQuiverInCategory[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X5.1-3 CreateQuiverMorphismInCategory[101X
+  
+  [33X[1;0Y[29X[2XCreateQuiverMorphismInCategory[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X5.1-4 CategoryOfQuiversEnrichedOver[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfQuiversEnrichedOver[102X( [3XV[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YConstruct the category of quivers enriched over the category [3XV[103X.[133X
+  
+  [1X5.1-5 CreateQuiver[101X
   
   [33X[1;0Y[29X[2XCreateQuiver[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
-  [1X5.1-3 CreateQuiver[101X
+  [1X5.1-6 CreateQuiver[101X
   
   [33X[1;0Y[29X[2XCreateQuiver[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X5.1-4 CreateQuiverMorphism[101X
+  [1X5.1-7 CreateQuiverMorphism[101X
   
   [33X[1;0Y[29X[2XCreateQuiverMorphism[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X ) [32X operation[133X
   
-  [1X5.1-5 Subobject[101X
+  [1X5.1-8 Subobject[101X
   
   [33X[1;0Y[29X[2XSubobject[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
-  [1X5.1-6 Subobject[101X
+  [1X5.1-9 Subobject[101X
   
   [33X[1;0Y[29X[2XSubobject[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
@@ -111,23 +169,23 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XFinQuivers;[127X[104X
-    [4X[28XCategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XFinQuivers[128X[104X
     [4X[25Xgap>[125X [27XV := FinQuivers.V;[127X[104X
-    [4X[28X<A projective object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A projective object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( V );[127X[104X
     [4X[28X( { 0 }, { } )[128X[104X
     [4X[25Xgap>[125X [27XA := FinQuivers.A;[127X[104X
-    [4X[28X<A projective object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A projective object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( A );[127X[104X
     [4X[28X( { 0, 1 }, { 0 := [ 0, 1 ] } )[128X[104X
     [4X[25Xgap>[125X [27XT := TerminalObject( FinQuivers );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
     [4X[28X( { 0 }, { 0 := [ 0, 0 ] } )[128X[104X
     [4X[25Xgap>[125X [27XT = V;[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XG := CreateQuiver( 3, [ 0,1, 0,1, 1,2, 2,1, 2,2 ] );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( G );[127X[104X
     [4X[28X( { 0, 1, 2 },[128X[104X
     [4X[28X  { 0 := [ 0, 1 ], 1 := [ 0, 1 ], 2 := [ 1, 2 ],[128X[104X
@@ -137,7 +195,7 @@
     [4X[25Xgap>[125X [27XDisplay( global_G );[127X[104X
     [4X[28X{ 0 }[128X[104X
     [4X[25Xgap>[125X [27Xdiscrete := DirectProduct( G, V );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( discrete );[127X[104X
     [4X[28X( { 0, 1, 2 }, { } )[128X[104X
     [4X[25Xgap>[125X [27Xglobal_discrete := HomStructure( T, discrete );[127X[104X
@@ -145,7 +203,7 @@
     [4X[25Xgap>[125X [27XDisplay( global_discrete );[127X[104X
     [4X[28X∅[128X[104X
     [4X[25Xgap>[125X [27Xcomplete := Exponential( V, G );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( complete );[127X[104X
     [4X[28X( { 0, 1, 2 },[128X[104X
     [4X[28X  { 0 := [ 0, 0 ], 1 := [ 1, 0 ], 2 := [ 2, 0 ], 3 := [ 0, 1 ], 4 := [ 1, 1 ],[128X[104X
@@ -155,7 +213,7 @@
     [4X[25Xgap>[125X [27XDisplay( global_complete );[127X[104X
     [4X[28X{ 0, 1, 2 }[128X[104X
     [4X[25Xgap>[125X [27XGA := DirectProduct( G, A );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( GA );[127X[104X
     [4X[28X( { 0,..., 5 },[128X[104X
     [4X[28X  { 0 := [ 0, 4 ], 1 := [ 0, 4 ], 2 := [ 1, 5 ],[128X[104X
@@ -165,7 +223,7 @@
     [4X[25Xgap>[125X [27XDisplay( homAG );[127X[104X
     [4X[28X{ 0,..., 4 }[128X[104X
     [4X[25Xgap>[125X [27Xarrows := Exponential( A, G );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( arrows );[127X[104X
     [4X[28X( { 0,..., 8 },[128X[104X
     [4X[28X  { 0 := [ 0, 3 ], 1 := [ 0, 4 ], 2 := [ 0, 5 ], 3 := [ 3, 3 ], 4 := [ 3, 4 ],[128X[104X
@@ -184,7 +242,7 @@
     [4X[25Xgap>[125X [27XDisplay( global_arrows );[127X[104X
     [4X[28X{ 0,..., 4 }[128X[104X
     [4X[25Xgap>[125X [27XprjG := ProjectionInFactorOfDirectProduct( [ G, V ], 1 );[127X[104X
-    [4X[28X<A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( prjG );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
@@ -192,12 +250,12 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0,..., 4 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( prjG );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xprj_discrete := ProjectionInFactorOfDirectProduct( [ discrete, V ], 1 );[127X[104X
-    [4X[28X<A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( prj_discrete );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
@@ -205,7 +263,7 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ ∅[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( prj_discrete );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -214,7 +272,7 @@
     [4X[28X  { 0 := [ 0, 1 ], 1 := [ 0, 1 ], 2 := [ 2, 1 ],[128X[104X
     [4X[28X    3 := [ 1, 2 ], 4 := [ 2, 2 ] } )[128X[104X
     [4X[25Xgap>[125X [27Xt := UniversalMorphismIntoTerminalObject( V );[127X[104X
-    [4X[28X<A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0 }[128X[104X
@@ -222,10 +280,10 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XembG := Exponential( t, G );[127X[104X
-    [4X[28X<A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( embG );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
@@ -233,12 +291,12 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X{ 0,..., 4 } ⱶ[ 3, 3, 5, 7, 8 ]→ { 0,..., 8 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( embG );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xemb_complete := Exponential( t, complete );[127X[104X
-    [4X[28X<A morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A morphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( emb_complete );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
@@ -246,12 +304,12 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X{ 0,..., 8 } ⱶ[ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]→ { 0,..., 8 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27XIsEpimorphism( emb_complete );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xs := FinQuivers.s;[127X[104X
-    [4X[28X<A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A monomorphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( s );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0, 1 }[128X[104X
@@ -259,10 +317,10 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xt := FinQuivers.t;[127X[104X
-    [4X[28X<A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<A monomorphism in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
@@ -270,10 +328,10 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[25Xgap>[125X [27Xomega := SubobjectClassifier( FinQuivers );[127X[104X
-    [4X[28X<An object in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>[128X[104X
+    [4X[28X<An object in FinQuivers>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( omega );[127X[104X
     [4X[28X( { 0, 1 },[128X[104X
     [4X[28X  { 0 := [ 0, 0 ], 1 := [ 1, 0 ], 2 := [ 0, 1 ],[128X[104X
@@ -281,11 +339,11 @@
     [4X[25Xgap>[125X [27XHomStructure( A, omega );[127X[104X
     [4X[28X|5|[128X[104X
     [4X[25Xgap>[125X [27XsubsA := ListOfSubobjects( A );[127X[104X
-    [4X[28X[ <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )>,[128X[104X
-    [4X[28X  <A monomorphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )> ][128X[104X
+    [4X[28X[ <A monomorphism in FinQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinQuivers>,[128X[104X
+    [4X[28X  <A monomorphism in FinQuivers> ][128X[104X
     [4X[25Xgap>[125X [27XPerform( subsA, Display );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0, 1 }[128X[104X
@@ -293,7 +351,7 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0, 1 }[128X[104X
@@ -301,7 +359,7 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
@@ -309,7 +367,7 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
@@ -317,7 +375,7 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1 }[128X[104X
@@ -325,7 +383,7 @@
     [4X[28XImage of <(A)>:[128X[104X
     [4X[28X{ 0 } ⱶ[ 0 ]→ { 0 }[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA morphism in CategoryOfQuiversEnrichedOver( SkeletalFinSets )[128X[104X
+    [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
   [4X[32X[104X
   
