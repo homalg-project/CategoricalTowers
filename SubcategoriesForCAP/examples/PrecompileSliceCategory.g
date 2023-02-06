@@ -19,6 +19,22 @@ CapJitAddLogicTemplate(
     )
 );
 
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix", "dimension", "ring" ],
+        src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",
+        dst_template := "matrix",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix", "dimension", "ring" ],
+        src_template := "HomalgIdentityMatrix( dimension, ring ) * matrix",
+        dst_template := "matrix",
+    )
+);
+
 # we do not use SliceCategoryOverTensorUnit because that installs more operations
 # which we are not interested in for this simple test
 category_constructor := field ->
