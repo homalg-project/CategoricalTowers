@@ -31,10 +31,10 @@ Using the procedure `Algebroid` one can then construct a finite presentation of 
 ```gap
 gap> Q := HomalgFieldOfRationals( );
 Q
-gap> A := Algebroid( Q, c3c3 );
+gap> A := Q[c3c3];
 Algebroid( Q, FreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations
-gap> UnderlyingQuiverAlgebra( A );
-(Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), -1*(b*c) + 1*(a*b) ]
+gap> RelationsOfAlgebroid( A );
+[ (1)-[1*(a*a*a) - 1*(1)]->(1), (2)-[1*(c*c*c) - 1*(2)]->(2), (1)-[1*(b*c) - 1*(a*b)]->(2) ]
 gap> IsLinearClosureOfACategory( A );
 true
 ```
@@ -42,7 +42,7 @@ true
 Finally, using the constructor `Hom` from the package [`FunctorCategories`](https://github.com/homalg-project/FunctorCategories) one can construct the category of finite dimensional k-linear representations of the finite concrete category:
 
 ```gap
-gap> CatReps := FunctorCategory( A, Q );
+gap> CatReps := FunctorCategory( A );
 FunctorCategory( Algebroid( Q, FreeCategory(
 RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 Category of matrices over Q )
@@ -58,15 +58,12 @@ The supported categorical doctrine of the category of representations is
 
 ```gap
 gap> Display( CatReps );
-95 primitive operations were used to derive 316 operations for this category
+104 primitive operations were used to derive 353 operations for this category
 which constructively
 * IsEquippedWithHomomorphismStructure
 * IsLinearCategoryOverCommutativeRing
 * IsSymmetricMonoidalCategory
 * IsAbelianCategory
-and furthermore mathematically
-* IsFiniteCocompleteCategory (but not yet algorithmically)
-* IsFiniteCompleteCategory (but not yet algorithmically)
 gap> CommutativeRingOfLinearCategory( CatReps );
 Q
 ```
