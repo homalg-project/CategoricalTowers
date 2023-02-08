@@ -354,6 +354,28 @@
     [4X[25X>[125X [27X        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],[127X[104X
     [4X[25X>[125X [27X    )[127X[104X
     [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "matrix", "dimension", "ring" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "matrix", "dimension", "ring" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "HomalgIdentityMatrix( dimension, ring ) * matrix",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "matrix",[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27X# Length( [ 1 .. n ] ) -> n[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "n" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "Length( [ 1 .. n ] )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "n"[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
     [4X[25Xgap>[125X [27X# we do not use SliceCategoryOverTensorUnit because that installs more operations[127X[104X
     [4X[25X>[125X [27X# which we are not interested in for this simple test[127X[104X
     [4X[25X>[125X [27Xcategory_constructor := field ->[127X[104X
