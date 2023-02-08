@@ -300,3 +300,28 @@ CapJitAddLogicTemplate(
         dst_template := "ListWithIdenticalEntries( number, 1 )",
     )
 );
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix", "dimension", "ring" ],
+        src_template := "matrix * HomalgIdentityMatrix( dimension, ring )",
+        dst_template := "matrix",
+    )
+);
+
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "matrix", "dimension", "ring" ],
+        src_template := "HomalgIdentityMatrix( dimension, ring ) * matrix",
+        dst_template := "matrix",
+    )
+);
+
+# Length( [ 1 .. n ] ) -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "Length( [ 1 .. n ] )",
+        dst_template := "n"
+    )
+);

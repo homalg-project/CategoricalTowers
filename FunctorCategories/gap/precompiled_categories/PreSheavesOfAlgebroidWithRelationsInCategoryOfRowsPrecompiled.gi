@@ -256,38 +256,27 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_2_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( arg2_1 )[1], RankOfObject );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
-                local deduped_1_2, deduped_2_2, deduped_3_2;
-                deduped_3_2 := hoisted_1_1[o_2];
-                deduped_2_2 := List( arg3_1, function ( logic_new_func_x_3 )
+                local deduped_1_2, deduped_2_2;
+                deduped_2_2 := hoisted_1_1[o_2];
+                deduped_1_2 := List( arg3_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                     end );
-                deduped_1_2 := List( arg3_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                    end );
-                return CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, deduped_3_2 - RowRankOfMatrix( (HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_4_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_4_1} ))) ) );
+                return CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, deduped_2_2 - RowRankOfMatrix( (UnionOfRows( hoisted_3_1, deduped_2_2, deduped_1_2{hoisted_2_1} ) + (- UnionOfRows( hoisted_3_1, deduped_2_2, deduped_1_2{hoisted_4_1} ))) ) );
             end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
-                local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2;
-                deduped_13_2 := hoisted_7_1[m_2];
-                deduped_12_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[m_2] );
-                deduped_11_2 := RankOfObject( Range( deduped_12_2 ) );
-                deduped_10_2 := RankOfObject( Source( deduped_12_2 ) );
-                hoisted_2_2 := 1 + deduped_13_2[1];
-                deduped_9_2 := List( arg3_1, function ( logic_new_func_x_3 )
+                local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
+                deduped_9_2 := hoisted_7_1[m_2];
+                deduped_8_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[m_2] );
+                deduped_7_2 := RankOfObject( Range( deduped_8_2 ) );
+                deduped_6_2 := RankOfObject( Source( deduped_8_2 ) );
+                hoisted_2_2 := 1 + deduped_9_2[1];
+                deduped_5_2 := List( arg3_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_2_2] ) );
                     end );
-                hoisted_1_2 := 1 + deduped_13_2[2];
-                deduped_8_2 := List( arg3_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := 1 + deduped_9_2[2];
+                deduped_4_2 := List( arg3_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) );
                     end );
-                deduped_7_2 := List( arg3_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_2_2] ) ) );
-                    end );
-                deduped_6_2 := List( arg3_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) ) );
-                    end );
-                deduped_5_2 := HomalgIdentityMatrix( Sum( deduped_7_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_11_2, deduped_9_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_7_2{hoisted_4_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_11_2, deduped_9_2{hoisted_4_1} ));
-                deduped_4_2 := HomalgIdentityMatrix( Sum( deduped_6_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_10_2, deduped_8_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_6_2{hoisted_4_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_10_2, deduped_8_2{hoisted_4_1} ));
-                deduped_3_2 := HomalgIdentityMatrix( (deduped_10_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_3_1 ) * UniqueLeftDivide( SyzygiesOfColumns( deduped_4_2 ), (UnderlyingMatrix( deduped_12_2 ) * (SyzygiesOfColumns( deduped_5_2 ) * HomalgIdentityMatrix( (deduped_11_2 - RowRankOfMatrix( deduped_5_2 )), hoisted_3_1 ))) );
+                deduped_3_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( hoisted_3_1, deduped_6_2, deduped_4_2{hoisted_2_1} ) + (- UnionOfRows( hoisted_3_1, deduped_6_2, deduped_4_2{hoisted_4_1} )) ), UnderlyingMatrix( deduped_8_2 ) * SyzygiesOfColumns( (UnionOfRows( hoisted_3_1, deduped_7_2, deduped_5_2{hoisted_2_1} ) + (- UnionOfRows( hoisted_3_1, deduped_7_2, deduped_5_2{hoisted_4_1} ))) ) );
                 return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberRows( deduped_3_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberColumns( deduped_3_2 ) ), UnderlyingMatrix, deduped_3_2 );
             end ) ) );
 end
@@ -307,10 +296,10 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
     deduped_10_1 := ValuesOnAllObjects( mu_1 );
     hoisted_9_1 := deduped_12_1;
     hoisted_8_1 := [ 2 .. deduped_13_1 ];
-    hoisted_7_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
+    hoisted_7_1 := [ 1 .. deduped_13_1 - 1 ];
+    hoisted_6_1 := List( deduped_10_1, function ( logic_new_func_x_2 )
             return RankOfObject( Range( logic_new_func_x_2 ) );
         end );
-    hoisted_6_1 := [ 1 .. deduped_13_1 - 1 ];
     hoisted_5_1 := List( deduped_10_1, UnderlyingMatrix );
     hoisted_4_1 := [ 2 .. deduped_11_1 ];
     hoisted_3_1 := UnderlyingRing( deduped_12_1 );
@@ -319,24 +308,16 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
-              deduped_9_2 := hoisted_7_1[o_2];
-              deduped_8_2 := hoisted_1_1[o_2];
-              deduped_7_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
+              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
+              deduped_5_2 := hoisted_6_1[o_2];
+              deduped_4_2 := hoisted_1_1[o_2];
+              deduped_3_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_6_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              deduped_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_5_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_3_2 := HomalgIdentityMatrix( Sum( deduped_5_2{hoisted_6_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_9_2, deduped_7_2{hoisted_6_1} ) + (- HomalgIdentityMatrix( Sum( deduped_5_2{hoisted_8_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_9_2, deduped_7_2{hoisted_8_1} ));
-              deduped_2_2 := HomalgIdentityMatrix( Sum( deduped_4_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_8_2, deduped_6_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_4_2{hoisted_4_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_8_2, deduped_6_2{hoisted_4_1} ));
-              deduped_1_2 := HomalgIdentityMatrix( (deduped_8_2 - RowRankOfMatrix( deduped_2_2 )), hoisted_3_1 ) * UniqueLeftDivide( SyzygiesOfColumns( deduped_2_2 ), (hoisted_5_1[o_2] * (SyzygiesOfColumns( deduped_3_2 ) * HomalgIdentityMatrix( (deduped_9_2 - RowRankOfMatrix( deduped_3_2 )), hoisted_3_1 ))) );
+              deduped_1_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( hoisted_3_1, deduped_4_2, deduped_2_2{hoisted_2_1} ) + (- UnionOfRows( hoisted_3_1, deduped_4_2, deduped_2_2{hoisted_4_1} )) ), hoisted_5_1[o_2] * SyzygiesOfColumns( (UnionOfRows( hoisted_3_1, deduped_5_2, deduped_3_2{hoisted_7_1} ) + (- UnionOfRows( hoisted_3_1, deduped_5_2, deduped_3_2{hoisted_8_1} ))) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_9_1, CreateCapCategoryObjectWithAttributes( hoisted_9_1, RankOfObject, NumberRows( deduped_1_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_9_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -533,34 +514,30 @@ function ( cat_1, arg2_1 )
     deduped_6_1 := DefiningTripleOfUnderlyingQuiver( deduped_7_1 );
     hoisted_5_1 := [ 1 .. deduped_9_1 ];
     hoisted_4_1 := deduped_9_1;
-    hoisted_3_1 := deduped_6_1[3];
-    hoisted_2_1 := UnderlyingRing( deduped_8_1 );
+    hoisted_3_1 := UnderlyingRing( deduped_8_1 );
+    hoisted_2_1 := deduped_6_1[3];
     hoisted_1_1 := deduped_8_1;
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_7_1, Range, deduped_8_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_6_1[1] ], function ( o_2 )
                 return CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_3 )
                             return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                         end ) ) );
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
-                local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
-                deduped_6_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2;
+                hoisted_3_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
                     end );
-                hoisted_4_2 := HomalgIdentityMatrix( Sum( deduped_6_2 ), hoisted_2_1 );
-                hoisted_3_2 := deduped_6_2;
                 hoisted_2_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) );
                     end );
-                hoisted_1_2 := 1 + hoisted_3_1[m_2][1];
-                deduped_5_2 := HomalgIdentityMatrix( Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                              return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
-                          end ) ), hoisted_2_1 ) * UnionOfRows( hoisted_2_1, Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                              return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][hoisted_1_2] ) );
-                          end ) ), List( hoisted_5_1, function ( logic_new_func_x_3 )
-                            local deduped_1_3;
-                            deduped_1_3 := hoisted_3_2[logic_new_func_x_3];
-                            return (hoisted_2_2[logic_new_func_x_3] * (UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_3_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_2_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_2_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_3_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), hoisted_2_1 ) ) * hoisted_4_2));
-                        end ) );
-                return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberRows( deduped_5_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberColumns( deduped_5_2 ) ), UnderlyingMatrix, deduped_5_2 );
+                hoisted_1_2 := 1 + hoisted_2_1[m_2][1];
+                deduped_4_2 := UnionOfRows( hoisted_3_1, Sum( List( arg2_1, function ( logic_new_func_x_3 )
+                            return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][hoisted_1_2] ) );
+                        end ) ), List( hoisted_5_1, function ( logic_new_func_x_3 )
+                          local deduped_1_3;
+                          deduped_1_3 := hoisted_3_2[logic_new_func_x_3];
+                          return hoisted_2_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_3_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_3_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), hoisted_3_1 ) );
+                      end ) );
+                return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberRows( deduped_4_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberColumns( deduped_4_2 ) ), UnderlyingMatrix, deduped_4_2 );
             end ) ) );
 end
 ########
@@ -579,26 +556,22 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     hoisted_5_1 := deduped_8_1;
     hoisted_4_1 := [ 1 .. Length( L_1 ) ];
     hoisted_3_1 := Length( objectsp_1 );
-    hoisted_2_1 := List( deduped_7_1, RankOfObject );
-    hoisted_1_1 := UnderlyingRing( deduped_8_1 );
+    hoisted_2_1 := UnderlyingRing( deduped_8_1 );
+    hoisted_1_1 := List( deduped_7_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := List( objectsp_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              hoisted_2_2 := List( objectsp_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                   end );
-              hoisted_3_2 := HomalgIdentityMatrix( Sum( deduped_5_2 ), hoisted_1_1 );
-              hoisted_2_2 := deduped_5_2;
               hoisted_1_2 := List( L_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_4_2 := HomalgIdentityMatrix( Sum( List( objects_1, function ( logic_new_func_x_3 )
-                            return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
-                        end ) ), hoisted_1_1 ) * UnionOfRows( hoisted_1_1, hoisted_2_1[o_2], List( hoisted_4_1, function ( logic_new_func_x_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
-                          return (hoisted_1_2[logic_new_func_x_3] * (UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_3_1 ]} ), hoisted_1_1 ) ) * hoisted_3_2));
-                      end ) );
-              return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberRows( deduped_4_2 ) ), hoisted_6_1[o_2], UnderlyingMatrix, deduped_4_2 );
+              deduped_3_2 := UnionOfRows( hoisted_2_1, hoisted_1_1[o_2], List( hoisted_4_1, function ( logic_new_func_x_3 )
+                        local deduped_1_3;
+                        deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
+                        return hoisted_1_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_2_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_2_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_3_1 ]} ), hoisted_2_1 ) );
+                    end ) );
+              return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberRows( deduped_3_2 ) ), hoisted_6_1[o_2], UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
 ########
@@ -625,26 +598,22 @@ function ( cat_1, arg2_1 )
                             return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                         end ) ) );
             end ), LazyHList( [ 1 .. deduped_6_1[2] ], function ( m_2 )
-                local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
-                deduped_6_2 := List( arg2_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
-                    end );
-                hoisted_4_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2;
+                hoisted_3_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) );
                     end );
-                hoisted_3_2 := HomalgIdentityMatrix( Sum( deduped_6_2 ), hoisted_3_1 );
-                hoisted_2_2 := deduped_6_2;
+                hoisted_2_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                        return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
+                    end );
                 hoisted_1_2 := 1 + hoisted_2_1[m_2][2];
-                deduped_5_2 := UnionOfColumns( hoisted_3_1, Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                              return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][hoisted_1_2] ) );
-                          end ) ), List( hoisted_5_1, function ( logic_new_func_x_3 )
-                            local deduped_1_3;
-                            deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
-                            return hoisted_3_2 * UnionOfRows( HomalgZeroMatrix( Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_4_2[logic_new_func_x_3];
-                        end ) ) * HomalgIdentityMatrix( Sum( List( arg2_1, function ( logic_new_func_x_3 )
-                              return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[2][m_2] ) ) );
-                          end ) ), hoisted_3_1 );
-                return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberRows( deduped_5_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberColumns( deduped_5_2 ) ), UnderlyingMatrix, deduped_5_2 );
+                deduped_4_2 := UnionOfColumns( hoisted_3_1, Sum( List( arg2_1, function ( logic_new_func_x_3 )
+                            return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][hoisted_1_2] ) );
+                        end ) ), List( hoisted_5_1, function ( logic_new_func_x_3 )
+                          local deduped_1_3;
+                          deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
+                          return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_3_2[logic_new_func_x_3];
+                      end ) );
+                return CreateCapCategoryMorphismWithAttributes( hoisted_1_1, CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberRows( deduped_4_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_1_1, RankOfObject, NumberColumns( deduped_4_2 ) ), UnderlyingMatrix, deduped_4_2 );
             end ) ) );
 end
 ########
@@ -666,23 +635,19 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     hoisted_2_1 := List( deduped_7_1, RankOfObject );
     hoisted_1_1 := deduped_7_1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, hoisted_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := List( objects_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
-                  end );
-              hoisted_3_2 := List( L_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2;
+              hoisted_2_2 := List( L_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              hoisted_2_2 := HomalgIdentityMatrix( Sum( deduped_5_2 ), hoisted_3_1 );
-              hoisted_1_2 := deduped_5_2;
-              deduped_4_2 := UnionOfColumns( hoisted_3_1, hoisted_2_1[o_2], List( hoisted_5_1, function ( logic_new_func_x_3 )
-                          local deduped_1_3;
-                          deduped_1_3 := hoisted_1_2[logic_new_func_x_3];
-                          return hoisted_2_2 * UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_1_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_3_2[logic_new_func_x_3];
-                      end ) ) * HomalgIdentityMatrix( Sum( List( objectsp_1, function ( logic_new_func_x_3 )
-                            return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
-                        end ) ), hoisted_3_1 );
-              return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberColumns( deduped_4_2 ) ), UnderlyingMatrix, deduped_4_2 );
+              hoisted_1_2 := List( objects_1, function ( logic_new_func_x_3 )
+                      return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
+                  end );
+              deduped_3_2 := UnionOfColumns( hoisted_3_1, hoisted_2_1[o_2], List( hoisted_5_1, function ( logic_new_func_x_3 )
+                        local deduped_1_3;
+                        deduped_1_3 := hoisted_1_2[logic_new_func_x_3];
+                        return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_1_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_2_2[logic_new_func_x_3];
+                    end ) );
+              return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberColumns( deduped_3_2 ) ), UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
 ########
@@ -764,16 +729,12 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     hoisted_2_1 := [ 1 .. deduped_8_1 - 1 ];
     hoisted_1_1 := List( deduped_7_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Y_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := hoisted_1_1[o_2];
-              deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local deduped_1_2, deduped_2_2, deduped_3_2;
+              deduped_3_2 := hoisted_1_1[o_2];
+              deduped_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_3_2 := List( morphisms_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_2_2 := UnionOfColumns( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_2_1} ) * HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_2_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_4_1} ), hoisted_3_1 ));
-              deduped_1_2 := HomalgIdentityMatrix( (deduped_5_2 - RowRankOfMatrix( deduped_2_2 )), hoisted_3_1 ) * SyzygiesOfRows( deduped_2_2 );
+              deduped_1_2 := SyzygiesOfRows( UnionOfColumns( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_2_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_4_1} )) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberRows( deduped_1_2 ) ), hoisted_6_1[o_2], UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -799,38 +760,27 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_2_1 := [ 1 .. deduped_11_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( arg2_1 )[1], RankOfObject );
     return CreateCapCategoryObjectWithAttributes( cat_1, Source, deduped_9_1, Range, deduped_10_1, ValuesOfPreSheaf, NTuple( 2, LazyHList( [ 1 .. deduped_8_1[1] ], function ( o_2 )
-                local deduped_1_2, deduped_2_2, deduped_3_2;
-                deduped_3_2 := hoisted_1_1[o_2];
-                deduped_2_2 := List( arg3_1, function ( logic_new_func_x_3 )
+                local deduped_1_2, deduped_2_2;
+                deduped_2_2 := hoisted_1_1[o_2];
+                deduped_1_2 := List( arg3_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                     end );
-                deduped_1_2 := List( arg3_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                    end );
-                return CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, deduped_3_2 - RowRankOfMatrix( (UnionOfColumns( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_2_1} ) * HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_2_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_1_2{hoisted_4_1} ), hoisted_3_1 ))) ) );
+                return CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, deduped_2_2 - RowRankOfMatrix( (UnionOfColumns( hoisted_3_1, deduped_2_2, deduped_1_2{hoisted_2_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_2_2, deduped_1_2{hoisted_4_1} ))) ) );
             end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
-                local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2;
-                deduped_13_2 := hoisted_7_1[m_2];
-                deduped_12_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[m_2] );
-                deduped_11_2 := RankOfObject( Range( deduped_12_2 ) );
-                deduped_10_2 := RankOfObject( Source( deduped_12_2 ) );
-                hoisted_2_2 := 1 + deduped_13_2[1];
-                deduped_9_2 := List( arg3_1, function ( logic_new_func_x_3 )
+                local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
+                deduped_9_2 := hoisted_7_1[m_2];
+                deduped_8_2 := CAP_JIT_INCOMPLETE_LOGIC( hoisted_6_1[m_2] );
+                deduped_7_2 := RankOfObject( Range( deduped_8_2 ) );
+                deduped_6_2 := RankOfObject( Source( deduped_8_2 ) );
+                hoisted_2_2 := 1 + deduped_9_2[1];
+                deduped_5_2 := List( arg3_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_2_2] ) );
                     end );
-                hoisted_1_2 := 1 + deduped_13_2[2];
-                deduped_8_2 := List( arg3_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := 1 + deduped_9_2[2];
+                deduped_4_2 := List( arg3_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) );
                     end );
-                deduped_7_2 := List( arg3_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_2_2] ) ) );
-                    end );
-                deduped_6_2 := List( arg3_1, function ( logic_new_func_x_3 )
-                        return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) ) );
-                    end );
-                deduped_5_2 := UnionOfColumns( hoisted_3_1, deduped_11_2, deduped_9_2{hoisted_2_1} ) * HomalgIdentityMatrix( Sum( deduped_7_2{hoisted_2_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_11_2, deduped_9_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_7_2{hoisted_4_1} ), hoisted_3_1 ));
-                deduped_4_2 := UnionOfColumns( hoisted_3_1, deduped_10_2, deduped_8_2{hoisted_2_1} ) * HomalgIdentityMatrix( Sum( deduped_6_2{hoisted_2_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_10_2, deduped_8_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_6_2{hoisted_4_1} ), hoisted_3_1 ));
-                deduped_3_2 := UniqueRightDivide( HomalgIdentityMatrix( (deduped_10_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_3_1 ) * SyzygiesOfRows( deduped_4_2 ) * UnderlyingMatrix( deduped_12_2 ), SyzygiesOfRows( deduped_5_2 ) ) * HomalgIdentityMatrix( (deduped_11_2 - RowRankOfMatrix( deduped_5_2 )), hoisted_3_1 );
+                deduped_3_2 := UniqueRightDivide( SyzygiesOfRows( (UnionOfColumns( hoisted_3_1, deduped_6_2, deduped_4_2{hoisted_2_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_6_2, deduped_4_2{hoisted_4_1} ))) ) * UnderlyingMatrix( deduped_8_2 ), SyzygiesOfRows( UnionOfColumns( hoisted_3_1, deduped_7_2, deduped_5_2{hoisted_2_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_7_2, deduped_5_2{hoisted_4_1} )) ) );
                 return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberRows( deduped_3_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberColumns( deduped_3_2 ) ), UnderlyingMatrix, deduped_3_2 );
             end ) ) );
 end
@@ -862,24 +812,16 @@ function ( cat_1, P_1, morphisms_1, mu_1, morphismsp_1, Pp_1 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2, deduped_9_2;
-              deduped_9_2 := hoisted_6_1[o_2];
-              deduped_8_2 := hoisted_1_1[o_2];
-              deduped_7_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
+              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
+              deduped_5_2 := hoisted_6_1[o_2];
+              deduped_4_2 := hoisted_1_1[o_2];
+              deduped_3_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_6_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              deduped_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_5_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_3_2 := UnionOfColumns( hoisted_3_1, deduped_9_2, deduped_7_2{hoisted_7_1} ) * HomalgIdentityMatrix( Sum( deduped_5_2{hoisted_7_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_9_2, deduped_7_2{hoisted_8_1} ) * HomalgIdentityMatrix( Sum( deduped_5_2{hoisted_8_1} ), hoisted_3_1 ));
-              deduped_2_2 := UnionOfColumns( hoisted_3_1, deduped_8_2, deduped_6_2{hoisted_2_1} ) * HomalgIdentityMatrix( Sum( deduped_4_2{hoisted_2_1} ), hoisted_3_1 ) + (- UnionOfColumns( hoisted_3_1, deduped_8_2, deduped_6_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_4_2{hoisted_4_1} ), hoisted_3_1 ));
-              deduped_1_2 := UniqueRightDivide( HomalgIdentityMatrix( (deduped_8_2 - RowRankOfMatrix( deduped_2_2 )), hoisted_3_1 ) * SyzygiesOfRows( deduped_2_2 ) * hoisted_5_1[o_2], SyzygiesOfRows( deduped_3_2 ) ) * HomalgIdentityMatrix( (deduped_9_2 - RowRankOfMatrix( deduped_3_2 )), hoisted_3_1 );
+              deduped_1_2 := UniqueRightDivide( SyzygiesOfRows( (UnionOfColumns( hoisted_3_1, deduped_4_2, deduped_2_2{hoisted_2_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_4_2, deduped_2_2{hoisted_4_1} ))) ) * hoisted_5_1[o_2], SyzygiesOfRows( UnionOfColumns( hoisted_3_1, deduped_5_2, deduped_3_2{hoisted_7_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_5_2, deduped_3_2{hoisted_8_1} )) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_9_1, CreateCapCategoryObjectWithAttributes( hoisted_9_1, RankOfObject, NumberRows( deduped_1_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_9_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -921,23 +863,23 @@ function ( cat_1, arg2_1 )
                     end );
                 return CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, deduped_4_2 - RowRankOfMatrix( (UnionOfColumns( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_5_1} ))) ) );
             end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
-                local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
-                deduped_19_2 := hoisted_7_1[m_2];
-                hoisted_6_2 := 1 + deduped_19_2[1];
-                deduped_18_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2;
+                deduped_17_2 := hoisted_7_1[m_2];
+                hoisted_6_2 := 1 + deduped_17_2[1];
+                deduped_16_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_6_2] ) ) );
                     end );
-                hoisted_1_2 := 1 + deduped_19_2[2];
-                deduped_17_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := 1 + deduped_17_2[2];
+                deduped_15_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) ) );
                     end );
-                deduped_16_2 := Sum( deduped_18_2 );
-                deduped_15_2 := Sum( deduped_17_2 );
+                deduped_14_2 := Sum( deduped_16_2 );
+                deduped_13_2 := Sum( deduped_15_2 );
                 hoisted_8_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_6_2] ) );
                     end );
-                hoisted_7_2 := deduped_18_2;
-                deduped_14_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+                hoisted_7_2 := deduped_16_2;
+                deduped_12_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                         local deduped_1_3;
                         deduped_1_3 := hoisted_7_2[logic_new_func_x_3];
                         return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_7_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( Sum( hoisted_7_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), deduped_1_3, hoisted_1_1 ) ) * hoisted_8_2[logic_new_func_x_3];
@@ -945,24 +887,22 @@ function ( cat_1, arg2_1 )
                 hoisted_3_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) );
                     end );
-                hoisted_2_2 := deduped_17_2;
-                deduped_13_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+                hoisted_2_2 := deduped_15_2;
+                deduped_11_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                         local deduped_1_3;
                         deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
                         return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), deduped_1_3, hoisted_1_1 ) ) * hoisted_3_2[logic_new_func_x_3];
                     end );
-                deduped_12_2 := UnionOfColumns( hoisted_1_1, deduped_16_2, deduped_14_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_16_2, deduped_14_2{hoisted_5_1} ));
-                deduped_11_2 := UnionOfColumns( hoisted_1_1, deduped_15_2, deduped_13_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_15_2, deduped_13_2{hoisted_5_1} ));
-                deduped_10_2 := deduped_15_2 - RowRankOfMatrix( deduped_11_2 );
+                deduped_10_2 := UnionOfColumns( hoisted_1_1, deduped_13_2, deduped_11_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_13_2, deduped_11_2{hoisted_5_1} ));
                 hoisted_5_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( Source( logic_new_func_x_3 ) )[2][m_2] ) );
                     end );
-                hoisted_4_2 := HomalgIdentityMatrix( deduped_10_2, hoisted_1_1 ) * SyzygiesOfRows( deduped_11_2 );
-                deduped_9_2 := UniqueRightDivide( UnionOfColumns( hoisted_1_1, deduped_10_2, List( hoisted_3_1, function ( logic_new_func_x_3 )
-                              local deduped_1_3;
-                              deduped_1_3 := (Sum( hoisted_2_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1);
-                              return CertainColumns( hoisted_4_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_2_2[logic_new_func_x_3]) ] ) * hoisted_5_2[logic_new_func_x_3];
-                          end ) ), SyzygiesOfRows( deduped_12_2 ) ) * HomalgIdentityMatrix( (deduped_16_2 - RowRankOfMatrix( deduped_12_2 )), hoisted_1_1 );
+                hoisted_4_2 := SyzygiesOfRows( deduped_10_2 );
+                deduped_9_2 := UniqueRightDivide( UnionOfColumns( hoisted_1_1, deduped_13_2 - RowRankOfMatrix( deduped_10_2 ), List( hoisted_3_1, function ( logic_new_func_x_3 )
+                            local deduped_1_3;
+                            deduped_1_3 := Sum( hoisted_2_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1;
+                            return CertainColumns( hoisted_4_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_2_2[logic_new_func_x_3]) ] ) * hoisted_5_2[logic_new_func_x_3];
+                        end ) ), SyzygiesOfRows( UnionOfColumns( hoisted_1_1, deduped_14_2, deduped_12_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_14_2, deduped_12_2{hoisted_5_1} )) ) );
                 return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberRows( deduped_9_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberColumns( deduped_9_2 ) ), UnderlyingMatrix, deduped_9_2 );
             end ) ) );
 end
@@ -994,20 +934,20 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
     hoisted_2_1 := List( deduped_14_1, RankOfObject );
     hoisted_1_1 := deduped_14_1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2;
-              deduped_15_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2;
+              deduped_13_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_14_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
+              deduped_12_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_13_2 := Sum( deduped_15_2 );
-              deduped_12_2 := Sum( deduped_14_2 );
+              deduped_11_2 := Sum( deduped_13_2 );
+              deduped_10_2 := Sum( deduped_12_2 );
               hoisted_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              hoisted_1_2 := deduped_15_2;
-              deduped_11_2 := List( hoisted_5_1, function ( logic_new_func_x_3 )
+              hoisted_1_2 := deduped_13_2;
+              deduped_9_2 := List( hoisted_5_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_1_2[logic_new_func_x_3];
                       return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_1_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_2_2[logic_new_func_x_3];
@@ -1015,23 +955,21 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
               hoisted_6_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              hoisted_5_2 := deduped_14_2;
-              deduped_10_2 := List( hoisted_10_1, function ( logic_new_func_x_3 )
+              hoisted_5_2 := deduped_12_2;
+              deduped_8_2 := List( hoisted_10_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_5_2[logic_new_func_x_3];
                       return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_5_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_5_2{[ (logic_new_func_x_3 + 1) .. hoisted_9_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_6_2[logic_new_func_x_3];
                   end );
-              deduped_9_2 := UnionOfColumns( hoisted_3_1, deduped_13_2, deduped_11_2{hoisted_6_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_13_2, deduped_11_2{hoisted_7_1} ));
-              deduped_8_2 := UnionOfColumns( hoisted_3_1, deduped_12_2, deduped_10_2{hoisted_11_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_12_2, deduped_10_2{hoisted_12_1} ));
               hoisted_4_2 := List( L_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              hoisted_3_2 := HomalgIdentityMatrix( (deduped_13_2 - RowRankOfMatrix( deduped_9_2 )), hoisted_3_1 ) * SyzygiesOfRows( deduped_9_2 );
+              hoisted_3_2 := SyzygiesOfRows( UnionOfColumns( hoisted_3_1, deduped_11_2, deduped_9_2{hoisted_6_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_11_2, deduped_9_2{hoisted_7_1} )) );
               deduped_7_2 := UniqueRightDivide( UnionOfColumns( hoisted_3_1, hoisted_2_1[o_2], List( hoisted_8_1, function ( logic_new_func_x_3 )
-                            local deduped_1_3;
-                            deduped_1_3 := (Sum( hoisted_1_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1);
-                            return CertainColumns( hoisted_3_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_1_2[logic_new_func_x_3]) ] ) * hoisted_4_2[logic_new_func_x_3];
-                        end ) ), SyzygiesOfRows( deduped_8_2 ) ) * HomalgIdentityMatrix( (deduped_12_2 - RowRankOfMatrix( deduped_8_2 )), hoisted_3_1 );
+                          local deduped_1_3;
+                          deduped_1_3 := Sum( hoisted_1_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1;
+                          return CertainColumns( hoisted_3_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_1_2[logic_new_func_x_3]) ] ) * hoisted_4_2[logic_new_func_x_3];
+                      end ) ), SyzygiesOfRows( UnionOfColumns( hoisted_3_1, deduped_10_2, deduped_8_2{hoisted_11_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_10_2, deduped_8_2{hoisted_12_1} )) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_13_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_13_1, RankOfObject, NumberColumns( deduped_7_2 ) ), UnderlyingMatrix, deduped_7_2 );
           end ) );
 end
@@ -1352,7 +1290,7 @@ function ( cat_1, objects_1, k_1, P_1 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                   end );
               deduped_2_2 := deduped_3_2[k_1];
-              deduped_1_2 := UnionOfColumns( HomalgZeroMatrix( deduped_2_2, Sum( deduped_3_2{hoisted_2_1} ), hoisted_3_1 ), HomalgIdentityMatrix( deduped_2_2, hoisted_3_1 ), HomalgZeroMatrix( deduped_2_2, Sum( deduped_3_2{hoisted_4_1} ), hoisted_3_1 ) ) * HomalgIdentityMatrix( Sum( deduped_3_2 ), hoisted_3_1 );
+              deduped_1_2 := UnionOfColumns( HomalgZeroMatrix( deduped_2_2, Sum( deduped_3_2{hoisted_2_1} ), hoisted_3_1 ), HomalgIdentityMatrix( deduped_2_2, hoisted_3_1 ), HomalgZeroMatrix( deduped_2_2, Sum( deduped_3_2{hoisted_4_1} ), hoisted_3_1 ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_5_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_5_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -1405,23 +1343,22 @@ function ( cat_1, morphisms_1, k_1, P_1 )
     hoisted_2_1 := UnderlyingRing( deduped_10_1 );
     hoisted_1_1 := ValuesOnAllObjects( deduped_9_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Range( deduped_9_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2;
-              deduped_8_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
+              deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_7_2 := Sum( deduped_8_2 );
-              hoisted_2_2 := deduped_8_2;
+              deduped_6_2 := Sum( deduped_7_2 );
+              hoisted_2_2 := deduped_7_2;
               hoisted_1_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_6_2 := List( hoisted_4_1, function ( logic_new_func_x_3 )
+              deduped_5_2 := List( hoisted_4_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
                       return hoisted_1_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_2_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_2_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_3_1 ]} ), hoisted_2_1 ) );
                   end );
-              deduped_5_2 := Sum( deduped_8_2{hoisted_7_1} ) + 1;
-              deduped_4_2 := UnionOfRows( hoisted_2_1, deduped_7_2, deduped_6_2{hoisted_5_1} ) + (- UnionOfRows( hoisted_2_1, deduped_7_2, deduped_6_2{hoisted_6_1} ));
-              deduped_3_2 := CertainRows( SyzygiesOfColumns( deduped_4_2 ) * HomalgIdentityMatrix( (deduped_7_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_2_1 ), [ deduped_5_2 .. deduped_5_2 - 1 + deduped_8_2[k_1] ] );
+              deduped_4_2 := Sum( deduped_7_2{hoisted_7_1} ) + 1;
+              deduped_3_2 := CertainRows( SyzygiesOfColumns( UnionOfRows( hoisted_2_1, deduped_6_2, deduped_5_2{hoisted_5_1} ) + (- UnionOfRows( hoisted_2_1, deduped_6_2, deduped_5_2{hoisted_6_1} )) ), [ deduped_4_2 .. deduped_4_2 - 1 + deduped_7_2[k_1] ] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_8_1, Range( CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[o_2] ) ), CreateCapCategoryObjectWithAttributes( hoisted_8_1, RankOfObject, NumberColumns( deduped_3_2 ) ), UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
@@ -1916,23 +1853,22 @@ function ( cat_1, morphisms_1, P_1 )
     hoisted_2_1 := UnderlyingRing( deduped_9_1 );
     hoisted_1_1 := ValuesOnAllObjects( deduped_8_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, Source( deduped_8_1 ), P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2;
-              deduped_8_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
+              deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              deduped_6_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_6_2 := Sum( deduped_7_2 );
-              hoisted_2_2 := deduped_7_2;
-              hoisted_1_2 := deduped_8_2;
-              deduped_5_2 := List( hoisted_4_1, function ( logic_new_func_x_3 )
+              deduped_5_2 := Sum( deduped_6_2 );
+              hoisted_2_2 := deduped_6_2;
+              hoisted_1_2 := deduped_7_2;
+              deduped_4_2 := List( hoisted_4_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
                       return hoisted_1_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_2_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_2_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_3_1 ]} ), hoisted_2_1 ) );
                   end );
-              deduped_4_2 := UnionOfRows( hoisted_2_1, deduped_6_2, deduped_5_2{hoisted_5_1} ) + (- UnionOfRows( hoisted_2_1, deduped_6_2, deduped_5_2{hoisted_6_1} ));
-              deduped_3_2 := deduped_8_2[1] * CertainRows( (SyzygiesOfColumns( deduped_4_2 ) * HomalgIdentityMatrix( (deduped_6_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_2_1 )), [ 1 .. deduped_7_2[1] ] );
+              deduped_3_2 := deduped_7_2[1] * CertainRows( SyzygiesOfColumns( (UnionOfRows( hoisted_2_1, deduped_5_2, deduped_4_2{hoisted_5_1} ) + (- UnionOfRows( hoisted_2_1, deduped_5_2, deduped_4_2{hoisted_6_1} ))) ), [ 1 .. deduped_6_2[1] ] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, Source( CAP_JIT_INCOMPLETE_LOGIC( hoisted_1_1[o_2] ) ), CreateCapCategoryObjectWithAttributes( hoisted_7_1, RankOfObject, NumberColumns( deduped_3_2 ) ), UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
@@ -2033,15 +1969,15 @@ function ( cat_1, objects_1, k_1, P_1 )
     hoisted_5_1 := ValuesOfPreSheaf( CAP_JIT_INCOMPLETE_LOGIC( deduped_6_1 ) )[1];
     hoisted_4_1 := deduped_7_1;
     hoisted_3_1 := [ k_1 + 1 .. Length( objects_1 ) ];
-    hoisted_2_1 := [ 1 .. k_1 - 1 ];
-    hoisted_1_1 := UnderlyingRing( deduped_7_1 );
+    hoisted_2_1 := UnderlyingRing( deduped_7_1 );
+    hoisted_1_1 := [ 1 .. k_1 - 1 ];
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, deduped_6_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2, deduped_2_2, deduped_3_2;
               deduped_3_2 := List( objects_1, function ( logic_new_func_x_3 )
                       return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
                   end );
               deduped_2_2 := deduped_3_2[k_1];
-              deduped_1_2 := HomalgIdentityMatrix( Sum( deduped_3_2 ), hoisted_1_1 ) * UnionOfRows( HomalgZeroMatrix( Sum( deduped_3_2{hoisted_2_1} ), deduped_2_2, hoisted_1_1 ), HomalgIdentityMatrix( deduped_2_2, hoisted_1_1 ), HomalgZeroMatrix( Sum( deduped_3_2{hoisted_3_1} ), deduped_2_2, hoisted_1_1 ) );
+              deduped_1_2 := UnionOfRows( HomalgZeroMatrix( Sum( deduped_3_2{hoisted_1_1} ), deduped_2_2, hoisted_2_1 ), HomalgIdentityMatrix( deduped_2_2, hoisted_2_1 ), HomalgZeroMatrix( Sum( deduped_3_2{hoisted_3_1} ), deduped_2_2, hoisted_2_1 ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberRows( deduped_1_2 ) ), hoisted_5_1[o_2], UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -2094,23 +2030,22 @@ function ( cat_1, morphisms_1, k_1, P_1 )
     hoisted_2_1 := deduped_11_1;
     hoisted_1_1 := UnderlyingRing( deduped_10_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Source( deduped_9_1 ), ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2, deduped_8_2;
-              deduped_8_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
+              deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_7_2 := Sum( deduped_8_2 );
+              deduped_6_2 := Sum( deduped_7_2 );
               hoisted_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              hoisted_1_2 := deduped_8_2;
-              deduped_6_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+              hoisted_1_2 := deduped_7_2;
+              deduped_5_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_1_2[logic_new_func_x_3];
                       return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( Sum( hoisted_1_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), deduped_1_3, hoisted_1_1 ) ) * hoisted_2_2[logic_new_func_x_3];
                   end );
-              deduped_5_2 := Sum( deduped_8_2{hoisted_6_1} ) + 1;
-              deduped_4_2 := UnionOfColumns( hoisted_1_1, deduped_7_2, deduped_6_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_7_2, deduped_6_2{hoisted_5_1} ));
-              deduped_3_2 := CertainColumns( HomalgIdentityMatrix( (deduped_7_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_1_1 ) * SyzygiesOfRows( deduped_4_2 ), [ deduped_5_2 .. deduped_5_2 - 1 + deduped_8_2[k_1] ] );
+              deduped_4_2 := Sum( deduped_7_2{hoisted_6_1} ) + 1;
+              deduped_3_2 := CertainColumns( SyzygiesOfRows( UnionOfColumns( hoisted_1_1, deduped_6_2, deduped_5_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_1_1, deduped_6_2, deduped_5_2{hoisted_5_1} )) ), [ deduped_4_2 .. deduped_4_2 - 1 + deduped_7_2[k_1] ] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, CreateCapCategoryObjectWithAttributes( hoisted_7_1, RankOfObject, NumberRows( deduped_3_2 ) ), Source( CAP_JIT_INCOMPLETE_LOGIC( hoisted_8_1[o_2] ) ), UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
@@ -2129,21 +2064,17 @@ function ( cat_1, Y_1, morphisms_1, P_1 )
     deduped_7_1 := ValuesOfPreSheaf( Y_1 )[1];
     hoisted_6_1 := deduped_9_1;
     hoisted_5_1 := [ 2 .. deduped_8_1 ];
-    hoisted_4_1 := List( deduped_7_1, RankOfObject );
-    hoisted_3_1 := UnderlyingRing( deduped_9_1 );
-    hoisted_2_1 := [ 1 .. deduped_8_1 - 1 ];
+    hoisted_4_1 := UnderlyingRing( deduped_9_1 );
+    hoisted_3_1 := [ 1 .. deduped_8_1 - 1 ];
+    hoisted_2_1 := List( deduped_7_1, RankOfObject );
     hoisted_1_1 := deduped_7_1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, Y_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := hoisted_4_1[o_2];
-              deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local deduped_1_2, deduped_2_2, deduped_3_2;
+              deduped_3_2 := hoisted_2_1[o_2];
+              deduped_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_3_2 := List( morphisms_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_2_2 := HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_5_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_5_1} ));
-              deduped_1_2 := SyzygiesOfColumns( deduped_2_2 ) * HomalgIdentityMatrix( (deduped_5_2 - RowRankOfMatrix( deduped_2_2 )), hoisted_3_1 );
+              deduped_1_2 := SyzygiesOfColumns( UnionOfRows( hoisted_4_1, deduped_3_2, deduped_2_2{hoisted_3_1} ) + (- UnionOfRows( hoisted_4_1, deduped_3_2, deduped_2_2{hoisted_5_1} )) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -2185,48 +2116,46 @@ function ( cat_1, arg2_1 )
                     end );
                 return CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, deduped_4_2 - RowRankOfMatrix( (UnionOfRows( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_4_2, deduped_3_2{hoisted_5_1} ))) ) );
             end ), LazyHList( [ 1 .. deduped_8_1[2] ], function ( m_2 )
-                local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2, deduped_18_2, deduped_19_2;
-                deduped_19_2 := hoisted_7_1[m_2];
-                hoisted_4_2 := 1 + deduped_19_2[1];
-                deduped_18_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, hoisted_7_2, hoisted_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2, deduped_16_2, deduped_17_2;
+                deduped_17_2 := hoisted_7_1[m_2];
+                hoisted_4_2 := 1 + deduped_17_2[1];
+                deduped_16_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_4_2] ) ) );
                     end );
-                hoisted_1_2 := 1 + deduped_19_2[2];
-                deduped_17_2 := List( arg2_1, function ( logic_new_func_x_3 )
+                hoisted_1_2 := 1 + deduped_17_2[2];
+                deduped_15_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) ) );
                     end );
-                deduped_16_2 := Sum( deduped_18_2 );
-                deduped_15_2 := Sum( deduped_17_2 );
-                hoisted_6_2 := deduped_18_2;
+                deduped_14_2 := Sum( deduped_16_2 );
+                deduped_13_2 := Sum( deduped_15_2 );
+                hoisted_6_2 := deduped_16_2;
                 hoisted_5_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_4_2] ) );
                     end );
-                deduped_14_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+                deduped_12_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                         local deduped_1_3;
                         deduped_1_3 := hoisted_6_2[logic_new_func_x_3];
                         return hoisted_5_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_6_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_6_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), hoisted_1_1 ) );
                     end );
-                hoisted_3_2 := deduped_17_2;
+                hoisted_3_2 := deduped_15_2;
                 hoisted_2_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[hoisted_1_2] ) );
                     end );
-                deduped_13_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+                deduped_11_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                         local deduped_1_3;
                         deduped_1_3 := hoisted_3_2[logic_new_func_x_3];
                         return hoisted_2_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_3_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_3_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), hoisted_1_1 ) );
                     end );
-                deduped_12_2 := UnionOfRows( hoisted_1_1, deduped_16_2, deduped_14_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_16_2, deduped_14_2{hoisted_5_1} ));
-                deduped_11_2 := UnionOfRows( hoisted_1_1, deduped_15_2, deduped_13_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_15_2, deduped_13_2{hoisted_5_1} ));
-                deduped_10_2 := deduped_16_2 - RowRankOfMatrix( deduped_12_2 );
-                hoisted_8_2 := SyzygiesOfColumns( deduped_12_2 ) * HomalgIdentityMatrix( deduped_10_2, hoisted_1_1 );
+                deduped_10_2 := UnionOfRows( hoisted_1_1, deduped_14_2, deduped_12_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_14_2, deduped_12_2{hoisted_5_1} ));
+                hoisted_8_2 := SyzygiesOfColumns( deduped_10_2 );
                 hoisted_7_2 := List( arg2_1, function ( logic_new_func_x_3 )
                         return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( Range( logic_new_func_x_3 ) )[2][m_2] ) );
                     end );
-                deduped_9_2 := HomalgIdentityMatrix( (deduped_15_2 - RowRankOfMatrix( deduped_11_2 )), hoisted_1_1 ) * UniqueLeftDivide( SyzygiesOfColumns( deduped_11_2 ), UnionOfRows( hoisted_1_1, deduped_10_2, List( hoisted_3_1, function ( logic_new_func_x_3 )
-                              local deduped_1_3;
-                              deduped_1_3 := (Sum( hoisted_6_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1);
-                              return (hoisted_7_2[logic_new_func_x_3] * CertainRows( hoisted_8_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_6_2[logic_new_func_x_3]) ] ));
-                          end ) ) );
+                deduped_9_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( hoisted_1_1, deduped_13_2, deduped_11_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_13_2, deduped_11_2{hoisted_5_1} )) ), UnionOfRows( hoisted_1_1, deduped_14_2 - RowRankOfMatrix( deduped_10_2 ), List( hoisted_3_1, function ( logic_new_func_x_3 )
+                            local deduped_1_3;
+                            deduped_1_3 := Sum( hoisted_6_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1;
+                            return hoisted_7_2[logic_new_func_x_3] * CertainRows( hoisted_8_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_6_2[logic_new_func_x_3]) ] );
+                        end ) ) );
                 return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberRows( deduped_9_2 ) ), CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberColumns( deduped_9_2 ) ), UnderlyingMatrix, deduped_9_2 );
             end ) ) );
 end
@@ -2258,44 +2187,42 @@ function ( cat_1, P_1, morphisms_1, L_1, morphismsp_1, Pp_1 )
     hoisted_2_1 := deduped_16_1;
     hoisted_1_1 := UnderlyingRing( deduped_15_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, Pp_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2, deduped_14_2, deduped_15_2;
-              deduped_15_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, hoisted_5_2, hoisted_6_2, deduped_7_2, deduped_8_2, deduped_9_2, deduped_10_2, deduped_11_2, deduped_12_2, deduped_13_2;
+              deduped_13_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_14_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              deduped_12_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_13_2 := Sum( deduped_15_2 );
-              deduped_12_2 := Sum( deduped_14_2 );
-              hoisted_5_2 := deduped_15_2;
+              deduped_11_2 := Sum( deduped_13_2 );
+              deduped_10_2 := Sum( deduped_12_2 );
+              hoisted_5_2 := deduped_13_2;
               hoisted_4_2 := List( morphismsp_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_11_2 := List( hoisted_8_1, function ( logic_new_func_x_3 )
+              deduped_9_2 := List( hoisted_8_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_5_2[logic_new_func_x_3];
                       return hoisted_4_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_5_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_5_2{[ (logic_new_func_x_3 + 1) .. hoisted_7_1 ]} ), hoisted_1_1 ) );
                   end );
-              hoisted_2_2 := deduped_14_2;
+              hoisted_2_2 := deduped_12_2;
               hoisted_1_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_10_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+              deduped_8_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
                       return hoisted_1_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), hoisted_1_1 ) );
                   end );
-              deduped_9_2 := UnionOfRows( hoisted_1_1, deduped_13_2, deduped_11_2{hoisted_9_1} ) + (- UnionOfRows( hoisted_1_1, deduped_13_2, deduped_11_2{hoisted_10_1} ));
-              deduped_8_2 := UnionOfRows( hoisted_1_1, deduped_12_2, deduped_10_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_12_2, deduped_10_2{hoisted_5_1} ));
-              hoisted_6_2 := SyzygiesOfColumns( deduped_9_2 ) * HomalgIdentityMatrix( (deduped_13_2 - RowRankOfMatrix( deduped_9_2 )), hoisted_1_1 );
+              hoisted_6_2 := SyzygiesOfColumns( UnionOfRows( hoisted_1_1, deduped_11_2, deduped_9_2{hoisted_9_1} ) + (- UnionOfRows( hoisted_1_1, deduped_11_2, deduped_9_2{hoisted_10_1} )) );
               hoisted_3_2 := List( L_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_7_2 := HomalgIdentityMatrix( (deduped_12_2 - RowRankOfMatrix( deduped_8_2 )), hoisted_1_1 ) * UniqueLeftDivide( SyzygiesOfColumns( deduped_8_2 ), UnionOfRows( hoisted_1_1, hoisted_6_1[o_2], List( hoisted_11_1, function ( logic_new_func_x_3 )
-                            local deduped_1_3;
-                            deduped_1_3 := (Sum( hoisted_5_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1);
-                            return (hoisted_3_2[logic_new_func_x_3] * CertainRows( hoisted_6_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_5_2[logic_new_func_x_3]) ] ));
-                        end ) ) );
+              deduped_7_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( hoisted_1_1, deduped_10_2, deduped_8_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_10_2, deduped_8_2{hoisted_5_1} )) ), UnionOfRows( hoisted_1_1, hoisted_6_1[o_2], List( hoisted_11_1, function ( logic_new_func_x_3 )
+                          local deduped_1_3;
+                          deduped_1_3 := Sum( hoisted_5_2{[ 1 .. logic_new_func_x_3 - 1 ]} ) + 1;
+                          return hoisted_3_2[logic_new_func_x_3] * CertainRows( hoisted_6_2, [ deduped_1_3 .. (deduped_1_3 - 1 + hoisted_5_2[logic_new_func_x_3]) ] );
+                      end ) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_12_1, CreateCapCategoryObjectWithAttributes( hoisted_12_1, RankOfObject, NumberRows( deduped_7_2 ) ), hoisted_13_1[o_2], UnderlyingMatrix, deduped_7_2 );
           end ) );
 end
@@ -2366,16 +2293,12 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_2_1 := [ 1 .. deduped_8_1 - 1 ];
     hoisted_1_1 := List( ValuesOfPreSheaf( Y_1 )[1], RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := hoisted_1_1[o_2];
-              deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local deduped_1_2, deduped_2_2, deduped_3_2;
+              deduped_3_2 := hoisted_1_1[o_2];
+              deduped_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_3_2 := List( morphisms_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_2_2 := HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_2_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_2_1} ) + (- HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_4_1} ), hoisted_3_1 ) * UnionOfRows( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_4_1} ));
-              deduped_1_2 := HomalgIdentityMatrix( (deduped_5_2 - RowRankOfMatrix( deduped_2_2 )), hoisted_3_1 ) * UniqueLeftDivide( SyzygiesOfColumns( deduped_2_2 ), hoisted_5_1[o_2] );
+              deduped_1_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_2_1} ) + (- UnionOfRows( hoisted_3_1, deduped_3_2, deduped_2_2{hoisted_4_1} )) ), hoisted_5_1[o_2] );
               return CreateCapCategoryMorphismWithAttributes( hoisted_6_1, CreateCapCategoryObjectWithAttributes( hoisted_6_1, RankOfObject, NumberRows( deduped_1_2 ) ), hoisted_7_1[o_2], UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -2393,15 +2316,13 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     deduped_5_1 := ValuesOfPreSheaf( T_1 )[1];
     hoisted_4_1 := deduped_5_1;
     hoisted_3_1 := deduped_6_1;
-    hoisted_2_1 := List( deduped_5_1, RankOfObject );
-    hoisted_1_1 := UnderlyingRing( deduped_6_1 );
+    hoisted_2_1 := UnderlyingRing( deduped_6_1 );
+    hoisted_1_1 := List( deduped_5_1, RankOfObject );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
-              deduped_1_2 := HomalgIdentityMatrix( Sum( List( objects_1, function ( logic_new_func_x_3 )
-                            return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
-                        end ) ), hoisted_1_1 ) * UnionOfRows( hoisted_1_1, hoisted_2_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
-                          return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
-                      end ) );
+              deduped_1_2 := UnionOfRows( hoisted_2_1, hoisted_1_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
+                        return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
+                    end ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_3_1, CreateCapCategoryObjectWithAttributes( hoisted_3_1, RankOfObject, NumberRows( deduped_1_2 ) ), hoisted_4_1[o_2], UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -2495,24 +2416,23 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_2_1 := deduped_11_1;
     hoisted_1_1 := UnderlyingRing( deduped_10_1 );
     return CreateCapCategoryMorphismWithAttributes( cat_1, P_1, T_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
-              deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2;
+              deduped_6_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_6_2 := Sum( deduped_7_2 );
-              hoisted_2_2 := deduped_7_2;
+              deduped_5_2 := Sum( deduped_6_2 );
+              hoisted_2_2 := deduped_6_2;
               hoisted_1_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_5_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
+              deduped_4_2 := List( hoisted_3_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_2_2[logic_new_func_x_3];
                       return hoisted_1_2[logic_new_func_x_3] * UnionOfColumns( HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), hoisted_1_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_1_1 ), HomalgZeroMatrix( deduped_1_3, Sum( hoisted_2_2{[ (logic_new_func_x_3 + 1) .. hoisted_2_1 ]} ), hoisted_1_1 ) );
                   end );
-              deduped_4_2 := UnionOfRows( hoisted_1_1, deduped_6_2, deduped_5_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_6_2, deduped_5_2{hoisted_5_1} ));
-              deduped_3_2 := HomalgIdentityMatrix( (deduped_6_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_1_1 ) * UniqueLeftDivide( SyzygiesOfColumns( deduped_4_2 ), UnionOfRows( hoisted_1_1, hoisted_6_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
-                            return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
-                        end ) ) );
+              deduped_3_2 := UniqueLeftDivide( SyzygiesOfColumns( UnionOfRows( hoisted_1_1, deduped_5_2, deduped_4_2{hoisted_4_1} ) + (- UnionOfRows( hoisted_1_1, deduped_5_2, deduped_4_2{hoisted_5_1} )) ), UnionOfRows( hoisted_1_1, hoisted_6_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
+                          return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
+                      end ) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, CreateCapCategoryObjectWithAttributes( hoisted_7_1, RankOfObject, NumberRows( deduped_3_2 ) ), hoisted_8_1[o_2], UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
@@ -2556,10 +2476,8 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
               local deduped_1_2;
               deduped_1_2 := UnionOfColumns( hoisted_3_1, hoisted_2_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
-                          return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
-                      end ) ) * HomalgIdentityMatrix( Sum( List( objects_1, function ( logic_new_func_x_3 )
-                            return RankOfObject( CAP_JIT_INCOMPLETE_LOGIC( ValuesOfPreSheaf( logic_new_func_x_3 )[1][o_2] ) );
-                        end ) ), hoisted_3_1 );
+                        return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
+                    end ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_4_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_4_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -2607,16 +2525,12 @@ function ( cat_1, Y_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_2_1 := List( deduped_8_1, UnderlyingMatrix );
     hoisted_1_1 := List( deduped_8_1, Source );
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local deduped_1_2, deduped_2_2, deduped_3_2, deduped_4_2, deduped_5_2;
-              deduped_5_2 := hoisted_3_1[o_2];
-              deduped_4_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local deduped_1_2, deduped_2_2, deduped_3_2;
+              deduped_3_2 := hoisted_3_1[o_2];
+              deduped_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              deduped_3_2 := List( morphisms_1, function ( logic_new_func_x_3 )
-                      return RankOfObject( Range( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
-                  end );
-              deduped_2_2 := UnionOfColumns( hoisted_5_1, deduped_5_2, deduped_4_2{hoisted_4_1} ) * HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_4_1} ), hoisted_5_1 ) + (- UnionOfColumns( hoisted_5_1, deduped_5_2, deduped_4_2{hoisted_6_1} ) * HomalgIdentityMatrix( Sum( deduped_3_2{hoisted_6_1} ), hoisted_5_1 ));
-              deduped_1_2 := UniqueRightDivide( hoisted_2_1[o_2], SyzygiesOfRows( deduped_2_2 ) ) * HomalgIdentityMatrix( (deduped_5_2 - RowRankOfMatrix( deduped_2_2 )), hoisted_5_1 );
+              deduped_1_2 := UniqueRightDivide( hoisted_2_1[o_2], SyzygiesOfRows( UnionOfColumns( hoisted_5_1, deduped_3_2, deduped_2_2{hoisted_4_1} ) + (- UnionOfColumns( hoisted_5_1, deduped_3_2, deduped_2_2{hoisted_6_1} )) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_7_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_7_1, RankOfObject, NumberColumns( deduped_1_2 ) ), UnderlyingMatrix, deduped_1_2 );
           end ) );
 end
@@ -2642,24 +2556,23 @@ function ( cat_1, morphisms_1, T_1, tau_1, P_1 )
     hoisted_2_1 := List( deduped_9_1, RankOfObject );
     hoisted_1_1 := deduped_9_1;
     return CreateCapCategoryMorphismWithAttributes( cat_1, T_1, P_1, ValuesOnAllObjects, LazyHList( [ 1 .. DefiningTripleOfUnderlyingQuiver( Source( cat_1 ) )[1] ], function ( o_2 )
-              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
-              deduped_7_2 := List( morphisms_1, function ( logic_new_func_x_3 )
+              local hoisted_1_2, hoisted_2_2, deduped_3_2, deduped_4_2, deduped_5_2, deduped_6_2;
+              deduped_6_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return RankOfObject( Source( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) ) );
                   end );
-              deduped_6_2 := Sum( deduped_7_2 );
+              deduped_5_2 := Sum( deduped_6_2 );
               hoisted_2_2 := List( morphisms_1, function ( logic_new_func_x_3 )
                       return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
                   end );
-              hoisted_1_2 := deduped_7_2;
-              deduped_5_2 := List( hoisted_5_1, function ( logic_new_func_x_3 )
+              hoisted_1_2 := deduped_6_2;
+              deduped_4_2 := List( hoisted_5_1, function ( logic_new_func_x_3 )
                       local deduped_1_3;
                       deduped_1_3 := hoisted_1_2[logic_new_func_x_3];
                       return UnionOfRows( HomalgZeroMatrix( Sum( hoisted_1_2{[ 1 .. (logic_new_func_x_3 - 1) ]} ), deduped_1_3, hoisted_3_1 ), HomalgIdentityMatrix( deduped_1_3, hoisted_3_1 ), HomalgZeroMatrix( Sum( hoisted_1_2{[ (logic_new_func_x_3 + 1) .. hoisted_4_1 ]} ), deduped_1_3, hoisted_3_1 ) ) * hoisted_2_2[logic_new_func_x_3];
                   end );
-              deduped_4_2 := UnionOfColumns( hoisted_3_1, deduped_6_2, deduped_5_2{hoisted_6_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_6_2, deduped_5_2{hoisted_7_1} ));
               deduped_3_2 := UniqueRightDivide( UnionOfColumns( hoisted_3_1, hoisted_2_1[o_2], List( tau_1, function ( logic_new_func_x_3 )
-                            return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
-                        end ) ), SyzygiesOfRows( deduped_4_2 ) ) * HomalgIdentityMatrix( (deduped_6_2 - RowRankOfMatrix( deduped_4_2 )), hoisted_3_1 );
+                          return UnderlyingMatrix( CAP_JIT_INCOMPLETE_LOGIC( ValuesOnAllObjects( logic_new_func_x_3 )[o_2] ) );
+                      end ) ), SyzygiesOfRows( UnionOfColumns( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_6_1} ) + (- UnionOfColumns( hoisted_3_1, deduped_5_2, deduped_4_2{hoisted_7_1} )) ) );
               return CreateCapCategoryMorphismWithAttributes( hoisted_8_1, hoisted_1_1[o_2], CreateCapCategoryObjectWithAttributes( hoisted_8_1, RankOfObject, NumberColumns( deduped_3_2 ) ), UnderlyingMatrix, deduped_3_2 );
           end ) );
 end
