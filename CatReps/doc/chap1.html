@@ -76,15 +76,17 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CatReps" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );</span>
 A finite concrete category
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AsFpCategory( c3c3 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C3C3 := AsFpCategory( c3c3 );</span>
 FreeCategory( RightQuiver( "q(2)[a:1-&gt;1,b:1-&gt;2,c:2-&gt;2]" ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingQuiverAlgebra( AsFpCategory( c3c3 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UnderlyingQuiverAlgebra( C3C3 );</span>
 (Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(b*c) - 1*(a*b) ]
 </pre></div>
 
-<p>A representation of the category AsFpCategory( c3c3 ) is another way to encode a module homomorphism between two modules over the cyclic group <span class="Math">C_3</span> of order <span class="Math">3</span>: The vector space underlying the first module is the given by the value of (1). The action of <span class="Math">C_3</span> on the first module is given by the value of (a). The vector space underlying the second module is the given by the value of (2). The action on the second module is given by the value of (c). The above relation of the quiver states that the value of (b) is a module homomorphism from the first to the second <span class="Math">C_3</span>-module.</p>
+<p>A representation of the category C3C3 is another way to encode a module homomorphism between two modules over the cyclic group <span class="Math">C_3</span> of order <span class="Math">3</span>: The vector space underlying the first module is the given by the value of (1). The action of <span class="Math">C_3</span> on the first module is given by the value of (a). The vector space underlying the second module is the given by the value of (2). The action on the second module is given by the value of (c). The above relation of the quiver states that the value of (b) is a module homomorphism from the first to the second <span class="Math">C_3</span>-module.</p>
 
 
 <div class="example"><pre>

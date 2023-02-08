@@ -8,22 +8,24 @@
   [1X1.1-1 [33X[0;0YA category of module homomorphisms[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CatReps" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xc3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );[127X[104X
     [4X[28XA finite concrete category[128X[104X
-    [4X[25Xgap>[125X [27XAsFpCategory( c3c3 );[127X[104X
+    [4X[25Xgap>[125X [27XC3C3 := AsFpCategory( c3c3 );[127X[104X
     [4X[28XFreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations[128X[104X
-    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( AsFpCategory( c3c3 ) );[127X[104X
+    [4X[25Xgap>[125X [27XUnderlyingQuiverAlgebra( C3C3 );[127X[104X
     [4X[28X(Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(b*c) - 1*(a*b) ][128X[104X
   [4X[32X[104X
   
-  [33X[0;0YA  representation  of  the  category  AsFpCategory( c3c3 ) is another way to
-  encode  a  module homomorphism between two modules over the cyclic group [23XC_3[123X
-  of order [23X3[123X: The vector space underlying the first module is the given by the
-  value of (1). The action of [23XC_3[123X on the first module is given by the value of
-  (a). The vector space underlying the second module is the given by the value
-  of  (2).  The  action on the second module is given by the value of (c). The
-  above  relation  of  the  quiver  states  that  the value of (b) is a module
-  homomorphism from the first to the second [23XC_3[123X-module.[133X
+  [33X[0;0YA  representation  of  the  category  C3C3 is another way to encode a module
+  homomorphism  between  two modules over the cyclic group [23XC_3[123X of order [23X3[123X: The
+  vector  space  underlying the first module is the given by the value of (1).
+  The  action  of  [23XC_3[123X  on  the first module is given by the value of (a). The
+  vector  space underlying the second module is the given by the value of (2).
+  The  action  on  the  second  module is given by the value of (c). The above
+  relation of the quiver states that the value of (b) is a module homomorphism
+  from the first to the second [23XC_3[123X-module.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XGF3 := HomalgRingOfIntegers( 3 );[127X[104X
