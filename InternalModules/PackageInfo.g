@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "InternalModules",
 Subtitle := "Modules over internal algebras",
-Version := "2023.02-01",
+Version := "2023.02-02",
 
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
@@ -86,6 +86,7 @@ Dependencies := rec(
   GAP := ">= 4.12.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2023.02-04" ],
+                           [ "MonoidalCategories", ">= 2023.02-03" ],
                            [ "GradedCategories", ">= 2020.08.24" ],
                            [ "AttributeCategoryForCAP", ">= 2023.02-03" ],
                            [ "ActionsForCAP", ">= 2020.04.27" ],
