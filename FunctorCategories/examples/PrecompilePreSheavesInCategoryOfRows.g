@@ -13,6 +13,9 @@ LoadPackage( "CompilerForCAP", ">= 2022.09-02", false );
 ReadPackageOnce( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory_CompilerLogic.gi" );
 #! true
 
+ReadPackageOnce( "FinSetsForCAP", "gap/CompilerLogic.gi" );
+#! true
+
 ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 #! true
 

@@ -35,6 +35,15 @@ CapJitAddLogicTemplate(
     )
 );
 
+# Length( [ 1 .. n ] ) -> n
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "n" ],
+        src_template := "Length( [ 1 .. n ] )",
+        dst_template := "n"
+    )
+);
+
 # we do not use SliceCategoryOverTensorUnit because that installs more operations
 # which we are not interested in for this simple test
 category_constructor := field ->
