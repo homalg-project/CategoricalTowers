@@ -1029,14 +1029,6 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
 end );
 
 ##
-InstallOtherMethod( \.,
-        "for a presheaf and a positive integer",
-        [ IsPreSheafCategory, IsPosInt ],
-  
-  { PSh, string_as_int } -> ApplyFunctor( YonedaEmbeddingOfSourceCategory( PSh ), Source( PSh ).( NameRNam( string_as_int ) ) )
-);
-
-##
 InstallMethod( YonedaEmbeddingOfSourceCategory,
         "for a presheaf category",
         [ IsPreSheafCategory ],
@@ -1057,6 +1049,14 @@ InstallMethod( YonedaEmbeddingOfSourceCategory,
     return Yoneda;
     
 end );
+
+##
+InstallOtherMethod( \.,
+        "for a presheaf and a positive integer",
+        [ IsPreSheafCategory, IsPosInt ],
+  
+  { PSh, string_as_int } -> ApplyFunctor( YonedaEmbeddingOfSourceCategory( PSh ), Source( PSh ).( NameRNam( string_as_int ) ) )
+);
 
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryToObject,
