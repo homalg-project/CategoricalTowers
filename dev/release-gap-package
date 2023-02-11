@@ -370,8 +370,10 @@ if [ "x$GITHUB_USER" = x ] ; then
 fi
 notice "Using GitHub username $GITHUB_USER"
 
-BRANCH=$(git symbolic-ref -q --short HEAD)
-notice "Using branch $BRANCH"
+if [ "x$ONLY_TARBALL" = xno ] ; then
+    BRANCH=$(git symbolic-ref -q --short HEAD)
+    notice "Using branch $BRANCH"
+fi
 
 
 ######################################################################

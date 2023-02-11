@@ -58,7 +58,8 @@ jobs:
           [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
           [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
           [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
-          [ -d "Toposes" ] && make -C "Toposes" doc
+          [ -d "CategoricalTowers/CategoryConstructor" ] && make -C "CategoricalTowers/CategoryConstructor" doc
+          [ -d "CategoricalTowers/Toposes" ] && make -C "CategoricalTowers/Toposes" doc
           make -C CategoricalTowers -j $(nproc) --output-sync ci-test
           make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
           make -C MatroidGeneration -j $(nproc) --output-sync ci-test
@@ -70,8 +71,8 @@ jobs:
           CUR_SHA=$(git rev-parse --verify HEAD)
           git fetch origin gh-pages
           git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1)
-          git checkout master
           if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
+            git checkout master; \
             LANG=C.UTF-8 ./dev/make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
             # publish subsplits
             git subtree split --prefix=Algebroids -b Algebroids-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Algebroids Algebroids-split:master; \

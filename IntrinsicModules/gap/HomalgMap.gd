@@ -14,7 +14,7 @@ if false then
 #! @Description
 #!  This constructor returns a map (homomorphism) of finitely presented modules. It is represented by the
 #!  &homalg; matrix <A>mat</A> relative to the current set of generators of the source &homalg; module <A>M</A>
-#!  and target module <A>N</A> (&see; <Ref Sect="Modules:Constructors"/>). Unless the source module is free
+#!  and target module <A>N</A>. Unless the source module is free
 #!  <E>and</E> given on free generators the returned map will cautiously be indicated using
 #!  parenthesis: <Q>homomorphism</Q>. To verify if the result is indeed a well defined map use
 #!  <Ref BookName="homalg" Prop="IsMorphism"/>. If the presentations of the source or/and

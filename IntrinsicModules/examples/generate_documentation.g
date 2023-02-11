@@ -2,18 +2,15 @@
 
 #! @Section Tests
 
-# @Example
-LoadPackage( "IntrinsicGradedModules", false );
-# true
-Q := GradedRing( HomalgFieldOfRationalsInSingular( ) );
-# Q
-# (weights: yet unset)
-S := Q["x,y,z"];
-# Q[x,y,z]
-# (weights: yet unset)
-A := CategoryOfHomalgFinitelyPresentedGradedLeftModules( S );
-# IntrinsicCategory( CategoryWithAmbientObjects( Freyd( GradedRows(
-# Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) )
+#! @Example
+LoadPackage( "IntrinsicModules", false );
+#! true
+Q := HomalgFieldOfRationalsInSingular( );
+#! Q
+R := Q["x,y,z"];
+#! Q[x,y,z]
+A := CategoryOfHomalgFinitelyPresentedLeftModules( R );
+#! IntrinsicCategory( CategoryWithAmbientObjects( Freyd( Rows( Q[x,y,z] ) ) ) )
 
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(
     [
@@ -25,4 +22,4 @@ CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(
     "Supported CAP operations"
 );
 
-# @EndExample
+#! @EndExample
