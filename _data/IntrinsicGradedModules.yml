@@ -1,7 +1,7 @@
 name: IntrinsicGradedModules
-version: "2022.12-01"
+version: "2023.02-01"
 license: "GPL-2.0-or-later"
-date: 2023-01-28
+date: 2023-02-11
 description: |
     Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements
 
@@ -66,11 +66,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicGradedM
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2022.12-01/IntrinsicGradedModules-2022.12-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.02-01/IntrinsicGradedModules-2023.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2022.12-01/IntrinsicGradedModules-2022.12-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.02-01/IntrinsicGradedModules-2023.02-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2022.12-01/IntrinsicGradedModules-2022.12-01.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicGradedModules-2023.02-01/IntrinsicGradedModules-2023.02-01.pdf
 
 abstract: |
 
@@ -83,7 +83,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS23</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>IntrinsicGradedModules, Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements,
-             Version 2022.12-01</i>
+             Version 2023.02-01</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicGradedModules">https://homalg-project.github.io/pkg/IntrinsicGradedModules</a></span>.
@@ -91,13 +91,13 @@ citeas: |
     
 
 bibtex: |
-    @misc{ IntrinsicGradedModules2022.12-01,
+    @misc{ IntrinsicGradedModules2023.02-01,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{IntrinsicGradedModules},  Finitely  presented  graded
                           modules over computable graded rings allowing multiple
                           presentations  and  the  notion of elements, {V}ersion
-                          2022.12-01},
-      month =            {Jan},
+                          2023.02-01},
+      month =            {Feb},
       year =             {2023},
       note =             {GAP package},
       howpublished =     {\href

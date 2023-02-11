@@ -1,0 +1,29 @@
+  
+  [1X2 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YTests[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "IntrinsicGradedModules", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := GradedRing( HomalgFieldOfRationalsInSingular( ) );[127X[104X
+    [4X[28XQ[128X[104X
+    [4X[28X(weights: yet unset)[128X[104X
+    [4X[25Xgap>[125X [27XS := Q["x,y,z"];[127X[104X
+    [4X[28XQ[x,y,z][128X[104X
+    [4X[28X(weights: yet unset)[128X[104X
+    [4X[25Xgap>[125X [27XA := CategoryOfHomalgFinitelyPresentedGradedLeftModules( S );[127X[104X
+    [4X[28XIntrinsicCategory( CategoryWithAmbientObjects( Freyd( GradedRows([128X[104X
+    [4X[28XQ[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XCAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES([127X[104X
+    [4X[25X>[125X [27X    [[127X[104X
+    [4X[25X>[125X [27X        [ A, "Category of of finitely presented graded modules" ],[127X[104X
+    [4X[25X>[125X [27X    ],[127X[104X
+    [4X[25X>[125X [27X    "IntrinsicGradedModules",[127X[104X
+    [4X[25X>[125X [27X    "FpGradedModulesByFreyd.autogen.gd",[127X[104X
+    [4X[25X>[125X [27X    "Categories of finitely presented graded modules",[127X[104X
+    [4X[25X>[125X [27X    "Supported CAP operations"[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+  [4X[32X[104X
+  
