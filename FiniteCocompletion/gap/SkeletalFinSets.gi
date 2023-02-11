@@ -115,7 +115,11 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
     
     # this is a workhorse category -> no logic and caching only via IsIdenticalObj
     CapCategorySwitchLogicOff( sFinSets );
-
+    
+    ##
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( sFinSets ) );
+    Assert( 0, IsIdenticalObj( sFinSets, RangeCategoryOfHomomorphismStructure( sFinSets ) ) );
+    
     if ValueOption( "no_precompiled_code" ) <> true then
         
         ADD_FUNCTIONS_FOR_SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( sFinSets );
@@ -123,6 +127,8 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
     fi;
     
     Finalize( sFinSets );
+    
+    Assert( 0, [ ] = CheckConstructivenessOfCategory( sFinSets, "IsEquippedWithHomomorphismStructure" ) );
     
     return sFinSets;
     
