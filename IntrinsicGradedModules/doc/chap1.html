@@ -299,6 +299,16 @@ Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := CategoryOfHomalgFinitelyPresentedGradedLeftModules( S );</span>
 IntrinsicCategory( CategoryWithAmbientObjects( Freyd( GradedRows(
 Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( A );</span>
+A CAP category with name
+IntrinsicCategory( CategoryWithAmbientObjects(
+Freyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):
+
+121 primitive operations were used to derive 312 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsAbelianCategoryWithEnoughProjectives
+* IsSymmetricClosedMonoidalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := HomalgMatrix( "[ 0, z, -y,  -z, 0, x,  y, -x, 0 ]", 3, 3, S );</span>
 &lt;A 3 x 3 matrix over a graded ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">phi := GradedMap( mat, "left", S );</span>
