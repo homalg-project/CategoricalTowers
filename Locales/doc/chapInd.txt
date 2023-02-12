@@ -83,8 +83,12 @@
   [2XIsClosed[102X, for IsConstructibleObject 10.2-2 
       for IsObjectInMeetSemilatticeOfDifferences 13.2-1 
   [2XIsClosedMonoidalLattice[102X, for IsCapCategory 3.1-10 
+  [2XIsClosedMonoidalPoset[102X, for IsCapCategory 2.3-3 
+  [2XIsClosedMonoidalProset[102X, for IsCapCategory 1.6-3 
   [2XIsCocartesianProset[102X, for IsCapCategory 3.1-3 
   [2XIsCoclosedMonoidalLattice[102X, for IsCapCategory 3.1-11 
+  [2XIsCoclosedMonoidalPoset[102X, for IsCapCategory 2.3-4 
+  [2XIsCoclosedMonoidalProset[102X, for IsCapCategory 1.6-4 
   [2XIsCoHeytingAlgebra[102X, for IsCapCategory 5.4-2 
   [2XIsCoHeytingAlgebroid[102X, for IsCapCategory 5.4-1 
   [2XIsConstructibleObject[102X, for IsObjectInThinCategory 10.5-2 
@@ -107,6 +111,8 @@
   [2XIsMeetSemilatticeOfMultipleDifferences[102X, for IsMeetSemilatticeOfDifferences 9.4-1 
   [2XIsMeetSemilatticeOfSingleDifferences[102X, for IsMeetSemilatticeOfDifferences 8.3-1 
   [2XIsMonoidalLattice[102X, for IsCapCategory 3.1-9 
+  [2XIsMonoidalPoset[102X, for IsCapCategory 2.3-2 
+  [2XIsMonoidalProset[102X, for IsCapCategory 1.6-2 
   [2XIsMorphismBetweenConstructibleObjects[102X, for IsMorphismInThinCategory 10.5-3 
   [2XIsMorphismBetweenConstructibleObjectsAsUnionOfDifferences[102X, for IsMorphismBetweenConstructibleObjects 10.5-9 
   [2XIsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences[102X, for IsMorphismBetweenConstructibleObjects 10.5-6 

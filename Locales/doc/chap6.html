@@ -456,7 +456,7 @@ true
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2020.10-02" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "SubcategoriesForCAP", "&gt;= 2023.02-01" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );</span>
 Q
@@ -468,8 +468,38 @@ Rows( Q[x,y] )
 SliceCategoryOverTensorUnit( Rows( Q[x,y] ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := PosetOfCategory( S );</span>
 Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( P );</span>
+A CAP category with name
+Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ):
+
+16 primitive operations were used to derive 252 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsClosedMonoidalLattice
+* IsSymmetricClosedMonoidalCategory
+and furthermore mathematically
+* IsSkeletalCategory
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+* IsStrictMonoidalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := StablePosetOfCategory( P );</span>
 StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( L );</span>
+A CAP category with name
+StablePoset( Poset( SliceCategoryOverTensorUnit( Rows( Q[x,y] ) ) ) ):
+
+15 primitive operations were used to derive 302 operations for this category
+which algorithmically
+* IsEquippedWithHomomorphismStructure
+* IsHeytingAlgebra
+* IsClosedMonoidalLattice
+* IsSymmetricClosedMonoidalCategory
+and furthermore mathematically
+* IsSkeletalCategory
+* IsStableProset
+* IsStrictCartesianCategory
+* IsStrictCocartesianCategory
+* IsStrictMonoidalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := HomalgMatrix( "[ x ]", 1, 1, R ) / F / S / P / L;</span>
 An object in the stable poset given by:
 An object in the poset given by:

@@ -38,3 +38,24 @@
   
   [33X[0;0YThe property of [3XC[103X being a poset (category).[133X
   
+  [1X2.3-2 IsMonoidalPoset[101X
+  
+  [33X[1;0Y[29X[2XIsMonoidalPoset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a closed monoidal thin skeletal category.[133X
+  
+  [1X2.3-3 IsClosedMonoidalPoset[101X
+  
+  [33X[1;0Y[29X[2XIsClosedMonoidalPoset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a closed monoidal thin skeletal category.[133X
+  
+  [1X2.3-4 IsCoclosedMonoidalPoset[101X
+  
+  [33X[1;0Y[29X[2XIsCoclosedMonoidalPoset[102X( [3XC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe property of [3XC[103X being a coclosed monoidal thin skeletal category.[133X
+  

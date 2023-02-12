@@ -7,10 +7,10 @@
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2023.02-01
+                                   2023.02-02
   
   
-                                2 February 2023
+                                1 February 2023
   
   
                                 Mohamed Barakat
@@ -68,6 +68,9 @@
       1.5-2 IsMorphismInThinCategory
     1.6 [33X[0;0YGAP Properties[133X
       1.6-1 IsThinCategory
+      1.6-2 IsMonoidalProset
+      1.6-3 IsClosedMonoidalProset
+      1.6-4 IsCoclosedMonoidalProset
   2 [33X[0;0YPosets (partially ordered sets)[133X
     2.1 [33X[0;0YOperations[133X
       2.1-1 IsEqualForObjectsIfIsHomSetInhabited
@@ -75,6 +78,9 @@
       2.2-1 AddIsEqualForObjectsIfIsHomSetInhabited
     2.3 [33X[0;0YProperties[133X
       2.3-1 IsPosetCategory
+      2.3-2 IsMonoidalPoset
+      2.3-3 IsClosedMonoidalPoset
+      2.3-4 IsCoclosedMonoidalPoset
   3 [33X[0;0YLattices[133X
     3.1 [33X[0;0YProperties[133X
       3.1-1 IsCartesianProset
