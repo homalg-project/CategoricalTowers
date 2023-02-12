@@ -24,6 +24,45 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory :=
           ],
           CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsThinCategory ) );
 
+#! @Description
+#!  The property of <A>C</A> being a closed monoidal thin skeletal category.
+#! @Arguments C
+DeclareProperty( "IsMonoidalPoset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsMonoidalPoset", "IsMonoidalPoset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalPoset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsPosetCategory,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a closed monoidal thin skeletal category.
+#! @Arguments C
+DeclareProperty( "IsClosedMonoidalPoset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsClosedMonoidalPoset", "IsCoclosedMonoidalPoset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalPoset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalPoset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory ) );
+
+#! @Description
+#!  The property of <A>C</A> being a coclosed monoidal thin skeletal category.
+#! @Arguments C
+DeclareProperty( "IsCoclosedMonoidalPoset",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsCoclosedMonoidalPoset", "IsClosedMonoidalPoset" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalPoset :=
+  DuplicateFreeList( Concatenation(
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalPoset,
+          CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory ) );
+
 #! @Section Operations
 
 #! @Description

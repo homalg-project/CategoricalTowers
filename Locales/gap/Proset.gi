@@ -6,6 +6,18 @@
 
 SetInfoLevel( InfoLocales, 1 );
 
+InstallTrueMethod( IsMonoidalProset, IsThinCategory and IsMonoidalCategory );
+InstallTrueMethod( IsThinCategory, IsMonoidalProset );
+InstallTrueMethod( IsMonoidalCategory, IsMonoidalProset );
+
+InstallTrueMethod( IsClosedMonoidalProset, IsMonoidalProset and IsClosedMonoidalCategory );
+InstallTrueMethod( IsMonoidalProset, IsClosedMonoidalProset );
+InstallTrueMethod( IsClosedMonoidalCategory, IsClosedMonoidalProset );
+
+InstallTrueMethod( IsCoclosedMonoidalProset, IsMonoidalProset and IsCoclosedMonoidalCategory );
+InstallTrueMethod( IsMonoidalProset, IsCoclosedMonoidalProset );
+InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalProset );
+
 ##
 InstallGlobalFunction( ADD_UNIQUE_MORPHISM,
   function( preordered_set )

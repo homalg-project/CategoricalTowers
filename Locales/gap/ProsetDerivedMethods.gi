@@ -369,3 +369,150 @@ AddDerivationToCAP( InternalCoHomOnMorphisms,
     
 end : Description := "InternalCoHomOnMorphisms as the unique morphism",
       CategoryFilter := IsThinCategory );
+
+#####################################
+# Monoidal prosets
+#####################################
+
+##
+AddDerivationToCAP( TensorProductOnMorphismsWithGivenTensorProducts,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, alpha, beta, r )
+        
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "TensorProductOnMorphismsWithGivenTensorProducts as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( EvaluationMorphismWithGivenSource,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, a, b, s )
+    
+    return UniqueMorphism( cat, s, b );
+    
+end : Description := "EvaluationMorphismWithGivenSource as the unique morphism",
+      CategoryFilter := IsClosedMonoidalProset );
+
+##
+AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, a, b, r )
+    
+    return UniqueMorphism( cat, a, r );
+    
+end : Description := "CoevaluationMorphismWithGivenRange as the unique morphism",
+      CategoryFilter := IsClosedMonoidalProset );
+
+##
+AddDerivationToCAP( CoclosedEvaluationMorphismWithGivenRange,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, a, b, r )
+    
+    return UniqueMorphism( cat, a, r );
+    
+end : Description := "CoclosedEvaluationMorphismWithGivenRange as the unique morphism",
+      CategoryFilter := IsCoclosedMonoidalProset );
+
+##
+AddDerivationToCAP( CoclosedCoevaluationMorphismWithGivenSource,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, a, b, s )
+    
+    return UniqueMorphism( cat, s, a );
+    
+end : Description := "CoclosedCoevaluationMorphismWithGivenSource as the unique morphism",
+      CategoryFilter := IsCoclosedMonoidalProset );
+
+##
+AddDerivationToCAP( AssociatorRightToLeftWithGivenTensorProducts,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, a, b, c, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "AssociatorRightToLeftWithGivenTensorProducts as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( AssociatorLeftToRightWithGivenTensorProducts,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, s, a, b, c, r )
+    
+    return UniqueMorphism( cat, s, r );
+    
+end : Description := "AssociatorLeftToRightWithGivenTensorProducts as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( LeftUnitorWithGivenTensorProduct,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, M, TM )
+    
+    return UniqueMorphism( cat, TM, M );
+    
+end : Description := "LeftUnitorWithGivenTensorProduct as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( LeftUnitorInverseWithGivenTensorProduct,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, M, TM )
+    
+    return UniqueMorphism( cat, M, TM );
+    
+end : Description := "LeftUnitorInverseWithGivenTensorProduct as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( RightUnitorWithGivenTensorProduct,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, M, MT )
+    
+    return UniqueMorphism( cat, MT, M );
+    
+end : Description := "RightUnitorWithGivenTensorProduct as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( RightUnitorInverseWithGivenTensorProduct,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, M, MT )
+    
+    return UniqueMorphism( cat, M, MT );
+    
+end : Description := "RightUnitorInverseWithGivenTensorProduct as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( BraidingWithGivenTensorProducts,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, MN, M, N, NM )
+    
+    return UniqueMorphism( cat, MN, NM );
+    
+end : Description := "BraidingWithGivenTensorProducts as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
+
+##
+AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
+        [ [ UniqueMorphism, 1 ] ],
+        
+  function( cat, NM, M, N, MN )
+    
+    return UniqueMorphism( cat, NM, MN );
+    
+end : Description := "BraidingInverseWithGivenTensorProducts as the unique morphism",
+      CategoryFilter := IsMonoidalProset );
