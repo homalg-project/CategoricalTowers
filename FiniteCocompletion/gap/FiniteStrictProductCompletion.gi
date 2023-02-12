@@ -159,6 +159,10 @@ InstallMethod( FiniteStrictProductCompletion,
     
     Finalize( PC );
     
+    if (HasIsInitialCategory and IsInitialCategory)( C ) then
+        Assert( 0, [ ] = CheckConstructivenessOfCategory( PC, "IsEquippedWithHomomorphismStructure" ) );
+    fi;
+    
     return PC;
     
 end );

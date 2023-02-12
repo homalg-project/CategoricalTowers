@@ -131,6 +131,8 @@ InstallMethod( FiniteStrictCoproductCocompletion,
     
     Finalize( UI );
     
+    Assert( 0, [ ] = CheckConstructivenessOfCategory( UI, "IsEquippedWithHomomorphismStructure" ) );
+    
     return UI;
     
 end );
