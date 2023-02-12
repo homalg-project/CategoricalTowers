@@ -12,6 +12,16 @@ S := Q["x,y,z"];
 A := CategoryOfHomalgFinitelyPresentedGradedLeftModules( S );
 #! IntrinsicCategory( CategoryWithAmbientObjects( Freyd( GradedRows(
 #! Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) )
+Display( A );
+#! A CAP category with name
+#! IntrinsicCategory( CategoryWithAmbientObjects(
+#! Freyd( GradedRows( Q[x,y,z] (with weights [ 1, 1, 1 ]) ) ) ) ):
+#! 
+#! 121 primitive operations were used to derive 312 operations for this category
+#! which algorithmically
+#! * IsEquippedWithHomomorphismStructure
+#! * IsAbelianCategoryWithEnoughProjectives
+#! * IsSymmetricClosedMonoidalCategory
 mat := HomalgMatrix( "[ 0, z, -y,  -z, 0, x,  y, -x, 0 ]", 3, 3, S );
 #! <A 3 x 3 matrix over a graded ring>
 phi := GradedMap( mat, "left", S );
