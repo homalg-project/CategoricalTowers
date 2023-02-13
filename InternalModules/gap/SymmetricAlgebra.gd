@@ -25,7 +25,7 @@ DeclareCategory( "IsInternalSymmetricAlgebra", IsInternalAlgebra and IsObjectInP
 
 #! @Arguments V
 #! @Returns an infinite list
-DeclareAttribute( "SymmetricAlgebraAsInfiniteList", IsCapCategoryObject, "mutable" );
+DeclareAttribute( "SymmetricAlgebraAsZFunction", IsCapCategoryObject, "mutable" );
 
 #! @Arguments V
 #! @Returns a list of lists of morphisms
