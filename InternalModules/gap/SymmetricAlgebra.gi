@@ -11,7 +11,7 @@
 ####################################
 
 ##
-InstallMethod( SymmetricAlgebraAsInfiniteList,
+InstallMethod( SymmetricAlgebraAsZFunction,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
@@ -50,7 +50,7 @@ InstallMethod( SymmetricAlgebraAsInfiniteList,
         
     end;
     
-    sym := MapLazy( IntegersList, sym, 1 );
+    sym := AsZFunction( sym );
     
     sym!.LowerBound := 0;
     sym!.UpperBound := infinity;
@@ -82,7 +82,7 @@ InstallMethod( SymmetricAlgebra,
   function ( V )
     local SV;
     
-    SV := SymmetricAlgebraAsInfiniteList( V );
+    SV := SymmetricAlgebraAsZFunction( V );
     
     SV := ObjectInPositivelyZGradedCategory( SV, PositivelyZGradedCategory( CapCategory( V ) ) );
     
@@ -124,7 +124,7 @@ InstallMethod( SymmetricAlgebraMultiplicationMorphism,
         
     end;
     
-    mul := MapLazy( IntegersList, mul, 1 );
+    mul := AsZFunction( mul );
     
     return MorphismInPositivelyZGradedCategory( SVoSV, mul, SV );
     
@@ -188,7 +188,7 @@ InstallMethod( SymmetricAlgebraMultiplication,
         return mul_matrix_n[i + 1];
     fi;
     
-    S := SymmetricAlgebraAsInfiniteList( V );
+    S := SymmetricAlgebraAsZFunction( V );
     
     id_V := IdentityMorphism( V );
     

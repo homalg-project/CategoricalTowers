@@ -24,7 +24,6 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 |--- | ---------- | ------- |
 | 1. | [**homalg_project**](https://github.com/homalg-project/homalg_project#readme) | https://github.com/homalg-project/homalg_project.git |
 | 2. | [**CAP_project**](https://github.com/homalg-project/CAP_project#readme) | https://github.com/homalg-project/CAP_project.git |
-| 3. | [**InfiniteLists**](https://github.com/homalg-project/InfiniteLists#readme) | https://github.com/homalg-project/InfiniteLists.git |
 
 [html-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-url]: https://homalg-project.github.io/CategoricalTowers/GradedCategories/doc/chap0_mj.html

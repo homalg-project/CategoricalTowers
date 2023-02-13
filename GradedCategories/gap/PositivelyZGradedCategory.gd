@@ -48,10 +48,10 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY" );
 ####################################
 
 #! @Description
-#!  The infinite list underlying the cell (=object or morphism) <A>c</A>.
+#!  The $\mathbb{Z}$-function underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
 #! @Returns a &CAP; category
-DeclareAttribute( "UnderlyingInfiniteList",
+DeclareAttribute( "UnderlyingZFunction",
         IsCellInPositivelyZGradedCategory );
 
 #! @Description
@@ -111,7 +111,7 @@ DeclareAttribute( "PositivelyZGradedCategory",
 #! @Returns a &CAP; object
 #! @Group ObjectInPositivelyZGradedCategory
 DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsZList, IsCapCategory ] );
+        [ IsZFunction, IsCapCategory ] );
 
 #! @Arguments f, lower_bound, upper_bound, C
 #! @Group ObjectInPositivelyZGradedCategory
@@ -139,7 +139,7 @@ DeclareAttribute( "ObjectInPositivelyZGradedCategory",
 #! @Returns a &CAP; morphism
 #! @Group MorphismInPositivelyZGradedCategory
 DeclareOperation( "MorphismInPositivelyZGradedCategory",
-        [ IsObjectInPositivelyZGradedCategory, IsZList, IsObjectInPositivelyZGradedCategory ] );
+        [ IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ] );
 
 #! @Arguments S, f, T
 #! @Group MorphismInPositivelyZGradedCategory
