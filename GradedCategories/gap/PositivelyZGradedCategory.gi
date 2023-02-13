@@ -151,7 +151,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
 ##
 InstallMethod( ObjectInPositivelyZGradedCategory,
         "for an infinite list and a category",
-        [ IsZList, IsCapCategory ],
+        [ IsZFunction, IsCapCategory ],
         
   function ( L, ZC )
     local M;
@@ -165,7 +165,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     M := rec( );
     
     ObjectifyObjectForCAPWithAttributes( M, ZC,
-            UnderlyingInfiniteList, L );
+            UnderlyingZFunction, L );
     
     if L!.UpperBound < infinity then
         SetNonZeroDegreesHull( M, [ L!.LowerBound .. L!.UpperBound ] );
@@ -183,7 +183,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
   function ( f, lower_bound, upper_bound, ZC )
     local L, M;
     
-    L := MapLazy( IntegersList, f, 1 );
+    L := AsZFunction( f );
     
     L!.LowerBound := lower_bound;
     L!.UpperBound := upper_bound;
@@ -324,7 +324,7 @@ InstallMethod( ActiveLowerBound,
         
   function ( M )
     
-    return UnderlyingInfiniteList( M )!.LowerBound;
+    return UnderlyingZFunction( M )!.LowerBound;
     
 end );
 
@@ -336,7 +336,7 @@ InstallMethod( SetActiveLowerBound,
   function ( M, l )
     local L;
     
-    L := UnderlyingInfiniteList( M );
+    L := UnderlyingZFunction( M );
     
     if l > L!.LowerBound then
         L!.LowerBound := l;
@@ -353,7 +353,7 @@ InstallMethod( ActiveUpperBound,
         
   function ( M )
     
-    return UnderlyingInfiniteList( M )!.UpperBound;
+    return UnderlyingZFunction( M )!.UpperBound;
     
 end );
 
@@ -365,7 +365,7 @@ InstallMethod( SetActiveUpperBound,
   function ( M, u )
     local L;
     
-    L := UnderlyingInfiniteList( M );
+    L := UnderlyingZFunction( M );
     
     if u < L!.UpperBound then
         L!.UpperBound := u;
@@ -440,7 +440,7 @@ end );
 ##
 InstallMethod( MorphismInPositivelyZGradedCategory,
         "for an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsZList, IsObjectInPositivelyZGradedCategory ],
+        [ IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ],
         
   function ( S, L, T )
     local phi;
@@ -453,7 +453,7 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
     ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( phi, CapCategory( S ),
             S,
             T,
-            UnderlyingInfiniteList, L );
+            UnderlyingZFunction, L );
     
     return phi;
     
@@ -468,7 +468,7 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
     
     return MorphismInPositivelyZGradedCategory(
                    S,
-                   MapLazy( IntegersList, f, 1 ),
+                   AsZFunction( f ),
                    T );
     
 end );
@@ -593,7 +593,7 @@ InstallMethod( ComponentInclusionMorphism,
     
     iota := MorphismInPositivelyZGradedCategory(
                     ObjectInPositivelyZGradedCategory( V, degree ),
-                    MapLazy( IntegersList, f, 1 ),
+                    AsZFunction( f ),
                     M );
     
     SetNonZeroDegrees( Source( iota ), [ degree ] );
@@ -646,7 +646,7 @@ InstallMethod( ComponentInclusionMorphism,
     
     iota := MorphismInPositivelyZGradedCategory(
                     ObjectInPositivelyZGradedCategory( Md, degree ),
-                    MapLazy( IntegersList, f, 1 ),
+                    AsZFunction( f ),
                     M );
     
     SetNonZeroDegrees( Source( iota ), [ degree ] );
@@ -713,7 +713,7 @@ InstallMethod( DiagonalEmbeddingWithGivenDegrees,
     
     return MorphismInPositivelyZGradedCategory(
                    S,
-                   MapLazy( IntegersList, f, 1 ),
+                   AsZFunction( f ),
                    M );
     
 end );
@@ -783,7 +783,7 @@ InstallMethod( DiagonalEmbedding,
     
     return MorphismInPositivelyZGradedCategory(
                    S,
-                   MapLazy( IntegersList, f, 1 ),
+                   AsZFunction( f ),
                    M );
     
 end );
@@ -954,7 +954,7 @@ InstallMethod( PositivelyZGradedCategory,
       function ( )
         local zero;
         
-        zero := MapLazy( IntegersList, i -> ZeroObject( C ), 1 );
+        zero := AsZFunction( i -> ZeroObject( C ) );
         
         zero!.LowerBound := infinity;
         zero!.UpperBound := - infinity;
@@ -974,7 +974,7 @@ InstallMethod( PositivelyZGradedCategory,
           function ( arg )
             local L, object, degrees;
             
-            L := MapLazy( IntegersList, i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ), 1 );
+            L := AsZFunction( i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ) );
             
             if IsList( arg[1] ) then
                 arg := arg[1];
@@ -1018,7 +1018,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            S,
-                           MapLazy( IntegersList, i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ), 1 ),
+                           AsZFunction( i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ) ),
                            T );
             
           end;
@@ -1050,7 +1050,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            S,
-                           MapLazy( IntegersList, i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ), 1 ),
+                           AsZFunction( i -> CallFuncList( oper, List( arg, a -> CertainDegreePart( a, i ) ) ) ),
                            T );
             
           end;
@@ -1158,7 +1158,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            Source( phi ),
-                           MapLazy( IntegersList, i -> MultiplyWithElementOfCommutativeRingForMorphisms( r, phi[i] ), 1 ),
+                           AsZFunction( i -> MultiplyWithElementOfCommutativeRingForMorphisms( r, phi[i] ) ),
                            Range( phi ) );
             
         end );
@@ -1202,7 +1202,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            L := MapLazy( IntegersList, f, 1 );
+            L := AsZFunction( f );
             
             L!.LowerBound := 0;
             L!.UpperBound := 0;
@@ -1234,7 +1234,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
             end;
             
-            L := MapLazy( IntegersList, f, 1 );
+            L := AsZFunction( f );
             
             L!.LowerBound := ActiveLowerBound( A ) + ActiveLowerBound( B );
             L!.UpperBound := ActiveUpperBound( A ) + ActiveUpperBound( B );
@@ -1281,7 +1281,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            S,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            T );
             
         end );
@@ -1300,7 +1300,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            1oA,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            A );
             
         end );
@@ -1319,7 +1319,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            A,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            1oA );
             
         end );
@@ -1338,7 +1338,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            Ao1,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            A );
             
         end );
@@ -1357,7 +1357,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            A,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            Ao1 );
             
         end );
@@ -1432,7 +1432,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            AoBC,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            ABoC );
             
         end );
@@ -1507,7 +1507,7 @@ InstallMethod( PositivelyZGradedCategory,
             
             return MorphismInPositivelyZGradedCategory(
                            ABoC,
-                           MapLazy( IntegersList, f, 1 ),
+                           AsZFunction( f ),
                            AoBC );
             
         end );
@@ -1540,7 +1540,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
                 return MorphismInPositivelyZGradedCategory(
                                AoB,
-                               MapLazy( IntegersList, f, 1 ),
+                               AsZFunction( f ),
                                BoA );
                 
             end );
@@ -1575,7 +1575,7 @@ InstallMethod( PositivelyZGradedCategory,
                 
                 return MorphismInPositivelyZGradedCategory(
                                BoA,
-                               MapLazy( IntegersList, f, 1 ),
+                               AsZFunction( f ),
                                AoB );
                 
             end );
@@ -1632,7 +1632,7 @@ InstallMethod( \[\],
         
   function ( c, n )
     
-    return UnderlyingInfiniteList( c )[n];
+    return UnderlyingZFunction( c )[n];
     
 end );
 
@@ -1643,7 +1643,7 @@ InstallMethod( Sublist,
         
   function ( c, L )
     
-    c := UnderlyingInfiniteList( c );
+    c := UnderlyingZFunction( c );
     
     return List( L, i -> c[i] );
     
