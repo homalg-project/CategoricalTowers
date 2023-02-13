@@ -62,9 +62,9 @@
   [2XSublist[102X, for IsInternalModuleCell, IsList 3.3-4 
   [2XSupportWithDegrees[102X, for IsElementInInternalAlgebraOrModule 2.3-5 
   [2XSymmetricAlgebra[102X, for IsCapCategoryObject 5.2-3 
-  [2XSymmetricAlgebraAsInfiniteList[102X, for IsCapCategoryObject 5.2-1 
   [2XSymmetricAlgebraAsLeftModule[102X, for IsCapCategoryObject 5.2-5 
   [2XSymmetricAlgebraAsRightModule[102X, for IsCapCategoryObject 5.2-6 
+  [2XSymmetricAlgebraAsZFunction[102X, for IsCapCategoryObject 5.2-1 
   [2XSymmetricAlgebraMultiplication[102X, for IsCapCategoryObject, IsInt, IsInt 5.3-1 
   [2XSymmetricAlgebraMultiplicationListList[102X, for IsCapCategoryObject 5.2-2 
   [2XSymmetricAlgebraMultiplicationMorphism[102X, for IsCapCategoryObject 5.2-4 
