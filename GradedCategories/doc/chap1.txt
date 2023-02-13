@@ -35,12 +35,12 @@
   
   [1X1.3 [33X[0;0YAttributes[133X[101X
   
-  [1X1.3-1 UnderlyingInfiniteList[101X
+  [1X1.3-1 UnderlyingZFunction[101X
   
-  [33X[1;0Y[29X[2XUnderlyingInfiniteList[102X( [3Xc[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingZFunction[102X( [3Xc[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YThe infinite list underlying the cell (=object or morphism) [3Xc[103X.[133X
+  [33X[0;0YThe [23X\mathbb{Z}[123X-function underlying the cell (=object or morphism) [3Xc[103X.[133X
   
   [1X1.3-2 NonZeroParts[101X
   

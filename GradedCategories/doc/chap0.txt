@@ -6,10 +6,10 @@
                         [1X Graded closures of categories [101X
   
   
-                                   2023.02-01
+                                   2023.02-02
   
   
-                                9 February 2023
+                                1 February 2023
   
   
                                 Mohamed Barakat
@@ -48,7 +48,7 @@
     1.2 [33X[0;0YGlobal variables[133X
       1.2-1 CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY
     1.3 [33X[0;0YAttributes[133X
-      1.3-1 UnderlyingInfiniteList
+      1.3-1 UnderlyingZFunction
       1.3-2 NonZeroParts
       1.3-3 NonZeroDegrees
       1.3-4 NonZeroDegreesHull
