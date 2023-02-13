@@ -25,18 +25,28 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.image }}
+    defaults:
+      run:
+        working-directory: /home/gap/.gap/pkg/
+    env:
+      # HOME is already set in the docker container, but GitHub Actions overwrites it
+      HOME: /home/gap
     steps:
-      # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
-      - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
-      - uses: actions/checkout@v3
+      - name: Keep workflow active even if repository has no activity for 60 days
+        if: github.event_name != 'pull_request'
+        run: |
+          curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable"
+      - name: Check out repo
+        uses: actions/checkout@v3
         with:
           # the persisted token interferes with the subsplit token used below
           persist-credentials: false
           fetch-depth: 0
-      - run: cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
-      - run: |
-          export HOME="/home/gap"
-          cd /home/gap/.gap/pkg/
+      - name: Move checked out repo to GAP user root dir
+        run: |
+          cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
+      - name: Prepare environment
+        run: |
           cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
@@ -49,23 +59,32 @@ jobs:
           git clone --depth 1 -vv https://github.com/homalg-project/ParallelizedIterators.git
           git clone --depth 1 -vv https://github.com/homalg-project/alcove.git
           git clone --depth 1 -vv https://github.com/homalg-project/MatroidGeneration.git
-          # build documentation of packages which we might want to reference, keep this in sync with `dev/.release`
-          [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
-          [ -d "CAP_project/CompilerForCAP" ] && make -C "CAP_project/CompilerForCAP" doc
-          [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
-          [ -d "CAP_project/CartesianCategories" ] && make -C "CAP_project/CartesianCategories" doc
-          [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
-          [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
-          [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
-          [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
-          [ -d "CategoricalTowers/CategoryConstructor" ] && make -C "CategoricalTowers/CategoryConstructor" doc
-          [ -d "CategoricalTowers/Toposes" ] && make -C "CategoricalTowers/Toposes" doc
+      - name: Build documentation of packages which we might want to reference
+        run: |
+          # keep this in sync with `dev/.release`
+          if [ -d "CAP_project/CAP" ]; then make -C "CAP_project/CAP" doc; fi
+          if [ -d "CAP_project/CompilerForCAP" ]; then make -C "CAP_project/CompilerForCAP" doc; fi
+          if [ -d "CAP_project/MonoidalCategories" ]; then make -C "CAP_project/MonoidalCategories" doc; fi
+          if [ -d "CAP_project/CartesianCategories" ]; then make -C "CAP_project/CartesianCategories" doc; fi
+          if [ -d "CAP_project/FreydCategoriesForCAP" ]; then make -C "CAP_project/FreydCategoriesForCAP" doc; fi
+          if [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ]; then make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc; fi
+          if [ -d "homalg_project/homalg" ]; then make -C "homalg_project/homalg" doc; fi
+          if [ -d "homalg_project/Modules" ]; then make -C "homalg_project/Modules" doc; fi
+          if [ -d "CategoricalTowers/CategoryConstructor" ]; then make -C "CategoricalTowers/CategoryConstructor" doc; fi
+          if [ -d "CategoricalTowers/Toposes" ]; then make -C "CategoricalTowers/Toposes" doc; fi
+      - name: Test CategoricalTowers
+        run: |
           make -C CategoricalTowers -j $(nproc) --output-sync ci-test
+      - name: Test FinSetsForCAP
+        run: |
           make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
+      - name: Test MatroidGeneration
+        run: |
           make -C MatroidGeneration -j $(nproc) --output-sync ci-test
+      - name: Release package or simulate release
+        run: |
           cd CategoricalTowers
           LANG=C.UTF-8 python3 dev/process_coverage.py
-          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./dev/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           CUR_SHA=$(git rev-parse --verify HEAD)
@@ -73,26 +92,12 @@ jobs:
           git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1)
           if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git checkout master; \
-            LANG=C.UTF-8 ./dev/make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
-            # publish subsplits
-            git subtree split --prefix=Algebroids -b Algebroids-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Algebroids Algebroids-split:master; \
-            git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbientObjects-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CategoriesWithAmbientObjects CategoriesWithAmbientObjects-split:master; \
-            git subtree split --prefix=CategoryConstructor -b CategoryConstructor-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CategoryConstructor CategoryConstructor-split:master; \
-            git subtree split --prefix=CatReps -b CatReps-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/CatReps CatReps-split:master; \
-            git subtree split --prefix=ExteriorPowersCategories -b ExteriorPowersCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/ExteriorPowersCategories ExteriorPowersCategories-split:master; \
-            git subtree split --prefix=FiniteCocompletion -b FiniteCocompletion-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FiniteCocompletion FiniteCocompletion-split:master; \
-            git subtree split --prefix=FunctorCategories -b FunctorCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/FunctorCategories FunctorCategories-split:master; \
-            git subtree split --prefix=GradedCategories -b GradedCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/GradedCategories GradedCategories-split:master; \
-            git subtree split --prefix=InternalModules -b InternalModules-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/InternalModules InternalModules-split:master; \
-            git subtree split --prefix=IntrinsicCategories -b IntrinsicCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/IntrinsicCategories IntrinsicCategories-split:master; \
-            git subtree split --prefix=IntrinsicGradedModules -b IntrinsicGradedModules-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/IntrinsicGradedModules IntrinsicGradedModules-split:master; \
-            git subtree split --prefix=IntrinsicModules -b IntrinsicModules-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/IntrinsicModules IntrinsicModules-split:master; \
-            git subtree split --prefix=LazyCategories -b LazyCategories-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/LazyCategories LazyCategories-split:master; \
-            git subtree split --prefix=Locales -b Locales-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Locales Locales-split:master; \
-            git subtree split --prefix=PreSheaves -b PreSheaves-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/PreSheaves PreSheaves-split:master; \
-            git subtree split --prefix=SubcategoriesForCAP -b SubcategoriesForCAP-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/SubcategoriesForCAP SubcategoriesForCAP-split:master; \
-            git subtree split --prefix=Toposes -b Toposes-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/Toposes Toposes-split:master; \
-            git subtree split --prefix=ZariskiFrames -b ZariskiFrames-split && git push https://homalg-project:${{ secrets.SUBSPLIT_PUSH_SECRET }}@github.com/homalg-project/ZariskiFrames ZariskiFrames-split:master; \
+            TOKEN="${{ secrets.GITHUB_TOKEN }}" SUBSPLIT_PUSH_SECRET="${{ secrets.SUBSPLIT_PUSH_SECRET }}" ./dev/make_dist.sh; \
           else \
-            LANG=C.UTF-8 ./dev/make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}" --only-tarball; \
+            TOKEN="${{ secrets.GITHUB_TOKEN }}" ./dev/simulate_dist.sh; \
           fi
+      - name: Upload code coverage
+        if: github.event_name != 'schedule' && matrix.image == 'ghcr.io/homalg-project/gap-docker-master:latest'
+        run: |
+          cd CategoricalTowers
+          ./dev/upload_codecov.sh
