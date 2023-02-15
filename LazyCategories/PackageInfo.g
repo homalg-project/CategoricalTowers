@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "LazyCategories",
 Subtitle := "Construct an equivalent lazy category out of a CAP category",
-Version := "2023.02-01",
-Date := "11/02/2023",
-Date := "11/02/2023",
+Version := "2023.02-02",
+Date := "15/02/2023",
+Date := "15/02/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [
