@@ -54,6 +54,20 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY" );
 ####################################
 
 #! @Description
+#!  Return the category $C$ underlying the positively Z-graded category
+#!  category <A>ZC</A><C> := PositivelyZGradedCategory(</C> $C$ <C>)</C>).
+#! @Arguments UC
+DeclareAttribute( "UnderlyingCategory",
+        IsPositivelyZGradedCategory );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsPositivelyZGradedCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
 #!  The $\mathbb{Z}$-function underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
 #! @Returns a Z-function

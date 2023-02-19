@@ -479,13 +479,13 @@ InstallMethodWithCrispCache( MorphismInPositivelyZGradedCategory,
   function ( S, phi, degree, T )
     local f;
 
-    if not IsIdenticalObj( CapCategory( phi ), CapCategory( S )!.UnderlyingCategory ) then
+    if not IsIdenticalObj( CapCategory( phi ), UnderlyingCategory( CapCategory( S ) ) ) then
         
         Error( "phi must lie in the same category as the category underlying the category of S" );
         
     fi;
     
-    if not IsIdenticalObj( CapCategory( phi ), CapCategory( T )!.UnderlyingCategory ) then
+    if not IsIdenticalObj( CapCategory( phi ), UnderlyingCategory( CapCategory( T ) ) ) then
         
         Error( "phi must lie in the same category as the category underlying the category of T" );
         
@@ -915,7 +915,7 @@ InstallMethod( PositivelyZGradedCategory,
     
     SetFilterObj( ZC, IsPositivelyZGradedCategory );
     
-    ZC!.UnderlyingCategory := C;
+    SetUnderlyingCategory( ZC, C );
     
     AddObjectRepresentation( ZC, IsObjectInPositivelyZGradedCategory );
     AddMorphismRepresentation( ZC, IsMorphismInPositivelyZGradedCategory );
@@ -1213,7 +1213,7 @@ InstallMethod( PositivelyZGradedCategory,
           function ( A, B )
             local zero_object, tensor_product_indices_AB, f, L, tensor_product, degrees;
             
-            zero_object := ZeroObject( CapCategory( A )!.UnderlyingCategory );
+            zero_object := ZeroObject( UnderlyingCategory( CapCategory( A ) ) );
             
             tensor_product_indices_AB := TensorProductIndices( A, B );
             
