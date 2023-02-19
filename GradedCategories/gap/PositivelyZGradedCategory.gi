@@ -445,6 +445,9 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
   function ( S, L, T )
     local phi;
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( S ), CapCategory( T ) ) );
+    
     phi := CreateCapCategoryMorphismWithAttributes( CapCategory( S ),
                    S,
                    T,
