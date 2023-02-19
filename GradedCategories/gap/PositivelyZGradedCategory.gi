@@ -162,10 +162,8 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
         L!.UpperBound := infinity;
     fi;
     
-    M := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( M, ZC,
-            UnderlyingZFunction, L );
+    M := CreateCapCategoryObjectWithAttributes( ZC,
+                 UnderlyingZFunction, L );
     
     if L!.UpperBound < infinity then
         SetNonZeroDegreesHull( M, [ L!.LowerBound .. L!.UpperBound ] );
@@ -445,15 +443,13 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
   function ( S, L, T )
     local phi;
     
-    phi := rec(
-               LowerBound := Maximum( ActiveLowerBound( S ), ActiveLowerBound( T ) ),
-               UpperBound := Minimum( ActiveUpperBound( S ), ActiveUpperBound( T ) ),
-               );
+    phi := CreateCapCategoryMorphismWithAttributes( CapCategory( S ),
+                   S,
+                   T,
+                   UnderlyingZFunction, L );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( phi, CapCategory( S ),
-            S,
-            T,
-            UnderlyingZFunction, L );
+    phi!.LowerBound := Maximum( ActiveLowerBound( S ), ActiveLowerBound( T ) );
+    phi!.UpperBound := Minimum( ActiveUpperBound( S ), ActiveUpperBound( T ) );
     
     return phi;
     
