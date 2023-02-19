@@ -4,26 +4,33 @@
   
   [1X1.1 [33X[0;0YGAP Categories[133X[101X
   
-  [1X1.1-1 IsCellInPositivelyZGradedCategory[101X
+  [1X1.1-1 IsPositivelyZGradedCategory[101X
+  
+  [33X[1;0Y[29X[2XIsPositivelyZGradedCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of positively Z-graded categories.[133X
+  
+  [1X1.1-2 IsCellInPositivelyZGradedCategory[101X
   
   [33X[1;0Y[29X[2XIsCellInPositivelyZGradedCategory[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of cells in a positively Z-graded category[133X
+  [33X[0;0YThe [5XGAP[105X category of cells in a positively Z-graded category.[133X
   
-  [1X1.1-2 IsObjectInPositivelyZGradedCategory[101X
+  [1X1.1-3 IsObjectInPositivelyZGradedCategory[101X
   
   [33X[1;0Y[29X[2XIsObjectInPositivelyZGradedCategory[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in a positively Z-graded category[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in a positively Z-graded category.[133X
   
-  [1X1.1-3 IsMorphismInPositivelyZGradedCategory[101X
+  [1X1.1-4 IsMorphismInPositivelyZGradedCategory[101X
   
   [33X[1;0Y[29X[2XIsMorphismInPositivelyZGradedCategory[102X( [3Xmorphism[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a positively Z-graded category[133X
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a positively Z-graded category.[133X
   
   
   [1X1.2 [33X[0;0YGlobal variables[133X[101X
@@ -35,28 +42,35 @@
   
   [1X1.3 [33X[0;0YAttributes[133X[101X
   
-  [1X1.3-1 UnderlyingZFunction[101X
+  [1X1.3-1 UnderlyingCategory[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3XUC[103X ) [32X attribute[133X
+  
+  [33X[0;0YReturn  the  category [23XC[123X underlying the positively Z-graded category category
+  [3XZC[103X[10X := PositivelyZGradedCategory([110X [23XC[123X [10X)[110X).[133X
+  
+  [1X1.3-2 UnderlyingZFunction[101X
   
   [33X[1;0Y[29X[2XUnderlyingZFunction[102X( [3Xc[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  [6XReturns:[106X  [33X[0;10Ya Z-function[133X
   
   [33X[0;0YThe [23X\mathbb{Z}[123X-function underlying the cell (=object or morphism) [3Xc[103X.[133X
   
-  [1X1.3-2 NonZeroParts[101X
+  [1X1.3-3 NonZeroParts[101X
   
   [33X[1;0Y[29X[2XNonZeroParts[102X( [3Xobject[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YThe support of the object [3Xc[103X.[133X
   
-  [1X1.3-3 NonZeroDegrees[101X
+  [1X1.3-4 NonZeroDegrees[101X
   
   [33X[1;0Y[29X[2XNonZeroDegrees[102X( [3Xobject[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
   [33X[0;0YThe list of degrees of the support of the object [3Xc[103X.[133X
   
-  [1X1.3-4 NonZeroDegreesHull[101X
+  [1X1.3-5 NonZeroDegreesHull[101X
   
   [33X[1;0Y[29X[2XNonZeroDegreesHull[102X( [3Xobject[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -64,17 +78,17 @@
   [33X[0;0YA  list  of  integers  containing  the list of degrees of the support of the
   object [3Xc[103X.[133X
   
-  [1X1.3-5 NonZeroPartsWithDegrees[101X
+  [1X1.3-6 NonZeroPartsWithDegrees[101X
   
   [33X[1;0Y[29X[2XNonZeroPartsWithDegrees[102X( [3Xobject[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
-  [1X1.3-6 SupportWithDegrees[101X
+  [1X1.3-7 SupportWithDegrees[101X
   
   [33X[1;0Y[29X[2XSupportWithDegrees[102X( [3Xobject[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
-  [1X1.3-7 SupportWithDegreesWithGivenDegrees[101X
+  [1X1.3-8 SupportWithDegreesWithGivenDegrees[101X
   
   [33X[1;0Y[29X[2XSupportWithDegreesWithGivenDegrees[102X( [3Xobject[103X, [3XL[103X ) [32X operation[133X
   
@@ -92,14 +106,15 @@
   
   [1X1.4-2 ObjectInPositivelyZGradedCategory[101X
   
-  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XL[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XZC[103X, [3XL[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3Xf[103X, [3Xlower_bound[103X, [3Xupper_bound[103X, [3XC[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XM[103X, [3Xdegree[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XM[103X ) [32X attribute[133X
   [33X[1;0Y[29X[2XObjectInPositivelyZGradedCategory[102X( [3XL[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
   
-  [33X[0;0YConstruct an object in a positively [23XZ[123X-graded category.[133X
+  [33X[0;0YConstruct  an  object  in the positively [23X\mathbb{Z}[123X-graded category [3XZC[103X using
+  the Z-function [3XL[103X.[133X
   
   [1X1.4-3 MorphismInPositivelyZGradedCategory[101X
   
