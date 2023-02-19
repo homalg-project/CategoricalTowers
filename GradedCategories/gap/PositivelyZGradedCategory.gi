@@ -478,29 +478,21 @@ InstallMethodWithCrispCache( MorphismInPositivelyZGradedCategory,
         
   function ( S, phi, degree, T )
     local f;
-
+    
     if not IsIdenticalObj( CapCategory( phi ), UnderlyingCategory( CapCategory( S ) ) ) then
-        
         Error( "phi must lie in the same category as the category underlying the category of S" );
-        
     fi;
     
     if not IsIdenticalObj( CapCategory( phi ), UnderlyingCategory( CapCategory( T ) ) ) then
-        
         Error( "phi must lie in the same category as the category underlying the category of T" );
-        
     fi;
     
     if not IsEqualForObjects( Source( phi ), S[degree] ) then
-        
         Error( "the source of phi be equal to S[degree]" );
-        
     fi;
     
     if not IsEqualForObjects( Range( phi ), T[degree] ) then
-        
         Error( "the range of phi be equal to T[degree]" );
-        
     fi;
     
     f := function ( n )
