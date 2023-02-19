@@ -13,20 +13,26 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of cells in a positively Z-graded category
+#!  The &GAP; category of positively Z-graded categories.
+#! @Arguments object
+DeclareCategory( "IsPositivelyZGradedCategory",
+        IsCapCategory );
+
+#! @Description
+#!  The &GAP; category of cells in a positively Z-graded category.
 #! @Arguments object
 DeclareCategory( "IsCellInPositivelyZGradedCategory",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in a positively Z-graded category
+#!  The &GAP; category of objects in a positively Z-graded category.
 #! @Arguments object
 DeclareCategory( "IsObjectInPositivelyZGradedCategory",
         IsCellInPositivelyZGradedCategory and
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in a positively Z-graded category
+#!  The &GAP; category of morphisms in a positively Z-graded category.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInPositivelyZGradedCategory",
         IsCellInPositivelyZGradedCategory and
@@ -48,9 +54,23 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY" );
 ####################################
 
 #! @Description
+#!  Return the category $C$ underlying the positively Z-graded category
+#!  category <A>ZC</A><C> := PositivelyZGradedCategory(</C> $C$ <C>)</C>).
+#! @Arguments UC
+DeclareAttribute( "UnderlyingCategory",
+        IsPositivelyZGradedCategory );
+
+CapJitAddTypeSignature( "UnderlyingCategory", [ IsPositivelyZGradedCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
+#! @Description
 #!  The $\mathbb{Z}$-function underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
-#! @Returns a &CAP; category
+#! @Returns a Z-function
 DeclareAttribute( "UnderlyingZFunction",
         IsCellInPositivelyZGradedCategory );
 
@@ -106,17 +126,17 @@ DeclareAttribute( "PositivelyZGradedCategory",
         IsCapCategory );
 
 #! @Description
-#!  Construct an object in a positively $Z$-graded category.
-#! @Arguments L, C
+#!  Construct an object in the positively $\mathbb{Z}$-graded category <A>ZC</A> using the Z-function <A>L</A>.
+#! @Arguments ZC, L
 #! @Returns a &CAP; object
 #! @Group ObjectInPositivelyZGradedCategory
 DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsZFunction, IsCapCategory ] );
+        [ IsPositivelyZGradedCategory, IsZFunction ] );
 
 #! @Arguments f, lower_bound, upper_bound, C
 #! @Group ObjectInPositivelyZGradedCategory
 DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsFunction, IsInt, IsAdditiveElement, IsCapCategory ] );
+        [ IsPositivelyZGradedCategory, IsFunction, IsInt, IsAdditiveElement ] );
 
 #! @Arguments M, degree
 #! @Group ObjectInPositivelyZGradedCategory

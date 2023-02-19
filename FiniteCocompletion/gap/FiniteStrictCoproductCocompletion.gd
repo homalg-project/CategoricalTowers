@@ -98,7 +98,7 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictCoproductCocomplet
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-
+    
 end );
 
 #! @Description
