@@ -198,9 +198,11 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         [ IsCapCategoryObject, IsInt ],
         
   function ( M, degree )
-    local zero, degrees, f, ZC;
+    local C, zero, degrees, f, ZC;
     
-    zero := ZeroObject( CapCategory( M ) );
+    C := CapCategory( M );
+    
+    zero := ZeroObject( C );
     
     f :=
       function ( n )
@@ -213,7 +215,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         
     end;
     
-    ZC := PositivelyZGradedCategory( CapCategory( zero ) );
+    ZC := PositivelyZGradedCategory( C );
     
     ## do not overwrite M since it used in the above function f
     return ObjectInPositivelyZGradedCategory( f, degree, degree, ZC );
@@ -226,9 +228,11 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         [ IsSemisimpleCategoryObject and IsRepresentationCategoryZGradedObject ],
         
   function ( M )
-    local zero, degrees, f, ZC;
+    local C, zero, degrees, f, ZC;
     
-    zero := ZeroObject( CapCategory( M ) );
+    C := CapCategory( M );
+    
+    zero := ZeroObject( C );
     
     M := DegreeDecomposition( M );
     
@@ -248,7 +252,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
         
     end;
     
-    ZC := PositivelyZGradedCategory( CapCategory( zero ) );
+    ZC := PositivelyZGradedCategory( C );
     
     ## do not overwrite M since it used in the above function f
     return ObjectInPositivelyZGradedCategory( f, Minimum( degrees ), Maximum( degrees ), ZC );
