@@ -891,8 +891,7 @@ InstallMethod( PositivelyZGradedCategory,
     local name, ZC, properties, create_func_object, create_func_morphism, create_func_universal_morphism,
           recnames, skip, func, pos, info, with_given_object_name, add, required_operations;
     
-    if IsBound( C!.IsPositivelyZGradedCategory ) and
-       C!.IsPositivelyZGradedCategory = true then
+    if IsPositivelyZGradedCategory( C ) then
         Error( "trying to iterate the construction\n" );
     fi;
     
@@ -916,7 +915,7 @@ InstallMethod( PositivelyZGradedCategory,
     
     ZC!.category_as_first_argument := false;
     
-    ZC!.IsPositivelyZGradedCategory := true;
+    SetFilterObj( ZC, IsPositivelyZGradedCategory );
     
     ZC!.UnderlyingCategory := C;
     

@@ -13,6 +13,12 @@
 ####################################
 
 #! @Description
+#!  The &GAP; category of positively Z-graded categories.
+#! @Arguments object
+DeclareCategory( "IsPositivelyZGradedCategory",
+        IsCapCategory );
+
+#! @Description
 #!  The &GAP; category of cells in a positively Z-graded category.
 #! @Arguments object
 DeclareCategory( "IsCellInPositivelyZGradedCategory",
