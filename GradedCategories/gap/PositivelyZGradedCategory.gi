@@ -438,17 +438,20 @@ InstallMethod( SupportWithDegrees,
 end );
 
 ##
-InstallMethod( MorphismInPositivelyZGradedCategory,
-        "for an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
-        [ IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ],
+InstallOtherMethodForCompilerForCAP( MorphismInPositivelyZGradedCategory,
+        "for a positively Z-graded category, an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
+        [ IsPositivelyZGradedCategory, IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ],
         
-  function ( S, L, T )
+  function ( ZC, S, L, T )
     local phi;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, IsIdenticalObj( CapCategory( S ), CapCategory( T ) ) );
+    Assert( 0, IsIdenticalObj( ZC, CapCategory( S ) ) );
     
-    phi := CreateCapCategoryMorphismWithAttributes( CapCategory( S ),
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( ZC, CapCategory( T ) ) );
+    
+    phi := CreateCapCategoryMorphismWithAttributes( ZC,
                    S,
                    T,
                    UnderlyingZFunction, L );
@@ -457,6 +460,20 @@ InstallMethod( MorphismInPositivelyZGradedCategory,
     phi!.UpperBound := Minimum( ActiveUpperBound( S ), ActiveUpperBound( T ) );
     
     return phi;
+    
+end );
+
+##
+InstallMethod( MorphismInPositivelyZGradedCategory,
+        "for an object in a positively Z-graded category, an infinite list, and an object in a positively Z-graded category",
+        [ IsObjectInPositivelyZGradedCategory, IsZFunction, IsObjectInPositivelyZGradedCategory ],
+        
+  function ( S, L, T )
+    
+    return MorphismInPositivelyZGradedCategory( CapCategory( S ),
+                   S,
+                   L,
+                   T );
     
 end );
 
