@@ -84,7 +84,7 @@ InstallMethod( SymmetricAlgebra,
     
     SV := SymmetricAlgebraAsZFunction( V );
     
-    SV := ObjectInPositivelyZGradedCategory( SV, PositivelyZGradedCategory( CapCategory( V ) ) );
+    SV := ObjectInPositivelyZGradedCategory( PositivelyZGradedCategory( CapCategory( V ) ), SV );
     
     SetFilterObj( SV, IsInternalAlgebra );
     

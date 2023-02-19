@@ -150,10 +150,10 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
 
 ##
 InstallMethod( ObjectInPositivelyZGradedCategory,
-        "for an infinite list and a category",
-        [ IsZFunction, IsCapCategory ],
+        "for a positively Z-graded category and an infinite list",
+        [ IsPositivelyZGradedCategory, IsZFunction ],
         
-  function ( L, ZC )
+  function ( ZC, L )
     local M;
     
     if not IsBound( L!.LowerBound ) then
@@ -175,10 +175,10 @@ end );
 
 ##
 InstallMethod( ObjectInPositivelyZGradedCategory,
-        "for a unary function, an integer, an integer or infinity, and a category",
-        [ IsFunction, IsInt, IsAdditiveElement, IsCapCategory ],
+        "for a positively Z-graded category, a unary function, an integer, an integer or infinity",
+        [ IsPositivelyZGradedCategory, IsFunction, IsInt, IsAdditiveElement ],
         
-  function ( f, lower_bound, upper_bound, ZC )
+  function ( ZC, f, lower_bound, upper_bound )
     local L, M;
     
     L := AsZFunction( f );
@@ -186,9 +186,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     L!.LowerBound := lower_bound;
     L!.UpperBound := upper_bound;
     
-    M := ObjectInPositivelyZGradedCategory( L, ZC );
-    
-    return M;
+    return ObjectInPositivelyZGradedCategory( ZC, L );
     
 end );
 
@@ -218,7 +216,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
     ZC := PositivelyZGradedCategory( C );
     
     ## do not overwrite M since it used in the above function f
-    return ObjectInPositivelyZGradedCategory( f, degree, degree, ZC );
+    return ObjectInPositivelyZGradedCategory( ZC, f, degree, degree );
     
 end );
 
@@ -255,7 +253,7 @@ InstallMethodWithCrispCache( ObjectInPositivelyZGradedCategory,
     ZC := PositivelyZGradedCategory( C );
     
     ## do not overwrite M since it used in the above function f
-    return ObjectInPositivelyZGradedCategory( f, Minimum( degrees ), Maximum( degrees ), ZC );
+    return ObjectInPositivelyZGradedCategory( ZC, f, Minimum( degrees ), Maximum( degrees ) );
     
 end );
 
@@ -310,7 +308,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
     
     ZC := PositivelyZGradedCategory( CapCategory( zero ) );
     
-    M := ObjectInPositivelyZGradedCategory( f, Minimum( degrees ), Maximum( degrees ), ZC );
+    M := ObjectInPositivelyZGradedCategory( ZC, f, Minimum( degrees ), Maximum( degrees ) );
     
     ## do not overwrite degrees as it is used in the function f as a multi-list
     SetNonZeroDegreesHull( M, Set( degrees ) );
@@ -958,7 +956,7 @@ InstallMethod( PositivelyZGradedCategory,
         zero!.LowerBound := infinity;
         zero!.UpperBound := - infinity;
         
-        return ObjectInPositivelyZGradedCategory( zero, ZC );
+        return ObjectInPositivelyZGradedCategory( ZC, zero );
         
     end );
     
@@ -982,7 +980,7 @@ InstallMethod( PositivelyZGradedCategory,
             L!.LowerBound := Minimum( List( arg, ActiveLowerBound ) );
             L!.UpperBound := Maximum( List( arg, ActiveUpperBound ) );
             
-            object := ObjectInPositivelyZGradedCategory( L, ZC );
+            object := ObjectInPositivelyZGradedCategory( ZC, L );
             
             if ForAll( arg, x -> HasNonZeroDegreesHull( x ) or HasNonZeroDegrees ( x ) ) then
                 
@@ -1206,7 +1204,7 @@ InstallMethod( PositivelyZGradedCategory,
             L!.LowerBound := 0;
             L!.UpperBound := 0;
             
-            return ObjectInPositivelyZGradedCategory( L, ZC );
+            return ObjectInPositivelyZGradedCategory( ZC, L );
             
         end );
         
@@ -1238,7 +1236,7 @@ InstallMethod( PositivelyZGradedCategory,
             L!.LowerBound := ActiveLowerBound( A ) + ActiveLowerBound( B );
             L!.UpperBound := ActiveUpperBound( A ) + ActiveUpperBound( B );
             
-            tensor_product := ObjectInPositivelyZGradedCategory( L, ZC );
+            tensor_product := ObjectInPositivelyZGradedCategory( ZC, L );
             
             if ForAll( [ A, B ], x -> HasNonZeroDegreesHull( x ) or HasNonZeroDegrees ( x ) ) then
                 

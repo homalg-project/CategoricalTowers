@@ -112,17 +112,17 @@ DeclareAttribute( "PositivelyZGradedCategory",
         IsCapCategory );
 
 #! @Description
-#!  Construct an object in a positively $Z$-graded category.
-#! @Arguments L, C
+#!  Construct an object in the positively $\mathbb{Z}$-graded category <A>ZC</A> using the Z-function <A>L</A>.
+#! @Arguments ZC, L
 #! @Returns a &CAP; object
 #! @Group ObjectInPositivelyZGradedCategory
 DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsZFunction, IsCapCategory ] );
+        [ IsPositivelyZGradedCategory, IsZFunction ] );
 
 #! @Arguments f, lower_bound, upper_bound, C
 #! @Group ObjectInPositivelyZGradedCategory
 DeclareOperation( "ObjectInPositivelyZGradedCategory",
-        [ IsFunction, IsInt, IsAdditiveElement, IsCapCategory ] );
+        [ IsPositivelyZGradedCategory, IsFunction, IsInt, IsAdditiveElement ] );
 
 #! @Arguments M, degree
 #! @Group ObjectInPositivelyZGradedCategory
