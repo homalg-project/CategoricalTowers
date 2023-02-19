@@ -917,16 +917,16 @@ InstallMethod( PositivelyZGradedCategory,
     
     name := Concatenation( name, Name( C ) );
     
-    ZC := CreateCapCategory( name : is_computable := false );
+    ZC := CreateCapCategory( name,
+                  IsPositivelyZGradedCategory,
+                  IsObjectInPositivelyZGradedCategory,
+                  IsMorphismInPositivelyZGradedCategory,
+                  IsCapCategoryTwoCell
+                  : is_computable := false );
     
     ZC!.category_as_first_argument := false;
     
-    SetFilterObj( ZC, IsPositivelyZGradedCategory );
-    
     SetUnderlyingCategory( ZC, C );
-    
-    AddObjectRepresentation( ZC, IsObjectInPositivelyZGradedCategory );
-    AddMorphismRepresentation( ZC, IsMorphismInPositivelyZGradedCategory );
     
     SetCachingOfCategoryCrisp( ZC );
     
