@@ -1,7 +1,7 @@
 name: InternalModules
-version: "2023.02-05"
+version: "2023.02-06"
 license: "GPL-2.0-or-later"
-date: 2023-02-13
+date: 2023-02-19
 description: |
     Modules over internal algebras
 
@@ -30,7 +30,7 @@ needed-pkgs:
       version: ">= 2023.02-03"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "GradedCategories"
-      version: ">= 2023.02.02"
+      version: ">= 2023.02.03"
       url: "https://homalg-project.github.io/pkg/GradedCategories"
     - name: "AttributeCategoryForCAP"
       version: ">= 2023.02-03"
@@ -54,11 +54,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/InternalModules/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2023.02-05/InternalModules-2023.02-05.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2023.02-06/InternalModules-2023.02-06.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2023.02-05/InternalModules-2023.02-05.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2023.02-06/InternalModules-2023.02-06.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2023.02-05/InternalModules-2023.02-05.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/InternalModules-2023.02-06/InternalModules-2023.02-06.pdf
 
 abstract: |
 
@@ -71,7 +71,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BZ23</span>]   <b class='BibAuthor'>Barakat, M. and Zickgraf, F.</b>,
      <i class='BibTitle'>InternalModules, Modules over internal algebras,
-             Version 2023.02-05</i>
+             Version 2023.02-06</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/InternalModules">https://homalg-project.github.io/pkg/InternalModules</a></span>.
@@ -79,10 +79,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ InternalModules2023.02-05,
+    @misc{ InternalModules2023.02-06,
       author =           {Barakat, M. and Zickgraf, F.},
       title =            {{InternalModules},  Modules  over  internal  algebras,
-                          {V}ersion 2023.02-05},
+                          {V}ersion 2023.02-06},
       month =            {Feb},
       year =             {2023},
       note =             {GAP package},
