@@ -149,7 +149,7 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY,
           ] );
 
 ##
-InstallMethod( ObjectInPositivelyZGradedCategory,
+InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedCategory,
         "for a positively Z-graded category and an infinite list",
         [ IsPositivelyZGradedCategory, IsZFunction ],
         
@@ -174,7 +174,7 @@ InstallMethod( ObjectInPositivelyZGradedCategory,
 end );
 
 ##
-InstallMethod( ObjectInPositivelyZGradedCategory,
+InstallMethodForCompilerForCAP( ObjectInPositivelyZGradedCategory,
         "for a positively Z-graded category, a unary function, an integer, an integer or infinity",
         [ IsPositivelyZGradedCategory, IsFunction, IsInt, IsAdditiveElement ],
         
