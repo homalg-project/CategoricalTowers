@@ -885,16 +885,12 @@ InstallMethod( PositivelyZGradedCategory,
         Error( "trying to iterate the construction\n" );
     fi;
     
-    if not (HasIsSkeletalCategory( C ) and IsSkeletalCategory( C )) then
-        
+    if not (HasIsSkeletalCategory and IsSkeletalCategory)( C ) then
         Error( "the input category must be a skeletal category" );
-        
     fi;
     
     if not (CanCompute( C, "ZeroObject" ) and CanCompute( C, "ZeroMorphism" )) then
-        
         Error( "the input category must have a zero object and zero morphisms" );
-        
     fi;
     
     name := "The positively graded category of ";
