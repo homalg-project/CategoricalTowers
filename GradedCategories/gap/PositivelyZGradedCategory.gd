@@ -13,20 +13,20 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of cells in a positively Z-graded category
+#!  The &GAP; category of cells in a positively Z-graded category.
 #! @Arguments object
 DeclareCategory( "IsCellInPositivelyZGradedCategory",
         IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of objects in a positively Z-graded category
+#!  The &GAP; category of objects in a positively Z-graded category.
 #! @Arguments object
 DeclareCategory( "IsObjectInPositivelyZGradedCategory",
         IsCellInPositivelyZGradedCategory and
         IsCapCategoryObject );
 
 #! @Description
-#!  The &GAP; category of morphisms in a positively Z-graded category
+#!  The &GAP; category of morphisms in a positively Z-graded category.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInPositivelyZGradedCategory",
         IsCellInPositivelyZGradedCategory and
@@ -50,7 +50,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_GRADED_CATEGORY" );
 #! @Description
 #!  The $\mathbb{Z}$-function underlying the cell (=object or morphism) <A>c</A>.
 #! @Arguments c
-#! @Returns a &CAP; category
+#! @Returns a Z-function
 DeclareAttribute( "UnderlyingZFunction",
         IsCellInPositivelyZGradedCategory );
 
