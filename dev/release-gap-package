@@ -119,13 +119,14 @@ run_gap() {
   # for people whose gap script is broken (by not honoring -A, thus loading
   # Browse, which inserts that extra character). I am looking at you,
   # Sebastian!
+  mkdir -p "$TMP_DIR"
   gap_output=$( \
     (echo 'OnBreak:=function() Print("FATAL ERROR"); FORCE_QUIT_GAP(1); end;;' ; cat - ; echo ; echo "FORCE_QUIT_GAP(0);") \
     | $GAP -A -q -b 2>&1 \
-    | tr -d '\r' )
-  mkdir -p "$TMP_DIR"
-  echo "$gap_output" > "$TMP_DIR/gap-error.log"
-  if echo "$gap_output" | grep -q '\(Error\|FATAL ERROR\|Syntax \)' ; then
+    | tr -d '\r' \
+    | tee "$TMP_DIR/gap-error.log" )
+  if grep -q '\(Error\|FATAL ERROR\|Syntax \)' "$TMP_DIR/gap-error.log" ; then
+    cat "$TMP_DIR/gap-error.log"
     error "there was an error running GAP, see $TMP_DIR/gap-error.log"
   fi
 }
@@ -210,7 +211,7 @@ if [ "x$WEB_DIR" = x ] ; then
     WEB_DIR="$SRC_DIR/gh-pages"
 fi
 if [ ! -d "$WEB_DIR" ] ; then
-    error "could not find 'webdir' with clone of your gh-pages branch"
+    error "could not find webdir \"${WEB_DIR}\" with clone of your gh-pages branch"
 fi
 
 # Check for presence of the update script
@@ -315,7 +316,7 @@ if not IsPackageMarkedForLoading("$PKG", "") then
 fi;
 Read("makedoc.g");
 GAPInput
-    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || error "non resolved reference(s) found in the manual"
+    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || (cat makedoc.log; error "non resolved reference(s) found in the manual")
     rm -f makedoc.log
 elif [ -f doc/make_doc ] ; then
     notice "Building GAP package documentation (using doc/make_doc)"
@@ -462,7 +463,7 @@ rm -rf "${TMP_DIR:?}/$BASENAME"*
 umask 0022
 
 notice "Exporting repository content for tag '$TAG'"
-git archive --prefix="$BASENAME/" "$TAG" . | tar xf - -C "$TMP_DIR"
+git archive --prefix="$BASENAME/" HEAD . | tar xf - -C "$TMP_DIR"
 
 
 # Build the package documentation, run autoconf, etc.
@@ -478,7 +479,7 @@ fi;
 PushOptions(rec(relativePath:="../../.."));
 Read("makedoc.g");
 GAPInput
-    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || error "non resolved reference(s) found in the manual"
+    ! grep -E "WARNING: non resolved reference" makedoc.log >/dev/null 2>&1 || (cat makedoc.log; error "non resolved reference(s) found in the manual")
     rm -f makedoc.log
     rm -f doc/*.tex
 elif [ -f doc/make_doc ] ; then
@@ -522,7 +523,7 @@ fi
 chmod -R a+r .
 
 # basic sanity check
-fgrep -q -r '<a href="/' */*.htm* &&
+fgrep -r '<a href="/' */*.htm* &&
     error "HTML manual contains absolute paths"
 
 
