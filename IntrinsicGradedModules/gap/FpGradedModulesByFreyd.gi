@@ -174,9 +174,10 @@ InstallMethod( FpGradedLeftModules,
         
         H := RangeCategoryOfHomomorphismStructure( P );
         
-        INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_ROWS( H );
-        
-        Finalize( H : FinalizeCategory := true );
+        if IsCategoryOfRows( H ) then
+            INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_ROWS( H );
+            Finalize( H : FinalizeCategory := true );
+        fi;
         
     fi;
     
@@ -219,6 +220,9 @@ InstallMethod( FpGradedLeftModules,
         
     end );
     
+    SetRangeCategoryOfHomomorphismStructure( P, P );
+    SetIsEquippedWithHomomorphismStructure( P, true );
+    
     Finalize( P : FinalizeCategory := true );
     
     if HasRangeCategoryOfHomomorphismStructure( P ) then
@@ -252,9 +256,10 @@ InstallMethod( FpGradedRightModules,
         
         H := RangeCategoryOfHomomorphismStructure( P );
         
-        INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS( H );
-        
-        Finalize( H );
+        if IsCategoryOfColumns( H ) then
+            INSTALL_HOMALG_STYLE_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS( H );
+            Finalize( H : FinalizeCategory := true );
+        fi;
         
     fi;
     
@@ -296,6 +301,9 @@ InstallMethod( FpGradedRightModules,
         return GradedRowOrColumnMorphism( Source( alpha ), ( r / HomalgRing( mat ) ) * mat, Range( alpha ) );
         
     end );
+    
+    SetRangeCategoryOfHomomorphismStructure( P, P );
+    SetIsEquippedWithHomomorphismStructure( P, true );
     
     Finalize( P : FinalizeCategory := true );
     

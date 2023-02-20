@@ -443,7 +443,21 @@ InstallMethodWithCache( CoPreSheaves,
     
     Hom := FunctorCategory( B, C : FinalizeCategory := true );
     
-    O := Opposite( Hom : FinalizeCategory := true, only_primitive_operations := true );
+    O := Opposite( Hom : FinalizeCategory := false, only_primitive_operations := true );
+    
+    if not HasRangeCategoryOfHomomorphismStructure( O ) and
+       (HasIsInitialCategory and IsInitialCategory)( B ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( O, O );
+        SetIsEquippedWithHomomorphismStructure( O, true );
+        
+    fi;
+    
+    Finalize( O : FinalizeCategory := true );
+    
+    if (HasIsInitialCategory and IsInitialCategory)( B ) then
+        Assert( 0, [ ] = CheckConstructivenessOfCategory( O, "IsEquippedWithHomomorphismStructure" ) );
+    fi;
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
@@ -539,6 +553,14 @@ InstallMethodWithCache( CoPreSheaves,
         "SetOfObjects",
         "SetOfGeneratingMorphisms",
         ];
+    
+    if not HasRangeCategoryOfHomomorphismStructure( coPSh ) and
+       (HasIsInitialCategory and IsInitialCategory)( B ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( coPSh, coPSh );
+        SetIsEquippedWithHomomorphismStructure( coPSh, true );
+        
+    fi;
     
     Finalize( coPSh );
     

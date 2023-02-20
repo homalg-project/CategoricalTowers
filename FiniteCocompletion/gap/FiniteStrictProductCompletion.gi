@@ -55,7 +55,21 @@ InstallMethod( FiniteStrictProductCompletion,
     
     UopC := FiniteStrictCoproductCocompletion( opC : FinalizeCategory := true );
     
-    opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := true );
+    opUopC := Opposite( UopC : only_primitive_operations := true, FinalizeCategory := false );
+    
+    if not HasRangeCategoryOfHomomorphismStructure( opUopC ) and
+       (HasIsInitialCategory and IsInitialCategory)( C ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( opUopC, opUopC );
+        SetIsEquippedWithHomomorphismStructure( opUopC, true );
+        
+    fi;
+    
+    Finalize( opUopC : FinalizeCategory := true );
+    
+    if (HasIsInitialCategory and IsInitialCategory)( C ) then
+        Assert( 0, [ ] = CheckConstructivenessOfCategory( opUopC, "IsEquippedWithHomomorphismStructure" ) );
+    fi;
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
@@ -156,6 +170,14 @@ InstallMethod( FiniteStrictProductCompletion,
                   : FinalizeCategory := false );
     
     SetUnderlyingCategory( PC, C );
+    
+    if not HasRangeCategoryOfHomomorphismStructure( PC ) and
+       (HasIsInitialCategory and IsInitialCategory)( C ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( PC, PC );
+        SetIsEquippedWithHomomorphismStructure( PC, true );
+        
+    fi;
     
     Finalize( PC );
     

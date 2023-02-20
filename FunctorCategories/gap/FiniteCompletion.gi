@@ -22,9 +22,24 @@ InstallMethodWithCache( FiniteCompletion,
                    category_filter := IsWrapperCapCategory and IsFiniteCompletion,
                    category_object_filter := IsWrapperCapCategoryObject and IsObjectInFiniteCompletion,
                    category_morphism_filter := IsWrapperCapCategoryMorphism and IsMorphismInFiniteCompletion,
-                   only_primitive_operations := true ) );
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     SetUnderlyingCategory( finite_completion, fp_category );
+    
+    if not HasRangeCategoryOfHomomorphismStructure( finite_completion ) and
+       (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( finite_completion, finite_completion );
+        SetIsEquippedWithHomomorphismStructure( finite_completion, true );
+        
+    fi;
+    
+    Finalize( finite_completion : FinalizeCategory := true );
+    
+    if (HasIsInitialCategory and IsInitialCategory)( fp_category ) then
+        Assert( 0, [ ] = CheckConstructivenessOfCategory( finite_completion, "IsEquippedWithHomomorphismStructure" ) );
+    fi;
     
     return finite_completion;
     

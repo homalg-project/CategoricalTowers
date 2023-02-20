@@ -518,7 +518,8 @@ InstallMethodWithCache( FunctorCategory,
                    modeling_tower_object_datum := modeling_tower_object_datum,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
-                   only_primitive_operations := true ) : FinalizeCategory := false );
+                   only_primitive_operations := true )
+              : FinalizeCategory := false );
     
     if HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) and
        HasCounit( B ) and HasComultiplication( B ) then
@@ -668,6 +669,14 @@ InstallMethodWithCache( FunctorCategory,
         "SetOfGeneratingMorphisms",
         "OppositeOfSource",
         ];
+    
+    if not HasRangeCategoryOfHomomorphismStructure( Hom ) and
+       (HasIsInitialCategory and IsInitialCategory)( B ) then
+        
+        SetRangeCategoryOfHomomorphismStructure( Hom, Hom );
+        SetIsEquippedWithHomomorphismStructure( Hom, true );
+        
+    fi;
     
     Finalize( Hom );
     
