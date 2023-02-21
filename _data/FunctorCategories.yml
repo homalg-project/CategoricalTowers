@@ -1,7 +1,7 @@
 name: FunctorCategories
-version: "2023.02-11"
+version: "2023.02-12"
 license: "GPL-2.0-or-later"
-date: 2023-02-13
+date: 2023-02-21
 description: |
     Categories of functors
 
@@ -27,13 +27,13 @@ needed-pkgs:
       version: ">= 2022.12-01"
       url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
-      version: ">= 2023.02-03"
+      version: ">= 2023.02-09"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
-      version: ">= 2023.02-03"
+      version: ">= 2023.02-04"
       url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "CartesianCategories"
-      version: ">= 2023.02-03"
+      version: ">= 2023.02-04"
       url: "https://homalg-project.github.io/pkg/CartesianCategories"
     - name: "Algebroids"
       version: ">= 2023.02-01"
@@ -63,7 +63,7 @@ needed-pkgs:
       version: ">= 2023.01-08"
       url: "https://homalg-project.github.io/pkg/Toposes"
     - name: "FinSetsForCAP"
-      version: ">= 2023.01-02"
+      version: ">= 2023.02-04"
       url: "https://homalg-project.github.io/pkg/FinSetsForCAP"
 
 www: https://homalg-project.github.io/pkg/FunctorCategories
@@ -72,11 +72,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FunctorCategorie
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.02-11/FunctorCategories-2023.02-11.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.02-12/FunctorCategories-2023.02-12.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.02-11/FunctorCategories-2023.02-11.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.02-12/FunctorCategories-2023.02-12.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.02-11/FunctorCategories-2023.02-11.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FunctorCategories-2023.02-12/FunctorCategories-2023.02-12.pdf
 
 abstract: |
 
@@ -89,7 +89,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS23</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FunctorCategories, Categories of functors,
-             Version 2023.02-11</i>
+             Version 2023.02-12</i>
      (<span class='BibYear'>2023</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FunctorCategories">https://homalg-project.github.io/pkg/FunctorCategories</a></span>.
@@ -97,10 +97,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FunctorCategories2023.02-11,
+    @misc{ FunctorCategories2023.02-12,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FunctorCategories}, Categories of functors, {V}ersion
-                          2023.02-11},
+                          2023.02-12},
       month =            {Feb},
       year =             {2023},
       note =             {GAP package},
