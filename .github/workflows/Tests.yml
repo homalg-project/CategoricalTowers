@@ -51,7 +51,6 @@ jobs:
           git clone --depth 1 -vv https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/CAP_project.git
-          git clone --depth 1 -vv https://github.com/homalg-project/InfiniteLists.git
           git clone --depth 1 -vv https://github.com/homalg-project/HigherHomologicalAlgebra.git
           git clone --depth 1 -vv https://github.com/homalg-project/QPA2.git
           git clone --depth 1 -vv https://github.com/homalg-project/FinSetsForCAP.git
@@ -84,7 +83,7 @@ jobs:
       - name: Release package or simulate release
         run: |
           cd CategoricalTowers
-          LANG=C.UTF-8 python3 dev/process_coverage.py
+          python3 dev/process_coverage.py
           git config --global user.name "Bot"
           git config --global user.email "empty"
           CUR_SHA=$(git rev-parse --verify HEAD)

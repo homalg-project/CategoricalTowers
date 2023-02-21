@@ -3,91 +3,127 @@
 set -e
 
 # Algebroids
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/Algebroids" --webdir "$PWD/gh-pages/Algebroids" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of Algebroids"
+./dev/release-gap-package --srcdir "$PWD/Algebroids" --webdir "$PWD/gh-pages/Algebroids" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=Algebroids -b Algebroids-split
+echo ""
 
 # CategoriesWithAmbientObjects
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/CategoriesWithAmbientObjects" --webdir "$PWD/gh-pages/CategoriesWithAmbientObjects" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of CategoriesWithAmbientObjects"
+./dev/release-gap-package --srcdir "$PWD/CategoriesWithAmbientObjects" --webdir "$PWD/gh-pages/CategoriesWithAmbientObjects" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=CategoriesWithAmbientObjects -b CategoriesWithAmbientObjects-split
+echo ""
 
 # CategoryConstructor
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/CategoryConstructor" --webdir "$PWD/gh-pages/CategoryConstructor" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of CategoryConstructor"
+./dev/release-gap-package --srcdir "$PWD/CategoryConstructor" --webdir "$PWD/gh-pages/CategoryConstructor" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=CategoryConstructor -b CategoryConstructor-split
+echo ""
 
 # CatReps
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/CatReps" --webdir "$PWD/gh-pages/CatReps" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of CatReps"
+./dev/release-gap-package --srcdir "$PWD/CatReps" --webdir "$PWD/gh-pages/CatReps" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=CatReps -b CatReps-split
+echo ""
 
 # ExteriorPowersCategories
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ExteriorPowersCategories" --webdir "$PWD/gh-pages/ExteriorPowersCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of ExteriorPowersCategories"
+./dev/release-gap-package --srcdir "$PWD/ExteriorPowersCategories" --webdir "$PWD/gh-pages/ExteriorPowersCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=ExteriorPowersCategories -b ExteriorPowersCategories-split
+echo ""
 
 # FiniteCocompletion
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FiniteCocompletion" --webdir "$PWD/gh-pages/FiniteCocompletion" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of FiniteCocompletion"
+./dev/release-gap-package --srcdir "$PWD/FiniteCocompletion" --webdir "$PWD/gh-pages/FiniteCocompletion" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=FiniteCocompletion -b FiniteCocompletion-split
+echo ""
 
 # FunctorCategories
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/FunctorCategories" --webdir "$PWD/gh-pages/FunctorCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of FunctorCategories"
+./dev/release-gap-package --srcdir "$PWD/FunctorCategories" --webdir "$PWD/gh-pages/FunctorCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=FunctorCategories -b FunctorCategories-split
+echo ""
 
 # GradedCategories
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/GradedCategories" --webdir "$PWD/gh-pages/GradedCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of GradedCategories"
+./dev/release-gap-package --srcdir "$PWD/GradedCategories" --webdir "$PWD/gh-pages/GradedCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=GradedCategories -b GradedCategories-split
+echo ""
 
 # InternalModules
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/InternalModules" --webdir "$PWD/gh-pages/InternalModules" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of InternalModules"
+./dev/release-gap-package --srcdir "$PWD/InternalModules" --webdir "$PWD/gh-pages/InternalModules" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=InternalModules -b InternalModules-split
+echo ""
 
 # IntrinsicCategories
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/IntrinsicCategories" --webdir "$PWD/gh-pages/IntrinsicCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of IntrinsicCategories"
+./dev/release-gap-package --srcdir "$PWD/IntrinsicCategories" --webdir "$PWD/gh-pages/IntrinsicCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=IntrinsicCategories -b IntrinsicCategories-split
+echo ""
 
 # IntrinsicGradedModules
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/IntrinsicGradedModules" --webdir "$PWD/gh-pages/IntrinsicGradedModules" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of IntrinsicGradedModules"
+./dev/release-gap-package --srcdir "$PWD/IntrinsicGradedModules" --webdir "$PWD/gh-pages/IntrinsicGradedModules" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=IntrinsicGradedModules -b IntrinsicGradedModules-split
+echo ""
 
 # IntrinsicModules
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/IntrinsicModules" --webdir "$PWD/gh-pages/IntrinsicModules" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of IntrinsicModules"
+./dev/release-gap-package --srcdir "$PWD/IntrinsicModules" --webdir "$PWD/gh-pages/IntrinsicModules" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=IntrinsicModules -b IntrinsicModules-split
+echo ""
 
 # LazyCategories
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/LazyCategories" --webdir "$PWD/gh-pages/LazyCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of LazyCategories"
+./dev/release-gap-package --srcdir "$PWD/LazyCategories" --webdir "$PWD/gh-pages/LazyCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=LazyCategories -b LazyCategories-split
+echo ""
 
 # Locales
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/Locales" --webdir "$PWD/gh-pages/Locales" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of Locales"
+./dev/release-gap-package --srcdir "$PWD/Locales" --webdir "$PWD/gh-pages/Locales" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=Locales -b Locales-split
+echo ""
 
 # PreSheaves
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/PreSheaves" --webdir "$PWD/gh-pages/PreSheaves" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of PreSheaves"
+./dev/release-gap-package --srcdir "$PWD/PreSheaves" --webdir "$PWD/gh-pages/PreSheaves" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=PreSheaves -b PreSheaves-split
+echo ""
 
 # SubcategoriesForCAP
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of SubcategoriesForCAP"
+./dev/release-gap-package --srcdir "$PWD/SubcategoriesForCAP" --webdir "$PWD/gh-pages/SubcategoriesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=SubcategoriesForCAP -b SubcategoriesForCAP-split
+echo ""
 
 # Toposes
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/Toposes" --webdir "$PWD/gh-pages/Toposes" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of Toposes"
+./dev/release-gap-package --srcdir "$PWD/Toposes" --webdir "$PWD/gh-pages/Toposes" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=Toposes -b Toposes-split
+echo ""
 
 # ZariskiFrames
-./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ZariskiFrames" --webdir "$PWD/gh-pages/ZariskiFrames" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"  --only-tarball
+echo "Simulate release of ZariskiFrames"
+./dev/release-gap-package --srcdir "$PWD/ZariskiFrames" --webdir "$PWD/gh-pages/ZariskiFrames" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
 #git subtree split --prefix=ZariskiFrames -b ZariskiFrames-split
+echo ""
