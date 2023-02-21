@@ -40,6 +40,16 @@ InstallGlobalFunction( ADD_UNIQUE_MORPHISM,
 end );
 
 ##
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
+  function( preordered_set )
+    
+    ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY( preordered_set );
+    
+    ADD_UNIQUE_MORPHISM( preordered_set );
+    
+end );
+
+##
 InstallMethod( Display,
         "for an object in a proset",
         [ IsMorphismInThinCategory ],
