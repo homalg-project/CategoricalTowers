@@ -33,35 +33,38 @@
   [2XAsCellOfStableProset[102X, for IsCapCategoryCell 6.3-7 
   [2XAsMultipleDifference[102X 9.1-2 
   [2XAsSingleDifference[102X, for IsObjectInMeetSemilatticeOfMultipleDifferences 9.2-1 
-  [2XAsUnionOfMultipleDifferences[102X, for IsDatastructureForConstructibleObjects 11.3-9 
-  [2XAttach[102X, for IsNodeInDatastructureOfConstructibleObjects, IsObjectInThinCategory, IsList 11.2-3 
+  [2XAsUnionOfMultipleDifferences[102X, for IsDatastructureForConstructibleObjects 12.3-9 
+  [2XAttach[102X, for IsNodeInDatastructureOfConstructibleObjects, IsObjectInThinCategory, IsList 12.2-3 
   [2XBooleanAlgebraOfConstructibleObjectsAsUnionOfDifferences[102X, for IsCapCategory 10.1-3 
   [2XBooleanAlgebraOfConstructibleObjectsAsUnionOfMultipleDifferences[102X, for IsCapCategory 10.1-1 
   [2XCanonicalObject[102X, for IsConstructibleObject 10.3-3 
-      for IsObjectInMeetSemilatticeOfDifferences 13.3-3 
+      for IsObjectInMeetSemilatticeOfDifferences 14.3-3 
   [2XCAP_INTERNAL_METHOD_NAME_LIST_FOR_PREORDERED_SET_OF_CATEGORY[102X 6.1-1 
+  [2XClassicalTruthValue[102X, for IsObjectInIntervalCategory 11.4-1 
   [2XClosure[102X, for IsConstructibleObject 10.3-7 
-      for IsObjectInMeetSemilatticeOfDifferences 13.3-5 
+      for IsObjectInMeetSemilatticeOfDifferences 14.3-5 
   [2XClosureAsConstructibleObject[102X, for IsConstructibleObject 10.3-8 
   [2XConegationOnMorphisms[102X, for IsCapCategoryMorphism 5.1-2 
   [2XConegationOnMorphismsWithGivenConegations[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 5.1-3 
   [2XConegationOnObjects[102X, for IsCapCategoryObject 5.1-1 
+  [2XCreateIntervalCategory[102X 11.1-1 
   [2XCreateProsetOrPosetOfCategory[102X, for IsCapCategory 6.3-1 
-  [2XDatastructureForConstructibleObject[102X 11.2-1 
-  [2XDigraphOfChildren[102X, for IsDatastructureForConstructibleObjects 11.3-11 
-  [2XDigraphOfParents[102X, for IsDatastructureForConstructibleObjects 11.3-10 
+  [2XDatastructureForConstructibleObject[102X 12.2-1 
+  [2XDigraphOfChildren[102X, for IsDatastructureForConstructibleObjects 12.3-11 
+  [2XDigraphOfParents[102X, for IsDatastructureForConstructibleObjects 12.3-10 
   [2XDimension[102X, for IsConstructibleObject 10.3-9 
-      for IsObjectInMeetSemilatticeOfDifferences 13.3-6 
+      for IsObjectInMeetSemilatticeOfDifferences 14.3-6 
   [2XDistinguishedSubtrahend[102X, for IsObjectInMeetSemilatticeOfSingleDifferences 8.2-2 
   [2XFactorizeObject[102X, for IsConstructibleObject 10.3-4 
-      for IsObjectInMeetSemilatticeOfDifferences 13.3-4 
+      for IsObjectInMeetSemilatticeOfDifferences 14.3-4 
   [2XFactors[102X, for IsObjectInThinCategory 3.2-1 
   [2XFactorsAttr[102X, for IsObjectInThinCategory 3.2-2 
   [2XForAllOp[102X, for IsConstructibleObject, IsFunction 10.4-6 
   [2XForAnyOp[102X, for IsConstructibleObject, IsFunction 10.4-7 
   [2XFormalDifferenceOfNormalizedObjects[102X, for IsObjectInThinCategory, IsObjectInThinCategory 8.1-2 
   [2XInfoLocales[102X 1.1-1 
-  [2XInfoSquashDatastructureForConstructibleObjects[102X 11.1-1 
+  [2XInfoSquashDatastructureForConstructibleObjects[102X 12.1-1 
+  [2XIntervalCategory[102X 11.1-2 
   [2XIsBicartesianProset[102X, for IsCapCategory 3.1-5 
   [2XIsBiHeytingAlgebra[102X, for IsCapCategory 7.3-2 
   [2XIsBiHeytingAlgebroid[102X, for IsCapCategory 7.3-1 
@@ -80,8 +83,9 @@
   [2XIsCapCategoryObjectInProsetOfACategory[102X, for IsCapCategoryCellInProsetOfACategory and IsCapCategoryObjectInProsetOrPosetOfACategory 6.5-9 
   [2XIsCapCategoryObjectInProsetOrPosetOfACategory[102X, for IsCapCategoryCellInProsetOrPosetOfACategory and IsObjectInThinCategory 6.5-6 
   [2XIsCartesianProset[102X, for IsCapCategory 3.1-1 
+  [2XIsCellInIntervalCategory[102X, for IsCapCategoryCell 11.3-2 
   [2XIsClosed[102X, for IsConstructibleObject 10.2-2 
-      for IsObjectInMeetSemilatticeOfDifferences 13.2-1 
+      for IsObjectInMeetSemilatticeOfDifferences 14.2-1 
   [2XIsClosedMonoidalLattice[102X, for IsCapCategory 3.1-10 
   [2XIsClosedMonoidalPoset[102X, for IsCapCategory 2.3-3 
   [2XIsClosedMonoidalProset[102X, for IsCapCategory 1.6-3 
@@ -94,20 +98,21 @@
   [2XIsConstructibleObject[102X, for IsObjectInThinCategory 10.5-2 
   [2XIsConstructibleObjectAsUnionOfMultipleDifferences[102X, for IsConstructibleObject 10.5-5 
   [2XIsConstructibleObjectAsUnionOfSingleDifferences[102X, for IsConstructibleObject 10.5-8 
-  [2XIsDatastructureForConstructibleObjects[102X, for IsAttributeStoringRep 11.4-1 
+  [2XIsDatastructureForConstructibleObjects[102X, for IsAttributeStoringRep 12.4-1 
   [2XIsDistributiveBicartesianProset[102X, for IsCapCategory 3.1-7 
   [2XIsDistributiveLattice[102X, for IsCapCategory 3.1-8 
-  [2XIsDone[102X, for IsDatastructureForConstructibleObjects 11.3-1 
+  [2XIsDone[102X, for IsDatastructureForConstructibleObjects 12.3-1 
   [2XIsEqualForObjectsIfIsHomSetInhabited[102X, for IsCapCategoryObject, IsCapCategoryObject 2.1-1 
   [2XIsHeytingAlgebra[102X, for IsCapCategory 4.4-2 
   [2XIsHeytingAlgebroid[102X, for IsCapCategory 4.4-1 
-  [2XIsHomSetInhabited[102X, for IsNodeInDatastructureOfConstructibleObjects, IsNodeInDatastructureOfConstructibleObjects 11.3-4 
+  [2XIsHomSetInhabited[102X, for IsNodeInDatastructureOfConstructibleObjects, IsNodeInDatastructureOfConstructibleObjects 12.3-4 
+  [2XIsIntervalCategory[102X, for IsCapCategory 11.3-1 
   [2XIsJoinSemiLattice[102X, for IsCapCategory 3.1-4 
   [2XIsLattice[102X, for IsCapCategory 3.1-6 
   [2XIsLocallyClosed[102X, for IsConstructibleObject 10.2-3 
-      for IsObjectInMeetSemilatticeOfDifferences 13.2-3 
+      for IsObjectInMeetSemilatticeOfDifferences 14.2-3 
   [2XIsMeetSemiLattice[102X, for IsCapCategory 3.1-2 
-  [2XIsMeetSemilatticeOfDifferences[102X, for IsCapCategory and IsThinCategory 13.1-1 
+  [2XIsMeetSemilatticeOfDifferences[102X, for IsCapCategory and IsThinCategory 14.1-1 
   [2XIsMeetSemilatticeOfMultipleDifferences[102X, for IsMeetSemilatticeOfDifferences 9.4-1 
   [2XIsMeetSemilatticeOfSingleDifferences[102X, for IsMeetSemilatticeOfDifferences 8.3-1 
   [2XIsMonoidalLattice[102X, for IsCapCategory 3.1-9 
@@ -116,17 +121,19 @@
   [2XIsMorphismBetweenConstructibleObjects[102X, for IsMorphismInThinCategory 10.5-3 
   [2XIsMorphismBetweenConstructibleObjectsAsUnionOfDifferences[102X, for IsMorphismBetweenConstructibleObjects 10.5-9 
   [2XIsMorphismBetweenConstructibleObjectsAsUnionOfMultipleDifferences[102X, for IsMorphismBetweenConstructibleObjects 10.5-6 
-  [2XIsMorphismInMeetSemilatticeOfDifferences[102X, for IsMorphismInThinCategory 13.1-3 
+  [2XIsMorphismInIntervalCategory[102X, for IsCellInIntervalCategory and IsCapCategoryMorphism 11.3-4 
+  [2XIsMorphismInMeetSemilatticeOfDifferences[102X, for IsMorphismInThinCategory 14.1-3 
   [2XIsMorphismInMeetSemilatticeOfMultipleDifferences[102X, for IsMorphismInMeetSemilatticeOfDifferences 9.4-3 
   [2XIsMorphismInMeetSemilatticeOfSingleDifferences[102X, for IsMorphismInMeetSemilatticeOfDifferences 8.3-3 
   [2XIsMorphismInThinCategory[102X, for IsCapCategoryMorphism and IsMonomorphism and IsEpimorphism 1.5-2 
-  [2XIsNodeInDatastructureOfConstructibleObjects[102X, for IsAttributeStoringRep 11.4-2 
-  [2XIsObjectInMeetSemilatticeOfDifferences[102X, for IsObjectInThinCategory 13.1-2 
+  [2XIsNodeInDatastructureOfConstructibleObjects[102X, for IsAttributeStoringRep 12.4-2 
+  [2XIsObjectInIntervalCategory[102X, for IsCellInIntervalCategory and IsCapCategoryObject 11.3-3 
+  [2XIsObjectInMeetSemilatticeOfDifferences[102X, for IsObjectInThinCategory 14.1-2 
   [2XIsObjectInMeetSemilatticeOfMultipleDifferences[102X, for IsObjectInMeetSemilatticeOfDifferences 9.4-2 
   [2XIsObjectInMeetSemilatticeOfSingleDifferences[102X, for IsObjectInMeetSemilatticeOfDifferences 8.3-2 
   [2XIsObjectInThinCategory[102X, for IsCapCategoryObject 1.5-1 
   [2XIsOpen[102X, for IsConstructibleObject 10.2-1 
-      for IsObjectInMeetSemilatticeOfDifferences 13.2-2 
+      for IsObjectInMeetSemilatticeOfDifferences 14.2-2 
   [2XIsPosetCategory[102X, for IsCapCategory 2.3-1 
   [2XIsPosetOfCapCategory[102X, for IsProsetOrPosetOfCapCategory 6.5-11 
   [2XIsProsetOfCapCategory[102X, for IsProsetOrPosetOfCapCategory 6.5-7 
@@ -138,10 +145,10 @@
       for IsConstructibleObjectAsUnionOfSingleDifferences 10.4-9 
   [2XListOfSingleDifferences[102X, for IsObjectInMeetSemilatticeOfMultipleDifferences 9.3-1 
   [2XLocallyClosedPart[102X, for IsConstructibleObject 10.3-2 
-      for IsObjectInMeetSemilatticeOfDifferences 13.3-2 
+      for IsObjectInMeetSemilatticeOfDifferences 14.3-2 
   [2XMeetSemilatticeOfMultipleDifferences[102X, for IsCapCategory 9.1-1 
   [2XMeetSemilatticeOfSingleDifferences[102X, for IsCapCategory 8.1-1 
-  [2XMinimalLevelOfPreNodes[102X, for IsDatastructureForConstructibleObjects 11.3-2 
+  [2XMinimalLevelOfPreNodes[102X, for IsDatastructureForConstructibleObjects 12.3-2 
   [2XMinuendAndSubtrahendInUnderlyingLattice[102X, for IsObjectInMeetSemilatticeOfSingleDifferences 8.2-1 
   [2XMorphismFromDoubleConegation[102X, for IsCapCategoryObject 5.1-4 
   [2XMorphismFromDoubleConegationWithGivenDoubleConegation[102X, for IsCapCategoryObject, IsCapCategoryObject 5.1-5 
@@ -154,32 +161,32 @@
   [2XNegationOnMorphisms[102X, for IsCapCategoryMorphism 4.1-2 
   [2XNegationOnMorphismsWithGivenNegations[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 4.1-3 
   [2XNegationOnObjects[102X, for IsCapCategoryObject 4.1-1 
-  [2XNodeInDatastructureOfConstructibleObject[102X, for IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool 11.2-2 
+  [2XNodeInDatastructureOfConstructibleObject[102X, for IsDatastructureForConstructibleObjects, IsObjectInThinCategory, IsBool 12.2-2 
   [2XNormalizedObject[102X, for IsConstructibleObject 10.3-5 
   [2XNormalizeObject[102X, for IsConstructibleObject 10.4-1 
-      for IsObjectInMeetSemilatticeOfDifferences 13.4-1 
-  [2XPop[102X, for IsDatastructureForConstructibleObjects 11.3-3 
+      for IsObjectInMeetSemilatticeOfDifferences 14.4-1 
+  [2XPop[102X, for IsDatastructureForConstructibleObjects 12.3-3 
   [2XPosetOfCategory[102X, for IsCapCategory 6.3-4 
   [2XProsetOfCategory[102X, for IsCapCategory 6.3-2 
-  [2XRemove[102X, for IsNodeInDatastructureOfConstructibleObjects 11.3-5 
-  [2XRemoveObsoleteSubtrahends[102X, for IsDatastructureForConstructibleObjects 11.3-7 
-  [2XSquash[102X, for IsDatastructureForConstructibleObjects 11.3-8 
-  [2XSquashOnce[102X, for IsDatastructureForConstructibleObjects 11.3-6 
+  [2XRemove[102X, for IsNodeInDatastructureOfConstructibleObjects 12.3-5 
+  [2XRemoveObsoleteSubtrahends[102X, for IsDatastructureForConstructibleObjects 12.3-7 
+  [2XSquash[102X, for IsDatastructureForConstructibleObjects 12.3-8 
+  [2XSquashOnce[102X, for IsDatastructureForConstructibleObjects 12.3-6 
   [2XStableInternalCoHom[102X, for IsCapCategoryObject, IsCapCategoryObject 5.2-1 
   [2XStableInternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 4.2-1 
   [2XStablePosetOfCategory[102X, for IsCapCategory 6.3-5 
   [2XStableProsetOfCategory[102X, for IsCapCategory 6.3-3 
   [2XStandardizedObject[102X, for IsConstructibleObject 10.3-6 
   [2XStandardizeObject[102X, for IsConstructibleObject 10.4-2 
-      for IsObjectInMeetSemilatticeOfDifferences 13.4-2 
+      for IsObjectInMeetSemilatticeOfDifferences 14.4-2 
   [2XUnderlyingCategory[102X, for IsBooleanAlgebraOfConstructibleObjects 10.3-1 
-      for IsMeetSemilatticeOfDifferences 13.3-1 
+      for IsMeetSemilatticeOfDifferences 14.3-1 
   [2XUnderlyingCell[102X, for IsCapCategoryCellInProsetOfACategory 6.2-2 
   [2XUnionOfDifferences[102X 10.1-4 
   [2XUnionOfDifferencesOfNormalizedObjects[102X 10.1-4 
   [2XUnionOfMultipleDifferences[102X 10.1-2 
   [2XUniqueMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.2-1 
-  [2XVisualize[102X, for IsDatastructureForConstructibleObjects 11.3-12 
+  [2XVisualize[102X, for IsDatastructureForConstructibleObjects 12.3-12 
   
   
   -------------------------------------------------------
