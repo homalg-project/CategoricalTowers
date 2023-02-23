@@ -67,14 +67,41 @@ CapJitAddTypeSignature( "DefiningPairOfDecoratedQuiver", [ IsObjectInCategoryOfD
     
     Assert( 0, IsCategoryOfDecoratedQuivers( input_types[1].category ) );
     
-    return rec( filter := IsNTuple,
+    return rec(
+        filter := IsNTuple,
+        element_types := [
+            rec(
+                filter := IsNTuple,
                 element_types := [
-                        rec( filter := IsInt ),
-                        rec( filter := IsInt ),
-                        rec( filter := IsList,
-                             element_type := rec(
-                                     filter := IsNTuple,
-                                     element_types := [ rec( filter := IsInt ), rec( filter := IsInt ) ] ) ) ] );
+                    rec( filter := IsInt ),
+                    rec( filter := IsInt ),
+                    rec(
+                        filter := IsList,
+                        element_type := rec(
+                            filter := IsNTuple,
+                            element_types := [
+                                rec( filter := IsInt ),
+                                rec( filter := IsInt ),
+                            ],
+                        ),
+                    ),
+                ],
+            ),
+            rec(
+                filter := IsNTuple,
+                element_types := [
+                    rec(
+                        filter := IsList,
+                        element_type := rec( filter := IsInt ),
+                    ),
+                    rec(
+                        filter := IsList,
+                        element_type := rec( filter := IsInt ),
+                    ),
+                ],
+            ),
+        ],
+    );
     
 end );
 
