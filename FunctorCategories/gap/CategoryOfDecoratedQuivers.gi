@@ -37,12 +37,33 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
         [ IsObjectInCategoryOfQuivers, IsList, IsList ],
         
   function ( decorating_quiver, decoration_of_vertices, decoration_of_arrows )
-    local object_constructor, object_datum,
+    local defining_triple,
+          object_constructor, object_datum,
           morphism_constructor, morphism_datum,
           Quivers, Slice,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           DecoratedQuivers;
+    
+    if not HasDefiningTripleOfQuiverEnrichedOverSkeletalFinSets( decorating_quiver ) then
+        
+        Error( "CategoryOfDecoratedQuivers can only be used with with a decorating quiver in CategoryOfQuiversEnrichedOverSkeletalFinSets" );
+        
+    fi;
+    
+    defining_triple := DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( decorating_quiver );
+    
+    if Length( decoration_of_vertices ) <> defining_triple[1] then
+        
+        Error( "the number of decorations of vertices does not match the number of vertices of the decorating quiver" );
+        
+    fi;
+    
+    if Length( decoration_of_arrows ) <> defining_triple[2] then
+        
+        Error( "the number of decorations of arrows does not match the number of arrows of the decorating quiver" );
+        
+    fi;
     
     ##
     object_constructor := CreateDecoratedQuiver;
