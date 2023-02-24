@@ -1019,7 +1019,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
         
         return MorphismConstructor( PSh,
                        s,
-                       o -> HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), mor ),
+                       { source, o, range } -> HomomorphismStructureOnMorphismsWithGivenObjects( B, source, IdentityMorphism( B, o ), mor, range ),
                        r );
         
     end;
@@ -1027,6 +1027,14 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingFunctionalData,
     return Pair( Yoneda_on_objs, Yoneda_on_mors );
     
 end );
+
+##
+InstallOtherMethod( \.,
+        "for a presheaf and a positive integer",
+        [ IsPreSheafCategory, IsPosInt ],
+  
+  { PSh, string_as_int } -> ApplyFunctor( YonedaEmbeddingOfSourceCategory( PSh ), Source( PSh ).( NameRNam( string_as_int ) ) )
+);
 
 ##
 InstallMethod( YonedaEmbeddingOfSourceCategory,
@@ -1084,8 +1092,8 @@ InstallMethodForCompilerForCAP( ApplyMorphismInPreSheafCategoryToObject,
         [ IsPreSheafCategory, IsMorphismInPreSheafCategory, IsCapCategoryObject ],
         
   function ( PSh, eta, objB )
-
-    return FunctionOfPreSheafMorphism( eta )( objB );
+    
+    return FunctionOfPreSheafMorphism( eta )( Source( eta )( objB ), objB, Range( eta )( objB ) );
     
 end );
 
