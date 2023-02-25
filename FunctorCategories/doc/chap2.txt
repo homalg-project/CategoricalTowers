@@ -238,7 +238,7 @@
     [4X[25Xgap>[125X [27XCP := CreateComplex( ComplexesCategoryByCochains( PSh ), P, 0 );[127X[104X
     [4X[28X<An object in Complexes category by cochains( PreSheaves( Algebroid( Q,[128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )[128X[104X
-    [4X[28X/ relations, Rows( Q ) ) ) supported on the interval [ 0 .. 0 ]>[128X[104X
+    [4X[28X/ relations, Rows( Q ) ) ) supported on the interval [ 0 ]>[128X[104X
     [4X[25Xgap>[125X [27XI_CP := InjectiveResolution( CP, true );[127X[104X
     [4X[28X<An object in Complexes category by cochains( PreSheaves( Algebroid( Q,[128X[104X
     [4X[28XFreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )[128X[104X

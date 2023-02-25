@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2023.02-12",
+Version := "2023.02-13",
 
-Date := "21/02/2023",
-Date := "21/02/2023",
+Date := "25/02/2023",
+Date := "25/02/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [
