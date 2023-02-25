@@ -260,7 +260,7 @@ end );
 ####################################
 
 ##
-InstallMethodWithCache( PreSheavesOfEnrichedCategory,
+InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
@@ -830,7 +830,7 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
 end );
 
 ##
-InstallMethodWithCache( PreSheavesOfEnrichedCategory,
+InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
@@ -965,17 +965,6 @@ InstallMethodWithCache( PreSheavesOfEnrichedCategory,
     Finalize( T );
     
     return T;
-    
-end );
-
-##
-InstallMethodWithCache( PreSheaves,
-        "for two categories",
-        [ IsCapCategory, IsCapCategory ],
-        
-  function ( B, C )
-    
-    return PreSheavesOfEnrichedCategory( B, C );
     
 end );
 

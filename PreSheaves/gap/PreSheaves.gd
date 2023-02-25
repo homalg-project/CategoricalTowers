@@ -223,8 +223,3 @@ DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheaves", [ IsCapCategory ], IsPreSheafCategory );
-
-DeclareOperationWithCache( "PreSheavesOfEnrichedCategory",
-        [ IsCapCategory, IsCapCategory ] );
-
-CapJitAddTypeSignature( "PreSheavesOfEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategory );
