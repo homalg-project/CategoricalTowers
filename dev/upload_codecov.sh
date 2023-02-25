@@ -27,6 +27,7 @@ chmod +x codecov
 ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 60; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects || (sleep 60; ./codecov -Z -v -s ../ -F CategoriesWithAmbientObjects))
 ./codecov -Z -v -s ../ -F CategoryConstructor || (sleep 60; ./codecov -Z -v -s ../ -F CategoryConstructor || (sleep 60; ./codecov -Z -v -s ../ -F CategoryConstructor))
 ./codecov -Z -v -s ../ -F CatReps || (sleep 60; ./codecov -Z -v -s ../ -F CatReps || (sleep 60; ./codecov -Z -v -s ../ -F CatReps))
+./codecov -Z -v -s ../ -F DiscreteCategories || (sleep 60; ./codecov -Z -v -s ../ -F DiscreteCategories || (sleep 60; ./codecov -Z -v -s ../ -F DiscreteCategories))
 ./codecov -Z -v -s ../ -F ExteriorPowersCategories || (sleep 60; ./codecov -Z -v -s ../ -F ExteriorPowersCategories || (sleep 60; ./codecov -Z -v -s ../ -F ExteriorPowersCategories))
 ./codecov -Z -v -s ../ -F FiniteCocompletion || (sleep 60; ./codecov -Z -v -s ../ -F FiniteCocompletion || (sleep 60; ./codecov -Z -v -s ../ -F FiniteCocompletion))
 ./codecov -Z -v -s ../ -F FunctorCategories || (sleep 60; ./codecov -Z -v -s ../ -F FunctorCategories || (sleep 60; ./codecov -Z -v -s ../ -F FunctorCategories))
