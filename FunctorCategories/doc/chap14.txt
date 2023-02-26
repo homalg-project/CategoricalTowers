@@ -1,15 +1,15 @@
   
-  [1X14 [33X[0;0YTools[133X[101X
+  [1X14 [33X[0;0YFuther CAP operations[133X[101X
   
   
-  [1X14.1 [33X[0;0YProperties[133X[101X
+  [1X14.1 [33X[0;0YAdd-methods[133X[101X
   
-  [1X14.1-1 IsReflexive[101X
+  [1X14.1-1 AddIsReflexive[101X
   
-  [33X[1;0Y[29X[2XIsReflexive[102X( [3XF[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  [33X[1;0Y[29X[2XAddIsReflexive[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  argument  is  a  (co)presheaf  [3XF[103X. The output is [10Xtrue[110X if [3XF[103X is reflexive,
-  i.e.,  the  [3XF[103X-component of the (co)unit of the Isbell adjunction monad is an
-  isomorphism, otherwise the output is [10Xfalse[110X.[133X
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsReflexive[110X. [23XF: (
+  arg2 ) \mapsto \mathtt{IsReflexive}(arg2)[123X.[133X
   

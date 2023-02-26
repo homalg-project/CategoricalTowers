@@ -1,139 +1,185 @@
   
-  [1X10 [33X[0;0YFinite completion of a finitely presented (linear) category[133X[101X
+  [1X10 [33X[0;0YCategory of copresheaves of a finitely presented (linear) category[133X[101X
   
   
   [1X10.1 [33X[0;0YConstructors[133X[101X
   
-  [1X10.1-1 FiniteCompletion[101X
+  [1X10.1-1 CoPreSheaves[101X
   
-  [33X[1;0Y[29X[2XFiniteCompletion[102X( [3XB[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XFiniteCompletion[102X( [3XB[103X, [3XH[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X, [3Xk[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoPreSheaves[102X( [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [33X[0;0YConstruct a finite completion category.[133X
+  [33X[0;0YConstruct  the  category [10XCoPreSheaves([110X [3XB[103X, [3XC[103X [10X)[110X= [10XFunctorCategory([110X [3XB[103X, [3XC[103X [10X)^op[110X of
+  copresheaves  from  the  small  category  [3XB[103X to the category [3XC[103X as objects and
+  their natural transformations as morphisms.[133X
+  
+  [1X10.1-2 CreateCoPreSheaf[101X
+  
+  [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XF[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XB[103X, [3Xrec_images_of_objects[103X, [3Xrec_images_of_morphisms[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateCoPreSheaf[102X( [3XB[103X, [3Ximages_of_objects[103X, [3Ximages_of_morphisms[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in a [5XCAP[105X category[133X
+  
+  [33X[0;0YTurn  the functor [10X[3XF[103X[10X:[3XB[103X[10X[110X [23X\to[123X [10XC[110X into an object in the category of functors [10X[3XcoPSh[103X[10X
+  :=  CoPreSheaves(  [3XB[103X[10X, C )[110X. An alternative input is the source category [3XB[103X and
+  two defining records [3Xrec_images_of_objects[103X and [3Xrec_images_of_morphisms[103X of [3XF[103X.
+  Another  alternative  input  is the source category [3XB[103X and two defining lists
+  [3Ximages_of_objects[103X  and  [3Ximages_of_morphisms[103X of [3XF[103X. The order of their entries
+  must correspond to that of the vertices and arrows of the underlying quiver.[133X
+  
+  [33X[0;0YFor  the  convenience  of  the  user  the  following input is also valid: If
+  [3Ximages_of_objects[103X  is a list of nonnegative integers, [3Ximages_of_morphisms[103X is
+  a  list of matrices, and [23Xk:=[123X [10XCommutativeRingOfLinearCategory[110X( B ) is a field
+  then  the  two  lists  are  interpreted as objects and morphisms in a matrix
+  category or a category of rows over [23Xk[123X, respectively.[133X
+  
+  [1X10.1-3 CreateCoPreSheafMorphismByValues[101X
+  
+  [33X[1;0Y[29X[2XCreateCoPreSheafMorphismByValues[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X, [3Xarg4[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3Xeta[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3XU[103X, [3Xe[103X, [3XV[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3XU[103X, [3Xe[103X, [3XV[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateCoPreSheafMorphism[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in a [5XCAP[105X category[133X
+  
+  [33X[0;0YTurn   the  natrual  transformation  [3Xeta[103X:[23XF  \to  G[123X  into  a  morphism  [10X[3XU[103X[10X  :=
+  CreateCoPreSheaf(  F  )[110X  [23X\to[123X  [10X[3XV[103X[10X  := CreateCoPreSheaf( G )[110X in the category of
+  functors [10X[3XcoPSh[103X[10X := CoPreSheaves( B, C )[110X, where [10XB := Source( F ) = Source( G )[110X
+  and [10XC := Range( F ) = Range( G )[110X.[133X
+  
+  [33X[0;0YAn  alternative  input is the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining record
+  of [3Xeta[103X.[133X
+  
+  [33X[0;0YAnother  alternative  input  is  the triple ([3XU[103X, [3Xe[103X, [3XV[103X), where [3Xe[103X is a defining
+  list of [3Xeta[103X.[133X
   
   
   [1X10.2 [33X[0;0YAttributes[133X[101X
   
-  [1X10.2-1 UnderlyingCategory[101X
+  [1X10.2-1 Source[101X
   
-  [33X[1;0Y[29X[2XUnderlyingCategory[102X( [3Xfinite_completion[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XSource[102X( [3Xcat[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
-  [1X10.2-2 CoYonedaEmbeddingOfUnderlyingCategory[101X
+  [33X[0;0YThe source category of the copresheaf category [3Xcat[103X.[133X
   
-  [33X[1;0Y[29X[2XCoYonedaEmbeddingOfUnderlyingCategory[102X( [3Xfinite_completion[103X ) [32X attribute[133X
+  [1X10.2-2 Range[101X
+  
+  [33X[1;0Y[29X[2XRange[102X( [3Xcat[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe range category of the copresheaf category [3Xcat[103X.[133X
+  
+  [1X10.2-3 Source[101X
+  
+  [33X[1;0Y[29X[2XSource[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe source of the functor underlying functor object [3XF[103X.[133X
+  
+  [1X10.2-4 Range[101X
+  
+  [33X[1;0Y[29X[2XRange[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe target of the functor underlying the functor object [3XF[103X.[133X
+  
+  [1X10.2-5 OppositeOfSource[101X
+  
+  [33X[1;0Y[29X[2XOppositeOfSource[102X( [3XcoPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
+  
+  [33X[0;0YThe opposite of the source category of the copresheaf category [3XcoPSh[103X.[133X
+  
+  [1X10.2-6 ValuesOfCoPreSheaf[101X
+  
+  [33X[1;0Y[29X[2XValuesOfCoPreSheaf[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair of lists[133X
+  
+  [33X[0;0YThe input is functor [3XF[103X in a copresheaf category [3XcoPSh[103X. The output is pair of
+  lists.  The  first  is the list of values of the functor [3XF[103X on all objects of
+  the  source  category  of  [3XcoPSh[103X.  The  second  is the list of values of the
+  functor [3XF[103X on all *generating* morphisms of the source category of [3XcoPSh[103X.[133X
+  
+  [1X10.2-7 ValuesOnAllObjects[101X
+  
+  [33X[1;0Y[29X[2XValuesOnAllObjects[102X( [3Xeta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YReturns  the  values  of  the  natural  transformation  [3Xeta[103X  in a copresheaf
+  category [3XcoPSh[103X on all objects of the source category of [3XcoPSh[103X.[133X
+  
+  [33X[0;0YThe 2-cell underlying the functor object [3XF_or_eta[103X.[133X
+  
+  [1X10.2-8 UnderlyingCapTwoCategoryCell[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCapTwoCategoryCell[102X( [3XF_or_eta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor or natural transformation[133X
+  
+  [1X10.2-9 CoYonedaEmbedding[101X
+  
+  [33X[1;0Y[29X[2XCoYonedaEmbedding[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
+  
+  [1X10.2-10 CoYonedaEmbeddingOfSourceCategory[101X
+  
+  [33X[1;0Y[29X[2XCoYonedaEmbeddingOfSourceCategory[102X( [3XcoPSh[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X functor[133X
   
   
-  [1X10.3 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
+  [1X10.3 [33X[0;0YOperations[133X[101X
   
-  [1X10.3-1 IsFiniteCompletion[101X
+  [1X10.3-1 ApplyObjectInCoPreSheafCategoryToObject[101X
   
-  [33X[1;0Y[29X[2XIsFiniteCompletion[102X( [3Xcategory[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XApplyObjectInCoPreSheafCategoryToObject[102X( [3XF[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X object[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the object [3Xobj[103X. The shorthand is [3XF[103X([3Xobj[103X).[133X
+  
+  [1X10.3-2 ApplyObjectInCoPreSheafCategoryToMorphism[101X
+  
+  [33X[1;0Y[29X[2XApplyObjectInCoPreSheafCategoryToMorphism[102X( [3XF[103X, [3Xmor[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf [3XF[103X to the morphism [3Xmor[103X. The shorthand is [3XF[103X([3Xmor[103X).[133X
+  
+  [1X10.3-3 ApplyMorphismInCoPreSheafCategoryToObject[101X
+  
+  [33X[1;0Y[29X[2XApplyMorphismInCoPreSheafCategoryToObject[102X( [3Xeta[103X, [3Xobj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X morphism[133X
+  
+  [33X[0;0YApply the presheaf morphism [3Xeta[103X to the object [3Xobj[103X. The shorthand is [3Xeta[103X([3Xo[103X).[133X
+  
+  
+  [1X10.4 [33X[0;0Y[5XGAP[105X[101X[1X Categories[133X[101X
+  
+  [1X10.4-1 IsCoPreSheafCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCoPreSheafCategory[102X( [3Xcategory[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of a finite completion category.[133X
+  [33X[0;0YThe [5XGAP[105X category of copresheaf categories.[133X
   
-  [1X10.3-2 IsCellInFiniteCompletion[101X
+  [1X10.4-2 IsCellInCoPreSheafCategory[101X
   
-  [33X[1;0Y[29X[2XIsCellInFiniteCompletion[102X( [3Xcell[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsCellInCoPreSheafCategory[102X( [3Xcell[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of cells in a finite completion category.[133X
+  [33X[0;0YThe [5XGAP[105X category of cells in a copresheaf category.[133X
   
-  [1X10.3-3 IsObjectInFiniteCompletion[101X
+  [1X10.4-3 IsObjectInCoPreSheafCategory[101X
   
-  [33X[1;0Y[29X[2XIsObjectInFiniteCompletion[102X( [3Xobj[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsObjectInCoPreSheafCategory[102X( [3Xobj[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in a finite completion category.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in a copresheaf category.[133X
   
-  [1X10.3-4 IsMorphismInFiniteCompletion[101X
+  [1X10.4-4 IsMorphismInCoPreSheafCategory[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInFiniteCompletion[102X( [3Xmor[103X ) [32X filter[133X
+  [33X[1;0Y[29X[2XIsMorphismInCoPreSheafCategory[102X( [3Xmor[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a finite completion category.[133X
-  
-  
-  [1X10.4 [33X[0;0YExamples[133X[101X
-  
-  
-  [1X10.4-1 [33X[0;0YThe terminal category as a finite completion of the initial category[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XT := FiniteCompletion( InitialCategory( ) );[127X[104X
-    [4X[28XFiniteCompletion( InitialCategory( ) )[128X[104X
-    [4X[25Xgap>[125X [27XIsTerminalCategory( T );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
-    [4X[28XA CAP category with name FiniteCompletion( InitialCategory( ) ):[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X91 primitive operations were used to derive 486 operations for this category[128X[104X
-    [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
-    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
-    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
-    [4X[28X* IsLinearCategoryOverCommutativeRing[128X[104X
-    [4X[28X* IsBicartesianClosedCategory[128X[104X
-    [4X[28X* IsBicartesianCoclosedCategory[128X[104X
-    [4X[28X* IsAbelianCategoryWithEnoughInjectives[128X[104X
-    [4X[28X* IsAbelianCategoryWithEnoughProjectives[128X[104X
-    [4X[28X* IsRigidSymmetricClosedMonoidalCategory[128X[104X
-    [4X[28X* IsRigidSymmetricCoclosedMonoidalCategory[128X[104X
-    [4X[28Xand furthermore mathematically[128X[104X
-    [4X[28X* IsFinitelyPresentedCategory[128X[104X
-    [4X[28X* IsFinitelyPresentedLinearCategory[128X[104X
-    [4X[28X* IsLinearClosureOfACategory[128X[104X
-    [4X[28X* IsLocallyOfFiniteInjectiveDimension[128X[104X
-    [4X[28X* IsLocallyOfFiniteProjectiveDimension[128X[104X
-    [4X[28X* IsSkeletalCategory[128X[104X
-    [4X[28X* IsStrictCartesianCategory[128X[104X
-    [4X[28X* IsStrictCocartesianCategory[128X[104X
-    [4X[28X* IsStrictMonoidalCategory[128X[104X
-    [4X[28X* IsTerminalCategory[128X[104X
-    [4X[25Xgap>[125X [27Xi := InitialObject( T );[127X[104X
-    [4X[28X<An object in FiniteCompletion( InitialCategory( ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xt := TerminalObject( T );[127X[104X
-    [4X[28X<An object in FiniteCompletion( InitialCategory( ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xz := ZeroObject( T );[127X[104X
-    [4X[28X<A zero object in FiniteCompletion( InitialCategory( ) )>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( i );[127X[104X
-    [4X[28XAn object in CoPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
-    [4X[28Xgiven by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteCompletion( InitialCategory( ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( t );[127X[104X
-    [4X[28XAn object in CoPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
-    [4X[28Xgiven by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteCompletion( InitialCategory( ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( z );[127X[104X
-    [4X[28XAn object in CoPreSheaves( InitialCategory( ), InitialCategory( ) )[128X[104X
-    [4X[28Xgiven by the above data[128X[104X
-    [4X[28X[128X[104X
-    [4X[28XAn object in FiniteCompletion( InitialCategory( ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( i, z );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsIdenticalObj( t, z );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( i, z );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( t, z );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( z );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xid_z := IdentityMorphism( z );[127X[104X
-    [4X[28X<A zero, identity morphism in FiniteCompletion( InitialCategory( ) )>[128X[104X
-    [4X[25Xgap>[125X [27Xfn_z := ZeroObjectFunctorial( T );[127X[104X
-    [4X[28X<A zero, isomorphism in FiniteCompletion( InitialCategory( ) )>[128X[104X
-    [4X[25Xgap>[125X [27XIsWellDefined( fn_z );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( id_z, fn_z );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( id_z, fn_z );[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a copresheaf category.[133X
   
