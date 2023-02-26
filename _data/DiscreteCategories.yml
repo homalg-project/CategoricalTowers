@@ -1,0 +1,69 @@
+name: DiscreteCategories
+version: "2023.02-01"
+license: "GPL-2.0-or-later"
+date: 2023-02-26
+description: |
+    Discrete categories
+
+authors:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+
+maintainers:
+    - name: Mohamed Barakat
+      url: https://mohamed-barakat.github.io/
+
+GAP: ">= 4.12.1"
+
+needed-pkgs:
+    - name: "Locales"
+      version: ">= 2023.02-04"
+      url: "https://homalg-project.github.io/pkg/Locales"
+
+www: https://homalg-project.github.io/pkg/DiscreteCategories
+readme: README.md
+packageinfo: https://homalg-project.github.io/CategoricalTowers/DiscreteCategories/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-01/DiscreteCategories-2023.02-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-01/DiscreteCategories-2023.02-01.zip
+
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-01/DiscreteCategories-2023.02-01.pdf
+
+abstract: |
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
+keywords: |
+    Discrete categories.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+     <i class='BibTitle'>DiscreteCategories, Discrete categories,
+             Version 2023.02-01</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/DiscreteCategories">https://homalg-project.github.io/pkg/DiscreteCategories</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ DiscreteCategories2023.02-01,
+      author =           {Barakat, M.},
+      title =            {{DiscreteCategories},  Discrete  categories, {V}ersion
+                          2023.02-01},
+      month =            {Feb},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/pkg/DiscreteCategories}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
+                          {}{}{}\texttt{DiscreteCategories}}},
+      keywords =         {Discrete categories},
+      printedkey =       {Bar23}
+    }
+

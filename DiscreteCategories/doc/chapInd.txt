@@ -1,0 +1,16 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XDiscreteCategory[102X, for IsString 1.1-1 
+  [2XIsCellInDiscreteCategory[102X, for IsCapCategoryCell 1.2-2 
+  [2XIsDiscreteCategory[102X, for IsCapCategory 1.2-1 
+  [2XIsMorphismInDiscreteCategory[102X, for IsCellInDiscreteCategory andIsCapCategoryMorphism 1.2-4 
+  [2XIsObjectInDiscreteCategory[102X, for IsCellInDiscreteCategory andIsCapCategoryObject 1.2-3 
+  [2XMorphismInDiscreteCategory[102X, for IsObjectInDiscreteCategory, IsObjectInDiscreteCategory 1.1-3 
+  [2XObjectInDiscreteCategory[102X, for IsDiscreteCategory, IsObject 1.1-2 
+  [2XUnderlyingFilter[102X, for IsDiscreteCategory 1.3-1 
+  [2XUnderlyingGapObject[102X, for IsObjectInDiscreteCategory 1.3-2 
+  
+  
+  -------------------------------------------------------

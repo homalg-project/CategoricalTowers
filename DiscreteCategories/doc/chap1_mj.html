@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (DiscreteCategories) - Chapter 1: Discrete categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X8493676A86AF2F8E" name="X8493676A86AF2F8E"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X8493676A86AF2F8E">1 <span class="Heading">Discrete categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.1 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E5DC4CB84CB18E9">1.1-1 DiscreteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DECB3507AD41097">1.1-2 ObjectInDiscreteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7AB130927C1A19CD">1.1-3 MorphismInDiscreteCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7D03633A7D98026B">1.2 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F7BD8CF86A2D122">1.2-1 IsDiscreteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X80E1B27386006C0D">1.2-2 IsCellInDiscreteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79E9A9A084DDC8D2">1.2-3 IsObjectInDiscreteCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X852E35BD7BBCF8F8">1.2-4 IsMorphismInDiscreteCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A223E067E32D423">1.3-1 UnderlyingFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X791339AA8723E1C6">1.3-2 UnderlyingGapObject</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">Discrete categories</span></h3>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>1.1 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7E5DC4CB84CB18E9" name="X7E5DC4CB84CB18E9"></a></p>
+
+<h5>1.1-1 DiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DiscreteCategory</code>( <var class="Arg">filt</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> category</p>
+
+<p>Construct a discrete category out of the <strong class="pkg">GAP</strong>-filter <code class="code">ValueGlobal</code>(<var class="Arg">filt</var>).</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "DiscreteCategories" );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">D := DiscreteCategory( "IsInt" );</span>
+DiscreteCategory( "IsInt" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( D );</span>
+A CAP category with name DiscreteCategory( "IsInt" ):
+
+12 primitive operations were used to derive 74 operations for this category
+which algorithmically
+* IsPosetCategory
+* IsEquippedWithHomomorphismStructure
+and furthermore mathematically
+* IsSkeletalCategory
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one := 1 / D;</span>
+&lt;An object in DiscreteCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( one );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( one );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( "1" / D );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">two := 2 / D;</span>
+&lt;An object in DiscreteCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_one := IdentityMorphism( one );</span>
+&lt;An identity morphism in DiscreteCategory( "IsInt" )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismDatum( id_one );</span>
+fail
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( id_one, id_one ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( MorphismInDiscreteCategory( one, one ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MorphismInDiscreteCategory( one, two ) );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, one );</span>
+&lt;(⊤)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( one, two );</span>
+&lt;(⊥)&gt;
+</pre></div>
+
+<p><a id="X7DECB3507AD41097" name="X7DECB3507AD41097"></a></p>
+
+<h5>1.1-2 ObjectInDiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectInDiscreteCategory</code>( <var class="Arg">D</var>, <var class="Arg">o</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> object</p>
+
+<p>Construct an object in the discrete category <var class="Arg">D</var> using the GAP-object <var class="Arg">o</var>.</p>
+
+<p><a id="X7AB130927C1A19CD" name="X7AB130927C1A19CD"></a></p>
+
+<h5>1.1-3 MorphismInDiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismInDiscreteCategory</code>( <var class="Arg">S</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <strong class="pkg">CAP</strong> morphism</p>
+
+<p>Construct a morphism <var class="Arg">S</var><span class="SimpleMath">\(\to\)</span><var class="Arg">T</var> in a discrete category.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>1.2 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X7F7BD8CF86A2D122" name="X7F7BD8CF86A2D122"></a></p>
+
+<h5>1.2-1 IsDiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDiscreteCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of discrete categories.</p>
+
+<p><a id="X80E1B27386006C0D" name="X80E1B27386006C0D"></a></p>
+
+<h5>1.2-2 IsCellInDiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInDiscreteCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in a discrete category.</p>
+
+<p><a id="X79E9A9A084DDC8D2" name="X79E9A9A084DDC8D2"></a></p>
+
+<h5>1.2-3 IsObjectInDiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInDiscreteCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in a discrete category.</p>
+
+<p><a id="X852E35BD7BBCF8F8" name="X852E35BD7BBCF8F8"></a></p>
+
+<h5>1.2-4 IsMorphismInDiscreteCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInDiscreteCategory</code>( <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in a discrete category.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>1.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7A223E067E32D423" name="X7A223E067E32D423"></a></p>
+
+<h5>1.3-1 UnderlyingFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Return the filter used to define the discrete category <var class="Arg">C</var>.</p>
+
+<p><a id="X791339AA8723E1C6" name="X791339AA8723E1C6"></a></p>
+
+<h5>1.3-2 UnderlyingGapObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGapObject</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
