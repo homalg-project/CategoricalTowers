@@ -123,22 +123,6 @@ DeclareOperation( "DotVertexLabelledDigraph",
 ####################################
 
 #! @Description
-#!  Construct the category of quivers over the category <A>C</A>.
-#! @Returns a &CAP; category
-#! @Arguments C
-DeclareAttribute( "CategoryOfQuivers",
-        IsCapCategory );
-#! @InsertChunk CategoryOfQuivers
-
-#!
-DeclareOperation( "CreateQuiverInCategory",
-        [ IsCategoryOfQuivers, IsList ] );
-
-#!
-DeclareOperation( "CreateQuiverMorphismInCategory",
-        [ IsObjectInCategoryOfQuivers, IsList ] );
-
-#! @Description
 #!  Construct the category of quivers enriched over the category <A>V</A>.
 #! @Returns a &CAP; category
 #! @Arguments V

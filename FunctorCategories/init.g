@@ -13,6 +13,7 @@ ReadPackage( "FunctorCategories", "gap/CategoryOfBouquets.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfDecoratedQuivers.gd");
 ReadPackage( "FunctorCategories", "gap/CategoryOfReflexiveQuivers.gd");
+ReadPackage( "FunctorCategories", "gap/CategoryOfQuiversInCategory.gd");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gd");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gd");
 ReadPackage( "FunctorCategories", "gap/Functors.gd");
