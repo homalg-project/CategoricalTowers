@@ -30,6 +30,13 @@ git subtree split --prefix=CatReps -b CatReps-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/CatReps CatReps-split:master
 echo ""
 
+# DiscreteCategories
+echo "Release DiscreteCategories"
+./dev/release-gap-package --skip-existing-release --srcdir "$PWD/DiscreteCategories" --webdir "$PWD/gh-pages/DiscreteCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=DiscreteCategories -b DiscreteCategories-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/DiscreteCategories DiscreteCategories-split:master
+echo ""
+
 # ExteriorPowersCategories
 echo "Release ExteriorPowersCategories"
 ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/ExteriorPowersCategories" --webdir "$PWD/gh-pages/ExteriorPowersCategories" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
