@@ -30,6 +30,7 @@ ReadPackage( "FunctorCategories", "gap/CategoryOfBouquets.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfDecoratedQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfReflexiveQuivers.gi");
+ReadPackage( "FunctorCategories", "gap/CategoryOfQuiversInCategory.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/AbelianClosure.gi");
 ReadPackage( "FunctorCategories", "gap/Functors.gi");
