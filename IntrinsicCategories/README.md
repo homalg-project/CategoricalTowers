@@ -36,7 +36,7 @@ To obtain current versions of all dependencies, `git clone` (or `git pull` to up
 [tests-url]: https://github.com/homalg-project/CategoricalTowers/actions/workflows/Tests.yml?query=branch%3Amaster
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CategoricalTowers/branch/master/graph/badge.svg?flag=IntrinsicCategories
-[codecov-url]: https://codecov.io/gh/homalg-project/CategoricalTowers/tree/master/IntrinsicCategories
+[codecov-url]: https://app.codecov.io/gh/homalg-project/CategoricalTowers/tree/master/IntrinsicCategories
 
 [code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
 [code-url]: https://github.com/homalg-project/CategoricalTowers/tree/master/IntrinsicCategories#top
