@@ -1,7 +1,7 @@
 name: DiscreteCategories
-version: "2023.02-01"
+version: "2023.02-02"
 license: "GPL-2.0-or-later"
-date: 2023-02-26
+date: 2023-02-27
 description: |
     Discrete categories
 
@@ -26,11 +26,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/DiscreteCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-01/DiscreteCategories-2023.02-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-02/DiscreteCategories-2023.02-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-01/DiscreteCategories-2023.02-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-02/DiscreteCategories-2023.02-02.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-01/DiscreteCategories-2023.02-01.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/DiscreteCategories-2023.02-02/DiscreteCategories-2023.02-02-manual.pdf
 
 abstract: |
 
@@ -41,22 +41,22 @@ keywords: |
     Discrete categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Bar23</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+    [<span class='BibKey'>Bar27</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>DiscreteCategories, Discrete categories,
-             Version 2023.02-01</i>
-     (<span class='BibYear'>2023</span>)<br />
+             Version 2023.02-02</i>
+     (<span class='BibYear'>2-27</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/DiscreteCategories">https://homalg-project.github.io/pkg/DiscreteCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ DiscreteCategories2023.02-01,
+    @misc{ DiscreteCategories2023.02-02,
       author =           {Barakat, M.},
       title =            {{DiscreteCategories},  Discrete  categories, {V}ersion
-                          2023.02-01},
-      month =            {Feb},
-      year =             {2023},
+                          2023.02-02},
+      month =            {3-},
+      year =             {2-27},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/DiscreteCategories}
@@ -64,6 +64,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{DiscreteCategories}}},
       keywords =         {Discrete categories},
-      printedkey =       {Bar23}
+      printedkey =       {Bar27}
     }
 
