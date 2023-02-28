@@ -2472,7 +2472,9 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return Pair( objects, morphisms );
+    return CreateQuiverInCategory( CategoryOfQuivers( B ),
+                   Pair( objects,
+                         morphisms ) );
     
 end );
 
@@ -2491,11 +2493,14 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local Yoneda, diagram, triple;
+    local B, diagram, Yoneda, triple;
+    
+    B := Source( PSh );
+    
+    diagram := ObjectDatum( CategoryOfQuivers( B ),
+                       CoYonedaLemmaOnObjects( PSh, F ) );
     
     Yoneda := YonedaEmbeddingData( PSh );
-    
-    diagram := CoYonedaLemmaOnObjects( PSh, F );
     
     triple :=
       function( m )

@@ -6,8 +6,8 @@
 
 ##
 InstallOtherMethodForCompilerForCAP( CreateQuiverInCategory,
-        "for a category of quivers and a pair",
-        [ IsCategoryOfQuivers, IsList ],
+        "for a category of quivers in a category and a pair",
+        [ IsCategoryOfQuiversInCategory, IsList ],
         
   function ( category_of_quivers, pair )
     
@@ -162,9 +162,9 @@ InstallMethod( CategoryOfQuivers,
     ## is the attribute ModelingCategory:
     Quivers := WrapperCategory( PSh,
                        rec( name := Concatenation( "CategoryOfQuivers( ", Name( C ), " )" ),
-                            category_filter := IsCategoryOfQuivers,
-                            category_object_filter := IsObjectInCategoryOfQuivers,
-                            category_morphism_filter := IsMorphismInCategoryOfQuivers,
+                            category_filter := IsCategoryOfQuiversInCategory,
+                            category_object_filter := IsObjectInCategoryOfQuiversInCategory,
+                            category_morphism_filter := IsMorphismInCategoryOfQuiversInCategory,
                             object_constructor := object_constructor,
                             object_datum := object_datum,
                             morphism_datum := morphism_datum,
@@ -189,5 +189,23 @@ InstallMethod( CategoryOfQuivers,
     Finalize( Quivers );
     
     return Quivers;
+    
+end );
+
+####################################
+#
+# View, Print, Display and LaTeX methods:
+#
+####################################
+
+##
+InstallMethod( Display,
+        "for an object in a category of quivers in a category",
+        [ IsObjectInCategoryOfQuiversInCategory ],
+        
+  function ( quiver )
+    
+    ViewObj( ObjectDatum( quiver ) );
+    Print( "\n" );
     
 end );
