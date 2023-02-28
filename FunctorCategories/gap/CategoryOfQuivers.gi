@@ -1023,6 +1023,12 @@ InstallMethod( SvgString,
     
 end );
 
+####################################
+#
+# View, Print, Display and LaTeX methods:
+#
+####################################
+
 ##
 InstallMethod( Display,
         "for an object in a category of quivers",
