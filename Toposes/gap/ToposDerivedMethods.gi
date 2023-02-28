@@ -587,7 +587,9 @@ AddDerivationToCAP( HomomorphismStructureOnMorphismsWithGivenObjects,
                                            gamma ] ),
                                  r ) ) );
     
-end : CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ) );
+end :
+  CategoryGetters := rec( range_cat := RangeCategoryOfHomomorphismStructure ),
+  CategoryFilter := cat -> HasRangeCategoryOfHomomorphismStructure( cat ) );
 
 ## Final derivations
 
