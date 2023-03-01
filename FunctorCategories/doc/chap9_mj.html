@@ -29,8 +29,16 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X849C221B79DBA04F">9.1-1 CategoryOfQuivers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X822D8C957ABE8729">9.1-2 CreateQuiverInCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X81EFBB938484AF13">9.1-3 CreateQuiverMorphismInCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7B23413F7B22C804">9.1-2 CreateQuiverInCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X791769E4853E7517">9.1-3 CreateQuiverMorphismInCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9_mj.html#X7D03633A7D98026B">9.2 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X79304BF67A91B094">9.2-1 IsCategoryOfQuiversInCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8453C7487FB3BE32">9.2-2 IsCellInCategoryOfQuiversInCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7A5850B07AE7C44A">9.2-3 IsObjectInCategoryOfQuiversInCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7BC15DE880CA0239">9.2-4 IsMorphismInCategoryOfQuiversInCategory</a></span>
 </div></div>
 </div>
 
@@ -47,52 +55,114 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfQuivers</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
-<p>Construct the category of quivers over the category <var class="Arg">C</var>.</p>
+<p>Construct the category of quivers in the category <var class="Arg">C</var>.</p>
 
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta2 := SimplicialCategoryTruncatedInDegree( 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Delta1 := SimplicialCategoryTruncatedInDegree( 1 );</span>
 FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-                   is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta2 );</span>
-31
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( Delta2 );</span>
+"Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( Delta1 );</span>
+7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PSh := PreSheaves( Delta1 );</span>
 PreSheaves( FreeCategory( RightQuiver(
-  "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,is:C2-&gt;C1,it:C2-&gt;C1,
-                   ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations,
+  "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
 SkeletalFinSets )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QuiversInDelta2 := CategoryOfQuivers( Delta2 );</span>
-CategoryOfQuivers( FreeCategory(
-RightQuiver( "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
-is:C2-&gt;C1,it:C2-&gt;C1,ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">datum0 := CoYonedaLemmaOnObjects( PSh.C0 );</span>
-[ [ &lt;(C0)&gt;, &lt;(C1)&gt;, &lt;(C2)&gt; ],
-  [ [ 1, (C1)-[(id)]-&gt;(C0), 0 ], [ 0, (C0)-[(s)]-&gt;(C1), 1 ],
-    [ 0, (C0)-[(t)]-&gt;(C1), 1 ], [ 2, (C2)-[(is)]-&gt;(C1), 1 ],
-    [ 2, (C2)-[(it)]-&gt;(C1), 1 ], [ 1, (C1)-[(ps)]-&gt;(C2), 2 ],
-    [ 1, (C1)-[(pt)]-&gt;(C2), 2 ], [ 1, (C1)-[(mu)]-&gt;(C2), 2 ] ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := CreateQuiverInCategory( QuiversInDelta2, datum0 );</span>
-&lt;An object in CategoryOfQuivers( FreeCategory(
- RightQuiver( "Delta(C0,C1,C2)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1,
- is:C2-&gt;C1,it:C2-&gt;C1,ps:C1-&gt;C2,pt:C1-&gt;C2,mu:C1-&gt;C2]" ) ) / relations )&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( q );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := CoYonedaLemmaOnObjects( PSh.C1 );</span>
+&lt;An object in CategoryOfQuivers( FreeCategory( RightQuiver(
+ "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( quiver );</span>
+[ [ &lt;(C0)&gt;, &lt;(C0)&gt;, &lt;(C1)&gt;, &lt;(C1)&gt;, &lt;(C1)&gt; ],
+  [ [ 3, (C1)-[(id)]-&gt;(C0), 0 ], [ 4, (C1)-[(id)]-&gt;(C0), 1 ],
+    [ 0, (C0)-[(s)]-&gt;(C1), 2 ], [ 0, (C0)-[(s)]-&gt;(C1), 3 ],
+    [ 1, (C0)-[(s)]-&gt;(C1), 4 ], [ 1, (C0)-[(t)]-&gt;(C1), 2 ],
+    [ 0, (C0)-[(t)]-&gt;(C1), 3 ], [ 1, (C0)-[(t)]-&gt;(C1), 4 ] ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( quiver );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := SomeDiagramOfRepresentables( PSh.C1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colimit := Colimit( q[1], q[2] );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver(
+ "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
+SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( colimit );</span>
+Image of &lt;(C0)&gt;:
+{ 0, 1 }
+
+Image of &lt;(C1)&gt;:
+{ 0, 1, 2 }
+
+Image of (C1)-[(id)]-&gt;(C0):
+{ 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1, 2 }
+
+Image of (C0)-[(s)]-&gt;(C1):
+{ 0, 1, 2 } ⱶ[ 0, 1, 0 ]→ { 0, 1 }
+
+Image of (C0)-[(t)]-&gt;(C1):
+{ 0, 1, 2 } ⱶ[ 0, 1, 1 ]→ { 0, 1 }
+
+An object in PreSheaves( FreeCategory( RightQuiver(
+"Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
+SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colimit2 := Coequalizer( ColimitPair( PSh, q[1], q[2] )[2] );</span>
+&lt;An object in PreSheaves( FreeCategory( RightQuiver(
+ "Delta(C0,C1)[id:C1-&gt;C0,s:C0-&gt;C1,t:C0-&gt;C1]" ) ) / [ s*id = C0, t*id = C0 ],
+SkeletalFinSets )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colimit2 = colimit;</span>
 true
 </pre></div>
 
-<p><a id="X822D8C957ABE8729" name="X822D8C957ABE8729"></a></p>
+<p><a id="X7B23413F7B22C804" name="X7B23413F7B22C804"></a></p>
 
 <h5>9.1-2 CreateQuiverInCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateQuiverInCategory</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X81EFBB938484AF13" name="X81EFBB938484AF13"></a></p>
+<p><a id="X791769E4853E7517" name="X791769E4853E7517"></a></p>
 
 <h5>9.1-3 CreateQuiverMorphismInCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateQuiverMorphismInCategory</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>9.2 <span class="Heading"><strong class="pkg">GAP</strong> Categories</span></h4>
+
+<p><a id="X79304BF67A91B094" name="X79304BF67A91B094"></a></p>
+
+<h5>9.2-1 IsCategoryOfQuiversInCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCategoryOfQuiversInCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of the category of quivers in a category.</p>
+
+<p><a id="X8453C7487FB3BE32" name="X8453C7487FB3BE32"></a></p>
+
+<h5>9.2-2 IsCellInCategoryOfQuiversInCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInCategoryOfQuiversInCategory</code>( <var class="Arg">cell</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of cells in the category of quivers in a category.</p>
+
+<p><a id="X7A5850B07AE7C44A" name="X7A5850B07AE7C44A"></a></p>
+
+<h5>9.2-3 IsObjectInCategoryOfQuiversInCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInCategoryOfQuiversInCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects in the category of quivers in a category.</p>
+
+<p><a id="X7BC15DE880CA0239" name="X7BC15DE880CA0239"></a></p>
+
+<h5>9.2-4 IsMorphismInCategoryOfQuiversInCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInCategoryOfQuiversInCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms in the category of quivers in a category.</p>
+
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
