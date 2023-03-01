@@ -3,33 +3,55 @@
 #! @Example
 LoadPackage( "FunctorCategories" );
 #! true
-Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
+Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! FreeCategory( RightQuiver(
-#!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
-#!                    is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations
-Size( Delta2 );
-#! 31
-PSh := PreSheaves( Delta2 );
+#! "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ]
+Size( Delta1 );
+#! 7
+PSh := PreSheaves( Delta1 );
 #! PreSheaves( FreeCategory( RightQuiver(
-#!   "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,is:C2->C1,it:C2->C1,
-#!                    ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations,
+#!   "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
 #! SkeletalFinSets )
-QuiversInDelta2 := CategoryOfQuivers( Delta2 );
-#! CategoryOfQuivers( FreeCategory(
-#! RightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
-#! is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations )
-datum0 := CoYonedaLemmaOnObjects( PSh.C0 );
-#! [ [ <(C0)>, <(C1)>, <(C2)> ],
-#!   [ [ 1, (C1)-[(id)]->(C0), 0 ], [ 0, (C0)-[(s)]->(C1), 1 ],
-#!     [ 0, (C0)-[(t)]->(C1), 1 ], [ 2, (C2)-[(is)]->(C1), 1 ],
-#!     [ 2, (C2)-[(it)]->(C1), 1 ], [ 1, (C1)-[(ps)]->(C2), 2 ],
-#!     [ 1, (C1)-[(pt)]->(C2), 2 ], [ 1, (C1)-[(mu)]->(C2), 2 ] ] ]
-q := CreateQuiverInCategory( QuiversInDelta2, datum0 );
-#! <An object in CategoryOfQuivers( FreeCategory(
-#!  RightQuiver( "Delta(C0,C1,C2)[id:C1->C0,s:C0->C1,t:C0->C1,
-#!  is:C2->C1,it:C2->C1,ps:C1->C2,pt:C1->C2,mu:C1->C2]" ) ) / relations )>
-IsWellDefined( q );
+quiver := CoYonedaLemmaOnObjects( PSh.C1 );
+#! <An object in CategoryOfQuivers( FreeCategory( RightQuiver(
+#!  "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ] )>
+Display( quiver );
+#! [ [ <(C0)>, <(C0)>, <(C1)>, <(C1)>, <(C1)> ],
+#!   [ [ 3, (C1)-[(id)]->(C0), 0 ], [ 4, (C1)-[(id)]->(C0), 1 ],
+#!     [ 0, (C0)-[(s)]->(C1), 2 ], [ 0, (C0)-[(s)]->(C1), 3 ],
+#!     [ 1, (C0)-[(s)]->(C1), 4 ], [ 1, (C0)-[(t)]->(C1), 2 ],
+#!     [ 0, (C0)-[(t)]->(C1), 3 ], [ 1, (C0)-[(t)]->(C1), 4 ] ] ]
+IsWellDefined( quiver );
+#! true
+q := SomeDiagramOfRepresentables( PSh.C1 );;
+colimit := Colimit( q[1], q[2] );
+#! <An object in PreSheaves( FreeCategory( RightQuiver(
+#!  "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
+#! SkeletalFinSets )>
+Display( colimit );
+#! Image of <(C0)>:
+#! { 0, 1 }
+#! 
+#! Image of <(C1)>:
+#! { 0, 1, 2 }
+#! 
+#! Image of (C1)-[(id)]->(C0):
+#! { 0, 1 } ⱶ[ 0, 1 ]→ { 0, 1, 2 }
+#! 
+#! Image of (C0)-[(s)]->(C1):
+#! { 0, 1, 2 } ⱶ[ 0, 1, 0 ]→ { 0, 1 }
+#! 
+#! Image of (C0)-[(t)]->(C1):
+#! { 0, 1, 2 } ⱶ[ 0, 1, 1 ]→ { 0, 1 }
+#! 
+#! An object in PreSheaves( FreeCategory( RightQuiver(
+#! "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
+#! SkeletalFinSets ) given by the above data
+colimit2 := Coequalizer( ColimitPair( PSh, q[1], q[2] )[2] );
+#! <An object in PreSheaves( FreeCategory( RightQuiver(
+#!  "Delta(C0,C1)[id:C1->C0,s:C0->C1,t:C0->C1]" ) ) / [ s*id = C0, t*id = C0 ],
+#! SkeletalFinSets )>
+colimit2 = colimit;
 #! true
 #! @EndExample
 #! @EndChunk

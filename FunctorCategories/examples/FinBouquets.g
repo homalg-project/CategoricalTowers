@@ -8,10 +8,10 @@ LoadPackage( "FunctorCategories" );
 FinBouquets;
 #! FinBouquets
 C := UnderlyingCategory( FinBouquets );
-#! FreeCategory( RightQuiver( "q(V,L)[b:V->L]" ) )
-V := FinBouquets.V;
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) )
+P := FinBouquets.P;
 #! <A projective object in FinBouquets>
-Display( V );
+Display( P );
 #! ( { 0 }, { } )
 L := FinBouquets.L;
 #! <A projective object in FinBouquets>
@@ -20,7 +20,7 @@ Display( L );
 b := FinBouquets.b;
 #! <A monomorphism in FinBouquets>
 Display( b );
-#! Image of <(V)>:
+#! Image of <(P)>:
 #! { 0 } ⱶ[ 0 ]→ { 0 }
 #! 
 #! Image of <(L)>:
@@ -38,7 +38,7 @@ M := CreateBouquet( 3, [ 1, 1, 1, 2 ] );
 #! <An object in FinBouquets>
 Display( M );
 #! ( { 0, 1, 2 }, { 0 ↦ 1, 1 ↦ 1, 2 ↦ 1, 3 ↦ 2 } )
-N := Colimit( [ V, V, V, L, L, L, L ],
+N := Colimit( [ P, P, P, L, L, L, L ],
              [ [ 1, b, 3 ],
                [ 1, b, 4 ],
                [ 1, b, 5 ],
