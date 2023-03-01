@@ -716,7 +716,7 @@ InstallMethodWithCache( Category,
         
     fi;
     
-    C := CreateCapCategory( C );
+    C := CreateCapCategory( C, IsFpCategory, IsObjectInFpCategory, IsMorphismInFpCategory, IsCapCategoryTwoCell );
     
     C!.category_as_first_argument := true;
     
@@ -727,10 +727,6 @@ InstallMethodWithCache( Category,
     DeactivateCachingOfCategory( C );
     CapCategorySwitchLogicOff( C );
     DisableSanityChecks( C );
-    
-    SetFilterObj( C, IsFpCategory );
-    AddObjectRepresentation( C, IsObjectInFpCategory );
-    AddMorphismRepresentation( C, IsMorphismInFpCategory );
     
     SetIsFinitelyPresentedCategory( C, true );
     SetUnderlyingQuiver( C, quiver );
@@ -765,9 +761,6 @@ InstallMethodWithCache( Category,
              "HomStructureOnBasisPaths",
              "DefiningTripleOfUnderlyingQuiver",
              ],
-           category_filter := IsFpCategory,
-           object_filter := IsObjectInFpCategory,
-           morphism_filter := IsMorphismInFpCategory,
            );
     
     return ADD_FUNCTIONS_FOR_FP_CATEGORY( C );

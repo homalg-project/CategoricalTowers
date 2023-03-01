@@ -1145,7 +1145,7 @@ InstallMethod( Algebroid,
         A := Concatenation( A, " / relations" );
     fi;
     
-    A := CreateCapCategory( A );
+    A := CreateCapCategory( A, IsAlgebroid, IsObjectInAlgebroid, IsMorphismInAlgebroid, IsCapCategoryTwoCell );
     
     A!.category_as_first_argument := true;
     
@@ -1162,9 +1162,6 @@ InstallMethod( Algebroid,
              "HomStructureOnBasisPaths",
              "DefiningTripleOfUnderlyingQuiver",
              ],
-           category_filter := IsAlgebroid,
-           object_filter := IsObjectInAlgebroid,
-           morphism_filter := IsMorphismInAlgebroid,
            precompiled_towers := [
             rec(
                 remaining_constructors_in_tower := [ "AdditiveClosure" ],
@@ -1180,10 +1177,6 @@ InstallMethod( Algebroid,
     DeactivateCachingOfCategory( A );
     CapCategorySwitchLogicOff( A );
     DisableSanityChecks( A );
-    
-    SetFilterObj( A, IsAlgebroid );
-    AddObjectRepresentation( A, IsObjectInAlgebroid );
-    AddMorphismRepresentation( A, IsMorphismInAlgebroid );
     
     SetIsAbCategory( A, true );
     SetIsLinearCategoryOverCommutativeRing( A, true );

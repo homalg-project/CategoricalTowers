@@ -27,12 +27,6 @@ InstallMethodWithCache( AbelianClosure,
     
     SetUnderlyingCategory( abelian_closure, algebroid );
     
-    abelian_closure!.compiler_hints :=
-      rec( category_filter := IsAbelianClosure,
-           object_filter := IsObjectInAbelianClosure,
-           morphism_filter := IsMorphismInAbelianClosure,
-           );
-    
     return abelian_closure;
     
 end );
