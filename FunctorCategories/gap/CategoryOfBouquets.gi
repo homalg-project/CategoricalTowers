@@ -6,7 +6,7 @@
 
 ##
 BindGlobal( "QuiverOfCategoryOfBouquets",
-        RightQuiver( "q(V,L)[b:V->L]" ) );
+        RightQuiver( "q(P,L)[b:P->L]" ) );
 
 # Display( ENHANCED_SYNTAX_TREE( x -> Triple( 2, 1, [ Pair( 0, 1 ) ] ) ).bindings.BINDING_RETURN_VALUE );
 BindGlobal( "ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfBouquets",
@@ -633,7 +633,7 @@ InstallMethod( Subobject,
     
     vertices_of_loops := Loops( bouquet ){1 + loops};
     
-    vertices := AsList( bouquet.V ){1 + Set( Concatenation( images_of_vertices, vertices_of_loops ) )};
+    vertices := AsList( bouquet.P ){1 + Set( Concatenation( images_of_vertices, vertices_of_loops ) )};
     
     source := CreateBouquet( CapCategory( bouquet ),
                       Length( vertices ),
@@ -672,10 +672,10 @@ InstallMethod( YonedaEmbeddingOfUnderlyingCategory,
     U := CapFunctor( "UnwrappingFunctor", RangeOfFunctor( Y ), category_of_bouquets );
     
     AddObjectFunction( U,
-            F -> CreateBouquet( category_of_bouquets, Triple( Length( F.V ), Length( F.L ), AsList( F.b ) ) ) );
+            F -> CreateBouquet( category_of_bouquets, Triple( Length( F.P ), Length( F.L ), AsList( F.b ) ) ) );
     
     AddMorphismFunction( U,
-            { source, eta, range } -> CreateBouquetMorphism( category_of_bouquets, source, Pair( AsList( eta.V ), AsList( eta.L ) ), range ) );
+            { source, eta, range } -> CreateBouquetMorphism( category_of_bouquets, source, Pair( AsList( eta.P ), AsList( eta.L ) ), range ) );
     
     return PreCompose( Y, U );
     
@@ -749,7 +749,7 @@ InstallMethod( \.,
     
     loops := datum[3];
     
-    if name = "V" then
+    if name = "P" then
         return FinSet( n );
     elif name = "L" then
         return FinSet( Length( loops ) );
@@ -773,8 +773,8 @@ InstallMethod( \.,
     
     name := NameRNam( string_as_int );
     
-    if name = "V" then
-        return MapOfFinSets( Source( mor ).V, datum[1], Range( mor ).V );
+    if name = "P" then
+        return MapOfFinSets( Source( mor ).P, datum[1], Range( mor ).P );
     elif name = "L" then
         return MapOfFinSets( Source( mor ).L, datum[2], Range( mor ).L );
     fi;
@@ -803,7 +803,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
     
-    for i in AsList( bouquet.V ) do
+    for i in AsList( bouquet.P ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( i ) );
@@ -840,7 +840,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
     bouquet := Range( monomorphism );
     
-    vertices := AsList( monomorphism.V );
+    vertices := AsList( monomorphism.P );
     loops := AsList( monomorphism.L );
     
     # Copied from DotVertexLabeledDigraph() at Digraphs/gap/display.gi
@@ -851,7 +851,7 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     Append( str, "minlen=0\n" );
     Append( str, "node [shape=circle width=0 height=0]\n" );
     
-    for i in AsList( bouquet.V ) do
+    for i in AsList( bouquet.P ) do
         Append( str, String( i ) );
         Append( str, " [label=\"" );
         Append( str, String( i ) );
@@ -927,8 +927,8 @@ InstallMethod( Display,
 
     F := UnderlyingCategory( CapCategory( mor ) );
     
-    Print( "Image of ", StringView( F.V ), ":\n" );
-    Display( mor.V );
+    Print( "Image of ", StringView( F.P ), ":\n" );
+    Display( mor.P );
     
     Print( "\nImage of ", StringView( F.L ), ":\n" );
     Display( mor.L );
