@@ -167,7 +167,7 @@ InstallMethod( CategoryOfRelations,
     local Rel;
     
     ##
-    Rel := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ) );
+    Rel := CreateCapCategory( Concatenation( "CategoryOfRelations( ", Name( C ), " )" ), IsCategoryOfRelations, IsObjectInCategoryOfRelations, IsMorphismInCategoryOfRelations, IsCapCategoryTwoCell );
     
     ## In order to have composition in Rel we need C to have fiber products
     ## In order to replace the span with a single morphism in C we need C to have products
@@ -177,13 +177,6 @@ InstallMethod( CategoryOfRelations,
     SetUnderlyingCategory( Rel, C );
     
     ##
-    SetFilterObj( Rel, IsCategoryOfRelations );
-    
-    ##
-    AddObjectRepresentation( Rel, IsObjectInCategoryOfRelations );
-    AddMorphismRepresentation( Rel, IsMorphismInCategoryOfRelations );
-    
-    ##
     Rel!.category_as_first_argument := true;
     
     ##
@@ -191,9 +184,6 @@ InstallMethod( CategoryOfRelations,
       rec( category_attribute_names :=
            [ "UnderlyingCategory",
              ],
-           category_filter := IsCategoryOfRelations,
-           object_filter := IsObjectInCategoryOfRelations,
-           morphism_filter := IsMorphismInCategoryOfRelations,
            );
     
     ## "the objects of Rel are the objects of C"
