@@ -30,9 +30,9 @@
   
   [1X2.2 [33X[0;0YConstructors[133X[101X
   
-  [1X2.2-1 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[101X
+  [1X2.2-1 CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[101X
   
-  [33X[1;0Y[29X[2XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya [5XCAP[105X category[133X
   
   [33X[0;0YConstruct  a  category  of  skeletal  finite  sets  as  the finite coproduct
@@ -85,8 +85,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
-    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27XDisplay( sFinSets );[127X[104X
     [4X[28XA CAP category with name[128X[104X
@@ -134,8 +133,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
-    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X
@@ -159,8 +157,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
-    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 8 );[127X[104X
     [4X[28X|8|[128X[104X
@@ -214,8 +211,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
-    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
@@ -266,8 +262,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
-    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27Xm := ObjectConstructor( sFinSets, 7 );[127X[104X
     [4X[28X|7|[128X[104X
@@ -312,8 +307,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletion" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XsFinSets :=[127X[104X
-    [4X[25X>[125X [27X  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );[127X[104X
+    [4X[25Xgap>[125X [27XsFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;[127X[104X
     [4X[28XSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory[128X[104X
     [4X[25Xgap>[125X [27XA := ObjectConstructor( sFinSets, 3 );[127X[104X
     [4X[28X|3|[128X[104X

@@ -35,7 +35,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X86EC0F0A78ECBC10">2.2 <span class="Heading">Constructors</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80C772CA7EFD50E0">2.2-1 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7F46768083911447">2.2-1 CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X838CE44578BEE5C7">2.2-2 SkeletalFinSetsAsFreeElementaryToposOfInitialCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7D03633A7D98026B">2.3 <span class="Heading">GAP categories</span></a>
@@ -101,11 +101,11 @@
 
 <h4>2.2 <span class="Heading">Constructors</span></h4>
 
-<p><a id="X80C772CA7EFD50E0" name="X80C772CA7EFD50E0"></a></p>
+<p><a id="X7F46768083911447" name="X7F46768083911447"></a></p>
 
-<h5>2.2-1 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory</h5>
+<h5>2.2-1 CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a <strong class="pkg">CAP</strong> category</p>
 
 <p>Construct a category of skeletal finite sets as the finite coproduct cocompletion of the terminal category.</p>
@@ -169,8 +169,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( sFinSets );</span>
 A CAP category with name
@@ -220,8 +219,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 3 );</span>
 |3|
@@ -247,8 +245,7 @@ SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 8 );</span>
 |8|
@@ -304,8 +301,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 7 );</span>
 |7|
@@ -358,8 +354,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := ObjectConstructor( sFinSets, 7 );</span>
 |7|
@@ -406,8 +401,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletion" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;</span>
 SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := ObjectConstructor( sFinSets, 3 );</span>
 |3|
