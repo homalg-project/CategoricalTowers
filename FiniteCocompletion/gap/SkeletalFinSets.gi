@@ -16,7 +16,7 @@ InstallMethod( AsList,
 end );
 
 ##
-InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
+InstallGlobalFunction( CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory,
   function( )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
@@ -122,7 +122,7 @@ InstallGlobalFunction( SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTermi
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
-        ADD_FUNCTIONS_FOR_SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( sFinSets );
+        ADD_FUNCTIONS_FOR_CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( sFinSets );
         
     fi;
     
@@ -226,4 +226,5 @@ InstallMethod( Display,
 end );
 
 ##
-BindGlobal( "SkeletalFinSetsAsFreeElementaryToposOfInitialCategory", SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( ) );
+BindGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory",
+        CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( ) );

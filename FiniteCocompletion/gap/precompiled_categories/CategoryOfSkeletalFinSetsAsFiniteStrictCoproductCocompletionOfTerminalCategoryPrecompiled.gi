@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled", function ( cat )
     
     ##
     AddCoproduct( cat,
@@ -420,21 +420,21 @@ end
     
 end );
 
-BindGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled", function (  )
+BindGlobal( "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled", function (  )
   local category_constructor, cat;
     
     category_constructor :=
         
         
         function (  )
-    return SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory(  );
+    return CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory(  );
 end;
         
         
     
     cat := category_constructor(  : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( cat );
     
     Finalize( cat );
     
