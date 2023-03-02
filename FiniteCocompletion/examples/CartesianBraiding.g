@@ -58,6 +58,8 @@ IsWellDefined( gamma );
 Display( gamma );
 #! { 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }
 #! 
+#! [ (b)-[(b)]->(b), (a)-[(a)]->(a) ]
+#! 
 #! A morphism in
 #! FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
 #! with the above associated map

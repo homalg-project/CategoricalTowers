@@ -69,6 +69,13 @@ piA := ProjectionInFactorOfDirectProduct( [ A, B ], 1 );
 Display( piA );
 #! { 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }
 #! 
+#! [ ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct ]
+#! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! with the above associated map
@@ -77,6 +84,13 @@ piB := ProjectionInFactorOfDirectProduct( [ A, B ], 2 );
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( piB );
 #! { 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }
+#! 
+#! [ ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+#!   ProjectionInFactorOfDirectProductWithGivenDirectProduct ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
@@ -143,6 +157,8 @@ alpha := HomStructure( A, B, homAB[6] );
 Display( alpha );
 #! { 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }
 #! 
+#! [ PreCompose, PreCompose, PreCompose ]
+#! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! with the above associated map
@@ -152,6 +168,8 @@ gamma := HomStructure( A, B, homAB[2] );
 Display( gamma );
 #! { 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }
 #! 
+#! [ PreCompose, PreCompose, PreCompose ]
+#! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! with the above associated map
@@ -160,6 +178,16 @@ hom_alpha_gamma := HomStructure( alpha, gamma );
 #!  FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>
 Display( hom_alpha_gamma );
 #! { 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }
+#! 
+#! [ UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+#!   UniversalMorphismIntoDirectProductWithGivenDirectProduct ]
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
