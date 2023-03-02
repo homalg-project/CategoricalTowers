@@ -1000,6 +1000,54 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( PrintObj,
+        "for an object in a category from nerve data",
+        [ IsObjectInCategoryFromNerveData ],
+        
+  function( obj )
+    
+    ViewObj( obj );
+    Print( "\n" );
+    
+end );
+
+##
+InstallMethod( PrintObj,
+        "for a morphism in a category from nerve data",
+        [ IsMorphismInCategoryFromNerveData ],
+        
+  function( mor )
+    
+    ViewObj( mor );
+    Print( "\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for an object in a category from nerve data",
+        [ IsObjectInCategoryFromNerveData ],
+        
+  function( obj )
+    
+    ViewObj( obj );
+    Print( "\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a category from nerve data",
+        [ IsMorphismInCategoryFromNerveData ],
+        
+  function( mor )
+    
+    ViewObj( mor );
+    Print( "\n" );
+    
+end );
+
+##
 InstallMethod( LaTeXOutput,
         "for an object in a category from nerve data",
         [ IsObjectInCategoryFromNerveData ],

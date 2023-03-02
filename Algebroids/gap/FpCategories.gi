@@ -2422,6 +2422,52 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( PrintObj,
+        "for an object in a f.p. category",
+        [ IsObjectInFpCategory ],
+        
+  function( o )
+    
+    ViewObj( o );
+    
+end );
+
+##
+InstallMethod( PrintObj,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( m )
+    
+    ViewObj( m );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for an object in a f.p. category",
+        [ IsObjectInFpCategory ],
+        
+  function( o )
+    
+    ViewObj( o );
+    Print( "\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( m )
+    
+    ViewObj( m );
+    Print( "\n" );
+    
+end );
+
+##
 InstallMethod( LaTeXOutput,
           [ IsObjectInFpCategory ],
           
