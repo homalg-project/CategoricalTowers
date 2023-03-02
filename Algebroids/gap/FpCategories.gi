@@ -2403,20 +2403,20 @@ InstallMethod( ViewObj,
         "for a morphism in a f.p. category",
         [ IsMorphismInFpCategory ],
         
-  function( o )
+  function( m )
     
-    if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
-        ViewObj( UnderlyingVertex( Source( o ) ) );
+    if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( m ) ) ) then
+        ViewObj( UnderlyingVertex( Source( m ) ) );
         Print( "-[" );
-        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( o ) ) );
+        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( m ) ) );
         Print( "]->" );
-        ViewObj( UnderlyingVertex( Range( o ) ) );
+        ViewObj( UnderlyingVertex( Range( m ) ) );
     else
-        ViewObj( UnderlyingVertex( Range( o ) ) );
+        ViewObj( UnderlyingVertex( Range( m ) ) );
         Print( "<-[" );
-        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( o ) ) );
+        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( m ) ) );
         Print( "]-" );
-        ViewObj( UnderlyingVertex( Source( o ) ) );
+        ViewObj( UnderlyingVertex( Source( m ) ) );
     fi;
     
 end );
