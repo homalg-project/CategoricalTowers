@@ -1511,10 +1511,10 @@ InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
     fi;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( S, A, {} -> "the source given to MorphismInAlgebroid" );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( S, A, [ "the source given to MorphismInAlgebroid" ] );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( T, A, {} -> "the range given to MorphismInAlgebroid" );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( T, A, [ "the range given to MorphismInAlgebroid" ] );
     
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
         rec( ), A,
