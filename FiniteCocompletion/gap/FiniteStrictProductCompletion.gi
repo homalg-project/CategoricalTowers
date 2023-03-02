@@ -344,37 +344,17 @@ InstallMethod( Display,
 end );
 
 ##
-InstallMethod( PrintString,
-        [ IsObjectInFiniteStrictProductCompletion ],
-        
-  function ( a )
-    local l;
-    
-    l := ObjectDatum( a )[1];
-    
-    if l = 0 then
-        return "∅";
-    elif l = 1 then
-        return "{ 0 }";
-    elif l = 2 then
-        return "{ 0, 1 }";
-    elif l = 3 then
-        return "{ 0, 1, 2 }";
-    fi;
-    
-    return Concatenation( "{ 0,..., ", String( l - 1 ), " }" );
-    
-end );
-
-##
 InstallMethod( Display,
         [ IsMorphismInFiniteStrictProductCompletion ],
         
   function ( phi )
+    local sFinSets;
     
-    Print( PrintString( Range( phi ) ) );
+    sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory" );
+    
+    Print( ObjectConstructor( sFinSets, ObjectDatum( Range( phi ) )[1] ) );
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
-    Print( PrintString( Source( phi ) ), "\n\n" );
+    Print( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ), "\n\n" );
     
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );
     
