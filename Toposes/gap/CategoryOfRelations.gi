@@ -370,6 +370,8 @@ InstallMethod( CategoryOfRelations,
        HasRangeCategoryOfHomomorphismStructure( C ) then
        ##IsCategoryOfFinSets( RangeCategoryOfHomomorphismStructure( C ) ) then
         
+        SetRangeCategoryOfHomomorphismStructure( Rel, RangeCategoryOfHomomorphismStructure( C ) );
+        
         ##
         AddHomomorphismStructureOnObjects( Rel,
           function( Rel, object1, object2 )

@@ -346,7 +346,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     object_constructor := function( cat, underlying_object )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( underlying_object, AmbientCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
         return CreateCapCategoryObjectWithAttributes( cat, UnderlyingCell, underlying_object );
         
@@ -357,7 +357,7 @@ InstallMethod( CreateProsetOrPosetOfCategory,
     morphism_constructor := function( cat, source, underlying_morphism, range )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the morphism datum given to the morphism constructor of <cat>" ] );
         
         if IsEqualForObjects( AmbientCategory( cat ), Source( underlying_morphism ), UnderlyingCell( source ) ) = false then
             

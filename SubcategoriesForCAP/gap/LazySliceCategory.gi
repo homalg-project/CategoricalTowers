@@ -150,7 +150,9 @@ InstallMethod( LazySliceCategory,
         fi;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( underlying_morphism_list, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        Assert( 0, IsDenseList( underlying_morphism_list ) );
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        Perform( underlying_morphism_list, function ( mor ) CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( mor, AmbientCategory( cat ), [ "some entry of the object datum given to the object constructor of <cat>" ] ); end );
         
         if not ForAll( underlying_morphism_list, morphism -> IsEqualForObjects( Range( morphism ), BaseObject( cat ) ) ) then
             

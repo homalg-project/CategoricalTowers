@@ -112,7 +112,7 @@ InstallMethod( SliceCategory,
     AddObjectConstructor( S, function( cat, underlying_morphism )
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( underlying_morphism, AmbientCategory( cat ), [ "the object datum given to the object constructor of <cat>" ] );
         
         if not IsEqualForObjects( Range( underlying_morphism ), BaseObject( cat ) ) then
             
