@@ -577,6 +577,52 @@ InstallMethod( ViewObj,
 end );
 
 ##
+InstallMethod( PrintObj,
+        "for an object in a category from data tables",
+        [ IsObjectInCategoryFromDataTables ],
+        
+  function( obj )
+    
+    ViewObj( obj );
+    
+end );
+
+##
+InstallMethod( PrintObj,
+        "for a morphism in a category from data tables",
+        [ IsMorphismInCategoryFromDataTables ],
+        
+  function( mor )
+    
+    ViewObj( mor );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for an object in a category from data tables",
+        [ IsObjectInCategoryFromDataTables ],
+        
+  function( obj )
+    
+    ViewObj( obj );
+    Print( "\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a category from data tables",
+        [ IsMorphismInCategoryFromDataTables ],
+        
+  function( mor )
+    
+    ViewObj( mor );
+    Print( "\n" );
+    
+end );
+
+##
 InstallMethod( LaTeXOutput,
         "for an object in a category from data tables",
         [ IsObjectInCategoryFromDataTables ],

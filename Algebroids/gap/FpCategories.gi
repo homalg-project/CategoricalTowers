@@ -2403,21 +2403,67 @@ InstallMethod( ViewObj,
         "for a morphism in a f.p. category",
         [ IsMorphismInFpCategory ],
         
+  function( m )
+    
+    if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( m ) ) ) then
+        ViewObj( UnderlyingVertex( Source( m ) ) );
+        Print( "-[" );
+        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( m ) ) );
+        Print( "]->" );
+        ViewObj( UnderlyingVertex( Range( m ) ) );
+    else
+        ViewObj( UnderlyingVertex( Range( m ) ) );
+        Print( "<-[" );
+        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( m ) ) );
+        Print( "]-" );
+        ViewObj( UnderlyingVertex( Source( m ) ) );
+    fi;
+    
+end );
+
+##
+InstallMethod( PrintObj,
+        "for an object in a f.p. category",
+        [ IsObjectInFpCategory ],
+        
   function( o )
     
-    if IsRightQuiverAlgebra( UnderlyingQuiverAlgebra( CapCategory( o ) ) ) then
-        ViewObj( UnderlyingVertex( Source( o ) ) );
-        Print( "-[" );
-        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( o ) ) );
-        Print( "]->" );
-        ViewObj( UnderlyingVertex( Range( o ) ) );
-    else
-        ViewObj( UnderlyingVertex( Range( o ) ) );
-        Print( "<-[" );
-        ViewObj( BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( o ) ) );
-        Print( "]-" );
-        ViewObj( UnderlyingVertex( Source( o ) ) );
-    fi;
+    ViewObj( o );
+    
+end );
+
+##
+InstallMethod( PrintObj,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( m )
+    
+    ViewObj( m );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for an object in a f.p. category",
+        [ IsObjectInFpCategory ],
+        
+  function( o )
+    
+    ViewObj( o );
+    Print( "\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a f.p. category",
+        [ IsMorphismInFpCategory ],
+        
+  function( m )
+    
+    ViewObj( m );
+    Print( "\n" );
     
 end );
 

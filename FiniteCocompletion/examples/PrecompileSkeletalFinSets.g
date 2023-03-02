@@ -14,10 +14,10 @@ ReadPackage( "FiniteCocompletion", "gap/CompilerLogic.gi" );
 #! true
 
 category_constructor :=
-  {} -> SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );;
+  {} -> CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );;
 given_arguments := [ ];;
 compiled_category_name :=
-  "SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled";;
+  "CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled";;
 package_name := "FiniteCocompletion";;
 primitive_operations :=
   ListPrimitivelyInstalledOperationsOfCategory( category_constructor() );;
@@ -39,10 +39,10 @@ CapJitPrecompileCategoryAndCompareResult(
         number_of_objectified_morphisms_in_data_structure_of_morphism := 1
 );;
 
-SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( );
+CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategoryPrecompiled( );
 #! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 
-cat := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );
+cat := CategoryOfSkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory( );
 #! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 
 # Now we check whether the compiled code is loaded automatically.
