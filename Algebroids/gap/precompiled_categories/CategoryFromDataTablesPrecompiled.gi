@@ -127,12 +127,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
     deduped_5_1 := MapOfMorphism( arg2_1 );
     deduped_4_1 := AsList( deduped_5_1 );
     deduped_3_1 := Length( Range( deduped_5_1 ) );
     deduped_2_1 := Length( Source( deduped_5_1 ) );
-    hoisted_1_1 := deduped_3_1;
     return IdFunc( function (  )
                   if not ForAll( deduped_4_1, function ( a_3 )
                                return (IsInt( a_3 ) and a_3 >= 0);
@@ -141,7 +140,7 @@ function ( cat_1, arg2_1 )
                   elif deduped_2_1 <> Length( deduped_4_1 ) then
                       return false;
                   elif not ForAll( deduped_4_1, function ( a_3 )
-                               return a_3 < hoisted_1_1;
+                               return a_3 < deduped_3_1;
                            end ) then
                       return false;
                   else
@@ -159,12 +158,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    local deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
     deduped_5_1 := MapOfObject( arg2_1 );
     deduped_4_1 := AsList( deduped_5_1 );
     deduped_3_1 := Length( Range( deduped_5_1 ) );
     deduped_2_1 := Length( Source( deduped_5_1 ) );
-    hoisted_1_1 := deduped_3_1;
     return IdFunc( function (  )
                   if not ForAll( deduped_4_1, function ( a_3 )
                                return (IsInt( a_3 ) and a_3 >= 0);
@@ -173,7 +171,7 @@ function ( cat_1, arg2_1 )
                   elif deduped_2_1 <> Length( deduped_4_1 ) then
                       return false;
                   elif not ForAll( deduped_4_1, function ( a_3 )
-                               return a_3 < hoisted_1_1;
+                               return a_3 < deduped_3_1;
                            end ) then
                       return false;
                   else
