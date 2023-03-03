@@ -91,7 +91,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, hoisted_15_1, deduped_17_1, hoisted_21_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1;
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_11_1, hoisted_16_1, hoisted_21_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1, deduped_35_1, deduped_36_1, deduped_37_1, deduped_38_1, deduped_39_1, deduped_40_1, deduped_41_1;
     deduped_41_1 := ValuesOfPreSheaf( arg3_1 );
     deduped_40_1 := ValuesOfPreSheaf( arg2_1 );
     deduped_39_1 := Source( cat_1 );
@@ -115,20 +115,22 @@ function ( cat_1, arg2_1, arg3_1 )
     deduped_27_1 := List( deduped_28_1, function ( logic_new_func_x_2 )
             return hoisted_1_1[logic_new_func_x_2] * hoisted_2_1[logic_new_func_x_2];
         end );
+    deduped_4_1 := List( deduped_37_1, RankOfObject );
+    deduped_3_1 := List( deduped_36_1, RankOfObject );
+    deduped_11_1 := List( deduped_29_1, function ( logic_new_func_x_2 )
+            return deduped_3_1[logic_new_func_x_2] * deduped_4_1[logic_new_func_x_2];
+        end );
     hoisted_10_1 := List( deduped_35_1, UnderlyingMatrix );
     hoisted_8_1 := List( deduped_34_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
     hoisted_7_1 := List( deduped_32_1, Range );
     hoisted_6_1 := List( deduped_32_1, Source );
-    deduped_4_1 := List( deduped_37_1, RankOfObject );
-    deduped_3_1 := List( deduped_36_1, RankOfObject );
     deduped_26_1 := SyzygiesOfRows( UnionOfRows( deduped_31_1, Sum( deduped_27_1 ), List( deduped_29_1, function ( logic_new_func_x_2 )
-                local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
-                deduped_7_2 := CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 );
+                local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
                 deduped_6_2 := deduped_4_1[logic_new_func_x_2];
                 deduped_5_2 := deduped_3_1[logic_new_func_x_2];
-                hoisted_4_2 := deduped_3_1[deduped_7_2] * deduped_4_1[deduped_7_2];
+                hoisted_4_2 := deduped_11_1[logic_new_func_x_2];
                 hoisted_3_2 := TransposedMatrix( HomalgIdentityMatrix( deduped_5_2, deduped_31_1 ) );
                 hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_31_1 );
                 deduped_1_2 := deduped_33_1[logic_new_func_x_2];
@@ -152,16 +154,13 @@ function ( cat_1, arg2_1, arg3_1 )
             end ) ) );
     deduped_25_1 := NumberRows( deduped_26_1 );
     deduped_24_1 := [ 1 .. deduped_25_1 ];
-    deduped_17_1 := List( deduped_29_1, function ( logic_new_func_x_2 )
-            return deduped_3_1[logic_new_func_x_2] * deduped_4_1[logic_new_func_x_2];
-        end );
-    hoisted_15_1 := HomalgIdentityMatrix( deduped_25_1, deduped_31_1 );
+    hoisted_16_1 := HomalgIdentityMatrix( deduped_25_1, deduped_31_1 );
     hoisted_21_1 := List( [ 1 .. Length( deduped_36_1 ) ], function ( logic_new_func_x_2 )
             local hoisted_1_2, deduped_2_2;
-            deduped_2_2 := deduped_17_1[logic_new_func_x_2];
-            hoisted_1_2 := deduped_26_1 * UnionOfRows( HomalgZeroMatrix( Sum( deduped_17_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_2_2, deduped_31_1 ), HomalgIdentityMatrix( deduped_2_2, deduped_31_1 ), HomalgZeroMatrix( Sum( deduped_17_1{[ (logic_new_func_x_2 + 1) .. deduped_30_1 ]} ), deduped_2_2, deduped_31_1 ) );
+            deduped_2_2 := deduped_11_1[logic_new_func_x_2];
+            hoisted_1_2 := deduped_26_1 * UnionOfRows( HomalgZeroMatrix( Sum( deduped_11_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_2_2, deduped_31_1 ), HomalgIdentityMatrix( deduped_2_2, deduped_31_1 ), HomalgZeroMatrix( Sum( deduped_11_1{[ (logic_new_func_x_2 + 1) .. deduped_30_1 ]} ), deduped_2_2, deduped_31_1 ) );
             return List( deduped_24_1, function ( logic_new_func_x_3 )
-                    return ConvertRowToMatrix( CertainRows( hoisted_15_1, [ logic_new_func_x_3 ] ), 1, deduped_25_1 ) * hoisted_1_2;
+                    return ConvertRowToMatrix( CertainRows( hoisted_16_1, [ logic_new_func_x_3 ] ), 1, deduped_25_1 ) * hoisted_1_2;
                 end );
         end );
     return List( deduped_24_1, function ( j_2 )
@@ -1154,47 +1153,47 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local deduped_1_1, deduped_2_1, hoisted_3_1, hoisted_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_13_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1;
-    deduped_24_1 := ValuesOfPreSheaf( arg3_1 );
-    deduped_23_1 := ValuesOfPreSheaf( arg2_1 );
-    deduped_22_1 := Source( cat_1 );
-    deduped_21_1 := Range( cat_1 );
-    deduped_20_1 := deduped_24_1[2];
-    deduped_19_1 := deduped_23_1[2];
-    deduped_18_1 := SetOfGeneratingMorphisms( deduped_22_1 );
-    deduped_17_1 := UnderlyingRing( deduped_21_1 );
-    deduped_16_1 := SetOfObjects( deduped_22_1 );
-    deduped_15_1 := [ 1 .. Length( deduped_18_1 ) ];
-    deduped_14_1 := [ 1 .. Length( deduped_16_1 ) ];
-    hoisted_4_1 := List( deduped_20_1, function ( logic_new_func_x_2 )
+    local deduped_1_1, deduped_2_1, hoisted_3_1, hoisted_4_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, hoisted_10_1, deduped_14_1, deduped_15_1, deduped_16_1, deduped_17_1, deduped_18_1, deduped_19_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1;
+    deduped_26_1 := ValuesOfPreSheaf( arg3_1 );
+    deduped_25_1 := ValuesOfPreSheaf( arg2_1 );
+    deduped_24_1 := Source( cat_1 );
+    deduped_23_1 := Range( cat_1 );
+    deduped_22_1 := deduped_26_1[2];
+    deduped_21_1 := deduped_25_1[2];
+    deduped_20_1 := SetOfGeneratingMorphisms( deduped_24_1 );
+    deduped_19_1 := UnderlyingRing( deduped_23_1 );
+    deduped_18_1 := SetOfObjects( deduped_24_1 );
+    deduped_17_1 := [ 1 .. Length( deduped_20_1 ) ];
+    deduped_16_1 := [ 1 .. Length( deduped_18_1 ) ];
+    hoisted_4_1 := List( deduped_22_1, function ( logic_new_func_x_2 )
             return RankOfObject( Range( logic_new_func_x_2 ) );
         end );
-    hoisted_3_1 := List( deduped_19_1, function ( logic_new_func_x_2 )
+    hoisted_3_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
             return RankOfObject( Source( logic_new_func_x_2 ) );
         end );
-    deduped_13_1 := List( deduped_15_1, function ( logic_new_func_x_2 )
+    deduped_15_1 := List( deduped_17_1, function ( logic_new_func_x_2 )
             return hoisted_3_1[logic_new_func_x_2] * hoisted_4_1[logic_new_func_x_2];
         end );
-    hoisted_10_1 := List( deduped_20_1, UnderlyingMatrix );
-    hoisted_8_1 := List( deduped_19_1, function ( logic_new_func_x_2 )
+    deduped_2_1 := List( deduped_26_1[1], RankOfObject );
+    deduped_1_1 := List( deduped_25_1[1], RankOfObject );
+    deduped_14_1 := List( deduped_16_1, function ( logic_new_func_x_2 )
+            return deduped_1_1[logic_new_func_x_2] * deduped_2_1[logic_new_func_x_2];
+        end );
+    hoisted_10_1 := List( deduped_22_1, UnderlyingMatrix );
+    hoisted_8_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
-    hoisted_7_1 := List( deduped_18_1, Range );
-    hoisted_6_1 := List( deduped_18_1, Source );
-    deduped_2_1 := List( deduped_24_1[1], RankOfObject );
-    deduped_1_1 := List( deduped_23_1[1], RankOfObject );
-    return CreateCapCategoryObjectWithAttributes( deduped_21_1, RankOfObject, Sum( List( deduped_14_1, function ( logic_new_func_x_2 )
-                  return deduped_1_1[logic_new_func_x_2] * deduped_2_1[logic_new_func_x_2];
-              end ) ) - RowRankOfMatrix( UnionOfRows( deduped_17_1, Sum( deduped_13_1 ), List( deduped_14_1, function ( logic_new_func_x_2 )
-                    local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
-                    deduped_7_2 := CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 );
+    hoisted_7_1 := List( deduped_20_1, Range );
+    hoisted_6_1 := List( deduped_20_1, Source );
+    return CreateCapCategoryObjectWithAttributes( deduped_23_1, RankOfObject, Sum( deduped_14_1 ) - RowRankOfMatrix( UnionOfRows( deduped_19_1, Sum( deduped_15_1 ), List( deduped_16_1, function ( logic_new_func_x_2 )
+                    local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
                     deduped_6_2 := deduped_2_1[logic_new_func_x_2];
                     deduped_5_2 := deduped_1_1[logic_new_func_x_2];
-                    hoisted_4_2 := deduped_1_1[deduped_7_2] * deduped_2_1[deduped_7_2];
-                    hoisted_3_2 := TransposedMatrix( HomalgIdentityMatrix( deduped_5_2, deduped_17_1 ) );
-                    hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_17_1 );
-                    deduped_1_2 := deduped_16_1[logic_new_func_x_2];
-                    return UnionOfColumns( deduped_17_1, deduped_5_2 * deduped_6_2, List( deduped_15_1, function ( logic_new_func_x_3 )
+                    hoisted_4_2 := deduped_14_1[logic_new_func_x_2];
+                    hoisted_3_2 := TransposedMatrix( HomalgIdentityMatrix( deduped_5_2, deduped_19_1 ) );
+                    hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_19_1 );
+                    deduped_1_2 := deduped_18_1[logic_new_func_x_2];
+                    return UnionOfColumns( deduped_19_1, deduped_5_2 * deduped_6_2, List( deduped_17_1, function ( logic_new_func_x_3 )
                               local deduped_1_3, deduped_2_3, deduped_3_3, deduped_4_3;
                               deduped_4_3 := (deduped_1_2 = hoisted_7_1[logic_new_func_x_3]);
                               deduped_3_3 := (deduped_1_2 = hoisted_6_1[logic_new_func_x_3]);
@@ -1207,7 +1206,7 @@ function ( cat_1, arg2_1, arg3_1 )
                               elif (deduped_3_3 and not deduped_4_3) then
                                   return deduped_2_3;
                               else
-                                  return HomalgZeroMatrix( hoisted_4_2, deduped_13_1[logic_new_func_x_3], deduped_17_1 );
+                                  return HomalgZeroMatrix( hoisted_4_2, deduped_15_1[logic_new_func_x_3], deduped_19_1 );
                               fi;
                               return;
                           end ) );
@@ -1475,7 +1474,7 @@ end
         
 ########
 function ( cat_1, source_1, range_1, alpha_1 )
-    local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_12_1, deduped_15_1, hoisted_17_1, hoisted_18_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1;
+    local hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, hoisted_8_1, hoisted_9_1, hoisted_10_1, hoisted_12_1, deduped_13_1, hoisted_17_1, hoisted_18_1, deduped_20_1, deduped_21_1, deduped_22_1, deduped_23_1, deduped_24_1, deduped_25_1, deduped_26_1, deduped_27_1, deduped_28_1, deduped_29_1, deduped_30_1, deduped_31_1, deduped_32_1, deduped_33_1, deduped_34_1;
     deduped_34_1 := Range( cat_1 );
     deduped_33_1 := ValuesOfPreSheaf( range_1 );
     deduped_32_1 := ValuesOfPreSheaf( source_1 );
@@ -1499,20 +1498,22 @@ function ( cat_1, source_1, range_1, alpha_1 )
     deduped_20_1 := List( deduped_22_1, function ( logic_new_func_x_2 )
             return hoisted_3_1[logic_new_func_x_2] * hoisted_4_1[logic_new_func_x_2];
         end );
+    deduped_6_1 := List( deduped_26_1, RankOfObject );
+    deduped_5_1 := List( deduped_25_1, RankOfObject );
+    deduped_13_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
+            return deduped_5_1[logic_new_func_x_2] * deduped_6_1[logic_new_func_x_2];
+        end );
     hoisted_12_1 := List( deduped_28_1, UnderlyingMatrix );
     hoisted_10_1 := List( deduped_27_1, function ( logic_new_func_x_2 )
             return TransposedMatrix( UnderlyingMatrix( logic_new_func_x_2 ) );
         end );
     hoisted_9_1 := List( deduped_29_1, Range );
     hoisted_8_1 := List( deduped_29_1, Source );
-    deduped_6_1 := List( deduped_26_1, RankOfObject );
-    deduped_5_1 := List( deduped_25_1, RankOfObject );
     hoisted_17_1 := UnderlyingMatrix( alpha_1 ) * SyzygiesOfRows( UnionOfRows( deduped_30_1, Sum( deduped_20_1 ), List( deduped_21_1, function ( logic_new_func_x_2 )
-                  local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2, deduped_7_2;
-                  deduped_7_2 := CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 );
+                  local deduped_1_2, hoisted_2_2, hoisted_3_2, hoisted_4_2, deduped_5_2, deduped_6_2;
                   deduped_6_2 := deduped_6_1[logic_new_func_x_2];
                   deduped_5_2 := deduped_5_1[logic_new_func_x_2];
-                  hoisted_4_2 := (deduped_5_1[deduped_7_2] * deduped_6_1[deduped_7_2]);
+                  hoisted_4_2 := deduped_13_1[logic_new_func_x_2];
                   hoisted_3_2 := TransposedMatrix( HomalgIdentityMatrix( deduped_5_2, deduped_30_1 ) );
                   hoisted_2_2 := HomalgIdentityMatrix( deduped_6_2, deduped_30_1 );
                   deduped_1_2 := deduped_24_1[logic_new_func_x_2];
@@ -1534,14 +1535,10 @@ function ( cat_1, source_1, range_1, alpha_1 )
                             return;
                         end ) );
               end ) ) );
-    deduped_15_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
-            return deduped_5_1[logic_new_func_x_2] * deduped_6_1[logic_new_func_x_2];
-        end );
     hoisted_18_1 := List( deduped_21_1, function ( logic_new_func_x_2 )
-            local deduped_1_2, deduped_2_2;
-            deduped_2_2 := CAP_JIT_INCOMPLETE_LOGIC( logic_new_func_x_2 );
-            deduped_1_2 := deduped_5_1[deduped_2_2] * deduped_6_1[deduped_2_2];
-            return hoisted_17_1 * UnionOfRows( HomalgZeroMatrix( Sum( deduped_15_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, deduped_30_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_30_1 ), HomalgZeroMatrix( Sum( deduped_15_1{[ (logic_new_func_x_2 + 1) .. deduped_23_1 ]} ), deduped_1_2, deduped_30_1 ) );
+            local deduped_1_2;
+            deduped_1_2 := deduped_13_1[logic_new_func_x_2];
+            return hoisted_17_1 * UnionOfRows( HomalgZeroMatrix( Sum( deduped_13_1{[ 1 .. (logic_new_func_x_2 - 1) ]} ), deduped_1_2, deduped_30_1 ), HomalgIdentityMatrix( deduped_1_2, deduped_30_1 ), HomalgZeroMatrix( Sum( deduped_13_1{[ (logic_new_func_x_2 + 1) .. deduped_23_1 ]} ), deduped_1_2, deduped_30_1 ) );
         end );
     return CreateCapCategoryMorphismWithAttributes( cat_1, source_1, range_1, ValuesOnAllObjects, LazyHList( deduped_21_1, function ( i_2 )
               return CreateCapCategoryMorphismWithAttributes( deduped_34_1, deduped_25_1[i_2], deduped_26_1[i_2], UnderlyingMatrix, ConvertRowToMatrix( hoisted_18_1[i_2], deduped_5_1[i_2], deduped_6_1[i_2] ) );
