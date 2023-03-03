@@ -356,6 +356,8 @@ InstallMethod( Display,
     Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
     Print( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ), "\n\n" );
     
+    Print( MorphismDatum( phi )[2], "\n\n" );
+    
     Print( "A morphism in ", Name( CapCategory( phi ) ), " with the above associated map\n" );
     
 end );
