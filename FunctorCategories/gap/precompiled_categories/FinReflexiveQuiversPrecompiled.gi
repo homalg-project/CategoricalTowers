@@ -23,49 +23,40 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local hoisted_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
-    deduped_8_1 := [ 1 .. Length( arg2_1 ) ];
-    deduped_7_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    local deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := [ 1 .. Length( arg2_1 ) ];
+    deduped_4_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[2];
         end );
-    deduped_6_1 := List( arg2_1, function ( logic_new_func_x_2 )
+    deduped_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
             return DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[1];
         end );
-    hoisted_5_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return List( DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[4], function ( a_3 )
-                    return a_3[2];
-                end );
-        end );
-    hoisted_4_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return List( DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[4], function ( a_3 )
-                    return a_3[1];
-                end );
-        end );
-    hoisted_3_1 := List( arg2_1, function ( logic_new_func_x_2 )
-            return DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( logic_new_func_x_2 )[3];
-        end );
-    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, Sum( deduped_6_1 ), Sum( deduped_7_1 ), Concatenation( List( deduped_8_1, function ( logic_new_func_x_2 )
+    return CreateCapCategoryObjectWithAttributes( cat_1, DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, NTuple( 4, Sum( deduped_3_1 ), Sum( deduped_4_1 ), Concatenation( List( deduped_5_1, function ( logic_new_func_x_2 )
                   local hoisted_1_2, hoisted_2_2, deduped_3_2;
-                  deduped_3_2 := Sum( deduped_7_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
-                  hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_7_1[logic_new_func_x_2] - 1 ];
-                  hoisted_1_2 := hoisted_3_1[logic_new_func_x_2];
-                  return List( [ 0 .. deduped_6_1[logic_new_func_x_2] - 1 ], function ( i_3 )
+                  deduped_3_2 := Sum( deduped_4_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                  hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_4_1[logic_new_func_x_2] - 1 ];
+                  hoisted_1_2 := DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[logic_new_func_x_2] ) )[3];
+                  return List( [ 0 .. deduped_3_1[logic_new_func_x_2] - 1 ], function ( i_3 )
                           return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                       end );
-              end ) ), ListN( Concatenation( List( deduped_8_1, function ( logic_new_func_x_2 )
+              end ) ), ListN( Concatenation( List( deduped_5_1, function ( logic_new_func_x_2 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
-                    deduped_3_2 := Sum( deduped_6_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
-                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_6_1[logic_new_func_x_2] - 1 ];
-                    hoisted_1_2 := hoisted_4_1[logic_new_func_x_2];
-                    return List( [ 0 .. deduped_7_1[logic_new_func_x_2] - 1 ], function ( i_3 )
+                    deduped_3_2 := Sum( deduped_3_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_3_1[logic_new_func_x_2] - 1 ];
+                    hoisted_1_2 := List( DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[logic_new_func_x_2] ) )[4], function ( a_3 )
+                            return a_3[1];
+                        end );
+                    return List( [ 0 .. deduped_4_1[logic_new_func_x_2] - 1 ], function ( i_3 )
                             return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                         end );
-                end ) ), Concatenation( List( deduped_8_1, function ( logic_new_func_x_2 )
+                end ) ), Concatenation( List( deduped_5_1, function ( logic_new_func_x_2 )
                     local hoisted_1_2, hoisted_2_2, deduped_3_2;
-                    deduped_3_2 := Sum( deduped_6_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
-                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_6_1[logic_new_func_x_2] - 1 ];
-                    hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
-                    return List( [ 0 .. deduped_7_1[logic_new_func_x_2] - 1 ], function ( i_3 )
+                    deduped_3_2 := Sum( deduped_3_1{[ 1 .. logic_new_func_x_2 - 1 ]} );
+                    hoisted_2_2 := [ deduped_3_2 .. deduped_3_2 + deduped_3_1[logic_new_func_x_2] - 1 ];
+                    hoisted_1_2 := List( DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( CAP_JIT_INCOMPLETE_LOGIC( arg2_1[logic_new_func_x_2] ) )[4], function ( a_3 )
+                            return a_3[2];
+                        end );
+                    return List( [ 0 .. deduped_4_1[logic_new_func_x_2] - 1 ], function ( i_3 )
                             return hoisted_2_2[1 + hoisted_1_2[(1 + i_3)]];
                         end );
                 end ) ), function ( s_2, t_2 )
