@@ -307,6 +307,8 @@
     [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
     [4X[28X{ 0, 1 } ⱶ[ 1, 0 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
+    [4X[28X[ (a)-[(a)]->(a), (b)-[(b)]->(b) ][128X[104X
+    [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )[128X[104X
     [4X[28Xwith the above associated map[128X[104X
@@ -418,6 +420,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDisplay( delta );[127X[104X
     [4X[28X{ 0, 1 } ⱶ[ 0, 0 ]→ { 0 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ (a)-[(a)]->(a), (a)-[(a)]->(a) ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a)[]" ) ) )[128X[104X
@@ -544,6 +548,13 @@
     [4X[25Xgap>[125X [27XDisplay( piA );[127X[104X
     [4X[28X{ 0,..., 5 } ⱶ[ 0, 1, 2, 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
     [4X[28X[128X[104X
+    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct ][128X[104X
+    [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[28Xwith the above associated map[128X[104X
@@ -552,6 +563,13 @@
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( piB );[127X[104X
     [4X[28X{ 0,..., 5 } ⱶ[ 0, 0, 0, 1, 1, 1 ]→ { 0, 1 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  ProjectionInFactorOfDirectProductWithGivenDirectProduct ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
@@ -618,6 +636,8 @@
     [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 1 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
+    [4X[28X[ PreCompose, PreCompose, PreCompose ][128X[104X
+    [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[28Xwith the above associated map[128X[104X
@@ -627,6 +647,8 @@
     [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 1, 0, 0 ]→ { 0, 1 }[128X[104X
     [4X[28X[128X[104X
+    [4X[28X[ PreCompose, PreCompose, PreCompose ][128X[104X
+    [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
     [4X[28Xwith the above associated map[128X[104X
@@ -635,6 +657,16 @@
     [4X[28X FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( hom_alpha_gamma );[127X[104X
     [4X[28X{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X[ UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct,[128X[104X
+    [4X[28X  UniversalMorphismIntoDirectProductWithGivenDirectProduct ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in[128X[104X
     [4X[28XFiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )[128X[104X
