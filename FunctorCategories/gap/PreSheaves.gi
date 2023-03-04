@@ -2433,7 +2433,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local B, defining_triple, nr_objs, nr_mors, objs, mors, F_vals, objects, shifts, morphisms, triples;
+    local B, defining_triple, nr_objs, nr_mors, objs, mors, F_vals, objects, offsets, decorated_morphisms, triples;
     
     B := Source( PSh );
     
@@ -2448,7 +2448,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     objects := Concatenation( List( [ 0 .. nr_objs - 1 ], i -> ListWithIdenticalEntries( Length( F_vals[1][1 + i] ), objs[1 + i] ) ) );
     
-    shifts := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) );
+    offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( F_vals[1][j] ) ) );
     
     triples :=
       function( j )
@@ -2459,8 +2459,8 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
         triple :=
           function( i )
             local s, t;
-            s := imgs[1 + i] + shifts[1 + m[1]];
-            t := i + shifts[1 + m[2]];
+            s := imgs[1 + i] + offsets[1 + m[1]];
+            t := i + offsets[1 + m[2]];
             #% CAP_JIT_DROP_NEXT_STATEMENT
             Assert( 0, Source( mors[1 + j] ) = objects[1 + s] );
             #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -2470,11 +2470,11 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
         return List( Source( Fmor ), triple );
     end;
     
-    morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
+    decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
     return CreateQuiverInCategory( CategoryOfQuivers( B ),
                    Pair( objects,
-                         morphisms ) );
+                         decorated_morphisms ) );
     
 end );
 
