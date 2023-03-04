@@ -89,6 +89,7 @@ InstallMethod( CategoryOfQuivers,
                            List( decorated_morphisms, m -> objects[1 + m[1]] ) ) );
         
         map_s := List( decorated_morphisms, m -> m[1] );
+        
         mor_s := List( decorated_morphisms, m -> IdentityMorphism( C, objects[1 + m[1]] ) );
         
         s := MorphismConstructor( UC,
@@ -97,6 +98,7 @@ InstallMethod( CategoryOfQuivers,
                      V );
         
         map_t := List( decorated_morphisms, m -> m[3] );
+        
         mor_t := List( decorated_morphisms, m -> m[2] );
         
         t := MorphismConstructor( UC,
