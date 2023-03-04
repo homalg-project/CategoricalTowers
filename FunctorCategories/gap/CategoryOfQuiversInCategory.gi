@@ -211,7 +211,6 @@ InstallMethod( Display,
         
   function ( quiver )
     
-    ViewObj( ObjectDatum( quiver ) );
-    Print( "\n" );
+    Display( ObjectDatum( quiver ) );
     
 end );
