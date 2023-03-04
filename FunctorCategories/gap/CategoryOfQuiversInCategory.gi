@@ -27,6 +27,20 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverInCategory,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( CreateQuiverMorphismInCategory,
+        "for a category of quivers, two objects in a category of quivers, and a pair",
+        [ IsCategoryOfQuiversInCategory, IsObjectInCategoryOfQuiversInCategory, IsList, IsObjectInCategoryOfQuiversInCategory ],
+        
+  function ( category_of_quivers, source, images, range )
+    
+    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
+                   source,
+                   range,
+                   DefiningPairOfQuiverMorphismInCategory, images );
+    
+end );
+
+##
 InstallMethod( CategoryOfQuivers,
         "for a category",
         [ IsCapCategory ],
