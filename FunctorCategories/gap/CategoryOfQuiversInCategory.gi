@@ -189,11 +189,18 @@ InstallMethod( CategoryOfQuivers,
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
-        local PSh, UC;
+        local PSh, UC, mor_datum, V_datum, A_datum;
         
         PSh := ModelingCategory( Quivers );
         
         UC := Range( PSh );
+        
+        mor_datum := MorphismDatum( PSh, mor );
+        
+        V_datum := MorphismDatum( UC, mor_datum[1] );
+        A_datum := MorphismDatum( UC, mor_datum[2] );
+        
+        return Pair( V_datum, A_datum[1] );
         
     end;
     
