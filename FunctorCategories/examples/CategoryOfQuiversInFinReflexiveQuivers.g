@@ -1,4 +1,4 @@
-#! @BeginChunk CategoryOfQuivers
+#! @BeginChunk CategoryOfQuiversInFinReflexiveQuivers
 
 #! @Example
 LoadPackage( "FunctorCategories" );
