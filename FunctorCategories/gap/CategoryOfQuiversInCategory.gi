@@ -27,6 +27,20 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverInCategory,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( CreateQuiverMorphismInCategory,
+        "for a category of quivers, two objects in a category of quivers, and a pair",
+        [ IsCategoryOfQuiversInCategory, IsObjectInCategoryOfQuiversInCategory, IsList, IsObjectInCategoryOfQuiversInCategory ],
+        
+  function ( category_of_quivers, source, images, range )
+    
+    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
+                   source,
+                   range,
+                   DefiningPairOfQuiverMorphismInCategory, images );
+    
+end );
+
+##
 InstallMethod( CategoryOfQuivers,
         "for a category",
         [ IsCapCategory ],
@@ -89,6 +103,7 @@ InstallMethod( CategoryOfQuivers,
                            List( decorated_morphisms, m -> objects[1 + m[1]] ) ) );
         
         map_s := List( decorated_morphisms, m -> m[1] );
+        
         mor_s := List( decorated_morphisms, m -> IdentityMorphism( C, objects[1 + m[1]] ) );
         
         s := MorphismConstructor( UC,
@@ -97,6 +112,7 @@ InstallMethod( CategoryOfQuivers,
                      V );
         
         map_t := List( decorated_morphisms, m -> m[3] );
+        
         mor_t := List( decorated_morphisms, m -> m[2] );
         
         t := MorphismConstructor( UC,
@@ -111,7 +127,7 @@ InstallMethod( CategoryOfQuivers,
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
-        local PSh, UC, values_of_functor, V, objects, s, t, s_datum, t_datum;
+        local PSh, UC, values_of_functor, V, objects, s, t, s_datum, t_datum, decorated_morphisms;
         
         PSh := ModelingCategory( Quivers );
         
@@ -129,30 +145,62 @@ InstallMethod( CategoryOfQuivers,
         s_datum := MorphismDatum( UC, s );
         t_datum := MorphismDatum( UC, t );
         
-        return Pair( objects,
-                     ListN( s_datum[1], t_datum[2], t_datum[1], { s_index, mor, t_index } -> Triple( s_index, mor, t_index ) ) );
+        decorated_morphisms := ListN( s_datum[1],
+                                      t_datum[2],
+                                      t_datum[1],
+                                      { s_index, mor, t_index } -> Triple( s_index, mor, t_index ) );
+        
+        return Pair( objects, decorated_morphisms );
         
     end;
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( Quivers, source, images, range )
-        local PSh, UC;
+        local PSh, UC, source_datum, range_datum, V, source_s_datum, A;
         
         PSh := ModelingCategory( Quivers );
         
         UC := Range( PSh );
+        
+        source_datum := ObjectDatum( PSh, source );
+        range_datum := ObjectDatum( PSh, range );
+        
+        V := MorphismConstructor( UC,
+                     source_datum[1][1],
+                     images[1],
+                     range_datum[1][1] );
+        
+        source_s_datum := MorphismDatum( UC, source_datum[2][1] );
+        
+        A := MorphismConstructor( UC,
+                     source_datum[1][2],
+                     Pair( images[2],
+                           source_s_datum[2] ),
+                     range_datum[1][2] );
+        
+        return MorphismConstructor( PSh,
+                       source,
+                       [ V, A ],
+                       range );
         
     end;
     
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
-        local PSh, UC;
+        local PSh, UC, mor_datum, V_datum, A_datum;
         
         PSh := ModelingCategory( Quivers );
         
         UC := Range( PSh );
+        
+        mor_datum := MorphismDatum( PSh, mor );
+        
+        V_datum := MorphismDatum( UC, mor_datum[1] );
+        A_datum := MorphismDatum( UC, mor_datum[2] );
+        
+        return Pair( V_datum, A_datum[1] );
         
     end;
     
@@ -205,7 +253,22 @@ InstallMethod( Display,
         
   function ( quiver )
     
-    ViewObj( ObjectDatum( quiver ) );
-    Print( "\n" );
+    Display( ObjectDatum( quiver ) );
+    
+end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a category of quivers in a category",
+        [ IsMorphismInCategoryOfQuiversInCategory ],
+        
+  function ( quiver_morphism )
+
+    Print( "Source: " );
+    Display( Source( quiver_morphism ) );
+    Print( "\nDatum:  " );
+    Display( MorphismDatum( quiver_morphism ) );
+    Print( "\nRange:  " );
+    Display( Range( quiver_morphism ) );
     
 end );
