@@ -214,3 +214,19 @@ InstallMethod( Display,
     Display( ObjectDatum( quiver ) );
     
 end );
+
+##
+InstallMethod( Display,
+        "for a morphism in a category of quivers in a category",
+        [ IsMorphismInCategoryOfQuiversInCategory ],
+        
+  function ( quiver_morphism )
+
+    Print( "Source: " );
+    Display( Source( quiver_morphism ) );
+    Print( "\nDatum:  " );
+    Display( MorphismDatum( quiver_morphism ) );
+    Print( "\nRange:  " );
+    Display( Range( quiver_morphism ) );
+    
+end );
