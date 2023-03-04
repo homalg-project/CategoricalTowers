@@ -113,7 +113,7 @@ InstallMethod( CategoryOfQuivers,
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
-        local PSh, UC, values_of_functor, V, objects, s, t, s_datum, t_datum;
+        local PSh, UC, values_of_functor, V, objects, s, t, s_datum, t_datum, decorated_morphisms;
         
         PSh := ModelingCategory( Quivers );
         
@@ -131,8 +131,12 @@ InstallMethod( CategoryOfQuivers,
         s_datum := MorphismDatum( UC, s );
         t_datum := MorphismDatum( UC, t );
         
-        return Pair( objects,
-                     ListN( s_datum[1], t_datum[2], t_datum[1], { s_index, mor, t_index } -> Triple( s_index, mor, t_index ) ) );
+        decorated_morphisms := ListN( s_datum[1],
+                                      t_datum[2],
+                                      t_datum[1],
+                                      { s_index, mor, t_index } -> Triple( s_index, mor, t_index ) );
+        
+        return Pair( objects, decorated_morphisms );
         
     end;
     
