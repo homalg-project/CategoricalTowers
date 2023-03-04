@@ -6,10 +6,10 @@
                             [1X Categories of functors [101X
   
   
-                                   2023.03-03
+                                   2023.03-08
   
   
-                                  1 March 2023
+                                  4 March 2023
   
   
                                 Mohamed Barakat
@@ -83,8 +83,9 @@
       2.1-2 CreatePreSheaf
       2.1-3 CreatePreSheafMorphismByValues
       2.1-4 CoYonedaLemmaOnObjects
-      2.1-5 SomeDiagramOfRepresentables
-      2.1-6 CategoryOfInternalCategories
+      2.1-5 CoYonedaLemmaOnMorphisms
+      2.1-6 SomeDiagramOfRepresentables
+      2.1-7 CategoryOfInternalCategories
     2.2 [33X[0;0YAttributes[133X
       2.2-1 ValuesOnAllObjects
       2.2-2 UnderlyingCapTwoCategoryCell
