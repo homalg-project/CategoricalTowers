@@ -50,6 +50,7 @@ DeclareCategory( "IsMorphismInCategoryOfQuiversInCategory",
 #! @Arguments C
 DeclareAttribute( "CategoryOfQuivers",
         IsCapCategory );
+#! @InsertChunk CategoryOfQuiversInFinBouquets
 #! @InsertChunk CategoryOfQuiversInFinReflexiveQuivers
 
 #!

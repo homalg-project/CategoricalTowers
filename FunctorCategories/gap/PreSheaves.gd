@@ -240,6 +240,10 @@ DeclareOperation( "CreatePreSheafMorphismByFunction",
 DeclareAttribute( "CoYonedaLemmaOnObjects",
         IsObjectInPreSheafCategory );
 
+#! @Arguments phi
+DeclareAttribute( "CoYonedaLemmaOnMorphisms",
+        IsMorphismInPreSheafCategory );
+
 #! @Arguments F
 DeclareAttribute( "SomeDiagramOfRepresentables",
         IsObjectInPreSheafCategory );

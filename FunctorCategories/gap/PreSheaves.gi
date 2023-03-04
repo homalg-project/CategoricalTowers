@@ -2489,6 +2489,66 @@ InstallMethod( CoYonedaLemmaOnObjects,
 end );
 
 ##
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
+        [ IsPreSheafCategoryOfFpEnrichedCategory,
+          IsObjectInCategoryOfQuiversInCategory,
+          IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
+          IsObjectInCategoryOfQuiversInCategory ],
+        
+  function ( PSh, source, phi, range )
+    local B, C, defining_triple, nr_objs, nr_mors, source_datum, phi_vals, map_of_objects,
+          range_vals, range_offsets, imgs, map_of_decorated_morphisms;
+    
+    B := Source( PSh );
+    C := Range( PSh );
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( B );
+    nr_objs := defining_triple[1];
+    nr_mors := defining_triple[2];
+    
+    source_datum := ObjectDatum( CapCategory( source ), source );
+    
+    phi_vals := ValuesOnAllObjects( phi );
+    
+    map_of_objects := Pair( AsList( CoproductFunctorial( C, phi_vals ) ),
+                            List( source_datum[1], objB -> IdentityMorphism( B, objB ) ) );
+    
+    range_vals := ValuesOfPreSheaf( Source( phi ) );
+    
+    range_offsets := List( [ 0 .. nr_objs - 1 ], i -> Sum( [ 1 .. i ], j -> Length( range_vals[1][j] ) ) );
+    
+    imgs :=
+      function( j )
+        local m, offset;
+        m := defining_triple[3][1 + j];
+        offset := range_offsets[1 + m[1]];
+        return List( AsList( phi_vals[1 + m[2]] ), v -> offset + v );
+    end;
+    
+    map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
+    
+    return CreateQuiverMorphismInCategory( CategoryOfQuivers( B ),
+                   source,
+                   Pair( map_of_objects,
+                         map_of_decorated_morphisms ),
+                   range );
+    
+end );
+
+##
+InstallMethod( CoYonedaLemmaOnMorphisms,
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( phi )
+    
+    return CoYonedaLemmaOnMorphisms( CapCategory( phi ),
+                   CoYonedaLemmaOnObjects( Source( phi ) ),
+                   phi,
+                   CoYonedaLemmaOnObjects( Range( phi ) ) );
+    
+end );
+
+##
 InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
