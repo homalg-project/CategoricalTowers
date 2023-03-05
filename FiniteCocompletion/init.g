@@ -12,3 +12,6 @@ ReadPackage( "FiniteCocompletion", "gap/FiniteStrictProductCompletion.gd");
 
 ##
 ReadPackage( "FiniteCocompletion", "gap/SkeletalFinSets.gd");
+
+##
+ReadPackage( "FiniteCocompletion", "gap/CategoryOfQuiversInCategory.gd");

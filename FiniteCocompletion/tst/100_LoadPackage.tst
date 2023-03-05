@@ -7,14 +7,22 @@
 gap> PushOptions( rec( OnlyNeeded := true ) );
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
-gap> LoadPackage( "Algebroids", false );
+gap> LoadPackage( "Toposes", false );
+true
+gap> LoadPackage( "FreydCategoriesForCAP", false );
+true
+gap> LoadPackage( "FunctorCategories", false );
 true
 gap> LoadPackage( "LazyCategories", false );
 true
 gap> LoadPackage( "FiniteCocompletion", false );
 true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
-gap> LoadPackage( "Algebroids" );
+gap> LoadPackage( "Toposes" );
+true
+gap> LoadPackage( "FreydCategoriesForCAP" );
+true
+gap> LoadPackage( "FunctorCategories" );
 true
 gap> LoadPackage( "LazyCategories" );
 true

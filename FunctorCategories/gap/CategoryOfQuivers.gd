@@ -45,9 +45,6 @@ DeclareCategory( "IsMorphismInCategoryOfQuivers",
 ####################################
 
 if false then
-#! The quiver generating the category of quivers
-DeclareGlobalVariable( "QuiverOfCategoryOfQuivers" );
-
 #! The category of quivers as a category of presheaves with values in <C>SkeletalFinSets</C>.
 DeclareGlobalVariable( "FinQuivers" );
 fi;
@@ -65,12 +62,6 @@ DeclareAttribute( "UnderlyingCategory",
 #! @Arguments fin_quivers
 DeclareAttribute( "YonedaEmbeddingOfUnderlyingCategory",
         IsCategoryOfQuivers );
-
-DeclareAttribute( "DefiningPairOfQuiverInCategory",
-        IsObjectInCategoryOfQuivers );
-
-DeclareAttribute( "DefiningPairOfQuiverMorphismInCategory",
-        IsObjectInCategoryOfQuivers );
 
 DeclareAttribute( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets",
         IsObjectInCategoryOfQuivers );

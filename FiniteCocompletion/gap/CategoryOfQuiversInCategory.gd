@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# FunctorCategories: Categories of functors
+# FiniteCocompletion: Finite (co)product/(co)limit (co)completions
 #
 # Declarations
 #
@@ -37,6 +37,31 @@ DeclareCategory( "IsObjectInCategoryOfQuiversInCategory",
 DeclareCategory( "IsMorphismInCategoryOfQuiversInCategory",
         IsCellInCategoryOfQuiversInCategory and
         IsCapCategoryMorphism );
+
+####################################
+#
+#! @Section Global variables
+#
+####################################
+
+if false then
+#! The quiver generating the category of quivers
+DeclareGlobalVariable( "QuiverOfCategoryOfQuivers" );
+fi;
+
+####################################
+#
+#! @Section Attributes
+#
+####################################
+
+#! @Arguments quiver
+DeclareAttribute( "DefiningPairOfQuiverInCategory",
+        IsObjectInCategoryOfQuiversInCategory );
+
+#! @Arguments quiver_morphism
+DeclareAttribute( "DefiningPairOfQuiverMorphismInCategory",
+        IsMorphismInCategoryOfQuiversInCategory );
 
 ####################################
 #
