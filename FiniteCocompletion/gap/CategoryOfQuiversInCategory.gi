@@ -708,7 +708,7 @@ InstallMethod( CategoryOfQuivers,
                             only_primitive_operations := true )
                        : FinalizeCategory := false );
     
-    SetUnderlyingCategory( Quivers, F );
+    SetUnderlyingCategory( Quivers, C );
     
     Quivers!.compiler_hints.category_attribute_names :=
            [ "ModelingCategory",
