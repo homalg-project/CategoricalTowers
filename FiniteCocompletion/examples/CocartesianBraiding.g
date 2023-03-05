@@ -59,7 +59,7 @@ Display( gamma );
 #! 
 #! A morphism in
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) )
-#! with the above associated map
+#! given by the above data
 LUC := LazyCategory( UC );
 #! LazyCategory(
 #! FiniteStrictCoproductCocompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )

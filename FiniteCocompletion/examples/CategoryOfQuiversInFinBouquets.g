@@ -47,7 +47,7 @@ Display( s_presheaf );
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
 #! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
-#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) with the above associated map
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(t)]->(A):
 #! { 0, 1, 2 } ⱶ[ 3, 4, 5 ]→ { 0,..., 5 }
@@ -55,7 +55,7 @@ Display( s_presheaf );
 #! [ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ]
 #! 
 #! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
-#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) with the above associated map
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
 #! FiniteStrictCoproductCocompletion(
@@ -103,7 +103,7 @@ Display( t_presheaf );
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
 #! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
-#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) with the above associated map
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of (V)-[(t)]->(A):
 #! { 0,..., 4 } ⱶ[ 2, 3, 4, 5, 6 ]→ { 0,..., 6 }
@@ -111,7 +111,7 @@ Display( t_presheaf );
 #! [ (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L), (P)-[(b)]->(L) ]
 #! 
 #! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
-#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) with the above associated map
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
 #! FiniteStrictCoproductCocompletion(
@@ -148,7 +148,7 @@ Display( presheaf_m );
 #!   (L)-[(L)]->(L), (L)-[(L)]->(L), (L)-[(L)]->(L) ]
 #! 
 #! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
-#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) with the above associated map
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! Image of <(A)>:
 #! { 0, 1, 2 } ⱶ[ 1, 3, 4 ]→ { 0,..., 4 }
@@ -156,7 +156,7 @@ Display( presheaf_m );
 #! [ (P)-[(P)]->(P), (P)-[(P)]->(P), (P)-[(P)]->(P) ]
 #! 
 #! A morphism in FiniteStrictCoproductCocompletion( FreeCategory(
-#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) with the above associated map
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) given by the above data
 #! 
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
 #! FiniteStrictCoproductCocompletion(
