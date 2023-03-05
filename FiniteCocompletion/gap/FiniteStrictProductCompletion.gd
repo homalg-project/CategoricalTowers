@@ -13,7 +13,7 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of a finite product completion category.
+#!  The &GAP; category of finite product completion categories.
 DeclareCategory( "IsFiniteStrictProductCompletion",
         IsCapCategory );
 
