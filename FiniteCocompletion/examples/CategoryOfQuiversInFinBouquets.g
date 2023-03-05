@@ -22,13 +22,16 @@ Display( source_quiver );
 #! [ [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ],
 #!   [ [ 0, (P)-[(b)]->(L), 3 ], [ 0, (P)-[(b)]->(L), 4 ],
 #!     [ 1, (P)-[(b)]->(L), 5 ] ] ]
+#! 
+#! An object in CategoryOfQuivers( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
+#! given by the above data
 IsWellDefined( source_quiver );
 #! true
-s_presheaf := ModelingObject( CapCategory( source_quiver ), source_quiver );
-#! <An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
+s_coeq_pair := ModelingObject( CapCategory( source_quiver ), source_quiver );
+#! <An object in FiniteCoequalizerClosureOfCocartesianCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
-Display( s_presheaf );
+Display( s_coeq_pair );
 #! Image of <(V)>:
 #! [ 6, [ <(P)>, <(P)>, <(P)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
@@ -60,7 +63,11 @@ Display( s_presheaf );
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledObject( CapCategory( source_quiver ), s_presheaf ) = source_quiver;
+#! 
+#! An object in FiniteCoequalizerClosureOfCocartesianCategory(
+#! FiniteStrictCoproductCocompletion( FreeCategory(
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+ModeledObject( CapCategory( source_quiver ), s_coeq_pair ) = source_quiver;
 #! true
 target_bouquet := CreateBouquet( 2, [ 0, 0, 0, 0, 1 ] );
 #! <An object in FinBouquets>
@@ -78,13 +85,16 @@ Display( target_quiver );
 #!   [ [ 0, (P)-[(b)]->(L), 2 ], [ 0, (P)-[(b)]->(L), 3 ],
 #!     [ 0, (P)-[(b)]->(L), 4 ], [ 0, (P)-[(b)]->(L), 5 ],
 #!     [ 1, (P)-[(b)]->(L), 6 ] ] ]
+#! 
+#! An object in CategoryOfQuivers( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )
+#! given by the above data
 IsWellDefined( target_quiver );
 #! true
-t_presheaf := ModelingObject( CapCategory( target_quiver ), target_quiver );
-#! <An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
+t_coeq_pair := ModelingObject( CapCategory( target_quiver ), target_quiver );
+#! <An object in FiniteCoequalizerClosureOfCocartesianCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
-Display( t_presheaf );
+Display( t_coeq_pair );
 #! Image of <(V)>:
 #! [ 7, [ <(P)>, <(P)>, <(L)>, <(L)>, <(L)>, <(L)>, <(L)> ] ]
 #! 
@@ -116,7 +126,11 @@ Display( t_presheaf );
 #! An object in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
-ModeledObject( CapCategory( target_quiver ), t_presheaf ) = target_quiver;
+#! 
+#! An object in FiniteCoequalizerClosureOfCocartesianCategory(
+#! FiniteStrictCoproductCocompletion( FreeCategory(
+#! RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+ModeledObject( CapCategory( target_quiver ), t_coeq_pair ) = target_quiver;
 #! true
 bouquet_morphism := CreateBouquetMorphism(
                             source_bouquet,
@@ -134,13 +148,12 @@ quiver_morphism := CoYonedaLemmaOnMorphisms( presheaf_morphism );
 #!  CategoryOfQuivers( FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) )>
 IsWellDefined( quiver_morphism );
 #! true
-presheaf_m :=
+coeq_pair_m :=
   ModelingMorphism( CapCategory( quiver_morphism ), quiver_morphism );
-#! <A morphism in
-#!  PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
+#! <A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
 #!  FiniteStrictCoproductCocompletion(
 #!  FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) )>
-Display( presheaf_m );
+Display( coeq_pair_m );
 #! Image of <(V)>:
 #! { 0,..., 5 } ⱶ[ 0, 1, 1, 3, 5, 6 ]→ { 0,..., 6 }
 #! 
@@ -161,8 +174,12 @@ Display( presheaf_m );
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(V,A)[s:V->A,t:V->A]" ) ),
 #! FiniteStrictCoproductCocompletion(
 #! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
+#! 
+#! A morphism in FiniteCoequalizerClosureOfCocartesianCategory(
+#! FiniteStrictCoproductCocompletion(
+#! FreeCategory( RightQuiver( "q(P,L)[b:P->L]" ) ) ) ) given by the above data
 ModeledMorphism( CapCategory( quiver_morphism ),
-        source_quiver, presheaf_m, target_quiver ) = quiver_morphism;
+        source_quiver, coeq_pair_m, target_quiver ) = quiver_morphism;
 #! true
 #! @EndExample
 #! @EndChunk

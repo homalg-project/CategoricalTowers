@@ -48,7 +48,7 @@ InstallMethod( CategoryOfQuivers,
   function ( C )
     local object_constructor, object_datum,
           morphism_constructor, morphism_datum,
-          F, UC, PSh,
+          F, UC, Coeq,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           Quivers;
@@ -71,22 +71,17 @@ InstallMethod( CategoryOfQuivers,
     F := CategoryFromDataTables( F : FinalizeCategory := true );
     
     UC := FiniteStrictCoproductCocompletion( C : FinalizeCategory := true );
-    
-    PSh := PreSheaves( F, UC : FinalizeCategory := true );
-    
-    ## specify the attributes the compiler should fully resolve during compilation
-    F!.compiler_hints.category_attribute_resolving_functions :=
-      rec( DefiningTripleOfUnderlyingQuiver := { } -> ENHANCED_SYNTAX_TREE_DefiningTripleOfUnderlyingQuiverOfCategoryOfQuivers,
-           DataTables := { } -> ENHANCED_SYNTAX_TREE_DataTablesOfCategoryOfQuivers,
-           IndicesOfGeneratingMorphisms := { } -> ENHANCED_SYNTAX_TREE_IndicesOfGeneratingMorphismsOfCategoryOfQuivers,
-           );
+
+    Coeq := FiniteCoequalizerClosureOfCocartesianCategory( UC : FinalizeCategory := true );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
       function( Quivers, pair )
-        local PSh, UC, C, objects, decorated_morphisms, V, A, map_s, mor_s, s, map_t, mor_t, t;
+        local Coeq, PSh, UC, C, objects, decorated_morphisms, V, A, map_s, mor_s, s, map_t, mor_t, t;
         
-        PSh := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( Quivers );
+        
+        PSh := ModelingCategory( Coeq );
         
         UC := Range( PSh );
         
@@ -120,27 +115,29 @@ InstallMethod( CategoryOfQuivers,
                      Pair( map_t, mor_t ),
                      V );
         
-        return ObjectConstructor( PSh, Pair( [ V, A ], [ s, t ] ) );
+        return ObjectConstructor( Coeq, Pair( s, t ) );
         
     end;
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
       function( Quivers, obj )
-        local PSh, UC, values_of_functor, V, objects, s, t, s_datum, t_datum, decorated_morphisms;
+        local Coeq, PSh, UC, pair, s, t, V, objects, s_datum, t_datum, decorated_morphisms;
         
-        PSh := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( Quivers );
+        
+        PSh := ModelingCategory( Coeq );
         
         UC := Range( PSh );
         
-        values_of_functor := ObjectDatum( PSh, obj );
+        pair := ObjectDatum( Coeq, obj );
         
-        V := values_of_functor[1][1];
+        s := pair[1];
+        t := pair[2];
+        
+        V := Range( s );
         
         objects := ObjectDatum( UC, V )[2];
-        
-        s := values_of_functor[2][1];
-        t := values_of_functor[2][2];
         
         s_datum := MorphismDatum( UC, s );
         t_datum := MorphismDatum( UC, t );
@@ -157,31 +154,33 @@ InstallMethod( CategoryOfQuivers,
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
       function( Quivers, source, images, range )
-        local PSh, UC, source_datum, range_datum, V, source_s_datum, A;
+        local Coeq, PSh, UC, source_datum, range_datum, V, source_s_datum, A;
         
-        PSh := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( Quivers );
+        
+        PSh := ModelingCategory( Coeq );
         
         UC := Range( PSh );
         
-        source_datum := ObjectDatum( PSh, source );
-        range_datum := ObjectDatum( PSh, range );
+        source_datum := ObjectDatum( Coeq, source );
+        range_datum := ObjectDatum( Coeq, range );
         
         V := MorphismConstructor( UC,
-                     source_datum[1][1],
+                     Range( source_datum[1] ),
                      images[1],
-                     range_datum[1][1] );
+                     Range( range_datum[1] ) );
         
-        source_s_datum := MorphismDatum( UC, source_datum[2][1] );
+        source_s_datum := MorphismDatum( UC, source_datum[1] );
         
         A := MorphismConstructor( UC,
-                     source_datum[1][2],
+                     Source( source_datum[1] ),
                      Pair( images[2],
                            source_s_datum[2] ),
-                     range_datum[1][2] );
+                     Source( range_datum[1] ) );
         
-        return MorphismConstructor( PSh,
+        return MorphismConstructor( Coeq,
                        source,
-                       [ V, A ],
+                       Pair( V, A ),
                        range );
         
     end;
@@ -189,13 +188,15 @@ InstallMethod( CategoryOfQuivers,
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
       function( Quivers, mor )
-        local PSh, UC, mor_datum, V_datum, A_datum;
+        local Coeq, PSh, UC, mor_datum, V_datum, A_datum;
         
-        PSh := ModelingCategory( Quivers );
+        Coeq := ModelingCategory( Quivers );
+        
+        PSh := ModelingCategory( Coeq );
         
         UC := Range( PSh );
         
-        mor_datum := MorphismDatum( PSh, mor );
+        mor_datum := MorphismDatum( Coeq, mor );
         
         V_datum := MorphismDatum( UC, mor_datum[1] );
         A_datum := MorphismDatum( UC, mor_datum[2] );
@@ -208,7 +209,7 @@ InstallMethod( CategoryOfQuivers,
     ## the tower to derive the algorithms turning the category into a constructive topos;
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
-    Quivers := WrapperCategory( PSh,
+    Quivers := WrapperCategory( Coeq,
                        rec( name := Concatenation( "CategoryOfQuivers( ", Name( C ), " )" ),
                             category_filter := IsCategoryOfQuiversInCategory,
                             category_object_filter := IsObjectInCategoryOfQuiversInCategory,
@@ -255,6 +256,8 @@ InstallMethod( Display,
     
     Display( ObjectDatum( quiver ) );
     
+    Print( "\nAn object in ", Name( CapCategory( quiver ) ), " given by the above data\n" );
+    
 end );
 
 ##
@@ -270,5 +273,7 @@ InstallMethod( Display,
     Display( MorphismDatum( quiver_morphism ) );
     Print( "\nRange:  " );
     Display( Range( quiver_morphism ) );
+    
+    Print( "\nA morphism in ", Name( CapCategory( quiver_morphism ) ), " given by the above data\n" );
     
 end );
