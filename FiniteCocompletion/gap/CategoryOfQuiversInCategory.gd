@@ -40,17 +40,6 @@ DeclareCategory( "IsMorphismInCategoryOfQuiversInCategory",
 
 ####################################
 #
-#! @Section Global variables
-#
-####################################
-
-if false then
-#! The quiver generating the category of quivers
-DeclareGlobalVariable( "QuiverOfCategoryOfQuivers" );
-fi;
-
-####################################
-#
 #! @Section Attributes
 #
 ####################################
