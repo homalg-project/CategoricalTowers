@@ -3,7 +3,8 @@
 #! @Example
 LoadPackage( "FiniteCocompletion" );
 #! true
-sFinSets := SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;
+sFinSets :=
+  SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory;
 #! SkeletalFinSetsAsFiniteStrictCoproductCocompletionOfTerminalCategory
 Display( sFinSets );
 #! A CAP category with name

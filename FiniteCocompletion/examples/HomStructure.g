@@ -43,7 +43,7 @@ Display( i );
 #! An object in
 #! FiniteStrictCoproductCocompletion( TerminalCategoryWithMultipleObjects( ) )
 #! given by the above data
-UniversalMorphismFromInitialObject( t ) = UniversalMorphismIntoTerminalObject( i );
+UniversalMorphismFromInitialObject(t) = UniversalMorphismIntoTerminalObject(i);
 #! true
 A := [ 3, [ "A0" / T, "A1" / T, "A2" / T ] ] / sFinSets;
 #! <An object in
