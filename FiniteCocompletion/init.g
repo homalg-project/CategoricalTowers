@@ -17,4 +17,4 @@ ReadPackage( "FiniteCocompletion", "gap/SkeletalFinSets.gd");
 ReadPackage( "FiniteCocompletion", "gap/FiniteCoequalizerClosureOfCocartesianCategory.gd");
 
 ##
-ReadPackage( "FiniteCocompletion", "gap/CategoryOfQuiversInCategory.gd");
+ReadPackage( "FiniteCocompletion", "gap/FiniteColimitCocompletionWithStrictCoproducts.gd");

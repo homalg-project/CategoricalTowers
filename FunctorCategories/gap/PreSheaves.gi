@@ -2472,7 +2472,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], triples ) );
     
-    return CreateQuiverInCategory( CategoryOfQuivers( B ),
+    return CreateColimitDiagram( FiniteColimitCocompletionWithStrictCoproducts( B ),
                    Pair( objects,
                          decorated_morphisms ) );
     
@@ -2491,9 +2491,9 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
         [ IsPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInCategoryOfQuiversInCategory,
+          IsObjectInFiniteColimitCocompletionWithStrictCoproducts,
           IsMorphismInPreSheafCategoryOfFpEnrichedCategory,
-          IsObjectInCategoryOfQuiversInCategory ],
+          IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
         
   function ( PSh, source, phi, range )
     local B, C, defining_triple, nr_objs, nr_mors, source_datum, phi_vals, map_of_objects,
@@ -2527,7 +2527,7 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
     
     map_of_decorated_morphisms := Concatenation( List( [ 0 .. nr_mors - 1 ], imgs ) );
     
-    return CreateQuiverMorphismInCategory( CategoryOfQuivers( B ),
+    return CreateMorphismOfColimitDiagrams( FiniteColimitCocompletionWithStrictCoproducts( B ),
                    source,
                    Pair( map_of_objects,
                          map_of_decorated_morphisms ),
@@ -2557,7 +2557,7 @@ InstallOtherMethodForCompilerForCAP( SomeDiagramOfRepresentables,
     
     B := Source( PSh );
     
-    diagram := ObjectDatum( CategoryOfQuivers( B ),
+    diagram := ObjectDatum( FiniteColimitCocompletionWithStrictCoproducts( B ),
                        CoYonedaLemmaOnObjects( PSh, F ) );
     
     Yoneda := YonedaEmbeddingData( PSh );

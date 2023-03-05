@@ -5,9 +5,9 @@
 #
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateQuiverInCategory,
-        "for a category of quivers in a category and a pair",
-        [ IsCategoryOfQuiversInCategory, IsList ],
+InstallOtherMethodForCompilerForCAP( CreateColimitDiagram,
+        "for the finite colimit cocompletion of a category and a pair",
+        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsList ],
         
   function ( category_of_quivers, pair )
     
@@ -27,9 +27,9 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverInCategory,
 end );
 
 ##
-InstallOtherMethodForCompilerForCAP( CreateQuiverMorphismInCategory,
+InstallOtherMethodForCompilerForCAP( CreateMorphismOfColimitDiagrams,
         "for a category of quivers, two objects in a category of quivers, and a pair",
-        [ IsCategoryOfQuiversInCategory, IsObjectInCategoryOfQuiversInCategory, IsList, IsObjectInCategoryOfQuiversInCategory ],
+        [ IsFiniteColimitCocompletionWithStrictCoproducts, IsObjectInFiniteColimitCocompletionWithStrictCoproducts, IsList, IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
         
   function ( category_of_quivers, source, images, range )
     
@@ -41,7 +41,7 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverMorphismInCategory,
 end );
 
 ##
-InstallMethod( CategoryOfQuivers,
+InstallMethod( FiniteColimitCocompletionWithStrictCoproducts,
         "for a category",
         [ IsCapCategory ],
         
@@ -54,13 +54,13 @@ InstallMethod( CategoryOfQuivers,
           Quivers;
     
     ##
-    object_constructor := CreateQuiverInCategory;
+    object_constructor := CreateColimitDiagram;
     
     ##
     object_datum := { Quivers, o } -> DefiningPairOfQuiverInCategory( o );
     
     ##
-    morphism_constructor := CreateQuiverMorphismInCategory;
+    morphism_constructor := CreateMorphismOfColimitDiagrams;
     
     ##
     morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphismInCategory( m );
@@ -210,10 +210,10 @@ InstallMethod( CategoryOfQuivers,
     ## after compilation the tower is gone and the only reminiscent which hints to the tower
     ## is the attribute ModelingCategory:
     Quivers := WrapperCategory( Coeq,
-                       rec( name := Concatenation( "CategoryOfQuivers( ", Name( C ), " )" ),
-                            category_filter := IsCategoryOfQuiversInCategory,
-                            category_object_filter := IsObjectInCategoryOfQuiversInCategory,
-                            category_morphism_filter := IsMorphismInCategoryOfQuiversInCategory,
+                       rec( name := Concatenation( "FiniteColimitCocompletionWithStrictCoproducts( ", Name( C ), " )" ),
+                            category_filter := IsFiniteColimitCocompletionWithStrictCoproducts,
+                            category_object_filter := IsObjectInFiniteColimitCocompletionWithStrictCoproducts,
+                            category_morphism_filter := IsMorphismInFiniteColimitCocompletionWithStrictCoproducts,
                             object_constructor := object_constructor,
                             object_datum := object_datum,
                             morphism_datum := morphism_datum,
@@ -249,8 +249,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a category of quivers in a category",
-        [ IsObjectInCategoryOfQuiversInCategory ],
+        "for an object in the finite colimit cocompletion of a category",
+        [ IsObjectInFiniteColimitCocompletionWithStrictCoproducts ],
         
   function ( quiver )
     
@@ -262,8 +262,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for a morphism in a category of quivers in a category",
-        [ IsMorphismInCategoryOfQuiversInCategory ],
+        "for a morphism in the finite colimit cocompletion of a category",
+        [ IsMorphismInFiniteColimitCocompletionWithStrictCoproducts ],
         
   function ( quiver_morphism )
 
